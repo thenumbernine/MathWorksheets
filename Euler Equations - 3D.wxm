@@ -1,0 +1,333 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 13.04.0 ] */
+
+/* [wxMaxima: input   start ] */
+/* Following "Hydrodynamics II" as best I can */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* convince diff to not treat variables as constants */ depends(P, %rho);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* density = particle number density times mean weight of gas particle */ %rho_from_N_%mu : %rho = N * %mu;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+N_from_%rho_%mu : solve(%rho_from_N_%mu, N)[1];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* specific energy - kinetic, internal, and total */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* internal energy = density times internal specific energy */ E = %rho * e;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+v : [vx, vy, vz];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* fluid velocity */ vLenSq_from_v : vLen^2 = v.v;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+v_from_vLenSq : rhs(vLenSq_from_v) = lhs(vLenSq_from_v);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* specific kinetic energy */ eKin_from_vLen : eKin = vLen^2/2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eKin_from_v : subst([vLenSq_from_v], eKin_from_vLen);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eTotal_from_eKin_e : eTotal = eKin + e;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+e_from_eTotal_eKin : solve(eTotal_from_eKin_e, e)[1];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* Pressure */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* ideal gas law */ P_from_N_k_T : P = N * k * T;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+P_from_k_T_%rho_%mu : P_from_N_k_T, N_from_%rho_%mu;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* another ideal gas law property */ P_from_%rho_e : P = (%gamma - 1) * %rho * e;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+e_from_P_%rho : solve(P_from_%rho_e, e)[1];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eTotal_from_P_%rho : subst([e_from_P_%rho], eTotal_from_eKin_e);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+P_from_%rho_eTotal_vLen : subst([e_from_eTotal_eKin, eKin_from_vLen], P_from_%rho_e);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+P_from_%rho_eTotal_v : subst([vLenSq_from_v], P_from_%rho_eTotal_vLen);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* internal specific enthalpy */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+h_from_e_P_%rho : h = e + P / %rho;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+h_from_P_%rho : ratsimp(subst([e_from_P_%rho], h_from_e_P_%rho));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+h_from_e : ratsimp(subst([P_from_%rho_e], h_from_e_P_%rho));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* total specific enthalpy */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+hTotal_from_h_eKin : hTotal = h + eKin;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+h_from_hTotal_eKin : solve(hTotal_from_h_eKin, h)[1];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+hTotal_from_eTotal_P_%rho : hTotal = P / %rho + eTotal;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+hTotal_from_P_%rho : subst([eTotal_from_P_%rho], hTotal_from_eTotal_P_%rho);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* speed of sound */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* adiabatic compression/expansion */ P_from_K_%rho_%gamma : P = K * %rho ^ %gamma;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+K_%rho_%gamma_from_P : rhs(P_from_K_%rho_%gamma) = lhs(P_from_K_%rho_%gamma);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* adiabatic sound speed: Cs^2 = dP/d%rho */ CsSq_from_K_%rho_%gamma : Cs^2 = diff(subst(P_from_K_%rho_%gamma, P), %rho);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* ...in terms of pressure */ CsSq_from_P_%rho : lhs(CsSq_from_K_%rho_%gamma) = rhs(CsSq_from_K_%rho_%gamma) * lhs(P_from_K_%rho_%gamma) / rhs(P_from_K_%rho_%gamma);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* in terms of specific internal energy */ CsSq_from_e : lhs(CsSq_from_P_%rho) = rhs(CsSq_from_P_%rho) * lhs(e_from_P_%rho) / rhs(e_from_P_%rho);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* in terms of enthalpy */ CsSq_from_h : lhs(CsSq_from_e) = ratsimp(rhs(CsSq_from_e) * lhs(h_from_e) / rhs(h_from_e));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* isothermal sound speed ... not used */ csSq_from_e : cs^2 = (%gamma - 1) * e;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+h_from_hTotal_vLen : subst([eKin_from_vLen], solve(hTotal_from_h_eKin, h)[1]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+CsSq_from_hTotal : subst([h_from_hTotal_vLen], CsSq_from_h);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+hTotal_from_CsSq_vLen : solve(CsSq_from_hTotal, hTotal)[1];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+hTotal_from_CsSq_v : subst([vLenSq_from_v], hTotal_from_CsSq_vLen);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+CsSq_from_eTotal_vLen : subst([e_from_eTotal_eKin, eKin_from_vLen], CsSq_from_e);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* take the positive root */ Cs_from_eTotal_vLen : solve(CsSq_from_eTotal_vLen, Cs)[2];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eTotal_v_from_Cs : subst([vLenSq_from_v], rhs(Cs_from_eTotal_vLen) = lhs(Cs_from_eTotal_vLen));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* Euler equations of motion */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+xs : [x,y,z];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+primitives : append([%rho], v, [eTotal]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+states : [q1, q2, q3, q4, q5];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+depends(append(primitives, states, [P]), append([t],xs));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* equations, separate */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+primitive_eqn_density : 'diff(%rho, t) + sum('diff(%rho * v[i], xs[i]),i,1,3) = 0;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+primitive_eqn_velocity : create_list('diff(%rho * v[j], t) + sum('diff(%rho * v[j] * v[i] + kron_delta(j,i)*P, xs[i]), i,1,3) = 0, j, [1,2,3]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+primitive_eqn_energy : 'diff(%rho * eTotal, t) + sum('diff(v[i] * (%rho * eTotal + P), xs[i]),i,1,3) = 0;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* Euler equations using primitive variables */
+primitive_eqns : append([primitive_eqn_density], primitive_eqn_velocity, [primitive_eqn_energy]);
+primitive_eqns : subst([P_from_%rho_eTotal_v, vLenSq_from_v], primitive_eqns);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* state variables in terms of primitive variables */ states_from_primitives : [q1 = %rho, q2 = %rho * vx, q3 = %rho * vy, q4 = %rho * vz, q5 = %rho * eTotal];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* primitive variables from state variables */ primitives_from_states : solve(states_from_primitives, primitives)[1];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+state_eqns : subst(primitives_from_states, primitive_eqns);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+state_eqns_lhs : create_list(lhs(eqn), eqn, state_eqns);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+state_eqns_rhs : create_list(rhs(eqn), eqn, state_eqns);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+dt_from_state_eqns : create_list(lhs(state_eqns[i]) - 'diff(states[i],t) = rhs(state_eqns[i]) -'diff(states[i],t),i,[1,2,3,4,5]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+dt_from_state_eqns_lhs : create_list(lhs(eqn), eqn, dt_from_state_eqns);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+dt_from_state_eqns_rhs : create_list(rhs(eqn), eqn, dt_from_state_eqns);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+state_eqns_from_dt_matrix : genmatrix(lambda([i,j], dt_from_state_eqns_lhs[i]),5,1) = genmatrix(lambda([i,j], dt_from_state_eqns_rhs[i]),5,1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+state_eqns_from_dt_matrix_ev : expand(ev(state_eqns_from_dt_matrix, diff));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+state_eqns_diffx_jacobian : genmatrix(lambda([i,j], ratsimp(coeff(lhs(state_eqns_from_dt_matrix_ev)[i,1], diff(states[j],x)))), 5, 5);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+primitive_eqns_diffx_jacobian : ratsimp(subst(states_from_primitives, state_eqns_diffx_jacobian));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* would be great if I could declare a matrix multiply without it expanding... 
+so I could show the original equation with the state vector derivative factored out */
+state_eqns_diffx_jacobian . genmatrix(lambda([i,j], diff(states[i],x)), 5, 1) = rhs(state_eqns_from_dt_matrix_ev);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* now to find the eigenvalues and eigenvectors of the state_eqn matrix */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* maxima returns two lists: one of unique eigenvalues and one of multiplicity.
+this duplicates those entries to create a correct list to pass to a diagonal matrix */
+eigenvalueList(es) := flatten(makelist(makelist(es[1][i],es[2][i]), i, 1, length(es[1])));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diffx_jacobian_eigenvector_results : eigenvectors(primitive_eqns_diffx_jacobian);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diffx_jacobian_eigenvalues : eigenvalueList(diffx_jacobian_eigenvector_results[1]);
+diffx_jacobian_eigenvalues : create_list(subst(eTotal_v_from_Cs, expand(eqn)), eqn, diffx_jacobian_eigenvalues);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+load(diag);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diffx_jacobian_eigenvalue_matrix : diag(diffx_jacobian_eigenvalues);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diffx_jacobian_eigenvector_results[2];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diffx_jacobian_eigenvector_lists : append(diffx_jacobian_eigenvector_results[2][1], diffx_jacobian_eigenvector_results[2][2], diffx_jacobian_eigenvector_results[2][3]);
+diffx_jacobian_eigenvector_lists : expand(diffx_jacobian_eigenvector_lists);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diffx_jacobian_eigenvectors : genmatrix(lambda([i,j], subst([eTotal_v_from_Cs], diffx_jacobian_eigenvector_lists[j][i])), 5, 5);
+/* now that Maxima has put a "v" in the middle of the components that make up Cs,
+there is no way to move the "v" to the left side of the multiplication,
+and there is no way to substitute in the Cs.  HAVE TO DO IT BY HAND, THANK YOU MAXIMA.
+TODO: find a way to rearrange elements of a product ... or just split a sum or product into a list. */
+diffx_jacobian_eigenvectors : subst([sqrt(%gamma) * sqrt(1-%gamma) * vx * sqrt(vx^2+vy^2+vz^2-2*eTotal)/sqrt(2) = vx*Cs], diffx_jacobian_eigenvectors);
+diffx_jacobian_eigenvectors : subst([%gamma*eTotal - %gamma*vz^2/2 + vz^2/2 - %gamma*vy^2/2 + vy^2/2 - %gamma*vx^2/2 + vx^2/2 - Cs*vx = hTotal - Cs*vx], diffx_jacobian_eigenvectors);
+diffx_jacobian_eigenvectors : subst([%gamma*eTotal - %gamma*vz^2/2 + vz^2/2 - %gamma*vy^2/2 + vy^2/2 - %gamma*vx^2/2 + vx^2/2 + Cs*vx = hTotal + Cs*vx], diffx_jacobian_eigenvectors);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diffx_jacobian_eigenvectors_inverse : ratsimp(invert(diffx_jacobian_eigenvectors));
+diffx_jacobian_eigenvectors_inverse : ratsimp(subst([hTotal_from_CsSq_v], diffx_jacobian_eigenvectors_inverse));
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
