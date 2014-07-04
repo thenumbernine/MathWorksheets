@@ -122,11 +122,13 @@ K_%rho_%gamma_from_P : rhs(P_from_K_%rho_%gamma) = lhs(P_from_K_%rho_%gamma);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* in terms of specific internal energy */ CsSq_from_e : lhs(CsSq_from_P_%rho) = rhs(CsSq_from_P_%rho) * lhs(e_from_P_%rho) / rhs(e_from_P_%rho);
+/* in terms of specific internal energy */
+CsSq_from_e : lhs(CsSq_from_P_%rho) = rhs(CsSq_from_P_%rho) * lhs(e_from_P_%rho) / rhs(e_from_P_%rho);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* in terms of enthalpy */ CsSq_from_h : lhs(CsSq_from_e) = ratsimp(rhs(CsSq_from_e) * lhs(h_from_e) / rhs(h_from_e));
+/* in terms of enthalpy */
+CsSq_from_h : lhs(CsSq_from_e) = ratsimp(rhs(CsSq_from_e) * lhs(h_from_e) / rhs(h_from_e));
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -175,11 +177,11 @@ depends(P, [t, x]);
 
 /* [wxMaxima: input   start ] */
 /* Euler equations using primitive variables */
-primitive_eqns : [
-'diff(%rho, t) + 'diff(%rho * v,x) = 0,
+['diff(%rho, t) + 'diff(%rho * v,x) = 0,
 'diff(%rho * v, t) + 'diff(%rho * v^2 + P, x) = 0,
-'diff(%rho * eTotal, t) + 'diff((%rho * eTotal + P) * v, x) = 0];
-primitive_eqns : subst([P_from_%rho_eTotal_v], primitive_eqns);
+'diff(%rho * eTotal, t) + 'diff((%rho * eTotal + P) * v, x) = 0]$
+subst([P_from_%rho_eTotal_v], %)$
+primitive_eqns : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -200,14 +202,6 @@ depends(states, [t,x]);
 
 /* [wxMaxima: input   start ] */
 state_eqns : subst(primitives_from_states, primitive_eqns);
-/* [wxMaxima: input   end   ] */
-
-/* [wxMaxima: input   start ] */
-state_eqns_lhs : create_list(lhs(eqn), eqn, state_eqns);
-/* [wxMaxima: input   end   ] */
-
-/* [wxMaxima: input   start ] */
-state_eqns_rhs : create_list(rhs(eqn), eqn, state_eqns);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -265,20 +259,63 @@ jacobian_eigenvalue_matrix : diag(jacobian_eigenvalues);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-jacobian_eigenvectors : genmatrix(lambda([i,j], subst([eTotal_v_from_Cs], expand(jacobian_eigenvector_results[2][j][1][i]))), 3, 3);
+genmatrix(lambda([i,j], subst([eTotal_v_from_Cs], expand(jacobian_eigenvector_results[2][j][1][i]))), 3, 3)$
 /* now that Maxima has put a "v" in the middle of the components that make up Cs,
 there is no way to move the "v" to the left side of the multiplication,
 and there is no way to substitute in the Cs.  HAVE TO DO IT BY HAND, THANK YOU MAXIMA.
 TODO: find a way to rearrange elements of a product ... or just split a sum or product into a list. */
-jacobian_eigenvectors : subst([sqrt(%gamma) * sqrt(1-%gamma) * v * sqrt(v^2-2*eTotal)/sqrt(2) = v*Cs], jacobian_eigenvectors);
+subst([sqrt(%gamma) * sqrt(1-%gamma) * v * sqrt(v^2-2*eTotal)/sqrt(2) = v*Cs], %)$
 /* and now to get hTotal on the bottom row.  NOTICE that I have to substitude eKin=v^2/2 AND the same equation scaled by gamma. */
-jacobian_eigenvectors : expand(subst([eTotal_from_eKin_e, %gamma * rhs(eKin_from_v) = %gamma * lhs(eKin_from_v), rhs(eKin_from_v)=lhs(eKin_from_v)], jacobian_eigenvectors));
-jacobian_eigenvectors : subst([rhs(h_from_e)=lhs(h_from_e), h_from_hTotal_eKin,eKin_from_v], jacobian_eigenvectors);
+expand(subst([eTotal_from_eKin_e, %gamma * rhs(eKin_from_v) = %gamma * lhs(eKin_from_v), rhs(eKin_from_v)=lhs(eKin_from_v)], %))$
+subst([rhs(h_from_e)=lhs(h_from_e), h_from_hTotal_eKin,eKin_from_v], %)$
+jacobian_eigenvectors : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-jacobian_eigenvectors_inverse : ratsimp(invert(jacobian_eigenvectors));
-jacobian_eigenvectors_inverse : ratsimp(subst([hTotal_from_CsSq_v], jacobian_eigenvectors_inverse));
+/* I was going to use the above method for solving higher dimension hyperbolic problems,
+but it turns out running eigenvectors() or invert() on a 8x8 matrix stops Maxima in its tracks.
+SO instead I'm going to develop some steps useful for verifying a left- and right-eigenvector and eigenvalues */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ratsimp(invert(jacobian_eigenvectors))$
+ratsimp(subst([hTotal_from_CsSq_v], %))$
+jacobian_eigenvectors_inverse : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* verify that the eigenvector and eigenvector inverse matrices are inverses */
+jacobian_eigenvectors . jacobian_eigenvectors_inverse$
+subst([hTotal_from_CsSq_v], %)$
+ratsimp(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* verify that the eigenvectors reconstruct to the original matrix */
+jacobian_eigenvectors . jacobian_eigenvalue_matrix . jacobian_eigenvectors_inverse$
+subst([hTotal_from_CsSq_v], %)$
+ratsimp(%)$
+subst([CsSq_from_eTotal_v], %)$
+ratsimp(%);
+is(equal(%, primitive_eqns_jacobian));
+primitive_eqns_jacobian;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* verify that the eigenvectors do scale by the eigenvalue */"";
+for i : 1 thru 3 do (
+/* We need block() to define a label as local because within these fake multiple statement expressions we can't use %.
+   Fake multiple statement expressions makes me think of Python lambdas. */
+    block([x],  
+        x : col(jacobian_eigenvectors, i),
+        x : primitive_eqns_jacobian . x = jacobian_eigenvalues[i] * x,
+        x : subst([hTotal_from_CsSq_v], x),
+        x : ratsimp(x),
+        x : subst([eTotal_from_eKin_e, eKin_from_v, solve(CsSq_from_e, e)[1]], x),
+        x : ratsimp(x),
+        print(x),
+        print(is(equal(lhs(x), rhs(x))))
+));
 /* [wxMaxima: input   end   ] */
 
 /* Maxima can't load/batch files which end with a comment! */

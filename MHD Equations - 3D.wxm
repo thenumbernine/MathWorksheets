@@ -182,7 +182,19 @@ eTotal_v_from_Cs : subst([vLenSq_from_v], rhs(Cs_from_eTotal_vLen) = lhs(Cs_from
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* Euler equations of motion */"";
+/* magnetic field */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+B : [Bx, By, Bz];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+BLenSq_from_B : BLen^2 = B.B;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* MHD equations */"";
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -190,11 +202,11 @@ xs : [x,y,z];
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-primitives : append([%rho], v, [eTotal]);
+primitives : append([%rho], v, B, [eTotal]);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-states : [q1, q2, q3, q4, q5];
+states : [q1, q2, q3, q4, q5, q6, q7, q8];
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -210,21 +222,25 @@ primitive_eqn_density : 'diff(%rho, t) + sum('diff(%rho * v[i], xs[i]),i,1,3) = 
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-primitive_eqn_velocity : create_list('diff(%rho * v[j], t) + sum('diff(%rho * v[j] * v[i] + kron_delta(j,i)*P, xs[i]), i,1,3) = 0, j, [1,2,3]);
+primitive_eqn_velocity : create_list('diff(%rho * v[j], t) + sum('diff(%rho * v[j] * v[i] + kron_delta(j,i)*(P + 1/2 * BLen^2) - B[j] * B[i], xs[i]), i,1,3) = 0, j, [1,2,3]);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-primitive_eqn_energy : 'diff(%rho * eTotal, t) + sum('diff(v[i] * (%rho * eTotal + P), xs[i]),i,1,3) = 0;
+primitive_eqn_magneticField : create_list('diff(B[j], t) + sum('diff(B[j]*v[i]-v[j]*B[i], xs[i]),i,1,3)=0,j,[1,2,3]);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* Euler equations using primitive variables */
-primitive_eqns : append([primitive_eqn_density], primitive_eqn_velocity, [primitive_eqn_energy]);
-primitive_eqns : subst([P_from_%rho_eTotal_v, vLenSq_from_v], primitive_eqns);
+primitive_eqn_energy : 'diff(%rho * eTotal, t) + sum('diff(v[i] * (%rho * eTotal + BLen^2 + P) + (v.B) * B[i], xs[i]),i,1,3) = 0;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* state variables in terms of primitive variables */ states_from_primitives : [q1 = %rho, q2 = %rho * vx, q3 = %rho * vy, q4 = %rho * vz, q5 = %rho * eTotal];
+/* MHD equations using primitive variables */
+primitive_eqns : append([primitive_eqn_density], primitive_eqn_velocity, primitive_eqn_magneticField, [primitive_eqn_energy]);
+primitive_eqns : subst([P_from_%rho_eTotal_v, vLenSq_from_v, BLenSq_from_B], primitive_eqns);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* state variables in terms of primitive variables */ states_from_primitives : [q1 = %rho, q2 = %rho * vx, q3 = %rho * vy, q4 = %rho * vz, q5 = Bx, q6 = By, q7 = Bz, q8 = %rho * eTotal];
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -244,7 +260,7 @@ state_eqns_rhs : create_list(rhs(eqn), eqn, state_eqns);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-dt_from_state_eqns : create_list(lhs(state_eqns[i]) - 'diff(states[i],t) = rhs(state_eqns[i]) -'diff(states[i],t),i,[1,2,3,4,5]);
+dt_from_state_eqns : create_list(lhs(state_eqns[i]) - 'diff(states[i],t) = rhs(state_eqns[i]) -'diff(states[i],t),i,[1,2,3,4,5,6,7,8]);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -256,7 +272,7 @@ dt_from_state_eqns_rhs : create_list(rhs(eqn), eqn, dt_from_state_eqns);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-state_eqns_from_dt_matrix : genmatrix(lambda([i,j], dt_from_state_eqns_lhs[i]),5,1) = genmatrix(lambda([i,j], dt_from_state_eqns_rhs[i]),5,1);
+state_eqns_from_dt_matrix : genmatrix(lambda([i,j], dt_from_state_eqns_lhs[i]),8,1) = genmatrix(lambda([i,j], dt_from_state_eqns_rhs[i]),8,1);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -264,7 +280,7 @@ state_eqns_from_dt_matrix_ev : expand(ev(state_eqns_from_dt_matrix, diff));
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-state_eqns_diffx_jacobian : genmatrix(lambda([i,j], ratsimp(coeff(lhs(state_eqns_from_dt_matrix_ev)[i,1], diff(states[j],x)))), 5, 5);
+state_eqns_diffx_jacobian : genmatrix(lambda([i,j], ratsimp(coeff(lhs(state_eqns_from_dt_matrix_ev)[i,1], diff(states[j],x)))), 8, 8);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -274,7 +290,7 @@ primitive_eqns_diffx_jacobian : ratsimp(subst(states_from_primitives, state_eqns
 /* [wxMaxima: input   start ] */
 /* would be great if I could declare a matrix multiply without it expanding... 
 so I could show the original equation with the state vector derivative factored out */
-state_eqns_diffx_jacobian . genmatrix(lambda([i,j], diff(states[i],x)), 5, 1) = rhs(state_eqns_from_dt_matrix_ev);
+state_eqns_diffx_jacobian . genmatrix(lambda([i,j], diff(states[i],x)), 8, 1) = rhs(state_eqns_from_dt_matrix_ev);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
