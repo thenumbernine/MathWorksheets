@@ -126,7 +126,8 @@ hTotal_from_P_%rho : subst([eTotal_from_P_%rho], hTotal_from_eTotal_P_%rho);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* adiabatic compression/expansion */ P_from_K_%rho_%gamma : P = K * %rho ^ %gamma;
+/* adiabatic compression/expansion */
+P_from_K_%rho_%gamma : P = K * %rho ^ %gamma;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -134,23 +135,28 @@ K_%rho_%gamma_from_P : rhs(P_from_K_%rho_%gamma) = lhs(P_from_K_%rho_%gamma);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* adiabatic sound speed: Cs^2 = dP/d%rho */ CsSq_from_K_%rho_%gamma : Cs^2 = diff(subst(P_from_K_%rho_%gamma, P), %rho);
+/* adiabatic sound speed: Cs^2 = dP/d%rho */
+CsSq_from_K_%rho_%gamma : Cs^2 = diff(subst(P_from_K_%rho_%gamma, P), %rho);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* ...in terms of pressure */ CsSq_from_P_%rho : lhs(CsSq_from_K_%rho_%gamma) = rhs(CsSq_from_K_%rho_%gamma) * lhs(P_from_K_%rho_%gamma) / rhs(P_from_K_%rho_%gamma);
+/* ...in terms of pressure */
+CsSq_from_P_%rho : lhs(CsSq_from_K_%rho_%gamma) = rhs(CsSq_from_K_%rho_%gamma) * lhs(P_from_K_%rho_%gamma) / rhs(P_from_K_%rho_%gamma);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* in terms of specific internal energy */ CsSq_from_e : lhs(CsSq_from_P_%rho) = rhs(CsSq_from_P_%rho) * lhs(e_from_P_%rho) / rhs(e_from_P_%rho);
+/* in terms of specific internal energy */
+CsSq_from_e : lhs(CsSq_from_P_%rho) = rhs(CsSq_from_P_%rho) * lhs(e_from_P_%rho) / rhs(e_from_P_%rho);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* in terms of enthalpy */ CsSq_from_h : lhs(CsSq_from_e) = ratsimp(rhs(CsSq_from_e) * lhs(h_from_e) / rhs(h_from_e));
+/* in terms of enthalpy */
+CsSq_from_h : lhs(CsSq_from_e) = ratsimp(rhs(CsSq_from_e) * lhs(h_from_e) / rhs(h_from_e));
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* isothermal sound speed ... not used */ csSq_from_e : cs^2 = (%gamma - 1) * e;
+/* isothermal sound speed ... not used */
+csSq_from_e : cs^2 = (%gamma - 1) * e;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -319,7 +325,55 @@ diffx_jacobian_eigenvectors_inverse : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* could go for one last vSq substitution ... TODO test eigenbasis properties */"";
+/* could go for one last vSq substitution ... */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* verify that the eigenvector and eigenvector inverse matrices are inverses */
+diffx_jacobian_eigenvectors . diffx_jacobian_eigenvectors_inverse$
+subst([hTotal_from_CsSq_v], %)$
+ratsimp(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* verify that the eigenvectors reconstruct to the original matrix */
+diffx_jacobian_eigenvectors . diffx_jacobian_eigenvalue_matrix . diffx_jacobian_eigenvectors_inverse$
+subst([hTotal_from_CsSq_v], %)$
+ratsimp(%)$
+subst([CsSq_from_eTotal_vLen, vLenSq_from_v], %)$
+ratsimp(%);
+is(equal(%, primitive_eqns_diffx_jacobian));
+primitive_eqns_diffx_jacobian;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* verify that the eigenvectors do scale by the eigenvalue */"";
+for i : 1 thru 5 do (
+    block([x],
+        x : col(diffx_jacobian_eigenvectors, i),
+        x : primitive_eqns_diffx_jacobian . x = diffx_jacobian_eigenvalues[i] * x,
+        x : subst([hTotal_from_CsSq_v], x),
+        x : ratsimp(x),
+        x : subst([eTotal_from_eKin_e, eKin_from_vLen, vLenSq_from_v, solve(CsSq_from_e, e)[1]], x),
+        x : ratsimp(x),
+        print(x),
+        print(is(equal(lhs(x), rhs(x))))
+));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* verify that the eigenvectors do scale by the eigenvalue */"";
+for i : 1 thru 5 do (
+    block([x],
+        x : row(diffx_jacobian_eigenvectors_inverse, i),
+        x : x . primitive_eqns_diffx_jacobian = diffx_jacobian_eigenvalues[i] * x,
+        x : subst([hTotal_from_CsSq_v], x),
+        x : ratsimp(x),
+        x : subst([eTotal_from_eKin_e, eKin_from_vLen, vLenSq_from_v, solve(CsSq_from_e, e)[1]], x),
+        x : ratsimp(x),
+        print(x),
+        print(is(equal(lhs(x), rhs(x))))
+));
 /* [wxMaxima: input   end   ] */
 
 /* Maxima can't load/batch files which end with a comment! */

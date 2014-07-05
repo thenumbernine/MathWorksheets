@@ -46,6 +46,8 @@ eKin_from_v : subst([vLenSq_from_v], eKin_from_vLen);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
+/* currently eTotal only considers internal and kinetic energy.
+magnetic energy is added separately in the MHD equations. */
 eTotal_from_eKin_e : eTotal = eKin + e;
 /* [wxMaxima: input   end   ] */
 
@@ -230,17 +232,21 @@ primitive_eqn_magneticField : create_list('diff(B[j], t) + sum('diff(B[j]*v[i]-v
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-primitive_eqn_energy : 'diff(%rho * eTotal, t) + sum('diff(v[i] * (%rho * eTotal + BLen^2 + P) + (v.B) * B[i], xs[i]),i,1,3) = 0;
+primitive_eqn_energy : 'diff(%rho * eTotal + 1/2 * BLen^2, t) + sum('diff(v[i] * (%rho * eTotal + BLen^2 + P) + (v.B) * B[i], xs[i]),i,1,3) = 0;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
 /* MHD equations using primitive variables */
-primitive_eqns : append([primitive_eqn_density], primitive_eqn_velocity, primitive_eqn_magneticField, [primitive_eqn_energy]);
-primitive_eqns : subst([P_from_%rho_eTotal_v, vLenSq_from_v, BLenSq_from_B], primitive_eqns);
+append([primitive_eqn_density], primitive_eqn_velocity, primitive_eqn_magneticField, [primitive_eqn_energy])$
+subst([P_from_%rho_eTotal_v, vLenSq_from_v, BLenSq_from_B], %)$
+primitive_eqns : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* state variables in terms of primitive variables */ states_from_primitives : [q1 = %rho, q2 = %rho * vx, q3 = %rho * vy, q4 = %rho * vz, q5 = Bx, q6 = By, q7 = Bz, q8 = %rho * eTotal];
+/* state variables in terms of primitive variables */
+[q1 = %rho, q2 = %rho * vx, q3 = %rho * vy, q4 = %rho * vz, q5 = Bx, q6 = By, q7 = Bz, q8 = %rho * eTotal + 1/2 * BLen^2]$
+subst([BLenSq_from_B], %)$
+states_from_primitives : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -249,14 +255,6 @@ primitive_eqns : subst([P_from_%rho_eTotal_v, vLenSq_from_v, BLenSq_from_B], pri
 
 /* [wxMaxima: input   start ] */
 state_eqns : subst(primitives_from_states, primitive_eqns);
-/* [wxMaxima: input   end   ] */
-
-/* [wxMaxima: input   start ] */
-state_eqns_lhs : create_list(lhs(eqn), eqn, state_eqns);
-/* [wxMaxima: input   end   ] */
-
-/* [wxMaxima: input   start ] */
-state_eqns_rhs : create_list(rhs(eqn), eqn, state_eqns);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -304,7 +302,7 @@ eigenvalueList(es) := flatten(makelist(makelist(es[1][i],es[2][i]), i, 1, length
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-diffx_jacobian_eigenvector_results : eigenvectors(primitive_eqns_diffx_jacobian);
+/* diffx_jacobian_eigenvector_results : eigenvectors(primitive_eqns_diffx_jacobian) */"";
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */

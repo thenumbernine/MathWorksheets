@@ -1,0 +1,50 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 13.04.0 ] */
+
+/* [wxMaxima: input   start ] */
+B:[Bx,By,Bz];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* for my Euler eqn CFD I found solving for arbitrary normals was less accurate than rotating the normal into the x axis, solving, and rotating back.
+so rather than try to solve this all in an arbitrary axis, here's just the x axis. */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+nx:1;
+ny:0;
+nz:0;
+n:[nx,ny,nz];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+load("vect");
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+BcrossN:express(B~n);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+%beta:B.n;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+%sigma:signum(B.n);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Y : matrix(
+[(%rho * cf^2 - B.B)/c^2, 0, (%rho * cs^2 - B.B)/c^2, 1, 0, (%rho * cs^2 - B.B)/c^2, 0, (%rho * cf^2 - B.B)/c^2],
+[-nx*cf+Bx*%beta/(%rho*cf), BcrossN[1]*%sigma, -nx*cs + Bx*%beta/(%rho*cf), 0, 0, nx*cs-Bx*%beta/(%rho*cs), -BcrossN[1]*%sigma, nx*cf-B[1]*%beta/(%rho*cf)],
+[-ny*cf+By*%beta/(%rho*cf), BcrossN[2]*%sigma, -ny*cs + By*%beta/(%rho*cf), 0, 0, ny*cs-By*%beta/(%rho*cs), -BcrossN[2]*%sigma, ny*cf-B[2]*%beta/(%rho*cf)],
+[-nz*cf+Bz*%beta/(%rho*cf), BcrossN[3]*%sigma, -nz*cs + Bz*%beta/(%rho*cf), 0, 0, nz*cs-Bz*%beta/(%rho*cs), -BcrossN[3]*%sigma, nz*cf-B[3]*%beta/(%rho*cf)],
+[Bx-nx*%beta, BcrossN[1]/sqrt(%rho), Bx-nx*%beta, 0, nx, Bx-nx*%beta, BcrossN[1]/sqrt(%rho), Bx-nx*%beta],
+[By-ny*%beta, BcrossN[2]/sqrt(%rho), By-ny*%beta, 0, ny, By-ny*%beta, BcrossN[2]/sqrt(%rho), By-ny*%beta],
+[Bz-nz*%beta, BcrossN[3]/sqrt(%rho), Bz-nz*%beta, 0, nz, Bz-nz*%beta, BcrossN[3]/sqrt(%rho), Bz-nz*%beta],
+[%rho*cf^2-B.B, 0, %rho*cs^2-B.B, 0, 0, %rho*cs^2-B.B, 0, %rho*cf^2-B.B]
+);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
