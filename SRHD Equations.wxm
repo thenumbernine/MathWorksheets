@@ -6,7 +6,8 @@
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-swap(eqn) := rhs(eqn)=lhs(eqn);
+/* basis */
+xs : [x,y,z];
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -33,6 +34,49 @@ u_from_v : create_list(solve(v_from_u[i], u[i])[1], i, [1,2,3]);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
+/* internal specific enthalpy */
+h_from_e_P_%rho : h = 1 + e + P / %rho;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* this is from "Hydrodynamics II"
+and used in "Numerical Hydrodynamics in General Relativity" by Jose A. Font */
+P_from_%rho_e : P = (%gamma - 1) * %rho * e;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+h_from_e : ratsimp(subst([P_from_%rho_e], h_from_e_P_%rho));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+P_%rho_from_e : P_from_%rho_e/%rho;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+e_from_P_%rho : solve(P_from_%rho_e, e)[1];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+subst([e_from_P_%rho], h_from_e_P_%rho)$
+ratsimp(%)$
+h_from_P_%rho : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* this is one of the Fortran code speed of sound calculations... where does it come from? */
+CsSq_from_P_h_%rho : Cs^2 = %gamma * P / (%rho * h);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* this is also in there, in the form Cs^2 = %gamma * P / (%rho + %gamma * P / (%gamma - 1)) */
+CsSq_from_P_%rho : subst([h_from_P_%rho], CsSq_from_P_h_%rho);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* TODO find how these Cs definitions relate to Cs^2 = diff(P, eRest) for eRest = %rho * (e + 1) */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
 /* state variables */"";
 /* [wxMaxima: input   end   ] */
 
@@ -50,6 +94,14 @@ S_from_%rho_h_W : create_list(S[i] = %rho * h * W^2 * v[i], i, [1,2,3]);
 /* [wxMaxima: input   start ] */
 /* total energy density */
 %tau_from_%rho_h_W_P_D : %tau = %rho * h * W^2 - P - D;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+states : append([D], S, [tau]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+depends(append(states, u, v, [P, W, %rho, h]), append([t],xs));
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -76,117 +128,53 @@ ratsimp(%)$
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* rest energy (E=mc^2) */
-eRest_from_%rho_e : eRest = %rho * (1 + e);
+/* TODO get the equations from which the flux derives.
+Until then, take the paper's word. */
+flux : create_list(
+matrix(
+[D * v[i]],
+[Sx * v[i] + P * kron_delta(i,1)],
+[Sy * v[i] + P * kron_delta(i,2)],
+[Sz * v[i] + P * kron_delta(i,3)],
+[S[i] - D * v[i]])
+,i,[1,2,3]);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-%rho_from_eRest_e : solve(eRest_from_%rho_e, %rho)[1];
+v_from_%rho_h_W_S  : solve(S_from_%rho_h_W, v)[1];
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* ideal gas law */
-P_from_K_%rho : P = K * %rho^%gamma;
+subst(v_from_%rho_h_W_S, flux);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-P_from_K_eRest_e: subst([%rho_from_eRest_e], P_from_K_%rho);
+diff_state_t : genmatrix(lambda([i,j], diff(states[i],t)),5,1);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-depends(P, eRest);
+/* equations based on state variables */
+state_eqns :
+diff_state_t +
+sum(
+genmatrix(lambda([j,k], diff(flux[i][j,1],xs[i])),5,1)
+,i,1,3) = zeromatrix(5,1);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* relativistic speed of sound.
-http://en.wikipedia.org/wiki/Relativistic_Euler_equations
-This only considers differentials of rest energy eRest,
-and not from the ideal gas constant K (which is a constant)
-or specific internal energy e (which isn't).
-*/
-Cs^2 = 'diff(subst([P_from_K_eRest_e], P), eRest);
-Cs^2 = diff(subst([P_from_K_eRest_e], P), eRest);
-lhs(%)=rhs(%)*lhs(P_from_K_eRest_e)/rhs(P_from_K_eRest_e);
-subst([eRest_from_%rho_e], %);
-CsSq_from_P_%rho_e : %;
+/* isolate flux */
+lhs(state_eqns)-diff_state_t = rhs(state_eqns)-diff_state_t;
+/* substitute newtonian velocity for state variables */
+subst(v_from_%rho_h_W_S, lhs(%))=rhs(%);
+state_eqns_from_dt_matrix : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* internal specific enthalpy */
-h_from_e_P_%rho : h = 1 + e + P / %rho;
+state_eqns_diffx_jacobian : genmatrix(lambda([i,j], ratsimp(coeff(lhs(state_eqns_from_dt_matrix)[i,1], diff(states[j],x)))), 5, 5);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* this is from "Hydrodynamics II"
-and used in "Numerical Hydrodynamics in General Relativity" by Jose A. Font */
-P_from_%rho_e : P = (%gamma - 1) * %rho * e;
-/* [wxMaxima: input   end   ] */
-
-/* [wxMaxima: input   start ] */
-h_from_e : ratsimp(subst([P_from_%rho_e], h_from_e_P_%rho));
-/* [wxMaxima: input   end   ] */
-
-/* [wxMaxima: input   start ] */
-P_%rho_from_e : P_from_%rho_e/%rho;
-/* [wxMaxima: input   end   ] */
-
-/* [wxMaxima: input   start ] */
-e_from_P_%rho : solve(P_from_%rho_e, e)[1];
-/* [wxMaxima: input   end   ] */
-
-/* [wxMaxima: input   start ] */
-subst([e_from_P_%rho], h_from_e_P_%rho);
-ratsimp(%);
-/* [wxMaxima: input   end   ] */
-
-/* [wxMaxima: input   start ] */
-/* this is one of the Fortran code speed of sound calculations... where does it come from? */
-Cs^2 = %gamma * P / (%rho * h);
-/* [wxMaxima: input   end   ] */
-
-/* [wxMaxima: input   start ] */
-/* this would be equal if 1/(e+1) = 1/h
-i.e. if h = e + 1 vs. the initial h = 1 + e + P/%rho
-which is true if e = e + P/%rho
-i.e. if P/%rho = 0
-i.e. if P = 0 (which could possibly be an initial condition of this system)
-*/"";
-/* [wxMaxima: input   end   ] */
-
-/* [wxMaxima: input   start ] */
-/* this is another... 
-Cs^2 = %gamma * P / (%rho + %gamma * P / (%gamma - 1))
-This will match Cs^2 = %gamma * P / (%rho * (e + 1))
-only if %rho * (e + 1) = %gamma * P / (%gamma - 1) + %rho
-i.e. %rho * e = %gamma * P / (%gamma - 1)
-i.e. P = (%gamma - 1) / %gamma * %rho * e
-...which matches if %gamma is close to 1, or if the denominator's first term's numerator has an extra gamma.
-
-Now Cs^2 = %gamma * P / (%rho + %gamma * P / (%gamma - 1)) is equal to %gamma * P / (%rho * h)
-only if %rho * h = %gamma * P / (%gamma - 1) + %rho
-i.e. h = %gamma / (%gamma - 1) * P / %rho + 1
-... and this is equal to to h = 1 + e + P / %rho for
-%gamma / (%gamma - 1) * P / %rho + 1 = 1 + e + P / %rho
-i.e. P/%rho * %gamma/(%gamma - 1) = e + P/%rho
-i.e. P/%rho * (%gamma - %gamma + 1)/(%gamma - 1) = e
-i.e. P/(%rho * (%gamma - 1)) = e
-i.e. P = (%gamma - 1) * %rho * e
-... which looks right.
-
-So the two speed of sound equations used in the program match one another for the relativistic enthalpy equation.
-But neither match my derivation of the speed of sound.
-
-This means that h = 1 + e + P / %rho is good (as they did provide it)
-and that P = (%gamma - 1) * %rho * e is good (which is only provided in the GRHD paper, not the SRHD)
-
-But it means the paper used a different derivation of the speed of sound,
-or a different definition of rest energy or internal energy.
-
-Cs^2 = %gamma * P / (%rho * h) = %gamma * P / (%rho * (%gamma / (%gamma - 1) * P + 1))
-
-*/
-Cs^2 = %gamma * P / (%rho + %gamma * P / (%gamma - 1));
-ratsimp(%);
+coeff(lhs(state_eqns_from_dt_matrix), diff(D,x));
 /* [wxMaxima: input   end   ] */
 
 /* Maxima can't load/batch files which end with a comment! */
