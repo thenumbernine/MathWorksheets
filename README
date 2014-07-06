@@ -1,0 +1,12 @@
+Some helper worksheets for my CFD projects.
+
+The Euler 1D and 3D ones have all the content required to derive fluxes and spectral decomposition of Euler equations in 1D and 3D.
+The 1D is redundant, everything in it and more is in the 3D worksheet.
+I could stand to tidy up the 3D one for better explicit naming of what the flux is, etc. 
+I could also derive the flux for arbitrary normals.
+In the CL hydrodynamics project I've found that -- for axis-aligend grids -- swapping vector components (simulating a rotation) and performing the flux in one direction (typically the x axis) makes for more accurate calculations.
+
+The MHD worksheet is the start of applying the same process to the MHD equations.  Maxima stalls when trying to invert() or eigenvectors() the 8x8 matrix, so I probably won't be working on this any further.
+I started a separate worksheet on the eigenvectors provided from a research paper somewhere (TODO find it and cite it) and plan to at least verify that the eigenvectors are, in fact, eigenvectors using the same validation method at the end of the Euler equations worksheet.
+
+I've also started on a Special Relativistic Euler Equations worksheet.
