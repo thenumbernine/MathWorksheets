@@ -182,6 +182,11 @@ caSq_from_rho_B : ca^2 = Bx^2 / (rho * mu);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
+/* is the Alfven speed based on |Bx| or Bx? */
+sqrt(caSq_from_rho_B);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
 cStar^2 = 1/2*(c^2 + BSq/(rho*mu))$
 ratsimp(%)$
 cStarSq_from_rho_B_c : %;
@@ -512,7 +517,7 @@ tmp2 : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-ca_from_B_rho;
+ca_from_rho_B;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
