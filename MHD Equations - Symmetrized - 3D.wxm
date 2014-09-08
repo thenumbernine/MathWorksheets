@@ -582,7 +582,7 @@ cStarSq_from_rho_B_c$
 % - Bx^2 - By^2 - Bz^2$
 ratsimp(%)$
 rhs(%) = lhs(%)$
-tmp1 : %;
+tmp1b : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -599,26 +599,52 @@ tmp7 : %;
 
 /* [wxMaxima: input   start ] */
 is(lhs(tmp6)=lhs(tmp7));
-rhs(tmp6)=rhs(tmp7)$
-% + cStar^2 + cs^2$
+rhs(tmp7)=rhs(tmp6)$
+(% + cStar^2 + cs^2) / 2$
 tmp8 : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-quasiLinearDerivWrtSym_maximaEigenvectors_notReduced . invert(permuteEigenvalues)$
-quasiLinearDerivWrtSym_eigenvectors_notReduced : %;
+tmp8$
+% * 2$
+subst([cStarSq_from_rho_B_c], %)$
+% * rho * mu$
+expand(%)$
+tmp9 : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* note that I'm inserting the diag matrix at the end.  don't forget to incorporate that into the inverse.
-  shouldn't the inverse equal the transpose? */
+tmp9 - BSq - cf^2*rho*mu$
+rhs(%) = lhs(%)$
+tmp10 : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+tmp9 - BSq - cs^2*rho*mu$
+rhs(%) = lhs(%)$
+tmp11 : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+quasiLinearDerivWrtSym_maximaEigenvectors_notReduced . invert(permuteEigenvalues)$
+quasiLinearDerivWrtSym_eigenvectors_notReduced : %$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* don't forget about vector normalization */
 quasiLinearDerivWrtSym_eigenvectors_notReduced$
-subst([tmp1, tmp2, tmp3], %)$
+subst([tmp1b, tmp2, tmp3], %)$
 factor(%)$
 subst([tmp4, tmp5, tmp6], %)$
 factor(%)$
-subst([tmp1], %)$
-% . diag([c, Bz, c, 1, 1, c, Bz, c]);
+subst([tmp1, caSq_from_rho_B], %)$
+% . diag([-c, Bz, -c, 1, 1, c, Bz, c])$
+ratsimp(%)$
+subst([tmp8], %)$
+factor(%)$
+subst([tmp10, tmp11], %)$
+ratsimp(%)$
+quasiLinearDerivWrtSym_eigenvectors_reduced : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -626,7 +652,14 @@ subst([tmp1], %)$
 ... R^-1^T V^T R^T = R V R^-1
 ... R^-1^T V R^T = R V R^-1
 does this mean R^T = R^-1 ?
+I suppose not if either R or R^-1 can be represented as U V W for some U & W and matching V ... ?
 */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* eigenvector orthogonality test.  make sure it's A^T A since we're right-multiplying A by a scale matrix */
+transpose(quasiLinearDerivWrtSym_eigenvectors_reduced) . (quasiLinearDerivWrtSym_eigenvectors_reduced)$
+ratsimp(%);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
