@@ -695,14 +695,24 @@ block([A,B,soln],
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* degenerate case when By,Bz=0
+/* degenerate case when By,Bz=0 <=> cStar^2 = (c^2 + ca^2)/2
+... sqrt(cStar^4 - c^2 ca^2) = sqrt(((c^2 + ca^2)/2)^2- c^2 ca^2) = sqrt(c^2/4 + c^2 ca^2 / 2 + ca^2/4 - c^2 ca^2) = sqrt(c^2/4 - c^2 ca^2 / 2 + ca^2/4)
+      = sqrt(((c^2 - ca^2)/2)^2) = |c^2 - ca^2|/2
+if c^2 > ca^2 then ...
+    cf = cStar^2 + sqrt(cStar^4 - c^2 ca^2) = (c^2 - ca^2)/2 + (c^2 - ca^2)/2 = c^2 - ca^2
+    cs = cStar^2 - sqrt(cStar^4 - c^2 ca^2) = (c^2 - ca^2)/2 - (c^2 - ca^2)/2 = 0
+if c^2 < ca^2 then ... |c^2 - ca^2|/2 = -(c^2 - ca^2)/2
+    cf = cStar^2 + sqrt(cStar^4 - c^2 ca^2) = -(c^2 - ca^2)/2 + (c^2 - ca^2)/2 = 0
+    cs = cStar^2 - sqrt(cStar^4 - c^2 ca^2) = -(c^2 - ca^2)/2 - (c^2 - ca^2)/2 = ca^2 - c^2
+...but I'm pretty sure c^2 > ca^2 can be proved ... (TODO)
+
 slow vector's 3rd and 4th entry get a 0/0, so let's find a scaling factor to solve for orthogonality */
 block([A,B,C,D,M,soln],
     M:quasiLinearDerivWrtSym_eigenvectors_reduced,
     A:col(M,1),
     A[6,1]:By*alpha,
     A[7,1]:Bz*alpha,
-    B:col(M,3),
+    B:col(M,8),
     B[6,1]:By*alpha,
     B[7,1]:Bz*alpha,
     print(A,B),
