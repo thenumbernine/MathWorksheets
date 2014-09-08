@@ -34,7 +34,8 @@ BcrossN:express(B~n);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-Y : matrix(
+/* Trangenstein, J. */
+rightEigenvectors : matrix(
 [(%rho * cf^2 - B.B)/c^2, 0, (%rho * cs^2 - B.B)/c^2, 1, 0, (%rho * cs^2 - B.B)/c^2, 0, (%rho * cf^2 - B.B)/c^2],
 [-nx*cf+Bx*%beta/(%rho*cf), BcrossN[1]*%sigma, -nx*cs + Bx*%beta/(%rho*cf), 0, 0, nx*cs-Bx*%beta/(%rho*cs), -BcrossN[1]*%sigma, nx*cf-B[1]*%beta/(%rho*cf)],
 [-ny*cf+By*%beta/(%rho*cf), BcrossN[2]*%sigma, -ny*cs + By*%beta/(%rho*cf), 0, 0, ny*cs-By*%beta/(%rho*cs), -BcrossN[2]*%sigma, ny*cf-B[2]*%beta/(%rho*cf)],
@@ -45,6 +46,107 @@ Y : matrix(
 [%rho*cf^2-B.B, 0, %rho*cs^2-B.B, 0, 0, %rho*cs^2-B.B, 0, %rho*cf^2-B.B]
 );
 /* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* Powell, Kenneth G., 1994 */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+rightEigenvectors : matrix(
+[%rho],
+[-cf],
+[Bx*By*cf/(%rho*cf^2-Bx^2)],
+[Bx*Bz*cf/(%rho*cf^2-Bx^2)],
+[0],
+[By*%rho*cf^2/(%rho*cf^2-Bx^2)],
+[Bz*%rho*cf^2/(%rho*cf^2-Bx^2)],
+[%gamma*P]
+);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+leftEigenvectors : matrix(
+[0, -%rho, Bx*By*%rho*cf/(%rho*cf^2-Bx^2), Bx*Bz*%rho*cf/(%rho*cf^2-Bx^2), 0, By*%rho*cf^2/(%rho*cf^2-Bx^2), Bz*%rho*cf^2/(%rho*cf^2-Bx^2), 1]
+);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+leftEigenvectors . rightEigenvectors;
+subst([cf^2=1/2*( (%gamma*P+Bx*Bx+By*By+Bz*Bz)/%rho + sqrt( ((%gamma*P+Bx*Bx+By*By+Bz*Bz)/%rho)^2 - 4*%gamma*P*Bx*Bx/%rho^2 ) )], %);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* Powell, 1999 */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+%lambda : diag_matrix(u - cf, u - ca, u - cs, u, u, u + cs, u + ca, u + cf);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+du_dw : matrix(
+[1,0,0,0,0,0,0,0],
+[vx,%rho,0,0,0,0,0,0],
+[vy,0,%rho,0,0,0,0,0],
+[vz,0,0,%rho,0,0,0,0],
+[0,0,0,0,1,0,0,0],
+[0,0,0,0,0,1,0,0],
+[0,0,0,0,0,0,1,0],
+[(vx*vx+vy*vy+vz*vz)/2, %rho*vx, %rho*vy, %rho*vz, Bx, By, Bz, 1/(%gamma-1)]
+);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+invert(du_dw)$
+ratsimp(%)$
+dw_du : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+dw_du.du_dw$
+ratsimp(%);
+is(equals(%,ident(8)));
+ident(8);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+rightFastMinusEigenvector : transpose(matrix([%rho * %alpha_f, -%alpha_f * cf, %alpha_s * cs * %beta_y * sgnBx, %alpha_s * cs * %beta_y * sgnBx,
+0, %alpha_s * sqrt(%rho) * a * %beta_y, %alpha_s * sqrt(%rho) * a * %beta_z, %alpha_f * %gamma * p]));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+leftFastMinusEigenvector : matrix([0, -%alpha_f * cf / (2 * a^2), %alpha_s * cs * %beta_y * sgnBx / (2 * a^2), %alpha_s * cs * %beta_z * sgnBx / (2*a^2), 0, %alpha_s * %beta_y / (2 * sqrt(%rho) * a), %alpha_s * %beta_z / (2 * sqrt(%rho) * a), %alpha_f / (2 * %rho * a^2)]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+assume(%rho>0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+leftFastMinusEigenvector . rightFastMinusEigenvector;
+subst([%alpha_s^2 = (cf^2-a^2)/(cf^2-cs^2)], %);
+subst([%alpha_f^2 = (a^2-cs^2)/(cf^2-cs^2)], %);
+subst([%beta_y = By / sqrt(By^2+Bz^2)], %);
+subst([%beta_z = Bz / sqrt(By^2+Bz^2)], %);
+subst([cs^2 = 1/2 * ((%gamma * p + Bx^2+By^2+Bz^2)/%rho - sqrt( ( (%gamma * p + Bx^2+By^2+Bz^2)/%rho )^2 - 4 * %gamma * p * Bx^2 / %rho^2 )) ], %);
+subst([cf^2 = 1/2 * ((%gamma * p + Bx^2+By^2+Bz^2)/%rho + sqrt( ( (%gamma * p + Bx^2+By^2+Bz^2)/%rho )^2 - 4 * %gamma * p * Bx^2 / %rho^2 )) ], %);
+subst([sgnBx^2 = 1], %);
+/* I'm not sure what's up here */ subst([%gamma^2 * p^2 + (2 * %gamma * Bz^2 + 2 * %gamma * By^2 - 2 * %gamma * Bx^2) * p + Bz^4 + (2 * By^2 + 2 * Bx^2) * Bz^2 + By^4 + 2 * Bx^2 * By^2 + Bx^4 = (%gamma * p + Bx^2+By^2+Bz^2)^2], %);
+ratsimp(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+t
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+%gamma^2 * p^2 + (2 * %gamma * Bz^2 + 2 * %gamma * By^2 - 2 * %gamma * Bx^2) * p + Bz^4 + (2 * By^2 + 2 * Bx^2) * Bz^2 + By^4 + 2 * Bx^2 * By^2 + Bx^4;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ratsimp((%gamma * p + Bx^2+By^2+Bz^2)^2 - 4 * %gamma * p * Bx^2);
+/* [wxMaxima: input   end   ] */
+
 
 /* Maxima can't load/batch files which end with a comment! */
 "Created with wxMaxima"$

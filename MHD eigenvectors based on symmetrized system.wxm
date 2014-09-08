@@ -1,0 +1,730 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 13.04.0 ] */
+
+/* [wxMaxima: input   start ] */
+/* working with Jameson, "Eigenvalues, Eigenvectors, and Symmetrization of the Magneto-Hydrodynamic (MHD) Equations" 1996
+
+- shifting the pressure conservative variable to the last
+- sorting the eigenvalues from least to greatest
+- verifying that the derivative of conservative wrt symmetrized variables and inverse are in fact inverses of one another
+- verifying that the eigenvectors of symmetrized matrix are orthonormal
+- verifying that the reconstructed system is the flux
+
+*/"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+load("diag");
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+load("invert");
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+assume(mu>0, rho>0, c>=0, ca>=0, cs>=0, cf>=0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+xs : [x,y,z];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+vs : [vx,vy,vz];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Bs : [Bx,By,Bz];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* conservative variables */
+us : [u1,u2,u3,u4,u5,u6,u7,u8];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* primitive variables */
+ws : [rho,vx,vy,vz,Bx,By,Bz,p];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+depends(append(ws,[P,Z,E,c,ca,cs,cf]),append(xs,[t]));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+depends(us, append(xs,[t]));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+vSq : vs.vs;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+BSq : Bs.Bs;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+divB : sum('diff(Bs[i],xs[i]),i,1,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+VdotB : sum(Bs[i]*vs[i],i,1,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* Z = total specific energy (hydro + magnetic)
+Z = E + B^2 / (2 rho mu)
+Z = e + 1/2 v^2 + B^2 / (2 rho mu) */
+Z_from_E_B_rho : Z = E + BSq / (2 * rho * mu);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* total pressure (hydro + magnetic) */
+P_from_p_B : P = p + BSq / (2 * mu);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+p_from_P_B : solve(P_from_p_B, p)[1];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* total specific hydro energy from internal specific energy + kinetic specific energy */
+E_from_e_v : E = e + vSq/2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+e_from_E_v : -(E_from_e_v - e - E);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* fluid pressure for perfect gas.
+p = fluid pressure.
+e = internal specific hydro energy
+ */
+p_from_rho_e : p = (%gamma - 1)*rho*e;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+p_from_rho_e / ((%gamma - 1) * rho)$
+rhs(%) = lhs(%)$
+e_from_p_rho : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* p = fluid pressure for perfect gas
+   E = total specific energy (hydro)
+   v^2/2 = kinetic specific energy
+   E - v^2/2 = e = internal specific energy
+*/
+p_from_rho_E_v : subst([e_from_E_v], p_from_rho_e);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(p_from_rho_E_v, E)[1]$
+E_from_rho_v_p : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+subst([E_from_rho_v_p], Z_from_E_B_rho)$
+ratsimp(%)$
+Z_from_rho_v_p_B : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* speed of sound for perfect gas */
+cSq_from_rho_p : c^2 = %gamma * p / rho;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+p_from_rho_c : solve(cSq_from_rho_p, p)[1];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* internal specific enthalpy */
+h_from_e : h = %gamma * e;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+h_from_rho_p : subst([e_from_p_rho], h_from_e);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+p_from_rho_h : solve(h_from_rho_p, p)[1];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* total specific enthlapy */
+H_from_h_v : H = h + vSq/2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+H_from_rho_v_p : ratsimp(subst([h_from_rho_p], H_from_h_v));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+H_from_v_c : ratsimp(subst([p_from_rho_c],H_from_rho_v_p));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+subst([p_from_rho_c], H_from_rho_v_p)$
+solve(%, c^2)[1]$
+cSq_from_v_H : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+subst([H_from_h_v],cSq_from_v_H)$
+ratsimp(%)$
+cSq_from_h : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+caSq_from_rho_B : ca^2 = Bx^2 / (rho * mu);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cStar^2 = 1/2*(c^2 + BSq/(rho*mu))$
+ratsimp(%)$
+cStarSq_from_rho_B_c : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cStarSq_from_rho_B_c^2$
+cStarFourth_from_rho_B_c : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cf^2 = cStar^2 + sqrt(cStar^4 - c^2 * ca^2)$
+cfSq_from_c_ca_cStar : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+subst([cStarSq_from_rho_B_c, cStarFourth_from_rho_B_c, caSq_from_rho_B], cfSq_from_c_ca_cStar)$
+ratsimp(%)$
+cfSq_from_rho_B_c : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sqrt(cfSq_from_rho_B_c)$
+ratsimp(%)$
+cf_from_rho_B_c : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cs^2 = cStar^2 - sqrt(cStar^2 - c^2 * ca^2)$
+csSq_from_c_ca_cStar : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+subst([cStarSq_from_rho_B_c, cStarFourth_from_rho_B_c, caSq_from_rho_B], csSq_from_c_ca_cStar)$
+ratsimp(%)$
+csSq_from_rho_B_c : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sqrt(csSq_from_rho_B_c)$
+ratsimp(%)$
+cs_from_rho_B_c : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* relation between conservative and primitive */
+[u1=rho, u2=rho*vx, u3=rho*vy, u4=rho*vz, u5=Bx, u6=By, u7=Bz, u8=rho*Z]$
+subst([Z_from_rho_v_p_B], %)$
+ratsimp(%)$
+u_for_w : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(u_for_w, ws)[1]$
+ratsimp(%)$
+w_for_u : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* du/dw */
+makelist(rhs(u_for_w[i]),i,1,8)$
+jacobian(%, ws)$
+ratsimp(%)$
+dCons_dPrim : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+invert(dCons_dPrim)$
+ratsimp(%)$
+dPrim_dCons : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* verify inverse */
+is(ratsimp(dCons_dPrim.dPrim_dCons)=ident(8));
+is(ratsimp(dPrim_dCons.dCons_dPrim)=ident(8));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* equations of motion, used for flux */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+continuity_eqn : 'diff(rho,t) + sum('diff(rho*vs[i],xs[i]),i,1,3) = 0;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist(
+    'diff(rho*vs[i],t)
+    + sum(
+        'diff(rho*vs[i]*vs[j]
+        - Bs[i]*Bs[j]/mu
+        + kron_delta(i,j)*P,xs[j])
+    ,j,1,3)
+    = -Bs[i]/mu*divB
+,i,1,3);
+subst([P_from_p_B], %)$
+ratsimp(%)$
+momentum_eqns : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+magnetic_field_eqns : makelist(
+    'diff(Bs[i],t)
+    + sum(
+        'diff(
+            vs[j]*Bs[i]-vs[i]*Bs[j]
+        ,xs[j])
+    ,j,1,3)
+    = -vs[i]*divB
+,i,1,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+'diff(rho*Z,t) + sum('diff((rho*Z+P)*vs[j]-VdotB*Bs[j]/mu,xs[j]),j,1,3) = -VdotB / mu * divB$
+subst([Z_from_rho_v_p_B], %)$
+subst([P_from_p_B],%) /* the Jameson paper says p, but every single other paper says P */$
+ratsimp(%)$
+energy_eqn : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+append([continuity_eqn], momentum_eqns, magnetic_field_eqns, [energy_eqn])$
+all_eqns_from_prims : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+subst([w_for_u], all_eqns_from_prims)$
+ratsimp(%)$
+all_eqns_from_cons : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+all_eqns_from_cons$
+expand(ev(%, diff))$
+subst([makelist('diff(us[i],y)=0,i,1,8)],%) /* remove y and z derivatives while we're here ... we're only looking at the x-axis */ $
+subst([makelist('diff(us[i],z)=0,i,1,8)],%)$
+all_eqns_from_cons_expanded : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* Why can Maxima defer differentiation but can't defer matrix multiplies?
+Until then, here's me picking the matrices out of the equations, one by one. 
+
+flux along x axis, coeffs wrt conservative variables, neglecting source term (lhs of the eqn excluding time derivative)
+du/dt + dF/du du/dx = dS/du du/dx
+this is the dF/du
+*/
+genmatrix(lambda([i,j], coeff(lhs(all_eqns_from_cons_expanded[i]), 'diff(us[j],x))),8,8)$
+ratsimp(%)$
+fluxDerivWrtCons_from_cons : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fluxDerivWrtCons_from_cons$
+subst([u_for_w], %)$
+ratsimp(%)$
+fluxDerivWrtCons_from_prims : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* Source term along x axis, coeffs wrt conservative variables (rhs of equation).
+du/dt + dF/du du/dx = dS/du du/dx
+this is the dS/du
+*/
+genmatrix(lambda([i,j], coeff(rhs(all_eqns_from_cons_expanded[i]), 'diff(us[j],x))),8,8)$
+subst([u_for_w], %)$
+ratsimp(%)$
+sourceDerivWrtCons_from_prims : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* du/dt + dF/du du/dx = dS/du du/dx
+du/dt + (dF/du - dS/du) du/dx = 0
+A = dF/du - dS/du */
+fluxDerivWrtCons_from_prims - sourceDerivWrtCons_from_prims$
+subst([u_for_w], %)$
+ratsimp(%)$
+quasiLinearDerivWrtCons_for_prims : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/*
+du/dt + A du/dx = 0 ... change in variables
+du/dw dw/dt + A du/dw dw/dx = 0 ... lhs multiply by [du/dw]^-1 = dw/du
+dw/dt + (dw/du A du/dw) dw/dx = 0
+let ATilde = dw/du A du/dw
+*/
+dPrim_dCons . quasiLinearDerivWrtCons_for_prims . dCons_dPrim$
+subst([p_from_rho_c], %)$
+ratsimp(%)$
+quasiLinearDerivWrtPrims : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* verification: A = du/dw ATilde dw/du */
+dCons_dPrim . quasiLinearDerivWrtPrims . dPrim_dCons - quasiLinearDerivWrtCons_for_prims$
+subst([cSq_from_rho_p],%)$
+ratsimp(%)$
+is(%=0*ident(8));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* now for a final change in variables to symmetrize A
+define the transformation rather than the coordinate chart (could be anholonomic but I'm too lazy ot check) */
+dSym_dPrim : matrix(
+[0,0,0,0,0,0,0,1/(rho*c)],
+[0,1,0,0,0,0,0,0],
+[0,0,1,0,0,0,0,0],
+[0,0,0,1,0,0,0,0],
+[0,0,0,0,1/sqrt(mu*rho),0,0,0],
+[0,0,0,0,0,1/sqrt(mu*rho),0,0],
+[0,0,0,0,0,0,1/sqrt(mu*rho),0],
+[-c/rho,0,0,0,0,0,0,1/(rho*c)]
+) * rho/c;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+dPrim_dSym : invert(dSym_dPrim);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* verify inverse */
+is(dPrim_dSym.dSym_dPrim = ident(8));
+is(dSym_dPrim.dPrim_dSym = ident(8));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/*
+du/dt + A du/dx = 0 ... change in variables
+du/dw dw/dt + A du/dw dw/dx = 0 ... lhs multiply by [du/dw]^-1 = dw/du
+dw/dt + (dw/du A du/dw) dw/dx = 0
+
+... change of variables from primitives (w) to symmetrizing basis (y)
+dw/dy dy/dt + (dw/du A du/dw) dw/dy dy/dx = 0 ... right multiply by [dw/dy]^-1 = dy/dw
+dy/dt + (dy/dw dw/du A du/dw dw/dy) dy/dx = 0
+
+let ABar = dy/dw ATilde dw/dy = dy/dw dw/du A du/dw dw/dy = dy/du A du/dy
+*/
+dSym_dPrim . quasiLinearDerivWrtPrims . dPrim_dSym$
+ratsimp(%)$
+quasiLinearDerivWrtSym : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+is(quasiLinearDerivWrtSym = transpose(quasiLinearDerivWrtSym));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* Note:
+let ABar = dy/dw ATilde dw/dy = dy/dw dw/du A du/dw dw/dy = dy/du A du/dy
+therefore A = [dy/du]^-1 ABar [du/dy]^-1 = du/dy ABar dy/du = du/dw dw/dy ABar dy/dw dw/du.
+So after finding the eigensystem of ABar, transform it by du/dw.dw/dy
+*/"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* du/dy = dCons/dSym = dCons/dPrim . dPrim/dSym */
+dCons_dPrim . dPrim_dSym$
+subst([cSq_from_v_H],%)$
+ratsimp(%)$
+dCons_dSym : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* Maxima coercion */
+block([A,B],
+    A : (%gamma-1)/c^2*(vSq-H),
+    B : subst([H_from_rho_v_p, p_from_rho_c], A),
+    B : ratsimp(B),
+    B = A)$
+tmpEquality_dSym_dCons_8_1 : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* dy/du = dSym/dCons = dSym/dPrim . dPrim/dCons */
+block([A],
+    A : dSym_dPrim . dPrim_dCons,
+    A : ratsimp(A),
+    A : subst([tmpEquality_dSym_dCons_8_1],A))$
+dSym_dCons : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* verification of the dCons/dSym basis */
+dCons_dSym.dSym_dCons$
+subst([H_from_rho_v_p,p_from_rho_c],%)$
+ratsimp(%)$
+is(%=ident(8));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* verify we can restore the original flux */
+dCons_dSym . quasiLinearDerivWrtSym . dSym_dCons - quasiLinearDerivWrtCons_for_prims$
+ratsimp(%)$
+subst([H_from_rho_v_p,p_from_rho_c],%)$
+ratsimp(%)$
+is(%=0*ident(8));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* now for the eigensystem decomposition */
+quasiLinearDerivWrtSym_eigenvector_results : eigenvectors(quasiLinearDerivWrtSym)$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+block([n, reps, eigenvectorList],
+    n : length(quasiLinearDerivWrtSym_eigenvector_results[1][1]),
+    eigenvectorList : quasiLinearDerivWrtSym_eigenvector_results[1][1],
+    reps : quasiLinearDerivWrtSym_eigenvector_results[1][2],
+    quasiLinearDerivWrtSym_eigenvalues : diag(apply(append, makelist(makelist(eigenvectorList[j],i,1,reps[j]),j,1,n))),
+    quasiLinearDerivWrtSym_eigenvectors : transpose(apply(matrix, apply(append, quasiLinearDerivWrtSym_eigenvector_results[2])))
+)$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cStarSq_from_rho_B_c$
+% * 4 * rho * mu$
+ratsimp(%)$
+rhs(%)=lhs(%)$
+tmp1 : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+(cStarFourth_from_rho_B_c - cStar^4) * 4 * mu^2 * rho^2$
+solve(%, c^4)[1]$
+tmp2 : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ca_from_B_rho;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+quasiLinearDerivWrtSym_eigenvalues$
+subst([tmp1, tmp2], %)$
+ratsimp(%)$
+expand(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* TODO verify the eigensystem reconstructs to the quasi linear deriv wrt symmetric */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+P_A : matrix([1,0,0,0,0,0,0,0],[0,1,0,0,0,0,0,0],[0,0,1,0,0,0,0,0],[0,0,0,1,0,0,0,0],[0,0,0,0,0,1,0,0],[0,0,0,0,0,0,1,0],[0,0,0,0,0,0,0,1],[0,0,0,0,1,0,0,0]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+w_theirs : transpose(matrix([rho, mx, my, mz, p, Bx, By, Bz]));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+w_mine : transpose(matrix([rho, mx, my, mz, Bx, By, Bz, p]));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+is(w_mine = P_A . w_theirs);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+P_lambda : matrix([0,0,0,0,0,1,0,0],[0,0,0,1,0,0,0,0],[0,0,0,0,0,0,0,1],[1,0,0,0,0,0,0,0],[0,1,0,0,0,0,0,0],[0,0,0,0,0,0,1,0],[0,0,1,0,0,0,0,0],[0,0,0,0,1,0,0,0]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+lambda_theirs : diag([v, v, v + ca, v - ca, v + cf, v - cf, v + cs, v - cs]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+lambda_mine : diag([v-cf,v-ca,v-cs,v,v,v+cs,v+ca,v+cf]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+is(lambda_mine = P_lambda . lambda_theirs . invert(P_lambda));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+M_theirs : matrix(
+[1,0,0,0,-1,0,0,0],
+[vx,c,0,0,-vx,0,0,0],
+[vy,0,c,0,-vy,0,0,0],
+[vz,0,0,c,-vz,0,0,0],
+[H,c*vx,c*vy,c*vz,-vSq/2,c*BBarX/sqrt(rho*mu),c*BBarY/sqrt(rho*mu),c*BBarZ/sqrt(rho*mu)],
+[0,0,0,0,0,c*sqrt(mu/rho),0,0],
+[0,0,0,0,0,0,c*sqrt(mu/rho),0],
+[0,0,0,0,0,0,0,c*sqrt(mu/rho)]
+);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+M_mine : P_A . M_theirs;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* provided M, inverted */
+invert(M_theirs)$
+subst([H=c^2/(%gamma-1)+v^2/2],%)$
+subst([v^2=vx^2+vy^2+vz^2],%)$
+subst([gBar=(%gamma-1)/c^2],%)$
+ratsimp(%)$
+M_theirs_inv : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Minv_theirs : matrix(
+[gBar*v^2/2, -gBar*vx, -gBar*vy, -gBar*vz, gBar, -gBar*BBarX/mu, -gBar*BBarY/mu, -gBar*BBarZ/mu],
+[-vx/c,1/c,0,0,0,0,0,0],
+[-vy/c,0,1/c,0,0,0,0,0],
+[-vz/c,0,0,1/c,0,0,0,0],
+[gBar*(v^2-H),-gBar*vx,-gBar*vy,-gBar*vz,gBar,-gBar*BBarX/mu, -gBar*BBarY/mu, -gBar*BBarZ/mu],
+[0,0,0,0,0,sqrt(rho/mu)/c,0,0],
+[0,0,0,0,0,0,sqrt(rho/mu)/c,0],
+[0,0,0,0,0,0,0,sqrt(rho/mu)/c]
+);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* compare their provided inverse with the inverse of their provided */
+M_theirs_inv - Minv_theirs$
+subst([H=c^2/(%gamma-1)+v^2/2],%)$
+subst([v^2=vx^2+vy^2+vz^2],%)$
+subst([gBar=(%gamma-1)/c^2],%)$
+ratsimp(%)$
+is(% = 0*ident(8));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Minv_theirs . M_theirs$
+subst([H=c^2/(%gamma-1)+v^2/2],%)$
+subst([v^2=vx^2+vy^2+vz^2],%)$
+subst([gBar=(%gamma-1)/c^2],%)$
+ratsimp(%)$
+is(% = ident(8));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Minv_mine : Minv_theirs . invert(P_A);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Minv_mine - invert(M_mine)$
+subst([H=c^2/(%gamma-1)+v^2/2],%)$
+subst([v^2=vx^2+vy^2+vz^2],%)$
+subst([gBar=(%gamma-1)/c^2],%)$
+ratsimp(%)$
+is(% = 0*ident(8));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+M_mine . Minv_mine$
+subst([H=c^2/(%gamma-1)+v^2/2],%)$
+subst([v^2=vx^2+vy^2+vz^2],%)$
+subst([gBar=(%gamma-1)/c^2],%)$
+ratsimp(%)$
+is(% = ident(8));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+R_theirs : transpose(matrix(
+[0,0,0,0,1,0,0,0],
+[0,0,0,0,0,1,0,0],
+[0,lx,ly,lz,0,-lx,-ly,-lz],
+[0,lx,ly,lz,0,lx,ly,lz],
+[c,lfx,lfy,lfz,0,mfx,mfy,mfz]/alphaf,
+[-c,lfx,lfy,lfz,0,-mfx,-mfy,-mfz]/alphaf,
+[c,lsx,lsy,lsz,0,msx,msy,msz]/alphas,
+[-c,lsx,lsy,lsz,0,-msx,-msy,-msz]/alphas
+));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+transpose(R_theirs) . R_theirs;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+R_mine : R_theirs . invert(P_lambda);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+is(R_mine = transpose(P_lambda . transpose(R_theirs)));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* get rid of the rescaling factors */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+l_def : [lx = 0, ly = bz, lz = -by];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+mf_def : [mfx = 0, mfy = cf^2/(cf^2-bx^2)*by, mfz = cf^2/(cf^2-bx^2)*bz];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ms_def : [msx = 0, msy = cs^2/(cs^2-bx^2)*by, msz = cs^2/(cs^2-bx^2)*bz];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+lf_def : [lfx = cf, lfy = -cf*bx/(cf^2-bx^2)*by, lfz = -cf*bx/(cf^2-bx^2)*bz];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ls_def : [lsx = cs, lsy = -cs*bx/(cs^2-bx^2)*by, lsz = -cs*bx/(cs^2-bx^2)*bz];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cf_def : cf = sqrt(1/2*((c^2+bx^2+by^2+bz^2) + sqrt((c^2+bx^2+by^2+bz^2)^2-4*c^2*(bx^2+by^2+bz^2))));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cs_def : cs = sqrt(1/2*((c^2+bx^2+by^2+bz^2) - sqrt((c^2+bx^2+by^2+bz^2)^2-4*c^2*(bx^2+by^2+bz^2))));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+R_mine_nonnorm : R_mine . diag([alphaf, 1, alphas, 1, 1, alphas, 1, alphaf]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* see what can be tweaked to make our basis orthonormal */
+R_mine_nonnorm : transpose(matrix(
+[-c, lfx, lfy, lfz, 0, msx, msy, msz],
+[0, lx, ly, lz, 0, lx, ly, lz],
+[-c, -lsx, -lsy, -lsz, 0, mfx, mfy, mfz],
+[0,0,0,0,1,0,0,0],
+[0,0,0,0,0,1,0,0],
+[c,-lsx,-lsy,-lsz,0,mfx,mfy,mfz],
+[0,lx,ly,lz,0,-lx,-ly,-lz],
+[c,lfx,lfy,lfz,0,msx,msy,msz]));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* note bx,by,bz is the B-bar */
+transpose(R_mine_nonnorm) . R_mine_nonnorm;
+subst(l_def, %)$
+subst(lf_def, %)$
+subst(ls_def, %)$
+subst(mf_def, %)$
+subst(ms_def, %)$
+subst([cf_def], %)$
+subst([cs_def], %)$
+ratsimp(%);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

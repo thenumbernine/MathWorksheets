@@ -2,7 +2,9 @@
 /* [ Created with wxMaxima version 13.04.0 ] */
 
 /* [wxMaxima: input   start ] */
-/* Following "Hydrodynamics II" as best I can */"";
+/* Following "Hydrodynamics II" by Dr. Dullemond at http://www.mpia.de/homes/dullemon/lectures/fluiddynamics/
+Also following "Numerical Solution of Hyperoblic Partial Differential Equations", 2007, by Trangenstein 
+TODO fix an error: I exchange gas pressure and gas+magnetic pressure. */"";
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -76,7 +78,11 @@ e_from_P_%rho : solve(P_from_%rho_e, e)[1];
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-eTotal_from_P_%rho : subst([e_from_P_%rho], eTotal_from_eKin_e);
+eTotal_from_P_%rho_eKin : subst([e_from_P_%rho], eTotal_from_eKin_e);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eTotal_from_P_%rho_v : subst([eKin_from_v], eTotal_from_P_%rho_eKin);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -120,7 +126,7 @@ hTotal_from_eTotal_P_%rho : hTotal = P / %rho + eTotal;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-hTotal_from_P_%rho : subst([eTotal_from_P_%rho], hTotal_from_eTotal_P_%rho);
+hTotal_from_P_%rho : subst([eTotal_from_P_%rho_eKin], hTotal_from_eTotal_P_%rho);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -296,51 +302,56 @@ state_eqns_diffx_jacobian . genmatrix(lambda([i,j], diff(states[i],x)), 8, 1) = 
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* maxima returns two lists: one of unique eigenvalues and one of multiplicity.
-this duplicates those entries to create a correct list to pass to a diagonal matrix */
-eigenvalueList(es) := flatten(makelist(makelist(es[1][i],es[2][i]), i, 1, length(es[1])));
+primitives2 : [%rho, vx, vy, vz, Bx, By, Bz, P];
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* diffx_jacobian_eigenvector_results : eigenvectors(primitive_eqns_diffx_jacobian) */"";
+states$
+subst([states_from_primitives], %)$
+subst([eTotal_from_P_%rho_v], %)$
+expand(%)$
+states_from_primitives2 : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-diffx_jacobian_eigenvalues : eigenvalueList(diffx_jacobian_eigenvector_results[1]);
-diffx_jacobian_eigenvalues : create_list(subst(eTotal_v_from_Cs, expand(eqn)), eqn, diffx_jacobian_eigenvalues);
+jacobian(states_from_primitives2, primitives2)$
+ratsimp(%)$
+diff_state_wrt_primitives2 : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-load(diag);
+diff_primitives2_wrt_state : invert(diff_state_wrt_primitives2);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-diffx_jacobian_eigenvalue_matrix : diag(diffx_jacobian_eigenvalues);
+primitive_eqns$
+subst([eTotal_from_P_%rho_v], %)$
+create_list(lhs(%[i]), i, [1,2,3,4,5,6,7,8])$
+expand(ev(%, diff))$
+genmatrix(lambda([i,j], ratsimp(coeff(lhs(%)[i], diff(primitives2[j],x)))), 8, 8)$
+diff_flux_wrt_primitives2 : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-diffx_jacobian_eigenvector_results[2];
+/* verify dF/du = dF/dw (du/dw)^-1 */
+diff_flux_wrt_primitives2 . diff_primitives2_wrt_state$
+subst([P_from_%rho_eTotal_v], %)$
+ratsimp(%);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-diffx_jacobian_eigenvector_lists : append(diffx_jacobian_eigenvector_results[2][1], diffx_jacobian_eigenvector_results[2][2], diffx_jacobian_eigenvector_results[2][3]);
-diffx_jacobian_eigenvector_lists : expand(diffx_jacobian_eigenvector_lists);
+/* solve for acoustic matrix = (du/dw)^-1 dF/dw */
+diff_primitives2_wrt_state . diff_flux_wrt_primitives2$
+ratsimp(%)$
+Acoustic_plus_velocity : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-diffx_jacobian_eigenvectors : genmatrix(lambda([i,j], subst([eTotal_v_from_Cs], diffx_jacobian_eigenvector_lists[j][i])), 5, 5);
-/* now that Maxima has put a "v" in the middle of the components that make up Cs,
-there is no way to move the "v" to the left side of the multiplication,
-and there is no way to substitute in the Cs.  HAVE TO DO IT BY HAND, THANK YOU MAXIMA.
-TODO: find a way to rearrange elements of a product ... or just split a sum or product into a list. */
-diffx_jacobian_eigenvectors : subst([sqrt(%gamma) * sqrt(1-%gamma) * vx * sqrt(vx^2+vy^2+vz^2-2*eTotal)/sqrt(2) = vx*Cs], diffx_jacobian_eigenvectors);
-diffx_jacobian_eigenvectors : subst([%gamma*eTotal - %gamma*vz^2/2 + vz^2/2 - %gamma*vy^2/2 + vy^2/2 - %gamma*vx^2/2 + vx^2/2 - Cs*vx = hTotal - Cs*vx], diffx_jacobian_eigenvectors);
-diffx_jacobian_eigenvectors : subst([%gamma*eTotal - %gamma*vz^2/2 + vz^2/2 - %gamma*vy^2/2 + vy^2/2 - %gamma*vx^2/2 + vx^2/2 + Cs*vx = hTotal + Cs*vx], diffx_jacobian_eigenvectors);
+Acoustic : Acoustic_plus_velocity - ident(8) * vx;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-diffx_jacobian_eigenvectors_inverse : ratsimp(invert(diffx_jacobian_eigenvectors));
-diffx_jacobian_eigenvectors_inverse : ratsimp(subst([hTotal_from_CsSq_v], diffx_jacobian_eigenvectors_inverse));
+/* fails: Acoustic_eigenvector_results : eigenvectors(Acoustic); */"";
 /* [wxMaxima: input   end   ] */
 
 /* Maxima can't load/batch files which end with a comment! */

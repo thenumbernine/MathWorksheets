@@ -2,7 +2,36 @@
 /* [ Created with wxMaxima version 13.04.0 ] */
 
 /* [wxMaxima: input   start ] */
-/* Following "Hydrodynamics II" as best I can */"";
+/* Following "Hydrodynamics II" by Dr. Dullemond at http://www.mpia.de/homes/dullemon/lectures/fluiddynamics/ */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* eigenvector helper functions.  TODO put these elsewhere, in a file of their own */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* maxima returns two lists: one of unique eigenvalues and one of multiplicity.
+this duplicates those entries to create a correct list to pass to a diagonal matrix */
+eigenvalueList(eigenvectorResults) := flatten(makelist(makelist(eigenvectorResults[1][1][i],eigenvectorResults[1][2][i]), i, 1, length(eigenvectorResults[1][1])));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eigenvalueMatrix(eigenvectorResults) := diag(eigenvalueList(eigenvectorResults));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* ... and this takes the 2nd element, containing the eigenvectors and their associated eigenvalues, grouped by eigenvalue multiplicity,
+and returns a list of vectors that runs parallel to the eigenvalueList function */
+eigenvectorList(eigenvectorResults) := apply(append, eigenvectorResults[2]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eigenvectorMatrix(eigenvectorResults) :=
+    block([el,n],
+        el : eigenvectorList(eigenvectorResults),
+        n : length(el),
+        genmatrix(lambda([i,j], el[j][i]), n,n)
+    );
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -38,7 +67,8 @@ v_from_vLenSq : rhs(vLenSq_from_v) = lhs(vLenSq_from_v);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* specific kinetic energy */ eKin_from_vLen : eKin = vLen^2/2;
+/* specific kinetic energy */
+eKin_from_vLen : eKin = vLen^2/2;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -74,7 +104,7 @@ e_from_P_%rho : solve(P_from_%rho_e, e)[1];
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-eTotal_from_P_%rho : subst([e_from_P_%rho], eTotal_from_eKin_e);
+eTotal_from_eKin_%rho_P : subst([e_from_P_%rho], eTotal_from_eKin_e);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -83,6 +113,10 @@ P_from_%rho_eTotal_vLen : subst([e_from_eTotal_eKin, eKin_from_vLen], P_from_%rh
 
 /* [wxMaxima: input   start ] */
 P_from_%rho_eTotal_v : subst([vLenSq_from_v], P_from_%rho_eTotal_vLen);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eTotal_from_%rho_v_P : subst([eKin_from_v], eTotal_from_eKin_%rho_P);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -118,11 +152,15 @@ hTotal_from_eTotal_P_%rho : hTotal = P / %rho + eTotal;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-hTotal_from_P_%rho : subst([eTotal_from_P_%rho], hTotal_from_eTotal_P_%rho);
+hTotal_from_P_%rho : subst([eTotal_from_eKin_%rho_P], hTotal_from_eTotal_P_%rho);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
 /* speed of sound */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+assume(Cs > 0);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -142,6 +180,16 @@ CsSq_from_K_%rho_%gamma : Cs^2 = diff(subst(P_from_K_%rho_%gamma, P), %rho);
 /* [wxMaxima: input   start ] */
 /* ...in terms of pressure */
 CsSq_from_P_%rho : lhs(CsSq_from_K_%rho_%gamma) = rhs(CsSq_from_K_%rho_%gamma) * lhs(P_from_K_%rho_%gamma) / rhs(P_from_K_%rho_%gamma);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+CsSq_from_P_%rho / %gamma$
+rhs(%) = lhs(%)$
+P_%rho_from_CsSq : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+P_from_%rho_CsSq : P_%rho_from_CsSq * %rho;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -231,7 +279,8 @@ primitive_eqns : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* state variables in terms of primitive variables */ states_from_primitives : [q1 = %rho, q2 = %rho * vx, q3 = %rho * vy, q4 = %rho * vz, q5 = %rho * eTotal];
+/* state variables in terms of primitive variables */
+states_from_primitives : [q1 = %rho, q2 = %rho * vx, q3 = %rho * vy, q4 = %rho * vz, q5 = %rho * eTotal];
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -281,17 +330,11 @@ state_eqns_diffx_jacobian . genmatrix(lambda([i,j], diff(states[i],x)), 5, 1) = 
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* maxima returns two lists: one of unique eigenvalues and one of multiplicity.
-this duplicates those entries to create a correct list to pass to a diagonal matrix */
-eigenvalueList(es) := flatten(makelist(makelist(es[1][i],es[2][i]), i, 1, length(es[1])));
-/* [wxMaxima: input   end   ] */
-
-/* [wxMaxima: input   start ] */
 diffx_jacobian_eigenvector_results : eigenvectors(primitive_eqns_diffx_jacobian);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-eigenvalueList(diffx_jacobian_eigenvector_results[1])$
+eigenvalueList(diffx_jacobian_eigenvector_results)$
 create_list(subst(eTotal_v_from_Cs, expand(eqn)), eqn, %)$
 diffx_jacobian_eigenvalues : %;
 /* [wxMaxima: input   end   ] */
@@ -305,7 +348,7 @@ diffx_jacobian_eigenvalue_matrix : diag(diffx_jacobian_eigenvalues);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-append(diffx_jacobian_eigenvector_results[2][1], diffx_jacobian_eigenvector_results[2][2], diffx_jacobian_eigenvector_results[2][3])$
+eigenvectorList(diffx_jacobian_eigenvector_results)$
 % : expand(%)$
 genmatrix(lambda([i,j], subst([eTotal_v_from_Cs], %[j][i])), 5, 5)$
 /* now that Maxima has put a "v" in the middle of the components that make up Cs,
@@ -333,6 +376,7 @@ diffx_jacobian_eigenvectors_inverse : %;
 diffx_jacobian_eigenvectors . diffx_jacobian_eigenvectors_inverse$
 subst([hTotal_from_CsSq_v], %)$
 ratsimp(%);
+is(equal(%, ident(5)));
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -374,6 +418,91 @@ for i : 1 thru 5 do (
         print(x),
         print(is(equal(lhs(x), rhs(x))))
 ));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* rather than solving the derivative of the flux with regards to the conservative variables directly,
+more advanced systems solve the derivative of the flux with regards to the primitive variables
+and then the derivative of the conservatives with regards to the primitives
+(like Trangenstein, J.) */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+primitives2 : append([%rho], v, [P]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+subst(append(states_from_primitives, [eTotal_from_%rho_v_P]), states)$
+expand(%)$
+states_from_primitives2 : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+jacobian(states_from_primitives2, primitives2)$
+ratsimp(%)$
+diff_state_wrt_primitives2 : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff_primitives2_wrt_state : invert(diff_state_wrt_primitives2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+primitive_eqns$
+subst([eTotal_from_%rho_v_P], %)$
+create_list(lhs(%[i]), i, [1,2,3,4,5])$
+expand(ev(%, diff))$
+genmatrix(lambda([i,j], ratsimp(coeff(lhs(%)[i], diff(primitives2[j],x)))), 5, 5)$
+diff_flux_wrt_primitives2 : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* verify dF/du = dF/dw (du/dw)^-1 */
+diff_flux_wrt_primitives2 . diff_primitives2_wrt_state$
+subst([P_from_%rho_eTotal_v], %)$
+ratsimp(%);
+is(equal(%, primitive_eqns_diffx_jacobian));
+primitive_eqns_diffx_jacobian;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* Trangenstein calculates (du/dw)^-1 dF/dw ... 
+and subtracts out the diagonal to get the Acoustic matrix */
+diff_primitives2_wrt_state . diff_flux_wrt_primitives2$
+ratsimp(%)$
+Acoustic_plus_velocity : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Acoustic : Acoustic_plus_velocity - ident(5) * vx;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Acoustic_eigenvector_results : eigenvectors(Acoustic);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eigenvalueList(Acoustic_eigenvector_results)$
+subst([P_%rho_from_CsSq], %)$
+diag(%)$
+Acoustic_eigenvalue_matrix : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eigenvectorMatrix(Acoustic_eigenvector_results)$
+subst([P_from_%rho_CsSq], %)$
+% * %rho$
+Acoustic_eigenvector_matrix : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+invert(Acoustic_eigenvector_matrix)$
+Acoustic_eigenvector_inverse_matrix : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* now the acoustic eigenvector matrix times the jacobian of primitives wrt states should be the flux eigenvector matrix */
+jacobian_state_wrt_primtives2 . Acoustic_eigenvector_matrix
 /* [wxMaxima: input   end   ] */
 
 /* Maxima can't load/batch files which end with a comment! */
