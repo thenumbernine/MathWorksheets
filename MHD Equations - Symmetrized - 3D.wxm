@@ -789,7 +789,7 @@ quasiLinearDerivWrtSym_zeroBxDegen_eigenvalues_reduced : %;
 
 /* [wxMaxima: input   start ] */
 quasiLinearDerivWrtSym_zeroBxDegen_maximaEigenvectors_reduced . invert(permuteEigenvalues_zeroBxDegen)$
-% . diag([c*sqrt(rho*mu),1,1,1,Bz,Bz,1,c*sqrt(rho*mu)])$
+% . diag([c,1,1,1,Bz/sqrt(rho*mu),-Bz/sqrt(rho*mu),1,c])$
 quasiLinearDerivWrtSym_zeroBxDegen_eigenvectors_reduced : %;
 /* [wxMaxima: input   end   ] */
 
