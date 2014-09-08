@@ -655,6 +655,7 @@ subst([tmp8], %)$
 factor(%)$
 subst([tmp10, tmp11], %)$
 ratsimp(%)$
+% . diag([(cf^2*rho*mu-Bx^2)*(By^2+Bz^2), 1, (cs^2*rho*mu-Bx^2)*(By^2+Bz^2), 1, 1, (cs^2*rho*mu-Bx^2)*(By^2+Bz^2), 1, (cf^2*rho*mu-Bx^2)*(By^2+Bz^2)])$
 quasiLinearDerivWrtSym_eigenvectors_reduced : %;
 /* [wxMaxima: input   end   ] */
 
@@ -663,7 +664,6 @@ quasiLinearDerivWrtSym_eigenvectors_reduced : %;
 ... R^-1^T V^T R^T = R V R^-1
 ... R^-1^T V R^T = R V R^-1
 does this mean R^T = R^-1 ?
-I suppose not if either R or R^-1 can be represented as U V W for some U & W and matching V ... ?
 */"";
 /* [wxMaxima: input   end   ] */
 
@@ -677,29 +677,101 @@ transpose(quasiLinearDerivWrtSym_eigenvectors_reduced) . (quasiLinearDerivWrtSym
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* TODO eigenvectors of degenerate cases for Bx=0 and By,Bz=0 */"";
+/* eigenvectors of degenerate cases for Bx=0; By=Bz=0; and Bx=By=Bz=0 */"";
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* degenerate case when Bx=0 <=> ca=0, cs=0
-slow vector's 3rd and 4th entry get a 0/0, so let's find a scaling factor to solve for orthogonality */
-block([A,B,soln],
-    A:col(quasiLinearDerivWrtSym_eigenvectors_reduced,3),
-    A[3,1]:By*alpha,
-    A[4,1]:Bz*alpha,
-    B:col(quasiLinearDerivWrtSym_eigenvectors_reduced,6),
-    B[3,1]:By*alpha,
-    B[4,1]:Bz*alpha,
-    print(A,B),
-    soln:solve(A.B=0,alpha) /* find alpha such that A . B = 0 */,
-    soln:subst([cs=0],soln),
-    soln:factor(soln),
-    soln:subst([swapsides(subst([Bx=0], cStarSq_from_rho_B_c * 2 * mu * rho))],soln)
+/* DEGENERACY BX=BY=BZ=0 */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+quasiLinearDerivWrtSym$
+subst([Bx=0,By=0,Bz=0],%)$
+quasiLinearDerivWrtSym_zeroBxyzDegen : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+quasiLinearDerivWrtSym_zeroBxyzDegen_eigenvector_results : eigenvectors(quasiLinearDerivWrtSym_zeroBxyzDegen);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+block([A,B],
+    [A,B] : makeEigenMatrices(quasiLinearDerivWrtSym_zeroBxyzDegen_eigenvector_results),
+    [quasiLinearDerivWrtSym_zeroBxyzDegen_maximaEigenvalues_reduced, quasiLinearDerivWrtSym_zeroBxyzDegen_maximaEigenvectors_reduced] : [expand(A),B]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+permuteEigenvalues_zeroBxyzDegen : matrix(
+[1,0,0,0,0,0,0,0],
+[0,0,1,0,0,0,0,0],
+[0,0,0,1,0,0,0,0],
+[0,0,0,0,1,0,0,0],
+[0,0,0,0,0,1,0,0],
+[0,0,0,0,0,0,1,0],
+[0,0,0,0,0,0,0,1],
+[0,1,0,0,0,0,0,0]
 );
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* degenerate case when By,Bz=0 <=> cStar^2 = (c^2 + ca^2)/2
+permuteEigenvalues_zeroBxyzDegen . quasiLinearDerivWrtSym_zeroBxyzDegen_maximaEigenvalues_reduced . invert(permuteEigenvalues_zeroBxyzDegen)$
+quasiLinearDerivWrtSym_zeroBxyzDegen_eigenvalues_reduced : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+quasiLinearDerivWrtSym_zeroBxyzDegen_maximaEigenvectors_reduced . invert(permuteEigenvalues_zeroBxyzDegen)$
+quasiLinearDerivWrtSym_zeroBxyzDegen_eigenvectors_reduced : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* DEGENERACY BX=0
+therefore ca=0, cs=0 */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+quasiLinearDerivWrtSym$
+subst([Bx=0],%)$
+quasiLinearDerivWrtSym_zeroBxDegen : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+quasiLinearDerivWrtSym_zeroBxDegen_eigenvector_results : eigenvectors(quasiLinearDerivWrtSym_zeroBxDegen);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+block([A,B],
+    [A,B] : makeEigenMatrices(quasiLinearDerivWrtSym_zeroBxDegen_eigenvector_results),
+    [quasiLinearDerivWrtSym_zeroBxDegen_maximaEigenvalues_reduced, quasiLinearDerivWrtSym_zeroBxDegen_maximaEigenvectors_reduced] : [expand(A),B]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+permuteEigenvalues_zeroBxDegen : matrix(
+[1,0,0,0,0,0,0,0],
+[0,0,1,0,0,0,0,0],
+[0,0,0,1,0,0,0,0],
+[0,0,0,0,1,0,0,0],
+[0,0,0,0,0,1,0,0],
+[0,0,0,0,0,0,1,0],
+[0,0,0,0,0,0,0,1],
+[0,1,0,0,0,0,0,0]
+);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+permuteEigenvalues_zeroBxDegen . quasiLinearDerivWrtSym_zeroBxDegen_maximaEigenvalues_reduced . invert(permuteEigenvalues_zeroBxDegen)$
+quasiLinearDerivWrtSym_zeroBxDegen_eigenvalues_reduced : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+quasiLinearDerivWrtSym_zeroBxDegen_maximaEigenvectors_reduced . invert(permuteEigenvalues_zeroBxDegen)$
+% . diag([c*sqrt(rho*mu),1,1,1,1,1,1,c*sqrt(rho*mu)])$
+quasiLinearDerivWrtSym_zeroBxDegen_eigenvectors_reduced : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* DEGENERACY BY=BZ=0
+
+therefore cStar^2 = (c^2 + ca^2)/2
 ... sqrt(cStar^4 - c^2 ca^2) = sqrt(((c^2 + ca^2)/2)^2- c^2 ca^2) = sqrt(c^2/4 + c^2 ca^2 / 2 + ca^2/4 - c^2 ca^2) = sqrt(c^2/4 - c^2 ca^2 / 2 + ca^2/4)
       = sqrt(((c^2 - ca^2)/2)^2) = |c^2 - ca^2|/2
 if c^2 > ca^2 then ...
@@ -708,10 +780,10 @@ if c^2 > ca^2 then ...
 if c^2 < ca^2 then ... |c^2 - ca^2|/2 = -(c^2 - ca^2)/2
     cf = cStar^2 + sqrt(cStar^4 - c^2 ca^2) = -(c^2 - ca^2)/2 + (c^2 - ca^2)/2 = 0
     cs = cStar^2 - sqrt(cStar^4 - c^2 ca^2) = -(c^2 - ca^2)/2 - (c^2 - ca^2)/2 = ca^2 - c^2
-...but I'm pretty sure c^2 > ca^2 can be proved ... (TODO)
+...but I'm pretty sure c^2 > ca^2 can be proved ... (and it is proved in Trangenstein)*/"";
+/* [wxMaxima: input   end   ] */
 
-fast and slow vector's 3rd and 4th entry get a 0/0
-so I'm just going to recalculate the eigensystem */
+/* [wxMaxima: input   start ] */
 quasiLinearDerivWrtSym$
 subst([By=0,Bz=0],%)$
 quasiLinearDerivWrtSym_zeroBtDegen : %;
