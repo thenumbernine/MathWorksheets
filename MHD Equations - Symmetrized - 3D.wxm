@@ -183,7 +183,7 @@ caSq_from_rho_B : ca^2 = Bx^2 / (rho * mu);
 
 /* [wxMaxima: input   start ] */
 /* is the Alfven speed based on |Bx| or Bx? */
-sqrt(caSq_from_rho_B);
+ca_from_rho_B : sqrt(caSq_from_rho_B);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -215,7 +215,7 @@ cf_from_rho_B_c : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-cs^2 = cStar^2 - sqrt(cStar^2 - c^2 * ca^2)$
+cs^2 = cStar^2 - sqrt(cStar^4 - c^2 * ca^2)$
 csSq_from_c_ca_cStar : %;
 /* [wxMaxima: input   end   ] */
 
@@ -497,9 +497,13 @@ block([n, reps, eigenvectorList],
     n : length(quasiLinearDerivWrtSym_eigenvector_results[1][1]),
     eigenvectorList : quasiLinearDerivWrtSym_eigenvector_results[1][1],
     reps : quasiLinearDerivWrtSym_eigenvector_results[1][2],
-    quasiLinearDerivWrtSym_eigenvalues : diag(apply(append, makelist(makelist(eigenvectorList[j],i,1,reps[j]),j,1,n))),
-    quasiLinearDerivWrtSym_eigenvectors : transpose(apply(matrix, apply(append, quasiLinearDerivWrtSym_eigenvector_results[2])))
+    quasiLinearDerivWrtSym_eigenvalues_original : diag(apply(append, makelist(makelist(eigenvectorList[j],i,1,reps[j]),j,1,n))),
+    quasiLinearDerivWrtSym_eigenvectors_original : transpose(apply(matrix, apply(append, quasiLinearDerivWrtSym_eigenvector_results[2])))
 )$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* clean up the eigenvalues matrix using the slow, fast, and Alfvens wave speeds */"";
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -517,13 +521,46 @@ tmp2 : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-ca_from_rho_B;
+caSq_from_rho_B$
+solve(%, Bx^2)[1]$
+tmp3 : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-quasiLinearDerivWrtSym_eigenvalues$
-subst([tmp1, tmp2], %)$
+csSq_from_c_ca_cStar$
+rhs(%)=lhs(%)$
+tmp4 : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cfSq_from_c_ca_cStar$
+rhs(%)=lhs(%)$
+tmp5 : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+quasiLinearDerivWrtSym_eigenvalues_original$
+subst([tmp1, tmp2, tmp3], %)$
+factor(%)$
+subst([tmp4, tmp5], %)$
+quasiLinearDerivWrtSym_eigenvalues : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* clean up the eigenvector matrix using slow, fast, and Alfven wave speeds */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cStarSq_from_rho_B_c$
+% * 2 * rho * mu$
 ratsimp(%)$
+rhs(%)=lhs(%)$
+tmp1 : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+quasiLinearDerivWrtSym_eigenvectors_original$
+subst([tmp1], %)$
 expand(%);
 /* [wxMaxima: input   end   ] */
 
