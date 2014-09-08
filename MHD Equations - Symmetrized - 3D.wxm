@@ -22,7 +22,17 @@ load("invert");
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-swapsides(eqn) := rhs(eqn) = lhs(eqn);
+swapsides(eqn) := rhs(eqn) = lhs(eqn)$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+makeEigenMatrices(eigenvectorResults) :=
+block([n, reps, evs],
+    n : length(eigenvectorResults[1][1]),
+    evs : eigenvectorResults[1][1],
+    reps : eigenvectorResults[1][2],
+    [diag(apply(append, makelist(makelist(evs[j],i,1,reps[j]),j,1,n))),
+        transpose(apply(matrix, apply(append, eigenvectorResults[2])))])$
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -498,13 +508,8 @@ quasiLinearDerivWrtSym_eigenvector_results : eigenvectors(quasiLinearDerivWrtSym
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-block([n, reps, eigenvectorList],
-    n : length(quasiLinearDerivWrtSym_eigenvector_results[1][1]),
-    eigenvectorList : quasiLinearDerivWrtSym_eigenvector_results[1][1],
-    reps : quasiLinearDerivWrtSym_eigenvector_results[1][2],
-    quasiLinearDerivWrtSym_maximaEigenvalues_notReduced : diag(apply(append, makelist(makelist(eigenvectorList[j],i,1,reps[j]),j,1,n))),
-    quasiLinearDerivWrtSym_maximaEigenvectors_notReduced : transpose(apply(matrix, apply(append, quasiLinearDerivWrtSym_eigenvector_results[2])))
-)$
+[quasiLinearDerivWrtSym_maximaEigenvalues_notReduced, quasiLinearDerivWrtSym_maximaEigenvectors_notReduced]
+: makeEigenMatrices(quasiLinearDerivWrtSym_eigenvector_results)$
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -663,9 +668,8 @@ I suppose not if either R or R^-1 can be represented as U V W for some U & W and
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* eigenvector orthogonality test.  make sure it's A^T A since we're right-multiplying A by a scale matrix */
-transpose(quasiLinearDerivWrtSym_eigenvectors_reduced) . (quasiLinearDerivWrtSym_eigenvectors_reduced)$
-ratsimp(%);
+/* TODO eigenvector orthogonality test.  make sure it's A^T A since we're right-multiplying A by a scale matrix
+transpose(quasiLinearDerivWrtSym_eigenvectors_reduced) . (quasiLinearDerivWrtSym_eigenvectors_reduced) */"";
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -706,21 +710,44 @@ if c^2 < ca^2 then ... |c^2 - ca^2|/2 = -(c^2 - ca^2)/2
     cs = cStar^2 - sqrt(cStar^4 - c^2 ca^2) = -(c^2 - ca^2)/2 - (c^2 - ca^2)/2 = ca^2 - c^2
 ...but I'm pretty sure c^2 > ca^2 can be proved ... (TODO)
 
-slow vector's 3rd and 4th entry get a 0/0, so let's find a scaling factor to solve for orthogonality */
-block([A,B,C,D,M,soln],
-    M:quasiLinearDerivWrtSym_eigenvectors_reduced,
-    A:col(M,1),
-    A[6,1]:By*alpha,
-    A[7,1]:Bz*alpha,
-    B:col(M,8),
-    B[6,1]:By*alpha,
-    B[7,1]:Bz*alpha,
-    print(A,B),
-    soln:A.B=0,
-    soln:swapsides(-(soln - alpha^2*By^2 - alpha^2 * Bz^2)),
-    soln:factor(lhs(soln))=rhs(soln),
-    soln:soln
+fast and slow vector's 3rd and 4th entry get a 0/0
+so I'm just going to recalculate the eigensystem */
+quasiLinearDerivWrtSym$
+subst([By=0,Bz=0],%)$
+quasiLinearDerivWrtSym_zeroBtDegen : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+quasiLinearDerivWrtSym_zeroBtDegen_eigenvector_results : eigenvectors(quasiLinearDerivWrtSym_zeroBtDegen);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+block([A,B],
+    [A,B] : makeEigenMatrices(quasiLinearDerivWrtSym_zeroBtDegen_eigenvector_results),
+    [quasiLinearDerivWrtSym_zeroBtDegen_maximaEigenvalues_reduced, quasiLinearDerivWrtSym_zeroBtDegen_maximaEigenvectors_reduced] : [expand(A),B]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+permuteEigenvalues_zeroBtDegen : matrix(
+[0,0,0,0,1,0,0,0],
+[1,0,0,0,0,0,0,0],
+[0,1,0,0,0,0,0,0],
+[0,0,0,0,0,0,1,0],
+[0,0,0,0,0,0,0,1],
+[0,0,1,0,0,0,0,0],
+[0,0,0,1,0,0,0,0],
+[0,0,0,0,0,1,0,0]
 );
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+permuteEigenvalues_zeroBtDegen . quasiLinearDerivWrtSym_zeroBtDegen_maximaEigenvalues_reduced . invert(permuteEigenvalues_zeroBtDegen)$
+quasiLinearDerivWrtSym_zeroBtDegen_eigenvalues_reduced : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+quasiLinearDerivWrtSym_zeroBtDegen_maximaEigenvectors_reduced . invert(permuteEigenvalues_zeroBtDegen)$
+quasiLinearDerivWrtSym_zeroBtDegen_eigenvectors_reduced : %;
 /* [wxMaxima: input   end   ] */
 
 /* Maxima can't load/batch files which end with a comment! */
