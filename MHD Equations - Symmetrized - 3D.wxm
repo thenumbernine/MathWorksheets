@@ -729,29 +729,54 @@ therefore ca=0, cs=0 */"";
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
+ca_from_rho_B$
+subst([Bx=0],%)$
+ca_zeroBx:%;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cStarSq_from_rho_B_c$
+subst([Bx=0],%)$
+cStarSq_from_rho_B_c_zeroBx : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cfSq_from_c_ca_cStar$
+subst([ca_zeroBx, cStarSq_from_rho_B_c_zeroBx], %)$
+% - (By^2 + Bz^2) / (rho * mu)$
+ratsimp(%)$
+swapsides(%)$
+cSq_from_rho_B_cf_zeroBx : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
 quasiLinearDerivWrtSym$
 subst([Bx=0],%)$
 quasiLinearDerivWrtSym_zeroBxDegen : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-quasiLinearDerivWrtSym_zeroBxDegen_eigenvector_results : eigenvectors(quasiLinearDerivWrtSym_zeroBxDegen);
+eigenvectors(quasiLinearDerivWrtSym_zeroBxDegen)$
+quasiLinearDerivWrtSym_zeroBxDegen_eigenvector_results : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
 block([A,B],
     [A,B] : makeEigenMatrices(quasiLinearDerivWrtSym_zeroBxDegen_eigenvector_results),
-    [quasiLinearDerivWrtSym_zeroBxDegen_maximaEigenvalues_reduced, quasiLinearDerivWrtSym_zeroBxDegen_maximaEigenvectors_reduced] : [expand(A),B]);
+    A : subst([cSq_from_rho_B_cf_zeroBx], expand(A)),
+    B : subst([cSq_from_rho_B_cf_zeroBx], B),
+    [quasiLinearDerivWrtSym_zeroBxDegen_maximaEigenvalues_reduced, quasiLinearDerivWrtSym_zeroBxDegen_maximaEigenvectors_reduced] : [A, B]
+);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
 permuteEigenvalues_zeroBxDegen : matrix(
 [1,0,0,0,0,0,0,0],
-[0,0,1,0,0,0,0,0],
 [0,0,0,1,0,0,0,0],
 [0,0,0,0,1,0,0,0],
 [0,0,0,0,0,1,0,0],
 [0,0,0,0,0,0,1,0],
+[0,0,1,0,0,0,0,0],
 [0,0,0,0,0,0,0,1],
 [0,1,0,0,0,0,0,0]
 );
@@ -764,8 +789,15 @@ quasiLinearDerivWrtSym_zeroBxDegen_eigenvalues_reduced : %;
 
 /* [wxMaxima: input   start ] */
 quasiLinearDerivWrtSym_zeroBxDegen_maximaEigenvectors_reduced . invert(permuteEigenvalues_zeroBxDegen)$
-% . diag([c*sqrt(rho*mu),1,1,1,1,1,1,c*sqrt(rho*mu)])$
+% . diag([c*sqrt(rho*mu),1,1,1,Bz,Bz,1,c*sqrt(rho*mu)])$
 quasiLinearDerivWrtSym_zeroBxDegen_eigenvectors_reduced : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* notice that the Bx=0 case matches up with the Bx=By=Bz=0 case except
+for the 5th column of the Bx=0 case -- which is composed of [Bz,-By] where the Bx=By=Bz=0 case has [1,0]
+there's nothing else in that column, so an extra test will have to be performed to check tangent magnitude
+and substitute [1,0] in place of none.  But only the 5th row -- for the sake of orthogonality.  The 1st and 8th row [By,Bz] should remain zero.*/"";
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
