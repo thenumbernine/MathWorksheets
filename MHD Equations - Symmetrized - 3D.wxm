@@ -497,8 +497,8 @@ block([n, reps, eigenvectorList],
     n : length(quasiLinearDerivWrtSym_eigenvector_results[1][1]),
     eigenvectorList : quasiLinearDerivWrtSym_eigenvector_results[1][1],
     reps : quasiLinearDerivWrtSym_eigenvector_results[1][2],
-    quasiLinearDerivWrtSym_eigenvalues_original : diag(apply(append, makelist(makelist(eigenvectorList[j],i,1,reps[j]),j,1,n))),
-    quasiLinearDerivWrtSym_eigenvectors_original : transpose(apply(matrix, apply(append, quasiLinearDerivWrtSym_eigenvector_results[2])))
+    quasiLinearDerivWrtSym_maximaEigenvalues_notReduced : diag(apply(append, makelist(makelist(eigenvectorList[j],i,1,reps[j]),j,1,n))),
+    quasiLinearDerivWrtSym_maximaEigenvectors_notReduced : transpose(apply(matrix, apply(append, quasiLinearDerivWrtSym_eigenvector_results[2])))
 )$
 /* [wxMaxima: input   end   ] */
 
@@ -539,11 +539,37 @@ tmp5 : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-quasiLinearDerivWrtSym_eigenvalues_original$
+quasiLinearDerivWrtSym_maximaEigenvalues_notReduced$
 subst([tmp1, tmp2, tmp3], %)$
 factor(%)$
 subst([tmp4, tmp5], %)$
-quasiLinearDerivWrtSym_eigenvalues : %;
+quasiLinearDerivWrtSym_maximaEigenvalues_reduced : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* also, permuting eigenvectors: V_mine = P V_original P^-1 <=> V_original = P^-1 V_mine P
+... A = U_original V_original U_original^-1 = U_original P^-1 P V_original P^-1 P U_original^-1
+... A = (U_original P^-1) V_mine (U_original P^-1)^-1 = U_mine V_mine U_mine^-1
+so U_mine = U_original P^-1
+*/"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+permuteEigenvalues : matrix(
+[0,0,1,0,0,0,0,0],
+[0,0,0,0,1,0,0,0],
+[1,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,1,0],
+[0,0,0,0,0,0,0,1],
+[0,1,0,0,0,0,0,0],
+[0,0,0,0,0,1,0,0],
+[0,0,0,1,0,0,0,0]
+);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+permuteEigenvalues . quasiLinearDerivWrtSym_maximaEigenvalues_reduced . invert(permuteEigenvalues)$
+quasiLinearDerivWrtSym_eigenvalues_reduced : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -553,15 +579,54 @@ quasiLinearDerivWrtSym_eigenvalues : %;
 /* [wxMaxima: input   start ] */
 cStarSq_from_rho_B_c$
 % * 2 * rho * mu$
+% - Bx^2 - By^2 - Bz^2$
 ratsimp(%)$
-rhs(%)=lhs(%)$
+rhs(%) = lhs(%)$
 tmp1 : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-quasiLinearDerivWrtSym_eigenvectors_original$
+cfSq_from_c_ca_cStar - cStar^2$
+rhs(%) = lhs(%)$
+tmp6 : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cStar^2 - csSq_from_c_ca_cStar$
+rhs(%) = lhs(%)$
+tmp7 : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+is(lhs(tmp6)=lhs(tmp7));
+rhs(tmp6)=rhs(tmp7)$
+% + cStar^2 + cs^2$
+tmp8 : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+quasiLinearDerivWrtSym_maximaEigenvectors_notReduced . invert(permuteEigenvalues)$
+quasiLinearDerivWrtSym_eigenvectors_notReduced : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* note that I'm inserting the diag matrix at the end.  don't forget to incorporate that into the inverse.
+  shouldn't the inverse equal the transpose? */
+quasiLinearDerivWrtSym_eigenvectors_notReduced$
+subst([tmp1, tmp2, tmp3], %)$
+factor(%)$
+subst([tmp4, tmp5, tmp6], %)$
+factor(%)$
 subst([tmp1], %)$
-expand(%);
+% . diag([c, Bz, c, 1, 1, c, Bz, c]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* Notice: A = R V R^-1, A=A^T, means A=A^T=(R V R^-1)^T=R V R^-1
+... R^-1^T V^T R^T = R V R^-1
+... R^-1^T V R^T = R V R^-1
+does this mean R^T = R^-1 ?
+*/"";
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
