@@ -699,14 +699,9 @@ block([A,B,soln],
     print(A,B),
     soln:solve(A.B=0,alpha) /* find alpha such that A . B = 0 */,
     soln:subst([cs=0],soln) /* Bx=0 <=> ca=0 <=> cs=0 */,
-    soln:factor(soln)
+    soln:factor(soln),
+    soln:subst([swapsides(subst([Bx=0], cStarSq_from_rho_B_c * 2 * mu * rho))],soln)
 );
-/* [wxMaxima: input   end   ] */
-
-/* [wxMaxima: input   start ] */
-cStarSq_from_rho_B_c * 2 * mu * rho$
-subst([Bx=0],%)$
-rhs(%) = lhs(%);
 /* [wxMaxima: input   end   ] */
 
 /* Maxima can't load/batch files which end with a comment! */
