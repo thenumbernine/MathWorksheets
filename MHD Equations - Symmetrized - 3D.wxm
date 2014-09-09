@@ -729,11 +729,10 @@ permuteEigenvalues_zeroBxyz : matrix(
 [0,0,1,0,0,0,0,0],
 [0,0,0,1,0,0,0,0],
 [0,0,0,0,1,0,0,0],
+[0,0,0,0,0,0,0,1],
 [0,0,0,0,0,1,0,0],
 [0,0,0,0,0,0,1,0],
-[0,0,0,0,0,0,0,1],
-[0,1,0,0,0,0,0,0]
-);
+[0,1,0,0,0,0,0,0]);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -822,9 +821,9 @@ permuteEigenvalues_zeroBx : matrix(
 [0,0,0,1,0,0,0,0],
 [0,0,0,0,1,0,0,0],
 [0,0,0,0,0,1,0,0],
+[0,0,0,0,0,0,0,1],
 [0,0,0,0,0,0,1,0],
 [0,0,1,0,0,0,0,0],
-[0,0,0,0,0,0,0,1],
 [0,1,0,0,0,0,0,0]);
 /* [wxMaxima: input   end   ] */
 
@@ -844,9 +843,9 @@ quasiLinearDerivWrtSym_zeroBx_maximaEigenvectors_reduced . invert(permuteEigenva
     1,
     1,
     1,
+    1,
     cf*sqrt(cf^2*rho*mu-By^2)/sqrt(rho*mu),
     -c*Bz*sqrt(cf^2*rho*mu-By^2)/(c*abs(Bz)*sqrt(rho*mu)),
-    1,
     sqrt(2*(cf^2*rho*mu-By^2-Bz^2)+2*By^2+2*Bz^2)/sqrt(rho*mu)])$
 quasiLinearDerivWrtSym_zeroBx_eigenvectors_reduced : %;
 /* [wxMaxima: input   end   ] */
@@ -904,7 +903,7 @@ quasiLinearDerivWrtSym_zeroByz_eigenvector_results : ev(similaritytransform(quas
 /* [wxMaxima: input   start ] */
 block([A,B],
     [A,B] : makeEigenMatrices(quasiLinearDerivWrtSym_zeroByz_eigenvector_results),
-    B : B . diag([sqrt(2),sqrt(2),sqrt(2),sqrt(2),sqrt(2),sqrt(2),1,1]),
+    B : B . diag([sqrt(2),sqrt(2),-sqrt(2),-sqrt(2),sqrt(2),sqrt(2),1,1]),
     [quasiLinearDerivWrtSym_zeroByz_maximaEigenvalues_reduced, quasiLinearDerivWrtSym_zeroByz_maximaEigenvectors_reduced] : [expand(A),B]);
 /* [wxMaxima: input   end   ] */
 
