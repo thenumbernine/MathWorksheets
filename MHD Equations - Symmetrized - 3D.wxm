@@ -10,6 +10,9 @@
 - verifying that the eigenvectors of symmetrized matrix are orthonormal
 - verifying that the reconstructed system is the flux
 
+NOTICE I was using eigenvectors() until I found out about this ...
+http://stackoverflow.com/questions/19135430/diagonalize-a-symmetric-matrix-in-maxima
+... then I started using ev(simplicitytransform(M), hermitianmatrix=true) instead
 */"";
 /* [wxMaxima: input   end   ] */
 
@@ -701,29 +704,30 @@ transpose(quasiLinearDerivWrtSym_eigenvectors_reduced) . (quasiLinearDerivWrtSym
 /* [wxMaxima: input   start ] */
 quasiLinearDerivWrtSym$
 subst([Bx=0,By=0,Bz=0],%)$
-quasiLinearDerivWrtSym_zeroBxyzDegen : %;
+quasiLinearDerivWrtSym_zeroBxyz : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-quasiLinearDerivWrtSym_zeroBxyzDegen_eigenvector_results : ev(similaritytransform(quasiLinearDerivWrtSym_zeroBxyzDegen), hermitianmatrix=true);
+quasiLinearDerivWrtSym_zeroBxyz_eigenvector_results : ev(similaritytransform(quasiLinearDerivWrtSym_zeroBxyz), hermitianmatrix=true);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
 block([A,B],
-    [A,B] : makeEigenMatrices(quasiLinearDerivWrtSym_zeroBxyzDegen_eigenvector_results),
-    [quasiLinearDerivWrtSym_zeroBxyzDegen_maximaEigenvalues_reduced, quasiLinearDerivWrtSym_zeroBxyzDegen_maximaEigenvectors_reduced] : [expand(A),B]);
+    [A,B] : makeEigenMatrices(quasiLinearDerivWrtSym_zeroBxyz_eigenvector_results),
+    B : B . diag([sqrt(2),sqrt(2),1,1,1,1,1,1]),
+    [quasiLinearDerivWrtSym_zeroBxyz_maximaEigenvalues_reduced, quasiLinearDerivWrtSym_zeroBxyz_maximaEigenvectors_reduced] : [expand(A),B]);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
 /* eigenvector orthogonality */
-quasiLinearDerivWrtSym_zeroBxyzDegen_maximaEigenvectors_reduced$
+quasiLinearDerivWrtSym_zeroBxyz_maximaEigenvectors_reduced$
 transpose(%) . %$
 normalizeMatrix(%)$
 is(% = ident(8));
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-permuteEigenvalues_zeroBxyzDegen : matrix(
+permuteEigenvalues_zeroBxyz : matrix(
 [1,0,0,0,0,0,0,0],
 [0,0,1,0,0,0,0,0],
 [0,0,0,1,0,0,0,0],
@@ -736,18 +740,18 @@ permuteEigenvalues_zeroBxyzDegen : matrix(
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-permuteEigenvalues_zeroBxyzDegen . quasiLinearDerivWrtSym_zeroBxyzDegen_maximaEigenvalues_reduced . invert(permuteEigenvalues_zeroBxyzDegen)$
-quasiLinearDerivWrtSym_zeroBxyzDegen_eigenvalues_reduced : %;
+permuteEigenvalues_zeroBxyz . quasiLinearDerivWrtSym_zeroBxyz_maximaEigenvalues_reduced . invert(permuteEigenvalues_zeroBxyz)$
+quasiLinearDerivWrtSym_zeroBxyz_eigenvalues_reduced : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-quasiLinearDerivWrtSym_zeroBxyzDegen_maximaEigenvectors_reduced . invert(permuteEigenvalues_zeroBxyzDegen)$
-quasiLinearDerivWrtSym_zeroBxyzDegen_eigenvectors_reduced : %;
+quasiLinearDerivWrtSym_zeroBxyz_maximaEigenvectors_reduced . invert(permuteEigenvalues_zeroBxyz)$
+quasiLinearDerivWrtSym_zeroBxyz_eigenvectors_reduced : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
 /* eigenvector orthogonality */
-quasiLinearDerivWrtSym_zeroBxyzDegen_eigenvectors_reduced$
+quasiLinearDerivWrtSym_zeroBxyz_eigenvectors_reduced$
 transpose(%) . %$
 % : normalizeMatrix(%)$
 is(% = ident(8));
@@ -790,36 +794,33 @@ cfSq_from_rho_B_c_zeroBx : %;
 /* [wxMaxima: input   start ] */
 quasiLinearDerivWrtSym$
 subst([Bx=0],%)$
-quasiLinearDerivWrtSym_zeroBxDegen : %;
+quasiLinearDerivWrtSym_zeroBx : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* eigenvectors() -- when any eigenvalues has multiplicity -- doesn't ensure orthogonality
- eigenvectors(quasiLinearDerivWrtSym_zeroBxDegen)
-... so use similaritytransform instead ... */
-ev(similaritytransform(quasiLinearDerivWrtSym_zeroBxDegen), hermitianmatrix=true)$
-quasiLinearDerivWrtSym_zeroBxDegen_eigenvector_results : %;
+ev(similaritytransform(quasiLinearDerivWrtSym_zeroBx), hermitianmatrix=true)$
+quasiLinearDerivWrtSym_zeroBx_eigenvector_results : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
 block([A,B],
-    [A,B] : makeEigenMatrices(quasiLinearDerivWrtSym_zeroBxDegen_eigenvector_results),
+    [A,B] : makeEigenMatrices(quasiLinearDerivWrtSym_zeroBx_eigenvector_results),
     A : subst([cSq_from_rho_B_cf_zeroBx], expand(A)),
     B : subst([cSq_from_rho_B_cf_zeroBx], B),
-    [quasiLinearDerivWrtSym_zeroBxDegen_maximaEigenvalues_reduced, quasiLinearDerivWrtSym_zeroBxDegen_maximaEigenvectors_reduced] : [A, B]
+    [quasiLinearDerivWrtSym_zeroBx_maximaEigenvalues_reduced, quasiLinearDerivWrtSym_zeroBx_maximaEigenvectors_reduced] : [A, B]
 );
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
 /* TODO eigenvector orthogonality */
-quasiLinearDerivWrtSym_zeroBxDegen_maximaEigenvectors_reduced$
-transpose(%) . %$
-normalizeMatrix(%)$
-is(% = ident(8));
+quasiLinearDerivWrtSym_zeroBx_maximaEigenvectors_reduced$
+transpose(%) . %
+/*normalizeMatrix(%)
+is(% = ident(8))*/$
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-permuteEigenvalues_zeroBxDegen : matrix(
+permuteEigenvalues_zeroBx : matrix(
 [1,0,0,0,0,0,0,0],
 [0,0,0,1,0,0,0,0],
 [0,0,0,0,1,0,0,0],
@@ -827,31 +828,30 @@ permuteEigenvalues_zeroBxDegen : matrix(
 [0,0,0,0,0,0,1,0],
 [0,0,1,0,0,0,0,0],
 [0,0,0,0,0,0,0,1],
-[0,1,0,0,0,0,0,0]
-);
+[0,1,0,0,0,0,0,0]);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-is(permuteEigenvalues_zeroBxDegen . invert(permuteEigenvalues_zeroBxDegen) = ident(8));
+is(permuteEigenvalues_zeroBx . invert(permuteEigenvalues_zeroBx) = ident(8));
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-permuteEigenvalues_zeroBxDegen . quasiLinearDerivWrtSym_zeroBxDegen_maximaEigenvalues_reduced . invert(permuteEigenvalues_zeroBxDegen)$
-quasiLinearDerivWrtSym_zeroBxDegen_eigenvalues_reduced : %;
+permuteEigenvalues_zeroBx . quasiLinearDerivWrtSym_zeroBx_maximaEigenvalues_reduced . invert(permuteEigenvalues_zeroBx)$
+quasiLinearDerivWrtSym_zeroBx_eigenvalues_reduced : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-quasiLinearDerivWrtSym_zeroBxDegen_maximaEigenvectors_reduced . invert(permuteEigenvalues_zeroBxDegen)$
+quasiLinearDerivWrtSym_zeroBx_maximaEigenvectors_reduced . invert(permuteEigenvalues_zeroBx)$
 % . diag([
-    sqrt(2*(cf^2*rho*mu-By^2-Bz^2)+2*By^2+2*Bz^2),
-    cf*sqrt(rho*mu*(cf^2*rho*mu-By^2)),
+    sqrt(2*(cf^2*rho*mu-By^2-Bz^2)+2*By^2+2*Bz^2)/sqrt(rho*mu),
     1,
     1,
-    cf*sqrt(rho*mu*(cf^2*rho*mu-By^2)),
-    Bz/abs(Bz)*sqrt(cf^2*rho*mu-By^2),
     1,
-    sqrt(2*(cf^2*rho*mu-By^2-Bz^2)+2*By^2+2*Bz^2)])$
-quasiLinearDerivWrtSym_zeroBxDegen_eigenvectors_reduced : %;
+    cf*sqrt(cf^2*rho*mu-By^2)/sqrt(rho*mu),
+    -Bz*sqrt(cf^2*rho*mu-By^2)/(c*abs(Bz)*sqrt(rho*mu)),
+    1,
+    sqrt(2*(cf^2*rho*mu-By^2-Bz^2)+2*By^2+2*Bz^2)/sqrt(rho*mu)])$
+quasiLinearDerivWrtSym_zeroBx_eigenvectors_reduced : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -863,7 +863,7 @@ and substitute [1,0] in place of none.  But only the 5th row -- for the sake of 
 
 /* [wxMaxima: input   start ] */
 /* eigenvector orthogonality */
-transpose(quasiLinearDerivWrtSym_zeroBxDegen_eigenvectors_reduced) . quasiLinearDerivWrtSym_zeroBxDegen_eigenvectors_reduced$
+transpose(quasiLinearDerivWrtSym_zeroBx_eigenvectors_reduced) . quasiLinearDerivWrtSym_zeroBx_eigenvectors_reduced$
 ratsimp(%)$
 factor(%)$
 subst([cfSq_from_rho_B_c_zeroBx, cfSq_from_rho_B_c_zeroBx^2],%)$
@@ -873,9 +873,16 @@ is(% = ident(8));
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
+/* degeneracy to Bx=By=Bz=0 eigensystem */
+quasiLinearDerivWrtSym_zeroBx_eigenvectors_reduced$
+subst([Bx=0,By=0,Bz=0,cf=c],%)$
+is(normalizeMatrix(%)=normalizeMatrix(quasiLinearDerivWrtSym_zeroBxyz_eigenvectors_reduced));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
 /* DEGENERACY BY=BZ=0
 
-therefore cStar^2 = (c^2 + ca^2)/2
+... therefore cStar^2 = (c^2 + ca^2)/2
 ... sqrt(cStar^4 - c^2 ca^2) = sqrt(((c^2 + ca^2)/2)^2- c^2 ca^2) = sqrt(c^2/4 + c^2 ca^2 / 2 + ca^2/4 - c^2 ca^2) = sqrt(c^2/4 - c^2 ca^2 / 2 + ca^2/4)
       = sqrt(((c^2 - ca^2)/2)^2) = |c^2 - ca^2|/2
 if c^2 > ca^2 then ...
@@ -890,21 +897,22 @@ if c^2 < ca^2 then ... |c^2 - ca^2|/2 = -(c^2 - ca^2)/2
 /* [wxMaxima: input   start ] */
 quasiLinearDerivWrtSym$
 subst([By=0,Bz=0],%)$
-quasiLinearDerivWrtSym_zeroBtDegen : %;
+quasiLinearDerivWrtSym_zeroByz : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-quasiLinearDerivWrtSym_zeroBtDegen_eigenvector_results : eigenvectors(quasiLinearDerivWrtSym_zeroBtDegen);
+quasiLinearDerivWrtSym_zeroByz_eigenvector_results : ev(similaritytransform(quasiLinearDerivWrtSym_zeroByz), hermitianmatrix=true);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
 block([A,B],
-    [A,B] : makeEigenMatrices(quasiLinearDerivWrtSym_zeroBtDegen_eigenvector_results),
-    [quasiLinearDerivWrtSym_zeroBtDegen_maximaEigenvalues_reduced, quasiLinearDerivWrtSym_zeroBtDegen_maximaEigenvectors_reduced] : [expand(A),B]);
+    [A,B] : makeEigenMatrices(quasiLinearDerivWrtSym_zeroByz_eigenvector_results),
+    B : B . diag([sqrt(2),sqrt(2),sqrt(2),sqrt(2),sqrt(2),sqrt(2),1,1]),
+    [quasiLinearDerivWrtSym_zeroByz_maximaEigenvalues_reduced, quasiLinearDerivWrtSym_zeroByz_maximaEigenvectors_reduced] : [expand(A),B]);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-permuteEigenvalues_zeroBtDegen : matrix(
+permuteEigenvalues_zeroByz : matrix(
 [0,0,0,0,1,0,0,0],
 [1,0,0,0,0,0,0,0],
 [0,1,0,0,0,0,0,0],
@@ -917,13 +925,20 @@ permuteEigenvalues_zeroBtDegen : matrix(
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-permuteEigenvalues_zeroBtDegen . quasiLinearDerivWrtSym_zeroBtDegen_maximaEigenvalues_reduced . invert(permuteEigenvalues_zeroBtDegen)$
-quasiLinearDerivWrtSym_zeroBtDegen_eigenvalues_reduced : %;
+permuteEigenvalues_zeroByz . quasiLinearDerivWrtSym_zeroByz_maximaEigenvalues_reduced . invert(permuteEigenvalues_zeroByz)$
+quasiLinearDerivWrtSym_zeroByz_eigenvalues_reduced : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-quasiLinearDerivWrtSym_zeroBtDegen_maximaEigenvectors_reduced . invert(permuteEigenvalues_zeroBtDegen)$
-quasiLinearDerivWrtSym_zeroBtDegen_eigenvectors_reduced : %;
+quasiLinearDerivWrtSym_zeroByz_maximaEigenvectors_reduced . invert(permuteEigenvalues_zeroByz)$
+quasiLinearDerivWrtSym_zeroByz_eigenvectors_reduced : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* eigenvector orthogonality */
+transpose(quasiLinearDerivWrtSym_zeroByz_eigenvectors_reduced) . quasiLinearDerivWrtSym_zeroByz_eigenvectors_reduced$
+normalizeMatrix(%)$
+is(%=ident(8));
 /* [wxMaxima: input   end   ] */
 
 /* Maxima can't load/batch files which end with a comment! */
