@@ -22,6 +22,10 @@ load("invert");
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
+load("eigen");
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
 swapsides(eqn) := rhs(eqn) = lhs(eqn)$
 /* [wxMaxima: input   end   ] */
 
@@ -33,6 +37,11 @@ block([n, reps, evs],
     reps : eigenvectorResults[1][2],
     [diag(apply(append, makelist(makelist(evs[j],i,1,reps[j]),j,1,n))),
         transpose(apply(matrix, apply(append, eigenvectorResults[2])))])$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* normalize columns of a matrix */
+normalizeMatrix(m) := m . diag(makelist(1/sqrt(col(m,i).col(m,i)),i,1,length(m)))$
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -508,6 +517,11 @@ quasiLinearDerivWrtSym_eigenvector_results : eigenvectors(quasiLinearDerivWrtSym
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
+/* NOTICE http://stackoverflow.com/questions/19135430/diagonalize-a-symmetric-matrix-in-maxima
+use a different function for eigenvectors of symmetric matrices */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
 [quasiLinearDerivWrtSym_maximaEigenvalues_notReduced, quasiLinearDerivWrtSym_maximaEigenvectors_notReduced]
 : makeEigenMatrices(quasiLinearDerivWrtSym_eigenvector_results)$
 /* [wxMaxima: input   end   ] */
@@ -691,13 +705,21 @@ quasiLinearDerivWrtSym_zeroBxyzDegen : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-quasiLinearDerivWrtSym_zeroBxyzDegen_eigenvector_results : eigenvectors(quasiLinearDerivWrtSym_zeroBxyzDegen);
+quasiLinearDerivWrtSym_zeroBxyzDegen_eigenvector_results : ev(similaritytransform(quasiLinearDerivWrtSym_zeroBxyzDegen), hermitianmatrix=true);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
 block([A,B],
     [A,B] : makeEigenMatrices(quasiLinearDerivWrtSym_zeroBxyzDegen_eigenvector_results),
     [quasiLinearDerivWrtSym_zeroBxyzDegen_maximaEigenvalues_reduced, quasiLinearDerivWrtSym_zeroBxyzDegen_maximaEigenvectors_reduced] : [expand(A),B]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* eigenvector orthogonality */
+quasiLinearDerivWrtSym_zeroBxyzDegen_maximaEigenvectors_reduced$
+transpose(%) . %$
+normalizeMatrix(%)$
+is(% = ident(8));
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -721,6 +743,14 @@ quasiLinearDerivWrtSym_zeroBxyzDegen_eigenvalues_reduced : %;
 /* [wxMaxima: input   start ] */
 quasiLinearDerivWrtSym_zeroBxyzDegen_maximaEigenvectors_reduced . invert(permuteEigenvalues_zeroBxyzDegen)$
 quasiLinearDerivWrtSym_zeroBxyzDegen_eigenvectors_reduced : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* eigenvector orthogonality */
+quasiLinearDerivWrtSym_zeroBxyzDegen_eigenvectors_reduced$
+transpose(%) . %$
+% : normalizeMatrix(%)$
+is(% = ident(8));
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -750,13 +780,24 @@ cSq_from_rho_B_cf_zeroBx : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
+cSq_from_rho_B_cf_zeroBx$
+% + (By^2 + Bz^2)/(rho*mu)$
+expand(%)$
+swapsides(%)$
+cfSq_from_rho_B_c_zeroBx : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
 quasiLinearDerivWrtSym$
 subst([Bx=0],%)$
 quasiLinearDerivWrtSym_zeroBxDegen : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-eigenvectors(quasiLinearDerivWrtSym_zeroBxDegen)$
+/* eigenvectors() -- when any eigenvalues has multiplicity -- doesn't ensure orthogonality
+ eigenvectors(quasiLinearDerivWrtSym_zeroBxDegen)
+... so use similaritytransform instead ... */
+ev(similaritytransform(quasiLinearDerivWrtSym_zeroBxDegen), hermitianmatrix=true)$
 quasiLinearDerivWrtSym_zeroBxDegen_eigenvector_results : %;
 /* [wxMaxima: input   end   ] */
 
@@ -767,6 +808,14 @@ block([A,B],
     B : subst([cSq_from_rho_B_cf_zeroBx], B),
     [quasiLinearDerivWrtSym_zeroBxDegen_maximaEigenvalues_reduced, quasiLinearDerivWrtSym_zeroBxDegen_maximaEigenvectors_reduced] : [A, B]
 );
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* TODO eigenvector orthogonality */
+quasiLinearDerivWrtSym_zeroBxDegen_maximaEigenvectors_reduced$
+transpose(%) . %$
+normalizeMatrix(%)$
+is(% = ident(8));
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -783,13 +832,25 @@ permuteEigenvalues_zeroBxDegen : matrix(
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
+is(permuteEigenvalues_zeroBxDegen . invert(permuteEigenvalues_zeroBxDegen) = ident(8));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
 permuteEigenvalues_zeroBxDegen . quasiLinearDerivWrtSym_zeroBxDegen_maximaEigenvalues_reduced . invert(permuteEigenvalues_zeroBxDegen)$
 quasiLinearDerivWrtSym_zeroBxDegen_eigenvalues_reduced : %;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
 quasiLinearDerivWrtSym_zeroBxDegen_maximaEigenvectors_reduced . invert(permuteEigenvalues_zeroBxDegen)$
-% . diag([c,1,1,1,Bz/sqrt(rho*mu),-Bz/sqrt(rho*mu),1,c])$
+% . diag([
+    sqrt(2*(cf^2*rho*mu-By^2-Bz^2)+2*By^2+2*Bz^2),
+    cf*sqrt(rho*mu*(cf^2*rho*mu-By^2)),
+    1,
+    1,
+    cf*sqrt(rho*mu*(cf^2*rho*mu-By^2)),
+    Bz/abs(Bz)*sqrt(cf^2*rho*mu-By^2),
+    1,
+    sqrt(2*(cf^2*rho*mu-By^2-Bz^2)+2*By^2+2*Bz^2)])$
 quasiLinearDerivWrtSym_zeroBxDegen_eigenvectors_reduced : %;
 /* [wxMaxima: input   end   ] */
 
@@ -798,6 +859,17 @@ quasiLinearDerivWrtSym_zeroBxDegen_eigenvectors_reduced : %;
 for the 5th column of the Bx=0 case -- which is composed of [Bz,-By] where the Bx=By=Bz=0 case has [1,0]
 there's nothing else in that column, so an extra test will have to be performed to check tangent magnitude
 and substitute [1,0] in place of none.  But only the 5th row -- for the sake of orthogonality.  The 1st and 8th row [By,Bz] should remain zero.*/"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* eigenvector orthogonality */
+transpose(quasiLinearDerivWrtSym_zeroBxDegen_eigenvectors_reduced) . quasiLinearDerivWrtSym_zeroBxDegen_eigenvectors_reduced$
+ratsimp(%)$
+factor(%)$
+subst([cfSq_from_rho_B_c_zeroBx, cfSq_from_rho_B_c_zeroBx^2],%)$
+ratsimp(%)$
+normalizeMatrix(%)$
+is(% = ident(8));
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
