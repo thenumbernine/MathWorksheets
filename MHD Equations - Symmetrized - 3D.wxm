@@ -12,7 +12,7 @@
 
 NOTICE I was using eigenvectors() until I found out about this ...
 http://stackoverflow.com/questions/19135430/diagonalize-a-symmetric-matrix-in-maxima
-... then I started using ev(simplicitytransform(M), hermitianmatrix=true) instead
+... then I started using ev(similaritytransform(M), hermitianmatrix=true) instead
 */"";
 /* [wxMaxima: input   end   ] */
 
@@ -520,13 +520,10 @@ quasiLinearDerivWrtSym_eigenvector_results : eigenvectors(quasiLinearDerivWrtSym
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* NOTICE http://stackoverflow.com/questions/19135430/diagonalize-a-symmetric-matrix-in-maxima
-use a different function for eigenvectors of symmetric matrices */"";
-/* [wxMaxima: input   end   ] */
-
-/* [wxMaxima: input   start ] */
-[quasiLinearDerivWrtSym_maximaEigenvalues_notReduced, quasiLinearDerivWrtSym_maximaEigenvectors_notReduced]
-: makeEigenMatrices(quasiLinearDerivWrtSym_eigenvector_results)$
+block([A,B],
+    [A,B] : makeEigenMatrices(quasiLinearDerivWrtSym_eigenvector_results),
+    [quasiLinearDerivWrtSym_maximaEigenvalues_notReduced, quasiLinearDerivWrtSym_maximaEigenvectors_notReduced] : [A,B]
+);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -848,7 +845,7 @@ quasiLinearDerivWrtSym_zeroBx_maximaEigenvectors_reduced . invert(permuteEigenva
     1,
     1,
     cf*sqrt(cf^2*rho*mu-By^2)/sqrt(rho*mu),
-    -Bz*sqrt(cf^2*rho*mu-By^2)/(c*abs(Bz)*sqrt(rho*mu)),
+    -c*Bz*sqrt(cf^2*rho*mu-By^2)/(c*abs(Bz)*sqrt(rho*mu)),
     1,
     sqrt(2*(cf^2*rho*mu-By^2-Bz^2)+2*By^2+2*Bz^2)/sqrt(rho*mu)])$
 quasiLinearDerivWrtSym_zeroBx_eigenvectors_reduced : %;
