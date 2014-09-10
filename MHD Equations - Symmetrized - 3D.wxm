@@ -332,18 +332,18 @@ magnetic_field_eqns : makelist(
 subst([Z_from_rho_v_p_B], %)$
 subst([P_from_p_B],%) /* the Jameson paper says p, but every single other paper says P */$
 ratsimp(%)$
-energy_eqn : %;
+energy_eqn : %$
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
 append([continuity_eqn], momentum_eqns, magnetic_field_eqns, [energy_eqn])$
-all_eqns_from_prims : %;
+all_eqns_from_prims : %$
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
 subst([w_for_u], all_eqns_from_prims)$
 ratsimp(%)$
-all_eqns_from_cons : %;
+all_eqns_from_cons : %$
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -351,7 +351,7 @@ all_eqns_from_cons$
 expand(ev(%, diff))$
 subst([makelist('diff(us[i],y)=0,i,1,8)],%) /* remove y and z derivatives while we're here ... we're only looking at the x-axis */ $
 subst([makelist('diff(us[i],z)=0,i,1,8)],%)$
-all_eqns_from_cons_expanded : %;
+all_eqns_from_cons_expanded : %$
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -359,25 +359,25 @@ all_eqns_from_cons_expanded : %;
 Until then, here's me picking the matrices out of the equations, one by one. 
 
 flux along x axis, coeffs wrt conservative variables, neglecting source term (lhs of the eqn excluding time derivative)
-du/dt + dF/du du/dx = dS/du du/dx
+du/dt + dF/du du/dx = S du/dx
 this is the dF/du
 */
 genmatrix(lambda([i,j], coeff(lhs(all_eqns_from_cons_expanded[i]), 'diff(us[j],x))),8,8)$
 ratsimp(%)$
-fluxDerivWrtCons_from_cons : %;
+fluxDerivWrtCons_from_cons : %$
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
 fluxDerivWrtCons_from_cons$
 subst([u_for_w], %)$
 ratsimp(%)$
-fluxDerivWrtCons_from_prims : %;
+fluxDerivWrtCons_from_prims : %$
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
 /* Source term along x axis, coeffs wrt conservative variables (rhs of equation).
-du/dt + dF/du du/dx = dS/du du/dx
-this is the dS/du
+du/dt + dF/du du/dx = S du/dx
+this is the S
 */
 genmatrix(lambda([i,j], coeff(rhs(all_eqns_from_cons_expanded[i]), 'diff(us[j],x))),8,8)$
 subst([u_for_w], %)$
@@ -387,8 +387,8 @@ sourceDerivWrtCons_from_prims : %;
 
 /* [wxMaxima: input   start ] */
 /* du/dt + dF/du du/dx = dS/du du/dx
-du/dt + (dF/du - dS/du) du/dx = 0
-A = dF/du - dS/du */
+du/dt + (dF/du - S) du/dx = 0
+A = dF/du - S */
 fluxDerivWrtCons_from_prims - sourceDerivWrtCons_from_prims$
 subst([u_for_w], %)$
 ratsimp(%)$
@@ -516,14 +516,12 @@ is(%=0*ident(8));
 
 /* [wxMaxima: input   start ] */
 /* now for the eigensystem decomposition */
-quasiLinearDerivWrtSym_eigenvector_results : eigenvectors(quasiLinearDerivWrtSym)$
+quasiLinearDerivWrtSym_eigenvector_results : ev(similaritytransform(quasiLinearDerivWrtSym), hermitianmatrix=true)$
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-block([A,B],
-    [A,B] : makeEigenMatrices(quasiLinearDerivWrtSym_eigenvector_results),
-    [quasiLinearDerivWrtSym_maximaEigenvalues_notReduced, quasiLinearDerivWrtSym_maximaEigenvectors_notReduced] : [A,B]
-);
+[quasiLinearDerivWrtSym_maximaEigenvalues_notReduced, quasiLinearDerivWrtSym_maximaEigenvectors_notReduced]
+: makeEigenMatrices(quasiLinearDerivWrtSym_eigenvector_results)$
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
@@ -656,38 +654,37 @@ quasiLinearDerivWrtSym_eigenvectors_notReduced : %$
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* don't forget about vector normalization */
-quasiLinearDerivWrtSym_eigenvectors_notReduced$
-subst([tmp1b, tmp2, tmp3], %)$
+block([m],
+    m : quasiLinearDerivWrtSym_eigenvectors_notReduced,
+    for i thru 8 do
+        m : ratsimp(m . diag(makelist(if (m[i,j]=0) then 1 else denom(m[i,j]),j,1,8))),
+    m)$
+subst([tmp1b, tmp2, tmp3],%)$
 factor(%)$
-subst([tmp4, tmp5, tmp6], %)$
+subst([tmp4, tmp5, tmp6],%)$
 factor(%)$
-subst([tmp1b, caSq_from_rho_B], %)$
-% . diag([-c, Bz, -c, 1, 1, c, Bz, c])$
-ratsimp(%)$
-subst([tmp8], %)$
-factor(%)$
-subst([tmp10, tmp11], %)$
-ratsimp(%)$
-% . diag([(cf^2*rho*mu-Bx^2)*(By^2+Bz^2), 1, (cs^2*rho*mu-Bx^2)*(By^2+Bz^2), 1, 1, (cs^2*rho*mu-Bx^2)*(By^2+Bz^2), 1, (cf^2*rho*mu-Bx^2)*(By^2+Bz^2)])$
-quasiLinearDerivWrtSym_eigenvectors_reduced : %;
-/* [wxMaxima: input   end   ] */
-
-/* [wxMaxima: input   start ] */
-/* Notice: A = R V R^-1, A=A^T, means A=A^T=(R V R^-1)^T=R V R^-1
-... R^-1^T V^T R^T = R V R^-1
-... R^-1^T V R^T = R V R^-1
-does this mean R^T = R^-1 ?
-*/"";
+% . diag([sqrt(mu*rho/2),1/abs(Bz),sqrt(mu*rho/2),1,1,sqrt(mu*rho/2),1/abs(Bz),sqrt(mu*rho/2)])$
+subst([tmp1b, caSq_from_rho_B],%)$
+% . diag([1/(2*mu^2*rho^2),1,1/(2*mu^2*rho^2),1,1,1/(2*mu^2*rho^2),1,1/(2*mu^2*rho^2)])$
+expand(%)$
+subst([swapsides(cfSq_from_c_ca_cStar + csSq_from_c_ca_cStar)/2],%)$
+expand(%)$
+quasiLinearDerivWrtSym_eigenvectors_reduced :%;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
 /* eigenvector orthogonality test.  make sure it's A^T A since we're right-multiplying A by a scale matrix */
-transpose(quasiLinearDerivWrtSym_eigenvectors_reduced) . quasiLinearDerivWrtSym_eigenvectors_reduced;
-/* [wxMaxima: input   end   ] */
-
-/* [wxMaxima: input   start ] */
-/* TODO verify the eigensystem reconstructs to the quasi linear deriv wrt symmetric */"";
+transpose(quasiLinearDerivWrtSym_eigenvectors_reduced) . quasiLinearDerivWrtSym_eigenvectors_reduced$
+expand(%)$
+subst([cfSq_from_c_ca_cStar, cf*cfSq_from_c_ca_cStar, cfSq_from_c_ca_cStar^2, cfSq_from_c_ca_cStar^3], %)$
+subst([csSq_from_c_ca_cStar, cs*csSq_from_c_ca_cStar, csSq_from_c_ca_cStar^2, csSq_from_c_ca_cStar^3], %)$
+subst([caSq_from_rho_B, caSq_from_rho_B^2], %)$
+ratsimp(%)$
+expand(%)$
+subst([cStarSq_from_rho_B_c],%)$
+expand(%)$
+/* subst([cStarFourth_from_rho_B_c],%) */
+%;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
