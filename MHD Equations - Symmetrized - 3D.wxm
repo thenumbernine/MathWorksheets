@@ -682,8 +682,8 @@ does this mean R^T = R^-1 ?
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-/* TODO eigenvector orthogonality test.  make sure it's A^T A since we're right-multiplying A by a scale matrix
-transpose(quasiLinearDerivWrtSym_eigenvectors_reduced) . (quasiLinearDerivWrtSym_eigenvectors_reduced) */"";
+/* eigenvector orthogonality test.  make sure it's A^T A since we're right-multiplying A by a scale matrix */
+transpose(quasiLinearDerivWrtSym_eigenvectors_reduced) . quasiLinearDerivWrtSym_eigenvectors_reduced;
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
