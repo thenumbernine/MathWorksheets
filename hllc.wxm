@@ -1,0 +1,189 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 13.04.0 ] */
+
+/* [wxMaxima: input   start ] */
+U_hll_def: U_hll = (S_r * U_r - S_l * U_l + F_l - F_r) / (S_r - S_l);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+F_hll_l_def: F_hll = F_l + S_l * (U_hll - U_l);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+F_hll_r_def: F_hll = F_r + S_r * (U_hll - U_r);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+subst([U_hll_def], F_hll_l_def)$ F_hll_mid_def:ratsimp(%);
+subst([U_hll_def], F_hll_r_def)$ tmp:ratsimp(%)$
+is(rhs(F_hll_mid_def)=rhs(tmp));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+	
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+
+/* http://www.prague-sum.com/download/2012/Toro_2-HLLC-RiemannSolver.pdf */ "";
+
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+
+eqn5a: U = transpose(matrix([rho, rho * u, rho * v, rho * w, E]));
+
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+
+eqn5b: F = transpose(matrix([rho * u, rho * u^2 + P, rho * u * v, rho * u * w, u * (E + P)]));
+
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+
+eqn6: W = tranpose(matrix([rho, u, v, w, P])) /* the slide defines W_l and W_r */;
+
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+
+eqn12: 1/(T*(S_r-S_l))*integrate(U(x,T),x,T*S_l,T*S_r) = (S_r*U_r - S_l*U_l + F_l - F_r) / (S_r - S_l);
+
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+
+eqn13: U_hll = rhs(eqn12);
+
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+
+eqn18: F_hll = F_l + S_l * (U_hll - U_l);
+
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+
+eqn19: F_hll = F_r + S_r * (U_hll - U_r);
+
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+
+eqn20: subst([eqn13], eqn18)$ ratsimp(%);
+
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+
+eqn22: 1/(T*(S_r-S_l))*integrate(U(x,T),x,T*S_l,T*S_r) = U_starL + U_starR;
+
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+
+eqn23a: U_starL = 1/(T*(S_r - S_l)) * integrate(U(x,T), x, T*S_l, T*S_star);
+
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+
+eqn23b: U_starR = 1/(T*(S_r-S_star)) * integrate(U(x,T),x,T*S_star, T*S_r);
+
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+
+eqn22$
+
+subst([eqn23a, eqn23b], %)$
+
+% * (S_r - S_l)*T$
+
+/* should eventually get ... */""$
+
+eqn24: U_hll = ((S_star - S_l) * U_starL + (S_r - S_star) * U_starR) / (S_r - S_l);
+
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+
+/* three equations for the four unknowns U_starL, F_starL, U_starR, F_starR ... based on eqns above */"";
+
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+
+eqn27: F_starL = F_l + S_l * (U_starL - U_l) /* left / left-mid interface*/;
+
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+
+eqn28: F_starR = F_starL + S_star * (U_starR - U_starL) /* left-mid / right-mid interface */;
+
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+
+eqn29: F_starR = F_r + S_r * (U_starR - U_r) /* right-mid / right interface */;
+
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+
+/* eqn30: P_starL = P_starR = P_star, u_starL = u_starR = u_star ... pressure and normal velocity are equal along interface
+
+v_starL = v_l, v_starR = v_r ... tangent 1 velocities
+
+w_starL = w_l, w_starR = w_r ... tangent 2 velocities
+
+...therefore...
+
+S_tar = u_star
+
+*/"";
+
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+
+eqn33: expand(eqn27)-S_l*U_starL /* lhs is L-stars, rhs is L's*/;
+
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+
+eqn34: expand(eqn29)-S_r*U_starR /* lhs is R-stars, rhs is R's*/;
+
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+
+eqn35a: D = transpose(matrix([0, 1, 0, 0, u]));
+
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+
+eqn35b: F = u * U + P * D;
+
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+
+eqn36a: P_starL = P_l + rho_l * (S_l - u_l) * (S_star - u_l) /* based on 33 ... and 30 and 31 probably ... and what else? */;
+
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+
+eqn36b: P_starR = P_r + rho_r * (S_r - u_r) * (S_star - u_r);
+
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
