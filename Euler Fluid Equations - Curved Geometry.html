@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Euler Fluid Equation - Eigenmode Analysis</title>
+		<!-- script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script -->
+		<script type="text/javascript" async src="file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+	</head>
+	<body>
+
+<h3>Euler Fluid Equations</h3>
+
+variables:<br>
+
+variables:<br>
+$\rho =$ density<br>
+$v_i =$ velocity<br>
+$m_i = \rho v_i = $ momentum<br>
+$P =$ pressure<br>
+$\gamma =$ heat capacity ratio<br>
+$\tilde\gamma = \gamma - 1$<br>
+
+$E_{kin} = \frac{1}{2} \rho v^k v_k$<br>
+$E_{int} = \frac{P}{\tilde\gamma}$<br>
+$E_{total} = E_{kin} + E_{int}$<br>
+$H_{total} = E_{total} + P = \frac{1}{2} \rho v^2 + \frac{\gamma}{\tilde\gamma} P$<br>
+<br>
+
+conservative and primitive variables:<br>
+<br>
+
+$W^I = \left[\matrix{ \rho & v^i & P }\right]^T$<br>
+$U^I = \left[\matrix{ \rho & \rho v^i & E_{total} }\right]^T$<br>
+<br>
+
+for $IJK...$ spanning $\{ \rho, v^i, E_{total} \}$<br>
+<br>
+
+$\frac{\partial U^I}{\partial W^J} = \left[\matrix{
+	1 & 0 & 0 \\
+	v^i & \rho \delta^i_j & 0 \\
+	\frac{1}{2} v^2 & \rho v_j & 1/\tilde\gamma
+}\right]$<br>
+$\frac{\partial W^I}{\partial U^J} = \left[\matrix{
+	1 & 0 & 0 \\
+	-v^i / \rho & \delta^i_j / \rho & 0 \\
+	\frac{1}{2} \tilde\gamma v^2 & -\tilde\gamma v_j & \tilde\gamma
+}\right]$<br>
+<br>
+
+Euler fluid equations, curved geometry:<br>
+<br>
+
+$U^I + {F^{IJ}}_{;J} = 0$<br>
+<br>
+
+$\rho_{,t} + (\rho v^j)_{;j} = 0$<br>
+$(\rho v^i)_{,t} + (\rho v^i v^j + g^{ij} P)_{;j} = 0$<br>
+$E_{total,t} + (v^j H_{total})_{;j} = 0$<br>
+<br>
+
+$\rho_{,t} + (\rho v^j)_{;j} = 0$<br>
+$(\rho v^i)_{,t} + (\rho v^i v^j)_{;j} + g^{ij} P_{,j} = 0$<br>
+$E_{total,t} + (v^j H_{total})_{;j} = 0$<br>
+<br>
+
+
+$\rho_{,t} + (\rho v^j)_{,j} + {\Gamma^j}_{kj} \rho v^k = 0$<br>
+$(\rho v^i)_{,t} + (\rho v^i v^j)_{,j} + g^{ij} P_{,j} + {\Gamma^i}_{kj} \rho v^k v^j + {\Gamma^j}_{kj} \rho v^i v^k = 0$<br>
+$E_{total,t} + (v^j H_{total})_{,j} + {\Gamma^j}_{kj} v^k H_{total} = 0$<br>
+<br>
+
+$\rho_{,t} + \rho_{,j} v^j + \rho {v^j}_{,j} = -{\Gamma^j}_{kj} \rho v^k$<br>
+$(\rho v^i)_{,t} + \rho_{,j} v^i v^j + \rho {v^i}_{,j} v^j + \rho v^i {v^j}_{,j} + g^{ij} P_{,j} = -{\Gamma^i}_{kj} \rho v^k v^j - {\Gamma^j}_{kj} \rho v^i v^k$<br>
+$E_{total,t} + {v^j}_{,j} H_{total} + v^j (\frac{1}{2} \rho_{,j} v^2 + \rho v_k {v^k}_{,j} + \frac{\gamma}{\tilde\gamma} P_{,j}) = -{\Gamma^j}_{kj} v^k H_{total}$<br>
+<br>
+
+$\left[\matrix{
+	\rho \\ \rho v^i \\ E_{total} 
+}\right]_{,t}
++ \left[\matrix{
+	v^j &
+		\rho \delta^j_m &
+		0 \\
+	v^i v^j &
+		\rho ( v^j \delta^i_m + v^i \delta^j_m ) &
+		g^{ij} \\
+	\frac{1}{2} v^j v^2 &
+		\delta^j_m H_{total} + \rho v^j v_m &
+		\frac{\gamma}{\tilde\gamma} v^j
+}\right]
+\left[\matrix{
+	\rho \\ v^m \\ P
+}\right]_{,j} = \left[\matrix{
+	-{\Gamma^j}_{kj} \rho v^k \\
+	-{\Gamma^i}_{kj} \rho v^k v^j - {\Gamma^j}_{kj} \rho v^i v^k \\
+	-{\Gamma^j}_{kj} v^k H_{total}
+}\right]$<br>
+<br>
+$\left[\matrix{
+	\rho \\ \rho v^i \\ E_{total} 
+}\right]_{,t}
++ \left[\matrix{
+	v^j &
+		\rho \delta^j_m &
+		0 \\
+	v^i v^j &
+		\rho ( v^j \delta^i_m + v^i \delta^j_m ) &
+		g^{ij} \\
+	\frac{1}{2} v^j v^2 &
+		\delta^j_m H_{total} + \rho v^j v_m &
+		\frac{\gamma}{\tilde\gamma} v^j
+}\right]
+\left[\matrix{
+	1 & 0 & 0 \\
+	-v^m / \rho & \delta^m_k / \rho & 0 \\
+	\frac{1}{2} \tilde\gamma v^2 & -\tilde\gamma v_k & \tilde\gamma
+}\right]
+\left[\matrix{
+	\rho \\ \rho v_k \\ E_{total}
+}\right]_{,j} = \left[\matrix{
+	-{\Gamma^j}_{kj} \rho v^k \\
+	-{\Gamma^i}_{kj} \rho v^k v^j - {\Gamma^j}_{kj} \rho v^i v^k \\
+	-{\Gamma^j}_{kj} v^k H_{total}
+}\right]$<br>
+<br>
+
+
+$\left[\matrix{
+	\rho \\ \rho v^i \\ E_{total} 
+}\right]_{,t}
++ \left[\matrix{
+	0 &
+		\delta^j_k &
+		0 \\
+	-v^i v^j + \frac{1}{2} g^{ij} \tilde\gamma v^2 &
+		\delta^i_k v^j + \delta^j_k v^i - g^{ij} \tilde\gamma v_k &
+		g^{ij} \tilde\gamma \\
+	v^j (\frac{1}{2} \tilde\gamma v^2 - h_{total}) &
+		-\tilde\gamma v^j v_k + \delta^j_k h_{total} &
+		\gamma v^j
+}\right]
+\left[\matrix{
+	\rho \\ \rho v^k \\ E_{total} 
+}\right]_{,j} = \left[\matrix{
+	-{\Gamma^j}_{kj} \rho v^k \\
+	-{\Gamma^i}_{kj} \rho v^k v^j - {\Gamma^j}_{kj} \rho v^i v^k \\
+	-{\Gamma^j}_{kj} v^k H_{total}
+}\right]$<br>
+<br>
+
+	</body>
+</html>

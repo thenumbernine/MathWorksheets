@@ -1,0 +1,708 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<title>EMHD Linear Stability Analysis</title>
+		<!-- script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script -->
+		<script type="text/javascript" async src="file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+	</head>
+	<body>
+
+<h3>Linear Stability Analysis</h3>
+
+Hyperbolic conservation law:<br>
+$\frac{\partial U}{\partial t} + \frac{\partial F}{\partial x} + \frac{\partial G}{\partial y} + \frac{\partial H}{\partial z} = 0$<br>
+$t, x, y, z =$ basis<br>
+$U =$ state vector<br>
+$F, G, H =$ flux in $x,y,z$ direction<br>
+<br>
+
+Rewriting fluxes in terms of $U$:<br>
+$\frac{\partial U}{\partial t} + \frac{\partial F}{\partial U} \frac{\partial U}{\partial x} + \frac{\partial G}{\partial U} \frac{\partial U}{\partial y} + \frac{\partial H}{\partial U} \frac{\partial U}{\partial z} = 0$<br>
+<br>
+
+Perturbation in $x$ direction:<br>
+$U(t,x,y,z) = \mathring{U}(t,x,y,z) + \epsilon exp(i(yk + zm)) \hat{U}(t,x)$<br>
+$\mathring{U}(t,x,y,z) =$ base state<br>
+$\hat{U}(t,x) =$ perturbation in $t,x$<br>
+$k, m = $ wave numbers.<br>
+<br>
+
+Derivatives:<br>
+$\partial_t U = \partial_t \mathring{U} + \epsilon exp(i(yk + zm)) \partial_t \hat{U}$<br>
+$\partial_x U = \partial_x \mathring{U} + \epsilon exp(i(yk + zm)) \partial_x \hat{U}$<br>
+$\partial_y U = \partial_y \mathring{U} + i k \epsilon exp(i(yk + zm)) \hat{U}$<br>
+$\partial_z U = \partial_z \mathring{U} + i m \epsilon exp(i(yk + zm)) \hat{U}$<br>
+<br>
+
+Solving the hyperbolic conservation law at $\mathring{U}$:<br>
+$\frac{\partial \mathring{U}}{\partial t} 
++ \frac{\partial F(\mathring{U})}{\partial U} \frac{\partial \mathring{U}}{\partial x} 
++ \frac{\partial G(\mathring{U})}{\partial U} \frac{\partial \mathring{U}}{\partial y} 
++ \frac{\partial H(\mathring{U})}{\partial U} \frac{\partial \mathring{U}}{\partial z} = 0$<br>
+<br>
+
+Substitute pertrubed state into hyperbolic conservative law:<br>
+$ \partial_t \mathring{U} + \epsilon exp(i(yk + zm)) \partial_t \hat{U}
++ \frac{\partial F(\mathring{U})}{\partial U} (\partial_x \mathring{U} + \epsilon exp(i(yk + zm)) \partial_x \hat{U})
++ \frac{\partial G(\mathring{U})}{\partial U} (\partial_y \mathring{U} + \epsilon exp(i(yk + zm)) (i k \hat{U}))
++ \frac{\partial H(\mathring{U})}{\partial U} (\partial_z \mathring{U} + \epsilon exp(i(yk + zm)) (i m \hat{U}))
+= 0$<br>
+$ \partial_t \mathring{U}
++ \frac{\partial F(\mathring{U})}{\partial U} \partial_x \mathring{U} 
++ \frac{\partial G(\mathring{U})}{\partial U} \partial_y \mathring{U} 
++ \frac{\partial H(\mathring{U})}{\partial U} \partial_z \mathring{U} 
++ \epsilon exp(i(yk + zm)) (
+	\partial_t \hat{U}
+	+ \frac{\partial F(\mathring{U})}{\partial U} \partial_x \hat{U}
+	+ \frac{\partial G(\mathring{U})}{\partial U} (i k \hat{U})
+	+ \frac{\partial H(\mathring{U})}{\partial U} (i m \hat{U})
+) = 0$<br>
+<br>
+
+This leaves the perturbation solution:<br>
+$ \epsilon exp(i(yk + zm)) (
+\partial_t \hat{U}
++ \frac{\partial F(\mathring{U})}{\partial U} \partial_x \hat{U}
++ \frac{\partial G(\mathring{U})}{\partial U} (i k \hat{U})
++ \frac{\partial H(\mathring{U})}{\partial U} (i m \hat{U})
+) = 0$<br>
+$ \partial_t \hat{U}
++ \frac{\partial F(\mathring{U})}{\partial U} \partial_x \hat{U}
++ i k \frac{\partial G(\mathring{U})}{\partial U} \hat{U}
++ i m \frac{\partial H(\mathring{U})}{\partial U} \hat{U}
+= 0$<br>
+<br>
+
+Considering only the 2D solution of the perturbation (setting $m = 0$):<br>
+$ \partial_t \hat{U}
++ \frac{\partial F(\mathring{U})}{\partial U} \partial_x \hat{U}
+= -i k \frac{\partial G(\mathring{U})}{\partial U} \hat{U}$<br>
+
+<h3>MHD equations</h3>
+
+primitives:<br>
+$\rho =$ density<br>
+$v_i =$ velocity<br>
+$B_i =$ magnetic field<br>
+$P =$ pressure<br>
+$\gamma =$ heat capacity ratio<br>
+<br>
+
+state vector:<br>
+$U_i = \downarrow i \left[\matrix{
+	\rho \\ \rho v_i \\ B_i \\ E_{total}
+}\right]$<br>
+$E_{kin} = \frac{1}{2} \rho v^2 =$ kinetic energy<br>
+$E_{int} = \frac{P}{\gamma - 1} = $ internal energy<br>
+$E_{mag} = \frac{1}{2 \mu_0} =$ magnetic energy<br>
+$E_{total} = E_{kin} + E_{int} + E_{mag} = \frac{1}{2} \rho v^2 + \frac{P}{\gamma - 1} + \frac{1}{2 \mu_0} B^2 =$ total energy<br>
+<br>
+
+Flux in $j$th direction:<br>
+$F_{ij} = \downarrow i \left[\matrix{
+	\rho v_j \\
+	\rho v_i v_j + \delta_{ij} P_{total} - {1\over\mu_0} B_i B_j \\
+	B_i v_j - B_j v_i \\
+	H_{total} v_j - {1\over\mu_0} B_k v_k B_j
+}\right]$<br>
+$P_{total} = P + \frac{1}{2 \mu_0} B^2 = $ total pressure<br>
+$H_{total} = E_{total} + P_{total} = \frac{1}{2} \rho v^2 + \frac{\gamma}{\gamma - 1} P + \frac{1}{\mu_0} B^2 =$ total enthalpy<br> 
+<br>
+
+Derivative of flux wrt conservative variables:<br>
+$\frac{\partial F_{ij}}{\partial U_k}
+= \downarrow i \overset{\rightarrow k}{ \left[\matrix{
+	0 &
+		\delta_{jk} &
+		0 &
+		0 \\
+	-v_i v_j + \frac{1}{2} \delta_{ij} (\gamma-1) v^2 &
+		\delta_{ik} v_j + \delta_{jk} v_i - \delta_{ij} (\gamma-1) v_k &
+		\frac{1}{\mu_0}(-\delta_{ij} (\gamma-2) B_k - \delta_{ik} B_j - \delta_{jk} B_i) &
+		\delta_{ij} (\gamma-1) \\
+	-\frac{1}{\rho} (B_i v_j - B_j v_i) &
+		\frac{1}{\rho} (B_i \delta_{jk} - B_j \delta_{ik}) &
+		\delta_{ik} v_j - \delta_{jk} v_i &
+		0 \\
+	v_j (\frac{1}{2} (\gamma-1) v^2 - h_{total}) + \frac{1}{\mu_0\rho} B_j B_m v_m &
+		-(\gamma-1) v_j v_k + (\delta_{jk} h_{total} - \frac{1}{\mu_0\rho} B_j B_k) &
+		\frac{1}{\mu_0} (-(\gamma - 2) v_j B_k - v_k B_j - \delta_{jk} v_m B_m) &
+		\gamma v_j
+}\right] }$<br>
+$h_{total} = \frac{1}{\rho} H_{total} =$ specific total enthalpy<br>
+<br>
+
+Derivative of flux wrt conservative variables in x direction:<br>
+$\frac{\partial F_{ix}}{\partial U_k}
+= \left[\matrix{
+	0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+	-v_x v_x + \frac{1}{2} (\gamma-1) v^2 &
+		-(\gamma-3) v_x &
+		-(\gamma-1) v_y &
+		-(\gamma-1) v_z &
+		-\frac{1}{\mu_0} \gamma B_x  &
+		-\frac{1}{\mu_0} (\gamma-2) B_y &
+		-\frac{1}{\mu_0} (\gamma-2) B_z &
+		\gamma - 1 \\
+	-v_y v_x & v_y & v_x & 0 & -\frac{1}{\mu_0} B_y & -\frac{1}{\mu_0} B_x & 0 & 0 \\
+	-v_z v_x & v_z & 0 & v_x & -\frac{1}{\mu_0} B_z & 0 & -\frac{1}{\mu_0} B_x & 0 \\
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+	-\frac{1}{\rho} (B_y v_x - B_x v_y) & \frac{1}{\rho} B_y & -\frac{1}{\rho} B_x & 0 & -v_y & v_x & 0 & 0 \\
+	-\frac{1}{\rho} (B_z v_x - B_x v_z) & \frac{1}{\rho} B_z & 0 & -\frac{1}{\rho} B_x & - v_z & 0 & v_x & 0 \\
+	v_x (\frac{1}{2} (\gamma-1) v^2 - h_{total}) + \frac{1}{\mu_0\rho} B_x B_m v_m &
+		-(\gamma-1) v_x v_x - \frac{1}{\mu_0\rho} B_x B_x + h_{total} &
+		-(\gamma-1) v_x v_y - \frac{1}{\mu_0\rho} B_x B_y &
+		-(\gamma-1) v_x v_z - \frac{1}{\mu_0\rho} B_x B_z &
+		-\frac{1}{\mu_0} ((\gamma - 2) v_x B_x + v_x B_x + v_m B_m) &
+		-\frac{1}{\mu_0} ((\gamma - 2) v_x B_y + v_y B_x) &
+		-\frac{1}{\mu_0} ((\gamma - 2) v_x B_z + v_z B_x) &
+		\gamma v_x
+}\right] $<br>
+<br>
+
+Derivative of flux wrt conservative variables in y direction:<br>
+$\frac{\partial F_{iy}}{\partial U_k}
+\left[\matrix{
+	0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+	-v_x v_y & v_y  & v_x & 0 & -\frac{1}{\mu_0} B_y & -\frac{1}{\mu_0} B_x & 0 & 0 \\
+	-v_y v_y + \frac{1}{2} (\gamma-1) v^2 &
+		-(\gamma-1) v_x &
+		-(\gamma-3) v_y &
+		-(\gamma-1) v_z &
+		-\frac{1}{\mu_0} (\gamma-2) B_x &
+		-\frac{1}{\mu_0} \gamma B_y &
+		-\frac{1}{\mu_0} (\gamma-2) B_z &
+		\gamma-1 \\
+	-v_z v_y & 0 & v_z & v_y & 0 & -\frac{1}{\mu_0} B_z & -\frac{1}{\mu_0} B_y & 0 \\
+	-\frac{1}{\rho} (B_x v_y - B_y v_x) & -\frac{1}{\rho} B_y  & \frac{1}{\rho} B_x  & 0 & v_y & -v_x & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+	-\frac{1}{\rho} (B_z v_y - B_y v_z) & 0 & \frac{1}{\rho} B_z & -\frac{1}{\rho} B_y & 0 & -v_z & v_y & 0 \\
+	v_y (\frac{1}{2} (\gamma-1) v^2 - h_{total}) + \frac{1}{\mu_0\rho} B_y B_m v_m &
+		-(\gamma-1) v_y v_x - \frac{1}{\mu_0\rho} B_y B_x &
+		-(\gamma-1) v_y v_y - \frac{1}{\mu_0\rho} B_y B_y + h_{total} &
+		-(\gamma-1) v_y v_z - \frac{1}{\mu_0\rho} B_y B_z &
+		-\frac{1}{\mu_0} ((\gamma - 2) v_y B_x + v_x B_y) &
+		-\frac{1}{\mu_0} ((\gamma - 2) v_y B_y + v_y B_y + v_m B_m) &
+		-\frac{1}{\mu_0} ((\gamma - 2) v_y B_z + v_z B_y) &
+		\gamma v_y
+}\right] $<br>
+<br>
+
+MHD 2D perturbations:<br>
+$
+\downarrow i \left[\matrix{
+	\partial_t \hat{\rho} \\
+	\partial_t \hat{(\rho v_i)} \\ 
+	\partial_t \hat{B}_i \\ 
+	\partial_t \hat{E}_{total}
+}\right]
++
+\downarrow i \overset{\rightarrow k}{ \left[\matrix{
+	0 &
+		\delta_{xk} &
+		0 &
+		0 \\
+	-\mathring{v}_i \mathring{v}_x + \frac{1}{2} \delta_{ix} (\gamma-1) \mathring{v}^2 &
+		\delta_{ik} \mathring{v}_x + \delta_{xk} \mathring{v}_i - \delta_{ix} (\gamma-1) \mathring{v}_k &
+		\frac{1}{\mu_0}(-\delta_{ix} (\gamma-2) \mathring{B}_k - \delta_{ik} \mathring{B}_x - \delta_{xk} \mathring{B}_i) &
+		\delta_{ix} (\gamma-1) \\
+	-\frac{1}{ \mathring{\rho} } (\mathring{B}_i \mathring{v}_x - \mathring{B}_x \mathring{v}_i) &
+		\frac{1}{ \mathring{\rho} } (\mathring{B}_i \delta_{xk} - \mathring{B}_x \delta_{ik}) &
+		\delta_{ik} \mathring{v}_x - \delta_{xk} \mathring{v}_i &
+		0 \\
+	\mathring{v}_x (\frac{1}{2} (\gamma-1) \mathring{v}^2 - \mathring{h}_{total}) + \frac{1}{\mu_0 \mathring{\rho} } \mathring{B}_x \mathring{B}_m \mathring{v}_m &
+		-(\gamma-1) \mathring{v}_x \mathring{v}_k + (\delta_{xk} \mathring{h}_{total} - \frac{1}{\mu_0 \mathring{\rho} } \mathring{B}_x \mathring{B}_k) &
+		\frac{1}{\mu_0} (-(\gamma - 2) \mathring{v}_x \mathring{B}_k - \mathring{v}_k \mathring{B}_x - \delta_{xk} \mathring{v}_m \mathring{B}_m) &
+		\gamma \mathring{v}_x
+}\right] }
+\cdot
+\downarrow k \left[\matrix{
+	\partial_x \hat{\rho} \\
+	\partial_x \hat{(\rho v_k)} \\ 
+	\partial_x \hat{B}_k \\ 
+	\partial_x \hat{E}_{total}
+}\right]
+= -i k 
+\cdot
+\downarrow i \overset{\rightarrow k}{ \left[\matrix{
+	0 &
+		\delta_{yk} &
+		0 &
+		0 \\
+	-\mathring{v}_i \mathring{v}_y + \frac{1}{2} \delta_{iy} (\gamma-1) \mathring{v}^2 &
+		\delta_{ik} \mathring{v}_y + \delta_{yk} \mathring{v}_i - \delta_{iy} (\gamma-1) \mathring{v}_k &
+		\frac{1}{\mu_0}(-\delta_{iy} (\gamma-2) \mathring{B}_k - \delta_{ik} \mathring{B}_y - \delta_{yk} \mathring{B}_i) &
+		\delta_{iy} (\gamma-1) \\
+	-\frac{1}{ \mathring{\rho} } (\mathring{B}_i \mathring{v}_y - \mathring{B}_y \mathring{v}_i) &
+		\frac{1}{ \mathring{\rho} } (\mathring{B}_i \delta_{yk} - \mathring{B}_y \delta_{ik}) &
+		\delta_{ik} \mathring{v}_y - \delta_{yk} \mathring{v}_i &
+		0 \\
+	\mathring{v}_y (\frac{1}{2} (\gamma-1) \mathring{v}^2 - \mathring{h}_{total}) + \frac{1}{\mu_0 \mathring{\rho} } \mathring{B}_y \mathring{B}_m \mathring{v}_m &
+		-(\gamma-1) \mathring{v}_y \mathring{v}_k + (\delta_{yk} \mathring{h}_{total} - \frac{1}{\mu_0 \mathring{\rho} } \mathring{B}_y \mathring{B}_k) &
+		\frac{1}{\mu_0} (-(\gamma - 2) \mathring{v}_y \mathring{B}_k - \mathring{v}_k \mathring{B}_y - \delta_{yk} \mathring{v}_m \mathring{B}_m) &
+		\gamma \mathring{v}_y
+}\right] }
+\cdot
+\downarrow i \left[\matrix{
+	\hat{\rho} \\
+	\hat{(\rho v_i)} \\ 
+	\hat{B}_i \\ 
+	\hat{E}_{total}
+}\right]$<br>
+<br>
+
+Here I'm representing the flux Jacobians in terms of $\mathring{W}$, but what about $\mathring{W}$ in terms of $\mathring{U}$?<br>
+Is that where the linearization and elimination of higher-order terms comes in?<br>
+One way to avoid this could be to represent $\frac{\partial F(\mathring{U})}{\partial U}$ in terms of $\mathring{U}$ instead of $\mathring{W}$.<br>
+<br>
+
+Expand Kronecher deltas:<br>
+$
+\left[\matrix{
+	\partial_t \hat{\rho} \\
+	\partial_t \hat{(\rho v_x)} \\ 
+	\partial_t \hat{(\rho v_y)} \\ 
+	\partial_t \hat{(\rho v_z)} \\ 
+	\partial_t \hat{B}_x \\ 
+	\partial_t \hat{B}_y \\ 
+	\partial_t \hat{B}_z \\ 
+	\partial_t \hat{E}_{total}
+}\right]
++
+\left[\matrix{
+	0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+	-\mathring{v}_x \mathring{v}_x + \frac{1}{2} (\gamma-1) \mathring{v}^2 &
+		-(\gamma-3) \mathring{v}_x &
+		-(\gamma-1) \mathring{v}_y &
+		-(\gamma-1) \mathring{v}_z &
+		-\frac{1}{\mu_0} \gamma \mathring{B}_x  &
+		-\frac{1}{\mu_0} (\gamma-2) \mathring{B}_y &
+		-\frac{1}{\mu_0} (\gamma-2) \mathring{B}_z &
+		\gamma - 1 \\
+	-\mathring{v}_y \mathring{v}_x & \mathring{v}_y & \mathring{v}_x & 0 & -\frac{1}{\mu_0} \mathring{B}_y & -\frac{1}{\mu_0} \mathring{B}_x & 0 & 0 \\
+	-\mathring{v}_z \mathring{v}_x & \mathring{v}_z & 0 & \mathring{v}_x & -\frac{1}{\mu_0} \mathring{B}_z & 0 & -\frac{1}{\mu_0} \mathring{B}_x & 0 \\
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+	-\frac{1}{\mathring{\rho}} (\mathring{B}_y \mathring{v}_x - \mathring{B}_x \mathring{v}_y) & \frac{1}{\mathring{\rho}} \mathring{B}_y & -\frac{1}{\mathring{\rho}} \mathring{B}_x & 0 & -\mathring{v}_y & \mathring{v}_x & 0 & 0 \\
+	-\frac{1}{\mathring{\rho}} (\mathring{B}_z \mathring{v}_x - \mathring{B}_x \mathring{v}_z) & \frac{1}{\mathring{\rho}} \mathring{B}_z & 0 & -\frac{1}{\mathring{\rho}} \mathring{B}_x & - \mathring{v}_z & 0 & \mathring{v}_x & 0 \\
+	\mathring{v}_x (\frac{1}{2} (\gamma-1) \mathring{v}^2 - \mathring{h}_{total}) + \frac{1}{\mu_0\mathring{\rho}} \mathring{B}_x \mathring{B}_m \mathring{v}_m &
+		-(\gamma-1) \mathring{v}_x \mathring{v}_x - \frac{1}{\mu_0\mathring{\rho}} \mathring{B}_x \mathring{B}_x + \mathring{h}_{total} &
+		-(\gamma-1) \mathring{v}_x \mathring{v}_y - \frac{1}{\mu_0\mathring{\rho}} \mathring{B}_x \mathring{B}_y &
+		-(\gamma-1) \mathring{v}_x \mathring{v}_z - \frac{1}{\mu_0\mathring{\rho}} \mathring{B}_x \mathring{B}_z &
+		-\frac{1}{\mu_0} ((\gamma - 2) \mathring{v}_x \mathring{B}_x + \mathring{v}_x \mathring{B}_x + \mathring{v}_m \mathring{B}_m) &
+		-\frac{1}{\mu_0} ((\gamma - 2) \mathring{v}_x \mathring{B}_y + \mathring{v}_y \mathring{B}_x) &
+		-\frac{1}{\mu_0} ((\gamma - 2) \mathring{v}_x \mathring{B}_z + \mathring{v}_z \mathring{B}_x) &
+		\gamma \mathring{v}_x
+}\right]
+\left[\matrix{
+	\partial_x \hat{\rho} \\
+	\partial_x \hat{(\rho v_x)} \\ 
+	\partial_x \hat{(\rho v_y)} \\ 
+	\partial_x \hat{(\rho v_z)} \\ 
+	\partial_x \hat{B}_x \\ 
+	\partial_x \hat{B}_y \\ 
+	\partial_x \hat{B}_z \\ 
+	\partial_x \hat{E}_{total}
+}\right]
+= -i k 
+\left[\matrix{
+	0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+	-\mathring{v}_x \mathring{v}_y & \mathring{v}_y  & \mathring{v}_x & 0 & -\frac{1}{\mu_0} \mathring{B}_y & -\frac{1}{\mu_0} \mathring{B}_x & 0 & 0 \\
+	-\mathring{v}_y \mathring{v}_y + \frac{1}{2} (\gamma-1) \mathring{v}^2 &
+		-(\gamma-1) \mathring{v}_x &
+		-(\gamma-3) \mathring{v}_y &
+		-(\gamma-1) \mathring{v}_z &
+		-\frac{1}{\mu_0} (\gamma-2) \mathring{B}_x &
+		-\frac{1}{\mu_0} \gamma \mathring{B}_y &
+		-\frac{1}{\mu_0} (\gamma-2) \mathring{B}_z &
+		\gamma-1 \\
+	-\mathring{v}_z \mathring{v}_y & 0 & \mathring{v}_z & \mathring{v}_y & 0 & -\frac{1}{\mu_0} \mathring{B}_z & -\frac{1}{\mu_0} \mathring{B}_y & 0 \\
+	-\frac{1}{\mathring{\rho}} (\mathring{B}_x \mathring{v}_y - \mathring{B}_y \mathring{v}_x) & -\frac{1}{\mathring{\rho}} \mathring{B}_y  & \frac{1}{\mathring{\rho}} \mathring{B}_x  & 0 & \mathring{v}_y & -\mathring{v}_x & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+	-\frac{1}{\mathring{\rho}} (\mathring{B}_z \mathring{v}_y - \mathring{B}_y \mathring{v}_z) & 0 & \frac{1}{\mathring{\rho}} \mathring{B}_z & -\frac{1}{\mathring{\rho}} \mathring{B}_y & 0 & -\mathring{v}_z & \mathring{v}_y & 0 \\
+	\mathring{v}_y (\frac{1}{2} (\gamma-1) \mathring{v}^2 - \mathring{h}_{total}) + \frac{1}{\mu_0\mathring{\rho}} \mathring{B}_y \mathring{B}_m \mathring{v}_m &
+		-(\gamma-1) \mathring{v}_y \mathring{v}_x - \frac{1}{\mu_0\mathring{\rho}} \mathring{B}_y \mathring{B}_x &
+		-(\gamma-1) \mathring{v}_y \mathring{v}_y - \frac{1}{\mu_0\mathring{\rho}} \mathring{B}_y \mathring{B}_y + \mathring{h}_{total} &
+		-(\gamma-1) \mathring{v}_y \mathring{v}_z - \frac{1}{\mu_0\mathring{\rho}} \mathring{B}_y \mathring{B}_z &
+		-\frac{1}{\mu_0} ((\gamma - 2) \mathring{v}_y \mathring{B}_x + \mathring{v}_x \mathring{B}_y) &
+		-\frac{1}{\mu_0} ((\gamma - 2) \mathring{v}_y \mathring{B}_y + \mathring{v}_y \mathring{B}_y + \mathring{v}_m \mathring{B}_m) &
+		-\frac{1}{\mu_0} ((\gamma - 2) \mathring{v}_y \mathring{B}_z + \mathring{v}_z \mathring{B}_y) &
+		\gamma \mathring{v}_y
+}\right]
+\left[\matrix{
+	\hat{\rho} \\
+	\hat{(\rho v_x)} \\ 
+	\hat{(\rho v_y)} \\ 
+	\hat{(\rho v_z)} \\ 
+	\hat{B}_x \\ 
+	\hat{B}_y \\ 
+	\hat{B}_z \\ 
+	\hat{E}_{total}
+}\right]$<br>
+<br>
+
+Written out:<br>
+
+$\partial_t \hat{\rho} + \partial_x \hat{\rho} = -i k \hat{(\rho v_y)}$<br> 
+
+$\partial_t \hat{(\rho v_x)}
++ (-\mathring{v}_x \mathring{v}_x + \frac{1}{2} (\gamma-1) \mathring{v}^2) \partial_x \hat{\rho} 
+	-(\gamma-3) \mathring{v}_x \partial_x \hat{(\rho v_x)} 
+	-(\gamma-1) \mathring{v}_y \partial_x \hat{(\rho v_y)} 
+	-(\gamma-1) \mathring{v}_z \partial_x \hat{(\rho v_z)} 
+	-\frac{1}{\mu_0} \gamma \mathring{B}_x \partial_x \hat{B}_x 
+	-\frac{1}{\mu_0} (\gamma-2) \mathring{B}_y \partial_x \hat{B}_y 
+	-\frac{1}{\mu_0} (\gamma-2) \mathring{B}_z \partial_x \hat{B}_z 
+	+ (\gamma - 1) \partial_x \hat{E}_{total}
+= -i k (
+ -\mathring{v}_x \mathring{v}_y \hat{\rho} 
+ +\mathring{v}_y \hat{(\rho v_x)} 
+ +\mathring{v}_x \hat{(\rho v_y)} 
+ -\frac{1}{\mu_0} \mathring{B}_y \hat{B}_x 
+ -\frac{1}{\mu_0} \mathring{B}_x \hat{B}_y 
+)$<br>
+
+$
+	\partial_t \hat{(\rho v_y)} 
+ -\mathring{v}_y \mathring{v}_x 
+	\partial_x \hat{\rho} 
+ +\mathring{v}_y 
+	\partial_x \hat{(\rho v_x)}  
+ +\mathring{v}_x 
+	\partial_x \hat{(\rho v_y)}  
+ -\frac{1}{\mu_0} \mathring{B}_y 
+	\partial_x \hat{B}_x  
+ -\frac{1}{\mu_0} \mathring{B}_x 
+	\partial_x \hat{B}_y  
+= -i k (
+(-\mathring{v}_y \mathring{v}_y + \frac{1}{2} (\gamma-1) \mathring{v}^2) \hat{\rho} 
+-(\gamma-1) \mathring{v}_x \hat{(\rho v_x)}  
+-(\gamma-3) \mathring{v}_y \hat{(\rho v_y)}  
+-(\gamma-1) \mathring{v}_z \hat{(\rho v_z)}  
+-\frac{1}{\mu_0} (\gamma-2) \mathring{B}_x \hat{B}_x  
+-\frac{1}{\mu_0} \gamma \mathring{B}_y \hat{B}_y  
+-\frac{1}{\mu_0} (\gamma-2) \mathring{B}_z \hat{B}_z  
+-(\gamma-1) \hat{E}_{total}
+)$<br>
+
+$\partial_t \hat{(\rho v_z)}  
+-\mathring{v}_z \mathring{v}_x \partial_x \hat{\rho} 
++\mathring{v}_z \partial_x \hat{(\rho v_x)}  
++\mathring{v}_x \partial_x \hat{(\rho v_z)}  
+-\frac{1}{\mu_0} \mathring{B}_z \partial_x \hat{B}_x  
+-\frac{1}{\mu_0} \mathring{B}_x \partial_x \hat{B}_z  
+= -i k (
+ -\mathring{v}_z \mathring{v}_y \hat{\rho} 
+ +\mathring{v}_z \hat{(\rho v_y)}  
+ +\mathring{v}_y \hat{(\rho v_z)}  
+ -\frac{1}{\mu_0} \mathring{B}_z \hat{B}_y  
+ -\frac{1}{\mu_0} \mathring{B}_y \hat{B}_z  
+)$<br>
+	
+$\partial_t \hat{B}_x  
+= -i k (
+ -\frac{1}{\mathring{\rho}} (\mathring{B}_x \mathring{v}_y - \mathring{B}_y \mathring{v}_x) \hat{\rho} 
+ - \frac{1}{\mathring{\rho}} \mathring{B}_y \hat{(\rho v_x)}  
+ + \frac{1}{\mathring{\rho}} \mathring{B}_x \hat{(\rho v_y)}  
+ + \mathring{v}_y \hat{B}_x  
+ - \mathring{v}_x \hat{B}_y  
+)$<br>
+
+$ \partial_t \hat{B}_y 
+-\frac{1}{\mathring{\rho}} (\mathring{B}_y \mathring{v}_x - \mathring{B}_x \mathring{v}_y) \partial_x \hat{\rho} 
+ +\frac{1}{\mathring{\rho}} \mathring{B}_y \partial_x \hat{(\rho v_x)}  
+ -\frac{1}{\mathring{\rho}} \mathring{B}_x \partial_x \hat{(\rho v_y)}  
+ -\mathring{v}_y \partial_x \hat{B}_x  
+ +\mathring{v}_x \partial_x \hat{B}_y  
+= 0$<br> 
+	
+$ \partial_t \hat{B}_z 
+ -\frac{1}{\mathring{\rho}} (\mathring{B}_z \mathring{v}_x - \mathring{B}_x \mathring{v}_z) 
+	\partial_x \hat{\rho} 
+ +\frac{1}{\mathring{\rho}} \mathring{B}_z 
+	\partial_x \hat{(\rho v_x)}  
+ -\frac{1}{\mathring{\rho}} \mathring{B}_x 
+	\partial_x \hat{(\rho v_z)}  
+ -\mathring{v}_z 
+	\partial_x \hat{B}_x  
+ +\mathring{v}_x 
+	\partial_x \hat{B}_z  
+= -i k (
+ -\frac{1}{\mathring{\rho}} (\mathring{B}_z \mathring{v}_y - \mathring{B}_y \mathring{v}_z) 
+	\hat{\rho} 
+ +\frac{1}{\mathring{\rho}} \mathring{B}_z 
+	\hat{(\rho v_y)}  
+ -\frac{1}{\mathring{\rho}} \mathring{B}_y 
+	\hat{(\rho v_z)}  
+ -\mathring{v}_z 
+	\hat{B}_y  
+ +\mathring{v}_y 
+	\hat{B}_z  
+)$<br>
+
+$ \partial_t \hat{E}_{total}
+ +(\mathring{v}_x (\frac{1}{2} (\gamma-1) \mathring{v}^2 - \mathring{h}_{total}) + \frac{1}{\mu_0\mathring{\rho}} \mathring{B}_x \mathring{B}_m \mathring{v}_m)  \partial_x \hat{\rho} 
+ +(-(\gamma-1) \mathring{v}_x \mathring{v}_x - \frac{1}{\mu_0\mathring{\rho}} \mathring{B}_x \mathring{B}_x + \mathring{h}_{total})  \partial_x \hat{(\rho v_x)}  
+ +(-(\gamma-1) \mathring{v}_x \mathring{v}_y - \frac{1}{\mu_0\mathring{\rho}} \mathring{B}_x \mathring{B}_y ) \partial_x \hat{(\rho v_y)}  
+ +(-(\gamma-1) \mathring{v}_x \mathring{v}_z - \frac{1}{\mu_0\mathring{\rho}} \mathring{B}_x \mathring{B}_z)  \partial_x \hat{(\rho v_z)}  
+ -\frac{1}{\mu_0} ((\gamma - 2) \mathring{v}_x \mathring{B}_x + \mathring{v}_x \mathring{B}_x + \mathring{v}_m \mathring{B}_m)  \partial_x \hat{B}_x  
+ -\frac{1}{\mu_0} ((\gamma - 2) \mathring{v}_x \mathring{B}_y + \mathring{v}_y \mathring{B}_x)  \partial_x \hat{B}_y  
+ -\frac{1}{\mu_0} ((\gamma - 2) \mathring{v}_x \mathring{B}_z + \mathring{v}_z \mathring{B}_x)  \partial_x \hat{B}_z  
+ \gamma \mathring{v}_x \partial_x \hat{E}_{total}
+= -i k (
+(\mathring{v}_y (\frac{1}{2} (\gamma-1) \mathring{v}^2 - \mathring{h}_{total}) + \frac{1}{\mu_0\mathring{\rho}} \mathring{B}_y \mathring{B}_m \mathring{v}_m ) \hat{\rho} 
++(-(\gamma-1) \mathring{v}_y \mathring{v}_x - \frac{1}{\mu_0\mathring{\rho}} \mathring{B}_y \mathring{B}_x) \hat{(\rho v_x)}  
++(-(\gamma-1) \mathring{v}_y \mathring{v}_y - \frac{1}{\mu_0\mathring{\rho}} \mathring{B}_y \mathring{B}_y + \mathring{h}_{total}) \hat{(\rho v_y)}  
++(-(\gamma-1) \mathring{v}_y \mathring{v}_z - \frac{1}{\mu_0\mathring{\rho}} \mathring{B}_y \mathring{B}_z) \hat{(\rho v_z)}  
+-\frac{1}{\mu_0} ((\gamma - 2) \mathring{v}_y \mathring{B}_x + \mathring{v}_x \mathring{B}_y) \hat{B}_x  
+-\frac{1}{\mu_0} ((\gamma - 2) \mathring{v}_y \mathring{B}_y + \mathring{v}_y \mathring{B}_y + \mathring{v}_m \mathring{B}_m) \hat{B}_y  
+-\frac{1}{\mu_0} ((\gamma - 2) \mathring{v}_y \mathring{B}_z + \mathring{v}_z \mathring{B}_y) \hat{B}_z  
++\gamma \mathring{v}_y \hat{E}_{total}
+)$<br>
+
+<br>
+
+Primitive perturbations:<br>
+$W_i = \downarrow i \left[\matrix{ \rho \\ v_i \\ B_i \\ P }\right]$<br>
+$W_i = \mathring{W}_i + \epsilon exp(i(yk + zm)) \hat{W}_i$<br> 
+<br>
+
+individual terms of MHD primitive perturbations:<br>
+$\rho = \mathring{\rho} + \epsilon exp(i(yk + zm)) \hat{\rho}$<br>
+$v_i = \mathring{v}_i + \epsilon exp(i(yk + zm)) \hat{v}_i$<br>
+$B_i = \mathring{B}_i + \epsilon exp(i(yk + zm)) \hat{B}_i$<br>
+$P = \mathring{P} + \epsilon exp(i(yk + zm)) \hat{P}$<br>
+<br>
+
+individual terms of MHD conservative perturbations:<br>
+$\rho = \mathring{\rho} + \epsilon exp(i(yk + zm)) \hat{\rho}$<br>
+$\rho v_i = (\mathring{\rho} + \epsilon exp(i(yk + zm)) \hat{\rho}) (\mathring{v_i} + \epsilon exp(i(yk + zm)) \hat{v}_i)
+	= \mathring{\rho} \mathring{v}_i + \epsilon exp(i(yk + zm)) (\mathring{\rho} \hat{v}_i + \hat{\rho} \mathring{v}_i) + \mathcal{O}(\epsilon^2)
+	= \mathring{(\rho v_i)} + \epsilon exp(i(yk + zm)) \hat{(\rho v_i)} + \mathcal{O}(\epsilon^2)
+$<br>
+$B_i = \mathring{B}_i + \epsilon exp(i(yk + zm)) \hat{B}_i$<br>
+$E_{total}
+= \frac{1}{2} \rho v^2 + \frac{1}{\gamma - 1} P + \frac{1}{2 \mu_0} B^2
+= \frac{1}{2} (
+		\mathring{\rho} + \epsilon exp(i(yk + zm)) \hat{\rho}
+	) \Sigma_{k=1}^3 (
+		\mathring{v}_k + \epsilon exp(i(yk + zm)) \hat{v}_k
+	)^2
+	+ \frac{1}{\gamma-1} (
+		\mathring{P} + \epsilon exp(i(yk + zm)) \hat{P}
+	)
+	+ \frac{1}{2 \mu_0} \Sigma_{k=1}^3 (
+		\mathring{B}_k + \epsilon exp(i(yk + zm)) \hat{B}_k
+	)^2
+$<br>
+$ = \frac{1}{2} (
+		\mathring{\rho} + \epsilon exp(i(yk + zm)) \hat{\rho}
+	) \Sigma_{k=1}^3 (
+		\mathring{v}_k^2 + 2 \epsilon exp(i(yk + zm)) \mathring{v}_k \hat{v}_k + \mathcal{O}(\epsilon^2)
+	)
+	+ \frac{1}{\gamma-1} (
+		\mathring{P} + \epsilon exp(i(yk + zm)) \hat{P}
+	)
+	+ \frac{1}{2 \mu_0} \Sigma_{k=1}^3 (
+		\mathring{B}_k^2 + 2 \epsilon exp(i(yk + zm)) \mathring{B}_k \hat{B}_k + \mathcal{O}(\epsilon^2)
+	)
+$<br>
+$ = \frac{1}{2} \mathring{\rho} \mathring{v}^2
+	+ \frac{1}{\gamma-1} \mathring{P} 
+	+ \frac{1}{2 \mu_0} \mathring{B}^2 
+	
+	+ \epsilon exp(i(yk + zm)) (
+		\frac{1}{2} \hat{\rho} \mathring{v}^2
+		+ \mathring{\rho} \mathring{v}_k \hat{v}_k 
+		+ \frac{1}{\gamma-1} \hat{P}
+		+ \frac{1}{\mu_0} \mathring{B}_k \hat{B}_k 
+	)	
+	+ \mathcal{O}(\epsilon^2)
+$<br>
+$ = \mathring{E}_{total} + \epsilon exp(i(yk + zm)) \hat{E}_{total}$<br>
+<br>
+
+Derived linearized perturbation relations:<br>
+$\mathring{U}_i 
+= \downarrow i \left[\matrix{
+	\mathring{\rho} \\
+	\mathring{(\rho v_i)} \\
+	\mathring{B}_i \\
+	\mathring{E}_{total}
+}\right] + \epsilon exp(i(yk + zm)) \cdot \downarrow i \left[\matrix{
+	\hat{\rho} \\
+	\hat{(\rho v_i)} \\
+	\hat{B}_i \\
+	\hat{E}_{total}
+}\right]
+= \downarrow i \left[\matrix{
+	\mathring{\rho} \\
+	\mathring{\rho} \mathring{v}_i \\
+	\mathring{B}_i \\
+	\frac{1}{2} \mathring{\rho} \mathring{v}^2 + \frac{1}{\gamma - 1} \mathring{P} + \frac{1}{2 \mu_0} \mathring{B}^2
+}\right] + \epsilon exp(i(yk + zm)) \cdot \downarrow i \left[\matrix{
+	\hat{\rho} \\
+	\mathring{\rho} \hat{v}_i + \hat{\rho} \mathring{v}_i \\
+	\hat{B}_i \\
+	\frac{1}{2} \hat{\rho} \mathring{v}^2
+	+ \mathring{\rho} \mathring{v}_k \hat{v}_k 
+	+ \frac{1}{\gamma-1} \hat{P}
+	+ \frac{1}{\mu_0} \mathring{B}_k \hat{B}_k 
+}\right]
+$<br>
+<br>
+individually:<br>
+$\mathring{(\rho v_i)} = \mathring{\rho} \mathring{v}_i$<br>
+$\hat{(\rho v_i)} = \mathring{\rho} \hat{v}_i + \hat{\rho} \mathring{v}_i$<br>
+$\mathring{E}_{total} = \frac{1}{2} \mathring{\rho} \mathring{v}^2 + \frac{1}{\gamma-1} \mathring{P} + \frac{1}{2 \mu_0} \mathring{B}^2$<br>
+$\hat{E}_{total} = \frac{1}{2} \hat{\rho} \mathring{v}^2 + \mathring{\rho} \mathring{v}_k \hat{v}_k + \frac{1}{\gamma-1} \hat{P} + \frac{1}{\mu_0} \mathring{B}_k \hat{B}_k$<br>
+<br>
+coincidentally, in terms of differentials, things look very similar, for $\hat{x} = \delta \mathring{x}$:<br>
+$\delta (\rho v_i) = \delta (\rho v_i) = \rho \delta v_i + v_i \delta \rho$<br>
+$\delta E_{total} 
+= \delta (\frac{1}{2} \rho v^2 + \frac{1}{\gamma-1} P + \frac{1}{2 \mu_0} B^2) 
+= \frac{1}{2} v^2 \delta \rho + \rho v_k \delta v_k + \frac{1}{\gamma-1} \delta P + \frac{1}{\mu_0} B_k \delta B_k$<br>
+<br>
+
+Next: plug the $\hat{W}_i$'s into the $\hat{U}$ MHD equations...<br>
+
+$\partial_t \hat{\rho} + \partial_x \hat{\rho} = -i k (\mathring{\rho} \hat{v}_y + \hat{\rho} \mathring{v}_y)$<br> 
+
+$\partial_t (\mathring{\rho} \hat{v}_x + \hat{\rho} \mathring{v}_x)
++ (-\mathring{v}_x \mathring{v}_x + \frac{1}{2} (\gamma-1) \mathring{v}^2) \partial_x \hat{\rho} 
+	-(\gamma-3) \mathring{v}_x \partial_x (\mathring{\rho} \hat{v}_x + \hat{\rho} \mathring{v}_x)
+	-(\gamma-1) \mathring{v}_y \partial_x (\mathring{\rho} \hat{v}_y + \hat{\rho} \mathring{v}_y)
+	-(\gamma-1) \mathring{v}_z \partial_x (\mathring{\rho} \hat{v}_z + \hat{\rho} \mathring{v}_z)
+	-\frac{1}{\mu_0} \gamma \mathring{B}_x \partial_x \hat{B}_x 
+	-\frac{1}{\mu_0} (\gamma-2) \mathring{B}_y \partial_x \hat{B}_y 
+	-\frac{1}{\mu_0} (\gamma-2) \mathring{B}_z \partial_x \hat{B}_z 
+	+ (\gamma - 1) \partial_x (\frac{1}{2} \hat{\rho} \mathring{v}^2 + \mathring{\rho} \mathring{v}_q \hat{v}_q + \frac{1}{\gamma-1} \hat{P} + \frac{1}{\mu_0} \mathring{B}_q \hat{B}_q)
+= -i k (
+ -\mathring{v}_x \mathring{v}_y \hat{\rho} 
+ +\mathring{v}_y (\mathring{\rho} \hat{v}_x + \hat{\rho} \mathring{v}_x)
+ +\mathring{v}_x (\mathring{\rho} \hat{v}_y + \hat{\rho} \mathring{v}_y)
+ -\frac{1}{\mu_0} \mathring{B}_y \hat{B}_x 
+ -\frac{1}{\mu_0} \mathring{B}_x \hat{B}_y 
+)$<br>
+
+$\partial_t (\mathring{\rho} \hat{v}_y + \hat{\rho} \mathring{v}_y) 
+ -\mathring{v}_y \mathring{v}_x \partial_x \hat{\rho} 
+ +\mathring{v}_y \partial_x (\mathring{\rho} \hat{v}_x + \hat{\rho} \mathring{v}_x)  
+ +\mathring{v}_x \partial_x (\mathring{\rho} \hat{v}_y + \hat{\rho} \mathring{v}_y)  
+ -\frac{1}{\mu_0} \mathring{B}_y \partial_x \hat{B}_x  
+ -\frac{1}{\mu_0} \mathring{B}_x \partial_x \hat{B}_y  
+= -i k (
+(-\mathring{v}_y \mathring{v}_y + \frac{1}{2} (\gamma-1) \mathring{v}^2) \hat{\rho} 
+-(\gamma-1) \mathring{v}_x (\mathring{\rho} \hat{v}_x + \hat{\rho} \mathring{v}_x)  
+-(\gamma-3) \mathring{v}_y (\mathring{\rho} \hat{v}_y + \hat{\rho} \mathring{v}_y)  
+-(\gamma-1) \mathring{v}_z (\mathring{\rho} \hat{v}_z + \hat{\rho} \mathring{v}_z)  
+-\frac{1}{\mu_0} (\gamma-2) \mathring{B}_x \hat{B}_x  
+-\frac{1}{\mu_0} \gamma \mathring{B}_y \hat{B}_y  
+-\frac{1}{\mu_0} (\gamma-2) \mathring{B}_z \hat{B}_z  
+-(\gamma-1) (\frac{1}{2} \hat{\rho} \mathring{v}^2 + \mathring{\rho} \mathring{v}_q \hat{v}_q + \frac{1}{\gamma-1} \hat{P} + \frac{1}{\mu_0} \mathring{B}_q \hat{B}_q)
+)$<br>
+
+$\partial_t (\mathring{\rho} \hat{v}_z + \hat{\rho} \mathring{v}_z)  
+-\mathring{v}_z \mathring{v}_x \partial_x \hat{\rho} 
++\mathring{v}_z \partial_x (\mathring{\rho} \hat{v}_x + \hat{\rho} \mathring{v}_x)  
++\mathring{v}_x \partial_x (\mathring{\rho} \hat{v}_z + \hat{\rho} \mathring{v}_z)  
+-\frac{1}{\mu_0} \mathring{B}_z \partial_x \hat{B}_x  
+-\frac{1}{\mu_0} \mathring{B}_x \partial_x \hat{B}_z  
+= -i k (
+ -\mathring{v}_z \mathring{v}_y \hat{\rho} 
+ +\mathring{v}_z (\mathring{\rho} \hat{v}_y + \hat{\rho} \mathring{v}_y)  
+ +\mathring{v}_y (\mathring{\rho} \hat{v}_z + \hat{\rho} \mathring{v}_z)  
+ -\frac{1}{\mu_0} \mathring{B}_z \hat{B}_y  
+ -\frac{1}{\mu_0} \mathring{B}_y \hat{B}_z  
+)$<br>
+	
+$\partial_t \hat{B}_x  
+= -i k (
+ -\frac{1}{\mathring{\rho}} (\mathring{B}_x \mathring{v}_y - \mathring{B}_y \mathring{v}_x) \hat{\rho} 
+ - \frac{1}{\mathring{\rho}} \mathring{B}_y (\mathring{\rho} \hat{v}_x + \hat{\rho} \mathring{v}_x)  
+ + \frac{1}{\mathring{\rho}} \mathring{B}_x (\mathring{\rho} \hat{v}_y + \hat{\rho} \mathring{v}_y)  
+ + \mathring{v}_y \hat{B}_x  
+ - \mathring{v}_x \hat{B}_y  
+)$<br>
+
+$ \partial_t \hat{B}_y 
+-\frac{1}{\mathring{\rho}} (\mathring{B}_y \mathring{v}_x - \mathring{B}_x \mathring{v}_y) \partial_x \hat{\rho} 
+ +\frac{1}{\mathring{\rho}} \mathring{B}_y \partial_x (\mathring{\rho} \hat{v}_x + \hat{\rho} \mathring{v}_x)  
+ -\frac{1}{\mathring{\rho}} \mathring{B}_x \partial_x (\mathring{\rho} \hat{v}_y + \hat{\rho} \mathring{v}_y)  
+ -\mathring{v}_y \partial_x \hat{B}_x  
+ +\mathring{v}_x \partial_x \hat{B}_y  
+= 0$<br> 
+	
+$ \partial_t \hat{B}_z 
+ -\frac{1}{\mathring{\rho}} (\mathring{B}_z \mathring{v}_x - \mathring{B}_x \mathring{v}_z) \partial_x \hat{\rho} 
+ +\frac{1}{\mathring{\rho}} \mathring{B}_z \partial_x (\mathring{\rho} \hat{v}_x + \hat{\rho} \mathring{v}_x)  
+ -\frac{1}{\mathring{\rho}} \mathring{B}_x \partial_x (\mathring{\rho} \hat{v}_z + \hat{\rho} \mathring{v}_z)  
+ -\mathring{v}_z \partial_x \hat{B}_x  
+ +\mathring{v}_x \partial_x \hat{B}_z  
+= -i k (
+ -\frac{1}{\mathring{\rho}} (\mathring{B}_z \mathring{v}_y - \mathring{B}_y \mathring{v}_z) \hat{\rho} 
+ +\frac{1}{\mathring{\rho}} \mathring{B}_z (\mathring{\rho} \hat{v}_y + \hat{\rho} \mathring{v}_y)  
+ -\frac{1}{\mathring{\rho}} \mathring{B}_y (\mathring{\rho} \hat{v}_z + \hat{\rho} \mathring{v}_z)  
+ -\mathring{v}_z \hat{B}_y  
+ +\mathring{v}_y \hat{B}_z  
+)$<br>
+
+$ \partial_t (\frac{1}{2} \hat{\rho} \mathring{v}^2 + \mathring{\rho} \mathring{v}_q \hat{v}_q + \frac{1}{\gamma-1} \hat{P} + \frac{1}{\mu_0} \mathring{B}_q \hat{B}_q)
+ +(\mathring{v}_x (\frac{1}{2} (\gamma-1) \mathring{v}^2 - \mathring{h}_{total}) + \frac{1}{\mu_0\mathring{\rho}} \mathring{B}_x \mathring{B}_m \mathring{v}_m)  \partial_x \hat{\rho} 
+ +(-(\gamma-1) \mathring{v}_x \mathring{v}_x - \frac{1}{\mu_0\mathring{\rho}} \mathring{B}_x \mathring{B}_x + \mathring{h}_{total})  \partial_x (\mathring{\rho} \hat{v}_x + \hat{\rho} \mathring{v}_x)  
+ +(-(\gamma-1) \mathring{v}_x \mathring{v}_y - \frac{1}{\mu_0\mathring{\rho}} \mathring{B}_x \mathring{B}_y ) \partial_x (\mathring{\rho} \hat{v}_y + \hat{\rho} \mathring{v}_y)  
+ +(-(\gamma-1) \mathring{v}_x \mathring{v}_z - \frac{1}{\mu_0\mathring{\rho}} \mathring{B}_x \mathring{B}_z)  \partial_x (\mathring{\rho} \hat{v}_z + \hat{\rho} \mathring{v}_z)  
+ -\frac{1}{\mu_0} ((\gamma - 2) \mathring{v}_x \mathring{B}_x + \mathring{v}_x \mathring{B}_x + \mathring{v}_m \mathring{B}_m)  \partial_x \hat{B}_x  
+ -\frac{1}{\mu_0} ((\gamma - 2) \mathring{v}_x \mathring{B}_y + \mathring{v}_y \mathring{B}_x)  \partial_x \hat{B}_y  
+ -\frac{1}{\mu_0} ((\gamma - 2) \mathring{v}_x \mathring{B}_z + \mathring{v}_z \mathring{B}_x)  \partial_x \hat{B}_z  
+ \gamma \mathring{v}_x \partial_x (\frac{1}{2} \hat{\rho} \mathring{v}^2 + \mathring{\rho} \mathring{v}_q \hat{v}_q + \frac{1}{\gamma-1} \hat{P} + \frac{1}{\mu_0} \mathring{B}_q \hat{B}_q)
+= -i k (
+(\mathring{v}_y (\frac{1}{2} (\gamma-1) \mathring{v}^2 - \mathring{h}_{total}) + \frac{1}{\mu_0\mathring{\rho}} \mathring{B}_y \mathring{B}_m \mathring{v}_m ) \hat{\rho} 
++(-(\gamma-1) \mathring{v}_y \mathring{v}_x - \frac{1}{\mu_0\mathring{\rho}} \mathring{B}_y \mathring{B}_x) (\mathring{\rho} \hat{v}_x + \hat{\rho} \mathring{v}_x)  
++(-(\gamma-1) \mathring{v}_y \mathring{v}_y - \frac{1}{\mu_0\mathring{\rho}} \mathring{B}_y \mathring{B}_y + \mathring{h}_{total}) (\mathring{\rho} \hat{v}_y + \hat{\rho} \mathring{v}_y)  
++(-(\gamma-1) \mathring{v}_y \mathring{v}_z - \frac{1}{\mu_0\mathring{\rho}} \mathring{B}_y \mathring{B}_z) (\mathring{\rho} \hat{v}_z + \hat{\rho} \mathring{v}_z)  
+-\frac{1}{\mu_0} ((\gamma - 2) \mathring{v}_y \mathring{B}_x + \mathring{v}_x \mathring{B}_y) \hat{B}_x  
+-\frac{1}{\mu_0} ((\gamma - 2) \mathring{v}_y \mathring{B}_y + \mathring{v}_y \mathring{B}_y + \mathring{v}_m \mathring{B}_m) \hat{B}_y  
+-\frac{1}{\mu_0} ((\gamma - 2) \mathring{v}_y \mathring{B}_z + \mathring{v}_z \mathring{B}_y) \hat{B}_z  
++\gamma \mathring{v}_y (\frac{1}{2} \hat{\rho} \mathring{v}^2 + \mathring{\rho} \mathring{v}_q \hat{v}_q + \frac{1}{\gamma-1} \hat{P} + \frac{1}{\mu_0} \mathring{B}_q \hat{B}_q)
+)$<br>
+
+<br>
+...and simplifying...<br>
+$\partial_t \hat{B}_x  
+= -i k (
+ - \mathring{B}_y \hat{v}_x
+ + \mathring{B}_x \hat{v}_y
+ + \mathring{v}_y \hat{B}_x  
+ - \mathring{v}_x \hat{B}_y  
+)$<br>
+
+<h3>EMHD equations</h3>
+
+state vector:<br>
+$U_i = \downarrow i \left[\matrix{
+	\rho \\ \rho v_i \\ E_{total} \\ E_i \\ B_i
+}\right]$<br>
+$E_{total} = E_{kin} + E_{int} + E_{EM} 
+= \frac{1}{2} \rho v^2 + \frac{P}{\gamma - 1} + \frac{1}{2} ( \epsilon_0 E^2 + \frac{1}{\mu_0} B^2 ) =$ total energy<br>
+<br>
+
+Maxwell equations:<br>
+<br>
+
+Lorentz force law:<br>
+$\rho \partial_t v^i = q (E^i + {\epsilon^i}_{jk} v^j B^k)$<br>
+<br>
+
+Flux in $j$th direction:<br>
+$F_{ij} = \downarrow i \left[\matrix{
+	\rho v_j \\
+	\rho v_i v_j + \delta_{ij} P_{total} \\
+	H_{total} v_j \\
+	
+}\right]$<br>
+
+
+	</body>
+</html>

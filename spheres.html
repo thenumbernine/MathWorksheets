@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Hyperspheres and exponentials</title>
+		<!-- script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script -->
+		<script type="text/javascript" async src="file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+	</head>
+	<body>
+
+Sphere function: $S_n = \frac{2 \pi^{n/2}}{ (\frac{1}{2} n - 1)! }$<br>
+Sphere volume: $V_n = \frac{S_n R^n}{n}$<br>
+Sphere surface: $A_n = \frac{dV_n}{dR} = S_n R^{n-1}$<br>
+$S_n = \frac{2\pi^{n/2}}{\Gamma(n/2)}$ for the $\Gamma$ function definition<br>
+$S_n = \frac{2^{(n+1)/2} \pi^{(n-1)/2}}{(n-2)!!}$ for n odd<br>
+$S_n = \frac{2\pi^{n/2}}{(n/2-1)!}$ for n even<br>
+<br>
+
+Sum of surface areas of all even dimensions of a particular radius:<br>
+$\Sigma_{n=2,4,...}^\infty A_n$<br>
+$= \Sigma_{n=2,4,...}^\infty S_n R^{n-1}$<br>
+$= \Sigma_{n=2,4,...}^\infty \frac{2\pi^{n/2}}{(n/2-1)!} R^{n-1}$<br>
+$= \Sigma_{k'=1}^\infty \frac{2\pi^{k'}}{(k'-1)!} R^{2k'-1}$ for $k'=n/2$, $n=2k'$<br>
+$= \Sigma_{k=0}^\infty \frac{2\pi^{k+1}}{k!} R^{2k+1}$ for $k=k'-1$, $k'=k+1$<br>
+$= 2 \pi R \; \Sigma_{k=0}^\infty \frac{(\pi R^2)^k}{k!}$<br>
+$= 2 \pi R \; exp(\pi R^2)$ by $exp(x) = \Sigma_{k=0}^\infty \frac{x^k}{k!}$<br>
+<br>
+
+Sum of surface areas of all odd dimensions of a particular radius:<br>
+<br>
+
+Integral of surface areas of all dimensions $\ge 2$:<br>
+$\int_{n=2}^{n=\infty} A_n dn$<br>
+$=\int_{n=2}^{n=\infty} S_n R^{n-1} dn$<br>
+$=\int_{n=2}^{n=\infty} \frac{2\pi^{n/2}}{\Gamma(n/2)} R^{n-1} dn$<br>
+$=\frac{4\pi R}{\pi R^2} \int_{k=1}^{k=\infty} \frac{(\pi R^2)^k}{\Gamma(k)} dk$ for $k=n/2$, $n=2k$, $dn=2dk$<br>
+<br>
+Ramanujan says<br>
+$\int_{x=0}^{x=\infty} \frac{w^x}{\Gamma(x+1)} dx = e^w - \int_{y=-\infty}^{y=\infty} \frac{exp(-we^y)}{y^2+\pi^2} dy$<br>
+$= \frac{1}{w} \int_{y=1}^{y=\infty} \frac{w^y}{\Gamma(y)} dx$ for $y=x+1$, $x=y-1$, $dx=dy$<br>
+<br>
+$=4 \pi R \left(
+	exp(\pi R^2) - \int_{y=-\infty}^{y=\infty} \frac{exp(-\pi R^2 e^y)}{y^2+\pi^2} dy
+\right)$<br>
+
+	</body>
+</html>

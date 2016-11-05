@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Fluid Equations</title>
+		<!-- script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script -->
+		<script type="text/javascript" async src="file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+	</head>
+	<body>
+<h3>Fluids</h3>
+
+Gravitation box 22.2, p. 564:<br>
+
+Conservative form of Euler fluid equations in 3D:<br>
+
+$\rho_{,t} + (\rho v^j)_{,j} = 0$<br>
+$(\rho v^i)_{,t} + (\rho v^i v^j + \delta^{ij} P)_{,j} = 0$<br>
+<br>
+
+Conservative form of Euler fluid equations in 4D:<br>
+$(\rho + P) {u^\mu}_{;\nu} u^\nu + (g^{\mu\nu} + u^\mu u^\nu) P_{;\nu} = 0$<br>
+<br>
+
+...in flat space:<br>
+$(\rho + P) {u^\mu}_{,\nu} u^\nu + (\eta^{\mu\nu} + u^\mu u^\nu) P_{,\nu} = 0$<br>
+<br>
+
+...splitting apart space and time:<br>
+$(\rho + P) ({u^t}_{,t} u^t + {u^t}_{,j} u^j)
++ (\eta^{t t} + u^t u^t) P_{,t}
++ (\eta^{t j} + u^t u^j) P_{,j}  = 0$<br>
+$(\rho + P) ({u^i}_{,t} u^t + {u^i}_{,j} u^j)
++ (\eta^{i t} + u^i u^t) P_{,t}
++ (\eta^{i j} + u^i u^j) P_{,j}  = 0$<br>
+<br>
+$(\rho + P) ({u^t}_{,t} u^t + {u^t}_{,j} u^j)
++ (-1 + u^t u^t) P_{,t}
++ u^t u^j P_{,j}  = 0$<br>
+$(\rho + P) ({u^i}_{,t} u^t + {u^i}_{,j} u^j)
++ u^i u^t P_{,t}
++ (\delta^{i j} + u^i u^j) P_{,j}  = 0$<br>
+<br>
+
+...low velocities: $0 \approx u^i$, so $-1 = u^\mu u_\mu = -(u^t)^2 + (u^i)^2 \approx -(u^t)^2$ means $u^t \approx \pm 1$.  I'll use $u^t = 1$<br>
+$ u^j P_{,j}  = 0$<br>
+$(\rho + P) ({u^i}_{,t} + {u^i}_{,j} u^j) + u^i P_{,t} + (\delta^{i j} + u^i u^j) P_{,j}  = 0$<br>
+<br>
+
+</html>

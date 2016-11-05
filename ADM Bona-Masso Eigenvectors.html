@@ -1,0 +1,497 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>ADM Bona Masso</title>
+		<!-- script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script -->
+		<script type="text/javascript" async src="file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+	</head>
+	<body>
+<h3>Bona-Masso Formalism:</h3>
+
+defined variables:<br>
+$\alpha$ = lapse<br>
+$\beta^k$ = shift<br>
+$\gamma_{ij}$ = spatial metric<br>
+$K_{ij}$ = extrinsic curvature<br>
+<br>
+
+hyperbolic formalism variables:<br>
+$A_k = (ln (\alpha))_{,k}$, therefore $\alpha A_k = \alpha_{,k}$<br>
+${B_k}^i = {1\over2} {\beta^i}_{,k}$<br>
+$D_{kij} = {1\over2} \gamma_{ij,k}$<br>
+$V_k = {D_{km}}^m - {D^m}_{mk}$<br>
+<br>
+
+extra variables:<br>
+$s_{ij} = (B_{ij} + B_{ji}) / \alpha$<br>
+${\lambda^k}_{ij} = {D^k}_{ij} + \delta^k_{(i} (A_{j)} + 2 V_{j)} - {D_{j)r}}^r)$<br>
+<br>
+
+time evoluion (flux-less):<br>
+$\alpha_{,t} = -\alpha^2 Q$<br>
+${\beta^k}_{,t} = -2 \alpha^2 Q^i$ (check this, it's from the Bona Masso paper, which doesn't specify the $\alpha$ evolution, but does specify $ln(\alpha)$ evolution)<br>
+$\gamma_{ij,t} = -2 \alpha K_{ij}$<br>
+<br>
+
+time evolution (flux terms):<br>
+$A_{k,t} + (-\beta^r A_k + \alpha Q \delta^r_k)_{,r} = (2 {B_k}^r - \alpha tr(s) \delta^r_k) A_r$<br>
+${{B_k}^i}_{,t} + (-\beta^r {B_k}^i + \alpha Q^i \delta^r_k)_{,r} = (2 {B_k}^r - \alpha tr(s) \delta^r_k) {B_r}^i$<br>
+$D_{kij,t} + (-\beta^r D_{kij} + \alpha \delta^r_k (K_{ij} - s_{ij}))_{,r} = (2 {B_k}^r - \alpha tr(s) \delta^r_k) D_{rij}$<br>
+$K_{ij,t} + (-\beta^r K_{ij} + \alpha {\lambda^r}_{ij})_{,r} = \alpha S_{ij}$<br>
+
+$V_{k,t} = \alpha P_k$<br>
+<br>
+
+expanded flux terms:<br>
+$A_{k,t} + \delta^r_k Q \alpha_{,r} - A_k {\beta^r}_{,r} - \beta^r {A_k}_{,r} + \delta^r_k \alpha Q_{,r} = (2 {B_k}^r - \alpha tr(s) \delta^r_k) A_r$<br>
+${{B_k}^i}_{,t} - {\beta^r}_{,r} {B_k}^i - \beta^r {{B_k}^i}_{,r} + \delta^r_k \alpha_{,r} Q^i + \delta^r_k \alpha Q^i_{,r} = (2 {B_k}^r - \alpha tr(s) \delta^r_k) {B_r}^i$<br>
+$D_{kij,t} - {\beta^r}_{,r} D_{kij} - \beta^r D_{kij,r} + \delta^r_k \alpha_{,r} K_ij + \delta^r_k \alpha K_{ij,r} - \delta^r_k B_{ij,r} - \delta^r_k B_{ji,r} = (2 {B_k}^r - \alpha tr(s) \delta^r_k) D_{rij}$<br>
+$K_{ij,t} - {\beta^r}_{,r} K_{ij} - \beta^r K_{ij,r} + \alpha_{,r} ({D^r}_{ij} + \delta^r_{(i} (A_{j)} + 2 V_{j)} - {D_{j)k}}^k)) + \alpha ({D^r}_{ij,r} + \delta^r_{(i} (A_{j),r} + 2 V_{j),r} - {{D_{j)k}}^k}_{,r})) = \alpha S_{ij}$<br>
+<br>
+
+...when $\beta^k = 0$:<br>
+$A_{k,t} + \delta^r_k \alpha_{,r} Q + \delta^r_k \alpha Q_{,r} = 0$<br>
+$D_{kij,t} + \delta^r_k \alpha_{,r} K_ij + \delta^r_k \alpha K_{ij,r} = 0$<br>
+$K_{ij,t} + \alpha_{,r} ({D^r}_{ij} + \delta^r_{(i} (A_{j)} + 2 V_{j)} - {D_{j)k}}^k)) + \alpha {D^r}_{ij,r} + \alpha \delta^r_{(i} (A_{j),r} + 2 V_{j),r} - {{D_{j)k}}^k}_{,r}) = \alpha S_{ij}$<br>
+<br>
+
+...for $Q = f(\alpha) tr(K)$:<br>
+$A_{k,t} + \delta^r_k tr(K) (f + \alpha f') \alpha_{,r} + \delta^r_k \alpha f \gamma^{ij} K_{ij,r} - \delta^r_k \alpha f K^{ij} \gamma_{ij,r} = 0$<br>
+$D_{kij,t} + \delta^r_k \alpha_{,r} K_ij + \delta^r_k \alpha K_{ij,r} = 0$<br>
+$K_{ij,t} + \alpha_{,r} ({D^r}_{ij} + \delta^r_{(i} (A_{j)} + 2 V_{j)} - {D_{j)k}}^k)) + \alpha {D^r}_{ij,r} + \alpha \delta^r_{(i} (A_{j),r} + 2 V_{j),r} - {{D_{j)k}}^k}_{,r}) = \alpha S_{ij}$<br>
+<br>
+
+...with partials replaced with hyperbolic formalisms where possible:<br>
+$A_{k,t} + \delta^r_k \alpha f \gamma^{ij} K_{ij,r} = -\alpha tr(K) (f + \alpha f') A_k + 2 \alpha f K^{ij} D_{kij}$<br>
+$D_{kij,t} + \delta^r_k \alpha K_{ij,r} = -\alpha A_k K_{ij}$<br>
+$K_{ij,t} 
+	+ \alpha \delta^r_{(i} \delta^m_{j)} A_{m,r} 
+	+ \alpha (\gamma^{rm} \delta^p_i \delta^q_j - \gamma^{pq} \delta^r_i \delta^m_j) D_{mpq,r} 
+	+ 2 \alpha \delta^r_{(i} \delta^m_{j)} V_{m,r} 
+	= \alpha S_{ij} 
+	- \alpha {\lambda^k}_{ij} A_k
+	- 2 \alpha {D_{(j}}^{mn} D_{i)mn} 
+	+ 2 \alpha {D_m}^{mk} {D^k}_{ij}$<br>
+<br>
+
+...what is currently implemented: (source terms at least)<br>
+(how did the coefficients of the derivative magically change from the last system to this system?)<br>
+$A_{k,t} + \alpha f \gamma^{ij} K_{ij,k} = -\alpha tr(K) (f + \alpha f') A_k + 2 \alpha f K^{ij} D_{kij}$<br>
+$D_{kij,t} + \alpha K_{ij,k} = -\alpha A_k K_{ij}$<br>
+$K_{ij,t} 
+	+ \alpha \gamma^{km} D_{mij,k} 
+	+ {1\over2} \alpha (\delta^k_i \delta^l_j 
+	+ \delta^k_j \delta^l_i) A_{l,k} 
+	+ \alpha (\delta^k_i \delta^m_j + \delta^k_j \delta^m_i) V_{m,k} 
+	= \alpha S_{ij} 
+	- \alpha {\lambda^k}_{ij} A_k 
+	+ 2 \alpha D_{mij} {D_k}^{km}
+$<br>
+<br>
+
+matrix form:<br>
+$\left[ \matrix{ A_k \\ D_{kij} \\ K_{ij} \\ V_k } \right]_{,t}
++ \left[\matrix{
+	0 & 0 & \alpha f \gamma^{pq} \delta^r_k & 0 \\
+	0 & 0 & \alpha \delta^r_k \delta^p_i \delta^q_j & 0 \\
+	\alpha \delta^r_{(i} \delta^m_{j)} & 
+		\alpha \gamma^{rm} \delta^p_i \delta^q_j & 
+		0 &
+		2 \alpha \delta^r_{(i} \delta^m_{j)} \\
+	0 & 0 & 0 & 0
+}\right]
+\left[\matrix{A_m \\ D_{mpq} \\ K_{pq} \\ V_m}\right]_{,r} = Source$<br>
+<br>
+
+Considering flux along the $\chi$ direction.<br>
+Let $\chi'$ denote all indexes except $\chi$.<br>
+<br>
+
+<h3>Eigenfields of flux terms:</h3>
+<br>
+
+For $\lambda = 0$:<br>
+
+$w_{\chi'} = A_{\chi'}$ aka 
+$\left[\matrix{ \delta^m_{\chi'} & 0 & 0 & 0 }\right]
+\left[\matrix{A_m \\ D_{mpq}  \\ V_m \\ K_{pq}}\right]$<br>
+
+$w_{\chi'ij} = D_{\chi'ij}$ aka 
+$\left[\matrix{ 0 & \delta^m_{\chi'} \delta^p_i \delta^q_j & 0 & 0 }\right]
+\left[\matrix{A_m \\ D_{mpq}\\ V_m \\ K_{pq} }\right]$<br>
+
+$w_i = V_i$ aka
+$\left[\matrix{ 0 & 0 & \delta^m_i & 0 }\right]
+\left[\matrix{A_m \\ D_{mpq} \\ V_m\\ K_{pq} }\right]$<br>
+
+$w_\chi = A_\chi - f D_{\chi pq} \gamma^{pq}$ aka 
+$\left[\matrix{ \delta^m_\chi & -f \delta^m_\chi \gamma^{pq} & 0 & 0 }\right]
+\left[\matrix{A_m \\ D_{mpq} \\ V_m\\ K_{pq} }\right]$<br>
+<br>
+
+for $\lambda = \pm \alpha \sqrt{\gamma^{\chi\chi}}$:<br>
+$w_{i\chi'\pm} = \pm \sqrt{\gamma^{\chi\chi}} D_{\chi i\chi'} \pm \delta^\chi_i V_{\chi'} / \sqrt{\gamma^{\chi\chi}} + K_{i\chi'}$ aka<br>
+$\left[\matrix{
+	0 &
+	\pm \sqrt{\gamma^{\chi\chi}} \delta^m_\chi \delta^p_i \delta^q_{\chi'} &
+	\pm \delta^\chi_i \delta^m_{\chi'} / \sqrt{\gamma^{\chi\chi}} &
+	\delta^p_i \delta^q_{\chi'}
+}\right]
+\left[\matrix{A_m \\ D_{mpq} \\ V_m \\ K_{pq}}\right]$<br>
+<br>
+
+$\lambda = \pm \alpha \sqrt{f \gamma^{\chi\chi}}$<br>
+$w_{\pm} = \pm \sqrt{\gamma^{\chi\chi}} A_\chi \pm 2 \gamma^{\chi r} V_r / \sqrt{\gamma^{\chi\chi}} + \sqrt{f} \gamma^{pq} K_{pq}$ aka<br>
+$\left[\matrix{
+	\pm \sqrt{\gamma^{\chi\chi}} \delta^m_\chi &
+	0 &
+	\pm 2 \gamma^{\chi m} / \sqrt{\gamma^{\chi\chi}} &
+	\sqrt{f} \gamma^{pq}
+}\right]
+\left[\matrix{A_m \\ D_{mpq} \\ V_m \\ K_{pq}}\right]$<br>
+<br>
+
+<h3>Eigenfields <-> Left Eigenvectors</h3>
+
+$diag\left[\matrix{
+	-\alpha \sqrt{f \gamma^{\chi\chi}} \\
+	-\alpha \sqrt{\gamma^{\chi\chi}} \\
+	0 \\ 0 \\ 0 \\ 0 \\ 
+	\alpha \sqrt{\gamma^{\chi\chi}} \\
+	\alpha \sqrt{f \gamma^{\chi\chi}}
+}\right]
+\left[\matrix{
+		-\sqrt{\gamma^{\chi\chi}} \delta^m_\chi &
+		0 &
+		-2 \gamma^{\chi m} / \sqrt{\gamma^{\chi\chi}} &
+		\sqrt{f} \gamma^{pq}
+	\\	
+		0 &
+		-\sqrt{\gamma^{\chi\chi}} \delta^m_\chi \delta^p_i \delta^q_{\chi'} &
+		-\delta^\chi_i \delta^m_{\chi'} / \sqrt{\gamma^{\chi\chi}} &
+		\delta^p_i \delta^q_{\chi'}
+	\\	
+		\delta^m_{\chi'} & 0 & 0 & 0 \\
+		0 & \delta^m_{\chi'} \delta^p_i \delta^q_j & 0 & 0 \\
+		0 & 0 & \delta^m_i & 0 \\
+		\delta^m_\chi & -f \gamma^{pq} \delta^m_\chi & 0 & 0 \\
+	\\	
+		0 &
+		\sqrt{\gamma^{\chi\chi}} \delta^m_\chi \delta^p_i \delta^q_{\chi'} &
+		\delta^\chi_i \delta^m_{\chi'} / \sqrt{\gamma^{\chi\chi}} &
+		\delta^p_i \delta^q_{\chi'}
+	\\
+		\sqrt{\gamma^{\chi\chi}} \delta^m_\chi &
+		0 &
+		2 \gamma^{\chi m} / \sqrt{\gamma^{\chi\chi}} &
+		\sqrt{f} \gamma^{pq}
+}\right]
+\left[\matrix{A_m \\ D_{mpq} \\ V_m \\ K_{pq}}\right]$<br>
+<br>
+
+Full system, including $\alpha$ and $\gamma_{ij}$, and putting $V_k$ last -- to match the GPU implementation:<br>
+$
+\left[\matrix{
+	w^{fast}_- \\
+	w^{light}_{i\chi'-} \\
+	w^\alpha \\
+	w^\gamma_{ij} \\
+	w^A_{\chi'} \\
+	w^D_{\chi'ij} \\
+	w^V_i \\
+	w^\chi \\
+	w^{light}_{i\chi'+} \\
+	w^{fast}_+
+}\right] = 
+diag\left[\matrix{
+	-\alpha \sqrt{f \gamma^{\chi\chi}} \\
+	-\alpha \sqrt{\gamma^{\chi\chi}} \\
+	0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 
+	\alpha \sqrt{\gamma^{\chi\chi}} \\
+	\alpha \sqrt{f \gamma^{\chi\chi}}
+}\right] \cdot
+\left[\matrix{
+		0 &
+		0 &
+		-\sqrt{\gamma^{\chi\chi}} \delta^m_\chi &
+		0 &
+		\sqrt{f} \gamma^{pq} &
+		-2 \gamma^{\chi m} / \sqrt{\gamma^{\chi\chi}}
+	\\	
+		0 &
+		0 &
+		0 &
+		-\sqrt{\gamma^{\chi\chi}} \delta^m_\chi \delta^p_i \delta^q_{\chi'} &
+		\delta^p_i \delta^q_{\chi'} &
+		-\delta^\chi_i \delta^m_{\chi'} / \sqrt{\gamma^{\chi\chi}}
+	\\	
+		1 & 0 & 0 & 0 & 0 & 0 \\
+		0 & \delta^p_i \delta^q_j & 0 & 0 & 0 & 0 \\
+		0 & 0 & \delta^m_{\chi'} & 0 & 0 & 0 \\
+		0 & 0 & 0 & \delta^m_{\chi'} \delta^p_i \delta^q_j & 0 & 0 \\
+		0 & 0 & 0 & 0 & 0 & \delta^m_i \\
+		0 & 0 & \delta^m_\chi & -f \gamma^{pq} \delta^m_\chi & 0 & 0 \\
+	\\
+		0 &
+		0 &
+		0 &
+		\sqrt{\gamma^{\chi\chi}} \delta^m_\chi \delta^p_i \delta^q_{\chi'} &
+		\delta^p_i \delta^q_{\chi'} &
+		\delta^\chi_i \delta^m_{\chi'} / \sqrt{\gamma^{\chi\chi}} &
+	\\
+		0 &
+		0 &
+		\sqrt{\gamma^{\chi\chi}} \delta^m_\chi &
+		0 &
+		\sqrt{f} \gamma^{pq} &
+		2 \gamma^{\chi m} / \sqrt{\gamma^{\chi\chi}}
+}\right]
+\left[\matrix{
+	\alpha \\ \gamma_{pq} \\ A_m \\ D_{mpq} \\ K_{pq} \\ V_m
+}\right]$<br>
+<br>
+
+
+Expanded, represent symmetric in the order of xx, xy, xz, yy, yz, zz<br>
+<br>
+
+Flux along x axis:<br>
+$diag\left[\matrix{
+	-\alpha \sqrt{f \gamma^{xx}} \\
+	-\alpha \sqrt{\gamma^{xx}} \\ -\alpha \sqrt{\gamma^{xx}} \\ -\alpha \sqrt{\gamma^{xx}} \\ -\alpha \sqrt{\gamma^{xx}} \\ -\alpha \sqrt{\gamma^{xx}} \\ 
+	0 \\ 0 \\
+	0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 
+	0 \\ 0 \\ 0 \\
+	0 \\ 
+	\alpha \sqrt{\gamma^{xx}} \\ \alpha \sqrt{\gamma^{xx}} \\ \alpha \sqrt{\gamma^{xx}} \\ \alpha \sqrt{\gamma^{xx}} \\ \alpha \sqrt{\gamma^{xx}} \\ 
+	\alpha \sqrt{f \gamma^{xx}}
+}\right]
+\left[\matrix{
+		-\sqrt{\gamma^{xx}} & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 
+		-2 \gamma^{xx} / \sqrt{\gamma^{xx}} & -2 \gamma^{xy} / \sqrt{\gamma^{xx}} &-2 \gamma^{xz} / \sqrt{\gamma^{xx}} &
+		\sqrt{f} \gamma^{xx} & \sqrt{f} \gamma^{xy} & \sqrt{f} \gamma^{xz} & \sqrt{f} \gamma^{yy} & \sqrt{f} \gamma^{yz} & \sqrt{f} \gamma^{zz} & 
+	\\	
+	
+
+		\cdot & \cdot & \cdot &
+		\cdot & -\sqrt{\gamma^{xx}} & \cdot & \cdot & \cdot & \cdot &
+			\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 
+			\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 
+		\cdot & -1 / \sqrt{\gamma^{xx}} & \cdot &
+		\cdot & 1 & \cdot & \cdot & \cdot & \cdot
+	\\	
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & -\sqrt{\gamma^{xx}} & \cdot & \cdot & \cdot &
+			\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 
+			\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 
+		\cdot & \cdot & -1 / \sqrt{\gamma^{xx}} &
+		\cdot & \cdot & 1 & \cdot & \cdot & \cdot
+	\\	
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & -\sqrt{\gamma^{xx}} & \cdot & \cdot &
+			\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 
+			\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 
+		\cdot & \cdot & \cdot & 
+		\cdot & \cdot & \cdot & 1 & \cdot & \cdot
+	\\	
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & -\sqrt{\gamma^{xx}} & \cdot &
+			\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 
+			\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 
+		\cdot & \cdot & \cdot & 
+		\cdot & \cdot & \cdot & \cdot & 1 & \cdot
+	\\	
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & -\sqrt{\gamma^{xx}} &
+			\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 
+			\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 
+		\cdot & \cdot & \cdot & 
+		\cdot & \cdot & \cdot & \cdot & \cdot & 1
+	\\	
+		
+		
+		\cdot & 1 & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot &
+	\\	
+		\cdot & \cdot & 1 &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot &
+
+
+	\\
+		
+		
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 1 & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot 
+	\\
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 1 & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot 
+	\\
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 1 & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot 
+	\\
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 1 & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot 
+	\\
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 1 & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot 
+	\\
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 1 & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot 
+	\\
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 1 & \cdot & \cdot & \cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot 
+	\\
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 1 & \cdot & \cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot 
+	\\
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 1 & \cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot 
+	\\
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 1 & \cdot & \cdot &
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot 
+	\\
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 1 & \cdot &
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot 
+	\\
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 1 &
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot 
+	
+	
+	\\
+		
+		
+		\cdot & \cdot & \cdot & 
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 
+		1 & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot
+	\\
+		\cdot & \cdot & \cdot & 
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 
+		\cdot & 1 & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot
+	\\
+		\cdot & \cdot & \cdot & 
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 
+		\cdot & \cdot & 1 &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot
+	
+	
+	\\
+		
+		
+		1 & \cdot & \cdot &
+		-f\gamma^{xx} & -f\gamma^{xy} & -f\gamma^{xz} & -f\gamma^{yy} & -f\gamma^{yz} & -f\gamma^{zz} & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot
+	
+	\\	
+		
+		
+		\cdot & \cdot & \cdot &
+		\cdot & \sqrt{\gamma^{xx}} & \cdot & \cdot & \cdot & \cdot &
+			\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 
+			\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 
+		\cdot & 1 / \sqrt{\gamma^{xx}} & \cdot &
+		\cdot & 1 & \cdot & \cdot & \cdot & \cdot
+	\\	
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \sqrt{\gamma^{xx}} & \cdot & \cdot & \cdot &
+			\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 
+			\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 
+		\cdot & \cdot & 1 / \sqrt{\gamma^{xx}} &
+		\cdot & \cdot & 1 & \cdot & \cdot & \cdot
+	\\	
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \sqrt{\gamma^{xx}} & \cdot & \cdot &
+			\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 
+			\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 
+		\cdot & \cdot & \cdot & 
+		\cdot & \cdot & \cdot & 1 & \cdot & \cdot
+	\\	
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \sqrt{\gamma^{xx}} & \cdot &
+			\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 
+			\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 
+		\cdot & \cdot & \cdot & 
+		\cdot & \cdot & \cdot & \cdot & 1 & \cdot
+	\\	
+		\cdot & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \sqrt{\gamma^{xx}} &
+			\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 
+			\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 
+		\cdot & \cdot & \cdot & 
+		\cdot & \cdot & \cdot & \cdot & \cdot & 1
+	\\	
+		
+		
+		\sqrt{\gamma^{xx}} & \cdot & \cdot &
+		\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & 
+		2 \gamma^{xx} / \sqrt{\gamma^{xx}} & 2 \gamma^{xy} / \sqrt{\gamma^{xx}} &2 \gamma^{xz} / \sqrt{\gamma^{xx}} &
+		\sqrt{f} \gamma^{xx} & \sqrt{f} \gamma^{xy} & \sqrt{f} \gamma^{xz} & \sqrt{f} \gamma^{yy} & \sqrt{f} \gamma^{yz} & \sqrt{f} \gamma^{zz} & 
+}\right]
+\left[\matrix{
+	A_x \\
+	A_y \\
+	A_z \\
+	D_{xxx} \\
+	D_{xxy} \\
+	D_{xxz} \\
+	D_{xyy} \\
+	D_{xyz} \\
+	D_{xzz} \\
+	D_{yxx} \\
+	D_{yxy} \\
+	D_{yxz} \\
+	D_{yyy} \\
+	D_{yyz} \\
+	D_{yzz} \\
+	D_{zxx} \\
+	D_{zxy} \\
+	D_{zxz} \\
+	D_{zyy} \\
+	D_{zyz} \\
+	D_{zzz} \\
+	V_x \\
+	V_y \\
+	V_z \\
+	K_{xx} \\
+	K_{xy} \\
+	K_{xz} \\
+	K_{yy} \\
+	K_{yz} \\
+	K_{zz} \\
+}\right]$<br>
+
+	</body>
+</html>

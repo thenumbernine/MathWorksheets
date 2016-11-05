@@ -1,0 +1,222 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>SRHD</title>
+		<!-- script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script -->
+		<script type="text/javascript" async src="file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+	</head>
+	<body>
+<h3>SRHD</h3>
+
+<b>Derivation:</b><br>
+<a href='http://iopscience.iop.org/article/10.1086/303604/meta'>http://iopscience.iop.org/article/10.1086/303604/meta</a>
+This has the original derivation that the *other* subset of authors w/ a paper by the same name published, and cited this one.  They left out the first author, Banyuls.<br> 
+<br>
+
+<b>relativisitc metric</b><br>
+$g_{\mu\nu}$ = metric tensor.<br>
+ADM metric:<br>
+lapse: $ \alpha $<br>
+shift spatial components: $ \beta^i $<br>
+spatial metric spatial components: $ \gamma_{ij} $<br>
+$||g_{\mu\nu}|| = \overset{\mu(i)\downarrow\nu(j)\rightarrow}{\left[ \matrix{-\alpha^2 + \beta_k \beta^k & \beta_j \\ \beta_i & \gamma_{ij}} \right]}$<br>
+$||g^{\mu\nu}|| = \overset{\mu(i)\downarrow\nu(j)\rightarrow}{\left[ \matrix{-1/\alpha^2 & \beta^j / \alpha^2 \\ \beta^i / \alpha^2 & \gamma^{ij} - \beta^i \beta^j / \alpha^2} \right]}$<br>
+where $\beta_j = \gamma_{ij} \beta^i = \gamma_{\mu j} \beta^\mu = g_{\mu j} \beta^j $ courtesy of the fact that $ g_{ij} = \gamma_{ij} $ and $ \beta^t = 0 $.<br>
+ADM metric determinant: $ g = \alpha \sqrt{\gamma} $<br>
+ADM spatial metric determinant: $ \gamma = det||\gamma_{ij}||$<br>
+normal in the ADM metric:<br>
+$n_\mu = \overset{\mu(j)\rightarrow}{\left[ \matrix{ -\alpha & 0 } \right]} $<br>
+$n^\mu = \overset{\mu(i)\downarrow}{\left[ \matrix{ 1/\alpha \\ -\beta^i/\alpha } \right]} $<br>
+For SR the metric is set to $g_{\mu\nu} = \eta_{\mu\nu} = diag(-1,1,1,1)$<br>
+so $\alpha = 1$ and $\beta^i = 0$ and $\gamma_{ij} = \delta_{ij} = diag(1,1,1)$<br>
+<br>
+
+<b>some more variables</b><br>
+$\rho$ = rest-mass density<br>
+$u^\mu$ = 4-velocity<br>
+$v^i$ = Newtonian velocity<br>
+$\epsilon$ = specific internal energy<br>
+<br>
+
+<b>current of rest-mass</b><br>
+$J^\mu = \rho u^\mu$ = current of rest-mass<br>
+$\nabla_\mu J^\mu = 0$ shows current of rest-mass is conserved<br>
+<br>
+
+<b>pressure</b><br>
+$p$ = rest-mass pressure<br>
+equation of state:<br>
+$p = p(\rho, \epsilon)$<br>
+pressure for ideal gas:<br>
+$\gamma$ = heat capacity ratio<br>
+$p = (\gamma - 1) \rho \epsilon$<br>
+<br>
+
+<b>enthalpy</b><br>
+In non-relativistic case:<br>
+$h = \epsilon + p / \rho$<br>
+<a href='https://en.wikipedia.org/wiki/Relativistic_Euler_equations'>this page</a> (which doesn't cite its sources) says:<br>
+$\epsilon$ = the rest-mass specific internal energy<br>
+$\rho \epsilon_R = \rho c^2 + \rho \epsilon$, for $\epsilon_R$ = the relativistic specific internal energy<br>
+In the relativistic case:<br>
+$h = \epsilon_R + p / \rho = c^2 + \epsilon + p / \rho$<br>
+Note that this source says the speed of sound $c_s = \frac{\partial p}{\partial e_R}$ while my SRHD sources say $c_s = \frac{\partial p}{\partial e}$<br>
+rest-mass internal specific enthalpy:<br>
+$h = 1 + \epsilon + p / \rho$<br>
+<br>
+
+<b>stress-energy tensor</b><br>
+$T^{\mu\nu}$ = stress-energy / energy-momentum tensor<br>
+$\nabla_\mu T^{\mu\nu} = 0$ shows stress-energy is conserved<br>
+$T^{\mu\nu} = \rho h u^\mu u^\nu + p g^{\mu\nu}$ = definition of stress-energy tensor for perfect fluids<br>
+(This is also given in plenty of other sources, M.T.W., Alcubierre, Baumgarte &amp; Shapiro, etc.)<br>
+<br>
+
+<b>speed of sound</b><br>
+$\chi = \partial p / \partial \rho |_\epsilon$<br>
+$\kappa = \partial p / \partial \epsilon |_\rho$<br>
+$h c_s^2 = \chi + p/\rho^2 \kappa$<br>
+<br>
+
+<b>3-velocity</b><br>
+Lorentz factor:<br>
+$W = -u^\mu n_\mu = u^0$ for SR<br>
+$W = 1/\sqrt{1 - v^2}$ by the definition of Lorentz-boosted 4-velocity<br>
+$v^i = -u^i / u^\mu n_\mu = u^i / u^0$ for SR<br>
+<br>
+
+<b>primitive variables</b><br>
+$w = \downarrow i \left[\matrix{\rho \\ v^i \\ \epsilon}\right]$ = primitive variables<br>
+
+<br>
+$W = 1/\sqrt{1-v^2}$ = Lorentz factor (should be $\gamma$, but that's already being used by the heat capacity ratio ... and eventually the spatial metric determinant)<br>
+<br>
+
+<b>conservative variables</b><br>
+These variables appear just as they do in the non-relativistic Euler fluid equations, however $\rho$ is now densitized by $W$, and $S^i$ and $\tau$ are now densitized by an additional $h W$<br>
+$D = -J^\mu n_\mu = \alpha J^0 = \alpha \rho u^0 = \rho W$ = relativistic density<br>
+$S^i = -T^{\mu i} n_\mu = \alpha T^{0i} = \alpha (\rho h u^0 u^i + p g^{0i}) = \rho h W^2 v^i$ = relativistic momentum<br>
+$E = T^{\mu\nu} n_\mu n_\nu = \alpha^2 T^{00} = \alpha^2 (\rho h (u^0)^2 + p g^{00}) = \rho h W^2 - p$ = relativistic total energy density<br>
+$\tau = E - D = \rho h W^2 - p - D$ = relativistic total energy density minus rest-mass density<br>
+<br>
+
+$U^i = \downarrow i \left[\matrix{D \\ S^i \\ \tau }\right]$ = conservative variables<br>
+<br>
+
+$F^{ij} = \downarrow i \left[\matrix{D v^j \\ S^i v^j - \delta^{ij} p \\ S^j - D v^j}\right]$ = flux vector<br>
+<br>
+
+$\partial_\rho$:<br>
+$P_{,\rho} = (\gamma - 1) \epsilon$<br>
+$h_{,\rho} = P_{,\rho} / \rho - p / \rho^2 = ((\gamma - 1) \rho \epsilon - p) / \rho^2 = 0$<br> 
+$D_{,\rho} = W$<br>
+$S^i_{,\rho} = h W^2 v^i$<br>
+$\tau_{,\rho} = h W^2 - P_{,\rho} - D_{,\rho} = h W^2 - (\gamma - 1) \epsilon - W = W (h W - 1) - (\gamma - 1)$<br>
+<br>
+
+$\partial_{v^k}$:<br>
+$W_{,v^k} = \partial_{v^k} (\sqrt{1-v^2})^{-1} = -\frac{1}{2} (\sqrt{1-v^2})^{-3} \cdot -2 v^k = \frac{v^k}{(\sqrt{1-v^2})^3} = v^k W^3$<br>
+$D_{,v^k} = \rho W_{,v^k} = \rho W^3 v^k = W S^k / h$<br>
+$S^i_{,v^k} = \rho h (2 W W_{,v^k} v^i + W^2 \delta^{ik}) = \rho h W^4 (v^i v^k + \delta^{ik})$<br>
+$\tau_{,v^k} = \rho h 2 W W_{,v^k} - D_{,v^k} = 2 \rho h W^4 v^k - \rho W^3 v^k = \rho W^3 v^k (2 h W - 1)$<br>
+<br>
+
+$\partial_{,\epsilon}$:<br>
+$P_{,\epsilon} = (\gamma - 1) \rho$<br>
+$h_{,\epsilon} = 1 + P_{,\epsilon} / \rho = 1 + \gamma - 1 = \gamma$<br>
+$S^i_{,\epsilon} = \rho W^2 v^i h_{,\epsilon} = \gamma \rho W^2 v^i = \gamma S^i / h$<br>
+$\tau_{,\epsilon} = \rho h_{,\epsilon} W^2 - P_{,\epsilon} = \gamma \rho W^2 - (\gamma - 1) \rho = \rho (\gamma (W^2 - 1) + 1)$<br>
+<br>
+
+$\frac{\partial U^i}{\partial W^j} = \downarrow i \rightarrow j \left[\matrix{
+	D_{,\rho}		& D_{,v^j}		& D_{,\epsilon}		\\
+	S^i_{,\rho}		& S^i_{,v^j}	& S^i_{,\epsilon}	\\
+	\tau_{,\rho}	& \tau_{,v^j}	& \tau_{,\epsilon}
+}\right]$<br>
+<br>
+
+$\frac{\partial U^i}{\partial W^j} = \downarrow i \rightarrow j \left[\matrix{
+	W &
+	 \rho W^3 v^j &
+	 0 \\
+	h W^2 v^i &
+	 \rho h W^2 (2 W^2 v^i v^j + \delta^{ij}) &
+	 \gamma \rho W^2 v^i \\
+	W (h W - 1) - (\gamma - 1) &
+	 \rho W^3 v^j (2 h W - 1) &
+	 \rho (\gamma W^2 - (\gamma - 1))
+}\right]$<br>
+<br>
+
+$\frac{\partial F^{ij}}{\partial W^k} = \downarrow i \rightarrow k \left[\matrix{
+	D_{,\rho} v^j &
+	 D_{,v^k} v^j + D \delta^{jk} &
+	 0 \\
+	S^i_{,\rho} v^j - \delta^{ij} P_{,\rho} &
+	 S^i_{,v^k} v^j + S^i \delta^{jk} &
+	 S^i_{,\epsilon} v^j - \delta^{ij} P_{,\epsilon} \\
+	S^j_{,\rho} - D_{,\rho} v^j &
+	 S^j_{,v^k} - D_{,v^k} v^j - D \delta^{jk} &
+	 S^j_{,\epsilon}
+}\right]$<br>
+<br>
+
+$\frac{\partial F^{ij}}{\partial W^k} = \downarrow i \rightarrow k \left[\matrix{
+	W v^j &
+	 \rho W^3 v^k v^j + D \delta^{jk} &
+	 0 \\
+	h W^2 v^i v^j - \delta^{ij} (\gamma - 1) \epsilon &
+	 \rho h W^2 (2 W^2 v^i v^k + \delta^{ik}) v^j + S^i \delta^{jk} &
+	 \gamma \rho W^2 v^i v^j - \delta^{ij} (\gamma - 1) \rho \\
+	h W^2 v^j - W v^j &
+	 \rho h W^2 (2 W^2 v^j v^k + \delta^{jk}) - \rho W^3 v^k v^j - D \delta^{jk} &
+	 \gamma \rho W^2 v^j
+}\right]$<br>
+<br>
+
+$\frac{\partial F^{ij}}{\partial W^k} = \downarrow i \rightarrow k \left[\matrix{
+	W v^j &
+	 D (W^2 v^j v^k + \delta^{jk}) &
+	 0 \\
+	h W^2 v^i v^j - \delta^{ij} (\gamma - 1) \epsilon &
+	 \rho h W^2 (2 W^2 v^i v^k + \delta^{ik}) v^j + S^i \delta^{jk} &
+	 \gamma \rho W^2 v^i v^j - \delta^{ij} (\gamma - 1) \rho \\
+	(h W - 1) W v^j &
+	 \rho h W^2 (2 W^2 v^j v^k + \delta^{jk}) - D (W^2 v^j v^k + \delta^{jk}) &
+	 \gamma \rho W^2 v^j
+}\right]$<br>
+<br>
+
+$\frac{\partial F^{ij}}{\partial U^k} = \downarrow i \rightarrow k
+\left[\matrix{
+	W v^j &
+	 D (W^2 v^j v^k + \delta^{jk}) &
+	 0 \\
+	h W^2 v^i v^j - \delta^{ij} (\gamma - 1) \epsilon &
+	 \rho h W^2 (2 W^2 v^i v^k + \delta^{ik}) v^j + S^i \delta^{jk} &
+	 \gamma \rho W^2 v^i v^j - \delta^{ij} (\gamma - 1) \rho \\
+	(h W - 1) W v^j &
+	 \rho h W^2 (2 W^2 v^j v^k + \delta^{jk}) - D (W^2 v^j v^k + \delta^{jk}) &
+	 \gamma \rho W^2 v^j
+}\right]
+\cdot
+\left[\matrix{
+	W &
+	 \rho W^3 v^j &
+	 0 \\
+	h W^2 v^i &
+	 \rho h W^2 (2 W^2 v^i v^j + \delta^{ij}) &
+	 \gamma \rho W^2 v^i \\
+	W (h W - 1) - (\gamma - 1) &
+	 \rho W^3 v^j (2 h W - 1) &
+	 \rho (\gamma W^2 - (\gamma - 1))
+}\right]^{-1}$<br>
+
+<h3>Recovering Primitives</h3>
+Every source, Alcubierre 2008, Marti &amp; Muller 2008, etc, all say the same exact thing.<br>
+Except the Mara code uses a paper by Anton &amp; Zanotti <a href='http://arxiv.org/pdf/astro-ph/0506063v1.pdf'>http://arxiv.org/pdf/astro-ph/0506063v1.pdf</a>.<br>
+
+	</body>
+</html>

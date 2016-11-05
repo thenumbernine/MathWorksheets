@@ -1,0 +1,357 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Numerical Relativity Eigenfields</title>
+		<!-- script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script -->
+		<script type="text/javascript" async src="file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+	</head>
+	<body>
+
+Following Alcubierre "Introduction to 3+1 Numerical Relativity" section 5.4<br>
+<br>
+
+<h3>ADM without any neglected terms</h3>
+
+Ricci curvature in terms of metric partial primitives:
+$R_{ij} = {R^k}_{ikj}$<br>
+$= {\Gamma^k}_{ij,k} - {\Gamma^k}_{ik,j} + {\Gamma^k}_{lk} {\Gamma^l}_{ij} - {\Gamma^k}_{lj} {\Gamma^l}_{ik}$<br>
+$= 2 ({\Gamma^k}_{i[j,k]} + {\Gamma^k}_{l[k} {\Gamma^l}_{j]i})$<br>
+$= 2 ((\gamma^{km} \Gamma_{mi[j})_{,k]} + {\Gamma^k}_{l[k} {\Gamma^l}_{j]i})$<br>
+$= 2 (\Gamma_{mi[j} {\gamma^{km}}_{,k]}  + \gamma^{km} \Gamma_{mi[j,k]} + {\Gamma^k}_{l[k} {\Gamma^l}_{j]i})$<br>
+$= 2 (-2 (d_{[j|im} + d_{im[j} - d_{mi[j}) {d_{k]}}^{mk}  + \gamma^{km} (d_{[j|im} + d_{im[j} - d_{mi[j})_{,k]} 
+	+ ({{d_{[k|}}^k}_l + {d_{l[k}}^k - {d^k}_{l[k}) ({d_{i|j]}}^l + {d_{j]i}}^l - {d^l}_{j]i}))$<br>
+$= 2 (-2 d_{[j|il} {d_{k]}}^{lk} - 2 d_{il[j} {d_{k]}}^{lk} + 2 d_{li[j} {d_{k]}}^{lk}
+	+ \gamma^{kl} d_{[j|il,|k]} + \gamma^{kl} d_{il[j,k]} - \gamma^{kl} d_{li[j,k]} 
+	+ {{d_{[k|}}^k}_l {d_{i|j]}}^l + {{d_{[k|}}^k}_l {d_{j]i}}^l - {{d_{[k|}}^k}_l {d^l}_{j]i} 
+	+ {d_{l[k}}^k {d_{i|j]}}^l + {d_{l[k}}^k {d_{j]i}}^l - {d_{l[k}}^k {d^l}_{j]i} 
+	- {d^k}_{l[k}  {d_{i|j]}}^l - {d^k}_{l[k} {d_{j]i}}^l + {d^k}_{l[k} {d^l}_{j]i} )$<br>
+$= 2 (\gamma^{kl} d_{[j|il,|k]} + \gamma^{kl} d_{il[j,k]} - \gamma^{kl} d_{li[j,k]} 
+	- d_{[j|il} {d_{k]}}^{lk} - d_{il[j} {d_{k]}}^{lk} + d_{li[j} {d_{k]}}^{kl}
+	+ {d_{l[k}}^k {d_{i|j]}}^l + {d_{l[k}}^k {d_{j]i}}^l - {d_{l[k}}^k {d^l}_{j]i} 
+	- {d^k}_{l[k}  {d_{i|j]}}^l - {d^k}_{l[k} {d_{j]i}}^l + {d^k}_{l[k} {d^l}_{j]i} )$<br>
+$= \gamma^{kl} d_{jil,k} - \gamma^{kl} d_{kil,j} 
+	+ \gamma^{kl} d_{ilj,k} - \gamma^{kl} d_{ilk,j}
+	- \gamma^{kl} d_{lij,k} + \gamma^{kl} d_{lik,j} 
+	- d_{jil} {d_k}^{lk} + d_{kil} {d_j}^{lk} 
+	- d_{ilj} {d_k}^{lk} + d_{ilk} {d_j}^{lk} 
+	+ d_{lij} {d_k}^{kl} - d_{lik} {d_j}^{kl}
+	+ {d_{lk}}^k {d_{ij}}^l - {d_{lj}}^k {d_{ik}}^l
+	+ {d_{lk}}^k {d_{ji}}^l - {d_{lj}}^k {d_{ki}}^l 
+	- {d_{lk}}^k {d^l}_{ji} + {d_{lj}}^k {d^l}_{ki}
+	- {d^k}_{lk}  {d_{ij}}^l + {d^k}_{lj}  {d_{ik}}^l 
+	- {d^k}_{lk} {d_{ji}}^l + {d^k}_{lj} {d_{ki}}^l 
+	+ {d^k}_{lk} {d^l}_{ji} - {d^k}_{lj} {d^l}_{ki}$<br>
+$= \gamma^{kl} (d_{ilj,k} - d_{ikl,j} - d_{kij,l} + d_{jik,l})
+	+ d_{ijl} ({d^{lk}}_k - 2 {d_k}^{kl})
+	+ d_{jil} ({d^{lk}}_k - 2 {d_k}^{kl})
+	- d_{lij} ({d^{lk}}_k - 2 {d_k}^{kl})
+	+ 2 ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
+	+ d_{ikl} {d_j}^{kl} 
+$<br>
+
+<h3>ADM</h3>
+$\frac{d}{dt} \alpha = -\alpha^2 Q$<br>
+$\frac{d}{dt} \gamma_{ij} = -2 \alpha K_{ij}$<br>
+$\frac{d}{dt} K_{ij} = -D_i D_j \alpha + \alpha (R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
+<br>
+expanded, in terms of $\partial_t$:<br>
+$\alpha_{,t} = \alpha_{,i} \beta^i - \alpha^2 Q$<br>
+$\gamma_{ij,t} = \gamma_{ij,k} \beta^k + \gamma_{kj} {\beta^k}_{,i} + \gamma_{ik} {\beta^k}_{,j} - 2 \alpha K_{ij}$<br>
+$K_{ij,t} = K_{ij,k} \beta^k + K_{kj} {\beta^k}_{,i} + K_{ik} {\beta^k}_{,j} 
+	- \alpha_{,ij} + {\Gamma^k}_{ij} \alpha_{,k} + \alpha (R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
+<br>
+hyperbolic variables:<br>
+$a_k = (ln\alpha)_{,k} = \alpha \alpha_{,k}$<br>
+$d_{kij} = \frac{1}{2} \gamma_{ij,k}$<br>
+<br>
+
+hyperbolic variable spatial derivatives:<br>
+$a_{k,t} = (\alpha_{,k} / \alpha)_{,t}$<br>
+$= \alpha_{,kt} / \alpha - \alpha_{,k} \alpha_{,t} / \alpha^2$<br>
+$= (\alpha_{,i} \beta^i - \alpha^2 Q)_{,k} / \alpha 
+	- \alpha_{,k} (\alpha_{,i} \beta^i - \alpha^2 Q) / \alpha^2$<br>
+$= ( \alpha_{,ik} \beta^i 
+		+ \alpha_{,i} {\beta^i}_{,k} 
+		- 2 \alpha \alpha_{,k} Q
+		- \alpha^2 Q_{,k}
+	) / \alpha 
+	- \alpha_{,k} (
+		\alpha_{,i} \beta^i
+		- \alpha^2 Q
+	) / \alpha^2$<br>
+$= (\alpha a_{i,k} + \alpha_{,i} \alpha_{,k} / \alpha) \beta^i / \alpha
+	+ \alpha_{,i} {\beta^i}_{,k} / \alpha
+	- 2 \alpha_{,k} Q
+	- \alpha Q_{,k}
+	- \alpha_{,k} \alpha_{,i} \beta^i / \alpha^2
+	+ \alpha_{,k} Q $<br>
+$= a_{i,k} \beta^i + a_i {\beta^i}_{,k} - \alpha a_k Q - \alpha Q_{,k}$<br>
+$= a_{i,k} \beta^i - \alpha Q_{,k} + a_i {\beta^i}_{,k} - \alpha a_k Q$<br>
+$\frac{d}{dt} a_k = -\alpha (a_k Q + Q_{,k})$<br>
+substituting Bona-Masso slicing, $Q = f(\alpha) \cdot K$...<br>
+$a_{k,t} = a_{i,k} \beta^i - \alpha (f \gamma^{ij} K_{ij})_{,k} + a_i {\beta^i}_{,k} - \alpha a_k Q$<br>
+$= a_{i,k} \beta^i 
+	- \alpha f \gamma^{ij} K_{ij,k}
+	+ a_i {\beta^i}_{,k}
+	- \alpha^2 f' a_k K 
+	+ 2 \alpha f {d_k}^{ij} K_{ij}
+	- \alpha a_k f K
+$<br>
+<br> 
+
+$d_{kij,t} = \frac{1}{2} \gamma_{ij,kt}$<br>
+$= \frac{1}{2} \gamma_{ij,tk}$<br>
+$= \frac{1}{2} (\gamma_{ij,l} \beta^l 
+	+ \gamma_{lj} {\beta^l}_{,i} 
+	+ \gamma_{il} {\beta^l}_{,j} 
+	- 2 \alpha K_{ij})_{,k}$<br>
+$= \frac{1}{2} \gamma_{ij,lk} \beta^l 
+	+ \frac{1}{2} \gamma_{ij,l} {\beta^l}_{,k}
+	+ \frac{1}{2} \gamma_{lj,k} {\beta^l}_{,i} 
+	+ \frac{1}{2} \gamma_{lj} {\beta^l}_{,ik}
+	+ \frac{1}{2} \gamma_{il,k} {\beta^l}_{,j} 
+	+ \frac{1}{2} \gamma_{il} {\beta^l}_{,jk} 
+	- \alpha_{,k} K_{ij}
+	- \alpha K_{ij,k}$<br>
+$= d_{kij,l} \beta^l 
+	- \alpha K_{ij,k}
+	+ d_{lij} {\beta^l}_{,k}
+	+ d_{klj} {\beta^l}_{,i} 
+	+ d_{kil} {\beta^l}_{,j} 
+	+ \frac{1}{2} \gamma_{jl} {\beta^l}_{,ik}
+	+ \frac{1}{2} \gamma_{il} {\beta^l}_{,jk}
+	- \alpha a_k K_{ij}
+$<br>
+$= d_{kij,l} \beta^l 
+	- \alpha K_{ij,k}
+	+ d_{lij} {\beta^l}_{,k}
+	+ 2 d_{kl(i} {\beta^l}_{,j)} 
+	+ \gamma_{l(i} {\beta^l}_{,j)k}
+	- \alpha a_k K_{ij}
+$<br>
+$\frac{d}{dt} d_{kij} = 
+	- \alpha K_{ij,k}
+	+ \gamma_{l(i} {\beta^l}_{,j)k}
+	- \alpha a_k K_{ij}$<br>
+<br>
+
+using $a_{i,j} = a_{(i,j)}$...<br>
+$K_{ij,t} = 
+	- \alpha \delta^m_i \delta^r_j a_{(m,r)} 
+	+ \alpha \gamma^{kl} (
+		\delta^m_i \delta^p_l \delta^q_j \delta^r_k
+		- \delta^m_i \delta^p_k \delta^q_l \delta^r_j
+		- \delta^m_k \delta^p_i \delta^q_j \delta^r_l
+		+ \delta^m_j \delta^p_i \delta^q_k \delta^r_l
+	) d_{mpq,r}
+	+ \beta^k K_{ij,k}  
+	+ K_{kj} {\beta^k}_{,i} 
+	+ K_{ik} {\beta^k}_{,j} 
+	+ \alpha (
+		- a_i a_j
+		+ {\Gamma^k}_{ij} a_k 
+		+ d_{ijl} ({d^{lk}}_k - 2 {d_k}^{kl})
+		+ d_{jil} ({d^{lk}}_k - 2 {d_k}^{kl})
+		- d_{lij} ({d^{lk}}_k - 2 {d_k}^{kl})
+		+ 2 ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
+		+ d_{ikl} {d_j}^{kl} 
+		+ K K_{ij} 
+		- 2 K_{ik} {K^k}_j
+	)$<br>
+$=
+	- \alpha \delta^m_{(i} \delta^r_{j)} a_{m,r} 
+	+ \alpha (
+		\gamma^{pr} \delta^m_i \delta^q_j
+		- \gamma^{pq} \delta^m_i \delta^r_j
+		- \gamma^{mr} \delta^p_i \delta^q_j
+		+ \gamma^{qr} \delta^m_j \delta^p_i 
+	) d_{mpq,r}
+	+ \beta^k K_{ij,k}  
+	+ K_{kj} {\beta^k}_{,i} 
+	+ K_{ik} {\beta^k}_{,j} 
+	+ \alpha (
+		- a_i a_j
+		+ {\Gamma^k}_{ij} a_k 
+		+ d_{ijl} ({d^{lk}}_k - 2 {d_k}^{kl})
+		+ d_{jil} ({d^{lk}}_k - 2 {d_k}^{kl})
+		- d_{lij} ({d^{lk}}_k - 2 {d_k}^{kl})
+		+ 2 ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
+		+ d_{ikl} {d_j}^{kl} 
+		+ K K_{ij} 
+		- 2 K_{ik} {K^k}_j
+	)$<br>
+$=
+	- \alpha \delta^m_{(i} \delta^r_{j)} a_{m,r} 
+	+ \alpha (
+		2 \gamma^{pr} \delta^m_{(i} \delta^q_{j)}
+		- \gamma^{pq} \delta^m_i \delta^r_j
+		- \gamma^{mr} \delta^p_i \delta^q_j
+	) d_{mpq,r}
+	+ \beta^k K_{ij,k}  
+	+ K_{kj} {\beta^k}_{,i} 
+	+ K_{ik} {\beta^k}_{,j} 
+	+ \alpha (
+		- a_i a_j
+		+ {\Gamma^k}_{ij} a_k 
+		+ d_{ijl} ({d^{lk}}_k - 2 {d_k}^{kl})
+		+ d_{jil} ({d^{lk}}_k - 2 {d_k}^{kl})
+		- d_{lij} ({d^{lk}}_k - 2 {d_k}^{kl})
+		+ 2 ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
+		+ d_{ikl} {d_j}^{kl} 
+		+ K K_{ij} 
+		- 2 K_{ik} {K^k}_j
+	)$<br>
+grouping symmetric terms...<br>
+$=
+	- \alpha \delta^m_{(i} \delta^r_{j)} a_{m,r} 
+	+ \alpha (
+		2 \gamma^{pr} \delta^m_{(i} \delta^q_{j)}
+		- \gamma^{pq} \delta^m_{(i} \delta^r_{j)}
+		- \gamma^{mr} \delta^p_{(i} \delta^q_{j)}
+	) d_{mpq,r}
+	+ \beta^k K_{(ij),k}  
+	+ 2 K_{k(i} {\beta^k}_{,j)} 
+	+ \alpha (
+		- a_{(i} a_{j)}
+		+ {\Gamma^k}_{(ij)} a_k 
+		+ 2 d_{(ij)l} ({d^{lk}}_k - 2 {d_k}^{kl})
+		- d_{l(ij)} ({d^{lk}}_k - 2 {d_k}^{kl})
+		+ 2 ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
+		+ {d_{(i}}^{kl} d_{j)kl} 
+		+ K K_{(ij)} 
+		- 2 K_{(i|k} {K^k}_{j)}
+	)$<br>
+let $V_k = {d_{km}}^m - {d^m}_{mk}$<br>
+$=
+	- \alpha \delta^m_{(i} \delta^r_{j)} a_{m,r} 
+	+ \alpha (
+		2 \gamma^{pr} \delta^m_{(i} \delta^q_{j)}
+		- \gamma^{pq} \delta^m_{(i} \delta^r_{j)}
+		- \gamma^{mr} \delta^p_{(i} \delta^q_{j)}
+	) d_{mpq,r}
+	+ \beta^k K_{(ij),k}  
+	+ 2 K_{k(i} {\beta^k}_{,j)} 
+	+ \alpha (
+		- a_{(i} a_{j)}
+		+ (2 {d_{(ij)}}^k - {d^k}_{(ij)}) a_k 
+		+ (2 d_{(ij)l} - d_{l(ij)}) (V^l - {d_k}^{kl})
+		+ 2 ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
+		+ {d_{(i}}^{kl} d_{j)kl} 
+		+ K K_{(ij)} 
+		- 2 K_{(i|k} {K^k}_{j)}
+	)$<br>
+$=
+	- \alpha \delta^m_{(i} \delta^r_{j)} a_{m,r} 
+	+ \alpha (
+		2 \gamma^{pr} \delta^m_{(i} \delta^q_{j)}
+		- \gamma^{pq} \delta^m_{(i} \delta^r_{j)}
+		- \gamma^{mr} \delta^p_{(i} \delta^q_{j)}
+	) d_{mpq,r}
+	+ \beta^k K_{(ij),k}  
+	+ 2 K_{k(i} {\beta^k}_{,j)} 
+	+ \alpha (
+		- a_{(i} a_{j)}
+		+ (2 {d_{(ij)}}^k - {d^k}_{(ij)}) (a_k + V_k - {d^l}_{lk})
+		+ 2 ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
+		+ {d_{(i}}^{kl} d_{j)kl} 
+		+ K K_{(ij)} 
+		- 2 K_{(i|k} {K^k}_{j)}
+	)$<br>
+
+let ${\Lambda^k}_{ij} = {d^k}_{ij} + \delta^k_{(i} ( a_{j)} + {d_{j)m}}^m - 2 {d^m}_{mj)})$<br>
+	$ = {d^k}_{ij} + \delta^k_{(i} ( a_{j)} - {d_{j)m}}^m + 2 V_{j)})$<br>
+Then ${\Lambda^k}_{ij,k} = {d^k}_{ij,k} + \delta^k_{(i} ( a_{j)} + {d_{j)m}}^m - 2 {d^m}_{mj)})_{,k}$<br>
+<br>
+
+matrix form, favoring source terms:<br>
+$\left[\matrix{
+	a_k \\ d_{kij} \\ K_{ij} 
+}\right]_{,t}
++ \left[\matrix{
+	-\delta^r_k \beta^m & 
+		0 & 
+		\alpha f \gamma^{pq} \delta^r_k \\
+	0 & 
+		-\delta^m_k \delta^p_i \delta^q_j \beta^r & 
+		\alpha \delta^p_i \delta^q_j \delta^r_k \\
+	\alpha \delta^m_{(i} \delta^r_{j)} &  
+		\alpha (
+			- \gamma^{pr} \delta^m_i \delta^q_j
+			+ \gamma^{pq} \delta^m_i \delta^r_j
+			+ \gamma^{mr} \delta^p_i \delta^q_j
+			- \gamma^{qr} \delta^m_j \delta^p_i 
+		) &
+		-\delta^p_i \delta^q_j \beta^r
+}\right]
+\left[\matrix{
+	a_m \\ d_{mpq} \\ K_{pq} 
+}\right]_{,r}
+= \left[\matrix{
+	a_i {\beta^i}_{,k} 
+		+ \alpha (a_k K (f - \alpha f') - 2 f {d_k}^{ij} K_{ij}) \\
+	d_{lij} {\beta^l}_{,k}
+		+ 2 d_{kl(i} {\beta^l}_{,j)} 
+		+ \gamma_{l(i} {\beta^l}_{,j)k}
+		- \alpha a_k K_{ij} \\
+	2 K_{k(i} {\beta^k}_{,j)} 
+		+ \alpha (
+			- a_{(i} a_{j)}
+			+ (2 {d_{(ij)}}^k - {d^k}_{(ij)}) (a_k + V_k - {d^l}_{lk})
+			+ 2 ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
+			+ {d_{(i}}^{kl} d_{j)kl} 
+			+ K K_{(ij)} 
+			- 2 K_{(i|k} {K^k}_{j)}
+		)
+}\right]$<br>
+
+matrix form, favoring flux terms:<br>
+$\left[\matrix{
+	\alpha \\ \beta^i \\ \gamma_{ij} \\ a_k \\ d_{kij} \\ K_{ij} 
+}\right]_{,t}
++ \left[\matrix{
+	0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 &0 & 0 & 0 & 0 \\
+	0 & 0 &0 & 0 & 0 & 0 \\
+	-\alpha^2 K (f - f' \alpha) \delta^r_k &
+		-a_m \delta^r_k & 
+		\alpha f K^{pq} \delta^r_k &
+		-\delta^r_k \beta^m & 
+		0 & 
+		\alpha f \gamma^{pq} \delta^r_k \\
+	\alpha^2 K_{ij} \delta^r_k & 
+		-d_{mij} \delta^r_k - 2 d_{km(i} \delta^r_{j)} & 
+		0 & 
+		0 & 
+		-\delta^m_k \delta^p_i \delta^q_j \beta^r & 
+		\alpha \delta^p_i \delta^q_j \delta^r_k \\
+	\alpha^2 a_{(i} \delta^r_{j)} &
+		-2 K_{m(i} \delta^r_{j)} & 
+		\frac{1}{2} \alpha {d_{(i}}^{pq} \delta^r_{j)} &
+		\alpha \delta^m_{(i} \delta^r_{j)} &  
+		\alpha (
+			- \gamma^{pr} \delta^m_i \delta^q_j
+			+ \gamma^{pq} \delta^m_i \delta^r_j
+			+ \gamma^{mr} \delta^p_i \delta^q_j
+			- \gamma^{qr} \delta^m_j \delta^p_i 
+		) &
+		-\delta^p_i \delta^q_j \beta^r
+}\right]
+\left[\matrix{
+	\alpha \\ \beta^m \\ \gamma_{pq} \\ a_m \\ d_{mpq} \\ K_{pq} 
+}\right]_{,r}
+= \left[\matrix{
+	-\alpha^2 f K \\
+	0 \\
+	-2 \alpha K_{ij} \\
+	0 \\
+	\gamma_{l(i} {\beta^l}_{,j)k} \\
+	\alpha (2 {d_{(ij)}}^k - {d^k}_{(ij)}) (a_k + V_k - {d^l}_{lk})
+		+ 2 \alpha ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
+		+ \alpha K K_{(ij)} 
+		- 2 \alpha K_{(i|k} {K^k}_{j)}
+}\right]$<br>
+
+	</body>
+</html>

@@ -1,0 +1,443 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Hydrodynamics Entropy Function</title>
+		<!-- script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script -->
+		<script type="text/javascript" async src="file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+	</head>
+	<body>
+
+<h3>Hydrodynamics Entropy Function</h3>
+from Trangenstein, 4.4.2 through 4.4.4<br>
+
+<h2>Thermodynamics</h2>
+<br>
+
+$\rho$ = density<br>
+$P$ = pressure<br>
+$e_{int}$ = internal specific energy<br>
+$T$ = temperature<br>
+$S$ = entropy<br>
+<br>
+$i,j,k, ...$ spans $x,y,z$<br>
+$I,J,K, ...$ spans all elements<br> 
+<br>
+
+Second law of thermodynamics:<br>
+$de_{int} = T dS - P d (1/\rho)$<br>
+therefore<br>
+$P = \partial_{1/\rho} e$<br>
+$T = \partial_S e_{int}$<br>
+<br>
+
+Ideal gas relation:<br>
+$P = \rho R T$<br>
+$e_{int} = c_v T$<br>
+where<br>
+$R$ = gas constant<br>
+$c_v$ = heat capacity<br>
+
+polytropic gas heat capacity:<br>
+$c_v = \frac{R}{\gamma-1}$<br>
+where<br>
+$\gamma$ = heat capacity ratio<br>
+<br>
+
+polytropic ideal gas:<br>
+$e_{int} = c_v T = \frac{RT}{\gamma-1}$<br>
+therefore<br>
+$(\gamma - 1) e_{int} = R T$<br>
+therefore<br>
+$P / \rho = R T = (\gamma - 1) e_{int}$<br>
+$P = (\gamma - 1) \rho e_{int}$<br>
+<br>
+
+specific enthalpy:<br>
+$h = e_{int} + P/\rho = e_{int} + (\gamma - 1) e_{int} = \gamma e$<br>
+where<br>
+$h$ = enthalpy<br>
+<br>
+
+second law, in terms of $dS$:<br>
+$dS = \frac{1}{T}(de_{int} + P d(1/\rho))$<br>
+$d(1/\rho) = -1/\rho^2 d\rho$<br>
+therefore<br>
+$dS = \frac{1}{T} de_{int} - \frac{1}{T \rho^2} P d\rho $<br>
+<br>
+
+second law for polytropic ideal gas:<br>
+using $e_{int} = \frac{P}{\rho (\gamma - 1)}$<br>
+therefore $de_{int} = \frac{dP}{\rho (\gamma - 1)} - \frac{P d\rho}{\rho^2 (\gamma-1)}$<br>
+substitute into second law:<br>
+$dS = \frac{1}{T}de_{int} - \frac{1}{T \rho^2} P d\rho $<br>
+$dS = \frac{1}{T}(\frac{dP}{\rho (\gamma - 1)} - \frac{P d\rho}{\rho^2 (\gamma-1)}) - \frac{1}{T \rho^2} P d\rho $<br>
+$dS = \frac{1}{T \rho (\gamma - 1)} dP - \frac{P}{T \rho^2 (\gamma-1)} d\rho - \frac{1}{T \rho^2} P d\rho $<br>
+$dS = \frac{1}{T \rho (\gamma - 1)} dP - \frac{\gamma}{\gamma-1} \frac{P}{T \rho^2} d\rho $<br>
+<br>
+
+second law partials for polytropic ideal gas:<br>
+$\partial_P S = \frac{1}{T \rho (\gamma - 1)}$<br>
+$\partial_\rho S = -\frac{\gamma}{\gamma - 1} \frac{P}{T \rho^2}$<br>
+
+substitute $T = \frac{e_{int}}{c_v} = \frac{P}{(\gamma - 1)\rho c_v}$<br>
+our partials of $S$ become:<br>
+$\frac{\partial S}{\partial P} = \frac{c_v}{P}$<br>
+$\frac{\partial S}{\partial \rho} = -\gamma \frac{c_v}{\rho}$<br>
+solve to find the entropy function:<br>
+$dS = \frac{c_v}{P} dP - \gamma \frac{c_v}{\rho} d\rho$<br>
+$S = S_0 + c_v (ln (P) - ln (P_0)) - \gamma c_v (ln(\rho) - ln(\rho_0))$<br>
+$S = S_0 + c_v ln ( \frac{P}{P_0} (\frac{\rho_0}{\rho})^\gamma )$<br>
+<br>
+
+The entropy function should be constant (i.e. $\frac{dS}{dt} = 0$ except in the presence of shock waves.<br>
+Notice that velocity does not appear in the entropy function.
+Nor does it appear later in the entropy flux function $\rho S$.
+This might be why the entropy flux function gradient with respect to primitives matches the diagonalized quasilinear solution,
+which is equal to the acoustic matrix plus identity times $v_x$.
+This $v_i$ variables might be distinct of the entropy flux, but they are also distinct of what its gradient computes.<br>
+
+<h2>Characteristics</h2>
+
+primitives:<br>
+$W_I = \downarrow I \left[\matrix{
+	\rho \\
+	v_i \\
+	P
+}\right]$<br>
+<br>
+
+conservatives:<br>
+$U_I = \downarrow I \left[\matrix{
+	\rho \\
+	\rho v_i \\
+	E_{total}
+}\right]$<br>
+for<br>
+$E_{total} = \rho e_{total}$ = total energy density<br>
+$e_{total} = e_{int} + e_{kin} = e_{int} + \frac{1}{2}v^2$ = total specific energy<br>
+<br>
+
+Derivative of conservative wrt primitive:<br>
+$\frac{\partial U_I}{\partial W_J} = \downarrow I \overset{\rightarrow J}{ \left[\matrix{
+	1 & 0 & 0 \\
+	v_i & \rho \delta_{ij} & 0 \\
+	\frac{1}{2} v^2 & \rho v_j & \frac{1}{\gamma - 1}
+}\right]}$<br>
+
+Derivative of primitives wrt conservatives:<br>
+$\frac{\partial W_J}{\partial U_I} = \downarrow J \overset{\rightarrow I}{ \left[\matrix{
+	1 & 0 & 0 \\
+	-\frac{v_j}{\rho} & \delta_{ij} \frac{1}{\rho} & 0 \\
+	\frac{1}{2} (\gamma-1) v^2 & -(\gamma-1) v_i & \gamma-1
+}\right] }$<br>
+<br>
+
+Flux vector:<br>
+$F_{Ij} = \downarrow I \left[\matrix{
+	\rho v_j \\
+	\rho v_i v_j + \delta_{ij} P \\
+	H_{total} v_j
+}\right]$<br>
+for<br>
+$H_{total} = \rho h_{total}$ = total entropy density<br>
+$h_{total} = e_{total} + P$ = total specific entropy<br>
+<br>
+
+Derivative of flux vector with respect to primitive variables:<br>
+$\frac{\partial F_{Ij}}{\partial W_K} = \downarrow I \overset{\rightarrow K}{ \left[\matrix{
+	v_j & 
+		\rho \delta_{jk} &
+		0 \\
+	v_i v_j &
+		\rho (\delta_{ik} v_j + v_i \delta_{jk}) &
+		\delta_{ij} \\
+	\frac{1}{2} v^2 v_j &
+		\rho v_j v_k + H_{total} \delta_{jk}&
+		\frac{\gamma}{\gamma-1} v_j
+}\right] }$<br>
+<br>
+
+Derivative of flux vector with respect to conservative variables:<br>
+$\frac{\partial F_{Ij}}{\partial U_K}
+= \frac{\partial F_{Ij}}{\partial W_L} \frac{\partial W_L}{\partial U_K}$<br>
+$= \downarrow I \overset{\rightarrow L}{ \left[\matrix{
+	v_j & 
+		\rho \delta_{jl} &
+		0 \\
+	v_i v_j &
+		\rho (\delta_{il} v_j + v_i \delta_{jl}) &
+		\delta_{ij} \\
+	\frac{1}{2} v^2 v_j &
+		\rho v_j v_l + (E_{hydro} + P) \delta_{jl} &
+		\frac{\gamma}{\gamma-1} v_j
+}\right] } \cdot \downarrow L \overset{\rightarrow K}{ \left[\matrix{
+	1 & 0 & 0 \\ 
+	-\frac{1}{\rho} v_l & \frac{1}{\rho} \delta_{kl} & 0 \\
+	\frac{1}{2} (\gamma-1) v^2 & -(\gamma-1) v_k & \gamma-1
+}\right] }$<br>
+$= \downarrow I \overset{\rightarrow K}{ \left[\matrix{
+	0 &
+		\delta_{jk} &
+		0 \\
+	-v_i v_j + \frac{1}{2} \delta_{ij} (\gamma-1) v^2 &
+		\delta_{ik} v_j + \delta_{jk} v_i - \delta_{ij} (\gamma-1) v_k &
+		\delta_{ij} (\gamma-1) \\
+	v_j (\frac{1}{2} (\gamma-1) v^2 - h_{total}) &
+		-(\gamma-1) v_j v_k + \delta_{jk} h_{total} &
+		\gamma v_j
+}\right] }$<br>
+<br>
+
+Hyperbolic conservation law:<br>
+$\frac{\partial U_I}{\partial t} + \frac{\partial F_{Ij}}{\partial x_J} = 0$<br>
+with respect to conservative variables:<br>
+$\frac{\partial U_I}{\partial t} + \frac{\partial F_{Ij}}{\partial U_K} \frac{\partial U_K}{\partial x_j} = 0$<br>
+<br>
+
+Rewritten in terms of primitives:<br>
+$\frac{\partial U_I}{\partial W_K} \frac{\partial W_K}{\partial t} + \frac{\partial F_{Ij}}{\partial U_K} \frac{\partial U_K}{\partial x_j} = 0$<br>
+$\frac{\partial W_L}{\partial U_I} \frac{\partial U_I}{\partial W_K} \frac{\partial W_K}{\partial t} + \frac{\partial W_L}{\partial U_I} \frac{\partial F_{Ij}}{\partial U_K} \frac{\partial U_K}{\partial x_j} = 0$<br>
+$\delta_{LK} \frac{\partial W_K}{\partial t} + \frac{\partial W_L}{\partial U_I} \frac{\partial F_{Ij}}{\partial U_K} \frac{\partial U_K}{\partial x_j} = 0$<br>
+$\frac{\partial W_L}{\partial t} + \frac{\partial W_L}{\partial U_I} \frac{\partial F_{Ij}}{\partial U_M} \frac{\partial U_M}{\partial W_K} \frac{\partial W_K}{\partial x_j} = 0$<br>
+reindex<br>
+$\frac{\partial W_I}{\partial t} + \frac{\partial W_I}{\partial U_L} \frac{\partial F_{Lj}}{\partial U_M} \frac{\partial U_M}{\partial W_K} \frac{\partial W_K}{\partial x_j} = 0$<br>
+<br>
+
+Therefore the equivalent flux matrix for the primitive variables - the quasilinear flux matrix - is given by:<br>
+$\frac{\partial W_I}{\partial U_L} \frac{\partial F_{Lj}}{\partial U_M} \frac{\partial U_M}{\partial W_K}
+= \frac{\partial W_I}{\partial U_L} \frac{\partial F_{Lj}}{\partial W_K}$<br>
+$= \downarrow I \overset{\rightarrow L}{ \left[\matrix{
+	1 & 0 & 0 \\
+	-\frac{v_i}{\rho} & \delta_{il} \frac{1}{\rho} & 0 \\
+	\frac{1}{2} (\gamma-1) v^2 & -(\gamma-1) v_l & \gamma-1
+}\right] }
+\cdot
+\frac{\partial F_{Lj}}{\partial W_K}$<br>
+$= \downarrow I \overset{\rightarrow L}{ \left[\matrix{
+	1 & 0 & 0 \\
+	-\frac{v_i}{\rho} & \delta_{il} \frac{1}{\rho} & 0 \\
+	\frac{1}{2} (\gamma-1) v^2 & -(\gamma-1) v_l & \gamma-1
+}\right] }
+\cdot
+\downarrow L \overset{\rightarrow K}{ \left[\matrix{
+	v_j & 
+		\rho \delta_{jk} &
+		0 \\
+	v_l v_j &
+		\rho (\delta_{lk} v_j + v_l \delta_{jk}) &
+		\delta_{lj} \\
+	\frac{1}{2} v^2 v_j &
+		\rho v_j v_k + H_{total} \delta_{jk}&
+		\frac{\gamma}{\gamma-1} v_j
+}\right] }$<br>
+$= \downarrow I \overset{\rightarrow K}{\left[\matrix{
+	v_j & \rho \delta_{jk} & 0 \\
+	0 & \delta_{ik} v_j & \delta_{ij} \frac{1}{\rho} \\
+	0 & \gamma P \delta_{jk} & v_j
+}\right]}$<br>
+$= \downarrow I \overset{\rightarrow K}{\left[\matrix{
+	0 & \rho \delta_{jk} & 0 \\
+	0 & 0 & \delta_{ij} \frac{1}{\rho} \\
+	0 & \gamma P \delta_{jk} & 0
+}\right]} + \delta_{IK} v_j$<br>
+$= A_{IjK} + \delta_{IK} v_j$<br>
+for<br>
+$A_{IjK} = \downarrow I \overset{\rightarrow K}{\left[\matrix{
+	0 & \rho \delta_{jk} & 0 \\
+	0 & 0 & \delta_{ij} \frac{1}{\rho} \\
+	0 & \gamma P \delta_{jk} & 0
+}\right]} = $ the acoustic matrix in direction $x_j$<br>
+<br>
+
+Let $c_{snd}^2 = \frac{\gamma P}{\rho}$ be the speed of sound.<br>
+<br>
+
+Right eigenvectors of $A_{IjK}$:<br>
+$A_{IjK} y_K = \lambda y_K$<br>
+$\downarrow I \overset{\rightarrow K}{\left[\matrix{
+	0 & \rho \delta_{jk} & 0 \\
+	0 & 0 & \delta_{ij} \frac{1}{\rho} \\
+	0 & \gamma P \delta_{jk} & 0
+}\right]} \cdot y_K$<br>
+<br>
+has the following solutions:<br>
+$\left\{\matrix{
+	\rho \delta_{jk} y_k = \lambda y_\rho \\
+	\frac{1}{\rho} \delta_{ij} y_P = \lambda y_i \\
+	\gamma P \delta_{jk} y_k = \lambda y_P
+}\right\}$<br>
+$\left\{\matrix{
+	y_j = \lambda y_\rho / \rho \\
+	y_i = \delta_{ij} y_P / (\rho \lambda) \\
+	y_j = \lambda y_P / (\gamma P)
+}\right\}$<br>
+combining $y_j$ of the 1st and 3rd constraints:<br>
+$\lambda y_\rho / \rho = \lambda y_P / (\gamma P)$<br>
+divide by $\lambda$:<br>
+$(\gamma P) / \rho = y_P / y_\rho$<br>
+Let $y_\rho = 1$<br>
+Therefore $y_P = \frac{\gamma P}{\rho} = c_{snd}^2$<br>
+substitute $y_P$ into the 2nd constraint:<br>
+$y_i = \delta_{ij} \frac{\gamma P}{\rho^2 \lambda}$<br>
+equate this with the 2nd constraint:<br>
+$y_j = \frac{\gamma P}{\rho^2 \lambda} = \lambda / \rho$<br>
+solve for $\lambda$:<br>
+$\lambda^2 = \frac{\gamma P}{\rho} = c_{snd}^2$<br>
+$\lambda = \pm c_{snd}$<br>
+use $\lambda$ and $y_i = \delta_{ij} \lambda / \rho$ to solve for $y_i$:<br>
+$y_i = \pm \delta_{ij} \frac{c_{snd}}{\rho}$<br>
+
+<br>
+
+Then there is $\lambda = 0$ (TODO show where this comes from)<br>
+$\left\{\matrix{
+	\rho \delta_{jk} y_k = 0 \\
+	\frac{1}{\rho} \delta_{ij} y_P = 0 \\
+	\gamma P \delta_{jk} y_k = 0 
+}\right\}$<br>
+This is true for $y_j = 0$ by the 1st and 3rd constraint, and $y_P = 0$ by the 2nd constraint<br>
+Therefore we are left with three degrees of freedom: one of $y_\rho = 1$, and two of $y_{j'} = 1$ for $j' \ne j$<br>
+<br>
+
+Put these together and we get:<br>
+$A_{IjK} y_{KL} = \Lambda_{IK} y_{KL}$<br>
+For $\Lambda_{IK} = \delta_{IK} \lambda_K$ is the diagonal matrix of eigenvalues<br>
+and $y_{KL}$ are the collection of eigenvectors $y_K$, for the index $L$ denoting the distinct eigenvector.<br>
+Written out:<br>
+$\downarrow I \overset{\rightarrow K}{\left[\matrix{
+	0 & \rho \delta_{jk} & 0 \\
+	0 & 0 & \frac{1}{\rho} \delta_{ij} \\
+	0 & \gamma P \delta_{jk} & 0
+}\right]} 
+\cdot
+\downarrow K \overset{\rightarrow L}{\left[\matrix{
+	1 &
+		1 &
+		0 &
+		1 \\
+	-\delta_{ij} \frac{c_{snd}}{\rho} &
+		0 &
+		\delta_{j'j} &
+		\delta_{ij} \frac{c_{snd}}{\rho} \\
+	c_{snd}^2 &
+		0 &
+		0 &
+		c_{snd}^2
+}\right]}
+=
+\downarrow I \overset{\rightarrow K}{
+\left[\matrix{
+	-c_{snd} & 0 & 0 \\
+	0 & 0 & 0 \\
+	0 & 0 & c_{snd}
+}\right]}
+\cdot
+\downarrow K \overset{\rightarrow L}{\left[\matrix{
+	1 &
+		1 &
+		0 &
+		1 \\
+	-\delta_{ij} \frac{c_{snd}}{\rho} &
+		0 &
+		\delta_{j'j} &
+		\delta_{ij} \frac{c_{snd}}{\rho} \\
+	c_{snd}^2 &
+		0 &
+		0 &
+		c_{snd}^2
+}\right]}$<br>
+<br>
+
+Now we can find the eigenvalues of the change in flux with respect to change in conservative as:<br>
+$= \frac{\partial F_{Ij}}{\partial W_L} \frac{\partial W_L}{\partial U_K}$ by chain rule<br>
+$= \delta_{IN} \frac{\partial F_{Nj}}{\partial W_L} \frac{\partial W_L}{\partial U_K}$ by inserting a delta<br>
+$= \frac{\partial U_I}{\partial W_M} \frac{\partial W_M}{\partial U_N} \frac{\partial F_{Nj}}{\partial W_L} \frac{\partial W_L}{\partial U_K}$ by replacing the delta with a change in coordinates and its inverse<br>
+Now we can replace the $\frac{\partial W_M}{\partial U_N} \frac{\partial F_{Nj}}{\partial W_L}$ with the acoustic matrix $A_{Njl} + \delta_{NL} v_j$.<br>
+$= \frac{\partial U_I}{\partial W_M} (A_{NjL} + \delta_{NL} v_j) \frac{\partial W_L}{\partial U_K}$<br>
+So the eigenvectors of $\frac{\partial F_{Ij}}{\partial U_K}$ are equal to those of $A_{IjK}$ plus $v_j$ (why? because $A_{IjK}$ is traceless?).<br>
+And (only if the eigenvectors of $A_{IjK}$ are equal to those of $\delta_{IK} v_j$.  why again?) the right eigenvectors of $\frac{\partial F_{Ij}}{\partial U_K}$<br>
+are equal to $\frac{\partial U_I}{\partial W_K} y_{KL}$.<br>
+<br>
+
+<h2>Entropy Function</h2>
+
+Entropy recap:<br>
+$S = S_0 + c_v ln ( \frac{P}{P_0} (\frac{\rho_0}{\rho})^\gamma $<br>
+<br>
+
+Derivative of $S$ wrt primitives:<br>
+$\partial_\rho S = -\gamma c_v / \rho$<br>
+$\partial_{v_i} S = 0$<br>
+$\partial_P S = c_v / P$<br>
+$\partial_I S = \overset{\rightarrow I}{\left[\matrix{
+	-\frac{\gamma c_v}{\rho} &
+	0 &
+	\frac{c_v}{P}
+}\right]}$<br>
+<br>
+
+Derivative of densitised entropy wrt primitives:<br>
+$\partial_\rho (\rho S) = S - \gamma c_v$<br>
+$\partial_{v_i} (\rho S) = 0$<br>
+$\partial_P (\rho S) = c_v \rho / P$<br>
+$\partial_I S = \overset{\rightarrow I}{\left[\matrix{
+	S - \gamma c_v & 0 & \frac{c_v \rho}{P}
+}\right]}$<br>
+<br>
+
+...transformed by the transpose quasilinear flux matrix...<br>
+
+$\partial_I (\rho S) \frac{\partial W_I}{\partial U_L} \frac{\partial F_{Lj}}{\partial W_K}$<br>
+$= \overset{\rightarrow I}{\left[\matrix{
+	S - \gamma c_v & 0 & \frac{c_v \rho}{P}
+}\right]}
+\cdot 
+\downarrow I \overset{\rightarrow K}{\left[\matrix{
+	v_j & \rho \delta_{jk} & 0 \\
+	0 & \delta_{ik} v_j & \delta_{ij} \frac{1}{\rho} \\
+	0 & \gamma P \delta_{jk} & v_j
+}\right]}$<br>
+$=\overset{\rightarrow K}{\left[\matrix{
+	v_j (S - \gamma c_v) & 
+		\delta_{jk} \rho S &
+		\frac{v_j c_v \rho}{P}
+}\right]}$<br>
+$= \rho v_j \partial_I S + S \left[\matrix{ v_j & \delta_{jk} \rho & 0 }\right]$<br>
+$= \rho v_j \partial_I S + S \partial_I (\rho v_j)$<br>
+$= \partial_I (S \rho v_j)$<br>
+So the gradient of the densitized entropy function, times the quasilinear flux matrix, is equal to the gradient of the combined densitized entropy function times the velocity in the flux direction.<br>
+Is that the conditions for the definition of the entropy flux?<br>
+<br>
+
+Second derivative of densitized entropy with respect to primitives:<br>
+$(\rho S)_{,\rho\rho} = S_{,\rho} = -\frac{\gamma c_v}{\rho}$<br>
+$(\rho S)_{,\rho P} = S_{,P} = \frac{c_v}{P}$<br>
+$(\rho S)_{,v_i K} = 0$<br>
+$(\rho S)_{,P P} = (\frac{c_v \rho}{P})_{,P} = -\frac{c_v \rho}{P^2}$<br>
+$(\rho S)_{IK} = c_v \cdot \downarrow I \overset{\rightarrow K}{\left[\matrix{
+	-\frac{\gamma}{\rho} & 0 & \frac{1}{P} \\
+	0 & 0 & 0 \\
+	\frac{1}{P} & 0 & -\frac{\rho}{P^2}
+}\right]}$<br>
+<br>
+	
+eigenvalues of second derivative of entropy with respect to primitives:<br>
+$\lambda = 0$ times 3<br>
+and<br>
+$(-c_v \frac{\gamma}{\rho} - \lambda)(-c_v \frac{\rho}{P^2} - \lambda) - \frac{{c_v}^2}{P^2}  = 0$<br>
+$\lambda^2 + c_v (\frac{\gamma}{\rho} + \frac{\rho}{P^2}) \lambda + {c_v}^2 \frac{\gamma - 1}{P^2} = 0$<br>
+$\lambda = \frac{1}{2} {c_v}^2 \left(
+	-(\frac{\gamma}{\rho} + \frac{\rho}{P^2}) \pm \sqrt{(\frac{\gamma}{\rho} + \frac{\rho}{P^2})^2 - 4 \frac{\gamma - 1}{P^2}}
+\right)$<br>
+$\lambda = -\frac{1}{2} {c_v}^2 \left(
+	\frac{\gamma}{\rho} + \frac{\rho}{P^2} \mp \sqrt{\frac{\gamma^2}{\rho^2} + 2 \frac{\gamma}{P^2} + \frac{\rho^2}{P^4} - 4 \frac{\gamma - 1}{P^2}}
+\right)$<br>
+$\lambda = -\frac{1}{2} {c_v}^2 \left(
+	\frac{\gamma}{\rho} + \frac{\rho}{P^2} \mp \sqrt{\frac{\gamma^2}{\rho^2} - 2 \frac{\gamma}{P^2} + \frac{\rho^2}{P^4} + \frac{4}{P^2}}
+\right)$<br>
+
+<br>
+	</body>
+</html>

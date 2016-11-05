@@ -1,0 +1,141 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 13.04.0 ] */
+
+/* [wxMaxima: input   start ] */
+assume(t>0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+depends([t],[x]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+r : transpose([t, x]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+e_t : diff(r,t);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+e_x : diff(r,x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+e : addcol(e_t, e_x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eta : diag_matrix(-1,1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+gLL : transpose(e) . eta . e;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* still not sure about this one ...
+gLL[1][2] : 0;
+gLL[2][1] : 0;*/"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+gLL;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+gUU : invert(gLL);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+nU_var : matrix([nUt], [nUx]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+n_dot_e_x : transpose(nU_var) . gLL . e_x = 0;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+nUt_from_nUx : solve(n_dot_e_x, nUt)[1];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+n_norm : transpose(nU_var) . gLL . nU_var = -1;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+n_norm_nUx : subst(nUt_from_nUx, n_norm);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+nUx_soln : solve(n_norm_nUx, nUx)[2] /* using positive answer */;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+nUt_soln : subst(nUx_soln, nUt_from_nUx) /* negative this for negative solution */;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+nU : matrix([rhs(nUt_soln)], [rhs(nUx_soln)]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+transpose(nU) . gLL . e_x$ ratsimp(%) /* verify orthogonal with e_x */;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+transpose(nU) . gLL . nU$ ratsimp(%) /* verify normalized */;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+g_tt : gLL[1][1];
+g_tx : gLL[1][2];
+g_xt : gLL[2][1];
+g_xx : gLL[2][2];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+conn_ttt : 1/2 * (diff(g_tt,t) + diff(g_tt,t) - diff(g_tt,t));
+conn_ttx : 1/2 * (diff(g_tt,x) + diff(g_tx,t) - diff(g_tx,t));
+conn_txt : 1/2 * (diff(g_tx,t) + diff(g_tt,x) - diff(g_xt,t));
+conn_xtt : 1/2 * (diff(g_xt,t) + diff(g_xt,t) - diff(g_tt,x));
+conn_txx : 1/2 * (diff(g_tx,x) + diff(g_tx,x) - diff(g_xx,t));
+conn_xtx : 1/2 * (diff(g_xt,x) + diff(g_xx,t) - diff(g_tx,x));
+conn_xxt : 1/2 * (diff(g_xx,t) + diff(g_xt,x) - diff(g_xt,x));
+conn_xxx : 1/2 * (diff(g_xx,x) + diff(g_xx,x) - diff(g_xx,x));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+connUx_xx : conn_xxx / g_xx /* only true for symmetric G ... */;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+transpose(gLL . nU)$ ratsimp(%)$ nL : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+addrow(diff(nL,t),diff(nL,x))$ ratsimp(%)$ partialL_nL : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+partialL_nL - matrix([0,0],[0,connUx_xx]*nL[1][2])$ ratsimp(%)$ diffL_nL : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ident(2) + nU . nL$ ratsimp(%)$ projUL : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+transpose(projUL) . diffL_nL . projUL$ ratsimp(%)$ proj_diffL_nL : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+-(proj_diffL_nL + transpose(proj_diffL_nL))/2$ ratsimp(%)$ KLL : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+gUU[1][1] * KLL[1][1] + gUU[1][2] * KLL[1][2] + gUU[2][1] * KLL[2][1] + gUU[2][2] * KLL[2][2]$ ratsimp(%)$ K:%;
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

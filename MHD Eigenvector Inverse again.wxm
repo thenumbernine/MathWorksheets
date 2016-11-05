@@ -1,0 +1,176 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 13.04.0 ] */
+
+/* [wxMaxima: input   start ] */
+assert(vf>0,vs>0,cs>0,va>0,vax>0,mu>0,rho>0,p>0,%gamma>0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W:[tau,ux,uy,uz,Bx,By,Bz,p];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+E_from_prims : E=p/(%gamma-1)+1/2*(ux^2+uy^2+uz^2)+1/2*tau*(Bx^2+By^2+Bz^2)/mu;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+U:[1/tau,ux/tau,uy/tau,uz/tau,Bx,By,Bz,rhs(E_from_prims)];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+genmatrix(lambda([i,j], diff(U[i], W[j])), 8, 8)$
+subst([Bx^2+By^2+Bz^2=BSq],%)$
+ratsimp(%)$
+dU_dW : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+invert(dU_dW)$
+ratsimp(%)$
+subst([uz^2=uSq-ux^2-uy^2],%)$
+ratsimp(%)$
+dW_dU:%;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+dU_dW.dW_dU$ subst([uSq=ux^2+uy^2+uz^2],%)$ ratsimp(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+r0 : transpose(matrix([tau,0,0,0,0,0,0,0]));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+r1 : transpose(matrix([0,0,0,0,1,0,0,0]));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+rpvax : transpose(matrix([0,0,bz,-by,0,-sgnBx*sqrt(mu*rho)*bz,sgnBx*sqrt(mu*rho)*by,0]))*vf/sqrt(2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+rmvax : transpose(matrix([0,0,-bz,by,0,-sgnBx*sqrt(mu*rho)*bz,sgnBx*sqrt(mu*rho)*by,0]))*vf/sqrt(2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+rpvf : Rvf * transpose(matrix([-af/rho,af*vf,-as*by*vax*sgnBx,-as*bz*vax*sgnBx,0,as*by*vf*sqrt(mu*rho),as*bz*vf*sqrt(mu*rho),af*%gamma*p]));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+rmvf : Rvf * transpose(matrix([af/rho,af*vf,-as*by*vax*sgnBx,-as*bz*vax*sgnBx,0,-as*by*vf*sqrt(mu*rho),-as*bz*vf*sqrt(mu*rho),-af*%gamma*p]));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+rpvs : Rvs * transpose(matrix([-as*tau,as*vs,af*by*cs*sgnBx,af*bz*cs*sgnBx,0,-af*by*cs^2/vf*sqrt(mu*rho),-af*bz*cs^2/vf*sqrt(mu*rho),as*%gamma*p]));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+rmvs : Rvs * transpose(matrix([as*tau,as*vs,af*by*cs*sgnBx,af*bz*cs*sgnBx,0,af*by*cs^2/vf*sqrt(mu*rho),af*bz*cs^2/vf*sqrt(mu*rho),-as*%gamma*p]));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+R_U : addcol(rmvf, rmvax, rmvs, r0, r1, rpvs, rpvax, rpvf);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+l0 : matrix([rho,0,0,0,0,0,0,1/(%gamma*p)]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+l1 : matrix([0,0,0,0,1,0,0,0]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+lpvax : 1/(sqrt(2)*vf)*matrix([0,0,bz,-by,0,-sgnBx*bz/sqrt(mu*rho),sgnBx*by/sqrt(mu*rho),0]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+lmvax : 1/(sqrt(2)*vf)*matrix([0,0,-bz,by,0,-sgnBx*bz/sqrt(mu*rho),sgnBx*by/sqrt(mu*rho),0]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+lpvf : Rvf/vf^2*matrix([0,af*vf,-as*by*vax*sgnBx,-as*bz*vax*sgnBx,0,as*by*vf/sqrt(mu*rho),as*bz*vf/sqrt(mu*rho),af*tau]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+lmvf : Rvf/vf^2*matrix([0,af*vf,-as*by*vax*sgnBx,-as*bz*vax*sgnBx,0,-as*by*vf/sqrt(mu*rho),-as*bz*vf/sqrt(mu*rho),-af*tau]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+lpvs : Rvs/vf^2*matrix([0,as*vs,af*by*cs*sgnBx,af*bz*cs*sgnBx,0,-af*by*cs^2/(vf*sqrt(mu*rho)),-af*bz*cs^2/(vf*sqrt(mu*rho)),as*%gamma*p]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+lmvs : Rvs/vf^2*matrix([0,as*vs,af*by*cs*sgnBx,af*bz*cs*sgnBx,0,af*by*cs^2/(vf*sqrt(mu*rho)),af*bz*cs^2/(vf*sqrt(mu*rho)),-as*%gamma*p]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+L_U : addrow(lmvf,lmvax,lmvs,l0,l1,lpvs,lpvax,lpvf);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+af*Rvf$
+subst([Rvf=vf/sqrt(af^2*(vf^2+cs^2)+as^2*(vf^2+vax^2))],%)$ ratsimp(%)$
+subst([af=sqrt((vf^2-vax^2)/(vf^2-vs^2))],%)$ ratsimp(%)$
+subst([as=sqrt((vf^2-cs^2)/(vf^2-vs^2))],%)$ ratsimp(%)$
+%;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/*  try to show -- for the sake of orthogonality
+vf vs = cs vax
+vf^2 vs^2 = cs^2 vax^2
+*/
+vf^2*vs^2=cs^2*vax^2$ ratsimp(%)$
+subst([vs=sqrt(cStar^2-sqrt(cStar^4-vax^2*cs^2))],%)$ ratsimp(%)$
+subst([vf=sqrt(cStar^2+sqrt(cStar^4-vax^2*cs^2))],%)$ ratsimp(%)$
+subst([cStar=sqrt((va^2+cs^2)/2)],%)$ ratsimp(%)$
+subst([va=sqrt(BSq/(mu*rho))],%)$ ratsimp(%)$
+subst([vax=sqrt(Bx^2/(mu*rho))],%)$ ratsimp(%)$
+subst([cs=sqrt(%gamma*p/rho)],%)$ ratsimp(%)$
+%;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* 
+now try to show, for orthogonality ...
+cs^2 rho^2 = 1
+... but ...
+cs^2 rho^2 = gamma p rho
+... that means the ls . rf fields are not orthogonal...
+*/"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+L_U.R_U$ ratsimp(%)$
+subst([tau=1/rho],%)$ ratsimp(%)$
+subst([sgnBx^2=1],%)$ ratsimp(%)$
+subst([by^2=1-bz^2],%)$ ratsimp(%)$
+/*subst([%gamma=rho*cs^2/p],%)$ ratsimp(%)$
+subst([vf=cs*vax/vs],%)$ ratsimp(%)$*/
+factor(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/*L_U.R_U$ ratsimp(%)$
+subst([tau=1/rho],%)$ ratsimp(%)$
+subst([sgnBx^2=1],%)$ ratsimp(%)$
+subst([by^2=1-bz^2],%)$ ratsimp(%)$
+subst([Rvf=vf/sqrt(af^2*(vf^2+cs^2)+as^2*(vf^2+vax^2))],%)$ ratsimp(%)$
+subst([Rvs=vf^2/sqrt(af^2*cs^2*(vf^2+cs^2)+as^2*vf^2*(vs^2+cs^2))],%)$ ratsimp(%)$
+subst([af=sqrt((vf^2-vax^2)/(vf^2-vs^2))],%)$ ratsimp(%)$
+subst([as=sqrt((vf^2-cs^2)/(vf^2-vs^2))],%)$ ratsimp(%)$
+subst([vs=sqrt(cStar^2-sqrt(cStar^4-vax^2*cs^2))],%)$ ratsimp(%)$
+subst([vf=sqrt(cStar^2+sqrt(cStar^4-vax^2*cs^2))],%)$ ratsimp(%)$
+subst([cStar=sqrt((va^2+cs^2)/2)],%)$ ratsimp(%)$
+subst([va=sqrt(BSq/(mu*rho))],%)$ ratsimp(%)$
+subst([vax=sqrt(Bx^2/(mu*rho))],%)$ ratsimp(%)$
+subst([cs=sqrt(%gamma*p/rho)],%)$ ratsimp(%)$
+subst([abs(mu)=mu],%)$ ratsimp(%)$
+subst([abs(rho)=rho],%)$ ratsimp(%)$
+subst([BSq=Bx^2+By^2+Bz^2],%)$ ratsimp(%)$
+$*/"";
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

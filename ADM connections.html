@@ -1,0 +1,251 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>ADM connections</title>
+		<!-- script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script -->
+		<script type="text/javascript" async src="file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+	</head>
+	<body>
+
+<h3>ADM connections</h3>
+
+metric:<br>
+$g_{uv} = \left[\matrix{
+	-\alpha^2 + \beta^k \beta^l \gamma_{kl} & \beta^k \gamma_{kj} \\
+	\beta^k \gamma_{ki} & \gamma_{ij}
+}\right]$<br>
+<br>
+
+inverse:<br>
+$g^{uv} = \left[\matrix{
+	-1/\alpha^2 & \beta^j / \alpha^2 \\
+	\beta^i / \alpha^2 & \gamma^{ij} - \beta^i \beta^j / \alpha^2
+}\right]$<br>
+<br>
+
+Christoffel of 1st kind:<br>
+$\Gamma_{uvw} = \frac{1}{2}(g_{uv,w} + g_{uw,v} - g_{vw,u})$<br>
+individually:<br>
+$\Gamma_{ttt} 
+	= \frac{1}{2} g_{tt,t} 
+	= -\alpha \alpha_{,t} + \beta^j {\beta^k}_{,t} \gamma_{jk} + \frac{1}{2} \beta^j \beta^k \gamma_{jk,t}$<br>
+$\Gamma_{tti} = \Gamma_{tit} = \frac{1}{2}g_{tt,i} $
+$= -\alpha \alpha_{,i} + \beta^j {\beta^k}_{,i} \gamma_{jk} + \frac{1}{2} \beta^j \beta^k \gamma_{jk,i}$<br>
+$\Gamma_{itt}
+	= g_{it,t} - \frac{1}{2} g_{tt,i}
+	= {\beta^j}_{,t} \gamma_{ij} + \beta^j \gamma_{ij,t} + \alpha \alpha_{,i} - \beta^j {\beta^k}_{,i} \gamma_{jk} - \frac{1}{2} \beta^j \beta^k \gamma_{jk,i}$<br>
+$\Gamma_{tij} = \frac{1}{2}(g_{ti,j} + g_{tj,i} - g_{ij,t}) 
+	= \frac{1}{2}({\beta^k}_{,j} \gamma_{ki} + \beta^k \gamma_{ki,j} + {\beta^k}_{,i} \gamma_{kj} + \beta^k \gamma_{kj,i} - \gamma_{ij,t})$<br>
+$\Gamma_{itj} = \Gamma_{ijt} = \frac{1}{2}(g_{it,j} + g_{ij,t} - g_{tj,i}) 
+	= \frac{1}{2}(\gamma_{ij,t} + {\beta^k}_{,j} \gamma_{ki} + \beta^k \gamma_{ki,j} - {\beta^k}_{,i} \gamma_{kj} - \beta^k \gamma_{kj,i})$<br>
+$\Gamma_{ijk} = \frac{1}{2}(g_{ij,k} + g_{ik,j} - g_{jk,i}) $
+$= \frac{1}{2}(\gamma_{ij,k} + \gamma_{ik,j} - \gamma_{jk,i})$
+$= {^3\Gamma}_{ijk}$<br>
+<br>
+
+Connections / Christoffel of 2nd kind:<br>
+${\Gamma^u}_{vw} = g^{ur} \Gamma_{rvw}$<br>
+individually:<br>
+${\Gamma^t}_{tt} = g^{tt} \Gamma_{ttt} + g^{tk} \Gamma_{ktt}$<br>
+$ = -1/\alpha^2 (
+		-\alpha \alpha_{,t} + \beta^j {\beta^k}_{,t} \gamma_{jk} + \frac{1}{2} \beta^j \beta^k \gamma_{jk,t}
+	) + \beta^k / \alpha^2 (
+		{\beta^j}_{,t} \gamma_{kj} + \beta^j \gamma_{kj,t} + \alpha \alpha_{,k} - \beta^j {\beta^l}_{,k} \gamma_{jl} - \frac{1}{2} \beta^j \beta^l \gamma_{jl,k}
+	)$<br>
+$ = \frac{1}{\alpha^2}(
+	\alpha \alpha_{,t}
+	+ \frac{1}{2} \beta^j \beta^k \gamma_{jk,t}
+	+ \alpha \alpha_{,k} \beta^k
+	- \beta^k \beta^j {\beta^l}_{,k} \gamma_{jl}
+	- \frac{1}{2} \beta^k \beta^j \beta^l \gamma_{jl,k}
+)$<br>
+${\Gamma^t}_{ti} = {\Gamma^t}_{it} = g^{tt} \Gamma_{tti} + g^{tj} \Gamma_{jti} $<br>
+$ = -1 / \alpha^2 ( -\alpha \alpha_{,i} + \beta^j {\beta^k}_{,i} \gamma_{jk} + \frac{1}{2} \beta^j \beta^k \gamma_{jk,i} )
+	+ \frac{1}{2} \beta^j / \alpha^2 (\gamma_{ij,t} + {\beta^k}_{,i} \gamma_{jk} + \beta^k \gamma_{jk,i} - {\beta^k}_{,j} \gamma_{ik} - \beta^k \gamma_{ik,j})
+$<br>
+$ = 1 / \alpha^2 ( 
+	\alpha \alpha_{,i} 
+	- \frac{1}{2} \beta^j {\beta^k}_{,i} \gamma_{jk} 
+	+ \frac{1}{2} \beta^j \gamma_{ij,t} 
+	- \frac{1}{2} \beta^j {\beta^k}_{,j} \gamma_{ik} 
+	- \frac{1}{2} \beta^j \beta^k \gamma_{ik,j}
+)$<br>
+${\Gamma^i}_{tt} = g^{it} \Gamma_{ttt} + g^{ij} \Gamma_{jtt}$<br>
+$ = \beta^i / \alpha^2 (-\alpha \alpha_{,t} + \beta^j {\beta^k}_{,t} \gamma_{jk} + \frac{1}{2} \beta^j \beta^k \gamma_{jk,t})
+	+ (\gamma^{ij} - \beta^i \beta^j / \alpha^2) (
+		{\beta^k}_{,t} \gamma_{jk} + \beta^k \gamma_{jk,t} + \alpha \alpha_{,j} - \beta^k {\beta^l}_{,j} \gamma_{kl} - \frac{1}{2} \beta^k \beta^l \gamma_{kl,j})$<br>
+$ = \frac{1}{\alpha^2} (
+	- \beta^i \alpha \alpha_{,t}
+	- \beta^i \beta^j \alpha \alpha_{,j} 
+	+ \gamma^{ij} \alpha \alpha_{,j} 
+	+ {\beta^i}_{,t}
+	- \frac{1}{2} \beta^i \beta^j \beta^k \gamma_{jk,t}
+	+ \gamma^{ij} \beta^k \gamma_{jk,t}
+	+ \beta^i \beta^j \beta^k {\beta^l}_{,j} \gamma_{kl} 
+	+ \frac{1}{2} \beta^i \beta^j \beta^k \beta^l \gamma_{kl,j}
+	- \beta^k {\beta^l}_{,j} \gamma^{ij} \gamma_{kl} 
+	- \frac{1}{2} \gamma^{ij} \beta^k \beta^l \gamma_{kl,j} 
+)
+$<br>
+${\Gamma^t}_{ij} = g^{tt} \Gamma_{tij} + g^{tk} \Gamma_{kij}$<br>
+$= -\frac{1}{2} 1/\alpha^2 ({\beta^k}_{,j} \gamma_{ki} + \beta^k \gamma_{ki,j} + {\beta^k}_{,i} \gamma_{kj} + \beta^k \gamma_{kj,i} - \gamma_{ij,t})
+	+ \frac{1}{2} \beta^k / \alpha^2 (\gamma_{ij,k} + \gamma_{ik,j} - \gamma_{jk,i})$<br>
+$= \frac{1}{2} 1/\alpha^2 (
+	- {\beta^k}_{,i} \gamma_{kj} 
+	- {\beta^k}_{,j} \gamma_{ki} 
+	+ \gamma_{ij,t}
+	- \beta^k \gamma_{kj,i} 
+	- \beta^k \gamma_{jk,i}
+	+ \beta^k \gamma_{ij,k} 
+)$<br>
+$= \frac{1}{2} 1/\alpha^2 (
+	- {\beta^k}_{,i} \gamma_{kj} 
+	- {\beta^k}_{,j} \gamma_{ki} 
+	+ \gamma_{ij,t}
+	- \beta^k ({^3\Gamma})_{kij}
+)$<br>
+${\Gamma^i}_{tj} = {\Gamma^i}_{jt} = g^{it} \Gamma_{ttj} + g^{ik} \Gamma_{ktj}$<br>
+$ = \beta^i / \alpha^2 (-\alpha \alpha_{,j} + \beta^k {\beta^l}_{,j} \gamma_{kl} + \frac{1}{2} \beta^k \beta^l \gamma_{kl,j})
+	+ \frac{1}{2} (\gamma^{ik} - \beta^i \beta^k / \alpha^2) (\gamma_{kj,t} + {\beta^l}_{,j} \gamma_{lk} + \beta^l \gamma_{lk,j} - {\beta^l}_{,k} \gamma_{lj} - \beta^l \gamma_{lj,k})$<br>
+$ = 1 / \alpha^2 (
+	- \beta^i \alpha \alpha_{,j} 
+	+ \frac{1}{2} \beta^i \beta^k {\beta^l}_{,j} \gamma_{lk} 
+	+ \frac{1}{2} \beta^i \beta^k {\beta^l}_{,k} \gamma_{lj} 
+	- \frac{1}{2} \beta^i \beta^k \gamma_{kj,t} 
+	+ \frac{1}{2} \beta^i \beta^k \beta^l \gamma_{lj,k}
+)
+	+ \frac{1}{2} \gamma^{ik} \gamma_{kj,t} 
+	+ \frac{1}{2} {\beta^i}_{,j}
+	- \frac{1}{2} \gamma_{lj} {\beta^l}_{,k} \gamma^{ik} 
+	+ \frac{1}{2} \gamma^{ik} \beta^l \gamma_{lk,j} 
+	- \frac{1}{2} \gamma^{ik} \beta^l \gamma_{lj,k}
+$<br>
+${\Gamma^i}_{jk} = g^{it} \Gamma_{tjk} + g^{il} \Gamma_{ljk}$<br>
+$= \frac{1}{2} 1 / \alpha^2 (
+	\beta^i {\beta^l}_{,k} \gamma_{lj} 
+	+ \beta^i {\beta^l}_{,j} \gamma_{lk} 
+	+ \beta^i \beta^l \gamma_{jk,l}
+	- \beta^i \gamma_{jk,t}
+)
++ \frac{1}{2} (
+	\gamma^{il} \gamma_{lj,k} 
+	+ \gamma^{il} \gamma_{lk,j} 
+	- \gamma^{il} \gamma_{jk,l}
+)$<br>
+$= \frac{1}{2} 1 / \alpha^2 (
+	\beta^i {\beta^l}_{,k} \gamma_{lj} 
+	+ \beta^i {\beta^l}_{,j} \gamma_{lk} 
+	+ \beta^i \beta^l \gamma_{jk,l}
+	- \beta^i \gamma_{jk,t}
+)
++ {^3\Gamma^i}_{jk}$<br>
+<br>
+
+Connection derivatives used for Riemann tensor:<br>
+${\Gamma^t}_{tt,i}$<br>
+$ = (\frac{1}{\alpha^2}(
+	\alpha \alpha_{,t}
+	+ \frac{1}{2} \beta^j \beta^k \gamma_{jk,t}
+	+ \alpha \alpha_{,k} \beta^k
+	- \beta^k \beta^j {\beta^l}_{,k} \gamma_{jl}
+	- \frac{1}{2} \beta^k \beta^j \beta^l \gamma_{jl,k}
+))_{,i}$<br>
+$ = -2 \frac{\alpha_{,i}}{\alpha^3} (
+	\alpha \alpha_{,t}
+	+ \frac{1}{2} \beta^j \beta^k \gamma_{jk,t}
+	+ \alpha \alpha_{,k} \beta^k
+	- \beta^k \beta^j {\beta^l}_{,k} \gamma_{jl}
+	- \frac{1}{2} \beta^k \beta^j \beta^l \gamma_{jl,k}
+) + \frac{1}{\alpha^2} (
+	\alpha_{,i} \alpha_{,t}
+	+ \alpha \alpha_{,ti}
+	+ {\beta^j}_{,i} \beta^k \gamma_{jk,t}
+	+ \frac{1}{2} \beta^j \beta^k \gamma_{jk,ti}
+	+ \alpha_{,i} \alpha_{,k} \beta^k
+	+ \alpha \alpha_{,ki} \beta^k
+	+ \alpha \alpha_{,k} {\beta^k}_{,i}
+	- {\beta^k}_{,i} \beta^j {\beta^l}_{,k} \gamma_{jl}
+	- \beta^k {\beta^j}_{,i} {\beta^l}_{,k} \gamma_{jl}
+	- \beta^k \beta^j {\beta^l}_{,ki} \gamma_{jl}
+	- \beta^k \beta^j {\beta^l}_{,k} \gamma_{jl,i}
+	- \frac{1}{2} {\beta^k}_{,i} \beta^j \beta^l \gamma_{jl,k}
+	- \beta^k {\beta^j}_{,i} \beta^l \gamma_{jl,k}
+	- \frac{1}{2} \beta^k \beta^j \beta^l \gamma_{jl,ki}
+)$<br>
+$ = \frac{1}{\alpha^2} (
+	
+	-2 \alpha_{,t} \alpha_{,i}
+	+ \alpha_{,i} \alpha_{,t}
+	- \alpha_{,i} \alpha_{,j} \beta^j
+	+ \alpha \alpha_{,j} {\beta^j}_{,i}
+	
+	+ \alpha \alpha_{,ti}
+	+ \alpha \alpha_{,ij} \beta^j
+	
+	- \alpha^{-1} \alpha_{,i} \beta^j \beta^k \gamma_{jk,t}
+	+ \alpha^{-1} \alpha_{,i} \beta^j \beta^k \gamma_{jk,l} \beta^l
+	+2 \alpha^{-1} \alpha_{,i} \beta^j \gamma_{jk} {\beta^k}_{,l} \beta^l
+	
+	+ {\beta^j}_{,i} \beta^k \gamma_{jk,t}
+	- {\beta^j}_{,i} {\beta^k}_{,l} \beta^l \gamma_{jk}
+	- \beta^j {\beta^k}_{,l} {\beta^l}_{,i} \gamma_{jk}
+	- \beta^j \gamma_{jk} {\beta^k}_{,li} \beta^l
+	
+	- \frac{1}{2} \beta^j \beta^k {\beta^l}_{,i} \gamma_{jk,l}
+	- \beta^j {\beta^k}_{,l} \beta^l \gamma_{jk,i}
+	- {\beta^j}_{,i} \beta^l \beta^k \gamma_{jl,k}
+	
+	+ \frac{1}{2} \beta^j \beta^k \gamma_{jk,ti}
+	- \frac{1}{2} \beta^k \beta^j \beta^l \gamma_{jl,ki}
+)$<br>
+<br>
+${\Gamma^t}_{ti,t}$<br>
+${\Gamma^t}_{ti,j}$<br>
+${\Gamma^t}_{ij,t}$<br>
+${\Gamma^i}_{tt,i}$<br>
+${\Gamma^i}_{ti,t}$<br>
+${\Gamma^j}_{ti,j}$<br>
+${\Gamma^j}_{tj,i}$<br>
+${\Gamma^k}_{ij,k} = {^3\Gamma^k}_{ij,k}$<br>
+${\Gamma^k}_{ki,j} = {^3\Gamma^k}_{ki,j}$<br>
+<br>
+
+Riemann tensor representations used for the Ricci tensor:<br>
+${R^i}_{tit} = {\Gamma^i}_{tt,i} - {\Gamma^i}_{ti,t} + {\Gamma^i}_{ti} {\Gamma^t}_{tt} + {\Gamma^i}_{ji} {\Gamma^j}_{tt} - {\Gamma^i}_{tt} {\Gamma^t}_{ti} - {\Gamma^i}_{jt} {\Gamma^j}_{ti}$<br>
+${R^t}_{tti} = {\Gamma^t}_{ti,t} - {\Gamma^t}_{tt,i} + {\Gamma^t}_{tt} {\Gamma^t}_{ti} + {\Gamma^t}_{jt} {\Gamma^j}_{ti} - {\Gamma^t}_{ti} {\Gamma^t}_{tt} - {\Gamma^t}_{ji} {\Gamma^j}_{tt}$<br>
+$= {\Gamma^t}_{ti,t} - {\Gamma^t}_{tt,i} + {\Gamma^t}_{jt} {\Gamma^j}_{ti} - {\Gamma^t}_{ji} {\Gamma^j}_{tt}$<br>
+${R^j}_{tji} = {\Gamma^j}_{ti,j} - {\Gamma^j}_{tj,i} + {\Gamma^j}_{tj} {\Gamma^t}_{ti} + {\Gamma^j}_{kj} {\Gamma^k}_{ti} - {\Gamma^j}_{ti} {\Gamma^t}_{tj} - {\Gamma^j}_{ki} {\Gamma^k}_{tj}$<br>
+${R^t}_{itj} = {\Gamma^t}_{ij,t} - {\Gamma^t}_{ti,j} + {\Gamma^t}_{tt} {\Gamma^t}_{ij} + {\Gamma^t}_{kt} {\Gamma^k}_{ij} - {\Gamma^t}_{tj} {\Gamma^t}_{it} - {\Gamma^t}_{kj} {\Gamma^k}_{it}$<br>
+${R^k}_{ikj} = {\Gamma^k}_{ij,k} - {\Gamma^k}_{ki,j} + {\Gamma^k}_{tk} {\Gamma^t}_{ij} + {\Gamma^k}_{lk} {\Gamma^l}_{ij} - {\Gamma^k}_{tj} {\Gamma^t}_{ik} - {\Gamma^k}_{lj} {\Gamma^l}_{ik}$<br>
+<br>
+
+All unique representations of fully covariant Riemann metric tensor:<br>
+$R_{titj} = R_{itjt} = -R_{tijt} = -R_{ittj}$<br>
+$= g_{tt} {R^t}_{itj} + g_{tk} {R^k}_{itj}$<br>
+$= (-\alpha^2 + \beta\^k \beta^l \gamma_{kl}) {R^t}_{itj} + \beta^l \gamma_{lk} {R^k}_{itj}$<br>
+<br>
+$R_{tijk} = -R_{itjk} = R_{jkti} = -R_{jkit} = g_{tt} {R^t}_{ijk} + g_{tl} {R^l}_{ijk}$<br>
+<br>
+$R_{ijkl} = g_{it} {R^t}_{jkl} + g_{im} {R^m}_{jkl}$<br>
+<br>
+
+Ricci tensor:<br>
+$R_{tt} = {R^t}_{ttt} + {R^i}_{tit} = {R^i}_{tit}$<br>
+$R_{ti} = R_{it} = {R^t}_{tti} + {R^j}_{tji}$<br>
+$R_{ij} = {R^t}_{itj} + {R^k}_{ikj}$<br>
+<br>
+
+Gaussian curvature:<br>
+$R = g^{tt} R_{tt} + 2 g^{ti} R_{ti} + g^{ij} R_{ij}$<br>
+<br>
+
+Einstein tensor:<br>
+$G_{tt} = R_{tt} - \frac{1}{2} g_{tt} R$<br>
+$G_{ti} = G_{it} = R_{ti} - \frac{1}{2} g_{ti} R$<br>
+$G_{ij} = R_{ij} - \frac{1}{2} g_{ij} R$<br>
+<br>
+
+	</body>
+</html>

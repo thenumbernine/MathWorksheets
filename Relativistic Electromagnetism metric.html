@@ -1,0 +1,390 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Relativistic Electromagnetism Metric</title>
+		<!-- script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script -->
+		<script type="text/javascript" async src="file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+	</head>
+	<body>
+Indexes:<br>
+$A-Z$ = t,x,y,z in flat space<br>
+$i-n$ = x,y,z in flat space<br>
+$0123$ = specific coordinates in flat spacetime<br>
+$\alpha-\omega$ = t,x,y,z in curved-space<br>
+$a-h,o-z$ = x,y,z in curved space<br>
+$txyz$ = specific coordinates in curved spacetime<br> 
+<br>
+
+metric -> geodesic (gravitational force) -> Einstein tensor = stress-energy tensor<br>
+<br>
+Popular spherical matter metrics like Schwarzschild, Kerr, etc. solutions take place at $r \rightarrow \infty$, therefore the matter is treated as a point source, therefore $T_{\mu\nu} = 0$.  Likewise $G_{\mu\nu} = 0$.<br>
+<br>
+Metrics which do consider matter terms include the FLRW metric, which uses $T_{\mu\nu} = diag(\rho, p, p, p) g_{\mu\nu}$.  Is this relation always the case?<br>
+<br>
+Also, MTW ch. 23 talks about embedding functions, and how metrics vary within the inside of a star.<br>
+<br>
+
+<h3>Electromagnetic Stress-Energy</h3>
+
+$E^i$ = electric field<br>
+$B^i$ = magnetic field<br>
+$S^i = {\epsilon^i}_{jk} E^j B^k$ = Poynting vector<br>
+<br>
+
+Faraday tensor:<br>
+$F^{0j} = -F^{j0} = E^j$<br>
+$F^{jk} = {\epsilon^{jk}}_l B^l$<br>
+$F^{JK} = J(j) \downarrow \overset{ K(k) \rightarrow }{\left[\matrix{
+	0 & E^k \\
+	-E^j & {\epsilon^{jk}}_l B^l
+}\right]}$<br>
+<br>
+
+Electromagnetism stress-energy tensor:<br>
+$T^{\mu\nu} = \frac{1}{4\pi}(F^{\mu\alpha} {F^{\nu}}_\alpha - \frac{1}{4} g^{\mu\nu} F_{\alpha\beta} F^{\alpha\beta} )$<br>
+<br>
+In flat space this simplifies to<br>
+$T^{00} = \frac{1}{8\pi} (E^2 + B^2)$<br>
+$T^{0j} = T^{j0} = \frac{1}{4\pi} {\epsilon_{ik}}^j E^i B^k$<br>
+$T^{jk} = \frac{1}{4\pi} ( -(E^j E^k + B^j B^k) + \frac{1}{2} (E^2 + B^2) \delta^{jk} )$<br>
+$T^{JK} = \frac{1}{8\pi} \cdot J(j) \downarrow \overset{ K(k) \rightarrow }{\left[\matrix{
+	E^2 + B^2 & 2 S^k \\
+	2 S^j & -2 (E^j E^k + B^j B^k) + (E^2 + B^2) \delta^{jk}
+}\right]}$<br>
+<br>
+
+ADM metric:<br>
+$\alpha$ = lapse<br>
+$\beta^i$ = shift<br>
+${(^3e)_u}^i$ = spatial triad<br>
+<br>
+
+$g_{\mu\nu} = \mu(u)\downarrow \overset{\nu(v)\rightarrow}{\left[ \matrix{-\alpha^2 + \beta^a \beta_a& \beta_v \\ \beta_u & \gamma_{uv}} \right]}$<br>
+$g^{\mu\nu} = \mu(u)\downarrow \overset{\nu(v)\rightarrow}{\left[ \matrix{-1/\alpha^2 & \beta^v / \alpha^2 \\ \beta^u / \alpha^2 & \gamma^{uv} - \beta^u \beta^v / \alpha^2} \right]}$<br>
+<br>
+
+ADM tetrad:<br>
+${e_\mu}^I = \mu(u) \downarrow \overset{ I(i) \rightarrow }{\left[\matrix{
+	\alpha & \beta^i \\
+	0 & {(^3e)_u}^i
+}\right]}$<br>
+${e^\mu}_I = \mu(u) \downarrow \overset{ I(i) \rightarrow }{\left[\matrix{
+	1/\alpha & 0 \\
+	-\beta^u / \alpha & {(^3e)^u}_i
+}\right]}$<br>
+<br>
+
+Flat-space 3-vectors converted to curved-space 4-vectors:<br>
+Transforming a 3-vector by a triad gives $S^j {(^3e)^u}_j = S^u$<br>
+Transforming a 4-vector by a tetrad gives $S^\mu = S^J {e^\mu}_J = \left[\matrix{ S^0 / \alpha \\ -S^0 \beta^u / \alpha + S^u }\right]$<br>
+If $S^0 = 0$ (where $^0$ denotes the timelike component of the flat-space 4-vector) then this gives $ S^\mu = \left[\matrix{ 0 \\ S^u } \right]$<br>
+So I am going to assume the flat-space vectors $E^i, B^i, S^i$ have timelike component 0, and that only their 3-space components transform when transformed by the tetrad.<br>
+<br>
+
+Curved-space Faraday tensor:<br>
+$F^{\mu\nu} = {e^\mu}_I F^{IJ} {e^\nu}_J$<br>
+$= \mu(u) \downarrow \overset{ I(i) \rightarrow }{\left[\matrix{
+	1/\alpha & 0 \\
+	-\beta^u / \alpha & {(^3e)^u}_i
+}\right]} \cdot
+I(i) \downarrow \overset{ J(j) \rightarrow }{\left[\matrix{
+	0 & E^j \\
+	-E^i & {\epsilon^{ij}}_k B^k
+}\right]} \cdot
+J(j) \downarrow \overset{ \nu(v) \rightarrow }{\left[\matrix{
+	1/\alpha & -\beta^v / \alpha \\
+	0 & {(^3e)^v}_j
+}\right]}$<br>
+$= \mu(u) \downarrow \overset{ J(j) \rightarrow }{ \left[\matrix{
+	0 & E^j / \alpha \\
+	-E^u & -E^j \beta^u / \alpha + {\epsilon^{uj}}_k B^k
+}\right]} \cdot 
+J(j) \downarrow \overset{ \nu(v) \rightarrow }{ \left[\matrix{
+	1/\alpha & -\beta^v/\alpha \\
+	0 & {(^3e)^v}_j
+}\right]}$<br>
+$= \mu(u) \downarrow \overset{ \nu(v) \rightarrow }{\left[\matrix{
+	0 & E^v / \alpha \\
+	-E^u / \alpha & E^u \beta^v / \alpha - E^v \beta^u / \alpha + {\epsilon^{uv}}_k B^k
+}\right]}$<br>
+<br>
+
+Curved-space electromagnetism stress-energy tensor:<br>
+$T^{\mu\nu} = {e^\mu}_J T^{JK} {e^\nu}_K$<br>
+$ = \mu(u) \downarrow \overset{ J(j) \rightarrow }{\left[\matrix{
+	1/\alpha & 0 \\
+	-\beta^u / \alpha & {(^3e)^u}_j
+}\right]} \cdot 
+\frac{1}{8\pi} \cdot J(j) \downarrow \overset{ K(k) \rightarrow }{\left[\matrix{
+	E^2 + B^2 & 2 S^k \\
+	2 S^j & -2 (E^j E^k + B^j B^k) + (E^2 + B^2) \delta^{jk}
+}\right]}
+\cdot
+K(k) \downarrow \overset{ \nu(v) \rightarrow }{\left[\matrix{
+	1/\alpha & -\beta^v / \alpha \\
+	0 & {(^3e)^v}_k
+}\right]}$<br>
+$ = 
+\frac{1}{8\pi} \cdot 
+\mu(u) \downarrow \overset{ K(k) \rightarrow }{\left[\matrix{
+	(E^2 + B^2) / \alpha & 
+		2 S^k / \alpha \\
+	-\beta^u (E^2 + B^2) / \alpha + 2 S^u &
+		-2 S^k \beta^u / \alpha - 2 (E^u E^k + B^u B^k) + (E^2 + B^2) (^3e)^{uk})
+}\right]} \cdot
+K(k) \downarrow \overset{ \nu(v) \rightarrow }{\left[\matrix{
+	1/\alpha & -\beta^v / \alpha \\
+	0 & {(^3e)^v}_k
+}\right]}$<br>
+$= \frac{1}{8\pi} \cdot
+\mu(u) \downarrow \overset{ \nu(v) \rightarrow }{\left[\matrix{
+	(E^2 + B^2) / \alpha^2 &
+		-\beta^v (E^2 + B^2) / \alpha^2 + 2 S^v / \alpha \\
+	-\beta^u (E^2 + B^2) / \alpha^2 + 2 S^u / \alpha &
+		\beta^u \beta^v (E^2 + B^2) / \alpha^2 - 2 S^u \beta^v / \alpha - 2 S^v \beta^u / \alpha - 2 (E^u E^v + B^u B^v) + (E^2 + B^2) \delta^{uv}
+}\right]}$<br>
+Note that $(E^2 + B^2)$ denotes the flat-space vector norm.<br>
+Also note that, in absense of $\beta^u$, the stress-energy tensor takes on its more familiar form:<br>
+$T^{\mu\nu} = \frac{1}{8\pi} \cdot
+\mu(u) \downarrow \overset{ \nu(v) \rightarrow }{\left[\matrix{
+	(E^2 + B^2) / \alpha^2 & 2 S^v / \alpha \\
+	2 S^u / \alpha & -2 (E^u E^v + B^u B^v) + (E^2 + B^2) \delta^{uv}
+}\right]}$<br>
+<br>
+
+If you wanted to build $T^{\mu\nu}$ from flat-space $E^i$ and $B^i$ then you would also need to know the tetrad components in order to compute $E^u$ and $B^u$<br>
+If you only had the curved-space components $E^u$ and $B^u$ then you could compute $E^2 = \gamma_{uv} E^u E^v$.  The $\beta^u$ would already be provided by the metric.<br>
+The last necessary piece of information would be showing that $S^u = {\epsilon^u}_{vw} E^v B^w$.<br>
+<br>
+
+Einstein field equations:<br>
+$G^{\mu\nu} = 8 \pi T^{\mu\nu}$<br>
+<br>
+
+Einstein tensor:<br>
+$G^{\mu\nu} = R^{\mu\nu} - \frac{1}{2} g^{\mu\nu} R$<br>
+<br>
+
+Einstein field equations for electromagnetism stress-energy:<br>
+$G^{\mu\nu} = 2 F^{\mu\alpha} {F^{\nu}}_\alpha - \frac{1}{2} g^{\mu\nu} F_{\alpha\beta} F^{\alpha\beta} $<br>
+$R^{\mu\nu} - \frac{1}{2} g^{\mu\nu} R = 2 F^{\mu\alpha} {F^{\nu}}_\alpha - \frac{1}{2} g^{\mu\nu} F_{\alpha\beta} F^{\alpha\beta} $<br>
+$R^{\mu\nu} - \frac{1}{2} g^{\mu\nu} R = 2 {e^\mu}_I  F^{IK} {F^J}_K {e^\nu}_J - \frac{1}{2} g^{\mu\nu} F_{IJ} F^{IJ} $<br>
+$G^{00} = E^2 + B^2$<br>
+$G^{j0} = G^{0j} = 2 {\epsilon_{ik}}^j E^i B^k = 2 S^j$<br>
+$G^{jk} = -2 (E^j E^k + B^j B^k) + \delta^{jk} (E^2 + B^2)$<br>
+	
+<br>
+	
+<h3>The Ricci Tensor</h3>
+
+Wikipedia <a href='https://en.wikipedia.org/wiki/Ricci_curvature#Direct_geometric_meaning'>says</a> the Ricci curvature,
+applied to a vector (i.e. $ R(x,x) = x^a x^b R_{ab} $ ),
+gives a positive value when geodesics all traveling together near a point in direction $x^i$ converge,
+and a negative value when they diverge.<br>
+<br>
+
+One vector:<br>
+$R_{ab} x^a x^b $ is the Ricci scalar curvature in the direction $x^a$.<br>
+If it is positive then geodesics travelling near the direction of $x^a$ tend to diverge.  If it is positive then they converge.
+Also stated, if a volume travels along the geodesic then it changes by $-2 \delta V R_{ab} x^a x^b$<br>
+<br>
+
+Two vectors:<br>
+$R_{ab} x^a y^b$ is the sectional curvature of the plane tangent to the metric at this point that passes through $x^a$ and $y^b$.<br>
+The sum of all sectional curvatures is the Gaussian curvature.  Hence why $R = {R^a}_a$.<br>
+<br>
+
+The Einstin tensor $G_{ab}$ is the trace-reversal of the Ricci tensor $R_{ab}$.<br>
+Defined by $G_{ab} = R_{ab} - \frac{2}{n} {R^c}_c g_{ab}$, for $n=4$ dimensions, gives $G_{ab} = R_{ab} - \frac{1}{2} {R^c}_c g_{ab}$<br>
+Because it's a trace-reversal, you can contract the equation and solve to find the opposite holds for restoring $R_{ab}$:<br> 
+${G^a}_a = R - \frac{1}{2} R \delta^a_a = R - 2 R = -R$ for $R = {R^a}_a$ is the Gaussian curvature, is the sum of the sectional curvatures of individual ${R^i}_i$ (not summing i).<br>
+<br>
+But in the timelike direction, because $g_tt$ is negative (courtesy of the signature), things get flipped back.<br>
+Let $T_{ab} = diag(\rho, P, P, P)$, $G_{ab} = 8 \pi T_{ab}$, $R_{ab} = G_{ab} - \frac{1}{2} {G^c}_c g_{ab}$<br>
+Then $R_{tt} = G_{tt} - \frac{1}{2} {G^c}_c g_{tt}$<br>
+For $g_{ab} \approx \eta_{ab}$ we then get...<br>
+$R_{tt} = 8 \pi \rho - \frac{1}{2} 8 \pi (-\rho + 3 P) (-1)$<br>
+$R_{tt} = 8 \pi \rho + 4 \pi (-\rho + 3 P)$<br>
+$R_{tt} = 4 \pi (\rho + 3 P)$<br>
+So positive mass and pressure means positive Ricci scalar curvature (for resing object) means tighter focusing of geodesics (into the center of the planet).<br>
+<br>
+
+The connection coefficients determine the geodesics through a manifold.  The Riemann tensor determines the deviation of geodesics.<br>
+<br>
+If the Einstein tensor $ G_{ab} = R_{ab} - \frac{2}{n} R g_{ab} $ is the trace-reversal (subtracting $ \frac{1}{n} R g_{ab} $ from $ R_{ab} $ will produce the traceless version of the tensor) then,
+for a 2D example with diagonal $ {R^a}_b $,
+the Einstein tensor will be the negative of the Ricci tensor.<br>
+<br>
+
+Look at some stress-energy tensors using $g_{ab} \approx \eta_{ab}$...<br> 
+For $T_{ab} = diag(\rho, P, P, P)$ we get:<br>
+$R_{tt} = 4 \pi (\rho + 3 P)$<br>
+$R_{xx} = R_{yy} = R_{zz} = 4 \pi (\rho + P)$<br>
+so in matter fields, geodesics always converge.<br>
+<br>
+For EM stress-energy tensor $T_{ab} = \left[\matrix{ \frac{1}{2}(E^2+B^2) & -S_j \\ -S_i & \frac{1}{2}(E^2+B^2) - E_i E_j - B_i B_j  }\right]$<br>
+assume $E = \hat{x} E$, $B = \hat{y} B$, $S = E \times B = \hat{z} S$, we get:<br>
+$R_{tt} = R_{zz} = 4 \pi (E^2 + B^2)$<br>
+$R_{xx} = 4 \pi (B^2 - E^2)$<br>
+$R_{yy} = 4 \pi (E^2 - B^2)$<br>
+So it looks like geodesics along the timelike and Poynting vector converge.<br>
+But geodesics along the electric field converge when the electric field is strong than the magnetic field, and diverge when the magnetic is stronger than the electric.<br>
+And geodesics along the magnetic field likewise converges if the magnetic &gt; electric, diverge if electric &gt; magnetic.<br>
+<br>
+
+<h3>Stress-Energy Equivalence of Matter and EM</h3>
+
+Stress energy of a perfect fluid at rest: $T_{ab} = diag(\rho, P, P, P)$<br>
+<br>
+
+If you use the Schwarzschild metric and compute gravity around a celestial body, 
+I can plug in the numbers for Earth or any other planet in the solar system and accurately compute the
+relativistic gravitational forces and it comes out to $9.8 \frac{m}{s}$.
+<br>
+
+If you wanted to create an equivalent stress-energy of electromagnetism,
+my first thought was to compute equivalent values within the electromagnetism stress-energy tensor,
+especially the $T_{tt}$ component.
+In the matter stress-energy tensor $T_{tt} = \rho$.<br>
+<br>
+
+Density of Earth: $\rho = 5.5147098661212 \frac{g}{cm^3} = 5514.7098661212 \frac{kg}{m^3}$<br>
+Using $c = 299792458 m/s = \tilde{c} \cdot m/s$, so $1 s = \tilde{c} m$<br>
+and $G = 6.67384 \cdot 10^{-11} \frac{m^3}{kg \cdot s^2} = \tilde{G} \cdot \frac{m^3}{kg \cdot s^2}$, so $1 kg = \frac{\tilde{G}}{\tilde{c}^2} m$.<br>
+$\rho = 5514.7098661212 \frac{kg}{m^3} \cdot \frac{ \frac{\tilde{G}}{\tilde{c}^2} m}{1 kg} $<br>
+$\rho = 4.0950296770075 \cdot 10^{-24} \frac{1}{m^2}$<br>
+<br>
+
+The Schwarzschild metric, and equations of structure associated with its calculation of the interior of a spherical body,
+involve integrating across the enclosed volume of the radius at the coordinate evaluated (to go from $\frac{1}{m^2}$ to $m$).<br>
+Earth radius $= 6.37101 \cdot 10^6 m$<br>
+Earth mass $ = \frac{4}{3} \pi r^3 \rho = 0.0044357853581474 m$, half a centimeter, which is half the Schwarzschild radius (how big the event horizon would be if the Earth collapsed into a black hole).<br>
+<br>
+
+In the electromagetism stress-energy tensor $T_{tt} = \frac{1}{2} (\epsilon_0 E^2 + \frac{1}{\mu_0} B^2) = \frac{1}{8\pi} (\frac{E^2}{c^2} + B^2)$.<br>
+For .45 Gauss at the earth's surface (in absence of any electric field) we get $B = .45 \cdot \frac{1}{\tilde{c}} \sqrt{ \frac{1}{10} \tilde{G} } \cdot \frac{1}{m} = 3.8777491037247 \cdot 10^{-15} \frac{1}{m}$.<br>
+This gives $T_{tt} = \frac{1}{8 \pi} B^2 = 5.9830075735057 \cdot 10^{-31} \frac{1}{m^2}$.<br>
+My first thought on canceling Earth's gravity is to find an equivalent stress-energy $T_{tt}$ of magnetic field strength equal to the $T_{tt}$ of matter.<br>
+In other words, a magnetic field of $4.1 \cdot 10^{-24} \frac{1}{m^2}$, or of 1177.28406095 Gauss.<br>
+This really isn't that strong of a field, but this is only the equivalent stress-energy of a $m^3$ of the Earth's density.<br>
+That's a strange concept: a small neodymium magnet (2000 Gauss) has as much stress-energy as a $m^3$ of the average Earth density of $5.51 \frac{g}{cm^3}$ (iron is $7.87 \frac{g}{cm^3}$ and silicon is $2.33 \frac{g}{cm^3}$, so the Earth is somewhere between).<br>
+<br>
+
+For entertainment, assuming constant magnetic field throughout a volume, how big to get the equivalent stress-energy of the Earth's matter?<br>
+$\frac{4}{3} \pi r^3 \cdot 5.9830075735057 \cdot 10^{-31} \frac{1}{m^2} = 0.0044357853581474 m$, solve for $r$ to get $r = 1.769956 \cdot 10^27 m$.  Andromeda is closer than this distance.<br>
+How strong of a field is needed for a specific radius?<br>
+$\frac{4}{3} \pi r^3 \cdot \frac{1}{8 \pi} (B)^2 = 0.0044357853581474 m$<br> <!--  \cdot \frac{1}{\tilde{c}} \sqrt{\frac{1}{10} \tilde{G}} -->
+$ B = \sqrt{\frac{1}{r^3} 6 \cdot 0.0044357853581474} \sqrt{m} = 0.16314016105449 \sqrt{\frac{1}{r^3}} \sqrt{m} = 18931877878330.0 / \sqrt{r^3} Gauss = 1893187787.833 / \sqrt{r^3} Teslas $<br>
+Now I know this is wrong because magnetic fields aren't evenly distributed.  I have to do a real integral over the field's function, which tends to have inverse square falloff and is nothing near constant.<br>
+But, at this field, how big would it have to be in order to lower the power to 8.5 Teslas, the CERN recent maximum level?<br>
+$r = 367437.24750191 m$, so about $\frac{1}{20}$th the radius of the earth.<br>
+How about, for a radius of $4000 m$, how big of a field?  Note this is only considering the magnetic field energy, not the electric or matter.<br>
+$B = 7483.4818099598 Teslas$.  We still have a ways to go there at least.<br>
+<br>
+
+In order to compare the electromagnetic stress-energy tensor to the matter stress-energy tensor, 
+I should first find a metric that generates a curvature tensor which equates to a nonzero metric 
+-- specifically the matter stress-energy tensor -- which is something the Schwarzschild metric doesn't do.  
+Once I have that I can then start thinking about how the two equate or cancel one another.  
+I am trying to numerical solve for such a metric in the presence of evenly distributed matter, 
+using the Earth as a test case, but my numerical finite difference approximations of gravity turn out to be anywhere up to a factor of 2 times more powerful than the analytical computations.<br>
+<br>
+So that is what I'm wondering right now -- if there is, for certain predefined EM fields, 
+any computed metric tensors that satisfy the EFE equations?  
+I suppose I'd have to pick out a particular EM field formula/shape and work it backwards to find the metric, 
+and then forward to find the connections and the subsequent gravitational force.  
+That's what I'm trying to do numerically at the moment.  
+It's a computationally costly problem, and not necessarily all that accurate.<br>
+
+<h3>Gravity</h3>
+
+<br>
+The goal is to find some configuration of EM fields that can cancel out the Earth's gravity, and hopefully allow the creation of a flying machine =P<br>
+At the moment I'm solving for steady states of metrics (i.e. $\partial_t g_{ab} = 0$),
+but I wonder if removing this constraint and solving for the time derivatives as well 
+-- which influences the connections (since gravity is $\ddot{x}^i = {\Gamma^i}_{tt}$) 
+-- could make things easier. 
+What if a good solution was a constantly-rotating spacetime?  One with an energy source off-axis?  The energy source could produce the well in the lapse function.  The rotation would give it a time derivative.<br>
+<br>
+<br>
+<br>
+Geodesics trace from outer space through the Earth's surface down to the center of the Earth,
+courtesy of local time slowing down when measured by reference frame time
+(so that less coordinate time fills each tick of a local clock),
+in the center of the Earth, and local space length stretching out to filling a greater coordinate volume
+(so that more coordinate space is squished into the same region of local space).<br>
+<br>
+Gravitational geodesics accelerate stationary objects traveling solely through time according to the equation $\ddot{x}^i = -{\Gamma^i}_{tt}$,
+which in absence of the metric shift vector $0 = g_{it} = \beta_i = \beta^j \gamma_{ij}$, and subsequently $0 = g^{it} = \beta^i / \alpha^2 $ (as the Schwarzschild metric is) reduces to $ \ddot{x}^i = \frac{1}{2} {g_{tt}}^i $.
+This means, of all the Schwarzschild metric, that acceleration (outward) is derived by the gradient of the timelike component of the metric.
+So if the $ g_{tt} $ function has a maxima at $ r = 0 $ then the acceleration will always be inwards towards the center of the planet.<br>
+<br>
+But in the Schwarzschild metric, outside the planet, $R_{ab} = 0$, so the rate at which geodesics are converging onto the planet shouldn't be contracting together.
+Only inside the planet do we get $R_{ab} = G_{ab} + \frac{1}{2} R g_{ab} = ...$<br>
+<br>
+as said before, in absence of g_it, as is in Schwarzschild metrics, gravity equals $ -{\Gamma^i}_{tt} = -g^{it} \Gamma_{ttt} - g^{ij} \Gamma_{jtt} $
+... but $g^{it} = 0$ because $g_{it} = 0$, so gravity is only $-g^{ij} \Gamma_{jtt}$, (the inverse spatial metric transformation of $-\Gamma_{itt}$), and $\Gamma_{itt} = g_{jt,t} - \frac{1}{2} g_{tt,j}$.
+But as we said before, $g_{jt} = 0$, so we just have gravity = inverse spatial metric times $\frac{1}{2} g_{tt,j}$ ... $g_{tt}$ is the timelike component of the metric tensor.
+It is how time coordinates slow when you are completely at rest (courtesy of $s = \int ds = \int \sqrt{ds^2} = \int_{\lambda=0}^{\lambda=s} \sqrt{g_{ab} \frac{dx^a}{d\lambda} \frac{dx^b}{d\lambda}} d\lambda$ ...
+if you are at rest then $\frac{dx^a}{dt} = [1,0,0,0]$ (only time component) ... and $s = \int ds = \int_{\lambda=0}^{\lambda=s} \sqrt{g_{tt}} d\lambda$<br>
+<br>
+so in Schwarzschild metric, gravity is completley based on the gradient of the gravitational time dilation.<br>
+<br>
+How do we mess with gravity?
+Look at $\Gamma_{itt}$.
+It equals $g_{jt,t} - \frac{1}{2} g_{tt,j}$.
+The gravitational time dilation gradient is $g_{tt,j}$.
+What's left?  $g_{jt,t}$. The time derivative (i.e. it has to be changing wrt time) of $g_{jt}$.  This was zero for Schwarzschild.
+It is the inner product of time and space frame basis vectors.
+It is not zero for a Kerr metric -- a rotating object.
+Probably not for a charged rotating object as well (Kerr-Newman metric)<br>
+Note that this remaining term is a time derivative, so it only gets value when the metric is changing.
+So maybe if we put an energy source on something that spins in a circle...<br>
+<br>
+
+Kerr-Newman metric of charged rotating bodies, Kerr-Schild representation (pseudo-Cartesian):<br>
+$g_{uv} = \eta_{uv} + 2 H l_u l_v$<br>
+$g^{uv} = \eta^{uv} - 2 H l^u_* l^v_*$<br>
+$l^u_* = \eta^{uv} l_v$<br>
+$\eta_{uv} = diag(-1,1,1,1)$<br>
+$H = \frac{r M - Q^2 / 2}{r^2 + a^2 z^2 / r^2}$<br>
+$l_u = (1, \frac{rx+ay}{r^2+a^2}, \frac{ry-ax}{r^2+a^2}, \frac{z}{r})$<br>
+$r$ is defined by $\frac{x^2+y^2}{r^2+a^2} + \frac{z^2}{r^2} = 1$<br>
+$a = J / M$ is the angular momentum in terms of total mass<br>
+$Q$ = total enclosed charge<br>
+<br>
+
+Geodesics: $\ddot{x}^a = -{\Gamma^a}_{bc} \dot{x}^b \dot{x}^c$<br>
+Gravity. Spatial geodesics components of resting objects: $\ddot{x}^i = -{\Gamma^i}_{tt} \dot{t}^a \dot{t}^b = -{\Gamma^i}_{tt}$<br>
+...in terms of 1st kind Christoffels: $\ddot{x}^i = -g^{it} \Gamma_{ttt} - g^{ij} \Gamma_{jtt}$<br>
+
+From there, just looking at the 1st kind Christoffel:<br>
+$\Gamma_{itt} = g_{it,t} - \frac{1}{2} g_{tt,i}$<br>
+$= \beta_{i,t} - \frac{1}{2} (-\alpha^2 + \beta^2)_{,i}$<br>
+$= \beta_{i,t} + \alpha \alpha_{,i} -\beta^j \beta_{j,i}$<br>
+<br>
+So if you want to cancel the typical gravity contribution of $\alpha \alpha_{,i}$, you either need a negative counteracting $\beta_{i,t}$ (decrease in $\beta$ over time), 
+or you need a large enough $\beta^j \beta_{j,i}$ (change in $\beta$ along $\beta$).<br>
+<br>
+If you look at the Kerr metric - which is a metric for rotating spherical bodies - you see that the g_jt components correspond with rotation.
+The "catalogue of spacetimes" also shows a rotating Schwarzschild metric which had dt dphi terms added to it.<br>
+<br>
+Coincidentally, when White developed off of the Alcubierre drive, he first criticized that a space ship of a few meters would take a mass of the size of Jupiter to produce the necessary warp in spacetime ... 
+but then revised his statement that, if the object were rotating sufficiently fast enough, that the massive source object would.<br>
+<br>
+Never mind White didn't say rotate, he said oscillate, in fact a rotating metric, where beta is rotating, will have grad beta of beta be zero ... 
+I think ... because at least for a rotating v, grad v of v is zero, right? So it has to be oscillating ... ?<br>
+<br>
+
+SO how to manipulate ${\beta^i}_{,t}$?  Well, $\beta^i$ is the rotation / frame-dragging component of the metric.<br>
+So if that needs a time derivative, you would have to oscillate the rotation.<br>
+<br>
+
+But for the record, White's "oscillations" are, in fact, <i>science-fiction</i>, as you can read about <a href='http://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/20130011213.pdf'>here</a>.
+He is calling for oscillations into higher-dimensional planes of existence (distinct of the 3+1 spacetime dimensions).<br>
+<br>
+
+	</body>
+</html>

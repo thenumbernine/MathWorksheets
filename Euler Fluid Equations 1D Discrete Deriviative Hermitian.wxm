@@ -1,0 +1,71 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 13.04.0 ] */
+
+/* [wxMaxima: input   start ] */
+qs : [rho,m,E];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+depends(qs,[t,x]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+"derivatives";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff_t_rhs : [-m, (1-%gamma)*(E-1/2*m^2/rho)-m^2/rho, 1/2*(%gamma-1)*m^3/rho^2-%gamma*E*m/rho];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+"evolution equations";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eqn_diff_t : makelist(diff(qs[i],t)='diff(diff_t_rhs[i],x),i,length(qs));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+"discrete derivative";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+"alpha is the +1 rhs coefficient, beta is the -1 coefficient, feel free to expand/exchange these for higher order spatial derivatives";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+disc_subst_r : [rho=rho_r,m=m_r,E=E_r];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+disc_subst_l : [rho=rho_l,m=m_l,E=E_l];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eqn_diff_t_disc : map(lambda([expr],alpha*subst(disc_subst_r,expr)+beta*subst(disc_subst_l,expr)),diff_t_rhs);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+neighborVars : [rho_r,m_r,E_r,rho_l,m_l,E_l];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+"first derivatives";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eqn_diff_t_q_disc : ratsimp(apply(matrix,map(lambda([expr], map(lambda([q],diff(expr,q)),neighborVars) ), eqn_diff_t_disc)));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+"second derivative diff_t rho";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ratsimp(transpose(makelist(
+apply(matrix,map( lambda([q], makelist(diff(eqn_diff_t_q_disc[i,j],q),j,matrix_size(eqn_diff_t_q_disc)[2])),neighborVars)),
+i,matrix_size(eqn_diff_t_q_disc)[1])));
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

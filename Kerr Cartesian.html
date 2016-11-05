@@ -1,0 +1,212 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Kerr Metric in Cartesian Coordinates</title>
+		<!-- script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script -->
+		<script type="text/javascript" async src="file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+	</head>
+	<body>
+
+Conversion from Spherical to Cartesian:<br>
+coordinates...<br>
+$x = r sin \theta cos \phi$<br>
+$y = r sin \theta sin \phi$<br>
+$z = r cos \theta$<br>
+inverse...<br>
+$r = \sqrt{x^2 + y^2 + z^2}$<br>
+$\theta = atan2(\sqrt{x^2 + y^2}, z)$<br>
+$\phi = atan2(y, x)$<br>
+identities...<br>
+$cos\phi = \frac{x}{\sqrt{x^2+y^2}}$<br>
+$sin\phi = \frac{y}{\sqrt{x^2+y^2}}$<br>
+$cos\theta = \frac{z}{r}$<br>
+$sin\theta = \frac{\sqrt{x^2+y^2}}{r}$<br>
+differentials...<br>
+$dr = \frac{x dx + y dy + z dz}{r}$<br>
+$d\theta = \frac{xz dx + yz dy - (x^2 + y^2) dz}{r^2 \sqrt{x^2 + y^2}}$<br>
+$d\phi = \frac{-y dx + x dy}{x^2 + y^2}$<br>
+...squared<br>
+$dr^2 = \frac{x^2 dx^2 + y^2 dy^2 + z^2 dz^2 + 2 xy dx dy + 2 xz dx dz + 2 yz dy dz}{r^2}$<br>
+$d\theta^2 = \frac{x^2 z^2 dx^2 + y^2 z^2 dy^2 + (x^2 + y^2)^2 dz^2 + xyz^2 dx dy - xz(x^2 + y^2) dx dz - yz (x^2 + y^2) dy dz}{r^4 (x^2 + y^2)}$<br>
+$d\phi^2 = \frac{y^2 dx^2 + x^2 dy^2 - 2xy dx dy}{(x^2 + y^2)^2}$<br>
+<br>
+
+Kerr Spherical:<br>
+$ds^2 =$<br>
+<div style='padding-left:10px'>
+$-(1 - \frac{R r}{\Sigma}) dt^2$<br>
+$- \frac{2 R a r sin^2 \theta}{\Sigma} dt d\phi$<br>
+$+ \frac{\Sigma}{\Delta} dr^2 $<br>
+$+ \Sigma d\theta^2 $<br>
+$+ (r^2 + a^2 + \frac{R a^2 r sin^2 \theta}{\Sigma}) sin^2 \theta d\phi^2$<br>
+</div>
+for<br>
+$\Sigma = r^2 + a^2 cos^2 \phi = r^2 + \frac{a^2 x^2}{x^2 + y^2} = \frac{r^2 x^2 + r^2 y^2 + a^2 x^2}{x^2 + y^2} = \frac{(r^2 + a^2) x^2 + r^2 y^2}{x^2 + y^2}$<br>
+$\Delta = r^2 - R r + a^2$<br>
+$R = 2 G M = $ Schwarzschild radius<br>
+$a = \frac{J}{M} =$ angular momentum per unit mass<br>
+<br>
+
+Substitute:<br>
+$ds^2 =$<br>
+<div style='padding-left:10px'>
+$-(1 - \frac{R r}{\Sigma}) dt^2$<br>
+$- \frac{2 R a}{r \Sigma} dt (-y dx + x dy)$<br>
+$+ \frac{\Sigma}{r^2 \Delta} (x^2 dx^2 + y^2 dy^2 + z^2 dz^2 + 2 xy dx dy + 2 xz dx dz + 2 yz dy dz)$<br>
+$+ \frac{\Sigma}{r^4 (x^2 + y^2)} (x^2 z^2 dx^2 + y^2 z^2 dy^2 + (x^2 + y^2)^2 dz^2 + xyz^2 dx dy - xz(x^2 + y^2) dx dz - yz (x^2 + y^2) dy dz)$<br>
+$+ (\frac{r^2 + a^2}{r^2 (x^2 + y^2)}  + R \frac{a^2}{r^3 \Sigma}) (y^2 dx^2 + x^2 dy^2 - 2xy dx dy)$<br>
+</div>
+<br>
+
+Distribute...<br>
+$ds^2 =$<br>
+<div style='padding-left:10px'>
+$-(1 - \frac{R r}{\Sigma}) dt^2$<br>
+
+$+ \frac{2 y R a}{r \Sigma} dt dx$<br>
+$- \frac{2 x R a}{r \Sigma} dt dy$<br>
+
+$+ \frac{x^2 \Sigma}{r^2 \Delta} dx^2$<br>
+$+ \frac{y^2 \Sigma}{r^2 \Delta} dy^2$<br>
+$+ \frac{z^2 \Sigma}{r^2 \Delta} dz^2$<br>
+$+ \frac{2xy \Sigma}{r^2 \Delta} dx dy$<br>
+$+ \frac{2xz \Sigma}{r^2 \Delta} dx dz$<br>
+$+ \frac{2yz \Sigma}{r^2 \Delta} dy dz$<br>
+
+$+ \frac{x^2 z^2 \Sigma}{r^4 (x^2 + y^2)} dx^2$<br>
+$+ \frac{y^2 z^2 \Sigma}{r^4 (x^2 + y^2)} dy^2$<br>
+$+ \frac{(x^2 + y^2) \Sigma}{r^4} dz^2$<br>
+$+ \frac{xyz^2 \Sigma}{r^4 (x^2 + y^2)} dx dy$<br>
+$- \frac{xz \Sigma}{r^4} dx dz$<br>
+$- \frac{yz \Sigma}{r^4} dy dz$<br>
+
+$+ y^2 (\frac{r^2 + a^2}{r^2 (x^2 + y^2)} + \frac{R a^2}{r^3 \Sigma}) dx^2$<br>
+$+ x^2 (\frac{r^2 + a^2}{r^2 (x^2 + y^2)} + \frac{R a^2}{r^3 \Sigma}) dy^2$<br>
+$- 2xy (\frac{r^2 + a^2}{r^2 (x^2 + y^2)} + \frac{R a^2}{r^3 \Sigma}) dx dy$<br>
+</div>
+<br>
+
+Group...<br>
+$ds^2 =$<br>
+<div style='padding-left:10px'>
+$-(1 - \frac{R r}{\Sigma}) dt^2$<br>
+$+ \frac{2 y R a}{r \Sigma} dt dx$<br>
+$- \frac{2 x R a}{r \Sigma} dt dy$<br>
+$+ \frac{1}{r^2} (\frac{x^2 \Sigma}{\Delta} + \frac{x^2 z^2 \Sigma}{r^2 (x^2 + y^2)} + y^2 (\frac{r^2 + a^2}{x^2 + y^2} + \frac{R a^2}{r \Sigma})) dx^2$<br>
+$+ \frac{1}{r^2} (\frac{y^2 \Sigma}{\Delta} + \frac{y^2 z^2 \Sigma}{r^2 (x^2 + y^2)} + x^2 (\frac{r^2 + a^2}{x^2 + y^2} + \frac{R a^2}{r \Sigma})) dy^2$<br>
+$+ \frac{1}{r^2} (\frac{z^2 \Sigma}{\Delta} + \frac{(x^2 + y^2) \Sigma}{r^2}) dz^2$<br>
+$+ 2 \frac{1}{r^2} (\frac{xy \Sigma}{\Delta} + \frac{xyz^2 \Sigma}{2 r^2 (x^2 + y^2)} - xy (\frac{r^2 + a^2}{x^2 + y^2} + \frac{R a^2}{r \Sigma})) dx dy$<br>
+$+ 2 \frac{xz \Sigma}{r^2} (\frac{1}{\Delta} - \frac{1}{2 r^2}) dx dz$<br>
+$+ 2 \frac{yz \Sigma}{r^2} (\frac{1}{\Delta} - \frac{1}{2 r^2}) dy dz$<br>
+</div>
+<br>
+Because rotations are in xy, they will have extra crap in their terms.<br>
+So will diagonals due to $dr^2$ influence.<br>
+The cleanest terms should be $dx dz$ and $dy dz$ -- whatever is in them, proportional to $xz$ or $yz$ should show up in all other terms proportional to $x^i x^j$<br>
+<br>
+
+$ds^2 =$<br>
+<div style='padding-left:10px'>
+$-(1 - \frac{R r}{\Sigma}) dt^2$<br>
+$+ \frac{2 y R a}{r \Sigma} dt dx$<br>
+$- \frac{2 x R a}{r \Sigma} dt dy$<br>
+$+ (\frac{x^2 \Sigma}{r^2} (\frac{1}{\Delta} - \frac{1}{2 r^2}) - \frac{x^2 \Sigma}{2 r^4} + \frac{x^2 \Sigma}{r^2 (x^2 + y^2)} + \frac{y^2}{r^2} (\frac{r^2 + a^2}{x^2 + y^2} + \frac{R a^2}{r \Sigma})) dx^2$<br>
+$+ (\frac{y^2 \Sigma}{r^2} (\frac{1}{\Delta} - \frac{1}{2 r^2}) - \frac{y^2 \Sigma}{2 r^4} + \frac{y^2 \Sigma}{r^2 (x^2 + y^2)} + \frac{x^2}{r^2} (\frac{r^2 + a^2}{x^2 + y^2} + \frac{R a^2}{r \Sigma})) dy^2$<br>
+$+ (\frac{z^2 \Sigma}{r^2} (\frac{1}{\Delta} - \frac{1}{2 r^2}) - \frac{z^2 \Sigma}{2 r^4} + \frac{\Sigma}{r^2}) dz^2$<br>
+$+ 2 (\frac{xy \Sigma}{r^2} (\frac{1}{\Delta} - \frac{1}{2 r^2}) + \frac{xy \Sigma}{2 r^2 (x^2+y^2)} - \frac{xy}{r^2} (\frac{r^2 + a^2}{x^2 + y^2} + \frac{R a^2}{r \Sigma})) dx dy$<br>
+$+ 2 \frac{xz \Sigma}{r^2} (\frac{1}{\Delta} - \frac{1}{2 r^2}) dx dz$<br>
+$+ 2 \frac{yz \Sigma}{r^2} (\frac{1}{\Delta} - \frac{1}{2 r^2}) dy dz$<br>
+</div>
+<br>
+Now I'm taking the $dx dz$ and $dy dz$ coefficients out of the spatial metric...<br>
+$\gamma_{ij} = x_i x_j (\frac{\Sigma}{r^2} (\frac{1}{\Delta} - \frac{1}{2r^2}) + \delta_{ij} (-\frac{\Sigma}{2r^4} + \frac{\Sigma}{r^2} - 1))$<br>
+$ = \frac{x_i x_j}{2r^4(x^2 + y^2)} (\frac{(a^2 x^2 + r^2 (x^2 + y^2))(r^2 - a^2 + R r)}{r^2 + a^2 - R r} + \delta_{ij} (2 a^2 x^2 r^2 - a^2 x^2 - r^2 x^2 - r^2 y^2))$<br>
+<br>
+
+$ds^2 =$<br>
+<div style='padding-left:10px'>
+$(\eta_{tt} + \frac{R r}{\Sigma}) dt^2$<br>
+$+ 2 (\eta_{tx} + \frac{y R a}{r \Sigma}) dt dx$<br>
+$+ 2 (\eta_{ty} - \frac{x R a}{r \Sigma}) dt dy$<br>
+$+ (\eta_{xx} + \gamma_{xx} + \frac{x^2 \Sigma}{r^2 (x^2 + y^2)} + \frac{a^2}{r^2} - \frac{x^2}{x^2 + y^2} - \frac{2 a^2 x^2}{r^2 (x^2 + y^2)} + \frac{y^2 R a^2}{r^3 \Sigma}) dx^2$<br>
+$+ (\eta_{yy} + \gamma_{yy} + \frac{y^2 \Sigma}{r^2 (x^2 + y^2)} - \frac{y^2}{x^2 + y^2} + \frac{x^2 R a^2}{r^3 \Sigma}) dy^2$<br>
+$+ 2 (\eta_{xy} + \gamma_{xy} + \frac{xy \Sigma}{2 r^2 (x^2+y^2)} - \frac{xy}{r^2} (\frac{r^2 + a^2}{x^2 + y^2} + \frac{R a^2}{r \Sigma})) dx dy$<br>
+$+ 2 (\eta_{xz} + \gamma_{xz}) dx dz$<br>
+$+ 2 (\eta_{yz} + \gamma_{yz}) dy dz$<br>
+$+ (\eta_{zz} + \gamma_{zz}) dz^2$<br>
+</div>
+<br>
+
+$g_{\mu\nu} = \left[
+\matrix{
+	\eta_{tt} + \frac{R r}{\Sigma} & 
+	\eta_{tx} + \frac{y R a}{r \Sigma} & 
+	\eta_{ty} - \frac{x R a}{r \Sigma} &
+	0
+\\
+	\eta_{tx} + \frac{y R a}{r \Sigma} & 
+	\eta_{xx} + \gamma_{xx} + \frac{x^2 \Sigma}{r^2 (x^2 + y^2)} + \frac{a^2}{r^2} - \frac{x^2}{x^2 + y^2} - \frac{2 a^2 x^2}{r^2 (x^2 + y^2)} + \frac{y^2 R a^2}{r^3 \Sigma} &
+	\eta_{xy} + \gamma_{xy} + \frac{xy \Sigma}{2 r^2 (x^2+y^2)} - \frac{xy}{r^2} (\frac{r^2 + a^2}{x^2 + y^2} + \frac{R a^2}{r \Sigma}) &
+	\eta_{xz} + \gamma_{xz}
+\\
+	\eta_{ty} - \frac{x R a}{r \Sigma} &
+	\eta_{xy} + \gamma_{xy} + \frac{xy \Sigma}{2 r^2 (x^2+y^2)} - \frac{xy}{r^2} (\frac{r^2 + a^2}{x^2 + y^2} + \frac{R a^2}{r \Sigma}) &
+	\eta_{yy} + \gamma_{yy} + \frac{y^2 \Sigma}{r^2 (x^2 + y^2)} - \frac{y^2}{x^2 + y^2} + \frac{x^2 R a^2}{r^3 \Sigma} &
+	\eta_{yz} + \gamma_{yz} &
+\\
+	0 &
+	\eta_{xz} + \gamma_{xz} &
+	\eta_{yz} + \gamma_{yz} &
+	\eta_{zz} + \gamma_{zz}
+}
+\right]$<br>
+<br>
+
+$g_{\mu\nu} = \eta_{\mu\nu} + \gamma_{\mu\nu} + \omega_{\mu\nu}$<br>
+<br>
+
+For ...<br>
+<br>
+
+$\eta_{\mu\nu} = \left[\matrix{-1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1}\right]$<br>
+<br>
+
+$\gamma_{\mu\nu} = \left[\matrix{
+	0 & 0 \\
+	0 &
+		x_i x_j (\frac{\Sigma}{r^2} (\frac{1}{\Delta} - \frac{1}{2r^2}) + \delta_{ij} (-\frac{\Sigma}{2r^4} + \frac{\Sigma}{r^2} - 1))
+}\right]$<br>
+<br>
+
+$\omega_{\mu\nu} = \left[\matrix{
+	\frac{R r}{\Sigma} &
+	\frac{y R a}{r \Sigma} &
+	-\frac{x R a}{r \Sigma} &
+	0
+\\
+	\frac{y R a}{r \Sigma} &
+	\frac{x^2 \Sigma}{r^2 (x^2 + y^2)} + \frac{a^2}{r^2} - \frac{x^2}{x^2 + y^2} - \frac{2 a^2 x^2}{r^2 (x^2 + y^2)} + \frac{y^2 R a^2}{r^3 \Sigma} &
+	\frac{xy \Sigma}{2 r^2 (x^2+y^2)} - \frac{xy}{r^2} (\frac{r^2 + a^2}{x^2 + y^2} + \frac{R a^2}{r \Sigma}) &
+	0
+\\
+	-\frac{x R a}{r \Sigma} &
+	\frac{xy \Sigma}{2 r^2 (x^2+y^2)} - \frac{xy}{r^2} (\frac{r^2 + a^2}{x^2 + y^2} + \frac{R a^2}{r \Sigma}) &
+	\frac{y^2 \Sigma}{r^2 (x^2 + y^2)} - \frac{y^2}{x^2 + y^2} + \frac{x^2 R a^2}{r^3 \Sigma} &
+	0
+\\
+	0 & 0 & 0 & 0
+}\right]$<br>
+<br>
+
+...<br>
+<br>
+Spoilers:<br>
+<a href='http://arxiv.org/pdf/0706.0622.pdf'>http://arxiv.org/pdf/0706.0622.pdf</a> gives:<br>
+<br>
+$ds^2 = -dt^2 + dx^2 + dy^2 + dz^2 + \frac{2mr^3}{r^4 + a^2 z^2} \left[ dt + \frac{r(x dx + y dy)}{a^2 + r^2} + \frac{a(y dx - x dy}{a^2 + r^2} + \frac{z}{r} dz \right]^2$<br>
+...for $x^2 + y^2 + z^2 = r^2 + a^2 \left[ 1 - \frac{z^2}{r^2} \right]$<br>
+<br>
+	</body>
+</html>

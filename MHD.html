@@ -1,0 +1,601 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<title>MHD Worksheet</title>
+		<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+	</head>
+	<body>
+
+<h2>Hydrodynamics</h2>
+
+<h3>Mass</h3>
+
+Total mass in volume:<sup>1</sup><br>
+$m = \int_\Omega \rho dV$<br>
+$m$ = mass<br>
+$\rho$ = density<br>
+$\Omega$ = domain<br>
+<br>
+
+Rate-of-change of mass:<sup>1</sup><br>
+$\partial_t m = \int_\Omega \partial_t \rho dV$<br>
+<br>
+
+Rate-of-change only considering boundary:<sup>1</sup><br>
+$\partial_t m = \int_{\partial\Omega} \rho v_j dS_j$<br>
+$v_i$ = velocity<br>
+<br>
+
+Apply Green's theorem to rate-of-change of boundary:<sup>1</sup><br>
+$\partial_t m = -\int_\Omega \partial_j (\rho v_j) dV$<br>
+<br>
+
+Consider rate-of-change at any point:<sup>1</sup><br>
+Conservation of mass:<br>
+$ \partial_t \rho + \partial_j (\rho v_j) = 0 $<br>
+<br>
+
+<h3>Momentum</h3>
+
+Conservation of momentum:<sup>1</sup><br>
+$\Pi^C_i = \int_\Omega \rho v_i dV$<br>
+$\partial_t \Pi^C_i$ = change in momentum due to conservation<br>
+<br>
+
+Rate-of-change of momentum<sup>1</sup><br>
+$\partial_t \Pi^C_i = \int_\Omega \partial_t (\rho v_i) dV$<br>
+<br>
+
+Rate-of-chagne of only considering boundary (neglecting forces like gravity, pressure, viscosity, etc)<sup>1</sup><br>
+$\partial_t \Pi^C_i = \int_{\partial\Omega} (\rho v_i) v_j dS_j$<br>
+<br>
+
+Apply Green's theorem:<sup>1</sup><br>
+$\partial_t \Pi^C_i = -\int_\Omega \partial_j (\rho v_i v_j) dV$<br>
+<br>
+
+Consider at any point:<sup>1</sup><br>
+$\partial_t \Pi^C_i = -\partial_j (\rho v_i v_j)$<br>
+<br>
+
+Hydro pressure from internal energy:<sup>5</sup><br>
+$P = (\gamma - 1) \rho e_{int} = (\gamma - 1) E_{int}$<br>
+$\gamma = $ heat capacity ratio<br>
+$P$ = hydro pressure<br>
+$e_{int}$ = specific internal energy<br>
+$E_{int}$ = internal energy<br>
+<br>
+
+internal energy:<br>
+$E_{int} = \rho e_{int} = {P\over{(\gamma - 1)}}$<br>
+<br>
+
+Force due to pressure:<sup>1</sup><br>
+$\partial_t \Pi^P_i = \int_{\partial\Omega} P dS_i$<br>
+$\partial_t \Pi^P_i = -\int_\Omega \partial_i P dV$ via Green's theorem<sup>1</sup><br>
+$\partial_t \Pi^P_i = -\partial_i P$ at any point<br>
+<br>
+
+Total change in momemtum:<sup>1</sup><br>
+$\partial_t \Pi_i = \partial_t \Pi^C_i + \partial_t \Pi^P_i$<br>
+$\partial_t \Pi_i = -\partial_j (\rho v_i v_j) - \partial_i P$<br>
+$\partial_t \Pi_i + \partial_j (\rho v_i v_j + \delta_{ij} P= 0$<br>
+<br>
+
+$\partial_t \Pi_i + \partial_j (\rho v_i v_j + \delta_{ij} P) = 0$<br>
+<br>
+For $\Pi_i = $ hydro momentum $ = \rho v_i$ we find<br>
+$\partial_t (\rho v_i) + \partial_j (\rho v_i v_j + \delta_{ij} P) = 0$<br>
+<br>
+
+<h3>Energy</h3>
+
+specific kinetic energy:<br>
+$e_{kin} = {1\over2} v^2$<br>
+<br>
+
+kinetic energy:<br>
+$E_{kin} = \rho e_{kin} = {1\over2} \rho v^2$<br>
+<br>
+
+Total hydro energy:<br>
+$E_{hydro} = \int_\Omega (E_{int} + E_{kin}) dV$<br>
+$E_{hydro} = \int_\Omega ({1\over2}\rho v^2 + {P\over{\gamma - 1}}) dV$<br>
+<br>
+
+change in total energy due to conservation of hydro energy:<br>
+$\partial_t E^C_{total} = \int_\Omega \partial_t E_{hydro} dV$<br>
+<br>
+
+consider velocity moving through boundaries:<br>
+$\partial_t E^C_{total} = \int_{\partial\Omega} E_{hydro} v_i dS_i$<br>
+<br>
+
+apply Green's theorem:<br>
+$\partial_t E^C_{total} = -\int_\Omega \partial_j (E_{hydro} v_j) dV$<br>
+<br>
+
+for any point:<br>
+$\partial_t E^C_{total} = -\partial_j (E_{hydro} v_j)$<br>
+<br>
+
+Change in energy due to hydro pressure force:<br>
+$\partial_t E^P_{total} = \int_{\partial\Omega} P v_j dS_j$<br>
+$\partial_t E^P_{total} = -\int_\Omega \partial_j (P v_j) dV$ via Green's theorem<br>
+$\partial_t E^P_{total} = -\partial_j (P v_j)$ At any point<br>
+<br>
+
+Total change in total energy:<br>
+$\partial_t E_{total} = \partial_t E^C_{total} + \partial_t E^P_{total}$<br>
+$\partial_t E_{total} = -\partial_j (E_{hydro} v_j) - \partial_j (P v_j)$<br>
+$\partial_t E_{total} + \partial_j ((E_{hydro} + P) v_j) = 0$<br>
+$\partial_t E_{total} + \partial_j (H_{hydro} v_j) = 0$<br>
+for $H_{hydro} = E_{hydro} + P$<br>
+<br>
+
+<h3>Conservative form of Euler:</h3>
+
+$\partial_t \rho + \partial_j (\rho v_j) = 0$<br>
+$\partial_t (\rho v_i) + \partial_j (\rho v_i v_j + \delta_{ij} P) = 0$<br>
+$\partial_t E_{hydro} + \partial_j (H_{hydro} v_j) = 0$<br>
+<br>
+
+$\partial_t U_i + \partial_j F_{ij} = 0$<br>
+<br>
+
+conservatives:<br>
+$U_i = \downarrow i \left[\matrix{\rho \\ \rho v_i \\ E_{hydro}}\right]$<br>
+<br>
+
+Flux vector:<br>
+$F_{ij} = \downarrow i \left[\matrix{
+	\rho v_j \\
+	\rho v_i v_j + \delta_{ij} P
+	\\ H_{hydro} v_j
+}\right]$<br>
+<br>
+
+primitives:<br>
+$W_k = \left[\matrix{\rho \\ v_k \\ P}\right]$<br>
+<br>
+
+$\frac{\partial E_{hydro}}{\partial \rho}$
+$= \frac{\partial}{\partial \rho} ( \frac{1}{2} \rho v^2 + \frac{P}{\gamma-1})$
+$= \frac{1}{2} v^2$<br>
+
+$\frac{\partial E_{hydro}}{\partial v_k}$
+$= \frac{\partial}{\partial v_k} ( \frac{1}{2} \rho v^2 + \frac{P}{\gamma-1})$
+$= \rho v_k$<br>
+
+$\frac{\partial E_{hydro}}{\partial P}$
+$= \frac{\partial}{\partial P} ( \frac{1}{2} \rho v^2 + \frac{P}{\gamma-1})$
+$= \frac{1}{\gamma-1}$<br>
+<br>
+
+Derivative of conservatives wrt primitives:<br>
+$\frac{\partial U_i}{\partial W_j} = \downarrow i \overset{\rightarrow j}{ \left[\matrix{
+	1 & 0 & 0 \\
+	v_i & \rho \delta_{ij} & 0 \\
+	\frac{1}{2} v^2 & \rho v_j & \frac{1}{\gamma-1} 
+}\right] }$<br>
+<br>
+
+Derivative of primitives wrt conservatives:<br>
+$\frac{\partial W_j}{\partial U_i} = \downarrow j \overset{\rightarrow i}{ \left[\matrix{
+	1 & 0 & 0 \\
+	-\frac{v_j}{\rho} & \delta_{ij} \frac{1}{\rho} & 0 \\
+	\frac{1}{2} (\gamma-1) v^2 & -(\gamma-1) v_i & \gamma-1
+}\right] }$<br>
+<br>
+
+Derivative of flux with respect to primitive variables:<br>
+$\frac{\partial F_{ij}}{\partial W_k} = \downarrow i \overset{\rightarrow k}{ \left[\matrix{
+	v_j & \rho \delta_{jk} & 0 \\
+	v_i v_j & \rho (\delta_{ik} v_j + v_i \delta_{jk}) & \delta_{ij} \\
+	\frac{1}{2} v^2 v_j & \rho v_j v_k + H_{hydro} \delta_{jk} & \frac{\gamma}{\gamma-1} v_j
+}\right] }$<br>
+<br>
+
+Derivative of flux with respect to conservative variables:<br>
+$\frac{\partial F_{ij}}{\partial U_k} = \frac{\partial F_{ij}}{\partial W_l} \frac{\partial W_l}{\partial U_k}
+= \downarrow i \overset{\rightarrow l}{ \left[\matrix{
+	v_j & \rho \delta_{jl} & 0 \\
+	v_i v_j & \rho (\delta_{il} v_j + v_i \delta_{jl}) & \delta_{ij} \\
+	\frac{1}{2} v^2 v_j & \rho v_j v_l + (E_{hydro} + P) \delta_{jl} & \frac{\gamma}{\gamma-1} v_j
+}\right] } \cdot \downarrow l \overset{\rightarrow k}{ \left[\matrix{
+	1 & 0 & 0 \\
+	-\frac{v_l}{\rho} & \delta_{kl} \frac{1}{\rho} & 0 \\
+	\frac{1}{2} (\gamma-1) v^2 & -(\gamma-1) v_k & \gamma-1
+}\right] }$<br>
+$= \downarrow i \overset{\rightarrow k}{ \left[\matrix{
+	0 & \delta_{jk} & 0 \\
+	-v_i v_j + \frac{1}{2} \delta_{ij} (\gamma-1) v^2 &
+		\delta_{ik} v_j + \delta_{jk} v_i - \delta_{ij} (\gamma-1) v_k &
+		\delta_{ij} (\gamma - 1) \\
+	\frac{1}{2} v_j v^2 (\gamma - 1) - v_j h_{hydro} &
+		-(\gamma-1) v_j v_k + \delta_{jk} h_{hydro} &
+		\gamma v_j
+}\right] }$<br>
+<br>
+for $h_{hydro} = \frac{1}{\rho} H_{hydro}$<br>
+<br>
+
+<h2>Magnetohydrodynamics</h2>
+
+Ampere's law:<br>
+$\nabla \times B = \mu_0 (J + \epsilon_0 \partial_t E)$<br>
+$B = $ magnetic field<br>
+$J = $ electrical current density<br>
+$E = $ electrical field<br>
+$\mu_0 = $ permeability of free space<br>
+$\epsilon_0 = $ permittivity of free space<br>
+${\epsilon_i}^{jk} \partial_j B_k = \mu_0 (J_i + \epsilon_0 \partial_t E_i)$<br>
+Assume $\partial_t E_i = 0$<br>
+$J_i = {1\over\mu_0} {\epsilon_i}^{jk} \partial_j B_k$<br>
+<br>
+
+Lorentz force law:<br>
+$F = q (E + v \times B)$<br>
+$q = $ electric charge<br>
+$F_i = q (E_i + {\epsilon_i}^{jk} v_j B_k)$<br>
+$E_i = F_i / q - {\epsilon_i}^{jk} v_j B_k $<br>
+Let $J_i / \sigma = F_i / q$<br>
+$\sigma$ = electrical conductivity<br>
+$E_i = J_i / \sigma - {\epsilon_i}^{jk} v_j B_k$<br>
+<br>
+
+Maxwell-Faraday equation:<sup>2</sup><br>
+$ \partial_t B = -\nabla \times E$<br>
+$ \partial_t B_i = -{\epsilon_i}^{jk} \partial_j E_k$<br>
+<br>
+
+<h3>Magnetic Field</h3>
+
+substitute Ampere's law into Lorentz force law:<br>
+$E_i = {1\over\sigma\mu_0} {\epsilon_i}^{jk} \partial_j B_k - {\epsilon_i}^{jk} v_j B_k$<br>
+$\eta = {1\over\sigma\mu_0} = $ magnetic diffusivity<br>
+$E_i = \eta {\epsilon_i}^{jk} \partial_j B_k - {\epsilon_i}^{jk} v_j B_k$<br>
+<br>
+
+substitute this into Maxwell-Faraday equation:<br>
+$ \partial_t B_i = -{\epsilon_i}^{jk} \partial_j (\eta {\epsilon_k}^{lm} \partial_l B_m - {\epsilon_k}^{lm} v_l B_m)$<br>
+$ \partial_t B_i = {\epsilon_i}^{jk} {\epsilon_k}^{lm} \partial_j (v_l B_m) - {\epsilon_i}^{jk} {\epsilon_k}^{lm} \partial_j (\eta \partial_l B_m)$<br>
+Levi-Civita identity: ${\epsilon_i}^{jk} {\epsilon_k}^{lm} = \delta^{ij}_{kl} = \delta^i_k \delta^j_l - \delta^i_l \delta^j_k$<br>
+$ \partial_t B_i = (\delta^i_l \delta^j_m - \delta^i_m \delta^j_l) \partial_j (v_l B_m) - (\delta^i_l \delta^j_m - \delta^i_m \delta^j_l) \partial_j (\eta \partial_l B_m)$<br>
+assume $\eta$ is constant<br>
+$ \partial_t B_i = \partial_j (v_i B_j - v_j B_i) - \eta (\partial_i \partial_j B_j - \partial_j \partial_j B_i)$<br>
+No magnetic monopoles: $\partial_i B_i = 0$<br>
+$ \partial_t B_i = \partial_j (v_i B_j - v_j B_i) + \eta \partial_j \partial_j B_i$<br>
+assume $\eta = 0$<br>
+$ \partial_t B_i = \partial_j (v_i B_j - v_j B_i)$<br>
+$ \partial_t B_i + \partial_j (B_i v_j - B_j v_i) = 0$<br>
+
+<h3>Momentum</h3>
+
+Lorentz force law:<br>
+$F_i = q (E_i + {\epsilon_i}^{jk} v_j B_k)$<br>
+assume $E_i = 0$<br>
+$\Pi^M_i = F_i =$ Magnetic force on fluid<br>
+$\Pi^M_i = {\epsilon_i}^{jk} q v_j B_k$<br>
+let $J_i = q v_i$<br>
+$\Pi^M_i = {\epsilon_i}^{jk} J_j B_k$<br>
+substitute Ampere's law approximation: $J_i = {1\over\mu_0} {\epsilon_i}^{jk} \partial_j B_k$<br>
+$\Pi^M_i = {\epsilon_i}^{jk} ({1\over\mu_0} {\epsilon_j}^{lm} \partial_l B_m) B_k$<br>
+$\Pi^M_i = -{1\over\mu_0} {\epsilon_i}^{kj} {\epsilon^{lm}}_j B_k \partial_l B_m$<br>
+$\Pi^M_i = {1\over\mu_0} (\delta^i_m \delta^k_l - \delta^i_l \delta^k_m) B_k \partial_l B_m$<br>
+$\Pi^M_i = {1\over\mu_0} (B_j \partial_j B_i - B_j \partial_i B_j)$<br>
+insert additional $\partial_k B_k = 0$ terms, split $B_j \partial_i B_j$ into two halves<br>
+$\Pi^M_i = {1\over\mu_0} ((\partial_j B_i) B_j + B_i (\partial_j B_j) - B_i - {1\over2} (\partial_i B_j) B_j  - {1\over2} B_j (\partial_i B_j))$<br>
+un-distribute gradient:<br> 
+$\Pi^M_i = {1\over\mu_0} (\partial_j (B_i B_j) - {1\over2} \partial_i (B^2))$<br>
+$\Pi^M_i = \partial_j ({1\over\mu_0} (B_i B_j - {1\over2} \delta_{ij} B_i B_j))$<br>
+$\Pi^M_i = \partial_j \sigma_{ij}$<br>
+$\sigma_{ij} = {1\over\mu_0} (B_i B_j - {1\over2} \delta_{ij} B_i B_j) =$ Maxwell stress tensor for $E_i = 0$<br>
+<br>
+Change in momentum due to magnetic field:<br>
+$\Pi^M_i = -{1\over2} {1\over\mu_0} \partial_j B^2 + {1\over\mu_0} \partial_j (B_i B_j)$<br>
+<br>
+
+Total change in momemtum:<sup>1</sup><br>
+$\partial_t \Pi_i = \partial_t \Pi^C_i + \partial_t \Pi^P_i + \partial_t \Pi^M_i$<br>
+$\partial_t \Pi_i = -\partial_j (\rho v_i v_j) - \partial_i P - {1\over\mu_0} {1\over2} \partial_i B^2 + {1\over\mu_0} \partial_j (B_i B_j)$<br>
+$\partial_t \Pi_i + \partial_j (\rho v_i v_j + \delta_{ij} P + {1\over\mu_0} {1\over2} \delta_{ij} B^2 - {1\over\mu_0} B_i B_j) = 0$<br>
+<br>
+
+Let $P_{mag} = {1\over\mu_0} {1\over2} B^2$<br>
+$\partial_t \Pi_i + \partial_j (\rho v_i v_j + \delta_{ij} (P + P_{mag}) - {1\over\mu_0} B_i B_j) = 0$<br>
+<br>
+Let $P_{total} = P + P_{mag}$<br>
+$\partial_t \Pi_i + \partial_j (\rho v_i v_j + \delta_{ij} P_{total} - {1\over\mu_0} B_i B_j) = 0$<br>
+<br>
+For $\Pi_i = $ total momentum $ = \rho v_i$ we find<br>
+$\partial_t (\rho v_i) + \partial_j (\rho v_i v_j + \delta_{ij} P_{total} - {1\over\mu_0} B_i B_j) = 0$<br>
+
+<h3>Energy</h3>
+
+Change in energy due to magnetic field:<br>
+$\partial_t E_{total}^M = -\int_{\partial\Omega} B_k (v_k B_j - v_j B_k) dS_j$ <b>TODO</b> where does this come from? I'm guessing $\partial_t B_i$<br>
+$\partial_t E_{total}^M = \int_\Omega \partial_j (B_k (v_k B_j - v_j B_k)) dV$ via Green's theorem<br>
+$\partial_t E_{total}^M = \partial_j (B_k (v_k B_j - v_j B_k))$ At any point<br>
+<br>
+
+Total change in total energy:<br>
+$\partial_t E_{total} = \partial_t E_{total}^C + \partial_t E_{total}^P + \partial_t E_{total}^M$<br>
+$\partial_t E_{total} = -\partial_j (E_{hydro} v_j) - \partial_j (P v_j) - \partial_j {1\over\mu_0} (v_j B^2 - B_k v_k B_j)$<br>
+$\partial_t E_{total} + \partial_j ((E_{hydro} + P) v_j + {1\over\mu_0} (v_j B^2 - B_k v_k B_j) = 0$<br>
+$\partial_t E_{total} + \partial_j ((E_{hydro} + P) v_j + {1\over\mu_0} B_k (v_j B_k - v_k B_j)) = 0$<br>
+$\partial_t E_{total} + \partial_j ((E_{hydro} + P) v_j + {1\over\mu_0} B^2 v_j - {1\over\mu_0} B_k v_k B_j) = 0$<br>
+$\partial_t E_{total} + \partial_j ((E_{hydro} + {1\over2} {1\over\mu_0} B^2 + P + {1\over2} {1\over\mu_0} B^2) v_j - {1\over\mu_0} B_k v_k B_j) = 0$<br>
+<br>
+
+Let $E_{mag} = {1\over2} {1\over\mu_0} B^2$<br>
+$\partial_t E_{total} + \partial_j ((E_{hydro} + E_{mag} + P + P_{mag}) v_j - {1\over\mu_0} B_k v_k B_j) = 0$<br>
+<br>
+
+Let $E_{total} = E_{hydro} + E_{mag}$<br>
+Let $H_{total} = E_{total} + P_{total}$<br>
+$\partial_t E_{total} + \partial_j (H_{total} v_j - {1\over\mu_0} B_k v_k B_j) = 0$<br>
+
+<h2>Conservative Form of MHD:</h2>
+
+$\partial_t \rho + \partial_j (\rho v_j) = 0$<br>
+$\partial_t (\rho v_i) + \partial_j (\rho v_i v_j + \delta_{ij} P_{total} - {1\over\mu_0} B_i B_j) = 0$<br>
+$\partial_t B_i + \partial_j (B_i v_j - B_j v_i) = 0$<br>
+$\partial_t E_{total} + \partial_j (H_{total} v_j - {1\over\mu_0} B_k v_k B_j) = 0$<br>
+<br>
+
+$\partial_t U_i + \partial_{x_j} F_{ij} = 0$<br>
+<br>
+
+Primitive variables:<br>
+$W_i \left[\matrix{\rho \\ v_i \\ B_i \\ P}\right]$<br>
+<br>
+
+Conservative variables:<br>
+$U_i = \left[\matrix{\rho \\ \rho v_i \\ B_i \\ E_{total}}\right]$<br>
+<br>
+
+$\frac{\partial E_{total}}{\partial \rho}$<br>
+$= \frac{\partial E_{hydro}}{\partial \rho} + \frac{\partial E_{mag}}{\partial \rho}$<br>
+$= \frac{1}{2} v^2$<br>
+$\frac{\partial E_{total}}{\partial v_k}$<br>
+$= \frac{\partial E_{hydro}}{\partial v_k} + \frac{\partial E_{mag}}{\partial v_k}$<br>
+$= \rho v_k$<br>
+$\frac{\partial E_{total}}{\partial B_k}$<br>
+$= \frac{\partial E_{hydro}}{\partial B_k} + \frac{\partial E_{mag}}{\partial B_k}$<br>
+$= \frac{1}{\mu_0} B_k$<br>
+$\frac{\partial E_{total}}{\partial P}$<br>
+$= \frac{\partial E_{hydro}}{\partial P} + \frac{\partial E_{mag}}{\partial P}$<br>
+$= \frac{1}{\gamma-1} $<br>
+<br>
+
+Derivative of conservative with respect to primitive:<br>
+$\frac{\partial U_i}{\partial W_j} = \downarrow i \overset{\rightarrow j}{ \left[\matrix{
+	1 & 0 & 0 & 0 \\ 
+	v_i & \rho \delta_{ij} & 0 & 0 \\
+	0 & 0 & \delta_{ij} & 0 \\
+	\frac{1}{2}v^2 & \rho v_j & \frac{1}{\mu_0} B_j & \frac{1}{\gamma-1}
+}\right] }$<br>
+<br>
+
+Derivative of primitive with respect to conservative:<br>
+$\frac{\partial W_j}{\partial U_i} = \downarrow j \overset{\rightarrow i}{ \left[\matrix{
+	1 & 0 & 0 & 0 \\ 
+	-\frac{1}{\rho} v_j & \frac{1}{\rho} \delta_{ij} & 0 & 0 \\
+	0 & 0 & \delta_{ij} & 0 \\
+	\frac{1}{2} (\gamma-1) v^2 & -(\gamma-1) v_i & -(\gamma-1) \frac{1}{\mu_0} B_i & \gamma-1
+}\right] }$<br>
+<br>
+
+Flux vector:<br>
+$F_{ij} = \left[\matrix{
+	\rho v_j \\
+	\rho v_i v_j + \delta_{ij} P_{total} - {1\over\mu_0} B_i B_j \\
+	B_i v_j - B_j v_i \\
+	H_{total} v_j - {1\over\mu_0} B_k v_k B_j
+}\right]$<br>
+<br>
+
+Derivative of flux vector with respect to primitive variables:<br>
+$\frac{\partial F_{ij}}{\partial W_k} = \downarrow i \overset{\rightarrow k}{ \left[\matrix{
+	v_j & 
+		\rho \delta_{jk} &
+		0 &
+		0 \\
+	v_i v_j &
+		\rho (\delta_{ik} v_j + v_i \delta_{jk}) &
+		\frac{1}{\mu_0} (\delta_{ij} B_k - \delta_{ik} B_j - \delta_{jk} B_i) &
+		\delta_{ij} \\
+	0 &
+		B_i \delta_{jk} - B_j \delta_{ik} &
+		\delta_{ik} v_j - \delta_{jk} v_i &
+		0 \\
+	\frac{1}{2} v^2 v_j &
+		\rho v_j v_k + H_{total} \delta_{jk} - {1\over\mu_0} B_j B_k &
+		\frac{1}{\mu_0} (2 B_k v_j - v_k B_j - \delta_{jk} v_l B_l) &
+		\frac{\gamma}{\gamma-1} v_j
+}\right] }$<br>
+<br>
+
+Derivative of flux vector with respect to conservative variables:<br>
+$\frac{\partial F_{ij}}{\partial U_k}
+= \frac{\partial F_{ij}}{\partial W_l} \frac{\partial W_l}{\partial U_k}$<br>
+$= \downarrow i \overset{\rightarrow l}{ \left[\matrix{
+	v_j & 
+		\rho \delta_{jl} &
+		0 &
+		0 \\
+	v_i v_j &
+		\rho (\delta_{il} v_j + v_i \delta_{jl}) &
+		\frac{1}{\mu_0} (\delta_{ij} B_l - \delta_{il} B_j - \delta_{jl} B_i) &
+		\delta_{ij} \\
+	0 &
+		B_i \delta_{jl} - B_j \delta_{il} &
+		\delta_{il} v_j - \delta_{jl} v_i &
+		0 \\
+	\frac{1}{2} v^2 v_j &
+		\rho v_j v_l + (E_{hydro} + \frac{1}{\mu_0} B^2 + P) \delta_{jl} - {1\over\mu_0} B_j B_l &
+		\frac{1}{\mu_0} (2 B_l v_j - v_l B_j - \delta_{jl} v_m B_m) &
+		\frac{\gamma}{\gamma-1} v_j
+}\right] } \cdot \downarrow l \overset{\rightarrow k}{ \left[\matrix{
+	1 & 0 & 0 & 0 \\ 
+	-\frac{1}{\rho} v_l & \frac{1}{\rho} \delta_{kl} & 0 & 0 \\
+	0 & 0 & \delta_{kl} & 0 \\
+	\frac{1}{2} (\gamma-1) v^2 & -(\gamma-1) v_k & -(\gamma-1) \frac{1}{\mu_0} B_k & \gamma-1
+}\right] }$<br>
+$= \downarrow i \overset{\rightarrow k}{ \left[\matrix{
+	0 &
+		\delta_{jk} &
+		0 &
+		0 \\
+	-v_i v_j + \frac{1}{2} \delta_{ij} (\gamma-1) v^2 &
+		\delta_{ik} v_j + \delta_{jk} v_i - \delta_{ij} (\gamma-1) v_k &
+		\frac{1}{\mu_0}(-\delta_{ij} (\gamma-2) B_k - \delta_{ik} B_j - \delta_{jk} B_i) &
+		\delta_{ij} (\gamma-1) \\
+	-\frac{1}{\rho} (B_i v_j - B_j v_i) &
+		\frac{1}{\rho} (B_i \delta_{jk} - B_j \delta_{ik}) &
+		\delta_{ik} v_j - \delta_{jk} v_i &
+		0 \\
+	v_j (\frac{1}{2} (\gamma-1) v^2 - h_{total}) + \frac{1}{\mu_0\rho} B_j B_m v_m &
+		-(\gamma-1) v_j v_k + (\delta_{jk} h_{total} - \frac{1}{\mu_0\rho} B_j B_k) &
+		\frac{1}{\mu_0} (-(\gamma - 2) v_j B_k - v_k B_j - \delta_{jk} v_m B_m) &
+		\gamma v_j
+}\right] }$<br>
+<br>
+
+for $h_{total} = (E_{total} + P_{total}) / \rho$<br>
+<br>
+
+<h3>Finite Volume Methods</h3>
+
+$\partial_t U_i + \partial_{x_j} F_{ij} = 0$<br>
+let $\mu$ run across all coordinates $t,x,y,z$<br>
+let $F_{i,t} = U_i$<br>
+$\partial_\mu F_{i\mu} = 0$<br>
+integrate over a volume of spacetime $\Omega$<br>
+$\int_\Omega \partial_\mu F_{i\mu} dx^4 = 0$<br>
+apply the divergence theorem<br>
+$\int_{\partial\Omega} F_{i\mu} n_\mu d\Sigma = 0$<br>
+for $n_\mu$ being the spacetime normal<br>
+assume the timelike top and bottom are flat (i.e. only vary in spatial dimensions)<br>
+such that the lower timelike boundary $\partial\Omega_\tau^-$ (which is spatial) has constant time coordinate $t_1$ and constant normal $n_t = -1$ and $n_i = 0$<br>
+and the upper timelike boundary $\partial\Omega_\tau^+$ (which is also spatial) has constant time coordinate $t_2$ and constant normal $n_t = 1$ and $n_i = 0$<br>
+$\int_{\partial\Omega_\Sigma} F_{ij} n_j d\sigma + \int_{\partial\Omega_\tau^+} F_{i,t} dx^3 - \int_{\partial\Omega_\tau^-} F_{i,t} dx^3 = 0$<br>
+substitute the definition of the timelike flux component $F_{i,t} = U_i$<br>
+$\int_{\partial\Omega_\Sigma} F_{ij} n_j d\sigma + \int_{\partial\Omega_\tau^+} U_i(t_2) dx^3 - \int_{\partial\Omega_\tau^-} U_i(t_1) dx^3 = 0$<br>
+assume that the cells never shrink or grow in size, so the timelike top and bottom are equal, i.e. $\partial\Omega_\tau^+ = \partial\Omega_\tau^- = \partial\Omega_\tau$<br>
+$\int_{\partial\Omega_\Sigma} F_{ij} n_j d\sigma + \int_{\partial\Omega_\tau} U_i(t_2) dx^3 - \int_{\partial\Omega_\tau} U_i(t_1) dx^3 = 0$<br>
+also assume $U_i$ does not vary spatially along the timelike top and bottom surfaces $\partial\Omega_\tau^+$ or $\partial\Omega_\tau^-$<br>
+$\int_{\partial\Omega_\Sigma} F_{ij} n_j d\sigma + (U_i(t_2) - U_i(t_1)) \int_{\partial\Omega_\tau}  dx^3 = 0$<br>
+$\int_{\partial\Omega_\Sigma} F_{ij} n_j d\sigma + (U_i(t_2) - U_i(t_1)) |\partial\Omega_\tau| = 0$<br>
+Let $V$ be the spatial volume of the cell, such that $V = |\partial\Omega_\tau|$<br>
+$\int_{\partial\Omega_\Sigma} F_{ij} n_j d\sigma + (U_i(t_2) - U_i(t_1)) V = 0$<br>
+$(U_i(t_2) - U_i(t_1)) V = -\int_{\partial\Omega_\Sigma} F_{ij} n_j d\sigma$<br>
+Represent the boundary $\Omega_\Sigma$ as the product of the spacelike component $\Omega_\sigma$ and timelike components $\Omega_\Sigma^t$<br>
+Note that $\Omega_\Sigma^t$ is just the subset along the reals $[t_1, t_2]$<br>
+$(U_i(t_2) - U_i(t_1)) V = -\int_{\partial\Omega_\Sigma^t} \int_{\partial\Omega_\sigma} F_{ij} n_j d\sigma dt$<br>
+Assume that the flux $F_{ij}$ is constant with respect to time<br>
+$(U_i(t_2) - U_i(t_1)) V = -\int_{\partial\Omega_\Sigma^t} dt \int_{\partial\Omega_\sigma} F_{ij} n_j d\sigma$<br>
+Let $\Delta t = t_2 - t_1$<br>
+$(U_i(t_2) - U_i(t_1)) V = -\Delta t \int_{\partial\Omega_\sigma} F_{ij} n_j d\sigma$<br>
+${{U_i(t_2) - U_i(t_1)}\over{\Delta t}} = -{{\int_{\partial\Omega_\sigma} F_{ij} n_j d\sigma}\over{V}}$<br>
+Let $\partial\Omega_\sigma$ be the sum of individual surfaces $\partial\Omega_\sigma^k$ each with normal $n^\sigma_{jk}$ the $k$th surface normal in the direction $x_j$<br> 
+Let $F_{ij}$ remain constant along each surface<br>
+${{U_i(t_2) - U_i(t_1)}\over{\Delta t}} = -{{ |\partial\Omega_\sigma^k| F_{ij} n^\sigma_{jk} }\over{V}}$<br>
+Let $S_k = |\partial\Omega_\sigma^k|$ be the surface area of each spatial boundary portion<br>
+${{U_i(t_2) - U_i(t_1)}\over{\Delta t}} = -{{ S_k F_{ij} n^\sigma_{jk} }\over{V}}$<br>
+Assume we're using axis-aligned boundaries, and the span along the $i$th dimension is $\Delta x_i$<br>
+The spacelike volume of the surface is given by $V = \Pi_{i=1}^n \Delta x_i$<br>
+Each $k$th dimension has two surfaces, $S_k^+$ and $S_k^-$, both with area $\Pi_{i=1,i\ne k}^n \Delta x_i$<br>
+$S_k^-$ has surface normal $n^{\sigma-}_{jk} = -\delta_{jk}$<br>
+$S_k^+$ has surface normal $n^{\sigma+}_{jk} = \delta_{jk}$<br>
+Let $x_\sigma^\pm$ represent any point on surface $S_k^\pm$, and let the flux $F_{ij}(x_\sigma^\pm)$ be constant along the surface $S_k^\pm$<br>
+${{U_i(t_2) - U_i(t_1)}\over{\Delta t}} = -{{\Pi_{m=1,m\nu k}^n \Delta x_m (F_{ij}(x_\sigma^+) \delta_{jk} + F_{ij}(x_\sigma^-) (-\delta_{jk})) }\over{\Pi_{m=1}^n \Delta x_m}}$<br>
+${{U_i(t_2) - U_i(t_1)}\over{\Delta t}} = -{{\Pi_{m=1,m\nu k}^n \Delta x_m (F_{ik}(x_\sigma^+) - F_{ik}(x_\sigma^-)) }\over{\Pi_{m=1}^n \Delta x_m}}$<br>
+${{U_i(t_2) - U_i(t_1)}\over{\Delta t}} = -{{F_{ik}(x_\sigma^+) - F_{ik}(x_\sigma^-) }\over{\Delta x_k}}$<br>
+Solve for $U_i(t_2)$<br>
+$U_i(t_2) = U_i(t_1) - {{\Delta t}\over{\Delta x_j}}  (F_{ij}(x_\sigma^+) - F_{ij}(x_\sigma^-))$<br>
+
+<h3>Similarity Transforms:<sup>6</sup></h3>
+
+$\partial_t U_i(x,t) + \partial_{x_j} F_{ij}(U(x,t)) = 0$<br>
+<br>
+substitute $\tilde{F}_{ij}$ and $\tilde{U}_i$ into conservative equations<br>
+$\partial_t \tilde{U}_i + \partial_{x_j} (\tilde{F}_{ij} + \xi_j \tilde{U}_i) = 0$<br>
+<br>
+time derivative of state (in self-similar form)<br>
+$\partial_t \tilde{U}_i = {\partial\tilde{U}_i\over\partial\xi_j} {\partial\xi_j\over\partial t} = -{x_j\over t^2} \partial_{\xi_j} \tilde{U}_i$<br>
+substitute $\xi_j = {x_j\over t}$<br>
+$\partial_t \tilde{U}_i = -{1\over t} \xi_j \partial_{\xi_j} \tilde{U}_i$<br>
+<br>
+spatial derivative of flux (in self-similar form)<br>
+$\partial_{x_j} F_{ij} = \partial_{x_j} (\tilde{F}_{ij} + \xi_j \tilde{U}_i)$<br>
+$= {{\partial \xi_j}\over{\partial x_j}} \partial_{\xi_j} (\tilde{F}_{ij} + \xi_j \tilde{U}_i)$<br>
+$= {1\over t} (\partial_{\xi_j} \tilde{F}_{ij} + (\partial_{\xi_j} \xi_j) \tilde{U}_i + \xi_j \partial_{\xi_j} \tilde{U}_i)$<br>
+$= {1\over t} (\partial_{\xi_j} \tilde{F}_{ij} + n \tilde{U}_i) + {1\over t} \xi_j \partial_{\xi_j} \tilde{U}_i$ for $n$ dimensions<br>
+
+substitute to find:<br>
+$ -{1\over t} \xi_j \partial_{\xi_j} \tilde{U}_i
+	+ {1\over t} (\partial_{\xi_j} \tilde{F}_{ij} + n \tilde{U}_i) + {1\over t} \xi_j \partial_{\xi_j} \tilde{U}_i = 0$<br>
+<br>
+
+simplifies to<br>
+$n \tilde{U}_i + \partial_{\xi_j} \tilde{F}_{ij} = 0$<br>
+<br>
+
+finite volume form:<br>
+$\int_\Omega (n \tilde{U}_i + \partial_{\xi_j} \tilde{F}_{ij}) dx = 0$<br>
+$\int_\Omega dx n \tilde{U}_i + \int_\Omega \partial_{\xi_j} \tilde{F}_{ij} dx = 0$<br>
+$|\Omega| n \tilde{U}_i + \int_{\partial\Omega} \tilde{F}_{ij} n_j d\sigma = 0$<br>
+discretize:<br>
+$\Delta \xi n \tilde{U}_i + \tilde{F}_{ij}(x_R) - \tilde{F}_{ij}(x_L) = 0$<br>
+$n \tilde{U}_i + {1\over\Delta \xi}(\tilde{F}_{ij}(x_R) - \tilde{F}_{ij}(x_L)) = 0$<br>
+...for $\Delta \xi = \Pi_{k=1}^n \Delta \xi_k$<br>
+
+<h3>Similarity Transform of MHD Equations:</h3>
+
+$U_i = \tilde{U}_i = \left[\matrix{\rho \\ \rho v_i \\ B_i \\ E_{total} }\right]$<br>
+<br>
+$F_{ij} = \left[\matrix{\rho v_j \\ \rho v_i v_j + \delta_{ij} P_{total} - {1\over\mu_0} B_i B_j \\ B_i v_j - B_j v_i \\ (E_{total} + P_{total}) v_j - {1\over\mu_0} B_k v_k B_j}\right]$<br>
+<br>
+$\tilde{F}_{ij} = F_{ij} - \xi_j \tilde{U}_i = \left[\matrix{\rho (v_j - \xi_j) \\ \rho v_i (v_j - \xi_j) + \delta_{ij} P_{total} - {1\over\mu_0} B_i B_j \\ B_i (v_j - \xi_j) - B_j v_i \\ E_{total} (v_j - \xi_j) + P_{total} v_j - {1\over\mu_0} B_k v_k B_j }\right]$<br>
+
+<h3>Newton Method<sup>8</sup></h3>
+
+Nonlinear function:<br>
+$G_i(\tilde{U}) = n \tilde{U}_i + \partial_{\xi_j} \tilde{F}_{ij}$<br>
+solve for $G_i = 0$ by minimizing $\tilde{U}_j$<br>
+<br>
+Taylor expansion of function to minimize:<br>
+$G_i(\tilde{U}^{k+1}) = G_i(\tilde{U}^k) + {{\partial G_i(\tilde{U}^k)}\over{\partial \tilde{U}^k_j}} (\tilde{U}_j^{k+1} - \tilde{U}_j^k) + \mathscr(O)((\tilde{U})^2)$<br>
+$\tilde{U}_i^k$ the $k$th iteration of our state vector $\tilde{U}_i$<br>
+$G_i(\tilde{U}^{k+1}) = G_i(\tilde{U}^k) + {{\partial G_i(\tilde{U}^k)}\over{\partial \tilde{U}^k_j}} (\tilde{U}_j^{k+1} - \tilde{U}_j^k) + \mathscr(O)((\tilde{U})^2)$<br>
+<br>
+Rearranged, and ignoring the higher-order terms:<br>
+$||{{\partial G_i(\tilde{U}^k)}\over{\partial \tilde{U}^k_j}}||^{-1}_{ij} (G_j(\tilde{U}^{k+1}) - G_j(\tilde{U}^k)) = \tilde{U}_i^{k+1} - \tilde{U}_i^k$<br>
+$\tilde{U}_i^{k+1} = \tilde{U}_i^k + ||{{\partial G_i(\tilde{U}^k)}\over{\partial \tilde{U}^k_j}}||^{-1}_{ij} (G_j(\tilde{U}^{k+1}) - G_j(\tilde{U}^k))$<br>
+Assume that we arrive at our destination, i.e. $G_i(\tilde{U}^{k+1}) = 0$:<br>
+$\tilde{U}_i^{k+1} = \tilde{U}_i^k - ||{{\partial G_i(\tilde{U}^k)}\over{\partial \tilde{U}^k_j}}||^{-1}_{ij} G_j(\tilde{U}^k)$<br>
+This formula is equivalent to Newton's method of an n-dimensions scalar function with value equal to ${1\over2}||G||^2$<br>
+<br>
+Jacobian Approximation:<br>
+${{\partial G_i(u)}\over{\partial \tilde{U}_j}} v_j \approx ( G_i (u + \epsilon v) - G_i(u) ) / \epsilon$<br>
+<br>
+Evaluation of function to minimize<br> 
+${{\partial G_i}\over{\partial \tilde{U}_j}} = \partial_{\tilde{U}_j} G_i$<br>
+$= \partial_{\tilde{U}_j} (n \tilde{U}_i + \partial_{\xi_k} \tilde{F}_{ik})$<br>
+$= n \delta_{ij} + \partial_{\tilde{U}_j} \partial_{\xi_k} \tilde{F}_{ik}$<br>
+<br>
+
+[1]: <a href='http://www.av8n.com/physics/euler-flow.htm'>http://www.av8n.com/physics/euler-flow.htm</a>:<br>
+[2]: <a href='https://en.wikipedia.org/wiki/Maxwell%27s_equations'>https://en.wikipedia.org/wiki/Maxwell%27s_equations</a><br>
+[3]: <a href='https://en.wikipedia.org/wiki/Lorentz_force'>https://en.wikipedia.org/wiki/Lorentz_force</a><br>
+[4]: <a href='https://en.wikipedia.org/wiki/Magnetic_pressure'>https://en.wikipedia.org/wiki/Magnetic_pressure</a><br>
+[5]: <a href='http://www.mpia.de/homes/dullemon/lectures/fluiddynamics/'>http://www.mpia.de/homes/dullemon/lectures/fluiddynamics/</a><br>
+[6]: Samtaney (1997). Computational Methods for Self-similar Solutions of the Compressible Euler Equations. Journal of Computational Physics, 132, 327-345<br>
+[7]: Toro (1999), Riemann Solvers and Numerical Methods for Fluid Dynamics, 2nd Ed. 115-<br>
+[8]: Keyes, JFNK<br>
+	</body>
+</html>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Thoughts on Antigravity Engines</title>
+		<!-- script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script -->
+		<script type="text/javascript" async src="file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+	</head>
+	<body>
+<script>
+function link(x) { document.write("<a href='"+x+"'>"+x+"</a>"); }
+</script>
+Chris Moore (<a href='mailto:christopher.e.moore@gmail.com'>christopher.e.moore@gmail.com</a>)<br>
+<script>document.write(new Date())</script><br>
+Thoughts on antigravity engines<br>
+<br>
+<br>
+
+Relativity says the force of gravity on a stationary object is the influence of the connection coefficient, $\ddot{x}^i = -{\Gamma^i}_{tt}$, for $ijk$ indexes spanning space and $t$ denoting time.<br>
+<br>
+Now if the metric has no $g_{kt}$ components (as the Schwarzschild does - as any non-rotating metric does I think?) then this is equal to $-g^{ij} \Gamma_{jtt}$<br>
+<br>
+In ADM representation (<script>link('http://christopheremoore.net/loop-quantum-gravity/page3.html')</script>) of a spacetime metric, $g^{ij} = \gamma^{ij} - \beta^i \beta^j / \alpha^2$, where $\gamma_{ij}$ is the spatial metric, $\gamma^{ij}$ is its inverse, and $\beta_k = g_{kt}$.
+Courtesy of $g_{kt} = 0$, $g^{ij}$ is only equal to the $\gamma^{ij}$.
+Now to focus on $\Gamma_{jtt}$.<br>
+<br>
+Solve for that and you find $\Gamma_{jtt} = g_{jt,t} - \frac{1}{2} g_{tt,j}$ ... but $g_{jt} = 0$, so we just have $-\frac{1}{2} g_{tt,j}$.<br>
+<br>
+If you use ADM to break down the metric you find $g_{tt} = -\alpha^2 + \beta^k \beta_k$, for $\beta_k = g_{kt}$ ... but this is zero ... so we just have $g_{tt} = -\alpha^2$.
+In ADM, $\alpha$ is the lapse, which is the rate at which the time coordinate progresses.
+I think it's safe to say it is related to - or it is - the gravitational time dilation, but I have to double check to be sure.<br>
+<br>
+Substitute this into $g_{tt,j}$ and you get $(-\alpha^2)_{,j} = -2 \alpha \alpha_{,j}$.<br>
+Substitute and you get $\Gamma_{jtt} = \alpha \alpha_{,j}$<br>
+Substitute and you get ${\Gamma^i}_{tt} = \gamma^{ij} \alpha \alpha_{,j}$<br>
+Substitute all the way back to find $\ddot{x}^i = -\gamma^{ij} \alpha \alpha_{,j}$.<br>
+So gravity is purely the time dilation gradient ... times the lapse function 
+<br>
+Here's an exaggerated graph of the lapse function of a Schwarzschild metric of a planet 1m in radius with an average density of $1.3 \cdot 10^{23} \frac{g}{cm^3}$ (or $\frac{1}{10} \frac{m}{m^3}$ in natural units with $G=1$)
+... a lot larger than Earth, with $5.51 \frac{g}{cm^3}$<br>
+<br>
+<br>
+<img src='Antigravity_1.png' width=500 /><br>
+<br>
+You can see the gradient of the $\alpha(r)$ function points outwards, the negative gradient points inwards.<br>
+<br>
+You can plug in Earth's values and and get back an acceleration of $9.8 \frac{m}{s^2}$ at the surface, with falloff to zero as you go to the middle or to outer space:<br>
+<br>
+<img src='Antigravity_2.png' width=500 /><br>
+<br>
+So the connection tells us gravity goes downward, into the radial direction, and therefore into the planet.<br>
+<br>
+Likewise the Ricci tensor agrees.<br>
+<br>
+Ricci tensors show how much geodesics contract along a certain direction (as described here: <script>link('https://en.wikipedia.org/wiki/Ricci_curvature#Direct_geometric_meaning')</script>).
+$R(x,x) &gt; 0$ for contracting geodesics, $R(x,x) &lt; 0$ for repelling geodesics.<br>
+<br>
+The stress-energy of an ideal gas is $T_{ab} = diag(\rho, P, P, P)$ for $\rho$ the density and $P$ the pressure.<br>
+<br>
+If you take the Einstein tensor as the trace-reversal of the Ricci tensor: $G_{ab} = R_{ab} - \frac{1}{2} g_{ab} R$,
+contract and solve to find the opposite is true as well: $R_{ab} = G_{ab} - \frac{1}{2} g_{ab} G_{cd} g^{cd}$,
+then plug in $G_{ab} = 8 \pi T_{ab}$ and solve for the $R_{tt}$ componet, you find:<br>
+$R_{tt} = 8 \pi T_{tt} - \frac{1}{2} g_{tt} (G_{cd} g^{cd})$, which, for $g_{ab}$ is approximately $\eta_{ab}$, you get:<br>
+$R_{tt} = 4 \pi (\rho + 3 P)$.<br>
+So long as density and pressure are positive, $R_{tt}$ is positive, which means geodesics traveling solely in time (i.e. at rest) will be drawn together (courtesy of gravitational attraction).<br>
+$R_{xx} = 4 \pi (\rho - P)$<br>
+So long as $\rho &gt; P$, $R_{xx}$ is positive, which means geodesics traveling solely in space will be drawn together.<br>
+<br>
+For Earth:<br>
+Total average density:<br>
+$\rho = 5.5147098661212 \frac{g}{cm^3} = 5.5147098661212 \cdot 1000 \cdot \frac{6.67384 \cdot 10^{-11}}{299792458^2} \frac{1}{m^2} = 4.0950296770075 \cdot 10^{-24} \frac{1}{m^2}$<br>
+Sea level atmospheric pressure:<br>
+$P = 101325 Pa = 101325 \frac{kg}{m \cdot s^2} = 101325 \frac{6.67384 \cdot 10^{-11}}{299792458^4} \frac{1}{m^2} = 8.3716216274064 \cdot 10^{-40} \frac{1}{m^2}$<br>
+Inner core pressure:<br>
+$P = 345 \cdot 10^9 Pa = 2.8504411166595 \cdot 10^{-33} \frac{1}{m^2}$<br> 
+So density always dominates in the matter stress-energy tensor.  Ricci scalar curvature is always positive, and spacelike geodesics always converge.<br>
+<br>
+
+<br>
+Note that the diagonal components of the stress-energy of an EM field with E along x and B along y are $diag(T_{ab}) = \frac{1}{8\pi}(E^2+B^2, B^2-E^2, E^2-B^2, E^2+B^2)$
+The trace of $T_{ab}$ is zero, so the Ricci tensor matches the Einstein tensor, equal to $G_{ab} = 8 \pi T_{ab}$.
+So geodesics through time and along the Poynting vector are drawn together.
+But geodesics through space, along the electric field, when the electric field is stronger than the magnetic field, geodesics diverge.  And along the magnetic field, when the magnetic field is stronger than the electric field, they diverge.
+So in the spatial direction at least there is negative Ricci scalar curvature, which means geodesics diverge, but I'm not sure completely how to use this to my advantage, since gravity is only timelike geodesics.
+The off-diagonal components of the stress-energy tensor are the Poynting vectors for what it's worth...<br>
+<br>
+I'm still thinking of how to use the EM field to affect the Ricci tensor.<br>
+<br>
+Back to the geodesics.<br>
+<br>
+$\Gamma_{itt} = g_{it,t} - \frac{1}{2} g_{tt,i} = \beta_{i,t} - \frac{1}{2} (-\alpha^2 + \beta^2)_{,i} = \beta_{i,t} + \alpha \alpha_{,i} - \beta^j \beta_{j,i}$<br>
+<br>
+So if you want to cancel the typical gravity contribution of $\alpha \alpha_{,i}$,
+you either need a negative counteracting $\beta_{i,t}$ (decrease in $\beta$ over time), or you need a large enough $\beta^j \beta_{j,i}$ (change in $\beta$ along $\beta$ direction).<br>
+If $\beta^i$ were the rotation component of the coordinates ... at right angle to radial / in direction of rotation?<br>
+... then this means either slow down the rotation, or increase the rotation rates in the direction of rotation ... or both?  Can we mix and match, to always be doing either-or, while conserving whatever values go into this?<br>
+<br>
+If you look at the Kerr metric - which is a metric for rotating spherical bodies - you see that the $g_{jt}$ components correspond with rotation.
+The Catalogue of Spacetimes (<script>link('https://arxiv.org/abs/0904.4184')</script>) also shows a rotating Schwarzschild metric which had $dt d\phi$ terms added to it, which has the same effect. $g_{it}$ corresponds to a rotating space.<br>
+<br>
+Coincidentally, when White developed off of the Alcubierre drive,
+he first criticized that a space ship of a few meters would take a mass of the size of Jupiter to produce the necessary warp in spacetime ... 
+but then revised his statement that, if the object were rotating sufficiently fast enough, that the massive source object would only have to be a few meters in size, much more practical.
+(see <script>link('https://en.wikipedia.org/wiki/Alcubierre_drive#Mass.E2.80.93energy_requirement')</script>)<br>
+<br>
+
+Never mind White didn't say rotate, he said oscillate.  In fact a rotating metric, where beta is rotating, will have grad beta of beta be zero ... i think ... because at least for a rotating v, grad v of v is zero, right?  
+Because the velocity of the vector is always changing in a direction perpendicular of that vector.
+So it has to be oscillating in rotation? This is, coincidentally, what Tajmar recorded here: <script>link('https://goo.gl/CTXizQ')</script>), though he wrote it off as a new property of Hydrogen.<br>
+
+<br>
+SO how to manipulate ${\beta^i}_{,t}$?  Well, $\beta^i$ is the rotation / frame-dragging component of the metric.<br>
+So if that needs a time derivative, you would have to oscillate the rotation.<br>
+<br>
+
+But for the record, White's "oscillations" are, in fact, <i>science-fiction</i>, as you can read about here: <script>link('http://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/20130011213.pdf')</script>.
+He is calling for oscillations into higher-dimensional planes of existence (distinct of the 3+1 spacetime dimensions).<br>
+<br>
+
+
+	</body>
+</html>

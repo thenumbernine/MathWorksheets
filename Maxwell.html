@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Maxwell Equations as Hyperbolic Conservation Laws</title>
+		<!-- script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script -->
+		<script type="text/javascript" async src="file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+	</head>
+	<body>
+
+<h3>Maxwell Equations</h3>
+$B_{i,i} = 0$<br>
+$B_{i,t} + {\epsilon_i}^{jk} E_{k,j} = 0$<br>
+<br>
+$E_{i,i} = \frac{1}{\epsilon_0} \rho_{charge}$<br>
+$(\epsilon_0 E)_{i,t} - {\epsilon_i}^{jk} (\frac{1}{\mu_0} B)_{k,j} = -j_i$<br>
+<br>
+$j_i = \sigma E_i = $ current density<br>
+$\sigma = $ electric conductivity<br>
+<br>
+
+conservative variables:<br>
+$U_i = \left[\matrix{
+	\epsilon E_i \\
+	B_i
+}\right]$<br>
+<br>
+
+conservatve form:<br>
+$U_i + F_{ijk} U_{k,j} = S_i$<br>
+<br>
+
+index form:<br>
+$\left[\matrix{
+	\epsilon E_i \\
+	B_i
+}\right] + \left[\matrix{
+	0 & - \frac{1}{\mu_0} {\epsilon_i}^{jk} \\
+	\frac{1}{\epsilon_0} {\epsilon_i}^{jk} & 0
+}\right] 
+\left[\matrix{
+	\epsilon E_k \\
+	B_k
+}\right]_{,j}
+= \left[\matrix{
+	-j_i \\
+	0
+}\right]$<br>
+<br>
+
+$F_x = \left[\matrix{
+	0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 & \frac{1}{\mu_0} \\
+	0 & 0 & 0 & 0 & -\frac{1}{\mu_0} & 0 \\
+	0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & -\frac{1}{\epsilon_0} & 0 & 0 & 0 \\
+	0 & \frac{1}{\epsilon_0} & 0 & 0 & 0 & 0
+}\right]$<br>
+<br>
+
+$F_y = \left[\matrix{
+	0 & 0 & 0 & 0 & 0 & -\frac{1}{\mu_0} \\
+	0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & \frac{1}{\mu_0} & 0 & 0 \\
+	0 & 0 & \frac{1}{\epsilon_0} & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 0 \\
+	-\frac{1}{\epsilon_0} & 0 & 0 & 0 & 0 & 0
+}\right]$<br>
+<br>
+
+$F_z = \left[\matrix{
+	0 & 0 & 0 & 0 & \frac{1}{\mu_0} & 0 \\
+	0 & 0 & 0 & -\frac{1}{\mu_0} & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & -\frac{1}{\epsilon_0} & 0 & 0 & 0 & 0 \\
+	\frac{1}{\epsilon_0} & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 0
+}\right]$<br>
+<br>
+
+eigen decomposition:<br>
+$F_j = Q \Lambda Q^{-1}$<br>
+<br>
+for the $\hat{x}$-direction, with $\hat{x}, \hat{y}, \hat{z}$ forming a basis:<br>
+$Q = \left[\matrix{
+	\sqrt{\epsilon_0} \hat{y} & 
+		\sqrt{\epsilon_0} \hat{z} & 
+		\sqrt{\epsilon_0} \hat{x} & 
+		0 & 
+		\sqrt{\epsilon_0} \hat{y} & 
+		-\sqrt{\epsilon_0} \hat{z} \\
+	-\sqrt{\mu_0} \hat{z} & 
+		\sqrt{\mu_0} \hat{y} & 
+		0 & 
+		\sqrt{\mu_0} \hat{x} & 
+		\sqrt{\mu_0} \hat{z} & 
+		-\sqrt{\mu_0} \hat{y}
+}\right]$<br>
+<br>
+
+$Q^-1 = \left[\matrix{
+	\hat{z} & \hat{x} & \hat{y} & 0 & \hat{y} & -\hat{x] \\
+	0 & \hat{y} & \hat[z] & \hat{x} & -\hat{z} & \hat{y}
+}\right]$<br>
+<br>
+
+$\Lambda = \left[\matrix{
+	-\frac{1}{\sqrt{\epsilon_0 \mu_0}} & 0 & 0 & 0 & 0 & 0 \\
+	0 & -\frac{1}{\sqrt{\epsilon_0 \mu_0}} & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & \frac{1}{\sqrt{\epsilon_0 \mu_0}} & 0 \\
+	0 & 0 & 0 & 0 & 0 & \frac{1}{\sqrt{\epsilon_0 \mu_0}}
+}\right]$<br>
+<br>
+
+	</body>
+</html>
