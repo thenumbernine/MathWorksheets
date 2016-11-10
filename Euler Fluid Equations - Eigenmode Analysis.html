@@ -268,20 +268,16 @@ $\left[\matrix{
 	\rho \\ \rho v_i \\ E_{total} 
 }\right]_{,t}
 + \left[\matrix{
-	1 &
-		\delta_{jm} &
-		1 \\
-	v_j - \delta_{ij} C_s &
-		\delta_{jm} (v_i - \delta_{im}) + \delta_{im} &
-		v_j + \delta_{ij} C_s \\
-	h_{total} - v_j C_s &
-		v_m + \delta_{jm} (\frac{1}{2} v^2 - v_j) &
-		h_{total} + v_j C_s
+	1 						& 1					& 0 		& 0 		& 1 					\\
+	v_i - \delta_{ij} C_s 	& v_i				& n^2_i		& n^3_i		& v_i + \delta_{ij} C_s \\
+	h_{total} - v_j C_s 	& \frac{1}{2} v^2	& n^2_m v_m	& n^3_m v_m	& h_{total} + v_j C_s
 }\right]
 \left[\matrix{
-	v_j - C_s & 0 & 0 \\
-	0 & \delta_{mn} v_j & 0 \\
-	0 & 0 & v_j + C_s
+	v_j - C_s & 0 & 0 & 0 & 0 \\
+	0 & v_j & 0 & 0 & 0 \\
+	0 & 0 & v_j & 0 & 0 \\
+	0 & 0 & 0 & v_j & 0 \\
+	0 & 0 & 0 & 0 & v_j + C_s
 }\right]
 \left(
 \frac{1}{2 {C_s}^2}

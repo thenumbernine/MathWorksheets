@@ -1,0 +1,261 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>BSSNOK in 1D</title>
+		<!-- script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script -->
+		<script type="text/javascript" async src="file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+	</head>
+	<body>
+
+<h3>variables:</h3>
+
+$n =$ spatial dimension (3 for 3+1 simulations)<br>
+$Q =$ lapse function ($f K$ for Bona Masso, $f=1$ for harmonic slicing)<br>
+$\alpha = $ lapse<br>
+$\gamma_{ij} = $ spatial metric<br>
+$a_i = ln(\alpha)_{,i} = \alpha_{,i} / \alpha$<br>
+$\gamma = det(\gamma_{ij})$<br>
+$\phi = \frac{1}{c n} (ln \gamma) $ for $c = $ constant, typically 4<br> 
+$\tilde{\gamma}_{ij} = e^{-c \phi} \gamma_{ij}
+	= e^{-\frac{1}{n} ln \gamma} \gamma_{ij}
+	= \gamma_{ij} / \gamma^{1/n}$<br>
+such that $det(\tilde{\gamma}_{ij}) = 1$<br>
+$\tilde{\gamma}^{ij} = e^{c \phi} \gamma^{ij}$<br>
+such that $\tilde{\gamma}^{ik} \tilde{\gamma}_{kj} = \delta^i_j$<br>
+$\tilde{A}_{ij} = K_{ij} - \frac{1}{n} \gamma_{ij} K$<br>
+such that $tr(\tilde{A}_{ij}) = \gamma^{ij} \tilde{A}_{ij} 
+	= \gamma^{ij} K_{ij} - \gamma^{ij} \gamma_{ij} \frac{1}{n} K 
+	= K - \frac{n}{n} K 
+	= 0$<br>
+$\Phi_i = \phi_{,i}$<br>
+$\tilde{d}_{ijk} = \frac{1}{2} \tilde{\gamma}_{jk,i}$<br>
+${\tilde{\Lambda}^k}_{ij} = ({\tilde{d}^k}_{ij} + \delta^k_{(i} (a_{j)} - \tilde{\Gamma}_{j)} + 2 \Phi_{j)}))^{TF}$<br>
+	...what does "trace-free" mean for a degree-3 tensor?<br>
+$\tilde{\Gamma}^i = \tilde{\gamma}^{jk} {\tilde{\Gamma}^i}_{jk}$<br>
+$	= {\tilde{\gamma}^{ij}}_{,j} = e^{4\phi} \Gamma^i + 2 \tilde{\gamma}^{ij} \phi_{,j}$<br>
+<br>
+
+<h3>BSSNOK formalism</h3>
+
+$\alpha_{,t} = -\alpha^2 Q$<br>
+$\phi_{,t} = -\frac{1}{6} \alpha K$<br>
+$\tilde{\gamma}_{ij,t} = -2 \alpha \tilde{A}_{ij}$<br>
+$a_{i,t} = -\alpha Q_{,i}$<br>
+$\Phi_{i,t} = -\frac{1}{6} \alpha K_{,i}$<br>
+$\tilde{d}_{ijk,t} = -\alpha \tilde{A}_{jk,i}$<br>
+$K_{,t} = -\alpha e^{-c \phi} \tilde{\gamma}^{mn} a_{n,m} = -\alpha \gamma^{mn} a_{n,m}$<br>
+$\tilde{A}_{ij,t} = -\alpha e^{-c \phi} {\tilde{\Lambda}^k}_{ij,k}$<br>
+${\tilde{\Gamma}^i}_{,t} = \alpha ((\xi - 2) \tilde{A}^{ik} - \frac{2}{3} \xi \tilde{\gamma}^{ik} K)_{,k}$<br>
+standard BSSNOK: $\xi = 2$, so<br>
+${\tilde{\Gamma}^i}_{,t} = -\alpha (\frac{4}{3} \tilde{\gamma}^{ik} K)_{,k}$<br>
+<br>
+
+<h3>BSSNOK 1D</h3>
+
+This is my attempt at recasting the BSSNOK equations in 1D.<br>
+Note that you can either choose a spatial dimension of $n=1$, or keep the spatial dimension at 3 and only consider the 1st dimension.<br>
+If you choose $n=1$ then wouldn't you need to revisit the original GR equations?  And in doing so, wouldn't the Riemann curvature tensor always be 1?<br>
+Therefore I am going to treat $n=3$ and consider a metric where:<br>
+<br>
+
+$\gamma_{ij} = \delta_{ij} \delta_{ix}$<br>
+$\gamma_{yy} = \gamma_{zz} = 1$<br>
+$\gamma_{pq} = 0$ for $p \ne q$<br>
+<br>
+
+$\gamma_{ij} = \left[\matrix{
+	\gamma_{xx} & 0 & 0 \\
+	0 & 1 & 0 \\
+	0 & 0 & 1
+}\right]$<br>
+<br>
+
+$\gamma = det(\gamma_{ij}) = \gamma_{xx}$<br>
+$\phi = \frac{1}{12} ln(\gamma_{xx})$<br>
+<br>
+
+$\tilde{\gamma}_{xx} = e^{-4 \phi} \gamma_{xx}$<br>
+$\tilde{\gamma}^{xx} = e^{4 \phi} \frac{1}{\gamma_{xx}}$<br> 
+$\tilde{\gamma}_{yy} = \tilde{\gamma}_{zz} = e^{-4 \phi}$<br>
+$\tilde{\gamma}^{yy} = \tilde{\gamma}^{zz} = e^{4 \phi}$<br>
+<br>
+
+${\Gamma^a}_{bc}:$<br> 
+${\Gamma^t}_{xx} = \frac{1}{2} \gamma_{xx,t}$<br>
+${\Gamma^x}_{xa} = {\Gamma^x}_{ax} = \frac{\gamma_{xx,a}}{2 \gamma_{xx}}$<br>
+${\Gamma^p}_{xx} = -\frac{\gamma_{xx,p}}{2}$ for $p \ne t,x$<br>
+<br>
+
+$\tilde{\Gamma}^x = (\frac{e^{4\phi}}{\gamma_{xx}})_{,x} $<br>
+$	= e^{4\phi} (\frac{4\phi_{,x}}{\gamma_{xx}} - \frac{\gamma_{xx,x}}{(\gamma_{xx})^2})$<br>
+$	= -\frac{2}{3} (\gamma_{xx})^{-5/3} \gamma_{xx,x}$<br>
+$\tilde{\Gamma}^p = {\tilde{\gamma}^{pp}}_{,p}$ for $p \ne x$<br>
+$	= {e^{4\phi} \gamma^{pp}}_{,p}$<br>
+$	= {e^{4\phi}}_{,p}$<br>
+$	= 4 \phi_{,p} e^{4\phi}$<br>
+$	= \frac{1}{3} ln(\gamma_{xx})_{,p} e^{\frac{1}{3} ln(\gamma_{xx})}$<br>
+$	= \frac{1}{3} \frac{\gamma_{xx,p}}{\gamma_{xx}} (\gamma_{xx})^{1/3}$<br>
+$	= \frac{1}{3} (\gamma_{xx})^{-2/3} \gamma_{xx,p}$<br>
+<br>
+
+<br>
+By $K_{ij} = -\alpha {\Gamma^t}_{ij}$ we know that only $K_{kk}$ exists ...<br>
+... but it is equal to $\frac{1}{2} \gamma_{xx,t}$, which is the time derivative of the spatial metric ...<br>
+... so do the other $K_{ij}$'s ever gain a value during simulation?<br>
+... that depends on $\tilde{A}_{ij}$<br>
+... which also determines $\tilde{\gamma}_{ij}$<br>
+<br>
+
+$K = K_{ij} \gamma^{ij} = K_{xx} / \gamma_{xx} + K_{yy} + K_{zz}$<br>
+<br>
+
+I am going to initially provide $K_{xx}$, and all else will be zero.<br>
+Therefore the need for $K_{yy}$ or $K_{zz}$ will depend on whether the $\tilde{A}_{pp}, p \ne x$ terms have a time derivative.<br>
+In fact, if $\tilde{A}_{pp,t} \ne 0$ then so will $\tilde{\gamma}_{pp}$ need to be simulated.<br>
+<br>
+
+$\tilde{A}_{ij} = K_{ij} - \frac{1}{3} \gamma_{ij} K$<br>
+$\tilde{A}_{xx} = K_{xx} - \frac{1}{3} \gamma_{xx} (K_{xx} / \gamma_{xx} + K_{yy} + K_{zz}) = \frac{2}{3} K_{xx} - \frac{1}{3} \gamma_{xx} (K_{yy} + K_{zz})$<br>
+$\tilde{A}_{ij} = 0$ for $i \ne j$<br>
+$\tilde{A}_{pp} = K_{pp} - \frac{1}{3} \gamma_{pp} (K_{xx} / \gamma_{xx} + K_{pp} + K_{qq}) = \frac{2}{3} K_{pp} - \frac{1}{3} K_{qq} - \frac{1}{3} \frac{K_{xx}}{\gamma_{xx}}$ for $p \ne x$ and $q \ne p,x$<br>
+notice that, even if $K_{xx}$ is the only initial extrinsic curvature, $\tilde{A}_{yy}$ and $\tilde{A}_{zz}$ will still get nonzero values, therefore $\gamma_{yy,t}$ and $\gamma_{zz,t}$ will also be nonzero, therefore I have to consider those terms as well ...<br>
+<br>
+By here I know I have to consider all diagonals of $\gamma_{ij}$ ... or heck, maybe even the whole thing.<br>
+<br>
+
+${\tilde{\Lambda}^k}_{ij} = ({\tilde{d}^k}_{ij} + \delta^k_{(i} (a_{j)} - \tilde{\Gamma}_{j)} + 2 \Phi_{j)}))^{TF}$<br>
+$	= (\tilde{\gamma}^{kl} \tilde{d}_{lij} + \delta^k_{(i} (a_{j)} - \tilde{\Gamma}_{j)} + 2 \Phi_{j)}))^{TF}$<br>
+$	= (\tilde{d}_{kij} / \tilde{\gamma}_{kk} + \delta^k_{(i} (a_{j)} - \tilde{\Gamma}_{j)} + 2 \Phi_{j)}))^{TF}$<br>
+$	= (\frac{1}{2} \tilde{\gamma}_{ij,k} / \tilde{\gamma}_{kk} + \delta^k_{(i} (a_{j)} - \tilde{\Gamma}_{j)} + 2 \Phi_{j)}))^{TF}$<br>
+$	= (\frac{1}{2} \tilde{\gamma}_{ij,k} / \tilde{\gamma}_{kk} 
+	+ \delta^k_{(i} (
+		\frac{1}{\alpha} \alpha_{,j)} 
+		- \tilde{\Gamma}^l \tilde{\gamma}_{l|j)} 
+		+ \frac{1}{6} \gamma_{xx,|j)} / \gamma_{xx}
+	)
+)^{TF}$<br>
+$	= (\frac{1}{2} \tilde{\gamma}_{ij,k} / \tilde{\gamma}_{kk} 
+	+ \delta^k_{(i} (
+		\frac{1}{\alpha} \alpha_{,j)} 
+		- \tilde{\Gamma}^l \tilde{\gamma}_{l|j)} 
+		+ \frac{1}{6} \gamma_{xx,|j)} / \gamma_{xx}
+	)
+) - \frac{1}{3} \gamma_{ij} \gamma^{mn} (
+	\frac{1}{2} \tilde{\gamma}_{mn,k} / \tilde{\gamma}_{kk} 
+	+ \delta^k_{(m} (
+		\frac{1}{\alpha} \alpha_{,n)} 
+		- \tilde{\Gamma}^l \tilde{\gamma}_{l|n)} 
+		+ \frac{1}{6} \gamma_{xx,|n)} / \gamma_{xx}
+	)
+)
+$<br>
+$	= (\frac{1}{2} e^{4\phi} \tilde{\gamma}_{ij,k} / \gamma_{kk} 
+	+ \delta^k_{(i} (
+		\frac{1}{\alpha} \alpha_{,j)} 
+		- \tilde{\Gamma}^l \tilde{\gamma}_{l|j)} 
+		+ \frac{1}{6} \gamma_{xx,|j)} / \gamma_{xx}
+	)
+)
++ \frac{1}{3} e^{-4\phi} \gamma_{ij} \tilde{\Gamma}^k
+- \frac{1}{3} \gamma_{ij} (
+	\frac{1}{2} e^{4 \phi} \gamma^{mn} (
+		e^{-4\phi} \gamma_{mn}
+	)_{,k} / \gamma_{kk} 
+	+ \frac{1}{\alpha} \alpha_{,k} / \gamma_{kk}
+	+ \frac{1}{6} \gamma_{xx,k} / (\gamma_{xx} \gamma_{kk})
+)
+$<br>
+$	= 
+	+ \frac{1}{2 \alpha} (\delta^k_i \alpha_{,j} + \delta^k_j \alpha_{,i}) 
+	- \frac{1}{3} \frac{1}{\alpha} \alpha_{,k} \gamma_{ij} / \gamma_{kk}
+	- \frac{1}{2} (\tilde{\Gamma}^i \gamma_{ii} \delta^k_j + \tilde{\Gamma}^j \gamma_{jj} \delta^k_i) / (\gamma_{xx})^{1/3}
+	+ \frac{1}{3} \gamma_{ij} \tilde{\Gamma}^k / (\gamma_{xx})^{1/3}
+	+ \frac{1}{12} (\gamma_{xx,i} \delta^k_j + \gamma_{xx,j} \delta^k_i) / \gamma_{xx}
+	+ \frac{1}{2} \gamma_{ij,k} / \gamma_{kk}
+	- \frac{1}{9} \gamma_{ij} \gamma_{xx,k} / (\gamma_{xx} \gamma_{kk})
+$<br>
+
+<br>
+... but which indices are we removing the trace from?  i and j?  i and k? j and k?<br>
+Seems the "TF" is from the non-hyperbolic representation which is acting on ij<br>
+<br>
+
+${\tilde{\Lambda}^x}_{xx} =
+	+ \frac{1}{\alpha} \alpha_{,x} 
+	+ \frac{1}{6} \frac{1}{\gamma_{xx}} \gamma_{xx,x}
+	- \frac{1}{(\gamma_{xx})^{1/3}} \tilde{\Gamma}^x \gamma_{xx}
+	+ \frac{1}{3} \frac{1}{(\gamma_{xx})^{1/3}}\gamma_{xx} \tilde{\Gamma}^x 
+	+ \frac{1}{2} \frac{\gamma_{xx,x}}{\gamma_{xx}}
+	- \frac{1}{3} \alpha_{,x} \frac{1}{\alpha} \frac{\gamma_{xx}}{\gamma_{xx}} 
+	- \frac{1}{9} \frac{\gamma_{xx} \gamma_{xx,x}}{\gamma_{xx} \gamma_{xx}}
+= \frac{\gamma_{xx,x}}{\gamma_{xx}} - \frac{2 \alpha_{,x}}{3 \alpha}
+$<br>
+${\tilde{\Lambda}^x}_{xp} = 
+	+ \frac{1}{2} \frac{1}{\alpha} \alpha_{,p} 
+	+ \frac{1}{12} \frac{1}{\gamma_{xx}} \gamma_{xx,p}
+	- \frac{1}{2} \frac{1}{(\gamma_{xx})^{1/3}} \tilde{\Gamma}^p \gamma_{pp}
+	+ \frac{1}{3} \frac{1}{(\gamma_{xx})^{1/3}}\gamma_{xp} \tilde{\Gamma}^x 
+	+ \frac{1}{2} \frac{\gamma_{xp,x}}{\gamma_{xx}}
+	- \frac{1}{3} \alpha_{,x} \frac{1}{\alpha} \frac{\gamma_{xp}}{\gamma_{xx}} 
+	- \frac{1}{9} \frac{\gamma_{xp} \gamma_{xx,x}}{\gamma_{xx} \gamma_{xx}}
+=	-\frac{\gamma_{xx,p}}{12 \gamma_{xx}} + \frac{\alpha_{,p}}{2 \alpha}
+$<br>
+${\tilde{\Lambda}^x}_{pp} = 
+	- \frac{1}{3} \frac{1}{\alpha} \alpha_{,x} / \gamma_{xx}
+	+ \frac{1}{3} \tilde{\Gamma}^x / (\gamma_{xx})^{1/3}
+	- \frac{1}{9} \gamma_{xx,x} / (\gamma_{xx})^2
+= 
+	- \frac{\alpha_{,x}}{3 \alpha \gamma_{xx}}
+	- \frac{\gamma_{xx,x}}{3 (\gamma_{xx})^2}
+$<br>
+${\tilde{\Lambda}^x}_{yz} = 0$<br>
+${\tilde{\Lambda}^p}_{xx} =
+	- \frac{1}{3} \frac{1}{\alpha} \alpha_{,p} \gamma_{xx}
+	+ \frac{1}{3} \gamma_{xx} \tilde{\Gamma}^p / (\gamma_{xx})^{1/3}
+	+ \frac{1}{2} \gamma_{xx,p}
+	- \frac{1}{9} \gamma_{xx} \gamma_{xx,p} / (\gamma_{xx})
+= - \frac{\alpha_{,p} \gamma_{xx}}{3 \alpha} + \frac{\gamma_{xx,p}}{2}$<br>
+${\tilde{\Lambda}^p}_{xp} =	\frac{1}{2 \alpha} \alpha_{,x}
+	- \frac{1}{3} \frac{1}{\alpha} \alpha_{,p}
+	- \frac{1}{2} \tilde{\Gamma}^x \gamma_{xx} / (\gamma_{xx})^{1/3}
+	+ \frac{1}{12} \gamma_{xx,x} / \gamma_{xx}
+= \frac{3 \alpha_{,x} - 2 \alpha_{,p}}{6 \alpha} + \frac{5 \gamma_{xx,x}}{12 \gamma_{xx}}$<br>
+${\tilde{\Lambda}^p}_{xq} =	0$<br>
+${\tilde{\Lambda}^p}_{pp} =	
+	+ \frac{2}{3} \frac{1}{\alpha} \alpha_{,p} 
+	- \frac{2}{3} \tilde{\Gamma}^p / (\gamma_{xx})^{1/3}
+	+ \frac{1}{18} \gamma_{xx,p} / \gamma_{xx}
+= \frac{2 \alpha_{,p}}{3 \alpha} - \frac{\gamma_{xx,p}}{6 \gamma_{xx}}$<br>
+${\tilde{\Lambda}^p}_{pq} =	\frac{1}{2 \alpha} \alpha_{,q}
+	- \frac{1}{2} \tilde{\Gamma}^q / (\gamma_{xx})^{1/3}
+	+ \frac{1}{12} \gamma_{xx,q} / \gamma_{xx}
+= \frac{\alpha_{,q}}{2 \alpha} - \frac{\gamma_{xx,q}}{12 \gamma_{xx}}$<br>
+${\tilde{\Lambda}^p}_{qq} =	
+	- \frac{1}{3} \frac{1}{\alpha} \alpha_{,p}
+	+ \frac{1}{3} \tilde{\Gamma}^p / (\gamma_{xx})^{1/3}
+	- \frac{1}{9} \gamma_{xx,p} / \gamma_{xx}
+= -\frac{\alpha_{,p}}{3 \alpha}$<br>
+<br>
+
+So, for 
+
+
+$\tilde{A}_{xx} = K_{xx} - \frac{1}{3} \gamma_{xx} (\frac{1}{\gamma_{xx}} K_{xx} + K_{yy} + K_{zz})
+	= K_{xx} - \frac{1}{3} (K_{xx} + \gamma_{xx} (K_{yy} + K_{zz}))
+	= \frac{2}{3} K_{xx} - \frac{1}{3} \gamma_{xx} (K_{yy} + K_{zz})
+$<br> 
+
+$\alpha_{,t} = -\alpha^2 f K$<br>
+$\phi_{,t} = -\frac{1}{6} \alpha K$<br>
+$\tilde{\gamma}_{xx,t} = -2 \alpha \tilde{A}_{xx}$<br>
+$a_{x,t} = -\alpha (f K)_{,x}$<br>
+$	= -\alpha (f_{,x} K + f K_{,x})$<br>
+$	= -\alpha (f' \alpha_{,x} K + f (\frac{1}{\gamma_{xx}} K_{xx} + K_{yy} + K_{zz})_{,x})$<br>
+$	= -\alpha (f' \alpha_{,x} K + f (\frac{1}{\gamma_{xx}} K_{xx,x} - \frac{1}{(\gamma_{xx})^2} K_{xx} \gamma_{xx,x} + K_{yy,x} + K_{zz,x}))$<br>
+$\Phi_{x,t} = -\frac{1}{6} \alpha K_{,x}$<br>
+$	= -\frac{1}{6} \alpha (\frac{1}{\gamma_{xx}} K_{xx,x} - \frac{1}{(\gamma_{xx})^2} K_{xx} \gamma_{xx,x} + K_{yy,x} + K_{zz,x})$<br>
+
+	</body>
+</html>
