@@ -24,15 +24,15 @@ $p^a = \rho u^a =$ 4-momentum<br>
 
 Lorentz force law:<br>
 $\dot{p}^a = e {F^a}_b u^b$<br>
-$(\rho u^t v^i)_{,t} = e u^t (\frac{1}{c} E^i + \epsilon_{ijk} B^k v^j)$<br>
+$(\rho u^t v^i)_{,t} = e u^t (\frac{1}{c} E^i + {\epsilon^i}_{jk} B^k v^j)$<br>
 in flat space:<br>
-$(\rho v_i)_{,t} = e (\frac{1}{c} E_i + \epsilon_{ijk} B_k v_j)$<br>
+$(\rho v^i)_{,t} = e (\frac{1}{c} E^i + {\epsilon^i}_{jk} B^k v^j)$<br>
 <br>
 
 Faraday tensor:<br>
 $\phi = $ electric potential<br>
-$A_i = $ magnetic vector potential<br>
-$A_u = \left[ \frac{1}{c} \phi, A_i \right] $ electromagnetic 4-potential<br>
+$A^i = $ magnetic vector potential<br>
+$A^u = \left[ \frac{1}{c} \phi, A^i \right] $ electromagnetic 4-potential<br>
 $F_{uv} = 2 A_{[v,u]}$ in flat space<br>
 ${F^{au}}_{;u} = 2 {A^{[u;a]}}_{;u} + {R^a}_u A^u$ in curved space<br>
 $F_{uv} = \downarrow u \overset{\leftarrow v}{
@@ -44,12 +44,12 @@ $F_{uv} = \downarrow u \overset{\leftarrow v}{
 <br>
 
 Maxwell in flat space:<br>
-$B_{i,i} = 0$<br>
-$B_{i,t} + {\epsilon_i}^{jk} E_{k,j} = 0$<br>
+${B^i}_{,i} = 0$<br>
+${B^i}_{,t} + {\epsilon_i}^{jk} E_{k,j} = 0$<br>
 ${(\star F)^{ab}}_{,b} = (\frac{1}{2} F^{uv} {\epsilon_{uv}}^{ab})_{,b} = 0$<br>
 <br>
-$E_{i,i} = \frac{1}{\epsilon_0} \rho_{charge}$<br>
-$(\epsilon_0 E)_{i,t} - {\epsilon_i}^{jk} (\frac{1}{\mu_0} B)_{k,j} = -J_i$<br>
+${E^i}_{,i} = \frac{1}{\epsilon_0} \rho_{charge}$<br>
+$\epsilon_0 {E^i}_{,t} - \epsilon^{ijk} (\frac{1}{\mu_0} B)_{k,j} = -J^i$<br>
 ${F^{ab}}_{;b} = J^a$<br>
 $J^a = \left[ c \rho_{charge}, j^i \right] =$ 4-current<br>
 $j^i = \sigma E^i = $ current density<br>
@@ -58,14 +58,14 @@ $\sigma = $ electric conductivity<br>
 <br>
 
 primitives:<br>
-$U_i = \left[\matrix{
-	\rho \\ \rho v_i \\ E_i \\ B_i \\ E_{hydro}
+$U^I = \left[\matrix{
+	\rho \\ \rho v^i \\ E^i \\ B^i \\ E_{hydro}
 }\right]$<br>
 <br>
 
 conservatives:<br>
-$U_i = \downarrow i \left[\matrix{
-	\rho \\ \rho v_i \\ \epsilon E_i \\ B_i \\ E_{hydro}
+$U^I = \downarrow I(i) \left[\matrix{
+	\rho \\ \rho v^i \\ E_{hydro} \\ \epsilon E^i \\ B^i
 }\right]$<br>
 $E_{hydro} = E_{kin} + E_{int}$<br>
 $= \frac{1}{2} \rho v^2 + \frac{P}{\gamma - 1} =$ total hydrodynamic energy<br>
@@ -73,11 +73,11 @@ $E_{EM} = \frac{1}{2} ( \epsilon_0 E^2 + \frac{1}{\mu_0} B^2 ) = $ electomagneti
 <br>
 
 Conservative PDEs:<br>
-$\rho_{,t} + (\rho v_i)_{,i} = 0$<br>
-$(\rho v_j)_{,t} + (\rho v_i v_j + \delta_{ij} P)_{,j} = 0$<br>
-$(E_{hydro})_{,t} + (v_j H_{hydro})_{,j} = 0$<br>
-$(E_i \epsilon_0)_{,t} - (\frac{1}{\mu_0} {\epsilon_i}^{jk} B_k)_{,j} = -J_i$<br>
-$B_{i,t} + ({\epsilon_i}^{jk} E_k)_{,j} = 0$<br>
+$\rho_{,t} + (\rho v^i)_{,i} = 0$<br>
+$(\rho v^i)_{,t} + (\rho v^i v^j + \delta^{ij} P)_{,j} = 0$<br>
+$(E_{hydro})_{,t} + (v^j H_{hydro})_{,j} = 0$<br>
+$(\epsilon_0 E^i)_{,t} - (\frac{1}{\mu_0} {\epsilon^{ij}}_k B^k)_{,j} = -J^i$<br>
+${B^i}_{,t} + ({\epsilon^{ij}}_k E^k)_{,j} = 0$<br>
 <br>
 
 <h3>Election vs Ion</h3>
