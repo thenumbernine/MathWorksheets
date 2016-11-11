@@ -80,44 +80,68 @@ $(E_i \epsilon_0)_{,t} - (\frac{1}{\mu_0} {\epsilon_i}^{jk} B_k)_{,j} = -J_i$<br
 $B_{i,t} + ({\epsilon_i}^{jk} E_k)_{,j} = 0$<br>
 <br>
 
-This is just the Euler fluid equations and the Maxwell hyperbolic conservation laws glued together.<br>
-for $A = Q_A \Lambda_A {Q_A}^{-1}$ and $B = Q_B \Lambda_B {Q_B}^{-1}$:<br>
-$\left[\matrix{ Q_A & 0 \\ 0 & Q_B }\right]
-	\left[\matrix{ \Lambda_A & 0 \\ 0 & \Lambda_B }\right]
-	\left[\matrix{ {Q_A}^{-1} & 0 \\ 0 & {Q_B}^{-1} }\right]$<br>
-$\left[\matrix{ Q_A \Lambda_A & 0 \\ 0 & Q_B \Lambda_B }\right]
-	\left[\matrix{ Q_A^{-1} & 0 \\ 0 & Q_B^{-1} }\right]$<br>
-$\left[\matrix{ Q_A \Lambda_A {Q_A}^{-1} & 0 \\ 0 & Q_B \Lambda_B {Q_B}^{-1} }\right]$<br>
-$\left[\matrix{ A & 0 \\ 0 & B }\right]$<br>
+<h3>Election vs Ion</h3>
+using Abgrall, Kumar "Robust Finite Volume Schemes for Two-Fluid Plasma Equations<br>
+and some "Multi Fluid Plasma Model" preprint by ???<br>
+<br>
+
+variables:<br>
+$q_\alpha = $ charge of species $\alpha$<br>
+$m_\alpha = $ mass of species $\alpha$<br>
+$r_\alpha = q_\alpha / m_\alpha$ = ratio of charge to mass<br>
+$\rho_\alpha = n_\alpha m_\alpha$<br>
+$P_\alpha = n_\alpha k_B T_\alpha$<br>
 <br>
 
 Flux derivative wrt conservative variables:<br>
 $\left[\matrix{
-	\rho \\ \rho v_i \\ E_{hydro} \\ \epsilon_0 E_i \\ B_i
+	\rho_{ion} \\ \rho_{ion} v_{ion}^i \\ E_{hydro,ion} \\ 
+	\rho_{elec} \\ \rho_{elec} v_{elec}^i \\ E_{hydro,elec} \\ 
+	\epsilon_0 E^i \\ B^i
 }\right]_{,t} + \left[\matrix{
-	0 & \delta_{jk} & 0 & 0 & 0 \\
-	-v_i v_j + \frac{1}{2} \delta_{ij} \tilde\gamma v^2 &
-		\delta_{ik} v_j + \delta_{jk} v_i - \delta_{ij} \tilde\gamma v_k &
-		\delta_{ij} \tilde\gamma &
-		0 &
-		0 \\
-	v_j (\frac{1}{2} \tilde\gamma v^2 - h_{hydro}) &
-		-\tilde\gamma v_j v_k + \delta_{jk} h_{hydro} &
-		\gamma v_j &
+	0 & \delta^{jk} & 0 & 0 & 0 & 0 & 0 & 0 \\
+	-v_{ion}^i v_{ion}^j + \frac{1}{2} \delta^{ij} \tilde\gamma v_{ion}^2 &
+		\delta^i_k v_{ion}^j + \delta^j_k v_{ion}^i - \delta^{ij} \tilde\gamma v_{ion,k} &
+		\delta^{ij} \tilde\gamma &
+		0 & 0 & 0 & 0 & 0 \\
+	v_{ion}^j (\frac{1}{2} \tilde\gamma v_{ion}^2 - h_{hydro,ion}) &
+		-\tilde\gamma v_{ion}^j v_{ion,k} + \delta^j_k h_{hydro,ion} &
+		\gamma v_{ion}^j &
+		0 & 0 & 0 & 0 & 0 \\
+
+	0 & 0 & 0 &0 & \delta^{jk} & 0 & 0 & 0 \\
+	0 & 0 & 0 & -v_{elec}^i v_{elec}^j + \frac{1}{2} \delta^{ij} \tilde\gamma v_{elec}^2 &
+		\delta^i_k v_{elec}^j + \delta^j_k v_{elec}^i - \delta^{ij} \tilde\gamma v_{elec,k} &
+		\delta^{ij} \tilde\gamma &
 		0 & 0 \\
-	0 & 0 & 0 & 0 & -\frac{1}{\mu_0} \epsilon_{ijk} B_k \\
-	0 & 0 & 0 & \frac{1}{\epsilon_0} \epsilon_{ijk} E_k & 0 \\
+	0 & 0 & 0 & v_{elec}^j (\frac{1}{2} \tilde\gamma v_{elec}^2 - h_{hydro,elec}) &
+		-\tilde\gamma v_{elec}^j v_{elec,k} + \delta^j_k h_{hydro,elec} &
+		\gamma v_{elec}^j &
+		0 & 0 \\
+	
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & -\frac{1}{\mu_0} {\epsilon^{ij}}_k \\
+	0 & 0 & 0 & 0 & 0 & 0 & \frac{1}{\epsilon_0} {\epsilon^{ij}}_k & 0 \\
 }\right] \left[\matrix{
-	\rho \\ \rho v_k \\ E_{hydro} \\ \epsilon_0 E_k \\ B_k
+	\rho_{ion} \\ \rho_{ion} v_{ion}^k \\ E_{hydro,ion} \\ 
+	\rho_{elec} \\ \rho_{elec} v_{elec}^k \\ E_{hydro,elec} \\ 
+	\epsilon_0 E^k \\ B^k
 }\right]_{,j} = \left[\matrix{
 	0 \\
-	e (\frac{1}{c} E_i + \epsilon_{ijk} B_k v_j) \\
-	0 \\ 
-	-\sigma E_i \\ 
+	r_{ion} \rho_{ion} (E^i + {\epsilon^i}_{jk} B^k v_{ion}^j) \\
+	r_{ion} \rho_{ion} (E_j v_{ion}^j) \\ 
+	
+	0 \\
+	r_{elec} \rho_{elec} (E^i + {\epsilon^i}_{jk} B^k v_{elec}^j) \\
+	r_{elec} \rho_{elec} (E_j v_{elec}^j) \\ 
+	
+	- \Sigma_\alpha r_\alpha \rho_\alpha v^i_\alpha
 	0 \\ 
 }\right]$<br>
 <br>
-Eigen decomposition:<br>
 
+with constraints:<br>
+${\epsilon_0 E^i}_{,i} = \Sigma_\alpha r_\alpha \rho_\alpha$<br>
+${B^i}_{,i} = 0$<br>
+	
 	</body>
 </html>
