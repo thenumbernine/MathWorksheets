@@ -130,14 +130,14 @@ $S^i_{,\epsilon} = \rho W^2 v^i h_{,\epsilon} = \gamma \rho W^2 v^i = \gamma S^i
 $\tau_{,\epsilon} = \rho h_{,\epsilon} W^2 - P_{,\epsilon} = \gamma \rho W^2 - (\gamma - 1) \rho = \rho (\gamma (W^2 - 1) + 1)$<br>
 <br>
 
-$\frac{\partial U^i}{\partial W^j} = \downarrow i \rightarrow j \left[\matrix{
+$\frac{\partial U^i}{\partial W^j} = \downarrow i \overset{ \rightarrow j }{ \left[\matrix{
 	D_{,\rho}		& D_{,v^j}		& D_{,\epsilon}		\\
 	S^i_{,\rho}		& S^i_{,v^j}	& S^i_{,\epsilon}	\\
 	\tau_{,\rho}	& \tau_{,v^j}	& \tau_{,\epsilon}
-}\right]$<br>
+}\right] }$<br>
 <br>
 
-$\frac{\partial U^i}{\partial W^j} = \downarrow i \rightarrow j \left[\matrix{
+$\frac{\partial U^i}{\partial W^j} = \downarrow i \overset{ \rightarrow j }{ \left[\matrix{
 	W &
 	 \rho W^3 v^j &
 	 0 \\
@@ -147,10 +147,10 @@ $\frac{\partial U^i}{\partial W^j} = \downarrow i \rightarrow j \left[\matrix{
 	W (h W - 1) - (\gamma - 1) &
 	 \rho W^3 v^j (2 h W - 1) &
 	 \rho (\gamma W^2 - (\gamma - 1))
-}\right]$<br>
+}\right] }$<br>
 <br>
 
-$\frac{\partial F^{ij}}{\partial W^k} = \downarrow i \rightarrow k \left[\matrix{
+$\frac{\partial F^{ij}}{\partial W^k} = \downarrow i \overset{ \rightarrow k }{ \left[\matrix{
 	D_{,\rho} v^j &
 	 D_{,v^k} v^j + D \delta^{jk} &
 	 0 \\
@@ -160,10 +160,10 @@ $\frac{\partial F^{ij}}{\partial W^k} = \downarrow i \rightarrow k \left[\matrix
 	S^j_{,\rho} - D_{,\rho} v^j &
 	 S^j_{,v^k} - D_{,v^k} v^j - D \delta^{jk} &
 	 S^j_{,\epsilon}
-}\right]$<br>
+}\right] }$<br>
 <br>
 
-$\frac{\partial F^{ij}}{\partial W^k} = \downarrow i \rightarrow k \left[\matrix{
+$\frac{\partial F^{ij}}{\partial W^k} = \downarrow i \overset{ \rightarrow k }{ \left[\matrix{
 	W v^j &
 	 \rho W^3 v^k v^j + D \delta^{jk} &
 	 0 \\
@@ -173,10 +173,10 @@ $\frac{\partial F^{ij}}{\partial W^k} = \downarrow i \rightarrow k \left[\matrix
 	h W^2 v^j - W v^j &
 	 \rho h W^2 (2 W^2 v^j v^k + \delta^{jk}) - \rho W^3 v^k v^j - D \delta^{jk} &
 	 \gamma \rho W^2 v^j
-}\right]$<br>
+}\right] }$<br>
 <br>
 
-$\frac{\partial F^{ij}}{\partial W^k} = \downarrow i \rightarrow k \left[\matrix{
+$\frac{\partial F^{ij}}{\partial W^k} = \downarrow i \overset{ \rightarrow k }{ \left[\matrix{
 	W v^j &
 	 D (W^2 v^j v^k + \delta^{jk}) &
 	 0 \\
@@ -186,11 +186,10 @@ $\frac{\partial F^{ij}}{\partial W^k} = \downarrow i \rightarrow k \left[\matrix
 	(h W - 1) W v^j &
 	 \rho h W^2 (2 W^2 v^j v^k + \delta^{jk}) - D (W^2 v^j v^k + \delta^{jk}) &
 	 \gamma \rho W^2 v^j
-}\right]$<br>
+}\right] }$<br>
 <br>
 
-$\frac{\partial F^{ij}}{\partial U^k} = \downarrow i \rightarrow k
-\left[\matrix{
+$\frac{\partial F^{ij}}{\partial U^l} = \downarrow i \overset{ \rightarrow k }{ \left[\matrix{
 	W v^j &
 	 D (W^2 v^j v^k + \delta^{jk}) &
 	 0 \\
@@ -200,19 +199,19 @@ $\frac{\partial F^{ij}}{\partial U^k} = \downarrow i \rightarrow k
 	(h W - 1) W v^j &
 	 \rho h W^2 (2 W^2 v^j v^k + \delta^{jk}) - D (W^2 v^j v^k + \delta^{jk}) &
 	 \gamma \rho W^2 v^j
-}\right]
+}\right] }
 \cdot
-\left[\matrix{
+\downarrow k \overset{ \rightarrow l }{ \left[\matrix{
 	W &
-	 \rho W^3 v^j &
+	 \rho W^3 v^l &
 	 0 \\
-	h W^2 v^i &
-	 \rho h W^2 (2 W^2 v^i v^j + \delta^{ij}) &
-	 \gamma \rho W^2 v^i \\
+	h W^2 v^k &
+	 \rho h W^2 (2 W^2 v^k v^l + \delta^{kl}) &
+	 \gamma \rho W^2 v^k \\
 	W (h W - 1) - (\gamma - 1) &
-	 \rho W^3 v^j (2 h W - 1) &
+	 \rho W^3 v^l (2 h W - 1) &
 	 \rho (\gamma W^2 - (\gamma - 1))
-}\right]^{-1}$<br>
+}\right]^{-1} }$<br>
 
 <h3>Recovering Primitives</h3>
 Every source, Alcubierre 2008, Marti &amp; Muller 2008, etc, all say the same exact thing.<br>
