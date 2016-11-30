@@ -1,0 +1,181 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 13.04.0 ] */
+
+/* [wxMaxima: input   start ] */
+/* Numerical Hydrodynamics in Special Relativity, Jose Maria Marti, 2003 */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* basis */
+xs : [x,y,z];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* newtonian velocity */
+v : [vx, vy, vz];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* relativistic velocity sans u0 */
+u : [ux, uy, uz];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* lorentz factor.  W = u0. */
+W_from_v : W = 1/sqrt(1 - v.v);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+v_from_u : create_list(v[i] = u[i] / W, i, [1,2,3]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+u_from_v : create_list(solve(v_from_u[i], u[i])[1], i, [1,2,3]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* internal specific enthalpy */
+h_from_e_P_%rho : h = 1 + e + P / %rho;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* this is from "Hydrodynamics II"
+and used in "Numerical Hydrodynamics in General Relativity" by Jose A. Font */
+P_from_%rho_e : P = (%gamma - 1) * %rho * e;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+h_from_e : ratsimp(subst([P_from_%rho_e], h_from_e_P_%rho));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+P_%rho_from_e : P_from_%rho_e/%rho;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+e_from_P_%rho : solve(P_from_%rho_e, e)[1];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+subst([e_from_P_%rho], h_from_e_P_%rho)$
+ratsimp(%)$
+h_from_P_%rho : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* this is one of the Fortran code speed of sound calculations... where does it come from? */
+CsSq_from_P_h_%rho : Cs^2 = %gamma * P / (%rho * h);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* this is also in there, in the form Cs^2 = %gamma * P / (%rho + %gamma * P / (%gamma - 1)) */
+CsSq_from_P_%rho : subst([h_from_P_%rho], CsSq_from_P_h_%rho);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* TODO find how these Cs definitions relate to Cs^2 = diff(P, eRest) for eRest = %rho * (e + 1) */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* state variables */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* rest mass density */
+D_from_%rho_W : D = %rho * W;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* momentum density */
+S : [Sx, Sy, Sz];
+S_from_%rho_h_W : create_list(S[i] = %rho * h * W^2 * v[i], i, [1,2,3]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* total energy density */
+%tau_from_%rho_h_W_P_D : %tau = %rho * h * W^2 - P - D;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+states : append([D], S, [tau]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+depends(append(states, u, v, [P, W, %rho, h]), append([t],xs));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* verify that the state variables reduce to newtonian equations when v<<1, h->1 */"";
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W_newtonian_limit : subst([vx=0, vy=0, vz=0], W_from_v);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+D_newtonian_limit : subst([W_newtonian_limit], D_from_%rho_W);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+S_newtonian_limit : create_list(subst([W_newtonian_limit, h=1], S_from_%rho_h_W[i]), i, [1,2,3]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* this is supposed to recover %rho E = %rho (e + v^2/2) ... with v << 1 ... so v is hard to see, but it's there ... */
+subst([h_from_e_P_%rho, W_newtonian_limit, D_newtonian_limit], %tau_from_%rho_h_W_P_D)$
+ratsimp(%)$
+%tau_newtonian_limit : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* TODO get the equations from which the flux derives.
+Until then, take the paper's word. */
+flux : create_list(
+matrix(
+[D * v[i]],
+[Sx * v[i] + P * kron_delta(i,1)],
+[Sy * v[i] + P * kron_delta(i,2)],
+[Sz * v[i] + P * kron_delta(i,3)],
+[S[i] - D * v[i]])
+,i,[1,2,3]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+v_from_%rho_h_W_S  : solve(S_from_%rho_h_W, v)[1];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+subst(v_from_%rho_h_W_S, flux);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff_state_t : genmatrix(lambda([i,j], diff(states[i],t)),5,1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* equations based on state variables */
+state_eqns :
+diff_state_t +
+sum(
+genmatrix(lambda([j,k], diff(flux[i][j,1],xs[i])),5,1)
+,i,1,3) = zeromatrix(5,1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+/* isolate flux */
+lhs(state_eqns)-diff_state_t = rhs(state_eqns)-diff_state_t;
+/* substitute newtonian velocity for state variables */
+subst(v_from_%rho_h_W_S, lhs(%))=rhs(%);
+state_eqns_from_dt_matrix : %;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+state_eqns_diffx_jacobian : genmatrix(lambda([i,j], ratsimp(coeff(lhs(state_eqns_from_dt_matrix)[i,1], diff(states[j],x)))), 5, 5);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+coeff(lhs(state_eqns_from_dt_matrix), diff(D,x));
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
