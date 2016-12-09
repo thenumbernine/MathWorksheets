@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Electromagnetic Tensor Self Dual</title>
+		<!-- script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script -->
+		<script type="text/javascript" async src="file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+	</head>
+	<body>
+
+Electromagnetic tensor:<br>
+<br>
+
+$F_{uv} = 2 A_{[v,u]}$<br>
+<br>
+
+$F_{uv} = = \downarrow u(i) \overset{\rightarrow v(j)}{\left[\matrix{
+	0 & -E_j \\
+	E_i & {\epsilon_{ij}}^k B_k
+}\right]}$<br>
+<br>
+
+Dual (of an antisymemtric $T_{uv}$):<br>
+<br>
+
+$*T_{uv} = \frac{1}{2} {\epsilon_{uv}}^{ab} T_{ab}$<br>
+<br>
+
+Self-dual:<br>
+<br>
+
+$^+T_{uv} = \frac{1}{2}( T_{uv} - \frac{i}{2} {\epsilon_{uv}}^{ab} T_{ab})$<br>
+<br>
+
+$^-T_{uv} = \frac{1}{2}( T_{uv} + \frac{i}{2} {\epsilon_{uv}}^{ab} T_{ab})$<br>
+<br>
+
+For EM:<br>
+$*F_{uv} = \frac{1}{2} {\epsilon_{uv}}^{ab} F_{ab} = \downarrow u(i) \overset{\rightarrow v(j)}{\left[\matrix{
+	0 & B_j \\
+	-B_i & {\epsilon_{ij}}^k E_k
+}\right]}$<br>
+<br>
+$^+F_{uv} = \frac{1}{2}( T_{uv} - i * T_{uv} ) = \downarrow u(i) \overset{\rightarrow v(j)}{\left[\matrix{
+	0 & \frac{1}{2} (E_j - i B_j) \\
+	\frac{1}{2} (-E_i + i B_i) & \frac{1}{2} {\epsilon_{ij}}^k (B_k + i E_k)
+}\right]}$<br>
+<br>
+
+Then $^+{F^{uv}}_{,v} = J^u$ is a combination of all four Maxwell laws, of both ${F^{uv}}_{,v} = J^u$ and ${*F^{uv}}_{,v} = 0$, for $J^u$ real<br>
+<br>
+
+So how do you fit $+F_{uv}$ into the complex metric, to unify EM and gravity?  And what does the metric look like?<br>
+
+	</body>
+</html>
