@@ -12,10 +12,10 @@
 Electromagnetic tensor:<br>
 <br>
 
-$F_{uv} = 2 A_{[v,u]}$<br>
+$F_{uv} = 2 A_{[v;u]}$<br>
 <br>
 
-$F_{uv} = = \downarrow u(i) \overset{\rightarrow v(j)}{\left[\matrix{
+$F_{uv} = \downarrow u(i) \overset{\rightarrow v(j)}{\left[\matrix{
 	0 & -E_j \\
 	E_i & {\epsilon_{ij}}^k B_k
 }\right]}$<br>
@@ -24,16 +24,16 @@ $F_{uv} = = \downarrow u(i) \overset{\rightarrow v(j)}{\left[\matrix{
 Dual (of an antisymemtric $T_{uv}$):<br>
 <br>
 
-$*T_{uv} = \frac{1}{2} {\epsilon_{uv}}^{ab} T_{ab}$<br>
+$*T_{uv} = \frac{1}{2} T_{ab} {\epsilon^{ab}}_{uv} $<br>
 <br>
 
 Self-dual:<br>
 <br>
 
-$^+T_{uv} = \frac{1}{2}( T_{uv} - \frac{i}{2} {\epsilon_{uv}}^{ab} T_{ab})$<br>
+$^+T_{uv} = \frac{1}{2}(1 - i*) T_{uv} = \frac{1}{2}( T_{uv} - i * T_{uv}) = \frac{1}{2}( T_{uv} - \frac{i}{2} {\epsilon^{ab}}_{uv} T_{ab})$<br>
 <br>
 
-$^-T_{uv} = \frac{1}{2}( T_{uv} + \frac{i}{2} {\epsilon_{uv}}^{ab} T_{ab})$<br>
+$^-T_{uv} = \frac{1}{2}(1 + i*) T_{uv} = \frac{1}{2}( T_{uv} + i * T_{uv}) = \frac{1}{2}( T_{uv} + \frac{i}{2} {\epsilon^{ab}}_{uv} T_{ab})$<br>
 <br>
 
 For EM:<br>
@@ -48,10 +48,14 @@ $^+F_{uv} = \frac{1}{2}( T_{uv} - i * T_{uv} ) = \downarrow u(i) \overset{\right
 }\right]}$<br>
 <br>
 
-Then $^+{F^{uv}}_{,v} = \frac{1}{2} J^u$ is a combination of all four Maxwell laws, of both ${F^{uv}}_{,v} = J^u$ and ${*F^{uv}}_{,v} = 0$, for $J^u$ real<br>
+Then $^+{F^{uv}}_{;v} = \frac{1}{2} J^u$ is a combination of all four Maxwell laws, of both ${F^{uv}}_{;v} = J^u$ and ${*F^{uv}}_{;v} = 0$, for $J^u$ real<br>
 <br>
 
-So how do you fit $+F_{uv}$ into the complex metric, to unify EM and gravity?  And what does the metric look like?<br>
+Stress-energy:<br>
+$8 \pi T_{uv} = 2 (F_{ua} {F_v}^a - \frac{1}{4} g_{uv} F_{ab} F^{ab})$<br>
+<br>
+
+So how do you fit $\pm F_{uv}$ into the complex metric, to unify EM and gravity?  And what does the metric look like?<br>
 
 	</body>
 </html>
