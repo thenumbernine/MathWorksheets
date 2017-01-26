@@ -28,6 +28,9 @@ Also, MTW ch. 23 talks about embedding functions, and how metrics vary within th
 
 <h3>Electromagnetic Stress-Energy</h3>
 
+in flat space:<br>
+<br>
+
 $E^i$ = electric field<br>
 $B^i$ = magnetic field<br>
 $S^i = {\epsilon^i}_{jk} E^j B^k$ = Poynting vector<br>
@@ -41,8 +44,92 @@ $F^{JK} = J(j) \downarrow \overset{ K(k) \rightarrow }{\left[\matrix{
 	-E^j & {\epsilon^{jk}}_l B^l
 }\right]}$<br>
 <br>
+$F_{0j} = -F_{j0} = -E_j$<br>
+$F_{jk} = {\epsilon_{jk}}^l B^l$<br>
+$F_{JK} = J(j) \downarrow \overset{ K(k) \rightarrow }{\left[\matrix{
+	0 & -E_k \\
+	E_j & {\epsilon_{jk}}^l B_l
+}\right]}$<br>
+<br>
 
-Electromagnetism stress-energy tensor:<br>
+$A^I$ = electromagnetic 4-potential<br>
+$A_I = [\phi, a_i]$<br>
+$\phi =$ electric potential.<br>
+$a_i =$ magnetic potential.<br>
+$F_{JK} = 2 A_{[K,J]}$<br>
+$F_{j0} = E_j = 2 A_{[t,j]}$<br>
+$F_{jk} = {\epsilon_{jk}}^l B_l = 2 A_{[k,j]}$<br>
+<br>
+
+$J_I = [q, j_i]$ = 4-current<br>
+$q =$ charge density<br>
+$j_i =$ current density<br>
+<br>
+Conservation of 4-current in flat space:<br>
+$J^I_{,I} = 0$<br>
+<br>
+
+Conservation of 4-current in curved space:<br>
+charge vector conserved in curved space, using the covariant derivative:<br>
+${J^\mu}_{;\mu} = 0$<br>
+${J^\mu}_{,\mu} + {\Gamma^\mu}_{\nu\mu} J^\nu = 0$<br>
+using ${\Gamma^\mu}_{\nu\mu} = (log \sqrt{|g|})_{,\nu} = \frac{1}{\sqrt{|g|}} (\sqrt{|g|})_{,\nu}$<br>
+$\frac{\sqrt{|g|}}{\sqrt{|g|}} {J^\nu}_{,\nu} + \frac{1}{\sqrt{|g|}} (\sqrt{|g|})_{,\nu} J^\nu = 0$<br>
+$\frac{1}{\sqrt{|g|}} (\sqrt{|g|} J^\nu)_{,\nu} = 0$<br>
+...which is equivalent to charge, scaled by spatial volume, conserved in flat-space.<br>
+But using the curved-space basis.<br>
+In fact, if you convert the curved-space basis to flat-space basis...<br> 
+$\frac{1}{\sqrt{|g|}} (\sqrt{|g|} J^I {e^\nu}_I )_{,J} {e_\nu}^J = 0$<br>
+$\frac{1}{\sqrt{|g|}} ( \sqrt{|g|}_{,J} {e_\nu}^J J^I {e^\nu}_I + \sqrt{|g|} {J^I}_{,J} {e_\nu}^J {e^\nu}_I + \sqrt{|g|} J^I {{e^\nu}_I}_{,J} {e_\nu}^J ) = 0$<br>
+$\frac{1}{\sqrt{|g|}} ( \sqrt{|g|}_{,J} \delta^J_I J^I + \sqrt{|g|} {J^I}_{,J} \delta^J_I + \sqrt{|g|} J^I {{e^\nu}_I}_{,J} {e_\nu}^J ) = 0$<br>
+$\frac{1}{\sqrt{|g|}} ( \sqrt{|g|}_{,I} J^I + \sqrt{|g|} {J^I}_{,I} + \sqrt{|g|} J^I {{e^\nu}_I}_{,J} {e_\nu}^J ) = 0$<br>
+$\frac{1}{\sqrt{|g|}} (\sqrt{|g|} J^I)_{,I} + J^I {{e^\nu}_I}_{,J} {e_\nu}^J = 0$<br>
+Note that the last, extra term is equal to the difference of the affine connection ${\Gamma^\rho}_{\mu\nu}$ and the vielbein spin-connection ${{\omega_\mu}^\rho}_\nu$,<br>
+defined with the relation ${{e_\nu}^I}_{,\mu} = {\Gamma^I}_{\mu\nu} - {{\omega_\mu}^I}_\nu$<br>
+So ${e^\nu}_{I,J} {e_\nu}^J 
+	= -{e^\nu}_I {{e_\nu}^J}_{,J}
+	= -{e^\nu}_I ({\Gamma^J}_{J\nu} - {{\omega_J}^J}_\nu)
+	= -{e^\nu}_I ({\Gamma^\rho}_{\rho\nu} - {{\omega_\rho}^\rho}_\nu)
+	= -{e^\nu}_I ({\Gamma^\rho}_{\rho\nu} - {{\omega_\rho}^\rho}_\nu)
+	= -{e^\nu}_I ({T^\rho}_{\rho\nu} + {\Gamma^\rho}_{\nu\rho} - {{\omega_\rho}^\rho}_\nu)
+	= -{e^\nu}_I ({T^\rho}_{\rho\nu} + (ln \sqrt{|g|})_{,\nu} - {{\omega_\rho}^\rho}_\nu)
+$<br>
+So going from the curved basis to the flat basis adds us the extra term corresponding to the difference between the affine and the spin connections.<br>
+(speaking of which, now that ${\Gamma^\alpha}_{\beta\gamma}$ is no longer symmetric on $\beta\gamma$, is it 
+${\Gamma^\rho}_{\nu\rho} = (ln \sqrt{|g|})_{,\nu}$ or
+${\Gamma^\rho}_{\rho\nu} = (ln \sqrt{|g|})_{,\nu}$  ?)<br>
+<br>
+
+Relation between Faraday tensor and 4-current, in curved space:<br>
+
+<br>
+
+Faraday tensor in curved space:<br>
+$F_{\mu\nu} = 2 A_{[\nu;\mu]} = 2 (A_{[\nu,\mu]} - {\Gamma^\rho}_{[\nu\mu]} A_\rho)$<br>
+Let ${T^\rho}_{\nu\mu} = 2 {\Gamma^\rho}_{[\nu\mu]} = $ the torsion tensor.<br>
+$F_{\mu\nu} = 2 A_{[\nu;\mu]} = 2 A_{[\nu,\mu]} + {T^\rho}_{\mu\nu} A_\rho$<br>
+In a torsion-free space, ${T^\rho}_{\mu\nu} = 0$ and we get<br>
+$F_{\mu\nu} = 2 A_{[\nu;\mu]} = 2 A_{[\nu,\mu]}$<br>
+So, aside from torsion, curvature of spacetime does not affect the Faraday metric.<br>
+<br>
+
+Faraday and 4-current relation in flat space:<br>
+${F_{JK}}^{,K} = 4 \pi J_J$<br>
+$2 {A_{[K,J]}}^{,K} = 4 \pi J_J$<br>
+${A_{K,J}}^K - {A_{J,K}}^K = 4 \pi J_J$<br>
+${{A_K}^{,K}}_J - {A_{J,K}}^K = 4 \pi J_J$<br>
+Imposing the gauge ${A^K}_{,K} = 0$<br>
+$-{A_{J,K}}^K = 4 \pi J_J$<br>
+<br>
+
+Curved-space Faraday and 4-current relation in curved space ... shouldn't match the conservation in curved space, because it doesn't consider the Riemann curvature tensor.<br>
+${F_{\mu\nu}}^{;\nu} = 4 \pi J_\mu$<br>
+
+Faraday and 4-current relation in curved space:<br>
+
+
+<h3>Electromagnetism stress-energy tensor:</h3>
+
 $T^{\mu\nu} = \frac{1}{4\pi}(F^{\mu\alpha} {F^{\nu}}_\alpha - \frac{1}{4} g^{\mu\nu} F_{\alpha\beta} F^{\alpha\beta} )$<br>
 <br>
 In flat space this simplifies to<br>
