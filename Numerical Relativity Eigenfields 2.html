@@ -14,7 +14,13 @@ Following Alcubierre "Introduction to 3+1 Numerical Relativity" section 5.4<br>
 
 <h3>ADM without any neglected terms</h3>
 
-Ricci curvature in terms of metric partial primitives:
+Connection coefficients in terms of first-order variables:<br>
+${\Gamma^i}_{jk} = \frac{1}{2} \gamma^{il} (\gamma_{lj,k} + \gamma_{lk,j} - \gamma_{jk,l})$<br>
+$ = \gamma^{il} (d_{kjl} + d_{jkl} - d_{ljk})$<br>
+$ = {d_{kj}}^i + {d_{jk}}^i - {d^i}_{jk}$<br>
+<br>
+
+Ricci curvature in terms of first-order variables:<br>
 $R_{ij} = {R^k}_{ikj}$<br>
 $= {\Gamma^k}_{ij,k} - {\Gamma^k}_{ik,j} + {\Gamma^k}_{lk} {\Gamma^l}_{ij} - {\Gamma^k}_{lj} {\Gamma^l}_{ik}$<br>
 $= 2 ({\Gamma^k}_{i[j,k]} + {\Gamma^k}_{l[k} {\Gamma^l}_{j]i})$<br>
@@ -63,11 +69,11 @@ $K_{ij,t} = K_{ij,k} \beta^k + K_{kj} {\beta^k}_{,i} + K_{ik} {\beta^k}_{,j}
 	- \alpha_{,ij} + {\Gamma^k}_{ij} \alpha_{,k} + \alpha (R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
 <br>
 hyperbolic variables:<br>
-$a_k = (ln\alpha)_{,k} = \alpha \alpha_{,k}$<br>
+$a_k = (ln\alpha)_{,k} = \alpha_{,k} / \alpha$<br>
 $d_{kij} = \frac{1}{2} \gamma_{ij,k}$<br>
 <br>
 
-hyperbolic variable spatial derivatives:<br>
+hyperbolic variable time derivatives:<br>
 $a_{k,t} = (\alpha_{,k} / \alpha)_{,t}$<br>
 $= \alpha_{,kt} / \alpha - \alpha_{,k} \alpha_{,t} / \alpha^2$<br>
 $= (\alpha_{,i} \beta^i - \alpha^2 Q)_{,k} / \alpha 

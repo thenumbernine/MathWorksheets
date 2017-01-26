@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Numerical Relativity Eigenfields</title>
+		<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<!-- script type="text/javascript" async src="file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script -->
+		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+	</head>
+	<body>
+
+This one is going by 2005 Bona, Ledvinka, Palenzuela-Luque, Zacek, "Constraint-preserving boundary conditions in the Z4 Numerical Relativity formalism"<br>
+or maybe better 2004 Bona, Palenzuela "Dynamical shift conditions for the Z4 and BSSN formalisms"
+<br>
+
+variables:<br>
+$\tau = 8 \pi \alpha^2 T^{00}$<br>
+$S_i = 8 \pi \alpha {T^0}_i$<br>
+$S_{ij} = 8 \pi T_{ij}$<br>
+$\Theta = \alpha Z^0$<br>
+$V_i = (ln \sqrt\gamma)_{,i} - \frac{1}{2} {\gamma_{ji}}^{,i} - Z_i$<br>
+<br>
+
+parameters:<br>
+$a = $...<br>
+$d = $...<br>
+$\mu = $...<br>
+$\eta = $...<br>
+<br>
+
+<h3>Z4</h3>
+$\frac{d}{dt} \alpha = -f \alpha^2 (tr K - m \Theta)$<br>
+$\frac{d}{dt} \beta^i = -\alpha^2 (2 \mu V^i + a (ln \alpha)^{,i} - d (ln \sqrt\gamma)^{,i}) - \eta \beta^i$<br>
+$\frac{d}{dt} \gamma_{ij} = -2 \alpha K_{ij}$<br>
+$\frac{d}{dt} K_{ij} = -\nabla_i \alpha_{,j} + \alpha (^3 R_{ij} + \nabla_i Z_j + \nabla_j Z_i - 2 K_{ik} {K^k}_j + (tr K - 2 \Theta) K_{ij} - S_{ij} + \frac{1}{2} (tr S - \tau) \gamma_{ij} )$<br>
+$\frac{d}{dt} \Theta = \frac{1}{2} \alpha (^3 R + 2 \nabla_k Z^k + (tr K - 2 \Theta) tr K - K_{ij} K^{ij} - 2 \tau) - Z^k \alpha_{,k}$<br>
+$\frac{d}{dt} Z_i = \alpha (\nabla_j ({K_i}^j - \delta_i^j tr K) + \Theta_{,i} - 2 {K_i}^j Z_j - S_i) - \Theta \alpha_{,i}$<br>
+<br>
+
+expanded, in terms of $\partial_t$:<br>
+$\alpha_{,t} = \alpha_{,i} \beta^i - f \alpha^2 (tr K - m \Theta)$<br>
+${\beta^i}_{,t} = {\beta^i}_{,j} \beta^j - \beta^j \beta_{j,i} - \alpha^2 (2 \mu V^i + a (ln \alpha)^{,i} - d (ln \sqrt\gamma)^{,i}) - \eta \beta^i$<br>
+$\gamma_{ij,t} = \gamma_{ij,k} \beta^k + \gamma_{kj} {\beta^k}_{,i} + \gamma_{ik} {\beta^k}_{,j} - 2 \alpha K_{ij}$<br>
+$K_{ij,t} = K_{ij,k} \beta^k + K_{kj} {\beta^k}_{,i} + K_{ik} {\beta^k}_{,j} - \nabla_i \alpha_{,j} + \alpha (^3 R_{ij} + \nabla_i Z_j + \nabla_j Z_i - 2 K_{ik} {K^k}_j + (tr K - 2 \Theta) K_{ij} - S_{ij} + \frac{1}{2} (tr S - \tau) \gamma_{ij} )$<br>
+$\Theta_{,t} = \Theta_{,i} \beta^i + \frac{1}{2} \alpha (^3 R + 2 \nabla_k Z^k + (tr K - 2 \Theta) tr K - K_{ij} K^{ij} - 2 \tau) - Z^k \alpha_{,k}$<br>
+$Z_{i,t} = Z_{i,j} \beta^j + Z_j {\beta^j}_{,i} + \alpha (\nabla_j ({K_i}^j - \delta_i^j tr K) + \Theta_{,i} - 2 {K_i}^j Z_j - S_i) - \Theta \alpha_{,i}$<br>
+<br>
+
+hyperbolic variables:<br>
+$a_k = (ln \alpha)_{,k} = \alpha_{,k} / \alpha$<br>
+$d_{kij} = \frac{1}{2} \gamma_{ij,k}$<br>
+<br>
+
+hyperbolic variable time derivatives:<br>
+$a_{k,t} = (ln \alpha)_{,kt}$<br>
+$= ((ln \alpha)_{,t})_{,k}$<br>
+$= ((ln \alpha)_{,i} \beta^i - f \alpha (tr K - m \Theta))_{,k}$<br>
+$= (a_i \beta^i - f \alpha (tr K - m \Theta))_{,k}$<br>
+$= a_{i,k} \beta^i 
+	+ a_i {\beta^i}_{,k} 
+	- f' \alpha_{,k} \alpha (tr K - m \Theta)
+	- f \alpha_{,k} (tr K - m \Theta)
+	- f \alpha ((tr K)_{,k} - m \Theta_{,k})
+$<br>
+$=  + a_i {\beta^i}_{,k} 
+	- f \alpha (K_{ij} \gamma^{ij})_{,k} 
+	+ f \alpha m \Theta_{,k}
+	+ a_{i,k} \beta^i 
+	- a_k \alpha (f' \alpha + f) (tr K - m \Theta)
+$<br>
+$=  a_i {\beta^i}_{,k} 
+	+ f \alpha K_{ij} \gamma^{im} \gamma^{nj} \gamma_{mn,k}
+	- f \gamma^{ij} \alpha K_{ij,k}
+	+ f \alpha m \Theta_{,k}
+	+ \beta^i a_{i,k}
+	- a_k \alpha (f' \alpha + f) (tr K - m \Theta)
+$<br>
+<br>
+
+$d_{kij,t} = \frac{1}{2} \gamma_{ij,kt}$<br>
+$= \frac{1}{2} \gamma_{ij,tk}$<br>
+$= \frac{1}{2} (\gamma_{ij,l} \beta^l 
+	+ \gamma_{lj} {\beta^l}_{,i} 
+	+ \gamma_{il} {\beta^l}_{,j} 
+	- 2 \alpha K_{ij})_{,k}$<br>
+$= \frac{1}{2} \gamma_{ij,lk} \beta^l 
+	+ \frac{1}{2} \gamma_{ij,l} {\beta^l}_{,k}
+	+ \frac{1}{2} \gamma_{lj,k} {\beta^l}_{,i} 
+	+ \frac{1}{2} \gamma_{lj} {\beta^l}_{,ik}
+	+ \frac{1}{2} \gamma_{il,k} {\beta^l}_{,j} 
+	+ \frac{1}{2} \gamma_{il} {\beta^l}_{,jk} 
+	- \alpha_{,k} K_{ij}
+	- \alpha K_{ij,k}$<br>
+$= d_{kij,l} \beta^l 
+	- \alpha K_{ij,k}
+	+ d_{lij} {\beta^l}_{,k}
+	+ d_{klj} {\beta^l}_{,i} 
+	+ d_{kil} {\beta^l}_{,j} 
+	+ \frac{1}{2} \gamma_{jl} {\beta^l}_{,ik}
+	+ \frac{1}{2} \gamma_{il} {\beta^l}_{,jk}
+	- \alpha a_k K_{ij}
+$<br>
+$= d_{kij,l} \beta^l 
+	- \alpha K_{ij,k}
+	+ d_{lij} {\beta^l}_{,k}
+	+ 2 d_{kl(i} {\beta^l}_{,j)} 
+	+ \gamma_{l(i} {\beta^l}_{,j)k}
+	- \alpha a_k K_{ij}
+$<br>
+$\frac{d}{dt} d_{kij} = 
+	- \alpha K_{ij,k}
+	+ \gamma_{l(i} {\beta^l}_{,j)k}
+	- \alpha a_k K_{ij}$<br>
+<br>
+
+$K_{ij,t} = K_{ij,k} \beta^k 
+	+ K_{kj} {\beta^k}_{,i} 
+	+ K_{ik} {\beta^k}_{,j} 
+	- \nabla_i \alpha_{,j} 
+	+ \alpha (
+		^3 R_{ij} 
+		+ \nabla_i Z_j 
+		+ \nabla_j Z_i 
+		- 2 K_{ik} {K^k}_j 
+		+ (tr K - 2 \Theta) K_{ij} 
+		- S_{ij} 
+		+ \frac{1}{2} (tr S - \tau) \gamma_{ij}
+	)
+$<br>
+$= K_{ij,k} \beta^k 
+	+ K_{kj} {\beta^k}_{,i} 
+	+ K_{ik} {\beta^k}_{,j} 
+	- \alpha_{,ji} 
+	+ {\Gamma^k}_{ji} \alpha_{,k}
+	+ \alpha ^3 R_{ij}
+	+ \alpha Z_{j,i} 
+	+ \alpha Z_{i,j} 
+	- 2 \alpha {\Gamma^k}_{ij} Z_k
+	- 2 \alpha K_{ik} {K^k}_j 
+	+ \alpha (tr K - 2 \Theta) K_{ij} 
+	- \alpha S_{ij} 
+	+ \alpha \frac{1}{2} (tr S - \tau) \gamma_{ij}
+$<br>
+$= K_{ij,k} \beta^k 
+	+ K_{kj} {\beta^k}_{,i} 
+	+ K_{ik} {\beta^k}_{,j} 
+	- \alpha_{,ji} 
+	+ ({d_{ij}}^k + {d_{ji}}^k - {d^k}_{ij}) \alpha_{,k}
+	+ \alpha (
+		\gamma^{kl} (d_{ilj,k} - d_{ikl,j} - d_{kij,l} + d_{jik,l})
+		+ d_{ijl} ({d^{lk}}_k - 2 {d_k}^{kl})
+		+ d_{jil} ({d^{lk}}_k - 2 {d_k}^{kl})
+		- d_{lij} ({d^{lk}}_k - 2 {d_k}^{kl})
+		+ 2 ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
+		+ d_{ikl} {d_j}^{kl}
+	)
+	+ \alpha Z_{j,i} 
+	+ \alpha Z_{i,j} 
+	- 2 \alpha ({d_{ij}}^k + {d_{ji}}^k - {d^k}_{ij}) Z_k
+	- 2 \alpha K_{ik} {K^k}_j 
+	+ \alpha (tr K - 2 \Theta) K_{ij} 
+	- \alpha S_{ij} 
+	+ \alpha \frac{1}{2} (tr S - \tau) \gamma_{ij}
+$<br>
+	
+	</body>
+</html>
