@@ -52,6 +52,21 @@ $\Theta_{,t} = \Theta_{,i} \beta^i + \frac{1}{2} \alpha (^3 R + 2 \nabla_k Z^k +
 $Z_{i,t} = Z_{i,j} \beta^j + Z_j {\beta^j}_{,i} + \alpha (\nabla_j ({K_i}^j - \delta_i^j tr K) + \Theta_{,i} - 2 {K_i}^j Z_j - S_i) - \Theta \alpha_{,i}$<br>
 <br>
 
+${\beta^i}_{,t} = {\beta^i}_{,j} \beta^j 
+	- \beta^j {\beta^i}_{,j} 
+	- \alpha^2 (
+		2 \mu V^i 
+		+ a (ln \alpha)_{,j} \gamma^{ij}
+		- d (ln \sqrt\gamma)_{,j} \gamma^{ij}
+	)
+	- \eta \beta^i
+$<br>
+$ = \frac{1}{2} \alpha^2 d \gamma^{mn} \gamma^{ij} \gamma_{mn,j}
+	- \alpha^2 (2 \mu V^i + a a^i)
+	- \eta \beta^i
+$<br>
+<br>
+
 hyperbolic variables:<br>
 $a_k = (ln \alpha)_{,k} = \alpha_{,k} / \alpha$<br>
 $d_{kij} = \frac{1}{2} \gamma_{ij,k}$<br>
@@ -300,6 +315,123 @@ $\left[\matrix{
 = \left[\matrix{
  	a_i {\beta^i}_{,k} 
 		+ f \alpha K_{ij} \gamma^{im} \gamma^{nj} \gamma_{mn,k}
+		- a_k \alpha (f' \alpha + f) (tr K - m \Theta) \\
+		
+	d_{lij} {\beta^l}_{,k}
+		+ 2 d_{kl(i} {\beta^l}_{,j)} 
+		+ \gamma_{l(i} {\beta^l}_{,j)k}
+		- \alpha a_k K_{ij} \\
+
+	K_{kj} {\beta^k}_{,i} 
+		+ K_{ik} {\beta^k}_{,j} 
+		- \alpha a_i a_j
+		+ ({d_{ij}}^k + {d_{ji}}^k - {d^k}_{ij}) \alpha a_k
+		+ \alpha d_{ijl} ({d^{lk}}_k - 2 {d_k}^{kl})
+		+ \alpha d_{jil} ({d^{lk}}_k - 2 {d_k}^{kl})
+		- \alpha d_{lij} ({d^{lk}}_k - 2 {d_k}^{kl})
+		+ 2 \alpha ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
+		+ \alpha d_{ikl} {d_j}^{kl}
+		- 2 \alpha ({d_{ij}}^k + {d_{ji}}^k - {d^k}_{ij}) Z_k
+		- 2 \alpha K_{ik} {K^k}_j 
+		+ \alpha (tr K - 2 \Theta) K_{ij} 
+		- \alpha S_{ij} 
+		+ \alpha \frac{1}{2} (tr S - \tau) \gamma_{ij} \\
+
+	\frac{1}{2} \alpha \gamma^{km} Z^j \gamma_{km,j}
+		+ \frac{1}{2} \alpha d_{ijl} ({d^{lk}}_k - 2 {d_k}^{kl})
+		+ \frac{1}{2} \alpha d_{jil} ({d^{lk}}_k - 2 {d_k}^{kl})
+		- \frac{1}{2} \alpha d_{lij} ({d^{lk}}_k - 2 {d_k}^{kl})
+		+ \alpha ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
+		+ \frac{1}{2} \alpha d_{ikl} {d_j}^{kl}
+		+ \frac{1}{2} \alpha (tr K - 2 \Theta) tr K 
+		- \frac{1}{2} \alpha K_{ij} K^{ij} 
+		- \alpha \tau
+		- \alpha Z^k a_k \\
+
+	Z_j {\beta^j}_{,k} 
+		- \alpha K_{ki} \gamma^{im} \gamma^{nj} \gamma_{mn,j}
+		+ \alpha K_{ji} \gamma^{jm} \gamma^{ni} \gamma_{mn,k}
+		- \alpha {\Gamma^i}_{kj} {K_i}^j 
+		+ \alpha {\Gamma^j}_{ij} {K_k}^i 
+		- 2 \alpha {K_k}^j Z_j 
+		- \alpha S_k
+		- \alpha \Theta a_k
+
+}\right]$<br>
+
+matrix form, favoring flux terms:<br>
+$\left[\matrix{
+	\alpha \\ \beta^i \\ \gamma_{ij} \\ a_k \\ d_{kij} \\ K_{ij} \\ \Theta \\ Z_k
+}\right]_{,t}
++ \left[\matrix{
+	-\beta^r & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+	
+	0 & 0 & -\frac{1}{2} \alpha^2 d \gamma^{pq} \gamma^{ir} & 0 & 0 & 0 & 0 & 0 \\
+	
+	0 & 
+		- \gamma_{mj} \delta^r_i - \gamma_{mi} \delta^r_j & 
+		- \delta^p_i \delta^q_j \beta^r & 0 & 0 & 0 & 0 & 0 \\
+
+	0 & 
+		0 & 
+		- f \alpha K^{pq} \delta^r_k &
+		-\beta^m \delta_k^r &
+		0 &
+		f \gamma^{pq} \delta^r_k &
+		- f \alpha m \delta^r_k &
+		0 \\ 
+
+	\cdot & \cdot & \cdot & 
+	0 &
+		- \delta^m_k \delta^p_i \delta^q_j \beta^r &
+		\alpha \delta^p_i \delta^q_j \delta^r_k &
+		0 & 
+		0 \\
+
+	\cdot & \cdot & \cdot & 
+	\alpha \delta^m_{(i} \delta^r_{j)} &
+		- \alpha (
+			\gamma^{pr} \delta_i^m \delta_j^q
+			- \gamma^{pq} \delta_i^m \delta_j^r
+			- \gamma^{mr} \delta_i^p \delta_j^q
+			+ \gamma^{qr} \delta_j^m \delta_i^p
+		) &
+		- \beta^r \delta^p_i \delta^q_j &
+		0 &
+		-2 \alpha \delta^m_{(i} \delta^r_{j)} \\
+
+	\cdot & \cdot & \cdot & 
+	0 &
+		- \frac{1}{2} \alpha (
+			\gamma^{pr} \delta_i^m \delta_j^q
+			- \gamma^{pq} \delta_i^m \delta_j^r
+			- \gamma^{mr} \delta_i^p \delta_j^q
+			+ \gamma^{qr} \delta_j^m \delta_i^p
+		) &
+		0 &
+		- \beta^r &
+		- \alpha \delta^m_r \\
+
+	\cdot & \cdot & \cdot & 
+	0 &
+		0 &
+		- \alpha (\gamma^{qr} \delta^p_k - \gamma^{qp} \delta^r_k) &
+		- \alpha \delta^r_k &
+		- \beta^r \delta^m_k
+		
+}\right]
+\left[\matrix{
+	\alpha \\ \beta^m \\ \gamma_{pq} \\ a_m \\ d_{mpq} \\ K_{pq} \\ \Theta \\ Z_m
+}\right]_{,r}
+= \left[\matrix{
+ 	-f \alpha^2 (tr K - m \Theta) \\
+
+	- \alpha^2 (2 \mu V^i + a a^i)
+		- \eta \beta^i \\
+
+	- 2 \alpha K_{ij} \\
+
+	a_i {\beta^i}_{,k} 
 		- a_k \alpha (f' \alpha + f) (tr K - m \Theta) \\
 		
 	d_{lij} {\beta^l}_{,k}
