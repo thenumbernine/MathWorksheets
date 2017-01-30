@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Change of coordinates</title>
+		<!-- script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script -->
+		<script type="text/javascript" async src="file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+	</head>
+	<body>
+
+Let $a-z$ index a coordinate system $x^a$ and $g_{ab}$ be the metric associated with this coordinate system.<br>
+Let $a'-z'$ index a second coordinate system $x^{a'}$ and and $g'_{a'b'}$ be the metric associated with the second coordinate sytsem.<br>
+Let $A-Z$ be a basis in flat space ... embedding?<br>
+<br>
+
+${e_a}$ is the tetrad, defined as ${e_a}^I \hat{x}_I$<br>
+${e_a}^I = \frac{\partial x^I}{\partial x^a}$<br>
+<br>
+
+Let $e_a = \frac{\partial}{\partial x^a}$<br>
+So ${e_a}^I = \langle e_a, \partial x^I \rangle = \langle \frac{\partial}{\partial x^a}, \partial x^I \rangle = \frac{\partial x^I}{\partial x^a}$<br>
+<br>
+
+${e^a}_I$ is inverse tetrad, defined as<br>
+${e^a}_I = \frac{\partial x^a}{\partial x^I}$<br>
+<br>
+
+Such that ${e^a}_I {e_b}^I = \frac{\partial x^a}{\partial x^I} \frac{\partial x^I}{\partial x^b} = \delta^a_b$<br> 
+${e_a}^I {e^a}_J = \frac{\partial x^I}{\partial x^a} \frac{\partial x^a}{\partial x^J} = \delta^I_J$<br>
+<br>
+
+$g$ is the metric defined as $g = g_{ab} dx^a dx^b = \langle \frac{\partial}{\partial x^a}, \frac{\partial}{\partial x^b} \rangle dx^a dx^b = \langle e_a, e_b \rangle dx^a dx^b$<br>
+So $g_{ab}$ is defined as $g_{ab} = \langle \frac{\partial}{\partial x^a}, \frac{\partial}{\partial x^b} \rangle = \langle e_a, e_b \rangle$<br>
+<br>
+
+Let the inner product $\langle \cdot, \cdot \rangle$ as weighted by $\eta_{IJ}$<br>
+So $g_{ab} = {e_a}^I {e_b}^J \eta_{IJ}$<br>
+<br>
+
+Show $g$ is a tensor, meaning it does not change with coordinate system.<br>
+Show $g_{ab} = g'_{ab}$:<br>
+<br>
+
+$g'_{a'b'} = {e_{a'}}^I {e_{b'}}^J$<br>
+
+
+Start with the definition of $g$<br>
+$g'_{a'b'} = \langle \frac{\partial}{\partial x^{a'}}, \frac{\partial}{\partial x^{b'}} \rangle$<br>
+Apply change of coordinate system<br>
+$g'_{a'b'} = \langle 
+	\frac{\partial x^a}{\partial x^{a'}} 
+		\frac{\partial}{\partial x^a},
+	\frac{\partial x^b}{\partial x^{b'}}
+	\frac{\partial}{\partial x^b}
+\rangle$<br>
+Extract change-of-basis (TODO)
+$g'_{a'b'} = \langle \frac{\partial}{\partial x^a}, \frac{\partial}{\partial x^b} \rangle
+	\frac{\partial x^a}{\partial x^{a'}} 
+	\frac{\partial x^b}{\partial x^{b'}}
+$<br>
+Substitute definition of $g_{ab}$<br>	
+$g'_{a'b'} = g_{ab} \frac{\partial x^a}{\partial x^{a'}} \frac{\partial x^b}{\partial x^{b'}}$<br>
+
+Start with the definition of $g$<br>
+$g'_{a'b'} = \langle \frac{\partial}{\partial x^{a'}}, \frac{\partial}{\partial x^{b'}} \rangle$<br>
+Apply change of coordinate system<br>
+$g'_{a'b'} = \langle 
+	\frac{\partial x^a}{\partial x^{a'}} 
+		\frac{\partial}{\partial x^a},
+	\frac{\partial x^b}{\partial x^{b'}}
+	\frac{\partial}{\partial x^b}
+\rangle$<br>
+Extract change-of-basis (TODO)
+$g'_{a'b'} = \langle \frac{\partial}{\partial x^a}, \frac{\partial}{\partial x^b} \rangle
+	\frac{\partial x^a}{\partial x^{a'}} 
+	\frac{\partial x^b}{\partial x^{b'}}
+$<br>
+Substitute definition of $g_{ab}$<br>	
+$g'_{a'b'} = g_{ab} \frac{\partial x^a}{\partial x^{a'}} \frac{\partial x^b}{\partial x^{b'}}$<br>
+
+
+	</body>
+</html>
