@@ -6,28 +6,54 @@
 		<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 		<!-- script type="text/javascript" async src="file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script -->
 		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+		<style>
+#dualtable {
+	border-spacing : 0px;
+}
+#dualtable td {
+	border : 1px solid black;
+	padding : 5px;
+}
+#dualtable th {
+	border : 1px solid black;
+	padding : 5px;
+	
+	text-align : center;
+	white-space : nowrap;
+	vertical-align : middle;
+	width : 1.5em;
+}
+#dualtable th div {
+	/*transform : rotate(90.0deg);
+	margin-left : -10em;
+	margin-right : -10em;
+	text-align : right; */
+}
+		</style>
 	</head>
 	<body>
 
 <h3>Quaternions</h3>
 
 Quaternion multiplication table:<br>
-$\left[\matrix{
+$\matrix{
 		& e_0 & e_1 & e_2 & e_3 \\
 	e_0 & e_0 & e_1 & e_2 & e_3 \\
 	e_1 & e_1 & -e_0 & e_3 & -e_2 \\
 	e_2 & e_2 & -e_3 & -e_0 & e_1 \\
 	e_3 & e_3 & e_2 & -e_1 & -e_0 \\
-}\right]$<br>
+}$<br>
 <br>
 
 Quaternion multiplication is a single triplet of $e_1, e_2, e_3$:<br>
-$e_1 e_2 = e_3 = -e_2 e_1, e_2 e_3 = e_1, e_3 e_1 = e_2$<br>
+$e_1 \times e_2 = e_3 = -e_2 \times e_1$<br>
+$e_2 \times e_3 = e_1$<br>
+$e_3 \times e_1 = e_2$<br>
 <br>
 
 <h3>Octonions</h3>
 Octonion multiplication table:<br>
-$\left[\matrix{
+$\matrix{
 		& e_0 & e_1 & e_2 & e_3 & e_4 & e_5 & e_6 & e_7 \\
 	e_0 & e_0 & e_1 & e_2 & e_3 & e_4 & e_5 & e_6 & e_7 \\
 	e_1 & e_1 & -e_0 & e_3 & -e_2 & e_5 & -e_4 & -e_7 & e_6 \\
@@ -37,29 +63,42 @@ $\left[\matrix{
 	e_5 & e_5 & e_4 & -e_7 & e_6 & -e_1 & -e_0 & -e_3 & e_2 \\
 	e_6 & e_6 & e_7 & e_4 & -e_5 & -e_2 & e_3 & -e_0 & -e_1 \\
 	e_7 & e_7 & -e_6 & e_5 & e_4 & -e_3 & -e_2 & e_1 & -e_0 \\
-}\right]$<br>
+}$<br>
 <br>
 
 Octonion multiplication is represented by seven triplets:<br>
-$\{e_1,e_2,e_3\},
-\{e_1, e_4, e_5\},
-\{e_1, e_7, e_6\},
-\{e_2, e_4, e_6\},
-\{e_2, e_5, e_7\},
-\{e_3, e_6, e_5\},
-\{e_3, e_4, e_7\}$<br>
+$\matrix{
+	t_1 = & \{e_1, e_2, e_3\} \\
+	t_2 = & \{e_1, e_4, e_5\} \\
+	t_3 = & \{e_1, e_7, e_6\} \\
+	t_4 = & \{e_2, e_4, e_6\} \\
+	t_5 = & \{e_2, e_5, e_7\} \\
+	t_6 = & \{e_3, e_4, e_7\} \\
+	t_7 = & \{e_3, e_6, e_5\} \\
+}$<br>
 <br>
 
 Each element is found in exactly three unique triplets.<br>
+Mapping them out shows we can see a 1-1 mapping between the elements' and the triplets' elements:<br>
+$\matrix{
+	e_1 \in & t_1, t_2, t_3 \\
+	e_2 \in & t_1, t_4, t_5 \\
+	e_3 \in & t_1, t_7, t_6 \\
+	e_4 \in & t_2, t_4, t_6 \\
+	e_5 \in & t_2, t_5, t_7 \\
+	e_6 \in & t_3, t_4, t_7 \\
+	e_7 \in & t_3, t_6, t_5 \\
+}$<br>
 <br>
 
-Each pair of triplets share one element in common.<br>
+There is a unique sequence of 7 elements that describes all 7 triplet multiplications.<br>
+We can combine all 7 triplets using this fact, to form a triplet multiplication ring on a Mobius band.<br>
+We will specify our band with the rule that three elements of a particular spacing will form a triplet.<br>
 <br>
-
-To see how many matching elements are in common,
-put 1's where elements could go, 0's otherwise,
-so for 1st, 2nd, 3rd we get $[1, 1, 1, 0, 0, 0, 0]$<br>
-then rotate this around to get a matrix:<br>
+To find a particular spacing that works, we will create an adjacency matrix of the triplets for any particular spacing.<br>
+To form this matrix, start with a vector formed from 1's where triplet elements would go and 0's otherwise.<br>
+For example, for the 1st, 2nd, 3rd we get $[1, 1, 1, 0, 0, 0, 0]$<br>
+Next, rotate the elements of the vector around, to get this:<br>
 $M = \left[\matrix{
 	1 & 1 & 1 & 0 & 0 & 0 & 0 \\
 	0 & 1 & 1 & 1 & 0 & 0 & 0 \\
@@ -69,7 +108,7 @@ $M = \left[\matrix{
 	1 & 0 & 0 & 0 & 0 & 1 & 1 \\
 	1 & 1 & 0 & 0 & 0 & 0 & 1 \\
 }\right]$<br>
-Multiplying this matrix by its transpose shows the number of elements each pairs of triplets has in common:<br>
+Multiplying this matrix by its transpose shows the number of elements that each pair of triplets have in common:<br>
 $M \cdot M^T = \left[\matrix{
 	3 & 2 & 1 & 0 & 0 & 1 & 2 \\
 	2 & 3 & 2 & 1 & 0 & 0 & 1 \\
@@ -120,7 +159,53 @@ Each of these are isomorphisms of 1st, 2nd, 4th spacing.<br>
 So there is only one unique arrangements of triplets such that they share an equal number of elements.<br>
 <br>
 
-Now to look at all rings formed from these spacing. TODO.<br>
+For entertainment, here are all rings formed from this 1st, 2nd, 4th spacing:<br>
+$\matrix{
+	\{ e_1 e_& e_2 e_& e_4 e_& e_3 e_& e_6 e_& -e_7 e_& e_5 \} \\
+	\{ e_1 e_& e_2 e_& e_5 e_& e_3 e_& e_7 e_& e_6 e_& -e_4 \} \\
+	\{ e_1 e_& e_4 e_& e_6 e_& e_5 e_& e_2 e_& e_3 e_& -e_7 \} \\
+	\{ e_1 e_& e_4 e_& e_7 e_& e_5 e_& e_3 e_& -e_2 e_& e_6 \} \\
+	\{ e_1 e_& e_7 e_& e_2 e_& e_6 e_& e_5 e_& -e_4 e_& e_3 \} \\
+	\{ e_1 e_& e_7 e_& e_3 e_& e_6 e_& e_4 e_& e_5 e_& -e_2 \} \\
+	\{ e_2 e_& e_3 e_& e_4 e_& e_1 e_& e_7 e_& -e_5 e_& e_6 \} \\
+	\{ e_2 e_& e_3 e_& e_6 e_& e_1 e_& e_5 e_& e_7 e_& -e_4 \} \\
+	\{ e_2 e_& e_4 e_& e_5 e_& e_6 e_& e_1 e_& -e_3 e_& e_7 \} \\
+	\{ e_2 e_& e_4 e_& e_7 e_& e_6 e_& e_3 e_& e_1 e_& -e_5 \} \\
+	\{ e_2 e_& e_5 e_& e_1 e_& e_7 e_& e_4 e_& e_6 e_& -e_3 \} \\
+	\{ e_2 e_& e_5 e_& e_3 e_& e_7 e_& e_6 e_& -e_4 e_& e_1 \} \\
+	\{ e_3 e_& e_1 e_& e_4 e_& e_2 e_& e_5 e_& -e_6 e_& e_7 \} \\
+	\{ e_3 e_& e_1 e_& e_7 e_& e_2 e_& e_6 e_& e_5 e_& -e_4 \} \\
+	\{ e_3 e_& e_4 e_& e_5 e_& e_7 e_& e_1 e_& e_2 e_& -e_6 \} \\
+	\{ e_3 e_& e_4 e_& e_6 e_& e_7 e_& e_2 e_& -e_1 e_& e_5 \} \\
+	\{ e_3 e_& e_6 e_& e_1 e_& e_5 e_& e_7 e_& -e_4 e_& e_2 \} \\
+	\{ e_3 e_& e_6 e_& e_2 e_& e_5 e_& e_4 e_& e_7 e_& -e_1 \} \\
+	\{ e_4 e_& e_5 e_& e_7 e_& e_1 e_& e_2 e_& -e_6 e_& e_3 \} \\
+	\{ e_4 e_& e_5 e_& e_3 e_& e_1 e_& e_6 e_& e_2 e_& -e_7 \} \\
+	\{ e_4 e_& e_6 e_& e_1 e_& e_2 e_& e_7 e_& e_3 e_& -e_5 \} \\
+	\{ e_4 e_& e_6 e_& e_5 e_& e_2 e_& e_3 e_& -e_7 e_& e_1 \} \\
+	\{ e_4 e_& e_7 e_& e_6 e_& e_3 e_& e_1 e_& -e_5 e_& e_2 \} \\
+	\{ e_4 e_& e_7 e_& e_2 e_& e_3 e_& e_5 e_& e_1 e_& -e_6 \} \\
+	\{ e_5 e_& e_1 e_& e_2 e_& e_4 e_& e_3 e_& e_6 e_& -e_7 \} \\
+	\{ e_5 e_& e_1 e_& e_7 e_& e_4 e_& e_6 e_& -e_3 e_& e_2 \} \\
+	\{ e_5 e_& e_7 e_& e_6 e_& e_2 e_& e_1 e_& e_4 e_& -e_3 \} \\
+	\{ e_5 e_& e_7 e_& e_3 e_& e_2 e_& e_4 e_& -e_1 e_& e_6 \} \\
+	\{ e_5 e_& e_3 e_& e_1 e_& e_6 e_& e_2 e_& -e_7 e_& e_4 \} \\
+	\{ e_5 e_& e_3 e_& e_4 e_& e_6 e_& e_7 e_& e_2 e_& -e_1 \} \\
+	\{ e_6 e_& e_1 e_& e_2 e_& e_7 e_& e_3 e_& -e_5 e_& e_4 \} \\
+	\{ e_6 e_& e_1 e_& e_4 e_& e_7 e_& e_5 e_& e_3 e_& -e_2 \} \\
+	\{ e_6 e_& e_2 e_& e_3 e_& e_4 e_& e_1 e_& e_7 e_& -e_5 \} \\
+	\{ e_6 e_& e_2 e_& e_5 e_& e_4 e_& e_7 e_& -e_1 e_& e_3 \} \\
+	\{ e_6 e_& e_5 e_& e_1 e_& e_3 e_& e_4 e_& -e_2 e_& e_7 \} \\
+	\{ e_6 e_& e_5 e_& e_7 e_& e_3 e_& e_2 e_& e_4 e_& -e_1 \} \\
+	\{ e_7 e_& e_6 e_& e_2 e_& e_1 e_& e_4 e_& -e_3 e_& e_5 \} \\
+	\{ e_7 e_& e_6 e_& e_5 e_& e_1 e_& e_3 e_& e_4 e_& -e_2 \} \\
+	\{ e_7 e_& e_2 e_& e_3 e_& e_5 e_& e_1 e_& -e_6 e_& e_4 \} \\
+	\{ e_7 e_& e_2 e_& e_4 e_& e_5 e_& e_6 e_& e_1 e_& -e_3 \} \\
+	\{ e_7 e_& e_3 e_& e_1 e_& e_4 e_& e_2 e_& e_5 e_& -e_6 \} \\
+	\{ e_7 e_& e_3 e_& e_6 e_& e_4 e_& e_5 e_& -e_2 e_& e_1 \} \\
+}$<br>
+<br>
+
 The first is as good a representation as any:<br>
 $\{e_1, e_2, e_5, e_3, e_7, e_6, -e_4\}$<br>
 <br>
@@ -421,6 +506,37 @@ No attention is paid to signs, since the signs of the nested octonions occasiona
 
 Also note that, in the embedded octonions, the 6th and 7th elements are flipped.<br>
 <br>
+
+<h3>overall</h3>
+We see a dual between the elements of the Cayley-Dickson construction:
+
+<table id='dualtable'>
+	<tr>
+		<th><div>construction</div></th>
+		<th><div>elements</div></th>
+		<th><div>quaternion triplets</div></th>
+		<th><div>octonion mobius bands</div></th>
+		<th><div>sedenion mobius ring-of-bands</div></th>
+	</tr>
+	<tr>
+		<td>quaternions</td>
+		<td>3</td>
+		<td>1</td>
+	</tr>
+	<tr>
+		<td>octonions</td>
+		<td>7</td>
+		<td>7</td>
+		<td>1</td>
+	</tr>
+	<tr>
+		<td>sedenions</td>
+		<td>15</td>
+		<td>35</td>
+		<td>15</td>
+		<td>1</td>
+	</tr>
+</table>
 
 	</body>
 </html>
