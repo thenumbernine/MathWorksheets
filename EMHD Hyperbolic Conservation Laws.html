@@ -2,14 +2,17 @@
 <html>
 	<head>
 		<meta charset='utf-8'/>
-		<title>EMHD Eigenmode Analysis</title>
+		<title>EMHD Hyperbolic Conservation Laws</title>
 		<!-- script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script -->
 		<script type="text/javascript" async src="file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
 	</head>
 	<body>
 
-<h3>Eigenmode Analysis</h3>
+Following the paper:<br>
+<br>
+Alcubierre, Degollado, Salgado, "The Einstein-Maxwell System in 3+1 form and initial data for multiple charged black holes" 2009.<br>
+<br>
 
 variables:<br>
 $\mu_0 =$ vacuum permeability<br>
@@ -54,8 +57,103 @@ ${F^{ab}}_{;b} = J^a$<br>
 $J^a = \left[ c \rho_{charge}, j^i \right] =$ 4-current<br>
 $j^i = \sigma E^i = $ current density<br>
 $\sigma = $ electric conductivity<br>
-
 <br>
+
+<h3>Curved space</h3>
+
+$n_a = (-\alpha, 0, 0, 0)$ and $n^a = (1 / \alpha, -\beta^i / \alpha)$.<br>
+<br>
+
+$^{(3)} \epsilon^{\perp afg} = n_b {\gamma^a}_e {\gamma^f}_c {\gamma^g}_d \epsilon^{bacd} = n_b \epsilon^{bafg}$<br>
+$\epsilon^{0123} = \frac{-1}{\sqrt{-g}} = \frac{-1}{\alpha \sqrt\gamma}$<br>
+$^{(3)} \epsilon^{\perp afg} = -\alpha {\gamma^a}_e {\gamma^f}_c {\gamma^g}_d \epsilon^{0ecd}$<br>
+$^{(3)} \epsilon^{\perp 123} = -\alpha \epsilon^{0123} = \frac{1}{\sqrt\gamma}$<br>
+$^{(3)} \epsilon^{abc} = ^{(3)} \epsilon^{\perp abc}$<br>
+such that $^{(3)} \epsilon^{123} = \frac{1}{\sqrt\gamma}$<br>
+also note $\epsilon^{abc}_F = \sqrt\gamma ^{(3)} \epsilon^{abc}$ and $\epsilon^F_{abc} = \frac{1}{\sqrt\gamma} ^{(3)} \epsilon_{abc}$<br>
+for $\epsilon^{abc}_F$ and $\epsilon^F_{abc}$ the flat-space undensitized permutation tensor (typically denoted as $[abc]$ right?)<br>
+<br>
+
+Faraday tensor projection:<br>
+$F^{ab} = ^{(3)} F^{ab} + n^a {}^{(3)} F^{\perp b} + {}^{(3)} F^{a \perp} n^b$<br>
+<br>
+
+Measure electric and magnetic fields by Eulerian observers:<br>
+$E^a = -n_b F^{ba} = ^{(3)}F^{\perp a}$<br>
+$B^a = -n_b (\star F)^{ba} = ^{(3)} (\star F)^{\perp a}$<br>
+<br>
+
+Note $n_a E^a = 0$ and $n_a B^a = 0$, therefore $E^a$ and $B^a$ are vectors in the spacelike hypersurface.<br>
+<br>
+
+Combine the definitions to find:<br>
+$F^{ab} = ^{(3)} F^{ab} + n^a E^b - E^a n^b$<br>
+<br>
+
+Combine further to define $B^a$:<br>
+$B^a = \frac{1}{2} n_b {\epsilon^{ba}}_{cd} F^{cd}$<br>
+$= \frac{1}{2} n_b \epsilon^{bacd} (^{(3)} F_{cd} n_c E_d - E_c n_d)$<br>
+$= \frac{1}{2} n_b \epsilon^{bacd} {}^{(3)} F_{cd}$<br>
+
+Jumping to the end:<br>
+$D_a E^a = \frac{1}{\sqrt\gamma} (\sqrt\gamma E^i)_{,i} = 4 \pi \rho$ for $\rho = -n_a j^a$<br>
+$D_a B^a = \frac{1}{\sqrt\gamma} (\sqrt\gamma B^i)_{,i} = 0$<br>
+<br>
+using $\frac{d}{dt} = \partial_t - \mathcal{L}_\vec\beta$<br>
+$\frac{d}{dt} E^i = E^i = ^{(3)} \epsilon^{ijk} (\alpha B_k)_{,j} + \alpha K E^i - 4 \pi \alpha ^{(3)} j^i$<br>
+$\frac{d}{dt} B^i = -^{(3)} \epsilon^{ijk} (\alpha E_k)_{,j} + \alpha K B^i$<br> 
+<br>
+with flat-space permutation tensors, expanded partials, in hyperbolic conservation form:<br>
+${E^i}_{,t} 
+		- \beta^j {E^i}_{,j}
+		- \frac{1}{\sqrt\gamma} \alpha \epsilon_F^{ijk} \gamma_{kl} {B^l}_{,j} 
+	= \frac{1}{\sqrt\gamma} \epsilon_F^{ijk} (\alpha_{,j} B_k + \alpha \gamma_{kl,j} B^l) 
+		+ \alpha K E^i 
+		- E^j {\beta^i}_{,j}
+		- 4 \pi \alpha (j^i + \beta^i j^t)
+$<br>
+${B^i}_{,t} 
+		+ \frac{1}{\sqrt\gamma} \alpha \epsilon_F^{ijk} \gamma_{kl} {E^l}_{,j}
+		- {B^i}_{,j} \beta^j
+	= -\frac{1}{\sqrt\gamma} \epsilon_F^{ijk} (\alpha_{,j} E_k + \alpha \gamma_{kl,j} E^l) 
+		+ \alpha K B^i 
+		- B^j {\beta^i}_{,j}
+$<br> 
+<br>
+as a matrix:<br>
+$\left[\matrix{
+	E^i \\
+	B^i
+}\right]_{,t}
++ \left[\matrix{
+	- \beta^j \delta^i_l &
+		\frac{\alpha}{\sqrt\gamma} \epsilon_F^{ijk} \gamma_{kl} \\
+	- \frac{\alpha}{\sqrt\gamma} \epsilon_F^{ijk} \gamma_{kl} &
+		- \beta^j \delta^i_l
+}\right] \left[\matrix{
+	E^l \\
+	B^l
+}\right]_{,j}
+= \left[\matrix{
+	\frac{1}{\sqrt\gamma} \epsilon_F^{ijk} (\alpha_{,j} B_k + \alpha \gamma_{kl,j} B^l) 
+		+ \alpha K E^i 
+		- E^j {\beta^i}_{,j}
+		- 4 \pi \alpha (j^i + \beta^i j^t) \\
+	-\frac{1}{\sqrt\gamma} \epsilon_F^{ijk} (\alpha_{,j} E_k + \alpha \gamma_{kl,j} E^l) 
+		+ \alpha K B^i 
+		- B^j {\beta^i}_{,j}
+}\right]$<br>
+<br>
+
+I'm leaving the $\partial \alpha$ and $\partial \gamma_{ij}$ terms on the source side because they are replaced with variables when converting the system to 1st order.<br>
+<br>
+
+charge conservation:<br>
+$\nabla_c j^c = 0$<br>
+in 3+1 form:<br>
+$\rho_{,t} - \mathcal{L}_\vec\beta \rho = -D_a (\alpha ^{(3)} j^a) + \alpha \rho K$<br>
+
+<h3>Combining Maxwell and fluids</h3>
 
 primitives:<br>
 $U^I = \left[\matrix{
