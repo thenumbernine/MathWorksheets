@@ -8,26 +8,23 @@
 		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
 		<style>
 #dualtable {
-	border-spacing : 0px;
+	border-spacing:0px;
 }
 #dualtable td {
-	border : 1px solid black;
-	padding : 5px;
+	border:1px solid black;
+	padding:5px;
 }
 #dualtable th {
-	border : 1px solid black;
-	padding : 5px;
-	
-	text-align : center;
-	white-space : nowrap;
-	vertical-align : middle;
-	width : 1.5em;
+	border:0px solid black;
+	/*height:160px;
+	white-space:nowrap; */
 }
-#dualtable th div {
-	/*transform : rotate(90.0deg);
-	margin-left : -10em;
-	margin-right : -10em;
-	text-align : right; */
+#dualtable th > div {
+/*	transform:translate(100px, 60px) rotate(315deg); 
+	width:30px; */
+}
+#dualtable th > div > span {
+	border-bottom:1px solid black;
 }
 		</style>
 	</head>
@@ -96,6 +93,7 @@ We can combine all 7 triplets using this fact, to form a triplet multiplication 
 We will specify our band with the rule that three elements of a particular spacing will form a triplet.<br>
 <br>
 To find a particular spacing that works, we will create an adjacency matrix of the triplets for any particular spacing.<br>
+This is an intuitive process for embedding quaternion triplets in octonion rings, but I am describing it here because the same process will be used later with more complex embeddings.<br>
 To form this matrix, start with a vector formed from 1's where triplet elements would go and 0's otherwise.<br>
 For example, for the 1st, 2nd, 3rd we get $[1, 1, 1, 0, 0, 0, 0]$<br>
 Next, rotate the elements of the vector around, to get this:<br>
@@ -159,75 +157,77 @@ Each of these are isomorphisms of 1st, 2nd, 4th spacing.<br>
 So there is only one unique arrangements of triplets such that they share an equal number of elements.<br>
 <br>
 
-For entertainment, here are all rings formed from this 1st, 2nd, 4th spacing:<br>
-$\matrix{
-	\{ e_1 e_& e_2 e_& e_4 e_& e_3 e_& e_6 e_& -e_7 e_& e_5 \} \\
-	\{ e_1 e_& e_2 e_& e_5 e_& e_3 e_& e_7 e_& e_6 e_& -e_4 \} \\
-	\{ e_1 e_& e_4 e_& e_6 e_& e_5 e_& e_2 e_& e_3 e_& -e_7 \} \\
-	\{ e_1 e_& e_4 e_& e_7 e_& e_5 e_& e_3 e_& -e_2 e_& e_6 \} \\
-	\{ e_1 e_& e_7 e_& e_2 e_& e_6 e_& e_5 e_& -e_4 e_& e_3 \} \\
-	\{ e_1 e_& e_7 e_& e_3 e_& e_6 e_& e_4 e_& e_5 e_& -e_2 \} \\
-	\{ e_2 e_& e_3 e_& e_4 e_& e_1 e_& e_7 e_& -e_5 e_& e_6 \} \\
-	\{ e_2 e_& e_3 e_& e_6 e_& e_1 e_& e_5 e_& e_7 e_& -e_4 \} \\
-	\{ e_2 e_& e_4 e_& e_5 e_& e_6 e_& e_1 e_& -e_3 e_& e_7 \} \\
-	\{ e_2 e_& e_4 e_& e_7 e_& e_6 e_& e_3 e_& e_1 e_& -e_5 \} \\
-	\{ e_2 e_& e_5 e_& e_1 e_& e_7 e_& e_4 e_& e_6 e_& -e_3 \} \\
-	\{ e_2 e_& e_5 e_& e_3 e_& e_7 e_& e_6 e_& -e_4 e_& e_1 \} \\
-	\{ e_3 e_& e_1 e_& e_4 e_& e_2 e_& e_5 e_& -e_6 e_& e_7 \} \\
-	\{ e_3 e_& e_1 e_& e_7 e_& e_2 e_& e_6 e_& e_5 e_& -e_4 \} \\
-	\{ e_3 e_& e_4 e_& e_5 e_& e_7 e_& e_1 e_& e_2 e_& -e_6 \} \\
-	\{ e_3 e_& e_4 e_& e_6 e_& e_7 e_& e_2 e_& -e_1 e_& e_5 \} \\
-	\{ e_3 e_& e_6 e_& e_1 e_& e_5 e_& e_7 e_& -e_4 e_& e_2 \} \\
-	\{ e_3 e_& e_6 e_& e_2 e_& e_5 e_& e_4 e_& e_7 e_& -e_1 \} \\
-	\{ e_4 e_& e_5 e_& e_7 e_& e_1 e_& e_2 e_& -e_6 e_& e_3 \} \\
-	\{ e_4 e_& e_5 e_& e_3 e_& e_1 e_& e_6 e_& e_2 e_& -e_7 \} \\
-	\{ e_4 e_& e_6 e_& e_1 e_& e_2 e_& e_7 e_& e_3 e_& -e_5 \} \\
-	\{ e_4 e_& e_6 e_& e_5 e_& e_2 e_& e_3 e_& -e_7 e_& e_1 \} \\
-	\{ e_4 e_& e_7 e_& e_6 e_& e_3 e_& e_1 e_& -e_5 e_& e_2 \} \\
-	\{ e_4 e_& e_7 e_& e_2 e_& e_3 e_& e_5 e_& e_1 e_& -e_6 \} \\
-	\{ e_5 e_& e_1 e_& e_2 e_& e_4 e_& e_3 e_& e_6 e_& -e_7 \} \\
-	\{ e_5 e_& e_1 e_& e_7 e_& e_4 e_& e_6 e_& -e_3 e_& e_2 \} \\
-	\{ e_5 e_& e_7 e_& e_6 e_& e_2 e_& e_1 e_& e_4 e_& -e_3 \} \\
-	\{ e_5 e_& e_7 e_& e_3 e_& e_2 e_& e_4 e_& -e_1 e_& e_6 \} \\
-	\{ e_5 e_& e_3 e_& e_1 e_& e_6 e_& e_2 e_& -e_7 e_& e_4 \} \\
-	\{ e_5 e_& e_3 e_& e_4 e_& e_6 e_& e_7 e_& e_2 e_& -e_1 \} \\
-	\{ e_6 e_& e_1 e_& e_2 e_& e_7 e_& e_3 e_& -e_5 e_& e_4 \} \\
-	\{ e_6 e_& e_1 e_& e_4 e_& e_7 e_& e_5 e_& e_3 e_& -e_2 \} \\
-	\{ e_6 e_& e_2 e_& e_3 e_& e_4 e_& e_1 e_& e_7 e_& -e_5 \} \\
-	\{ e_6 e_& e_2 e_& e_5 e_& e_4 e_& e_7 e_& -e_1 e_& e_3 \} \\
-	\{ e_6 e_& e_5 e_& e_1 e_& e_3 e_& e_4 e_& -e_2 e_& e_7 \} \\
-	\{ e_6 e_& e_5 e_& e_7 e_& e_3 e_& e_2 e_& e_4 e_& -e_1 \} \\
-	\{ e_7 e_& e_6 e_& e_2 e_& e_1 e_& e_4 e_& -e_3 e_& e_5 \} \\
-	\{ e_7 e_& e_6 e_& e_5 e_& e_1 e_& e_3 e_& e_4 e_& -e_2 \} \\
-	\{ e_7 e_& e_2 e_& e_3 e_& e_5 e_& e_1 e_& -e_6 e_& e_4 \} \\
-	\{ e_7 e_& e_2 e_& e_4 e_& e_5 e_& e_6 e_& e_1 e_& -e_3 \} \\
-	\{ e_7 e_& e_3 e_& e_1 e_& e_4 e_& e_2 e_& e_5 e_& -e_6 \} \\
-	\{ e_7 e_& e_3 e_& e_6 e_& e_4 e_& e_5 e_& -e_2 e_& e_1 \} \\
-}$<br>
-<br>
-
-The first is as good a representation as any:<br>
-$\{e_1, e_2, e_5, e_3, e_7, e_6, -e_4\}$<br>
-<br>
-
 Using this you can start with the first available triplet and successively add triplets that fulfill the constraint, 
 and eventually represent the octonion multiplication table as a ring with 
-(one possible arrangement of the) elements ${e_1, e_2, e_5, e_3, e_7, e_6, -e_4}$
-and triplet multiplication occurring between any element, the next, and the 3rd next.
+(one possible arrangement of the) elements ${e_1, e_2, e_4, e_3, e_6, -e_7, e_5}$
+and triplet multiplication occurring between any element, the next, and the 4th next.
 (i.e. 
-${e_1,e_2,e_3}, {e_2,e_5,e_7}, {e_5,e_3,e_6}$,
+${e_1,e_2,e_3}, {e_2,e_4,e_6}, {e_4,e_3,-e_7}$,
  etc).
 If you represent these triplets as triangles on a mesh then you come up with a Mobius strip.<br>
 <br>
 
+For entertainment, here are all rings formed from this 1st, 2nd, 4th spacing.<br>
+I.e. all enumerations of 7 elements such that, starting at any element, picking that element, the next, and the 4th-next produces a quaternion multiplication triplet.<br>
+$\matrix{
+	\{ e_1 & e_2 & e_4 & e_3 & e_6 & -e_7 & e_5 \} \\
+	\{ e_1 & e_2 & e_5 & e_3 & e_7 & e_6 & -e_4 \} \\
+	\{ e_1 & e_4 & e_6 & e_5 & e_2 & e_3 & -e_7 \} \\
+	\{ e_1 & e_4 & e_7 & e_5 & e_3 & -e_2 & e_6 \} \\
+	\{ e_1 & e_7 & e_2 & e_6 & e_5 & -e_4 & e_3 \} \\
+	\{ e_1 & e_7 & e_3 & e_6 & e_4 & e_5 & -e_2 \} \\
+	\{ e_2 & e_3 & e_4 & e_1 & e_7 & -e_5 & e_6 \} \\
+	\{ e_2 & e_3 & e_6 & e_1 & e_5 & e_7 & -e_4 \} \\
+	\{ e_2 & e_4 & e_5 & e_6 & e_1 & -e_3 & e_7 \} \\
+	\{ e_2 & e_4 & e_7 & e_6 & e_3 & e_1 & -e_5 \} \\
+	\{ e_2 & e_5 & e_1 & e_7 & e_4 & e_6 & -e_3 \} \\
+	\{ e_2 & e_5 & e_3 & e_7 & e_6 & -e_4 & e_1 \} \\
+	\{ e_3 & e_1 & e_4 & e_2 & e_5 & -e_6 & e_7 \} \\
+	\{ e_3 & e_1 & e_7 & e_2 & e_6 & e_5 & -e_4 \} \\
+	\{ e_3 & e_4 & e_5 & e_7 & e_1 & e_2 & -e_6 \} \\
+	\{ e_3 & e_4 & e_6 & e_7 & e_2 & -e_1 & e_5 \} \\
+	\{ e_3 & e_6 & e_1 & e_5 & e_7 & -e_4 & e_2 \} \\
+	\{ e_3 & e_6 & e_2 & e_5 & e_4 & e_7 & -e_1 \} \\
+	\{ e_4 & e_5 & e_7 & e_1 & e_2 & -e_6 & e_3 \} \\
+	\{ e_4 & e_5 & e_3 & e_1 & e_6 & e_2 & -e_7 \} \\
+	\{ e_4 & e_6 & e_1 & e_2 & e_7 & e_3 & -e_5 \} \\
+	\{ e_4 & e_6 & e_5 & e_2 & e_3 & -e_7 & e_1 \} \\
+	\{ e_4 & e_7 & e_6 & e_3 & e_1 & -e_5 & e_2 \} \\
+	\{ e_4 & e_7 & e_2 & e_3 & e_5 & e_1 & -e_6 \} \\
+	\{ e_5 & e_1 & e_2 & e_4 & e_3 & e_6 & -e_7 \} \\
+	\{ e_5 & e_1 & e_7 & e_4 & e_6 & -e_3 & e_2 \} \\
+	\{ e_5 & e_7 & e_6 & e_2 & e_1 & e_4 & -e_3 \} \\
+	\{ e_5 & e_7 & e_3 & e_2 & e_4 & -e_1 & e_6 \} \\
+	\{ e_5 & e_3 & e_1 & e_6 & e_2 & -e_7 & e_4 \} \\
+	\{ e_5 & e_3 & e_4 & e_6 & e_7 & e_2 & -e_1 \} \\
+	\{ e_6 & e_1 & e_2 & e_7 & e_3 & -e_5 & e_4 \} \\
+	\{ e_6 & e_1 & e_4 & e_7 & e_5 & e_3 & -e_2 \} \\
+	\{ e_6 & e_2 & e_3 & e_4 & e_1 & e_7 & -e_5 \} \\
+	\{ e_6 & e_2 & e_5 & e_4 & e_7 & -e_1 & e_3 \} \\
+	\{ e_6 & e_5 & e_1 & e_3 & e_4 & -e_2 & e_7 \} \\
+	\{ e_6 & e_5 & e_7 & e_3 & e_2 & e_4 & -e_1 \} \\
+	\{ e_7 & e_6 & e_2 & e_1 & e_4 & -e_3 & e_5 \} \\
+	\{ e_7 & e_6 & e_5 & e_1 & e_3 & e_4 & -e_2 \} \\
+	\{ e_7 & e_2 & e_3 & e_5 & e_1 & -e_6 & e_4 \} \\
+	\{ e_7 & e_2 & e_4 & e_5 & e_6 & e_1 & -e_3 \} \\
+	\{ e_7 & e_3 & e_1 & e_4 & e_2 & e_5 & -e_6 \} \\
+	\{ e_7 & e_3 & e_6 & e_4 & e_5 & -e_2 & e_1 \} \\
+}$<br>
+<br>
+
+All represent the same octonion multiplication table, 
+so the first is as good a representation as any:<br>
+$\{e_1, e_2, e_4, e_3, e_6, -e_7, e_5\}$<br>
+<br>
+
 $\left[\matrix{
 	e_1 & \times e_2 & & = e_3 & & & & \\
-	 & e_2 & \times e_5 & & = e_7 & & & \\
-	 & & e_5 & \times e_3 & & = e_6 & & \\
-	 & & & e_3 & \times e_7 & & = -e_4 \\
-	= e_1 & & & & e_7 & \times e_6 & & \\
-	 & = e_2 & & & & e_6 & \times -e_4 \\
-	\times e_1 & & = e_5 & & & & -e_4 \\
+	 & e_2 & \times e_4 & & = e_6 & & & \\
+	 & & e_4 & \times e_3 & & = -e_7 & & \\
+	 & & & e_3 & \times e_6 & & = e_5 \\
+	= e_1 & & & & e_6 & \times -e_7 & & \\
+	 & = e_2 & & & & -e_7 & \times e_5 \\
+	\times e_1 & & = e_4 & & & & e_5 \\
 }\right]$<br>
 
 <h3>Sedenions</h3>
@@ -317,9 +317,33 @@ $\{e_6, e_{11}, e_{13}\},
 <br>
 
 There are 15 octonion rings embedded within the sedenions:<br>
+$\left[\matrix{
+	r_1: & \{ e_1 & e_2 & e_4 & e_3 & e_6 & -e_7 & e_5 \} \\
+	r_2: & \{ e_1 & e_2 & e_8 & e_3 & e_{10} & -e_{11} & e_9 \} \\
+	r_3: & \{ e_1 & e_2 & e_{14} & e_3 & e_{12} & e_{13} & -e_{15} & -e_1 & e_2 & e_{14} & -e_3 & e_{12} & -e_{13} & e_{15} \} \\
+	r_4: & \{ e_1 & e_4 & e_8 & e_5 & e_{12} & -e_{13} & e_9 \} \\
+	r_5: & \{ e_1 & e_4 & e_{10} & e_5 & e_{14} & -e_{15} & e_{11} & -e_1 & e_4 & e_{10} & -e_5 & e_{14} & e_{15} & -e_{11} \} \\
+	r_6: & \{ e_1 & e_7 & e_8 & e_6 & e_{15} & -e_{14} & e_9 \} \\
+	r_7: & \{ e_1 & e_7 & e_{12} & e_6 & e_{11} & -e_{10} & e_{13} & -e_1 & e_7 & e_{12} & -e_6 & e_{11} & e_{10} & -e_{13} \} \\
+	r_8: & \{ e_2 & e_4 & e_8 & e_6 & e_{12} & -e_{14} & e_{10} \} \\
+	r_9: & \{ e_2 & e_4 & e_9 & e_6 & e_{13} & e_{15} & -e_{11} & -e_2 & e_4 & e_9 & -e_6 & e_{13} & -e_{15} & e_{11} \} \\
+	r_{10}: & \{ e_2 & e_5 & e_8 & e_7 & e_{13} & -e_{15} & e_{10} \} \\
+	r_{11}: & \{ e_2 & e_5 & e_{12} & e_7 & e_9 & -e_{11} & e_{14} & -e_2 & e_5 & e_{12} & -e_7 & e_9 & e_{11} & -e_{14} \} \\
+	r_{12}: & \{ e_3 & e_4 & e_8 & e_7 & e_{12} & -e_{15} & e_{11} \} \\
+	r_{13}: & \{ e_3 & e_4 & e_9 & e_7 & e_{13} & -e_{14} & e_{10} & -e_3 & e_4 & e_9 & -e_7 & e_{13} & e_{14} & -e_{10} \} \\
+	r_{14}: & \{ e_3 & e_6 & e_8 & e_5 & e_{14} & -e_{13} & e_{11} \} \\
+	r_{15}: & \{ e_3 & e_6 & e_{12} & e_5 & e_{10} & -e_9 & e_{15} & -e_3 & e_6 & e_{12} & -e_5 & e_{10} & e_9 & -e_{15} \} \\
+}\right]$<br>
+<br>
+
+As you can see, 8 of these rings are equal in sign to the original octonion ring,
+but 7 of them have flipped signs, causing the ring to be traversed twice.<br>
+I'll denote the traverse-once rings as 'positive parity' and the traverse-twice rings as 'negative parity'.<br>
+<br>
+
 ring, parity, elements:<br>
 $\left[\matrix{
-	r_1: & + & \{e_1, & e_2, & e_5, & e_3, & e_7, & e_6, & -e_4\} \\
+	r_1: & + & \{e_1, & e_2, & e_4, & e_3, & e_6, & -e_7, & e_5\} \\
 	r_2: & + & \{e_1, & e_2, & e_8, & e_3, & e_{10}, & -e_{11}, & e_9\} \\
 	r_3: & - & \{e_1, & e_2, & e_{14}, & e_3, & e_{12}, & e_{13}, & -e_{15}\} \\
 	r_4: & + & \{e_1, & e_4, & e_8, & e_5, & e_{12}, & -e_{13}, & e_9\} \\
@@ -331,7 +355,7 @@ $\left[\matrix{
 	r_{10}: & + & \{e_2, & e_5, & e_8, & e_7, & e_{13}, & -e_{15}, & e_{10}\} \\
 	r_{11}: & - & \{e_2, & e_5, & e_{12}, & e_7, & e_9, & -e_{11}, & e_{14}\} \\
 	r_{12}: & + & \{e_3, & e_4, & e_8, & e_7, & e_{12}, & -e_{15}, & e_{11}\} \\
-	r_{13}: & - & \{e_3, & e_4, & e_{10}, & e_7, & e_{14}, & e_{13}, & -e_9\} \\
+	r_{13}: & - & \{e_3, & e_4, & e_9, & e_7, & e_{13}, & -e_{14}, & e_{10}\} \\
 	r_{14}: & + & \{e_3, & e_6, & e_8, & e_5, & e_{14}, & -e_{13}, & e_{11}\} \\
 	r_{15}: & - & \{e_3, & e_6, & e_{12}, & e_5, & e_{10}, & -e_9, & e_{15}\} \\
 }\right]$<br>
@@ -512,11 +536,11 @@ We see a dual between the elements of the Cayley-Dickson construction:
 
 <table id='dualtable'>
 	<tr>
-		<th><div>construction</div></th>
-		<th><div>elements</div></th>
-		<th><div>quaternion triplets</div></th>
-		<th><div>octonion mobius bands</div></th>
-		<th><div>sedenion mobius ring-of-bands</div></th>
+		<th><div><span>construction</span></div></th>
+		<th><div><span>elements</span></div></th>
+		<th><div><span>triplets</span></div></th>
+		<th><div><span>mobius bands</span></div></th>
+		<th><div><span>mobius ring-of-bands</span></div></th>
 	</tr>
 	<tr>
 		<td>quaternions</td>
