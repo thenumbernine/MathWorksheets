@@ -26,9 +26,11 @@ Here's the CDN URLs:
 
 [BSSNOK 1D](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/BSSNOK%201D.html)
 
+[Cayley-Dickson](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Cayley-Dickson.html)
+
 [Electromagnetic Tensor Self-Dual](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Electromagnetic%20Tensor%20Self-Dual.html)
 
-[EMHD Eigenmode Analysis](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/EMHD%20Eigenmode%20Analysis.html)
+[EMHD Hyperbolic Conservation Laws](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/EMHD%20Hyperbolic%20Conservation%20Laws.html)
 
 [EMHD Linear Stability Analysis](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/EMHD%20Linear%20Stability%20Analysis.html)
 
