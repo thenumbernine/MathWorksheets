@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Tetrad Formalism in General Relativity</title>
+		<!-- script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script -->
+		<script type="text/javascript" async src="file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+	</head>
+	<body>
+
+<br>
+Basis:<br>
+$e_a = {e_a}^I \frac{\partial}{\partial x^I}$<br>
+<br>
+
+Tetrad:<br>
+${e_a}^I = e_a x^I = \frac{\partial x^I}{\partial x^a}$<br>
+<br>
+
+Tetrad inverse:<br>
+${e^a}_I = \frac{\partial x^a}{\partial x^I}$<br>
+${e_a}^I {e^b}_I = \delta^b_a$<br>
+${e_a}^I {e^a}_J = \delta^I_J$<br>
+<br>
+
+Metric:<br>
+$g_{ab} = {e_a}^I {e_b}^J \eta_{IJ}$<br>
+
+Metric inverse:<br>
+$g^{ab} = {e^a}_I {e^b}_J \eta^{IJ}$<br>
+<br>
+
+Commutation coefficients (MTW):<br>
+${c_{ab}}^c e_c = [e_a, e_b]$<br>
+${c_{ab}}^c {e_c}^K \frac{\partial}{\partial x^K}
+	= {e_a}^I \frac{\partial}{\partial x^I}( {e_b}^J \frac{\partial}{\partial x^J} ) 
+	- {e_b}^I \frac{\partial}{\partial x^I}( {e_a}^J \frac{\partial}{\partial x^J})$<br>
+${c_{ab}}^c {e_c}^K \frac{\partial}{\partial x^K}
+	= {e_a}^I {{e_b}^J}_{,I} \frac{\partial}{\partial x^J}
+	+ {e_a}^I {e_b}^J \frac{\partial^2}{\partial x^I \partial x^J}
+	- {e_b}^I {{e_a}^J}_{,I} \frac{\partial}{\partial x^J}
+	- {e_b}^I {e_a}^J \frac{\partial^2}{\partial x^I \partial x^J}$<br>
+${c_{ab}}^c {e_c}^J \frac{\partial}{\partial x^J}
+	= 2 {e_{[a}}^I {{e_{b]}}^J}_{,I} \frac{\partial}{\partial x^J}$<br>
+${c_{ab}}^c {e_c}^J = 2 {e_{[a}}^I {{e_{b]}}^J}_{,I}$<br>
+${c_{ab}}^c {e_c}^J = 2 {{e_{[b}}^J}_{,a]}$<br>
+${c_{ab}}^c = 2 {e^c}_I {{e_{[b}}^I}_{,a]}$<br>
+${c_{ab}}^I = 2 {{e_{[b}}^I}_{,a]}$<br>
+<br>
+
+Christoffel symbols (MTW):<br>
+$\Gamma_{abc} = \frac{1}{2}(g_{ab,c} + g_{ac,b} - g_{bc,a} + c_{abc} + c_{acb} - c_{bca})$<br>
+$\Gamma_{abc} = \frac{1}{2} \left[ 
+	({e_a}^I {e_b}^J \eta_{IJ})_{,c} + ({e_a}^I {e_c}^J \eta_{IJ})_{,b} - ({e_b}^I {e_c}^J \eta_{IJ})_{,a} \right]
+	+ e_{cI} {{e_{[b}}^I}_{,a]}
+	+ e_{bI} {{e_{[c}}^I}_{,a]}
+	- e_{aI} {{e_{[c}}^I}_{,b]}$
+<br>
+$\Gamma_{abc} = \frac{1}{2} ( 
+	{{e_a}^I}_{,c} e_{bI} + {{e_b}^I}_{,c} e_{aI} 
+	+ {{e_a}^I}_{,b} e_{cI} + {{e_c}^I}_{,b} e_{aI} 
+	- {{e_b}^I}_{,a} e_{cI} - {{e_c}^I}_{,a} e_{bI} 
+	+ {{e_b}^I}_{,a} e_{cI} - {{e_a}^I}_{,b} e_{cI} 
+	+ {{e_c}^I}_{,a} e_{bI} -  {{e_a}^I}_{,c} e_{bI} 
+	- {{e_c}^I}_{,b} e_{aI} + {{e_b}^I}_{,c} e_{aI} )$<br>
+$\Gamma_{abc} = e_{aI} {{e_b}^I}_{,c}$<br>
+<br>
+
+Connection coefficients (MTW):<br>
+${\Gamma^a}_{bc} = {e^a}_I {{e_b}^I}_{,c}$<br>
+${\Gamma^I}_{bc} = {{e_b}^I}_{,c}$<br>
+<br>
+
+Antisymmetric component of connection coefficients (MTW):<br>
+${\Gamma^a}_{[bc]} = {e^a}_I {{e_{[b}}^I}_{,c]} = \frac{1}{2} {c_{cb}}^a$<br>
+<br>
+
+Spin connection (Wikipedia):<br>
+$0 = D_a \eta_{IJ} = \eta_{IJ,a} - {{\omega_a}^K}_I \eta_{KJ} - {{\omega_a}^K}_J \eta_{KI}$<br>
+$\omega_{aIJ} = -\omega_{aJI}$<br>
+$\omega_{aIJ} = \omega_{a[IJ]}$<br>
+<br>
+Defining spin connections by a covariant derivative that cancels tetrad and only applies spin connection to Minkowski indexes:<br>
+$D_b {e_a}^I = 0 = {{e_a}^I}_{,b} + {{\omega_b}^I}_J {e_a}^J$<br>
+${{\omega_b}^I}_a = -{{e_a}^I}_{,b}$<br>
+${{\omega_b}^I}_a = -{\Gamma^I}_{ab}$<br>
+$\omega_{bca} = -\Gamma_{cab}$<br>
+But if $\omega_{aIJ} = -\omega_{aJI}$<br>
+then does $\Gamma_{cab} = -\Gamma_{acb}$?<br>
+$\Gamma_{[ca]b} = {e_{[c}}^I e_{a]I,b} \ne {e_c}^I e_{aI,b}$<br>
+So this definition doesn't work with the spin connection cancelling the Minkowski metric.<br>
+<br>
+
+Defining spin connections by a covariant derivative that cancels tetrad, applies spin connection to Minkowski indexes, and connection coefficients to parameter space indexes, considering a non-symmetric connections:<br>
+$D_b {e_a}^I = 0 = {{e_a}^I}_{,b} - {\Gamma^c}_{ab} {e_c}^I + {{\omega_b}^I}_J {e_a}^J$<br>
+${{\omega_b}^I}_a = {\Gamma^I}_{ab} - {{e_a}^I}_{,b}$<br>
+${{\omega_b}^I}_a = {{e_a}^I}_{,b} - {{e_a}^I}_{,b}$<br>
+${{\omega_b}^I}_a = 0$<br>
+This definition doesn't give us anything useful.<br>
+<br>
+
+Spin connection, if connections were symmetric yet the tetrad was mysetriously somehow still anholonomic:<br>
+$D_b {e_a}^I = 0 = {{e_a}^I}_{,b} - {\Gamma^c}_{ab} {e_c}^I + {{\omega_b}^I}_J {e_a}^J$<br>
+${{\omega_b}^I}_a = {\Gamma^I}_{ab} - {{e_a}^I}_{,b}$<br>
+${{\omega_b}^I}_a = {{e_{(a}}^I}_{,b)} - {{e_a}^I}_{,b}$<br>
+${{\omega_b}^I}_a = {{e_{[b}}^I}_{,a]} = \frac{1}{2} {c_{ab}}^I$<br>
+This makes sense, but is redundant with the definition of the commutation coefficients.<br>
+Its origins are also a bit suspicious, with the connection being symmetric despite an anholonomic basis.<br>
+It looks like folks who use spin connection are considering a tetrad that does not communite (i.e. ${{e_a}^I}_{,b} \ne {{e_{[a}}^I}_{,b]}$), therefore does not represent a coordinate basis.  
+This is the case for anholonomic coordinate systems, which MTW's definition of connections says anholonomic coordinate systems imply a not-necessarily-symmetric connection.
+However the spin-connection crowd seems to still define the connection to be symmetric (meaning the coordinate system may still yet be holonomic, but there may be a separate component to the geodesic's asymmetry -- maybe the torsion?)
+and puts the asymmetric portion of the geodesic into the spin connection.<br>
+In summary, where MTW would have a single no-constraints tensor ${\Gamma^a}_{bc}$, the spin-conn crowd would break that into symmetric ${\Gamma^a}_{bc}$ and antisymmetric ${{\omega_c}^a}_b$.<br>
+<br>
+
+Torsion (Wikipedia):<br>
+${T^a}_{bc} = 2 {\Gamma^a}_{[bc]} - {c_{cb}}^a$<br>
+substituting the MTW definition of connection and commutation coefficients:<br> 
+${T^a}_{bc} = {c_{cb}}^a - {c_{cb}}^a$<br>
+${T^a}_{bc} = 0$<br>
+so I'm betting torsion is missing from my MTW definition of connection coefficients.<br>
+<br>
+
+So what is the difference between spin connections, commutation coefficients, and torsion?<br>
+<br>
+
+Riemann curvature tensor:<br>
+${R^a}_{bcd} = {\Gamma^a}_{bd,c} - {\Gamma^a}_{bc,d} 
+	+ {\Gamma^a}_{ec} {\Gamma^e}_{bd} 
+	- {\Gamma^a}_{ed} {\Gamma^e}_{bc} 
+	- {\Gamma^a}_{be} {c_{cd}}^e$<br>
+${R^a}_{bcd} = ({e^a}_I {{e_b}^I}_{,d})_{,c}
+	- ({e^a}_I {{e_b}^I}_{,c})_{,d}
+	+ {e^a}_I {{e_e}^I}_{,c} {e^e}_J {{e_b}^J}_{,d}
+	- {e^a}_I {{e_e}^I}_{,d} {e^e}_J {{e_b}^J}_{,c}
+	- 2 {e^a}_I {{e_b}^I}_{,e} {e^e}_I {{e_{[d}}^I}_{,c]}$<br>
+${R^a}_{bcd} = 
+	{{e^a}_I}_{,c} {{e_b}^I}_{,d}
+	+ {e^a}_I {{e_b}^I}_{,dc}
+	- {{e^a}_I}_{,d} {{e_b}^I}_{,c}
+	- {e^a}_I {{e_b}^I}_{,cd}
+	+ {e^a}_I {{e_e}^I}_{,c} {e^e}_J {{e_b}^J}_{,d}
+	- {e^a}_I {{e_e}^I}_{,d} {e^e}_J {{e_b}^J}_{,c}
+	- {e^a}_I {{e_b}^I}_{,e} {e^e}_J {{e_d}^J}_{,c}
+	+ {e^a}_I {{e_b}^I}_{,e} {e^e}_J {{e_c}^J}_{,d}
+$<br>
+${R^a}_{bcd} = 
+	{{e^a}_I}_{,c} {{e_b}^I}_{,d}
+	- {{e^a}_I}_{,d} {{e_b}^I}_{,c}
+	+ {e^a}_I {{e_e}^I}_{,c} {e^e}_J {{e_b}^J}_{,d}
+	- {e^a}_I {{e_e}^I}_{,d} {e^e}_J {{e_b}^J}_{,c}
+	- {e^a}_I {{e_b}^I}_{,e} {e^e}_J {{e_d}^J}_{,c}
+	+ {e^a}_I {{e_b}^I}_{,e} {e^e}_J {{e_c}^J}_{,d}
+$<br>
+${R^a}_{bcd} = 
+	{e^a}_{I,c} {{e_b}^I}_{,d}
+	- {e^a}_{I,d} {{e_b}^I}_{,c}
+	- {e^a}_{I,c} {e_e}^I {e^e}_J {{e_b}^J}_{,d}
+	+ {e^a}_{I,d} {e_e}^I {e^e}_J {{e_b}^J}_{,c}
+	+ {e^a}_{I,e} {e_b}^I {e^e}_J {{e_d}^J}_{,c}
+	- {e^a}_{I,e} {e_b}^I {e^e}_J {{e_c}^J}_{,d}
+$<br>
+${R^a}_{bcd} = 
+	{e^a}_{I,e} {e_b}^I  {{e_d}^J}_{,c} {e^e}_J
+	- {e^a}_{I,e} {e_b}^I  {{e_c}^J}_{,d} {e^e}_J
+$<br>
+${R^a}_{bcd} = 
+	{e^a}_{I} {{e_b}^I}_{,e}  {{e_c}^J}_{,d} {e^e}_J
+	- {e^a}_I {{e_b}^I}_{,e}  {{e_d}^J}_{,c} {e^e}_J $<br>
+${R^a}_{bcd} = {e^a}_{I} {{e_b}^I}_{,e} ( {{e_c}^J}_{,d} {e^e}_J - {{e_d}^J}_{,c} {e^e}_J)$<br>
+${R^a}_{bcd} = 2 {e^a}_{I} {{e_b}^I}_{,e} {e^e}_J {{e_{[c}}^J}_{,d]}$<br>
+${R^a}_{bcd} = 2 {e^a}_{I} {{e_b}^I}_{,J} {{e_{[c}}^J}_{,d]}$<br>
+... but isn't this just <br>
+${R^a}_{bcd} = -{\Gamma^a}_{be} {c_{cd}}^e$? <br>
+<br>
+
+${\delta^a_b}_{,c} = 0$<br>
+$({e_a}^I {e^b}_I)_{,c} = 0$<br>
+${{e_a}^I}_{,c} {e^b}_I + {e_a}^I {e^b}_{I,c} = 0$<br>
+<br>
+
+${\delta^I_J}_{,a} = 0$<br>
+$({e_b}^I {e^b}_J)_{,a} = 0$<br>
+${{e_b}^I}_{,a} {e^b}_J + {e_b}^I {e^b}_{J,a} = 0$<br>
+${e^c}_{J,a} = -{e^c}_I {{e_b}^I}_{,a} {e^b}_J$<br>
+<br>
+
+${R_{ab}}^{IJ} = 
+	g_{ae} {{e^e}_K}_{,c} {{e_b}^K}_{,d} e^{cI} e^{dJ}
+	- g_{ae} {{e^e}_K}_{,d} {{e_b}^K}_{,c}  e^{cI} e^{dJ}
+	+ e_{aK} {{e_e}^K}_{,c} e^{cI} {e^e}_L {{e_b}^L}_{,d} e^{dJ}
+	- e_{aK} {{e_e}^K}_{,d} e^{dJ} {e^e}_L {{e_b}^L}_{,c} e^{cI}
+	- e_{aK} {{e_b}^K}_{,e} {e^e}_L {{e_d}^L}_{,c} e^{cI} e^{dJ}
+	- e_{aK} {{e_b}^K}_{,e} {e^e}_L {{e_c}^L}_{,d} e^{cI} e^{dJ}
+$<br>
+	
+	</body>
+</html>
