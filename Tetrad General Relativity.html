@@ -15,23 +15,72 @@ $e_a = {e_a}^I \frac{\partial}{\partial x^I}$<br>
 <br>
 
 Tetrad:<br>
-${e_a}^I = e_a x^I = \frac{\partial x^I}{\partial x^a}$<br>
+${e_a}^I = e_a x^I = {e_a}^J \frac{\partial}{\partial x^J} x^I$<br>
+$= {e_a}^J \delta^J_I = {e_a}^I$<br>
 <br>
 
-Tetrad inverse:<br>
+Co-Tetrad:<br>
 ${e^a}_I = \frac{\partial x^a}{\partial x^I}$<br>
-${e_a}^I {e^b}_I = \delta^b_a$<br>
-${e_a}^I {e^a}_J = \delta^I_J$<br>
+${e_a}^I {e^b}_I = \delta^b_a$ if $dim(x^a) \le dim(x^I)$, otherwise it is $diag(a \le m : 1, a \gt m : 0)$ for $m = dim(x^I)$<br>
+${e_a}^I {e^a}_J = \delta^I_J$ if $dim(x^I) \le dim(x^a)$, otherwise it is $diag(I \le n : 1, I \gt n : 0)$ for $n = dim(x^a)$<br>
+The co-tetrad does not form an inverse with the tetrad unless the dimension of the coordinate space and the embedded space are equal.<br>
 <br>
 
+For a holonomic basis the tetrad represents a coordinate chart:<br>
+${e_a}^I = \frac{\partial x^I}{\partial x^a}$<br>
+${e^a}_I = \frac{\partial x^a}{\partial x^I}$<br>
+${{e_a}^I}_{,b} = \frac{\partial}{\partial x^b} \frac{\partial x^I}{\partial x^a}
+	= \frac{\partial x^I}{\partial x^b\partial x^a}
+	= \frac{\partial x^I}{\partial x^a\partial x^b}
+	= \frac{\partial}{\partial x^a} \frac{\partial x^I}{\partial x^b}
+	= \frac{\partial}{\partial x^a} {e_b}^I
+	= {{e_b}^I}_{,a}$<br>
+Therefore, for holonomic basis, ${{e_a}^I}_{,b} = {{e_{(a}}^I}_{,b)}$<br>
+<br>
+
+Comma derivatives:<br>
+$T_{,a} = {e_a}(T) = {e_a}^I \frac{\partial}{\partial x^I} T$<br>
+This is not equal to $\frac{\partial}{\partial x^a}$ ... ?<br>
+or is it that it is equal, and $\frac{\partial}{\partial x^a}$ is not a partial derivative but instead a function ${e_a}$ which is a linear combination (via ${e_a}^I$) of functions of partial derivatives?<br>
+MTW uses comma derivatives and applications of $e_a$ to denote anholonomic basis operators, but I think it avoids using $\frac{\partial}{\partial x^a}$ - probably for ambiguity's sake.<br>
+Maybe I should revise/generalize my definition of $e_a$ as well?<br>
+So $T_{,a}$ is not equal to (and in the case of an anholonomic basis, should not ever be represented as) $\frac{\partial}{\partial x^a} T$.<br>
+<br>
+
+Change of basis of ${e_a}^I$:<br>
+${e_a}^J {{e_b}^I}_{,J} 
+	= {e_a}^J \frac{\partial}{\partial x^J} {e_b}^I 
+	= {e_a}( {e_b}^I )
+	= {{e_b}^I}_{,a}$<br>
+<br>
+
+$g^{ab}$ and $g_{ab}$ raise and lower $abc...$<br>
 Metric:<br>
 $g_{ab} = {e_a}^I {e_b}^J \eta_{IJ}$<br>
-
 Metric inverse:<br>
 $g^{ab} = {e^a}_I {e^b}_J \eta^{IJ}$<br>
+The metric is, by definition, two tetrads combined.  Regardless of dimensions of coordinate or embedded space.<br>
 <br>
 
-Commutation coefficients (MTW):<br>
+$\eta^{IJ}$ and $\eta_{IJ}$ raise and lower $IJK...$<br>
+Minkowski metric:<br>
+$\eta_{IJ} = \eta^{IJ} = diag(-1, 1, ...)$<br>
+<br>
+
+Minkowski metric in relation to tetrad inverse definitions:<br>
+${\delta_{sub}}^K_J = {e_b}^K {e^b}_J$<br>
+${\delta_{sub}}^K_J = e^{aK} {e^b}_J g_{ab}$<br>
+$\eta_{IK} {\delta_{sub}}^K_J = \eta_{IK} e^{aK} {e^b}_J g_{ab}$<br>
+$\eta_{IK} {\delta_{sub}}^K_J = {e^a}_I {e^b}_J g_{ab}$<br>
+<br>
+${\delta_{sub}}^J_K = {e^a}_K {e_a}^J $<br>
+${\delta_{sub}}^J_K = e_{aK} {e_a}^J g^{ab} $<br>
+$\eta^{IK} {\delta_{sub}}^J_K = \eta^{IK} e_{aK} {e_a}^J g^{ab} $<br>
+$\eta^{IK} {\delta_{sub}}^J_K = {e_a}^I {e_a}^J g^{ab} $<br>
+The Minkowski metric is only recovered from two co-tetrads if the coordinate space is greater than the embedded space.<br>
+<br>
+
+Commutation coefficients (definition from MTW):<br>
 ${c_{ab}}^c e_c = [e_a, e_b]$<br>
 ${c_{ab}}^c {e_c}^K \frac{\partial}{\partial x^K}
 	= {e_a}^I \frac{\partial}{\partial x^I}( {e_b}^J \frac{\partial}{\partial x^J} ) 
@@ -41,12 +90,40 @@ ${c_{ab}}^c {e_c}^K \frac{\partial}{\partial x^K}
 	+ {e_a}^I {e_b}^J \frac{\partial^2}{\partial x^I \partial x^J}
 	- {e_b}^I {{e_a}^J}_{,I} \frac{\partial}{\partial x^J}
 	- {e_b}^I {e_a}^J \frac{\partial^2}{\partial x^I \partial x^J}$<br>
-${c_{ab}}^c {e_c}^J \frac{\partial}{\partial x^J}
+${c_{ab}}^c {e_c}^K \frac{\partial}{\partial x^K}
 	= 2 {e_{[a}}^I {{e_{b]}}^J}_{,I} \frac{\partial}{\partial x^J}$<br>
+apply both sides to $x^J$:<br>
 ${c_{ab}}^c {e_c}^J = 2 {e_{[a}}^I {{e_{b]}}^J}_{,I}$<br>
-${c_{ab}}^c {e_c}^J = 2 {{e_{[b}}^J}_{,a]}$<br>
-${c_{ab}}^c = 2 {e^c}_I {{e_{[b}}^I}_{,a]}$<br>
-${c_{ab}}^I = 2 {{e_{[b}}^I}_{,a]}$<br>
+<br>
+
+By using the change of basis definition we can get<br>
+${c_{ab}}^c {e_c}^J = 2 {{e_{[b}}^J}_{,a]}$,<br>
+but this only works in the holonomic case, when ${e_a}^I$ is a coordinate chart itself.
+In such a case ${{e_a}^I}_{,b}$ is symmetric on $a$ and $b$,<br>
+so the connection's definition would reduce to<br>
+${c_{ab}}^c {e_c}^J = 2 {{e_{[(b}}^J}_{,a)]}$<br>
+${c_{ab}}^c {e_c}^J = 0$,<br>
+which is the definition of commutation coefficients in a holonomic basis,
+but is not the general definition.<br>
+<br>
+
+In the case $dim(x^I) \ge dim(x^a)$ we can apply the co-tetrad to index $J$ to find:<br> 
+${c_{ab}}^c = 2 {e_{[a}}^I {{e_{b]}}^J}_{,I} {e^c}_J$<br>
+<br>
+
+In the case $dim(x^a) \ge dim(x^I)$ we can change the basis much earlier:<br>
+${c_{ab}}^c {e_c}^K \frac{\partial}{\partial x^K}
+	= {e_a}^I \frac{\partial}{\partial x^I}( {e_b}^J \frac{\partial}{\partial x^J} ) 
+	- {e_b}^I \frac{\partial}{\partial x^I}( {e_a}^J \frac{\partial}{\partial x^J})$<br>
+${c_{ab}}^c {e_c}^K \frac{\partial}{\partial x^K}
+	= {e_a}^I \frac{\partial x^d}{\partial x^I} \frac{\partial}{\partial x^d} ( {e_b}^J \frac{\partial}{\partial x^J} ) 
+	- {e_b}^I \frac{\partial x^d}{\partial x^I} \frac{\partial}{\partial x^d} ( {e_a}^J \frac{\partial}{\partial x^J})$<br>
+${c_{ab}}^c {e_c}^K \frac{\partial}{\partial x^K}
+	= {e_a}^I \frac{\partial x^d}{\partial x^I} ( \frac{\partial}{\partial x^d} {e_b}^J \frac{\partial}{\partial x^J} ) 
+	+ {e_a}^I \frac{\partial x^d}{\partial x^I} ( {e_b}^J \frac{\partial}{\partial x^d} \frac{\partial}{\partial x^J} ) 
+	- {e_b}^I \frac{\partial x^d}{\partial x^I} ( \frac{\partial}{\partial x^d} {e_a}^J \frac{\partial}{\partial x^J} )
+	- {e_b}^I \frac{\partial x^d}{\partial x^I} ( {e_a}^J \frac{\partial}{\partial x^d} \frac{\partial}{\partial x^J} )
+$<br>
 <br>
 
 Christoffel symbols (MTW):<br>
@@ -62,7 +139,7 @@ $\Gamma_{abc} = \frac{1}{2} (
 	+ {{e_a}^I}_{,b} e_{cI} + {{e_c}^I}_{,b} e_{aI} 
 	- {{e_b}^I}_{,a} e_{cI} - {{e_c}^I}_{,a} e_{bI} 
 	+ {{e_b}^I}_{,a} e_{cI} - {{e_a}^I}_{,b} e_{cI} 
-	+ {{e_c}^I}_{,a} e_{bI} -  {{e_a}^I}_{,c} e_{bI} 
+	+ {{e_c}^I}_{,a} e_{bI} - {{e_a}^I}_{,c} e_{bI} 
 	- {{e_c}^I}_{,b} e_{aI} + {{e_b}^I}_{,c} e_{aI} )$<br>
 $\Gamma_{abc} = e_{aI} {{e_b}^I}_{,c}$<br>
 <br>
