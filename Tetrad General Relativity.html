@@ -39,12 +39,12 @@ Therefore, for holonomic basis, ${{e_a}^I}_{,b} = {{e_{(a}}^I}_{,b)}$<br>
 <br>
 
 Comma derivatives:<br>
-$T_{,a} = {e_a}(T) = {e_a}^I \frac{\partial}{\partial x^I} T$<br>
+$T_{,a} = e_a (T) = {e_a}^I \frac{\partial}{\partial x^I} T$<br>
 This is not equal to $\frac{\partial}{\partial x^a}$ ... ?<br>
 or is it that it is equal, and $\frac{\partial}{\partial x^a}$ is not a partial derivative but instead a function ${e_a}$ which is a linear combination (via ${e_a}^I$) of functions of partial derivatives?<br>
 MTW uses comma derivatives and applications of $e_a$ to denote anholonomic basis operators, but I think it avoids using $\frac{\partial}{\partial x^a}$ - probably for ambiguity's sake.<br>
 Maybe I should revise/generalize my definition of $e_a$ as well?<br>
-So $T_{,a}$ is not equal to (and in the case of an anholonomic basis, should not ever be represented as) $\frac{\partial}{\partial x^a} T$.<br>
+So $T_{,a} = e_a (T)$ is not equal to (and in the case of an anholonomic basis, should not ever be represented as) $\frac{\partial}{\partial x^a} T$.<br>
 <br>
 
 Change of basis of ${e_a}^I$:<br>
@@ -77,7 +77,13 @@ ${\delta_{sub}}^J_K = {e^a}_K {e_a}^J $<br>
 ${\delta_{sub}}^J_K = e_{aK} {e_a}^J g^{ab} $<br>
 $\eta^{IK} {\delta_{sub}}^J_K = \eta^{IK} e_{aK} {e_a}^J g^{ab} $<br>
 $\eta^{IK} {\delta_{sub}}^J_K = {e_a}^I {e_a}^J g^{ab} $<br>
-The Minkowski metric is only recovered from two co-tetrads if the coordinate space is greater than the embedded space.<br>
+The Minkowski metric is only recovered from two co-tetrads if $dim(x^a) \ge dim(x^I)$<br>
+<br>
+
+Notice, due to the possible differences in dimensions, it is not always the case that:<br>
+${e^a}_I = g^{ab} {e_b}^J \eta_{IJ}$<br>
+${e_a}^I = g_{ab} {e^b}_J \eta^{IJ}$<br>
+This is true only when $dim(x^a) \ge dim(x^I)$<br>
 <br>
 
 Commutation coefficients (definition from MTW):<br>
@@ -92,48 +98,33 @@ ${c_{ab}}^c {e_c}^K \frac{\partial}{\partial x^K}
 	- {e_b}^I {e_a}^J \frac{\partial^2}{\partial x^I \partial x^J}$<br>
 ${c_{ab}}^c {e_c}^K \frac{\partial}{\partial x^K}
 	= 2 {e_{[a}}^I {{e_{b]}}^J}_{,I} \frac{\partial}{\partial x^J}$<br>
-apply both sides to $x^J$:<br>
+Apply both sides to $x^J$:<br>
 ${c_{ab}}^c {e_c}^J = 2 {e_{[a}}^I {{e_{b]}}^J}_{,I}$<br>
-<br>
-
-By using the change of basis definition we can get<br>
+By substituting the definition of $e_a = _{,a}$ we find:<br>
 ${c_{ab}}^c {e_c}^J = 2 {{e_{[b}}^J}_{,a]}$,<br>
-but this only works in the holonomic case, when ${e_a}^I$ is a coordinate chart itself.
-In such a case ${{e_a}^I}_{,b}$ is symmetric on $a$ and $b$,<br>
-so the connection's definition would reduce to<br>
-${c_{ab}}^c {e_c}^J = 2 {{e_{[(b}}^J}_{,a)]}$<br>
-${c_{ab}}^c {e_c}^J = 0$,<br>
-which is the definition of commutation coefficients in a holonomic basis,
-but is not the general definition.<br>
-<br>
-
 In the case $dim(x^I) \ge dim(x^a)$ we can apply the co-tetrad to index $J$ to find:<br> 
-${c_{ab}}^c = 2 {e_{[a}}^I {{e_{b]}}^J}_{,I} {e^c}_J$<br>
+${c_{ab}}^c = 2 {e^c}_I {{e_{[b}}^I}_{,a]} $<br>
+Even in the case that $dim(x^I) \lt dim(x^a)$, we can define ${c_{ab}}^c$ in the same manner 
+and simply acknowledge that the dimension of the index $c$ is only $m = dim(x^I) \lt n = dim(x^a)$.<br>
+Therefore, for ${c_{ab}}^c$, $dim(x^c) = min(m,n)$ for $m = dim(x^I)$ and $n = dim(x^a)$.<br>
 <br>
 
-In the case $dim(x^a) \ge dim(x^I)$ we can change the basis much earlier:<br>
-${c_{ab}}^c {e_c}^K \frac{\partial}{\partial x^K}
-	= {e_a}^I \frac{\partial}{\partial x^I}( {e_b}^J \frac{\partial}{\partial x^J} ) 
-	- {e_b}^I \frac{\partial}{\partial x^I}( {e_a}^J \frac{\partial}{\partial x^J})$<br>
-${c_{ab}}^c {e_c}^K \frac{\partial}{\partial x^K}
-	= {e_a}^I \frac{\partial x^d}{\partial x^I} \frac{\partial}{\partial x^d} ( {e_b}^J \frac{\partial}{\partial x^J} ) 
-	- {e_b}^I \frac{\partial x^d}{\partial x^I} \frac{\partial}{\partial x^d} ( {e_a}^J \frac{\partial}{\partial x^J})$<br>
-${c_{ab}}^c {e_c}^K \frac{\partial}{\partial x^K}
-	= {e_a}^I \frac{\partial x^d}{\partial x^I} ( \frac{\partial}{\partial x^d} {e_b}^J \frac{\partial}{\partial x^J} ) 
-	+ {e_a}^I \frac{\partial x^d}{\partial x^I} ( {e_b}^J \frac{\partial}{\partial x^d} \frac{\partial}{\partial x^J} ) 
-	- {e_b}^I \frac{\partial x^d}{\partial x^I} ( \frac{\partial}{\partial x^d} {e_a}^J \frac{\partial}{\partial x^J} )
-	- {e_b}^I \frac{\partial x^d}{\partial x^I} ( {e_a}^J \frac{\partial}{\partial x^d} \frac{\partial}{\partial x^J} )
-$<br>
+Define ${c_{ab}}^I = 2 {{e_{[b}}^I}_{,a]}$<br>
+so ${c_{ab}}^I = {c_{ab}}^c {e_c}^I$.<br>
 <br>
 
-Christoffel symbols (MTW):<br>
+Christoffel symbols (definition from MTW):<br>
 $\Gamma_{abc} = \frac{1}{2}(g_{ab,c} + g_{ac,b} - g_{bc,a} + c_{abc} + c_{acb} - c_{bca})$<br>
+Notice the difference in dimension for index $c$ between $g_{ab,c}$ and $c_{abc}$.<br>
+For $dim(x^I) \lt dim(x^a)$, the $c$ index in $g_{ab,c}$ is $dim(x^a)$, while the $c$ index in $c_{abc}$ is $dim(x^I)$.<br>
+Substitute definitions of $g_{ab}$ and $c_{abc} = {c_{ab}}^d g_{dc}$:<br>
 $\Gamma_{abc} = \frac{1}{2} \left[ 
 	({e_a}^I {e_b}^J \eta_{IJ})_{,c} + ({e_a}^I {e_c}^J \eta_{IJ})_{,b} - ({e_b}^I {e_c}^J \eta_{IJ})_{,a} \right]
 	+ e_{cI} {{e_{[b}}^I}_{,a]}
 	+ e_{bI} {{e_{[c}}^I}_{,a]}
 	- e_{aI} {{e_{[c}}^I}_{,b]}$
 <br>
+Distribute comma derivatives:<br>
 $\Gamma_{abc} = \frac{1}{2} ( 
 	{{e_a}^I}_{,c} e_{bI} + {{e_b}^I}_{,c} e_{aI} 
 	+ {{e_a}^I}_{,b} e_{cI} + {{e_c}^I}_{,b} e_{aI} 
@@ -141,16 +132,24 @@ $\Gamma_{abc} = \frac{1}{2} (
 	+ {{e_b}^I}_{,a} e_{cI} - {{e_a}^I}_{,b} e_{cI} 
 	+ {{e_c}^I}_{,a} e_{bI} - {{e_a}^I}_{,c} e_{bI} 
 	- {{e_c}^I}_{,b} e_{aI} + {{e_b}^I}_{,c} e_{aI} )$<br>
+Cancel:<br>
 $\Gamma_{abc} = e_{aI} {{e_b}^I}_{,c}$<br>
 <br>
 
-Connection coefficients (MTW):<br>
+Connection coefficients (definition from MTW):<br>
+${\Gamma^a}_{bc} = g^{ad} \Gamma_{dbc}$<br>
+substitute...<br>
+${\Gamma^a}_{bc} = g^{ad} e_{dI} {{e_b}^I}_{,c}$<br>
+When $dim(x^a) \ge dim(x^I)$ we can replace the product of inverse metric and tetrad with the co-tetrad:<br>
 ${\Gamma^a}_{bc} = {e^a}_I {{e_b}^I}_{,c}$<br>
-${\Gamma^I}_{bc} = {{e_b}^I}_{,c}$<br>
+Define ${\Gamma^I}_{bc} = {{e_b}^I}_{,c}$<br>
+so ${\Gamma^a}_{bc} = g^{ad} e_{dI} {\Gamma^I}_{bc}$.<br>
 <br>
 
 Antisymmetric component of connection coefficients (MTW):<br>
-${\Gamma^a}_{[bc]} = {e^a}_I {{e_{[b}}^I}_{,c]} = \frac{1}{2} {c_{cb}}^a$<br>
+${\Gamma^a}_{[bc]} = g^{ad} e_{dI} {{e_{[b}}^I}_{,c]}$<br>
+for $dim(x^a) \ge dim(x^I)$ this equals ${e^a}_I {{e_{[b}}^I}_{,c]}$<br>
+and for $dim(x^I) \ge dim(x^a)$ as well -- i.e. only for $dim(x^a) = dim(x^I)$ -- this equals $\frac{1}{2} {c_{cb}}^a$<br>
 <br>
 
 Spin connection (Wikipedia):<br>
