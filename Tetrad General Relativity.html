@@ -10,6 +10,10 @@
 	<body>
 
 <br>
+$x^a \in \mathbb{R}^n$<br>
+$x^I \in \mathbb{R}^m$<br>
+<br>
+
 Basis:<br>
 $e_a = {e_a}^I \frac{\partial}{\partial x^I}$<br>
 <br>
@@ -19,10 +23,14 @@ ${e_a}^I = e_a x^I = {e_a}^J \frac{\partial}{\partial x^J} x^I$<br>
 $= {e_a}^J \delta^J_I = {e_a}^I$<br>
 <br>
 
+$\left[ {e_a}^I \right]_{aI} \in \mathbb{R}^{n \times m}$<br>
+$\left[ {e^a}_I \right]_{aI} \in \mathbb{R}^{n \times m}$<br>
+<br>
+
 Co-Tetrad:<br>
 ${e^a}_I = \frac{\partial x^a}{\partial x^I}$<br>
-${e_a}^I {e^b}_I = \delta^b_a$ if $dim(x^a) \le dim(x^I)$, otherwise it is $diag(a \le m : 1, a \gt m : 0)$ for $m = dim(x^I)$<br>
-${e_a}^I {e^a}_J = \delta^I_J$ if $dim(x^I) \le dim(x^a)$, otherwise it is $diag(I \le n : 1, I \gt n : 0)$ for $n = dim(x^a)$<br>
+${e_a}^I {e^b}_I = \delta^b_a$ if $dim(x^a) \le dim(x^I)$, otherwise it is equal to $ {\delta_{sub}}^b_a = diag(a \le m : 1, a \gt m : 0)$<br>
+${e_a}^I {e^a}_J = \delta^I_J$ if $dim(x^I) \le dim(x^a)$, otherwise it is equal to $ {\delta_{sub}}^I_J = diag(I \le n : 1, I \gt n : 0)$<br>
 The co-tetrad does not form an inverse with the tetrad unless the dimension of the coordinate space and the embedded space are equal.<br>
 <br>
 
@@ -54,17 +62,23 @@ ${e_a}^J {{e_b}^I}_{,J}
 	= {{e_b}^I}_{,a}$<br>
 <br>
 
-$g^{ab}$ and $g_{ab}$ raise and lower $abc...$<br>
+Minkowski metric:<br>
+$[\eta_{IJ}]_{IJ} \in \mathbb{R}^{m \times m}$<br>
+$\eta_{IJ} = \eta^{IJ} = diag(-1, 1, ...)$<br>
+$\eta^{IJ}$ and $\eta_{IJ}$ raise and lower $IJK...$<br>
+<br>
+
+
 Metric:<br>
 $g_{ab} = {e_a}^I {e_b}^J \eta_{IJ}$<br>
 Metric inverse:<br>
 $g^{ab} = {e^a}_I {e^b}_J \eta^{IJ}$<br>
-The metric is, by definition, two tetrads combined.  Regardless of dimensions of coordinate or embedded space.<br>
 <br>
-
-$\eta^{IJ}$ and $\eta_{IJ}$ raise and lower $IJK...$<br>
-Minkowski metric:<br>
-$\eta_{IJ} = \eta^{IJ} = diag(-1, 1, ...)$<br>
+$g^{ab}$ and $g_{ab}$ raise and lower $abc...$<br>
+<br>
+The metric is, by definition, two tetrads combined.<br>
+Regardless of dimensions of coordinate or embedded space.<br>
+Therefore $\left[ g_{ab} \right]_{ab}, \left[ g^{ab} \right]_{ab} \in \mathbb{R}^{min(m,n) \times min(m,n)}$.<br>
 <br>
 
 Minkowski metric in relation to tetrad inverse definitions:<br>
@@ -102,15 +116,22 @@ Apply both sides to $x^J$:<br>
 ${c_{ab}}^c {e_c}^J = 2 {e_{[a}}^I {{e_{b]}}^J}_{,I}$<br>
 By substituting the definition of $e_a = _{,a}$ we find:<br>
 ${c_{ab}}^c {e_c}^J = 2 {{e_{[b}}^J}_{,a]}$,<br>
-In the case $dim(x^I) \ge dim(x^a)$ we can apply the co-tetrad to index $J$ to find:<br> 
-${c_{ab}}^c = 2 {e^c}_I {{e_{[b}}^I}_{,a]} $<br>
+we can apply the co-tetrad to index $J$ to find:<br> 
+${c_{ab}}^c {e_c}^J {e^d}_J = 2 {e^d}_J {{e_{[b}}^J}_{,a]}$,<br>
+In the case $dim(x^I) \lt dim(x^a)$ we cannot recover all of the range:<br>
+${c_{ab}}^c {\delta_{sub}}^d_c = 2 {e^d}_J {{e_{[b}}^J}_{,a]}$,<br>
+So ${c_{ab}}^c$ has $n-min(m,n)$ free parameters.<br>
+Otherwise we do:<br>
+${c_{ab}}^d = {c_{ab}}^c \delta^d_c = 2 {e^d}_J {{e_{[b}}^J}_{,a]} $<br>
 Even in the case that $dim(x^I) \lt dim(x^a)$, we can define ${c_{ab}}^c$ in the same manner 
 and simply acknowledge that the dimension of the index $c$ is only $m = dim(x^I) \lt n = dim(x^a)$.<br>
-Therefore, for ${c_{ab}}^c$, $dim(x^c) = min(m,n)$ for $m = dim(x^I)$ and $n = dim(x^a)$.<br>
+Therefore, for ${c_{ab}}^c$, the dimension of index $c$ is $min(m,n)$ for $m = dim(x^I)$ and $n = dim(x^a)$.<br>
 <br>
 
 Define ${c_{ab}}^I = 2 {{e_{[b}}^I}_{,a]}$<br>
-so ${c_{ab}}^I = {c_{ab}}^c {e_c}^I$.<br>
+Note that the range of index $I$ could exceed $dim(x^a)$.<br>
+We can still define ${c_{ab}}^c = {c_{ab}}^I {e^c}_I$ and, for all cases, know that the range of index $c$ is $min(m,n)$.<br>
+This is one way to define the $n-min(m,n)$ free parameters.<br> 
 <br>
 
 Christoffel symbols (definition from MTW):<br>
@@ -120,9 +141,9 @@ For $dim(x^I) \lt dim(x^a)$, the $c$ index in $g_{ab,c}$ is $dim(x^a)$, while th
 Substitute definitions of $g_{ab}$ and $c_{abc} = {c_{ab}}^d g_{dc}$:<br>
 $\Gamma_{abc} = \frac{1}{2} \left[ 
 	({e_a}^I {e_b}^J \eta_{IJ})_{,c} + ({e_a}^I {e_c}^J \eta_{IJ})_{,b} - ({e_b}^I {e_c}^J \eta_{IJ})_{,a} \right]
-	+ e_{cI} {{e_{[b}}^I}_{,a]}
-	+ e_{bI} {{e_{[c}}^I}_{,a]}
-	- e_{aI} {{e_{[c}}^I}_{,b]}$
+	+ g_{cd} {e^d}_I {{e_{[b}}^I}_{,a]}
+	+ g_{bd} {e^b}_I {{e_{[c}}^I}_{,a]}
+	- g_{ad} {e^a}_I {{e_{[c}}^I}_{,b]}$
 <br>
 Distribute comma derivatives:<br>
 $\Gamma_{abc} = \frac{1}{2} ( 
@@ -132,7 +153,9 @@ $\Gamma_{abc} = \frac{1}{2} (
 	+ {{e_b}^I}_{,a} e_{cI} - {{e_a}^I}_{,b} e_{cI} 
 	+ {{e_c}^I}_{,a} e_{bI} - {{e_a}^I}_{,c} e_{bI} 
 	- {{e_c}^I}_{,b} e_{aI} + {{e_b}^I}_{,c} e_{aI} )$<br>
-Cancel:<br>
+Cancel.<br>
+But can we cancel?  Isn't there a ${\delta_{sub}}^a_b$ somewhere in there?<br>
+There is only a ${\delta_{sub}}^a_b$ within the equation defining ${c_{ab}}^c$, leaving $n-min(m,n)$ parameters free.<br>
 $\Gamma_{abc} = e_{aI} {{e_b}^I}_{,c}$<br>
 <br>
 
