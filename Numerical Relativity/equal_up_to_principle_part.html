@@ -1,0 +1,231 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Numerical Relativity Eigenfields</title>
+		<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<!-- script type="text/javascript" async src="file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script -->
+		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+	</head>
+	<body>
+
+<h3>Hyperbolic ADM</h3>
+$a_i = (ln \alpha)_{,i} = \alpha_{,i} / \alpha$<br>
+...so $\alpha a_i = \alpha_{,i}$<br>
+<br>
+
+lapse evolution:<br>
+$\alpha_{,t} - \alpha_{,i} \beta^i = -\alpha^2 Q$<br>
+<br>
+
+$0 = (\delta^i_j)_{,k} = (\gamma^{il} \gamma_{lj})_{,k} = {\gamma^{il}}_{,k} \gamma_{lj} + \gamma^{il} \gamma_{lj,k}$<br>
+Therefore ${\gamma^{il}}_{,k} \gamma_{lj} = -\gamma^{il} \gamma_{lj,k}$<br>
+<br>
+
+Ricci curvature:<br>
+$R_{ij} = {R^k}_{ikj} $
+$= {\Gamma^k}_{ij,k} - {\Gamma^k}_{ik,j} + {\Gamma^k}_{lk} {\Gamma^l}_{ij} - {\Gamma^k}_{lj} {\Gamma^l}_{ik}$<br>
+$= 2 ({\Gamma^k}_{i[j,k]} + {\Gamma^k}_{l[k} {\Gamma^l}_{j]i})$<br>
+<br>
+
+$= (\gamma^{km} \Gamma_{mij})_{,k} - {\Gamma^k}_{ik,j} + {\Gamma^k}_{lk} {\Gamma^l}_{ij} - {\Gamma^k}_{lj} {\Gamma^l}_{ik}$<br>
+$= \gamma^{km} \Gamma_{mij,k} + {\gamma^{km}}_{,k} \Gamma_{mij} - {\Gamma^k}_{ik,j} + {\Gamma^k}_{lk} {\Gamma^l}_{ij} - {\Gamma^k}_{lj} {\Gamma^l}_{ik}$<br>
+$= \frac{1}{2} \gamma^{km} (\gamma_{mi,jk} + \gamma_{mj,ik} - \gamma_{ij,km}) + {\gamma^{km}}_{,k} \Gamma_{mij} - {\Gamma^k}_{ik,j} + {\Gamma^k}_{lk} {\Gamma^l}_{ij} - {\Gamma^k}_{lj} {\Gamma^l}_{ik}$<br>
+$= -\frac{1}{2}\gamma^{km} \gamma_{ij,km} 
+	+ \frac{1}{2} \gamma^{km} (\gamma_{im,jk} + \gamma_{jm,ik}) 
+	
+	- \gamma^{km} \gamma_{lm,k} {\Gamma^l}_{ij}
+	+ \frac{1}{2} \gamma^{km} (\gamma_{ml,k} + \gamma_{mk,l} - \gamma_{kl,m}) {\Gamma^l}_{ij} 
+	
+	- {\Gamma^k}_{ik,j} 
+	- {\Gamma^k}_{lj} {\Gamma^l}_{ik}$<br>
+
+$= -\frac{1}{2}\gamma^{km} \gamma_{ij,km} 
+	+ \frac{1}{2} \gamma^{km} (\gamma_{im,jk} + \gamma_{jm,ik}) 
+	- \frac{1}{2}\gamma^{km} (\gamma_{lm,k} + \gamma_{lk,m} - \gamma_{km,l}) {\Gamma^l}_{ij}
+	- {\Gamma^k}_{ik,j} 
+	- {\Gamma^k}_{lj} {\Gamma^l}_{ik}$<br>
+
+$= -\frac{1}{2}\gamma^{km} \gamma_{ij,km} 
+	+ \frac{1}{2} \gamma^{km} (\gamma_{im,jk} + \gamma_{jm,ik}) 
+	- \Gamma_{lij} \Gamma^l
+	- {\Gamma^k}_{ik,j} 
+	- {\Gamma^k}_{lj} {\Gamma^l}_{ik}$<br>
+
+$= -\frac{1}{2}\gamma^{km} \gamma_{ij,km} 
+	+ \frac{1}{2} \gamma^{km} (\gamma_{im,jk} + \gamma_{jm,ik}) 
+	- \Gamma_{lij} \Gamma^l
+	- {\gamma^{kl}}_{,j} \Gamma_{lik} - \gamma^{kl} \Gamma_{lik,j}
+	- {\Gamma^k}_{lj} {\Gamma^l}_{ik}$<br>
+
+$= -\frac{1}{2}\gamma^{km} \gamma_{ij,km} 
+	+ \frac{1}{2} \gamma^{km} (\gamma_{im,jk} + \gamma_{jm,ik}) 
+	- \Gamma_{lij} \Gamma^l
+	+ \gamma^{km} \gamma_{ml,j} {\Gamma^l}_{ik}
+	- \gamma^{kl} \Gamma_{lik,j}
+	- {\Gamma^k}_{lj} {\Gamma^l}_{ik}$<br>
+
+$= -\frac{1}{2}\gamma^{km} \gamma_{ij,km} 
+	+ \frac{1}{2} \gamma^{kl} (\gamma_{il,jk} + \gamma_{jl,ik}) 
+	- \Gamma_{lij} \Gamma^l
+	+ \gamma^{km} \gamma_{ml,j} {\Gamma^l}_{ik}
+	- \frac{1}{2} \gamma^{kl} (\gamma_{il,jk} + \gamma_{kl,ij} - \gamma_{ik,jl})
+	- {\Gamma^k}_{lj} {\Gamma^l}_{ik}$<br>
+
+$= -\frac{1}{2}\gamma^{km} \gamma_{ij,km} 
+	+ \frac{1}{2} \gamma^{kl} (\gamma_{jk,il} + \gamma_{ik,jl} - \gamma_{kl,ij})
+	- \frac{1}{2} (\gamma_{li,j} + \gamma_{lj,i} - \gamma_{ij,l}) \Gamma^l
+	+ \gamma^{km} \gamma_{ml,j} {\Gamma^l}_{ik}
+	- {\Gamma^k}_{lj} {\Gamma^l}_{ik}$<br>
+
+$= -\frac{1}{2}\gamma^{km} \gamma_{ij,km} 
+	- \gamma_{k(i,j)} \Gamma^k
+	+ \frac{1}{2} \gamma_{ij,l} \Gamma^l
+	+ \frac{1}{2} \gamma^{kl} (\gamma_{jk,il} + \gamma_{ik,jl} - \gamma_{kl,ij})
+	+ \gamma^{km} \gamma_{ml,j} {\Gamma^l}_{ik}
+	- {\Gamma^k}_{lj} {\Gamma^l}_{ik}$<br>
+
+<br>
+$= {\Gamma^k}_{ij,k} - (ln \sqrt{|g|})_{,ij} + (ln \sqrt{|g|})_{,l} {\Gamma^l}_{ij} - {\Gamma^k}_{lj} {\Gamma^l}_{ik}$<br>
+$= {\Gamma^k}_{ij,k} - {\Gamma^k}_{il} {\Gamma^l}_{jk} - (ln \sqrt{|g|})_{,i;j}$<br>
+<br>
+$= (\gamma^{km} \Gamma_{mij})_{,k} - (\gamma^{km} \Gamma_{mik})_{,j} + \gamma^{km}( \Gamma_{mlk} {\Gamma^l}_{ij} - \Gamma_{mlj} {\Gamma^l}_{ik})$<br>
+$= {\gamma^{km}}_{,k} \Gamma_{mij} 
+	+ \gamma^{km} \Gamma_{mij,k} 
+	- {\gamma^{km}}_{,j} \Gamma_{mik} 
+	- \gamma^{km} \Gamma_{mik,j} 
+	+ \gamma^{km} (\Gamma_{mlk} {\Gamma^l}_{ij} - \Gamma_{mlj} {\Gamma^l}_{ik})$<br>
+$= \frac{1}{2} \gamma^{km} (\gamma_{mj,ik} - \gamma_{ij,mk} - \gamma_{mk,ij} + \gamma_{ik,jm}) 
+	+ {\gamma^{km}}_{,k} \Gamma_{mij} 
+	- {\gamma^{km}}_{,j} \Gamma_{mik} 
+	+ \gamma^{km} (\Gamma_{mlk} {\Gamma^l}_{ij} - \Gamma_{mlj} {\Gamma^l}_{ik})$<br>
+$= -\frac{1}{2} \gamma^{lm} \gamma_{ij,lm} 
+	+ \frac{1}{2} \gamma^{km} (\gamma_{jk,im} + \gamma_{ik,jm} - \gamma_{km,ij}) 
+	- {\gamma^{km}}_{,j} \Gamma_{mik} 
+	+ {\gamma^{km}}_{,k} \Gamma_{mij} 
+	+ \gamma^{km}( \Gamma_{mlk} {\Gamma^l}_{ij} - \Gamma_{mlj} {\Gamma^l}_{ik})$<br>
+<br>
+	
+$\gamma^{km}( \Gamma_{mlk} {\Gamma^l}_{ij} - \Gamma_{mlj} {\Gamma^l}_{ik})$<br>
+$= \frac{1}{2} \gamma^{km} \gamma^{ln} ((\gamma_{ml,k} + \gamma_{mk,l} - \gamma_{lk,m}) (\gamma_{ni,j} + \gamma_{nj,i} - \gamma_{ij,n}) 
+	- (\gamma_{ml,j} + \gamma_{mj,l} - \gamma_{lj,m}) (\gamma_{ni,k} + \gamma_{nk,i} - \gamma_{ik,n}))$<br>
+$= \frac{1}{2} \gamma^{km} \gamma^{ln} (\gamma_{km,l} (\gamma_{in,j} + \gamma_{jn,i} - \gamma_{ij,n}) 
+	- (\gamma_{lm,j} + \gamma_{jm,l} - \gamma_{jl,m}) (\gamma_{in,k} + \gamma_{kn,i} - \gamma_{ik,n}))$<br>
+$= \frac{1}{2} \gamma^{km} \gamma^{ln} (
+	\gamma_{km,l} \gamma_{in,j} 
+	+ \gamma_{km,l} \gamma_{jn,i} 
+	- \gamma_{km,l} \gamma_{ij,n}
+	- \gamma_{lm,j} \gamma_{in,k} 
+	- \gamma_{lm,j} \gamma_{kn,i} 
+	+ \gamma_{lm,j} \gamma_{ik,n}
+	- \gamma_{jm,l} \gamma_{in,k} 
+	- \gamma_{jm,l} \gamma_{kn,i} 
+	+ \gamma_{jm,l} \gamma_{ik,n}
+	+ \gamma_{jl,m} \gamma_{in,k} 
+	+ \gamma_{jl,m} \gamma_{kn,i} 
+	- \gamma_{jl,m} \gamma_{ik,n}
+)$<br>
+<br>
+
+now we equate things "up to principle part", namely the Ricci tensors and the evolution equations.<br>
+TODO<br>
+<br>
+
+$R_{ij} \approx -\frac{1}{2} \gamma^{lm} \gamma_{ij,lm} 
+	+ \frac{1}{2} \gamma^{km} (\gamma_{jk,im} + \gamma_{ik,jm} - \gamma_{km,ij}) 
+	+ {\gamma^{km}}_{,j} (
+		\frac{1}{2} \gamma_{mi,k} 
+		- \frac{1}{4} \gamma_{mk,i}
+		+ \gamma_{ki} (\frac{1}{2} \gamma_{ml,n} - \frac{1}{4} \gamma_{ln,m}) \gamma^{ln}
+	)
+	+ \frac{1}{2} \gamma^{ln} \gamma_{kj} {\gamma^{km}}_{,i} \Gamma_{mln}
+	+ \frac{1}{2} \gamma_{lj} {\gamma^{km}}_{,i} {\Gamma^l}_{km}
+$<br>
+$R_{ij} \approx -\frac{1}{2} \gamma^{lm} \gamma_{ij,lm} 
+	+ \frac{1}{4} \gamma^{km} (\gamma_{jk,im} + \gamma_{ik,jm} - \gamma_{km,ij}) 
+	+ \frac{1}{4} \gamma^{km} (\gamma_{im,kj} + \gamma_{jm,ki} - \gamma_{km,ij})
+	+ {\gamma^{km}}_{,j} (
+		\frac{1}{2}  \Gamma_{ikm} 
+		+ \frac{1}{2} \gamma_{ki} \Gamma_{mln} \gamma^{ln}
+	)
+	+ \frac{1}{2} \gamma^{ln} \gamma_{kj} {\gamma^{km}}_{,i} \Gamma_{mln}
+	+ \frac{1}{2} \gamma_{lj} {\gamma^{km}}_{,i} {\Gamma^l}_{km}
+$<br>
+$R_{ij} \approx -\frac{1}{2} \gamma^{lm} \gamma_{ij,lm} 
+	+ \frac{1}{2} \gamma^{lm} (\gamma_{ki} {\gamma^{kp}}_{,j} + \gamma_{kj} {\gamma^{kp}}_{,i}) \Gamma_{plm} 
+	+ \frac{1}{4} \gamma^{lm} (\gamma_{il,mj} + \gamma_{im,lj} - \gamma_{lm,ij} + \gamma_{jl,mi} + \gamma_{jm,li} - \gamma_{lm,ij})
+	+ \frac{1}{2} (\gamma_{ki} {\gamma^{lm}}_{,j} + \gamma_{kj} {\gamma^{lm}}_{,i} ){\Gamma^k}_{lm}
+$<br>
+$R_{ij} \approx -\frac{1}{2} \gamma^{lm} \gamma_{ij,lm} 
+	+ \frac{1}{2} \gamma^{lm} (\gamma_{ki} {\gamma^{kp}}_{,j} + \gamma_{kj} {\gamma^{kp}}_{,i}) \Gamma_{plm} 
+	+ \frac{1}{2} \gamma^{lm} (\Gamma_{ilm,j} + \Gamma_{jlm,i})
+	+ \frac{1}{2} (\gamma_{ki} {\gamma^{lm}}_{,j} + \gamma_{kj} {\gamma^{lm}}_{,i} ){\Gamma^k}_{lm}
+$<br>
+$R_{ij} \approx -\frac{1}{2} \gamma^{lm} \gamma_{ij,lm} 
+	+ \frac{1}{2} \gamma^{lm} \gamma_{ki} ({\gamma^{kp}}_{,j} \Gamma_{plm} + \gamma^{kp} \Gamma_{plm,j})
+	+ \frac{1}{2} \gamma^{lm} \gamma_{kj} ({\gamma^{kp}}_{,i} \Gamma_{plm} + \gamma^{kp} \Gamma_{plm,i})
+	+ \frac{1}{2} (\gamma_{ki} {\gamma^{lm}}_{,j} + \gamma_{kj} {\gamma^{lm}}_{,i}) {\Gamma^k}_{lm}
+$<br>
+$R_{ij} \approx -\frac{1}{2} \gamma^{lm} \gamma_{ij,lm} 
+	+ \frac{1}{2} \gamma^{lm} (
+		\gamma_{ki} ({\gamma^{kp}}_{,j} \Gamma_{plm} + \gamma^{kp} \Gamma_{plm,j})
+		+ \gamma_{kj} ({\gamma^{kp}}_{,i} \Gamma_{plm} + \gamma^{kp} \Gamma_{plm,i})
+	)
+	+ \frac{1}{2} (\gamma_{ki} {\gamma^{lm}}_{,j} + \gamma_{kj} {\gamma^{lm}}_{,i}) {\Gamma^k}_{lm}
+$<br>
+$R_{ij} \approx -\frac{1}{2} \gamma^{lm} \gamma_{ij,lm} 
+	+ \frac{1}{2} \gamma_{ki} {\Gamma^k}_{lm,j} \gamma^{lm} 
+	+ \frac{1}{2} \gamma_{kj} {\Gamma^k}_{lm,i} \gamma^{lm} 
+	+ \frac{1}{2} \gamma_{ki} {\gamma^{lm}}_{,j} {\Gamma^k}_{lm}
+	+ \frac{1}{2} \gamma_{kj} {\gamma^{lm}}_{,i} {\Gamma^k}_{lm}
+$<br>
+$R_{ij} \approx -\frac{1}{2} \gamma^{lm} \gamma_{ij,lm} + \gamma_{k(i|} {\Gamma^k}_{lm,|j)} \gamma^{lm} + \gamma_{k(i} {\gamma^{lm}}_{,j)} {\Gamma^k}_{lm}$<br>
+$R_{ij} \approx -\frac{1}{2} \gamma^{lm} \gamma_{ij,lm} + \gamma_{k(i} ({\Gamma^k}_{lm} \gamma^{lm})_{,j)}$<br>
+$R_{ij} \approx -\frac{1}{2} \gamma^{lm} \gamma_{ij,lm} + \gamma_{k(i} {\Gamma^k}_{,j)}$<br>
+$\approx -{d^m}_{ij,m} + 2 {d^m}_{m(j,i)} - {{d_{(j|m}}^m}_{,|i)}$<br>
+<br>
+
+
+...for $a_{i,j} = (\alpha_{,i} / \alpha)_{,j} = \alpha_{,ij} / \alpha - \alpha_{,i} \alpha_{,j} / \alpha^2$<br>
+...so $\alpha_{,ij} = \alpha a_{i,j} + \alpha_{,i} \alpha_{,j} / \alpha$<br>
+start with evolution equation:<br>
+$\alpha_{,t} - \alpha_{,k} \beta^k = -\alpha^2 Q$<br>
+... apply $\partial_i$ ...<br>
+$\alpha_{,ti} - \alpha_{,ki} \beta^k - \alpha_{,k} {\beta^k}_{,i} = -2 \alpha \alpha_{,i} Q - \alpha^2 Q_{,i}$<br>
+$\alpha_{,ti} / \alpha - \alpha_{,i} \alpha_{,t} / \alpha^2 - \alpha_{,ki} \beta^k - \beta^k \alpha_{,i} \alpha_{,k} / \alpha^2 - \alpha_{,k} {\beta^k}_{,i} 
+	= -2 \alpha_{,i} Q - \alpha Q_{,i} - \alpha_{,i} \alpha_{,t} / \alpha^2 - \beta^k \alpha_{,i} \alpha_{,k} / \alpha^2$<br>
+... divide by $\alpha$ and add $-\alpha_{,i} \alpha_{,t} / \alpha^2$ and $ -\beta^k \alpha_{,i} \alpha_{,k} / \alpha^2$ to both sides ...<br>
+$a_{i,t} - \beta^k a_{i,k} 
+	= - \alpha Q_{,i} - 2 \alpha_{,i} Q - \alpha_{,i} \alpha_{,t} / \alpha^2 + \alpha_{,k} {\beta^k}_{,i} - \beta^k \alpha_{,i} \alpha_{,k} / \alpha^2$<br>
+$a_{i,t} - \beta^k a_{i,k} \approx -\alpha Q_{,i}$<br>
+<br>
+
+...for $d_{ijk,a} = \frac{1}{2} \gamma_{jk,ia}$<br>
+start with evolution equation:<br>
+$\gamma_{ij,t} - \gamma_{ij,l} \beta^l - \gamma_{il} {\beta^l}_{,j} - \gamma_{lj} {\beta^l}_{,i} = -2 \alpha K_{ij}$<br>
+... apply $\frac{1}{2} \partial_k$ ...<br>
+$\gamma_{ij,kt} - \gamma_{ij,kl} \beta^l - \gamma_{ij,l} {\beta^l}_{,k} - \gamma_{il,k} {\beta^l}_{,j} - \gamma_{il} {\beta^l}_{,jk} - \gamma_{lj,k} {\beta^l}_{,i} - \gamma_{lj} {\beta^l}_{,ik} = -2 \alpha_{,k} K_{ij} - 2 \alpha K_{ij,k}$<br>
+$d_{kij,t} - d_{kij,l} \beta^l - d_{lij} {\beta^l}_{,k} - d_{kil} {\beta^l}_{,j} - \frac{1}{2} \gamma_{il} {\beta^l}_{,jk} - d_{klj} {\beta^l}_{,i} - \frac{1}{2} \gamma_{lj} {\beta^l}_{,ik} = -\alpha_{,k} K_{ij} - \alpha K_{ij,k}$<br>
+$d_{kij,t} - \beta^l d_{kij,l} = - \alpha K_{ij,k} 
+	- \alpha_{,k} K_{ij}
+	+ d_{lij} {\beta^l}_{,k} + d_{kil} {\beta^l}_{,j} + \frac{1}{2} \gamma_{il} {\beta^l}_{,jk} + d_{klj} {\beta^l}_{,i} + \frac{1}{2} \gamma_{lj} {\beta^l}_{,ik} $<br>
+$d_{kij,t} - \beta^l d_{kij,l} \approx -\alpha K_{ij,k}$<br>
+$d_{ijk,t} - \beta^l d_{ijk,l} \approx -\alpha K_{jk,i}$<br>
+<br>
+
+start with evolution equation:<br>
+$K_{ij,t} - \beta^k K_{ij,k} - K_{kj} {\beta^k}_{,i} - K_{ik} {\beta^k}_{,j} = -\alpha_{,ij} + {\Gamma^k}_{ji} \alpha_{,k} + \alpha (R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
+$K_{ij,t} - \beta^k K_{ij,k} = \alpha R_{ij}- \alpha_{,ij} + {\Gamma^k}_{ji} \alpha_{,k} + \alpha K K_{ij} - 2 \alpha K_{ik} {K^k}_j + K_{kj} {\beta^k}_{,i} + K_{ik} {\beta^k}_{,j} $<br>
+<br>
+
+$K_{ij,t} - \beta^k K_{ij,k} \approx \alpha R_{ij} - \alpha_{,ij} + \alpha_{,i} \alpha_{,j} / \alpha$<br>
+...substitute $R_{ij} \approx -{d^m}_{ij,m} + 2 {d^m}_{m(j,i)} - {{d_{(j|m}}^m}_{,|i)}$ ...<br>
+$K_{ij,t} - \beta^k K_{ij,k} \approx \alpha (-{d^m}_{ij,m} + 2 {d^m}_{m(j,i)} - {{d_{(j|m}}^m}_{,|i)}) - \frac{1}{2} \alpha (\alpha_{,ij} / \alpha - \alpha_{,i} \alpha_{,j} / \alpha^2 + \alpha_{,ij} / \alpha - \alpha_{,i} \alpha_{,j} / \alpha^2)$<br>
+$K_{ij,t} - \beta^k K_{ij,k} \approx -\alpha ({d^m}_{ij,m} + \frac{1}{2} ({{d_{jm}}^m}_{,i} + {{d_{im}}^m}_{,j} - 2 {d^m}_{mj,i} - 2 {d^m}_{mi,j}) ) - \frac{1}{2} \alpha (a_{i,j} + a_{j,i})$<br> 
+$K_{ij,t} - \beta^k K_{ij,k} \approx -\alpha ({d^k}_{ij,k} + \frac{1}{2} (a_{j,i} + {{d_{jm}}^m}_{,i} - 2 {d^m}_{mj,i}) + \frac{1}{2} (a_{i,j} + {{d_{im}}^m}_{,j} - 2 {d^m}_{mi,j}))$<br>
+$K_{ij,t} - \beta^k K_{ij,k} \approx -\alpha ({d^k}_{ij} + \delta^k_{(i} (a_{j)} + {d_{j)m}}^m - 2 {d^m}_{mj)}))_{,k}$<br>
+...let ${\Lambda^k}_{ij} = {d^k}_{ij} + \delta^k_{(i} ( a_{j)} + {d_{j)m}}^m - 2 {d^m}_{mj)})$ ...<br>
+$K_{ij,t} - \beta^k K_{ij,k} \approx -\alpha {\Lambda^k}_{ij,k}$<br>
+
+	</body>
+</html>

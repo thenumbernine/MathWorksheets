@@ -52,7 +52,8 @@ This is not equal to $\frac{\partial}{\partial x^a}$ ... ?<br>
 or is it that it is equal, and $\frac{\partial}{\partial x^a}$ is not a partial derivative but instead a function ${e_a}$ which is a linear combination (via ${e_a}^I$) of functions of partial derivatives?<br>
 MTW uses comma derivatives and applications of $e_a$ to denote anholonomic basis operators, but I think it avoids using $\frac{\partial}{\partial x^a}$ - probably for ambiguity's sake.<br>
 Maybe I should revise/generalize my definition of $e_a$ as well?<br>
-So $T_{,a} = e_a (T)$ is not equal to (and in the case of an anholonomic basis, should not ever be represented as) $\frac{\partial}{\partial x^a} T$.<br>
+So $T_{,a} = e_a (T)$ is not equal to $\frac{\partial}{\partial x^a} T$.  In the case of an anholonomic basis should not ever be represented as this.<br>
+Though for a holonomic basis interchanging $T_{,a}$ and $\frac{\partial}{\partial x^a} T$ is fine.<br>
 <br>
 
 Change of basis of ${e_a}^I$:<br>
@@ -79,25 +80,32 @@ $g^{ab}$ and $g_{ab}$ raise and lower $abc...$<br>
 The metric is, by definition, two tetrads combined.<br>
 Regardless of dimensions of coordinate or embedded space.<br>
 Therefore $\left[ g_{ab} \right]_{ab}, \left[ g^{ab} \right]_{ab} \in \mathbb{R}^{min(m,n) \times min(m,n)}$.<br>
-<br>
-
-Minkowski metric in relation to tetrad inverse definitions:<br>
-${\delta_{sub}}^K_J = {e_b}^K {e^b}_J$<br>
-${\delta_{sub}}^K_J = e^{aK} {e^b}_J g_{ab}$<br>
-$\eta_{IK} {\delta_{sub}}^K_J = \eta_{IK} e^{aK} {e^b}_J g_{ab}$<br>
-$\eta_{IK} {\delta_{sub}}^K_J = {e^a}_I {e^b}_J g_{ab}$<br>
-<br>
-${\delta_{sub}}^J_K = {e^a}_K {e_a}^J $<br>
-${\delta_{sub}}^J_K = e_{aK} {e_a}^J g^{ab} $<br>
-$\eta^{IK} {\delta_{sub}}^J_K = \eta^{IK} e_{aK} {e_a}^J g^{ab} $<br>
-$\eta^{IK} {\delta_{sub}}^J_K = {e_a}^I {e_a}^J g^{ab} $<br>
-The Minkowski metric is only recovered from two co-tetrads if $dim(x^a) \ge dim(x^I)$<br>
+From this, all $a-z$ indexes in all objects that are a product of $g_{ab}$ or $g^{ab}$ are also going to be of dimension $min(m,n)$.<br>
+Nearly everything will be of dimension $min(m,n)$, with the exception of the vector $x^a$ itself, the tetrads ${e_a}^I$ and ${e^a}_I$, and any application of them via $e_a$ (i.e. "$_{,a}$").<br>
 <br>
 
 Notice, due to the possible differences in dimensions, it is not always the case that:<br>
 ${e^a}_I = g^{ab} {e_b}^J \eta_{IJ}$<br>
 ${e_a}^I = g_{ab} {e^b}_J \eta^{IJ}$<br>
-This is true only when $dim(x^a) \ge dim(x^I)$<br>
+This is true only when 
+	the dimension of index $a$ in $g_{ab}$, which is $min(m,n)$,
+	is greater than or equal to 
+	the dimension of index $a$ is ${e_a}^I$, which is $n = dim(x^a)$
+.
+So only for $m \ge n$.<br>
+<br>
+
+Minkowski metric in relation to tetrad inverse definitions:<br>
+$(\delta_{n})^K_J = {e_b}^K {e^b}_J$<br>
+$(\delta_{n})^K_J = e^{aK} {e^b}_J g_{ab}$<br>
+$\eta_{IK} (\delta_{n})^K_J = \eta_{IK} e^{aK} {e^b}_J g_{ab}$<br>
+$\eta_{IK} (\delta_{n})^K_J = {e^a}_I {e^b}_J g_{ab}$<br>
+<br>
+$(\delta_{n})^J_K = {e^a}_K {e_a}^J $<br>
+$(\delta_{n})^J_K = e_{aK} {e_a}^J g^{ab} $<br>
+$\eta^{IK} (\delta_{n})^J_K = \eta^{IK} e_{aK} {e_a}^J g^{ab} $<br>
+$\eta^{IK} (\delta_{n})^J_K = {e_a}^I {e_a}^J g^{ab} $<br>
+The Minkowski metric is only recovered from two co-tetrads if $n \ge m$, i.e. $dim(x^a) \ge dim(x^I)$<br>
 <br>
 
 Commutation coefficients (definition from MTW):<br>
@@ -167,6 +175,8 @@ When $dim(x^a) \ge dim(x^I)$ we can replace the product of inverse metric and te
 ${\Gamma^a}_{bc} = {e^a}_I {{e_b}^I}_{,c}$<br>
 Define ${\Gamma^I}_{bc} = {{e_b}^I}_{,c}$<br>
 so ${\Gamma^a}_{bc} = g^{ad} e_{dI} {\Gamma^I}_{bc}$.<br>
+And when $m = n$:<br>
+${\Gamma^a}_{bc} = {e^a}_I {{e_b}^I}_{,c}$<br>
 <br>
 
 Antisymmetric component of connection coefficients (MTW):<br>
@@ -175,7 +185,45 @@ for $dim(x^a) \ge dim(x^I)$ this equals ${e^a}_I {{e_{[b}}^I}_{,c]}$<br>
 and for $dim(x^I) \ge dim(x^a)$ as well -- i.e. only for $dim(x^a) = dim(x^I)$ -- this equals $\frac{1}{2} {c_{cb}}^a$<br>
 <br>
 
-Spin connection (Wikipedia):<br>
+Spin connection definition from Wikipedia and from Yepez - "Einstein's vierbein field theory of curved space":<br>
+${\Gamma^v}_{ua} = {e^v}_I {{e_a}^I}_{,u} + {e^v}_I {{\omega_u}^I}_J {e_a}^J$<br>
+${{\omega_u}^I}_J = {e_v}^I {\Gamma^v}_{ua} {e^a}_J - {e^a}_J {{e_a}^I}_{,u}$<br>
+Writing coordinate changes into the indexes:<br>
+${\Gamma^a}_{bc} = {e^a}_I {{e_c}^I}_{,b} + {{\omega_b}^a}_c$<br>
+Rearrange:<br>
+${\Gamma^a}_{bc} - {{\omega_b}^a}_c = {e^a}_I {{e_c}^I}_{,b}$<br>
+From here I'm willing to bet that their ${\Gamma^a}_{bc}$ is symmetric on $bc$.<br>
+That would mean $\omega_{bac}$ would need to be symmetric on $bc$ as well.<br>
+However, by definition of cancelling Minkowski metric, it appears that $\omega_{bac}$ is symmetric on $ac$.<br>
+Hmm, maybe it is antisymmetric on $bc$ too?<br>
+<br>
+
+To boot, Yepez's paper also says that torsion is the antisymmetric component of ${\Gamma^a}_{bc}$ on $bc$.  So they are not purely symmetric.<br> 
+In fact, in Yepez's paper, what is the spin connection with respect to the torsion?<br>
+${\Gamma^a}_{[bc]} = \frac{1}{2} {T^a}_{bc} = {e^a}_I {{e_{[c}}^I}_{,b]} + {{\omega_{[b}}^a}_{c]}$<br>
+$\frac{1}{2} {T^a}_{bc} - {{\omega_{[b}}^a}_{c]} = {e^a}_I {{e_{[c}}^I}_{,b]}$<br>
+Now the right side of this equation is equal to the above definition of ${c_{bc}}^a$.<br>
+Maybe this means that (double) the torsion and the spin connection are two separate parts of the antisymmetric component of the tetrad derivative?<br>
+Does this mean the two are arbitrarily defined?<br>
+For some arbitrary choice of spin connection, the torsion is the difference between it and the antisymmetric component of the tetrad derivative?<br>
+<br>
+This isn't true, according to Wikipedia's "Torsion tensor" entry, which says (reinterpreted to match the conventions of this paper)
+	${T^a}_{bc} = 2 {\Gamma^a}_{[bc]} - {c_{cb}}^a$.<br>
+Notice that, above, by MTW's definition of ${\Gamma^a}_{bc}$, we find ${\Gamma^a}_{[bc]} = \frac{1}{2} {c_{cb}}^a$.<br>
+This means that, throughout MTW's book, ${T^a}_{bc}$ is always zero.<br> 
+This also means that torsion is something defined distinct from ${e_a}^I$.  According to Wikipedia's torsion page, that is.
+Yepez never mentions commutation coefficients, 
+	and therefore torsion can safely be defined in his paper as the difference between the arbitrary spin connection 
+	and the certain antisymmetric portion of the derivative of the tetrad.<br> 
+<br>
+
+And of course 'contorsion' is the value, based on the torsion, that returns us to a torsion-free connection.<br>
+Wikipedia's 'contorsion tensor' page defines this as: $K_{kij} = \frac{1}{2} ( T_{kij} + T_{jki} - T_{ijk} )$<br>
+If you add contorsion to the connection does it cancel the spin connection only, leaving you with the symmetric connection?<br>
+Or does it cancel additional terms of the symmetric connection?<br>
+<br>
+
+Spin connection cancelling Minkowski metric:<br>
 $0 = D_a \eta_{IJ} = \eta_{IJ,a} - {{\omega_a}^K}_I \eta_{KJ} - {{\omega_a}^K}_J \eta_{KI}$<br>
 $\omega_{aIJ} = -\omega_{aJI}$<br>
 $\omega_{aIJ} = \omega_{a[IJ]}$<br>
@@ -224,56 +272,6 @@ so I'm betting torsion is missing from my MTW definition of connection coefficie
 So what is the difference between spin connections, commutation coefficients, and torsion?<br>
 <br>
 
-Riemann curvature tensor:<br>
-${R^a}_{bcd} = {\Gamma^a}_{bd,c} - {\Gamma^a}_{bc,d} 
-	+ {\Gamma^a}_{ec} {\Gamma^e}_{bd} 
-	- {\Gamma^a}_{ed} {\Gamma^e}_{bc} 
-	- {\Gamma^a}_{be} {c_{cd}}^e$<br>
-${R^a}_{bcd} = ({e^a}_I {{e_b}^I}_{,d})_{,c}
-	- ({e^a}_I {{e_b}^I}_{,c})_{,d}
-	+ {e^a}_I {{e_e}^I}_{,c} {e^e}_J {{e_b}^J}_{,d}
-	- {e^a}_I {{e_e}^I}_{,d} {e^e}_J {{e_b}^J}_{,c}
-	- 2 {e^a}_I {{e_b}^I}_{,e} {e^e}_I {{e_{[d}}^I}_{,c]}$<br>
-${R^a}_{bcd} = 
-	{{e^a}_I}_{,c} {{e_b}^I}_{,d}
-	+ {e^a}_I {{e_b}^I}_{,dc}
-	- {{e^a}_I}_{,d} {{e_b}^I}_{,c}
-	- {e^a}_I {{e_b}^I}_{,cd}
-	+ {e^a}_I {{e_e}^I}_{,c} {e^e}_J {{e_b}^J}_{,d}
-	- {e^a}_I {{e_e}^I}_{,d} {e^e}_J {{e_b}^J}_{,c}
-	- {e^a}_I {{e_b}^I}_{,e} {e^e}_J {{e_d}^J}_{,c}
-	+ {e^a}_I {{e_b}^I}_{,e} {e^e}_J {{e_c}^J}_{,d}
-$<br>
-${R^a}_{bcd} = 
-	{{e^a}_I}_{,c} {{e_b}^I}_{,d}
-	- {{e^a}_I}_{,d} {{e_b}^I}_{,c}
-	+ {e^a}_I {{e_e}^I}_{,c} {e^e}_J {{e_b}^J}_{,d}
-	- {e^a}_I {{e_e}^I}_{,d} {e^e}_J {{e_b}^J}_{,c}
-	- {e^a}_I {{e_b}^I}_{,e} {e^e}_J {{e_d}^J}_{,c}
-	+ {e^a}_I {{e_b}^I}_{,e} {e^e}_J {{e_c}^J}_{,d}
-$<br>
-${R^a}_{bcd} = 
-	{e^a}_{I,c} {{e_b}^I}_{,d}
-	- {e^a}_{I,d} {{e_b}^I}_{,c}
-	- {e^a}_{I,c} {e_e}^I {e^e}_J {{e_b}^J}_{,d}
-	+ {e^a}_{I,d} {e_e}^I {e^e}_J {{e_b}^J}_{,c}
-	+ {e^a}_{I,e} {e_b}^I {e^e}_J {{e_d}^J}_{,c}
-	- {e^a}_{I,e} {e_b}^I {e^e}_J {{e_c}^J}_{,d}
-$<br>
-${R^a}_{bcd} = 
-	{e^a}_{I,e} {e_b}^I  {{e_d}^J}_{,c} {e^e}_J
-	- {e^a}_{I,e} {e_b}^I  {{e_c}^J}_{,d} {e^e}_J
-$<br>
-${R^a}_{bcd} = 
-	{e^a}_{I} {{e_b}^I}_{,e}  {{e_c}^J}_{,d} {e^e}_J
-	- {e^a}_I {{e_b}^I}_{,e}  {{e_d}^J}_{,c} {e^e}_J $<br>
-${R^a}_{bcd} = {e^a}_{I} {{e_b}^I}_{,e} ( {{e_c}^J}_{,d} {e^e}_J - {{e_d}^J}_{,c} {e^e}_J)$<br>
-${R^a}_{bcd} = 2 {e^a}_{I} {{e_b}^I}_{,e} {e^e}_J {{e_{[c}}^J}_{,d]}$<br>
-${R^a}_{bcd} = 2 {e^a}_{I} {{e_b}^I}_{,J} {{e_{[c}}^J}_{,d]}$<br>
-... but isn't this just <br>
-${R^a}_{bcd} = -{\Gamma^a}_{be} {c_{cd}}^e$? <br>
-<br>
-
 ${\delta^a_b}_{,c} = 0$<br>
 $({e_a}^I {e^b}_I)_{,c} = 0$<br>
 ${{e_a}^I}_{,c} {e^b}_I + {e_a}^I {e^b}_{I,c} = 0$<br>
@@ -285,14 +283,69 @@ ${{e_b}^I}_{,a} {e^b}_J + {e_b}^I {e^b}_{J,a} = 0$<br>
 ${e^c}_{J,a} = -{e^c}_I {{e_b}^I}_{,a} {e^b}_J$<br>
 <br>
 
-${R_{ab}}^{IJ} = 
-	g_{ae} {{e^e}_K}_{,c} {{e_b}^K}_{,d} e^{cI} e^{dJ}
-	- g_{ae} {{e^e}_K}_{,d} {{e_b}^K}_{,c}  e^{cI} e^{dJ}
-	+ e_{aK} {{e_e}^K}_{,c} e^{cI} {e^e}_L {{e_b}^L}_{,d} e^{dJ}
-	- e_{aK} {{e_e}^K}_{,d} e^{dJ} {e^e}_L {{e_b}^L}_{,c} e^{cI}
-	- e_{aK} {{e_b}^K}_{,e} {e^e}_L {{e_d}^L}_{,c} e^{cI} e^{dJ}
-	- e_{aK} {{e_b}^K}_{,e} {e^e}_L {{e_c}^L}_{,d} e^{cI} e^{dJ}
+Riemann curvature tensor:<br>
+${R^a}_{bcd} = {\Gamma^a}_{bd,c} - {\Gamma^a}_{bc,d} 
+	+ {\Gamma^a}_{ec} {\Gamma^e}_{bd} 
+	- {\Gamma^a}_{ed} {\Gamma^e}_{bc} 
+	- {\Gamma^a}_{be} {c_{cd}}^e$<br>
+Substitute definitions:<br>
+${R^a}_{bcd} = ({e^a}_I {{e_b}^I}_{,d})_{,c}
+	- ({e^a}_I {{e_b}^I}_{,c})_{,d}
+	+ {e^a}_I {{e_e}^I}_{,c} {e^e}_J {{e_b}^J}_{,d}
+	- {e^a}_I {{e_e}^I}_{,d} {e^e}_J {{e_b}^J}_{,c}
+	- 2 {e^a}_I {{e_b}^I}_{,e} {e^e}_I {{e_{[d}}^I}_{,c]}$<br>
+Distribute derivatives:<br>
+${R^a}_{bcd} = 
+	{{e^a}_I}_{,c} {{e_b}^I}_{,d}
+	+ {e^a}_I {{e_b}^I}_{,dc}
+	- {{e^a}_I}_{,d} {{e_b}^I}_{,c}
+	- {e^a}_I {{e_b}^I}_{,cd}
+	+ {e^a}_I {{e_e}^I}_{,c} {e^e}_J {{e_b}^J}_{,d}
+	- {e^a}_I {{e_e}^I}_{,d} {e^e}_J {{e_b}^J}_{,c}
+	- {e^a}_I {{e_b}^I}_{,e} {e^e}_J {{e_d}^J}_{,c}
+	+ {e^a}_I {{e_b}^I}_{,e} {e^e}_J {{e_c}^J}_{,d}
 $<br>
-	
+Cancel out second derivatives:<br>
+${R^a}_{bcd} = 
+	{{e^a}_I}_{,c} {{e_b}^I}_{,d}
+	- {{e^a}_I}_{,d} {{e_b}^I}_{,c}
+	+ {e^a}_I {{e_e}^I}_{,c} {e^e}_J {{e_b}^J}_{,d}
+	- {e^a}_I {{e_e}^I}_{,d} {e^e}_J {{e_b}^J}_{,c}
+	- {e^a}_I {{e_b}^I}_{,e} {e^e}_J {{e_d}^J}_{,c}
+	+ {e^a}_I {{e_b}^I}_{,e} {e^e}_J {{e_c}^J}_{,d}
+$<br>
+Use ${{e_a}^I}_{,c} {e^b}_I = -{e_a}^I {e^b}_{I,c}$:<br>
+${R^a}_{bcd} = 
+	{e^a}_{I,c} {{e_b}^I}_{,d}
+	- {e^a}_{I,d} {{e_b}^I}_{,c}
+	- {e^a}_{I,c} {e_e}^I {e^e}_J {{e_b}^J}_{,d}
+	+ {e^a}_{I,d} {e_e}^I {e^e}_J {{e_b}^J}_{,c}
+	+ {e^a}_{I,e} {e_b}^I {e^e}_J {{e_d}^J}_{,c}
+	- {e^a}_{I,e} {e_b}^I {e^e}_J {{e_c}^J}_{,d}
+$<br>
+Use ${e_e}^I {e^e}_J = \delta^I_J$ and cancel like terms:<br>
+${R^a}_{bcd} = 
+	{e^a}_{I,e} {e_b}^I  {{e_d}^J}_{,c} {e^e}_J
+	- {e^a}_{I,e} {e_b}^I  {{e_c}^J}_{,d} {e^e}_J$<br>
+Use ${{e_a}^I}_{,c} {e^b}_I = -{e_a}^I {e^b}_{I,c}$ again:<br>
+${R^a}_{bcd} = 
+	{e^a}_{I} {{e_b}^I}_{,e}  {{e_c}^J}_{,d} {e^e}_J
+	- {e^a}_I {{e_b}^I}_{,e}  {{e_d}^J}_{,c} {e^e}_J $<br>
+Factor:<br>
+${R^a}_{bcd} = {e^a}_{I} {{e_b}^I}_{,e} ( {{e_c}^J}_{,d} {e^e}_J - {{e_d}^J}_{,c} {e^e}_J)$<br>
+${R^a}_{bcd} = 2 {e^a}_{I} {{e_b}^I}_{,e} {e^e}_J {{e_{[c}}^J}_{,d]}$<br>
+...and where did all the terms go?<br>
+${R^a}_{bcd} = -{\Gamma^a}_{be} {c_{cd}}^e$ ...? <br>
+Something tells me that they wouldn't have gone away if I had defined the commutation coefficients otherwise.<br>
+<br>
+
+$R_{ab} = {R^u}_{aub} = {{e_a}^I}_{,v} {e^u}_{I} ( {{e_u}^J}_{,b} - {{e_b}^J}_{,u} ) {e^v}_J$<br>
+<br>
+
+$R = g^{ab} R_{ab} = {e^a}_K e^{bK} {{e_a}^I}_{,v} {e^u}_{I} ( {{e_u}^J}_{,b} - {{e_b}^J}_{,u} ) {e^v}_J$<br>
+<br>
+
+$G_{ab} = R_{ab} - \frac{1}{2} g_{ab} R$<br>
+$<br>
 	</body>
 </html>

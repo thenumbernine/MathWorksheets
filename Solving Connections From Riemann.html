@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Solving Connections From Riemann</title>
+		<!-- script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script -->
+		<script type="text/javascript" async src="file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+	</head>
+	<body>
+
+$M$ is the 4D spacetime.<br>
+$\Sigma$ is the 3D spatial hypersurface.<br>
+<br>
+
+Riemann Curvature Tensor:<br>
+${R^a}_{bcd} = {\Gamma^a}_{bd,c} - {\Gamma^a}_{bc,d} + {\Gamma^a}_{ec} {\Gamma^e}_{bd} - {\Gamma^a}_{ed} {\Gamma^e}_{bc} - {\Gamma^a}_{be} {c_{cd}}^e$<br>
+<br>
+
+Commutation coefficients:<br>
+${c_{ab}}^c = {\Gamma^c}_{ba} - {\Gamma^c}_{ab}$<br>
+<br>
+
+Substitute and expand:<br>
+${R^a}_{bcd} = {\Gamma^a}_{bd,c} - {\Gamma^a}_{bc,d} + {\Gamma^a}_{ec} {\Gamma^e}_{bd} - {\Gamma^a}_{ed} {\Gamma^e}_{bc} - {\Gamma^a}_{be} {\Gamma^e}_{dc} + {\Gamma^a}_{be} {\Gamma^e}_{cd}$<br>
+<br>
+
+Split into Space+Time:<br>
+${R^a}_{btt} = 0$<br>
+${R^a}_{bti} = {\Gamma^a}_{bi,t} - {\Gamma^a}_{bt,i} + {\Gamma^a}_{et} {\Gamma^e}_{bi} - {\Gamma^a}_{ei} {\Gamma^e}_{bt} - {\Gamma^a}_{be} {c_{ti}}^e$<br>
+${R^a}_{bit} = -{R^a}_{bti}$<br>
+${R^a}_{bjk} = {\Gamma^a}_{bk,j} - {\Gamma^a}_{bj,k} + {\Gamma^a}_{ej} {\Gamma^e}_{bk} - {\Gamma^a}_{ek} {\Gamma^e}_{bj} - {\Gamma^a}_{be} {c_{jk}}^e$<br>
+<br>
+
+Reformulate as vector field identity differentials:<br>
+$\gamma^{ij} {\Gamma^a}_{bt,ij}  
+	= \gamma^{ij} ({\Gamma^a}_{bi,t} - {R^a}_{bti} + {\Gamma^a}_{et} {\Gamma^e}_{bi} - {\Gamma^a}_{ei} {\Gamma^e}_{bt} - {\Gamma^a}_{be} {c_{ti}}^e)_{,j}$<br>
+$\epsilon^{ijk} {\Gamma^a}_{bk,j} = \epsilon^{ijk} (
+	{R^a}_{bjk} - {\Gamma^a}_{ej} {\Gamma^e}_{bk} + {\Gamma^a}_{ek} {\Gamma^e}_{bj} + {\Gamma^a}_{be} {c_{jk}}^e)$<br>
+<br>
+
+Integrate divergence equation:<br>
+$\int {\Gamma^a}_{bt,ij} \gamma^{ij} dx^k 
+	= \int \gamma^{ij} ({\Gamma^a}_{bi,t} - {R^a}_{bti} + {\Gamma^a}_{et} {\Gamma^e}_{bi} - {\Gamma^a}_{ei} {\Gamma^e}_{bt} - {\Gamma^a}_{be} {c_{ti}}^e)_{,j} dx^k$<br>
+...to solve for ${\Gamma^a}_{bt}$, including ${\Gamma^a}_{tt}$, ${\Gamma^a}_{it}$<br>
+<br>
+
+Integrate curl equation:<br>
+$\int \epsilon^{ijk} {\Gamma^a}_{bk,j} dx_k
+	= \int \epsilon^{ijk} ({R^a}_{bjk} - {\Gamma^a}_{ej} {\Gamma^e}_{bk} + {\Gamma^a}_{ek} {\Gamma^e}_{bj} + {\Gamma^a}_{be} {c_{jk}}^e) dx_k$<br>
+...to solve for ${\Gamma^a}_{bk}$, including ${\Gamma^a}_{ti}$, ${\Gamma^a}_{ij}$<br>
+<br>
+
+In the case that ${\Gamma^a}_{bc} = {\Gamma^a}_{(bc)}$ then we can solve for all of ${\Gamma^a}_{bc}$ with two methods to solve for ${\Gamma^a}_{ti}$.<br>
+If it is not symmetric then there is just enough solutions for all components of ${\Gamma^a}_{bc}$.<br> 
+	</body>
+</html>

@@ -1,0 +1,457 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Numerical Relativity Eigenfields</title>
+		<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<!-- script type="text/javascript" async src="file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script -->
+		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+	</head>
+	<body>
+
+Eigen whatever it's called analysis.  Eigenmode? linear stability theory? Fourier?  Looks to be finding the eigenfields using Fourier analysis ... If only I could find any reading on the technique apart from papers applying it ...<br>
+$\frac{d}{dt} \alpha = \alpha_{,t} - \mathcal{L}_\vec\beta \alpha = -\alpha^2 Q$<br>
+$\frac{d}{dt} \gamma_{ij} = \gamma_{ij,k} - \mathcal{L}_\vec\beta \gamma_{ij} = -2 \alpha K_{ij}$<br>
+$\frac{d}{dt} K_{ij} = K_{ij,t} - \mathcal{L}_\vec\beta K_{ij} = -D_i D_j \alpha + \alpha (R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
+
+expanding $D_i$'s:<br>
+$\frac{d}{dt} K_{ij} = -\alpha_{,ij} + {\Gamma^k}_{ij} \alpha_{,k} + \alpha (R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
+
+expanding $\frac{d}{dt}$'s:<br>
+$\alpha_{,t} - \alpha_{,i} \beta^i = -\alpha^2 Q$<br>
+$\gamma_{ij,t} - \gamma_{ij,k} \beta^k - \gamma_{kj} {\beta^k}_{,i} - \gamma_{ik} {\beta^k}_{,j} = -2 \alpha K_{ij}$<br>
+$K_{ij,t} - K_{ij,k} \beta^k - K_{kj} {\beta^k}_{,i} - K_{ik} {\beta^k}_{,j} = -\alpha_{,ij} + {\Gamma^k}_{ij} \alpha_{,k} + \alpha (R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
+<br>
+
+Let...<br>
+$\alpha = \hat\alpha exp(i(\vec{k} \cdot \vec{x} - \omega t))$<br>
+$\beta = \hat\beta exp(i(\vec{k} \cdot \vec{x} - \omega t))$<br>
+$\gamma_{ij} = \hat\gamma_{ij} exp(i(\vec{k} \cdot \vec{x} - \omega t))$<br>
+$K_{ij} = \hat{K}_{ij} exp(i(\vec{k} \cdot \vec{x} - \omega t))$<br>
+
+Then...<br>
+$\alpha_{,t} = -i \omega \alpha$<br>
+$\alpha_{,i} = i k_i \alpha$<br>
+$\alpha_{,ij} = -k_i k_j \alpha$<br>
+${\beta^i}_{,t} = -i \omega \beta^i$<br>
+${\beta^i}_{,j} = i k_j \beta^i$<br>
+$\gamma_{ij,t} = -i \omega \gamma_{ij,t}$<br>
+$\gamma_{ij,k} = i k_k \gamma_{ij}$<br>
+$K_{ij,t} = -i \omega K_{ij}$<br>
+$K_{ij,k} = i k_k K_{ij}$<br>
+<br>
+
+replacing derivatives:<br>
+<br>
+
+${\Gamma^i}_{jk} = \frac{1}{2} \gamma^{il} (\gamma_{lj,k} + \gamma_{lk,j} - \gamma_{jk,l})$<br>
+${\Gamma^i}_{jk} = \frac{1}{2} \gamma^{il} (i k_k \gamma_{lj} + i k_j \gamma_{lk} - i k_l \gamma_{jk})$<br>
+${\Gamma^i}_{jk} = i \frac{1}{2} (k_k \delta^i_j + k_j \delta^i_k - k^i \gamma_{jk})$<br>
+${\Gamma^i}_{jk} = i \frac{1}{2} k_l (\delta^l_k \delta^i_j + \delta^l_j \delta^i_k - \gamma^{il} \gamma_{jk})$<br>
+<br>
+
+$\Gamma^i = {\Gamma^i}_{jk} \gamma^{jk}$<br>
+$\Gamma^i = i \frac{1}{2} (k_k \delta^i_j + k_j \delta^i_k - k^i \gamma_{jk}) \gamma^{jk}$<br>
+$\Gamma^i = -i \frac{1}{2} k^i$<br>
+<br>
+
+${\Gamma^i}_{jk,l} = i \frac{1}{2} (k_k \delta^i_j + k_j \delta^i_k - k^i \gamma_{jk})_{,l}$<br>
+${\Gamma^i}_{jk,l} = -i \frac{1}{2} k^i \gamma_{jk,l}$<br>
+${\Gamma^i}_{jk,l} = \frac{1}{2} k^i \gamma_{jk} k_l$<br>
+<br>
+
+${R^i}_{jkl} = {\Gamma^i}_{jl,k} - {\Gamma^i}_{jk,l} + {\Gamma^i}_{mk} {\Gamma^m}_{jl} - {\Gamma^i}_{ml} {\Gamma^m}_{jk}$<br> 
+${R^i}_{jkl} = \frac{1}{2} k^i k_k \gamma_{jl} - \frac{1}{2} k^i k_l \gamma_{jk} 
+	- \frac{1}{4} (k_k \delta^i_m + k_m \delta^i_k - k^i \gamma_{mk}) (k_l \delta^m_j + k_j \delta^m_l - k^m \gamma_{jl})
+	+ \frac{1}{4} (k_l \delta^i_m + k_m \delta^i_l - k^i \gamma_{ml}) (k_k \delta^m_j + k_j \delta^m_k - k^m \gamma_{jk})
+$<br> 
+${R^i}_{jkl} = \frac{1}{2} k^i k_k \gamma_{jl} - \frac{1}{2} k^i k_l \gamma_{jk} 
+	+ \frac{1}{4} (
+		- k_k \delta^i_m k_l \delta^m_j 
+		- k_m \delta^i_k k_l \delta^m_j 
+		+ k^i \gamma_{mk} k_l \delta^m_j
+		- k_k \delta^i_m k_j \delta^m_l 
+		- k_m \delta^i_k k_j \delta^m_l 
+		+ k^i \gamma_{mk} k_j \delta^m_l
+		+ k_k \delta^i_m k^m \gamma_{jl} 
+		+ k_m \delta^i_k k^m \gamma_{jl} 
+		- k^i \gamma_{mk} k^m \gamma_{jl}
+		+ k_l \delta^i_m k_k \delta^m_j 
+		+ k_m \delta^i_l k_k \delta^m_j 
+		- k^i \gamma_{ml} k_k \delta^m_j
+		+ k_l \delta^i_m k_j \delta^m_k 
+		+ k_m \delta^i_l k_j \delta^m_k 
+		- k^i \gamma_{ml} k_j \delta^m_k
+		- k_l \delta^i_m k^m \gamma_{jk} 
+		- k_m \delta^i_l k^m \gamma_{jk} 
+		+ k^i \gamma_{ml} k^m \gamma_{jk}
+	)
+$<br> 
+${R^i}_{jkl} = \frac{1}{4} (\delta^i_l (k_j k_k - k^2 \gamma_{jk}) - \delta^i_k (k_j k_l - k^2 \gamma_{jl}) - k^i \gamma_{jk} k_l + k^i \gamma_{jl} k_k)$<br>
+<br>
+
+$R_{ij} = {R^k}_{ikj}$<br>
+$R_{ij} = \frac{1}{4} (\delta^k_j (k_i k_k - k^2 \gamma_{ik}) - \delta^k_k (k_i k_j - k^2 \gamma_{ij}) - k^k \gamma_{ik} k_j + k^k \gamma_{ij} k_k)$<br>
+$R_{ij} = \frac{1}{4} (k_i k_j - k^2 \gamma_{ij} - 3 k_i k_j + 3 k^2 \gamma_{ij} - k_i k_j + k^2 \gamma_{ij})$<br>
+$R_{ij} = \frac{3}{4} (k^2 \gamma_{ij} - k_i k_j)$<br>
+<br>
+
+$R = R_{ij} \gamma^{ij}$<br>
+$R = \frac{3}{4} (k^2 \gamma_{ij} - k_i k_j) \gamma^{ij}$<br>
+$R = \frac{3}{4} (3 k^2 - k^2)$<br>
+$R = \frac{3}{2} k^2$<br>
+<br>
+
+<b>considering $\alpha$ and $\beta$</b><br>
+
+$\alpha_{,t} - \alpha_{,i} \beta^i = -\alpha^2 Q$<br>
+$-i \omega \alpha - i k_i \alpha \beta^i = -\alpha^2 Q$<br>
+$\omega = -k_i \beta^i - i \alpha Q$<br>
+$\alpha = i \frac{1}{Q} ( \omega + k_i \beta^i)$<br>
+$k_i \beta^i = -i Q \alpha - \omega$<br>
+<br>
+
+$\gamma_{ij,t} - \gamma_{ij,k} \beta^k - \gamma_{kj} {\beta^k}_{,i} - \gamma_{ik} {\beta^k}_{,j} = -2 \alpha K_{ij}$<br>
+$\gamma_{mn} ((-i \omega - i k_l \beta^l) \delta^m_i \delta^n_j - i k_i \delta^n_j \beta^m - i k_j \delta^m_i \beta^n) = -2 \alpha K_{ij}$<br>
+$\gamma_{mn} ((\omega + k_l \beta^l) \delta^m_i \delta^n_j + k_i \delta^n_j \beta^m + k_j \delta^m_i \beta^n) = -i 2 \alpha K_{ij}$<br>
+substitute $\alpha$<br> 
+$\gamma_{mn} ((\omega + k_l \beta^l) \delta^m_i \delta^n_j + k_i \delta^n_j \beta^m + k_j \delta^m_i \beta^n) = -i 2 (i \frac{1}{Q} (\omega + k_l \beta^l)) K_{ij}$<br>
+$\gamma_{mn} ((\omega + k_l \beta^l) \delta^m_i \delta^n_j + k_i \delta^n_j \beta^m + k_j \delta^m_i \beta^n) = 2 \frac{1}{Q} (\omega + k_l \beta^l) K_{ij}$<br>
+$((\omega + k_k \beta^k) \gamma_{ij} + k_i \beta_j + k_j \beta_i) = 2 \frac{1}{Q} (\omega + k_l \beta^l) K_{ij}$<br>
+<br>
+
+$K_{ij,t} - K_{ij,k} \beta^k - K_{kj} {\beta^k}_{,i} - K_{ik} {\beta^k}_{,j} = -\alpha_{,ij} + {\Gamma^k}_{ij} \alpha_{,k} + \alpha (R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
+$-i \omega K_{ij} - i k_k K_{ij} \beta^k - i k_i K_{kj} \beta^k - i k_j K_{ik} \beta^k = k_i k_j \alpha + i k_k {\Gamma^k}_{ij} \alpha + \alpha (R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
+$K_{mn} (\delta^m_i \delta^n_j (-i \omega - i k_k \beta^k) - i k_i \delta^n_j \beta^m - i k_j \delta^m_i \beta^n) = \alpha (k_i k_j + i k_k {\Gamma^k}_{ij} + R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
+substitute $\alpha$, ${\Gamma^k}_{ij}$, $R_{ij}$<br>
+$K_{mn} (\delta^m_i \delta^n_j (-i \omega - i k_k \beta^k) - i k_i \delta^n_j \beta^m - i k_j \delta^m_i \beta^n) 
+	= i \frac{1}{Q} (\omega + k_k \beta^k) (k_i k_j + i k_k (i \frac{1}{2} k_l (\delta^l_j \delta^k_i + \delta^l_i \delta^k_j - \gamma^{kl} \gamma_{ij})) + (\frac{3}{4} (k^2 \gamma_{ij} - k_i k_j)) + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
+$K_{mn} (\delta^m_i \delta^n_j (-i \omega - i k_k \beta^k) - i k_i \delta^n_j \beta^m - i k_j \delta^m_i \beta^n) 
+	= i \frac{1}{Q} (\omega + k_k \beta^k) (\frac{5}{4} k^2 \gamma_{ij} - \frac{3}{4} k_i k_j + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
+$(K_{ij} (\omega + k_k \beta^k) + K_{kj} k_i \beta^k + K_{ik} k_j \beta^k) 
+	= -\frac{1}{Q} (\omega + k_k \beta^k) (\frac{5}{4} k^2 \gamma_{ij} - \frac{3}{4} k_i k_j + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
+<br>
+
+contract $K_{ij}$'s def with $K^{ij}$<br>
+$K^{ij} (K_{ij} (\omega + k_k \beta^k) + K_{kj} k_i \beta^k + K_{ik} k_j \beta^k) 
+	= -\frac{1}{Q} (\omega + k_k \beta^k) K^{ij} (\frac{5}{4} k^2 \gamma_{ij} - \frac{3}{4} k_i k_j + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
+$(K_{ij} K^{ij} (\omega + k_k \beta^k) + K_{kj} K^{ij} k_i \beta^k + K_{ik} K^{ij} k_j \beta^k) 
+	= -\frac{1}{Q} (\omega + k_k \beta^k) (\frac{5}{4} k^2 K^{ij} \gamma_{ij} - \frac{3}{4} K^{ij} k_i k_j + K K^{ij} K_{ij} - 2 K^{ij} K_{ik} {K^k}_j)$<br>
+$(K_{ij} K^{ij} (\omega + k_k \beta^k) + K_{kj} K^{ij} k_i \beta^k + K_{ik} K^{ij} k_j \beta^k) 
+	= -\frac{1}{Q} (\omega + k_k \beta^k) (\frac{5}{4} k^2 K - \frac{3}{4} K^{ij} k_i k_j + K K^{ij} K_{ij} - 2 K^{ij} K_{jk} {K^k}_i )$<br>
+<br>
+
+contract $K_{ij}$'s def with $\gamma^{ij}$<br>
+$\gamma^{ij} (K_{ij} (\omega + k_k \beta^k) + K_{kj} k_i \beta^k + K_{ik} k_j \beta^k) 
+	= -\gamma^{ij} \frac{1}{Q} (\omega + k_k \beta^k) (\frac{5}{4} k^2 \gamma_{ij} - \frac{3}{4} k_i k_j + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
+$(\gamma^{ij} K_{ij} (\omega + k_k \beta^k) + \gamma^{ij} K_{kj} k_i \beta^k + \gamma^{ij} K_{ik} k_j \beta^k) 
+	= -\frac{1}{Q} (\omega + k_k \beta^k) (\frac{5}{4} k^2 \gamma^{ij} \gamma_{ij} - \frac{3}{4} \gamma^{ij} k_i k_j + K K_{ij} - 2 \gamma^{ij} K_{ik} {K^k}_j)$<br>
+$2 K_{ij} k^i \beta^j = -\frac{1}{Q} (\omega + k_k \beta^k) (K^2 + Q K + 3 k^2 - 2 K_{ij} K^{ij})$<br>
+<br>
+
+<b>considering $\alpha$ and $\beta$ but only in the x direction ($k_i = \delta^x_i k$)</b><br>
+$\alpha = i \frac{1}{Q} ( \omega + k \beta^x)$<br>
+$(\omega + k_l \beta^l) \gamma_{ij} + \gamma_{kj} k_i \beta^k + \gamma_{ik} k_j \beta^k = -i 2 \alpha K_{ij}$<br>
+<br>
+breakdown of $\gamma_{ij}$<br>
+$(\omega + 3 k \beta^x) \gamma_{xx} + 2 k \gamma_{xp} \beta^p = -i 2 \alpha K_{xx}$<br>
+$(\omega + k \beta^x) \gamma_{xp} + k (\gamma_{xp} \beta^x + \gamma_{pq} \beta^q) = -i 2 \alpha K_{xp}$<br>
+$(\omega + k \beta^x) \gamma_{pq} = -i 2 \alpha K_{pq}$<br>
+substitute...<br>
+$\gamma_{pq} = -\frac{2 i \alpha}{\omega + k \beta^x} K_{pq}$<br>
+$(\omega + k \beta^x) \gamma_{xp} + k (\gamma_{xp} \beta^x - \frac{2 i \alpha}{\omega + k \beta^x} K_{pq} \beta^q) = -2 i \alpha K_{xp}$<br>
+$\gamma_{xp} = \frac{2 i \alpha}{\omega + 2 k \beta^x} (-K_{xp} + \frac{k}{\omega + k \beta^x} \beta^q K_{pq})$<br>
+$(\omega + 3 k \beta^x) \gamma_{xx} + 2 k \frac{2 i \alpha}{\omega + 2 k \beta^x} (-K_{xp} + \frac{k}{\omega + k \beta^x} \beta^q K_{pq}) \beta^p = -i 2 \alpha K_{xx}$<br>
+$\gamma_{xx} =
+	- \frac{2 i \alpha}{\omega + 3 k \beta^x} K_{xx}
+	+ \frac{4 i k \alpha }{(\omega + 2 k \beta^x)(\omega + 3 k \beta^x)} K_{xp} \beta^p 
+	- \frac{4 i k^2 \alpha }{(\omega + k \beta^x)(\omega + 2 k \beta^x)(\omega + 3 k \beta^x)} K_{pq} \beta^p \beta^q 
+$<br>
+
+solve for $K_{ij}$ using $\gamma_{ij}$'s definition:<br>
+$K_{pq} = i \frac{\omega + k \beta^x}{2 \alpha} \gamma_{pq}$<br>
+$-K_{xp} + \frac{k}{\omega + k \beta^x} \beta^q (i \frac{\omega + k \beta^x}{2 \alpha} \gamma_{pq}) = -i \frac{\omega + 2 k \beta^x}{2 \alpha} \gamma_{xp}$<br>
+$K_{xp} = i \frac{1}{2 \alpha}((\omega + 2 k \beta^x) \gamma_{xp} + \beta^q \gamma_{pq})$<br>
+$K_{xx} = i \frac{1}{2 \alpha}(
+	(\omega + 3 k \beta^x) \gamma_{xx} 
+	+ 2 k \gamma_{xp} \beta^p 
+	+ (1 - k) \frac{2 k}{\omega + 2 k \beta^x} \gamma_{pq} \beta^p \beta^q
+)$<br>
+<br>
+
+breakdown of $K_{ij}$<br>
+$K_{xx} (\omega + 3 k \beta^x) + 2 k K_{xp} \beta^p
+	= i \alpha (
+		\frac{5}{4} k^2 \gamma_{xx} 
+		- \frac{3}{4} k^2 
+		- \gamma^{xx} K_{xx}^2 
+		- 2 \gamma^{xp} K_{xp} K_{xx} 
+		+ \gamma^{pq} K_{xx} K_{pq} 
+		- 2 \gamma^{pq} K_{xp} K_{xq}
+)$<br>
+$K_{xp} (\omega + 2 k \beta^x) + k K_{pq} \beta^q
+	= i \alpha (
+		\frac{5}{4} k^2 \gamma_{xp}
+		- \gamma^{xx} K_{xx} K_{xp}
+		+ 2 \gamma^{xq} K_{xp} K_{xq} 
+		+ \gamma^{qr} K_{xp} K_{qr}
+		- 4 \gamma^{xq} K_{xx} K_{pq}
+		- 2 \gamma^{qr} K_{xq} K_{pr}
+)$<br>
+$K_{pq} (\omega + k \beta^x) 
+	= i \alpha (
+		\frac{5}{4} k^2 \gamma_{pq} 
+		+ \gamma^{xx} K_{xx} K_{pq} 
+		+ 2 \gamma^{xr} K_{xr} K_{pq} 
+		+ \gamma^{rs} K_{rs} K_{pq} 
+		- 2 K_{px} \gamma^{xx} K_{xq}
+		- 4 K_{px} \gamma^{xr} K_{rq}
+		- 2 K_{pr} \gamma^{rs} K_{sq}
+)$<br>
+substitute $\gamma_{ij}$...<br>
+	$(\omega + 3 k \beta^x - \frac{5 \alpha^2 k^2}{2 (\omega + 3 k \beta^x)}) K_{xx}
+	+ (2 k + \frac{5 \alpha^2 k^3}{(\omega + 2 k \beta^x)(\omega + 3 k \beta^x)}) K_{xp} \beta^p 
+	= 
+	- i \frac{3}{4} \alpha k^2 
+	i \alpha (
+		- \frac{i 5 k^4 \alpha}{(\omega + k \beta^x)(\omega + 2 k \beta^x)(\omega + 3 k \beta^x)} K_{pq} \beta^p \beta^q 
+		- \gamma^{xx} K_{xx}^2 
+		- 2 \gamma^{xp} K_{xx} K_{xp} 
+		- 2 \gamma^{pq} K_{xp} K_{xq}
+		+ \gamma^{pq} K_{xx} K_{pq} 
+)$<br>
+$
+	(\omega + 2 k \beta^x - \frac{5 k^2 \alpha^2}{2 (\omega + 2 k \beta^x)}) K_{xp} 
+	+ (k + \frac{5 k^3 \alpha^2}{2 (\omega + k \beta^x) (\omega + 2 k \beta^x)}) \beta^q K_{pq}
+	= 
+	i \alpha (
+		- \gamma^{xx} K_{xx} K_{xp}
+		- 4 \gamma^{xq} K_{xx} K_{pq}
+		+ 2 \gamma^{xq} K_{xp} K_{xq} 
+		+ \gamma^{qr} K_{xp} K_{qr}
+		- 2 \gamma^{qr} K_{xq} K_{pr}
+)$<br>
+$ (\omega + k \beta^x - \frac{5}{4} k^2 \frac{2 \alpha^2}{\omega + k \beta^x}) K_{pq}
+	= i \alpha (
+		+ \gamma^{xx} K_{xx} K_{pq} 
+		+ 2 \gamma^{xr} K_{xr} K_{pq} 
+		- 2 \gamma^{xx} K_{xp} K_{xq}
+		- 4 \gamma^{xr} K_{xp} K_{rq}
+		+ \gamma^{rs} K_{pq} K_{rs}
+		- 2 \gamma^{rs} K_{pr} K_{sq}
+)$<br>
+<br>
+
+<b>assuming $\beta=0$</b><br>
+
+$\alpha_{,t} - \alpha_{,i} \beta^i = -\alpha^2 Q$<br>
+$\omega = -k_i \beta^i - i \alpha Q$<br>
+$\omega = -i \alpha Q$<br>
+$\alpha = \frac{i \omega}{Q}$<br>
+<br>
+
+$\gamma_{ij,t} - \gamma_{ij,k} \beta^k - \gamma_{kj} {\beta^k}_{,i} - \gamma_{ik} {\beta^k}_{,j} = -2 \alpha K_{ij}$<br>
+$\gamma_{ij} = -\frac{2 i \alpha}{\omega} K_{ij}$<br>
+$\gamma_{ij} = \frac{2}{Q} K_{ij}$<br>
+so $K_{ij} = \frac{Q}{2} \gamma_{ij}$<br>
+so $K = \frac{3}{2} Q$<br>
+<br>
+
+$K_{ij,t} - K_{ij,k} \beta^k - K_{kj} {\beta^k}_{,i} - K_{ik} {\beta^k}_{,j} = -\alpha_{,ij} + {\Gamma^k}_{ij} \alpha_{,k} + \alpha (R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
+$-i \omega K_{ij} = \alpha (k_i k_j + i k_k {\Gamma^k}_{ij} + R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
+$-i \omega K_{ij} = \frac{i \omega}{Q} (k_i k_j + i k_k {\Gamma^k}_{ij} + R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
+$K_{ij} = -\frac{1}{Q} (k_i k_j + i k_k {\Gamma^k}_{ij} + R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
+substitute ${\Gamma^k}_{ij}$, $R_{ij}$ expansion<br>
+$K_{ij} = -\frac{1}{Q} (k_i k_j - \frac{1}{2} k_k (k_j \delta^k_i + k_i \delta^k_j - k^k \gamma_{ij}) + \frac{3}{4} (k^2 \gamma_{ij} - k_i k_j) + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
+$Q K_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j = -\frac{5}{4} k^2 \gamma_{ij} + \frac{3}{4} k_i k_j$<br>
+substitute $K_{ij}$, $K$<br>
+$Q \frac{Q}{2} \gamma_{ij} + \frac{3}{2} Q \cdot \frac{1}{2} Q \gamma_{ij} - 2 \frac{Q}{2} \gamma_{im} \gamma^{mn} \frac{Q}{2} \gamma_{nj} = -\frac{5}{4} k^2 \gamma_{ij} + \frac{3}{4} k_i k_j$<br>
+$\frac{1}{2} Q^2 \gamma_{ij} + \frac{3}{4} Q^2 \gamma_{ij} - \frac{1}{2} Q^2 \gamma_{ij} + \frac{5}{4} k^2 \gamma_{ij} - \frac{3}{4} k_i k_j = 0$<br>
+$\frac{3}{4} Q^2 \gamma_{ij} + \frac{5}{4} k^2 \gamma_{ij} - \frac{3}{4} k_i k_j = 0$<br>
+<br>
+
+trace of $K$:<br>
+$K = \gamma^{ij} K_{ij} = -\frac{1}{Q} (k^2 + i k_k {\Gamma^k}_{ij} \gamma^{ij} + R + K^2 - 2 K_{ij} K^{ij})$<br>
+$K^2 + Q K = -k^2 - i k_k \Gamma^k - R + 2 K_{ij} K^{ij}$<br>
+substitute $\Gamma^i$ and $R$ expansion<br>
+$K^2 + Q K = -\frac{3}{2} k^2 - \frac{3}{2} k^2 + 2 K_{ij} K^{ij}$<br>
+$K^2 + Q K + 3 k^2 - 2 K_{ij} K^{ij} = 0$<br>
+substitute $K_{ij}$<br>
+$K^2 + Q K + 3 k^2 - 2 \frac{Q}{2} \gamma_{ij} \gamma^{im} \gamma^{jn} \frac{Q}{2} \gamma_{mn} = 0$<br>
+$K^2 + Q K + 3 k^2 - \frac{3}{2} Q^2 = 0$<br>
+substitute $K$<br>
+$\frac{9}{4} Q^2 + \frac{3}{2} Q^2 + 3 k^2 - \frac{3}{2} Q^2 = 0$<br>
+$Q^2 = -\frac{4}{3} k^2$<br>
+<br>
+
+$\frac{3}{4} Q^2 \gamma_{ij} + \frac{5}{4} k^2 \gamma_{ij} - \frac{3}{4} k_i k_j = 0$<br>
+substitute $Q$ back into the equality derived from $K_{ij,t}$...<br>
+$\gamma_{ij} = \frac{3 k_i k_j}{k^2}$<br>
+<br>
+
+$K = \frac{3}{2} Q$<br>
+$K = \frac{3}{2} \sqrt{-\frac{4}{3} k^2}$<br>
+$K = i \sqrt{3} |k|$<br>
+<br>
+
+$K_{ij} = \frac{Q}{2} \gamma_{ij}$<br>
+$K_{ij} = i \sqrt{3} \frac{k_i k_j}{|k|}$<br>
+<br>
+
+$\alpha = \frac{i \omega}{Q}$<br>
+$\alpha = \frac{i \omega}{\sqrt{-\frac{4}{3} k^2}}$<br>
+$\alpha = \frac{\sqrt{3} \omega}{2 |k|}$<br>
+<br>
+
+<b>setting $\alpha=1$ and $\beta=0$</b><br>
+<br>
+
+$\gamma_{ij,t} = -2 K_{ij}$<br>
+$-i \omega \gamma_{ij} = -2 K_{ij}$<br>
+$\gamma_{ij} = -2 i \frac{1}{\omega} K_{ij}$<br>
+$K_{ij} = i \frac{\omega}{2} \gamma_{ij}$<br>
+<br>
+trace of $K_{ij}$:<br>
+$K = i \frac{3}{2} \omega$<br>
+<br>
+
+$K_{ij,t} = \alpha (R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
+$-i \omega K_{ij} = \alpha (\frac{3}{4} k^2 \gamma_{ij} - \frac{3}{4} k_i k_j + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
+substitute $K$, $K_{ij}$<br>
+$\frac{\omega^2}{2} \gamma_{ij} = \frac{3}{4} k^2 \gamma_{ij} - \frac{1}{4} \omega^2 \gamma_{ij} - \frac{3}{4} k_i k_j$<br>
+$\gamma_{ij} = \frac{k_i k_j}{k^2 - \omega^2}$<br>
+<br>
+substitute back into $K_{ij}$<br>
+$K_{ij} = i \frac{\omega k_i k_j}{2 (k^2 - \omega^2)}$<br>
+<br>
+
+<b>permuting only $\alpha$ and $\beta$ and deriving other variables:</b><br>
+<br>
+$a_i = ln(\alpha)_{,i} = \alpha_{,i} / \alpha = i k_i$<br>
+<br>
+$d_{kij} = \frac{1}{2} \gamma_{ij,k} = i \frac{1}{2} k_k \gamma_{ij}$<br>
+<br>
+$K_{ij} = -\alpha ^4{\Gamma^t}_{ij}$<br>
+$= -\alpha (g^{tt} \cdot {^4}\Gamma_{tij} + g^{tk} \cdot {^4}\Gamma_{kij})$<br>
+$= -\alpha (-\frac{1}{2} \frac{1}{\alpha^2} (g_{ti,j} + g_{tj,i} - g_{ij,t}) + \frac{\beta^k}{\alpha^2} \Gamma_{kij})$<br>
+$= \frac{1}{\alpha} (\frac{1}{2} (\beta_{i,j} + \beta_{j,i} - \gamma_{ij,t}) - \beta^k \Gamma_{kij})$<br>
+substitute Fourier expansion of derivatives...<br>
+$= i \frac{1}{2} \frac{1}{\alpha} (\omega + \beta^k k_k) \gamma_{ij}$<br>
+<br>
+
+<b>"plane wave in x direction" according to Alcubierre, Allen, Brugmann, Seidel, Suen 2000 - section 2:</b><br>
+with $\alpha = 1$, $\beta^i = 0$, $\gamma_{ij} = \delta_{ij} + h_{ij}$<br>
+then permuting...<br>
+$h_{ij} = \hat{h}_{ij} exp(i(\omega t - k x))$<br>
+$K_{ij} = \hat{K}_{ij} exp(i(\omega t - k x))$<br>
+<br>
+Then the evolution equations become...<br>
+$\gamma_{ij,t} = -2 K_{ij}$<br>
+$K_{ij,t} = R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j$<br>
+<br>
+The derivations of the spatial metric, when permuting the linear term alone, become...<br>
+$\Gamma_{ijk} = \frac{1}{2} (\gamma_{ij,k} + \gamma_{ik,j} - \gamma_{jk,i})$<br>
+$= \frac{1}{2} ( h_{ij,k} + h_{ik,j} - h_{jk,i})$<br>
+$= \frac{1}{2} ( h_{ij} k \delta^x_k + h_{ik} k \delta^x_j - h_{jk} k \delta^x_i)$<br>
+...and...<br>
+${\Gamma^i}_{jk} = \gamma^{il} \Gamma_{ljk}$<br>
+$= \frac{1}{2} ( {h^i}_j k \delta^x_k + {h^i}_k k \delta^x_j - h_{jk} k \gamma^{xi})$<br>
+...which involves a transformed $h_{ij}$ so should get interesting...<br>
+<br>
+
+(note Bona, Ledvinka, Palenzuela, Zacek 2004 do the same trick with Z4.<br>
+They do use the linearized metric $h_{ij}$ for $\gamma_{ij} = \delta_{ij} + h_{ij}$, but just call it $\hat{\gamma}_{ij}$ instead of $\hat{h}_{ij}$.<br>
+They also permute $\alpha$ in the same way: $\alpha = 1 + \hat{\alpha} exp(i \omega x)$.<br>
+They also only permute in space, not time.  No use of $exp(i (k x - \omega t))$.<br>
+<br>
+
+How about just <i>verifying</i> the eigenfields of one of the formalisms.<br>
+Start with the first Bona-Masso 1997 ADM, because Alcubierre cuts too many corners to follow.<br>
+3: $a_{k,t} + (-\beta^r a_k + \alpha Q \delta^r_k)_{,r} = (2 {b_k}^r - \alpha tr s \delta^r_k) a_r$<br>
+18: $d_{kij,t} + (-\beta^r d_{kij} + \alpha \delta^r_k (K_{ij} - s_{ij}))_{,r} = (2 {b_k}^r - \alpha tr s \delta^r_k) d_{rij}$<br>
+6: $K_{ij,t} + (-\beta^r K_{ij} + \alpha {\Lambda^r}_{ij})_{,r} = \alpha S_{ij}$<br>
+3: $V_{k,t} + (-\beta^r V_k + \alpha ({s^r}_k - tr s \delta^r_k))_{,r} = \alpha P_k$<br>
+expand to extract the state vector in the k'th direction:<br> 
+3: $a_{k,t} 
+	- \beta^r \delta^m_k a_{m,r} 
+	+ \alpha \delta^r_k f \gamma^{pq} K_{pq,r} 
+	= 2 (2 b_{j(k} a_{i)} - a_k b_{(ij)}) \gamma^{ij} 
+	- \alpha a_k K f
+	- \alpha^2 a_k K f' 
+	+ 2 \alpha f {d_k}^{ij} K_{ij}
+$<br>
+18: $d_{kij,t} 
+	- \beta^r \delta^m_k \delta^p_i \delta^q_j d_{mpq,r} 
+	+ \alpha \delta^p_i \delta^q_j \delta^r_k K_{pq,r}
+	= 2 {b_k}^l d_{lij}
+	+ 2 {b_l}^l d_{kij} 
+	- \alpha tr s d_{kij}
+	+ 2 b_{(ij),k}
+	- \alpha a_k K_{ij} 
+$<br>
+6: $K_{ij,t} 
+	- \beta^r \delta^p_i \delta^q_j K_{pq,r} 
+	+ \alpha \delta^r_{(i} \delta^m_{j)} a_{m,r} 
+	+ \alpha (\delta^p_i \delta^q_j \gamma^{rm} - \gamma^{pq} \delta^r_i \delta^m_j ) d_{mpq,r}
+	+ 2 \alpha \delta^r_{(i} \delta^m_{j)} V_{m,r}
+	= \alpha S_{ij}
+	+ 2 {b_r}^r K_{ij}
+	- \alpha a_r {\Lambda^r}_{ij} 
+	+ 2 \alpha \gamma^{lm} d_{lmk} \gamma^{kn} d_{nij} 
+	- 2 \alpha \delta^r_{(i} d_{j)mn} {d_r}^{mn}
+$<br>
+3: $V_{k,t} 
+	- \beta^r \delta^m_k V_{m,r} 
+	= \alpha P_k
+	- 2 a_i \gamma^{ij} b_{(jk)}
+	+ a_k \gamma^{ij} b_{(ij)}
+	+ \gamma^{ij} b_{(ij),k} 
+	+ 2 {b_i}^i V_k 
+	+ 4 {d_i}^{ij} b_{jk}
+	- 2 {d_k}^{ij} b_{(ij)} 
+	- 2 \gamma^{ij} b_{jk,i}
+	+ 2 \gamma^{ij} b_{jk} a_i
+	- \gamma^{ij} b_{(ij)} a_k 
+$<br>
+set $\beta^i=0$...<br>
+3: $a_{k,t} 
+	+ \alpha \delta^r_k f \gamma^{pq} K_{pq,r} 
+	= -\alpha a_k K (f + \alpha f')
+	+ 2 \alpha f d_{kij} K^{ij}
+$<br>
+18: $d_{kij,t} 
+	+ \alpha \delta^p_i \delta^q_j \delta^r_k K_{pq,r}
+	= -\alpha a_k K_{ij}
+$<br>
+6: $K_{ij,t} 
+	+ \alpha \delta^r_{(i} \delta^m_{j)} a_{m,r} 
+	+ \alpha (\delta^p_i \delta^q_j \gamma^{rm} - \gamma^{pq} \delta^r_i \delta^m_j) d_{mpq,r}
+	+ 2 \alpha \delta^r_{(i} \delta^m_{j)} V_{m,r}
+	= \alpha S_{ij}
+	- \alpha a_r {\Lambda^r}_{ij} 
+	+ 2 \alpha {d^m}_{mk} {d^k}_{ij} 
+	- 2 \alpha {d_(i}^{mn} d_{j)mn} 
+$<br>
+3: $V_{k,t} = \alpha P_k$<br>
+matrix form:<br>
+$\left[\matrix{
+	a_k \\ d_{kij} \\ K_{ij} \\ V_k
+}\right]_{,t}
++ \left[\matrix{
+	0 & 0 & \alpha \delta^r_k f \gamma^{pq} & 0 \\
+	0 & 0 & \alpha \delta^p_i \delta^q_j \delta^r_k & 0 \\
+	\alpha \delta^r_{(i} \delta^m_{j)} &
+		\alpha (\delta^p_i \delta^q_j \gamma^{rm} - \gamma^{pq} \delta^r_i \delta^m_j) &
+		0 &
+		2 \alpha \delta^r_{(i} \delta^m_{j)} \\ 
+	0 & 0 & 0 & 0
+}\right]
+\left[\matrix{
+	a_m \\ d_{mpq} \\ K_{pq} \\ V_m
+}\right]_{,r}
+= Source$<br>
+<hr>
+
+
+	</body>
+</html>

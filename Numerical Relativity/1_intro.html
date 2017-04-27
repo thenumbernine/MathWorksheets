@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Numerical Relativity Eigenfields</title>
+		<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<!-- script type="text/javascript" async src="file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script -->
+		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+	</head>
+	<body>
+
+Following Alcubierre "Introduction to 3+1 Numerical Relativity" section 5.4<br>
+<br>
+
+primitive variables:<br>
+$\alpha =$ lapse<br>
+$\beta^i =$ shift<br>
+$\gamma_{ij} =$ spatial metric<br>
+$K_{ij} =$ extrinsic curvature<br>
+$K = tr K = {K^i}_i$<br>
+$R_{ij} =$ Ricci curvature of spatial hypersurface<br>
+$^4R_{ab} =$ Ricci curvature of spacetime<br>
+<br>
+
+other variables:<br>
+$Q = $ slicing function<br>
+$Q = f(\alpha) K$ for Bona-Masso family of slicing (including "harmonic slicing" for when $f(\alpha) = 1$)<br>
+$a_i = (ln \alpha)_{,i}$<br>
+${b_i}^k = \frac{1}{2} {\beta^k}_{,i}$<br>
+$d_{kij} = \frac{1}{2} \gamma_{ij,k}$<br>
+$\Gamma^k = \gamma^{ij} {\Gamma^k}_{ij}$<br>
+$= 2 {d_i}^{ik} - {d^{ki}}_{i}$<br> 
+$V_k = {d_{km}}^m - {d^m}_{mk} = \frac{1}{2} ( {{d_i}^m}_m - \Gamma_i)$<br>
+${\Lambda^k}_{ij} = {d^k}_{ij} + \delta^k_{(i} ( a_{j)} + {d_{j)m}}^m - 2 {d^m}_{j)m})$<br>
+	$ = {d^k}_{ij} + \delta^k_{(i} ( a_{j)} - {d_{j)m}}^m + 2 V_{j)})$<br>
+	$ = {d^k}_{ij} + \delta^k_{(i} ( a_{j)} - \Gamma_{j)} )$<br>
+$\Lambda^k = \gamma^{ij} {\Lambda^k}_{ij}$<br>
+$S_{ij} = -^4R_{ij} + K K_{ij} - 2 K_{ij} {K^k}_j + 4 d_{kmi} {d^{km}}_j + {\Gamma^k}_{km} {\Gamma^m}_{ij} - \Gamma_{ikm} {\Gamma_j}^{km} + 2 (a^k - 2 {d_m}^{km}) d_{(ij)k} + a_{(i} (2 V_{j)} - {d_{j)k}}^k)$<br>
+$P_k = {G^0}_k + a_m {K^m}_k - a_k K + {K^m}_n {d_{km}}^n - {K^m}_k {d_{ma}}^a - 2 K_{mn} {d^{mn}}_k + 2 K_{mk} {d_a}^{am}$<br>
+$\gamma = det || \gamma_{ij} ||$<br>
+$\phi = \frac{1}{12} ln \gamma$<br>
+$\Phi_i = \phi_{,i}$<br>
+$\tilde{d}_{ijk} = \frac{1}{2} \tilde{\gamma}_{jk,i}$<br>
+$\tilde{\gamma}_{ij} = e^{-4 \phi} \gamma_{ij}$,
+$\tilde{\gamma}^{ij} = e^{4 \phi} \gamma^{ij}$<br>
+${\tilde{\Gamma}^k}_{ij} = \frac{1}{2} \tilde{\gamma}^{kl} (\tilde{\gamma}_{li,j} + \tilde{\gamma}_{lj,i} - \tilde{\gamma}_{ij,l})$
+$= {\Gamma^k}_{ij} - \frac{1}{3} (\delta^k_i {\Gamma^m}_{jm} + \delta^k_j {\Gamma^m}_{im} - \gamma_{ij} \gamma^{kl} {\Gamma^m}_{lm})$
+$= {\Gamma^k}_{ij} - 2 (\delta^k_i \phi_{,j} + \delta^k_j \phi_{,i} - \gamma_{ij} \gamma^{kl} \phi_{,l})$
+<br>
+$\tilde{\Gamma}^i = \tilde{\gamma}^{jk} {\tilde{\Gamma}^i}_{jk} = {\tilde{\gamma}^{ij}}_{,j} = e^{4\phi} \Gamma^i + 2 \tilde{\gamma}^{ij} \phi_{,j}$<br>
+$A_{ij} = K_{ij} - \frac{1}{3} \gamma_{ij} K$<br>
+$\tilde{A}_{ij} = e^{-4 \phi} A_{ij} $<br>
+${\tilde{\Lambda}^k}_{ij} = ( {\tilde{d}^k}_{ij} + \delta^k_{(i} ( a_{j)} - \tilde{\Gamma}_{j)} + 2 \Phi_{j)} ) )^{TF}$<br>
+<br>
+
+Projections of Einstein Field Equations:<br>
+$H = R + K^2 - K_{ij} K^{ij} - 16 \pi \rho = 0$ is the Hamiltonian constraint.<br>
+$M^i = D_j (K^{ij} - \gamma^{ij} K) - 8 \pi j^i = 0$ is the momentum constraint.<br>
+<br>
+
+stress-energy constraints (eqns 2.5.10, 2.5.11, 2.5.12):<br>
+$0 = H = n^a n^b G_{ab} - 8 \pi \rho$<br>
+$0 = M_u = -n^a {\gamma^b}_u G_{ab} - 8 \pi j_u$<br>
+$0 = E_{uv} = {\gamma^a}_u {\gamma^b}_v G_{ab} - 8 \pi S_{uv}$<br>
+<br>
+
+stress-energy variable definitions (derived from above, also 2.4.12):<br>
+$\rho = n^a n^b T_{ab}$<br>
+$j_u = -n^a {\gamma^b}_u T_{ab}$<br>
+$S_{uv} = {\gamma^a}_u {\gamma^b}_v T_{ab}$<br>
+<br>
+
+stress-energy variable definitions:<br>
+$16 \pi \rho = R + K^2 - K_{ij} K^{ij}$ (A 2.4.10, B&S 2.90)<br>
+$8 \pi j_u = D_j (K^{ij} - \gamma^{ij} K)$ (A 2.4.11, B&S 2.96<br>
+<br>
+
+<br>
+"equal up to principle part" approximations:<br>
+$H \approx R \approx -2 {V^m}_{,m}$ up to principle part<br>
+$M_i \approx 2{K^m}_{[i,m]}$ up to principle part<br> 
+<br>
+
+operators:<br>
+$D_i = $ spatially projected covariant derivative<br>
+$\mathcal{L} =$ Lie derivative<br>
+$\partial_0 = \partial_t - \beta^k \partial_k$ is the derivative in the time direction "up to principle part" or something like that<br>
+$\frac{d}{dt} = \partial_t - \mathcal{L}_\vec\beta$ is the derivative in the time direction<br>
+<br>
+
+eigenfield meaning:<br>
+for state vector $u_a = (a_i, d_{ijk}, K_{ij})$,<br>
+eigenfields are of the form $w_a = C_{ab} u_b$<br>
+that evolve "up to principle part" with $\partial_t w_a + \lambda \partial_x w_a = 0$<br>
+for some associated eigenvalue $\lambda$<br>
+<br>
+
+	</body>
+</html>

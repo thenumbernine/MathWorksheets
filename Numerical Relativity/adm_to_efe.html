@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Numerical Relativity Eigenfields</title>
+		<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<!-- script type="text/javascript" async src="file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script -->
+		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+	</head>
+	<body>
+
+Derivations:<br>
+<br>
+
+I've got the whole thing in notebooks progressing the other way, from the EFE to the ADM,
+following Baumgarte & Shapiro, so TODO copy it here.<br>
+<br>
+
+<h3>ADM</h3>
+$\gamma_{ij,t} - \mathcal{L}_\vec\beta \gamma_{ij} = -2 \alpha K_{ij}$<br>
+$K_{ij,t} - \mathcal{L}_\vec\beta K_{ij} = -D_i D_j \alpha + \alpha (R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
+<br>
+expanding Lie derivatives and projection covariant derivatives:<br>
+$\gamma_{ij,t} - \gamma_{ij,k} \beta^k - \gamma_{ik} {\beta^k}_{,j} - \gamma_{kj} {\beta^k}_{,i} = -2 \alpha K_{ij}$<br>
+$K_{ij,t} - \beta^k K_{ij,k} - K_{kj} {\beta^k}_{,i} - K_{ik} {\beta^k}_{,j} = -{\perp_i}^a \nabla_a ( {\perp_j}^b \nabla_b \alpha ) + \alpha (R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
+$= -{\perp_i}^a \nabla_a ( \alpha_{,j} - n_j n^b \alpha_{,b} ) + \alpha (R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
+$= -{\perp_i}^a ( \nabla_a \alpha_{,j} - \nabla_a (n_j n^b \alpha_{,b}) ) + \alpha (R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
+$= -{\perp_i}^a ( \nabla_a \alpha_{,j} - \nabla_a n_j n^b \alpha_{,b} - n_j \nabla_a n^b \alpha_{,b} - n_j n^b \nabla_a \alpha_{,b} ) + \alpha (R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
+$= -(\delta_i^a - n_i n^a) ( \alpha_{,ja} - {^4\Gamma^b}_{ja} \alpha_{,b} - (n_{j,a} - {^4\Gamma^c}_{ja} n_c) n^b \alpha_{,b} - n_j ({n^b}_{,a} + {^4\Gamma^b}_{ca} n^c) \alpha_{,b} - n_j n^b (\alpha_{,ba} - {^4\Gamma^c}_{ba} \alpha_{,c}) ) + \alpha (R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
+...is $D_i$ the same as applying the spatial connections?<br>
+$K_{ij,t} - \beta^k K_{ij,k} - K_{kj} {\beta^k}_{,i} - K_{ik} {\beta^k}_{,j}$<br>
+$= -D_i \alpha_{,j} + \alpha (R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
+$= -\alpha_{,ij} + {\Gamma^k}_{ji} \alpha_{,k} + \alpha (R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
+<br>
+
+	</body>
+</html>

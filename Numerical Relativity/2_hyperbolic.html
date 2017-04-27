@@ -1,0 +1,268 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Numerical Relativity Eigenfields</title>
+		<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<!-- script type="text/javascript" async src="file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script -->
+		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+	</head>
+	<body>
+
+<h3>various hyperbolic representations of the ADM 3+1 initial value problem equations</h3>
+<br>
+
+<b>original ADM, non-hyperbolic</b><br>
+From Alcubierre page 180 or so, with amendment for non-vacuum K taken from eqn 2.5.8<br>
+1: $\frac{d}{dt} \alpha = -\alpha^2 f K$<br>
+6: $\frac{d}{dt} \gamma_{ij} = -2 \alpha K_{ij}$<br>
+6: $\frac{d}{dt} K_{ij} = -D_i D_j \alpha + \alpha (R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j) + 4 \pi \alpha (\gamma_{ij} (S - \rho) - 2 S_{ij})$<br>
+<br>
+
+<b>original ADM, from Alcuberre's "Introduction to 3+1 Numerical Relativity" section 5.4</b><br>
+weakly hyperbolic<br>
+source-only variables: (7 total, to be propagated with time waves)<br>
+1: $\frac{d}{dt} \alpha = -\alpha^2 f K$<br>
+6: $\frac{d}{dt} \gamma_{ij} = -2 \alpha K_{ij}$<br>
+hyperbolic variables ("up to principle part"): (27 total)<br>
+3: $\partial_0 a_i + \alpha (f K)_{,i} = 0$<br>
+18: $\partial_0 d_{ijk} + \alpha K_{jk,i} = 0$<br>
+6: $\partial_0 K_{ij} + \alpha {\Lambda^k}_{ij,k} = 0$<br>
+expanded:<br>
+$\partial_t a_i 
+	- \beta^r \delta^m_i a_{m,r} 
+	+ \alpha f \gamma^{mn} \delta^r_i K_{mn,r} 
+	= 2 \alpha f {d_i}^{jk} K_{jk} 
+	- f' \alpha^2 a_i K
+$<br>
+$\partial_t d_{ijk} 
+	- \beta^r \delta^m_i \delta^n_j \delta^p_k d_{mnp,r} 
+	+ \alpha \delta^m_j \delta^n_k \delta^r_i K_{mn,r} 
+	= 0
+$<br>
+$\partial_t K_{ij} 
+	+ \alpha \delta^m_{(i} \delta^r_{j)} a_{m,r} 
+	+ \alpha (
+		\gamma^{mr} \delta^n_i \delta^p_j
+		+ \gamma^{np} \delta^m_{(i} \delta^r_{j)}
+		- 2 \gamma^{mn} \delta^p_{(i} \delta^r_{j)}
+	) d_{mnp,r}
+	- \beta^r \delta^m_i \delta^n_j K_{mn,r}
+	= 2 \alpha d_{lij} {d_k}^{kl}
+ 	+ 2 \alpha {d_{(i}}^{kl} (d_{j)kl} - 2 d_{kl|j)})
+$<br>
+matrix form:<br>
+$\left[\matrix{
+	a_i \\ d_{ijk} \\ K_{ij}
+}\right] +
+\left[\matrix{
+	-\beta^r \delta^m_i & 
+		0 &
+		\alpha f \gamma^{mn} \delta^r_i \\
+	0 &
+		-\beta^r \delta^m_i \delta^n_j \delta^p_k &
+		\alpha \delta^m_j \delta^n_k \delta^r_i \\
+	\alpha \delta^m_{(i} \delta^r_{j)} & 
+		\alpha (
+			\gamma^{mr} \delta^n_{(i} \delta^p_{j)}
+			+ \gamma^{np} \delta^m_{(i} \delta^r_{j)}
+			- 2 \gamma^{mn} \delta^p_{(i} \delta^r_{j)}
+		) & 
+		-\beta^r \delta^m_i \delta^n_j
+}\right]
+\left[\matrix{
+	a_m \\ d_{mnp} \\ K_{mn}
+}\right]_{,r} =
+\left[\matrix{
+	2 \alpha f {d_i}^{jk} K_{jk} 
+		- f' \alpha^2 a_i K \\
+	0 \\
+	2 \alpha (d_{lij} {d_k}^{kl}
+		+ {d_{(i}}^{kl} (d_{j)kl} - 2 d_{kl|j)}))
+}\right]$<br>
+eigenvalues and eigenfields in x-direction:<br>
+15 time waves: $\lambda = -\beta^x$ for $w = a_{q}, d_{qij}, a_x - f {d_{xm}}^m$ for $p,q \ne x$<br>
+10 light waves: ${\lambda^l}_{iq\pm} = -\beta^x + \alpha \sqrt{\gamma^{xx}}$ for ${w^l}_{iq\pm} = \sqrt{\gamma^{xx}} K_{iq} \pm {\Lambda^x}_{iq}$ (note the book says $\sqrt{\gamma^{xx}} K_{pq} \mp {\Lambda^x}_{pq}$, but I get bad results with this.<br>
+2 gauge waves: ${\lambda^f}_\pm = -\beta^x + \alpha \sqrt{f \gamma^{xx}}$ for ${w^f}_\pm = \sqrt{f \gamma^{xx}} K \pm \Lambda^x$ (once again, book says $\mp$)<br>
+proof (for the $x$-direction flux matrix):<br>
+2: $a_{q,t} - \beta^x a_{q,x} = 0$, so $\lambda = -\beta^x$ and $w = a_q$.
+(note that $a_{x,t} - \beta^x a_{x,x} = -\alpha (f K)_{,x} \ne 0$).<br>
+12: $d_{qij,t} - \beta^x d_{qij,x} = 0$, so $\lambda = -\beta^x$ and $w = d_{qij}$.
+(note that $d_{xij,t} - \beta^x d_{xij,x} = -\alpha K_{ij,x} \ne 0$).<br>
+$K_{ij,t} - \beta^x K_{ij,x} = -\alpha {\Lambda^k}_{ij,k}$<br>
+<br>
+
+<b>Bona, Masso, Seidel, Stela "New Formalism for Numerical Relativity" 1995</b><br>
+and "First order hyperbolic formalism for Numerical Relativity" 1997<br>
+and whatever paper around that time in which $V_k$ has no flux term.<br>
+source-only variables: (7 total)<br>
+1: $\frac{d}{dt} \alpha = -\alpha^2 f K$<br>
+6: $\gamma_{ij,t} = -2 \alpha K_{ij}$<br>
+hyperbolic variables: (30 total)<br>
+3: $a_{k,t} + (-\beta^r a_k + \alpha Q \delta^r_k)_{,r} = (2 {b_k}^r - \alpha tr s \delta^r_k) a_r$<br>
+18: $d_{kij,t} + (-\beta^r d_{kij} + \alpha \delta^r_k (K_{ij} - s_{ij}))_{,r} = (2 {b_k}^r - \alpha tr s \delta^r_k) d_{rij}$<br>
+6: $K_{ij,t} + (-\beta^r K_{ij} + \alpha {\Lambda^r}_{ij})_{,r} = \alpha S_{ij}$<br>
+3: $V_{k,t} + (-\beta^r V_k + \alpha ({s^r}_k - tr s \delta^r_k))_{,r} = \alpha P_k$<br>
+other state variables:<br>
+${{b_k}^i}_{k,t} + (\beta^r {b_k}^i + \alpha Q^i \delta^r_k)_{,r} = (2 {b_k}^r - \alpha tr s \delta^r_k) {b_r}^i$<br>
+other variables:<br>
+$s_{ij} = 2 b_{(ij)} / \alpha$<br>
+<br>
+
+<b>Bona-Masso ADM formalism with $V_i$ momentum constraint, without lapse, from Alcubierre "The appearance of coordinate shocks in hyperbolic formalisms of General Realtivity" 1997.  <a href="https://arxiv.org/abs/gr-qc/9609015">https://arxiv.org/abs/gr-qc/9609015</a></b><br>
+source-only variables: (7 total)<br>
+1: $\alpha_{,t} = -\alpha^2 f K$<br>
+6: $\gamma_{ij,t} = -2 \alpha K_{ij}$<br>
+hyperbolic variables: (30 total)<br>
+3: $a_{k,t} + (a f K)_{,k} = 0$<br>
+18: $d_{kij,t} + (\alpha K_{ij})_{,k} = 0$<br>
+6: $K_{ij,t} + (\alpha {\Lambda^k}_{ij})_{,k} = \alpha S_{ij}$<br>
+3: $V_{k,t} = \alpha P_k$<br>
+constraints: (3 total)<br>
+$V_i = {d_{im}}^m - {d^m}_{mi}$<br>
+eigenvalues and eigenfields in x-direction: (37 total, notice that the source-only variables are advected with the timelike waves)<br>
+25 time waves: $\lambda = 0$ for $w = \alpha, \gamma_{ij}, a_{q}, d_{qij}, V_i, a_x - f {{d_x}^m}_m$, for indexes $q \ne x$<br>
+10 light waves: ${\lambda^l}_{iq\pm} = \pm \alpha \sqrt{\gamma^{xx}}$ for ${w^l}_{iq\pm} = K_{iq} \pm \sqrt{\gamma^{xx}} (d_{xiq} + \delta^x_i V_{q} / \gamma^{xx})$<br>
+2 gauge waves: ${\lambda^f}_\pm = \pm \alpha \sqrt{f \gamma^{xx}}$ for ${w^f}_\pm = \sqrt{f} K \pm \sqrt{\gamma^{xx}} (a_x + 2 V^x / \gamma^{xx})$<br>
+<br>
+
+<b>Bona-Masso with $V_i$ momentum constraint, from Alcuberre's "Introduction to 3+1 Numerical Relativity" section 5.5</b><br>
+source-only variables: (7 total)<br>
+1: $\frac{d}{dt} \alpha = -\alpha^2 f K$<br>
+6: $\frac{d}{dt} \gamma_{ij} = -2 \alpha K_{ij}$<br>
+hyperbolic variables: (30 total)<br>
+3: $\partial_0 a_k + \alpha (f K)_{,k} = 0$<br>
+18: $\partial_0 d_{kij} + \alpha K_{ij,k} = 0$<br>
+6: $\partial_0 K_{ij} + \alpha {\Lambda^k}_{ij,k} = 0$<br>
+3: $\partial_0 V_i = 0$<br>
+eigenvalues and eigenfields in x-direction:<br>
+18 time waves: $\lambda = -\beta^x$ for $w = a_q, d_{qij}, V_i, a_x - f {d_{xm}}^m$<br>
+10 light waves: ${\lambda^l}_{iq\pm} = -\beta^x \pm \alpha \sqrt{\gamma^{xx}}$ for ${w^l}_{iq\pm} = \sqrt{\gamma^{xx}} K_{iq} \pm {\Lambda^x}_{iq}$ (book says $\mp$)<br>
+2 gauage waves: ${\lambda^f}_\pm = -\beta^x \pm \alpha \sqrt{f \gamma^{xx}}$ for ${w^f}_\pm = \sqrt{f \gamma^{xx}} K \pm \Lambda^x$ (book says $\mp$)<br>
+<br>
+
+<b>Bona-Masso with $\Gamma^i$ evolution, from Alcuberre's "Introduction to 3+1 Numerical Relativity" section 5.5 starting at eqn 5.5.21</b><br>
+source-only variables: (7 total)<br>
+1: $\frac{d}{dt} \alpha = -\alpha^2 f K$<br>
+6: $\frac{d}{dt} \gamma_{ij,t} = -2 \alpha K_{ij}$<br>
+hyperbolic variables: (30 total)<br>
+3: $\partial_0 a_i + \alpha (f K)_{,i} = 0$<br>
+18: $\partial_0 d_{ijk} + \alpha K_{jk,i} = 0$<br>
+6: $\partial_0 K_{ij} + \alpha {\Lambda^k}_{ij,k} = 0$<br>
+3: $\frac{d}{dt} \Gamma^i = \gamma^{lm} {\beta^i}_{,lm} - \alpha \gamma^{il} K_{,l} + \alpha a_l (2 K^{il} - \gamma^{il} K) + 2 \alpha K^{lm} {\Gamma^i}_{lm} - 16 \pi j^i$<br>
+eigenvalues and eigenfields in x-direction (match those of the Bona-Masso with $V_i$ momentum constraints):<br>
+18 time waves: $\lambda = -\beta^x$ for $w = a_q, d_{qij}, \frac{1}{2} ({{d_i}^m}_m - \Gamma_i), a_x - f {d_{xm}}^m$<br>
+10 light waves: ${\lambda^l}_{iq\pm} = -\beta^x \pm \alpha \sqrt{\gamma^{xx}}$ for ${w^l}_{iq\pm} = \sqrt{\gamma^{xx}} K_{iq} \pm {\Lambda^x}_{iq}$ (book says $\mp$)<br>
+2 gauage waves: ${\lambda^f}_\pm = -\beta^x \pm \alpha \sqrt{f \gamma^{xx}}$ for ${w^f}_\pm = \sqrt{f \gamma^{xx}} K \pm \Lambda^x$ (book says $\mp$)<br>
+<br>
+
+<b>Nagy-Ortiz-Reula (NOR) from Alcubierre's "Introduction to 3+1 Numerical Relativity" section 5.5 starting at eqn 5.5.23</b><br>
+adds parameters $\eta, \xi$, where $\eta = 0, \xi = 2$ reduces to Bona-Masso, and $\eta = -\frac{1}{4}, \xi = 0$ reduces to ADM<br>
+source-only variables: (7 total)<br>
+1: $\frac{d}{dt} \alpha = -\alpha^2 f K$<br>
+6: $\frac{d}{dt} \gamma_{ij} = -2 \alpha K_{ij}$<br>
+hyperbolic variables: (30 total)<br>
+3: $\partial_0 a_i + \alpha (f K)_{,i} = 0$<br>
+18: $\partial_0 d_{ijk} + \alpha K_{jk,i} = 0$<br>
+TODO rewrite the following in terms of state variables:<br>
+6: $\frac{d}{dt} K_{ij} = -\alpha_{,ij} + {\Gamma^k}_{ij} \alpha_{,k} + \alpha R_{ij} + \alpha K K_{ij} - 2 \alpha K_{ik} {K^k}_j + \eta \alpha \gamma_{ij} H$<br>
+3: $\frac{d}{dt} \Gamma^i = \gamma^{lm} {\beta^i}_{,lm} - D_l (\alpha (2 K^{il} - \gamma^{il} K)) + 2 \alpha K^{lm} {\Gamma^i}_{lm} + \alpha \xi M^i$<br>
+other variables:<br>
+$\vec{s}^x =$ vector normal to the flux surface<br>
+$(s^x)_i = \delta^x_i / \sqrt{\gamma^{xx}}$,
+$(s^x)^i = \gamma^{xi} / \sqrt{\gamma^{xx}}$<br>
+$h_{ij} = \gamma_{ij} - (s^x)_i (s^x)_j$<br>
+$\hat{K} = h^{ij} K_{ij} = K - K^{xx} / \gamma^{xx}$<br>
+$F = (1 + 3 \eta) (2 - \xi) / (f - 1 - 2 \eta (2 - \xi))$<br>
+eigenvalues and eigenfields:<br>
+18 time waves: $\lambda = -\beta^x$ for $w = a_q, d_{qij}, a_x - f {d_{xm}}^m, \Gamma^i + (\xi - 2) {d_m}^{mi}  + (1 - \xi) {d^{im}}_m$<br>
+6 light waves: ${\lambda^{light}}_\pm = -\beta^x \pm \alpha \sqrt{\gamma^{xx}}$ for ${w^{light}}_{pq\pm} = \sqrt{\gamma^{xx}} (K_{pq} - \frac{1}{2} h_{pq} \hat{K}) \mp ({\Lambda^x}_{pq} - \frac{1}{2} h_{pq} {\hat\Lambda}^x)$<br>
+2 trace waves: ${\lambda^{trace}}_\pm = -\beta^x \pm \alpha \sqrt{ \gamma^{xx} (1 + 2 \eta (2 - \xi)) }$ for ${w^{trace}}_\pm = \sqrt{ \gamma^{xx} (1 + 2 \eta (2 - \xi)) } \hat{K} \mp {\hat\Lambda}^x$<br>
+2 longitudinal waves: ${\lambda^{long}}_\pm = -\beta^x \pm \alpha \sqrt{ \gamma^{xx} \xi / 2 }$ for ${w^{long}}_\pm = \sqrt{ \gamma^{xx} \xi / 2 } {K^x}_q \mp {\Lambda^{xx}}_q$<br>
+2 gauge waves: ${\lambda^{gauge}}_\pm = -\beta^x \pm \alpha \sqrt{ f \gamma^{xx} }$ for ${w^{gauge}}_\pm = \sqrt{f \gamma^{xx}} (K + F \hat{K}) \mp (\Lambda^x + F {\hat\Lambda}^x)$<br>
+NOR is hyperbolic for one of the three conditions:<br>
+1. $\eta = 0, \xi = 2, f &gt; 0$<br>
+2. $\eta = 0, \xi &gt; 0, f &gt; 0, f \ne 1$<br>
+3. $\eta \ne 0, \xi &gt; 0, f &gt; 0, \eta (2 - \xi) &gt; -\frac{1}{2}$<br>
+<br>
+
+<b>BSSNOK from Alcubierre's "Introduction to 3+1 Numerical Relativity" section 5.6</b><br>
+adds parameters $\xi$, with standard BSSNOK for $\xi = 2$.<br>
+note that $\xi &gt; \frac{1}{2}$ for wave speeds to be real.<br>
+source-only variables: (7 total)<br>
+1: $\frac{d}{dt} \phi = -\frac{1}{6} \alpha K$<br>
+6: $\frac{d}{dt} \tilde{\gamma}_{ij} = -2 \alpha \tilde{A}_{ij}$<br>
+hyperbolic variables: (30 total)<br>
+3: $\frac{d}{dt} a_i = -\alpha Q_{,i}$<br>
+3: $\frac{d}{dt} \Phi_i = -\frac{1}{6} \alpha K_{,i}$<br>
+15: $\frac{d}{dt} \tilde{d}_{ijk} = -\alpha \tilde{A}_{jk,i}$<br>
+1: $\frac{d}{dt} K = -\alpha e^{-4 \phi} \tilde{\gamma}^{mn} a_{n,m}$<br>
+5: $\frac{d}{dt} \tilde{A}_{ij} = -\alpha e^{-4 \phi} {\tilde{\Lambda}^k}_{ij,k}$<br>
+3: $\frac{d}{dt} \tilde{\Gamma}^i = \alpha ((\xi - 2) \tilde{A}^{ik} - \frac{2}{3} \xi \tilde{\gamma}^{ik} K)_{,k}$<br>
+constraints:<br>
+${\tilde{A}^k}_k = 0$ needs to be enforced<br>
+eigenvalues and eigenfields:<br>
+18 time waves: $\lambda = -\beta^x$ for $w = a_q, \Phi_q, \tilde{d}_{qij}, a_x - 6 f \Phi_x, \tilde{\Gamma}^i + (\xi - 2) {\tilde{d}_m}^{mi} - 4 \xi \tilde{\gamma}^{ik} \Phi_k$<br>
+2 gauge waves: ${\lambda^{gauge}}_\pm = -\beta^x \pm \alpha e^{-2 \phi} \sqrt{f \tilde{\gamma}^{xx} }$ for ${w^{gauge}}_\pm = e^{-2\phi} \sqrt{f \tilde{\gamma}^{xx}} K \mp a^x$<br>
+4 longitudinal waves: ${\lambda^{long}}_\pm = -\beta^x \pm \alpha e^{-2\phi} \sqrt{\tilde{\gamma}^{xx} \xi / 2}$ for ${w^{long}}_\pm = e^{2\phi} \sqrt{ \tilde{\gamma}^{xx} \xi / 2 } {\tilde{A}^x}_q \mp {\tilde{\Lambda}^{xx}}_q$<br>
+4 light waves: ${\lambda^{light}}_\pm = -\beta^x \pm \alpha e^{-2\phi} \sqrt{\tilde{\gamma}^{xx}}$ for ${w^{light}}_\pm = e^{2 \phi} \sqrt{\tilde{\gamma}^{xx}} ( \tilde{A}_{pq} + \frac{1}{2} \tilde{\gamma}_{pq} \tilde{A}^{xx} / \tilde{\gamma}^{xx}) \mp ({\tilde{\Lambda}^x}_{pq} + \frac{1}{2} \tilde{\gamma}_{pq} \tilde{\Lambda}^{xxx} / \tilde{\gamma}^{xx}$<br> 
+2 transverse-trace waves: ${\lambda^{trace}} = -\beta^x + \alpha e^{-2 \phi} \sqrt{ \tilde{\gamma}^{xx} (2 \xi - 1) / 3 }$ (should this be $\pm$?) for $w = e^{2\phi} \sqrt{ \tilde{\gamma}^{xx} (2\xi - 1)/3} (\tilde{A}^{xx} - \frac{2}{3} \tilde{\gamma}^{xx} K) \mp (\tilde{\Lambda}^{xxx} - \frac{2}{3} \tilde{\gamma}^{xx} \tilde{a}^x)$<br>
+<br>
+
+<b>Kidder-Scheel-Teukolsky (KST) family, from Alcubierre's "Introduction to 3+1 Numerical Relativity" section 5.7</b><br>
+$\xi, \eta, \chi$ free parameters subject to $1 - \xi + 2 \chi \ne 0$, $1 + 2 \chi + 4 \eta (1 - \xi + 2 \chi) &gt; 0$, $\xi - \chi / 2 &gt; 0$, $f &gt; 0$.<br>
+Optimally: $\eta = -\frac{1}{3}, \xi = 1 + \chi / 2, \chi \ne 0$<br>
+source-only variables: (7 total)<br>
+1: $\frac{d}{dt} \alpha = -\alpha^2 f K$<br>
+6: $\frac{d}{dt} \gamma_{ij} = -2 \alpha K_{ij}$<br>
+hyperbolic variables: (27 total)<br>
+3: $\partial_0 a_i + \alpha (f K)_{,i} = 0$<br>
+18: $\partial_0 d_{ijk} + \alpha K_{jk,i} = \alpha (\xi \gamma_{i(j} M_{k)} + \chi \gamma_{jk} M_i)$<br>
+6: $\partial_0 K_{ij} + \alpha ({\Lambda^k}_{ij,k} + 2 \eta \gamma_{ij} V^k) = 0$<br>
+eigenvalues and eigenfields:<br>
+15 time waves: $\lambda = -\beta^x$ for $w = a_q, d_{qij} - \frac{1}{1 - \xi + 2 \chi} (\xi \gamma_{q(i} V_{j)} + \chi \gamma_{ij} V_q), a_x - f ( {d_{xm}}^m - \frac{\xi + 3 \chi}{1 - \xi + 2 \chi} V_x )$<br>
+2 longitudinal waves: $\lambda_\pm = -\beta^x \pm \alpha \sqrt{\gamma^{xx} (\xi - \chi / 2)}$ for $w_\pm = \sqrt{\gamma^{xx} (\xi - \chi / 2)} {K^x}_q \mp {\Lambda^{xx}}_q$<br> 
+4 transverse-traceless light waves: ${\lambda^{light}}_\pm = -\beta^x \pm \alpha \sqrt{\gamma^{xx}}$ for $w_\pm = \sqrt{\gamma^{xx}} (K_{pq} - \frac{1}{2} h_{pq} \hat{K}) \mp ({\Lambda^x})_{pq} - \frac{1}{2} h_{pq} \hat{\Lambda}^x)$<br>
+2 surface-trace waves: ${\lambda^{trace}}_\pm = -\beta^x \pm \alpha \sqrt{\gamma^{xx} (1 + 2 \chi + 4 \eta (1 - \xi + 2 \chi))}$ for $w_\pm = \sqrt{\gamma^{xx} (1 + 2 \chi + 4 \eta (1 - \xi + 2 \chi))} \hat{K} \mp \hat{\Lambda}^x$<br>
+2 gauge waves: ${\lambda^{gauge}}_\pm = -\beta^x \pm \alpha \sqrt{f \gamma^{xx}}$ for $w_\pm = \sqrt{f \gamma^{xx}} (K + F \hat{K}) \mp (\Lambda^x + F \hat{\Lambda}^x)$<br>
+<br>
+
+<b>Z4, from Alcubierre's "Introduction to 3+1 Numerical Relativity" section 5.8</b><br>
+$m = $ free parameter of Bona-Masso slicing generalization, must be $m = 2$ for $f = 1$, so $m = 2$ is preferred.<br>
+source-only variables: (7 total)<br>
+1: $\frac{d}{dt} \alpha = -\alpha^2 f(\alpha) \cdot (K - m \Theta)$<br>
+6: $\frac{d}{dt} \gamma_{ij} = -2 \alpha K_{ij}$<br>
+hyperbolic variables:<br>
+$\frac{d}{dt} K_{ij} = -D_i \alpha_j + \alpha ( R_{ij} + 2 D_{(i} Z_{j)} - 2 K_{im} {K^m}_j + (K - 2 \Theta) K_{ij} )$<br>
+$\frac{d}{dt} \Theta = \frac{1}{2} \alpha (R + (K - 2 \Theta) K - K_{mn} K^{mn} + 2 D_m Z^m - 2 Z^m (ln \alpha)_{,m})$<br>
+$\frac{d}{dt} Z_i = \alpha (D_m {K^m}_i - D_i K + \Theta_{,i} - 2 {K^m}_i Z_m - \Theta (ln \alpha)_{,i})$<br>
+other variables:<br>
+$\Theta = n_a Z^a = \alpha Z^0$<br>
+eigenvalues and eigenfields are not provided.<br>
+<br>
+
+<b>Bona, Ledvinka, Palenzuela, Zacek, "A symmetry-breaking mechanism for the Z4 general-covariant evolution system" 2003 (shift-less).  <a href="https://arxiv.org/abs/gr-qc/0307067">https://arxiv.org/abs/gr-qc/0307067</a></b><br>
+parameters: $\lambda$<br>
+source-only variables:<br>
+1: $\alpha_{,t} = ...$<br>
+6: $\gamma_{ij,t} = ...$<br>
+hyperbolic variables:<br>
+3: $a_{k,t} + (\alpha (f K - \lambda \Theta))_{,k} = ...$<br>
+18: $d_{kij,t} + (\alpha K_{ij})_{,k} = ...$<br> 
+6: $K_{ij,t} + (\alpha {\lambda^k}_{ij})_{,k} = ...$<br> 
+1: $\Theta_{,t} + (\alpha V^k)_{,k} = ...$<br> 
+3: $Z_{i,t} + (\alpha \delta^k_i (K - \Theta) - {K^k}_i)_{,k} = ...$<br> 
+other variables:<br>
+${\lambda^k}_{ij} = {d^k}_{ij} - (1 + \zeta) ( {d_{(ij)}}^k - \delta^k_{(i|} {d_{m|j)}}^m) + \delta^k_{(i} (A_{j)} - {d_{j)m}}^m + 2 V_{j)})$<br>
+$V_k = {d_{km}}^m - {d^m}_{mk} - Z_k$<br>
+eigenvalues and eigenvfields:<br>
+<br>
+
+<b>Bona, Palenzuela, "Dynamical shift conditions for the Z4 and BSSN hyperbolic formalisms" 2004. <a href="https://arxiv.org/abs/gr-qc/0401019">https://arxiv.org/abs/gr-qc/0401019</a></b><br>
+<br>
+
+<b>Alic, Bona-Casas, Bona, Rezzolla, Palenzuela. "Conformal and covariant formulation of the Z4 system with constraint-violation damping". 2012. <a href="https://arxiv.org/abs/1106.2254">https://arxiv.org/abs/1106.2254</a></b><br>
+<br>
+
+	</body>
+</html>
