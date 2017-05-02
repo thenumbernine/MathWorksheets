@@ -95,10 +95,12 @@ $= (\alpha a_{i,k} + \alpha_{,i} \alpha_{,k} / \alpha) \beta^i / \alpha
 	+ \alpha_{,k} Q $<br>
 $= a_{i,k} \beta^i + a_i {\beta^i}_{,k} - \alpha a_k Q - \alpha Q_{,k}$<br>
 $= a_{i,k} \beta^i - \alpha Q_{,k} + a_i {\beta^i}_{,k} - \alpha a_k Q$<br>
-$\frac{d}{dt} a_k = -\alpha (a_k Q + Q_{,k})$<br>
+Here, for the sake of diagonalizing the subsequent linearized flux matrix, I take advantage of $a_{i,k} = a_{k,i}$:<br>
+$= a_{k,i} \beta^i - \alpha Q_{,k} + a_i {\beta^i}_{,k} - \alpha a_k Q$<br>
+$\frac{d}{dt} a_k = -\alpha (a_k Q + Q_{,k}) + (a_{k,i} - a_{i,k}) \beta^i$<br>
 substituting Bona-Masso slicing, $Q = f(\alpha) \cdot K$...<br>
-$a_{k,t} = a_{i,k} \beta^i - \alpha (f \gamma^{ij} K_{ij})_{,k} + a_i {\beta^i}_{,k} - \alpha a_k Q$<br>
-$= a_{i,k} \beta^i 
+$a_{k,t} = a_{k,i} \beta^i - \alpha (f \gamma^{ij} K_{ij})_{,k} + a_i {\beta^i}_{,k} - \alpha a_k Q$<br>
+$= a_{k,i} \beta^i 
 	- \alpha f \gamma^{ij} K_{ij,k}
 	+ a_i {\beta^i}_{,k}
 	- \alpha^2 f' a_k K 
@@ -276,7 +278,7 @@ $\left[\matrix{
 	a_k \\ d_{kij} \\ K_{ij} 
 }\right]_{,t}
 + \left[\matrix{
-	-\delta^r_k \beta^m & 
+	-\delta^m_k \beta^r & 
 		0 & 
 		\alpha f \gamma^{pq} \delta^r_k \\
 	0 & 
@@ -323,7 +325,7 @@ $\left[\matrix{
 	-\alpha^2 K (f - f' \alpha) \delta^r_k &
 		-a_m \delta^r_k & 
 		\alpha f K^{pq} \delta^r_k &
-		-\delta^r_k \beta^m & 
+		-\delta^m_k \beta^r & 
 		0 & 
 		\alpha f \gamma^{pq} \delta^r_k \\
 	\alpha^2 K_{ij} \delta^r_k & 
