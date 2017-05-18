@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Wave Metric</title>
+		<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<script type="text/javascript" async src="file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+	</head>
+	<body>
+
+<h2>using $exp(\xi \cdot x^2)$</h3>
+<br>
+Try again with two vectors?
+$g_{ab} = e_{ab} exp(\xi_{uv} x^u x^v)$ for symmetric $\xi_{uv}$<br>
+$g_{ab,c} = e_{ab} exp(\xi_{uv} x^u x^v) (\xi_{uv} x^u x^v)_{,c}$<br>
+$g_{ab,c} = g_{ab} \cdot 2 \xi_{cu} x^u$<br>
+$\Gamma_{abc} = (g_{ab} \xi_{cu} + g_{ac} \xi_{bu} - g_{bc} \xi_{au}) x^u$<br>
+${\Gamma^a}_{bc} = (\delta^a_b \xi_{cu} + \delta^a_c \xi_{bu} - g_{bc} g^{ae} \xi_{eu}) x^u$<br>
+${\Gamma^a}_{bc,d} = 
+	(\delta^a_b \xi_{cu} + \delta^a_c \xi_{bu} - g_{bc} g^{ae} \xi_{eu}) \delta^u_d
+	+ (\delta^a_b \xi_{cu} + \delta^a_c \xi_{bu} - g_{bc} g^{ae} \xi_{eu})_{,d} x^u
+$<br>
+$= \delta^a_b \xi_{cd} + \delta^a_c \xi_{bd} - g_{bc} g^{ae} \xi_{ed} - (g_{bc} g^{ae})_{,d} \xi_{eu} x^u$<br>
+$= \delta^a_b \xi_{cd} + \delta^a_c \xi_{bd} - g_{bc} g^{ae} \xi_{ed} - (g_{bc,d} g^{ae} + g_{bc} g^{af} g_{fg,d} g^{ge}) \xi_{eu} x^u$<br>
+$= \delta^a_b \xi_{cd} + \delta^a_c \xi_{bd} - g_{bc} g^{ae} \xi_{ed} - 2 (g_{bc} g^{ae} \xi_{dv} x^v - g_{bc} g^{af} g_{fg} g^{ge} \xi_{dv} x^v) \xi_{eu} x^u$<br>
+$= \delta^a_b \xi_{cd} + \delta^a_c \xi_{bd} - g_{bc} g^{ae} \xi_{ed} - 2 (g_{bc} g^{ae} - g_{bc} g^{ae}) \xi_{dv} x^v \xi_{eu} x^u$<br>
+$= \delta^a_b \xi_{cd} + \delta^a_c \xi_{bd} - g_{bc} g^{ae} \xi_{ed}$<br>
+<br>
+
+${\Gamma^a}_{uc} {\Gamma^u}_{bd} = 
+	(\delta^a_u \xi_{cv} + \delta^a_c \xi_{uv} - g_{uc} g^{ae} \xi_{ev}) x^v
+	(\delta^u_b \xi_{dw} + \delta^u_d \xi_{bw} - g_{bd} g^{uf} \xi_{fw}) x^w
+$<br>
+$ = (
+	+ \delta^a_u \xi_{cv} \delta^u_b \xi_{dw} 
+	+ \delta^a_u \xi_{cv} \delta^u_d \xi_{bw} 
+	- \delta^a_u \xi_{cv} g_{bd} g^{ue} \xi_{ew}
+	+ \delta^a_c \xi_{uv} \delta^u_b \xi_{dw} 
+	+ \delta^a_c \xi_{uv} \delta^u_d \xi_{bw} 
+	- \delta^a_c \xi_{uv} g_{bd} g^{ue} \xi_{ew}
+	- g_{uc} g^{ae} \xi_{ev} \delta^u_b \xi_{dw} 
+	- g_{uc} g^{ae} \xi_{ev} \delta^u_d \xi_{bw} 
+	+ g_{uc} g^{ae} \xi_{ev} g_{bd} g^{uf} \xi_{fw}
+) x^v x^w$<br>
+$ = (
+	+ \delta^a_b \xi_{cv} \xi_{dw} 
+	+ \delta^a_d \xi_{cv} \xi_{bw} 
+	- g_{bd} g^{ae} \xi_{cv} \xi_{ew}
+	+ \delta^a_c \xi_{bv} \xi_{dw} 
+	+ \delta^a_c \xi_{dv} \xi_{bw} 
+	- \delta^a_c g_{bd} g^{ue} \xi_{uv} \xi_{ew}
+	- g_{cd} g^{ae} \xi_{ev} \xi_{bw} 
+	+ g_{bd} g^{ae} \xi_{ev} \xi_{cw}
+	- g_{bc} g^{ae} \xi_{ev} \xi_{dw} 
+) x^v x^w$<br>
+
+${R^a}_{bcd} = 
+	+ \delta^a_b \xi_{cd} 
+	+ \delta^a_d \xi_{bc} 
+	- g_{bd} g^{ae} \xi_{ce}
+	- \delta^a_b \xi_{cd} 
+	- \delta^a_c \xi_{bd} 
+	+ g_{bc} g^{ae} \xi_{ed}
+
+	+ (
+		+ \delta^a_b \xi_{cv} \xi_{dw} 
+		+ \delta^a_d \xi_{cv} \xi_{bw} 
+		- g_{bd} g^{ae} \xi_{cv} \xi_{ew}
+		+ \delta^a_c \xi_{bv} \xi_{dw} 
+		+ \delta^a_c \xi_{dv} \xi_{bw} 
+		- \delta^a_c g_{bd} g^{ue} \xi_{uv} \xi_{ew}
+		- g_{cd} g^{ae} \xi_{ev} \xi_{bw} 
+		+ g_{bd} g^{ae} \xi_{ev} \xi_{cw}
+		- g_{bc} g^{ae} \xi_{ev} \xi_{dw} 
+	) x^v x^w
+
+	- (
+		+ \delta^a_b \xi_{dv} \xi_{cw} 
+		+ \delta^a_c \xi_{dv} \xi_{bw} 
+		- g_{bc} g^{ae} \xi_{dv} \xi_{ew}
+		+ \delta^a_d \xi_{bv} \xi_{cw} 
+		+ \delta^a_d \xi_{cv} \xi_{bw} 
+		- \delta^a_d g_{bc} g^{ue} \xi_{uv} \xi_{ew}
+		- g_{cd} g^{ae} \xi_{ev} \xi_{bw} 
+		+ g_{bc} g^{ae} \xi_{ev} \xi_{dw}
+		- g_{bd} g^{ae} \xi_{ev} \xi_{cw} 
+	) x^v x^w
+$<br>
+$= 
+	- \delta^a_c \xi_{bd} 
+	+ \delta^a_d \xi_{bc} 
+	+ g_{bc} g^{ae} \xi_{de}
+	- g_{bd} g^{ae} \xi_{ce}
+
+	+ (
+		\delta^a_c \xi_{bv} \xi_{dw} 
+		- \delta^a_c g_{bd} g^{ue} \xi_{uv} \xi_{ew}
+		
+		- \delta^a_d \xi_{cv} \xi_{bw} 
+		+ \delta^a_d g_{bc} g^{ue} \xi_{uv} \xi_{ew}
+		
+		- g_{bc} g^{ae} \xi_{dv} \xi_{ew}
+		+ g_{bd} g^{ae} \xi_{cv} \xi_{ew} 
+	) x^v x^w
+$<br>	
+$R_{ab} = 
+	- \delta^c_c \xi_{ab} 
+	+ \delta^c_b \xi_{ac} 
+	+ g_{ac} g^{ce} \xi_{be}
+	- g_{ab} g^{ce} \xi_{ce}
+
+	+ (
+		\delta^c_c \xi_{av} \xi_{bw} 
+		- \delta^c_c g_{ab} g^{ue} \xi_{uv} \xi_{ew}
+		
+		- \delta^c_b \xi_{cv} \xi_{aw} 
+		+ \delta^c_b g_{ac} g^{ue} \xi_{uv} \xi_{ew}
+		
+		- g_{ac} g^{ce} \xi_{bv} \xi_{ew}
+		+ g_{ab} g^{ce} \xi_{cv} \xi_{ew} 
+	) x^v x^w
+$<br>
+$= 
+	- 2 \xi_{ab} 
+	- g_{ab} g^{cd} \xi_{cd}
+	+ 2 (
+		\xi_{av} \xi_{bw} 
+		- g_{ab} g^{cd} \xi_{cv} \xi_{dw}
+	) x^v x^w
+$<br>
+$R = g^{ab} (
+	- 2 \xi_{ab} 
+	- g_{ab} g^{cd} \xi_{cd}
+	+ 2 (
+		\xi_{av} \xi_{bw} 
+		- g_{ab} g^{cd} \xi_{cv} \xi_{dw}
+	) x^v x^w
+)$<br>
+$ = - 6 g^{ab} (\xi_{ab} + \xi_{av} \xi_{bw} x^v x^w)$<br>
+<br>
+This only really works if $R$ is a function of $x^a x^b$...<br>
+Unless $\xi_{au} (e^{-1})^{ub} = 0$<br>
+Then we get $R = 0$<br>
+<br>
+Substitute...<br>
+$R_{ab} = 2 (-\xi_{ab} + \xi_{av} \xi_{bw} x^v x^w)$<br>
+So this only works for $R_{ab} = 0$<br>
+<br>
+	</body>
+</html>

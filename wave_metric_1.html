@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Wave Metric</title>
+		<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<script type="text/javascript" async src="file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+	</head>
+	<body>
+
+<h2>using $exp(\xi \cdot x)$</h3>
+
+$g_{ab} = e_{ab} exp(\xi_u x^u)$<br>
+$g^{ab} = (e^{-1})^{ab} exp(-\xi_u x^u)$<br>
+$g_{ab,c} = e_{ab} \xi_c exp(\xi_u x^u) = g_{ab} \xi_c$<br>
+$\Gamma_{abc} = \frac{1}{2} (g_{ab} \xi_c + g_{ac} \xi_b - g_{bc} \xi_a)$<br>
+${\Gamma^a}_{bc} = \frac{1}{2}(\delta^a_b \xi_c + \delta^a_c \xi_b - g_{bc} \xi^a)$<br>
+${\Gamma^a}_{bc,d} = -\frac{1}{2}( g_{bc,d} \xi^a + g_{bc} {g^{ae}}_{,d} \xi_e)$<br>
+$= -\frac{1}{2}( \xi^a g_{bc} \xi_d - g_{bc} g^{af} g_{fg,d} g^{ge} \xi_e)$<br>
+$= -\frac{1}{2}( \xi^a g_{bc} \xi_d - g_{bc} g^{af} g_{fg} \xi_d g^{ge} \xi_e)$<br>
+$= -\frac{1}{2}( \xi^a g_{bc} \xi_d - g_{bc} \delta^a_g \xi_d g^{ge} \xi_e)$<br>
+$= -\frac{1}{2}( \xi^a g_{bc} \xi_d - \xi^a g_{bc} \xi_d)$<br>
+$= 0$<br>
+${\Gamma^a}_{uc} {\Gamma^u}_{bd} = \frac{1}{4}(\delta^a_u \xi_c + \delta^a_c \xi_u - g_{uc} \xi^a)(\delta^u_b \xi_d + \delta^u_d \xi_b - g_{bd} \xi^u)$<br>
+$= \frac{1}{4}(
+	\delta^a_u \xi_c \delta^u_b \xi_d 
+	+ \delta^a_u \xi_c \delta^u_d \xi_b 
+	- \delta^a_u \xi_c g_{bd} \xi^u
+	+ \delta^a_c \xi_u \delta^u_b \xi_d 
+	+ \delta^a_c \xi_u \delta^u_d \xi_b 
+	- \delta^a_c \xi_u g_{bd} \xi^u
+	- g_{uc} \xi^a \delta^u_b \xi_d 
+	- g_{uc} \xi^a \delta^u_d \xi_b 
+	+ g_{uc} \xi^a g_{bd} \xi^u
+)$<br>
+$= \frac{1}{4}(
+	\delta^a_b \xi_c \xi_d 
+	+ \delta^a_d \xi_b \xi_c 
+	- \xi^a \xi_c g_{bd} 
+	+ \delta^a_c \xi_b \xi_d 
+	+ \delta^a_c \xi_d \xi_b 
+	- \delta^a_c g_{bd} \xi^u \xi_u 
+	- g_{bc} \xi^a \xi_d 
+	- g_{dc} \xi^a \xi_b 
+	+ \xi^a g_{bd} \xi_c
+)$<br>
+$= \frac{1}{4}(
+	+ \delta^a_b \xi_c \xi_d 
+	+ \delta^a_d \xi_b \xi_c 
+	+ 2 \delta^a_c \xi_b \xi_d 
+	- \delta^a_c g_{bd} \xi^u \xi_u 
+	- g_{bc} \xi^a \xi_d 
+	- g_{cd} \xi^a \xi_b 
+)$<br>
+${R^a}_{bcd} = \frac{1}{4}(
+	+ \delta^a_b \xi_c \xi_d 
+	+ \delta^a_d \xi_b \xi_c 
+	+ 2 \delta^a_c \xi_b \xi_d 
+	- \delta^a_c g_{bd} \xi^u \xi_u 
+	- g_{bc} \xi^a \xi_d 
+	- g_{cd} \xi^a \xi_b 
+
+	- \delta^a_b \xi_d \xi_c 
+	- \delta^a_c \xi_b \xi_d 
+	- 2 \delta^a_d \xi_b \xi_c 
+	+ \delta^a_d g_{bc} \xi^u \xi_u 
+	+ g_{bd} \xi^a \xi_c 
+	+ g_{cd} \xi^a \xi_b 
+)$<br>
+$= \frac{1}{4}(
+	- \delta^a_d \xi_b \xi_c 
+	+ \delta^a_c \xi_b \xi_d 
+	- g_{bc} \xi^a \xi_d 
+	+ g_{bd} \xi^a \xi_c 
+	- \delta^a_c g_{bd} \xi^u \xi_u 
+	+ \delta^a_d g_{bc} \xi^u \xi_u 
+)$<br>
+$R_{ab} = \frac{1}{4}(
+	- \delta^c_b \xi_a \xi_c 
+	+ \delta^c_c \xi_a \xi_b 
+	- g_{ac} \xi^c \xi_b 
+	+ g_{ab} \xi^c \xi_c 
+	- \delta^c_c g_{ab} \xi^u \xi_u 
+	+ \delta^c_b g_{ac} \xi^u \xi_u 
+)$<br>
+$= \frac{1}{4}( 2 \xi_a \xi_b - 2 g_{ab} \xi^u \xi_u)$<br>
+$= \frac{1}{2}(g_{ac} g_{bd} - g_{ab} g_{cd}) \xi^c \xi^d)$<br>
+$= -g_{a[b} g_{c]d} \xi^c \xi^d)$<br>
+$R = \frac{1}{2}(g^{ab} g_{ac} g_{bd} - g^{ab} g_{ab} g_{cd}) \xi^c \xi^d)$<br>
+$R = -\frac{3}{2} \xi^u \xi_u$<br>
+$R = -\frac{3}{2} \xi^u \xi_u$<br>
+$\frac{-2 R}{3} = \xi^u \xi_u$<br>
+<br>
+
+Therefore if $R = 0$<br>
+then $\xi^u \xi_u = 0$<br>
+then $\xi_a \xi_b (e^{-1})^{ab} = 0$<br>
+then $\xi$ lies in the nullspace of $(e^{-1})$<br>	
+<br>
+
+Now lets look at the components of the Ricci:<br> 
+$R_{ab} = \frac{1}{4}( 2 \xi_a \xi_b - 2 g_{ab} \xi^u \xi_u)$<br>
+$R_{ab} = \frac{1}{2} \xi_a \xi_b + \frac{1}{3} g_{ab} R$<br>
+For $R = 0$ this gives<br>
+$2 R_{ab} = \xi_a \xi_b$<br>
+So if $R = 0$ then $R_{ab}$ must be the outer product of $\xi$<br> 
+	
+	</body>
+</html>

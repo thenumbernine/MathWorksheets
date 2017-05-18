@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Wave Metric</title>
+		<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<script type="text/javascript" async src="file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+	</head>
+	<body>
+
+<h2>using $exp(\phi(x))$</h3>
+
+$g_{ab} = e_{ab} exp(\phi)$<br>
+$g^{ab} = (e^{-1})^{ab} exp(-\phi)$<br>
+$g_{ab,c} = e_{ab} e^\phi \phi_{,c} = g_{ab} \phi_{,c}$<br>
+$\Gamma_{abc} = \frac{1}{2} (g_{ab} \phi_{,c} + g_{ac} \phi_{,b} - g_{bc} \phi_{,a})$<br>
+${\Gamma^a}_{bc} = \frac{1}{2} (\delta^a_b \phi_{,c} + \delta^a_c \phi_{,b} - g_{bc} g^{ad} \phi_{,d})$<br>
+${\Gamma^a}_{bc,d} = \frac{1}{2} (
+	\delta^a_b \phi_{,cd} 
+	+ \delta^a_c \phi_{,bd}
+	- g_{bc} \phi_{,d} g^{ae} \phi_{,e} 
+	- g_{bc} {g^{ae}}_{,d} \phi_{,e} 
+	- g_{bc} g^{ae} \phi_{,ed}
+)$<br>
+$ = \frac{1}{2} (\delta^a_b \phi_{,cd} + \delta^a_c \phi_{,bd} - g_{bc} g^{ae} \phi_{,ed})$<br>
+${\Gamma^a}_{uc} {\Gamma^u}_{bd} = \frac{1}{4} 
+		(\delta^a_u \phi_{,c} + \delta^a_c \phi_{,u} - g_{uc} g^{ae} \phi_{,e})
+		(\delta^u_b \phi_{,d} + \delta^u_d \phi_{,b} - g_{bd} g^{uf} \phi_{,f})$<br>
+$ = \frac{1}{4} (
+	+ \delta^a_u \phi_{,c} \delta^u_b \phi_{,d} 
+	+ \delta^a_u \phi_{,c} \delta^u_d \phi_{,b} 
+	- \delta^a_u \phi_{,c} g_{bd} g^{uf} \phi_{,f}
+	+ \delta^a_c \phi_{,u} \delta^u_b \phi_{,d} 
+	+ \delta^a_c \phi_{,u} \delta^u_d \phi_{,b} 
+	- \delta^a_c \phi_{,u} g_{bd} g^{uf} \phi_{,f}
+	- g_{uc} g^{ae} \phi_{,e} \delta^u_b \phi_{,d} 
+	- g_{uc} g^{ae} \phi_{,e} \delta^u_d \phi_{,b} 
+	+ g_{uc} g^{ae} \phi_{,e} g_{bd} g^{uf} \phi_{,f}
+)$<br>
+$ = \frac{1}{4} (
+	+ \delta^a_b \phi_{,c} \phi_{,d} 
+	+ \delta^a_d \phi_{,c} \phi_{,b} 
+	- \phi_{,c} g_{bd} g^{ae} \phi_{,e}
+	+ \delta^a_c \phi_{,b} \phi_{,d} 
+	+ \delta^a_c \phi_{,d} \phi_{,b} 
+	- \delta^a_c g_{bd} g^{ef} \phi_{,e} \phi_{,f} 
+	- g_{cd} g^{ae} \phi_{,e} \phi_{,b} 
+	+ g_{bd} g^{ae} \phi_{,e} \phi_{,c}
+	- g_{bc} g^{ae} \phi_{,e} \phi_{,d} 
+)$<br>
+$ = \frac{1}{4} (
+	\delta^a_b \phi_{,c} \phi_{,d} 
+	+ 2 \delta^a_c \phi_{,b} \phi_{,d} 
+	- \delta^a_c g_{bd} g^{ef} \phi_{,e} \phi_{,f} 
+	+ \delta^a_d \phi_{,c} \phi_{,b} 
+	- g_{bc} g^{ae} \phi_{,e} \phi_{,d} 
+	- g_{cd} g^{ae} \phi_{,e} \phi_{,b} 
+)$<br>
+$R_{ab} = \frac{1}{4} (
+	+ \delta^c_a \phi_{,c} \phi_{,b} 
+	+ 2 \delta^c_c \phi_{,a} \phi_{,b} 
+	- \delta^c_c g_{ab} g^{ef} \phi_{,e} \phi_{,f} 
+	+ \delta^c_b \phi_{,c} \phi_{,a} 
+	- g_{ac} g^{ce} \phi_{,e} \phi_{,b} 
+	- g_{cb} g^{ce} \phi_{,e} \phi_{,a} 
+)$<br>
+$= 2 \phi_{,a} \phi_{,b} - g_{ab} g^{cd} \phi_{,c} \phi_{,d}$<br>
+$R = 2 g^{ab} \phi_{,a} \phi_{,b} - 4 g^{ab} \phi_{,a} \phi_{,b}$<br>
+$= -2 g^{ab} \phi_{,a} \phi_{,b}$<br>
+$-\frac{R}{2} = g^{ab} \phi_{,a} \phi_{,b}$<br>
+<br>
+
+$R_{ab} = 2 \phi_{,a} \phi_{,b} + \frac{1}{2} g_{ab} R$<br>
+for $R = 0$ this gives $R_{ab} = 2 \phi_{,a} \phi_{,b}$<br>
