@@ -62,36 +62,6 @@ $\frac{\partial F^{Ij}}{\partial W^M} = \downarrow I \overset{\rightarrow M}{ \l
 }\right] }$<br>
 <br>
 
-$\frac{\partial W^N}{\partial U^I} \cdot \frac{\partial F^{Ij}}{\partial W^M}$
-$= \downarrow N \overset{\rightarrow I}{\left[\matrix{
-	1 & 0 & 0 \\
-	-v^n / \rho & \delta^n_i / \rho & 0 \\
-	\frac{1}{2} \tilde\gamma v^2 & -\tilde\gamma v_i & \tilde\gamma
-}\right]} \cdot \downarrow I \overset{\rightarrow M}{\left[\matrix{
-	v^j & \rho \delta^j_m & 0 \\
-	v^i v^j & \rho (v^j \delta^i_m + v^i \delta^j_m) & g^{ij} \\
-	\frac{1}{2} v^j v^2 & \delta^j_m H_{total} + \rho v^j v_m & \frac{\gamma}{\tilde{\gamma}} v^j
-}\right]}$
-$= \downarrow N \overset{\rightarrow M}{\left[\matrix{
-	v^j & \rho \delta^j_m & 0 \\
-	0 & v^j \delta^n_m & g^{jn} / \rho \\
-	0 & \delta^j_m \gamma P & v^j
-}\right]}$
-$= {A^{jN}}_M + v^j \delta^N_M$<br>
-<br>
-...for acoustic tensor:<br>
-${A^{jN}}_M = \downarrow N \overset{\rightarrow M}{\left[\matrix{
-	0 & \rho \delta^j_m & 0 \\
-	0 & 0 & g^{jn} / \rho \\
-	0 & \delta^j_m \gamma P & 0
-}\right]}$<br>
-<br>
-
-Now $\frac{\partial F^{jI}}{\partial U^J}$
-$ = \frac{\partial F^{jI}}{\partial W^K} \cdot \frac{\partial W^K}{\partial U^J}$
-$ = \frac{\partial U}{\partial W} \frac{\partial W}{\partial U} \frac{\partail F}{\partial W} \frac{\partial W}{\partial U}$
-$ = \frac{\partial U}{\partial W} (A + v_j I) \frac{\partial W}{\partial U}$
-
 Euler fluid equations, curved geometry:<br>
 <br>
 
@@ -196,6 +166,150 @@ $\left[\matrix{
 ...and Maxima has so much harder time calculating the eigenvalues/vectors even for a diagonal-only metric that I'm giving up and just representing my vectors/fluxes in cartesian coordinates<br>
 <br>
 
+So let's try using acoustic tensor to find the eigen-decomposition of the flux in curved coordinates:<br>
+<br>
+
+$\frac{\partial W^N}{\partial U^I} \cdot \frac{\partial F^{Ij}}{\partial W^M}$
+$= \downarrow N \overset{\rightarrow I}{\left[\matrix{
+	1 & 0 & 0 \\
+	-v^n / \rho & \delta^n_i / \rho & 0 \\
+	\frac{1}{2} \tilde\gamma v^2 & -\tilde\gamma v_i & \tilde\gamma
+}\right]} \cdot \downarrow I \overset{\rightarrow M}{\left[\matrix{
+	v^j & \rho \delta^j_m & 0 \\
+	v^i v^j & \rho (v^j \delta^i_m + v^i \delta^j_m) & g^{ij} \\
+	\frac{1}{2} v^j v^2 & \delta^j_m H_{total} + \rho v^j v_m & \frac{\gamma}{\tilde{\gamma}} v^j
+}\right]}$
+$= \downarrow N \overset{\rightarrow M}{\left[\matrix{
+	v^j & \rho \delta^j_m & 0 \\
+	0 & v^j \delta^n_m & g^{jn} / \rho \\
+	0 & \delta^j_m \gamma P & v^j
+}\right]}$
+$= {A^{jN}}_M + v^j \delta^N_M$<br>
+<br>
+...for acoustic tensor:<br>
+${A^{jN}}_M = \downarrow N \overset{\rightarrow M}{\left[\matrix{
+	0 & \rho \delta^j_m & 0 \\
+	0 & 0 & g^{jn} / \rho \\
+	0 & \delta^j_m \gamma P & 0
+}\right]}$<br>
+<br>
+
+Acoustic tensor eigen-decomposition:<br> 
+
+$\Lambda_{A^j} = \left[\matrix{
+	c_s \sqrt{g^{jj}} & 0 & 0 \\
+	0 & 0 & 0 \\
+	0 & 0 & -c_s \sqrt{g^{jj}}
+}\right]$<br>
+<br>
+
+${(Q_{A^j})^I}_K = \downarrow I \overset{\rightarrow K}{ \left[\matrix{
+	\rho \sqrt{g^{jj}} & \delta^j_k & \rho \sqrt{g^{jj}} \\
+	c_s g^{ij} & \delta^i_k - \delta^{ij} \delta_{jk} & -c_s g^{ij} \\
+	\gamma P \sqrt{g^{jj}} & 0 & \gamma P \sqrt{g^{jj}}
+}\right]}$<br>
+
+${(Q^{-1}_{A^j} )^I}_K = \downarrow I \overset{\rightarrow K}{ \left[\matrix{
+	0 & \delta_{jk} \frac{1}{2 c_s g^{jj}} & \frac{1}{2 \gamma P \sqrt{g^{jj}}} \\
+	\delta^{ij} & \delta^i_k - \frac{g^{ij}}{g^{jj}} & -\delta^{ij} \frac{1}{(c_s)^2} \\
+	0 & -\delta_{jk} \frac{1}{2 c_s g^{jj}} & \frac{1}{2 \gamma P \sqrt{g^{jj}}}
+}\right]}$<br>
+<br>
+
+...with some index notation summation abuse present.  I'll just write them out completely:<br>
+<br>
+eigenvalues, right eigenvectors, left eigenvectors:<br>
+
+$\Lambda_{A^x} = \left[\matrix{
+	c_s \sqrt{g^{xx}} & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & -c_s \sqrt{g^{xx}} 
+}\right]$, 
+$V^R_{A^x} = \left[\matrix{
+	\rho \sqrt{g^{xx}} & 1 & 0 & 0 & \rho \sqrt{g^{xx}} \\
+	c_s g^{xx} & 0 & 0 & 0 & -c_s g^{xx} \\
+	c_s g^{xy} & 0 & 1 & 0 & -c_s g^{xy} \\
+	c_s g^{xz} & 0 & 0 & 1 & -c_s g^{xz} \\
+	\gamma P \sqrt{g^{xx}} & 0 & 0 & 0 & \gamma P \sqrt{g^{xx}}
+}\right]$
+$V^L_{A^x} = \left[\matrix{
+	0 & \frac{1}{2 c_s g^{xx}} & 0 & 0 & \frac{1}{2 \gamma P \sqrt{g^{xx}}} \\
+	1 & 0 & 0 & 0 & -\frac{1}{(c_s)^2} \\
+	0 & -\frac{g^{xy}}{g^{xx}} & 1 & 0 & 0 \\
+	0 & -\frac{g^{xz}}{g^{xx}} & 0 & 1 & 0 \\
+	0 & -\frac{1}{2 c_s g^{xx}} & 0 & 0 & \frac{1}{2 \gamma P \sqrt{g^{xx}}}
+}\right]$
+<br>
+
+$\Lambda_{A^y} = \left[\matrix{
+	c_s \sqrt{g^{yy}} & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & -c_s \sqrt{g^{yy}} 
+}\right]$
+$V^R_{A^y} = \left[\matrix{
+	\rho \sqrt{g^{yy}} & 0 & 1 & 0 & \rho \sqrt{g^{yy}} \\
+	c_s g^{yx} & 1 & 0 & 0 & -c_s g^{yx} \\
+	c_s g^{yy} & 0 & 0 & 0 & -c_s g^{yy} \\
+	c_s g^{yz} & 0 & 0 & 1 & -c_s g^{yz} \\
+	\gamma P \sqrt{g^{yy}} & 0 & 0 & 0 & \gamma P \sqrt{g^{yy}}
+}\right]$
+$V^L_{A^y} = \left[\matrix{
+	0 & 0 & \frac{1}{2 c_s g^{yy}} & 0 & \frac{1}{2 \gamma P \sqrt{g^{yy}}} \\
+	0 & 1 & -\frac{g^{yx}}{g^{yy}}  & 0 & 0 \\ 
+	1 & 0 & 0 & 0 & -\frac{1}{(c_s)^2} \\
+	0 & 0 & -\frac{g^{yz}}{g^{yy}} & 1 & 0 \\
+	0 & 0 & -\frac{1}{2 c_s g^{yy}} & 0 & \frac{1}{2 \gamma P \sqrt{g^{yy}}}
+}\right]$
+<br>
+
+$\Lambda_{A^z} = \left[\matrix{
+	c_s \sqrt{g^{zz}} & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & -c_s \sqrt{g^{zz}} 
+}\right]$
+$V^R_{A^z} = \left[\matrix{
+	\rho \sqrt{g^{zz}} & 0 & 0 & 1 & \rho \sqrt{g^{zz}} \\
+	c_s g^{xz} & 1 & 0 & 0 & -c_s g^{xz} \\
+	c_s g^{yz} & 0 & 1 & 0 & -c_s g^{yz} \\
+	c_s g^{zz} & 0 & 0 & 0 & -c_s g^{zz} \\
+	\gamma P \sqrt{g^{zz}} & 0 & 0 & 0 & \gamma P \sqrt{g^{zz}}
+}\right]$
+$V^L_{A^z} = \left[\matrix{
+	0 & 0 & 0 & \frac{1}{2 c_s g^{zz}} & \frac{1}{2 \gamma P \sqrt{g^{zz}}} \\
+	0 & 1 & 0 & -\frac{g^{zx}}{g^{zz}} & 0 \\ 
+	0 & 0 & 1 & -\frac{g^{zy}}{g^{zz}} & 0 \\
+	1 & 0 & 0 & 0 & -\frac{1}{(c_s)^2} \\
+	0 & 0 & -\frac{1}{2 c_s g^{zz}} & 0 & \frac{1}{2 \gamma P \sqrt{g^{zz}}}
+}\right]$
+<br>
+
+Now $\frac{\partial F^{jI}}{\partial U^J}$
+$ = \frac{\partial F^{jI}}{\partial W^K} \cdot \frac{\partial W^K}{\partial U^J}$
+$ = \frac{\partial U}{\partial W} \frac{\partial W}{\partial U} \frac{\partial F}{\partial W} \frac{\partial W}{\partial U}$
+$ = \frac{\partial U}{\partial W} (A + v_j I) \frac{\partial W}{\partial U}$<br>
+<br>
+
+The eigenvalues of $F$ are $A + v^j I = \left[\matrix{
+	v^j + c_s \sqrt{g^{jj}} & 0 & 0 & 0 & 0 \\
+	0 & v^j & 0 & 0 & 0 \\
+	0 & 0 & v^j & 0 & 0 \\
+	0 & 0 & 0 & v^j & 0 \\
+	0 & 0 & 0 & 0 & v^j - c_s \sqrt{g^{jj}}
+}\right]$<br>
+<br>
+
+The right eigenvectors of $F$ are $V^R_{F^j} = \frac{\partial U}{\partial W} \cdot V^R_{A^j}$<br>
+<br>
+
+<hr>
+
+
 This source: <a href='https://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/19870019781.pdf'>https://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/19870019781.pdf</a>
 gets around that by using the covariant form of the momentum in the state vector:<br>
 What's the advantage of this?  By putting $v_i$ on the same variance as $P_{,i}$, we remove the extra $g^{ij}$ from the flux matrix.<br> 
@@ -260,6 +374,7 @@ $E_{total,t} + \frac{1}{\sqrt{g}} (\sqrt{g} v^j H_{total})_{,j} = 0$<br>
 
 So now that there is a $\sqrt{g}$ inside the flux term, where does it go in the eigen decomposition?<br>
 I'm also tempted to not use this because Font' descriptions of relativistic Euler equations keeps the velocity in contravariant form.<br>
+And to boot, it doesn't provide eigen-decomposition...<br>
 
 	</body>
 </html>
