@@ -203,13 +203,13 @@ $\Lambda_{A^j} = \left[\matrix{
 }\right]$<br>
 <br>
 
-${(Q_{A^j})^I}_K = \downarrow I \overset{\rightarrow K}{ \left[\matrix{
+${(V^R_{A^j})^I}_K = \downarrow I \overset{\rightarrow K}{ \left[\matrix{
 	\rho \sqrt{g^{jj}} & \delta^j_k & \rho \sqrt{g^{jj}} \\
 	c_s g^{ij} & \delta^i_k - \delta^{ij} \delta_{jk} & -c_s g^{ij} \\
 	\gamma P \sqrt{g^{jj}} & 0 & \gamma P \sqrt{g^{jj}}
 }\right]}$<br>
 
-${(Q^{-1}_{A^j} )^I}_K = \downarrow I \overset{\rightarrow K}{ \left[\matrix{
+${(V^L_{A^j} )^I}_K = \downarrow I \overset{\rightarrow K}{ \left[\matrix{
 	0 & \delta_{jk} \frac{1}{2 c_s g^{jj}} & \frac{1}{2 \gamma P \sqrt{g^{jj}}} \\
 	\delta^{ij} & \delta^i_k - \frac{g^{ij}}{g^{jj}} & -\delta^{ij} \frac{1}{(c_s)^2} \\
 	0 & -\delta_{jk} \frac{1}{2 c_s g^{jj}} & \frac{1}{2 \gamma P \sqrt{g^{jj}}}
@@ -305,6 +305,27 @@ The eigenvalues of $F$ are $A + v^j I = \left[\matrix{
 <br>
 
 The right eigenvectors of $F$ are $V^R_{F^j} = \frac{\partial U}{\partial W} \cdot V^R_{A^j}$<br>
+<br>
+
+$\frac{\partial U^I}{\partial W^K} = \left[\matrix{
+	1 & 0 & 0 \\
+	v^i & \rho \delta^i_k & 0 \\
+	\frac{1}{2} v^2 & \rho v_k & 1/\tilde\gamma
+}\right] \cdot \left[\matrix{
+	\rho \sqrt{g^{jj}} & \delta^j_m & \rho \sqrt{g^{jj}} \\
+	c_s g^{kj} & \delta^k_m - \delta^{kj} \delta_{jm} & -c_s g^{kj} \\
+	\gamma P \sqrt{g^{jj}} & 0 & \gamma P \sqrt{g^{jj}}
+}\right]$
+$ = \left[\matrix{
+	\rho \sqrt{g^{jj}} & \delta^j_m & \rho \sqrt{g^{jj}} \\
+	v^i \rho \sqrt{g^{jj}} + c_s g^{ij} & 
+		v^i \delta^j_m  + \rho (\delta^i_m - \delta^{ij} \delta_{jm}) & 
+			\rho (v^i \sqrt{g^{jj}} - c_s g^{ij}) \\
+	\sqrt{g^{jj}} H_{total} + \rho v_k c_s g^{jk} &
+		\frac{1}{2} v^2 \delta^j_m + \rho v_m (1 - \delta^j_m) &
+			\sqrt{g^{jj}} H_{total} - \rho v_k c_s g^{jk}
+}\right]$<br>
+hmm maybe I should remove that extra factor of $\rho$, and maybe the $\sqrt{g^{jj}}$ as well ...<br>
 <br>
 
 <hr>
