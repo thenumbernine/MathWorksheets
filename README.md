@@ -16,51 +16,60 @@ The ADM stuff is generated from my symmath project.
 
 Here's the CDN URLs:
 
-[ADM Bona-Masso Eigenvectors](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/ADM%20Bona-Masso%20Eigenvectors.html)
+[ADM Bona-Masso Eigenvectors](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/ADM%20Bona%2dMasso%20Eigenvectors%2ehtml)
 
-[ADM Bona-Masso Inverse Eigenvectors](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/ADM%20Bona-Masso%20Inverse%20Eigenvectors.html)
+[ADM Bona-Masso Inverse Eigenvectors](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/ADM%20Bona%2dMasso%20Inverse%20Eigenvectors%2ehtml)
 
-[ADM connections](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/ADM%20connections.html)
+[ADM connections](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/ADM%20connections%2ehtml)
 
-[Antigravity](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Antigravity.html)
+[Antigravity](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Antigravity%2ehtml)
 
-[BSSNOK 1D](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/BSSNOK%201D.html)
+[BSSNOK 1D](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/BSSNOK%201D%2ehtml)
 
-[Cayley-Dickson](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Cayley-Dickson.html)
+[Cayley-Dickson](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Cayley%2dDickson%2ehtml)
 
-[Electromagnetic Tensor Self-Dual](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Electromagnetic%20Tensor%20Self-Dual.html)
+[Change of Coordinates](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Change%20of%20Coordinates%2ehtml)
 
-[EMHD Hyperbolic Conservation Laws](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/EMHD%20Hyperbolic%20Conservation%20Laws.html)
+[EMHD Hyperbolic Conservation Laws](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/EMHD%20Hyperbolic%20Conservation%20Laws%2ehtml)
 
-[EMHD Linear Stability Analysis](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/EMHD%20Linear%20Stability%20Analysis.html)
+[EMHD Linear Stability Analysis](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/EMHD%20Linear%20Stability%20Analysis%2ehtml)
 
-[Euler Fluid Equations - Curved Geometry](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Euler%20Fluid%20Equations%20-%20Curved%20Geometry.html)
+[Electromagnetic Tensor Self-Dual](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Electromagnetic%20Tensor%20Self%2dDual%2ehtml)
 
-[Euler Fluid Equations - Eigenmode Analysis](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Euler%20Fluid%20Equations%20-%20Eigenmode%20Analysis.html)
+[Euler Fluid Equations - Curved Geometry](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Euler%20Fluid%20Equations%20%2d%20Curved%20Geometry%2ehtml)
 
-[Euler Fluid Equations - Entropy Function](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Euler%20Fluid%20Equations%20-%20Entropy%20Function.html)
+[Euler Fluid Equations - Eigenmode Analysis](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Euler%20Fluid%20Equations%20%2d%20Eigenmode%20Analysis%2ehtml)
 
-[Gravitation 22.2](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Gravitation%2022.2.html)
+[Euler Fluid Equations - Entropy Function](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Euler%20Fluid%20Equations%20%2d%20Entropy%20Function%2ehtml)
 
-[Kerr Cartesian](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Kerr%20Cartesian.html)
+[Gravitation 22.2](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Gravitation%2022%2e2%2ehtml)
 
-[LQG](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/LQG.html)
+[Kaluza-Klein](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Kaluza%2dKlein%2ehtml)
 
-[Maxwell](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Maxwell.html)
+[Kerr Cartesian](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Kerr%20Cartesian%2ehtml)
 
-[Metric with geodesic that changes in space with velocity in time](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Metric%20with%20geodesic%20that%20changes%20in%20space%20with%20velocity%20in%20time.html)
+[LQG](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/LQG%2ehtml)
 
-[MHD](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/MHD.html)
+[MHD](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/MHD%2ehtml)
 
-[Navier-Stokes](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Navier-Stokes.html)
+[Maxwell equations in hyperbolic form](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Maxwell%20equations%20in%20hyperbolic%20form%2ehtml)
 
-[Numerical Relativity Eigenfields 2](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Numerical%20Relativity%20Eigenfields%202.html)
+[Metric with geodesic that changes in space with velocity in time](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Metric%20with%20geodesic%20that%20changes%20in%20space%20with%20velocity%20in%20time%2ehtml)
 
-[Numerical Relativity Eigenfields](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Numerical%20Relativity%20Eigenfields.html)
+[Navier-Stokes](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Navier%2dStokes%2ehtml)
 
-[Relativistic Electromagnetism metric](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Relativistic%20Electromagnetism%20metric.html)
+[Relativistic Electromagnetism metric](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Relativistic%20Electromagnetism%20metric%2ehtml)
 
-[spheres](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/spheres.html)
+[SRHD](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/SRHD%2ehtml)
 
-[SRHD](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/SRHD.html)
+[Solving Connections From Riemann](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Solving%20Connections%20From%20Riemann%2ehtml)
 
+[Tetrad General Relativity](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Tetrad%20General%20Relativity%2ehtml)
+
+[spheres](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/spheres%2ehtml)
+
+[wave_metric_1](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/wave_metric_1%2ehtml)
+
+[wave_metric_2](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/wave_metric_2%2ehtml)
+
+[wave_metric_3](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/wave_metric_3%2ehtml)

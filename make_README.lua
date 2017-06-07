@@ -1,5 +1,6 @@
 #!/usr/bin/env lua
 local lfs = require 'lfs'
+local url = require 'socket.url'
 require 'ext'
 local base = [[https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/]]
 local s = table{[[
@@ -21,10 +22,15 @@ The ADM stuff is generated from my symmath project.
 
 Here's the CDN URLs:
 ]]}
-for f in lfs.dir('.') do
-	if f ~= '.' and f:sub(-5) == '.html' then
-		local name = f:sub(1,-6)
-		s:insert('['..name..']('..base..url.escape(f)..')\n')
+local fs = table()
+for f in file['.']() do
+	if f:sub(-5) == '.html' then
+		fs:insert(f)
 	end
 end
-file['README.me'] = s:concat'\n'
+fs:sort()
+for _,f in ipairs(fs) do
+	local name = f:sub(1,-6)
+	s:insert('['..name..']('..base..url.escape(f)..')\n')
+end
+file['README.md'] = s:concat'\n'
