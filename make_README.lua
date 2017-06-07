@@ -2,12 +2,7 @@
 require 'ext'
 local url = require 'socket.url'
 
--- I can't use /master with cdn.rawgit for some reason without it sending back the file headers as download only (instead of html, thank you)
--- ha ha ha, but if I use this trick, I'll always be one commit behind.  
--- so make sure to commit the update of the README.md separate of the content.
-local recent = io.readproc'git show --summary':split'\n'[1]:match'commit (.*)':sub(1,8)
-
-local base = [[https://cdn.rawgit.com/thenumbernine/MathWorksheets/]]..recent..'/'
+local base = [[https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/]]
 local s = table{[[
 Some helper worksheets for my projects.
 
