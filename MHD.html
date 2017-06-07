@@ -3,10 +3,9 @@
 	<head>
 		<meta charset='utf-8'/>
 		<title>MHD Worksheet</title>
-		<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+		<script type="text/javascript" src='tryToFindMathJax.js'></script>
 	</head>
-	<body>
+    <body onload='tryToFindMathJax();'>
 
 <h2>Hydrodynamics</h2>
 
@@ -512,8 +511,8 @@ Each $k$th dimension has two surfaces, $S_k^+$ and $S_k^-$, both with area $\Pi_
 $S_k^-$ has surface normal $n^{\sigma-}_{jk} = -\delta_{jk}$<br>
 $S_k^+$ has surface normal $n^{\sigma+}_{jk} = \delta_{jk}$<br>
 Let $x_\sigma^\pm$ represent any point on surface $S_k^\pm$, and let the flux $F_{ij}(x_\sigma^\pm)$ be constant along the surface $S_k^\pm$<br>
-${{U_i(t_2) - U_i(t_1)}\over{\Delta t}} = -{{\Pi_{m=1,m\nu k}^n \Delta x_m (F_{ij}(x_\sigma^+) \delta_{jk} + F_{ij}(x_\sigma^-) (-\delta_{jk})) }\over{\Pi_{m=1}^n \Delta x_m}}$<br>
-${{U_i(t_2) - U_i(t_1)}\over{\Delta t}} = -{{\Pi_{m=1,m\nu k}^n \Delta x_m (F_{ik}(x_\sigma^+) - F_{ik}(x_\sigma^-)) }\over{\Pi_{m=1}^n \Delta x_m}}$<br>
+${{U_i(t_2) - U_i(t_1)}\over{\Delta t}} = -{{\Pi_{m=1,m\ne k}^n \Delta x_m (F_{ij}(x_\sigma^+) \delta_{jk} + F_{ij}(x_\sigma^-) (-\delta_{jk})) }\over{\Pi_{m=1}^n \Delta x_m}}$<br>
+${{U_i(t_2) - U_i(t_1)}\over{\Delta t}} = -{{\Pi_{m=1,m\ne k}^n \Delta x_m (F_{ik}(x_\sigma^+) - F_{ik}(x_\sigma^-)) }\over{\Pi_{m=1}^n \Delta x_m}}$<br>
 ${{U_i(t_2) - U_i(t_1)}\over{\Delta t}} = -{{F_{ik}(x_\sigma^+) - F_{ik}(x_\sigma^-) }\over{\Delta x_k}}$<br>
 Solve for $U_i(t_2)$<br>
 $U_i(t_2) = U_i(t_1) - {{\Delta t}\over{\Delta x_j}}  (F_{ij}(x_\sigma^+) - F_{ij}(x_\sigma^-))$<br>
