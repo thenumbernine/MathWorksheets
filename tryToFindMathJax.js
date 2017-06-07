@@ -1,5 +1,5 @@
 function loadScript(args) {
-	console.log("loading "+args.url);
+	console.log("loading "+args.src);
 	var el = document.createElement('script');
 	document.body.append(el);
 	el.onload = function() {
@@ -7,7 +7,7 @@ function loadScript(args) {
 		if (args.done !== undefined) args.done();
 	};
 	el.onerror = function() {
-		console.log("failed to load "+args.url);
+		console.log("failed to load "+args.src);
 		if (args.fail !== undefined) args.fail();
 	};
 	el.src = args.src;
