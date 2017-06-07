@@ -1,7 +1,6 @@
 #!/usr/bin/env lua
-local lfs = require 'lfs'
-local url = require 'socket.url'
 require 'ext'
+local url = require 'socket.url'
 local base = [[https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/]]
 local s = table{[[
 Some helper worksheets for my projects.
