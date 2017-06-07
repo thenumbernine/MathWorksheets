@@ -22,10 +22,21 @@ The ADM stuff is generated from my symmath project.
 Here's the CDN URLs:
 ]]}
 local fs = table()
-for f in file['.']() do
-	if f:sub(-5) == '.html' then
-		fs:insert(f)
+local function recurse(dir)
+	for f in file[dir]() do
+		if io.isdir(f) then
+			if f:sub(1,1) ~= '.' then
+				recurse(dir..'/'..f)
+			end
+		elseif f:sub(-5) == '.html' then
+			fs:insert(dir..'/'..f)
+		end
 	end
+end
+recurse '.'
+for i=1,#fs do
+	assert(fs[i]:sub(1,2) == './')
+	fs[i] = fs[i]:sub(3)
 end
 fs:sort()
 for _,f in ipairs(fs) do

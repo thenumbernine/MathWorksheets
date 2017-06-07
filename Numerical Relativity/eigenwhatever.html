@@ -3,11 +3,9 @@
 	<head>
         <meta charset="UTF-8">
 		<title>Numerical Relativity Eigenfields</title>
-		<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-		<!-- script type="text/javascript" async src="file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script -->
-		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+		<script type="text/javascript" src='tryToFindMathJax.js'></script>
 	</head>
-	<body>
+    <body onload='tryToFindMathJax();'>
 
 Eigen whatever it's called analysis.  Eigenmode? linear stability theory? Fourier?  Looks to be finding the eigenfields using Fourier analysis ... If only I could find any reading on the technique apart from papers applying it ...<br>
 $\frac{d}{dt} \alpha = \alpha_{,t} - \mathcal{L}_\vec\beta \alpha = -\alpha^2 Q$<br>

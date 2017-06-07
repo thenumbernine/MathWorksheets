@@ -58,6 +58,20 @@ Here's the CDN URLs:
 
 [Navier-Stokes](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Navier%2dStokes%2ehtml)
 
+[Numerical Relativity/1_intro](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Numerical%20Relativity%2f1_intro%2ehtml)
+
+[Numerical Relativity/2_hyperbolic](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Numerical%20Relativity%2f2_hyperbolic%2ehtml)
+
+[Numerical Relativity/3_adm_hyp_full](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Numerical%20Relativity%2f3_adm_hyp_full%2ehtml)
+
+[Numerical Relativity/adm_to_efe](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Numerical%20Relativity%2fadm_to_efe%2ehtml)
+
+[Numerical Relativity/eigenwhatever](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Numerical%20Relativity%2feigenwhatever%2ehtml)
+
+[Numerical Relativity/equal_up_to_principle_part](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Numerical%20Relativity%2fequal_up_to_principle_part%2ehtml)
+
+[Numerical Relativity/z4_hyp_full](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Numerical%20Relativity%2fz4_hyp_full%2ehtml)
+
 [Relativistic Electromagnetism metric](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Relativistic%20Electromagnetism%20metric%2ehtml)
 
 [SRHD](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/SRHD%2ehtml)
