@@ -3,55 +3,9 @@
 	<head>
 		<meta charset='utf-8'/>
 		<title>LQG Worksheet</title>
-		<script type="text/javascript">
-function loadScript(url) {
-	console.log("loading "+url);
-	var done = undefined;
-	var fail = undefined;
-	var result = {
-		done : function(f) { done = f; return result; },
-		fail : function(f) { fail = f; return result; }
-	};
-	var el = document.createElement('script');
-	document.body.append(el);
-	el.onload = function() {
-		console.log('loaded');
-		if (done !== undefined) done();
-	};
-	el.onerror = function() {
-		console.log("failed to load "+url);
-		if (fail !== undefined) {
-			fail();
-		}
-	};
-	el.src = url; 
-	return result;
-}
-function init() {
-	console.log('init...');
-	var urls = [
-		'file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML',
-		'/MathJax/MathJax.js?config=TeX-MML-AM_CHTML',
-		'https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML'	];
-	var i = 0;
-	var loadNext = function() {
-		loadScript(urls[i])
-		.done(function() {
-			console.log("success!");
-		}).fail(function() {
-			++i;
-			if (i >= urls.length) {
-				console.log("looks like all our sources have failed!");
-			} else {
-				loadNext();
-			}
-		});
-	}
-	loadNext();
-}
-		</script>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
 	</head>
-    <body onload='init();'>
+    <body onload='tryToFindMathJax();'>
 following: <a href='http://arxiv.org/pdf/hep-th/9301028v2.pdf'>http://arxiv.org/pdf/hep-th/9301028v2.pdf</a><br>
 using:<br>
 <a href='http://www.amazon.com/Introduction-Numerical-Relativity-International-Monographs/dp/0199656150'>http://www.amazon.com/Introduction-Numerical-Relativity-International-Monographs/dp/0199656150</a><br>
