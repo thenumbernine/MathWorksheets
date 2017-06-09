@@ -355,6 +355,89 @@ $= \frac{1}{2 (c_s)^2} \cdot \downarrow I \overset{\rightarrow M}{ \left[\matrix
 
 <br>
 
+That's really ugly so I will write it out completely as well<br>
+<br>
+eigenvalues, right eigenvectors, left eigenvectors:<br>
+<br>
+
+$\Lambda_{F^x} = \left[\matrix{
+	v^x - c_s \sqrt{g^{xx}} & 0 & 0 & 0 & 0 \\
+	0 & v^x & 0 & 0 & 0 \\
+	0 & 0 & v^x & 0 & 0 \\
+	0 & 0 & 0 & v^x & 0 \\
+	0 & 0 & 0 & 0 & v^x + c_s \sqrt{g^{xx}}
+}\right]$
+
+$V^R_{F^x} = \left[\matrix{
+	1 & 1 & 0 & 0 & 1\\
+	v^x- c_s \sqrt{g^{xx}} & v^x & 0 & 0 & v^x+ c_s \sqrt{g^{xx}}\\
+	v^y-\frac{ c_s g^{xy}}{\sqrt{g^{xx}}} & v^y & 1 & 0 & v^y+\frac{ c_s g^{xy}}{\sqrt{g^{xx}}}\\
+	v^z-\frac{ c_s g^{xz}}{\sqrt{g^{xx}}} & v^z & 0 & 1 & v^z+\frac{ c_s g^{xz}}{\sqrt{g^{xx}}}\\
+	h_{total}-\frac{ c_s v^x}{\sqrt{g^{xx}}} & \frac{v^2}{2} & v_y & v_z & \frac{ c_s v^x}{\sqrt{g^{xx}}}+h_{total}
+}\right]$	
+
+$V^L_{F^x} = \left[\matrix{
+	\frac{v^x}{2 c_s \sqrt{g^{xx}}}+\frac{\tilde{\gamma} v^2}{4{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_x}{2{{ c_s }^{2}}}-\frac{1}{2 c_s \sqrt{g^{xx}}} & -\frac{\tilde{\gamma} v_y}{2{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_z}{2{{ c_s }^{2}}} & \frac{\tilde{\gamma}}{2{{ c_s }^{2}}}\\
+	1-\frac{\tilde{\gamma} v^2}{2{{ c_s }^{2}}} & \frac{\tilde{\gamma} v_x}{{{ c_s }^{2}}} & \frac{\tilde{\gamma} v_y}{{{ c_s }^{2}}} & \frac{\tilde{\gamma} v_z}{{{ c_s }^{2}}} & -\frac{\tilde{\gamma}}{{{ c_s }^{2}}}\\
+	\frac{g^{xy} v^x}{g^{xx}}-v^y & -\frac{g^{xy}}{g^{xx}} & 1 & 0 & 0\\
+	\frac{g^{xz} v^x}{g^{xx}}-v^z & -\frac{g^{xz}}{g^{xx}} & 0 & 1 & 0\\
+	\frac{\tilde{\gamma} v^2}{4{{ c_s }^{2}}}-\frac{v^x}{2 c_s \sqrt{g^{xx}}} & -\frac{\tilde{\gamma} v_x}{2{{ c_s }^{2}}}+\frac{1}{2 c_s \sqrt{g^{xx}}} & -\frac{\tilde{\gamma} v_y}{2{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_z}{2{{ c_s }^{2}}} & \frac{\tilde{\gamma}}{2{{ c_s }^{2}}}
+}\right]$
+
+<br>
+
+$\Lambda_{F^y} = \left[\matrix{
+	v^y - c_s \sqrt{g^{yy}} & 0 & 0 & 0 & 0 \\
+	0 & v^y & 0 & 0 & 0 \\
+	0 & 0 & v^y & 0 & 0 \\
+	0 & 0 & 0 & v^y & 0 \\
+	0 & 0 & 0 & 0 & v^y + c_s \sqrt{g^{yy}}
+}\right]$
+
+$V^R_{F^y} = \left[\matrix{
+	1 & 0 & 1 & 0 & 1\\
+	v^x-\frac{ c_s g^{xy}}{\sqrt{g^{yy}}} & 1 & v^x & 0 & v^x+\frac{ c_s g^{xy}}{\sqrt{g^{yy}}}\\
+	v^y- c_s \sqrt{g^{yy}} & 0 & v^y & 0 & v^y+ c_s \sqrt{g^{yy}}\\
+	v^z-\frac{ c_s g^{yz}}{\sqrt{g^{yy}}} & 0 & v^z & 1 & v^z+\frac{ c_s g^{yz}}{\sqrt{g^{yy}}}\\
+	h_{total}-\frac{ c_s v^y}{\sqrt{g^{yy}}} & v_x & \frac{v^2}{2} & v_z & \frac{ c_s v^y}{\sqrt{g^{yy}}}+h_{total}
+}\right]$
+
+$V^L_{F^y} = \left[\matrix{
+	\frac{v^y}{2 c_s \sqrt{g^{yy}}}+\frac{\tilde{\gamma} v^2}{4{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_x}{2{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_y}{2{{ c_s }^{2}}}-\frac{1}{2 c_s \sqrt{g^{yy}}} & -\frac{\tilde{\gamma} v_z}{2{{ c_s }^{2}}} & \frac{\tilde{\gamma}}{2{{ c_s }^{2}}}\\
+	\frac{g^{xy} v^y}{g^{yy}}-v^x & 1 & -\frac{g^{xy}}{g^{yy}} & 0 & 0\\
+	1-\frac{\tilde{\gamma} v^2}{2{{ c_s }^{2}}} & \frac{\tilde{\gamma} v_x}{{{ c_s }^{2}}} & \frac{\tilde{\gamma} v_y}{{{ c_s }^{2}}} & \frac{\tilde{\gamma} v_z}{{{ c_s }^{2}}} & -\frac{\tilde{\gamma}}{{{ c_s }^{2}}}\\
+	\frac{g^{yz} v^y}{g^{yy}}-v^z & 0 & -\frac{g^{yz}}{g^{yy}} & 1 & 0\\
+	\frac{\tilde{\gamma} v^2}{4{{ c_s }^{2}}}-\frac{v^y}{2 c_s \sqrt{g^{yy}}} & -\frac{\tilde{\gamma} v_x}{2{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_y}{2{{ c_s }^{2}}}+\frac{1}{2 c_s \sqrt{g^{yy}}} & -\frac{\tilde{\gamma} v_z}{2{{ c_s }^{2}}} & \frac{\tilde{\gamma}}{2{{ c_s }^{2}}}
+}\right]$
+
+<br>
+
+$\Lambda_{F^z} = \left[\matrix{
+	v^z - c_s \sqrt{g^{zz}} & 0 & 0 & 0 & 0 \\
+	0 & v^z & 0 & 0 & 0 \\
+	0 & 0 & v^z & 0 & 0 \\
+	0 & 0 & 0 & v^z & 0 \\
+	0 & 0 & 0 & 0 & v^z + c_s \sqrt{g^{zz}}
+}\right]$
+
+$V^R_{F^z} = \left[\matrix{
+	1 & 0 & 0 & 1 & 1\\
+	v^x-\frac{ c_s g^{xz}}{\sqrt{g^{zz}}} & 1 & 0 & v^x & v^x+\frac{ c_s g^{xz}}{\sqrt{g^{zz}}}\\
+	v^y-\frac{ c_s g^{yz}}{\sqrt{g^{zz}}} & 0 & 1 & v^y & v^y+\frac{ c_s g^{yz}}{\sqrt{g^{zz}}}\\
+	v^z- c_s \sqrt{g^{zz}} & 0 & 0 & v^z & v^z+ c_s \sqrt{g^{zz}}\\
+	h_{total}-\frac{ c_s v^z}{\sqrt{g^{zz}}} & v_x & v_y & \frac{v^2}{2} & \frac{ c_s v^z}{\sqrt{g^{zz}}}+h_{total}
+}\right]$
+
+$V^L_{F^z} = \left[\matrix{
+	\frac{v^z}{2 c_s \sqrt{g^{zz}}}+\frac{\tilde{\gamma} v^2}{4{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_x}{2{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_y}{2{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_z}{2{{ c_s }^{2}}}-\frac{1}{2 c_s \sqrt{g^{zz}}} & \frac{\tilde{\gamma}}{2{{ c_s }^{2}}}\\
+	\frac{g^{xz} v^z}{g^{zz}}-v^x & 1 & 0 & -\frac{g^{xz}}{g^{zz}} & 0\\
+	\frac{g^{yz} v^z}{g^{zz}}-v^y & 0 & 1 & -\frac{g^{yz}}{g^{zz}} & 0\\
+	1-\frac{\tilde{\gamma} v^2}{2{{ c_s }^{2}}} & \frac{\tilde{\gamma} v_x}{{{ c_s }^{2}}} & \frac{\tilde{\gamma} v_y}{{{ c_s }^{2}}} & \frac{\tilde{\gamma} v_z}{{{ c_s }^{2}}} & -\frac{\tilde{\gamma}}{{{ c_s }^{2}}}\\
+	\frac{\tilde{\gamma} v^2}{4{{ c_s }^{2}}}-\frac{v^z}{2 c_s \sqrt{g^{zz}}} & -\frac{\tilde{\gamma} v_x}{2{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_y}{2{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_z}{2{{ c_s }^{2}}}+\frac{1}{2 c_s \sqrt{g^{zz}}} & \frac{\tilde{\gamma}}{2{{ c_s }^{2}}}
+}\right]$
+
+<br>
+
 <hr>
 
 
