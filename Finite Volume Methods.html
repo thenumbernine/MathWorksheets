@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="utf-8">
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<title>Finite Volume Methods</title>
+	</head>
+	<body onload='tryToFindMathJax();'>
+
+<h3>Finite Volume Methods</h3>
+
+let $\mu$ run across all coordinates $t,x,y,z$<br>
+$\partial_\mu F^{i\mu} = 0$<br>
+separate space and time:<br>
+$\partial_t F^{it} + \partial_{x^j} F^{ij} = 0$<br>
+let $F^{it} = U^i$<br>
+$\partial_t U^i + \partial_{x^j} F^{ij} = 0$<br>
+integrate over a volume of spacetime $\Omega$<br>
+$\int_\Omega \partial_\mu F^{i\mu} dx^4 = 0$<br>
+apply the divergence theorem<br>
+$\int_{\partial\Omega} F^{i\mu} n_\mu d\Sigma = 0$<br>
+for $n_\mu$ being the spacetime normal<br>
+assume the timelike top and bottom are flat (i.e. only vary in spatial dimensions)<br>
+such that the lower timelike boundary $\partial\Omega_\tau^-$ (which is spatial) has constant time coordinate $t_1$ and constant normal $n_t = -1$ and $n_i = 0$<br>
+and the upper timelike boundary $\partial\Omega_\tau^+$ (which is also spatial) has constant time coordinate $t_2$ and constant normal $n_t = 1$ and $n_i = 0$<br>
+$\int_{\partial\Omega_\Sigma} F^{ij} n_j d\sigma + \int_{\partial\Omega_\tau^+} F^{it} (t_2) dx^3 - \int_{\partial\Omega_\tau^-} F^{it} (t_1) dx^3 = 0$<br>
+substitute the definition of the timelike flux component $F^{it} = U^i$<br>
+$\int_{\partial\Omega_\Sigma} F^{ij} n_j d\sigma + \int_{\partial\Omega_\tau^+} U^i(t_2) dx^3 - \int_{\partial\Omega_\tau^-} U^i(t_1) dx^3 = 0$<br>
+assume that the cells never shrink or grow in size, so the timelike top and bottom are equal, i.e. $\partial\Omega_\tau^+ = \partial\Omega_\tau^- = \partial\Omega_\tau$<br>
+$\int_{\partial\Omega_\Sigma} F^{ij} n_j d\sigma + \int_{\partial\Omega_\tau} U^i(t_2) dx^3 - \int_{\partial\Omega_\tau} U^i(t_1) dx^3 = 0$<br>
+also assume $U^i$ does not vary spatially along the timelike top and bottom surfaces $\partial\Omega_\tau^+$ or $\partial\Omega_\tau^-$<br>
+$\int_{\partial\Omega_\Sigma} F^{ij} n_j d\sigma + (U^i(t_2) - U^i(t_1)) \int_{\partial\Omega_\tau}  dx^3 = 0$<br>
+$\int_{\partial\Omega_\Sigma} F^{ij} n_j d\sigma + (U^i(t_2) - U^i(t_1)) |\partial\Omega_\tau| = 0$<br>
+Let $V$ be the spatial volume of the cell, such that $V = |\partial\Omega_\tau|$<br>
+$\int_{\partial\Omega_\Sigma} F^{ij} n_j d\sigma + (U^i(t_2) - U^i(t_1)) V = 0$<br>
+$(U^i(t_2) - U^i(t_1)) V = -\int_{\partial\Omega_\Sigma} F^{ij} n_j d\sigma$<br>
+Represent the boundary $\Omega_\Sigma$ as the product of the spacelike component $\Omega_\sigma$ and timelike components $\Omega_\Sigma^t$<br>
+Note that $\Omega_\Sigma^t$ is just the subset along the reals $[t_1, t_2]$<br>
+$(U^i(t_2) - U^i(t_1)) V = -\int_{\partial\Omega_\Sigma^t} \int_{\partial\Omega_\sigma} F^{ij} n_j d\sigma dt$<br>
+Assume that the flux $F^{ij}$ is constant with respect to time<br>
+$(U^i(t_2) - U^i(t_1)) V = -\int_{\partial\Omega_\Sigma^t} dt \int_{\partial\Omega_\sigma} F^{ij} n_j d\sigma$<br>
+Let $\Delta t = t_2 - t_1$<br>
+$(U^i(t_2) - U^i(t_1)) V = -\Delta t \int_{\partial\Omega_\sigma} F^{ij} n_j d\sigma$<br>
+${{U^i(t_2) - U^i(t_1)}\over{\Delta t}} = -{{\int_{\partial\Omega_\sigma} F^{ij} n_j d\sigma}\over{V}}$<br>
+Let $\partial\Omega_\sigma$ be the sum of individual surfaces $\partial\Omega_\sigma^k$ each with normal $n^\sigma_{jk}$ the $k$th surface normal in the direction $x^j$<br> 
+Let $F^{ij}$ remain constant along each surface<br>
+${{U^i(t_2) - U^i(t_1)}\over{\Delta t}} = -{{ |\partial\Omega_\sigma^k| F^{ij} n^\sigma_{jk} }\over{V}}$<br>
+Let $S_k = |\partial\Omega_\sigma^k|$ be the surface area of each spatial boundary portion<br>
+${{U^i(t_2) - U^i(t_1)}\over{\Delta t}} = -{{ S_k F^{ij} n^\sigma_{jk} }\over{V}}$<br>
+Assume we're using axis-aligned boundaries, and the span along the $i$th dimension is $\Delta x^i$<br>
+The spacelike volume of the surface is given by $V = \Pi_{i=1}^n \Delta x^i$<br>
+Each $k$th dimension has two surfaces, $S_k^+$ and $S_k^-$, both with area $\Pi_{i=1,i\ne k}^n \Delta x^i$<br>
+$S_k^-$ has surface normal $n^{\sigma-}_{jk} = -\delta_{jk}$<br>
+$S_k^+$ has surface normal $n^{\sigma+}_{jk} = \delta_{jk}$<br>
+Let $x^{\sigma^\pm}$ represent any point on surface $S_k^\pm$, and let the flux $F^{ij}(x^{\sigma^\pm})$ be constant along the surface $S_k^\pm$<br>
+${{U^i(t_2) - U^i(t_1)}\over{\Delta t}} = -{{\Pi_{m=1,m\ne k}^n \Delta x^m (F^{ij}(x^{\sigma^+}) \delta_{jk} + F^{ij}(x^{\sigma^-}) (-\delta_{jk})) }\over{\Pi_{m=1}^n \Delta x^m}}$<br>
+${{U^i(t_2) - U^i(t_1)}\over{\Delta t}} = -{{\Pi_{m=1,m\ne k}^n \Delta x^m (F^{ik}(x^{\sigma^+}) - F^{ik}(x^{\sigma^-})) }\over{\Pi_{m=1}^n \Delta x^m}}$<br>
+${{U^i(t_2) - U^i(t_1)}\over{\Delta t}} = -{{F^{ik}(x^{\sigma^+}) - F^{ik}(x^{\sigma^-}) }\over{\Delta x^k}}$<br>
+Solve for $U^i(t_2)$<br>
+$U^i(t_2) = U^i(t_1) - {{\Delta t}\over{\Delta x^j}}  (F^{ij}(x^{\sigma^+}) - F^{ij}(x^{\sigma^-}))$<br>
+
+	</body>
+</html>
