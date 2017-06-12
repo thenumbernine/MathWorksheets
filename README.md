@@ -16,76 +16,76 @@ The ADM stuff is generated from my symmath project.
 
 Here's the CDN URLs:
 
-[ADM Bona-Masso Eigenvectors](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/ADM%20Bona%2dMasso%20Eigenvectors%2ehtml)
+[ADM Bona-Masso Eigenvectors](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/ADM Bona-Masso Eigenvectors.html)
 
-[ADM Bona-Masso Inverse Eigenvectors](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/ADM%20Bona%2dMasso%20Inverse%20Eigenvectors%2ehtml)
+[ADM Bona-Masso Inverse Eigenvectors](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/ADM Bona-Masso Inverse Eigenvectors.html)
 
-[ADM connections](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/ADM%20connections%2ehtml)
+[ADM connections](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/ADM connections.html)
 
-[Antigravity](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Antigravity%2ehtml)
+[Antigravity](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Antigravity.html)
 
-[BSSNOK 1D](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/BSSNOK%201D%2ehtml)
+[BSSNOK 1D](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/BSSNOK 1D.html)
 
-[Cayley-Dickson](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Cayley%2dDickson%2ehtml)
+[Cayley-Dickson](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Cayley-Dickson.html)
 
-[Change of Coordinates](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Change%20of%20Coordinates%2ehtml)
+[Change of Coordinates](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Change of Coordinates.html)
 
-[EMHD Hyperbolic Conservation Laws](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/EMHD%20Hyperbolic%20Conservation%20Laws%2ehtml)
+[EMHD Hyperbolic Conservation Laws](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/EMHD Hyperbolic Conservation Laws.html)
 
-[EMHD Linear Stability Analysis](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/EMHD%20Linear%20Stability%20Analysis%2ehtml)
+[EMHD Linear Stability Analysis](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/EMHD Linear Stability Analysis.html)
 
-[Electromagnetic Tensor Self-Dual](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Electromagnetic%20Tensor%20Self%2dDual%2ehtml)
+[Electromagnetic Tensor Self-Dual](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Electromagnetic Tensor Self-Dual.html)
 
-[Euler Fluid Equations - Curved Geometry](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Euler%20Fluid%20Equations%20%2d%20Curved%20Geometry%2ehtml)
+[Euler Fluid Equations - Curved Geometry](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Euler Fluid Equations - Curved Geometry.html)
 
-[Euler Fluid Equations - Eigenmode Analysis](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Euler%20Fluid%20Equations%20%2d%20Eigenmode%20Analysis%2ehtml)
+[Euler Fluid Equations - Eigenmode Analysis](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Euler Fluid Equations - Eigenmode Analysis.html)
 
-[Euler Fluid Equations - Entropy Function](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Euler%20Fluid%20Equations%20%2d%20Entropy%20Function%2ehtml)
+[Euler Fluid Equations - Entropy Function](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Euler Fluid Equations - Entropy Function.html)
 
-[Finite Volume Methods](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Finite%20Volume%20Methods%2ehtml)
+[Finite Volume Methods](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Finite Volume Methods.html)
 
-[Gravitation 22.2](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Gravitation%2022%2e2%2ehtml)
+[Gravitation 22.2](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Gravitation 22.2.html)
 
-[Kaluza-Klein](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Kaluza%2dKlein%2ehtml)
+[Kaluza-Klein](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Kaluza-Klein.html)
 
-[Kerr Cartesian](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Kerr%20Cartesian%2ehtml)
+[Kerr Cartesian](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Kerr Cartesian.html)
 
-[LQG](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/LQG%2ehtml)
+[LQG](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/LQG.html)
 
-[MHD](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/MHD%2ehtml)
+[MHD](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/MHD.html)
 
-[Maxwell equations in hyperbolic form](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Maxwell%20equations%20in%20hyperbolic%20form%2ehtml)
+[Maxwell equations in hyperbolic form](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Maxwell equations in hyperbolic form.html)
 
-[Metric with geodesic that changes in space with velocity in time](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Metric%20with%20geodesic%20that%20changes%20in%20space%20with%20velocity%20in%20time%2ehtml)
+[Metric with geodesic that changes in space with velocity in time](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Metric with geodesic that changes in space with velocity in time.html)
 
-[Navier-Stokes](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Navier%2dStokes%2ehtml)
+[Navier-Stokes](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Navier-Stokes.html)
 
-[Numerical Relativity/1_intro](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Numerical%20Relativity%2f1_intro%2ehtml)
+[Numerical Relativity/1_intro](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical Relativity/1_intro.html)
 
-[Numerical Relativity/2_hyperbolic](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Numerical%20Relativity%2f2_hyperbolic%2ehtml)
+[Numerical Relativity/2_hyperbolic](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical Relativity/2_hyperbolic.html)
 
-[Numerical Relativity/3_adm_hyp_full](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Numerical%20Relativity%2f3_adm_hyp_full%2ehtml)
+[Numerical Relativity/3_adm_hyp_full](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical Relativity/3_adm_hyp_full.html)
 
-[Numerical Relativity/adm_to_efe](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Numerical%20Relativity%2fadm_to_efe%2ehtml)
+[Numerical Relativity/adm_to_efe](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical Relativity/adm_to_efe.html)
 
-[Numerical Relativity/eigenwhatever](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Numerical%20Relativity%2feigenwhatever%2ehtml)
+[Numerical Relativity/eigenwhatever](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical Relativity/eigenwhatever.html)
 
-[Numerical Relativity/equal_up_to_principle_part](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Numerical%20Relativity%2fequal_up_to_principle_part%2ehtml)
+[Numerical Relativity/equal_up_to_principle_part](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical Relativity/equal_up_to_principle_part.html)
 
-[Numerical Relativity/z4_hyp_full](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Numerical%20Relativity%2fz4_hyp_full%2ehtml)
+[Numerical Relativity/z4_hyp_full](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical Relativity/z4_hyp_full.html)
 
-[Relativistic Electromagnetism metric](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Relativistic%20Electromagnetism%20metric%2ehtml)
+[Relativistic Electromagnetism metric](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Relativistic Electromagnetism metric.html)
 
-[SRHD](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/SRHD%2ehtml)
+[SRHD](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/SRHD.html)
 
-[Solving Connections From Riemann](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Solving%20Connections%20From%20Riemann%2ehtml)
+[Solving Connections From Riemann](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Solving Connections From Riemann.html)
 
-[Tetrad General Relativity](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/Tetrad%20General%20Relativity%2ehtml)
+[Tetrad General Relativity](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Tetrad General Relativity.html)
 
-[spheres](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/spheres%2ehtml)
+[spheres](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/spheres.html)
 
-[wave_metric_1](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/wave_metric_1%2ehtml)
+[wave_metric_1](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/wave_metric_1.html)
 
-[wave_metric_2](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/wave_metric_2%2ehtml)
+[wave_metric_2](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/wave_metric_2.html)
 
-[wave_metric_3](https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/wave_metric_3%2ehtml)
+[wave_metric_3](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/wave_metric_3.html)
