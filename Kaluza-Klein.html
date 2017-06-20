@@ -8,25 +8,31 @@
 	<body onload='tryToFindMathJax();'>
 
 Kaluza-Klein<br>
+with constant scalar field<br>
+<br>
+
+$\alpha - \omega$ = time+space.<br>
+$ijklmn$ = space.<br>
+the rest of $a - z$ = time+space+electromagnetism.<br>
 <br>
 
 in 4+1:<br>
-$g_{ab} = \left[\matrix{
-	g_{uv} + \phi^2 A_u A_v 
-	& \phi^2 A_u 
-	\\ \phi^2 A_v 
+$\tilde{g}_{ab} = \pmatrix{
+	g_{\mu\nu} + \phi^2 A_\mu A_\nu
+	& \phi^2 A_\mu
+	\\ \phi^2 A_\nu
 	& \phi^2
-}\right]$<br>
-$g^{ab} = \left[\matrix{
-	g^{uv} 
-	& -A^v 
-	\\ -A^u 
-	& A^2 + \phi^2
-}\right]$<br>
+}$<br>
+$\tilde{g}^{ab} = \pmatrix{
+	g^{\mu\nu} 
+	& -A^\nu
+	\\ -A^\mu
+	& g^{\alpha\beta} A_\alpha A_\beta + \frac{1}{\phi^2}
+}$<br>
 <br>
 
 in ADM 1+3+1:<br>
-$g_{ab} = \left[\matrix{
+$\tilde{g}_{ab} = \pmatrix{
 	-\alpha^2 + \beta^k \beta_k + \phi^2 (A_t)^2 
 	& \beta_j + \phi^2 A_t A_j 
 	& \phi^2 A_t 
@@ -35,8 +41,8 @@ $g_{ab} = \left[\matrix{
 	& \phi^2 A_i \\ \phi^2 A_t 
 	& \phi^2 A_j 
 	& \phi^2
-}\right]$<br>
-$g^{ab} = \left[\matrix{
+}$<br>
+$\tilde{g}^{ab} = \pmatrix{
 	-\alpha^2 
 	& \beta^j / \alpha^2 
 	& -A^t 
@@ -46,7 +52,94 @@ $g^{ab} = \left[\matrix{
 	\\ -A^t 
 	& -A^j 
 	& A^2 + \phi^2
-}\right]$<br>
+}$<br>
+<br>
 
+metric partial, in 4+1:<br>
+$\tilde{g}_{ab,c} = \overset{\downarrow c[\downarrow a \rightarrow b]}{\pmatrix{
+	g_{\mu\nu,c} + \phi^2 (A_{\mu,c} A_\nu + A_\mu A_{\nu,c}) & \phi^2 A_{\mu,c} \\ 
+	\phi^2 A_{\nu,c} & 0
+}}$<br>
+$= \overset{\downarrow c[\downarrow a \rightarrow b]}{\pmatrix{
+	\pmatrix{
+		g_{\mu\nu,\rho} + \phi^2 (A_{\mu,\rho} A_\nu + A_\mu A_{\nu,\rho}) & \phi^2 A_{\mu,\rho} \\ 
+		\phi^2 A_{\nu,\rho} & 0
+	} \\
+	\pmatrix{
+		g_{\mu\nu,5} + \phi^2 (A_{\mu,5} A_\nu + A_\mu A_{\nu,5}) & \phi^2 A_{\mu,5} \\ 
+		\phi^2 A_{\nu,5} & 0
+	}
+}}$
+<br>
+
+$\tilde\Gamma_{abc} = \frac{1}{2} (g_{ab,c} + g_{ac,b} - g_{bc,a})$<br>
+$= \overset{\downarrow c[\downarrow a \rightarrow b]}{\pmatrix{
+	\pmatrix{
+		\Gamma_{uvw} + \phi^2 (
+			  A_\mu A_{(\nu,\rho)}
+			  + A_\nu A_{[\mu,\rho]}
+			  + A_\rho A_{[\mu,\nu]}
+		) &
+		\frac{1}{2} g_{\mu\rho,5} + \phi^2 A_{[\mu,\rho]} \\
+		-\frac{1}{2} g_{\nu\rho,5} + \phi^2 A_{(\nu,\rho)} & 
+		0	
+	} \\
+	\pmatrix{
+		\frac{1}{2} g_{\mu\nu,5} + \phi^2 A_{[\mu,\nu]} & \phi^2 A_{\mu,5} \\
+		0 & 0
+	}
+}}$<br>
+
+${\tilde\Gamma^a}_{bc} = g^{ad} \cdot \tilde\Gamma_{dbc}$<br>
+$=\overset{\downarrow c [ \downarrow a \rightarrow b]}{\pmatrix{
+	\pmatrix{
+		{\Gamma^\mu}_{\nu\rho} + \frac{1}{2} g^{\mu\alpha} \phi^2 (A_\nu F_{\rho\alpha} + A_\rho F_{\nu\alpha}) + \frac{1}{2} A^\mu g_{\nu\rho,5} &
+		\frac{1}{2} g^{\mu\alpha} (g_{\alpha\rho,5} + \phi^2 F_{\rho\alpha}) \\
+		-A^\alpha (\Gamma_{\alpha\nu\rho} + \frac{1}{2} \phi^2 (A_\nu F_{\rho\alpha} + A_\rho F_{\nu\alpha})) - \frac{1}{2} A^2 g_{\nu\rho,5} - \frac{1}{2\phi^2} g_{\nu\rho,5} + A_{(\nu,\rho)} &
+		-\frac{1}{2} A^\alpha (g_{\alpha\rho,5} + \phi^2 F_{\rho\alpha})
+	} \\ 
+	\pmatrix{
+		\frac{1}{2} g^{\mu\alpha} (g_{\alpha\nu,5} + \phi^2 F_{\nu\alpha}) &
+		\phi^2 g^{\mu\alpha} A_{\alpha,5} \\
+		-\frac{1}{2} A^\alpha (g_{\alpha\nu,5} + \phi^2 F_{\nu\alpha}) &
+		-\phi^2 A^\alpha A_{\alpha,5}
+	}
+}}$<br>
+<br>
+
+Geodesic equation:<br>
+$\dot{\tilde{u}}^u + {\tilde{\Gamma}^u}_{ab} \tilde{u}^a \tilde{u}^b = 0$<br>
+<br>
+spacetime:<br>
+$\dot{\tilde{u}}^\mu + {\tilde{\Gamma}^\mu}_{\alpha\beta} \tilde{u}^\alpha \tilde{u}^\beta 
+	+ 2 {\tilde{\Gamma}^\mu}_{\alpha 5} \tilde{u}^\alpha \tilde{u}^5
+	+ {\tilde{\Gamma}^\mu}_{55} (\tilde{u}^5)^2 = 0$<br>
+$\dot{\tilde{u}}^\mu + {\Gamma^\mu}_{\alpha\beta} \tilde{u}^\alpha \tilde{u}^\beta
+	+ (\phi^2 A_{(\alpha} {F_{\beta)}}^\mu + \frac{1}{2} A^\mu g_{\alpha\beta,5}) \tilde{u}^\alpha \tilde{u}^\beta 
+	+ (g^{\mu\nu} g_{\nu\alpha,5} + \phi^2 {F_\alpha}^\mu) \tilde{u}^\alpha \tilde{u}^5
+	+ \phi^2 g^{\mu\nu} A_{\nu,5} (\tilde{u}^5)^2 = 0$<br>
+if everything is constant in the 5th dimension:<br>
+$\dot{\tilde{u}}^\mu + {\Gamma^\mu}_{\alpha\beta} \tilde{u}^\alpha \tilde{u}^\beta
+	+ \phi^2 A_{(\alpha} {F_{\beta)}}^\mu \tilde{u}^\alpha \tilde{u}^\beta 
+	+ \phi^2 {F_\alpha}^\mu \tilde{u}^\alpha \tilde{u}^5
+	= 0$<br>
+if $\tilde{u}^5 = \frac{q}{m}$<br>
+$\dot{\tilde{u}}^\mu + {\Gamma^\mu}_{\alpha\beta} \tilde{u}^\alpha \tilde{u}^\beta
+	+ \phi^2 A_{(\alpha} {F_{\beta)}}^\mu \tilde{u}^\alpha \tilde{u}^\beta 
+	+ \phi^2 \frac{q}{m} {F_\alpha}^\mu \tilde{u}^\alpha 
+	= 0$<br>
+<br>
+fifth term:<br>
+$\dot{\tilde{u}}^5 + {\tilde{\Gamma}^5}_{\alpha\beta} \tilde{u}^\alpha \tilde{u}^\beta 
+	+ 2 {\tilde{\Gamma}^5}_{\alpha 5} \tilde{u}^\alpha \tilde{u}^5
+	+ {\tilde{\Gamma}^5}_{55} (\tilde{u}^5)^2 = 0$<br>
+$\dot{\tilde{u}}^5 
+	+ (-A^\mu \Gamma_{\mu\alpha\beta} - \frac{1}{2} \phi^2 A_\mu A_{(\alpha} {F_{\beta)}}^\mu 
+		- \frac{1}{2} A^2 g_{\alpha\beta,5} 
+		- \frac{1}{2\phi^2} g_{\alpha\beta,5} 
+		+ A_{(\alpha,\beta)}
+	) \tilde{u}^\alpha \tilde{u}^\beta 
+	- A^\mu (g_{\mu\alpha,5} + \phi^2 F_{\alpha\mu}) \tilde{u}^\alpha \tilde{u}^5
+	- \phi^2 A^\mu A_{\mu,5} (\tilde{u}^5)^2 = 0$<br>
 	</body>
 </html>
