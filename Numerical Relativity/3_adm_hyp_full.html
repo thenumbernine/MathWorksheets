@@ -284,10 +284,9 @@ $\left[\matrix{
 		\alpha \delta^p_i \delta^q_j \delta^r_k \\
 	\alpha \delta^m_{(i} \delta^r_{j)} &  
 		\alpha (
-			- \gamma^{pr} \delta^m_i \delta^q_j
-			+ \gamma^{pq} \delta^m_i \delta^r_j
-			+ \gamma^{mr} \delta^p_i \delta^q_j
-			- \gamma^{qr} \delta^m_j \delta^p_i 
+			\gamma^{(pq)} \delta^m_{(i} \delta^r_{j)}
+			+ \gamma^{mr} \delta^{(p}_{(i} \delta^{q)}_{j)}
+			- 2 \gamma^{r(p} \delta^{q)}_{(i} \delta^m_{j)}
 		) &
 		-\delta^p_i \delta^q_j \beta^r
 }\right]
@@ -337,10 +336,9 @@ $\left[\matrix{
 		\frac{1}{2} \alpha {d_{(i}}^{pq} \delta^r_{j)} &
 		\alpha \delta^m_{(i} \delta^r_{j)} &  
 		\alpha (
-			- \gamma^{pr} \delta^m_i \delta^q_j
-			+ \gamma^{pq} \delta^m_i \delta^r_j
-			+ \gamma^{mr} \delta^p_i \delta^q_j
-			- \gamma^{qr} \delta^m_j \delta^p_i 
+			\gamma^{(pq)} \delta^m_{(i} \delta^r_{j)}
+			+ \gamma^{mr} \delta^{(p}_{(i} \delta^{q)}_{j)}
+			- 2 \gamma^{r(p} \delta^{q)}_{(i} \delta^m_{j)}
 		) &
 		-\delta^p_i \delta^q_j \beta^r
 }\right]
@@ -358,6 +356,50 @@ $\left[\matrix{
 		+ \alpha K K_{(ij)} 
 		- 2 \alpha K_{(i|k} {K^k}_{j)}
 }\right]$<br>
+<br>
+
+Separating the acoustic tensor from the flux jacobian tensor:<br>
+$A = \left[\matrix{
+	-\delta^m_k \beta^r & 
+		0 & 
+		\alpha f \gamma^{pq} \delta^r_k \\
+	0 & 
+		-\delta^m_k \delta^p_i \delta^q_j \beta^r & 
+		\alpha \delta^p_i \delta^q_j \delta^r_k \\
+	\alpha \delta^m_{(i} \delta^r_{j)} &  
+		\alpha (
+			\gamma^{(pq)} \delta^m_{(i} \delta^r_{j)}
+			+ \gamma^{mr} \delta^{(p}_{(i} \delta^{q)}_{j)}
+			- 2 \gamma^{r(p} \delta^{q)}_{(i} \delta^m_{j)}
+		) &
+		-\delta^p_i \delta^q_j \beta^r
+}\right]
+= \left[\matrix{
+	0 & 
+		0 & 
+		\alpha f \gamma^{pq} \delta^r_k \\
+	0 & 
+		0 & 
+		\alpha \delta^p_i \delta^q_j \delta^r_k \\
+	\alpha \delta^m_{(i} \delta^r_{j)} &  
+		\alpha (
+			\gamma^{(pq)} \delta^m_{(i} \delta^r_{j)}
+			+ \gamma^{mr} \delta^{(p}_{(i} \delta^{q)}_{j)}
+			- 2 \gamma^{r(p} \delta^{q)}_{(i} \delta^m_{j)}
+		) &
+		0
+}\right]
++ \left[\matrix{
+	-\delta^m_k \beta^r & 0 & 0 \\
+	0 & -\delta^m_k \delta^p_i \delta^q_j \beta^r & 0 \\
+	0 & 0 & -\delta^p_i \delta^q_j \beta^r
+}\right]$<br>
+<br>
+
+Next separate out waves<br>
+Next convert waves to find eigenvalues left eigenvectors<br>
+Next invert to find right eigenvectors<br>
+Next re-add $-\beta^r$ to eigenvalues (converting from acoustic eigenvalues to flux Jacobian eigenvalues)<br>
 
 	</body>
 </html>
