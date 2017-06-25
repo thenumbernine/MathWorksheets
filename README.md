@@ -46,6 +46,8 @@ Here's the CDN URLs:
 
 [Gravitation 22.2](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Gravitation%2022%2e2%2ehtml)
 
+[Kaluza-Klein - constant scalar](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Kaluza%2dKlein%20%2d%20constant%20scalar%2ehtml)
+
 [Kaluza-Klein](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Kaluza%2dKlein%2ehtml)
 
 [Kerr Cartesian](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Kerr%20Cartesian%2ehtml)
@@ -67,6 +69,8 @@ Here's the CDN URLs:
 [Numerical Relativity/3_adm_hyp_full](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity%2f3_adm_hyp_full%2ehtml)
 
 [Numerical Relativity/adm_to_efe](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity%2fadm_to_efe%2ehtml)
+
+[Numerical Relativity/bssnok](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity%2fbssnok%2ehtml)
 
 [Numerical Relativity/eigenwhatever](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity%2feigenwhatever%2ehtml)
 
