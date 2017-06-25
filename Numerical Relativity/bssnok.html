@@ -46,7 +46,7 @@ $= 	-\frac{1}{6} \alpha K
 	+ \frac{1}{6} {\beta^k}_{,k}$<br>
 <br>
 
-TODO prove:<br>
+TODO prove: (I think it's in my 'loop quantum gravity' page 3 or 4 docs)<br>
 $R = K_{ij} K^{ij} - K^2 + 16 \pi \rho$<br>
 from there,<br>
 using $K_{ij} = A_{ij} + \frac{1}{3} \gamma_{ij} K$<br>
@@ -87,7 +87,7 @@ $=
 	+ \gamma^{ij} K_{ij,k} \beta^k 
 	+ \gamma^{ij} K_{ki} {\beta^k}_{,j}
 	+ \gamma^{ij} K_{kj} {\beta^k}_{,i}
-	$<br>
+$<br>
 $= 
 	- \gamma^{ij} D_i D_j \alpha 
 	+ 2 \alpha {K^i}_j {K^j}_i
@@ -95,25 +95,25 @@ $=
 	+ 4 \pi \alpha \gamma^{ij} (\gamma_{ij} (S - \rho) - 2 S_{ij})
 	+ \beta^k {\gamma^{ij}}_{,k} K_{ij}
 	+ \beta^k \gamma^{ij} K_{ij,k} 
-	$<br>
+$<br>
 $=  - \gamma^{ij} D_i D_j \alpha 
 	+ \alpha R 
 	+ \alpha K^2
 	+ 4 \pi \alpha (S - 3 \rho)
 	+ \beta^k K_{,k}
-	$<br>
+$<br>
 using $R = \tilde{A}_{ij} \tilde{A}^{ij} - \frac{2}{3} K^2 + 16 \pi \rho$<br>
 $=  - \gamma^{ij} D_i D_j \alpha 
 	+ \alpha (\tilde{A}_{ij} \tilde{A}^{ij} - \frac{2}{3} K^2 + 16 \pi \rho)
 	+ \alpha K^2
 	+ 4 \pi \alpha (S - 3 \rho)
 	+ \beta^k K_{,k}
-	$<br>
+$<br>
 $=  - \gamma^{ij} D_i D_j \alpha 
 	+ \alpha (\tilde{A}_{ij} \tilde{A}^{ij} + \frac{1}{3} K^2)
 	+ 4 \pi \alpha (S + \rho)
 	+ \beta^k K_{,k}
-	$<br>
+$<br>
 <br>
 
 $\mathcal{L}_{\vec\beta} \tilde{\gamma}_{ij}
@@ -161,6 +161,141 @@ $ =
 	- \frac{2}{3} \tilde{\gamma}_{ij} {\beta^k}_{,k}
 	$<br>
 <br>
+
+$\mathcal{L}_{\vec\beta} \tilde{A}_{ij}
+=\tilde{A}_{ij,k} \beta^k + \tilde{A}_{kj} {\beta^k}_{,i} + \tilde{A}_{ik} {\beta^k}_{,j}$<br>
+<br>
+
+$K \tilde{A}_{ij} - 2 \tilde{A}_{il} {\tilde{A}^l}_j$<br>
+$= exp(-4 \phi) K A_{ij} - 2 \tilde{A}_{ik} \tilde{\gamma}^{kl} \tilde{A}_{lj}$<br>
+$= exp(-4 \phi) K A_{ij} - 2 exp(-4 \phi) \gamma^{kl} A_{ik} A_{lj}$<br>
+$= exp(-4 \phi) K (K_{ij} - \frac{1}{3} \gamma_{ij} K) 
+	- 2 exp(-4 \phi) \gamma^{kl} (K_{ik} - \frac{1}{3} \gamma_{ik} K) (K_{lj} - \frac{1}{3} \gamma_{lj} K)$<br>
+$= exp(-4 \phi) (
+	+ K K_{ij} 
+	- \frac{1}{3} \gamma_{ij} K^2
+	- 2 \gamma^{kl} K_{ik} K_{lj} 
+	+ \frac{2}{3} \gamma^{kl} \gamma_{ik} K_{lj} K
+	+ \frac{2}{3} \gamma^{kl} \gamma_{lj} K_{ik} K
+	- \frac{2}{9} \gamma^{kl} \gamma_{ik} \gamma_{lj} K^2
+)$<br>
+$= exp(-4 \phi) (
+	- \frac{1}{3} \gamma_{ij} K^2
+	- \frac{2}{9} \gamma_{ij} K^2
+	+ K K_{ij} 
+	+ \frac{2}{3} K_{ij} K
+	+ \frac{2}{3} K_{ij} K
+	- 2 K_{ik} {K^k}_j 
+)$<br>
+$= exp(-4 \phi) (
+	- 2 K_{ik} {K^k}_j 
+	- \frac{5}{9} \gamma_{ij} K^2
+	+ \frac{7}{3} K_{ij} K
+)$<br>
+<br>
+
+$\tilde{A}_{ij,t} = (exp(-4 \phi) A_{ij})_{,t}$<br>
+$= -4 \phi_{,t} exp(-4 \phi) A_{ij} + exp(-4 \phi) A_{ij,t}$<br>
+$= -4 \phi_{,t} \tilde{A}_{ij} + exp(-4 \phi) (K_{ij} - \frac{1}{3} \gamma_{ij} K)_{,t}$<br>
+$= -4 \tilde{A}_{ij} \phi_{,t}
+	+ exp(-4 \phi) K_{ij,t} 
+	- \frac{1}{3} exp(-4 \phi) K \gamma_{ij,t} 
+	- \frac{1}{3} exp(-4 \phi) \gamma_{ij} K_{,t}$<br>
+$= -4 \tilde{A}_{ij} (
+		-\frac{1}{6} \alpha K
+		+ \phi_{,k} \beta^k 
+		+ \frac{1}{6} {\beta^k}_{,k}
+	)
+	+ exp(-4 \phi) (
+		-D_i D_j \alpha 
+		+ \alpha (R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j) 
+		+ 4 \pi \alpha (\gamma_{ij} (S - \rho) - 2 S_{ij})
+		+ K_{ij,k} \beta^k 
+		+ K_{ki} {\beta^k}_{,j}
+		+ K_{kj} {\beta^k}_{,i}
+	)
+	- \frac{1}{3} exp(-4 \phi) K (
+		-2 \alpha K_{ij} 
+		+ \gamma_{ij,k} \beta^k 
+		+ \gamma_{ki} {\beta^k}_{,j}
+		+ \gamma_{kj} {\beta^k}_{,i}
+	)
+	- \frac{1}{3} exp(-4 \phi) \gamma_{ij} (
+		- \gamma^{kl} D_k D_l \alpha 
+		+ \alpha (\tilde{A}_{kl} \tilde{A}^{kl} + \frac{1}{3} K^2)
+		+ 4 \pi \alpha (S + \rho)
+		+ \beta^k K_{,k}
+	)$<br>
+$= 
+	- exp(-4 \phi) D_i D_j \alpha 
+	+ \frac{1}{3} exp(-4 \phi) \gamma_{ij} \gamma^{kl} D_k D_l \alpha 
+	
+	+ 4 \tilde{A}_{ij} \frac{1}{6} \alpha K
+	+ exp(-4 \phi) \alpha (R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j) 
+	+ \frac{1}{3} exp(-4 \phi) K 2 \alpha K_{ij} 
+	- \frac{1}{3} exp(-4 \phi) \gamma_{ij} \alpha (\tilde{A}_{kl} \tilde{A}^{kl} + \frac{1}{3} K^2)
+	
+	+ exp(-4 \phi) 4 \pi \alpha (\gamma_{ij} (S - \rho) - 2 S_{ij})
+	- \frac{1}{3} exp(-4 \phi) \gamma_{ij} 4 \pi \alpha (S + \rho)
+	
+	- 4 \tilde{A}_{ij} \phi_{,k} \beta^k 
+	- 4 \tilde{A}_{ij} \frac{1}{6} {\beta^k}_{,k}
+	+ exp(-4 \phi) K_{ij,k} \beta^k 
+	+ exp(-4 \phi) K_{ki} {\beta^k}_{,j}
+	+ exp(-4 \phi) K_{kj} {\beta^k}_{,i}
+	- \frac{1}{3} exp(-4 \phi) K \gamma_{ij,k} \beta^k 
+	- \frac{1}{3} exp(-4 \phi) K \gamma_{ki} {\beta^k}_{,j}
+	- \frac{1}{3} exp(-4 \phi) K \gamma_{kj} {\beta^k}_{,i}
+	- \frac{1}{3} exp(-4 \phi) \gamma_{ij} \beta^k K_{,k}
+$<br>
+$= 
+	exp(-4 \phi) (-(D_i D_j \alpha)^{TF} - 8 \pi \alpha (S_{ij})^{TF}) 
+	
+	+ \alpha \frac{2}{3} \tilde{A}_{ij} K
+	+ \alpha \frac{2}{3} exp(-4 \phi) K_{ij} K 
+	
+	+ exp(-4 \phi) \alpha R_{ij} 
+	- exp(-4 \phi) \alpha \frac{1}{3} \gamma_{ij} R
+	
+	+ exp(-4 \phi) \alpha \frac{1}{3} \gamma_{ij} R
+	
+	+ exp(-4 \phi) \alpha K K_{ij} 
+	- exp(-4 \phi) \alpha 2 K_{ik} {K^k}_j
+	
+	- \frac{1}{3} \alpha \tilde{\gamma}_{ij} {K^l}_k {K^k}_l
+	
+	- \frac{4}{3} \pi \alpha exp(-4 \phi) \gamma_{ij} \rho
+	- 4 \pi \alpha exp(-4 \phi) \gamma_{ij} \rho
+	
+	+ \tilde{A}_{ij,k} \beta^k 
+	+ \tilde{A}_{kj} {\beta^k}_{,i}
+	+ \tilde{A}_{ki} {\beta^k}_{,j}
+	- \frac{2}{3} \tilde{A}_{ij} {\beta^k}_{,k}
+$<br>
+$= 
+	exp(-4 \phi) (-(D_i D_j \alpha)^{TF} + \alpha ((R_{ij})^{TF} - 8 \pi (S_{ij})^{TF})) 
+	
+	+ \alpha \frac{2}{3} \tilde{A}_{ij} K
+	+ \alpha \frac{2}{3} exp(-4 \phi) K_{ij} K 
+	
+	+ \frac{1}{3} exp(-4 \phi) \alpha \gamma_{ij} \tilde{A}_{kl} \tilde{A}^{kl} 
+	
+	- \frac{2}{9} exp(-4 \phi) \alpha \gamma_{ij} K^2 
+	+ \frac{16}{3} \pi \rho exp(-4 \phi) \alpha \gamma_{ij}
+	
+	+ exp(-4 \phi) \alpha K K_{ij} 
+	- exp(-4 \phi) \alpha 2 K_{ik} {K^k}_j
+	
+	- \frac{1}{3} \alpha \tilde{\gamma}_{ij} {K^l}_k {K^k}_l
+	
+	- \frac{4}{3} \pi \alpha exp(-4 \phi) \gamma_{ij} \rho
+	- 4 \pi \alpha exp(-4 \phi) \gamma_{ij} \rho
+	
+	+ \tilde{A}_{ij,k} \beta^k 
+	+ \tilde{A}_{kj} {\beta^k}_{,i}
+	+ \tilde{A}_{ki} {\beta^k}_{,j}
+	- \frac{2}{3} \tilde{A}_{ij} {\beta^k}_{,k}
+$<br>
 
 	</body>
 </html>
