@@ -3,380 +3,80 @@
 	<head>
         <meta charset="UTF-8">
 		<script type='text/javascript' src='tryToFindMathJax.js'></script>
-		<title>Euler Fluid Equation - Eigenmode Analysis</title>
+		<title>Euler Fluid Equation - Curved Geometry</title>
 	</head>
 	<body onload='tryToFindMathJax();'>
 
-relation between eigenmodes and left eigenvector matrix:<br> 
-$U_{,t} + F_{,x} = 0$<br>
-apply chain rule<br>
-$U_{,t} + \frac{\partial F}{\partial U} U_{,x} = 0$<br>
-let $A = \frac{\partial F}{\partial U}$<br>
-$U_{,t} + A U_{,x} = 0$<br>
-Eigenvector decomposition: let $Q \Lambda Q^{-1} = A$<br>
-$U_{,t} + Q \Lambda Q^{-1} U_{,x} = 0$<br>
-Left-multiply by left eigenvector matrix:<br>
-$Q^{-1} U_{,t} + \Lambda Q^{-1} U_{,x} = 0$<br>
-Let $w_{,a} = Q^{-1} U_{,a}$<br>
-$w_{,t} + \lambda w_{,x} = 0$<br>
-eigenfunctions are solutions of the form $w_{,t} + \lambda w_{,x} = 0$<br>
-So the derivative $w_{,a}$ is a linear combination of the derivatives of $u_{,a}$ and the row of the left eigenvector matrix<br>
-<br>
-
-quasilinear form / relation between conservative and primitive PDEs:<br>
-$U_{,t} + F_{,x} = 0$<br>
-$U_{,t} + A U_{,x} = 0$<br>
-$\frac{\partial U}{\partial W} W_{,t} + A \frac{\partial U}{\partial W} W_{,x} = 0$<br>
-Let $P = \frac{\partial U}{\partial W}$<br>
-$P W_{,t} + A P W_{,x} = 0$<br>
-$W_{,t} + P^{-1} A P W_{,x} = 0$<br>
-<br>
-
-<h3>Euler Fluid Equations</h3>
-
-variables:<br>
+<b>Variables</b><br>
 $\rho =$ density<br>
-$v_i =$ velocity<br>
-$m_i = \rho v_i = $ momentum<br>
+$v^i =$ velocity<br>
 $P =$ pressure<br>
 $\gamma =$ heat capacity ratio<br>
-$\tilde\gamma = \gamma - 1$<br>
-$e_{int} = \frac{P}{\rho \tilde\gamma} =$ internal specific energy<br>
-$e_{kin} = \frac{1}{2} v^2 =$ kinetic specific energy<br>
-$e_{total} = e_{kin} + e_{int} = \frac{1}{2} v^2 + \frac{P}{\rho \tilde\gamma} =$ total specific energy<br>
-$E_{int} = \frac{P}{\tilde\gamma} =$ internal densitized energy<br>
-$E_{kin} = \frac{1}{2} \rho v^2 =$ kinetic densitized energy<br>
-$E_{total} = E_{kin} + E_{int} = \rho e_{total} = \frac{1}{2} \rho v^2 + \frac{P}{\tilde\gamma} =$ total densitized energy<br>
-$h_{int} = e_{int} + \frac{P}{\rho} = \gamma e_{int} = $ internal specific enthalpy<br>
-$h_{total} = h_{int} + e_{kin} = e_{total} + \frac{P}{\rho} =$ total specific enthalpy<br>
-$H_{int} = \rho h_{int} = E_{int} + P = $ internal densitized enthalpy<br>
-$H_{total} = \rho h_{total} = E_{total} + P =$ total densitized enthalpy<br>
-$C_s = \sqrt{\frac{\gamma P}{\rho}} =$ speed of sound<br>
-<br>
-conservative and primitive variables:<br>
-$W_i = \left[\matrix{ \rho & v_i & P }\right]^T$<br>
-$U_i = \left[\matrix{ \rho & \rho v_i & E_{total} }\right]^T$<br>
-$P = \frac{\partial U_i}{\partial W_j} = \left[\matrix{
-	1 & 0 & 0 \\
-	v_i & \rho \delta_{ij} & 0 \\
-	\frac{1}{2} v^2 & \rho v_j & 1/\tilde\gamma
-}\right]$<br>
-$P^{-1} = \frac{\partial W_i}{\partial U_j} = \left[\matrix{
-	1 & 0 & 0 \\
-	-v_i / \rho & \delta_{ij} / \rho & 0 \\
-	\frac{1}{2} \tilde\gamma v^2 & -\tilde\gamma v_j & \tilde\gamma
-}\right]$<br>
 <br>
 
-Euler fluid equations in flux-form:<br>
-<br>
-$U_{,t} + F_{j,j} = 0$<br>
-<br>
-$\rho_{,t} + (\rho v_j)_{,j} = 0$<br>
-$(\rho v_i)_{,t} + (\rho v_i v_j + \delta_{ij} P)_{,j} = 0$<br>
-$E_{total,t} + (v_j H_{total})_{,j} = 0$<br>
-<br>
-$\rho_{,t} + \rho_{,j} v_j + \rho v_{j,j} = 0$<br>
-$(\rho v_i)_{,t} + \rho_{,j} v_i v_j + \rho v_{i,j} v_j + \rho v_i v_{j,j} + P_{,i} = 0$<br>
-$E_{total,t} + v_{j,j} H_{total} + v_j (\frac{1}{2} \rho_{,j} v^2 + \rho v_k v_{k,j} + \frac{\gamma}{\tilde\gamma} P_{,j}) = 0$<br>
-<br>
-$\left[\matrix{
-	\rho \\ \rho v_i \\ E_{total} 
-}\right]_{,t}
-+ \left[\matrix{
-	v_j &
-		\rho \delta_{jm} &
-		0 \\
-	v_i v_j &
-		\rho ( v_j \delta_{im} + v_i \delta_{jm} ) &
-		\delta_{ij} \\
-	\frac{1}{2} v_j v^2 &
-		\delta_{jm} H_{total} + \rho v_j v_m &
-		\frac{\gamma}{\tilde\gamma} v_j
-}\right]
-\left[\matrix{
-	\rho \\ v_m \\ P
-}\right]_{,j} = 0$<br>
-<br>
-$\left[\matrix{
-	\rho \\ \rho v_i \\ E_{total} 
-}\right]_{,t}
-+ \left[\matrix{
-	v_j &
-		\rho \delta_{jm} &
-		0 \\
-	v_i v_j &
-		\rho ( v_j \delta_{im} + v_i \delta_{jm} ) &
-		\delta_{ij} \\
-	\frac{1}{2} v_j v^2 &
-		\delta_{jm} H_{total} + \rho v_j v_m &
-		\frac{\gamma}{\tilde\gamma} v_j
-}\right]
-\left[\matrix{
-	1 & 0 & 0 \\
-	-v_m / \rho & \delta_{mk} / \rho & 0 \\
-	\frac{1}{2} \tilde\gamma v^2 & -\tilde\gamma v_k & \tilde\gamma
-}\right]
-\left[\matrix{
-	\rho \\ \rho v_k \\ E_{total}
-}\right]_{,j} = 0$<br>
-<br>
-matrix conservative form:<br>
-$\left[\matrix{
-	\rho \\ \rho v_i \\ E_{total} 
-}\right]_{,t}
-+ \left[\matrix{
-	0 &
-		\delta_{jk} &
-		0 \\
-	-v_i v_j + \frac{1}{2} \delta_{ij} \tilde\gamma v^2 &
-		\delta_{ik} v_j + \delta_{jk} v_i - \delta_{ij} \tilde\gamma v_k &
-		\delta_{ij} \tilde\gamma \\
-	v_j (\frac{1}{2} \tilde\gamma v^2 - h_{total}) &
-		-\tilde\gamma v_j v_k + \delta_{jk} h_{total} &
-		\gamma v_j
-}\right]
-\left[\matrix{
-	\rho \\ \rho v_k \\ E_{total} 
-}\right]_{,j} = 0$<br>
-<br>
-$U_{,t} + A_j U_{,j} = 0$<br>
-<br>
-matrix primitive form:<br>
-<br>
-$W_{,t} + P^{-1} A_j P W_{,j} = 0$<br>
-<br>
-$\left[\matrix{
-	\rho \\ v_m \\ P
-}\right]_{,t} + \left[\matrix{
-	1 & 0 & 0 \\
-	-v_m / \rho & \delta_{mi} / \rho & 0 \\
-	\frac{1}{2} \tilde\gamma v^2 & -\tilde\gamma v_i & \tilde\gamma
-}\right] \left[\matrix{
-	0 &
-		\delta_{jk} &
-		0 \\
-	-v_i v_j + \frac{1}{2} \delta_{ij} \tilde\gamma v^2 &
-		\delta_{ik} v_j + \delta_{jk} v_i - \delta_{ij} \tilde\gamma v_k &
-		\delta_{ij} \tilde\gamma \\
-	v_j (\frac{1}{2} \tilde\gamma v^2 - h_{total}) &
-		-\tilde\gamma v_j v_k + \delta_{jk} h_{total} &
-		\gamma v_j
-}\right] \left[\matrix{
-	1 & 0 & 0 \\
-	v_k & \rho \delta_{kn} & 0 \\
-	\frac{1}{2} v^2 & \rho v_n & 1/\tilde\gamma
-}\right] \left[\matrix{
-	\rho \\ v_n \\ P
-}\right]_{,j} = 0$<br>
-$\left[\matrix{
-	\rho \\ v_m \\ P
-}\right]_{,t} + \left[\matrix{
-	0 & \delta_{jk} & 0 \\
-	\frac{1}{\rho} (-v_m v_j + \frac{1}{2} \delta_{mj} \tilde\gamma v^2) &
-		\frac{1}{\rho} (\delta_{mk} v_j - \delta_{mj} \tilde\gamma v_k) &
-		\frac{1}{\rho} \delta_{mj} \tilde\gamma \\
-	\tilde\gamma v_j (v^2 - h_{total}) &
-	\tilde\gamma (
-		- v_j v_k
-		- \frac{1}{2} \delta_{jk} v^2
-		+ \delta_{jk} h_{total}) &
-	\tilde\gamma v_j
-}\right] \left[\matrix{
-	1 & 0 & 0 \\
-	v_k & \rho \delta_{kn} & 0 \\
-	\frac{1}{2} v^2 & \rho v_n & 1/\tilde\gamma
-}\right] \left[\matrix{
-	\rho \\ v_n \\ P
-}\right]_{,j} = 0$<br>
-$\left[\matrix{
-	\rho \\ v_m \\ P
-}\right]_{,t} + \left[\matrix{
-	v_j & \rho \delta_{jn} & 0 \\
-	0 & \delta_{mn} v_j & \frac{1}{\rho} \delta_{mj} \\
-	0 & \delta_{jn} \gamma P & v_j
-}\right] \left[\matrix{
-	\rho \\ v_n \\ P
-}\right]_{,j} = 0$<br>
-<br>
-$\rho_{,t} + v_j \rho_{,j} + \rho v_{j,j} = 0$<br>
-$v_{i,t} + v_j v_{i,j} + \frac{1}{\rho} \delta_{ij} P_{,j} = 0$<br>
-$P_{,t} + v_j P_{,j} + \gamma P v_{j,j} = 0$<br>
-<br>
-for the $x$-direction alone, assuming no flux along $y$ or $z$:<br> 
-$\rho_{,t} + v_x \rho_{,x} = -\rho v_{x,x}$<br>
-$v_{x,t} + v_x v_{x,x} = -\frac{1}{\rho} P_{,x}$<br>
-$v_{p,t} + v_x v_{p,x} = 0$ for $p \ne x$<br>
-$P_{,t} + v_x P_{,x} = -\gamma P v_{x,x}$<br>
-<br>
-conservative form eigenvector decomposition in x-direction with all indexes expanded:<br>
-$\left[\matrix{
-	\rho \\ \rho v_i \\ E_{total} 
-}\right]_{,t}
-+ \left[\matrix{
-	1 & 1 & 0 & 0 & 1 \\
-	v_x - C_s & v_x & 0 & 0 & v_x + C_s \\
-	v_y & v_y & 1 & 0 & v_y \\
-	v_z & v_z & 0 & 1 & v_z \\
-	h_{total} - v_j C_s & \frac{1}{2} v^2 & v_y & v_z & h_{total} + v_j C_s
-}\right]
-\left[\matrix{
-	v_j - C_s & 0 & 0 & 0 & 0 \\
-	0 & v_j & 0 & 0 & 0 \\
-	0 & 0 & v_j & 0 & 0 \\
-	0 & 0 & 0 & v_j & 0 \\
-	0 & 0 & 0 & 0 & v_j + C_s
-}\right]
-\left(
-\frac{1}{2 {C_s}^2}
-\left[\matrix{
-	\frac{1}{2} \tilde\gamma v^2 + C_s v_x &
-		-C_s - \tilde\gamma v_x &
-		-\tilde\gamma v_y &
-		-\tilde\gamma v_z &
-		\tilde\gamma \\
-	2 {C_s}^2 - \tilde\gamma v^2 &
-		2 \tilde\gamma v_x &
-		2 \tilde\gamma v_y &
-		2 \tilde\gamma v_z &
-		-2 \tilde\gamma \\
-	-2 {C_s}^2 v_y &
-		0 &
-		2 {C_s}^2 &
-		0 &
-		0 \\
-	-2 {C_s}^2 v_z &
-		0 &
-		0 &
-		2 {C_s}^2 &
-		0 \\
-	\frac{1}{2} \tilde\gamma v^2 - C_s v_x &
-		C_s - \tilde\gamma v_x &
-		-\tilde\gamma v_y &
-		-\tilde\gamma v_z &
-		\tilde\gamma
-}\right]
-\right)
-\left[\matrix{
-	\rho \\ \rho v_k \\ E_{total}
-}\right]_{,x}
-$<br>
-conservative form eigenvector decomposition in j-direction:<br>
-$\left[\matrix{
-	\rho \\ \rho v_i \\ E_{total} 
-}\right]_{,t}
-+ \left[\matrix{
-	1 						& 1					& 0 		& 0 		& 1 					\\
-	v_i - \delta_{ij} C_s 	& v_i				& n^2_i		& n^3_i		& v_i + \delta_{ij} C_s \\
-	h_{total} - v_j C_s 	& \frac{1}{2} v^2	& n^2_m v_m	& n^3_m v_m	& h_{total} + v_j C_s
-}\right]
-\left[\matrix{
-	v_j - C_s & 0 & 0 & 0 & 0 \\
-	0 & v_j & 0 & 0 & 0 \\
-	0 & 0 & v_j & 0 & 0 \\
-	0 & 0 & 0 & v_j & 0 \\
-	0 & 0 & 0 & 0 & v_j + C_s
-}\right]
-\left(
-\frac{1}{2 {C_s}^2}
-\left[\matrix{
-	\frac{1}{2} \tilde\gamma v^2 + C_s v_x &
-		-\delta_{jk} C_s - \tilde\gamma v_k &
-		\tilde\gamma \\
-	-2 {C_s}^2 (v_n - \delta_{jn} (v_j + 1)) - \delta_{jn} \tilde\gamma v^2 &
-		2 {C_s}^2 \delta_{nk} + \delta_{nj} (2 \tilde\gamma v_k - 2 \delta_{jk} {C_s}^2) &
-		-2 \delta_{jn} \tilde\gamma \\
-	\frac{1}{2} \tilde\gamma v^2 - C_s v_x &
-		\delta_{jk} C_s - \tilde\gamma v_k &
-		\tilde\gamma
-}\right]
-\right)
-\left[\matrix{
-	\rho \\ \rho v_k \\ E_{total}
-}\right]_{,j}
-= 0$<br>
+<b>Euler Fluid Equations</b><br>
+$\rho_{,t} + (\rho v^j)_{,j} = 0$<br>
+$(\rho v^i)_{,t} + (\rho v^i v^j + \delta^{ij} P)_{,j} = 0$<br>
+$(\frac{1}{2} \rho v^j v_j + \frac{1}{\gamma-1} P)_{,t} + (v^j (\frac{1}{2} \rho v^k v_k + \frac{\gamma}{\gamma-1} P))_{,j} = 0$<br>
 <br>
 
-The idea is that, for an eigenmode of the Euler fluid equations, it should satisfy $w_{,t} + \lambda w_{,x} = 0$<br>
-From here on out I'm choosing the $x$-direction flux, so $j = x$<br>
-The eigenmode becomes <br>
-$w_{i,a} = 
-\frac{1}{2 {C_s}^2}
-\left[\matrix{
-	\frac{1}{2} \tilde\gamma v^2 + C_s v_x &
-		-\delta_{xk} C_s - \tilde\gamma v_k &
-		\tilde\gamma \\
-	-2 {C_s}^2 (v_i - \delta_{xi} (v_x + 1)) - \delta_{xi} \tilde\gamma v^2 &
-		2 {C_s}^2 \delta_{ik} + \delta_{xi} (2 \tilde\gamma v_k - 2 \delta_{xk} {C_s}^2) &
-		-2 \delta_{xi} \tilde\gamma \\
-	\frac{1}{2} \tilde\gamma v^2 - C_s v_x &
-		\delta_{xk} C_s - \tilde\gamma v_k &
-		\tilde\gamma
-}\right]
-\left[\matrix{
-	\rho \\ \rho v_k \\ E_{total}
-}\right]_{,a}$
-for $\lambda_i = \left[\matrix{
-	v_x - C_s \\ v_x \\ v_x + C_s
-}\right]$
-<br>
-for $p \ne x$<br>
-$w_{i,a} = 
-\frac{1}{2 {C_s}^2}
-\left[\matrix{
-	(\frac{1}{2} \tilde\gamma v^2 + C_s v_x) \rho_{,a}
-		+ (\pm\delta_{xk} C_s - \tilde\gamma v_k) (\rho v_k)_{,a}
-		+ \tilde\gamma E_{total,a} \\
-	(2 {C_s}^2 - \tilde\gamma v^2) \rho_{,a}
-		+ (2 {C_s}^2 \delta_{xk} + 2 \tilde\gamma v_k - 2 \delta_{xk} {C_s}^2) (\rho v_k)_{,a}
-		- 2 \tilde\gamma E_{total,a} \\
-	-2 {C_s}^2 v_p \rho_{,a}
-		+ 2 {C_s}^2 \delta_{pk} (\rho v_k)_{,a}
-}\right]$
-for $\lambda_i = \left[\matrix{
-	v_x \pm C_s \\ v_x \\ v_x
-}\right]$<br>
-$w_{i,a} = 
-\left[\matrix{
-	\frac{1}{2 {C_s}^2} P_{,a} \pm \frac{1}{2 {C_s}} \rho v_{x,a} \\
-	\rho_{,a} - \frac{1}{{C_s}^2} P_{,a} \\
-	\rho v_{p,a} 
-}\right]$
-for $\lambda_i = \left[\matrix{
-	v_x \pm C_s \\ v_x \\ v_x
-}\right]$<br>
+Expanded:<br>
+$\rho_{,t} + \rho_{,j} v^j + \rho {v^j}_{,j} = 0$<br>
+$\rho_{,t} v^i + \rho {v^i}_{,t} 
+	+ \rho_{,j} v^i v^j + \rho {v^i}_{,j} v^j + \rho v^i {v^j}_{,j} + \delta^{ij} P_{,j} = 0$<br>
+$\frac{1}{2} \rho_{,t} v^j v_j + \rho {v^j}_{,t} v_j + \frac{1}{\gamma-1} P_{,t}
+	+ {v^j}_{,j} (\frac{1}{2} \rho v^k v_k + \frac{\gamma}{\gamma-1} P)
+	+ v^j (\frac{1}{2} \rho_{,j} v^k v_k + \rho v^k v_{k,j} + \frac{\gamma}{\gamma-1} P_{,j}) = 0$<br>
 <br>
 
-so $w_{i,t} + \lambda_i w_{i,x}$ should equal zero ...<br>
-<br>
-$\frac{1}{2 {C_s}^2} P_{,t} \pm \frac{1}{2 {C_s}} \rho v_{x,t} + (v_x \pm C_s) (\frac{1}{2 {C_s}^2} P_{,x} \pm \frac{1}{2 {C_s}} \rho v_{x,x})$<br>
-$\frac{1}{2 {C_s}^2} P_{,t} \pm \frac{1}{2 {C_s}} \rho v_{x,t} + (v_x \pm C_s) \frac{1}{2 {C_s}^2} P_{,x} \pm (v_x \pm C_s) \frac{1}{2 {C_s}} \rho v_{x,x}$<br>
-$\frac{1}{2 {C_s}^2} P_{,t} 
-	\pm \frac{1}{2 {C_s}} \rho v_{x,t} 
-	+ v_x \frac{1}{2 {C_s}^2} P_{,x} 
-	\pm \frac{1}{2 C_s} P_{,x} 
-	\pm v_x \frac{1}{2 {C_s}} \rho v_{x,x}
-	+ \frac{1}{2} \rho v_{x,x}$<br>
-$\frac{1}{2 {C_s}^2} (P_{,t} + v_x P_{,x})
-	\mp \frac{1}{2 C_s} P_{,x}
-	\pm \frac{1}{2 C_s} P_{,x} 
-	+ \frac{1}{2} \rho v_{x,x}$<br>
-$\frac{1}{2 {C_s}^2} (-\gamma P v_{x,x}) 
-	+ \frac{1}{2} \rho v_{x,x}$<br>
-$-\frac{1}{2} \rho v_{x,x} + \frac{1}{2} \rho v_{x,x}$<br>
-$0$<br>
-<br>
-$\rho_{,t} - \frac{1}{{C_s}^2} P_{,t} + v_x (\rho_{,x} - \frac{1}{{C_s}^2} P_{,x})$<br>
-$\rho_{,t} + \rho_{,x} v_x - \frac{1}{{C_s}^2} (P_{,t} + v_x P_{,x})$<br>
-$-\rho v_{x,x} - \frac{1}{{C_s}^2} (P_{,t} + v_x P_{,x})$<br>
-$-\rho v_{x,x} - \frac{1}{{C_s}^2} (-\gamma P v_{x,x})$<br>
-$-\rho v_{x,x} + \rho v_{x,x}$<br>
-$0$<br>
-<br>
-$\rho v_{p,t} + v_x \rho v_{p,x}$ for $p \ne x$<br>
-$\rho (v_{p,t} + v_x v_{p,x})$<br>
-$0$<br>
+Let $q = \hat{q} exp(i \tilde{q}_\mu x^\mu)$ for $x^\mu \in \{ t,x,y,z \}$.<br>
+Therefore $q_{,\mu} = \tilde{q}_\mu q$.<br>
 <br>
 
+Let $v^t = 1$ for simplicity sake.<br>
+Use $\eta_{\mu\nu}$ as the background metric, so $v_t = -1$.<br>
+<br>
+
+$\rho_{,t} + \rho_{,j} v^j + \rho {v^j}_{,j} = 0$<br>
+$\tilde{\rho}_t \rho + \tilde{\rho}_j \rho v^j + \rho \tilde{v}_j v^j = 0$<br>
+$\tilde{\rho}_t + \tilde{\rho}_j v^j + \tilde{v}_j v^j = 0$<br>
+$\tilde{\rho}_t = - (\tilde{\rho}_j + \tilde{v}_j) v^j$<br>
+$\tilde{\rho}_\mu v^\mu = -\tilde{v}_j v^j$<br>
+<br>
+
+$\rho_{,t} v^i + \rho {v^i}_{,t} + \rho_{,j} v^i v^j + \rho {v^i}_{,j} v^j + \rho v^i {v^j}_{,j} + \delta^{ij} P_{,j} = 0$<br>
+$\tilde{\rho}_t \rho v^i + \rho \tilde{v}_t v^i + \tilde{\rho}_j \rho v^i v^j + \rho \tilde{v}_j v^i v^j + \rho v^i \tilde{v}_j v^j + \tilde{P}^i P = 0$<br>
+substitute $\tilde{\rho}_t + \tilde{\rho}_j v^j + \tilde{v}_j v^j = 0$<br>
+$\rho \tilde{v}_t v^i + \rho \tilde{v}_j v^i v^j + \tilde{P}^i P = 0$<br>
+$\rho v^i (\tilde{v}_t + \tilde{v}_j v^j) + \tilde{P}^i P = 0$<br>
+$\tilde{v}_\mu v^\mu v^i = -\frac{1}{\rho} P \tilde{P}^i$<br>
+<br>
+
+$\frac{1}{2} \rho_{,t} v^j v_j + \rho {v^j}_{,t} v_j + \frac{1}{\gamma-1} P_{,t}
+	{v^j}_{,j} (\frac{1}{2} \rho v^k v_k + \frac{\gamma}{\gamma-1} P)
+	+ v^j (\frac{1}{2} \rho_{,j} v^k v_k + \rho v^k v_{k,j} + \frac{\gamma}{\gamma-1} P_{,j}) = 0$<br>
+$\frac{1}{2} \tilde{\rho}_t \rho v^j v_j + \rho \tilde{v}_t v^j v_j + \frac{1}{\gamma-1} \tilde{P}_t P
+	+ \frac{1}{2} \rho \tilde{v}_j v^j v^k v_k + \frac{\gamma}{\gamma-1} \tilde{v}_j v^j P
+	+ \frac{1}{2} \tilde{\rho}_j v^j \rho v^k v_k + \rho v^k \tilde{v}_j v^j v_k + \frac{\gamma}{\gamma-1} \tilde{P}_j v^j P = 0$<br>
+substitute $\tilde{\rho}_t + \tilde{\rho}_j v^j + \tilde{v}_j v^j = 0$<br>
+$\rho \tilde{v}_t v^j v_j + \frac{1}{\gamma-1} \tilde{P}_t P
+	+ \frac{\gamma}{\gamma-1} \tilde{v}_j v^j P
+	+ \rho v^k \tilde{v}_j v^j v_k + \frac{\gamma}{\gamma-1} \tilde{P}_j v^j P = 0$<br>
+substitute $\rho \tilde{v}_t v^i + \rho \tilde{v}_j v^i v^j + \tilde{P}^i P = 0$<br>
+$\frac{1}{\gamma-1} \tilde{P}_t P + \frac{\gamma}{\gamma-1} \tilde{v}_j v^j P
+	+ \frac{\gamma}{\gamma-1} \tilde{P}_j v^j P - \tilde{P}^k P v_k = 0$<br>
+$\tilde{P}_t P + \gamma \tilde{v}_j v^j P + \tilde{P}_j P v^j = 0$<br>
+Assume $P &gt; 0$<br>	
+$\tilde{P}_t + \tilde{P}_j v^j + \gamma \tilde{v}_j v^j = 0$<br>
+$\tilde{P}_t + (\tilde{P}_j + \gamma \tilde{v}_j) v^j = 0$<br>
+$\tilde{P}_\mu v^\mu = -\gamma \tilde{v}_j v^j$<br>
+<br>
+
+Summary:<br>
+$\tilde{\rho}_\mu v^\mu = -\tilde{v}_j v^j$<br>
+$\tilde{v}_\mu v^\mu v^i = -\frac{1}{\rho} P \tilde{P}^i$<br>
+$\tilde{P}_\mu v^\mu = -\gamma \tilde{v}_j v^j$<br>
+
+<br>
 	</body>
 </html>
