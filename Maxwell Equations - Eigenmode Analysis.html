@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<title>Maxwell Equations - Eigenmode Analysis</title>
+	</head>
+	<body onload='tryToFindMathJax();'>
+
+<b>Variables</b><br>
+$E^i =$ electric field<br>
+$B^i =$ magnetic field<br>
+$\rho =$ charge density<br>
+$j^i =$ current density<br>
+$\epsilon_0 =$ vacuum permittivity<br>
+$\mu_0 =$ vacuum permeability<br>
+<br>
+
+<b>Maxwell Equations</b><br>
+${E^i}_{,i} = \frac{1}{\epsilon_0} \rho$<br>
+${B^i}_{,i} = 0$<br>
+$\epsilon_0 {E^i}_{,t} - \frac{1}{\mu_0} {\epsilon^{ij}}_k {B^k}_{,j} = -j^i$<br>
+${B^i}_{,t} + {\epsilon^{ij}}_k {E^k}_{,j} = 0$<br>
+<br>
+
+Let $q = \hat{q} exp(i \tilde{q}_\mu x^\mu)$ for $x^\mu \in \{ t,x,y,z \}$.<br>
+Therefore $q_{,\mu} = \tilde{q}_\mu q$.<br>
+<br>
+
+$\tilde{E}_i E^i = \frac{1}{\epsilon_0} \rho$<br>
+$\tilde{B}_i B^i = 0$<br>
+<br>
+
+$\epsilon_0 \tilde{E}_t E^i - \frac{1}{\mu_0} {\epsilon^{ij}}_k \tilde{B}_j B^k = -j^i$<br>
+$E^i = \frac{1}{\epsilon_0 \tilde{E}_t} (\frac{1}{\mu_0} {\epsilon^{ij}}_k \tilde{B}_j B^k - j^i)$<br>
+<br>
+
+$\tilde{B}_t B^i + {\epsilon^{ij}}_k \tilde{E}_j E^k = 0$<br>
+$B^i = -\frac{1}{\tilde{B}_t} {\epsilon^{ij}}_k \tilde{E}_j E^k$<br>
+Substitute:<br>
+$B^i = -\frac{1}{\tilde{B}_t} {\epsilon^{ij}}_k \tilde{E}_j
+	\frac{1}{\epsilon_0 \tilde{E}_t} (\frac{1}{\mu_0} {\epsilon^{kl}}_m \tilde{B}_l B^m - j^k)$<br>
+$B^i = -\tilde{E}_j \frac{1}{\epsilon_0 \tilde{E}_t \tilde{B}_t} 
+	(	\frac{1}{\mu_0} {\epsilon^{ij}}_k {\epsilon^k}_{lm} \tilde{B}^l B^m 
+		- {\epsilon^{ij}}_k j^k)$<br>
+$B^i = -\tilde{E}_j \frac{1}{\epsilon_0 \tilde{E}_t \tilde{B}_t} 
+	(	\frac{1}{\mu_0} (
+			\delta^i_l \delta^j_m - \delta^i_m \delta^j_l
+		)\tilde{B}^l B^m 
+		- {\epsilon^{ij}}_k j^k)$<br>
+$	(
+		(\mu_0 \epsilon_0 \tilde{E}_t \tilde{B}_t - \tilde{E}_k \tilde{B}^k) \delta^i_j
+		+ \tilde{B}^i \tilde{E}_j
+	) B^j 
+	= \mu_0 {\epsilon^{ij}}_k \tilde{E}_j j^k$<br>
+Let ${A^i}_j = (\mu_0 \epsilon_0 \tilde{E}_t \tilde{B}_t - \tilde{E}_k \tilde{B}^k) \delta^i_j + \tilde{B}^i \tilde{E}_j$<br>
+${A^i}_j B^j = \mu_0 {\epsilon^{ij}}_k \tilde{E}_j j^k$<br>
+$B^l = \mu_0 {(A^{-1})^l}_i {\epsilon^{ij}}_k \tilde{E}_j j^k$<br>
+<br>
+
+$E^i = \frac{1}{\epsilon_0 \tilde{E}_t} (\frac{1}{\mu_0} {\epsilon^{ij}}_k \tilde{B}_j B^k - j^i)$<br>
+Substitute $B^k = \mu_0 {(A^{-1})^k}_l {\epsilon^{lm}}_n \tilde{E}_m j^n$.<br>
+$E^i = \frac{1}{\epsilon_0 \tilde{E}_t} ({\epsilon^{ij}}_k \tilde{B}_j {(A^{-1})^k}_l {\epsilon^{lm}}_n \tilde{E}_m - \delta^i_n) j^i$<br>
+<br>
+
+<br>
+	</body>
+</html>

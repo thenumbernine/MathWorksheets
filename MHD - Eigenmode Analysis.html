@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<title>MHD - Eigenmode Analysis</title>
+		<script type="text/javascript" src='tryToFindMathJax.js'></script>
+	</head>
+	<body onload='tryToFindMathJax();'>
+
+<b>Variables</b><br>
+$\rho =$ density<br>
+$v^i =$ velocity<br>
+$B^i =$ magnetic field<br>
+$P =$ pressure<br>
+<br>
+
+<b>Ideal MHD Equations</b><br>
+$\rho_{,t} + (\rho v^j)_{,j} = 0$<br>
+$(\rho v^i)_{,t} + (\rho v^i v^j + \delta^{ij} (P + \frac{1}{2 \mu_0} B^k B_k) - \frac{1}{\mu_0} B^i B^j)_{,j} = 0$<br>
+${B^i}_{,t} + (B^i v^j - B^j v^i)_{,j} = 0$<br>
+$(\frac{1}{\gamma-1} P + \frac{1}{2} \rho v^k v_k + \frac{1}{2 \mu_0} B^k B_k)_{,t} 
+	+ ((
+		\frac{\gamma}{\gamma-1} P + \frac{1}{2} \rho v^k v_k + \frac{1}{\mu_0} B^k B_k	
+	) v^j - \frac{1}{\mu_0} B^k v_k B^j)_{,j} = 0$<br>
+<br>
+
+Expanded:<br>
+$	\rho_{,t} 
+	+ \rho_{,j} v^j 
+	+ \rho {v^j}_{,j} 
+	= 0$<br>
+$	\rho_{,t} v^i 
+	+ \rho {v^i}_{,t} 
+	+ \rho_{,j} v^i v^j
+	+ \rho {v^i}_{,j} v^j
+	+ \rho v^i {v^j}_{,j}
+	+ P^{,i}
+	+ \frac{1}{\mu_0} \delta^{ij} B^k B_{k,j}
+	- \frac{1}{\mu_0} {B^i}_{,j} B^j
+	- \frac{1}{\mu_0} B^i {B^j}_{,j}
+	= 0$<br>
+$	{B^i}_{,t} 
+	+ {B^i}_{,j} v^j 
+	+ B^i {v^j}_{,j}
+	- {B^j}_{,j} v^i
+	- B^j {v^i}_{,j} 
+	= 0$<br>
+$	\frac{1}{\gamma-1} P_{,t} 
+	+ \frac{1}{2} \rho_{,t} v^k v_k 
+	+ \rho v^k v_{k,t}
+	+ \frac{1}{\mu_0} B^k B_{k,t}
+	+ \frac{\gamma}{\gamma-1} P_{,j} v^j
+	+ \frac{\gamma}{\gamma-1} P {v^j}_{,j}
+	+ \frac{1}{2} \rho_{,j} v^k v_k v^j
+	+ \rho v^k v_{k,j} v^j
+	+ \frac{1}{2} \rho v^k v_k {v^j}_{,j}
+	+ \frac{2}{\mu_0} B^k B_{k,j} v^j
+	+ \frac{1}{\mu_0} B^k B_k {v^j}_{,j}
+	- \frac{1}{\mu_0} {B^k}_{,j} v_k B^j
+	- \frac{1}{\mu_0} B^k v_{k,j} B^j
+	- \frac{1}{\mu_0} B^k v_k {B^j}_{,j}
+	= 0$<br>
+<br>
+
+Let $q = \hat{q} exp(i \tilde{q}_\mu x^\mu)$ for $x^\mu \in \{ t,x,y,z \}$.<br>
+Therefore $q_{,\mu} = \tilde{q}_\mu q$.<br>
+<br>
+
+$\tilde{\rho}_t \rho + \tilde{\rho}_j \rho v^j + \rho \tilde{v}_j v^j = 0$<br>
+$\tilde{\rho}_t + \tilde{\rho}_j v^j + \tilde{v}_j v^j = 0$<br>
+$\tilde{\rho}_t = -(\tilde{\rho}_j + \tilde{v}_j) v^j$<br>
+$\tilde{\rho}_\mu v^\mu = -\tilde{v}_j v^j$<br>
+<br>
+
+${B^i}_{,t} + {B^i}_{,j} v^j + B^i {v^j}_{,j} - {B^j}_{,j} v^i - B^j {v^i}_{,j} = 0$<br>
+$\tilde{B}_t B^i + \tilde{B}_j B^i v^j + B^i \tilde{v}_j v^j - \tilde{B}_j B^j v^i - B^j \tilde{v}_j v^i = 0$<br>
+$\tilde{B}_t B^i = -(\tilde{B}_j + \tilde{v}_j) (B^i v^j - B^j v^i)$<br>
+$\tilde{B}_\mu v^\mu B^i - \tilde{B}_j B^j v^i + \tilde{v}_j (B^i v^j - B^j v^i) = 0$<br>
+<br>
+
+$\rho_{,t} v^i 
+	+ \rho {v^i}_{,t} 
+	+ \rho_{,j} v^i v^j
+	+ \rho {v^i}_{,j} v^j
+	+ \rho v^i {v^j}_{,j}
+	+ P^{,i}
+	+ \frac{1}{\mu_0} \delta^{ij} B^k B_{k,j}
+	- \frac{1}{\mu_0} {B^i}_{,j} B^j
+	- \frac{1}{\mu_0} B^i {B^j}_{,j}
+	= 0$<br>
+$\tilde{\rho}_t \rho v^i 
+	+ \tilde{v}_t \rho v^i
+	+ \tilde{\rho}_j \rho v^i v^j
+	+ 2 \tilde{v}_j \rho v^i v^j
+	+ \tilde{P}^i P
+	+ \frac{1}{\mu_0} \tilde{B}^i B^k B_k
+	- \frac{2}{\mu_0} \tilde{B}_j B^i B^j
+	= 0$<br>
+Substitute $\tilde{\rho}_t + \tilde{\rho}_j v^j + \tilde{v}_j v^j = 0$.<br>
+$\tilde{v}_t \rho v^i
+	+ \tilde{v}_j \rho v^i v^j
+	+ \tilde{P}^i P
+	+ \frac{1}{\mu_0} \tilde{B}^i B^k B_k
+	- \frac{2}{\mu_0} \tilde{B}_j B^i B^j
+	= 0$<br>
+$\tilde{v}_\mu v^\mu \rho v^i
+	+ \tilde{P}^i P
+	+ \frac{1}{\mu_0} \tilde{B}^i B^k B_k
+	- \frac{2}{\mu_0} \tilde{B}_j B^i B^j
+	= 0$<br>
+<br>
+
+$\frac{1}{\gamma-1} P_{,t} 
+	+ \frac{1}{2} \rho_{,t} v^k v_k 
+	+ \rho v^k v_{k,t}
+	+ \frac{1}{\mu_0} B^k B_{k,t}
+	+ \frac{\gamma}{\gamma-1} P_{,j} v^j
+	+ \frac{\gamma}{\gamma-1} P {v^j}_{,j}
+	+ \frac{1}{2} \rho_{,j} v^k v_k v^j
+	+ \rho v^k v_{k,j} v^j
+	+ \frac{1}{2} \rho v^k v_k {v^j}_{,j}
+	+ \frac{2}{\mu_0} B^k B_{k,j} v^j
+	+ \frac{1}{\mu_0} B^k B_k {v^j}_{,j}
+	- \frac{1}{\mu_0} {B^k}_{,j} v_k B^j
+	- \frac{1}{\mu_0} B^k v_{k,j} B^j
+	- \frac{1}{\mu_0} B^k v_k {B^j}_{,j}
+	= 0$<br>
+$\frac{1}{\gamma-1} \tilde{P}_t P
+	+ \frac{1}{2} \tilde{\rho}_t \rho v^k v_k 
+	+ \rho v^k \tilde{v}_t v_k
+	+ \frac{1}{\mu_0} B^k \tilde{B}_t B_k
+	+ \frac{\gamma}{\gamma-1} \tilde{P}_j P v^j
+	+ \frac{\gamma}{\gamma-1} P \tilde{v}_j v^j
+	+ \frac{1}{2} \tilde{\rho}_j \rho v^k v_k v^j
+	+ \frac{3}{2} \rho \tilde{v}_j v^j v^k v_k
+	+ \frac{2}{\mu_0} B^k \tilde{B}_j B_k v^j
+	+ \frac{1}{\mu_0} B^k B_k \tilde{v}_j v^j
+	- \frac{2}{\mu_0} \tilde{B}_j B^k v_k B^j
+	- \frac{1}{\mu_0} B^k \tilde{v}_j v_k B^j
+	= 0$<br>
+Substitute $\tilde{\rho}_t + \tilde{\rho}_j v^j + \tilde{v}_j v^j = 0$.<br>
+$\frac{1}{\gamma-1} \tilde{P}_t P
+	+ \rho v^k \tilde{v}_t v_k
+	+ \frac{1}{\mu_0} B^k \tilde{B}_t B_k
+	+ \frac{\gamma}{\gamma-1} \tilde{P}_j P v^j
+	+ \frac{\gamma}{\gamma-1} P \tilde{v}_j v^j
+	+ \rho \tilde{v}_j v^j v^k v_k
+	+ \frac{2}{\mu_0} B^k \tilde{B}_j B_k v^j
+	+ \frac{1}{\mu_0} B^k B_k \tilde{v}_j v^j
+	- \frac{2}{\mu_0} \tilde{B}_j B^k v_k B^j
+	- \frac{1}{\mu_0} B^k \tilde{v}_j v_k B^j
+	= 0$<br>
+Substitute $\tilde{v}_t \rho v^i
+	+ \tilde{v}_j \rho v^i v^j
+	+ \tilde{P}^i P
+	+ \frac{1}{\mu_0} \tilde{B}^i B^k B_k
+	- \frac{2}{\mu_0} \tilde{B}_j B^i B^j
+	= 0$<br>
+$	- \tilde{P}^i P v_i
+	+ \frac{1}{\gamma-1} \tilde{P}_t P
+	+ \frac{1}{\mu_0} \tilde{B}_t B^k B_k
+	+ \frac{\gamma}{\gamma-1} \tilde{P}_j v^j P
+	+ \frac{\gamma}{\gamma-1} \tilde{v}_j v^j P 
+	+ \frac{1}{\mu_0} \tilde{B}_j v^j B^k B_k
+	+ \frac{1}{\mu_0} \tilde{v}_j v^j B^k B_k
+	- \frac{1}{\mu_0} \tilde{v}_j B^j B^k v_k
+	= 0$<br>
+$	\frac{1}{\gamma-1} \tilde{P}_t P
+	+ \frac{1}{\gamma-1} \tilde{P}_j P v^j
+	+ \frac{1}{\mu_0} \tilde{B}_t B^k B_k
+	+ \frac{1}{\mu_0} \tilde{B}_j v^j B^k B_k
+	+ \frac{\gamma}{\gamma-1} \tilde{v}_j v^j P 
+	+ \frac{1}{\mu_0} \tilde{v}_j v^j B^k B_k
+	- \frac{1}{\mu_0} \tilde{v}_j B^j B^k v_k
+	= 0$<br>
+Substitute $
+	  \tilde{B}_t B^i 
+	+ \tilde{B}_j B^i v^j 
+	+ B^i \tilde{v}_j v^j 
+	- \tilde{B}_j B^j v^i 
+	- B^j \tilde{v}_j v^i 
+	= 0$<br>
+$\frac{1}{\gamma-1} \tilde{P}_t P
+	+ \frac{1}{\gamma-1} \tilde{P}_j P v^j
+	+ \frac{\gamma}{\gamma-1} \tilde{v}_j v^j P 
+	+ \frac{1}{\mu_0} B_i \tilde{B}_j B^j v^i
+	= 0$<br>
+Assume $P &gt; 0$.<br>
+$\tilde{P}_t
+	+ \tilde{P}_j v^j
+	+ \gamma \tilde{v}_j v^j 
+	+ \frac{\gamma-1}{\mu_0 P} B_i \tilde{B}_j B^j v^i
+	= 0$<br>
+$\tilde{P}_\mu v^\mu = - \gamma \tilde{v}_j v^j - \frac{\gamma-1}{\mu_0 P} \tilde{B}_j B^j B_k v^k$<br>
+
+<br>
+<br>
+	</body>
+</html>
