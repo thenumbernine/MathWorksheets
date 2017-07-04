@@ -38,6 +38,8 @@ Here's the CDN URLs:
 
 [Euler Fluid Equations - Curved Geometry](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Euler%20Fluid%20Equations%20%2d%20Curved%20Geometry%2ehtml)
 
+[Euler Fluid Equations - Eigenmode Analysis 2](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Euler%20Fluid%20Equations%20%2d%20Eigenmode%20Analysis%202%2ehtml)
+
 [Euler Fluid Equations - Eigenmode Analysis](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Euler%20Fluid%20Equations%20%2d%20Eigenmode%20Analysis%2ehtml)
 
 [Euler Fluid Equations - Entropy Function](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Euler%20Fluid%20Equations%20%2d%20Entropy%20Function%2ehtml)
