@@ -42,6 +42,19 @@ so $g_{ab,c} = i g_{ab} \tilde{g}_c$<br>
 Likewise $g^{ab} = \hat{g}^{ab} exp(-i \tilde{g}_u x^u)$<br>
 so $g_{ac} g^{cb} = \hat{g}_{ac} exp(i \tilde{g}_u x^u) \hat{g}^{cb} exp(-i \tilde{g}_u x^u) = \hat{g}_{ac} \hat{g}^{cb}$<br>
 Therefore define $\hat{g}^{ab}$ to be the inverse of $\hat{g}_{ab}$, so $\hat{g}_{ac} \hat{g}^{cb} = \delta_a^b$<br>
+<br>
+
+Representing the wave 4-vector in terms of the derivatives:<br>
+$\tilde{g}_a = \frac{n}{n} \tilde{g}_a$<br>
+$= -i \frac{1}{n} g^{uv} g_{uv} \cdot i \tilde{g}_a$<br>
+$= -i \frac{1}{n} g^{uv} g_{uv,a}$<br>
+<br>
+$\tilde{g}_a \tilde{g}_b = \frac{n}{n} \tilde{g}_a \tilde{g}_b$<br>
+$= -\frac{1}{n} g^{uv} g_{uv} \cdot (i^2) \tilde{g}_a \tilde{g}_b$<br>
+$= -\frac{1}{n} g^{uv} g_{uv,ab}$<br>
+<br>
+
+connection coefficients:<br>
 $\Gamma_{abc} = \frac{i}{2}(g_{ab} \tilde{g}_c + g_{ac} \tilde{g}_b - g_{bc} \tilde{g}_a)$<br>
 ${\Gamma^a}_{bc} = g^{au} \frac{i}{2}(g_{ub} \tilde{g}_c + g_{uc} \tilde{g}_b - g_{bc} \tilde{g}_u)$<br>
 $= g^{au} \frac{i}{2}(g_{ub} \tilde{g}_c + g_{uc} \tilde{g}_b - g_{bc} \tilde{g}_u)$<br>
@@ -54,8 +67,8 @@ $\ddot{x}^i + \frac{i}{2}(\delta^i_a \tilde{g}_b + \delta^i_b \tilde{g}_a - g_{a
 $\ddot{x}^i + i (\dot{x}^i \tilde{g}_u \dot{x}^u - \frac{1}{2} \tilde{g}^i g_{ab} \dot{x}^a \dot{x}^b) = 0$<br>
 Now we can use $g_{ab} \dot{x}^a \dot{x}^b = (\dot{x})^2 = -1$<br>
 $\ddot{x}^i = -\frac{i}{2} \tilde{g}^i - i \dot{x}^i \tilde{g}_u \dot{x}^u$<br>
-Now we are left with:
-(particle acceleration) = $-\frac{i}{2} \times$ (the geometry wave vector) $+$ (particle velocity) $\times$ (the geometry phase in the particle's direction)<br>
+Now we are left with:<br>
+(particle acceleration) = $-\frac{i}{2} \times$ (the geometry wave 4-vector) $+$ (particle velocity) $\times$ (the geometry phase in the particle's direction)<br>
 <br>
 
 Let's consider a basis decomposition of the metric:<br>
@@ -66,11 +79,124 @@ So ${{e_a}^I}_{,b} = i {e_a}^I \tilde{e}_b$<br>
 Then $g_{ab,c} = ({e_a}^I {e_b}^J \eta_{IJ})_{,c} = i ({e_a}^I \tilde{e}_c {e_b}^J \eta_{IJ} + {e_a}^I {e_b}^J \tilde{e}_c \eta_{IJ})$<br>
 $ = i \tilde{e}_c (2 {e_a}^I {e_b}^J \eta_{IJ})$<br>
 $ = 2 i \tilde{e}_c g_{ab}$<br>
-So from this, we can say $\tilde{e}_u = \frac{1}{2} \tilde{g}_u$.<br>
+So from this, we can say $\tilde{e}_u = \frac{1}{2} \tilde{g}_u$, or the wave 4-vector of ${e_a}^I$ is half the wave 4-vector of $g_{ab}$<br>
 <br>
 
+<b>Einstein Field Equations</b><br>
+Now let's continue on to look at the Einstein Field Equations<br>
+${\Gamma^a}_{bc,d} = \frac{i}{2}(\delta^a_b \tilde{g}_c + \delta^a_c \tilde{g}_b - g_{bc} \tilde{g}^a)_{,d}$<br>
+$= -\frac{i}{2} g_{bc,d} \tilde{g}^a$<br>
+$= \frac{1}{2} \tilde{g}^a g_{bc} \tilde{g}_d$<br>
+<br>
+${R^a}_{bcd} = 2 ( {\Gamma^a}_{b[d,c]} + {\Gamma^a}_{u[c} {\Gamma^u}_{d]b} )$<br>
+$= \tilde{g}^a g_{b[d} \tilde{g}_{c]}
+	- \frac{1}{2} (\delta^a_u \tilde{g}_{[c} + \tilde{g}_u \delta^a_{[c} - \tilde{g}^a g_{u[c})
+				(\delta^u_{d]} \tilde{g}_b +  \tilde{g}_{d]} \delta^u_b - g_{d]b} \tilde{g}^u)$<br>
+$= \tilde{g}^a g_{b[d} \tilde{g}_{c]}
+	+ \frac{1}{2} 
+	(	
+		- \delta^a_u \tilde{g}_{[c} \delta^u_{d]} \tilde{g}_b 
+		- \delta^a_u \tilde{g}_{[c} \tilde{g}_{d]} \delta^u_b 
+		+ \delta^a_u \tilde{g}_{[c} g_{d]b} \tilde{g}^u
+		- \tilde{g}_u \delta^a_{[c} \delta^u_{d]} \tilde{g}_b 
+		- \tilde{g}_u \delta^a_{[c} \tilde{g}_{d]} \delta^u_b 
+		+ \tilde{g}_u \delta^a_{[c} g_{d]b} \tilde{g}^u
+		+ \tilde{g}^a g_{u[c} \delta^u_{d]} \tilde{g}_b 
+		+ \tilde{g}^a g_{u[c} \tilde{g}_{d]} \delta^u_b 
+		- \tilde{g}^a g_{u[c} g_{d]b} \tilde{g}^u
+	)
+$<br>
+$= \tilde{g}^a g_{b[d} \tilde{g}_{c]}
+	+ \frac{1}{2} 
+	(	
+		- \delta^a_{[d} \tilde{g}_{c]} \tilde{g}_b
+		- \delta^a_b \tilde{g}_{[c} \tilde{g}_{d]}
+		+ \tilde{g}^a \tilde{g}_{[c} g_{d]b}
+		- \delta^a_{[c} \tilde{g}_{d]} \tilde{g}_b
+		- \tilde{g}_b \delta^a_{[c} \tilde{g}_{d]}
+		+ \delta^a_{[c} g_{d]b} \tilde{g}^u \tilde{g}_u
+		+ \tilde{g}^a g_{[cd]} \tilde{g}_b 
+		+ \tilde{g}^a g_{b[c} \tilde{g}_{d]}
+		- \tilde{g}^a \tilde{g}_{[c} g_{d]b} 
+	)
+$<br>
+$= \frac{1}{2} ( \tilde{g}^a g_{b[d} \tilde{g}_{c]}
+		+ \delta^a_{[c} g_{d]b} \tilde{g}^u \tilde{g}_u
+		- \delta^a_{[c} \tilde{g}_{d]} \tilde{g}_b)$<br>
+<br>
+
+$R_{ab} = {R^u}_{aub}$<br>
+$= \frac{1}{2} ( \tilde{g}^u g_{a[b} \tilde{g}_{u]}
+		+ \delta^u_{[u} g_{b]a} \tilde{g}^v \tilde{g}_v
+		- \delta^u_{[u} \tilde{g}_{b]} \tilde{g}_a)$<br>
+$= \frac{1}{4} ( 
+	\tilde{g}^u g_{ab} \tilde{g}_u
+	- \tilde{g}^u g_{au} \tilde{g}_b
+	
+	+ \delta^u_u g_{ab} \tilde{g}^v \tilde{g}_v
+	- \delta^u_b g_{ua} \tilde{g}^v \tilde{g}_v
+	
+	- \delta^u_u \tilde{g}_b \tilde{g}_a
+	+ \delta^u_b \tilde{g}_u \tilde{g}_a)$<br>
+$= \frac{1}{4} ( 
+	 g_{ab} \tilde{g}_u \tilde{g}^u
+	- \tilde{g}_a \tilde{g}_b
+	
+	+ n g_{ab} \tilde{g}^u \tilde{g}_u
+	- g_{ab} \tilde{g}^v \tilde{g}_v
+	
+	- n \tilde{g}_a \tilde{g}_b
+	+ \tilde{g}_a \tilde{g}_b	)$<br>
+$= \frac{1}{4} n (g_{ab} (\tilde{g})^2 - \tilde{g}_a \tilde{g}_b)$<br>
+...for $n=4$ this gives $R_{ab} = g_{ab} (\tilde{g})^2 - \tilde{g}_a \tilde{g}_b$<br>
+...for $(\tilde{g})^2 = 0$ this gives $R_{ab} = -\frac{1}{4} n \tilde{g}_a \tilde{g}_b$<br>
+<br>
+
+$R = g^{ab} R_{ab}$<br>
+$= \frac{n}{4} g^{ab} (g_{ab} (\tilde{g})^2 - \tilde{g}_a \tilde{g}_b)$<br>
+$= \frac{n}{4} (n (\tilde{g})^2 - (\tilde{g})^2)$<br>
+$= \frac{1}{4} n (n - 1) (\tilde{g})^2$<br>
+Therefore $(\tilde{g})^2 = \frac{4}{n (n-1)} R$<br>
+...for $n=4$ this gives $R = 3 (\tilde{g})^2$<br>
+...for $R = 0$ gives $(\tilde{g})^2 = 0$<br>
+<br>
+
+Substitute the definition of $(\tilde{g})^2 = \frac{4}{n (n-1)} R$ into the definition of $R_{ab}$:<br>
+$R_{ab} = \frac{1}{4} n (\frac{4}{n (n-1)} R g_{ab} - \tilde{g}_a \tilde{g}_b)$<br>
+$= (\frac{1}{n-1} R g_{ab} - \frac{1}{4} n \tilde{g}_a \tilde{g}_b)$<br>
+<br>
+
+$G_{ab} = R_{ab} - \frac{1}{2} g_{ab} R$<br>
+$ =  \frac{1}{4} n (g_{ab} (\tilde{g})^2 - \tilde{g}_a \tilde{g}_b)
+	- \frac{1}{2} g_{ab} \frac{1}{4} n (n - 1) (\tilde{g})^2 $<br>
+$ = \frac{1}{8} n ((3 - n) g_{ab} (\tilde{g})^2 - 2 \tilde{g}_a \tilde{g}_b)$<br>
+...for $n=4$ this gives $G_{ab} = -(\frac{1}{2} g_{ab} (\tilde{g})^2 + \tilde{g}_a \tilde{g}_b)$<br>
+...and for $R=0 \iff (\tilde{g})^2 = 0$ this gives $G_{ab} = -\frac{1}{2} \tilde{g}_a \tilde{g}_b$<br>
+<br>
+
+Substitute the definition of $(\tilde{g})^2 = \frac{4}{n (n-1)} R$ into the definition of $G_{ab}$:<br>
+$G_{ab} = \frac{3 - n}{2 (n-1)} R g_{ab} - \frac{1}{4} n \tilde{g}_a \tilde{g}_b$<br>
+<br>
+
+<b>Zero Gaussian Curvature</b><br>
+Once again, $R = 0 \iff (\tilde{g})^2 = 0 \iff G_{ab} = -\frac{1}{2} \tilde{g}_a \tilde{g}_b$<br>
+$G_{ab} = 8 \pi T_{ab}$<br>
+So $-16 \pi T_{ab} = \tilde{g}_a \tilde{g}_b$<br> 
+<br>
+
+Matter stress-energy:<br>
+$T_{ab} = \rho h u_a u_b + p g_{ab}$, for $\rho =$ density, $p =$ pressure, $h =$ enthalpy, $u_a =$ 4-velocity.<br>
+$-16 \pi T_{tt} = -16 \pi (\rho h (u_t)^2 + p g_{tt}) = (\tilde{g}_t)^2$<br>
+$-16 \pi T_{ti} = -16 \pi (\rho h u_t u_i + p g_{ti}) = \tilde{g}_t \tilde{g}_i$<br>
+$-16 \pi T_{ij} = -16 \pi (\rho h u_i u_j + p g_{ij}) = \tilde{g}_i \tilde{g}_j$<br>
+For rest-frame $u_t = -1$, $u_i = 0$, and we find:<br>
+$-16 \pi T_{tt} = -16 \pi (\rho h + p g_{tt}) = (\tilde{g}_t)^2$<br>
+$-16 \pi T_{ti} = -16 \pi p g_{ti} = \tilde{g}_t \tilde{g}_i$<br>
+$-16 \pi T_{ij} = -16 \pi p g_{ij} = \tilde{g}_i \tilde{g}_j$<br>
 
 <br>
 <br>
+<br>
+	
 	</body>
 </html>
