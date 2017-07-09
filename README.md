@@ -56,9 +56,15 @@ Here's the CDN URLs:
 
 [LQG](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/LQG%2ehtml)
 
+[MHD - Eigenmode Analysis](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/MHD%20%2d%20Eigenmode%20Analysis%2ehtml)
+
 [MHD](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/MHD%2ehtml)
 
+[Maxwell Equations - Eigenmode Analysis](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Maxwell%20Equations%20%2d%20Eigenmode%20Analysis%2ehtml)
+
 [Maxwell equations in hyperbolic form](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Maxwell%20equations%20in%20hyperbolic%20form%2ehtml)
+
+[Metric Eigenmodes](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Metric%20Eigenmodes%2ehtml)
 
 [Metric with geodesic that changes in space with velocity in time](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Metric%20with%20geodesic%20that%20changes%20in%20space%20with%20velocity%20in%20time%2ehtml)
 

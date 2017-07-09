@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<title>Metric Eigenmodes</title>
+	</head>
+	<body onload='tryToFindMathJax();'>
+<b>eigenmodes:</b><br>
+$\phi = \hat{\phi} exp(i \tilde{\phi}_u x^u)$<br>
+$\tilde{\phi} =$ phase vector.<br>
+$\phi = \hat{\phi} exp(i (\tilde{\phi}_t t + \tilde{\phi}_i x^i))$<br>
+Let $\tilde{\phi}_t = -\omega$, for $\omega =$ the angular frequency<br>
+Therefore $\tilde{\phi}^t \approx \omega$<br>
+Let $\tilde{\phi}_i = k_i =$ the wave vector.<br>
+Therefore $|\tilde{\phi}_i| = \frac{2 \pi}{\lambda}$, for $\lambda =$ the wavelength.<br>
+Therefore $\phi = \hat{\phi} exp(i (k_i x^i - \omega t))$<br>
+<br>
+
+<b>eigenmodes of the metric perturbation approximation, with the inverse metric approximated by flat metric</b><br>
+This is the linearization method used by (that one chapter in) MTW, and (page 50 or so in) Keifer, "Quantum Gravity":<br>
+$g_{ab} = \eta_{ab} + f_{ab}$<br>
+$g^{ab} \approx \eta^{ab}$<br>
+$f_{ab} = \hat{f}_{ab} exp(i \tilde{f}_u x^u)$<br>
+$g_{ab,c} = f_{ab,c} = i f_{ab} \tilde{f}_c$<br>
+$\Gamma_{abc} = \frac{i}{2}(g_{ab,c} + g_{ac,b} - g_{bc,a})$
+$= \frac{1}{2}( f_{ab} \tilde{f}_c + f_{ac} \tilde{f}_b - f_{bc} \tilde{f}_a)$<br>
+${\Gamma^a}_{bc} = \frac{i}{2}( {f^a}_b \tilde{f}_c + {f^a}_c \tilde{f}_b - \tilde{f}^a f_{bc})$<br>
+<br>
+
+gravitational acceleration:<br>
+$\ddot{x}^i + {\Gamma^i}_{ab} \dot{x}^a \dot{x}^b = 0$<br>
+$\ddot{x}^i + \frac{i}{2}( {f^i}_a \tilde{f}_b + {f^i}_b \tilde{f}_a - \tilde{f}^i f_{ab}) \dot{x}^a \dot{x}^b = 0$<br>
+$\ddot{x}^i = -i ({f^i}_a \tilde{f}_b \dot{x}^a \dot{x}^b - \frac{1}{2} \tilde{f}^i f_{ab} \dot{x}^a \dot{x}^b)$<br>
+...and that's as simple as it gets, right?<br>
+<br>
+
+<b>eigenmodes of the full metric</b><br>
+Let's try again, perturbing the metric as a whole.  And forget that stupid "raise by $\eta^{ab}$ rule" -- who came up with that?<br>
+$g_{ab} = \hat{g}_{ab} exp(i \tilde{g}_u x^u)$<br>
+so $g_{ab,c} = i g_{ab} \tilde{g}_c$<br>
+Likewise $g^{ab} = \hat{g}^{ab} exp(-i \tilde{g}_u x^u)$<br>
+so $g_{ac} g^{cb} = \hat{g}_{ac} exp(i \tilde{g}_u x^u) \hat{g}^{cb} exp(-i \tilde{g}_u x^u) = \hat{g}_{ac} \hat{g}^{cb}$<br>
+Therefore define $\hat{g}^{ab}$ to be the inverse of $\hat{g}_{ab}$, so $\hat{g}_{ac} \hat{g}^{cb} = \delta_a^b$<br>
+$\Gamma_{abc} = \frac{i}{2}(g_{ab} \tilde{g}_c + g_{ac} \tilde{g}_b - g_{bc} \tilde{g}_a)$<br>
+${\Gamma^a}_{bc} = g^{au} \frac{i}{2}(g_{ub} \tilde{g}_c + g_{uc} \tilde{g}_b - g_{bc} \tilde{g}_u)$<br>
+$= g^{au} \frac{i}{2}(g_{ub} \tilde{g}_c + g_{uc} \tilde{g}_b - g_{bc} \tilde{g}_u)$<br>
+$= \frac{i}{2}(\delta^a_b \tilde{g}_c + \delta^a_c \tilde{g}_b - g_{bc} \tilde{g}^a)$<br>
+<br>
+
+gravitational acceleration:<br>
+$\ddot{x}^i + {\Gamma^i}_{ab} \dot{x}^a \dot{x}^b = 0$<br>
+$\ddot{x}^i + \frac{i}{2}(\delta^i_a \tilde{g}_b + \delta^i_b \tilde{g}_a - g_{ab} \tilde{g}^i) \dot{x}^a \dot{x}^b = 0$<br>
+$\ddot{x}^i + i (\dot{x}^i \tilde{g}_u \dot{x}^u - \frac{1}{2} \tilde{g}^i g_{ab} \dot{x}^a \dot{x}^b) = 0$<br>
+Now we can use $g_{ab} \dot{x}^a \dot{x}^b = (\dot{x})^2 = -1$<br>
+$\ddot{x}^i = -\frac{i}{2} \tilde{g}^i - i \dot{x}^i \tilde{g}_u \dot{x}^u$<br>
+Now we are left with:
+(particle acceleration) = $-\frac{i}{2} \times$ (the geometry wave vector) $+$ (particle velocity) $\times$ (the geometry phase in the particle's direction)<br>
+
+<br>
+<br>
+	</body>
+</html>
