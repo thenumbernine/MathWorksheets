@@ -135,6 +135,15 @@ $= ( i (\Sigma^{n-2}_{i=1} \tilde{g}^{(i)}_{c d u_1 ... u_i} x^{u_1} \cdot ... \
 <br>
 
 <b>connection</b><br>
+
+$\Gamma_{abc} = \frac{1}{2} (g_{ab,c} + g_{ac,b} - g_{bc,a})$<br>
+$= i \frac{1}{2} (g_{ab} \theta_{,c} + g_{ac} \theta_{,b} - g_{bc} \theta_{,a})$<br>
+<br>
+
+${\Gamma^a}_{bc} = i \frac{1}{2} (\delta^a_b \theta_{,c} + \delta^a_c \theta_{,b} - g^{ad} g_{bc} \theta_{,d})$<br>
+$= i \frac{1}{2} (\delta^a_b \delta^u_c + \delta^a_c \delta^u_b - g^{au} g_{bc}) \theta_{,u}$<br>
+<br>
+
 $\Gamma^{(n)}_{abc} = \frac{1}{2} ( g^{(n)}_{ab,c} + g^{(n)}_{ac,b} - g^{(n)}_{bc,a} )$<br>
 $= \frac{1}{2} i (
 	(\Sigma_{k=1}^n k \tilde{g}^{(k)}_{c \underbrace{u_1 ... u_{k-1}}} x^{u_1} \cdot ... \cdot x^{u_{k-1}}) g^{(n)}_{ab}
@@ -161,42 +170,60 @@ $= -g^{ae} g_{ef,d} {\Gamma^f}_{bc} + \frac{1}{2} g^{ae} (g_{eb,cd} + g_{ec,bd} 
 $= \frac{1}{2} g^{ae} (-2g_{ef,d} {\Gamma^f}_{bc} + g_{eb,cd} + g_{ec,bd} - g_{bc,ed})$<br>
 <br>
 
-${\Gamma^{(n)a}}_{bc,d} = \frac{1}{2} g^{(n)ae} (
-$<br>$
-	-2 i (\Sigma_{k=1}^n k \tilde{g}^{(k)}_{d \underbrace{v_1 ... v_{k-1}}} x^{v_1} \cdot ... \cdot x^{v_{k-1}}) g^{(n)}_{ef}
-
-	\cdot \frac{1}{2} i (\delta^f_b \delta^{u_0}_c + \delta^f_c \delta^{u_0}_b - g^{(n)f {u_0}} g^{(n)}_{bc}) 
-	\cdot (\Sigma_{k=1}^n k \tilde{g}^{(k)}_{u_0 \underbrace{u_1 ... u_{k-1}}} x^{u_1} \cdot ... \cdot x^{u_{k-1}})
-	
-$<br>$
-	+ ( i (\Sigma^{n-2}_{i=1} \tilde{g}^{(i)}_{c d u_1 ... u_i} x^{u_1} \cdot ... \cdot x^{u_i} )
-		- (\Sigma_{j=2}^{2n} \Sigma_{i=1}^{j-i} \tilde{g}^{(i)}_{c \underbrace{u_1 ...}} \tilde{g}^{(j-i)}_{d \underbrace{... u_{j-2}}} x^{u_1} \cdot ... \cdot x^{u_{j-2}} )
-	) g^{(n)}_{eb}
-	
-$<br>$
-	+ ( i (\Sigma^{n-2}_{i=1} \tilde{g}^{(i)}_{b d u_1 ... u_i} x^{u_1} \cdot ... \cdot x^{u_i} )
-		- (\Sigma_{j=2}^{2n} \Sigma_{i=1}^{j-i} \tilde{g}^{(i)}_{b \underbrace{u_1 ...}} \tilde{g}^{(j-i)}_{d \underbrace{... u_{j-2}}} x^{u_1} \cdot ... \cdot x^{u_{j-2}} )
-	) g^{(n)}_{ec}
-
-$<br>$
-	- ( i (\Sigma^{n-2}_{i=1} \tilde{g}^{(i)}_{e d u_1 ... u_i} x^{u_1} \cdot ... \cdot x^{u_i} )
-		- (\Sigma_{j=2}^{2n} \Sigma_{i=1}^{j-i} \tilde{g}^{(i)}_{e \underbrace{u_1 ...}} \tilde{g}^{(j-i)}_{d \underbrace{... u_{j-2}}} x^{u_1} \cdot ... \cdot x^{u_{j-2}} )
-	) g^{(n)}_{bc}
+$= \frac{1}{2} g^{ae} (-2 i g_{ef} \theta_{,d} {\Gamma^f}_{bc} 
+	+ (i \theta_{,cd} - \theta_{,c} \theta_{,d}) g_{eb} 
+	+ (i \theta_{,bd} - \theta_{,b} \theta_{,d}) g_{ec} 
+	- (i \theta_{,ed} - \theta_{,e} \theta_{,d}) g_{bc})$<br>
+$= \frac{1}{2} g^{ae} (
+	g_{ef} \theta_{,d} 
+	(\delta^f_b \delta^u_c + \delta^f_c \delta^u_b - g^{fu} g_{bc}) \theta_{,u}
+	+ (i \theta_{,fd} - \theta_{,f} \theta_{,d})(g_{eb} \delta^f_c + g_{ec} \delta^f_b - g_{bc} \delta^f_e)
 )$<br>
+$= \frac{1}{2} (
+	\theta_{,d} \theta_{,u} (\delta^a_b \delta^u_c + \delta^a_c \delta^u_b - g_{bc} g^{au}) 
+	+ (i \theta_{,fd} - \theta_{,f} \theta_{,d})(\delta^a_b \delta^f_c + \delta^a_c \delta^f_b - g_{bc} g^{af})
+)$<br>
+$= \frac{1}{2} (\theta_{,d} \theta_{,e} + i \theta_{,ed} - \theta_{,e} \theta_{,d}) (\delta^a_b \delta^e_c + \delta^a_c \delta^e_b - g_{bc} g^{ae}) $<br>
+$= \frac{1}{2} i \theta_{,de} (\delta^a_b \delta^e_c + \delta^a_c \delta^e_b - g_{bc} g^{ae}) $<br>
 <br>
 
-
-${\Gamma^{(n)a}}_{bc,d} =  \frac{1}{2} (
-$<br>$
-		(\Sigma_{k=1}^n k \tilde{g}^{(k)}_{d \underbrace{v_1 ... v_{k-1}}} x^{v_1} \cdot ... \cdot x^{v_{k-1}})
-		\cdot (\Sigma_{k=1}^n k \tilde{g}^{(k)}_{e \underbrace{u_1 ... u_{k-1}}} x^{u_1} \cdot ... \cdot x^{u_{k-1}}) 
-$<br>$
-		+ i (\Sigma^{n-2}_{i=1} \tilde{g}^{(i)}_{e d u_1 ... u_i} x^{u_1} \cdot ... \cdot x^{u_i} )
-$<br>$
-		- (\Sigma_{j=2}^{2n} \Sigma_{i=1}^{j-i} \tilde{g}^{(i)}_{e \underbrace{u_1 ...}} \tilde{g}^{(j-i)}_{d \underbrace{... u_{j-2}}} x^{u_1} \cdot ... \cdot x^{u_{j-2}} )
-$<br>$
-	) \cdot (\delta^a_b \delta^e_c + \delta^a_c \delta^e_b - g^{(n)ae} g^{(n)}_{bc})$<br>
+${\Gamma^{(n)a}}_{bc,d} =  i \frac{1}{2} (\delta^a_b \delta^e_c + \delta^a_c \delta^e_b - g^{(n)ae} g^{(n)}_{bc})
+	\Sigma^{n-2}_{k=1} \tilde{g}^{(k)}_{d e u_1 ... u_k} x^{u_1} \cdot ... \cdot x^{u_k}$<br>
 <br>
+	
+<b>Riemann</b><br>
+${R^a}_{bcd} = {\Gamma^a}_{bd,c} - {\Gamma^a}_{bc,d} + {\Gamma^a}_{uc} {\Gamma^u}_{bd} - {\Gamma^a}_{ud} {\Gamma^u}_{bc}$<br>
+$= 
+	\frac{1}{2} i \theta_{,ce} (\delta^a_b \delta^e_d + \delta^a_d \delta^e_b - g_{bd} g^{ae})
+	- \frac{1}{2} i \theta_{,de} (\delta^a_b \delta^e_c + \delta^a_c \delta^e_b - g_{bc} g^{ae})
+
+	+ (
+		i \frac{1}{2} (\delta^a_u \delta^e_c + \delta^a_c \delta^e_u - g^{ae} g_{uc}) \theta_{,e}
+	) (
+		i \frac{1}{2} (\delta^u_b \delta^f_d + \delta^u_d \delta^f_b - g^{uf} g_{bd}) \theta_{,f}
+	)
+	- (
+		i \frac{1}{2} (\delta^a_u \delta^e_d + \delta^a_d \delta^e_u - g^{ae} g_{ud}) \theta_{,e}
+	) (
+		i \frac{1}{2} (\delta^u_b \delta^f_c + \delta^u_c \delta^f_b - g^{uf} g_{bc}) \theta_{,f}
+	)
+$<br>
+$= 
+	\frac{1}{2} i \theta_{,ce} 
+		(\delta^a_b \delta^e_d + \delta^a_d \delta^e_b - g_{bd} g^{ae})
+	- \frac{1}{2} i \theta_{,de} 
+		(\delta^a_b \delta^e_c + \delta^a_c \delta^e_b - g_{bc} g^{ae})
+
+	- \frac{1}{4}
+		(\delta^a_u \delta^e_c + \delta^a_c \delta^e_u - g^{ae} g_{uc}) 
+		(\delta^u_b \delta^f_d + \delta^u_d \delta^f_b - g^{uf} g_{bd}) 
+		\theta_{,e} \theta_{,f}
+	+ \frac{1}{4}
+		(\delta^a_u \delta^e_d + \delta^a_d \delta^e_u - g^{ae} g_{ud}) 
+		(\delta^u_b \delta^f_c + \delta^u_c \delta^f_b - g^{uf} g_{bc}) 
+		\theta_{,e} \theta_{,f}
+$<br>
+
 <br>
 	</body>
 </html>
