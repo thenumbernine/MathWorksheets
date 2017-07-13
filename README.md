@@ -64,9 +64,13 @@ Here's the CDN URLs:
 
 [Maxwell equations in hyperbolic form](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Maxwell%20equations%20in%20hyperbolic%20form%2ehtml)
 
+[Metric Eigenmodes 2](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Metric%20Eigenmodes%202%2ehtml)
+
 [Metric Eigenmodes](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Metric%20Eigenmodes%2ehtml)
 
 [Metric with geodesic that changes in space with velocity in time](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Metric%20with%20geodesic%20that%20changes%20in%20space%20with%20velocity%20in%20time%2ehtml)
+
+[Navier-Stokes As Exterior Derivative](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Navier%2dStokes%20As%20Exterior%20Derivative%2ehtml)
 
 [Navier-Stokes](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Navier%2dStokes%2ehtml)
 

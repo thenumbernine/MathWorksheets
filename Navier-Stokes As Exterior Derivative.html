@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<title>Navier-Stokes As Exterior Derivative</title>
+	</head>
+	<body onload='tryToFindMathJax();'>
+
+Navier-Stokes:<br>
+$\partial_t (v^i) + \partial_j (v^i v^j) = -\frac{1}{\rho} \partial^i P + \nu \partial_j \partial^j v^i$<br>
+$\partial_t (v^i) + \partial_j (v^i v^j) - \nu \partial_j \partial^j v^i = -\frac{1}{\rho} \partial^i P$<br>
+$\partial_t (v^i v^t) + \partial_j (v^i v^j) - \nu \partial_j \partial^j v^i = -\frac{1}{\rho} \partial^i P$<br>
+$\partial_\mu (v^\mu v^i) - \nu \partial_j \partial^j v^i + \frac{1}{\rho} \partial^i P = 0$<br>
+$\partial_\mu (v^\mu v^i) - \nu \partial_\mu \partial^\mu v^i + \nu \partial_t \partial^t v^i + \frac{1}{\rho} \partial^i P = 0$<br>
+$\partial_\mu ((v^\mu - \nu \partial^\mu) v^i) + \nu \partial_t \partial^t v^i + \frac{1}{\rho} \partial^i P = 0$<br>
+Let $D^\mu = v^\mu - \nu \partial^\nu$<br>
+$\partial_\mu D^\mu v^i + \nu \partial_t \partial^t v^i + \frac{1}{\rho} \partial^i P = 0$<br>
+
+	</body>
+</html>

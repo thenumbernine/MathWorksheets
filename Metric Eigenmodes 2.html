@@ -1,0 +1,227 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<title>Metric Eigenmodes 2</title>
+	</head>
+	<body onload='tryToFindMathJax();'>
+
+<b>metric of second degree</b><br>
+$g_{ab} = \hat{g}_{ab} exp(i (a + b_u x^u + c_{uv} x^u x^v))$<br>
+so $c_{uv}$ might as well be symmetric.<br>
+$g_{ab,c} = g_{ab} i (a + b_u x^u + c_{uv} x^u x^v)_{,c}$<br>
+$g_{ab,c} = i (b_c + 2 c_{cu} x^u) g_{ab}$<br>
+<br>
+
+$\Gamma_{abc} = \frac{1}{2} ( g_{ab,c} + g_{ac,b} - g_{bc,a} )$<br>
+$= i \frac{1}{2} ( 
+	(b_c + 2 c_{cu} x^u) g_{ab}
+	+ (b_b + 2 c_{bu} x^u) g_{ac}
+	- (b_a + 2 c_{au} x^u) g_{bc}
+)$<br>
+$= i \frac{1}{2} ( 
+	g_{ab} b_c + g_{ac} b_b - g_{bc} b_a
+	+ 2 x^u (g_{ab} c_{cu}
+		+ g_{ac} c_{bu}
+		- g_{bc} c_{au})
+)$<br>
+<br>
+
+<b>metric of infinite degree</b><br>
+$g^{(n)}_{ab} = \hat{g}_{ab} exp(i \Sigma^n_{i=0} \tilde{g}^{(i)}_{u_1 ... u_i} x^{u_1} \cdot ... \cdot x^{u_i} ))$<br>
+$\tilde{g}^{(i)}_{u_1 ... u_i}$ is symmetric on all indexes.<br>
+Let $\theta^{(n)} = \Sigma^n_{i=0} \tilde{g}^{(i)}_{u_1 ... u_i} x^{u_1} \cdot ... \cdot x^{u_i}$<br>
+$g^{(n)}_{ab} = \hat{g}_{ab} exp(i \theta^{(n)})$<br>
+<br>
+
+$g^{(n)ab} = \hat{g}^{ab} exp(-i \theta^{(n)})$<br>
+for $\hat{g}^{ac} \hat{g}^{cb} = \delta^a_b$<br>
+so $g^{(n)ac} g^{(n)}_{cb} = \hat{g}^{ac} exp(-i \theta^{(n)}) \hat{g}_{cb} exp(i \theta^{(n)}) = \delta^a_b$<br>
+<br>
+
+<b>first derivative of $\theta$</b><br>
+$\theta^{(1)}_{,c} = (\tilde{g}^{(0)} + \tilde{g}^{(1)}_u x^u)_{,c}$<br>
+$= \tilde{g}^{(1)}_c$<br>
+<br>
+
+$\theta^{(2)}_{,c} = (\tilde{g}^{(0)} + \tilde{g}^{(1)}_{u_1} x^{u_1} + \tilde{g}^{(2)}_{u_1 u_2} x^{u_1} x^{u_2})_{,c}$<br>
+$= \tilde{g}^{(1)}_c + \tilde{g}^{(2)}_{c u_2} x^{u_2} + \tilde{g}^{(2)}_{u_1 c} x^{u_1}$<br>
+... so long as $\tilde{g}^{(i)}$ is symmetric on all indexes ...<br>
+$= \tilde{g}^{(1)}_c + 2 \tilde{g}^{(2)}_{c u_1} x^{u_1}$<br>
+<br>
+
+$\theta^{(n)}_{,c} = (\Sigma^n_{i=0} \tilde{g}^{(i)}_{u_1 ... u_i} x^{u_1} \cdot ... \cdot x^{u_i} )_{,c}$<br> 
+$= \Sigma_{k=1}^n k \tilde{g}^{(k)}_{c \underbrace{u_1 ... u_{k-1}}} x^{u_1} \cdot ... \cdot x^{u_{k-1}}$<br> 
+<br>
+
+<b>second derivative of $\theta$</b><br>
+$\theta^{(1)}_{,cd} = (\tilde{g}^{(1)}_c)_{,d} = 0$<br>
+<br>
+
+$\theta^{(2)}_{,cd} = (\tilde{g}^{(1)}_c + 2 \tilde{g}^{(2)}_{c u_1} x^{u_1})_{,d}$<br>
+$= 2 \tilde{g}^{(2)}_{c d}$<br>
+<br>
+
+$\theta^{(3)}_{,cd} = (\tilde{g}^{(1)}_c + 2 \tilde{g}^{(2)}_{c u_1} x^{u_1} + 3 \tilde{g}^{(3)}_{c u_1 u_2} x^{u_1} x^{u_2})_{,d}$<br>
+$= 2 \tilde{g}^{(2)}_{c d} + 6 \tilde{g}^{(3)}_{c d u_1} x^{u_1}$<br>
+<br>
+
+$\theta^{(n)}_{,cd} = (\Sigma_{k=1}^n k \tilde{g}^{(k)}_{c \underbrace{u_1 ... u_{k-1}}} x^{u_1} \cdot ... \cdot x^{u_{k-1}})_{,d}$<br>
+$= \Sigma_{k=1}^{n-1} k (k+1) \tilde{g}^{(k+1)}_{c d \underbrace{u_1 ... u_{k-1}}} x^{u_1} \cdot ... \cdot x^{u_{k-1}}$<br>
+<br>
+
+<b>n-th derivative of $\theta$</b><br>
+$\theta^{(n)}_{,\underbrace{a_1 ... a_m}} = \Sigma_{k=1}^{n+1-m} (\Pi_{l=k}^{k+m-1} l) \tilde{g}^{(k+m-1)}_{\underbrace{a_1 ... a_m} \underbrace{u_1 ... u_{k-1}}} x^{u_1} \cdot ... x^{u_{k-1}}$<br>
+<br>
+
+<b>first derivative of $\theta$, squared</b><br>
+$\theta^{(1)}_{,c} \theta^{(1)}_{,d} = \tilde{g}^{(1)}_c \tilde{g}^{(1)}_d$<br>
+<br>
+
+$\theta^{(2)}_{,c} \theta^{(2)}_{,d} = (\tilde{g}^{(1)}_c + \tilde{g}^{(2)}_{c u_1} x^{u_1}) (\tilde{g}^{(1)}_d + \tilde{g}^{(2)}_{d v_1} x^{v_1})$<br>
+$= \tilde{g}^{(1)}_c \tilde{g}^{(1)}_d
+	+ (\tilde{g}^{(2)}_{c u_1} \tilde{g}^{(1)}_d 
+		+ \tilde{g}^{(1)}_{c} \tilde{g}^{(2)}_{d u_1}) x^{u_1}
+	+ \tilde{g}^{(2)}_{c u_1} \tilde{g}^{(2)}_{d v_1} x^{u_1} x^{v_1}$<br>
+$= \theta^{(1)}_{,c} \theta^{(1)}_{,d}
+	+ (\tilde{g}^{(2)}_{c u_1} \tilde{g}^{(1)}_d 
+		+ \tilde{g}^{(1)}_{c} \tilde{g}^{(2)}_{d u_1}) x^{u_1}
+	+ \tilde{g}^{(2)}_{c u_1} \tilde{g}^{(2)}_{d v_1} x^{u_1} x^{v_1}$<br>
+<br>
+
+$\theta^{(3)}_{,c} \theta^{(3)}_{,d} = (\tilde{g}^{(1)}_c + \tilde{g}^{(2)}_{c u_1} x^{u_1} + \tilde{g}^{(3)}_{c u_1 u_2} x^{u_1} x^{u_2})
+	(\tilde{g}^{(1)}_d + \tilde{g}^{(2)}_{d v_1} x^{v_1} + \tilde{g}^{(3)}_{d v_1 v_2} x^{v_1} x^{v_2})$<br>
+$= \tilde{g}^{(1)}_c \tilde{g}^{(1)}_d 
+	+ (\tilde{g}^{(2)}_{c u_1} \tilde{g}^{(1)}_d + \tilde{g}^{(1)}_{c} \tilde{g}^{(2)}_{d u_1}) x^{u_1}
+	
+	+ (\tilde{g}^{(2)}_{c u_1} \tilde{g}^{(2)}_{d u_2}
+	+ \tilde{g}^{(3)}_{c u_1 u_2} \tilde{g}^{(1)}_d
+	+ \tilde{g}^{(1)}_c \tilde{g}^{(3)}_{d u_1 u_2}) x^{u_1} x^{u_2}
+	
+	+ (\tilde{g}^{(2)}_{c u_1} \tilde{g}^{(3)}_{d u_2 u_3}
+	+ \tilde{g}^{(3)}_{c u_1 u_2} \tilde{g}^{(2)}_{d u_3}) x^{u_1} x^{u_2} x^{u_3}
+	
+	+ \tilde{g}^{(3)}_{c u_1 u_2} \tilde{g}^{(3)}_{d u_3 u_4} x^{u_1} x^{u_2} x^{u_3} x^{u_4}
+$<br>
+$= \theta^{(2)}_c \theta^{(2)}_d
+	
+	+ (\tilde{g}^{(3)}_{c u_1 u_2} \tilde{g}^{(1)}_d
+	+ \tilde{g}^{(1)}_c \tilde{g}^{(3)}_{d u_1 u_2}) x^{u_1} x^{u_2}
+	
+	+ (\tilde{g}^{(2)}_{c u_1} \tilde{g}^{(3)}_{d u_2 u_3}
+	+ \tilde{g}^{(3)}_{c u_1 u_2} \tilde{g}^{(2)}_{d u_3}) x^{u_1} x^{u_2} x^{u_3}
+	
+	+ \tilde{g}^{(3)}_{c u_1 u_2} \tilde{g}^{(3)}_{d u_3 u_4} x^{u_1} x^{u_2} x^{u_3} x^{u_4}
+$<br>
+<br>
+
+$\theta^{(n)}_{,c} \theta^{(n)}_{,d} = \Sigma_{j=2}^{2n} \Sigma_{i=1}^{j-i}
+	\tilde{g}^{(i)}_{c \underbrace{u_1 ...}} \tilde{g}^{(j-i)}_{d \underbrace{... u_{j-2}}} x^{u_1} \cdot ... \cdot x^{u_{j-2}}$<br>
+<br>
+
+<b>first derivative of $g$</b><br>
+$g^{(n)}_{ab,c} = i \theta^{(n)}_{,c} g^{(n)}_{ab}$<br>
+$= i (\Sigma_{k=1}^n k \tilde{g}^{(k)}_{c \underbrace{u_1 ... u_{k-1}}} x^{u_1} \cdot ... \cdot x^{u_{k-1}}) g^{(n)}_{ab}$<br>
+<br>
+
+<b>second derivative of $g$</b><br>
+$g^{(n)}_{ab,cd} = (i \theta^{(n)}_{,c} g^{(n)}_{ab})_{,d}$<br>
+$= (i \theta^{(n)}_{,cd} - \theta^{(n)}_{,c} \theta^{(n)}_{,d}) g^{(n)}_{ab}$<br>
+$= ( i (\Sigma^{n-2}_{i=1} \tilde{g}^{(i)}_{c d u_1 ... u_i} x^{u_1} \cdot ... \cdot x^{u_i} )
+	- (\Sigma_{j=2}^{2n} \Sigma_{i=1}^{j-i} 
+		\tilde{g}^{(i)}_{c \underbrace{u_1 ...}} \tilde{g}^{(j-i)}_{d \underbrace{... u_{j-2}}} x^{u_1} \cdot ... \cdot x^{u_{j-2}} )
+) g^{(n)}_{ab}$<br>
+<br>
+
+<b>connection</b><br>
+$\Gamma^{(n)}_{abc} = \frac{1}{2} ( g^{(n)}_{ab,c} + g^{(n)}_{ac,b} - g^{(n)}_{bc,a} )$<br>
+$= \frac{1}{2} i (
+	(\Sigma_{k=1}^n k \tilde{g}^{(k)}_{c \underbrace{u_1 ... u_{k-1}}} x^{u_1} \cdot ... \cdot x^{u_{k-1}}) g^{(n)}_{ab}
+	+ (\Sigma_{k=1}^n k \tilde{g}^{(k)}_{b \underbrace{u_1 ... u_{k-1}}} x^{u_1} \cdot ... \cdot x^{u_{k-1}}) g^{(n)}_{ac}
+	- (\Sigma_{k=1}^n k \tilde{g}^{(k)}_{a \underbrace{u_1 ... u_{k-1}}} x^{u_1} \cdot ... \cdot x^{u_{k-1}}) g^{(n)}_{bc}
+)$<br>
+$= \frac{1}{2} i (\delta^{u_0}_c g^{(n)}_{ab} + \delta^{u_0}_b g^{(n)}_{ac} - \delta^{u_0}_a g^{(n)}_{bc}) 
+	\cdot (\Sigma_{k=1}^n k \tilde{g}^{(k)}_{u_0 \underbrace{u_1 ... u_{k-1}}} x^{u_1} \cdot ... \cdot x^{u_{k-1}})$<br>
+<br>
+
+${\Gamma^{(n)a}}_{bc} = \frac{1}{2} i g^{(n)ad} (\delta^{u_0}_c g^{(n)}_{db} + \delta^{u_0}_b g^{(n)}_{dc} - \delta^{u_0}_d g^{(n)}_{bc}) 
+	\cdot (\Sigma_{k=1}^n k \tilde{g}^{(k)}_{u_0 \underbrace{u_1 ... u_{k-1}}} x^{u_1} \cdot ... \cdot x^{u_{k-1}})
+$<br>
+$= \frac{1}{2} i (\delta^{u_0}_c \delta^a_b + \delta^{u_0}_b \delta^a_c - g^{(n)a {u_0}} g^{(n)}_{bc}) 
+	\cdot (\Sigma_{k=1}^n k \tilde{g}^{(k)}_{u_0 \underbrace{u_1 ... u_{k-1}}} x^{u_1} \cdot ... \cdot x^{u_{k-1}})
+$<br>
+<br>
+
+<b>connection partial</b><br>
+${\Gamma^a}_{bc,d} = (\frac{1}{2} g^{au} (g_{ub,c} + g_{uc,b} - g_{bc,u}))_{,d}$<br>
+$= (\frac{1}{2} g^{au} (g_{ub,c} + g_{uc,b} - g_{bc,u}))_{,d}$<br>
+$= {g^{au}}_{,d} \Gamma_{ubc} + \frac{1}{2} g^{au} (g_{ub,cd} + g_{uc,bd} - g_{bc,ud})$<br>
+$= -g^{au} g_{uv,d} {\Gamma^v}_{bc} + \frac{1}{2} g^{au} (g_{ub,cd} + g_{uc,bd} - g_{bc,ud})$<br>
+$= \frac{1}{2} g^{au} (-2g_{uv,d} {\Gamma^v}_{bc} + g_{ub,cd} + g_{uc,bd} - g_{bc,ud})$<br>
+<br>
+
+${\Gamma^{(n)a}}_{bc,d} = \frac{1}{2} g^{(n)au} (
+$<br>$	-2 
+		
+		i (\Sigma_{k=1}^n k \tilde{g}^{(k)}_{d \underbrace{u_1 ... u_{k-1}}} x^{u_1} \cdot ... \cdot x^{u_{k-1}}) g^{(n)}_{uv}
+$<br>$	
+		\cdot \frac{1}{2} i (
+			(\Sigma_{k=1}^n k \tilde{g}^{(k)}_{c \underbrace{u_1 ... u_{k-1}}} x^{u_1} \cdot ... \cdot x^{u_{k-1}}) \delta^v_b
+			+ (\Sigma_{k=1}^n k \tilde{g}^{(k)}_{b \underbrace{u_1 ... u_{k-1}}} x^{u_1} \cdot ... \cdot x^{u_{k-1}}) \delta^v_c
+			- (\Sigma_{k=1}^n k \tilde{g}^{(k)}_{w \underbrace{u_1 ... u_{k-1}}} x^{u_1} \cdot ... \cdot x^{u_{k-1}}) g^{(n)aw} g^{(n)}_{vc}
+		)
+$<br>$
+		+ ( i (\Sigma^{n-2}_{i=1} \tilde{g}^{(i)}_{c d u_1 ... u_i} x^{u_1} \cdot ... \cdot x^{u_i} )
+			- (\Sigma_{j=2}^{2n} \Sigma_{i=1}^{j-i} 
+				\tilde{g}^{(i)}_{c \underbrace{u_1 ...}} \tilde{g}^{(j-i)}_{d \underbrace{... u_{j-2}}} x^{u_1} \cdot ... \cdot x^{u_{j-2}} )
+		) g^{(n)}_{ub}
+
+$<br>$
+		+ ( i (\Sigma^{n-2}_{i=1} \tilde{g}^{(i)}_{b d u_1 ... u_i} x^{u_1} \cdot ... \cdot x^{u_i} )
+			- (\Sigma_{j=2}^{2n} \Sigma_{i=1}^{j-i} 
+				\tilde{g}^{(i)}_{b \underbrace{u_1 ...}} \tilde{g}^{(j-i)}_{d \underbrace{... u_{j-2}}} x^{u_1} \cdot ... \cdot x^{u_{j-2}} )
+		) g^{(n)}_{uc}
+
+$<br>$
+		- ( i (\Sigma^{n-2}_{i=1} \tilde{g}^{(i)}_{u d u_1 ... u_i} x^{u_1} \cdot ... \cdot x^{u_i} )
+			- (\Sigma_{j=2}^{2n} \Sigma_{i=1}^{j-i} 
+				\tilde{g}^{(i)}_{u \underbrace{u_1 ...}} \tilde{g}^{(j-i)}_{d \underbrace{... u_{j-2}}} x^{u_1} \cdot ... \cdot x^{u_{j-2}} )
+		) g^{(n)}_{bc}
+)$<br>
+<br>
+$= \frac{1}{2} g^{(n)au} (
+$<br>$	-2 
+		
+		i (\Sigma_{k=1}^n k \tilde{g}^{(k)}_{d \underbrace{u_1 ... u_{k-1}}} x^{u_1} \cdot ... \cdot x^{u_{k-1}}) g^{(n)}_{uv}
+$<br>$	
+		\cdot \frac{1}{2} i (
+			(\Sigma_{k=1}^n k \tilde{g}^{(k)}_{c \underbrace{u_1 ... u_{k-1}}} x^{u_1} \cdot ... \cdot x^{u_{k-1}}) \delta^v_b
+			+ (\Sigma_{k=1}^n k \tilde{g}^{(k)}_{b \underbrace{u_1 ... u_{k-1}}} x^{u_1} \cdot ... \cdot x^{u_{k-1}}) \delta^v_c
+			- (\Sigma_{k=1}^n k \tilde{g}^{(k)}_{w \underbrace{u_1 ... u_{k-1}}} x^{u_1} \cdot ... \cdot x^{u_{k-1}}) g^{(n)aw} g^{(n)}_{vc}
+		)
+$<br>$
+		+ ( i (\Sigma^{n-2}_{i=1} \tilde{g}^{(i)}_{c d u_1 ... u_i} x^{u_1} \cdot ... \cdot x^{u_i} )
+			- (\Sigma_{j=2}^{2n} \Sigma_{i=1}^{j-i} 
+				\tilde{g}^{(i)}_{c \underbrace{u_1 ...}} \tilde{g}^{(j-i)}_{d \underbrace{... u_{j-2}}} x^{u_1} \cdot ... \cdot x^{u_{j-2}} )
+		) g^{(n)}_{ub}
+
+$<br>$
+		+ ( i (\Sigma^{n-2}_{i=1} \tilde{g}^{(i)}_{b d u_1 ... u_i} x^{u_1} \cdot ... \cdot x^{u_i} )
+			- (\Sigma_{j=2}^{2n} \Sigma_{i=1}^{j-i} 
+				\tilde{g}^{(i)}_{b \underbrace{u_1 ...}} \tilde{g}^{(j-i)}_{d \underbrace{... u_{j-2}}} x^{u_1} \cdot ... \cdot x^{u_{j-2}} )
+		) g^{(n)}_{uc}
+
+$<br>$
+		- ( i (\Sigma^{n-2}_{i=1} \tilde{g}^{(i)}_{u d u_1 ... u_i} x^{u_1} \cdot ... \cdot x^{u_i} )
+			- (\Sigma_{j=2}^{2n} \Sigma_{i=1}^{j-i} 
+				\tilde{g}^{(i)}_{u \underbrace{u_1 ...}} \tilde{g}^{(j-i)}_{d \underbrace{... u_{j-2}}} x^{u_1} \cdot ... \cdot x^{u_{j-2}} )
+		) g^{(n)}_{bc}
+)$<br>
+
+
+
+<br>
+<br>
+	</body>
+</html>
