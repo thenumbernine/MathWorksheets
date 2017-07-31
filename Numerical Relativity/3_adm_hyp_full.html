@@ -359,7 +359,8 @@ $\left[\matrix{
 <br>
 
 Separating the acoustic tensor from the flux jacobian tensor:<br>
-$A = \left[\matrix{
+$J = A + I (-\beta^r)$<br>
+$\left[\matrix{
 	-\delta^m_k \beta^r & 
 		0 & 
 		\alpha f \gamma^{pq} \delta^r_k \\
@@ -390,16 +391,41 @@ $A = \left[\matrix{
 		0
 }\right]
 + \left[\matrix{
-	-\delta^m_k \beta^r & 0 & 0 \\
-	0 & -\delta^m_k \delta^p_i \delta^q_j \beta^r & 0 \\
-	0 & 0 & -\delta^p_i \delta^q_j \beta^r
+	\delta^m_k & 0 & 0 \\
+	0 & \delta^m_k \delta^p_i \delta^q_j & 0 \\
+	0 & 0 & \delta^p_i \delta^q_j
+}\right] \cdot (-\beta^r)$<br>
+<br>
+So $A = \left[\matrix{
+	0 & 
+		0 & 
+		\alpha f \gamma^{pq} \delta^r_k \\
+	0 & 
+		0 & 
+		\alpha \delta^p_i \delta^q_j \delta^r_k \\
+	\alpha \delta^m_{(i} \delta^r_{j)} &  
+		\alpha (
+			\gamma^{(pq)} \delta^m_{(i} \delta^r_{j)}
+			+ \gamma^{mr} \delta^{(p}_{(i} \delta^{q)}_{j)}
+			- 2 \gamma^{r(p} \delta^{q)}_{(i} \delta^m_{j)}
+		) &
+		0
 }\right]$<br>
 <br>
 
-Next separate out waves<br>
-Next convert waves to find eigenvalues left eigenvectors<br>
-Next invert to find right eigenvectors<br>
-Next re-add $-\beta^r$ to eigenvalues (converting from acoustic eigenvalues to flux Jacobian eigenvalues)<br>
+$w_a = C_{ab} u_b$, $u_a = (a_k,d_{kij},K_{ij})$<br>
+$\partial_t w_a + \lambda \partial_r w_a = 0$<br>
+True for<br>
+$w = 
+<br>
 
+Notice this is similar to the 1D form:
+$A = \left[\matrix{
+	0 & 0 & \alpha f / \gamma_{xx} \\
+	0 & 0 & \alpha \\
+	\alpha & 0 & 0
+}\right]$<br>
+
+Now for eigenfields...<br>
 	</body>
 </html>

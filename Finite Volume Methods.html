@@ -9,7 +9,8 @@
 
 <h3>Finite Volume Methods</h3>
 
-let $\mu$ run across all coordinates $t,x,y,z$<br>
+let $\mu$ span across all coordinates $t,x,y,z$<br>
+let $i$ span all states of $U$<br>
 $\partial_\mu F^{i\mu} = 0$<br>
 separate space and time:<br>
 $\partial_t F^{it} + \partial_{x^j} F^{ij} = 0$<br>
@@ -58,6 +59,19 @@ ${{U^i(t_2) - U^i(t_1)}\over{\Delta t}} = -{{\Pi_{m=1,m\ne k}^n \Delta x^m (F^{i
 ${{U^i(t_2) - U^i(t_1)}\over{\Delta t}} = -{{F^{ik}(x^{\sigma^+}) - F^{ik}(x^{\sigma^-}) }\over{\Delta x^k}}$<br>
 Solve for $U^i(t_2)$<br>
 $U^i(t_2) = U^i(t_1) - {{\Delta t}\over{\Delta x^j}}  (F^{ij}(x^{\sigma^+}) - F^{ij}(x^{\sigma^-}))$<br>
+<br>
+<br>
+<br>
 
+<b>same thing but curved space</b><br>
+$\nabla_\mu F^{I\mu} = 0$<br>
+assume timelike hypersurfaces are flat for now:<br>
+$\partial_t F^{It} + \nabla_j F^{Ij} = 0$<br>
+let $U^i = F^{It}$<br>
+$\partial_t U^I + \nabla_j F^{Ij} = 0$<br>
+Substitute covariant derivative for connection coefficients...<br>
+Notice: this part excludes consideration of any possible tensors <i>within</i> the flux vector.<br>
+$\partial_t U^I + \partial_j F^{Ij} + {\Gamma^j}_{kj} F^{Ik} = 0$<br>
+$\partial_t U^I + \partial_j F^{Ij} + {\Gamma^j}_{kj} F^{Ik} + {\Gamma^{i_1}}_{kj} F^{i_1 k} + ... + {\Gamma^{i_n}}_{kj} F^{i_n k} = 0$<br>
 	</body>
 </html>

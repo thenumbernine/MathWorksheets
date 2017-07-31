@@ -7,6 +7,11 @@
 	</head>
 	<body onload='tryToFindMathJax();'>
 
+Riemannian geometry identity:<br>
+${\Gamma^i}_{ki} = \frac{1}{2 g} g_{,k} = ln(\sqrt{g})_{,k}$<br>
+$ = \frac{(\sqrt{g})_{,k}}{\sqrt{g}}$<br>
+<br>
+
 <h3>Euler Fluid Equations</h3>
 
 variables:<br>
@@ -159,6 +164,66 @@ $\left[\matrix{
 }\right]$<br>
 <br>
 
+Now if you choose to reabsorb the metric volume gradient into the flux:<br>
+
+$\left[\matrix{
+	\rho \\ \rho v^i \\ E_{total} 
+}\right]_{,t}
++ \frac{\sqrt{g}}{\sqrt{g}}
+\left[\matrix{
+	0 &
+		\delta^j_k &
+		0 \\
+	-v^i v^j + \frac{1}{2} g^{ij} \tilde\gamma v^2 &
+		\delta^i_k v^j + \delta^j_k v^i - g^{ij} \tilde\gamma v_k &
+		g^{ij} \tilde\gamma \\
+	v^j (\frac{1}{2} \tilde\gamma v^2 - h_{total}) &
+		-\tilde\gamma v^j v_k + \delta^j_k h_{total} &
+		\gamma v^j
+}\right]
+\left[\matrix{
+	\rho \\ \rho v^k \\ E_{total} 
+}\right]_{,j} = \left[\matrix{
+	-\frac{1}{\sqrt{g}} (\sqrt{g})_{,k} \rho v^k \\
+	-{\Gamma^i}_{kj} \rho v^k v^j - \frac{1}{\sqrt{g}} (\sqrt{g})_{,k} (\rho v^i v^k + P g^{ik}) + {\Gamma^j}_{kj} P g^{ik} \\
+	-\frac{1}{\sqrt{g}} (\sqrt{g})_{,k} v^k H_{total}
+}\right]$<br>
+<br>
+
+$\left[\matrix{
+	\rho \\ \rho v^i \\ E_{total} 
+}\right]_{,t}
++ \frac{\sqrt{g}}{\sqrt{g}}
+\left[\matrix{
+	0 &
+		\delta^j_k &
+		0 \\
+	-v^i v^j + \frac{1}{2} g^{ij} \tilde\gamma v^2 &
+		\delta^i_k v^j + \delta^j_k v^i - g^{ij} \tilde\gamma v_k &
+		g^{ij} \tilde\gamma \\
+	v^j (\frac{1}{2} \tilde\gamma v^2 - h_{total}) &
+		-\tilde\gamma v^j v_k + \delta^j_k h_{total} &
+		\gamma v^j
+}\right]
+\left[\matrix{
+	\rho \\ \rho v^k \\ E_{total} 
+}\right]_{,j} 
+
++ \frac{1}{\sqrt{g}} (\sqrt{g})_{,j} 
+\left[\matrix{
+	\rho v^j \\
+	\rho v^i v^j + P g^{ij} \\
+	v^j H_{total}
+}\right]
+
+= \left[\matrix{
+	0 \\ 
+	-{\Gamma^i}_{kj} (\rho v^k v^j - P g^{jk}) \\ 
+	0
+}\right]$<br>
+<br>
+
+
 $\left[\matrix{
 	\rho \\ \rho v^i \\ E_{total} 
 }\right]_{,t}
@@ -179,10 +244,12 @@ $\left[\matrix{
 	\rho \\ \rho v^k \\ E_{total} 
 }\right] \right)_{,j} = \left[\matrix{
 	0 \\
-	-{\Gamma^i}_{jk} \rho v^j v^k \\
+	-{\Gamma^i}_{jk} (\rho v^j v^k - P g^{jk}) \\
 	0
 }\right]$<br>
 <br>
+
+
 
 Maxima has a much harder time calculating the eigenvalues/vectors with those $\delta^{ij}$'s replaced with $g^{ij}$'s.<br>
 But I can get around that by using acoustic tensor to find the eigen-decomposition of the flux in curved coordinates:<br>

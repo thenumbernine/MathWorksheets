@@ -236,25 +236,35 @@ $\frac{d}{dt} K_{ij} = -D_i \alpha_j + \alpha ( R_{ij} + 2 D_{(i} Z_{j)} - 2 K_{
 $\frac{d}{dt} \Theta = \frac{1}{2} \alpha (R + (K - 2 \Theta) K - K_{mn} K^{mn} + 2 D_m Z^m - 2 Z^m (ln \alpha)_{,m})$<br>
 $\frac{d}{dt} Z_i = \alpha (D_m {K^m}_i - D_i K + \Theta_{,i} - 2 {K^m}_i Z_m - \Theta (ln \alpha)_{,i})$<br>
 other variables:<br>
-$\Theta = n_a Z^a = \alpha Z^0$<br>
+$\Theta = n_a Z^a$<br>
 eigenvalues and eigenfields are not provided.<br>
 <br>
 
-<b>Bona, Ledvinka, Palenzuela, Zacek, "A symmetry-breaking mechanism for the Z4 general-covariant evolution system" 2003 (shift-less).  <a href="https://arxiv.org/abs/gr-qc/0307067">https://arxiv.org/abs/gr-qc/0307067</a></b><br>
-parameters: $\lambda$<br>
+<b>Bona, Ledvinka, Palenzuela, Zacek, "A symmetry-breaking mechanism for the Z4 general-covariant evolution system" 2003, Appendix B (shift-less).  <a href="https://arxiv.org/abs/gr-qc/0307067">https://arxiv.org/abs/gr-qc/0307067</a></b><br>
+parameters: $f = 1, \lambda = 2$, $\zeta = 1$ for Ricci decomposition, $\zeta = -1$ for de Donder-Fock decomposition, and for the harmonic, symmetric hyperbolic case.<br>
 source-only variables:<br>
-1: $\alpha_{,t} = ...$<br>
-6: $\gamma_{ij,t} = ...$<br>
-hyperbolic variables:<br>
-3: $a_{k,t} + (\alpha (f K - \lambda \Theta))_{,k} = ...$<br>
-18: $d_{kij,t} + (\alpha K_{ij})_{,k} = ...$<br> 
+1: $\frac{d}{dt} \alpha = -\alpha^2 (f K - \lambda \Theta)$<br>
+6: $\frac{d}{dt} \gamma_{ij} = -2 \alpha K_{ij}$<br>
+hyperbolic variables: (31 total)<br>
+3: $a_{k,t} + (\alpha (f K - \lambda \Theta))_{,k} = 0$<br>
+18: $d_{kij,t} + (\alpha K_{ij})_{,k} = 0$<br> 
 6: $K_{ij,t} + (\alpha {\lambda^k}_{ij})_{,k} = ...$<br> 
 1: $\Theta_{,t} + (\alpha V^k)_{,k} = ...$<br> 
 3: $Z_{i,t} + (\alpha \delta^k_i (K - \Theta) - {K^k}_i)_{,k} = ...$<br> 
 other variables:<br>
-${\lambda^k}_{ij} = {d^k}_{ij} - (1 + \zeta) ( {d_{(ij)}}^k - \delta^k_{(i|} {d_{m|j)}}^m) + \delta^k_{(i} (A_{j)} - {d_{j)m}}^m + 2 V_{j)})$<br>
+$\Theta = n_a Z^a = \alpha Z^0$<br>
+${\lambda^k}_{ij} = {d^k}_{ij} - (1 + \zeta) ( {d_{(ij)}}^k - \delta^k_{(i|} {d_{m|j)}}^m) + \delta^k_{(i} (a_{j)} - {d_{j)m}}^m + 2 V_{j)})$<br>
 $V_k = {d_{km}}^m - {d^m}_{mk} - Z_k$<br>
-eigenvalues and eigenvfields:<br>
+$n_i = $ the direction that the flux is sampled in.  All eigenvectors below are provided in the x direction, so $n_i = [1,0,0]$<br>
+$Z_u = $ ... what is this initialized to?  There are plenty of references that $Z_i = 0$ recovers ADM, and that $Z_a$ is the zero vector.  Should this be equal to $t_{,t}$?<br>
+eigenvalues and eigenfields:<br>
+17 time waves: $\lambda = -\beta^x$ for $w = a_q, d_{qij}, a_k - f d_k + \lambda v_k$<br>
+10 light waves: $\lambda = -\beta^x \pm \alpha \sqrt{\gamma^{xx}}$ for $w_\pm = (K_{ij} - n_i n_j K) \pm ({\lambda^x}_{ij} - n_i n_j {\lambda^{xk}}_k)$<br> 
+I see 12 light waves.  Are there only supposed to be 2x5 light waves based on $K_{ij}$?<br>
+How is this 10?  Is this the same as $w_\pm = K_{iq} \pm {\lambda^x}_{iq}$ described for ADM?<br>
+Is the $ij$ = $xx$ term the excluded eigenfield, as it is in the ADM case?<br>
+2 energy waves: $\lambda = -\beta^x \pm \alpha \sqrt{\gamma^{xx}}$ for $w_\pm = \Theta \pm V^x$<br>
+2 gauge waves: $\lambda = -\beta^x \pm \alpha \sqrt{f \gamma^{xx}}$ for $w_\pm = \sqrt{f} (K + \frac{2 - \lambda}{f - 1} \Theta) \pm (a^x + \frac{2 f - \lambda}{f - 1} V^x)$<br>
 <br>
 
 <b>Bona, Palenzuela, "Dynamical shift conditions for the Z4 and BSSN hyperbolic formalisms" 2004. <a href="https://arxiv.org/abs/gr-qc/0401019">https://arxiv.org/abs/gr-qc/0401019</a></b><br>
