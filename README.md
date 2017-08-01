@@ -30,6 +30,8 @@ Here's the CDN URLs:
 
 [Change of Coordinates](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Change%20of%20Coordinates%2ehtml)
 
+[Complex Metric](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Complex%20Metric%2ehtml)
+
 [EMHD Hyperbolic Conservation Laws](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/EMHD%20Hyperbolic%20Conservation%20Laws%2ehtml)
 
 [EMHD Linear Stability Analysis](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/EMHD%20Linear%20Stability%20Analysis%2ehtml)

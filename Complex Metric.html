@@ -129,7 +129,7 @@ $g_{ab} = \overset{a(i)\downarrow b(j)\rightarrow}{
 	} \right]}$<br>
 $= \overset{a(i)\downarrow b(j)\rightarrow}{
 	\left[ \matrix{
-		\alpha^2 - (\tilde{\gamma}_{kl} + i \epsilon_{klm} B^m) (\tilde{\beta}^l - i E^l) (\tilde{\beta}^k + i E^k) & 
+		\alpha^2 - (\tilde{\gamma}_{kl} + i \tilde{\epsilon}_{klm} B^m) (\tilde{\beta}^l - i E^l) (\tilde{\beta}^k + i E^k) & 
 			\tilde{\beta}_j - i E_j \\ 
 		\tilde{\beta}_i + i E_i & 
 			-\tilde{\gamma}_{ij} + i \tilde{\epsilon}_{ijk} B^k
@@ -137,44 +137,38 @@ $= \overset{a(i)\downarrow b(j)\rightarrow}{
 <br>
 
 How about that $g_{tt}$ term.<br>
-$\alpha^2 
-	- \tilde{\beta}_k \tilde{\beta}^k 
-	- i \tilde{\beta}_k E^k
-	+ i E_k \tilde{\beta}^k
-	+ E_k E^k$<br>
-$\alpha^2 
-	- \gamma_{kl} \tilde{\beta}^l \tilde{\beta}^k 
-	- i \gamma_{kl} \tilde{\beta}^l E^k
-	+ i \gamma_{kl} E^l \tilde{\beta}^k
-	+ \gamma_{kl} E^l E^k$<br>
-$\alpha^2 
-	- \gamma_{kl} \tilde{\beta}^l \tilde{\beta}^k 
-	- i \gamma_{kl} \tilde{\beta}^l E^k
-	+ i \bar{\gamma}_{kl} \tilde{\beta}^l E^k
-	+ \gamma_{kl} E^l E^k$<br>
-$\alpha^2 
-	- \gamma_{kl} \tilde{\beta}^l \tilde{\beta}^k 
-	+ \gamma_{kl} E^l E^k
-	- i (\gamma_{kl} - \bar{\gamma}_{kl}) \tilde{\beta}^l E^k
-$<br>
+$g_{tt} = \alpha^2 - (\tilde{\gamma}_{kl} + i \tilde{\epsilon}_{klm} B^m) (\tilde{\beta}^l - i E^l) (\tilde{\beta}^k + i E^k)$<br>
+$= \alpha^2 - (\tilde{\gamma}_{kl} + i \tilde{\epsilon}_{klm} B^m) (\tilde{\beta}^l \tilde{\beta}^k + i \tilde{\beta}^l E^k - i E^l \tilde{\beta}^k + E^l E^k)$<br>
+$= \alpha^2 - (
+	  \tilde{\gamma}_{kl} \tilde{\beta}^l \tilde{\beta}^k 
+	+ i \tilde{\epsilon}_{klm} B^m \tilde{\beta}^l \tilde{\beta}^k
+	+ \tilde{\gamma}_{kl} E^l E^k 
+	+ i \tilde{\epsilon}_{klm} B^m E^l E^k
+	+ i \tilde{\gamma}_{kl} E^k \tilde{\beta}^l 
+	- \tilde{\epsilon}_{klm} B^m E^k \tilde{\beta}^l
+	- i \tilde{\gamma}_{kl} E^l \tilde{\beta}^k 
+	+ \tilde{\epsilon}_{klm} B^m E^l \tilde{\beta}^k
+)$<br>
+$= \alpha^2 - \tilde{\gamma}_{kl} (\tilde{\beta}^l \tilde{\beta}^k + E^k E^l)
+	- 2 \tilde{\epsilon}_{klm} \tilde{\beta}^k E^l B^m$<br>
+$= \tilde{g}_{tt} - \tilde{\gamma}_{kl} E^k E^l - 2 \tilde{\epsilon}_{klm} \tilde{\beta}^k E^l B^m$<br>
 <br>
 
-$= \left[\matrix{
-	\alpha^2 
-		- \tilde{\beta}_k \tilde{\beta}^k 
-		- i \tilde{\beta}_k E^k
-		+ i E_k \tilde{\beta}^k
-		+ E_k E^k
-	& \tilde{\beta}_j \\
+Back to $g_{ab}$:<br>
+$g_{ab} = \left[\matrix{
+	\alpha^2 - \tilde{\gamma}_{kl} (\tilde{\beta}^l \tilde{\beta}^k + E^k E^l)
+		- 2 \tilde{\epsilon}_{klm} \tilde{\beta}^k E^l B^m & 
+	\tilde{\beta}_j \\
 	\tilde{\beta}_i & -\tilde{\gamma}_{ij}
 }\right] + \left[\matrix{
 	0 & -i E_j \\
 	i E_i & i \tilde{\epsilon}_{ijk} B^k
 }\right]$<br>
-$= \tilde{g}_{ab} + i F_{ab} + t_a t_b (E_k E^k)$<br>
+$= \tilde{g}_{ab} + i F_{ab} - t_a t_b (
+  \tilde{\gamma}_{kl} E^k E^l + 2 \tilde{\epsilon}_{klm} \tilde{\beta}^k E^l B^m
+)$<br>
 <br>
 
-FIXME - signs and raise/lower esp of B<br>
 $g^{ab} = \overset{a(i)\downarrow b(j)\rightarrow}{
 	\left[ \matrix{
 		1/\alpha^2 & 
@@ -183,7 +177,8 @@ $g^{ab} = \overset{a(i)\downarrow b(j)\rightarrow}{
 			(\tilde{\beta}^i + i E^i) (\tilde{\beta}^j - i E^j) / \alpha^2
 			-\tilde{\gamma}^{ij} 
 			+ i \tilde{\epsilon}_{ijk} B^k
-	} \right]}$
+	} \right]}$<br>
+FIXME<br>
 $= \overset{a(i)\downarrow b(j)\rightarrow}{
 	\left[ \matrix{
 		1/\alpha^2 & 
