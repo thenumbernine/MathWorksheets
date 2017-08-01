@@ -64,6 +64,7 @@ $\delta_i^j = \beta_i \bar{\beta}^j /\alpha^2 - \gamma_{ik} \beta^k \bar{\beta}^
 $\delta_i^j = \delta_i^j$<br>
 <br>
 
+Let $\tilde{\alpha}, \tilde{\beta}^i, \tilde{\gamma}_{ij} \in \mathbb{R}$ be the analogous components of $\tilde{g}_{ab}$<br>
 Let $\alpha = \tilde{\alpha} \approx 1$<br>
 $\beta^i = \tilde{\beta}^i + i E^i$ for $\tilde{\beta}^i \approx 0$<br>
 $\gamma_{ij} = \tilde{\gamma}_{ij} - i \tilde{\epsilon}_{ijk} B^k$ for $\tilde{\gamma}_{ij} \approx \delta_{ij}$<br>
@@ -75,39 +76,102 @@ $\gamma^{ij} = (\tilde{\gamma}^{ij} - B^i B^j + i \tilde{\epsilon}^{ijk} \tilde{
 For $\tilde{\epsilon}^{ijk} = \frac{1}{\sqrt{\tilde{\gamma}}} [ijk]$<br>
 <br>
 
+Notice that $\gamma_{ij} = \tilde{\gamma}_{ij} - i \tilde{\epsilon}_{ijk} B^k$,<br>
+so $\gamma_{ji} = \tilde{\gamma}_{ji} - i \tilde{\gamma}_{jik} B^k = \tilde{\gamma}_{ij} + i \tilde{\gamma}_{ijk} B^k = \bar{\gamma}_{ij}$.<br>
+This means I have to become more formal when raising/lowering: whether it involves a left or a right multiplication of the metric?<br>
+For example, consider $E_i$<br>
+For left multiply, $E_i = \gamma_{ij} E^j = (\tilde{\gamma}_{ij} - i \tilde{\epsilon}_{ijk} B^k) E^j$<br>
+For right multiply, $E_i = E^j \gamma_{ji} = \bar{\gamma}_{ij} E^j = (\tilde{\gamma}_{ij} + i \tilde{\epsilon}_{ijk} B^k) E^j$<br>
+So left-multiply lowering vectors and right-multiply lowering vectors produce conjugates of one another.<br>
+If a vector is lowered with left-multiplication, it must be raised with left-multiplication of the inverse as well -- or right-multiplication of the inverse conjugate.<br>
+<br>
+
+What does this say about norms?<br>
+$\gamma_{ij} a^i b^j$<br>
+$= \bar{\gamma}_{ij} a^i b^j$<br>
+so norms better be real, or else?<br>
+<br>
+
 Notice that lowering spatial vectors is done by $\gamma_{ij}$, which is a combination of the real spatial $\tilde{\gamma}_{ij}$ and the imaginary magnetic field dual $-i \tilde{\epsilon}_{ijk} B^k$.<br>
 $\beta_i = \gamma_{ij} \beta^j$<br>
 $\tilde{\beta}_i + i E_i = (\tilde{\gamma}_{ij} - i \tilde{\epsilon}_{ijk} B^k) (\tilde{\beta}^j + i E^j)$<br>
 $\tilde{\beta}_i + i E_i = \tilde{\gamma}_{ij} \tilde{\beta}^j + \tilde{\epsilon}_{ijk} E^j B^k + i (\tilde{\gamma}_{ij} E^j - \tilde{\epsilon}_{ijk} \tilde{\beta}^j B^k)$<br>
 <br>
 
-Also notice that $\gamma_{ij} = \tilde{\gamma}_{ij} - i \tilde{\epsilon}_{ijk} B^k$,<br>
-so $\gamma_{ji} = \tilde{\gamma}_{ji} - i \tilde{\gamma}_{jik} B^k = \tilde{\gamma}_{ij} + i \tilde{\gamma}_{ijk} B^k = \bar{\gamma}_{ij}$<br>
-<br>
-
 Now the full spacetime metric:<br>
 $g_{ab} = \overset{a(i)\downarrow b(j)\rightarrow}{
 	\left[ \matrix{
-		\alpha^2 - (\tilde{\beta}_k - i E_k) (\tilde{\beta}^k + i E^k) & 
-			\tilde{\beta}_j - i E_j \\ 
-		\tilde{\beta}_i + i E_i & 
-			-\tilde{\gamma}_{ij} + i \tilde{\epsilon}_{ijk} B^k
-	} \right]}$
+		\alpha^2 - \bar{\beta}_k \beta^k & 
+			\bar{\beta}_j \\ 
+		\beta_i + i E_i & 
+			-\gamma_{ij}
+	} \right]}$<br>
 $= \overset{a(i)\downarrow b(j)\rightarrow}{
 	\left[ \matrix{
-		\alpha^2 - \tilde{\beta}_k \tilde{\beta}^k + E_k E^k & 
+		\alpha^2 - \bar{(\gamma_{kl} \beta^l)} \beta^k & 
+			\bar{\beta}_j \\ 
+		\beta_i + i E_i & 
+			-\gamma_{ij}
+	} \right]}$<br>
+$= \overset{a(i)\downarrow b(j)\rightarrow}{
+	\left[ \matrix{
+		\alpha^2 - \bar{\gamma}_{kl} \bar{\beta}^l \beta^k & 
+			\bar{\beta}_j \\ 
+		\beta_i + i E_i & 
+			-\gamma_{ij}
+	} \right]}$<br>
+$g_{ab} = \overset{a(i)\downarrow b(j)\rightarrow}{
+	\left[ \matrix{
+		\alpha^2 - \bar{\gamma}_{kl} (\tilde{\beta}^l - i E^l) (\tilde{\beta}^k + i E^k) & 
 			\tilde{\beta}_j - i E_j \\ 
 		\tilde{\beta}_i + i E_i & 
 			-\tilde{\gamma}_{ij} + i \tilde{\epsilon}_{ijk} B^k
-	} \right]}$
+	} \right]}$<br>
+$= \overset{a(i)\downarrow b(j)\rightarrow}{
+	\left[ \matrix{
+		\alpha^2 - (\tilde{\gamma}_{kl} + i \epsilon_{klm} B^m) (\tilde{\beta}^l - i E^l) (\tilde{\beta}^k + i E^k) & 
+			\tilde{\beta}_j - i E_j \\ 
+		\tilde{\beta}_i + i E_i & 
+			-\tilde{\gamma}_{ij} + i \tilde{\epsilon}_{ijk} B^k
+	} \right]}$<br>
+<br>
+
+How about that $g_{tt}$ term.<br>
+$\alpha^2 
+	- \tilde{\beta}_k \tilde{\beta}^k 
+	- i \tilde{\beta}_k E^k
+	+ i E_k \tilde{\beta}^k
+	+ E_k E^k$<br>
+$\alpha^2 
+	- \gamma_{kl} \tilde{\beta}^l \tilde{\beta}^k 
+	- i \gamma_{kl} \tilde{\beta}^l E^k
+	+ i \gamma_{kl} E^l \tilde{\beta}^k
+	+ \gamma_{kl} E^l E^k$<br>
+$\alpha^2 
+	- \gamma_{kl} \tilde{\beta}^l \tilde{\beta}^k 
+	- i \gamma_{kl} \tilde{\beta}^l E^k
+	+ i \bar{\gamma}_{kl} \tilde{\beta}^l E^k
+	+ \gamma_{kl} E^l E^k$<br>
+$\alpha^2 
+	- \gamma_{kl} \tilde{\beta}^l \tilde{\beta}^k 
+	+ \gamma_{kl} E^l E^k
+	- i (\gamma_{kl} - \bar{\gamma}_{kl}) \tilde{\beta}^l E^k
+$<br>
+<br>
+
 $= \left[\matrix{
-	\alpha^2 - \tilde{\beta}_k \tilde{\beta}^k + E_k E^k & \tilde{\beta}_j \\
+	\alpha^2 
+		- \tilde{\beta}_k \tilde{\beta}^k 
+		- i \tilde{\beta}_k E^k
+		+ i E_k \tilde{\beta}^k
+		+ E_k E^k
+	& \tilde{\beta}_j \\
 	\tilde{\beta}_i & -\tilde{\gamma}_{ij}
 }\right] + \left[\matrix{
 	0 & -i E_j \\
 	i E_i & i \tilde{\epsilon}_{ijk} B^k
 }\right]$<br>
-$= \tilde{g}_{ab} + i F_{ab} + \hat{x}^t \hat{x}^t (E_k E^k)$<br>
+$= \tilde{g}_{ab} + i F_{ab} + t_a t_b (E_k E^k)$<br>
 <br>
 
 FIXME - signs and raise/lower esp of B<br>
