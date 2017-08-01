@@ -9,59 +9,127 @@
 
 $g_{ab} \in \mathbb{C}$<br>
 $\tilde{g}_{ab} \in \mathbb{R}$<br>
+<br>
+
+For entertainment I'm going to use a signature of $\eta_{ab} = diag(1, -1, -1, -1)$<br>
+<br>
 
 $g_{ab} = \overset{a(i)\downarrow b(j)\rightarrow}{
 	\left[ \matrix{
-		-\alpha^2 + \bar{\beta}_k \beta^k & 
+		\alpha^2 - \bar{\beta}_k \beta^k & 
 			\bar{\beta}_j \\ 
 		\beta_i & 
-			\gamma_{ij}
+			-\gamma_{ij}
 	} \right]}$<br>
 $g^{ab} = \overset{a(i)\downarrow b(j)\rightarrow}{
 	\left[ \matrix{
-		-1/\alpha^2 & 
+		1/\alpha^2 & 
 			\bar{\beta}^j /\alpha^2 \\ 
 		\beta^i /\alpha^2 & 
-			\gamma^{ij} - \beta^i \bar{\beta}^j /\alpha^2
+			\beta^i \bar{\beta}^j /\alpha^2 - \gamma^{ij}
 	} \right]}$<br>
 <br>
 
 $\delta_a^b = g_{ac} g^{cb}$
 $ = \left[ \matrix{
-		-\alpha^2 + \bar{\beta}_l \beta^l & 
+		\alpha^2 - \bar{\beta}_l \beta^l & 
 			\bar{\beta}_k \\ 
 		\beta_i & 
-			\gamma_{ik}
+			-\gamma_{ik}
 	} \right] \left[ \matrix{
-		-1/\alpha^2 & 
+		1/\alpha^2 & 
 			\bar{\beta}^j /\alpha^2 \\ 
 		\beta^k /\alpha^2 & 
-			\gamma^{kj} - \beta^k \bar{\beta}^j /\alpha^2
+			\beta^k \bar{\beta}^j /\alpha^2 - \gamma^{kj}
 	} \right]$<br>
 <br>
-$\delta_t^t = (-\alpha^2 + \bar{\beta}_l \beta^l) (-1/\alpha^2) + \bar{\beta}_k \beta^k /\alpha^2$<br>
+
+$\delta_t^t = (\alpha^2 - \bar{\beta}_l \beta^l) (1/\alpha^2) + \bar{\beta}_k \beta^k /\alpha^2$<br>
 $= 1 - \bar{\beta}_l \beta^l /\alpha^2 + \bar{\beta}_k \beta^k /\alpha^2$<br>
 $= 1$<br>
 <br>
-$\delta_i^t = \beta_i (-1/\alpha^2) + \gamma_{ik} \beta^k /\alpha^2$<br>
-$\delta_i^t = -\beta_i /\alpha^2 + \beta_i /\alpha^2$<br>
+
+$\delta_i^t = \beta_i (1/\alpha^2) - \gamma_{ik} \beta^k /\alpha^2$<br>
+$\delta_i^t = \beta_i /\alpha^2 - \beta_i /\alpha^2$<br>
 $\delta_i^t = 0$<br>
 <br>
-$\delta_t^i = (-\alpha^2 + \bar{\beta}_l \beta^l) (\bar{\beta}^j/\alpha^2) + \bar{\beta}_k (\gamma^{kj} - \beta^k \beta^j /\alpha^2)$<br>
-$\delta_t^i = -\alpha^2 \bar{\beta}^j/\alpha^2 + \bar{\beta}_l \beta^l \bar{\beta}^j/\alpha^2 + \bar{\beta}_k \gamma^{kj} - \bar{\beta}_k \beta^k \bar{\beta}^j /\alpha^2$<br>
+
+$\delta_t^i = (\alpha^2 - \bar{\beta}_l \beta^l) (\bar{\beta}^j/\alpha^2) + \bar{\beta}_k (\beta^k \beta^j /\alpha^2 - \gamma^{kj})$<br>
+$\delta_t^i = \alpha^2 \bar{\beta}^j/\alpha^2 - \bar{\beta}_l \beta^l \bar{\beta}^j/\alpha^2 + \bar{\beta}_k \beta^k \bar{\beta}^j /\alpha^2 - \bar{\beta}_k \gamma^{kj}$<br>
 $\delta_t^i = 0$<br>
 <br>
-$\delta_i^t = \beta_i (-1/\alpha^2) + \gamma_{ik} \beta^k /\alpha^2$<br>
-$\delta_i^t = 0$<br>
-<br>
-$\delta_i^j = \beta_i \bar{\beta}^j /\alpha^2 + \gamma_{ik} (\gamma^{kj} - \beta^k \bar{\beta}^j /\alpha^2)$<br>
-$\delta_i^j = \beta_i \bar{\beta}^j /\alpha^2 + \gamma_{ik} \gamma^{kj} - \gamma_{ik} \beta^k \bar{\beta}^j /\alpha^2$<br>
+
+$\delta_i^j = \beta_i \bar{\beta}^j /\alpha^2 - \gamma_{ik} (\beta^k \bar{\beta}^j /\alpha^2 - \gamma^{kj})$<br>
+$\delta_i^j = \beta_i \bar{\beta}^j /\alpha^2 - \gamma_{ik} \beta^k \bar{\beta}^j /\alpha^2 + \gamma_{ik} \gamma^{kj}$<br>
 $\delta_i^j = \delta_i^j$<br>
 <br>
 
 Let $\alpha = \tilde{\alpha} \approx 1$<br>
 $\beta^i = \tilde{\beta}^i + i E^i$ for $\tilde{\beta}^i \approx 0$<br>
-$\gamma_{ij} = \tilde{\gamma}_{ij} + i {\epsilon_{ij}}^k B_k$ for $\tilde{\gamma}_{ij} \approx \delta_{ij}$<br>
+$\gamma_{ij} = \tilde{\gamma}_{ij} - i \tilde{\epsilon}_{ijk} B^k$ for $\tilde{\gamma}_{ij} \approx \delta_{ij}$<br>
+for $\tilde{\epsilon}_{ijk} = \sqrt{det (\tilde{\gamma})} [ijk]$, for $[ijk]$ the sign of the permutation of $i,j,k$<br>
+<br>
+What would the spatial inverse metric be?<br>
+Check out the Maxima sheet for derivations:<br>
+$\gamma^{ij} = (\tilde{\gamma}^{ij} - B^i B^j + i \tilde{\epsilon}^{ijk} \tilde{\gamma}_{kl} B^l) / (1 - \tilde{\gamma}_{ij} B^i B^j)$<br>
+For $\tilde{\epsilon}^{ijk} = \frac{1}{\sqrt{\tilde{\gamma}}} [ijk]$<br>
+<br>
+
+Notice that lowering spatial vectors is done by $\gamma_{ij}$, which is a combination of the real spatial $\tilde{\gamma}_{ij}$ and the imaginary magnetic field dual $-i \tilde{\epsilon}_{ijk} B^k$.<br>
+$\beta_i = \gamma_{ij} \beta^j$<br>
+$\tilde{\beta}_i + i E_i = (\tilde{\gamma}_{ij} - i \tilde{\epsilon}_{ijk} B^k) (\tilde{\beta}^j + i E^j)$<br>
+$\tilde{\beta}_i + i E_i = \tilde{\gamma}_{ij} \tilde{\beta}^j + \tilde{\epsilon}_{ijk} E^j B^k + i (\tilde{\gamma}_{ij} E^j - \tilde{\epsilon}_{ijk} \tilde{\beta}^j B^k)$<br>
+<br>
+
+Also notice that $\gamma_{ij} = \tilde{\gamma}_{ij} - i \tilde{\epsilon}_{ijk} B^k$,<br>
+so $\gamma_{ji} = \tilde{\gamma}_{ji} - i \tilde{\gamma}_{jik} B^k = \tilde{\gamma}_{ij} + i \tilde{\gamma}_{ijk} B^k = \bar{\gamma}_{ij}$<br>
+<br>
+
+Now the full spacetime metric:<br>
+$g_{ab} = \overset{a(i)\downarrow b(j)\rightarrow}{
+	\left[ \matrix{
+		\alpha^2 - (\tilde{\beta}_k - i E_k) (\tilde{\beta}^k + i E^k) & 
+			\tilde{\beta}_j - i E_j \\ 
+		\tilde{\beta}_i + i E_i & 
+			-\tilde{\gamma}_{ij} + i \tilde{\epsilon}_{ijk} B^k
+	} \right]}$
+$= \overset{a(i)\downarrow b(j)\rightarrow}{
+	\left[ \matrix{
+		\alpha^2 - \tilde{\beta}_k \tilde{\beta}^k + E_k E^k & 
+			\tilde{\beta}_j - i E_j \\ 
+		\tilde{\beta}_i + i E_i & 
+			-\tilde{\gamma}_{ij} + i \tilde{\epsilon}_{ijk} B^k
+	} \right]}$
+$= \left[\matrix{
+	\alpha^2 - \tilde{\beta}_k \tilde{\beta}^k + E_k E^k & \tilde{\beta}_j \\
+	\tilde{\beta}_i & -\tilde{\gamma}_{ij}
+}\right] + \left[\matrix{
+	0 & -i E_j \\
+	i E_i & i \tilde{\epsilon}_{ijk} B^k
+}\right]$<br>
+$= \tilde{g}_{ab} + i F_{ab} + \hat{x}^t \hat{x}^t (E_k E^k)$<br>
+<br>
+
+FIXME - signs and raise/lower esp of B<br>
+$g^{ab} = \overset{a(i)\downarrow b(j)\rightarrow}{
+	\left[ \matrix{
+		1/\alpha^2 & 
+			(\tilde{\beta}^j - i E^j) /\alpha^2 \\ 
+		(\tilde{\beta}^i + i E^i) /\alpha^2 & 
+			(\tilde{\beta}^i + i E^i) (\tilde{\beta}^j - i E^j) / \alpha^2
+			-\tilde{\gamma}^{ij} 
+			+ i \tilde{\epsilon}_{ijk} B^k
+	} \right]}$
+$= \overset{a(i)\downarrow b(j)\rightarrow}{
+	\left[ \matrix{
+		1/\alpha^2 & 
+			(\tilde{\beta}^j - i E^j) /\alpha^2 \\ 
+		(\tilde{\beta}^i + i E^i) /\alpha^2 & 
+			(\tilde{\beta}^i \tilde{\beta}^j + E^i E^j) /\alpha^2
+			- \tilde{\gamma}^{ij} 
+			+ i (E^i \tilde{\beta}^j - \tilde{\beta}^i E^j) /\alpha^2
+			+ i \tilde{\epsilon}^{ijk} B_k
+	} \right]}$<br>
 <br>
 
 $g_{ab} = i \left[\matrix{
@@ -70,38 +138,14 @@ $g_{ab} = i \left[\matrix{
 	E_y & -B_z & 0 & B_x \\
 	E_z & B_y & -B_x & 0
 }\right] + \tilde{g}_{ab} \approx \left[\matrix{
-	-1 & -i E_x  & -i E_y & -i E_z \\
-	i E_x & 1 & i B_z & -i B_y \\
-	i E_y & -i B_z & 1 & i B_x \\
-	i E_z & i B_y & -i B_x & 1
+	1 & -i E_x  & -i E_y & -i E_z \\
+	i E_x & -1 & i B_z & -i B_y \\
+	i E_y & -i B_z & -1 & i B_x \\
+	i E_z & i B_y & -i B_x & -1
 }\right]$<br>
 <br>
 
-$g_{ab} = \overset{a(i)\downarrow b(j)\rightarrow}{
-	\left[ \matrix{
-		-\alpha^2 + (\tilde{\beta}_k - i E_k) (\tilde{\beta}^k + i E^k) & 
-			\tilde{\beta}_j - i E_j \\ 
-		\tilde{\beta}_i + i E_i & 
-			\tilde{\gamma}_{ij} + i {\tilde{\epsilon}_{ij}}^k B_k
-	} \right]}$
-$= \overset{a(i)\downarrow b(j)\rightarrow}{
-	\left[ \matrix{
-		-\alpha^2 + \tilde{\beta}_k \tilde{\beta}^k + E_k E^k & 
-			\tilde{\beta}_j - i E_j \\ 
-		\tilde{\beta}_i + i E_i & 
-			\tilde{\gamma}_{ij} + i {\tilde{\epsilon}_{ij}}^k B_k
-	} \right]}$<br>
-$g^{ab} = \overset{a(i)\downarrow b(j)\rightarrow}{
-	\left[ \matrix{
-		-1/\alpha^2 & 
-			(\tilde{\beta}^j - i E^j) /\alpha^2 \\ 
-		(\tilde{\beta}^i + i E^i) /\alpha^2 & 
-			\tilde{\gamma}^{ij} 
-			- (\tilde{\beta}^i \tilde{\beta}^j + E^i E^j) /\alpha^2
-			+ i \tilde{\epsilon}^{ijk} B_k
-			- i (E^i \tilde{\beta}^j - \tilde{\beta}^i E^j) /\alpha^2
-	} \right]}$<br>
-<br>
+
 
 $F_{ab} = \left[\matrix{
 	0 & -E_j \\
@@ -109,7 +153,31 @@ $F_{ab} = \left[\matrix{
 }\right]$<br>
 <br>
 
-so for $\tilde{g}_{ab} \approx \tilde{g}^{ab} \approx \eta_{ab}$, we see $g_{ab} = g^{ab} = i F_{ab}$<br>
+so for $\tilde{g}_{ab} \approx \tilde{g}^{ab} \approx \eta_{ab}$, we see $g_{ab} = g^{ab} = \eta_{ab} + i F_{ab}$<br>
+so ${\Gamma^a}_{bc} \approx i \frac{1}{2} (\eta^{ad} + i F^{ad}) (F_{db,c} + F_{dc,b} - F_{bc,d})$<br>
+$\approx i \frac{1}{2} (\eta^{ad} + i F^{ad}) (2 F_{db,c} - F_{db,c} - F_{cd,b} - F_{bc,d})$<br>
+$\approx i (\eta^{ad} + i F^{ad}) F_{db,c}$<br>
+$\approx i {F^a}_{b,c} - F^{ad} F_{db,c}$<br>
+$-\approx \left[\matrix{
+	0 & -E^n \\
+	E^i & \epsilon^{inl} B_l
+}\right] \left[\matrix{
+	0 & -E_{j,c} \\
+	E_{n,c} & {\epsilon_{nj}}^m B_{m,c}
+}\right] + i \left[\matrix{
+	0 & {E^i}_{,c} \\
+	E_{j,c} & {\epsilon^i}_{jk} {B^k}_{,c}
+}\right]$<br>
+$\approx \left[\matrix{
+	-E^n E_{n,c} & - E^n {\epsilon_{nj}}^m B_{m,c} \\
+	\epsilon^{inl} B_l E_{n,c} & -E^i E_{j,c} + \epsilon^{inl} B_l {\epsilon_{nj}}^m B_{m,c}
+}\right]$<br>
+$\approx \left[\matrix{
+	-E^n E_{n,c} & - E^n {\epsilon_{nj}}^m B_{m,c} \\
+	\epsilon^{inl} B_l E_{n,c} & -E^i E_{j,c} - \delta^{il}_{jm} B_l B_{m,c}
+}\right]$<br>
+
+
 <br>
 
 	</body>
