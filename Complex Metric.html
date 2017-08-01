@@ -7,13 +7,34 @@
 	</head>
 	<body onload='tryToFindMathJax();'>
 
-$g_{ab} \in \mathbb{C}$<br>
-$\tilde{g}_{ab} \in \mathbb{R}$<br>
+Let $g_{ab} \in \mathbb{C}$ be a Hermitian metric on a Kahler manifold(? I think.  I'm just now learning about them.)<br>
+Let the real components of $g_{ab}$ be represented as $\tilde{g}_{ab} \in \mathbb{R}$.<br>
 <br>
 
 For entertainment I'm going to use a signature of $\eta_{ab} = diag(1, -1, -1, -1)$<br>
+For entertainment and for the hope of eventually mapping these to the quaternions.<br>
 <br>
 
+Note, Hermitian means $g_{ab} = \bar{g}_{ba}$<br>
+Also note this implies that $a_a = g_{ab} a^b \ne a^b g_{ba} = \bar{g}_{ab} a^b$<br>
+So raising and lowering is different depending on whether it is a left- or right- matrix multiply.<br>
+I'm going to pick a left matrix multiply.  It works best with the ADM decomposition below.<br>
+<br>
+
+This works for raising/lowering indexes when neither (or both) are conjugated.<br> 
+The opposite must be done when raising or lowering indexes when either the vector or the metric is conjugate:<br>
+$\bar{a}^b g_{ba} = \overline{( a^b \bar{g}_{ba} )} = \overline{( g_{ab} a^b )} = \bar{a_a}$<br>
+(Am I going to get into a situation where individual indexes will need to keep track of whether they are conjugated or not?)<br>
+<br>
+
+What does this say about inner products?<br>
+$a^i b_i = \gamma_{ij} a^i b^j$<br>
+$= \bar{\gamma}_{ij} a^i b^j$ by exchanging indexes, or by transposing $\gamma_{ij}$<br>
+so norms must be real:<br>
+$a_i a^i = \gamma_{ij} a^j a^i = \overline{( \bar{\gamma}_{ij} \bar{a}^j \bar{a}^i )} = \overline{( \gamma_{ji} \bar{a}^j \bar{a}^i )} = \overline{( \bar{a}_i \bar{a}^i )} = a_i a^i$<br>
+<br>
+
+ADM decomposition:<br>
 $g_{ab} = \overset{a(i)\downarrow b(j)\rightarrow}{
 	\left[ \matrix{
 		\alpha^2 - \bar{\beta}_k \beta^k & 
@@ -30,7 +51,8 @@ $g^{ab} = \overset{a(i)\downarrow b(j)\rightarrow}{
 	} \right]}$<br>
 <br>
 
-$\delta_a^b = g_{ac} g^{cb}$
+Orthogonality:<br>
+$g_{ac} g^{cb}$
 $ = \left[ \matrix{
 		\alpha^2 - \bar{\beta}_l \beta^l & 
 			\bar{\beta}_k \\ 
@@ -44,101 +66,87 @@ $ = \left[ \matrix{
 	} \right]$<br>
 <br>
 
-$\delta_t^t = (\alpha^2 - \bar{\beta}_l \beta^l) (1/\alpha^2) + \bar{\beta}_k \beta^k /\alpha^2$<br>
+$g_{tc} g^{ct} = (\alpha^2 - \bar{\beta}_l \beta^l) (1/\alpha^2) + \bar{\beta}_k \beta^k /\alpha^2$<br>
 $= 1 - \bar{\beta}_l \beta^l /\alpha^2 + \bar{\beta}_k \beta^k /\alpha^2$<br>
 $= 1$<br>
 <br>
 
-$\delta_i^t = \beta_i (1/\alpha^2) - \gamma_{ik} \beta^k /\alpha^2$<br>
-$\delta_i^t = \beta_i /\alpha^2 - \beta_i /\alpha^2$<br>
-$\delta_i^t = 0$<br>
+$g_{ic} g^{ct} = \beta_i (1/\alpha^2) - \gamma_{ik} \beta^k /\alpha^2$<br>
+$= \beta_i /\alpha^2 - \beta_i /\alpha^2$<br>
+$= 0$<br>
+Notice the lower using left multiply: $\beta_i = \gamma_{ik} \beta^k$<br>
 <br>
 
-$\delta_t^i = (\alpha^2 - \bar{\beta}_l \beta^l) (\bar{\beta}^j/\alpha^2) + \bar{\beta}_k (\beta^k \beta^j /\alpha^2 - \gamma^{kj})$<br>
-$\delta_t^i = \alpha^2 \bar{\beta}^j/\alpha^2 - \bar{\beta}_l \beta^l \bar{\beta}^j/\alpha^2 + \bar{\beta}_k \beta^k \bar{\beta}^j /\alpha^2 - \bar{\beta}_k \gamma^{kj}$<br>
-$\delta_t^i = 0$<br>
+$g_{tc} g^{cj} = (\alpha^2 - \bar{\beta}_l \beta^l) (\bar{\beta}^j/\alpha^2) + \bar{\beta}_k (\beta^k \beta^j /\alpha^2 - \gamma^{kj})$<br>
+$= \alpha^2 \bar{\beta}^j/\alpha^2 - \bar{\beta}_l \beta^l \bar{\beta}^j/\alpha^2 + \bar{\beta}_k \beta^k \bar{\beta}^j /\alpha^2 - \bar{\beta}_k \gamma^{kj}$<br>
+$= \bar{\beta}^j - \bar{\beta}_k \gamma^{kj}$<br>
+$= \bar{\beta}^j - \bar{\beta}^j$<br>
+$= 0$<br>
+Notice raising a conjugate vector and non-conjugated metric requires a right-hand multiply: $\bar{\beta}_k \gamma^{kj} = \bar{\beta}^j$<br>
 <br>
 
-$\delta_i^j = \beta_i \bar{\beta}^j /\alpha^2 - \gamma_{ik} (\beta^k \bar{\beta}^j /\alpha^2 - \gamma^{kj})$<br>
-$\delta_i^j = \beta_i \bar{\beta}^j /\alpha^2 - \gamma_{ik} \beta^k \bar{\beta}^j /\alpha^2 + \gamma_{ik} \gamma^{kj}$<br>
-$\delta_i^j = \delta_i^j$<br>
-<br>
-
-TODO verify that the same works for $\delta^a_b = g^{ac} g_{cb}$<br>
+$g_{ic} g^{cj} = \beta_i \bar{\beta}^j /\alpha^2 - \gamma_{ik} (\beta^k \bar{\beta}^j /\alpha^2 - \gamma^{kj})$<br>
+$= \beta_i \bar{\beta}^j /\alpha^2 - \gamma_{ik} \beta^k \bar{\beta}^j /\alpha^2 + \gamma_{ik} \gamma^{kj}$<br>
+$= \delta_i^j$<br>
+Once again, using a left-multiply to lower $\beta_i = \gamma_{ik} \beta^k$<br>
 <br>
 
 Let $\tilde{\alpha}, \tilde{\beta}^i, \tilde{\gamma}_{ij} \in \mathbb{R}$ be the analogous components of $\tilde{g}_{ab}$<br>
-Let $\alpha = \tilde{\alpha} \approx 1$<br>
-$\beta^i = \tilde{\beta}^i + i E^i$ for $\tilde{\beta}^i \approx 0$<br>
-$\gamma_{ij} = \tilde{\gamma}_{ij} - i \tilde{\epsilon}_{ijk} B^k$ for $\tilde{\gamma}_{ij} \approx \delta_{ij}$<br>
-for $\tilde{\epsilon}_{ijk} = \sqrt{det (\tilde{\gamma})} [ijk]$, for $[ijk]$ the sign of the permutation of $i,j,k$<br>
+Let $\alpha = \tilde{\alpha}$.  This is mandated because $g_{ab}$ is Hermitian, so the diagonals (which include $1/\alpha^2$) must be real.<br>
+It is only $1/\alpha^2$ that must be real, so $\alpha$ could be a real, or purely imaginary.<br>
+Let $\beta^i = \tilde{\beta}^i + i E^i$ for $\tilde{\beta}^i \in \mathbb{R}$<br>
+Let $\gamma_{ij} = \tilde{\gamma}_{ij} - i \tilde{\epsilon}_{ijk} B^k$ for $\tilde{\gamma}_{ij} \in \mathbb{R}$<br>
+$\tilde{\epsilon}_{ijk} = \sqrt{det (\tilde{\gamma})} [ijk]$ is the Levi-Civita tensor on the spatial metric.<br>
+$[ijk]$ the sign of the permutation of $i,j,k$.<br>
 <br>
-What would the spatial inverse metric be?<br>
+
+What would the spatial inverse metric $\gamma^{ij}$ be?<br>
 Check out the Maxima sheet for derivations:<br>
 $\gamma^{ij} = (\tilde{\gamma}^{ij} - B^i B^j + i \tilde{\epsilon}^{ijk} \tilde{\gamma}_{kl} B^l) / (1 - \tilde{\gamma}_{kl} B^k B^l)$<br>
 For $\tilde{\epsilon}^{ijk} = \frac{1}{\sqrt{\tilde{\gamma}}} [ijk]$<br>
-Don't forget that $\frac{\gamma}{\tilde{\gamma}} = 1 - \tilde{\gamma}_{kl} B^k B^l$<br>
-In fact, let $\mu = \frac{\tilde{\gamma}}{\gamma}$<br>
+Notice that $\frac{\gamma}{\tilde{\gamma}} = 1 - \tilde{\gamma}_{kl} B^k B^l$<br>
+Let $\mu = \frac{\tilde{\gamma}}{\gamma}$<br>
 Now $\gamma^{ij} = \mu (\tilde{\gamma}^{ij} - B^i B^j + i \tilde{\epsilon}^{ijk} \tilde{\gamma}_{kl} B^l)$<br>
 <br>
 
-Notice that $\gamma_{ij} = \tilde{\gamma}_{ij} - i \tilde{\epsilon}_{ijk} B^k$,<br>
-so $\gamma_{ji} = \tilde{\gamma}_{ji} - i \tilde{\gamma}_{jik} B^k = \tilde{\gamma}_{ij} + i \tilde{\gamma}_{ijk} B^k = \bar{\gamma}_{ij}$.<br>
-This means I have to become more formal when raising/lowering: whether it involves a left or a right multiplication of the metric?<br>
-For example, consider $E_i$<br>
-For left multiply, $E_i = \gamma_{ij} E^j = (\tilde{\gamma}_{ij} - i \tilde{\epsilon}_{ijk} B^k) E^j$<br>
-For right multiply, $E_i = E^j \gamma_{ji} = \bar{\gamma}_{ij} E^j = (\tilde{\gamma}_{ij} + i \tilde{\epsilon}_{ijk} B^k) E^j$<br>
-So left-multiply lowering vectors and right-multiply lowering vectors produce conjugates of one another.<br>
-If a vector is lowered with left-multiplication, it must be raised with left-multiplication of the inverse as well -- or right-multiplication of the inverse conjugate.<br>
-<br>
-
-What does this say about norms?<br>
-$\gamma_{ij} a^i b^j$<br>
-$= \bar{\gamma}_{ij} a^i b^j$<br>
-so norms better be real, or else?<br>
-<br>
-
 Notice that lowering spatial vectors is done by $\gamma_{ij}$, which is a combination of the real spatial $\tilde{\gamma}_{ij}$ and the imaginary magnetic field dual $-i \tilde{\epsilon}_{ijk} B^k$.<br>
-$\beta_i = \gamma_{ij} \beta^j$<br>
-$\tilde{\beta}_i + i E_i = (\tilde{\gamma}_{ij} - i \tilde{\epsilon}_{ijk} B^k) (\tilde{\beta}^j + i E^j)$<br>
+$\beta_i = \gamma_{ij} \beta^j = \gamma_{ij} (\tilde{\beta}^j + i E^j)$<br>
+$= \tilde{\beta}_i + i E_i = (\tilde{\gamma}_{ij} - i \tilde{\epsilon}_{ijk} B^k) (\tilde{\beta}^j + i E^j)$<br>
 $\tilde{\beta}_i + i E_i = \tilde{\gamma}_{ij} \tilde{\beta}^j + \tilde{\epsilon}_{ijk} E^j B^k + i (\tilde{\gamma}_{ij} E^j - \tilde{\epsilon}_{ijk} \tilde{\beta}^j B^k)$<br>
+Compare real components:<br>
+$\tilde{\beta}_i = \gamma_{ij} \beta^j = \tilde{\gamma}_{ij} \tilde{\beta}^j + \tilde{\epsilon}_{ijk} E^j B^k$<br>
+This says that lowering the real shift vector with the Kahler spatial metric is only equal to lowering the real shift vector with the real metric
+if the electric and magnetic fields are parallel.<br>
+Compare imaginary components:<br>
+$E_i = \gamma_{ij} E^j = \tilde{\gamma}_{ij} E^j - \tilde{\epsilon}_{ijk} \tilde{\beta}^j B^k$<br>
+Once again, lowering the $E$ field with the Kahler metric only matches lowering with the real metric if the real shift vector and magnetic field vector are parallel.<br>
 <br>
 
-Now the full spacetime metric:<br>
-$g_{ab} = \overset{a(i)\downarrow b(j)\rightarrow}{
+Now to represent it in ADM metric form:<br>
+$g_{ab} = a(i)\downarrow \overset{b(j)\rightarrow}{
 	\left[ \matrix{
-		\alpha^2 - \bar{\beta}_k \beta^k & 
-			\bar{\beta}_j \\ 
-		\beta_i + i E_i & 
-			-\gamma_{ij}
+		\alpha^2 - \bar{\beta}_k \beta^k & \bar{\beta}_j \\ 
+		\beta_i & -\gamma_{ij}
 	} \right]}$<br>
-$= \overset{a(i)\downarrow b(j)\rightarrow}{
+$= a(i)\downarrow \overset{b(j)\rightarrow}{
 	\left[ \matrix{
-		\alpha^2 - \bar{(\gamma_{kl} \beta^l)} \beta^k & 
-			\bar{\beta}_j \\ 
-		\beta_i + i E_i & 
-			-\gamma_{ij}
+		\alpha^2 - \overline{(\gamma_{kl} \beta^l)} \beta^k & \bar{\beta}_j \\ 
+		\beta_i & -\gamma_{ij}
 	} \right]}$<br>
-$= \overset{a(i)\downarrow b(j)\rightarrow}{
+$= a(i)\downarrow \overset{b(j)\rightarrow}{
 	\left[ \matrix{
-		\alpha^2 - \bar{\gamma}_{kl} \bar{\beta}^l \beta^k & 
-			\bar{\beta}_j \\ 
-		\beta_i + i E_i & 
-			-\gamma_{ij}
+		\alpha^2 - \bar{\gamma}_{kl} \bar{\beta}^l \beta^k & \bar{\beta}_j \\ 
+		\beta_i & -\gamma_{ij}
 	} \right]}$<br>
-$g_{ab} = \overset{a(i)\downarrow b(j)\rightarrow}{
+$= a(i)\downarrow \overset{b(j)\rightarrow}{
 	\left[ \matrix{
-		\alpha^2 - \bar{\gamma}_{kl} (\tilde{\beta}^l - i E^l) (\tilde{\beta}^k + i E^k) & 
-			\tilde{\beta}_j - i E_j \\ 
-		\tilde{\beta}_i + i E_i & 
-			-\tilde{\gamma}_{ij} + i \tilde{\epsilon}_{ijk} B^k
+		\alpha^2 - \bar{\gamma}_{kl} (\tilde{\beta}^l - i E^l) (\tilde{\beta}^k + i E^k) & \tilde{\beta}_j - i E_j \\ 
+		\tilde{\beta}_i + i E_i & -\tilde{\gamma}_{ij} + i \tilde{\epsilon}_{ijk} B^k
 	} \right]}$<br>
-$= \overset{a(i)\downarrow b(j)\rightarrow}{
+$= a(i)\downarrow \overset{b(j)\rightarrow}{
 	\left[ \matrix{
-		\alpha^2 - (\tilde{\gamma}_{kl} + i \tilde{\epsilon}_{klm} B^m) (\tilde{\beta}^l - i E^l) (\tilde{\beta}^k + i E^k) & 
-			\tilde{\beta}_j - i E_j \\ 
-		\tilde{\beta}_i + i E_i & 
-			-\tilde{\gamma}_{ij} + i \tilde{\epsilon}_{ijk} B^k
+		\alpha^2 - (\tilde{\gamma}_{kl} + i \tilde{\epsilon}_{klm} B^m) (\tilde{\beta}^l - i E^l) (\tilde{\beta}^k + i E^k) & \tilde{\beta}_j - i E_j \\ 
+		\tilde{\beta}_i + i E_i & -\tilde{\gamma}_{ij} + i \tilde{\epsilon}_{ijk} B^k
 	} \right]}$<br>
 <br>
 
@@ -219,6 +227,12 @@ It doesn't even have the decency to match the signs of $F^{ab}$, which means may
 <br>
 
 Approximating the metric to flat space:<br>
+
+Let $\alpha = \tilde{\alpha} \approx 1$<br>
+$\beta^i = \tilde{\beta}^i + i E^i$ for $\tilde{\beta}^i \approx 0$<br>
+$\gamma_{ij} = \tilde{\gamma}_{ij} - i \tilde{\epsilon}_{ijk} B^k$ for $\tilde{\gamma}_{ij} \approx \delta_{ij}$<br>
+for $\tilde{\epsilon}_{ijk} = \sqrt{det (\tilde{\gamma})} [ijk]$, for $[ijk]$ the sign of the permutation of $i,j,k$<br>
+
 $g_{ab} = i \left[\matrix{
 	0 & -E_x  & -E_y & -E_z \\
 	E_x & 0 & B_z & -B_y \\
