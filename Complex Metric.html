@@ -64,6 +64,9 @@ $\delta_i^j = \beta_i \bar{\beta}^j /\alpha^2 - \gamma_{ik} \beta^k \bar{\beta}^
 $\delta_i^j = \delta_i^j$<br>
 <br>
 
+TODO verify that the same works for $\delta^a_b = g^{ac} g_{cb}$<br>
+<br>
+
 Let $\tilde{\alpha}, \tilde{\beta}^i, \tilde{\gamma}_{ij} \in \mathbb{R}$ be the analogous components of $\tilde{g}_{ab}$<br>
 Let $\alpha = \tilde{\alpha} \approx 1$<br>
 $\beta^i = \tilde{\beta}^i + i E^i$ for $\tilde{\beta}^i \approx 0$<br>
@@ -72,8 +75,11 @@ for $\tilde{\epsilon}_{ijk} = \sqrt{det (\tilde{\gamma})} [ijk]$, for $[ijk]$ th
 <br>
 What would the spatial inverse metric be?<br>
 Check out the Maxima sheet for derivations:<br>
-$\gamma^{ij} = (\tilde{\gamma}^{ij} - B^i B^j + i \tilde{\epsilon}^{ijk} \tilde{\gamma}_{kl} B^l) / (1 - \tilde{\gamma}_{ij} B^i B^j)$<br>
+$\gamma^{ij} = (\tilde{\gamma}^{ij} - B^i B^j + i \tilde{\epsilon}^{ijk} \tilde{\gamma}_{kl} B^l) / (1 - \tilde{\gamma}_{kl} B^k B^l)$<br>
 For $\tilde{\epsilon}^{ijk} = \frac{1}{\sqrt{\tilde{\gamma}}} [ijk]$<br>
+Don't forget that $\frac{\gamma}{\tilde{\gamma}} = 1 - \tilde{\gamma}_{kl} B^k B^l$<br>
+In fact, let $\mu = \frac{\tilde{\gamma}}{\gamma}$<br>
+Now $\gamma^{ij} = \mu (\tilde{\gamma}^{ij} - B^i B^j + i \tilde{\epsilon}^{ijk} \tilde{\gamma}_{kl} B^l)$<br>
 <br>
 
 Notice that $\gamma_{ij} = \tilde{\gamma}_{ij} - i \tilde{\epsilon}_{ijk} B^k$,<br>
@@ -169,28 +175,50 @@ $= \tilde{g}_{ab} + i F_{ab} - t_a t_b (
 )$<br>
 <br>
 
+Now for the inverse:<br>
 $g^{ab} = \overset{a(i)\downarrow b(j)\rightarrow}{
+	\left[ \matrix{
+		1/\alpha^2 & 
+			\bar{\beta}^j /\alpha^2 \\ 
+		\beta^i /\alpha^2 & 
+			\beta^i \bar{\beta}^j /\alpha^2 - \gamma^{ij}
+	} \right]}$<br>
+$= \overset{a(i)\downarrow b(j)\rightarrow}{
 	\left[ \matrix{
 		1/\alpha^2 & 
 			(\tilde{\beta}^j - i E^j) /\alpha^2 \\ 
 		(\tilde{\beta}^i + i E^i) /\alpha^2 & 
 			(\tilde{\beta}^i + i E^i) (\tilde{\beta}^j - i E^j) / \alpha^2
-			-\tilde{\gamma}^{ij} 
-			+ i \tilde{\epsilon}_{ijk} B^k
+		- \mu (\tilde{\gamma}^{ij} - B^i B^j + i \tilde{\epsilon}^{ijk} \tilde{\gamma}_{kl} B^l)
 	} \right]}$<br>
-FIXME<br>
 $= \overset{a(i)\downarrow b(j)\rightarrow}{
 	\left[ \matrix{
 		1/\alpha^2 & 
 			(\tilde{\beta}^j - i E^j) /\alpha^2 \\ 
 		(\tilde{\beta}^i + i E^i) /\alpha^2 & 
 			(\tilde{\beta}^i \tilde{\beta}^j + E^i E^j) /\alpha^2
-			- \tilde{\gamma}^{ij} 
+			- \mu (\tilde{\gamma}^{ij} - B^i B^j)
 			+ i (E^i \tilde{\beta}^j - \tilde{\beta}^i E^j) /\alpha^2
-			+ i \tilde{\epsilon}^{ijk} B_k
+			+ i \mu \tilde{\epsilon}^{ijk} \tilde{\gamma}_{kl} B^l
 	} \right]}$<br>
 <br>
+$ = \left[\matrix{
+	1/\alpha^2 & \tilde{\beta}^j / \alpha^2 \\
+	\tilde{\beta}^i / \alpha^2 & \tilde{\beta}^i \tilde{\beta}^j / \alpha^2 - \mu \gamma^{ij}
+}\right] + i \left[\matrix{
+	0 & -E^j / \alpha^2 \\
+	E^i / \alpha^2 & 
+		\mu \tilde{\epsilon}^{ijk} \tilde{\gamma}_{kl} B^l
+}\right] + \left[\matrix{
+	0 & 0 \\
+	0 & 
+		E^i E^j / \alpha^2 + \mu B^i B^j + i (E^i \tilde{\beta}^j - \tilde{\beta}^i E^j)
+}\right]$<br>
+...which doesn't quite exactly look like $\tilde{g}^{ab} + i F_{ab} + $ extra terms in the $x_i x_j$ components.<br>
+It doesn't even have the decency to match the signs of $F^{ab}$, which means maybe I should've been transposing my $g^{ab}$ when verifying that $g_{ac} g^{cb} = \delta_a^b$<br>
+<br>
 
+Approximating the metric to flat space:<br>
 $g_{ab} = i \left[\matrix{
 	0 & -E_x  & -E_y & -E_z \\
 	E_x & 0 & B_z & -B_y \\
