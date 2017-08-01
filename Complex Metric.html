@@ -7,8 +7,7 @@
 	</head>
 	<body onload='tryToFindMathJax();'>
 
-Let $g_{ab} \in \mathbb{C}$ be a Hermitian metric on a Kahler manifold(? I think.  I'm just now learning about them.)<br>
-Let the real components of $g_{ab}$ be represented as $\tilde{g}_{ab} \in \mathbb{R}$.<br>
+Let $g_{ab} \in \mathbb{C}$ be a Hermitian metric (on a Kahler manifold I think?  I'm just now learning about them).<br>
 <br>
 
 For entertainment I'm going to use a signature of $\eta_{ab} = diag(1, -1, -1, -1)$<br>
@@ -24,14 +23,19 @@ I'm going to pick a left matrix multiply.  It works best with the ADM decomposit
 This works for raising/lowering indexes when neither (or both) are conjugated.<br> 
 The opposite must be done when raising or lowering indexes when either the vector or the metric is conjugate:<br>
 $\bar{a}^b g_{ba} = \overline{( a^b \bar{g}_{ba} )} = \overline{( g_{ab} a^b )} = \bar{a_a}$<br>
+Notice this means that $\bar{a}_i \ne \overline{( a_i )}$<br>
 (Am I going to get into a situation where individual indexes will need to keep track of whether they are conjugated or not?)<br>
 <br>
 
 What does this say about inner products?<br>
-$a^i b_i = \gamma_{ij} a^i b^j$<br>
-$= \bar{\gamma}_{ij} a^i b^j$ by exchanging indexes, or by transposing $\gamma_{ij}$<br>
-so norms must be real:<br>
-$a_i a^i = \gamma_{ij} a^j a^i = \overline{( \bar{\gamma}_{ij} \bar{a}^j \bar{a}^i )} = \overline{( \gamma_{ji} \bar{a}^j \bar{a}^i )} = \overline{( \bar{a}_i \bar{a}^i )} = a_i a^i$<br>
+Norms must be real:<br>
+$\bar{a}_i a^i = \bar{a}^i \gamma_{ij} a^j$<br>
+$= \bar{a}^i \bar{\gamma}_{ij} a^j$ by conjugation<br>
+$= \bar{a}^i \gamma_{ij} a^j$ by transpose and relabeling indexes<br>
+I'm picking this definition of the norm based on the must-be-real component of the ADM metric ...<br>
+... which I only came up with by the identity $g_{ac} g^{cb} = \delta_a^b$ ...<br>
+... and maybe that's wrong, maybe it should be $\bar{g}_{ac} g^{cb} = \delta_a^b$, just like the norm?<br>
+Ok, time to read up on Kahler manifolds, and stop guessing how they work...<br>
 <br>
 
 ADM decomposition:<br>
@@ -91,11 +95,38 @@ $= \delta_i^j$<br>
 Once again, using a left-multiply to lower $\beta_i = \gamma_{ik} \beta^k$<br>
 <br>
 
+Now for combining the gravitational metric (real) with the Faraday tensor (imaginary)<br>
+
+The Faraday tensor:<br>
+$F_{ab} = \left[\matrix{
+	0 & -E_j \\
+	E_i & {\tilde{\epsilon}_{ij}}^k B_k
+}\right]$<br>
+<br>
+
+Let the real components of $g_{ab}$ be represented as $\tilde{g}_{ab} \in \mathbb{R}$.<br>
+Let $g_{ab} \approx \tilde{g}_{ab} + i F_{ab}$<br>
+$\tilde{g}_{ab} \approx diag(1, -1, -1, -1)$<br>
+$g_{ab} \approx \left[\matrix{
+	1 & -i E_x  & -i E_y & -i E_z \\
+	i E_x & -1 & i B_z & -i B_y \\
+	i E_y & -i B_z & -1 & i B_x \\
+	i E_z & i B_y & -i B_x & -1
+}\right]$<br>
+Full derivation is below.<br>
+<br>
+
 Let $\tilde{\alpha}, \tilde{\beta}^i, \tilde{\gamma}_{ij} \in \mathbb{R}$ be the analogous components of $\tilde{g}_{ab}$<br>
-Let $\alpha = \tilde{\alpha}$.  This is mandated because $g_{ab}$ is Hermitian, so the diagonals (which include $1/\alpha^2$) must be real.<br>
+<br>
+
+Let $\alpha = \tilde{\alpha} \approx 1$.  This is mandated because $g_{ab}$ is Hermitian, so the diagonals (which include $1/\alpha^2$) must be real.<br>
 It is only $1/\alpha^2$ that must be real, so $\alpha$ could be a real, or purely imaginary.<br>
-Let $\beta^i = \tilde{\beta}^i + i E^i$ for $\tilde{\beta}^i \in \mathbb{R}$<br>
-Let $\gamma_{ij} = \tilde{\gamma}_{ij} - i \tilde{\epsilon}_{ijk} B^k$ for $\tilde{\gamma}_{ij} \in \mathbb{R}$<br>
+<br>
+
+Let $\beta^i = \tilde{\beta}^i + i E^i$ for $\tilde{\beta}^i \in \mathbb{R}, \tilde{\beta}^i \approx 0$<br>
+<br>
+
+Let $\gamma_{ij} = \tilde{\gamma}_{ij} - i \tilde{\epsilon}_{ijk} B^k$ for $\tilde{\gamma}_{ij} \in \mathbb{R}, \tilde{\gamma}_{ij} \approx \delta_{ij}$<br>
 $\tilde{\epsilon}_{ijk} = \sqrt{det (\tilde{\gamma})} [ijk]$ is the Levi-Civita tensor on the spatial metric.<br>
 $[ijk]$ the sign of the permutation of $i,j,k$.<br>
 <br>
@@ -115,11 +146,11 @@ $= \tilde{\beta}_i + i E_i = (\tilde{\gamma}_{ij} - i \tilde{\epsilon}_{ijk} B^k
 $\tilde{\beta}_i + i E_i = \tilde{\gamma}_{ij} \tilde{\beta}^j + \tilde{\epsilon}_{ijk} E^j B^k + i (\tilde{\gamma}_{ij} E^j - \tilde{\epsilon}_{ijk} \tilde{\beta}^j B^k)$<br>
 Compare real components:<br>
 $\tilde{\beta}_i = \gamma_{ij} \beta^j = \tilde{\gamma}_{ij} \tilde{\beta}^j + \tilde{\epsilon}_{ijk} E^j B^k$<br>
-This says that lowering the real shift vector with the Kahler spatial metric is only equal to lowering the real shift vector with the real metric
+This says that lowering the real shift vector with the Hermitian spatial metric is only equal to lowering the real shift vector with the real metric
 if the electric and magnetic fields are parallel.<br>
 Compare imaginary components:<br>
 $E_i = \gamma_{ij} E^j = \tilde{\gamma}_{ij} E^j - \tilde{\epsilon}_{ijk} \tilde{\beta}^j B^k$<br>
-Once again, lowering the $E$ field with the Kahler metric only matches lowering with the real metric if the real shift vector and magnetic field vector are parallel.<br>
+Once again, lowering the $E$ field with the Hermitian metric only matches lowering with the real metric if the real shift vector and magnetic field vector are parallel.<br>
 <br>
 
 Now to represent it in ADM metric form:<br>
@@ -130,28 +161,17 @@ $g_{ab} = a(i)\downarrow \overset{b(j)\rightarrow}{
 	} \right]}$<br>
 $= a(i)\downarrow \overset{b(j)\rightarrow}{
 	\left[ \matrix{
-		\alpha^2 - \overline{(\gamma_{kl} \beta^l)} \beta^k & \bar{\beta}_j \\ 
-		\beta_i & -\gamma_{ij}
-	} \right]}$<br>
-$= a(i)\downarrow \overset{b(j)\rightarrow}{
-	\left[ \matrix{
-		\alpha^2 - \bar{\gamma}_{kl} \bar{\beta}^l \beta^k & \bar{\beta}_j \\ 
-		\beta_i & -\gamma_{ij}
-	} \right]}$<br>
-$= a(i)\downarrow \overset{b(j)\rightarrow}{
-	\left[ \matrix{
-		\alpha^2 - \bar{\gamma}_{kl} (\tilde{\beta}^l - i E^l) (\tilde{\beta}^k + i E^k) & \tilde{\beta}_j - i E_j \\ 
-		\tilde{\beta}_i + i E_i & -\tilde{\gamma}_{ij} + i \tilde{\epsilon}_{ijk} B^k
-	} \right]}$<br>
-$= a(i)\downarrow \overset{b(j)\rightarrow}{
-	\left[ \matrix{
-		\alpha^2 - (\tilde{\gamma}_{kl} + i \tilde{\epsilon}_{klm} B^m) (\tilde{\beta}^l - i E^l) (\tilde{\beta}^k + i E^k) & \tilde{\beta}_j - i E_j \\ 
+		\alpha^2 - \overline{(\tilde{\beta}_k + i E_k)} (\tilde{\beta}^k + i E^k) & \tilde{\beta}_j - i E_j \\ 
 		\tilde{\beta}_i + i E_i & -\tilde{\gamma}_{ij} + i \tilde{\epsilon}_{ijk} B^k
 	} \right]}$<br>
 <br>
 
 How about that $g_{tt}$ term.<br>
-$g_{tt} = \alpha^2 - (\tilde{\gamma}_{kl} + i \tilde{\epsilon}_{klm} B^m) (\tilde{\beta}^l - i E^l) (\tilde{\beta}^k + i E^k)$<br>
+$g_{tt} = \alpha^2 - \bar{\beta}_k \beta^k$<br>
+$= \alpha^2 - \overline{(\gamma_{kl} \beta^l)} \beta^k$<br> 
+$= \alpha^2 - \bar{\gamma}_{kl} \bar{\beta}^l \beta^k$<br>
+$= \alpha^2 - \bar{\gamma}_{kl} (\tilde{\beta}^l - i E^l) (\tilde{\beta}^k + i E^k)$<br>
+$= \alpha^2 - (\tilde{\gamma}_{kl} + i \tilde{\epsilon}_{klm} B^m) (\tilde{\beta}^l - i E^l) (\tilde{\beta}^k + i E^k)$<br>
 $= \alpha^2 - (\tilde{\gamma}_{kl} + i \tilde{\epsilon}_{klm} B^m) (\tilde{\beta}^l \tilde{\beta}^k + i \tilde{\beta}^l E^k - i E^l \tilde{\beta}^k + E^l E^k)$<br>
 $= \alpha^2 - (
 	  \tilde{\gamma}_{kl} \tilde{\beta}^l \tilde{\beta}^k 
@@ -172,26 +192,52 @@ Back to $g_{ab}$:<br>
 $g_{ab} = \left[\matrix{
 	\alpha^2 - \tilde{\gamma}_{kl} (\tilde{\beta}^l \tilde{\beta}^k + E^k E^l)
 		- 2 \tilde{\epsilon}_{klm} \tilde{\beta}^k E^l B^m & 
+	\tilde{\beta}_j - i E_j \\
+	\tilde{\beta}_i + i E_i &
+	-\tilde{\gamma}_{ij} + i \tilde{\epsilon}_{ijk} B^k
+}\right]$<br>
+$= \left[\matrix{
+	\alpha^2 - \tilde{\gamma}_{kl} (\tilde{\beta}^l \tilde{\beta}^k + E^k E^l)
+		- 2 \tilde{\epsilon}_{klm} \tilde{\beta}^k E^l B^m & 
 	\tilde{\beta}_j \\
 	\tilde{\beta}_i & -\tilde{\gamma}_{ij}
 }\right] + \left[\matrix{
 	0 & -i E_j \\
 	i E_i & i \tilde{\epsilon}_{ijk} B^k
 }\right]$<br>
-$= \tilde{g}_{ab} + i F_{ab} - t_a t_b (
-  \tilde{\gamma}_{kl} E^k E^l + 2 \tilde{\epsilon}_{klm} \tilde{\beta}^k E^l B^m
-)$<br>
+$= \left[\matrix{
+	\alpha^2 - \tilde{\gamma}_{kl} \tilde{\beta}^l \tilde{\beta}^k & \tilde{\beta}_j \\
+	\tilde{\beta}_i & -\tilde{\gamma}_{ij}
+}\right] + \left[\matrix{
+	0 & -i E_j \\
+	i E_i & i \tilde{\epsilon}_{ijk} B^k
+}\right] + \left[\matrix{
+	-\tilde{\gamma}_{kl} E^k E^l - 2 \tilde{\epsilon}_{klm} \tilde{\beta}^k E^l B^m & 0 \\
+	0 & 0
+}\right]$<br>
+$= \tilde{g}_{ab} + i F_{ab} + (g^*)_{ab}$<br>
+<br>
+
+For $\tilde{g}_{ab} = \left[\matrix{
+	\alpha^2 - \tilde{\gamma}_{kl} \tilde{\beta}^l \tilde{\beta}^k & \tilde{\beta}_j \\
+	\tilde{\beta}_i & -\tilde{\gamma}_{ij}
+}\right]$<br>
+is the metric formed from the real components of the lapse, shift, and spatial metric.<br>
+For $(g^*)_{ab} = \left[\matrix{
+  -\tilde{\gamma}_{kl} E^k E^l - 2 \tilde{\epsilon}_{klm} \tilde{\beta}^k E^l B^m & 0 \\ 
+  0 & 0
+}\right]$<br>
 <br>
 
 Now for the inverse:<br>
-$g^{ab} = \overset{a(i)\downarrow b(j)\rightarrow}{
+$g^{ab} = a(i)\downarrow \overset{b(j)\rightarrow}{
 	\left[ \matrix{
 		1/\alpha^2 & 
 			\bar{\beta}^j /\alpha^2 \\ 
 		\beta^i /\alpha^2 & 
 			\beta^i \bar{\beta}^j /\alpha^2 - \gamma^{ij}
 	} \right]}$<br>
-$= \overset{a(i)\downarrow b(j)\rightarrow}{
+$= a(i)\downarrow \overset{b(j)\rightarrow}{
 	\left[ \matrix{
 		1/\alpha^2 & 
 			(\tilde{\beta}^j - i E^j) /\alpha^2 \\ 
@@ -199,7 +245,7 @@ $= \overset{a(i)\downarrow b(j)\rightarrow}{
 			(\tilde{\beta}^i + i E^i) (\tilde{\beta}^j - i E^j) / \alpha^2
 		- \mu (\tilde{\gamma}^{ij} - B^i B^j + i \tilde{\epsilon}^{ijk} \tilde{\gamma}_{kl} B^l)
 	} \right]}$<br>
-$= \overset{a(i)\downarrow b(j)\rightarrow}{
+$= a(i)\downarrow \overset{b(j)\rightarrow}{
 	\left[ \matrix{
 		1/\alpha^2 & 
 			(\tilde{\beta}^j - i E^j) /\alpha^2 \\ 
@@ -210,9 +256,10 @@ $= \overset{a(i)\downarrow b(j)\rightarrow}{
 			+ i \mu \tilde{\epsilon}^{ijk} \tilde{\gamma}_{kl} B^l
 	} \right]}$<br>
 <br>
+
 $ = \left[\matrix{
 	1/\alpha^2 & \tilde{\beta}^j / \alpha^2 \\
-	\tilde{\beta}^i / \alpha^2 & \tilde{\beta}^i \tilde{\beta}^j / \alpha^2 - \mu \gamma^{ij}
+	\tilde{\beta}^i / \alpha^2 & \tilde{\beta}^i \tilde{\beta}^j / \alpha^2 - \tilde{\gamma}^{ij}
 }\right] + i \left[\matrix{
 	0 & -E^j / \alpha^2 \\
 	E^i / \alpha^2 & 
@@ -220,66 +267,50 @@ $ = \left[\matrix{
 }\right] + \left[\matrix{
 	0 & 0 \\
 	0 & 
-		E^i E^j / \alpha^2 + \mu B^i B^j + i (E^i \tilde{\beta}^j - \tilde{\beta}^i E^j)
+	E^i E^j / \alpha^2 + \mu B^i B^j + (1 - \mu) \tilde{\gamma}^{ij} + i (E^i \tilde{\beta}^j - \tilde{\beta}^i E^j)
 }\right]$<br>
 ...which doesn't quite exactly look like $\tilde{g}^{ab} + i F_{ab} + $ extra terms in the $x_i x_j$ components.<br>
-It doesn't even have the decency to match the signs of $F^{ab}$, which means maybe I should've been transposing my $g^{ab}$ when verifying that $g_{ac} g^{cb} = \delta_a^b$<br>
 <br>
 
-Approximating the metric to flat space:<br>
-
-Let $\alpha = \tilde{\alpha} \approx 1$<br>
-$\beta^i = \tilde{\beta}^i + i E^i$ for $\tilde{\beta}^i \approx 0$<br>
-$\gamma_{ij} = \tilde{\gamma}_{ij} - i \tilde{\epsilon}_{ijk} B^k$ for $\tilde{\gamma}_{ij} \approx \delta_{ij}$<br>
-for $\tilde{\epsilon}_{ijk} = \sqrt{det (\tilde{\gamma})} [ijk]$, for $[ijk]$ the sign of the permutation of $i,j,k$<br>
-
-$g_{ab} = i \left[\matrix{
-	0 & -E_x  & -E_y & -E_z \\
-	E_x & 0 & B_z & -B_y \\
-	E_y & -B_z & 0 & B_x \\
-	E_z & B_y & -B_x & 0
-}\right] + \tilde{g}_{ab} \approx \left[\matrix{
-	1 & -i E_x  & -i E_y & -i E_z \\
-	i E_x & -1 & i B_z & -i B_y \\
-	i E_y & -i B_z & -1 & i B_x \\
-	i E_z & i B_y & -i B_x & -1
-}\right]$<br>
+In fact, what would $F^{ab}$ look like, in terms of $E$, $B$, and the real metric ADM terms $\tilde{\alpha}, \tilde{\beta}^i, \tilde{\gamma}_{ij}$?<br>
+$F^{ab} = g^{ac} g^{bd} F_{cd} = g^{ac} F_{cd} \bar{g}^{db}$<br>
+$F^{ab} = 	\left[ \matrix{
+		1/\alpha^2 & 
+			(\tilde{\beta}^k - i E^k) /\alpha^2 \\ 
+		(\tilde{\beta}^i + i E^i) /\alpha^2 & 
+			(\tilde{\beta}^i \tilde{\beta}^k + E^i E^k) /\alpha^2
+			- \mu (\tilde{\gamma}^{ik} - B^i B^k)
+			+ i (E^i \tilde{\beta}^k - \tilde{\beta}^i E^k) /\alpha^2
+			+ i \mu \tilde{\epsilon}^{ikm} \tilde{\gamma}_{mn} B^n
+	} \right]
+	\cdot \left[ \matrix{
+		0 & -E_l \\
+		E_k & \tilde{\epsilon}_{klp} B^p
+	} \right]
+	\cdot \left[ \matrix{
+		1/\alpha^2 & 
+			(\tilde{\beta}^j + l E^j) /\alpha^2 \\ 
+		(\tilde{\beta}^l - i E^l) /\alpha^2 & 
+			(\tilde{\beta}^l \tilde{\beta}^j + E^l E^j) /\alpha^2
+			- \mu (\tilde{\gamma}^{lj} - B^l B^j)
+			- i (E^l \tilde{\beta}^j - \tilde{\beta}^l E^j) /\alpha^2
+			- i \mu \tilde{\epsilon}^{ljq} \tilde{\gamma}_{qr} B^r
+	} \right]$<br>
 <br>
 
+Now for the geodesic:<br>
 
-
-$F_{ab} = \left[\matrix{
-	0 & -E_j \\
-	E_i & {\epsilon_{ij}}^k B_k
-}\right]$<br>
+Metric:<br>
+$\Gamma_{abc} = \frac{1}{2} (g_{ab,c} + g_{ac,b} - g_{bc,a})$<br>
+$= \frac{1}{2} (\tilde{g}_{ab,c} + \tilde{g}_{ac,b} - \tilde{g}_{bc,a} + (g^*)_{ab,c} + (g^*)_{ac,b} - (g^*)_{bc,a} + i (F_{ab,c} + F_{ac,b} - F_{bc,a}))$<br>
+$= \frac{1}{2} (\tilde{g}_{ab,c} + \tilde{g}_{ac,b} - \tilde{g}_{bc,a} + (g^*)_{ab,c} + (g^*)_{ac,b} - (g^*)_{bc,a} + i (2 F_{ab,c} - F_{ab,c} - F_{ca,b} - F_{bc,a}))$<br>
+$= \frac{1}{2} (\tilde{g}_{ab,c} + \tilde{g}_{ac,b} - \tilde{g}_{bc,a} + (g^*)_{ab,c} + (g^*)_{ac,b} - (g^*)_{bc,a} + i 2 F_{ab,c})$<br>
+$= \tilde{\Gamma}_{abc} + (\Gamma^*)_{abc} + i F_{ab,c}$<br>
+For $\tilde{\Gamma}_{abc}$ the connection of the real metric<br>
+For $(\Gamma^*)_{abc} = \frac{1}{2} ((g^*)_{ab,c} + (g^*)_{ac,b} - (g^*)_{bc,a})$<br>
 <br>
 
-so for $\tilde{g}_{ab} \approx \tilde{g}^{ab} \approx \eta_{ab}$, we see $g_{ab} = g^{ab} = \eta_{ab} + i F_{ab}$<br>
-so ${\Gamma^a}_{bc} \approx i \frac{1}{2} (\eta^{ad} + i F^{ad}) (F_{db,c} + F_{dc,b} - F_{bc,d})$<br>
-$\approx i \frac{1}{2} (\eta^{ad} + i F^{ad}) (2 F_{db,c} - F_{db,c} - F_{cd,b} - F_{bc,d})$<br>
-$\approx i (\eta^{ad} + i F^{ad}) F_{db,c}$<br>
-$\approx i {F^a}_{b,c} - F^{ad} F_{db,c}$<br>
-$-\approx \left[\matrix{
-	0 & -E^n \\
-	E^i & \epsilon^{inl} B_l
-}\right] \left[\matrix{
-	0 & -E_{j,c} \\
-	E_{n,c} & {\epsilon_{nj}}^m B_{m,c}
-}\right] + i \left[\matrix{
-	0 & {E^i}_{,c} \\
-	E_{j,c} & {\epsilon^i}_{jk} {B^k}_{,c}
-}\right]$<br>
-$\approx \left[\matrix{
-	-E^n E_{n,c} & - E^n {\epsilon_{nj}}^m B_{m,c} \\
-	\epsilon^{inl} B_l E_{n,c} & -E^i E_{j,c} + \epsilon^{inl} B_l {\epsilon_{nj}}^m B_{m,c}
-}\right]$<br>
-$\approx \left[\matrix{
-	-E^n E_{n,c} & - E^n {\epsilon_{nj}}^m B_{m,c} \\
-	\epsilon^{inl} B_l E_{n,c} & -E^i E_{j,c} - \delta^{il}_{jm} B_l B_{m,c}
-}\right]$<br>
-
-
-<br>
+${\Gamma^a}_{bc} = g^{ad} \Gamma_{dbc}$<br>
 
 	</body>
 </html>
