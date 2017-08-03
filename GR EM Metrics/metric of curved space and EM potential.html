@@ -7,5 +7,97 @@
 	</head>
 	<body onload='tryToFindMathJax();'>
 
+ADM decomposition:<br>
+$g_{ab} = \overset{a(i)\downarrow b(j)\rightarrow}{
+	\left[ \matrix{
+		-\alpha^2 + \beta_k \beta^k & 
+			\beta_j \\ 
+		\beta_i & 
+			\gamma_{ij}
+	} \right]}$<br>
+$g^{ab} = \overset{a(i)\downarrow b(j)\rightarrow}{
+	\left[ \matrix{
+		-1/\alpha^2 & 
+			\beta^j /\alpha^2 \\ 
+		\beta^i /\alpha^2 & 
+			\gamma^{ij} - \beta^i \beta^j /\alpha^2
+	} \right]}$<br>
+<br>
+
+adding in the EM potential...<br>
+let $\beta_i = \tilde{\beta}_i + A_i$<br>
+Notice that $\beta^i$ and $\tilde{\beta}^i$ are naturally contravariant while $A_i$ is naturally covariant.<br>
+I'm raising and lowering spatial indexes with respect to the spatial metric $\gamma_{ij}$ (just like in all those numerical relativity text books).<br>
+This means $A^i = \gamma^{ij} A_j$ versus $A^i$ as a subset of $A^u$, which is $(-A_t + A_j \beta^j) \beta^i / \alpha^2 + A_j \gamma^{ij}$.<br>
+Notice the difference between the two, $(-A_t + A_j \beta^j) \beta^i / \alpha^2$, is zero if the shift is zero.<br>
+<br>
+
+$g_{ab} = a(i)\downarrow \overset{b(j)\rightarrow}{
+	\left[ \matrix{
+		-\alpha^2 + (\tilde{\beta}_k + A_k) (\tilde{\beta}^k + A^k) + 2 A_t & 
+			\tilde{\beta}_j + A_j \\ 
+		\tilde{\beta}_i + A_i & 
+			\gamma_{ij}
+	} \right]}$<br>
+$ = a(i)\downarrow \overset{b(j)\rightarrow}{
+	\left[ \matrix{
+		-\alpha^2 + (\gamma_{kl} \tilde{\beta}^l + A_k) (\tilde{\beta}^k + \gamma^{km} A_m) + 2 A_t & 
+			\gamma_{jk} \tilde{\beta}^k + A_j \\ 
+		\gamma_{ik} \tilde{\beta}^k + A_i & 
+			\gamma_{ij}
+	} \right]}$<br>
+$ = a(i)\downarrow \overset{b(j)\rightarrow}{
+	\left[ \matrix{
+		-\alpha^2 
+			+ \gamma_{kl} \tilde{\beta}^l \tilde{\beta}^k 
+			+ \gamma^{kl} A_k A_l
+			+ 2 A_k \tilde{\beta}^k 
+			+ 2 A_t & 
+			
+		\gamma_{jk} \tilde{\beta}^k + A_j \\ 
+		
+		\gamma_{ik} \tilde{\beta}^k + A_i & 
+		
+		\gamma_{ij}
+	} \right]}$<br>
+$ = \left[\matrix{
+	-\alpha^2 + \gamma_{kl} \tilde{\beta}^l \tilde{\beta}^k & 
+	\gamma_{jk} \tilde{\beta}^k \\ 
+	\gamma_{ik} \tilde{\beta}^k & 
+	\gamma_{ij}
+}\right] + \left[\matrix{
+	2 A_t & A_j \\
+	A_i & 0
+}\right] + \left[\matrix{
+	2 A_k \tilde{\beta}^k + \gamma^{kl} A_k A_l & 0 \\
+	0 & 0
+}\right]$<br>
+$= \tilde{g}_{ab} + 2 A_{(a} \delta_{b)t} + (g^*)_{ab}$<br>
+<br>
+
+So $\Gamma_{abc} = \tilde{\Gamma}_{abc} + (\Gamma^A)_{abc} + (\Gamma^*)_{abc}$.<br>
+Now $\tilde{\Gamma}_{abc}$ produces the typical gravitational force.<br>
+$(\Gamma^A)_{abc}$ produces the Lorentz force (see my 'flat space + EM potential' worksheet for how)<br>
+and $(\Gamma^*)_{abc}$ is extra, hopefully only applying to the time component, or something else equally insignificant.<br>
+<br>
+
+How would you incorporate charge?<br>
+Aside from the Kaluza-Klein extra-dimension trick...<br>
+$\dot{u}^a g_{ai} = \tilde{\Gamma}_{ibc} u^b u^c + \frac{q}{m} (\Gamma^A)_{ibc} u^b u^c + (\Gamma^*)_{ibc} u^b u^c$<br>
+$= \tilde{\Gamma}_{ibc} u^b u^c + \frac{q}{m} (E_i (u^t)^2 + \epsilon_{ijk} B_k u^t u^j) + (\Gamma^*)_{ibc} u^b u^c$<br>
+...you would need to modify the spacetime geometry itself in order to produce the correction of proportions of charge to mass...<br>
+...which I can almost do by absorbing that term into $u^t$...
+<br>
+
+Now for inverses:<br>
+$g^{ab} = \overset{a(i)\downarrow b(j)\rightarrow}{
+	\left[ \matrix{
+		-1/\alpha^2 & 
+			(\tilde{\beta}^j + A^j) /\alpha^2 \\ 
+		(\tilde{\beta}^i + A^i) /\alpha^2 & 
+			\gamma^{ij} - (\tilde{\beta}^i + A^i) (\tilde{\beta}^j + A^j) /\alpha^2
+	} \right]}$<br>
+
+
 	</body>
 </html>

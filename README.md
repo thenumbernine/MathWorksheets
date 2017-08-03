@@ -30,8 +30,6 @@ Here's the CDN URLs:
 
 [Change of Coordinates](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Change%20of%20Coordinates%2ehtml)
 
-[Complex Metric](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Complex%20Metric%2ehtml)
-
 [EMHD Hyperbolic Conservation Laws](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/EMHD%20Hyperbolic%20Conservation%20Laws%2ehtml)
 
 [EMHD Linear Stability Analysis](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/EMHD%20Linear%20Stability%20Analysis%2ehtml)
@@ -47,6 +45,14 @@ Here's the CDN URLs:
 [Euler Fluid Equations - Entropy Function](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Euler%20Fluid%20Equations%20%2d%20Entropy%20Function%2ehtml)
 
 [Finite Volume Methods](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Finite%20Volume%20Methods%2ehtml)
+
+[GR EM Metrics/Complex Metric](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR%20EM%20Metrics%2fComplex%20Metric%2ehtml)
+
+[GR EM Metrics/complex metric of EM potential](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR%20EM%20Metrics%2fcomplex%20metric%20of%20EM%20potential%2ehtml)
+
+[GR EM Metrics/metric of curved space and EM potential](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR%20EM%20Metrics%2fmetric%20of%20curved%20space%20and%20EM%20potential%2ehtml)
+
+[GR EM Metrics/metric of flat space and EM potential](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR%20EM%20Metrics%2fmetric%20of%20flat%20space%20and%20EM%20potential%2ehtml)
 
 [Gravitation 22.2](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Gravitation%2022%2e2%2ehtml)
 
