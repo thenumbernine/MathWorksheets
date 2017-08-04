@@ -1,0 +1,319 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<script type='text/javascript' src='../tryToFindMathJax.js'></script>
+		<title>complex metric of g + *F</title>
+	</head>
+	<body onload='tryToFindMathJax();'>
+
+Let $g_{ab} \in \mathbb{C}$ be a Hermitian metric (on a Kahler manifold I think?  I'm just now learning about them).<br>
+<br>
+
+For entertainment I'm going to use a signature of $\eta_{ab} = diag(1, -1, -1, -1)$<br>
+<br>
+
+ADM decomposition:<br>
+$g_{ab} = \overset{a(i)\downarrow b(j)\rightarrow}{
+	\left[ \matrix{
+		\alpha^2 - \bar{\beta}_k \beta^k & 
+			\bar{\beta}_j \\ 
+		\beta_i & 
+			-\gamma_{ij}
+	} \right]}$<br>
+$g^{ab} = \overset{a(i)\downarrow b(j)\rightarrow}{
+	\left[ \matrix{
+		1/\alpha^2 & 
+			\bar{\beta}^j /\alpha^2 \\ 
+		\beta^i /\alpha^2 & 
+			\beta^i \bar{\beta}^j /\alpha^2 - \gamma^{ij}
+	} \right]}$<br>
+<br>
+
+Now for combining the gravitational metric (real) with the Faraday tensor dual (imaginary)<br>
+
+The Faraday tensor:<br>
+$F_{ab} = \left[\matrix{
+	0 & -E_j \\
+	E_i & {\tilde{\epsilon}_{ij}}^k B_k
+}\right]$<br>
+<br>
+
+The Faraday dual tensor:<br>
+$\star F_{ab} = \frac{1}{2} F^{uv} \epsilon_{uvab}$ is only going to make sense after we've defined $g_{ab}$, which influences raising, lowering, and $\epsilon_{abcd}$.<br>
+Until then, let's define $E$ and $B$ in terms of $\star F_{ab}$, as they would appear in the flat-space dual:<br>
+$\star F^{flat}_{ab} = a(i) \downarrow \overset{b(j) \rightarrow}{\left[\matrix{
+	0 & B_j \\
+	-B_i & {\tilde{\epsilon}_{ij}}^k E_k
+}\right]}$<br>
+<br>
+So our 'E's and 'B's are going to be defined in terms of their covariant form in the dual of F,<br>
+Which makes them slightly different from the 'E's and 'B's found in the covariant form of F itself.<br>
+<br>
+
+Let the real components of $g_{ab}$ be represented as $\tilde{g}_{ab} \in \mathbb{R}$.<br>
+Let $g_{ab} \approx \tilde{g}_{ab} + i \star F_{ab}$<br>
+$\tilde{g}_{ab} \approx diag(1, -1, -1, -1)$<br>
+$g_{ab} \approx \left[\matrix{
+	1 & i B_x  & i B_y & i B_z \\
+	-i B_x & -1 & i E_z & -i E_y \\
+	-i B_y & -i E_z & -1 & i E_x \\
+	-i B_z & i E_y & -i E_x & -1
+}\right]$<br>
+Full derivation is below.<br>
+<br>
+
+Let $\tilde{\alpha}, \tilde{\beta}^i, \tilde{\gamma}_{ij} \in \mathbb{R}$ be the analogous components of $\tilde{g}_{ab}$<br>
+<br>
+
+Let $\alpha = \tilde{\alpha} \approx 1$.  This is mandated because $g_{ab}$ is Hermitian, so the diagonals (which include $1/\alpha^2$) must be real.<br>
+It is only $1/\alpha^2$ that must be real, so $\alpha$ could be a real, or purely imaginary.<br>
+<br>
+
+Let $\beta^i = \tilde{\beta}^i - i B^i$ for $\tilde{\beta}^i \in \mathbb{R}, \tilde{\beta}^i \approx 0$<br>
+<br>
+
+Let $\gamma_{ij} = \tilde{\gamma}_{ij} - i \tilde{\epsilon}_{ijk} E^k$ for $\tilde{\gamma}_{ij} \in \mathbb{R}, \tilde{\gamma}_{ij} \approx \delta_{ij}$<br>
+$\tilde{\epsilon}_{ijk} = \sqrt{det (\tilde{\gamma})} [ijk]$ is the Levi-Civita tensor on the spatial metric.<br>
+$[ijk]$ the sign of the permutation of $i,j,k$.<br>
+<br>
+
+What would the spatial inverse metric $\gamma^{ij}$ be?<br>
+Check out the Maxima sheet for derivations:<br>
+$\gamma^{ij} = (\tilde{\gamma}^{ij} - E^i E^j + i \tilde{\epsilon}^{ijk} \tilde{\gamma}_{kl} E^l) / (1 - \tilde{\gamma}_{kl} E^k E^l)$<br>
+For $\tilde{\epsilon}^{ijk} = \frac{1}{\sqrt{\tilde{\gamma}}} [ijk]$<br>
+Notice that $\frac{\gamma}{\tilde{\gamma}} = 1 - \tilde{\gamma}_{kl} E^k E^l$<br>
+Let $\mu = \frac{\tilde{\gamma}}{\gamma}$<br>
+Now $\gamma^{ij} = \mu (\tilde{\gamma}^{ij} - E^i E^j + i \tilde{\epsilon}^{ijk} \tilde{\gamma}_{kl} E^l)$<br>
+<br>
+
+Notice that lowering spatial vectors is done by $\gamma_{ij}$, which is a combination of the real spatial $\tilde{\gamma}_{ij}$ and the imaginary magnetic field dual $-i \tilde{\epsilon}_{ijk} E^k$.<br>
+$\beta_i = \gamma_{ij} \beta^j = \gamma_{ij} (\tilde{\beta}^j - i B^j)$<br>
+$= \tilde{\beta}_i - i B_i = (\tilde{\gamma}_{ij} - i \tilde{\epsilon}_{ijk} E^k) (\tilde{\beta}^j - i B^j)$<br>
+$\tilde{\beta}_i - i B_i = \tilde{\gamma}_{ij} \tilde{\beta}^j - \tilde{\epsilon}_{ijk} B^j E^k - i (\tilde{\gamma}_{ij} B^j + \tilde{\epsilon}_{ijk} \tilde{\beta}^j E^k)$<br>
+Compare real components:<br>
+$\tilde{\beta}_i = \gamma_{ij} \beta^j = \tilde{\gamma}_{ij} \tilde{\beta}^j - \tilde{\epsilon}_{ijk} B^j E^k$<br>
+This says that lowering the real shift vector with the Hermitian spatial metric is only equal to lowering the real shift vector with the real metric
+if the electric and magnetic fields are parallel.<br>
+Compare imaginary components:<br>
+$B_i = \gamma_{ij} B^j = \tilde{\gamma}_{ij} B^j + \tilde{\epsilon}_{ijk} \tilde{\beta}^j E^k$<br>
+Once again, lowering the $B$ field with the Hermitian metric only matches lowering with the real metric if the real shift vector and magnetic field vector are parallel.<br>
+<br>
+
+Now to represent it in ADM metric form:<br>
+$g_{ab} = a(i)\downarrow \overset{b(j)\rightarrow}{
+	\left[ \matrix{
+		\alpha^2 - \bar{\beta}_k \beta^k & \bar{\beta}_j \\ 
+		\beta_i & -\gamma_{ij}
+	} \right]}$<br>
+$= a(i)\downarrow \overset{b(j)\rightarrow}{
+	\left[ \matrix{
+		\alpha^2 - \overline{(\tilde{\beta}_k - i B_k)} (\tilde{\beta}^k - i B^k) & \tilde{\beta}_j + i B_j \\ 
+		\tilde{\beta}_i - i B_i & -\tilde{\gamma}_{ij} + i \tilde{\epsilon}_{ijk} E^k
+	} \right]}$<br>
+<br>
+
+How about that $g_{tt}$ term.<br>
+$g_{tt} = \alpha^2 - \bar{\beta}_k \beta^k$<br>
+$= \alpha^2 - \overline{(\gamma_{kl} \beta^l)} \beta^k$<br> 
+$= \alpha^2 - \bar{\gamma}_{kl} \bar{\beta}^l \beta^k$<br>
+$= \alpha^2 - \bar{\gamma}_{kl} (\tilde{\beta}^l + i B^l) (\tilde{\beta}^k - i B^k)$<br>
+$= \alpha^2 - (\tilde{\gamma}_{kl} + i \tilde{\epsilon}_{klm} E^m) (\tilde{\beta}^l + i B^l) (\tilde{\beta}^k - i B^k)$<br>
+$= \alpha^2 - (\tilde{\gamma}_{kl} + i \tilde{\epsilon}_{klm} E^m) (\tilde{\beta}^l \tilde{\beta}^k - i \tilde{\beta}^l B^k + i B^l \tilde{\beta}^k + B^l B^k)$<br>
+$= \alpha^2 - (
+	  \tilde{\gamma}_{kl} \tilde{\beta}^l \tilde{\beta}^k 
+	+ i \tilde{\epsilon}_{klm} E^m \tilde{\beta}^l \tilde{\beta}^k
+	+ \tilde{\gamma}_{kl} B^l B^k 
+	+ i \tilde{\epsilon}_{klm} E^m B^l B^k
+	- i \tilde{\gamma}_{kl} B^k \tilde{\beta}^l 
+	+ \tilde{\epsilon}_{klm} E^m B^k \tilde{\beta}^l
+	+ i \tilde{\gamma}_{kl} B^l \tilde{\beta}^k 
+	- \tilde{\epsilon}_{klm} E^m B^l \tilde{\beta}^k
+)$<br>
+$= \alpha^2 - \tilde{\gamma}_{kl} (\tilde{\beta}^l \tilde{\beta}^k + B^k B^l)
+	+ 2 \tilde{\epsilon}_{klm} \tilde{\beta}^k B^l E^m$<br>
+$= \tilde{g}_{tt} - \tilde{\gamma}_{kl} B^k B^l + 2 \tilde{\epsilon}_{klm} \tilde{\beta}^k B^l E^m$<br>
+<br>
+
+Eack to $g_{ab}$:<br>
+$g_{ab} = \left[\matrix{
+	\alpha^2 - \tilde{\gamma}_{kl} (\tilde{\beta}^l \tilde{\beta}^k + B^k B^l)
+		+ 2 \tilde{\epsilon}_{klm} \tilde{\beta}^k B^l E^m & 
+	\tilde{\beta}_j + i B_j \\
+	\tilde{\beta}_i - i B_i &
+	-\tilde{\gamma}_{ij} + i \tilde{\epsilon}_{ijk} E^k
+}\right]$<br>
+$= \left[\matrix{
+	\alpha^2 - \tilde{\gamma}_{kl} (\tilde{\beta}^l \tilde{\beta}^k + B^k B^l)
+		+ 2 \tilde{\epsilon}_{klm} \tilde{\beta}^k B^l E^m & 
+	\tilde{\beta}_j \\
+	\tilde{\beta}_i & -\tilde{\gamma}_{ij}
+}\right] + \left[\matrix{
+	0 & i B_j \\
+	-i B_i & i \tilde{\epsilon}_{ijk} E^k
+}\right]$<br>
+$= \left[\matrix{
+	\alpha^2 - \tilde{\gamma}_{kl} \tilde{\beta}^l \tilde{\beta}^k & \tilde{\beta}_j \\
+	\tilde{\beta}_i & -\tilde{\gamma}_{ij}
+}\right] + \left[\matrix{
+	0 & i B_j \\
+	-i B_i & i \tilde{\epsilon}_{ijk} E^k
+}\right] + \left[\matrix{
+	-\tilde{\gamma}_{kl} B^k B^l + 2 \tilde{\epsilon}_{klm} \tilde{\beta}^k B^l E^m & 0 \\
+	0 & 0
+}\right]$<br>
+$= \tilde{g}_{ab} + i \star F_{ab} + (g^*)_{ab}$<br>
+<br>
+
+For $\tilde{g}_{ab} = \left[\matrix{
+	\alpha^2 - \tilde{\gamma}_{kl} \tilde{\beta}^l \tilde{\beta}^k & \tilde{\beta}_j \\
+	\tilde{\beta}_i & -\tilde{\gamma}_{ij}
+}\right]$<br>
+is the metric formed from the real components of the lapse, shift, and spatial metric.<br>
+For $(g^*)_{ab} = \left[\matrix{
+  -\tilde{\gamma}_{kl} B^k B^l + 2 \tilde{\epsilon}_{klm} \tilde{\beta}^k B^l E^m & 0 \\ 
+  0 & 0
+}\right]$<br>
+<br>
+
+Now for the inverse:<br>
+$g^{ab} = a(i)\downarrow \overset{b(j)\rightarrow}{
+	\left[ \matrix{
+		1/\alpha^2 & 
+			\bar{\beta}^j /\alpha^2 \\ 
+		\beta^i /\alpha^2 & 
+			\beta^i \bar{\beta}^j /\alpha^2 - \gamma^{ij}
+	} \right]}$<br>
+$= a(i)\downarrow \overset{b(j)\rightarrow}{
+	\left[ \matrix{
+		1/\alpha^2 & 
+			(\tilde{\beta}^j + i B^j) /\alpha^2 \\ 
+		(\tilde{\beta}^i - i B^i) /\alpha^2 & 
+			(\tilde{\beta}^i - i B^i) (\tilde{\beta}^j + i B^j) / \alpha^2
+		- \mu (\tilde{\gamma}^{ij} - E^i E^j + i \tilde{\epsilon}^{ijk} \tilde{\gamma}_{kl} E^l)
+	} \right]}$<br>
+$= a(i)\downarrow \overset{b(j)\rightarrow}{
+	\left[ \matrix{
+		1/\alpha^2 & 
+			(\tilde{\beta}^j + i B^j) /\alpha^2 \\ 
+		(\tilde{\beta}^i - i B^i) /\alpha^2 & 
+			(\tilde{\beta}^i \tilde{\beta}^j + B^i B^j) /\alpha^2
+			- \mu (\tilde{\gamma}^{ij} - E^i E^j)
+			+ i (-B^i \tilde{\beta}^j + \tilde{\beta}^i B^j) /\alpha^2
+			+ i \mu \tilde{\epsilon}^{ijk} \tilde{\gamma}_{kl} E^l
+	} \right]}$<br>
+<br>
+
+$ = \left[\matrix{
+	1/\alpha^2 & \tilde{\beta}^j / \alpha^2 \\
+	\tilde{\beta}^i / \alpha^2 & \tilde{\beta}^i \tilde{\beta}^j / \alpha^2 - \tilde{\gamma}^{ij}
+}\right] + i \left[\matrix{
+	0 & B^j / \alpha^2 \\
+	-B^i / \alpha^2 & 
+		\mu \tilde{\epsilon}^{ijk} \tilde{\gamma}_{kl} E^l
+}\right] + \left[\matrix{
+	0 & 0 \\
+	0 & 
+	B^i B^j / \alpha^2 + \mu E^i E^j + (1 - \mu) \tilde{\gamma}^{ij} + i (-B^i \tilde{\beta}^j + \tilde{\beta}^i B^j)
+}\right]$<br>
+...which doesn't quite exactly look like $\tilde{g}^{ab} + i \star F_{ab} + $ extra terms in the $x_i x_j$ components.<br>
+<br>
+
+In fact, what would $\star F^{ab}$ look like, in terms of $B$, $E$, and the real metric ADM terms $\tilde{\alpha}, \tilde{\beta}^i, \tilde{\gamma}_{ij}$?<br>
+$\star F^{ab} = g^{ac} g^{bd} \star F_{cd} = g^{ac} \star F_{cd} \bar{g}^{db}$<br>
+$\star F^{ab} = 	\left[ \matrix{
+		1/\alpha^2 & 
+			(\tilde{\beta}^k + i B^k) /\alpha^2 \\ 
+		(\tilde{\beta}^i - i B^i) /\alpha^2 & 
+			(\tilde{\beta}^i \tilde{\beta}^k + B^i B^k) /\alpha^2
+			- \mu (\tilde{\gamma}^{ik} - E^i E^k)
+			+ i (-B^i \tilde{\beta}^k + \tilde{\beta}^i B^k) /\alpha^2
+			+ i \mu \tilde{\epsilon}^{ikm} \tilde{\gamma}_{mn} E^n
+	} \right]
+	\cdot \left[ \matrix{
+		0 & B_l \\
+		-B_k & \tilde{\epsilon}_{klp} E^p
+	} \right]
+	\cdot \left[ \matrix{
+		1/\alpha^2 & 
+			(\tilde{\beta}^j - i B^j) /\alpha^2 \\ 
+		(\tilde{\beta}^l + i B^l) /\alpha^2 & 
+			(\tilde{\beta}^l \tilde{\beta}^j + B^l B^j) /\alpha^2
+			- \mu (\tilde{\gamma}^{lj} - E^l E^j)
+			- i (-B^l \tilde{\beta}^j + \tilde{\beta}^l B^j) /\alpha^2
+			- i \mu \tilde{\epsilon}^{ljq} \tilde{\gamma}_{qr} E^r
+	} \right]$<br>
+$= \left[ \matrix{
+
+		-(\tilde{\beta}^k + i B^k) / \alpha^2 B_k &
+			
+			+ 1/\alpha^2 B_l + (\tilde{\beta}^k + i B^k) / \alpha^2 \tilde{\epsilon}_{klp} E^p \\
+
+		-((\tilde{\beta}^i \tilde{\beta}^k + B^i B^k) /\alpha^2
+			- \mu (\tilde{\gamma}^{ik} - E^i E^k)
+			+ i (-B^i \tilde{\beta}^k + \tilde{\beta}^i B^k) /\alpha^2
+			+ i \mu \tilde{\epsilon}^{ikm} \tilde{\gamma}_{mn} E^n) B_k &
+			
+		(\tilde{\beta}^i - i B^i) / \alpha^2 B_l 
+			+ ((\tilde{\beta}^i \tilde{\beta}^k + B^i B^k) /\alpha^2
+			- \mu (\tilde{\gamma}^{ik} - E^i E^k)
+			+ i (-B^i \tilde{\beta}^k + \tilde{\beta}^i B^k) /\alpha^2
+			+ i \mu \tilde{\epsilon}^{ikm} \tilde{\gamma}_{mn} E^n) \tilde{\epsilon}_{klp} E^p
+	
+	} \right]
+	\cdot \left[ \matrix{
+		1/\alpha^2 & 
+			(\tilde{\beta}^j - i B^j) /\alpha^2 \\ 
+		(\tilde{\beta}^l + i B^l) /\alpha^2 & 
+			(\tilde{\beta}^l \tilde{\beta}^j + B^l B^j) /\alpha^2
+			- \mu (\tilde{\gamma}^{lj} - E^l E^j)
+			- i (-B^l \tilde{\beta}^j + \tilde{\beta}^l B^j) /\alpha^2
+			- i \mu \tilde{\epsilon}^{ljq} \tilde{\gamma}_{qr} E^r
+	} \right]$<br>
+$= \left[ \matrix{
+
+		(-\tilde{\beta}^k B_k - i B^k B_k) / \alpha^2 &
+			
+		(B_l + \tilde{\epsilon}_{klp} \tilde{\beta}^k E^p + i \tilde{\epsilon}_{klp} B^k E^p) / \alpha^2 \\
+
+		-(\tilde{\beta}^i \tilde{\beta}^k + B^i B^k) B_k / \alpha^2
+			+ \mu (\tilde{\gamma}^{ik} - E^i E^k) B_k
+			- i (-B^i \tilde{\beta}^k + \tilde{\beta}^i B^k) B_k / \alpha^2
+			- i \mu \tilde{\epsilon}^{ikm} \tilde{\gamma}_{mn} E^n B_k &
+			
+		+ (\tilde{\beta}^i - i B^i) / \alpha^2 B_l 
+			+ (\tilde{\beta}^i \tilde{\beta}^k + B^i B^k) \tilde{\epsilon}_{klp} E^p /\alpha^2
+			- \mu (\tilde{\gamma}^{ik} - E^i E^k) \tilde{\epsilon}_{klp} E^p
+			+ i (-B^i \tilde{\beta}^k + \tilde{\beta}^i B^k) \tilde{\epsilon}_{klp} E^p /\alpha^2
+			+ i \mu \tilde{\epsilon}^{ikm} \tilde{\gamma}_{mn} E^n \tilde{\epsilon}_{klp} E^p
+	
+	} \right]
+	\cdot \left[ \matrix{
+		1/\alpha^2 & 
+			(\tilde{\beta}^j - i B^j) /\alpha^2 \\ 
+		(\tilde{\beta}^l + i B^l) /\alpha^2 & 
+			(\tilde{\beta}^l \tilde{\beta}^j + B^l B^j) /\alpha^2
+			- \mu (\tilde{\gamma}^{lj} - E^l E^j)
+			- i (-B^l \tilde{\beta}^j + \tilde{\beta}^l B^j) /\alpha^2
+			- i \mu \tilde{\epsilon}^{ljq} \tilde{\gamma}_{qr} E^r
+	} \right]$<br>
+
+<br>
+<br>
+
+Now for the geodesic:<br>
+
+Metric:<br>
+$\Gamma_{abc} = \frac{1}{2} (g_{ab,c} + g_{ac,b} - g_{bc,a})$<br>
+$= \frac{1}{2} (\tilde{g}_{ab,c} + \tilde{g}_{ac,b} - \tilde{g}_{bc,a} + (g^*)_{ab,c} + (g^*)_{ac,b} - (g^*)_{bc,a} + i (\star F_{ab,c} + \star F_{ac,b} - \star F_{bc,a}))$<br>
+$= \frac{1}{2} (\tilde{g}_{ab,c} + \tilde{g}_{ac,b} - \tilde{g}_{bc,a} + (g^*)_{ab,c} + (g^*)_{ac,b} - (g^*)_{bc,a} + i (2 \star F_{ab,c} - \star F_{ab,c} - \star F_{ca,b} - \star F_{bc,a}))$<br>
+$= \frac{1}{2} (\tilde{g}_{ab,c} + \tilde{g}_{ac,b} - \tilde{g}_{bc,a} + (g^*)_{ab,c} + (g^*)_{ac,b} - (g^*)_{bc,a} + i 2 \star F_{ab,c})$<br>
+$= \tilde{\Gamma}_{abc} + (\Gamma^*)_{abc} + i \star F_{ab,c}$<br>
+For $\tilde{\Gamma}_{abc}$ the connection of the real metric<br>
+For $(\Gamma^*)_{abc} = \frac{1}{2} ((g^*)_{ab,c} + (g^*)_{ac,b} - (g^*)_{bc,a})$<br>
+<br>
+
+${\Gamma^a}_{bc} = g^{ad} \Gamma_{dbc}$<br>
+
+	</body>
+</html>
