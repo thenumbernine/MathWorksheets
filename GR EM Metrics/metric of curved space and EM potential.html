@@ -86,7 +86,10 @@ Aside from the Kaluza-Klein extra-dimension trick...<br>
 $\dot{u}^a g_{ai} = \tilde{\Gamma}_{ibc} u^b u^c + \frac{q}{m} (\Gamma^A)_{ibc} u^b u^c + (\Gamma^*)_{ibc} u^b u^c$<br>
 $= \tilde{\Gamma}_{ibc} u^b u^c + \frac{q}{m} (E_i (u^t)^2 + \epsilon_{ijk} B_k u^t u^j) + (\Gamma^*)_{ibc} u^b u^c$<br>
 ...you would need to modify the spacetime geometry itself in order to produce the correction of proportions of charge to mass...<br>
-...which I can almost do by absorbing that term into $u^t$...
+...which I can almost do by absorbing that term into $u^t$...<br>
+But I think this is beside the point.  Look at the gravitomagnetics papers.<br>
+They talk about equivalences between the $g_{tu}$ and $A_u$, and dissect gravity accordingly.<br>
+That is essentially what this $A_u$ is -- not an electromagnetic $A$, but instead a gravitomagnetic $A$.<br>
 <br>
 
 Now for inverses:<br>
@@ -98,6 +101,53 @@ $g^{ab} = \overset{a(i)\downarrow b(j)\rightarrow}{
 			\gamma^{ij} - (\tilde{\beta}^i + A^i) (\tilde{\beta}^j + A^j) /\alpha^2
 	} \right]}$<br>
 
+Looks ugly.<br>
+Calculating the geodesic will be much more ugly.<br>
+Luckily I've already done this (with my own symbolic tensor package) for the ADM, and just have to replace $\beta^i \rightarrow \beta^i + A^i$<br> 
+<br>
+
+$-{\Gamma^i}_{tt} =
+	\frac{1}{2} \alpha^{-2} \beta^i \beta^j \beta^k {\gamma_{jk}}_{,t} 
+	- \frac{1}{2} \alpha^{-2} \beta^i \beta^j \beta^k \beta^l \gamma_{kl,j}
+	- \alpha^{-2} \beta^i \beta^j {\beta^k}_{,j} \beta^l \gamma_{kl}
+	+ \alpha^{-1} \alpha_{,j} \beta^i \beta^j
+	+ \alpha^{-1} \alpha_{,t} \beta^i
+	- \beta^k \gamma^{ij} \gamma_{jk,t}
+	+ \frac{1}{2} \beta^k \beta^l \gamma^{ij} \gamma_{kl,j}
+	+ {\beta^k}_{,j} \beta^l \gamma^{ij} \gamma_{kl}
+	- {\beta^i}_{,t}
+	- \alpha \alpha_{,j} \gamma^{ij}
+$<br>
+<br>
+
+$-{\Gamma^i}_{mt} = \frac{1}{2} (
+	+ \alpha^{-2} \beta^i \beta^j \gamma_{jm,t}
+	- \alpha^{-2} \beta^i \beta^j \beta^k \gamma_{km,j}
+	- \alpha^{-2} \beta^i \beta^j {\beta^k}_{,j} \gamma_{mk}
+	- \alpha^{-2} \beta^i \beta^j {\beta^k}_{,m} \gamma_{jk}
+	+ 2 \alpha^{-1} \alpha_{,m} \beta^i
+	- \gamma^{ij} \gamma_{jm,t}
+	- {\beta^i}_{,m}
+	+ {\beta^k}_{,j} \gamma^{ij} \gamma_{mk}
+	+ \beta^k \gamma^{ij} \gamma_{mk,j}
+	- \beta^k \gamma^{ij} \gamma_{jk,m}
+)$<br>
+<br>
+
+$-{\Gamma^i}_{mn} = \frac{1}{2} (
+	+ \alpha^{-2} \beta^i \gamma_{mn,t}
+	- \alpha^{-2} \beta^i \beta^j \gamma_{mn,j}
+	- \alpha^{-2} \beta^i {\beta^k}_{,n} \gamma_{mk}
+	- \alpha^{-2} \beta^i {\beta^k}_{,m} \gamma_{nk}
+	- \gamma^{ij} \gamma_{jm,n}
+	- \gamma^{ij} \gamma_{jn,m}
+	+ \gamma^{ij} \gamma_{mn,j}
+)$<br>
+<br>
+
+<br>
+
+<br>
 
 	</body>
 </html>
