@@ -208,12 +208,19 @@ Funny how raising/lowering twice on antisymmetric tensors looks the same whether
 
 Maxwell's laws look like<br>
 ${F^{ab}}_{,b} = \mu_0 J^a$<br>
-for $J^a = [ \rho, J^i ]$ gives<br>
+for $J^a = [ c \rho, J^i ]$ gives<br>
 $\frac{1}{c} {E^i}_{,i} = c \mu_0 \rho$ becomes ${E^i}_{,i} = \frac{\rho}{\epsilon_0}$<br>
 $-\frac{1}{c^2} {E^i}_{,t} + \epsilon^{ijk} B_k = \mu_0 J^i$<br>
 And ${\star F^{ab}}_{,b} = 0$<br>
-${B^i}_{,i} = 0$<br>
-$-{B^i}_{,t} - \epsilon^{ijk} E_k = 0$<br>
+
+$\star F_{ab} = \frac{1}{2} \epsilon_{abuv} F^{uv}$<br>
+for $\epsilon_{abcd} = [0,1,2,3]$ (notice Rovelli, Vidotto use $\epsilon_{abcd} = -[0,1,2,3]$?)<br>
+$\star F_{ab} = \downarrow a \overset{\rightarrow b}{\left[\matrix{
+	0 & -B_j \\
+	B_i & -\frac{1}{c} {\epsilon_{ijk}} E^k
+}\right]}$<br>
+$-\frac{1}{c} {B^i}_{,i} = 0$<br>
+$\frac{1}{c} {B^i}_{,t} + \frac{1}{c} \epsilon^{ijk} E_k = 0$<br>
 <br>
 
 Now define the gravitoelectric and gravitomagnetic fields:<br>
