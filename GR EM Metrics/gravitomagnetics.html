@@ -1,0 +1,237 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="utf-8">
+		<script type='text/javascript' src='../tryToFindMathJax.js'></script>
+		<title>gravitomagnetics</title>
+	</head>
+	<body onload='tryToFindMathJax();'>
+
+This is following Tajmar &amp; Matos' paper, "Coupling of Electromagnetism and Gravitation in the Weak Field Approximation.<br>
+<br>
+
+This is starting out the same as "metric of flat space and EM potential" but with linearization.<br>
+<br>
+
+Near field approximation:<br>
+$g_{ab} = \eta_{ab} + h_{ab}$<br>
+This paper uses the +,-,-,- signature.<br>
+The coordinate basis is $\frac{\partial}{\partial x^\mu} = [ 
+	\frac{\partial}{c \partial t},
+	\frac{\partial}{\partial x},
+	\frac{\partial}{\partial y},
+	\frac{\partial}{\partial z}]$<br>
+$g^{ab} \approx \eta^{ab}$<br>
+Raising and lowering is with $\eta^{ab}$<br>
+<br>
+
+$g_{ab,c} = h_{ab,c}$<br>
+$\Gamma_{abc} = \frac{1}{2} (h_{ab,c} + h_{ac,b} - h_{bc,a})$<br>
+${\Gamma^a}_{bc} = \frac{1}{2} ({h^a}_{b,c} + {h^a}_{c,b} - {h_{bc}}^{,a})$<br>
+
+${R^a}_{bcd} = 2 ({\Gamma^a}_{b[d,c]} + {\Gamma^a}_{e[c} {\Gamma^e}_{d]b})$<br>
+$= {h^a}_{b,[dc]} + {h^a}_{[d,c]b} - {{h_{b[d}}^{,a}}_{,c]}
+	+ \frac{1}{2} ({h^a}_{e,[c} + {h^a}_{[c|,e} - {h_{e[c}}^{,a})
+	({h^e}_{b,|d]} + {h^e}_{d],b} - {h_{d]b}}^{,e})$<br>
+$= {h^a}_{[d,c]b} - {h_{b[d,c]}}^{,a}
+	+ \frac{1}{2} (
+		+ {h^a}_{e,[c} {h^e}_{b,|d]} 
+		+ {h^a}_{e,[c} {h^e}_{d],b} 
+		- {h^a}_{e,[c} {h_{d]b}}^{,e}
+		+ {h^a}_{[c|,e} {h^e}_{b,|d]} 
+		+ {h^a}_{[c|,e} {h^e}_{d],b} 
+		- {h^a}_{[c|,e} {h_{d]b}}^{,e}
+		- {h_{e[c}}^{,a} {h^e}_{b,|d]} 
+		- {h_{e[c}}^{,a} {h^e}_{d],b} 
+		+ {h_{e[c}}^{,a} {h_{d]b}}^{,e}
+	)
+$<br>
+<br>
+
+$R_{ab} = {R^c}_{acb}$<br>
+
+$= 
+	\frac{1}{2} (
+		{{h_{bc}}^{,c}}_a 
+		- {h_{ab,c}}^{,c}
+		- {h^c}_{c,ab} 
+		+ {{h_{ac}}^{,c}}_b
+	)	
+	+ \frac{1}{4} (
+		
+		{h^c}_{c,e} {h^e}_{a,b} 
+		+ {h^c}_{c,e} {h^e}_{b,a} 
+		
+		- {h^c}_{c,e} {h_{ab}}^{,e}
+
+		- {h^c}_{e,b} {h^e}_{a,c}
+		- {h^c}_{e,b} {h^e}_{c,a}
+		+ {h^c}_{e,b} {h_{ac}}^{,e}
+		
+		- 2 {{h_b}^c}_{,e} {{h_a}^e}_{,c}
+		+ 2 {{h_b}^c}_{,e} {h_{ac}}^{,e}
+
+	)
+$<br>
+
+Choosing the gauge condition:<br>
+(Reminds me of page 38 of Kiefer's "Quantum Gravity" book about gravitational wave linearizations...)<br>
+$(h_{ab} - \frac{1}{2} \eta_{ab} {h^c}_c)^{,b} = 0$<br>
+${h_{ab}}^{,b} = \frac{1}{2} {h_c}^{c,a}$<br>
+<br>
+
+$R_{ab} = 
+	\frac{1}{2} (
+		\frac{1}{2} {{h_c}^c}_{,ba}
+		- {h_{ab,c}}^{,c}
+		- {h^c}_{c,ab} 
+		\frac{1}{2} {{h_c}^c}_{,ba}
+	)	
+	+ \frac{1}{4} (
+		{h^c}_{c,e} {h^e}_{a,b} 
+		+ {h^c}_{c,e} {h^e}_{b,a} 
+		
+		- {h^c}_{c,e} {h_{ab}}^{,e}
+
+		- {h^c}_{e,b} {h^e}_{a,c}
+		- {h^c}_{e,b} {h^e}_{c,a}
+		+ {h^c}_{e,b} {h_{ac}}^{,e}
+		
+		- 2 {{h_b}^c}_{,e} {{h_a}^e}_{,c}
+		+ 2 {{h_b}^c}_{,e} {h_{ac}}^{,e}
+
+	)
+$<br>
+
+$R_{ab} = 
+	- \frac{1}{2} {h_{ab,c}}^{,c}
+	
+	+ \frac{1}{4} (
+		{h^c}_{c,e} {h^e}_{a,b} 
+		+ {h^c}_{c,e} {h^e}_{b,a} 
+		
+		- {h^c}_{c,e} {h_{ab}}^{,e}
+
+		- {h^c}_{e,b} {h^e}_{a,c}
+		- {h^c}_{e,b} {h^e}_{c,a}
+		+ {h^c}_{e,b} {h_{ac}}^{,e}
+		
+		- 2 {{h_b}^c}_{,e} {{h_a}^e}_{,c}
+		+ 2 {{h_b}^c}_{,e} {h_{ac}}^{,e}
+
+	)
+$<br>
+...TODO all the squared terms should go away...<br>
+$R_{ab} = -\frac{1}{2} {h_{ab,c}}^c$<br>
+<br>
+
+Next Gaussian curvature:<br>
+$R = \eta^{ab} R_{ab} = -\frac{1}{2} {{{h^a}_a}^{,b}}_b$<br>
+<br>
+
+Einstein tensor:<br>
+$G_{ab} = R_{ab} - \frac{1}{2} g_{ab} R$<br>
+Linerized approximation:<br>
+$G_{ab} = R_{ab} - \frac{1}{2} \eta_{ab} R$<br>
+$= -\frac{1}{2} {h_{ab,c}}^c + \frac{1}{4} \eta_{ab} {{{h^c}_c}^{,d}}_d$<br>
+<br>
+
+Define gravitational potential:<br>
+$\bar{h}_{ab} = h_{ab} - \frac{1}{2} \eta_{ab} {h^c}_c$<br>
+so ${\bar{h}_{ab,c}}^c = {h_{ab,c}}^c - \frac{1}{2} \eta_{ab} {{{h^c}_c}^{,d}}_d$<br>
+<br>
+
+Substitute into Einstein tensor:<br>
+$G_{ab} = -\frac{1}{2} {h_{ab,c}}^c + \frac{1}{4} \eta_{ab} {{{h^c}_c}^{,d}}_d$<br>
+$= -\frac{1}{2} {\bar{h}_{ab,c}}^c$<br>
+<br>
+
+Einstein Field Equations:<br>
+$G_{ab} = 8 \pi \frac{G}{c^4} T_{ab}$<br>
+$-\frac{1}{2} {\bar{h}_{ab,c}}^c = 8 \pi \frac{G}{c^4} T_{ab}$<br>
+${\bar{h}_{ab,c}}^c = -16 \pi \frac{G}{c^4} T_{ab}$<br>
+Separating space and time:<br>
+$\frac{1}{c^2} \frac{\partial^2}{\partial t^2} \bar{h}_{ab} - \Delta \bar{h}_{ab} = -16 \pi \frac{G}{c^4} T_{ab}$<br>
+Assuming a steady state:<br>
+$\Delta \bar{h}_{ab} = 16 \pi \frac{G}{c^4} T_{ab}$<br>
+<br>
+
+Stress energy of matter in curved space:<br>
+$T_{ab} = \rho u_a u_b + P (g_{ab} - u_a u_b) $<br>
+Low-velocity approximation: $u_t \approx 1, u_i \approx v_i$<br>
+$T_{ab} = \left[\matrix{
+	\rho_m c^2 & -\rho_m c v_i \\
+	-\rho_m c v_i & \rho_m v_i v_j + P \delta{ij} 
+}\right]$<br>
+So $T_{tt} = c^2 \rho_m$<br>
+Combine with EFE to find:<br>
+$\Delta \bar{h}_{tt} = 16 \pi \frac{G}{c^4} T_{tt}$<br>
+$\frac{c^2}{4} \Delta \bar{h}_{tt} = 4 \pi G \rho_m$<br>
+<br>
+Poisson's equation:<br>
+$\Delta \phi = 4 \pi \rho$ has a solution $\phi = -\int_V \frac{\rho}{r} dV$<br>
+<br>
+$\frac{c^2}{4} \bar{h}_{tt} = -G \int_V \frac{\rho_m}{r} dV$<br>
+Let $\Phi^g = \frac{c^2}{4} \bar{h}_{tt}$<br>
+Let $G = \frac{1}{4\pi\epsilon_g}$<br>
+$\Phi^g = -\frac{1}{4\pi\epsilon_g} \int_V \frac{\rho_m}{r} dV$<br>
+Tada! Just like electromagnetism.<br>
+<br>
+	
+Next do the same trick with $T_{ti} = -\rho_m c^2 \frac{v_i}{c}$<br>
+Let $p_i = \rho_m v_i$ be the fluid momentum variable.<br>
+$T_{ti} = -c^2 \frac{p_i}{c}$<br>
+$\Delta \bar{h}_{ti} = 16 \pi \frac{G}{c^4} T_{ti}$<br>
+$-\frac{c}{4} \Delta \bar{h}_{ti} = 4 \pi \frac{G}{c^2} p_i$<br>
+Use Poisson's equation:<br>
+$-\frac{c}{4} \bar{h}_{ti} = -\frac{G}{c^2} \int_V \frac{p_i}{r} dV$<br>
+Let $A^g_i = -\frac{c}{4} \bar{h}_{ti}$ be the gravitomagnetic potential vector.<br>
+Let $\mu_g = \frac{4 \pi G}{c^2}$.<br>
+$A^g_i = -\frac{\mu_g}{4 \pi} \int_V \frac{p_i}{r} dV$<br>
+Just like magnetism.<br>
+<br>
+
+This gives the familiar formula: $c^2 = \frac{1}{\epsilon_g \mu_g}$<br>
+<br>
+
+Faraday tensor:<br>
+$F_{ab} = \downarrow a \overset{\rightarrow b}{\left[\matrix{
+	0 & -\frac{1}{c} E_j \\
+	\frac{1}{c} E_i & {\epsilon_{ij}}^k B_k
+}\right]}$<br>
+$F^{ab} = \left[\matrix{
+	0 & \frac{1}{c} E^j \\
+	-\frac{1}{c} E^i & \epsilon^{ijk} B_k
+}\right]$<br>
+Funny how raising/lowering twice on antisymmetric tensors looks the same whether you're using +--- or -+++<br>
+<br>
+
+Maxwell's laws look like<br>
+${F^{ab}}_{,b} = \mu_0 J^a$<br>
+for $J^a = [ \rho, J^i ]$ gives<br>
+$\frac{1}{c} {E^i}_{,i} = c \mu_0 \rho$ becomes ${E^i}_{,i} = \frac{\rho}{\epsilon_0}$<br>
+$-\frac{1}{c^2} {E^i}_{,t} + \epsilon^{ijk} B_k = \mu_0 J^i$<br>
+And ${\star F^{ab}}_{,b} = 0$<br>
+${B^i}_{,i} = 0$<br>
+$-{B^i}_{,t} - \epsilon^{ijk} E_k = 0$<br>
+<br>
+
+Now define the gravitoelectric and gravitomagnetic fields:<br>
+(Should this be upper or lower?  Tajmar &amp; Matos' paper uses vector notation, which implies upper, which implies a sign change using this +--- metric.)<br>
+$E^g_i = -\Phi^g_{,i} - {A^g}_{,t}$<br>
+$B^g_i = {\epsilon_i}^{jk} {A^g}_{k,j}$<br>
+<br>
+...and now we get Maxwell's laws for gravitation...<br>
+${(E^g)^i}_{,i} = -\frac{\rho_m}{\epsilon_g}$<br>
+${(B^g)^i}_{,i} = 0$ (by symmetric of 2nd derivatives and antisymmetry of Levi-Civita tensor)<br>
+${\epsilon_i}^{jk} (E^g)_{k,j} = -(B^g)_{i,t}$<br>
+${\epsilon_i}^{jk} (B^g)_{k,j} = -\mu_g \rho_m v_i + \frac{1}{c^2} (E^g)_{,t}$<br>
+<br>
+
+Now comparing the ratios between matter and charge...<br>
+$\rho_m = \frac{m}{e} \rho$<br>
+$m = $ particle mass, $e = $ particle charge.<br>
+2014 CODATA electron e/m is $1.75882002411 \cdot 10^{11} \frac{C}{kg}$<br>
+
+	</body>
+</html>
