@@ -280,9 +280,12 @@ $ = \left[\matrix{
 	E^i E^j / \alpha^2 + \mu B^i B^j + (1 - \mu) \tilde{\gamma}^{ij} + i (E^i \tilde{\beta}^j - \tilde{\beta}^i E^j)
 }\right]$<br>
 ...which doesn't quite exactly look like $\tilde{g}^{ab} + i F_{ab} + $ extra terms in the $x_i x_j$ components.<br>
+I'll call these three parts $\tilde{g}^{ab}$, $i (F')^{ab}$, and $(g')^{ab}$, respectively.<br>
+Notice that $(F')^{ab}$ is nearly $F_{ab}$, except for the factors of $\alpha$ (which are nearly 1 anyways) and $\mu$ (which is 1 so long as $B = 0$).<br>
 <br>
 
 In fact, what would $F^{ab}$ look like, in terms of $E$, $B$, and the real metric ADM terms $\tilde{\alpha}, \tilde{\beta}^i, \tilde{\gamma}_{ij}$?<br>
+What would I be looking for in the structure of $g^{ab}$ if I wanted to extract $F^{ab}$? (A bit of a circular question.)<br>
 $F^{ab} = g^{ac} g^{bd} F_{cd} = g^{ac} F_{cd} \bar{g}^{db}$<br>
 $F^{ab} = 	\left[ \matrix{
 		1/\alpha^2 & 
@@ -371,12 +374,32 @@ $\Gamma_{abc} = \frac{1}{2} (g_{ab,c} + g_{ac,b} - g_{bc,a})$<br>
 $= \frac{1}{2} (\tilde{g}_{ab,c} + \tilde{g}_{ac,b} - \tilde{g}_{bc,a} + (g^*)_{ab,c} + (g^*)_{ac,b} - (g^*)_{bc,a} + i (F_{ab,c} + F_{ac,b} - F_{bc,a}))$<br>
 $= \frac{1}{2} (\tilde{g}_{ab,c} + \tilde{g}_{ac,b} - \tilde{g}_{bc,a} + (g^*)_{ab,c} + (g^*)_{ac,b} - (g^*)_{bc,a} + i (2 F_{ab,c} - F_{ab,c} - F_{ca,b} - F_{bc,a}))$<br>
 $= \frac{1}{2} (\tilde{g}_{ab,c} + \tilde{g}_{ac,b} - \tilde{g}_{bc,a} + (g^*)_{ab,c} + (g^*)_{ac,b} - (g^*)_{bc,a} + i 2 F_{ab,c})$<br>
-$= \tilde{\Gamma}_{abc} + (\Gamma^*)_{abc} + i F_{ab,c}$<br>
+$= \tilde{\Gamma}_{abc} + i F_{ab,c} + (\Gamma^*)_{abc}$<br>
 For $\tilde{\Gamma}_{abc}$ the connection of the real metric<br>
-For $(\Gamma^*)_{abc} = \frac{1}{2} ((g^*)_{ab,c} + (g^*)_{ac,b} - (g^*)_{bc,a})$<br>
+For $(\Gamma^*)_{abc} = \frac{1}{2} ((g^*)_{ab,c} + (g^*)_{ac,b} - (g^*)_{bc,a})$, which is all square terms of E and B, so let's hope it's too small to notice.<br>
 <br>
 
+Now for contravariant form:<br>
 ${\Gamma^a}_{bc} = g^{ad} \Gamma_{dbc}$<br>
-
+$ = (\tilde{g}^{ad} + i (F')^{ad} + (g')^{ad}) (\tilde{\Gamma}_{dbc} + i F_{db,c} + (\Gamma^*)_{dbc})$<br>
+$ = 
+	\tilde{\Gamma^a}_{bc} 
+	- (F')^{ad} F_{db,c}$<br>
+	+ i (F')^{ad} \tilde{\Gamma}_{dbc} 
+	+ i \tilde{g}^{ad} F_{db,c}
+$...
+	+ (g')^{ad} \tilde{\Gamma}_{dbc} 
+	+ i (g')^{ad} F_{db,c} 
+	+ \tilde{g}^{ad} (\Gamma^*)_{dbc} 
+	+ (g')^{ad} (\Gamma^*)_{dbc} 
+	+ i (F')^{ad} (\Gamma^*)_{dbc} 
+$ but I'm hoping these terms are neglegible.<br>
+Likewise let's pretend the $\partial F$ terms are nearly zero as well.<br>
+That leaves us with <br>
+${\Gamma^a}_{bc} = \tilde{\Gamma^a}_{bc} + i (F')^{ad} \tilde{\Gamma}_{dbc}$<br>
+...which turns out to have an imaginary part of the acceleration put in place of the velocity of a charged particle in the Lorentz force law.<br>
+...which is probably what you would expect by putting the Faraday tensor alongside the metric instead of the electromagnetic potential...<br>
+<br>
+<br>
 	</body>
 </html>
