@@ -10,8 +10,6 @@
 
 <b>Derivation:</b><br>
 for physical derivation:<br>
-1997 Banyuls, Font, Ibanez, Marti, Mirales <a href='http://iopscience.iop.org/article/10.1086/303604/meta'>Numerical {3 + 1} General Relativistic Hydrodynamics: A Local Characteristic Approach</a><br> 
-for numerical implementation:<br>
 2008 Font "Numerical Hydrodynamics and Magnetohydrodynamics in General Relativity"<br>
 <br>
 
@@ -80,24 +78,27 @@ $\kappa = \partial p / \partial \epsilon |_\rho$<br>
 $h c_s^2 = \chi + p/\rho^2 \kappa$<br>
 <br>
 
+<!--
 <b>3-velocity</b><br>
 Lorentz factor:<br>
 $W = -u^\mu n_\mu = u^0$ for SR<br>
 $W = 1/\sqrt{1 - v^2}$ by the definition of Lorentz-boosted 4-velocity<br>
 $v^i = -u^i / u^\mu n_\mu = u^i / u^0$ for SR<br>
 <br>
+-->
+<b>relativistic Lorentz factor</b><br>
+Let $v^i$ be our spatial velocity, related to $u^i$ by $v^i = \frac{u^i}{\alpha u^t} + \frac{\beta^i}{\alpha}$<br>
+Let $W = \alpha u^t = 1/\sqrt{1 - v^i v^j \gamma_{ij}}$<br>
+<br>
 
 <b>primitive variables</b><br>
 $w = \downarrow i \left[\matrix{\rho \\ v^i \\ \epsilon}\right]$ = primitive variables<br>
-
-<br>
-$W = 1/\sqrt{1-v^2}$ = Lorentz factor (should be $\gamma$, but that's already being used by the heat capacity ratio ... and eventually the spatial metric determinant)<br>
 <br>
 
 <b>conservative variables</b><br>
 These variables appear just as they do in the non-relativistic Euler fluid equations, however $\rho$ is now densitized by $W$, and $S^i$ and $\tau$ are now densitized by an additional $h W$<br>
 $D = -J^\mu n_\mu = \alpha J^0 = \alpha \rho u^0 = \rho W$ = relativistic density<br>
-$S^i = -T^{\mu i} n_\mu = \alpha T^{0i} = \alpha (\rho h u^0 u^i + p g^{0i}) = \rho h W^2 v^i$ = relativistic momentum<br>
+$S^i = -T^{\mu i} n_\mu = \alpha T^{0i} = \alpha (\rho h u^0 u^i + p g^{0i}) = \rho h W^2 v^i $ = relativistic momentum<br>
 $E = T^{\mu\nu} n_\mu n_\nu = \alpha^2 T^{00} = \alpha^2 (\rho h (u^0)^2 + p g^{00}) = \rho h W^2 - p$ = relativistic total energy density<br>
 $\tau = E - D = \rho h W^2 - p - D$ = relativistic total energy density minus rest-mass density<br>
 <br>
