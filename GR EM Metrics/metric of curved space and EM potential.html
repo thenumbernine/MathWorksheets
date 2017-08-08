@@ -25,7 +25,8 @@ $g^{ab} = \overset{a(i)\downarrow b(j)\rightarrow}{
 <br>
 
 adding in the EM potential...<br>
-let $\beta_i = \tilde{\beta}_i + A_i$<br>
+Let $\alpha^2 = \tilde{\alpha}^2 + \gamma^{kl} A_k A_l - 2 A_t$<br>
+Let $\beta_i = \tilde{\beta}_i + A_i$<br>
 Notice that $\beta^i$ and $\tilde{\beta}^i$ are naturally contravariant while $A_i$ is naturally covariant.<br>
 I'm raising and lowering spatial indexes with respect to the spatial metric $\gamma_{ij}$ (just like in all those numerical relativity text books).<br>
 This means $A^i = \gamma^{ij} A_j$ versus $A^i$ as a subset of $A^u$, which is $(-A_t + A_j \beta^j) \beta^i / \alpha^2 + A_j \gamma^{ij}$.<br>
@@ -34,14 +35,14 @@ Notice the difference between the two, $(-A_t + A_j \beta^j) \beta^i / \alpha^2$
 
 $g_{ab} = a(i)\downarrow \overset{b(j)\rightarrow}{
 	\left[ \matrix{
-		-\alpha^2 + (\tilde{\beta}_k + A_k) (\tilde{\beta}^k + A^k) + 2 A_t & 
+		-\tilde{\alpha}^2 - \gamma^{kl} A_k A_l + 2 A_t + (\tilde{\beta}_k + A_k) (\tilde{\beta}^k + A^k) & 
 			\tilde{\beta}_j + A_j \\ 
 		\tilde{\beta}_i + A_i & 
 			\gamma_{ij}
 	} \right]}$<br>
 $ = a(i)\downarrow \overset{b(j)\rightarrow}{
 	\left[ \matrix{
-		-\alpha^2 + (\gamma_{kl} \tilde{\beta}^l + A_k) (\tilde{\beta}^k + \gamma^{km} A_m) + 2 A_t & 
+		-\alpha^2 - \gamma^{kl} A_k A_l + 2 A_t + (\gamma_{kl} \tilde{\beta}^l + A_k) (\tilde{\beta}^k + \gamma^{km} A_m) & 
 			\gamma_{jk} \tilde{\beta}^k + A_j \\ 
 		\gamma_{ik} \tilde{\beta}^k + A_i & 
 			\gamma_{ij}
@@ -49,10 +50,12 @@ $ = a(i)\downarrow \overset{b(j)\rightarrow}{
 $ = a(i)\downarrow \overset{b(j)\rightarrow}{
 	\left[ \matrix{
 		-\alpha^2 
+			- \gamma^{kl} A_k A_l
+			+ 2 A_t 
 			+ \gamma_{kl} \tilde{\beta}^l \tilde{\beta}^k 
 			+ \gamma^{kl} A_k A_l
 			+ 2 A_k \tilde{\beta}^k 
-			+ 2 A_t & 
+			& 
 			
 		\gamma_{jk} \tilde{\beta}^k + A_j \\ 
 		
@@ -69,7 +72,7 @@ $ = \left[\matrix{
 	2 A_t & A_j \\
 	A_i & 0
 }\right] + \left[\matrix{
-	2 A_k \tilde{\beta}^k + \gamma^{kl} A_k A_l & 0 \\
+	2 A_k \tilde{\beta}^k & 0 \\
 	0 & 0
 }\right]$<br>
 $= \tilde{g}_{ab} + 2 A_{(a} \delta_{b)t} + (g^*)_{ab}$<br>
@@ -77,7 +80,7 @@ $= \tilde{g}_{ab} + 2 A_{(a} \delta_{b)t} + (g^*)_{ab}$<br>
 
 So $\Gamma_{abc} = \tilde{\Gamma}_{abc} + (\Gamma^A)_{abc} + (\Gamma^*)_{abc}$.<br>
 Now $\tilde{\Gamma}_{abc}$ produces the typical gravitational force.<br>
-$(\Gamma^A)_{abc}$ produces the Lorentz force (see my 'flat space + EM potential' worksheet for how)<br>
+$(\Gamma^A)_{abc}$ produces forces in the same form as the Lorentz force (see my 'flat space + EM potential' worksheet for how)<br>
 and $(\Gamma^*)_{abc}$ is extra, hopefully only applying to the time component, or something else equally insignificant.<br>
 <br>
 
@@ -90,6 +93,11 @@ $= \tilde{\Gamma}_{ibc} u^b u^c + \frac{q}{m} (E_i (u^t)^2 + \epsilon_{ijk} B_k 
 But I think this is beside the point.  Look at the gravitomagnetics papers.<br>
 They talk about equivalences between the $g_{tu}$ and $A_u$, and dissect gravity accordingly.<br>
 That is essentially what this $A_u$ is -- not an electromagnetic $A$, but instead a gravitomagnetic $A$.<br>
+<br>
+Hmm, another thought on the gravitomagnetic papers.<br>
+They assume that -- because electric force comes about from charge, which is the Laplacian of potential ($\phi = A_t$),<br>
+that matter force should come about from density, the Laplacian of matter potential (represented along diagonal of $g_{ab}$, namely $\phi_g = g_{tt}$)<br>
+However the gravitational force is not proportional to the particles own mass at all (unlike the electric force, which is proportional to the particle's own charge).<br>
 <br>
 
 Now for inverses:<br>
@@ -145,9 +153,25 @@ $-{\Gamma^i}_{mn} = \frac{1}{2} (
 )$<br>
 <br>
 
+Now who knows what I do with this.<br>
 <br>
 
+Next comes the Maxwell stuff.<br>
+Linearized gravitomagnetics does this in terms of the time x spacetime part of - not the $g_{ab}$ (not even the $h_{ab}$ perturbed part) but instead the trace-reversed $\bar{h}_{ab} = h_{ab} - \frac{1}{2} \eta_{ab} {h^c}_c$.<br>
+Trace-reversed, meaning $tr(\bar{h}_{ab}) = \eta^{ab} \bar{h}_{ab} = \eta^{ab} h_{ab} - \frac{1}{2} \eta^{ab} \eta_{ab} \eta^{cd} h_{cd} = \eta^{ab} h_{ab} - 2 \eta^{cd} h_{cd} = -tr(h_{ab})$<br>
+I wonder what the curved-space metric looks like trace-reversed...<br>
+$\bar{g}_{ab} = g_{ab} - \frac{1}{2} g_{ab} g^{cd} g_{cd} = -g_{ab}$.  Hmm, so obvious.<br>
+Next comes forming Maxwell equations using $\bar{h}_{tu}$ as the equivalent of the electromagnetic 4-potential vector.<br>
+I guess that's the same as using $-g_{tu}$ in curved space.
 <br>
+
+...and the ADM Riemann curvature tensor (will look ugly):<br>
+
+...and the ADM Ricci curvature tensor (will look ugly):<br>
+
+...and the ADM Gaussian curvature (will look ugly):<br>
+
+...and the ADM Gravitational curvature (will look ugly):<br>
 
 	</body>
 </html>
