@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="utf-8">
+		<script type='text/javascript' src='../tryToFindMathJax.js'></script>
+		<title>curved space gravitomagnetics</title>
+	</head>
+	<body onload='tryToFindMathJax();'>
+
+Same as "metric of curved space and EM potential" except that one was targetted with this crazy idea of reproducing the EM stress-energy tensor in curved space.<br>
+This is just about isolating higher order terms of a gravitomagnetic solution (i.e. neglecting all the DOF of gravitation except those that look analogous to EM).<br>
+I might pull in some influence from the Newtonian limit as well.<br>
+<br>
+
+ADM decomposition:<br>
+$g_{ab} = \overset{a(i)\downarrow b(j)\rightarrow}{
+	\left[ \matrix{
+		-\alpha^2 + \beta_k \beta^k & 
+			\beta_j \\ 
+		\beta_i & 
+			\gamma_{ij}
+	} \right]}$<br>
+$g^{ab} = \overset{a(i)\downarrow b(j)\rightarrow}{
+	\left[ \matrix{
+		-1/\alpha^2 & 
+			\beta^j /\alpha^2 \\ 
+		\beta^i /\alpha^2 & 
+			\gamma^{ij} - \beta^i \beta^j /\alpha^2
+	} \right]}$<br>
+<br>
+
+adding in the EM potential...<br>
+Let $\alpha^2 = \tilde{\alpha}^2 + 2 \Phi_\alpha + \gamma^{kl} A_k A_l$<br>
+Let $\beta_i = A_i$<br>
+So $\beta^i = \gamma^{ij} A_j$<br>
+Let $\gamma_{ij} = \tilde{\gamma}_{ij} - 2 \Phi_\gamma$<br>
+<br>
+
+$g_{ab} = a(i)\downarrow \overset{b(j)\rightarrow}{
+	\left[ \matrix{
+		-\tilde{\alpha}^2 - 2 \Phi_\alpha & A_j \\ 
+		A_i & \tilde{\gamma}_{ij} - 2 \Phi_\gamma
+	} \right]}$<br>
+Now the metric looks like the Newtonian approximation of relativity (so long as $\Phi_\alpha = \Phi_\gamma$) 
+combined with the gravitomagnetic 4-potential $A_\mu$<br>
+<br>
+
+Now the ADM connections:<br>
+<br>
+
+$-{\Gamma^i}_{tt} =
+	\frac{1}{2} \alpha^{-2} \beta^i \beta^j \beta^k {\gamma_{jk}}_{,t} 
+	- \frac{1}{2} \alpha^{-2} \beta^i \beta^j \beta^k \beta^l \gamma_{kl,j}
+	- \alpha^{-2} \beta^i \beta^j {\beta^k}_{,j} \beta^l \gamma_{kl}
+	+ \alpha^{-1} \alpha_{,j} \beta^i \beta^j
+	+ \alpha^{-1} \alpha_{,t} \beta^i
+	- \beta^k \gamma^{ij} \gamma_{jk,t}
+	+ \frac{1}{2} \beta^k \beta^l \gamma^{ij} \gamma_{kl,j}
+	+ {\beta^k}_{,j} \beta^l \gamma^{ij} \gamma_{kl}
+	- {\beta^i}_{,t}
+	- \alpha \alpha_{,j} \gamma^{ij}
+$<br>
+<br>
+
+$-{\Gamma^i}_{mt} = \frac{1}{2} (
+	\alpha^{-2} \beta^i \beta^j \gamma_{jm,t}
+	- \alpha^{-2} \beta^i \beta^j \beta^k \gamma_{km,j}
+	- \alpha^{-2} \beta^i \beta^j {\beta^k}_{,j} \gamma_{mk}
+	- \alpha^{-2} \beta^i \beta^j {\beta^k}_{,m} \gamma_{jk}
+	+ 2 \alpha^{-1} \alpha_{,m} \beta^i
+	- \gamma^{ij} \gamma_{jm,t}
+	- {\beta^i}_{,m}
+	+ {\beta^k}_{,j} \gamma^{ij} \gamma_{mk}
+	+ \beta^k \gamma^{ij} \gamma_{mk,j}
+	- \beta^k \gamma^{ij} \gamma_{jk,m}
+)$<br>
+<br>
+
+$-{\Gamma^i}_{mn} = \frac{1}{2} (
+	\alpha^{-2} \beta^i \gamma_{mn,t}
+	- \alpha^{-2} \beta^i \beta^j \gamma_{mn,j}
+	- \alpha^{-2} \beta^i {\beta^k}_{,n} \gamma_{mk}
+	- \alpha^{-2} \beta^i {\beta^k}_{,m} \gamma_{nk}
+	- \gamma^{ij} \gamma_{jm,n}
+	- \gamma^{ij} \gamma_{jn,m}
+	+ \gamma^{ij} \gamma_{mn,j}
+)$<br>
+<br>
+
+...and the ADM Riemann curvature tensor (will look ugly):<br>
+
+...and the ADM Ricci curvature tensor (will look ugly):<br>
+
+...and the ADM Gaussian curvature (will look ugly):<br>
+
+...and the ADM Gravitational curvature (will look ugly):<br>
+
+	</body>
+</html>
