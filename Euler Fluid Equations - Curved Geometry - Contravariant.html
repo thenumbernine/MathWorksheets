@@ -3,7 +3,7 @@
 	<head>
         <meta charset="UTF-8">
 		<script type='text/javascript' src='tryToFindMathJax.js'></script>
-		<title>Euler Fluid Equation - Curved Geometry</title>
+		<title>Euler Fluid Equation - Curved Geometry - Contravariant</title>
 	</head>
 	<body onload='tryToFindMathJax();'>
 
@@ -526,74 +526,6 @@ $V^L_{F^z} = \left[\matrix{
 
 <br>
 
-<hr>
-
-
-This source: <a href='https://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/19870019781.pdf'>https://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/19870019781.pdf</a>
-gets around that by using the covariant form of the momentum in the state vector:<br>
-What's the advantage of this?  By putting $v_i$ on the same variance as $P_{,i}$, we remove the extra $g^{ij}$ from the flux matrix.<br> 
-However we replace it with a $g_{ij,k}$ source term (which the paper calls a "coriolis force").<br> 
-<br>
-
-$\rho_{,t} + (\rho v^j)_{;j} = 0$<br>
-$(\rho v_i)_{,t} + (\rho v_i v^j + \delta_i^j P)_{;j} = 0$<br>
-$E_{total,t} + (v^j H_{total})_{;j} = 0$<br>
-<br>
-
-$\rho_{,t} + (\rho v^j)_{;j} = 0$<br>
-$(\rho v_i)_{,t} + (\rho v_i v^j)_{;j} + \delta_i^j P_{,j} = 0$<br>
-$E_{total,t} + (v^j H_{total})_{;j} = 0$<br>
-<br>
-
-$\rho_{,t} + (\rho v^j)_{,j} + {\Gamma^j}_{kj} \rho v^k = 0$<br>
-$(\rho v_i)_{,t} + (\rho v_i v^j)_{,j} + \delta_i^j P_{,j} - {\Gamma^k}_{ij} \rho v_k v^j + {\Gamma^j}_{kj} \rho v_i v^k = 0$<br>
-$E_{total,t} + (v^j H_{total})_{,j} + {\Gamma^j}_{kj} v^k H_{total} = 0$<br>
-<br>
-
-$\rho_{,t} + \frac{\sqrt{g}}{\sqrt{g}} (\rho v^j)_{,j} + \frac{1}{\sqrt{g}} (\sqrt{g})_{,k} \rho v^k = 0$<br>
-$(\rho v_i)_{,t} 
-	+ \frac{\sqrt{g}}{\sqrt{g}} (\rho v_i v^j)_{,j} 
-	+ \frac{\sqrt{g}}{\sqrt{g}} \delta_i^j P_{,j} 
-	- {\Gamma^k}_{ij} \rho v_k v^j 
-	+ \frac{1}{\sqrt{g}} (\sqrt{g})_{,k} \rho v_i v^k 
-	= 0$<br>
-$E_{total,t} + \frac{\sqrt{g}}{\sqrt{g}} (v^j H_{total})_{,j} + \frac{1}{\sqrt{g}} (\sqrt{g})_{,k} v^k H_{total} = 0$<br>
-<br>
-
-$\rho_{,t} + \frac{1}{\sqrt{g}} (\sqrt{g} \rho v^j)_{,j} = 0$<br>
-$(\rho v_i)_{,t} 
-	+ \frac{1}{\sqrt{g}} (\sqrt{g} \rho v_i v^j)_{,j} 
-	+ \frac{1}{\sqrt{g}} (\sqrt{g} \delta_i^j P)_{,j}
-	- \frac{1}{\sqrt{g}} (\sqrt{g})_{,j} \delta^j_i P
-	- {\Gamma^k}_{ij} \rho v_k v^j 
-	= 0$<br>
-$E_{total,t} + \frac{1}{\sqrt{g}} (\sqrt{g} v^j H_{total})_{,j} = 0$<br>
-<br>
-
-$\rho_{,t} + \frac{1}{\sqrt{g}} (\sqrt{g} \rho v^j)_{,j} = 0$<br>
-$(\rho v_i)_{,t} 
-	+ \frac{1}{\sqrt{g}} (\sqrt{g} (\rho v_i v^j + \delta_i^j P))_{,j} 
-	= \Gamma_{kji} \rho v^j v^k
-	+ \frac{1}{\sqrt{g}} (\sqrt{g})_{,j} \delta^j_i P
-	$<br>
-$E_{total,t} + \frac{1}{\sqrt{g}} (\sqrt{g} v^j H_{total})_{,j} = 0$<br>
-<br>
-
-$\rho v^j v^k \Gamma_{kj,i} = \frac{1}{2} \rho v^j v^k (g_{kj,i} + g_{ki,j} - g_{ji,k}) = \frac{1}{2} \rho v^j v^k g_{jk,i}$<br>
-and $(\sqrt{g})_{,j} = \frac{1}{2 \sqrt{g}} g_{,j} = \frac{1}{2\sqrt{g}} g g^{jk} g_{jk,i} = \frac{1}{2} \sqrt{g} g^{jk} g_{jk,i}$ using the Jacobi's formula.<br>
-so $\frac{1}{\sqrt{g}} (\sqrt{g})_{,j} P = \frac{1}{2} g^{jk} g_{jk,i} P$<br>
-<br>
-
-$\rho_{,t} + \frac{1}{\sqrt{g}} (\sqrt{g} \rho v^j)_{,j} = 0$<br>
-$(\rho v_i)_{,t} 
-	+ \frac{1}{\sqrt{g}} (\sqrt{g} (\rho v_i v^j + \delta_i^j P))_{,j} 
-	= \frac{1}{2} g_{jk,i} (\rho v^j v^k + g^{jk} P)$<br>
-$E_{total,t} + \frac{1}{\sqrt{g}} (\sqrt{g} v^j H_{total})_{,j} = 0$<br>
-<br>
-
-So now that there is a $\sqrt{g}$ inside the flux term, where does it go in the eigen decomposition?<br>
-I'm also tempted to not use this because Font' descriptions of relativistic Euler equations keeps the velocity in contravariant form.<br>
-And to boot, it doesn't provide eigen-decomposition...<br>
 
 	</body>
 </html>

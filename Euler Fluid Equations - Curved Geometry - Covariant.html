@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<title>Euler Fluid Equation - Curved Geometry - Covariant</title>
+	</head>
+	<body onload='tryToFindMathJax();'>
+
+Riemannian geometry identity:<br>
+${\Gamma^i}_{ki} = \frac{1}{2 g} g_{,k} = ln(\sqrt{g})_{,k}$<br>
+$ = \frac{(\sqrt{g})_{,k}}{\sqrt{g}}$<br>
+<br>
+
+<h3>Euler Fluid Equations</h3>
+
+variables:<br>
+$\rho =$ density<br>
+$v_i =$ velocity<br>
+$m_i = \rho v_i = $ momentum<br>
+$P =$ pressure<br>
+$\gamma =$ heat capacity ratio<br>
+$\tilde\gamma = \gamma - 1$<br>
+
+$E_{kin} = \frac{1}{2} \rho v^k v_k$<br>
+$E_{int} = \frac{P}{\tilde\gamma}$<br>
+$E_{total} = E_{kin} + E_{int}$<br>
+$H_{total} = E_{total} + P = \frac{1}{2} \rho v^2 + \frac{\gamma}{\tilde\gamma} P$<br>
+<br>
+
+Let $IJK...$ spanning $\{ \rho, v^i, E_{total} \}$<br>
+<br>
+
+Conservative and primitive variables:<br>
+<br>
+
+$W^I = \left[\matrix{ \rho \\ v_i \\ P }\right]$<br>
+$U^I = \left[\matrix{ \rho \\ \rho v_i \\ E_{total} }\right]$<br>
+<br>
+
+$\frac{\partial U^I}{\partial W^J} = \downarrow I \overset{\rightarrow J}{\left[\matrix{
+	1 & 0 & 0 \\
+	v_i & \rho \delta_i^j & 0 \\
+	\frac{1}{2} v^2 & \rho v^j & 1/\tilde\gamma
+}\right]}$<br>
+$\frac{\partial W^I}{\partial U^J} = \downarrow I \overset{\rightarrow J}{ \left[\matrix{
+	1 & 0 & 0 \\
+	-v_i / \rho & \delta_i^j / \rho & 0 \\
+	\frac{1}{2} \tilde\gamma v^2 & -\tilde\gamma v^j & \tilde\gamma
+}\right]}$<br>
+<br>
+
+Flux term:<br>
+$F^{Ij} = \left[\matrix{ \rho v^j \\ \rho v_i v^j + \delta_i^j P \\ v^j H_{total} }\right]$<br>
+<br>
+
+Flux derivative wrt primitives:<br>
+
+$\frac{\partial F^{Ij}}{\partial W^M} = \downarrow I \overset{\rightarrow M}{ \left[\matrix{
+	v^j & \rho g^{jm} & 0 \\
+	v_i v^j & \rho (\delta_i^m v^j + v_i g^{jm}) & \delta_i^j \\
+	\frac{1}{2} v^j v^2 & g^{jm} H_{total} + \rho v^j v^m & \frac{\gamma}{\tilde{\gamma}} v^j
+}\right] }$<br>
+<br>
+
+Euler fluid equations, curved geometry:<br>
+<br>
+
+$U^I + {F^{Ij}}_{;j} = 0$<br>
+<br>
+
+$\rho_{,t} + (\rho v^j)_{;j} = 0$<br>
+$(\rho v_i)_{,t} + (\rho v_i v^j + \delta_i^j P)_{;j} = 0$<br>
+$E_{total,t} + (v^j H_{total})_{;j} = 0$<br>
+<br>
+
+$\rho_{,t} + (\rho v^j)_{;j} = 0$<br>
+$(\rho v_i)_{,t} + (\rho v_i v^j)_{;j} + \delta_i^j P_{,j} = 0$<br>
+$E_{total,t} + (v^j H_{total})_{;j} = 0$<br>
+<br>
+
+$\rho_{,t} + (\rho v^j)_{,j} + {\Gamma^j}_{kj} \rho v^k = 0$<br>
+$(\rho v_i)_{,t} + (\rho v_i v^j)_{,j} + \delta_i^j P_{,j} - {\Gamma^k}_{ij} \rho v_k v^j + {\Gamma^j}_{kj} \rho v_i v^k = 0$<br>
+$E_{total,t} + (v^j H_{total})_{,j} + {\Gamma^j}_{kj} v^k H_{total} = 0$<br>
+<br>
+
+$\rho_{,t} + \rho_{,j} v^j + \rho v_{k,j} g^{kj} + \rho v_k {g^{kj}}_{,j} = -{\Gamma^j}_{kj} \rho v^k$<br>
+$(\rho v_i)_{,t} + \rho_{,j} v_i v^j + \rho v_{i,j} v^j + \rho v_i v_{k,j} g^{kj} + \rho v_i v_k {g^{kj}}_{,j} + \delta_i^j P_{,j} = {\Gamma^k}_{ij} \rho v_k v^j - {\Gamma^j}_{kj} \rho v_i v^k$<br>
+$E_{total,t} + v_{k,j} g^{kj} H_{total} + v_k {g^{kj}}_{,j} H_{total} + v^j (\frac{1}{2} \rho_{,j} v^2 + \rho v^k v_{k,j} + \rho v_k v_l {g^{kl}}_{,j} + \frac{\gamma}{\tilde\gamma} P_{,j}) = -{\Gamma^j}_{kj} v^k H_{total}$<br>
+<br>
+
+$\left[\matrix{
+	\rho \\ \rho v_i \\ E_{total} 
+}\right]_{,t}
++ \left[\matrix{
+	v^j &
+		\rho g^{jm} &
+		0 \\
+	v_i v^j &
+		\rho ( v^j \delta_i^m + v_i g^{jm} ) &
+		\delta_i^j \\
+	\frac{1}{2} v^j v^2 &
+		g^{jm} H_{total} + \rho v^j v^m &
+		\frac{\gamma}{\tilde\gamma} v^j
+}\right]
+\left[\matrix{
+	\rho \\ v_m \\ P
+}\right]_{,j} = \left[\matrix{
+	-\rho v_k {g^{kj}}_{,j} - {\Gamma^j}_{kj} \rho v^k \\
+	-\rho v_i v_k {g^{kj}}_{,j} + {\Gamma^k}_{ij} \rho v_k v^j - {\Gamma^j}_{kj} \rho v_i v^k \\
+	-v_k {g^{kj}}_{,j} H_{total} - \rho v^j v_k v_l {g^{kl}}_{,j} - {\Gamma^j}_{kj} v^k H_{total}
+}\right]$<br>
+<br>
+
+$\left[\matrix{
+	\rho \\ \rho v_i \\ E_{total} 
+}\right]_{,t}
++ \left[\matrix{
+	v^j &
+		\rho g^{jm} &
+		0 \\
+	v_i v^j &
+		\rho ( v^j \delta_i^m + v_i g^{jm} ) &
+		\delta_i^j \\
+	\frac{1}{2} v^j v^2 &
+		g^{jm} H_{total} + \rho v^j v^m &
+		\frac{\gamma}{\tilde\gamma} v^j
+}\right]
+\left[\matrix{
+	\rho \\ v_m \\ P
+}\right]_{,j} = \left[\matrix{
+	\rho v^m g_{mn,j} g^{nj} - {\Gamma^j}_{kj} \rho v^k \\
+	\rho v_i v^m g_{mn,j} g^{nj} + {\Gamma^k}_{ij} \rho v_k v^j - {\Gamma^j}_{kj} \rho v_i v^k \\
+	v_k g^{km} g_{mn,j} g^{nj} H_{total} + \rho v^j v^m v^n g_{mn,j} - {\Gamma^j}_{kj} v^k H_{total}
+}\right]$<br>
+<br>
+
+$\left[\matrix{
+	\rho \\ \rho v_i \\ E_{total} 
+}\right]_{,t}
++ \left[\matrix{
+	v^j &
+		\rho g^{jm} &
+		0 \\
+	v_i v^j &
+		\rho ( v^j \delta_i^m + v_i g^{jm} ) &
+		\delta_i^j \\
+	\frac{1}{2} v^j v^2 &
+		g^{jm} H_{total} + \rho v^j v^m &
+		\frac{\gamma}{\tilde\gamma} v^j
+}\right]
+\left[\matrix{
+	\rho \\ v_m \\ P
+}\right]_{,j} = \left[\matrix{
+	2 \rho v_k {\Gamma^k}_{mn} g^{mn} - {\Gamma^j}_{kj} \rho v^k \\
+	2 \rho v_i v_k {\Gamma^k}_{mn} g^{mn} + {\Gamma^k}_{ij} \rho v_k v^j - {\Gamma^j}_{kj} \rho v_i v^k \\
+	2 v_k {\Gamma^k}_{mn} g^{mn} H_{total} + 2 \rho v_k {\Gamma^k}_{mn} v^m v^n - {\Gamma^j}_{kj} v^k H_{total}
+}\right]$<br>
+<br>
+
+<br>
+This only seems like it gets worse, because the indexes of the velocity and the derivative no longer oppose, 
+so the metric has to be introduced at every derivative (unless the derivatives are supposed to be contravariant).
+Likewise, whereas the metric was introduced next to the $P$ in the conatravariant velocity form, it isn't there but it now is everywhere else.
+And all fluid implementations always work around both of these by simply choosing a anholonomic normalized form such that the metric is identity ... 
+and instead reintroduce the missing information as commutation coefficients.<br>
+
+	</body>
+</html>
