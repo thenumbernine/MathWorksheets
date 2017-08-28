@@ -36,7 +36,9 @@ Here's the CDN URLs:
 
 [Electromagnetic Tensor Self-Dual](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Electromagnetic%20Tensor%20Self%2dDual%2ehtml)
 
-[Euler Fluid Equations - Curved Geometry](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Euler%20Fluid%20Equations%20%2d%20Curved%20Geometry%2ehtml)
+[Euler Fluid Equations - Curved Geometry - Contravariant](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Euler%20Fluid%20Equations%20%2d%20Curved%20Geometry%20%2d%20Contravariant%2ehtml)
+
+[Euler Fluid Equations - Curved Geometry - Covariant](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Euler%20Fluid%20Equations%20%2d%20Curved%20Geometry%20%2d%20Covariant%2ehtml)
 
 [Euler Fluid Equations - Eigenmode Analysis 2](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Euler%20Fluid%20Equations%20%2d%20Eigenmode%20Analysis%202%2ehtml)
 
@@ -46,9 +48,15 @@ Here's the CDN URLs:
 
 [Finite Volume Methods](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Finite%20Volume%20Methods%2ehtml)
 
-[GR EM Metrics/Complex Metric](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR%20EM%20Metrics%2fComplex%20Metric%2ehtml)
-
 [GR EM Metrics/complex metric of EM potential](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR%20EM%20Metrics%2fcomplex%20metric%20of%20EM%20potential%2ehtml)
+
+[GR EM Metrics/complex metric of g + F](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR%20EM%20Metrics%2fcomplex%20metric%20of%20g%20%2b%20F%2ehtml)
+
+[GR EM Metrics/complex metric of g + dual F](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR%20EM%20Metrics%2fcomplex%20metric%20of%20g%20%2b%20dual%20F%2ehtml)
+
+[GR EM Metrics/curved space gravitomagnetics](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR%20EM%20Metrics%2fcurved%20space%20gravitomagnetics%2ehtml)
+
+[GR EM Metrics/gravitomagnetics](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR%20EM%20Metrics%2fgravitomagnetics%2ehtml)
 
 [GR EM Metrics/metric of curved space and EM potential](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR%20EM%20Metrics%2fmetric%20of%20curved%20space%20and%20EM%20potential%2ehtml)
 
@@ -75,6 +83,8 @@ Here's the CDN URLs:
 [Metric Eigenmodes 2](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Metric%20Eigenmodes%202%2ehtml)
 
 [Metric Eigenmodes](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Metric%20Eigenmodes%2ehtml)
+
+[Metric With Geodesic of Any Conservative Field](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Metric%20With%20Geodesic%20of%20Any%20Conservative%20Field%2ehtml)
 
 [Metric with geodesic that changes in space with velocity in time](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Metric%20with%20geodesic%20that%20changes%20in%20space%20with%20velocity%20in%20time%2ehtml)
 

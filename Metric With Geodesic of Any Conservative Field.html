@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<title>Metric With Geodesic of Any Conservative Field</title>
+	</head>
+	<body onload='tryToFindMathJax();'>
+
+<hr>
+
+Let $x^I$ be the Minkowski coordinates<br>
+Let $x^u$ be the curved coordinates<br>
+I'll also use $x^\bar{a}$ for flat space coordinates and $x^\tilde{a}$ for curved space coordintes<br>
+<br>
+
+Let $x^\bar{0} = \phi(x^u)$, $x^\bar{i} = x^\tilde{i}$<br>
+<br>
+
+The basis is defined as:<br>
+${e_u}^\bar{0} = \frac{\partial x^\bar{0}}{\partial x^u} = {x^\bar{0}}_{,u} = \phi_{,u}$<br>
+${e_u}^\bar{i} = \frac{\partial x^\bar{i}}{\partial x^u} = {x^\bar{i}}_{,u} = \delta^i_u$<br>
+<br>
+
+The inverse basis is defined as:<br>
+${e^\tilde{0}}_\bar{0} = (\phi_{,\tilde{0}})^{-1}$<br>
+${e^\tilde{0}}_\bar{i} = -(\phi_{,\tilde{i}}) (\phi_{,\tilde{0}})^{-1}$<br>
+${e^u}_\bar{i} = \delta^u_i$<br>
+<br>
+
+Metric:<br>
+$g_{uv} = {e_u}^I {e_v}^J \eta_{IJ}$
+$= -{e_u}^\bar{0} {e_v}^\bar{0} + {e_u}^\bar{i} {e_v}^\bar{j} \eta_{\bar{i}\bar{j}}$
+$= -\phi_{,u} \phi_{,v} + \delta^i_u \delta^j_v \eta_{ij}$<br>
+$g_{\tilde{0}\tilde{0}} = -(\phi_{,\tilde{0}})^2$<br>
+$g_{\tilde{0}\tilde{i}} = -\phi_{,\tilde{0}} \phi_{,\tilde{i}}$<br>
+$g_{\tilde{i}\tilde{j}} = -\phi_{,\tilde{i}} \phi_{,\tilde{j}} + \delta_{ij}$<br>
+<br>
+
+Metric inverse:<br>
+$g^{\tilde{0}\tilde{0}} = (\phi_{,\tilde{0}})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,\tilde{k}})^2)$<br>
+$g^{\tilde{i}\tilde{0}} = -(\phi_{,\tilde{i}}) (\phi_{,\tilde{0}})^{-1}$<br>
+$g^{\tilde{i}\tilde{j}} = \delta^{ij}$<br>
+<br>
+
+Metric partial:<br>
+$g_{uv,w} = -(\phi_{,u} \phi_{,v})_{,w}$
+$=-\phi_{,uw} \phi_{,v} - \phi_{,u} \phi_{,vw}$<br>
+<br>
+
+Connection<br>
+$\Gamma_{uvw} = \frac{1}{2} (g_{uv,w} + g_{uw,v} - g_{vw,u})$<br>
+$= \frac{1}{2} (
+	-\phi_{,uw} \phi_{,v} - \phi_{,u} \phi_{,vw}
+	-\phi_{,uv} \phi_{,w} - \phi_{,u} \phi_{,wv}
+	+\phi_{,vu} \phi_{,w} + \phi_{,v} \phi_{,wu}
+)$
+$= - \phi_{,u} \phi_{,vw}$<br>
+<br>
+
+${\Gamma^u}_{vw} = g^{ua} \Gamma_{avw}$
+$ = -g^{ua} \phi_{,a} \phi_{,vw}$<br>
+${\Gamma^\tilde{0}}_{vw} = -g^{\tilde{0}\tilde{0}} \phi_{,\tilde{0}} \phi_{,vw}
+	- g^{\tilde{0}\tilde{i}} \phi_{,\tilde{i}} \phi_{,vw}$
+$ = (
+	-(\phi_{,\tilde{0}})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,\tilde{k}})^2) \phi_{,\tilde{0}}
+	+ \phi_{,\tilde{i}} (\phi_{,\tilde{0}})^{-1} \phi_{,\tilde{i}}
+) \phi_{,vw}$<br>
+$ = (
+	1 - \Sigma_{k=1}^n (\phi_{,\tilde{k}})^2
+	+ (\phi_{,\tilde{i}})^{2}
+) (\phi_{,\tilde{0}})^{-1} \phi_{,vw}$<br>
+<br>
+
+${\Gamma^\tilde{i}}_{vw} = g^{\tilde{i}\tilde{0}} \Gamma_{\tilde{0}vw} + g^{\tilde{i}\tilde{j}} \Gamma_{\tilde{j}vw}$<br>
+$ = -g^{\tilde{i}\tilde{0}} \phi_{,\tilde{0}} \phi_{,vw} - g^{\tilde{i}\tilde{j}} \phi_{,\tilde{j}} \phi_{,vw}$
+$ = (\phi_{,\tilde{i}}) (\phi_{,\tilde{0}})^{-1} \phi_{,\tilde{0}} \phi_{,vw}
+	- \delta^{ij} \phi_{,\tilde{j}} \phi_{,vw}$<br>
+$ = \phi_{,\tilde{i}} \phi_{,vw} - \phi_{,\tilde{i}} \phi_{,vw}$<br>
+$ = 0$<br>
+<br>
+
+So this gives the opposite of what I wanted: A controllable connection in the new dimension for vectors at rest in the subspace, and no connection in the new dimension for any vectors - especially those at rest in the new dimension.<br>
+<br>
+<hr>
+<br>
+Now let's try reversing the definition.  Still sticking to holonomic spaces, but defining the basis inverse rather than the basis.<br>
+Let $x^\tilde{0} = \phi(x^I)$, $x^\tilde{i} = x^\bar{i}$<br>
+<br>
+
+basis inverse:<br>
+${e^\tilde{0}}_I = \frac{\partial x^\tilde{0}}{\partial x^I} = \phi_{,\bar{I}}$<br>
+${e^\tilde{i}}_I = \frac{\partial x^\tilde{i}}{\partial x^I} = \delta^i_I$<br>
+<br>
+
+basis:<br>
+${e_\tilde{0}}^{\bar{0}} = (\phi_{,\bar{0}})^{-1}$<br>
+${e_\tilde{i}}^{\bar{0}} = -(\phi_{,\bar{i}}) (\phi_{,\bar{0}})^{-1}$<br>
+${e_u}^\bar{i} = \delta_u^i$<br>
+<br>
+
+Now the metric and metric inverse are switched, just like the basis and basis inverse were switched.<br>
+Metric:<br>
+$g_{\tilde{0}\tilde{0}} = (\phi_{,\bar{0}})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2)$<br>
+$g_{\tilde{i}\tilde{0}} = -(\phi_{,\bar{i}}) (\phi_{,\bar{0}})^{-1}$<br>
+$g_{\tilde{i}\tilde{j}} = \delta_{ij}$<br>
+<br>
+
+Metric inverse:<br>
+$g^{\tilde{0}\tilde{0}} = -(\phi_{,\bar{0}})^2$<br>
+$g^{\tilde{0}\tilde{i}} = -\phi_{,\bar{0}} \phi_{,\bar{i}}$<br>
+$g^{\tilde{i}\tilde{j}} = -\phi_{,\bar{i}} \phi_{,\bar{j}} + \delta^{ij}$<br>
+<br>
+
+Metric partial:<br>
+$g_{\tilde{0}\tilde{0},u} = ((\phi_{,\bar{0}})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2))_{,u}$<br>
+$= ((\phi_{,\bar{0}})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2))_{,I} {e_u}^I$<br>
+$= ((\phi_{,\bar{0}})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2))_{,\bar{0}} {e_u}^\bar{0}
+	+ ((\phi_{,\bar{0}})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2))_{,\bar{i}} {e_u}^\bar{i}
+$<br>
+$g_{\tilde{0}\tilde{0},\tilde{0}}$<br>
+$= ((\phi_{,\bar{0}})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2))_{,\bar{0}} {e_\tilde{0}}^\bar{0}
+	+ ((\phi_{,\bar{0}})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2))_{,\bar{i}} {e_\tilde{0}}^\bar{i}
+$<br>
+$= ((\phi_{,\bar{0}})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2))_{,\bar{0}} (\phi_{,\bar{0}})^{-1} 
+	+ ((\phi_{,\bar{0}})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2))_{,\bar{i}} \delta_\tilde{0}^i 
+$<br>
+$= (-2 (\phi_{,\bar{0}})^{-3} \phi_{,\bar{0}\bar{0}} (-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2)
+	+ (\phi_{,\bar{0}})^{-2} \Sigma_{k=1}^n (2 \phi_{,\bar{k}} \phi_{,\bar{k}\bar{0}})
+) (\phi_{,\bar{0}})^{-1} 
+$<br>
+$= 2 (\phi_{,\bar{0}})^{-3} (-(\phi_{,\bar{0}})^{-1} \phi_{,\bar{0}\bar{0}} (-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2)
+	+ \Sigma_{k=1}^n (\phi_{,\bar{k}} \phi_{,\bar{k}\bar{0}}))$<br>
+$g_{\tilde{0}\tilde{0},\tilde{j}} = ((\phi_{,\bar{0}})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2))_{,\bar{0}} {e_\tilde{j}}^\bar{0}
+	+ ((\phi_{,\bar{0}})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2))_{,\bar{i}} {e_\tilde{j}}^\bar{i}
+$<br>
+$g_{\tilde{0}\tilde{0},\tilde{j}} = ((\phi_{,\bar{0}})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2))_{,\bar{0}} (-(\phi_{,\bar{i}}) (\phi_{,\bar{0}})^{-1} ) 
+	+ ((\phi_{,\bar{0}})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2))_{,\bar{i}} \delta^i_j 
+$<br>
+$g_{\tilde{0}\tilde{0},\tilde{j}} = (
+	-2 (\phi_{,\bar{0}})^{-3} \phi_{,\bar{0}\bar{0}}
+	(-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2)
+	+ (\phi_{,\bar{0}})^{-2} 
+	(\Sigma_{k=1}^n 2 \phi_{,\bar{k}} \phi_{,\bar{k}\bar{0}})
+) (-(\phi_{,\bar{i}}) (\phi_{,\bar{0}})^{-1} ) 
++ (
+	-2 (\phi_{,\bar{0}})^{-3} \phi_{,\bar{0}\bar{j}}
+	(-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2)
+	+ (\phi_{,\bar{0}})^{-2} 
+	(\Sigma_{k=1}^n 2 \phi_{,\bar{k}} \phi_{,\bar{k}\bar{j}})
+)
+$<br>
+	
+	</body>
+</html>
