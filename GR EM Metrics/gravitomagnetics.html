@@ -75,9 +75,10 @@ $=
 $<br>
 
 Choosing the gauge condition (de Donder gauge):<br>
-(Reminds me of page 38 of Kiefer's "Quantum Gravity" book about gravitational wave linearizations...)<br>
 $(h_{ab} - \frac{1}{2} \eta_{ab} {h^c}_c)^{,b} = 0$<br>
 ${h_{ab}}^{,b} = \frac{1}{2} {h_c}^{c,a}$<br>
+Let $h = {h^a}_a$<br>
+$\nabla \cdot \textbf{h} = \frac{1}{2} \nabla h$<br>
 <br>
 
 $R_{ab} = 
@@ -123,10 +124,14 @@ $R_{ab} =
 $<br>
 All the squared terms should go away because $h_{ab} &lt;&lt; 1$, therefore $(h_{ab})^2 \approx 0$<br>
 $R_{ab} = -\frac{1}{2} {h_{ab,c}}^c$<br>
+$= -\frac{1}{2} \Box h_{ab}$
+$= -\frac{1}{2} \Box \textbf{h}$<br>
 <br>
 
 Next Gaussian curvature:<br>
 $R = \eta^{ab} R_{ab} = -\frac{1}{2} {{{h^a}_a}^{,b}}_b$<br>
+$= -\frac{1}{2} \Box {h^a}_a$
+$ = -\frac{1}{2} \Box h$<br>
 <br>
 
 Einstein tensor:<br>
@@ -138,12 +143,17 @@ $= -\frac{1}{2} {h_{ab,c}}^c + \frac{1}{4} \eta_{ab} {{{h^c}_c}^{,d}}_d$<br>
 
 Define gravitational potential:<br>
 $\bar{h}_{ab} = h_{ab} - \frac{1}{2} \eta_{ab} {h^c}_c$<br>
-so ${\bar{h}_{ab,c}}^c = {h_{ab,c}}^c - \frac{1}{2} \eta_{ab} {{{h^c}_c}^{,d}}_d$<br>
+${\bar{h}_{ab}}^{,b} = (h_{ab} - \frac{1}{2} \eta_{ab} {h^c}_c)^{,b} = 0$ by the de Donder gauge.<br>
+or $\nabla \cdot \bar{\textbf{h}} = 0$<br>
+${\bar{h}_{ab,c}}^c = {h_{ab,c}}^c - \frac{1}{2} \eta_{ab} {{{h^c}_c}^{,d}}_d$<br>
 <br>
 
 Substitute into Einstein tensor:<br>
 $G_{ab} = -\frac{1}{2} {h_{ab,c}}^c + \frac{1}{4} \eta_{ab} {{{h^c}_c}^{,d}}_d$<br>
 $= -\frac{1}{2} {\bar{h}_{ab,c}}^c$<br>
+$= -\frac{1}{2} \Box \bar{h}_{ab} = -\frac{1}{2} \Box \bar{\textbf{h}}$<br>
+....which makes perfect sense, because the Einstein tensor is the trace-reversal of the Ricci tensor, 
+and $\bar{\textbf{h}}$ is the trace-reversal of $\textbf{h}$<br>
 <br>
 
 Einstein Field Equations:<br>
@@ -185,14 +195,63 @@ $\Delta \bar{h}_{ti} = 16 \pi \frac{G}{c^4} T_{ti}$<br>
 $-\frac{c}{4} \Delta \bar{h}_{ti} = 4 \pi \frac{G}{c^2} p_i$<br>
 Use Poisson's equation:<br>
 $-\frac{c}{4} \bar{h}_{ti} = -\frac{G}{c^2} \int_V \frac{p_i}{r} dV$<br>
-Let $A^g_i = -\frac{c}{4} \bar{h}_{ti}$ be the gravitomagnetic potential vector.<br>
+Let $(A^g)_i = -\frac{c}{4} \bar{h}_{ti}$ be the gravitomagnetic potential vector.<br>
 Let $\mu_g = \frac{4 \pi G}{c^2}$.<br>
-$A^g_i = -\frac{\mu_g}{4 \pi} \int_V \frac{p_i}{r} dV$<br>
+$(A^g)_i = -\frac{\mu_g}{4 \pi} \int_V \frac{p_i}{r} dV$<br>
 Just like magnetism.<br>
 <br>
 
 This gives the familiar formula: $c^2 = \frac{1}{\epsilon_g \mu_g}$<br>
 <br>
+
+<hr>
+
+If you stop here, take what we know of $\bar{h}_{ab}$, and substitute it back into $h_{ab}$, you find something interesting.<br>
+
+$\bar{h}_{tt} = \frac{4}{c^2} \Phi^g$<br>
+$\bar{h}_{ti} = \bar{h}_{it} = -\frac{4}{c} (A^g)_i$<br>
+Let's assume the rest is zero for now: $\bar{h}_{ij} = 0$<br>
+<br>
+Now let's calculate $h_{ab}$ from $\bar{h}_{ab}$<br>
+$\bar{h}$ definition:<br>
+$\bar{h}_{ab} = h_{ab} - \frac{1}{2} \eta_{ab} {h^c}_c$<br>
+contract with $\eta^{ab}$:<br>
+${\bar{h}^a}_a = {h^a}_a - \frac{1}{2} \eta^{ab} \eta_{ab} {h^c}_c$<br>
+${\bar{h}^a}_a = {h^a}_a - \frac{4}{2} {h^a}_a$<br>
+${\bar{h}^a}_a = -{h^a}_a$<br>
+substitute back into definition:<br>
+$\bar{h}_{ab} = h_{ab} + \frac{1}{2} \eta_{ab} {\bar{h}^c}_c$<br>
+solve for $h_{ab}$<br>
+$h_{ab} = \bar{h}_{ab} + \frac{1}{2} \eta_{ab} {\bar{h}^c}_c$<br>
+<br>
+
+${\bar{h}^a}_a = \bar{h}_{tt} - \Sigma_i \bar{h}_{ii} = \bar{h}_{tt}$<br>
+<br>
+
+Now solve for $h_{ba}$<br>
+$h_{tt} = \bar{h}_{tt} - \frac{1}{2} \eta_{tt} {\bar{h}^a}_a = \frac{1}{2} \bar{h}_{tt}$<br>
+$h_{ti} = \bar{h}_{ti} - \frac{1}{2} \eta_{ti} {\bar{h}^a}_a = \bar{h}_{ti}$<br>
+$h_{ij} = \bar{h}_{ij} - \frac{1}{2} \eta_{ij} {\bar{h}^a}_a = \frac{1}{2} \delta_{ij} \bar{h}_{tt}$<br>
+We get<br>
+$h_{ab} = \left[\matrix{
+	\frac{2}{c^2} \Phi^g & -\frac{4}{c} A_x & -\frac{4}{c} A_y & -\frac{4}{c} A_z \\
+	-\frac{4}{c} A_x & \frac{2}{c^2} \Phi^g & 0 & 0 \\
+	-\frac{4}{c} A_y & 0 & \frac{2}{c^2} \Phi^g & 0 \\
+	-\frac{4}{c} A_z & 0 & 0 & \frac{2}{c^2} \Phi^g 
+}\right]$<br>
+<br>
+
+Add this to the flat-space metric $\eta_{ab}$ to find...<br>
+$g_{ab} = \left[\matrix{
+	1 + \frac{2}{c^2} \Phi^g & -\frac{4}{c} A_x & -\frac{4}{c} A_y & -\frac{4}{c} A_z \\
+	-\frac{4}{c} A_x & -1 + \frac{2}{c^2} \Phi^g & 0 & 0 \\
+	-\frac{4}{c} A_y & 0 & -1 + \frac{2}{c^2} \Phi^g & 0 \\
+	-\frac{4}{c} A_z & 0 & 0 & -1 + \frac{2}{c^2} \Phi^g 
+}\right]$<br>
+...and this looks surprisingly similar to a combination of the metric representing the Newtonian limit of relativity ($g_{ab} = \eta_{ab} + 2 \delta_{ab} \Phi$),<br>
+as well as the metric (similar to Kaluza-Klein) whose geodesic looks similar to the Lorentz force ($g_{ab} = \eta_{ab} + 2 \delta_{t(a} A_{b)})$<br>
+Coincidentally those are the forces which we are recreating using this model.<br>
+<hr>
 
 Faraday tensor:<br>
 $F_{ab} = \downarrow a \overset{\rightarrow b}{\left[\matrix{
@@ -234,6 +293,8 @@ ${(B^g)^i}_{,i} = 0$ (by symmetric of 2nd derivatives and antisymmetry of Levi-C
 ${\epsilon_i}^{jk} (E^g)_{k,j} = -(B^g)_{i,t}$<br>
 ${\epsilon_i}^{jk} (B^g)_{k,j} = -\mu_g \rho_m v_i + \frac{1}{c^2} (E^g)_{,t}$<br>
 <br>
+
+<hr>
 
 Now comparing the ratios between matter and charge...<br>
 $\rho_m = \frac{m}{e} \rho$<br>
