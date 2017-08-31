@@ -172,7 +172,7 @@ $= exp(-4 \phi) K A_{ij} - 2 exp(-4 \phi) \gamma^{kl} A_{ik} A_{lj}$<br>
 $= exp(-4 \phi) K (K_{ij} - \frac{1}{3} \gamma_{ij} K) 
 	- 2 exp(-4 \phi) \gamma^{kl} (K_{ik} - \frac{1}{3} \gamma_{ik} K) (K_{lj} - \frac{1}{3} \gamma_{lj} K)$<br>
 $= exp(-4 \phi) (
-	+ K K_{ij} 
+	K K_{ij} 
 	- \frac{1}{3} \gamma_{ij} K^2
 	- 2 \gamma^{kl} K_{ik} K_{lj} 
 	+ \frac{2}{3} \gamma^{kl} \gamma_{ik} K_{lj} K
@@ -274,28 +274,172 @@ $=
 $<br>
 $= 
 	exp(-4 \phi) (-(D_i D_j \alpha)^{TF} + \alpha ((R_{ij})^{TF} - 8 \pi (S_{ij})^{TF})) 
-	
-	+ \alpha \frac{2}{3} \tilde{A}_{ij} K
-	+ \alpha \frac{2}{3} exp(-4 \phi) K_{ij} K 
-	
-	+ \frac{1}{3} exp(-4 \phi) \alpha \gamma_{ij} \tilde{A}_{kl} \tilde{A}^{kl} 
-	
-	- \frac{2}{9} exp(-4 \phi) \alpha \gamma_{ij} K^2 
-	+ \frac{16}{3} \pi \rho exp(-4 \phi) \alpha \gamma_{ij}
-	
-	+ exp(-4 \phi) \alpha K K_{ij} 
-	- exp(-4 \phi) \alpha 2 K_{ik} {K^k}_j
-	
-	- \frac{1}{3} \alpha \tilde{\gamma}_{ij} {K^l}_k {K^k}_l
-	
-	- \frac{4}{3} \pi \alpha exp(-4 \phi) \gamma_{ij} \rho
-	- 4 \pi \alpha exp(-4 \phi) \gamma_{ij} \rho
-	
+	+ \alpha exp(-4 \phi) (
+		\frac{2}{3} K A_{ij}
+		+ \frac{2}{3} K K_{ij} 
+		
+		+ \frac{1}{3} \gamma_{ij} A_{kl} A^{kl}
+		
+		- \frac{2}{9} \gamma_{ij} K^2 
+		
+		+ K K_{ij} 
+		- 2 K_{ik} {K^k}_j
+		
+		- \frac{1}{3} \gamma_{ij} {K^l}_k {K^k}_l
+		
+		+ \frac{16}{3} \pi \rho \gamma_{ij}
+		- \frac{4}{3} \pi \gamma_{ij} \rho
+		- 4 \pi \gamma_{ij} \rho
+	)	
 	+ \tilde{A}_{ij,k} \beta^k 
 	+ \tilde{A}_{kj} {\beta^k}_{,i}
 	+ \tilde{A}_{ki} {\beta^k}_{,j}
 	- \frac{2}{3} \tilde{A}_{ij} {\beta^k}_{,k}
 $<br>
+$= 
+	exp(-4 \phi) (-(D_i D_j \alpha)^{TF} + \alpha ((R_{ij})^{TF} - 8 \pi (S_{ij})^{TF})) 
+	+ \alpha exp(-4 \phi) (
+		- 2 K_{ik} {K^k}_j
+		+ \frac{7}{3} K K_{ij} 
+		- \frac{5}{9} K^2 \gamma_{ij}
+	)	
+	+ \tilde{A}_{ij,k} \beta^k 
+	+ \tilde{A}_{kj} {\beta^k}_{,i}
+	+ \tilde{A}_{ki} {\beta^k}_{,j}
+	- \frac{2}{3} \tilde{A}_{ij} {\beta^k}_{,k}
+$<br>
+$= 
+	exp(-4 \phi)(-D_i D_j \alpha + \alpha (R_{ij} - 8 \pi S_{ij}))^{TF}
+	+ \alpha (K \tilde{A}_{ij} - 2 \tilde{A}_{ik} {\tilde{A}^k}_j)
+	+ \tilde{A}_{ij,k} \beta^k 
+	+ \tilde{A}_{kj} {\beta^k}_{,i}
+	+ \tilde{A}_{ki} {\beta^k}_{,j}
+	- \frac{2}{3} \tilde{A}_{ij} {\beta^k}_{,k}
+$<br>
+<br>
 
+$\tilde\Gamma^i$<br>
+$= {\tilde\Gamma^i}_{jk} \tilde{\gamma}^{jk}$<br>
+TODO show this relation<br>
+$= -\frac{1}{\sqrt{\tilde{\gamma}}} ( \sqrt{\tilde{\gamma}} \tilde{\gamma}^{ij}  )_{,j}$<br>
+$= -{\tilde{\gamma}^{ij}}_{,j}$<br>
+<br>
+
+<!--
+${\tilde\Gamma^i}_{,t}$<br>
+$= -{\tilde{\gamma}^{ij}}_{,jt}$<br>
+$= -(exp(4 \phi) \gamma^{ij})_{,jt}$<br>
+$= -(exp(4 \phi) (4 \phi_{,t} \gamma^{ij} + {\gamma^{ij}}_{,t}))_{,j}$<br>
+$= -(exp(4 \phi) (4 \phi_{,t} \gamma^{ij} - \gamma^{il} \gamma^{mj} \gamma_{lm,t}))_{,j}$<br>
+$= -(
+	exp(4 \phi) \left[
+		4 (
+			-\frac{1}{6} \alpha K
+			+ \phi_{,k} \beta^k 
+			+ \frac{1}{6} {\beta^k}_{,k}
+		) \gamma^{ij} 
+		- \gamma^{il} \gamma^{mj} (
+			-2 \alpha K_{lm} 
+			+ \gamma_{lm,n} \beta^n + 2 \gamma_{n(l} {\beta^n}_{,m)}
+		)
+	\right]
+)_{,j}$<br>
+$= -(
+	exp(4 \phi) \left[
+		-\frac{2}{3} \alpha K \gamma^{ij}
+		+ 4 \phi_{,k} \beta^k  \gamma^{ij}
+		+ \frac{2}{3} {\beta^k}_{,k} \gamma^{ij}
+		+ 2 \alpha K^{ij} 
+		- \gamma^{il} \gamma^{mj} \gamma_{lm,n} \beta^n 
+		- {\beta^i}_{,m} \gamma^{mj}
+		- {\beta^j}_{,l} \gamma^{li}
+	\right]
+)_{,j}$<br>
+$= -4 \phi_{,j} exp(4 \phi) (
+		-\frac{2}{3} \alpha K \gamma^{ij}
+		+ 4 \phi_{,k} \beta^k  \gamma^{ij}
+		+ \frac{2}{3} {\beta^k}_{,k} \gamma^{ij}
+		+ 2 \alpha K^{ij} 
+		- \gamma^{il} \gamma^{mj} \gamma_{lm,n} \beta^n 
+		- {\beta^i}_{,m} \gamma^{mj}
+		- {\beta^j}_{,l} \gamma^{li}
+	)
+	- exp(4 \phi) (
+		- \frac{2}{3} \alpha_{,j} K \gamma^{ij}
+		- \frac{2}{3} \alpha K_{,j} \gamma^{ij}
+		- \frac{2}{3} \alpha K {\gamma^{ij}}_{,j}
+		
+		+ 4 \phi_{,kj} \beta^k  \gamma^{ij}
+		+ 4 \phi_{,k} {\beta^k}_{,j}  \gamma^{ij}
+		+ 4 \phi_{,k} \beta^k  {\gamma^{ij}}_{,j}
+		
+		+ \frac{2}{3} {\beta^k}_{,kj} \gamma^{ij}
+		+ \frac{2}{3} {\beta^k}_{,k} {\gamma^{ij}}_{,j}
+		
+		+ 2 \alpha_{,j} K^{ij} 
+		+ 2 \alpha {K^{ij}}_{,j} 
+		
+		- {\gamma^{il}}_{,j} \gamma^{mj} \gamma_{lm,n} \beta^n 
+		- \gamma^{il} {\gamma^{mj}}_{,j} \gamma_{lm,n} \beta^n 
+		- \gamma^{il} \gamma^{mj} \gamma_{lm,nj} \beta^n 
+		- \gamma^{il} \gamma^{mj} \gamma_{lm,n} {\beta^n}_{,j} 
+		
+		- {\beta^i}_{,mj} \gamma^{mj}
+		- {\beta^i}_{,m} {\gamma^{mj}}_{,j}
+		
+		- {\beta^j}_{,lj} \gamma^{li}
+		- {\beta^j}_{,l} {\gamma^{li}}_{,j}
+	)
+$<br>
+<br>
+-->
+
+${\tilde\Gamma^i}_{,t}$<br>
+$= -{\tilde{\gamma}^{ij}}_{,jt}$<br>
+$= (\tilde{\gamma}^{ik} \tilde{\gamma}^{lj} \tilde{\gamma}_{kl,t})_{,j}$<br>
+$= (\tilde{\gamma}^{ik} \tilde{\gamma}^{lj} 
+	(- 2 \alpha \tilde{A}_{kl}
+		+ \tilde{\gamma}_{kl,m} \beta^m
+		+ \tilde{\gamma}_{ml} {\beta^m}_{,k}
+		+ \tilde{\gamma}_{km} {\beta^m}_{,l}
+		- \frac{2}{3} \tilde{\gamma}_{kl} {\beta^m}_{,m})
+)_{,j}$<br>
+$= (
+	-2 \alpha \tilde{A}^{ij}
+	- {\tilde{\gamma}^{ij}}_{,k} \beta^k
+	+ \tilde{\gamma}^{ik} {\beta^j}_{,k}
+	+ \tilde{\gamma}^{jk} {\beta^i}_{,k}
+	- \frac{2}{3} \tilde{\gamma}^{ij} {\beta^k}_{,k}
+)_{,j}$<br>
+$= 
+	- 2 \alpha_{,j} \tilde{A}^{ij}
+	- 2 \alpha {\tilde{A}^{ij}}_{,j}
+	
+	- {\tilde{\gamma}^{ij}}_{,jk} \beta^k
+	- {\tilde{\gamma}^{ij}}_{,k} {\beta^k}_{,j}
+	
+	+ {\tilde{\gamma}^{ik}}_{,j} {\beta^j}_{,k}
+	+ \tilde{\gamma}^{ik} {\beta^j}_{,jk}
+	
+	+ {\tilde{\gamma}^{jk}}_{,j} {\beta^i}_{,k}
+	+ \tilde{\gamma}^{jk} {\beta^i}_{,jk}
+	
+	- \frac{2}{3} {\tilde{\gamma}^{ij}}_{,j} {\beta^k}_{,k}
+	- \frac{2}{3} \tilde{\gamma}^{ij} {\beta^k}_{,jk}
+$<br>
+$= 	\tilde{\gamma}^{jk} {\beta^i}_{,jk}
+	
+	+ \frac{1}{3} \tilde{\gamma}^{ij} {\beta^k}_{,jk}
+	
+	+ {\tilde{\Gamma}^i}_{,j} \beta^j
+	- \tilde{\Gamma}^j {\beta^i}_{,j}
+	
+	+ \frac{2}{3} \tilde{\Gamma}^i {\beta^j}_{,j}
+	- 2 \alpha {\tilde{A}^{ij}}_{,j}
+	- 2 \alpha_{,j} \tilde{A}^{ij}
+$<br>
+<br>
+
+Next TODO the whole thing over with $\chi = exp(-4 \phi)$<br>
 	</body>
 </html>
