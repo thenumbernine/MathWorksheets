@@ -46,6 +46,6 @@ end
 fs:sort()
 for _,f in ipairs(fs) do
 	local name = f:sub(1,-6)
-	s:insert('['..name..']('..base..url.escape(f)..')\n')
+	s:insert('['..name..']('..base..f..')\n')
 end
 file['README.md'] = s:concat'\n'

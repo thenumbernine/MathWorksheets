@@ -16,110 +16,110 @@ The ADM stuff is generated from my symmath project.
 
 Here's the CDN URLs:
 
-[ADM Bona-Masso Eigenvectors](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/ADM%20Bona%2dMasso%20Eigenvectors%2ehtml)
+[ADM Bona-Masso Eigenvectors](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/ADM Bona-Masso Eigenvectors.html)
 
-[ADM Bona-Masso Inverse Eigenvectors](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/ADM%20Bona%2dMasso%20Inverse%20Eigenvectors%2ehtml)
+[ADM Bona-Masso Inverse Eigenvectors](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/ADM Bona-Masso Inverse Eigenvectors.html)
 
-[ADM connections](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/ADM%20connections%2ehtml)
+[ADM connections](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/ADM connections.html)
 
-[Antigravity](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Antigravity%2ehtml)
+[Antigravity](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Antigravity.html)
 
-[BSSNOK 1D](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/BSSNOK%201D%2ehtml)
+[BSSNOK 1D](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/BSSNOK 1D.html)
 
-[Cayley-Dickson](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Cayley%2dDickson%2ehtml)
+[Cayley-Dickson](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Cayley-Dickson.html)
 
-[Change of Coordinates](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Change%20of%20Coordinates%2ehtml)
+[Change of Coordinates](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Change of Coordinates.html)
 
-[EMHD Hyperbolic Conservation Laws](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/EMHD%20Hyperbolic%20Conservation%20Laws%2ehtml)
+[EMHD Hyperbolic Conservation Laws](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/EMHD Hyperbolic Conservation Laws.html)
 
-[EMHD Linear Stability Analysis](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/EMHD%20Linear%20Stability%20Analysis%2ehtml)
+[EMHD Linear Stability Analysis](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/EMHD Linear Stability Analysis.html)
 
-[Electromagnetic Tensor Self-Dual](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Electromagnetic%20Tensor%20Self%2dDual%2ehtml)
+[Electromagnetic Tensor Self-Dual](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Electromagnetic Tensor Self-Dual.html)
 
-[Euler Fluid Equations - Curved Geometry - Contravariant](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Euler%20Fluid%20Equations%20%2d%20Curved%20Geometry%20%2d%20Contravariant%2ehtml)
+[Euler Fluid Equations - Curved Geometry - Contravariant](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Euler Fluid Equations - Curved Geometry - Contravariant.html)
 
-[Euler Fluid Equations - Curved Geometry - Covariant](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Euler%20Fluid%20Equations%20%2d%20Curved%20Geometry%20%2d%20Covariant%2ehtml)
+[Euler Fluid Equations - Curved Geometry - Covariant](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Euler Fluid Equations - Curved Geometry - Covariant.html)
 
-[Euler Fluid Equations - Eigenmode Analysis 2](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Euler%20Fluid%20Equations%20%2d%20Eigenmode%20Analysis%202%2ehtml)
+[Euler Fluid Equations - Eigenmode Analysis 2](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Euler Fluid Equations - Eigenmode Analysis 2.html)
 
-[Euler Fluid Equations - Eigenmode Analysis](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Euler%20Fluid%20Equations%20%2d%20Eigenmode%20Analysis%2ehtml)
+[Euler Fluid Equations - Eigenmode Analysis](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Euler Fluid Equations - Eigenmode Analysis.html)
 
-[Euler Fluid Equations - Entropy Function](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Euler%20Fluid%20Equations%20%2d%20Entropy%20Function%2ehtml)
+[Euler Fluid Equations - Entropy Function](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Euler Fluid Equations - Entropy Function.html)
 
-[Finite Volume Methods](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Finite%20Volume%20Methods%2ehtml)
+[Finite Volume Methods](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Finite Volume Methods.html)
 
-[GR EM Metrics/complex metric of EM potential](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR%20EM%20Metrics%2fcomplex%20metric%20of%20EM%20potential%2ehtml)
+[GR EM Metrics/complex metric of EM potential](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR EM Metrics/complex metric of EM potential.html)
 
-[GR EM Metrics/complex metric of g + F](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR%20EM%20Metrics%2fcomplex%20metric%20of%20g%20%2b%20F%2ehtml)
+[GR EM Metrics/complex metric of g + F](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR EM Metrics/complex metric of g + F.html)
 
-[GR EM Metrics/complex metric of g + dual F](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR%20EM%20Metrics%2fcomplex%20metric%20of%20g%20%2b%20dual%20F%2ehtml)
+[GR EM Metrics/complex metric of g + dual F](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR EM Metrics/complex metric of g + dual F.html)
 
-[GR EM Metrics/curved space gravitomagnetics](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR%20EM%20Metrics%2fcurved%20space%20gravitomagnetics%2ehtml)
+[GR EM Metrics/curved space gravitomagnetics](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR EM Metrics/curved space gravitomagnetics.html)
 
-[GR EM Metrics/gravitomagnetics](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR%20EM%20Metrics%2fgravitomagnetics%2ehtml)
+[GR EM Metrics/gravitomagnetics](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR EM Metrics/gravitomagnetics.html)
 
-[GR EM Metrics/metric of curved space and EM potential](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR%20EM%20Metrics%2fmetric%20of%20curved%20space%20and%20EM%20potential%2ehtml)
+[GR EM Metrics/metric of curved space and EM potential](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR EM Metrics/metric of curved space and EM potential.html)
 
-[GR EM Metrics/metric of flat space and EM potential](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR%20EM%20Metrics%2fmetric%20of%20flat%20space%20and%20EM%20potential%2ehtml)
+[GR EM Metrics/metric of flat space and EM potential](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR EM Metrics/metric of flat space and EM potential.html)
 
-[Gravitation 22.2](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Gravitation%2022%2e2%2ehtml)
+[Gravitation 22.2](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Gravitation 22.2.html)
 
-[Kaluza-Klein - constant scalar](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Kaluza%2dKlein%20%2d%20constant%20scalar%2ehtml)
+[Kaluza-Klein - constant scalar](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Kaluza-Klein - constant scalar.html)
 
-[Kaluza-Klein](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Kaluza%2dKlein%2ehtml)
+[Kaluza-Klein](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Kaluza-Klein.html)
 
-[Kerr Cartesian](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Kerr%20Cartesian%2ehtml)
+[Kerr Cartesian](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Kerr Cartesian.html)
 
-[LQG](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/LQG%2ehtml)
+[LQG](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/LQG.html)
 
-[MHD - Eigenmode Analysis](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/MHD%20%2d%20Eigenmode%20Analysis%2ehtml)
+[MHD - Eigenmode Analysis](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/MHD - Eigenmode Analysis.html)
 
-[MHD](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/MHD%2ehtml)
+[MHD](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/MHD.html)
 
-[Maxwell Equations - Eigenmode Analysis](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Maxwell%20Equations%20%2d%20Eigenmode%20Analysis%2ehtml)
+[Maxwell Equations - Eigenmode Analysis](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Maxwell Equations - Eigenmode Analysis.html)
 
-[Maxwell equations in hyperbolic form](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Maxwell%20equations%20in%20hyperbolic%20form%2ehtml)
+[Maxwell equations in hyperbolic form](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Maxwell equations in hyperbolic form.html)
 
-[Metric Eigenmodes 2](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Metric%20Eigenmodes%202%2ehtml)
+[Metric Eigenmodes 2](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Metric Eigenmodes 2.html)
 
-[Metric Eigenmodes](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Metric%20Eigenmodes%2ehtml)
+[Metric Eigenmodes](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Metric Eigenmodes.html)
 
-[Metric With Geodesic of Any Conservative Field](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Metric%20With%20Geodesic%20of%20Any%20Conservative%20Field%2ehtml)
+[Metric for extruded dimension](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Metric for extruded dimension.html)
 
-[Metric with geodesic that changes in space with velocity in time](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Metric%20with%20geodesic%20that%20changes%20in%20space%20with%20velocity%20in%20time%2ehtml)
+[Metric with geodesic that changes in space with velocity in time](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Metric with geodesic that changes in space with velocity in time.html)
 
-[Navier-Stokes As Exterior Derivative](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Navier%2dStokes%20As%20Exterior%20Derivative%2ehtml)
+[Navier-Stokes As Exterior Derivative](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Navier-Stokes As Exterior Derivative.html)
 
-[Navier-Stokes](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Navier%2dStokes%2ehtml)
+[Navier-Stokes](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Navier-Stokes.html)
 
-[Numerical Relativity/1_intro](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity%2f1_intro%2ehtml)
+[Numerical Relativity/1_intro](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical Relativity/1_intro.html)
 
-[Numerical Relativity/2_hyperbolic](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity%2f2_hyperbolic%2ehtml)
+[Numerical Relativity/2_hyperbolic](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical Relativity/2_hyperbolic.html)
 
-[Numerical Relativity/3_adm_hyp_full](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity%2f3_adm_hyp_full%2ehtml)
+[Numerical Relativity/3_adm_hyp_full](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical Relativity/3_adm_hyp_full.html)
 
-[Numerical Relativity/adm_to_efe](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity%2fadm_to_efe%2ehtml)
+[Numerical Relativity/adm_to_efe](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical Relativity/adm_to_efe.html)
 
-[Numerical Relativity/bssnok](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity%2fbssnok%2ehtml)
+[Numerical Relativity/bssnok](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical Relativity/bssnok.html)
 
-[Numerical Relativity/eigenwhatever](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity%2feigenwhatever%2ehtml)
+[Numerical Relativity/eigenwhatever](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical Relativity/eigenwhatever.html)
 
-[Numerical Relativity/equal_up_to_principle_part](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity%2fequal_up_to_principle_part%2ehtml)
+[Numerical Relativity/equal_up_to_principle_part](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical Relativity/equal_up_to_principle_part.html)
 
-[Numerical Relativity/z4_hyp_full](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity%2fz4_hyp_full%2ehtml)
+[Numerical Relativity/z4_hyp_full](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical Relativity/z4_hyp_full.html)
 
-[Relativistic Electromagnetism metric](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Relativistic%20Electromagnetism%20metric%2ehtml)
+[Relativistic Electromagnetism metric](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Relativistic Electromagnetism metric.html)
 
-[SRHD](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/SRHD%2ehtml)
+[SRHD](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/SRHD.html)
 
-[Solving Connections From Riemann](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Solving%20Connections%20From%20Riemann%2ehtml)
+[Solving Connections From Riemann](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Solving Connections From Riemann.html)
 
-[Tetrad General Relativity](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Tetrad%20General%20Relativity%2ehtml)
+[Tetrad General Relativity](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Tetrad General Relativity.html)
 
-[spheres](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/spheres%2ehtml)
+[spheres](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/spheres.html)
 
-[wave_metric_1](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/wave_metric_1%2ehtml)
+[wave_metric_1](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/wave_metric_1.html)
 
-[wave_metric_2](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/wave_metric_2%2ehtml)
+[wave_metric_2](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/wave_metric_2.html)
 
-[wave_metric_3](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/wave_metric_3%2ehtml)
+[wave_metric_3](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/wave_metric_3.html)
