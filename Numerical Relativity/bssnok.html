@@ -62,6 +62,59 @@ $= A_{ij} A^{ij} - \frac{2}{3} K^2 + 16 \pi \rho$<br>
 $= \tilde{A}_{ij} \tilde{A}^{ij} - \frac{2}{3} K^2 + 16 \pi \rho$<br>
 <br>
 
+TODO prove:<br>
+${\tilde{\Gamma}^k}_{ij} = {\Gamma^k}_{ij} - 2 (
+	\delta^k_i \phi_{,j} + \delta^k_j \phi_{,i} - \gamma_{ij} \gamma^{kl} \phi_{,l})$<br>
+so<br>
+${\Gamma^k}_{ij} = {\tilde{\Gamma}^k}_{ij} + 2 (
+	\delta^k_i \phi_{,j} + \delta^k_j \phi_{,i} - \gamma_{ij} \gamma^{kl} \phi_{,l})$<br>
+<br>
+
+$\tilde{\Gamma}^i$<br>
+$= {\tilde{\Gamma}^i}_{jk} \tilde{\gamma}^{jk}$<br>
+$= (
+	{\Gamma^i}_{jk} - 2 (
+		\delta^i_j \phi_{,k} + \delta^i_k \phi_{,j} - \gamma_{jk} \gamma^{il} \phi_{,l}
+	)
+) \tilde{\gamma}^{jk}$<br>
+$= 
+	{\Gamma^i}_{jk} exp(4 \phi) \gamma^{jk} 
+	- 2 exp(4 \phi) \gamma^{ij} \phi_{,j} 
+	- 2 exp(4 \phi) \gamma^{ij} \phi_{,j}
+	+ 2 exp(4 \phi) \gamma^{jk} \gamma_{jk} \gamma^{il} \phi_{,l}
+$<br>
+$= exp(4 \phi) \Gamma^i
+	- 4 \tilde{\gamma}^{ij} \phi_{,j} 
+	+ 6 \tilde{\gamma}^{il} \phi_{,l}
+$<br>
+$= exp(4 \phi) \Gamma^i + 2 \tilde{\gamma}^{ij} \phi_{,j}$<br>
+so<br>
+$\Gamma^i = exp(-4 \phi) (\tilde{\Gamma}^i - 2 \tilde{\gamma}^{ij} \phi_{,j})$<br>
+<br>
+
+$D_i D_j \alpha$<br>
+$= D_i \alpha_{,j}$<br>
+$= \alpha_{,ij} - {\Gamma^k}_{ij} \alpha_{,k}$<br>
+$= \alpha_{,ij} - (
+	{\tilde{\Gamma}^k}_{ij} 
+	+ 2 \delta^k_i \phi_{,j} 
+	+ 2 \delta^k_j \phi_{,i} 
+	- 2 \gamma_{ij} \gamma^{kl} \phi_{,l}
+) \alpha_{,k}$<br>
+$= \alpha_{,ij} 
+	- {\tilde{\Gamma}^k}_{ij}  \alpha_{,k}
+	- 2 \phi_{,j} \alpha_{,i}
+	- 2 \phi_{,i} \alpha_{,j}
+	+ 2 \gamma_{ij} \gamma^{kl} \phi_{,l} \alpha_{,k}$<br>
+<br>
+
+$\gamma^{ij} D_i D_j \alpha$<br>
+$= \gamma^{ij} (\alpha_{,ij} - {\Gamma^k}_{ij} \alpha_{,k})$<br>
+$= \gamma^{ij} \alpha_{,ij} - \Gamma^k \alpha_{,k}$<br>
+$= \gamma^{ij} \alpha_{,ij} - exp(-4 \phi) (\tilde{\Gamma}^k - 2 \tilde{\gamma}^{kl} \phi_{,l}) \alpha_{,k}$<br>
+$= \gamma^{ij} \alpha_{,ij} - exp(-4 \phi) \tilde{\Gamma}^i \alpha_{,i} + 2 exp(-4 \phi) \tilde{\gamma}^{ij} \phi_{,i} \alpha_{,j}$<br>
+<br>
+
 $K_{,t} = (\gamma^{ij} K_{ij})_{,t}$<br>
 $= {\gamma^{ij}}_{,t} K_{ij} + \gamma^{ij} K_{ij,t}$<br>
 $= -\gamma^{ik} \gamma_{kl,t} \gamma^{lj} K_{ij} + \gamma^{ij} K_{ij,t}$<br>
@@ -114,6 +167,7 @@ $=  - \gamma^{ij} D_i D_j \alpha
 	+ 4 \pi \alpha (S + \rho)
 	+ \beta^k K_{,k}
 $<br>
+
 <br>
 
 $\mathcal{L}_{\vec\beta} \tilde{\gamma}_{ij}
@@ -131,6 +185,49 @@ $ = exp(-4 \phi) (
 	+ \gamma_{ij,k} \beta^k
 	+ \gamma_{kj} {\beta^k}_{,i}
 	+ \gamma_{ik} {\beta^k}_{,j})$<br>
+<br>
+
+trace-free:<br>
+$(A_{ij})^{TF}$
+$= A_{ij} - \frac{1}{3} \gamma_{ij} \gamma^{kl} A_{kl}$<br>
+such that<br>
+$tr A = {A^k}_k = \gamma^{ij} A_{ij}$<br>
+$= \gamma^{ij} (A_{ij} - \frac{1}{3} \gamma_{ij} \gamma^{kl} A_{kl})$<br>
+$= \gamma^{ij} A_{ij} - \frac{1}{3} \gamma^{ij} \gamma_{ij} \gamma^{kl} A_{kl}$<br>
+$= {A^k}_k - \frac{3}{3} {A^k}_k$<br>
+$= 0$<br>
+<br>
+
+linearity of trace-free:<br>
+$(A_{ij} + B_{ij})^{TF}$<br>
+$= (A_{ij} + B_{ij}) + \frac{1}{3} \gamma_{ij} \gamma^{kl} (A_{kl} + B_{kl})$<br>
+$= A_{ij} 
+	+ B_{ij} 
+	+ \frac{1}{3} \gamma_{ij} \gamma^{kl} A_{kl} 
+	+ \frac{1}{3} \gamma_{ij} \gamma^{kl} B_{kl}$<br>
+$= A_{ij} 
+	+ \frac{1}{3} \gamma_{ij} \gamma^{kl} A_{kl} 
+	+ B_{ij} 
+	+ \frac{1}{3} \gamma_{ij} \gamma^{kl} B_{kl}$<br>
+$= (A_{ij})^{TF} + (B_{ij})^{TF}$<br>
+<br>
+$(\alpha A_{ij})^{TF}$<br>
+$= (\alpha A_{ij}) + \frac{1}{3} \gamma_{ij} \gamma^{kl} (\alpha A_{kl})$<br>
+$= \alpha (A_{ij} + \frac{1}{3} \gamma_{ij} \gamma^{kl} A_{kl})$<br>
+$= \alpha (A_{ij})^{TF}$<br>
+<br>
+
+$(D_i D_j \alpha)^{TF}$<br>
+$= D_i D_j \alpha - \frac{1}{3} \gamma_{ij} \gamma^{kl} D_k D_l \alpha $<br>
+$= D_i D_j \alpha - \frac{1}{3} \gamma_{ij} (
+	\gamma^{kl} \alpha_{,kl} 
+	- exp(-4 \phi) \tilde{\Gamma}^k \alpha_{,k} 
+	+ 2 exp(-4 \phi) \tilde{\gamma}^{kl} \phi_{,k} \alpha_{,l}
+)$<br>
+$= 	D_i D_j \alpha 
+	- \frac{1}{3} \tilde{\gamma}_{ij} \tilde{\gamma}^{kl} \alpha_{,kl} 
+	+ \frac{1}{3} \tilde{\gamma}_{ij} \tilde{\Gamma}^k \alpha_{,k} 
+	- \frac{2}{3} \tilde{\gamma}_{ij} \tilde{\gamma}^{kl} \phi_{,k} \alpha_{,l}$<br>
 <br>
 
 $\tilde{\gamma}_{ij,t} = (exp(-4 \phi) \gamma_{ij})_{,t}$<br>
@@ -440,6 +537,95 @@ $= 	\tilde{\gamma}^{jk} {\beta^i}_{,jk}
 $<br>
 <br>
 
-Next TODO the whole thing over with $\chi = exp(-4 \phi)$<br>
+<hr>
+Next the whole thing over with $\chi = exp(-4 \phi)$<br>
+<br>
+
+$\chi_{,\mu}$<br>
+$= exp(-4 \phi)_{,\mu}$<br>
+$= -4 exp(-4 \phi) \phi_{,\mu}$<br>
+$= -4 \chi \phi_{,\mu}$<br>
+so $\phi_{,\mu} = -\frac{1}{4 \chi} \chi_{,\mu}$<br>
+<br>
+
+$\chi_{,t}$<br>
+$= -4 \chi \phi_{,t}$<br>
+$= -4 \chi ( -\frac{1}{6} \alpha K
+	+ \phi_{,k} \beta^k 
+	+ \frac{1}{6} {\beta^k}_{,k} )$<br>
+$= \chi ( 
+	\frac{2}{3} \alpha K
+	- 4 (
+		-\frac{1}{4 \chi} \chi_{,k}
+	)\beta^k 
+	- \frac{2}{3} {\beta^k}_{,k} 
+)$<br>
+$= 	\frac{2}{3} \alpha \chi K
+	+ \chi_{,k} \beta^k 
+	- \frac{2}{3} \chi {\beta^k}_{,k}$<br>
+<br>
+
+$D_i D_j \alpha = \alpha_{,ij} 
+	- {\tilde{\Gamma}^k}_{ij}  \alpha_{,k}
+	- 2 \phi_{,j} \alpha_{,i}
+	- 2 \phi_{,i} \alpha_{,j}
+	+ 2 \gamma_{ij} \gamma^{kl} \phi_{,l} \alpha_{,k}$<br>
+$= \alpha_{,ij} 
+	- {\tilde{\Gamma}^k}_{ij}  \alpha_{,k}
+	- 2 \alpha_{,i} (-\frac{1}{4 \chi} \chi_{,j})
+	- 2 \alpha_{,j} (-\frac{1}{4 \chi} \chi_{,i})
+	+ 2 \gamma_{ij} \gamma^{kl} (-\frac{1}{4 \chi} \chi_{,l}) \alpha_{,k}$<br>
+$= \alpha_{,ij} 
+	- {\tilde{\Gamma}^k}_{ij}  \alpha_{,k}
+	+ \frac{1}{2 \chi} (
+		\alpha_{,i} \chi_{,j}
+		+ \alpha_{,j} \chi_{,i}
+		- \tilde{\gamma}_{ij} \tilde{\gamma}^{kl} \chi_{,l} \alpha_{,k}
+	)$<br>
+<br>
+
+$\gamma^{ij} D_i D_j \alpha$<br>
+$= \gamma^{ij} \alpha_{,ij} 
+	- exp(-4 \phi) \tilde{\Gamma}^i \alpha_{,i} 
+	+ 2 exp(-4 \phi) \tilde{\gamma}^{ij} \phi_{,i} \alpha_{,j}$<br>
+$= \chi \tilde{\gamma}^{ij} \alpha_{,ij} 
+	- \chi \tilde{\Gamma}^i \alpha_{,i} 
+	- \frac{1}{2} \tilde{\gamma}^{ij} \chi_{,i} \alpha_{,j}$<br>
+<br>
+
+$(D_i D_j \alpha)^{TF}$<br>
+$= 	D_i D_j \alpha 
+	- \frac{1}{3} \gamma_{ij} \gamma^{kl} D_k D_l \alpha$<br>
+$= 	D_i D_j \alpha 
+	- \frac{1}{3} \gamma_{ij} (	
+		\chi \tilde{\gamma}^{kl} \alpha_{,kl} 
+		- \chi \tilde{\Gamma}^k \alpha_{,k} 
+		- \frac{1}{2} \tilde{\gamma}^{kl} \chi_{,k} \alpha_{,l}
+)$<br>
+$= 	D_i D_j \alpha 
+	- \frac{1}{3} \tilde{\gamma}_{ij} \tilde{\gamma}^{kl} \alpha_{,kl} 
+	+ \frac{1}{3} \tilde{\gamma}_{ij} \tilde{\Gamma}^k \alpha_{,k} 
+	+ \frac{1}{6 \chi} \tilde{\gamma}_{ij} \tilde{\gamma}^{kl} \chi_{,k} \alpha_{,l}
+$<br>
+Substitute $D_i D_j \alpha$<br>
+$= \alpha_{,ij} 
+	- {\tilde{\Gamma}^k}_{ij}  \alpha_{,k}
+	+ \frac{1}{2 \chi} \alpha_{,i} \chi_{,j}
+	+ \frac{1}{2 \chi} \alpha_{,j} \chi_{,i}
+	- \frac{1}{2 \chi} \tilde{\gamma}_{ij} \tilde{\gamma}^{kl} \chi_{,l} \alpha_{,k}
+	- \frac{1}{3} \tilde{\gamma}_{ij} \tilde{\gamma}^{kl} \alpha_{,kl} 
+	+ \frac{1}{3} \tilde{\gamma}_{ij} \tilde{\Gamma}^k \alpha_{,k} 
+	+ \frac{1}{6 \chi} \tilde{\gamma}_{ij} \tilde{\gamma}^{kl} \chi_{,k} \alpha_{,l}
+$<br>
+$= \alpha_{,ij} 
+	- {\tilde{\Gamma}^k}_{ij}  \alpha_{,k}
+	+ \frac{1}{3} \tilde{\gamma}_{ij} \tilde{\Gamma}^k \alpha_{,k} 
+	+ \frac{1}{2 \chi} \alpha_{,i} \chi_{,j}
+	+ \frac{1}{2 \chi} \alpha_{,j} \chi_{,i}
+	- \frac{1}{3 \chi} \tilde{\gamma}_{ij} \tilde{\gamma}^{kl} \chi_{,l} \alpha_{,k}
+	- \frac{1}{3} \tilde{\gamma}_{ij} \tilde{\gamma}^{kl} \alpha_{,kl} 
+$<br>
+<br>
+
 	</body>
 </html>
