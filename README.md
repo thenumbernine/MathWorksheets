@@ -104,7 +104,7 @@ Here's the CDN URLs:
 
 [Numerical Relativity/eigenwhatever](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/eigenwhatever%2ehtml)
 
-[Numerical Relativity/equal_up_to_principle_part](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/equal_up_to_principle_part%2ehtml)
+[Numerical Relativity/equal_up_to_principal_part](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/equal_up_to_principal_part%2ehtml)
 
 [Numerical Relativity/z4_hyp_full](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/z4_hyp_full%2ehtml)
 
