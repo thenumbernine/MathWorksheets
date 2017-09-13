@@ -23,166 +23,237 @@ Therefore ${\gamma^{il}}_{,k} \gamma_{lj} = -\gamma^{il} \gamma_{lj,k}$<br>
 Ricci curvature:<br>
 $R_{ij} = {R^k}_{ikj} $
 $= {\Gamma^k}_{ij,k} - {\Gamma^k}_{ik,j} + {\Gamma^k}_{lk} {\Gamma^l}_{ij} - {\Gamma^k}_{lj} {\Gamma^l}_{ik}$<br>
-$= 2 ({\Gamma^k}_{i[j,k]} + {\Gamma^k}_{l[k} {\Gamma^l}_{j]i})$<br>
-<br>
-
-$= (\gamma^{km} \Gamma_{mij})_{,k} - {\Gamma^k}_{ik,j} + {\Gamma^k}_{lk} {\Gamma^l}_{ij} - {\Gamma^k}_{lj} {\Gamma^l}_{ik}$<br>
-$= \gamma^{km} \Gamma_{mij,k} + {\gamma^{km}}_{,k} \Gamma_{mij} - {\Gamma^k}_{ik,j} + {\Gamma^k}_{lk} {\Gamma^l}_{ij} - {\Gamma^k}_{lj} {\Gamma^l}_{ik}$<br>
-$= \frac{1}{2} \gamma^{km} (\gamma_{mi,jk} + \gamma_{mj,ik} - \gamma_{ij,km}) + {\gamma^{km}}_{,k} \Gamma_{mij} - {\Gamma^k}_{ik,j} + {\Gamma^k}_{lk} {\Gamma^l}_{ij} - {\Gamma^k}_{lj} {\Gamma^l}_{ik}$<br>
-$= -\frac{1}{2}\gamma^{km} \gamma_{ij,km} 
-	+ \frac{1}{2} \gamma^{km} (\gamma_{im,jk} + \gamma_{jm,ik}) 
+$= (\gamma^{kl} \Gamma_{lij})_{,k}
+	- (\gamma^{kl} \Gamma_{lik})_{,j}
+	+ \gamma^{km} \Gamma_{mlk} \gamma^{ln} \Gamma_{nij}
+	- \gamma^{km} \Gamma_{mlj} \gamma^{ln} \Gamma_{nik}
+$<br>
+$= 	{\gamma^{kl}}_{,k} \Gamma_{lij} 
+	+ \gamma^{kl} \Gamma_{lij,k}
 	
-	- \gamma^{km} \gamma_{lm,k} {\Gamma^l}_{ij}
-	+ \frac{1}{2} \gamma^{km} (\gamma_{ml,k} + \gamma_{mk,l} - \gamma_{kl,m}) {\Gamma^l}_{ij} 
-	
-	- {\Gamma^k}_{ik,j} 
-	- {\Gamma^k}_{lj} {\Gamma^l}_{ik}$<br>
-
-$= -\frac{1}{2}\gamma^{km} \gamma_{ij,km} 
-	+ \frac{1}{2} \gamma^{km} (\gamma_{im,jk} + \gamma_{jm,ik}) 
-	- \frac{1}{2}\gamma^{km} (\gamma_{lm,k} + \gamma_{lk,m} - \gamma_{km,l}) {\Gamma^l}_{ij}
-	- {\Gamma^k}_{ik,j} 
-	- {\Gamma^k}_{lj} {\Gamma^l}_{ik}$<br>
-
-$= -\frac{1}{2}\gamma^{km} \gamma_{ij,km} 
-	+ \frac{1}{2} \gamma^{km} (\gamma_{im,jk} + \gamma_{jm,ik}) 
-	- \Gamma_{lij} \Gamma^l
-	- {\Gamma^k}_{ik,j} 
-	- {\Gamma^k}_{lj} {\Gamma^l}_{ik}$<br>
-
-$= -\frac{1}{2}\gamma^{km} \gamma_{ij,km} 
-	+ \frac{1}{2} \gamma^{km} (\gamma_{im,jk} + \gamma_{jm,ik}) 
-	- \Gamma_{lij} \Gamma^l
-	- {\gamma^{kl}}_{,j} \Gamma_{lik} - \gamma^{kl} \Gamma_{lik,j}
-	- {\Gamma^k}_{lj} {\Gamma^l}_{ik}$<br>
-
-$= -\frac{1}{2}\gamma^{km} \gamma_{ij,km} 
-	+ \frac{1}{2} \gamma^{km} (\gamma_{im,jk} + \gamma_{jm,ik}) 
-	- \Gamma_{lij} \Gamma^l
-	+ \gamma^{km} \gamma_{ml,j} {\Gamma^l}_{ik}
+	- {\gamma^{kl}}_{,j} \Gamma_{lik}
 	- \gamma^{kl} \Gamma_{lik,j}
-	- {\Gamma^k}_{lj} {\Gamma^l}_{ik}$<br>
-
-$= -\frac{1}{2}\gamma^{km} \gamma_{ij,km} 
-	+ \frac{1}{2} \gamma^{kl} (\gamma_{il,jk} + \gamma_{jl,ik}) 
-	- \Gamma_{lij} \Gamma^l
-	+ \gamma^{km} \gamma_{ml,j} {\Gamma^l}_{ik}
-	- \frac{1}{2} \gamma^{kl} (\gamma_{il,jk} + \gamma_{kl,ij} - \gamma_{ik,jl})
-	- {\Gamma^k}_{lj} {\Gamma^l}_{ik}$<br>
-
-$= -\frac{1}{2}\gamma^{km} \gamma_{ij,km} 
-	+ \frac{1}{2} \gamma^{kl} (\gamma_{jk,il} + \gamma_{ik,jl} - \gamma_{kl,ij})
-	- \frac{1}{2} (\gamma_{li,j} + \gamma_{lj,i} - \gamma_{ij,l}) \Gamma^l
-	+ \gamma^{km} \gamma_{ml,j} {\Gamma^l}_{ik}
-	- {\Gamma^k}_{lj} {\Gamma^l}_{ik}$<br>
-
-$= -\frac{1}{2}\gamma^{km} \gamma_{ij,km} 
-	- \gamma_{k(i,j)} \Gamma^k
-	+ \frac{1}{2} \gamma_{ij,l} \Gamma^l
-	+ \frac{1}{2} \gamma^{kl} (\gamma_{jk,il} + \gamma_{ik,jl} - \gamma_{kl,ij})
-	+ \gamma^{km} \gamma_{ml,j} {\Gamma^l}_{ik}
-	- {\Gamma^k}_{lj} {\Gamma^l}_{ik}$<br>
-
-<br>
-$= {\Gamma^k}_{ij,k} - (ln \sqrt{|g|})_{,ij} + (ln \sqrt{|g|})_{,l} {\Gamma^l}_{ij} - {\Gamma^k}_{lj} {\Gamma^l}_{ik}$<br>
-$= {\Gamma^k}_{ij,k} - {\Gamma^k}_{il} {\Gamma^l}_{jk} - (ln \sqrt{|g|})_{,i;j}$<br>
-<br>
-$= (\gamma^{km} \Gamma_{mij})_{,k} - (\gamma^{km} \Gamma_{mik})_{,j} + \gamma^{km}( \Gamma_{mlk} {\Gamma^l}_{ij} - \Gamma_{mlj} {\Gamma^l}_{ik})$<br>
-$= {\gamma^{km}}_{,k} \Gamma_{mij} 
-	+ \gamma^{km} \Gamma_{mij,k} 
-	- {\gamma^{km}}_{,j} \Gamma_{mik} 
-	- \gamma^{km} \Gamma_{mik,j} 
-	+ \gamma^{km} (\Gamma_{mlk} {\Gamma^l}_{ij} - \Gamma_{mlj} {\Gamma^l}_{ik})$<br>
-$= \frac{1}{2} \gamma^{km} (\gamma_{mj,ik} - \gamma_{ij,mk} - \gamma_{mk,ij} + \gamma_{ik,jm}) 
-	+ {\gamma^{km}}_{,k} \Gamma_{mij} 
-	- {\gamma^{km}}_{,j} \Gamma_{mik} 
-	+ \gamma^{km} (\Gamma_{mlk} {\Gamma^l}_{ij} - \Gamma_{mlj} {\Gamma^l}_{ik})$<br>
-$= -\frac{1}{2} \gamma^{lm} \gamma_{ij,lm} 
-	+ \frac{1}{2} \gamma^{km} (\gamma_{jk,im} + \gamma_{ik,jm} - \gamma_{km,ij}) 
-	- {\gamma^{km}}_{,j} \Gamma_{mik} 
-	+ {\gamma^{km}}_{,k} \Gamma_{mij} 
-	+ \gamma^{km}( \Gamma_{mlk} {\Gamma^l}_{ij} - \Gamma_{mlj} {\Gamma^l}_{ik})$<br>
-<br>
 	
-$\gamma^{km}( \Gamma_{mlk} {\Gamma^l}_{ij} - \Gamma_{mlj} {\Gamma^l}_{ik})$<br>
-$= \frac{1}{2} \gamma^{km} \gamma^{ln} ((\gamma_{ml,k} + \gamma_{mk,l} - \gamma_{lk,m}) (\gamma_{ni,j} + \gamma_{nj,i} - \gamma_{ij,n}) 
-	- (\gamma_{ml,j} + \gamma_{mj,l} - \gamma_{lj,m}) (\gamma_{ni,k} + \gamma_{nk,i} - \gamma_{ik,n}))$<br>
-$= \frac{1}{2} \gamma^{km} \gamma^{ln} (\gamma_{km,l} (\gamma_{in,j} + \gamma_{jn,i} - \gamma_{ij,n}) 
-	- (\gamma_{lm,j} + \gamma_{jm,l} - \gamma_{jl,m}) (\gamma_{in,k} + \gamma_{kn,i} - \gamma_{ik,n}))$<br>
-$= \frac{1}{2} \gamma^{km} \gamma^{ln} (
-	\gamma_{km,l} \gamma_{in,j} 
-	+ \gamma_{km,l} \gamma_{jn,i} 
-	- \gamma_{km,l} \gamma_{ij,n}
-	- \gamma_{lm,j} \gamma_{in,k} 
-	- \gamma_{lm,j} \gamma_{kn,i} 
-	+ \gamma_{lm,j} \gamma_{ik,n}
-	- \gamma_{jm,l} \gamma_{in,k} 
-	- \gamma_{jm,l} \gamma_{kn,i} 
-	+ \gamma_{jm,l} \gamma_{ik,n}
-	+ \gamma_{jl,m} \gamma_{in,k} 
-	+ \gamma_{jl,m} \gamma_{kn,i} 
-	- \gamma_{jl,m} \gamma_{ik,n}
-)$<br>
-<br>
+	+ \frac{1}{2} \gamma^{km} (\gamma_{ml,k} + \gamma_{mk,l} - \gamma_{lk,m}) \gamma^{ln} \Gamma_{nij}
+	- \frac{1}{2} \gamma^{km} (\gamma_{ml,j} + \gamma_{mj,l} - \gamma_{lj,m}) \gamma^{ln} \Gamma_{nik}
+$<br>
+$= 	- \frac{1}{2} \gamma^{kp} \gamma_{pq,k} \gamma^{ql} (\gamma_{li,j} + \gamma_{lj,i} - \gamma_{ij,l})
+	+ \frac{1}{2} \gamma^{kl} (\gamma_{li,jk} + \gamma_{lj,ik} - \gamma_{ij,kl})
+	
+	+ \frac{1}{2} \gamma^{kp} \gamma_{pq,j} \gamma^{ql} (\gamma_{li,k} + \gamma_{lk,i} - \gamma_{ik,l})
+	- \frac{1}{2} \gamma^{kl} (\gamma_{il,jk} + \gamma_{kl,ij} - \gamma_{ik,lj})
+	
+	+ \frac{1}{2} \gamma^{km} \gamma_{ml,k} \gamma^{ln} \Gamma_{nij} 
+	+ \frac{1}{2} \gamma^{km} \gamma_{mk,l} \gamma^{ln} \Gamma_{nij} 
+	- \frac{1}{2} \gamma^{km} \gamma_{lk,m} \gamma^{ln} \Gamma_{nij}
+	- \frac{1}{2} \gamma^{km} \gamma_{ml,j} \gamma^{ln} \Gamma_{nik} 
+	- \frac{1}{2} \gamma^{km} \gamma_{mj,l} \gamma^{ln} \Gamma_{nik} 
+	+ \frac{1}{2} \gamma^{km} \gamma_{lj,m} \gamma^{ln} \Gamma_{nik}
+$<br>
+$= 	
+	- \frac{1}{2} \gamma^{kp} \gamma_{pq,k} \gamma^{ql} \gamma_{li,j} 
+	- \frac{1}{2} \gamma^{kp} \gamma_{pq,k} \gamma^{ql} \gamma_{lj,i} 
+	+ \frac{1}{2} \gamma^{kp} \gamma_{pq,k} \gamma^{ql} \gamma_{ij,l}
+	
+	+ \frac{1}{2} \gamma^{kl} \gamma_{li,jk} 
+	+ \frac{1}{2} \gamma^{kl} \gamma_{lj,ik} 
+	- \frac{1}{2} \gamma^{kl} \gamma_{ij,kl}
+	
+	+ \frac{1}{2} \gamma^{kp} \gamma_{pq,j} \gamma^{ql} \gamma_{li,k}
+	+ \frac{1}{2} \gamma^{kp} \gamma_{pq,j} \gamma^{ql} \gamma_{lk,i}
+	- \frac{1}{2} \gamma^{kp} \gamma_{pq,j} \gamma^{ql} \gamma_{ik,l}
+	
+	- \frac{1}{2} \gamma^{kl} \gamma_{il,jk} 
+	- \frac{1}{2} \gamma^{kl} \gamma_{kl,ij} 
+	+ \frac{1}{2} \gamma^{kl} \gamma_{ik,lj}
+	
+	+ \frac{1}{4} \gamma^{km} \gamma_{ml,k} \gamma^{ln} (\gamma_{ni,j} + \gamma_{nj,i} - \gamma_{ij,n})
+	+ \frac{1}{4} \gamma^{km} \gamma_{mk,l} \gamma^{ln} (\gamma_{ni,j} + \gamma_{nj,i} - \gamma_{ij,n})
+	- \frac{1}{4} \gamma^{km} \gamma_{lk,m} \gamma^{ln} (\gamma_{ni,j} + \gamma_{nj,i} - \gamma_{ij,n})
+	- \frac{1}{4} \gamma^{km} \gamma_{ml,j} \gamma^{ln} (\gamma_{ni,k} + \gamma_{nk,i} - \gamma_{ik,n})
+	- \frac{1}{4} \gamma^{km} \gamma_{mj,l} \gamma^{ln} (\gamma_{ni,k} + \gamma_{nk,i} - \gamma_{ik,n})
+	+ \frac{1}{4} \gamma^{km} \gamma_{lj,m} \gamma^{ln} (\gamma_{ni,k} + \gamma_{nk,i} - \gamma_{ik,n})
+$<br>
+
+$= 	
+	- \frac{1}{2} \gamma^{kp} \gamma_{pq,k} \gamma^{ql} \gamma_{li,j} 
+	- \frac{1}{2} \gamma^{kp} \gamma_{pq,k} \gamma^{ql} \gamma_{lj,i} 
+	+ \frac{1}{2} \gamma^{kp} \gamma_{pq,k} \gamma^{ql} \gamma_{ij,l}
+	
+	+ \frac{1}{2} \gamma^{kl} \gamma_{li,jk} 
+	+ \frac{1}{2} \gamma^{kl} \gamma_{lj,ik} 
+	- \frac{1}{2} \gamma^{kl} \gamma_{ij,kl}
+	
+	+ \frac{1}{2} \gamma^{kp} \gamma_{pq,j} \gamma^{ql} \gamma_{li,k}
+	+ \frac{1}{2} \gamma^{kp} \gamma_{pq,j} \gamma^{ql} \gamma_{lk,i}
+	- \frac{1}{2} \gamma^{kp} \gamma_{pq,j} \gamma^{ql} \gamma_{ik,l}
+	
+	- \frac{1}{2} \gamma^{kl} \gamma_{il,jk} 
+	- \frac{1}{2} \gamma^{kl} \gamma_{kl,ij} 
+	+ \frac{1}{2} \gamma^{kl} \gamma_{ik,lj}
+	
+	+ \frac{1}{4} \gamma^{km} \gamma_{ml,k} \gamma^{ln} \gamma_{ni,j} 
+	+ \frac{1}{4} \gamma^{km} \gamma_{ml,k} \gamma^{ln} \gamma_{nj,i} 
+	- \frac{1}{4} \gamma^{km} \gamma_{ml,k} \gamma^{ln} \gamma_{ij,n}
+	
+	+ \frac{1}{4} \gamma^{km} \gamma_{mk,l} \gamma^{ln} \gamma_{ni,j} 
+	+ \frac{1}{4} \gamma^{km} \gamma_{mk,l} \gamma^{ln} \gamma_{nj,i} 
+	- \frac{1}{4} \gamma^{km} \gamma_{mk,l} \gamma^{ln} \gamma_{ij,n}
+	
+	- \frac{1}{4} \gamma^{km} \gamma_{lk,m} \gamma^{ln} \gamma_{ni,j} 
+	- \frac{1}{4} \gamma^{km} \gamma_{lk,m} \gamma^{ln} \gamma_{nj,i} 
+	+ \frac{1}{4} \gamma^{km} \gamma_{lk,m} \gamma^{ln} \gamma_{ij,n}
+	
+	- \frac{1}{4} \gamma^{km} \gamma_{ml,j} \gamma^{ln} \gamma_{ni,k} 
+	- \frac{1}{4} \gamma^{km} \gamma_{ml,j} \gamma^{ln} \gamma_{nk,i} 
+	+ \frac{1}{4} \gamma^{km} \gamma_{ml,j} \gamma^{ln} \gamma_{ik,n}
+	
+	- \frac{1}{4} \gamma^{km} \gamma_{mj,l} \gamma^{ln} \gamma_{ni,k} 
+	- \frac{1}{4} \gamma^{km} \gamma_{mj,l} \gamma^{ln} \gamma_{nk,i} 
+	+ \frac{1}{4} \gamma^{km} \gamma_{mj,l} \gamma^{ln} \gamma_{ik,n}
+	
+	+ \frac{1}{4} \gamma^{km} \gamma_{lj,m} \gamma^{ln} \gamma_{ni,k} 
+	+ \frac{1}{4} \gamma^{km} \gamma_{lj,m} \gamma^{ln} \gamma_{nk,i} 
+	- \frac{1}{4} \gamma^{km} \gamma_{lj,m} \gamma^{ln} \gamma_{ik,n}
+$<br>
+$= 	
+	- \frac{1}{2} \gamma^{kl} \gamma_{ij,kl}
+	- \frac{1}{2} \gamma^{kl} \gamma_{kl,ij} 
+	+ \frac{1}{2} \gamma^{kl} \gamma_{ik,lj}
+	+ \frac{1}{2} \gamma^{kl} \gamma_{jk,li} 
+
+	- \frac{1}{2} \gamma^{km} \gamma^{ln} \gamma_{ml,k} \gamma_{ni,j} 
+	+ \frac{1}{4} \gamma^{km} \gamma^{ln} \gamma_{mk,l} \gamma_{ni,j} 
+	
+	- \frac{1}{2} \gamma^{km} \gamma^{ln} \gamma_{ml,k} \gamma_{nj,i} 
+	+ \frac{1}{4} \gamma^{km} \gamma^{ln} \gamma_{mk,l} \gamma_{nj,i} 
+	
+	+ \frac{1}{2} \gamma^{km} \gamma^{ln} \gamma_{ml,k} \gamma_{ij,n}
+	- \frac{1}{4} \gamma^{km} \gamma^{ln} \gamma_{mk,l} \gamma_{ij,n}
+
+	+ \frac{1}{2} \gamma^{km} \gamma^{ln} \gamma_{ik,n} \gamma_{jm,l}
+	- \frac{1}{2} \gamma^{km} \gamma^{ln} \gamma_{in,k} \gamma_{jm,l}
+	
+	- \frac{1}{4} \gamma^{km} \gamma^{ln} \gamma_{kn,i} \gamma_{jm,l}
+	+ \frac{1}{4} \gamma^{km} \gamma^{ln} \gamma_{kn,i} \gamma_{jl,m}
+	
+	- \frac{1}{4} \gamma^{km} \gamma^{ln} \gamma_{in,k} \gamma_{ml,j}
+	+ \frac{1}{4} \gamma^{km} \gamma^{ln} \gamma_{ik,n} \gamma_{ml,j}
+	
+	+ \frac{1}{4} \gamma^{km} \gamma^{ln} \gamma_{kn,i} \gamma_{ml,j}
+$<br>
 
 now we equate things "up to principle part", namely the Ricci tensors and the evolution equations.<br>
-TODO<br>
+That means all 2nd-and-higher derivatives?<br>
+Now most papers have ...
 <br>
 
-$R_{ij} \approx -\frac{1}{2} \gamma^{lm} \gamma_{ij,lm} 
-	+ \frac{1}{2} \gamma^{km} (\gamma_{jk,im} + \gamma_{ik,jm} - \gamma_{km,ij}) 
-	+ {\gamma^{km}}_{,j} (
-		\frac{1}{2} \gamma_{mi,k} 
-		- \frac{1}{4} \gamma_{mk,i}
-		+ \gamma_{ki} (\frac{1}{2} \gamma_{ml,n} - \frac{1}{4} \gamma_{ln,m}) \gamma^{ln}
-	)
-	+ \frac{1}{2} \gamma^{ln} \gamma_{kj} {\gamma^{km}}_{,i} \Gamma_{mln}
-	+ \frac{1}{2} \gamma_{lj} {\gamma^{km}}_{,i} {\Gamma^l}_{km}
+$R_{ij} \approx -{d^m}_{ij,m} + 2 {d^m}_{m(j,i)} - {{d_{(j|m}}^m}_{,|i)}$<br>
+$\approx -\frac{1}{2} \gamma^{lm} \gamma_{ij,lm} + \gamma_{k(i} {\Gamma^k}_{,j)}$<br>
+$\approx -\frac{1}{2} \gamma^{lm} \gamma_{ij,lm} 
+	+ \frac{1}{2} \gamma_{ik} ({\Gamma^k}_{lm} \gamma^{lm})_{,j} 
+	+ \frac{1}{2} \gamma_{jk} ({\Gamma^k}_{lm} \gamma^{lm})_{,i}$<br>
+$\approx -\frac{1}{2} \gamma^{lm} \gamma_{ij,lm} 
+	+ \frac{1}{2} \gamma_{ik} {\Gamma^k}_{lm,j} \gamma^{lm} 
+	+ \frac{1}{2} \gamma_{ik} {\Gamma^k}_{lm} {\gamma^{lm}}_{,j}
+	+ \frac{1}{2} \gamma_{jk} {\Gamma^k}_{lm,i} \gamma^{lm} 
+	+ \frac{1}{2} \gamma_{jk} {\Gamma^k}_{lm} {\gamma^{lm}}_{,i}$<br>
+$\approx -\frac{1}{2} \gamma^{lm} \gamma_{ij,lm} 
+	+ \frac{1}{2} \gamma_{ik} (\gamma^{kn} \Gamma_{nlm})_{,j} \gamma^{lm} 
+	+ \frac{1}{2} \gamma_{jk} (\gamma^{kn} \Gamma_{nlm})_{,i} \gamma^{lm} 
+	- \frac{1}{2} \gamma_{ik} \gamma^{kn} \Gamma_{nlm} \gamma^{lp} \gamma_{pq,j} \gamma^{qm}
+	- \frac{1}{2} \gamma_{jk} \gamma^{kn} \Gamma_{nlm} \gamma^{lp} \gamma_{pq,i} \gamma^{qm}
 $<br>
-$R_{ij} \approx -\frac{1}{2} \gamma^{lm} \gamma_{ij,lm} 
-	+ \frac{1}{4} \gamma^{km} (\gamma_{jk,im} + \gamma_{ik,jm} - \gamma_{km,ij}) 
-	+ \frac{1}{4} \gamma^{km} (\gamma_{im,kj} + \gamma_{jm,ki} - \gamma_{km,ij})
-	+ {\gamma^{km}}_{,j} (
-		\frac{1}{2}  \Gamma_{ikm} 
-		+ \frac{1}{2} \gamma_{ki} \Gamma_{mln} \gamma^{ln}
-	)
-	+ \frac{1}{2} \gamma^{ln} \gamma_{kj} {\gamma^{km}}_{,i} \Gamma_{mln}
-	+ \frac{1}{2} \gamma_{lj} {\gamma^{km}}_{,i} {\Gamma^l}_{km}
+$\approx -\frac{1}{2} \gamma^{lm} \gamma_{ij,lm} 
+	+ \frac{1}{2} \gamma_{ik} {\gamma^{kn}}_{,j} \Gamma_{nlm} \gamma^{lm} 
+	+ \frac{1}{2} \gamma_{jk} {\gamma^{kn}}_{,i} \Gamma_{nlm} \gamma^{lm} 
+	+ \frac{1}{2} \gamma_{ik} \gamma^{kn} \Gamma_{nlm,j} \gamma^{lm}
+	+ \frac{1}{2} \gamma_{jk} \gamma^{kn} \Gamma_{nlm,i} \gamma^{lm}
+	- \frac{1}{4} \gamma_{ik} \gamma^{kn} (\gamma_{nl,m} + \gamma_{nm,l} - \gamma_{lm,n}) \gamma^{lp} \gamma_{pq,j} \gamma^{qm}
+	- \frac{1}{4} \gamma_{jk} \gamma^{kn} (\gamma_{nl,m} + \gamma_{nm,l} - \gamma_{lm,n}) \gamma^{lp} \gamma_{pq,i} \gamma^{qm}
 $<br>
-$R_{ij} \approx -\frac{1}{2} \gamma^{lm} \gamma_{ij,lm} 
-	+ \frac{1}{2} \gamma^{lm} (\gamma_{ki} {\gamma^{kp}}_{,j} + \gamma_{kj} {\gamma^{kp}}_{,i}) \Gamma_{plm} 
-	+ \frac{1}{4} \gamma^{lm} (\gamma_{il,mj} + \gamma_{im,lj} - \gamma_{lm,ij} + \gamma_{jl,mi} + \gamma_{jm,li} - \gamma_{lm,ij})
-	+ \frac{1}{2} (\gamma_{ki} {\gamma^{lm}}_{,j} + \gamma_{kj} {\gamma^{lm}}_{,i} ){\Gamma^k}_{lm}
+$\approx -\frac{1}{2} \gamma^{lm} \gamma_{ij,lm} 
+	- \frac{1}{4} \gamma_{ik} (\gamma_{nl,m} + \gamma_{nm,l} - \gamma_{lm,n}) \gamma^{lm} \gamma^{kp} \gamma_{pq,j} \gamma^{qn}
+	- \frac{1}{4} \gamma_{jk} (\gamma_{nl,m} + \gamma_{nm,l} - \gamma_{lm,n}) \gamma^{lm} \gamma^{kp} \gamma_{pq,i} \gamma^{qn}
+	+ \frac{1}{4} \gamma_{ik} \gamma^{kn} \gamma_{nl,mj} \gamma^{lm} 
+	+ \frac{1}{4} \gamma_{ik} \gamma^{kn} \gamma_{nm,lj} \gamma^{lm} 
+	- \frac{1}{4} \gamma_{ik} \gamma^{kn} \gamma_{lm,nj} \gamma^{lm}
+	+ \frac{1}{4} \gamma_{jk} \gamma^{kn} \gamma_{nl,mi} \gamma^{lm} 
+	+ \frac{1}{4} \gamma_{jk} \gamma^{kn} \gamma_{nm,li} \gamma^{lm} 
+	- \frac{1}{4} \gamma_{jk} \gamma^{kn} \gamma_{lm,ni} \gamma^{lm}
+	- \frac{1}{4} \gamma_{ik} \gamma^{kn} \gamma_{nl,m} \gamma^{lp} \gamma_{pq,j} \gamma^{qm} 
+	- \frac{1}{4} \gamma_{ik} \gamma^{kn} \gamma_{nm,l} \gamma^{lp} \gamma_{pq,j} \gamma^{qm} 
+	+ \frac{1}{4} \gamma_{ik} \gamma^{kn} \gamma_{lm,n} \gamma^{lp} \gamma_{pq,j} \gamma^{qm}
+	- \frac{1}{4} \gamma_{jk} \gamma^{kn} \gamma_{nl,m} \gamma^{lp} \gamma_{pq,i} \gamma^{qm} 
+	- \frac{1}{4} \gamma_{jk} \gamma^{kn} \gamma_{nm,l} \gamma^{lp} \gamma_{pq,i} \gamma^{qm} 
+	+ \frac{1}{4} \gamma_{jk} \gamma^{kn} \gamma_{lm,n} \gamma^{lp} \gamma_{pq,i} \gamma^{qm}
 $<br>
-$R_{ij} \approx -\frac{1}{2} \gamma^{lm} \gamma_{ij,lm} 
-	+ \frac{1}{2} \gamma^{lm} (\gamma_{ki} {\gamma^{kp}}_{,j} + \gamma_{kj} {\gamma^{kp}}_{,i}) \Gamma_{plm} 
-	+ \frac{1}{2} \gamma^{lm} (\Gamma_{ilm,j} + \Gamma_{jlm,i})
-	+ \frac{1}{2} (\gamma_{ki} {\gamma^{lm}}_{,j} + \gamma_{kj} {\gamma^{lm}}_{,i} ){\Gamma^k}_{lm}
+$\approx -\frac{1}{2} \gamma^{lm} \gamma_{ij,lm} 
+	- \frac{1}{4} \gamma_{ik} \gamma_{nl,m} \gamma^{lm} \gamma^{kp} \gamma_{pq,j} \gamma^{qn}
+	- \frac{1}{4} \gamma_{ik} \gamma_{nm,l} \gamma^{lm} \gamma^{kp} \gamma_{pq,j} \gamma^{qn}
+	+ \frac{1}{4} \gamma_{ik} \gamma_{lm,n} \gamma^{lm} \gamma^{kp} \gamma_{pq,j} \gamma^{qn}
+	- \frac{1}{4} \gamma_{jk} \gamma_{nl,m} \gamma^{lm} \gamma^{kp} \gamma_{pq,i} \gamma^{qn}
+	- \frac{1}{4} \gamma_{jk} \gamma_{nm,l} \gamma^{lm} \gamma^{kp} \gamma_{pq,i} \gamma^{qn}
+	+ \frac{1}{4} \gamma_{jk} \gamma_{lm,n} \gamma^{lm} \gamma^{kp} \gamma_{pq,i} \gamma^{qn}
+	+ \frac{1}{4} \gamma_{ik} \gamma^{kn} \gamma_{nl,mj} \gamma^{lm} 
+	+ \frac{1}{4} \gamma_{ik} \gamma^{kn} \gamma_{nm,lj} \gamma^{lm} 
+	- \frac{1}{4} \gamma_{ik} \gamma^{kn} \gamma_{lm,nj} \gamma^{lm}
+	+ \frac{1}{4} \gamma_{jk} \gamma^{kn} \gamma_{nl,mi} \gamma^{lm} 
+	+ \frac{1}{4} \gamma_{jk} \gamma^{kn} \gamma_{nm,li} \gamma^{lm} 
+	- \frac{1}{4} \gamma_{jk} \gamma^{kn} \gamma_{lm,ni} \gamma^{lm}
+	- \frac{1}{4} \gamma_{ik} \gamma^{kn} \gamma_{nl,m} \gamma^{lp} \gamma_{pq,j} \gamma^{qm} 
+	- \frac{1}{4} \gamma_{ik} \gamma^{kn} \gamma_{nm,l} \gamma^{lp} \gamma_{pq,j} \gamma^{qm} 
+	+ \frac{1}{4} \gamma_{ik} \gamma^{kn} \gamma_{lm,n} \gamma^{lp} \gamma_{pq,j} \gamma^{qm}
+	- \frac{1}{4} \gamma_{jk} \gamma^{kn} \gamma_{nl,m} \gamma^{lp} \gamma_{pq,i} \gamma^{qm} 
+	- \frac{1}{4} \gamma_{jk} \gamma^{kn} \gamma_{nm,l} \gamma^{lp} \gamma_{pq,i} \gamma^{qm} 
+	+ \frac{1}{4} \gamma_{jk} \gamma^{kn} \gamma_{lm,n} \gamma^{lp} \gamma_{pq,i} \gamma^{qm}
 $<br>
-$R_{ij} \approx -\frac{1}{2} \gamma^{lm} \gamma_{ij,lm} 
-	+ \frac{1}{2} \gamma^{lm} \gamma_{ki} ({\gamma^{kp}}_{,j} \Gamma_{plm} + \gamma^{kp} \Gamma_{plm,j})
-	+ \frac{1}{2} \gamma^{lm} \gamma_{kj} ({\gamma^{kp}}_{,i} \Gamma_{plm} + \gamma^{kp} \Gamma_{plm,i})
-	+ \frac{1}{2} (\gamma_{ki} {\gamma^{lm}}_{,j} + \gamma_{kj} {\gamma^{lm}}_{,i}) {\Gamma^k}_{lm}
-$<br>
-$R_{ij} \approx -\frac{1}{2} \gamma^{lm} \gamma_{ij,lm} 
-	+ \frac{1}{2} \gamma^{lm} (
-		\gamma_{ki} ({\gamma^{kp}}_{,j} \Gamma_{plm} + \gamma^{kp} \Gamma_{plm,j})
-		+ \gamma_{kj} ({\gamma^{kp}}_{,i} \Gamma_{plm} + \gamma^{kp} \Gamma_{plm,i})
-	)
-	+ \frac{1}{2} (\gamma_{ki} {\gamma^{lm}}_{,j} + \gamma_{kj} {\gamma^{lm}}_{,i}) {\Gamma^k}_{lm}
-$<br>
-$R_{ij} \approx -\frac{1}{2} \gamma^{lm} \gamma_{ij,lm} 
-	+ \frac{1}{2} \gamma_{ki} {\Gamma^k}_{lm,j} \gamma^{lm} 
-	+ \frac{1}{2} \gamma_{kj} {\Gamma^k}_{lm,i} \gamma^{lm} 
-	+ \frac{1}{2} \gamma_{ki} {\gamma^{lm}}_{,j} {\Gamma^k}_{lm}
-	+ \frac{1}{2} \gamma_{kj} {\gamma^{lm}}_{,i} {\Gamma^k}_{lm}
-$<br>
-$R_{ij} \approx -\frac{1}{2} \gamma^{lm} \gamma_{ij,lm} + \gamma_{k(i|} {\Gamma^k}_{lm,|j)} \gamma^{lm} + \gamma_{k(i} {\gamma^{lm}}_{,j)} {\Gamma^k}_{lm}$<br>
-$R_{ij} \approx -\frac{1}{2} \gamma^{lm} \gamma_{ij,lm} + \gamma_{k(i} ({\Gamma^k}_{lm} \gamma^{lm})_{,j)}$<br>
-$R_{ij} \approx -\frac{1}{2} \gamma^{lm} \gamma_{ij,lm} + \gamma_{k(i} {\Gamma^k}_{,j)}$<br>
-$\approx -{d^m}_{ij,m} + 2 {d^m}_{m(j,i)} - {{d_{(j|m}}^m}_{,|i)}$<br>
-<br>
+$\approx 
+	-\frac{1}{2} \gamma^{lm} \gamma_{ij,lm} 
+	
+	+ \frac{1}{4} \gamma^{lm} \gamma_{il,mj}
+	+ \frac{1}{4} \gamma^{lm} \gamma_{im,lj}
+	- \frac{1}{4} \gamma^{lm} \gamma_{lm,ij}
 
+	+ \frac{1}{4} \gamma^{lm} \gamma_{jl,mi}
+	+ \frac{1}{4} \gamma^{lm} \gamma_{jm,li}
+	- \frac{1}{4} \gamma^{lm} \gamma_{lm,ij}
+
+	- \frac{1}{4} \gamma^{lp} \gamma^{qm} \gamma_{jl,m} \gamma_{pq,i}
+	- \frac{1}{4} \gamma^{lp} \gamma^{qm} \gamma_{jm,l} \gamma_{pq,i}
+	+ \frac{1}{4} \gamma^{lp} \gamma^{qm} \gamma_{lm,j} \gamma_{pq,i}
+
+	- \frac{1}{4} \gamma^{lm} \gamma^{qn} \gamma_{nl,m} \gamma_{jq,i}
+	- \frac{1}{4} \gamma^{lm} \gamma^{qn} \gamma_{nm,l} \gamma_{jq,i}
+	+ \frac{1}{4} \gamma^{lm} \gamma^{qn} \gamma_{lm,n} \gamma_{jq,i}
+
+	- \frac{1}{4} \gamma^{lp} \gamma^{qm} \gamma_{il,m} \gamma_{pq,j}
+	- \frac{1}{4} \gamma^{lp} \gamma^{qm} \gamma_{im,l} \gamma_{pq,j}
+	+ \frac{1}{4} \gamma^{lp} \gamma^{qm} \gamma_{lm,i} \gamma_{pq,j}
+
+	- \frac{1}{4} \gamma^{lm} \gamma^{qn} \gamma_{nl,m} \gamma_{iq,j}
+	- \frac{1}{4} \gamma^{lm} \gamma^{qn} \gamma_{nm,l} \gamma_{iq,j}
+	+ \frac{1}{4} \gamma^{lm} \gamma^{qn} \gamma_{lm,n} \gamma_{iq,j}
+$<br>
+$\approx 
+	- \frac{1}{2} \gamma^{kl} \gamma_{ij,kl} 
+	- \frac{1}{2} \gamma^{kl} \gamma_{kl,ij}
+	+ \frac{1}{2} \gamma^{kl} \gamma_{ik,lj}
+	+ \frac{1}{2} \gamma^{kl} \gamma_{jk,li}
+
+	- \frac{1}{2} \gamma^{lp} \gamma^{qm} \gamma_{jl,m} \gamma_{pq,i}
+	- \frac{1}{2} \gamma^{lp} \gamma^{qm} \gamma_{il,m} \gamma_{pq,j}
+	- \frac{1}{2} \gamma^{lm} \gamma^{qn} \gamma_{nl,m} \gamma_{qj,i}
+	- \frac{1}{2} \gamma^{lm} \gamma^{qn} \gamma_{nl,m} \gamma_{qi,j}
+	
+	+ \frac{1}{4} \gamma^{lp} \gamma^{qm} \gamma_{lm,j} \gamma_{pq,i}
+	+ \frac{1}{4} \gamma^{lp} \gamma^{qm} \gamma_{lm,i} \gamma_{pq,j}
+	+ \frac{1}{4} \gamma^{lm} \gamma^{qn} \gamma_{lm,n} \gamma_{qj,i}
+	+ \frac{1}{4} \gamma^{lm} \gamma^{qn} \gamma_{lm,n} \gamma_{qi,j}
+$<br>
+<br>
+From the two, it looks like the 2nd derivatives are in common.<br>
+<br>
 
 ...for $a_{i,j} = (\alpha_{,i} / \alpha)_{,j} = \alpha_{,ij} / \alpha - \alpha_{,i} \alpha_{,j} / \alpha^2$<br>
 ...so $\alpha_{,ij} = \alpha a_{i,j} + \alpha_{,i} \alpha_{,j} / \alpha$<br>
