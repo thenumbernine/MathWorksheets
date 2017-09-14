@@ -271,45 +271,11 @@ let ${\Lambda^k}_{ij} = {d^k}_{ij} + \delta^k_{(i} ( a_{j)} + {d_{j)m}}^m - 2 {d
 Then ${\Lambda^k}_{ij,k} = {d^k}_{ij,k} + \delta^k_{(i} ( a_{j)} + {d_{j)m}}^m - 2 {d^m}_{mj)})_{,k}$<br>
 <br>
 
-matrix form, favoring source terms:<br>
-$\left[\matrix{
-	a_k \\ d_{kij} \\ K_{ij} 
-}\right]_{,t}
-+ \left[\matrix{
-	-\delta^m_k \beta^r & 
-		0 & 
-		\alpha f \gamma^{pq} \delta^r_k \\
-	0 & 
-		-\delta^m_k \delta^p_i \delta^q_j \beta^r & 
-		\alpha \delta^p_i \delta^q_j \delta^r_k \\
-	\alpha \delta^m_{(i} \delta^r_{j)} &  
-		\alpha (
-			\gamma^{(pq)} \delta^m_{(i} \delta^r_{j)}
-			+ \gamma^{mr} \delta^{(p}_{(i} \delta^{q)}_{j)}
-			- 2 \gamma^{r(p} \delta^{q)}_{(i} \delta^m_{j)}
-		) &
-		-\delta^p_i \delta^q_j \beta^r
-}\right]
-\left[\matrix{
-	a_m \\ d_{mpq} \\ K_{pq} 
-}\right]_{,r}
-= \left[\matrix{
-	a_i {\beta^i}_{,k} 
-		+ \alpha (a_k K (f - \alpha f') - 2 f {d_k}^{ij} K_{ij}) \\
-	d_{lij} {\beta^l}_{,k}
-		+ 2 d_{kl(i} {\beta^l}_{,j)} 
-		+ \gamma_{l(i} {\beta^l}_{,j)k}
-		- \alpha a_k K_{ij} \\
-	2 K_{k(i} {\beta^k}_{,j)} 
-		+ \alpha (
-			- a_{(i} a_{j)}
-			+ (2 {d_{(ij)}}^k - {d^k}_{(ij)}) (a_k + V_k - {d^l}_{lk})
-			+ 2 ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
-			+ {d_{(i}}^{kl} d_{j)kl} 
-			+ K K_{(ij)} 
-			- 2 K_{(i|k} {K^k}_{j)}
-		)
-}\right]$<br>
+Hyperbolic conservation form:<br>
+${U^i}_{,t} +  {F^{ir}}_{,r} = S^i$ for the i'th conservation variable in the r'th direction.<br>
+${U^i}_{,t} + \frac{\partial F^{ir}}{\partial U^m} {U^m}_{,r} = S^i$<br>
+${U^i}_{,t} + {J^{ir}}_m {U^m}_{,r} = S^i$, for ${J^{ir}}_m = \frac{\partial F^{ir}}{\partial U^m}$<br>
+<br>
 
 matrix form, favoring flux terms:<br>
 $\left[\matrix{
@@ -358,8 +324,55 @@ $\left[\matrix{
 }\right]$<br>
 <br>
 
-Separating the acoustic tensor from the flux jacobian tensor:<br>
-$J = A + I (-\beta^r)$<br>
+...but no one seems to do this, probably because the rank of the flux Jacobian isn't full, so the source-only x conservative terms of the Jacobian are absorbed into the source vector.<br>
+<br>
+
+matrix form, favoring source terms:<br>
+$\left[\matrix{
+	a_k \\ d_{kij} \\ K_{ij} 
+}\right]_{,t}
++ \left[\matrix{
+	-\delta^m_k \beta^r & 
+		0 & 
+		\alpha f \gamma^{pq} \delta^r_k \\
+	0 & 
+		-\delta^m_k \delta^p_i \delta^q_j \beta^r & 
+		\alpha \delta^p_i \delta^q_j \delta^r_k \\
+	\alpha \delta^m_{(i} \delta^r_{j)} &  
+		\alpha (
+			\gamma^{(pq)} \delta^m_{(i} \delta^r_{j)}
+			+ \gamma^{mr} \delta^{(p}_{(i} \delta^{q)}_{j)}
+			- 2 \gamma^{r(p} \delta^{q)}_{(i} \delta^m_{j)}
+		) &
+		-\delta^p_i \delta^q_j \beta^r
+}\right]
+\left[\matrix{
+	a_m \\ d_{mpq} \\ K_{pq} 
+}\right]_{,r}
+= \left[\matrix{
+	a_i {\beta^i}_{,k} 
+		+ \alpha (a_k K (f - \alpha f') - 2 f {d_k}^{ij} K_{ij}) \\
+	d_{lij} {\beta^l}_{,k}
+		+ 2 d_{kl(i} {\beta^l}_{,j)} 
+		+ \gamma_{l(i} {\beta^l}_{,j)k}
+		- \alpha a_k K_{ij} \\
+	2 K_{k(i} {\beta^k}_{,j)} 
+		+ \alpha (
+			- a_{(i} a_{j)}
+			+ (2 {d_{(ij)}}^k - {d^k}_{(ij)}) (a_k + V_k - {d^l}_{lk})
+			+ 2 ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
+			+ {d_{(i}}^{kl} d_{j)kl} 
+			+ K K_{(ij)} 
+			- 2 K_{(i|k} {K^k}_{j)}
+		)
+}\right]$<br>
+
+Separating the acoustic tensor from the flux Jacobian tensor:<br>
+<br>
+
+${J^{ir}}_m = {A^{ir}}_m + \delta^i_m (-\beta^r)$<br>
+<br>
+
 $\left[\matrix{
 	-\delta^m_k \beta^r & 
 		0 & 
@@ -396,7 +409,8 @@ $\left[\matrix{
 	0 & 0 & \delta^p_i \delta^q_j
 }\right] \cdot (-\beta^r)$<br>
 <br>
-So $A = \left[\matrix{
+So<br>
+${A^{ir}}_m = \left[\matrix{
 	0 & 
 		0 & 
 		\alpha f \gamma^{pq} \delta^r_k \\
@@ -412,5 +426,58 @@ So $A = \left[\matrix{
 		0
 }\right]$<br>
 <br>
+
+For x direction:<br>
+$a_{x,t} = \alpha f (\gamma^{xx} K_{xx,x} + 2 \gamma^{xy} K_{xy,x} + 2 \gamma^{xz} K_{xz,x} + \gamma^{yy} K_{yy,x} + 2 \gamma^{yz} K_{yz,x} + \gamma^{zz} K_{zz,x})$<br>
+$d_{xij,t} = \alpha K_{ij,x}$<br>
+$K_{ij,t} = $<br>
+<br>
+
+${A^{ir}}_m = \left[\matrix{
+	
+	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \alpha f \gamma^{xx} & 2 \alpha f \gamma^{xy} & 2 \alpha f \gamma^{xz} & \alpha f \gamma^{yy} & 2 \alpha f \gamma^{yz} & \alpha f \gamma^{zz} \\
+	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+
+
+	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \alpha & \cdot & \cdot & \cdot & \cdot & \cdot \\
+	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \alpha & \cdot & \cdot & \cdot & \cdot \\
+	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \alpha & \cdot & \cdot & \cdot \\
+	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \alpha & \cdot & \cdot \\
+	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \alpha & \cdot \\  
+	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \alpha \\  
+
+	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+
+	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+
+
+	\alpha & \cdot & \cdot &   				{\frac{-{\alpha \cdot {\gamma^{xx}}}}{2}} & {\frac{-{\alpha \cdot {\gamma^{xy}}}}{2}} & {\frac{-{\alpha \cdot {\gamma^{xz}}}}{2}} & {\frac{\alpha \cdot {\gamma^{yy}}}{2}} & {\frac{\alpha \cdot {\gamma^{yz}}}{2}} & {\frac{\alpha \cdot {\gamma^{zz}}}{2}} & {\alpha \cdot {\gamma^{xy}}} & \cdot & \cdot & \cdot & \cdot & \cdot & {\alpha \cdot {\gamma^{xz}}} & \cdot & \cdot & \cdot & \cdot & \cdot &	\cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+	\cdot & \frac{1}{2} \alpha & \cdot &   	\cdot & \cdot & \cdot & {-{\alpha \cdot {\gamma^{xy}}}} & {\frac{-{\alpha \cdot {\gamma^{xz}}}}{2}} & \cdot & {-{\alpha \cdot {\gamma^{xx}}}} & \cdot & {\frac{-{\alpha \cdot {\gamma^{xz}}}}{2}} & \cdot & \cdot & \cdot & \cdot & {\frac{\alpha \cdot {\gamma^{xz}}}{2}} & \cdot & \cdot & \cdot & \cdot &																												\cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+	\cdot & \cdot & \frac{1}{2} \alpha &   	\cdot & \cdot & \cdot & \cdot & {\frac{-{\alpha \cdot {\gamma^{xy}}}}{2}} & {-{\alpha \cdot {\gamma^{xz}}}} & \cdot & \cdot & {\frac{\alpha \cdot {\gamma^{xy}}}{2}} & \cdot & \cdot & \cdot & {-{\alpha \cdot {\gamma^{xx}}}} & {\frac{-{\alpha \cdot {\gamma^{xy}}}}{2}} & \cdot & \cdot & \cdot & \cdot &																												\cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+	\cdot & \cdot & \cdot &   				\cdot & \cdot & \cdot & {\alpha \cdot {\gamma^{xx}}} & \cdot & \cdot & \cdot & {-{\alpha \cdot {\gamma^{xx}}}} & \cdot & {-{\alpha \cdot {\gamma^{xy}}}} & {-{\alpha \cdot {\gamma^{xz}}}} & \cdot & \cdot & \cdot & \cdot & {\alpha \cdot {\gamma^{xz}}} & \cdot & \cdot &																																					\cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+	\cdot & \cdot & \cdot &   				\cdot & \cdot & \cdot & \cdot & {\frac{\alpha \cdot {\gamma^{xx}}}{2}} & \cdot & \cdot & \cdot & {\frac{-{\alpha \cdot {\gamma^{xx}}}}{2}} & \cdot & \cdot & {-{\alpha \cdot {\gamma^{xz}}}} & \cdot & {\frac{-{\alpha \cdot {\gamma^{xx}}}}{2}} & \cdot & {-{\alpha \cdot {\gamma^{xy}}}} & \cdot & \cdot &																												\cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+	\cdot & \cdot & \cdot &   				\cdot & \cdot & \cdot & \cdot & \cdot & {\alpha \cdot {\gamma^{xx}}} & \cdot & \cdot & \cdot & \cdot & \cdot & {\alpha \cdot {\gamma^{xy}}} & \cdot & \cdot & {-{\alpha \cdot {\gamma^{xx}}}} & \cdot & {-{\alpha \cdot {\gamma^{xy}}}} & {-{\alpha \cdot {\gamma^{xz}}}} &																																					\cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+
+}\right]$<br>
+<br>
+
+Now for the eigen-decomposition in each direction.<br>
+Luckily the number of variables iterated in each variable are much smaller than the entire set.<br>
+So instead of finding the eigen decomposition of the whole system, all we need is of the following variables:<br>
+$a_r, d_{rij}, K_{ij}$<br>
+<br>
+
+
 	</body>
 </html>

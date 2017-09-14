@@ -7,7 +7,10 @@
 	</head>
     <body onload='tryToFindMathJax();'>
 
-<h3>Hyperbolic ADM</h3>
+What exactly does "equal up to principal part" mean? Lots of papers use the term.<br>
+Here I'm looking at just how the terms equate:<br>
+<br>
+
 $a_i = (ln \alpha)_{,i} = \alpha_{,i} / \alpha$<br>
 ...so $\alpha a_i = \alpha_{,i}$<br>
 <br>
@@ -295,6 +298,10 @@ $K_{ij,t} - \beta^k K_{ij,k} \approx -\alpha ({d^k}_{ij,k} + \frac{1}{2} (a_{j,i
 $K_{ij,t} - \beta^k K_{ij,k} \approx -\alpha ({d^k}_{ij} + \delta^k_{(i} (a_{j)} + {d_{j)m}}^m - 2 {d^m}_{mj)}))_{,k}$<br>
 ...let ${\Lambda^k}_{ij} = {d^k}_{ij} + \delta^k_{(i} ( a_{j)} + {d_{j)m}}^m - 2 {d^m}_{mj)})$ ...<br>
 $K_{ij,t} - \beta^k K_{ij,k} \approx -\alpha {\Lambda^k}_{ij,k}$<br>
+<br>
 
+Looks like "equal up to principal part" neglects any first derivative terms of non-conservation variables ($\alpha, \beta^i, \gamma_{ij}$).<br>
+In all equations other than $K_{ij,t} \approx R_{ij} ... $, it looks all first derivatives of non-conservation variables are removed.<br>
+In the case of $R_{ij}$ it looks like some are left in place, for the sake of simplifications.  Are any added as well?<br>	
 	</body>
 </html>
