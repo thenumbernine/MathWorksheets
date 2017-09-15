@@ -125,30 +125,28 @@ $=
 	+ \frac{1}{2} \gamma^{kl} \gamma_{ik,lj}
 	+ \frac{1}{2} \gamma^{kl} \gamma_{jk,li} 
 
-	- \frac{1}{2} \gamma^{km} \gamma^{ln} \gamma_{ml,k} \gamma_{ni,j} 
-	+ \frac{1}{4} \gamma^{km} \gamma^{ln} \gamma_{mk,l} \gamma_{ni,j} 
+	- \frac{1}{2} \gamma^{km} \gamma^{ln} \gamma_{lm,k} \gamma_{ni,j} 
+	+ \frac{1}{4} \gamma^{km} \gamma^{ln} \gamma_{km,l} \gamma_{ni,j} 
 	
-	- \frac{1}{2} \gamma^{km} \gamma^{ln} \gamma_{ml,k} \gamma_{nj,i} 
-	+ \frac{1}{4} \gamma^{km} \gamma^{ln} \gamma_{mk,l} \gamma_{nj,i} 
-	
-	+ \frac{1}{2} \gamma^{km} \gamma^{ln} \gamma_{ml,k} \gamma_{ij,n}
-	- \frac{1}{4} \gamma^{km} \gamma^{ln} \gamma_{mk,l} \gamma_{ij,n}
+	- \frac{1}{2} \gamma^{km} \gamma^{ln} \gamma_{lm,k} \gamma_{nj,i} 
+	+ \frac{1}{4} \gamma^{km} \gamma^{ln} \gamma_{km,l} \gamma_{nj,i} 
+
+	+ \frac{1}{4} \gamma^{km} \gamma^{ln} \gamma_{kn,i} \gamma_{lm,j}
+
+
+	+ \frac{1}{2} \gamma^{km} \gamma^{ln} \gamma_{lm,k} \gamma_{ij,n}
+	- \frac{1}{4} \gamma^{km} \gamma^{ln} \gamma_{km,l} \gamma_{ij,n}
 
 	+ \frac{1}{2} \gamma^{km} \gamma^{ln} \gamma_{ik,n} \gamma_{jm,l}
 	- \frac{1}{2} \gamma^{km} \gamma^{ln} \gamma_{in,k} \gamma_{jm,l}
 	
-	- \frac{1}{4} \gamma^{km} \gamma^{ln} \gamma_{kn,i} \gamma_{jm,l}
-	+ \frac{1}{4} \gamma^{km} \gamma^{ln} \gamma_{kn,i} \gamma_{jl,m}
-	
-	- \frac{1}{4} \gamma^{km} \gamma^{ln} \gamma_{in,k} \gamma_{ml,j}
-	+ \frac{1}{4} \gamma^{km} \gamma^{ln} \gamma_{ik,n} \gamma_{ml,j}
-	
-	+ \frac{1}{4} \gamma^{km} \gamma^{ln} \gamma_{kn,i} \gamma_{ml,j}
 $<br>
 
 now we equate things "up to principal part", namely the Ricci tensors and the evolution equations.<br>
 That means all 2nd-and-higher derivatives?<br>
-Now most papers have ...
+<br>
+
+Most papers have "de Donder-Fock decomposition":<br>
 <br>
 
 $R_{ij} \approx -{d^m}_{ij,m} + 2 {d^m}_{m(j,i)} - {{d_{(j|m}}^m}_{,|i)}$<br>
@@ -244,18 +242,49 @@ $\approx
 	+ \frac{1}{2} \gamma^{kl} \gamma_{ik,lj}
 	+ \frac{1}{2} \gamma^{kl} \gamma_{jk,li}
 
-	- \frac{1}{2} \gamma^{lp} \gamma^{qm} \gamma_{jl,m} \gamma_{pq,i}
-	- \frac{1}{2} \gamma^{lp} \gamma^{qm} \gamma_{il,m} \gamma_{pq,j}
-	- \frac{1}{2} \gamma^{lm} \gamma^{qn} \gamma_{nl,m} \gamma_{qj,i}
-	- \frac{1}{2} \gamma^{lm} \gamma^{qn} \gamma_{nl,m} \gamma_{qi,j}
+	- \frac{1}{2} \gamma^{km} \gamma^{ln} \gamma_{lm,k} \gamma_{ni,j}
+	+ \frac{1}{4} \gamma^{km} \gamma^{ln} \gamma_{km,l} \gamma_{ni,j}
 	
-	+ \frac{1}{4} \gamma^{lp} \gamma^{qm} \gamma_{lm,j} \gamma_{pq,i}
-	+ \frac{1}{4} \gamma^{lp} \gamma^{qm} \gamma_{lm,i} \gamma_{pq,j}
-	+ \frac{1}{4} \gamma^{lm} \gamma^{qn} \gamma_{lm,n} \gamma_{qj,i}
-	+ \frac{1}{4} \gamma^{lm} \gamma^{qn} \gamma_{lm,n} \gamma_{qi,j}
+	- \frac{1}{2} \gamma^{km} \gamma^{ln} \gamma_{lm,k} \gamma_{nj,i}
+	+ \frac{1}{4} \gamma^{km} \gamma^{ln} \gamma_{km,l} \gamma_{nj,i}
+
+	+ \frac{1}{2} \gamma^{km} \gamma^{ln} \gamma_{kn,i} \gamma_{lm,j}
+
+
+	- \frac{1}{2} \gamma^{km} \gamma^{ln} \gamma_{il,m} \gamma_{kn,j}
+	- \frac{1}{2} \gamma^{km} \gamma^{ln} \gamma_{jl,m} \gamma_{kn,i}
 $<br>
 <br>
+
 From the two, it looks like the 2nd derivatives are in common.<br>
+What's the difference?<br>
+$R_{ij} - (\approx R_{ij})$<br>
+$= (
+	+ \frac{1}{4} \gamma^{km} \gamma^{ln} \gamma_{kn,i} \gamma_{lm,j}
+
+	+ \frac{1}{2} \gamma^{km} \gamma^{ln} \gamma_{lm,k} \gamma_{ij,n}
+	- \frac{1}{4} \gamma^{km} \gamma^{ln} \gamma_{km,l} \gamma_{ij,n}
+
+	+ \frac{1}{2} \gamma^{km} \gamma^{ln} \gamma_{ik,n} \gamma_{jm,l}
+	- \frac{1}{2} \gamma^{km} \gamma^{ln} \gamma_{in,k} \gamma_{jm,l}
+) - (
+	+ \frac{1}{2} \gamma^{km} \gamma^{ln} \gamma_{kn,i} \gamma_{lm,j}
+
+	- \frac{1}{2} \gamma^{km} \gamma^{ln} \gamma_{il,m} \gamma_{kn,j}
+	- \frac{1}{2} \gamma^{km} \gamma^{ln} \gamma_{jl,m} \gamma_{kn,i}
+)$<br>
+$= (
+	+ \frac{1}{2} \gamma^{km} \gamma^{ln} \gamma_{ik,n} \gamma_{jm,l}
+	- \frac{1}{2} \gamma^{km} \gamma^{ln} \gamma_{in,k} \gamma_{jm,l}
+
+	+ \frac{1}{2} \gamma^{km} \gamma^{ln} \gamma_{il,m} \gamma_{kn,j}
+	+ \frac{1}{2} \gamma^{km} \gamma^{ln} \gamma_{jl,m} \gamma_{kn,i}
+
+	- \frac{1}{4} \gamma^{km} \gamma^{ln} \gamma_{kn,i} \gamma_{lm,j}
+
+	+ \frac{1}{2} \gamma^{km} \gamma^{ln} \gamma_{lm,k} \gamma_{ij,n}
+	- \frac{1}{4} \gamma^{km} \gamma^{ln} \gamma_{km,l} \gamma_{ij,n}
+$<br>
 <br>
 
 ...for $a_{i,j} = (\alpha_{,i} / \alpha)_{,j} = \alpha_{,ij} / \alpha - \alpha_{,i} \alpha_{,j} / \alpha^2$<br>
