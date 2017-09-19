@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<script type="text/javascript" src="/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+		<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+		<title>Page 5</title>
+	</head>
+	<body>
+
+<div class='entry'>
+<a href='index.lua'>Back</a><br>
+<br>
+
+Indexes:<br>
+$\alpha-\omega$ = 4-curved<br>
+$a-h,o-z$ = 3-curved<br>
+$A-Z$ = 4-flat<br>
+$i-n$ = 3-flat<br>
+<br>
+
+<hr>
+${e_\mu}^I$ pertains to the vierbein - i.e. the 4D tensor that transforms the Minkowski metric to the metric tensor.<br>
+<br>
+
+Notice that when using separate sets of letters for separate coordinate systems there is ambiguity when represeting specific indexes.
+If vector $ v^\mu $ is represented in coordinate space and $ v^I = v^\mu {e_\mu}^I $ represents the Minkowski space,
+then there is no way to discern whether $ v^0 $ represents the 0'th index of $ v^\mu $ or $ v^I $ (i.e. $v^t$ for the $t$'th index).
+I believe this is why MTW uses hats over indexes (and index values) to denote Minkowski vs coordinates.<br>
+When it comes to specific coordinate variables I will use $(t,x,y,z)$ for coordinate space and $(\hat{t}, \hat{x}, \hat{y}, \hat{z})$ for Minkowski space.<br>
+I am very very tempted to use $\hat{\alpha}$ for arbitrary and for summed indexes in Minkowski space, as MTW does, but I will resist.<br>
+I'm also tempated to use ${\hat{\Gamma}^I}_{J\mu}$ or ${{\hat{\Gamma}_\mu}^I}_J$ in place of ${{\omega_\mu}^I}_J$ to denote the connection of the Minkowski metric.<br>
+<br>
+I'm only resisting because it's much easier to write and type.<br>
+<br>
+
+<hr>
+
+Notice that $ g_{\mu\nu} $ and $ g^{\mu\nu} $ are used to raise and lower curved spacetime coordinates.<br>
+Likewise $ \eta_{IJ} $ and $ \eta^{IJ} $ are used to raise and lower flat spacetime coordinates.<br>
+The vierbein $ {e_\mu}^I $ and inverse $ {e^\mu}_I $ are used to transform to and fro the curved coordinate metric and the Minkowski metric,
+and such transformations are expressed by changing the letter associated with the transform.<br>
+Notice that, if correct index applications are given, $ {e_\mu}^I $ is found to <b>not</b> equal $ {e^I}_\mu $ (but instead its transpose: <a href='http://physics.stackexchange.com/questions/142836/correct-tetrad-index-notation'>http://physics.stackexchange.com/questions/142836/correct-tetrad-index-notation</a>)<br>
+The convention I use for the vierbein tensors that transform between curved and Minkowski coordinates is to specify the curved coordinate first then the Minkowski second.  Any other convention works, but you do need to distinguish your first and second indexes.<br>
+<br>
+Also notice that, using our rule that indexes represent tetrad transformations, we find that:<br>
+$ \eta^{\mu\nu} = {e^\mu}_I \eta^{IJ} {e^\nu}_J = g^{\mu\nu} $<br> 
+$ \eta_{\mu\nu} = {e_\mu}^I \eta_{IJ} {e_\nu}^J = g_{\mu\nu} $<br>
+$ e_{\mu\nu} = {e_\mu}^I e_{\nu I} = {e_\mu}^I \eta_{IJ} {e_\nu}^J = g_{\mu\nu} $<br>
+<br>
+So as long as you follow these rules...<br>
+(1) raising and lowering of curved spacetime coordinates is done by the metric tensor: $g^{\mu\nu}$ and $g_{\mu\nu}$, respectively.<br> 
+(2) raising and lowering of Minkowski spacetime coordinates is done by the Minkowski metric tensor: $\eta^{IJ}$ and $\eta_{IJ}$, respectively.<br>
+(3) transforming from contravariant or covariant curved to Minkowski coordinates is done using $ {e_\mu}^I $ or $ {e^\mu}_I$, respectively.<br>
+...then all three tensors: $ g $, $\eta$, and $e$ could all be represented by a single symbol, with only their indexes necessary to determine which tensor is which.<br>
+<br>
+This concept runs into trouble when you introduce specific metrics/tensors that are raised and lowered with different metrics (such as how raised spatial indexes are considered to be raised by the spatial metric inverse $\gamma^{ab}$)<br>
+Since $\gamma^{\mu\nu}$ has zeroes in its timelike components, this means whether spatial indexes are raised by $\gamma^{ab}$ or $\gamma^{\mu\nu}$ the result will be the same.<br>
+In light of that, maybe I should add a third set of indexes to represent spatial metric indexes (separate of spatial contra- or co-variant curved coordinate indexes).<br>
+<br>
+
+
+<hr>
+
+$g_{\mu\nu}=$ metric tensor, matrix $G$<br>
+$g^{\mu\nu}=$ metric tensor inverse, matrix $G^{-1}$<br>
+<br>
+
+$\eta_{IJ}=$ Minkowski flat-space metric $=diag(-1,1,1,1)$, matrix $H$<br>
+$\eta^{IJ}=$ Minkowski metric inverse, matrix $H^{-1}$<br>
+<br>
+
+${e_\mu}^I=$ tetrad relating coordinate metric and Minkowski metric.  matrix $E$<br>
+${e^\mu}_I=$ tetrad inverse.  matrix $E^{-1}$<br>
+<br>
+
+tetrad definition wrt coordinate charts:<br>
+$ {e_\mu}^I = {\partial\over{\partial x^\mu}}\hat{x}^I $<br>
+<br>
+
+tetrad determinant:<br>
+$ e = det||{e_\mu}^I|| = \sqrt{-g} $<br>
+<br>
+
+tetrad determinant in ADM metric:<br>
+$ e = \sqrt{-g} = \alpha \sqrt\gamma$<br>
+<br>
+
+product of tetrad and tetrad inverse:<br>
+$ {e_\mu}^I {e^\nu}_I = \delta^\nu_\mu $<br>
+$ {e^\mu}_I {e_\nu}^J = \delta^J_I $<br>
+<br>
+
+$g_{\mu\nu}={e_\mu}^I {e_\nu}^J \eta_{IJ}$ in matrix form $G=E H E^T$<br>
+$g^{\mu\nu}={e^\mu}_I {e^\nu}_J \eta^{IJ}$ in matrix form $G^{-1}=E^{-T}H^{-1}E^{-1}$<br>
+$\eta_{IJ} = {e^\mu}_I {e^\nu}_J g_{\mu\nu}$ in matrix form $H=E^{-1}GE^{-T}$<br>
+$\eta^{IJ} = {e_\mu}^I {e_\nu}^J g^{\mu\nu}$ in matrix form $H^{-1} = E^T G^{-1} E$<br>
+<br>
+<br>
+
+3-metric: $\gamma_{uv}$ matrix $(^3G)$<br>
+symmetric: $\gamma_{uv}=\gamma_{vu}$ matrix $(^3G)=(^3G)^T$<br>
+inverse: $\gamma^{uv}$ matrix $(^3G)^{-1}$<br>
+such that: $\gamma^{ac} \gamma_{cb} = \delta^a_b$ matrix $(^3G)^{-1} (^3G) = I$<br>
+<br>
+
+ADM metric:<br>
+$||g_{\mu\nu}|| = \overset{\mu(u)\downarrow \nu(v)\rightarrow}{\left[ \matrix{-\alpha^2 + \beta^a \beta_a& \beta_v \\ \beta_u & \gamma_{uv}} \right]}$<br>
+matrix form: $\left[\matrix{-\alpha^2 + \beta^T (^3G) \beta & \beta^T (^3G) \\ (^3G) \beta & (^3G)}\right]$<br>
+$||g^{\mu\nu}|| = \overset{\mu(u)\downarrow \nu(v)\rightarrow}{\left[ \matrix{-1/\alpha^2 & \beta^v / \alpha^2 \\ \beta^u / \alpha^2 & \gamma^{uv} - \beta^u \beta^v / \alpha^2} \right]}$<br>
+where $ \beta_v = \gamma_{uv} \beta^v = \gamma_{\mu v} \beta^v = g_{\mu v} \beta^v $ courtesy of the fact that the 3-metric components of $ g_{uv} = \gamma_{uv} $, and the 4D compoennt of $ \beta^t = 0 $.<br>
+<br>
+Let $n_\alpha = (-\alpha,0,0,0)$ be the normal.<br>
+<br>
+Let ${(^3e)_a}^i$ be the triad defined as the square-root of the 3-metric: ${(^3e)_a}^i {(^3e)_b}^j \eta_{ij} = \gamma_{ab}$<br>
+equivalently in matrix form: $(^3E)(^3E)^T=(^3G)$<br>
+<br>
+Let $||{e_\mu}^I|| = \overset{\mu(u)\downarrow I(i)\rightarrow}{\left[\matrix{\alpha & \beta^i \\ 0 & {(^3 e)_u}^i}\right]}$ matrix $E=\left[\matrix{\alpha & \beta^T (^3E) \\ 0 & (^3E) }\right]$<br>
+<br>
+For $\beta^i = {(^3e)_a}^i \beta^a $ the shift vector transformed by the triad.<br>
+Then ${e_\alpha}^\hat{t}=-n_\alpha=(\alpha,0,0,0)$ for $\hat{t}$ the Minkowski time coordinate.<br>
+Then $g_{\mu\nu} = {e_\mu}^I \eta_{IJ} {e_\nu}^J$ is computed in matrix form like so:<br>
+So $EHE^T=\left[\matrix{\alpha & \beta^T(^3E) \\ 0 & (^3E)}\right] \left[\matrix{-1 & 0 \\ 0 & I}\right] \left[\matrix{\alpha & 0 \\ (^3E)^T \beta & (^3E)^T}\right]$<br>
+$=\left[\matrix{\alpha & \beta^T(^3E) \\ 0 & (^3E)}\right] \left[\matrix{-\alpha & 0 \\ (^3E)^T \beta & (^3E)^T}\right]$<br>
+$=\left[\matrix{-\alpha^2 + \beta^T (^3E) (^3E)^T \beta & \beta^T (^3E) (^3E)^T \\ (^3E)(^3E)^T \beta & (^3E)(^3E)^T }\right]$<br>
+$=\left[\matrix{-\alpha^2 + \beta^T (^3G) \beta & \beta^T (^3G) \\ (^3G) \beta & (^3G) }\right]$<br>
+$=G$<br>
+<br>
+Let $||{e^\mu}_I|| = \overset{\mu(u)\downarrow I(i)\rightarrow}{\left[\matrix{1/\alpha & 0 \\ -\beta^u/\alpha & {(^3e)^u}_i}\right]}$ matrix $E^{-T}=\left[\matrix{1/\alpha & 0 \\ -\beta/\alpha & (^3E)^{-T}}\right]$<br>
+So $EE^{-1} = \left[\matrix{\alpha & \beta^T (^3E) \\ 0 & (^3E) }\right] \left[\matrix{1/\alpha & -\beta^T/\alpha \\ 0 & (^3E)^{-1}}\right]$<br>
+$= \left[\matrix{1 & -\beta + \beta^T (^3E) (^3E)^{-1} \\ 0 & (^3E) (^3E)^{-1}}\right]$<br>
+$= \left[\matrix{1 & 0 \\ 0 & I}\right]$<br>
+<br>
+Therefore the spatial subset of curved coordinates of the 4D tetrad ${e_\mu}^I$ and ${e^\mu}_I$ are equal to the 3D triad ${e_u}^i$ and ${e^u}_i$.<br>
+Therefore tensors can be raised/lowered by 3D spatial indexes as well as 4D spacetime indexes without distinction... except that the shift cannot be neglected ...<br>
+i.e. representing a 3-space coordinate in terms of a 4-space coordinate:<br>
+For $ v^I $ 4D flat-space<br>
+$ v^\mu = v^I {e^\mu}_I $<br>
+Calculating the individual $t$ component in tetrad representation introduces influence from the (Minkowski representation of the) shift vector, as well as the spatial triad:<br>
+$ v^t = v^I {e^t}_I = v^\hat{t} {e^t}_\hat{t} + v^i {e^t}_i = \alpha v^\hat{t} + \beta^i {e^t}_i $<br>
+Calculating the spatial $a$ components in tetrad representation only makes use of the spatial triad:<br>
+$ v^a = v^I {e^a}_I = v^\hat{t} {e^a}_\hat{t} + v^i {e^a}_i = 0 \cdot v^\hat{t} + {({^3}e)^a}_i v^i = {({^3}e)^a}_i v^i $<br>
+<br>
+...so if you have a 4D flat coordinate object and you want to represent the time component terms of 3D curved coordinates, don't forget to add the influence of the (3D flat coordinate representation of the) shift vector!<br>
+...but if you have a 4D flat coordinate object and you want to represent the spatial components in terms of 3D curved coordinates, you can just use the 3D triad transformation.<br>
+
+<br>
+<a href='index.lua'>Back</a><br>
+</div>
+	
+	</body>
+</html>
