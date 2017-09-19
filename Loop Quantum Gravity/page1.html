@@ -41,7 +41,7 @@ covariant representation $ \textbf{w} = w_\alpha \boldsymbol{\omega}^\alpha $<br
 
 Kronecher delta:<br>
 $\delta^\alpha_\beta = 1$ for $\alpha = \beta$, otherwise 0.<br>
-$\delta^\alpha_\beta = \overset{\alpha\downarrow\beta\rightarrow}{\left[\matrix{1&0&..&0 \\ 0&1&..&0 \\ ..&..&..&.. \\ 0&0&..&1 }\right]}$<br>
+$\delta^\alpha_\beta = \overset{\alpha\downarrow\beta\rightarrow}{\left[\matrix{1&0&\dots&0 \\ 0&1&\dots&0 \\ \dots&\dots&\dots&\dots \\ 0&0&\dots&1 }\right]}$<br>
 <br>
 
 orthogonality of vector and one-form basis: $ \langle \boldsymbol{\omega}^\alpha, {\textbf e}_\beta \rangle = \delta^\alpha_\beta $<br>
@@ -62,18 +62,26 @@ $<br>
 <br>
 
 Tensor notation:<br>
-$v_{(\alpha_1 ... \alpha_n)} = {1\over n!} \cdot $ sum of even permutations of $\alpha_1 ... \alpha_n$ plus sum of odd permutations<br>
-$v_{[\alpha_1 ... \alpha_n]} = {1\over n!} \cdot $ sum of even permutations of $\alpha_1 ... \alpha_n$ minus sum of odd permutations<br>
-$v_{|\alpha_1 ... \alpha_n|} = $ sum of even minus sum of odd permutations, only summing indexes in increasing order<br>
-$v_{(\alpha_1 ... | \alpha_k | .. \alpha_n)}$, $v_{[\alpha_1 ... | \alpha_k | .. \alpha_n]} = $ a sum of permutations on variables $\alpha_1 ... \alpha_n$ excluding the variable $\alpha_k$<br>
+$v_{(\alpha_1 \dots \alpha_p)} = {1\over p!} \cdot $ sum of even permutations of $\alpha_1 \dots \alpha_p$ plus sum of odd permutations<br>
+$v_{[\alpha_1 \dots \alpha_p]} = {1\over p!} \cdot $ sum of even permutations of $\alpha_1 \dots \alpha_p$ minus sum of odd permutations<br>
+$v_{|\alpha_1 \dots \alpha_p|} = $ sum of even minus sum of odd permutations, only summing indexes in increasing order<br>
+$v_{(\alpha_1 \dots | \alpha_k \dots \alpha_m | \dots \alpha_p)}$, $v_{[\alpha_1 \dots | \alpha_k \dots \alpha_m | \dots \alpha_p]} = $ a sum of permutations on variables $\alpha_1 \dots \alpha_p$ excluding the variables $\alpha_k$ through $\alpha_m$<br>
 <br>
 
-antisymmetric tensors are tensors such that $T_{\alpha\beta} = -T_{\beta\alpha}$:<br>
+completely symmetric tensor:<br>
+$T_{\alpha_1 \dots \alpha_p} = T_{(\alpha_1 \dots \alpha_p)}$<br>
+<br>
+
+alternating / completely antisymmetric tensor:<br>
+$T_{\alpha_1 \dots \alpha_p} = T_{[\alpha_1 \dots \alpha_p]}$<br>
+<br>
+
+degree-2 antisymmetric tensors are tensors such that $T_{\alpha\beta} = -T_{\beta\alpha}$:<br>
 $T_{[\alpha\beta]} = {1\over2} (T_{\alpha\beta} - T_{\beta\alpha}) = {1\over2}(T_{\alpha\beta} + T_{\alpha\beta}) = T_{\alpha\beta}$<br>
 $T_{(\alpha\beta)} = {1\over2} (T_{\alpha\beta} + T_{\beta\alpha}) = {1\over2}(T_{\alpha\beta} - T_{\alpha\beta}) = 0$<br>
 <br>
 
-symmetric tensors are tensors such that $T_{\alpha\beta} = T_{\beta\alpha}$:<br>
+degree-2 symmetric tensors are tensors such that $T_{\alpha\beta} = T_{\beta\alpha}$:<br>
 $T_{[\alpha\beta]} = {1\over2} (T_{\alpha\beta} - T_{\beta\alpha}) = {1\over2}(T_{\alpha\beta} - T_{\alpha\beta}) = 0$<br>
 $T_{(\alpha\beta)} = {1\over2} (T_{\alpha\beta} + T_{\beta\alpha}) = {1\over2}(T_{\alpha\beta} + T_{\alpha\beta}) = T_{\alpha\beta}$<br>
 <br>
@@ -110,8 +118,8 @@ dot product of vectors: $ \textbf{a} \cdot \textbf{b} = a^\alpha \textbf{e}_\alp
 dot product symmetry: $ \textbf{a} \cdot \textbf{b} = \textbf{b} \cdot \textbf{a} $<br>
 outer product of vectors: $ \textbf{a} \otimes \textbf{b} = a^\alpha \textbf{e}_\alpha \otimes b^\beta \textbf{e}_\beta = a^\alpha b^\beta \textbf{e}_\alpha \otimes \textbf{e}_\beta $<br>
 outer product of one-forms: $ \textbf{a} \otimes \textbf{b} = a_\alpha \boldsymbol{\omega}^\alpha \otimes b_\beta \boldsymbol{\omega}^\beta = a_\alpha b_\beta \boldsymbol{\omega}^\alpha \otimes \boldsymbol{\omega}^\beta $<br>
-wedge product of p-form basis: $ \boldsymbol{\omega}^{\alpha_1} \wedge ... \wedge \boldsymbol{\omega}^{\alpha_p} 
-	= p! \cdot \boldsymbol{\omega}^{[\alpha_1} \otimes ... \otimes \boldsymbol{\omega}^{\alpha_p]}$<br>
+wedge product of p-form basis: $ \boldsymbol{\omega}^{\alpha_1} \wedge \dots \wedge \boldsymbol{\omega}^{\alpha_p} 
+	= p! \cdot \boldsymbol{\omega}^{[\alpha_1} \otimes \dots \otimes \boldsymbol{\omega}^{\alpha_p]}$<br>
 wedge product of one-form basis: $ \boldsymbol{\omega}^\alpha \wedge \boldsymbol{\omega}^\beta = \boldsymbol{\omega}^\alpha \otimes \boldsymbol{\omega}^\beta - \boldsymbol{\omega}^\beta \otimes \boldsymbol{\omega}^\alpha $<br>
 wedge product of one-forms: $ \textbf{a} \wedge \textbf{b} 
 	= a_\alpha \boldsymbol{\omega}^\alpha \wedge b_\beta \boldsymbol{\omega}^\beta
@@ -124,14 +132,14 @@ $<br>
 wedge product basis antisymmetry: $ \textbf{dx}^\alpha \wedge \textbf{dx}^\beta = -\textbf{dx}^\beta \wedge \textbf{dx}^\alpha $<br>
 wedge product antisymmetry for p-form $\textbf{a}$ and q-form $\textbf{b}$:<br>
 $ \textbf{a} \wedge \textbf{b} $<br>
-$ = (a_{\alpha_1 ... \alpha_p} \textbf{dx}^{\alpha_1} \wedge ... \wedge \textbf{dx}^{\alpha_p}) \wedge (b_{\beta_1 ... \beta_q} \textbf{dx}^{\beta_1} \wedge ... \wedge \textbf{dx}^{\beta_q}) $<br>
-if any of $ \alpha_1 ... \alpha_p, \beta_q ... \beta_q $ are not unique then the result is zero (courtesy of $ \textbf{dx}^\alpha \wedge \textbf{dx}^\alpha = 0 $ ). Otherwise:<br>
-$ = a_{\alpha_1 ... \alpha_p} b_{\beta_1 ... \beta_q} (\textbf{dx}^{\alpha_1} \wedge ... \wedge \textbf{dx}^{\alpha_p}) \wedge (\textbf{dx}^{\beta_1} \wedge ... \wedge \textbf{dx}^{\beta_q}) $<br>
+$ = (a_{\alpha_1 \dots \alpha_p} \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p}) \wedge (b_{\beta_1 \dots \beta_q} \textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q}) $<br>
+if any of $ \alpha_1 \dots \alpha_p, \beta_q \dots \beta_q $ are not unique then the result is zero (courtesy of $ \textbf{dx}^\alpha \wedge \textbf{dx}^\alpha = 0 $ ). Otherwise:<br>
+$ = a_{\alpha_1 \dots \alpha_p} b_{\beta_1 \dots \beta_q} (\textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p}) \wedge (\textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q}) $<br>
 Rotate the first $ \textbf{dx}^{\beta_1} $ to the far left side using $ \textbf{dx}^\alpha \wedge \textbf{dx}^\beta = -\textbf{dx}^\beta \wedge \textbf{dx}^\alpha $.  Doing so requires $p$ applications of the rule.<br>
-$ = (-1)^p a_{\alpha_1 ... \alpha_p} b_{\beta_1 ... \beta_q} \textbf{dx}^{\beta_1} \wedge (\textbf{dx}^{\alpha_1} \wedge ... \wedge \textbf{dx}^{\alpha_p}) \wedge \textbf{dx}^{\beta_2} \wedge ... \wedge \textbf{dx}^{\beta_q} $<br>
+$ = (-1)^p a_{\alpha_1 \dots \alpha_p} b_{\beta_1 \dots \beta_q} \textbf{dx}^{\beta_1} \wedge (\textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p}) \wedge \textbf{dx}^{\beta_2} \wedge \dots \wedge \textbf{dx}^{\beta_q} $<br>
 Continue to do the same for the rest of the $\textbf{dx}^{\beta_k}$'s, do\alphang so a number of $q$ times:<br>
-$ = (-1)^{pq} a_{\alpha_1 ... \alpha_p} b_{\beta_1 ... \beta_q} (\textbf{dx}^{\beta_1} \wedge ... \wedge \textbf{dx}^{\beta_q}) \wedge (\textbf{dx}^{\alpha_1} \wedge ... \wedge \textbf{dx}^{\alpha_p}) $<br>
-$ = (-1)^{pq} (b_{\beta_1 ... \beta_q} \textbf{dx}^{\beta_1} \wedge ... \wedge \textbf{dx}^{\beta_q}) \wedge (a_{\alpha_1 ... \alpha_p} \textbf{dx}^{\alpha_1} \wedge ... \wedge \textbf{dx}^{\alpha_p}) $<br>
+$ = (-1)^{pq} a_{\alpha_1 \dots \alpha_p} b_{\beta_1 \dots \beta_q} (\textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q}) \wedge (\textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p}) $<br>
+$ = (-1)^{pq} (b_{\beta_1 \dots \beta_q} \textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q}) \wedge (a_{\alpha_1 \dots \alpha_p} \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p}) $<br>
 $ = (-1)^{pq} \textbf{b} \wedge \textbf{a} $<br>
 <br>
 
@@ -148,14 +156,14 @@ Therefore $e = \sqrt{|g|}$.<br>
 <br>
 
 Levi-Civita:<br>
-$\epsilon_{I_1 ... I_n} = 1$ for even permutations of $I_1 ... I_n$, -1 for odd permutations, and 0 otherwise.<br>
-$\epsilon^{I_1 ... I_n} = \eta^{I_1 J_1} ... \eta^{I_n J_n} \epsilon_{J_1 ... J_n} = \sigma \epsilon_{I_1 ... I_n}$ for $\sigma$ the signature of the metric.<br>
-$\epsilon_{x_1 ... x_n} = {e_{x_1}}^1 ... {e_{x_n}}^n \epsilon_{1 ... n}$, which is the definition of $det({e_\mu}^I)$.<br>
-Therefore $ \epsilon_{\mu_1 ... \mu_n} = \sqrt{|g|}$ for even permutations, $-\sqrt{|g|}$ for odd permutations, and 0 otherwise.<br>
+$\epsilon_{I_1 \dots I_n} = 1$ for even permutations of $I_1 \dots I_n$, -1 for odd permutations, and 0 otherwise.<br>
+$\epsilon^{I_1 \dots I_n} = \eta^{I_1 J_1} \dots \eta^{I_n J_n} \epsilon_{J_1 \dots J_n} = \sigma \epsilon_{I_1 \dots I_n}$ for $\sigma$ the signature of the metric.<br>
+$\epsilon_{x_1 \dots x_n} = {e_{x_1}}^1 \dots {e_{x_n}}^n \epsilon_{1 \dots n}$, which is the definition of $det({e_\mu}^I)$.<br>
+Therefore $ \epsilon_{\mu_1 \dots \mu_n} = \sqrt{|g|}$ for even permutations, $-\sqrt{|g|}$ for odd permutations, and 0 otherwise.<br>
 <br>
 
-$\epsilon^{\mu_1 ... \mu_n} = \sigma (g^{\mu_1 \nu_1}) \cdot ... \cdot (g^{\mu_n \nu_n}) \epsilon_{\nu_1 ... \nu_n}$<br>
-$= \frac{1}{\sqrt{|g|}} \epsilon_{\mu_1 ... \mu_n}$<br>
+$\epsilon^{\mu_1 \dots \mu_n} = \sigma (g^{\mu_1 \nu_1}) \cdot \dots \cdot (g^{\mu_n \nu_n}) \epsilon_{\nu_1 \dots \nu_n}$<br>
+$= \frac{1}{\sqrt{|g|}} \epsilon_{\mu_1 \dots \mu_n}$<br>
 <br>
 
 Levi-Civita for 4D Minkowski space:<br>
@@ -169,7 +177,7 @@ $\epsilon^{txyz} = -{1\over\sqrt{-g}}$<br>
 <br>
 
 Kronecher delta extension:<br>
-$\delta^{I_1 ... I_n}_{J_1 ... J_n} = n! \delta^{I_1}_{[J_1} \cdot ... \cdot \delta^{I_n}_{J_n]} = \sigma \epsilon^{I_1 ... I_n} \epsilon_{J_1 ... J_n}$<br>
+$\delta^{I_1 \dots I_n}_{J_1 \dots J_n} = n! \delta^{I_1}_{[J_1} \cdot \dots \cdot \delta^{I_n}_{J_n]} = \sigma \epsilon^{I_1 \dots I_n} \epsilon_{J_1 \dots J_n}$<br>
 specific instances for 4D Minkowski space:<br>
 $\delta^{IJKL}_{MNPQ} = -\epsilon^{IJKL} \epsilon_{MNPQ}$<br>
 $\delta^{IJK}_{MNP} = \delta^{IJKL}_{MNPL} = -\epsilon^{IJKL} \epsilon_{MNPL}$<br>
@@ -180,13 +188,42 @@ $4! = 3! \delta^I_I = 2! \delta^{IJ}_{IJ} = \delta^{IJK}_{IJK} = \delta^{IJKL}_{
 
 Dual tensors:<br>
 For $k$-degree tensors in $n$-dimension space<br>
-$\ast T_{\alpha_{k+1} ... \alpha_n} = {1\over k!} T^{\alpha_1 ... \alpha_k} \epsilon_{\alpha_1 ... \alpha_n}$<br>
+$\ast T_{\alpha_{k+1} \dots \alpha_n} = {1\over k!} T^{\alpha_1 \dots \alpha_k} \epsilon_{\alpha_1 \dots \alpha_n}$<br>
 specific instances for 4D Minkowski space:<br>
 $\ast T_{\alpha\beta\gamma\delta} = T \epsilon_{\alpha\beta\gamma\delta}$<br>
 $\ast T_{\beta\gamma\delta} = T^\alpha \epsilon_{\alpha\beta\gamma\delta}$<br>
 $\ast T_{\gamma\delta} = {1\over2} T^{\alpha\beta} \epsilon_{\alpha\beta\gamma\delta}$<br>
 $\ast T_\delta = {1\over3!}T^{\alpha\beta\gamma} \epsilon_{\alpha\beta\gamma\delta}$<br>
 $\ast T = {1\over4!} T^{\alpha\beta\gamma\delta} \epsilon_{\alpha\beta\gamma\delta}$<br>
+<br>
+
+wedge products and forms in terms of index notation<br>
+$\frac{1}{p!} A_{\alpha_1 \dots \alpha_p} \delta^{\alpha_1 \dots \alpha_p \beta_1 \dots \beta_p}_{\gamma_1 \dots \gamma_p \gamma_{p+1} \dots \gamma_{p+q}}$
+$= \underset{\alpha_1 &lt; \alpha_2 &lt; \dots &lt; \alpha_p}{\Sigma} A_{\alpha_1 \dots \alpha_p} \delta^{\alpha_1 \dots \alpha_p \beta_1 \dots \beta_p}_{\gamma_1 \dots \dots \gamma_{p+q}}$
+$=A_{|\alpha_1 \dots \alpha_p|} \delta^{\alpha_1 \dots \alpha_p \beta_1 \dots \beta_p}_{\gamma_1 \dots\dots \gamma_{p+q}}$
+<br>
+$\delta^{\alpha_1 \dots \alpha_p \beta_1 \dots \beta_q}_{\gamma_1 \dots \dots \gamma_{p+q}} \delta^{\mu_1 \dots \mu_q}_{|\beta_1 \dots \beta_q|}
+= \delta^{\alpha_1 \dots \alpha_p \mu_1 \dots \mu_q}_{\gamma_1 \dots \dots \gamma_{p+q}}$
+<br>
+$(\boldsymbol{\alpha} \wedge \boldsymbol{\beta})_{\lambda_1 \dots \lambda_{p+q}} 
+= \delta^{\mu_1 \dots \mu_p \nu_1 \dots \nu_q}_{\lambda_1 \dots \lambda_p \lambda_{p+1} \dots \lambda_{p+q}} 
+	\alpha_{|\mu_1 \dots \mu_p|} \beta_{|\nu_1 \dots \nu_q|}$
+<br>
+$(\textbf{U} \wedge \textbf{V})^{\lambda_1 \dots \lambda_{p+q}} 
+= \delta^{\lambda_1 \dots \lambda_p \lambda_{p+1} \dots \lambda_{p+q}}_{\mu_1 \dots \mu_p \nu_1 \dots \nu_q}
+	U^{|\mu_1 \dots \mu_p|} V^{|\nu_1 \dots \nu_q|}$
+<br>
+$[( \boldsymbol{\alpha} \wedge \boldsymbol{\beta} ) \wedge \boldsymbol{\gamma} ]_{\alpha_1 \dots \alpha_{p+q+r}}$
+$= \delta^{\lambda_1 \dots \lambda_p \mu_1 \dots \mu_q \nu_1 \dots \nu_r}_{\sigma_1 \dots \dots \dots \sigma_{p+q+r}}
+	\alpha_{|\lambda_1 \dots \lambda_p|}
+	\beta_{|\mu_1 \dots \mu_q|}
+	\gamma_{|\nu_1 \dots \nu_r|}$
+$= [\boldsymbol{\alpha} \wedge (\boldsymbol{\beta} \wedge \boldsymbol{\gamma})]_{\sigma_1 \dots \sigma_{p+q+r}}$
+<br>
+$(\textbf{u}_1 \wedge \dots \wedge \textbf{u}_p)^{\alpha_1 \dots \alpha_p}$
+$= \delta^{\alpha_1 \dots \alpha_p}_{\mu_1 \dots \mu_p} (u_1)^{\mu_1} \dots (u_p)^{\mu_p}$
+$= p! {u_1}^{[\alpha_1} \dots {u_p}^{\alpha_p]}$
+$= \delta^{\alpha_1 \dots \alpha_p}_{1 \dots p} det({u_\mu}^\lambda)$<br>
 <br>
 
 covariant derivative: $ \boldsymbol{\nabla} $<br>
@@ -310,7 +347,7 @@ $ \boldsymbol{\nabla} \textbf{w}
 $<br>
 covariant derivative of one-form in index notation: $ \nabla_\alpha w_\beta = \partial_\alpha w_\beta - {\Gamma^\gamma}_{\beta\alpha} w_\gamma $<br>
 <br>
-This is where we see that in index notation $ \nabla_\gamma $ treats $ v^\alpha $ as a vector due to its raised index, while in object notation $ \nabla_\gamma $ treats $ v^\alpha $ as a scalars of the $ \textbf{e}_\alpha $ vector.<br>
+This is where we see that in index notation $ \nabla_\gamma $ treats $ v^\alpha $ as a vector due to its raised index, while in coordinate-free notation $\nabla_\gamma $ treats $ v^\alpha $ as a scalars of the $ \textbf{e}_\alpha $ vector.<br>
 <br>
 covariant derivative of metric in index notation: 
 $ \nabla_\gamma g_{\alpha\beta}
@@ -331,7 +368,7 @@ $ \nabla_{\textbf{u}} \textbf{v}
 $<br>
 <br>
 
-Riemann curvature in terms of covariant derivative, in object notation:<br>
+Riemann curvature in terms of covariant derivative, in coordinate-free notation:<br>
 ${R^\alpha}_{\beta\gamma\delta} = \langle \boldsymbol{\omega}^\alpha, (\left [ \nabla_\gamma, \nabla_\delta \right ] - \nabla_{[\gamma,\delta]}) \textbf{e}_\beta \rangle $<br>
 $=\langle \boldsymbol{\omega}^\alpha, 2 \nabla_{[\gamma} \nabla_{\delta]} \textbf{e}_\beta - \nabla_{[\gamma,\delta]} \textbf{e}_\beta \rangle $<br>
 $=\langle \boldsymbol{\omega}^\alpha, 2 \nabla_{[\gamma} ({\Gamma^\mu}_{\beta|\delta]} \textbf{e}_\mu) - \nabla_{[\gamma,\delta]} \textbf{e}_\beta \rangle $<br>
@@ -367,6 +404,9 @@ Ricci curvature: $ R_{\alpha\beta} = {R^\gamma}_{\alpha\gamma\beta} $<br>
 Gaussian curvature: $ R = {R^\alpha}_\alpha $<br>
 <br>
 exterior derivative: $ \textbf{d} $<br>
+exterior derivative on p-form: $\textbf{da} = \partial_{i_{p+1}} (a_{i_1 \dots i_p} dx^i \wedge \dots \wedge dx^{i_p}) \wedge dx^{i_{p+1}}$<br>
+<br>
+
 exchangeability of exterior and covariant derivative for 2-forms: $ \textbf{dF} = \boldsymbol{\nabla} \cdot\ast\textbf{F}$, $\textbf{d}$ $\ast\textbf{F} = \boldsymbol{\nabla} \cdot \textbf{F} $<br>
 exterior derivative of scalar: 
 $ \textbf{d}\phi 
@@ -381,22 +421,22 @@ $ \textbf{dw}
 	= \partial_\alpha w_\beta \textbf{dx}^\alpha \wedge \textbf{dx}^\beta
 	= (\partial_\alpha w_\beta - \partial_\beta w_\alpha) \textbf{dx}^{|\alpha} \wedge \textbf{dx}^{\beta|}
 $<br>
-exterior derivative of p-form: $ \textbf{da} = \textbf{d}( a_{\alpha_1...\alpha_p} \textbf{dx}^{\alpha_1} \wedge ... \wedge \textbf{dx}^{\alpha_p} ) = \sum_{\beta \notin \alpha_i} {{\partial a_{\alpha_1...\alpha_p}}\over{\partial x^\beta}} \textbf{dx}^\beta \wedge \textbf{dx}^{\alpha_1} \wedge ... \wedge \textbf{dx}^{\alpha_p} $<br>
+exterior derivative of p-form: $ \textbf{da} = \textbf{d}( a_{\alpha_1\dots\alpha_p} \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p} ) = \sum_{\beta \notin \alpha_i} {{\partial a_{\alpha_1\dots\alpha_p}}\over{\partial x^\beta}} \textbf{dx}^\beta \wedge \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p} $<br>
 <br>
 <!-- TODO when to use omegas and when to use dx's, and a better explination of why which is chosen? -->
 exterior derivative of wedge product of p-form $\textbf{a}$ and q-form $\textbf{b}$:<br>
 $ \textbf{d} ( \textbf{a} \wedge \textbf{b} ) $<br>
-$ = \textbf{d} ( a_{\alpha_1...\alpha_p} \textbf{dx}^{\alpha_1} \wedge ... \wedge \textbf{dx}^{\alpha_p} \wedge b_{\beta_1 ... \beta_q} \textbf{dx}^{\beta_1} \wedge ... \wedge \textbf{dx}^{\beta_q})$<br>
-$ = \textbf{d} ( a_{\alpha_1...\alpha_p} b_{\beta_1 ... \beta_q} \textbf{dx}^{\alpha_1} \wedge ... \wedge \textbf{dx}^{\alpha_p} \wedge \textbf{dx}^{\beta_1} \wedge ... \wedge \textbf{dx}^{\beta_q})$<br>
+$ = \textbf{d} ( a_{\alpha_1\dots\alpha_p} \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p} \wedge b_{\beta_1 \dots \beta_q} \textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q})$<br>
+$ = \textbf{d} ( a_{\alpha_1\dots\alpha_p} b_{\beta_1 \dots \beta_q} \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p} \wedge \textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q})$<br>
 using $ \textbf{d}^2\textbf{x}^i = 0 $<br>
-$ = \textbf{d} ( a_{\alpha_1...\alpha_p} b_{\beta_1 ... \beta_q}) \textbf{dx}^{\alpha_1} \wedge ... \wedge \textbf{dx}^{\alpha_p} \wedge \textbf{dx}^{\beta_1} \wedge ... \wedge \textbf{dx}^{\beta_q}$<br>
-$ = {\partial\over{\partial x^\gamma}} ( a_{\alpha_1...\alpha_p} b_{\beta_1 ... \beta_q}) \textbf{dx}^\gamma \wedge \textbf{dx}^{\alpha_1} \wedge ... \wedge \textbf{dx}^{\alpha_p} \wedge \textbf{dx}^{\beta_1} \wedge ... \wedge \textbf{dx}^{\beta_q}$<br>
-$ = ( {\partial\over{\partial x^\gamma}} a_{\alpha_1...\alpha_p} b_{\beta_1 ... \beta_q} + a_{\alpha_1...\alpha_p} {\partial\over{\partial x^\gamma}} b_{\beta_1 ... \beta_q}) \textbf{dx}^\gamma \wedge \textbf{dx}^{\alpha_1} \wedge ... \wedge \textbf{dx}^{\alpha_p} \wedge \textbf{dx}^{\beta_1} \wedge ... \wedge \textbf{dx}^{\beta_q}$<br>
-$ = {\partial\over{\partial x^\gamma}} a_{\alpha_1...\alpha_p} b_{\beta_1 ... \beta_q} \textbf{dx}^\gamma \wedge \textbf{dx}^{\alpha_1} \wedge ... \wedge \textbf{dx}^{\alpha_p} \wedge \textbf{dx}^{\beta_1} \wedge ... \wedge \textbf{dx}^{\beta_q}
-	+ a_{\alpha_1...\alpha_p} {\partial\over{\partial x^\gamma}} b_{\beta_1 ... \beta_q} \textbf{dx}^\gamma \wedge \textbf{dx}^{\alpha_1} \wedge ... \wedge \textbf{dx}^{\alpha_p} \wedge \textbf{dx}^{\beta_1} \wedge ... \wedge \textbf{dx}^{\beta_q}$<br>
+$ = \textbf{d} ( a_{\alpha_1\dots\alpha_p} b_{\beta_1 \dots \beta_q}) \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p} \wedge \textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q}$<br>
+$ = {\partial\over{\partial x^\gamma}} ( a_{\alpha_1\dots\alpha_p} b_{\beta_1 \dots \beta_q}) \textbf{dx}^\gamma \wedge \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p} \wedge \textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q}$<br>
+$ = ( {\partial\over{\partial x^\gamma}} a_{\alpha_1\dots\alpha_p} b_{\beta_1 \dots \beta_q} + a_{\alpha_1\dots\alpha_p} {\partial\over{\partial x^\gamma}} b_{\beta_1 \dots \beta_q}) \textbf{dx}^\gamma \wedge \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p} \wedge \textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q}$<br>
+$ = {\partial\over{\partial x^\gamma}} a_{\alpha_1\dots\alpha_p} b_{\beta_1 \dots \beta_q} \textbf{dx}^\gamma \wedge \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p} \wedge \textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q}
+	+ a_{\alpha_1\dots\alpha_p} {\partial\over{\partial x^\gamma}} b_{\beta_1 \dots \beta_q} \textbf{dx}^\gamma \wedge \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p} \wedge \textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q}$<br>
 rotate the 2nd term's $\textbf{dx}^\gamma$ through the $\textbf{dx}^{\alpha_i}$'s to right before the $\textbf{dx}^{\beta_j}$'s begin, requiring a total of $p$ rotations, incurring a scalar of $(-1)^p$:<br> 
-$ = {\partial\over{\partial x^\gamma}} a_{\alpha_1...\alpha_p} \textbf{dx}^\gamma \wedge \textbf{dx}^{\alpha_1} \wedge ... b_{\beta_1 ... \beta_q} \wedge \textbf{dx}^{\alpha_p} \wedge \textbf{dx}^{\beta_1} \wedge ... \wedge \textbf{dx}^{\beta_q}
-	+ (-1)^p a_{\alpha_1...\alpha_p} \textbf{dx}^{\alpha_1} \wedge ... \wedge \textbf{dx}^{\alpha_p} \wedge {\partial\over{\partial x^\gamma}} b_{\beta_1 ... \beta_q} \textbf{dx}^\gamma \wedge \textbf{dx}^{\beta_1} \wedge ... \wedge \textbf{dx}^{\beta_q}$<br>
+$ = {\partial\over{\partial x^\gamma}} a_{\alpha_1\dots\alpha_p} \textbf{dx}^\gamma \wedge \textbf{dx}^{\alpha_1} \wedge \dots b_{\beta_1 \dots \beta_q} \wedge \textbf{dx}^{\alpha_p} \wedge \textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q}
+	+ (-1)^p a_{\alpha_1\dots\alpha_p} \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p} \wedge {\partial\over{\partial x^\gamma}} b_{\beta_1 \dots \beta_q} \textbf{dx}^\gamma \wedge \textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q}$<br>
 $ = \textbf{da} \wedge \textbf{b} + (-1)^p \textbf{a} \wedge \textbf{db} $<br> 
 <br>
 exterior derivative of vector as a linear relation to vector basis: $ \textbf{de}_\alpha = \textbf{e}_\gamma \otimes {\boldsymbol{\omega}^\gamma}_\alpha $<br>
