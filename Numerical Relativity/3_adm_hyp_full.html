@@ -271,6 +271,65 @@ let ${\Lambda^k}_{ij} = {d^k}_{ij} + \delta^k_{(i} ( a_{j)} + {d_{j)m}}^m - 2 {d
 Then ${\Lambda^k}_{ij,k} = {d^k}_{ij,k} + \delta^k_{(i} ( a_{j)} + {d_{j)m}}^m - 2 {d^m}_{mj)})_{,k}$<br>
 <br>
 
+Now for $V_{k,t}$<br>
+$V_{k,\mu} = ({d_{km}}^m - {d^m}_{mk})_{,\mu}$<br>
+$= ((d_{kij} - d_{ijk}) \gamma^{ij})_{,\mu}$<br>
+$= (d_{kij,\mu} - d_{ijk,\mu}) \gamma^{ij} + (d_{kmn} - d_{mnk}) {\gamma^{mn}}_{,\mu}$<br>
+$= (d_{kij,\mu} - d_{ijk,\mu}) \gamma^{ij} - (d_{kmn} - d_{mnk}) \gamma^{mi} \gamma_{ij,\mu} \gamma^{jn}$<br>
+<br>
+
+$V_{k,t} = (d_{kmn,t} - d_{mnk,t}) \gamma^{mn} - (d_{kmn} - d_{mnk}) \gamma^{mi} \gamma_{ij,t} \gamma^{jn}$<br>
+substitute $\gamma_{ij,t} = \gamma_{ij,k} \beta^k + \gamma_{kj} {\beta^k}_{,i} + \gamma_{ik} {\beta^k}_{,j} - 2 \alpha K_{ij}$<br>
+and $d_{kij,t} = $<br>
+$= (
+		(
+			d_{kij,l} \beta^l - \alpha K_{ij,k} + d_{lij} {\beta^l}_{,k} + 2 d_{kl(i} {\beta^l}_{,j)} + \gamma_{l(i} {\beta^l}_{,j)k} - \alpha a_k K_{ij}
+		)
+		-
+		(
+			d_{ijk,l} \beta^l - \alpha K_{jk,i} + d_{ljk} {\beta^l}_{,i} + 2 d_{il(j} {\beta^l}_{,k)} + \gamma_{l(j} {\beta^l}_{,k)i} - \alpha a_i K_{jk}
+		)
+	) \gamma^{ij} 
+	- (d_{kmn} - d_{mnk}) \gamma^{mi} \gamma^{jn} (
+		\gamma_{ij,l} \beta^l + \gamma_{lj} {\beta^l}_{,i} + \gamma_{il} {\beta^l}_{,j} - 2 \alpha K_{ij}
+	)$<br>
+$= 
+	+ d_{kij,l} \beta^l \gamma^{ij} 
+	- \alpha K_{ij,k} \gamma^{ij} 
+	+ d_{lij} {\beta^l}_{,k} \gamma^{ij} 
+	+ 2 d_{kl(i} {\beta^l}_{,j)} \gamma^{ij} 
+	+ \gamma_{l(i} {\beta^l}_{,j)k} \gamma^{ij} 
+	- \alpha a_k K_{ij} \gamma^{ij} 
+	- d_{ijk,l} \beta^l \gamma^{ij} 
+	+ \alpha K_{jk,i} \gamma^{ij} 
+	- d_{ljk} {\beta^l}_{,i} \gamma^{ij} 
+	- 2 d_{il(j} {\beta^l}_{,k)} \gamma^{ij} 
+	- \gamma_{l(j} {\beta^l}_{,k)i} \gamma^{ij} 
+	+ \alpha a_i K_{jk} \gamma^{ij} 
+	+ \gamma_{ij,l} \beta^l d_{mnk} \gamma^{mi} \gamma^{jn} 
+	+ \gamma_{lj} {\beta^l}_{,i} d_{mnk} \gamma^{mi} \gamma^{jn} 
+	+ \gamma_{il} {\beta^l}_{,j} d_{mnk} \gamma^{mi} \gamma^{jn} 
+	- 2 \alpha K_{ij}d_{mnk} \gamma^{mi} \gamma^{jn} 
+	- \gamma_{ij,l} \beta^l d_{kmn} \gamma^{mi} \gamma^{jn} 
+	- \gamma_{lj} {\beta^l}_{,i} d_{kmn} \gamma^{mi} \gamma^{jn} 
+	- \gamma_{il} {\beta^l}_{,j} d_{kmn} \gamma^{mi} \gamma^{jn} 
+	+ 2 \alpha K_{ij}d_{kmn} \gamma^{mi} \gamma^{jn} 
+$<br>
+$= 
+	+ 2 \alpha K_{i[k,j]} \gamma^{ij} 
+	
+	- \alpha a_k K
+	+ \alpha a^j K_{kj}
+	
+	+ 2 \alpha K^{ij} (d_{kij} - d_{ijk})
+	
+	+ \gamma^{ij} \gamma_{l[j} {\beta^l}_{,k]i}
+	
+	+ V_{k,l} \beta^l
+	+ V_l {\beta^l}_{,k} 
+$<br>
+<br>
+
 Hyperbolic conservation form:<br>
 ${U^i}_{,t} +  {F^{ir}}_{,r} = S^i$ for the i'th conservation variable in the r'th direction.<br>
 ${U^i}_{,t} + \frac{\partial F^{ir}}{\partial U^m} {U^m}_{,r} = S^i$<br>
@@ -427,6 +486,8 @@ ${A^{ir}}_m = \left[\matrix{
 }\right]$<br>
 <br>
 
+see my numerical-relativity-codegen/show_flux_matrix.lua output for more on the flux matrix<br>
+<!-- TODO use the one in show_flux_matrix until it gets fixed, then update stuff here
 For x direction:<br>
 $a_{x,t} = \alpha f (\gamma^{xx} K_{xx,x} + 2 \gamma^{xy} K_{xy,x} + 2 \gamma^{xz} K_{xz,x} + \gamma^{yy} K_{yy,x} + 2 \gamma^{yz} K_{yz,x} + \gamma^{zz} K_{zz,x})$<br>
 $d_{xij,t} = \alpha K_{ij,x}$<br>
@@ -435,42 +496,43 @@ $K_{ij,t} = $<br>
 
 ${A^{ir}}_m = \left[\matrix{
 	
-	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \alpha f \gamma^{xx} & 2 \alpha f \gamma^{xy} & 2 \alpha f \gamma^{xz} & \alpha f \gamma^{yy} & 2 \alpha f \gamma^{yz} & \alpha f \gamma^{zz} \\
-	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
-	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+	0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &   \alpha f \gamma^{xx} & 2 \alpha f \gamma^{xy} & 2 \alpha f \gamma^{xz} & \alpha f \gamma^{yy} & 2 \alpha f \gamma^{yz} & \alpha f \gamma^{zz} \\
+	0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 \\
 
 
-	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \alpha & \cdot & \cdot & \cdot & \cdot & \cdot \\
-	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \alpha & \cdot & \cdot & \cdot & \cdot \\
-	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \alpha & \cdot & \cdot & \cdot \\
-	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \alpha & \cdot & \cdot \\
-	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \alpha & \cdot \\  
-	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \alpha \\  
+	0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &   \alpha & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &   0 & \alpha & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &   0 & 0 & \alpha & 0 & 0 & 0 \\
+	0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &   0 & 0 & 0 & \alpha & 0 & 0 \\
+	0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &   0 & 0 & 0 & 0 & \alpha & 0 \\  
+	0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & \alpha \\  
 
-	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
-	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
-	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
-	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
-	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
-	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+	0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 \\
 
-	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
-	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
-	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
-	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
-	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
-	\cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &  \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &   \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+	0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &  0 & 0 & 0 & 0 & 0 & 0 &   0 & 0 & 0 & 0 & 0 & 0 \\
 
 
-	\alpha & \cdot & \cdot &   				{\frac{-{\alpha \cdot {\gamma^{xx}}}}{2}} & {\frac{-{\alpha \cdot {\gamma^{xy}}}}{2}} & {\frac{-{\alpha \cdot {\gamma^{xz}}}}{2}} & {\frac{\alpha \cdot {\gamma^{yy}}}{2}} & {\frac{\alpha \cdot {\gamma^{yz}}}{2}} & {\frac{\alpha \cdot {\gamma^{zz}}}{2}} & {\alpha \cdot {\gamma^{xy}}} & \cdot & \cdot & \cdot & \cdot & \cdot & {\alpha \cdot {\gamma^{xz}}} & \cdot & \cdot & \cdot & \cdot & \cdot &	\cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
-	\cdot & \frac{1}{2} \alpha & \cdot &   	\cdot & \cdot & \cdot & {-{\alpha \cdot {\gamma^{xy}}}} & {\frac{-{\alpha \cdot {\gamma^{xz}}}}{2}} & \cdot & {-{\alpha \cdot {\gamma^{xx}}}} & \cdot & {\frac{-{\alpha \cdot {\gamma^{xz}}}}{2}} & \cdot & \cdot & \cdot & \cdot & {\frac{\alpha \cdot {\gamma^{xz}}}{2}} & \cdot & \cdot & \cdot & \cdot &																												\cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
-	\cdot & \cdot & \frac{1}{2} \alpha &   	\cdot & \cdot & \cdot & \cdot & {\frac{-{\alpha \cdot {\gamma^{xy}}}}{2}} & {-{\alpha \cdot {\gamma^{xz}}}} & \cdot & \cdot & {\frac{\alpha \cdot {\gamma^{xy}}}{2}} & \cdot & \cdot & \cdot & {-{\alpha \cdot {\gamma^{xx}}}} & {\frac{-{\alpha \cdot {\gamma^{xy}}}}{2}} & \cdot & \cdot & \cdot & \cdot &																												\cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
-	\cdot & \cdot & \cdot &   				\cdot & \cdot & \cdot & {\alpha \cdot {\gamma^{xx}}} & \cdot & \cdot & \cdot & {-{\alpha \cdot {\gamma^{xx}}}} & \cdot & {-{\alpha \cdot {\gamma^{xy}}}} & {-{\alpha \cdot {\gamma^{xz}}}} & \cdot & \cdot & \cdot & \cdot & {\alpha \cdot {\gamma^{xz}}} & \cdot & \cdot &																																					\cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
-	\cdot & \cdot & \cdot &   				\cdot & \cdot & \cdot & \cdot & {\frac{\alpha \cdot {\gamma^{xx}}}{2}} & \cdot & \cdot & \cdot & {\frac{-{\alpha \cdot {\gamma^{xx}}}}{2}} & \cdot & \cdot & {-{\alpha \cdot {\gamma^{xz}}}} & \cdot & {\frac{-{\alpha \cdot {\gamma^{xx}}}}{2}} & \cdot & {-{\alpha \cdot {\gamma^{xy}}}} & \cdot & \cdot &																												\cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
-	\cdot & \cdot & \cdot &   				\cdot & \cdot & \cdot & \cdot & \cdot & {\alpha \cdot {\gamma^{xx}}} & \cdot & \cdot & \cdot & \cdot & \cdot & {\alpha \cdot {\gamma^{xy}}} & \cdot & \cdot & {-{\alpha \cdot {\gamma^{xx}}}} & \cdot & {-{\alpha \cdot {\gamma^{xy}}}} & {-{\alpha \cdot {\gamma^{xz}}}} &																																					\cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+	\alpha & 0 & 0 &   				{\frac{-{\alpha \cdot {\gamma^{xx}}}}{2}} & {\frac{-{\alpha \cdot {\gamma^{xy}}}}{2}} & {\frac{-{\alpha \cdot {\gamma^{xz}}}}{2}} & {\frac{\alpha \cdot {\gamma^{yy}}}{2}} & {\frac{\alpha \cdot {\gamma^{yz}}}{2}} & {\frac{\alpha \cdot {\gamma^{zz}}}{2}} & {\alpha \cdot {\gamma^{xy}}} & 0 & 0 & 0 & 0 & 0 & {\alpha \cdot {\gamma^{xz}}} & 0 & 0 & 0 & 0 & 0 &	0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & \frac{1}{2} \alpha & 0 &   	0 & 0 & 0 & {-{\alpha \cdot {\gamma^{xy}}}} & {\frac{-{\alpha \cdot {\gamma^{xz}}}}{2}} & 0 & {-{\alpha \cdot {\gamma^{xx}}}} & 0 & {\frac{-{\alpha \cdot {\gamma^{xz}}}}{2}} & 0 & 0 & 0 & 0 & {\frac{\alpha \cdot {\gamma^{xz}}}{2}} & 0 & 0 & 0 & 0 &																												0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & \frac{1}{2} \alpha &   	0 & 0 & 0 & 0 & {\frac{-{\alpha \cdot {\gamma^{xy}}}}{2}} & {-{\alpha \cdot {\gamma^{xz}}}} & 0 & 0 & {\frac{\alpha \cdot {\gamma^{xy}}}{2}} & 0 & 0 & 0 & {-{\alpha \cdot {\gamma^{xx}}}} & {\frac{-{\alpha \cdot {\gamma^{xy}}}}{2}} & 0 & 0 & 0 & 0 &																												0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 &   				0 & 0 & 0 & {\alpha \cdot {\gamma^{xx}}} & 0 & 0 & 0 & {-{\alpha \cdot {\gamma^{xx}}}} & 0 & {-{\alpha \cdot {\gamma^{xy}}}} & {-{\alpha \cdot {\gamma^{xz}}}} & 0 & 0 & 0 & 0 & {\alpha \cdot {\gamma^{xz}}} & 0 & 0 &																																					0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 &   				0 & 0 & 0 & 0 & {\frac{\alpha \cdot {\gamma^{xx}}}{2}} & 0 & 0 & 0 & {\frac{-{\alpha \cdot {\gamma^{xx}}}}{2}} & 0 & 0 & {-{\alpha \cdot {\gamma^{xz}}}} & 0 & {\frac{-{\alpha \cdot {\gamma^{xx}}}}{2}} & 0 & {-{\alpha \cdot {\gamma^{xy}}}} & 0 & 0 &																												0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 &   				0 & 0 & 0 & 0 & 0 & {\alpha \cdot {\gamma^{xx}}} & 0 & 0 & 0 & 0 & 0 & {\alpha \cdot {\gamma^{xy}}} & 0 & 0 & {-{\alpha \cdot {\gamma^{xx}}}} & 0 & {-{\alpha \cdot {\gamma^{xy}}}} & {-{\alpha \cdot {\gamma^{xz}}}} &																																					0 & 0 & 0 & 0 & 0 & 0 \\
 
 }\right]$<br>
 (TODO fix the K x d block)<br>
+-->
 <br>
 
 Now for the eigen-decomposition in each direction.<br>
