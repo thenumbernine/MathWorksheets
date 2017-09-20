@@ -107,6 +107,7 @@ $= a_{k,i} \beta^i
 $<br>
 <br> 
 
+Now $d_{kij}$, which is the first derivative variable of $\gamma_{ij}$:<br>
 $d_{kij,t} = \frac{1}{2} \gamma_{ij,kt}$<br>
 $= \frac{1}{2} \gamma_{ij,tk}$<br>
 $= \frac{1}{2} (\gamma_{ij,l} \beta^l 
@@ -143,6 +144,81 @@ $\frac{d}{dt} d_{kij} =
 	- \alpha a_k K_{ij}$<br>
 <br>
 
+Now for the $V_k$ constraint, which is used in $K_{ij,t}$<br>
+$V_{k,\mu} = ({d_{km}}^m - {d^m}_{mk})_{,\mu}$<br>
+$= ((d_{kij} - d_{ijk}) \gamma^{ij})_{,\mu}$<br>
+$= (d_{kij,\mu} - d_{ijk,\mu}) \gamma^{ij} + (d_{kmn} - d_{mnk}) {\gamma^{mn}}_{,\mu}$<br>
+$= (d_{kij,\mu} - d_{ijk,\mu}) \gamma^{ij} - (d_{kmn} - d_{mnk}) \gamma^{mi} \gamma_{ij,\mu} \gamma^{jn}$<br>
+$= (d_{kij,\mu} - d_{ijk,\mu}) \gamma^{ij} - 2 (d_{kij} - d_{ijk}) {d_\mu}^{ij}$<br>
+<br>
+
+$V_{k,t} = (d_{kmn,t} - d_{mnk,t}) \gamma^{mn} - (d_{kmn} - d_{mnk}) \gamma^{mi} \gamma_{ij,t} \gamma^{jn}$<br>
+substitute $\gamma_{ij,t} = \gamma_{ij,k} \beta^k + \gamma_{kj} {\beta^k}_{,i} + \gamma_{ik} {\beta^k}_{,j} - 2 \alpha K_{ij}$<br>
+and $d_{kij,t} = $<br>
+$= (
+		(
+			d_{kij,l} \beta^l - \alpha K_{ij,k} + d_{lij} {\beta^l}_{,k} + 2 d_{kl(i} {\beta^l}_{,j)} + \gamma_{l(i} {\beta^l}_{,j)k} - \alpha a_k K_{ij}
+		)
+		-
+		(
+			d_{ijk,l} \beta^l - \alpha K_{jk,i} + d_{ljk} {\beta^l}_{,i} + 2 d_{il(j} {\beta^l}_{,k)} + \gamma_{l(j} {\beta^l}_{,k)i} - \alpha a_i K_{jk}
+		)
+	) \gamma^{ij} 
+	- (d_{kmn} - d_{mnk}) \gamma^{mi} \gamma^{jn} (
+		\gamma_{ij,l} \beta^l + \gamma_{lj} {\beta^l}_{,i} + \gamma_{il} {\beta^l}_{,j} - 2 \alpha K_{ij}
+	)$<br>
+$= 
+	+ d_{kij,l} \beta^l \gamma^{ij} 
+	- \alpha K_{ij,k} \gamma^{ij} 
+	+ d_{lij} {\beta^l}_{,k} \gamma^{ij} 
+	+ 2 d_{kl(i} {\beta^l}_{,j)} \gamma^{ij} 
+	+ \gamma_{l(i} {\beta^l}_{,j)k} \gamma^{ij} 
+	- \alpha a_k K_{ij} \gamma^{ij} 
+	- d_{ijk,l} \beta^l \gamma^{ij} 
+	+ \alpha K_{jk,i} \gamma^{ij} 
+	- d_{ljk} {\beta^l}_{,i} \gamma^{ij} 
+	- 2 d_{il(j} {\beta^l}_{,k)} \gamma^{ij} 
+	- \gamma_{l(j} {\beta^l}_{,k)i} \gamma^{ij} 
+	+ \alpha a_i K_{jk} \gamma^{ij} 
+	+ \gamma_{ij,l} \beta^l d_{mnk} \gamma^{mi} \gamma^{jn} 
+	+ \gamma_{lj} {\beta^l}_{,i} d_{mnk} \gamma^{mi} \gamma^{jn} 
+	+ \gamma_{il} {\beta^l}_{,j} d_{mnk} \gamma^{mi} \gamma^{jn} 
+	- 2 \alpha K_{ij}d_{mnk} \gamma^{mi} \gamma^{jn} 
+	- \gamma_{ij,l} \beta^l d_{kmn} \gamma^{mi} \gamma^{jn} 
+	- \gamma_{lj} {\beta^l}_{,i} d_{kmn} \gamma^{mi} \gamma^{jn} 
+	- \gamma_{il} {\beta^l}_{,j} d_{kmn} \gamma^{mi} \gamma^{jn} 
+	+ 2 \alpha K_{ij}d_{kmn} \gamma^{mi} \gamma^{jn} 
+$<br>
+$= 
+	+ 2 \alpha K_{i[k,j]} \gamma^{ij} 
+	
+	- \alpha a_k K
+	+ \alpha a^j K_{kj}
+	
+	+ 2 \alpha K^{ij} (d_{kij} - d_{ijk})
+	
+	+ \gamma^{ij} \gamma_{l[j} {\beta^l}_{,k]i}
+	
+	+ V_{k,l} \beta^l
+	+ V_l {\beta^l}_{,k} 
+$<br>
+<br>
+
+Another useful identity:<br>
+$\alpha V_{(i,j)}$<br>
+$= \alpha \delta^k_{(i} V_{j),k}$<br>
+Substitute $V_{j),k} = (d_{j)mn,k} - d_{mn|j),k}) \gamma^{mn} - 2 (d_{j)mn} - d_{mn|j)}) {d_k}^{mn}$<br>
+$= \alpha \delta^k_{(i} ( (d_{j)mn,k} - d_{mn|j),k}) \gamma^{mn} - 2 \alpha (d_{j)mn} - d_{mn|j)}) {d_k}^{mn} ) $<br>
+$= \alpha (d_{(j|mn,|i)} - d_{mn(j,i)}) \gamma^{mn} + 2 (d_{(j|mn} - d_{mn(j}) {d_{i)}}^{mn} $<br>
+$= \alpha ( 
+		\gamma^{pq} \delta^m_{(i} \delta^r_{j)}  
+		- \gamma^{pr} \delta^m_{(i} \delta^q_{j)}
+	) d_{mpq,r}
+	
+	- 2 \alpha {d_{(i}}^{mn} (d_{j)mn} - d_{mn|j)}) $<br>
+<br>
+
+Now for $K_{ij,t}$<br>
 using $a_{i,j} = a_{(i,j)}$...<br>
 $K_{ij,t} = 
 	- \alpha \delta^m_i \delta^r_j a_{(m,r)} 
@@ -249,85 +325,50 @@ $=
 		- 2 K_{(i|k} {K^k}_{j)}
 	)$<br>
 $=
+        - \alpha \delta^m_{(i} \delta^r_{j)} a_{m,r} 
+        + \alpha (
+               2 \gamma^{pr} \delta^m_{(i} \delta^q_{j)}
+               - \gamma^{pq} \delta^m_{(i} \delta^r_{j)}
+                - \gamma^{mr} \delta^p_{(i} \delta^q_{j)}
+        ) d_{mpq,r}
+       
+        + \beta^k K_{(ij),k}  
+        + 2 K_{k(i} {\beta^k}_{,j)} 
+        + \alpha (
+                - a_{(i} a_{j)}
+                + (2 {d_{(ij)}}^k - {d^k}_{(ij)}) (a_k + V_k - {d^l}_{lk})
+               + 2 ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
+               + {d_{(i}}^{kl} d_{j)kl} 
+                + K K_{(ij)} 
+                - 2 K_{(i|k} {K^k}_{j)}
+        )$<br>
+$=
 	- \alpha \delta^m_{(i} \delta^r_{j)} a_{m,r} 
 	+ \alpha (
-		2 \gamma^{pr} \delta^m_{(i} \delta^q_{j)}
-		- \gamma^{pq} \delta^m_{(i} \delta^r_{j)}
+		\gamma^{pq} \delta^m_{(i} \delta^r_{j)}
 		- \gamma^{mr} \delta^p_{(i} \delta^q_{j)}
 	) d_{mpq,r}
+
+	- 2 \alpha \delta^k_{(i} V_{j),k}
+	
 	+ \beta^k K_{(ij),k}  
 	+ 2 K_{k(i} {\beta^k}_{,j)} 
 	+ \alpha (
 		- a_{(i} a_{j)}
 		+ (2 {d_{(ij)}}^k - {d^k}_{(ij)}) (a_k + V_k - {d^l}_{lk})
-		+ 2 ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
-		+ {d_{(i}}^{kl} d_{j)kl} 
+		
+$ TODO fix d^2 terms $
+		
 		+ K K_{(ij)} 
 		- 2 K_{(i|k} {K^k}_{j)}
 	)$<br>
+<br>
 
-let ${\Lambda^k}_{ij} = {d^k}_{ij} + \delta^k_{(i} ( a_{j)} + {d_{j)m}}^m - 2 {d^m}_{mj)})$<br>
+Now if I wanted, I could introduce the flux variable of $K_{ij,t}$ ...<br>
+Let ${\Lambda^k}_{ij} = {d^k}_{ij} + \delta^k_{(i} ( a_{j)} + {d_{j)m}}^m - 2 {d^m}_{mj)})$<br>
 	$ = {d^k}_{ij} + \delta^k_{(i} ( a_{j)} - {d_{j)m}}^m + 2 V_{j)})$<br>
 Then ${\Lambda^k}_{ij,k} = {d^k}_{ij,k} + \delta^k_{(i} ( a_{j)} + {d_{j)m}}^m - 2 {d^m}_{mj)})_{,k}$<br>
-<br>
-
-Now for $V_{k,t}$<br>
-$V_{k,\mu} = ({d_{km}}^m - {d^m}_{mk})_{,\mu}$<br>
-$= ((d_{kij} - d_{ijk}) \gamma^{ij})_{,\mu}$<br>
-$= (d_{kij,\mu} - d_{ijk,\mu}) \gamma^{ij} + (d_{kmn} - d_{mnk}) {\gamma^{mn}}_{,\mu}$<br>
-$= (d_{kij,\mu} - d_{ijk,\mu}) \gamma^{ij} - (d_{kmn} - d_{mnk}) \gamma^{mi} \gamma_{ij,\mu} \gamma^{jn}$<br>
-<br>
-
-$V_{k,t} = (d_{kmn,t} - d_{mnk,t}) \gamma^{mn} - (d_{kmn} - d_{mnk}) \gamma^{mi} \gamma_{ij,t} \gamma^{jn}$<br>
-substitute $\gamma_{ij,t} = \gamma_{ij,k} \beta^k + \gamma_{kj} {\beta^k}_{,i} + \gamma_{ik} {\beta^k}_{,j} - 2 \alpha K_{ij}$<br>
-and $d_{kij,t} = $<br>
-$= (
-		(
-			d_{kij,l} \beta^l - \alpha K_{ij,k} + d_{lij} {\beta^l}_{,k} + 2 d_{kl(i} {\beta^l}_{,j)} + \gamma_{l(i} {\beta^l}_{,j)k} - \alpha a_k K_{ij}
-		)
-		-
-		(
-			d_{ijk,l} \beta^l - \alpha K_{jk,i} + d_{ljk} {\beta^l}_{,i} + 2 d_{il(j} {\beta^l}_{,k)} + \gamma_{l(j} {\beta^l}_{,k)i} - \alpha a_i K_{jk}
-		)
-	) \gamma^{ij} 
-	- (d_{kmn} - d_{mnk}) \gamma^{mi} \gamma^{jn} (
-		\gamma_{ij,l} \beta^l + \gamma_{lj} {\beta^l}_{,i} + \gamma_{il} {\beta^l}_{,j} - 2 \alpha K_{ij}
-	)$<br>
-$= 
-	+ d_{kij,l} \beta^l \gamma^{ij} 
-	- \alpha K_{ij,k} \gamma^{ij} 
-	+ d_{lij} {\beta^l}_{,k} \gamma^{ij} 
-	+ 2 d_{kl(i} {\beta^l}_{,j)} \gamma^{ij} 
-	+ \gamma_{l(i} {\beta^l}_{,j)k} \gamma^{ij} 
-	- \alpha a_k K_{ij} \gamma^{ij} 
-	- d_{ijk,l} \beta^l \gamma^{ij} 
-	+ \alpha K_{jk,i} \gamma^{ij} 
-	- d_{ljk} {\beta^l}_{,i} \gamma^{ij} 
-	- 2 d_{il(j} {\beta^l}_{,k)} \gamma^{ij} 
-	- \gamma_{l(j} {\beta^l}_{,k)i} \gamma^{ij} 
-	+ \alpha a_i K_{jk} \gamma^{ij} 
-	+ \gamma_{ij,l} \beta^l d_{mnk} \gamma^{mi} \gamma^{jn} 
-	+ \gamma_{lj} {\beta^l}_{,i} d_{mnk} \gamma^{mi} \gamma^{jn} 
-	+ \gamma_{il} {\beta^l}_{,j} d_{mnk} \gamma^{mi} \gamma^{jn} 
-	- 2 \alpha K_{ij}d_{mnk} \gamma^{mi} \gamma^{jn} 
-	- \gamma_{ij,l} \beta^l d_{kmn} \gamma^{mi} \gamma^{jn} 
-	- \gamma_{lj} {\beta^l}_{,i} d_{kmn} \gamma^{mi} \gamma^{jn} 
-	- \gamma_{il} {\beta^l}_{,j} d_{kmn} \gamma^{mi} \gamma^{jn} 
-	+ 2 \alpha K_{ij}d_{kmn} \gamma^{mi} \gamma^{jn} 
-$<br>
-$= 
-	+ 2 \alpha K_{i[k,j]} \gamma^{ij} 
-	
-	- \alpha a_k K
-	+ \alpha a^j K_{kj}
-	
-	+ 2 \alpha K^{ij} (d_{kij} - d_{ijk})
-	
-	+ \gamma^{ij} \gamma_{l[j} {\beta^l}_{,k]i}
-	
-	+ V_{k,l} \beta^l
-	+ V_l {\beta^l}_{,k} 
-$<br>
+But I'm lazy and don't feel like expanding that just yet.<br>
 <br>
 
 Hyperbolic conservation form:<br>
@@ -336,6 +377,7 @@ ${U^i}_{,t} + \frac{\partial F^{ir}}{\partial U^m} {U^m}_{,r} = S^i$<br>
 ${U^i}_{,t} + {J^{ir}}_m {U^m}_{,r} = S^i$, for ${J^{ir}}_m = \frac{\partial F^{ir}}{\partial U^m}$<br>
 <br>
 
+TODO update everything beyond this to include $V_k$<br>
 matrix form, favoring flux terms:<br>
 $\left[\matrix{
 	\alpha \\ \beta^i \\ \gamma_{ij} \\ a_k \\ d_{kij} \\ K_{ij} 
