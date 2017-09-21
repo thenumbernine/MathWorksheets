@@ -1,0 +1,249 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Numerical Relativity Eigenfields</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+	</head>
+    <body onload='tryToFindMathJax();'>
+
+Now introduce the $V_k$ constraint to help hyperbolicity<br>
+
+Now for the $V_k$ constraint, which is used in $K_{ij,t}$<br>
+$V_{k,\mu} = ({d_{km}}^m - {d^m}_{mk})_{,\mu}$<br>
+$= ((d_{kij} - d_{ijk}) \gamma^{ij})_{,\mu}$<br>
+$= (d_{kij,\mu} - d_{ijk,\mu}) \gamma^{ij} + (d_{kmn} - d_{mnk}) {\gamma^{mn}}_{,\mu}$<br>
+$= (d_{kij,\mu} - d_{ijk,\mu}) \gamma^{ij} - (d_{kmn} - d_{mnk}) \gamma^{mi} \gamma_{ij,\mu} \gamma^{jn}$<br>
+$= (d_{kij,\mu} - d_{ijk,\mu}) \gamma^{ij} - 2 (d_{kij} - d_{ijk}) {d_\mu}^{ij}$<br>
+<br>
+
+$V_{k,t} = (d_{kmn,t} - d_{mnk,t}) \gamma^{mn} - (d_{kmn} - d_{mnk}) \gamma^{mi} \gamma_{ij,t} \gamma^{jn}$<br>
+substitute $\gamma_{ij,t} = \gamma_{ij,k} \beta^k + \gamma_{kj} {\beta^k}_{,i} + \gamma_{ik} {\beta^k}_{,j} - 2 \alpha K_{ij}$<br>
+and $d_{kij,t} = $<br>
+$= (
+		(
+			d_{kij,l} \beta^l - \alpha K_{ij,k} + d_{lij} {\beta^l}_{,k} + 2 d_{kl(i} {\beta^l}_{,j)} + \gamma_{l(i} {\beta^l}_{,j)k} - \alpha a_k K_{ij}
+		)
+		-
+		(
+			d_{ijk,l} \beta^l - \alpha K_{jk,i} + d_{ljk} {\beta^l}_{,i} + 2 d_{il(j} {\beta^l}_{,k)} + \gamma_{l(j} {\beta^l}_{,k)i} - \alpha a_i K_{jk}
+		)
+	) \gamma^{ij} 
+	- (d_{kmn} - d_{mnk}) \gamma^{mi} \gamma^{jn} (
+		\gamma_{ij,l} \beta^l + \gamma_{lj} {\beta^l}_{,i} + \gamma_{il} {\beta^l}_{,j} - 2 \alpha K_{ij}
+	)$<br>
+$= 
+	  d_{kij,l} \beta^l \gamma^{ij} 
+	- \alpha K_{ij,k} \gamma^{ij} 
+	+ d_{lij} {\beta^l}_{,k} \gamma^{ij} 
+	+ 2 d_{kl(i} {\beta^l}_{,j)} \gamma^{ij} 
+	+ \gamma_{l(i} {\beta^l}_{,j)k} \gamma^{ij} 
+	- \alpha a_k K_{ij} \gamma^{ij} 
+	- d_{ijk,l} \beta^l \gamma^{ij} 
+	+ \alpha K_{jk,i} \gamma^{ij} 
+	- d_{ljk} {\beta^l}_{,i} \gamma^{ij} 
+	- 2 d_{il(j} {\beta^l}_{,k)} \gamma^{ij} 
+	- \gamma_{l(j} {\beta^l}_{,k)i} \gamma^{ij} 
+	+ \alpha a_i K_{jk} \gamma^{ij} 
+	+ \gamma_{ij,l} \beta^l d_{mnk} \gamma^{mi} \gamma^{jn} 
+	+ \gamma_{lj} {\beta^l}_{,i} d_{mnk} \gamma^{mi} \gamma^{jn} 
+	+ \gamma_{il} {\beta^l}_{,j} d_{mnk} \gamma^{mi} \gamma^{jn} 
+	- 2 \alpha K_{ij}d_{mnk} \gamma^{mi} \gamma^{jn} 
+	- \gamma_{ij,l} \beta^l d_{kmn} \gamma^{mi} \gamma^{jn} 
+	- \gamma_{lj} {\beta^l}_{,i} d_{kmn} \gamma^{mi} \gamma^{jn} 
+	- \gamma_{il} {\beta^l}_{,j} d_{kmn} \gamma^{mi} \gamma^{jn} 
+	+ 2 \alpha K_{ij}d_{kmn} \gamma^{mi} \gamma^{jn} 
+$<br>
+$= 
+	  2 \alpha K_{i[k,j]} \gamma^{ij} 
+	
+	- \alpha a_k K
+	+ \alpha a^j K_{kj}
+	
+	+ 2 \alpha K^{ij} (d_{kij} - d_{ijk})
+	
+	+ \gamma^{ij} \gamma_{l[j} {\beta^l}_{,k]i}
+	
+	+ V_{k,l} \beta^l
+	+ V_l {\beta^l}_{,k} 
+$<br>
+TODO this should go to zero, right?  At least the $\partial^2 \beta$ terms should go away.<br>
+<br>
+
+Another useful identity:<br>
+$\alpha V_{(i,j)}$<br>
+$= \alpha \delta^k_{(i} V_{j),k}$<br>
+Substitute $V_{j),k} = (d_{j)mn,k} - d_{mn|j),k}) \gamma^{mn} - 2 (d_{j)mn} - d_{mn|j)}) {d_k}^{mn}$<br>
+$= \alpha \delta^k_{(i} ( (d_{j)mn,k} - d_{mn|j),k}) \gamma^{mn} - 2 \alpha (d_{j)mn} - d_{mn|j)}) {d_k}^{mn} ) $<br>
+$= \alpha (d_{(j|mn,|i)} - d_{mn(j,i)}) \gamma^{mn} + 2 (d_{(j|mn} - d_{mn(j}) {d_{i)}}^{mn} $<br>
+$= \alpha ( 
+		\gamma^{pq} \delta^m_{(i} \delta^r_{j)}  
+		- \gamma^{pr} \delta^m_{(i} \delta^q_{j)}
+	) d_{mpq,r}
+	
+	- 2 \alpha {d_{(i}}^{mn} (d_{j)mn} - d_{mn|j)}) $<br>
+<br>
+<br>
+
+Now the $K_{ij,t}$ evolution can be recast using $V_{(i,j)}$...<br>
+$K_{ij,t} =
+	- \alpha \delta^m_{(i} \delta^r_{j)} a_{m,r} 
+	+ \alpha (
+		2 \gamma^{pr} \delta^m_{(i} \delta^q_{j)}
+		- \gamma^{pq} \delta^m_{(i} \delta^r_{j)}
+		- \gamma^{mr} \delta^p_{(i} \delta^q_{j)}
+	) d_{mpq,r}
+	
+	+ \beta^k K_{(ij),k}  
+	+ 2 K_{k(i} {\beta^k}_{,j)} 
+	+ \alpha (
+		- a_{(i} a_{j)}
+		+ (2 {d_{(ij)}}^k - {d^k}_{(ij)}) (a_k + V_k - {d^l}_{lk})
+		+ 2 ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
+		+ {d_{(i}}^{kl} d_{j)kl} 
+		+ K K_{(ij)} 
+		- 2 K_{(i|k} {K^k}_{j)}
+	)$<br>
+substitute $2 \alpha V_{(i,j)}$<br>
+$=
+	- \alpha \delta^m_{(i} \delta^r_{j)} a_{m,r} 
+	+ \alpha (
+		2 \gamma^{pr} \delta^m_{(i} \delta^q_{j)}
+		- \gamma^{pq} \delta^m_{(i} \delta^r_{j)}
+		- \gamma^{mr} \delta^p_{(i} \delta^q_{j)}
+	) d_{mpq,r}
+
+	- 2 \alpha V_{(i,j)}
+	+ 2 \alpha V_{(i,j)}
+
+	+ \beta^k K_{(ij),k}  
+	+ 2 K_{k(i} {\beta^k}_{,j)} 
+	+ \alpha (
+		- a_{(i} a_{j)}
+		+ (2 {d_{(ij)}}^k - {d^k}_{(ij)}) (a_k + V_k - {d^l}_{lk})
+		+ 2 ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
+		+ {d_{(i}}^{kl} d_{j)kl} 
+		+ K K_{(ij)} 
+		- 2 K_{(i|k} {K^k}_{j)}
+	)$<br>
+$=
+	- \alpha \delta^m_{(i} \delta^r_{j)} a_{m,r} 
+	+ \alpha (
+		2 \gamma^{pr} \delta^m_{(i} \delta^q_{j)}
+		- \gamma^{pq} \delta^m_{(i} \delta^r_{j)}
+		- \gamma^{mr} \delta^p_{(i} \delta^q_{j)}
+	) d_{mpq,r}
+
+	- 2 \alpha V_{(i,j)}
+	+ 2 \alpha ( 
+		(\gamma^{pq} \delta^m_{(i} \delta^r_{j)} - \gamma^{pr} \delta^q_{(i} \delta^m_{j)}) d_{mpq,r}
+		- 2 (d_{(i|kl} - d_{kl(i}) {d_{j)}}^{kl} 
+	)
+
+	+ \beta^k K_{(ij),k}  
+	+ 2 K_{k(i} {\beta^k}_{,j)} 
+	+ \alpha (
+		- a_{(i} a_{j)}
+		+ (2 {d_{(ij)}}^k - {d^k}_{(ij)}) (a_k + V_k - {d^l}_{lk})
+		+ 2 ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
+		+ {d_{(i}}^{kl} d_{j)kl} 
+		+ K K_{(ij)} 
+		- 2 K_{(i|k} {K^k}_{j)}
+	)$<br>
+$=
+	- \alpha \delta^m_{(i} \delta^r_{j)} a_{m,r} 
+	+ \alpha (
+		\gamma^{pq} \delta^m_{(i} \delta^r_{j)}
+		- \gamma^{mr} \delta^p_{(i} \delta^q_{j)}
+	) d_{mpq,r}
+
+	- 2 \alpha \delta^m_{(i} \delta^r_{j)} V_{m,r}
+		
+	+ \beta^k K_{(ij),k}  
+	+ 2 K_{k(i} {\beta^k}_{,j)} 
+	+ \alpha (
+		- a_{(i} a_{j)}
+		
+		+ (2 {d_{(ij)}}^k - {d^k}_{(ij)}) (a_k + V_k - {d^l}_{lk})
+		+ 2 ({d^{kl}}_j - {d^{lk}}_j) d_{kli}
+		+ 4 {d_{(i}}^{kl} d_{kl|j)}
+		- 3 {d_{(i}}^{kl} d_{j)kl} 
+	
+		+ K K_{(ij)} 
+		- 2 K_{(i|k} {K^k}_{j)}
+	)$<br>
+<br>
+
+matrix form, omitting $\alpha, \beta^k, \gamma_{ij}$, because they are source-only terms:<br>
+$\left[\matrix{
+	a_k \\ d_{kij} \\ K_{ij} \\ V_k 
+}\right]_{,t}
++ \left[\matrix{
+	-\delta^m_k \beta^r & 
+		0 & 
+		\alpha f \gamma^{pq} \delta^r_k &
+		0 \\
+	0 & 
+		-\delta^m_k \delta^p_i \delta^q_j \beta^r & 
+		\alpha \delta^p_i \delta^q_j \delta^r_k &
+		0 \\
+	\alpha \delta^m_{(i} \delta^r_{j)} &  
+		\alpha (
+			\gamma^{(mr)} \delta^{(p}_{(i} \delta^{q)}_{j)}
+			- \gamma^{(pq)} \delta^{(m}_{(i} \delta^{r)}_{j)}
+		) &
+		-\delta^p_i \delta^q_j \beta^r &
+		2 \alpha \delta^m_{(i} \delta^r_{j)} \\
+	\cdot & \cdot & \cdot & -\delta^m_k \beta^r
+}\right]
+\left[\matrix{
+	a_m \\ d_{mpq} \\ K_{pq} \\ V_m
+}\right]_{,r}
+= \left[\matrix{
+	a_i {\beta^i}_{,k} 
+		+ \alpha (a_k K (f - \alpha f') - 2 f {d_k}^{ij} K_{ij}) \\
+	d_{lij} {\beta^l}_{,k}
+		+ 2 d_{kl(i} {\beta^l}_{,j)} 
+		+ \gamma_{l(i} {\beta^l}_{,j)k}
+		- \alpha a_k K_{ij} \\
+	2 K_{k(i} {\beta^k}_{,j)} 
+		+ \alpha (
+			- a_{(i} a_{j)}
+			+ (2 {d_{(ij)}}^k - {d^k}_{(ij)}) (a_k + V_k - {d^l}_{lk})
+			+ 2 ({d^{kl}}_j - {d^{lk}}_j) d_{kli}
+			+ 4 {d_{(i}}^{kl} d_{kl|j)} 
+			- 3 {d_{(i}}^{kl} d_{j)kl} 
+			+ K K_{(ij)} 
+			- 2 K_{(i|k} {K^k}_{j)}
+		) \\
+	0
+}\right]$<br>
+<br>
+
+(Courtesy of my numerical-relativity-codegen/show_flux_matrix.lua output)<br>
+Flux matrix in x-direction, fully written out:<br>
+
+$\left[\matrix{{\partial_{{t}}({a_x})}\\{\partial_{{t}}({a_y})}\\{\partial_{{t}}({a_z})}\\{\partial_{{t}}({d_{xxx}})}\\{\partial_{{t}}({d_{xxy}})}\\{\partial_{{t}}({d_{xxz}})}\\{\partial_{{t}}({d_{xyy}})}\\{\partial_{{t}}({d_{xyz}})}\\{\partial_{{t}}({d_{xzz}})}\\{\partial_{{t}}({d_{yxx}})}\\{\partial_{{t}}({d_{yxy}})}\\{\partial_{{t}}({d_{yxz}})}\\{\partial_{{t}}({d_{yyy}})}\\{\partial_{{t}}({d_{yyz}})}\\{\partial_{{t}}({d_{yzz}})}\\{\partial_{{t}}({d_{zxx}})}\\{\partial_{{t}}({d_{zxy}})}\\{\partial_{{t}}({d_{zxz}})}\\{\partial_{{t}}({d_{zyy}})}\\{\partial_{{t}}({d_{zyz}})}\\{\partial_{{t}}({d_{zzz}})}\\{\partial_{{t}}({K_{xx}})}\\{\partial_{{t}}({K_{xy}})}\\{\partial_{{t}}({K_{xz}})}\\{\partial_{{t}}({K_{yy}})}\\{\partial_{{t}}({K_{yz}})}\\{\partial_{{t}}({K_{zz}})}\\{\partial_{{t}}({V_x})}\\{\partial_{{t}}({V_y})}\\{\partial_{{t}}({V_z})}}\right]
++ \left[\matrix{ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\alpha f {\gamma^{xx}}}&{2 \alpha f {\gamma^{xy}}}&{2 \alpha f {\gamma^{xz}}}&{\alpha f {\gamma^{yy}}}&{2 \alpha f {\gamma^{yz}}}&{\alpha f {\gamma^{zz}}}& \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &\alpha& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &\alpha& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &\alpha& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &\alpha& \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &\alpha& \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &\alpha& \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\\alpha& \cdot & \cdot & \cdot &{-{2 \alpha {\gamma^{xy}}}}&{-{2 \alpha {\gamma^{xz}}}}&{-{\alpha {\gamma^{yy}}}}&{-{2 \alpha {\gamma^{yz}}}}&{-{\alpha {\gamma^{zz}}}}&{\alpha {\gamma^{xy}}}& \cdot & \cdot & \cdot & \cdot & \cdot &{\alpha {\gamma^{xz}}}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{2 \alpha}& \cdot & \cdot \\ \cdot &{\frac{\alpha}{2}}& \cdot & \cdot &{\alpha {\gamma^{xx}}}& \cdot & \cdot & \cdot & \cdot &{\frac{-{\alpha {\gamma^{xx}}}}{2}}& \cdot &{-{\alpha {\gamma^{xz}}}}&{\frac{-{\alpha {\gamma^{yy}}}}{2}}&{-{\alpha {\gamma^{yz}}}}&{\frac{-{\alpha {\gamma^{zz}}}}{2}}& \cdot &{\alpha {\gamma^{xz}}}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &\alpha& \cdot \\ \cdot & \cdot &{\frac{\alpha}{2}}& \cdot & \cdot &{\alpha {\gamma^{xx}}}& \cdot & \cdot & \cdot & \cdot & \cdot &{\alpha {\gamma^{xy}}}& \cdot & \cdot & \cdot &{\frac{-{\alpha {\gamma^{xx}}}}{2}}&{-{\alpha {\gamma^{xy}}}}& \cdot &{\frac{-{\alpha {\gamma^{yy}}}}{2}}&{-{\alpha {\gamma^{yz}}}}&{\frac{-{\alpha {\gamma^{zz}}}}{2}}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &\alpha\\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\alpha {\gamma^{xx}}}& \cdot & \cdot & \cdot & \cdot & \cdot &{\alpha {\gamma^{xy}}}& \cdot & \cdot & \cdot & \cdot & \cdot &{\alpha {\gamma^{xz}}}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\alpha {\gamma^{xx}}}& \cdot & \cdot & \cdot & \cdot & \cdot &{\alpha {\gamma^{xy}}}& \cdot & \cdot & \cdot & \cdot & \cdot &{\alpha {\gamma^{xz}}}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\alpha {\gamma^{xx}}}& \cdot & \cdot & \cdot & \cdot & \cdot &{\alpha {\gamma^{xy}}}& \cdot & \cdot & \cdot & \cdot & \cdot &{\alpha {\gamma^{xz}}}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot }\right]
+\left[\matrix{{\partial_{{x}}({a_x})}\\{\partial_{{x}}({a_y})}\\{\partial_{{x}}({a_z})}\\{\partial_{{x}}({d_{xxx}})}\\{\partial_{{x}}({d_{xxy}})}\\{\partial_{{x}}({d_{xxz}})}\\{\partial_{{x}}({d_{xyy}})}\\{\partial_{{x}}({d_{xyz}})}\\{\partial_{{x}}({d_{xzz}})}\\{\partial_{{x}}({d_{yxx}})}\\{\partial_{{x}}({d_{yxy}})}\\{\partial_{{x}}({d_{yxz}})}\\{\partial_{{x}}({d_{yyy}})}\\{\partial_{{x}}({d_{yyz}})}\\{\partial_{{x}}({d_{yzz}})}\\{\partial_{{x}}({d_{zxx}})}\\{\partial_{{x}}({d_{zxy}})}\\{\partial_{{x}}({d_{zxz}})}\\{\partial_{{x}}({d_{zyy}})}\\{\partial_{{x}}({d_{zyz}})}\\{\partial_{{x}}({d_{zzz}})}\\{\partial_{{x}}({K_{xx}})}\\{\partial_{{x}}({K_{xy}})}\\{\partial_{{x}}({K_{xz}})}\\{\partial_{{x}}({K_{yy}})}\\{\partial_{{x}}({K_{yz}})}\\{\partial_{{x}}({K_{zz}})}\\{\partial_{{x}}({V_x})}\\{\partial_{{x}}({V_y})}\\{\partial_{{x}}({V_z})}}\right]
+= ...$<br> 
+<br>
+Flux Jacobian characteristic polynomial:<br>
+$
+	\lambda^{18}
+	(\lambda + \alpha \sqrt{\gamma^{xx}})^5 
+	(\lambda - \alpha \sqrt{\gamma^{xx}})^5 
+	(\lambda + \alpha \sqrt{f \gamma^{xx}})
+	(\lambda - \alpha \sqrt{f \gamma^{xx}})
+$<br>
+<br>
+Eigensystem:<br>
+$\left[\matrix{{-{{\sqrt f} {\sqrt{\gamma^{xx}}}}}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{2 {\gamma^{xy}}}&{2 {\gamma^{xz}}}&{-{\gamma^{xy}}}& \cdot & \cdot &{\frac{-{{\gamma^{yy}} {\gamma^{xy}}}}{{\gamma^{xx}}}}&{\frac{-{2 {\gamma^{yz}} {\gamma^{xy}}}}{{\gamma^{xx}}}}&{\frac{-{{\gamma^{zz}} {\gamma^{xy}}}}{{\gamma^{xx}}}}&{-{\gamma^{xz}}}& \cdot & \cdot &{\frac{-{{\gamma^{yy}} {\gamma^{xz}}}}{{\gamma^{xx}}}}&{\frac{-{2 {\gamma^{yz}} {\gamma^{xz}}}}{{\gamma^{xx}}}}&{\frac{-{{\gamma^{zz}} {\gamma^{xz}}}}{{\gamma^{xx}}}}&{-2}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{{\sqrt f} {\sqrt{\gamma^{xx}}}}\\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{-{2 {\gamma^{xx}}}}& \cdot &{\gamma^{xx}}& \cdot &{2 {\gamma^{xz}}}&{\gamma^{yy}}&{2 {\gamma^{yz}}}&{\gamma^{zz}}& \cdot &{-{2 {\gamma^{xz}}}}& \cdot & \cdot & \cdot & \cdot & \cdot &{-2}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{-{2 {\gamma^{xx}}}}& \cdot & \cdot &{-{2 {\gamma^{xy}}}}& \cdot & \cdot & \cdot &{\gamma^{xx}}&{2 {\gamma^{xy}}}& \cdot &{\gamma^{yy}}&{2 {\gamma^{yz}}}&{\gamma^{zz}}& \cdot & \cdot &{-2}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\{-{\frac{1}{{\sqrt f} {\sqrt{\gamma^{xx}}}}}}&{\frac{2 {\gamma^{xy}}}{{{\gamma^{xx}}}^{{({\frac{3}{2}})}}}}&{\frac{2 {\gamma^{xz}}}{{{\gamma^{xx}}}^{{({\frac{3}{2}})}}}}&{\frac{{\gamma^{yy}}}{{{\gamma^{xx}}}^{{({\frac{3}{2}})}}}}&{\frac{2 {\gamma^{yz}}}{{{\gamma^{xx}}}^{{({\frac{3}{2}})}}}}&{\frac{{\gamma^{zz}}}{{{\gamma^{xx}}}^{{({\frac{3}{2}})}}}}&1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\frac{-{2 {\gamma^{xy}}}}{{{\gamma^{xx}}}^{{({\frac{3}{2}})}}}}&{\frac{-{2 {\gamma^{xz}}}}{{{\gamma^{xx}}}^{{({\frac{3}{2}})}}}}&{\frac{-{\gamma^{yy}}}{{{\gamma^{xx}}}^{{({\frac{3}{2}})}}}}&{\frac{-{2 {\gamma^{yz}}}}{{{\gamma^{xx}}}^{{({\frac{3}{2}})}}}}&{\frac{-{\gamma^{zz}}}{{{\gamma^{xx}}}^{{({\frac{3}{2}})}}}}&{\frac{1}{{\sqrt f} {\sqrt{\gamma^{xx}}}}}\\ \cdot &{-{\frac{1}{\sqrt{\gamma^{xx}}}}}& \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\frac{1}{\sqrt{\gamma^{xx}}}}& \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot &{-{\frac{1}{\sqrt{\gamma^{xx}}}}}& \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\frac{1}{\sqrt{\gamma^{xx}}}}& \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot &{-{\frac{1}{\sqrt{\gamma^{xx}}}}}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\frac{1}{\sqrt{\gamma^{xx}}}}& \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot &{-{\frac{1}{\sqrt{\gamma^{xx}}}}}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\frac{1}{\sqrt{\gamma^{xx}}}}& \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot &{-{\frac{1}{\sqrt{\gamma^{xx}}}}}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\frac{1}{\sqrt{\gamma^{xx}}}}& \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\1&{\frac{-{2 {\gamma^{xy}}}}{{\gamma^{xx}}}}&{\frac{-{2 {\gamma^{xz}}}}{{\gamma^{xx}}}}&{\frac{-{\gamma^{yy}}}{{\gamma^{xx}}}}&{\frac{-{2 {\gamma^{yz}}}}{{\gamma^{xx}}}}&{\frac{-{\gamma^{zz}}}{{\gamma^{xx}}}}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\frac{-{2 {\gamma^{xy}}}}{{\gamma^{xx}}}}&{\frac{-{2 {\gamma^{xz}}}}{{\gamma^{xx}}}}&{\frac{-{\gamma^{yy}}}{{\gamma^{xx}}}}&{\frac{-{2 {\gamma^{yz}}}}{{\gamma^{xx}}}}&{\frac{-{\gamma^{zz}}}{{\gamma^{xx}}}}&1\\ \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot }\right]$
+$\cdot \left[\matrix{{{-\alpha} {\sqrt{f {\gamma^{xx}}}}}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot &{{-\alpha} {\sqrt{\gamma^{xx}}}}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot &{{-\alpha} {\sqrt{\gamma^{xx}}}}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot &{{-\alpha} {\sqrt{\gamma^{xx}}}}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot &{{-\alpha} {\sqrt{\gamma^{xx}}}}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot &{{-\alpha} {\sqrt{\gamma^{xx}}}}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\alpha {\sqrt{\gamma^{xx}}}}& \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\alpha {\sqrt{\gamma^{xx}}}}& \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\alpha {\sqrt{\gamma^{xx}}}}& \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\alpha {\sqrt{\gamma^{xx}}}}& \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\alpha {\sqrt{\gamma^{xx}}}}& \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\alpha {\sqrt{f {\gamma^{xx}}}}}}\right]$
+$\cdot \left[\matrix{{-{\frac{1}{2 {\sqrt{\gamma^{xx}}} {\sqrt f}}}}&{\frac{-{\gamma^{xy}}}{2 {{{\gamma^{xx}}}^{{({\frac{3}{2}})}}} {\sqrt f}}}&{\frac{-{\gamma^{xz}}}{2 {{{\gamma^{xx}}}^{{({\frac{3}{2}})}}} {\sqrt f}}}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\frac{1}{2}}&{\frac{{\gamma^{xy}}}{{\gamma^{xx}}}}&{\frac{{\gamma^{xz}}}{{\gamma^{xx}}}}&{\frac{{\gamma^{yy}}}{2 {\gamma^{xx}}}}&{\frac{{\gamma^{yz}}}{{\gamma^{xx}}}}&{\frac{{\gamma^{zz}}}{2 {\gamma^{xx}}}}&{-{\frac{1}{{\sqrt{\gamma^{xx}}} {\sqrt f}}}}&{\frac{-{\gamma^{xy}}}{{{{\gamma^{xx}}}^{{({\frac{3}{2}})}}} {\sqrt f}}}&{\frac{-{\gamma^{xz}}}{{{{\gamma^{xx}}}^{{({\frac{3}{2}})}}} {\sqrt f}}}\\ \cdot &{-{\frac{1}{4 {\sqrt{\gamma^{xx}}}}}}& \cdot & \cdot &{\frac{-{\sqrt{\gamma^{xx}}}}{2}}& \cdot & \cdot & \cdot & \cdot &{\frac{\sqrt{\gamma^{xx}}}{4}}& \cdot &{\frac{{\gamma^{xz}}}{2 {\sqrt{\gamma^{xx}}}}}&{\frac{{\gamma^{yy}}}{4 {\sqrt{\gamma^{xx}}}}}&{\frac{{\gamma^{yz}}}{2 {\sqrt{\gamma^{xx}}}}}&{\frac{{\gamma^{zz}}}{4 {\sqrt{\gamma^{xx}}}}}& \cdot &{\frac{-{\gamma^{xz}}}{2 {\sqrt{\gamma^{xx}}}}}& \cdot & \cdot & \cdot & \cdot & \cdot &{\frac{1}{2}}& \cdot & \cdot & \cdot & \cdot & \cdot &{-{\frac{1}{2 {\sqrt{\gamma^{xx}}}}}}& \cdot \\ \cdot & \cdot &{-{\frac{1}{4 {\sqrt{\gamma^{xx}}}}}}& \cdot & \cdot &{\frac{-{\sqrt{\gamma^{xx}}}}{2}}& \cdot & \cdot & \cdot & \cdot & \cdot &{\frac{-{\gamma^{xy}}}{2 {\sqrt{\gamma^{xx}}}}}& \cdot & \cdot & \cdot &{\frac{\sqrt{\gamma^{xx}}}{4}}&{\frac{{\gamma^{xy}}}{2 {\sqrt{\gamma^{xx}}}}}& \cdot &{\frac{{\gamma^{yy}}}{4 {\sqrt{\gamma^{xx}}}}}&{\frac{{\gamma^{yz}}}{2 {\sqrt{\gamma^{xx}}}}}&{\frac{{\gamma^{zz}}}{4 {\sqrt{\gamma^{xx}}}}}& \cdot & \cdot &{\frac{1}{2}}& \cdot & \cdot & \cdot & \cdot & \cdot &{-{\frac{1}{2 {\sqrt{\gamma^{xx}}}}}}\\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\frac{-{\sqrt{\gamma^{xx}}}}{2}}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\frac{1}{2}}& \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\frac{-{\sqrt{\gamma^{xx}}}}{2}}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\frac{1}{2}}& \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\frac{-{\sqrt{\gamma^{xx}}}}{2}}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\frac{1}{2}}& \cdot & \cdot & \cdot \\{-{\frac{1}{f {\gamma^{xx}}}}}&{\frac{-{{\gamma^{xy}} {({1 - f})}}}{f {{{\gamma^{xx}}}^{2}}}}&{\frac{-{{\gamma^{xz}} {({1 - f})}}}{f {{{\gamma^{xx}}}^{2}}}}&1&{\frac{2 {\gamma^{xy}}}{{\gamma^{xx}}}}&{\frac{2 {\gamma^{xz}}}{{\gamma^{xx}}}}&{\frac{{\gamma^{yy}}}{{\gamma^{xx}}}}&{\frac{2 {\gamma^{yz}}}{{\gamma^{xx}}}}&{\frac{{\gamma^{zz}}}{{\gamma^{xx}}}}&{\frac{-{\gamma^{xy}}}{{\gamma^{xx}}}}& \cdot & \cdot &{\frac{-{{\gamma^{xy}} {\gamma^{yy}}}}{{{\gamma^{xx}}}^{2}}}&{\frac{-{2 {\gamma^{xy}} {\gamma^{yz}}}}{{{\gamma^{xx}}}^{2}}}&{\frac{-{{\gamma^{xy}} {\gamma^{zz}}}}{{{\gamma^{xx}}}^{2}}}&{\frac{-{\gamma^{xz}}}{{\gamma^{xx}}}}& \cdot & \cdot &{\frac{-{{\gamma^{xz}} {\gamma^{yy}}}}{{{\gamma^{xx}}}^{2}}}&{\frac{-{2 {\gamma^{xz}} {\gamma^{yz}}}}{{{\gamma^{xx}}}^{2}}}&{\frac{-{{\gamma^{xz}} {\gamma^{zz}}}}{{{\gamma^{xx}}}^{2}}}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{-{\frac{2}{f {\gamma^{xx}}}}}&{\frac{-{2 {\gamma^{xy}} {({1 - f})}}}{f {{{\gamma^{xx}}}^{2}}}}&{\frac{-{2 {\gamma^{xz}} {({1 - f})}}}{f {{{\gamma^{xx}}}^{2}}}}\\ \cdot &{-{\frac{1}{2 {\gamma^{xx}}}}}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\frac{1}{2}}& \cdot &{\frac{{\gamma^{xz}}}{{\gamma^{xx}}}}&{\frac{{\gamma^{yy}}}{2 {\gamma^{xx}}}}&{\frac{{\gamma^{yz}}}{{\gamma^{xx}}}}&{\frac{{\gamma^{zz}}}{2 {\gamma^{xx}}}}& \cdot &{\frac{-{\gamma^{xz}}}{{\gamma^{xx}}}}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{-{\frac{1}{{\gamma^{xx}}}}}& \cdot \\ \cdot & \cdot &{-{\frac{1}{2 {\gamma^{xx}}}}}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\frac{-{\gamma^{xy}}}{{\gamma^{xx}}}}& \cdot & \cdot & \cdot &{\frac{1}{2}}&{\frac{{\gamma^{xy}}}{{\gamma^{xx}}}}& \cdot &{\frac{{\gamma^{yy}}}{2 {\gamma^{xx}}}}&{\frac{{\gamma^{yz}}}{{\gamma^{xx}}}}&{\frac{{\gamma^{zz}}}{2 {\gamma^{xx}}}}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{-{\frac{1}{{\gamma^{xx}}}}}\\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1& \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &1\\ \cdot &{\frac{1}{4 {\sqrt{\gamma^{xx}}}}}& \cdot & \cdot &{\frac{\sqrt{\gamma^{xx}}}{2}}& \cdot & \cdot & \cdot & \cdot &{\frac{-{\sqrt{\gamma^{xx}}}}{4}}& \cdot &{\frac{-{\gamma^{xz}}}{2 {\sqrt{\gamma^{xx}}}}}&{\frac{{\gamma^{yy}}}{-{4 {\sqrt{\gamma^{xx}}}}}}&{\frac{{\gamma^{yz}}}{-{2 {\sqrt{\gamma^{xx}}}}}}&{\frac{{\gamma^{zz}}}{-{4 {\sqrt{\gamma^{xx}}}}}}& \cdot &{\frac{{\gamma^{xz}}}{2 {\sqrt{\gamma^{xx}}}}}& \cdot & \cdot & \cdot & \cdot & \cdot &{\frac{1}{2}}& \cdot & \cdot & \cdot & \cdot & \cdot &{\frac{1}{2 {\sqrt{\gamma^{xx}}}}}& \cdot \\ \cdot & \cdot &{\frac{\frac{1}{\sqrt{\gamma^{xx}}}}{4}}& \cdot & \cdot &{\frac{\sqrt{\gamma^{xx}}}{2}}& \cdot & \cdot & \cdot & \cdot & \cdot &{\frac{{\gamma^{xy}}}{2 {\sqrt{\gamma^{xx}}}}}& \cdot & \cdot & \cdot &{\frac{-{\sqrt{\gamma^{xx}}}}{4}}&{\frac{{\gamma^{xy}}}{-{2 {\sqrt{\gamma^{xx}}}}}}& \cdot &{\frac{{\gamma^{yy}}}{-{4 {\sqrt{\gamma^{xx}}}}}}&{\frac{{\gamma^{yz}}}{-{2 {\sqrt{\gamma^{xx}}}}}}&{\frac{{\gamma^{zz}}}{-{4 {\sqrt{\gamma^{xx}}}}}}& \cdot & \cdot &{\frac{1}{2}}& \cdot & \cdot & \cdot & \cdot & \cdot &{\frac{\frac{1}{\sqrt{\gamma^{xx}}}}{2}}\\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\frac{\sqrt{\gamma^{xx}}}{2}}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\frac{1}{2}}& \cdot & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\frac{\sqrt{\gamma^{xx}}}{2}}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\frac{1}{2}}& \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\frac{\sqrt{\gamma^{xx}}}{2}}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\frac{1}{2}}& \cdot & \cdot & \cdot \\{\frac{1}{2 {\sqrt{\gamma^{xx}}} {\sqrt f}}}&{\frac{{\gamma^{xy}}}{2 {{{\gamma^{xx}}}^{{({\frac{3}{2}})}}} {\sqrt f}}}&{\frac{{\gamma^{xz}}}{2 {{{\gamma^{xx}}}^{{({\frac{3}{2}})}}} {\sqrt f}}}& \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot &{\frac{1}{2}}&{\frac{{\gamma^{xy}}}{{\gamma^{xx}}}}&{\frac{{\gamma^{xz}}}{{\gamma^{xx}}}}&{\frac{{\gamma^{yy}}}{2 {\gamma^{xx}}}}&{\frac{{\gamma^{yz}}}{{\gamma^{xx}}}}&{\frac{{\gamma^{zz}}}{2 {\gamma^{xx}}}}&{\frac{1}{{\sqrt{\gamma^{xx}}} {\sqrt f}}}&{\frac{{\gamma^{xy}}}{{{{\gamma^{xx}}}^{{({\frac{3}{2}})}}} {\sqrt f}}}&{\frac{{\gamma^{xz}}}{{{{\gamma^{xx}}}^{{({\frac{3}{2}})}}} {\sqrt f}}}}\right]$<br>
+<br>
+<br>
+<br>
+
+	</body>
+</html>
