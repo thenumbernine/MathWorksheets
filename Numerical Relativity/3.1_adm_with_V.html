@@ -8,8 +8,9 @@
     <body onload='tryToFindMathJax();'>
 
 Now introduce the $V_k$ constraint to help hyperbolicity<br>
+$V_k = ({d_{km}}^m - {d^m}_{mk})$<br>
+<br>
 
-Now for the $V_k$ constraint, which is used in $K_{ij,t}$<br>
 $V_{k,\mu} = ({d_{km}}^m - {d^m}_{mk})_{,\mu}$<br>
 $= ((d_{kij} - d_{ijk}) \gamma^{ij})_{,\mu}$<br>
 $= (d_{kij,\mu} - d_{ijk,\mu}) \gamma^{ij} + (d_{kmn} - d_{mnk}) {\gamma^{mn}}_{,\mu}$<br>
@@ -18,8 +19,8 @@ $= (d_{kij,\mu} - d_{ijk,\mu}) \gamma^{ij} - 2 (d_{kij} - d_{ijk}) {d_\mu}^{ij}$
 <br>
 
 $V_{k,t} = (d_{kmn,t} - d_{mnk,t}) \gamma^{mn} - (d_{kmn} - d_{mnk}) \gamma^{mi} \gamma_{ij,t} \gamma^{jn}$<br>
-substitute $\gamma_{ij,t} = \gamma_{ij,k} \beta^k + \gamma_{kj} {\beta^k}_{,i} + \gamma_{ik} {\beta^k}_{,j} - 2 \alpha K_{ij}$<br>
-and $d_{kij,t} = $<br>
+substitute $\gamma_{ij,t} = \gamma_{ij,k} \beta^k + \gamma_{kj} {\beta^k}_{,i} + \gamma_{ik} {\beta^k}_{,j} - 2 \alpha K_{ij}$
+and $d_{kij,t}$ to get<br>
 $= (
 		(
 			d_{kij,l} \beta^l - \alpha K_{ij,k} + d_{lij} {\beta^l}_{,k} + 2 d_{kl(i} {\beta^l}_{,j)} + \gamma_{l(i} {\beta^l}_{,j)k} - \alpha a_k K_{ij}
@@ -85,6 +86,144 @@ $= \alpha (
 <br>
 <br>
 
+Now for the momentum constraint:<br>
+$M^i = D_j (K^{ij} - \gamma^{ij} K) - 8 \pi j^i = 0$<br>
+$= (K^{ij} - \gamma^{ij} K)_{,j}
+	- (K^{kj} - \gamma^{kj} K) {\Gamma^i}_{kj}
+	- (K^{ik} - \gamma^{ik} K) {\Gamma^j}_{kj}
+	- 8 \pi j^i$<br>
+$= 	
+	 \gamma^{ik} \gamma^{jl} K_{kl,j}
+	- \gamma^{ij} \gamma^{kl} K_{kl,j}
+	
+	- K^{in} \gamma^{jm} \gamma_{mn,j}
+	- K^{nj} \gamma^{im} \gamma_{mn,j}
+	+ K^{mn} \gamma^{ij} \gamma_{mn,j}
+	+ \gamma^{im} \gamma^{nj} K \gamma_{mn,j}
+	
+	- K^{kj} {\Gamma^i}_{kj} 
+	- K^{ik} {\Gamma^j}_{kj} 
+	+ \gamma^{ik} {\Gamma^j}_{kj} K
+	+ \Gamma^i K
+	- 8 \pi j^i$<br>
+$= 	
+	 \gamma^{ik} \gamma^{jl} K_{kl,j}
+	- \gamma^{ij} \gamma^{kl} K_{kl,j}
+	
+	- 2 K^{in} \gamma^{jm} d_{jmn}
+	- 2 K^{nj} \gamma^{im} d_{jmn}
+	+ 2 K^{mn} \gamma^{ij} d_{jmn}
+	+ 2 \gamma^{im} \gamma^{nj} K d_{jmn}
+	
+	- K^{kj} {\Gamma^i}_{kj} 
+	- K^{ik} {\Gamma^j}_{kj} 
+	+ \gamma^{ik} {\Gamma^j}_{kj} K
+	+ \Gamma^i K
+	- 8 \pi j^i$<br>
+<br>
+$M_i = \gamma_{ij} M^j$<br>
+$ = \gamma_{im} (
+		 \gamma^{mk} \gamma^{jl} K_{kl,j}
+		- \gamma^{mj} \gamma^{kl} K_{kl,j}
+		
+		- 2 K^{mk} \gamma^{jl} d_{jkl}
+		- 2 K^{jk} \gamma^{ml} d_{jkl}
+		+ 2 K^{kl} \gamma^{mj} d_{jkl}
+		+ 2 \gamma^{mk} \gamma^{jl} K d_{jkl}
+		
+		- K^{kj} {\Gamma^m}_{kj} 
+		- K^{mk} {\Gamma^j}_{kj} 
+		+ \gamma^{mk} {\Gamma^j}_{kj} K
+		+ \Gamma^m K
+		- 8 \pi j^m )$<br>
+$ = 
+	2 \gamma^{jk} K_{k[i,j]}
+	
+	- 2 {K_i}^k {d_{jk}}^j
+	- {K_i}^k {d_{kj}}^j
+	
+	+ 3 K^{jk} d_{ijk}
+	- 4 K^{jk} d_{jki}
+	
+	+ 4 K {d^j}_{ji}
+
+	- 8 \pi j_i$<br>
+<br>
+So why can't we just substitute this directly into $K_{ij,t}$ instead of creating a whole new variable -- which gets substituted instead?<br>
+$2 \gamma^{ij} K_{i[k,j]} =
+	 2 {K_k}^i {d_{ji}}^j
+	+ {K_k}^i {d_{ij}}^j
+	- 3 K^{ij} d_{kij}
+	+ 4 K^{ij} d_{ijk}
+	- 4 K {d^j}_{jk}
+	+ 8 \pi j_k$<br>
+<br>
+But instead, hmm, they start with $\Gamma_{i,t}$ and then add $2 \alpha M_i$ (according to 2008 Alcubierre), and then replace $V_{k,t}$'s $K_{ij,k}$ terms with $\Gamma_i$ terms.<br>
+Either way, here's the substitution:<br>
+$V_{k,t} = 
+	  2 \alpha K_{i[k,j]} \gamma^{ij} 
+	
+	- \alpha a_k K
+	+ \alpha a^j K_{kj}
+	
+	+ 2 \alpha K^{ij} (d_{kij} - d_{ijk})
+	
+	+ \gamma^{ij} \gamma_{l[j} {\beta^l}_{,k]i}
+	
+	+ V_{k,l} \beta^l
+	+ V_l {\beta^l}_{,k} 
+$<br>
+$V_{k,t} = 
+	  2 \alpha K_{i[k,j]} \gamma^{ij} 
+	
+	- \alpha a_k K
+	+ \alpha a^j K_{kj}
+	
+	+ 2 \alpha K^{ij} (d_{kij} - d_{ijk})
+	
+	+ \gamma^{ij} \gamma_{l[j} {\beta^l}_{,k]i}
+	
+	+ V_{k,l} \beta^l
+	+ V_l {\beta^l}_{,k} 
+$<br>
+$ = 
+	\alpha (
+		 2 {K_k}^i {d_{ji}}^j
+		+ {K_k}^i {d_{ij}}^j
+		- 3 K^{ij} d_{kij}
+		+ 4 K^{ij} d_{ijk}
+		- 4 K {d^j}_{jk}
+		+ 8 \pi j_k  
+	)
+	- \alpha a_k K
+	+ \alpha a^j K_{kj}
+	
+	+ 2 \alpha K^{ij} (d_{kij} - d_{ijk})
+	
+	+ \gamma^{ij} \gamma_{l[j} {\beta^l}_{,k]i}
+	
+	+ V_{k,l} \beta^l
+	+ V_l {\beta^l}_{,k} 
+$<br>
+$= \alpha (
+		- a_k K
+		+ a^j K_{kj}
+		+ 2 {K_k}^i {d^j}_{ji}
+		+ {K_k}^i {d_{ij}}^j
+		- K^{ij} d_{kij}
+		+ 2 K^{ij} d_{ijk}
+		- 4 K {d^j}_{jk}
+		+ 8 \pi j_k  
+	)
+	
+	+ \gamma^{ij} \gamma_{l[j} {\beta^l}_{,k]i}
+	
+	+ V_{k,l} \beta^l
+	+ V_l {\beta^l}_{,k} 
+$<br>
+So somehow a $\Gamma^i$ probably gets in there, and somehow ${\Gamma^i}_{,t}$ gets the $8 \pi j^i$...<br>
+<br>
+
 Now the $K_{ij,t}$ evolution can be recast using $V_{(i,j)}$...<br>
 $K_{ij,t} =
 	- \alpha \delta^m_{(i} \delta^r_{j)} a_{m,r} 
@@ -103,7 +242,9 @@ $K_{ij,t} =
 		+ {d_{(i}}^{kl} d_{j)kl} 
 		+ K K_{(ij)} 
 		- 2 K_{(i|k} {K^k}_{j)}
-	)$<br>
+	)
+	+ 4 \pi \alpha (\gamma_{ij} (S - \rho) - 2 S_{ij})
+	$<br>
 substitute $2 \alpha V_{(i,j)}$<br>
 $=
 	- \alpha \delta^m_{(i} \delta^r_{j)} a_{m,r} 
@@ -125,7 +266,9 @@ $=
 		+ {d_{(i}}^{kl} d_{j)kl} 
 		+ K K_{(ij)} 
 		- 2 K_{(i|k} {K^k}_{j)}
-	)$<br>
+	)
+	+ 4 \pi \alpha (\gamma_{ij} (S - \rho) - 2 S_{ij})
+	$<br>
 $=
 	- \alpha \delta^m_{(i} \delta^r_{j)} a_{m,r} 
 	+ \alpha (
@@ -149,7 +292,9 @@ $=
 		+ {d_{(i}}^{kl} d_{j)kl} 
 		+ K K_{(ij)} 
 		- 2 K_{(i|k} {K^k}_{j)}
-	)$<br>
+	)
+	+ 4 \pi \alpha (\gamma_{ij} (S - \rho) - 2 S_{ij})
+	$<br>
 $=
 	- \alpha \delta^m_{(i} \delta^r_{j)} a_{m,r} 
 	+ \alpha (
@@ -171,7 +316,9 @@ $=
 	
 		+ K K_{(ij)} 
 		- 2 K_{(i|k} {K^k}_{j)}
-	)$<br>
+	)
+	+ 4 \pi \alpha (\gamma_{ij} (S - \rho) - 2 S_{ij})
+	$<br>
 <br>
 
 matrix form, omitting $\alpha, \beta^k, \gamma_{ij}$, because they are source-only terms:<br>
@@ -215,7 +362,9 @@ $\left[\matrix{
 			- 3 {d_{(i}}^{kl} d_{j)kl} 
 			+ K K_{(ij)} 
 			- 2 K_{(i|k} {K^k}_{j)}
-		) \\
+		)
+		+ 4 \pi \alpha (\gamma_{ij} (S - \rho) - 2 S_{ij})
+		\\
 	0
 }\right]$<br>
 <br>

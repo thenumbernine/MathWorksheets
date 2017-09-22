@@ -56,15 +56,18 @@ $= \gamma^{kl} (d_{ilj,k} - d_{ikl,j} - d_{kij,l} + d_{jik,l})
 $<br>
 
 <h3>ADM</h3>
-$\frac{d}{dt} \alpha = -\alpha^2 Q$<br>
+substituting Bona-Masso slicing, $Q = f(\alpha) \cdot K$...<br>
+$\frac{d}{dt} \alpha = -\alpha^2 Q = -\alpha^2 f \gamma^{ij} K_{ij}$<br>
 $\frac{d}{dt} \gamma_{ij} = -2 \alpha K_{ij}$<br>
 $\frac{d}{dt} K_{ij} = -D_i D_j \alpha + \alpha (R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
 <br>
 expanded, in terms of $\partial_t$:<br>
-$\alpha_{,t} = \alpha_{,i} \beta^i - \alpha^2 Q$<br>
+$\alpha_{,t} = \alpha_{,i} \beta^i - \alpha^2 f \gamma^{ij} K_{ij}$<br>
 $\gamma_{ij,t} = \gamma_{ij,k} \beta^k + \gamma_{kj} {\beta^k}_{,i} + \gamma_{ik} {\beta^k}_{,j} - 2 \alpha K_{ij}$<br>
 $K_{ij,t} = K_{ij,k} \beta^k + K_{kj} {\beta^k}_{,i} + K_{ik} {\beta^k}_{,j} 
-	- \alpha_{,ij} + {\Gamma^k}_{ij} \alpha_{,k} + \alpha (R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j)$<br>
+	- \alpha_{,ij} + {\Gamma^k}_{ij} \alpha_{,k} + \alpha (R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j)
+	+ 4 \pi \alpha (\gamma_{ij} (S - \rho) - 2 S_{ij})
+$<br>
 <br>
 hyperbolic variables:<br>
 $a_k = (ln\alpha)_{,k} = \alpha_{,k} / \alpha$<br>
@@ -167,7 +170,9 @@ $K_{ij,t} =
 		+ d_{ikl} {d_j}^{kl} 
 		+ K K_{ij} 
 		- 2 K_{ik} {K^k}_j
-	)$<br>
+	)
+	+ 4 \pi \alpha (\gamma_{ij} (S - \rho) - 2 S_{ij})
+	$<br>
 $=
 	- \alpha \delta^m_{(i} \delta^r_{j)} a_{m,r} 
 	+ \alpha (
@@ -189,7 +194,9 @@ $=
 		+ d_{ikl} {d_j}^{kl} 
 		+ K K_{ij} 
 		- 2 K_{ik} {K^k}_j
-	)$<br>
+	)
+	+ 4 \pi \alpha (\gamma_{ij} (S - \rho) - 2 S_{ij})
+	$<br>
 $=
 	- \alpha \delta^m_{(i} \delta^r_{j)} a_{m,r} 
 	+ \alpha (
@@ -210,7 +217,9 @@ $=
 		+ d_{ikl} {d_j}^{kl} 
 		+ K K_{ij} 
 		- 2 K_{ik} {K^k}_j
-	)$<br>
+	)
+	+ 4 \pi \alpha (\gamma_{ij} (S - \rho) - 2 S_{ij})
+	$<br>
 grouping symmetric terms...<br>
 $=
 	- \alpha \delta^m_{(i} \delta^r_{j)} a_{m,r} 
@@ -230,7 +239,9 @@ $=
 		+ {d_{(i}}^{kl} d_{j)kl} 
 		+ K K_{(ij)} 
 		- 2 K_{(i|k} {K^k}_{j)}
-	)$<br>
+	)
+	+ 4 \pi \alpha (\gamma_{ij} (S - \rho) - 2 S_{ij})
+	$<br>
 substitute $V_k = {d_{km}}^m - {d^m}_{mk}$<br>
 $=
 	- \alpha \delta^m_{(i} \delta^r_{j)} a_{m,r} 
@@ -249,7 +260,9 @@ $=
 		+ {d_{(i}}^{kl} d_{j)kl} 
 		+ K K_{(ij)} 
 		- 2 K_{(i|k} {K^k}_{j)}
-	)$<br>
+	)
+	+ 4 \pi \alpha (\gamma_{ij} (S - \rho) - 2 S_{ij})
+	$<br>
 $=
 	- \alpha \delta^m_{(i} \delta^r_{j)} a_{m,r} 
 	+ \alpha (
@@ -267,7 +280,9 @@ $=
 		+ {d_{(i}}^{kl} d_{j)kl} 
 		+ K K_{(ij)} 
 		- 2 K_{(i|k} {K^k}_{j)}
-	)$<br>
+	)
+	+ 4 \pi \alpha (\gamma_{ij} (S - \rho) - 2 S_{ij})
+	$<br>
 
 Now if I wanted, I could introduce the flux variable of $K_{ij,t}$ ...<br>
 Let ${\Lambda^k}_{ij} = {d^k}_{ij} + \delta^k_{(i} ( a_{j)} + {d_{j)m}}^m - 2 {d^m}_{mj)})$<br>
@@ -327,6 +342,7 @@ $\left[\matrix{
 		+ 2 \alpha ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
 		+ \alpha K K_{(ij)} 
 		- 2 \alpha K_{(i|k} {K^k}_{j)}
+		+ 4 \pi \alpha (\gamma_{ij} (S - \rho) - 2 S_{ij})
 }\right]$<br>
 <br>
 
@@ -371,6 +387,7 @@ $\left[\matrix{
 			+ K K_{(ij)} 
 			- 2 K_{(i|k} {K^k}_{j)}
 		)
+		+ 4 \pi \alpha (\gamma_{ij} (S - \rho) - 2 S_{ij})
 }\right]$<br>
 
 Separating the acoustic tensor from the flux Jacobian tensor:<br>
