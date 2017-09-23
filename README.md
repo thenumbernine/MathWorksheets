@@ -110,25 +110,25 @@ Here's the CDN URLs:
 
 [Navier-Stokes](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Navier%2dStokes%2ehtml)
 
-[Numerical Relativity/1_intro](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/1_intro%2ehtml)
+[Numerical Relativity/1 intro](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/1%20intro%2ehtml)
 
-[Numerical Relativity/2_hyperbolic](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/2_hyperbolic%2ehtml)
+[Numerical Relativity/2 list of formalisms](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/2%20list%20of%20formalisms%2ehtml)
 
-[Numerical Relativity/3.1_adm_with_V](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/3%2e1_adm_with_V%2ehtml)
+[Numerical Relativity/3 adm with V](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/3%20adm%20with%20V%2ehtml)
 
-[Numerical Relativity/3.2_adm_with_GammaU](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/3%2e2_adm_with_GammaU%2ehtml)
+[Numerical Relativity/3 adm](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/3%20adm%2ehtml)
 
-[Numerical Relativity/3_adm_hyp_full](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/3_adm_hyp_full%2ehtml)
+[Numerical Relativity/3.2 adm with Gamma](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/3%2e2%20adm%20with%20Gamma%2ehtml)
 
-[Numerical Relativity/adm_to_efe](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/adm_to_efe%2ehtml)
+[Numerical Relativity/adm from efe](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/adm%20from%20efe%2ehtml)
 
 [Numerical Relativity/bssnok](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/bssnok%2ehtml)
 
 [Numerical Relativity/eigenwhatever](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/eigenwhatever%2ehtml)
 
-[Numerical Relativity/equal_up_to_principal_part](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/equal_up_to_principal_part%2ehtml)
+[Numerical Relativity/equal up to principal part](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/equal%20up%20to%20principal%20part%2ehtml)
 
-[Numerical Relativity/z4_hyp_full](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/z4_hyp_full%2ehtml)
+[Numerical Relativity/z4](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/z4%2ehtml)
 
 [Relativistic Electromagnetism metric](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Relativistic%20Electromagnetism%20metric%2ehtml)
 
