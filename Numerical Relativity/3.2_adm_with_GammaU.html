@@ -1,0 +1,418 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Numerical Relativity Eigenfields</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+	</head>
+    <body onload='tryToFindMathJax();'>
+
+Now introduce $\Gamma^k$ instead<br>
+$\Gamma^k = {\Gamma^k}_{ij} \gamma^{ij}$<br>
+$= \gamma^{kl} \Gamma_{lij} \gamma^{ij}$<br>
+$= \gamma^{kl} (d_{jli} + d_{ilj} - d_{lij}) \gamma^{ij}$<br>
+$= 2 {d_i}^{ik} - {d^{ki}}_i$<br>
+$= {d_i}^{ik} - V^k$<br>
+so<br>
+$V^k = {d_i}^{ik} - \Gamma^k$<br>
+<br>
+
+${\Gamma^k}_{,\mu}$<br>
+$= (\gamma^{kl} (d_{jli} + d_{ilj} - d_{lij}) \gamma^{ij})_{,\mu}$<br>
+$= 	\gamma^{kl}_{,\mu} (d_{jli} + d_{ilj} - d_{lij}) \gamma^{ij}
+	+ \gamma^{kl} (d_{jli} + d_{ilj} - d_{lij})_{,\mu} \gamma^{ij}
+	+ \gamma^{kl} (d_{jli} + d_{ilj} - d_{lij}) \gamma^{ij}_{,\mu} $<br>
+$= 	\gamma^{kl} \gamma^{ij} (2 d_{ilj,\mu} - d_{lij,\mu})
+	- \gamma^{km} \gamma_{mn,\mu} \gamma^{nl} (d_{jli} + d_{ilj} - d_{lij}) \gamma^{ij}
+	- \gamma^{kl} (d_{jli} + d_{ilj} - d_{lij}) \gamma^{im} \gamma_{mn,\mu} \gamma^{nj}$<br>
+$= 	\gamma^{kl} \gamma^{ij} (2 d_{ijl,\mu} - d_{lij,\mu})
+	- \gamma^{km} \gamma_{mn,\mu} \Gamma^n
+	- (2 d^{mnk} - d^{kmn}) \gamma_{mn,\mu}$<br>
+<br>
+
+${\Gamma^k}_{,r}
+= 	\gamma^{kl} \gamma^{ij} (2 d_{ilj,r} - d_{lij,r})
+	- \gamma^{km} \gamma_{mn,r} \gamma^{nl} (d_{jli} + d_{ilj} - d_{lij}) \gamma^{ij}
+	- \gamma^{kl} (d_{jli} + d_{ilj} - d_{lij}) \gamma^{im} \gamma_{mn,r} \gamma^{nj}$<br>
+$= 	(2 \gamma^{kp} \gamma^{mq} - \gamma^{km} \gamma^{pq}) d_{mpq,r}
+	- 2 {d_r}^{kj} \Gamma_j
+	- 2 {d_r}^{ij} (2 {d_{ij}}^k - {d^k}_{ij}) $<br>
+<br>
+
+${\Gamma^k}_{,t}
+= \gamma^{kl} \gamma^{ij} (2 d_{ilj,t} - d_{lij,t})
+	- \gamma^{km} \gamma_{mn,t} \gamma^{nl} (d_{jli} + d_{ilj} - d_{lij}) \gamma^{ij}
+	- \gamma^{kl} (d_{jli} + d_{ilj} - d_{lij}) \gamma^{im} \gamma_{mn,t} \gamma^{nj} $<br>
+$ = \gamma^{kl} \gamma^{ij} (
+		2 \delta^m_i \delta^p_l \delta^q_j
+		- \delta^m_l \delta^p_i \delta^q_j
+	) d_{mpq,t}
+	- (d_{jli} + d_{ilj} - d_{lij}) (
+		\gamma^{km} \gamma^{nl} \gamma^{ij}
+		+ \gamma^{kl} \gamma^{im} \gamma^{nj}
+	) \gamma_{mn,t} $<br>
+$ = (
+		2 \gamma^{kp} \gamma^{mq}
+		- \gamma^{km} \gamma^{pq}
+	) ( 
+		 d_{mpq,l} \beta^l 
+		- \alpha K_{pq,m}
+		+ d_{lpq} {\beta^l}_{,m}
+		+ 2 d_{ml(p} {\beta^l}_{,q)} 
+		+ \gamma_{l(p} {\beta^l}_{,q)m}
+		- \alpha a_m K_{pq}
+	)
+	- (d_{jli} + d_{ilj} - d_{lij}) (
+		\gamma^{km} \gamma^{nl} \gamma^{ij}
+		+ \gamma^{kl} \gamma^{im} \gamma^{nj}
+	) (
+		\gamma_{mn,p} \beta^p 
+		+ 2 \gamma_{p(m} {\beta^p}_{,n)} 
+		- 2 \alpha K_{mn}
+	)$<br>
+$ = 
+	 2 \gamma^{kp} \gamma^{mq} d_{mpq,l} \beta^l 
+	- \gamma^{km} \gamma^{pq} d_{mpq,l} \beta^l 
+	- 2 \gamma^{kp} \gamma^{mq} \alpha K_{pq,m}
+	+ \gamma^{km} \gamma^{pq} \alpha K_{pq,m}
+	+ 2 \gamma^{kp} \gamma^{mq} d_{lpq} {\beta^l}_{,m}
+	- \gamma^{km} \gamma^{pq} d_{lpq} {\beta^l}_{,m}
+	+ 2 \gamma^{kp} \gamma^{mq} 2 d_{ml(p} {\beta^l}_{,q)} 
+	- \gamma^{km} \gamma^{pq} 2 d_{ml(p} {\beta^l}_{,q)} 
+	+ 2 \gamma^{kp} \gamma^{mq} \gamma_{l(p} {\beta^l}_{,q)m}
+	- \gamma^{km} \gamma^{pq} \gamma_{l(p} {\beta^l}_{,q)m}
+	- 2 \gamma^{kp} \gamma^{mq} \alpha a_m K_{pq}
+	+ \gamma^{km} \gamma^{pq} \alpha a_m K_{pq}
+	
+	- d_{jli} \gamma^{km} \gamma^{nl} \gamma^{ij} \gamma_{mn,p} \beta^p 
+	- d_{jli} \gamma^{km} \gamma^{nl} \gamma^{ij} 2 \gamma_{p(m} {\beta^p}_{,n)} 
+	+ d_{jli} \gamma^{km} \gamma^{nl} \gamma^{ij} 2 \alpha K_{mn}
+	- d_{ilj} \gamma^{km} \gamma^{nl} \gamma^{ij} \gamma_{mn,p} \beta^p 
+	- d_{ilj} \gamma^{km} \gamma^{nl} \gamma^{ij} 2 \gamma_{p(m} {\beta^p}_{,n)} 
+	+ d_{ilj} \gamma^{km} \gamma^{nl} \gamma^{ij} 2 \alpha K_{mn}
+	+ d_{lij} \gamma^{km} \gamma^{nl} \gamma^{ij} \gamma_{mn,p} \beta^p 
+	+ d_{lij} \gamma^{km} \gamma^{nl} \gamma^{ij} 2 \gamma_{p(m} {\beta^p}_{,n)} 
+	- d_{lij} \gamma^{km} \gamma^{nl} \gamma^{ij} 2 \alpha K_{mn}
+	- d_{jli} \gamma^{kl} \gamma^{im} \gamma^{nj} \gamma_{mn,p} \beta^p 
+	- d_{jli} \gamma^{kl} \gamma^{im} \gamma^{nj} 2 \gamma_{p(m} {\beta^p}_{,n)} 
+	+ d_{jli} \gamma^{kl} \gamma^{im} \gamma^{nj} 2 \alpha K_{mn}
+	- d_{ilj} \gamma^{kl} \gamma^{im} \gamma^{nj} \gamma_{mn,p} \beta^p 
+	- d_{ilj} \gamma^{kl} \gamma^{im} \gamma^{nj} 2 \gamma_{p(m} {\beta^p}_{,n)} 
+	+ d_{ilj} \gamma^{kl} \gamma^{im} \gamma^{nj} 2 \alpha K_{mn}
+	+ d_{lij} \gamma^{kl} \gamma^{im} \gamma^{nj} \gamma_{mn,p} \beta^p 
+	+ d_{lij} \gamma^{kl} \gamma^{im} \gamma^{nj} 2 \gamma_{p(m} {\beta^p}_{,n)} 
+	- d_{lij} \gamma^{kl} \gamma^{im} \gamma^{nj} 2 \alpha K_{mn}
+	$<br>	
+$ = 
+	 (2 \gamma^{kp} \gamma^{mq} - \gamma^{km} \gamma^{pq}) \beta^r d_{mpq,r}
+	
+	- \alpha (2 \gamma^{kp} \gamma^{qr} - \gamma^{kr} \gamma^{pq}) K_{pq,r}
+
+	- 2 ({d_l}^{kr} + {d^{rk}}_l) {\beta^l}_{,r}
+	- (2 {d_i}^{ir} - {d^{ri}}_i) \delta^k_l {\beta^l}_{,r} 
+	
+	+ {\beta^k}_{,ij} \gamma^{ij}
+
+	- 2 {d_l}^{jk} (2 {d^i}_{ij} - {d_{ji}}^i) \beta^l 
+	- 2 d_{lij} (2 d^{ijk} - d^{kij}) \beta^l
+	
+	- 2 \alpha a_i K^{ki}
+	+ \alpha a^k K
+
+	+ 4 \alpha {d_i}^{il} {K^k}_l
+	- 2 \alpha {d^{li}}_i {K^k}_l
+	+ 4 \alpha d^{ijk} K_{ij}
+	- 2 \alpha d^{kij} K_{ij}
+	$<br>	
+<br>
+
+...and for the lower form<br>
+$\Gamma_k = \Gamma_{kij} \gamma^{ij}$<br>
+$= (d_{jki} + d_{ikj} - d_{kij}) \gamma^{ij}$<br>
+$= 2 {d^i}_{ik} - {d_{ki}}^i$<br>
+$= {d^i}_{ik} - V_k$<br>
+<br>
+${\Gamma_k}_{,\mu}$<br>
+$= {\gamma_{ki} \Gamma^i}_{,\mu}$<br>
+$= \gamma_{ki,\mu} \Gamma^i + \gamma_{ki} \Gamma^{i,\mu}$<br>
+<br>
+
+$\Gamma_{k,r} = \gamma_{ki,r} \Gamma^i + \gamma_{ki} {\Gamma^i}_{,r}$<br>
+$= 2 d_{rki} \Gamma^i + \gamma_{ki} (
+	(2 \gamma^{ip} \gamma^{mq} - \gamma^{im} \gamma^{pq}) d_{mpq,r}
+	- 2 {d_r}^{ij} \Gamma_j
+	- 2 {d_r}^{kj} (2 {d_{kj}}^i - {d^i}_{kj})
+)$<br>
+$= 2 d_{rki} \Gamma^i 
+	+ (2 \delta^p_k \gamma^{mq} - \delta^m_k \gamma^{pq}) d_{mpq,r}
+	- 2 d_{rkj} \Gamma^j
+	- 2 {d_r}^{ij} (2 d_{ijk} - d_{kij})
+$<br>
+<br>
+
+$\Gamma_{k,t} = (\gamma_{ki} \Gamma^i)_{,t}$<br>
+$= \gamma_{ki,t} \Gamma^i + \gamma_{ki} {\Gamma^i}_{,t}$<br>
+$= 	(
+		\gamma_{ik,j} \beta^j + \gamma_{jk} {\beta^j}_{,i} + \gamma_{ij} {\beta^j}_{,k} - 2 \alpha K_{ik}
+	) \Gamma^i 
+	+ \gamma_{ki} (
+		 (2 \gamma^{ip} \gamma^{mq} - \gamma^{im} \gamma^{pq}) \beta^r d_{mpq,r}
+		
+		- \alpha (2 \gamma^{ip} \gamma^{qr} - \gamma^{ir} \gamma^{pq}) K_{pq,r}
+
+		- 2 ({d_l}^{ir} + {d^{ri}}_l) {\beta^l}_{,r}
+		- (2 {d_n}^{nr} - {d^{rn}}_n) \delta^i_l {\beta^l}_{,r} 
+		
+		+ {\beta^i}_{,nj} \gamma^{nj}
+
+		- 2 {d_l}^{ji} (2 {d^n}_{nj} - {d_{jn}}^n) \beta^l 
+		- 2 d_{lnj} (2 d^{nji} - d^{inj}) \beta^l
+		
+		- 2 \alpha a_n K^{in}
+		+ \alpha a^i K
+
+		+ 4 \alpha {d_n}^{nl} {K^i}_l
+		- 2 \alpha {d^{ln}}_n {K^i}_l
+		+ 4 \alpha d^{nji} K_{nj}
+		- 2 \alpha d^{inj} K_{nj}
+	)$<br>
+$= 	
+	+ \gamma_{jk} {\beta^j}_{,i} \Gamma^i 
+	+ \gamma_{ij} {\beta^j}_{,k} \Gamma^i 
+	- 2 \alpha K_{ik} \Gamma^i 
+
+	+ (
+		2 d_{rki} \Gamma^i
+		+ (2 \delta^p_k \gamma^{mq} - \delta^m_k \gamma^{pq}) d_{mpq,r}
+		- 2 d_{rkj} \Gamma^j
+		- 2 {d_r}^{ij} (2 d_{ijk} - d_{kij})
+	) \beta^r
+	
+	- \alpha (2 \delta^p_k \gamma^{qr} - \delta^r_k \gamma^{pq}) K_{pq,r}
+
+	- 2 ({d_{lk}}^r + {d^r}_{kl}) {\beta^l}_{,r}
+	- (2 {d_n}^{nr} - {d^{rn}}_n) \gamma_{kl} {\beta^l}_{,r} 
+	
+	+ \gamma_{kl} {\beta^l}_{,ij} \gamma^{ij}
+	
+	- 2 \alpha a^i K_{ki}
+	+ \alpha a_k K
+
+	+ 4 \alpha {d_i}^{ij} K_{kj}
+	- 2 \alpha {d^{ji}}_i K_{kj}
+	+ 4 \alpha {d^{ij}}_k K_{ij}
+	- 2 \alpha {d_k}^{ij} K_{ij}
+	$<br>
+$= 	
+	- \alpha (2 \delta^p_k \gamma^{qr} - \delta^r_k \gamma^{pq}) K_{pq,r}
+
+	- 2 ({d_{lk}}^r + {d^r}_{kl}) {\beta^l}_{,r}
+	- (2 {d_n}^{nr} - {d^{rn}}_n) \gamma_{kl} {\beta^l}_{,r} 
+	
+	+ \delta^m_k \beta^r \Gamma_{m,r}
+	
+	+ \gamma_{kl} \Gamma^r {\beta^l}_{,r}
+	+ \delta^r_k \Gamma_l {\beta^l}_{,r}
+	
+	+ \gamma_{kl} {\beta^l}_{,ij} \gamma^{ij}
+	
+	- 2 \alpha K_{ik} \Gamma^i 
+	- 2 \alpha a^i K_{ki}
+	+ \alpha a_k K
+
+	+ 4 \alpha {d_i}^{ij} K_{kj}
+	- 2 \alpha {d^{ji}}_i K_{kj}
+	+ 4 \alpha {d^{ij}}_k K_{ij}
+	- 2 \alpha {d_k}^{ij} K_{ij}
+	$<br>
+<br>
+
+neglecting shift...<br>
+$ = 
+	- 2 \gamma^{kp} \gamma^{qr} \alpha K_{pq,r}
+	+ \gamma^{kr} \gamma^{pq} \alpha K_{pq,r}
+
+	- 2 \alpha a_i K^{ki}
+	+ \alpha a^k K
+
+	+ 2 \alpha (2 {d_i}^{il} - {d^{li}}_i) {K^k}_l
+	+ 2 \alpha (2 d^{ijk} - d^{kij}) K_{ij}
+	$<br>
+neglecting source...<br>
+$ = \alpha (\gamma^{kr} \gamma^{pq} - 2 \gamma^{kp} \gamma^{qr}) K_{pq,r}$<br>
+<br>
+
+Now for application to $K_{ij,t}$...<br>
+$K_{ij,t} =
+	- \alpha \delta^m_{(i} \delta^r_{j)} a_{m,r} 
+	+ \alpha (
+		\gamma^{pq} \delta^m_{(i} \delta^r_{j)}
+		- \gamma^{mr} \delta^p_{(i} \delta^q_{j)}
+	) d_{mpq,r}
+
+	- 2 \alpha \delta^m_{(i} \delta^r_{j)} V_{m,r}
+		
+	+ \beta^k K_{(ij),k}  
+	+ 2 K_{k(i} {\beta^k}_{,j)} 
+	+ \alpha (
+		- a_{(i} a_{j)}
+		
+		+ (2 {d_{(ij)}}^k - {d^k}_{(ij)}) (a_k + V_k - {d^l}_{lk})
+		+ 2 ({d^{kl}}_j - {d^{lk}}_j) d_{kli}
+		+ 4 {d_{(i}}^{kl} d_{kl|j)}
+		- 3 {d_{(i}}^{kl} d_{j)kl} 
+	
+		+ K K_{(ij)} 
+		- 2 K_{(i|k} {K^k}_{j)}
+	)
+	+ 4 \pi \alpha (\gamma_{ij} (S - \rho) - 2 S_{ij})
+$<br>
+$=
+	- \alpha \delta^m_{(i} \delta^r_{j)} a_{m,r} 
+	+ \alpha (
+		\gamma^{pq} \delta^m_{(i} \delta^r_{j)}
+		- \gamma^{mr} \delta^p_{(i} \delta^q_{j)}
+	) d_{mpq,r}
+	
+	- 2 \alpha \delta^m_{(i} \delta^r_{j)} ({d^k}_{km} - \Gamma_m)_{,r}
+	
+	+ \beta^k K_{(ij),k}  
+	+ 2 K_{k(i} {\beta^k}_{,j)} 
+	+ \alpha (
+		- a_{(i} a_{j)}
+		
+		+ (2 {d_{(ij)}}^k - {d^k}_{(ij)}) (a_k + {d^l}_{lk} - \Gamma_k - {d^l}_{lk})
+		+ 2 ({d^{kl}}_j - {d^{lk}}_j) d_{kli}
+		+ 4 {d_{(i}}^{kl} d_{kl|j)}
+		- 3 {d_{(i}}^{kl} d_{j)kl} 
+	
+		+ K K_{(ij)} 
+		- 2 K_{(i|k} {K^k}_{j)}
+	)
+	+ 4 \pi \alpha (\gamma_{ij} (S - \rho) - 2 S_{ij})
+$<br>
+$=
+	- \alpha \delta^m_{(i} \delta^r_{j)} a_{m,r} 
+	+ \alpha (
+		\gamma^{pq} \delta^m_{(i} \delta^r_{j)}
+		- \gamma^{mr} \delta^p_{(i} \delta^q_{j)}
+	) d_{mpq,r}
+	
+	- 2 \alpha \delta^m_{(i} \delta^r_{j)} (\gamma^{kl} d_{klm})_{,r}
+	+ 2 \alpha \delta^m_{(i} \delta^r_{j)} \Gamma_{m,r}
+	
+	+ \beta^k K_{(ij),k}  
+	+ 2 K_{k(i} {\beta^k}_{,j)} 
+	+ \alpha (
+		- a_{(i} a_{j)}
+		
+		+ (2 {d_{(ij)}}^k - {d^k}_{(ij)}) (a_k - \Gamma_k)
+		+ 2 ({d^{kl}}_j - {d^{lk}}_j) d_{kli}
+		+ 4 {d_{(i}}^{kl} d_{kl|j)}
+		- 3 {d_{(i}}^{kl} d_{j)kl} 
+	
+		+ K K_{(ij)} 
+		- 2 K_{(i|k} {K^k}_{j)}
+	)
+	+ 4 \pi \alpha (\gamma_{ij} (S - \rho) - 2 S_{ij})
+$<br>
+$=
+	- \alpha \delta^m_{(i} \delta^r_{j)} a_{m,r} 
+	+ \alpha (
+		\gamma^{pq} \delta^m_{(i} \delta^r_{j)}
+		- \gamma^{mr} \delta^p_{(i} \delta^q_{j)}
+		- 2 \gamma^{mp} \delta^q_{(i} \delta^r_{j)}
+	) d_{mpq,r}
+	
+	+ 2 \alpha \delta^m_{(i} \delta^r_{j)} \Gamma_{m,r}
+	
+	+ \beta^k K_{(ij),k}  
+	
+	+ 2 K_{k(i} {\beta^k}_{,j)} 
+	+ \alpha (
+		- a_{(i} a_{j)}
+		
+		+ (2 {d_{(ij)}}^k - {d^k}_{(ij)}) (a_k - \Gamma_k)
+		+ 2 ({d^{kl}}_j - {d^{lk}}_j) d_{kli}
+		- 3 {d_{(i}}^{kl} d_{j)kl} 
+		+ 8 {d_{(i}}^{kl} d_{kl|j)}
+	
+		+ K K_{(ij)} 
+		- 2 K_{(i|k} {K^k}_{j)}
+	)
+	+ 4 \pi \alpha (\gamma_{ij} (S - \rho) - 2 S_{ij})
+$<br>
+
+matrix form<br>
+$\left[\matrix{
+	a_k \\ d_{kij} \\ K_{ij} \\ \Gamma_k 
+}\right]_{,t}
++ \left[\matrix{
+	-\delta^m_k \beta^r & 
+		0 & 
+		\alpha f \gamma^{pq} \delta^r_k &
+		0 \\
+	0 & 
+		-\delta^m_k \delta^p_i \delta^q_j \beta^r & 
+		\alpha \delta^p_i \delta^q_j \delta^r_k &
+		0 \\
+	\alpha \delta^m_{(i} \delta^r_{j)} &  
+		\alpha (
+			\gamma^{(mr)} \delta^{(p}_{(i} \delta^{q)}_{j)}
+			- \gamma^{(pq)} \delta^{(m}_{(i} \delta^{r)}_{j)}
+			+ 2 \gamma^{mp} \delta^q_{(i} \delta^r_{j)}
+		) &
+		-\delta^p_i \delta^q_j \beta^r &
+		-2 \alpha \delta^m_{(i} \delta^r_{j)} \\
+	0 & 
+		0 &
+		\alpha (2 \delta^p_k \gamma^{qr} - \delta^r_k \gamma^{pq}) &
+		-\delta^m_k \beta^r
+}\right]
+\left[\matrix{
+	a_m \\ d_{mpq} \\ K_{pq} \\ \Gamma_m
+}\right]_{,r}
+= \left[\matrix{
+	a_i {\beta^i}_{,k} 
+		+ \alpha (a_k K (f - \alpha f') - 2 f {d_k}^{ij} K_{ij}) \\
+	d_{lij} {\beta^l}_{,k}
+		+ 2 d_{kl(i} {\beta^l}_{,j)} 
+		+ \gamma_{l(i} {\beta^l}_{,j)k}
+		- \alpha a_k K_{ij} \\
+
+	2 K_{k(i} {\beta^k}_{,j)} 
+		+ \alpha (
+			- a_{(i} a_{j)}
+			+ (2 {d_{(ij)}}^k - {d^k}_{(ij)}) (a_k - \Gamma_k)
+			+ 2 ({d^{kl}}_j - {d^{lk}}_j) d_{kli}
+			- 3 {d_{(i}}^{kl} d_{j)kl} 
+			+ 8 {d_{(i}}^{kl} d_{kl|j)}
+			+ K K_{(ij)} 
+			- 2 K_{(i|k} {K^k}_{j)}
+		)
+		+ 4 \pi \alpha (\gamma_{ij} (S - \rho) - 2 S_{ij})
+		\\
+
+	- 2 ({d_{lk}}^r + {d^r}_{kl}) {\beta^l}_{,r}
+		- (2 {d_n}^{nr} - {d^{rn}}_n) \gamma_{kl} {\beta^l}_{,r} 
+		+ \gamma_{kl} \Gamma^r {\beta^l}_{,r}
+		+ \delta^r_k \Gamma_l {\beta^l}_{,r}
+		
+		+ \gamma_{kl} {\beta^l}_{,ij} \gamma^{ij}
+		
+		- 2 \alpha K_{ik} \Gamma^i 
+		- 2 \alpha a^i K_{ki}
+		+ \alpha a_k K
+
+		+ 4 \alpha {d_i}^{ij} K_{kj}
+		- 2 \alpha {d^{ji}}_i K_{kj}
+		+ 4 \alpha {d^{ij}}_k K_{ij}
+		- 2 \alpha {d_k}^{ij} K_{ij}
+
+}\right]$<br>
+<br>
+
+
+
+	</body>
+</html>
