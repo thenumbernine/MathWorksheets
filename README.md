@@ -72,6 +72,24 @@ Here's the CDN URLs:
 
 [LQG](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/LQG%2ehtml)
 
+[Loop Quantum Gravity/desc](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Loop%20Quantum%20Gravity/desc%2ehtml)
+
+[Loop Quantum Gravity/page1](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Loop%20Quantum%20Gravity/page1%2ehtml)
+
+[Loop Quantum Gravity/page2](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Loop%20Quantum%20Gravity/page2%2ehtml)
+
+[Loop Quantum Gravity/page3](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Loop%20Quantum%20Gravity/page3%2ehtml)
+
+[Loop Quantum Gravity/page4](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Loop%20Quantum%20Gravity/page4%2ehtml)
+
+[Loop Quantum Gravity/page5](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Loop%20Quantum%20Gravity/page5%2ehtml)
+
+[Loop Quantum Gravity/page6](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Loop%20Quantum%20Gravity/page6%2ehtml)
+
+[Loop Quantum Gravity/page7](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Loop%20Quantum%20Gravity/page7%2ehtml)
+
+[Loop Quantum Gravity/page8](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Loop%20Quantum%20Gravity/page8%2ehtml)
+
 [MHD - Eigenmode Analysis](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/MHD%20%2d%20Eigenmode%20Analysis%2ehtml)
 
 [MHD](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/MHD%2ehtml)
@@ -95,6 +113,10 @@ Here's the CDN URLs:
 [Numerical Relativity/1_intro](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/1_intro%2ehtml)
 
 [Numerical Relativity/2_hyperbolic](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/2_hyperbolic%2ehtml)
+
+[Numerical Relativity/3.1_adm_with_V](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/3%2e1_adm_with_V%2ehtml)
+
+[Numerical Relativity/3.2_adm_with_GammaU](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/3%2e2_adm_with_GammaU%2ehtml)
 
 [Numerical Relativity/3_adm_hyp_full](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/3_adm_hyp_full%2ehtml)
 
