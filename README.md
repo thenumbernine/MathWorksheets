@@ -114,9 +114,9 @@ Here's the CDN URLs:
 
 [Numerical Relativity/2 list of formalisms](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/2%20list%20of%20formalisms%2ehtml)
 
-[Numerical Relativity/3 adm with V](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/3%20adm%20with%20V%2ehtml)
-
 [Numerical Relativity/3 adm](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/3%20adm%2ehtml)
+
+[Numerical Relativity/3.1 adm with V](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/3%2e1%20adm%20with%20V%2ehtml)
 
 [Numerical Relativity/3.2 adm with Gamma](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/3%2e2%20adm%20with%20Gamma%2ehtml)
 
