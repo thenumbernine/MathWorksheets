@@ -86,12 +86,51 @@ $ \textbf{da} = \textbf{d}( a_{\alpha_1\dots\alpha_p} \textbf{dx}^{\alpha_1} \we
 $= \sum_{\beta \notin \alpha_i} \partial_\beta a_{\alpha_1\dots\alpha_p} \textbf{dx}^\beta \wedge \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p} $<br>
 <br>
 
+$\textbf{dw}$ on a manifold:<br> 
+$= \textbf{d} (\textbf{w}_{\alpha_1 \dots \alpha_p} \boldsymbol{\omega}^{\alpha_1} \wedge \dots \wedge \boldsymbol{\omega}^{\alpha_p})$<br>
+$= (\textbf{d} \textbf{w}_{\alpha_1 \dots \alpha_p}) \boldsymbol{\omega}^{\alpha_1} \wedge \dots \wedge \boldsymbol{\omega}^{\alpha_p}
+	+ \textbf{w}_{\alpha_1 \dots \alpha_p} \Sigma_{j=1}^p \boldsymbol{\omega}^{\alpha_1} \wedge \dots \wedge \boldsymbol{\omega}^{\alpha_{j-1}} 
+		\wedge \textbf{d} \boldsymbol{\omega}^{\alpha_j} \wedge \boldsymbol{\omega}^{\alpha_{j+1}} \wedge \dots \wedge \boldsymbol{\omega}^{\alpha_p}$<br>
+using $\textbf{d} \boldsymbol{\omega}^\alpha = \boldsymbol{\omega}^\beta \wedge {\boldsymbol{\omega}^\alpha}_\beta$:<br>
+$= (\boldsymbol{\omega}^\beta \wedge \partial_\beta \textbf{w}_{\alpha_1 \dots \alpha_p}) \boldsymbol{\omega}^{\alpha_1} \wedge \dots \wedge \boldsymbol{\omega}^{\alpha_p}
+	+ \textbf{w}_{\alpha_1 \dots \alpha_p} \Sigma_{j=1}^p \boldsymbol{\omega}^{\alpha_1} \wedge \dots \wedge \boldsymbol{\omega}^{\alpha_{j-1}} 
+		\wedge (\boldsymbol{\omega}^\beta \wedge {\boldsymbol{\omega}^{\alpha_j}}_\beta)
+		\wedge \boldsymbol{\omega}^{\alpha_{j+1}} \wedge \dots \wedge \boldsymbol{\omega}^{\alpha_p}$<br>
+using ${\boldsymbol{\omega}^\alpha}_\beta = {\Gamma^\alpha}_{\beta\gamma} \boldsymbol{\omega}^\gamma$<br>
+$= (\partial_\beta \textbf{w}_{\alpha_1 \dots \alpha_p}) \boldsymbol{\omega}^\beta \wedge \boldsymbol{\omega}^{\alpha_1} \wedge \dots \wedge \boldsymbol{\omega}^{\alpha_p}
+	+ \textbf{w}_{\alpha_1 \dots \alpha_p} \Sigma_{j=1}^p \boldsymbol{\omega}^{\alpha_1} \wedge \dots \wedge \boldsymbol{\omega}^{\alpha_{j-1}} 
+		\wedge \boldsymbol{\omega}^\beta \wedge {\Gamma^{\alpha_j}}_{\beta\gamma} \boldsymbol{\omega}^\gamma
+		\wedge \boldsymbol{\omega}^{\alpha_{j+1}} \wedge \dots \wedge \boldsymbol{\omega}^{\alpha_p}$<br>
+exchange labels of $\alpha_j$ and $\gamma$<br>
+$= (\partial_\beta \textbf{w}_{\alpha_1 \dots \alpha_p}) \boldsymbol{\omega}^\beta \wedge \boldsymbol{\omega}^{\alpha_1} \wedge \dots \wedge \boldsymbol{\omega}^{\alpha_p}
+	+ \Sigma_{j=1}^p \textbf{w}_{\alpha_1 \dots \alpha_{j-1} \gamma \alpha_{j+1} \dots \alpha_p} 
+		\boldsymbol{\omega}^{\alpha_1} \wedge \dots \wedge \boldsymbol{\omega}^{\alpha_{j-1}} 
+		\wedge \boldsymbol{\omega}^\beta \wedge {\Gamma^{\gamma}}_{\beta \alpha_j} \boldsymbol{\omega}^{\alpha_j}
+		\wedge \boldsymbol{\omega}^{\alpha_{j+1}} \wedge \dots \wedge \boldsymbol{\omega}^{\alpha_p}$<br>
+move $\boldsymbol{\omega}^\beta$ to the far left<br>
+$= (
+		\partial_\beta \textbf{w}_{\alpha_1 \dots \alpha_p} 
+		+ \Sigma_{j=1}^p (-1)^{j-1} \textbf{w}_{\alpha_1 \dots \alpha_{j-1} \gamma \alpha_{j+1} \dots \alpha_p} 
+		{\Gamma^\gamma}_{\beta \alpha_j} 
+	) \boldsymbol{\omega}^\beta \wedge \boldsymbol{\omega}^{\alpha_1} \wedge \dots \wedge \boldsymbol{\omega}^{\alpha_p}
+$<br>
+Notice that, in the case of a coordinate basis, ${\Gamma^\gamma}_{\beta \alpha_j}$ is symmetric across $\beta, \alpha_j$, while the wedge product basis is antisymmetric across them, 
+so the connection terms would cancel and a typical partial derivative based expression would remain.<br>
+Otherwise, if we are in a torsion or a non-holonomic coordinate system:<br>
+$= (
+		\partial_\beta \textbf{w}_{\alpha_1 \dots \alpha_p} 
+		+ \Sigma_{j=1}^p (-1)^j \textbf{w}_{\alpha_1 \dots \alpha_{j-1} \gamma \alpha_{j+1} \dots \alpha_p} 
+		{\Gamma^\gamma}_{[\alpha_j \beta]}
+	) \boldsymbol{\omega}^\beta \wedge \boldsymbol{\omega}^{\alpha_1} \wedge \dots \wedge \boldsymbol{\omega}^{\alpha_p}
+$<br>
+<br>
+
 <!-- TODO when to use omegas and when to use dx's, and a better explination of why which is chosen? -->
 exterior derivative of wedge product of p-form $\textbf{a}$ and q-form $\textbf{b}$:<br>
 $ \textbf{d} ( \textbf{a} \wedge \textbf{b} ) $<br>
 $ = \textbf{d} ( a_{\alpha_1\dots\alpha_p} \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p} \wedge b_{\beta_1 \dots \beta_q} \textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q})$<br>
 $ = \textbf{d} ( a_{\alpha_1\dots\alpha_p} b_{\beta_1 \dots \beta_q} \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p} \wedge \textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q})$<br>
-using $ \textbf{d}^2\textbf{x}^i = 0 $<br>
+using $ \textbf{d}^2\textbf{x}^\mu = 0 $<br>
 $ = \textbf{d} ( a_{\alpha_1\dots\alpha_p} b_{\beta_1 \dots \beta_q}) \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p} \wedge \textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q}$<br>
 $ = {\partial\over{\partial x^\gamma}} ( a_{\alpha_1\dots\alpha_p} b_{\beta_1 \dots \beta_q}) \textbf{dx}^\gamma \wedge \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p} \wedge \textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q}$<br>
 $ = ( {\partial\over{\partial x^\gamma}} a_{\alpha_1\dots\alpha_p} b_{\beta_1 \dots \beta_q} + a_{\alpha_1\dots\alpha_p} {\partial\over{\partial x^\gamma}} b_{\beta_1 \dots \beta_q}) \textbf{dx}^\gamma \wedge \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p} \wedge \textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q}$<br>
