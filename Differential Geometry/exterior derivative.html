@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Differential Geometry - Exterior Derivative</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+	</head>
+    <body onload='tryToFindMathJax();'>
+
+These notes are going to succeed page 1 of my "Loop Quantum Gravity" notes.<br>
+Soon I'll split the first half of those notes off into these "Differential Geometry" notes.<br>
+
+<br><hr><br>
+
+wedge product of p-form basis: $ \boldsymbol{\omega}^{\alpha_1} \wedge \dots \wedge \boldsymbol{\omega}^{\alpha_p} 
+	= p! \cdot \boldsymbol{\omega}^{[\alpha_1} \otimes \dots \otimes \boldsymbol{\omega}^{\alpha_p]}$<br>
+wedge product of one-form basis: $ \boldsymbol{\omega}^\alpha \wedge \boldsymbol{\omega}^\beta = \boldsymbol{\omega}^\alpha \otimes \boldsymbol{\omega}^\beta - \boldsymbol{\omega}^\beta \otimes \boldsymbol{\omega}^\alpha $<br>
+wedge product of one-forms: $ \textbf{a} \wedge \textbf{b} 
+	= a_\alpha \boldsymbol{\omega}^\alpha \wedge b_\beta \boldsymbol{\omega}^\beta
+	= a_\alpha b_\beta \boldsymbol{\omega}^\alpha \wedge \boldsymbol{\omega}^\beta
+	= a_\alpha b_\beta (\boldsymbol{\omega}^\alpha \otimes \boldsymbol{\omega}^\beta - \boldsymbol{\omega}^\beta \otimes \boldsymbol{\omega}^\alpha)
+	= (a_\alpha b_\beta - b_\alpha a_\beta) \boldsymbol{\omega}^\alpha \otimes \boldsymbol{\omega}^\beta
+	= \textbf{a} \otimes \textbf{b} - \textbf{b} \otimes \textbf{a}
+$<br>
+<br>
+wedge product basis antisymmetry: $ \textbf{dx}^\alpha \wedge \textbf{dx}^\beta = -\textbf{dx}^\beta \wedge \textbf{dx}^\alpha $<br>
+wedge product antisymmetry for p-form $\textbf{a}$ and q-form $\textbf{b}$:<br>
+$ \textbf{a} \wedge \textbf{b} $<br>
+$ = (a_{\alpha_1 \dots \alpha_p} \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p}) \wedge (b_{\beta_1 \dots \beta_q} \textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q}) $<br>
+if any of $ \alpha_1 \dots \alpha_p, \beta_q \dots \beta_q $ are not unique then the result is zero (courtesy of $ \textbf{dx}^\alpha \wedge \textbf{dx}^\alpha = 0 $ ). Otherwise:<br>
+$ = a_{\alpha_1 \dots \alpha_p} b_{\beta_1 \dots \beta_q} (\textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p}) \wedge (\textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q}) $<br>
+Rotate the first $ \textbf{dx}^{\beta_1} $ to the far left side using $ \textbf{dx}^\alpha \wedge \textbf{dx}^\beta = -\textbf{dx}^\beta \wedge \textbf{dx}^\alpha $.  Doing so requires $p$ applications of the rule.<br>
+$ = (-1)^p a_{\alpha_1 \dots \alpha_p} b_{\beta_1 \dots \beta_q} \textbf{dx}^{\beta_1} \wedge (\textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p}) \wedge \textbf{dx}^{\beta_2} \wedge \dots \wedge \textbf{dx}^{\beta_q} $<br>
+Continue to do the same for the rest of the $\textbf{dx}^{\beta_k}$'s, do\alphang so a number of $q$ times:<br>
+$ = (-1)^{pq} a_{\alpha_1 \dots \alpha_p} b_{\beta_1 \dots \beta_q} (\textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q}) \wedge (\textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p}) $<br>
+$ = (-1)^{pq} (b_{\beta_1 \dots \beta_q} \textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q}) \wedge (a_{\alpha_1 \dots \alpha_p} \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p}) $<br>
+$ = (-1)^{pq} \textbf{b} \wedge \textbf{a} $<br>
+<br>
+
+wedge products and forms in terms of index notation<br>
+$\frac{1}{p!} A_{\alpha_1 \dots \alpha_p} \delta^{\alpha_1 \dots \alpha_p \beta_1 \dots \beta_p}_{\gamma_1 \dots \gamma_p \gamma_{p+1} \dots \gamma_{p+q}}$
+$= \underset{\alpha_1 &lt; \alpha_2 &lt; \dots &lt; \alpha_p}{\Sigma} A_{\alpha_1 \dots \alpha_p} \delta^{\alpha_1 \dots \alpha_p \beta_1 \dots \beta_p}_{\gamma_1 \dots \dots \gamma_{p+q}}$
+$=A_{|\alpha_1 \dots \alpha_p|} \delta^{\alpha_1 \dots \alpha_p \beta_1 \dots \beta_p}_{\gamma_1 \dots\dots \gamma_{p+q}}$
+<br>
+$\delta^{\alpha_1 \dots \alpha_p \beta_1 \dots \beta_q}_{\gamma_1 \dots \dots \gamma_{p+q}} \delta^{\mu_1 \dots \mu_q}_{|\beta_1 \dots \beta_q|}
+= \delta^{\alpha_1 \dots \alpha_p \mu_1 \dots \mu_q}_{\gamma_1 \dots \dots \gamma_{p+q}}$
+<br>
+$(\boldsymbol{\alpha} \wedge \boldsymbol{\beta})_{\lambda_1 \dots \lambda_{p+q}} 
+= \delta^{\mu_1 \dots \mu_p \nu_1 \dots \nu_q}_{\lambda_1 \dots \lambda_p \lambda_{p+1} \dots \lambda_{p+q}} 
+	\alpha_{|\mu_1 \dots \mu_p|} \beta_{|\nu_1 \dots \nu_q|}$
+<br>
+$(\textbf{U} \wedge \textbf{V})^{\lambda_1 \dots \lambda_{p+q}} 
+= \delta^{\lambda_1 \dots \lambda_p \lambda_{p+1} \dots \lambda_{p+q}}_{\mu_1 \dots \mu_p \nu_1 \dots \nu_q}
+	U^{|\mu_1 \dots \mu_p|} V^{|\nu_1 \dots \nu_q|}$
+<br>
+$[( \boldsymbol{\alpha} \wedge \boldsymbol{\beta} ) \wedge \boldsymbol{\gamma} ]_{\alpha_1 \dots \alpha_{p+q+r}}$
+$= \delta^{\lambda_1 \dots \lambda_p \mu_1 \dots \mu_q \nu_1 \dots \nu_r}_{\sigma_1 \dots \dots \dots \sigma_{p+q+r}}
+	\alpha_{|\lambda_1 \dots \lambda_p|}
+	\beta_{|\mu_1 \dots \mu_q|}
+	\gamma_{|\nu_1 \dots \nu_r|}$
+$= [\boldsymbol{\alpha} \wedge (\boldsymbol{\beta} \wedge \boldsymbol{\gamma})]_{\sigma_1 \dots \sigma_{p+q+r}}$
+<br>
+$(\textbf{u}_1 \wedge \dots \wedge \textbf{u}_p)^{\alpha_1 \dots \alpha_p}$
+$= \delta^{\alpha_1 \dots \alpha_p}_{\mu_1 \dots \mu_p} (u_1)^{\mu_1} \dots (u_p)^{\mu_p}$
+$= p! {u_1}^{[\alpha_1} \dots {u_p}^{\alpha_p]}$
+$= \delta^{\alpha_1 \dots \alpha_p}_{1 \dots p} det({u_\mu}^\lambda)$<br>
+<br>
+
+exterior derivative: $ \textbf{d} = \partial_j \textbf{dx}^j \wedge $<br>
+exchangeability of exterior and covariant derivative for 2-forms: $ \textbf{dF} = \boldsymbol{\nabla} \cdot\ast\textbf{F}$, $\textbf{d}$ $\ast\textbf{F} = \boldsymbol{\nabla} \cdot \textbf{F} $<br>
+exterior derivative of scalar: 
+$ \textbf{d}\phi 
+	= \partial_\alpha \phi \textbf{dx}^\alpha
+	= \partial_\alpha \phi \boldsymbol{\omega}^\alpha
+$ <br>
+exterior derivative of one-form: 
+$ \textbf{dw} 
+	= \textbf{d}(w_\beta \textbf{dx}^\beta)
+	= \textbf{d}w_\beta \wedge \textbf{dx}^\beta + w_\beta \textbf{d}^2\textbf{x}^\beta
+	= \textbf{d}w_\beta \wedge \textbf{dx}^\beta
+	= \partial_\alpha w_\beta \textbf{dx}^\alpha \wedge \textbf{dx}^\beta
+	= (\partial_\alpha w_\beta - \partial_\beta w_\alpha) \textbf{dx}^{|\alpha} \wedge \textbf{dx}^{\beta|}
+$<br>
+exterior derivative of a p-form: 
+$ \textbf{da} = \textbf{d}( a_{\alpha_1\dots\alpha_p} \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p} ) $
+$= \sum_{\beta \notin \alpha_i} \partial_\beta a_{\alpha_1\dots\alpha_p} \textbf{dx}^\beta \wedge \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p} $<br>
+<br>
+
+<!-- TODO when to use omegas and when to use dx's, and a better explination of why which is chosen? -->
+exterior derivative of wedge product of p-form $\textbf{a}$ and q-form $\textbf{b}$:<br>
+$ \textbf{d} ( \textbf{a} \wedge \textbf{b} ) $<br>
+$ = \textbf{d} ( a_{\alpha_1\dots\alpha_p} \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p} \wedge b_{\beta_1 \dots \beta_q} \textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q})$<br>
+$ = \textbf{d} ( a_{\alpha_1\dots\alpha_p} b_{\beta_1 \dots \beta_q} \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p} \wedge \textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q})$<br>
+using $ \textbf{d}^2\textbf{x}^i = 0 $<br>
+$ = \textbf{d} ( a_{\alpha_1\dots\alpha_p} b_{\beta_1 \dots \beta_q}) \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p} \wedge \textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q}$<br>
+$ = {\partial\over{\partial x^\gamma}} ( a_{\alpha_1\dots\alpha_p} b_{\beta_1 \dots \beta_q}) \textbf{dx}^\gamma \wedge \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p} \wedge \textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q}$<br>
+$ = ( {\partial\over{\partial x^\gamma}} a_{\alpha_1\dots\alpha_p} b_{\beta_1 \dots \beta_q} + a_{\alpha_1\dots\alpha_p} {\partial\over{\partial x^\gamma}} b_{\beta_1 \dots \beta_q}) \textbf{dx}^\gamma \wedge \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p} \wedge \textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q}$<br>
+$ = {\partial\over{\partial x^\gamma}} a_{\alpha_1\dots\alpha_p} b_{\beta_1 \dots \beta_q} \textbf{dx}^\gamma \wedge \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p} \wedge \textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q}
+	+ a_{\alpha_1\dots\alpha_p} {\partial\over{\partial x^\gamma}} b_{\beta_1 \dots \beta_q} \textbf{dx}^\gamma \wedge \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p} \wedge \textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q}$<br>
+rotate the 2nd term's $\textbf{dx}^\gamma$ through the $\textbf{dx}^{\alpha_i}$'s to right before the $\textbf{dx}^{\beta_j}$'s begin, requiring a total of $p$ rotations, incurring a scalar of $(-1)^p$:<br> 
+$ = {\partial\over{\partial x^\gamma}} a_{\alpha_1\dots\alpha_p} \textbf{dx}^\gamma \wedge \textbf{dx}^{\alpha_1} \wedge \dots b_{\beta_1 \dots \beta_q} \wedge \textbf{dx}^{\alpha_p} \wedge \textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q}
+	+ (-1)^p a_{\alpha_1\dots\alpha_p} \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p} \wedge {\partial\over{\partial x^\gamma}} b_{\beta_1 \dots \beta_q} \textbf{dx}^\gamma \wedge \textbf{dx}^{\beta_1} \wedge \dots \wedge \textbf{dx}^{\beta_q}$<br>
+$ = \textbf{da} \wedge \textbf{b} + (-1)^p \textbf{a} \wedge \textbf{db} $<br> 
+<br>
+exterior derivative of vector as a linear relation to vector basis: $ \textbf{de}_\alpha = \textbf{e}_\gamma \otimes {\boldsymbol{\omega}^\gamma}_\alpha $<br>
+equating covariant and exterior derivative for vector basis: 
+$ \textbf{de}_\alpha 
+	= \boldsymbol{\nabla} \textbf{e}_\alpha
+	= {\Gamma^\gamma}_{\alpha\beta} \textbf{e}_\gamma \otimes \boldsymbol{\omega}^\beta
+	= \textbf{e}_\gamma \otimes {\boldsymbol{\omega}^\gamma}_\alpha
+$<br>
+so $ {\boldsymbol{\omega}^\gamma}_\alpha = {\Gamma^\gamma}_{\alpha\beta} \boldsymbol{\omega}^\beta $ and $ \nabla_\alpha \boldsymbol{\omega}^\gamma = -{\boldsymbol{\omega}^\gamma}_\alpha $<br>
+exterior derivative expanded in a contravariant basis: 
+$ \textbf{dv} 
+	= \textbf{d} (v^\alpha \textbf{e}_\alpha) 
+	= \textbf{d}v^\alpha \otimes \textbf{e}_\alpha + v^\alpha \textbf{de}_\alpha
+	= (\textbf{d}v^\gamma + v^\alpha {\boldsymbol{\omega}^\gamma}_\alpha) \otimes \textbf{e}_\gamma
+	= (\partial_\beta v^\gamma + {\Gamma^\gamma}_{\alpha\beta} v^\alpha) \boldsymbol{\omega}^\beta \otimes \textbf{e}_\gamma
+$<br>
+exterior derivative of inner product: 
+$ \textbf{d}(\textbf{u} \cdot \textbf{v}) 
+	= \textbf{du} \cdot \textbf{v} + \textbf{u} \cdot \textbf{dv}
+$<br>
+exterior derivative of metric tensor: 
+$ \textbf{d}g_{\alpha\beta} 
+	= \textbf{d} (\textbf{e}_\alpha \cdot \textbf{e}_\beta)
+	= \textbf{de}_\alpha \cdot \textbf{e}_\beta + \textbf{e}_\alpha \cdot \textbf{de}_\beta
+	= \textbf{e}_\gamma \otimes {\boldsymbol{\omega}^\gamma}_\alpha \cdot \textbf{e}_\beta + \textbf{e}_\alpha \cdot \textbf{e}_\gamma \otimes {\boldsymbol{\omega}^\gamma}_\beta
+	= g_{\beta\gamma} {\boldsymbol{\omega}^\gamma}_\alpha + g_{\alpha\gamma} {\boldsymbol{\omega}^\gamma}_\beta
+	= \boldsymbol{\omega}_{\beta\alpha} + \boldsymbol{\omega}_{\alpha\beta}
+$<br>
+<br>
+
+second exterior derivative of a p-form: $ \textbf{d}(\textbf{dw})$
+$= \textbf{dd} (\textbf{w}_{\alpha_1 \dots \alpha_p} \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p})$<br>
+$= \textbf{d} \partial_\beta (\textbf{w}_{\alpha_1 \dots \alpha_p}) \textbf{dx}^\beta \wedge \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p}$<br>
+$= \partial_\gamma \partial_\beta (\textbf{w}_{\alpha_1 \dots \alpha_p}) \textbf{dx}^\gamma \wedge \textbf{dx}^\beta \wedge \textbf{dx}^{\alpha_1} \wedge \dots \wedge \textbf{dx}^{\alpha_p}$<br>
+Now we have the sum over the symmetric $\partial_\gamma \partial_\beta$ and the antisymmetric $\textbf{dx}^\beta \wedge \textbf{dx}^\gamma$, so our sum is zero.<br>
+$\textbf{ddw} = 0$<br>
+<br>
+
+second exterior derivative of vector:<br>
+$ \textbf{d}^2 \textbf{v} = \textbf{d}^2 ( v^\alpha \textbf{e}_\alpha ) $<br>
+$ = \textbf{d} ( \textbf{d} v^\alpha \textbf{e}_\alpha + v^\alpha \textbf{de}_\alpha ) $<br>
+$ = \textbf{d} ( \textbf{d} v^\alpha \textbf{e}_\alpha + v^\alpha \textbf{e}_\beta {\boldsymbol{\omega}^\beta}_\alpha ) $<br>
+$ = \textbf{d}^2 v^\alpha \textbf{e}_\alpha
+	+ \textbf{d} v^\alpha \wedge \textbf{d} \textbf{e}_\alpha 
+	+ \textbf{d} v^\alpha \wedge \textbf{e}_\beta {\boldsymbol{\omega}^\beta}_\alpha
+	+ v^\alpha \textbf{de}_\beta \wedge {\boldsymbol{\omega}^\beta}_\alpha
+	+ v^\alpha \textbf{e}_\beta \textbf{d}{\boldsymbol{\omega}^\beta}_\alpha $<br>
+$ = \textbf{d}^2 v^\alpha \textbf{e}_\alpha
+	+ 2 \textbf{d} v^\alpha \wedge \textbf{e}_\beta {\boldsymbol{\omega}^\beta}_\alpha
+	+ v^\alpha \textbf{e}_\gamma {\boldsymbol{\omega}^\gamma}_\beta \wedge {\boldsymbol{\omega}^\beta}_\alpha
+	+ v^\alpha \textbf{e}_\beta \textbf{d}{\boldsymbol{\omega}^\beta}_\alpha $<br>
+<!-- TODO i'm zeroing the 2dv^i term as well, find out why -->
+...zero second exterior derivatives of one-forms...<br>
+$ = v^\alpha \textbf{e}_\beta {\boldsymbol{\omega}^\beta}_\gamma \wedge {\boldsymbol{\omega}^\gamma}_\alpha
+	+ v^\alpha \textbf{e}_\beta \textbf{d}{\boldsymbol{\omega}^\beta}_\alpha $<br>
+let $ {\textbf{R}^\alpha}_\beta = {\boldsymbol{\omega}^\alpha}_\gamma \wedge {\boldsymbol{\omega}^\gamma}_\beta + \textbf{d}{\boldsymbol{\omega}^\alpha}_\beta $<br>
+so $ \textbf{d}^2 \textbf{v} = \textbf{e}_\alpha {\textbf{R}^\alpha}_\beta v^\beta $<br>
+<br>
+Riemann metric two-form:<br>
+ $ {\textbf{R}^\alpha}_\beta = {\boldsymbol{\omega}^\alpha}_\mu \wedge {\boldsymbol{\omega}^\mu}_\beta + \textbf{d}{\boldsymbol{\omega}^\alpha}_\beta $<br>
+$ = {\Gamma^\alpha}_{\mu\gamma} {\Gamma^\mu}_{\beta\delta} \boldsymbol{\omega}^\gamma \wedge \boldsymbol{\omega}^\delta + \textbf{d} ( {\Gamma^\alpha}_{\beta\delta} \boldsymbol{\omega}^\delta ) $<br>
+$ = {\Gamma^\alpha}_{\mu\gamma} {\Gamma^\mu}_{\beta\delta} \boldsymbol{\omega}^\gamma \wedge \boldsymbol{\omega}^\delta + \textbf{d} {\Gamma^\alpha}_{\beta\delta} \boldsymbol{\omega}^\delta + {\Gamma^\alpha}_{\beta\delta} \textbf{d} \boldsymbol{\omega}^\delta $<br>
+$ = ( \partial_\gamma {\Gamma^\alpha}_{\beta\delta} + {\Gamma^\alpha}_{\mu\gamma} {\Gamma^\mu}_{\beta\delta} ) \boldsymbol{\omega}^\gamma \wedge \boldsymbol{\omega}^\delta $<br>
+$ = ( \partial_\gamma {\Gamma^\alpha}_{\beta\delta} - \partial_\delta {\Gamma^\alpha}_{\beta\gamma} + {\Gamma^\alpha}_{\mu\gamma} {\Gamma^\mu}_{\beta\delta} - {\Gamma^\alpha}_{\mu\delta} {\Gamma^\mu}_{\beta\gamma} ) \boldsymbol{\omega}^{|\gamma} \wedge \boldsymbol{\omega}^{\delta|} $<br>
+$ = {R^\alpha}_{\beta\gamma\delta}\boldsymbol{\omega}^{|\gamma} \wedge \boldsymbol{\omega}^{\delta|} $<br>
+$ = {R^\alpha}_{\beta|\gamma\delta|}\boldsymbol{\omega}^\gamma \wedge \boldsymbol{\omega}^\delta $<br>
+TODO add commutation and torsion<br>
+<br>
+$ 0 = \textbf{d} P 
+	= \textbf{d} (\textbf{e}_\gamma \otimes \boldsymbol{\omega}^\gamma)
+	= \textbf{de}_\gamma \wedge \boldsymbol{\omega}^\gamma + \textbf{e}_\gamma \otimes \textbf{d}\boldsymbol{\omega}^\gamma
+	= \textbf{e}_\alpha \otimes {\boldsymbol{\omega}^\alpha}_\gamma \wedge \boldsymbol{\omega}^\gamma + \textbf{e}_\alpha \otimes \textbf{d} \boldsymbol{\omega}^\alpha
+	= \textbf{e}_\alpha \otimes ({\boldsymbol{\omega}^\alpha}_\gamma \wedge \boldsymbol{\omega}^\gamma + \textbf{d} \boldsymbol{\omega}^\alpha)
+$<br>
+so $ {\boldsymbol{\omega}^\alpha}_\gamma \wedge \boldsymbol{\omega}^\gamma + \textbf{d} \boldsymbol{\omega}^\alpha = 0 $<br>
+so $ \textbf{d} \boldsymbol{\omega}^\gamma
+	= -{\boldsymbol{\omega}^\gamma}_\alpha \wedge \boldsymbol{\omega}^\alpha
+	= -{\Gamma^\gamma}_{\beta\alpha} \boldsymbol{\omega}^\beta \wedge \boldsymbol{\omega}^\alpha
+	= {\Gamma^\gamma}_{\beta\alpha} \boldsymbol{\omega}^\alpha \wedge \boldsymbol{\omega}^\beta
+	= ({\Gamma^\gamma}_{\beta\alpha} - {\Gamma^\gamma}_{\alpha\beta}) \boldsymbol{\omega}^\alpha \otimes \boldsymbol{\omega}^\beta
+	= ({T^\gamma}_{\beta\alpha} + {c_{\alpha\beta}}^\gamma) \boldsymbol{\omega}^\alpha \otimes \boldsymbol{\omega}^\beta
+$<br> 
+This coincides with, in a holonomic basis, when $ \boldsymbol{\omega}^\alpha = \textbf{d}x^\alpha, \textbf{d} \boldsymbol{\omega}^\alpha = \textbf{d}^2\textbf{x}^\alpha = 0 $<br>
+
+	</body>
+</html>
