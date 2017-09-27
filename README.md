@@ -74,7 +74,7 @@ Here's the CDN URLs:
 
 [LQG](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/LQG%2ehtml)
 
-[Loop Quantum Gravity/desc](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Loop%20Quantum%20Gravity/desc%2ehtml)
+[Loop Quantum Gravity/index](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Loop%20Quantum%20Gravity/index%2ehtml)
 
 [Loop Quantum Gravity/page1](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Loop%20Quantum%20Gravity/page1%2ehtml)
 
