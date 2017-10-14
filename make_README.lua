@@ -15,7 +15,7 @@ Here's the CDN URLs:
 local fs = table()
 local function recurse(dir)
 	for f in file[dir]() do
-		if io.isdir(f) then
+		if io.isdir(dir..'/'..f) then
 			if f:sub(1,1) ~= '.' then
 				recurse(dir..'/'..f)
 			end
