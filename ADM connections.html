@@ -9,6 +9,13 @@
 
 <h3>ADM connections</h3>
 
+I always wondered what the connections, Riemann, and Ricci of an arbitrary metric represented in ADM form was.<br>
+Granted an easy way around the Riemann and Ricci is via the Gauss-Codazzi-Ricci.<br>
+My curiousity wasn't satisfied, but halfway through this I got bored.<br>
+If you want to see it in more detail, check out the automatic generation on my symmath page
+<a href='https://htmlpreview.github.io/?https://github.com/thenumbernine/symmath-lua/blob/master/tests/output/ADM%20gravity%20using%20expressions%2ehtml'>here</a>.<br>
+<br>
+
 metric:<br>
 $g_{uv} = \left[\matrix{
 	-\alpha^2 + \beta^k \beta^l \gamma_{kl} & \beta^k \gamma_{kj} \\
@@ -201,7 +208,13 @@ $ = \frac{1}{\alpha^2} (
 <br>
 ${\Gamma^t}_{ti,t}$<br>
 ${\Gamma^t}_{ti,j}$<br>
-${\Gamma^t}_{ij,t}$<br>
+${\Gamma^t}_{ij,\mu} 
+= \frac{1}{2} (1/\alpha^2 (
+	- {\beta^k}_{,i} \gamma_{kj} 
+	- {\beta^k}_{,j} \gamma_{ki} 
+	+ \gamma_{ij,t}
+	- \beta^k ({^3\Gamma})_{kij}
+))_{,\mu}$<br>
 ${\Gamma^i}_{tt,i}$<br>
 ${\Gamma^i}_{ti,t}$<br>
 ${\Gamma^j}_{ti,j}$<br>
@@ -216,6 +229,10 @@ ${R^t}_{tti} = {\Gamma^t}_{ti,t} - {\Gamma^t}_{tt,i} + {\Gamma^t}_{tt} {\Gamma^t
 $= {\Gamma^t}_{ti,t} - {\Gamma^t}_{tt,i} + {\Gamma^t}_{jt} {\Gamma^j}_{ti} - {\Gamma^t}_{ji} {\Gamma^j}_{tt}$<br>
 ${R^j}_{tji} = {\Gamma^j}_{ti,j} - {\Gamma^j}_{tj,i} + {\Gamma^j}_{tj} {\Gamma^t}_{ti} + {\Gamma^j}_{kj} {\Gamma^k}_{ti} - {\Gamma^j}_{ti} {\Gamma^t}_{tj} - {\Gamma^j}_{ki} {\Gamma^k}_{tj}$<br>
 ${R^t}_{itj} = {\Gamma^t}_{ij,t} - {\Gamma^t}_{ti,j} + {\Gamma^t}_{tt} {\Gamma^t}_{ij} + {\Gamma^t}_{kt} {\Gamma^k}_{ij} - {\Gamma^t}_{tj} {\Gamma^t}_{it} - {\Gamma^t}_{kj} {\Gamma^k}_{it}$<br>
+
+${R^t}_{ijk} = {\Gamma^t}_{ik,j} - {\Gamma^t}_{ij,k} + {\Gamma^t}_{lj} {\Gamma^l}_{ik} - {\Gamma^t}_{lk} {\Gamma^l}_{ij}$<br>
+$= {\Gamma^t}_{ik,j} - {\Gamma^t}_{ij,k} + {\Gamma^t}_{lj} {\Gamma^l}_{ik} - {\Gamma^t}_{lk} {\Gamma^l}_{ij}$<br>
+
 ${R^k}_{ikj} = {\Gamma^k}_{ij,k} - {\Gamma^k}_{ki,j} + {\Gamma^k}_{tk} {\Gamma^t}_{ij} + {\Gamma^k}_{lk} {\Gamma^l}_{ij} - {\Gamma^k}_{tj} {\Gamma^t}_{ik} - {\Gamma^k}_{lj} {\Gamma^l}_{ik}$<br>
 <br>
 
@@ -224,8 +241,12 @@ $R_{titj} = R_{itjt} = -R_{tijt} = -R_{ittj}$<br>
 $= g_{tt} {R^t}_{itj} + g_{tk} {R^k}_{itj}$<br>
 $= (-\alpha^2 + \beta^k \beta^l \gamma_{kl}) {R^t}_{itj} + \beta^l \gamma_{lk} {R^k}_{itj}$<br>
 <br>
+
 $R_{tijk} = -R_{itjk} = R_{jkti} = -R_{jkit} = g_{tt} {R^t}_{ijk} + g_{tl} {R^l}_{ijk}$<br>
+$ = (-\alpha^2 + \beta^l \beta^m \gamma_{lm}) {R^t}_{ijk} + \beta^m \gamma_{lm} {R^l}_{ijk}$<br>
+$ = (-\alpha^2 + \beta^l \beta^m \gamma_{lm})  + \beta^m \gamma_{lm} {R^l}_{ijk}$<br>
 <br>
+
 $R_{ijkl} = g_{it} {R^t}_{jkl} + g_{im} {R^m}_{jkl}$<br>
 <br>
 
