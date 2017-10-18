@@ -13,20 +13,20 @@ $\tau$ is the coordinate along the velocity curve.<br>
 
 Gravitation ch.22:<br>
 
-$\frac{d}{d\tau} (n V) = 0$ eqn 22.1<br>
+$\frac{d}{d\tau} (n V) = 0$ (eqn 22.1)<br>
 $V \frac{dn}{d\tau} + n \frac{dV}{d\tau} = 0$<br>
 $\frac{dV}{d\tau} = -\frac{V}{n} \frac{dn}{d\tau}$<br>
 <br>
-$\frac{dV}{d\tau} = V {u^\mu}_{;\mu}$ eqn 22.2 courtesy of exercise 22.1 (TODO show the details)<br>
+$\frac{dV}{d\tau} = V {u^\mu}_{;\mu}$ (eqn 22.2 courtesy of exercise 22.1 - TODO show the details)<br>
 <br>
 Using $\textbf{u} = \frac{d}{d\tau}$<br>
 $0 = V \frac{d}{d\tau} n + n \frac{d}{d\tau} V$<br>
 $0 = \frac{d}{d\tau} n + n \frac{1}{V} \frac{d}{d\tau} V$<br>
-substitute $\frac{1}{V} \frac{d}{d\tau} V = {u^\mu}_{;\mu}$ courtesy of eqn 22.2<br>
+substitute $\frac{1}{V} \frac{d}{d\tau} V = {u^\mu}_{;\mu}$ (courtesy of eqn 22.2)<br>
 $0 = n_{,\mu} u^\mu + n \frac{1}{V} \frac{d}{d\tau} V$<br>
 $0 = (n u^\mu)_{;\mu}$<br>
 Let $S^\mu = n u^\mu$<br>
-${S^\mu}_{;\mu} = 0$ eqn 22.3<br>
+${S^\mu}_{;\mu} = 0$ (eqn 22.3)<br>
 <br>
 
 starting with
@@ -85,13 +85,11 @@ using $\textbf{u} \cdot \nabla = \frac{d}{d\tau}$<br>
 $0 =- \frac{d}{d\tau} \rho - (\rho + p) {u^\nu}_{;\nu} $<br>
 $\frac{d}{d\tau} \rho = -(\rho + p) {u^\nu}_{;\nu} $<br>
 using ${u^\mu}_{;\mu} = -\frac{1}{n} \frac{dn}{d\tau}$ above<br>
-$\frac{d\rho}{d\tau} = \frac{(\rho + p)}{n} \frac{dn}{d\tau}$ eqn 22.11a:<br> 
+$\frac{d\rho}{d\tau} = \frac{(\rho + p)}{n} \frac{dn}{d\tau}$ (eqn 22.11a)<br> 
 <br>
 
 Back to projection of stress-energy divergence - instead of along $u^\mu$, this time orthogonal to $u^\mu$:<br>
 Let ${P^\mu}_\nu = \delta^\mu_\nu + u^\mu u_\nu$ be the projection tensor.<br>
-
-
 ${P^\alpha}_\mu {T^{\mu\nu}}_{;\nu}$
 $ = (\delta^\alpha_\mu + u^\alpha u_\mu)
 	(
@@ -123,7 +121,7 @@ $ = (\rho + p) {u^\alpha}_{;\nu} u^\nu
 Let ${P^\alpha}_\mu {T^{\mu\nu}}_{;\nu} = 0$<br>
 $0 = (\rho + p) {u^\alpha}_{;\nu} u^\nu 
 	+ P^{\alpha\nu} p_{,\nu} $<br>
-$(\rho + p) {u^\alpha}_{;\nu} u^\nu = -P^{\alpha\nu} p_{,\nu}$ eqn 22.13<br>
+$(\rho + p) {u^\alpha}_{;\nu} u^\nu = -P^{\alpha\nu} p_{,\nu}$ (eqn 22.13)<br>
 <br>
 
 
@@ -132,12 +130,12 @@ Gravitation section 23.5 "Equations of Structure"<br>
 <br>
 
 Spherically symmetric coordinate system:<br>
-$ds^2 = -dt^2 + dr^2 + r^2 d\Omega^2$ eqn 23.1<br>
-For $d\Omega = d\theta^2 + (sin \theta)^2 d\phi^2$ eqn 23.2<br>
+$ds^2 = -dt^2 + dr^2 + r^2 d\Omega^2$ (eqn 23.1)<br>
+For $d\Omega = d\theta^2 + (sin \theta)^2 d\phi^2$ (eqn 23.2)<br>
 <br>
 
 Next comes TOV modifications:<br>
-$ds^2 = -e^{2\Phi} dt^2 + e^{2\Lambda} dr^2 + R^2 d\Omega^2$ eqn 23.3<br>
+$ds^2 = -e^{2\Phi} dt^2 + e^{2\Lambda} dr^2 + R^2 d\Omega^2$ (eqn 23.3)<br>
 For $\Phi, \Lambda, R$ functions of $r$.<br>
 <br>
 
@@ -145,14 +143,14 @@ Static metric means $g_{\mu\nu,t} = 0$.<br>
 <br>
 
 More generalized metric is equivalent.  For example:<br>
-$ds^2 = -a^2 dt^2 - 2 ab dr dt + c^2 dr^2 + R^2 d\Omega^2$ eqn 23.4<br>
-Let $e^\Phi dt' = a dt + b dr$ eqn 23.5<br>
+$ds^2 = -a^2 dt^2 - 2 ab dr dt + c^2 dr^2 + R^2 d\Omega^2$ (eqn 23.4)<br>
+Let $e^\Phi dt' = a dt + b dr$ (eqn 23.5)<br>
 Let $e^{2 \Lambda} = b^2 + c^2$<br>
-$ds^2 = -e^{2\Phi} dt^2 + e^{2\Lambda} dr^2 + R^2 d\Omega^2$ eqn 23.3<br>
-$= -(a dt + b dr)^2 + (b^2 + c^2) dr^2 + R^2 d\Omega^2$ eqn 23.3<br>
-$= -(a^2 dt^2 + 2 a b dr dt + b^2 dr^2) + (b^2 + c^2) dr^2 + R^2 d\Omega^2$ eqn 23.3<br>
-$= -a^2 dt^2 - 2 a b dr dt - b^2 dr^2 + b^2 dr^2 + c^2 dr^2 + R^2 d\Omega^2$ eqn 23.3<br>
-$= -a^2 dt^2 - 2 a b dr dt + c^2 dr^2 + R^2 d\Omega^2$ eqn 23.3<br>
+$ds^2 = -e^{2\Phi} dt^2 + e^{2\Lambda} dr^2 + R^2 d\Omega^2$<br>
+$= -(a dt + b dr)^2 + (b^2 + c^2) dr^2 + R^2 d\Omega^2$<br>
+$= -(a^2 dt^2 + 2 a b dr dt + b^2 dr^2) + (b^2 + c^2) dr^2 + R^2 d\Omega^2$<br>
+$= -a^2 dt^2 - 2 a b dr dt - b^2 dr^2 + b^2 dr^2 + c^2 dr^2 + R^2 d\Omega^2$<br>
+$= -a^2 dt^2 - 2 a b dr dt + c^2 dr^2 + R^2 d\Omega^2$<br>
 Tada, they are the same.<br>
 <br>
 
@@ -169,6 +167,39 @@ $g^{tt} = -e^{-2\Phi}$<br>
 $g^{rr} = e^{-2\Lambda}$<br>
 $g^{\theta\theta} = r^{-2}$<br>
 $g^{\phi\phi} = (r sin \theta)^{-2}$<br>
+Metric partials:<br>
+$g_{tt,r} = -2 \Phi_{,r} e^{2\Phi}$<br>
+$g_{rr,r} = 2 \Lambda_{,r} e^{2\Lambda}$<br>
+$g_{\theta\theta,r} = 2 r$<br>
+$g_{\phi\phi,r} = 2 r (sin \theta)^2$<br> 
+$g_{\phi\phi,\theta} = 2 r^2 sin \theta cos \theta$<br> 
+Connections:<br>
+$\Gamma_{\mu\mu\mu} = \frac{1}{2} g_{\mu\mu,\mu}$ (one unique index)<br>
+$\Gamma_{rrr} = \Lambda_{,r} e^{2\Lambda} $<br>
+$\Gamma_{\alpha\alpha\beta} = \Gamma_{\alpha\beta\alpha} = \frac{1}{2} (g_{\alpha\alpha,\beta} + g_{\alpha\beta,\alpha} - g_{\alpha\beta,\alpha})$
+$ = \frac{1}{2} g_{\alpha\alpha,\beta}$ (two unique indexes)<br>
+$\Gamma_{ttr} = \Gamma_{trt} = -\Phi_{,r} e^{2\Phi}$<br>
+$\Gamma_{\theta\theta r} = \Gamma_{\theta r\theta} = r$<br>
+$\Gamma_{\phi\phi r} = \Gamma_{\phi r\phi} = r (sin \theta)^2$<br>
+$\Gamma_{\phi\phi\theta} = \Gamma_{\phi\theta\phi} = r^2 sin \theta cos \theta$<br>
+$\Gamma_{\beta\alpha\alpha} = \frac{1}{2} (g_{\beta\alpha,\alpha} + g_{\beta\alpha,\alpha} - g_{\alpha\alpha,\beta})$
+$ = g_{\beta\alpha,\alpha} - \frac{1}{2} g_{\alpha\alpha,\beta}$<br>
+Since $g_{\alpha\beta} = 0$ for $\alpha \ne \beta$ and since we already considered connections for $\alpha = \beta$ above<br>
+$\Gamma_{\beta\alpha\alpha} = -\frac{1}{2} g_{\alpha\alpha,\beta}$ for $\alpha \ne \beta$<br>
+$\Gamma_{rtt} = -\Phi_{,r} e^{2\Phi}$<br>
+$\Gamma_{r\theta\theta} = -r$<br>
+$\Gamma_{r\phi\phi} = -r (sin \theta)^2$<br>
+Because $g_{\alpha\beta} = 0$ for $\alpha \ne \beta$, so does $g_{\alpha\beta,\gamma} = 0$ for $\alpha, \beta, \gamma$ all differing,
+and likewise $\Gamma_{\alpha\beta\gamma} = 0$ for $\alpha, \beta, \gamma$ all differing.<br>
+2nd kind connections: (simple because $g_{\mu\nu}$ is diagonal)<br>
+${\Gamma^t}_{tr} = {\Gamma^t}_{rt} = g^{tt} \Gamma_{ttr} = -e^{-2\Phi} \cdot -\Phi_{,r} e^{2\Phi} = \Phi_{,r}$<br>
+${\Gamma^r}_{tt} = g^{rr} \Gamma_{rtt} = e^{-2\Lambda} \cdot -\Phi_{,r} e^{2\Phi} = -\Phi_{,r} e^{2(\Phi - \Lambda)}$<br>
+${\Gamma^r}_{rr} = g^{rr} \Gamma_{rrr} = e^{-2\Lambda} \Lambda_{,r} e^{2\Lambda} = \Lambda_{,r}$<br>
+${\Gamma^r}_{\theta\theta} = g^{rr} \Gamma_{r\theta\theta} = -r e^{-2\Lambda}$<br> 
+${\Gamma^r}_{\phi\phi} = g^{rr} \Gamma_{r\phi\phi} = -r (sin \theta)^2 e^{-2 \Lambda}$<br>
+${\Gamma^\theta}_{\theta r} = {\Gamma^\theta}_{r\theta} = g^{\theta\theta} \Gamma_{\theta\theta r} = r / r^2 = \frac{1}{r}$<br>
+${\Gamma^\phi}_{\phi r} = {\Gamma^\phi}_{r\phi} = g^{\phi\phi} \Gamma_{\phi\phi r} = r (sin \theta)^2 (r sin \theta)^{-2} = \frac{1}{r}$<br>
+${\Gamma^\phi}_{\phi\theta} = {\Gamma^\phi}_{\theta\phi} = g^{\phi\phi} \Gamma_{\phi\phi\theta} = r^2 sin \theta cos \theta (r sin \theta)^{-2} = cot \theta$<br>
 <br>
 
 Isotropic coordinate transform:<br>
@@ -223,6 +254,7 @@ $u^\phi = \frac{d\phi}{d\tau} = 0$<br>
 Normalized 4-velocity: eqn 23.13b<br>
 $-1 = g_{\mu\nu} u^\mu u^\nu = g_{tt} u^t u^t = -e^{2\Phi} (u^t)^2$<br>
 $u^t = \frac{dt}{d\tau} = e^{-\Phi}$<br>
+$u_t = g_{tt} u^t = -e^{2\Phi} e^{-\Phi} = -e^\Phi$<br>
 <br>
 
 Stress-energy: eqn 23.14<br>
@@ -230,6 +262,7 @@ $T^{\mu\nu} = (\rho + p) u^\mu u^\nu + p g^{\mu\nu}$<br>
 $T^{tt} = (\rho + p) u^t u^t + p g^{tt}$<br>
 $= (\rho + p) e^{-2\Phi} + p (-e^{-2\Phi})$<br>
 $= \rho e^{-2\Phi}$<br>
+The book says $T^{00} = \rho e^{-2\Phi}$, but what is the difference between the $0$ and $t$ coordinate?  The shift?  Which is zero...<br>
 $T^{rr} = p g^{rr} = p e^{-2 \Lambda}$<br>
 $T^{\theta\theta} = p g^{\theta\theta} = p r^{-2}$<br>
 $T^{\phi\phi} = p g^{\phi\phi} = p (r sin \theta)^{-2}$<br>
@@ -266,15 +299,75 @@ $T_{\hat{t}\hat{t}} = (e^{-\Phi})^2 \cdot (-e^{2\Phi})^2 \cdot \rho e^{-2\Phi} =
 $T_{\hat{r}\hat{r}} = (e^{-\Lambda})^2 \cdot (e^{2\Lambda})^2 \cdot p e^{-2 \Lambda} = p$<br>
 $T_{\hat{\theta}\hat{\theta}} = (r^{-1})^2 \cdot (r^2)^2 \cdot p r^{-2} = p$<br>
 $T_{\hat{\phi}\hat{\phi}} = ((r sin \theta)^{-1})^2 \cdot ((r sin \theta)^2)^2 \cdot p (r sin \theta)^{-2} = p$<br>
+$T_{\hat{\alpha}\hat{\beta}} = 0$ otherwise<br>
+<br>
+
+Determine functions $\Phi, \Lambda, \rho, p, n$ by their parameter $r$, by the EFE $G^{\mu\nu} = 8 \pi T^{\mu\nu}$, and by ${T^{\mu\nu}}_{;\nu} = 0$.<br>
+Also depend $p = p(n), \rho = \rho(n)$ on the number density of baryons, $n$ (eqn 23.16).<br>
+...as well either temperature $T$ or entropy $s$: $p = p(n, s), \rho = \rho(n, s)$.<br> 
+From here it's handy to let $s = s(n)$, so $p = p(n, s(n)), \rho = \rho(n, s(n))$ (see box 22.1)<br>
 <br>
 
 Start with eqn 22.11a:<br>
 $\frac{d\rho}{d\tau} = \frac{(\rho + p)}{n} \frac{dn}{d\tau}$<br> 
 Using $\frac{dn}{d\tau} = -n {u^\mu}_{;\mu}$<br>
-Use $\textbf{u} = \frac{d}{d\tau}$<br>
 $\frac{d\rho}{d\tau} = -(\rho + p) {u^\mu}_{;\mu}$<br>
 For a static star, both sides are zero: $\frac{d\rho}{d\tau} = 0$, $(\rho + p) {u^\mu}_{;\mu} = 0$<br>
+<br>
 
+Back to 22.13, the projection of the divergence of the stress-energy:<br> 
+$(\rho + p) {u^\alpha}_{;\nu} u^\nu = -P^{\alpha\nu} p_{,\nu}$ eqn 22.13<br>
+$(\rho + p) {u^\alpha}_{;\nu} u^\nu = -(g^{\alpha\nu} + u^\alpha u^\nu) p_{,\nu}$ eqn 22.13<br>
+$(\rho + p) {u^\alpha}_{;\nu} u^\nu = -g^{\alpha\nu} p_{,\nu} - u^\alpha u^\nu p_{,\nu}$ eqn 22.13<br>
+$(\rho + p) u_{\alpha;\nu} u^\nu = -p_{,\alpha} - u_\alpha u^\nu p_{,\nu}$ eqn 22.13<br>
+$(\rho + p) (u_{\alpha,\nu} - {\Gamma^\beta}_{\alpha\nu} u_\beta) u^\nu = -p_{,\alpha} - u_\alpha u^\nu p_{,\nu}$ eqn 22.13<br>
+Look at the radial direction ($\alpha = r$):<br>
+$(\rho + p) (u_{r,\nu} - {\Gamma^\alpha}_{r\nu} u_\alpha) u^\nu = -p_{,r} - u_r u^\nu p_{,\nu}$ eqn 22.13<br>
+Substitute $u_i = u^i = 0$<br>
+$-(\rho + p) {\Gamma^t}_{rt} u_t u^t = -p_{,r}$<br>
+$-(\rho + p) \cdot \Phi_{,r} \cdot -e^{\Phi} \cdot e^{-\Phi} = -p_{,r}$<br>
+$(\rho + p) \Phi_{,r} = -p_{,r}$ (eqn 23.17)<br>
+Notice, for mass-energy density much greater than pressure, we get the limit $\rho \Phi_{,r} = -p_{,r}$ (eqn 23.17N)<br>	
+<br>
+	
+Next comes the Einstein Field Equation contribution.<br>
+Look at $G_{\hat{t}\hat{t}}$ (book says $G_{\hat{0}\hat{0}}$, but how are the two different?)<br>
+<br>
+
+TODO exercise 14.13: calculating $G_{\hat{\alpha}\hat{\beta}}$.  Results are:<br>
+${G^{\hat{t}}}_{\hat{t}} = {G^{\hat{r}}}_{\hat{r}} = -(F + 2 \bar{F})$<br> 
+${G^{\hat{\theta}}}_{\hat{\theta}} = {G^{\hat{\phi}}}_{\hat{\phi}} = -(E + \bar{E} + \bar{F})$<br> 
+For $E = -e^{-2 \Lambda} (\Phi_{,rr} + (\Phi_{,r})^2 - \Phi_{,r} \Lambda_{,r})$<br>
+$\bar{E} = -\frac{1}{r} \Phi_{,r} e^{-2\Lambda}$<br>
+$F = \frac{1}{r^2} (1 - e^{-2\Lambda})$<br>
+$\bar{F} = \frac{1}{r} \Lambda_{,r} e^{-2\Lambda}$<br>
+<br>
+...and the basis is now orthonormalized, so ${G^\hat{t}}_{\hat{t}} = \eta^{\hat{t}\hat{t}} G_{\hat{t}\hat{t}}$<br>
+So $G_{\hat{t}\hat{t}} = F + 2 \bar{F}$
+$ = 
+	\frac{1}{r^2} (1 - e^{-2\Lambda})
+	+ 2 \frac{1}{r} \Lambda_{,r} e^{-2\Lambda} )$<br>
+$ = 
+	r^{-2} 
+	- r^{-2} e^{-2\Lambda}
+	+ r^{-1} 2 \Lambda_{,r} e^{-2\Lambda} )$<br>
+$ = 
+	r^{-2} 
+	- r^{-2} e^{-2\Lambda}
+	- r^{-1} \frac{d}{dr} (e^{-2\Lambda})$<br>
+$ = r^{-2} (
+		1 - e^{-2\Lambda}
+		- r \frac{d}{dr} (e^{-2\Lambda})
+	)$<br>
+$ = r^{-2} \frac{d}{dr} (r (1 - e^{-2\Lambda}))$<br>
+Likewise $G_{\hat{t}\hat{t}} = 8 \pi T_{\hat{t}\hat{t}} = 8 \pi \rho$<br>
+So $8 \pi \rho = r^{-2} \frac{d}{dr} (r (1 - e^{-2\Lambda}))$<br>
+Let $m = m(r)$ and $2 m = r (1 - e^{-2 \Lambda})$<br>
+so $e^{2\Lambda} = (1 - \frac{2 m}{r})^{-1}$ (eqn 23.18)<br>
+Now $G_{\hat{t}\hat{t}} = r^{-2} \frac{d}{dr} (2m) = \frac{2}{r^2} \frac{dm}{dr} = 8 \pi \rho$<br>
+$\frac{dm}{dr} = 4 \pi r^2 \rho$<br>
+Integrate: $m(r) = \int_{r=0}^{r=r} 4 \pi r^2 \rho dr + m(0)$<br>
+<br>
 
 	</body>
 </html>

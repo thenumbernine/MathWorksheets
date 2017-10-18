@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Navier-Stokes Curl Advection</title>
+		<script type="text/javascript" src='tryToFindMathJax.js'></script>
+	</head>
+    <body onload='tryToFindMathJax();'>
+
+This is using 3D flat space,<br>
+so raising and lowering is applying the identity transform,<br>
+the gradient of the metric is 0,<br>
+the metric determinant is 1,<br>
+the density of Levi-Civita is 1,<br>
+and the gradient of Levi-Civita is 0.<br>
+<br>
+
+Incompressible Navier-Stokes:<br>
+$\partial_t (v^i) + \partial_j (v^i v^j) = -\frac{1}{\rho} \partial^i P + \nu \partial_j \partial^j v^i$<br>
+Apply curl:<br>
+$\epsilon_{mki} \partial^k (\partial_t (v^i) + \partial_j (v^i v^j)) 
+	= \epsilon_{mki} \partial^k (-\frac{1}{\rho} \partial^i P + \nu \partial_j \partial^j v^i)$<br>
+$	\epsilon_{mki} \partial^k \partial_t (v^i) 
+		+ \epsilon_{mki} \partial^k \partial_j (v^i v^j)
+	= -\epsilon_{mki} \partial^k (\frac{1}{\rho} \partial^i P) 
+		+ \epsilon_{mki} \partial^k (\nu \partial_j \partial^j v^i)$<br>
+$	\partial_t (\epsilon_{mki} \partial^k v^i) 
+		+ \epsilon_{mki} \partial^k (v^j \partial_j v^i + v^i \partial_j v^j)
+	= 
+		\epsilon_{mki} (\frac{1}{\rho^2} \partial^k \rho) \partial^i P 
+		-\frac{1}{\rho} \epsilon_{mki} \partial^k \partial^i P
+		+ \nu \partial_j \partial^j \epsilon_{mki} \partial^k v^i$<br>
+Let $w^i = \epsilon^{ijk} \partial_j v_k$<br>
+$	\partial_t w_m
+		+ \epsilon_{mki} \partial^k \partial_j (v^i v^j)
+	= 
+		\epsilon_{mki} \frac{1}{\rho^2} (\partial^k \rho) (\partial^i P)
+		+ \nu \partial_j \partial^j w_m$<br>
+
+In vector notation:<br>
+$\partial_t \textbf{w}
+	+ \boldsymbol{\nabla} \times (\boldsymbol{\nabla} \cdot (\textbf{v} \otimes \textbf{v})) 
+	= \frac{1}{\rho^2} \boldsymbol{\nabla} \rho \times \boldsymbol{\nabla} P
+	+ \nu \Delta \textbf{w}$<br>
+	
+Some further simplifications on the outer product gradient curl:<br>
+$	\partial_t w_m
+		+ \epsilon_{mki} \partial^k (v^j \partial_j v^i + v^i \partial_j v^j)
+	= 
+		\epsilon_{mki} \frac{1}{\rho^2} (\partial^k \rho) (\partial^i P)
+		+ \nu \partial_j \partial^j w_m$<br>
+
+
+$	\partial_t w_m
+		+ (
+			\epsilon_{mki} (\partial^k v^j) (\partial_j v^i)
+			+ v^j \partial_j (\epsilon_{mki} \partial^k v^i)
+			+ \epsilon_{mki} (\partial^k v^i) (\partial_j v^j)
+			+ \epsilon_{mki} v^i (\partial^k \partial_j v^j)
+		)
+	= 
+		\epsilon_{mki} \frac{1}{\rho^2} (\partial^k \rho) (\partial^i P)
+		+ \nu \partial_j \partial^j w_m$<br>
+$	\partial_t w_m
+		+ \epsilon_{mki} \partial^k v^j \partial_j v^i 
+		+ v^j \partial_j w_m 
+		+ w_m \partial_j v^j
+		+ \epsilon_{mki} v^i \partial^k \partial_j v^j
+	= 
+		\epsilon_{mki} \frac{1}{\rho^2} (\partial^k \rho) (\partial^i P)
+		+ \nu \partial_j \partial^j w_m$<br>
+
+In vector notation:<br>
+$\partial_t \textbf{w}
+	+ \star ((\boldsymbol{\nabla} \textbf{v})^T)^2 
+	+ \boldsymbol{\nabla}_{\textbf{v}} \textbf{w} 
+	+ (\boldsymbol{\nabla} \cdot \textbf{v}) \textbf{w}
+	+ \boldsymbol{\nabla} (\boldsymbol{\nabla} \cdot \textbf{v}) \times \boldsymbol{v}
+	= \frac{1}{\rho^2} \boldsymbol{\nabla} \rho \times \boldsymbol{\nabla} P
+	+ \nu \Delta \textbf{w}$<br>
+
+In an incompressible fluid:<br>
+$	\partial_t w_m
+		+ \epsilon_{mki} \partial^k v^j \partial_j v^i 
+		+ v^j \partial_j w_m 
+	= 
+		\epsilon_{mki} \frac{1}{\rho^2} (\partial^k \rho) (\partial^i P)
+		+ \nu \partial_j \partial^j w_m$<br>
+
+In vector notation:<br>
+$\partial_t \textbf{w}
+	+ \star ((\boldsymbol{\nabla} \textbf{v})^T)^2 
+	+ \boldsymbol{\nabla}_{\textbf{v}} \textbf{w} 
+	= \frac{1}{\rho^2} \boldsymbol{\nabla} \rho \times \boldsymbol{\nabla} P
+	+ \nu \Delta \textbf{w}$<br>
+	</body>
+</html>
