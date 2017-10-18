@@ -1,0 +1,280 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Equations of Structure - Schwarzschild</title>
+		<script type="text/javascript" src='tryToFindMathJax.js'></script>
+	</head>
+    <body onload='tryToFindMathJax();'>
+
+Coordinate system is $t, r, \theta, \phi$<br>
+$\tau$ is the coordinate along the velocity curve.<br>
+<br>
+
+Gravitation ch.22:<br>
+
+$\frac{d}{d\tau} (n V) = 0$ eqn 22.1<br>
+$V \frac{dn}{d\tau} + n \frac{dV}{d\tau} = 0$<br>
+$\frac{dV}{d\tau} = -\frac{V}{n} \frac{dn}{d\tau}$<br>
+<br>
+$\frac{dV}{d\tau} = V {u^\mu}_{;\mu}$ eqn 22.2 courtesy of exercise 22.1 (TODO show the details)<br>
+<br>
+Using $\textbf{u} = \frac{d}{d\tau}$<br>
+$0 = V \frac{d}{d\tau} n + n \frac{d}{d\tau} V$<br>
+$0 = \frac{d}{d\tau} n + n \frac{1}{V} \frac{d}{d\tau} V$<br>
+substitute $\frac{1}{V} \frac{d}{d\tau} V = {u^\mu}_{;\mu}$ courtesy of eqn 22.2<br>
+$0 = n_{,\mu} u^\mu + n \frac{1}{V} \frac{d}{d\tau} V$<br>
+$0 = (n u^\mu)_{;\mu}$<br>
+Let $S^\mu = n u^\mu$<br>
+${S^\mu}_{;\mu} = 0$ eqn 22.3<br>
+<br>
+
+starting with
+$\frac{dV}{d\tau} = -\frac{V}{n} \frac{dn}{d\tau}$<br>
+$\frac{dn}{d\tau} = -\frac{n}{V} \frac{dV}{d\tau}$<br>
+substitute eqn 22.2 $\frac{dV}{d\tau} = V {u^\mu}_{;\mu}$<br>
+$\frac{dn}{d\tau} = -\frac{n}{V} V {u^\mu}_{;\mu}$<br>
+$\frac{dn}{d\tau} = -n {u^\mu}_{;\mu}$<br>
+<br>
+
+eqn 22.9:<br>
+Stress-energy of matter:<br>
+$T^{\mu\nu} = (\rho + p) u^\mu u^\nu + p g^{\mu\nu}$<br>
+<br>
+
+Conservation of stress-energy (eqn 22.10):<br>
+${T^{\mu\nu}}_{;\nu}$
+$= ((\rho + p) u^\mu u^\nu + p g^{\mu\nu})_{;\nu}$<br>
+$= (\rho_{,\nu} + p_{,\nu}) u^\nu u^\mu
+	+ (\rho + p) ({u^\mu}_{;\nu} u^\nu + u^\mu {u^\nu}_{;\nu})
+	+ p_{,\nu} g^{\mu\nu}$<br>
+<br>
+
+Unit vector derivative identity:<br>
+Now $u^\mu u_\mu = -1$<br>
+$(u^\mu u_\mu)_{;\nu} = 0$<br>
+${u^\mu}_{;\nu} u_\mu + u^\mu u_{\mu;\nu} = 0$<br>
+$u_{\mu;\nu} u^\mu + u^\mu u_{\mu;\nu} = 0$<br>
+$2 u^\mu u_{\mu;\nu} = 0$<br>
+$u^\mu u_{\mu;\nu} = 0$<br>
+<br>
+
+Back to ${T^{\mu\nu}}_{;\nu} = 
+	(\rho_{,\nu} + p_{,\nu}) u^\nu u^\mu
+	+ (\rho + p) ({u^\mu}_{;\nu} u^\nu + u^\mu {u^\nu}_{;\nu})
+	+ p_{,\nu} g^{\mu\nu}$<br>
+Project stress-energy divergence along velocity vector:<br>
+$u_\mu {T^{\mu\nu}}_{;\nu} = 
+	u_\mu (\rho_{,\nu} + p_{,\nu}) u^\nu u^\mu
+	+ u_\mu (\rho + p) ({u^\mu}_{;\nu} u^\nu + u^\mu {u^\nu}_{;\nu})
+	+ u_\mu p_{,\nu} g^{\mu\nu}$<br>
+$ = - (\rho_{,\nu} + p_{,\nu}) u^\nu
+	+ (\rho + p) (u_\mu {u^\mu}_{;\nu} u^\nu - {u^\nu}_{;\nu})
+	+ u^\nu p_{,\nu}$<br>
+$ = - (\rho_{,\nu} + p_{,\nu}) u^\nu
+	- (\rho + p) {u^\nu}_{;\nu}
+	+ u^\nu p_{,\nu}$<br>
+$ = - \rho_{,\nu} u^\nu
+	- (\rho + p) {u^\nu}_{;\nu}$<br>
+<br>
+
+Let $0 = u_\mu {T^{\mu\nu}}_{;\nu}$<br>
+$0 =- \rho_{,\nu} u^\nu
+	- (\rho + p) {u^\nu}_{;\nu} $<br>
+using $\textbf{u} \cdot \nabla = \frac{d}{d\tau}$<br>
+$0 =- \frac{d}{d\tau} \rho - (\rho + p) {u^\nu}_{;\nu} $<br>
+$\frac{d}{d\tau} \rho = -(\rho + p) {u^\nu}_{;\nu} $<br>
+using ${u^\mu}_{;\mu} = -\frac{1}{n} \frac{dn}{d\tau}$ above<br>
+$\frac{d\rho}{d\tau} = \frac{(\rho + p)}{n} \frac{dn}{d\tau}$ eqn 22.11a:<br> 
+<br>
+
+Back to projection of stress-energy divergence - instead of along $u^\mu$, this time orthogonal to $u^\mu$:<br>
+Let ${P^\mu}_\nu = \delta^\mu_\nu + u^\mu u_\nu$ be the projection tensor.<br>
+
+
+${P^\alpha}_\mu {T^{\mu\nu}}_{;\nu}$
+$ = (\delta^\alpha_\mu + u^\alpha u_\mu)
+	(
+		(\rho_{,\nu} + p_{,\nu}) u^\nu u^\mu
+		+ (\rho + p) ({u^\mu}_{;\nu} u^\nu + u^\mu {u^\nu}_{;\nu})
+		+ p_{,\nu} g^{\mu\nu}
+	)$<br>
+$ = 
+	(\rho_{,\nu} + p_{,\nu}) u^\nu u^\alpha
+	+ (\rho + p) ({u^\alpha}_{;\nu} u^\nu + u^\alpha {u^\nu}_{;\nu})
+	+ p_{,\nu} g^{\alpha\nu}
+	+ u^\alpha u_\mu (\rho_{,\nu} + p_{,\nu}) u^\nu u^\mu
+	+ u^\alpha u_\mu (\rho + p) ({u^\mu}_{;\nu} u^\nu + u^\mu {u^\nu}_{;\nu})
+	+ u^\alpha u_\mu p_{,\nu} g^{\mu\nu}
+$<br>
+$ = 
+	(\rho_{,\nu} + p_{,\nu}) u^\nu u^\alpha
+	+ (\rho + p) ({u^\alpha}_{;\nu} u^\nu + u^\alpha {u^\nu}_{;\nu})
+	+ p_{,\nu} g^{\alpha\nu}
+	- u^\alpha (\rho_{,\nu} + p_{,\nu}) u^\nu
+	- u^\alpha (\rho + p) {u^\nu}_{;\nu}
+	+ u^\alpha u^\nu p_{,\nu}
+$<br>
+$ = (\rho + p) {u^\alpha}_{;\nu} u^\nu 
+	+ (g^{\alpha\nu} + u^\alpha u^\nu) p_{,\nu} $<br>
+$ = (\rho + p) {u^\alpha}_{;\nu} u^\nu 
+	+ P^{\alpha\nu} p_{,\nu} $<br>
+<br>
+Let ${P^\alpha}_\mu {T^{\mu\nu}}_{;\nu} = 0$<br>
+$0 = (\rho + p) {u^\alpha}_{;\nu} u^\nu 
+	+ P^{\alpha\nu} p_{,\nu} $<br>
+$(\rho + p) {u^\alpha}_{;\nu} u^\nu = -P^{\alpha\nu} p_{,\nu}$ eqn 22.13<br>
+<br>
+
+
+<hr>
+Gravitation section 23.5 "Equations of Structure"<br>
+<br>
+
+Spherically symmetric coordinate system:<br>
+$ds^2 = -dt^2 + dr^2 + r^2 d\Omega^2$ eqn 23.1<br>
+For $d\Omega = d\theta^2 + (sin \theta)^2 d\phi^2$ eqn 23.2<br>
+<br>
+
+Next comes TOV modifications:<br>
+$ds^2 = -e^{2\Phi} dt^2 + e^{2\Lambda} dr^2 + R^2 d\Omega^2$ eqn 23.3<br>
+For $\Phi, \Lambda, R$ functions of $r$.<br>
+<br>
+
+Static metric means $g_{\mu\nu,t} = 0$.<br>
+<br>
+
+More generalized metric is equivalent.  For example:<br>
+$ds^2 = -a^2 dt^2 - 2 ab dr dt + c^2 dr^2 + R^2 d\Omega^2$ eqn 23.4<br>
+Let $e^\Phi dt' = a dt + b dr$ eqn 23.5<br>
+Let $e^{2 \Lambda} = b^2 + c^2$<br>
+$ds^2 = -e^{2\Phi} dt^2 + e^{2\Lambda} dr^2 + R^2 d\Omega^2$ eqn 23.3<br>
+$= -(a dt + b dr)^2 + (b^2 + c^2) dr^2 + R^2 d\Omega^2$ eqn 23.3<br>
+$= -(a^2 dt^2 + 2 a b dr dt + b^2 dr^2) + (b^2 + c^2) dr^2 + R^2 d\Omega^2$ eqn 23.3<br>
+$= -a^2 dt^2 - 2 a b dr dt - b^2 dr^2 + b^2 dr^2 + c^2 dr^2 + R^2 d\Omega^2$ eqn 23.3<br>
+$= -a^2 dt^2 - 2 a b dr dt + c^2 dr^2 + R^2 d\Omega^2$ eqn 23.3<br>
+Tada, they are the same.<br>
+<br>
+
+$g_{rt} = 0$ = coordinate condition.<br>
+Apply change of radial coordinate $r' = R(r)$ eqn 23.6<br>
+Finally we get: $ds^2 = -e^{2\Phi} dt^2 + e^{2\Lambda} dr^2 + r^2 d\Omega^2$ eqn 23.7<br>
+Therefore<br>
+$g_{tt} = -e^{2\Phi}$<br>
+$g_{rr} = e^{2\Lambda}$<br>
+$g_{\theta\theta} = r^2$<br>
+$g_{\phi\phi} = (r sin \theta)^2$<br>
+Diagonal inverse:<br>
+$g^{tt} = -e^{-2\Phi}$<br>
+$g^{rr} = e^{-2\Lambda}$<br>
+$g^{\theta\theta} = r^{-2}$<br>
+$g^{\phi\phi} = (r sin \theta)^{-2}$<br>
+<br>
+
+Isotropic coordinate transform:<br>
+$ds^2 = -e^{2\Phi} dt^2 + e^{2\Lambda} dr^2 + r^2 d\Omega^2$ eqn 23.7<br>
+Let $e^{2\Lambda} dr^2 = e^{2\mu} d\bar{r}^2$<br>
+Therefore $e^\Lambda dr = e^\mu d\bar{r}$<br>
+Let $r^2 = e^{2\mu} \bar{r}^2$<br>
+So $r = e^\mu \bar{r}$<br>
+So $\mu = log(\frac{r}{\bar{r}})$<br>
+Likewise $\bar{r} = e^{-\mu} r$<br>
+$d\bar{r} = -d\mu e^{-\mu} r + e^{-\mu} dr$<br>
+$d\bar{r}^2 = d\mu^2 e^{-2\mu} r - 2 e^{-\mu} r dr d\mu + e^{-2\mu} dr^2$<br>
+...<br>
+TODO exercise 23.1<br>
+$ds^2 = -e^{2\Phi} dt^2 + e^{2\mu} (d\bar{r}^2 + \bar{r}^2 d\Omega^2)$ eqn 23.8<br>
+<br>
+
+Surface area of a sphere:<br>
+$A = \int (r d\theta) (r sin \theta d\phi)$<br>
+$= \int_{\theta=0}^\pi r d\theta \cdot \int_{\phi=0}^{2\pi} r sin \theta d\phi$<br>
+$= \int_{\theta=0}^\pi r (r \phi sin \theta |_{\phi=0}^{2\pi} d\theta$<br>
+$= \int_{\theta=0}^\pi 2 \pi r^2 sin \theta d\theta$<br>
+$= (-2 \pi r^2 cos \theta|_{\theta=0}^\pi$<br>
+$= 4 \pi r^2$ eqn 23.9<br>
+<br>
+
+Solving for $r$:<br>
+$r = \sqrt{\frac{A}{4 \pi}}$<br>
+<br>
+
+Geometric properties:<br>
+$g_{\alpha\beta,t} = 0$<br>
+$g_{tr} = g_{t\theta} = g_{t\phi} = 0$<br>
+$\underset{r \rightarrow \infty}{\lim} \Phi(r) = 0$ eqn 23.10<br>
+<br>
+
+eqn 23.11:<br>
+Five functions of radius:<br>
+$\rho(r)$ density of mass-energy in rest-frame of fluid.<br>
+$p(r)$ isotropic pressure in rest-frame of fluid.<br>
+$n(r)$ number density of baryons in rest-frame of fluid.<br>
+$u^\mu(r)$ = 4-velocity of fluid.<br>
+$T^{\mu\nu} = (\rho + p) u^\mu u^\nu + p g^{\mu\nu}$ = stress-energy tensor of fluid.  eqn 23.12.  Just like we saw before.<br>
+<br>
+
+Static stars: eqn 23.13a<br>
+$u^r = \frac{dr}{d\tau} = 0$<br>
+$u^\theta = \frac{d\theta}{d\tau} = 0$<br>
+$u^\phi = \frac{d\phi}{d\tau} = 0$<br>
+<br>
+
+Normalized 4-velocity: eqn 23.13b<br>
+$-1 = g_{\mu\nu} u^\mu u^\nu = g_{tt} u^t u^t = -e^{2\Phi} (u^t)^2$<br>
+$u^t = \frac{dt}{d\tau} = e^{-\Phi}$<br>
+<br>
+
+Stress-energy: eqn 23.14<br>
+$T^{\mu\nu} = (\rho + p) u^\mu u^\nu + p g^{\mu\nu}$<br>
+$T^{tt} = (\rho + p) u^t u^t + p g^{tt}$<br>
+$= (\rho + p) e^{-2\Phi} + p (-e^{-2\Phi})$<br>
+$= \rho e^{-2\Phi}$<br>
+$T^{rr} = p g^{rr} = p e^{-2 \Lambda}$<br>
+$T^{\theta\theta} = p g^{\theta\theta} = p r^{-2}$<br>
+$T^{\phi\phi} = p g^{\phi\phi} = p (r sin \theta)^{-2}$<br>
+otherwise $T^{\alpha\beta} = 0$<br>
+<br>
+
+Transform so the time axis is along the fluid rest velocity: eqns 23.15a-d<br>
+$e_{\hat{t}} = \frac{d}{d\tau} =  e^{-\Phi} \frac{\partial}{\partial t}$, so ${e_{\hat{t}}}^t = e^{-\Phi}$<br>
+$e_{\hat{r}} = e^{-\Lambda} \frac{\partial}{\partial r}$, so ${e_{\hat{r}}}^r = e^{-\Lambda}$<br>
+$e_{\hat{\theta}} = r^{-1} \frac{\partial}{\partial \theta}$, so ${e_{\hat{\theta}}}^\theta = r^{-1}$<br>
+$e_{\hat{\phi}} = (r sin \theta)^{-1} \frac{\partial}{\partial \phi}$, so ${e_{\hat{\phi}}}^\phi = (r sin \theta)^{-1}$<br>
+$\omega^{\hat{t}} = e^\Phi dt$<br>
+$\omega^{\hat{r}} e^\Lambda dr$<br>
+$\omega^{\hat{\theta}} = r d\theta$<br>
+$\omega^{\hat{\phi}} = r sin \theta d\phi$<br>
+${e_\hat{\mu}}^\nu = \left[\matrix{
+	e^{-\Phi} & 0 & 0 & 0 \\
+	0 & e^{-\Lambda} & 0 & 0 \\
+	0 & 0 & r^{-1} & 0 \\
+	0 & 0 & 0 & (r sin \theta)^{-1}
+}\right]$<br>
+${\omega^{\hat{\mu}}}_\nu = \left[\matrix{
+	e^\Phi & 0 & 0 & 0 \\
+	0 & e^\Lambda & 0 & 0 \\
+	0 & 0 & r & 0 \\
+	0 & 0 & 0 & r sin \theta
+}\right]$<br>
+<br>
+
+In the new coordinate system: eqn 23.15 a-d<br>
+$T_{\hat{\mu}\hat{\nu}} = {e_{\hat{\mu}}}^\mu {e_{\hat{\nu}}}^\nu T_{\mu\nu}$<br>
+$= {e_{\hat{\mu}}}^\mu {e_{\hat{\nu}}}^\nu g_{\mu\alpha} g_{\nu\beta} T^{\alpha\beta}$<br>
+$T_{\hat{t}\hat{t}} = (e^{-\Phi})^2 \cdot (-e^{2\Phi})^2 \cdot \rho e^{-2\Phi} = \rho$<br>
+$T_{\hat{r}\hat{r}} = (e^{-\Lambda})^2 \cdot (e^{2\Lambda})^2 \cdot p e^{-2 \Lambda} = p$<br>
+$T_{\hat{\theta}\hat{\theta}} = (r^{-1})^2 \cdot (r^2)^2 \cdot p r^{-2} = p$<br>
+$T_{\hat{\phi}\hat{\phi}} = ((r sin \theta)^{-1})^2 \cdot ((r sin \theta)^2)^2 \cdot p (r sin \theta)^{-2} = p$<br>
+<br>
+
+Start with eqn 22.11a:<br>
+$\frac{d\rho}{d\tau} = \frac{(\rho + p)}{n} \frac{dn}{d\tau}$<br> 
+Using $\frac{dn}{d\tau} = -n {u^\mu}_{;\mu}$<br>
+Use $\textbf{u} = \frac{d}{d\tau}$<br>
+$\frac{d\rho}{d\tau} = -(\rho + p) {u^\mu}_{;\mu}$<br>
+For a static star, both sides are zero: $\frac{d\rho}{d\tau} = 0$, $(\rho + p) {u^\mu}_{;\mu} = 0$<br>
+
+
+	</body>
+</html>
