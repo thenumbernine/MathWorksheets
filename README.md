@@ -16,6 +16,8 @@ Here's the CDN URLs:
 
 [Change of Coordinates](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Change%20of%20Coordinates%2ehtml)
 
+[Clebsch map](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Clebsch%20map%2ehtml)
+
 [Differential Geometry/exterior derivative](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/exterior%20derivative%2ehtml)
 
 [EMHD Hyperbolic Conservation Laws](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/EMHD%20Hyperbolic%20Conservation%20Laws%2ehtml)
@@ -23,6 +25,8 @@ Here's the CDN URLs:
 [EMHD Linear Stability Analysis](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/EMHD%20Linear%20Stability%20Analysis%2ehtml)
 
 [Electromagnetic Tensor Self-Dual](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Electromagnetic%20Tensor%20Self%2dDual%2ehtml)
+
+[Equations of Structure - Schwarzschild](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Equations%20of%20Structure%20%2d%20Schwarzschild%2ehtml)
 
 [Euler Fluid Equations - Curved Geometry - Contravariant](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Euler%20Fluid%20Equations%20%2d%20Curved%20Geometry%20%2d%20Contravariant%2ehtml)
 
@@ -43,8 +47,6 @@ Here's the CDN URLs:
 [GR EM Metrics/complex metric of g + dual F](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR%20EM%20Metrics/complex%20metric%20of%20g%20%2b%20dual%20F%2ehtml)
 
 [GR EM Metrics/curved space gravitomagnetics](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR%20EM%20Metrics/curved%20space%20gravitomagnetics%2ehtml)
-
-[GR EM Metrics/flat space gravitomagnetics](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR%20EM%20Metrics/flat%20space%20gravitomagnetics%2ehtml)
 
 [GR EM Metrics/gravitomagnetics](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR%20EM%20Metrics/gravitomagnetics%2ehtml)
 
@@ -97,6 +99,8 @@ Here's the CDN URLs:
 [Metric with geodesic that changes in space with velocity in time](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Metric%20with%20geodesic%20that%20changes%20in%20space%20with%20velocity%20in%20time%2ehtml)
 
 [Navier-Stokes As Exterior Derivative](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Navier%2dStokes%20As%20Exterior%20Derivative%2ehtml)
+
+[Navier-Stokes Curl Advection](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Navier%2dStokes%20Curl%20Advection%2ehtml)
 
 [Navier-Stokes](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Navier%2dStokes%2ehtml)
 
