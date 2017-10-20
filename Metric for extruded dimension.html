@@ -11,20 +11,26 @@
 
 Let $x^I$ be the Minkowski coordinates<br>
 Let $x^u$ be the curved coordinates<br>
-I'll also use $x^\bar{a}$ for flat space coordinates and $x^\tilde{a}$ for curved space coordintes<br>
+I'll also use $x^\bar{a}$ for flat space coordinates and $x^a$ for curved space coordintes<br>
+Let $ijklmn$ represent spatial coordinates<br>
+Let $0$ or $t$ represent the time coordiante<br>
 <br>
 
-Let $x^\bar{0} = \phi(x^u)$, $x^\bar{i} = x^\tilde{i}$<br>
+Let $x^\bar{0} = \phi(x^u)$, $x^\bar{i} = x^i$<br>
 <br>
 
 The basis is defined as:<br>
 ${e_u}^\bar{0} = \frac{\partial x^\bar{0}}{\partial x^u} = {x^\bar{0}}_{,u} = \phi_{,u}$<br>
-${e_u}^\bar{i} = \frac{\partial x^\bar{i}}{\partial x^u} = {x^\bar{i}}_{,u} = \delta^i_u$<br>
+${e_u}^\bar{i} = \frac{\partial x^\bar{i}}{\partial x^u} = {x^\bar{i}}_{,u} = \delta^\bar{i}_u$<br>
+${e_u}^{\bar{v}} = \downarrow u(i) \overset{\rightarrow \bar{v}(\bar{j})}{ \left[\matrix{
+	\phi_{,0} & 0 \\
+	\phi_{,i} & \delta_i^\bar{j}
+}\right] }$<br>
 <br>
 
 The inverse basis is defined as:<br>
-${e^\tilde{0}}_\bar{0} = (\phi_{,\tilde{0}})^{-1}$<br>
-${e^\tilde{0}}_\bar{i} = -(\phi_{,\tilde{i}}) (\phi_{,\tilde{0}})^{-1}$<br>
+${e^t}_\bar{0} = (\phi_{,t})^{-1}$<br>
+${e^t}_\bar{i} = -(\phi_{,i}) (\phi_{,t})^{-1}$<br>
 ${e^u}_\bar{i} = \delta^u_i$<br>
 <br>
 
@@ -32,15 +38,15 @@ Metric:<br>
 $g_{uv} = {e_u}^I {e_v}^J \eta_{IJ}$
 $= -{e_u}^\bar{0} {e_v}^\bar{0} + {e_u}^\bar{i} {e_v}^\bar{j} \eta_{\bar{i}\bar{j}}$
 $= -\phi_{,u} \phi_{,v} + \delta^i_u \delta^j_v \eta_{ij}$<br>
-$g_{\tilde{0}\tilde{0}} = -(\phi_{,\tilde{0}})^2$<br>
-$g_{\tilde{0}\tilde{i}} = -\phi_{,\tilde{0}} \phi_{,\tilde{i}}$<br>
-$g_{\tilde{i}\tilde{j}} = -\phi_{,\tilde{i}} \phi_{,\tilde{j}} + \delta_{ij}$<br>
+$g_{tt} = -(\phi_{,t})^2$<br>
+$g_{ti} = -\phi_{,t} \phi_{,i}$<br>
+$g_{ij} = -\phi_{,i} \phi_{,j} + \delta_{ij}$<br>
 <br>
 
 Metric inverse:<br>
-$g^{\tilde{0}\tilde{0}} = (\phi_{,\tilde{0}})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,\tilde{k}})^2)$<br>
-$g^{\tilde{i}\tilde{0}} = -(\phi_{,\tilde{i}}) (\phi_{,\tilde{0}})^{-1}$<br>
-$g^{\tilde{i}\tilde{j}} = \delta^{ij}$<br>
+$g^{tt} = (\phi_{,t})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,k})^2)$<br>
+$g^{it} = -(\phi_{,i}) (\phi_{,t})^{-1}$<br>
+$g^{ij} = \delta^{ij}$<br>
 <br>
 
 Metric partial:<br>
@@ -60,23 +66,23 @@ $= - \phi_{,u} \phi_{,vw}$<br>
 
 ${\Gamma^u}_{vw} = g^{ua} \Gamma_{avw}$
 $ = -g^{ua} \phi_{,a} \phi_{,vw}$<br>
-${\Gamma^\tilde{0}}_{vw} = -g^{\tilde{0}\tilde{0}} \phi_{,\tilde{0}} \phi_{,vw}
-	- g^{\tilde{0}\tilde{i}} \phi_{,\tilde{i}} \phi_{,vw}$
+${\Gamma^t}_{vw} = -g^{tt} \phi_{,t} \phi_{,vw}
+	- g^{ti} \phi_{,i} \phi_{,vw}$
 $ = (
-	-(\phi_{,\tilde{0}})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,\tilde{k}})^2) \phi_{,\tilde{0}}
-	+ \phi_{,\tilde{i}} (\phi_{,\tilde{0}})^{-1} \phi_{,\tilde{i}}
+	-(\phi_{,t})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,k})^2) \phi_{,t}
+	+ \phi_{,i} (\phi_{,t})^{-1} \phi_{,i}
 ) \phi_{,vw}$<br>
 $ = (
-	1 - \Sigma_{k=1}^n (\phi_{,\tilde{k}})^2
-	+ (\phi_{,\tilde{i}})^{2}
-) (\phi_{,\tilde{0}})^{-1} \phi_{,vw}$<br>
+	1 - \Sigma_{k=1}^n (\phi_{,k})^2
+	+ (\phi_{,i})^{2}
+) (\phi_{,t})^{-1} \phi_{,vw}$<br>
 <br>
 
-${\Gamma^\tilde{i}}_{vw} = g^{\tilde{i}\tilde{0}} \Gamma_{\tilde{0}vw} + g^{\tilde{i}\tilde{j}} \Gamma_{\tilde{j}vw}$<br>
-$ = -g^{\tilde{i}\tilde{0}} \phi_{,\tilde{0}} \phi_{,vw} - g^{\tilde{i}\tilde{j}} \phi_{,\tilde{j}} \phi_{,vw}$
-$ = (\phi_{,\tilde{i}}) (\phi_{,\tilde{0}})^{-1} \phi_{,\tilde{0}} \phi_{,vw}
-	- \delta^{ij} \phi_{,\tilde{j}} \phi_{,vw}$<br>
-$ = \phi_{,\tilde{i}} \phi_{,vw} - \phi_{,\tilde{i}} \phi_{,vw}$<br>
+${\Gamma^i}_{vw} = g^{it} \Gamma_{tvw} + g^{ij} \Gamma_{jvw}$<br>
+$ = -g^{it} \phi_{,t} \phi_{,vw} - g^{ij} \phi_{,j} \phi_{,vw}$
+$ = (\phi_{,i}) (\phi_{,t})^{-1} \phi_{,t} \phi_{,vw}
+	- \delta^{ij} \phi_{,j} \phi_{,vw}$<br>
+$ = \phi_{,i} \phi_{,vw} - \phi_{,i} \phi_{,vw}$<br>
 $ = 0$<br>
 <br>
 
@@ -85,71 +91,227 @@ So this gives the opposite of what I wanted: A controllable connection in the ne
 <hr>
 <br>
 Now let's try reversing the definition.  Still sticking to holonomic spaces, but defining the basis inverse rather than the basis.<br>
-Let $x^\tilde{0} = \phi(x^I)$, $x^\tilde{i} = x^\bar{i}$<br>
+Let $x^t = \phi(x^I)$, $x^i = x^\bar{i}$<br>
 <br>
 
 basis inverse:<br>
-${e^\tilde{0}}_I = \frac{\partial x^\tilde{0}}{\partial x^I} = \phi_{,\bar{I}}$<br>
-${e^\tilde{i}}_I = \frac{\partial x^\tilde{i}}{\partial x^I} = \delta^i_I$<br>
+${e^t}_\bar{u} = \frac{\partial x^t}{\partial x^\bar{u}} = \phi_{,\bar{u}}$<br>
+${e^i}_\bar{u} = \frac{\partial x^i}{\partial x^\bar{u}} = \delta^i_\bar{u}$<br>
+${e^u}_\bar{v} = \downarrow u(i) \overset{ \rightarrow \bar{v}(\bar{j}) }{ \left[\matrix{
+	(\phi_{,0})^{-1} & 0 \\
+	-\phi_{,\bar{i}} (\phi_{,0})^{-1} & \delta^i_\bar{j}
+}\right] }$<br>
 <br>
 
 basis:<br>
-${e_\tilde{0}}^{\bar{0}} = (\phi_{,\bar{0}})^{-1}$<br>
-${e_\tilde{i}}^{\bar{0}} = -(\phi_{,\bar{i}}) (\phi_{,\bar{0}})^{-1}$<br>
-${e_u}^\bar{i} = \delta_u^i$<br>
+${e_t}^0 = (\phi_{,0})^{-1}$<br>
+${e_t}^\bar{i} = 0$<br>
+${e_i}^0 = -(\phi_{,\bar{i}}) (\phi_{,0})^{-1}$<br>
+${e_i}^\bar{j} = \delta_i^\bar{j}$<br>
 <br>
 
 Now the metric and metric inverse are switched, just like the basis and basis inverse were switched.<br>
 Metric:<br>
-$g_{\tilde{0}\tilde{0}} = (\phi_{,\bar{0}})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2)$<br>
-$g_{\tilde{i}\tilde{0}} = -(\phi_{,\bar{i}}) (\phi_{,\bar{0}})^{-1}$<br>
-$g_{\tilde{i}\tilde{j}} = \delta_{ij}$<br>
+$g_{tt} = -(\phi_{,0})^{-2}$<br> 
+$g_{it} = -\phi_{,\bar{i}} (\phi_{,0})^{-2}$<br>
+$g_{ij} = -\phi_{,\bar{i}} \phi_{,\bar{j}} (\phi_{,0})^{-2}$<br>
 <br>
 
 Metric inverse:<br>
-$g^{\tilde{0}\tilde{0}} = -(\phi_{,\bar{0}})^2$<br>
-$g^{\tilde{0}\tilde{i}} = -\phi_{,\bar{0}} \phi_{,\bar{i}}$<br>
-$g^{\tilde{i}\tilde{j}} = -\phi_{,\bar{i}} \phi_{,\bar{j}} + \delta^{ij}$<br>
+$g^{tt} = -(\phi_{,\bar{0}})^2 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2$<br>
+$g^{ti} = \phi_{,\bar{i}}$<br>
+$g^{ij} = \delta^{ij}$<br>
 <br>
 
-Metric partial:<br>
-$g_{\tilde{0}\tilde{0},u} = ((\phi_{,\bar{0}})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2))_{,u}$<br>
-$= ((\phi_{,\bar{0}})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2))_{,I} {e_u}^I$<br>
-$= ((\phi_{,\bar{0}})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2))_{,\bar{0}} {e_u}^\bar{0}
-	+ ((\phi_{,\bar{0}})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2))_{,\bar{i}} {e_u}^\bar{i}
+Metric partials wrt flat space coordinates:<br>
+<br>
+
+$g_{tt,\bar{u}} = 2 \phi_{,0\bar{u}} (\phi_{,0})^{-3}$<br>
+<br>
+
+$g_{ti,\bar{u}} = - \phi_{,\bar{i}\bar{u}} (\phi_{,0})^{-2}
+	+ 2 \phi_{,\bar{i}} \phi_{,\bar{u}} (\phi_{,0})^{-3}$<br>
+$= (
+	 2 \phi_{,\bar{i}} \phi_{,\bar{u}} 
+	- \phi_{,\bar{i}\bar{u}} \phi_{,0}
+	) (\phi_{,0})^{-3}$<br>
+<br>
+
+$g_{ij,\bar{u}} = 
+	- (\phi_{,\bar{i}\bar{u}} \phi_{,\bar{j}} + \phi_{,\bar{i}} \phi_{,\bar{j}\bar{u}}) (\phi_{,0})^{-2}
+	+ 2 \phi_{,\bar{i}} \phi_{,\bar{j}} \phi_{,0\bar{u}} (\phi_{,0})^{-3}$<br>
+$=  (	
+	2 \phi_{,\bar{i}} \phi_{,\bar{j}} \phi_{,0\bar{u}} 
+	- \phi_{,0} \phi_{,\bar{i}} \phi_{,\bar{j}\bar{u}}
+	- \phi_{,0} \phi_{,\bar{j}} \phi_{,\bar{i}\bar{u}}
+) (\phi_{,0})^{-3}$<br>
+
+<br>
+
+Metric partials wrt curved space coordinates:<br>
+<br>
+
+$g_{tt,t} = g_{tt,\bar{u}} {e_t}^\bar{u} = g_{tt,0} {e_t}^0 + g_{tt,\bar{i}} {e_t}^\bar{i}$<br>
+$= 2 \phi_{,00} (\phi_{,0})^{-3} \cdot (\phi_{,0})^{-1}$<br>
+$= 2 \phi_{,00} (\phi_{,0})^{-4}$<br>
+<br>
+
+$g_{tt,i} = g_{tt,\bar{u}} {e_i}^\bar{u}$
+$= g_{tt,0} {e_i}^0 + g_{tt,\bar{j}} {e_i}^{\bar{j}}$<br>
+$= 2 \phi_{,00} (\phi_{,0})^{-3} 
+	\cdot -(\phi_{,\bar{i}}) (\phi_{,0})^{-1}
+	+ 2 \phi_{,0\bar{j}} (\phi_{,0})^{-3}
+	\cdot \delta^\bar{j}_i$<br>
+$= -2 \phi_{,\bar{i}} \phi_{,00} (\phi_{,0})^{-4} 
+	+ 2 \phi_{,0\bar{i}} (\phi_{,0})^{-3}$<br>
+$= 2 (\phi_{,0\bar{i}} \phi_{,0} - \phi_{,\bar{i}} \phi_{,00}) (\phi_{,0})^{-4} $<br>
+<br>
+
+$g_{ti,t} = g_{ti,\bar{u}} {e_t}^\bar{u} = g_{ti,0} {e_t}^0 + g_{ti,\bar{j}} {e_t}^\bar{j}$<br>
+$= (
+		 2 \phi_{,\bar{i}} \phi_{,0} 
+		- \phi_{,0\bar{i}} \phi_{,0}
+	) (\phi_{,0})^{-3}
+	\cdot (\phi_{,0})^{-1}
+	+ (
+		 2 \phi_{,\bar{i}} \phi_{,\bar{j}} 
+		- \phi_{,\bar{i}\bar{j}} \phi_{,0}
+	) (\phi_{,0})^{-3}
+	\cdot 0$<br>
+$= 	(
+		 2 \phi_{,\bar{i}} 
+		- \phi_{,0\bar{i}}
+	) (\phi_{,0})^{-3}$<br>
+<br>
+
+$g_{ti,j} = g_{ti,\bar{u}} {e_j}^\bar{u} = g_{ti,0} {e_j}^0 + g_{ti,\bar{k}} {e_j}^\bar{k}$<br>
+$= (
+	 2 \phi_{,\bar{i}} \phi_{,0} 
+	- \phi_{,0\bar{i}} \phi_{,0}
+	) (\phi_{,0})^{-3}
+	\cdot -\phi_{,\bar{j}} (\phi_{,0})^{-1}
+
+	+ (2 \phi_{,\bar{i}} \phi_{,\bar{k}} 
+	- \phi_{,\bar{i}\bar{k}} \phi_{,0}
+	) (\phi_{,0})^{-3}
+	\cdot \delta_j^{\bar{k}}
 $<br>
-$g_{\tilde{0}\tilde{0},\tilde{0}}$<br>
-$= ((\phi_{,\bar{0}})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2))_{,\bar{0}} {e_\tilde{0}}^\bar{0}
-	+ ((\phi_{,\bar{0}})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2))_{,\bar{i}} {e_\tilde{0}}^\bar{i}
-$<br>
-$= ((\phi_{,\bar{0}})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2))_{,\bar{0}} (\phi_{,\bar{0}})^{-1} 
-	+ ((\phi_{,\bar{0}})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2))_{,\bar{i}} \delta_\tilde{0}^i 
-$<br>
-$= (-2 (\phi_{,\bar{0}})^{-3} \phi_{,\bar{0}\bar{0}} (-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2)
-	+ (\phi_{,\bar{0}})^{-2} \Sigma_{k=1}^n (2 \phi_{,\bar{k}} \phi_{,\bar{k}\bar{0}})
-) (\phi_{,\bar{0}})^{-1} 
-$<br>
-$= 2 (\phi_{,\bar{0}})^{-3} (-(\phi_{,\bar{0}})^{-1} \phi_{,\bar{0}\bar{0}} (-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2)
-	+ \Sigma_{k=1}^n (\phi_{,\bar{k}} \phi_{,\bar{k}\bar{0}}))$<br>
-$g_{\tilde{0}\tilde{0},\tilde{j}} = ((\phi_{,\bar{0}})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2))_{,\bar{0}} {e_\tilde{j}}^\bar{0}
-	+ ((\phi_{,\bar{0}})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2))_{,\bar{i}} {e_\tilde{j}}^\bar{i}
-$<br>
-$g_{\tilde{0}\tilde{0},\tilde{j}} = ((\phi_{,\bar{0}})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2))_{,\bar{0}} (-(\phi_{,\bar{i}}) (\phi_{,\bar{0}})^{-1} ) 
-	+ ((\phi_{,\bar{0}})^{-2} (-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2))_{,\bar{i}} \delta^i_j 
-$<br>
-$g_{\tilde{0}\tilde{0},\tilde{j}} = (
-	-2 (\phi_{,\bar{0}})^{-3} \phi_{,\bar{0}\bar{0}}
-	(-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2)
-	+ (\phi_{,\bar{0}})^{-2} 
-	(\Sigma_{k=1}^n 2 \phi_{,\bar{k}} \phi_{,\bar{k}\bar{0}})
-) (-(\phi_{,\bar{i}}) (\phi_{,\bar{0}})^{-1} ) 
-+ (
-	-2 (\phi_{,\bar{0}})^{-3} \phi_{,\bar{0}\bar{j}}
-	(-1 + \Sigma_{k=1}^n (\phi_{,\bar{k}})^2)
-	+ (\phi_{,\bar{0}})^{-2} 
-	(\Sigma_{k=1}^n 2 \phi_{,\bar{k}} \phi_{,\bar{k}\bar{j}})
-)
-$<br>
+$= (
+		\phi_{,\bar{j}} \phi_{,0\bar{i}} \phi_{,0}
+		- 2 \phi_{,\bar{j}} \phi_{,\bar{i}} \phi_{,0} 
+	) (\phi_{,0})^{-4}
 	
+	+ (
+		2 \phi_{,0} \phi_{,\bar{i}} \phi_{,\bar{j}} 
+		- \phi_{,\bar{i}\bar{j}} (\phi_{,0})^2
+	) (\phi_{,0})^{-4}
+$<br>
+$= (
+		\phi_{,\bar{j}} \phi_{,0\bar{i}}
+		- \phi_{,0} \phi_{,\bar{i}\bar{j}} 
+	) (\phi_{,0})^{-3}
+$<br>
+<br>
+
+$g_{ij,t} = g_{ij,\bar{u}} {e_t}^\bar{u} = g_{ij,0} {e_t}^0 + g_{ij,\bar{k}} {e_t}^\bar{k}$<br>
+$=  (	
+		2 \phi_{,\bar{i}} \phi_{,\bar{j}} \phi_{,00} 
+		- \phi_{,0} \phi_{,\bar{i}} \phi_{,\bar{j}0}
+		- \phi_{,0} \phi_{,\bar{j}} \phi_{,\bar{i}0}
+	) (\phi_{,0})^{-3}
+	\cdot (\phi_{,0})^{-1}	
+	+ (	
+		2 \phi_{,\bar{i}} \phi_{,\bar{j}} \phi_{,0\bar{k}} 
+		- \phi_{,0} \phi_{,\bar{i}} \phi_{,\bar{j}\bar{k}}
+		- \phi_{,0} \phi_{,\bar{j}} \phi_{,\bar{i}\bar{k}}
+	) (\phi_{,0})^{-3}
+	\cdot 0$<br>
+$=  (
+		2 \phi_{,\bar{i}} \phi_{,\bar{j}} \phi_{,00} 
+		- \phi_{,0} \phi_{,\bar{i}} \phi_{,0\bar{j}}
+		- \phi_{,0} \phi_{,\bar{j}} \phi_{,0\bar{i}}
+	) (\phi_{,0})^{-4}$<br>
+<br>
+
+$g_{ij,k} = g_{ij,\bar{u}} {e_k}^\bar{u} = g_{ij,0} {e_k}^0 + g_{ij,\bar{l}} {e_k}^\bar{l}$<br>
+$=  (
+		2 \phi_{,\bar{i}} \phi_{,\bar{j}} \phi_{,00} 
+		- \phi_{,0} \phi_{,\bar{i}} \phi_{,0\bar{j}}
+		- \phi_{,0} \phi_{,\bar{j}} \phi_{,0\bar{i}}
+	) (\phi_{,0})^{-3}
+	\cdot -\phi_{,\bar{k}} (\phi_{,0})^{-1} 
+	+ (	
+		2 \phi_{,\bar{i}} \phi_{,\bar{j}} \phi_{,0\bar{l}} 
+		- \phi_{,0} \phi_{,\bar{i}} \phi_{,\bar{j}\bar{l}}
+		- \phi_{,0} \phi_{,\bar{j}} \phi_{,\bar{i}\bar{l}}
+	) (\phi_{,0})^{-3}
+	\cdot \delta^\bar{l}_k$<br>
+$=  \phi_{,\bar{k}} (
+		- 2 \phi_{,\bar{i}} \phi_{,\bar{j}} \phi_{,00} 
+		+ \phi_{,0} \phi_{,\bar{i}} \phi_{,0\bar{j}}
+		+ \phi_{,0} \phi_{,\bar{j}} \phi_{,0\bar{i}}
+	) (\phi_{,0})^{-4}
+	+ (	
+		2 \phi_{,0} \phi_{,\bar{i}} \phi_{,\bar{j}} \phi_{,0\bar{k}} 
+		- (\phi_{,0})^2 \phi_{,\bar{i}} \phi_{,\bar{j}\bar{k}}
+		- (\phi_{,0})^2 \phi_{,\bar{j}} \phi_{,\bar{i}\bar{k}}
+	) (\phi_{,0})^{-4}
+$<br>
+$=  (
+		- 2 \phi_{,\bar{i}} \phi_{,\bar{j}} \phi_{,\bar{k}} \phi_{,00}
+		+ \phi_{,0} \phi_{,\bar{i}} \phi_{,\bar{k}} \phi_{,0\bar{j}}
+		+ \phi_{,0} \phi_{,\bar{j}} \phi_{,\bar{k}} \phi_{,0\bar{i}}
+		+ 2 \phi_{,0} \phi_{,\bar{i}} \phi_{,\bar{j}} \phi_{,0\bar{k}} 
+		- (\phi_{,0})^2 \phi_{,\bar{i}} \phi_{,\bar{j}\bar{k}}
+		- (\phi_{,0})^2 \phi_{,\bar{j}} \phi_{,\bar{i}\bar{k}}
+	) (\phi_{,0})^{-4}
+$<br>
+<br>
+
+Connections:<br>
+<br>
+
+$\Gamma_{ttt} = \frac{1}{2} g_{tt,t} $
+$= \phi_{,00} (\phi_{,0})^{-4}$<br>
+<br>
+
+$\Gamma_{itt} = \frac{1}{2} (g_{it,t} + g_{it,t} - g_{tt,i}) = g_{it,t} - \frac{1}{2} g_{tt,i}$<br>
+$= (
+		 2 \phi_{,\bar{i}} 
+		- \phi_{,0\bar{i}}
+	) (\phi_{,0})^{-3}
+	- (
+		\phi_{,0\bar{i}} \phi_{,0} 
+		- \phi_{,\bar{i}} \phi_{,00}
+	) (\phi_{,0})^{-4} $<br>
+$= (
+		2 \phi_{,0} \phi_{,\bar{i}}
+		- 2 \phi_{,0} \phi_{,0\bar{i}}
+		+ \phi_{,\bar{i}} \phi_{,00}
+	) (\phi_{,0})^{-4} $<br>
+<br>
+
+${\Gamma^i}_{tt} = g^{iu} \Gamma_{utt} = g^{it} \Gamma_{ttt} + g^{ij} \Gamma_{jtt}$<br>
+$=  \phi_{,\bar{i}} 
+	\cdot \phi_{,00} (\phi_{,0})^{-4}
+	+ \delta^{ij}
+	\cdot (
+		2 \phi_{,0} \phi_{,\bar{j}}
+		- 2 \phi_{,0} \phi_{,0\bar{j}}
+		+ \phi_{,\bar{j}} \phi_{,00}
+	) (\phi_{,0})^{-4}$<br>
+$=  (
+		2 \phi_{,0} \phi_{,\bar{i}}
+		- 2 \phi_{,0} \phi_{,0\bar{i}}
+		+ 2 \phi_{,\bar{i}} \phi_{,00}
+	) (\phi_{,0})^{-4}$<br>
+<br>
+Now let $\phi_{,0} = 1$<br>
+${\Gamma^i}_{tt} = 2 \phi_{,\bar{i}}$<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 	</body>
 </html>

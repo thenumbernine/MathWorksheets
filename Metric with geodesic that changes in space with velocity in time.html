@@ -3,30 +3,26 @@
 	<head>
         <meta charset="UTF-8">
 		<script type='text/javascript' src='tryToFindMathJax.js'></script>
-		<title>Numerical Relativity Eigenfields</title>
+		<title>Metric with geodesic that changes direction in space with velocity in time</title>
 	</head>
 	<body onload='tryToFindMathJax();'>
 
-$\dot{u}^a = {\Gamma^a}_{bc} u^b u^c$<br>
-$
-a\downarrow \left[\matrix{
-	\dot{u}^t \\
-	\dot{u}^x \\
-	\dot{u}^y \\
+Geodesic: $\dot{u}^a + {\Gamma^a}_{bc} u^b u^c = 0 $<br>
+Connection coefficients: ${\Gamma^a}_{bc}$<br>
+Spatial components of geodesic: ${\Gamma^i}_{ab}$<br>
+So Tada, let ${\Gamma^i}_{tt} = -\frac{1}{(u^t)^2} \cdot \left[\matrix{
+	cos( u^t ) \\
+	sin( u^t ) \\
 	0
-}\right] =
-a\downarrow \left[\matrix{
-	0 \\
-	cos(\theta u^t) \\
-	sin(\theta u^t) \\
-	0
-}\right] = {\Gamma^a}_{bc} \cdot 
-b\downarrow \left[\matrix{
-	u^t \\ u^x \\ u^y \\ 0
-}\right] \cdot
-c\downarrow \left[\matrix{
-	u^t \\ u^x \\ u^y \\ 0
 }\right]$<br>
-
+From this we get $\dot{u}^i = \left[\matrix{
+	cos(u^t) \\
+	sin(u^t) \\
+	0
+}\right]$<br>
+Then as $u^t$ changes, the direction of $\dot{u}^i$ changes.<br>
+You will accelerate in a different direction through space depending on how fast you are traveling through time.<br>
+Except that $u^t = \dot{x}^t$ is not a variable that relates to the information at that point on the surface, while $x^t$ is.<br>
+<br>
 	</body>
 </html>
