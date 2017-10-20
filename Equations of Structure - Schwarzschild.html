@@ -342,7 +342,7 @@ $\bar{E} = -\frac{1}{r} \Phi_{,r} e^{-2\Lambda}$<br>
 $F = \frac{1}{r^2} (1 - e^{-2\Lambda})$<br>
 $\bar{F} = \frac{1}{r} \Lambda_{,r} e^{-2\Lambda}$<br>
 <br>
-...and the basis is now orthonormalized, so ${G^\hat{t}}_{\hat{t}} = \eta^{\hat{t}\hat{t}} G_{\hat{t}\hat{t}}$<br>
+...and the basis is now orthonormalized, so ${G^\hat{t}}_{\hat{t}} = \eta^{\hat{t}\hat{t}} G_{\hat{t}\hat{t}} = -G_{\hat{t}\hat{t}}$<br>
 So $G_{\hat{t}\hat{t}} = F + 2 \bar{F}$
 $ = 
 	\frac{1}{r^2} (1 - e^{-2\Lambda})
@@ -366,7 +366,21 @@ Let $m = m(r)$ and $2 m = r (1 - e^{-2 \Lambda})$<br>
 so $e^{2\Lambda} = (1 - \frac{2 m}{r})^{-1}$ (eqn 23.18)<br>
 Now $G_{\hat{t}\hat{t}} = r^{-2} \frac{d}{dr} (2m) = \frac{2}{r^2} \frac{dm}{dr} = 8 \pi \rho$<br>
 $\frac{dm}{dr} = 4 \pi r^2 \rho$<br>
-Integrate: $m(r) = \int_{r=0}^{r=r} 4 \pi r^2 \rho dr + m(0)$<br>
+Integrate:<br>
+$m(r) = \int_{r=0}^{r=r} 4 \pi r^2 \rho dr + m(0)$<br>
+$ = \frac{4}{3} \pi r^3 \rho + m(0)$<br> 
+where $m(0) = 0$ for flat geometry, and $m(0) = $ otherwise for a singularity at the origin.<br> 
+<br>
+
+Applied to the spherical Schwarzschild metric:<br>
+$ds^2 = (1 - \frac{2 m}{r})^{-1} dr^2 + r^2 (d\theta^2 + (sin \theta)^2 d\phi^2)$<br>
+$= \frac{r}{r - 2m} dr^2 + r^2 (d\theta^2 + (sin \theta)^2 d\phi^2)$<br>
+For $r \approx 0$ and $m(0) \ne 0$:<br>
+$ds^2 \approx -\frac{r}{2m(0)} dr^2 + r^2 (d\theta^2 + (sin \theta)^2 d\phi^2)$<br>
+For $r \approx 0$ and $m(0) = 0$:<br>
+$= \frac{r}{r - 2 \frac{4}{3} \pi r^3 \rho} dr^2 + r^2 (d\theta^2 + (sin \theta)^2 d\phi^2)$<br>
+$= \frac{1}{1 - \frac{8}{3} \pi r^2 \rho} dr^2 + r^2 (d\theta^2 + (sin \theta)^2 d\phi^2)$<br>
+$\approx dr^2 + r^2 (d\theta^2 + (sin \theta)^2 d\phi^2)$<br>
 <br>
 
 	</body>
