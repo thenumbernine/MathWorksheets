@@ -88,7 +88,21 @@ $ = 0$<br>
 
 So this gives the opposite of what I wanted: A controllable connection in the new dimension for vectors at rest in the subspace, and no connection in the new dimension for any vectors - especially those at rest in the new dimension.<br>
 <br>
+
+
+
+
+
+
+
 <hr>
+
+
+
+
+
+
+
 <br>
 Now let's try reversing the definition.  Still sticking to holonomic spaces, but defining the basis inverse rather than the basis.<br>
 Let $x^t = \phi(x^I)$, $x^i = x^\bar{i}$<br>
@@ -268,11 +282,41 @@ $=  (
 $<br>
 <br>
 
-Connections:<br>
+Christoffel symbols of the 1st kind:<br>
 <br>
 
 $\Gamma_{ttt} = \frac{1}{2} g_{tt,t} $
 $= \phi_{,00} (\phi_{,0})^{-4}$<br>
+<br>
+
+$\Gamma_{tti} = \frac{1}{2} (g_{tt,i} + g_{ti,t} - g_{ti,t}) = \frac{1}{2} g_{tt,i}$<br>
+$= (\phi_{,0\bar{i}} \phi_{,0} - \phi_{,\bar{i}} \phi_{,00}) (\phi_{,0})^{-4} $<br>
+<br>
+
+$\Gamma_{tij} = \frac{1}{2} (g_{ti,j} + g_{tj,i} - g_{ij,t})$<br>
+$= \frac{1}{2} (
+	(
+		\phi_{,\bar{j}} \phi_{,0\bar{i}}
+		- \phi_{,0} \phi_{,\bar{i}\bar{j}} 
+	) (\phi_{,0})^{-3}
+	+ 
+	(
+		\phi_{,\bar{i}} \phi_{,0\bar{j}}
+		- \phi_{,0} \phi_{,\bar{i}\bar{j}} 
+	) (\phi_{,0})^{-3}
+	-
+	(
+		2 \phi_{,\bar{i}} \phi_{,\bar{j}} \phi_{,00} 
+		- \phi_{,0} \phi_{,\bar{i}} \phi_{,0\bar{j}}
+		- \phi_{,0} \phi_{,\bar{j}} \phi_{,0\bar{i}}
+	) (\phi_{,0})^{-4}
+)$<br>
+$= (
+		- \phi_{,\bar{i}} \phi_{,\bar{j}} \phi_{,00} 
+		+ \phi_{,0} \phi_{,\bar{i}} \phi_{,0\bar{j}}
+		+ \phi_{,0} \phi_{,\bar{j}} \phi_{,0\bar{i}}
+		- (\phi_{,0})^2 \phi_{,\bar{i}\bar{j}} 
+) (\phi_{,0})^{-4}$<br>
 <br>
 
 $\Gamma_{itt} = \frac{1}{2} (g_{it,t} + g_{it,t} - g_{tt,i}) = g_{it,t} - \frac{1}{2} g_{tt,i}$<br>
@@ -291,6 +335,69 @@ $= (
 	) (\phi_{,0})^{-4} $<br>
 <br>
 
+$\Gamma_{ijt} = \frac{1}{2} (g_{ij,t} + g_{it,j} - g_{jt,i})$<br>
+$= \frac{1}{2} (
+	(
+		2 \phi_{,\bar{i}} \phi_{,\bar{j}} \phi_{,00} 
+		- \phi_{,0} \phi_{,\bar{i}} \phi_{,0\bar{j}}
+		- \phi_{,0} \phi_{,\bar{j}} \phi_{,0\bar{i}}
+	) (\phi_{,0})^{-4}
+	+ 
+	(
+		\phi_{,\bar{j}} \phi_{,0\bar{i}}
+		- \phi_{,0} \phi_{,\bar{i}\bar{j}} 
+	) (\phi_{,0})^{-3}
+	- 
+	(
+		\phi_{,\bar{i}} \phi_{,0\bar{j}}
+		- \phi_{,0} \phi_{,\bar{i}\bar{j}} 
+	) (\phi_{,0})^{-3}
+)$<br>
+$= \phi_{,\bar{i}} (
+	\phi_{,\bar{j}} \phi_{,00} 
+	- \phi_{,0} \phi_{,0\bar{j}}
+) (\phi_{,0})^{-4}$<br>
+<br>
+
+$\Gamma_{ijjk} = \frac{1}{2} (g_{ij,k} + g_{ik,j} - g_{jk,i})$<br>
+$= \frac{1}{2} (
+	(
+		- 2 \phi_{,\bar{i}} \phi_{,\bar{j}} \phi_{,\bar{k}} \phi_{,00}
+		+ \phi_{,0} \phi_{,\bar{i}} \phi_{,\bar{k}} \phi_{,0\bar{j}}
+		+ \phi_{,0} \phi_{,\bar{j}} \phi_{,\bar{k}} \phi_{,0\bar{i}}
+		+ 2 \phi_{,0} \phi_{,\bar{i}} \phi_{,\bar{j}} \phi_{,0\bar{k}} 
+		- (\phi_{,0})^2 \phi_{,\bar{i}} \phi_{,\bar{j}\bar{k}}
+		- (\phi_{,0})^2 \phi_{,\bar{j}} \phi_{,\bar{i}\bar{k}}
+	) (\phi_{,0})^{-4}
+	+ (
+		- 2 \phi_{,\bar{i}} \phi_{,\bar{k}} \phi_{,\bar{j}} \phi_{,00}
+		+ \phi_{,0} \phi_{,\bar{i}} \phi_{,\bar{j}} \phi_{,0\bar{k}}
+		+ \phi_{,0} \phi_{,\bar{k}} \phi_{,\bar{j}} \phi_{,0\bar{i}}
+		+ 2 \phi_{,0} \phi_{,\bar{i}} \phi_{,\bar{k}} \phi_{,0\bar{j}} 
+		- (\phi_{,0})^2 \phi_{,\bar{i}} \phi_{,\bar{k}\bar{j}}
+		- (\phi_{,0})^2 \phi_{,\bar{k}} \phi_{,\bar{i}\bar{j}}
+	) (\phi_{,0})^{-4}
+	- (
+		- 2 \phi_{,\bar{j}} \phi_{,\bar{k}} \phi_{,\bar{i}} \phi_{,00}
+		+ \phi_{,0} \phi_{,\bar{j}} \phi_{,\bar{i}} \phi_{,0\bar{k}}
+		+ \phi_{,0} \phi_{,\bar{k}} \phi_{,\bar{i}} \phi_{,0\bar{j}}
+		+ 2 \phi_{,0} \phi_{,\bar{j}} \phi_{,\bar{k}} \phi_{,0\bar{i}} 
+		- (\phi_{,0})^2 \phi_{,\bar{j}} \phi_{,\bar{k}\bar{i}}
+		- (\phi_{,0})^2 \phi_{,\bar{k}} \phi_{,\bar{j}\bar{i}}
+	) (\phi_{,0})^{-4}
+)$<br>
+$= (
+	- (\phi_{,0})^2 \phi_{,\bar{i}} \phi_{,\bar{j}\bar{k}}
+	
+	+ \phi_{,0} \phi_{,\bar{i}} \phi_{,\bar{k}} \phi_{,0\bar{j}} 
+	+ \phi_{,0} \phi_{,\bar{i}} \phi_{,\bar{j}} \phi_{,0\bar{k}} 
+	
+	- \phi_{,\bar{i}} \phi_{,\bar{j}} \phi_{,\bar{k}} \phi_{,00}
+) (\phi_{,0})^{-4}$<br>
+<br>
+
+Christoffel symbols of the 2nd kind:<br>
+
 ${\Gamma^i}_{tt} = g^{iu} \Gamma_{utt} = g^{it} \Gamma_{ttt} + g^{ij} \Gamma_{jtt}$<br>
 $=  \phi_{,\bar{i}} 
 	\cdot \phi_{,00} (\phi_{,0})^{-4}
@@ -306,11 +413,51 @@ $=  (
 		+ 2 \phi_{,\bar{i}} \phi_{,00}
 	) (\phi_{,0})^{-4}$<br>
 <br>
-Now let $\phi_{,0} = 1$<br>
-${\Gamma^i}_{tt} = 2 \phi_{,\bar{i}}$<br>
+
+${\Gamma^i}_{tj} = g^{iu} \Gamma_{utj} = g^{it} \Gamma_{ttj} + g^{ik} \Gamma_{ktj}$<br>
+$= 	\phi_{,\bar{i}}
+	(\phi_{,0\bar{j}} \phi_{,0} - \phi_{,\bar{j}} \phi_{,00}) (\phi_{,0})^{-4}
+	+ 
+	\delta^{ik}
+	\phi_{,\bar{k}} (
+		\phi_{,\bar{j}} \phi_{,00} 
+		- \phi_{,0} \phi_{,0\bar{j}}
+	) (\phi_{,0})^{-4} $<br>
+$= 0$<br>
+<br>
+
+${\Gamma^i}_{jk} = g^{iu} \Gamma_{ujk} = g^{it} \Gamma_{tjk} + g^{il} \Gamma_{ljk}$<br>
+$ = \phi_{,\bar{i}} (
+			- \phi_{,\bar{j}} \phi_{,\bar{k}} \phi_{,00} 
+			+ \phi_{,0} \phi_{,\bar{j}} \phi_{,0\bar{k}}
+			+ \phi_{,0} \phi_{,\bar{k}} \phi_{,0\bar{j}}
+			- (\phi_{,0})^2 \phi_{,\bar{j}\bar{k}} 
+	) (\phi_{,0})^{-4}
+	+ \delta^{il} (
+		- (\phi_{,0})^2 \phi_{,\bar{l}} \phi_{,\bar{j}\bar{k}}
+		
+		+ \phi_{,0} \phi_{,\bar{l}} \phi_{,\bar{k}} \phi_{,0\bar{j}} 
+		+ \phi_{,0} \phi_{,\bar{l}} \phi_{,\bar{j}} \phi_{,0\bar{k}} 
+		
+		- \phi_{,\bar{l}} \phi_{,\bar{j}} \phi_{,\bar{k}} \phi_{,00}
+	) (\phi_{,0})^{-4}
+$<br>
+$ = 2 (
+		- (\phi_{,0})^2 \phi_{,\bar{i}} \phi_{,\bar{j}\bar{k}} 
+		
+		+ \phi_{,0} \phi_{,\bar{i}} \phi_{,\bar{j}} \phi_{,0\bar{k}}
+		+ \phi_{,0} \phi_{,\bar{i}} \phi_{,\bar{k}} \phi_{,0\bar{j}}
+		
+		- \phi_{,\bar{i}} \phi_{,\bar{j}} \phi_{,\bar{k}} \phi_{,00} 
+	) (\phi_{,0})^{-4}
+$<br>
 <br>
 
 TODO check the other geodesic components<br>
+<br>
+
+Now let $\phi_{,0} = 1$<br>
+${\Gamma^i}_{tt} = 2 \phi_{,\bar{i}}$<br>
 <br>
 
 So let $\phi(t,x^\bar{i}) = \bar{t} - \frac{1}{2} \psi(x^\bar{i})$<br>
