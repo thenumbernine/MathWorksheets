@@ -274,6 +274,66 @@ $= {1 \over 2} \partial_\gamma g_{\alpha\beta}$<br>
 Christoffel of the 2nd kind / affine connection: $ {\Gamma^\alpha}_{\beta\gamma} = g^{\alpha\delta} \Gamma_{\delta\beta\gamma} $<br>
 <br>
 
+vierbein derivative in a non-coordinate basis:<br>
+${{e_\alpha}^I}_{,\beta} = e_\beta {e_\alpha}^I$
+$= {e_\beta}^J {{e_\alpha}^I}_{,J}$<br>
+Because ${e_\alpha}^I$ is invertible,<br>
+${{e_\alpha}^I}_{,\beta} {e^\beta}_J = {{e_\alpha}^I}_{,J}$<br>
+<br>
+
+commutation coefficients in a non-coordinate basis:<br>
+$e_\mu = {e_\mu}^I \partial_I$<br>
+${c_{\alpha\beta}}^\gamma e_\gamma = [e_\alpha, e_\beta]$<br>
+${c_{\alpha\beta}}^\gamma e_\gamma = 2 {e_{[\alpha|}}^I e_I ({e_{|\beta]}}^J e_J)$<br>
+${c_{\alpha\beta}}^\gamma e_\gamma = 2 ({e_{[\alpha}}^I {{e_{\beta]}}^J}_{,I} e_J + {e_{[\alpha}}^I {e_{\beta]}}^J e_I e_J)$
+$ = 2 ({e_{[\alpha}}^I {{e_{\beta]}}^J}_{,I} e_J + {e_\alpha}^I {e_\beta}^J e_{[I} e_{J]})$<br>
+${c_{\alpha\beta}}^\gamma {e_\gamma}^J e_J = 2 {e_{[\alpha}}^I {{e_{\beta]}}^J}_{,I} e_J$
+$ = ({e_\alpha}^I {{e_\beta}^J}_{,I} - {e_\beta}^I {{e_\alpha}^J}_{,I}) e_J$<br>
+${c_{\alpha\beta}}^\gamma = ({e_\alpha}^I {{e_\beta}^J}_{,I} - {e_\beta}^I {{e_\alpha}^J}_{,I}) {e^\gamma}_J$<br>
+$c_{\alpha\beta\gamma} = ({{e_\beta}^J}_{,\alpha} - {{e_\alpha}^J}_{,\alpha}) e_{\gamma J}$
+$ = 2 {{e_{[\beta}}^I}_{,\alpha]} e_{\gamma I}$<br>
+<br>
+
+Levi-Civita connection in a non-coordinate basis:<br>
+$\Gamma_{\alpha\beta\gamma} = \frac{1}{2} (
+	g_{\alpha\beta,\gamma}
+	+ g_{\alpha\gamma,\beta}
+	- g_{\beta\gamma,\alpha}
+	+ c_{\alpha\beta,\gamma}
+	+ c_{\alpha\gamma,\beta}
+	- c_{\beta\gamma,\alpha}
+)$<br>
+$= \frac{1}{2} (
+	({e_\alpha}^I e_{\beta I})_{,\gamma}
+	+ ({e_\alpha}^I e_{\gamma I})_{,\beta}
+	- ({e_\beta}^I e_{\gamma I})_{,\alpha}
+
+	+ 2 {{e_{[\beta}}^I}_{,\alpha]} e_{\gamma I}
+	+ 2 {{e_{[\gamma}}^I}_{,\alpha]} e_{\beta I}
+	- 2 {{e_{[\gamma}}^I}_{,\beta]} e_{\alpha I}
+)$<br>
+$= \frac{1}{2} (
+	{{e_\alpha}^I}_{,\gamma} e_{\beta I}
+	+ {e_{\beta I}}_{,\gamma} {e_\alpha}^I
+
+	+ {{e_\alpha}^I}_{,\beta} e_{\gamma I}
+	+ {e_{\gamma I}}_{,\beta} {e_\alpha}^I
+
+	- {{e_\beta}^I}_{,\alpha} e_{\gamma I}
+	- {e_{\gamma I}}_{,\alpha} {e_\beta}^I
+
+	+ {{e_\beta}^I}_{,\alpha} e_{\gamma I}
+	- {{e_\alpha}^I}_{,\beta} e_{\gamma I}
+	
+	+ {{e_\gamma}^I}_{,\alpha} e_{\beta I}
+	- {{e_\alpha}^I}_{,\gamma} e_{\beta I}
+	
+	- {{e_\gamma}^I}_{,\beta} e_{\alpha I}
+	+ {{e_\beta}^I}_{,\gamma} e_{\alpha I}
+)$<br>
+$= {e_\alpha}^I {e_{\beta I}}_{,\gamma}$<br>
+<br>
+
 covariant derivative of vector basis: $ \langle \nabla_\gamma {\textbf e}_\beta, \boldsymbol{\omega}^\alpha \rangle = {\Gamma^\alpha}_{\beta\gamma} $, so $ \nabla_\gamma {\textbf e}_\beta = {\Gamma^\alpha}_{\beta\gamma} {\textbf e}_\alpha $<br>
 covariant derivative of one-form basis: $ -\langle \nabla_\gamma \boldsymbol{\omega}^\alpha, {\textbf e}_\beta \rangle = {\Gamma^\alpha}_{\beta\gamma} $, so $ \nabla_\gamma \boldsymbol{\omega}^\alpha = -{\Gamma^\alpha}_{\beta\gamma} \boldsymbol{\omega}^\beta $<br>
 <br>
@@ -305,6 +365,7 @@ $ \nabla_\gamma g_{\alpha\beta}
 	= 0 
 $<br>
 <br>
+
 covariant vector derivative: 
 $ \nabla_{\textbf{u}} \textbf{v} 
 	= \textbf{u} \cdot \boldsymbol{\nabla} \textbf{v}
