@@ -2,7 +2,7 @@
 <html>
 	<head>
         <meta charset="UTF-8">
-		<title>Numerical Relativity Eigenfields</title>
+		<title>Numerical Relativity - 3. ADM</title>
 		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
 	</head>
     <body onload='tryToFindMathJax();'>
@@ -463,5 +463,55 @@ $
 	(\lambda + \alpha \sqrt{f \gamma^{xx}})
 	(\lambda - \alpha \sqrt{f \gamma^{xx}})
 $<br>
+<br>
+
+Remove the $\partial_t u = 0$ rows, and try again:<br>
+$\left[\matrix{
+	{\partial_{{t}}({a_x})} \\
+	{\partial_{{t}}({d_{xxx}})} \\
+	{\partial_{{t}}({d_{xxy}})} \\
+	{\partial_{{t}}({d_{xxz}})} \\
+	{\partial_{{t}}({d_{xyy}})} \\
+	{\partial_{{t}}({d_{xyz}})} \\
+	{\partial_{{t}}({d_{xzz}})} \\
+	{\partial_{{t}}({K_{xx}})} \\
+	{\partial_{{t}}({K_{xy}})} \\
+	{\partial_{{t}}({K_{xz}})} \\
+	{\partial_{{t}}({K_{yy}})} \\
+	{\partial_{{t}}({K_{yz}})} \\
+	{\partial_{{t}}({K_{zz}})}
+}\right]
++ \left[\matrix{
+	\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & {\alpha f {\gamma^{xx}}} & {2 \alpha f {\gamma^{xy}}} & {2 \alpha f {\gamma^{xz}}} & {\alpha f {\gamma^{yy}}} & {2 \alpha f {\gamma^{yz}}} & {\alpha f {\gamma^{zz}}} \\
+	\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \alpha & \cdot & \cdot & \cdot & \cdot & \cdot \\
+	\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \alpha & \cdot & \cdot & \cdot & \cdot \\
+	\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \alpha & \cdot & \cdot & \cdot \\
+	\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \alpha & \cdot & \cdot \\
+	\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \alpha & \cdot \\
+	\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \alpha \\
+	\alpha & \cdot & \cdot & \cdot & {\alpha {\gamma^{yy}}} & {2 \alpha {\gamma^{yz}}} & {\alpha {\gamma^{zz}}} & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+	\cdot & \cdot & \cdot & \cdot & {-{\alpha {\gamma^{xy}}}} & {-{\alpha {\gamma^{xz}}}} & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+	\cdot & \cdot & \cdot & \cdot & \cdot & {-{\alpha {\gamma^{xy}}}} & {-{\alpha {\gamma^{xz}}}} & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+	\cdot & \cdot & \cdot & \cdot & {\alpha {\gamma^{xx}}} & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+	\cdot & \cdot & \cdot & \cdot & \cdot & {\alpha {\gamma^{xx}}} & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+	\cdot & \cdot & \cdot & \cdot & \cdot & \cdot & {\alpha {\gamma^{xx}}} & \cdot & \cdot & \cdot & \cdot & \cdot & \cdot
+}\right]
+\left[\matrix{
+	{\partial_{{x}}({a_x})} \\
+	{\partial_{{x}}({d_{xxx}})} \\
+	{\partial_{{x}}({d_{xxy}})} \\
+	{\partial_{{x}}({d_{xxz}})} \\
+	{\partial_{{x}}({d_{xyy}})} \\
+	{\partial_{{x}}({d_{xyz}})} \\
+	{\partial_{{x}}({d_{xzz}})} \\
+	{\partial_{{x}}({K_{xx}})} \\
+	{\partial_{{x}}({K_{xy}})} \\
+	{\partial_{{x}}({K_{xz}})} \\
+	{\partial_{{x}}({K_{yy}})} \\
+	{\partial_{{x}}({K_{yz}})} \\
+	{\partial_{{x}}({K_{zz}})}
+}\right] = ...$<br>
+<br>
+	
 	</body>
 </html>

@@ -16,8 +16,6 @@ Here's the CDN URLs:
 
 [Change of Coordinates](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Change%20of%20Coordinates%2ehtml)
 
-[Clebsch map](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Clebsch%20map%2ehtml)
-
 [Differential Geometry/exterior derivative](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/exterior%20derivative%2ehtml)
 
 [EMHD Hyperbolic Conservation Laws](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/EMHD%20Hyperbolic%20Conservation%20Laws%2ehtml)
@@ -47,6 +45,8 @@ Here's the CDN URLs:
 [GR EM Metrics/complex metric of g + dual F](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR%20EM%20Metrics/complex%20metric%20of%20g%20%2b%20dual%20F%2ehtml)
 
 [GR EM Metrics/curved space gravitomagnetics](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR%20EM%20Metrics/curved%20space%20gravitomagnetics%2ehtml)
+
+[GR EM Metrics/flat space gravitomagnetics](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR%20EM%20Metrics/flat%20space%20gravitomagnetics%2ehtml)
 
 [GR EM Metrics/gravitomagnetics](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR%20EM%20Metrics/gravitomagnetics%2ehtml)
 
@@ -111,6 +111,8 @@ Here's the CDN URLs:
 [Numerical Relativity/3 adm](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/3%20adm%2ehtml)
 
 [Numerical Relativity/3.1 adm with V](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/3%2e1%20adm%20with%20V%2ehtml)
+
+[Numerical Relativity/3.1.1 adm with V - eigenfields](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/3%2e1%2e1%20adm%20with%20V%20%2d%20eigenfields%2ehtml)
 
 [Numerical Relativity/3.2 adm with Gamma](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Numerical%20Relativity/3%2e2%20adm%20with%20Gamma%2ehtml)
 
