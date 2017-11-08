@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="utf-8">
+		<script type='text/javascript' src='../tryToFindMathJax.js'></script>
+		<title>flat space gravitomagnetics</title>
+	</head>
+	<body onload='tryToFindMathJax();'>
+
+This is just like the "metric of flat spacetime and EM potential"<br>
+but with the Newton near-field approximation added.<br>
+In fact, it's the metric listed halfway down thte "gravitomagnetics" page.<br>
+<br>
+To match the gravitomagnetics page, I think I'll use +--- signature and not use natural units.<br>
+<br>
+
+$\eta_{ab} = \eta^{ab} = \left[\matrix{
+	1 & 0 \\
+	0 & -\delta_{ij}
+}\right]$<br>
+<br>
+
+I'm going to set $A_t = \frac{1}{c} \Phi^g$<br>
+I'm also going to scale down the $A_i$ vector by $\frac{1}{4}$<br>
+<br>
+
+With all these changed signatures comes a changed definition of $F_{ab}$:<br>
+$F_{ab} = 2 {A^e}_{[b,a]} = \left[\matrix{
+	0 & \frac{1}{c} E_j \\
+	-\frac{1}{c} E_i & -{\epsilon_{ij}}^k B_k
+}\right]$<br>
+<br>
+
+$g_{ab} = \left[\matrix{
+	1 + \frac{2}{c} A_t & -\frac{1}{c} A_x & -\frac{1}{c} A_y & -\frac{1}{c} A_z \\
+	-\frac{1}{c} A_x & -1 + \frac{2}{c} A_t & 0 & 0 \\
+	-\frac{1}{c} A_y & 0 & -1 + \frac{2}{c} A_t & 0 \\
+	-\frac{1}{c} A_z & 0 & 0 & -1 + \frac{2}{c} A_t 
+}\right]$
+$ = \left[\matrix{
+	1 + \frac{2}{c} A_t & -\frac{1}{c} A_j \\
+	-\frac{1}{c} A_i & \delta_{ij} (-1 + \frac{2}{c} A_t)
+}\right]$
+$ = \eta_{ab} + \frac{2}{c} A_t \delta_{ab} - \frac{1}{c} \delta_{t(b)} \hat{A}_{a)}$
+For $\hat{A}_a = (0, A_i)$<br>
+<br>
+Determinant:<br>
+$g = 
+	\frac{1}{c^4} (
+		-c^2 
+		+ 4 A_t^2 - A_x^2 - A_y^2 - A_z^2
+	)
+	(c + 2 A_t)^2
+	$<br>
+<br>
+
+	</body>
+</html>
