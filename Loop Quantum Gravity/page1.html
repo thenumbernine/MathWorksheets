@@ -304,20 +304,20 @@ $\nabla a \otimes b = (\nabla a) \otimes b + a \otimes (\nabla b)$<br>
 Covariant derivative of vector and one-form basii:<br>
 $0 = \nabla_c \delta^a_b = \nabla_c e^a (e_b) = (\nabla_c e^a) (e_b) + e^a (\nabla_c e_b)$<br>
 $(\nabla_c e^a) (e_b) = -e^a (\nabla_c e_b)$<br>
-Let ${\nabla_c} e_b = {\Gamma^a}_{bc} e_a$<br>
-$(\nabla_c e^a) (e_b) = -e^a ({\Gamma^d}_{bc} e_d)$ by substitution<br>
-$(\nabla_c e^a) (e_b) = -{\Gamma^d}_{bc} e^a (e_d)$ by linearity.<br>
-$(\nabla_c e^a) (e_b) = -{\Gamma^d}_{bc} \delta^a_d$ by orthogonality.<br>
-$(\nabla_c e^a) (e_b) = -{\Gamma^a}_{bc}$ by orthogonality.<br>
+Let ${\nabla_c} e_b = {\Gamma^a}_{cb} e_a$<br>
+$(\nabla_c e^a) (e_b) = -e^a ({\Gamma^d}_{cb} e_d)$ by substitution<br>
+$(\nabla_c e^a) (e_b) = -{\Gamma^d}_{cb} e^a (e_d)$ by linearity.<br>
+$(\nabla_c e^a) (e_b) = -{\Gamma^d}_{cb} \delta^a_d$ by orthogonality.<br>
+$(\nabla_c e^a) (e_b) = -{\Gamma^a}_{cb}$ by orthogonality.<br>
 Let ${\omega^a}_b = \nabla_b e^a$<br>
-${\omega^a}_c (e_b) = -{\Gamma^a}_{bc}$ by substitution.<br>
-${\omega^a}_c = -{\Gamma^a}_{bc} e^b$ by orthogonality (is this really why?)<br>
+${\omega^a}_c (e_b) = -{\Gamma^a}_{cb}$ by substitution.<br>
+${\omega^a}_c = -{\Gamma^a}_{cb} e^b$ by orthogonality (is this really why?)<br>
 <br>
-So $e^a(\nabla_c e_b) = {\Gamma^a}_{bc}$ is the connection coefficients describing $\nabla_c e_b$ in terms of $e_a$.<br>
-And $\nabla_b e^a = {\omega^a}_b = -{\Gamma^a}_{cb} e^c$ are the one-forms of the connections.<br>
+So $e^a(\nabla_c e_b) = {\Gamma^a}_{cb}$ is the connection coefficients describing $\nabla_c e_b$ in terms of $e_a$.<br>
+And $\nabla_b e^a = {\omega^a}_b = -{\Gamma^a}_{bc} e^c$ are the one-forms of the connections.<br>
 <br>
 
-Notice that this means ${\Gamma^a}_{[bc]} e_a = \nabla_{[a} e_{b]}$<br>
+Notice that this means ${\Gamma^a}_{[bc]} e_a = \nabla_{[b} e_{c]}$<br>
 <br>
 
 Torsion:<br>
@@ -330,13 +330,12 @@ Now comes the covariant vector derivative linearity part, which I need to define
 $= x^b \nabla_b (y^a e_a) - y^b \nabla_b (x^a e_a) - [x, y]$<br>
 $= x^b (\nabla_b y^a) e_a + x^b y^a \nabla_b e_a - y^b (\nabla_b x^a) e_a - y^b x^a \nabla_b e_a - [x, y]$<br>
 Using covariant derivative on scalar functions: $\nabla_a \phi = \phi_{,a}$<br>
-$= (x^b {y^c}_{,b} + x^b y^a {\Gamma^c}_{ab} - y^b {x^c}_{,b} - y^b x^a {\Gamma^c}_{ab}) e_c - [x, y]$<br>
+$= (x^b {y^c}_{,b} + x^b y^a {\Gamma^c}_{ba} - y^b {x^c}_{,b} - y^b x^a {\Gamma^c}_{ba}) e_c - [x, y]$<br>
 Substitute Lie bracket definition:<br>
-$= ((x^b {y^c}_{,b} + x^b y^a {\Gamma^c}_{ab} - y^b {x^c}_{,b} - y^b x^a {\Gamma^c}_{ab}) - (
+$= ((x^b {y^c}_{,b} + x^b y^a {\Gamma^c}_{ba} - y^b {x^c}_{,b} - y^b x^a {\Gamma^c}_{ba}) - (
 	x^a {y^c}_{,a} - y^a {x^c}_{,a} + x^a y^b {c_{ab}}^c)  ) e_c$<br>
-$= x^a y^b ( 2 {\Gamma^c}_{[ba]} - {c_{ab}}^c ) e_c$<br>
-Therefore ${T^c}_{ab} = 2 {\Gamma^c}_{[ba]} - {c_{ab}}^c$<br>
-(is my ${\Gamma^a}_{bc}$ definition backwards on the last 2 indexes?  That'd fix the ${\omega^a}_b$ definition as well...)<br>
+$= x^a y^b ( 2 {\Gamma^c}_{[ab]} - {c_{ab}}^c ) e_c$<br>
+Therefore ${T^c}_{ab} = 2 {\Gamma^c}_{[ab]} - {c_{ab}}^c$<br>
 <br>
 
 <hr>
