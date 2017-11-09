@@ -2,7 +2,7 @@
 <html>
 	<head>
         <meta charset="UTF-8">
-		<title>Loop Quantum Gravity Notes - Page 1</title>
+		<title>Differential Geometry</title>
 		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
 	</head>
     <body onload='tryToFindMathJax();'>
@@ -249,12 +249,12 @@ $\epsilon^{a_1 \dots a_n} = \sigma (g^{a_1 b_1}) \cdot \dots \cdot (g^{a_n b_n})
 $= \frac{1}{\sqrt{|g|}} \epsilon_{a_1 \dots a_n}$<br>
 <br>
 
-Levi-Civita for 4D Lorentzian signature with a diagonalized metric:<br>
+Levi-Civita tensor for 4D Lorentzian signature with a diagonalized metric:<br>
 $\epsilon^{IJKL} = -\epsilon_{IJKL}$<br>
 the timelike (zero) index goes first, so $\epsilon_{0123} = 1$<br>
 <br>
 
-Levi-Civita connection in 4D manifold with Lorentzian signature:<br>
+Levi-Civita tensor in 4D manifold with Lorentzian signature:<br>
 $\epsilon_{txyz} = (-g)^{\frac{1}{2}}$<br>
 $\epsilon^{txyz} = -(-g)^{-\frac{1}{2}}$<br>
 <br>
@@ -335,25 +335,28 @@ Substitute Lie bracket definition:<br>
 $= ((x^b {y^c}_{,b} + x^b y^a {\Gamma^c}_{ba} - y^b {x^c}_{,b} - y^b x^a {\Gamma^c}_{ba}) - (
 	x^a {y^c}_{,a} - y^a {x^c}_{,a} + x^a y^b {c_{ab}}^c)  ) e_c$<br>
 $= x^a y^b ( 2 {\Gamma^c}_{[ab]} - {c_{ab}}^c ) e_c$<br>
-Therefore ${T^c}_{ab} = 2 {\Gamma^c}_{[ab]} - {c_{ab}}^c$<br>
+Therefore ${T^a}_{bc} = 2 {\Gamma^a}_{[bc]} + {c_{cb}}^a$<br>
 <br>
 
-<hr>
-
-<br>
 A torsion-free basis is <i>holonomic</i> when all $ {c_{\alpha\beta}}^\gamma = 0 $.<br>
-This coincides with when $ \textbf{e}_\alpha = {\partial \over {\partial x^\alpha}} $ such that $ [\textbf{e}_\alpha, \textbf{e}_\beta] = \left [ {\partial \over {\partial x^\alpha}}, {\partial \over {\partial x^\beta}} \right ] = 0 $.  Subsequently $ \boldsymbol{\omega}^\alpha = \textbf{dx}^\alpha $.<br>
+This coincides with when $e_a = \frac{\partial}{\partial x^a} $ such that $[e_a, e_b] = \left [ \frac{\partial}{\partial x^a}, \frac{\partial}{\partial x^b} \right ] = 0 $.  Subsequently $e^a = dx^a$.<br>
 A torsion-free basis that does not meet this condition is considered <i>anholonomic</i>.<br> 
 <br>	
 
-Torsion in an anholonomic basis: ${T^\alpha}_{\beta\gamma} = 2 {\Gamma^\alpha}_{[\beta\gamma]} - {c_{\gamma\beta}}^\alpha$<br>
+Torsion antisymmetry: ${T^a}_{[bc]} = 2 {\Gamma^a}_{[[bc]]} + {c_{[cb]}}^a
+	= 2 {\Gamma^a}_{[[bc]]} + {c_{[cb]}}^a
+	= 2 {\Gamma^a}_{[bc]} + {c_{cb}}^a
+	= {T^a}_{bc}$<br>
 <br>
 
-Torsion antisymmetry: ${T^\alpha}_{[\beta\gamma]}
-	= 2 {\Gamma^\alpha}_{[[\beta\gamma]]} - {c_{[\gamma\beta]}}^\alpha
-	= 2 {\Gamma^\alpha}_{[\beta\gamma]} - {c_{\gamma\beta}}^\alpha
-	= {T^\alpha}_{\beta\gamma}$<br>
-<br>
+Levi-Civita connection:<br>
+There exists a covariant derivative with a connection that eliminates the metric tensor ($\nabla g(x,y) = 0$) and is torsion-free ($T(x,y) = 0$).<br>
+$\nabla g(x,y) = \nabla (g_{uv} (dx^u \otimes dx^v)(x, y))$<br>
+$= \nabla (g_{uv} (dx^u \otimes dx^v)(x, y))$<br>
+
+
+<hr>
+
 
 Christoffel of the 1st kind: $ \Gamma_{\alpha\beta\gamma} $ <br>
 in a holonomic basis: $ \Gamma_{\alpha\beta\gamma} = {1 \over 2} (\partial_\gamma g_{\alpha\beta} + \partial_\beta g_{\alpha\gamma} - \partial_\alpha g_{\beta\gamma}) $<br>
