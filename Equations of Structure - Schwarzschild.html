@@ -362,12 +362,16 @@ $ = r^{-2} (
 $ = r^{-2} \frac{d}{dr} (r (1 - e^{-2\Lambda}))$<br>
 Likewise $G_{\hat{t}\hat{t}} = 8 \pi T_{\hat{t}\hat{t}} = 8 \pi \rho$<br>
 So $8 \pi \rho = r^{-2} \frac{d}{dr} (r (1 - e^{-2\Lambda}))$<br>
-Let $m = m(r)$ and $2 m = r (1 - e^{-2 \Lambda})$<br>
+
+
+Let $m = m(r)$ be the mass contained within some radius.<br>
+Let $2 m = r (1 - e^{-2 \Lambda})$<br>
 so $e^{2\Lambda} = (1 - \frac{2 m}{r})^{-1}$ (eqn 23.18)<br>
 Now $G_{\hat{t}\hat{t}} = r^{-2} \frac{d}{dr} (2m) = \frac{2}{r^2} \frac{dm}{dr} = 8 \pi \rho$<br>
 $\frac{dm}{dr} = 4 \pi r^2 \rho$<br>
+
 Integrate:<br>
-$m(r) = \int_{r=0}^{r=r} 4 \pi r^2 \rho dr + m(0)$<br>
+$m(r) = \int_{r=0}^{r=r} 4 \pi r^2 \rho dr + m(0)$ (eqn 23.19)<br>
 $ = \frac{4}{3} \pi r^3 \rho + m(0)$<br> 
 where $m(0) = 0$ for flat geometry, and $m(0) = $ otherwise for a singularity at the origin.<br> 
 <br>
@@ -380,7 +384,35 @@ $ds^2 \approx -\frac{r}{2m(0)} dr^2 + r^2 (d\theta^2 + (sin \theta)^2 d\phi^2)$<
 For $r \approx 0$ and $m(0) = 0$:<br>
 $= \frac{r}{r - 2 \frac{4}{3} \pi r^3 \rho} dr^2 + r^2 (d\theta^2 + (sin \theta)^2 d\phi^2)$<br>
 $= \frac{1}{1 - \frac{8}{3} \pi r^2 \rho} dr^2 + r^2 (d\theta^2 + (sin \theta)^2 d\phi^2)$<br>
-$\approx dr^2 + r^2 (d\theta^2 + (sin \theta)^2 d\phi^2)$<br>
+$\approx dr^2 + r^2 (d\theta^2 + (sin \theta)^2 d\phi^2)$ (eqn 23.20)<br>
+<br>
+
+Let $m(0) = 0$, so $m(r) = \int_{r=0}^{r=r} 4 \pi r^2 \rho dr$ (box 23.1 eqn 1)<br>
+For a Newtonian star, $m(r)$ is just mass, however for a relativistic star we get...<br>
+$m(r) = m_0(r) + U(r) + \Omega(r)$ (box 23.1 eqn 3<br>
+For $m_0(r) =$ rest mass-energy,<br>
+$U(r) =$ internal energy,<br>
+$\Omega(r) =$ gravitational energy.<br>
+<br>
+
+Next is something about splitting density $\rho$ into $\mu_0 n + (\rho - \mu_0 n)$<br>
+Where $\mu_0 =$ the average rest-mass of the baryonic species present,<br>
+And $n =$ the number of particles.<br>
+And $\rho - \mu_0 n$, the rest of the non-baryonic density, is due to internal thermal energy, compressional energy, etc.<br>
+<br>
+
+Next is the proper volume of a shell thickness $dr$:<br>
+$dV = 4 \pi r^2 (e^\Lambda dr) = 4 \pi r^2 (1 - \frac{2 m}{r})^{-1/2} dr$<br>
+Total rest mass inside radius r:<br>
+$m_0(r) = \int_{r=0}^{r=r} \mu_0 n dV = \int_{r=0}^{r=r} 4 \pi r^2 (1 - \frac{2 m}{r})^{-1/2} \mu_0 n dr$ (box 23.1 eqn 5)<br>
+Total energy inside radius r:<br>
+$U(r) = \int_{r=0}^{r=r} (\rho - \mu_0 n) dV = \int_{r=0}^{r=r} 4 \pi r^2 (1 - \frac{2 m}{r})^{-1/2} (\rho - \mu_0 n) dr$ (box 23.1 eqn 6)<br>
+So by box 23.1 eqn 3, $m = m_0 + U + \Omega$ means $\Omega = m - m_0 - U$, we get<br>
+Gravitational energy inside radius r:<br>
+$\Omega(r) = \int_{r=0}^{r=r} (4 \pi \rho r^2 - 4 \pi \rho r^2 (1 - \frac{2 m}{r})^{-1/2}) dr$<br>
+$\Omega(r) = -\int_{r=0}^{r=r} 4 \pi \rho r^2 ((1 - \frac{2 m}{r})^{-1/2} - 1) dr$ (box 23.1 eqn 7)<br>
+...in the near-Newtonian limit:<br>
+$\Omega(r) = -\int_{r=0}^{r=r} \frac{\rho m}{r} 4 \pi r^2 dr = -\int_{r=0}^{r=r} 4 \pi r m \rho dr$<br>
 <br>
 
 	</body>
