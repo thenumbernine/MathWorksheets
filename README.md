@@ -22,6 +22,8 @@ Here's the CDN URLs:
 
 [EMHD Linear Stability Analysis](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/EMHD%20Linear%20Stability%20Analysis%2ehtml)
 
+[Einstein-Maxwell Hyperbolic Conservation Laws](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Einstein%2dMaxwell%20Hyperbolic%20Conservation%20Laws%2ehtml)
+
 [Electromagnetic Tensor Self-Dual](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Electromagnetic%20Tensor%20Self%2dDual%2ehtml)
 
 [Equations of Structure - Schwarzschild](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Equations%20of%20Structure%20%2d%20Schwarzschild%2ehtml)
@@ -63,6 +65,8 @@ Here's the CDN URLs:
 [Kerr Cartesian](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Kerr%20Cartesian%2ehtml)
 
 [LQG](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/LQG%2ehtml)
+
+[Lichtenberg](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Lichtenberg%2ehtml)
 
 [Loop Quantum Gravity/index](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Loop%20Quantum%20Gravity/index%2ehtml)
 

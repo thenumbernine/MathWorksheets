@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<title>Drude Model</title>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+	</head>
+    <body onload='tryToFindMathJax();'>
+
+$t = $ time<br>
+$\langle p^i \rangle = $ momentum distribution<br>
+$E^i = $ electric field<br>
+$B^i = $ magnetic field<br>
+$\epsilon_{ijk} = $ Levi-Civita connection<br>
+$\delta^i_j = $ Kronecher delta<br>
+$q = $ particle charge<br>
+$n = $ number density<br>
+$m = $ particle mass<br>
+$\tau = $ mean free time between ionic collisions<br>
+<br>
+
+Drude:<br>
+$\frac{d}{dt} \langle p^i \rangle = q E^i + (\frac{q}{m} {\epsilon^i}_{jk} B^k - \frac{1}{\tau} \delta^i_j) \langle p^j \rangle $<br>
+$J^i = \frac{n q^2 \tau}{m} E^i$<br>
+<br>
+
+$\langle p^i \rangle = q \tau E^i$<br>
+$\langle p^i \rangle = m \langle v^i \rangle$<br>
+$J^i = n q \langle v^i \rangle$<br>
+...therefore...<br>
+$\langle p^i \rangle = \frac{m}{nq} J^i$<br>
+...therefore...<br>
+$\frac{d}{dt} (q \tau E^i) = q E^i + (\frac{q}{m} {\epsilon^i}_{jk} B^k - \frac{1}{\tau} \delta^i_j) (q \tau E^j) $<br>
+...for constant $q$ and $\tau$...<br>
+$\frac{d}{dt} E^i = \frac{q}{m} {\epsilon^i}_{jk} B^k E^j $<br>
+<br>
+
+Maxwell:<br>
+$\nabla \cdot D = \rho$<br>
+$\nabla \cdot B = 0$<br>
+$\nabla \times E = -\partial_t B$<br>
+$\nabla \times H = J + \partial_t D$<br>
+$H = \frac{1}{\mu_0} B - M$<br>
+$D = \epsilon E + P$<br>
+$D = \epsilon_0 E + \chi E = \epsilon_0 (1 + \chi) E  = \epsilon_0 \epsilon_r E$ as a linear approximation... but $\epsilon$ can be a matrix ... <br>
+<br>
+...as IVP...<br>
+$\partial_t B + \nabla \times E = 0$<br>
+$\partial_t D - \nabla \times H = -J$<br>
+$\partial_t (\epsilon E + P) - \nabla \times H = -J$<br>
+
+	
+	</body>
+</html>

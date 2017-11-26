@@ -1,0 +1,263 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<title>Einstein-Maxwell Hyperbolic Conservation Laws</title>
+	</head>
+	<body onload='tryToFindMathJax();'>
+
+Following the paper:<br>
+<br>
+Alcubierre, Degollado, Salgado, "The Einstein-Maxwell System in 3+1 form and initial data for multiple charged black holes" 2009.<br>
+<br>
+
+variables:<br>
+$\mu_0 =$ vacuum permeability<br>
+$\epsilon_0 =$ vacuum permissivity<br>
+$c = \frac{1}{\sqrt{\mu_0 \epsilon_0}} =$ vacuum speed-of-light<br>
+$\rho =$ density<br>
+$v^i = $ 3-velocity<br>
+$u^a = \left[u^t, u^i\right] = \left[u^t, u^t v^i\right] = $ 4-velocity<br>
+$u^t = (1 - v^2)^{-1/2} =$ Lorentz factor<br>
+$p^a = \rho u^a =$ 4-momentum<br>
+<br>
+
+Special relativistic basis:<br>
+$\partial_t = \frac{1}{c} \frac{\partial}{\partial t}$<br>
+$\partial^t = c dt$<br>
+$\partial_i = \frac{\partial}{\partial x^i}$<br>
+$\partial^i = dx^i$<br>
+<br>
+
+Special relativistic metric:<br>
+$\eta_{ab} = \left[\matrix{
+	-1 & 0 & 0 & 0 \\
+	0 & 1 & 0 & 0 \\
+	0 & 0 & 1 & 0 \\
+	0 & 0 & 0 & 1
+}\right]$<br>
+$\eta^{ab} = \left[\matrix{
+	-1 & 0 & 0 & 0 \\
+	0 & 1 & 0 & 0 \\
+	0 & 0 & 1 & 0 \\
+	0 & 0 & 0 & 1
+}\right]$<br>
+<br>
+
+Faraday tensor:<br>
+$\phi = $ electric potential<br>
+$A^i = $ magnetic vector potential<br>
+$A^u = \left[ -\frac{1}{c} \phi, A^i \right] $ electromagnetic 4-potential<br>
+$A_u = \left[ \frac{1}{c} \phi, A_i \right] $ <br>
+$F_{uv} = 2 \partial_{[u} A_{v]}$ in flat space<br>
+$F_{uv} $$ = \downarrow u \overset{\rightarrow v}{
+\left[\matrix{
+	0 & \partial_t A_j - \partial_j A_t \\
+	\partial_i A_t - \partial_t A_i & \partial_i A_j - \partial_j A_i
+}\right]
+}$$ = \downarrow u \overset{\rightarrow v}{
+\left[\matrix{
+	0 & \frac{1}{c} (\frac{\partial}{\partial t} A_j - \partial_j \phi) \\
+	\frac{1}{c} (\partial_i \phi - \frac{\partial}{\partial t} A_i) & \partial_i A_j - \partial_j A_i
+}\right]
+}$$ = \downarrow u \overset{\rightarrow v}{
+\left[\matrix{
+	0 & -\frac{1}{c} E_j \\
+	\frac{1}{c} E_i & \epsilon_{ijk} B^k
+}\right]
+}$<br>
+
+${F^u}_v = \downarrow u \overset{\rightarrow v}{
+\left[\matrix{
+	0 & \frac{1}{c} E_j \\
+	\frac{1}{c} E^i & {\epsilon^i}_{jk} B^k
+}\right]
+}$<br>
+<br>
+
+$F^{uv} = \downarrow u \overset{\rightarrow v}{
+\left[\matrix{
+	0 & \frac{1}{c} E^j \\
+	-\frac{1}{c} E^i & \epsilon^{ijk} B_k
+}\right]
+}$<br>
+$(\star F)_{uv} = \downarrow u \overset{\rightarrow v}{
+\left[\matrix{
+	0 & -B_j \\
+	B_i & \frac{1}{c} \epsilon_{ijk} E^k
+}\right]
+}$<br>
+$(\star F)^{uv} = \downarrow u \overset{\rightarrow v}{
+\left[\matrix{
+	0 & -B^j \\
+	B^i & \frac{1}{c} \epsilon^{ijk} E_k
+}\right]
+}$<br>
+<br>
+
+Lorentz force law:<br>
+$\dot{p}^a = q {F^a}_b u^b$<br>
+$\frac{1}{c} \frac{\partial}{\partial t} (\rho u^t v^i) = q u^t (\frac{1}{c} E^i + {\epsilon^i}_{jk} B^k v^j)$<br>
+in flat space:<br>
+$\frac{1}{c} \frac{\partial}{\partial t} (\rho v^i) = q (\frac{1}{c} E^i + {\epsilon^i}_{jk} B^k v^j)$<br>
+<br>
+
+Maxwell in flat space:<br>
+$\partial_b (\star F)^{ab} = \partial_b (\frac{1}{2} F^{uv} {\epsilon_{uv}}^{ab}) = 0$<br>
+$\partial_i B^i = 0$<br>
+$\frac{1}{c} \frac{\partial}{\partial t} B^i + \frac{1}{c} {\epsilon_i}^{jk} \partial_j E_k = 0$<br>
+$\frac{\partial}{\partial t} B^i + {\epsilon_i}^{jk} \partial_j E_k = 0$<br>
+<br>
+$\sigma = $ electric conductivity<br>
+$j^i = \sigma E^i = $ current density<br>
+$J^a = \left[ c \rho_{charge}, j^i \right] =$ 4-current<br>
+$\partial_b F^{ab} = \mu_0 J^a$<br>
+$\frac{1}{c} \partial_i E^i = \mu_0 c \rho_{charge}$<br>
+$\mu_0 \epsilon_0 \partial_i E^i = \mu_0 \rho_{charge}$<br>
+$\partial_i E^i = \frac{1}{\epsilon_0} \rho_{charge}$<br>
+<br>
+$-\frac{1}{c^2} \frac{\partial}{\partial t} E^i + \epsilon^{ijk} \partial_j B_k = \mu_0 j^i$<br>
+$-\mu_0 \epsilon_0 \frac{\partial}{\partial t} E^i + \epsilon^{ijk} \partial_j B_k = \mu_0 j^i$<br>
+$\epsilon_0 \frac{\partial}{\partial t} E^i - \epsilon^{ijk} \partial_j (\frac{1}{\mu_0} B)_k = -j^i$<br>
+<br>
+
+<h3>Curved space</h3>
+
+$\alpha =$ lapse<br>
+$\beta^i =$ shift<br>
+$\gamma_{ij} =$ spatial metric<br>
+$g_{uv} = \downarrow u \overset{\rightarrow v}{\left[\matrix{
+	-\alpha^2 + \beta^2 & \beta_j \\
+	\beta_i & \gamma_{ij}
+}\right]}$<br>
+$g^{uv} = \downarrow u \overset{\rightarrow v}{\left[\matrix{
+	-\alpha^{-2} & \alpha^{-2} \beta^j \\
+	\alpha^{-2} \beta^i & \gamma^{ij} - \alpha^{-2} \beta^i \beta^j
+}\right]}$<br>
+<br>
+
+$n_a = (-\alpha, 0)$ and $n^a = (1 / \alpha, -\beta^i / \alpha)$.<br>
+<br>
+
+$K_{ab} = -{\gamma_a}^c {\gamma_b}^d \nabla_{[c} n_{d]}$<br>
+$K_{ij} = -(\delta_i^a + n_i n^a) (\delta_j^b + n_j n^b) \nabla_{[a} n_{b]}$<br>
+$K_{ij} = -(\delta_i^a \delta_j^b + n_i n^a \delta_j^b + \delta_i^a n_j n^b + n_i n_j n^a n^b) \nabla_{[a} n_{b]}$<br>
+$K_{ij} = -(\delta_i^m \delta_j^n \nabla_{[m} n_{n]} + n_i n^a \delta_j^n \nabla_{[a} n_{n]} + \delta_i^m n_j n^b \nabla_{[m} n_{b]} + n_i n_j n^a n^b \nabla_{[a} n_{b]})$<br>
+TODO where does $c$ fit into $K$...<br>
+<br>
+
+$\nabla_u F^{au} = 2 \nabla_u \nabla^{[a} A^{u]} + {R^a}_u A^u$ in curved space<br>
+<br>
+
+$^{(3)} \epsilon^{\perp afg} = n_b {\gamma^a}_e {\gamma^f}_c {\gamma^g}_d \epsilon^{bacd} = n_b \epsilon^{bafg}$<br>
+$\epsilon^{0123} = \frac{-1}{\sqrt{-g}} = \frac{-1}{\alpha \sqrt\gamma}$<br>
+$^{(3)} \epsilon^{\perp afg} = -\alpha {\gamma^a}_e {\gamma^f}_c {\gamma^g}_d \epsilon^{0ecd}$<br>
+$^{(3)} \epsilon^{\perp 123} = -\alpha \epsilon^{0123} = \frac{1}{\sqrt\gamma}$<br>
+$^{(3)} \epsilon^{abc} = ^{(3)} \epsilon^{\perp abc}$<br>
+such that $^{(3)} \epsilon^{123} = \frac{1}{\sqrt\gamma}$<br>
+also note $\epsilon^{abc}_F = \sqrt\gamma ^{(3)} \epsilon^{abc}$ and $\epsilon^F_{abc} = \frac{1}{\sqrt\gamma} ^{(3)} \epsilon_{abc}$<br>
+for $\epsilon^{abc}_F$ and $\epsilon^F_{abc}$ the flat-space undensitized permutation tensor (typically denoted as $[abc]$ right?)<br>
+<br>
+
+Faraday tensor projection:<br>
+$F^{ab} = ^{(3)} F^{ab} + n^a {}^{(3)} F^{\perp b} + {}^{(3)} F^{a \perp} n^b$<br>
+<br>
+
+Measure electric and magnetic fields by Eulerian observers:<br>
+$E^a = -n_b F^{ba} = ^{(3)}F^{\perp a}$<br>
+$B^a = -n_b (\star F)^{ba} = ^{(3)} (\star F)^{\perp a}$<br>
+<br>
+
+Note $n_a E^a = 0$ and $n_a B^a = 0$, therefore $E^a$ and $B^a$ are vectors in the spacelike hypersurface.<br>
+<br>
+
+Combine the definitions to find:<br>
+$F^{ab} = ^{(3)} F^{ab} + n^a E^b - E^a n^b$<br>
+<br>
+
+Combine further to define $B^a$:<br>
+$B^a = \frac{1}{2} n_b {\epsilon^{ba}}_{cd} F^{cd}$<br>
+$= \frac{1}{2} n_b \epsilon^{bacd} (^{(3)} F_{cd} n_c E_d - E_c n_d)$<br>
+$= \frac{1}{2} n_b \epsilon^{bacd} {}^{(3)} F_{cd}$<br>
+
+Jumping to the end:<br>
+$\frac{1}{c} D_a E^a = \frac{1}{c} \frac{1}{\sqrt\gamma} \partial_i (\sqrt\gamma E^i) = \mu_0 c \rho$ for $\rho = -n_a j^a$<br>
+$D_a B^a = \frac{1}{\sqrt\gamma} \partial_i (\sqrt\gamma B^i) = 0$<br>
+<br>
+using $\frac{d}{dt} = \frac{1}{c} \frac{\partial}{\partial t} - \mathcal{L}_\vec\beta$<br>
+TODO should there be any units on the $\mathcal{L}_\vec\beta$?  Make an argument for this.<br>
+$\frac{1}{c} \frac{d}{dt} E^i = ^{(3)} \epsilon^{ijk} \partial_j (\alpha B_k) + \frac{1}{c} \alpha K E^i - \mu_0 \alpha ^{(3)} j^i$<br>
+$\frac{d}{dt} B^i = -\frac{1}{c} ^{(3)} \epsilon^{ijk} \partial_j (\alpha E_k) + \alpha K B^i$<br> 
+<br>
+with flat-space permutation tensors, expanded partials, in hyperbolic conservation form:<br>
+$\frac{1}{c^2} \frac{\partial}{\partial t} E^i
+		- \frac{1}{c} \beta^j \partial_j E^i
+		- \frac{1}{\sqrt\gamma} \alpha \epsilon_F^{ijk} \gamma_{kl} \partial_j B^l
+	= \frac{1}{\sqrt\gamma} \epsilon_F^{ijk} (\partial_j \alpha B_k + \alpha \partial_j \gamma_{kl} B^l) 
+		+ \frac{1}{c} \alpha K E^i 
+		- \frac{1}{c} E^j \partial_j \beta^i
+		- \mu_0 \alpha (j^i + \beta^i j^t)
+$<br>
+$\frac{1}{c} \frac{\partial}{\partial t} B^i
+		+ \frac{1}{c} \frac{1}{\sqrt\gamma} \alpha \epsilon_F^{ijk} \gamma_{kl} \partial_j E^l
+		- \partial_j B^i \beta^j
+	= -\frac{1}{c} \frac{1}{\sqrt\gamma} \epsilon_F^{ijk} (\partial_j \alpha E_k + \alpha \partial_j \gamma_{kl} E^l) 
+		+ \alpha K B^i 
+		- B^j \partial_j \beta^i
+$<br> 
+<br>
+
+fix units:<br>
+$\frac{\partial}{\partial t} (\epsilon_0 E^i)
+		- c \beta^j \partial_j (\epsilon_0 E^i)
+		- \frac{1}{\mu_0} \frac{1}{\sqrt\gamma} \alpha \epsilon_F^{ijk} \gamma_{kl} \partial_j B^l
+	= \frac{1}{\mu_0} \frac{1}{\sqrt\gamma} \epsilon_F^{ijk} (\partial_j \alpha B_k + \alpha \partial_j \gamma_{kl} B^l) 
+		+ c \alpha K \epsilon_0 E^i 
+		- c \epsilon_0 E^j \partial_j \beta^i
+		- \alpha (j^i + \beta^i j^t)
+$<br>
+$\frac{\partial}{\partial t} B^i
+		+ \frac{1}{\sqrt\gamma} \alpha \epsilon_F^{ijk} \gamma_{kl} \partial_j E^l
+		- c \partial_j B^i \beta^j
+	= -\frac{1}{\epsilon_0} \frac{1}{\sqrt\gamma} \epsilon_F^{ijk} (\partial_j \alpha \epsilon_0 E_k + \alpha \partial_j \gamma_{kl} \epsilon_0 E^l) 
+		+ c \alpha K B^i 
+		- c B^j \partial_j \beta^i
+$<br>
+<br>
+
+as a matrix:<br>
+$\frac{\partial}{\partial t} \left[\matrix{
+	\epsilon_0 E^i \\
+	B^i
+}\right]
++ \partial_j \left[\matrix{
+	- c \beta^j \delta^i_l &
+		-\frac{1}{\mu_0} \frac{\alpha}{\sqrt\gamma} \epsilon_F^{ijk} \gamma_{kl} \\
+	\frac{1}{\epsilon_0} \frac{\alpha}{\sqrt\gamma} \epsilon_F^{ijk} \gamma_{kl} &
+		- c \beta^j \delta^i_l
+}\right] \left[\matrix{
+	\epsilon_0 E^l \\
+	B^l
+}\right]
+= \left[\matrix{
+	\frac{1}{\mu_0} \frac{1}{\sqrt\gamma} \epsilon_F^{ijk} (\partial_j \alpha B_k + \alpha \partial_j \gamma_{kl} B^l) 
+		+ c \epsilon_0 \alpha K E^i 
+		- c \epsilon_0 E^j \partial_j \beta^i
+		- \alpha (j^i + \beta^i j^t) \\
+	-\frac{1}{\epsilon_0} \frac{1}{\sqrt\gamma} \epsilon_F^{ijk} (\partial_j \alpha \epsilon_0 E_k + \alpha \partial_j \gamma_{kl} \epsilon_0 E^l) 
+		+ c \alpha K B^i 
+		- c B^j \partial_j \beta^i
+}\right]$<br>
+<br>
+
+I'm leaving the $\partial \alpha$ and $\partial \gamma_{ij}$ terms on the source side because they are replaced with state variables when converting the system to 1st order.<br>
+<br>
+
+charge conservation:<br>
+$\nabla_c j^c = 0$<br>
+in 3+1 form:<br>
+$\frac{1}{c} \frac{\partial}{\partial t} \rho - \mathcal{L}_\vec\beta \rho = -D_a (\alpha ^{(3)} j^a) + \alpha \rho K$<br>
+
+	</body>
+</html>
