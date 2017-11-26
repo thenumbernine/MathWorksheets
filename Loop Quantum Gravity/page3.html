@@ -27,12 +27,12 @@ Unlike the NR crowd, I did change the spacetime indexes from Latin back to Greek
 <br>
 
 ADM metric:<br>
-$||g_{\mu\nu}|| = \overset{\mu(a)\downarrow\nu(b)\rightarrow}{\left[ \matrix{-\alpha^2 + \beta_c \beta^c & \beta_b \\ \beta_a & \gamma_{ab}} \right]}$<br>
-$||g^{\mu\nu}|| = \overset{\mu(a)\downarrow\nu(b)\rightarrow}{\left[ \matrix{-1/\alpha^2 & \beta^b / \alpha^2 \\ \beta^a / \alpha^2 & \gamma^{ab} - \beta^a \beta^b / \alpha^2} \right]}$<br>
+$[g_{\mu\nu}] = \overset{\mu(a)\downarrow\nu(b)\rightarrow}{\left[ \matrix{-\alpha^2 + \beta_c \beta^c & \beta_b \\ \beta_a & \gamma_{ab}} \right]}$<br>
+$[g^{\mu\nu}] = \overset{\mu(a)\downarrow\nu(b)\rightarrow}{\left[ \matrix{-1/\alpha^2 & \beta^b / \alpha^2 \\ \beta^a / \alpha^2 & \gamma^{ab} - \beta^a \beta^b / \alpha^2} \right]}$<br>
 where $ \beta_b = \gamma_{ab} \beta^a = \gamma_{\mu b} \beta^\mu = g_{\mu b} \beta^b $ courtesy of the fact that $ g_{ab} = \gamma_{ab} $ and $ \beta^t = 0 $.<br>
 <br>
 ADM metric determinant: $ g = \alpha \sqrt{\gamma} $<br>
-ADM spatial metric determinant: $ \gamma = det||\gamma_{ab}|| $<br>
+ADM spatial metric determinant: $ \gamma = det[\gamma_{ab}] $<br>
 <br>
 
 normal in the ADM metric:<br>
@@ -65,7 +65,7 @@ spatial metric / projection tensor:<br>
 $ \gamma_{\mu\nu} = g_{\mu\nu} + n_\mu n_\nu $<br>
 <br>
 spatial metric components using in ADM metric:<br>
-$||{\gamma_\mu}^\nu|| = ||\delta^\nu_\mu + n_\mu n^\nu||$<br>
+$[{\gamma_\mu}^\nu] = [\delta^\nu_\mu + n_\mu n^\nu]$<br>
 $ = \overset{\mu(a)\downarrow\nu(b)\rightarrow}{\left[ \matrix{ 1 & 0 \\ 0 & \delta_a^b } \right]}
 	+ \overset{\mu(a)\downarrow}{\left[ \matrix{ -\alpha \\ 0 } \right]}
 		\overset{\nu(b)\rightarrow}{\left[ \matrix{ 1/\alpha & -\beta^b/\alpha  } \right]} $<br>
@@ -73,7 +73,7 @@ $ = \overset{\mu(a)\downarrow\nu(b)\rightarrow}{\left[ \matrix{ 1 & 0 \\ 0 & \de
 	+ \overset{\mu(a)\downarrow\nu(b)\rightarrow}{\left[ \matrix{ -1 & \beta^b \\ 0 & 0 } \right]} $<br>
 $ = \overset{\mu(a)\downarrow\nu(b)\rightarrow}{\left[ \matrix{ 0 & \beta^b \\ 0 & \delta_a^b } \right]} $<br>
 <br>
-$ ||\gamma_{\mu\nu}|| = ||g_{\mu\nu} + n_\mu n_\nu||$<br>
+$ [\gamma_{\mu\nu}] = [g_{\mu\nu} + n_\mu n_\nu]$<br>
 $ = \overset{\mu(a)\downarrow\nu(b)\rightarrow}{\left[ \matrix{-\alpha^2 + \beta_c \beta^c & \beta_b \\ \beta_a & \gamma_{ab}} \right]}
 	+ \overset{\mu(a)\downarrow}{\left[ \matrix{ -\alpha \\ 0 } \right]}
 	\overset{\nu(b)\rightarrow}{\left[ \matrix{ -\alpha & 0 } \right]} $<br>
@@ -81,7 +81,7 @@ $ = \overset{\mu(a)\downarrow\nu(b)\rightarrow}{\left[ \matrix{-\alpha^2 + \beta
 	+ \overset{\mu(a)\downarrow\nu(b)\rightarrow}{\left[ \matrix{ \alpha^2 & 0 \\ 0 & 0 } \right]} $<br>
 $ = \overset{\mu(a)\downarrow\nu(b)\rightarrow}{\left[ \matrix{\beta_c \beta^c & \beta_b \\ \beta_a & \gamma_{ab}} \right]} $<br>
 <br>
-$ ||\gamma^{\mu\nu}|| = ||g^{\mu\nu}+n^\mu n^\nu|| $<br>
+$ [\gamma^{\mu\nu}] = [g^{\mu\nu}+n^\mu n^\nu] $<br>
 $ = \overset{\mu(a)\downarrow\nu(b)\rightarrow}{\left[ \matrix{-1/\alpha^2 & \beta^b / \alpha^2 \\ \beta^a / \alpha^2 & \gamma^{ab} - \beta^a \beta^b / \alpha^2} \right]}
 	+ \overset{\mu(a)\downarrow}{\left[ \matrix{ 1/\alpha \\ -\beta^a/\alpha } \right]}
 	\overset{\nu(b)\rightarrow}{\left[ \matrix{ 1 / \alpha & -\beta^b / \alpha } \right]} $<br>
@@ -160,7 +160,7 @@ $= -\nabla_\alpha n_\beta - n_\alpha a_\beta$<br>
 <br>
 extrinsic curvature components, in ADM metric:<br>
 $ K_{\alpha\beta} = -{\gamma_\alpha}^\gamma \nabla_\gamma n_\delta {\gamma_\beta}^\delta $<br>
-$ ||K_{\alpha\beta}|| = 
+$ [K_{\alpha\beta}] = 
 	-\overset{\alpha(a)\downarrow\gamma(c)\rightarrow}{\left[ \matrix{ 0 & \beta^c \\ 0 & \delta_a^c } \right]}
 	\left( 
 		\overset{\gamma(c)\downarrow\delta(d)\rightarrow}{\left[ \matrix{ \partial_t n_t & 0 \\ \partial_c n_t & 0 } \right]}
