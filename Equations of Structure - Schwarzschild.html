@@ -346,11 +346,11 @@ $\bar{F} = \frac{1}{r} \Lambda_{,r} e^{-2\Lambda}$<br>
 So $G_{\hat{t}\hat{t}} = F + 2 \bar{F}$
 $ = 
 	\frac{1}{r^2} (1 - e^{-2\Lambda})
-	+ 2 \frac{1}{r} \Lambda_{,r} e^{-2\Lambda} )$<br>
+	+ 2 \frac{1}{r} \Lambda_{,r} e^{-2\Lambda}$<br>
 $ = 
 	r^{-2} 
 	- r^{-2} e^{-2\Lambda}
-	+ r^{-1} 2 \Lambda_{,r} e^{-2\Lambda} )$<br>
+	+ r^{-1} 2 \Lambda_{,r} e^{-2\Lambda}$<br>
 $ = 
 	r^{-2} 
 	- r^{-2} e^{-2\Lambda}
@@ -362,7 +362,7 @@ $ = r^{-2} (
 $ = r^{-2} \frac{d}{dr} (r (1 - e^{-2\Lambda}))$<br>
 Likewise $G_{\hat{t}\hat{t}} = 8 \pi T_{\hat{t}\hat{t}} = 8 \pi \rho$<br>
 So $8 \pi \rho = r^{-2} \frac{d}{dr} (r (1 - e^{-2\Lambda}))$<br>
-
+<br>
 
 Let $m = m(r)$ be the mass contained within some radius.<br>
 Let $2 m = r (1 - e^{-2 \Lambda})$<br>
@@ -404,16 +404,43 @@ And $\rho - \mu_0 n$, the rest of the non-baryonic density, is due to internal t
 Next is the proper volume of a shell thickness $dr$:<br>
 $dV = 4 \pi r^2 (e^\Lambda dr) = 4 \pi r^2 (1 - \frac{2 m}{r})^{-1/2} dr$<br>
 Total rest mass inside radius r:<br>
-$m_0(r) = \int_{r=0}^{r=r} \mu_0 n dV = \int_{r=0}^{r=r} 4 \pi r^2 (1 - \frac{2 m}{r})^{-1/2} \mu_0 n dr$ (box 23.1 eqn 5)<br>
-Total energy inside radius r:<br>
-$U(r) = \int_{r=0}^{r=r} (\rho - \mu_0 n) dV = \int_{r=0}^{r=r} 4 \pi r^2 (1 - \frac{2 m}{r})^{-1/2} (\rho - \mu_0 n) dr$ (box 23.1 eqn 6)<br>
-So by box 23.1 eqn 3, $m = m_0 + U + \Omega$ means $\Omega = m - m_0 - U$, we get<br>
-Gravitational energy inside radius r:<br>
-$\Omega(r) = \int_{r=0}^{r=r} (4 \pi \rho r^2 - 4 \pi \rho r^2 (1 - \frac{2 m}{r})^{-1/2}) dr$<br>
-$\Omega(r) = -\int_{r=0}^{r=r} 4 \pi \rho r^2 ((1 - \frac{2 m}{r})^{-1/2} - 1) dr$ (box 23.1 eqn 7)<br>
-...in the near-Newtonian limit:<br>
-$\Omega(r) = -\int_{r=0}^{r=r} \frac{\rho m}{r} 4 \pi r^2 dr = -\int_{r=0}^{r=r} 4 \pi r m \rho dr$<br>
+$m_0(r) = \int_{r=0}^{r=r} \mu_0 n dV$<br>
+$m_0(r) = \int_{r=0}^{r=r} 4 \pi r^2 (1 - \frac{2 m}{r})^{-1/2} \mu_0 n dr$ (box 23.1 eqn 5)<br>
 <br>
 
+Total energy inside radius r:<br>
+$U(r) = \int_{r=0}^{r=r} (\rho - \mu_0 n) dV$<br>
+$U(r) = \int_{r=0}^{r=r} 4 \pi r^2 (1 - \frac{2 m}{r})^{-1/2} (\rho - \mu_0 n) dr$ (box 23.1 eqn 6)<br>
+<br>
+
+Gravitational energy inside radius r:<br>
+By box 23.1 eqn 3, $m = m_0 + U + \Omega$ means $\Omega = m - m_0 - U$, we get<br>
+$\Omega(r) = \int_{r=0}^{r=r} (4 \pi \rho r^2 - 4 \pi \rho r^2 (1 - \frac{2 m}{r})^{-1/2}) dr$<br>
+$\Omega(r) = -\int_{r=0}^{r=r} 4 \pi \rho r^2 ((1 - \frac{2 m}{r})^{-1/2} - 1) dr$ (box 23.1 eqn 7)<br>
+<br>
+
+For the near-Newtonian limit where $\frac{m}{r} \approx 1$, therefore $(1 - \frac{2 m}{r})^{-1/2} \approx 1$, we find<br>
+$\Omega(r) = -\int_{r=0}^{r=r} \frac{\rho m}{r} 4 \pi r^2 dr$<br>
+$\Omega(r) = -\int_{r=0}^{r=r} 4 \pi r m \rho dr$<br>
+<br>
+
+Next look at the $G_{\hat{r}\hat{r}}$ components of the EFE:<br>
+$G_{\hat{r}\hat{r}} = \eta_{\hat{r}\hat{r}} {G^\hat{r}}_\hat{r} = {G^\hat{r}}_\hat{r} = -(F + 2 \bar{F})$<br>
+$G_{\hat{r}\hat{r}} = -\frac{1}{r^2} (1 - e^{-2\Lambda}) - 2 \frac{1}{r} \Lambda_{,r} e^{-2 \Lambda}$<br>
+$G_{\hat{r}\hat{r}} = -r^{-2}  + r^{-2} e^{-2\Lambda} + 2 r^{-1} e^{-2 \Lambda} (-\Lambda_{,r})$<br>
+The book now replaces $-\frac{d\Lambda}{dr}$ with $\frac{d\Phi}{dr}$ ... why is that?  E's have $\Phi$'s, F's have $\Lambda$'s, and $G_{\hat{r}\hat{r}}$ has F's not E's ...<br>
+$G_{\hat{r}\hat{r}} = -r^{-2}  + r^{-2} e^{-2\Lambda} + 2 r^{-1} e^{-2 \Lambda} \frac{d\Phi}{dr}$<br>
+By the EFE, $G_{\hat{r}\hat{r}} = 8 \pi T_{\hat{r}\hat{r}} = 8 \pi p$<br>
+Substitute:<br>
+$-r^{-2}  + r^{-2} e^{-2\Lambda} + 2 r^{-1} e^{-2 \Lambda} \frac{d\Phi}{dr} = 8 \pi p$<br>
+Solve for $\Phi$<br>
+$\frac{d\Phi}{dr} = 8 \pi p r^2 / (-1 + e^{-2\Lambda} (1 + 2 r))$<br>
+Next we replace the Newtonian approximation again ...<br>
+Substitute eqn 23.18, $e^{-2\Lambda} = 1 - \frac{2 m}{r}$<br>
+$\frac{d\Phi}{dr} = 8 \pi p r^2 / (-1 + (1 - 2 m / r) (1 + 2 r))$<br>
+$\frac{d\Phi}{dr} = 4 \pi p r^3 / (r^2 - 2 m r - m)$<br>
+...after some manipulation the book gets...<br>
+$\frac{d\Phi}{dr} = m / (r (r - 2 m)) + 4 \pi p r^3 / (r (r - 2 m))$<br>
+$\frac{d\Phi}{dr} = (m + 4 \pi p r^3) / (r (r - 2 m))$<br>
 	</body>
 </html>

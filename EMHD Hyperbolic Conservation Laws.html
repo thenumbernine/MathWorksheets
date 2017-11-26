@@ -23,43 +23,131 @@ $u^t = (1 - v^2)^{-1/2} =$ Lorentz factor<br>
 $p^a = \rho u^a =$ 4-momentum<br>
 <br>
 
-Lorentz force law:<br>
-$\dot{p}^a = e {F^a}_b u^b$<br>
-$(\rho u^t v^i)_{,t} = e u^t (\frac{1}{c} E^i + {\epsilon^i}_{jk} B^k v^j)$<br>
-in flat space:<br>
-$(\rho v^i)_{,t} = e (\frac{1}{c} E^i + {\epsilon^i}_{jk} B^k v^j)$<br>
+Special relativistic basis:<br>
+$e_t = \frac{1}{c} \partial_t$<br>
+$e^t = c dt$<br>
+$e_i = \partial_i$<br>
+$e^i = dx^i$<br>
+<br>
+
+Special relativistic metric:<br>
+$\eta_{ab} = \left[\matrix{
+	-1 & 0 & 0 & 0 \\
+	0 & 1 & 0 & 0 \\
+	0 & 0 & 1 & 0 \\
+	0 & 0 & 0 & 1
+}\right]$<br>
+$\eta^{ab} = \left[\matrix{
+	-1 & 0 & 0 & 0 \\
+	0 & 1 & 0 & 0 \\
+	0 & 0 & 1 & 0 \\
+	0 & 0 & 0 & 1
+}\right]$<br>
 <br>
 
 Faraday tensor:<br>
 $\phi = $ electric potential<br>
 $A^i = $ magnetic vector potential<br>
-$A^u = \left[ \frac{1}{c} \phi, A^i \right] $ electromagnetic 4-potential<br>
-$F_{uv} = 2 A_{[v,u]}$ in flat space<br>
-${F^{au}}_{;u} = 2 {A^{[u;a]}}_{;u} + {R^a}_u A^u$ in curved space<br>
-$F_{uv} = \downarrow u \overset{\leftarrow v}{
+$A^u = \left[ -\frac{1}{c} \phi, A^i \right] $ electromagnetic 4-potential<br>
+$A_u = \left[ \frac{1}{c} \phi, A_i \right] $ <br>
+$F_{uv} = 2 \partial_{[u} A_{v]}$ in flat space<br>
+$F_{uv} $$ = \downarrow u \overset{\rightarrow v}{
+\left[\matrix{
+	0 & e_t A_j - e_j A_t \\
+	e_i A_t - e_t A_i & e_i A_j - e_j A_i
+}\right]
+}$$ = \downarrow u \overset{\rightarrow v}{
+\left[\matrix{
+	0 & \frac{1}{c} (\partial_t A_j - \partial_j \phi) \\
+	\frac{1}{c} (\partial_i \phi - \partial_t A_i) & \partial_i A_j - \partial_j A_i
+}\right]
+}$$ = \downarrow u \overset{\rightarrow v}{
 \left[\matrix{
 	0 & -\frac{1}{c} E_j \\
 	\frac{1}{c} E_i & \epsilon_{ijk} B^k
 }\right]
-}$ in flat space<br>
+}$<br>
+
+${F^u}_v = \downarrow u \overset{\rightarrow v}{
+\left[\matrix{
+	0 & \frac{1}{c} E_j \\
+	\frac{1}{c} E^i & {\epsilon^i}_{jk} B^k
+}\right]
+}$<br>
+<br>
+
+$F^{uv} = \downarrow u \overset{\rightarrow v}{
+\left[\matrix{
+	0 & \frac{1}{c} E^j \\
+	-\frac{1}{c} E^i & \epsilon^{ijk} B_k
+}\right]
+}$<br>
+$(\star F)_{uv} = \downarrow u \overset{\rightarrow v}{
+\left[\matrix{
+	0 & -B_j \\
+	B_i & \frac{1}{c} \epsilon_{ijk} E^k
+}\right]
+}$<br>
+$(\star F)^{uv} = \downarrow u \overset{\rightarrow v}{
+\left[\matrix{
+	0 & -B^j \\
+	B^i & \frac{1}{c} \epsilon^{ijk} E_k
+}\right]
+}$<br>
+<br>
+
+Lorentz force law:<br>
+$\dot{p}^a = e {F^a}_b u^b$<br>
+$\frac{1}{c} \partial_t (\rho u^t v^i) = e u^t (\frac{1}{c} E^i + {\epsilon^i}_{jk} B^k v^j)$<br>
+in flat space:<br>
+$\frac{1}{c} \partial_t (\rho v^i) = e (\frac{1}{c} E^i + {\epsilon^i}_{jk} B^k v^j)$<br>
 <br>
 
 Maxwell in flat space:<br>
-${B^i}_{,i} = 0$<br>
-${B^i}_{,t} + {\epsilon_i}^{jk} E_{k,j} = 0$<br>
-${(\star F)^{ab}}_{,b} = (\frac{1}{2} F^{uv} {\epsilon_{uv}}^{ab})_{,b} = 0$<br>
+$\partial_b (\star F)^{ab} = \partial_b (\frac{1}{2} F^{uv} {\epsilon_{uv}}^{ab}) = 0$<br>
+$\partial_i B^i = 0$<br>
+$\frac{1}{c} \partial_t B^i + \frac{1}{c} {\epsilon_i}^{jk} \partial_j E_k = 0$<br>
+$\partial_t B^i + {\epsilon_i}^{jk} \partial_j E_k = 0$<br>
 <br>
-${E^i}_{,i} = \frac{1}{\epsilon_0} \rho_{charge}$<br>
-$\epsilon_0 {E^i}_{,t} - \epsilon^{ijk} (\frac{1}{\mu_0} B)_{k,j} = -J^i$<br>
-${F^{ab}}_{;b} = J^a$<br>
-$J^a = \left[ c \rho_{charge}, j^i \right] =$ 4-current<br>
-$j^i = \sigma E^i = $ current density<br>
 $\sigma = $ electric conductivity<br>
+$j^i = \sigma E^i = $ current density<br>
+$J^a = \left[ c \rho_{charge}, j^i \right] =$ 4-current<br>
+$\partial_b F^{ab} = \mu_0 J^a$<br>
+$\frac{1}{c} \partial_i E^i = \mu_0 c \rho_{charge}$<br>
+$\mu_0 \epsilon_0 \partial_i E^i = \mu_0 \rho_{charge}$<br>
+$\partial_i E^i = \frac{1}{\epsilon_0} \rho_{charge}$<br>
+<br>
+$-\frac{1}{c^2} \partial_t E^i + \epsilon^{ijk} \partial_j B_k = \mu_0 j^i$<br>
+$-\mu_0 \epsilon_0 \partial_t E^i + \epsilon^{ijk} \partial_j B_k = \mu_0 j^i$<br>
+$\epsilon_0 \partial_t E^i - \epsilon^{ijk} \partial_j (\frac{1}{\mu_0} B)_k = -j^i$<br>
 <br>
 
 <h3>Curved space</h3>
 
-$n_a = (-\alpha, 0, 0, 0)$ and $n^a = (1 / \alpha, -\beta^i / \alpha)$.<br>
+$\alpha =$ lapse<br>
+$\beta^i =$ shift<br>
+$\gamma_{ij} =$ spatial metric<br>
+$g_{uv} = \downarrow u \overset{\rightarrow v}{\left[\matrix{
+	-\alpha^2 + \beta^2 & \beta_j \\
+	\beta_i & \gamma_{ij}
+}\right]}$<br>
+$g^{uv} = \downarrow u \overset{\rightarrow v}{\left[\matrix{
+	-\alpha^{-2} & \alpha^{-2} \beta^j \\
+	\alpha^{-2} \beta^i & \gamma^{ij} - \alpha^{-2} \beta^i \beta^j
+}\right]}$<br>
+<br>
+
+$n_a = (-\alpha, 0)$ and $n^a = (1 / \alpha, -\beta^i / \alpha)$.<br>
+<br>
+
+$K_{ab} = -{\gamma_a}^c {\gamma_b}^d \nabla_{[c} n_{d]}$<br>
+$K_{ij} = -(\delta_i^a + n_i n^a) (\delta_j^b + n_j n^b) \nabla_{[a} n_{b]}$<br>
+$K_{ij} = -(\delta_i^a \delta_j^b + n_i n^a \delta_j^b + \delta_i^a n_j n^b + n_i n_j n^a n^b) \nabla_{[a} n_{b]}$<br>
+$K_{ij} = -(\delta_i^m \delta_j^n \nabla_{[m} n_{n]} + n_i n^a \delta_j^n \nabla_{[a} n_{n]} + \delta_i^m n_j n^b \nabla_{[m} n_{b]} + n_i n_j n^a n^b \nabla_{[a} n_{b]})$<br>
+TODO where does $c$ fit into $K$...<br>
+<br>
+
+$\nabla_u F^{au} = 2 \nabla_u \nabla^{[a} A^{u]} + {R^a}_u A^u$ in curved space<br>
 <br>
 
 $^{(3)} \epsilon^{\perp afg} = n_b {\gamma^a}_e {\gamma^f}_c {\gamma^g}_d \epsilon^{bacd} = n_b \epsilon^{bafg}$<br>
@@ -94,36 +182,36 @@ $= \frac{1}{2} n_b \epsilon^{bacd} (^{(3)} F_{cd} n_c E_d - E_c n_d)$<br>
 $= \frac{1}{2} n_b \epsilon^{bacd} {}^{(3)} F_{cd}$<br>
 
 Jumping to the end:<br>
-$D_a E^a = \frac{1}{\sqrt\gamma} (\sqrt\gamma E^i)_{,i} = 4 \pi \rho$ for $\rho = -n_a j^a$<br>
-$D_a B^a = \frac{1}{\sqrt\gamma} (\sqrt\gamma B^i)_{,i} = 0$<br>
+$\frac{1}{c} D_a E^a = \frac{1}{c} \frac{1}{\sqrt\gamma} \partial_i (\sqrt\gamma E^i) = \mu_0 c \rho$ for $\rho = -n_a j^a$<br>
+$D_a B^a = \frac{1}{\sqrt\gamma} \partial_i (\sqrt\gamma B^i) = 0$<br>
 <br>
-using $\frac{d}{dt} = \partial_t - \mathcal{L}_\vec\beta$<br>
-$\frac{d}{dt} E^i = E^i = ^{(3)} \epsilon^{ijk} (\alpha B_k)_{,j} + \alpha K E^i - 4 \pi \alpha ^{(3)} j^i$<br>
-$\frac{d}{dt} B^i = -^{(3)} \epsilon^{ijk} (\alpha E_k)_{,j} + \alpha K B^i$<br> 
+using $\frac{d}{dt} = \frac{1}{c} \partial_t - \mathcal{L}_\vec\beta$<br>
+$\frac{1}{c} \frac{d}{dt} E^i = ^{(3)} \epsilon^{ijk} \partial_j (\alpha B_k) + \frac{1}{c} \alpha K E^i - \mu_0 \alpha ^{(3)} j^i$<br>
+$\frac{1}{c} \frac{d}{dt} B^i = -\frac{1}{c} ^{(3)} \epsilon^{ijk} \partial_j (\alpha E_k) + \alpha K B^i$<br> 
 <br>
 with flat-space permutation tensors, expanded partials, in hyperbolic conservation form:<br>
-${E^i}_{,t} 
-		- \beta^j {E^i}_{,j}
-		- \frac{1}{\sqrt\gamma} \alpha \epsilon_F^{ijk} \gamma_{kl} {B^l}_{,j} 
-	= \frac{1}{\sqrt\gamma} \epsilon_F^{ijk} (\alpha_{,j} B_k + \alpha \gamma_{kl,j} B^l) 
-		+ \alpha K E^i 
-		- E^j {\beta^i}_{,j}
-		- 4 \pi \alpha (j^i + \beta^i j^t)
+$\frac{1}{c^2} \partial_t E^i
+		- \frac{1}{c} \beta^j \partial_j E^i
+		- \frac{1}{\sqrt\gamma} \alpha \epsilon_F^{ijk} \gamma_{kl} \partial_j B^l
+	= \frac{1}{\sqrt\gamma} \epsilon_F^{ijk} (\partial_j \alpha B_k + \alpha \partial_j \gamma_{kl} B^l) 
+		+ \frac{1}{c} \alpha K E^i 
+		- \frac{1}{c} E^j \partial_j \beta^i
+		- \mu_0 \alpha (j^i + \beta^i j^t)
 $<br>
-${B^i}_{,t} 
-		+ \frac{1}{\sqrt\gamma} \alpha \epsilon_F^{ijk} \gamma_{kl} {E^l}_{,j}
-		- {B^i}_{,j} \beta^j
-	= -\frac{1}{\sqrt\gamma} \epsilon_F^{ijk} (\alpha_{,j} E_k + \alpha \gamma_{kl,j} E^l) 
+$\frac{1}{c} \partial_t B^i
+		+ \frac{1}{c} \frac{1}{\sqrt\gamma} \alpha \epsilon_F^{ijk} \gamma_{kl} \partial_j E^l
+		- \frac{1}{c} \partial_j B^i \beta^j
+	= -\frac{1}{c} \frac{1}{\sqrt\gamma} \epsilon_F^{ijk} (\partial_j \alpha E_k + \alpha \partial_j \gamma_{kl} E^l) 
 		+ \alpha K B^i 
-		- B^j {\beta^i}_{,j}
+		- \frac{1}{c} B^j \partial_j \beta^i
 $<br> 
 <br>
 as a matrix:<br>
-$\left[\matrix{
+$\frac{1}{c} \partial_t \left[\matrix{
 	E^i \\
 	B^i
-}\right]_{,t}
-+ \left[\matrix{
+}\right]
++ \partial_j \left[\matrix{
 	- \beta^j \delta^i_l &
 		\frac{\alpha}{\sqrt\gamma} \epsilon_F^{ijk} \gamma_{kl} \\
 	- \frac{\alpha}{\sqrt\gamma} \epsilon_F^{ijk} \gamma_{kl} &
@@ -131,15 +219,15 @@ $\left[\matrix{
 }\right] \left[\matrix{
 	E^l \\
 	B^l
-}\right]_{,j}
+}\right]
 = \left[\matrix{
-	\frac{1}{\sqrt\gamma} \epsilon_F^{ijk} (\alpha_{,j} B_k + \alpha \gamma_{kl,j} B^l) 
+	\frac{1}{\sqrt\gamma} \epsilon_F^{ijk} (\partial_j \alpha B_k + \alpha \partial_j \gamma_{kl} B^l) 
 		+ \alpha K E^i 
-		- E^j {\beta^i}_{,j}
+		- E^j \partial_j \beta^i
 		- 4 \pi \alpha (j^i + \beta^i j^t) \\
-	-\frac{1}{\sqrt\gamma} \epsilon_F^{ijk} (\alpha_{,j} E_k + \alpha \gamma_{kl,j} E^l) 
+	-\frac{1}{\sqrt\gamma} \epsilon_F^{ijk} (\partial_j \alpha E_k + \alpha \partial_j \gamma_{kl} E^l) 
 		+ \alpha K B^i 
-		- B^j {\beta^i}_{,j}
+		- B^j \partial_j \beta^i
 }\right]$<br>
 <br>
 
@@ -149,7 +237,7 @@ I'm leaving the $\partial \alpha$ and $\partial \gamma_{ij}$ terms on the source
 charge conservation:<br>
 $\nabla_c j^c = 0$<br>
 in 3+1 form:<br>
-$\rho_{,t} - \mathcal{L}_\vec\beta \rho = -D_a (\alpha ^{(3)} j^a) + \alpha \rho K$<br>
+$\frac{1}{c} \partial_t \rho - \mathcal{L}_\vec\beta \rho = -D_a (\alpha ^{(3)} j^a) + \alpha \rho K$<br>
 
 <h3>Combining Maxwell and fluids</h3>
 
