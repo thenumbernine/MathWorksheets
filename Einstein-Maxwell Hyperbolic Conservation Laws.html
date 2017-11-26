@@ -141,10 +141,11 @@ $n_a = (-\alpha, 0)$ and $n^a = (1 / \alpha, -\beta^i / \alpha)$.<br>
 <br>
 
 $K_{ab} = -{\gamma_a}^c {\gamma_b}^d \nabla_{[c} n_{d]}$<br>
-$K_{ij} = -(\delta_i^a + n_i n^a) (\delta_j^b + n_j n^b) \nabla_{[a} n_{b]}$<br>
-$K_{ij} = -(\delta_i^a \delta_j^b + n_i n^a \delta_j^b + \delta_i^a n_j n^b + n_i n_j n^a n^b) \nabla_{[a} n_{b]}$<br>
-$K_{ij} = -(\delta_i^m \delta_j^n \nabla_{[m} n_{n]} + n_i n^a \delta_j^n \nabla_{[a} n_{n]} + \delta_i^m n_j n^b \nabla_{[m} n_{b]} + n_i n_j n^a n^b \nabla_{[a} n_{b]})$<br>
-TODO where does $c$ fit into $K$...<br>
+Eqn 2.10 in the paper says<br>
+$K = -\nabla_a n^a = $<br>
+some math later, hopefully without any errors...<br>
+$K = \frac{1}{2 \alpha^2} (\partial_t \alpha + 2 \alpha \partial_i \beta^i - \beta^i \partial_i \alpha - \frac{\alpha}{\gamma} ( \partial_t \gamma - \beta^i \partial_i \gamma) )$<br>
+So the $c$'s appear inside $K$ on a per-term basis...<br>
 <br>
 
 $\nabla_u F^{au} = 2 \nabla_u \nabla^{[a} A^{u]} + {R^a}_u A^u$ in curved space<br>
@@ -186,7 +187,6 @@ $\frac{1}{c} D_a E^a = \frac{1}{c} \frac{1}{\sqrt\gamma} \partial_i (\sqrt\gamma
 $D_a B^a = \frac{1}{\sqrt\gamma} \partial_i (\sqrt\gamma B^i) = 0$<br>
 <br>
 using $\frac{d}{dt} = \frac{1}{c} \frac{\partial}{\partial t} - \mathcal{L}_\vec\beta$<br>
-TODO should there be any units on the $\mathcal{L}_\vec\beta$?  Make an argument for this.<br>
 $\frac{1}{c} \frac{d}{dt} E^i = ^{(3)} \epsilon^{ijk} \partial_j (\alpha B_k) + \frac{1}{c} \alpha K E^i - \mu_0 \alpha ^{(3)} j^i$<br>
 $\frac{d}{dt} B^i = -\frac{1}{c} ^{(3)} \epsilon^{ijk} \partial_j (\alpha E_k) + \alpha K B^i$<br> 
 <br>
