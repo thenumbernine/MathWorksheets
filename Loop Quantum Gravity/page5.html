@@ -7,14 +7,14 @@
 	</head>
     <body onload='tryToFindMathJax();'>
 
-<a href='desc.html'>Back</a><br>
+<a href='index.html'>Back</a><br>
 <br>
 
 Indexes:<br>
 $\alpha-\omega$ = 4-curved<br>
 $a-h,o-z$ = 3-curved<br>
-$A-Z$ = 4-flat<br>
-$i-n$ = 3-flat<br>
+$A-Z$ = 4D Minkowski<br>
+$i-n$ = 3D Minkowski<br>
 <br>
 
 <hr>
@@ -35,7 +35,7 @@ I'm only resisting because it's much easier to write and type.<br>
 <hr>
 
 Notice that $ g_{\mu\nu} $ and $ g^{\mu\nu} $ are used to raise and lower curved spacetime coordinates.<br>
-Likewise $ \eta_{IJ} $ and $ \eta^{IJ} $ are used to raise and lower flat spacetime coordinates.<br>
+Likewise $ \eta_{IJ} $ and $ \eta^{IJ} $ are used to raise and lower Minkowski spacetime coordinates.<br>
 The vierbein $ {e_\mu}^I $ and inverse $ {e^\mu}_I $ are used to transform to and fro the curved coordinate metric and the Minkowski metric,
 and such transformations are expressed by changing the letter associated with the transform.<br>
 Notice that, if correct index applications are given, $ {e_\mu}^I $ is found to <b>not</b> equal $ {e^I}_\mu $ (but instead its transpose: <a href='http://physics.stackexchange.com/questions/142836/correct-tetrad-index-notation'>http://physics.stackexchange.com/questions/142836/correct-tetrad-index-notation</a>)<br>
@@ -64,7 +64,7 @@ $g_{\mu\nu}=$ metric tensor, matrix $G$<br>
 $g^{\mu\nu}=$ metric tensor inverse, matrix $G^{-1}$<br>
 <br>
 
-$\eta_{IJ}=$ Minkowski flat-space metric $=diag(-1,1,1,1)$, matrix $H$<br>
+$\eta_{IJ}=$ Minkowski space metric $=diag(-1,1,1,1)$, matrix $H$<br>
 $\eta^{IJ}=$ Minkowski metric inverse, matrix $H^{-1}$<br>
 <br>
 
@@ -132,18 +132,25 @@ $= \left[\matrix{1 & 0 \\ 0 & I}\right]$<br>
 Therefore the spatial subset of curved coordinates of the 4D tetrad ${e_\mu}^I$ and ${e^\mu}_I$ are equal to the 3D triad ${e_u}^i$ and ${e^u}_i$.<br>
 Therefore tensors can be raised/lowered by 3D spatial indexes as well as 4D spacetime indexes without distinction... except that the shift cannot be neglected ...<br>
 i.e. representing a 3-space coordinate in terms of a 4-space coordinate:<br>
-For $ v^I $ 4D flat-space<br>
+For $ v^I $ 4D Minkowski space<br>
 $ v^\mu = v^I {e^\mu}_I $<br>
 Calculating the individual $t$ component in tetrad representation introduces influence from the (Minkowski representation of the) shift vector, as well as the spatial triad:<br>
 $ v^t = v^I {e^t}_I = v^\hat{t} {e^t}_\hat{t} + v^i {e^t}_i = \alpha v^\hat{t} + \beta^i {e^t}_i $<br>
 Calculating the spatial $a$ components in tetrad representation only makes use of the spatial triad:<br>
 $ v^a = v^I {e^a}_I = v^\hat{t} {e^a}_\hat{t} + v^i {e^a}_i = 0 \cdot v^\hat{t} + {({^3}e)^a}_i v^i = {({^3}e)^a}_i v^i $<br>
 <br>
-...so if you have a 4D flat coordinate object and you want to represent the time component terms of 3D curved coordinates, don't forget to add the influence of the (3D flat coordinate representation of the) shift vector!<br>
-...but if you have a 4D flat coordinate object and you want to represent the spatial components in terms of 3D curved coordinates, you can just use the 3D triad transformation.<br>
+...so if you have a 4D Minkowski coordinate object and you want to represent the time component terms of 3D curved coordinates, don't forget to add the influence of the (3D Minkowski coordinate representation of the) shift vector!<br>
+...but if you have a 4D Minkowski coordinate object and you want to represent the spatial components in terms of 3D curved coordinates, you can just use the 3D triad transformation.<br>
 
 <br>
-<a href='desc.html'>Back</a><br>
+
+On the connections.<br>
+If $e_I \cdot e_J = \eta_{IJ}$ then the Levi-Civita connection coefficients from this metric are solely composed of structure constants.<br>
+If the $e_I$ basis has no structure constants then this basis corresponds to a flat background metric.<br>
+Otherwise the Levi-Civita connections is formed from the structure constants, and any connection is formed from only the structure contants and torsion (no influence from the metric $\eta_{IJ}$ whose derivatives are zero).<br>
+<br>
+
+<a href='index.html'>Back</a><br>
 	
 	</body>
 </html>
