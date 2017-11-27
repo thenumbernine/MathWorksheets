@@ -257,6 +257,14 @@ $\frac{\partial}{\partial t} \left[\matrix{
 I'm leaving the $\partial \alpha$ and $\partial \gamma_{ij}$ terms on the source side because they are replaced with state variables when converting the system to 1st order.<br>
 <br>
 
+charge conservation:<br>
+$\nabla_c j^c = 0$<br>
+in 3+1 form:<br>
+$\frac{1}{c} \frac{\partial}{\partial t} \rho - \mathcal{L}_\vec\beta \rho = -D_a (\alpha j^a) + \alpha \rho K$<br>
+$\frac{1}{c} \frac{\partial}{\partial t} \rho - \beta^i \partial_i \rho - \rho \partial_i \beta^i = -\partial_i (\alpha j^i) - {\Gamma^i}_{ki} j^k + \alpha \rho K$<br>
+
+<hr>
+
 But what does the system look like if we rewrite it in terms of $\alpha E^i$ and $\alpha B^i$?<br>
 That should make some of the Levi-Civita tensor source terms disappear.<br>
 $\frac{d}{dt} (\alpha E^i) = E^i \frac{d}{dt} \alpha + \alpha \frac{d}{dt} E^i$<br>
@@ -312,7 +320,10 @@ $ = \partial_t (\alpha E_j) \gamma^{ij} + 2 \alpha K^{ij} (\alpha E_j)$<br>
 Hmm but we still have the $\beta^i$'s ...<br>
 How about just re-derive $\frac{d}{dt} (\alpha E_i)$...<Br>
 $= \partial_t (\alpha E_i) - \beta^j \partial_j (\alpha E_i) - (\alpha E_j) \partial_i \beta^j$<br>
-Hmm...TODO still...<br>
+<br>
+
+But really, whether I use the upper or lower vector form, either has a flux term of its dual, which means a Levi-Civita times its opposite,
+which means the partial of the gamma will always be there.  So there's no point in rewriting it in covariant form over contravariant form.<br>
 <br>
 
 $\partial_t (\alpha E_j) \gamma^{ij} 
@@ -348,11 +359,6 @@ $\partial_t (\alpha B_j) \gamma^{ij}
 	$<br> 
 <br>
 
-
-charge conservation:<br>
-$\nabla_c j^c = 0$<br>
-in 3+1 form:<br>
-$\frac{1}{c} \frac{\partial}{\partial t} \rho - \mathcal{L}_\vec\beta \rho = -D_a (\alpha j^a) + \alpha \rho K$<br>
 
 	</body>
 </html>
