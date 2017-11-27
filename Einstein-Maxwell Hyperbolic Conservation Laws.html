@@ -142,8 +142,11 @@ $n_a = (-\alpha, 0)$ and $n^a = (1 / \alpha, -\beta^i / \alpha)$.<br>
 
 $K_{ab} = -{\gamma_a}^c {\gamma_b}^d \nabla_{(c} n_{d)}$<br>
 Eqn 2.10 in the paper says<br>
-$K = -\nabla_a n^a = $<br>
-some math later, hopefully without any errors...<br>
+$K = g^{ab} K_{ab} = -g^{ab} {\gamma_a}^c {\gamma_b}^d \nabla_{(c} n_{d)}$<br>
+$= -g^{ab} \nabla_a n_b$<br>
+$= -\nabla_a n^a$<br>
+Note that $K$ is the 4D trace, not the 3D trace that it is in numerical relativity texts.  (Right?  those extra $g^{tt}$ and $g^{ti}$ terms don't all eliminate, do they?)<br>
+Some math later, hopefully without any errors...<br>
 $K = \frac{1}{2 \alpha^2} (\partial_t \alpha + 2 \alpha \partial_i \beta^i - \beta^i \partial_i \alpha - \frac{\alpha}{\gamma} ( \partial_t \gamma - \beta^i \partial_i \gamma) )$<br>
 So the $c$'s appear inside $K$ on a per-term basis...<br>
 <br>
@@ -187,7 +190,7 @@ $\frac{1}{c} D_a E^a = \frac{1}{c} \frac{1}{\sqrt\gamma} \partial_i (\sqrt\gamma
 $D_a B^a = \frac{1}{\sqrt\gamma} \partial_i (\sqrt\gamma B^i) = 0$<br>
 <br>
 using $\frac{d}{dt} = \frac{1}{c} \frac{\partial}{\partial t} - \mathcal{L}_\vec\beta$<br>
-$\frac{1}{c} \frac{d}{dt} E^i = ^{(3)} \epsilon^{ijk} \partial_j (\alpha B_k) + \frac{1}{c} \alpha K E^i - \mu_0 \alpha ^{(3)} j^i$<br>
+$\frac{1}{c} \frac{d}{dt} E^i = ^{(3)} \epsilon^{ijk} \partial_j (\alpha B_k) + \frac{1}{c} \alpha K E^i - \mu_0 \alpha j^i$<br>
 $\frac{d}{dt} B^i = -\frac{1}{c} ^{(3)} \epsilon^{ijk} \partial_j (\alpha E_k) + \alpha K B^i$<br> 
 <br>
 with flat-space permutation tensors, expanded partials, in hyperbolic conservation form:<br>
@@ -254,10 +257,102 @@ $\frac{\partial}{\partial t} \left[\matrix{
 I'm leaving the $\partial \alpha$ and $\partial \gamma_{ij}$ terms on the source side because they are replaced with state variables when converting the system to 1st order.<br>
 <br>
 
+But what does the system look like if we rewrite it in terms of $\alpha E^i$ and $\alpha B^i$?<br>
+That should make some of the Levi-Civita tensor source terms disappear.<br>
+$\frac{d}{dt} (\alpha E^i) = E^i \frac{d}{dt} \alpha + \alpha \frac{d}{dt} E^i$<br>
+$\frac{d}{dt} E^i = \frac{1}{\alpha} (\frac{d}{dt} (\alpha E^i) - E^i \frac{d}{dt} \alpha)$<br>
+<br>
+$\frac{1}{c} \frac{1}{\alpha} (\frac{d}{dt} (\alpha E^i) - E^i \frac{d}{dt} \alpha) = ^{(3)} \epsilon^{ijk} \partial_j (\alpha B_k) + \frac{1}{c} \alpha K E^i - \mu_0 \alpha j^i$<br>
+$\frac{1}{\alpha} (\frac{d}{dt} (\alpha B^i) - B^i \frac{d}{dt} \alpha) = -\frac{1}{c} ^{(3)} \epsilon^{ijk} \partial_j (\alpha E_k) + \alpha K B^i$<br> 
+<br>
+$\partial_t (\alpha E^i) 
+	
+	- \beta^j \delta^i_l \partial_j (\alpha E^l) 
+	
+	- c \alpha ^{(3)} \epsilon^{ijk} \partial_j (\alpha B^l \gamma_{kl}) 
+	= 
+	\alpha K (\alpha E^i)
+	- c \mu_0 \alpha^2 \cdot j^i 
+	+ \frac{1}{\alpha} (\alpha E^i) (
+		\partial_t \alpha 
+		- \beta^i \partial_i \alpha 
+		- \alpha \partial_i \beta^i
+	)
+	- (\alpha E^j) \partial_j \beta^i
+	$<br>
+$\partial_t (\alpha B^i) 
+	
+	- \beta^j \delta^i_l \partial_j (\alpha B^l)
+	
+	+ \frac{1}{c} \alpha ^{(3)} \epsilon^{ijk} \partial_j (\alpha E^l \gamma_{kl}) 
+	= 
+	\alpha K (\alpha B^i)
+	+ \frac{1}{\alpha} (\alpha B^i) (
+		\partial_t \alpha 
+		- \beta^i \partial_i \alpha 
+		- \alpha \partial_i \beta^i
+	)
+	- (\alpha B^j) \partial_j \beta^i
+	$<br> 
+<br>
+
+Hmm, there's still the $\epsilon^{ijk} (\alpha E^l \gamma_{kl})$ ...<br>
+So there will always be an extra $\epsilon^{ijk}$ in the source term...<br>
+Unless we make the state vars equal to $\alpha E_i$ lowered ...<br>
+Then I'll have to add a $\frac{d}{dt} \gamma_{ij}$ to the source term ...<br>
+...which is at least equal to $-2 \alpha K_{ij}$, which isn't so bad ...<br>
+<br>
+
+$\partial_t (\alpha E^i) = \partial_t (\alpha E_j \gamma^{ij})$<br>
+$ = \partial_t (\alpha E_j) \gamma^{ij} + \alpha E_j \partial_t \gamma^{ij}$<br>
+$ = \partial_t (\alpha E_j) \gamma^{ij} - \alpha E^k \gamma^{ij} \partial_t \gamma_{jk}$<br>
+$ = \partial_t (\alpha E_j) \gamma^{ij} + 2 \alpha K^{ij} (\alpha E_j)$<br>
+<br>
+
+Hmm but we still have the $\beta^i$'s ...<br>
+How about just re-derive $\frac{d}{dt} (\alpha E_i)$...<Br>
+$= \partial_t (\alpha E_i) - \beta^j \partial_j (\alpha E_i) - (\alpha E_j) \partial_i \beta^j$<br>
+Hmm...TODO still...<br>
+<br>
+
+$\partial_t (\alpha E_j) \gamma^{ij} 
+	
+	- \beta^j \delta^i_l \partial_j (\alpha E^l) 
+	
+	- c \alpha ^{(3)} \epsilon^{ijk} \partial_j (\alpha B_k) 
+	= 
+	\alpha K (\alpha E^i)
+	+ \frac{1}{\alpha} (\alpha E^i) (
+		\partial_t \alpha 
+		- \beta^i \partial_i \alpha 
+		- \alpha \partial_i \beta^i
+	)
+	- (\alpha E^j) \partial_j \beta^i
+	- 2 \alpha K^{ij} (\alpha E_j)
+	- c \mu_0 \alpha^2 j^i 
+	$<br>
+$\partial_t (\alpha B_j) \gamma^{ij} 
+	
+	- \beta^j \delta^i_l \partial_j (\alpha B^l)
+	
+	+ \frac{1}{c} \alpha ^{(3)} \epsilon^{ijk} \partial_j (\alpha E_k) 
+	= 
+	\alpha K (\alpha B^i)
+	+ \frac{1}{\alpha} (\alpha B^i) (
+		\partial_t \alpha 
+		- \beta^i \partial_i \alpha 
+		- \alpha \partial_i \beta^i
+	)
+	- (\alpha B^j) \partial_j \beta^i
+	- 2 \alpha K^{ij} (\alpha B_j)
+	$<br> 
+<br>
+
+
 charge conservation:<br>
 $\nabla_c j^c = 0$<br>
 in 3+1 form:<br>
-$\frac{1}{c} \frac{\partial}{\partial t} \rho - \mathcal{L}_\vec\beta \rho = -D_a (\alpha ^{(3)} j^a) + \alpha \rho K$<br>
+$\frac{1}{c} \frac{\partial}{\partial t} \rho - \mathcal{L}_\vec\beta \rho = -D_a (\alpha j^a) + \alpha \rho K$<br>
 
 	</body>
 </html>
