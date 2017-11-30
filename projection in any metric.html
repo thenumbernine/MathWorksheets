@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<title>projection in any metric</title>
+	</head>
+	<body onload='tryToFindMathJax();'>
+
+<h3>2D Euclidian Space:</h3>
+Problem:  given a vector $(a,b)$ and a vector $(x,y)$, find the smallest $(\delta x, \delta y)$ such that $(a,b) \cdot ((x,y) + (\delta x,\delta y)) = 0$<br>
+Lagrangian multipliers<br>
+Let $\phi(\delta x, \delta y) = \delta x^2 + \delta y^2$ be the displacement of our vector, which we want to minimize.<br>
+subject to constraint $a (x + \delta x) + b ( y + \delta y) = 0$<br>
+Let $\mu(\delta x, \delta y) = (a,b) \cdot ((x,y) + (\delta x, \delta y)) = a (x + \delta x) + b (y + \delta y)$ be the constraint function subject to $\mu = 0$<br>
+First solve for $\nabla \phi = 0$:<br>
+$\nabla \phi = (\frac{\partial}{\partial \delta x}, \frac{\partial}{\partial \delta y}) \phi = 2 (\delta x, \delta y)$<br>
+So $\nabla \phi = 0$ only for $(\delta x, \delta y) = (0,0)$, which only occurs on our domain when $a x + b y = 0$, which is only true if our constraint is already solved.<br>
+Next solve for $\nabla \phi = \lambda \nabla \mu$<br>
+$\nabla \mu = (\frac{\partial}{\partial \delta x}, \frac{\partial}{\partial \delta y}) \mu = (a, b)$<br>
+$\lambda \nabla \mu = \nabla \phi$ for <br>
+$\lambda (a, b) = 2 (\delta x, \delta y)$<br>
+$(\delta x, \delta y) = \frac{1}{2} \lambda (a, b)$<br>
+subject to our constraint $a (x + \delta x) + b (y + \delta y) = 0$<br>
+substitute ...<br>	
+$a (x + \frac{1}{2} \lambda a) + b (y + \frac{1}{2} \lambda b) = 0$<br>
+$a x + b y + \frac{1}{2} \lambda (a^2 + b^2) = 0$<br>	
+$\lambda  = -2 \frac{a x + b y}{a^2 + b^2}$<br>	
+substitute some more...<br>
+$(\delta x, \delta y) = \frac{1}{2} (-2 (a x + b y) / (a^2 + b^2)) (a, b)$<br>
+$(\delta x, \delta y) = -\frac{a x + b y}{a^2 + b^2} (a, b) = -\frac{(a,b) \cdot (x,y)}{(a,b) \cdot (a,b)} (a,b)$<br>
+$(x + \delta x, y + \delta y) = (x,y) - \frac{(a,b) \cdot (x,y)}{(a,b) \cdot (a,b)} (a,b)$<br>
+
+<h3>arbitrary metric, minimize Euclidian L2-norm displacement:</h3> 
+Given a vector $a^u$ and vector $b^u$, find the smallest $\delta^u$ such that $a_u (b^u + \delta^u) = 0$<br>
+Let $\phi = \delta^2 = (\delta^a)^2 + (\delta^b)^2$ be the Euclidian distance we want to minimize.<br>
+So if we have a graph of isobars of the metric, we are going to project to th closest point on this graph, which means a L2 Euclidian norm.<br> 
+I should try doing the same with the same metric later ... or any other metric?  Separate displacement metric and separate inner product metric?<br>	
+Let $\mu = a_u (b^u + \delta^u) = a^u (b^v + \delta^v) g_{uv}$<br>
+Subject to $\mu = 0$<br>
+$\nabla_u \phi = \frac{\partial}{\partial \delta^u} \phi = 2 \delta^u$ notice, because we're using the Euclidian L2 norm, we end up breaking index gymnastic rules.<br>
+$\nabla_u \phi = 0$ for $\delta^u = 0$<br>
+$\nabla_u \mu = \frac{\partial}{\partial \delta^u} \mu = a_u$<br>
+$\nabla_u \phi = \lambda \nabla_u \mu$ for<br>
+$2 \delta^u = \lambda a_u$ broken index gymnastics<br>
+$\delta^u = \frac{1}{2} \lambda a_u$<br>
+subject to our constraint $\mu = 0$<br>
+$a_u (b^u + \delta^u) = 0$<br>
+$\underset{u}{\Sigma} a_u (b^u + \frac{1}{2} \lambda a_u) = 0$ more broken index gymnastics<br>
+$a_u b^u + \frac{1}{2} \lambda \underset{u}{\Sigma} (a_u)^2 = 0$<br>
+$\lambda  = -2 \frac{a_u b^u}{\underset{u}{\Sigma} (a_u)^2}$<br>
+substitute some more...<br>
+$\delta^u = \frac{1}{2} (-2 \frac{a_u b^u}{\underset{u}{\Sigma} (a_u)^2}) a_u$<br>
+$\delta^u = (-\frac{a_u b^u}{\underset{u}{\Sigma} (a_u)^2}) a_u$<br>
+	
+<h3>separate metric of inner product and of norm to minimize:</h3>
+Given vector $a^u$ and vector $b^u$, find smallest $\delta^u$ such that $a^u (b^v + \delta^v) g_{uv} = 0$ so that $g_{uv}$ is the metric of the inner product.<br>
+Let $\phi = \delta^u \delta^v h_{uv}$ so that $h_{uv}$ is the metric of the norm to minimize with respect to.<br>
+Let $\mu = a^u (b^v + \delta^v) g_{uv}$ subject to $\mu = 0$<br>
+$\nabla_u \phi = \frac{\partial}{\partial \delta^u} \phi = 2 \delta^v h_{uv}$<br>
+$\nabla_u \phi = 0$ for $\delta^v$ in the nullspace of $h_{uv}$.<br>
+If this is the case then our minimization of $\delta^u$ is already satisfied... but our inner product constraint may not be ... <br>
+which means for $h_{uv}$ with nullspace that I must now consider a separate case of solutions.<br>
+TODO<br>
+Otherwise, for invertible $h_{ab}$ such that $h_{ac} h^{cb} = \delta^b_a$,
+let's look at solutions that lie along $\nabla_u \mu = 0$<br>
+$\nabla_u \mu = \frac{\partial}{\partial \delta^u} \mu = a^v g_{uv}$<br>
+$\nabla_u \phi = \lambda \nabla_u \mu$ for<br>
+$2 \delta^v h_{uv} = \lambda a^v g_{uv}$<br>	
+$\delta^u = \frac{1}{2} \lambda a^a g_{ab} h^{bu}$<br>	
+subject to our constraint $\mu = 0$<br>
+$a^u (b^v + \delta^v) g_{uv} = 0$<br>	
+$a^u (b^v + \frac{1}{2} \lambda a^a g_{ab} h^{bv}) g_{uv} = 0$<br>	
+$a^u g_{uv} b^v  + \frac{1}{2} \lambda a^a g_{ab} h^{bv} g_{uv} a^u = 0$<br>	
+$\lambda = -2 \frac{a^u g_{uv} b^v}{a^a g_{ab} h^{bv} g_{uv} a^u}$<br>	
+substitute some more...<br>
+$\delta^u = \frac{1}{2} \lambda a^a g_{ab} h^{bu}$<br>	
+$\delta^u = \frac{1}{2} (-2 \frac{a^w g_{wv} b^v}{a^a g_{ab} h^{bv} g_{wv} a^w}) a^a g_{ab} h^{bu}$<br>	
+$\delta^u = -\frac{a^w g_{wv} b^v}{a^a g_{ab} h^{bv} g_{wv} a^w} a^a g_{ab} h^{bu}$<br>	
+	</body>
+</html>
