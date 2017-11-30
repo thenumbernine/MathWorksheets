@@ -138,6 +138,8 @@ Here's the CDN URLs:
 
 [Tetrad General Relativity](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Tetrad%20General%20Relativity%2ehtml)
 
+[projection in any metric](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/projection%20in%20any%20metric%2ehtml)
+
 [spheres](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/spheres%2ehtml)
 
 [wave_metric_1](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/wave_metric_1%2ehtml)
