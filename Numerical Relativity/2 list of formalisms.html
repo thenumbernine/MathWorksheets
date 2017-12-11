@@ -283,27 +283,45 @@ Is the $ij$ = $xx$ term the excluded eigenfield, as it is in the ADM case?<br>
 		
 <b>Bona et al. "Geometrically motivated hyperbolic coordinate condions for numerical relativity- Analysis, issues and implementation". 2005.</b><br>
 see my numerical-relativity-codegen/show_flux_matrix - code and results.<br>
+But for consistency's sake:<br>
+(taken from the 2008 Yano et al paper that references it)<br>
+source terms:<br
+$S(a_i) = {b_i}^l a_l - {b_l}^l a_i$<br>
+$S({b_k}^i) = {b_k}^l {b_l}^i - {b_l}^l {b_k}^i$<br>
+$S(d_{kij}) = {b_k}^l d_{lij} - {b_l}^l d_{kij}$<br>
+$S(K_{ij}) =  = ...$<br>
+$S(\Theta) =  = ...$<br>
+$S(Z_i) = ...$<br>
+<br>
+
+<b>Yano, Suzuki, Kuroda "Flux-Vector-Splitting (FVS) method for Z4 formalism and its numerical analysis" 2008</b><br>
+This is almost the same as its main reference, 2005 Bona et al "Geometrically..." except that the Bona paper implementation uses a densitized flux so that the eigenvalues are just $\alpha$,
+while this paper doesn't, so its eigenvalues are $\alpha \sqrt{\gamma^xx}$<br>
 <br>
 
 <b>Bona, Palenzuela-Luque, Bona-Casas, "Elements of Numerical Relativity and Relativistic Hydrodynamics". 2009. Section 4.3.3 "First-order Z4 formalism"</b><br>
 parameters:<br>
 $m = 2$ (second gauge parameter)<br>
+$\zeta = $ ...<br>
+$\zeta' = $ ...<br>
+$\eta_\xi = $ constraint preserving parameters (something small)<br>
 hyperbolic variables:<br>
 $a_i = (ln \alpha)_{,i}$ (eqn 4.1)<br>
+${b_i}^j = {\beta^j}_{,i}$ (eqn 4.1).  Note no $\frac{1}{2}$ which I only see in earlier papers<br>
 $d_{kij} = \frac{1}{2} \gamma_{ij,k}$ (eqn 4.1)<br>
 $K_{ij} = $ extrinsic curvature<br>
-$\Theta = $ zero<br>
-$Z_i = $ zero<br>
+$\Theta = $ perpendicular to $n^a$<br>
+$Z_i = $ perpendicular to $n^a$<br>
 other variables:<br>
-${b_i}^j = {\beta^j}_{,i}$ (eqn 4.1).  Note no $\frac{1}{2}$ which I only see in earlier papers<br>
 $d_i = {d_ik}^k$ (eqn 4.33)<br>
 $e_i = {d^k}_{ki}$ (eqn 4.33)<br>
-$V_i = d_k - e_k - Z_k$ (eqn 4.56)<br>
-other variables:<br>
+$V_i = d_i - e_i - Z_i$ (eqn 4.56)<br>
 $Q = f (K - m \Theta)$ (eqn 4.4), for $m=2$ this becomes $f (K - 2 \Theta)$ (eqn 4.126)<br>
 $Q_i = \alpha (a_i - d_i + 2 V_i)$ (eqn 4.128)<br>
 $Q_{ij} = K_{ij} - \frac{1}{2 \alpha} (b_{ij} + b_{ji})$ (eqn 4.92)<br>
-flux:<br>
+${\lambda^k}_{ij} = {d^k}_{ij} + \frac{1}{2} \delta^k_i (a_j - d_j + 2 V_j) + \frac{1}{2} \delta^k_j (a_i - d_i - 2 V_i) - \frac{1 + \zeta}{2} ({d_{ij}}^k + {d_{ji}}^k - \delta^k_i e_j - \delta^k_j e_i)$ (eqn 4.121)<br>
+
+flux terms:<br>
 $F^l(a_k) = ...$ maybe $= -\beta^l a_k + \delta^l_k \alpha Q$ by eqn 4.95<br>
 $F^l({b_k}^i) = ...$ maybe $= -\beta^l {b_k}^i + \delta^l_k \alpha Q^i$ by eqn 4.96<br>
 $F^l(d_{kij} = ...$ maybe $= -\beta^l d_{kij} + \delta^l_k \alpha Q_{ij}$ by eqn 4.97<br>
@@ -313,12 +331,7 @@ $F^k(\Theta) = -\beta^k \Theta + \alpha V^k$ (eqn 4.119)<br>
 $F^k(Z_i) = -\beta^k Z_i + \alpha (\delta^k_i (K - \Theta) - {K^k}_i) + \zeta' ({b_i}^k - \delta^k_i b)$ (eqn 4.120)<br>
 $F^k(Q) = ...$<br>
 $F^k(Q_i) = ...$<br>
-${\lambda^k}_{ij} = {d^k}_{ij} + \frac{1}{2} \delta^k_i (a_j - d_j + 2 V_j) + \frac{1}{2} \delta^k_j (a_i - d_i - 2 V_i) - \frac{1 + \zeta}{2} ({d_{ij}}^k + {d_{ji}}^k - \delta^k_i e_j - \delta^k_j e_i)$ (eqn 4.121)<br>
-eigenvalues and eigenfields:<br>
-transverse waves (2+6+2*6=20): $\lambda = -\beta^x$ for $w = a_p, {b_p}^i, d_{pij}$ for $p \ne x$ (between eqns 4.122 and 4.123)<br>
-light-cone waves (3+2+1=6): $\lambda = -\beta^x \pm \alpha$ for $w = F^x(d_{xpq}) \pm F^x(K_{pq}), -F^x(Z_p) \pm F^x(K_{xp}), F^x(V_x) \pm F^x(\Theta)$ (eqns 4.123, 4.124, 4.125)<br>
-lapse-related waves (1): $\lambda = -\beta^x \pm \sqrt{f} \alpha$ for $w = F^x(a_x) \pm \sqrt{f} F^x(Q)$ (eqn 4.127)<br>
-shift-related waves (3): $\lambda = -\beta^x \pm \alpha$ for $w = F^x(b_{xi}) \pm F^x(Q_i)$ (eqn 4.129)<br>
+
 source terms:<br>
 $S(\alpha) = \alpha \beta^k a_k - \alpha^2 Q $ (eqn 4.88) $= \alpha \beta^k a_k - \alpha^2 f (K - 2 \Theta)$ <br>
 $S(\beta^i) = \beta^k {b_k}^i - \alpha Q^i$ (eqn 4.88)<br>
@@ -338,8 +351,16 @@ $S(Z_i) = -Z_i {b_k}^k + Z_k {b_i}^k - 8 \pi \alpha S_i
 	+ \alpha (a_i (K - 2 \Theta) - a_k {K^k}_i - {K^k}_r {\Gamma^r}_{ki} + {K^k}_i (d_k - 2 Z_k))$ (eqn 4.131)<br>
 $S(\Theta) = -\Theta {b_k}^k + \frac{1}{2} \alpha (2 a_k (d^k - e^k - 2 Z^k) + {d_k}^{rs} {\Gamma^k}_{rs} - d^k (d_k - 2 Z_k)
 	- {K^k}_r {K^r}_k + K (K - 2 \Theta)) - 8 \pi \alpha \tau$ (eqn 4.132)<br>
+
+eigenvalues and eigenfields:<br>
+transverse waves (2+6+2*6=20): $\lambda = -\beta^x$ for $w = a_p, {b_p}^i, d_{pij}$ for $p \ne x$ (between eqns 4.122 and 4.123)<br>
+light-cone waves (3+2+1=6): $\lambda = -\beta^x \pm \alpha$ for $w = F^x(d_{xpq}) \pm F^x(K_{pq}), -F^x(Z_p) \pm F^x(K_{xp}), F^x(V_x) \pm F^x(\Theta)$ (eqns 4.123, 4.124, 4.125)<br>
+lapse-related waves (1): $\lambda = -\beta^x \pm \sqrt{f} \alpha$ for $w = F^x(a_x) \pm \sqrt{f} F^x(Q)$ (eqn 4.127)<br>
+shift-related waves (3): $\lambda = -\beta^x \pm \alpha$ for $w = F^x(b_{xi}) \pm F^x(Q_i)$ (eqn 4.129)<br>
+
 questions that remain:<br>
 What are the flux terms $F^k(Q)$, $F^k(Q_i)$, and $F^k(V_i)$ especially when these aren't evolved variables...<br>
+If it's like the Bona-Masso ADM formalism shown in the 2008 Alcubierre book then $F^k(V_i) = -\beta^k V_i$<br>
 What is the flux term $F^k(b_{ij})$ compared to the given (inferred, and many pages from its usage) $F^k({b_i}^j)$?  Just extract the metric terms and subtract?  Or was that a typo -- should it be $F^k({b_i}^k)$ above?<br>
 This formalism is strangely lacking any $\gamma^{xx}$ terms in the eigenvalues.  Maybe the variables are scaled by the spatial volume $\gamma$?<br>
 <br>
