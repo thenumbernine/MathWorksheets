@@ -9,255 +9,148 @@
 
 This one is going by 2005 Bona, Ledvinka, Palenzuela-Luque, Zacek, "Constraint-preserving boundary conditions in the Z4 Numerical Relativity formalism"<br>
 or maybe better 2004 Bona, Palenzuela "Dynamical shift conditions for the Z4 and BSSN formalisms"
+or maybe even better 2005 Bona, Luher, Palenzuela-Luque "Geometrically motivated hyperbolic coordinate condions for numerical relativity- Analysis, issues and implementation"<br>
 <br>
 
-variables:<br>
+Start with the EFE:<br>
+$G_{ab} = 8 \pi T_{ab}$<br>
+$G_{ab} = 8 \pi T_{ab}$<br>
+$R_{ab} - \frac{1}{2} R g_{ab} = 8 \pi T_{ab}$<br>
+contract:<br>
+$R = -8 \pi T$<br>
+substitute:<br>
+$R_{ab} = 8 \pi (T_{ab} - \frac{1}{2} T g_{ab})$<br>
+<br>
+
+For Killing vector $Z_u$ we have $\nabla_u Z_v + \nabla_v Z_u = 0$<br>
+add this onto the EFE:<Br>
+$R_{ab} + \nabla_a Z_b + \nabla_b Z_a = 8 \pi (T_{ab} - \frac{1}{2} T g_{ab})$<br>
+<br>
+
+From there, run through the typical ADM stuff:<br>
+(Project twice, project once and contract once, contract twice)<br>
+<br>
+
+Z4-specific variables:<br>
+$\Theta = \alpha Z^0$<br>
+<br>
+
+stress-energy variables:<br>
 $\tau = 8 \pi \alpha^2 T^{00}$<br>
 $S_i = 8 \pi \alpha {T^0}_i$<br>
 $S_{ij} = 8 \pi T_{ij}$<br>
-$\Theta = \alpha Z^0$<br>
-$V_i = (ln \sqrt\gamma)_{,i} - \frac{1}{2} {\gamma_{ji}}^{,j} - Z_i$<br>
+<br>
+
+hyperbolic variables (as usual):<br>
+$a_i = \alpha_{,i} / \alpha  = (ln \alpha)_{,i}$<br>
+${b_i}^j = {\beta^j}_{,i}$<br>
+$d_{kij} = \frac{1}{2} \gamma_{ij,k}$<br>
+<br>
+
+aux vars:<br>
+$d_i = d_{ijk} \gamma^{jk}$<br>
+$e_i = \gamma^{jk} d_{jki}$<br>
 <br>
 
 parameters:<br>
-$a = $...<br>
-$d = $...<br>
-$\mu = $...<br>
-$\eta = $...<br>
+$m = $...<br>
 <br>
 
 <h3>Z4</h3>
-$\frac{d}{dt} ln \alpha = -f \alpha (tr K - m \Theta)$<br>
-$\frac{d}{dt} \beta^i = -\alpha^2 (2 \mu V^i + a (ln \alpha)^{,i} - d (ln \sqrt\gamma)^{,i}) - \eta \beta^i$<br>
+$\frac{d}{dt} \alpha = -f \alpha^2 (K - m \Theta)$<br>
+$\frac{d}{dt} \beta^i = -\alpha Q^i$<br>
 $\frac{d}{dt} \gamma_{ij} = -2 \alpha K_{ij}$<br>
-$\frac{d}{dt} K_{ij} = -\nabla_i \alpha_{,j} + \alpha (^3 R_{ij} + \nabla_i Z_j + \nabla_j Z_i - 2 K_{ik} {K^k}_j + (tr K - 2 \Theta) K_{ij} - S_{ij} + \frac{1}{2} (tr S - \tau) \gamma_{ij} )$<br>
-$\frac{d}{dt} \Theta = \frac{1}{2} \alpha (^3 R + 2 \nabla_k Z^k + (tr K - 2 \Theta) tr K - K_{ij} K^{ij} - 2 \tau) - Z^k \alpha_{,k}$<br>
-$\frac{d}{dt} Z_i = \alpha (\nabla_j ({K_i}^j - \delta_i^j tr K) + \Theta_{,i} - 2 {K_i}^j Z_j - S_i) - \Theta \alpha_{,i}$<br>
-<br>
-
-time derivatives:<br>
-$\frac{d}{dt} ln \alpha = -f \alpha (tr K - m \Theta)$<br>
-$(ln \alpha)_{,t} = (ln \alpha)_{,i} \beta^i - f \alpha (tr K - m \Theta)$<br>
-$\frac{d}{dt} \alpha = -f \alpha^2 (tr K - m \Theta)$<br>
-$\alpha_{,t} = \alpha_{,i} \beta^i - f \alpha^2 (tr K - m \Theta)$<br>
+$\frac{d}{dt} K_{ij} = -\nabla_i \alpha_{,j} + \alpha (^3 R_{ij} + \nabla_i Z_j + \nabla_j Z_i - 2 K_{ik} {K^k}_j + (K - 2 \Theta) K_{ij} - S_{ij} + \frac{1}{2} (S - \tau) \gamma_{ij} )$<br>
+$\frac{d}{dt} \Theta = \frac{1}{2} \alpha (^3 R + 2 \nabla_k Z^k + (K - 2 \Theta) K - K_{ij} K^{ij} - 2 \tau) - Z^k \alpha_{,k}$<br>
+$\frac{d}{dt} Z_i = \alpha (\nabla_j ({K_i}^j - \delta_i^j K) + \Theta_{,i} - 2 {K_i}^j Z_j - S_i) - \Theta \alpha_{,i}$<br>
 <br>
 
 expanded, in terms of $\partial_t$:<br>
-$\alpha_{,t} = \alpha_{,i} \beta^i - f \alpha^2 (tr K - m \Theta)$<br>
-${\beta^i}_{,t} = {\beta^i}_{,j} \beta^j - \beta^j {\beta^i}_{,j} - \alpha^2 (2 \mu V^i + a (ln \alpha)^{,i} - d (ln \sqrt\gamma)^{,i}) - \eta \beta^i$<br>
+$\alpha_{,t} = \alpha_{,i} \beta^i - f \alpha^2 (K - m \Theta)$<br>
+${\beta^i}_{,t} = -\alpha Q^i$<br>
 $\gamma_{ij,t} = \gamma_{ij,k} \beta^k + \gamma_{kj} {\beta^k}_{,i} + \gamma_{ik} {\beta^k}_{,j} - 2 \alpha K_{ij}$<br>
-$K_{ij,t} = K_{ij,k} \beta^k + K_{kj} {\beta^k}_{,i} + K_{ik} {\beta^k}_{,j} - \nabla_i \alpha_{,j} + \alpha (^3 R_{ij} + \nabla_i Z_j + \nabla_j Z_i - 2 K_{ik} {K^k}_j + (tr K - 2 \Theta) K_{ij} - S_{ij} + \frac{1}{2} (tr S - \tau) \gamma_{ij} )$<br>
-$\Theta_{,t} = \Theta_{,i} \beta^i + \frac{1}{2} \alpha (^3 R + 2 \nabla_k Z^k + (tr K - 2 \Theta) tr K - K_{ij} K^{ij} - 2 \tau) - Z^k \alpha_{,k}$<br>
-$Z_{i,t} = Z_{i,j} \beta^j + Z_j {\beta^j}_{,i} + \alpha (\nabla_j ({K_i}^j - \delta_i^j tr K) + \Theta_{,i} - 2 {K_i}^j Z_j - S_i) - \Theta \alpha_{,i}$<br>
+$K_{ij,t} = K_{ij,k} \beta^k + K_{kj} {\beta^k}_{,i} + K_{ik} {\beta^k}_{,j} - \nabla_i \alpha_{,j} + \alpha (^3 R_{ij} + \nabla_i Z_j + \nabla_j Z_i - 2 K_{ik} {K^k}_j + (K - 2 \Theta) K_{ij} - S_{ij} + \frac{1}{2} (S - \tau) \gamma_{ij} )$<br>
+$\Theta_{,t} = \Theta_{,i} \beta^i + \frac{1}{2} \alpha (^3 R + 2 \nabla_k Z^k + (K - 2 \Theta) K - K_{ij} K^{ij} - 2 \tau) - Z^k \alpha_{,k}$<br>
+$Z_{i,t} = Z_{i,j} \beta^j + Z_j {\beta^j}_{,i} + \alpha (\nabla_j ({K_i}^j - \delta_i^j K) + \Theta_{,i} - 2 {K_i}^j Z_j - S_i) - \Theta \alpha_{,i}$<br>
 <br>
 
-${\beta^i}_{,t} = {\beta^i}_{,j} \beta^j 
-	- \beta^j {\beta^i}_{,j} 
-	- \alpha^2 (
-		2 \mu V^i 
-		+ a (ln \alpha)_{,j} \gamma^{ij}
-		- d (ln \sqrt\gamma)_{,j} \gamma^{ij}
-	)
-	- \eta \beta^i
-$<br>
-$ = \frac{1}{2} \alpha^2 d \gamma^{mn} \gamma^{ij} \gamma_{mn,j}
-	- 2 \mu \alpha^2 ((ln \sqrt\gamma)_{,k} - \frac{1}{2} {\gamma_{jk}}^{,j} - Z_k) \gamma^{ik}
-	- a \alpha^2 a^i
-	- \eta \beta^i
-$<br>
-$ = \frac{1}{2} \alpha^2 d \gamma^{mn} \gamma^{ij} \gamma_{mn,j}
-	- 2 \mu \alpha^2 (
-		\frac{1}{2} (\gamma^{ik} \gamma^{mn} - \gamma^{kn} \gamma^{im}) \gamma_{mn,k}
-		- Z_k \gamma^{ik}
-	)
-	- a \alpha^2 a^i
-	- \eta \beta^i
-$<br>
-$ = ((\frac{1}{2} \alpha^2 d - \mu \alpha^2) \gamma^{ij} \gamma^{mn} 
-	+ \mu \alpha^2 \gamma^{jn} \gamma^{im}) \gamma_{mn,j}
-	+ 2 \mu \alpha^2 Z_j \gamma^{ij}
-	- a \alpha^2 a^i
-	- \eta \beta^i
-$<br>
-$ = (
-		(\alpha^2 d - 2 \mu \alpha^2) \gamma^{ij} \gamma^{mn} 
-		+ 4 \mu \alpha^2 \gamma^{jn} \gamma^{im}
-	) d_{jmn}
-	+ 2 \mu \alpha^2 Z_j \gamma^{ij}
-	- a \alpha^2 a^i
-	- \eta \beta^i
-$<br>
+with hyperbolic vars substituted for partials:<br>
+
+$\alpha_{,t} = \alpha a_i \beta^i - f \alpha^2 (K - m \Theta)$<br>
+<br>
+
+$\gamma_{ij,t} = 2 d_{kij} \beta^k + b_{ij} + b_{ji} - 2 \alpha K_{ij}$<br>
 <br>
 
 hyperbolic variable time derivatives in terms of flux:<br>
 <br>
 $a_{k,t} = (ln \alpha)_{,kt}$<br>
 $= ((ln \alpha)_{,t})_{,k}$<br>
-$= ((ln \alpha)_{,i} \beta^i - f \alpha (tr K - m \Theta))_{,k}$<br>
-$= (a_i \beta^i - f \alpha (tr K - m \Theta))_{,k}$<br>
+$= ((ln \alpha)_{,i} \beta^i - f \alpha (K - m \Theta))_{,k}$<br>
+$= (a_i \beta^i - f \alpha (K - m \Theta))_{,k}$<br>
 shift-less:<br>
-$= (f \alpha (tr K - m \Theta))_{,k}$<br>
+$= (f \alpha (K - m \Theta))_{,k}$<br>
+expanded:<br>
+$= a_{i,k} \beta^i + a_i {\beta^i}_{,k} - f_{,k} \alpha (K - m \Theta) - f \alpha_{,k} (K - m \Theta) - f \alpha ((\gamma^{jl} K_{jl})_{,k} - m \Theta_{,k})$<br>
+$= a_{i,k} \beta^i + a_i {b_k}^i - f' \alpha_{,k} \alpha (K - m \Theta) - f \alpha_{,k} (K - m \Theta) - f \alpha ({\gamma^{jl}}_{,k} K_{jl} + \gamma^{jl} K_{jl,k} - m \Theta_{,k})$<br>
+$= a_{i,k} \beta^i - f \alpha \gamma^{jl} K_{jl,k} + f \alpha m \Theta_{,k} + a_i {b_k}^i - \alpha a_k (f' \alpha + f) (K - m \Theta) + 2 f \alpha {d_k}^{jl} K_{jl}$<br>
+shift-less expanded:<br>
+$= -f \alpha \gamma^{jl} K_{jl,k} + f \alpha m \Theta_{,k} - \alpha a_k (f' \alpha + f) (K - m \Theta) + 2 f \alpha {d_k}^{jl} K_{jl}$<br>
+<br>
+
+${{b_j}^i}_{,t} = {\beta^i}_{,jt} = {\beta^i}_{,tj}$<br>
+$ = (-\alpha Q^i)_{,t} = -\alpha_{,t} Q^i - \alpha {Q^i}_{,t}$<br>
+TODO rewrite in terms of spatial derivatives of state variables.<br>
 <br>
 
 $d_{kij,t} = (\frac{1}{2} \gamma_{ij,k})_{,t}$<br>
 $= (\frac{1}{2} \gamma_{ij,t})_{,k}$<br>
-$= (\frac{1}{2} (\gamma_{ij,l} \beta^l + \gamma_{lj} {\beta^l}_{,i} + \gamma_{il} {\beta^l}_{,j} - 2 \alpha K_{ij} ))_{,k}$<br>
-$= (d_{lij} \beta^l + \frac{1}{2} (\gamma_{lj} {\beta^l}_{,i} + \gamma_{il} {\beta^l}_{,j} - 2 \alpha K_{ij} ))_{,k}$<br>
+$= (d_{lij} \beta^l + \frac{1}{2} b_{ij} + \frac{1}{2} b_{ji} - \alpha K_{ij})_{,k}$<br>
 shift-less:<br>
 $= (-\alpha K_{ij})_{,k}$<br>
+expanded:<br>
+$= d_{lij,k} \beta^l + d_{lij} {\beta^l}_{,k} + \frac{1}{2} b_{ij,k} + \frac{1}{2} b_{ji,k} - \alpha_{,k} K_{ij} - \alpha K_{ij,k}$<br>
+$= d_{lij,k} \beta^l + \frac{1}{2} b_{ij,k} + \frac{1}{2} b_{ji,k} - \alpha K_{ij,k} + d_{lij} {b_k}^l - \alpha a_k K_{ij}$<br>
+shift-less expanded:<br>
+$= -\alpha K_{ij,k} - \alpha a_k K_{ij}$<br>
 <br>
 
 hyperbolic variable time derivatives fully expanded in terms of other hyperbolic variable first order derivatives:<br>
-$a_{k,t} = (ln \alpha)_{,kt}$<br>
-$= ((ln \alpha)_{,t})_{,k}$<br>
-$= ((ln \alpha)_{,i} \beta^i - f \alpha (tr K - m \Theta))_{,k}$<br>
-$= (\alpha_{,i} \beta^i / \alpha - f \alpha (tr K - m \Theta))_{,k}$<br>
-$= \alpha_{,ik} \beta^i / \alpha 
-	+ \alpha_{,i} {\beta^i}_{,k} / \alpha 
-	- \alpha_{,i} \alpha_{,k} \beta^i / \alpha^2 
-	- (f \alpha (tr K - m \Theta))_{,k}
-$<br>
-$= (\alpha a_{(i,k)} + \alpha_{,i} \alpha_{,k} / \alpha) \beta^i / \alpha 
-	+ \alpha_{,i} {\beta^i}_{,k} / \alpha 
-	- \alpha_{,i} \alpha_{,k} \beta^i / \alpha^2 
-	- (f \alpha (tr K - m \Theta))_{,k}
-$<br>
-$= a_{(i,k)} \beta^i + a_i {\beta^i}_{,k} - (f \alpha (tr K - m \Theta))_{,k}$<br>
-$= a_{(i,k)} \beta^i 
-	+ a_i {\beta^i}_{,k} 
-	- f' \alpha_{,k} \alpha (tr K - m \Theta)
-	- f \alpha_{,k} (tr K - m \Theta)
-	- f \alpha ((tr K)_{,k} - m \Theta_{,k})
-$<br>
-$=  a_i {\beta^i}_{,k} 
-	- f \alpha (K_{ij} \gamma^{ij})_{,k} 
-	+ f \alpha m \Theta_{,k}
-	+ a_{(i,k)} \beta^i 
-	- a_k \alpha (f' \alpha + f) (tr K - m \Theta)
-$<br>
-$=  a_i {\beta^i}_{,k} 
-	+ f \alpha K_{ij} \gamma^{im} \gamma^{nj} \gamma_{mn,k}
-	- f \gamma^{ij} \alpha K_{ij,k}
-	+ f \alpha m \Theta_{,k}
-	+ \beta^i a_{(i,k)}
-	- a_k \alpha (f' \alpha + f) (tr K - m \Theta)
-$<br>
-<br>
-
-$d_{kij,t} = \frac{1}{2} \gamma_{ij,kt}$<br>
-$= \frac{1}{2} \gamma_{ij,tk}$<br>
-$= \frac{1}{2} (\gamma_{ij,l} \beta^l 
-	+ \gamma_{lj} {\beta^l}_{,i} 
-	+ \gamma_{il} {\beta^l}_{,j} 
-	- 2 \alpha K_{ij})_{,k}$<br>
-$= \frac{1}{2} \gamma_{ij,lk} \beta^l 
-	+ \frac{1}{2} \gamma_{ij,l} {\beta^l}_{,k}
-	+ \frac{1}{2} \gamma_{lj,k} {\beta^l}_{,i} 
-	+ \frac{1}{2} \gamma_{lj} {\beta^l}_{,ik}
-	+ \frac{1}{2} \gamma_{il,k} {\beta^l}_{,j} 
-	+ \frac{1}{2} \gamma_{il} {\beta^l}_{,jk} 
-	- \alpha_{,k} K_{ij}
-	- \alpha K_{ij,k}$<br>
-$= d_{kij,l} \beta^l 
-	- \alpha K_{ij,k}
-	+ d_{lij} {\beta^l}_{,k}
-	+ d_{klj} {\beta^l}_{,i} 
-	+ d_{kil} {\beta^l}_{,j} 
-	+ \frac{1}{2} \gamma_{jl} {\beta^l}_{,ik}
-	+ \frac{1}{2} \gamma_{il} {\beta^l}_{,jk}
-	- \alpha a_k K_{ij}
-$<br>
-$= d_{kij,l} \beta^l 
-	- \alpha K_{ij,k}
-	+ d_{lij} {\beta^l}_{,k}
-	+ 2 d_{kl(i} {\beta^l}_{,j)} 
-	+ \gamma_{l(i} {\beta^l}_{,j)k}
-	- \alpha a_k K_{ij}
-$<br>
-$\frac{d}{dt} d_{kij} = 
-	- \alpha K_{ij,k}
-	+ \gamma_{l(i} {\beta^l}_{,j)k}
-	- \alpha a_k K_{ij}$<br>
-<br>
-
-$K_{ij,t} = K_{ij,k} \beta^k 
-	+ K_{kj} {\beta^k}_{,i} 
-	+ K_{ik} {\beta^k}_{,j} 
-	- \nabla_i \alpha_{,j} 
-	+ \alpha (
-		^3 R_{ij} 
-		+ \nabla_i Z_j 
-		+ \nabla_j Z_i 
-		- 2 K_{ik} {K^k}_j 
-		+ (tr K - 2 \Theta) K_{ij} 
-		- S_{ij} 
-		+ \frac{1}{2} (tr S - \tau) \gamma_{ij}
-	)
-$<br>
-$= K_{ij,k} \beta^k 
-	+ K_{kj} {\beta^k}_{,i} 
-	+ K_{ik} {\beta^k}_{,j} 
-	- \alpha_{,ji} 
-	+ {\Gamma^k}_{ji} \alpha_{,k}
-	+ \alpha ^3 R_{ij}
-	+ \alpha Z_{j,i} 
-	+ \alpha Z_{i,j} 
-	- 2 \alpha {\Gamma^k}_{ij} Z_k
-	- 2 \alpha K_{ik} {K^k}_j 
-	+ \alpha (tr K - 2 \Theta) K_{ij} 
-	- \alpha S_{ij} 
-	+ \alpha \frac{1}{2} (tr S - \tau) \gamma_{ij}
-$<br>
-$= K_{ij,k} \beta^k 
-	+ K_{kj} {\beta^k}_{,i} 
-	+ K_{ik} {\beta^k}_{,j} 
-	- \alpha a_{(i,j)} - \alpha_{,i} \alpha_{,j} / \alpha
-	+ ({d_{ij}}^k + {d_{ji}}^k - {d^k}_{ij}) \alpha_{,k}
-	+ \alpha (
-		\gamma^{kl} (d_{ilj,k} - d_{ikl,j} - d_{kij,l} + d_{jik,l})
-		+ d_{ijl} ({d^{lk}}_k - 2 {d_k}^{kl})
-		+ d_{jil} ({d^{lk}}_k - 2 {d_k}^{kl})
-		- d_{lij} ({d^{lk}}_k - 2 {d_k}^{kl})
-		+ 2 ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
-		+ d_{ikl} {d_j}^{kl}
-	)
-	+ \alpha Z_{j,i} 
-	+ \alpha Z_{i,j} 
-	- 2 \alpha ({d_{ij}}^k + {d_{ji}}^k - {d^k}_{ij}) Z_k
-	- 2 \alpha K_{ik} {K^k}_j 
-	+ \alpha (tr K - 2 \Theta) K_{ij} 
-	- \alpha S_{ij} 
-	+ \alpha \frac{1}{2} (tr S - \tau) \gamma_{ij}
-$<br>
-$= 	
-	+ K_{kj} {\beta^k}_{,i} 
-	+ K_{ik} {\beta^k}_{,j} 
-	- \alpha a_{(i,j)} 
-	+ \alpha \gamma^{kl} (d_{ilj,k} - d_{ikl,j} - d_{kij,l} + d_{jik,l})
-	+ K_{ij,k} \beta^k 
-	+ \alpha Z_{j,i} 
-	+ \alpha Z_{i,j} 
+$K_{ij,t} = $ the same as ADM's $K_{ij,t}$ except with an additional $\alpha (\nabla_i Z_j + \nabla_j Z_i - 2 \Theta K_{ij})$<br>
+$K_{ij,t} =
+	\beta^k K_{(ij),k}  
+	+ 2 K_{k(i} {b_j}^k
 	
-	- \alpha a_i a_j
-	+ ({d_{ij}}^k + {d_{ji}}^k - {d^k}_{ij}) \alpha a_k
-	+ \alpha d_{ijl} ({d^{lk}}_k - 2 {d_k}^{kl})
-	+ \alpha d_{jil} ({d^{lk}}_k - 2 {d_k}^{kl})
-	- \alpha d_{lij} ({d^{lk}}_k - 2 {d_k}^{kl})
-	+ 2 \alpha ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
-	+ \alpha d_{ikl} {d_j}^{kl}
-	- 2 \alpha ({d_{ij}}^k + {d_{ji}}^k - {d^k}_{ij}) Z_k
-	- 2 \alpha K_{ik} {K^k}_j 
-	+ \alpha (tr K - 2 \Theta) K_{ij} 
-	- \alpha S_{ij} 
-	+ \alpha \frac{1}{2} (tr S - \tau) \gamma_{ij}
-$<br>
+	- \alpha \delta^m_{(i} \delta^r_{j)} a_{m,r} 
+	+ \alpha (
+		2 \gamma^{pr} \delta^m_{(i} \delta^q_{j)}
+		- \gamma^{pq} \delta^m_{(i} \delta^r_{j)}
+		- \gamma^{mr} \delta^p_{(i} \delta^q_{j)}
+	) d_{mpq,r}
+
+	+ \alpha (Z_{i,j} + Z_{j,i})
+	
+
+	+ \alpha (
+		- a_{(i} a_{j)}
+		+ (2 {d_{(ij)}}^k - {d^k}_{(ij)}) (a_k + V_k - {d^l}_{lk})
+		+ 2 ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
+		+ {d_{(i}}^{kl} d_{j)kl} 
+		+ K K_{(ij)} 
+		- 2 K_{(i|k} {K^k}_{j)}
+	)
+	
+	- \alpha ({\Gamma^k}_{ij} Z_k + 2 \Theta K_{ij})
+	
+	+ 4 \pi \alpha (\gamma_{ij} (S - \rho) - 2 S_{ij})
+	$<br>
 <br>
 
 
 $\Theta_{,t} = \Theta_{,i} \beta^i 
 	+ \frac{1}{2} \alpha (^3 R 
 		+ 2 \nabla_k Z^k 
-		+ (tr K - 2 \Theta) tr K 
+		+ (K - 2 \Theta) K 
 		- K_{ij} K^{ij} 
 		- 2 \tau) 
 	- Z^k \alpha_{,k}
@@ -268,27 +161,82 @@ $\Theta_{,t} =
 	+ \frac{1}{2} \alpha \gamma^{km} Z^j \gamma_{km,j}
 	+ \alpha {Z^k}_{,k} 
 	
-	+ \frac{1}{2} \alpha d_{ijl} ({d^{lk}}_k - 2 {d_k}^{kl})
-	+ \frac{1}{2} \alpha d_{jil} ({d^{lk}}_k - 2 {d_k}^{kl})
-	- \frac{1}{2} \alpha d_{lij} ({d^{lk}}_k - 2 {d_k}^{kl})
+	+ \frac{1}{2} \alpha (d_{ijl} + d_{jil} - d_{lij}) (d^l - 2 e^l)
 	+ \alpha ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
 	+ \frac{1}{2} \alpha d_{ikl} {d_j}^{kl}
-	+ \frac{1}{2} \alpha (tr K - 2 \Theta) tr K 
+	+ \frac{1}{2} \alpha (K - 2 \Theta) K 
 	- \frac{1}{2} \alpha K_{ij} K^{ij} 
 	- \alpha \tau
 	- \alpha Z^k a_k
 $<br>
-
+$\Theta_{,t} = 
+	\Theta_{,i} \beta^i 
+	+ \frac{1}{2} \alpha \gamma^{kl} (d_{ilj,k} - d_{ikl,j} - d_{kij,l} + d_{jik,l})
+	+ \alpha {Z^k}_{,k} 
+	
+	+ \frac{1}{2} \alpha (d_{ijl} + d_{jil} - d_{lij}) (d^l - 2 e^l)
+	+ \alpha ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
+	+ \frac{1}{2} \alpha d_{ikl} {d_j}^{kl}
+	+ \frac{1}{2} \alpha (K - 2 \Theta) K 
+	- \frac{1}{2} \alpha K_{ij} K^{ij} 
+	+ \alpha Z_j d^j
+	- \alpha \tau
+	- \alpha Z^k a_k
+$<br>
+shift-less expanded:<br>
+$\Theta_{,t} = 
+	\frac{1}{2} \alpha \gamma^{kl} (d_{ilj,k} - d_{ikl,j} - d_{kij,l} + d_{jik,l})
+	+ \alpha {Z^k}_{,k} 
+	
+	+ \alpha Z_j d^j
+	+ \frac{1}{2} \alpha (d_{ijl} + d_{jil} - d_{lij}) (d^l - 2 e^l)
+	+ \alpha ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
+	+ \frac{1}{2} \alpha d_{ikl} {d_j}^{kl}
+	+ \frac{1}{2} \alpha (K - 2 \Theta) K 
+	- \frac{1}{2} \alpha K_{ij} K^{ij} 
+	- \alpha \tau
+	- \alpha Z^k a_k
+$<br>
 <br>
 
 $Z_{k,t} = 
-	Z_j {\beta^j}_{,k} 
-	+ \alpha \gamma^{ij} K_{ki,j}
+	\alpha \gamma^{ij} K_{ki,j}
 	- \alpha \gamma^{ji} K_{ji,k}
 	- \alpha K_{ki} \gamma^{im} \gamma^{nj} \gamma_{mn,j}
 	+ \alpha K_{ji} \gamma^{jm} \gamma^{ni} \gamma_{mn,k}
 	+ \alpha \Theta_{,k} 
 	+ Z_{k,j} \beta^j 
+	
+	+ Z_j {b_k}^j
+	- \alpha {\Gamma^i}_{kj} {K_i}^j 
+	+ \alpha {\Gamma^j}_{ij} {K_k}^i 
+	- 2 \alpha {K_k}^j Z_j 
+	- \alpha S_k
+	- \alpha \Theta a_k
+$<br>
+$Z_{k,t} = 
+	\alpha \gamma^{ij} K_{ki,j}
+	- \alpha \gamma^{ji} K_{ji,k}
+	+ \alpha \Theta_{,k} 
+	+ Z_{k,j} \beta^j 
+	
+	- 2 \alpha K_{ki} e^i
+	+ 2 \alpha K_{ij} {d_k}^{ij}
+	+ Z_j {b_k}^j
+	- \alpha {\Gamma^i}_{kj} {K_i}^j 
+	+ \alpha {\Gamma^j}_{ij} {K_k}^i 
+	- 2 \alpha {K_k}^j Z_j 
+	- \alpha S_k
+	- \alpha \Theta a_k
+$<br>
+
+shift-less expanded:<br>
+$Z_{k,t} = 
+	\alpha \gamma^{ij} K_{ki,j}
+	- \alpha \gamma^{ji} K_{ji,k}
+	- \alpha K_{ki} \gamma^{im} \gamma^{nj} \gamma_{mn,j}
+	+ \alpha K_{ji} \gamma^{jm} \gamma^{ni} \gamma_{mn,k}
+	+ \alpha \Theta_{,k} 
 	
 	- \alpha {\Gamma^i}_{kj} {K_i}^j 
 	+ \alpha {\Gamma^j}_{ij} {K_k}^i 
@@ -300,7 +248,7 @@ $<br>
 
 matrix form, favoring source terms:<br>
 $\left[\matrix{
-	a_k \\ d_{kij} \\ K_{ij} \\ \Theta \\ Z_k
+	a_k \\ {b_k}^l \\ d_{kij} \\ K_{ij} \\ \Theta \\ Z_k
 }\right]_{,t}
 + \left[\matrix{
 	-\beta^m \delta_k^r &
@@ -308,6 +256,13 @@ $\left[\matrix{
 		f \gamma^{pq} \delta^r_k &
 		- f \alpha m \delta^r_k &
 		0 \\ 
+
+	\alpha \frac{\partial Q^l}{\partial a_m} &
+		\alpha \frac{\partial Q^l}{\partial {b_m}^n} &
+		\alpha \frac{\partial Q^l}{\partial d_{mpq}} &
+		\alpha \frac{\partial Q^l}{\partial K_{pq}} &
+		\alpha \frac{\partial Q^l}{\partial \Theta} &
+		\alpha \frac{\partial Q^l}{\partial Z_m} \\
 
 	0 &
 		- \delta^m_k \delta^p_i \delta^q_j \beta^r &
@@ -345,20 +300,26 @@ $\left[\matrix{
 		
 }\right]
 \left[\matrix{
-	a_m \\ d_{mpq} \\ K_{pq} \\ \Theta \\ Z_m
+	a_m \\ {b_m}^n \\ d_{mpq} \\ K_{pq} \\ \Theta \\ Z_m
 }\right]_{,r}
 = \left[\matrix{
- 	a_i {\beta^i}_{,k} 
-		+ f \alpha K_{ij} \gamma^{im} \gamma^{nj} \gamma_{mn,k}
-		- a_k \alpha (f' \alpha + f) (tr K - m \Theta) \\
+ 	a_i {b_k}^i
+		+ 2 f \alpha K_{ij} {d_k}^{ij}
+		- a_k \alpha (f' \alpha + f) (K - m \Theta) \\
+	
+	... \\
+
+	d_{lij} {b_k}^l
+		+ d_{kli} {b_j}^l
+		+ d_{klj} {b_i}^l
 		
-	d_{lij} {\beta^l}_{,k}
-		+ 2 d_{kl(i} {\beta^l}_{,j)} 
-		+ \gamma_{l(i} {\beta^l}_{,j)k}
+		+ \frac{1}{2} \gamma_{li} {{b_j}^l}_{,k}
+		+ \frac{1}{2} \gamma_{lj} {{b_i}^l}_{,k}
+		
 		- \alpha a_k K_{ij} \\
 
-	K_{kj} {\beta^k}_{,i} 
-		+ K_{ik} {\beta^k}_{,j} 
+	K_{kj} {b_i}^k
+		+ K_{ik} {b_j}^k
 		- \alpha a_i a_j
 		+ ({d_{ij}}^k + {d_{ji}}^k - {d^k}_{ij}) \alpha a_k
 		+ \alpha d_{ijl} ({d^{lk}}_k - 2 {d_k}^{kl})
@@ -368,24 +329,24 @@ $\left[\matrix{
 		+ \alpha d_{ikl} {d_j}^{kl}
 		- 2 \alpha ({d_{ij}}^k + {d_{ji}}^k - {d^k}_{ij}) Z_k
 		- 2 \alpha K_{ik} {K^k}_j 
-		+ \alpha (tr K - 2 \Theta) K_{ij} 
+		+ \alpha (K - 2 \Theta) K_{ij} 
 		- \alpha S_{ij} 
-		+ \alpha \frac{1}{2} (tr S - \tau) \gamma_{ij} \\
+		+ \alpha \frac{1}{2} (S - \tau) \gamma_{ij} \\
 
-	\frac{1}{2} \alpha \gamma^{km} Z^j \gamma_{km,j}
-		+ \frac{1}{2} \alpha d_{ijl} ({d^{lk}}_k - 2 {d_k}^{kl})
-		+ \frac{1}{2} \alpha d_{jil} ({d^{lk}}_k - 2 {d_k}^{kl})
-		- \frac{1}{2} \alpha d_{lij} ({d^{lk}}_k - 2 {d_k}^{kl})
+	\alpha Z_j d^j
+		+ \frac{1}{2} \alpha d_{ijl} (d^l - 2 e^l)
+		+ \frac{1}{2} \alpha d_{jil} (d^l - 2 e^l)
+		- \frac{1}{2} \alpha d_{lij} (d^l - 2 e^l)
 		+ \alpha ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
 		+ \frac{1}{2} \alpha d_{ikl} {d_j}^{kl}
-		+ \frac{1}{2} \alpha (tr K - 2 \Theta) tr K 
+		+ \frac{1}{2} \alpha (K - 2 \Theta) K 
 		- \frac{1}{2} \alpha K_{ij} K^{ij} 
 		- \alpha \tau
 		- \alpha Z^k a_k \\
 
-	Z_j {\beta^j}_{,k} 
-		- \alpha K_{ki} \gamma^{im} \gamma^{nj} \gamma_{mn,j}
-		+ \alpha K_{ji} \gamma^{jm} \gamma^{ni} \gamma_{mn,k}
+	Z_j {b_k}^j
+		- 2 \alpha K_{ki} e^i
+		+ 2 \alpha K_{ji} {d_k}^{ij}
 		- \alpha {\Gamma^i}_{kj} {K_i}^j 
 		+ \alpha {\Gamma^j}_{ij} {K_k}^i 
 		- 2 \alpha {K_k}^j Z_j 
@@ -394,128 +355,22 @@ $\left[\matrix{
 
 }\right]$<br>
 
-matrix form, favoring flux terms:<br>
-$\left[\matrix{
-	\alpha \\ \beta^i \\ \gamma_{ij} \\ a_k \\ d_{kij} \\ K_{ij} \\ \Theta \\ Z_k
-}\right]_{,t}
-+ \left[\matrix{
-	-\beta^r & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
-	
-	0 & 0 &
-		-(\frac{1}{2} \alpha^2 d - \mu \alpha^2) \gamma^{ir} \gamma^{pq} 
-		- \mu \alpha^2 \gamma^{rq} \gamma^{ip} &
-		0 & 0 & 0 & 0 & 0 \\
-
-	0 & 
-		- \gamma_{mj} \delta^r_i - \gamma_{mi} \delta^r_j & 
-		- \delta^p_i \delta^q_j \beta^r & 0 & 0 & 0 & 0 & 0 \\
-
-	0 & 
-		-a_m \delta^r_k	 & 
-		- f \alpha K^{pq} \delta^r_k &
-		-\beta^m \delta_k^r &
-		0 &
-		f \gamma^{pq} \delta^r_k &
-		- f \alpha m \delta^r_k &
-		0 \\ 
-
-	0 & 
-		- d_{mij} \delta^r_k
-			- 2 d_{km(i} \delta^r_{j)} & 
-		0 & 
-		0 &
-		- \delta^m_k \delta^p_i \delta^q_j \beta^r &
-		\alpha \delta^p_i \delta^q_j \delta^r_k &
-		0 & 
-		0 \\
-
-	0 & 
-		-K_{jm} \delta^r_i - K_{im} \delta^r_j & 
-		0 & 
-		\alpha \delta^m_{(i} \delta^r_{j)} &
-		- \alpha (
-			\gamma^{pr} \delta_i^m \delta_j^q
-			- \gamma^{pq} \delta_i^m \delta_j^r
-			- \gamma^{mr} \delta_i^p \delta_j^q
-			+ \gamma^{qr} \delta_j^m \delta_i^p
-		) &
-		- \beta^r \delta^p_i \delta^q_j &
-		0 &
-		-2 \alpha \delta^m_{(i} \delta^r_{j)} \\
-
-	0 & 0 & 
-		-\frac{1}{2} \alpha \gamma^{pq} Z^r & 
-		0 &
-		- \frac{1}{2} \alpha (
-			\gamma^{pr} \delta_i^m \delta_j^q
-			- \gamma^{pq} \delta_i^m \delta_j^r
-			- \gamma^{mr} \delta_i^p \delta_j^q
-			+ \gamma^{qr} \delta_j^m \delta_i^p
-		) &
-		0 &
-		- \beta^r &
-		- \alpha \delta^m_r \\
-
-	0 &
-		-Z_m \delta^r_k & 
-		\alpha ({K^p}_k \gamma^{rq} - K^{pq} \delta^r_k) &
-		0 &
-		0 &
-		- \alpha (\gamma^{qr} \delta^p_k - \gamma^{qp} \delta^r_k) &
-		- \alpha \delta^r_k &
-		- \beta^r \delta^m_k
-		
-}\right]
-\left[\matrix{
-	\alpha \\ \beta^m \\ \gamma_{pq} \\ a_m \\ d_{mpq} \\ K_{pq} \\ \Theta \\ Z_m
-}\right]_{,r}
-= \left[\matrix{
- 	
-	-f \alpha^2 (tr K - m \Theta) \\
-
-	2 \mu \alpha^2 Z_j \gamma^{ij}
-		- a \alpha^2 a^i
-		- \eta \beta^i \\
-
-	- 2 \alpha K_{ij} \\
-
-	- a_k \alpha (f' \alpha + f) (tr K - m \Theta) \\
-		
-	\gamma_{m(i} {\beta^m}_{,j)k} 
-		- \alpha a_k K_{ij} \\
-
-	- \alpha a_i a_j
-		+ ({d_{ij}}^k + {d_{ji}}^k - {d^k}_{ij}) \alpha a_k
-		+ \alpha d_{ijl} ({d^{lk}}_k - 2 {d_k}^{kl})
-		+ \alpha d_{jil} ({d^{lk}}_k - 2 {d_k}^{kl})
-		- \alpha d_{lij} ({d^{lk}}_k - 2 {d_k}^{kl})
-		+ 2 \alpha ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
-		+ \alpha d_{ikl} {d_j}^{kl}
-		- 2 \alpha ({d_{ij}}^k + {d_{ji}}^k - {d^k}_{ij}) Z_k
-		- 2 \alpha K_{ik} {K^k}_j 
-		+ \alpha (tr K - 2 \Theta) K_{ij} 
-		- \alpha S_{ij} 
-		+ \alpha \frac{1}{2} (tr S - \tau) \gamma_{ij} \\
-
-	\frac{1}{2} \alpha d_{ijl} ({d^{lk}}_k - 2 {d_k}^{kl})
-		+ \frac{1}{2} \alpha d_{jil} ({d^{lk}}_k - 2 {d_k}^{kl})
-		- \frac{1}{2} \alpha d_{lij} ({d^{lk}}_k - 2 {d_k}^{kl})
-		+ \alpha ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
-		+ \frac{1}{2} \alpha d_{ikl} {d_j}^{kl}
-		+ \frac{1}{2} \alpha (tr K - 2 \Theta) tr K 
-		- \frac{1}{2} \alpha K_{ij} K^{ij} 
-		- \alpha \tau
-		- \alpha Z^k a_k \\
-
-	- \alpha {\Gamma^i}_{kj} {K_i}^j 
-		+ \alpha {\Gamma^j}_{ij} {K_k}^i 
-		- 2 \alpha {K_k}^j Z_j 
-		- \alpha S_k
-		- \alpha \Theta a_k
-
-}\right]$<br>
 <!-- TODO the 2nd deriv beta, turn that into a 1st-deriv b, and put an evolution equation for b in here ...
  ... or just say that we are goign to recompute beta's every iteration -->
+
+One possible shift condition:<br>
+$Q^i = -\frac{1}{\alpha} \beta^k {\beta^i}_{,k} - \alpha \gamma^{ki} ( {\gamma_{jk}}^{,j} - (ln \sqrt\gamma)_{,k} - (ln \alpha)_{,k})$<br>
+$\frac{d}{dt} \beta^i = \beta^k {\beta^i}_{,k} + \alpha^2 \gamma^{ki} ({\gamma_{jk}}^{,j} - (ln \sqrt\gamma)_{,k} - (ln \alpha)_{,k})$<br>
+${\beta^i}_{,t} = \beta^k {b_k}^i + \alpha^2 \gamma^{ki} (2 \gamma^{jl} d_{ljk} - \frac{1}{2 \gamma} \gamma_{,k} - a_k)$<br>
+${\beta^i}_{,t} = \beta^k {b_k}^i + \alpha^2 \gamma^{ki} (2 \gamma^{jl} d_{ljk} - \frac{1}{2 \gamma} \gamma \gamma^{jl} \gamma_{jl,k} - a_k)$<br>
+${\beta^i}_{,t} = \beta^k {b_k}^i + \alpha^2 (2 e^i - d^i - a^i)$<br>
+<br>
+
+${{b_j}^i}_{,t} = {\beta^i}_{,jt} = {\beta^i}_{,tj}$<br>
+$ = ( \beta^k {b_k}^i + \alpha^2 (2 e^i - d^i - a^i) )_{,j}$<br>
+$ = {\beta^k}_{,j} {b_k}^i + \beta^k {{b_k}^i}_{,j} + 2 \alpha \alpha_{,j} (2 e^i - d^i - a^i) + \alpha^2 (2 {e^i}_{,j} - {d^i}_{,j} - {a^i}_{,j})$<br>
+$ = {\beta^k}_{,j} {b_k}^i + \beta^k {{b_k}^i}_{,j} + 2 \alpha^2 a_j (2 e^i - d^i - a^i) + \alpha^2 (2 {e^i}_{,j} - {d^i}_{,j} - {a^i}_{,j})$<br>
+<br>
 
 	</body>
 </html>

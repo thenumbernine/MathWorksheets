@@ -60,16 +60,16 @@ In light of that, maybe I should add a third set of indexes to represent spatial
 
 <hr>
 
-$g_{\mu\nu}=$ metric tensor, matrix $G$<br>
-$g^{\mu\nu}=$ metric tensor inverse, matrix $G^{-1}$<br>
+$g_{\mu\nu}=$ metric tensor<br>
+$g^{\mu\nu}=$ metric tensor inverse<br>
 <br>
 
-$\eta_{IJ}=$ Minkowski space metric $=diag(-1,1,1,1)$, matrix $H$<br>
-$\eta^{IJ}=$ Minkowski metric inverse, matrix $H^{-1}$<br>
+$\eta_{IJ}=$ Minkowski space metric $=diag(-1,1,1,1)$<br>
+$\eta^{IJ}=$ Minkowski metric inverse<br>
 <br>
 
-${e_\mu}^I=$ tetrad relating coordinate metric and Minkowski metric.  matrix $E$<br>
-${e^\mu}_I=$ tetrad inverse.  matrix $E^{-1}$<br>
+${e_\mu}^I=$ tetrad relating coordinate metric and Minkowski metric<br>
+${e^\mu}_I=$ tetrad inverse<br>
 <br>
 
 tetrad definition wrt coordinate charts:<br>
@@ -89,10 +89,10 @@ $ {e_\mu}^I {e^\nu}_I = \delta^\nu_\mu $<br>
 $ {e^\mu}_I {e_\nu}^J = \delta^J_I $<br>
 <br>
 
-$g_{\mu\nu}={e_\mu}^I {e_\nu}^J \eta_{IJ}$ in matrix form $G=E H E^T$<br>
-$g^{\mu\nu}={e^\mu}_I {e^\nu}_J \eta^{IJ}$ in matrix form $G^{-1}=E^{-T}H^{-1}E^{-1}$<br>
-$\eta_{IJ} = {e^\mu}_I {e^\nu}_J g_{\mu\nu}$ in matrix form $H=E^{-1}GE^{-T}$<br>
-$\eta^{IJ} = {e_\mu}^I {e_\nu}^J g^{\mu\nu}$ in matrix form $H^{-1} = E^T G^{-1} E$<br>
+$g_{\mu\nu}={e_\mu}^I {e_\nu}^J \eta_{IJ}$<br>
+$g^{\mu\nu}={e^\mu}_I {e^\nu}_J \eta^{IJ}$<br>
+$\eta_{IJ} = {e^\mu}_I {e^\nu}_J g_{\mu\nu}$<br>
+$\eta^{IJ} = {e_\mu}^I {e_\nu}^J g^{\mu\nu}$<br>
 <br>
 <br>
 
@@ -104,30 +104,48 @@ such that: $\gamma^{ac} \gamma_{cb} = \delta^a_b$ matrix $(^3G)^{-1} (^3G) = I$<
 
 ADM metric:<br>
 $[g_{\mu\nu}] = \overset{\mu(u)\downarrow \nu(v)\rightarrow}{\left[ \matrix{-\alpha^2 + \beta^a \beta_a& \beta_v \\ \beta_u & \gamma_{uv}} \right]}$<br>
-matrix form: $\left[\matrix{-\alpha^2 + \beta^T (^3G) \beta & \beta^T (^3G) \\ (^3G) \beta & (^3G)}\right]$<br>
 $[g^{\mu\nu}] = \overset{\mu(u)\downarrow \nu(v)\rightarrow}{\left[ \matrix{-1/\alpha^2 & \beta^v / \alpha^2 \\ \beta^u / \alpha^2 & \gamma^{uv} - \beta^u \beta^v / \alpha^2} \right]}$<br>
 where $ \beta_v = \gamma_{uv} \beta^v = \gamma_{\mu v} \beta^v = g_{\mu v} \beta^v $ courtesy of the fact that the 3-metric components of $ g_{uv} = \gamma_{uv} $, and the 4D compoennt of $ \beta^t = 0 $.<br>
 <br>
 Let $n_\alpha = (-\alpha,0,0,0)$ be the normal.<br>
 <br>
 Let ${(^3e)_a}^i$ be the triad defined as the square-root of the 3-metric: ${(^3e)_a}^i {(^3e)_b}^j \eta_{ij} = \gamma_{ab}$<br>
-equivalently in matrix form: $(^3E)(^3E)^T=(^3G)$<br>
 <br>
-Let $[{e_\mu}^I] = \overset{\mu(u)\downarrow I(i)\rightarrow}{\left[\matrix{\alpha & \beta^i \\ 0 & {(^3 e)_u}^i}\right]}$ matrix $E=\left[\matrix{\alpha & \beta^T (^3E) \\ 0 & (^3E) }\right]$<br>
+Let $[{e_\mu}^I] = \overset{\mu(u)\downarrow I(i)\rightarrow}{\left[\matrix{\alpha & \beta^i \\ 0 & {(^3 e)_u}^i}\right]}$<br>
 <br>
 For $\beta^i = {(^3e)_a}^i \beta^a $ the shift vector transformed by the triad.<br>
 Then ${e_\alpha}^\hat{t}=-n_\alpha=(\alpha,0,0,0)$ for $\hat{t}$ the Minkowski time coordinate.<br>
-Then $g_{\mu\nu} = {e_\mu}^I \eta_{IJ} {e_\nu}^J$ is computed in matrix form like so:<br>
-So $EHE^T=\left[\matrix{\alpha & \beta^T(^3E) \\ 0 & (^3E)}\right] \left[\matrix{-1 & 0 \\ 0 & I}\right] \left[\matrix{\alpha & 0 \\ (^3E)^T \beta & (^3E)^T}\right]$<br>
-$=\left[\matrix{\alpha & \beta^T(^3E) \\ 0 & (^3E)}\right] \left[\matrix{-\alpha & 0 \\ (^3E)^T \beta & (^3E)^T}\right]$<br>
-$=\left[\matrix{-\alpha^2 + \beta^T (^3E) (^3E)^T \beta & \beta^T (^3E) (^3E)^T \\ (^3E)(^3E)^T \beta & (^3E)(^3E)^T }\right]$<br>
-$=\left[\matrix{-\alpha^2 + \beta^T (^3G) \beta & \beta^T (^3G) \\ (^3G) \beta & (^3G) }\right]$<br>
-$=G$<br>
+Then $g_{\mu\nu} = {e_\mu}^I \eta_{IJ} {e_\nu}^J$ is computed like so:<br>
+$= \overset{\mu(u)\downarrow I(i)\rightarrow}{\left[\matrix{\alpha & \beta^i \\ 0 & {(^3 e)_u}^i}\right]}
+\overset{I(i) \downarrow J(j) \rightarrow}{\left[\matrix{ -1 & 0 \\ 0 & \delta_{ij} }\right]}
+\overset{J(j)\downarrow \nu(v)\rightarrow}{\left[\matrix{\alpha & 0 \\ \beta^j & {(^3 e)_v}^j}\right]}
+$<br>
+$= \overset{\mu(u)\downarrow J(j)\rightarrow}{\left[\matrix{-\alpha & \beta_j \\ 0 & (^3 e)_{uj} }\right]}
+\overset{J(j)\downarrow \nu(v)\rightarrow}{\left[\matrix{\alpha & 0 \\ \beta^j & {(^3 e)_v}^j }\right]}
+$<br>
+$= \overset{\mu(u)\downarrow \nu(v)\rightarrow}{\left[\matrix{
+	-\alpha^2 + \beta_j \beta^j & 
+		{(^3e)_v}^j \beta_j \\ 
+	(^3e)_{uj} \beta^j & 
+		(^3e)_{uj} {(^3e)_v}^j 
+}\right]}
+$<br>
+$= \overset{\mu(u)\downarrow \nu(v)\rightarrow}{\left[\matrix{
+	-\alpha^2 + \beta_u \beta^u & 
+		\beta_v \\ 
+	\beta_u & 
+		\gamma_{uv}
+}\right]}
+$<br>
+
+
 <br>
-Let $[{e^\mu}_I] = \overset{\mu(u)\downarrow I(i)\rightarrow}{\left[\matrix{1/\alpha & 0 \\ -\beta^u/\alpha & {(^3e)^u}_i}\right]}$ matrix $E^{-T}=\left[\matrix{1/\alpha & 0 \\ -\beta/\alpha & (^3E)^{-T}}\right]$<br>
-So $EE^{-1} = \left[\matrix{\alpha & \beta^T (^3E) \\ 0 & (^3E) }\right] \left[\matrix{1/\alpha & -\beta^T/\alpha \\ 0 & (^3E)^{-1}}\right]$<br>
-$= \left[\matrix{1 & -\beta + \beta^T (^3E) (^3E)^{-1} \\ 0 & (^3E) (^3E)^{-1}}\right]$<br>
-$= \left[\matrix{1 & 0 \\ 0 & I}\right]$<br>
+Let $[{e^\mu}_I] = \overset{\mu(u)\downarrow I(i)\rightarrow}{\left[\matrix{1/\alpha & 0 \\ -\beta^u/\alpha & {(^3e)^u}_i}\right]}$<br>
+So ${e_\mu}^I {e^\nu}_I$
+$= \overset{\mu(u)\downarrow I(i)\rightarrow}{ \left[\matrix{\alpha & \beta^i \\ 0 & {(^3e)_u}^i }\right] }
+\overset{I(i) \downarrow \nu(v)\rightarrow}{ \left[\matrix{1/\alpha & -\beta^v / \alpha \\ 0 & {(^3e)^v}_i }\right] }$<br>
+$= \overset{\mu(u)\downarrow \nu(v)\rightarrow}{ \left[\matrix{1 & -\beta^i + \beta^i \\ 0 & {(^3e)_u}^i {(^3e)^v}_i }\right] }$<br>
+$= \overset{\mu(u)\downarrow \nu(v)\rightarrow}{ \left[\matrix{1 & 0 \\ 0 & \delta_u^v }\right] }$<br>
 <br>
 Therefore the spatial subset of curved coordinates of the 4D tetrad ${e_\mu}^I$ and ${e^\mu}_I$ are equal to the 3D triad ${e_u}^i$ and ${e^u}_i$.<br>
 Therefore tensors can be raised/lowered by 3D spatial indexes as well as 4D spacetime indexes without distinction... except that the shift cannot be neglected ...<br>
