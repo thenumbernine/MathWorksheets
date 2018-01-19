@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<title>Maxwell in inhomogeneous medium</title>
+	</head>
+	<body onload='tryToFindMathJax();'>
+
+...in flat space...<br>
+<br>
+
+$D^i = \epsilon E^i + P^i$<br>
+$B^i = \mu H^i + M^i$<br>
+<br>
+${D^i}_{,i} = \rho_{free}$ ... where $\rho_{free}$ = free charge (densitized?)<br>
+${B^i}_{,i} = 0$<br>
+<br>
+${B^i}_{,t} = -\epsilon^{ijk} E_{k,j}$<br>
+${D^i}_{,t} = \epsilon^{ijk} H_{k,j} - J^i_{free}$<br>
+<br>
+...substitute the time derivatives of $B^i$ and $D^i$ into definitions of $E^i$ and $H^i$<br>
+${E^i}_{,t} = \frac{1}{\epsilon} \epsilon^{ijk} H_{k,j} - \frac{1}{\epsilon} \epsilon_{,j} \frac{\partial x^j}{\partial t} E^i - \frac{1}{\epsilon} J^i_{free} - \frac{1}{\epsilon} {P^i}_{,j} \frac{\partial x^j}{\partial t}$<br>
+${H^i}_{,t} = -\frac{1}{\mu} \epsilon^{ijk} E_{k,j} - \frac{1}{\mu} \mu_{,j} \frac{\partial x^j}{\partial t} H^i - \frac{1}{\mu} {M^i}_{,j} \frac{\partial x^j}{\partial t}$<br>
+...assume $\frac{\partial x^i}{\partial t} = v^i$<br>
+${E^i}_{,t} = \frac{1}{\epsilon} \epsilon^{ijk} H_{k,j} - \frac{1}{\epsilon} \epsilon_{,j} v^j E^i - \frac{1}{\epsilon} J^i_{free} - \frac{1}{\epsilon} {P^i}_{,j} v^j$<br>
+${H^i}_{,t} = -\frac{1}{\mu} \epsilon^{ijk} E_{k,j} - \frac{1}{\mu} \mu_{,j} v^j H^i - \frac{1}{\mu} {M^i}_{,j} v^j$<br>
+<br>
+
+The Drude model:<br>
+$(\rho v^i)_{,t} + (\rho v^i)_{,j} v^j = q (E^i + \frac{1}{\rho} \epsilon^{ijk} (\rho v_j) B_k) - \frac{1}{\tau} (\rho v^i)$<br>
+...here $\rho$ is the mass of the particles.  I think it's safe to call it the density.  $q$ is the electron charge.  Is this densitized -- should it be scaled by $\rho$ as well?<br>
+<br>
+
+The entire hyperbolic system, in matrix form:<br>
+$\left[\matrix{
+	B^i \\
+	D^i \\
+	H^i \\
+	E^i \\
+	\rho v^i
+}\right]_{,t} + \left[\matrix{
+	0 & 0 & 0 & \epsilon^{ijk} & 0 \\
+	0 & 0 & -\epsilon^{ijk} & 0 & 0 \\
+	0 & 0 & 0 & \frac{1}{\mu} \epsilon^{ijk} & 0 \\
+	0 & 0 & -\frac{1}{\epsilon} \epsilon^{ijk} & 0 & 0 \\
+	0 & 0 & 0 & 0 & \delta^i_k v^j \\
+}\right] \left[\matrix{
+	B^k \\
+	D^k \\
+	H^k \\
+	E^k \\
+	\rho v^k
+}\right]_{,j} = \left[\matrix{
+	0 \\
+	-J^i_{free} \\
+	-\frac{1}{\mu} \mu_{,j} v^j H^i - \frac{1}{\mu} {M^i}_{,j} v^j \\
+	-\frac{1}{\epsilon} \epsilon_{,j} v^j E^i - \frac{1}{\epsilon} J^i_{free} - \frac{1}{\epsilon} {P^i}_{,j} v^j \\
+	q (E^i + \frac{1}{\rho} \epsilon^{ijk} (\rho v_j) B_k) - \frac{1}{\tau} (\rho v^i) \\
+}\right]$<br>
+<br>
+
+
+	</body>
+</html>
