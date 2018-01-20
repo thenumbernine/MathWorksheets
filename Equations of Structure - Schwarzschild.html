@@ -205,6 +205,8 @@ ${\Gamma^\phi}_{\phi\theta} = {\Gamma^\phi}_{\theta\phi} = g^{\phi\phi} \Gamma_{
 exercise 23.1<br>
 Isotropic coordinate metric: $ds^2 = -e^{2 \Phi} dt^2 + e^{2 \mu} ( d \bar{r}^2 + \bar{r}^2 d\Omega^2 )$ (eqn 23.8)<br>
 for $\Phi = \Phi(\bar{r}), \mu = \mu(\bar{r})$<br>
+<br>
+
 exercise 23.1a:<br>
 TOV metric: $ds^2 = -e^{2\Phi} dt^2 + e^{2\Lambda} dr^2 + r^2 d\Omega^2$ eqn 23.7<br>
 Find the change of coordinates from TOV to isotropic:<br>
@@ -225,21 +227,24 @@ $\frac{1}{r} e^\Lambda dr = \frac{1}{\bar{r}} d\bar{r}$<br>
 if $\Lambda = \Lambda(r)$, or $\mu = \mu(\bar{r})$, then we can solve further ...<br>
 $\frac{1}{r} e^\Lambda \frac{dr}{d\Lambda} d\Lambda = \frac{1}{\bar{r}} d\bar{r}$<br>
 $\frac{1}{r \Lambda'(r)} e^\Lambda d\Lambda = \frac{1}{\bar{r}} d\bar{r}$<br>
-$\int \frac{1}{r \Lambda'(r)} e^\Lambda d\Lambda = log(\bar{r})$<br>
-$\bar{r} = C exp( \int \frac{1}{r \Lambda'(r)} e^\Lambda d\Lambda)$<br>
 Next, substitute the Schwarzschild metric:<br>
 $ds^2 = -(1 - \frac{2 m}{r}) dt^2 + (1 - \frac{2 m}{r})^{-1} dr^2 + r^2 d\Omega^2$<br>
 $e^{\Lambda} = \frac{1}{\sqrt{1 - 2m/r}}$<br>
 $\frac{dr}{\sqrt{1 - 2m/r}} = \frac{r}{\bar{r}} d\bar{r}$<br>
 $\frac{dr}{\sqrt{r(r - 2m)}} = \frac{d\bar{r}}{\bar{r}}$<br>
 ...<br>
-solutions should be:<br>
+TODO solutions should be:<br>
 $r = \bar{r} (1 + \frac{m}{2\bar{r}})^2$<br>
 $r = \bar{r} (1 + \frac{m}{\bar{r}} + \frac{m^2}{4\bar{r}^2})$<br>
 $\bar{r}^2 + (m - r) \bar{r} + \frac{1}{4} m^2 = 0$<br>
 $\bar{r} = \frac{1}{2} (r - m \pm \sqrt{ (m - r)^2 - m^2 })$<br>
 $\bar{r} = \frac{1}{2} (r - m \pm \sqrt{ r^2 - 2 m r })$<br>
 $\bar{r} = \frac{1}{2} (r - m \pm \sqrt{ r (r - 2 m) } )$<br>
+<br>
+
+TODO exercise 23.1b:<br>
+Show that, in the Newtonian limit, $\Phi$ becomes the Newtonian potential and $\mu$ becomes $-\Phi$.<br>
+Show $\Lambda = r \frac{d\Phi}{dr}$<br>
 <br>
 
 Surface area of a sphere:<br>
@@ -295,14 +300,14 @@ otherwise $T^{\alpha\beta} = 0$<br>
 <br>
 
 Transform so the time axis is along the fluid rest velocity: eqns 23.15a-d<br>
-$e_{\hat{t}} = \frac{d}{d\tau} =  e^{-\Phi} \frac{\partial}{\partial t}$, so ${e_{\hat{t}}}^t = e^{-\Phi}$<br>
-$e_{\hat{r}} = e^{-\Lambda} \frac{\partial}{\partial r}$, so ${e_{\hat{r}}}^r = e^{-\Lambda}$<br>
-$e_{\hat{\theta}} = r^{-1} \frac{\partial}{\partial \theta}$, so ${e_{\hat{\theta}}}^\theta = r^{-1}$<br>
-$e_{\hat{\phi}} = (r sin \theta)^{-1} \frac{\partial}{\partial \phi}$, so ${e_{\hat{\phi}}}^\phi = (r sin \theta)^{-1}$<br>
-$\omega^{\hat{t}} = e^\Phi dt$<br>
-$\omega^{\hat{r}} e^\Lambda dr$<br>
-$\omega^{\hat{\theta}} = r d\theta$<br>
-$\omega^{\hat{\phi}} = r sin \theta d\phi$<br>
+$e_\hat{t} = \frac{d}{d\tau} =  e^{-\Phi} \frac{\partial}{\partial t}$, so ${e_{\hat{t}}}^t = e^{-\Phi}$<br>
+$e_\hat{r} = e^{-\Lambda} \frac{\partial}{\partial r}$, so ${e_{\hat{r}}}^r = e^{-\Lambda}$<br>
+$e_\hat{\theta} = r^{-1} \frac{\partial}{\partial \theta}$, so ${e_{\hat{\theta}}}^\theta = r^{-1}$<br>
+$e_\hat{\phi} = (r sin \theta)^{-1} \frac{\partial}{\partial \phi}$, so ${e_{\hat{\phi}}}^\phi = (r sin \theta)^{-1}$<br>
+$\omega^\hat{t} = e^\Phi dt$<br>
+$\omega^\hat{r} = e^\Lambda dr$<br>
+$\omega^\hat{\theta} = r d\theta$<br>
+$\omega^\hat{\phi} = r sin \theta d\phi$<br>
 ${e_\hat{\mu}}^\nu = \left[\matrix{
 	e^{-\Phi} & 0 & 0 & 0 \\
 	0 & e^{-\Lambda} & 0 & 0 \\
@@ -331,6 +336,47 @@ Determine functions $\Phi, \Lambda, \rho, p, n$ by their parameter $r$, by the E
 Also depend $p = p(n), \rho = \rho(n)$ on the number density of baryons, $n$ (eqn 23.16).<br>
 ...as well either temperature $T$ or entropy $s$: $p = p(n, s), \rho = \rho(n, s)$.<br> 
 From here it's handy to let $s = s(n)$, so $p = p(n, s(n)), \rho = \rho(n, s(n))$ (see box 22.1)<br>
+<br>
+
+exercise 23.2a:<br>
+Verify the equations 23.15a,b form an orthonormal frame.<br>
+Argument: no terms are sums -- all are only scalars of the holonomic basis.  Therefore $\omega^\hat\mu(e_\hat\nu) = 0$ for $\mu \ne \nu$.<br>
+This combined with the fact that the function coefficients of matching basis variables are inverses:<br>
+$\omega^\hat{t}(e_\hat{t}) = e^\Phi e^{-\Phi} \frac{\partial t}{\partial t} = 1$<br>
+$\omega^\hat{r}(e_\hat{r}) = e^\Lambda e^{-\Lambda} \frac{\partial r}{\partial r} = 1$<br>
+$\omega^\hat\theta(e_\hat\theta) = r \frac{1}{r} \frac{\partial \theta}{\partial \theta} = 1$<br>
+$\omega^\hat\phi(e_\hat\phi) = r sin(\theta) \frac{1}{r sin(\theta)} \frac{\partial \phi}{\partial \phi} = 1$<br>
+<br>
+
+exercise 23.2b:<br>
+Verify that equation 23.15c gives the components of fluid relative to the tetrad.<br>
+$u^t = e^{-\Phi}$<br>
+Therefore $u = e^{-\Phi} \partial_t$<br>
+Therefore $u = e_\hat{t}$<br>
+<br>
+
+exercise 23.2c:<br>
+Verify the equations 23.15d are the components of stress-energy tensor.<br>
+$T^{tt} = \rho e^{-2\Phi}$<br>
+$T^{rr} = p e^{-2\Lambda}$<br>
+$T^{\theta\theta} = \frac{p}{r^2}$<br>
+$T^{\phi\phi} = \frac{p}{r^2 (sin(\theta))^2}$<br>
+otherwise $T^{ab} = 0$<br>
+Therefore $T = 	
+	\rho e^{-2\Phi} \partial_t \otimes \partial_t
+	+ p e^{-2\Lambda} \partial_r \otimes \partial_r
+	+ \frac{p}{r^2} \partial_\theta \otimes \partial_\theta
+	+ \frac{p}{r^2 (sin(\theta))^2} \partial_\phi \otimes \partial_\phi
+$<br>
+$T = 	
+	\rho \partial_\hat{t} \otimes \partial_\hat{t}
+	+ p \partial_\hat{r} \otimes \partial_\hat{r}
+	+ p \partial_\hat\theta \otimes \partial_\hat\theta
+	+ p \partial_\hat\phi \otimes \partial_\hat\phi
+$<br>
+Therefore $T^{\hat{t}\hat{t}} = \rho, T^{\hat{r}\hat{r}} = p, T^{\hat\theta\hat\theta} = p, T^{\hat\phi\hat\phi} = p$<br>
+Since $g_{\hat\alpha\hat\beta} = \eta_{\alpha\beta}$, we find<br> 
+$T_{\hat{t}\hat{t}} = \rho, T_{\hat{r}\hat{r}} = p, T_{\hat\theta\hat\theta} = p, T_{\hat\phi\hat\phi} = p$<br>
 <br>
 
 Start with eqn 22.11a:<br>
@@ -485,5 +531,177 @@ $\frac{dp}{dr} = -\frac{ (\rho + p)(m + 4 \pi r^3 p) }{ r^2 \sqrt{1 - 2 m / r} }
 (The Newton equivalent is $\frac{dp}{d(proper radial distance)} = \frac{dp}{dr} = -\rho m / r^2$ - eqn 23.23N)<br>
 <br>
 
+exercise 23.3:<br>
+${T^{\alpha\beta}}_{;\beta} = 0$<br>
+${T^{\alpha\beta}}_{,\beta} + {\Gamma^\alpha}_{\gamma\beta} T^{\gamma\beta} + {\Gamma^\beta}_{\gamma\beta} T^{\alpha\gamma} = 0$<br>
+<br>
+Recap: stress energy components:<br>
+$T^{tt} = \rho e^{-2\Phi}$<br>
+$T^{rr} = p e^{-2\Lambda}$<br>
+$T^{\theta\theta} = \frac{p}{r^2}$<br>
+$T^{\phi\phi} = \frac{p}{r^2 (sin(\theta))^2}$<br>
+Connection coefficients:<br>
+${\Gamma^t}_{tr} = {\Gamma^t}_{rt} = \Phi_{,r}$<br>
+${\Gamma^r}_{tt} = -\Phi_{,r} e^{2(\Phi - \Lambda)}$<br>
+${\Gamma^r}_{rr} = \Lambda_{,r}$<br>
+${\Gamma^r}_{\theta\theta} = -r e^{-2\Lambda}$<br> 
+${\Gamma^r}_{\phi\phi} = -r (sin \theta)^2 e^{-2 \Lambda}$<br>
+${\Gamma^\theta}_{\theta r} = {\Gamma^\theta}_{r\theta} = \frac{1}{r}$<br>
+${\Gamma^\phi}_{\phi r} = {\Gamma^\phi}_{r\phi} = \frac{1}{r}$<br>
+${\Gamma^\phi}_{\phi\theta} = {\Gamma^\phi}_{\theta\phi} = cot \theta$<br>
+<br>
+Since $T^{\alpha\beta}$ is diagonal, for fixed $\alpha$: 
+${T^{\alpha\alpha}}_{,\alpha} 
+	+ \underset{\beta}{\Sigma} ({\Gamma^\alpha}_{\beta\beta} T^{\beta\beta}) 
+	+ (\underset{\beta}{\Sigma} {\Gamma^\beta}_{\alpha\beta}) T^{\alpha\alpha} 
+= 0$<br>
+<br>
+
+For $\alpha = t$:<br>
+${T^{tt}}_{,t} = 0$<br>
+$(\rho e^{-2\Phi})_{,t} = 0$<br>
+$(\rho_{,t} - 2 \rho \Phi_{,t}) e^{-2\Phi} = 0$<br>
+$\rho_{,t} = 2 \rho \Phi_{,t}$<br>
+<br>
+
+For $\alpha = r$:<br>
+${T^{rr}}_{,r} 
+	
+	+ {\Gamma^r}_{tt} T^{tt}
+	+ {\Gamma^r}_{\theta\theta} T^{\theta\theta}
+	+ {\Gamma^r}_{\phi\phi} T^{\phi\phi}
+	
+	+ {\Gamma^t}_{rt} T^{rr} 
+	+ {\Gamma^\theta}_{r\theta} T^{rr} 
+	+ {\Gamma^\phi}_{r\phi} T^{rr} 
+= 0$<br>
+$(p e^{-2\Lambda})_{,r} 
+	
+	- \Phi_{,r} e^{2(\Phi - \Lambda)} \rho e^{-2\Phi}
+	- r e^{-2\Lambda} \frac{p}{r^2}
+	- r (sin \theta)^2 e^{-2 \Lambda} \frac{p}{r^2 (sin(\theta))^2}
+	
+	+ (\Phi_{,r} 
+		+ \frac{1}{r} 
+		+ \frac{1}{r}
+	) p e^{-2\Lambda}
+= 0$<br>
+$p_{,r} e^{-2\Lambda} 
+	- 2 p e^{-2\Lambda} \Lambda_{,r}
+	+ (p - \rho) \Phi_{,r} e^{-2\Lambda}
+= 0$<br>
+$(p - \rho) \Phi_{,r} - 2 p \Lambda_{,r} = -p_{,r}$<br>
+<br>
+
+For $\alpha = \theta$:<br>
+${T^{\theta\theta}}_{,\theta} 
+	+ {\Gamma^\phi}_{\theta\phi} T^{\theta\theta} 
+= 0$<br>
+$( \frac{p}{r^2} )_{,\theta} + cot \theta \frac{p}{r^2} = 0$<br>
+$\frac{ p_{,\theta} r^2 - 2 p r r_{,\theta} }{ r^4 } + cot \theta \frac{p}{r^2} = 0$<br>
+$p_{,\theta} = -p cot \theta$<br>
+<br>
+
+For $\alpha = \phi$:<br>
+${T^{\phi\phi}}_{,\phi} = 0$<br>
+$(\frac{p}{r^2 (sin(\theta))^2})_{,\phi} = 0$<br>
+$p_{,\phi} = 0$ for $\theta \ne 0 + k \pi$<br>
+<br>
+
+exercise 23.4:<br>
+Based on the chapter 14 results:<br>
+$G_{\hat{t}\hat{t}} = F + 2 \bar{F}$<br>
+$G_{\hat{r}\hat{r}} = -(F + 2 \bar{F})$<br>
+$G_{\hat\theta\hat\theta} = -(E + \bar{E} + \bar{F})$<br> 
+$G_{\hat\phi\hat\phi} = -(E + \bar{E} + \bar{F})$<br> 
+<br>
+
+For $E = -e^{-2 \Lambda} (\Phi_{,rr} + (\Phi_{,r})^2 - \Phi_{,r} \Lambda_{,r})$<br>
+$\bar{E} = -\frac{1}{r} \Phi_{,r} e^{-2\Lambda}$<br>
+$F = \frac{1}{r^2} (1 - e^{-2\Lambda})$<br>
+$\bar{F} = \frac{1}{r} \Lambda_{,r} e^{-2\Lambda}$<br>
+<br>
+
+So $F + 2 \bar{F} $
+$= r^{-2} 
+	- r^{-2} e^{-2\Lambda}
+	+ r^{-1} 2 \Lambda_{,r} e^{-2\Lambda}
+$<br> 
+<br>
+
+And $E + \bar{E} + \bar{F}$<br>
+$ = 
+	- e^{-2 \Lambda} (\Phi_{,rr} + (\Phi_{,r})^2 - \Phi_{,r} \Lambda_{,r})
+	- \frac{1}{r} \Phi_{,r} e^{-2\Lambda}
+	+ \frac{1}{r} \Lambda_{,r} e^{-2\Lambda}
+$<br>
+$ = 
+	(
+		- \Phi_{,rr} 
+		- (\Phi_{,r})^2 
+		+ \Phi_{,r} \Lambda_{,r}
+		- \frac{1}{r} \Phi_{,r}
+		+ \frac{1}{r} \Lambda_{,r}
+	) e^{-2\Lambda}
+$<br>
+<br>
+So 
+$G_{\hat{t}\hat{t}} =
+	r^{-2} 
+	- r^{-2} e^{-2\Lambda}
+	+ r^{-1} 2 \Lambda_{,r} e^{-2\Lambda}
+$<br>
+$G_{\hat{r}\hat{r}} = -(
+	r^{-2} 
+	- r^{-2} e^{-2\Lambda}
+	+ r^{-1} 2 \Lambda_{,r} e^{-2\Lambda}
+)$<br>
+$G_{\hat\theta\hat\theta} = (
+	\Phi_{,rr} 
+	+ (\Phi_{,r})^2 
+	- \Phi_{,r} \Lambda_{,r}
+	+ \frac{1}{r} \Phi_{,r}
+	- \frac{1}{r} \Lambda_{,r}
+) e^{-2\Lambda}$<br> 
+$G_{\hat\phi\hat\phi} = (
+	\Phi_{,rr} 
+	+ (\Phi_{,r})^2 
+	- \Phi_{,r} \Lambda_{,r}
+	+ \frac{1}{r} \Phi_{,r}
+	- \frac{1}{r} \Lambda_{,r}
+) e^{-2\Lambda}$<br> 
+<br>
+
+So $G_{tt} = G_{\hat{\mu}\hat{\nu}} {\omega^\hat{\mu}}_t {\omega^\hat{\nu}}_t$<br>
+$	= G_{\hat{t}\hat{t}} ({\omega^\hat{t}}_t)^2$<br>
+$	= 
+(
+	r^{-2} 
+	- r^{-2} e^{-2\Lambda}
+	+ r^{-1} 2 \Lambda_{,r} e^{-2\Lambda}
+) (e^\Phi)^2$<br>
+$ = 
+	r^{-2} e^{2\Phi}
+	- r^{-2} e^{2\Phi-2\Lambda}
+	+ r^{-1} 2 \Lambda_{,r} e^{2\Phi-2\Lambda}
+$<br>
+<br>
+$G_{rr} = G_{\hat{\mu}\hat{\nu}} {\omega^\hat{\mu}}_r {\omega^\hat{\nu}}_r$<br>
+$	= G_{\hat{r}\hat{r}} ({\omega^\hat{r}}_r)^2$<br>
+$	= -(
+	r^{-2} 
+	- r^{-2} e^{-2\Lambda}
+	+ r^{-1} 2 \Lambda_{,r} e^{-2\Lambda}
+) (
+	e^\Lambda
+)^2$<br>
+$	= 
+	- r^{-2} e^{2\Lambda} 
+	+ r^{-2}
+	- r^{-1} 2 \Lambda_{,r}
+$<br>
+<br>	
+<br>	
+<br>	
 	</body>
 </html>
