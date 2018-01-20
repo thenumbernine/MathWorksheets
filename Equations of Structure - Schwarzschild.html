@@ -202,19 +202,44 @@ ${\Gamma^\phi}_{\phi r} = {\Gamma^\phi}_{r\phi} = g^{\phi\phi} \Gamma_{\phi\phi 
 ${\Gamma^\phi}_{\phi\theta} = {\Gamma^\phi}_{\theta\phi} = g^{\phi\phi} \Gamma_{\phi\phi\theta} = r^2 sin \theta cos \theta (r sin \theta)^{-2} = cot \theta$<br>
 <br>
 
-Isotropic coordinate transform:<br>
-$ds^2 = -e^{2\Phi} dt^2 + e^{2\Lambda} dr^2 + r^2 d\Omega^2$ eqn 23.7<br>
-Let $e^{2\Lambda} dr^2 = e^{2\mu} d\bar{r}^2$<br>
-Therefore $e^\Lambda dr = e^\mu d\bar{r}$<br>
+exercise 23.1<br>
+Isotropic coordinate metric: $ds^2 = -e^{2 \Phi} dt^2 + e^{2 \mu} ( d \bar{r}^2 + \bar{r}^2 d\Omega^2 )$ (eqn 23.8)<br>
+for $\Phi = \Phi(\bar{r}), \mu = \mu(\bar{r})$<br>
+exercise 23.1a:<br>
+TOV metric: $ds^2 = -e^{2\Phi} dt^2 + e^{2\Lambda} dr^2 + r^2 d\Omega^2$ eqn 23.7<br>
+Find the change of coordinates from TOV to isotropic:<br>
+1) compare $d\Omega^2$ terms to find:<br>
 Let $r^2 = e^{2\mu} \bar{r}^2$<br>
-So $r = e^\mu \bar{r}$<br>
-So $\mu = log(\frac{r}{\bar{r}})$<br>
-Likewise $\bar{r} = e^{-\mu} r$<br>
-$d\bar{r} = -d\mu e^{-\mu} r + e^{-\mu} dr$<br>
-$d\bar{r}^2 = d\mu^2 e^{-2\mu} r - 2 e^{-\mu} r dr d\mu + e^{-2\mu} dr^2$<br>
+So $r = e^\mu \bar{r}$ and $\bar{r} = e^{-\mu} r$<br>
+So $\frac{r}{\bar{r}} = e^\mu$<br>
+So $\mu = log(\frac{r}{\bar{r}}) = log(r) - log(\bar{r})$<br>
+Likewise $d\mu = \frac{dr}{r} - \frac{d\bar{r}}{\bar{r}}$<br>
+Substituting this into the isotropic metric gives us:<br>
+$ds^2 = -e^{2 \Phi} dt^2 + e^{2 \mu} d \bar{r}^2 + r^2 d\Omega^2 $ (eqn 23.8)<br>
+Substituting this into the TOV metric gives us:<br>
+$ds^2 = -e^{2\Phi} dt^2 + e^{2\Lambda} dr^2 + e^{2\mu} \bar{r}^2 d\Omega^2$
+Now we're left with equating $e^{2\mu} d\bar{r}^2 = e^{2\Lambda} dr^2$<br>
+$e^\Lambda dr = e^\mu d\bar{r}$<br>
+$e^\Lambda dr = \frac{r}{\bar{r}} d\bar{r}$<br>
+$\frac{1}{r} e^\Lambda dr = \frac{1}{\bar{r}} d\bar{r}$<br>
+if $\Lambda = \Lambda(r)$, or $\mu = \mu(\bar{r})$, then we can solve further ...<br>
+$\frac{1}{r} e^\Lambda \frac{dr}{d\Lambda} d\Lambda = \frac{1}{\bar{r}} d\bar{r}$<br>
+$\frac{1}{r \Lambda'(r)} e^\Lambda d\Lambda = \frac{1}{\bar{r}} d\bar{r}$<br>
+$\int \frac{1}{r \Lambda'(r)} e^\Lambda d\Lambda = log(\bar{r})$<br>
+$\bar{r} = C exp( \int \frac{1}{r \Lambda'(r)} e^\Lambda d\Lambda)$<br>
+Next, substitute the Schwarzschild metric:<br>
+$ds^2 = -(1 - \frac{2 m}{r}) dt^2 + (1 - \frac{2 m}{r})^{-1} dr^2 + r^2 d\Omega^2$<br>
+$e^{\Lambda} = \frac{1}{\sqrt{1 - 2m/r}}$<br>
+$\frac{dr}{\sqrt{1 - 2m/r}} = \frac{r}{\bar{r}} d\bar{r}$<br>
+$\frac{dr}{\sqrt{r(r - 2m)}} = \frac{d\bar{r}}{\bar{r}}$<br>
 ...<br>
-TODO exercise 23.1<br>
-$ds^2 = -e^{2\Phi} dt^2 + e^{2\mu} (d\bar{r}^2 + \bar{r}^2 d\Omega^2)$ eqn 23.8<br>
+solutions should be:<br>
+$r = \bar{r} (1 + \frac{m}{2\bar{r}})^2$<br>
+$r = \bar{r} (1 + \frac{m}{\bar{r}} + \frac{m^2}{4\bar{r}^2})$<br>
+$\bar{r}^2 + (m - r) \bar{r} + \frac{1}{4} m^2 = 0$<br>
+$\bar{r} = \frac{1}{2} (r - m \pm \sqrt{ (m - r)^2 - m^2 })$<br>
+$\bar{r} = \frac{1}{2} (r - m \pm \sqrt{ r^2 - 2 m r })$<br>
+$\bar{r} = \frac{1}{2} (r - m \pm \sqrt{ r (r - 2 m) } )$<br>
 <br>
 
 Surface area of a sphere:<br>
@@ -420,8 +445,8 @@ $\Omega(r) = -\int_{r=0}^{r=r} 4 \pi \rho r^2 ((1 - \frac{2 m}{r})^{-1/2} - 1) d
 <br>
 
 For the near-Newtonian limit where $\frac{m}{r} \approx 1$, therefore $(1 - \frac{2 m}{r})^{-1/2} \approx 1$, we find<br>
-$\Omega(r) = -\int_{r=0}^{r=r} \frac{\rho m}{r} 4 \pi r^2 dr$<br>
-$\Omega(r) = -\int_{r=0}^{r=r} 4 \pi r m \rho dr$<br>
+$\Omega(r) \approx -\int_{r=0}^{r=r} \frac{\rho m}{r} 4 \pi r^2 dr$<br>
+$\Omega(r) \approx -\int_{r=0}^{r=r} 4 \pi r m \rho dr$<br>
 <br>
 
 Next look at the $G_{\hat{r}\hat{r}}$ components of the EFE:<br>
@@ -429,18 +454,36 @@ $G_{\hat{r}\hat{r}} = \eta_{\hat{r}\hat{r}} {G^\hat{r}}_\hat{r} = {G^\hat{r}}_\h
 $G_{\hat{r}\hat{r}} = -\frac{1}{r^2} (1 - e^{-2\Lambda}) - 2 \frac{1}{r} \Lambda_{,r} e^{-2 \Lambda}$<br>
 $G_{\hat{r}\hat{r}} = -r^{-2}  + r^{-2} e^{-2\Lambda} + 2 r^{-1} e^{-2 \Lambda} (-\Lambda_{,r})$<br>
 The book now replaces $-\frac{d\Lambda}{dr}$ with $\frac{d\Phi}{dr}$ ... why is that?  E's have $\Phi$'s, F's have $\Lambda$'s, and $G_{\hat{r}\hat{r}}$ has F's not E's ...<br>
-$G_{\hat{r}\hat{r}} = -r^{-2}  + r^{-2} e^{-2\Lambda} + 2 r^{-1} e^{-2 \Lambda} \frac{d\Phi}{dr}$<br>
-By the EFE, $G_{\hat{r}\hat{r}} = 8 \pi T_{\hat{r}\hat{r}} = 8 \pi p$<br>
+$G_{\hat{r}\hat{r}} = -r^{-2}  + r^{-2} e^{-2\Lambda} + 2 r^{-1} e^{-2 \Lambda} \frac{d\Phi}{dr}$ (eqn  above 23.21)<br>
+By the EFE, $G_{\hat{r}\hat{r}} = 8 \pi T_{\hat{r}\hat{r}} = 8 \pi p$ (eqn above 23.21)<br>
 Substitute:<br>
 $-r^{-2}  + r^{-2} e^{-2\Lambda} + 2 r^{-1} e^{-2 \Lambda} \frac{d\Phi}{dr} = 8 \pi p$<br>
-Solve for $\Phi$<br>
-$\frac{d\Phi}{dr} = 8 \pi p r^2 / (-1 + e^{-2\Lambda} (1 + 2 r))$<br>
-Next we replace the Newtonian approximation again ...<br>
+<br>
+
+Next we replace the Newtonian approximation again.<br>
 Substitute eqn 23.18, $e^{-2\Lambda} = 1 - \frac{2 m}{r}$<br>
-$\frac{d\Phi}{dr} = 8 \pi p r^2 / (-1 + (1 - 2 m / r) (1 + 2 r))$<br>
-$\frac{d\Phi}{dr} = 4 \pi p r^3 / (r^2 - 2 m r - m)$<br>
-...after some manipulation the book gets...<br>
-$\frac{d\Phi}{dr} = m / (r (r - 2 m)) + 4 \pi p r^3 / (r (r - 2 m))$<br>
-$\frac{d\Phi}{dr} = (m + 4 \pi p r^3) / (r (r - 2 m))$<br>
+$-r^{-2}  + r^{-2} (1 - \frac{2 m}{r}) + 2 r^{-1} (1 - \frac{2 m}{r}) \frac{d\Phi}{dr} = 8 \pi p$<br>
+$-\frac{2 m}{r} + (2 r - 4 m) \frac{d\Phi}{dr} = 8 \pi r^2 p$<br>
+$\frac{d\Phi}{dr} = \frac{ 4 \pi r^2 p + m/r }{ r - 2 m }$<br>
+$\frac{d\Phi}{dr} = \frac{ m + 4 \pi p r^3 }{ r (r - 2 m) }$ (eqn 23.21)<br>
+(This is similar to the Newtonian limit: $\frac{d\Phi}{dr} = m / r^2$ - eqn 23.21N)<br>
+<br>
+
+Combine with eqn 23.17 $(\rho + p) \Phi_{,r} = -p_{,r}$ to get<br>
+(why do we go from partials to total derivatives?)<br>
+$\frac{dp}{dr} = -\frac{ (\rho + p)(m + 4 \pi r^3 p) }{ r (r - 2 m) }$ (eqn 23.22)<br>
+...which is the Oppenheimer-Volkoff equation of hydrostatic equilibrium.<br>
+(The Newtonian equivalent is $\frac{dp}{dr} = -\rho m / r^2$ - eqn 23.22N)<br>
+<br>
+
+Next look at proper radial distance:<br>
+TODO better where proper radial distance comes from.<br>
+$\frac{dp}{d (proper radial distance)} = \frac{1}{e^\Lambda} \frac{dp}{dr}$<br>
+Substitute eqn 23.18 and 23.22 to get:<br>
+$\frac{dp}{d (proper radial distance)} = \frac{1}{e^\Lambda} \frac{dp}{dr}$<br>
+$\frac{dp}{dr} = -\frac{ (\rho + p)(m + 4 \pi r^3 p) }{ r^2 \sqrt{1 - 2 m / r} }$ (eqn 23.23)<br>
+(The Newton equivalent is $\frac{dp}{d(proper radial distance)} = \frac{dp}{dr} = -\rho m / r^2$ - eqn 23.23N)<br>
+<br>
+
 	</body>
 </html>
