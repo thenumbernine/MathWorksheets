@@ -7,11 +7,14 @@
 	</head>
     <body onload='tryToFindMathJax();'>
 
+Here's me following 1973 Misner, Thorne, Wheeler "Gravitation" through the Schwarzschild equations of structure:<br>
+<br>
+
 Coordinate system is $t, r, \theta, \phi$<br>
 $\tau$ is the coordinate along the velocity curve.<br>
 <br>
 
-Gravitation ch.22:<br>
+<h3>Chapter 22</h3><br>
 
 $\frac{d}{d\tau} (n V) = 0$ (eqn 22.1)<br>
 $V \frac{dn}{d\tau} + n \frac{dV}{d\tau} = 0$<br>
@@ -126,8 +129,7 @@ $(\rho + p) {u^\alpha}_{;\nu} u^\nu = -P^{\alpha\nu} p_{,\nu}$ (eqn 22.13)<br>
 
 
 <hr>
-Gravitation section 23.5 "Equations of Structure"<br>
-<br>
+<h3>section 23.5 "Equations of Structure"</h3><br>
 
 Spherically symmetric coordinate system:<br>
 $ds^2 = -dt^2 + dr^2 + r^2 d\Omega^2$ (eqn 23.1)<br>
@@ -244,7 +246,7 @@ $\bar{r} = \frac{1}{2} (r - m \pm \sqrt{ r (r - 2 m) } )$<br>
 
 TODO exercise 23.1b:<br>
 Show that, in the Newtonian limit, $\Phi$ becomes the Newtonian potential and $\mu$ becomes $-\Phi$.<br>
-Show $\Lambda = r \frac{d\Phi}{dr}$<br>
+Show that, in the Newtonian limit, $\Lambda = r \frac{d\Phi}{dr}$.<br>
 <br>
 
 Surface area of a sphere:<br>
@@ -527,7 +529,7 @@ TODO better where proper radial distance comes from.<br>
 $\frac{dp}{d (proper radial distance)} = \frac{1}{e^\Lambda} \frac{dp}{dr}$<br>
 Substitute eqn 23.18 and 23.22 to get:<br>
 $\frac{dp}{d (proper radial distance)} = \frac{1}{e^\Lambda} \frac{dp}{dr}$<br>
-$\frac{dp}{dr} = -\frac{ (\rho + p)(m + 4 \pi r^3 p) }{ r^2 \sqrt{1 - 2 m / r} }$ (eqn 23.23)<br>
+$\frac{dp}{d (proper radial distance)} = -\frac{ (\rho + p)(m + 4 \pi r^3 p) }{ r^2 \sqrt{1 - 2 m / r} }$ (eqn 23.23)<br>
 (The Newton equivalent is $\frac{dp}{d(proper radial distance)} = \frac{dp}{dr} = -\rho m / r^2$ - eqn 23.23N)<br>
 <br>
 
@@ -608,6 +610,9 @@ $(\frac{p}{r^2 (sin(\theta))^2})_{,\phi} = 0$<br>
 $p_{,\phi} = 0$ for $\theta \ne 0 + k \pi$<br>
 <br>
 
+TODO explain this in terms of the question.<br>
+<br>
+
 exercise 23.4:<br>
 Based on the chapter 14 results:<br>
 $G_{\hat{t}\hat{t}} = F + 2 \bar{F}$<br>
@@ -686,7 +691,8 @@ $ =
 	+ r^{-1} 2 \Lambda_{,r} e^{2\Phi-2\Lambda}
 $<br>
 <br>
-$G_{rr} = G_{\hat{\mu}\hat{\nu}} {\omega^\hat{\mu}}_r {\omega^\hat{\nu}}_r$<br>
+
+$G_{rr} = G_{\hat\mu\hat\nu} {\omega^\hat\mu}_r {\omega^\hat\nu}_r$<br>
 $	= G_{\hat{r}\hat{r}} ({\omega^\hat{r}}_r)^2$<br>
 $	= -(
 	r^{-2} 
@@ -701,7 +707,531 @@ $	=
 	- r^{-1} 2 \Lambda_{,r}
 $<br>
 <br>	
-<br>	
-<br>	
+
+$G_{\theta\theta} = G_{\hat\mu\hat\nu} {\omega^\hat\mu}_\theta {\omega^\hat\nu}_\theta$<br>
+$= G_{\hat\theta\hat\theta} ({\omega^\hat\theta}_\theta)^2$<br>
+$= (
+	\Phi_{,rr} 
+	+ (\Phi_{,r})^2 
+	- \Phi_{,r} \Lambda_{,r}
+	+ \frac{1}{r} \Phi_{,r}
+	- \frac{1}{r} \Lambda_{,r}
+) e^{-2\Lambda} (r)^2$<br>
+$= (
+	r \Phi_{,rr} 
+	+ r (\Phi_{,r})^2 
+	- r \Phi_{,r} \Lambda_{,r}
+	+ \Phi_{,r}
+	- \Lambda_{,r}
+) e^{-2\Lambda} r$<br>
+<br>
+
+$G_{\phi\phi} = G_{\hat\mu\hat\nu} {\omega^\hat\mu}_\phi {\omega^\hat\nu}_\phi$<br>
+$= G_{\hat\phi\hat\phi} ({\omega^\hat\phi}_\phi)^2$<br>
+$ = (
+	\Phi_{,rr} 
+	+ (\Phi_{,r})^2 
+	- \Phi_{,r} \Lambda_{,r}
+	+ \frac{1}{r} \Phi_{,r}
+	- \frac{1}{r} \Lambda_{,r}
+) e^{-2\Lambda} (r sin\theta)^2 $<br>
+$ = (
+	r \Phi_{,rr} 
+	+ r (\Phi_{,r})^2 
+	- r \Phi_{,r} \Lambda_{,r}
+	+ \Phi_{,r}
+	- \Lambda_{,r}
+) e^{-2\Lambda} r sin(\theta)^2 $<br>
+<br>
+
+Doing the same thing by definition of $G_{\alpha\beta} = R_{\alpha\beta} - \frac{1}{2} g_{\alpha\beta} R$ 
+and $R_{\alpha\beta} = {R^\mu}_{\alpha\mu\beta} = 
+	{\Gamma^\mu}_{\alpha\beta,\mu} 
+	- {\Gamma^\mu}_{\alpha\mu,\beta} 
+	+ {\Gamma^\mu}_{\nu\mu} {\Gamma^\nu}_{\alpha\beta}
+	- {\Gamma^\mu}_{\nu\beta} {\Gamma^\nu}_{\alpha\mu}
+$:<br>
+Connections:<br>
+${\Gamma^t}_{tr} = {\Gamma^t}_{rt} = \Phi_{,r}$<br>
+${\Gamma^r}_{tt} = -\Phi_{,r} e^{2(\Phi - \Lambda)}$<br>
+${\Gamma^r}_{rr} = \Lambda_{,r}$<br>
+${\Gamma^r}_{\theta\theta} = -r e^{-2\Lambda}$<br> 
+${\Gamma^r}_{\phi\phi} = -r (sin \theta)^2 e^{-2 \Lambda}$<br>
+${\Gamma^\theta}_{\theta r} = {\Gamma^\theta}_{r\theta} = \frac{1}{r}$<br>
+${\Gamma^\phi}_{\phi r} = {\Gamma^\phi}_{r\phi} = \frac{1}{r}$<br>
+${\Gamma^\phi}_{\phi\theta} = {\Gamma^\phi}_{\theta\phi} = cot \theta$<br>
+Connection derivatives:<br>
+${\Gamma^t}_{tr,r} = {\Gamma^t}_{rt,r} = \Phi_{,rr}$<br>
+${\Gamma^r}_{tt,r} = (-\Phi_{,rr} - \Phi_{,r} (2 \Phi_{,r} - 2 \Lambda_{,r})) e^{2\Phi - 2\Lambda}$<br>
+${\Gamma^r}_{rr,r} = \Lambda_{,rr}$<br>
+${\Gamma^r}_{\theta\theta,r} = (2 r \Lambda_{,r} - 1) e^{-2\Lambda}$<br>
+${\Gamma^r}_{\phi\phi,\theta} = -2 r sin \theta cos \theta e^{-2 \Lambda}$<br>
+${\Gamma^r}_{\phi\phi,r} = (sin \theta)^2 (2 r \Lambda_{,r} - 1) e^{-2\Lambda}$<br>
+${\Gamma^\theta}_{\theta r,r} = {\Gamma^\theta}_{r\theta,r} = -\frac{1}{r^2}$<br>
+${\Gamma^\phi}_{\phi r,r} = {\Gamma^\phi}_{r\phi,r} = -\frac{1}{r^2}$<br>
+${\Gamma^\phi}_{\phi\theta,\theta} = {\Gamma^\phi}_{\theta\phi,\theta} = -\frac{1}{(sin\theta)^2}$<br>
+<br>
+Ricci curvature:<br>
+$R_{tt} = {\Gamma^\mu}_{tt,\mu} 
+	- {\Gamma^\mu}_{t\mu,t} 
+	+ {\Gamma^\mu}_{\nu\mu} {\Gamma^\nu}_{tt}
+	- {\Gamma^\mu}_{\nu t} {\Gamma^\nu}_{t\mu}
+$<br>
+$= {\Gamma^r}_{tt,r} 
+	+ (
+		{\Gamma^t}_{rt}
+		+ {\Gamma^r}_{rr}
+		+ {\Gamma^\theta}_{r\theta}
+		+ {\Gamma^\phi}_{r\phi}
+	) {\Gamma^r}_{tt}
+	- {\Gamma^t}_{rt} {\Gamma^r}_{tt}
+	- {\Gamma^r}_{tt} {\Gamma^t}_{tr}
+$<br>
+$= {\Gamma^r}_{tt,r} 
+	+ (
+		-{\Gamma^t}_{rt}
+		+ {\Gamma^r}_{rr}
+		+ {\Gamma^\theta}_{r\theta}
+		+ {\Gamma^\phi}_{r\phi}
+	) {\Gamma^r}_{tt}
+$<br>
+$= (-\Phi_{,rr} - \Phi_{,r} (2 \Phi_{,r} - 2 \Lambda_{,r})) e^{2\Phi - 2\Lambda}
+	- (
+		-\Phi_{,r}
+		+ \Lambda_{,r}
+		+ \frac{1}{r}
+		+ \frac{1}{r}
+	) \Phi_{,r} e^{2\Phi - 2\Lambda}
+$<br>
+$= (
+	- \Phi_{,rr}
+	- (\Phi_{,r})^2
+	+ (\Lambda_{,r} - 2 \frac{1}{r}) \Phi_{,r} 
+) e^{2\Phi - 2\Lambda}
+$<br>
+<br>
+
+$R_{tr} = 
+	{\Gamma^\mu}_{tr,\mu} 
+	- {\Gamma^\mu}_{t\mu,r} 
+	+ {\Gamma^\mu}_{\nu\mu} {\Gamma^\nu}_{tr}
+	- {\Gamma^\mu}_{\nu r} {\Gamma^\nu}_{t\mu}
+$<br>
+$ = 0$<br>
+<br>
+
+$R_{t\theta} = 
+	{\Gamma^\mu}_{t\theta,\mu} 
+	- {\Gamma^\mu}_{t\mu,\theta} 
+	+ {\Gamma^\mu}_{\nu\mu} {\Gamma^\nu}_{t\theta}
+	- {\Gamma^\mu}_{\nu\theta} {\Gamma^\nu}_{t\mu}
+$<br>
+$ = 0$<br>
+<br>
+
+$R_{t\phi} = 
+	{\Gamma^\mu}_{t\phi,\mu} 
+	- {\Gamma^\mu}_{t\mu,\phi} 
+	+ {\Gamma^\mu}_{\nu\mu} {\Gamma^\nu}_{t\phi}
+	- {\Gamma^\mu}_{\nu\phi} {\Gamma^\nu}_{t\mu}
+$<br>
+$= 0$<br>
+<br>
+
+$R_{rr} = {\Gamma^\mu}_{rr,\mu} 
+	- {\Gamma^\mu}_{r\mu,r} 
+	+ {\Gamma^\mu}_{\nu\mu} {\Gamma^\nu}_{rr}
+	- {\Gamma^\mu}_{\nu r} {\Gamma^\nu}_{r\mu}
+$<br>
+$ = 
+	{\Gamma^r}_{rr,r}
+	- {\Gamma^t}_{rt,r} 
+	- {\Gamma^r}_{rr,r} 
+	- {\Gamma^\theta}_{r\theta,r} 
+	- {\Gamma^\phi}_{r\phi,r} 
+	
+	+ (
+		{\Gamma^t}_{rt}
+		+ {\Gamma^r}_{rr}
+		+ {\Gamma^\theta}_{r\theta}
+		+ {\Gamma^\phi}_{r\phi}
+	) {\Gamma^r}_{rr}
+	
+	- {\Gamma^t}_{tr} {\Gamma^t}_{rt}
+	- {\Gamma^r}_{rr} {\Gamma^r}_{rr}
+	- {\Gamma^\theta}_{\theta r} {\Gamma^\theta}_{r\theta}
+	- {\Gamma^\phi}_{\phi r} {\Gamma^\phi}_{r\phi}
+$<br>
+$ = 
+	- {\Gamma^t}_{rt,r} 
+	- {\Gamma^\theta}_{r\theta,r} 
+	- {\Gamma^\phi}_{r\phi,r} 
+	
+	+ (
+		{\Gamma^t}_{tr}
+		+ {\Gamma^\theta}_{\theta r}
+		+ {\Gamma^\phi}_{\phi r}
+	) {\Gamma^r}_{rr}
+	
+	- ({\Gamma^t}_{tr})^2
+	- ({\Gamma^\theta}_{\theta r})^2
+	- ({\Gamma^\phi}_{\phi r})^2
+$<br>
+$ = 
+	- \Phi_{,rr}	
+	+ \frac{1}{r^2}
+	+ \frac{1}{r^2}
+	
+	+ (
+		\Phi_{,r}
+		+ \frac{1}{r}
+		+ \frac{1}{r}
+	) \Lambda_{,r}
+	
+	- (\Phi_{,r})^2
+	- (\frac{1}{r})^2
+	- (\frac{1}{r})^2
+$<br>
+$ = 
+	- \Phi_{,rr}	
+	- (\Phi_{,r})^2
+	+ \Phi_{,r} \Lambda_{,r}
+	+ 2 \frac{1}{r} \Lambda_{,r}
+$<br>
+<br>
+
+$R_{r\theta} = 
+	{\Gamma^\mu}_{r\theta,\mu} 
+	- {\Gamma^\mu}_{r\mu,\theta} 
+	+ {\Gamma^\mu}_{\nu\mu} {\Gamma^\nu}_{r\theta}
+	- {\Gamma^\mu}_{\nu\theta} {\Gamma^\nu}_{r\mu}
+$<br>
+$ = 
+	+ {\Gamma^\phi}_{\theta\phi} {\Gamma^\theta}_{r\theta}
+	- {\Gamma^\phi}_{\phi\theta} {\Gamma^\phi}_{\phi r}
+$<br>
+$ = 
+	cot\theta \frac{1}{r} 
+	- cot\theta \frac{1}{r} 
+$<br>
+$ = 0$<br>
+<br>
+
+$R_{r\phi} =
+	{\Gamma^\mu}_{r\phi,\mu} 
+	- {\Gamma^\mu}_{r\mu,\phi} 
+	+ {\Gamma^\mu}_{\nu\mu} {\Gamma^\nu}_{r\phi}
+	- {\Gamma^\mu}_{\nu\phi} {\Gamma^\nu}_{r\mu}
+$<br>
+$ = 0$<br>
+<br>
+
+$R_{\theta\theta} = 
+	{\Gamma^\mu}_{\theta\theta,\mu} 
+	- {\Gamma^\mu}_{\theta\mu,\theta} 
+	+ {\Gamma^\mu}_{\nu\mu} {\Gamma^\nu}_{\theta\theta}
+	- {\Gamma^\mu}_{\nu\theta} {\Gamma^\nu}_{\theta\mu}
+$<br>
+$ = 
+	{\Gamma^r}_{\theta\theta,r}
+	- {\Gamma^\phi}_{\theta\phi,\theta} 
+	+ (
+		{\Gamma^t}_{rt} 
+		+ {\Gamma^r}_{rr} 
+		+ {\Gamma^\phi}_{r\phi} 
+	) {\Gamma^r}_{\theta\theta}
+	- ({\Gamma^\phi}_{\phi\theta})^2
+$<br>
+$ = 
+	(2 r \Lambda_{,r} - 1) e^{-2\Lambda}
+	+ \frac{1}{(sin\theta)^2}
+	+ (
+		\Phi_{,r}
+		+ \Lambda_{,r}	
+		+ \frac{1}{r}	
+	) (
+		-r e^{-2\Lambda}
+	)
+	- (cot \theta)^2
+$<br>
+$ = 
+	(
+		- 1
+		+ r \Lambda_{,r} 
+		- r \Phi_{,r}
+		- e^{2\Lambda}
+	) e^{-2\Lambda}
+$<br>
+<br>
+
+$R_{\theta\phi} = 
+	{\Gamma^\mu}_{\theta\phi,\mu} 
+	- {\Gamma^\mu}_{\theta\mu,\phi} 
+	+ {\Gamma^\mu}_{\nu\mu} {\Gamma^\nu}_{\theta\phi}
+	- {\Gamma^\mu}_{\nu\phi} {\Gamma^\nu}_{\theta\mu}
+$<br>
+$ = 0$<br>
+<br>
+
+$R_{\phi\phi} = 
+	{\Gamma^\mu}_{\phi\phi,\mu} 
+	- {\Gamma^\mu}_{\phi\mu,\phi} 
+	+ {\Gamma^\mu}_{\nu\mu} {\Gamma^\nu}_{\phi\phi}
+	- {\Gamma^\mu}_{\nu\phi} {\Gamma^\nu}_{\phi\mu}
+$<br>
+$ = 
+	{\Gamma^r}_{\phi\phi,r}
+	+ (
+		{\Gamma^t}_{rt}
+		+ {\Gamma^r}_{rr}
+		+ {\Gamma^\theta}_{r\theta}
+	){\Gamma^r}_{\phi\phi}
+$<br>
+$ = 
+	(sin \theta)^2 (2 r \Lambda_{,r} - 1) e^{-2\Lambda}
+	
+	+ (
+		\Phi_{,r}
+		+ \Lambda_{,r}
+		+ \frac{1}{r}
+	) (
+		-r (sin \theta)^2 e^{-2 \Lambda}
+	)
+$ ... should be an extra term in here<br>
+$ = 
+	(
+		- 1
+		+ r \Lambda_{,r}
+		- r \Phi_{,r}
+		- e^{2\Lambda}
+	) e^{-2 \Lambda} (sin \theta)^2
+$<br>
+<br>
+
+Next, Gaussian curvature:<br>
+$R = R_{\alpha\beta} g^{\alpha\beta}$<br>
+...<Br>
+$ = e^{-2\Lambda} (
+	- \frac{1}{r^2} 2
+	+ 2 \frac{1}{r^2} e^{2\Lambda}
+	
+	- 4 \frac{1}{r} \Phi_{,r}
+	+ 4 \frac{1}{r} \Lambda_{,r}
+	
+	- 2 \Phi_{,rr}
+	+ 2 \Phi_{,r} \Lambda_{,r}
+	- 2 (\Phi_{,r})^2
+)$<br>
+<br>
+
+Next, the Einstein curvature tensor:<br>
+(TODO work this out -- I'm taking this from my TOV symmath worksheet)<br>
+
+$G_{tt} = {\frac{-{({{{2 - {{\Lambda_{,{{r}}}} {\Phi_{,{{r}}}} {{r}^{2}}}} - {4 {\Lambda_{,{{r}}}} r}} + {{\Phi_{,{{r}}{{r}}}} {{r}^{2}}} + {2 {\Phi_{,{{r}}}} r} + {{{{{({\Phi_{,{{r}}}})}}^{2}} {{r}^{2}}} - {2 {{e}^{{({2 \Lambda})}}}}}})}}{{{e}^{{({2 {({\Lambda - \Phi})}})}}} {{r}^{2}}}} $<br>
+$G_{rr} = {\frac{{2 - {2 {\Lambda_{,{{r}}}} r}} + {{{\Phi_{,{{r}}{{r}}}} {{r}^{2}}} - {{\Phi_{,{{r}}}} {\Lambda_{,{{r}}}} {{r}^{2}}}} + {{{{({\Phi_{,{{r}}}})}}^{2}} {{r}^{2}}} + {{4 {\Phi_{,{{r}}}} r} - {2 {{e}^{{({2 \Lambda})}}}}}}{{r}^{2}}} $<br>
+$G_{\theta\theta} = {\frac{{1 - {3 {\Lambda_{,{{r}}}} r}} + {{2 {\Phi_{,{{r}}{{r}}}} {{r}^{2}}} - {2 {\Phi_{,{{r}}}} {\Lambda_{,{{r}}}} {{r}^{2}}}} + {2 {{{({\Phi_{,{{r}}}})}}^{2}} {{r}^{2}}} + {{3 {\Phi_{,{{r}}}} r} - {{e}^{{({2 \Lambda})}}}}}{{e}^{{({2 \Lambda})}}}} $<br>
+$G_{\phi\phi} = {\frac{{{{sin\left(\theta\right)}}^{2}} {({{1 - {3 {\Lambda_{,{{r}}}} r}} + {{2 {\Phi_{,{{r}}{{r}}}} {{r}^{2}}} - {2 {\Phi_{,{{r}}}} {\Lambda_{,{{r}}}} {{r}^{2}}}} + {2 {{{({\Phi_{,{{r}}}})}}^{2}} {{r}^{2}}} + {{3 {\Phi_{,{{r}}}} r} - {{e}^{{({2 \Lambda})}}}}})}}{{e}^{{({2 \Lambda})}}}} $<br>
+<br>
+
+Convert to tetrad basis:<br>
+$G_{\hat{t}\hat{t}} = e^{-2\Phi} \cdot {\frac{-{({{{2 - {{\Lambda_{,{{r}}}} {\Phi_{,{{r}}}} {{r}^{2}}}} - {4 {\Lambda_{,{{r}}}} r}} + {{\Phi_{,{{r}}{{r}}}} {{r}^{2}}} + {2 {\Phi_{,{{r}}}} r} + {{{{{({\Phi_{,{{r}}}})}}^{2}} {{r}^{2}}} - {2 {{e}^{{({2 \Lambda})}}}}}})}}{{{e}^{{({2 {({\Lambda - \Phi})}})}}} {{r}^{2}}}} $
+$ = {\frac{-{({{{2 - {{\Lambda_{,{{r}}}} {\Phi_{,{{r}}}} {{r}^{2}}}} - {4 {\Lambda_{,{{r}}}} r}} + {{\Phi_{,{{r}}{{r}}}} {{r}^{2}}} + {2 {\Phi_{,{{r}}}} r} + {{{{{({\Phi_{,{{r}}}})}}^{2}} {{r}^{2}}} - {2 {{e}^{{({2 \Lambda})}}}}}})}}{{{e}^{{({2 {{\Lambda}}})}}} {{r}^{2}}}} $
+<br>
+
+$G_{\hat{r}\hat{r}} = e^{-2\Lambda} \cdot {\frac{{2 - {2 {\Lambda_{,{{r}}}} r}} + {{{\Phi_{,{{r}}{{r}}}} {{r}^{2}}} - {{\Phi_{,{{r}}}} {\Lambda_{,{{r}}}} {{r}^{2}}}} + {{{{({\Phi_{,{{r}}}})}}^{2}} {{r}^{2}}} + {{4 {\Phi_{,{{r}}}} r} - {2 {{e}^{{({2 \Lambda})}}}}}}{{r}^{2}}} $
+$= {\frac{{2 - {2 {\Lambda_{,{{r}}}} r}} + {{{\Phi_{,{{r}}{{r}}}} {{r}^{2}}} - {{\Phi_{,{{r}}}} {\Lambda_{,{{r}}}} {{r}^{2}}}} + {{{{({\Phi_{,{{r}}}})}}^{2}} {{r}^{2}}} + {{4 {\Phi_{,{{r}}}} r} - {2 {{e}^{{({2 \Lambda})}}}}}}{ r^2 e^{2\Lambda} }} $
+<br>
+
+$G_{\hat\theta\hat\theta} = (r)^{-2} \cdot {\frac{{1 - {3 {\Lambda_{,{{r}}}} r}} + {{2 {\Phi_{,{{r}}{{r}}}} {{r}^{2}}} - {2 {\Phi_{,{{r}}}} {\Lambda_{,{{r}}}} {{r}^{2}}}} + {2 {{{({\Phi_{,{{r}}}})}}^{2}} {{r}^{2}}} + {{3 {\Phi_{,{{r}}}} r} - {{e}^{{({2 \Lambda})}}}}}{{e}^{{({2 \Lambda})}}}} $
+$ = {\frac{{1 - {3 {\Lambda_{,{{r}}}} r}} + {{2 {\Phi_{,{{r}}{{r}}}} {{r}^{2}}} - {2 {\Phi_{,{{r}}}} {\Lambda_{,{{r}}}} {{r}^{2}}}} + {2 {{{({\Phi_{,{{r}}}})}}^{2}} {{r}^{2}}} + {{3 {\Phi_{,{{r}}}} r} - {{e}^{{({2 \Lambda})}}}}}{ r^2 {e}^{{({2 \Lambda})}}}} $
+<br>
+
+$G_{\hat\phi\hat\phi} = (r sin\theta)^{-2} \cdot {\frac{{{{sin\left(\theta\right)}}^{2}} {({{1 - {3 {\Lambda_{,{{r}}}} r}} + {{2 {\Phi_{,{{r}}{{r}}}} {{r}^{2}}} - {2 {\Phi_{,{{r}}}} {\Lambda_{,{{r}}}} {{r}^{2}}}} + {2 {{{({\Phi_{,{{r}}}})}}^{2}} {{r}^{2}}} + {{3 {\Phi_{,{{r}}}} r} - {{e}^{{({2 \Lambda})}}}}})}}{{e}^{{({2 \Lambda})}}}} $
+$ = {\frac{  {{1 - {3 {\Lambda_{,{{r}}}} r}} + {{2 {\Phi_{,{{r}}{{r}}}} {{r}^{2}}} - {2 {\Phi_{,{{r}}}} {\Lambda_{,{{r}}}} {{r}^{2}}}} + {2 {{{({\Phi_{,{{r}}}})}}^{2}} {{r}^{2}}} + {{3 {\Phi_{,{{r}}}} r} - {{e}^{{({2 \Lambda})}}}}} }{ r^2 {e}^{{({2 \Lambda})}}}} $
+<br>
+
+exercise 23.5:<br>
+Show the total number of baryons in a star is equal to 
+should be the integral from 0 to R of the volume element times the density ...<br>
+The lapse is $e^\Phi$, the spatial volume is $e^\Lambda$.<br>
+The surface of a sphere at radius $r$ is $4 \pi r^2$.<br>
+Therefore the number of baryons within a volume of space on the surface of the sphere is $4 \pi r^2 \cdot n \cdot e^\Lambda$<br>
+Therefore the total within the volume of the sphere is $A = \int_0^R 4 \pi r^2 n e^\Lambda dr$<br>
+<br>
+
+exercise 23.6:<br>
+Buoyant forces = gravitational forces.<br>
+Gravitational acceleration = $f^\mu = \rho a^\mu = -\rho {\Gamma^\mu}_{\alpha\beta} u^\alpha u^\beta$<br>
+An object at rest: $u = e_\hat{t} = e^{-\Phi} e_t$, so $u^t = e^{-\Phi}$<br>
+Substitute to find: $f^\mu = -\rho {\Gamma^\mu}_{tt} e^{-2\Phi}$<br>
+$f^\mu = -\rho {\Gamma^\mu}_{tt} (e^{-\Phi})^2$<br>
+$f^\mu = -\rho \cdot -\Phi_{,r} e^{2(\Phi - \Lambda)} \cdot e^{-2\Phi}$<br>
+$f^\mu = \rho \Phi_{,r} e^{-2\Lambda}$<br>
+...which looks like the Newtonian gravitational force, with the spatial volume squared.<br>
+...also, where do the $p$ and $m$ come into play?<br>
+...also, should I replace $e^{-\Lambda}$ with $V$?<br>
+TODO redo this one.<br>
+<br>
+
+exercise 23.7:<br>
+TODO<br>
+<br>
+
+<hr>
+<h3>section 23.6 "External Gravitational Field"</h3><br>
+
+Outside a star:<br>
+$p = 0, \rho = 0$, only $\Lambda$ and $\Phi$ influence spacetime.<br>
+$m(r) = M$ for $r &gt; R$<br>
+Start with $\frac{d\Phi}{dr} = \frac{ m + 4 \pi p r^3 }{ r (r - 2 m) }$ (eqn 23.21)<br>
+Substitute $p = 0$ and $m = M$<br>
+$\frac{d\Phi}{dr} = \frac{M}{ r (r - 2 M) }$<br>
+$\int d\Phi = \int \frac{M}{ r (r - 2 M) } dr$<br>
+$\Phi = C + \frac{1}{2} log(r - 2 M) - \frac{1}{2} log(r)$<br>
+$\Phi = C + \frac{1}{2} log(1 - 2 M / r)$<br>
+Let $\underset{r \rightarrow \infty}{\lim} \Phi(r) = 0$ eqn 23.10<br>
+$0 = \underset{r \rightarrow \infty}{\lim} \Phi(r) 
+	= \underset{r \rightarrow \infty}{\lim} (C + \frac{1}{2} log(1 - 2 M / r))
+	= C + \frac{1}{2} log(1 - \underset{r \rightarrow \infty}{\lim} 2 M / r)
+	= C + \frac{1}{2} log(1)
+	= C
+$<br>
+Therefore $C = 0$ and <br>
+$\Phi = \frac{1}{2} log(1 - 2 M / r)$ (eqn 23.26)<br>
+<br>
+
+Determine $\Lambda$ outside of the star:<br>
+Start with equation 23.18:<br>
+$e^{2\Lambda} = (1 - \frac{2 m}{r})^{-1}$<br>
+Substitute our values:<br>
+$e^{2\Lambda} = (1 - \frac{2 M}{r})^{-1}$<br>
+
+Substitute $\Phi$ and $\Lambda$ into the TOV metric eqn 23.3 to find:<br>
+$ds^2 = -e^{2 \frac{1}{2} log(1 - 2 M / r) } dt^2 + e^{2\Lambda} dr^2 + R^2 d\Omega^2$<br>
+$ds^2 = -e^{2 \frac{1}{2} log(1 - 2 M / r) } dt^2 + (1 - \frac{2 M}{r})^{-1} dr^2 + R^2 d\Omega^2$<br>
+$ds^2 = -(1 - 2 M / r) dt^2 + \frac{1}{1 - \frac{2 M}{r}} dr^2 + R^2 d\Omega^2$ (eqn 23.27)<br>
+...Tada, Schwarzschild geometry.<br>
+<br>
+TODO show how the Newtonian limit outside of stars is $\Phi = -M /r$ for $r &gt; R, r &gt;&gt; 2 M$ (23.26N)<br>
+<br>
+
+<hr>
+<h3>section 23.7 "How To Construct a Stellar Model"</h3><br>
+
+Line element: $ds^2 = -(1 - 2 M / r) dt^2 + \frac{1}{1 - \frac{2 M}{r}} dr^2 + r^2 d\Omega^2$ (eqn 23.27 again, as eqn 23.27')<br>
+Mass equation: $m(r) = \int_{r=0}^{r=r} 4 \pi r^2 \rho dr$ (this is eqn 23.19 with $m(0) = 0$ -- eqn 23.28a)<br>
+OV Equation of Hydrostatic Equilibrium: $\frac{dp}{dr} = -\frac{ (\rho + p)(m + 4 \pi r^3 p) }{ r (r - 2 m) }$ (eqn 23.22 again, as eqn 23.28b)<br>
+	with $p(r=0) = p_c = $ central pressure.<br>
+Equations of state: $p = p(n)$ (eqn 23.28c) and $\rho = \rho(n)$ (eqn 23.28d)<br>
+Source equation for $\Phi$: $\frac{d\Phi}{dr} = \frac{ m + 4 \pi p r^3 }{ r (r - 2 m) }$ (eqn 23.21 again, as eqn 23.28e)<br>
+	with the boundary condition $\Phi = \frac{1}{2} log(1 - 2 M / r)$ from eqn 23.26<br>
+<br>
+
+Next add more boundary conditions:<br>
+$\Phi(r = 0) = \Phi_0$<br>
+$p(r = 0) = p_c$<br>
+$m(r = 0) = 0$<br>
+<br>
+
+Exercise 23.8 comes before box 23.2, but depends on content in the box, so I'm putting it after the box.<br>
+Box 23.2 comes before section 23.8, but depends on content in section 23.8, so I'm putting it after section 23.8.<br> 
+
+<hr>
+<h3>section 23.8</h3><br>
+
+Start with eqn 23.27':<br>
+$ds^2 = -(1 - 2 M / r) dt^2 + \frac{1}{1 - \frac{2 M}{r}} dr^2 + R^2 d\Omega^2$<br>
+Fix $d\theta = 0, d\phi = 0, dt = 0$ and let $l = s$ be the length:<br>
+$dl^2 = \frac{1}{1 - \frac{2 M}{r}} dr^2$<br>
+$dr = \pm \sqrt{1 - \frac{2 M}{r} } dl$ (eqn 23.29)<br>
+<br>
+
+Same deal, but fix $\theta = \frac{\pi}{2}$, so $d\theta = 0$, and keep $\phi$:<br>
+$ds^2 = \frac{1}{1 - 2 m / r} dr^2 + r^2 d\phi^2$ (eqn 23.30)<br>
+<br>
+
+Now we consider the embedding as a surface, $z$:<br>
+$ds^2 = dz^2 + dr^2 + r^2 d\phi^2$ (eqn 23.31)<br>
+Let $z = z(r)$, so $dz = \frac{dz}{dr} dr$:<br>
+$ds^2 = (\frac{dz}{dr} dr)^2 + dr^2 + r^2 d\phi^2$ (eqn 23.31)<br>
+$ds^2 = (1 + (\frac{dz}{dr})^2) dr^2 + r^2 d\phi^2$ (eqn 23.32)<br>
+Match this with the Schwarzschild line element $ds^2 = \frac{1}{1 - \frac{2 m(r)}{r}} dr^2 + r^2 d\phi^2$<br>
+to find $1 + (\frac{dz}{dr})^2 = \frac{1}{1 - \frac{2 m(r)}{r}}$ (eqn 23.33)<br>
+$dz = \sqrt{\frac{1}{1 - \frac{2 m(r)}{r}} - 1} dr$<br>
+$dz = \frac{1}{\sqrt{\frac{r}{2 m(r)} - 1}} dr$<br>
+$z(r) = \int_0^r \frac{1}{\sqrt{\frac{r}{2 m(r)} - 1}} dr$ inside a star (eqn 23.34a)<br>
+Outside a star, replace $m(r) = M$:<br>
+$z(r) = \int_0^r \frac{1}{\sqrt{\frac{r}{2 M} - 1}} dr$<br>
+$z(r) = \sqrt{ 8 M (r - 2 M) } + C$ (eqn 23.34b)<br>
+TODO explain: recall $m(r)$ varies by $\frac{4}{3} \pi \rho_c r^3$ near $r = 0$<br>
+TODO explain: therefore let $a = (3 / 8 \pi \rho_c)^{1/2}$ ... is that $\frac{3}{8} \pi \rho_c$ or is it $\frac{3}{8 \pi \rho_c}$ ?<br>
+TODO explain: $(a - z(r))^2 + r^2 = a^2$ for $r &lt;&lt; a = (3 / 8 \pi \rho_c)^{1/2}$ (eqn 23.34c)<br>
+<br>
+
+<b>box 23.2</b><br>
+Assume the star has uniform density: $\rho = \rho_0$<br>
+
+mass equation:<br>
+$m = \left\{ \matrix{
+	r &lt; R : & \frac{4}{3} \pi \rho_0 r^3 \\
+	r &gt; R : & M = \frac{4}{3} \pi \rho_0 R^3 
+}\right\}$ box 23.2 eqn 2<br>
+<br>
+
+$\frac{d (proper distance)}{dr} = e^\Lambda = (1 - 2 m(r) / r)^{-1/2}$ box 23.2 eqn 3<br>
+<br>
+
+Lift equation:<br>
+TODO ... from section 23.8 ... should go before this.<br>
+$z(r) = \left\{\matrix{
+	r \le R : & \sqrt{\frac{ R^3 }{ 2 M }} (1 - \sqrt{1 - \frac{2 M r^2}{R^3}}) \\
+	r \ge R : & \sqrt{ \frac{ R^3 }{ 2 M } } (1 - \sqrt{ 1 - \frac{2 M}{R} } ) 
+		+ \sqrt{ 8 M (r - 2 M ) }
+		- \sqrt{ 8 M (R - 2 M ) }
+}\right\}$ box 23.2 eqn 4<br>
+<br>
+
+TODO this is supposed to come from box 23.2 eqn 2 and $\frac{dp}{dr}$ in eqn 23.28b:<br>
+Start with: $\frac{dp}{dr} = -\frac{ (\rho + p)(m + 4 \pi r^3 p) }{ r (r - 2 m) }$ from eqn 23.28b<br>
+Substitute box 23.2 eqn 2: $m(r) = \frac{4}{3} \pi \rho_0 r^3$ to find:<br>
+$\frac{dp}{dr} = -\frac{ (\rho + p)(\frac{4}{3} \pi \rho_0 r^3 + 4 \pi r^3 p) }{ r (r - 2 \frac{4}{3} \pi \rho_0 r^3) }$<br>
+TODO...<br>
+$p = \rho_0 \left(
+	\frac{
+		\sqrt{ 1 - \frac{2 M r^2 }{ R^3 } } 
+		- \sqrt{ 1 - \frac{2 M}{ R } }
+	}{
+		3 \sqrt{ 1 - \frac{2 M }{ R } }
+		- \sqrt{ 1 - \frac{2 M r^2 }{ R^3 } }
+	}
+\right)$ for $r &lt; R$ -- box 23.2 eqn 5<br>
+<br>
+
+TODO: show why...<br>
+$\frac{d(proper time)}{dt} = e^\Phi = \left\{\matrix{
+	r &lt; R : & \frac{3}{2} (1 - \frac{2 M}{R})^{1/2} - \frac{1}{2} (1 - \frac{2 M r^2}{R^3})^{1/2} \\
+	r &gt; R : & (1 - 2 M / r)^{1/2}
+}\right\}$ -- box 23.2 eqn 6<br>
+<br>
+
+TODO:<br>
+$p_c = \rho_0 \left(
+	\frac{
+		1 - (1 - 2 M / R)^{1/2}
+	}{
+		3 (1 - 2 M / R)^{1/2} - 1
+	}
+\right)$ -- box 23.2 eqn 7<br>
+<br>
+
+TODO:<br>
+$2 M / R = (8 \pi / 3) \rho_0 R^2$ -- box 23.2 eqn 8<br>
+<br>
+
+TODO exercise 23.8:<br>
+<br>
+
+<br>
+
 	</body>
 </html>
