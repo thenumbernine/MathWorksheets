@@ -34,7 +34,7 @@ Here's the CDN URLs:
 
 [Differential Geometry/9 - Ashtekar variables](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/9%20%2d%20Ashtekar%20variables%2ehtml)
 
-[Differential Geometry/index](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/index%2ehtml)
+[Differential Geometry/sources](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/sources%2ehtml)
 
 [EMHD Hyperbolic Conservation Laws](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/EMHD%20Hyperbolic%20Conservation%20Laws%2ehtml)
 
