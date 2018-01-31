@@ -1,0 +1,582 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Differential Geometry</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+	</head>
+    <body onload='tryToFindMathJax();'>
+
+<a href='index.html'>Back</a><br>
+<br>
+
+$M =$ manifold.<br>
+$n =$ dimension of manifold.<br>
+$p \in M$ = point on manifold.<br>
+$T_p(M)$ = tangent space on $M$ at point $p$.<br>
+$T_p^*(M)$ = tangent space on $M$ at point $p$.<br>
+<br>
+
+Let $e_a = \frac{\partial}{\partial x^a} = \partial_a$ span $T_p(M)$.<br>
+$e_a : M \rightarrow V$ form a vector space.... ? And the manifold is a collection of functions? Because the vector basii act on functions.<br>
+<br>
+
+Let ${e^a} = dx^a = $ span $T_p^*(M)$ be the one-form basis.<br>
+$e^a : V \rightarrow \mathbb{R}, e^a$ linear (a vector space?)<br>
+Such that $e^a(e_b) = \delta^a_b$<br>
+<br>
+
+${e_u} = {e_u}^I \partial_I$<br>
+${e^u} = {e^u}_I dx^I$<br>
+$e = det({e_u}^I) > 0$<br>
+<br>
+
+When ${e_u}^I = \delta_u^I$ then $e_u = \partial_u$ and the basis is holonomic.<br>
+Otherwise the basis is anholonomic / non-holonomic.<br>
+<br>
+
+Hmm, but IJK should stand for a basis with signature metric.<br>
+...which means it would need a second linear transformation from the signature metric to the coordinate basis.<br>
+In the end there is going to be $\{e_a\}$ related to an arbitrary metric $g_{ab}$, $\{e_I\}$ related to a diagonal metric $\eta_{IJ}$,
+	and somehow these have to be represented in terms of some basis of partial derivatives.  The metric $g_{ab}$ isn't guaranteed to be in terms of partial derivatives (right?).
+	The diagonal metric is going to be a diagonalization of $g_{ab}$ by ${e_a}^I$, which means it certainly won't be in terms of partials for ${e_a}^I \ne \delta_a^I$.
+	So if this is going to be represented in terms of a coordinate basis then we need a third metric.  Or we need to guarantee the $g_{ab}$ is based on a coordinate $\{e_a\}$.<br>
+<br>
+
+$[ {e_u}^I ] \in GL(n, \mathbb{R})$<br>
+$[ {e^u}_I ] = [ {e_u}^I ]^{-1}$<br>
+<br>
+
+${e_u}^I {e^u}_J = \delta^I_J$<br>
+${e_u}^I {e^v}_I = \delta^v_u$<br>
+<br>
+
+Contravariant representation $ v = v^a e_a $<br>
+Covariant representation $ w = w_a e^a $<br>
+<br>
+
+Kronecher delta:<br>
+$\delta^a_b = 1$ for $a = b$, otherwise 0.<br>
+$\delta^a_b = \overset{a\downarrow b\rightarrow}{\left[\matrix{1&0&\dots&0 \\ 0&1&\dots&0 \\ \dots&\dots&\dots&\dots \\ 0&0&\dots&1 }\right]}$<br>
+<br>
+
+Index notation:<br>
+${T^{a_1 ... a_p}}_{b_1 ... b_q}$ implicitly describes $T = {T^{a_1 ... a_p}}_{b_1 ... b_q} e^{a_1} \otimes ... \otimes e^{a_p} \otimes e_{b_1} \otimes ... \otimes e_{b_p}$<br>
+<br>
+
+Abstract index notation:<br>
+Indexes are not enumerations,<br>
+nor are they related to any particular basis,<br>
+but are used to determine what space the tensor resides in:<br>
+${T^{a_1 ... a_p}}_{b_1 ... b_q} \leftrightarrow T(\cdot, ..., \cdot) \in \underbrace{V \otimes ... \otimes V}_{\times p} \otimes \underbrace{V^* \otimes ... \otimes V^*}_{\times q}$<br>
+<br>
+
+$v_{(a_1 \dots a_p)} = {1\over p!} \cdot $ sum of even permutations of $a_1 \dots a_p$ plus sum of odd permutations<br>
+$v_{[a_1 \dots a_p]} = {1\over p!} \cdot $ sum of even permutations of $a_1 \dots a_p$ minus sum of odd permutations<br>
+$v_{|a_1 \dots a_p|} = $ sum of even minus sum of odd permutations, only summing indexes in increasing order<br>
+$v_{(a_1 \dots | a_k \dots a_m | \dots a_p)}$, $v_{[a_1 \dots | a_k \dots a_m | \dots a_p]} = $ a sum of permutations on variables $a_1 \dots a_p$ excluding the variables $a_k$ through $a_m$<br>
+<br>
+
+completely symmetric tensor:<br>
+$T_{a_1 \dots a_p} = T_{(a_1 \dots a_p)}$<br>
+<br>
+
+alternating / completely antisymmetric tensor:<br>
+$T_{a_1 \dots a_p} = T_{[a_1 \dots a_p]}$<br>
+<br>
+
+degree-2 antisymmetric tensors are tensors such that $T_{ab} = -T_{ba}$:<br>
+$T_{[ab]} = {1\over2} (T_{ab} - T_{ba}) = {1\over2}(T_{ab} + T_{ab}) = T_{ab}$<br>
+$T_{(ab)} = {1\over2} (T_{ab} + T_{ba}) = {1\over2}(T_{ab} - T_{ab}) = 0$<br>
+<br>
+
+degree-2 symmetric tensors are tensors such that $T_{ab} = T_{ba}$:<br>
+$T_{[ab]} = {1\over2} (T_{ab} - T_{ba}) = {1\over2}(T_{ab} - T_{ab}) = 0$<br>
+$T_{(ab)} = {1\over2} (T_{ab} + T_{ba}) = {1\over2}(T_{ab} + T_{ab}) = T_{ab}$<br>
+<br>
+
+any degree-2 tensor can be represented as its symmetric and antisymmetric components:<br>
+$T_{(ab)} + T_{[ab]} = {1\over2} (T_{ab} + T_{ba}) + {1\over2} (T_{ab} - T_{ba})$<br>
+$= {1\over2}(T_{ab} + T_{ab})$<br>
+$= T_{ab}$<br>
+<br>
+
+Comma and semicolon notation:<br>
+$e_a T = \partial_a T = \frac{\partial}{\partial x^a} T = T_{,a}$<br>
+<br>
+
+$\nabla_{e_a} T = \nabla_a T = T_{;a}$<br>
+<br>
+
+Comma / semicolon derivatives aren't used so often anymore, probably because it adds the new index to the right hand side, whereas derivative symbols add the new index to the left hand side 
+... and derivatives like the exterior derivative add the new $e^a \wedge$ to the left hand side as well ... maybe for consistency or for other reasons, $\nabla$ applies $e_a \otimes$ to the left hand side as well.<br>
+<br>
+
+Structure constants / commutation coefficients:<br>
+$[e_a, e_b] f = e_a (e_b(f)) - e_b (e_a(f)) = {c_{ab}}^c e_c(f)$<br>
+<br>
+
+In holonomic basis:<br>
+$[e_a, e_b] f = [\partial_a, \partial_b] f = \partial_a \partial_b f - \partial_b \partial_a f = 0$, therefore ${c_{ab}}^c = 0$<br>
+<br>
+
+In an anholonomic basis:<br>
+$[e_a, e_b] f = {e_a}^I \partial_I ({e_b}^J \partial_J f) - {e_b}^J \partial_J ({e_a}^I \partial_I f)$<br>
+${c_{ab}}^c = {e^c}_J ({e_a}^I {{e_b}^J}_{,I} - {e_b}^I {{e_a}^J}_{,I})$<br>
+<br>
+
+vierbein derivative in a non-coordinate basis:<br>
+${{e_a}^I}_{,b} = e_b {e_a}^I$
+$= {e_b}^J {{e_a}^I}_{,J}$<br>
+Because ${e_a}^I$ is invertible,<br>
+${{e_a}^I}_{,b} {e^b}_J = {{e_a}^I}_{,J}$<br>
+<br>
+
+structure constants in a non-coordinate basis:<br>
+$e_\mu = {e_\mu}^I \partial_I$<br>
+${c_{ab}}^c e_c = [e_a, e_b]$<br>
+${c_{ab}}^c e_c = 2 {e_{[a|}}^I e_I ({e_{|b]}}^J e_J)$<br>
+${c_{ab}}^c e_c = 2 ({e_{[a}}^I {{e_{b]}}^J}_{,I} e_J + {e_{[a}}^I {e_{b]}}^J e_I e_J)$
+$ = 2 ({e_{[a}}^I {{e_{b]}}^J}_{,I} e_J + {e_a}^I {e_b}^J e_{[I} e_{J]})$<br>
+${c_{ab}}^c {e_c}^J e_J = 2 {e_{[a}}^I {{e_{b]}}^J}_{,I} e_J$
+$ = ({e_a}^I {{e_b}^J}_{,I} - {e_b}^I {{e_a}^J}_{,I}) e_J$<br>
+${c_{ab}}^c = ({e_a}^I {{e_b}^J}_{,I} - {e_b}^I {{e_a}^J}_{,I}) {e^c}_J$<br>
+$c_{abc} = ({{e_b}^J}_{,a} - {{e_a}^J}_{,b}) e_{c J}$
+$ = 2 {{e_{[b}}^I}_{,a]} e_{c I}$<br>
+<br>
+
+
+
+$[e_a, e_b] = e_a e_b - e_b e_a = -(e_b e_a - e_a e_b) = -[e_b, e_a]$<br>
+Therefore ${c_{ab}}^c = -{c_{ba}}^c$<br>
+<br>
+
+Lie derivative of a vector / Lie bracket of two vectors:<br>
+$\mathcal{L}_x y = [x, y] = x y - y x = x (y^b e_b) - y (x^b e_b)$<br>
+Note that vectors are not linear wrt scalar(function) multiplication like one-forms are (are one-forms?)<br>
+Therefore they must be applied<br>
+Decompose vectors<br>
+$= x^a e_a (y^b e_b) - y^a e_a (x^b e_b)$<br>
+Distribute<br>
+$= x^a (e_a y^b) e_b + x^a y^b e_a e_b - y^a (e_a x^b) e_b - y^a x^b e_a e_b$<br>
+$= (x^a {y^b}_{,a} - y^a {x^b}_{,a}) e_b + x^a y^c (e_a e_c - e_c e_a)$ by combining the 1st and 3rd, moving the 2nd to before the 4th, and reindexing the 4th term<br>
+$= (x^a {y^b}_{,a} - y^a {x^b}_{,a}) e_b + x^a y^c {c_{ac}}^b e_b$<br>
+$= (x^a {y^b}_{,a} - y^a {x^b}_{,a} + x^a y^c {c_{ac}}^b) e_b$<br>
+<br>
+
+Somewhere it's defined the Lie derivative of a scalar function:<br>
+$\mathcal{L}_x \phi = \partial \phi = \phi_{,a} e^a$<br>
+Is this the same as the Lie bracket of a scalar?  Because expanding $[x, \phi]$ makes no sense ...<br>
+$[x, \phi] = x \phi - \phi x = x^a e_a \phi - \phi x^a e_a = x^a \phi_{,a} - \phi x$ ... is a scalar minus a vector.<br>
+<br>
+
+Is the Lie bracket linear? 
+$[s x, y] f = s x( y (f)) - x (s y (f))$<yr>
+$ = s x^a e_a ( y^b e_b (f)) - y^a e_a (s x^b e_b (f))$<br>
+$ = s x^a (e_a y^b) e_b (f) + s x^a y^b e_a e_b (f) - y^a (e_a s) x^b e_b (f) - y^a s (e_a x^b) e_b (f) - y^a s x^b e_a e_b (f)$<br>
+$ = s x^a {y^b}_{,a} e_b (f) - y^a s_{,a} x^b e_b (f) - s y^a {x^b}_{,a} e_b (f) + s x^a y^c {c_{ac}}^b e_b (f)$<br>
+$ = (s x^a {y^b}_{,a} - s y^a {x^b}_{,a} + s x^a y^c {c_{ac}}^b - y^a s_{,a} x^b) e_b (f)$<br>
+$ = s [x, y] - y(s) x$<br>
+...I think I got my Lie derivative / bracket definition backwards, maybe $\mathcal{L}_x y = [y, x]$?<br>
+<br>
+
+TODO explain Lie derivative general definition:<br>
+$ \mathcal{L}_\vec{a} {T^a}_b = a^c \partial_c {T^a}_b - {T^c}_b \partial_c a^b + {T^a}_c \partial_b a^c $<br>
+<br>
+TODO explain Lie derivative product rule / chain rule:<br>
+$ \mathcal{L}_\vec{a} (uv) = (\mathcal{L}_\vec{a} u) v + u (\mathcal{L}_\vec{a} v) $<br>
+<br>
+
+metric:<br>
+$g = e \cdot e$<br>
+$g_{ab} = e_a \cdot e_b$<br>
+metric inverse: $ [g^{ab}] = [g_{ab}]^{-1} $ such that $ g^{ac} g_{cb} = \delta^a_b $<br>
+<br>
+
+All metrics can be diagonalized into a signature metric.<br>
+Let $\eta_{IJ} = diag(signature)$, where $signature$ is the metric signature.<br>
+Let $\sigma$ be the product of all signatures.<br>
+Euclidian signature: 1, 1, 1; $\sigma = 1$<br>
+Lorentzian signature for particle physicists: +1, -1, -1, 1; $\sigma = -1$<br>
+Lorentzian signature for cosmologists: -1, +1, +1, +1; $\sigma = -1$<br>
+<br>
+
+Raising / lowering indexes:<br>
+$v^a = g^{ab} v_b$<br>
+$v_a = g_{ab} v^b$<br>
+Changing coordinates:<br>
+$v^I = {e_a}^I v^a$<br>
+$v_I = {e^a}_I v_a$<br>
+<br>
+
+One form applied to a vector:<br>
+For one-form $w \in V^*$ and vector $v \in V$<br>
+$w(v) = w (v^b e_b)$ by expanding $v$.<br>
+$= w v^b (e_b)$ by linearity of one-form functions.<br>
+$= v^b w_a e^a (e_b)$ by expanding $w$.<br>
+$= v^b w_a \delta^a_b$ by orthogonality of $e^a(e_b)$.<br>
+$= v^a w_a$<br>
+<br>
+
+Inner product of two vectors:<br>
+For vector $x, y \in V$<br>
+$x \cdot y = g(x,y) = g(x^a e_a, y^b e_b) = x^a y^b g(e_a, e_b)$<br>
+$ = x^a y^b g_{ab} = x^a y_a = x_a y^a$<br>
+Note because $g(x,y) = g(y,x)$ we know $x \cdot y = y \cdot x$<br>
+Likewise $[g_{ab}]$ is symmetric.<br>
+How do you define a metric inverse?  $g^\sharp = g^{ab} e_a \otimes e_b \ni [g_{ab}]^{-1} = [g^{ab}]$<br>
+This means $[g^{ab}]$ is symmetric.<br>
+<br>
+
+Outer product:<br>
+outer product of vectors: $ x \otimes y = x^a e_a \otimes y^b e_b = x^a y^b e_a \otimes e_b $<br>
+outer product of one-forms: $ x \otimes y = x_a e^a \otimes y_b e^b = x_a y_b e^a \otimes e^b $<br>
+<br>
+
+Inner product of two one-forms:<br>
+$\langle a, b \rangle = det([a_i b_j])$<br>
+TODO more on this.  It's in "Differential Geometry with Applications to Physics" and in MTW.<br>
+<br>
+
+Metric determinant:<br>
+$det([g_{ab}]) = det( [{e_a}^I \eta_{IJ} {e_b}^J] )$<br>
+$det([g_{ab}]) = det( [{e_a}^I] )^2 det([\eta_{IJ}])$<br>
+$g = e^2 \sigma$<br>
+$e = \sqrt{|g|}$<br>
+<br>
+
+Levi-Civita tensor:<br>
+$\epsilon_{I_1 \dots I_n} = 1$ for even permutations of $I_1 \dots I_n$, -1 for odd permutations, and 0 otherwise.<br>
+$\epsilon^{I_1 \dots I_n} = \eta^{I_1 J_1} \dots \eta^{I_n J_n} \epsilon_{J_1 \dots J_n} = \sigma \epsilon_{I_1 \dots I_n}$<br>
+$\epsilon_{a_1 \dots a_n} = {e_{a_1}}^1 \dots {e_{a_n}}^n \epsilon_{1 \dots n}$, which is the definition of $det([{e_a}^I]) = e$.<br>
+Therefore $ \epsilon_{a_1 \dots a_n} = e = \sqrt{|g|}$ for even permutations, $-e = -\sqrt{|g|}$ for odd permutations, and 0 otherwise.<br>
+<br>
+
+$\epsilon^{a_1 \dots a_n} = \sigma (g^{a_1 b_1}) \cdot \dots \cdot (g^{a_n b_n}) \epsilon_{b_1 \dots b_n}$<br>
+$= \frac{1}{\sqrt{|g|}} \epsilon_{a_1 \dots a_n}$<br>
+<br>
+
+Levi-Civita tensor for 4D Lorentzian signature with a diagonalized metric:<br>
+$\epsilon^{IJKL} = -\epsilon_{IJKL}$<br>
+the timelike (zero) index goes first, so $\epsilon_{0123} = 1$<br>
+<br>
+
+Levi-Civita tensor in 4D manifold with Lorentzian signature:<br>
+$\epsilon_{txyz} = (-g)^{\frac{1}{2}}$<br>
+$\epsilon^{txyz} = -(-g)^{-\frac{1}{2}}$<br>
+<br>
+
+Kronecher delta extension:<br>
+$\delta^{I_1 \dots I_n}_{J_1 \dots J_n} = n! \delta^{I_1}_{[J_1} \cdot \dots \cdot \delta^{I_n}_{J_n]} = \sigma \epsilon^{I_1 \dots I_n} \epsilon_{J_1 \dots J_n}$<br>
+specific instances for 4D Lorentzian space:<br>
+$\delta^{IJKL}_{MNPQ} = -\epsilon^{IJKL} \epsilon_{MNPQ}$<br>
+$\delta^{IJK}_{MNP} = \delta^{IJKL}_{MNPL} = -\epsilon^{IJKL} \epsilon_{MNPL}$<br>
+$2! \delta^{IJ}_{MN} = \delta^{IJK}_{MNK} = \delta^{IJKL}_{MNKL} = -\epsilon^{IJKL} \epsilon_{MNKL}$<br>
+$3! \delta^I_J = 2! \delta^{IJ}_{MJ} = \delta^{IJK}_{MJK} = \delta^{IJKL}_{MJKL} = -\epsilon^{IJKL} \epsilon_{MJKL}$<br>
+$4! = 3! \delta^I_I = 2! \delta^{IJ}_{IJ} = \delta^{IJK}_{IJK} = \delta^{IJKL}_{IJKL} = -\epsilon^{IJKL} \epsilon_{IJKL}$<br>
+<br>
+
+Dual tensors:<br>
+For $k$-degree tensors in $n$-dimension space<br>
+$\ast T_{a_{k+1} \dots a_n} = {1\over k!} T^{a_1 \dots a_k} \epsilon_{a_1 \dots a_n}$<br>
+specific instances for 4D Lorentzian space:<br>
+$\ast T_{abcc} = T \epsilon_{abcc}$<br>
+$\ast T_{bcc} = T^a \epsilon_{abcc}$<br>
+$\ast T_{cc} = {1\over2} T^{ab} \epsilon_{abcc}$<br>
+$\ast T_c = {1\over3!}T^{abc} \epsilon_{abcc}$<br>
+$\ast T = {1\over4!} T^{abcc} \epsilon_{abcc}$<br>
+<br>
+
+Covariant derivative: $\nabla$<br>
+<br>
+
+Covariant derivative basii decomposition:<br>
+MTW uses something like $\nabla = e^a \nabla_a$ ... does this look right? is this right?<br>
+<br>
+
+Covariant of functions:<br>
+Somehow it's true that $\nabla \phi = \phi_{;a} = e_a \phi = \phi_{,a}$<br>
+<br>
+
+Covariant of scalar multiplication:<br>
+$\nabla (\phi w) = (\nabla \phi) w + \phi \nabla w = (\partial \phi) w + \phi \nabla w$<br>
+<br>
+
+Covariant of dot, inner, outer products:<br>
+$\nabla_{sx} = s \nabla x$ for function $s$ and vector $x$<br>
+$\nabla_x (a \cdot b) = (\nabla_x a) \cdot b + a \cdot (\nabla_x b)$ for vectors $a,b$.<br>
+$\nabla_x a(b) = \nabla_x a (b) + a(\nabla_x b)$ for one-form $a$ and vector $b$<br>
+$\nabla_x a \otimes b = (\nabla_x a) \otimes b + a \otimes (\nabla_x b)$<br>
+<br>
+
+Covariant derivative of vector and one-form basii:<br>
+$0 = \nabla_c \delta^a_b = \nabla_c e^a (e_b) = (\nabla_c e^a) (e_b) + e^a (\nabla_c e_b)$<br>
+$(\nabla_c e^a) (e_b) = -e^a (\nabla_c e_b)$<br>
+Let ${\nabla_c} e_b = {\Gamma^a}_{bc} e_a$<br>
+$(\nabla_c e^a) (e_b) = -e^a ({\Gamma^d}_{bc} e_d)$ by substitution<br>
+$(\nabla_c e^a) (e_b) = -{\Gamma^d}_{bc} e^a (e_d)$ by linearity.<br>
+$(\nabla_c e^a) (e_b) = -{\Gamma^d}_{bc} \delta^a_d$ by orthogonality.<br>
+$(\nabla_c e^a) (e_b) = -{\Gamma^a}_{bc}$ by orthogonality.<br>
+Let ${\omega^a}_b = \nabla_b e^a$<br>
+${\omega^a}_c (e_b) = -{\Gamma^a}_{bc}$ by substitution.<br>
+${\omega^a}_c = -{\Gamma^a}_{bc} e^b$ by orthogonality (is this really why?)<br>
+<br>
+So $e^a(\nabla_c e_b) = {\Gamma^a}_{bc}$ is the connection coefficients describing $\nabla_c e_b$ in terms of $e_a$.<br>
+And $\nabla_b e^a = {\omega^a}_b = -{\Gamma^a}_{cb} e^c$ are the one-forms of the connections.<br>
+<br>
+
+Notice that this means ${\Gamma^a}_{[bc]} e_a = \nabla_{[b} e_{c]}$<br>
+<br>
+
+Torsion:<br>
+$T : V \times V \rightarrow V$<br>
+$T(x,y) = \nabla_x y - \nabla_y x - [x,y]$<br>
+Torsion of two vectors:<br>
+$= x^b y^c {T^a}_{bc} e_a = \nabla_x (y^a e_a) - \nabla_y (x^a e_a) - [x, y]$<br>
+$= \nabla_{x^b e_b} (y^a e_a) - \nabla_{y^b e_b} (x^a e_a) - [x, y]$<br>
+Now comes the covariant vector derivative linearity part, which I need to define somewhere: $\nabla_{s x} = s \nabla_x$<br>
+$= x^b \nabla_b (y^a e_a) - y^b \nabla_b (x^a e_a) - [x, y]$<br>
+$= x^b (\nabla_b y^a) e_a + x^b y^a \nabla_b e_a - y^b (\nabla_b x^a) e_a - y^b x^a \nabla_b e_a - [x, y]$<br>
+Using covariant derivative definitions.  Note, covariant derivative on scalar functions is defined as $\nabla_a \phi = \phi_{,a}$<br>
+$= (x^b {y^c}_{,b} + x^b y^a {\Gamma^c}_{ab} - y^b {x^c}_{,b} - y^b x^a {\Gamma^c}_{ab}) e_c - [x, y]$<br>
+Substitute Lie bracket definition:<br>
+$= ((x^b {y^c}_{,b} + x^b y^a {\Gamma^c}_{ab} - y^b {x^c}_{,b} - y^b x^a {\Gamma^c}_{ab}) - (
+	x^a {y^c}_{,a} - y^a {x^c}_{,a} + x^a y^b {c_{ab}}^c)  ) e_c$<br>
+$= x^a y^b ( 2 {\Gamma^c}_{[ba]} - {c_{ab}}^c ) e_c$<br>
+$= x^b y^c ( 2 {\Gamma^a}_{[cb]} - {c_{bc}}^a ) e_c$ by reindexing<br>
+Therefore ${T^a}_{bc} = 2 {\Gamma^a}_{[cb]} + {c_{cb}}^a$<br>
+<br>
+
+A torsion-free basis is <i>holonomic</i> when all $ {c_{ab}}^c = 0 $.<br>
+This coincides with when $e_a = \frac{\partial}{\partial x^a} $ such that $[e_a, e_b] = \left [ \frac{\partial}{\partial x^a}, \frac{\partial}{\partial x^b} \right ] = 0 $.  Subsequently $e^a = dx^a$.<br>
+A torsion-free basis that does not meet this condition is considered <i>anholonomic</i>.<br> 
+<br>	
+
+Torsion antisymmetry: ${T^a}_{[bc]} = 2 {\Gamma^a}_{[[cb]]} + {c_{[cb]}}^a
+	= 2 {\Gamma^a}_{[[cb]]} + {c_{[cb]}}^a
+	= 2 {\Gamma^a}_{[cb]} + {c_{cb}}^a
+	= {T^a}_{bc}$<br>
+<br>
+
+Notice that $\nabla$ can be defined for any ${\Gamma^a}_{bc}$, however there is only one ${\Gamma^a}_{bc}$ such that the torsion is zero:<br>
+and that is the Levi-Civita connection:<br>
+There exists a covariant derivative with a connection that eliminates the metric tensor ($\nabla g(x,y) = 0$) and is torsion-free ($T(x,y) = 0$).<br>
+$\nabla g(x,y) = \nabla (g_{uv} (dx^u \otimes dx^v)(x, y))$<br>
+$= \nabla (g_{uv} (dx^u \otimes dx^v)(x, y))$<br>
+...
+<!--TODO-->This works out to be<br>
+$ \Gamma_{abc} = {1 \over 2} (
+	\partial_c g_{ab} + \partial_b g_{ac} - \partial_a g_{bc} 
+	+ c_{abc} + c_{acb} - c_{bca}) $<br>
+Also known as the "Christoffel symbol of the 1st kind"<br>
+in a holonomic basis: $ \Gamma_{abc} = {1 \over 2} (\partial_c g_{ab} + \partial_b g_{ac} - \partial_a g_{bc}) $<br>
+Christoffel of the 2nd kind / affine connection: $ {\Gamma^a}_{bc} = g^{ad} \Gamma_{dbc} $<br>
+<br>
+
+Levi-Civita connection in a non-coordinate basis:<br>
+$\Gamma_{abc} = \frac{1}{2} (
+	g_{ab,c}
+	+ g_{ac,b}
+	- g_{bc,a}
+	+ c_{ab,c}
+	+ c_{ac,b}
+	- c_{bc,a}
+)$<br>
+$= \frac{1}{2} (
+	({e_a}^I e_{b I})_{,c}
+	+ ({e_a}^I e_{c I})_{,b}
+	- ({e_b}^I e_{c I})_{,a}
+
+	+ 2 {{e_{[b}}^I}_{,a]} e_{c I}
+	+ 2 {{e_{[c}}^I}_{,a]} e_{b I}
+	- 2 {{e_{[c}}^I}_{,b]} e_{a I}
+)$<br>
+$= \frac{1}{2} (
+	{{e_a}^I}_{,c} e_{b I}
+	+ {e_{b I}}_{,c} {e_a}^I
+
+	+ {{e_a}^I}_{,b} e_{c I}
+	+ {e_{c I}}_{,b} {e_a}^I
+
+	- {{e_b}^I}_{,a} e_{c I}
+	- {e_{c I}}_{,a} {e_b}^I
+
+	+ {{e_b}^I}_{,a} e_{c I}
+	- {{e_a}^I}_{,b} e_{c I}
+	
+	+ {{e_c}^I}_{,a} e_{b I}
+	- {{e_a}^I}_{,c} e_{b I}
+	
+	- {{e_c}^I}_{,b} e_{a I}
+	+ {{e_b}^I}_{,c} e_{a I}
+)$<br>
+$= {e_a}^I e_{bI,c}$<br>
+${\Gamma^a}_{bc} = {e^a}_I {{e_b}^I}_{,c}$<br>
+Notice how this coincides with the definition ${\Gamma^a}_{bc} e_a = \nabla_c e_b$<br>
+<br>
+
+Levi-Civita connection antisymmetry on 2nd and 3rd indexes (anholonomic):<br> 
+$ \Gamma_{a[bc]}$<br>
+$= {1 \over 2} (\Gamma_{abc} - \Gamma_{acb})$<br>
+$= {1 \over 4} (
+	\partial_c g_{ab} + \partial_b g_{ac} - \partial_a g_{bc} 
+		+ c_{abc} + c_{acb} - c_{bca}
+	- \partial_b g_{ac} - \partial_c g_{ab} + \partial_a g_{cb} 
+		- c_{acb} - c_{abc} + c_{cba}
+)$<br>
+$= \frac{1}{2} c_{cba}$<br>
+<br>
+
+1st kind symmetry on 1st and 2nd indexes (anholonomic):<br>
+$ \Gamma_{(ab)c}$<br>
+$= {1 \over 2} (\Gamma_{abc} + \Gamma_{bac})$<br>
+$= {1 \over 4} (
+	\partial_c g_{ab} + \partial_b g_{ac} - \partial_a g_{bc} 
+		+ c_{abc} + c_{acb} - c_{bca}
+	+ \partial_c g_{ba} + \partial_a g_{bc} - \partial_b g_{ac} 
+		+ c_{bac} + c_{bca} - c_{acb}
+)$<br>
+$= {1 \over 2} \partial_c g_{ab}$<br>
+<br>
+
+covariant derivative in vector basis:<br>
+$\nabla v = e^a \otimes (\nabla_a v) = e^a \otimes (\nabla_a (v^b e_b)) = e^a \otimes ((\nabla_a v^b) e_b + v^b \nabla_a e_b)$
+	$ = e^a \otimes ((\partial_a v^b) e_b + v^c {\Gamma^b}_{ca} e_b)$
+	$ = (\partial_a v^b + {\Gamma^b}_{ca} v^c) e^a \otimes e_b$<br>
+<br>
+covariant derivative of vector in index notation: $ \nabla_a v^b = \partial_a v^b + {\Gamma^b}_{ca} v^c $<br>
+<br>
+covariant derivative in one-form basis:<br>
+$\nabla w = e^a \otimes (\nabla_a w) = e^a \otimes (\nabla_a (w_b e^b)) = e^a \otimes ((\nabla_a w_b) e^b + w_b \nabla_a e^b)$
+	$ = e^a \otimes ((\partial_a w_b) e^b - w_c {\Gamma^c}_{ba} e^b)$
+	$ = (\partial_a w_b - w_c {\Gamma^c}_{ba}) e^a \otimes e^b$<br>
+<br>
+covariant derivative of one-form in index notation: $ \nabla_a w_b = \partial_a w_b - {\Gamma^c}_{ba} w_c $<br>
+<br>
+This is where we see that in index notation $ \nabla_c $ treats $ v^a $ as a vector due to its raised index, while in coordinate-free notation $\nabla_c $ treats $ v^a $ as a scalars of the $ e_a $ vector.<br>
+<br>
+covariant derivative of metric in index notation: 
+$ \nabla_c g_{ab}
+	= \partial_c g_{ab} - {\Gamma^d}_{ac} g_{db} - {\Gamma^d}_{bc} g_{ad}
+	= \partial_c g_{ab} - \Gamma_{bac} - \Gamma_{abc}
+	= \partial_c g_{ab} - \partial_c g_{ab}
+	= 0 
+$<br>
+<br>
+
+covariant vector derivative:<br>
+Let $\nabla_{s v} = s \nabla_v$ for some scalar $s$ and vector $v$<br>
+$\nabla_u v = \nabla_{u^a e_a} (v^b e_b) = u^a \nabla_a (v^b e_b) = u^a (\partial_a v^b + {\Gamma^b}_{ca} v^c) e_b$<br>
+<br>
+
+Riemann curvature in coordinate-free notation:<br>
+(Thanks to Bonbien &amp; Nail for correcting this)<br>
+$R(x,y)z$<br>
+$= \nabla_x \nabla_y z - \nabla_y \nabla_x z - \nabla_{[x,y]} z$<br>
+$= \nabla_{x^a e_a} \nabla_{y^b e_b} (z^c e_c) 
+	- \nabla_{y^a e_a} \nabla_{x^b e_b} (z^c e_c)
+	- \nabla_{[x,y]^a e_a} (z^c e_c)$<br>
+$= \nabla_{x^a e_a} \nabla_{y^b e_b} (z^c e_c) 
+	- \nabla_{y^a e_a} \nabla_{x^b e_b} (z^c e_c)
+	- [x,y]^d \nabla_d (z^c e_c)$<br>
+$= x^a \nabla_a (y^b \nabla_b (z^c e_c)) 
+	- y^a \nabla_a (x^b \nabla_b (z^c e_c)) 
+	- (x^a e_a y^d - y^a e_a x^d + x^a y^b {c_{ab}}^d) \nabla_d (z^c e_c)$<br>
+$= x^a \nabla_a y^b \nabla_b (z^c e_c) 
+	+ x^a y^b \nabla_a \nabla_b (z^c e_c) 
+	- y^a \nabla_a x^b \nabla_b (z^c e_c) 
+	- y^a x^b \nabla_a \nabla_b (z^c e_c) 
+	- (x^a e_a y^d - y^a e_a x^d + x^a y^b {c_{ab}}^d) \nabla_d (z^c e_c)$<br>
+$= (x^a e_a y^d - y^a e_a x^d) \nabla_d (z^c e_c) 
+	+ (x^a y^b - y^a x^b) \nabla_a \nabla_b (z^c e_c) 
+	- (x^a e_a y^d - y^a e_a x^d + x^a y^b {c_{ab}}^d) \nabla_d (z^c e_c)$<br>
+$= 	 (x^a y^b - y^a x^b) \nabla_a \nabla_b (z^c e_c) 
+	- x^a y^b {c_{ab}}^d \nabla_d (z^c e_c)$<br>
+$= 	 (x^a y^b - y^a x^b) \nabla_a ((e_b z^c) e_c + z^c \nabla_b e_c) 
+	- x^a y^b {c_{ab}}^d ((e_d z^c) e_c + z^c \nabla_d e_c)$<br>
+$= 	 (x^a y^b - y^a x^b) \nabla_a ((e_b z^c) e_c + z^c {\Gamma^e}_{cb} e_e) 
+	- x^a y^b {c_{ab}}^d ((e_d z^c) e_c + z^c {\Gamma^e}_{cd} e_e)$<br>
+$= 	 (x^a y^b - y^a x^b) (
+		\nabla_a (e_b z^c) e_c 
+		+ (e_b z^c) \nabla_a e_c 
+		+ \nabla_a z^c {\Gamma^e}_{cb} e_e
+		+ z^c \nabla_a {\Gamma^e}_{cb} e_e
+		+ z^c {\Gamma^e}_{cb} \nabla_a e_e
+	) 
+	- x^a y^b {c_{ab}}^d ((e_d z^c) e_c + z^c {\Gamma^e}_{cd} e_e)$<br>
+$= 	 (x^a y^b - y^a x^b) (
+		e_a (e_b z^c) e_c 
+		+ (e_b z^c) {\Gamma^e}_{ca} e_e
+		+ (e_a z^c) {\Gamma^e}_{cb} e_e
+		+ z^c (e_a {\Gamma^e}_{cb}) e_e
+		+ z^c {\Gamma^e}_{cb} {\Gamma^d}_{ea} e_d
+	)
+	- x^a y^b {c_{ab}}^d ((e_d z^c) e_c + z^c {\Gamma^e}_{cd} e_e)$<br>
+$= 	 (x^a y^b - y^a x^b) (
+		e_a (e_b z^c) e_c
+		+ z^c (e_a {\Gamma^e}_{cb}) e_e
+		+ z^c {\Gamma^e}_{cb} {\Gamma^d}_{ea} e_d
+	) 
+	- x^a y^b {c_{ab}}^d ((e_d z^c) e_c + z^c {\Gamma^e}_{cd} e_e)$<br>
+$= 	 
+	x^a y^b (
+		e_a (e_b z^c) - e_b (e_a z^c)
+	) e_c
+	+ x^a y^b z^c (
+		+ (e_a {\Gamma^e}_{cb})
+		- (e_b {\Gamma^e}_{ca})
+		+ {\Gamma^d}_{cb} {\Gamma^e}_{da}
+		- {\Gamma^d}_{ca} {\Gamma^e}_{db}
+		- {c_{ab}}^d {\Gamma^e}_{cd}
+	) e_e
+	- x^a y^b {c_{ab}}^d (e_d z^c) e_c 
+$<br>
+$= 	z^b x^c y^d (
+		e_c {\Gamma^a}_{bd}
+		- e_d {\Gamma^a}_{bc}
+		+ {\Gamma^a}_{ec} {\Gamma^e}_{bd}
+		- {\Gamma^a}_{ed} {\Gamma^e}_{bc}
+		- {\Gamma^a}_{be} {c_{cd}}^e
+	) e_a
+	+ x^a y^b ([e_a, e_b] z^c) e_c
+	- x^a y^b {c_{ab}}^d (e_d z^c) e_c 
+$<br>
+$= 	z^b x^c y^d (
+		e_c {\Gamma^a}_{bd}
+		- e_d {\Gamma^a}_{bc}
+		+ {\Gamma^a}_{ec} {\Gamma^e}_{bd}
+		- {\Gamma^a}_{ed} {\Gamma^e}_{bc}
+		- {\Gamma^a}_{be} {c_{cd}}^e
+	) e_a
+	+ x^a y^b {c_{ab}}^d (e_d z^c) e_c
+	- x^a y^b {c_{ab}}^d (e_d z^c) e_c 
+$<br>
+$= 	z^b x^c y^d (
+		e_c {\Gamma^a}_{bd}
+		- e_d {\Gamma^a}_{bc}
+		+ {\Gamma^a}_{ec} {\Gamma^e}_{bd}
+		- {\Gamma^a}_{ed} {\Gamma^e}_{bc}
+		- {\Gamma^a}_{be} {c_{cd}}^e
+	) e_a
+$<br>
+$= {R^a}_{bcd} z^b x^c y^d e_a$<br>
+For ${R^a}_{bcd} = e_c {\Gamma^a}_{bd}
+		- e_d {\Gamma^a}_{bc}
+		+ {\Gamma^a}_{ec} {\Gamma^e}_{bd}
+		- {\Gamma^a}_{ed} {\Gamma^e}_{bc}
+		- {\Gamma^a}_{be} {c_{cd}}^e$<br>
+In index notation: $([\nabla_c,\nabla_d] - \nabla_{[c,d]}) z^a = {R^a}_{bcd} z^b$<br>
+<br>
+
+Ricci curvature: $ R_{ab} = {R^c}_{acb} $<br>
+Gaussian curvature: $ R = {R^a}_a $<br>
+<br>
+
+Notice: I've pulled out the wedge product and exterior derivative content and put it into a separate note sheet <a href='../Differential Geometry/exterior derivative.html'>here</a>.<br> 
+<br>
+
+<a href='index.html'>Back</a><br>
+<br>
+
+	</body>
+</html>

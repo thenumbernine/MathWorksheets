@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Loop Quantum Gravity Notes - Page 5</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+	</head>
+    <body onload='tryToFindMathJax();'>
+
+<a href='index.html'>Back</a><br>
+<br>
+
+Vierbein in terms of ADM:<br>
+<br>
+
+ADM metric:<br>
+$[g_{\mu\nu}] = \overset{\mu(u)\downarrow \nu(v)\rightarrow}{\left[ \matrix{-\alpha^2 + \beta^a \beta_a& \beta_v \\ \beta_u & \gamma_{uv}} \right]}$<br>
+$[g^{\mu\nu}] = \overset{\mu(u)\downarrow \nu(v)\rightarrow}{\left[ \matrix{-1/\alpha^2 & \beta^v / \alpha^2 \\ \beta^u / \alpha^2 & \gamma^{uv} - \beta^u \beta^v / \alpha^2} \right]}$<br>
+where $ \beta_v = \gamma_{uv} \beta^v = \gamma_{\mu v} \beta^v = g_{\mu v} \beta^v $ courtesy of the fact that the 3-metric components of $ g_{uv} = \gamma_{uv} $, and the 4D compoennt of $ \beta^t = 0 $.<br>
+<br>
+Let $n_\alpha = (-\alpha,0,0,0)$ be the normal.<br>
+<br>
+Let ${(^3e)_a}^i$ be the triad defined as the square-root of the 3-metric: ${(^3e)_a}^i {(^3e)_b}^j \eta_{ij} = \gamma_{ab}$<br>
+<br>
+Let $[{e_\mu}^I] = \overset{\mu(u)\downarrow I(i)\rightarrow}{\left[\matrix{\alpha & \beta^i \\ 0 & {(^3 e)_u}^i}\right]}$<br>
+<br>
+For $\beta^i = {(^3e)_a}^i \beta^a $ the shift vector transformed by the triad.<br>
+Then ${e_\alpha}^\hat{t}=-n_\alpha=(\alpha,0,0,0)$ for $\hat{t}$ the Minkowski time coordinate.<br>
+Then $g_{\mu\nu} = {e_\mu}^I \eta_{IJ} {e_\nu}^J$ is computed like so:<br>
+$= \overset{\mu(u)\downarrow I(i)\rightarrow}{\left[\matrix{\alpha & \beta^i \\ 0 & {(^3 e)_u}^i}\right]}
+\overset{I(i) \downarrow J(j) \rightarrow}{\left[\matrix{ -1 & 0 \\ 0 & \delta_{ij} }\right]}
+\overset{J(j)\downarrow \nu(v)\rightarrow}{\left[\matrix{\alpha & 0 \\ \beta^j & {(^3 e)_v}^j}\right]}
+$<br>
+$= \overset{\mu(u)\downarrow J(j)\rightarrow}{\left[\matrix{-\alpha & \beta_j \\ 0 & (^3 e)_{uj} }\right]}
+\overset{J(j)\downarrow \nu(v)\rightarrow}{\left[\matrix{\alpha & 0 \\ \beta^j & {(^3 e)_v}^j }\right]}
+$<br>
+$= \overset{\mu(u)\downarrow \nu(v)\rightarrow}{\left[\matrix{
+	-\alpha^2 + \beta_j \beta^j & 
+		{(^3e)_v}^j \beta_j \\ 
+	(^3e)_{uj} \beta^j & 
+		(^3e)_{uj} {(^3e)_v}^j 
+}\right]}
+$<br>
+$= \overset{\mu(u)\downarrow \nu(v)\rightarrow}{\left[\matrix{
+	-\alpha^2 + \beta_u \beta^u & 
+		\beta_v \\ 
+	\beta_u & 
+		\gamma_{uv}
+}\right]}
+$<br>
+
+
+<br>
+Let $[{e^\mu}_I] = \overset{\mu(u)\downarrow I(i)\rightarrow}{\left[\matrix{1/\alpha & 0 \\ -\beta^u/\alpha & {(^3e)^u}_i}\right]}$<br>
+So ${e_\mu}^I {e^\nu}_I$
+$= \overset{\mu(u)\downarrow I(i)\rightarrow}{ \left[\matrix{\alpha & \beta^i \\ 0 & {(^3e)_u}^i }\right] }
+\overset{I(i) \downarrow \nu(v)\rightarrow}{ \left[\matrix{1/\alpha & -\beta^v / \alpha \\ 0 & {(^3e)^v}_i }\right] }$<br>
+$= \overset{\mu(u)\downarrow \nu(v)\rightarrow}{ \left[\matrix{1 & -\beta^i + \beta^i \\ 0 & {(^3e)_u}^i {(^3e)^v}_i }\right] }$<br>
+$= \overset{\mu(u)\downarrow \nu(v)\rightarrow}{ \left[\matrix{1 & 0 \\ 0 & \delta_u^v }\right] }$<br>
+<br>
+Therefore the spatial subset of curved coordinates of the 4D tetrad ${e_\mu}^I$ and ${e^\mu}_I$ are equal to the 3D triad ${e_u}^i$ and ${e^u}_i$.<br>
+Therefore tensors can be raised/lowered by 3D spatial indexes as well as 4D spacetime indexes without distinction... except that the shift cannot be neglected ...<br>
+i.e. representing a 3-space coordinate in terms of a 4-space coordinate:<br>
+For $ v^I $ 4D Minkowski space<br>
+$ v^\mu = v^I {e^\mu}_I $<br>
+Calculating the individual $t$ component in tetrad representation introduces influence from the (Minkowski representation of the) shift vector, as well as the spatial triad:<br>
+$ v^t = v^I {e^t}_I = v^\hat{t} {e^t}_\hat{t} + v^i {e^t}_i = \alpha v^\hat{t} + \beta^i {e^t}_i $<br>
+Calculating the spatial $a$ components in tetrad representation only makes use of the spatial triad:<br>
+$ v^a = v^I {e^a}_I = v^\hat{t} {e^a}_\hat{t} + v^i {e^a}_i = 0 \cdot v^\hat{t} + {({^3}e)^a}_i v^i = {({^3}e)^a}_i v^i $<br>
+<br>
+...so if you have a 4D Minkowski coordinate object and you want to represent the time component terms of 3D curved coordinates, don't forget to add the influence of the (3D Minkowski coordinate representation of the) shift vector!<br>
+...but if you have a 4D Minkowski coordinate object and you want to represent the spatial components in terms of 3D curved coordinates, you can just use the 3D triad transformation.<br>
+
+<br>
+
+<a href='index.html'>Back</a><br>
+	
+	</body>
+</html>
