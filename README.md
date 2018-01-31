@@ -16,7 +16,25 @@ Here's the CDN URLs:
 
 [Change of Coordinates](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Change%20of%20Coordinates%2ehtml)
 
-[Differential Geometry/exterior derivative](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/exterior%20derivative%2ehtml)
+[Differential Geometry/1 - tensors](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%20%2d%20tensors%2ehtml)
+
+[Differential Geometry/2 - exterior derivative](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/2%20%2d%20exterior%20derivative%2ehtml)
+
+[Differential Geometry/3 - Einstein-Hilbert action](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/3%20%2d%20Einstein%2dHilbert%20action%2ehtml)
+
+[Differential Geometry/4 - ADM formalism](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/4%20%2d%20ADM%20formalism%2ehtml)
+
+[Differential Geometry/5 - ADM constraints](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/5%20%2d%20ADM%20constraints%2ehtml)
+
+[Differential Geometry/6 - ADM tetrad](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/6%20%2d%20ADM%20tetrad%2ehtml)
+
+[Differential Geometry/7 - Palatini action](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/7%20%2d%20Palatini%20action%2ehtml)
+
+[Differential Geometry/8 - Self-dual Palatini action](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/8%20%2d%20Self%2ddual%20Palatini%20action%2ehtml)
+
+[Differential Geometry/9 - Ashtekar variables](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/9%20%2d%20Ashtekar%20variables%2ehtml)
+
+[Differential Geometry/index](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/index%2ehtml)
 
 [EMHD Hyperbolic Conservation Laws](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/EMHD%20Hyperbolic%20Conservation%20Laws%2ehtml)
 
@@ -67,24 +85,6 @@ Here's the CDN URLs:
 [LQG](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/LQG%2ehtml)
 
 [Lichtenberg](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Lichtenberg%2ehtml)
-
-[Loop Quantum Gravity/index](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Loop%20Quantum%20Gravity/index%2ehtml)
-
-[Loop Quantum Gravity/page1](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Loop%20Quantum%20Gravity/page1%2ehtml)
-
-[Loop Quantum Gravity/page2](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Loop%20Quantum%20Gravity/page2%2ehtml)
-
-[Loop Quantum Gravity/page3](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Loop%20Quantum%20Gravity/page3%2ehtml)
-
-[Loop Quantum Gravity/page4](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Loop%20Quantum%20Gravity/page4%2ehtml)
-
-[Loop Quantum Gravity/page5](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Loop%20Quantum%20Gravity/page5%2ehtml)
-
-[Loop Quantum Gravity/page6](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Loop%20Quantum%20Gravity/page6%2ehtml)
-
-[Loop Quantum Gravity/page7](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Loop%20Quantum%20Gravity/page7%2ehtml)
-
-[Loop Quantum Gravity/page8](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Loop%20Quantum%20Gravity/page8%2ehtml)
 
 [MHD - Eigenmode Analysis](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/MHD%20%2d%20Eigenmode%20Analysis%2ehtml)
 
