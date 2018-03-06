@@ -7,7 +7,7 @@
 	</head>
     <body onload='tryToFindMathJax();'>
 
-<a href='index.html'>Back</a><br>
+<a href='.'>Back</a><br>
 <br>
 
 $M =$ manifold.<br>
@@ -123,6 +123,8 @@ $[e_a, e_b] f = [\partial_a, \partial_b] f = \partial_a \partial_b f - \partial_
 In an anholonomic basis:<br>
 $[e_a, e_b] f = {e_a}^I \partial_I ({e_b}^J \partial_J f) - {e_b}^J \partial_J ({e_a}^I \partial_I f)$<br>
 ${c_{ab}}^c = {e^c}_J ({e_a}^I {{e_b}^J}_{,I} - {e_b}^I {{e_a}^J}_{,I})$<br>
+${c_{ab}}^c = 2 {e_{[a}}^I {{e_{b]}}^J}_{,I} {e^c}_J$<br>
+${c_{ab}}^c = 2 {{e_{[b}}^J}_{,a]} {e^c}_J$<br>
 <br>
 
 vierbein derivative in a non-coordinate basis:<br>
@@ -181,7 +183,7 @@ $ = s [x, y] - y(s) x$<br>
 <br>
 
 TODO explain Lie derivative general definition:<br>
-$ \mathcal{L}_\vec{a} {T^a}_b = a^c \partial_c {T^a}_b - {T^c}_b \partial_c a^b + {T^a}_c \partial_b a^c $<br>
+$ \mathcal{L}_\vec{a} {T^a}_b = a^c e_c( {T^a}_b ) - {T^c}_b e_c(a^b) + {T^a}_c e_b( a^c ) $<br>
 <br>
 TODO explain Lie derivative product rule / chain rule:<br>
 $ \mathcal{L}_\vec{a} (uv) = (\mathcal{L}_\vec{a} u) v + u (\mathcal{L}_\vec{a} v) $<br>
@@ -312,17 +314,17 @@ $\nabla_x a \otimes b = (\nabla_x a) \otimes b + a \otimes (\nabla_x b)$<br>
 Covariant derivative of vector and one-form basii:<br>
 $0 = \nabla_c \delta^a_b = \nabla_c e^a (e_b) = (\nabla_c e^a) (e_b) + e^a (\nabla_c e_b)$<br>
 $(\nabla_c e^a) (e_b) = -e^a (\nabla_c e_b)$<br>
-Let ${\nabla_c} e_b = {\Gamma^a}_{bc} e_a$<br>
-$(\nabla_c e^a) (e_b) = -e^a ({\Gamma^d}_{bc} e_d)$ by substitution<br>
-$(\nabla_c e^a) (e_b) = -{\Gamma^d}_{bc} e^a (e_d)$ by linearity.<br>
-$(\nabla_c e^a) (e_b) = -{\Gamma^d}_{bc} \delta^a_d$ by orthogonality.<br>
-$(\nabla_c e^a) (e_b) = -{\Gamma^a}_{bc}$ by orthogonality.<br>
+Let ${\nabla_c} e_b = {\Gamma^a}_{cb} e_a$<br>
+$(\nabla_c e^a) (e_b) = -e^a ({\Gamma^d}_{cb} e_d)$ by substitution<br>
+$(\nabla_c e^a) (e_b) = -{\Gamma^d}_{cb} e^a (e_d)$ by linearity.<br>
+$(\nabla_c e^a) (e_b) = -{\Gamma^d}_{cb} \delta^a_d$ by orthogonality.<br>
+$(\nabla_c e^a) (e_b) = -{\Gamma^a}_{cb}$ by orthogonality.<br>
 Let ${\omega^a}_b = \nabla_b e^a$<br>
-${\omega^a}_c (e_b) = -{\Gamma^a}_{bc}$ by substitution.<br>
-${\omega^a}_c = -{\Gamma^a}_{bc} e^b$ by orthogonality (is this really why?)<br>
+${\omega^a}_c (e_b) = -{\Gamma^a}_{cb}$ by substitution.<br>
+${\omega^a}_c = -{\Gamma^a}_{cb} e^b$ by orthogonality (is this really why?)<br>
 <br>
-So $e^a(\nabla_c e_b) = {\Gamma^a}_{bc}$ is the connection coefficients describing $\nabla_c e_b$ in terms of $e_a$.<br>
-And $\nabla_b e^a = {\omega^a}_b = -{\Gamma^a}_{cb} e^c$ are the one-forms of the connections.<br>
+So $e^a(\nabla_b e_c) = {\Gamma^a}_{bc}$ is the connection coefficients describing $\nabla_b e_c$ in terms of $e_a$.<br>
+And $\nabla_b e^a = {\omega^a}_b = -{\Gamma^a}_{bc} e^c$ are the one-forms of the connections.<br>
 <br>
 
 Notice that this means ${\Gamma^a}_{[bc]} e_a = \nabla_{[b} e_{c]}$<br>
@@ -338,13 +340,13 @@ Now comes the covariant vector derivative linearity part, which I need to define
 $= x^b \nabla_b (y^a e_a) - y^b \nabla_b (x^a e_a) - [x, y]$<br>
 $= x^b (\nabla_b y^a) e_a + x^b y^a \nabla_b e_a - y^b (\nabla_b x^a) e_a - y^b x^a \nabla_b e_a - [x, y]$<br>
 Using covariant derivative definitions.  Note, covariant derivative on scalar functions is defined as $\nabla_a \phi = \phi_{,a}$<br>
-$= (x^b {y^c}_{,b} + x^b y^a {\Gamma^c}_{ab} - y^b {x^c}_{,b} - y^b x^a {\Gamma^c}_{ab}) e_c - [x, y]$<br>
+$= (x^b {y^c}_{,b} + x^b y^a {\Gamma^c}_{ba} - y^b {x^c}_{,b} - y^b x^a {\Gamma^c}_{ba}) e_c - [x, y]$<br>
 Substitute Lie bracket definition:<br>
-$= ((x^b {y^c}_{,b} + x^b y^a {\Gamma^c}_{ab} - y^b {x^c}_{,b} - y^b x^a {\Gamma^c}_{ab}) - (
+$= ((x^b {y^c}_{,b} + x^b y^a {\Gamma^c}_{ba} - y^b {x^c}_{,b} - y^b x^a {\Gamma^c}_{ba}) - (
 	x^a {y^c}_{,a} - y^a {x^c}_{,a} + x^a y^b {c_{ab}}^c)  ) e_c$<br>
-$= x^a y^b ( 2 {\Gamma^c}_{[ba]} - {c_{ab}}^c ) e_c$<br>
-$= x^b y^c ( 2 {\Gamma^a}_{[cb]} - {c_{bc}}^a ) e_c$ by reindexing<br>
-Therefore ${T^a}_{bc} = 2 {\Gamma^a}_{[cb]} + {c_{cb}}^a$<br>
+$= x^a y^b ( 2 {\Gamma^c}_{[ab]} - {c_{ab}}^c ) e_c$<br>
+$= x^b y^c ( 2 {\Gamma^a}_{[bc]} - {c_{bc}}^a ) e_c$ by reindexing<br>
+Therefore ${T^a}_{bc} = 2 {\Gamma^a}_{[bc]} + {c_{cb}}^a$<br>
 <br>
 
 A torsion-free basis is <i>holonomic</i> when all $ {c_{ab}}^c = 0 $.<br>
@@ -352,22 +354,88 @@ This coincides with when $e_a = \frac{\partial}{\partial x^a} $ such that $[e_a,
 A torsion-free basis that does not meet this condition is considered <i>anholonomic</i>.<br> 
 <br>	
 
-Torsion antisymmetry: ${T^a}_{[bc]} = 2 {\Gamma^a}_{[[cb]]} + {c_{[cb]}}^a
-	= 2 {\Gamma^a}_{[[cb]]} + {c_{[cb]}}^a
-	= 2 {\Gamma^a}_{[cb]} + {c_{cb}}^a
+Torsion antisymmetry: ${T^a}_{[bc]} = 2 {\Gamma^a}_{[[bc]]} + {c_{[cb]}}^a
+	= 2 {\Gamma^a}_{[[bc]]} + {c_{[cb]}}^a
+	= 2 {\Gamma^a}_{[bc]} + {c_{cb}}^a
 	= {T^a}_{bc}$<br>
 <br>
 
 Notice that $\nabla$ can be defined for any ${\Gamma^a}_{bc}$, however there is only one ${\Gamma^a}_{bc}$ such that the torsion is zero:<br>
 and that is the Levi-Civita connection:<br>
 There exists a covariant derivative with a connection that eliminates the metric tensor ($\nabla g(x,y) = 0$) and is torsion-free ($T(x,y) = 0$).<br>
+<!--
 $\nabla g(x,y) = \nabla (g_{uv} (dx^u \otimes dx^v)(x, y))$<br>
 $= \nabla (g_{uv} (dx^u \otimes dx^v)(x, y))$<br>
-...
-<!--TODO-->This works out to be<br>
-$ \Gamma_{abc} = {1 \over 2} (
-	\partial_c g_{ab} + \partial_b g_{ac} - \partial_a g_{bc} 
-	+ c_{abc} + c_{acb} - c_{bca}) $<br>
+...<br>
+-->
+Eliminating the metric:<br>
+$\nabla_a g_{bc} = 0$<br>
+$g_{bc,a} - {\Gamma^u}_{ab} g_{uc} - {\Gamma^u}_{ac} g_{bu} = 0$<br>
+$\Gamma_{cab} + \Gamma_{bac} = g_{bc,a}$<br>
+Reindex:<br>
+$\Gamma_{abc} + \Gamma_{cba} = g_{ca,b}$<br>
+$\Gamma_{bca} + \Gamma_{acb} = g_{ab,c}$<br>
+$\Gamma_{cab} + \Gamma_{bac} = g_{cb,a}$<br>
+<br>
+Torsion-free:<br>
+${\Gamma^a}_{bc} - {\Gamma^a}_{cb} + {c_{cb}}^a = 0$<br>
+$\Gamma_{abc} - \Gamma_{acb} = c_{bca}$<br>
+Reindex:<br>
+$\Gamma_{abc} - \Gamma_{acb} = c_{bca}$<br>
+$\Gamma_{bca} - \Gamma_{bac} = c_{cab}$<br>
+$\Gamma_{cab} - \Gamma_{cba} = c_{abc}$<br>
+<br>
+Linear system:<br>
+$\left[\matrix{
+	1 & 0 & 0 & 0 & 0 & 1 \\
+	0 & 1 & 0 & 1 & 0 & 0 \\
+	0 & 0 & 1 & 0 & 1 & 0 \\
+	1 & -1 & 0 & 0 & 0 & 0 \\
+	0 & 0 & -1 & 1 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 1 & -1
+}\right] \left[\matrix{
+	\Gamma_{abc} \\
+	\Gamma_{acb} \\
+	\Gamma_{bac} \\
+	\Gamma_{bca} \\
+	\Gamma_{cab} \\
+	\Gamma_{cba} \\
+}\right] = \left[\matrix{
+	g_{ac,b} \\
+	g_{ba,c} \\
+	g_{cb,a} \\
+	c_{bca} \\
+	c_{cab} \\
+	c_{abc}
+}\right]$<br>
+$\left[\matrix{
+	\Gamma_{abc} \\
+	\Gamma_{acb} \\
+	\Gamma_{bac} \\
+	\Gamma_{bca} \\
+	\Gamma_{cab} \\
+	\Gamma_{cba} \\
+}\right] = \frac{1}{2}
+\left[\matrix{
+	1 & 1 & -1 & 1 & -1 & 1 \\
+	1 & 1 & -1 & -1 & -1 & 1 \\
+	-1 & 1 & 1 & 1 & -1 & -1 \\
+	-1 & 1 & 1 & 1 & 1 & -1 \\
+	1 & -1 & 1 & -1 & 1 & 1 \\
+	1 & -1 & 1 & -1 & 1 & -1
+}\right]
+\left[\matrix{
+	g_{ac,b} \\
+	g_{ba,c} \\
+	g_{cb,a} \\
+	c_{bca} \\
+	c_{cab} \\
+	c_{abc}
+}\right]$<br>
+...gives us the identity:<br>
+$\Gamma_{abc} = \frac{1}{2} (g_{ac,b} + g_{ba,c} - g_{cb,a} + c_{bca} - c_{cab} + c_{abc})$<br>
+$\Gamma_{abc} = \frac{1}{2} (\partial_c g_{ab} + \partial_b g_{ac} - \partial_a g_{bc} + c_{acb} + c_{abc} - c_{cba})$<br>
+<br>
 Also known as the "Christoffel symbol of the 1st kind"<br>
 in a holonomic basis: $ \Gamma_{abc} = {1 \over 2} (\partial_c g_{ab} + \partial_b g_{ac} - \partial_a g_{bc}) $<br>
 Christoffel of the 2nd kind / affine connection: $ {\Gamma^a}_{bc} = g^{ad} \Gamma_{dbc} $<br>
@@ -378,18 +446,18 @@ $\Gamma_{abc} = \frac{1}{2} (
 	g_{ab,c}
 	+ g_{ac,b}
 	- g_{bc,a}
-	+ c_{ab,c}
-	+ c_{ac,b}
-	- c_{bc,a}
+	+ c_{acb}
+	+ c_{abc}
+	- c_{cba}
 )$<br>
 $= \frac{1}{2} (
 	({e_a}^I e_{b I})_{,c}
 	+ ({e_a}^I e_{c I})_{,b}
 	- ({e_b}^I e_{c I})_{,a}
 
-	+ 2 {{e_{[b}}^I}_{,a]} e_{c I}
 	+ 2 {{e_{[c}}^I}_{,a]} e_{b I}
-	- 2 {{e_{[c}}^I}_{,b]} e_{a I}
+	+ 2 {{e_{[b}}^I}_{,a]} e_{c I}
+	- 2 {{e_{[b}}^I}_{,c]} e_{a I}
 )$<br>
 $= \frac{1}{2} (
 	{{e_a}^I}_{,c} e_{b I}
@@ -401,72 +469,93 @@ $= \frac{1}{2} (
 	- {{e_b}^I}_{,a} e_{c I}
 	- {e_{c I}}_{,a} {e_b}^I
 
-	+ {{e_b}^I}_{,a} e_{c I}
-	- {{e_a}^I}_{,b} e_{c I}
 	
 	+ {{e_c}^I}_{,a} e_{b I}
 	- {{e_a}^I}_{,c} e_{b I}
 	
-	- {{e_c}^I}_{,b} e_{a I}
-	+ {{e_b}^I}_{,c} e_{a I}
+	+ {{e_b}^I}_{,a} e_{c I}
+	- {{e_a}^I}_{,b} e_{c I}
+	
+	- {{e_b}^I}_{,c} e_{a I}
+	+ {{e_c}^I}_{,b} e_{a I}
 )$<br>
-$= {e_a}^I e_{bI,c}$<br>
-${\Gamma^a}_{bc} = {e^a}_I {{e_b}^I}_{,c}$<br>
-Notice how this coincides with the definition ${\Gamma^a}_{bc} e_a = \nabla_c e_b$<br>
+$= {{e_c}^I}_{,b} e_{a I}$<br>
+${\Gamma^a}_{bc} = {e^a}_I \partial_b {e_c}^I$<br>
+Notice how this looks similar to the definition ${\Gamma^a}_{bc} e_a = \nabla_b e_c$<br>
 <br>
 
-Levi-Civita connection antisymmetry on 2nd and 3rd indexes (anholonomic):<br> 
+Verify Levi-Civita connection antisymmetry on 2nd and 3rd indexes:<br> 
 $ \Gamma_{a[bc]}$<br>
 $= {1 \over 2} (\Gamma_{abc} - \Gamma_{acb})$<br>
 $= {1 \over 4} (
 	\partial_c g_{ab} + \partial_b g_{ac} - \partial_a g_{bc} 
-		+ c_{abc} + c_{acb} - c_{bca}
+		+ c_{acb} + c_{abc} - c_{cba}
 	- \partial_b g_{ac} - \partial_c g_{ab} + \partial_a g_{cb} 
-		- c_{acb} - c_{abc} + c_{cba}
+		- c_{abc} - c_{acb} + c_{bca}
 )$<br>
-$= \frac{1}{2} c_{cba}$<br>
+$= -\frac{1}{2} c_{cba}$<br>
 <br>
 
-1st kind symmetry on 1st and 2nd indexes (anholonomic):<br>
-$ \Gamma_{(ab)c}$<br>
-$= {1 \over 2} (\Gamma_{abc} + \Gamma_{bac})$<br>
+Verify 1st kind symmetry on 1st and 3nd indexes:<br>
+$ \Gamma_{(a|b|c)}$<br>
+$= {1 \over 2} (\Gamma_{abc} + \Gamma_{cba})$<br>
 $= {1 \over 4} (
 	\partial_c g_{ab} + \partial_b g_{ac} - \partial_a g_{bc} 
-		+ c_{abc} + c_{acb} - c_{bca}
-	+ \partial_c g_{ba} + \partial_a g_{bc} - \partial_b g_{ac} 
-		+ c_{bac} + c_{bca} - c_{acb}
+		+ c_{acb} + c_{abc} - c_{cba}
+	+ \partial_a g_{cb} + \partial_b g_{ca} - \partial_c g_{ab} 
+		+ c_{bca} + c_{cba} - c_{abc}
 )$<br>
-$= {1 \over 2} \partial_c g_{ab}$<br>
+$= {1 \over 2} \partial_b g_{ac}$<br>
+<br>
+
+This is the difference between an arbitrary connection and the Levi-Civita connection.<br>
+${K^a}_{bc} = {T^a}_{bc} + {T_{bc}}^a + {T_{cb}}^a$ ... maybe with some structure contsants as well?<br>
+Lowering a:<br>
+$K_{abc} = T_{abc} + T_{bca} + T_{cba}$ ... maybe with some structure contsants as well?<br>
+<br>
+
+Contorsion identities:<br>
+$K_{(a|b|c)} = \frac{1}{2} (
+	T_{abc} + T_{bca} + T_{cba}
+	+ T_{cba} + T_{bac} + T_{abc}
+)$<br>
+$ = T_{abc} + T_{b(ac)} + T_{cba}$<br>
+$ = T_{abc} + T_{cba}$<br>
+$ = 2 T_{(a|b|c)}$<br>
+$ = -T_{acb} - T_{cab}$<br>
+$ = -2 T_{(ac)b}$<br>
+<br>
+
+$K_{[a|b|c]} = \frac{1}{2} (
+	T_{abc} + T_{bca} + T_{cba}
+	- T_{cba} - T_{bac} - T_{abc}
+)$<br>
+$= \frac{1}{2} (T_{bca} - T_{bac})$<br>
+$= T_{b[ca]}$<br>
+$= T_{bca}$<br>
 <br>
 
 covariant derivative in vector basis:<br>
 $\nabla v = e^a \otimes (\nabla_a v) = e^a \otimes (\nabla_a (v^b e_b)) = e^a \otimes ((\nabla_a v^b) e_b + v^b \nabla_a e_b)$
-	$ = e^a \otimes ((\partial_a v^b) e_b + v^c {\Gamma^b}_{ca} e_b)$
-	$ = (\partial_a v^b + {\Gamma^b}_{ca} v^c) e^a \otimes e_b$<br>
+	$ = e^a \otimes ((\partial_a v^b) e_b + v^c {\Gamma^b}_{ac} e_b)$
+	$ = (\partial_a v^b + {\Gamma^b}_{ac} v^c) e^a \otimes e_b$<br>
 <br>
-covariant derivative of vector in index notation: $ \nabla_a v^b = \partial_a v^b + {\Gamma^b}_{ca} v^c $<br>
+covariant derivative of vector in index notation: $ \nabla_a v^b = \partial_a v^b + {\Gamma^b}_{ac} v^c $<br>
 <br>
 covariant derivative in one-form basis:<br>
 $\nabla w = e^a \otimes (\nabla_a w) = e^a \otimes (\nabla_a (w_b e^b)) = e^a \otimes ((\nabla_a w_b) e^b + w_b \nabla_a e^b)$
-	$ = e^a \otimes ((\partial_a w_b) e^b - w_c {\Gamma^c}_{ba} e^b)$
-	$ = (\partial_a w_b - w_c {\Gamma^c}_{ba}) e^a \otimes e^b$<br>
+	$ = e^a \otimes ((\partial_a w_b) e^b - w_c {\Gamma^c}_{ab} e^b)$
+	$ = (\partial_a w_b - w_c {\Gamma^c}_{ab}) e^a \otimes e^b$<br>
 <br>
-covariant derivative of one-form in index notation: $ \nabla_a w_b = \partial_a w_b - {\Gamma^c}_{ba} w_c $<br>
+covariant derivative of one-form in index notation: $ \nabla_a w_b = \partial_a w_b - {\Gamma^c}_{ab} w_c $<br>
 <br>
 This is where we see that in index notation $ \nabla_c $ treats $ v^a $ as a vector due to its raised index, while in coordinate-free notation $\nabla_c $ treats $ v^a $ as a scalars of the $ e_a $ vector.<br>
 <br>
-covariant derivative of metric in index notation: 
-$ \nabla_c g_{ab}
-	= \partial_c g_{ab} - {\Gamma^d}_{ac} g_{db} - {\Gamma^d}_{bc} g_{ad}
-	= \partial_c g_{ab} - \Gamma_{bac} - \Gamma_{abc}
-	= \partial_c g_{ab} - \partial_c g_{ab}
-	= 0 
-$<br>
 <br>
 
 covariant vector derivative:<br>
 Let $\nabla_{s v} = s \nabla_v$ for some scalar $s$ and vector $v$<br>
-$\nabla_u v = \nabla_{u^a e_a} (v^b e_b) = u^a \nabla_a (v^b e_b) = u^a (\partial_a v^b + {\Gamma^b}_{ca} v^c) e_b$<br>
+$\nabla_u v = \nabla_{u^a e_a} (v^b e_b) = u^a \nabla_a (v^b e_b) = u^a (\partial_a v^b + {\Gamma^b}_{ac} v^c) e_b$<br>
 <br>
 
 Riemann curvature in coordinate-free notation:<br>
@@ -481,101 +570,100 @@ $= \nabla_{x^a e_a} \nabla_{y^b e_b} (z^c e_c)
 	- [x,y]^d \nabla_d (z^c e_c)$<br>
 $= x^a \nabla_a (y^b \nabla_b (z^c e_c)) 
 	- y^a \nabla_a (x^b \nabla_b (z^c e_c)) 
-	- (x^a e_a y^d - y^a e_a x^d + x^a y^b {c_{ab}}^d) \nabla_d (z^c e_c)$<br>
+	- (x^a e_a (y^d) - y^a e_a (x^d) + x^a y^b {c_{ab}}^d) \nabla_d (z^c e_c)$<br>
 $= x^a \nabla_a y^b \nabla_b (z^c e_c) 
 	+ x^a y^b \nabla_a \nabla_b (z^c e_c) 
 	- y^a \nabla_a x^b \nabla_b (z^c e_c) 
 	- y^a x^b \nabla_a \nabla_b (z^c e_c) 
-	- (x^a e_a y^d - y^a e_a x^d + x^a y^b {c_{ab}}^d) \nabla_d (z^c e_c)$<br>
-$= (x^a e_a y^d - y^a e_a x^d) \nabla_d (z^c e_c) 
+	- (x^a e_a (y^d) - y^a e_a (x^d) + x^a y^b {c_{ab}}^d) \nabla_d (z^c e_c)$<br>
+$= (x^a e_a (y^d) - y^a e_a (x^d)) \nabla_d (z^c e_c) 
 	+ (x^a y^b - y^a x^b) \nabla_a \nabla_b (z^c e_c) 
-	- (x^a e_a y^d - y^a e_a x^d + x^a y^b {c_{ab}}^d) \nabla_d (z^c e_c)$<br>
+	- (x^a e_a (y^d) - y^a e_a (x^d) + x^a y^b {c_{ab}}^d) \nabla_d (z^c e_c)$<br>
 $= 	 (x^a y^b - y^a x^b) \nabla_a \nabla_b (z^c e_c) 
 	- x^a y^b {c_{ab}}^d \nabla_d (z^c e_c)$<br>
-$= 	 (x^a y^b - y^a x^b) \nabla_a ((e_b z^c) e_c + z^c \nabla_b e_c) 
-	- x^a y^b {c_{ab}}^d ((e_d z^c) e_c + z^c \nabla_d e_c)$<br>
-$= 	 (x^a y^b - y^a x^b) \nabla_a ((e_b z^c) e_c + z^c {\Gamma^e}_{cb} e_e) 
-	- x^a y^b {c_{ab}}^d ((e_d z^c) e_c + z^c {\Gamma^e}_{cd} e_e)$<br>
+$= 	 (x^a y^b - y^a x^b) \nabla_a (e_b (z^c) e_c + z^c \nabla_b e_c) 
+	- x^a y^b {c_{ab}}^d (e_d (z^c) e_c + z^c \nabla_d e_c)$<br>
+$= 	 (x^a y^b - y^a x^b) \nabla_a (e_b (z^c) e_c + z^c {\Gamma^e}_{bc} e_e) 
+	- x^a y^b {c_{ab}}^d (e_d (z^c) e_c + z^c {\Gamma^e}_{dc} e_e)$<br>
 $= 	 (x^a y^b - y^a x^b) (
-		\nabla_a (e_b z^c) e_c 
-		+ (e_b z^c) \nabla_a e_c 
-		+ \nabla_a z^c {\Gamma^e}_{cb} e_e
-		+ z^c \nabla_a {\Gamma^e}_{cb} e_e
-		+ z^c {\Gamma^e}_{cb} \nabla_a e_e
+		\nabla_a (e_b (z^c)) e_c 
+		+ e_b (z^c) \nabla_a e_c 
+		+ \nabla_a z^c {\Gamma^e}_{bc} e_e
+		+ z^c \nabla_a {\Gamma^e}_{bc} e_e
+		+ z^c {\Gamma^e}_{bc} \nabla_a e_e
 	) 
-	- x^a y^b {c_{ab}}^d ((e_d z^c) e_c + z^c {\Gamma^e}_{cd} e_e)$<br>
+	- x^a y^b {c_{ab}}^d (e_d (z^c) e_c + z^c {\Gamma^e}_{dc} e_e)$<br>
 $= 	 (x^a y^b - y^a x^b) (
-		e_a (e_b z^c) e_c 
-		+ (e_b z^c) {\Gamma^e}_{ca} e_e
-		+ (e_a z^c) {\Gamma^e}_{cb} e_e
-		+ z^c (e_a {\Gamma^e}_{cb}) e_e
-		+ z^c {\Gamma^e}_{cb} {\Gamma^d}_{ea} e_d
+		e_a (e_b (z^c)) e_c 
+		+ e_b (z^c) {\Gamma^e}_{ac} e_e
+		+ e_a (z^c) {\Gamma^e}_{bc} e_e
+		+ z^c e_a ({\Gamma^e}_{bc}) e_e
+		+ z^c {\Gamma^e}_{bc} {\Gamma^d}_{ae} e_d
 	)
-	- x^a y^b {c_{ab}}^d ((e_d z^c) e_c + z^c {\Gamma^e}_{cd} e_e)$<br>
+	- x^a y^b {c_{ab}}^d (e_d (z^c) e_c + z^c {\Gamma^e}_{dc} e_e)$<br>
 $= 	 (x^a y^b - y^a x^b) (
-		e_a (e_b z^c) e_c
-		+ z^c (e_a {\Gamma^e}_{cb}) e_e
-		+ z^c {\Gamma^e}_{cb} {\Gamma^d}_{ea} e_d
+		e_a (e_b (z^c)) e_c
+		+ z^c e_a ({\Gamma^e}_{bc}) e_e
+		+ z^c {\Gamma^e}_{bc} {\Gamma^d}_{ae} e_d
 	) 
-	- x^a y^b {c_{ab}}^d ((e_d z^c) e_c + z^c {\Gamma^e}_{cd} e_e)$<br>
+	- x^a y^b {c_{ab}}^d (e_d (z^c) e_c + z^c {\Gamma^e}_{dc} e_e)$<br>
 $= 	 
 	x^a y^b (
-		e_a (e_b z^c) - e_b (e_a z^c)
+		e_a (e_b (z^c)) - e_b (e_a (z^c))
 	) e_c
 	+ x^a y^b z^c (
-		+ (e_a {\Gamma^e}_{cb})
-		- (e_b {\Gamma^e}_{ca})
-		+ {\Gamma^d}_{cb} {\Gamma^e}_{da}
-		- {\Gamma^d}_{ca} {\Gamma^e}_{db}
-		- {c_{ab}}^d {\Gamma^e}_{cd}
+		+ e_a ({\Gamma^e}_{bc})
+		- e_b ({\Gamma^e}_{ac})
+		+ {\Gamma^d}_{bc} {\Gamma^e}_{ad}
+		- {\Gamma^d}_{ac} {\Gamma^e}_{bd}
+		- {c_{ab}}^d {\Gamma^e}_{dc}
 	) e_e
-	- x^a y^b {c_{ab}}^d (e_d z^c) e_c 
+	- x^a y^b {c_{ab}}^d e_d (z^c) e_c 
 $<br>
 $= 	z^b x^c y^d (
-		e_c {\Gamma^a}_{bd}
-		- e_d {\Gamma^a}_{bc}
-		+ {\Gamma^a}_{ec} {\Gamma^e}_{bd}
-		- {\Gamma^a}_{ed} {\Gamma^e}_{bc}
-		- {\Gamma^a}_{be} {c_{cd}}^e
+		e_c ({\Gamma^a}_{db})
+		- e_d ({\Gamma^a}_{cb})
+		+ {\Gamma^a}_{ce} {\Gamma^e}_{db}
+		- {\Gamma^a}_{de} {\Gamma^e}_{cb}
+		- {\Gamma^a}_{eb} {c_{cd}}^e
 	) e_a
-	+ x^a y^b ([e_a, e_b] z^c) e_c
-	- x^a y^b {c_{ab}}^d (e_d z^c) e_c 
+	+ x^a y^b ([e_a, e_b] (z^c)) e_c
+	- x^a y^b {c_{ab}}^d e_d (z^c) e_c 
 $<br>
 $= 	z^b x^c y^d (
-		e_c {\Gamma^a}_{bd}
-		- e_d {\Gamma^a}_{bc}
-		+ {\Gamma^a}_{ec} {\Gamma^e}_{bd}
-		- {\Gamma^a}_{ed} {\Gamma^e}_{bc}
-		- {\Gamma^a}_{be} {c_{cd}}^e
+		e_c ({\Gamma^a}_{db})
+		- e_d ({\Gamma^a}_{cb})
+		+ {\Gamma^a}_{ce} {\Gamma^e}_{db}
+		- {\Gamma^a}_{de} {\Gamma^e}_{cb}
+		- {\Gamma^a}_{eb} {c_{cd}}^e
 	) e_a
-	+ x^a y^b {c_{ab}}^d (e_d z^c) e_c
-	- x^a y^b {c_{ab}}^d (e_d z^c) e_c 
+	+ x^a y^b {c_{ab}}^d e_d (z^c) e_c
+	- x^a y^b {c_{ab}}^d e_d (z^c) e_c 
 $<br>
 $= 	z^b x^c y^d (
-		e_c {\Gamma^a}_{bd}
-		- e_d {\Gamma^a}_{bc}
-		+ {\Gamma^a}_{ec} {\Gamma^e}_{bd}
-		- {\Gamma^a}_{ed} {\Gamma^e}_{bc}
-		- {\Gamma^a}_{be} {c_{cd}}^e
+		e_c ({\Gamma^a}_{db})
+		- e_d ({\Gamma^a}_{cb})
+		+ {\Gamma^a}_{ce} {\Gamma^e}_{db}
+		- {\Gamma^a}_{de} {\Gamma^e}_{cb}
+		- {\Gamma^a}_{eb} {c_{cd}}^e
 	) e_a
 $<br>
 $= {R^a}_{bcd} z^b x^c y^d e_a$<br>
-For ${R^a}_{bcd} = e_c {\Gamma^a}_{bd}
-		- e_d {\Gamma^a}_{bc}
-		+ {\Gamma^a}_{ec} {\Gamma^e}_{bd}
-		- {\Gamma^a}_{ed} {\Gamma^e}_{bc}
-		- {\Gamma^a}_{be} {c_{cd}}^e$<br>
+For ${R^a}_{bcd} = e_c ({\Gamma^a}_{db})
+		- e_d ({\Gamma^a}_{cb})
+		+ {\Gamma^a}_{ce} {\Gamma^e}_{db}
+		- {\Gamma^a}_{de} {\Gamma^e}_{cb}
+		- {\Gamma^a}_{eb} {c_{cd}}^e$<br>
 In index notation: $([\nabla_c,\nabla_d] - \nabla_{[c,d]}) z^a = {R^a}_{bcd} z^b$<br>
+<br>
+Hmm, when I was following 'Gravitation's index order of covariant derivatives and connection coefficients and structure constants, the Riemann indexes matched up better.  Now they don't so much.<br>
 <br>
 
 Ricci curvature: $ R_{ab} = {R^c}_{acb} $<br>
 Gaussian curvature: $ R = {R^a}_a $<br>
 <br>
 
-Notice: I've pulled out the wedge product and exterior derivative content and put it into a separate note sheet <a href='../Differential Geometry/exterior derivative.html'>here</a>.<br> 
-<br>
-
-<a href='index.html'>Back</a><br>
+<a href='.'>Back</a><br>
 <br>
 
 	</body>
