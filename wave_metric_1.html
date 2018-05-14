@@ -10,6 +10,7 @@
 <h2>using $exp(\xi \cdot x)$</h3>
 
 $g_{ab} = e_{ab} exp(\xi_u x^u)$<br>
+For $e_{ab}$ symmetric and invertible.<br>
 $g^{ab} = (e^{-1})^{ab} exp(-\xi_u x^u)$<br>
 $g_{ab,c} = e_{ab} \xi_c exp(\xi_u x^u) = g_{ab} \xi_c$<br>
 $\Gamma_{abc} = \frac{1}{2} (g_{ab} \xi_c + g_{ac} \xi_b - g_{bc} \xi_a)$<br>
@@ -94,7 +95,7 @@ $\frac{-2 R}{3} = \xi^u \xi_u$<br>
 Therefore if $R = 0$<br>
 then $\xi^u \xi_u = 0$<br>
 then $\xi_a \xi_b (e^{-1})^{ab} = 0$<br>
-then $\xi$ lies in the nullspace of $(e^{-1})$<br>	
+then $\xi$ is a null vector with inner product weighted by $(e^{-1})$<br>	
 <br>
 
 Now lets look at the components of the Ricci:<br> 
@@ -103,6 +104,45 @@ $R_{ab} = \frac{1}{2} \xi_a \xi_b + \frac{1}{3} g_{ab} R$<br>
 For $R = 0$ this gives<br>
 $2 R_{ab} = \xi_a \xi_b$<br>
 So if $R = 0$ then $R_{ab}$ must be the outer product of $\xi$<br> 
-	
+<br>
+
+$G_{ab} = R_{ab} - \frac{1}{2} g_{ab} R$<br>
+$= \frac{1}{2} \xi_a \xi_b - \frac{1}{2} g_{ab} \xi^u \xi_u - \frac{1}{2} g_{ab} (-\frac{3}{2} \xi^u \xi_u)$<br>
+$= \frac{1}{2} \xi_a \xi_b + \frac{1}{4} g_{ab} \xi^u \xi_u$<br>
+EFE vacuum solution for $G_{ab} = 0$<br>
+$0 = \frac{1}{2} \xi_a \xi_b + \frac{1}{4} g_{ab} \xi^u \xi_u$<br>
+$g_{ab} = -2 \xi_a \xi_b / (\xi^u \xi_u)$<br>
+$= -2 \xi_a \xi_b / (\xi_u \xi_v g^{uv})$<br>
+Let $g_{ab} = \phi \xi_a \xi_b$<br>
+Then ... $g_{ab}$ isn't invertible ... and we can't solve this.<br>
+
+<hr>
+
+Let's try again from the start.<br>
+Let $\phi = exp(\xi_u x^u)$<br>
+$g_{ab} = \eta_{ab} + e_a e_b exp(\xi_u x^u) = \eta_{ab} + e_a e_b \phi$<br>
+$g = det([g_{ab}]) = -1 - \phi \eta^{ab} e_a e_b$<br>
+$g^{ab} = (\phi \eta^{au} e_u \eta^{bv} e_v - \eta^{ab} (1 + \phi e_u \eta^{uv} e_v) ) / g$<br>
+...where $\eta_{ab} = \eta^{ab} = diag(-1, 1, 1, 1)$ and all else is raised/lowered by $g_{ab}$ and $g^{ab}$<br>
+All the $\Gamma_{abc}$, ${\Gamma^a}_{bc}$, ${R^a}_{bcd}$, $R_{ab}$, $R$, $G_{ab}$ are all the same.<br>
+Now the EFE $G_{ab} = 0$ gives us:<br>
+$g_{ab} = -2 \xi_a \xi_b / (\xi_u \xi_v g^{uv})$<br>
+$= -2 \xi_a \xi_b / (\xi_u \xi_v 
+	(\phi \eta^{uc} e_c \eta^{vd} e_d - \eta^{uv} (1 + \phi e_c \eta^{cd} e_d) ) / g
+)$<br>
+$= -2 g \xi_a \xi_b / (
+	\phi \cdot \xi_u \eta^{uc} e_c \cdot \xi_v \eta^{vd} e_d - \xi_u \xi_v \eta^{uv} - \phi \cdot \xi_u \eta^{uv} \xi_v \cdot e_c \eta^{cd} e_d
+)$<br>
+$= 2 (1 + \phi e_e \eta^{ef} e_f) \xi_a \xi_b / (
+	\phi \cdot \xi_u \eta^{uc} e_c \cdot \xi_v \eta^{vd} e_d - \xi_u \xi_v \eta^{uv} - \phi \cdot \xi_u \eta^{uv} \xi_v \cdot e_c \eta^{cd} e_d
+)$<br>
+Let $e_a = \theta \xi_a$<br>
+$= 2 (1 + \phi \theta^2 \xi_e \eta^{ef} \xi_f) \xi_a \xi_b / (
+	\phi \theta^2 \cdot \xi_u \eta^{uc} \xi_c \cdot \xi_v \eta^{vd} \xi_d - \xi_u \xi_v \eta^{uv} - \phi \theta^2 \cdot \xi_u \eta^{uv} \xi_v \cdot \xi_c \eta^{cd} \xi_d
+)$<br>
+$= -2 (1 / (\xi_u \xi_v \eta^{uv}) + \phi \theta^2) \xi_a \xi_b$<br>
+$= -2 / (\xi_u \xi_v \eta^{uv}) - 2 \phi e_a e_b$<br>
+...and now we have the problem that the only $\phi e_a e_b$  term is scaled by $-2$...
+<br>
 	</body>
 </html>

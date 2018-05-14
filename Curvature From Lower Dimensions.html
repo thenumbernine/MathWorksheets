@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<title>Curvature from Lower Dimensions</title>
+	</head>
+	<body onload='tryToFindMathJax();'>
+
+Metric signature: $\sigma$<br>
+<br>
+
+Normal vector:<br>
+$n_a = (1, 0)$<br>
+<br>
+
+Projection tensor:<br>
+$\gamma_{ab} = g_{ab} - \sigma n_a n_b$<br>
+<br>
+
+Extrinsic curvature:<br>
+$K_{ab} = -{\gamma_a}^p {\gamma_b}^q \nabla_p n_q$<br>
+$K_{ab} = -\alpha {\Gamma^\perp}_{ab}$<br>
+Where ${\Gamma^\perp}_{ab}$ is the connection in the coordinate perpindicular to the horizontal components.<br>
+<br>
+
+2D Riemann Curvature:<br>
+$R_{abcd} = \frac{1}{2} R (g_{ac} g_{bd} - g_{ad} g_{bc})$<br>
+<br>
+
+Gauss's equation:<br>
+$R^\perp_{abcd} - \sigma (K_{ac} K_{bd} - K_{ad} K_{bc}) = {\gamma_a}^p {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s R_{pqrs}$<br>
+<br>
+
+Codazzi's equation:<br>
+$\sigma (\nabla^\perp_b K_{ac} - \nabla^\perp_a K_{bc}) = {\gamma_a}^p {\gamma_b}^q {\gamma_c}^r n^s R_{pqrs}$<br>
+<br>
+
+<hr>
+
+Polar:<br>
+$g_{rr} = 1$; $g_{\phi\phi} = r^2$;<br>
+$R_{r\phi r\phi} = 0$<br>
+<br>
+
+Sphere Surface:<br>
+$g_{\theta\theta} = r^2$; $g_{\phi\phi} = r^2 sin(\theta)^2$<br>
+$R_{\theta\phi\theta\phi} = r^2 sin(\theta)^2$<br>
+<br>
+
+Sphere:<br>
+$g_{rr} = 1$; $g_{\theta\theta} = r^2$; $g_{\phi\phi} = r^2 sin(\theta)^2$<br>
+${\Gamma^r}_{\theta\theta} = -r$; ${\Gamma^r}_{\phi\phi} = -r sin(\theta)^2$<br>
+$R_{abcd} = 0$<br>
+<br>
+
+Relation between Sphere Surface and Sphere:<br>
+'lapse': $\alpha = \sqrt{g_{rr}} = 1$<br>
+$R^\perp_{\theta\phi\theta\phi} - K_{\theta\theta} K_{\phi \phi} + (K_{\theta\phi})^2 = {\gamma_\theta}^a {\gamma_\phi}^b {\gamma_\theta}^c {\gamma_\phi}^d R_{abcd}$<br>
+$r^2 sin(\theta)^2 - K_{\theta\theta} K_{\phi\phi} + (K_{\theta\phi})^2 = 0$<br>
+$r^2 sin(\theta)^2 - (-\alpha {\Gamma^r}_{\theta\theta}) (-\alpha {\Gamma^r}_{\phi\phi}) + (-\alpha {\Gamma^r}_{\theta\phi})^2 = 0$<br>
+$r^2 sin(\theta)^2 - r \cdot r sin(\theta)^2 = 0$<br>
+<br>
+
+Relation between Polar and Sphere:<br>
+$R^\perp_{r\phi r\phi} - K_{rr} K_{\phi \phi} + (K_{r\phi})^2 = {\gamma_r}^a {\gamma_\phi}^b {\gamma_r}^c {\gamma_\phi}^d R_{abcd}$<br>
+$0 - 0 \cdot r sin(\theta)^2 + 0 \cdot 0 = 0$<br>
+<br>
+
+	</body>
+</html>

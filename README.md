@@ -16,6 +16,8 @@ Here's the CDN URLs:
 
 [Change of Coordinates](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Change%20of%20Coordinates%2ehtml)
 
+[Curvature From Lower Dimensions](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Curvature%20From%20Lower%20Dimensions%2ehtml)
+
 [Differential Geometry/1 - tensors](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%20%2d%20tensors%2ehtml)
 
 [Differential Geometry/2 - exterior derivative](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/2%20%2d%20exterior%20derivative%2ehtml)
