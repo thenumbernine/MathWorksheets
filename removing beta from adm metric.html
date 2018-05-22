@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<title>Removing beta from ADM metric</title>
+	</head>
+	<body onload='tryToFindMathJax();'>
+line element:<br>
+$ds^2 = g_{uv} dx^u dx^v$<br>
+<br>
+
+ADM metric:<br>
+$\alpha$ = lapse<br>
+$\beta^i$ = shift<br>
+$\gamma_{ij}$ = spatial metric<br>
+$g_{uv} = \left[\begin{matrix}
+	-\alpha^2 + \beta^2 & \beta_j \\
+	\beta_i & \gamma_{ij}
+\end{matrix}\right]$<br>
+<br>
+
+change of coordinates:<br>
+
+$v^i$ = velocity vector<br>
+$\gamma$ = Lorentz factor = $\frac{1}{\sqrt{1 - v^2}}$<br>
+${\Lambda^u}_{u'} = \left[\begin{matrix}
+	\gamma & -\gamma v_j \\
+	-\gamma v^i & \delta^i_j + (\gamma - 1) v^i v_j / v^2
+\end{matrix}\right]$<br>
+<br>
+
+change of coordinates:<br>
+$g_{u'v'} = {\Lambda^u}_{u'} g_{uv} {\Lambda^v}_{v'}$<br>
+$ = \left[\begin{matrix}
+	\gamma & -\gamma v^m \\
+	-\gamma v_i & \delta^m_i + (\gamma - 1) v^m v_i / v^2
+\end{matrix}\right]	
+\cdot \left[\begin{matrix}
+	-\alpha^2 + \beta^2 & \beta_n \\
+	\beta_m & \gamma_{mn}
+\end{matrix}\right]
+\cdot \left[\begin{matrix}
+	\gamma & -\gamma v_j \\
+	-\gamma v^n & \delta^n_j + (\gamma - 1) v^n v_j / v^2
+\end{matrix}\right]$<br>
+$ = \left[\begin{matrix}
+	\gamma & -\gamma v^m \\
+	-\gamma v_i & \delta^m_i + (\gamma - 1) v^m v_i / v^2
+\end{matrix}\right]	
+\cdot \left[\begin{matrix}
+	(-\alpha^2 + \beta^2) \gamma - \beta_n \gamma v^n &
+		(-\alpha^2 + \beta^2) (-\gamma v_j) + \beta_n (\delta^n_j + (\gamma - 1) v^n v_j / v^2) \\
+	\beta_m \gamma - \gamma_{mn} \gamma v^n &
+		-\beta_m \gamma v_j + \gamma_{mn} (\delta^n_j + (\gamma - 1) v^n v_j / v^2)
+\end{matrix}\right]$<br>
+$ = \left[\begin{matrix}
+	\gamma & -\gamma v^m \\
+	-\gamma v_i & \delta^m_i + (\gamma - 1) v^m v_i / v^2
+\end{matrix}\right]	
+\cdot \left[\begin{matrix}
+	\gamma (-\alpha^2 + \beta^2 - \beta_n v^n) &
+		\alpha^2 \gamma v_j - \gamma \beta^2 v_j + \beta_j + (\gamma - 1) \beta_n v^n v_j / v^2 \\
+	\gamma (\beta_m - v_m) &
+		-\gamma \beta_m v_j + \gamma_{mj} + (\gamma - 1) v_m v_j / v^2
+\end{matrix}\right]$<br>
+$ = \left[\begin{matrix}
+	\gamma^2 (-\alpha^2 + \beta^2 - \beta_n v^n) 
+		- \gamma^2 v^m (\beta_m - v_m) &
+	
+	\gamma (\alpha^2 \gamma v_j - \gamma \beta^2 v_j + \beta_j + (\gamma - 1) \beta_n v^n v_j / v^2)
+		- \gamma v^m (-\gamma \beta_m v_j + \gamma_{mj} + (\gamma - 1) v_m v_j / v^2) \\
+
+	-\gamma^2 v_i (-\alpha^2 + \beta^2 - \beta_n v^n)
+		+ (\delta^m_i + (\gamma - 1) v^m v_i / v^2) (\gamma (\beta_m - v_m)) &
+
+	-\gamma v_i (\alpha^2 \gamma v_j - \gamma \beta^2 v_j + \beta_j + (\gamma - 1) \beta_n v^n v_j / v^2)
+		+ (\delta^m_i + (\gamma - 1) v^m v_i / v^2) (-\gamma \beta_m v_j + \gamma_{mj} + (\gamma - 1) v_m v_j / v^2)
+
+\end{matrix}\right]$<br>
+$ = \left[\begin{matrix}
+	\gamma^2 (-\alpha^2 + \beta^2 - 2 \beta_m v^m + v^2) &
+	
+		 \gamma^2 v_j (
+		 	\alpha^2 
+			- \beta^2 
+			+ \beta_m v^m 
+			- 1) 
+		+ \gamma \beta_j 
+		+ \gamma (\gamma - 1) \beta_m v^m v_j / v^2
+	\\
+
+		 \gamma^2 v_i (\alpha^2 
+			- \beta^2 
+			+ \beta_m v^m
+			- 1)
+		+ \gamma \beta_i
+		+ \gamma (\gamma - 1) v^m \beta_m v_i / v^2
+	&
+		\gamma_{ij} 
+		
+		- \gamma (v_i \beta_j + \beta_i v_j)
+	
+		+ v_i v_j (
+			\gamma^2 (-\alpha^2 + \beta^2 + 1) 
+			- 2 \gamma (\gamma - 1) \beta_m v^m / v^2
+		)
+\end{matrix}\right]$<br>
+<br>
+
+$\gamma^2 = \frac{1}{1 - v^2}$<br>
+$\gamma^2 - 1 = \frac{v^2}{1 - v^2}$<br>
+$\frac{\gamma^2 - 1}{v^2} = \frac{1}{1 - v^2} = \gamma^2$<br>
+<br>
+
+Conditions for making the boosted metric shift vector zero:<br>
+$		 \gamma^2 v_j (
+		 	\alpha^2 
+			- \beta^2 
+			+ \beta_m v^m 
+			- 1) 
+		+ \gamma \beta_j 
+		+ \gamma (\gamma - 1) \beta_m v^m v_j / v^2
+= 0$<br>
+$ v_j (
+		 	\alpha^2 
+			- \beta^2 
+			+ \beta_m v^m 
+			- 1) 
+		+ (\sqrt{1 - v^2}) \beta_j 
+		+ (1 - \sqrt{1 - v^2}) \beta_m v^m v_j / v^2
+= 0$<br>
+Let's say $\beta^i e_i = e_x$.  Then we get:<br> 
+$ v_x (
+		 	\alpha^2 
+			+ v^x
+			- 2) 
+		+ \sqrt{1 - v^2}
+		+ (1 - \sqrt{1 - v^2}) v^x v_x / v^2
+= 0$<br>
+$ v_{x'} (\alpha^2 - 2) = 0$ for $x' \ne x$<br>
+So for $\alpha \ne \sqrt{2}$ we get $v_{x'} = 0$.  Therefore $\vec{v} \parallel \vec{\beta}$.<br>
+Let's say $\gamma_{ij} = \delta_{ij}$.  Then the $v_x$ equation gives us:<br>
+$ (v_x)^2 + v_x (\alpha^2 - 2)  + 1 = 0$<br>
+$v_x = 1 - \frac{1}{2} \alpha^2 \pm \frac{1}{2} \alpha \sqrt{ (\alpha + 2) (\alpha - 2) }$<br>
+<br>
+Back to the relativistic case with $\vec{v} \parallel \vec{\beta}$.  Let $v^i = q \beta^i$<br>
+$ q \beta_j (
+		 	\alpha^2 
+			- \beta^2 
+			+ q \beta_m \beta^m 
+			- 1) 
+		+ (\sqrt{1 - q^2 \beta^2}) \beta_j 
+		+ (1 - \sqrt{1 - q^2 \beta^2}) \beta_m q^2 \beta^m \beta_j / (q^2 \beta^2)
+= 0$<br>
+$ 	(
+	+ q^2 \beta^2
+	+ q \alpha^2
+	- q
+	- q \beta^2
+	+ 1) \beta_j 
+= 0$<br>
+$ 	q^2 \beta^2
+	+ q (\alpha^2 - \beta^2 - 1)
+	+ 1
+= 0$<br>
+$q = \frac{1}{2 \beta^2} (
+	-(\alpha^2 - \beta^2 - 1)
+	\pm \sqrt{
+		(\alpha^2 - \beta^2 - 1)^2
+		- 4 \beta^2
+	}
+)$<br>
+$q = \frac{1}{2} (
+	-\frac{\alpha^2}{\beta^2}
+	+ \frac{1}{\beta^2}
+	+ 1
+	\pm \frac{1}{\beta^2} \sqrt{
+		(\alpha^2 - 1)^2 - 2 (\alpha^2 + 1) \beta^2 + \beta^4
+	}
+)$<br>
+	
+	</body>
+</html>
