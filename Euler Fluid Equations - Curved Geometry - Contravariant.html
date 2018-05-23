@@ -227,28 +227,43 @@ $\left[\matrix{
 $\left[\matrix{
 	\rho \\ \rho v^i \\ E_{total} 
 }\right]_{,t}
-+ 
-\frac{1}{\sqrt{g}} \left( \sqrt{g}
++ \frac{\sqrt{g}}{\sqrt{g}}
 \left[\matrix{
-	0 &
-		\delta^j_k &
-		0 \\
-	-v^i v^j + \frac{1}{2} g^{ij} \tilde\gamma v^2 &
-		\delta^i_k v^j + \delta^j_k v^i - g^{ij} \tilde\gamma v_k &
-		g^{ij} \tilde\gamma \\
-	v^j (\frac{1}{2} \tilde\gamma v^2 - h_{total}) &
-		-\tilde\gamma v^j v_k + \delta^j_k h_{total} &
-		\gamma v^j
+	\rho v^j \\
+	\rho v^i v^j + P g^{ij} \\
+	v^j H_{total}
+}\right]_{,j}
+
++ \frac{1}{\sqrt{g}} (\sqrt{g})_{,j} 
+\left[\matrix{
+	\rho v^j \\
+	\rho v^i v^j + P g^{ij} \\
+	v^j H_{total}
 }\right]
-\left[\matrix{
-	\rho \\ \rho v^k \\ E_{total} 
+
+= \left[\matrix{
+	0 \\ 
+	-{\Gamma^i}_{kj} (\rho v^k v^j + P g^{jk}) \\ 
+	0
+}\right]$<br>
+<br>
+
+
+$\left[\matrix{
+	\rho \\ \rho v^i \\ E_{total} 
+}\right]_{,t}
++ 
+\frac{1}{\sqrt{g}} 
+\left( \sqrt{g} \left[\matrix{
+	\rho v^j \\
+	\rho v^i v^j + P g^{ij} \\
+	v^j H_{total}
 }\right] \right)_{,j} = \left[\matrix{
 	0 \\
 	-{\Gamma^i}_{jk} (\rho v^j v^k + P g^{jk}) \\
 	0
 }\right]$<br>
 <br>
-
 
 
 Maxima has a much harder time calculating the eigenvalues/vectors with those $\delta^{ij}$'s replaced with $g^{ij}$'s.<br>

@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 	<head>
-        <meta charset="UTF-8">
+        <meta charset='utf-8'>
 		<script type='text/javascript' src='tryToFindMathJax.js'></script>
 		<title>Maxwell Equations as Hyperbolic Conservation Laws</title>
 	</head>
@@ -60,8 +60,8 @@ $U_i = \left[\matrix{
 }\right]$<br>
 <br>
 
-conservatve form:<br>
-$U_i + F_{ijk} U_{k,j} = S_i$<br>
+conservative form:<br>
+$U_i + A_{ijk} U_{k,j} = S_i$<br>
 <br>
 
 index/matrix form:<br>
@@ -82,7 +82,7 @@ $\left[\matrix{
 }\right]$<br>
 <br>
 
-$F_x = \left[\matrix{
+$A_x = \left[\matrix{
 	0 & 0 & 0 & 0 & 0 & 0 \\
 	0 & 0 & 0 & 0 & 0 & \frac{1}{\mu_0} \\
 	0 & 0 & 0 & 0 & -\frac{1}{\mu_0} & 0 \\
@@ -92,7 +92,7 @@ $F_x = \left[\matrix{
 }\right]$<br>
 <br>
 
-$F_y = \left[\matrix{
+$A_y = \left[\matrix{
 	0 & 0 & 0 & 0 & 0 & -\frac{1}{\mu_0} \\
 	0 & 0 & 0 & 0 & 0 & 0 \\
 	0 & 0 & 0 & \frac{1}{\mu_0} & 0 & 0 \\
@@ -102,7 +102,7 @@ $F_y = \left[\matrix{
 }\right]$<br>
 <br>
 
-$F_z = \left[\matrix{
+$A_z = \left[\matrix{
 	0 & 0 & 0 & 0 & \frac{1}{\mu_0} & 0 \\
 	0 & 0 & 0 & -\frac{1}{\mu_0} & 0 & 0 \\
 	0 & 0 & 0 & 0 & 0 & 0 \\
@@ -113,7 +113,7 @@ $F_z = \left[\matrix{
 <br>
 
 eigen decomposition:<br>
-$F_j = Q \Lambda Q^{-1}$<br>
+$A_j = Q \Lambda Q^{-1}$<br>
 <br>
 for the $\hat{x}$-direction, with $\hat{x}, \hat{y}, \hat{z}$ forming a basis:<br>
 $Q = \left[\matrix{
@@ -146,6 +146,99 @@ $\Lambda = \left[\matrix{
 	0 & 0 & 0 & 0 & \frac{1}{\sqrt{\epsilon_0 \mu_0}} & 0 \\
 	0 & 0 & 0 & 0 & 0 & \frac{1}{\sqrt{\epsilon_0 \mu_0}}
 }\right]$<br>
+<br>
+
+<h3>curved space, contravariant form:</h3>
+${U^i}_{,t} + {F^{ij}}_{;j} = S^i$<br>
+<br>
+$\epsilon_0 {E^i}_{,t} - \frac{1}{\mu_0} {\epsilon^{ij}}_k {B^k}_{;j} = -j^i$<br>
+${B^i}_{,t} + {\epsilon^{ij}}_k {E^k}_{;j} = 0$<br>
+<br>
+$\epsilon_0 {E^i}_{,t} - \frac{1}{\mu_0} {\epsilon^{ij}}_k ({B^k}_{,j} + {\Gamma^k}_{lj} B^l) = -j^i$<br>
+${B^i}_{,t} + {\epsilon^{ij}}_k ({E^k}_{,j} + {\Gamma^k}_{lj} E^l) = 0$<br>
+<br>
+$\epsilon_0 {E^i}_{,t} - \frac{1}{\mu_0} {\epsilon^{ij}}_k {B^k}_{,j} = -j^i + \frac{1}{\mu_0} {\epsilon^{ij}}_k {\Gamma^k}_{lj} B^l$<br>
+${B^i}_{,t} + {\epsilon^{ij}}_k {E^k}_{,j} = -{\epsilon^{ij}}_k {\Gamma^k}_{lj} E^l$<br>
+<br>
+$\epsilon_0 {E^i}_{,t} - \frac{1}{\mu_0} \frac{1}{\sqrt{g}} [ijk] g_{kl} {B^l}_{,j} = -j^i + \frac{1}{\mu_0} \frac{1}{\sqrt{g}} [ijk] g_{kl} {\Gamma^l}_{mj} B^m$<br>
+${B^i}_{,t} + \frac{1}{\sqrt{g}} [ijk] g_{kl} {E^l}_{,j} = -\frac{1}{\sqrt{g}} [ijk] g_{kl} {\Gamma^l}_{mj} E^m$<br>
+<br>
+$\left[\matrix{
+	\epsilon_0 E^i \\
+	B^i
+}\right]_{,t}
++ \frac{1}{\sqrt{g}} \left[\matrix{
+	0 & - \frac{1}{\mu_0} [ijk] g_{kl} \\ 
+	\frac{1}{\epsilon_0} [ijk] g_{kl} & 0
+}\right]
+\left[\matrix{
+	\epsilon_0 E^l \\
+	B^l
+}\right]_{,j}
+= \left[\matrix{
+	-j^i + \frac{1}{\mu_0} \frac{1}{\sqrt{g}} [ijk] g_{kl} {\Gamma^l}_{mj} B^m \\
+	-\frac{1}{\sqrt{g}} [ijk] g_{kl} {\Gamma^l}_{mj} E^m
+}\right]$<br>
+<br>
+
+At this point it looks like I don't need to weight the flux by any power of the metric determinant ... unlike the Euler fluid equations in curved space, which are weighted by the volume ($\sqrt{g}$).<br>
+I've also noticed that various numerical relativity integrators will be weighted by either nothing, $\alpha$, $\sqrt{det(\gamma_{ij})}$ or both.<br>
+Maybe I sould make my flux weight a property of the equation?<br> 
+If not -- and if I wanted to weight all fluxes by the grid volume -- this is what needs to happen:<br>
+<br>
+
+$\left[\matrix{
+	\epsilon_0 E^i \\
+	B^i
+}\right]_{,t}
++ \frac{1}{\sqrt{g}} \left[\matrix{
+	0 & - \frac{1}{\mu_0} [ijk] g_{kl} \\ 
+	\frac{1}{\epsilon_0} [ijk] g_{kl} & 0
+}\right]
+\left[\matrix{
+	\epsilon_0 E^l \\
+	B^l
+}\right]_{,j}
++ \frac{\sqrt{g}_{,j}}{\sqrt{g}} \left[\matrix{
+	-\frac{1}{\mu_0} {\epsilon^{ij}}_k B^k \\
+	{\epsilon^{ij}}_k E^k
+}\right]
+= \left[\matrix{
+	-j^i + \frac{1}{\mu_0} \frac{1}{\sqrt{g}} [ijk] g_{kl} {\Gamma^l}_{mj} B^m \\
+	-\frac{1}{\sqrt{g}} [ijk] g_{kl} {\Gamma^l}_{mj} E^m
+}\right]
+
++ \frac{\sqrt{g}_{,j}}{\sqrt{g}} \left[\matrix{
+	-\frac{1}{\mu_0} {\epsilon^{ij}}_k B^k \\
+	{\epsilon^{ij}}_k E^k
+}\right]
+
+$<br>
+<br>
+
+$\left[\matrix{
+	\epsilon_0 E^i \\
+	B^i
+}\right]_{,t}
+
++ \frac{1}{\sqrt{g}} \left( \sqrt{g} F^{ij} \right)_{,j}
+
+= \left[\matrix{
+	-j^i + \frac{1}{\mu_0} \frac{1}{\sqrt{g}} [ijk] g_{kl} {\Gamma^l}_{mj} B^m \\
+	-\frac{1}{\sqrt{g}} [ijk] g_{kl} {\Gamma^l}_{mj} E^m
+}\right]
+
++ {\Gamma^l}_{jl} \left[\matrix{
+	-\frac{1}{\mu_0} {\epsilon^{ij}}_k B^k \\
+	{\epsilon^{ij}}_k E^k
+}\right]
+
+$<br>
+<br>
+Notice the last ${\Gamma^l}_{jl}$ term is only to counteract the scaling of the flux by $\sqrt{g}$.<br>
+So if I was to not scale the flux by the volume then I could leave this term out.<br>
+
+
 <br>
 
 	</body>
