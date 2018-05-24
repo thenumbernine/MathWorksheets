@@ -86,7 +86,7 @@ $E_{total,t} + (v^j H_{total})_{,j} + {\Gamma^j}_{kj} v^k H_{total} = 0$<br>
 
 $\rho_{,t} + \rho_{,j} v^j + \rho {v^j}_{,j} = -{\Gamma^j}_{kj} \rho v^k$<br>
 $(\rho v^i)_{,t} + \rho_{,j} v^i v^j + \rho {v^i}_{,j} v^j + \rho v^i {v^j}_{,j} + g^{ij} P_{,j} = -{\Gamma^i}_{kj} \rho v^k v^j - {\Gamma^j}_{kj} \rho v^i v^k$<br>
-$E_{total,t} + {v^j}_{,j} H_{total} + v^j (\frac{1}{2} \rho_{,j} v^2 + \rho v_k {v^k}_{,j} + \frac{\gamma}{\tilde\gamma} P_{,j}) = -{\Gamma^j}_{kj} v^k H_{total}$<br>
+$E_{total,t} + {v^j}_{,j} H_{total} + v^j (\frac{1}{2} \rho_{,j} v^2 + \rho v_k {v^k}_{,j} + \frac{\gamma}{\tilde\gamma} P_{,j}) = -{\Gamma^j}_{kj} v^k H_{total} - \rho \Gamma_{jkl} v^j v^k v^l$<br>
 <br>
 
 $\left[\matrix{
@@ -108,7 +108,7 @@ $\left[\matrix{
 }\right]_{,j} = \left[\matrix{
 	-{\Gamma^j}_{kj} \rho v^k \\
 	-{\Gamma^i}_{kj} \rho v^k v^j - {\Gamma^j}_{kj} \rho v^i v^k \\
-	-{\Gamma^j}_{kj} v^k H_{total}
+	-{\Gamma^j}_{kj} v^k H_{total} - \rho \Gamma_{jkl} v^j v^k v^l
 }\right]$<br>
 <br>
 
@@ -136,7 +136,7 @@ $\left[\matrix{
 }\right]_{,j} = \left[\matrix{
 	-{\Gamma^j}_{kj} \rho v^k \\
 	-{\Gamma^i}_{kj} \rho v^k v^j - {\Gamma^j}_{kj} \rho v^i v^k \\
-	-{\Gamma^j}_{kj} v^k H_{total}
+	-{\Gamma^j}_{kj} v^k H_{total} - \rho \Gamma_{jkl} v^j v^k v^l
 }\right]$<br>
 <br>
 
@@ -160,7 +160,7 @@ $\left[\matrix{
 }\right]_{,j} = \left[\matrix{
 	-{\Gamma^j}_{kj} \rho v^k \\
 	-{\Gamma^i}_{kj} \rho v^k v^j - {\Gamma^j}_{kj} \rho v^i v^k \\
-	-{\Gamma^j}_{kj} v^k H_{total}
+	-{\Gamma^j}_{kj} v^k H_{total} - \rho \Gamma_{jkl} v^j v^k v^l
 }\right]$<br>
 <br>
 
@@ -186,7 +186,7 @@ $\left[\matrix{
 }\right]_{,j} = \left[\matrix{
 	-\frac{1}{\sqrt{g}} (\sqrt{g})_{,k} \rho v^k \\
 	-{\Gamma^i}_{kj} \rho v^k v^j - \frac{1}{\sqrt{g}} (\sqrt{g})_{,k} (\rho v^i v^k + P g^{ik}) + {\Gamma^j}_{kj} P g^{ik} \\
-	-\frac{1}{\sqrt{g}} (\sqrt{g})_{,k} v^k H_{total}
+	-\frac{1}{\sqrt{g}} (\sqrt{g})_{,k} v^k H_{total} - \rho \Gamma_{jkl} v^j v^k v^l
 }\right]$<br>
 <br>
 
@@ -219,7 +219,7 @@ $\left[\matrix{
 = \left[\matrix{
 	0 \\ 
 	-{\Gamma^i}_{kj} (\rho v^k v^j + P g^{jk}) \\ 
-	0
+	-\rho \Gamma_{jkl} v^j v^k v^l
 }\right]$<br>
 <br>
 
@@ -244,7 +244,7 @@ $\left[\matrix{
 = \left[\matrix{
 	0 \\ 
 	-{\Gamma^i}_{kj} (\rho v^k v^j + P g^{jk}) \\ 
-	0
+	-\rho \Gamma_{jkl} v^j v^k v^l
 }\right]$<br>
 <br>
 
@@ -261,7 +261,7 @@ $\left[\matrix{
 }\right] \right)_{,j} = \left[\matrix{
 	0 \\
 	-{\Gamma^i}_{jk} (\rho v^j v^k + P g^{jk}) \\
-	0
+	-\rho \Gamma_{jkl} v^j v^k v^l
 }\right]$<br>
 <br>
 
