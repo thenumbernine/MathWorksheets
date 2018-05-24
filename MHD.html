@@ -151,8 +151,8 @@ $U_i = \downarrow i \left[\matrix{\rho \\ \rho v_i \\ E_{hydro}}\right]$<br>
 Flux vector:<br>
 $F_{ij} = \downarrow i \left[\matrix{
 	\rho v_j \\
-	\rho v_i v_j + \delta_{ij} P
-	\\ H_{hydro} v_j
+	\rho v_i v_j + \delta_{ij} P \\
+	H_{hydro} v_j
 }\right]$<br>
 <br>
 
@@ -536,6 +536,200 @@ Evaluation of function to minimize<br>
 ${{\partial G_i}\over{\partial \tilde{U}_j}} = \partial_{\tilde{U}_j} G_i$<br>
 $= \partial_{\tilde{U}_j} (n \tilde{U}_i + \partial_{\xi_k} \tilde{F}_{ik})$<br>
 $= n \delta_{ij} + \partial_{\tilde{U}_j} \partial_{\xi_k} \tilde{F}_{ik}$<br>
+<br>
+
+<h3>Curved Space Flux Gradient</h3><br>
+${F^{ij}}_{;j} = \downarrow i \left[\matrix{
+	(\rho v^j)_{;j} \\
+	(\rho v^i v^j + g^{ij} P_{total} - {1\over\mu_0} B^i B^j)_{;j} \\
+	(B^i v^j - B^j v^i)_{;j} \\
+	(H_{total} v^j - {1\over\mu_0} B^k v_k B^j)_{;j}
+}\right]$<br>
+$= \downarrow i \left[\matrix{
+	\rho_{,j} v^j + \rho {v^j}_{;j} \\
+	\rho_{,j} v^i v^j + \rho {v^i}_{;j} v^j + \rho v^i {v^j}_{;j} + g^{ij} P_{total,j} - \frac{1}{\mu_0} ({B^i}_{;j} B^j + B^i {B^j}_{;j}) \\	
+	{B^i}_{;j} v^j + B^i {v^j}_{;j} - {B^j}_{;j} v^i - B^j {v^i}_{;j} \\
+	H_{total,j} v^j + H_{total} {v^j}_{;j} - \frac{1}{\mu_0} ({B^k}_{;j} v_k B^j + B^k v_{k;j} B^j + B^k v_k {B^j}_{;j})
+}\right]$<br>
+$= \downarrow i \left[\matrix{
+	\rho_{,j} v^j + \rho ({v^j}_{,j} + {\Gamma^j}_{kj} v^k) \\
+	\rho_{,j} v^i v^j + \rho ({v^i}_{,j} + {\Gamma^i}_{kj} v^k) v^j + \rho v^i ({v^j}_{,j} + {\Gamma^j}_{kj} v^k) + g^{ij} P_{total,j} - \frac{1}{\mu_0} (({B^i}_{,j} + {\Gamma^i}_{kj} B^k) B^j + B^i ({B^j}_{,j} + {\Gamma^j}_{kj} B^k)) \\	
+	({B^i}_{,j} + {\Gamma^i}_{kj} B^k) v^j + B^i ({v^j}_{,j} + {\Gamma^j}_{kj} v^k) - ({B^j}_{,j} + {\Gamma^j}_{kj} B^k) v^i - B^j ({v^i}_{,j} + {\Gamma^i}_{kj} v^k) \\
+	H_{total,j} v^j + H_{total} ({v^j}_{,j} + {\Gamma^j}_{kj} v^k) - \frac{1}{\mu_0} (({B^k}_{,j} + {\Gamma^k}_{lj} B^l) v_k B^j + B^k (v_{k,j} - {\Gamma^l}_{kj} v_l) B^j + B^k v_k ({B^j}_{,j} + {\Gamma^j}_{lj} B^l))
+}\right]$<br>
+$= \downarrow i \left[\matrix{
+	\rho_{,j} v^j 
+	+ \rho {v^j}_{,j} 
+	+ \rho {\Gamma^j}_{kj} v^k
+	\\
+	\rho_{,j} v^i v^j 
+	+ \rho {v^i}_{,j} v^j 
+	+ \rho {\Gamma^i}_{kj} v^k v^j 
+	+ \rho v^i {v^j}_{,j} 
+	+ \rho v^i {\Gamma^j}_{kj} v^k
+	+ g^{ij} P_{total,j} 
+	- \frac{1}{\mu_0} (
+		{B^i}_{,j} B^j 
+		+ {\Gamma^i}_{kj} B^k B^j
+		+ B^i {B^j}_{,j} 
+		+ B^i {\Gamma^j}_{kj} B^k
+	)
+	\\
+	{B^i}_{,j} v^j 
+	+ {\Gamma^i}_{kj} B^k v^j
+	+ B^i {v^j}_{,j} 
+	+ B^i {\Gamma^j}_{kj} v^k
+	- {B^j}_{,j} v^i
+	- {\Gamma^j}_{kj} B^k v^i
+	- B^j {v^i}_{,j} 
+	- B^j {\Gamma^i}_{kj} v^k
+	\\
+	H_{total,j} v^j 
+	+ H_{total} {v^j}_{,j} 
+	+ H_{total} {\Gamma^j}_{kj} v^k
+	- \frac{1}{\mu_0} (
+		{B^k}_{,j} v_k B^j
+		+ {\Gamma^k}_{lj} B^l v_k B^j
+		+ B^k v_{k,j} B^j
+		- B^k {\Gamma^l}_{kj} v_l B^j
+		+ B^k v_k {B^j}_{,j} 
+		+ B^k v_k {\Gamma^j}_{lj} B^l
+	)
+}\right]$<br>
+
+$= \left[\matrix{
+	\rho_{,j} v^j + \rho {v^j}_{,j}
+	\\
+	\rho_{,j} v^i v^j 
+	+ \rho {v^i}_{,j} v^j 
+	+ \rho v^i {v^j}_{,j} 
+	+ g^{ij} P_{total,j} 
+	- \frac{1}{\mu_0} (
+		{B^i}_{,j} B^j 
+		+ B^i {B^j}_{,j}
+	)
+	\\
+	{B^i}_{,j} v^j 
+	+ B^i {v^j}_{,j} 
+	- {B^j}_{,j} v^i
+	- B^j {v^i}_{,j}
+	\\
+	H_{total,j} v^j 
+	+ H_{total} {v^j}_{,j} 
+	- \frac{1}{\mu_0} (
+		{B^k}_{,j} v_k B^j
+		+ B^k v_{k,j} B^j
+		+ B^k v_k {B^j}_{,j}
+	)
+}\right] + \left[\matrix{
+	{\Gamma^j}_{kj} \rho v^k 
+	\\
+	{\Gamma^j}_{kj} \rho v^i v^k
+	- {\Gamma^j}_{kj} \frac{1}{\mu_0} B^i B^k 
+	\\
+	{\Gamma^j}_{kj} B^i v^k
+	- {\Gamma^j}_{kj} B^k v^i 
+	\\
+	H_{total} {\Gamma^j}_{kj} v^k
+	- {\Gamma^j}_{lj} \frac{1}{\mu_0} B^k v_k B^l
+}\right] + \left[\matrix{
+	0 \\
+	\rho {\Gamma^i}_{kj} v^k v^j 
+	- \frac{1}{\mu_0} {\Gamma^i}_{kj} B^k B^j
+	\\
+	{\Gamma^i}_{kj} B^k v^j
+	- B^j {\Gamma^i}_{kj} v^k
+	\\
+	- \frac{1}{\mu_0} (
+		{\Gamma^k}_{lj} B^l v_k B^j
+		- B^k {\Gamma^l}_{kj} v_l B^j
+	)
+}\right]$<br>
+
+$= \left[\matrix{
+	v^j & 
+	\rho \delta^j_k & 
+	0 & 
+	0 \\
+	
+	v^i v^j & 
+	\rho (v^j \delta^i_k + v^i \delta^j_k) &
+	\frac{1}{\mu_0} (
+		g^{ij} B_k
+		- B^j \delta^i_k
+		- B^i \delta^j_k
+	) &
+	g^{ij}  \\
+	
+	0 &
+	B^i \delta^j_k - B^j \delta^i_k &
+	v^j \delta^i_k - v^i \delta^j_k &
+	0 \\
+	
+	\frac{1}{2} v^2 v^j &
+	H_{total} \delta^j_k
+	+ \rho v_k v^j
+	- \frac{1}{\mu_0} B_k B^j &
+	- \frac{1}{\mu_0} (2 B_k v^j - v_k B^j - B^l v_l \delta^j_k) &
+	\frac{\gamma}{\tilde\gamma} v^j \\
+	
+}\right] \left[\matrix{
+	\rho \\
+	v^k \\
+	B^k \\
+	P
+}\right]_{,j}
+
++ \left[\matrix{
+	0 \\
+	\frac{1}{\mu_0} \frac{1}{2} B^k B^l g_{kl,j} g^{ij} \\
+	0 \\
+	(
+		\frac{1}{2} \rho v^k v^l v^j
+		+ \frac{1}{\mu_0} B^k (B^l v^j - v^l B^j)
+	) g_{kl,j}	
+}\right]
+
++  \frac{\sqrt{g}_{,j}}{\sqrt{g}}
+\left[\matrix{
+	\rho v^j \\
+	\rho v^i v^j - \frac{1}{\mu_0} B^i B^j \\
+	B^i v^j - B^j v^i \\
+	H_{total} v^j - \frac{1}{\mu_0} B^k v_k B^j
+}\right] 
+
++ \left[\matrix{
+	0 \\
+	{\Gamma^i}_{kj} (
+		\rho v^k v^j 
+		- \frac{1}{\mu_0} B^k B^j
+	)
+	\\
+	{\Gamma^i}_{kj} (B^k v^j - B^j v^k)
+	\\
+	0
+}\right]$<br>
+
+$= 
+\frac{1}{\sqrt{g}} \left( \sqrt{g}
+\left[\matrix{
+	\rho v^j \\
+	\rho v^i v^j - \frac{1}{\mu_0} B^i B^j \\
+	B^i v^j - B^j v^i \\
+	H_{total} v^j - \frac{1}{\mu_0} B^k v_k B^j
+}\right] 
+\right)_{,j}
+
++ \left[\matrix{
+	0 \\
+	{\Gamma^i}_{kj} (\rho v^j v^k - \frac{1}{\mu_0} B^j B^k)
+	+ \frac{1}{\mu_0} B^j B^k {\Gamma_{jk}}^i
+	\\
+	0 \\
+	\Gamma_{jkl} (\rho v^j v^k v^l
+	+ \frac{1}{\mu_0} (B^j v^k - v^j B^k) B^l)
+}\right]$<br>
+
 <br>
 
 [1]: <a href='http://www.av8n.com/physics/euler-flow.htm'>http://www.av8n.com/physics/euler-flow.htm</a>:<br>
