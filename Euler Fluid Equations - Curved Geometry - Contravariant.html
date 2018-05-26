@@ -38,6 +38,24 @@ $W^I = \left[\matrix{ \rho \\ v^i \\ P }\right]$<br>
 $U^I = \left[\matrix{ \rho \\ \rho v^i \\ E_{total} }\right]$<br>
 <br>
 
+Derivative of conserved quantities with respect to primitive variables:<br>
+
+$\left[\matrix{
+	\rho \\ \rho v^i \\ E_{total}
+}\right]_{,j}$<br>
+<br>
+
+$(\rho v^i)_{,j} = \rho_{,j} v^i + \rho {v^i}_{,j}$<br>
+<br>
+
+$E_{total,j}$<br>
+$ = (P / \tilde\gamma + \frac{1}{2} \rho v^k v_k)_{,j}$<br>
+$ = P_{,j} / \tilde\gamma + \frac{1}{2} \rho_{,j} v^k v_k + \rho {v^k}_{,j} v_k + \frac{1}{2} \rho v^k v^l \gamma_{kl,j}$<br>
+<br>
+
+So notice that our total derivative of $E_{total}$ has an extra term in addition to the partials with respect to the primitive variables, which is the partial of the metric.<br>
+<br>
+
 $\frac{\partial U^I}{\partial W^J} = \downarrow I \overset{\rightarrow J}{\left[\matrix{
 	1 & 0 & 0 \\
 	v^i & \rho \delta^i_j & 0 \\
@@ -112,7 +130,7 @@ $\left[\matrix{
 }\right]$<br>
 <br>
 
-Where does that $- \frac{1}{2} \rho g_{jk,l} v^j v^k v^l$ go?  Does it stay in the source?<br>
+Notice that $- \frac{1}{2} \rho g_{jk,l} v^j v^k v^l$ goes back into the $E_{total,j}$, courtesy of it being an extra term to the total derivative of $E_{total}$ in addition to the partials with respect to primitives.<br>
 <br>
 
 $\left[\matrix{
