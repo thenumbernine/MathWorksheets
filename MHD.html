@@ -538,6 +538,31 @@ $= \partial_{\tilde{U}_j} (n \tilde{U}_i + \partial_{\xi_k} \tilde{F}_{ik})$<br>
 $= n \delta_{ij} + \partial_{\tilde{U}_j} \partial_{\xi_k} \tilde{F}_{ik}$<br>
 <br>
 
+<h3>Curved Space Partisl of Conserved Quantities wrt Primitives</h3><br>
+$\rho_{,j} = \rho_{,j}$<br>
+$(\rho v^i)_{,j} = \rho_{,j} v^i + \rho {v^i}_{,j}$<br>
+${B^i}_{,j} = {B^i}_{,j}$<br>
+<br>
+
+$E_{total,j}$<br>
+$= (E_{int} + E_{kin} + E_{mag})_{,j}$<br>
+$= (P / \tilde\gamma + \frac{1}{2} \rho v^2 + \frac{1}{2} \frac{1}{\mu_0} B^2)_{,j}$<br>
+$= P_{,j} / \tilde\gamma + \frac{1}{2} \rho_{,j} v^2 + \rho v_k {v^k}_{,j} + \frac{1}{2} \rho v^k v^l g_{kl,j} + \frac{1}{\mu_0} B_k {B^k}_{,j} + \frac{1}{2} \frac{1}{\mu_0} B^k B^l g_{kl,j}$<br>
+<br>
+
+So note that in curved space, the linear transform of partials is missing two extra terms in the $E_{total,j}$ term: 
+$\frac{1}{2} \rho v^k v^l g_{kl,j} + \frac{1}{2} \frac{1}{\mu_0} B^k B^l g_{kl,j}$<br>
+<br>
+
+<h3>Curved Space Flux</h3><br>
+${F^{ij}}_{;j} = \downarrow i \left[\matrix{
+	\rho v^j \\
+	\rho v^i v^j + g^{ij} P_{total} - {1\over\mu_0} B^i B^j \\
+	B^i v^j - B^j v^i \\
+	H_{total} v^j - {1\over\mu_0} B^k v_k B^j
+}\right]$<br>
+<br>
+
 <h3>Curved Space Flux Gradient</h3><br>
 ${F^{ij}}_{;j} = \downarrow i \left[\matrix{
 	(\rho v^j)_{;j} \\
@@ -709,6 +734,11 @@ $= \left[\matrix{
 	\\
 	0
 }\right]$<br>
+<br>
+
+And right in here, when switching from ${W^I}_{,j}$ to ${U^I}_{,j}$, don't forget we absorb the $g_{kl,j}$ terms. But which ones...<br>
+TODO add that step in...<br>
+<br>
 
 $= 
 \frac{1}{\sqrt{g}} \left( \sqrt{g}
