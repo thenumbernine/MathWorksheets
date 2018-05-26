@@ -538,7 +538,7 @@ $= \partial_{\tilde{U}_j} (n \tilde{U}_i + \partial_{\xi_k} \tilde{F}_{ik})$<br>
 $= n \delta_{ij} + \partial_{\tilde{U}_j} \partial_{\xi_k} \tilde{F}_{ik}$<br>
 <br>
 
-<h3>Curved Space Partisl of Conserved Quantities wrt Primitives</h3><br>
+<h3>Curved Space Partial of Conserved Quantities wrt Primitives</h3><br>
 $\rho_{,j} = \rho_{,j}$<br>
 $(\rho v^i)_{,j} = \rho_{,j} v^i + \rho {v^i}_{,j}$<br>
 ${B^i}_{,j} = {B^i}_{,j}$<br>
@@ -550,8 +550,81 @@ $= (P / \tilde\gamma + \frac{1}{2} \rho v^2 + \frac{1}{2} \frac{1}{\mu_0} B^2)_{
 $= P_{,j} / \tilde\gamma + \frac{1}{2} \rho_{,j} v^2 + \rho v_k {v^k}_{,j} + \frac{1}{2} \rho v^k v^l g_{kl,j} + \frac{1}{\mu_0} B_k {B^k}_{,j} + \frac{1}{2} \frac{1}{\mu_0} B^k B^l g_{kl,j}$<br>
 <br>
 
+For $\tilde\gamma = \gamma - 1$<br>
+<br>
+
 So note that in curved space, the linear transform of partials is missing two extra terms in the $E_{total,j}$ term: 
-$\frac{1}{2} \rho v^k v^l g_{kl,j} + \frac{1}{2} \frac{1}{\mu_0} B^k B^l g_{kl,j}$<br>
+$\frac{1}{2} (\rho v^k v^l + \frac{1}{\mu_0} B^k B^l) g_{kl,j}$<br>
+<br>
+
+$\partial U^I = \frac{\partial U^I}{\partial W^J} \partial W^J + \frac{\partial U^I}{\partial g_{kl,j}} \partial g_{kl,j}$<br>
+
+$\partial \left[\matrix{
+	\rho \\
+	v^i \\
+	B^i \\
+	E_{total}
+}\right] = 
+\downarrow i \overset{\rightarrow j}{ \left[\matrix{
+	1 & 0 & 0 & 0 \\ 
+	v^i & \rho \delta^i_j & 0 & 0 \\
+	0 & 0 & \delta^i_j & 0 \\
+	\frac{1}{2} v^2 & \rho v_j & \frac{1}{\mu_0} B_j & \frac{1}{\tilde\gamma}
+}\right]} \partial \left[\matrix{
+	\rho \\
+	v^j \\
+	B^j \\
+	P
+}\right] + \left[\matrix{
+	0 \\ 0 \\ 0 \\
+	\frac{1}{2} (\rho v^k v^l + \frac{1}{\mu_0} B^k B^l)
+}\right] \partial g_{kl}$<br>
+
+$\partial \left[\matrix{
+	\rho \\
+	v^j \\
+	B^j \\
+	P
+}\right] = \left[\matrix{
+	1 & 0 & 0 & 0 \\ 
+	-\frac{1}{\rho} v^j & \frac{1}{\rho} \delta^j_i & 0 & 0 \\
+	0 & 0 & \delta^j_i & 0 \\
+	\frac{1}{2} \tilde\gamma v^2 & -\tilde\gamma v_i & -\tilde\gamma \frac{1}{\mu_0} B_i & \tilde\gamma
+}\right]
+ \left( \partial \left[\matrix{
+	\rho \\
+	v^i \\
+	B^i \\
+	E_{total}
+}\right] - \left[\matrix{
+	0 \\ 0 \\ 0 \\
+	\frac{1}{2} (\rho v^k v^l + \frac{1}{\mu_0} B^k B^l)
+}\right] \partial g_{kl} \right)$<br>
+
+$\left[\matrix{
+	\partial \rho \\
+	\partial v^j \\
+	\partial B^j \\
+	\partial P
+}\right] = 
+ \left[\matrix{
+	1 & 0 & 0 & 0 \\ 
+	-\frac{1}{\rho} v^j & \frac{1}{\rho} \delta^j_i & 0 & 0 \\
+	0 & 0 & \delta^j_i & 0 \\
+	\frac{1}{2} \tilde\gamma v^2 & -\tilde\gamma v_i & -\tilde\gamma \frac{1}{\mu_0} B_i & \tilde\gamma
+}\right]
+ \left[\matrix{
+	\partial \rho \\
+	\partial v^i \\
+	\partial B^i \\
+	\partial E_{total}
+}\right] 
+- 
+\left[\matrix{
+	0 \\ 0 \\ 0 \\
+	\frac{1}{2} \tilde\gamma (\rho v^k v^l + \frac{1}{\mu_0} B^k B^l)
+}\right] \partial g_{kl} $<br>
+
 <br>
 
 <h3>Curved Space Flux</h3><br>
@@ -735,6 +808,87 @@ $= \left[\matrix{
 	0
 }\right]$<br>
 <br>
+
+
+$= \left[\matrix{
+	v^j & 
+	\rho \delta^j_k & 
+	0 & 
+	0 \\
+	
+	v^i v^j & 
+	\rho (v^j \delta^i_k + v^i \delta^j_k) &
+	\frac{1}{\mu_0} (
+		g^{ij} B_k
+		- B^j \delta^i_k
+		- B^i \delta^j_k
+	) &
+	g^{ij}  \\
+	
+	0 &
+	B^i \delta^j_k - B^j \delta^i_k &
+	v^j \delta^i_k - v^i \delta^j_k &
+	0 \\
+	
+	\frac{1}{2} v^2 v^j &
+	H_{total} \delta^j_k
+	+ \rho v_k v^j
+	- \frac{1}{\mu_0} B_k B^j &
+	- \frac{1}{\mu_0} (2 B_k v^j - v_k B^j - B^l v_l \delta^j_k) &
+	\frac{\gamma}{\tilde\gamma} v^j \\
+	
+}\right] 
+
+
+\left( \left[\matrix{
+	1 & 0 & 0 & 0 \\ 
+	-\frac{1}{\rho} v^k & \frac{1}{\rho} \delta^k_l & 0 & 0 \\
+	0 & 0 & \delta^k_l & 0 \\
+	\frac{1}{2} \tilde\gamma v^2 & -\tilde\gamma v_l & -\tilde\gamma \frac{1}{\mu_0} B_l & \tilde\gamma
+}\right]
+ \left[\matrix{
+	\rho \\
+	v^l \\
+	B^l \\
+	E_{total}
+}\right]_{,j}
+- 
+\left[\matrix{
+	0 \\ 0 \\ 0 \\
+	\frac{1}{2} \tilde\gamma (\rho v^k v^l + \frac{1}{\mu_0} B^k B^l)
+}\right] g_{kl,j} \right)
+
++ \left[\matrix{
+	0 \\
+	\frac{1}{\mu_0} \frac{1}{2} B^k B^l g_{kl,j} g^{ij} \\
+	0 \\
+	(
+		\frac{1}{2} \rho v^k v^l v^j
+		+ \frac{1}{\mu_0} B^k (B^l v^j - v^l B^j)
+	) g_{kl,j}	
+}\right]
+
++  \frac{\sqrt{g}_{,j}}{\sqrt{g}}
+\left[\matrix{
+	\rho v^j \\
+	\rho v^i v^j - \frac{1}{\mu_0} B^i B^j \\
+	B^i v^j - B^j v^i \\
+	H_{total} v^j - \frac{1}{\mu_0} B^k v_k B^j
+}\right] 
+
++ \left[\matrix{
+	0 \\
+	{\Gamma^i}_{kj} (
+		\rho v^k v^j 
+		- \frac{1}{\mu_0} B^k B^j
+	)
+	\\
+	{\Gamma^i}_{kj} (B^k v^j - B^j v^k)
+	\\
+	0
+}\right]$<br>
+<br>
+
 
 And right in here, when switching from ${W^I}_{,j}$ to ${U^I}_{,j}$, don't forget we absorb the $g_{kl,j}$ terms. But which ones...<br>
 TODO add that step in...<br>
