@@ -53,32 +53,84 @@ $ = (P / \tilde\gamma + \frac{1}{2} \rho v^k v_k)_{,j}$<br>
 $ = P_{,j} / \tilde\gamma + \frac{1}{2} \rho_{,j} v^k v_k + \rho {v^k}_{,j} v_k + \frac{1}{2} \rho v^k v^l g_{kl,j}$<br>
 <br>
 
-So notice that our total derivative of $E_{total}$ has an extra term in addition to the partials with respect to the primitive variables, which is the partial of the metric.<br>
+Notice that our total derivative of $E_{total}$ has an extra term in addition to the partials with respect to the primitive variables, which is the partial of the metric.<br>
 <br>
 
-$\frac{\partial U^I}{\partial W^J} = \downarrow I \overset{\rightarrow J}{\left[\matrix{
+$\left[\matrix{
+	\partial \rho \\
+	\partial (\rho v^i) \\
+	\partial E_{total}
+}\right] = \left[\matrix{
+	\partial \rho \\
+	\partial \rho v^i + \rho \partial v^i \\
+	\frac{1}{2} \partial \rho v^k v_k + \rho \partial {v^k} v_k + \partial P / \tilde\gamma + \frac{1}{2} \rho v^k v^l \partial g_{kl}
+}\right]$<br>
+
+$\left[\matrix{
+	\partial \rho \\
+	\partial (\rho v^i) \\
+	\partial E_{total}
+}\right] = \left[\matrix{
 	1 & 0 & 0 \\
 	v^i & \rho \delta^i_j & 0 \\
-	\frac{1}{2} v^2 & \rho v_j & 1/\tilde\gamma
-}\right]}$<br>
-$\frac{\partial W^I}{\partial U^J} = \downarrow I \overset{\rightarrow J}{ \left[\matrix{
+	\frac{1}{2} v^2 & \rho v_j & 1 / \tilde\gamma
+}\right] \left[\matrix{
+	\partial \rho \\
+	\partial v^j \\
+	\partial P
+}\right] + \left[\matrix{
+	 0 \\
+	 0 \\
+	 \frac{1}{2} \rho v^k v^l
+}\right] \partial g_{kl}$<br>
+
+$\left[\matrix{
+	\partial \rho \\
+	\partial v^j \\
+	\partial P
+}\right] = \left[\matrix{
 	1 & 0 & 0 \\
 	-v^i / \rho & \delta^i_j / \rho & 0 \\
 	\frac{1}{2} \tilde\gamma v^2 & -\tilde\gamma v_j & \tilde\gamma
-}\right]}$<br>
+}\right]
+\left( \left[\matrix{
+	\partial \rho \\
+	\partial (\rho v^i) \\
+	\partial E_{total}
+}\right] - \left[\matrix{
+	 0 \\
+	 0 \\
+	 \frac{1}{2} \rho v^k v^l
+}\right] \partial g_{kl} \right)$<br>
+
+$\left[\matrix{
+	\partial \rho \\
+	\partial v^j \\
+	\partial P
+}\right] 
+= 
+\left[\matrix{
+	1 & 0 & 0 \\
+	-v^i / \rho & \delta^i_j / \rho & 0 \\
+	\frac{1}{2} \tilde\gamma v^2 & -\tilde\gamma v_j & \tilde\gamma
+}\right]
+\left[\matrix{
+	\partial \rho \\
+	\partial (\rho v^i) \\
+	\partial E_{total}
+}\right] 
+- \left[\matrix{
+	 0 \\
+	 0 \\
+	 \frac{1}{2} \tilde\gamma \rho v^k v^l
+}\right] \partial g_{kl} 
+$<br>
+
+
 <br>
 
 Flux term:<br>
 $F^{Ij} = \left[\matrix{ \rho v^j \\ \rho v^i v^j + g^{ij} P \\ v^j H_{total} }\right]$<br>
-<br>
-
-Flux derivative wrt primitives:<br>
-
-$\frac{\partial F^{Ij}}{\partial W^M} = \downarrow I \overset{\rightarrow M}{ \left[\matrix{
-	v^j & \rho \delta^j_m & 0 \\
-	v^i v^j & \rho (v^j \delta^i_m + v^i \delta^j_m) & g^{ij} \\
-	\frac{1}{2} v^j v^2 & \delta^j_m H_{total} + \rho v^j v_m & \frac{\gamma}{\tilde{\gamma}} v^j
-}\right] }$<br>
 <br>
 
 Euler fluid equations, curved geometry:<br>
@@ -130,8 +182,6 @@ $\left[\matrix{
 }\right]$<br>
 <br>
 
-Notice that $- \frac{1}{2} \rho g_{jk,l} v^j v^k v^l$ goes back into the $E_{total,j}$, courtesy of it being an extra term to the total derivative of $E_{total}$ in addition to the partials with respect to primitives.<br>
-<br>
 
 $\left[\matrix{
 	\rho \\ \rho v^i \\ E_{total} 
@@ -146,7 +196,8 @@ $\left[\matrix{
 	\frac{1}{2} v^j v^2 &
 		\delta^j_m H_{total} + \rho v^j v_m &
 		\frac{\gamma}{\tilde\gamma} v^j
-}\right]
+}\right] 
+\left(
 \left[\matrix{
 	1 & 0 & 0 \\
 	-v^m / \rho & \delta^m_k / \rho & 0 \\
@@ -154,10 +205,17 @@ $\left[\matrix{
 }\right]
 \left[\matrix{
 	\rho \\ \rho v_k \\ E_{total}
-}\right]_{,j} = \left[\matrix{
+}\right]_{,j} 
++ \left[\matrix{
+	 0 \\
+	 0 \\
+	 -\frac{1}{2} \tilde\gamma \rho v^k v^l g_{kl,j}
+}\right]
+\right)
+= \left[\matrix{
 	-{\Gamma^j}_{kj} \rho v^k \\
 	-{\Gamma^i}_{kj} \rho v^k v^j - {\Gamma^j}_{kj} \rho v^i v^k \\
-	-{\Gamma^j}_{kj} v^k H_{total}
+	-{\Gamma^j}_{kj} v^k H_{total} - \frac{1}{2} \rho g_{jk,l} v^j v^k v^l
 }\right]$<br>
 <br>
 
@@ -178,10 +236,16 @@ $\left[\matrix{
 }\right]
 \left[\matrix{
 	\rho \\ \rho v^k \\ E_{total} 
-}\right]_{,j} = \left[\matrix{
+}\right]_{,j} 
++ \left[\matrix{
+	 0 \\
+	 -\frac{1}{2} \tilde\gamma \rho v^k v^l g_{kl,j} g^{ij} \\
+	 -\frac{\gamma}{\tilde\gamma} \frac{1}{2} \tilde\gamma \rho v^k v^l g_{kl,j} v^j
+}\right]
+= \left[\matrix{
 	-{\Gamma^j}_{kj} \rho v^k \\
 	-{\Gamma^i}_{kj} \rho v^k v^j - {\Gamma^j}_{kj} \rho v^i v^k \\
-	-{\Gamma^j}_{kj} v^k H_{total}
+	-{\Gamma^j}_{kj} v^k H_{total} - \frac{1}{2} \rho g_{jk,l} v^j v^k v^l
 }\right]$<br>
 <br>
 
@@ -207,12 +271,20 @@ $\left[\matrix{
 \left[\matrix{
 	\rho \\ \rho v^k \\ E_{total} 
 }\right]_{,j} = \left[\matrix{
-	-\frac{1}{\sqrt{g}} (\sqrt{g})_{,k} \rho v^k \\
-	-{\Gamma^i}_{kj} \rho v^k v^j - \frac{1}{\sqrt{g}} (\sqrt{g})_{,k} (\rho v^i v^k + P g^{ik}) + {\Gamma^j}_{kj} P g^{ik} \\
+	-\frac{1}{\sqrt{g}} (\sqrt{g})_{,k} \rho v^k 
+	\\
+	-{\Gamma^i}_{kj} \rho v^k v^j 
+	- \frac{1}{\sqrt{g}} (\sqrt{g})_{,k} (\rho v^i v^k + P g^{ik}) 
+	+ {\Gamma^j}_{kj} P g^{ik} 
+	+ \frac{1}{2} \tilde\gamma \rho v^k v^l g_{kl,j} g^{ij}
+	\\
 	-\frac{1}{\sqrt{g}} (\sqrt{g})_{,k} v^k H_{total}
+	+ \frac{1}{2} \tilde\gamma \rho v^j v^k v^l g_{kl,j}
 }\right]$<br>
 <br>
 
+...and there are still metric partials... TODO forward them... or find out why they shouldn't be there...<br>
+<br>
 
 $\left[\matrix{
 	\rho \\ \rho v^i \\ E_{total} 
