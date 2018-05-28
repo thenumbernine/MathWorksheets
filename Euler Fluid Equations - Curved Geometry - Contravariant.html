@@ -16,13 +16,14 @@ $ = \frac{(\sqrt{g})_{,k}}{\sqrt{g}}$<br>
 
 variables:<br>
 $\rho =$ density<br>
-$v_i =$ velocity<br>
-$m_i = \rho v_i = $ momentum<br>
+$v^i =$ velocity<br>
+$m^i = \rho v^i = $ momentum<br>
 $\gamma =$ heat capacity ratio<br>
 $\tilde\gamma = \gamma - 1$<br>
 $P = \tilde\gamma \rho e_{int} = \tilde\gamma E_{int} = \tilde\gamma (E_{total} - E_{kin}) = $ pressure<br>
-
-$E_{kin} = \frac{1}{2} \rho v^k v_k$<br>
+$g_{ij} = $ metric tensor.<br>
+$v^2 = v^i g_{ij} v^j$<br>
+$E_{kin} = \frac{1}{2} \rho v^2$<br>
 $E_{int} = \frac{P}{\tilde\gamma}$<br>
 $E_{total} = E_{kin} + E_{int}$<br>
 $H_{total} = E_{total} + P = \frac{1}{2} \rho v^2 + \frac{\gamma}{\tilde\gamma} P$<br>
@@ -85,6 +86,44 @@ $ = \left[\matrix{
 		- \tilde\gamma \frac{1}{\rho} {m^k}_{,j} m_k 
 		- \tilde\gamma \frac{1}{2} \frac{1}{\rho} m^k m^l g_{kl,j}
 	)
+}\right]$<br>
+$ = \left[\matrix{ 
+	0 & \delta^j_k & 0 \\ 
+	
+	- \frac{1}{\rho^2} m^i m^j
+	+ g^{ij} \tilde\gamma \frac{1}{2} \frac{1}{\rho^2} m^2
+	&
+	\frac{1}{\rho} (
+		m^j \delta^i_k
+		+ m^i \delta^j_k
+		- \tilde\gamma m_k g^{ij} 
+	)
+	&
+	g^{ij} \tilde\gamma
+	\\
+	\frac{1}{\rho^2} (
+		- H_{total} m^j
+		+ \frac{1}{2} \tilde\gamma \frac{1}{\rho} m^j m^2
+	)
+	&
+	\frac{1}{\rho} (
+		H_{total} \delta^j_k
+		- \tilde\gamma \frac{1}{\rho} m^j m_k 
+	)
+	&
+	\frac{1}{\rho} \gamma m^j
+
+}\right] \left[\matrix{
+	\rho \\
+	m^k \\
+	E_{total}
+}\right]_{,j} + \left[\matrix{
+	0 
+	\\
+	{g^{ij}}_{,j} P
+	- \frac{1}{2} \tilde\gamma \frac{1}{\rho} m^k m^l g_{kl,j} g^{ij} 
+	\\
+	- \frac{1}{2} \tilde\gamma \frac{1}{\rho^2} m^j m^k m^l g_{kl,j}
 }\right]$<br>
 <br>
 
@@ -298,6 +337,7 @@ ${U^I}_{,t} + \frac{1}{\sqrt{g}} \left(
 
 Maxima has a much harder time calculating the eigenvalues/vectors with those $\delta^{ij}$'s replaced with $g^{ij}$'s.<br>
 But I can get around that by using acoustic tensor to find the eigen-decomposition of the flux in curved coordinates:<br>
+TODO redo this.<br>
 <br>
 
 $\frac{\partial W^N}{\partial U^I} \cdot \frac{\partial F^{Ij}}{\partial W^M}$

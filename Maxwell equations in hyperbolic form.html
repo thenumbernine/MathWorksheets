@@ -148,95 +148,130 @@ $\Lambda = \left[\matrix{
 }\right]$<br>
 <br>
 
-<h3>curved space, contravariant form:</h3>
-${U^i}_{,t} + {F^{ij}}_{;j} = S^i$<br>
-<br>
-$\epsilon_0 {E^i}_{,t} - \frac{1}{\mu_0} {\epsilon^{ij}}_k {B^k}_{;j} = -j^i$<br>
-${B^i}_{,t} + {\epsilon^{ij}}_k {E^k}_{;j} = 0$<br>
-<br>
-$\epsilon_0 {E^i}_{,t} - \frac{1}{\mu_0} {\epsilon^{ij}}_k ({B^k}_{,j} + {\Gamma^k}_{lj} B^l) = -j^i$<br>
-${B^i}_{,t} + {\epsilon^{ij}}_k ({E^k}_{,j} + {\Gamma^k}_{lj} E^l) = 0$<br>
-<br>
-$\epsilon_0 {E^i}_{,t} - \frac{1}{\mu_0} {\epsilon^{ij}}_k {B^k}_{,j} = -j^i + \frac{1}{\mu_0} {\epsilon^{ij}}_k {\Gamma^k}_{lj} B^l$<br>
-${B^i}_{,t} + {\epsilon^{ij}}_k {E^k}_{,j} = -{\epsilon^{ij}}_k {\Gamma^k}_{lj} E^l$<br>
-<br>
-$\epsilon_0 {E^i}_{,t} - \frac{1}{\mu_0} \frac{1}{\sqrt{g}} [ijk] g_{kl} {B^l}_{,j} = -j^i + \frac{1}{\mu_0} \frac{1}{\sqrt{g}} [ijk] g_{kl} {\Gamma^l}_{mj} B^m$<br>
-${B^i}_{,t} + \frac{1}{\sqrt{g}} [ijk] g_{kl} {E^l}_{,j} = -\frac{1}{\sqrt{g}} [ijk] g_{kl} {\Gamma^l}_{mj} E^m$<br>
-<br>
-$\left[\matrix{
-	\epsilon_0 E^i \\
-	B^i
-}\right]_{,t}
-+ \frac{1}{\sqrt{g}} \left[\matrix{
-	0 & - \frac{1}{\mu_0} [ijk] g_{kl} \\ 
-	\frac{1}{\epsilon_0} [ijk] g_{kl} & 0
-}\right]
-\left[\matrix{
-	\epsilon_0 E^l \\
-	B^l
-}\right]_{,j}
-= \left[\matrix{
-	-j^i + \frac{1}{\mu_0} \frac{1}{\sqrt{g}} [ijk] g_{kl} {\Gamma^l}_{mj} B^m \\
-	-\frac{1}{\sqrt{g}} [ijk] g_{kl} {\Gamma^l}_{mj} E^m
+<h3>curvilinear coordinates</h3>
+conserved quantities:<br>
+$U^I = \left[\matrix{ 
+	\epsilon_0 E^i \\ B^i 
 }\right]$<br>
 <br>
 
-At this point it looks like I don't need to weight the flux by any power of the metric determinant ... unlike the Euler fluid equations in curved space, which are weighted by the volume ($\sqrt{g}$).<br>
-I've also noticed that various numerical relativity integrators will be weighted by either nothing, $\alpha$, $\sqrt{det(\gamma_{ij})}$ or both.<br>
-Maybe I sould make my flux weight a property of the equation?<br> 
-If not -- and if I wanted to weight all fluxes by the grid volume -- this is what needs to happen:<br>
+Flux:<br>
+$F^{Ij} = \left[\matrix{ 
+	-\frac{1}{\mu_0} {\epsilon^{ij}}_k B^k \\
+	{\epsilon^{ij}}_k E^k
+}\right]$<br>
+$= \left[\matrix{ 
+	-\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} B^l \\
+	\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} E^l
+}\right]$<br>
 <br>
 
-$\left[\matrix{
-	\epsilon_0 E^i \\
-	B^i
-}\right]_{,t}
-+ \frac{1}{\sqrt{g}} \left[\matrix{
-	0 & - \frac{1}{\mu_0} [ijk] g_{kl} \\ 
-	\frac{1}{\epsilon_0} [ijk] g_{kl} & 0
-}\right]
-\left[\matrix{
-	\epsilon_0 E^l \\
-	B^l
-}\right]_{,j}
-+ \frac{\sqrt{g}_{,j}}{\sqrt{g}} \left[\matrix{
-	-\frac{1}{\mu_0} {\epsilon^{ij}}_k B^k \\
-	{\epsilon^{ij}}_k E^k
-}\right]
-= \left[\matrix{
-	-j^i + \frac{1}{\mu_0} \frac{1}{\sqrt{g}} [ijk] g_{kl} {\Gamma^l}_{mj} B^m \\
-	-\frac{1}{\sqrt{g}} [ijk] g_{kl} {\Gamma^l}_{mj} E^m
+flux partial derivative:<br>
+${F^{Ij}}_{,j} = \left[\matrix{ 
+	-\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} B^l \\
+	\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} E^l
+}\right]_{,j}$<br>
+$= \left[\matrix{ 
+	-\frac{1}{\mu_0} \bar\epsilon^{ijk} ((\frac{1}{\sqrt{g}})_{,j} g_{kl} B^l + \frac{1}{\sqrt{g}} g_{kl,j} B^l + \frac{1}{\sqrt{g}} g_{kl} {B^l}_{,j}) \\
+	\bar\epsilon^{ijk} ((\frac{1}{\sqrt{g}})_{,j} g_{kl} E^l + \frac{1}{\sqrt{g}} g_{kl,j} E^l + \frac{1}{\sqrt{g}} g_{kl} {E^l}_{,j})
+}\right]$<br>
+$= \left[\matrix{ 
+	-\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} ( -\frac{1}{\sqrt{g}} (\sqrt{g})_{,j} B_k + g_{kl,j} B^l + g_{kl} {B^l}_{,j}) \\
+	\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} ( -\frac{1}{\sqrt{g}} (\sqrt{g})_{,j} E_k + g_{kl,j} E^l + g_{kl} {E^l}_{,j})
+}\right]$<br>
+$= \left[\matrix{ 
+	-\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} {B^l}_{,j} \\
+	\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} {E^l}_{,j}
+}\right] + \left[\matrix{
+	 -\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} (-\frac{1}{\sqrt{g}} (\sqrt{g})_{,j} B_k + g_{kl,j} B^l) \\
+	 \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} (-\frac{1}{\sqrt{g}} (\sqrt{g})_{,j} E_k + g_{kl,j} E^l) 
+}\right]$<br>
+<br>
+flux covariant derivative:<br>
+${F^{Ij}}_{;j} = \left[\matrix{ 
+	\frac{1}{\mu_0} \bar\epsilon^{ijk} \frac{1}{\sqrt{g}} g_{kl} {B^l}_{;j} \\
+	-\bar\epsilon^{ijk} \frac{1}{\sqrt{g}} g_{kl} {E^l}_{;j}	
+}\right]$<br>
+$= \left[\matrix{ 
+	\frac{1}{\mu_0} \bar\epsilon^{ijk} \frac{1}{\sqrt{g}} g_{kl} ({B^l}_{,j} + {\Gamma^l}_{mj} B^m) \\
+	-\bar\epsilon^{ijk} \frac{1}{\sqrt{g}} g_{kl} ({E^l}_{,j}	+ {\Gamma^l}_{mj} E^m)
+}\right]$<br>
+$= \left[\matrix{ 
+	\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} {B^l}_{,j} \\
+	-\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} {E^l}_{,j}
+}\right] + \left[\matrix{
+	-\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} \Gamma_{jkl} B^l \\
+	\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} \Gamma_{jkl} E^l
+}\right]$<br>
+<br>
+Add and subtract the flux weighted by the volume gradient and the metric partial terms.<br>
+This is what the code in my curvilinear solver does by default.  But maybe this should be enabled on a per-equation-system basis.  It seems to be unnecessary for the Maxwell equations.<br>
+<br>
+${F^{Ij}}_{;j} = \left[\matrix{ 
+	\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} {B^l}_{,j} \\
+	-\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} {E^l}_{,j}
 }\right]
 
-+ \frac{\sqrt{g}_{,j}}{\sqrt{g}} \left[\matrix{
-	-\frac{1}{\mu_0} {\epsilon^{ij}}_k B^k \\
-	{\epsilon^{ij}}_k E^k
+ + \left[\matrix{
+	 -\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} (-\frac{1}{\sqrt{g}} (\sqrt{g})_{,j} B_k + g_{kl,j} B^l) \\
+	 \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} (-\frac{1}{\sqrt{g}} (\sqrt{g})_{,j} E_k + g_{kl,j} E^l) 
 }\right]
 
+- \left[\matrix{
+	 -\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} (-\frac{1}{\sqrt{g}} (\sqrt{g})_{,j} B_k + g_{kl,j} B^l) \\
+	 \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} (-\frac{1}{\sqrt{g}} (\sqrt{g})_{,j} E_k + g_{kl,j} E^l) 
+}\right]
++ \frac{\sqrt{g}_{,j}}{\sqrt{g}} \left[\matrix{
+	-\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} B^l \\
+	\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} E^l
+}\right]
+
+- \frac{\sqrt{g}_{,j}}{\sqrt{g}} \left[\matrix{
+	-\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} B^l \\
+	\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} E^l
+}\right]
+
++ \left[\matrix{
+	-\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} \Gamma_{jkl} B^l \\
+	\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} \Gamma_{jkl} E^l
+}\right]$<br>
+
+$ = \frac{\sqrt{g}}{\sqrt{g}} {F^{Ij}}_{,j} 
+
++ \frac{\sqrt{g}_{,j}}{\sqrt{g}} F^{Ij}
+
++ \left[\matrix{
+	-\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} \Gamma_{jkl} B^l \\
+	\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} \Gamma_{jkl} E^l
+}\right]
+
+- \left[\matrix{
+	 -\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} (-{\Gamma^m}_{jm} B_k + (\Gamma_{klj} + \Gamma_{lkj}) B^l) \\
+	 \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} (-{\Gamma^m}_{jm} E_k + (\Gamma_{klj} + \Gamma_{lkj}) E^l) 
+}\right]
+
+- \left[\matrix{
+	-{\Gamma^m}_{jm} \frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} B^l \\
+	{\Gamma^m}_{jm} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} E^l
+}\right]
+$<br>
+
+$ = \frac{1}{\sqrt{g}} \left( \sqrt{g} F^{Ij} \right)_{,j} 
+
++ \left[\matrix{
+	-2 \frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} \Gamma_{jkl} B^l \\
+	2 \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} \Gamma_{jkl} E^l
+}\right]
 $<br>
 <br>
 
-$\left[\matrix{
-	\epsilon_0 E^i \\
-	B^i
-}\right]_{,t}
-
-+ \frac{1}{\sqrt{g}} \left( \sqrt{g} F^{ij} \right)_{,j}
-
-= \left[\matrix{
-	-j^i + \frac{1}{\mu_0} \frac{1}{\sqrt{g}} [ijk] g_{kl} {\Gamma^l}_{mj} B^m \\
-	-\frac{1}{\sqrt{g}} [ijk] g_{kl} {\Gamma^l}_{mj} E^m
-}\right]
-
-+ {\Gamma^l}_{jl} \left[\matrix{
-	-\frac{1}{\mu_0} {\epsilon^{ij}}_k B^k \\
-	{\epsilon^{ij}}_k E^k
-}\right]
-
-$<br>
+<h3>hyperbolic conservation law system:</h3>
+${U^i}_{,t} + {F^{ij}}_{;j} = S^i$<br>
+${U^i}_{,t} + \frac{1}{\sqrt{g}} \left( \sqrt{g} F^{ij} \right)_{,j} = S^i + \left[\matrix{
+	2 \frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} \Gamma_{jkl} B^l \\
+	-2 \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} \Gamma_{jkl} E^l
+}\right]$<br>
 <br>
-Notice the last ${\Gamma^l}_{jl}$ term is only to counteract the scaling of the flux by $\sqrt{g}$.<br>
-So if I was to not scale the flux by the volume then I could leave this term out.<br>
 
 
 <br>
