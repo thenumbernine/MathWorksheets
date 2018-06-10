@@ -148,7 +148,7 @@ $\Lambda = \left[\matrix{
 }\right]$<br>
 <br>
 
-<h3>curvilinear coordinates</h3>
+<h3>curvilinear coordinates using vectors:</h3>
 conserved quantities:<br>
 $U^I = \left[\matrix{ 
 	\epsilon_0 E^i \\ B^i 
@@ -156,6 +156,7 @@ $U^I = \left[\matrix{
 <br>
 
 Flux:<br>
+<br>
 $F^{Ij} = \left[\matrix{ 
 	-\frac{1}{\mu_0} {\epsilon^{ij}}_k B^k \\
 	{\epsilon^{ij}}_k E^k
@@ -166,7 +167,8 @@ $= \left[\matrix{
 }\right]$<br>
 <br>
 
-flux partial derivative:<br>
+Flux partial derivative divergence:<br>
+<br>
 ${F^{Ij}}_{,j} = \left[\matrix{ 
 	-\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} B^l \\
 	\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} E^l
@@ -265,7 +267,7 @@ $ = \frac{1}{\sqrt{g}} \left( \sqrt{g} F^{Ij} \right)_{,j}
 $<br>
 <br>
 
-<h3>hyperbolic conservation law system:</h3>
+<h3>hyperbolic conservation law system using vectors:</h3>
 ${U^i}_{,t} + {F^{ij}}_{;j} = S^i$<br>
 ${U^i}_{,t} + \frac{1}{\sqrt{g}} \left( \sqrt{g} F^{ij} \right)_{,j} = S^i + \left[\matrix{
 	2 \frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} \Gamma_{jkl} B^l \\
@@ -273,7 +275,92 @@ ${U^i}_{,t} + \frac{1}{\sqrt{g}} \left( \sqrt{g} F^{ij} \right)_{,j} = S^i + \le
 }\right]$<br>
 <br>
 
+<h3>curvilinear coordinates using one-forms:</h3>
+$\left[\matrix{ 
+	\epsilon_0 E_i \\ B_i 
+}\right] + \left[\matrix{ 
+	-\frac{1}{\mu_0} {\epsilon_i}^{jk} B_k \\
+	{\epsilon_i}^{jk} E_k
+}\right]_{;j} = \left[\matrix{
+	-j_i \\
+	0
+}\right]$<br>
+<br>
 
+Raise all indexes of the Levi-Civita tensor.  Replace it with the associated Levi-Civita tensor of flat space times the inverse (square root optional) metric determinant.<br>
+<br>
+
+$\left[\matrix{ 
+	\epsilon_0 E_i \\ B_i 
+}\right] + \left[\matrix{ 
+	-\frac{1}{\mu_0} \frac{1}{\sqrt{g}} g_{il} \bar\epsilon^{ljk} B_k \\
+	\frac{1}{\sqrt{g}} g_{il} \bar\epsilon^{ljk} E_k
+}\right]_{;j} = \left[\matrix{
+	-j_i \\
+	0
+}\right]$<br>
+<br>
+
+Factor out metric terms since their covariant derivative value is zero.<br>
+<br>
+
+$\left[\matrix{ 
+	\epsilon_0 E_i \\ B_i 
+}\right] + \frac{1}{\sqrt{g}} \left[\matrix{
+	g_{il} & 0 \\
+	0 & g_{il}
+}\right] \left[\matrix{ 
+	-\frac{1}{\mu_0} \bar\epsilon^{ljk} B_k \\
+	\bar\epsilon^{ljk} E_k
+}\right]_{;j} = \left[\matrix{
+	-j_i \\
+	0
+}\right]$<br>
+<br>
+
+Apply covariant derivative.  Replace one-forms with partial derivatives and connection products.<br>
+<br>
+
+$\left[\matrix{ 
+	\epsilon_0 E_i \\ B_i 
+}\right] + \frac{1}{\sqrt{g}} \left[\matrix{
+	g_{il} & 0 \\
+	0 & g_{il}
+}\right] \left[\matrix{ 
+	-\frac{1}{\mu_0} \bar\epsilon^{ljk} (B_{k,j} - {\Gamma^m}_{kj} B_m) \\
+	\bar\epsilon^{ljk} (E_{k,j} - {\Gamma^m}_{kj} E_m)
+}\right] = \left[\matrix{
+	-j_i \\
+	0
+}\right]$<br>
+<br>
+
+Multiply the antisymmetric Levi-Civita tensor with the symmetric (only in holonomic torsion-free case) connection coefficients to cancel them.<br>
+Factor out the remaining partial derivative terms.<br>
+<br>
+
+$\left[\matrix{ 
+	\epsilon_0 E_i \\ B_i 
+}\right] + \frac{1}{\sqrt{g}} \left[\matrix{
+	g_{il} & 0 \\
+	0 & g_{il}
+}\right] 
+
+\underbrace{
+\left[\matrix{ 
+	0 & -\frac{1}{\mu_0} \bar\epsilon^{ljk} \\
+	\frac{1}{\epsilon_0} \bar\epsilon^{ljk} & 0 
+}\right] \left[\matrix{
+	\epsilon_0 E_k \\
+	B_k
+}\right]_{,j} 
+}{} = \left[\matrix{
+	-j_i \\
+	0
+}\right]$<br>
+<br>
+
+Now the underbraced terms have an eigen-decomposition.  We can compute the flux using this, and transform it afterwards using the metric.<br>
 <br>
 
 	</body>

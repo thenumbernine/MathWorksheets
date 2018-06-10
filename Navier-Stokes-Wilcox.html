@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<title>Navier-Stokes-Wilcox</title>
+	</head>
+	<body onload='tryToFindMathJax();'>
+
+$\bar\phi = \frac{1}{\Delta t} \int_{t_0}^{t_0 + \Delta t} \phi dt = $ Reynolds averaging over time.<br>
+$\tilde \phi = \frac{1}{\bar\rho} \frac{1}{\Delta t} \int_{t_0}^{t_0 + \Delta t} (\rho \phi) dt = $ Favre averaging.<br>
+<br>
+
+conserved quantities:<br>
+$U^I = \left[\matrix{
+	\bar\rho \\
+	\bar\rho \tilde v^i \\
+	\bar\rho \tilde e_{total} \\
+	\bar\rho k \\
+	\bar\rho \omega
+}\right]$<br>
+<br>
+
+primitive variables:<br>
+$W = \left[\matrix{
+	\bar\rho \\
+	\tilde v^i \\
+	P^* \\
+	k \\
+	\omega
+}\right]$<br>
+$\bar\rho = $ Reynolds averaged density.<br>
+$\tilde v^i = $ Favre averaged velocity.<br>
+$\tilde e_{total} = $ specific total energy.<br>
+$P^* = $ static pressure (?).<br>
+$k =$ turbulent kinetic energy.<br>
+$\omega =$ specific turbulent dissipation rate.<br>
+<br>
+
+converting between variables:<br>
+$\tilde e_{total} = \tilde e_{int} + \frac{1}{2} \tilde v^2 + k$<br>
+$\tilde e_{int} = C_v \tilde T$<br>
+$\tilde e_{total} = C_v \tilde T + \frac{1}{2} \tilde v^2 + k$<br>
+$\tilde T = \frac{1}{C_v} \tilde e_{int}$<br>
+$\bar P = \bar \rho R \tilde T$<br>
+$\tilde e_{total} = \frac{C_v}{\bar \rho R} \bar P + \frac{1}{2} \tilde v^2 + k$<br>
+<br>
+$P^* = \bar P + \frac{2}{3} \bar \rho k$<br>
+$P^* = \bar \rho R \tilde T + \frac{2}{3} \bar \rho k$<br>
+$P^* = \frac{R}{C_v} \bar \rho \tilde e_{int} + \frac{2}{3} \bar \rho k$<br>
+$P^* = \frac{R}{C_v} (\bar \rho \tilde e_{total} - \frac{1}{2} \bar\rho \tilde v^2 - \bar\rho k) + \frac{2}{3} \bar \rho k$<br>
+$\bar P = P^* - \frac{2}{3} \bar \rho k$<br>
+$\tilde e_{total} = \frac{C_v}{\bar \rho R} (P^* - \frac{2}{3} \bar \rho k) + \frac{1}{2} \tilde v^2 + k$<br>
+$\tilde e_{total} = \frac{1}{2} \tilde v^2 + \frac{C_v}{\bar \rho R} P^* + (1 - \frac{2 C_v}{3 R}) k$<br>
+<br>
+
+$U^I = \left[\matrix{
+	\bar\rho \\
+	\bar\rho \tilde v^i \\
+	\bar\rho \tilde e_{total} \\
+	\bar\rho k \\
+	\bar\rho \omega
+}\right] = \left[\matrix{
+	\bar\rho \\
+	\bar\rho \tilde v^i \\
+	\frac{C_v}{R} P^* 
+		+ (1 - \frac{2}{3} \frac{C_v}{R}) \bar \rho k 
+		+ \frac{1}{2} \bar\rho \tilde v^2 
+	\\
+	\bar\rho k \\
+	\bar\rho \omega
+}\right]$<br>
+<br>
+
+$\frac{\partial U^I}{\partial W^J} = \left[\matrix{
+	1 & 0 & 0 & 0 & 0 \\
+	\tilde v^i & \bar \rho \delta^i_j & 0 & 0 & 0 \\
+	\frac{1}{2} \tilde v^2 + (1 - \frac{2 C_v}{3 R}) k &
+		\bar \rho \tilde v_j &
+		\frac{C_v}{R} &
+		(1 - \frac{2 C_v}{3 R}) \bar \rho &
+		0
+	\\
+	k & 0 & 0 & \bar \rho & 0 \\
+	\omega & 0 & 0 & 0 & \bar \rho
+}\right]$<br>
+<br>
+
+$\frac{\partial W^I}{\partial U^J} = \left[\matrix{
+	1 & 0 & 0 & 0 & 0 \\
+	-\frac{1}{\bar\rho} \tilde v^i & \frac{1}{\bar\rho} \delta^i_j & 0 & 0 & 0 \\
+	
+	\frac{R}{2 C_v} v^2 & 
+	- \frac{R}{C_v} \tilde v_j & 
+	\frac{R}{C_v} & 
+	\frac{2}{3} - \frac{R}{C_v} & 
+	0 \\
+	
+	-\frac{1}{\bar\rho} k & 0 & 0 & \frac{1}{\bar\rho} & 0 \\
+	-\frac{1}{\bar\rho} \omega  & 0 & 0 & 0 & \frac{1}{\bar\rho}
+}\right]$<br>
+<br>
+
+$F^{Ij} = \left[\matrix{
+	\bar\rho \tilde v^j \\
+	\bar\rho \tilde v^i \tilde v^j + \delta^{ij} P^* \\
+	\tilde v^j (\bar\rho \tilde e_{total} + P^*) \\
+	\bar\rho \tilde v^j k \\
+	\bar\rho \tilde v^j \omega
+}\right]$<br>
+<br>
+
+${F^{Ij}}_{,j} = \left[\matrix{
+	\bar\rho_{,j} \tilde v^j + \bar\rho \tilde {v^j}_{,j} \\
+	
+	\bar\rho_{,j} \tilde v^i \tilde v^j
+	+ \bar\rho \tilde {v^i}_{,j} \tilde v^j 
+	+ \bar\rho \tilde v^i \tilde {v^j}_{,j}
+	+ \delta^{ij} {P^*}_{,j} \\
+
+	\tilde {v^j}_{,j} (\bar\rho \tilde e_{total} + P^*)
+	+ \tilde v^j (
+		(1 + \frac{C_v}{R}) {P^*}_{,j}
+		+ (1 - \frac{2 C_v}{3 R}) (\bar\rho_{,j} k + \bar\rho k_{,j})
+		+ \frac{1}{2} \bar\rho_{,j} \tilde v^2 
+		+ \bar\rho \tilde v^j \tilde v_{,j}
+	)
+	\\
+
+	\bar\rho_{,j} \tilde v^j k + \bar\rho \tilde {v^j}_{,j} k + \bar\rho \tilde v^j k_{,j} \\
+	\bar\rho_{,j} \tilde v^j \omega + \bar\rho \tilde {v^j}_{,j} \omega + \bar\rho \tilde v^j \omega_{,j}
+}\right]$<br>
+<br>
+
+$\frac{\partial F^{Ij}}{\partial x^j} 
+= \frac{\partial F^{Ij}}{\partial W^K} \frac{\partial W^K}{\partial x^j}$<br>
+$= \left[\matrix{
+	\tilde v^j &
+	\bar\rho \delta^j_k &
+	0 & 0 & 0 \\
+	
+	\tilde v^i \tilde v^j &
+	\bar\rho (\tilde v^j \delta^i_k + \tilde v^i \delta^j_k) &
+	\delta^{ij} & 0 & 0 \\
+
+	((1 - \frac{2 C_v}{3 R}) k 
+		+ \frac{1}{2} \tilde v^2) \tilde v^j &
+	
+	(\bar\rho \tilde e_{total} + P^*) \delta^j_k
+		+ \bar\rho \tilde v^j \tilde v_k &
+	
+	(1 + \frac{C_v}{R}) \tilde v^j &
+	(1 - \frac{2 C_v}{3 R}) \tilde v^j &
+	0
+	\\
+
+	\tilde v^j k & 
+	\bar\rho \delta^j_k k &
+	0 &
+	\bar\rho \tilde v^j &
+	0 \\
+	
+	\tilde v^j \omega &
+	\bar\rho \delta^j_k \omega &
+	0 &
+	0 &
+	\bar\rho \tilde v^j
+}\right] \left[\matrix{
+	\bar\rho \\
+	\tilde v^k \\
+	P^* \\
+	k \\
+	\omega
+}\right]_{,j}$<br>
+
+$= \frac{\partial F^{Ij}}{\partial W^K} \frac{\partial W^K}{\partial U^L} \frac{\partial U^L}{\partial x^j}$<br>
+
+$= \left[\matrix{
+	\tilde v^j &
+	\bar\rho \delta^j_k &
+	0 & 0 & 0 \\
+	
+	\tilde v^i \tilde v^j &
+	\bar\rho (\tilde v^j \delta^i_k + \tilde v^i \delta^j_k) &
+	\delta^{ij} & 0 & 0 \\
+
+	((1 - \frac{2 C_v}{3 R}) k 
+		+ \frac{1}{2} \tilde v^2) \tilde v^j &
+	
+	(\bar\rho \tilde e_{total} + P^*) \delta^j_k
+		+ \bar\rho \tilde v^j \tilde v_k &
+	
+	(1 + \frac{C_v}{R}) \tilde v^j &
+	(1 - \frac{2 C_v}{3 R}) \tilde v^j &
+	0
+	\\
+
+	\tilde v^j k & 
+	\bar\rho \delta^j_k k &
+	0 &
+	\bar\rho \tilde v^j &
+	0 \\
+	
+	\tilde v^j \omega &
+	\bar\rho \delta^j_k \omega &
+	0 &
+	0 &
+	\bar\rho \tilde v^j
+}\right] 
+
+\left[\matrix{
+	1 & 0 & 0 & 0 & 0 \\
+	-\frac{1}{\bar\rho} \tilde v^i & \frac{1}{\bar\rho} \delta^i_j & 0 & 0 & 0 \\
+	
+	\frac{R}{2 C_v} v^2 & 
+	- \frac{R}{C_v} \tilde v_j & 
+	\frac{R}{C_v} & 
+	\frac{2}{3} - \frac{R}{C_v} & 
+	0 \\
+	
+	-\frac{1}{\bar\rho} k & 0 & 0 & \frac{1}{\bar\rho} & 0 \\
+	-\frac{1}{\bar\rho} \omega  & 0 & 0 & 0 & \frac{1}{\bar\rho}
+}\right]
+
+\left[\matrix{
+	\bar\rho \\
+	\bar\rho \tilde v^l \\
+	\bar\rho \tilde e_{total} \\
+	\bar\rho k \\
+	\bar\rho \omega
+}\right]_{,j}$<br>
+
+
+
+	</body>
+</html>

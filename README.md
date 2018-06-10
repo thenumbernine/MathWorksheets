@@ -86,6 +86,8 @@ Here's the CDN URLs:
 
 [LQG](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/LQG%2ehtml)
 
+[Laplace-Beltrami](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Laplace%2dBeltrami%2ehtml)
+
 [Lichtenberg](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Lichtenberg%2ehtml)
 
 [MHD - Eigenmode Analysis](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/MHD%20%2d%20Eigenmode%20Analysis%2ehtml)
@@ -109,6 +111,8 @@ Here's the CDN URLs:
 [Navier-Stokes As Exterior Derivative](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Navier%2dStokes%20As%20Exterior%20Derivative%2ehtml)
 
 [Navier-Stokes Curl Advection](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Navier%2dStokes%20Curl%20Advection%2ehtml)
+
+[Navier-Stokes-Wilcox](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Navier%2dStokes%2dWilcox%2ehtml)
 
 [Navier-Stokes](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Navier%2dStokes%2ehtml)
 
