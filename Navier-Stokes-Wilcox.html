@@ -103,7 +103,7 @@ $\frac{\partial W^I}{\partial U^J} = \left[\matrix{
 
 $F^{Ij} = \left[\matrix{
 	\bar\rho \tilde v^j \\
-	\bar\rho \tilde v^i \tilde v^j + \delta^{ij} P^* \\
+	\bar\rho \tilde v^i \tilde v^j + P^* \delta^{ij} \\
 	\tilde v^j (\bar\rho \tilde e_{total} + P^*) \\
 	\bar\rho \tilde v^j k \\
 	\bar\rho \tilde v^j \omega
@@ -210,10 +210,10 @@ $= \left[\matrix{
 
 \left[\matrix{
 	1 & 0 & 0 & 0 & 0 \\
-	-\frac{1}{\bar\rho} \tilde v^i & \frac{1}{\bar\rho} \delta^i_j & 0 & 0 & 0 \\
+	-\frac{1}{\bar\rho} \tilde v^k & \frac{1}{\bar\rho} \delta^k_l & 0 & 0 & 0 \\
 	
-	\frac{R}{2 C_v} v^2 & 
-	- \frac{R}{C_v} \tilde v_j & 
+	\frac{R}{2 C_v} \tilde v^2 & 
+	- \frac{R}{C_v} \tilde v_l & 
 	\frac{R}{C_v} & 
 	\frac{2}{3} - \frac{R}{C_v} & 
 	0 \\
@@ -230,7 +230,67 @@ $= \left[\matrix{
 	\bar\rho \omega
 }\right]_{,j}$<br>
 
+$= \left[\matrix{
+	0 &
+	\delta^i_l &
+	0 & 0 & 0 \\
 
+	- \tilde v^i \tilde v^j 
+	+ \frac{R}{2 C_v} \tilde v^2 \delta^{ij} 
+	&
+	\tilde v^j \delta^i_l 
+	+ \tilde v^i \delta^j_l 
+	- \frac{R}{2 C_v} \tilde v_l \delta^{ij} 
+	&
+	\frac{R}{C_v} \delta^{ij}
+	&
+	(\frac{2}{3} - \frac{R}{C_v}) \delta^{ij}
+	&
+	0
+	\\
+	
+	\tilde v^j (
+		(1 - \frac{1}{\bar\rho}) (1 - \frac{2 C_v}{3 R}) k
+		+ \frac{R}{2 C_v} \tilde v^2
+		- \frac{1}{\bar\rho} (\bar\rho \tilde e_{total} + P^*)
+	) &
+
+	\frac{1}{\bar\rho} (\bar\rho \tilde e_{total} + P^*) \delta^j_l
+	- \frac{R}{C_v} \tilde v^j \tilde v_l
+	&
+	
+	(1 + \frac{R}{C_v}) \tilde v^j 
+	&
+	
+	(-\frac{1}{3} - \frac{R}{C_v} + \frac{2}{3} \frac{C_v}{R}) \tilde v^j 
+	+ \frac{1}{\bar\rho} (1 - \frac{2 C_v}{3 R}) \tilde v^j 
+	&
+	
+	0
+	\\
+
+	- \tilde v^j k &
+	\delta^j_l k &
+	0 &
+	\tilde v^j &
+	0
+	\\
+
+	- \tilde v^j \omega &
+	\delta^j_l \omega &
+	0 &
+	0 &
+	\tilde v^j
+
+}\right] 
+
+\left[\matrix{
+	\bar\rho \\
+	\bar\rho \tilde v^l \\
+	\bar\rho \tilde e_{total} \\
+	\bar\rho k \\
+	\bar\rho \omega
+}\right]_{,j}$<br>
 
 	</body>
 </html>
