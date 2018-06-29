@@ -84,6 +84,8 @@ Here's the CDN URLs:
 
 [Kerr Cartesian](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Kerr%20Cartesian%2ehtml)
 
+[Kerr geodesic](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Kerr%20geodesic%2ehtml)
+
 [LQG](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/LQG%2ehtml)
 
 [Laplace-Beltrami](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Laplace%2dBeltrami%2ehtml)

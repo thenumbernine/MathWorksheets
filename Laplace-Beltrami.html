@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<title>Laplace-Beltrami numerical implementation</title>
+		<script type="text/javascript" src='tryToFindMathJax.js'></script>
+	</head>
+    <body onload='tryToFindMathJax();'>
+
+scalar fields in Cartesian coordinates:<br>
+<br>
+
+$\Delta f = \nabla \cdot \nabla f = \Sigma_i \frac{\partial^2 f}{\partial (x^i)^2}$<br>
+<br>
+finite-difference:<br>
+$\Delta f \approx \Sigma_i \frac{ (\frac{f(x + e_i) - f(x)}{\Delta x_i}) - (\frac{f(x) - f(x - e_i)}{\Delta x_i}) }{\Delta x_i}$<br>
+$\approx \Sigma_i \frac{ f(x + e_i) - 2 f(x) + f(x - e_i) }{(\Delta x_i)^2}$<br>
+$\approx \Sigma_i \frac{ f(x + e_i) + f(x - e_i) }{(\Delta x_i)^2} - 2 f(x) \Sigma_i \frac{1}{(\Delta x_i)^2}$<br>
+$\approx \Sigma_i \frac{ f_{I(x + e_i)} + f_{I(x - e_i)} }{(\Delta x_i)^2} - 2 f_{I(x)} \Sigma_i \frac{1}{(\Delta x_i)^2}$<br>
+$\approx A_{jk} f_j$<br>
+for $A_{jj} = -2 \Sigma_i \frac{1}{(\Delta x_i)^2}$<br>
+for $A_{jk} = \frac{1}{(\Delta x_i)^2}$ for $j = I(x), k = I(x + e_i)$, so notice that no summation over $i$ is used.<br> 
+<br>
+
+scalar fields in curvilinear coordinates:<br>
+<br>
+
+$\Delta f = \nabla \cdot \nabla f = f_{;ab} g^{ab}$<br>
+$= (f_{,ab} - {\Gamma^c}_{ab} f_{,c}) g^{ab}$<br>
+$= f_{,ab} g^{ab} - \Gamma^c f_{,c}$<br>
+<br>
+
+	</body>
+</html>
