@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="utf-8">
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<title>Geodesics in the Kerr metric</title>
+	</head>
+	<body onload='tryToFindMathJax();'>
+
+Following:
+<a href='http://www.roma1.infn.it/teongrav/leonardo/bh/bhcap3.pdf'>http://www.roma1.infn.it/teongrav/leonardo/bh/bhcap3.pdf</a><br>
+<a href='http://www.roma1.infn.it/teongrav/leonardo/bh/bhcap4.pdf'>http://www.roma1.infn.it/teongrav/leonardo/bh/bhcap4.pdf</a><br>
+<br>
+
+$J = $ angular momentum<br>
+$M = $ mass<br>
+$a = \frac{J}{M}$<br>
+$\Sigma = r^2 + a^2 cos^2 \theta$<br>
+$\Delta = r^2 - 2 M r + a^2$<br>
+$x = \sqrt{r^2 + a^2} sin \theta cos \phi$<br>
+$y = \sqrt{r^2 + a^2} sin \theta sin \phi$<br>
+$z = r cos \theta$<br>
+<br>
+
+$ds^2 = -dt^2 + \Sigma (\frac{1}{\Delta} dr^2 + d\theta^2) + (r^2 + a^2) sin^2 \theta d\phi^2 + \frac{2 M r}{\Sigma} (a sin^2 \theta d \phi - dt)^2$<br>
+$= -(1 - \frac{2 M r}{\Sigma}) dt^2 + \frac{\Sigma}{\Delta} dr^2 + \Sigma d\theta^2 + (r^2 + a^2 + \frac{2 M r a^2}{\Sigma} sin^2 \theta) sin^2 \theta d\phi^2 - \frac{2 M r a sin^2 \theta}{\Sigma} dt d\phi$<br>
+<br>
+
+$g_{tt} = -(1 - \frac{2 M r}{\Sigma})$<br>
+$g_{rr} = \frac{\Sigma}{\Delta}$<br>
+$g_{\theta\theta} = \Sigma d\theta^2$<br>
+$g_{\phi\phi} = (r^2 + a^2 + \frac{2 M r a^2}{\Sigma} sin^2 \theta) sin^2 \theta$<br>
+$g_{t\phi} = -\frac{2 M r a sin^2 \theta}{\Sigma}$<br>
+$g_{\mu\nu} = \pmatrix{
+	g_{tt} & 0 & 0 & g_{t\phi} \\
+	0 & \frac{\Sigma}{\Delta} & 0 & 0 \\
+	0 & 0 & \Sigma & 0 \\
+	g_{t\phi} & 0 & 0 & g_{\phi\phi}
+}$<br>
+To find the inverse of $g_{\mu\nu}$, find the inverse of $\tilde{g}_{ab} = \pmatrix{ g_{tt} & g_{t\phi} \\ g_{t\phi} & g_{\phi\phi}}$:<br>
+$det( \tilde{g}_{ab} ) = g_{tt} g_{\phi\phi} - g_{t\phi}^2$<br>
+$ = -(1 - \frac{2 M r}{\Sigma})(r^2 + a^2 + \frac{2 M r a^2}{\Sigma} sin^2 \theta) sin^2 \theta - (\frac{2 M r a sin^2 \theta}{\Sigma})^2$<br>
+$ = 
+	-r^2 sin^2 \theta
+	-a^2 sin^2 \theta
+	- \frac{1}{\Sigma} 2 M r a^2 sin^4 \theta 
+	+ \frac{1}{\Sigma} 2 M r^3 sin^2 \theta
+	+ \frac{1}{\Sigma} 2 M r a^2 sin^2 \theta
+	+ \frac{1}{\Sigma^2} 4 M^2 r^2 a^2 sin^4 \theta
+	- \frac{1}{\Sigma^2} 4 M^2 r^2 a^2 sin^4 \theta
+$<br>
+$ = (
+	-r^2
+	-a^2
+	+ \frac{1}{\Sigma} 2 M r (-a^2 sin^2 \theta + r^2 + a^2)
+) sin^2 \theta$<br>
+$ = (
+	-r^2
+	-a^2
+	+ \frac{1}{\Sigma} 2 M r (a^2 cos^2 \theta + r^2)
+) sin^2 \theta$<br>
+$ = (-r^2 - a^2 + 2 M r) sin^2 \theta$<br>
+$ = -\Delta sin^2 \theta$<br>
+So $\tilde{g}^{ab} = \pmatrix{
+	g^{tt} & g^{t\phi} \\
+	g^{t\phi} & g^{\phi\phi}
+} = -\frac{1}{\Delta sin^2 \theta} \pmatrix{
+	g_{\phi\phi} & -g_{t\phi} \\
+	-g_{t\phi} & g_{tt}
+}$<br>
+$g^{tt} = -\frac{1}{\Delta} (r^2 + a^2 + \frac{2 M r a^2}{\Sigma} sin^2 \theta)$<br>
+$g^{t\phi} = -\frac{2 M r a}{\Delta \Sigma}$<br>
+$g^{\phi\phi} = (1 - \frac{2 M r}{\Sigma}) \frac{1}{\Delta sin^2 \theta}$<br>
+$= (\Sigma - 2 M r) \frac{1}{\Sigma \Delta sin^2 \theta}$<br>
+$= (r^2 + a^2 cos^2 \theta - 2 M r + a^2 - a^2) \frac{1}{\Sigma \Delta sin^2 \theta}$<br>
+$= (r^2 - a^2 sin^2 \theta - 2 M r + a^2) \frac{1}{\Sigma \Delta sin^2 \theta}$<br>
+$= (\Delta^2 - a^2 sin^2 \theta) \frac{1}{\Sigma \Delta sin^2 \theta}$<br>
+So $g^{\mu\nu} = \pmatrix{
+	-\frac{1}{\Delta} (r^2 + a^2 + \frac{2 M r a^2}{\Sigma} sin^2 \theta) &
+		0 &
+		0 &
+		-\frac{2 M r a}{\Delta \Sigma} \\
+	0 & \frac{\Delta}{\Sigma} & 0 & 0 \\
+	0 & 0 & \frac{1}{\Sigma} & 0 \\
+	-\frac{2 M r a}{\Delta \Sigma} &
+		0 & 
+		0 & 
+		\frac{1}{\Delta sin^2 \theta} (1 - \frac{2 M r}{\Sigma})
+}$<br>
+<br>
+
+Killing fields:<br>
+$\mathcal{L}_x g = 0$<br>
+$g_{\mu\nu,\alpha} x^\alpha + g_{\mu\alpha} {x^\alpha}_{,\nu} + g_{\alpha\nu} {x^\alpha}_{,\mu} = 0$<br>
+Since $g_{\mu\nu,t} = g_{\mu\nu,\phi} = 0$, we get Killing field vectors:
+$k^\mu = (1,0,0,0)$ and $m^\mu = (0,0,0,1)$<br>
+Energy at infinity $= -k_\mu u^\mu = -g_{t\mu} u^\mu = -u_t$<br>
+Angular momentum per unit mass $= -m_\mu u^\mu = -g_{\phi\mu} u^\mu = -u_\phi$<br>
+<br>
+
+TODO coordinates singularity at $\Delta = 0$<br>
+<br>
+
+Horizon of $\Delta = 0$<br>
+$r^2 - 2 M r + a^2 = 0$<br>
+...has solutions:<br>
+$r = \frac{1}{2} ( 2 M \pm \sqrt{ 4 M^2 - 4 a^2})$<br>
+$r = M \pm \sqrt{M^2 - a^2}$<br>
+...has real solutions only for $M^2 - a^2 \ge 0$<br>
+$a^2 \le M^2$<br>
+For $a^2 = M^2$ defining an <i>extremal black hole</i><br>
+Let $\Delta = (r - r_+)(r - r_-)$<br>
+For $r_\pm = M \pm \sqrt{M^2 - a^2}$<br>
+Therefore the coordinate singularity $\Delta = 0$ can be represented as $r = r_\pm$.<br>
+Radial surface to $\Theta = r - constant = 0$:<br>
+normal: $n_\mu = \Theta_{,\mu} = (0,1,0,0)$<br>
+normal norm: $n_\mu n_\nu g^{\mu\nu} = \frac{\Delta}{\Sigma}$<br>
+So when $r = r_\pm$ we have $\Delta = 0$ and $|n| = 0$, which is a null hypersurface.<br>
+$r=r_+$ is the <i>outer horizon</i>
+$r=r_-$ is the <i>inner horizon</i>
+$|n| = \frac{\Delta}{\Sigma}$ looks like ...
+<img src='Kerr geodesic - radial normal magnitude.png'/><br>
+<img src='Kerr geodesic - radial normal magnitude - varying a.png'/><br>
+$r > r_+$ is timelike, $r_+ > r > r_-$ is spacelike, $r_- > r$ is timelike.
+	</body>
+</html>
