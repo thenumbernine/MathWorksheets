@@ -148,6 +148,8 @@ Here's the CDN URLs:
 
 [Tetrad General Relativity](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Tetrad%20General%20Relativity%2ehtml)
 
+[heat to wave](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/heat%20to%20wave%2ehtml)
+
 [projection in any metric](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/projection%20in%20any%20metric%2ehtml)
 
 [removing beta from adm metric](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/removing%20beta%20from%20adm%20metric%2ehtml)

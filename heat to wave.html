@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<title>Heat- to Wave- Equation</title>
+	</head>
+	<body onload='tryToFindMathJax();'>
+Integer derivatives of $x^n$:<br>
+$\partial_x x^n = n x^{n-1}$<br>
+$\partial_x^2 x^n = n (n-1) x^{n-2}$<br>
+$\partial_x^m x^n = (n-m+1)\cdot(n-m+2)\cdot ... \cdot (n-1) \cdot n \cdot x^{n-m}$<br>
+$= \Pi_{j=0}^{m-1} (n-j) x^{n-m}$<br>
+$= \frac{n!}{(n-m)!} x^{n-m}$<br>
+$= \frac{\Gamma(n+1)}{\Gamma(n-m+1)} x^{n-m}$<br>
+With the exception that $\partial_x^m x^n = 0$ for $m &gt; n$.<br>
+<br>
+
+By this definition, the half derivative of $x^n$ is:<br>
+$\partial_x^{1/2} = \frac{\Gamma(n+1)}{\Gamma(n+\frac{1}{2})} x^{(n-\frac{1}{2})}$<br>
+<br>
+
+Verifying that it reconstructs the original derivative:<br>
+$\partial_x^{1/2} (\partial_x^{1/2} x^n) = \partial_x^{1/2} (\frac{\Gamma(n+1)}{\Gamma(n+\frac{1}{2})} x^{(n-\frac{1}{2})})$<br>
+$= \frac{\Gamma(n+1)}{\Gamma(n+\frac{1}{2})} \frac{\Gamma(n+\frac{1}{2})}{\Gamma(n)} x^{n-1}$<br>
+$= \frac{\Gamma(n+1)}{\Gamma(n)} x^{n-1}$<br>
+$= n x^{n-1}$<br>
+<br>
+And therefore $\partial_x^{1/2} (\partial_x^{1/2} x^n) = \partial_x x^n$<bR>
+<br>
+
+Now is there a change of variable $\partial_x^{1/2} = \partial_y$ for $y = y(x)$?<br>
+$\partial_x^{1/2} x^n = \partial_y x(y)^n$<br>
+$\frac{\Gamma(n+1)}{\Gamma(n+\frac{1}{2})} x^{(n-\frac{1}{2})} = \frac{\Gamma(n+1)}{\Gamma(n)} x^{n-1} \frac{d x}{d y}$<br>
+$\int d y   = \frac{\Gamma(n+\frac{1}{2})}{\Gamma(n)} \int \frac{1}{\sqrt{x}} dx$<br>
+$y = 2 \frac{\Gamma(n+\frac{1}{2})}{\Gamma(n)} \sqrt{x} + C$<br>
+<br>
+
+Now $\partial_x x^n$ equals $\partial_y^2 x^n$.<br>
+
+<br>
+<hr>
+<br>
+
+Integer derivatives of analytical functions $f(x) = \Sigma_{i=0}^n p_i x^i$<br>
+$\partial_x^m f(x) = \Sigma_{i=m}^n \frac{\Gamma(i+1)}{\Gamma(i-m+1)} p_i x^{i-m}$<br>
+Notice the lower bound of the sum is incremented to eliminate the derivatives of $x^0$.<br> 
+<br>
+
+Half derivative of $f(x)$<br>
+$\partial_x^{1/2} f(x) = \Sigma_{i=0}^n \frac{\Gamma(i+1)}{\Gamma(i+\frac{1}{2})} p_i x^{(i-\frac{1}{2})}$<br>
+But what about the lower bound of the sum?  Keeping it at $i=0$ means the matching term $x^{(-\frac{1}{2})}$ now approaches $\infty$ for $x \rightarrow 0$<br>
+<br>
+
+Change of variable:<br>
+$\partial_x^{1/2} = \partial_y$ for $y = y(x)$<br>
+$\partial_x^{1/2} f(x) = \partial_y f(x)$<br>
+$\Sigma_{i=0}^n \frac{\Gamma(i+1)}{\Gamma(i+\frac{1}{2})} p_i x^{(i-\frac{1}{2})}
+ = \Sigma_{i=1}^n \frac{\Gamma(i+1)}{\Gamma(i)} p_i x^{i-1} \frac{dx}{dy}$<br>
+$y = \int \frac{
+	\Sigma_{i=1}^n \frac{\Gamma(i+1)}{\Gamma(i)} p_i x^{i-1}
+}{
+	\Sigma_{i=0}^n \frac{\Gamma(i+1)}{\Gamma(i+\frac{1}{2})} p_i x^{(i-\frac{1}{2})}
+} dx$<br>
+Notice the sum range lower bound on the two different polynomials is different.<br>
+
+<br>
+<hr>
+<br>
+
+
+Heat Equation:<br>
+$\partial_t \phi = \partial_x^2 \phi$<br>
+<br>
+Wave Equation:<br>
+$\partial_t^2 \psi = \partial_x^2 \psi$<br>
+<br>
+How to turn the heat equation into a wave equation?<br>
+Look for a change of variable $\tau = \tau(t)$<br>
+such that the operator exists, $\partial_\tau \phi = \partial_t^{1/2} \phi$<br>
+So we end up with $\partial_\tau^2 \phi = \partial_t \phi$<br>
+<br>
+
+Assume $\phi$ is analytic wrt $t$<br>
+So $\phi(x,t) = \Sigma_{i=0}^n p_i(x) t^i$<br>
+Next use our previous trick to let $\partial_t^{1/2} \phi = \partial_\tau \phi$ for $\tau = \tau(t)$<br>
+Then we come up with the change of variables:<br>
+$\tau = \int \frac{
+	\Sigma_{i=1}^n \frac{\Gamma(i+1)}{\Gamma(i)} p_i(x) t^{i-1}
+}{
+	\Sigma_{i=0}^n \frac{\Gamma(i+1)}{\Gamma(i+\frac{1}{2})} p_i(x) t^{(i-\frac{1}{2})}
+} dt$<br>
+
+And now $\phi(x, \tau)$ is a wave equation, such that:<br>
+$\partial_\tau^2 \phi = \partial_x^2 \phi$<br>
+<br>
+
+Just watch out for $t=0$...<br>
+
+	</body>
+</html>

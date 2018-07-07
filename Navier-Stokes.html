@@ -8,13 +8,89 @@
 	<body onload='tryToFindMathJax();'>
 
 <h3>Navier-Stokes</h3>
-$(\rho)_{,t} + (\rho v_j)_{,j} = 0$<br>
-$(\rho v_i)_{,t} + (\rho v_i v_j + \delta_{ij} P - \tau_{ji})_{,j}= \rho g_j$<br>
-$(E_{total})_{,t} + (v_j H_{total} - v_i \tau_{ij} + q_j)_{,j} = 0$<br>
-$\tau_{ij} = 2 \mu S_{ij} $<br>
+$(\rho)_{,t} = -(\rho v_j)_{,j}$<br>
+$(\rho v_i)_{,t} = -(\rho v_i v_j + \delta_{ij} P - \tau_{ji})_{,j} + \rho g_i$<br>
+$(E_{total})_{,t} = -(v_j H_{total} - v_i \tau_{ij} + q_j)_{,j}$<br>
 <br>
+$\tau_{ij} = 2 \mu S_{ij} $<br>
 $S_{ij} = \frac{1}{2} ( v_{i,j} + v_{j,i} ) - \frac{1}{3} \delta_{ij} v_{k,k} $<br>
 $q_j = -\lambda T_{,j} = -C_p \frac{\mu}{Pr} T_{,j}$<br>
+<br>
 
+$(\rho v_i)_{,t} 
+	= -(
+		\rho v_i v_j 
+		+ \delta_{ij} P 
+		- \mu (
+			v_{i,j} 
+			+ v_{j,i} 
+			- \frac{2}{3} \delta_{ij} v_{k,k}
+		) 
+	)_{,j}
+	+ \rho g_i$<br>
+
+$(\rho v_i)_{,t} =
+	- \rho_{,j} v_i v_j 
+	- \rho v_{i,j} v_j 
+	- \rho v_i v_{j,j} 
+	- \delta_{ij} P_{,j} 
+	+ \mu (
+		v_{i,jj} 
+		+ v_{j,ij} 
+		- \frac{2}{3} \delta_{ij} v_{k,kj}
+	)
+	+ \rho g_i$<br>
+Let $a_{ij} = v_{i,j}$<br>	
+$(\rho v_i)_{,t} =
+	- \rho_{,j} v_i v_j 
+	- \rho a_{ij} v_j 
+	- \rho v_i a_{jj} 
+	- \delta_{ij} P_{,j} 
+	+ \mu (
+		a_{ij,j} 
+		+ a_{ji,j} 
+		- \frac{2}{3} \delta_{ij} a_{kk,j}
+	)
+	+ \rho g_i$<br>
+<br>
+$a_{ij,t} = v_{i,jt}$<br>
+$(\rho v_i)_{,t} = \rho_{,t} v_i + \rho v_{i,t} = -(\rho v_j)_{,j} v_i + \rho v_{i,t} = -\rho_{,j} v_j v_i - \rho v_{j,j} v_i + \rho v_{i,t}$<br>
+Combine:<br>
+$v_{i,t}
+	+ v_{i,j} v_j 
+	+ \frac{1}{\rho} \delta_{ij} P_{,j} 
+	- \frac{\mu}{\rho} (
+		v_{i,jj} 
+		+ v_{j,ij} 
+		- \frac{2}{3} \delta_{ij} v_{k,kj}
+	)
+	= g_i$<br>
+$v_{i,jt}
+	+ (
+		v_{i,k} v_k 
+		+ \frac{1}{\rho} \delta_{ik} P_{,k} 
+		- \frac{\mu}{\rho} (
+			v_{i,kk} 
+			+ v_{k,ik} 
+			- \frac{2}{3} \delta_{ik} v_{l,lk}
+		)
+	)_{,j}
+	= g_{i,j}$<br>
+$v_{i,jt}
+	+ v_{i,kj} v_k 
+	+ v_{i,k} v_{k,j} 
+	- \frac{1}{\rho^2} \rho_{,j} \delta_{ik} P_{,k} 
+	+ \frac{1}{\rho} \delta_{ik} P_{,kj} 
+	+ \frac{\mu}{\rho^2} \rho_{,j} (
+		v_{i,kk} 
+		+ v_{k,ik} 
+		- \frac{2}{3} \delta_{ik} v_{l,lk}
+	)
+	- \frac{\mu}{\rho} (
+		v_{i,kkj} 
+		+ v_{k,ikj} 
+		- \frac{2}{3} \delta_{ik} v_{l,lkj}
+	)
+	= g_{i,j}$<br>
 	</body>
 </html>
