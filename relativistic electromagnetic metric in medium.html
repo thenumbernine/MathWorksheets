@@ -343,7 +343,7 @@ ${J^a}_{bound} = \pmatrix{ c \rho_{bound} \\ {J^i}_{bound} } = \pmatrix{ -c {P^j
 <br>
 
 <hr>
-<b>electromagnetic stress-energy in medium:</b><br>
+<b>special relativity electromagnetic stress-energy in medium:</b><br>
 $T_{uv} = \frac{1}{4\pi} (F_{ua} {D_v}^a - \frac{1}{4} g_{uv} F_{ab} D^{ab})$<br>
 ${T^u}_v = -\frac{1}{4\pi} ({F^u}_a {D^a}_v)^{TF}$<br>
 (The $\frac{1}{4\pi}$ should go away when using SI units)<br>
@@ -356,7 +356,10 @@ ${D^u}_v = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
 	c D_i & {\bar\epsilon_{ij}}^k H_k
 }}$<br>
 ${F^u}_a {D^a}_v = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
-	
+	E_k D^k &
+	\frac{1}{c} E_k {\bar\epsilon_{kj}}^l H_l \\
+	c {\bar\epsilon_{ik}}^l D^k B_l &
+	E_k D^k + {\bar\epsilon_{ik}}^l B_l {\bar\epsilon_{kj}}^m H_m
 }}$<br>
 <br>
 
@@ -365,6 +368,9 @@ ${F^u}_a {D^a}_v = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
 ${J^i}_{free} = \sigma E^i$<br>
 $P^i = \epsilon_0 \chi_e E^i$<br>
 $M_i = \chi_m H_i$<br>
+$D^i = \epsilon_0 E^i + P^i = \epsilon_0 (1 + \chi_e) E^i$<br>
+$H_i = \frac{1}{\mu_0} B_i - \chi_m H_i$<br>
+$\mu_0 (1 + \chi_m) H_i = B_i$<br>
 <br>
 Notice, when $\chi$'s are just scalars, we get this:<br>
 $D^{uv} u_v = c^2 \epsilon F^{uv} u_v$, where $\epsilon = \epsilon_0 (1 + \chi_e)$<br>
@@ -375,7 +381,8 @@ Tensor susceptibility: (from <a href='https://en.wikipedia.org/wiki/Magnetic_sus
 $P^i = \epsilon_0 {(\chi_e)^i}_j E^j$<br>
 $M_i = {(\chi_m)_i}^j H_j$ ... non-scalar in crystals, nonlinear in ferromagnetic crystals, complex in terms of AC fields<br>
 $D^i = \epsilon_0 E^i + P^i = \epsilon_0 (\delta^i_j + {(\chi_e)^i}_j) E^j$<br>
-$H_i = \frac{1}{\mu_0} B_i - M_i = (\frac{1}{\mu_0} \delta_i^j - {(\chi_m)_i}^j) B^j$<br>
+$\mu_0 (\delta^i_j + {(\chi_m)^i}_j ) H_i = B_j$<br>
+${\mu^i}_j H_i = B_j$<br>
 Let $D^u = {\epsilon^u}_v E^v$<br>
 Let $H^u = {(\mu^{-1})^u}_v B^v$<br>
 
@@ -387,9 +394,11 @@ $D_{uv} = \downarrow u(i) \overset{\rightarrow v(i)}{\pmatrix{
 	0 & -c D_j \\ 
 	c D_i & {\bar\epsilon_{ij}}^k H_k
 }}$<br>
-	
+
 <hr>
 <b>combining non-dispersive materials with general relativity formulation of electromagnetism:</b><br>
+Notice that $E^u$'s and $B^u$'s are suppose to be spatial.<br>
+I'm suspicious that the $\epsilon_{ab}$'s and $(\mu^{-1})_{ab}$'s are also spatial as well<br>
 $F^{ab} = \frac{1}{c} n^a E^b - \frac{1}{c} n^b E^a + n_d \epsilon^{dabc} B_c$<br>
 $D^{ab} = c n^a D^b - c n^b D^a + n_d \epsilon^{dabc} H_c$<br>
 $D^{ab} = c (n^a {\epsilon^b}_u - n^b {\epsilon^a}_u) E^u + n_d \epsilon^{dabc} {(\mu^{-1})_c}^u B_u$<br>
@@ -403,15 +412,14 @@ ${F^a}_c {D^c}_b =
 	(c (n^c \epsilon_{bu} - n_b {\epsilon^c}_u) E^u + n_f {\epsilon^{fc}}_{bh} (\mu^{-1})^{hu} B_u)
 $<br>
 ${F^a}_c {D^c}_b =
-	(
-		\frac{1}{c} n^a E_c 
-		- \frac{1}{c} n_c E^a
-		+ n_d {\epsilon^{da}}_{ce} B^e
-	) (
-		c n^c \epsilon_{bu} E^u 
-		- c n_b {\epsilon^c}_u E^u 
-		+ n_f {\epsilon^{fc}}_{bh} (\mu^{-1})^{hu} B_u
-	)
+	- n^a E_c n_b {\epsilon^c}_u E^u 
+	+ \frac{1}{c} n^a E_c n_f {\epsilon^{fc}}_{bh} (\mu^{-1})^{hu} B_u
+	- n_c E^a n^c \epsilon_{bu} E^u 
+	+ n_c E^a n_b {\epsilon^c}_u E^u 
+	- \frac{1}{c} n_c E^a n_f {\epsilon^{fc}}_{bh} (\mu^{-1})^{hu} B_u
+	+ c n_d {\epsilon^{da}}_{ce} B^e n^c \epsilon_{bu} E^u 
+	- c n_d {\epsilon^{da}}_{ce} B^e n_b {\epsilon^c}_u E^u 
+	+ n_d {\epsilon^{da}}_{ce} B^e n_f {\epsilon^{fc}}_{bh} (\mu^{-1})^{hu} B_u
 $<br>
 
 <br>	
