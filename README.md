@@ -152,6 +152,8 @@ Here's the CDN URLs:
 
 [projection in any metric](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/projection%20in%20any%20metric%2ehtml)
 
+[relativistic electromagnetic metric in medium](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/relativistic%20electromagnetic%20metric%20in%20medium%2ehtml)
+
 [removing beta from adm metric](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/removing%20beta%20from%20adm%20metric%2ehtml)
 
 [spheres](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/spheres%2ehtml)

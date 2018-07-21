@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<title>relativistic electromagnetism in medium</title>
+	</head>
+	<body onload='tryToFindMathJax();'>
+
+Let $\eta_{ab} = diag(-1,1,1,1)$<br>
+Let $\epsilon_{abcd} = \sqrt{|g|} [abcd]$<br>
+Let $[abcd] = \bar\epsilon_{ijk}$ = the completely antisymmetric symbol.<br>
+Let $(\star F)_{ab} = \frac{1}{2} F_{uv} {\epsilon^{uv}}_{ab} $<br>
+I'm going to raise/lower $\bar\epsilon_{ijk}$ by $\eta_{ij}$<br>
+$\partial_u = (\frac{1}{c} \partial_t, \partial_i)$<br>
+$\frac{1}{c^2} = \mu_0 \epsilon_0$<br>
+$\vec\nabla \cdot \vec{V} = {V^i}_{,i}$<br>
+$\vec\nabla \times \vec{V} = \bar\epsilon^{ijk} V_{k,j}$<br>
+<br>
+
+Faraday tensor in special relativity:<br>
+<hr>
+
+From Misner, Thorne, Wheeler, adjusted to SI unit<br>
+$F_{ab} = \downarrow a \overset{\rightarrow b}{\pmatrix{
+	0 & -\frac{1}{c} E_x & -\frac{1}{c} E_y & -\frac{1}{c} E_z \\
+	\frac{1}{c} E_x & 0 & B_z & -B_y \\
+	\frac{1}{c} E_y & -B_z & 0 & B_x \\
+	\frac{1}{c} E_z & B_y & B_x & 0
+}}$<br>
+$F_{ab} = \downarrow a \overset{\rightarrow b}{\pmatrix{ 
+	0 & -\frac{1}{c} E_j \\ 
+	\frac{1}{c} E_i & {\bar\epsilon_{ij}}^k B_k
+}}$ (eqn 3.7)<br>
+$F^{ab} = \eta^{au} F_{uv} \eta^{vb} = \downarrow a \overset{\rightarrow b}{\pmatrix{ 0 & \frac{1}{c} E_j \\ -\frac{1}{c} E_i & {\bar\epsilon_{ij}}^k B_k}}$ (eqn 3.7)<br>
+$J^a = \pmatrix{c \rho \\ J^i}$<br>
+${F^{ab}}_{,b} = \mu_0 J^a$ (eqn 3.36)<br>
+${E^j}_{,j} = \frac{1}{\epsilon_0} \rho$<br>
+$-\frac{1}{c^2} {E^i}_{,t} + {\bar\epsilon_i}^{jk} B_{k,j} = \mu_0 J^i$<br>
+<br>
+
+$\star F_{ab} = \downarrow a \overset{\rightarrow b}{\pmatrix{
+	0 & -B_j \\
+	B_i & -\frac{1}{c} {\bar\epsilon_{ij}}^k E_k
+}}$<br>
+$\star F_{ab} = \downarrow a \overset{\rightarrow b}{\pmatrix{
+	0 & B_j \\
+	-B_i & -\frac{1}{c} {\bar\epsilon_{ij}}^k E_k
+}}$<br>
+${(\star F)^{ab}}_{,b} = 0$<br>
+${B^j}_{,j} = 0$<br>
+$B_{i,t} + {\bar\epsilon_i}^{jk} E_{k,j} = 0$<br>
+<br>
+
+<br>
+
+Faraday tensor as 2-form:<br>
+<hr>
+$A^u = \pmatrix{\frac{1}{c} \phi \\ A^i}$<br>
+$F_{ab} = 2 \partial_{[a} A_{b]} = 2 \nabla_{[a} A_{b]}$ (notice the connections cancel)<br>
+$F = dA$<br>
+$F = F_{ab} dx^a \wedge dx^b = \partial_b dx^b \wedge (A_a dx^a) = 2 \partial_{[a} A_{b]} dx^a \wedge dx^b$<br>
+$d F = d (dA) = 0$<br>
+$d \star F = \star J$, $\nabla \cdot F = J$<br>
+<br>
+
+
+
+Faraday tensor in general relativity, in vacuum:<br>
+<hr>
+
+From Baumgarate &amp; Shapiro, eqn 5.114:<br>
+$F^{ab} = n^a E^b - n^b E^a + n_d \epsilon^{dabc} B_c$<br>
+For $n_a = (-\alpha, 0)$, $n^a = (1/\alpha, -\beta^i/\alpha)$, where the first component is time.<br>
+$E^a = F^{ab} n_b$<br>
+$B^a = \frac{1}{2} \epsilon^{abcd} n_b F_{dc}$<br>
+This fits our convention above, which means if I were to negative the E components of F (like most texts do) then I would have to negative n, or the definition of E wrt F and n, as well.<br>
+<br>
+
+electromagnetic stress-energy in vacuum:<br>
+<hr>
+$T_{uv} = \frac{1}{4\pi} (F_{ua} {F_v}^a - \frac{1}{4} g_{uv} F_{ab} F^{ab})$, in Gaussian units<br>
+$T_{uv} = \downarrow u \overset{\rightarrow v}{\pmatrix{
+	\frac{1}{2} (\epsilon_0 E^2 + \frac{1}{\mu_0} B^2) & \frac{1}{c \mu_0} {\bar\epsilon_i}^{jk} E_j B_k \\
+	\frac{1}{c \mu_0} {\bar\epsilon_i}^{jk} E_j B_k & \frac{1}{2} \eta_{ij} (\epsilon_0 E^2 + \frac{1}{\mu_0} B^2) - \epsilon_0 E_i E_j - \frac{1}{\mu_0} B_i B_j
+}}$ in flat space, with SI units<br>
+as a trace-free operation:<br>
+${T^u}_v = -\frac{1}{4\pi} ({F^u}_a {F_a}^v - \frac{1}{4} \delta^u_v {F^a}_b {F^b}_a)$<br>
+Let ${(F^2)^u}_v = {F^u}_a {F^a}_v$<br>
+${T^u}_v = -\frac{1}{4\pi} ({(F^2)^u}_v - \frac{1}{4} \delta^u_v {(F^2)^a}_a)$<br>
+Let $(A_{uv})^{TF} = A_{uv} - \frac{1}{n} g_{uv} {A^a}_a$ be the trace-free element of $A_{uv}$, where $n = $ the dimension, such that ${(A^{TF})^a}_a = 0$<br>
+${T^u}_v = -\frac{1}{4\pi} ({(F^2)^u}_v)^{TF}$<br>
+<br>
+
+Einstein Field Equations of electromagnetic stress-energy in vacuum:<br>
+<hr>
+${G^u}_v = 8 \pi {T^u}_v$<br>
+${G^u}_v = -2 ({(F^2)^u}_v)^{TF}$<br>
+Notice, $G_{uv}$ is the trace-reversal of $R_{uv}$, so $G_{uv} = R_{uv} - \frac{2}{n} g_{uv} {R^a}_a$<br> 
+This means that (contract to find) ${G^a}_a = -{R^a}_a$<br>
+Therefore if $T_{uv}$ is trace-free, so is $G_{uv}$, and so is $R_{uv}$ such that $G_{uv} = R_{uv}$<br>
+${R^u}_v = -2 ({(F^2)^u}_v)^{TF}$<br>
+<br>
+
+Einstein Field Equations of electromagnetic stress-energy in vacuum, in normal coordinates:<br>
+<hr>
+$R_{uv} = {R^a}_{uav}$<br>
+${R^a}_{bcd} = 2 ({\Gamma^a}_{b[d,c]} + {\Gamma^a}_{e[c} {\Gamma^e}_{d]b})$ in a holonomic, torsion-free coordinate system.<br>
+For normal coordinates, let $g_{ab,c} = 0$, so ${\Gamma^a}_{bc} = 0$<br>
+So ${R^a}_{bcd} = 2 g^{au} \Gamma_{ub[d,c]}$ in a holonomic, torsion-free coordinate system.<br>
+${R^a}_{bcd} = g^{au} (g_{ub,[dc]} + g_{u[d|,b|c]} - g_{b[d|,u|c]})$<br>
+${R^a}_{bcd} = g^{au} (g_{u[d,c]b} - g_{b[d,c]u})$<br>
+${R^a}_{bcd} = 2 g^{au} g_{[u|[d,c]|b]}$<br>
+${R^a}_{bcd} = \frac{1}{2} g^{au} (g_{ud,cb} - g_{uc,db} - g_{bd,cu} + g_{bc,du})$<br>
+$R_{uv} = {R^a}_{uav} = \frac{1}{2} g^{ab} (g_{bv,au} - g_{ab,uv} - g_{uv,ab} + g_{ua,bv})$<br>
+and the EFE is:<br>
+$\frac{1}{2} g^{ab} (g_{bv,au} - g_{ab,uv} - g_{uv,ab} + g_{ua,bv}) = -2 ((F^2)_{uv})^{TF}$<br>
+$\frac{1}{2} g^{ab} g_{pq,rs} (
+	\delta^p_b \delta^q_v \delta^r_a \delta^s_u 
+	- \delta^p_a \delta^q_b \delta^r_u \delta^s_v 
+	- \delta^p_u \delta^q_v \delta^r_a \delta^s_b
+	+ \delta^p_u \delta^q_a \delta^r_b \delta^s_v
+) = -2 (F^2)_{ab} (\delta^a_u \delta^b_v - \frac{1}{4} g_{uv} g^{ab})$<br>
+<br>
+
+electromagnetism in medium:<br>
+<hr>
+(from <a href='https://en.wikipedia.org/wiki/Covariant_formulation_of_classical_electromagnetism'>https://en.wikipedia.org/wiki/Covariant_formulation_of_classical_electromagnetism</a>, but adjusting sign convention)<br>
+Let $D^i = \epsilon_0 E^i + P^i$<br>
+Let $H_i = \frac{1}{\mu_0} B_i - M_i$<br>
+
+$\frac{1}{\mu_0} F_{ab} = \downarrow a(i) \overset{\rightarrow b(j)}{\pmatrix{
+	0 & -\epsilon_0 c E_j \\
+	\epsilon_0 c E_i & \frac{1}{\mu_0} {\bar\epsilon_{ij}}^k B_k
+}}$<br>
+Let $M_{uv} = \pmatrix{ 0 & c P_j \\ -c P_i & {\bar\epsilon_{ij}}^k M_k}$<br>
+Let $D_{uv} = \pmatrix{ 0 & -c D_j \\ c D_i & {\bar\epsilon_{ij}}^k H_k}$<br>
+So $D_{uv} = \frac{1}{\mu_0} F_{uv} - M_{uv}$<br>
+<br>
+
+check units on these:<br>
+$(J^v)_{bound} = {M^{uv}}_{,v}$<br>
+$\bar\epsilon^{ijk} H_{k,j} = (J^i)_{free} + {D^i}_{,t}$<br>
+${D^j}_{,j} = \rho_{free} = {D^{tu}}_{,u}$<br>
+$(J^v)_{free} = {D^{uv}}_{,v}$<br>
+${(J^u)_{bound}}_{,u} = 0$<br>
+${(J^u)_{free}}_{,u} = 0$<br>
+<br>
+
+electromagnetic stress-energy in medium:<br>
+<hr>
+$T_{uv} = \frac{1}{4\pi} (F_{ua} {D_v}^a - \frac{1}{4} g_{uv} F_{ab} D^{ab})$<br>
+${T^u}_v = -\frac{1}{4\pi} ({F^u}_a {D^a}_v)^{TF}$<br>
+(The $\frac{1}{4\pi}$ should go away when using SI units)<br>
+<br>
+
+more from Wikipedia:<br>
+<hr>
+$J^a = {J^a}_{free} + {J^a}_{bound}$<br>
+${J^a}_{free} = \pmatrix{ c \rho_{free} \\ {J^i}_{free} } = \pmatrix{ c {D^j}_{,j} \\ -{D^i}_{,t} + \bar\epsilon^{ijk} H_{k,j} }$<br>
+${J^a}_{bound} = \pmatrix{ c \rho_{bound} \\ {J^i}_{bound} } = \pmatrix{ -c {P^j}_{,j} \\ {P^i}_{,t} + \bar\epsilon^{ijk} M_{k,j} }$<br>
+<br>
+
+Linear non-dispersive materials:<br>
+<hr>
+${J^i}_{free} = \sigma E^i$<br>
+$P^i = \epsilon_0 \chi_e E^i$<br>
+$M_i = \chi_m H_i$<br>
+Notice, when $\chi$'s are just scalars, we get this:<br>
+$D^{uv} u_v = c^2 \epsilon F^{uv} u_v$, where $\epsilon = \epsilon_0 (1 + \chi_e)$<br>
+$\star D^{uv} u_v = \frac{1}{\mu} \star F^{uv} u_v$, where $\mu = \mu_0 (1 + \chi_m)$<br>
+<br>
+
+Tensor susceptibility: (from <a href='https://en.wikipedia.org/wiki/Magnetic_susceptibility'>https://en.wikipedia.org/wiki/Magnetic_susceptibility</a>)<br>
+$P^i = \epsilon_0 {(\chi_e)^i}_j E^j$<br>
+$M_i = {(\chi_m)_i}^j H_j$ ... non-scalar in crystals, nonlinear in ferromagnetic crystals, complex in terms of AC fields<br>
+$D^i = \epsilon_0 E^i + P^i = \epsilon_0 (\delta^i_j + {(\chi_e)^i}_j) E^j$<br>
+$H_i = \frac{1}{\mu_0} B_i - M_i = (\frac{1}{\mu_0} \delta_i^j - {(\chi_m)_i}^j) B^j$<br>
+
+$F_{uv} = \downarrow u(i) \overset{\rightarrow v(i)}{\pmatrix{ 
+	0 & -\frac{1}{c} E_j \\ 
+	\frac{1}{c} E_i & {\bar\epsilon_{ij}}^k B_k
+}}$<br>
+$D_{uv} = \downarrow u(i) \overset{\rightarrow v(i)}{\pmatrix{ 
+	0 & -c D_j \\ 
+	c D_i & {\bar\epsilon_{ij}}^k H_k
+}}$<br>
+	</body>
+</html>
