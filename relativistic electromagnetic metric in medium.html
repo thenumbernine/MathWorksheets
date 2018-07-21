@@ -18,8 +18,8 @@ $\vec\nabla \cdot \vec{V} = {V^i}_{,i}$<br>
 $\vec\nabla \times \vec{V} = \bar\epsilon^{ijk} V_{k,j}$<br>
 <br>
 
-Faraday tensor in special relativity:<br>
 <hr>
+<b>Faraday tensor in special relativity:</b><br>
 
 From Misner, Thorne, Wheeler, adjusted to SI unit<br>
 $F_{ab} = \downarrow a \overset{\rightarrow b}{\pmatrix{
@@ -28,11 +28,13 @@ $F_{ab} = \downarrow a \overset{\rightarrow b}{\pmatrix{
 	\frac{1}{c} E_y & -B_z & 0 & B_x \\
 	\frac{1}{c} E_z & B_y & B_x & 0
 }}$<br>
-$F_{ab} = \downarrow a \overset{\rightarrow b}{\pmatrix{ 
+<br>
+
+$F_{ab} = \downarrow a(i) \overset{\rightarrow b(j)}{\pmatrix{ 
 	0 & -\frac{1}{c} E_j \\ 
 	\frac{1}{c} E_i & {\bar\epsilon_{ij}}^k B_k
 }}$ (eqn 3.7)<br>
-$F^{ab} = \eta^{au} F_{uv} \eta^{vb} = \downarrow a \overset{\rightarrow b}{\pmatrix{ 0 & \frac{1}{c} E_j \\ -\frac{1}{c} E_i & {\bar\epsilon_{ij}}^k B_k}}$ (eqn 3.7)<br>
+$F^{ab} = \eta^{au} F_{uv} \eta^{vb} = \downarrow a \overset{\rightarrow b}{\pmatrix{ 0 & \frac{1}{c} E_j \\ -\frac{1}{c} E_i & {\bar\epsilon_{ij}}^k B_k}}$<br>
 $J^a = \pmatrix{c \rho \\ J^i}$<br>
 ${F^{ab}}_{,b} = \mu_0 J^a$ (eqn 3.36)<br>
 ${E^j}_{,j} = \frac{1}{\epsilon_0} \rho$<br>
@@ -52,10 +54,8 @@ ${B^j}_{,j} = 0$<br>
 $B_{i,t} + {\bar\epsilon_i}^{jk} E_{k,j} = 0$<br>
 <br>
 
-<br>
-
-Faraday tensor as 2-form:<br>
 <hr>
+<b>Faraday tensor as 2-form (works in flat or curved coordinates):</b><br>
 $A^u = \pmatrix{\frac{1}{c} \phi \\ A^i}$<br>
 $F_{ab} = 2 \partial_{[a} A_{b]} = 2 \nabla_{[a} A_{b]}$ (notice the connections cancel)<br>
 $F = dA$<br>
@@ -63,22 +63,144 @@ $F = F_{ab} dx^a \wedge dx^b = \partial_b dx^b \wedge (A_a dx^a) = 2 \partial_{[
 $d F = d (dA) = 0$<br>
 $d \star F = \star J$, $\nabla \cdot F = J$<br>
 <br>
+$F = F_{ti} dt \wedge dx^i + \frac{1}{2} F_{ij} dx^i \wedge dx^j$<br> 
+$F = E \wedge dt + \star (B \wedge dt)$ ... but no promises that this E and B match up, might be shifted around...<br>
+Then $\star (F \wedge \star F) = F_{ab} F^{ab}$ (TODO show this)<br>
+and $F \wedge F = F_{ac} {F_b}^c$ (TODO show this too)<br>
+and $T = \frac{1}{4\pi} (F \wedge F + F \wedge * F)$ (TODO check)<br>
+$T = \frac{1}{4\pi} F \wedge (F + *F)$ (TODO check)<br>
+<br>
+
+In component form, with a distinct time coordinate:<br>
+$F_{ab} = \pmatrix{
+	0 & F_{tj} \\ 
+	F_{it} & F_{ij}
+} = \pmatrix{
+	0 & 2 \partial_{[t} A_{j]} \\
+	2 \partial_{[i} A_{t]} & 2 \partial_{[i} A_{j]}
+} = \pmatrix{
+	0 & \partial_t A_j - \frac{1}{c} \partial_j \phi \\
+	-\partial_t A_i + \frac{1}{c} \partial_i \phi & \partial_i A_j - \partial_j A_i
+}$<br>
+<br>
 
 
-
-Faraday tensor in general relativity, in vacuum:<br>
 <hr>
+<b>ADM metric:</b><br>
+$[g_{uv}] = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{-\alpha^2 + \beta_k \beta^k & \beta_j \\ \beta_i & \gamma_{ij}}}$<br>
+$[g^{uv}] = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{-1/\alpha^2 & \beta^j / \alpha^2 \\ \beta^i / \alpha^2 & \gamma^{ij} - \beta^i \beta^j / \alpha^2}}$<br>
+where $ \beta_j = \gamma_{ij} \beta^i = \gamma_{u j} \beta^u = g_{u j} \beta^j $ courtesy of the fact that $ g_{ij} = \gamma_{ij} $ and $ \beta^t = 0 $.<br>
+<br>
+ADM metric determinant: $g = det[g_{ab}] = \alpha \sqrt{\gamma}$<br>
+ADM spatial metric determinant: $\gamma = det[\gamma_{ij}]$<br>
+<br>
 
+normal in the ADM metric:<br>
+$n_u = \overset{\rightarrow u(i)}{\pmatrix{ -\alpha & 0 }} $<br>
+<br>
+$n^u = \downarrow u(i)\pmatrix{ 1/\alpha \\ -\beta^i/\alpha}$<br>
+<br>
+notice: $n_u n^u = -1$<br>
+<br>
+
+
+
+<hr>
+<b>Faraday tensor in general relativity, in vacuum:</b><br>
 From Baumgarate &amp; Shapiro, eqn 5.114:<br>
 $F^{ab} = n^a E^b - n^b E^a + n_d \epsilon^{dabc} B_c$<br>
-For $n_a = (-\alpha, 0)$, $n^a = (1/\alpha, -\beta^i/\alpha)$, where the first component is time.<br>
 $E^a = F^{ab} n_b$<br>
 $B^a = \frac{1}{2} \epsilon^{abcd} n_b F_{dc}$<br>
 This fits our convention above, which means if I were to negative the E components of F (like most texts do) then I would have to negative n, or the definition of E wrt F and n, as well.<br>
 <br>
+For ADM $n_a = (-\alpha, 0)$, $n^a = (1/\alpha, -\beta^i/\alpha)$, where the first component is time, this means:<br>
+$E^a = F^{ab} n_b = -\alpha F^{at} = \alpha F^{ta}$<br>
+Since $F^{ab}$ is antisymmetric, this means $F^{tt} = 0$, and $E^t = 0$, so $E^a n_a = 0$, so $E^a$ is a spatial vector.<br>
+$E_a = g_{ab} E^b = g_{aj} E^j = \pmatrix{ \beta_j E^j & \gamma_{ij} E^j } = \pmatrix{\beta^j E_j & E_i}$<br>
+so $E_i = g_{ia} E^a = g_{ij} E^j$ and $E_t = \beta^j E_j$<br>
+<br>
 
-electromagnetic stress-energy in vacuum:<br>
+Now $n_d \epsilon^{dabc} = n_t \epsilon^{tabc} = -\alpha \epsilon^{tabc}$<br>
+$F^{ij} = n_d \epsilon^{dijc} B_c = -\alpha \epsilon^{tijc} B_c$<br>
+<br>
+
+$F^{ab} = \downarrow a(i) \overset{\rightarrow b(j)}{\pmatrix{
+	0 & \frac{1}{\alpha} E^j \\
+	-\frac{1}{\alpha} E^i & -\alpha \epsilon^{tijc} B_c
+}}$<br>
+
+
+$F_{ab} = g_{au} F^{uv} g_{vb} = 
+\pmatrix{-\alpha^2 + \beta^2 & \beta_k \\ \beta_i & \gamma_{ik}}
+\pmatrix{
+	0 & \frac{1}{\alpha} E^l \\
+	-\frac{1}{\alpha} E^k & -\alpha \epsilon^{tklc} B_c
+}
+\pmatrix{-\alpha^2 + \beta^2 & \beta_j \\ \beta_l & \gamma_{lj}}$<br>
+$F_{ab} = \pmatrix{
+	-\frac{1}{\alpha} \beta_k E^k & 
+	\frac{1}{\alpha} (-\alpha^2 + \beta^2) E^l - \alpha \beta_k \epsilon^{tklc} B_c 
+	\\
+	-\frac{1}{\alpha} E_i & 
+	\frac{1}{\alpha} \beta_i E^l - \alpha \epsilon^{tklc} \gamma_{ik} B_c
+} \pmatrix{
+	-\alpha^2 + \beta^2 & \beta_j \\ 
+	\beta_l & \gamma_{lj}
+}$<br>
+
+$F_{ab} = \pmatrix{
+	(-\alpha^2 + \beta^2) (-\frac{1}{\alpha} \beta_k E^k)
+	+ \beta_l (\frac{1}{\alpha} (-\alpha^2 + \beta^2) E^l - \alpha \beta_k \epsilon^{tklc} B_c)
+	& 
+	\beta_j (-\frac{1}{\alpha} \beta_k E^k)
+	+ \gamma_{lj} (\frac{1}{\alpha} (-\alpha^2 + \beta^2) E^l - \alpha \beta_k \epsilon^{tklc} B_c) 
+	\\
+	(-\alpha^2 + \beta^2) (-\frac{1}{\alpha} E_i)
+	+ \beta_l (\frac{1}{\alpha} \beta_i E^l - \alpha \epsilon^{tklc} \gamma_{ik} B_c)
+	&	
+	\beta_j (-\frac{1}{\alpha} E_i)
+	+ \gamma_{lj} (\frac{1}{\alpha} \beta_i E^l - \alpha \epsilon^{tklc} \gamma_{ik} B_c)
+}$<br>
+
+$F_{ab} = \pmatrix{
+	0 & 
+	- (
+		\alpha E_j
+		- \frac{1}{\alpha} \beta^2 E_j
+		+ \frac{1}{\alpha} \beta_j \beta^k E_k
+		- \alpha \gamma_{kj} \beta_l \epsilon^{tklc} B_c
+	)
+	\\
+	\alpha E_i
+	- \frac{1}{\alpha} \beta^2 E_i
+	+ \frac{1}{\alpha} \beta_i \beta^k E_k
+	- \alpha \gamma_{ik} \beta_l \epsilon^{tklc} B_c
+	&	
+	\frac{1}{\alpha} \beta_i E_j 
+	- \frac{1}{\alpha} \beta_j E_i
+	- \alpha \gamma_{ik} \gamma_{jl} \epsilon^{tklc} B_c
+}$<br>
+$F_{ab} = \frac{1}{\alpha} \pmatrix{
+	0 & 
+	- (
+		-g_{tt} E_j
+		+ \beta_j \beta^k E_k
+		- \alpha^2 \gamma_{jk} \beta_l \epsilon^{tklc} B_c
+	)
+	\\
+	-g_{tt} E_i
+	+ \beta_i \beta^k E_k
+	- \alpha^2 \gamma_{ik} \beta_l \epsilon^{tklc} B_c
+	&	
+	\beta_i E_j 
+	- \beta_j E_i
+	- \alpha^2 \gamma_{ik} \gamma_{jl} \epsilon^{tklc} B_c
+}$<br>
+
+<br>
+
 <hr>
+<b>electromagnetic stress-energy in vacuum:</b><br>
 $T_{uv} = \frac{1}{4\pi} (F_{ua} {F_v}^a - \frac{1}{4} g_{uv} F_{ab} F^{ab})$, in Gaussian units<br>
 $T_{uv} = \downarrow u \overset{\rightarrow v}{\pmatrix{
 	\frac{1}{2} (\epsilon_0 E^2 + \frac{1}{\mu_0} B^2) & \frac{1}{c \mu_0} {\bar\epsilon_i}^{jk} E_j B_k \\
@@ -92,8 +214,8 @@ Let $(A_{uv})^{TF} = A_{uv} - \frac{1}{n} g_{uv} {A^a}_a$ be the trace-free elem
 ${T^u}_v = -\frac{1}{4\pi} ({(F^2)^u}_v)^{TF}$<br>
 <br>
 
-Einstein Field Equations of electromagnetic stress-energy in vacuum:<br>
 <hr>
+<b>Einstein Field Equations of electromagnetic stress-energy in vacuum:</b><br>
 ${G^u}_v = 8 \pi {T^u}_v$<br>
 ${G^u}_v = -2 ({(F^2)^u}_v)^{TF}$<br>
 Notice, $G_{uv}$ is the trace-reversal of $R_{uv}$, so $G_{uv} = R_{uv} - \frac{2}{n} g_{uv} {R^a}_a$<br> 
@@ -102,8 +224,8 @@ Therefore if $T_{uv}$ is trace-free, so is $G_{uv}$, and so is $R_{uv}$ such tha
 ${R^u}_v = -2 ({(F^2)^u}_v)^{TF}$<br>
 <br>
 
-Einstein Field Equations of electromagnetic stress-energy in vacuum, in normal coordinates:<br>
 <hr>
+<b>Einstein Field Equations of electromagnetic stress-energy in vacuum, in normal coordinates:</b><br>
 $R_{uv} = {R^a}_{uav}$<br>
 ${R^a}_{bcd} = 2 ({\Gamma^a}_{b[d,c]} + {\Gamma^a}_{e[c} {\Gamma^e}_{d]b})$ in a holonomic, torsion-free coordinate system.<br>
 For normal coordinates, let $g_{ab,c} = 0$, so ${\Gamma^a}_{bc} = 0$<br>
@@ -120,11 +242,55 @@ $\frac{1}{2} g^{ab} g_{pq,rs} (
 	- \delta^p_a \delta^q_b \delta^r_u \delta^s_v 
 	- \delta^p_u \delta^q_v \delta^r_a \delta^s_b
 	+ \delta^p_u \delta^q_a \delta^r_b \delta^s_v
-) = -2 (F^2)_{ab} (\delta^a_u \delta^b_v - \frac{1}{4} g_{uv} g^{ab})$<br>
+) = -2 (F^2)_{ps} (\delta^p_u \delta^s_v - \frac{1}{4} g_{uv} g^{ps})$<br>
+...using $(F^2)_{ab} = F_{au} g^{uv} F_{vb} = (-F_{ua}) g^{uv} (-F_{bv}) = F_{bv} g^{vu} F_{ua} = F_{bu} g^{uv} F_{va} = (F^2)_{ba}$...<br>
+$\frac{1}{2} g_{pq,rs} (
+	g^{qr} (
+		\delta^p_v \delta^s_u 
+		+ \delta^p_u \delta^s_v
+	)
+	- g^{pq} \delta^r_u \delta^s_v 
+	- g^{rs} \delta^p_u \delta^q_v
+) = -2 F_{pq} F_{rs} (
+	\frac{1}{2} g^{qr} (
+		\delta^p_u \delta^s_v
+		+ \delta^p_v \delta^s_u
+	)
+	- \frac{1}{4} g^{qr} g_{uv} g^{ps})
+$<br>
+$g_{pq,rs} \cdot \frac{1}{2} g^{qr} (
+	\delta^p_v \delta^s_u 
+	+ \delta^p_u \delta^s_v
+)
+- \frac{1}{2} g_{pq,rs} (
+	g^{pq} \delta^r_u \delta^s_v 
+	+ g^{rs} \delta^p_u \delta^q_v
+) = (-2 F_{pr} F_{qs}) \cdot
+	\frac{1}{2} g^{qr} (
+		\delta^p_u \delta^s_v
+		+ \delta^p_v \delta^s_u
+	)
+	- (-2 F_{pr} F_{qs}) \frac{1}{4} g^{qr} g_{uv} g^{ps}
+$<br>
+Let $g_{pq,rs} = -2 F_{pr} F_{qs}$<br>
+Then, on the left, $g_{pq,rs} g^{pq} = -2 g^{pq} F_{pr} F_{qs} = 2 F_{rp} g^{pq} F_{qs} = 2 (F^2)_{rs}$<br>
+And $g_{pq,rs} g^{rs} = -2 g^{rs} F_{pr} F_{qs} = 2 F_{pr} g^{rs} F_{sq} = 2 (F^2)_{pq}$<br>
+And $-\frac{1}{2} g_{pq,rs} (
+	g^{pq} \delta^r_u \delta^s_v 
+	+ g^{rs} \delta^p_u \delta^q_v
+) = -\frac{1}{2} (
+	2 (F^2)_{rs} \delta^r_u \delta^s_v 
+	+ 2 (F^2)_{pq} \delta^p_u \delta^q_v
+) = - 2 (F^2)_{uv}$<br>
+And, on the right, $- (-2 F_{pr} F_{qs}) \frac{1}{4} g^{qr} g_{uv} g^{ps}
+	= \frac{1}{2} {(F^2)^a}_a g_{uv}$<br>
+And if $g_{uv,ab} = -2 F_{ua} F_{bv}$<br>
+So if $g_{uv} = -(F^2)_{uv} = -F_{ua} g^{ab} F_{bv}$<br>
+Then Tada! ...but in that case we get $g_{uv} = -g_{uv}$... nevermind.<br>
 <br>
 
-electromagnetism in medium:<br>
 <hr>
+<b>electromagnetism in medium:</b><br>
 (from <a href='https://en.wikipedia.org/wiki/Covariant_formulation_of_classical_electromagnetism'>https://en.wikipedia.org/wiki/Covariant_formulation_of_classical_electromagnetism</a>, but adjusting sign convention)<br>
 Let $D^i = \epsilon_0 E^i + P^i$<br>
 Let $H_i = \frac{1}{\mu_0} B_i - M_i$<br>
@@ -147,25 +313,35 @@ ${(J^u)_{bound}}_{,u} = 0$<br>
 ${(J^u)_{free}}_{,u} = 0$<br>
 <br>
 
-electromagnetic stress-energy in medium:<br>
-<hr>
-$T_{uv} = \frac{1}{4\pi} (F_{ua} {D_v}^a - \frac{1}{4} g_{uv} F_{ab} D^{ab})$<br>
-${T^u}_v = -\frac{1}{4\pi} ({F^u}_a {D^a}_v)^{TF}$<br>
-(The $\frac{1}{4\pi}$ should go away when using SI units)<br>
-<br>
-
-more from Wikipedia:<br>
-<hr>
 $J^a = {J^a}_{free} + {J^a}_{bound}$<br>
 ${J^a}_{free} = \pmatrix{ c \rho_{free} \\ {J^i}_{free} } = \pmatrix{ c {D^j}_{,j} \\ -{D^i}_{,t} + \bar\epsilon^{ijk} H_{k,j} }$<br>
 ${J^a}_{bound} = \pmatrix{ c \rho_{bound} \\ {J^i}_{bound} } = \pmatrix{ -c {P^j}_{,j} \\ {P^i}_{,t} + \bar\epsilon^{ijk} M_{k,j} }$<br>
 <br>
 
-Linear non-dispersive materials:<br>
 <hr>
+<b>electromagnetic stress-energy in medium:</b><br>
+$T_{uv} = \frac{1}{4\pi} (F_{ua} {D_v}^a - \frac{1}{4} g_{uv} F_{ab} D^{ab})$<br>
+${T^u}_v = -\frac{1}{4\pi} ({F^u}_a {D^a}_v)^{TF}$<br>
+(The $\frac{1}{4\pi}$ should go away when using SI units)<br>
+${F^u}_v = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{ 
+	0 & \frac{1}{c} E_j \\ 
+	\frac{1}{c} E_i & {\bar\epsilon_{ij}}^k B_k
+}}$<br>
+${D^u}_v = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{ 
+	0 & c D_j \\ 
+	c D_i & {\bar\epsilon_{ij}}^k H_k
+}}$<br>
+${F^u}_a {D^a}_v = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
+	
+}}$<br>
+<br>
+
+<hr>
+<b>Linear non-dispersive materials:</b><br>
 ${J^i}_{free} = \sigma E^i$<br>
 $P^i = \epsilon_0 \chi_e E^i$<br>
 $M_i = \chi_m H_i$<br>
+<br>
 Notice, when $\chi$'s are just scalars, we get this:<br>
 $D^{uv} u_v = c^2 \epsilon F^{uv} u_v$, where $\epsilon = \epsilon_0 (1 + \chi_e)$<br>
 $\star D^{uv} u_v = \frac{1}{\mu} \star F^{uv} u_v$, where $\mu = \mu_0 (1 + \chi_m)$<br>
