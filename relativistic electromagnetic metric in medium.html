@@ -227,10 +227,6 @@ So $\mathcal{E}_i = -A_{i,t} + \frac{1}{c} \phi_{,i}$<br>
 <hr>
 <b>electromagnetic stress-energy in vacuum:</b><br>
 $T_{uv} = \frac{1}{4\pi} (F_{ua} {F_v}^a - \frac{1}{4} g_{uv} F_{ab} F^{ab})$, in Gaussian units<br>
-$T_{uv} = \downarrow u \overset{\rightarrow v}{\pmatrix{
-	\frac{1}{2} (\epsilon_0 E^2 + \frac{1}{\mu_0} B^2) & \frac{1}{c \mu_0} {\bar\epsilon_i}^{jk} E_j B_k \\
-	\frac{1}{c \mu_0} {\bar\epsilon_i}^{jk} E_j B_k & \frac{1}{2} \eta_{ij} (\epsilon_0 E^2 + \frac{1}{\mu_0} B^2) - \epsilon_0 E_i E_j - \frac{1}{\mu_0} B_i B_j
-}}$ in flat space, with SI units<br>
 as a trace-free operation:<br>
 ${T^u}_v = -\frac{1}{4\pi} ({F^u}_a {F_a}^v - \frac{1}{4} \delta^u_v {F^a}_b {F^b}_a)$<br>
 Let ${(F^2)^u}_v = {F^u}_a {F^a}_v$<br>
@@ -238,6 +234,57 @@ ${T^u}_v = -\frac{1}{4\pi} ({(F^2)^u}_v - \frac{1}{4} \delta^u_v {(F^2)^a}_a)$<b
 Let $(A_{uv})^{TF} = A_{uv} - \frac{1}{n} g_{uv} {A^a}_a$ be the trace-free element of $A_{uv}$, where $n = $ the dimension, such that ${(A^{TF})^a}_a = 0$<br>
 ${T^u}_v = -\frac{1}{4\pi} ({(F^2)^u}_v)^{TF}$<br>
 <br>
+
+in special relativity:<br>
+${F^a}_b = \eta^{ac} F_{cb} = \downarrow a(i) \overset{\rightarrow b(j)}{\pmatrix{ 
+	0 & \frac{1}{c} E_j \\ 
+	\frac{1}{c} E_i & {\bar\epsilon_{ij}}^k B_k
+}}$<br>
+${(F^2)^a}_b = {F^a}_c {F^c}_b = \downarrow a(i) \overset{\rightarrow b(j)}{\pmatrix{ 
+	\frac{1}{c^2} E^2 & 
+	\frac{1}{c} \bar\epsilon_{kjl} E_k B_l 
+	\\
+	\frac{1}{c} \bar\epsilon_{ikl} E_k B_l &
+	\frac{1}{c^2} E_i E_j + \bar\epsilon_{ikl} \bar\epsilon_{kjm} B_l B_m
+}} = \downarrow a(i) \overset{\rightarrow b(j)}{\pmatrix{
+	\frac{1}{c^2} E^2 & 
+	-\frac{1}{c} \bar\epsilon_{jkl} E_k B_l 
+	\\
+	\frac{1}{c} \bar\epsilon_{ikl} E_k B_l &
+	\frac{1}{c^2} E_i E_j + B_i B_j - \delta^i_j B^2
+}}$<br>
+<br>
+$tr F^2 = {(F^2)^a}_a = {F^a}_b {F^b}_a = 2 (\frac{1}{c^2} E^2 - B^2)$<br>
+${((F^2)^{TF})^a}_b = {(F^2)^a}_b - \frac{1}{4} \delta^a_b tr(F^2) 
+= \downarrow a(i) \overset{\rightarrow b(j)}{\pmatrix{ 
+	\frac{1}{2} (\frac{1}{c^2} E^2 + B^2) & 
+	-\frac{1}{c} \bar\epsilon_{jkl} E_k B_l 
+	\\
+	\frac{1}{c} \bar\epsilon_{ikl} E_k B_l &
+	\frac{1}{c^2} E_i E_j + B_i B_j 
+	-\delta^i_j \frac{1}{2} (\frac{1}{c^2} E^2 + B^2)
+}}$<br>
+${T^a}_b = -\frac{1}{\mu_0} {((F^2)^{TF})^a}_b 
+= \pmatrix{
+	-\frac{1}{2} (\epsilon_0 E^2 + \frac{1}{\mu_0} B^2) & 
+	\frac{1}{\mu_0} \frac{1}{c} \bar\epsilon_{jkl} E_k B_l 
+	\\
+	-\frac{1}{\mu_0} \frac{1}{c} \bar\epsilon_{ikl} E_k B_l &
+	\delta^i_j \frac{1}{2} (\epsilon_0 E^2 + \frac{1}{\mu_0} B^2)
+	- \epsilon_0 E_i E_j 
+	- \frac{1}{\mu_0} B_i B_j 
+}$<br>
+$T^{ab} = {T^a}_c \eta^{cb} = \pmatrix{
+	\frac{1}{2} (\epsilon_0 E^2 + \frac{1}{\mu_0} B^2) & 
+	\frac{1}{\mu_0} \frac{1}{c} \bar\epsilon_{jkl} E_k B_l 
+	\\
+	\frac{1}{\mu_0} \frac{1}{c} \bar\epsilon_{ikl} E_k B_l &
+	\eta^{ij} \frac{1}{2} (\epsilon_0 E^2 + \frac{1}{\mu_0} B^2)
+	- \epsilon_0 E_i E_j 
+	- \frac{1}{\mu_0} B_i B_j 
+}$<br>
+<br>
+
 
 <hr>
 <b>Einstein Field Equations of electromagnetic stress-energy in vacuum:</b><br>
@@ -319,13 +366,37 @@ Then Tada! ...but in that case we get $g_{uv} = -g_{uv}$... nevermind.<br>
 Let $D^i = \epsilon_0 E^i + P^i$<br>
 Let $H_i = \frac{1}{\mu_0} B_i - M_i$<br>
 
+$P^i = \epsilon_0 \chi_e E^i$<br>
+For $\chi_e = $ material's electric volume susceptibillity.<br>
+$M_i = \chi_m H_i$<br>
+For $\chi_m =$ material's magnetic volume susceptibillity.<br>
+$D^i = \epsilon_0 E^i + P^i = \epsilon_0 (1 + \chi_e) E^i = \epsilon E^i$<br>
+For $\epsilon = $ electric permittivity<br>
+$H_i = \frac{1}{\mu_0} B_i - \chi_m H_i$<br>
+$\mu_0 (1 + \chi_m) H_i = B_i$<br>
+$\mu H_i = B_i$<br>
+For $\mu = $ magnetic permeability<br>
+Notice that $\chi_e, \chi_m, \epsilon, \mu$ are operators, not necessarily scalars, not necessarily real<br>
+<br>
+
 $\frac{1}{\mu_0} F_{ab} = \downarrow a(i) \overset{\rightarrow b(j)}{\pmatrix{
 	0 & -\epsilon_0 c E_j \\
 	\epsilon_0 c E_i & \frac{1}{\mu_0} {\bar\epsilon_{ij}}^k B_k
 }}$<br>
-Let $M_{uv} = \pmatrix{ 0 & c P_j \\ -c P_i & {\bar\epsilon_{ij}}^k M_k}$<br>
-Let $D_{uv} = \pmatrix{ 0 & -c D_j \\ c D_i & {\bar\epsilon_{ij}}^k H_k}$<br>
+Let $M_{uv} = \pmatrix{ 0 & c P_j \\ -c P_i & {\bar\epsilon_{ij}}^k M_k} = \pmatrix{
+	0 & c \epsilon_0 \chi_e E_j \\
+	-c \epsilon_0 \chi_e E_i & {\bar\epsilon_{ij}}^k \chi_m \mu^{-1} B_k
+}$<br>
+Let $D_{uv} = \pmatrix{ 0 & -c D_j \\ c D_i & {\bar\epsilon_{ij}}^k H_k} = \pmatrix{
+	0 & -c \epsilon E_j \\
+	c \epsilon E_i & {\bar\epsilon_{ij}}^k \mu^{-1} B_k
+}$<br>
 So $D_{uv} = \frac{1}{\mu_0} F_{uv} - M_{uv}$<br>
+<br>
+
+Notice, when $\chi$'s are just scalars, we get this:<br>
+$D^{uv} u_v = c^2 \epsilon F^{uv} u_v$<br>
+$\star D^{uv} u_v = \frac{1}{\mu} \star F^{uv} u_v$<br>
 <br>
 
 check units on these:<br>
@@ -341,6 +412,11 @@ $J^a = {J^a}_{free} + {J^a}_{bound}$<br>
 ${J^a}_{free} = \pmatrix{ c \rho_{free} \\ {J^i}_{free} } = \pmatrix{ c {D^j}_{,j} \\ -{D^i}_{,t} + \bar\epsilon^{ijk} H_{k,j} }$<br>
 ${J^a}_{bound} = \pmatrix{ c \rho_{bound} \\ {J^i}_{bound} } = \pmatrix{ -c {P^j}_{,j} \\ {P^i}_{,t} + \bar\epsilon^{ijk} M_{k,j} }$<br>
 <br>
+
+For linear susceptibility:<br>
+${J^i}_{free} = \sigma E^i$<br>
+<br>
+
 
 <hr>
 <b>special relativity electromagnetic stress-energy in medium:</b><br>
@@ -361,23 +437,64 @@ ${F^u}_a {D^a}_v = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
 	c {\bar\epsilon_{ik}}^l D^k B_l &
 	E_k D^k + {\bar\epsilon_{ik}}^l B_l {\bar\epsilon_{kj}}^m H_m
 }}$<br>
+${F^u}_a {D^a}_v = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
+	E_k \epsilon E^k &
+	-\frac{1}{c} {\bar\epsilon_{jk}}^l E_k \mu^{-1} B_l \\
+	c {\bar\epsilon_{ik}}^l \epsilon E^k B_l &
+	E_j \epsilon E^i + B_j \mu^{-1} B_i - \delta^i_j B_m \mu^{-1} B_m 
+}}$<br>
+Let $v_p$ be the phase velocity of light such that $v_p \le c, \frac{1}{(v_p)^2} = \mu \epsilon$<br>
+$tr (F \cdot D) = 2 (E_k \epsilon E^k - B_k \mu^{-1} B^k)$<br>
+$({F^u}_a {D^a}_v)^{TF} = {F^u}_a {D^a}_v - \frac{1}{4} \delta^u_v {F^b}_a {D^a}_b$<br>
+$= \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
+	\frac{1}{2} (E_k \epsilon E^k + B_k \mu^{-1} B^k) &
+	-\frac{1}{c} {\bar\epsilon_{jk}}^l E_k \mu^{-1} B_l \\
+	c {\bar\epsilon_{ik}}^l \epsilon E^k B_l &
+	E_j \epsilon E^i + B_j \mu^{-1} B_i - \frac{1}{2} \delta^i_j (E_k \epsilon E^k + B_k \mu^{-1} B^k) 
+}}$<br>
+${T^u}_v = -{((F \cdot D)^{TF})^u}_v = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
+	-\frac{1}{2} (E_k \epsilon E^k + B_k \mu^{-1} B^k) &
+	\frac{1}{c} {\bar\epsilon_{jk}}^l E_k \mu^{-1} B_l \\
+	-c {\bar\epsilon_{ik}}^l \epsilon E^k B_l &
+	\frac{1}{2} \delta^i_j (E_k \epsilon E^k + B_k \mu^{-1} B^k) - E_j \epsilon E^i - B_j \mu^{-1} B_i
+}}$<br>
+$T^{uv} = -{((F \cdot D)^{TF})^u}_v = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
+	\frac{1}{2} (E_k \epsilon E^k + B_k \mu^{-1} B^k) &
+	\frac{1}{c} {\bar\epsilon_{jk}}^l E_k \mu^{-1} B_l \\
+	c {\bar\epsilon_{ik}}^l \epsilon E^k B_l &
+	\frac{1}{2} \eta^{ij} (E_k \epsilon E^k + B_k \mu^{-1} B^k) - E_j \epsilon E^i - B_j \mu^{-1} B_i
+}}$<br>
+Notice that $D_{uv} = \frac{1}{\mu_0} F_{uv} - M_{uv}$<br>
+In the case that $M_{uv} = 0$ we find the vacuum stress-energy tensor, which is symmetric.<br>
 <br>
-
+What is the antisymmetric components of $T^{uv}$, assuming that $\epsilon$ and $\mu$ are scalars?<br>
+$T^{uv} = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
+	\frac{1}{2} (\epsilon E^2 + \frac{1}{\mu} B^2) &
+	\frac{1}{c \mu} \bar\epsilon_{jkl} E_k B_l \\
+	c \epsilon \bar\epsilon_{ikl} E_k B_l &
+	\frac{1}{2} \eta^{ij} (\epsilon E^2 + \frac{1}{\mu} B^2) - \epsilon E^i E^j - \frac{1}{\mu} B^i B^j
+}}$<br>
+$T^{uv} - T^{uv}_{vacuum} = \pmatrix{
+	\frac{1}{2} (\epsilon_0 (1 + \chi_e) E^2 + \frac{1}{\mu_0 (1 + \chi_m)} B^2) &
+	\frac{1}{c \mu_0 (1 + \chi_m)} \bar\epsilon_{jkl} E_k B_l \\
+	c \epsilon_0 (1 + \chi_e) \bar\epsilon_{ikl} E_k B_l &
+	\frac{1}{2} \eta^{ij} (\epsilon_0 (1 + \chi_e) E^2 + \frac{1}{\mu_0 (1 + \chi_m)} B^2) - \epsilon_0 (1 + \chi_e) E^i E^j - \frac{1}{\mu_0 (1 + \chi_m)} B^i B^j
+}$ $- \pmatrix{
+	\frac{1}{2} (\epsilon_0 E^2 + \frac{1}{\mu_0} B^2) &
+	\frac{1}{c \mu_0} \bar\epsilon_{jkl} E_k B_l \\
+	c \epsilon_0 \bar\epsilon_{ikl} E_k B_l &
+	\frac{1}{2} \eta^{ij} (\epsilon_0 E^2 + \frac{1}{\mu_0} B^2) - \epsilon_0 E^i E^j - \frac{1}{\mu_0} B^i B^j
+}$<br>
+$= \pmatrix{
+	\frac{1}{2} (\epsilon_0 \chi_e E^2 - \frac{\chi_m}{\mu} B^2) & 
+	-\frac{1}{c} \frac{\chi_m}{\mu} \bar\epsilon_{jkl} E_k B_l \\
+	-\frac{1}{c} \frac{\chi_m}{\mu} \bar\epsilon_{ikl} E_k B_l &
+	\frac{1}{2} (\epsilon_0 \chi_e E^2 - \frac{\chi_m}{\mu} B^2) - \epsilon_0 \chi_e E^i E^j + \frac{\chi_m}{\mu} B^i B^j
+}$<br>
+This is still symmetric.  So for scalar $\epsilon, \mu$ we still have a symmetric stress-energy tensor, which means no spacetime torsion.<br>
 <hr>
-<b>Linear non-dispersive materials:</b><br>
-${J^i}_{free} = \sigma E^i$<br>
-$P^i = \epsilon_0 \chi_e E^i$<br>
-$M_i = \chi_m H_i$<br>
-$D^i = \epsilon_0 E^i + P^i = \epsilon_0 (1 + \chi_e) E^i$<br>
-$H_i = \frac{1}{\mu_0} B_i - \chi_m H_i$<br>
-$\mu_0 (1 + \chi_m) H_i = B_i$<br>
-<br>
-Notice, when $\chi$'s are just scalars, we get this:<br>
-$D^{uv} u_v = c^2 \epsilon F^{uv} u_v$, where $\epsilon = \epsilon_0 (1 + \chi_e)$<br>
-$\star D^{uv} u_v = \frac{1}{\mu} \star F^{uv} u_v$, where $\mu = \mu_0 (1 + \chi_m)$<br>
-<br>
-
-Tensor susceptibility: (from <a href='https://en.wikipedia.org/wiki/Magnetic_susceptibility'>https://en.wikipedia.org/wiki/Magnetic_susceptibility</a>)<br>
+<b>Tensor susceptibility:</b> 
+(from <a href='https://en.wikipedia.org/wiki/Magnetic_susceptibility'>https://en.wikipedia.org/wiki/Magnetic_susceptibility</a>)<br>
 $P^i = \epsilon_0 {(\chi_e)^i}_j E^j$<br>
 $M_i = {(\chi_m)_i}^j H_j$ ... non-scalar in crystals, nonlinear in ferromagnetic crystals, complex in terms of AC fields<br>
 $D^i = \epsilon_0 E^i + P^i = \epsilon_0 (\delta^i_j + {(\chi_e)^i}_j) E^j$<br>
@@ -423,8 +540,17 @@ ${F^a}_c {D^c}_b =
 $<br>
 
 <br>	
-<br>	
-<br>	
+Sources:<br>
+Misner, Throne, Wheeler 1973<br>
+Baumgarte &amp; Shapiro, 2010<br>
+That one Alcubierre et al paper on charged black holes<br>
+Tajmar and DeMatos' paper<br>
+A few wiki pages:<br>
+<a href="https://en.wikipedia.org/wiki/Covariant_formulation_of_classical_electromagnetism">https://en.wikipedia.org/wiki/Covariant_formulation_of_classical_electromagnetism</a><br>
+<a href="https://en.wikipedia.org/wiki/Electromagnetic_tensor">https://en.wikipedia.org/wiki/Electromagnetic_tensor</a><br>
+<a href="https://en.wikipedia.org/wiki/Maxwell%27s_equations">https://en.wikipedia.org/wiki/Maxwell%27s_equations</a><br>
+<a href="https://en.wikipedia.org/wiki/Magnetic_susceptibility">https://en.wikipedia.org/wiki/Magnetic_susceptibility</a><br>
+<a href="https://en.wikipedia.org/wiki/Electric_susceptibility">https://en.wikipedia.org/wiki/Electric_susceptibility</a><br>
 <br>	
 	</body>
 </html>
