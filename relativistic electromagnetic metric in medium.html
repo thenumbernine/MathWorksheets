@@ -9,10 +9,15 @@
 
 Let $\eta_{ab} = diag(-1,1,1,1)$<br>
 Let $\epsilon_{abcd} = \sqrt{|g|} [abcd]$<br>
-Let $[abcd] = \bar\epsilon_{ijk}$ = the completely antisymmetric symbol.<br>
-Let $(\star F)_{ab} = \frac{1}{2} F_{uv} {\epsilon^{uv}}_{ab} $<br>
-I'm going to raise/lower $\bar\epsilon_{ijk}$ by $\eta_{ij}$<br>
-$\partial_u = (\frac{1}{c} \partial_t, \partial_i)$<br>
+Let $[abcd] = \bar\epsilon_{abcd}$ = the completely antisymmetric symbol.<br>
+I'm going $\bar\epsilon_{ijk}$ by $\eta_{ij}$<br>
+$\epsilon_{abcd} = \sqrt{|g|} [abcd] = \sqrt{|g|} \bar\epsilon_{abcd} $ is the spacetime Levi-Civita permutation tensor<br> 
+So $\epsilon_{tijk} = \alpha \sqrt\gamma \bar\epsilon_{tijk} = \alpha \sqrt\gamma \bar\epsilon_{ijk}$<br>
+$\epsilon_{ijk} = \sqrt\gamma [ijk] = \sqrt\gamma \bar\epsilon_{ijk}$ is the spatial Levi-Civita permutation tensor<br>
+So $\epsilon_{tijk} = \alpha \epsilon_{ijk}$<br>
+<br>
+Define the Hodge dual as $(\star F)_{ab} = \frac{1}{2} F_{uv} {\epsilon^{uv}}_{ab} $<br>
+$\partial_u T = T_{,u} = (\frac{1}{c} \partial_t, \partial_i) T$<br>
 $\frac{1}{c^2} = \mu_0 \epsilon_0$<br>
 $\vec\nabla \cdot \vec{V} = {V^i}_{,i}$<br>
 $\vec\nabla \times \vec{V} = \bar\epsilon^{ijk} V_{k,j}$<br>
@@ -54,36 +59,6 @@ ${B^j}_{,j} = 0$<br>
 $B_{i,t} + {\bar\epsilon_i}^{jk} E_{k,j} = 0$<br>
 <br>
 
-<hr>
-<b>Faraday tensor as 2-form (works in flat or curved coordinates):</b><br>
-$A^u = \pmatrix{\frac{1}{c} \phi \\ A^i}$<br>
-$F_{ab} = 2 \partial_{[a} A_{b]} = 2 \nabla_{[a} A_{b]}$ (notice the connections cancel)<br>
-$F = dA$<br>
-$F = F_{ab} dx^a \wedge dx^b = \partial_b dx^b \wedge (A_a dx^a) = 2 \partial_{[a} A_{b]} dx^a \wedge dx^b$<br>
-$d F = d (dA) = 0$<br>
-$d \star F = \star J$, $\nabla \cdot F = J$<br>
-<br>
-$F = F_{ti} dt \wedge dx^i + \frac{1}{2} F_{ij} dx^i \wedge dx^j$<br> 
-$F = E \wedge dt + \star (B \wedge dt)$ ... but no promises that this E and B match up, might be shifted around...<br>
-Then $\star (F \wedge \star F) = F_{ab} F^{ab}$ (TODO show this)<br>
-and $F \wedge F = F_{ac} {F_b}^c$ (TODO show this too)<br>
-and $T = \frac{1}{4\pi} (F \wedge F + F \wedge * F)$ (TODO check)<br>
-$T = \frac{1}{4\pi} F \wedge (F + *F)$ (TODO check)<br>
-<br>
-
-In component form, with a distinct time coordinate:<br>
-$F_{ab} = \pmatrix{
-	0 & F_{tj} \\ 
-	F_{it} & F_{ij}
-} = \pmatrix{
-	0 & 2 \partial_{[t} A_{j]} \\
-	2 \partial_{[i} A_{t]} & 2 \partial_{[i} A_{j]}
-} = \pmatrix{
-	0 & \partial_t A_j - \frac{1}{c} \partial_j \phi \\
-	-\partial_t A_i + \frac{1}{c} \partial_i \phi & \partial_i A_j - \partial_j A_i
-}$<br>
-<br>
-
 
 <hr>
 <b>ADM metric:</b><br>
@@ -102,7 +77,8 @@ $n^u = \downarrow u(i)\pmatrix{ 1/\alpha \\ -\beta^i/\alpha}$<br>
 <br>
 notice: $n_u n^u = -1$<br>
 <br>
-
+In ADM, $\epsilon^{tabc} u_a v_b w_c = \epsilon^{tijk} u_i v_j w_k$ since $\epsilon^{ttab} = 0$, since it is totally antisymmetric<br>
+<br>
 
 
 <hr>
@@ -121,12 +97,12 @@ so $E_i = g_{ia} E^a = g_{ij} E^j$ and $E_t = \beta^j E_j$<br>
 <br>
 
 Now $n_d \epsilon^{dabc} = n_t \epsilon^{tabc} = -\alpha \epsilon^{tabc}$<br>
-$F^{ij} = n_d \epsilon^{dijc} B_c = -\alpha \epsilon^{tijc} B_c$<br>
+$F^{ij} = n_d \epsilon^{dijc} B_c = -\alpha \epsilon^{tijk} B_k$<br>
 <br>
 
 $F^{ab} = \downarrow a(i) \overset{\rightarrow b(j)}{\pmatrix{
 	0 & \frac{1}{\alpha} E^j \\
-	-\frac{1}{\alpha} E^i & -\alpha \epsilon^{tijc} B_c
+	-\frac{1}{\alpha} E^i & -\alpha \epsilon^{tijk} B_k
 }}$<br>
 
 
@@ -134,15 +110,15 @@ $F_{ab} = g_{au} F^{uv} g_{vb} =
 \pmatrix{-\alpha^2 + \beta^2 & \beta_k \\ \beta_i & \gamma_{ik}}
 \pmatrix{
 	0 & \frac{1}{\alpha} E^l \\
-	-\frac{1}{\alpha} E^k & -\alpha \epsilon^{tklc} B_c
+	-\frac{1}{\alpha} E^k & -\alpha \epsilon^{tklm} B_m
 }
 \pmatrix{-\alpha^2 + \beta^2 & \beta_j \\ \beta_l & \gamma_{lj}}$<br>
 $F_{ab} = \pmatrix{
 	-\frac{1}{\alpha} \beta_k E^k & 
-	\frac{1}{\alpha} (-\alpha^2 + \beta^2) E^l - \alpha \beta_k \epsilon^{tklc} B_c 
+	\frac{1}{\alpha} (-\alpha^2 + \beta^2) E^l - \alpha \beta_k \epsilon^{tklm} B_m 
 	\\
 	-\frac{1}{\alpha} E_i & 
-	\frac{1}{\alpha} \beta_i E^l - \alpha \epsilon^{tklc} \gamma_{ik} B_c
+	\frac{1}{\alpha} \beta_i E^l - \alpha \gamma_{ik} \epsilon^{tklm} B_m
 } \pmatrix{
 	-\alpha^2 + \beta^2 & \beta_j \\ 
 	\beta_l & \gamma_{lj}
@@ -150,16 +126,16 @@ $F_{ab} = \pmatrix{
 
 $F_{ab} = \pmatrix{
 	(-\alpha^2 + \beta^2) (-\frac{1}{\alpha} \beta_k E^k)
-	+ \beta_l (\frac{1}{\alpha} (-\alpha^2 + \beta^2) E^l - \alpha \beta_k \epsilon^{tklc} B_c)
+	+ \beta_l (\frac{1}{\alpha} (-\alpha^2 + \beta^2) E^l - \alpha \beta_k \epsilon^{tklm} B_m)
 	& 
 	\beta_j (-\frac{1}{\alpha} \beta_k E^k)
-	+ \gamma_{lj} (\frac{1}{\alpha} (-\alpha^2 + \beta^2) E^l - \alpha \beta_k \epsilon^{tklc} B_c) 
+	+ \gamma_{lj} (\frac{1}{\alpha} (-\alpha^2 + \beta^2) E^l - \alpha \beta_k \epsilon^{tklm} B_m) 
 	\\
 	(-\alpha^2 + \beta^2) (-\frac{1}{\alpha} E_i)
-	+ \beta_l (\frac{1}{\alpha} \beta_i E^l - \alpha \epsilon^{tklc} \gamma_{ik} B_c)
+	+ \beta_l (\frac{1}{\alpha} \beta_i E^l - \alpha \gamma_{ik} \epsilon^{tklm} B_m)
 	&	
 	\beta_j (-\frac{1}{\alpha} E_i)
-	+ \gamma_{lj} (\frac{1}{\alpha} \beta_i E^l - \alpha \epsilon^{tklc} \gamma_{ik} B_c)
+	+ \gamma_{lj} (\frac{1}{\alpha} \beta_i E^l - \alpha \gamma_{ik} \epsilon^{tklm} B_m)
 }$<br>
 
 $F_{ab} = \pmatrix{
@@ -168,36 +144,85 @@ $F_{ab} = \pmatrix{
 		\alpha E_j
 		- \frac{1}{\alpha} \beta^2 E_j
 		+ \frac{1}{\alpha} \beta_j \beta^k E_k
-		- \alpha \gamma_{kj} \beta_l \epsilon^{tklc} B_c
+		- \alpha \gamma_{kj} \beta_l \epsilon^{tklm} B_m
 	)
 	\\
 	\alpha E_i
 	- \frac{1}{\alpha} \beta^2 E_i
 	+ \frac{1}{\alpha} \beta_i \beta^k E_k
-	- \alpha \gamma_{ik} \beta_l \epsilon^{tklc} B_c
+	- \alpha \gamma_{ik} \beta_l \epsilon^{tklm} B_m
 	&	
 	\frac{1}{\alpha} \beta_i E_j 
 	- \frac{1}{\alpha} \beta_j E_i
-	- \alpha \gamma_{ik} \gamma_{jl} \epsilon^{tklc} B_c
+	- \alpha \gamma_{ik} \gamma_{jl} \epsilon^{tklm} B_m
 }$<br>
 $F_{ab} = \frac{1}{\alpha} \pmatrix{
 	0 & 
 	- (
 		-g_{tt} E_j
 		+ \beta_j \beta^k E_k
-		- \alpha^2 \gamma_{jk} \beta_l \epsilon^{tklc} B_c
+		- \alpha^2 \gamma_{jk} \beta_l \epsilon^{tklm} B_m
 	)
 	\\
 	-g_{tt} E_i
 	+ \beta_i \beta^k E_k
-	- \alpha^2 \gamma_{ik} \beta_l \epsilon^{tklc} B_c
+	- \alpha^2 \gamma_{ik} \beta_l \epsilon^{tklm} B_m
 	&	
 	\beta_i E_j 
 	- \beta_j E_i
-	- \alpha^2 \gamma_{ik} \gamma_{jl} \epsilon^{tklc} B_c
+	- \alpha^2 \gamma_{ik} \gamma_{jl} \epsilon^{tklm} B_m
 }$<br>
 
 <br>
+
+
+<hr>
+<b>Faraday tensor as 2-form (works in flat or curved coordinates):</b><br>
+$A^u = \pmatrix{\frac{1}{c} \phi \\ A^i}$<br>
+$F_{ab} = 2 \partial_{[a} A_{b]} = 2 \nabla_{[a} A_{b]}$ (notice the connections cancel)<br>
+$F = dA$<br>
+$F = F_{ab} dx^a \wedge dx^b = dx^b \partial_b \wedge (A_a dx^a) = 2 \partial_{[a} A_{b]} dx^a \wedge dx^b$<br>
+$d F = d (dA) = 0$<br>
+$d \star F = \star J$, $\nabla \cdot F = J$<br>
+<br>
+
+<hr>
+<b>splitting apart space and time in the differential form representation:</b><br>
+$F = F_{ti} dt \wedge dx^i + \frac{1}{2} F_{ij} dx^i \wedge dx^j$<br> 
+$F = \mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt)$.<br>
+Where $\mathcal{E} = \mathcal{E}_i dx^i$<br>
+And $\mathcal{B} = \mathcal{B}_i dx^i$<br>
+Notice that $\mathcal{E}, \mathcal{B}$ are different than $E, B$.<br>
+$F_{uv} = \pmatrix{
+	0 & -\mathcal{E}_j \\
+	\mathcal{E}_i & \star (\mathcal{B} \wedge dt)
+}$<br>
+So $\mathcal{E}_i = (\alpha^2 - \beta^2) E_i
+	+ \beta_i \beta^k E_k
+	- \alpha^2 \gamma_{ik} \beta_l \epsilon^{tklm} B_m$<br>
+$\mathcal{E}_t$ is arbitrary.<br>
+<br>
+
+Then $\star (F \wedge \star F) = F_{ab} F^{ab}$ (TODO show this)<br>
+and $F \wedge F = F_{ac} {F_b}^c$ (TODO show this too)<br>
+and $T = \frac{1}{4\pi} (F \wedge F + F \wedge * F)$ (TODO check)<br>
+$T = \frac{1}{4\pi} F \wedge (F + *F)$ (TODO check)<br>
+<br>
+
+In component form, with a distinct time coordinate:<br>
+$F_{ab} = \pmatrix{
+	0 & F_{tj} \\ 
+	F_{it} & F_{ij}
+} = \pmatrix{
+	0 & 2 \partial_{[t} A_{j]} \\
+	2 \partial_{[i} A_{t]} & 2 \partial_{[i} A_{j]}
+} = \pmatrix{
+	0 & A_{j,t} - \frac{1}{c} \phi_{,j} \\
+	-A_{i,t} + \frac{1}{c} \phi_{,i} & A_{j,i} - A_{i,j}
+}$<br>
+So $\mathcal{E}_i = -A_{i,t} + \frac{1}{c} \phi_{,i}$<br>
+<br>
+
 
 <hr>
 <b>electromagnetic stress-energy in vacuum:</b><br>
@@ -284,7 +309,6 @@ And $-\frac{1}{2} g_{pq,rs} (
 ) = - 2 (F^2)_{uv}$<br>
 And, on the right, $- (-2 F_{pr} F_{qs}) \frac{1}{4} g^{qr} g_{uv} g^{ps}
 	= \frac{1}{2} {(F^2)^a}_a g_{uv}$<br>
-And if $g_{uv,ab} = -2 F_{ua} F_{bv}$<br>
 So if $g_{uv} = -(F^2)_{uv} = -F_{ua} g^{ab} F_{bv}$<br>
 Then Tada! ...but in that case we get $g_{uv} = -g_{uv}$... nevermind.<br>
 <br>
@@ -352,6 +376,8 @@ $P^i = \epsilon_0 {(\chi_e)^i}_j E^j$<br>
 $M_i = {(\chi_m)_i}^j H_j$ ... non-scalar in crystals, nonlinear in ferromagnetic crystals, complex in terms of AC fields<br>
 $D^i = \epsilon_0 E^i + P^i = \epsilon_0 (\delta^i_j + {(\chi_e)^i}_j) E^j$<br>
 $H_i = \frac{1}{\mu_0} B_i - M_i = (\frac{1}{\mu_0} \delta_i^j - {(\chi_m)_i}^j) B^j$<br>
+Let $D^u = {\epsilon^u}_v E^v$<br>
+Let $H^u = {(\mu^{-1})^u}_v B^v$<br>
 
 $F_{uv} = \downarrow u(i) \overset{\rightarrow v(i)}{\pmatrix{ 
 	0 & -\frac{1}{c} E_j \\ 
@@ -361,5 +387,36 @@ $D_{uv} = \downarrow u(i) \overset{\rightarrow v(i)}{\pmatrix{
 	0 & -c D_j \\ 
 	c D_i & {\bar\epsilon_{ij}}^k H_k
 }}$<br>
+	
+<hr>
+<b>combining non-dispersive materials with general relativity formulation of electromagnetism:</b><br>
+$F^{ab} = \frac{1}{c} n^a E^b - \frac{1}{c} n^b E^a + n_d \epsilon^{dabc} B_c$<br>
+$D^{ab} = c n^a D^b - c n^b D^a + n_d \epsilon^{dabc} H_c$<br>
+$D^{ab} = c (n^a {\epsilon^b}_u - n^b {\epsilon^a}_u) E^u + n_d \epsilon^{dabc} {(\mu^{-1})_c}^u B_u$<br>
+${F^a}_c {D^c}_b =
+	(\frac{1}{c} (n^a E_c - n_c E^a) + n_d {\epsilon^{da}}_{ce} B^e)
+	\cdot (c (n^c D_b - n_b D^c) + n_f {\epsilon^{fc}}_{bg} H^g)
+$<br>
+${F^a}_c {D^c}_b =
+	(\frac{1}{c} (n^a E_c - n_c E^a) + n_d {\epsilon^{da}}_{ce} B^e)
+	\cdot 
+	(c (n^c \epsilon_{bu} - n_b {\epsilon^c}_u) E^u + n_f {\epsilon^{fc}}_{bh} (\mu^{-1})^{hu} B_u)
+$<br>
+${F^a}_c {D^c}_b =
+	(
+		\frac{1}{c} n^a E_c 
+		- \frac{1}{c} n_c E^a
+		+ n_d {\epsilon^{da}}_{ce} B^e
+	) (
+		c n^c \epsilon_{bu} E^u 
+		- c n_b {\epsilon^c}_u E^u 
+		+ n_f {\epsilon^{fc}}_{bh} (\mu^{-1})^{hu} B_u
+	)
+$<br>
+
+<br>	
+<br>	
+<br>	
+<br>	
 	</body>
 </html>
