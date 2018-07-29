@@ -19,8 +19,14 @@ So $\epsilon_{tijk} = \alpha \epsilon_{ijk}$<br>
 Define the Hodge dual as $(\star F)_{ab} = \frac{1}{2} F_{uv} {\epsilon^{uv}}_{ab} $<br>
 $\partial_u T = T_{,u} = (\frac{1}{c} \partial_t, \partial_i) T$<br>
 $\frac{1}{c^2} = \mu_0 \epsilon_0$<br>
+In SI units (from my 'natural units' worksheet in my symmath library):<br>
+$\epsilon_0 = \frac{10^7}{4 \pi c^2} \frac{C^2}{kg \cdot m}$<br>
+$\mu_0 = \frac{4 \pi}{10^7} \frac{kg \cdot m}{C^2}$<br>
+<br>
+
 $\vec\nabla \cdot \vec{V} = {V^i}_{,i}$<br>
-$\vec\nabla \times \vec{V} = \bar\epsilon^{ijk} V_{k,j}$<br>
+$(\vec\nabla \times \vec{V})^i = \bar\epsilon^{ijk} V_{k,j}$<br>
+<br>
 <br>
 
 <hr>
@@ -62,8 +68,14 @@ $B_{i,t} + {\bar\epsilon_i}^{jk} E_{k,j} = 0$<br>
 
 <hr>
 <b>ADM metric:</b><br>
-$[g_{uv}] = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{-\alpha^2 + \beta_k \beta^k & \beta_j \\ \beta_i & \gamma_{ij}}}$<br>
-$[g^{uv}] = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{-1/\alpha^2 & \beta^j / \alpha^2 \\ \beta^i / \alpha^2 & \gamma^{ij} - \beta^i \beta^j / \alpha^2}}$<br>
+$[g_{uv}] = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
+	-\alpha^2 + \beta_k \beta^k & \beta_j \\ 
+	\beta_i & \gamma_{ij}
+}}$<br>
+$[g^{uv}] = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
+	-1/\alpha^2 & \beta^j / \alpha^2 \\ 
+	\beta^i / \alpha^2 & \gamma^{ij} - \beta^i \beta^j / \alpha^2
+}}$<br>
 where $ \beta_j = \gamma_{ij} \beta^i = \gamma_{u j} \beta^u = g_{u j} \beta^j $ courtesy of the fact that $ g_{ij} = \gamma_{ij} $ and $ \beta^t = 0 $.<br>
 <br>
 ADM metric determinant: $g = det[g_{ab}] = \alpha \sqrt{\gamma}$<br>
@@ -192,21 +204,91 @@ $F = F_{ti} dt \wedge dx^i + \frac{1}{2} F_{ij} dx^i \wedge dx^j$<br>
 $F = \mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt)$.<br>
 Where $\mathcal{E} = \mathcal{E}_i dx^i$<br>
 And $\mathcal{B} = \mathcal{B}_i dx^i$<br>
+So $F_{it} = \mathcal{E}_i$<br>
+And TODO $F_{jk}$ for $\mathcal{B}_k$<br>
 Notice that $\mathcal{E}, \mathcal{B}$ are different than $E, B$.<br>
 $F_{uv} = \pmatrix{
 	0 & -\mathcal{E}_j \\
 	\mathcal{E}_i & \star (\mathcal{B} \wedge dt)
 }$<br>
-So $\mathcal{E}_i = (\alpha^2 - \beta^2) E_i
+So in general relativity, $\mathcal{E}_i = (\alpha^2 - \beta^2) E_i
 	+ \beta_i \beta^k E_k
 	- \alpha^2 \gamma_{ik} \beta_l \epsilon^{tklm} B_m$<br>
 $\mathcal{E}_t$ is arbitrary.<br>
 <br>
 
-Then $\star (F \wedge \star F) = F_{ab} F^{ab}$ (TODO show this)<br>
+Notice, $\omega \wedge \star \omega = |\omega|^2 dV$<br>
+So $dt \wedge dx \wedge \star (dt \wedge dx) = dt \wedge dx \wedge (-dy \wedge dz) = -dV$<br>
+So $dy \wedge dz \wedge \star (dy \wedge dz) = dy \wedge dz \wedge (dt \wedge dx) = dV$<br>
+So in Minkowski metric, $\star^2 = -1$<br>
+<br>
+
+In an ADM metric:<br>
+$\star (dt \wedge dx^i) = \frac{1}{2} {\epsilon^{ti}}_{jk} dx^j \wedge dx^k$<br>
+...with an ADM metric...<br>
+$= \frac{1}{2} g^{ta} g^{ib} \epsilon_{abjk} dx^j \wedge dx^k$<br>
+$= \frac{1}{2} (
+	g^{tm} g^{it} \epsilon_{mtjk} 
+	+ g^{tt} g^{in} \epsilon_{tnjk}
+	+ g^{tm} g^{in} \epsilon_{mnjk}
+) dx^j \wedge dx^k$<br>
+$= \frac{1}{2} (
+	- \frac{1}{\alpha^2} \gamma^{im} \epsilon_{tmjk}
+	+ \frac{1}{\alpha^2} \beta^m (\gamma^{in} - \frac{1}{\alpha^2} \beta^i \beta^n) \epsilon_{mnjk}
+) dx^j \wedge dx^k$<br>
+$= -\frac{1}{2} \frac{1}{\alpha^2} \gamma^{im} (
+	\epsilon_{tmjk} - \beta^n \epsilon_{nmjk} 
+) dx^j \wedge dx^k$<br>
+...and if the $\beta^i = 0$, this becomes...<br>
+$= -\frac{1}{2} \frac{1}{\alpha} \gamma^{im} \epsilon_{mjk} dx^j \wedge dx^k$<br>
+<br>
+So $\star (\mathcal{E} \wedge dt) = \star (\mathcal{E}_i dx^i \wedge dt) = -\frac{1}{2} \mathcal{E}_i {\epsilon^{ti}}_{jk} dx^j \wedge dx^k$<br>
+...in ADM...<br>
+$= -\frac{1}{2} \frac{1}{\alpha^2} \mathcal{E}^i (
+	\epsilon_{tijk} - \beta^n \epsilon_{nijk} 
+) dx^j \wedge dx^k$<br>
+<br>
+
+$\star (F \wedge \star F)$<br>
+$= \star F \wedge F + F \wedge \star F$<br>
+$= \star (\mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt)) \wedge (\mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt)) 
++ (\mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt)) \wedge \star (\mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt))$<br>
+$= (
+	\star (\mathcal{E} \wedge dt) 
+	- \mathcal{B} \wedge dt
+) \wedge (
+	\mathcal{E} \wedge dt 
+	+ \star (\mathcal{B} \wedge dt)
+)
++ (
+	\mathcal{E} \wedge dt 
+	+ \star (\mathcal{B} \wedge dt)
+) \wedge (
+	\star (\mathcal{E} \wedge dt) 
+	- (\mathcal{B} \wedge dt)
+)$<br>
+$= \star (\mathcal{E} \wedge dt) \wedge (\mathcal{E} \wedge dt)
++ \star (\mathcal{E} \wedge dt) \wedge \star (\mathcal{B} \wedge dt)
+- (\mathcal{B} \wedge dt) \wedge (\mathcal{E} \wedge dt)
+- (\mathcal{B} \wedge dt) \wedge \star (\mathcal{B} \wedge dt)
++ \mathcal{E} \wedge dt \wedge \star (\mathcal{E} \wedge dt) 
+- \mathcal{E} \wedge dt \wedge (\mathcal{B} \wedge dt)
++ \star (\mathcal{B} \wedge dt) \wedge \star (\mathcal{E} \wedge dt) 
+- \star (\mathcal{B} \wedge dt) \wedge (\mathcal{B} \wedge dt)
+$<br>
+$= \star (\mathcal{E} \wedge dt) \wedge (\mathcal{E} \wedge dt)
+- (\mathcal{B} \wedge dt) \wedge \star (\mathcal{B} \wedge dt)
++ \mathcal{E} \wedge dt \wedge \star (\mathcal{E} \wedge dt) 
+- \star (\mathcal{B} \wedge dt) \wedge (\mathcal{B} \wedge dt)
+$<br>
+... $= 2 (\mathcal{E}^2 + \mathcal{B}^2)$ maybe?<br>
+...<br>
+$ = F_{ab} F^{ab}$ (TODO show this)<br>
+
+<br>
 and $F \wedge F = F_{ac} {F_b}^c$ (TODO show this too)<br>
-and $T = \frac{1}{4\pi} (F \wedge F + F \wedge * F)$ (TODO check)<br>
-$T = \frac{1}{4\pi} F \wedge (F + *F)$ (TODO check)<br>
+and $T = \frac{1}{\mu_0} (F \wedge F + F \wedge * F)$ (TODO check)<br>
+$T = \frac{1}{\mu_0} F \wedge (F + *F)$ (TODO check)<br>
 <br>
 
 In component form, with a distinct time coordinate:<br>
@@ -226,13 +308,13 @@ So $\mathcal{E}_i = -A_{i,t} + \frac{1}{c} \phi_{,i}$<br>
 
 <hr>
 <b>electromagnetic stress-energy in vacuum:</b><br>
-$T_{uv} = \frac{1}{4\pi} (F_{ua} {F_v}^a - \frac{1}{4} g_{uv} F_{ab} F^{ab})$, in Gaussian units<br>
+$T_{uv} = \frac{1}{\mu_0} (F_{ua} {F_v}^a - \frac{1}{4} g_{uv} F_{ab} F^{ab})$<br>
 as a trace-free operation:<br>
-${T^u}_v = -\frac{1}{4\pi} ({F^u}_a {F_a}^v - \frac{1}{4} \delta^u_v {F^a}_b {F^b}_a)$<br>
+${T^u}_v = -\frac{1}{\mu_0} ({F^u}_a {F_a}^v - \frac{1}{4} \delta^u_v {F^a}_b {F^b}_a)$<br>
 Let ${(F^2)^u}_v = {F^u}_a {F^a}_v$<br>
-${T^u}_v = -\frac{1}{4\pi} ({(F^2)^u}_v - \frac{1}{4} \delta^u_v {(F^2)^a}_a)$<br>
+${T^u}_v = -\frac{1}{\mu_0} ({(F^2)^u}_v - \frac{1}{4} \delta^u_v {(F^2)^a}_a)$<br>
 Let $(A_{uv})^{TF} = A_{uv} - \frac{1}{n} g_{uv} {A^a}_a$ be the trace-free element of $A_{uv}$, where $n = $ the dimension, such that ${(A^{TF})^a}_a = 0$<br>
-${T^u}_v = -\frac{1}{4\pi} ({(F^2)^u}_v)^{TF}$<br>
+${T^u}_v = -\frac{1}{\mu_0} ({(F^2)^u}_v)^{TF}$<br>
 <br>
 
 in special relativity:<br>
@@ -358,6 +440,10 @@ And, on the right, $- (-2 F_{pr} F_{qs}) \frac{1}{4} g^{qr} g_{uv} g^{ps}
 	= \frac{1}{2} {(F^2)^a}_a g_{uv}$<br>
 So if $g_{uv} = -(F^2)_{uv} = -F_{ua} g^{ab} F_{bv}$<br>
 Then Tada! ...but in that case we get $g_{uv} = -g_{uv}$... nevermind.<br>
+How about if $g_{uv} = R_{uv} = T_{uv} = -(F^2)^{TF}_{uv}$?<br>
+Yes, but for $g_{uv}$ to be trace-free, it must be zero... at least if you're using the differential geometry definition of trace, which itself is weighted by $g_{uv}$.<br>
+But what does this say about the trace of ${(F^2)^u}_v = \frac{1}{4} \delta^u_v {F^a}_b {F^b}_a$?<br>
+TODO look up more on Kahler metrics, and Kahler-Einstein manifolds.<br>
 <br>
 
 <hr>
@@ -372,11 +458,14 @@ $M_i = \chi_m H_i$<br>
 For $\chi_m =$ material's magnetic volume susceptibillity.<br>
 $D^i = \epsilon_0 E^i + P^i = \epsilon_0 (1 + \chi_e) E^i = \epsilon E^i$<br>
 For $\epsilon = $ electric permittivity<br>
+So $\frac{\epsilon}{\epsilon_0} = 1 + \chi_e$<br>
 $H_i = \frac{1}{\mu_0} B_i - \chi_m H_i$<br>
-$\mu_0 (1 + \chi_m) H_i = B_i$<br>
-$\mu H_i = B_i$<br>
+$\mu_0 (1 + \chi_m) H_i = \mu H_i = B_i$<br>
 For $\mu = $ magnetic permeability<br>
+So $\frac{\mu}{\mu_0} = 1 + \chi_m$<br>
 Notice that $\chi_e, \chi_m, \epsilon, \mu$ are operators, not necessarily scalars, not necessarily real<br>
+Also:<Br>
+Let $v_p$ be the phase velocity of light such that $v_p \le c, \frac{1}{(v_p)^2} = \mu \epsilon$<br>
 <br>
 
 $\frac{1}{\mu_0} F_{ab} = \downarrow a(i) \overset{\rightarrow b(j)}{\pmatrix{
@@ -392,11 +481,6 @@ Let $D_{uv} = \pmatrix{ 0 & -c D_j \\ c D_i & {\bar\epsilon_{ij}}^k H_k} = \pmat
 	c \epsilon E_i & {\bar\epsilon_{ij}}^k \mu^{-1} B_k
 }$<br>
 So $D_{uv} = \frac{1}{\mu_0} F_{uv} - M_{uv}$<br>
-<br>
-
-Notice, when $\chi$'s are just scalars, we get this:<br>
-$D^{uv} u_v = c^2 \epsilon F^{uv} u_v$<br>
-$\star D^{uv} u_v = \frac{1}{\mu} \star F^{uv} u_v$<br>
 <br>
 
 check units on these:<br>
@@ -417,12 +501,10 @@ For linear susceptibility:<br>
 ${J^i}_{free} = \sigma E^i$<br>
 <br>
 
-
 <hr>
 <b>special relativity electromagnetic stress-energy in medium:</b><br>
-$T_{uv} = \frac{1}{4\pi} (F_{ua} {D_v}^a - \frac{1}{4} g_{uv} F_{ab} D^{ab})$<br>
-${T^u}_v = -\frac{1}{4\pi} ({F^u}_a {D^a}_v)^{TF}$<br>
-(The $\frac{1}{4\pi}$ should go away when using SI units)<br>
+$T_{uv} = F_{ua} {D_v}^a - \frac{1}{4} g_{uv} F_{ab} D^{ab}$<br>
+${T^u}_v = -({F^u}_a {D^a}_v)^{TF}$<br>
 ${F^u}_v = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{ 
 	0 & \frac{1}{c} E_j \\ 
 	\frac{1}{c} E_i & {\bar\epsilon_{ij}}^k B_k
@@ -443,7 +525,6 @@ ${F^u}_a {D^a}_v = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
 	c {\bar\epsilon_{ik}}^l \epsilon E^k B_l &
 	E_j \epsilon E^i + B_j \mu^{-1} B_i - \delta^i_j B_m \mu^{-1} B_m 
 }}$<br>
-Let $v_p$ be the phase velocity of light such that $v_p \le c, \frac{1}{(v_p)^2} = \mu \epsilon$<br>
 $tr (F \cdot D) = 2 (E_k \epsilon E^k - B_k \mu^{-1} B^k)$<br>
 $({F^u}_a {D^a}_v)^{TF} = {F^u}_a {D^a}_v - \frac{1}{4} \delta^u_v {F^b}_a {D^a}_b$<br>
 $= \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
@@ -515,6 +596,62 @@ $D_{uv} = \downarrow u(i) \overset{\rightarrow v(i)}{\pmatrix{
 	0 & -c D_j \\ 
 	c D_i & {\bar\epsilon_{ij}}^k H_k
 }}$<br>
+<br>
+In special relativity:<br>
+${\epsilon_a}^u F_{uv} {\epsilon_b}^v$<br>
+$= \pmatrix{
+	c^2 & 0 \\
+	0 & {\epsilon_i}^m
+} \pmatrix{
+	0 & -\frac{1}{c} E_n \\
+	\frac{1}{c} E_m & {\bar\epsilon_{mn}}^k B_k
+} \pmatrix{
+	c^2 & 0 \\
+	0 & {\epsilon_j}^n
+}$<br>
+$ = \pmatrix{
+	0 & -c {\epsilon_j}^n E_n \\
+	c {\epsilon_i}^m E_m & {\epsilon_i}^m {\epsilon_j}^n {\bar\epsilon_{mn}}^k B_k
+}$<br>
+$D_{uv} = \pmatrix{
+	0 & -c {\epsilon_j}^k E_k \\
+	c {\epsilon_i}^k E_k & {\bar\epsilon_{ij}}^k {(\mu^{-1})_k}^m B_m
+}$<br>
+For ${\epsilon^i}_m {\epsilon^j}_n \bar\epsilon^{mnk} = \bar\epsilon^{ijm} {(\mu^{-1})^k}_m$ 
+this would simplify further to $D_{ab} = {\epsilon_a}^u F_{uv} {\epsilon_b}^v$.<br>
+But that isn't often the case, because it is neglecting the use of the $M_{ab}$ tensor.<br>
+<br>
+
+<hr>
+<b>Maxwell's equations in a medium, in vector 4-form:</b><br>
+(from <a href='https://en.wikipedia.org/wiki/Covariant_formulation_of_classical_electromagnetism'>https://en.wikipedia.org/wiki/Covariant_formulation_of_classical_electromagnetism</a>)<br>
+When $\chi$'s are just scalars, we get this:<br>
+$D^{uv} u_v = c^2 \epsilon F^{uv} u_v$<br>
+$\star D^{uv} u_v = \frac{1}{\mu} \star F^{uv} u_v$<br>
+<br>
+expanded, in special relativity:<br>
+$D^{uv} u_v = \pmatrix{
+	0 & c \epsilon E_j \\
+	-c \epsilon E_i & {\bar\epsilon_{ij}}^k \mu^{-1} B_k
+} \cdot \pmatrix{
+	u^t \\
+	u^j
+} = \pmatrix{
+	c \epsilon E_j u^j \\
+	-c \epsilon E_i u^t + \mu^{-1} {\bar\epsilon_{ij}}^k B_k u^j
+}$<br>
+$c^2 \epsilon F^{uv} u_v = c^2 \epsilon \pmatrix{
+	0 & \frac{1}{c} E_j \\
+	-\frac{1}{c} E_i & {\bar\epsilon_{ij}}^k B_k
+} \cdot \pmatrix{
+	u^t \\
+	u^j
+} = \pmatrix{
+	c \epsilon E_j u^j \\
+	-c \epsilon E_i u^t + c^2 \epsilon {\bar\epsilon_{ij}}^k B_k u^j
+}$<br>
+...but this is only true when $\frac{1}{c^2} = \mu\epsilon$, which isn't always necessarily true, right?<br>
+<br>
 
 <hr>
 <b>combining non-dispersive materials with general relativity formulation of electromagnetism:</b><br>
@@ -522,6 +659,26 @@ Notice that $E^u$'s and $B^u$'s are suppose to be spatial.<br>
 I'm suspicious that the $\epsilon_{ab}$'s and $(\mu^{-1})_{ab}$'s are also spatial as well<br>
 $F^{ab} = \frac{1}{c} n^a E^b - \frac{1}{c} n^b E^a + n_d \epsilon^{dabc} B_c$<br>
 $D^{ab} = c n^a D^b - c n^b D^a + n_d \epsilon^{dabc} H_c$<br>
+<br>
+
+If susceptibility is a scalar:<br>
+$D^{ab} = c \epsilon (n^a E^b  - n^b E^a) + n_d \epsilon^{dabc} \mu^{-1} B_c$<br>
+$\mu D^{ab} = c^2 \mu \epsilon \cdot \frac{1}{c} (n^a E^b  - n^b E^a) + n_d \epsilon^{dabc} B_c$<br>
+$\mu D^{ab} = (\frac{c}{v_p})^2 \frac{1}{c} (n^a E^b  - n^b E^a) + n_d \epsilon^{dabc} B_c$<br>
+$\mu D^{ab} = ((\frac{c}{v_p})^2 - 1) \frac{1}{c} (n^a E^b  - n^b E^a) + F^{ab}$<br>
+or...<br>
+$\mu_0 D^{ab} = \frac{\epsilon}{\epsilon_0} \frac{1}{c} (n^a E^b  - n^b E^a) + n_d \epsilon^{dabc} \frac{\mu_0}{\mu} B_c$<br>
+$\mu_0 D^{ab} = (1 + \chi_e) \frac{1}{c} (n^a E^b  - n^b E^a) + (\frac{1}{1 + \chi_m}) n_d \epsilon^{dabc} B_c$<br>
+$D^{ab} = \frac{1}{\mu_0} \chi_e \frac{1}{c} (n^a E^b  - n^b E^a) + \frac{1}{\mu_0} (\frac{1}{1 + \chi_m} - 1) n_d \epsilon^{dabc} B_c + \frac{1}{\mu_0} F^{ab}$<br>
+$D^{ab} = \frac{1}{\mu_0} F^{ab} - M^{ab}$<br>
+Therefore we get<br>
+$M^{ab} = -\frac{1}{\mu_0} (\chi_e \frac{1}{c} (n^a E^b  - n^b E^a) + (\frac{1}{1 + \chi_m} - 1) n_d \epsilon^{dabc} B_c)$<br>
+$M^{ab} = -( c \chi_e \epsilon_0 (n^a E^b  - n^b E^a) + \frac{1}{\mu_0} (\frac{\chi_m}{1 + \chi_m}) n_d \epsilon^{dabc} B_c)$<br>
+$M^{ab} = -( c (n^a P^b  - n^b P^a) + n_d \epsilon^{dabc} M_c)$<br>
+...for $\epsilon_0 \chi_e E^a = P^a, \chi_m H_a = M_a$<br>
+<br>
+
+If susceptibility is a tensor:<br>
 $D^{ab} = c (n^a {\epsilon^b}_u - n^b {\epsilon^a}_u) E^u + n_d \epsilon^{dabc} {(\mu^{-1})_c}^u B_u$<br>
 ${F^a}_c {D^c}_b =
 	(\frac{1}{c} (n^a E_c - n_c E^a) + n_d {\epsilon^{da}}_{ce} B^e)
@@ -535,13 +692,19 @@ $<br>
 ${F^a}_c {D^c}_b =
 	- n^a E_c n_b {\epsilon^c}_u E^u 
 	+ \frac{1}{c} n^a E_c n_f {\epsilon^{fc}}_{bh} (\mu^{-1})^{hu} B_u
-	- n_c E^a n^c \epsilon_{bu} E^u 
+	- n_c E^a n^c \epsilon_{bu} E^u $ $
 	+ n_c E^a n_b {\epsilon^c}_u E^u 
 	- \frac{1}{c} n_c E^a n_f {\epsilon^{fc}}_{bh} (\mu^{-1})^{hu} B_u
-	+ c n_d {\epsilon^{da}}_{ce} B^e n^c \epsilon_{bu} E^u 
+	+ c n_d {\epsilon^{da}}_{ce} B^e n^c \epsilon_{bu} E^u $ $
 	- c n_d {\epsilon^{da}}_{ce} B^e n_b {\epsilon^c}_u E^u 
 	+ n_d {\epsilon^{da}}_{ce} B^e n_f {\epsilon^{fc}}_{bh} (\mu^{-1})^{hu} B_u
 $<br>
+TODO use projection tensors to apply $\epsilon$ and $\mu$ to only the spatial components of $E$ and $B$.<br>
+In fact,<br>
+If $F = E \wedge dt + \star (B \wedge dt)$<br>
+so $F_{[ab]} = 2 E_{[a} n_{b]} + {\epsilon_{ab}}^{cd} n_{[c} B_{d]}$<br>
+Then I'm suspicious that tensors $\star \epsilon = (\mu)^{-1}$ or something like that<br>
+<br>
 
 <br>	
 Sources:<br>
