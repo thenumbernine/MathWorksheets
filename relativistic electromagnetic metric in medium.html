@@ -200,22 +200,6 @@ $d \star F = \star J$, $\nabla \cdot F = J$<br>
 
 <hr>
 <b>splitting apart space and time in the differential form representation:</b><br>
-$F = F_{ti} dt \wedge dx^i + \frac{1}{2} F_{ij} dx^i \wedge dx^j$<br> 
-$F = \mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt)$.<br>
-Where $\mathcal{E} = \mathcal{E}_i dx^i$<br>
-And $\mathcal{B} = \mathcal{B}_i dx^i$<br>
-So $F_{it} = \mathcal{E}_i$<br>
-And TODO $F_{jk}$ for $\mathcal{B}_k$<br>
-Notice that $\mathcal{E}, \mathcal{B}$ are different than $E, B$.<br>
-$F_{uv} = \pmatrix{
-	0 & -\mathcal{E}_j \\
-	\mathcal{E}_i & \star (\mathcal{B} \wedge dt)
-}$<br>
-So in general relativity, $\mathcal{E}_i = (\alpha^2 - \beta^2) E_i
-	+ \beta_i \beta^k E_k
-	- \alpha^2 \gamma_{ik} \beta_l \epsilon^{tklm} B_m$<br>
-$\mathcal{E}_t$ is arbitrary.<br>
-<br>
 
 Notice, $\omega \wedge \star \omega = |\omega|^2 dV$<br>
 So $dt \wedge dx \wedge \star (dt \wedge dx) = dt \wedge dx \wedge (-dy \wedge dz) = -dV$<br>
@@ -249,46 +233,64 @@ $= -\frac{1}{2} \frac{1}{\alpha^2} \mathcal{E}^i (
 ) dx^j \wedge dx^k$<br>
 <br>
 
-$\star (F \wedge \star F)$<br>
-$= \star F \wedge F + F \wedge \star F$<br>
-$= \star (\mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt)) \wedge (\mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt)) 
-+ (\mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt)) \wedge \star (\mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt))$<br>
+$F = F_{ti} dt \wedge dx^i + \frac{1}{2} F_{ij} dx^i \wedge dx^j$<br> 
+$F = \mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt)$.<br>
+Where $\mathcal{E} = \mathcal{E}_i dx^i$<br>
+And $\mathcal{B} = \mathcal{B}_i dx^i$<br>
+So $F_{it} = \mathcal{E}_i$<br>
+And TODO $F_{jk}$ for $\mathcal{B}_k$<br>
+Notice that $\mathcal{E}, \mathcal{B}$ are different than $E, B$.<br>
+$F_{uv} = \pmatrix{
+	0 & -\mathcal{E}_j \\
+	\mathcal{E}_i & \star (\mathcal{B} \wedge dt)
+}$<br>
+So in general relativity, $\mathcal{E}_i = (\alpha^2 - \beta^2) E_i
+	+ \beta_i \beta^k E_k
+	- \alpha^2 \gamma_{ik} \beta_l \epsilon^{tklm} B_m$<br>
+$\mathcal{E}_t$ is arbitrary.<br>
+<br>
+
+$F \wedge \star F$<br>
+$= (\mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt)) \wedge \star (\mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt))$<br>
 $= (
-	\star (\mathcal{E} \wedge dt) 
-	- \mathcal{B} \wedge dt
-) \wedge (
-	\mathcal{E} \wedge dt 
-	+ \star (\mathcal{B} \wedge dt)
-)
-+ (
 	\mathcal{E} \wedge dt 
 	+ \star (\mathcal{B} \wedge dt)
 ) \wedge (
 	\star (\mathcal{E} \wedge dt) 
 	- (\mathcal{B} \wedge dt)
 )$<br>
-$= \star (\mathcal{E} \wedge dt) \wedge (\mathcal{E} \wedge dt)
-+ \star (\mathcal{E} \wedge dt) \wedge \star (\mathcal{B} \wedge dt)
-- (\mathcal{B} \wedge dt) \wedge (\mathcal{E} \wedge dt)
-- (\mathcal{B} \wedge dt) \wedge \star (\mathcal{B} \wedge dt)
-+ \mathcal{E} \wedge dt \wedge \star (\mathcal{E} \wedge dt) 
+$= \mathcal{E} \wedge dt \wedge \star (\mathcal{E} \wedge dt)
++ \star (\mathcal{B} \wedge dt) \wedge \star (\mathcal{E} \wedge dt)
 - \mathcal{E} \wedge dt \wedge (\mathcal{B} \wedge dt)
-+ \star (\mathcal{B} \wedge dt) \wedge \star (\mathcal{E} \wedge dt) 
 - \star (\mathcal{B} \wedge dt) \wedge (\mathcal{B} \wedge dt)
 $<br>
-$= \star (\mathcal{E} \wedge dt) \wedge (\mathcal{E} \wedge dt)
-- (\mathcal{B} \wedge dt) \wedge \star (\mathcal{B} \wedge dt)
-+ \mathcal{E} \wedge dt \wedge \star (\mathcal{E} \wedge dt) 
+$= \mathcal{E} \wedge dt \wedge \star (\mathcal{E} \wedge dt)
 - \star (\mathcal{B} \wedge dt) \wedge (\mathcal{B} \wedge dt)
 $<br>
-... $= -2 (\mathcal{E}^2 - \mathcal{B}^2)$ maybe?<br>
-...<br>
-$ = F_{ab} F^{ab}$ (TODO show this)<br>
-
+$= -\mathcal{E}_i dx^i \wedge dt \wedge \frac{1}{2} \mathcal{E}_m {\epsilon^{tm}}_{jk} dx^j \wedge dx^k
++ \frac{1}{2} \mathcal{B}_m {\epsilon^{tm}}_{jk} dx^j \wedge dx^k\wedge (\mathcal{B}_i dx^i \wedge dt)
+$<br>
+$= \frac{1}{2} (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) {\epsilon^{tm}}_{jk} dt \wedge dx^i \wedge dx^j \wedge dx^k$<br>
+$= (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) g^{ta} g^{mb} \epsilon_{abjk} \epsilon^{tijk} dV$<br>
+$= -2 (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) g^{ta} g^{mb} \delta^{ti}_{ab} dV$<br>
+$= -2 (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) g^{ta} g^{mb} (\delta^t_a \delta^i_b - \delta^t_b \delta^i_a) dV$<br>
+$= -2 (\mathcal{E}_i \mathcal{E}_j - \mathcal{B}_i \mathcal{B}_j) (g^{tt} g^{ij} - g^{ti} g^{tj}) dV$<br>
+$= -2 (\mathcal{E}_i \mathcal{E}_j - \mathcal{B}_i \mathcal{B}_j) (-\frac{1}{\alpha^2} (\gamma^{ij} - \frac{1}{\alpha^2} \beta^i \beta^j) - \frac{1}{\alpha^4} \beta^i \beta^j) dV$<br>
+$= 2 \frac{1}{\alpha^2} \gamma^{ij} (\mathcal{E}_i \mathcal{E}_j - \mathcal{B}_i \mathcal{B}_j) dV$<br>
+$\star dV = \star \star 1 = -1$<br>
+So $\star (F \wedge \star F) = -2 \frac{1}{\alpha^2} \gamma^{ij} (\mathcal{E}_i \mathcal{E}_j - \mathcal{B}_i \mathcal{B}_j)$<br>
+If we choose $\mathcal{E}_t = \mathcal{B}_t = 0$:<br>
+$= -2 \frac{1}{\alpha^2} g^{ab} (\mathcal{E}_a \mathcal{E}_b - \mathcal{B}_a \mathcal{B}_b)$<br>
+$= -\frac{2}{\alpha^2} (\mathcal{E}^2 - \mathcal{B}^2)$<br>
+...TODO show this one too<br>
+$= g^{ua} F_{ab} g^{bv} F_{uv}$<br>
+$ = F_{ab} F^{ab}$<br>
+$ = -tr(F^2)$<br>
 <br>
 and $F \wedge F = F_{ac} {F_b}^c$ (TODO show this too)<br>
 and $T = \frac{1}{\mu_0} (F \wedge F + F \wedge * F)$ (TODO check)<br>
 $T = \frac{1}{\mu_0} F \wedge (F + *F)$ (TODO check)<br>
+...which looks a lot like the Holst action in general relativity...<br>
 <br>
 
 In component form, with a distinct time coordinate:<br>
