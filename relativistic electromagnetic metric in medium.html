@@ -241,13 +241,32 @@ So $F_{it} = \mathcal{E}_i$<br>
 And TODO $F_{jk}$ for $\mathcal{B}_k$<br>
 Notice that $\mathcal{E}, \mathcal{B}$ are different than $E, B$.<br>
 $F_{uv} = \pmatrix{
-	0 & -\mathcal{E}_j \\
-	\mathcal{E}_i & \star (\mathcal{B} \wedge dt)
+	0 & -\mathcal{E} \\
+	\mathcal{E} & \star (\mathcal{B} \wedge dt)
 }$<br>
+$F_{uv} = \pmatrix{
+	0 & -\mathcal{E}_i \\
+	\mathcal{E}_i & -\mathcal{B}_k {\epsilon^{tk}}_{ij}
+}$<br>
+
 So in general relativity, $\mathcal{E}_i = (\alpha^2 - \beta^2) E_i
 	+ \beta_i \beta^k E_k
 	- \alpha^2 \gamma_{ik} \beta_l \epsilon^{tklm} B_m$<br>
 $\mathcal{E}_t$ is arbitrary.<br>
+<br>
+
+In component form, with a distinct time coordinate:<br>
+$F_{ab} = \pmatrix{
+	0 & F_{tj} \\ 
+	F_{it} & F_{ij}
+} = \pmatrix{
+	0 & 2 \partial_{[t} A_{j]} \\
+	2 \partial_{[i} A_{t]} & 2 \partial_{[i} A_{j]}
+} = \pmatrix{
+	0 & A_{j,t} - \frac{1}{c} \phi_{,j} \\
+	-A_{i,t} + \frac{1}{c} \phi_{,i} & A_{j,i} - A_{i,j}
+}$<br>
+So $\mathcal{E}_i = -A_{i,t} + \frac{1}{c} \phi_{,i}$<br>
 <br>
 
 $F \wedge \star F$<br>
@@ -292,21 +311,6 @@ and $T = \frac{1}{\mu_0} (F \wedge F + F \wedge * F)$ (TODO check)<br>
 $T = \frac{1}{\mu_0} F \wedge (F + *F)$ (TODO check)<br>
 ...which looks a lot like the Holst action in general relativity...<br>
 <br>
-
-In component form, with a distinct time coordinate:<br>
-$F_{ab} = \pmatrix{
-	0 & F_{tj} \\ 
-	F_{it} & F_{ij}
-} = \pmatrix{
-	0 & 2 \partial_{[t} A_{j]} \\
-	2 \partial_{[i} A_{t]} & 2 \partial_{[i} A_{j]}
-} = \pmatrix{
-	0 & A_{j,t} - \frac{1}{c} \phi_{,j} \\
-	-A_{i,t} + \frac{1}{c} \phi_{,i} & A_{j,i} - A_{i,j}
-}$<br>
-So $\mathcal{E}_i = -A_{i,t} + \frac{1}{c} \phi_{,i}$<br>
-<br>
-
 
 <hr>
 <b>electromagnetic stress-energy in vacuum:</b><br>
@@ -541,7 +545,7 @@ ${T^u}_v = -{((F \cdot D)^{TF})^u}_v = \downarrow u(i) \overset{\rightarrow v(j)
 	-c {\bar\epsilon_{ik}}^l \epsilon E^k B_l &
 	\frac{1}{2} \delta^i_j (E_k \epsilon E^k + B_k \mu^{-1} B^k) - E_j \epsilon E^i - B_j \mu^{-1} B_i
 }}$<br>
-$T^{uv} = -{((F \cdot D)^{TF})^u}_v = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
+$T^{uv} = -((F \cdot D)^{TF})^{uv} = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
 	\frac{1}{2} (E_k \epsilon E^k + B_k \mu^{-1} B^k) &
 	\frac{1}{c} {\bar\epsilon_{jk}}^l E_k \mu^{-1} B_l \\
 	c {\bar\epsilon_{ik}}^l \epsilon E^k B_l &
