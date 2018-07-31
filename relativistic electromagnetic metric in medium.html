@@ -7,16 +7,13 @@
 	</head>
 	<body onload='tryToFindMathJax();'>
 
-Let $\eta_{ab} = diag(-1,1,1,1)$<br>
-Let $\epsilon_{abcd} = \sqrt{|g|} [abcd]$<br>
-Let $[abcd] = \bar\epsilon_{abcd}$ = the completely antisymmetric symbol.<br>
-I'm going $\bar\epsilon_{ijk}$ by $\eta_{ij}$<br>
-$\epsilon_{abcd} = \sqrt{|g|} [abcd] = \sqrt{|g|} \bar\epsilon_{abcd} $ is the spacetime Levi-Civita permutation tensor<br> 
-So $\epsilon_{tijk} = \alpha \sqrt\gamma \bar\epsilon_{tijk} = \alpha \sqrt\gamma \bar\epsilon_{ijk}$<br>
-$\epsilon_{ijk} = \sqrt\gamma [ijk] = \sqrt\gamma \bar\epsilon_{ijk}$ is the spatial Levi-Civita permutation tensor<br>
-So $\epsilon_{tijk} = \alpha \epsilon_{ijk}$<br>
+Let $\eta_{ab} = diag(-1,1,1,1)$ (someday I'll switch)<br>
+Let $[abcd] = \bar\epsilon_{abcd} = $ permutation symbol for $abcd$<br>
+Same with $[ijk] = \bar\epsilon_{ijk} = $ spatial permutation symbol for $ijk$<br>
+I'm going to raise and lower $\bar\epsilon_{ijk}$ by $\eta_{ij}$<br>
 <br>
-Define the Hodge dual as $(\star F)_{ab} = \frac{1}{2} F_{uv} {\epsilon^{uv}}_{ab} $<br>
+$\partial = (\frac{1}{c} \partial_t, \partial_i)$<br>
+$dx = (c dt, dx^i)$<br>
 $\partial_u T = T_{,u} = (\frac{1}{c} \partial_t, \partial_i) T$<br>
 $\frac{1}{c^2} = \mu_0 \epsilon_0$<br>
 In SI units (from my 'natural units' worksheet in my symmath library):<br>
@@ -31,8 +28,10 @@ $(\vec\nabla \times \vec{V})^i = \bar\epsilon^{ijk} V_{k,j}$<br>
 
 <hr>
 <b>Faraday tensor in special relativity:</b><br>
+From Misner, Thorne, Wheeler.  Electromagnetism in special relativity, adjusted to SI units.<br>
 
-From Misner, Thorne, Wheeler, adjusted to SI unit<br>
+<br>
+In Cartesian coordinates:<br>
 $F_{ab} = \downarrow a \overset{\rightarrow b}{\pmatrix{
 	0 & -\frac{1}{c} E_x & -\frac{1}{c} E_y & -\frac{1}{c} E_z \\
 	\frac{1}{c} E_x & 0 & B_z & -B_y \\
@@ -41,6 +40,7 @@ $F_{ab} = \downarrow a \overset{\rightarrow b}{\pmatrix{
 }}$<br>
 <br>
 
+In generalized time+space coordinates:<br>
 $F_{ab} = \downarrow a(i) \overset{\rightarrow b(j)}{\pmatrix{ 
 	0 & -\frac{1}{c} E_j \\ 
 	\frac{1}{c} E_i & {\bar\epsilon_{ij}}^k B_k
@@ -48,8 +48,11 @@ $F_{ab} = \downarrow a(i) \overset{\rightarrow b(j)}{\pmatrix{
 $F^{ab} = \eta^{au} F_{uv} \eta^{vb} = \downarrow a \overset{\rightarrow b}{\pmatrix{ 0 & \frac{1}{c} E_j \\ -\frac{1}{c} E_i & {\bar\epsilon_{ij}}^k B_k}}$<br>
 $J^a = \pmatrix{c \rho \\ J^i}$<br>
 ${F^{ab}}_{,b} = \mu_0 J^a$ (eqn 3.36)<br>
-${E^j}_{,j} = \frac{1}{\epsilon_0} \rho$<br>
-$-\frac{1}{c^2} {E^i}_{,t} + {\bar\epsilon_i}^{jk} B_{k,j} = \mu_0 J^i$<br>
+Becomes:<br>
+$\frac{1}{c} E_{j,j} = \mu_0 c \rho$<br>
+$E_{j,j} = \frac{1}{\epsilon_0} \rho$<br>
+$-\frac{1}{c^2} E_{i,t} + {\bar\epsilon_i}^{jk} B_{k,j} = \mu_0 J^i$<br>
+$-\epsilon_0 E_{i,t} + \frac{1}{\mu_0} {\bar\epsilon_i}^{jk} B_{k,j} = J^i$<br>
 <br>
 
 $\star F_{ab} = \downarrow a \overset{\rightarrow b}{\pmatrix{
@@ -76,7 +79,11 @@ $[g^{uv}] = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
 	-1/\alpha^2 & \beta^j / \alpha^2 \\ 
 	\beta^i / \alpha^2 & \gamma^{ij} - \beta^i \beta^j / \alpha^2
 }}$<br>
-where $ \beta_j = \gamma_{ij} \beta^i = \gamma_{u j} \beta^u = g_{u j} \beta^j $ courtesy of the fact that $ g_{ij} = \gamma_{ij} $ and $ \beta^t = 0 $.<br>
+For $\alpha$ the lapse between $\Sigma_t$ and $\Sigma_{t + dt}$<br>
+And $\beta$ the shift in coordinates, $\beta \in \Sigma$.  Note that, for any vector $u \in \Sigma$ that $u^t = 0$.<br>
+And $\gamma_{ij}$ the metric of $\Sigma$<br>
+Where $ \beta_j = \gamma_{ij} \beta^i = \gamma_{u j} \beta^u = g_{u j} \beta^j $ courtesy of the fact that $ g_{ij} = \gamma_{ij} $ and $ \beta^t = 0 $.<br>
+But this also means, for some $u \in \Sigma$, $u^t = 0$, however $u_t = u^j \beta_j$, while $u_i = \gamma_{ij} u^j$.<br>
 <br>
 ADM metric determinant: $g = det[g_{ab}] = \alpha \sqrt{\gamma}$<br>
 ADM spatial metric determinant: $\gamma = det[\gamma_{ij}]$<br>
@@ -89,13 +96,42 @@ $n^u = \downarrow u(i)\pmatrix{ 1/\alpha \\ -\beta^i/\alpha}$<br>
 <br>
 notice: $n_u n^u = -1$<br>
 <br>
-In ADM, $\epsilon^{tabc} u_a v_b w_c = \epsilon^{tijk} u_i v_j w_k$ since $\epsilon^{ttab} = 0$, since it is totally antisymmetric<br>
+In ADM, $\epsilon^{tabc} u_a v_b w_c = \epsilon^{tijk} u_i v_j w_k$ since $\epsilon^{ttab} = 0$ due to its antisymmetric. The associated $u_t, $v_t, w_t$ will be cancelled.<br>
 <br>
 
+<hr>
+<b>Levi-Civita tensor in ADM metric</b><br>
+Let $\epsilon_{abcd} = \sqrt{|g|} [abcd] = \sqrt{|g|} \bar\epsilon_{abcd} $ is the spacetime Levi-Civita permutation tensor<br> 
+So $\epsilon_{tijk} = \alpha \sqrt\gamma \bar\epsilon_{tijk} = \alpha \sqrt\gamma \bar\epsilon_{ijk}$ (see the ADM section for more details)<br>
+$\epsilon_{ijk} = \sqrt\gamma [ijk] = \sqrt\gamma \bar\epsilon_{ijk}$ is the spatial Levi-Civita permutation tensor<br>
+So $\epsilon_{tijk} = \alpha \epsilon_{ijk}$<br>
+And ${\epsilon^t}_{ijk} = g^{ta} \epsilon_{aijk} = g^{tt} \epsilon_{tijk} + g^{t\Sigma} \epsilon_{\Sigma ijk}$, but since $ijk \in \Sigma$ we know $\epsilon_{\Sigma ijk} = 0$<br>
+So ${\epsilon^t}_{ijk} = -\frac{1}{\alpha^2} \epsilon_{tijk} = -\frac{1}{\alpha} \epsilon_{ijk} = -\frac{1}{\alpha} \sqrt\gamma \bar\epsilon_{tijk} = -\frac{1}{\alpha} \sqrt\gamma \bar\epsilon_{ijk}$<br>
+<br>
+This can also be proven by explicitly lowering each index by the ADM metric:<br>
+${\epsilon^{ti}}_{jk}$
+$= g^{ta} g^{ib} \epsilon_{abjk} $<br>
+$= (
+	g^{tm} g^{it} \epsilon_{mtjk} 
+	+ g^{tt} g^{in} \epsilon_{tnjk}
+	+ g^{tm} g^{in} \epsilon_{mnjk}
+) $<br>
+$= (
+	- \frac{1}{\alpha^2} \gamma^{im} \epsilon_{tmjk}
+	+ \frac{1}{\alpha^2} \beta^m (\gamma^{in} - \frac{1}{\alpha^2} \beta^i \beta^n) \epsilon_{mnjk}
+) $<br>
+$= -\frac{1}{\alpha^2} \gamma^{im} (
+	\epsilon_{tmjk} - \beta^n \epsilon_{nmjk} 
+) $<br>
+$= -\frac{1}{\alpha^2} \gamma^{im} \epsilon_{tmjk}$<br>
+<br>
+Define the Hodge dual as $(\star F)_{ab} = \frac{1}{2} F_{uv} {\epsilon^{uv}}_{ab} $<br>
+<br>
 
 <hr>
 <b>Faraday tensor in general relativity, in vacuum:</b><br>
 From Baumgarate &amp; Shapiro, eqn 5.114:<br>
+I'm neglecting my units here, so TODO add those back in.<br>
 $F^{ab} = n^a E^b - n^b E^a + n_d \epsilon^{dabc} B_c$<br>
 $E^a = F^{ab} n_b$<br>
 $B^a = \frac{1}{2} \epsilon^{abcd} n_b F_{dc}$<br>
@@ -108,24 +144,41 @@ $E_a = g_{ab} E^b = g_{aj} E^j = \pmatrix{ \beta_j E^j & \gamma_{ij} E^j } = \pm
 so $E_i = g_{ia} E^a = g_{ij} E^j$ and $E_t = \beta^j E_j$<br>
 <br>
 
-Now $n_d \epsilon^{dabc} = n_t \epsilon^{tabc} = -\alpha \epsilon^{tabc}$<br>
-$F^{ij} = n_d \epsilon^{dijc} B_c = -\alpha \epsilon^{tijk} B_k$<br>
+Now $n_d \epsilon^{dabc} = n_t \epsilon^{tabc} = -\alpha \epsilon^{tabc} = \epsilon^{abc}$ where the last term is purely spatial (being orthogonal to $t$), so any timelike components of $abc$ are cancelled.<br>
+$F^{ij} = n_d \epsilon^{dijc} B_c = -\alpha \epsilon^{tijk} B_k = \epsilon^{ijk} B_k$<br>
 <br>
 
 $F^{ab} = \downarrow a(i) \overset{\rightarrow b(j)}{\pmatrix{
 	0 & \frac{1}{\alpha} E^j \\
-	-\frac{1}{\alpha} E^i & -\alpha \epsilon^{tijk} B_k
+	-\frac{1}{\alpha} E^i & \epsilon^{ijk} B_k
 }}$<br>
+<br>
 
+${F^a}_b = F^{au} g_{ub} = \pmatrix{
+	0 & \frac{1}{\alpha} E^k \\
+	-\frac{1}{\alpha} E^i & \epsilon^{ikl} B_l
+} \pmatrix{-\alpha^2 + \beta^2 & \beta_j \\ \beta_k & \gamma_{kj}}$<br>
+${F^a}_b = \pmatrix{
+	\frac{1}{\alpha} E^k \beta_k & 
+	\frac{1}{\alpha} E_j
+	\\
+	(\alpha - \frac{1}{\alpha} \beta^2) E^i + {\epsilon^i}_{kl} \beta^k B^l & 
+	-\frac{1}{\alpha} E^i \beta_j + {\epsilon^i}_{jk} B^k
+}$<br>
+<br>
 
-$F_{ab} = g_{au} F^{uv} g_{vb} = 
+$F_{ab} = g_{au} {F^u}_b =
 \pmatrix{-\alpha^2 + \beta^2 & \beta_k \\ \beta_i & \gamma_{ik}}
 \pmatrix{
-	0 & \frac{1}{\alpha} E^l \\
-	-\frac{1}{\alpha} E^k & -\alpha \epsilon^{tklm} B_m
+	\frac{1}{\alpha} E^l \beta_l & 
+	\frac{1}{\alpha} E_j
+	\\
+	(\alpha - \frac{1}{\alpha} \beta^2) E^k + {\epsilon^k}_{lm} \beta^l B^m & 
+	-\frac{1}{\alpha} E^k \beta_j + {\epsilon^k}_{jl} B^l
 }
-\pmatrix{-\alpha^2 + \beta^2 & \beta_j \\ \beta_l & \gamma_{lj}}$<br>
-$F_{ab} = \pmatrix{
+$<br>
+
+$F_{ab} = {F_a}^u g_{ub} = \pmatrix{
 	-\frac{1}{\alpha} \beta_k E^k & 
 	\frac{1}{\alpha} (-\alpha^2 + \beta^2) E^l - \alpha \beta_k \epsilon^{tklm} B_m 
 	\\
@@ -138,16 +191,16 @@ $F_{ab} = \pmatrix{
 
 $F_{ab} = \pmatrix{
 	(-\alpha^2 + \beta^2) (-\frac{1}{\alpha} \beta_k E^k)
-	+ \beta_l (\frac{1}{\alpha} (-\alpha^2 + \beta^2) E^l - \alpha \beta_k \epsilon^{tklm} B_m)
+	+ \beta_l (\frac{1}{\alpha} (-\alpha^2 + \beta^2) E^l + \beta_k \epsilon^{klm} B_m)
 	& 
 	\beta_j (-\frac{1}{\alpha} \beta_k E^k)
-	+ \gamma_{lj} (\frac{1}{\alpha} (-\alpha^2 + \beta^2) E^l - \alpha \beta_k \epsilon^{tklm} B_m) 
+	+ \gamma_{lj} (\frac{1}{\alpha} (-\alpha^2 + \beta^2) E^l + \beta_k \epsilon^{klm} B_m) 
 	\\
 	(-\alpha^2 + \beta^2) (-\frac{1}{\alpha} E_i)
-	+ \beta_l (\frac{1}{\alpha} \beta_i E^l - \alpha \gamma_{ik} \epsilon^{tklm} B_m)
+	+ \beta_l (\frac{1}{\alpha} \beta_i E^l + \gamma_{ik} \epsilon^{klm} B_m)
 	&	
 	\beta_j (-\frac{1}{\alpha} E_i)
-	+ \gamma_{lj} (\frac{1}{\alpha} \beta_i E^l - \alpha \gamma_{ik} \epsilon^{tklm} B_m)
+	+ \gamma_{lj} (\frac{1}{\alpha} \beta_i E^l + \gamma_{ik} \epsilon^{klm} B_m)
 }$<br>
 
 $F_{ab} = \pmatrix{
@@ -156,41 +209,38 @@ $F_{ab} = \pmatrix{
 		\alpha E_j
 		- \frac{1}{\alpha} \beta^2 E_j
 		+ \frac{1}{\alpha} \beta_j \beta^k E_k
-		- \alpha \gamma_{kj} \beta_l \epsilon^{tklm} B_m
+		+ \gamma_{kj} \beta_l \epsilon^{klm} B_m
 	)
 	\\
 	\alpha E_i
 	- \frac{1}{\alpha} \beta^2 E_i
 	+ \frac{1}{\alpha} \beta_i \beta^k E_k
-	- \alpha \gamma_{ik} \beta_l \epsilon^{tklm} B_m
+	+ \gamma_{ik} \beta_l \epsilon^{klm} B_m
 	&	
 	\frac{1}{\alpha} \beta_i E_j 
 	- \frac{1}{\alpha} \beta_j E_i
-	- \alpha \gamma_{ik} \gamma_{jl} \epsilon^{tklm} B_m
+	+ \gamma_{ik} \gamma_{jl} \epsilon^{klm} B_m
 }$<br>
-$F_{ab} = \frac{1}{\alpha} \pmatrix{
+
+$F_{ab} = \pmatrix{
 	0 & 
 	- (
-		-g_{tt} E_j
-		+ \beta_j \beta^k E_k
-		- \alpha^2 \gamma_{jk} \beta_l \epsilon^{tklm} B_m
+		\alpha E_j 
+		+ 2 \frac{1}{\alpha} \beta^k \beta_{[j} E_{k]}
+		+ \epsilon_{jkl} \beta^k B^l
 	)
 	\\
-	-g_{tt} E_i
-	+ \beta_i \beta^k E_k
-	- \alpha^2 \gamma_{ik} \beta_l \epsilon^{tklm} B_m
+	\alpha E_i 
+	+ 2 \frac{1}{\alpha} \beta^k \beta_{[i} E_{k]}
+	+ \epsilon_{ikl} \beta^k B^l
 	&	
-	\beta_i E_j 
-	- \beta_j E_i
-	- \alpha^2 \gamma_{ik} \gamma_{jl} \epsilon^{tklm} B_m
+	2 \frac{1}{\alpha} \beta_{[i} E_{j]}
+	+ \epsilon_{ijk} B^k
 }$<br>
-
 <br>
-
 
 <hr>
 <b>Faraday tensor as 2-form (works in flat or curved coordinates):</b><br>
-$A^u = \pmatrix{\frac{1}{c} \phi \\ A^i}$<br>
 $F_{ab} = 2 \partial_{[a} A_{b]} = 2 \nabla_{[a} A_{b]}$ (notice the connections cancel)<br>
 $F = dA$<br>
 $F = F_{ab} dx^a \wedge dx^b = dx^b \partial_b \wedge (A_a dx^a) = 2 \partial_{[a} A_{b]} dx^a \wedge dx^b$<br>
@@ -201,6 +251,7 @@ $d \star F = \star J$, $\nabla \cdot F = J$<br>
 <hr>
 <b>splitting apart space and time in the differential form representation:</b><br>
 
+Flanders, ch.2, and Gravitation box 4.3<br>
 Notice, $\omega \wedge \star \omega = |\omega|^2 dV$<br>
 So $dt \wedge dx \wedge \star (dt \wedge dx) = dt \wedge dx \wedge (-dy \wedge dz) = -dV$<br>
 So $dy \wedge dz \wedge \star (dy \wedge dz) = dy \wedge dz \wedge (dt \wedge dx) = dV$<br>
@@ -208,37 +259,20 @@ So in Minkowski metric, $\star^2 = -1$<br>
 <br>
 
 In an ADM metric:<br>
-$\star (dt \wedge dx^i) = \frac{1}{2} {\epsilon^{ti}}_{jk} dx^j \wedge dx^k$<br>
-...with an ADM metric...<br>
-$= \frac{1}{2} g^{ta} g^{ib} \epsilon_{abjk} dx^j \wedge dx^k$<br>
-$= \frac{1}{2} (
-	g^{tm} g^{it} \epsilon_{mtjk} 
-	+ g^{tt} g^{in} \epsilon_{tnjk}
-	+ g^{tm} g^{in} \epsilon_{mnjk}
-) dx^j \wedge dx^k$<br>
-$= \frac{1}{2} (
-	- \frac{1}{\alpha^2} \gamma^{im} \epsilon_{tmjk}
-	+ \frac{1}{\alpha^2} \beta^m (\gamma^{in} - \frac{1}{\alpha^2} \beta^i \beta^n) \epsilon_{mnjk}
-) dx^j \wedge dx^k$<br>
-$= -\frac{1}{2} \frac{1}{\alpha^2} \gamma^{im} (
-	\epsilon_{tmjk} - \beta^n \epsilon_{nmjk} 
-) dx^j \wedge dx^k$<br>
-...and if the $\beta^i = 0$, this becomes...<br>
-$= -\frac{1}{2} \frac{1}{\alpha} \gamma^{im} \epsilon_{mjk} dx^j \wedge dx^k$<br>
+$\star (dt \wedge dx^i) = \frac{1}{2} {\epsilon^{ti}}_{jk} dx^j \wedge dx^k$
+$= -\frac{1}{2} \frac{1}{\alpha} {\epsilon^i}_{jk} dx^j \wedge dx^k$<br>
 <br>
-So $\star (\mathcal{E} \wedge dt) = \star (\mathcal{E}_i dx^i \wedge dt) = -\frac{1}{2} \mathcal{E}_i {\epsilon^{ti}}_{jk} dx^j \wedge dx^k$<br>
-...in ADM...<br>
-$= -\frac{1}{2} \frac{1}{\alpha^2} \mathcal{E}^i (
-	\epsilon_{tijk} - \beta^n \epsilon_{nijk} 
-) dx^j \wedge dx^k$<br>
+So $\star (V \wedge dt) = \star (V_i dx^i \wedge dt) = V_i \star (dx^i \wedge dt)$<br>
+$= -\frac{1}{2} V_i {\epsilon^{ti}}_{jk} dx^j \wedge dx^k$<br>
+$= \frac{1}{2} \frac{1}{\alpha} V^i \epsilon_{ijk} dx^j \wedge dx^k$<br>
 <br>
 
 $F = F_{ti} dt \wedge dx^i + \frac{1}{2} F_{ij} dx^i \wedge dx^j$<br> 
 $F = \mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt)$.<br>
+(TODO HERE redo this all with the definition $F = \alpha (\mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt))$, because this makes a lot of $\alpha$'s go away when equating $\mathcal{E}, \mathcal{B}$ with $E, B$).<br>
+(This is also consistent with the $n_t$ and $n^t$ definitions).<br>
 Where $\mathcal{E} = \mathcal{E}_i dx^i$<br>
 And $\mathcal{B} = \mathcal{B}_i dx^i$<br>
-So $F_{it} = \mathcal{E}_i$<br>
-And TODO $F_{jk}$ for $\mathcal{B}_k$<br>
 Notice that $\mathcal{E}, \mathcal{B}$ are different than $E, B$.<br>
 $F_{uv} = \pmatrix{
 	0 & -\mathcal{E} \\
@@ -246,16 +280,48 @@ $F_{uv} = \pmatrix{
 }$<br>
 $F_{uv} = \pmatrix{
 	0 & -\mathcal{E}_i \\
-	\mathcal{E}_i & -\mathcal{B}_k {\epsilon^{tk}}_{ij}
+	\mathcal{E}_i & \frac{1}{\alpha} \epsilon_{ijk} \mathcal{B}^k
 }$<br>
-
-So in general relativity, $\mathcal{E}_i = (\alpha^2 - \beta^2) E_i
-	+ \beta_i \beta^k E_k
-	- \alpha^2 \gamma_{ik} \beta_l \epsilon^{tklm} B_m$<br>
-$\mathcal{E}_t$ is arbitrary.<br>
+So $F_{it} = \mathcal{E}_i$<br>
+And $F_{ij} = \frac{1}{\alpha} \epsilon_{ijk} B^k$<br>
 <br>
 
-In component form, with a distinct time coordinate:<br>
+$\mathcal{E}_t$ and $\mathcal{B}_t$ can be chosen arbitrarily, since any values you use will be cancelled.<br>
+<br>
+
+Comparing $E$ and $\mathcal{E}$:<br>
+$\mathcal{E}_i = \alpha E_i + 2 \frac{1}{\alpha} \beta^k \beta_{[i} E_{k]} + \frac{1}{\alpha} \epsilon_{ikl} \beta^k B^l$<br>
+$\mathcal{E}_i = (\alpha \delta^k_i + 2 \frac{1}{\alpha} \beta^j \beta_{[i} \delta^k_{j]}) E_k + \frac{1}{\alpha} \epsilon_{ikl} \beta^k B^l$<br>
+<br>
+
+Comparing $B$ to $\mathcal{B}$:<br>
+$\frac{1}{\alpha} \epsilon_{ijk} \mathcal{B}^k = 2 \frac{1}{\alpha} \beta_{[i} E_{j]} + \epsilon_{ijk} B^k$<br>
+$\mathcal{B}_i = \alpha B_i + \epsilon_{ijk} \beta^j E^k$<br>
+<br>
+
+Looking at ${F^a}_b, \mathcal{E}_i, and \mathcal{B}_i$, we find:<br>
+${F^a}_b = \pmatrix{
+	\frac{1}{\alpha} \beta^k E_k & 
+	\frac{1}{\alpha} E_j
+	\\
+	(\alpha - \frac{1}{\alpha} \beta^2) E^i + {\epsilon^i}_{kl} \beta^k B^l & 
+	-\frac{1}{\alpha} E^i \beta_j + {\epsilon^i}_{jk} B^k
+}$<br>
+${F^a}_b = \pmatrix{
+	\frac{1}{\alpha} E_t & 
+	\frac{1}{\alpha} E_j
+	\\
+	\mathcal{E}^i - \frac{1}{\alpha} \beta^k \beta_i E^k & 
+	\frac{1}{\alpha} {\epsilon^i}_{jk} \mathcal{B}^k - \frac{1}{\alpha} \beta^i E_j
+}$<br>
+(Notice this $\mathcal{E}^i$ is only raised with $\gamma^{ij} \mathcal{E}_j$, and not the whole $g^{ia} \mathcal{E}_a$)<br>
+Because this one is what I'll be looking at later with the stress-energy tensor.<br>
+<br>
+
+<hr>
+<b>Differential forms in terms of the electromagnetic 4-potential</b><br>
+In component form using ADM coordinates:<br>
+$A^u = \pmatrix{\frac{1}{c} \phi \\ A^i}$<br>
 $F_{ab} = \pmatrix{
 	0 & F_{tj} \\ 
 	F_{it} & F_{ij}
@@ -267,6 +333,9 @@ $F_{ab} = \pmatrix{
 	-A_{i,t} + \frac{1}{c} \phi_{,i} & A_{j,i} - A_{i,j}
 }$<br>
 So $\mathcal{E}_i = -A_{i,t} + \frac{1}{c} \phi_{,i}$<br>
+And $A_{j,i} - A_{i,j} = \frac{1}{\alpha} \epsilon_{ijk} \mathcal{B}^k$<br>
+$\epsilon^{ijl} (A_{j,i} - A_{i,j}) = \frac{1}{\alpha} \epsilon^{ijl} \epsilon_{ijk} \mathcal{B}^k$<br>
+$\mathcal{B}^i = \alpha \epsilon^{ijk} A_{k,j}$<br>
 <br>
 
 $F \wedge \star F$<br>
@@ -286,37 +355,51 @@ $<br>
 $= \mathcal{E} \wedge dt \wedge \star (\mathcal{E} \wedge dt)
 - \star (\mathcal{B} \wedge dt) \wedge (\mathcal{B} \wedge dt)
 $<br>
-$= -\mathcal{E}_i dx^i \wedge dt \wedge \frac{1}{2} \mathcal{E}_m {\epsilon^{tm}}_{jk} dx^j \wedge dx^k
-+ \frac{1}{2} \mathcal{B}_m {\epsilon^{tm}}_{jk} dx^j \wedge dx^k\wedge (\mathcal{B}_i dx^i \wedge dt)
+$= \mathcal{E}_i dx^i \wedge dt \wedge \frac{1}{2} \mathcal{E}_m {\epsilon^{tm}}_{jk} dx^j \wedge dx^k
+	- \frac{1}{2} \mathcal{B}_m {\epsilon^{tm}}_{jk} dx^j \wedge dx^k\wedge (\mathcal{B}_i dx^i \wedge dt)
 $<br>
-$= \frac{1}{2} (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) {\epsilon^{tm}}_{jk} dt \wedge dx^i \wedge dx^j \wedge dx^k$<br>
-$= (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) g^{ta} g^{mb} \epsilon_{abjk} \epsilon^{tijk} dV$<br>
-$= -2 (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) g^{ta} g^{mb} \delta^{ti}_{ab} dV$<br>
-$= -2 (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) g^{ta} g^{mb} (\delta^t_a \delta^i_b - \delta^t_b \delta^i_a) dV$<br>
-$= -2 (\mathcal{E}_i \mathcal{E}_j - \mathcal{B}_i \mathcal{B}_j) (g^{tt} g^{ij} - g^{ti} g^{tj}) dV$<br>
-$= -2 (\mathcal{E}_i \mathcal{E}_j - \mathcal{B}_i \mathcal{B}_j) (-\frac{1}{\alpha^2} (\gamma^{ij} - \frac{1}{\alpha^2} \beta^i \beta^j) - \frac{1}{\alpha^4} \beta^i \beta^j) dV$<br>
-$= 2 \frac{1}{\alpha^2} \gamma^{ij} (\mathcal{E}_i \mathcal{E}_j - \mathcal{B}_i \mathcal{B}_j) dV$<br>
-$\star dV = \star \star 1 = -1$<br>
-So $\star (F \wedge \star F) = -2 \frac{1}{\alpha^2} \gamma^{ij} (\mathcal{E}_i \mathcal{E}_j - \mathcal{B}_i \mathcal{B}_j)$<br>
+$= -\frac{1}{2} (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) {\epsilon^{tm}}_{jk} dt \wedge dx^i \wedge dx^j \wedge dx^k$<br>
+$= -\frac{1}{2} (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) g^{ta} g^{mb} \epsilon_{abjk} \epsilon^{tijk} dV$ ... explain this move better<br>
+$= 2 (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) g^{ta} g^{mb} \delta^{ti}_{ab} dV$ ... FIXME but $jk$ don't sum over time...<br>
+$= 2 (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) g^{ta} g^{mb} (\delta^t_a \delta^i_b - \delta^t_b \delta^i_a) dV$<br>
+$= 2 (\mathcal{E}_i \mathcal{E}_j - \mathcal{B}_i \mathcal{B}_j) (g^{tt} g^{ij} - g^{ti} g^{tj}) dV$<br>
+$= 2 (\mathcal{E}_i \mathcal{E}_j - \mathcal{B}_i \mathcal{B}_j) (-\frac{1}{\alpha^2} (\gamma^{ij} - \frac{1}{\alpha^2} \beta^i \beta^j) - \frac{1}{\alpha^4} \beta^i \beta^j) dV$<br>
+$= -2 \frac{1}{\alpha^2} \gamma^{ij} (\mathcal{E}_i \mathcal{E}_j - \mathcal{B}_i \mathcal{B}_j) dV$<br>
 If we choose $\mathcal{E}_t = \mathcal{B}_t = 0$:<br>
-$= -2 \frac{1}{\alpha^2} g^{ab} (\mathcal{E}_a \mathcal{E}_b - \mathcal{B}_a \mathcal{B}_b)$<br>
-$= -\frac{2}{\alpha^2} (\mathcal{E}^2 - \mathcal{B}^2)$<br>
+$= -2 \frac{1}{\alpha^2} g^{ab} (\mathcal{E}_a \mathcal{E}_b - \mathcal{B}_a \mathcal{B}_b) dV$<br>
+$= -\frac{2}{\alpha^2} (\mathcal{E}^2 - \mathcal{B}^2) dV$<br>
 ...TODO show this one too<br>
-$= g^{ua} F_{ab} g^{bv} F_{uv}$<br>
-$ = F_{ab} F^{ab}$<br>
-$ = -tr(F^2)$<br>
+$= g^{ua} F_{ab} g^{bv} F_{uv} dV$<br>
+$ = F_{ab} F^{ab} dV$<br>
+$ = -tr(F^2) dV$<br>
 <br>
-and $F \wedge F = F_{ac} {F_b}^c$ (TODO show this too)<br>
-and $T = \frac{1}{\mu_0} (F \wedge F + F \wedge * F)$ (TODO check)<br>
-$T = \frac{1}{\mu_0} F \wedge (F + *F)$ (TODO check)<br>
-...which looks a lot like the Holst action in general relativity...<br>
+
+$F \wedge F = (\mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt)) \wedge (\mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt))$<br>
+$= \mathcal{E} \wedge dt \wedge \mathcal{E} \wedge dt
+	+ \star (\mathcal{B} \wedge dt) \wedge \mathcal{E} \wedge dt 
+	+ \mathcal{E} \wedge dt \wedge \star (\mathcal{B} \wedge dt) 
+	+ \star (\mathcal{B} \wedge dt) \wedge \star (\mathcal{B} \wedge dt)$<br>
+$= \star (\mathcal{B} \wedge dt) \wedge \mathcal{E} \wedge dt 
+	+ \mathcal{E} \wedge dt \wedge \star (\mathcal{B} \wedge dt)$<br>
+$=  \frac{1}{2} \mathcal{B}_i {\epsilon^{ti}}_{jk} dx^j \wedge dx^k \wedge \mathcal{E} \wedge dt 
+	+ \mathcal{E} \wedge dt \wedge \frac{1}{2} \mathcal{B}_i {\epsilon^{ti}}_{jk} dx^j \wedge dx^k$<br>
+$= -\mathcal{E}_i \mathcal{B}_l {\epsilon^{tl}}_{jk} dt \wedge dx^i \wedge dx^j \wedge dx^k$<br>
+$= -\mathcal{E}_i \mathcal{B}_l {\epsilon^{tl}}_{jk} \epsilon^{tijk} dV$ ... once again, explain better.<br>
+$= -4 \mathcal{E}_i \mathcal{B}_l g^{ta} g^{lb} \epsilon_{abjk} \epsilon^{tijk} dV$ ... once again, I don't trust this next move...<br>
+$= -4 \mathcal{E}_i \mathcal{B}_l g^{ta} g^{lb} \delta^{ti}_{ab} dV$<br>
+$= -4 \mathcal{E}_i \mathcal{B}_l g^{ta} g^{lb} (\delta^t_a \delta^i_b - \delta^t_b \delta^i_a) dV$<br>
+$= -4 \mathcal{E}_i \mathcal{B}_j (g^{tt} g^{ij} - g^{ti} g^{tj}) dV$<br>
+$= -4 \mathcal{E}_i \mathcal{B}_j (-\frac{1}{\alpha^2} (\gamma^{ij} - \frac{1}{\alpha^2} \beta^i \beta^j) - \frac{1}{\alpha^4} \beta^i \beta^j) dV$<br>
+$= 4 \frac{1}{\alpha^2} \gamma^{ij} \mathcal{E}_i \mathcal{B}_j dV$<br>
+So $\star (F \wedge F) = 4 \frac{1}{\alpha^2} \gamma^{ij} \mathcal{E}_i \mathcal{B}_j$<br>
+This looks suspiciously like $F \cdot \star F$<br>...
 <br>
 
 <hr>
 <b>electromagnetic stress-energy in vacuum:</b><br>
 $T_{uv} = \frac{1}{\mu_0} (F_{ua} {F_v}^a - \frac{1}{4} g_{uv} F_{ab} F^{ab})$<br>
 as a trace-free operation:<br>
-${T^u}_v = -\frac{1}{\mu_0} ({F^u}_a {F_a}^v - \frac{1}{4} \delta^u_v {F^a}_b {F^b}_a)$<br>
+${T^u}_v = -\frac{1}{\mu_0} ({F^u}_a {F^a}_v - \frac{1}{4} \delta^u_v {F^a}_b {F^b}_a)$<br>
 Let ${(F^2)^u}_v = {F^u}_a {F^a}_v$<br>
 ${T^u}_v = -\frac{1}{\mu_0} ({(F^2)^u}_v - \frac{1}{4} \delta^u_v {(F^2)^a}_a)$<br>
 Let $(A_{uv})^{TF} = A_{uv} - \frac{1}{n} g_{uv} {A^a}_a$ be the trace-free element of $A_{uv}$, where $n = $ the dimension, such that ${(A^{TF})^a}_a = 0$<br>
@@ -724,6 +807,7 @@ A few wiki pages:<br>
 <a href="https://en.wikipedia.org/wiki/Maxwell%27s_equations">https://en.wikipedia.org/wiki/Maxwell%27s_equations</a><br>
 <a href="https://en.wikipedia.org/wiki/Magnetic_susceptibility">https://en.wikipedia.org/wiki/Magnetic_susceptibility</a><br>
 <a href="https://en.wikipedia.org/wiki/Electric_susceptibility">https://en.wikipedia.org/wiki/Electric_susceptibility</a><br>
+<a href="https://en.wikipedia.org/wiki/Maxwell%27s_equations_in_curved_spacetime">https://en.wikipedia.org/wiki/Maxwell%27s_equations_in_curved_spacetime</a><br>
 <br>	
 	</body>
 </html>
