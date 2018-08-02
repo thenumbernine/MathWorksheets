@@ -11,6 +11,8 @@ Let $\eta_{ab} = diag(-1,1,1,1)$ (someday I'll switch)<br>
 Let $[abcd] = \bar\epsilon_{abcd} = $ permutation symbol for $abcd$<br>
 Same with $[ijk] = \bar\epsilon_{ijk} = $ spatial permutation symbol for $ijk$<br>
 I'm going to raise and lower $\bar\epsilon_{ijk}$ by $\eta_{ij}$<br>
+Indexes denoted $ijklmn$ are raised/lowered with the spatial metric $\gamma_{ij}$ alone.
+All others are raised/lowered by the spacetime metric $g_{ab}$.<br>
 <br>
 $\partial = (\frac{1}{c} \partial_t, \partial_i)$<br>
 $dx = (c dt, dx^i)$<br>
@@ -31,9 +33,9 @@ $(\vec\nabla \times \vec{V})^i = \bar\epsilon^{ijk} V_{k,j}$<br>
 From Misner, Thorne, Wheeler.  Electromagnetism in special relativity, adjusted to SI units.<br>
 
 Units of $E_i$ are in $\frac{N}{C} = \frac{kg \cdot m}{C \cdot s^2}$.<br>
-Units of $D_i$ are ...<br>
+Units of $D_i$ and $P_i$ are $\frac{kg \cdot m}{C \cdot s^2} \frac{C^2}{kg \cdot m} = \frac{C}{s^2}$<br>
 Units of $B_i$ are in $\frac{N \cdot s}{C \cdot m} = \frac{kg}{C \cdot s}$<br>
-Units of $H_i$ are in $\frac{A}{m} = \frac{C}{m \cdot s}$<br>
+Units of $H_i$ and $M_i$ are in $\frac{A}{m} = \frac{C}{m \cdot s}$<br>
 <br>
 
 In Cartesian coordinates:<br>
@@ -300,7 +302,7 @@ So $F_{it} = \alpha \mathcal{E}_i$<br>
 And $F_{ij} = \epsilon_{ijk} B^k$<br>
 <br>
 
-$\mathcal{E}_t$ and $\mathcal{B}_t$ can be chosen arbitrarily, since any values you use will be cancelled.<br>
+$\mathcal{E}_t$ and $\mathcal{B}_t$ can be chosen arbitrarily, since any values that are used will be cancelled.<br>
 <br>
 
 Comparing $E$ and $\mathcal{E}$:<br>
@@ -375,9 +377,9 @@ $= \alpha^2 (
 	\mathcal{E}_i dx^i \wedge dt \wedge \frac{1}{2} \mathcal{E}_m {\epsilon^{tm}}_{jk} dx^j \wedge dx^k
 	- \frac{1}{2} \mathcal{B}_m {\epsilon^{tm}}_{jk} dx^j \wedge dx^k\wedge (\mathcal{B}_i dx^i \wedge dt)
 )$<br>
-$= -\alpha^2 \frac{1}{2} (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) {\epsilon^{tm}}_{jk} dt \wedge dx^i \wedge dx^j \wedge dx^k$<br>
-$= -\alpha^2 \frac{1}{2} (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) g^{ta} g^{mb} \epsilon_{abjk} \epsilon^{tijk} dV$ ... explain this move better<br>
-$= 2 \alpha^2 (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) g^{ta} g^{mb} \delta^{ti}_{ab} dV$ ... FIXME but $jk$ don't sum over time...<br>
+$= -\frac{1}{2} \alpha^2 (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) {\epsilon^{tm}}_{jk} dt \wedge dx^i \wedge dx^j \wedge dx^k$<br>
+$= -2 \alpha^2 (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) g^{ta} g^{mb} \epsilon_{abjk} \epsilon^{tijk} dV$<br>
+$= 2 \alpha^2 (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) g^{ta} g^{mb} \delta^{ti}_{ab} dV$<br>
 $= 2 \alpha^2 (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) g^{ta} g^{mb} (\delta^t_a \delta^i_b - \delta^t_b \delta^i_a) dV$<br>
 $= 2 \alpha^2 (\mathcal{E}_i \mathcal{E}_j - \mathcal{B}_i \mathcal{B}_j) (g^{tt} g^{ij} - g^{ti} g^{tj}) dV$<br>
 $= 2 \alpha^2 (\mathcal{E}_i \mathcal{E}_j - \mathcal{B}_i \mathcal{B}_j) (-\frac{1}{\alpha^2} (\gamma^{ij} - \frac{1}{\alpha^2} \beta^i \beta^j) - \frac{1}{\alpha^4} \beta^i \beta^j) dV$<br>
@@ -407,8 +409,8 @@ $= \alpha^2 (
 	+ \mathcal{E} \wedge dt \wedge \frac{1}{2} \mathcal{B}_i {\epsilon^{ti}}_{jk} dx^j \wedge dx^k
 )$<br>
 $= -\alpha^2 \mathcal{E}_i \mathcal{B}_l {\epsilon^{tl}}_{jk} dt \wedge dx^i \wedge dx^j \wedge dx^k$<br>
-$= -\alpha^2 \mathcal{E}_i \mathcal{B}_l {\epsilon^{tl}}_{jk} \epsilon^{tijk} dV$ ... once again, explain better.<br>
-$= -4 \alpha^2 \mathcal{E}_i \mathcal{B}_l g^{ta} g^{lb} \epsilon_{abjk} \epsilon^{tijk} dV$ ... once again, I don't trust this next move...<br>
+$= -4 \alpha^2 \mathcal{E}_i \mathcal{B}_l {\epsilon^{tl}}_{jk} \epsilon^{tijk} dV$<br>
+$= -4 \alpha^2 \mathcal{E}_i \mathcal{B}_l g^{ta} g^{lb} \epsilon_{abjk} \epsilon^{tijk} dV$<br>
 $= -4 \alpha^2 \mathcal{E}_i \mathcal{B}_l g^{ta} g^{lb} \delta^{ti}_{ab} dV$<br>
 $= -4 \alpha^2 \mathcal{E}_i \mathcal{B}_l g^{ta} g^{lb} (\delta^t_a \delta^i_b - \delta^t_b \delta^i_a) dV$<br>
 $= -4 \alpha^2 \mathcal{E}_i \mathcal{B}_j (g^{tt} g^{ij} - g^{ti} g^{tj}) dV$<br>
