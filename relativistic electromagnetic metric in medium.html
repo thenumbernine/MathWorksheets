@@ -30,7 +30,12 @@ $(\vec\nabla \times \vec{V})^i = \bar\epsilon^{ijk} V_{k,j}$<br>
 <b>Faraday tensor in special relativity:</b><br>
 From Misner, Thorne, Wheeler.  Electromagnetism in special relativity, adjusted to SI units.<br>
 
+Units of $E_i$ are in $\frac{N}{C} = \frac{kg \cdot m}{C \cdot s^2}$.<br>
+Units of $D_i$ are ...<br>
+Units of $B_i$ are in $\frac{N \cdot s}{C \cdot m} = \frac{kg}{C \cdot s}$<br>
+Units of $H_i$ are in $\frac{A}{m} = \frac{C}{m \cdot s}$<br>
 <br>
+
 In Cartesian coordinates:<br>
 $F_{ab} = \downarrow a \overset{\rightarrow b}{\pmatrix{
 	0 & -\frac{1}{c} E_x & -\frac{1}{c} E_y & -\frac{1}{c} E_z \\
@@ -38,6 +43,7 @@ $F_{ab} = \downarrow a \overset{\rightarrow b}{\pmatrix{
 	\frac{1}{c} E_y & -B_z & 0 & B_x \\
 	\frac{1}{c} E_z & B_y & B_x & 0
 }}$<br>
+$F_{ab}$ has units of $\frac{kg}{C \cdot s}$<br>
 <br>
 
 In generalized time+space coordinates:<br>
@@ -46,9 +52,19 @@ $F_{ab} = \downarrow a(i) \overset{\rightarrow b(j)}{\pmatrix{
 	\frac{1}{c} E_i & {\bar\epsilon_{ij}}^k B_k
 }}$ (eqn 3.7)<br>
 $F^{ab} = \eta^{au} F_{uv} \eta^{vb} = \downarrow a \overset{\rightarrow b}{\pmatrix{ 0 & \frac{1}{c} E_j \\ -\frac{1}{c} E_i & {\bar\epsilon_{ij}}^k B_k}}$<br>
-$J^a = \pmatrix{c \rho \\ J^i}$<br>
+<br>
+
+$J^a = \pmatrix{c \rho \\ J^i}$ is in $\frac{C}{s}$<br>
+$\rho$ is in $\frac{C}{m^3}$<br>
+$J^i$ is in $\frac{C}{m^3} \frac{m}{s} = \frac{C}{m^2 \cdot s}$<br>
+<br>
+
+${F^{ab}}_{,b}$ is in $\frac{kg}{C \cdot m \cdot s}$<br>
+$\frac{1}{\mu_0} {F^{ab}}_{,b}$ is in $\frac{C}{m^2 \cdot s}$<br>
 ${F^{ab}}_{,b} = \mu_0 J^a$ (eqn 3.36)<br>
-Becomes:<br>
+<br>
+
+This becomes:<br>
 $\frac{1}{c} E_{j,j} = \mu_0 c \rho$<br>
 $E_{j,j} = \frac{1}{\epsilon_0} \rho$<br>
 $-\frac{1}{c^2} E_{i,t} + {\bar\epsilon_i}^{jk} B_{k,j} = \mu_0 J^i$<br>
@@ -71,6 +87,7 @@ $B_{i,t} + {\bar\epsilon_i}^{jk} E_{k,j} = 0$<br>
 
 <hr>
 <b>ADM metric:</b><br>
+(In terms of units, there might be a $c$ somewhere in here...)<br>
 $[g_{uv}] = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
 	-\alpha^2 + \beta_k \beta^k & \beta_j \\ 
 	\beta_i & \gamma_{ij}
@@ -96,7 +113,7 @@ $n^u = \downarrow u(i)\pmatrix{ 1/\alpha \\ -\beta^i/\alpha}$<br>
 <br>
 notice: $n_u n^u = -1$<br>
 <br>
-In ADM, $\epsilon^{tabc} u_a v_b w_c = \epsilon^{tijk} u_i v_j w_k$ since $\epsilon^{ttab} = 0$ due to its antisymmetric. The associated $u_t, $v_t, w_t$ will be cancelled.<br>
+In ADM, $\epsilon^{tabc} u_a v_b w_c = \epsilon^{tijk} u_i v_j w_k$ since $\epsilon^{ttab} = 0$ due to its antisymmetric. The associated $u_t, v_t, w_t$ will be cancelled.<br>
 <br>
 
 <hr>
@@ -131,7 +148,6 @@ Define the Hodge dual as $(\star F)_{ab} = \frac{1}{2} F_{uv} {\epsilon^{uv}}_{a
 <hr>
 <b>Faraday tensor in general relativity, in vacuum:</b><br>
 From Baumgarate &amp; Shapiro, eqn 5.114:<br>
-I'm neglecting my units here, so TODO add those back in.<br>
 $F^{ab} = n^a E^b - n^b E^a + n_d \epsilon^{dabc} B_c$<br>
 $E^a = F^{ab} n_b$<br>
 $B^a = \frac{1}{2} \epsilon^{abcd} n_b F_{dc}$<br>
@@ -268,35 +284,34 @@ $= \frac{1}{2} \frac{1}{\alpha} V^i \epsilon_{ijk} dx^j \wedge dx^k$<br>
 <br>
 
 $F = F_{ti} dt \wedge dx^i + \frac{1}{2} F_{ij} dx^i \wedge dx^j$<br> 
-$F = \mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt)$.<br>
-(TODO HERE redo this all with the definition $F = \alpha (\mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt))$, because this makes a lot of $\alpha$'s go away when equating $\mathcal{E}, \mathcal{B}$ with $E, B$).<br>
-(This is also consistent with the $n_t$ and $n^t$ definitions).<br>
+Let $F = \alpha (\mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt))$.<br>
 Where $\mathcal{E} = \mathcal{E}_i dx^i$<br>
 And $\mathcal{B} = \mathcal{B}_i dx^i$<br>
 Notice that $\mathcal{E}, \mathcal{B}$ are different than $E, B$.<br>
 $F_{uv} = \pmatrix{
-	0 & -\mathcal{E} \\
-	\mathcal{E} & \star (\mathcal{B} \wedge dt)
+	0 & -\alpha \mathcal{E} \\
+	\alpha \mathcal{E} & \alpha \star (\mathcal{B} \wedge dt)
 }$<br>
 $F_{uv} = \pmatrix{
-	0 & -\mathcal{E}_i \\
-	\mathcal{E}_i & \frac{1}{\alpha} \epsilon_{ijk} \mathcal{B}^k
+	0 & -\alpha \mathcal{E}_i \\
+	\alpha \mathcal{E}_i & \epsilon_{ijk} \mathcal{B}^k
 }$<br>
-So $F_{it} = \mathcal{E}_i$<br>
-And $F_{ij} = \frac{1}{\alpha} \epsilon_{ijk} B^k$<br>
+So $F_{it} = \alpha \mathcal{E}_i$<br>
+And $F_{ij} = \epsilon_{ijk} B^k$<br>
 <br>
 
 $\mathcal{E}_t$ and $\mathcal{B}_t$ can be chosen arbitrarily, since any values you use will be cancelled.<br>
 <br>
 
 Comparing $E$ and $\mathcal{E}$:<br>
-$\mathcal{E}_i = \alpha E_i + 2 \frac{1}{\alpha} \beta^k \beta_{[i} E_{k]} + \frac{1}{\alpha} \epsilon_{ikl} \beta^k B^l$<br>
-$\mathcal{E}_i = (\alpha \delta^k_i + 2 \frac{1}{\alpha} \beta^j \beta_{[i} \delta^k_{j]}) E_k + \frac{1}{\alpha} \epsilon_{ikl} \beta^k B^l$<br>
+$\alpha \mathcal{E}_i = \alpha E_i + 2 \frac{1}{\alpha} \beta^k \beta_{[i} E_{k]} + \frac{1}{\alpha} \epsilon_{ikl} \beta^k B^l$<br>
+$\mathcal{E}_i = E_i + \frac{1}{\alpha^2} (2 \beta^k \beta_{[i} E_{k]} + \epsilon_{ikl} \beta^k B^l)$<br>
+$\mathcal{E}_i = (\delta^k_i + 2 \frac{1}{\alpha^2} \beta^j \beta_{[i} \delta^k_{j]}) E_k + \frac{1}{\alpha^2} \epsilon_{ikl} \beta^k B^l$<br>
 <br>
 
 Comparing $B$ to $\mathcal{B}$:<br>
-$\frac{1}{\alpha} \epsilon_{ijk} \mathcal{B}^k = 2 \frac{1}{\alpha} \beta_{[i} E_{j]} + \epsilon_{ijk} B^k$<br>
-$\mathcal{B}_i = \alpha B_i + \epsilon_{ijk} \beta^j E^k$<br>
+$\epsilon_{ijk} \mathcal{B}^k = 2 \frac{1}{\alpha} \beta_{[i} E_{j]} + \epsilon_{ijk} B^k$<br>
+$\mathcal{B}_i = B_i + \frac{1}{\alpha} \epsilon_{ijk} \beta^j E^k$<br>
 <br>
 
 Combining ${F^a}_b, \mathcal{E}_i$, and $\mathcal{B}_i$, we find:<br>
@@ -305,14 +320,14 @@ ${F^a}_b = \pmatrix{
 	\frac{1}{\alpha} E_j
 	\\
 	(\alpha - \frac{1}{\alpha} \beta^2) E^i + {\epsilon^i}_{kl} \beta^k B^l & 
-	-\frac{1}{\alpha} E^i \beta_j + {\epsilon^i}_{jk} B^k
+	{\epsilon^i}_{jk} B^k - \frac{1}{\alpha} E^i \beta_j
 }$<br>
 ${F^a}_b = \pmatrix{
 	\frac{1}{\alpha} E_t & 
 	\frac{1}{\alpha} E_j
 	\\
-	\mathcal{E}^i - \frac{1}{\alpha} \beta^i \beta_k E^k & 
-	\frac{1}{\alpha} {\epsilon^i}_{jk} \mathcal{B}^k - \frac{1}{\alpha} \beta^i E_j
+	\alpha \mathcal{E}^i - \frac{1}{\alpha} \beta^i \beta_k E^k & 
+	{\epsilon^i}_{jk} \mathcal{B}^k - \frac{1}{\alpha} \beta^i E_j
 }$<br>
 (Notice this $\mathcal{E}^i$ is only raised with $\gamma^{ij} \mathcal{E}_j$, and not the whole $g^{ia} \mathcal{E}_a$)<br>
 Because this one is what I'll be looking at later with the stress-energy tensor.<br>
@@ -332,66 +347,74 @@ $F_{ab} = \pmatrix{
 	0 & A_{j,t} - \frac{1}{c} \phi_{,j} \\
 	-A_{i,t} + \frac{1}{c} \phi_{,i} & A_{j,i} - A_{i,j}
 }$<br>
-So $\mathcal{E}_i = -A_{i,t} + \frac{1}{c} \phi_{,i}$<br>
-And $A_{j,i} - A_{i,j} = \frac{1}{\alpha} \epsilon_{ijk} \mathcal{B}^k$<br>
-$\epsilon^{ijl} (A_{j,i} - A_{i,j}) = \frac{1}{\alpha} \epsilon^{ijl} \epsilon_{ijk} \mathcal{B}^k$<br>
-$\mathcal{B}^i = \alpha \epsilon^{ijk} A_{k,j}$<br>
+So $\mathcal{E}_i = \frac{1}{\alpha} (-A_{i,t} + \frac{1}{c} \phi_{,i})$<br>
+And $A_{j,i} - A_{i,j} = \epsilon_{ijk} \mathcal{B}^k$<br>
+$\epsilon^{ijl} (A_{j,i} - A_{i,j}) = \epsilon^{ijl} \epsilon_{ijk} \mathcal{B}^k$<br>
+$\mathcal{B}^i = \epsilon^{ijk} A_{k,j}$<br>
 <br>
 
-$F \wedge \star F$<br>
-$= (\mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt)) \wedge \star (\mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt))$<br>
-$= (
+$F \wedge \star F = \alpha^2 (\mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt)) \wedge \star (\mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt))$<br>
+$= \alpha^2 (
 	\mathcal{E} \wedge dt 
 	+ \star (\mathcal{B} \wedge dt)
 ) \wedge (
 	\star (\mathcal{E} \wedge dt) 
 	- (\mathcal{B} \wedge dt)
 )$<br>
-$= \mathcal{E} \wedge dt \wedge \star (\mathcal{E} \wedge dt)
-+ \star (\mathcal{B} \wedge dt) \wedge \star (\mathcal{E} \wedge dt)
-- \mathcal{E} \wedge dt \wedge (\mathcal{B} \wedge dt)
-- \star (\mathcal{B} \wedge dt) \wedge (\mathcal{B} \wedge dt)
-$<br>
-$= \mathcal{E} \wedge dt \wedge \star (\mathcal{E} \wedge dt)
-- \star (\mathcal{B} \wedge dt) \wedge (\mathcal{B} \wedge dt)
-$<br>
-$= \mathcal{E}_i dx^i \wedge dt \wedge \frac{1}{2} \mathcal{E}_m {\epsilon^{tm}}_{jk} dx^j \wedge dx^k
+$= \alpha^2 (
+	\mathcal{E} \wedge dt \wedge \star (\mathcal{E} \wedge dt)
+	+ \star (\mathcal{B} \wedge dt) \wedge \star (\mathcal{E} \wedge dt)
+	- \mathcal{E} \wedge dt \wedge (\mathcal{B} \wedge dt)
+	- \star (\mathcal{B} \wedge dt) \wedge (\mathcal{B} \wedge dt)
+)$<br>
+$= \alpha^2 (
+	\mathcal{E} \wedge dt \wedge \star (\mathcal{E} \wedge dt)
+	- \star (\mathcal{B} \wedge dt) \wedge (\mathcal{B} \wedge dt)
+)$<br>
+$= \alpha^2 (
+	\mathcal{E}_i dx^i \wedge dt \wedge \frac{1}{2} \mathcal{E}_m {\epsilon^{tm}}_{jk} dx^j \wedge dx^k
 	- \frac{1}{2} \mathcal{B}_m {\epsilon^{tm}}_{jk} dx^j \wedge dx^k\wedge (\mathcal{B}_i dx^i \wedge dt)
-$<br>
-$= -\frac{1}{2} (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) {\epsilon^{tm}}_{jk} dt \wedge dx^i \wedge dx^j \wedge dx^k$<br>
-$= -\frac{1}{2} (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) g^{ta} g^{mb} \epsilon_{abjk} \epsilon^{tijk} dV$ ... explain this move better<br>
-$= 2 (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) g^{ta} g^{mb} \delta^{ti}_{ab} dV$ ... FIXME but $jk$ don't sum over time...<br>
-$= 2 (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) g^{ta} g^{mb} (\delta^t_a \delta^i_b - \delta^t_b \delta^i_a) dV$<br>
-$= 2 (\mathcal{E}_i \mathcal{E}_j - \mathcal{B}_i \mathcal{B}_j) (g^{tt} g^{ij} - g^{ti} g^{tj}) dV$<br>
-$= 2 (\mathcal{E}_i \mathcal{E}_j - \mathcal{B}_i \mathcal{B}_j) (-\frac{1}{\alpha^2} (\gamma^{ij} - \frac{1}{\alpha^2} \beta^i \beta^j) - \frac{1}{\alpha^4} \beta^i \beta^j) dV$<br>
-$= -2 \frac{1}{\alpha^2} \gamma^{ij} (\mathcal{E}_i \mathcal{E}_j - \mathcal{B}_i \mathcal{B}_j) dV$<br>
+)$<br>
+$= -\alpha^2 \frac{1}{2} (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) {\epsilon^{tm}}_{jk} dt \wedge dx^i \wedge dx^j \wedge dx^k$<br>
+$= -\alpha^2 \frac{1}{2} (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) g^{ta} g^{mb} \epsilon_{abjk} \epsilon^{tijk} dV$ ... explain this move better<br>
+$= 2 \alpha^2 (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) g^{ta} g^{mb} \delta^{ti}_{ab} dV$ ... FIXME but $jk$ don't sum over time...<br>
+$= 2 \alpha^2 (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) g^{ta} g^{mb} (\delta^t_a \delta^i_b - \delta^t_b \delta^i_a) dV$<br>
+$= 2 \alpha^2 (\mathcal{E}_i \mathcal{E}_j - \mathcal{B}_i \mathcal{B}_j) (g^{tt} g^{ij} - g^{ti} g^{tj}) dV$<br>
+$= 2 \alpha^2 (\mathcal{E}_i \mathcal{E}_j - \mathcal{B}_i \mathcal{B}_j) (-\frac{1}{\alpha^2} (\gamma^{ij} - \frac{1}{\alpha^2} \beta^i \beta^j) - \frac{1}{\alpha^4} \beta^i \beta^j) dV$<br>
+$= -2 \gamma^{ij} (\mathcal{E}_i \mathcal{E}_j - \mathcal{B}_i \mathcal{B}_j) dV$<br>
 If we choose $\mathcal{E}_t = \mathcal{B}_t = 0$:<br>
-$= -2 \frac{1}{\alpha^2} g^{ab} (\mathcal{E}_a \mathcal{E}_b - \mathcal{B}_a \mathcal{B}_b) dV$<br>
-$= -\frac{2}{\alpha^2} (\mathcal{E}^2 - \mathcal{B}^2) dV$<br>
+$= -2 g^{ab} (\mathcal{E}_a \mathcal{E}_b - \mathcal{B}_a \mathcal{B}_b) dV$<br>
+$= -2 (\mathcal{E}^2 - \mathcal{B}^2) dV$<br>
 ...TODO show this one too<br>
 $= g^{ua} F_{ab} g^{bv} F_{uv} dV$<br>
 $ = F_{ab} F^{ab} dV$<br>
 $ = -tr(F^2) dV$<br>
 <br>
 
-$F \wedge F = (\mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt)) \wedge (\mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt))$<br>
-$= \mathcal{E} \wedge dt \wedge \mathcal{E} \wedge dt
+$F \wedge F = \alpha^2 (\mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt)) \wedge (\mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt))$<br>
+$= \alpha^2 (
+	\mathcal{E} \wedge dt \wedge \mathcal{E} \wedge dt
 	+ \star (\mathcal{B} \wedge dt) \wedge \mathcal{E} \wedge dt 
 	+ \mathcal{E} \wedge dt \wedge \star (\mathcal{B} \wedge dt) 
-	+ \star (\mathcal{B} \wedge dt) \wedge \star (\mathcal{B} \wedge dt)$<br>
-$= \star (\mathcal{B} \wedge dt) \wedge \mathcal{E} \wedge dt 
-	+ \mathcal{E} \wedge dt \wedge \star (\mathcal{B} \wedge dt)$<br>
-$=  \frac{1}{2} \mathcal{B}_i {\epsilon^{ti}}_{jk} dx^j \wedge dx^k \wedge \mathcal{E} \wedge dt 
-	+ \mathcal{E} \wedge dt \wedge \frac{1}{2} \mathcal{B}_i {\epsilon^{ti}}_{jk} dx^j \wedge dx^k$<br>
-$= -\mathcal{E}_i \mathcal{B}_l {\epsilon^{tl}}_{jk} dt \wedge dx^i \wedge dx^j \wedge dx^k$<br>
-$= -\mathcal{E}_i \mathcal{B}_l {\epsilon^{tl}}_{jk} \epsilon^{tijk} dV$ ... once again, explain better.<br>
-$= -4 \mathcal{E}_i \mathcal{B}_l g^{ta} g^{lb} \epsilon_{abjk} \epsilon^{tijk} dV$ ... once again, I don't trust this next move...<br>
-$= -4 \mathcal{E}_i \mathcal{B}_l g^{ta} g^{lb} \delta^{ti}_{ab} dV$<br>
-$= -4 \mathcal{E}_i \mathcal{B}_l g^{ta} g^{lb} (\delta^t_a \delta^i_b - \delta^t_b \delta^i_a) dV$<br>
-$= -4 \mathcal{E}_i \mathcal{B}_j (g^{tt} g^{ij} - g^{ti} g^{tj}) dV$<br>
-$= -4 \mathcal{E}_i \mathcal{B}_j (-\frac{1}{\alpha^2} (\gamma^{ij} - \frac{1}{\alpha^2} \beta^i \beta^j) - \frac{1}{\alpha^4} \beta^i \beta^j) dV$<br>
-$= 4 \frac{1}{\alpha^2} \gamma^{ij} \mathcal{E}_i \mathcal{B}_j dV$<br>
-So $\star (F \wedge F) = 4 \frac{1}{\alpha^2} \gamma^{ij} \mathcal{E}_i \mathcal{B}_j$<br>
+	+ \star (\mathcal{B} \wedge dt) \wedge \star (\mathcal{B} \wedge dt)
+)$<br>
+$= \alpha^2 (
+	\star (\mathcal{B} \wedge dt) \wedge \mathcal{E} \wedge dt 
+	+ \mathcal{E} \wedge dt \wedge \star (\mathcal{B} \wedge dt)
+)$<br>
+$= \alpha^2 (
+	\frac{1}{2} \mathcal{B}_i {\epsilon^{ti}}_{jk} dx^j \wedge dx^k \wedge \mathcal{E} \wedge dt 
+	+ \mathcal{E} \wedge dt \wedge \frac{1}{2} \mathcal{B}_i {\epsilon^{ti}}_{jk} dx^j \wedge dx^k
+)$<br>
+$= -\alpha^2 \mathcal{E}_i \mathcal{B}_l {\epsilon^{tl}}_{jk} dt \wedge dx^i \wedge dx^j \wedge dx^k$<br>
+$= -\alpha^2 \mathcal{E}_i \mathcal{B}_l {\epsilon^{tl}}_{jk} \epsilon^{tijk} dV$ ... once again, explain better.<br>
+$= -4 \alpha^2 \mathcal{E}_i \mathcal{B}_l g^{ta} g^{lb} \epsilon_{abjk} \epsilon^{tijk} dV$ ... once again, I don't trust this next move...<br>
+$= -4 \alpha^2 \mathcal{E}_i \mathcal{B}_l g^{ta} g^{lb} \delta^{ti}_{ab} dV$<br>
+$= -4 \alpha^2 \mathcal{E}_i \mathcal{B}_l g^{ta} g^{lb} (\delta^t_a \delta^i_b - \delta^t_b \delta^i_a) dV$<br>
+$= -4 \alpha^2 \mathcal{E}_i \mathcal{B}_j (g^{tt} g^{ij} - g^{ti} g^{tj}) dV$<br>
+$= -4 \alpha^2 \mathcal{E}_i \mathcal{B}_j (-\frac{1}{\alpha^2} (\gamma^{ij} - \frac{1}{\alpha^2} \beta^i \beta^j) - \frac{1}{\alpha^4} \beta^i \beta^j) dV$<br>
+$= 4 \gamma^{ij} \mathcal{E}_i \mathcal{B}_j dV$<br>
+So $\star (F \wedge F) = 4 \gamma^{ij} \mathcal{E}_i \mathcal{B}_j$<br>
 This looks suspiciously like $F \cdot \star F$<br>...
 <br>
 
