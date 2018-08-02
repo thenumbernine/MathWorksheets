@@ -26,6 +26,7 @@ $\mu_0 = \frac{4 \pi}{10^7} \frac{kg \cdot m}{C^2}$<br>
 $\vec\nabla \cdot \vec{V} = {V^i}_{,i}$<br>
 $(\vec\nabla \times \vec{V})^i = \bar\epsilon^{ijk} V_{k,j}$<br>
 <br>
+Define the Hodge dual as $(\star F)_{ab} = \frac{1}{2} F_{uv} {\epsilon^{uv}}_{ab} $<br>
 <br>
 
 <hr>
@@ -143,8 +144,6 @@ $= -\frac{1}{\alpha^2} \gamma^{im} (
 	\epsilon_{tmjk} - \beta^n \epsilon_{nmjk} 
 ) $<br>
 $= -\frac{1}{\alpha^2} \gamma^{im} \epsilon_{tmjk}$<br>
-<br>
-Define the Hodge dual as $(\star F)_{ab} = \frac{1}{2} F_{uv} {\epsilon^{uv}}_{ab} $<br>
 <br>
 
 <hr>
@@ -338,7 +337,9 @@ Because this one is what I'll be looking at later with the stress-energy tensor.
 <hr>
 <b>Differential forms in terms of the electromagnetic 4-potential</b><br>
 In component form using ADM coordinates:<br>
-$A^u = \pmatrix{\frac{1}{c} \phi \\ A^i}$<br>
+$A_u = \pmatrix{\phi \\ A^i}$<br>
+$A_i$ is in units of $\frac{kg \cdot m}{C \cdot s}$<br>
+$\phi$ is in units of $\frac{kg \cdot m^2}{C \cdot s^2}$<br>
 $F_{ab} = \pmatrix{
 	0 & F_{tj} \\ 
 	F_{it} & F_{ij}
@@ -423,6 +424,7 @@ This looks suspiciously like $F \cdot \star F$<br>...
 <hr>
 <b>electromagnetic stress-energy in vacuum:</b><br>
 $T_{uv} = \frac{1}{\mu_0} (F_{ua} {F_v}^a - \frac{1}{4} g_{uv} F_{ab} F^{ab})$<br>
+$T_{uv}$ is in units of $(\frac{kg}{C \cdot s})^2 \cdot \frac{C^2}{kg \cdot m} = \frac{kg}{m \cdot s^2}$<br>
 as a trace-free operation:<br>
 ${T^u}_v = -\frac{1}{\mu_0} ({F^u}_a {F^a}_v - \frac{1}{4} \delta^u_v {F^a}_b {F^b}_a)$<br>
 Let ${(F^2)^u}_v = {F^u}_a {F^a}_v$<br>
@@ -481,6 +483,190 @@ $T^{ab} = {T^a}_c \eta^{cb} = \pmatrix{
 }$<br>
 <br>
 
+in general relativity:<br>
+${F^a}_b = \pmatrix{
+	\frac{1}{\alpha} E^k \beta_k & 
+	\frac{1}{\alpha} E_j
+	\\
+	(\alpha - \frac{1}{\alpha} \beta^2) E^i + {\epsilon^i}_{kl} \beta^k B^l & 
+	-\frac{1}{\alpha} E^i \beta_j + {\epsilon^i}_{jk} B^k
+}$<br>
+${(F^2)^a}_b = {F^a}_u {F^u}_b = \pmatrix{
+	\frac{1}{\alpha} E^k \beta_k & 
+	\frac{1}{\alpha} E_o
+	\\
+	(\alpha - \frac{1}{\alpha} \beta^2) E^i + {\epsilon^i}_{kl} \beta^k B^l & 
+	-\frac{1}{\alpha} E^i \beta_o + {\epsilon^i}_{ok} B^k
+} \cdot \pmatrix{
+	\frac{1}{\alpha} E^m \beta_m & 
+	\frac{1}{\alpha} E_j
+	\\
+	(\alpha - \frac{1}{\alpha} \beta^2) E^o + {\epsilon^o}_{mn} \beta^m B^n & 
+	-\frac{1}{\alpha} E^o \beta_j + {\epsilon^o}_{jm} B^m
+}$<br>
+${(F^2)^a}_b = {F^a}_u {F^u}_b = \pmatrix{
+	\frac{1}{\alpha} E^k \beta_k \frac{1}{\alpha} E^m \beta_m 
+	+ \frac{1}{\alpha} E_o ((\alpha - \frac{1}{\alpha} \beta^2) E^o + {\epsilon^o}_{mn} \beta^m B^n)
+	&
+	\frac{1}{\alpha} E^k \beta_k \frac{1}{\alpha} E_j 
+	+ \frac{1}{\alpha} E_o (-\frac{1}{\alpha} E^o \beta_j + {\epsilon^o}_{jm} B^m)
+	\\
+	((\alpha - \frac{1}{\alpha} \beta^2) E^i + {\epsilon^i}_{kl} \beta^k B^l) \frac{1}{\alpha} E^m \beta_m
+	+ (-\frac{1}{\alpha} E^i \beta_o + {\epsilon^i}_{ok} B^k) ((\alpha - \frac{1}{\alpha} \beta^2) E^o + {\epsilon^o}_{mn} \beta^m B^n)
+	&
+	((\alpha - \frac{1}{\alpha} \beta^2) E^i + {\epsilon^i}_{kl} \beta^k B^l) \frac{1}{\alpha} E_j
+	+ (-\frac{1}{\alpha} E^i \beta_o + {\epsilon^i}_{ok} B^k) (-\frac{1}{\alpha} E^o \beta_j + {\epsilon^o}_{jm} B^m)
+}$<br>
+<br>
+${(F^2)^t}_t = \frac{1}{\alpha^2} E^k \beta_k E^m \beta_m 
+	+ E_o E^o 
+	- \frac{1}{\alpha^2} \beta^2 E_o E^o
+	+ \frac{1}{\alpha} E_o {\epsilon^o}_{mn} \beta^m B^n
+$<br>
+$= E^2
+	+ \frac{1}{\alpha} \epsilon_{klm} E^k \beta^l B^m
+	+ \frac{1}{\alpha^2} ((E^k \beta_k)^2 - \beta^2 E^2)
+$<br>
+${(F^2)^t}_j = \frac{1}{\alpha^2} E^k \beta_k E_j 
+	- \frac{1}{\alpha^2} E_o E^o \beta_j 
+	+ \frac{1}{\alpha} E_o {\epsilon^o}_{jm} B^m
+$<br>
+$=  - \frac{1}{\alpha} \epsilon_{jkl} E^k B^l
+	+ 2 \frac{1}{\alpha^2} E_{[j} \beta_{k]} E^k
+$<br>
+${(F^2)^i}_t = \alpha E^i \frac{1}{\alpha} E^m \beta_m 
+	- \frac{1}{\alpha} \beta^2 E^i \frac{1}{\alpha} E^m \beta_m
+	+ {\epsilon^i}_{kl} \beta^k B^l \frac{1}{\alpha} E^m \beta_m
+	- \frac{1}{\alpha} E^i \beta_o \alpha  E^o
+	+ \frac{1}{\alpha} E^i \beta_o \frac{1}{\alpha} \beta^2  E^o
+	+ {\epsilon^i}_{ok} B^k \alpha E^o 
+	- {\epsilon^i}_{ok} B^k \frac{1}{\alpha} \beta^2 E^o
+	- \frac{1}{\alpha} E^i \beta_o {\epsilon^o}_{mn} \beta^m B^n 
+	+ {\epsilon^i}_{ok} B^k {\epsilon^o}_{mn} \beta^m B^n
+$<br>
+$= 
+	2 B^{[i} \beta^{k]} B_k
+	+ \frac{1}{\alpha} {\epsilon^i}_{kl} \beta^k B^l E^m \beta_m
+	+ (\alpha - \frac{1}{\alpha} \beta^2) {\epsilon^i}_{kl} E^k B^l
+$<br>
+${(F^2)^i}_j = \alpha E^i \frac{1}{\alpha} E_j 
+	- \frac{1}{\alpha} \beta^2 E^i \frac{1}{\alpha} E_j 
+	+ {\epsilon^i}_{kl} \beta^k B^l \frac{1}{\alpha} E_j
+	+ \frac{1}{\alpha} E^i \beta_o \frac{1}{\alpha} E^o \beta_j 
+	- {\epsilon^i}_{ok} B^k \frac{1}{\alpha} E^o \beta_j 
+	- \frac{1}{\alpha} E^i \beta_o {\epsilon^o}_{jm} B^m 
+	+ {\epsilon^i}_{ok} B^k {\epsilon^o}_{jm} B^m
+$<br>
+$= E^i E_j 
+	+ B^i B_j
+	- \delta^i_j B^2 
+	- \frac{1}{\alpha} \epsilon_{jlm} \beta^m E^i B^l
+	+ \frac{1}{\alpha} {\epsilon^i}_{kl} \beta^k E_j B^l
+	- \frac{1}{\alpha} {\epsilon^i}_{kl} \beta_j E^k B^l
+	- \frac{1}{\alpha^2} \beta^2 E^i E_j 
+	+ \frac{1}{\alpha^2} E^i \beta_j \beta_k E^k 
+$<br>
+<br>
+${(F^2)^a}_b = {F^a}_u {F^u}_b = \pmatrix{
+	{(F^2)^t}_t &
+	{(F^2)^t}_j	 \\
+	{(F^2)^i}_t	&
+	{(F^2)_i}_j	
+}$<br>
+<br>
+$tr (F^2) = {(F^2)^a}_a = {(F^2)^t}_t + {(F^2)^i}_i$<br>
+$= E^2
+	+ \frac{1}{\alpha} \epsilon_{klm} E^k \beta^l B^m
+	+ \frac{1}{\alpha^2} ((E^k \beta_k)^2 - \beta^2 E^2)
+	+ E^i E_i 
+	+ B^i B_i
+	- \delta^i_i B^2 
+	- \frac{1}{\alpha} \epsilon_{ilm} \beta^m E^i B^l
+	+ \frac{1}{\alpha} {\epsilon^i}_{kl} \beta^k E_i B^l
+	- \frac{1}{\alpha} {\epsilon^i}_{kl} \beta_i E^k B^l
+	- \frac{1}{\alpha^2} \beta^2 E^i E_i 
+	+ \frac{1}{\alpha^2} E^i \beta_i \beta_k E^k 
+$<br>
+$= 2 E^2
+	- 2 B^2 
+	+ 2 \frac{1}{\alpha^2} (E^i \beta_i)^2 
+	- 2 \frac{1}{\alpha^2} \beta^2 E^2
+	- 4 \frac{1}{\alpha} \epsilon_{ijk} E^i B^j \beta^k
+$<br>
+<br>
+${T^a}_b = \frac{1}{4} \delta^a_b tr (F^2) - {(F^2)^a}_b$<br>
+${T^t}_t = \frac{1}{4} tr (F^2) - {(F^2)^t}_t$<br>
+$= \frac{1}{4} (
+	2 E^2
+	- 2 B^2 
+	+ 2 \frac{1}{\alpha^2} (E^i \beta_i)^2 
+	- 2 \frac{1}{\alpha^2} \beta^2 E^2
+	- 4 \frac{1}{\alpha} \epsilon_{ijk} E^i B^j \beta^k
+) - (
+	E^2
+	+ \frac{1}{\alpha} \epsilon_{klm} E^k \beta^l B^m
+	+ \frac{1}{\alpha^2} ((E^k \beta_k)^2 - \beta^2 E^2)
+)$<br>
+$= 
+	- \frac{1}{2} E^2
+	- \frac{1}{2} B^2 
+	- \frac{1}{\alpha^2} \frac{1}{2} (E^i \beta_i)^2 
+	+ \frac{1}{\alpha^2} \frac{1}{2} \beta^2 E^2
+$<br>
+<br>
+${T^t}_j = - (
+	- \frac{1}{\alpha} \epsilon_{jkl} E^k B^l
+	+ 2 \frac{1}{\alpha^2} E_{[j} \beta_{k]} E^k
+)$<br>
+$=  \frac{1}{\alpha} \epsilon_{jkl} E^k B^l
+	- 2 \frac{1}{\alpha^2} E_{[j} \beta_{k]} E^k
+$<br>
+<br>
+${T^i}_t = -(
+	2 B^{[i} \beta^{k]} B_k
+	+ \frac{1}{\alpha} {\epsilon^i}_{kl} \beta^k B^l E^m \beta_m
+	+ (\alpha - \frac{1}{\alpha} \beta^2) {\epsilon^i}_{kl} E^k B^l
+)$<br>
+$ = - 2 B^{[i} \beta^{k]} B_k
+	- \frac{1}{\alpha} {\epsilon^i}_{kl} \beta^k B^l E^m \beta_m
+	- (\alpha - \frac{1}{\alpha} \beta^2) {\epsilon^i}_{kl} E^k B^l
+$<br>
+
+<br>
+${T^i}_j = \frac{1}{4} \delta^i_j tr (F^2) - {(F^2)^i}_j$<br>
+$= \frac{1}{4} \delta^i_j (
+	2 E^2
+	- 2 B^2 
+	+ 2 \frac{1}{\alpha^2} (E^i \beta_i)^2 
+	- 2 \frac{1}{\alpha^2} \beta^2 E^2
+	- 4 \frac{1}{\alpha} \epsilon_{ijk} E^i B^j \beta^k
+) - (
+	\alpha E^i \frac{1}{\alpha} E_j 
+	- \frac{1}{\alpha} \beta^2 E^i \frac{1}{\alpha} E_j 
+	+ {\epsilon^i}_{kl} \beta^k B^l \frac{1}{\alpha} E_j
+	+ \frac{1}{\alpha} E^i \beta_o \frac{1}{\alpha} E^o \beta_j 
+	- {\epsilon^i}_{ok} B^k \frac{1}{\alpha} E^o \beta_j 
+	- \frac{1}{\alpha} E^i \beta_o {\epsilon^o}_{jm} B^m 
+	+ {\epsilon^i}_{ok} B^k {\epsilon^o}_{jm} B^m
+)$<br>
+$= \delta^i_j (
+	\frac{1}{2} E^2
+	- \frac{1}{2} B^2 
+	+ \frac{1}{2} \frac{1}{\alpha^2} (E^i \beta_i)^2 
+	- \frac{1}{2} \frac{1}{\alpha^2} \beta^2 E^2
+	- \frac{1}{\alpha} \epsilon_{ijk} E^i B^j \beta^k
+) 
+	- E^i E_j 
+	- B^i B_j
+	+ \delta^i_j B^2 
+	+ \frac{1}{\alpha} \epsilon_{jlm} \beta^m E^i B^l
+	- \frac{1}{\alpha} {\epsilon^i}_{kl} \beta^k E_j B^l
+	+ \frac{1}{\alpha} {\epsilon^i}_{kl} \beta_j E^k B^l
+	+ \frac{1}{\alpha^2} \beta^2 E^i E_j 
+	- \frac{1}{\alpha^2} E^i \beta_j \beta_k E^k 
+$<br>
+
+<br>
 
 <hr>
 <b>Einstein Field Equations of electromagnetic stress-energy in vacuum:</b><br>
