@@ -12,34 +12,34 @@ $B_i$ = magnetic field<br>
 $P_i$ = polarization field<br>
 $M_i$ = magnetization field<br>
 $\epsilon_0$ = permittivity of free space<br>
-$\epsilon_r$ = relative permittivity of material<br>
-$\epsilon$ = permittivity of material<br>
-$\chi_m$ = electric susceptibility<br>
+${\epsilon_{r,i}}^j$ = relative permittivity of material<br>
+${\epsilon_i}^j$ = permittivity of material<br>
+${\chi_{e,i}}^j$ = electric susceptibility<br>
 $\mu_0$ = permeability of free space<br>
-$\mu_r$ = relative permeability of material<br>
-$\mu$ = permeability of material<br>
-$\chi_m$ = magnetic susceptibility<br>
+${\mu_{r,i}}^j$ = relative permeability of material<br>
+${\mu_i}^j$ = permeability of material<br>
+${\chi_{m,i}}^j$ = magnetic susceptibility<br>
 <br>
 
 $D_i = \epsilon_0 E_i + P_i$<br>
-$P_i = \epsilon_0 \chi_e E_i$<br>
-$D_i = \epsilon_0 E_i + \epsilon_0 \chi_e E_i$<br>
-$D_i = \epsilon_0 (1 + \chi_e) E_i$<br>
-$D_i = \epsilon_0 \epsilon_r E_i$<br>
-$D_i = \epsilon E_i$<br>
+$P_i = \epsilon_0 {\chi_{e,i}}^j E_j$<br>
+$D_i = \epsilon_0 E_i + \epsilon_0 {\chi_{e,i}}^j E_j$<br>
+$D_i = \epsilon_0 (\delta_i^j + {\chi_{e,i}}^j) E_j$<br>
+$D_i = \epsilon_0 {\epsilon_{r,i}}^j E_j$<br>
+$D_i = {\epsilon_i}^j E_j$<br>
 <br>
 
 $B_i = \mu_0 H_i + M_i$<br>
-$M_i = \mu_0 \chi_m H_i$<br>
-$B_i = \mu_0 H_i + \mu_0 \chi_m H_i$<br>
-$B_i = \mu_0 (1 + \chi_m) H_i$<br>
-$B_i = \mu_0 \mu_r H_i$<br>
-$B_i = \mu H_i$<br>
+$M_i = \mu_0 {\chi_{m,i}}^j H_j$<br>
+$B_i = \mu_0 H_i + \mu_0 {\chi_{m,i}}^j H_j$<br>
+$B_i = \mu_0 (\delta_i^j + {\chi_{m,i}}^j) H_j$<br>
+$B_i = \mu_0 {\mu_{r,i}}^j H_j$<br>
+$B_i = {\mu_i}^j H_j$<br>
 <br>
 
 <br>
-$E = \epsilon^{-1} D$<br>
-$H = \mu^{-1} B$<br>
+$E_i = {(\epsilon^{-1})_i}^j D_j$<br>
+$H_i = {(\mu^{-1})_i}^j B_j$<br>
 <br>
 ${D^i}_{,i} = \rho_{free}$ ... where $\rho_{free}$ = free charge (densitized?)<br>
 ${B^i}_{,i} = 0$<br>
