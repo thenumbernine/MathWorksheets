@@ -294,7 +294,7 @@ $F_{uv} = \pmatrix{
 	\alpha \mathcal{E} & \alpha \star (\mathcal{B} \wedge dt)
 }$<br>
 $F_{uv} = \pmatrix{
-	0 & -\alpha \mathcal{E}_i \\
+	0 & -\alpha \mathcal{E}_j \\
 	\alpha \mathcal{E}_i & \epsilon_{ijk} \mathcal{B}^k
 }$<br>
 So $F_{it} = \alpha \mathcal{E}_i$<br>
@@ -637,9 +637,9 @@ ${T^i}_j = \frac{1}{4} \delta^i_j tr (F^2) - {(F^2)^i}_j$<br>
 $= \frac{1}{4} \delta^i_j (
 	2 E^2
 	- 2 B^2 
-	+ 2 \frac{1}{\alpha^2} (E^i \beta_i)^2 
+	+ 2 \frac{1}{\alpha^2} (E^k \beta_k)^2 
 	- 2 \frac{1}{\alpha^2} \beta^2 E^2
-	- 4 \frac{1}{\alpha} \epsilon_{ijk} E^i B^j \beta^k
+	- 4 \frac{1}{\alpha} \epsilon_{klm} E^k B^l \beta^m
 ) - (
 	\alpha E^i \frac{1}{\alpha} E_j 
 	- \frac{1}{\alpha} \beta^2 E^i \frac{1}{\alpha} E_j 
@@ -650,27 +650,180 @@ $= \frac{1}{4} \delta^i_j (
 	+ {\epsilon^i}_{ok} B^k {\epsilon^o}_{jm} B^m
 )$<br>
 $= \delta^i_j (
-	\frac{1}{2} E^2
-	- \frac{1}{2} B^2 
-	+ \frac{1}{2} \frac{1}{\alpha^2} (E^i \beta_i)^2 
-	- \frac{1}{2} \frac{1}{\alpha^2} \beta^2 E^2
-	- \frac{1}{\alpha} \epsilon_{ijk} E^i B^j \beta^k
+	\frac{1}{2} E^2 (1 - \frac{1}{\alpha^2} \beta^2)
+	+ \frac{1}{2} B^2 
+	+ \frac{1}{2} \frac{1}{\alpha^2} (E^k \beta_k)^2 
+	- \frac{1}{\alpha} \epsilon_{klm} E^k B^l \beta^m
 ) 
-	- E^i E_j 
+	- E^i E_j (1 - \frac{1}{\alpha^2} \beta^2)
 	- B^i B_j
-	+ \delta^i_j B^2 
 	+ \frac{1}{\alpha} \epsilon_{jlm} \beta^m E^i B^l
 	- \frac{1}{\alpha} {\epsilon^i}_{kl} \beta^k E_j B^l
 	+ \frac{1}{\alpha} {\epsilon^i}_{kl} \beta_j E^k B^l
-	+ \frac{1}{\alpha^2} \beta^2 E^i E_j 
 	- \frac{1}{\alpha^2} E^i \beta_j \beta_k E^k 
 $<br>
+<br>
 
+again, in general relativity, starting with the covariant form of $F_{ab}$...<br>
+$F_{ab} = \pmatrix{
+	0 & -\alpha \mathcal{E}_i \\
+	\alpha \mathcal{E}_i & \epsilon_{ijk} \mathcal{B}^k
+}$<br>
+$(F^2)_{ab} = F_{au} g^{uv} F_{bv}
+= \pmatrix{
+	0 & -\alpha \mathcal{E}_k \\
+	\alpha \mathcal{E}_i & \epsilon_{ikl} \mathcal{B}^l
+}
+\pmatrix{
+	-1/\alpha^2 & \beta^m / \alpha^2 \\ 
+	\beta^k / \alpha^2 & \gamma^{km} - \beta^k \beta^m / \alpha^2
+}
+\pmatrix{
+	0 & -\alpha \mathcal{E}_j \\
+	\alpha \mathcal{E}_m & \epsilon_{mjn} \mathcal{B}^n
+}$<br>
+$= \pmatrix{
+	0 & -\alpha \mathcal{E}_k \\
+	\alpha \mathcal{E}_i & \epsilon_{ikl} \mathcal{B}^l
+}
+\pmatrix{
+	\frac{1}{\alpha} \beta^m \mathcal{E}_m
+	&	
+	\frac{1}{\alpha} \mathcal{E}_j
+	+ \frac{1}{\alpha^2} \epsilon_{jmn} \mathcal{B}^m \beta^n
+	\\	
+	\alpha \mathcal{E}^k 
+	- \frac{1}{\alpha} \beta^k \beta^m \mathcal{E}_m
+	&
+	- \frac{1}{\alpha} \beta^k \mathcal{E}_j
+	- {\epsilon_j}^{kn} \mathcal{B}_n 
+	- \frac{1}{\alpha^2} \beta^k \epsilon_{jmn} \mathcal{B}^m \beta^n
+}$<br>
+$= \pmatrix{
+	-\alpha^2 \mathcal{E}^2 
+	+ (\mathcal{E}_k \beta^k)^2
+	&
+		\mathcal{E}_j \mathcal{E}_k \beta^k 
+		+ \alpha \epsilon_{jkl} \mathcal{E}^k \mathcal{B}^l 
+		+ \frac{1}{\alpha} \mathcal{E}_k \beta^k \epsilon_{jlm} \mathcal{B}^l \beta^m
+	\\
+	\mathcal{E}_i \beta^m \mathcal{E}_m
+	+ \alpha \epsilon_{ikl} \mathcal{E}^k \mathcal{B}^l 
+	+ \frac{1}{\alpha} \epsilon_{ikl} \mathcal{B}^k \beta^l \mathcal{E}_m \beta^m
+	&
+		\mathcal{E}_i \mathcal{E}_j
+		+ \mathcal{B}_i \mathcal{B}_j
+		- \gamma_{ij} \mathcal{B}^2
+		+ \frac{1}{\alpha} \mathcal{E}_i \epsilon_{jkl} \mathcal{B}^k \beta^l
+		+ \frac{1}{\alpha} \mathcal{E}_j \epsilon_{ikl} \mathcal{B}^k \beta^l
+		+ \frac{1}{\alpha^2} \epsilon_{ikl} \mathcal{B}^k \beta^l \epsilon_{jmn} \mathcal{B}^m \beta^n
+}$<br>
+<br>
+$\frac{1}{4} tr F^2 = \frac{1}{4} g^{ab} (F^2)_{ab}$<br>
+$ = 
+	+ \frac{1}{2} \mathcal{E}^2 
+	- \frac{1}{2} \mathcal{B}^2
+	+ \frac{1}{2} \frac{1}{\alpha^2} \beta^2 \mathcal{B}^2
+	- \frac{1}{2} \frac{1}{\alpha^2} (\beta^i \mathcal{B}_i)^2
+	+ \frac{1}{\alpha} \epsilon_{ijk} \mathcal{E}^i \mathcal{B}^j \beta^k
+$<br>
+<br>
+
+$T_{ab} = \frac{1}{4} g_{ab} tr (F^2) - (F^2)_{ab}$<br>
+$= (
+	\frac{1}{2} \mathcal{E}^2 
+	- \frac{1}{2} \mathcal{B}^2
+	+ \frac{1}{2} \frac{1}{\alpha^2} \beta^2 \mathcal{B}^2
+	- \frac{1}{2} \frac{1}{\alpha^2} (\beta^i \mathcal{B}_i)^2
+	+ \frac{1}{\alpha} \epsilon_{ijk} \mathcal{E}^i \mathcal{B}^j \beta^k
+) \pmatrix{
+	-\alpha^2 + \beta_k \beta^k 
+	& 
+	\beta_j 
+	\\ 
+	\beta_i 
+	& 
+	\gamma_{ij}
+} - \pmatrix{
+	-\alpha^2 \mathcal{E}^2 
+	+ (\mathcal{E}_k \beta^k)^2
+	&
+		\mathcal{E}_j \mathcal{E}_k \beta^k 
+		+ \alpha \epsilon_{jkl} \mathcal{E}^k \mathcal{B}^l 
+		+ \frac{1}{\alpha} \mathcal{E}_k \beta^k \epsilon_{jlm} \mathcal{B}^l \beta^m
+	\\
+	\mathcal{E}_i \beta^m \mathcal{E}_m
+	+ \alpha \epsilon_{ikl} \mathcal{E}^k \mathcal{B}^l 
+	+ \frac{1}{\alpha} \epsilon_{ikl} \mathcal{B}^k \beta^l \mathcal{E}_m \beta^m
+	&
+		\mathcal{E}_i \mathcal{E}_j
+		+ \mathcal{B}_i \mathcal{B}_j
+		- \gamma_{ij} \mathcal{B}^2
+		+ \frac{1}{\alpha} \mathcal{E}_i \epsilon_{jkl} \mathcal{B}^k \beta^l
+		+ \frac{1}{\alpha} \mathcal{E}_j \epsilon_{ikl} \mathcal{B}^k \beta^l
+		+ \frac{1}{\alpha^2} \epsilon_{ikl} \mathcal{B}^k \beta^l \epsilon_{jmn} \mathcal{B}^m \beta^n
+}$<br>
+I think I lost a term because the $E^2$s and $B^2$s don't match...<br>
+$= \pmatrix{	
+	 \frac{1}{2} \alpha^2 \mathcal{E}^2 
+	+ \frac{1}{2} \alpha^2 \mathcal{B}^2
+	- (\mathcal{E}_k \beta^k)^2
+	+ \frac{1}{2} \beta^2 \mathcal{E}^2 
+	- \beta^2 \mathcal{B}^2
+	+ \frac{1}{2} (\beta^i \mathcal{B}_i)^2
+	- \alpha \epsilon_{ijk} \mathcal{E}^i \mathcal{B}^j \beta^k
+	
+	+ \frac{1}{2} \frac{1}{\alpha^2} \beta^4 \mathcal{B}^2
+	- \frac{1}{2} \frac{1}{\alpha^2} \beta^2 (\beta^i \mathcal{B}_i)^2
+	+ \frac{1}{\alpha} \beta^2 \epsilon_{ijk} \mathcal{E}^i \mathcal{B}^j \beta^k
+	
+	& 
+	
+	\frac{1}{2} \mathcal{E}^2 \beta_j 
+	- \frac{1}{2} \mathcal{B}^2 \beta_j
+	+ \frac{1}{2} \frac{1}{\alpha^2} \beta^2 \mathcal{B}^2 \beta_j
+	- \frac{1}{2} \frac{1}{\alpha^2} (\beta^k \mathcal{B}_k)^2 \beta_j
+	+ \frac{1}{\alpha} \epsilon_{lmn} \mathcal{E}^l \mathcal{B}^m \beta^n \beta_j
+	
+	- \mathcal{E}_j \mathcal{E}_k \beta^k 
+	- \alpha \epsilon_{jkl} \mathcal{E}^k \mathcal{B}^l 
+	- \frac{1}{\alpha} \mathcal{E}_k \beta^k \epsilon_{jlm} \mathcal{B}^l \beta^m
+
+	\\ 
+	
+	\frac{1}{2} \mathcal{E}^2 \beta_i 
+	- \frac{1}{2} \mathcal{B}^2 \beta_i
+	+ \frac{1}{2} \frac{1}{\alpha^2} \beta^2 \mathcal{B}^2 \beta_i
+	- \frac{1}{2} \frac{1}{\alpha^2} (\beta^k \mathcal{B}_k)^2 \beta_i
+	+ \frac{1}{\alpha} \epsilon_{lmn} \mathcal{E}^l \mathcal{B}^m \beta^n \beta_i
+	
+	- \mathcal{E}_i \beta^m \mathcal{E}_m
+	- \alpha \epsilon_{ikl} \mathcal{E}^k \mathcal{B}^l 
+	- \frac{1}{\alpha} \epsilon_{ikl} \mathcal{B}^k \beta^l \mathcal{E}_m \beta^m
+	
+	& 
+	
+	- \mathcal{E}_i \mathcal{E}_j
+	- \mathcal{B}_i \mathcal{B}_j
+	
+	+ \frac{1}{2} \mathcal{E}^2 \gamma_{ij}
+	+ \frac{1}{2} \mathcal{B}^2 \gamma_{ij}
+	
+	+ \frac{1}{2} \frac{1}{\alpha^2} \beta^2 \mathcal{B}^2 \gamma_{ij}
+	- \frac{1}{2} \frac{1}{\alpha^2} (\beta^i \mathcal{B}_i)^2 \gamma_{ij}
+	+ \frac{1}{\alpha} \epsilon_{ijk} \mathcal{E}^i \mathcal{B}^j \beta^k \gamma_{ij}
+
+	- \frac{1}{\alpha} \mathcal{E}_i \epsilon_{jkl} \mathcal{B}^k \beta^l
+	- \frac{1}{\alpha} \mathcal{E}_j \epsilon_{ikl} \mathcal{B}^k \beta^l
+	- \frac{1}{\alpha^2} \epsilon_{ikl} \mathcal{B}^k \beta^l \epsilon_{jmn} \mathcal{B}^m \beta^n
+
+}$<br>
 <br>
 
 <hr>
 <b>Einstein Field Equations of electromagnetic stress-energy in vacuum:</b><br>
-${G^u}_v = 8 \pi {T^u}_v$<br>
+${G^u}_v = 8 \pi {T^u}_v \frac{G}{c^4}$<br>
+${G^u}_v$ has units $\frac{1}{m^2}$<br>
 ${G^u}_v = -2 ({(F^2)^u}_v)^{TF}$<br>
 Notice, $G_{uv}$ is the trace-reversal of $R_{uv}$, so $G_{uv} = R_{uv} - \frac{2}{n} g_{uv} {R^a}_a$<br> 
 This means that (contract to find) ${G^a}_a = -{R^a}_a$<br>
