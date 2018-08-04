@@ -7,67 +7,45 @@
 	</head>
 	<body onload='tryToFindMathJax();'>
 
-...in flat space...<br>
+$E_i$ = electric field<br>
+$B_i$ = magnetic field<br>
+$P_i$ = polarization field<br>
+$M_i$ = magnetization field<br>
+$\epsilon_0$ = permittivity of free space<br>
+$\epsilon_r$ = relative permittivity of material<br>
+$\epsilon$ = permittivity of material<br>
+$\chi_m$ = electric susceptibility<br>
+$\mu_0$ = permeability of free space<br>
+$\mu_r$ = relative permeability of material<br>
+$\mu$ = permeability of material<br>
+$\chi_m$ = magnetic susceptibility<br>
 <br>
 
-$D^i = \epsilon_0 E^i + P^i = \epsilon E^i$<br>
-$B^i = \mu_0 H^i + M^i = \mu H^i$<br>
+$D_i = \epsilon_0 E_i + P_i$<br>
+$P_i = \epsilon_0 \chi_e E_i$<br>
+$D_i = \epsilon_0 E_i + \epsilon_0 \chi_e E_i$<br>
+$D_i = \epsilon_0 (1 + \chi_e) E_i$<br>
+$D_i = \epsilon_0 \epsilon_r E_i$<br>
+$D_i = \epsilon E_i$<br>
+<br>
+
+$B_i = \mu_0 H_i + M_i$<br>
+$M_i = \mu_0 \chi_m H_i$<br>
+$B_i = \mu_0 H_i + \mu_0 \chi_m H_i$<br>
+$B_i = \mu_0 (1 + \chi_m) H_i$<br>
+$B_i = \mu_0 \mu_r H_i$<br>
+$B_i = \mu H_i$<br>
+<br>
+
+<br>
+$E = \epsilon^{-1} D$<br>
+$H = \mu^{-1} B$<br>
 <br>
 ${D^i}_{,i} = \rho_{free}$ ... where $\rho_{free}$ = free charge (densitized?)<br>
 ${B^i}_{,i} = 0$<br>
 <br>
-${B^i}_{,t} = -\epsilon^{ijk} E_{k,j}$<br>
-${D^i}_{,t} = \epsilon^{ijk} H_{k,j} - J^i_{free}$<br>
-<br>
-...substitute the time derivatives of $B^i$ and $D^i$ into definitions of $E^i$ and $H^i$<br>
-(TODO I might have made a mistake in here)<br>
-${E^i}_{,t} = \frac{1}{\epsilon} \epsilon^{ijk} H_{k,j} - \frac{1}{\epsilon} \epsilon_{,j} \frac{\partial x^j}{\partial t} E^i - \frac{1}{\epsilon} J^i_{free} - \frac{1}{\epsilon} {P^i}_{,j} \frac{\partial x^j}{\partial t}$<br>
-${H^i}_{,t} = -\frac{1}{\mu} \epsilon^{ijk} E_{k,j} - \frac{1}{\mu} \mu_{,j} \frac{\partial x^j}{\partial t} H^i - \frac{1}{\mu} {M^i}_{,j} \frac{\partial x^j}{\partial t}$<br>
-...assume $\frac{\partial x^i}{\partial t} = v^i$<br>
-${E^i}_{,t} = \frac{1}{\epsilon} \epsilon^{ijk} H_{k,j} - \frac{1}{\epsilon} \epsilon_{,j} v^j E^i - \frac{1}{\epsilon} J^i_{free} - \frac{1}{\epsilon} {P^i}_{,j} v^j$<br>
-${H^i}_{,t} = -\frac{1}{\mu} \epsilon^{ijk} E_{k,j} - \frac{1}{\mu} \mu_{,j} v^j H^i - \frac{1}{\mu} {M^i}_{,j} v^j$<br>
-<br>
-
-The Drude model:<br>
-$(\rho v^i)_{,t} + (\rho v^i)_{,j} v^j = q (E^i + \frac{1}{\rho} \epsilon^{ijk} (\rho v_j) B_k) - \frac{1}{\tau} (\rho v^i)$<br>
-...here $\rho$ is the mass of the particles.  I think it's safe to call it the density.  $q$ is the electron charge.  Is this densitized -- should it be scaled by $\rho$ as well?<br>
-<br>
-
-The entire hyperbolic system, in matrix form:<br>
-$\left[\matrix{
-	B^i \\
-	D^i \\
-	H^i \\
-	E^i \\
-	\rho v^i
-}\right]_{,t} + \left[\matrix{
-	0 & 0 & 0 & \epsilon^{ijk} & 0 \\
-	0 & 0 & -\epsilon^{ijk} & 0 & 0 \\
-	0 & 0 & 0 & \frac{1}{\mu} \epsilon^{ijk} & 0 \\
-	0 & 0 & -\frac{1}{\epsilon} \epsilon^{ijk} & 0 & 0 \\
-	0 & 0 & 0 & 0 & \delta^i_k v^j \\
-}\right] \left[\matrix{
-	B^k \\
-	D^k \\
-	H^k \\
-	E^k \\
-	\rho v^k
-}\right]_{,j} = \left[\matrix{
-	0 \\
-	-J^i_{free} \\
-	-\frac{1}{\mu} \mu_{,j} v^j H^i - \frac{1}{\mu} {M^i}_{,j} v^j \\
-	-\frac{1}{\epsilon} \epsilon_{,j} v^j E^i - \frac{1}{\epsilon} J^i_{free} - \frac{1}{\epsilon} {P^i}_{,j} v^j \\
-	q (E^i + \frac{1}{\rho} \epsilon^{ijk} (\rho v_j) B_k) - \frac{1}{\tau} (\rho v^i) \\
-}\right]$<br>
-<br>
-
-How about we get rid of $H$ and $E$, and only look at the time derivatives of $B$ and $D$ in terms of $B$ and $D$?<br>
-<br>
 $D_{i,t} = {\epsilon_i}^{jk} H_{k,j} - J_{i,free}$<br>
 $B_{i,t} = -{\epsilon_i}^{jk} E_{k,j}$<br>
-<br>
-$E = \epsilon^{-1} D$<br>
-$B = \mu H$<br>
 <br>
 $D_{i,t} = {\epsilon_i}^{jk} (\mu^{-1} B)_{k,j} - J_{i,free}$<br>
 $B_{i,t} = -{\epsilon_i}^{jk} (\epsilon^{-1} D)_{k,j}$<br>
