@@ -265,6 +265,14 @@ $d F = d (dA) = 0$<br>
 $d \star F = \star J$, $\nabla \cdot F = J$<br>
 <br>
 
+<!--
+TODO somewhere in here...<br>
+I've mentioned Maxwell's laws in SR, but not in GR:<br>
+${F^{ab}}_{;b} - {R^a}_b A^b = J^a$<br>
+Which brings me to another question, what is the Ricci curvature in ADM metric decomposition?<br>
+<br>
+-->
+
 <hr>
 <b>splitting apart space and time in the differential form representation:</b><br>
 
@@ -337,9 +345,9 @@ Because this one is what I'll be looking at later with the stress-energy tensor.
 <hr>
 <b>Differential forms in terms of the electromagnetic 4-potential</b><br>
 In component form using ADM coordinates:<br>
-$A_u = \pmatrix{\phi \\ A^i}$<br>
+$A_u = \pmatrix{\frac{1}{c} \phi \\ A^i}$<br>
 $A_i$ is in units of $\frac{kg \cdot m}{C \cdot s}$<br>
-$\phi$ is in units of $\frac{kg \cdot m^2}{C \cdot s^2}$<br>
+$\phi$ is in units of $\frac{kg \cdot m}{C \cdot s}$<br>
 $F_{ab} = \pmatrix{
 	0 & F_{tj} \\ 
 	F_{it} & F_{ij}
@@ -347,10 +355,10 @@ $F_{ab} = \pmatrix{
 	0 & 2 \partial_{[t} A_{j]} \\
 	2 \partial_{[i} A_{t]} & 2 \partial_{[i} A_{j]}
 } = \pmatrix{
-	0 & A_{j,t} - \frac{1}{c} \phi_{,j} \\
-	-A_{i,t} + \frac{1}{c} \phi_{,i} & A_{j,i} - A_{i,j}
+	0 & A_{j,t} - \frac{1}{c^2} \phi_{,j} \\
+	-A_{i,t} + \frac{1}{c^2} \phi_{,i} & A_{j,i} - A_{i,j}
 }$<br>
-So $\mathcal{E}_i = \frac{1}{\alpha} (-A_{i,t} + \frac{1}{c} \phi_{,i})$<br>
+So $\mathcal{E}_i = \frac{1}{\alpha} (-A_{i,t} + \frac{1}{c^2} \phi_{,i})$<br>
 And $A_{j,i} - A_{i,j} = \epsilon_{ijk} \mathcal{B}^k$<br>
 $\epsilon^{ijl} (A_{j,i} - A_{i,j}) = \epsilon^{ijl} \epsilon_{ijk} \mathcal{B}^k$<br>
 $\mathcal{B}^i = \epsilon^{ijk} A_{k,j}$<br>
