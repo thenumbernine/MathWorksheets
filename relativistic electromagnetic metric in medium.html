@@ -17,10 +17,10 @@ All others are raised/lowered by the spacetime metric $g_{ab}$.<br>
 $\partial = (\frac{1}{c} \partial_t, \partial_i)$<br>
 $dx = (c dt, dx^i)$<br>
 $\partial_u T = T_{,u} = (\frac{1}{c} \partial_t, \partial_i) T$<br>
-$\frac{1}{c^2} = \mu_0 \epsilon_0$<br>
 In SI units (from my 'natural units' worksheet in my symmath library):<br>
-$\epsilon_0 = \frac{10^7}{4 \pi c^2} \frac{C^2}{kg \cdot m}$<br>
+$\epsilon_0 = \frac{10^7}{4 \pi c^2} \frac{C^2}{kg \cdot m}$ ... is in units $\frac{C^2 \cdot s^2}{kg \cdot m^3}$<br>
 $\mu_0 = \frac{4 \pi}{10^7} \frac{kg \cdot m}{C^2}$<br>
+$\frac{1}{c^2} = \mu_0 \epsilon_0$ ... is in units $\frac{s^2}{m^2}$<br>
 <br>
 
 $\vec\nabla \cdot \vec{V} = {V^i}_{,i}$<br>
@@ -34,9 +34,7 @@ Define the Hodge dual as $(\star F)_{ab} = \frac{1}{2} F_{uv} {\epsilon^{uv}}_{a
 From Misner, Thorne, Wheeler.  Electromagnetism in special relativity, adjusted to SI units.<br>
 
 Units of $E_i$ are in $\frac{N}{C} = \frac{kg \cdot m}{C \cdot s^2}$.<br>
-Units of $D_i$ and $P_i$ are $\frac{kg \cdot m}{C \cdot s^2} \frac{C^2}{kg \cdot m} = \frac{C}{s^2}$<br>
 Units of $B_i$ are in $\frac{N \cdot s}{C \cdot m} = \frac{kg}{C \cdot s}$<br>
-Units of $H_i$ and $M_i$ are in $\frac{A}{m} = \frac{C}{m \cdot s}$<br>
 <br>
 
 In Cartesian coordinates:<br>
@@ -911,7 +909,10 @@ TODO look up more on Kahler metrics, and Kahler-Einstein manifolds.<br>
 <b>electromagnetism in medium:</b><br>
 (from <a href='https://en.wikipedia.org/wiki/Covariant_formulation_of_classical_electromagnetism'>https://en.wikipedia.org/wiki/Covariant_formulation_of_classical_electromagnetism</a>, but adjusting sign convention)<br>
 Let $D^i = \epsilon_0 E^i + P^i$<br>
+Units of $D_i$ and $P_i$ are $\frac{C^2 \cdot s^2}{kg \cdot m^3} \frac{kg \cdot m}{C \cdot s^2} = \frac{C}{m^2}$<br>
 Let $H_i = \frac{1}{\mu_0} B_i - M_i$<br>
+Units of $H_i$ and $M_i$ are in $\frac{A}{m} = \frac{C}{m \cdot s}$<br>
+<br>
 
 $P^i = \epsilon_0 \chi_e E^i$<br>
 For $\chi_e = $ material's electric volume susceptibillity.<br>
@@ -919,12 +920,18 @@ $M_i = \chi_m H_i$<br>
 For $\chi_m =$ material's magnetic volume susceptibillity.<br>
 $D^i = \epsilon_0 E^i + P^i = \epsilon_0 (1 + \chi_e) E^i = \epsilon E^i$<br>
 For $\epsilon = $ electric permittivity<br>
-So $\frac{\epsilon}{\epsilon_0} = 1 + \chi_e$<br>
+So $\frac{\epsilon}{\epsilon_0} = \epsilon_r = 1 + \chi_e$<br>
+Where $\epsilon_r$ is the relative permittivity, which is unitless<br>
+<br>
+
 $H_i = \frac{1}{\mu_0} B_i - \chi_m H_i$<br>
 $\mu_0 (1 + \chi_m) H_i = \mu H_i = B_i$<br>
 For $\mu = $ magnetic permeability<br>
-So $\frac{\mu}{\mu_0} = 1 + \chi_m$<br>
-Notice that $\chi_e, \chi_m, \epsilon, \mu$ are operators, not necessarily scalars, not necessarily real<br>
+So $\frac{\mu}{\mu_0} = \mu_r = 1 + \chi_m$<br>
+Where $\mu_r$ is the relative permeability, which is unitless<br>
+<br>
+
+Notice that $\chi_e, \chi_m, \epsilon, \mu, \epsilon_r, \mu_r$ are operators, not necessarily scalars, not necessarily real<br>
 Also:<Br>
 Let $v_p$ be the phase velocity of light such that $v_p \le c, \frac{1}{(v_p)^2} = \mu \epsilon$<br>
 <br>
@@ -937,25 +944,37 @@ Let $M_{uv} = \pmatrix{ 0 & c P_j \\ -c P_i & {\bar\epsilon_{ij}}^k M_k} = \pmat
 	0 & c \epsilon_0 \chi_e E_j \\
 	-c \epsilon_0 \chi_e E_i & {\bar\epsilon_{ij}}^k \chi_m \mu^{-1} B_k
 }$<br>
+$M_{uv}$ has units $\frac{C}{m \cdot s}$<br>
+<br>
+
 Let $D_{uv} = \pmatrix{ 0 & -c D_j \\ c D_i & {\bar\epsilon_{ij}}^k H_k} = \pmatrix{
 	0 & -c \epsilon E_j \\
 	c \epsilon E_i & {\bar\epsilon_{ij}}^k \mu^{-1} B_k
 }$<br>
+$D_{uv}$ has units $\frac{C}{m \cdot s}$<br>
 So $D_{uv} = \frac{1}{\mu_0} F_{uv} - M_{uv}$<br>
 <br>
 
-check units on these:<br>
-$(J^v)_{bound} = {M^{uv}}_{,v}$<br>
-$\bar\epsilon^{ijk} H_{k,j} = (J^i)_{free} + {D^i}_{,t}$<br>
-${D^j}_{,j} = \rho_{free} = {D^{tu}}_{,u}$<br>
-$(J^v)_{free} = {D^{uv}}_{,v}$<br>
-${(J^u)_{bound}}_{,u} = 0$<br>
-${(J^u)_{free}}_{,u} = 0$<br>
+$(J_{free})^u = {D^{uv}}_{,v}$<br>
+$(J_{free})^t = {D^{tu}}_{,u} = c D_{j,j} = c \rho_{free}$<br>
+$(J_{free})^i = -D_{i,t} + \bar\epsilon^{ijk} H_{k,j}$<br>
+$(J_{free})^u$ is in units of $\frac{C}{m^2 \cdot s}$<br>
+${(J_{free})^u}_{,u} = D_{j,jt} - D_{i,ti} + \bar\epsilon^{ijk} H_{k,ji} = 0$<br>
+${(J_{free})^u}_{,u}$ is in units of $\frac{C}{m^3 \cdot s}$<br>
 <br>
 
-$J^a = {J^a}_{free} + {J^a}_{bound}$<br>
-${J^a}_{free} = \pmatrix{ c \rho_{free} \\ {J^i}_{free} } = \pmatrix{ c {D^j}_{,j} \\ -{D^i}_{,t} + \bar\epsilon^{ijk} H_{k,j} }$<br>
-${J^a}_{bound} = \pmatrix{ c \rho_{bound} \\ {J^i}_{bound} } = \pmatrix{ -c {P^j}_{,j} \\ {P^i}_{,t} + \bar\epsilon^{ijk} M_{k,j} }$<br>
+$(J_{bound})^u = {M^{uv}}_{,v}$<br>
+$(J_{bound})^u$ is in units of $\frac{C}{m^2 \cdot s}$<br>
+$(J_{bound})^t = {M^{tv}}_{,v} = -c P_{j,j} = c \rho_{bound}$<br>
+$(J_{bound})^i = P_{i,t} + \bar\epsilon^{ijk} M_{k,j}$<br>
+$(J_{bound})^u$ is in units of $\frac{C}{m^2 \cdot s}$<br>
+${(J_{bound})^u}_{,u} = -P_{j,jt} + P_{i,it} + \bar\epsilon^{ijk} M_{k,ji} = 0$<br>
+${(J_{bound})^u}_{,u}$ is in units of $\frac{C}{m^3 \cdot s}$<br>
+<br>
+
+$J^a = (J_{free})^a + (J_{bound})^a$ is in units of $\frac{C}{m^3 \cdot s}$<br>
+$(J_{free})^a = \pmatrix{ c \rho_{free} \\ {J^i}_{free} } = \pmatrix{ c D_{j,j} \\ -D_{i,t} + {\bar\epsilon_i}^{jk} H_{k,j} }$<br>
+$(J_{bound})^a = \pmatrix{ c \rho_{bound} \\ {J^i}_{bound} } = \pmatrix{ -c P_{j,j} \\ P_{i,t} + {\bar\epsilon_i}^{jk} M_{k,j} }$<br>
 <br>
 
 For linear susceptibility:<br>
@@ -1009,6 +1028,18 @@ $T^{uv} = -((F \cdot D)^{TF})^{uv} = \downarrow u(i) \overset{\rightarrow v(j)}{
 Notice that $D_{uv} = \frac{1}{\mu_0} F_{uv} - M_{uv}$<br>
 In the case that $M_{uv} = 0$ we find the vacuum stress-energy tensor, which is symmetric.<br>
 <br>
+
+In terms of $B$ and $D = \epsilon E$:<br>
+$T^{uv} = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
+	\frac{1}{2} (D_k \epsilon^{-1} D^k + B_k \mu^{-1} B^k) &
+	\frac{1}{c} {\bar\epsilon_{jk}}^l \epsilon^{-1} D_k \mu^{-1} B_l \\
+	c {\bar\epsilon_{ik}}^l D^k B_l &
+	\frac{1}{2} \eta^{ij} (D_k \epsilon^{-1} D^k + B_k \mu^{-1} B^k) - D_j \epsilon^{-1} D^i - B_j \mu^{-1} B_i
+}}$<br>
+There, looks better. $D$ and $B$ match up with $\epsilon$ and $\mu$<br>
+<br>
+
+<br>
 What is $T^{uv}$, assuming that $\epsilon$ and $\mu$ are scalars?<br>
 $T^{uv} = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
 	\frac{1}{2} (\epsilon E^2 + \frac{1}{\mu} B^2) &
@@ -1017,7 +1048,23 @@ $T^{uv} = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
 	\frac{1}{2} \eta^{ij} (\epsilon E^2 + \frac{1}{\mu} B^2) - \epsilon E^i E^j - \frac{1}{\mu} B^i B^j
 }}$<br>
 <br>
-What is the difference between $T^{uv}$ and $T^{uv}_{vacuum}$?<br> 
+Scalar susceptibility in materials, with $D$ instead of $E$:<br>
+$T^{uv} = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
+	\frac{1}{2} (\frac{1}{\epsilon} D^2 + \frac{1}{\mu} B^2) &
+	c (\frac{v_p}{c})^2 \bar\epsilon_{jkl} D_k B_l \\
+	c \bar\epsilon_{ikl} D_k B_l &
+	\frac{1}{2} \eta^{ij} (\frac{1}{\epsilon} D^2 + \frac{1}{\mu} B^2) - \frac{1}{\epsilon} D^i D^j - \frac{1}{\mu} B^i B^j
+}}$<br>
+$T^{[uv]} = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
+	0 &
+	( (\frac{v_p}{c})^2 - 1) c \bar\epsilon_{jkl} D_k B_l
+	\\
+	(1 - (\frac{v_p}{c})^2) c \bar\epsilon_{ikl} D_k B_l
+	&
+	0
+}}$<br>
+<br>
+What is the difference between $T^{uv}$ and $T^{uv}_{vacuum}$, assuming $\epsilon$ and $\mu$ are scalars?<br> 
 $T^{uv} - T^{uv}_{vacuum} = \pmatrix{
 	\frac{1}{2} (\epsilon_0 (1 + \chi_e) E^2 + \frac{1}{\mu_0 (1 + \chi_m)} B^2) &
 	\frac{1}{c \mu_0 (1 + \chi_m)} \bar\epsilon_{jkl} E_k B_l \\
@@ -1036,6 +1083,11 @@ $= \pmatrix{
 	\frac{1}{2} (\epsilon_0 \chi_e E^2 - \frac{\chi_m}{\mu} B^2) - \epsilon_0 \chi_e E^i E^j + \frac{\chi_m}{\mu} B^i B^j
 }$<br>
 Notice the difference is still symmetric.  So for scalar $\epsilon, \mu$ we still have a symmetric stress-energy tensor, which means no spacetime torsion.<br>
+<br>
+
+<hr>
+<b>stress-energy divergence in special relativity:</b><br>
+${T^{uv}}_{,v}$<br>
 <br>
 
 <hr>
