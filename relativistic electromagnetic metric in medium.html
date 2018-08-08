@@ -1025,7 +1025,6 @@ $T^{uv} = -((F \cdot D)^{TF})^{uv} = \downarrow u(i) \overset{\rightarrow v(j)}{
 	c {\bar\epsilon_{ik}}^l \epsilon E^k B_l &
 	\frac{1}{2} \eta^{ij} (E_k \epsilon E^k + B_k \mu^{-1} B^k) - E_j \epsilon E^i - B_j \mu^{-1} B_i
 }}$<br>
-Notice that $D_{uv} = \frac{1}{\mu_0} F_{uv} - M_{uv}$<br>
 In the case that $M_{uv} = 0$ we find the vacuum stress-energy tensor, which is symmetric.<br>
 <br>
 
@@ -1057,14 +1056,57 @@ $T^{uv} = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
 }}$<br>
 $T^{[uv]} = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
 	0 &
-	( (\frac{v_p}{c})^2 - 1) c \bar\epsilon_{jkl} D_k B_l
+	-\frac{1}{2} (1 - (\frac{v_p}{c})^2) c \bar\epsilon_{jkl} D_k B_l
 	\\
-	(1 - (\frac{v_p}{c})^2) c \bar\epsilon_{ikl} D_k B_l
+	\frac{1}{2} (1 - (\frac{v_p}{c})^2) c \bar\epsilon_{ikl} D_k B_l
 	&
 	0
 }}$<br>
 <br>
+Now to simplify it a bit...<br>
+$\frac{1}{2} (1 - (\frac{v_p}{c})^2) c \bar\epsilon_{ikl} D_k B_l$<br>
+Let $n = \frac{c}{v_p}$ be the index of refraction.<br>
+$= \frac{1}{2} (1 - \frac{1}{n^2}) c \bar\epsilon_{ikl} D_k B_l$<br>
+For most materials (except metamaterials), we have the index of refraction $n \ge 1$, so $\frac{1}{n} \in (0,1]$, so $1 - \frac{1}{n^2} \in [0,1)$.<br>
+Also, $\vec{D} \times \vec{B} = \epsilon \vec{E} \times \mu \vec{H} = \frac{1}{(v_p)^2} \vec{S}$, for $\vec{S}$ the Poynting vector.<br>
+$= \frac{1}{2} (1 - \frac{1}{n^2}) c \mu \epsilon S_i$<br>
+$= \frac{1}{2} \frac{1}{c} (n^2 - 1) S_i$<br>
+$T^{[uv]} = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
+	0 & -\frac{1}{2} \frac{1}{c} (n^2 - 1) S_j \\
+	\frac{1}{2} \frac{1}{c} (n^2 - 1) S_i & 0
+}}$<br>
+$\vec{D} \times \vec{B}$ has units $\frac{kg}{m^2 \cdot s}$<br>
+$\vec{E} \times \vec{H} = \vec{S}$ has units $\frac{kg}{s^3}$<br>
+$T^{[ti]} = \frac{1}{2} \frac{1}{c} (n^2 - 1) S_i$ has units $\frac{kg}{m \cdot s^2}$<br>
+<br>
+So here is the antisymmetric component of our Ricci tensor. $R_{uv} = 8 \pi T_{uv}$ when ${T^a}_a = 0$.  Time to kick it up a notch from Einstein to Einstein-Cartan.<br>
+<br>
+
+Riemann curvature with commutation/curvature:<br>
+${R^a}_{bcd} = {\Gamma^a}_{bd,c} - {\Gamma^a}_{bc,d} + {\Gamma^a}_{ec} {\Gamma^e}_{bd} - {\Gamma^a}_{ed} {\Gamma^e}_{bc} - {\Gamma^a}_{be} {c_{cd}}^e$<br>
+$R_{ab} = {R^u}_{aub} = {\Gamma^u}_{ab,u} - {\Gamma^u}_{au,b} + {\Gamma^u}_{vu} {\Gamma^v}_{ab} - {\Gamma^u}_{vb} {\Gamma^v}_{au} - {\Gamma^u}_{av} {c_{ub}}^v$<br>
+$R_{ab} = {\Gamma^u}_{ab,u} - {\Gamma^u}_{au,b} + {\Gamma^u}_{vu} {\Gamma^v}_{ab} - {\Gamma^u}_{vb} {\Gamma^v}_{au} - {\Gamma^u}_{av} {c_{ub}}^v$<br>
+$R_{[ab]} = {\Gamma^u}_{[ab],u} - {\Gamma^u}_{[a|u,|b]} + {\Gamma^u}_{vu} {\Gamma^v}_{[ab]} - {\Gamma^u}_{v[b} {\Gamma^v}_{a]u} - {\Gamma^u}_{[a|v} {c_{u|b]}}^v$<br>
+Notice in the event that ${c_{ab}}^c = {\Gamma^a}_{[bc]} = 0$ we get $R_{[ab]} = 0$.  But if not...<br>
+$R_{[ab]} = {\Gamma^u}_{[ab],u} - {\Gamma^u}_{[a|u,|b]} + {\Gamma^u}_{vu} {\Gamma^v}_{[ab]} - {\Gamma^u}_{v[b} {\Gamma^v}_{a]u} - {\Gamma^u}_{[a|v} {c_{u|b]}}^v$<br>
+<br>
+Torsion tensor: ${T^a}_{bc} = 2 {\Gamma^a}_{[bc]} + {c_{cb}}^a$<br>
+In a torsion-free manifold: $2 {\Gamma^a}_{[bc]} = {c_{bc}}^a$, for ${c_{ab}}^c = -{c_{ba}}^c$<br>
+and we get:<br>
+$R_{[ab]} = 
+	\frac{1}{2} ({c_{ab}}^u)_{,u} 
+	- {\Gamma^u}_{[a|u,|b]} 
+	- {\Gamma^u}_{v[b} {\Gamma^v}_{a]u} 
+	+ \frac{1}{2} {\Gamma^u}_{vu} {c_{ab}}^v
+	- \frac{1}{2} {\Gamma^u}_{av} {c_{ub}}^v
+	+ \frac{1}{2} {\Gamma^u}_{bv} {c_{ua}}^v
+$<br>
+<br>
+<br>
+
+<hr>
 What is the difference between $T^{uv}$ and $T^{uv}_{vacuum}$, assuming $\epsilon$ and $\mu$ are scalars?<br> 
+(I'm thinking of redoing this or getting rid of it...)<br>
 $T^{uv} - T^{uv}_{vacuum} = \pmatrix{
 	\frac{1}{2} (\epsilon_0 (1 + \chi_e) E^2 + \frac{1}{\mu_0 (1 + \chi_m)} B^2) &
 	\frac{1}{c \mu_0 (1 + \chi_m)} \bar\epsilon_{jkl} E_k B_l \\
@@ -1086,8 +1128,37 @@ Notice the difference is still symmetric.  So for scalar $\epsilon, \mu$ we stil
 <br>
 
 <hr>
-<b>stress-energy divergence in special relativity:</b><br>
-${T^{uv}}_{,v}$<br>
+<b>stress-energy divergence of electromagnetism in medium with scalar susceptibility in special relativity:</b><br>
+$T^{uv} = \pmatrix{
+	\frac{1}{2} (\frac{1}{\epsilon} D^2 + \frac{1}{\mu} B^2) &
+		c (\frac{v_p}{c})^2 \bar\epsilon_{jkl} D_k B_l \\
+	c \bar\epsilon_{ikl} D_k B_l &
+		\frac{1}{2} \eta^{ij} (\frac{1}{\epsilon} D^2 + \frac{1}{\mu} B^2) - \frac{1}{\epsilon} D^i D^j - \frac{1}{\mu} B^i B^j
+}$<br>
+<br>
+${T^{uv}}_{,v} = $...<br>
+${T^{tv}}_{,v} = \frac{1}{2} \frac{1}{c} (\frac{1}{\epsilon} D^2 + \frac{1}{\mu} B^2)_{,t} 
+	+ \frac{1}{c} \bar\epsilon_{jkl} (\frac{1}{\mu\epsilon} D_k B_l)_{,j}$<br>
+${T^{iv}}_{,v} = \bar\epsilon_{ikl} (D_k B_l)_{,t}
+	+ (\frac{1}{2} \eta^{ij} (\frac{1}{\epsilon} D^2 + \frac{1}{\mu} B^2) - \frac{1}{\epsilon} D^i D^j - \frac{1}{\mu} B^i B^j)_{,j}$<br>
+$ = \bar\epsilon_{ikl} (D_k B_l)_{,t}
+	
+	+ \frac{1}{2} (\frac{1}{\epsilon})_{,i} D^2
+	- (\frac{1}{\epsilon})_{,j} D_i D_j
+	+ \frac{1}{\epsilon} D_j D_{j,i}
+	- \frac{1}{\epsilon} D_j D_{i,j} 
+	- \frac{1}{\epsilon} D_i D_{j,j}
+	
+	+ \frac{1}{2} (\frac{1}{\mu})_{,i} B^2
+	- (\frac{1}{\mu})_{,j} B_i B_j
+	+ \frac{1}{\mu} B_j B_{j,i} 
+	- \frac{1}{\mu} B_j B_{i,j} 
+	- \frac{1}{\mu} B^i B_{j,j}
+$<br>
+<br>
+And now for ${T^{uv}}_{,u}$...<br>
+<br>
+
 <br>
 
 <hr>
