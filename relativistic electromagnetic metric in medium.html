@@ -885,8 +885,15 @@ $g_{pq,rs} \cdot \frac{1}{2} g^{qr} (
 	)
 	- (-2 F_{pr} F_{qs}) \frac{1}{4} g^{qr} g_{uv} g^{ps}
 $<br>
-Let $g_{pq,rs} = -2 F_{pr} F_{qs}$<br>
-Then, on the left, $g_{pq,rs} g^{pq} = -2 g^{pq} F_{pr} F_{qs} = 2 F_{rp} g^{pq} F_{qs} = 2 (F^2)_{rs}$<br>
+<br>
+
+Equating the first term on the lhs with the first term on the rhs: $g_{pq,rs} = -2 F_{pr} F_{qs}$<br>
+(Notice the $g^{qr}$ indices on the rhs could be swapped, but this would equate the antisymmetric indexes of $F_{pq}$ and $F_{rs}$ with the symmetric indices of $g_{pq}$ and $g_{rs}$, which wouldn't work.)<br>
+Then, starting with the terms we have equated:<br>
+$g_{pq,rs} g^{qr} = -2 F_{pr} g^{rq} F_{qs} = -2 (F^2)_{ps}$<br>
+$\frac{1}{2} g_{pq,rs} g^{qr} (\delta^p_u \delta^s_v + \delta^p_v \delta^s_u) = -2 (F^2)_{ps} \cdot \frac{1}{2} (\delta^p_u \delta^s_v + \delta^p_v \delta^s_u) = -((F^2)_{uv} + (F^2)_{vu}) = -2 (F^2)_{(uv)} = -2 (F^2)_{uv}$<br>
+Next come the terms we haven't equated, first those on the left:<br>
+$g_{pq,rs} g^{pq} = -2 g^{pq} F_{pr} F_{qs} = 2 F_{rp} g^{pq} F_{qs} = 2 (F^2)_{rs}$<br>
 And $g_{pq,rs} g^{rs} = -2 g^{rs} F_{pr} F_{qs} = 2 F_{pr} g^{rs} F_{sq} = 2 (F^2)_{pq}$<br>
 And $-\frac{1}{2} g_{pq,rs} (
 	g^{pq} \delta^r_u \delta^s_v 
@@ -895,13 +902,39 @@ And $-\frac{1}{2} g_{pq,rs} (
 	2 (F^2)_{rs} \delta^r_u \delta^s_v 
 	+ 2 (F^2)_{pq} \delta^p_u \delta^q_v
 ) = - 2 (F^2)_{uv}$<br>
-And, on the right, $- (-2 F_{pr} F_{qs}) \frac{1}{4} g^{qr} g_{uv} g^{ps}
+So the total on the lhs would be $-4 (F^2)_{uv}$<br>
+On the right: $- (-2 F_{pr} F_{qs}) \frac{1}{4} g^{qr} g_{uv} g^{ps}
 	= \frac{1}{2} {(F^2)^a}_a g_{uv}$<br>
-So if $g_{uv} = -(F^2)_{uv} = -F_{ua} g^{ab} F_{bv}$<br>
-Then Tada! ...but in that case we get $g_{uv} = -g_{uv}$... nevermind.<br>
-How about if $g_{uv} = R_{uv} = T_{uv} = -(F^2)^{TF}_{uv}$?<br>
-Yes, but for $g_{uv}$ to be trace-free, it must be zero... at least if you're using the differential geometry definition of trace, which itself is weighted by $g_{uv}$.<br>
-But what does this say about the trace of ${(F^2)^u}_v = \frac{1}{4} \delta^u_v {F^a}_b {F^b}_a$?<br>
+<br>
+So the equation becomes:<br>
+$-4 (F^2)_{uv} = -2 (F^2)_{uv} + \frac{1}{2} {(F^2)^a}_a g_{uv}$<br>
+$-4 (F^2)_{uv} = {(F^2)^a}_a g_{uv}$<br>
+${(F^2)^u}_v = -\frac{1}{4} {(F^2)^a}_a \delta^u_v$<br>
+...and we find the mixed form of $F^2$ is completely in the trace.<br>
+...which would mean that $(F^2)^{TF}$ is zero...<Br>
+...which would mean the Ricci curvature is zero (since $R_{ab} = -2 (F^2)^{TF}_{ab}$)....<br>
+...which would only work if the $F_{uv}$ was zero... this doesn't help.<br>
+<br>
+Try again but with $g_{pq,rs} = -2 a F_{pr} F_{qs}$<br>
+$\frac{1}{2} g_{pq,rs} g^{qr} (\delta^p_u \delta^s_v + \delta^p_v \delta^s_u) = -2 a (F^2)_{ps} \cdot \frac{1}{2} (\delta^p_u \delta^s_v + \delta^p_v \delta^s_u) = -2 a (F^2)_{uv}$<br>
+$-\frac{1}{2} g_{pq,rs} (g^{pq} \delta^r_u \delta^s_v + g^{rs} \delta^p_u \delta^q_v) = -\frac{1}{2} (-2 F_{pr} F_{qs}) (g^{pq} \delta^r_u \delta^s_v + g^{rs} \delta^p_u \delta^q_v) = -2 a (F^2)_{uv}$<br>
+$- (-2 F_{pr} F_{qs}) \frac{1}{4} g^{qr} g_{uv} g^{ps} = \frac{1}{2} {(F^2)^a}_a g_{uv}$
+So we get:<br>
+$4 (1 - 2 a) {(F^2)^u}_v = {(F^2)^a}_a \delta^u_v$<br>
+Well what happens when $a = \frac{1}{2}$ ?<br>
+Then we get a constraint on the trace of $F^2$ must equal zero, but no information on what exactly it is.<br>
+I think, in fact, we just get $F_{uv} = 0$ again.<br>
+<br>
+Alright, without any assumptions of $g_{pq,rs}$, contract our equations again to find:<br>
+$g_{pq,rs} g^{pr} g^{qs} - g_{pq,rs} g^{pq} g^{rs} = 0$<br>
+$g_{pq,rs} (g^{pr} g^{qs} - g^{pq} g^{rs}) = 0$<br>
+...which is true for any trace-free Ricci curvature expressed in normal coordinates.<br>
+<br>
+Then comes ... under some choice of gauge, $R_{uv} = -\frac{1}{2} \Box g_{uv}$, especially weak field and Donder-Fock gauge.<br>
+That leaves you with $\Box g_{uv} = 4 (F^2)^{TF}_{uv}$<br>
+Then solve accordingly.<br>
+<br>
+
 TODO look up more on Kahler metrics, and Kahler-Einstein manifolds.<br>
 <br>
 
@@ -1068,8 +1101,7 @@ $\frac{1}{2} (1 - (\frac{v_p}{c})^2) c \bar\epsilon_{ikl} D_k B_l$<br>
 Let $n = \frac{c}{v_p}$ be the index of refraction.<br>
 $= \frac{1}{2} (1 - \frac{1}{n^2}) c \bar\epsilon_{ikl} D_k B_l$<br>
 For most materials (except metamaterials), we have the index of refraction $n \ge 1$, so $\frac{1}{n} \in (0,1]$, so $1 - \frac{1}{n^2} \in [0,1)$.<br>
-Also, $\vec{D} \times \vec{B} = \epsilon \vec{E} \times \mu \vec{H} = \frac{1}{(v_p)^2} \vec{S}$, for $\vec{S}$ the Poynting vector.<br>
-$= \frac{1}{2} (1 - \frac{1}{n^2}) c \mu \epsilon S_i$<br>
+Also, $\vec{D} \times \vec{B} = \epsilon \vec{E} \times \mu \vec{H} = \frac{1}{(v_p)^2} \vec{S} = \frac{1}{c^2} n^2 \vec{S}$, for $\vec{S}$ the Poynting vector.<br>
 $= \frac{1}{2} \frac{1}{c} (n^2 - 1) S_i$<br>
 $T^{[uv]} = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
 	0 & -\frac{1}{2} \frac{1}{c} (n^2 - 1) S_j \\
@@ -1077,8 +1109,28 @@ $T^{[uv]} = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
 }}$<br>
 $\vec{D} \times \vec{B}$ has units $\frac{kg}{m^2 \cdot s}$<br>
 $\vec{E} \times \vec{H} = \vec{S}$ has units $\frac{kg}{s^3}$<br>
-$T^{[ti]} = \frac{1}{2} \frac{1}{c} (n^2 - 1) S_i$ has units $\frac{kg}{m \cdot s^2}$<br>
+$T^{[it]} = \frac{1}{2} \frac{1}{c} (n^2 - 1) S_i$ has units $\frac{kg}{m \cdot s^2}$<br>
 <br>
+For curiousity's sake, what is the symmetric component?<br>
+$T^{(uv)} = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
+	\frac{1}{2} (\frac{1}{\epsilon} D^2 + \frac{1}{\mu} B^2) &
+	\frac{1}{2} (c (\frac{v_p}{c})^2 \bar\epsilon_{jkl} D_k B_l + c \bar\epsilon_{jkl} D_k B_l) \\
+	\frac{1}{2} (c (\frac{v_p}{c})^2 \bar\epsilon_{ikl} D_k B_l + c \bar\epsilon_{ikl} D_k B_l) &
+	\frac{1}{2} \eta^{ij} (\frac{1}{\epsilon} D^2 + \frac{1}{\mu} B^2) - \frac{1}{\epsilon} D^i D^j - \frac{1}{\mu} B^i B^j
+}}$<br>
+<br>
+Simplifying...<br>
+$T^{(it)} = \frac{1}{2} (c (\frac{v_p}{c})^2 \bar\epsilon_{ikl} D_k B_l + c \bar\epsilon_{ikl} D_k B_l)$<br>
+$= \frac{1}{2} c (1 + (\frac{v_p}{c})^2) \bar\epsilon_{ikl} D_k B_l$<br>
+$= \frac{1}{2} \frac{1}{c} (n^2 + 1) S_i$<br>
+<br>
+$T^{(uv)} = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
+	\frac{1}{2} (\frac{1}{\epsilon} D^2 + \frac{1}{\mu} B^2) &
+	\frac{1}{2} \frac{1}{c} (n^2 + 1) S_j \\
+	\frac{1}{2} \frac{1}{c} (n^2 + 1) S_i &
+	\frac{1}{2} \eta^{ij} (\frac{1}{\epsilon} D^2 + \frac{1}{\mu} B^2) - \frac{1}{\epsilon} D^i D^j - \frac{1}{\mu} B^i B^j
+}}$<br>
+
 So here is the antisymmetric component of our Ricci tensor. $R_{uv} = 8 \pi T_{uv}$ when ${T^a}_a = 0$.  Time to kick it up a notch from Einstein to Einstein-Cartan.<br>
 <br>
 
