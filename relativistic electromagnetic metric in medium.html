@@ -849,7 +849,22 @@ ${R^a}_{bcd} = 2 g^{au} g_{[u|[d,c]|b]}$<br>
 ${R^a}_{bcd} = \frac{1}{2} g^{au} (g_{ud,cb} - g_{uc,db} - g_{bd,cu} + g_{bc,du})$<br>
 $R_{uv} = {R^a}_{uav} = \frac{1}{2} g^{ab} (g_{bv,au} - g_{ab,uv} - g_{uv,ab} + g_{ua,bv})$<br>
 and the EFE is:<br>
-$\frac{1}{2} g^{ab} (g_{bv,au} - g_{ab,uv} - g_{uv,ab} + g_{ua,bv}) = -2 ((F^2)_{uv})^{TF}$<br>
+$\frac{1}{2} g^{ab} (g_{bv,au} - g_{ab,uv} - g_{uv,ab} + g_{au,bv}) = -2 ((F^2)_{uv})^{TF}$<br>
+$g^{ab} (g_{bv,au} - g_{ab,uv} - g_{uv,ab} + g_{au,bv}) = -4 ((F^2)_{uv})^{TF}$<br>
+<br>
+
+Trace again, to get the trace-free constraint on the metric:<br>
+$g^{ab} g^{uv} (g_{bv,au} - g_{ab,uv} - g_{uv,ab} + g_{ua,bv}) = 0$<br>
+$g^{ab} g^{uv} g_{au,bv} = g^{ab} g^{uv} g_{ab,uv}$<br>
+<br>
+
+If $R_{uv} = 8 \pi T_{uv} = -2 (F^2)^{TF}_{uv}$ then $R_{uv}$ must be trace-free as well...<br>
+Then ${R^a}_a = 0$<br>
+But if ${R^a}_b = \lambda \delta^a_b$ then ${R^a}_b$ is purely trace... and for it to be purely trace and trace-free, it must equal zero.<br>
+For ${R^a}_b$ to merely be trace-free would mean the sum of the trace elements must be zero, which means any asymmetry in the elements will be preserved.<br> 
+In fact if Ricci is trace-free then ${R^a}_b}$ for $a \ne b$ can be any arbitrary value.  Trace-free is only concerned with the diagonal elements.<br>
+<br>
+
 $\frac{1}{2} g^{ab} g_{pq,rs} (
 	\delta^p_b \delta^q_v \delta^r_a \delta^s_u 
 	- \delta^p_a \delta^q_b \delta^r_u \delta^s_v 
@@ -924,11 +939,6 @@ $4 (1 - 2 a) {(F^2)^u}_v = {(F^2)^a}_a \delta^u_v$<br>
 Well what happens when $a = \frac{1}{2}$ ?<br>
 Then we get a constraint on the trace of $F^2$ must equal zero, but no information on what exactly it is.<br>
 I think, in fact, we just get $F_{uv} = 0$ again.<br>
-<br>
-Alright, without any assumptions of $g_{pq,rs}$, contract our equations again to find:<br>
-$g_{pq,rs} g^{pr} g^{qs} - g_{pq,rs} g^{pq} g^{rs} = 0$<br>
-$g_{pq,rs} (g^{pr} g^{qs} - g^{pq} g^{rs}) = 0$<br>
-...which is true for any trace-free Ricci curvature expressed in normal coordinates.<br>
 <br>
 Then comes ... under some choice of gauge, $R_{uv} = -\frac{1}{2} \Box g_{uv}$, especially weak field and Donder-Fock gauge.<br>
 That leaves you with $\Box g_{uv} = 4 (F^2)^{TF}_{uv}$<br>
