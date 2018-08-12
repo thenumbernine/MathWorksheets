@@ -147,6 +147,7 @@ $= -\frac{1}{\alpha^2} \gamma^{im} \epsilon_{tmjk}$<br>
 <hr>
 <b>Faraday tensor in general relativity, in vacuum:</b><br>
 From Baumgarate &amp; Shapiro, eqn 5.114:<br>
+TODO add $\frac{1}{c}$ to the $E$'s.<br>
 $F^{ab} = n^a E^b - n^b E^a + n_d \epsilon^{dabc} B_c$<br>
 $E^a = F^{ab} n_b$<br>
 $B^a = \frac{1}{2} \epsilon^{abcd} n_b F_{dc}$<br>
@@ -862,7 +863,7 @@ If $R_{uv} = 8 \pi T_{uv} = -2 (F^2)^{TF}_{uv}$ then $R_{uv}$ must be trace-free
 Then ${R^a}_a = 0$<br>
 But if ${R^a}_b = \lambda \delta^a_b$ then ${R^a}_b$ is purely trace... and for it to be purely trace and trace-free, it must equal zero.<br>
 For ${R^a}_b$ to merely be trace-free would mean the sum of the trace elements must be zero, which means any asymmetry in the elements will be preserved.<br> 
-In fact if Ricci is trace-free then ${R^a}_b}$ for $a \ne b$ can be any arbitrary value.  Trace-free is only concerned with the diagonal elements.<br>
+In fact if Ricci is trace-free then ${R^a}_b$ for $a \ne b$ can be any arbitrary value.  Trace-free is only concerned with the diagonal elements.<br>
 <br>
 
 $\frac{1}{2} g^{ab} g_{pq,rs} (
@@ -943,6 +944,14 @@ I think, in fact, we just get $F_{uv} = 0$ again.<br>
 Then comes ... under some choice of gauge, $R_{uv} = -\frac{1}{2} \Box g_{uv}$, especially weak field and Donder-Fock gauge.<br>
 That leaves you with $\Box g_{uv} = 4 (F^2)^{TF}_{uv}$<br>
 Then solve accordingly.<br>
+<br>
+
+While I'm rambling, I keep hearing that, for Kahler-Einstein metrics, that $R_{uv} = \lambda g_{uv}$.<br>
+If this is the case then maybe this would put second-derivatives of the metric at the same footing as the metric themselves.<br>
+If this is the case then maybe $d^2 g_{uv} = g_{uv}$ or something.<br>
+So what's the antiderivative of $F_{uv}$?  $A_u$.  And what's an antiderivative of $A_u$?  $exp(\int A_u dx^u)$<br>
+So then those $g_{ab} = h_{ab} exp(\int A_u dx^u)$ metrics would be on the same footing as something that might look like (the Kahler metric) $g_{ab} = \hat{g}_{ab} + i F_{ab}$?<br>
+I don't know, I haven't thought this through at all.  More on it later.<br>
 <br>
 
 TODO look up more on Kahler metrics, and Kahler-Einstein manifolds.<br>
@@ -1221,6 +1230,178 @@ $<br>
 And now for ${T^{uv}}_{,u}$...<br>
 <br>
 
+<br>
+
+<hr>
+<b>electromagnetic stress-energy in medium in general relativity</b><br>
+$F_{uv} = \pmatrix{
+	0 & -\alpha \frac{1}{c} \mathcal{E}_j \\
+	\alpha \frac{1}{c} \mathcal{E}_i & \epsilon_{ijk} \mathcal{B}^k
+}$<br>
+$D_{uv} = \pmatrix{
+	0 & -c \alpha \mathcal{D}_j \\
+	c \alpha \mathcal{D}_i & \epsilon_{ijk} \mathcal{H}^k
+}$<br>
+$(F \cdot D)_{uv} = \pmatrix{
+	0 & -\alpha \frac{1}{c} \mathcal{E}_k \\
+	\alpha \frac{1}{c} \mathcal{E}_i & \epsilon_{ikl} \mathcal{B}^l
+}
+\pmatrix{
+	-1/\alpha^2 & \beta^m / \alpha^2 \\ 
+	\beta^k / \alpha^2 & \gamma^{km} - \beta^k \beta^m / \alpha^2
+}
+\pmatrix{
+	0 & -c \alpha \mathcal{D}_j \\
+	c \alpha \mathcal{D}_m & \epsilon_{mjn} \mathcal{H}^n
+}$<br>
+$= \pmatrix{
+	-\frac{1}{\alpha} \frac{1}{c} \mathcal{E}_k \beta^k
+	&
+	- \alpha \frac{1}{c} \mathcal{E}^m
+	+ \frac{1}{\alpha} \frac{1}{c} \mathcal{E}_k \beta^k \beta^m
+	\\
+	-\frac{1}{\alpha} \frac{1}{c} \mathcal{E}_i
+	+ \epsilon_{ikl} \mathcal{B}^l \beta^k
+	&
+	\frac{1}{\alpha} \frac{1}{c} \mathcal{E}_i \beta^m
+	+ {\epsilon_i}^{ml} \mathcal{B}_l
+	- \frac{1}{\alpha^2} \epsilon_{ikl} \mathcal{B}^l \beta^k \beta^m
+}
+\pmatrix{
+	0 & -c \alpha \mathcal{D}_j \\
+	c \alpha \mathcal{D}_m & \epsilon_{mjn} \mathcal{H}^n
+}$<br>
+$= \pmatrix{
+	- \alpha^2 \mathcal{E}^k \mathcal{D}_k
+	+ \mathcal{E}_k \beta^k \mathcal{D}_l \beta^l
+
+	&
+
+	\mathcal{D}_j \mathcal{E}_k \beta^k 
+	+ \frac{1}{c} \alpha \epsilon_{jkl} \mathcal{E}^k \mathcal{H}^l
+	+ \frac{1}{c} \frac{1}{\alpha} \epsilon_{jkl} \mathcal{H}^k \beta^l \mathcal{E}_m \beta^m
+	
+	\\
+	
+	\mathcal{E}_i \mathcal{D}_k \beta^k
+	+ c \alpha \epsilon_{ikl} \mathcal{D}^k \mathcal{B}^l
+	+ c \frac{1}{\alpha} \epsilon_{ikl} \mathcal{B}^k \beta^l \mathcal{D}_m \beta^m
+
+	&
+
+	\mathcal{E}_i \mathcal{D}_j
+	+ \mathcal{H}_i \mathcal{B}_j 
+	- \gamma_{ij} \mathcal{B}_k \mathcal{H}^k
+	
+	+ c \alpha \mathcal{D}_j \epsilon_{ikl} \mathcal{B}^k \beta^l
+	+ \frac{1}{c} \frac{1}{\alpha} \mathcal{E}_i \epsilon_{jkl} \mathcal{H}^k \beta^l
+	
+	+ \frac{1}{\alpha^2} \epsilon_{ikl} \mathcal{B}^k \beta^l \epsilon_{jmn} \mathcal{H}^m \beta^n
+}$<br>
+<br>
+$tr(F \cdot D) = (F \cdot D)_{uv} g^{uv}$<br>
+$= 
+	-1/\alpha^2 (
+		- \alpha^2 \mathcal{E}^k \mathcal{D}_k
+		+ \mathcal{E}_k \beta^k \mathcal{D}_l \beta^l
+	)
+
+	+ \frac{1}{\alpha^2} \beta^j (
+		\mathcal{D}_j \mathcal{E}_k \beta^k 
+		+ \frac{1}{c} \alpha \epsilon_{jkl} \mathcal{E}^k \mathcal{H}^l
+		+ \frac{1}{c} \frac{1}{\alpha} \epsilon_{jkl} \mathcal{H}^k \beta^l \mathcal{E}_m \beta^m
+	)
+
+	+ \frac{1}{\alpha^2} \beta^i (
+		\mathcal{E}_i \mathcal{D}_k \beta^k
+		+ c \alpha \epsilon_{ikl} \mathcal{D}^k \mathcal{B}^l
+		+ c \frac{1}{\alpha} \epsilon_{ikl} \mathcal{B}^k \beta^l \mathcal{D}_m \beta^m
+	)
+
+	+ (\gamma^{ij} - \frac{1}{\alpha^2} \beta^i \beta^j) ( 
+		\mathcal{E}_i \mathcal{D}_j
+		+ \mathcal{H}_i \mathcal{B}_j 
+		- \gamma_{ij} \mathcal{B}_k \mathcal{H}^k
+		
+		+ c \alpha \mathcal{D}_j \epsilon_{ikl} \mathcal{B}^k \beta^l
+		+ \frac{1}{c} \frac{1}{\alpha} \mathcal{E}_i \epsilon_{jkl} \mathcal{H}^k \beta^l
+		
+		+ \frac{1}{\alpha^2} \epsilon_{ikl} \mathcal{B}^k \beta^l \epsilon_{jmn} \mathcal{H}^m \beta^n
+	)
+$<br>
+$= 
+	2 \mathcal{E}^k \mathcal{D}_k
+	- 2 \mathcal{B}_k \mathcal{H}^k
+	+ 2 \frac{1}{\alpha^2} \beta^i \beta_i \mathcal{B}_k \mathcal{H}^k
+	- 2 \frac{1}{\alpha^2} \mathcal{H}_i \beta^i \mathcal{B}_j \beta^j 
+	+ 2 \frac{1}{c} \frac{1}{\alpha} \epsilon_{jkl} \mathcal{E}^j \mathcal{H}^k \beta^l
+	+ c (\frac{1}{\alpha} + \alpha) \epsilon_{ikl} \mathcal{D}^i \mathcal{B}^k \beta^l
+$<br>
+For $\mathcal{D} = \epsilon \mathcal{E}$ and $\mathcal{H} = \mu \mathcal{B}$:<br>
+$tr(F \cdot D) = 
+	2 \epsilon \mathcal{E}^2
+	- 2 \mu \mathcal{B}^2
+	+ 2 \frac{1}{\alpha^2} \mu \beta^2 \mathcal{B}^2
+	- 2 \frac{1}{\alpha^2} \mu (\mathcal{B}_i \beta^i)^2
+$<br>
+<br>
+Continuing with the scalar assumption of $\epsilon$ and $\mu$...<br>
+<br>
+$(F \cdot D)^{TF}_{uv} = (F \cdot D)_{uv} - \frac{1}{4} g_{uv} tr (F \cdot D)$<br>
+$= \pmatrix{
+	
+	- \frac{1}{2} \alpha^2 \epsilon \mathcal{E}^2
+	- \frac{1}{2} \beta^2 \epsilon \mathcal{E}^2
+	
+	+ \epsilon (\mathcal{E}_k \beta^k)^2
+	
+	+ \frac{1}{2} \mu (2 \beta^2 - \alpha^2) \mathcal{B}^2
+	- \frac{1}{2} \frac{1}{\alpha^2} \mu \beta^4 \mathcal{B}^2
+	
+	- \frac{1}{2} \mu (\mathcal{B}_k \beta^k)^2
+	+ \frac{1}{2} \beta^2 \frac{1}{\alpha^2} \mu (\mathcal{B}_k \beta^k)^2
+
+	&
+
+	\epsilon \mathcal{E}_j \mathcal{E}_k \beta^k 
+	+ \mu \frac{1}{c} \alpha \epsilon_{jkl} \mathcal{E}^k \mathcal{B}^l
+	+ \mu \frac{1}{c} \frac{1}{\alpha} \epsilon_{jkl} \mathcal{B}^k \beta^l \mathcal{E}_m \beta^m
+	- \beta_j \frac{1}{2} \epsilon \mathcal{E}^2
+	+ \beta_j \frac{1}{2} \mu \mathcal{B}^2
+	- \beta_j \frac{1}{2} \frac{1}{\alpha^2} \mu \beta^2 \mathcal{B}^2
+	+ \beta_j \frac{1}{2} \frac{1}{\alpha^2} \mu (\mathcal{B}_k \beta^k)^2
+
+	\\
+	
+	\epsilon \mathcal{E}_i \mathcal{E}_k \beta^k
+	+ \epsilon c \alpha \epsilon_{ikl} \mathcal{E}^k \mathcal{B}^l
+	+ \epsilon c \frac{1}{\alpha} \epsilon_{ikl} \mathcal{B}^k \beta^l \mathcal{E}_m \beta^m
+	- \beta_i \frac{1}{2} \epsilon \mathcal{E}^2
+	+ \beta_i \frac{1}{2} \mu \mathcal{B}^2
+	- \beta_i \frac{1}{2} \frac{1}{\alpha^2} \mu \beta^2 \mathcal{B}^2
+	+ \beta_i \frac{1}{2} \frac{1}{\alpha^2} \mu (\mathcal{B}_k \beta^k)^2
+
+	&
+
+	\epsilon \mathcal{E}_i \mathcal{E}_j
+	+ \mu \mathcal{B}_i \mathcal{B}_j 
+	- \mu \gamma_{ij} \mathcal{B}_k \mathcal{B}^k
+	
+	+ \epsilon c \alpha \mathcal{E}_j \epsilon_{ikl} \mathcal{B}^k \beta^l
+	+ \mu \frac{1}{c} \frac{1}{\alpha} \mathcal{E}_i \epsilon_{jkl} \mathcal{B}^k \beta^l
+	
+	+ \mu \frac{1}{\alpha^2} \epsilon_{ikl} \mathcal{B}^k \beta^l \epsilon_{jmn} \mathcal{B}^m \beta^n
+	
+	- \gamma_{ij} \frac{1}{2} \epsilon \mathcal{E}^2
+	+ \gamma_{ij} \frac{1}{2} \mu \mathcal{B}^2
+	- \gamma_{ij} \frac{1}{2} \frac{1}{\alpha^2} \mu \beta^2 \mathcal{B}^2
+	+ \gamma_{ij} \frac{1}{2} \frac{1}{\alpha^2} \mu (\mathcal{B}_k \beta^k)^2
+} 
+$<br>
+
+
+<br>
+$T_{uv} = -(F \cdot D)^{TF}_{uv}$<br>
 <br>
 
 <hr>
