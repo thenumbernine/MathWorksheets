@@ -1261,7 +1261,7 @@ $= \pmatrix{
 	+ \frac{1}{\alpha} \frac{1}{c} \mathcal{E}_k \beta^k \beta^m
 	\\
 	-\frac{1}{\alpha} \frac{1}{c} \mathcal{E}_i
-	+ \epsilon_{ikl} \mathcal{B}^l \beta^k
+	+ \frac{1}{\alpha}^2 \epsilon_{ikl} \mathcal{B}^l \beta^k
 	&
 	\frac{1}{\alpha} \frac{1}{c} \mathcal{E}_i \beta^m
 	+ {\epsilon_i}^{ml} \mathcal{B}_l
@@ -1293,11 +1293,12 @@ $= \pmatrix{
 	+ \mathcal{H}_i \mathcal{B}_j 
 	- \gamma_{ij} \mathcal{B}_k \mathcal{H}^k
 	
-	+ c \alpha \mathcal{D}_j \epsilon_{ikl} \mathcal{B}^k \beta^l
+	+ c \frac{1}{\alpha} \mathcal{D}_j \epsilon_{ikl} \mathcal{B}^k \beta^l
 	+ \frac{1}{c} \frac{1}{\alpha} \mathcal{E}_i \epsilon_{jkl} \mathcal{H}^k \beta^l
 	
 	+ \frac{1}{\alpha^2} \epsilon_{ikl} \mathcal{B}^k \beta^l \epsilon_{jmn} \mathcal{H}^m \beta^n
 }$<br>
+
 <br>
 $tr(F \cdot D) = (F \cdot D)_{uv} g^{uv}$<br>
 $= 
@@ -1323,7 +1324,7 @@ $=
 		+ \mathcal{H}_i \mathcal{B}_j 
 		- \gamma_{ij} \mathcal{B}_k \mathcal{H}^k
 		
-		+ c \alpha \mathcal{D}_j \epsilon_{ikl} \mathcal{B}^k \beta^l
+		+ c \frac{1}{\alpha} \mathcal{D}_j \epsilon_{ikl} \mathcal{B}^k \beta^l
 		+ \frac{1}{c} \frac{1}{\alpha} \mathcal{E}_i \epsilon_{jkl} \mathcal{H}^k \beta^l
 		
 		+ \frac{1}{\alpha^2} \epsilon_{ikl} \mathcal{B}^k \beta^l \epsilon_{jmn} \mathcal{H}^m \beta^n
@@ -1335,7 +1336,7 @@ $=
 	+ 2 \frac{1}{\alpha^2} \beta^i \beta_i \mathcal{B}_k \mathcal{H}^k
 	- 2 \frac{1}{\alpha^2} \mathcal{H}_i \beta^i \mathcal{B}_j \beta^j 
 	+ 2 \frac{1}{c} \frac{1}{\alpha} \epsilon_{jkl} \mathcal{E}^j \mathcal{H}^k \beta^l
-	+ c (\frac{1}{\alpha} + \alpha) \epsilon_{ikl} \mathcal{D}^i \mathcal{B}^k \beta^l
+	+ 2 c \frac{1}{\alpha} \epsilon_{ikl} \mathcal{D}^i \mathcal{B}^k \beta^l
 $<br>
 For $\mathcal{D} = \epsilon \mathcal{E}$ and $\mathcal{H} = \mu \mathcal{B}$:<br>
 $tr(F \cdot D) = 
@@ -1344,6 +1345,7 @@ $tr(F \cdot D) =
 	+ 2 \frac{1}{\alpha^2} \mu \beta^2 \mathcal{B}^2
 	- 2 \frac{1}{\alpha^2} \mu (\mathcal{B}_i \beta^i)^2
 $<br>
+
 <br>
 Continuing with the scalar assumption of $\epsilon$ and $\mu$...<br>
 <br>
@@ -1387,7 +1389,7 @@ $= \pmatrix{
 	+ \mu \mathcal{B}_i \mathcal{B}_j 
 	- \mu \gamma_{ij} \mathcal{B}_k \mathcal{B}^k
 	
-	+ \epsilon c \alpha \mathcal{E}_j \epsilon_{ikl} \mathcal{B}^k \beta^l
+	+ \epsilon c \frac{1}{\alpha} \mathcal{E}_j \epsilon_{ikl} \mathcal{B}^k \beta^l
 	+ \mu \frac{1}{c} \frac{1}{\alpha} \mathcal{E}_i \epsilon_{jkl} \mathcal{B}^k \beta^l
 	
 	+ \mu \frac{1}{\alpha^2} \epsilon_{ikl} \mathcal{B}^k \beta^l \epsilon_{jmn} \mathcal{B}^m \beta^n
@@ -1399,9 +1401,33 @@ $= \pmatrix{
 } 
 $<br>
 
+TODO do this, the matter SR, and the vaccuum GR / SR all in the same co/contra-variance, which ever one you choose.<br>
+<br>
 
 <br>
 $T_{uv} = -(F \cdot D)^{TF}_{uv}$<br>
+<br>
+
+Antisymmetric component of general-relativistic stress-energy:<br>
+Let $\mathcal{S}_i = {\epsilon_i}^{jk} \mathcal{E}_j \mathcal{H}_k$<br>
+$T_{[uv]} =  \pmatrix{
+	0 &
+	
+	-\alpha \frac{1}{2} \frac{1}{c} (\frac{1}{\mu} \epsilon c^2 - 1) (
+		S_j + \frac{1}{\alpha^2} \epsilon_{jkl} \mathcal{H}^k \beta^l \mathcal{E}_m \beta^m
+	)
+	
+	\\
+	
+	\alpha \frac{1}{2} \frac{1}{c} (\frac{1}{\mu} \epsilon c^2 - 1) (
+		S_i + \frac{1}{\alpha^2} \epsilon_{ikl} \mathcal{H}^k \beta^l \mathcal{E}_m \beta^m
+	)
+	
+	&
+	
+	-\frac{1}{c} \frac{1}{\alpha} (\frac{1}{\mu} \epsilon c^2 - 1) \mathcal{E}_{[i} \epsilon_{j]kl} \mathcal{H}^k \beta^l
+}$<br>
+Seems like there is an error in here somewhere, or in the SR one, because I shouldn't have a fraction $\frac{\epsilon}{\mu}$, but instead $\epsilon\mu c^2 = \frac{c^2}{(v_p)^2} = n^2$<br>
 <br>
 
 <hr>
