@@ -1338,96 +1338,135 @@ $=
 	+ 2 \frac{1}{c} \frac{1}{\alpha} \epsilon_{jkl} \mathcal{E}^j \mathcal{H}^k \beta^l
 	+ 2 c \frac{1}{\alpha} \epsilon_{ikl} \mathcal{D}^i \mathcal{B}^k \beta^l
 $<br>
-For $\mathcal{D} = \epsilon \mathcal{E}$ and $\mathcal{H} = \mu \mathcal{B}$:<br>
+For $\mathcal{D} = \epsilon \mathcal{E}$ and $\mathcal{H} = \frac{1}{\mu} \mathcal{B}$:<br>
 $tr(F \cdot D) = 
 	2 \epsilon \mathcal{E}^2
-	- 2 \mu \mathcal{B}^2
-	+ 2 \frac{1}{\alpha^2} \mu \beta^2 \mathcal{B}^2
-	- 2 \frac{1}{\alpha^2} \mu (\mathcal{B}_i \beta^i)^2
+	- 2 \frac{1}{\mu} \mathcal{B}^2
+	+ 2 \frac{1}{\mu} \frac{1}{\alpha^2} \beta^2 \mathcal{B}^2
+	- 2 \frac{1}{\mu} \frac{1}{\alpha^2} (\mathcal{B}_k \beta^k)^2
+	+ 2 \frac{1}{\mu} \frac{1}{c} \frac{1}{\alpha} \epsilon_{jkl} \mathcal{E}^j \mathcal{B}^k \beta^l
+	+ 2 \epsilon c \frac{1}{\alpha} \epsilon_{ikl} \mathcal{E}^i \mathcal{B}^k \beta^l
 $<br>
 
 <br>
 Continuing with the scalar assumption of $\epsilon$ and $\mu$...<br>
 <br>
-$(F \cdot D)^{TF}_{uv} = (F \cdot D)_{uv} - \frac{1}{4} g_{uv} tr (F \cdot D)$<br>
+$T_{uv} = -(F \cdot D)^{TF}_{uv} = -(F \cdot D)_{uv} - \frac{1}{4} g_{uv} tr (F \cdot D)$<br>
 $= \pmatrix{
-	
-	- \frac{1}{2} \alpha^2 \epsilon \mathcal{E}^2
-	- \frac{1}{2} \beta^2 \epsilon \mathcal{E}^2
-	
-	+ \epsilon (\mathcal{E}_k \beta^k)^2
-	
-	+ \frac{1}{2} \mu (2 \beta^2 - \alpha^2) \mathcal{B}^2
-	- \frac{1}{2} \frac{1}{\alpha^2} \mu \beta^4 \mathcal{B}^2
-	
-	- \frac{1}{2} \mu (\mathcal{B}_k \beta^k)^2
-	+ \frac{1}{2} \beta^2 \frac{1}{\alpha^2} \mu (\mathcal{B}_k \beta^k)^2
+
+	+ \epsilon \alpha^2 \mathcal{E}^2
+	- \epsilon (\mathcal{E}_k \beta^k)^2
+
+	- \frac{1}{2} \epsilon \alpha^2 \mathcal{E}^2
+	+ \frac{1}{2} \frac{1}{\mu} \alpha^2 \mathcal{B}^2
+	- \frac{1}{2} \frac{1}{\mu} \beta^2 \mathcal{B}^2
+	+ \frac{1}{2} \frac{1}{\mu} (\mathcal{B}_k \beta^k)^2
+	- \frac{1}{\mu} \frac{1}{c} \alpha \frac{1}{2} \epsilon_{klm} \mathcal{E}^k \mathcal{B}^l \beta^m
+	- \epsilon c \alpha \frac{1}{2} \epsilon_{klm} \mathcal{E}^k \mathcal{B}^l \beta^m
+
+	+ \frac{1}{2} \epsilon \beta^2 \mathcal{E}^2
+	- \frac{1}{2} \frac{1}{\mu} \beta^2 \mathcal{B}^2
+	+ \frac{1}{2} \frac{1}{\mu} \frac{1}{\alpha^2} \beta^4 \mathcal{B}^2
+	- \frac{1}{2} \frac{1}{\mu} \frac{1}{\alpha^2} \beta^2 (\mathcal{B}_k \beta^k)^2
+	+ \frac{1}{2} \frac{1}{\mu} \frac{1}{c} \frac{1}{\alpha} \beta^2 \epsilon_{klm} \mathcal{E}^k \mathcal{B}^l \beta^m
+	+ \frac{1}{2} \epsilon c \frac{1}{\alpha} \beta^2 \epsilon_{klm} \mathcal{E}^k \mathcal{B}^l \beta^m
 
 	&
 
-	\epsilon \mathcal{E}_j \mathcal{E}_k \beta^k 
-	+ \mu \frac{1}{c} \alpha \epsilon_{jkl} \mathcal{E}^k \mathcal{B}^l
-	+ \mu \frac{1}{c} \frac{1}{\alpha} \epsilon_{jkl} \mathcal{B}^k \beta^l \mathcal{E}_m \beta^m
-	- \beta_j \frac{1}{2} \epsilon \mathcal{E}^2
-	+ \beta_j \frac{1}{2} \mu \mathcal{B}^2
-	- \beta_j \frac{1}{2} \frac{1}{\alpha^2} \mu \beta^2 \mathcal{B}^2
-	+ \beta_j \frac{1}{2} \frac{1}{\alpha^2} \mu (\mathcal{B}_k \beta^k)^2
+	- \epsilon \mathcal{E}_j \mathcal{E}_k \beta^k 
+	- \frac{1}{\mu} \frac{1}{c} \alpha \epsilon_{jkl} \mathcal{E}^k \mathcal{B}^l
+	- \frac{1}{\mu} \frac{1}{c} \frac{1}{\alpha} \epsilon_{jkl} \mathcal{B}^k \beta^l \mathcal{E}_m \beta^m
+
+	+ \frac{1}{2} \epsilon \mathcal{E}^2 \beta_j
+	- \frac{1}{2} \frac{1}{\mu} \mathcal{B}^2 \beta_j
+	+ \frac{1}{2} \frac{1}{\mu} \frac{1}{\alpha^2} \beta^2 \mathcal{B}^2 \beta_j
+	- \frac{1}{2} \frac{1}{\mu} \frac{1}{\alpha^2} (\mathcal{B}_k \beta^k)^2 \beta_j
+	+ \frac{1}{2} \frac{1}{\mu} \frac{1}{c} \frac{1}{\alpha} \epsilon_{klm} \mathcal{E}^k \mathcal{B}^l \beta^m \beta_j
+	+ \frac{1}{2} \epsilon c \frac{1}{\alpha} \epsilon_{klm} \mathcal{E}^k \mathcal{B}^l \beta^m \beta_j
 
 	\\
 	
-	\epsilon \mathcal{E}_i \mathcal{E}_k \beta^k
-	+ \epsilon c \alpha \epsilon_{ikl} \mathcal{E}^k \mathcal{B}^l
-	+ \epsilon c \frac{1}{\alpha} \epsilon_{ikl} \mathcal{B}^k \beta^l \mathcal{E}_m \beta^m
-	- \beta_i \frac{1}{2} \epsilon \mathcal{E}^2
-	+ \beta_i \frac{1}{2} \mu \mathcal{B}^2
-	- \beta_i \frac{1}{2} \frac{1}{\alpha^2} \mu \beta^2 \mathcal{B}^2
-	+ \beta_i \frac{1}{2} \frac{1}{\alpha^2} \mu (\mathcal{B}_k \beta^k)^2
+	- \epsilon \mathcal{E}_i \mathcal{E}_k \beta^k
+	- \epsilon c \alpha \epsilon_{ikl} \mathcal{E}^k \mathcal{B}^l
+	- \epsilon c \frac{1}{\alpha} \epsilon_{ikl} \mathcal{B}^k \beta^l \mathcal{E}_m \beta^m
+
+	+ \frac{1}{2} \epsilon \mathcal{E}^2 \beta_i
+	- \frac{1}{2} \frac{1}{\mu} \mathcal{B}^2 \beta_i
+	+ \frac{1}{2} \frac{1}{\mu} \frac{1}{\alpha^2} \beta^2 \mathcal{B}^2 \beta_i
+	- \frac{1}{2} \frac{1}{\mu} \frac{1}{\alpha^2} (\mathcal{B}_k \beta^k)^2 \beta_i
+	+ \frac{1}{2} \frac{1}{\mu} \frac{1}{c} \frac{1}{\alpha} \epsilon_{klm} \mathcal{E}^k \mathcal{B}^l \beta^m \beta_i
+	+ \frac{1}{2} \epsilon c \frac{1}{\alpha} \epsilon_{klm} \mathcal{E}^k \mathcal{B}^l \beta^m \beta_i
 
 	&
 
-	\epsilon \mathcal{E}_i \mathcal{E}_j
-	+ \mu \mathcal{B}_i \mathcal{B}_j 
-	- \mu \gamma_{ij} \mathcal{B}_k \mathcal{B}^k
+	- \epsilon \mathcal{E}_i \mathcal{E}_j
+	- \frac{1}{\mu} \mathcal{B}_i \mathcal{B}_j 
+	+ \frac{1}{\mu} \gamma_{ij} \mathcal{B}_k \mathcal{B}^k
 	
-	+ \epsilon c \frac{1}{\alpha} \mathcal{E}_j \epsilon_{ikl} \mathcal{B}^k \beta^l
-	+ \mu \frac{1}{c} \frac{1}{\alpha} \mathcal{E}_i \epsilon_{jkl} \mathcal{B}^k \beta^l
+	- \epsilon c \frac{1}{\alpha} \mathcal{E}_j \epsilon_{ikl} \mathcal{B}^k \beta^l
+	- \frac{1}{\mu} \frac{1}{c} \frac{1}{\alpha} \mathcal{E}_i \epsilon_{jkl} \mathcal{B}^k \beta^l
 	
-	+ \mu \frac{1}{\alpha^2} \epsilon_{ikl} \mathcal{B}^k \beta^l \epsilon_{jmn} \mathcal{B}^m \beta^n
-	
-	- \gamma_{ij} \frac{1}{2} \epsilon \mathcal{E}^2
-	+ \gamma_{ij} \frac{1}{2} \mu \mathcal{B}^2
-	- \gamma_{ij} \frac{1}{2} \frac{1}{\alpha^2} \mu \beta^2 \mathcal{B}^2
-	+ \gamma_{ij} \frac{1}{2} \frac{1}{\alpha^2} \mu (\mathcal{B}_k \beta^k)^2
-} 
-$<br>
+	- \frac{1}{\mu} \frac{1}{\alpha^2} \epsilon_{ikl} \mathcal{B}^k \beta^l \epsilon_{jmn} \mathcal{B}^m \beta^n
+
+	+ \frac{1}{2} \epsilon \mathcal{E}^2 \gamma_{ij}
+	- \frac{1}{2} \frac{1}{\mu} \mathcal{B}^2 \gamma_{ij}
+	+ \frac{1}{2} \frac{1}{\mu} \frac{1}{\alpha^2} \beta^2 \mathcal{B}^2 \gamma_{ij}
+	- \frac{1}{2} \frac{1}{\mu} \frac{1}{\alpha^2} (\mathcal{B}_k \beta^k)^2 \gamma_{ij}
+	+ \frac{1}{2} \frac{1}{\mu} \frac{1}{c} \frac{1}{\alpha} \epsilon_{klm} \mathcal{E}^k \mathcal{B}^l \beta^m \gamma_{ij}
+	+ \frac{1}{2} \epsilon c \frac{1}{\alpha} \epsilon_{klm} \mathcal{E}^k \mathcal{B}^l \beta^m \gamma_{ij}
+
+}$<br>
+<br>
+
 
 TODO do this, the matter SR, and the vaccuum GR / SR all in the same co/contra-variance, which ever one you choose.<br>
 <br>
 
-<br>
-$T_{uv} = -(F \cdot D)^{TF}_{uv}$<br>
-<br>
-
 Antisymmetric component of general-relativistic stress-energy:<br>
+$T_{[uv]} =  \pmatrix{
+
+	0 &
+
+	-\frac{1}{2} \frac{1}{c} \frac{1}{\mu} (n^2 - 1) (
+		\alpha \epsilon_{jkl} \mathcal{E}^k \mathcal{B}^l
+		+ \frac{1}{\alpha} \epsilon_{jkl} \mathcal{B}^k \beta^l \mathcal{E}_m \beta^m
+	)
+
+
+	\\
+
+	-\frac{1}{2} \frac{1}{c} \frac{1}{\mu} (n^2 - 1) (
+		\alpha \epsilon_{ikl} \mathcal{E}^k \mathcal{B}^l
+		+ \frac{1}{\alpha} \epsilon_{ikl} \mathcal{B}^k \beta^l \mathcal{E}_m \beta^m
+	)
+
+	&
+
+	\frac{1}{c} \frac{1}{\mu} (n^2 - 1) \frac{1}{\alpha} \mathcal{E}_{[i} \epsilon_{j]kl} \mathcal{B}^k \beta^l
+
+}$<br>
 Let $\mathcal{S}_i = {\epsilon_i}^{jk} \mathcal{E}_j \mathcal{H}_k$<br>
 $T_{[uv]} =  \pmatrix{
+
 	0 &
-	
-	\alpha \frac{1}{2} \frac{1}{c} (\frac{1}{\mu} \epsilon c^2 - 1) (
-		S_j + \frac{1}{\alpha^2} \epsilon_{jkl} \mathcal{H}^k \beta^l \mathcal{E}_m \beta^m
+
+	-\frac{1}{2} \frac{1}{c} (n^2 - 1) (
+		\alpha \mathcal{S}_j
+		+ \frac{1}{\alpha} \epsilon_{jkl} \mathcal{H}^k \beta^l \mathcal{E}_m \beta^m
 	)
-	
+
+
 	\\
-	
-	-\alpha \frac{1}{2} \frac{1}{c} (\frac{1}{\mu} \epsilon c^2 - 1) (
-		S_i + \frac{1}{\alpha^2} \epsilon_{ikl} \mathcal{H}^k \beta^l \mathcal{E}_m \beta^m
+
+	-\frac{1}{2} \frac{1}{c} (n^2 - 1) (
+		\alpha \mathcal{S}_i
+		+ \frac{1}{\alpha} \epsilon_{ikl} \mathcal{H}^k \beta^l \mathcal{E}_m \beta^m
 	)
-	
+
 	&
-	
-	-\frac{1}{c} \frac{1}{\alpha} (\frac{1}{\mu} \epsilon c^2 - 1) \mathcal{E}_{[i} \epsilon_{j]kl} \mathcal{H}^k \beta^l
+
+	\frac{1}{c} (n^2 - 1) \frac{1}{\alpha} \mathcal{E}_{[i} \epsilon_{j]kl} \mathcal{H}^k \beta^l
 }$<br>
-Seems like there is an error in here somewhere, or in the SR one, because I shouldn't have a fraction $\frac{\epsilon}{\mu}$, but instead $\epsilon\mu c^2 = \frac{c^2}{(v_p)^2} = n^2$<br>
 <br>
 
 <hr>
