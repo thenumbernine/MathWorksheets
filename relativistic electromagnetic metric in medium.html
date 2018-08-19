@@ -1149,30 +1149,6 @@ $T^{(uv)} = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
 	\frac{1}{2} \frac{1}{c} (n^2 + 1) S_i &
 	\frac{1}{2} \eta^{ij} (\frac{1}{\epsilon} D^2 + \frac{1}{\mu} B^2) - \frac{1}{\epsilon} D^i D^j - \frac{1}{\mu} B^i B^j
 }}$<br>
-
-So here is the antisymmetric component of our Ricci tensor. $R_{uv} = 8 \pi T_{uv}$ when ${T^a}_a = 0$.  Time to kick it up a notch from Einstein to Einstein-Cartan.<br>
-<br>
-
-Riemann curvature with commutation/curvature:<br>
-${R^a}_{bcd} = {\Gamma^a}_{bd,c} - {\Gamma^a}_{bc,d} + {\Gamma^a}_{ec} {\Gamma^e}_{bd} - {\Gamma^a}_{ed} {\Gamma^e}_{bc} - {\Gamma^a}_{be} {c_{cd}}^e$<br>
-$R_{ab} = {R^u}_{aub} = {\Gamma^u}_{ab,u} - {\Gamma^u}_{au,b} + {\Gamma^u}_{vu} {\Gamma^v}_{ab} - {\Gamma^u}_{vb} {\Gamma^v}_{au} - {\Gamma^u}_{av} {c_{ub}}^v$<br>
-$R_{ab} = {\Gamma^u}_{ab,u} - {\Gamma^u}_{au,b} + {\Gamma^u}_{vu} {\Gamma^v}_{ab} - {\Gamma^u}_{vb} {\Gamma^v}_{au} - {\Gamma^u}_{av} {c_{ub}}^v$<br>
-$R_{[ab]} = {\Gamma^u}_{[ab],u} - {\Gamma^u}_{[a|u,|b]} + {\Gamma^u}_{vu} {\Gamma^v}_{[ab]} - {\Gamma^u}_{v[b} {\Gamma^v}_{a]u} - {\Gamma^u}_{[a|v} {c_{u|b]}}^v$<br>
-Notice in the event that ${c_{ab}}^c = {\Gamma^a}_{[bc]} = 0$ we get $R_{[ab]} = 0$.  But if not...<br>
-$R_{[ab]} = {\Gamma^u}_{[ab],u} - {\Gamma^u}_{[a|u,|b]} + {\Gamma^u}_{vu} {\Gamma^v}_{[ab]} - {\Gamma^u}_{v[b} {\Gamma^v}_{a]u} - {\Gamma^u}_{[a|v} {c_{u|b]}}^v$<br>
-<br>
-Torsion tensor: ${T^a}_{bc} = 2 {\Gamma^a}_{[bc]} + {c_{cb}}^a$<br>
-In a torsion-free manifold: $2 {\Gamma^a}_{[bc]} = {c_{bc}}^a$, for ${c_{ab}}^c = -{c_{ba}}^c$<br>
-and we get:<br>
-$R_{[ab]} = 
-	\frac{1}{2} ({c_{ab}}^u)_{,u} 
-	- {\Gamma^u}_{[a|u,|b]} 
-	- {\Gamma^u}_{v[b} {\Gamma^v}_{a]u} 
-	+ \frac{1}{2} {\Gamma^u}_{vu} {c_{ab}}^v
-	- \frac{1}{2} {\Gamma^u}_{av} {c_{ub}}^v
-	+ \frac{1}{2} {\Gamma^u}_{bv} {c_{ua}}^v
-$<br>
-<br>
 <br>
 
 <hr>
@@ -1466,6 +1442,34 @@ $T_{[uv]} =  \pmatrix{
 	\frac{1}{c} (n^2 - 1) \frac{1}{\alpha} \mathcal{E}_{[i} \epsilon_{j]kl} \mathcal{H}^k \beta^l
 }$<br>
 <br>
+
+So here is the antisymmetric component of our Ricci tensor. $R_{uv} = 8 \pi T_{uv}$ when ${T^a}_a = 0$.<br>
+Time to kick it up a notch from Einstein to Einstein-Cartan.<br>
+See my worksheet <a href='Differential Geometry/1 - tensors.html'>here</a> for where I got this from.<br>
+Riemann curvature with torsion (but no commutation):<br>
+${R^d}_{cab} = 
+	\partial_a ({\Gamma^d}_{bc}) 
+	- \partial_b ({\Gamma^d}_{ac}) 
+	+ {\Gamma^d}_{au} {\Gamma^u}_{bc} 
+	- {\Gamma^d}_{bu} {\Gamma^u}_{ac} 
+$<br>
+Ricci tensor with torsion:<br>
+$R_{ab} = \partial_u ({\Gamma^u}_{ba}) 
+	- \partial_b ({\Gamma^u}_{ua}) 
+	+ {\Gamma^u}_{uv} {\Gamma^v}_{ba} 
+	- {\Gamma^u}_{bv} {\Gamma^v}_{ua} 
+$<br>
+Antisymmetry of Ricci tensor with torsion:<br>
+$R_{[ab]} = 
+	\frac{1}{2} \partial_u ( {T^u}_{ba} ) 
+	+ \frac{1}{2} \partial_v log \sqrt{|g|} {T^v}_{ba} 
+	- \partial_{[b}( {K^u}_{u|a]} )
+	+ \frac{1}{2} {K^u}_{uv} {T^v}_{ba}
+	+ \frac{1}{2} {\Gamma^v}_{au} {T^u}_{vb} 
+	- \frac{1}{2} {\Gamma^v}_{bu} {T^u}_{va}
+$<br>
+<br>
+
 
 <hr>
 <b>Tensor susceptibility:</b> 
