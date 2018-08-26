@@ -113,6 +113,40 @@ In a holonomic basis this gives $\hat\Gamma_{a[bc]} = 0$<br>
 <br>
 
 
+Covariant derivative of a (p, q) tensor:<br>
+$\nabla_x y = \nabla_{x^u e_u} ({y^{a_1 ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q})$<br>
+$= x^u \nabla_u ({y^{a_1 ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q})$<br>
+$= x^u (
+	\nabla_u ({y^{a_1 ... a_p}}_{b_1 ... b_q}) e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
+	+ {y^{a_1 ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes \nabla_u e_{a_i} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
+	+ {y^{a_1 ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes \nabla_u e^{b_j} \otimes ... \otimes e^{b_q}
+)$<br>
+$= x^u (
+	e_u ({y^{a_1 ... a_p}}_{b_1 ... b_q}) e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
+	+ {y^{a_1 ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes {\Gamma^c}_{u a_i} e_c \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
+	+ {y^{a_1 ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes (- {\Gamma^{b_j}}_{uc} e^c) \otimes ... \otimes e^{b_q}
+)$<br>
+$= x^u (
+	e_u ({y^{a_1 ... a_p}}_{b_1 ... b_q}) e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
+	+ {\Gamma^{a_i}}_{uc} {y^{a_1 ... c ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
+	- {\Gamma^c}_{u b_j} {y^{a_1 ... a_p}}_{b_1 ... c ... b_q} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
+)$<br>
+$= x^u (
+	e_u ({y^{a_1 ... a_p}}_{b_1 ... b_q}) 
+	+ {\Gamma^{a_i}}_{uc} {y^{a_1 ... c ... a_p}}_{b_1 ... b_q} 
+	- {\Gamma^c}_{u b_j} {y^{a_1 ... a_p}}_{b_1 ... c ... b_q}
+) e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}$<br>
+This demonstrates the "add contravariant, subtract covariant" rule for the covariant derivative in index notation.<br>
+<br>
+
+Covariant derivative of vectors, specific:<br>
+$\nabla_u v = \nabla_{u^a e_a} (v^b e_b) = u^a \nabla_a (v^b e_b) = u^a (e_a(v^b) + {\Gamma^b}_{ac} v^c) e_b$<br>
+<br>
+
+Covariant derivative of one-forms:<br>
+$\nabla_u v = \nabla_{u^a e_a} (v_b e^b) = u^a \nabla_a (v_b e^b) = u^a (e_a(v_b) - {\Gamma^c}_{ab} v_c) e_b$<br>
+<br>
+
 <a href='.'>Back</a><br><br>
 	</body>
 </html>

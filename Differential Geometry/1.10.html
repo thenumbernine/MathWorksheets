@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Differential Geometry</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+	</head>
+    <body onload='tryToFindMathJax();'>
+<a href='.'>Back</a><br><br>
+
+Ricci curvature:<br>
+$R_{ab} = {R^u}_{aub}$<br>
+$= 
+	e_u ({\Gamma^u}_{ba}) 
+	- e_b ({\Gamma^u}_{ua}) 
+	+ {\Gamma^u}_{uv} {\Gamma^v}_{ba} 
+	- {\Gamma^u}_{bv} {\Gamma^v}_{ua} 
+	- {\Gamma^u}_{va} {c_{ub}}^v$<br>
+<br>
+
+Antisymmetric components of Ricci curvature:<br>
+$R_{[ab]} = 
+	e_u ({\Gamma^u}_{[ba]}) 
+	- e_{[b} ({\Gamma^u}_{u|a]}) 
+	+ {\Gamma^u}_{uv} {\Gamma^v}_{[ba]} 
+	- {\Gamma^u}_{[b|v} {\Gamma^v}_{u|a]} 
+	- {\Gamma^u}_{v[a} {c_{u|b]}}^v$<br>
+$ = 
+	\frac{1}{2} e_u ( {T^u}_{ba} + {c_{ba}}^u ) 
+	- e_{[b} ({\Gamma^u}_{u|a]}) 
+	
+	+ \frac{1}{2} {\Gamma^u}_{uv} {T^v}_{ba} 
+	+ \frac{1}{2} {\Gamma^u}_{av} {T^v}_{ub} 
+	- \frac{1}{2} {\Gamma^u}_{bv} {T^v}_{ua}
+	
+	+ \frac{1}{2} {\Gamma^u}_{uv} {c_{ba}}^v
+	
+	+ \frac{1}{2} {\Gamma^u}_{av} {c_{ub}}^v
+	- \frac{1}{2} {\Gamma^u}_{va} {c_{ub}}^v
+	
+	- \frac{1}{2} {\Gamma^u}_{bv} {c_{ua}}^v
+	+ \frac{1}{2} {\Gamma^u}_{vb} {c_{ua}}^v
+$<br>
+...in absense of commutation...(${c_{ab}}^c = 0, e_a = \partial_a$):<br>
+$R_{[ab]} = 
+	\frac{1}{2} \partial_u ( {T^u}_{ba} ) 
+	- \partial_{[b} ({\Gamma^u}_{u|a]}) 
+	
+	+ \frac{1}{2} {\Gamma^u}_{uv} {T^v}_{ba} 
+	+ \frac{1}{2} {\Gamma^v}_{au} {T^u}_{vb} 
+	- \frac{1}{2} {\Gamma^v}_{bu} {T^u}_{va}
+$<br>
+I could rewrite the $tr \Gamma$'s as $e(log\sqrt{|g|})$, except I would have to replace the $\Gamma$ with $\hat\Gamma + K$, the contorsion, and I am not 100% sure my equation for contorsion in terms of torsion above is correct...<br>
+Instead I'll just avoid substiting $K_{abc}$ in terms of $T_{abc}$<br>
+$R_{[ab]} = 
+	\frac{1}{2} \partial_u ( {T^u}_{ba} ) 
+	- \partial_{[b} ({\hat\Gamma^u}_{u|a]} + {K^u}_{u|a]}) 
+	+ \frac{1}{2} ({\hat\Gamma^u}_{uv} + {K^u}_{uv}) {T^v}_{ba} 
+	
+	+ \frac{1}{2} {\Gamma^v}_{au} {T^u}_{vb} 
+	- \frac{1}{2} {\Gamma^v}_{bu} {T^u}_{va}
+$<br>
+$R_{[ab]} = 
+	\frac{1}{2} \partial_u ( {T^u}_{ba} ) 
+	+ \frac{1}{2} \partial_v log \sqrt{|g|} {T^v}_{ba} 
+	- \partial_{[b}( {K^u}_{u|a]} )
+	+ \frac{1}{2} {K^u}_{uv} {T^v}_{ba}
+	+ \frac{1}{2} {\Gamma^v}_{au} {T^u}_{vb} 
+	- \frac{1}{2} {\Gamma^v}_{bu} {T^u}_{va}
+$<br>
+...looks very ugly.<br>
+I could isolate the $\nabla T$ term...<br>
+$R_{[ab]} = 
+	\frac{1}{2} \nabla_u {T^u}_{ba} 
+	
+	- \frac{1}{2} {\Gamma^u}_{uv} {T^v}_{ba}
+	- \frac{1}{2} {T^v}_{au} {T^u}_{bv}
+	- \frac{1}{2} {T^v}_{bu} {T^u}_{va}
+	
+	+ \frac{1}{2} \partial_v log \sqrt{|g|} {T^v}_{ba} 
+	- \partial_{[b}( {K^u}_{u|a]} )
+	+ \frac{1}{2} {K^u}_{uv} {T^v}_{ba}
+
+$<br>
+<br>
+
+TODO Gaussian curvature: $ R = {R^a}_a $<br>
+<br>
+
+<a href='.'>Back</a><br><br>
+	</body>
+</html>

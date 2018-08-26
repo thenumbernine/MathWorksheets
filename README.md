@@ -22,6 +22,8 @@ Here's the CDN URLs:
 
 [Differential Geometry/1.1](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e1%2ehtml)
 
+[Differential Geometry/1.10](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e10%2ehtml)
+
 [Differential Geometry/1.2](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e2%2ehtml)
 
 [Differential Geometry/1.3](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e3%2ehtml)
@@ -36,7 +38,7 @@ Here's the CDN URLs:
 
 [Differential Geometry/1.8](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e8%2ehtml)
 
-[Differential Geometry/1.rest](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2erest%2ehtml)
+[Differential Geometry/1.9](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e9%2ehtml)
 
 [Differential Geometry/2 - exterior derivative](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/2%20%2d%20exterior%20derivative%2ehtml)
 

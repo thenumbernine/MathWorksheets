@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Differential Geometry</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+	</head>
+    <body onload='tryToFindMathJax();'>
+<a href='.'>Back</a><br><br>
+
+Asymmetry of covariant derivative of scalars:<br>
+$[\nabla_a, \nabla_b] \phi = \nabla_a \nabla_b \phi - \nabla_b \nabla_a \phi$<br>
+$= \nabla_a (e_b \phi) - \nabla_b (e_a \phi)$<br>
+$= e_a e_b \phi - {\Gamma^c}_{ab} e_c \phi - e_b e_a \phi + {\Gamma^c}_{ba} e_c \phi$<br>
+$= {c_{ab}}^c e_c \phi + ({\Gamma^c}_{ba} - {\Gamma^c}_{ab})  e_c \phi$<br>
+$= ({\Gamma^c}_{ba} - {\Gamma^c}_{ab} + {c_{ab}}^c) e_c \phi$<br>
+$= {T^c}_{ba} e_c \phi$<br>
+I suppose this is intuitive based on the torsion's definition, which is based on operators who themselves only make sense when applied to scalars.<br>
+<br>
+
+Riemann curvature in coordinate-free notation:<br>
+$R(x,y)z$<br>
+$= \nabla_x \nabla_y z - \nabla_y \nabla_x z - \nabla_{[x,y]} z$<br>
+$= 	x^a \nabla_a ( y^b \nabla_b ( z^c e_c ) ) 
+	- y^b \nabla_b ( x^a \nabla_a ( z^c e_c ) ) 
+	- (x^a e_a(y^b) - y^a e_a(x^b) + x^a y^d {c_{ad}}^b) \nabla_b (z^c e_c)$<br>
+$= 	x^a \nabla_a ( y^b (\nabla_b z^c e_c + z^c \nabla_b e_c ) ) 
+	- y^b \nabla_b ( x^a (\nabla_a z^c e_c + z^c \nabla_a e_c ) ) 
+	- (x^a e_a(y^b) - y^a e_a(x^b) + x^a y^d {c_{ad}}^b) (\nabla_b z^c e_c + z^c \nabla_b e_c)$<br>
+$= 	x^a \nabla_a ( y^b (e_b(z^c) + z^d {\Gamma^c}_{bd} ) e_c ) 
+	- y^b \nabla_b ( x^a (e_a(z^c) + z^d {\Gamma^c}_{ad} ) e_c ) 
+	- (x^a e_a(y^b) - y^a e_a(x^b) + x^a y^u {c_{au}}^b) (e_b(z^d) + z^c {\Gamma^d}_{bc}) e_d$<br>
+
+$= 	x^a e_a ( y^b (e_b(z^c) + z^d {\Gamma^c}_{bd} ) ) e_c
+	+ x^a y^b (e_b(z^c) + z^d {\Gamma^c}_{bd} ) {\Gamma^u}_{ac} e_u
+	- y^b e_b ( x^a (e_a(z^c) + z^d {\Gamma^c}_{ad} ) ) e_c
+	- y^b x^a (e_a(z^c) + z^d {\Gamma^c}_{ad} ) {\Gamma^u}_{bc} e_u
+	- x^a e_a(y^b) (e_b(z^d) + z^c {\Gamma^d}_{bc}) e_d
+	+ y^a e_a(x^b) (e_b(z^d) + z^c {\Gamma^d}_{bc}) e_d 
+	- x^a y^u {c_{au}}^b (e_b(z^d) + z^c {\Gamma^d}_{bc}) e_d$<br>
+$= 	x^a y^b z^c (
+	e_a({\Gamma^d}_{bc})
+	- e_b({\Gamma^d}_{ac})
+	
+	+ {\Gamma^d}_{au} {\Gamma^u}_{bc}
+	- {\Gamma^d}_{bu} {\Gamma^u}_{ac}
+	
+	- {\Gamma^d}_{uc} {c_{ab}}^u
+) e_d$<br>
+$= 	x^a y^b z^c (
+	2 e_{[a} ({\Gamma^d}_{b]c})
+	
+	+ 2 {\Gamma^d}_{[a|u} {\Gamma^u}_{b]c}
+	
+	- {\Gamma^d}_{uc} {c_{ab}}^u
+) e_d$<br>
+$= x^a y^b z^c {R^d}_{cab} e_d$<br>
+For the index Riemann curvature tensor terms:<br>
+${R^c}_{dab} = 
+	2 e_{[a} ({\Gamma^c}_{b]d}) 
+	+ 2 {\Gamma^c}_{[a|u} {\Gamma^u}_{b]d} 
+	- {\Gamma^c}_{ud} {c_{ab}}^u
+$<br>
+<br>
+
+Asymmetry of covariant derivatives in a manifold with torsion:<br>
+$[\nabla_a, \nabla_b] v^c = 2 \nabla_{[a} \nabla_{b]} v^c$<br>
+$= 2 \nabla_{[a} ( e_{[b} ( v^c ) + {\Gamma^c}_{b]d} v^d )$<br>
+$= 2 ( \nabla_{[a} e_{[b} ( v^c )
+	+ \nabla_{[a} {\Gamma^c}_{b]d} v^d 
+	+ {\Gamma^c}_{b]d} \nabla_{[a} v^d 
+)$<br>
+$= 2 ( 
+	e_{[a} ( e_{b]} ( v^c ) )
+	+ {\Gamma^c}_{[a|d} e_{b]} ( v^d )
+	- {\Gamma^d}_{[ab]} e_d ( v^c )
+	
+	+ e_{[a} ( {\Gamma^c}_{b]d} ) v^d 
+	+ {\Gamma^c}_{[a|u} {\Gamma^u}_{b]d} v^d 
+	- {\Gamma^u}_{[ab]} {\Gamma^c}_{ud} v^d 
+	- {\Gamma^u}_{[a|d} {\Gamma^c}_{b]u} v^d 
+	
+	+ {\Gamma^c}_{[b|d} e_{a]} v^d 
+	+ {\Gamma^c}_{[b|d} {\Gamma^d}_{a]u} v^u 
+)$<br>
+$=  2 e_{[a} ( {\Gamma^c}_{b]d} ) v^d 
+	+ 2 {\Gamma^c}_{[a|u} {\Gamma^u}_{b]d} v^d 
+	- {\Gamma^c}_{ud} ({T^u}_{ab} + {c_{ab}}^u) v^d 
+	
+	+ 2 (
+		e_{[a} ( e_{b]} ( v^c ) )
+		- {\Gamma^d}_{[ab]} e_d ( v^c )
+	)
+$<br>
+$=  {R^c}_{dab} v^d
+	- {T^u}_{ab} (e_u ( v^c ) + {\Gamma^c}_{ud} v^d) 
+	+ {c_{ab}}^u e_u ( v^c ) 
+$<br>
+$=  {R^c}_{dab} v^d
+	- {T^u}_{ab} \nabla_u v^c 
+	+ {c_{ab}}^u e_u ( v^c ) 
+$<br>
+
+Did I make a mistake, or does everyone just make this computation in a coordinate basis (thus neglecting that last ${c_{ab}}^u$) ?<br>
+<br>
+
+<a href='.'>Back</a><br><br>
+	</body>
+</html>
