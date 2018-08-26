@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Differential Geometry</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+	</head>
+    <body onload='tryToFindMathJax();'>
+<a href='.'>Back</a><br><br>
+
+Covariant derivative: $\nabla$<br>
+<br>
+
+Covariant derivative basii decomposition: $\nabla = e^a \nabla_{e_a} = e^a \nabla_a$<br>
+<br>
+
+Covariant derivative of scalar functions:<br>
+$\nabla \phi = e_a (\phi)$<br>
+<br>
+
+Covariant of scalar multiplication:<br>
+$\nabla (\phi w) = (\nabla \phi) w + \phi \nabla w = e(\phi) w + \phi \nabla w$<br>
+<br>
+
+Covariant of dot, inner, outer products:<br>
+$\nabla_{sx} = s \nabla x$ for function $s$ and vector $x$<br>
+$\nabla_x (a \cdot b) = (\nabla_x a) \cdot b + a \cdot (\nabla_x b)$ for vectors $a,b$.<br>
+$\nabla_x a(b) = \nabla_x a (b) + a(\nabla_x b)$ for one-form $a$ and vector $b$<br>
+$\nabla_x a \otimes b = (\nabla_x a) \otimes b + a \otimes (\nabla_x b)$<br>
+<br>
+
+Covariant derivative of vector and one-form basii:<br>
+$0 = \nabla_b \delta^a_c = \nabla_b e^a (e_c) = (\nabla_b e^a) (e_c) + e^a (\nabla_b e_c)$<br>
+$(\nabla_b e^a) (e_c) = -e^a (\nabla_b e_c)$<br>
+<br>
+
+Let ${\Gamma^a}_{bc} e_a = {\nabla_b} e_c$ be the linear relation of how a covariant derivative of one basis changes as it is moved along another basis.<br>
+$(\nabla_b e^a) (e_c) = -e^a ({\Gamma^d}_{bc} e_d)$ by substitution<br>
+$(\nabla_b e^a) (e_c) = -{\Gamma^d}_{bc} e^a (e_d)$ by linearity.<br>
+$(\nabla_b e^a) (e_c) = -{\Gamma^d}_{bc} \delta^a_d$ by orthogonality.<br>
+$(\nabla_b e^a) (e_c) = -{\Gamma^a}_{bc}$ by orthogonality.<br>
+<br>
+
+Let ${\omega^a}_b = {\Gamma^a}_{cb} e^c$<br>
+${\omega^a}_b = -(\nabla_c e^a) (e_b) e^c$<br>
+<br>
+
+So $e^a(\nabla_b e_c) = {\Gamma^a}_{bc}$ is the connection coefficients describing $\nabla_b e_c$ in terms of $e_a$.<br>
+And ${\omega^a}_b = -(\nabla_c e^a) (e_b) e^c = {\Gamma^a}_{cb} e^c$ are the one-forms of the connections.<br>
+<br>
+
+Exterior derivative of connection one-form:<br>
+$d {\omega^c}_d = d ({\Gamma^c}_{bd} e^b)$<br>
+$= (d {\Gamma^c}_{bd}) \wedge e^b + {\Gamma^c}_{bd} d e^b$<br>
+$= e_a ({\Gamma^c}_{bd}) e^a \wedge e^b - {\Gamma^c}_{bd} \cdot \frac{1}{2} {c_{uv}}^b e^u \wedge e^v$<br>
+$= (e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u) e^a \wedge e^b$<br>
+$= (2 e_{[a} ({\Gamma^c}_{b]d}) - {\Gamma^c}_{ud} {c_{ab}}^u) e^a \otimes e^b$<br>
+<br>
+
+<a href='.'>Back</a><br><br>
+	</body>
+</html>

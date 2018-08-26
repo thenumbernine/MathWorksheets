@@ -21,40 +21,40 @@ I suppose this is intuitive based on the torsion's definition, which is based on
 Riemann curvature in coordinate-free notation:<br>
 $R(x,y)z$<br>
 $= \nabla_x \nabla_y z - \nabla_y \nabla_x z - \nabla_{[x,y]} z$<br>
-$= 	x^a \nabla_a ( y^b \nabla_b ( z^c e_c ) ) 
-	- y^b \nabla_b ( x^a \nabla_a ( z^c e_c ) ) 
-	- (x^a e_a(y^b) - y^a e_a(x^b) + x^a y^d {c_{ad}}^b) \nabla_b (z^c e_c)$<br>
-$= 	x^a \nabla_a ( y^b (\nabla_b z^c e_c + z^c \nabla_b e_c ) ) 
-	- y^b \nabla_b ( x^a (\nabla_a z^c e_c + z^c \nabla_a e_c ) ) 
-	- (x^a e_a(y^b) - y^a e_a(x^b) + x^a y^d {c_{ad}}^b) (\nabla_b z^c e_c + z^c \nabla_b e_c)$<br>
-$= 	x^a \nabla_a ( y^b (e_b(z^c) + z^d {\Gamma^c}_{bd} ) e_c ) 
-	- y^b \nabla_b ( x^a (e_a(z^c) + z^d {\Gamma^c}_{ad} ) e_c ) 
-	- (x^a e_a(y^b) - y^a e_a(x^b) + x^a y^u {c_{au}}^b) (e_b(z^d) + z^c {\Gamma^d}_{bc}) e_d$<br>
+$= 	x^a \nabla_a ( y^b \nabla_b ( z^d e_d ) ) 
+	- y^b \nabla_b ( x^a \nabla_a ( z^d e_d ) ) 
+	- (x^a e_a(y^b) - y^a e_a(x^b) + x^a y^c {c_{ac}}^b) \nabla_b (z^d e_d)$<br>
+$= 	x^a \nabla_a ( y^b (\nabla_b z^d e_d + z^d \nabla_b e_d ) ) 
+	- y^b \nabla_b ( x^a (\nabla_a z^d e_d + z^d \nabla_a e_d ) ) 
+	- (x^a e_a(y^b) - y^a e_a(x^b) + x^a y^c {c_{ac}}^b) (\nabla_b z^d e_d + z^d \nabla_b e_d)$<br>
+$= 	x^a \nabla_a ( y^b (e_b(z^d) + z^c {\Gamma^d}_{bc} ) e_d ) 
+	- y^b \nabla_b ( x^a (e_a(z^d) + z^c {\Gamma^d}_{ac} ) e_d ) 
+	- (x^a e_a(y^b) - y^a e_a(x^b) + x^a y^u {c_{au}}^b) (e_b(z^c) + z^d {\Gamma^c}_{bd}) e_c$<br>
 
-$= 	x^a e_a ( y^b (e_b(z^c) + z^d {\Gamma^c}_{bd} ) ) e_c
-	+ x^a y^b (e_b(z^c) + z^d {\Gamma^c}_{bd} ) {\Gamma^u}_{ac} e_u
-	- y^b e_b ( x^a (e_a(z^c) + z^d {\Gamma^c}_{ad} ) ) e_c
-	- y^b x^a (e_a(z^c) + z^d {\Gamma^c}_{ad} ) {\Gamma^u}_{bc} e_u
-	- x^a e_a(y^b) (e_b(z^d) + z^c {\Gamma^d}_{bc}) e_d
-	+ y^a e_a(x^b) (e_b(z^d) + z^c {\Gamma^d}_{bc}) e_d 
-	- x^a y^u {c_{au}}^b (e_b(z^d) + z^c {\Gamma^d}_{bc}) e_d$<br>
-$= 	x^a y^b z^c (
-	e_a({\Gamma^d}_{bc})
-	- e_b({\Gamma^d}_{ac})
+$= 	x^a e_a ( y^b (e_b(z^d) + z^c {\Gamma^d}_{bc} ) ) e_d
+	+ x^a y^b (e_b(z^d) + z^c {\Gamma^d}_{bc} ) {\Gamma^u}_{ad} e_u
+	- y^b e_b ( x^a (e_a(z^d) + z^c {\Gamma^d}_{ac} ) ) e_d
+	- y^b x^a (e_a(z^d) + z^c {\Gamma^d}_{ac} ) {\Gamma^u}_{bd} e_u
+	- x^a e_a(y^b) (e_b(z^c) + z^d {\Gamma^c}_{bd}) e_c
+	+ y^a e_a(x^b) (e_b(z^c) + z^d {\Gamma^c}_{bd}) e_c 
+	- x^a y^u {c_{au}}^b (e_b(z^c) + z^d {\Gamma^c}_{bd}) e_c$<br>
+$= 	x^a y^b z^d (
+	e_a({\Gamma^c}_{bd})
+	- e_b({\Gamma^c}_{ad})
 	
-	+ {\Gamma^d}_{au} {\Gamma^u}_{bc}
-	- {\Gamma^d}_{bu} {\Gamma^u}_{ac}
+	+ {\Gamma^c}_{au} {\Gamma^u}_{bd}
+	- {\Gamma^c}_{bu} {\Gamma^u}_{ad}
 	
-	- {\Gamma^d}_{uc} {c_{ab}}^u
-) e_d$<br>
-$= 	x^a y^b z^c (
-	2 e_{[a} ({\Gamma^d}_{b]c})
+	- {\Gamma^c}_{ud} {c_{ab}}^u
+) e_c$<br>
+$= 	x^a y^b z^d (
+	2 e_{[a} ({\Gamma^c}_{b]d})
 	
-	+ 2 {\Gamma^d}_{[a|u} {\Gamma^u}_{b]c}
+	+ 2 {\Gamma^c}_{[a|u} {\Gamma^u}_{b]d}
 	
-	- {\Gamma^d}_{uc} {c_{ab}}^u
-) e_d$<br>
-$= x^a y^b z^c {R^d}_{cab} e_d$<br>
+	- {\Gamma^c}_{ud} {c_{ab}}^u
+) e_c$<br>
+$= x^a y^b z^d {R^c}_{dab} e_c$<br>
 For the index Riemann curvature tensor terms:<br>
 ${R^c}_{dab} = 
 	2 e_{[a} ({\Gamma^c}_{b]d}) 
@@ -63,7 +63,16 @@ ${R^c}_{dab} =
 $<br>
 <br>
 
-Asymmetry of covariant derivatives in a manifold with torsion:<br>
+Riemann curvature tensor as a two-form:<br>
+${R^c}_{dab} e_c \otimes e^d \otimes e^a \otimes e^b = (
+	2 e_{[a} ({\Gamma^c}_{b]d}) 
+	+ 2 {\Gamma^c}_{[a|u} {\Gamma^u}_{b]d} 
+	- {\Gamma^c}_{ud} {c_{ab}}^u
+) e_d \otimes e^c \otimes e^a \otimes e^b$<br>
+$ = e_c \otimes e^d \otimes (d {\omega^c}_d + {\omega^c}_u \wedge {\omega^u}_d)$<br>
+<br>
+
+Asymmetry of covariant derivatives on a vector:<br>
 $[\nabla_a, \nabla_b] v^c = 2 \nabla_{[a} \nabla_{b]} v^c$<br>
 $= 2 \nabla_{[a} ( e_{[b} ( v^c ) + {\Gamma^c}_{b]d} v^d )$<br>
 $= 2 ( \nabla_{[a} e_{[b} ( v^c )
