@@ -8,17 +8,7 @@
     <body onload='tryToFindMathJax();'>
 <a href='.'>Back</a><br><br>
 
-Asymmetry of covariant derivative of scalars:<br>
-$[\nabla_a, \nabla_b] \phi = \nabla_a \nabla_b \phi - \nabla_b \nabla_a \phi$<br>
-$= \nabla_a (e_b \phi) - \nabla_b (e_a \phi)$<br>
-$= e_a e_b \phi - {\Gamma^c}_{ab} e_c \phi - e_b e_a \phi + {\Gamma^c}_{ba} e_c \phi$<br>
-$= {c_{ab}}^c e_c \phi + ({\Gamma^c}_{ba} - {\Gamma^c}_{ab})  e_c \phi$<br>
-$= ({\Gamma^c}_{ba} - {\Gamma^c}_{ab} + {c_{ab}}^c) e_c \phi$<br>
-$= {T^c}_{ba} e_c \phi$<br>
-I suppose this is intuitive based on the torsion's definition, which is based on operators who themselves only make sense when applied to scalars.<br>
-<br>
-
-Riemann curvature in coordinate-free notation:<br>
+Riemann curvature of a vector:<br>
 $R(x,y)z$<br>
 $= \nabla_x \nabla_y z - \nabla_y \nabla_x z - \nabla_{[x,y]} z$<br>
 $= 	x^a \nabla_a ( y^b \nabla_b ( z^d e_d ) ) 
@@ -55,7 +45,7 @@ $= 	x^a y^b z^d (
 	- {\Gamma^c}_{ud} {c_{ab}}^u
 ) e_c$<br>
 $= x^a y^b z^d {R^c}_{dab} e_c$<br>
-For the index Riemann curvature tensor terms:<br>
+For the Riemann curvature tensor index terms:<br>
 ${R^c}_{dab} = 
 	2 e_{[a} ({\Gamma^c}_{b]d}) 
 	+ 2 {\Gamma^c}_{[a|u} {\Gamma^u}_{b]d} 
@@ -63,13 +53,70 @@ ${R^c}_{dab} =
 $<br>
 <br>
 
-Riemann curvature tensor as a two-form:<br>
-${R^c}_{dab} e_c \otimes e^d \otimes e^a \otimes e^b = (
+Curvature two-form:<br>
+${\Omega^c}_d = {R^c}_{dab} e^a \otimes e^b$<br>
+$= (
 	2 e_{[a} ({\Gamma^c}_{b]d}) 
 	+ 2 {\Gamma^c}_{[a|u} {\Gamma^u}_{b]d} 
 	- {\Gamma^c}_{ud} {c_{ab}}^u
-) e_d \otimes e^c \otimes e^a \otimes e^b$<br>
-$ = e_c \otimes e^d \otimes (d {\omega^c}_d + {\omega^c}_u \wedge {\omega^u}_d)$<br>
+) e^a \otimes e^b$<br>
+$ = d {\omega^c}_d + {\omega^c}_u \wedge {\omega^u}_d$<br>
+<br>
+
+Covariant derivative of a (p,q) form:<br>
+$\nabla_{[x,y]} z = [x,y]^u \nabla_u ({z^{a_1 ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q})$<br>
+$= (x^a e_a(y^u) - y^a e_a(x^u) + x^a y^b {c_{ab}}^u)  ( e_u ({z^{a_1 ... a_p}}_{b_1 ... b_q}) + {\Gamma^{a_i}}_{uc} {z^{a_1 ... c ... a_p}}_{b_1 ... b_q} - {\Gamma^c}_{u b_j} {z^{a_1 ... a_p}}_{b_1 ... c ... b_q} ) e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}$<br>
+<br>
+
+Second covariant derivative of (p,q) form:<br>
+$\nabla_x \nabla_y z = x^u \nabla_u (y^v \nabla_v ({z^{a_1 ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}))$<br>
+$= x^u \nabla_u (y^v
+	(
+		e_v ({z^{a_1 ... a_p}}_{b_1 ... b_q})
+		+ {\Gamma^{a_i}}_{vc} {z^{a_1 ... c ... a_p}}_{b_1 ... b_q}
+		- {\Gamma^c}_{v b_j} {z^{a_1 ... a_p}}_{b_1 ... b_j ... b_q}
+	)
+	e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
+)$<br>
+$= x^u ( 
+	e_u (y^v)
+	(
+		e_v ({z^{a_1 ... a_p}}_{b_1 ... b_q})
+		+ {\Gamma^{a_i}}_{vc} {z^{a_1 ... c ... a_p}}_{b_1 ... b_q}
+		- {\Gamma^c}_{v b_j} {z^{a_1 ... a_p}}_{b_1 ... b_j ... b_q}
+	)
+	e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
+
+	$ $+
+
+	y^v
+	\nabla_v (
+		(
+			e_v ({z^{a_1 ... a_p}}_{b_1 ... b_q})
+			+ {\Gamma^{a_i}}_{vc} {z^{a_1 ... c ... a_p}}_{b_1 ... b_q}
+			- {\Gamma^c}_{v b_j} {z^{a_1 ... a_p}}_{b_1 ... b_j ... b_q}
+		)
+		e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
+	)
+
+)$<br>
+TODO FINISHME.<br>
+<br>
+
+Riemann curvature of (p,q) tensor:<br>
+$R(x,y) z = \nabla_x \nabla_y z - \nabla_y \nabla_x z - \nabla_{[x,y]} z$<br>
+$= \nabla_x \nabla_y z - \nabla_y \nabla_x z - \nabla_{[x,y]} z$<br>
+$= \nabla_x \nabla_y z - \nabla_y \nabla_x z - \nabla_{[x,y]} z$<br>
+<br>
+
+Asymmetry of covariant derivative of scalars:<br>
+$[\nabla_a, \nabla_b] \phi = \nabla_a \nabla_b \phi - \nabla_b \nabla_a \phi$<br>
+$= \nabla_a (e_b \phi) - \nabla_b (e_a \phi)$<br>
+$= e_a e_b \phi - {\Gamma^c}_{ab} e_c \phi - e_b e_a \phi + {\Gamma^c}_{ba} e_c \phi$<br>
+$= {c_{ab}}^c e_c \phi + ({\Gamma^c}_{ba} - {\Gamma^c}_{ab})  e_c \phi$<br>
+$= ({\Gamma^c}_{ba} - {\Gamma^c}_{ab} + {c_{ab}}^c) e_c \phi$<br>
+$= {T^c}_{ba} e_c \phi$<br>
+I suppose this is intuitive based on the torsion's definition, which is based on operators who themselves only make sense when applied to scalars.<br>
 <br>
 
 Asymmetry of covariant derivatives on a vector:<br>
