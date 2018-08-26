@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Differential Geometry</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+	</head>
+    <body onload='tryToFindMathJax();'>
+<a href='.'>Back</a><br><br>
+
+Index notation:<br>
+${T^{a_1 ... a_p}}_{b_1 ... b_q}$ implicitly describes $T = {T^{a_1 ... a_p}}_{b_1 ... b_q} e^{a_1} \otimes ... \otimes e^{a_p} \otimes e_{b_1} \otimes ... \otimes e_{b_p}$<br>
+<br>
+
+Abstract index notation:<br>
+Indexes are not enumerations,<br>
+nor are they related to any particular basis,<br>
+but are used to determine what space the tensor resides in:<br>
+${T^{a_1 ... a_p}}_{b_1 ... b_q} \leftrightarrow T(\cdot, ..., \cdot) \in \underbrace{V \otimes ... \otimes V}_{\times p} \otimes \underbrace{V^* \otimes ... \otimes V^*}_{\times q}$<br>
+<br>
+
+$v_{(a_1 ... a_p)} = {1\over p!} \cdot $ sum of even permutations of $a_1 ... a_p$ plus sum of odd permutations<br>
+$v_{[a_1 ... a_p]} = {1\over p!} \cdot $ sum of even permutations of $a_1 ... a_p$ minus sum of odd permutations<br>
+$v_{|a_1 ... a_p|} = $ sum of even minus sum of odd permutations, only summing indexes in increasing order<br>
+$v_{(a_1 ... | a_k ... a_m | ... a_p)}$, $v_{[a_1 ... | a_k ... a_m | ... a_p]} = $ a sum of permutations on variables $a_1 ... a_p$ excluding the variables $a_k$ through $a_m$<br>
+<br>
+
+completely symmetric tensor:<br>
+$T_{a_1 ... a_p} = T_{(a_1 ... a_p)}$<br>
+<br>
+
+alternating / completely antisymmetric tensor:<br>
+$T_{a_1 ... a_p} = T_{[a_1 ... a_p]}$<br>
+<br>
+
+degree-2 antisymmetric tensors are tensors such that $T_{ab} = -T_{ba}$:<br>
+$T_{[ab]} = {1\over2} (T_{ab} - T_{ba}) = {1\over2}(T_{ab} + T_{ab}) = T_{ab}$<br>
+$T_{(ab)} = {1\over2} (T_{ab} + T_{ba}) = {1\over2}(T_{ab} - T_{ab}) = 0$<br>
+<br>
+
+degree-2 symmetric tensors are tensors such that $T_{ab} = T_{ba}$:<br>
+$T_{[ab]} = {1\over2} (T_{ab} - T_{ba}) = {1\over2}(T_{ab} - T_{ab}) = 0$<br>
+$T_{(ab)} = {1\over2} (T_{ab} + T_{ba}) = {1\over2}(T_{ab} + T_{ab}) = T_{ab}$<br>
+<br>
+
+any degree-2 tensor can be represented as its symmetric and antisymmetric components:<br>
+$T_{(ab)} + T_{[ab]} = {1\over2} (T_{ab} + T_{ba}) + {1\over2} (T_{ab} - T_{ba})$<br>
+$= {1\over2}(T_{ab} + T_{ab})$<br>
+$= T_{ab}$<br>
+<br>
+
+Comma and semicolon notation:<br>
+$T_{,a} = e_a(T)$<br>
+$T_{;a} = \nabla_{e_a} T = \nabla_a T$<br>
+<br>
+
+Comma / semicolon derivatives aren't used so often anymore, probably because it adds the new index to the right hand side, whereas derivative symbols add the new index to the left hand side 
+... and derivatives like the exterior derivative add the new $e^a \wedge$ to the left hand side as well ... maybe for consistency or for other reasons, $\nabla$ applies $e_a \otimes$ to the left hand side as well.<br>
+<br>
+
+<a href='.'>Back</a><br><br>
+	</body>
+</html>

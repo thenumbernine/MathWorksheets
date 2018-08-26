@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Differential Geometry</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+	</head>
+    <body onload='tryToFindMathJax();'>
+<a href='.'>Back</a><br><br>
+
+If we define our covariant derivative such that it eliminates the metric:<br>
+$0 = \nabla_c (g_{ab} e^a \otimes e^b)$<br>
+$0 = e_c (g_{ab}) e^a \otimes e^b
+	+ g_{ab} \nabla_c e^a \otimes e^b
+	+ g_{ab} e^a \otimes \nabla_c e^b
+$<br>
+$0 = e_c (g_{ab}) e^a \otimes e^b
+	- g_{ab} {\Gamma^a}_{cu} e^u \otimes e^b
+	- g_{ab} e^a \otimes {\Gamma^b}_{cu} e^u
+$<br>
+$e_c (g_{ab}) e^a \otimes e^b = (\Gamma_{bca} + \Gamma_{acb}) e^a \otimes e^b$<br>
+$e_c (g_{ab}) = \Gamma_{bca} + \Gamma_{acb}$<br>
+<br>
+
+Due to this constraint, we can say that all metric-eliminating connections are symmetric possess this identity:<br>
+$\Gamma_{(a|b|c)} = \frac{1}{2} e_b (g_{ac})$<br>
+<br>
+
+From here we can define our covariant derivative in terms of structure constants and torsion:<br>
+$e_a (g_{bc}) = \Gamma_{bac} + \Gamma_{cab}$<br>
+$e_c (g_{ab}) = \Gamma_{bca} + \Gamma_{acb}$<br>
+$e_b (g_{ac}) = \Gamma_{abc} + \Gamma_{cba}$<br>
+...subtract...<br>
+$e_a (g_{bc}) - e_c (g_{ab}) - e_b (g_{ac}) = (\Gamma_{bac} + \Gamma_{cab}) - (\Gamma_{bca} + \Gamma_{acb}) - (\Gamma_{abc} + \Gamma_{cba})$<br>
+$e_a (g_{bc}) - e_c (g_{ab}) - e_b (g_{ac}) =  - \Gamma_{acb} - \Gamma_{abc} + \Gamma_{bac} - \Gamma_{bca} + \Gamma_{cab} - \Gamma_{cba}$<br>
+$e_a (g_{bc}) - e_c (g_{ab}) - e_b (g_{ac}) =  -\Gamma_{abc} - T_{acb} - c_{cba} - \Gamma_{abc} + T_{bac} + c_{acb} + T_{cab} + c_{abc}$<br>
+$\Gamma_{abc} = \frac{1}{2} ( 
+	e_c (g_{ab}) + e_b (g_{ac}) - e_a (g_{bc})
+	+ c_{abc} + c_{acb} - c_{cba}
+	+ T_{cab} + T_{bac} - T_{acb}
+)$<br>
+<br>
+
+
+Notice that $\nabla$ can be defined to have any ${\Gamma^a}_{bc}$, however there is only one ${\hat\Gamma^a}_{bc}$ such that the torsion is zero, and that is the Levi-Civita connection.<br>
+$\hat\Gamma_{abc} = \frac{1}{2} ( 
+	e_c (g_{ab}) + e_b (g_{ac}) - e_a (g_{bc})
+	+ c_{abc} + c_{acb} - c_{cba}
+)$<br>
+which is also known as the "Christoffel symbol of the 1st kind"<br>
+in a holonomic basis (where ${c_{ab}}^c = 0$): $ \hat\Gamma_{abc} = {1 \over 2} (
+	e_c (g_{ab}) + e_b (g_{ac}) - e_a (g_{bc})
+) $<br>
+Christoffel of the 2nd kind / affine connection: $ {\hat\Gamma^a}_{bc} = g^{ad} \hat\Gamma_{dbc} $<br>
+<br>
+
+Levi-Civita connection in a non-coordinate basis:<br>
+(TODO add torsion and show for all connections, or remove completely, because it is implicit in the definition)<br>
+$\hat\Gamma_{abc} = \frac{1}{2} (
+	e_c (g_{ab})
+	+ e_b (g_{ac})
+	- e_a (g_{bc})
+	+ c_{acb}
+	+ c_{abc}
+	- c_{cba}
+)$<br>
+$= \frac{1}{2} (
+	e_c ({e_a}^I e_{b I})
+	+ e_b ({e_a}^I e_{c I})
+	- e_a ({e_b}^I e_{c I})
+
+	+ 2 e_{[a} ( {{e_{c]}}^I} ) e_{b I}
+	+ 2 e_{[a} ( {{e_{b]}}^I} ) e_{c I}
+	- 2 e_{[c} ( {{e_{b]}}^I} ) e_{a I}
+)$<br>
+$= \frac{1}{2} (
+	{{e_a}^I}_{,c} e_{b I}
+	+ {e_{b I}}_{,c} {e_a}^I
+
+	+ {{e_a}^I}_{,b} e_{c I}
+	+ {e_{c I}}_{,b} {e_a}^I
+
+	- {{e_b}^I}_{,a} e_{c I}
+	- {e_{c I}}_{,a} {e_b}^I
+
+	
+	+ {{e_c}^I}_{,a} e_{b I}
+	- {{e_a}^I}_{,c} e_{b I}
+	
+	+ {{e_b}^I}_{,a} e_{c I}
+	- {{e_a}^I}_{,b} e_{c I}
+	
+	- {{e_b}^I}_{,c} e_{a I}
+	+ {{e_c}^I}_{,b} e_{a I}
+)$<br>
+$= {{e_c}^I}_{,b} e_{a I}$<br>
+${\hat\Gamma^a}_{bc} = {e^a}_I {{e_c}^I}_{,b}$<br>
+Notice how this matches up with ${\Gamma^a}_{bc} = e^a (\nabla_b e_c)$<br>
+<br>
+
+Let the contorsion tensor be the difference between an arbitrary connection and the Levi-Civita connection:<br>
+${K^a}_{bc} = {\Gamma^a}_{bc} - {\hat\Gamma^a}_{bc}$<br>
+$= \frac{1}{2} ({{T_c}^a}_b + {{T_b}^a}_c + {T^a}_{bc})$<br>
+${K^a}_{[bc]} = \frac{1}{2} ({{T_{[c}}^a}_{b]} + {{T_{[b}}^a}_{c]} + {T^a}_{[bc]}) = \frac{1}{2} {T^a}_{[bc]} = \frac{1}{2} {T^a}_{bc}$<br>
+<br>
+
+Levi-Civita connection antisymmetry on 2nd and 3rd indexes:<br> 
+$ {\hat\Gamma^a}_{[bc]}$<br>
+$= {\Gamma^a}_{[bc]} - {K^a}_{[bc]}$<br>
+$= \frac{1}{2} ({T^a}_{bc} + {c_{bc}}^a) - \frac{1}{2} {T^a}_{[bc]}$<br>
+$= \frac{1}{2} c_{bca}$<br>
+In a holonomic basis this gives $\hat\Gamma_{a[bc]} = 0$<br>
+<br>
+
+
+<a href='.'>Back</a><br><br>
+	</body>
+</html>

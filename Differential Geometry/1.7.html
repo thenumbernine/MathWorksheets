@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Differential Geometry</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+	</head>
+    <body onload='tryToFindMathJax();'>
+<a href='.'>Back</a><br><br>
+
+Torsion:<br>
+$T : V \times V \rightarrow V$<br>
+$T(x,y) = \nabla_x y - \nabla_y x - [x,y]$<br>
+Torsion of two vectors:<br>
+$= x^b y^c {T^a}_{bc} e_a = \nabla_x (y^a e_a) - \nabla_y (x^a e_a) - [x, y]$<br>
+$= \nabla_{x^b e_b} (y^a e_a) - \nabla_{y^b e_b} (x^a e_a) - [x, y]$<br>
+$= x^b \nabla_b (y^a e_a) - y^b \nabla_b (x^a e_a) - [x, y]$<br>
+$= x^b (\nabla_b y^a) e_a + x^b y^a \nabla_b e_a - y^b (\nabla_b x^a) e_a - y^b x^a \nabla_b e_a - [x, y]$<br>
+$= (x^b e_b (y^c) + x^b y^a {\Gamma^c}_{ba} - y^b e_b(x^c) - y^b x^a {\Gamma^c}_{ba}) e_c - [x, y]$<br>
+Substitute structure constant definition:<br>
+$= ((x^b e_b(y^c) + x^b y^a {\Gamma^c}_{ba} - y^b e_b(x^c) - y^b x^a {\Gamma^c}_{ba}) - (
+	x^a e_a(y^c) - y^a e_a(x^c) + x^a y^b {c_{ab}}^c)  ) e_c$<br>
+$= x^a y^b ( 2 {\Gamma^c}_{[ab]} - {c_{ab}}^c ) e_c$<br>
+$= x^b y^c ( 2 {\Gamma^a}_{[bc]} - {c_{bc}}^a ) e_c$ by reindexing<br>
+Therefore ${T^a}_{bc} = 2 {\Gamma^a}_{[bc]} + {c_{cb}}^a$<br>
+Rearranging things:<Br>
+${T^a}_{bc} + {c_{bc}}^a = {\Gamma^a}_{bc} - {\Gamma^a}_{cb}$<br>
+${\Gamma^a}_{bc} = {\Gamma^a}_{cb} + {T^a}_{bc} + {c_{bc}}^a$<br>
+<br>
+
+Torsion antisymmetry: ${T^a}_{[bc]} = 2 {\Gamma^a}_{[bc]} + {c_{[cb]}}^a = {T^a}_{bc}$<br>
+<br>
+
+<a href='.'>Back</a><br><br>
+	</body>
+</html>

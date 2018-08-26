@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Differential Geometry</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+	</head>
+    <body onload='tryToFindMathJax();'>
+<a href='.'>Back</a><br><br>
+
+Covariant derivative: $\nabla$<br>
+<br>
+
+Covariant derivative basii decomposition: $\nabla = e^a \nabla_{e_a} = e^a \nabla_a$<br>
+<br>
+
+Covariant derivative of scalar functions:<br>
+$\nabla \phi = e_a (\phi)$<br>
+<br>
+
+Covariant of scalar multiplication:<br>
+$\nabla (\phi w) = (\nabla \phi) w + \phi \nabla w = e(\phi) w + \phi \nabla w$<br>
+<br>
+
+Covariant of dot, inner, outer products:<br>
+$\nabla_{sx} = s \nabla x$ for function $s$ and vector $x$<br>
+$\nabla_x (a \cdot b) = (\nabla_x a) \cdot b + a \cdot (\nabla_x b)$ for vectors $a,b$... this is only true if the covariant derivative cancels the weight of the inner product (which is typcially the metric).<br>
+$\nabla_x a(b) = \nabla_x a (b) + a(\nabla_x b)$ for one-form $a$ and vector $b$<br>
+$\nabla_x a \otimes b = (\nabla_x a) \otimes b + a \otimes (\nabla_x b)$<br>
+<br>
+
+Covariant derivative of vector and one-form basii:<br>
+$0 = \nabla_c \delta^a_b = \nabla_c e^a (e_b) = (\nabla_c e^a) (e_b) + e^a (\nabla_c e_b)$<br>
+$(\nabla_c e^a) (e_b) = -e^a (\nabla_c e_b)$<br>
+Let ${\nabla_c} e_b = {\Gamma^a}_{cb} e_a$<br>
+$(\nabla_c e^a) (e_b) = -e^a ({\Gamma^d}_{cb} e_d)$ by substitution<br>
+$(\nabla_c e^a) (e_b) = -{\Gamma^d}_{cb} e^a (e_d)$ by linearity.<br>
+$(\nabla_c e^a) (e_b) = -{\Gamma^d}_{cb} \delta^a_d$ by orthogonality.<br>
+$(\nabla_c e^a) (e_b) = -{\Gamma^a}_{cb}$ by orthogonality.<br>
+Let ${\omega^a}_b = -\nabla_b e^a$<br>
+${\omega^a}_c (e_b) = {\Gamma^a}_{cb}$ by substitution.<br>
+${\omega^a}_c = -{\Gamma^a}_{cb} e^b$ by orthogonality.<br>
+<br>
+So $e^a(\nabla_b e_c) = {\Gamma^a}_{bc}$ is the connection coefficients describing $\nabla_b e_c$ in terms of $e_a$.<br>
+And ${\omega^a}_b = -\nabla_b e^a = {\Gamma^a}_{bc} e^c$ are the one-forms of the connections.<br>
+<br>
+
+<a href='.'>Back</a><br><br>
+	</body>
+</html>

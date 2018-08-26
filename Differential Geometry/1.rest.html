@@ -1,0 +1,188 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Differential Geometry</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+	</head>
+    <body onload='tryToFindMathJax();'>
+<a href='.'>Back</a><br><br>
+
+covariant vector derivative:<br>
+$\nabla_u v = \nabla_{u^a e_a} (v^b e_b) = u^a \nabla_a (v^b e_b) = u^a (e_a(v^b) + {\Gamma^b}_{ac} v^c) e_b$<br>
+<br>
+
+Asymmetry of covariant derivative of scalars:<br>
+$[\nabla_a, \nabla_b] \phi = \nabla_a \nabla_b \phi - \nabla_b \nabla_a \phi$<br>
+$= \nabla_a (e_b \phi) - \nabla_b (e_a \phi)$<br>
+$= e_a e_b \phi - {\Gamma^c}_{ab} e_c \phi - e_b e_a \phi + {\Gamma^c}_{ba} e_c \phi$<br>
+$= {c_{ab}}^c e_c \phi + ({\Gamma^c}_{ba} - {\Gamma^c}_{ab})  e_c \phi$<br>
+$= ({\Gamma^c}_{ba} - {\Gamma^c}_{ab} + {c_{ab}}^c) e_c \phi$<br>
+$= {T^c}_{ba} e_c \phi$<br>
+I suppose this is intuitive based on the torsion's definition, which is based on operators who themselves only make sense when applied to scalars.<br>
+<br>
+
+Riemann curvature in coordinate-free notation:<br>
+$R(x,y)z$<br>
+$= \nabla_x \nabla_y z - \nabla_y \nabla_x z - \nabla_{[x,y]} z$<br>
+$= 	x^a \nabla_a ( y^b \nabla_b ( z^c e_c ) ) 
+	- y^b \nabla_b ( x^a \nabla_a ( z^c e_c ) ) 
+	- (x^a e_a(y^b) - y^a e_a(x^b) + x^a y^d {c_{ad}}^b) \nabla_b (z^c e_c)$<br>
+$= 	x^a \nabla_a ( y^b (\nabla_b z^c e_c + z^c \nabla_b e_c ) ) 
+	- y^b \nabla_b ( x^a (\nabla_a z^c e_c + z^c \nabla_a e_c ) ) 
+	- (x^a e_a(y^b) - y^a e_a(x^b) + x^a y^d {c_{ad}}^b) (\nabla_b z^c e_c + z^c \nabla_b e_c)$<br>
+$= 	x^a \nabla_a ( y^b (e_b(z^c) + z^d {\Gamma^c}_{bd} ) e_c ) 
+	- y^b \nabla_b ( x^a (e_a(z^c) + z^d {\Gamma^c}_{ad} ) e_c ) 
+	- (x^a e_a(y^b) - y^a e_a(x^b) + x^a y^u {c_{au}}^b) (e_b(z^d) + z^c {\Gamma^d}_{bc}) e_d$<br>
+
+$= 	x^a e_a ( y^b (e_b(z^c) + z^d {\Gamma^c}_{bd} ) ) e_c
+	+ x^a y^b (e_b(z^c) + z^d {\Gamma^c}_{bd} ) {\Gamma^u}_{ac} e_u
+	- y^b e_b ( x^a (e_a(z^c) + z^d {\Gamma^c}_{ad} ) ) e_c
+	- y^b x^a (e_a(z^c) + z^d {\Gamma^c}_{ad} ) {\Gamma^u}_{bc} e_u
+	- x^a e_a(y^b) (e_b(z^d) + z^c {\Gamma^d}_{bc}) e_d
+	+ y^a e_a(x^b) (e_b(z^d) + z^c {\Gamma^d}_{bc}) e_d 
+	- x^a y^u {c_{au}}^b (e_b(z^d) + z^c {\Gamma^d}_{bc}) e_d$<br>
+$= 	x^a y^b z^c (
+	e_a({\Gamma^d}_{bc})
+	- e_b({\Gamma^d}_{ac})
+	
+	+ {\Gamma^d}_{au} {\Gamma^u}_{bc}
+	- {\Gamma^d}_{bu} {\Gamma^u}_{ac}
+	
+	- {\Gamma^d}_{uc} {c_{ab}}^u
+) e_d$<br>
+$= 	x^a y^b z^c (
+	2 e_{[a} ({\Gamma^d}_{b]c})
+	
+	+ 2 {\Gamma^d}_{[a|u} {\Gamma^u}_{b]c}
+	
+	- {\Gamma^d}_{uc} {c_{ab}}^u
+) e_d$<br>
+$= x^a y^b z^c {R^d}_{cab} e_d$<br>
+For the index Riemann curvature tensor terms:<br>
+${R^d}_{cab} = 2 e_{[a} ({\Gamma^d}_{b]c}) + 2 {\Gamma^d}_{[a|u} {\Gamma^u}_{b]c} - {\Gamma^d}_{uc} {c_{ab}}^u$<br>
+<br>
+
+Asymmetry of covariant derivatives in a manifold with torsion:<br>
+$[\nabla_a, \nabla_b] v^d = 2 \nabla_{[a} \nabla_{b]} v^d$<br>
+$= 2 \nabla_{[a} ( e_{[b} ( v^d ) + {\Gamma^d}_{b]c} v^c )$<br>
+$= 2 ( \nabla_{[a} e_{[b} ( v^d )
+	+ \nabla_{[a} {\Gamma^d}_{b]c} v^c 
+	+ {\Gamma^d}_{b]c} \nabla_{[a} v^c 
+)$<br>
+$= 2 ( 
+	e_{[a} ( e_{b]} ( v^d ) )
+	+ {\Gamma^d}_{[a|c} e_{b]} ( v^c )
+	- {\Gamma^c}_{[ab]} e_c ( v^d )
+	
+	+ e_{[a} ( {\Gamma^d}_{b]c} ) v^c 
+	+ {\Gamma^d}_{[a|u} {\Gamma^u}_{b]c} v^c 
+	- {\Gamma^u}_{[ab]} {\Gamma^d}_{uc} v^c 
+	- {\Gamma^u}_{[a|c} {\Gamma^d}_{b]u} v^c 
+	
+	+ {\Gamma^d}_{[b|c} e_{a]} v^c 
+	+ {\Gamma^d}_{[b|c} {\Gamma^c}_{a]u} v^u 
+)$<br>
+$=  2 e_{[a} ( {\Gamma^d}_{b]c} ) v^c 
+	+ 2 {\Gamma^d}_{[a|u} {\Gamma^u}_{b]c} v^c 
+	- {\Gamma^d}_{uc} ({T^u}_{ab} + {c_{ab}}^u) v^c 
+	
+	+ 2 (
+		e_{[a} ( e_{b]} ( v^d ) )
+		- {\Gamma^c}_{[ab]} e_c ( v^d )
+	)
+$<br>
+$=  {R^d}_{cab} v^c
+	- {T^u}_{ab} (e_u ( v^d ) + {\Gamma^d}_{uc} v^c) 
+	+ {c_{ab}}^u e_u ( v^d ) 
+$<br>
+$=  {R^d}_{cab} v^c
+	- {T^u}_{ab} \nabla_u v^d 
+	+ {c_{ab}}^u e_u ( v^d ) 
+$<br>
+
+Did I make a mistake, or does everyone just make this computation in a coordinate basis (thus neglecting that last ${c_{ab}}^u$) ?<br>
+<br>
+
+Ricci curvature:<br>
+$R_{ab} = {R^u}_{aub}$<br>
+$= 
+	e_u ({\Gamma^u}_{ba}) 
+	- e_b ({\Gamma^u}_{ua}) 
+	+ {\Gamma^u}_{uv} {\Gamma^v}_{ba} 
+	- {\Gamma^u}_{bv} {\Gamma^v}_{ua} 
+	- {\Gamma^u}_{va} {c_{ub}}^v$<br>
+<br>
+
+Antisymmetric components of Ricci curvature:<br>
+$R_{[ab]} = 
+	e_u ({\Gamma^u}_{[ba]}) 
+	- e_{[b} ({\Gamma^u}_{u|a]}) 
+	+ {\Gamma^u}_{uv} {\Gamma^v}_{[ba]} 
+	- {\Gamma^u}_{[b|v} {\Gamma^v}_{u|a]} 
+	- {\Gamma^u}_{v[a} {c_{u|b]}}^v$<br>
+$ = 
+	\frac{1}{2} e_u ( {T^u}_{ba} + {c_{ba}}^u ) 
+	- e_{[b} ({\Gamma^u}_{u|a]}) 
+	
+	+ \frac{1}{2} {\Gamma^u}_{uv} {T^v}_{ba} 
+	+ \frac{1}{2} {\Gamma^u}_{av} {T^v}_{ub} 
+	- \frac{1}{2} {\Gamma^u}_{bv} {T^v}_{ua}
+	
+	+ \frac{1}{2} {\Gamma^u}_{uv} {c_{ba}}^v
+	
+	+ \frac{1}{2} {\Gamma^u}_{av} {c_{ub}}^v
+	- \frac{1}{2} {\Gamma^u}_{va} {c_{ub}}^v
+	
+	- \frac{1}{2} {\Gamma^u}_{bv} {c_{ua}}^v
+	+ \frac{1}{2} {\Gamma^u}_{vb} {c_{ua}}^v
+$<br>
+...in absense of commutation...(${c_{ab}}^c = 0, e_a = \partial_a$):<br>
+$R_{[ab]} = 
+	\frac{1}{2} \partial_u ( {T^u}_{ba} ) 
+	- \partial_{[b} ({\Gamma^u}_{u|a]}) 
+	
+	+ \frac{1}{2} {\Gamma^u}_{uv} {T^v}_{ba} 
+	+ \frac{1}{2} {\Gamma^v}_{au} {T^u}_{vb} 
+	- \frac{1}{2} {\Gamma^v}_{bu} {T^u}_{va}
+$<br>
+I could rewrite the $tr \Gamma$'s as $e(log\sqrt{|g|})$, except I would have to replace the $\Gamma$ with $\hat\Gamma + K$, the contorsion, and I am not 100% sure my equation for contorsion in terms of torsion above is correct...<br>
+Instead I'll just avoid substiting $K_{abc}$ in terms of $T_{abc}$<br>
+$R_{[ab]} = 
+	\frac{1}{2} \partial_u ( {T^u}_{ba} ) 
+	- \partial_{[b} ({\hat\Gamma^u}_{u|a]} + {K^u}_{u|a]}) 
+	+ \frac{1}{2} ({\hat\Gamma^u}_{uv} + {K^u}_{uv}) {T^v}_{ba} 
+	
+	+ \frac{1}{2} {\Gamma^v}_{au} {T^u}_{vb} 
+	- \frac{1}{2} {\Gamma^v}_{bu} {T^u}_{va}
+$<br>
+$R_{[ab]} = 
+	\frac{1}{2} \partial_u ( {T^u}_{ba} ) 
+	+ \frac{1}{2} \partial_v log \sqrt{|g|} {T^v}_{ba} 
+	- \partial_{[b}( {K^u}_{u|a]} )
+	+ \frac{1}{2} {K^u}_{uv} {T^v}_{ba}
+	+ \frac{1}{2} {\Gamma^v}_{au} {T^u}_{vb} 
+	- \frac{1}{2} {\Gamma^v}_{bu} {T^u}_{va}
+$<br>
+...looks very ugly.<br>
+I could isolate the $\nabla T$ term...<br>
+$R_{[ab]} = 
+	\frac{1}{2} \nabla_u {T^u}_{ba} 
+	
+	- \frac{1}{2} {\Gamma^u}_{uv} {T^v}_{ba}
+	- \frac{1}{2} {T^v}_{au} {T^u}_{bv}
+	- \frac{1}{2} {T^v}_{bu} {T^u}_{va}
+	
+	+ \frac{1}{2} \partial_v log \sqrt{|g|} {T^v}_{ba} 
+	- \partial_{[b}( {K^u}_{u|a]} )
+	+ \frac{1}{2} {K^u}_{uv} {T^v}_{ba}
+
+$<br>
+<br>
+
+TODO Gaussian curvature: $ R = {R^a}_a $<br>
+<br>
+
+<a href='.'>Back</a><br><br>
+	</body>
+</html>

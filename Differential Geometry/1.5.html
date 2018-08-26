@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Differential Geometry</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+	</head>
+    <body onload='tryToFindMathJax();'>
+<a href='.'>Back</a><br><br>
+
+Levi-Civita tensor applied to a Minkowski metric:<br>
+$\epsilon_{I_1 \dots I_n} = 1$ for even permutations of $I_1 \dots I_n$, -1 for odd permutations, and 0 otherwise.<br>
+$\epsilon^{I_1 \dots I_n} = \eta^{I_1 J_1} \dots \eta^{I_n J_n} \epsilon_{J_1 \dots J_n} = \sigma \epsilon_{I_1 \dots I_n}$<br>
+$\epsilon_{a_1 \dots a_n} = {e_{a_1}}^1 \dots {e_{a_n}}^n \epsilon_{1 \dots n}$, which is the definition of $det([{e_a}^I]) = e$.<br>
+Therefore $ \epsilon_{a_1 \dots a_n} = e = \sqrt{|g|}$ for even permutations, $-e = -\sqrt{|g|}$ for odd permutations, and 0 otherwise.<br>
+<br>
+
+$\epsilon^{a_1 \dots a_n} = \sigma (g^{a_1 b_1}) \cdot \dots \cdot (g^{a_n b_n}) \epsilon_{b_1 \dots b_n}$<br>
+$= \frac{1}{\sqrt{|g|}} \epsilon_{a_1 \dots a_n}$<br>
+<br>
+
+Levi-Civita tensor for 4D Lorentzian signature with a diagonalized metric:<br>
+$\epsilon^{IJKL} = -\epsilon_{IJKL}$<br>
+the timelike (zero) index goes first, so $\epsilon_{0123} = 1$<br>
+<br>
+
+Levi-Civita tensor in 4D manifold with Lorentzian signature:<br>
+$\epsilon_{txyz} = (-g)^{\frac{1}{2}}$<br>
+$\epsilon^{txyz} = -(-g)^{-\frac{1}{2}}$<br>
+<br>
+
+Kronecher delta extension:<br>
+$\delta^{I_1 \dots I_n}_{J_1 \dots J_n} = n! \delta^{I_1}_{[J_1} \cdot \dots \cdot \delta^{I_n}_{J_n]} = \sigma \epsilon^{I_1 \dots I_n} \epsilon_{J_1 \dots J_n}$<br>
+specific instances for 4D Lorentzian space:<br>
+$\delta^{IJKL}_{MNPQ} = -\epsilon^{IJKL} \epsilon_{MNPQ}$<br>
+$\delta^{IJK}_{MNP} = \delta^{IJKL}_{MNPL} = -\epsilon^{IJKL} \epsilon_{MNPL}$<br>
+$2! \delta^{IJ}_{MN} = \delta^{IJK}_{MNK} = \delta^{IJKL}_{MNKL} = -\epsilon^{IJKL} \epsilon_{MNKL}$<br>
+$3! \delta^I_J = 2! \delta^{IJ}_{MJ} = \delta^{IJK}_{MJK} = \delta^{IJKL}_{MJKL} = -\epsilon^{IJKL} \epsilon_{MJKL}$<br>
+$4! = 3! \delta^I_I = 2! \delta^{IJ}_{IJ} = \delta^{IJK}_{IJK} = \delta^{IJKL}_{IJKL} = -\epsilon^{IJKL} \epsilon_{IJKL}$<br>
+<br>
+
+Dual tensors:<br>
+For $k$-degree tensors in $n$-dimension space<br>
+$\ast T_{a_{k+1} \dots a_n} = {1\over k!} T^{a_1 \dots a_k} \epsilon_{a_1 \dots a_n}$<br>
+specific instances for 4D Lorentzian space:<br>
+$\ast T_{abcd} = T \epsilon_{abcd}$<br>
+$\ast T_{bcd} = T^a \epsilon_{abcd}$<br>
+$\ast T_{cd} = {1\over2} T^{ab} \epsilon_{abcd}$<br>
+$\ast T_c = {1\over3!}T^{abc} \epsilon_{abcd}$<br>
+$\ast T = {1\over4!} T^{abcd} \epsilon_{abcd}$<br>
+<br>
+
+
+<a href='.'>Back</a><br><br>
+	</body>
+</html>

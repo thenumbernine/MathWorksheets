@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Differential Geometry</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+	</head>
+    <body onload='tryToFindMathJax();'>
+<a href='.'>Back</a><br><br>
+
+Exterior derivative:<br>
+$d (\phi) = \partial_a (\phi) dx^a = e_a (\phi) e^a$<br>
+For coordinate basis: $d(dx^a) = 0$<br>
+<br>
+More on this in my <a href='2%20-%20exterior%20derivative.html'>exterior derivative</a> worksheet.<br>
+<br>
+
+Exterior derivative of a p-form:<br>
+$d w = d (w_{i_1 ... i_p} dx^{i_1} \wedge ... \wedge dx^{i_p})$<br>
+$= d (w_{i_1 ... i_p}) \wedge dx^{i_1} \wedge ... \wedge dx^{i_p}
+	+ (-1)^{j-1} w_{i_1 ... i_p} dx^{i_1} \wedge ... \wedge d(dx^{i_j}) \wedge ... \wedge dx^{i_p}
+$<br>
+<br>
+
+...in a coordinate basis, where $d(dx^\bar{a}) = 0$:<br>
+$= \partial_j (w_{i_1 ... i_p}) dx^j \wedge dx^{i_1} \wedge ... \wedge dx^{i_p}$<br>
+<br>
+
+Exterior derivative of a non-coordinate basis one-form:<br>
+(Treating the one-form basis as a linear combination of a coordinate basis)<br>
+$d e^v = d ({e^v}_\bar{b} dx^\bar{b})$<br>
+$= d ({e^v}_\bar{b}) \wedge dx^\bar{b} + {e^v}_\bar{b} d(dx^\bar{b})$<br>
+$= \partial_\bar{a} ({e^v}_\bar{b}) dx^\bar{a} \wedge dx^\bar{b}$<br>
+$= \partial_\bar{a} ({e^v}_\bar{b}) dx^\bar{a} \wedge dx^\bar{b}$<br>
+$= e_a ({e^v}_\bar{b}) {e_b}^\bar{b} e^a \wedge e^b$<br>
+$= e_a ({e^v}_\bar{b}) {e_b}^\bar{b} (e^a \otimes e^b - e^b \otimes e^a)$<br>
+$= (e_a ({e^v}_\bar{b}) {e_b}^\bar{b}
+	- e_b ({e^v}_\bar{b}) {e_a}^\bar{b}
+) e^a \otimes e^b$<br>
+$= -(e_a ({e_b}^\bar{b}) - e_b ({e_a}^\bar{b})) {e^v}_\bar{b} e^a \otimes e^b$<br>
+$= -{c_{ab}}^u e^a \otimes e^b$<br>
+$= -\frac{1}{2}{c_{ab}}^u e^a \wedge e^b$<br>
+which looks like the Maurer-Cartan equation.<br>
+<br>
+
+Exterior derivative of a p-form in a non-coordinate basis:<br>
+$dw = e_k (w_{i_1 ... i_p}) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p}
+	+ (-1)^{j-1} w_{i_1 ... i_p} dx^{i_1} \wedge ... \wedge d(dx^{i_j}) \wedge ... \wedge dx^{i_p}
+$<br>
+$ =  e_k (w_{i_1 ... i_p}) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p}
+	+ (-1)^{j-1} w_{i_1 ... i_p} e^{i_1} \wedge ... \wedge d(e^{i_j}) \wedge ... \wedge e^{i_p}
+$<br>
+$ =  e_k (w_{i_1 ... i_p}) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p}
+	+ (-1)^{j-1} w_{i_1 ... i_p} e^{i_1} \wedge ... \wedge \cdot -\frac{1}{2} {c_{ab}}^{i_j} e^a \wedge e^b \wedge ... \wedge e^{i_p}
+$<br>
+$ =  e_k (w_{i_1 ... i_p}) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p}
+	- \frac{1}{2} {c_{ab}}^{i_j} w_{i_1 ... i_p} e^a \wedge e^{i_1} \wedge ... \wedge e^b \wedge ... \wedge e^{i_p}
+$<br>
+$ =  (
+		e_k (w_{i_1 ... i_p})
+		- \frac{1}{2} {c_{k i_j}}^b w_{i_1 ... i_{j-1} b i_{j+1} ... i_p}
+	) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p}
+$<br>
+
+<br>
+
+<a href='.'>Back</a><br><br>
+	</body>
+</html>

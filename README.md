@@ -20,6 +20,24 @@ Here's the CDN URLs:
 
 [Differential Geometry/1 - tensors](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%20%2d%20tensors%2ehtml)
 
+[Differential Geometry/1.1](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e1%2ehtml)
+
+[Differential Geometry/1.2](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e2%2ehtml)
+
+[Differential Geometry/1.3](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e3%2ehtml)
+
+[Differential Geometry/1.4](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e4%2ehtml)
+
+[Differential Geometry/1.5](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e5%2ehtml)
+
+[Differential Geometry/1.6](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e6%2ehtml)
+
+[Differential Geometry/1.7](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e7%2ehtml)
+
+[Differential Geometry/1.8](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e8%2ehtml)
+
+[Differential Geometry/1.rest](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2erest%2ehtml)
+
 [Differential Geometry/2 - exterior derivative](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/2%20%2d%20exterior%20derivative%2ehtml)
 
 [Differential Geometry/3 - Einstein-Hilbert action](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/3%20%2d%20Einstein%2dHilbert%20action%2ehtml)
