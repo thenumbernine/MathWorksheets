@@ -48,7 +48,22 @@ Solve for torsion:<br>
 $\Theta^u = d e^u + {\omega^u}_b \wedge e^b$<br>
 <br>
 
-TODO Exterior derivative of a vector basis.  Should look like the connection.<br>
+exterior derivative of non-coordinate vector basis:<br>
+$d e_u = d ({e_u}^\bar{u} g_{\bar{u}\bar{v}} dx^\bar{v})$<br>
+$d e_u = \partial_\bar{a} (
+	{e_u}^\bar{u} g_{\bar{u}\bar{v}}
+) dx^\bar{a} \wedge dx^\bar{v}
++ {e_u}^\bar{u} g_{\bar{u}\bar{v}} d^2 x^\bar{v}
+$<br>
+$d e_u = (
+	\partial_\bar{a} ( {e_u}^\bar{u} ) g_{\bar{u}\bar{v}}
+	+ {e_u}^\bar{u} \partial_\bar{a} ( g_{\bar{u}\bar{v}} )
+) dx^\bar{a} \wedge dx^\bar{v}$<br>
+$d e_u = (
+	e_a ( {e_u}^\bar{u} ) g_{\bar{u}\bar{v}} {e_b}^\bar{v}
+	+ {e_u}^\bar{u} e_a ( g_{\bar{u}\bar{v}} ) {e_b}^\bar{v}
+) e^a \wedge e^b$<br>
+TODO finishme.<br>
 <br>
 
 <a href='.'>Back</a><br><br>
