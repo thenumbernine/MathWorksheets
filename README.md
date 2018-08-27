@@ -14,13 +14,13 @@ Here's the CDN URLs:
 
 [Cayley-Dickson](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Cayley%2dDickson%2ehtml)
 
-[Change of Coordinates](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Change%20of%20Coordinates%2ehtml)
-
 [Curvature From Lower Dimensions](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Curvature%20From%20Lower%20Dimensions%2ehtml)
 
 [Differential Geometry/1 - tensors - intro](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%20%2d%20tensors%20%2d%20intro%2ehtml)
 
 [Differential Geometry/1.1 - index notation](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e1%20%2d%20index%20notation%2ehtml)
+
+[Differential Geometry/1.1.1 - change of basis](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e1%2e1%20%2d%20change%20of%20basis%2ehtml)
 
 [Differential Geometry/1.10 - Ricci curvature](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e10%20%2d%20Ricci%20curvature%2ehtml)
 

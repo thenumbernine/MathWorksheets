@@ -12,7 +12,7 @@ $M =$ manifold.<br>
 $n =$ dimension of manifold.<br>
 $p \in M$ = point on manifold.<br>
 $T_p(M)$ = tangent space on $M$ at point $p$.<br>
-$T_p^*(M)$ = tangent space on $M$ at point $p$.<br>
+$T_p^*(M)$ = dual tangent space on $M$ at point $p$.<br>
 <br>
 
 Let $\frac{\partial}{\partial x^a}$ be a derivative operator, and a vector basis on the tangent space of the manifold.<br>
@@ -33,8 +33,17 @@ such that $e^a(e_b) = \delta^a_b$<br>
 If $e_a = \partial_a$ and $e^a = dx^a$ then the basis is called a coordinate basis / the basis is holonomic.<br>
 <br>
 
-Contravariant representation $ v = v^a e_a$<br>
-Covariant representation $ w = w_a e^a$<br>
+Tensors are objects invariant to change of basis.<br>
+Tensors exist within (p,q) tanganet and dual-tangent spaces:<br>
+$x = {x^{a_1 ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}$<br>
+Examples of tensors:<br>
+scalars: $\phi : M \rightarrow \mathbb{R}$<br>
+rank-1 contravariant tensors (vectors): $v = v^a e_a$<br>
+rank-2 contravariant tensors: $v = v^{ab} e_a \otimes e_b$<br>
+rank-p contravariant tensors: $v = v^{a_1 ... a_p} e_{a_1} \otimes ... \otimes e_{a_p}$<br>
+rank-1 covariant tensors (one-form): $w = w_a e^a : V \rightarrow \mathbb{R}$<br>
+rank-2 covariant tensors: $w = w_{ab} e^a \otimes e^b : V \otimes V \rightarrow \mathbb{R}$<br>
+rank-p covariant tensors: $w = w_{a_1 ... a_p} e^{a_1} \otimes ... \otimes e^{a_p} : \underbrace{V \otimes ... \otimes V}_{\times p} \rightarrow \mathbb{R}$<br>
 <br>
 
 One-form applied to a vector:<br>
@@ -46,18 +55,19 @@ $= v^b w_a \delta^a_b$ by orthogonality of $e^a(e_b)$.<br>
 $= v^a w_a$<br>
 <br>
 
-Outer product: maps (p,q) tensors and (r,s) tensors to (p+r,q+s) tensors<br>
-outer product of vectors: $ x \otimes y = x^a e_a \otimes y^b e_b = x^a y^b e_a \otimes e_b $<br>
-outer product of one-forms: $ x \otimes y = x_a e^a \otimes y_b e^b = x_a y_b e^a \otimes e^b $<br>
-<br>
-
 p-form applies to a p-vector:<br>
 I'm making this up.  Is it true, or am I abusing notation?<br>
 $(e^{a_1} \otimes ... \otimes e^{a_p}) ( e_{b_1} \otimes ... \otimes e_{b_p} ) = \delta^{a_1}_{b_1} \cdot ... \cdot \delta^{a_p}_{b_p}$<br>
 <br>
 
+Outer product: maps (p,q) tensors and (r,s) tensors to (p+r,q+s) tensors<br>
+outer product of vectors: $ x \otimes y = x^a e_a \otimes y^b e_b = x^a y^b e_a \otimes e_b $<br>
+outer product of one-forms: $ x \otimes y = x_a e^a \otimes y_b e^b = x_a y_b e^a \otimes e^b $<br>
+<br>
+
 Wedge product: $a \wedge b = a \otimes b - b \otimes a$<br>
 Wedge product antisymmetry: $a \wedge b = -b \wedge a$<br>
+If a rank-p covariant tensor has a completely antisymmetric basis then it is said to be a p-form.<br>
 <br>
 
 Inner product: maps vectors and vectors to reals<br>
