@@ -22,11 +22,12 @@ metric inverse: $ [g^{ab}] = [g_{ab}]^{-1} $ such that $ g^{ac} g_{cb} = \delta^
 Raising / lowering indexes:<br>
 $v^a = g^{ab} v_b$<br>
 $v_a = g_{ab} v^b$<br>
+$v = v^a e_a = v_b g^{bc} g_{ca} e^a = v_b \delta^b_a e^a = v_a e^a$<br>
 <br>
 
 Changing coordinates:<br>
-$v^I = {e_a}^I v^a$<br>
-$v_I = {e^a}_I v_a$<br>
+$v^\bar{a} = {e_a}^\bar{a} v^a$<br>
+$v_\bar{a} = {e^a}_\bar{a} v_a$<br>
 <br>
 
 All metrics can be diagonalized into a signature metric.<br>
@@ -37,18 +38,18 @@ Lorentzian signature for particle physicists: +1, -1, -1, 1; $\sigma = -1$<br>
 Lorentzian signature for cosmologists: -1, +1, +1, +1; $\sigma = -1$<br>
 <br>
 
+Any $e_a$ can be transformed into an $e_I = {e^a}_I e_a$, such that $e_I \cdot e_J = \eta_{IJ}$, where $IJK$ is associated with the diagonalized metric coordinates.<br>
+In fact, if the metric is eigen-decomposed, then any number of $Q$ exist such that $Q V Q^{-1} = G$.<br>
+This means that, while the $IJK$ have a Minkowski signature, they may not necessarily be holonomic ... and therefore will have structure constants ... <br>
+Structure constants imply asymmetric connection on the 2nd and 3rd indexes, and a constant (Minkowski) metric as well implies antisymmetric on the 2nd and 3rd indexes.<br>
+<br>
+
+
 Metric determinant:<br>
 $det([g_{ab}]) = det( [{e_a}^I \eta_{IJ} {e_b}^J] )$<br>
 $det([g_{ab}]) = det( [{e_a}^I] )^2 det([\eta_{IJ}])$<br>
 $g = e^2 \sigma$<br>
 $e = \sqrt{|g|}$<br>
-<br>
-
-Diagonalizing metrics:<br>
-Any $e_a$ can be transformed into an $e_I = {e^a}_I e_a$, such that $e_I \cdot e_J = \eta_{IJ}$, where $IJK$ is associated with the diagonalized metric coordinates.<br>
-In fact, if the metric is eigen-decomposed, then any number of $Q$ exist such that $Q V Q^{-1} = G$.<br>
-This means that, while the $IJK$ have a Minkowski signature, they may not necessarily be holonomic ... and therefore will have structure constants ... <br>
-Structure constants imply asymmetric connection on the 2nd and 3rd indexes, and a constant (Minkowski) metric as well implies antisymmetric on the 2nd and 3rd indexes.<br>
 <br>
 
 $e^I = {e_u}^I dx^u$<br>
@@ -73,7 +74,12 @@ $= {e_u}^I {e^u}_J$<br>
 $= \delta^I_J$<br>
 <br>
 
-
+Metric coordinate invariance:<br>
+Let $g' = {g'}_{a'b'} dx^{a'} \cdot dx^{b'}$<br> 
+$ = {g'}_{a'b'} \frac{\partial x^a}{\partial x^{a'}} dx^a \cdot \frac{\partial x^b}{\partial x^{b'}} dx^b$<br>
+$ = {g'}_{ab} dx^a \cdot dx^b$ by transforming the indexes of ${g'}_{a'b'}$<br>
+Therefore $g$ = $g'$ regardless of change-of-basis.<br>
+<br>
 
 <a href='.'>Back</a><br><br>
 	</body>

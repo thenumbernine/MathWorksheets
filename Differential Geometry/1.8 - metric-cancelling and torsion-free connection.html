@@ -113,6 +113,242 @@ In a holonomic basis this gives $\hat\Gamma_{a[bc]} = 0$<br>
 <br>
 
 
+Levi-Civita change-of-basis:<br>
+$e_c (g_{ab}) = \frac{\partial}{\partial x^c} ( g_{ab} )$<br>
+$e_{c'} (g'_{a'b'}) = \frac{\partial}{\partial x^{c'}} ( g'_{a'b'} )$<br>
+$= \frac{\partial}{\partial x^{c'}} (
+	g'_{ab} 
+	\frac{\partial x^a}{\partial x^{a'}} 
+	\frac{\partial x^b}{\partial x^{b'}}  
+)$<br>
+$= \frac{\partial x^c}{\partial x^{c'}} \frac{\partial}{\partial x^c} (
+	g'_{ab} 
+	\frac{\partial x^a}{\partial x^{a'}} 
+	\frac{\partial x^b}{\partial x^{b'}}  
+)$<br>
+$= (\frac{\partial}{\partial x^c} (g_{ab}) 
+	\frac{\partial x^a}{\partial x^{a'}} 
+	\frac{\partial x^b}{\partial x^{b'}} 
+	+ g_{ab} (
+		\frac{\partial}{\partial x^c} ( \frac{\partial x^a}{\partial x^{a'}} )
+		\frac{\partial x^b}{\partial x^{b'}} 
+		+ \frac{\partial x^a}{\partial x^{a'}} 
+		\frac{\partial}{\partial x^c} ( \frac{\partial x^b}{\partial x^{b'}} )
+	)
+) \frac{\partial x^c}{\partial x^{c'}}$<br>
+$= \frac{\partial}{\partial x^c} (g_{ab}) 
+	\frac{\partial x^a}{\partial x^{a'}} 
+	\frac{\partial x^b}{\partial x^{b'}} 
+	\frac{\partial x^c}{\partial x^{c'}} 
+	+ g_{ab} (
+		\frac{\partial}{\partial x^c} ( \frac{\partial x^a}{\partial x^{a'}} )
+		\frac{\partial x^b}{\partial x^{b'}} 
+		+ \frac{\partial x^a}{\partial x^{a'}} 
+		\frac{\partial}{\partial x^c} ( \frac{\partial x^b}{\partial x^{b'}} )
+	) \frac{\partial x^c}{\partial x^{c'}}$<br>
+$= \frac{\partial}{\partial x^c} (g_{ab}) 
+	\frac{\partial x^a}{\partial x^{a'}} 
+	\frac{\partial x^b}{\partial x^{b'}} 
+	\frac{\partial x^c}{\partial x^{c'}} 
+	+ g_{ab} (
+		\frac{\partial}{\partial x^{c'}} ( \frac{\partial x^a}{\partial x^{a'}} )
+		\frac{\partial x^b}{\partial x^{b'}} 
+		+ \frac{\partial x^a}{\partial x^{a'}} 
+		\frac{\partial}{\partial x^{c'}} ( \frac{\partial x^b}{\partial x^{b'}} )
+	)$<br>
+<!-- $= \frac{\partial}{\partial x^c} (g_{ab}) 
+	\frac{\partial x^a}{\partial x^{a'}} 
+	\frac{\partial x^b}{\partial x^{b'}} 
+	\frac{\partial x^c}{\partial x^{c'}} 
+	+ (
+		g_{ab'} \frac{\partial}{\partial x^{a'}} \frac{\partial x^a}{\partial x^{c'}}
+		+ g_{a'b} \frac{\partial}{\partial x^{b'}} \frac{\partial x^b}{\partial x^{c'}}
+	)$<br> -->
+<br>
+
+change of basis of connection:<br>
+$\Gamma_{abc} = \frac{1}{2} (g_{ab,c} + g_{ac,b} - g_{bc,a})$<br>
+$\Gamma'_{a'b'c'} = \frac{1}{2} ( e_{c'} ( g'_{a'b'} ) + e_{b'} ( g'_{a'c'} ) - e_{a'} ( g'_{b'c'} ) )$<br>
+$= \frac{1}{2} (
+	
+	\frac{\partial}{\partial x^c} (g_{ab}) 
+	\frac{\partial x^a}{\partial x^{a'}} 
+	\frac{\partial x^b}{\partial x^{b'}} 
+	\frac{\partial x^c}{\partial x^{c'}} 
+	+ g_{ab} (
+		\frac{\partial}{\partial x^{c'}} ( \frac{\partial x^a}{\partial x^{a'}} )
+		\frac{\partial x^b}{\partial x^{b'}} 
+		+ \frac{\partial x^a}{\partial x^{a'}} 
+		\frac{\partial}{\partial x^{c'}} ( \frac{\partial x^b}{\partial x^{b'}} )
+	)
+
+	$$+ \frac{\partial}{\partial x^b} (g_{ac}) 
+	\frac{\partial x^a}{\partial x^{a'}} 
+	\frac{\partial x^c}{\partial x^{c'}} 
+	\frac{\partial x^b}{\partial x^{b'}} 
+	+ g_{ac} (
+		\frac{\partial}{\partial x^{b'}} ( \frac{\partial x^a}{\partial x^{a'}} )
+		\frac{\partial x^c}{\partial x^{c'}} 
+		+ \frac{\partial x^a}{\partial x^{a'}} 
+		\frac{\partial}{\partial x^{b'}} ( \frac{\partial x^c}{\partial x^{c'}} )
+	)
+
+	$$- \frac{\partial}{\partial x^a} (g_{cb}) 
+	\frac{\partial x^c}{\partial x^{c'}} 
+	\frac{\partial x^b}{\partial x^{b'}} 
+	\frac{\partial x^a}{\partial x^{a'}} 
+	- g_{cb} (
+		\frac{\partial}{\partial x^{a'}} ( \frac{\partial x^c}{\partial x^{c'}} )
+		\frac{\partial x^b}{\partial x^{b'}} 
+		+ \frac{\partial x^c}{\partial x^{c'}} 
+		\frac{\partial}{\partial x^{a'}} ( \frac{\partial x^b}{\partial x^{b'}} )
+	)
+
+)$<br>
+$= \frac{1}{2} (
+	\frac{\partial}{\partial x^c} (g_{ab}) 
+	+ \frac{\partial}{\partial x^b} (g_{ac}) 
+	- \frac{\partial}{\partial x^a} (g_{cb}) 
+) \frac{\partial x^c}{\partial x^{c'}} 
+\frac{\partial x^b}{\partial x^{b'}} 
+\frac{\partial x^a}{\partial x^{a'}} 
+
++ \frac{1}{2} (
+	g_{ab} 
+	\frac{\partial}{\partial x^{c'}} ( \frac{\partial x^a}{\partial x^{a'}} )
+	\frac{\partial x^b}{\partial x^{b'}} 
+	
+	+ g_{ab} 
+	\frac{\partial}{\partial x^{c'}} ( \frac{\partial x^b}{\partial x^{b'}} )
+	\frac{\partial x^a}{\partial x^{a'}} 
+	
+	+ g_{ac} 
+	\frac{\partial}{\partial x^{b'}} ( \frac{\partial x^a}{\partial x^{a'}} )
+	\frac{\partial x^c}{\partial x^{c'}} 
+	
+	+ g_{ac} 
+	\frac{\partial}{\partial x^{b'}} ( \frac{\partial x^c}{\partial x^{c'}} )
+	\frac{\partial x^a}{\partial x^{a'}} 
+	
+	- g_{cb} 
+	\frac{\partial}{\partial x^{a'}} ( \frac{\partial x^c}{\partial x^{c'}} )
+	\frac{\partial x^b}{\partial x^{b'}} 
+	
+	- g_{cb} 
+	\frac{\partial}{\partial x^{a'}} ( \frac{\partial x^b}{\partial x^{b'}} )
+	\frac{\partial x^c}{\partial x^{c'}} 
+
+)$<br>
+$= \Gamma_{abc} 
+\frac{\partial x^c}{\partial x^{c'}} 
+\frac{\partial x^b}{\partial x^{b'}} 
+\frac{\partial x^a}{\partial x^{a'}} 
+
++ \frac{1}{2} (
+	g_{ab} 
+	\frac{\partial}{\partial x^{c'}} ( \frac{\partial x^a}{\partial x^{a'}} )
+	\frac{\partial x^b}{\partial x^{b'}} 
+	
+	+ g_{ab} 
+	\frac{\partial}{\partial x^{c'}} ( \frac{\partial x^b}{\partial x^{b'}} )
+	\frac{\partial x^a}{\partial x^{a'}} 
+	
+	+ g_{ac} 
+	\frac{\partial}{\partial x^{b'}} ( \frac{\partial x^a}{\partial x^{a'}} )
+	\frac{\partial x^c}{\partial x^{c'}} 
+	
+	+ g_{ac} 
+	\frac{\partial}{\partial x^{b'}} ( \frac{\partial x^c}{\partial x^{c'}} )
+	\frac{\partial x^a}{\partial x^{a'}} 
+	
+	- g_{cb} 
+	\frac{\partial}{\partial x^{a'}} ( \frac{\partial x^c}{\partial x^{c'}} )
+	\frac{\partial x^b}{\partial x^{b'}} 
+	
+	- g_{cb} 
+	\frac{\partial}{\partial x^{a'}} ( \frac{\partial x^b}{\partial x^{b'}} )
+	\frac{\partial x^c}{\partial x^{c'}} 
+
+)$<br>
+<br>
+
+${\Gamma^{a'}}_{b'c'} = g^{a'd'} \Gamma_{d'b'c'}$<br>
+$= g^{a'd'} (
+	\Gamma_{dbc} 
+	\frac{\partial x^c}{\partial x^{c'}} 
+	\frac{\partial x^b}{\partial x^{b'}} 
+	\frac{\partial x^d}{\partial x^{d'}} 
+
+	+ \frac{1}{2} (
+		g_{db} 
+		\frac{\partial}{\partial x^{c'}} ( \frac{\partial x^d}{\partial x^{d'}} )
+		\frac{\partial x^b}{\partial x^{b'}} 
+		
+		+ g_{db} 
+		\frac{\partial}{\partial x^{c'}} ( \frac{\partial x^b}{\partial x^{b'}} )
+		\frac{\partial x^d}{\partial x^{d'}} 
+		
+		+ g_{dc} 
+		\frac{\partial}{\partial x^{b'}} ( \frac{\partial x^d}{\partial x^{d'}} )
+		\frac{\partial x^c}{\partial x^{c'}} 
+		
+		+ g_{dc} 
+		\frac{\partial}{\partial x^{b'}} ( \frac{\partial x^c}{\partial x^{c'}} )
+		\frac{\partial x^d}{\partial x^{d'}} 
+		
+		- g_{cb} 
+		\frac{\partial}{\partial x^{d'}} ( \frac{\partial x^c}{\partial x^{c'}} )
+		\frac{\partial x^b}{\partial x^{b'}} 
+		
+		- g_{cb} 
+		\frac{\partial}{\partial x^{d'}} ( \frac{\partial x^b}{\partial x^{b'}} )
+		\frac{\partial x^c}{\partial x^{c'}} 
+	)
+)$<br>
+$= \frac{\partial x^{a'}}{\partial x^a} 
+\frac{\partial x^{d'}}{\partial x^e}
+g^{ae} (
+	\Gamma_{dbc} 
+	\frac{\partial x^c}{\partial x^{c'}} 
+	\frac{\partial x^b}{\partial x^{b'}} 
+	\frac{\partial x^d}{\partial x^{d'}} 
+
+	+ \frac{1}{2} (
+		g_{db} 
+		\frac{\partial}{\partial x^{c'}} ( \frac{\partial x^d}{\partial x^{d'}} )
+		\frac{\partial x^b}{\partial x^{b'}} 
+		
+		+ g_{db} 
+		\frac{\partial}{\partial x^{c'}} ( \frac{\partial x^b}{\partial x^{b'}} )
+		\frac{\partial x^d}{\partial x^{d'}} 
+		
+		+ g_{dc} 
+		\frac{\partial}{\partial x^{b'}} ( \frac{\partial x^d}{\partial x^{d'}} )
+		\frac{\partial x^c}{\partial x^{c'}} 
+		
+		+ g_{dc} 
+		\frac{\partial}{\partial x^{b'}} ( \frac{\partial x^c}{\partial x^{c'}} )
+		\frac{\partial x^d}{\partial x^{d'}} 
+		
+		- g_{cb} 
+		\frac{\partial}{\partial x^{d'}} ( \frac{\partial x^c}{\partial x^{c'}} )
+		\frac{\partial x^b}{\partial x^{b'}} 
+		
+		- g_{cb} 
+		\frac{\partial}{\partial x^{d'}} ( \frac{\partial x^b}{\partial x^{b'}} )
+		\frac{\partial x^c}{\partial x^{c'}} 
+	)
+)$<br>
+$= \frac{\partial x^{a'}}{\partial x^a} 
+{\Gamma^a}_{bc} 
+\frac{\partial x^c}{\partial x^{c'}} 
+\frac{\partial x^b}{\partial x^{b'}} 
+
++ \frac{\partial x^{a'}}{\partial x^a} 
+\frac{\partial^2 x^a}{\partial x^{b'} \partial x^{c'} }
+$<br>
+<br>
+
 Covariant derivative of a (p, q) tensor:<br>
 $\nabla_x y = \nabla_{x^u e_u} ({y^{a_1 ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q})$<br>
 $= x^u \nabla_u ({y^{a_1 ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q})$<br>

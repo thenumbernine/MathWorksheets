@@ -20,8 +20,6 @@ Here's the CDN URLs:
 
 [Differential Geometry/1.1 - index notation](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e1%20%2d%20index%20notation%2ehtml)
 
-[Differential Geometry/1.1.1 - change of basis](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e1%2e1%20%2d%20change%20of%20basis%2ehtml)
-
 [Differential Geometry/1.10 - Ricci curvature](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e10%20%2d%20Ricci%20curvature%2ehtml)
 
 [Differential Geometry/1.2 - structure constants](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e2%20%2d%20structure%20constants%2ehtml)

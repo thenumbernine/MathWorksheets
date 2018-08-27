@@ -46,6 +46,18 @@ rank-2 covariant tensors: $w = w_{ab} e^a \otimes e^b : V \otimes V \rightarrow 
 rank-p covariant tensors: $w = w_{a_1 ... a_p} e^{a_1} \otimes ... \otimes e^{a_p} : \underbrace{V \otimes ... \otimes V}_{\times p} \rightarrow \mathbb{R}$<br>
 <br>
 
+Change of basis of a (p,q) tensor from non-coordinate basis $e_a$ to coordinate basis $e_\bar{a}$:<br>
+Assuming the non-coordinate basis is a linear combination of another coordinate basis: $e_a = {e_a}^\bar{a} e_\bar{a}$<br>
+${x^{a_1 ... a_p}}_{b_1 ... b_1} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}$<br>
+$= {x^{a_1 ... a_p}}_{b_1 ... b_1} 
+	({e_{a_1}}^\bar{a_1} e_{\bar{a}_1}) \otimes ... \otimes ({e_{a_p}}^\bar{a_p} e_{\bar{a}_p}) 
+	\otimes ({e^{b_1}}_{\bar{b}_1} e^{\bar{b}_1}) \otimes ... \otimes ({e^{b_q}}_{\bar{b}_q} e^{\bar{b}_q})$<br>
+$= {e_{a_1}}^\bar{a_1} \cdot ... \cdot {e_{a_p}}^\bar{a_p}
+	\cdot {e^{b_1}}_\bar{b_1} \cdot ... \cdot {e^{b_q}}_\bar{b_q}
+	\cdot {x^{a_1 ... a_p}}_{b_1 ... b_1} e_{\bar{a}_1} \otimes ... \otimes e_{\bar{a}_p} \otimes e^{\bar{b}_1} \otimes ... \otimes e^{\bar{b}_q}$<br>
+$= {x^{\bar{a}_1 ... \bar{a}_p}}_{\bar{b}_1 ... \bar{b}_1} e_{\bar{a}_1} \otimes ... \otimes e_{\bar{a}_p} \otimes e^{\bar{b}_1} \otimes ... \otimes e^{\bar{b}_q}$<br>
+<br>
+
 One-form applied to a vector:<br>
 For one-form $w \in V^*$ and vector $v \in V$<br>
 $w(v) = w (v^b e_b)$ by expanding $v$.<br>
