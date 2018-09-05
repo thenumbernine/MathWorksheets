@@ -49,6 +49,26 @@ So $e^a(\nabla_b e_c) = {\Gamma^a}_{bc}$ is the connection coefficients describi
 And ${\omega^a}_b = -(\nabla_c e^a) (e_b) e^c = {\Gamma^a}_{cb} e^c$ are the one-forms of the connections.<br>
 <br>
 
+Exterior derivative of a vector basis:<br>
+Consider vectors to be collections of 0-forms.<br>
+Then an exterior derivative of a vector is a 1-form.<br>
+The function be arbitrary, but we will define it to be the same as the covariant vector derivative:<br>
+$d e_b = {\omega^a}_b e_a = {\Gamma^a}_{cb} e^c \otimes e_a$<br>
+<br>
+
+Exterior derivative of a vector:<br>
+$dv = d(v^a e_a) = dv^a \otimes e_a + v^a de_a$<br>
+$= e_b(v^a) e^b \otimes e_a + v^a {\Gamma^b}_{ca} e^c \otimes e_b$<br>
+$= (e_b(v^a) + v^u {\Gamma^a}_{bu}) e^b \otimes e_a$<br>
+$= e^b \otimes \nabla_b (v^a e_a)$<br>
+$= \nabla v$<br>
+<br>
+
+Exterior derivative of a vector and p-form:<br>
+For vector $v$ and p-form $\alpha$,<br>
+let $d(v\alpha) = (dv) \wedge \alpha + v \otimes d\alpha$<br>
+<br>
+
 Exterior derivative of connection one-form:<br>
 $d {\omega^c}_d = d ({\Gamma^c}_{bd} e^b)$<br>
 $= (d {\Gamma^c}_{bd}) \wedge e^b + {\Gamma^c}_{bd} d e^b$<br>

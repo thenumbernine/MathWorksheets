@@ -90,13 +90,106 @@ $= x^u (
 	$ $+
 
 	y^v
-	\nabla_v (
+	\nabla_u (
 		(
 			e_v ({z^{a_1 ... a_p}}_{b_1 ... b_q})
 			+ {\Gamma^{a_i}}_{vc} {z^{a_1 ... c ... a_p}}_{b_1 ... b_q}
 			- {\Gamma^c}_{v b_j} {z^{a_1 ... a_p}}_{b_1 ... b_j ... b_q}
 		)
 		e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
+	)
+
+)$<br>
+$= x^u ( 
+	e_u (y^v)
+	(
+		e_v ({z^{a_1 ... a_p}}_{b_1 ... b_q})
+		+ {\Gamma^{a_i}}_{vc} {z^{a_1 ... c ... a_p}}_{b_1 ... b_q}
+		- {\Gamma^c}_{v b_j} {z^{a_1 ... a_p}}_{b_1 ... b_j ... b_q}
+	)
+	e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
+
+	$ $+
+
+	y^v
+	(
+		(
+			e_u (e_v ({z^{a_1 ... a_p}}_{b_1 ... b_q}))
+			+ e_u ({\Gamma^{a_i}}_{vc} {z^{a_1 ... c ... a_p}}_{b_1 ... b_q})
+			- e_u ({\Gamma^c}_{v b_j} {z^{a_1 ... a_p}}_{b_1 ... b_j ... b_q})
+		)
+		e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
+	$ $	+ 
+		(
+			e_v ({z^{a_1 ... a_p}}_{b_1 ... b_q})
+			+ {\Gamma^{a_i}}_{vc} {z^{a_1 ... c ... a_p}}_{b_1 ... b_q}
+			- {\Gamma^c}_{v b_j} {z^{a_1 ... a_p}}_{b_1 ... b_j ... b_q}
+		)(
+			e_{a_1} \otimes ... \otimes \nabla_u e_{a_k} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
+			+ e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes \nabla_u e^{b_l} \otimes ... \otimes e^{b_q}
+		)
+	)
+
+)$<br>
+$= x^u ( 
+	e_u (y^v)
+	(
+		e_v ({z^{a_1 ... a_p}}_{b_1 ... b_q})
+		+ {\Gamma^{a_i}}_{vc} {z^{a_1 ... c ... a_p}}_{b_1 ... b_q}
+		- {\Gamma^c}_{v b_j} {z^{a_1 ... a_p}}_{b_1 ... c ... b_q}
+	)
+	e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
+
+	$ $+
+
+	y^v
+	(
+		(
+			e_u (e_v ({z^{a_1 ... a_p}}_{b_1 ... b_q}))
+			+ e_u ({\Gamma^{a_i}}_{vc} {z^{a_1 ... c ... a_p}}_{b_1 ... b_q})
+			- e_u ({\Gamma^c}_{v b_j} {z^{a_1 ... a_p}}_{b_1 ... c ... b_q})
+		)
+		e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
+	$ $	+ 
+		(
+			e_v ({z^{a_1 ... a_p}}_{b_1 ... b_q})
+			+ {\Gamma^{a_i}}_{vc} {z^{a_1 ... c ... a_p}}_{b_1 ... b_q}
+			- {\Gamma^c}_{v b_j} {z^{a_1 ... a_p}}_{b_1 ... c ... b_q}
+		)(
+			{\Gamma^d}_{u a_k} e_{a_1} \otimes ... \otimes e_d \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
+			- {\Gamma^{b_l}}_{u d} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^d \otimes ... \otimes e^{b_q}
+		)
+	)
+
+)$<br>
+$= x^u ( 
+	e_u (y^v)
+	(
+		e_v ({z^{a_1 ... a_p}}_{b_1 ... b_q})
+		+ {\Gamma^{a_i}}_{vc} {z^{a_1 ... c ... a_p}}_{b_1 ... b_q}
+		- {\Gamma^c}_{v b_j} {z^{a_1 ... a_p}}_{b_1 ... c ... b_q}
+	)
+	e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
+
+	$ $+
+
+	y^v
+	(
+		(
+			e_u (e_v ({z^{a_1 ... a_p}}_{b_1 ... b_q}))
+			+ e_u ({\Gamma^{a_i}}_{vc} {z^{a_1 ... c ... a_p}}_{b_1 ... b_q})
+			- e_u ({\Gamma^c}_{v b_j} {z^{a_1 ... a_p}}_{b_1 ... c ... b_q})
+		)
+		e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
+	$ $	+ 
+		(
+			e_v ({z^{a_1 ... a_p}}_{b_1 ... b_q})
+			+ {\Gamma^{a_i}}_{vc} {z^{a_1 ... c ... a_p}}_{b_1 ... b_q}
+			- {\Gamma^c}_{v b_j} {z^{a_1 ... a_p}}_{b_1 ... c ... b_q}
+		)(
+			{\Gamma^d}_{u a_k} e_{a_1} \otimes ... \otimes e_d \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
+			- {\Gamma^{b_l}}_{u d} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^d \otimes ... \otimes e^{b_q}
+		)
 	)
 
 )$<br>
