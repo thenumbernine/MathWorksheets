@@ -53,7 +53,7 @@ Exterior derivative of a vector basis:<br>
 Consider vectors to be collections of 0-forms.<br>
 Then an exterior derivative of a vector is a 1-form.<br>
 The function be arbitrary, but we will define it to be the same as the covariant vector derivative:<br>
-$d e_b = {\omega^a}_b e_a = {\Gamma^a}_{cb} e^c \otimes e_a$<br>
+$d e_b = {\omega^a}_b \otimes e_a = {\Gamma^a}_{cb} e^c \otimes e_a$<br>
 <br>
 
 Exterior derivative of a vector:<br>
@@ -68,6 +68,18 @@ Exterior derivative of a vector and p-form:<br>
 For vector $v$ and p-form $\alpha$,<br>
 let $d(v\alpha) = (dv) \wedge \alpha + v \otimes d\alpha$<br>
 <br>
+
+exterior derivative of metric tensor: <br>
+$ dg_{ij} = d (e_i \cdot e_j)$<br>
+$ = {de}_i \cdot e_j + e_i \cdot {de}_j$<br>
+$ = {\omega^k}_i \otimes e_k \cdot e_j + e_i \cdot {\omega^k}_j \otimes e_k$<br>
+$ = {\Gamma^k}_{li} e^l \otimes e_k \cdot e_j + e_i \cdot {\Gamma^k}_{lj} e^l \otimes e_k$<br>
+$ = {\Gamma^k}_{li} e^l g_{kj} + g_{ik} {\Gamma^k}_{lj} e^l$<br>
+$ = (\Gamma_{jki} + \Gamma_{ikj}) e^k$<br>
+$ = e_k (g_{ij}) e^k$<br>
+<br>
+
+
 
 Exterior derivative of connection one-form:<br>
 $d {\omega^c}_d = d ({\Gamma^c}_{bd} e^b)$<br>

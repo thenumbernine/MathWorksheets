@@ -253,6 +253,56 @@ $<br>
 Did I make a mistake, or does everyone just make this computation in a coordinate basis (thus neglecting that last ${c_{ab}}^u$) ?<br>
 <br>
 
+
+TODO FIXME:<br>
+second exterior derivative of a p-form: $ {d}({dw})$
+$= {dd} ({w}_{\alpha_1 \dots \alpha_p} {dx}^{\alpha_1} \wedge \dots \wedge {dx}^{\alpha_p})$<br>
+$= {d} \partial_\beta ({w}_{\alpha_1 \dots \alpha_p}) {dx}^\beta \wedge {dx}^{\alpha_1} \wedge \dots \wedge {dx}^{\alpha_p}$<br>
+$= \partial_\gamma \partial_\beta ({w}_{\alpha_1 \dots \alpha_p}) {dx}^\gamma \wedge {dx}^\beta \wedge {dx}^{\alpha_1} \wedge \dots \wedge {dx}^{\alpha_p}$<br>
+Now we have the sum over the symmetric $\partial_\gamma \partial_\beta$ and the antisymmetric ${dx}^\beta \wedge {dx}^\gamma$, so our sum is zero.<br>
+${ddw} = 0$<br>
+<br>
+
+second exterior derivative of vector:<br>
+$ {d}^2 {v} = {d}^2 ( v^\alpha {e}_\alpha ) $<br>
+$ = {d} ( {d} v^\alpha {e}_\alpha + v^\alpha {de}_\alpha ) $<br>
+$ = {d} ( {d} v^\alpha {e}_\alpha + v^\alpha {e}_\beta {\omega^\beta}_\alpha ) $<br>
+$ = {d}^2 v^\alpha {e}_\alpha
+	+ {d} v^\alpha \wedge {d} {e}_\alpha 
+	+ {d} v^\alpha \wedge {e}_\beta {\omega^\beta}_\alpha
+	+ v^\alpha {de}_\beta \wedge {\omega^\beta}_\alpha
+	+ v^\alpha {e}_\beta {d}{\omega^\beta}_\alpha $<br>
+$ = {d}^2 v^\alpha {e}_\alpha
+	+ 2 {d} v^\alpha \wedge {e}_\beta {\omega^\beta}_\alpha
+	+ v^\alpha {e}_\gamma {\omega^\gamma}_\beta \wedge {\omega^\beta}_\alpha
+	+ v^\alpha {e}_\beta {d}{\omega^\beta}_\alpha $<br>
+<!-- TODO i'm zeroing the 2dv^i term as well, find out why -->
+...zero second exterior derivatives of one-forms...<br>
+$ = v^\alpha {e}_\beta {\omega^\beta}_\gamma \wedge {\omega^\gamma}_\alpha
+	+ v^\alpha {e}_\beta {d}{\omega^\beta}_\alpha $<br>
+let $ {{R}^\alpha}_\beta = {\omega^\alpha}_\gamma \wedge {\omega^\gamma}_\beta + {d}{\omega^\alpha}_\beta $<br>
+so $ {d}^2 {v} = {e}_\alpha {{R}^\alpha}_\beta v^\beta $<br>
+<br>
+
+$ 0 = {d} P 
+	= {d} ({e}_\gamma \otimes \omega^\gamma)
+	= {de}_\gamma \wedge \omega^\gamma + {e}_\gamma \otimes {d}\omega^\gamma
+	= {e}_\alpha \otimes {\omega^\alpha}_\gamma \wedge \omega^\gamma + {e}_\alpha \otimes {d} \omega^\alpha
+	= {e}_\alpha \otimes ({\omega^\alpha}_\gamma \wedge \omega^\gamma + {d} \omega^\alpha)
+$<br>
+so $ {\omega^\alpha}_\gamma \wedge \omega^\gamma + {d} \omega^\alpha = 0 $<br>
+so $ {d} \omega^\gamma
+	= -{\omega^\gamma}_\alpha \wedge \omega^\alpha
+	= -{\Gamma^\gamma}_{\beta\alpha} \omega^\beta \wedge \omega^\alpha
+	= {\Gamma^\gamma}_{\beta\alpha} \omega^\alpha \wedge \omega^\beta
+	= ({\Gamma^\gamma}_{\beta\alpha} - {\Gamma^\gamma}_{\alpha\beta}) \omega^\alpha \otimes \omega^\beta
+	= ({T^\gamma}_{\beta\alpha} + {c_{\alpha\beta}}^\gamma) \omega^\alpha \otimes \omega^\beta
+$<br> 
+This coincides with, in a holonomic basis, when $ \omega^\alpha = {d}x^\alpha, {d} \omega^\alpha = {d}^2{x}^\alpha = 0 $<br>
+<br>
+
+
+
 <a href='.'>Back</a><br><br>
 	</body>
 </html>

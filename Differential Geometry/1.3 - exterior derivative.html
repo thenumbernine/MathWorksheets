@@ -117,29 +117,23 @@ $dF = \nabla \cdot\ast F$, $d$ $\ast{F} = \nabla \cdot F$<br>
 
 Exterior derivative of one-form in a coordinate basis:<br>
 $dw = d(w_b {dx}^b)$<br>
-$	= {d}w_b \wedge {dx}^b + w_b {d}^2{x}^b$<br>
-$	= {d}w_b \wedge {dx}^b$<br>
+$	= dw_b \wedge {dx}^b + w_b d^2{x}^b$<br>
+$	= dw_b \wedge {dx}^b$<br>
 $	= \partial_a w_b {dx}^a \wedge {dx}^b$<br>
 $	= (\partial_a w_b - \partial_b w_a) {dx}^{|a} \wedge {dx}^{b|}$<br>
 <br>
-
-Exterior derivative of a p-form in a coordinate basis:<br>
-$da = d( a_{a_1\dots a_p} {dx}^{a_1} \wedge \dots \wedge {dx}^{a_p} ) $<br>
-$= \sum_{b \notin a_i} \partial_b a_{a_1\dots a_p} {dx}^b \wedge {dx}^{a_1} \wedge \dots \wedge {dx}^{a_p} $<br>
-<br>
-
 
 More on this in my <a href='2%20-%20exterior%20derivative.html'>exterior derivative</a> worksheet.<br>
 <br>
 
 Exterior derivative of a p-form:<br>
-$d w = d (w_{i_1 ... i_p} dx^{i_1} \wedge ... \wedge dx^{i_p})$<br>
-$= d (w_{i_1 ... i_p}) \wedge dx^{i_1} \wedge ... \wedge dx^{i_p}
-	+ (-1)^{j-1} w_{i_1 ... i_p} dx^{i_1} \wedge ... \wedge d(dx^{i_j}) \wedge ... \wedge dx^{i_p}
+$d w = d (w_{i_1 ... i_p} e^{i_1} \wedge ... \wedge e^{i_p})$<br>
+$= d (w_{i_1 ... i_p}) \wedge e^{i_1} \wedge ... \wedge e^{i_p}
+	+ (-1)^{j-1} w_{i_1 ... i_p} e^{i_1} \wedge ... \wedge d(e^{i_j}) \wedge ... \wedge e^{i_p}
 $<br>
 <br>
 
-...in a coordinate basis, where $d(dx^\bar{a}) = 0$:<br>
+...in a coordinate basis, where $e^\bar{a} = dx^\bar{a}$ and $d(dx^\bar{a}) = 0$:<br>
 $= \partial_j (w_{i_1 ... i_p}) dx^j \wedge dx^{i_1} \wedge ... \wedge dx^{i_p}$<br>
 <br>
 
@@ -161,14 +155,9 @@ which looks like the Maurer-Cartan equation.<br>
 <br>
 
 Exterior derivative of a p-form in a non-coordinate basis:<br>
-$dw = e_k (w_{i_1 ... i_p}) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p}
-	+ (-1)^{j-1} w_{i_1 ... i_p} dx^{i_1} \wedge ... \wedge d(dx^{i_j}) \wedge ... \wedge dx^{i_p}
-$<br>
+$dw = e_k (w_{i_1 ... i_p}) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p} + (-1)^{j-1} w_{i_1 ... i_p} e^{i_1} \wedge ... \wedge d(e^{i_j}) \wedge ... \wedge e^{i_p}$<br>
 $ =  e_k (w_{i_1 ... i_p}) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p}
-	+ (-1)^{j-1} w_{i_1 ... i_p} e^{i_1} \wedge ... \wedge d(e^{i_j}) \wedge ... \wedge e^{i_p}
-$<br>
-$ =  e_k (w_{i_1 ... i_p}) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p}
-	+ (-1)^{j-1} w_{i_1 ... i_p} e^{i_1} \wedge ... \wedge (-\frac{1}{2} {c_{ab}}^{i_j} e^a) \wedge e^b \wedge ... \wedge e^{i_p}
+	+ (-1)^{j-1} w_{i_1 ... i_p} e^{i_1} \wedge ... \wedge (-\frac{1}{2} {c_{ab}}^{i_j} e^a \wedge e^b) \wedge ... \wedge e^{i_p}
 $<br>
 $ =  e_k (w_{i_1 ... i_p}) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p}
 	- \frac{1}{2} {c_{ab}}^{i_j} w_{i_1 ... i_p} e^a \wedge e^{i_1} \wedge ... \wedge e^b \wedge ... \wedge e^{i_p}
@@ -178,7 +167,53 @@ $ =  (
 		- \frac{1}{2} {c_{k i_j}}^b w_{i_1 ... i_{j-1} b i_{j+1} ... i_p}
 	) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p}
 $<br>
+<br>
 
+<!-- TODO when to use omegas and when to use dx's, and a better explination of why which is chosen? -->
+exterior derivative of wedge product of p-form $a$ and q-form $b$:<br>
+$d( a \wedge b ) $<br>
+$ = d ( a_{i_1... i_p} e^{i_1} \wedge ... \wedge e^{i_p} \wedge b_{j_1 ... j_q} e^{j_1} \wedge ... \wedge e^{j_q})$<br>
+$ = d ( a_{i_1... i_p} b_{j_1 ... j_q} e^{i_1} \wedge ... \wedge e^{i_p} \wedge e^{j_1} \wedge ... \wedge e^{j_q})$<br>
+$ = d ( a_{i_1... i_p} b_{j_1 ... j_q}) \wedge e^{i_1} \wedge ... \wedge e^{i_p} \wedge e^{j_1} \wedge ... \wedge e^{j_q}
+	+ (-1)^{k-1} a_{i_1... i_p} b_{j_1 ... j_q} e^{i_1} \wedge ... \wedge de^{i_k} \wedge ... \wedge e^{i_p} \wedge e^{j_1} \wedge ... \wedge e^{j_q}
+	+ (-1)^{p+l-1} a_{i_1... i_p} b_{j_1 ... j_q} e^{i_1} \wedge ... \wedge e^{i_p} \wedge e^{j_1} \wedge ... \wedge de^{j_l} \wedge ... \wedge e^{j_q}$<br>
+$ = e_k ( a_{i_1... i_p} b_{j_1 ... j_q}) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p} \wedge e^{j_1} \wedge ... \wedge e^{j_q}
+	+ (-1)^{k-1} a_{i_1... i_p} b_{j_1 ... j_q} e^{i_1} \wedge ... \wedge (-\frac{1}{2} {c_{ab}}^{i_k} e^a \wedge e^b) \wedge ... \wedge e^{i_p} \wedge e^{j_1} \wedge ... \wedge e^{j_q} 
+	+ (-1)^{p+l-1} a_{i_1... i_p} b_{j_1 ... j_q} e^{i_1} \wedge ... \wedge e^{i_p} \wedge e^{j_1} \wedge ... \wedge (-\frac{1}{2} {c_{ab}}^{j_l} e^a \wedge e^b) \wedge ... \wedge e^{j_q}$<br>
+$ = 
+	\left( e_k(a_{i_1... i_p}) b_{j_1 ... j_q}
+	+ a_{i_1... i_p} e_k(b_{j_1 ... j_q}) \right) 
+e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p} \wedge e^{j_1} \wedge ... \wedge e^{j_q}
+	- \frac{1}{2} {c_{ab}}^{i_k} a_{i_1... i_p} b_{j_1 ... j_q} e^a \wedge e^{i_1} \wedge ... \wedge e^b \wedge ... \wedge e^{i_p} \wedge e^{j_1} \wedge ... \wedge e^{j_q}
+	- \frac{1}{2} {c_{ab}}^{j_l} a_{i_1... i_p} b_{j_1 ... j_q} e^a \wedge e^{i_1} \wedge ... \wedge e^{i_p} \wedge e^{j_1} \wedge ... \wedge e^b \wedge ... \wedge e^{j_q}$<br>
+$ = (
+	e_k(a_{i_1... i_p}) b_{j_1 ... j_q}
+	+ a_{i_1... i_p} e_k(b_{j_1 ... j_q})
+	- \frac{1}{2} {c_{k i_k}}^b a_{i_1 ... i_{k-1} b i_{k+1} ... i_p} b_{j_1 ... j_q} 
+	- \frac{1}{2} {c_{k j_l}}^b a_{i_1... i_p} b_{j_1 ... j_{l-1} b j_{l+1} ... j_q} 
+) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p} \wedge e^{j_1} \wedge ... \wedge e^{j_q}$<br>
+$ = (e_k(a_{i_1... i_p})
+		- \frac{1}{2} {c_{k i_k}}^b a_{i_1 ... i_{k-1} b i_{k+1} ... i_p}
+	) b_{j_1 ... j_q} 
+		 e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p} \wedge e^{j_1} \wedge ... \wedge e^{j_q}
+	+ a_{i_1... i_p} (
+		e_k(b_{j_1 ... j_q})
+		- \frac{1}{2} {c_{k j_l}}^b b_{j_1 ... j_{l-1} b j_{l+1} ... j_q}
+	) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p} \wedge e^{j_1} \wedge ... \wedge e^{j_q}$<br>
+$ = (e_k(a_{i_1... i_p})
+		- \frac{1}{2} {c_{k i_k}}^b a_{i_1 ... i_{k-1} b i_{k+1} ... i_p}
+	) 
+	 e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p} 
+		 \wedge b_{j_1 ... j_q} e^{j_1} \wedge ... \wedge e^{j_q}
+	+ (-1)^p a_{i_1... i_p} e^{i_1} \wedge ... \wedge e^{i_p} \wedge (
+		e_k(b_{j_1 ... j_q})
+		- \frac{1}{2} {c_{k j_l}}^b b_{j_1 ... j_{l-1} b j_{l+1} ... j_q}
+	) e^k \wedge e^{j_1} \wedge ... \wedge e^{j_q}$<br>
+$= da \wedge b + (-1)^p a \wedge db$<br>
+<br>
+
+exterior derivative of inner product: <br>
+$ d(u \cdot v) = du \cdot v + u \cdot dv$<br>
 <br>
 
 <a href='.'>Back</a><br><br>

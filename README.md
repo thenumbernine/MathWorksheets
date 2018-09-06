@@ -38,8 +38,6 @@ Here's the CDN URLs:
 
 [Differential Geometry/1.9 - Riemann curvature](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e9%20%2d%20Riemann%20curvature%2ehtml)
 
-[Differential Geometry/2 - exterior derivative](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/2%20%2d%20exterior%20derivative%2ehtml)
-
 [Differential Geometry/3 - Einstein-Hilbert action](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/3%20%2d%20Einstein%2dHilbert%20action%2ehtml)
 
 [Differential Geometry/4 - ADM formalism](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/4%20%2d%20ADM%20formalism%2ehtml)
