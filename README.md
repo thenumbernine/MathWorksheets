@@ -22,6 +22,8 @@ Here's the CDN URLs:
 
 [Differential Geometry/1.10 - Ricci curvature](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e10%20%2d%20Ricci%20curvature%2ehtml)
 
+[Differential Geometry/1.11 - Gaussian curvature](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e11%20%2d%20Gaussian%20curvature%2ehtml)
+
 [Differential Geometry/1.2 - structure constants](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e2%20%2d%20structure%20constants%2ehtml)
 
 [Differential Geometry/1.3 - exterior derivative](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e3%20%2d%20exterior%20derivative%2ehtml)

@@ -216,6 +216,24 @@ exterior derivative of inner product: <br>
 $ d(u \cdot v) = du \cdot v + u \cdot dv$<br>
 <br>
 
+second exterior derivative:<br>
+$d^2(w) = d(
+	(
+		e_k (w_{i_1 ... i_p})
+		- \frac{1}{2} {c_{k i_j}}^b w_{i_1 ... i_{j-1} b i_{j+1} ... i_p}
+	) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p}
+$<br>
+TODO finishme<br>
+<br>
+
+second exterior derivative of a p-form in a coordinate basis:<br>
+$ {d}({dw}) = {dd} ({w}_{a_1 ... a_p} {dx}^{a_1} \wedge ... \wedge {dx}^{a_p})$<br>
+$= {d} \partial_b ({w}_{a_1 ... a_p}) {dx}^b \wedge {dx}^{a_1} \wedge ... \wedge {dx}^{a_p}$<br>
+$= \partial_c \partial_b ({w}_{a_1 ... a_p}) {dx}^c \wedge {dx}^b \wedge {dx}^{a_1} \wedge ... \wedge {dx}^{a_p}$<br>
+Now we have the sum over the symmetric $\partial_c \partial_b$ and the antisymmetric ${dx}^b \wedge {dx}^c$, so our sum is zero.<br>
+${ddw} = 0$<br>
+<br>
+
 <a href='.'>Back</a><br><br>
 	</body>
 </html>

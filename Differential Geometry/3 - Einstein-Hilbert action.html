@@ -10,87 +10,80 @@
 <a href='index.html'>Back</a><br>
 <br>
 
-Indexes:<br>
-$\alpha-\omega$ = spacetime coordinate metric<br>
-$a-h,o-z$ = spatial components of spacetime coordinate metric<br>
-$A-Z$ = spacetime Minkowski metric<br>
-$i-n$ = spatial components of spacetime Minkowski metric<br>
-<br>
-
-Einstein: $ {G^{\alpha\beta}}_{\gamma\delta} = {(\ast R\ast)^{\alpha\beta}}_{\gamma\delta} = {\epsilon^{\alpha\beta}}_{\mu\nu} {R^{\mu\nu}}_{\rho\sigma} {\epsilon^{\rho\sigma}}_{\gamma\delta} $<br>
-Einstein: $ G_{\alpha\beta} = R_{\alpha\beta} - {1\over 2} R g_{\alpha\beta} = {G^{\mu\alpha}}_{\mu\beta} $<br>
+Einstein: $ {G^{ab}}_{cd} = {(\ast R\ast)^{ab}}_{cd} = {\epsilon^{ab}}_{uv} {R^{uv}}_{rs} {\epsilon^{rs}}_{cd} $<br>
+Einstein: $ G_{ab} = R_{ab} - {1\over 2} R g_{ab} = {G^{ua}}_{ub} $<br>
 <br>
 
 Jacobi's formula:<br>
-$det(a) = det [{a^\alpha}_\beta]$<br>
-$=\epsilon_{\alpha\beta\gamma\delta} {a^\alpha}_0 {a^\beta}_1 {a^\gamma}_2 {a^\delta}_3$ ... for 4D spacetime indexed $0-3$<br>
-$=-\epsilon^{0123} \epsilon_{\alpha\beta\gamma\delta} {a^\alpha}_0 {a^\beta}_1 {a^\gamma}_2 {a^\delta}_3$<br>
-&nbsp;&nbsp;&nbsp;Summing over all even permutations of $\mu\nu\rho\sigma$ (such that $-\epsilon^{\mu\nu\rho\sigma}=1$) means every time the $\mu\nu\rho\sigma$ indexes are permuted an even number of times, so must the associated $a$'s be rearranged to match the original ${a^\alpha}_0 {a^\beta}_1 {a^\gamma}_2 {a^\delta}_3$.  For this to happen the $\alpha\beta\gamma\delta$ indexes must be permuted an even number of times to match the original expression.  Because $\alpha\beta\gamma\delta$ incides have been permuted an even number of times, the $\epsilon_{\alpha\beta\gamma\delta}$ doesn't change its sign.<br>
-&nbsp;&nbsp;&nbsp;Likewise when summing the odd permutations of $\mu\nu\rho\sigma$, $-\epsilon^{\mu\nu\rho\sigma}=-1$, the $a$'s need to be rearranged to match the original expression, the $\alpha\beta\gamma\delta$ indexes have to be permuted an odd number of times, and $\epsilon_{\alpha\beta\gamma\delta}$ changes its sign as well to $-1$, so the term is each equal to the original expression.<br>
+$det(a) = det [{a^a}_b]$<br>
+$=\epsilon_{abcd} {a^a}_0 {a^b}_1 {a^c}_2 {a^d}_3$ ... for 4D spacetime indexed $0-3$<br>
+$=-\epsilon^{0123} \epsilon_{abcd} {a^a}_0 {a^b}_1 {a^c}_2 {a^d}_3$<br>
+&nbsp;&nbsp;&nbsp;Summing over all even permutations of $uvrs$ (such that $-\epsilon^{uvrs}=1$) means every time the $uvrs$ indexes are permuted an even number of times, so must the associated $a$'s be rearranged to match the original ${a^a}_0 {a^b}_1 {a^c}_2 {a^d}_3$.  For this to happen the $abcd$ indexes must be permuted an even number of times to match the original expression.  Because $abcd$ incides have been permuted an even number of times, the $\epsilon_{abcd}$ doesn't change its sign.<br>
+&nbsp;&nbsp;&nbsp;Likewise when summing the odd permutations of $uvrs$, $-\epsilon^{uvrs}=-1$, the $a$'s need to be rearranged to match the original expression, the $abcd$ indexes have to be permuted an odd number of times, and $\epsilon_{abcd}$ changes its sign as well to $-1$, so the term is each equal to the original expression.<br>
 &nbsp;&nbsp;&nbsp;The total number of expressions summed is ${1\over{3!}}$.<br>
-$=-{1\over{3!}}\epsilon^{\mu\nu\rho\sigma} \epsilon_{\alpha\beta\gamma\delta} {a^\alpha}_\mu {a^\beta}_\nu {a^\gamma}_\rho {a^\delta}_\sigma$<br>
-$=-{1\over{4!}}\epsilon^{\mu\nu\rho\sigma\epsilon} \epsilon_{\alpha\beta\gamma\delta\epsilon} {a^\alpha}_\mu {a^\beta}_\nu {a^\gamma}_\rho {a^\delta}_\sigma$<br>
-$det(a)={1\over{4!}} \delta^{\mu\nu\rho\sigma}_{\alpha\beta\gamma\delta} {a^\alpha}_\mu {a^\beta}_\nu {a^\gamma}_\rho {a^\delta}_\sigma$<br>
-$4=\delta^\alpha_\alpha={a^\alpha}_\mu{(a^{-1})^\mu}_\alpha=({a^\alpha}_\mu )({1\over{3!}} \delta^{\mu\nu\rho\sigma}_{\alpha\beta\gamma\delta} {a^\beta}_\nu {a^\gamma}_\rho {a^\delta}_\sigma / det(a))$<br>
-Therefore ${(a^{-1})^\mu}_\alpha={1\over{3!}} \delta^{\mu\nu\rho\sigma}_{\alpha\beta\gamma\delta} {a^\beta}_\nu {a^\gamma}_\rho {a^\delta}_\sigma / det(a)$<br>
-${(a^{-1})^\mu}_\alpha det(a)={1\over{3!}} \delta^{\mu\nu\rho\sigma}_{\alpha\beta\gamma\delta} {a^\beta}_\nu {a^\gamma}_\rho {a^\delta}_\sigma$<br>
+$=-{1\over{3!}}\epsilon^{uvrs} \epsilon_{abcd} {a^a}_u {a^b}_v {a^c}_r {a^d}_s$<br>
+$=-{1\over{4!}}\epsilon^{uvrse} \epsilon_{abcde} {a^a}_u {a^b}_v {a^c}_r {a^d}_s$<br>
+$det(a)={1\over{4!}} \delta^{uvrs}_{abcd} {a^a}_u {a^b}_v {a^c}_r {a^d}_s$<br>
+$4=\delta^a_a={a^a}_u{(a^{-1})^u}_a=({a^a}_u )({1\over{3!}} \delta^{uvrs}_{abcd} {a^b}_v {a^c}_r {a^d}_s / det(a))$<br>
+Therefore ${(a^{-1})^u}_a={1\over{3!}} \delta^{uvrs}_{abcd} {a^b}_v {a^c}_r {a^d}_s / det(a)$<br>
+${(a^{-1})^u}_a det(a)={1\over{3!}} \delta^{uvrs}_{abcd} {a^b}_v {a^c}_r {a^d}_s$<br>
 <br>
-${d\over{d{a^\zeta}_\xi}}det(a)={1\over{4!}} \delta^{\mu\nu\rho\sigma}_{\alpha\beta\gamma\delta} {d\over{d{a^\zeta}_\xi}}({a^\alpha}_\mu {a^\beta}_\nu {a^\gamma}_\rho {a^\delta}_\sigma)$<br>
-$={1\over{4!}} \delta^{\mu\nu\rho\sigma}_{\alpha\beta\gamma\delta} {d\over{d{a^\zeta}_\xi}}({a^\alpha}_\mu {a^\beta}_\nu {a^\gamma}_\rho {a^\delta}_\sigma)$<br>
-$={1\over{4!}} \delta^{\mu\nu\rho\sigma}_{\alpha\beta\gamma\delta}({d\over{d{a^\zeta}_\xi}}{a^\alpha}_\mu {a^\beta}_\nu {a^\gamma}_\rho {a^\delta}_\sigma + {a^\alpha}_\mu {d\over{d{a^\zeta}_\xi}}{a^\beta}_\nu {a^\gamma}_\rho {a^\delta}_\sigma + {a^\alpha}_\mu {a^\beta}_\nu {d\over{d{a^\zeta}_\xi}}{a^\gamma}_\rho {a^\delta}_\sigma + {a^\alpha}_\mu {a^\beta}_\nu {a^\gamma}_\rho {d\over{d{a^\zeta}_\xi}}{a^\delta}_\sigma)$<br>
-$={1\over{4!}} \delta^{\mu\nu\rho\sigma}_{\alpha\beta\gamma\delta}(\delta^\alpha_\zeta \delta^\zeta_\mu {a^\beta}_\nu {a^\gamma}_\rho {a^\delta}_\sigma + {a^\alpha}_\mu \delta^\beta_\zeta \delta^\zeta_\nu {a^\gamma}_\rho {a^\delta}_\sigma + {a^\alpha}_\mu {a^\beta}_\nu \delta^\gamma_\zeta \delta^\zeta_\rho {a^\delta}_\sigma + {a^\alpha}_\mu {a^\beta}_\nu {a^\gamma}_\rho \delta^\delta_\zeta \delta^\zeta_\sigma)$<br>
-$={1\over{4!}} \delta^{\mu\nu\rho\sigma}_{\alpha\beta\gamma\delta}\delta^\alpha_\zeta \delta^\zeta_\mu ({a^\beta}_\nu {a^\gamma}_\rho {a^\delta}_\sigma + {a^\beta}_\nu {a^\gamma}_\rho {a^\delta}_\sigma + {a^\beta}_\nu {a^\gamma}_\rho {a^\delta}_\sigma + {a^\beta}_\nu {a^\gamma}_\rho {a^\delta}_\sigma)$<br>
-$={1\over{3!}} \delta^{\xi\nu\rho\sigma}_{\zeta\beta\gamma\delta} {a^\beta}_\nu {a^\gamma}_\rho {a^\delta}_\sigma$<br>
-${d\over{d{a^\zeta}_\xi}}det(a)={(a^{-1})^\xi}_\zeta det(a)$ ...aka... ${d\over{dA}}det(A)=A^{-T}det(A) =adj(A^T)$<br>
-$({d\over{d{a^\zeta}_\xi}}det(a))/det(a)={(a^{-1})^\xi}_\zeta$<br>
-${d\over{d{a^\zeta}_\xi}}ln|det(a)|={(a^{-1})^\xi}_\zeta$<br>
-$\boldsymbol{d} ln|det(a)|={(a^{-1})^\xi}_\zeta d{a^\zeta}_\xi$ ...aka... $\boldsymbol{d} ln|det(A)| = tr(A^{-1} dA)$<br>
+${\delta\over{\delta{a^e}_f}}det(a)={1\over{4!}} \delta^{uvrs}_{abcd} {\delta\over{\delta{a^e}_f}}({a^a}_u {a^b}_v {a^c}_r {a^d}_s)$<br>
+$={1\over{4!}} \delta^{uvrs}_{abcd} {\delta\over{\delta{a^e}_f}}({a^a}_u {a^b}_v {a^c}_r {a^d}_s)$<br>
+$={1\over{4!}} \delta^{uvrs}_{abcd}({\delta\over{\delta{a^e}_f}}{a^a}_u {a^b}_v {a^c}_r {a^d}_s + {a^a}_u {\delta\over{\delta{a^e}_f}}{a^b}_v {a^c}_r {a^d}_s + {a^a}_u {a^b}_v {\delta\over{\delta{a^e}_f}}{a^c}_r {a^d}_s + {a^a}_u {a^b}_v {a^c}_r {\delta\over{\delta{a^e}_f}}{a^d}_s)$<br>
+$={1\over{4!}} \delta^{uvrs}_{abcd}(\delta^a_e \delta^e_u {a^b}_v {a^c}_r {a^d}_s + {a^a}_u \delta^b_e \delta^e_v {a^c}_r {a^d}_s + {a^a}_u {a^b}_v \delta^c_e \delta^e_r {a^d}_s + {a^a}_u {a^b}_v {a^c}_r \delta^d_e \delta^e_s)$<br>
+$={1\over{4!}} \delta^{uvrs}_{abcd}\delta^a_e \delta^e_u ({a^b}_v {a^c}_r {a^d}_s + {a^b}_v {a^c}_r {a^d}_s + {a^b}_v {a^c}_r {a^d}_s + {a^b}_v {a^c}_r {a^d}_s)$<br>
+$={1\over{3!}} \delta^{fvrs}_{ebcd} {a^b}_v {a^c}_r {a^d}_s$<br>
+${\delta\over{\delta{a^e}_f}}det(a)={(a^{-1})^f}_e det(a)$ ...aka... ${\delta\over{\delta A}}det(A)=A^{-T}det(A) =adj(A^T)$<br>
+$({\delta\over{\delta{a^e}_f}}det(a))/det(a)={(a^{-1})^f}_e$<br>
+${\delta\over{\delta{a^e}_f}}ln|det(a)|={(a^{-1})^f}_e$<br>
+$\boldsymbol{\delta} ln|det(a)|={(a^{-1})^f}_e \delta{a^e}_f$ ...aka... $\boldsymbol{\delta} ln|det(A)| = tr(A^{-1} dA)$<br>
 <br>
 Using Jacobi's formula: $ \delta det(A) = tr(adj(A) \delta A) $<br>
-$ \delta g = \delta det(g_{\alpha\beta}) = g g^{\alpha\beta} \delta g_{\alpha\beta} $<br>
-$ 0 = \delta tr(I) = \delta (g_{\alpha\beta} g^{\alpha\beta}) = g^{\alpha\beta} \delta g_{\alpha\beta} + g_{\alpha\beta} \delta g^{\alpha\beta} $<br>
-$ g^{\alpha\beta} \delta g_{\alpha\beta} = -g_{\alpha\beta} \delta g^{\alpha\beta} $<br>
-$ \delta g = -g g_{\alpha\beta} \delta g^{\alpha\beta} $<br>
+$ \delta g = \delta det(g_{ab}) = g g^{ab} \delta g_{ab} $<br>
+$ 0 = \delta tr(I) = \delta (g_{ab} g^{ab}) = g^{ab} \delta g_{ab} + g_{ab} \delta g^{ab} $<br>
+$ g^{ab} \delta g_{ab} = -g_{ab} \delta g^{ab} $<br>
+$ \delta g = -g g_{ab} \delta g^{ab} $<br>
 <br>
-$ \nabla_\delta \delta {\Gamma^\alpha}_{\beta\gamma} = \partial_\delta \delta {\Gamma^\alpha}_{\beta\gamma} + \delta {\Gamma^\epsilon}_{\beta\gamma} {\Gamma^\alpha}_{\epsilon\delta} - \delta {\Gamma^\alpha}_{\epsilon\gamma} {\Gamma^\epsilon}_{\beta\delta} - \delta {\Gamma^\alpha}_{\beta\epsilon} {\Gamma^\epsilon}_{\gamma\delta} $<br>
-$ \nabla_\mu \delta {\Gamma^\mu}_{\alpha\beta} - \nabla_\beta \delta {\Gamma^\mu}_{\alpha\mu}
-= \partial_\mu \delta {\Gamma^\mu}_{\alpha\beta} + \delta {\Gamma^\nu}_{\alpha\beta} {\Gamma^\mu}_{\nu\mu} - \delta {\Gamma^\mu}_{\nu\beta} {\Gamma^\nu}_{\alpha\mu} - \delta {\Gamma^\mu}_{\alpha\nu} {\Gamma^\nu}_{\beta\mu}
-- \partial_\beta \delta {\Gamma^\mu}_{\alpha\mu} - \delta {\Gamma^\nu}_{\alpha\mu} {\Gamma^\mu}_{\nu\beta} + \delta {\Gamma^\mu}_{\nu\mu} {\Gamma^\nu}_{\alpha\beta} + \delta {\Gamma^\mu}_{\alpha\nu} {\Gamma^\nu}_{\mu\beta} $<br>
-$ = \partial_\mu \delta {\Gamma^\mu}_{\alpha\beta} - \partial_\beta \delta {\Gamma^\mu}_{\alpha\mu} +  {\Gamma^\mu}_{\nu\mu} \delta {\Gamma^\nu}_{\alpha\beta} + \delta {\Gamma^\mu}_{\nu\mu} {\Gamma^\nu}_{\alpha\beta} - \delta {\Gamma^\nu}_{\alpha\mu} {\Gamma^\mu}_{\nu\beta} - {\Gamma^\nu}_{\alpha\mu} \delta {\Gamma^\mu}_{\nu\beta} $<br>
+$ \nabla_d \delta {\Gamma^a}_{bc} = \partial_d \delta {\Gamma^a}_{bc} + \delta {\Gamma^e}_{bc} {\Gamma^a}_{ed} - \delta {\Gamma^a}_{ec} {\Gamma^e}_{bd} - \delta {\Gamma^a}_{be} {\Gamma^e}_{cd} $<br>
+$ \nabla_u \delta {\Gamma^u}_{ab} - \nabla_b \delta {\Gamma^u}_{au}
+= \partial_u \delta {\Gamma^u}_{ab} + \delta {\Gamma^v}_{ab} {\Gamma^u}_{vu} - \delta {\Gamma^u}_{vb} {\Gamma^v}_{au} - \delta {\Gamma^u}_{av} {\Gamma^v}_{bu}
+- \partial_b \delta {\Gamma^u}_{au} - \delta {\Gamma^v}_{au} {\Gamma^u}_{vb} + \delta {\Gamma^u}_{vu} {\Gamma^v}_{ab} + \delta {\Gamma^u}_{av} {\Gamma^v}_{ub} $<br>
+$ = \partial_u \delta {\Gamma^u}_{ab} - \partial_b \delta {\Gamma^u}_{au} +  {\Gamma^u}_{vu} \delta {\Gamma^v}_{ab} + \delta {\Gamma^u}_{vu} {\Gamma^v}_{ab} - \delta {\Gamma^v}_{au} {\Gamma^u}_{vb} - {\Gamma^v}_{au} \delta {\Gamma^u}_{vb} $<br>
 <br>
-$ \delta R_{\alpha\beta} = \delta {R^\mu}_{\alpha\mu\beta}$<br>
-$ = \delta (\partial_\mu {\Gamma^\mu}_{\alpha\beta} - \partial_\beta {\Gamma^\mu}_{\alpha\mu} + {\Gamma^\mu}_{\nu\mu} {\Gamma^\nu}_{\alpha\beta} - {\Gamma^\mu}_{\nu\beta} {\Gamma^\nu}_{\alpha\mu} )$<br>
-$ = \partial_\mu {\Gamma^\mu}_{\alpha\beta} - \partial_\beta {\Gamma^\mu}_{\alpha\mu} + {\Gamma^\mu}_{\nu\mu} \delta {\Gamma^\nu}_{\alpha\beta} + {\Gamma^\mu}_{\nu\mu} \delta {\Gamma^\nu}_{\alpha\beta} - {\Gamma^\nu}_{\alpha\mu} \delta {\Gamma^\mu}_{\nu\beta} - {\Gamma^\mu}_{\nu\beta} \delta {\Gamma^\nu}_{\alpha\mu} $<br>
-Palatini identity: $ \delta R_{\alpha\beta} = \nabla_\mu \delta {\Gamma^\mu}_{\alpha\beta} - \nabla_\beta \delta {\Gamma^\mu}_{\alpha\mu} $<br>
+$ \delta R_{ab} = \delta {R^u}_{aub}$<br>
+$ = \delta (\partial_u {\Gamma^u}_{ab} - \partial_b {\Gamma^u}_{au} + {\Gamma^u}_{vu} {\Gamma^v}_{ab} - {\Gamma^u}_{vb} {\Gamma^v}_{au} )$<br>
+$ = \partial_u {\Gamma^u}_{ab} - \partial_b {\Gamma^u}_{au} + {\Gamma^u}_{vu} \delta {\Gamma^v}_{ab} + {\Gamma^u}_{vu} \delta {\Gamma^v}_{ab} - {\Gamma^v}_{au} \delta {\Gamma^u}_{vb} - {\Gamma^u}_{vb} \delta {\Gamma^v}_{au} $<br>
+Palatini identity: $ \delta R_{ab} = \nabla_u \delta {\Gamma^u}_{ab} - \nabla_b \delta {\Gamma^u}_{au} $<br>
 <br>
-TODO show $ \int \sqrt{-g} g^{\alpha\beta} (\nabla_\mu \delta {\Gamma^\mu}_{\alpha\beta} - \nabla_\beta \delta {\Gamma^\mu}_{\alpha\mu}) dx^4 = 0 $<br>
+TODO show $ \int \sqrt{-g} g^{ab} (\nabla_u \delta {\Gamma^u}_{ab} - \nabla_b \delta {\Gamma^u}_{au}) dx^4 = 0 $<br>
 <br>
 Einstein-Hilbert Action Principle:<br>
 $ S_{vacuum} = \int \sqrt{-g} R dx^4 $<br>
 $ \delta S_{vacuum} = \delta \int \sqrt{-g} R dx^4 $<br>
 $ = \int \delta (\sqrt{-g} R) dx^4 $<br>
 $ = \int ( \delta \sqrt{-g} R + \sqrt{-g} \delta R ) dx^4 $<br>
-$ = \int ( {1\over 2} {1\over\sqrt{-g}} \delta (-g) R + \sqrt{-g} \delta (R_{\alpha\beta} g^{\alpha\beta}) ) dx^4 $<br>
-$ = \int ( {1\over{2g}} \sqrt{-g} \delta g R + \sqrt{-g} (R_{\alpha\beta} \delta g^{\alpha\beta} + \delta R_{\alpha\beta} g^{\alpha\beta})) dx^4 $<br>
-$ = \int \sqrt{-g} ( {1\over{2g}} \delta g R + R_{\alpha\beta} \delta g^{\alpha\beta} + g^{\alpha\beta} \delta R_{\alpha\beta} ) dx^4 $<br>
-$ = \int \sqrt{-g} ( -{1\over{2g}} g g^{\alpha\beta} + R \delta g^{\alpha\beta} + g^{\alpha\beta} \delta R_{\alpha\beta}) dx^4 $<br>
-$ = \int \sqrt{-g} ( \delta g^{\alpha\beta} (R_{\alpha\beta} - {1\over 2} R g_{\alpha\beta}) + g^{\alpha\beta} \delta R_{\alpha\beta} ) dx^4 $<br>
-$ = \int \sqrt{-g} ( \delta g^{\alpha\beta} G_{\alpha\beta} + g^{\alpha\beta} \delta R_{\alpha\beta} ) dx^4 $<br>
-$ = \int \sqrt{-g} ( \delta g^{\alpha\beta} G_{\alpha\beta} + g^{\alpha\beta} (\nabla_\mu \delta {\Gamma^\mu}_{\alpha\beta} - \nabla_\beta \delta {\Gamma^\mu}_{\alpha\mu}) ) dx^4 $<br>
-$ \delta S_{vacuum} = \int \sqrt{-g} ( \delta g^{\alpha\beta} G_{\alpha\beta} ) dx^4 $<br>
+$ = \int ( {1\over 2} {1\over\sqrt{-g}} \delta (-g) R + \sqrt{-g} \delta (R_{ab} g^{ab}) ) dx^4 $<br>
+$ = \int ( {1\over{2g}} \sqrt{-g} \delta g R + \sqrt{-g} (R_{ab} \delta g^{ab} + \delta R_{ab} g^{ab})) dx^4 $<br>
+$ = \int \sqrt{-g} ( {1\over{2g}} \delta g R + R_{ab} \delta g^{ab} + g^{ab} \delta R_{ab} ) dx^4 $<br>
+$ = \int \sqrt{-g} ( -{1\over{2g}} g g^{ab} + R \delta g^{ab} + g^{ab} \delta R_{ab}) dx^4 $<br>
+$ = \int \sqrt{-g} ( \delta g^{ab} (R_{ab} - {1\over 2} R g_{ab}) + g^{ab} \delta R_{ab} ) dx^4 $<br>
+$ = \int \sqrt{-g} ( \delta g^{ab} G_{ab} + g^{ab} \delta R_{ab} ) dx^4 $<br>
+$ = \int \sqrt{-g} ( \delta g^{ab} G_{ab} + g^{ab} (\nabla_u \delta {\Gamma^u}_{ab} - \nabla_b \delta {\Gamma^u}_{au}) ) dx^4 $<br>
+$ \delta S_{vacuum} = \int \sqrt{-g} ( \delta g^{ab} G_{ab} ) dx^4 $<br>
 <br>
 $ S_{matter} = -16 \pi \int \sqrt{-g} \mathcal{L}_{matter} dx^4 $<br>
 $ \delta S_{matter} = -16 \pi \int \delta (\sqrt{-g} \mathcal{L}_{matter}) dx^4 $<br>
 $ = -16 \pi \int ( {1\over 2} {1\over\sqrt{-g}} \delta(-g) \mathcal{L}_{matter} + \sqrt{-g} \delta \mathcal{L}_{matter} ) dx^4 $<br>
-$ = -8 \pi \int \sqrt{-g} ( 2 \delta \mathcal{L}_{matter} - \delta g^{\alpha\beta} \mathcal{L}_{matter} ) dx^4 $<br>
-Let $ T_{\alpha\beta} = 2 {\delta\over{\delta g^{\alpha\beta}}} \mathcal{L}_{matter} - \mathcal{L}_{matter} $<br>
-$ \delta S_{matter} = -8 \pi \int \sqrt{-g} T_{\alpha\beta} \delta g^{\alpha\beta} dx^4 $<br>
+$ = -8 \pi \int \sqrt{-g} ( 2 \delta \mathcal{L}_{matter} - \delta g^{ab} \mathcal{L}_{matter} ) dx^4 $<br>
+Let $ T_{ab} = 2 {\delta\over{\delta g^{ab}}} \mathcal{L}_{matter} - \mathcal{L}_{matter} $<br>
+$ \delta S_{matter} = -8 \pi \int \sqrt{-g} T_{ab} \delta g^{ab} dx^4 $<br>
 <br>
 $ S = S_{vacuum} + S_{matter} $<br>
-$ 0 = \delta S = \int \sqrt{-g} \delta g^{\alpha\beta} ( G_{\alpha\beta} - 8 \pi T_{\alpha\beta} ) dx^4 $<br>
-$ 0 = G_{\alpha\beta} - 8 \pi T_{\alpha\beta} $<br>
+$ 0 = \delta S = \int \sqrt{-g} \delta g^{ab} ( G_{ab} - 8 \pi T_{ab} ) dx^4 $<br>
+$ 0 = G_{ab} - 8 \pi T_{ab} $<br>
 Einstein Field Equation:<br>
-$ G_{\alpha\beta} = 8 \pi T_{\alpha\beta} $<br>
+$ G_{ab} = 8 \pi T_{ab} $<br>
 
 <br>
 <a href='index.html'>Back</a><br>
