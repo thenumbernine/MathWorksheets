@@ -30,7 +30,7 @@ $e^a : V \rightarrow \mathbb{R}, e^a$ linear<br>
 such that $e^a(e_b) = \delta^a_b$<br>
 <br>
 
-If $e_a = \partial_a$ and $e^a = dx^a$ then the basis is called a coordinate basis / the basis is holonomic.<br>
+If $e_a = \partial_a$ and $e^a = dx^a$ then we have $e^a(e_b) = dx^a (\frac{d}{dx^b}) = \frac{dx^a}{dx^b} = \delta^a_b$.  The basis is called a coordinate basis / the basis is holonomic.<br>
 <br>
 
 Tensors are objects invariant to change of basis.<br>
@@ -67,11 +67,6 @@ $= v^b w_a \delta^a_b$ by orthogonality of $e^a(e_b)$.<br>
 $= v^a w_a$<br>
 <br>
 
-p-form applies to a p-vector:<br>
-I'm making this up.  Is it true, or am I abusing notation?<br>
-$(e^{a_1} \otimes ... \otimes e^{a_p}) ( e_{b_1} \otimes ... \otimes e_{b_p} ) = \delta^{a_1}_{b_1} \cdot ... \cdot \delta^{a_p}_{b_p}$<br>
-<br>
-
 Outer product: maps (p,q) tensors and (r,s) tensors to (p+r,q+s) tensors<br>
 outer product of vectors: $ x \otimes y = x^a e_a \otimes y^b e_b = x^a y^b e_a \otimes e_b $<br>
 outer product of one-forms: $ x \otimes y = x_a e^a \otimes y_b e^b = x_a y_b e^a \otimes e^b $<br>
@@ -85,6 +80,13 @@ $\delta^a_b = 1$ for $a = b$, otherwise 0.<br>
 $\delta^a_b = \overset{a\downarrow b\rightarrow}{\left[\matrix{1&0&\dots&0 \\ 0&1&\dots&0 \\ \dots&\dots&\dots&\dots \\ 0&0&\dots&1 }\right]}$<br>
 <br>
 
+Kronecher delta extension:<br>
+$\delta^{a_1 \dots a_p}_{b_1 \dots b_p} = p! \delta^{a_1}_{[b_1} \cdot \dots \cdot \delta^{a_p}_{b_p]}$<br>
+$ = 0 $ if any indexes are duplicated<br>
+$ = +1 $ if $a_1 ... a_p$ is a positive permutation of $b_1 ... b_p$<br>
+$ = -1 $ if $a_1 ... a_p$ is a negative permutation of $b_1 ... b_p$<br>
+$ = 0 $ otherwise<br>
+<br>
 
 <a href='.'>Back</a><br><br>
 	</body>
