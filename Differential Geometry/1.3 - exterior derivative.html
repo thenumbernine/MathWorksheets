@@ -8,45 +8,6 @@
     <body onload='tryToFindMathJax();'>
 <a href='.'>Back</a><br><br>
 
-Wedge product linearity:<br>
-$(sa) \wedge b = a \wedge (sb) = s(a \wedge b)$ for scalar / 0-form s, p-form a, q-form b<br>
-<br>
-
-Wedge product antisymmetry: $a \wedge b = -b \wedge a$<br>
-<br>
-
-Wedge product of coordinate basis one-forms:<br>
-$dx^a \wedge dx^b = dx^a \otimes dx^b - dx^b \otimes dx^a$<br>
-<br>
-
-Wedge product coordinate basis antisymmetry:<br>
-$dx^a \wedge dx^b = dx^a \otimes dx^b - dx^b \otimes dx^a$<br>
-$ - (dx^b \otimes dx^a - dx^a \otimes dx^b)$<br>
-$= -dx^b \wedge dx^a$<br>
-<br>
-
-Wedge product of non-coordinate basis:<br>
-$e^a \wedge e^b = {e^a}_\bar{a} dx^a \wedge {e^b}_\bar{b} dx^b$<br>
-$= {e^a}_\bar{a} {e^b}_\bar{b} dx^a \wedge dx^b$<br>
-$= -{e^a}_\bar{a} {e^b}_\bar{b} dx^b \wedge dx^a$<br>
-$= -e^b \wedge e^a$<br>
-<br>
-
-wedge product of one-forms:<br>
-$a \wedge b = a_u e^u \wedge b_v e^v$<br>
-$	= a_u b_v e^u \wedge e^v$<br>
-$	= a_u b_v (e^u \otimes e^v - e^v \otimes e^u)$<br>
-$	= (a_u b_v - b_u a_v) e^u \otimes e^v$<br>
-$	= a \otimes b - b \otimes a$<br>
-<br>
-
-Wedge product of p-form basis: $ e^{u_1} \wedge ... \wedge e^{u_p} 
-	= p! \cdot e^{[u_1} \otimes ... \otimes e^{u_p]}$<br>
-<br>
-
-If a rank-p covariant tensor has a completely antisymmetric basis then it is said to be a p-form.<br>
-<br>
-
 Wedge product antisymmetry for p-form $a$ and q-form $b$:<br>
 $ a \wedge b $<br>
 $ = (a_{u_1 ... u_p} e^{u_1} \wedge ... \wedge e^{u_p}) \wedge (b_{v_1 ... v_q} e^{v_1} \wedge ... \wedge e^{v_q}) $<br>
@@ -60,7 +21,6 @@ $ = (-1)^{pq} a_{u_1 ... u_p} b_{v_1 ... v_q} (e^{v_1} \wedge ... \wedge e^{v_q}
 $ = (-1)^{pq} (b_{v_1 ... v_q} e^{v_1} \wedge ... \wedge e^{v_q}) \wedge (a_{u_1 ... u_p} e^{u_1} \wedge ... \wedge e^{u_p}) $<br>
 $ = (-1)^{pq} b \wedge a $<br>
 <br>
-
 
 Wedge products and forms in terms of index notation<br>
 For p-form A:<br>
@@ -99,7 +59,8 @@ $= \delta^{a_1 ... a_p}_{1 ... p} det({u_u}^d)$<br>
 
 
 
-Exterior derivative: $d ( {T^{a_1 ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q} )$<br>
+Exterior derivative:<br>
+$d ( {T^{a_1 ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q} )$<br>
 $= e_a ( {T^{a_1 ... a_p}}_{b_1 ... b_q} ) e^a \wedge (e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q})$<br>
 <br>
 
@@ -107,7 +68,7 @@ For coordinate basis: $d(dx^a) = 0$<br>
 <br>
 
 Exterior derivative of a scalar:<br>
-$d (\phi) = \partial_a (\phi) dx^a = e_a (\phi) e^a$<br>
+$d (\phi) = e_a (\phi) e^a$<br>
 <br>
 
 Exterior and covariant derivative for 2-forms:<br>
@@ -123,9 +84,6 @@ $	= \partial_a w_b {dx}^a \wedge {dx}^b$<br>
 $	= (\partial_a w_b - \partial_b w_a) {dx}^{|a} \wedge {dx}^{b|}$<br>
 <br>
 
-More on this in my <a href='2%20-%20exterior%20derivative.html'>exterior derivative</a> worksheet.<br>
-<br>
-
 Exterior derivative of a p-form:<br>
 $d w = d (w_{i_1 ... i_p} e^{i_1} \wedge ... \wedge e^{i_p})$<br>
 $= d (w_{i_1 ... i_p}) \wedge e^{i_1} \wedge ... \wedge e^{i_p}
@@ -135,6 +93,7 @@ $<br>
 
 ...in a coordinate basis, where $e^\bar{a} = dx^\bar{a}$ and $d(dx^\bar{a}) = 0$:<br>
 $= \partial_j (w_{i_1 ... i_p}) dx^j \wedge dx^{i_1} \wedge ... \wedge dx^{i_p}$<br>
+$= \partial_j (w_{i_1 ... i_p}) \cdot p! \cdot dx^{[j} \otimes dx^{i_1} \otimes ... \otimes dx^{i_p]}$<br>
 <br>
 
 Exterior derivative of a non-coordinate basis one-form:<br>
