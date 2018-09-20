@@ -331,7 +331,6 @@ $=
 		+ \frac{1}{2} {c_{pq}}^v {c_{vr}}^u
 	) {\Gamma^c}_{ud}  e^p \wedge e^q \wedge e^r
 $<br>
-...should be zero, right?<br>
 <br>
 
 exterior derivative of curvature two-form:<br>
@@ -339,8 +338,34 @@ $d {\Omega^a}_b$<br>
 $= d( d {\omega^a}_b + {\omega^a}_c \wedge {\omega^c}_b)$<br>
 $= d^2 {\omega^a}_b + d ({\omega^a}_c \wedge {\omega^c}_b)$<br>
 $= d^2 {\omega^a}_b + d {\omega^a}_c \wedge {\omega^c}_b - {\omega^a}_c \wedge d {\omega^c}_b$<br>
-
-...<br>
+$= 	
+	(
+		- \frac{1}{2} e_p( {c_{qr}}^u)
+		+ \frac{1}{2} {c_{pq}}^v {c_{vr}}^u
+	) {\Gamma^c}_{ud}  e^p \wedge e^q \wedge e^r
+	+ 
+	(
+		(e_p ({\Gamma^a}_{qc}) - \frac{1}{2} {\Gamma^a}_{uc} {c_{pq}}^u) e^p \wedge e^q
+	) \wedge {\Gamma^c}_{rb} e^r
+	- {\Gamma^a}_{rc} e^r \wedge (
+		(e_p ({\Gamma^c}_{qb}) - \frac{1}{2} {\Gamma^c}_{ub} {c_{pq}}^u) e^p \wedge e^q
+	)
+$<br>
+$= 	
+	(
+		 e_p ({\Gamma^a}_{qc} {\Gamma^c}_{rb})
+		
+		- \frac{1}{2} e_p( {c_{qr}}^u) {\Gamma^a}_{ub}
+	
+		+ \frac{1}{2} (
+			- {\Gamma^a}_{uc} {\Gamma^c}_{rb}
+			+ {\Gamma^a}_{rc} {\Gamma^c}_{ub}
+			+ {\Gamma^a}_{vb} {c_{ur}}^v
+		) {c_{pq}}^u
+	)  e^p \wedge e^q \wedge e^r
+$<br>
+...is supposed to equal zero...<br>
+though wait, the second Bianchi identity is $D \Omega = 0$, which means I should (1) define $D$ vs $d$, where $D$ has alternating $\omega \wedge$'s added in, and (2) see if $D {\Omega^a}_b$ really is zero.<br>
 <br>
 
 exterior derivative of a sum of outer products:<br>
