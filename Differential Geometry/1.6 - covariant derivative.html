@@ -54,6 +54,10 @@ Consider vectors to be collections of 0-forms.<br>
 Then an exterior derivative of a vector is a 1-form.<br>
 The function be arbitrary, but we will define it to be the same as the covariant vector derivative:<br>
 $d e_b = {\omega^a}_b \otimes e_a = {\Gamma^a}_{cb} e^c \otimes e_a$<br>
+TODO should this be $\otimes$ or $\wedge$?<br>
+Should $\wedge$ be the sum of all antisymmetric basis elements, or the sum of only the antisymmetric forms, and the outer of all vectors?<br>
+If the latter is chosen then ${\omega^a}_b \otimes e_a = {\omega^a}_b \wedge e_a$<br>
+But then, if $\phi \wedge a = a \wedge \phi$ for 0-form scalar $\phi$ and 1-form $a$, would $v \wedge a = a \wedge v$ for vector-of-0-forms v and 1-form a? If so, then wouldn't this imply that $a \otimes b = b \otimes a$?<br>
 <br>
 
 Exterior derivative of a vector:<br>
@@ -78,8 +82,6 @@ $ = {\Gamma^k}_{li} e^l g_{kj} + g_{ik} {\Gamma^k}_{lj} e^l$<br>
 $ = (\Gamma_{jki} + \Gamma_{ikj}) e^k$<br>
 $ = e_k (g_{ij}) e^k$<br>
 <br>
-
-
 
 Exterior derivative of connection one-form:<br>
 $d {\omega^c}_d = d ({\Gamma^c}_{bd} e^b)$<br>

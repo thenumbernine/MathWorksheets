@@ -53,6 +53,9 @@ ${R^c}_{dab} =
 $<br>
 <br>
 
+Easy to see from this that ${R^a}_{bcd} = {R^a}_{b[cd]}$<br>
+<br>
+
 Curvature two-form:<br>
 ${\Omega^c}_d = {R^c}_{dab} e^a \otimes e^b$<br>
 $= (
@@ -263,49 +266,87 @@ $=  {R^c}_{dab} v^d
 $<br>
 <br>
 
-TODO FIXME:<br>
-Everything below here needs to be redone.<br>
+second exterior derivative of a vector basis:<Br>
+$d e^a = \Theta^a - {\omega^a}_b \wedge e^b$<br>
+so $d^2 e^a = d \Theta^a - d( {\omega^a}_b \wedge e^b )$<br>
+$= d \Theta^a - d {\omega^a}_b \wedge e^b + {\omega^a}_b \wedge d e^b$<br>
+$= d \Theta^a - d {\omega^a}_c \wedge e^c + {\omega^a}_b \wedge (\Theta^b - {\omega^b}_c \wedge e^c)$<br>
+$= d \Theta^a + {\omega^a}_b \wedge \Theta^b - {\Omega^a}_c \wedge e^c$<br>
+This is supposed to look like the first Bianchi identity...<br>
+if $d^2 e^a = 0$ then we get<br>
+$d \Theta^a + {\omega^a}_b \wedge \Theta^b = {\Omega^a}_b \wedge e^b$<br>
+I'm suspicious I'm mixing up my exterior derivative and exterior covariant derivative.<br>
+I saw somewhere that $d \Theta^a + {\omega^a}_b \wedge \Theta^b = D \Theta^a$<br>
+If this is true then maybe I'm mixing up $d e^a$ and $D e^a$ as well ...<br>
 <br>
 
-second exterior derivative of vector:<br>
-$ {d}^2 {v} = {d}^2 ( v^\alpha {e}_\alpha ) $<br>
-$ = {d} ( {d} v^\alpha {e}_\alpha + v^\alpha {de}_\alpha ) $<br>
-$ = {d} ( {d} v^\alpha {e}_\alpha + v^\alpha {e}_\beta {\omega^\beta}_\alpha ) $<br>
-$ = {d}^2 v^\alpha {e}_\alpha
-	+ {d} v^\alpha \wedge {d} {e}_\alpha 
-	+ {d} v^\alpha \wedge {e}_\beta {\omega^\beta}_\alpha
-	+ v^\alpha {de}_\beta \wedge {\omega^\beta}_\alpha
-	+ v^\alpha {e}_\beta {d}{\omega^\beta}_\alpha $<br>
-$ = {d}^2 v^\alpha {e}_\alpha
-	+ 2 {d} v^\alpha \wedge {e}_\beta {\omega^\beta}_\alpha
-	+ v^\alpha {e}_\gamma {\omega^\gamma}_\beta \wedge {\omega^\beta}_\alpha
-	+ v^\alpha {e}_\beta {d}{\omega^\beta}_\alpha $<br>
-<!-- TODO i'm zeroing the 2dv^i term as well, find out why -->
-...zero second exterior derivatives of one-forms...<br>
-$ = v^\alpha {e}_\beta {\omega^\beta}_\gamma \wedge {\omega^\gamma}_\alpha
-	+ v^\alpha {e}_\beta {d}{\omega^\beta}_\alpha $<br>
-let $ {{R}^\alpha}_\beta = {\omega^\alpha}_\gamma \wedge {\omega^\gamma}_\beta + {d}{\omega^\alpha}_\beta $<br>
-so $ {d}^2 {v} = {e}_\alpha {{R}^\alpha}_\beta v^\beta $<br>
-<br>
-
-$ 0 = {d} P 
-	= {d} ({e}_\gamma \otimes \omega^\gamma)
-	= {de}_\gamma \wedge \omega^\gamma + {e}_\gamma \otimes {d}\omega^\gamma
-	= {e}_\alpha \otimes {\omega^\alpha}_\gamma \wedge \omega^\gamma + {e}_\alpha \otimes {d} \omega^\alpha
-	= {e}_\alpha \otimes ({\omega^\alpha}_\gamma \wedge \omega^\gamma + {d} \omega^\alpha)
+second exterior derivative of connection one-forms:<br>
+$d^2 {\omega^c}_d = d (d {\omega^c}_d )$<br>
+$= d( (e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u) e^a \wedge e^b )$<br>
+$= e_e (e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u) e^e \wedge e^a \wedge e^b 
+	+ (e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u) (de^a \wedge e^b - e^a \wedge de^b)$<br>
+$= 	
+	e_e (e_a ({\Gamma^c}_{bd})) e^e \wedge e^a \wedge e^b 
+	- \frac{1}{2} e_e( {\Gamma^c}_{ud} {c_{ab}}^u) e^e \wedge e^a \wedge e^b 
+	
+	+ (
+		e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u
+	) \cdot (-\frac{1}{2} {c_{pq}}^a e^p \wedge e^q) \wedge e^b
+	
+	- (
+		e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u
+	) e^a \wedge (-\frac{1}{2} {c_{pq}}^b e^p \wedge e^q)
 $<br>
-so $ {\omega^\alpha}_\gamma \wedge \omega^\gamma + {d} \omega^\alpha = 0 $<br>
-so $ {d} \omega^\gamma
-	= -{\omega^\gamma}_\alpha \wedge \omega^\alpha
-	= -{\Gamma^\gamma}_{\beta\alpha} \omega^\beta \wedge \omega^\alpha
-	= {\Gamma^\gamma}_{\beta\alpha} \omega^\alpha \wedge \omega^\beta
-	= ({\Gamma^\gamma}_{\beta\alpha} - {\Gamma^\gamma}_{\alpha\beta}) \omega^\alpha \otimes \omega^\beta
-	= ({T^\gamma}_{\beta\alpha} + {c_{\alpha\beta}}^\gamma) \omega^\alpha \otimes \omega^\beta
-$<br> 
-This coincides with, in a holonomic basis, when $ \omega^\alpha = {d}x^\alpha, {d} \omega^\alpha = {d}^2{x}^\alpha = 0 $<br>
+$= 	
+	(
+		\frac{1}{2} e_f ({\Gamma^c}_{bd}) {c_{ea}}^f
+		
+		- \frac{1}{2} e_e( {\Gamma^c}_{ud}) {c_{ab}}^u
+		- \frac{1}{2} e_e( {c_{ab}}^u) {\Gamma^c}_{ud}
+	) e^e \wedge e^a \wedge e^b 
+
+	- \frac{1}{2} {c_{pq}}^a (
+		e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u
+	) e^p \wedge e^q \wedge e^b
+	
+	+ \frac{1}{2} {c_{pq}}^b (
+		e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u
+	) e^a \wedge e^p \wedge e^q
+$<br>
+$= 	(	
+	\frac{1}{2} e_u ({\Gamma^c}_{rd}) {c_{pq}}^u
+	- \frac{1}{2} e_p( {\Gamma^c}_{ud}) {c_{qr}}^u
+	- \frac{1}{2} e_p( {c_{qr}}^u) {\Gamma^c}_{ud}
+
+	- \frac{1}{2} e_a ({\Gamma^c}_{rd}){c_{pq}}^a 
+	+ \frac{1}{2} e_p ({\Gamma^c}_{bd}){c_{qr}}^b  
+	
+	- \frac{1}{4} {c_{qr}}^b {\Gamma^c}_{ud} {c_{pb}}^u
+	+ \frac{1}{4} {c_{pq}}^a {\Gamma^c}_{ud} {c_{ar}}^u
+) e^p \wedge e^q \wedge e^r
+$<br>
+$= 	
+	(
+		- \frac{1}{2} e_p( {c_{qr}}^u)
+		+ \frac{1}{2} {c_{pq}}^v {c_{vr}}^u
+	) {\Gamma^c}_{ud}  e^p \wedge e^q \wedge e^r
+$<br>
+...should be zero, right?<br>
 <br>
 
+exterior derivative of curvature two-form:<br>
+$d {\Omega^a}_b$<br>
+$= d( d {\omega^a}_b + {\omega^a}_c \wedge {\omega^c}_b)$<br>
+$= d^2 {\omega^a}_b + d ({\omega^a}_c \wedge {\omega^c}_b)$<br>
+$= d^2 {\omega^a}_b + d {\omega^a}_c \wedge {\omega^c}_b - {\omega^a}_c \wedge d {\omega^c}_b$<br>
 
+...<br>
+<br>
+
+exterior derivative of a sum of outer products:<br>
+$d (e_a \otimes e^a)$<br>
+...<br>
+<br>
 
 <a href='.'>Back</a><br><br>
 	</body>

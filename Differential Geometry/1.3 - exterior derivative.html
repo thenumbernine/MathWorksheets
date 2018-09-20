@@ -8,6 +8,19 @@
     <body onload='tryToFindMathJax();'>
 <a href='.'>Back</a><br><br>
 
+Wedge product of two one-form basis elements:<br>
+$e_a \wedge e_b = e_a \otimes e_b - e_b \otimes e_a$<br>
+<br>
+
+Wedge product linearity, for scalar $\alpha$:<br>
+$(\alpha e_a + e_b) \wedge e_c = \alpha (e_a \wedge e_c) + e_b \wedge e_c$<br>
+<br>
+
+Wedge product identities:<br>
+$a \wedge b = -b \wedge a$<br>
+$a \wedge a = 0$<br>
+<br>
+
 Wedge product antisymmetry for p-form $a$ and q-form $b$:<br>
 $ a \wedge b $<br>
 $ = (a_{u_1 ... u_p} e^{u_1} \wedge ... \wedge e^{u_p}) \wedge (b_{v_1 ... v_q} e^{v_1} \wedge ... \wedge e^{v_q}) $<br>
@@ -57,11 +70,24 @@ $= \delta^{a_1 ... a_p}_{1 ... p} det({u_u}^d)$<br>
 <br>
 <br>
 
+Structure constant two-form:<br>
+Let $c^u = {c_{ab}}^u e^a \otimes e^b = \frac{1}{2} {c_{ab}}^u e^a \wedge e^b$<br>
+<br>
+
+structure constant definition using wedge product:<br>
+$\frac{1}{2} c^c e_c (\phi)$<br>
+$= {c_{ab}}^c e_c (\phi) e^a \otimes e^b$<br>
+$= ( e_a (e_b (\phi)) - e_b (e_a(\phi)) ) e^a \otimes e^b$<br>
+$= e_a (e_b (\phi)) (e^a \otimes e^b - e^b \otimes e^a)$<br>
+$= e_a (e_b (\phi)) e^a \wedge e^b$<br>
+<br>
 
 
-Exterior derivative:<br>
+
+Exterior derivative: $d = e_a(...) e^a \wedge ...$<br>
 $d ( {T^{a_1 ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q} )$<br>
 $= e_a ( {T^{a_1 ... a_p}}_{b_1 ... b_q} ) e^a \wedge (e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q})$<br>
+TODO what about subsequent applications to $d e^{a_i}$ and $d e_{b_j}$?<br>
 <br>
 
 For coordinate basis: $d(dx^a) = 0$<br>
