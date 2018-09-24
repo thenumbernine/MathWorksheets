@@ -275,7 +275,7 @@ $= d \Theta^a + {\omega^a}_b \wedge \Theta^b - {\Omega^a}_c \wedge e^c$<br>
 This is supposed to look like the first Bianchi identity...<br>
 if $d^2 e^a = 0$ then we get<br>
 $d \Theta^a + {\omega^a}_b \wedge \Theta^b = {\Omega^a}_b \wedge e^b$<br>
-Let $D \Theta^a = d \Theta^a + {\omega^a}_b \Theta^b$ (more on this $D$ covariant exterior derivative later)<br>
+Let $D \Theta^a = d \Theta^a + {\omega^a}_b \wedge \Theta^b$ (more on this $D$ covariant exterior derivative later)<br>
 Then $D \Theta^a = {\Omega^a}_b \wedge e^b$<br>
 <br>
 
@@ -332,11 +332,30 @@ $=
 $<br>
 <br>
 
+${\Omega^a}_c \wedge {\omega^c}_b = (d {\omega^a}_c + {\omega^a}_d \wedge {\omega^d}_c) \wedge {\omega^c}_b$<br>
+$= d {\omega^a}_c \wedge {\omega^c}_b + {\omega^a}_d \wedge {\omega^d}_c \wedge {\omega^c}_b$<br>
+<br>
+
+${\omega^a}_c \wedge {\Omega^c}_b = {\omega^a}_c \wedge (d {\omega^c}_b + {\omega^c}_d \wedge {\omega^d}_b)$<br>
+$= {\omega^a}_c \wedge d {\omega^c}_b + {\omega^a}_c \wedge {\omega^c}_d \wedge {\omega^d}_b$<br>
+$= {\omega^a}_c \wedge d {\omega^c}_b + {\omega^a}_d \wedge {\omega^d}_c \wedge {\omega^c}_b$<br>
+<br>
+
+${\Omega^a}_c \wedge {\omega^c}_b - {\omega^a}_c \wedge {\Omega^c}_b$<br>
+$ = d {\omega^a}_c \wedge {\omega^c}_b + {\omega^a}_d \wedge {\omega^d}_c \wedge {\omega^c}_b
+	- {\omega^a}_c \wedge d {\omega^c}_b - {\omega^a}_d \wedge {\omega^d}_c \wedge {\omega^c}_b$<br>
+$ = d {\omega^a}_c \wedge {\omega^c}_b - {\omega^a}_c \wedge d {\omega^c}_b$<br>
+<br>
+
 exterior derivative of curvature two-form:<br>
 $d {\Omega^a}_b$<br>
 $= d( d {\omega^a}_b + {\omega^a}_c \wedge {\omega^c}_b)$<br>
 $= d^2 {\omega^a}_b + d ({\omega^a}_c \wedge {\omega^c}_b)$<br>
 $= d^2 {\omega^a}_b + d {\omega^a}_c \wedge {\omega^c}_b - {\omega^a}_c \wedge d {\omega^c}_b$<br>
+$ = d^2 {\omega^a}_b + {\Omega^a}_c \wedge {\omega^c}_b - {\omega^a}_c \wedge {\Omega^c}_b$<br>
+And that's the second Bianchi identity<br>
+Somehow this also turns into $D {\Omega^a}_b = 0$<br>
+Keep going...<br>
 $= 	
 	(
 		- \frac{1}{2} e_p( {c_{qr}}^u)
