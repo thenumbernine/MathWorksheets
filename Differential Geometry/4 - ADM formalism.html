@@ -150,8 +150,15 @@ $\nabla^\perp_a \gamma_{bc}=0$<br>
 Spatial metric Levi-Civita connection:<br>
 ${{\hat\Gamma^\perp}^a}_{bc} = {1\over 2}\gamma^{ad}(\partial_c \gamma_{db} + \partial_b \gamma_{dc} - \partial_d \gamma_{bc})$<br>
 spatial riemann tensor:<br>
-Let ${{R^\perp}^c}_{dba} w_c = 2 \nabla^\perp_{[a} \nabla^\perp_{b]} w_d$<br>
-TODO is the projection covariant derivative connection the Levi-Civita connection of the spatial metric??<br>
+<br>
+
+Is the projection covariant derivative connection the Levi-Civita connection of the spatial metric?<br>
+We know $\gamma_{ij} = g_{ij}$.<br>
+For coordinate basii (such that the commutation of the Levi-Civita connection ${\hat{c}_{ij}}^k = 0$) this means $(\hat\Gamma^\perp)_{ijk} = \hat\Gamma_{ijk}$<br>
+In fact, so long as $e_i = (e^\perp)_i$, $(\Gamma^\perp)_{ijk} = \Gamma_{ijk}$ ... <br>
+Since, even if ${\hat{c}_{ij}}^t \ne 0$, which means $(e_i(e_j(f)) - e_j(e_i(f))) \cdot e_t(f) \ne 0$, this only produces a ${\hat{c}_{ij}}^t$ value, which would not be used in the calculations of $\Gamma_{ijk}$<br>
+But does $\perp {\Gamma^i}_{jk} = {(\Gamma^\perp)^i}_{jk}$?<br>
+Because, if no, then this means that projection introduces torsion.<br>
 <br>
 
 Riemann curvature of projected covariant derivative connection:<br>
@@ -160,36 +167,44 @@ ${(R^\perp)^c}_{dab} =
 	+ 2 {(\Gamma^\perp)^c}_{[a|u} {(\Gamma^\perp)^u}_{b]d} 
 	- {(\Gamma^\perp)^c}_{ud} {(c^\perp)_{ab}}^u
 $<br>
+${(R^\perp)^c}_{dba} v_c = 2 \nabla^\perp_{[a} \nabla^\perp_{b]} v_d + {(T^\perp)^u}_{ab} \nabla^\perp_u v^c$<br>
+<br>
+
+Is the projection of the torsion equal to the torsion of the projection?<br>
+TODO<br> 
 <br>
 
 Extrinsic curvature:<br>
 (some sources intentionally symmetrize $K_{ab} = -\nabla^\perp_{(a} n_{b)}$)<br>
-$K_{ab} = -\nabla^\perp_a n_b$<br>
-$= -{\gamma_a}^c {\gamma_b}^d \nabla_c n_d$<br>
-$= -(\delta_a^c + n_a n^c)(\delta_b^d + n_b n^d) \nabla_c n_d$<br>
-$= -\nabla_a n_b - n_a n^c \nabla_c n_b - n_b n^d \nabla_a n_d - n_a n_b n^c n^d \nabla_c n_d$<br>
-$= -\nabla_a n_b - n_a a_b$<br>
+$K_{ab} = -\hat\nabla^\perp_a n_b$<br>
+$= -{\gamma_a}^c {\gamma_b}^d \hat\nabla_c n_d$<br>
+$= -(\delta_a^c + n_a n^c)(\delta_b^d + n_b n^d) \hat\nabla_c n_d$<br>
+$= -\hat\nabla_a n_b - n_a n^c \hat\nabla_c n_b - n_b n^d \hat\nabla_a n_d - n_a n_b n^c n^d \hat\nabla_c n_d$<br>
+$= -\hat\nabla_a n_b - n_a a_b$<br>
 <br>
 
 extrinsic curvature components, in ADM metric:<br>
-$ K_{ab} = -{\gamma_a}^c \nabla_c n_d {\gamma_b}^d $<br>
+$ K_{ab} = -{\gamma_a}^c \hat\nabla_c n_d {\gamma_b}^d $<br>
 $ [K_{ab}] = 
 	-\overset{a(i)\downarrow c(k)\rightarrow}{\left[ \matrix{ 0 & \beta^k \\ 0 & \delta_i^k } \right]}
 	\left( 
 		\overset{ c(k) \downarrow d(l) \rightarrow}{\left[ \matrix{ e_t (n_t) & 0 \\ e_k (n_t) & 0 } \right]}
-		- \overset{ c(k) \downarrow d(l) \rightarrow}{\left[ \matrix{ {\Gamma^t}_{tt} & {\Gamma^t}_{tl} \\ {\Gamma^t}_{kt} & {\Gamma^t}_{kl} } \right]} n_t
+		- \overset{ c(k) \downarrow d(l) \rightarrow}{\left[ \matrix{ {\hat\Gamma^t}_{tt} & {\hat\Gamma^t}_{tl} \\ {\hat\Gamma^t}_{kt} & {\hat\Gamma^t}_{kl} } \right]} n_t
 	\right)
 	\overset{d(l) \downarrow b(j) \rightarrow}{\left[ \matrix{ 0 & 0 \\ \beta^l & \delta_j^l } \right]}$<br>
 $= \overset{a(i) \downarrow c(k) \rightarrow}{\left[ \matrix{ 0 & \beta^k \\ 0 & \delta_i^k } \right]}
-	\overset{c(k) \downarrow d(l) \rightarrow}{\left[ \matrix{ {\Gamma^t}_{tt} n_t - e_t (n_t) & {\Gamma^t}_{tl} n_t \\ {\Gamma^t}_{kt} n_t - e_k (n_t) & {\Gamma^t}_{kl} n_t } \right]}
+	\overset{c(k) \downarrow d(l) \rightarrow}{\left[ \matrix{ {\hat\Gamma^t}_{tt} n_t - e_t (n_t) & {\hat\Gamma^t}_{tl} n_t \\ {\hat\Gamma^t}_{kt} n_t - e_k (n_t) & {\hat\Gamma^t}_{kl} n_t } \right]}
 	\overset{d(l) \downarrow b(j) \rightarrow}{\left[ \matrix{ 0 & 0 \\ \beta^l & \delta_j^l} \right]} $<br>
-$= -\alpha \overset{a(i) \downarrow b(j) \rightarrow}{ \left[ \matrix{ \beta^k \beta^l {\Gamma^t}_{kl} & \beta^k {\Gamma^t}_{kj} \\ \beta^l {\Gamma^t}_{il} & {\Gamma^t}_{ij} } \right]} $<br>
-$K_{ij} = -\alpha {\Gamma^t}_{ij}$ for spatial $ij$<br>
+$= -\alpha \overset{a(i) \downarrow b(j) \rightarrow}{ \left[ \matrix{ \beta^k \beta^l {\hat\Gamma^t}_{kl} & \beta^k {\hat\Gamma^t}_{kj} \\ \beta^l {\hat\Gamma^t}_{il} & {\hat\Gamma^t}_{ij} } \right]} $<br>
+$K_{ij} = -\alpha {\hat\Gamma^t}_{ij}$ for spatial $ij$<br>
 <br>
 
 Antisymmetry of extrinsic curvature<br>
-$K_{[ij]} = -\alpha {\Gamma^t}_{[ij]} = - \frac{1}{2} \alpha ({T^t}_{ij} + {c_{ij}}^t)$<br>
-For connection torsion ${T^a}_{bc}$ and commutation ${c_{ab}}^c$<br>
+$K_{[ij]} = -\alpha {\hat\Gamma^t}_{[ij]} = - \frac{1}{2} \alpha {\hat{c}_{ij}}^t$<br>
+For (Levi-Civita) commutation ${\hat{c}_{ab}}^c$<br>
+TODO show that this is projected to zero.<Br>
+So $K_{[ij]} = 0$<br>
+And $K_{ij} = K_{(ij)}$<br>
 <br>
 
 extrinsic curvature is orthogonal to normal:<br>
@@ -344,23 +359,47 @@ $= 2 {\gamma_a}^p {\gamma_b}^q {\gamma_r}^c \nabla_{[p} \nabla_{q]} v^r
 	- 2 {K_{[a}}^c K_{b]p} v^p
 	+ {(T^\perp)^u}_{ab} \nabla^\perp_u v^c
 $<br>
-$= {\gamma_a}^p {\gamma_b}^q {\gamma_c}^r R_{drqp} v^d 
+$= {\gamma_a}^p {\gamma_b}^q {\gamma_r}^c ({R^r}_{dpq} v^d - {T^u}_{pq} \nabla_u v^r)
 	- {K_a}^c K_{bd} v^d + {K_b}^c K_{ad} v^d
 	- 2 K_{[ab]} {\gamma_r}^c n^p \nabla_p v^r
 	+ {(T^\perp)^u}_{ab} \nabla^\perp_u v^c
 $<br>
-$= {\gamma_a}^p {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s R_{pqrs} v^d 
+$= {\gamma_a}^p {\gamma_b}^q {\gamma_r}^c {R^r}_{dpq} v^d 
 	- {K_a}^c K_{bd} v^d 
 	+ {K_b}^c K_{ad} v^d
 	- 2 K_{[ab]} {\gamma_r}^c n^p \nabla_p v^r
 	+ {(T^\perp)^u}_{ab} \nabla^\perp_u v^c
+	- {\gamma_a}^p {\gamma_b}^q {\gamma_r}^c {T^u}_{pq} \nabla_u v^r
 $<br>
-${{R^\perp}^{dc}}_{ba} v_d 
-	= {\gamma_a}^p {\gamma_b}^q {\gamma_c}^r R_{drqp} v^d 
-		- {K_a}^c K_{bd} v^d 
-		+ {K_b}^c K_{ad} v^d
-		- 2 K_{[ab]} {\gamma_r}^c n^p \nabla_p v^r
-		+ {(T^\perp)^u}_{ab} \nabla^\perp_u v^c
+${(R^\perp)^c}_{dab} v^d = 
+	{\gamma_a}^p {\gamma_b}^q {\gamma_r}^c {R^r}_{dpq} v^d 
+	- {K_a}^c K_{bd} v^d 
+	+ {K_b}^c K_{ad} v^d
+	- 2 K_{[ab]} {\gamma_r}^c n^p \nabla_p v^r
+	+ {(T^\perp)^u}_{ab} \nabla^\perp_u v^c
+	- {\gamma_a}^p {\gamma_b}^q {\gamma_r}^c {T^u}_{pq} \nabla_u v^r
+$<br>
+...if $v^d$ is spatial...<br>
+${(R^\perp)^c}_{dab} v^d = 
+	{\gamma_a}^p {\gamma_b}^q {\gamma_r}^c {\gamma_d}^s {R^r}_{spq} v^d
+	- {K_a}^c K_{bd} v^d 
+	+ {K_b}^c K_{ad} v^d
+	- 2 K_{[ab]} {\gamma_r}^c n^p \nabla_p v^r
+	+ {(T^\perp)^u}_{ab} \nabla^\perp_u v^c
+	- {\gamma_a}^p {\gamma_b}^q {\gamma_r}^c {T^u}_{pq} \nabla_u v^r
+$<br>
+...if $\perp T = T^\perp$...<br>
+${(R^\perp)^c}_{dab} v^d = 
+	{\gamma_a}^p {\gamma_b}^q {\gamma_r}^c {\gamma_d}^s {R^r}_{spq} v^d
+	- {K_a}^c K_{bd} v^d 
+	+ {K_b}^c K_{ad} v^d
+	- 2 K_{[ab]} {\gamma_r}^c n^p \nabla_p v^r
+$<br>
+...if $K_{[ab]} = 0$...  But this is only true for torsion-free, projected-commutation-free basii...<br>
+${(R^\perp)^c}_{dab} v^d = 
+	({\gamma_a}^p {\gamma_b}^q {\gamma_r}^c {\gamma_d}^s {R^r}_{spq} 
+	- {K_a}^c K_{bd} 
+	+ {K_b}^c K_{ad}) v^d
 $<br>
 ...FIXME...<br>
 Gauss' equation:<br>
