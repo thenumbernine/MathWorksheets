@@ -1,0 +1,234 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Differential Geometry</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+	</head>
+    <body onload='tryToFindMathJax();'>
+<a href='.'>Back</a><br><br>
+
+
+Curvature two-form:<br>
+${\Omega^c}_d = {R^c}_{dab} e^a \otimes e^b$<br>
+$= (
+	2 e_{[a} ({\Gamma^c}_{b]d}) 
+	+ 2 {\Gamma^c}_{[a|u} {\Gamma^u}_{b]d} 
+	- {\Gamma^c}_{ud} {c_{ab}}^u
+) e^a \otimes e^b$<br>
+$= (
+	e_{[a} ({\Gamma^c}_{b]d}) 
+	- \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u
+	+ {\Gamma^c}_{[a|u} {\Gamma^u}_{b]d} 
+) e^a \wedge e^b$<br>
+$ = d {\omega^c}_d + {\omega^c}_u \wedge {\omega^u}_d$<br>
+<br>
+
+Since $e^a \wedge e^b$ is antisymmetric, we know ${R^c}_{dab} = {R^c}_{d[ab]}$.<br>
+<br>
+
+second exterior derivative of a vector basis:<Br>
+$d e^a = \Theta^a - {\omega^a}_b \wedge e^b$<br>
+so $d^2 e^a = d \Theta^a - d( {\omega^a}_b \wedge e^b )$<br>
+$= d \Theta^a - d {\omega^a}_b \wedge e^b + {\omega^a}_b \wedge d e^b$<br>
+$= d \Theta^a - d {\omega^a}_c \wedge e^c + {\omega^a}_b \wedge (\Theta^b - {\omega^b}_c \wedge e^c)$<br>
+$= d \Theta^a + {\omega^a}_b \wedge \Theta^b - {\Omega^a}_c \wedge e^c$<br>
+if $d^2 e^a = 0$ then we get<br>
+$d \Theta^a + {\omega^a}_b \wedge \Theta^b = {\Omega^a}_b \wedge e^b$<br>
+This is the first Bianchi identity.<br>
+<br>
+
+First Bianchi identity, expanding terms:<br>
+${\Omega^a}_b \wedge e^b = d \Theta^a + {\omega^a}_b \wedge \Theta^b$<br>
+$\frac{1}{2} {R^a}_{bcd} e^c \wedge e^d \wedge e^b = \frac{1}{2} d ({T^a}_{uv} e^u \wedge e^v) + \frac{1}{2} {\Gamma^a}_{cb} {T^b}_{uv} e^c \wedge e^u \wedge e^v $<br>
+$\frac{1}{2} {R^a}_{bcd} e^b \wedge e^c \wedge e^d 
+	= ( \frac{1}{2} e_b ({T^a}_{cd}) 
+		- \frac{1}{4} {c_{bc}}^u {T^a}_{ud} 
+		- \frac{1}{4} {c_{bd}}^u {T^a}_{cu} 
+		+ \frac{1}{2} {\Gamma^a}_{bu} {T^u}_{cd}
+	)e^b \wedge e^c \wedge e^d $<br>
+${R^a}_{bcd} e^b \wedge e^c \wedge e^d 
+	= ( e_b ({T^a}_{cd}) 
+		- {c_{bc}}^u {T^a}_{ud} 
+		+ {\Gamma^a}_{bu} {T^u}_{cd}
+	) e^b \wedge e^c \wedge e^d $<br>
+${R^a}_{bcd} e^b \wedge e^c \wedge e^d 
+	= ( e_b ({T^a}_{cd}) 
+		- {\Gamma^u}_{bc} {T^a}_{ud} 
+		+ {\Gamma^u}_{cb} {T^a}_{ud} 
+		+ {\Gamma^a}_{bu} {T^u}_{cd}
+		+ {T^u}_{bc} {T^a}_{ud} 
+	) e^b \wedge e^c \wedge e^d $<br>
+${R^a}_{bcd} e^b \wedge e^c \wedge e^d 
+	= ( e_b ({T^a}_{cd}) + {\Gamma^a}_{bu} {T^u}_{cd} - {\Gamma^u}_{bc} {T^a}_{ud} - {\Gamma^u}_{bd} {T^a}_{cu} 
+		+ {T^u}_{bc} {T^a}_{ud} 
+	) e^b \wedge e^c \wedge e^d $<br>
+Now I'm using $\nabla_b$ to represent the covariant derivative applied to the index notation representation (and not to the geometric objects)<br>
+${R^a}_{bcd} e^b \wedge e^c \wedge e^d 
+	= ( \nabla_{[b} ({T^a}_{cd]})
+		+ {T^u}_{bc} {T^a}_{ud} 
+	) e^b \wedge e^c \wedge e^d $<br>
+The definition <a href=https://en.wikipedia.org/wiki/Torsion_tensor'>here</a> gets around that by defining a 'cyclic permutation tensor' function, which must be the geometric object equivalent of the brackets in index notation.<br>
+But if I was going to use $\nabla$ as a covariant derivative of geometric objects, then where exactly would they go?<br>
+Especially the $e_a$ which must be present for the correct definition of the covariant derivative?<br>
+${R^a}_{bcd} e_a \otimes (e^b \wedge e^c \wedge e^d) 
+	= e_a \otimes (( \nabla_{[b} ({T^a}_{cd]})
+		+ {T^u}_{bc} {T^a}_{ud} 
+	) e^b \wedge e^c \wedge e^d) $<br>
+It looks as if the $e_a$ goes on the lhs but it must be to the right of the $e^b$ in order for the covariant derivative $\nabla_b$ to apply to it (right?)<br>
+${R^a}_{bcd} e_a \otimes (e^b \wedge e^c \wedge e^d) 
+	= e^b \otimes ( 6 \nabla_{[b} ({T^a}_{cd]} e_a \otimes e^c \otimes e^d))
+		+ {T^u}_{bc} {T^a}_{ud} e_a \otimes (e^b \wedge e^c \wedge e^d)
+	 $<br>
+... unless $e^a \otimes e_b = e_b \otimes e^a$, only for mixed co/contra-variance ... but I can't imagine that's true ...<br>
+but this would be true if we were using $\wedge$ instead, and $e^a \wedge e_b = e_b \wedge e^a$, as I proposed a few pages back...<br>
+<br>
+
+In a torsion-free coordinate system, the first Bianchi identity looks like:<br>
+${R^a}_{bcd} e^b \wedge e^c \wedge e^d = 0$<br>
+${R^a}_{[bcd]} = 0$<br>
+<br>
+
+Exterior covariant derivative:<br>
+(more on this $D$ covariant exterior derivative later)<br>
+Let $D w^a = d w^a + {\omega^a}_b \wedge w^b$<br>
+<br>
+
+Exterior covariant derivative of basis one-forms:<br>
+$D e^a = d e^a + {\omega^a}_b \wedge e^b$<br>
+$= \Theta^a$<br>
+<br>
+
+Exterior covariant derivative of torsion two-form:<br>
+$D \Theta^a = {\Omega^a}_b \wedge e^b$<br>
+<br>
+
+
+Notice: the exterior covariant derivative of the connection is not the curvature:<br>
+$D {\omega^a}_b = d {\omega^a}_b + {\omega^a}_c \wedge {\omega^c}_b  + {\omega^a}_c \wedge {\omega^c}_b$<br> 
+$= d {\omega^a}_b + 2 {\omega^a}_c \wedge {\omega^c}_b$<br> 
+$= {\Omega^a}_b + {\omega^a}_c \wedge {\omega^c}_b$<br>
+<br>
+
+second exterior derivative of connection one-forms:<br>
+$d^2 {\omega^c}_d = d (d {\omega^c}_d )$<br>
+$= d( (e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u) e^a \wedge e^b )$<br>
+$= e_e (e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u) e^e \wedge e^a \wedge e^b 
+	+ (e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u) (de^a \wedge e^b - e^a \wedge de^b)$<br>
+$= 	
+	e_e (e_a ({\Gamma^c}_{bd})) e^e \wedge e^a \wedge e^b 
+	- \frac{1}{2} e_e( {\Gamma^c}_{ud} {c_{ab}}^u) e^e \wedge e^a \wedge e^b 
+	
+	+ (
+		e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u
+	) \cdot (-\frac{1}{2} {c_{pq}}^a e^p \wedge e^q) \wedge e^b
+	
+	- (
+		e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u
+	) e^a \wedge (-\frac{1}{2} {c_{pq}}^b e^p \wedge e^q)
+$<br>
+$= 	
+	(
+		\frac{1}{2} e_f ({\Gamma^c}_{bd}) {c_{ea}}^f
+		
+		- \frac{1}{2} e_e( {\Gamma^c}_{ud}) {c_{ab}}^u
+		- \frac{1}{2} e_e( {c_{ab}}^u) {\Gamma^c}_{ud}
+	) e^e \wedge e^a \wedge e^b 
+
+	- \frac{1}{2} {c_{pq}}^a (
+		e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u
+	) e^p \wedge e^q \wedge e^b
+	
+	+ \frac{1}{2} {c_{pq}}^b (
+		e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u
+	) e^a \wedge e^p \wedge e^q
+$<br>
+$= 	(	
+	\frac{1}{2} e_u ({\Gamma^c}_{rd}) {c_{pq}}^u
+	- \frac{1}{2} e_p( {\Gamma^c}_{ud}) {c_{qr}}^u
+	- \frac{1}{2} e_p( {c_{qr}}^u) {\Gamma^c}_{ud}
+
+	- \frac{1}{2} e_a ({\Gamma^c}_{rd}){c_{pq}}^a 
+	+ \frac{1}{2} e_p ({\Gamma^c}_{bd}){c_{qr}}^b  
+	
+	- \frac{1}{4} {c_{qr}}^b {\Gamma^c}_{ud} {c_{pb}}^u
+	+ \frac{1}{4} {c_{pq}}^a {\Gamma^c}_{ud} {c_{ar}}^u
+) e^p \wedge e^q \wedge e^r
+$<br>
+$= 	
+	(
+		- \frac{1}{2} e_p( {c_{qr}}^u)
+		+ \frac{1}{2} {c_{pq}}^v {c_{vr}}^u
+	) {\Gamma^c}_{ud}  e^p \wedge e^q \wedge e^r
+$<br>
+<br>
+
+${\Omega^a}_c \wedge {\omega^c}_b = (d {\omega^a}_c + {\omega^a}_d \wedge {\omega^d}_c) \wedge {\omega^c}_b$<br>
+$= d {\omega^a}_c \wedge {\omega^c}_b + {\omega^a}_d \wedge {\omega^d}_c \wedge {\omega^c}_b$<br>
+<br>
+
+${\omega^a}_c \wedge {\Omega^c}_b = {\omega^a}_c \wedge (d {\omega^c}_b + {\omega^c}_d \wedge {\omega^d}_b)$<br>
+$= {\omega^a}_c \wedge d {\omega^c}_b + {\omega^a}_c \wedge {\omega^c}_d \wedge {\omega^d}_b$<br>
+$= {\omega^a}_c \wedge d {\omega^c}_b + {\omega^a}_d \wedge {\omega^d}_c \wedge {\omega^c}_b$<br>
+<br>
+
+${\Omega^a}_c \wedge {\omega^c}_b - {\omega^a}_c \wedge {\Omega^c}_b$<br>
+$ = d {\omega^a}_c \wedge {\omega^c}_b + {\omega^a}_d \wedge {\omega^d}_c \wedge {\omega^c}_b
+	- {\omega^a}_c \wedge d {\omega^c}_b - {\omega^a}_d \wedge {\omega^d}_c \wedge {\omega^c}_b$<br>
+$ = d {\omega^a}_c \wedge {\omega^c}_b - {\omega^a}_c \wedge d {\omega^c}_b$<br>
+<br>
+
+exterior derivative of curvature two-form:<br>
+$d {\Omega^a}_b$<br>
+$= d( d {\omega^a}_b + {\omega^a}_c \wedge {\omega^c}_b)$<br>
+$= d^2 {\omega^a}_b + d ({\omega^a}_c \wedge {\omega^c}_b)$<br>
+$= d^2 {\omega^a}_b + d {\omega^a}_c \wedge {\omega^c}_b - {\omega^a}_c \wedge d {\omega^c}_b$<br>
+$ = d^2 {\omega^a}_b + {\Omega^a}_c \wedge {\omega^c}_b - {\omega^a}_c \wedge {\Omega^c}_b$<br>
+Assume $d^2 {\omega^a}_b = 0$<br>
+$d {\Omega^a}_b = {\Omega^a}_c \wedge {\omega^c}_b - {\omega^a}_c \wedge {\Omega^c}_b$<br>
+And that's the second Bianchi identity<br>
+Somehow this also turns into $D {\Omega^a}_b = 0$<br>
+
+
+If we keep going...<br>
+$d {\Omega^a}_b$<br>
+$= 	
+	(
+		- \frac{1}{2} e_p( {c_{qr}}^u)
+		+ \frac{1}{2} {c_{pq}}^v {c_{vr}}^u
+	) {\Gamma^c}_{ud}  e^p \wedge e^q \wedge e^r
+	+ 
+	(
+		(e_p ({\Gamma^a}_{qc}) - \frac{1}{2} {\Gamma^a}_{uc} {c_{pq}}^u) e^p \wedge e^q
+	) \wedge {\Gamma^c}_{rb} e^r
+	- {\Gamma^a}_{rc} e^r \wedge (
+		(e_p ({\Gamma^c}_{qb}) - \frac{1}{2} {\Gamma^c}_{ub} {c_{pq}}^u) e^p \wedge e^q
+	)
+$<br>
+$= 	
+	(
+		 e_p ({\Gamma^a}_{qc}) {\Gamma^c}_{rb}
+		 + e_p ({\Gamma^c}_{rb}) {\Gamma^a}_{qc}
+		
+		- \frac{1}{2} e_p( {c_{qr}}^u) {\Gamma^a}_{ub}
+	
+		+ \frac{1}{2} (
+			- {\Gamma^a}_{uc} {\Gamma^c}_{rb}
+			+ {\Gamma^a}_{rc} {\Gamma^c}_{ub}
+			+ {\Gamma^a}_{vb} {c_{ur}}^v
+		) {c_{pq}}^u
+	)  e^p \wedge e^q \wedge e^r
+$<br>
+Notice that $D {\Omega^a}_b$ should equal 0.<br>
+<br>
+
+exterior derivative of a sum of outer products:<br>
+$d (e_a \otimes e^a)$<br>
+...<br>
+<br>
+
+
+
+<a href='.'>Back</a><br><br>
+	</body>
+</html>
