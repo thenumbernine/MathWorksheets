@@ -48,14 +48,83 @@ $\hat\Gamma_{abc} = \frac{1}{2} (
 	+ c_{abc} + c_{acb} - c_{cba}
 )$<br>
 which is also known as the "Christoffel symbol of the 1st kind"<br>
-in a holonomic basis (where ${c_{ab}}^c = 0$): $ \hat\Gamma_{abc} = {1 \over 2} (
-	e_c (g_{ab}) + e_b (g_{ac}) - e_a (g_{bc})
-) $<br>
+<br>
+
 Christoffel of the 2nd kind / affine connection: $ {\hat\Gamma^a}_{bc} = g^{ad} \hat\Gamma_{dbc} $<br>
 <br>
 
+in a holonomic basis (so ${c_{ab}}^c = 0$):<br>
+$ \hat\Gamma_{abc} = {1 \over 2} (
+	e_c (g_{ab}) + e_b (g_{ac}) - e_a (g_{bc})
+) $<br>
+<br>
+
+in a torsion-free basis with a constant metric (such as our diagonalized $e_I = {e^a}_I e_a)$:<br>
+$(\Gamma_\eta)_{IJK} = \frac{1}{2} ( 
+	e_K (\eta_{IJ}) + e_J (\eta_{IK}) - e_I (\eta_{JK})
+	+ (c_\eta)_{IJK} + (c_\eta)_{IKJ} - (c_\eta)_{KJI}
+)$<br>
+$= \frac{1}{2} (  (c_\eta)_{IJK} + (c_\eta)_{IKJ} - (c_\eta)_{KJI} )$<br>
+This one is the spin-connection.<br>
+<br>
+
+Notice that the Levi-Civita connection of a coordinate basis is going to have structure constants $\hat{c}_{abc} = 0$<br>
+But the structure constants of the basis diagonalizing such a coordinate system are definitely not zero, as shown before:<br>
+${(c_\eta)_{IJ}}^K = 2 {e^u}_{[I|} e_u ( {e^c}_{|J]} ) {e^K}_c$<br>
+${(c_\eta)_{IJ}}^K = -2 {e^u}_{[I} {e^c}_{J]}  e_u ( {e^K}_c )$<br>
+${(c_\eta)_{pq}}^r = -2 e_{[p} ( {e_{q]}}^K ) {e^r}_K$<br>
+${(c_\eta)_{pq}}^r = 2 e_{[p} ( e^{rK} ) e_{q]K}$<br>
+$(c_\eta)_{abc} = 2 e_{[a} ( e^{dK} ) e_{b]K} g_{dc}$<br>
+<br>
+
+Does the Levi-Civita connection of the basis associated with the diagonalized metric equate to the Levi-Civita connection of the coordinate basis?<br>
+$(\Gamma_\eta)_{abc} = \frac{1}{2} ( (c_\eta)_{abc} + (c_\eta)_{acb} - (c_\eta)_{cba})$<br>
+$= 
+	e_{[a} ( e^{dK} ) e_{b]K} g_{dc}
+	+ e_{[a} ( e^{dK} ) e_{c]K} g_{db}
+	- e_{[c} ( e^{dK} ) e_{b]K} g_{da}
+$<br>
+$= \frac{1}{2} (
+	e_a ( e^{dK} ) e_{bK} g_{dc}
+	- e_b ( e^{dK} ) e_{aK} g_{dc}
+	
+	+ e_a ( e^{dK} ) e_{cK} g_{db}
+	- e_c ( e^{dK} ) e_{aK} g_{db}
+	
+	- e_c ( e^{dK} ) e_{bK} g_{da}
+	+ e_b ( e^{dK} ) e_{cK} g_{da}
+)$<br>
+$= \frac{1}{2} (
+	- {e_c}^K e_a ( e_{bK} )
+	- e_{bK} e_a ( {e_c}^K )
+	
+	+ {e_c}^K e_b ( e_{aK} )
+	+ e_b ( {e_a}^K ) e_{cK} 
+	
+	+ {e_b}^K e_c ( e_{aK} )
+	+ {e_a}^K e_c ( e_{bK} )
+)$<br>
+$= \frac{1}{2} (
+	- e_a ( {e_c}^K e_{bK} )
+	+ e_b ( {e_a}^K e_{cK} )
+	+ e_c ( {e_a}^K e_{bK} )
+)$<br>
+$ = \frac{1}{2} (e_c (g_{ab}) + e_b(g_{ac}) - e_c(g_{ab}))$<br>
+$ = \hat\Gamma_{abc}$<br>
+Yup, looks like $\hat\Gamma_{abc} = (\Gamma_\eta)_{abc}$<br>
+<br>
+
+Notice that, in the diagonalized basis, since the metric is $\eta_{IJ}$ is a constant, we know $(\Gamma_\eta)_{IJK}$ has the property:<br>
+$(\Gamma_\eta)_{(I|J|K)} = \frac{1}{2} e_J (\eta_{IK}) = 0$<br>
+So we know $(\Gamma_\eta)$ is antisymmetric on the 1st and 3rd indexes.  This means rotation, and also means we can pick a two-form to represent this.
+Notice that connections are already represented as one-forms, and even on the index that isn't antisymmetric: $\omega_{ab} = \Gamma_{acb} e^c$.
+Now we also have the choice of representing connections as a two-form, as $(\omega_\eta)_K = \frac{1}{2} (\Gamma_\eta)_{IKJ} e^I \wedge e^J$.<br>
+I wonder if you could consider a spin-connection to be a combination of two-forms and one-forms in two different basii? $(\omega_\eta) = \frac{1}{2} (\Gamma_\eta)_{IaJ} \cdot e^I \wedge e^J \otimes e^a$, where the $e^I$'s and $e^a$'s don't mess with each other ... maybe not ...<br>
+(This is probably why people usually put the basis index last instead of first, so it is ${\Gamma_{jk}}^i e_i$, like the structure constants, instead of ${\Gamma^i}_{jk} e_i$).<br>
+<br>
+
 Levi-Civita connection in a non-coordinate basis:<br>
-(TODO add torsion and show for all connections, or remove completely, because it is implicit in the definition)<br>
+(TODO add torsion and show for all connections)<br>
 $\hat\Gamma_{abc} = \frac{1}{2} (
 	e_c (g_{ab})
 	+ e_b (g_{ac})
@@ -386,7 +455,7 @@ $\nabla_u v = \nabla_{u^a e_a} (v_b e^b) = u^a \nabla_a (v_b e^b) = u^a (e_a(v_b
 TODO:<br>
 geodesics minimize distance along a trajectory:<br>
 $S = \int \sqrt{ g_{uv} \frac{dx^u}{d\lambda} \frac{dx^v}{d\lambda} } d\lambda$<br>
-Minimize $S$ by solving for $\delta S = 0$:
+Minimize $S$ by solving for $\delta S = 0$:<br>
 <br>
 
 acceleration of geodesic motion:<br>
