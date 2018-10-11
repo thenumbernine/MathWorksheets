@@ -70,8 +70,20 @@ So instead of $T^{x^i}$ they would write $T^i$, and $T^{x^i} e_{x^i}$ would be $
 Even more lazy among authors comes the "comma derivative," where $\frac{\partial}{\partial x^i} \phi$ is reprsented as $\phi_{,i}$, and $\frac{\partial y^J}{\partial x^i} = {e_i}^J$ (see "Gravitation" by Misner, Thorne, Wheeler, 1973) , however this notation isn't used so much in recent years.<br>
 <br>
 This distinction of the meaning of $e_{x^i} = \frac{\partial}{\partial x^i}$ becomes important in terms of the classification of a "tensor" versus a "pseudotensor".
-For example, consider the object $\frac{\partial}{\partial x^a} W_{x^b} e^{x^a} \otimes e^{x^b}$.  courtesy of that partial derivative, you can no longer simply change the basis on it:
-$\frac{\partial}{\partial x^a} W_{x^b} e^{x^a} \otimes e^{x^b} \ne \frac{\partial}{\partial y^a}$.
+(In order to illustrate this example I'll have to make use of contravariant $T^i$ versus covariant $T_i$ indexes without an explanation, but bear with me.)
+For example, consider the object $\frac{\partial}{\partial x^a} W_{x^b} e^{x^a} \otimes e^{x^b}$.  courtesy of that partial derivative, you can no longer simply change the basis on it:<br>
+$\frac{\partial}{\partial y^a} W_{y^b} e^{y^a} \otimes e^{y^b}$<br>
+$= \frac{\partial x^c}{\partial y^a} \frac{\partial}{\partial x^c} ( \frac{\partial x^d}{\partial y^b} W_{x^d} ) \frac{\partial y^a}{\partial x^e} e^{x^e} \otimes \frac{\partial y^b}{\partial x^f} e^{x^f}$ by changing the basii and especially the derivative operator<br>
+$= \frac{\partial}{\partial x^c} ( \frac{\partial x^d}{\partial y^b} W_{x^d} ) e^{x^c} \otimes \frac{\partial y^b}{\partial x^f} e^{x^f}$ by cancelling the linear transform and inverse linear transforms of change-of-basii between x and y<br>
+$= ( 
+	\frac{\partial}{\partial x^c} \frac{\partial x^d}{\partial y^b} W_{x^d} 
+	+ \frac{\partial x^d}{\partial y^b} \frac{\partial}{\partial x^c} W_{x^d} 
+	) e^{x^c} \otimes \frac{\partial y^b}{\partial x^f} e^{x^f}$ by chain rule<br>
+$= \frac{\partial}{\partial x^c} (\frac{\partial x^d}{\partial y^b}) W_{x^d} e^{x^c} \otimes \frac{\partial y^b}{\partial x^f} e^{x^f}
+	+ \frac{\partial x^d}{\partial y^b} \frac{\partial}{\partial x^c} W_{x^d} e^{x^c} \otimes \frac{\partial y^b}{\partial x^f} e^{x^f} $ by distribution<br>
+$= \frac{\partial y^d}{\partial x^b} \frac{\partial}{\partial x^a} (\frac{\partial x^c}{\partial y^d}) W_{x^c} e^{x^a} \otimes e^{x^b}
+	+ \frac{\partial}{\partial x^a} W_{x^b} e^{x^a} \otimes e^{x^b} $ by more cancelling of linear transofrms of change-of-basii and relabeling of sum indexes<br>
+$\ne \frac{\partial}{\partial x^a} W_{x^b} e^{x^a} \otimes e^{x^b}$<br>
 This might look obvious with this verbose notation, but these tensors would typically be depicted as $W_{i,j} e^i \otimes e^j \ne W_{I,J} e^I \otimes e^J$, which is a mistake that can easily be made, since without the derivative $U_{ij} e^i \otimes e^j = U_{IJ} e^I \otimes e^J$ is perfectly correct.<br>
 <br>
 
