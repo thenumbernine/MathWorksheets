@@ -168,6 +168,8 @@ Here's the CDN URLs:
 
 [Tetrad General Relativity](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Tetrad%20General%20Relativity%2ehtml)
 
+[a note on the definition of tensors](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/a%20note%20on%20the%20definition%20of%20tensors%2ehtml)
+
 [heat to wave](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/heat%20to%20wave%2ehtml)
 
 [projection in any metric](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/projection%20in%20any%20metric%2ehtml)
