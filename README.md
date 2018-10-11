@@ -16,45 +16,45 @@ Here's the CDN URLs:
 
 [Curvature From Lower Dimensions](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Curvature%20From%20Lower%20Dimensions%2ehtml)
 
-[Differential Geometry/1 - tensors - intro](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%20%2d%20tensors%20%2d%20intro%2ehtml)
+[Differential Geometry/0 - tensors - intro](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/0%20%2d%20tensors%20%2d%20intro%2ehtml)
 
-[Differential Geometry/1.1 - index notation](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e1%20%2d%20index%20notation%2ehtml)
+[Differential Geometry/1 - index notation](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%20%2d%20index%20notation%2ehtml)
 
-[Differential Geometry/1.10 - Ricci curvature](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e10%20%2d%20Ricci%20curvature%2ehtml)
+[Differential Geometry/10 - Ricci curvature](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/10%20%2d%20Ricci%20curvature%2ehtml)
 
-[Differential Geometry/1.11 - Gaussian curvature](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e11%20%2d%20Gaussian%20curvature%2ehtml)
+[Differential Geometry/11 - Gaussian curvature](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/11%20%2d%20Gaussian%20curvature%2ehtml)
 
-[Differential Geometry/1.12 - Bianchi identities](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e12%20%2d%20Bianchi%20identities%2ehtml)
+[Differential Geometry/12 - Bianchi identities](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/12%20%2d%20Bianchi%20identities%2ehtml)
 
-[Differential Geometry/1.2 - structure constants](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e2%20%2d%20structure%20constants%2ehtml)
+[Differential Geometry/13 - Einstein-Hilbert action](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/13%20%2d%20Einstein%2dHilbert%20action%2ehtml)
 
-[Differential Geometry/1.3 - exterior derivative](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e3%20%2d%20exterior%20derivative%2ehtml)
+[Differential Geometry/14 - ADM formalism](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/14%20%2d%20ADM%20formalism%2ehtml)
 
-[Differential Geometry/1.4 - metric tensor](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e4%20%2d%20metric%20tensor%2ehtml)
+[Differential Geometry/15 - ADM constraints](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/15%20%2d%20ADM%20constraints%2ehtml)
 
-[Differential Geometry/1.5 - Levi-Civita tensor and Hodge dual](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e5%20%2d%20Levi%2dCivita%20tensor%20and%20Hodge%20dual%2ehtml)
+[Differential Geometry/16 - ADM tetrad](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/16%20%2d%20ADM%20tetrad%2ehtml)
 
-[Differential Geometry/1.6 - covariant derivative](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e6%20%2d%20covariant%20derivative%2ehtml)
+[Differential Geometry/17 - Palatini action](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/17%20%2d%20Palatini%20action%2ehtml)
 
-[Differential Geometry/1.7 - torsion](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e7%20%2d%20torsion%2ehtml)
+[Differential Geometry/18 - Self-dual Palatini action](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/18%20%2d%20Self%2ddual%20Palatini%20action%2ehtml)
 
-[Differential Geometry/1.8 - metric-cancelling and torsion-free connection](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e8%20%2d%20metric%2dcancelling%20and%20torsion%2dfree%20connection%2ehtml)
+[Differential Geometry/19 - Ashtekar variables](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/19%20%2d%20Ashtekar%20variables%2ehtml)
 
-[Differential Geometry/1.9 - Riemann curvature](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/1%2e9%20%2d%20Riemann%20curvature%2ehtml)
+[Differential Geometry/2 - structure constants](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/2%20%2d%20structure%20constants%2ehtml)
 
-[Differential Geometry/3 - Einstein-Hilbert action](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/3%20%2d%20Einstein%2dHilbert%20action%2ehtml)
+[Differential Geometry/3 - exterior derivative](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/3%20%2d%20exterior%20derivative%2ehtml)
 
-[Differential Geometry/4 - ADM formalism](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/4%20%2d%20ADM%20formalism%2ehtml)
+[Differential Geometry/4 - metric tensor](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/4%20%2d%20metric%20tensor%2ehtml)
 
-[Differential Geometry/5 - ADM constraints](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/5%20%2d%20ADM%20constraints%2ehtml)
+[Differential Geometry/5 - Levi-Civita tensor and Hodge dual](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/5%20%2d%20Levi%2dCivita%20tensor%20and%20Hodge%20dual%2ehtml)
 
-[Differential Geometry/6 - ADM tetrad](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/6%20%2d%20ADM%20tetrad%2ehtml)
+[Differential Geometry/6 - covariant derivative](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/6%20%2d%20covariant%20derivative%2ehtml)
 
-[Differential Geometry/7 - Palatini action](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/7%20%2d%20Palatini%20action%2ehtml)
+[Differential Geometry/7 - torsion](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/7%20%2d%20torsion%2ehtml)
 
-[Differential Geometry/8 - Self-dual Palatini action](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/8%20%2d%20Self%2ddual%20Palatini%20action%2ehtml)
+[Differential Geometry/8 - metric-cancelling and torsion-free connection](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/8%20%2d%20metric%2dcancelling%20and%20torsion%2dfree%20connection%2ehtml)
 
-[Differential Geometry/9 - Ashtekar variables](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/9%20%2d%20Ashtekar%20variables%2ehtml)
+[Differential Geometry/9 - Riemann curvature](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/9%20%2d%20Riemann%20curvature%2ehtml)
 
 [Differential Geometry/sources](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/sources%2ehtml)
 
