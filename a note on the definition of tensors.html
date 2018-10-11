@@ -17,6 +17,7 @@ Computer scientists tend to think tensors are multi-dimensional arrays of number
 
 ...but in the math, there is no mention of their individual components, and most mathematicians hate defining them in terms of their individual components.<br>
 <br>
+<h3>basis components</h3>
 Tensors are often decomposed into their basis elements, though.  For example, a vector would be:<br>
 $T = T^{x^1} e_{x^1} + T^{x^2} e_{x^2} + T^{x^3} e_{x^3}$<br>
 ...or, shorthand:<br>
@@ -38,6 +39,7 @@ $<br>
 $A = A^{x^i x^j} e_{x^i} \otimes e_{x^j}$<br>
 (Once again, usually just $A = A^{ij} e_i \otimes e_j$)<br>
 <br>
+<h3>matrix/vector depiction</h3>
 Then you could represent the components as their individual elements:<br>
 $T = \left[\begin{matrix} T^{x^1} \\ T^{x^2} \\ T^{x^3} \end{matrix}\right]$<br>
 ...or...<br>
@@ -48,9 +50,19 @@ $A = \left[\begin{matrix}
 \end{matrix}\right]$<br>
 ...but this is only one way to represent them.<br>
 <br>
+<h3>basis definition</h3>
 This comes from some hidden meaning in the basis elements.  They are defined as:<br>
 $e_{x^i} = \frac{\partial}{\partial x^i}$<br>
-There are a few useful byproducts of this definition.  One of those meanings is, if you want to change basis from $x^i$ to $y^i$, you can use the chain rule:<br>
+<br>
+There are a few useful byproducts of this definition.
+One such byproduct can be seen when we introduce the dual basis: $e^i = dx^i$<br>
+One-forms are defined as functions that act on basii, and posess the property:<br>
+$e^i (e_j) = \delta^i_j = \left\{ \begin{matrix} 1 : i = j \\ 0 : otherwise \end{matrix} \right\}$<br>
+This becomes especially apparent when we substitute these coordinate definitions:<br>
+$e^i (e_j) = dx^i (\frac{\partial}{\partial x^j}) = \frac{\partial x^i}{\partial x^j}$<br>
+<br>
+<h3>change of basis</h3>
+One of those meanings is, if you want to change basis from $x^i$ to $y^i$, you can use the chain rule:<br>
 $e_{x^i} = \frac{\partial}{\partial x^i}
 	= \frac{\partial y^j}{\partial x^i} \frac{\partial}{\partial y^j}
 	= \frac{\partial y^j}{\partial x^i} e_{y^j}$<br>
@@ -59,16 +71,19 @@ across all your indexes to change their basis -- like changing the rulers which 
 $T = ({T^{x^i}} \frac{\partial y^j}{\partial x^i}) e_{y^j} = T^{y^j} e_{y^j}$<br>
 $A = (A^{{x^i}{x^j}} \frac{\partial y^m}{\partial x^i} \frac{\partial y^n}{\partial x^j}) e_{y^m} \otimes e_{y^n} = A^{y^m y^n} e_{y^m} \otimes e_{y^n}$<br>
 <br>
+<h3>matrix multiplication</h3>
 You can think of this change-of-basis as a matrix multiplication, but it in fact generalizes matrix multiplication, and also it is commutative (you can switch the order of the indexed product components no problem) while matrix multiplication is not.<br>
 <br>
 Tensor change-of-basis can be depicted using matrix multiplication.  Here I'm using superscript to denote which coordinate system each degree of the tensor's matrix is using.<br>
 $\textbf{T}^{(y)} = \frac{\partial\textbf{y}}{\partial\textbf{x}} \cdot \textbf{T}^x$<br>
 $\textbf{A}^{(yy)} = (\frac{\partial\textbf{y}}{\partial\textbf{x}}) \cdot \textbf{A}^{(xx)} \cdot (\frac{\partial\textbf{y}}{\partial\textbf{x}})^T $<br>
 <br>
-In the wild, tensor notation is always more concise and never so explicit.  Authors usually reserve one set of indexes for coordinate system $x$ (lower case letters maybe) and another for coordinate system $y$ (upper case).
+<h3>index notation</h3>
+In the wild, tensor notation is always more concise and never so verbose.  Authors usually reserve one set of indexes for coordinate system $x$ (lower case letters maybe) and another for coordinate system $y$ (upper case).
 So instead of $T^{x^i}$ they would write $T^i$, and $T^{x^i} e_{x^i}$ would be $T^i e_i$, and instead of $T^{y^J}$ they would write $T^J$, and $T^{y^J} e_{y^J} = T^J e_J$.<br>
 Even more lazy among authors comes the "comma derivative," where $\frac{\partial}{\partial x^i} \phi$ is reprsented as $\phi_{,i}$, and $\frac{\partial y^J}{\partial x^i} = {e_i}^J$ (see "Gravitation" by Misner, Thorne, Wheeler, 1973) , however this notation isn't used so much in recent years.<br>
 <br>
+<h3>pseudotensors</h3>
 This distinction of the meaning of $e_{x^i} = \frac{\partial}{\partial x^i}$ becomes important in terms of the classification of a "tensor" versus a "pseudotensor".
 (In order to illustrate this example I'll have to make use of contravariant $T^i$ versus covariant $T_i$ indexes without an explanation, but bear with me.)
 For example, consider the object $\frac{\partial}{\partial x^a} W_{x^b} e^{x^a} \otimes e^{x^b}$.  courtesy of that partial derivative, you can no longer simply change the basis on it:<br>
