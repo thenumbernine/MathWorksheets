@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Palatini action</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+	</head>
+    <body onload='tryToFindMathJax();'>
+
+<a href='index.html'>Back</a><br>
+<br>
+
+This page is from following chapter 3 of 2013 Rovelli, Vidotto "Covariant Loop Quantum Gravity"<br>
+<br>
+
+More on $e_I = {e^a}_I e_a$ for $e_a$ torsion-free coordinate basis (commutation-free)<br>
+...such that $e_I \cdot e_J = {e^a}_I {e^b}_J g_{ab} = \eta_{IJ}$<br>
+...so $(\Gamma_\eta)_{IJK} = -(\Gamma_\eta)_{KJI}$<br>
+...and $\omega_{IK} = (\Gamma_\eta)_{IJK} e^J$<br>
+...so $\omega_{IJ} = -\omega_{JI}$<br>
+<br>
+
+Next comes ${\Omega^I}_J = d {\omega^I}_J + {\omega^I}_K \wedge {\omega^K}_J$<br>
+So long as we restriction to torsion-free, we have only one possible connection, the Levi-Civita connection, which we are re-parameterizing to be a Minkowski metric basis.<br>
+<br>
+
+Next show that the Riemann curvature tensor ${R^a}_{bcd} = {e^a}_I {e_b}^J {\Omega^I}_{Jcd}$<br>
+(Seems intuitive if the connection of the reparameterized basis $\omega_{IJ} = (\Gamma_\eta)_{IaJ} e^a$ is just a linear transformation of the coordinate basis connection ${\Gamma^c}_{de})$<br>
+From there, $\Omega^{IJ} = \frac{1}{2} {e_a}^I {e_b}^J {R^{ab}}_{cd} e^c \wedge e^d$ (book doesn't have $\frac{1}{2}$)<br>
+<br>
+
+$e^I \wedge e^J \wedge e^K \wedge e^L$<br>
+$= {e_a}^I dx^a \wedge {e_b}^J dx^b \wedge {e_c}^K dx^c \wedge {e_d}^L dx^d$<br>
+$= {e_a}^I {e_b}^J {e_c}^K {e_d}^L dx^a \wedge dx^b \wedge dx^c \wedge dx^d$<br>
+$= {e_a}^I {e_b}^J {e_c}^K {e_d}^L \cdot 4! \cdot  dx^{[a} \otimes dx^b \otimes dx^c \otimes dx^{d]}$<br>
+$= {e_a}^I {e_b}^J {e_c}^K {e_d}^L \delta^{abcd}_{0123} dx^0 \otimes dx^1 \otimes dx^2 \otimes dx^3$<br>
+$= {e_a}^I {e_b}^J {e_c}^K {e_d}^L \epsilon^{abcd} dx^0 \otimes dx^1 \otimes dx^2 \otimes dx^3$<br>
+$= s |det(e)| dV$<br>
+<br>
+
+Next we rewrite the Einstein-Hilbert action:<br>
+$S = \int R \sqrt{-g} dx^4$<br>
+...
+$S = \int e^I \wedge e^J \wedge F^{KL} \epsilon_{IJKL}$<br>
+$S = \int {e_a}^I e^a \wedge {e_b}^J e^b \wedge {F^{KL}}_{cd} e^c \wedge e^d \epsilon_{IJKL}$<br>
+$S = \int {e_a}^I {e_b}^J {F^{KL}}_{cd} \epsilon_{IJKL} e^a \wedge e^b \wedge e^c \wedge e^d$<br>
+$S = \int {e_a}^I {e_b}^J {F^{KL}}_{cd} \epsilon_{IJKL} dx^a \wedge dx^b \wedge dx^c \wedge dx^d$<br>
+$S = \int {R^{ef}}_{cd} \epsilon_{abef} dx^a \wedge dx^b \wedge dx^c \wedge dx^d$<br>
+
+<br>
+<a href='index.html'>Back</a><br>
+	
+	</body>
+</html>

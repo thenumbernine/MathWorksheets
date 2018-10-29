@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type='text/javascript' src='../tryToFindMathJax.js'></script>
+		<title>gravitomagnetics</title>
+	</head>
+	<body onload='tryToFindMathJax();'>
+
+This started as a diff from my 'gravitomagnetics' worksheet.<br>
+It has additional ideas, but I don't want to muddle the last worksheet up too much.<br>
+<br>
+
+$T_{ab} = \left[\matrix{
+	-\rho_m c v_i & \rho_m v_i v_j + P \delta{ij} 
+}\right]$<br>
+So $T_{tt} = c^2 \rho_m$<br>
+(But the substitution of stress-energy for low-velocity matter isn't necessary.  We can just as easily keep $T_{ab}$ in its original form.)<br>
+Combine with EFE to find:<br>
+$\Delta \bar{h}_{tt} = 16 \pi \frac{G}{c^4} T_{tt}$<br>
+$\frac{c^2}{4} \Delta \bar{h}_{tt} = 4 \pi \frac{G}{c^2} T_{tt}$<br>
+$\frac{c^2}{4} \Delta \bar{h}_{tt} = 4 \pi G \rho_m$<br>
+<br>
+Poisson's equation:<br>
+$\frac{c^2}{4} \bar{h}_{tt} = -G \int_V \frac{\rho_m}{r} dV$<br>
+Let $\Phi^g = \frac{c^2}{4} \bar{h}_{tt}$<br>
+Let $G = \frac{1}{4\pi\epsilon_g}$<br>
+$\Phi^g = -\frac{1}{4\pi\epsilon_g} \int_V \frac{\rho_m}{r} dV$<br>
+Tada! Just like electromagnetism.<br>
+$\Phi^g = -\frac{1}{4\pi\epsilon_g c^2} \int_V \frac{T_{tt}}{r} dV$<br>
+Tada! Just like electric field.<br>
+<br>
+	
+Next do the same trick with $T_{ti} = -\rho_m c^2 \frac{v_i}{c}$<br>
+$-\frac{c}{4} \bar{h}_{ti} = -\frac{G}{c^2} \int_V \frac{p_i}{r} dV$<br>
+Let $(A^g)_i = -\frac{c}{4} \bar{h}_{ti}$ be the gravitomagnetic potential vector.<br>
+Let $\mu_g = \frac{4 \pi G}{c^2}$.<br>
+$(A^g)_i = -\frac{\mu_g}{4 \pi} \int_V \frac{p_i}{r} dV$<br>
+Just like magnetism.<br>
+$(A^g)_i = \frac{\mu_g}{4 \pi c} \int_V \frac{T_{ti}}{r} dV$<br>
+Just like the magnetic field.<br>
+<br>
+
+This gives the familiar formula: $c^2 = \frac{1}{\epsilon_g \mu_g}$<br>
+<br>
+
+Notice that $T_{ij}$ doesn't play into account at all.<br>
+<br>
+
+For electromagnetism, $T_{tt}$ and $T_{ti}$ are given by:<br>
+$T_{tt} = \frac{1}{2} ((\epsilon)^{-1} D^2 + (\mu)^{-1} B^2)$<br>
+$T_{ti} = c (\frac{v_p}{c})^2 \epsilon_{jkl} D_k B_l$<br>
+$T_{it} = c \epsilon_{ikl} D_k B_l$<br>
+My source is my "relativistic electromagnetic metric in medium" worksheet, which is using the -+++ signature... So I should double-check that.<br>
+Also, what do we do about the asymmetry?  That brings on a whole other level of complexity.<br>
+In fact, if we are using the de Donder gauge then we are stuck with<br>
+$-\frac{1}{2} \Box \bar{h}_{ab} = G_{ab}$<br>
+aka<br>
+$-\frac{1}{2} \Box (h^{TR})_{ab} = (R^{TR})_{ab}$<br>
+With 'TR' meaning 'trace-reversal'.<br>
+This means that any asymmetry in the Ricci curvature will also have to show up in the metric (right?  or will the $\Box$ get rid of it?  I can't see how...).<br>
+It does make me think I do, in fact, need to use a symmetrizing mechanism.  Options?<br>
+There's the simple $T'_{ab} := T_{(ab)}$.<br>
+There's the Belinfante and Rosenfeld symmetrization: $T'^{ab} = T^{ab} + \frac{1}{2} (s^{bac} + s^{bca} + s^{acb})_{,c}$<br>
+But this means also introducing our torsion term $s_{abc}$ which should be coupled to our particle spins... $2 T^{[ab]} = {s^{abc}}_{,c}$<br>
+<br>
+
+<hr>
+
+If you stop here, take what we know of $\bar{h}_{ab}$, and substitute it back into $h_{ab}$, you find something interesting.<br>
+${\epsilon_i}^{jk} (E^g)_{k,j} = -(B^g)_{i,t}$<br>
+${\epsilon_i}^{jk} (B^g)_{k,j} = -\mu_g \rho_m v_i + \frac{1}{c^2} (E^g)_{,t}$<br>
+<br>
+
+If we wanted to rewrite the matter variables in terms of stress-energy (so we can consider stress-energy sources other than matter, such as electromagnetism ...):<br>
+${(E^g)^i}_{,i} = -(\epsilon_g)^{-1} c^{-2} T_{tt}$<br>
+${(B^g)^i}_{,i} = 0$<br>
+$(B^g)_{i,t} + {\epsilon_i}^{jk} (E^g)_{k,j} = 0$<br>
+$(E^g)_{i,t} - c^2 {\epsilon_i}^{jk} (B^g)_{k,j} = -c \mu_g T_{ti} $<br>
+<br>
+
+Rewrite this in terms of $D = \epsilon E$<br>
+(Though I still need to do a more thorough investigation of the implications of non-vacuum fields, especially when to use the speed of light and when to use the phase velocity).<br>
+(Though when dealing with gravitational waves, the phase velocity <i>is</i> the speed of light...)<br>
+${(D^g)^i}_{,i} = -c^{-2} T_{tt}$<br>
+${(B^g)^i}_{,i} = 0$<br>
+$(B^g)_{i,t} + (\epsilon_g)^{-1} {\epsilon_i}^{jk} (D^g)_{k,j} = 0$<br>
+$(D^g)_{i,t} - (\mu_g)^{-1} {\epsilon_i}^{jk} (B^g)_{k,j} = -\frac{1}{c} T_{ti} $<br>
+<br>
+
+Another thing to keep an eye on is the fact that, in order to solve the Poisson equation, we assume steady-state $\partial_t^2 h_{ab} = 0$<br>
+I guess we are technically just approximating it to be incredibly low.<br>
+What is a typical pseudocartesian Schwarzschild metric magnitude at the Earth's surface?<br>
+$r = 6.37101e+6 m$<br>  
+$R = 2 M = 2 \cdot 5.9736e+24 kg = 2 \cdot 5.9736e+24 \cdot 6.6738480e-11 / (299792458)^2 m$<br>
+$h_{tt} = R / r \approx 1.39249214029442194833792592812598057361306 \cdot 10^{-9}$<br>
+$h_{rr} = 1 / (1 / h_{tt} - 1) \approx 1.39249214223345634727834006089119966986800 \cdot 10^{-9} \approx h_{tt}$<br>
+so any time derivatives would also be low?<br>
+<hr>
+
+Now comparing the ratios between matter and charge...<br>
