@@ -12,7 +12,8 @@ It has additional ideas, but I don't want to muddle the last worksheet up too mu
 <br>
 
 $T_{ab} = \left[\matrix{
-	-\rho_m c v_i & \rho_m v_i v_j + P \delta{ij} 
+	\rho_m c^2 & -\rho_m c v_i \\
+	-\rho_m c v_i & \rho_m v_i v_j + P \delta_{ij} 
 }\right]$<br>
 So $T_{tt} = c^2 \rho_m$<br>
 (But the substitution of stress-energy for low-velocity matter isn't necessary.  We can just as easily keep $T_{ab}$ in its original form.)<br>
@@ -26,7 +27,6 @@ $\frac{c^2}{4} \bar{h}_{tt} = -G \int_V \frac{\rho_m}{r} dV$<br>
 Let $\Phi^g = \frac{c^2}{4} \bar{h}_{tt}$<br>
 Let $G = \frac{1}{4\pi\epsilon_g}$<br>
 $\Phi^g = -\frac{1}{4\pi\epsilon_g} \int_V \frac{\rho_m}{r} dV$<br>
-Tada! Just like electromagnetism.<br>
 $\Phi^g = -\frac{1}{4\pi\epsilon_g c^2} \int_V \frac{T_{tt}}{r} dV$<br>
 Tada! Just like electric field.<br>
 <br>
@@ -36,7 +36,6 @@ $-\frac{c}{4} \bar{h}_{ti} = -\frac{G}{c^2} \int_V \frac{p_i}{r} dV$<br>
 Let $(A^g)_i = -\frac{c}{4} \bar{h}_{ti}$ be the gravitomagnetic potential vector.<br>
 Let $\mu_g = \frac{4 \pi G}{c^2}$.<br>
 $(A^g)_i = -\frac{\mu_g}{4 \pi} \int_V \frac{p_i}{r} dV$<br>
-Just like magnetism.<br>
 $(A^g)_i = \frac{\mu_g}{4 \pi c} \int_V \frac{T_{ti}}{r} dV$<br>
 Just like the magnetic field.<br>
 <br>
@@ -88,14 +87,19 @@ $(B^g)_{i,t} + (\epsilon_g)^{-1} {\epsilon_i}^{jk} (D^g)_{k,j} = 0$<br>
 $(D^g)_{i,t} - (\mu_g)^{-1} {\epsilon_i}^{jk} (B^g)_{k,j} = -\frac{1}{c} T_{ti} $<br>
 <br>
 
-Another thing to keep an eye on is the fact that, in order to solve the Poisson equation, we assume steady-state $\partial_t^2 h_{ab} = 0$<br>
+Another thing to keep an eye on is the fact that, in order to solve the Poisson equation, we assume $\partial_t^2 h_{ab} = 0$<br>
 I guess we are technically just approximating it to be incredibly low.<br>
+<br>
+
 What is a typical pseudocartesian Schwarzschild metric magnitude at the Earth's surface?<br>
-$r = 6.37101e+6 m$<br>  
-$R = 2 M = 2 \cdot 5.9736e+24 kg = 2 \cdot 5.9736e+24 \cdot 6.6738480e-11 / (299792458)^2 m$<br>
+$r = 6.37101 \cdot 10^6 m$<br>  
+$R = 2 M = 2 \cdot 5.9736 \cdot 10^{24} kg = 2 \cdot 5.9736 \cdot 10^{24} \cdot 6.6738480 \cdot 10^{11} / (299792458)^2 m$<br>
 $h_{tt} = R / r \approx 1.39249214029442194833792592812598057361306 \cdot 10^{-9}$<br>
 $h_{rr} = 1 / (1 / h_{tt} - 1) \approx 1.39249214223345634727834006089119966986800 \cdot 10^{-9} \approx h_{tt}$<br>
-so any time derivatives would also be low?<br>
 <hr>
 
 Now comparing the ratios between matter and charge...<br>
+
+In fact, the Maxwell charge is the electric charge, however the Einstein charge is the $T_{tt}$ term, which is both the matter and the electromagnetic energy.<br>
+Same deal with $T_{ti} = $ fluid momentum plus Poynting vector, versus $A_i = $ the vector potential of the magnetic field.<br>
+So I suspect that $E$ vs $E_g$ may not always line up with one another...<br>
