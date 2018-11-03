@@ -36,6 +36,8 @@ Here's the CDN URLs:
 
 [Differential Geometry/17 - Palatini action](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/17%20%2d%20Palatini%20action%2ehtml)
 
+[Differential Geometry/17b - Einstein-Cartan action](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/17b%20%2d%20Einstein%2dCartan%20action%2ehtml)
+
 [Differential Geometry/18 - Self-dual Palatini action](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/18%20%2d%20Self%2ddual%20Palatini%20action%2ehtml)
 
 [Differential Geometry/19 - Ashtekar variables](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/19%20%2d%20Ashtekar%20variables%2ehtml)
@@ -53,6 +55,8 @@ Here's the CDN URLs:
 [Differential Geometry/7 - torsion](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/7%20%2d%20torsion%2ehtml)
 
 [Differential Geometry/8 - metric-cancelling and torsion-free connection](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/8%20%2d%20metric%2dcancelling%20and%20torsion%2dfree%20connection%2ehtml)
+
+[Differential Geometry/8.1 - spin connection](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/8%2e1%20%2d%20spin%20connection%2ehtml)
 
 [Differential Geometry/9 - Riemann curvature](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/Differential%20Geometry/9%20%2d%20Riemann%20curvature%2ehtml)
 
@@ -89,6 +93,8 @@ Here's the CDN URLs:
 [GR EM Metrics/curved space gravitomagnetics](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR%20EM%20Metrics/curved%20space%20gravitomagnetics%2ehtml)
 
 [GR EM Metrics/flat space gravitomagnetics](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR%20EM%20Metrics/flat%20space%20gravitomagnetics%2ehtml)
+
+[GR EM Metrics/gravitomagnetics 2](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR%20EM%20Metrics/gravitomagnetics%202%2ehtml)
 
 [GR EM Metrics/gravitomagnetics](https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/GR%20EM%20Metrics/gravitomagnetics%2ehtml)
 
