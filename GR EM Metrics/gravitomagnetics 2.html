@@ -11,6 +11,20 @@ This started as a diff from my 'gravitomagnetics' worksheet.<br>
 It has additional ideas, but I don't want to muddle the last worksheet up too much.<br>
 <br>
 
+$h_{ab} = \left[\matrix{
+	\frac{2}{c^2} \Phi^g & -\frac{4}{c} A_x & -\frac{4}{c} A_y & -\frac{4}{c} A_z \\
+	-\frac{4}{c} A_x & \frac{2}{c^2} \Phi^g & 0 & 0 \\
+	-\frac{4}{c} A_y & 0 & \frac{2}{c^2} \Phi^g & 0 \\
+	-\frac{4}{c} A_z & 0 & 0 & \frac{2}{c^2} \Phi^g 
+}\right]$<br>
+
+$g_{ab} = h_{ab} + \eta_{ab}$ for sign convention $+---$<br>
+<br>
+
+<hr>
+<br>
+
+In matter, using the weak-field limit $u_t = 1, u_i = v_i$:<br>
 $T_{ab} = \left[\matrix{
 	\rho_m c^2 & -\rho_m c v_i \\
 	-\rho_m c v_i & \rho_m v_i v_j + P \delta_{ij} 
@@ -104,6 +118,47 @@ In fact, the Maxwell charge is the electric charge, however the Einstein charge 
 Same deal with $T_{ti} = $ fluid momentum plus Poynting vector, versus $A_i = $ the vector potential of the magnetic field.<br>
 So I suspect that $E$ vs $E_g$ may not always line up with one another...<br>
 
+
+<hr>
+
+What's the connection coefficients, and therefore the gravity, that this would subject something to...<br>
+$\Gamma_{abc} = \frac{1}{2} (g_{ab,c} + g_{ac,b} - g_{bc,a})$<br>
+$\Gamma_{abc} = \frac{1}{2} (h_{ab,c} + h_{ac,b} - h_{bc,a})$<br>
+${\Gamma^a}_{bc} = \frac{1}{2} ({h^a}_{b,c} + {h^a}_{c,b} - {h_{bc}}^{,a})$<br>
+<br>
+
+Geodesic:<br>
+$\dot{u}^i = -{\Gamma^i}_{ab} u^a u^b$<br>
+$\dot{u}^i = -{\Gamma^i}_{tt} u^t u^t - 2 {\Gamma^i}_{tj} u^t u^j - {\Gamma^i}_{jk} u^j u^k$<br>
+$\dot{u}^i = -{\Gamma^i}_{tt} (u^t)^2 - 2 {\Gamma^i}_{tj} u^t u^j - {\Gamma^i}_{jk} u^j u^k$<br>
+$\dot{u}^i = \Gamma_{itt} (u^t)^2 + 2 \Gamma_{itj} u^j u^t + \Gamma_{ijk} u^j u^k$<br>
+$\dot{u}^i = 
+	\frac{1}{2} (h_{it,t} + h_{it,t} - h_{tt,i}) (u^t)^2
+	+ (h_{it,j} + h_{ij,t} - h_{tj,i}) u^j u^t
+	+ \frac{1}{2} (h_{ij,k} + h_{ik,j} - h_{jk,i}) u^j u^k$<br>
+$\dot{u}^i = 
+	 (-\frac{4}{c} A^g_{i,t} - \frac{1}{c^2} (\Phi^g)_{,i}) (u^t)^2
+	+ (-\frac{4}{c} A^g_{i,j} + \frac{2}{c^2} (\Phi^g)_{,t} \eta_{ij} + \frac{4}{c} A^g_{j,i} ) u^j u^t
+	+ (\eta_{ij} \frac{1}{c^2} (\Phi^g)_{,k} + \eta_{ik} \frac{1}{c^2} (\Phi^g)_{,j} - \eta_{jk} \frac{1}{c^2} (\Phi^g)_{,i} ) u^j u^k$<br>
+$\dot{u}^i = 
+	-\frac{4}{c} A^g_{i,t} (u^t)^2 - \frac{1}{c^2} (\Phi^g)_{,i} (u^t)^2
+	+ \frac{2}{c^2} (\Phi^g)_{,t} \eta_{ij} u^j u^t + \frac{2}{c} {\epsilon_{ij}}^k (B^g)_k u^j u^t
+	+ \frac{1}{c^2} (\eta_{ij} (\Phi^g)_{,k} + \eta_{ik} (\Phi^g)_{,j} - \eta_{jk} (\Phi^g)_{,i} ) u^j u^k$<br>
+$\dot{u}^i = 
+	- \frac{4}{c} (E^g)^i (u^t)^2 
+	- \frac{2}{c} \epsilon^{ijk} (B^g)_k u_j u^t
+	
+	+ \frac{2}{c^2} (\Phi^g)_{,t} u^i u^t 
+	
+	+ \frac{2}{c^2} (\Phi^g)_{,j} u^j u^i
+	
+	+ \frac{4}{c} (\Phi^g)_{,i} (u^t)^2 
+	
+	- \frac{1}{c^2} (\Phi^g)_{,i} ((u_t)^2 + \Sigma_j u_j u_j)
+	$<br>
+<br>
+
+
 <hr>
 
 two-fluid plasma model coupled with gravitomagnetics<br>
@@ -160,6 +215,7 @@ and stress-energy terms:<br>
 $T_{tt} = \rho + \frac{1}{2} (E^2 + B^2) = $ energy from stress-energy (TODO double check units)<br>
 $T_{ti} = \rho v_i + S_i = $ momentum from stress-energy (TODO double-check units)<br>
 <br>
+
 
 	</body>
 </html>
