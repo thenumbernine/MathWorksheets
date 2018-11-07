@@ -24,13 +24,27 @@ $g_{ab} = h_{ab} + \eta_{ab}$ for sign convention $+---$<br>
 <hr>
 <br>
 
-In matter, using the weak-field limit $u_t = 1, u_i = v_i$:<br>
-$T_{ab} = \left[\matrix{
-	\rho_m c^2 & -\rho_m c v_i \\
-	-\rho_m c v_i & \rho_m v_i v_j + P \delta_{ij} 
+Matter stress-energy:<br>
+$T^{ab} = \rho_m u^a u^b + P (\eta^{ab} + u^a u^b)$<br>
+$T^{ab} = P \eta^{ab} + u^a u^b (\rho_m + P)$<br>
+with enthalpy:<br>
+$T^{ab} = P \eta^{ab} + \rho h u_a u_b$<br>
+$h = 1 + e_{int} + P / \rho_m$<br>
+$T^{ab} = P \eta^{ab} + (\rho_m + E_{int} + P) u^a u^b$<br>
+Let $u^t = \gamma, u^i = \gamma v^i$<br>
+$T^{ab} = \left[\matrix{
+	c^2 \gamma^2 \rho_m  & c \gamma^2 \rho_m v^j \\
+	c \gamma^2 \rho_m v^i & \gamma^2 \rho_m v_i v_j + P \eta^{ij} 
 }\right]$<br>
-So $T_{tt} = c^2 \rho_m$<br>
-(But the substitution of stress-energy for low-velocity matter isn't necessary.  We can just as easily keep $T_{ab}$ in its original form.)<br>
+
+$T_{ab} = \left[\matrix{
+	c^2 \gamma^2 \rho_m & -c \gamma^2 \rho_m v_j \\
+	-c \gamma^2 \rho_m v_i & \gamma^2 \rho_m v_i v_j + P \eta_{ij} 
+}\right]$<br>
+So $T_{tt} = c^2 \gamma^2 \rho_m$<br>
+<br>
+
+(TODO insert the $\gamma$'s below)<br>
 Combine with EFE to find:<br>
 $\Delta \bar{h}_{tt} = 16 \pi \frac{G}{c^4} T_{tt}$<br>
 $\frac{c^2}{4} \Delta \bar{h}_{tt} = 4 \pi \frac{G}{c^2} T_{tt}$<br>
@@ -61,7 +75,7 @@ Notice that $T_{ij}$ doesn't play into account at all.<br>
 <br>
 
 For electromagnetism, $T_{tt}$ and $T_{ti}$ are given by:<br>
-$T_{tt} = \frac{1}{2} ((\epsilon)^{-1} D^2 + (\mu)^{-1} B^2)$<br>
+$T_{tt} = \frac{1}{2 c^2} ((\epsilon)^{-1} D^2 + (\mu)^{-1} B^2)$<br>
 $T_{ti} = c (\frac{v_p}{c})^2 \epsilon_{jkl} D_k B_l$<br>
 $T_{it} = c \epsilon_{ikl} D_k B_l$<br>
 My source is my "relativistic electromagnetic metric in medium" worksheet, which is using the -+++ signature... So I should double-check that.<br>
@@ -79,8 +93,8 @@ But this means also introducing our torsion term $s_{abc}$ which should be coupl
 <br>
 
 <hr>
+<br>
 
-If you stop here, take what we know of $\bar{h}_{ab}$, and substitute it back into $h_{ab}$, you find something interesting.<br>
 ${\epsilon_i}^{jk} (E^g)_{k,j} = -(B^g)_{i,t}$<br>
 ${\epsilon_i}^{jk} (B^g)_{k,j} = -\mu_g \rho_m v_i + \frac{1}{c^2} (E^g)_{,t}$<br>
 <br>
