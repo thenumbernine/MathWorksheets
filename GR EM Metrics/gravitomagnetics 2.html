@@ -11,38 +11,71 @@ This started as a diff from my 'gravitomagnetics' worksheet.<br>
 It has additional ideas, but I don't want to muddle the last worksheet up too much.<br>
 <br>
 
-$h_{ab} = \left[\matrix{
-	\frac{2}{c^2} \Phi^g & -\frac{4}{c} A_x & -\frac{4}{c} A_y & -\frac{4}{c} A_z \\
-	-\frac{4}{c} A_x & \frac{2}{c^2} \Phi^g & 0 & 0 \\
-	-\frac{4}{c} A_y & 0 & \frac{2}{c^2} \Phi^g & 0 \\
-	-\frac{4}{c} A_z & 0 & 0 & \frac{2}{c^2} \Phi^g 
-}\right]$<br>
-
-$g_{ab} = h_{ab} + \eta_{ab}$ for sign convention $+---$<br>
+First let's reverse that signature, so it is -+++ just like the SRHD and Maxwell-in-medium worksheets...<br>
 <br>
+
+$\eta_{ab} = diag(-1,1,1,1)$<br>
+<br>
+
+This much is distinct of the signature -- because it does not separate space+time:<br>
+$g_{ab} = \eta_{ab} + h_{ab}$<br>
+$g_{ab,c} = h_{ab,c}$<br>
+$\Gamma_{abc} = \frac{1}{2} (h_{ab,c} + h_{ac,b} - h_{bc,a})$<br>
+${\Gamma^a}_{bc} = \frac{1}{2} ({h^a}_{b,c} + {h^a}_{c,b} - {h_{bc}}^{,a})$<br>
+$R_{ab} = 
+	\frac{1}{2} (
+		{{h_{bc}}^{,c}}_a 
+		- {h_{ab,c}}^{,c}
+		- {h^c}_{c,ab} 
+		+ {{h_{ac}}^{,c}}_b
+	)	
+	+ \frac{1}{4} (
+		
+		{h^c}_{c,e} {h^e}_{a,b} 
+		+ {h^c}_{c,e} {h^e}_{b,a} 
+		
+		- {h^c}_{c,e} {h_{ab}}^{,e}
+
+		- {h^c}_{e,b} {h^e}_{a,c}
+		- {h^c}_{e,b} {h^e}_{c,a}
+		+ {h^c}_{e,b} {h_{ac}}^{,e}
+		
+		- 2 {{h_b}^c}_{,e} {{h_a}^e}_{,c}
+		+ 2 {{h_b}^c}_{,e} {h_{ac}}^{,e}
+
+	)
+$<br>
+$R_{ab} = -\frac{1}{2} {h_{ab,c}}^c$<br>
+$R = \eta^{ab} R_{ab} = -\frac{1}{2} {{{h^a}_a}^{,b}}_b$<br>
+$G_{ab} = -\frac{1}{2} {h_{ab,c}}^c + \frac{1}{4} \eta_{ab} {{{h^c}_c}^{,d}}_d$<br>
+$\bar{h}_{ab} = h_{ab} - \frac{1}{2} \eta_{ab} {h^c}_c$<br>
+$G_{ab} = -\frac{1}{2} {\bar{h}_{ab,c}}^{c}$<br>
+$G_{ab} = 8 \pi \frac{G}{c^4} T_{ab}$<br>
+${\bar{h}_{ab,c}}^c = -16 \pi \frac{G}{c^4} T_{ab}$<br>
+<hr>
+
+now, taking from my "relativistic electromagnetic metric in medium" worksheet...<br>
+from the section "special relativity electromagnetic stress-energy in medium":<br>
+<br>
+
+$T^{uv} = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
+	\frac{1}{2} (D_k \epsilon^{-1} D^k + B_k \mu^{-1} B^k) &
+	\frac{1}{c} {\bar\epsilon_{jk}}^l \epsilon^{-1} D_k \mu^{-1} B_l \\
+	c {\bar\epsilon_{ik}}^l D^k B_l &
+	\frac{1}{2} \eta^{ij} (D_k \epsilon^{-1} D^k + B_k \mu^{-1} B^k) - D_j \epsilon^{-1} D^i - B_j \mu^{-1} B_i
+}}$<br>
 
 <hr>
 <br>
 
-Matter stress-energy:<br>
-$T^{ab} = \rho_m u^a u^b + P (\eta^{ab} + u^a u^b)$<br>
-$T^{ab} = P \eta^{ab} + u^a u^b (\rho_m + P)$<br>
-with enthalpy:<br>
-$T^{ab} = P \eta^{ab} + \rho h u_a u_b$<br>
-$h = 1 + e_{int} + P / \rho_m$<br>
-$T^{ab} = P \eta^{ab} + (\rho_m + E_{int} + P) u^a u^b$<br>
-Let $u^t = \gamma, u^i = \gamma v^i$<br>
-$T^{ab} = \left[\matrix{
-	c^2 \gamma^2 \rho_m  & c \gamma^2 \rho_m v^j \\
-	c \gamma^2 \rho_m v^i & \gamma^2 \rho_m v_i v_j + P \eta^{ij} 
-}\right]$<br>
-
-$T_{ab} = \left[\matrix{
-	c^2 \gamma^2 \rho_m & -c \gamma^2 \rho_m v_j \\
-	-c \gamma^2 \rho_m v_i & \gamma^2 \rho_m v_i v_j + P \eta_{ij} 
-}\right]$<br>
-So $T_{tt} = c^2 \gamma^2 \rho_m$<br>
+Matter stress-energy (from SRHD worksheet, which is from Marti &amp; Mueller SRHD finite volume solvers):<br>
 <br>
+
+$T^{uv} = \rho h u^u u^v + p g^{uv}$ = definition of stress-energy tensor for perfect fluids<br>
+$h = c^2 + \epsilon + P / \rho$ = specific enthalpy<br>
+<br>
+
+<hr>
 
 (TODO insert the $\gamma$'s below)<br>
 Combine with EFE to find:<br>
