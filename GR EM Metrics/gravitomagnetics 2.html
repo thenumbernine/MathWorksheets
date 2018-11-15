@@ -11,11 +11,17 @@ This started as a diff from my 'gravitomagnetics' worksheet.<br>
 It has additional ideas, but I don't want to muddle the last worksheet up too much.<br>
 <br>
 
+$c = 299792458 \frac{m}{s} = $ speed of light<br>
+$G = 6.67384 \cdot 10^{-11} \frac{m^3}{kg \cdot s^2} = $ gravitational constant<br>
+$\frac{G}{c^4} = \frac{s^2}{kg \cdot m}$<br>
+<br>
+
 First let's reverse that signature, so it is -+++ just like the SRHD and Maxwell-in-medium worksheets...<br>
 <br>
 
 $\eta_{ab} = diag(-1,1,1,1)$<br>
 <br>
+
 
 This much is distinct of the signature -- because it does not separate space+time:<br>
 $g_{ab} = \eta_{ab} + h_{ab}$<br>
@@ -52,26 +58,28 @@ $\bar{h}_{ab} = h_{ab} - \frac{1}{2} \eta_{ab} {h^c}_c$<br>
 $G_{ab} = -\frac{1}{2} {\bar{h}_{ab,c}}^{c}$<br>
 $G_{ab} = 8 \pi \frac{G}{c^4} T_{ab}$<br>
 ${\bar{h}_{ab,c}}^c = -16 \pi \frac{G}{c^4} T_{ab}$<br>
+(combined with units of $T_{ab}$ below, this means $\bar{h}_{ab,cd}$ has units $\frac{1}{m^2}$)<br>
 <hr>
 
 now, taking from my "relativistic electromagnetic metric in medium" worksheet...<br>
 from the section "special relativity electromagnetic stress-energy in medium":<br>
 <br>
 
-$T^{uv} = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
-	\frac{1}{2} (D_k \epsilon^{-1} D^k + B_k \mu^{-1} B^k) &
-	\frac{1}{c} {\bar\epsilon_{jk}}^l \epsilon^{-1} D_k \mu^{-1} B_l \\
-	c {\bar\epsilon_{ik}}^l D^k B_l &
-	\frac{1}{2} \eta^{ij} (D_k \epsilon^{-1} D^k + B_k \mu^{-1} B^k) - D_j \epsilon^{-1} D^i - B_j \mu^{-1} B_i
-}}$<br>
+$T^{(uv)} = \downarrow u(i) \overset{\rightarrow v(j)}{\left[\begin{matrix}
+	\frac{1}{2} (\frac{1}{\epsilon} D^2 + \frac{1}{\mu} B^2) &
+	\frac{1}{2} \frac{1}{c} (n^2 + 1) S_j \\
+	\frac{1}{2} \frac{1}{c} (n^2 + 1) S_i &
+	\frac{1}{2} \eta^{ij} (\frac{1}{\epsilon} D^2 + \frac{1}{\mu} B^2) - \frac{1}{\epsilon} D^i D^j - \frac{1}{\mu} B^i B^j
+\end{matrix}\right]}$<br>
 
+$T^{uv}$ has units $\frac{kg}{m s^2}$
 <hr>
 <br>
 
 Matter stress-energy (from SRHD worksheet, which is from Marti &amp; Mueller SRHD finite volume solvers):<br>
 <br>
 
-$T^{uv} = \rho h u^u u^v + p g^{uv}$ = definition of stress-energy tensor for perfect fluids<br>
+$T^{uv} = \rho h u^u u^v + P \eta^{uv}$ = stress-energy for perfect fluids<br>
 $h = c^2 + \epsilon + P / \rho$ = specific enthalpy<br>
 <br>
 
@@ -81,22 +89,20 @@ $h = c^2 + \epsilon + P / \rho$ = specific enthalpy<br>
 Combine with EFE to find:<br>
 $\Delta \bar{h}_{tt} = 16 \pi \frac{G}{c^4} T_{tt}$<br>
 $\frac{c^2}{4} \Delta \bar{h}_{tt} = 4 \pi \frac{G}{c^2} T_{tt}$<br>
-$\frac{c^2}{4} \Delta \bar{h}_{tt} = 4 \pi G \rho_m$<br>
 <br>
 Poisson's equation:<br>
-$\frac{c^2}{4} \bar{h}_{tt} = -G \int_V \frac{\rho_m}{r} dV$<br>
+$\frac{c^2}{4} \bar{h}_{tt} = -G \int_V \frac{T_{tt}}{c^2 r} dV$<br>
 Let $\Phi^g = \frac{c^2}{4} \bar{h}_{tt}$<br>
 Let $G = \frac{1}{4\pi\epsilon_g}$<br>
-$\Phi^g = -\frac{1}{4\pi\epsilon_g} \int_V \frac{\rho_m}{r} dV$<br>
-$\Phi^g = -\frac{1}{4\pi\epsilon_g c^2} \int_V \frac{T_{tt}}{r} dV$<br>
+$\Phi^g = -\frac{1}{4\pi\epsilon_g} \int_V \frac{T_{tt}}{c^2 r} dV$<br>
 Tada! Just like electric field.<br>
 <br>
 	
-Next do the same trick with $T_{ti} = -\rho_m c^2 \frac{v_i}{c}$<br>
-$-\frac{c}{4} \bar{h}_{ti} = -\frac{G}{c^2} \int_V \frac{p_i}{r} dV$<br>
+Next do the same trick with $T_{ti} = -c \rho_m v_i$<br>
+$-\frac{c}{4} \bar{h}_{ti} = -\frac{G}{c^2} \int_V (-\frac{T_{ti}}{c r}) dV$<br>
 Let $(A^g)_i = -\frac{c}{4} \bar{h}_{ti}$ be the gravitomagnetic potential vector.<br>
 Let $\mu_g = \frac{4 \pi G}{c^2}$.<br>
-$(A^g)_i = -\frac{\mu_g}{4 \pi} \int_V \frac{p_i}{r} dV$<br>
+$(A^g)_i = -\frac{\mu_g}{4 \pi} \int_V (-\frac{T_{ti}}{c r}) dV$<br>
 $(A^g)_i = \frac{\mu_g}{4 \pi c} \int_V \frac{T_{ti}}{r} dV$<br>
 Just like the magnetic field.<br>
 <br>
@@ -123,6 +129,11 @@ It does make me think I do, in fact, need to use a symmetrizing mechanism.  Opti
 There's the simple $T'_{ab} := T_{(ab)}$.<br>
 There's the Belinfante and Rosenfeld symmetrization: $T'^{ab} = T^{ab} + \frac{1}{2} (s^{bac} + s^{bca} + s^{acb})_{,c}$<br>
 But this means also introducing our torsion term $s_{abc}$ which should be coupled to our particle spins... $2 T^{[ab]} = {s^{abc}}_{,c}$<br>
+<br>
+
+if we simply symmetrize we get:<br>
+$T_{ti} = -\frac{1}{2} \frac{1}{c} (n^2 + 1) S_i$<br>
+For, $\vec{D} \times \vec{B} = \epsilon \vec{E} \times \mu \vec{H} = \frac{1}{(v_p)^2} \vec{S} = \frac{1}{c^2} n^2 \vec{S}$, for $\vec{S}$ the Poynting vector.<br>
 <br>
 
 <hr>
