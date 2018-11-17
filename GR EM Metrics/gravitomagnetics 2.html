@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<script type='text/javascript' src='../tryToFindMathJax.js'></script>
-		<title>gravitomagnetics</title>
+		<title>gravitomagnetics 2</title>
 	</head>
 	<body onload='tryToFindMathJax();'>
 
@@ -73,45 +73,6 @@ $T^{(uv)} = \downarrow u(i) \overset{\rightarrow v(j)}{\left[\begin{matrix}
 \end{matrix}\right]}$<br>
 
 $T^{uv}$ has units $\frac{kg}{m s^2}$
-<hr>
-<br>
-
-Matter stress-energy (from SRHD worksheet, which is from Marti &amp; Mueller SRHD finite volume solvers):<br>
-<br>
-
-$T^{uv} = \rho h u^u u^v + P \eta^{uv}$ = stress-energy for perfect fluids<br>
-$h = c^2 + \epsilon + P / \rho$ = specific enthalpy<br>
-<br>
-
-<hr>
-
-(TODO insert the $\gamma$'s below)<br>
-Combine with EFE to find:<br>
-$\Delta \bar{h}_{tt} = 16 \pi \frac{G}{c^4} T_{tt}$<br>
-$\frac{c^2}{4} \Delta \bar{h}_{tt} = 4 \pi \frac{G}{c^2} T_{tt}$<br>
-<br>
-Poisson's equation:<br>
-$\frac{c^2}{4} \bar{h}_{tt} = -G \int_V \frac{T_{tt}}{c^2 r} dV$<br>
-Let $\Phi^g = \frac{c^2}{4} \bar{h}_{tt}$<br>
-Let $G = \frac{1}{4\pi\epsilon_g}$<br>
-$\Phi^g = -\frac{1}{4\pi\epsilon_g} \int_V \frac{T_{tt}}{c^2 r} dV$<br>
-Tada! Just like electric field.<br>
-<br>
-	
-Next do the same trick with $T_{ti} = -c \rho_m v_i$<br>
-$-\frac{c}{4} \bar{h}_{ti} = -\frac{G}{c^2} \int_V (-\frac{T_{ti}}{c r}) dV$<br>
-Let $(A^g)_i = -\frac{c}{4} \bar{h}_{ti}$ be the gravitomagnetic potential vector.<br>
-Let $\mu_g = \frac{4 \pi G}{c^2}$.<br>
-$(A^g)_i = -\frac{\mu_g}{4 \pi} \int_V (-\frac{T_{ti}}{c r}) dV$<br>
-$(A^g)_i = \frac{\mu_g}{4 \pi c} \int_V \frac{T_{ti}}{r} dV$<br>
-Just like the magnetic field.<br>
-<br>
-
-This gives the familiar formula: $c^2 = \frac{1}{\epsilon_g \mu_g}$<br>
-<br>
-
-Notice that $T_{ij}$ doesn't play into account at all.<br>
-<br>
 
 For electromagnetism, $T_{tt}$ and $T_{ti}$ are given by:<br>
 $T_{tt} = \frac{1}{2 c^2} ((\epsilon)^{-1} D^2 + (\mu)^{-1} B^2)$<br>
@@ -134,6 +95,93 @@ But this means also introducing our torsion term $s_{abc}$ which should be coupl
 if we simply symmetrize we get:<br>
 $T_{ti} = -\frac{1}{2} \frac{1}{c} (n^2 + 1) S_i$<br>
 For, $\vec{D} \times \vec{B} = \epsilon \vec{E} \times \mu \vec{H} = \frac{1}{(v_p)^2} \vec{S} = \frac{1}{c^2} n^2 \vec{S}$, for $\vec{S}$ the Poynting vector.<br>
+<br>
+
+
+
+<hr>
+<br>
+
+Matter stress-energy (from SRHD worksheet, which is from Marti &amp; Mueller SRHD finite volume solvers):<br>
+<br>
+
+$T^{uv} = \rho h u^u u^v + P \eta^{uv}$ = stress-energy for perfect fluids<br>
+$h = c^2 + \epsilon + P / \rho$ = specific enthalpy<br>
+<br>
+
+$[P] = Pa = \frac{kg}{m s^2}$<br>
+$[\rho] = \frac{kg}{m^3}$<br>
+$[\frac{P}{\rho}] = \frac{m^2}{s^2}$<br>
+<br>
+
+$[c] = \frac{m}{s}$<br>
+$[c^2] = \frac{m^2}{s^2}$<br>
+<br>
+
+$P = (\Gamma - 1) \rho e_{int}$<br>
+$e_{int} = \frac{P}{(\Gamma - 1) \rho}$<br>
+$[\Gamma] = 1$<br>
+$[e_{int}] = [\frac{P}{\rho}] = \frac{m^2}{s^2}$<br>
+<br>
+
+$h = c^2 + e_{int} + \frac{P}{\rho}$<br>
+$[h] = \frac{m^2}{s^2}$<br>
+<br>
+
+$T_{tt} = \rho h (u_t)^2 = \rho h \gamma^2$<br>
+$[T_{tt}] = [\rho h \gamma^2] = [\rho h] = \frac{kg}{m s^2}$<br>
+<br>
+
+$T_{ti} = \rho h u_t u_i = \rho h \gamma^2 \frac{v_i}{c}$<br>
+$[T_{ti}] = \frac{kg}{m s^2}$<br>
+<br>
+
+so $u_i = \frac{v_i}{c}$<br>
+$[u_a] = 1$<br>
+$[\gamma = u_t] = 1$<br>
+$[v_i] = \frac{m}{s}$<br>
+<br>
+
+<hr>
+
+here's the diff part:<br>
+
+Einstein Field Equations:<br>
+$G_{ab} = 8 \pi \frac{G}{c^4} T_{ab}$<br>
+$-\frac{1}{2} {\bar{h}_{ab,c}}^c = 8 \pi \frac{G}{c^4} T_{ab}$<br>
+${\bar{h}_{ab,c}}^c = -16 \pi \frac{G}{c^4} T_{ab}$<br>
+Separating space and time:<br>
+$-\frac{1}{c^2} \partial_t^2 \bar{h}_{ab} + \nabla \bar{h}_{ab} = -16 \pi \frac{G}{c^4} T_{ab}$<br>
+Assuming a steady state:<br>
+$\nabla \bar{h}_{ab} = -16 \pi \frac{G}{c^4} T_{ab}$<br>
+<br>
+
+Combine with EFE to find:<br>
+$\nabla \bar{h}_{tt} = -16 \pi \frac{G}{c^4} T_{tt}$<br>
+$\frac{c^2}{4} \nabla \bar{h}_{tt} = -4 \pi \frac{G T_{tt}}{c^2}$<br>
+<br>
+
+Poisson's equation:<br>
+$\frac{c^2}{4} \bar{h}_{tt} = \int_V \frac{G T_{tt}}{c^2 r} dV$<br>
+Let $\Phi^g = \frac{c^2}{4} \bar{h}_{tt}$<br>
+Let $G = \frac{1}{4\pi\epsilon_g}$, so $\epsilon_g = \frac{1}{4 \pi G}$<br>
+$\Phi^g = \frac{1}{4\pi\epsilon_g} \int_V \frac{T_{tt}}{c^2 r} dV$<br>
+Tada! Just like electric field.<br>
+<br>
+	
+Next do the same trick with $T_{ti} = \rho h u_t u_i$<br>
+$\frac{c}{4} \bar{h}_{ti} = \int_V \frac{G T_{ti}}{c^3 r} dV$<br>
+Let $(A^g)_i = \frac{c}{4} \bar{h}_{ti}$ be the gravitomagnetic potential vector.<br>
+Let $\mu_g = \frac{4 \pi G}{c^2}$.<br>
+$(A^g)_i = \frac{\mu_g}{4 \pi} \int_V \frac{T_{ti}}{c r} dV$<br>
+Just like the magnetic field.<br>
+<br>
+--- correcting signature ---<br>
+
+This gives the familiar formula: $c^2 = \frac{1}{\epsilon_g \mu_g}$<br>
+<br>
+
+Notice that $T_{ij}$ doesn't play into account at all.<br>
 <br>
 
 <hr>
