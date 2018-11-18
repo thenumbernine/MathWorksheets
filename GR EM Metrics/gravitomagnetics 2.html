@@ -9,26 +9,57 @@
 
 This started as a diff from my 'gravitomagnetics' worksheet.<br>
 It has additional ideas, but I don't want to muddle the last worksheet up too much.<br>
+Alright, I've made enough stupid sign errors that I'm just going to start from the top and make these two worksheets 1:1<br>
+Except that this worksheet is going to be signature -+++, just like all my others.<br>
 <br>
 
+Constants:<br>
 $c = 299792458 \frac{m}{s} = $ speed of light<br>
 $G = 6.67384 \cdot 10^{-11} \frac{m^3}{kg \cdot s^2} = $ gravitational constant<br>
-$\frac{G}{c^4} = \frac{s^2}{kg \cdot m}$<br>
-<br>
-
-First let's reverse that signature, so it is -+++ just like the SRHD and Maxwell-in-medium worksheets...<br>
+$[\frac{G}{c^4}] = [\frac{s^2}{kg \cdot m}]$ units<br>
 <br>
 
 $\eta_{ab} = diag(-1,1,1,1)$<br>
 <br>
 
-
 This much is distinct of the signature -- because it does not separate space+time:<br>
+Near field approximation:<br>
 $g_{ab} = \eta_{ab} + h_{ab}$<br>
+The coordinate basis is $\frac{\partial}{\partial x^\mu} = [ 
+	\frac{\partial}{c \partial t},
+	\frac{\partial}{\partial x},
+	\frac{\partial}{\partial y},
+	\frac{\partial}{\partial z}]$<br>
+$g^{ab} \approx \eta^{ab}$<br>
+Raising and lowering is with $\eta^{ab}$<br>
+<br>
+
 $g_{ab,c} = h_{ab,c}$<br>
 $\Gamma_{abc} = \frac{1}{2} (h_{ab,c} + h_{ac,b} - h_{bc,a})$<br>
 ${\Gamma^a}_{bc} = \frac{1}{2} ({h^a}_{b,c} + {h^a}_{c,b} - {h_{bc}}^{,a})$<br>
-$R_{ab} = 
+
+${R^a}_{bcd} = 2 ({\Gamma^a}_{b[d,c]} + {\Gamma^a}_{e[c} {\Gamma^e}_{d]b})$<br>
+$= {h^a}_{b,[dc]} + {h^a}_{[d,c]b} - {{h_{b[d}}^{,a}}_{,c]}
+	+ \frac{1}{2} ({h^a}_{e,[c} + {h^a}_{[c|,e} - {h_{e[c}}^{,a})
+	({h^e}_{b,|d]} + {h^e}_{d],b} - {h_{d]b}}^{,e})$<br>
+$= {h^a}_{[d,c]b} - {h_{b[d,c]}}^{,a}
+	+ \frac{1}{2} (
+		+ {h^a}_{e,[c} {h^e}_{b,|d]} 
+		+ {h^a}_{e,[c} {h^e}_{d],b} 
+		- {h^a}_{e,[c} {h_{d]b}}^{,e}
+		+ {h^a}_{[c|,e} {h^e}_{b,|d]} 
+		+ {h^a}_{[c|,e} {h^e}_{d],b} 
+		- {h^a}_{[c|,e} {h_{d]b}}^{,e}
+		- {h_{e[c}}^{,a} {h^e}_{b,|d]} 
+		- {h_{e[c}}^{,a} {h^e}_{d],b} 
+		+ {h_{e[c}}^{,a} {h_{d]b}}^{,e}
+	)
+$<br>
+<br>
+
+$R_{ab} = {R^c}_{acb}$<br>
+
+$= 
 	\frac{1}{2} (
 		{{h_{bc}}^{,c}}_a 
 		- {h_{ab,c}}^{,c}
@@ -51,18 +82,285 @@ $R_{ab} =
 
 	)
 $<br>
+
+Choosing the gauge condition (de Donder gauge):<br>
+$(h_{ab} - \frac{1}{2} \eta_{ab} {h^c}_c)^{,b} = 0$<br>
+${h_{ab}}^{,b} = \frac{1}{2} {h_c}^{c,a}$<br>
+Let $h = {h^a}_a$<br>
+$\nabla \cdot \textbf{h} = \frac{1}{2} \nabla h$<br>
+<br>
+
+$R_{ab} = 
+	\frac{1}{2} (
+		\frac{1}{2} {{h_c}^c}_{,ba}
+		- {h_{ab,c}}^{,c}
+		- {h^c}_{c,ab} 
+		\frac{1}{2} {{h_c}^c}_{,ba}
+	)	
+	+ \frac{1}{4} (
+		{h^c}_{c,e} {h^e}_{a,b} 
+		+ {h^c}_{c,e} {h^e}_{b,a} 
+		
+		- {h^c}_{c,e} {h_{ab}}^{,e}
+
+		- {h^c}_{e,b} {h^e}_{a,c}
+		- {h^c}_{e,b} {h^e}_{c,a}
+		+ {h^c}_{e,b} {h_{ac}}^{,e}
+		
+		- 2 {{h_b}^c}_{,e} {{h_a}^e}_{,c}
+		+ 2 {{h_b}^c}_{,e} {h_{ac}}^{,e}
+
+	)
+$<br>
+
+$R_{ab} = 
+	- \frac{1}{2} {h_{ab,c}}^{,c}
+	
+	+ \frac{1}{4} (
+		{h^c}_{c,e} {h^e}_{a,b} 
+		+ {h^c}_{c,e} {h^e}_{b,a} 
+		
+		- {h^c}_{c,e} {h_{ab}}^{,e}
+
+		- {h^c}_{e,b} {h^e}_{a,c}
+		- {h^c}_{e,b} {h^e}_{c,a}
+		+ {h^c}_{e,b} {h_{ac}}^{,e}
+		
+		- 2 {{h_b}^c}_{,e} {{h_a}^e}_{,c}
+		+ 2 {{h_b}^c}_{,e} {h_{ac}}^{,e}
+
+	)
+$<br>
+All the squared terms should go away because $h_{ab} &lt;&lt; 1$, therefore $(h_{ab})^2 \approx 0$<br>
 $R_{ab} = -\frac{1}{2} {h_{ab,c}}^c$<br>
+$= -\frac{1}{2} \Box h_{ab}$
+$= -\frac{1}{2} \Box \textbf{h}$<br>
+<br>
+
+Next Gaussian curvature:<br>
 $R = \eta^{ab} R_{ab} = -\frac{1}{2} {{{h^a}_a}^{,b}}_b$<br>
-$G_{ab} = -\frac{1}{2} {h_{ab,c}}^c + \frac{1}{4} \eta_{ab} {{{h^c}_c}^{,d}}_d$<br>
+$= -\frac{1}{2} \Box {h^a}_a$
+$ = -\frac{1}{2} \Box h$<br>
+<br>
+
+Einstein tensor:<br>
+$G_{ab} = R_{ab} - \frac{1}{2} g_{ab} R$<br>
+Linerized approximation:<br>
+$G_{ab} = R_{ab} - \frac{1}{2} \eta_{ab} R$<br>
+$= -\frac{1}{2} {h_{ab,c}}^c + \frac{1}{4} \eta_{ab} {{{h^c}_c}^{,d}}_d$<br>
+<br>
+
+Define gravitational potential:<br>
 $\bar{h}_{ab} = h_{ab} - \frac{1}{2} \eta_{ab} {h^c}_c$<br>
-$G_{ab} = -\frac{1}{2} {\bar{h}_{ab,c}}^{c}$<br>
-$G_{ab} = 8 \pi \frac{G}{c^4} T_{ab}$<br>
-${\bar{h}_{ab,c}}^c = -16 \pi \frac{G}{c^4} T_{ab}$<br>
+${\bar{h}_{ab}}^{,b} = (h_{ab} - \frac{1}{2} \eta_{ab} {h^c}_c)^{,b} = 0$ by the de Donder gauge.<br>
+or $\nabla \cdot \bar{\textbf{h}} = 0$<br>
+${\bar{h}_{ab,c}}^c = {h_{ab,c}}^c - \frac{1}{2} \eta_{ab} {{{h^c}_c}^{,d}}_d$<br>
 (combined with units of $T_{ab}$ below, this means $\bar{h}_{ab,cd}$ has units $\frac{1}{m^2}$)<br>
+<br>
+
+Substitute into Einstein tensor:<br>
+$G_{ab} = -\frac{1}{2} {h_{ab,c}}^c + \frac{1}{4} \eta_{ab} {{{h^c}_c}^{,d}}_d$<br>
+$= -\frac{1}{2} {\bar{h}_{ab,c}}^c$<br>
+$= -\frac{1}{2} \Box \bar{h}_{ab} = -\frac{1}{2} \Box \bar{\textbf{h}}$<br>
+....which makes perfect sense, because the Einstein tensor is the trace-reversal of the Ricci tensor, 
+and $\bar{\textbf{h}}$ is the trace-reversal of $\textbf{h}$<br>
+<br>
+
+Einstein Field Equations:<br>
+$G_{ab} = 8 \pi \frac{G}{c^4} T_{ab}$<br>
+$-\frac{1}{2} {\bar{h}_{ab,c}}^c = 8 \pi \frac{G}{c^4} T_{ab}$<br>
+${\bar{h}_{ab,c}}^c = -16 \pi \frac{G}{c^4} T_{ab}$<br>
+<br>
+(Ok this is the first part we separate space+time, so now metric signature matters)<br>
+<br>
+Separating space and time:<br>
+$-\frac{1}{c^2} \frac{\partial^2}{\partial t^2} \bar{h}_{ab} + \Delta \bar{h}_{ab} = -16 \pi \frac{G}{c^4} T_{ab}$<br>
+Assuming a steady state:<br>
+$\Delta \bar{h}_{ab} = -16 \pi \frac{G}{c^4} T_{ab}$<br>
+<br>
+
+Stress energy of matter in curved space:<br>
+$T_{ab} = \rho u_a u_b + P (g_{ab} + u_a u_b) $<br>
+$T_{ab} = (\rho + P) u_a u_b + P g_{ab}$<br>
+(here's another sign error difference between the original paper and MTW ... <br>
+MTW uses $u^a = (1,0,0,0), u_a = (-1,0,0,0)$ .. using eqns 5.37 of MTW)<br>
+Low-velocity approximation: $u_t \approx 1, u_i \approx v_i$<br>
+$T_{00} = (\rho + P) (u_0)^2 + P g_{00} \approx \rho$<br>
+$T_{0i} = (\rho + P) u_0 u_i \approx -\rho v_i$<br>
+$T_{ij} = \rho v_i v_j + P \delta_{ij}$<br>
+$T_{ab} = \left[\matrix{
+	c^2 \rho_m & -c \rho_m v_i \\
+	-c \rho_m v_i & \rho_m v_i v_j + P \delta_{ij} 
+}\right]$<br>
+Combine with EFE to find:<br>
+$\Delta \bar{h}_{tt} = -16 \pi \frac{G}{c^4} T_{tt}$<br>
+$\Delta (\frac{c^2}{4} \bar{h}_{tt}) = -4 \pi \frac{G}{c^2} T_{tt}$<br>
+Let $\Phi^g = \frac{c^2}{4} \bar{h}_{tt}$<br>
+$\Delta \Phi^g = -4 \pi \frac{G}{c^2} T_{tt}$<br>
+<br>
+
+Poisson's equation:<br>
+$\Delta \phi = 4 \pi \rho$ has a solution $\phi = -\int_V \frac{\rho}{r} dV$<br>
+<br>
+$\Phi^g = \frac{c^2}{4} \bar{h}_{tt} = \frac{G}{c^2} \int_V \frac{T_{tt}}{r} dV$<br>
+Let $G = \frac{1}{4\pi\epsilon_g}$, so $\epsilon_g = \frac{1}{4 \pi G}$<br>
+$\Phi^g = \frac{1}{4\pi\epsilon_g} \int_V \frac{T_{tt}}{c^2 r} dV$<br>
+Tada! Just like the electric field.<br>
+<br>
+
+Next do the same trick with $T_{ti}$<br>
+$\Delta \bar{h}_{ti} = -16 \pi \frac{G}{c^4} T_{ti}$<br>
+$\Delta (-\frac{c}{4} \bar{h}_{ti}) = 4 \pi \frac{G}{c^3} T_{ti}$<br>
+Let $(A^g)_i = -\frac{c}{4} \bar{h}_{ti}$ be the gravitomagnetic potential vector.<br>
+$\Delta A^g_i = 4 \pi \frac{G}{c^3} T_{ti}$<br>
+Use Poisson's equation:<br>
+$(A^g)_i = -\frac{c}{4} \bar{h}_{ti} = -\frac{G}{c^3} \int_V \frac{T_{ti}}{r} dV$<br>
+Let $\mu_g = \frac{4 \pi G}{c^2}$.<br>
+$(A^g)_i = -\frac{\mu_g}{4 \pi} \int_V \frac{T_{ti}}{c r} dV$<br>
+Just like the magnetic field.<br>
+<br>
+
+This gives the familiar formula: $c^2 = \frac{1}{\epsilon_g \mu_g}$<br>
+<br>
+
+Notice that $T_{ij}$ doesn't play into account at all.<br>
 <hr>
+
+If you stop here, take what we know of $\bar{h}_{ab}$, and substitute it back into $h_{ab}$, you find something interesting.<br>
+
+$\bar{h}_{tt} = \frac{4}{c^2} \Phi^g$<br>
+$\bar{h}_{ti} = \bar{h}_{it} = -\frac{4}{c} (A^g)_i$<br>
+Let's assume the rest is zero for now: $\bar{h}_{ij} = 0$<br>
+<br>
+Now let's calculate $h_{ab}$ from $\bar{h}_{ab}$<br>
+$\bar{h}$ definition:<br>
+$\bar{h}_{ab} = h_{ab} - \frac{1}{2} \eta_{ab} {h^c}_c$<br>
+contract with $\eta^{ab}$:<br>
+${\bar{h}^a}_a = {h^a}_a - \frac{1}{2} \eta^{ab} \eta_{ab} {h^c}_c$<br>
+${\bar{h}^a}_a = {h^a}_a - \frac{4}{2} {h^a}_a$<br>
+${\bar{h}^a}_a = -{h^a}_a$<br>
+substitute back into definition:<br>
+$\bar{h}_{ab} = h_{ab} + \frac{1}{2} \eta_{ab} {\bar{h}^c}_c$<br>
+solve for $h_{ab}$<br>
+$h_{ab} = \bar{h}_{ab} - \frac{1}{2} \eta_{ab} {\bar{h}^c}_c$<br>
+<br>
+
+${\bar{h}^a}_a = -\bar{h}_{tt} + \Sigma_i \bar{h}_{ii} = \bar{h}_{tt}$<br>
+<br>
+
+Now solve for $h_{ba}$<br>
+$h_{tt} = \bar{h}_{tt} - \frac{1}{2} \eta_{tt} {\bar{h}^a}_a 
+	= \bar{h}_{tt} - \frac{1}{2} \eta_{tt} (-\bar{h}_{tt} + \Sigma_i \bar{h}_{ii}) 
+	= \frac{1}{2} \bar{h}_{tt}$<br>
+$h_{ti} = \bar{h}_{ti} - \frac{1}{2} \eta_{ti} {\bar{h}^a}_a 
+	= \bar{h}_{ti} - \frac{1}{2} \eta_{ti} (-\bar{h}_{tt} + \Sigma_i \bar{h}_{ii})
+	= \bar{h}_{ti}$<br>
+$h_{ij} = \bar{h}_{ij} - \frac{1}{2} \eta_{ij} {\bar{h}^a}_a 
+	= \bar{h}_{ij} - \frac{1}{2} \eta_{ij} (-\bar{h}_{tt} + \Sigma_i \bar{h}_{ii}) 
+	= \frac{1}{2} \delta_{ij} \bar{h}_{tt}$<br>
+We get<br>
+$h_{ab} = \left[\matrix{
+	\frac{2}{c^2} \Phi^g & -\frac{4}{c} A_x & -\frac{4}{c} A_y & -\frac{4}{c} A_z \\
+	-\frac{4}{c} A_x & \frac{2}{c^2} \Phi^g & 0 & 0 \\
+	-\frac{4}{c} A_y & 0 & \frac{2}{c^2} \Phi^g & 0 \\
+	-\frac{4}{c} A_z & 0 & 0 & \frac{2}{c^2} \Phi^g 
+}\right]$<br>
+<br>
+
+Add this to the flat-space metric $\eta_{ab}$ to find: ($g_{ab} = \eta_{ab} + h_{ab}$)<br>
+$g_{ab} = \left[\matrix{
+	-1 + \frac{2}{c^2} \Phi^g & -\frac{4}{c} A_x & -\frac{4}{c} A_y & -\frac{4}{c} A_z \\
+	-\frac{4}{c} A_x & 1 + \frac{2}{c^2} \Phi^g & 0 & 0 \\
+	-\frac{4}{c} A_y & 0 & 1 + \frac{2}{c^2} \Phi^g & 0 \\
+	-\frac{4}{c} A_z & 0 & 0 & 1 + \frac{2}{c^2} \Phi^g 
+}\right]$<br>
+(TODO , shouldn't the whole metric be negative'd from the +--- signature metric?  If so, should I negative $\Phi^g$ and $A^g$, or should I just take note here that there are negative the values that their negative-signature counterparts would be?)<br>
+
+...and this looks surprisingly similar to a combination of the metric representing the Newtonian limit of relativity ($g_{ab} = \eta_{ab} + 2 \delta_{ab} \Phi$),<br>
+as well as the metric (similar to Kaluza-Klein) whose geodesic looks similar to the Lorentz force ($g_{ab} = \eta_{ab} + 2 \delta_{t(a} A_{b)})$<br>
+Coincidentally those are the forces which we are recreating using this model.<br>
+<br>
+
+<hr>
+
+<br>
+
+$F^g_{ab} = \left[\begin{matrix}
+	0 & -\frac{1}{c} E^g_j \\
+	\frac{1}{c} E^g_i & {\epsilon_{ij}}^k B^g_k
+\end{matrix}\right]$<br>
+<br>
+
+$F^g_{ab} = 2 A^g_{[b,a]}$<br>
+$\frac{1}{c} E^g_i = F^g_{it} = 2 A^g_{[t,i]} = A^g_{t,i} - A^g_{i,t} = \Phi^g_{,i} - A^g_{i,t}$<br>
+$B^g_i = \frac{1}{2} {\epsilon_i}^{jk} F^g_{jk} = {\epsilon_i}^{jk} A^g_{[k,j]} = {\epsilon_i}^{jk} A^g_{k,j}$<br>
+<br>
+
+$(F^g)^{ab} = \left[\begin{matrix}
+	0 & \frac{1}{c} E^g_j \\
+	-\frac{1}{c} E^g_i & {\epsilon_{ij}}^k B^g_k
+\end{matrix}\right]$<br>
+<br>
+
+${(F^g)^{ab}}_{,b} = (J^g)^a$ gives us...<br>
+${(F^g)^{tu}}_{,u} = (J^g)^t$<br>
+${(F^g)^{tu}}_{,u} = \frac{1}{c} E^g_{j,j}$<br>
+substitute $\frac{1}{c} E^g_i = \Phi^g_{,i} - A^g_{i,t}$<br>
+${(F^g)^{tu}}_{,u} = \Phi^g_{,jj} - A^g_{j,tj}$<br>
+using the Lorentz gauge $A^g_{j,j} = 0$ we get
+${(F^g)^{tu}}_{,u} = \Phi^g_{,jj} = -4 \pi \frac{G}{c^2} T_{tt}$<br> 
+and ${(F^g)^{tu}}_{,u} = (J^g)^t$<br>
+so $(J^g)^t = -4 \pi \frac{G}{c^2} T_{tt}$<br>
+so $J^g_t = 4 \pi \frac{G}{c^2} T_{tt} = \frac{1}{c^2 \epsilon_g} T_{tt}$<br>
+so $\epsilon_g E^g_{i,i} = -\frac{1}{c} T_{tt}$<br>
+<br>
+
+${(F^g)^{iu}}_{,u} = (J^g)^i$ gives us<br>
+${(F^g)^{iu}}_{,u} = -\frac{1}{c} E^g_{i,t} + {\epsilon_i}^{jk} B^g_{k,j}$<br>
+substitute $\frac{1}{c} E^g_i = \Phi^g_{,it} - A^g_{i,t}, B^g_i = {\epsilon_i}^{jk} A_{k,j}$<br>
+${(F^g)^{iu}}_{,u} = -(\Phi^g_{,it} - A^g_{i,tt}) + {\epsilon_{ij}}^k {\epsilon_k}^{lm} A^g_{m,lj} $<br>
+using $A^g_{i,tt} = 0$ (or am I thinking of $\bar{h}_{ab,tt} = 0$ ...)<br>
+${(F^g)^{iu}}_{,u} = -\Phi^g_{,it} + (\delta_i^l \delta_j^m - \delta_i^m \delta_j^l) A^g_{m,lj} $<br>
+${(F^g)^{iu}}_{,u} = -\Phi^g_{,it} + A^g_{j,ij} - A^g_{i,jj} $<br>
+using Lorentz gauge $\Phi^g_{,jj} = A^g_{i,jj} = 0$<br>
+${(F^g)^{iu}}_{,u} = -\Phi^g_{,it} - A^g_{i,jj} $<br>
+and using $-\Phi^g_{,it} = 0$ (why?)<br>
+and $A^g_{i,jj} = -\frac{4 \pi G}{c^3} T_{ti}$<br>
+${(F^g)^{iu}}_{,u} = \frac{4 \pi G}{c^3} T_{ti}$<br>
+so $(J^g)^i = \frac{4 \pi G}{c^3} T_{ti} = \frac{1}{c} \mu_g T_{ti}$<br>
+<br>
+
+<br>
+
+Then the dual gives
+$(B^g)_{i,i} = 0$<br>
+$(B^g)_{i,t} + {\epsilon_i}^{jk} (E^g)_{k,j} = 0$<br>
+<br>
+
+If we wanted to rewrite the matter variables in terms of stress-energy (so we can consider stress-energy sources other than matter, such as electromagnetism ...):<br>
+${(E^g)^i}_{,i} = -4 \pi \frac{G}{c} T_{tt} = -\frac{1}{c \epsilon_g} T_{tt}$<br>
+${(B^g)^i}_{,i} = 0$<br>
+$(B^g)_{i,t} + {\epsilon_i}^{jk} (E^g)_{k,j} = 0$<br>
+$(E^g)_{i,t} - c^2 {\epsilon_i}^{jk} (B^g)_{k,j} = c \mu_g T_{ti} $<br>
+<br>
+
+Rewrite this in terms of $D = \epsilon_g E$<br>
+${(D^g)^i}_{,i} = -\frac{1}{c} T_{tt}$<br>
+${(B^g)^i}_{,i} = 0$<br>
+$(B^g)_{i,t} + (\epsilon_g)^{-1} {\epsilon_i}^{jk} (D^g)_{k,j} = 0$<br>
+$(D^g)_{i,t} - (\mu_g)^{-1} {\epsilon_i}^{jk} (B^g)_{k,j} = \frac{1}{c} T_{ti} $<br>
+<br>
+
+Another thing to keep an eye on is the fact that, in order to solve the Poisson equation, we assume $\partial_t^2 h_{ab} = 0$<br>
+I guess we are technically just approximating it to be incredibly low.<br>
+<br>
+
+<hr>
+
 
 now, taking from my "relativistic electromagnetic metric in medium" worksheet...<br>
 from the section "special relativity electromagnetic stress-energy in medium":<br>
+TODO redo these calculations with $g_{ab} = \eta_{ab} + h_{ab}$... starting with $F_{ab} = 2 A_{[b,a]}$ ?<br>
 <br>
 
 $T^{(uv)} = \downarrow u(i) \overset{\rightarrow v(j)}{\left[\begin{matrix}
@@ -142,74 +440,8 @@ $[\gamma = u_t] = 1$<br>
 $[v_i] = \frac{m}{s}$<br>
 <br>
 
-<hr>
-
-here's the diff part:<br>
-
-Einstein Field Equations:<br>
-$G_{ab} = 8 \pi \frac{G}{c^4} T_{ab}$<br>
-$-\frac{1}{2} {\bar{h}_{ab,c}}^c = 8 \pi \frac{G}{c^4} T_{ab}$<br>
-${\bar{h}_{ab,c}}^c = -16 \pi \frac{G}{c^4} T_{ab}$<br>
-Separating space and time:<br>
-$-\frac{1}{c^2} \partial_t^2 \bar{h}_{ab} + \nabla \bar{h}_{ab} = -16 \pi \frac{G}{c^4} T_{ab}$<br>
-Assuming a steady state:<br>
-$\nabla \bar{h}_{ab} = -16 \pi \frac{G}{c^4} T_{ab}$<br>
-<br>
-
-Combine with EFE to find:<br>
-$\nabla \bar{h}_{tt} = -16 \pi \frac{G}{c^4} T_{tt}$<br>
-$\frac{c^2}{4} \nabla \bar{h}_{tt} = -4 \pi \frac{G T_{tt}}{c^2}$<br>
-<br>
-
-Poisson's equation:<br>
-$\frac{c^2}{4} \bar{h}_{tt} = \int_V \frac{G T_{tt}}{c^2 r} dV$<br>
-Let $\Phi^g = \frac{c^2}{4} \bar{h}_{tt}$<br>
-Let $G = \frac{1}{4\pi\epsilon_g}$, so $\epsilon_g = \frac{1}{4 \pi G}$<br>
-$\Phi^g = \frac{1}{4\pi\epsilon_g} \int_V \frac{T_{tt}}{c^2 r} dV$<br>
-Tada! Just like electric field.<br>
-<br>
-	
-Next do the same trick with $T_{ti} = \rho h u_t u_i$<br>
-$\frac{c}{4} \bar{h}_{ti} = \int_V \frac{G T_{ti}}{c^3 r} dV$<br>
-Let $(A^g)_i = \frac{c}{4} \bar{h}_{ti}$ be the gravitomagnetic potential vector.<br>
-Let $\mu_g = \frac{4 \pi G}{c^2}$.<br>
-$(A^g)_i = \frac{\mu_g}{4 \pi} \int_V \frac{T_{ti}}{c r} dV$<br>
-Just like the magnetic field.<br>
-<br>
---- correcting signature ---<br>
-
-This gives the familiar formula: $c^2 = \frac{1}{\epsilon_g \mu_g}$<br>
-<br>
-
-Notice that $T_{ij}$ doesn't play into account at all.<br>
-<br>
 
 <hr>
-<br>
-
-${\epsilon_i}^{jk} (E^g)_{k,j} = -(B^g)_{i,t}$<br>
-${\epsilon_i}^{jk} (B^g)_{k,j} = -\mu_g \rho_m v_i + \frac{1}{c^2} (E^g)_{,t}$<br>
-<br>
-
-If we wanted to rewrite the matter variables in terms of stress-energy (so we can consider stress-energy sources other than matter, such as electromagnetism ...):<br>
-${(E^g)^i}_{,i} = -(\epsilon_g)^{-1} c^{-2} T_{tt}$<br>
-${(B^g)^i}_{,i} = 0$<br>
-$(B^g)_{i,t} + {\epsilon_i}^{jk} (E^g)_{k,j} = 0$<br>
-$(E^g)_{i,t} - c^2 {\epsilon_i}^{jk} (B^g)_{k,j} = -c \mu_g T_{ti} $<br>
-<br>
-
-Rewrite this in terms of $D = \epsilon E$<br>
-(Though I still need to do a more thorough investigation of the implications of non-vacuum fields, especially when to use the speed of light and when to use the phase velocity).<br>
-(Though when dealing with gravitational waves, the phase velocity <i>is</i> the speed of light...)<br>
-${(D^g)^i}_{,i} = -c^{-2} T_{tt}$<br>
-${(B^g)^i}_{,i} = 0$<br>
-$(B^g)_{i,t} + (\epsilon_g)^{-1} {\epsilon_i}^{jk} (D^g)_{k,j} = 0$<br>
-$(D^g)_{i,t} - (\mu_g)^{-1} {\epsilon_i}^{jk} (B^g)_{k,j} = -\frac{1}{c} T_{ti} $<br>
-<br>
-
-Another thing to keep an eye on is the fact that, in order to solve the Poisson equation, we assume $\partial_t^2 h_{ab} = 0$<br>
-I guess we are technically just approximating it to be incredibly low.<br>
-<br>
 
 What is a typical pseudocartesian Schwarzschild metric magnitude at the Earth's surface?<br>
 $r = 6.37101 \cdot 10^6 m$<br>  
@@ -233,36 +465,31 @@ $\Gamma_{abc} = \frac{1}{2} (h_{ab,c} + h_{ac,b} - h_{bc,a})$<br>
 ${\Gamma^a}_{bc} = \frac{1}{2} ({h^a}_{b,c} + {h^a}_{c,b} - {h_{bc}}^{,a})$<br>
 <br>
 
-Geodesic:<br>
+Geodesics:<br>
 $\dot{u}^i = -{\Gamma^i}_{ab} u^a u^b$<br>
 $\dot{u}^i = -{\Gamma^i}_{tt} u^t u^t - 2 {\Gamma^i}_{tj} u^t u^j - {\Gamma^i}_{jk} u^j u^k$<br>
 $\dot{u}^i = -{\Gamma^i}_{tt} (u^t)^2 - 2 {\Gamma^i}_{tj} u^t u^j - {\Gamma^i}_{jk} u^j u^k$<br>
-$\dot{u}^i = \Gamma_{itt} (u^t)^2 + 2 \Gamma_{itj} u^j u^t + \Gamma_{ijk} u^j u^k$<br>
 $\dot{u}^i = 
-	\frac{1}{2} (h_{it,t} + h_{it,t} - h_{tt,i}) (u^t)^2
-	+ (h_{it,j} + h_{ij,t} - h_{tj,i}) u^j u^t
-	+ \frac{1}{2} (h_{ij,k} + h_{ik,j} - h_{jk,i}) u^j u^k$<br>
-$\dot{u}^i = 
-	 (-\frac{4}{c} A^g_{i,t} - \frac{1}{c^2} (\Phi^g)_{,i}) (u^t)^2
-	+ (-\frac{4}{c} A^g_{i,j} + \frac{2}{c^2} (\Phi^g)_{,t} \eta_{ij} + \frac{4}{c} A^g_{j,i} ) u^j u^t
-	+ (\eta_{ij} \frac{1}{c^2} (\Phi^g)_{,k} + \eta_{ik} \frac{1}{c^2} (\Phi^g)_{,j} - \eta_{jk} \frac{1}{c^2} (\Phi^g)_{,i} ) u^j u^k$<br>
-$\dot{u}^i = 
-	-\frac{4}{c} A^g_{i,t} (u^t)^2 - \frac{1}{c^2} (\Phi^g)_{,i} (u^t)^2
-	+ \frac{2}{c^2} (\Phi^g)_{,t} \eta_{ij} u^j u^t + \frac{2}{c} {\epsilon_{ij}}^k (B^g)_k u^j u^t
-	+ \frac{1}{c^2} (\eta_{ij} (\Phi^g)_{,k} + \eta_{ik} (\Phi^g)_{,j} - \eta_{jk} (\Phi^g)_{,i} ) u^j u^k$<br>
-$\dot{u}^i = 
-	- \frac{4}{c} (E^g)^i (u^t)^2 
-	- \frac{2}{c} \epsilon^{ijk} (B^g)_k u_j u^t
-	
-	+ \frac{2}{c^2} (\Phi^g)_{,t} u^i u^t 
-	
-	+ \frac{2}{c^2} (\Phi^g)_{,j} u^j u^i
-	
-	+ \frac{4}{c} (\Phi^g)_{,i} (u^t)^2 
-	
-	- \frac{1}{c^2} (\Phi^g)_{,i} ((u_t)^2 + \Sigma_j u_j u_j)
-	$<br>
-<br>
+	- ({h^i}_{t,t} - \frac{1}{2} {h_{tt}}^{,i}) (u^t)^2
+	- ({h^i}_{t,j} + {h^i}_{j,t} - {h_{tj}}^{,i}) u^j u^t
+	- \frac{1}{2} ({h^i}_{j,k} + {h^i}_{k,j} - {h_{jk}}^{,i}) u^j u^k$<br>
+
+(here I'm using the negative of the metric in 'gravitomagetics' worksheet, since we're using a negative signature, and I think it worked out to be that way too... but feel free to double check)<br>
+$\dot{u}^i = \frac{1}{c^2} (
+	+ (-4 c {(A^g)^i}_{,t} - (\Phi^g)^{,i}) (u^t)^2
+	+ (-4 c {(A^g)^i}_{,j} + 2 \delta^i_j \Phi^g_{,t} + 4 c {(A^g)_j}^{,i}) u^j u^t
+	+ (\delta^i_j \Phi^g_{,k} + \delta^i_k \Phi^g_{,j} - \delta_{jk} (\Phi^g)^{,i}) u^j u^k
+) $<br>
+
+$\dot{u}^i = \frac{1}{c^2} (
+	- 4 c {(A^g)^i}_{,t} (u^t)^2 
+	- (\Phi^g)^{,i} (u^t)^2
+	- 4 c {(A^g)^i}_{,j} u^j u^t 
+	+ 2 \Phi^g_{,t} u^i u^t 
+	+ 4 c {(A^g)_j}^{,i} u^j u^t
+	+ 2 \Phi^g_{,j} u^j u^i - (\Phi^g)^{,i} u^j u_j
+) $<br>
+
 
 
 <hr>
