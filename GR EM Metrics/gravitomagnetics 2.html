@@ -310,23 +310,28 @@ $(F^g)^{ab} = \left[\begin{matrix}
 \end{matrix}\right]$<br>
 <br>
 
-(TODO $J_g$ is supposed to be in units $\frac{kg}{m^2 s}$, and $\nabla F_{ab}$ is equal to $-\frac{4 \pi G}{c^2} J_g$)<br>
-${(F^g)^{ab}}_{,b} = (J^g)^a$ gives us...<br>
-${(F^g)^{tu}}_{,u} = (J^g)^t$<br>
+${{(F^g)}^{ab}}_{,b} = \mu_g J^g$ has units $[\frac{1}{s^2}]$<br>
+${{(F^g)}^{ab}}_{,b} = \frac{4 \pi G}{c^2} J^g$<br>
+so $J_g$ has units $[\frac{kg}{m \cdot s^2}]$<br>
+<br>
+
+${(F^g)^{ab}}_{,b} = \mu_g (J^g)^a$ gives us...<br>
+${(F^g)^{tu}}_{,u} = \mu_g (J^g)^t$<br>
 ${(F^g)^{tu}}_{,u} = \frac{1}{c} E^g_{j,j}$<br>
 substitute $\frac{1}{c} E^g_i = \Phi^g_{,i} - A^g_{i,t}$<br>
 ${(F^g)^{tu}}_{,u} = \Phi^g_{,jj} - A^g_{j,tj}$<br>
 using the Lorentz gauge $A^g_{j,j} = 0$ we get
 ${(F^g)^{tu}}_{,u} = \Phi^g_{,jj}$
-using $\delta \Phi^g_{,jj} = -4 \pi \frac{G}{c^2} T_{tt}$<br>
+using $\Delta \Phi^g = -4 \pi \frac{G}{c^2} T_{tt}$<br>
 we get ${(F^g)^{tu}}_{,u} = -4 \pi \frac{G}{c^2} T_{tt}$<br> 
-and ${(F^g)^{tu}}_{,u} = (J^g)^t$<br>
-so $(J^g)^t = -4 \pi \frac{G}{c^2} T_{tt}$<br>
-so $J^g_t = 4 \pi \frac{G}{c^2} T_{tt} = \frac{1}{c^2 \epsilon_g} T_{tt}$<br>
-so $\epsilon_g E^g_{i,i} = -\frac{1}{c} T_{tt}$<br>
+and ${(F^g)^{tu}}_{,u} = \mu_g (J^g)^t$<br>
+so $\mu_g (J^g)^t = -4 \pi \frac{G}{c^2} T_{tt}$<br>
+so $J^g_t = T_{tt}$<br>
+so $E^g_{j,j} = \mu_g J^g = -\frac{4 \pi G}{c} T_{tt}$<br>
 <br>
 
-${(F^g)^{iu}}_{,u} = (J^g)^i$ gives us<br>
+<br>
+${(F^g)^{iu}}_{,u} = \mu_g (J^g)^i$ gives us<br>
 ${(F^g)^{iu}}_{,u} = -\frac{1}{c} E^g_{i,t} + {\epsilon_i}^{jk} B^g_{k,j}$<br>
 substitute $\frac{1}{c} E^g_i = \Phi^g_{,it} - A^g_{i,t}, B^g_i = {\epsilon_i}^{jk} A_{k,j}$<br>
 ${(F^g)^{iu}}_{,u} = -(\Phi^g_{,it} - A^g_{i,tt}) + {\epsilon_{ij}}^k {\epsilon_k}^{lm} A^g_{m,lj} $<br>
@@ -338,7 +343,8 @@ ${(F^g)^{iu}}_{,u} = -\Phi^g_{,it} - A^g_{i,jj} $<br>
 and using $-\Phi^g_{,it} = 0$ (why?)<br>
 and $A^g_{i,jj} = -\frac{4 \pi G}{c^3} T_{ti}$<br>
 ${(F^g)^{iu}}_{,u} = \frac{4 \pi G}{c^3} T_{ti}$<br>
-so $(J^g)^i = \frac{4 \pi G}{c^3} T_{ti} = \frac{1}{c} \mu_g T_{ti}$<br>
+so $\mu_g (J^g)^i = \frac{4 \pi G}{c^3} T_{ti}$<br>
+so $(J^g)^i = \frac{1}{c} T_{ti}$<br>
 <br>
 
 <br>
