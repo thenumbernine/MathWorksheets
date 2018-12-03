@@ -4,7 +4,7 @@ local url = require 'socket.url'
 
 --local base = [[https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/]]
 --local base = [[https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/]]
-local base = [[https://thenumbernine.github.io/symmath/]]
+local base = [[https://thenumbernine.github.io/math/]]
 
 local s = table{[[
 Some helper worksheets for my projects.
