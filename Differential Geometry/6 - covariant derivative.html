@@ -49,6 +49,44 @@ So $e^a(\nabla_b e_c) = {\Gamma^a}_{bc}$ is the connection coefficients describi
 And ${\omega^a}_b = -(\nabla_c e^a) (e_b) e^c = {\Gamma^a}_{cb} e^c$ are the one-forms of the connections.<br>
 <br>
 
+Covariant derivative of a (p, q) tensor:<br>
+$\nabla_x y = \nabla_{x^u e_u} ({y^{a_1 ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q})$<br>
+$= x^u \nabla_u ({y^{a_1 ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q})$<br>
+$= x^u (
+	\nabla_u ({y^{a_1 ... a_p}}_{b_1 ... b_q}) e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
+	+ {y^{a_1 ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes \nabla_u e_{a_i} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
+	+ {y^{a_1 ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes \nabla_u e^{b_j} \otimes ... \otimes e^{b_q}
+)$<br>
+$= x^u (
+	e_u ({y^{a_1 ... a_p}}_{b_1 ... b_q}) e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
+	+ {y^{a_1 ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes {\Gamma^c}_{u a_i} e_c \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
+	+ {y^{a_1 ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes (- {\Gamma^{b_j}}_{uc} e^c) \otimes ... \otimes e^{b_q}
+)$<br>
+$= x^u (
+	e_u ({y^{a_1 ... a_p}}_{b_1 ... b_q}) e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
+	+ {\Gamma^{a_i}}_{uc} {y^{a_1 ... c ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
+	- {\Gamma^c}_{u b_j} {y^{a_1 ... a_p}}_{b_1 ... c ... b_q} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
+)$<br>
+$= x^u (
+	e_u ({y^{a_1 ... a_p}}_{b_1 ... b_q}) 
+	+ {\Gamma^{a_i}}_{uc} {y^{a_1 ... c ... a_p}}_{b_1 ... b_q} 
+	- {\Gamma^c}_{u b_j} {y^{a_1 ... a_p}}_{b_1 ... c ... b_q}
+) e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}$<br>
+This demonstrates the "add contravariant, subtract covariant" rule for the covariant derivative in index notation.<br>
+<br>
+
+Covariant derivative of vectors, specifically:<br>
+$\nabla_u v = \nabla_{u^a e_a} (v^b e_b) = u^a \nabla_a (v^b e_b) = u^a (e_a(v^b) + {\Gamma^b}_{ac} v^c) e_b$<br>
+<br>
+
+Covariant derivative of one-forms:<br>
+$\nabla_u v = \nabla_{u^a e_a} (v_b e^b) = u^a \nabla_a (v_b e^b) = u^a (e_a(v_b) - {\Gamma^c}_{ab} v_c) e_b$<br>
+<br>
+
+
+<hr>
+<br>
+
 Exterior derivative of a vector basis:<br>
 Consider vectors to be collections of 0-forms.<br>
 Then an exterior derivative of a vector is a 1-form.<br>
@@ -90,6 +128,8 @@ $= e_a ({\Gamma^c}_{bd}) e^a \wedge e^b - {\Gamma^c}_{bd} \cdot \frac{1}{2} {c_{
 $= (e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u) e^a \wedge e^b$<br>
 $= (2 e_{[a} ({\Gamma^c}_{b]d}) - {\Gamma^c}_{ud} {c_{ab}}^u) e^a \otimes e^b$<br>
 <br>
+
+
 
 <a href='.'>Back</a><br><br>
 	</body>
