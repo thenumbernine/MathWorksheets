@@ -2,10 +2,9 @@
 require 'ext'
 local url = require 'socket.url'
 
--- using rawgit.com
 --local base = [[https://cdn.rawgit.com/thenumbernine/MathWorksheets/master/]]
--- using htmlpreview.github.io
-local base = [[https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/]]
+--local base = [[https://htmlpreview.github.io/?https://github.com/thenumbernine/MathWorksheets/blob/master/]]
+local base = [[https://thenumbernine.github.io/math/]]
 
 local s = table{[[
 Some helper worksheets for my projects.
@@ -32,6 +31,10 @@ end
 fs:sort()
 for _,f in ipairs(fs) do
 	local name = f:sub(1,-6)
-	s:insert('['..name..']('..base..url.escape(f):gsub('%%2f','/')..')\n')
+	s:insert('['..name..']('..base
+		..url.escape(f)
+			:gsub('%%2f','/')
+			:gsub('%%2e','.')
+		..')\n')
 end
 file['README.md'] = s:concat'\n'
