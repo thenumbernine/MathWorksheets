@@ -88,13 +88,7 @@ $R_{[ab]} =
 	- \partial_{[b} ({\Gamma^u}_{u|a]}) 
 $<br>
 $R_{[ab]} = 
-	\frac{1}{2} (
-		\nabla_u {T^u}_{ba} 
-		
-		- {T^v}_{au} {T^u}_{bv} 
-		- {T^v}_{bu} {T^u}_{va} 
-	)
-
+	\frac{1}{2} \nabla_u {T^u}_{ba} 
 	- \partial_{[b} ({\Gamma^u}_{u|a]}) 
 $<br>
 $R_{[ab]} = 
@@ -137,6 +131,63 @@ $R_{[bd]} = \frac{3}{2} (
 	\nabla_{[b} {T^a}_{ad]} + {T^v}_{ba} {T^a}_{vd}
 ) + \frac{1}{2} {R^a}_{abd}$<br>
 <br>
+
+How about starting with Riemann, then writing in terms of contorsion?<br>
+$R_{ab} = {R^u}_{aub}$<br>
+$= 
+	e_u ({\Gamma^u}_{ba}) 
+	- e_b ({\Gamma^u}_{ua}) 
+	+ {\Gamma^u}_{uv} {\Gamma^v}_{ba} 
+	- {\Gamma^u}_{bv} {\Gamma^v}_{ua} 
+	- {\Gamma^u}_{va} {c_{ub}}^v$<br>
+$= 
+	e_u ({K^u}_{ba} + {\hat\Gamma^u}_{ba}) 
+	- e_b ({K^u}_{ua} + {\hat\Gamma^u}_{ua}) 
+	+ ({K^u}_{uv} + {\hat\Gamma^u}_{uv}) ({K^v}_{ba} + {\hat\Gamma^v}_{ba})
+	- ({K^u}_{bv} + {\hat\Gamma^u}_{bv}) ({K^v}_{ua} + {\hat\Gamma^v}_{ua})
+	- ({K^u}_{va} + {\hat\Gamma^u}_{va}) {c_{ub}}^v$<br>
+$= 
+	e_u ({\hat\Gamma^u}_{ba}) 
+	- e_b ({\hat\Gamma^u}_{ua}) 
+	+ {\hat\Gamma^u}_{uv} {\hat\Gamma^v}_{ba}
+	- {\hat\Gamma^u}_{bv} {\hat\Gamma^v}_{ua}
+	- {\hat\Gamma^u}_{va} {c_{ub}}^v$<br> $
+	
+	+ e_u ({K^u}_{ba}) 
+	- e_b ({K^u}_{ua}) 
+	+ {K^u}_{uv} {K^v}_{ba} 
+	- {K^u}_{bv} {K^v}_{ua}
+	- {K^u}_{va} {c_{ub}}^v $<br> $
+	
+	+ {K^u}_{uv} {\hat\Gamma^v}_{ba}
+	+ {\hat\Gamma^u}_{uv} {K^v}_{ba}
+	
+	- {K^u}_{bv} {\hat\Gamma^v}_{ua}
+	- {\hat\Gamma^u}_{bv} {K^v}_{ua}
+$<br>
+$= \hat{R}_{ab}
+
+	+ e_u ({K^u}_{ba}) 
+	- e_b ({K^u}_{ua}) 
+	+ {K^u}_{uv} {K^v}_{ba} 
+	- {K^u}_{bv} {K^v}_{ua}
+	- {K^u}_{va} {c_{ub}}^v
+	
+	+ {K^u}_{uv} {\hat\Gamma^v}_{ba}
+	+ {\hat\Gamma^u}_{uv} {K^v}_{ba}
+	
+	- {K^u}_{bv} {\hat\Gamma^v}_{ua}
+	- {\hat\Gamma^u}_{bv} {K^v}_{ua}
+$<br>
+...where $\hat{R}_{ab} = {\hat{R}^u}_{aub} = 
+	e_u ({\hat\Gamma^u}_{ba}) 
+	- e_b ({\hat\Gamma^u}_{ua}) 
+	+ {\hat\Gamma^u}_{uv} {\hat\Gamma^v}_{ba} 
+	- {\hat\Gamma^u}_{bv} {\hat\Gamma^v}_{ua} 
+	- {\hat\Gamma^u}_{va} {c_{ub}}^v$ is the curvature of the Levi-Civita connection.<br>
+<br>
+<br>
+
 
 <a href='.'>Back</a><br><br>
 	</body>

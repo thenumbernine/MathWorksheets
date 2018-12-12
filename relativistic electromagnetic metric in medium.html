@@ -1183,6 +1183,8 @@ $T^{uv} = \pmatrix{
 		\frac{1}{2} \eta^{ij} (\frac{1}{\epsilon} D^2 + \frac{1}{\mu} B^2) - \frac{1}{\epsilon} D^i D^j - \frac{1}{\mu} B^i B^j
 }$<br>
 <br>
+And now for ${T^{uv}}_{,u}$...<br>
+<br>
 ${T^{uv}}_{,v} = $...<br>
 ${T^{tv}}_{,v} = \frac{1}{2} \frac{1}{c} (\frac{1}{\epsilon} D^2 + \frac{1}{\mu} B^2)_{,t} 
 	+ \frac{1}{c} \bar\epsilon_{jkl} (\frac{1}{\mu\epsilon} D_k B_l)_{,j}$<br>
@@ -1202,8 +1204,6 @@ $ = \bar\epsilon_{ikl} (D_k B_l)_{,t}
 	- \frac{1}{\mu} B_j B_{i,j} 
 	- \frac{1}{\mu} B^i B_{j,j}
 $<br>
-<br>
-And now for ${T^{uv}}_{,u}$...<br>
 <br>
 
 <br>
@@ -1460,16 +1460,28 @@ $R_{ab} = \partial_u ({\Gamma^u}_{ba})
 	- {\Gamma^u}_{bv} {\Gamma^v}_{ua} 
 $<br>
 Antisymmetry of Ricci tensor with torsion:<br>
+$R_{[ab]} = \frac{3}{2} (
+	\nabla_{[a} {T^u}_{ub]} + {T^v}_{au} {T^u}_{vb}
+) + \frac{1}{2} {R^u}_{uab}$<br>
 $R_{[ab]} = 
-	\frac{1}{2} \partial_u ( {T^u}_{ba} ) 
-	+ \frac{1}{2} \partial_v log \sqrt{|g|} {T^v}_{ba} 
-	- \partial_{[b}( {K^u}_{u|a]} )
-	+ \frac{1}{2} {K^u}_{uv} {T^v}_{ba}
-	+ \frac{1}{2} {\Gamma^v}_{au} {T^u}_{vb} 
-	- \frac{1}{2} {\Gamma^v}_{bu} {T^u}_{va}
+	\frac{1}{2} \nabla_u {T^u}_{ba} 
+	- \partial_{[b} ({\Gamma^u}_{u|a]}) 
 $<br>
 <br>
 
+Assuming zero shift ($\beta^i = 0$)...<br>
+I'm keeping $\alpha$ still, because most of the Earth's gravity comes from $\alpha$ and not $\beta$, but who knows, maybe $\beta$ becomes important in asymmetric stress-energies.<br>
+$T_{[uv]} =  \pmatrix{
+	0 &
+	\frac{1}{2} \frac{1}{c} (n^2 - 1) \alpha \mathcal{S}_j \\
+	-\frac{1}{2} \frac{1}{c} (n^2 - 1) \alpha \mathcal{S}_i &
+	0
+}$<br>
+$T_{[ti]} = \frac{1}{2} \frac{1}{c} (n^2 - 1) \alpha \mathcal{S}_i$<br>
+$R_{[ti]} = \frac{1}{2} \nabla_u {T^u}_{it} - \partial_{[i} ({\Gamma^u}_{u|t]})$<br>
+Einstein Field equations, asymmetric terms: $R_{[ab]} = 8 \pi T_{[ab]}$<br>
+$\frac{1}{2} \nabla_u {T^u}_{it} - \partial_{[i} ({\Gamma^u}_{u|t]}) = 4 \pi \frac{1}{c} (n^2 - 1) \alpha \mathcal{S}_i$<br>
+<br>
 
 <hr>
 <b>Tensor susceptibility:</b> 
