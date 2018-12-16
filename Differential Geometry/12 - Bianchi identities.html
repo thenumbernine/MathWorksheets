@@ -92,20 +92,22 @@ ${R^a}_{[bcd]} = 0$<br>
 Exterior covariant derivative:<br>
 (more on this $D$ covariant exterior derivative later)<br>
 Let $D w^a = d w^a + {\omega^a}_b \wedge w^b$<br>
+...per-index, plus for top, minus for bottom, like the covariant derivative (TODO better explanation of why).<br>
 <br>
 
 Exterior covariant derivative of basis one-forms:<br>
 $D e^a = d e^a + {\omega^a}_b \wedge e^b$<br>
-$= \Theta^a$<br>
+$D e^a = \Theta^a$<br>
 <br>
 
-Exterior covariant derivative of torsion two-form:<br>
+Exterior covariant derivative of torsion two-form (Bianchi's first identity using an exterior covariant derivative):<br>
 $D \Theta^a = {\Omega^a}_b \wedge e^b$<br>
 <br>
 
 
 Notice: the exterior covariant derivative of the connection is not the curvature:<br>
-$D {\omega^a}_b = d {\omega^a}_b + {\omega^a}_c \wedge {\omega^c}_b  + {\omega^a}_c \wedge {\omega^c}_b$<br> 
+$D {\omega^a}_b = d {\omega^a}_b + {\omega^a}_c \wedge {\omega^c}_b  - {\omega^c}_b \wedge {\omega^a}_c$<br> 
+$= d {\omega^a}_b + {\omega^a}_c \wedge {\omega^c}_b  + {\omega^a}_c \wedge {\omega^c}_b$<br> 
 $= d {\omega^a}_b + 2 {\omega^a}_c \wedge {\omega^c}_b$<br> 
 $= {\Omega^a}_b + {\omega^a}_c \wedge {\omega^c}_b$<br>
 <br>
@@ -178,7 +180,7 @@ $ = d {\omega^a}_c \wedge {\omega^c}_b + {\omega^a}_d \wedge {\omega^d}_c \wedge
 $ = d {\omega^a}_c \wedge {\omega^c}_b - {\omega^a}_c \wedge d {\omega^c}_b$<br>
 <br>
 
-exterior derivative of curvature two-form:<br>
+Exterior derivative of curvature two-form:<br>
 $d {\Omega^a}_b$<br>
 $= d( d {\omega^a}_b + {\omega^a}_c \wedge {\omega^c}_b)$<br>
 $= d^2 {\omega^a}_b + d ({\omega^a}_c \wedge {\omega^c}_b)$<br>
@@ -187,39 +189,23 @@ $ = d^2 {\omega^a}_b + {\Omega^a}_c \wedge {\omega^c}_b - {\omega^a}_c \wedge {\
 Assume $d^2 {\omega^a}_b = 0$<br>
 $d {\Omega^a}_b = {\Omega^a}_c \wedge {\omega^c}_b - {\omega^a}_c \wedge {\Omega^c}_b$<br>
 And that's the second Bianchi identity<br>
-Somehow this also turns into $D {\Omega^a}_b = 0$<br>
-
-
-If we keep going...<br>
-$d {\Omega^a}_b$<br>
-$= 	
-	(
-		- \frac{1}{2} e_p( {c_{qr}}^u)
-		+ \frac{1}{2} {c_{pq}}^v {c_{vr}}^u
-	) {\Gamma^c}_{ud}  e^p \wedge e^q \wedge e^r
-	+ 
-	(
-		(e_p ({\Gamma^a}_{qc}) - \frac{1}{2} {\Gamma^a}_{uc} {c_{pq}}^u) e^p \wedge e^q
-	) \wedge {\Gamma^c}_{rb} e^r
-	- {\Gamma^a}_{rc} e^r \wedge (
-		(e_p ({\Gamma^c}_{qb}) - \frac{1}{2} {\Gamma^c}_{ub} {c_{pq}}^u) e^p \wedge e^q
-	)
+<br>
+Exterior covariant derivative of curvature two-form:<br>
+$D {\Omega^a}_b$<br>
+$= d {\Omega^a}_b + {\omega^a}_c \wedge {\Omega^c}_b - {\omega^c}_b \wedge {\Omega^a}_c$<br>
+$= d {\Omega^a}_b + {\omega^a}_c \wedge {\Omega^c}_b - {\Omega^a}_c \wedge {\omega^c}_b$<br>
+$= d (d {\omega^a}_b + {\omega^a}_c \wedge {\omega^c}_b) + {\omega^a}_c \wedge (d {\omega^c}_b + {\omega^c}_d \wedge {\omega^d}_b) - (d {\omega^a}_c + {\omega^a}_d \wedge {\omega^d}_c) \wedge {\omega^c}_b$<br>
+$= d^2 {\omega^a}_b 
+	+ d {\omega^a}_c \wedge {\omega^c}_b
+	- {\omega^a}_c \wedge d {\omega^c}_b
+	+ {\omega^a}_c \wedge d {\omega^c}_b 
+	+ {\omega^a}_c \wedge {\omega^c}_d \wedge {\omega^d}_b 
+	- d {\omega^a}_c \wedge {\omega^c}_b 
+	- {\omega^a}_d \wedge {\omega^d}_c \wedge {\omega^c}_b
 $<br>
-$= 	
-	(
-		 e_p ({\Gamma^a}_{qc}) {\Gamma^c}_{rb}
-		 + e_p ({\Gamma^c}_{rb}) {\Gamma^a}_{qc}
-		
-		- \frac{1}{2} e_p( {c_{qr}}^u) {\Gamma^a}_{ub}
-	
-		+ \frac{1}{2} (
-			- {\Gamma^a}_{uc} {\Gamma^c}_{rb}
-			+ {\Gamma^a}_{rc} {\Gamma^c}_{ub}
-			+ {\Gamma^a}_{vb} {c_{ur}}^v
-		) {c_{pq}}^u
-	)  e^p \wedge e^q \wedge e^r
-$<br>
-Notice that $D {\Omega^a}_b$ should equal 0.<br>
+$= d^2 {\omega^a}_b$<br>
+...assuming $d^2 = 0$<br>
+$D {\Omega^a}_b = 0$<br>
 <br>
 
 exterior derivative of a sum of outer products:<br>

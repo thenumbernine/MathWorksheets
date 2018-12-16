@@ -8,7 +8,7 @@
     <body onload='tryToFindMathJax();'>
 <a href='.'>Back</a><br><br>
 
-TODO show:<br>
+TODO show (and put this back in worksheet #whatever for metric-cancelling connections):<br>
 ${\hat\Gamma^b}_{ab} = \partial_a log( \sqrt{|g|} )$ for Levi-Civita connection $\hat\Gamma$<br>
 <br>
 
@@ -73,40 +73,6 @@ $R_{[ab]} =
 	- \frac{1}{2} {\Gamma^v}_{bu} {T^u}_{va}
 $<br>
 ...looks very ugly.<br>
-I could isolate the $\nabla T$ term, starting with ${c_{ab}}^c = 0$:<br>
-$R_{[ab]} = 
-	\frac{1}{2} ( 
-		\partial_u {T^u}_{ba} 
-	
-		+ {\Gamma^u}_{uv} {T^v}_{ba} 
-		- {\Gamma^v}_{ub} {T^u}_{va}
-		- {\Gamma^v}_{ua} {T^u}_{bv} 
-		
-		- 2 {\Gamma^v}_{[au]} {T^u}_{bv} 
-		- 2 {\Gamma^v}_{[bu]} {T^u}_{va} 
-	)
-	- \partial_{[b} ({\Gamma^u}_{u|a]}) 
-$<br>
-$R_{[ab]} = 
-	\frac{1}{2} \nabla_u {T^u}_{ba} 
-	- \partial_{[b} ({\Gamma^u}_{u|a]}) 
-$<br>
-$R_{[ab]} = 
-	\frac{1}{2} \nabla_u {T^u}_{ba} 
-	
-	+ \frac{1}{2} (
-		- {\Gamma^v}_{au} {T^u}_{bv} 
-		+ {\Gamma^v}_{ua} {T^u}_{bv} 
-		- {\Gamma^v}_{bu} {T^u}_{va} 
-		+ {\Gamma^v}_{ub} {T^u}_{va} 
-		
-		- \partial_b {T^u}_{ua} 
-		+ \partial_a {T^u}_{ub} 
-		
-		+ \partial_a {\Gamma^u}_{bu}
-		- \partial_b {\Gamma^u}_{au}
-	)
-$<br>
 ...<br>
 Shouldn't the first Bianchi identity (worksheet #12) contracted give us something?<br>
 ${R^a}_{[bcd]} = \nabla_{[b} {T^a}_{cd]} + {T^v}_{bc} {T^a}_{vd}$<br>
@@ -133,6 +99,7 @@ $R_{[bd]} = \frac{3}{2} (
 <br>
 
 How about starting with Riemann, then writing in terms of contorsion?<br>
+(TODO put this in the Riemann curvature worksheet)<br>
 $R_{ab} = {R^u}_{aub}$<br>
 $= 
 	e_u ({\Gamma^u}_{ba}) 
@@ -185,9 +152,125 @@ $<br>
 	+ {\hat\Gamma^u}_{uv} {\hat\Gamma^v}_{ba} 
 	- {\hat\Gamma^u}_{bv} {\hat\Gamma^v}_{ua} 
 	- {\hat\Gamma^u}_{va} {c_{ub}}^v$ is the curvature of the Levi-Civita connection.<br>
+TODO seems I've seen a few sources that say the difference between the curvature and Levi-Civita connection curvature should only be in terms of contorsion, so they Levi-Civita * contorsion components should cancel maybe?<br>
 <br>
 <br>
-
+I could isolate the $\nabla T$ term, starting with ${c_{ab}}^c = 0$:<br>
+$R_{[ab]} = 
+	\frac{1}{2} ( 
+		\partial_u {T^u}_{ba} 
+	
+		+ {\Gamma^u}_{uv} {T^v}_{ba} 
+		- {\Gamma^v}_{ub} {T^u}_{va}
+		- {\Gamma^v}_{ua} {T^u}_{bv} 
+		
+		- 2 {\Gamma^v}_{[au]} {T^u}_{bv} 
+		- 2 {\Gamma^v}_{[bu]} {T^u}_{va} 
+	)
+	- \partial_{[b} ({\Gamma^u}_{u|a]}) 
+$<br>
+$R_{[ab]} = 
+	\frac{1}{2} \nabla_u {T^u}_{ba} 
+	- \partial_{[b} ({\Gamma^u}_{u|a]}) 
+$<br>
+$R_{[ab]} = 
+	\frac{1}{2} \nabla_u {T^u}_{ba} 
+	
+	+ \frac{1}{2} (
+		- {\Gamma^v}_{au} {T^u}_{bv} 
+		+ {\Gamma^v}_{ua} {T^u}_{bv} 
+		- {\Gamma^v}_{bu} {T^u}_{va} 
+		+ {\Gamma^v}_{ub} {T^u}_{va} 
+		
+		- \partial_b {T^u}_{ua} 
+		+ \partial_a {T^u}_{ub} 
+		
+		+ \partial_a {\Gamma^u}_{bu}
+		- \partial_b {\Gamma^u}_{au}
+	)
+$<br>
+...get rid of the ${\Gamma^a}_{bc}$'s ...
+$R_{[ab]} = 
+	\frac{1}{2} \nabla_u {T^u}_{ba} 
+	
+	+ \frac{1}{2} (
+		- {\Gamma^v}_{au} {T^u}_{bv} 
+		+ {\Gamma^v}_{ua} {T^u}_{bv} 
+		- {\Gamma^v}_{bu} {T^u}_{va} 
+		+ {\Gamma^v}_{ub} {T^u}_{va} 
+		
+		- \partial_b {T^u}_{ua} 
+		+ \partial_a {T^u}_{ub} 
+		
+		+ \partial_a ({\hat\Gamma^u}_{bu} + {K^u}_{bu})
+		- \partial_b ({\hat\Gamma^u}_{au} + {K^u}_{au})
+	)
+$<br>
+...substitute ${\Gamma^u}_{au} = e_a(log\sqrt{|g|})$...
+$R_{[ab]} = 
+	\frac{1}{2} \nabla_u {T^u}_{ba} 
+	
+	+ \frac{1}{2} (
+		- {\Gamma^v}_{au} {T^u}_{bv} 
+		+ {\Gamma^v}_{ua} {T^u}_{bv} 
+		- {\Gamma^v}_{bu} {T^u}_{va} 
+		+ {\Gamma^v}_{ub} {T^u}_{va} 
+		
+		- \partial_b {T^u}_{ua} 
+		+ \partial_a {T^u}_{ub} 
+		
+		+ \partial_a \partial_b log\sqrt{|g|}
+		- \partial_b \partial_a log\sqrt{|g|}
+		
+		+ \partial_a {K^u}_{bu}
+		- \partial_b {K^u}_{au}
+	)
+$<br>
+...substitute contorsion for torsion (or should we be substituting torsion for contorsion?)...<br>
+$R_{[ab]} = 
+	\frac{1}{2} \nabla_u {T^u}_{ba} 
+	
+	+ \frac{1}{2} (
+		- {\Gamma^v}_{au} {T^u}_{bv} 
+		+ {\Gamma^v}_{ua} {T^u}_{bv} 
+		- {\Gamma^v}_{bu} {T^u}_{va} 
+		+ {\Gamma^v}_{ub} {T^u}_{va} 
+		
+		- \partial_b {T^u}_{ua} 
+		+ \partial_a {T^u}_{ub} 
+		
+		+ \frac{1}{2} \partial_a ({{T_u}^u}_b + {{T_b}^u}_u + {T^u}_{bu})
+		- \frac{1}{2} \partial_b ({{T_u}^u}_a + {{T_a}^u}_u + {T^u}_{au})
+	)
+$<br>
+... distribute partials, cancel $T_{abc} g^{bc}$ since T is antisymmetric and g is symmetric..<br>
+$R_{[ab]} = 
+	\frac{1}{2} \nabla_u {T^u}_{ba} 
+	
+	+ \frac{1}{2} (
+		- {\Gamma^v}_{au} {T^u}_{bv} 
+		+ {\Gamma^v}_{ua} {T^u}_{bv} 
+		- {\Gamma^v}_{bu} {T^u}_{va} 
+		+ {\Gamma^v}_{ub} {T^u}_{va} 
+		
+		+ \partial_a {T^u}_{ub} 
+		- \partial_b {T^u}_{ua} 
+	)
+$<br>
+...combine covariant derivatives...<br>
+$R_{[ab]} = \frac{1}{2} (
+	  \nabla_u {T^u}_{ba} 
+	+ \nabla_a {T^u}_{ub} 
+	+ \nabla_b {T^u}_{au}
+	
+	+ {T^v}_{ab} {T^u}_{uv}
+)$<br>
+$R_{[ab]} = \frac{3}{2} \nabla_{[u} {T^u}_{ba]} + \frac{1}{2} {T^v}_{ab} {T^u}_{uv}$<br>
+Comparing this with the Bianchi identity, I wonder if this means that $\frac{1}{2} {T^v}_{au} {T^u}_{uv} = \frac{3}{2} {T^v}_{au} {T^u}_{vb} + \frac{1}{2} {R^u}_{uab}$?<br>
+TODO apply $g^{uv}$ to $R_{uvab}$ to find out...<br>
+<br>
+<br>
+<br>
 
 <a href='.'>Back</a><br><br>
 	</body>
