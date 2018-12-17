@@ -59,6 +59,27 @@ $<br>
 Easy to see from this that ${R^a}_{bcd} = {R^a}_{b[cd]}$<br>
 <br>
 
+Trace of Riemann tensor over 1st and 2nd indexes (proof of their asymmetry):<br>
+${R^u}_{uab} = 
+	2 e_{[a} ({\Gamma^u}_{b]u}) 
+	+ 2 {\Gamma^u}_{[a|v} {\Gamma^v}_{b]u} 
+	- {\Gamma^u}_{vu} {c_{ab}}^v
+$<br>
+$= 	2 e_{[a} ({\hat\Gamma^u}_{b]u} + {K^u}_{b]u}) 
+	+ {\Gamma^u}_{av} {\Gamma^v}_{bu} 
+	- {\Gamma^u}_{bv} {\Gamma^v}_{au} 
+	- ({\hat\Gamma^u}_{vu} + {K^u}_{vu})) {c_{ab}}^v
+$<br>
+$= 	2 e_{[a} ( e_{b]} ( log \sqrt{|g|} ) ) 
+	- e_v ( log \sqrt{|g|} ) {c_{ab}}^v
+$<br>
+$= 	{c_{ab}}^v (e_v ( log \sqrt{|g|} ) - e_v ( log \sqrt{|g|}))$<br>
+$= 0$<br>
+Therefore $g^{ab} R_{abcd} = 0$<br>
+Does this necessarily imply that $h^{ab} R_{abcd} = 0$ for any symmetric $h^{ab}$?<br>
+(That is what is necessary to prove that $R_{abcd} = R_{[ab]cd}$)<Br>
+<br>
+
 Covariant derivative of a (p,q) form:<br>
 $\nabla_{[x,y]} z = [x,y]^u \nabla_u ({z^{a_1 ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q})$<br>
 $= (x^a e_a(y^u) - y^a e_a(x^u) + x^a y^b {c_{ab}}^u)  ( e_u ({z^{a_1 ... a_p}}_{b_1 ... b_q}) + {\Gamma^{a_i}}_{uc} {z^{a_1 ... c ... a_p}}_{b_1 ... b_q} - {\Gamma^c}_{u b_j} {z^{a_1 ... a_p}}_{b_1 ... c ... b_q} ) e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}$<br>
@@ -257,6 +278,8 @@ $<br>
 $=  {R^c}_{dab} v^d
 	- {T^u}_{ab} \nabla_u v^c 
 $<br>
+<br>
+
 <br>
 
 <a href='.'>Back</a><br><br>

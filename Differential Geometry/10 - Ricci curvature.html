@@ -91,11 +91,12 @@ ${R^a}_{[bad]} = \frac{1}{3} (
 )$<br>
 ...using $R_{[bd]} = \frac{1}{2} ({R^a}_{bad} - {R^a}_{dab})$<br>
 ${R^a}_{[bad]} = \frac{2}{3} R_{[bd]} - \frac{1}{3} {R^a}_{abd}$<br>
-$R_{[bd]} = \frac{3}{2} {R^a}_{[bad]} + \frac{1}{2} {R^a}_{abd}$<br>
+...using ${R^a}_{abd} = 0$ ...<br>
+$R_{[bd]} = \frac{3}{2} {R^a}_{[bad]}$<br>
 ...using the first Bianchi identity...<br>
 $R_{[bd]} = \frac{3}{2} (
 	\nabla_{[b} {T^a}_{ad]} + {T^v}_{ba} {T^a}_{vd}
-) + \frac{1}{2} {R^a}_{abd}$<br>
+)$<br>
 <br>
 
 How about starting with Riemann, then writing in terms of contorsion?<br>
@@ -266,31 +267,8 @@ $R_{[ab]} = \frac{1}{2} (
 	+ {T^v}_{ab} {T^u}_{uv}
 )$<br>
 $R_{[ab]} = \frac{3}{2} \nabla_{[u} {T^u}_{ba]} + \frac{1}{2} {T^v}_{ab} {T^u}_{uv}$<br>
-Comparing this with the Bianchi identity, I wonder if this means that $\frac{1}{2} {T^v}_{ab} {T^u}_{uv} = \frac{3}{2} {T^v}_{au} {T^u}_{vb} + \frac{1}{2} {R^u}_{uab}$?<br>
+Comparing this with the Bianchi identity, I wonder if this means that ${T^u}_{uv} {T^v}_{ab} = 3 {T^v}_{au} {T^u}_{vb}$?<br>
 (TODO the same thing again, but without removing structure constants)<br>
-<br>
-What is ${R^u}_{uab}$?<br>
-${R^u}_{uab} = 
-	2 e_{[a} ({\Gamma^u}_{b]u}) 
-	+ 2 {\Gamma^u}_{[a|v} {\Gamma^v}_{b]u} 
-	- {\Gamma^u}_{vu} {c_{ab}}^v
-$<br>
-...in a coordinate basis, where $e_a = \partial_a$ and ${c_{ab}}^c = 0$...<br>
-${R^u}_{uab} = 
-	2 \partial_{[a} ({\Gamma^u}_{b]u}) 
-	+ 2 {\Gamma^u}_{[a|v} {\Gamma^v}_{b]u} 
-$<br>
-$= 2 \partial_{[a} ({\Gamma^u}_{b]u}) 
-	+ 2 {\Gamma^u}_{[a|v} {\Gamma^v}_{b]u} 
-$<br>
-$= 2 \partial_{[a} ({\hat\Gamma^u}_{b]u} + {K^u}_{b]u}) 
-	+ 2 {\Gamma^u}_{[a|v} {\Gamma^v}_{b]u} 
-$<br>
-$= 2 \partial_{[a} ( \partial_{b]} (log \sqrt{|g|}) + {K^u}_{b]u}) 
-	+ 2 {\Gamma^u}_{[a|v} {\Gamma^v}_{b]u} 
-$<br>
-$= {\Gamma^u}_{[a|v} {\Gamma^v}_{b]u}$<br>
-<br>
 <br>
 <br>
 
