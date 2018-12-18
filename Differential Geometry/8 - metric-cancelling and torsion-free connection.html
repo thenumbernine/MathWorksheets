@@ -107,8 +107,12 @@ Let the contorsion tensor be the difference between an arbitrary connection and 
 ${K^a}_{bc} = {\Gamma^a}_{bc} - {\hat\Gamma^a}_{bc}$<br>
 $= \frac{1}{2} ({{T_c}^a}_b + {{T_b}^a}_c + {T^a}_{bc})$<br>
 <br>
+
+Antisymmetry of contorsion tensor:<br>
 ${K^a}_{[bc]} = \frac{1}{2} ({{T_{[c}}^a}_{b]} + {{T_{[b}}^a}_{c]} + {T^a}_{[bc]}) = \frac{1}{2} {T^a}_{[bc]} = \frac{1}{2} {T^a}_{bc}$<br>
 <br>
+
+Trace of contorsion tensor:<br>
 ${K^u}_{au} = \frac{1}{2} ({{T_u}^u}_a + {{T_a}^u}_u + {T^u}_{au})$<br>
 ...cancelling trace of the antisymmetric components of the torsion...<br> 
 ${K^u}_{au} = \frac{1}{2} ({T^u}_{ua} + {T^u}_{au})$<br>
@@ -116,14 +120,40 @@ ${K^u}_{au} = \frac{1}{2} ({T^u}_{ua} + {T^u}_{au})$<br>
 ${K^u}_{au} = 0$<br>
 <br>
 
+Jacobi formula applied to metric tensor (more on worksheet #13):<br>
+$\partial_a g = g g^{uv} \partial_a g_{uv}$<br>
+$\frac{1}{2 g} \partial_a g = \frac{1}{2} g^{uv} \partial_a g_{uv}$<br>
+$\frac{1}{2} \partial_a ( log |g| ) = \frac{1}{2} g^{uv} \partial_a g_{uv}$<br>
+$\partial_a ( log \sqrt{|g|} ) = \frac{1}{2} g^{uv} \partial_a ( g_{uv} )$<br>
+...in a non-coordinate basis that is a linear map of a coordinate basis...<br>
+$e_a ( log \sqrt{|g|} ) = \frac{1}{2} g^{uv} e_a ( g_{uv} )$<br>
+<br>
+
+Trace of Levi-Civita connection:<br>
+${\hat\Gamma^u}_{au} = \frac{1}{2} g^{uv} (e_v (g_{ua}) + e_a (g_{uv}) - e_u (g_{av}) + c_{uav} + c_{uva} - c_{vau})$<br>
+${\hat\Gamma^u}_{au} = \frac{1}{2} g^{uv} e_a (g_{uv})$<br>
+${\hat\Gamma^u}_{au} = e_a ( log \sqrt{|g|} )$<br>
+<br>
+
 Levi-Civita connection antisymmetry on 2nd and 3rd indexes:<br> 
 $ {\hat\Gamma^a}_{[bc]}$<br>
 $= {\Gamma^a}_{[bc]} - {K^a}_{[bc]}$<br>
 $= \frac{1}{2} ({T^a}_{bc} + {c_{bc}}^a) - \frac{1}{2} {T^a}_{[bc]}$<br>
-$= \frac{1}{2} c_{bca}$<br>
-In a holonomic basis this gives $\hat\Gamma_{a[bc]} = 0$<br>
+$= \frac{1}{2} {c_{bc}}^a$<br>
+In a holonomic basis this gives ${\hat\Gamma^a}_{[bc]} = 0$<br>
 <br>
 
+Notice that ${\hat\Gamma^u}_{ua} = {\hat\Gamma^u}_{au} + {c_{ua}}^u$<br>
+Therefore ${\hat\Gamma^u}_{ua} = {\hat\Gamma^u}_{au} + {c_{ua}}^u$<br>
+${\hat\Gamma^u}_{ua} = e_a ( log \sqrt{|g|} ) + {c_{ua}}^u$<br>
+(Verify that this is true by performing the trace on the Levi-Civita connection definition above.)<br>
+<br>
+
+Trace of an arbitrary connection:<br>
+${\Gamma^u}_{au} = {\hat\Gamma^u}_{au} + {K^u}_{au} = e_a ( log \sqrt{|g|} )$<br>
+${\Gamma^u}_{ua} - {\Gamma^u}_{au} = {T^u}_{ua} + {c_{ua}}^u$<br>
+${\Gamma^u}_{ua} = e_a ( log \sqrt{|g|} ) + {c_{ua}}^u + {T^u}_{ua}$<br>
+<br>
 
 Levi-Civita change-of-basis:<br>
 $e_c (g_{ab}) = \frac{\partial}{\partial x^c} ( g_{ab} )$<br>

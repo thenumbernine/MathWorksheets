@@ -45,7 +45,7 @@ $ =
 	- \frac{1}{2} {\Gamma^u}_{bv} {c_{ua}}^v
 	+ \frac{1}{2} {\Gamma^u}_{vb} {c_{ua}}^v
 $<br>
-...in absense of commutation...(${c_{ab}}^c = 0, e_a = \partial_a$):<br>
+...in absense of structure constants...(${c_{ab}}^c = 0, e_a = \partial_a$):<br>
 $R_{[ab]} = 
 	\frac{1}{2} \partial_u ( {T^u}_{ba} ) 
 	- \partial_{[b} ({\Gamma^u}_{u|a]}) 
@@ -85,7 +85,7 @@ ${R^a}_{[bcd]} = \frac{1}{6} (
 	- {R^a}_{cbd}
 	- {R^a}_{bdc}
 )$<br>
-...using ${R^a}_{bcd} = {R^a}_{b[cd]}$ (in worksheet #12)<br>
+...using ${R^a}_{bcd} = {R^a}_{b[cd]}$ (in worksheet #9)<br>
 ${R^a}_{[bad]} = \frac{1}{3} (
 	{R^a}_{bad} - {R^a}_{dab} - {R^a}_{abd}
 )$<br>
@@ -268,8 +268,89 @@ $R_{[ab]} = \frac{1}{2} (
 )$<br>
 $R_{[ab]} = \frac{3}{2} \nabla_{[u} {T^u}_{ba]} + \frac{1}{2} {T^v}_{ab} {T^u}_{uv}$<br>
 Comparing this with the Bianchi identity, I wonder if this means that ${T^u}_{uv} {T^v}_{ab} = 3 {T^v}_{au} {T^u}_{vb}$?<br>
-(TODO the same thing again, but without removing structure constants)<br>
 <br>
+
+The same thing again, but without removing structure constants:<br>
+TODO this is all incorrect because<br>
+#1 the $\partial_a$'s need to be turned into $e_a$'s<br>
+#2 the trace of the Levi-Civita connections (implies the trace of the connections, since the trace of the contorsion is zero)<br>
+	is equal to the gradient of the log of the volume, transformed to the non-coordinate basis ... I suppose this is still true in the non-coordinate basis...<br>
+	but it is not true that $[\partial_a, \partial_b] = 0$ at least-- change those to structure constants ...<br>
+	... and put a note in worksheet #8 about the trace of the arbitrary connection being equal to the gradient of the log of the volume, transformed to the non-coordinate basis. 
+	Note that this is only for one particular index trace -- since the other means adding into it the structure constants, so for the other, the structure constant trace needs to be included as well.<br>
+$R_{[ab]} = 
+	e_u ({\Gamma^u}_{[ba]}) 
+	- e_{[b} ({\Gamma^u}_{u|a]}) 
+	+ {\Gamma^u}_{uv} {\Gamma^v}_{[ba]} 
+	- {\Gamma^u}_{[b|v} {\Gamma^v}_{u|a]} 
+	- {\Gamma^u}_{v[a} {c_{u|b]}}^v$<br>
+$R_{[ab]} = \frac{1}{2} (
+	e_u( {T^u}_{ba} + {c_{ba}}^u )
+	- 2 e_{[b} ({\Gamma^u}_{u|a]}) 
+	
+	+ {\Gamma^u}_{uv} ({\Gamma^v}_{ba} - {\Gamma^v}_{ab})
+	
+	- {\Gamma^u}_{bv} {\Gamma^v}_{ua}
+	+ {\Gamma^u}_{av} {\Gamma^v}_{ub}
+
+	- {\Gamma^u}_{va} {c_{ub}}^v
+	+ {\Gamma^u}_{vb} {c_{ua}}^v
+)$<br>
+$R_{[ab]} = \frac{1}{2} (
+	  e_u( {T^u}_{ba} + {c_{ba}}^u )
+	- 2 e_{[b} (e_{|a]} ( log \sqrt{|g|} ) + {c_{u|a}}^u + {T^u}_{u|a]} ) 
+	
+	+ {\Gamma^u}_{uv} ({T^v}_{ba} + {c_{ba}}^v)
+	
+	- {\Gamma^u}_{bv} ({\Gamma^v}_{au} + {T^v}_{ua} + {c_{ua}}^v)
+	+ {\Gamma^u}_{av} ({\Gamma^v}_{bu} + {T^v}_{ub} + {c_{ub}}^v)
+
+	- {c_{ub}}^v ({\Gamma^u}_{av} + {T^u}_{va} + {c_{va}}^u)
+	+ {c_{ua}}^v ({\Gamma^u}_{bv} + {T^u}_{vb} + {c_{vb}}^u)
+)$<br>
+$R_{[ab]} = \frac{1}{2} (
+	  e_u ( {T^u}_{ba} ) 
+	+ e_a ( {T^u}_{ub} ) 
+	+ e_b ( {T^u}_{au} ) 
+	
+	+ e_u ( {c_{ba}}^u )
+	+ e_b ( {c_{au}}^u ) 
+	+ e_a ( {c_{ub}}^u ) 
+	
+	+ {\Gamma^u}_{uv} {T^v}_{ba}
+	+ {\Gamma^u}_{bv} {T^v}_{au} 
+	+ {\Gamma^u}_{av} {T^v}_{ub} 
+	
+	+ {c_{ba}}^v {c_{uv}}^u 
+	
+	+ {c_{ba}}^v {T^u}_{uv}
+	+ {c_{au}}^v {T^u}_{bv} 
+	+ {c_{ub}}^v {T^u}_{av} 
+)$<br>
+...isolate covariant derivatives?<br>
+$R_{[ab]} = \frac{1}{2} (
+	  \nabla_u ( {T^u}_{ba} + {c_{ba}}^u ) 
+	+ \nabla_a ( {T^u}_{ub} + {c_{ub}}^u ) 
+	+ \nabla_b ( {T^u}_{au} + {c_{au}}^u ) 
+
+	+ {T^u}_{vu} {T^v}_{ba}
+	+ {T^u}_{va} {T^v}_{ub}
+	+ {T^u}_{vb} {T^v}_{au}
+
+	+ {c_{ab}}^v {c_{uv}}^u
+	
+	- {c_{au}}^v {\Gamma^u}_{bv}
+	- {c_{ub}}^v {\Gamma^u}_{av}
+	- {c_{ba}}^v {\Gamma^u}_{vu}
+
+	+ {c_{ab}}^v {T^u}_{uv} 
+	+ {c_{au}}^v {T^u}_{bv} 
+	+ {c_{ub}}^v {T^u}_{av} 
+	+ {c_{uv}}^u {T^v}_{ab} 
+)$<br>
+How to simplify the rest further ... <br>
+
+This reminds me, what is $tr [\nabla, \nabla] (z)$ for some arbitrary degree z?<br>
 <br>
 
 <a href='.'>Back</a><br><br>
