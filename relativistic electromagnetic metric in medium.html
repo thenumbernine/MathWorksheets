@@ -14,9 +14,16 @@ I'm going to raise and lower $\bar\epsilon_{ijk}$ by $\eta_{ij}$<br>
 Indexes denoted $ijklmn$ are raised/lowered with the spatial metric $\gamma_{ij}$ alone.
 All others are raised/lowered by the spacetime metric $g_{ab}$.<br>
 <br>
-$\partial = (\frac{1}{c} \partial_t, \partial_i)$<br>
-$dx = (c dt, dx^i)$<br>
-$\partial_u T = T_{,u} = (\frac{1}{c} \partial_t, \partial_i) T$<br>
+
+$\partial = (\frac{1}{c} \partial_t, \partial_i) = (\partial_0, \partial_i)$ is in units of $\frac{1}{m}$<br>
+$dx = (c dt, dx^i) = (dx^0, dx^i)$ is in units $m$<br>
+$\partial_u T = T_{,u} = (\partial_0, \partial_i) T$<br>
+<br>
+
+Vectors / matrices are displayed as $V = \left[ V_0, V_x, V_y, V_z \right]$, not $\left[ V_t, V_x, V_y, V_z \right]$.<br>
+Take note when referencing $V_t$ that it is equal to $V_t = \frac{1}{c} V_0$.<br>
+<br>
+
 In SI units (from my 'natural units' worksheet in my symmath library):<br>
 $\epsilon_0 = \frac{10^7}{4 \pi c^2} \frac{C^2}{kg \cdot m}$ ... is in units $\frac{C^2 \cdot s^2}{kg \cdot m^3}$<br>
 $\mu_0 = \frac{4 \pi}{10^7} \frac{kg \cdot m}{C^2}$<br>
@@ -98,10 +105,10 @@ $[g^{uv}] = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
 	\beta^i / \alpha^2 & \gamma^{ij} - \beta^i \beta^j / \alpha^2
 }}$<br>
 For $\alpha$ the lapse between $\Sigma_t$ and $\Sigma_{t + dt}$<br>
-And $\beta$ the shift in coordinates, $\beta \in \Sigma$.  Note that, for any vector $u \in \Sigma$ that $u^t = 0$.<br>
+And $\beta$ the shift in coordinates, $\beta \in \Sigma$.  Note that, for any vector $u \in \Sigma$ that $u^0 = 0$.<br>
 And $\gamma_{ij}$ the metric of $\Sigma$<br>
-Where $ \beta_j = \gamma_{ij} \beta^i = \gamma_{u j} \beta^u = g_{u j} \beta^j $ courtesy of the fact that $ g_{ij} = \gamma_{ij} $ and $ \beta^t = 0 $.<br>
-But this also means, for some $u \in \Sigma$, $u^t = 0$, however $u_t = u^j \beta_j$, while $u_i = \gamma_{ij} u^j$.<br>
+Where $ \beta_j = \gamma_{ij} \beta^i = \gamma_{u j} \beta^u = g_{u j} \beta^j $ courtesy of the fact that $ g_{ij} = \gamma_{ij} $ and $ \beta^0 = 0 $.<br>
+But this also means, for some $u \in \Sigma$, $u^0 = 0$, however $u_t = u^j \beta_j$, while $u_i = \gamma_{ij} u^j$.<br>
 <br>
 ADM metric determinant: $g = det[g_{ab}] = \alpha \sqrt{\gamma}$<br>
 ADM spatial metric determinant: $\gamma = det[\gamma_{ij}]$<br>
@@ -114,143 +121,143 @@ $n^u = \downarrow u(i)\pmatrix{ 1/\alpha \\ -\beta^i/\alpha}$<br>
 <br>
 notice: $n_u n^u = -1$<br>
 <br>
-In ADM, $\epsilon^{tabc} u_a v_b w_c = \epsilon^{tijk} u_i v_j w_k$ since $\epsilon^{ttab} = 0$ due to its antisymmetric. The associated $u_t, v_t, w_t$ will be cancelled.<br>
+In ADM, $\epsilon^{0abc} u_a v_b w_c = \epsilon^{0ijk} u_i v_j w_k$ since $\epsilon^{00ab} = 0$ due to its antisymmetric. The associated $u_0, v_0, w_0$ will be cancelled.<br>
 <br>
 
 <hr>
 <b>Levi-Civita tensor in ADM metric</b><br>
 Let $\epsilon_{abcd} = \sqrt{|g|} [abcd] = \sqrt{|g|} \bar\epsilon_{abcd} $ is the spacetime Levi-Civita permutation tensor<br> 
-So $\epsilon_{tijk} = \alpha \sqrt\gamma \bar\epsilon_{tijk} = \alpha \sqrt\gamma \bar\epsilon_{ijk}$ (see the ADM section for more details)<br>
+So $\epsilon_{0ijk} = \alpha \sqrt\gamma \bar\epsilon_{0ijk} = \alpha \sqrt\gamma \bar\epsilon_{ijk}$ (see the ADM section for more details)<br>
 $\epsilon_{ijk} = \sqrt\gamma [ijk] = \sqrt\gamma \bar\epsilon_{ijk}$ is the spatial Levi-Civita permutation tensor<br>
-So $\epsilon_{tijk} = \alpha \epsilon_{ijk}$<br>
-And ${\epsilon^t}_{ijk} = g^{ta} \epsilon_{aijk} = g^{tt} \epsilon_{tijk} + g^{t\Sigma} \epsilon_{\Sigma ijk}$, but since $ijk \in \Sigma$ we know $\epsilon_{\Sigma ijk} = 0$<br>
-So ${\epsilon^t}_{ijk} = -\frac{1}{\alpha^2} \epsilon_{tijk} = -\frac{1}{\alpha} \epsilon_{ijk} = -\frac{1}{\alpha} \sqrt\gamma \bar\epsilon_{tijk} = -\frac{1}{\alpha} \sqrt\gamma \bar\epsilon_{ijk}$<br>
+So $\epsilon_{0ijk} = \alpha \epsilon_{ijk}$<br>
+And ${\epsilon^0}_{ijk} = g^{0a} \epsilon_{aijk} = g^{00} \epsilon_{0ijk} + g^{0\Sigma} \epsilon_{\Sigma ijk}$, but since $ijk \in \Sigma$ we know $\epsilon_{\Sigma ijk} = 0$<br>
+So ${\epsilon^0}_{ijk} = -\frac{1}{\alpha^2} \epsilon_{0ijk} = -\frac{1}{\alpha} \epsilon_{ijk} = -\frac{1}{\alpha} \sqrt\gamma \bar\epsilon_{0ijk} = -\frac{1}{\alpha} \sqrt\gamma \bar\epsilon_{ijk}$<br>
 <br>
+
 This can also be proven by explicitly lowering each index by the ADM metric:<br>
-${\epsilon^{ti}}_{jk}$
-$= g^{ta} g^{ib} \epsilon_{abjk} $<br>
+${\epsilon^{0i}}_{jk}$
+$= g^{0a} g^{ib} \epsilon_{abjk} $<br>
 $= (
-	g^{tm} g^{it} \epsilon_{mtjk} 
-	+ g^{tt} g^{in} \epsilon_{tnjk}
-	+ g^{tm} g^{in} \epsilon_{mnjk}
+	g^{0m} g^{i0} \epsilon_{m0jk} 
+	+ g^{00} g^{in} \epsilon_{0njk}
+	+ g^{0m} g^{in} \epsilon_{mnjk}
 ) $<br>
 $= (
-	- \frac{1}{\alpha^2} \gamma^{im} \epsilon_{tmjk}
+	- \frac{1}{\alpha^2} \gamma^{im} \epsilon_{0mjk}
 	+ \frac{1}{\alpha^2} \beta^m (\gamma^{in} - \frac{1}{\alpha^2} \beta^i \beta^n) \epsilon_{mnjk}
 ) $<br>
 $= -\frac{1}{\alpha^2} \gamma^{im} (
-	\epsilon_{tmjk} - \beta^n \epsilon_{nmjk} 
+	\epsilon_{0mjk} - \beta^n \epsilon_{nmjk} 
 ) $<br>
-$= -\frac{1}{\alpha^2} \gamma^{im} \epsilon_{tmjk}$<br>
+$= -\frac{1}{\alpha^2} \gamma^{im} \epsilon_{0mjk}$<br>
 <br>
 
 <hr>
 <b>Faraday tensor in general relativity, in vacuum:</b><br>
 From Baumgarate &amp; Shapiro, eqn 5.114:<br>
-TODO add $\frac{1}{c}$ to the $E$'s.<br>
-$F^{ab} = n^a E^b - n^b E^a + n_d \epsilon^{dabc} B_c$<br>
-$E^a = F^{ab} n_b$<br>
+$F^{ab} = \frac{1}{c} n^a E^b - \frac{1}{c} n^b E^a + n_d \epsilon^{dabc} B_c$<br>
+$E^a = c F^{ab} n_b$<br>
 $B^a = \frac{1}{2} \epsilon^{abcd} n_b F_{dc}$<br>
 This fits our convention above, which means if I were to negative the E components of F (like most texts do) then I would have to negative n, or the definition of E wrt F and n, as well.<br>
 <br>
 For ADM $n_a = (-\alpha, 0)$, $n^a = (1/\alpha, -\beta^i/\alpha)$, where the first component is time, this means:<br>
-$E^a = F^{ab} n_b = -\alpha F^{at} = \alpha F^{ta}$<br>
+$E^a = c F^{ab} n_b = -\alpha F^{a0} = \alpha F^{0a}$<br>
 Since $F^{ab}$ is antisymmetric, this means $F^{tt} = 0$, and $E^t = 0$, so $E^a n_a = 0$, so $E^a$ is a spatial vector.<br>
 $E_a = g_{ab} E^b = g_{aj} E^j = \pmatrix{ \beta_j E^j & \gamma_{ij} E^j } = \pmatrix{\beta^j E_j & E_i}$<br>
-so $E_i = g_{ia} E^a = g_{ij} E^j$ and $E_t = \beta^j E_j$<br>
+so $E_i = g_{ia} E^a = g_{ij} E^j$ and $E_0 = \beta^j E_j$<br>
 <br>
 
-Now $n_d \epsilon^{dabc} = n_t \epsilon^{tabc} = -\alpha \epsilon^{tabc} = \epsilon^{abc}$ where the last term is purely spatial (being orthogonal to $t$), so any timelike components of $abc$ are cancelled.<br>
-$F^{ij} = n_d \epsilon^{dijc} B_c = -\alpha \epsilon^{tijk} B_k = \epsilon^{ijk} B_k$<br>
+Now $n_d \epsilon^{dabc} = n_0 \epsilon^{0abc} = -\alpha \epsilon^{0abc} = \epsilon^{abc}$ where the last term is purely spatial (being orthogonal to $t$), so any timelike components of $abc$ are cancelled.<br>
+$F^{ij} = n_d \epsilon^{dijc} B_c = -\alpha \epsilon^{0ijk} B_k = \epsilon^{ijk} B_k$<br>
 <br>
 
 $F^{ab} = \downarrow a(i) \overset{\rightarrow b(j)}{\pmatrix{
-	0 & \frac{1}{\alpha} E^j \\
-	-\frac{1}{\alpha} E^i & \epsilon^{ijk} B_k
+	0 & \frac{1}{c} \frac{1}{\alpha} E^j \\
+	-\frac{1}{c} \frac{1}{\alpha} E^i & \epsilon^{ijk} B_k
 }}$<br>
 <br>
 
 ${F^a}_b = F^{au} g_{ub} = \pmatrix{
-	0 & \frac{1}{\alpha} E^k \\
-	-\frac{1}{\alpha} E^i & \epsilon^{ikl} B_l
+	0 & \frac{1}{c} \frac{1}{\alpha} E^k \\
+	-\frac{1}{c} \frac{1}{\alpha} E^i & \epsilon^{ikl} B_l
 } \pmatrix{-\alpha^2 + \beta^2 & \beta_j \\ \beta_k & \gamma_{kj}}$<br>
 ${F^a}_b = \pmatrix{
-	\frac{1}{\alpha} E^k \beta_k & 
-	\frac{1}{\alpha} E_j
+	\frac{1}{c} \frac{1}{\alpha} E^k \beta_k & 
+	\frac{1}{c} \frac{1}{\alpha} E_j
 	\\
-	(\alpha - \frac{1}{\alpha} \beta^2) E^i + {\epsilon^i}_{kl} \beta^k B^l & 
-	-\frac{1}{\alpha} E^i \beta_j + {\epsilon^i}_{jk} B^k
+	\frac{1}{c} (\alpha - \frac{1}{\alpha} \beta^2) E^i + {\epsilon^i}_{kl} \beta^k B^l & 
+	-\frac{1}{c} \frac{1}{\alpha} E^i \beta_j + {\epsilon^i}_{jk} B^k
 }$<br>
 <br>
 
 $F_{ab} = g_{au} {F^u}_b =
 \pmatrix{-\alpha^2 + \beta^2 & \beta_k \\ \beta_i & \gamma_{ik}}
 \pmatrix{
-	\frac{1}{\alpha} E^l \beta_l & 
-	\frac{1}{\alpha} E_j
+	\frac{1}{c} \frac{1}{\alpha} E^l \beta_l & 
+	\frac{1}{c} \frac{1}{\alpha} E_j
 	\\
-	(\alpha - \frac{1}{\alpha} \beta^2) E^k + {\epsilon^k}_{lm} \beta^l B^m & 
-	-\frac{1}{\alpha} E^k \beta_j + {\epsilon^k}_{jl} B^l
+	\frac{1}{c} (\alpha - \frac{1}{\alpha} \beta^2) E^k + {\epsilon^k}_{lm} \beta^l B^m & 
+	-\frac{1}{c} \frac{1}{\alpha} E^k \beta_j + {\epsilon^k}_{jl} B^l
 }
 $<br>
 
 $F_{ab} = {F_a}^u g_{ub} = \pmatrix{
-	-\frac{1}{\alpha} \beta_k E^k & 
-	\frac{1}{\alpha} (-\alpha^2 + \beta^2) E^l - \alpha \beta_k \epsilon^{tklm} B_m 
+	-\frac{1}{c} \frac{1}{\alpha} \beta_k E^k & 
+	\frac{1}{c} \frac{1}{\alpha} (-\alpha^2 + \beta^2) E^l - \alpha \beta_k \epsilon^{0klm} B_m 
 	\\
-	-\frac{1}{\alpha} E_i & 
-	\frac{1}{\alpha} \beta_i E^l - \alpha \gamma_{ik} \epsilon^{tklm} B_m
+	-\frac{1}{c} \frac{1}{\alpha} E_i & 
+	\frac{1}{c} \frac{1}{\alpha} \beta_i E^l - \alpha \gamma_{ik} \epsilon^{0klm} B_m
 } \pmatrix{
 	-\alpha^2 + \beta^2 & \beta_j \\ 
 	\beta_l & \gamma_{lj}
 }$<br>
 
 $F_{ab} = \pmatrix{
-	(-\alpha^2 + \beta^2) (-\frac{1}{\alpha} \beta_k E^k)
-	+ \beta_l (\frac{1}{\alpha} (-\alpha^2 + \beta^2) E^l + \beta_k \epsilon^{klm} B_m)
+	\frac{1}{c} (-\alpha^2 + \beta^2) (-\frac{1}{\alpha} \beta_k E^k)
+	+ \beta_l (\frac{1}{c} \frac{1}{\alpha} (-\alpha^2 + \beta^2) E^l + \beta_k \epsilon^{klm} B_m)
 	& 
-	\beta_j (-\frac{1}{\alpha} \beta_k E^k)
-	+ \gamma_{lj} (\frac{1}{\alpha} (-\alpha^2 + \beta^2) E^l + \beta_k \epsilon^{klm} B_m) 
+	\frac{1}{c} \beta_j (-\frac{1}{\alpha} \beta_k E^k)
+	+ \gamma_{lj} (\frac{1}{c} \frac{1}{\alpha} (-\alpha^2 + \beta^2) E^l + \beta_k \epsilon^{klm} B_m) 
 	\\
-	(-\alpha^2 + \beta^2) (-\frac{1}{\alpha} E_i)
-	+ \beta_l (\frac{1}{\alpha} \beta_i E^l + \gamma_{ik} \epsilon^{klm} B_m)
+	\frac{1}{c} (-\alpha^2 + \beta^2) (-\frac{1}{\alpha} E_i)
+	+ \beta_l (\frac{1}{c} \frac{1}{\alpha} \beta_i E^l + \gamma_{ik} \epsilon^{klm} B_m)
 	&	
-	\beta_j (-\frac{1}{\alpha} E_i)
-	+ \gamma_{lj} (\frac{1}{\alpha} \beta_i E^l + \gamma_{ik} \epsilon^{klm} B_m)
+	\beta_j (-\frac{1}{c} \frac{1}{\alpha} E_i)
+	+ \gamma_{lj} (\frac{1}{c} \frac{1}{\alpha} \beta_i E^l + \gamma_{ik} \epsilon^{klm} B_m)
 }$<br>
 
 $F_{ab} = \pmatrix{
 	0 & 
 	- (
-		\alpha E_j
-		- \frac{1}{\alpha} \beta^2 E_j
-		+ \frac{1}{\alpha} \beta_j \beta^k E_k
+		\frac{1}{c} \alpha E_j
+		- \frac{1}{c} \frac{1}{\alpha} \beta^2 E_j
+		+ \frac{1}{c} \frac{1}{\alpha} \beta_j \beta^k E_k
 		+ \gamma_{kj} \beta_l \epsilon^{klm} B_m
 	)
 	\\
-	\alpha E_i
-	- \frac{1}{\alpha} \beta^2 E_i
-	+ \frac{1}{\alpha} \beta_i \beta^k E_k
+	\frac{1}{c} \alpha E_i
+	- \frac{1}{c} \frac{1}{\alpha} \beta^2 E_i
+	+ \frac{1}{c} \frac{1}{\alpha} \beta_i \beta^k E_k
 	+ \gamma_{ik} \beta_l \epsilon^{klm} B_m
 	&	
-	\frac{1}{\alpha} \beta_i E_j 
-	- \frac{1}{\alpha} \beta_j E_i
+	\frac{1}{c} \frac{1}{\alpha} \beta_i E_j 
+	- \frac{1}{c} \frac{1}{\alpha} \beta_j E_i
 	+ \gamma_{ik} \gamma_{jl} \epsilon^{klm} B_m
 }$<br>
 
 $F_{ab} = \pmatrix{
 	0 & 
 	- (
-		\alpha E_j 
-		+ 2 \frac{1}{\alpha} \beta^k \beta_{[j} E_{k]}
+		\frac{1}{c} \alpha E_j 
+		+ 2 \frac{1}{c} \frac{1}{\alpha} \beta^k \beta_{[j} E_{k]}
 		+ \epsilon_{jkl} \beta^k B^l
 	)
 	\\
-	\alpha E_i 
-	+ 2 \frac{1}{\alpha} \beta^k \beta_{[i} E_{k]}
+	\frac{1}{c} \alpha E_i 
+	+ 2 \frac{1}{c} \frac{1}{\alpha} \beta^k \beta_{[i} E_{k]}
 	+ \epsilon_{ikl} \beta^k B^l
 	&	
-	2 \frac{1}{\alpha} \beta_{[i} E_{j]}
+	2 \frac{1}{c} \frac{1}{\alpha} \beta_{[i} E_{j]}
 	+ \epsilon_{ijk} B^k
 }$<br>
 <br>
@@ -274,37 +281,37 @@ Which brings me to another question, what is the Ricci curvature in ADM metric d
 
 <hr>
 <b>splitting apart space and time in the differential form representation:</b><br>
-
 Flanders, ch.2, and Gravitation box 4.3<br>
 Notice, $\omega \wedge \star \omega = |\omega|^2 dV$<br>
-So $dt \wedge dx \wedge \star (dt \wedge dx) = dt \wedge dx \wedge (-dy \wedge dz) = -dV$<br>
-So $dy \wedge dz \wedge \star (dy \wedge dz) = dy \wedge dz \wedge (dt \wedge dx) = dV$<br>
+So $dx^0 \wedge dx \wedge \star (dx^0 \wedge dx) = dx^0 \wedge dx \wedge (-dy \wedge dz) = -dV$<br>
+So $dy \wedge dz \wedge \star (dy \wedge dz) = dy \wedge dz \wedge (dx^0 \wedge dx) = dV$<br>
 So in Minkowski metric, $\star^2 = -1$<br>
 <br>
 
 In an ADM metric:<br>
-$\star (dt \wedge dx^i) = \frac{1}{2} {\epsilon^{ti}}_{jk} dx^j \wedge dx^k$
+$\star (dx^0 \wedge dx^i) = \frac{1}{2} {\epsilon^{0i}}_{jk} dx^j \wedge dx^k$
 $= -\frac{1}{2} \frac{1}{\alpha} {\epsilon^i}_{jk} dx^j \wedge dx^k$<br>
 <br>
-So $\star (V \wedge dt) = \star (V_i dx^i \wedge dt) = V_i \star (dx^i \wedge dt)$<br>
-$= -\frac{1}{2} V_i {\epsilon^{ti}}_{jk} dx^j \wedge dx^k$<br>
+So $\star (V \wedge dx^0) = \star (V_i dx^i \wedge dx^0) = V_i \star (dx^i \wedge dx^0)$<br>
+$= -\frac{1}{2} V_i {\epsilon^{0i}}_{jk} dx^j \wedge dx^k$<br>
 $= \frac{1}{2} \frac{1}{\alpha} V^i \epsilon_{ijk} dx^j \wedge dx^k$<br>
 <br>
 
-$F = F_{ti} dt \wedge dx^i + \frac{1}{2} F_{ij} dx^i \wedge dx^j$<br> 
-Let $F = \alpha (\mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt))$.<br>
+$F = F_{0i} dx^0 \wedge dx^i + \frac{1}{2} F_{ij} dx^i \wedge dx^j$<br> 
+Let $F = \alpha (\frac{1}{c} \mathcal{E} \wedge dx^0 + \star (\mathcal{B} \wedge dx^0))$<br>
+$= \alpha (\mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dx^0))$.<br>
 Where $\mathcal{E} = \mathcal{E}_i dx^i$<br>
 And $\mathcal{B} = \mathcal{B}_i dx^i$<br>
 Notice that $\mathcal{E}, \mathcal{B}$ are different than $E, B$.<br>
 $F_{uv} = \pmatrix{
-	0 & -\alpha \mathcal{E} \\
-	\alpha \mathcal{E} & \alpha \star (\mathcal{B} \wedge dt)
+	0 & -\frac{1}{c} \alpha \mathcal{E} \\
+	\frac{1}{c} \alpha \mathcal{E} & \alpha \star (\mathcal{B} \wedge dx^0)
 }$<br>
 $F_{uv} = \pmatrix{
-	0 & -\alpha \mathcal{E}_j \\
-	\alpha \mathcal{E}_i & \epsilon_{ijk} \mathcal{B}^k
+	0 & -\frac{1}{c} \alpha \mathcal{E}_j \\
+	\frac{1}{c} \alpha \mathcal{E}_i & \epsilon_{ijk} \mathcal{B}^k
 }$<br>
-So $F_{it} = \alpha \mathcal{E}_i$<br>
+So $F_{i0} = \frac{1}{c} \alpha \mathcal{E}_i$<br>
 And $F_{ij} = \epsilon_{ijk} B^k$<br>
 <br>
 
@@ -312,30 +319,30 @@ $\mathcal{E}_t$ and $\mathcal{B}_t$ can be chosen arbitrarily, since any values 
 <br>
 
 Comparing $E$ and $\mathcal{E}$:<br>
-$\alpha \mathcal{E}_i = \alpha E_i + 2 \frac{1}{\alpha} \beta^k \beta_{[i} E_{k]} + \frac{1}{\alpha} \epsilon_{ikl} \beta^k B^l$<br>
-$\mathcal{E}_i = E_i + \frac{1}{\alpha^2} (2 \beta^k \beta_{[i} E_{k]} + \epsilon_{ikl} \beta^k B^l)$<br>
-$\mathcal{E}_i = (\delta^k_i + 2 \frac{1}{\alpha^2} \beta^j \beta_{[i} \delta^k_{j]}) E_k + \frac{1}{\alpha^2} \epsilon_{ikl} \beta^k B^l$<br>
+$\frac{1}{c} \alpha \mathcal{E}_i = \frac{1}{c} \alpha E_i + 2 \frac{1}{c} \frac{1}{\alpha} \beta^k \beta_{[i} E_{k]} + \frac{1}{\alpha} \epsilon_{ikl} \beta^k B^l$<br>
+$\frac{1}{c} \mathcal{E}_i = \frac{1}{c} E_i + \frac{1}{\alpha^2} (2 \frac{1}{c} \beta^k \beta_{[i} E_{k]} + \epsilon_{ikl} \beta^k B^l)$<br>
+$\frac{1}{c} \mathcal{E}_i = \frac{1}{c} (\delta^k_i + 2 \frac{1}{\alpha^2} \beta^j \beta_{[i} \delta^k_{j]}) E_k + \frac{1}{\alpha^2} \epsilon_{ikl} \beta^k B^l$<br>
 <br>
 
 Comparing $B$ to $\mathcal{B}$:<br>
-$\epsilon_{ijk} \mathcal{B}^k = 2 \frac{1}{\alpha} \beta_{[i} E_{j]} + \epsilon_{ijk} B^k$<br>
-$\mathcal{B}_i = B_i + \frac{1}{\alpha} \epsilon_{ijk} \beta^j E^k$<br>
+$\epsilon_{ijk} \mathcal{B}^k = 2 \frac{1}{c} \frac{1}{\alpha} \beta_{[i} E_{j]} + \epsilon_{ijk} B^k$<br>
+$\mathcal{B}_i = B_i + \frac{1}{c} \frac{1}{\alpha} \epsilon_{ijk} \beta^j E^k$<br>
 <br>
 
 Combining ${F^a}_b, \mathcal{E}_i$, and $\mathcal{B}_i$, we find:<br>
 ${F^a}_b = \pmatrix{
-	\frac{1}{\alpha} \beta^k E_k & 
-	\frac{1}{\alpha} E_j
+	\frac{1}{c} \frac{1}{\alpha} \beta^k E_k & 
+	\frac{1}{c} \frac{1}{\alpha} E_j
 	\\
-	(\alpha - \frac{1}{\alpha} \beta^2) E^i + {\epsilon^i}_{kl} \beta^k B^l & 
-	{\epsilon^i}_{jk} B^k - \frac{1}{\alpha} E^i \beta_j
+	\frac{1}{c} (\alpha - \frac{1}{\alpha} \beta^2) E^i + {\epsilon^i}_{kl} \beta^k B^l & 
+	\frac{1}{c} {\epsilon^i}_{jk} B^k - \frac{1}{\alpha} E^i \beta_j
 }$<br>
 ${F^a}_b = \pmatrix{
-	\frac{1}{\alpha} E_t & 
-	\frac{1}{\alpha} E_j
+	\frac{1}{c} \frac{1}{\alpha} E_t & 
+	\frac{1}{c} \frac{1}{\alpha} E_j
 	\\
-	\alpha \mathcal{E}^i - \frac{1}{\alpha} \beta^i \beta_k E^k & 
-	{\epsilon^i}_{jk} \mathcal{B}^k - \frac{1}{\alpha} \beta^i E_j
+	\frac{1}{c} \alpha \mathcal{E}^i - \frac{1}{c} \frac{1}{\alpha} \beta^i \beta_k E^k & 
+	{\epsilon^i}_{jk} \mathcal{B}^k - \frac{1}{c} \frac{1}{\alpha} \beta^i E_j
 }$<br>
 (Notice this $\mathcal{E}^i$ is only raised with $\gamma^{ij} \mathcal{E}_j$, and not the whole $g^{ia} \mathcal{E}_a$)<br>
 Because this one is what I'll be looking at later with the stress-energy tensor.<br>
@@ -348,83 +355,83 @@ $A_u = \pmatrix{\frac{1}{c} \phi \\ A^i}$<br>
 $A_i$ is in units of $\frac{kg \cdot m}{C \cdot s}$<br>
 $\phi$ is in units of $\frac{kg \cdot m^2}{C \cdot s^2}$<br>
 $F_{ab} = \pmatrix{
-	0 & F_{tj} \\ 
-	F_{it} & F_{ij}
+	0 & F_{0j} \\ 
+	F_{i0} & F_{ij}
 } = \pmatrix{
-	0 & 2 \partial_{[t} A_{j]} \\
-	2 \partial_{[i} A_{t]} & 2 \partial_{[i} A_{j]}
+	0 & 2 \partial_{[0} A_{j]} \\
+	2 \partial_{[i} A_{0]} & 2 \partial_{[i} A_{j]}
 } = \pmatrix{
-	0 & A_{j,t} - \frac{1}{c^2} \phi_{,j} \\
-	-A_{i,t} + \frac{1}{c^2} \phi_{,i} & A_{j,i} - A_{i,j}
+	0 & \frac{1}{c} (A_{j,t} - \phi_{,j}) \\
+	-\frac{1}{c} (A_{i,t} - \phi_{,i}) & A_{j,i} - A_{i,j}
 }$<br>
-So $\mathcal{E}_i = \frac{1}{\alpha} (-A_{i,t} + \frac{1}{c^2} \phi_{,i})$<br>
+So $\mathcal{E}_i = \frac{1}{c} \frac{1}{\alpha} (-A_{i,t} + \phi_{,i})$<br>
 And $A_{j,i} - A_{i,j} = \epsilon_{ijk} \mathcal{B}^k$<br>
 $\epsilon^{ijl} (A_{j,i} - A_{i,j}) = \epsilon^{ijl} \epsilon_{ijk} \mathcal{B}^k$<br>
 $\mathcal{B}^i = \epsilon^{ijk} A_{k,j}$<br>
 <br>
 
-$F \wedge \star F = \alpha^2 (\mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt)) \wedge \star (\mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt))$<br>
+$F \wedge \star F = \alpha^2 (\frac{1}{c} \mathcal{E} \wedge dx^0 + \star (\mathcal{B} \wedge dx^0)) \wedge \star (\frac{1}{c} \mathcal{E} \wedge dx^0 + \star (\mathcal{B} \wedge dx^0))$<br>
 $= \alpha^2 (
-	\mathcal{E} \wedge dt 
-	+ \star (\mathcal{B} \wedge dt)
+	\frac{1}{c} \mathcal{E} \wedge dx^0 
+	+ \star (\mathcal{B} \wedge dx^0)
 ) \wedge (
-	\star (\mathcal{E} \wedge dt) 
-	- (\mathcal{B} \wedge dt)
+	\star (\frac{1}{c} \mathcal{E} \wedge dx^0) 
+	- (\mathcal{B} \wedge dx^0)
 )$<br>
 $= \alpha^2 (
-	\mathcal{E} \wedge dt \wedge \star (\mathcal{E} \wedge dt)
-	+ \star (\mathcal{B} \wedge dt) \wedge \star (\mathcal{E} \wedge dt)
-	- \mathcal{E} \wedge dt \wedge (\mathcal{B} \wedge dt)
-	- \star (\mathcal{B} \wedge dt) \wedge (\mathcal{B} \wedge dt)
+	\frac{1}{c} \mathcal{E} \wedge dx^0 \wedge \star (\frac{1}{c} \mathcal{E} \wedge dx^0)
+	+ \star (\mathcal{B} \wedge dx^0) \wedge \star (\frac{1}{c} \mathcal{E} \wedge dx^0)
+	- \frac{1}{c} \mathcal{E} \wedge dx^0 \wedge (\mathcal{B} \wedge dx^0)
+	- \star (\mathcal{B} \wedge dx^0) \wedge (\mathcal{B} \wedge dx^0)
 )$<br>
 $= \alpha^2 (
-	\mathcal{E} \wedge dt \wedge \star (\mathcal{E} \wedge dt)
-	- \star (\mathcal{B} \wedge dt) \wedge (\mathcal{B} \wedge dt)
+	\frac{1}{c} \mathcal{E} \wedge dx^0 \wedge \star (\frac{1}{c} \mathcal{E} \wedge dx^0)
+	- \star (\mathcal{B} \wedge dx^0) \wedge (\mathcal{B} \wedge dx^0)
 )$<br>
 $= \alpha^2 (
-	\mathcal{E}_i dx^i \wedge dt \wedge \frac{1}{2} \mathcal{E}_m {\epsilon^{tm}}_{jk} dx^j \wedge dx^k
-	- \frac{1}{2} \mathcal{B}_m {\epsilon^{tm}}_{jk} dx^j \wedge dx^k\wedge (\mathcal{B}_i dx^i \wedge dt)
+	\frac{1}{c} \mathcal{E}_i dx^i \wedge dx^0 \wedge \frac{1}{2} \frac{1}{c} \mathcal{E}_m {\epsilon^{0m}}_{jk} dx^j \wedge dx^k
+	- \frac{1}{2} \mathcal{B}_m {\epsilon^{0m}}_{jk} dx^j \wedge dx^k\wedge (\mathcal{B}_i dx^i \wedge dx^0)
 )$<br>
-$= -\frac{1}{2} \alpha^2 (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) {\epsilon^{tm}}_{jk} dt \wedge dx^i \wedge dx^j \wedge dx^k$<br>
-$= -2 \alpha^2 (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) g^{ta} g^{mb} \epsilon_{abjk} \epsilon^{tijk} dV$<br>
-$= 2 \alpha^2 (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) g^{ta} g^{mb} \delta^{ti}_{ab} dV$<br>
-$= 2 \alpha^2 (\mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) g^{ta} g^{mb} (\delta^t_a \delta^i_b - \delta^t_b \delta^i_a) dV$<br>
-$= 2 \alpha^2 (\mathcal{E}_i \mathcal{E}_j - \mathcal{B}_i \mathcal{B}_j) (g^{tt} g^{ij} - g^{ti} g^{tj}) dV$<br>
-$= 2 \alpha^2 (\mathcal{E}_i \mathcal{E}_j - \mathcal{B}_i \mathcal{B}_j) (-\frac{1}{\alpha^2} (\gamma^{ij} - \frac{1}{\alpha^2} \beta^i \beta^j) - \frac{1}{\alpha^4} \beta^i \beta^j) dV$<br>
-$= -2 \gamma^{ij} (\mathcal{E}_i \mathcal{E}_j - \mathcal{B}_i \mathcal{B}_j) dV$<br>
+$= -\frac{1}{2} \alpha^2 (\frac{1}{c^2} \mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) {\epsilon^{0m}}_{jk} dx^0 \wedge dx^i \wedge dx^j \wedge dx^k$<br>
+$= -2 \alpha^2 (\frac{1}{c^2} \mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) g^{ta} g^{mb} \epsilon_{abjk} \epsilon^{0ijk} dV$<br>
+$= 2 \alpha^2 (\frac{1}{c^2} \mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) g^{ta} g^{mb} \delta^{ti}_{ab} dV$<br>
+$= 2 \alpha^2 (\frac{1}{c^2} \mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) g^{ta} g^{mb} (\delta^t_a \delta^i_b - \delta^t_b \delta^i_a) dV$<br>
+$= 2 \alpha^2 (\frac{1}{c^2} \mathcal{E}_i \mathcal{E}_j - \mathcal{B}_i \mathcal{B}_j) (g^{tt} g^{ij} - g^{ti} g^{tj}) dV$<br>
+$= 2 \alpha^2 (\frac{1}{c^2} \mathcal{E}_i \mathcal{E}_j - \mathcal{B}_i \mathcal{B}_j) (-\frac{1}{\alpha^2} (\gamma^{ij} - \frac{1}{\alpha^2} \beta^i \beta^j) - \frac{1}{\alpha^4} \beta^i \beta^j) dV$<br>
+$= -2 \gamma^{ij} (\frac{1}{c^2} \mathcal{E}_i \mathcal{E}_j - \mathcal{B}_i \mathcal{B}_j) dV$<br>
 If we choose $\mathcal{E}_t = \mathcal{B}_t = 0$:<br>
-$= -2 g^{ab} (\mathcal{E}_a \mathcal{E}_b - \mathcal{B}_a \mathcal{B}_b) dV$<br>
-$= -2 (\mathcal{E}^2 - \mathcal{B}^2) dV$<br>
+$= -2 g^{ab} (\frac{1}{c^2} \mathcal{E}_a \mathcal{E}_b - \mathcal{B}_a \mathcal{B}_b) dV$<br>
+$= -2 (\frac{1}{c^2} \mathcal{E}^2 - \mathcal{B}^2) dV$<br>
 ...TODO show this one too<br>
 $= g^{ua} F_{ab} g^{bv} F_{uv} dV$<br>
 $ = F_{ab} F^{ab} dV$<br>
 $ = -tr(F^2) dV$<br>
 <br>
 
-$F \wedge F = \alpha^2 (\mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt)) \wedge (\mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dt))$<br>
+$F \wedge F = \alpha^2 (\frac{1}{c} \mathcal{E} \wedge dx^0 + \star (\mathcal{B} \wedge dx^0)) \wedge (\frac{1}{c} \mathcal{E} \wedge dx^0 + \star (\mathcal{B} \wedge dx^0))$<br>
 $= \alpha^2 (
-	\mathcal{E} \wedge dt \wedge \mathcal{E} \wedge dt
-	+ \star (\mathcal{B} \wedge dt) \wedge \mathcal{E} \wedge dt 
-	+ \mathcal{E} \wedge dt \wedge \star (\mathcal{B} \wedge dt) 
-	+ \star (\mathcal{B} \wedge dt) \wedge \star (\mathcal{B} \wedge dt)
+	\frac{1}{c} \mathcal{E} \wedge dx^0 \wedge \frac{1}{c} \mathcal{E} \wedge dx^0
+	+ \star (\mathcal{B} \wedge dx^0) \wedge \frac{1}{c} \mathcal{E} \wedge dx^0 
+	+ \frac{1}{c} \mathcal{E} \wedge dx^0 \wedge \star (\mathcal{B} \wedge dx^0) 
+	+ \star (\mathcal{B} \wedge dx^0) \wedge \star (\mathcal{B} \wedge dx^0)
 )$<br>
 $= \alpha^2 (
-	\star (\mathcal{B} \wedge dt) \wedge \mathcal{E} \wedge dt 
-	+ \mathcal{E} \wedge dt \wedge \star (\mathcal{B} \wedge dt)
+	\star (\mathcal{B} \wedge dx^0) \wedge \frac{1}{c} \mathcal{E} \wedge dx^0 
+	+ \frac{1}{c} \mathcal{E} \wedge dx^0 \wedge \star (\mathcal{B} \wedge dx^0)
 )$<br>
 $= \alpha^2 (
-	\frac{1}{2} \mathcal{B}_i {\epsilon^{ti}}_{jk} dx^j \wedge dx^k \wedge \mathcal{E} \wedge dt 
-	+ \mathcal{E} \wedge dt \wedge \frac{1}{2} \mathcal{B}_i {\epsilon^{ti}}_{jk} dx^j \wedge dx^k
+	\frac{1}{2} \mathcal{B}_i {\epsilon^{0i}}_{jk} dx^j \wedge dx^k \wedge \frac{1}{c} \mathcal{E} \wedge dx^0 
+	+ \frac{1}{c} \mathcal{E} \wedge dx^0 \wedge \frac{1}{2} \mathcal{B}_i {\epsilon^{0i}}_{jk} dx^j \wedge dx^k
 )$<br>
-$= -\alpha^2 \mathcal{E}_i \mathcal{B}_l {\epsilon^{tl}}_{jk} dt \wedge dx^i \wedge dx^j \wedge dx^k$<br>
-$= -4 \alpha^2 \mathcal{E}_i \mathcal{B}_l {\epsilon^{tl}}_{jk} \epsilon^{tijk} dV$<br>
-$= -4 \alpha^2 \mathcal{E}_i \mathcal{B}_l g^{ta} g^{lb} \epsilon_{abjk} \epsilon^{tijk} dV$<br>
-$= -4 \alpha^2 \mathcal{E}_i \mathcal{B}_l g^{ta} g^{lb} \delta^{ti}_{ab} dV$<br>
-$= -4 \alpha^2 \mathcal{E}_i \mathcal{B}_l g^{ta} g^{lb} (\delta^t_a \delta^i_b - \delta^t_b \delta^i_a) dV$<br>
-$= -4 \alpha^2 \mathcal{E}_i \mathcal{B}_j (g^{tt} g^{ij} - g^{ti} g^{tj}) dV$<br>
-$= -4 \alpha^2 \mathcal{E}_i \mathcal{B}_j (-\frac{1}{\alpha^2} (\gamma^{ij} - \frac{1}{\alpha^2} \beta^i \beta^j) - \frac{1}{\alpha^4} \beta^i \beta^j) dV$<br>
-$= 4 \gamma^{ij} \mathcal{E}_i \mathcal{B}_j dV$<br>
-So $\star (F \wedge F) = 4 \gamma^{ij} \mathcal{E}_i \mathcal{B}_j$<br>
+$= -\frac{1}{c} \alpha^2 \mathcal{E}_i \mathcal{B}_l {\epsilon^{0l}}_{jk} dx^0 \wedge dx^i \wedge dx^j \wedge dx^k$<br>
+$= -4 \frac{1}{c} \alpha^2 \mathcal{E}_i \mathcal{B}_l {\epsilon^{0l}}_{jk} \epsilon^{0ijk} dV$<br>
+$= -4 \frac{1}{c} \alpha^2 \mathcal{E}_i \mathcal{B}_l g^{ta} g^{lb} \epsilon_{abjk} \epsilon^{0ijk} dV$<br>
+$= -4 \frac{1}{c} \alpha^2 \mathcal{E}_i \mathcal{B}_l g^{ta} g^{lb} \delta^{ti}_{ab} dV$<br>
+$= -4 \frac{1}{c} \alpha^2 \mathcal{E}_i \mathcal{B}_l g^{ta} g^{lb} (\delta^t_a \delta^i_b - \delta^t_b \delta^i_a) dV$<br>
+$= -4 \frac{1}{c} \alpha^2 \mathcal{E}_i \mathcal{B}_j (g^{tt} g^{ij} - g^{ti} g^{tj}) dV$<br>
+$= -4 \frac{1}{c} \alpha^2 \mathcal{E}_i \mathcal{B}_j (-\frac{1}{\alpha^2} (\gamma^{ij} - \frac{1}{\alpha^2} \beta^i \beta^j) - \frac{1}{\alpha^4} \beta^i \beta^j) dV$<br>
+$= 4 \frac{1}{c} \gamma^{ij} \mathcal{E}_i \mathcal{B}_j dV$<br>
+So $\star (F \wedge F) = 4 \frac{1}{c} \gamma^{ij} \mathcal{E}_i \mathcal{B}_j$<br>
 This looks suspiciously like $F \cdot \star F$<br>...
 <br>
 
@@ -492,257 +499,257 @@ $T^{ab} = {T^a}_c \eta^{cb} = \pmatrix{
 
 in general relativity:<br>
 ${F^a}_b = \pmatrix{
-	\frac{1}{\alpha} E^k \beta_k & 
-	\frac{1}{\alpha} E_j
+	\frac{1}{c} \frac{1}{\alpha} E^k \beta_k & 
+	\frac{1}{c} \frac{1}{\alpha} E_j
 	\\
-	(\alpha - \frac{1}{\alpha} \beta^2) E^i + {\epsilon^i}_{kl} \beta^k B^l & 
-	-\frac{1}{\alpha} E^i \beta_j + {\epsilon^i}_{jk} B^k
+	\frac{1}{c} (\alpha - \frac{1}{\alpha} \beta^2) E^i + {\epsilon^i}_{kl} \beta^k B^l & 
+	-\frac{1}{c} \frac{1}{\alpha} E^i \beta_j + {\epsilon^i}_{jk} B^k
 }$<br>
 ${(F^2)^a}_b = {F^a}_u {F^u}_b = \pmatrix{
-	\frac{1}{\alpha} E^k \beta_k & 
-	\frac{1}{\alpha} E_o
+	\frac{1}{c} \frac{1}{\alpha} E^k \beta_k & 
+	\frac{1}{c} \frac{1}{\alpha} E_o
 	\\
-	(\alpha - \frac{1}{\alpha} \beta^2) E^i + {\epsilon^i}_{kl} \beta^k B^l & 
-	-\frac{1}{\alpha} E^i \beta_o + {\epsilon^i}_{ok} B^k
+	\frac{1}{c} (\alpha - \frac{1}{\alpha} \beta^2) E^i + {\epsilon^i}_{kl} \beta^k B^l & 
+	-\frac{1}{c} \frac{1}{\alpha} E^i \beta_o + {\epsilon^i}_{ok} B^k
 } \cdot \pmatrix{
-	\frac{1}{\alpha} E^m \beta_m & 
-	\frac{1}{\alpha} E_j
+	\frac{1}{c} \frac{1}{\alpha} E^m \beta_m & 
+	\frac{1}{c} \frac{1}{\alpha} E_j
 	\\
-	(\alpha - \frac{1}{\alpha} \beta^2) E^o + {\epsilon^o}_{mn} \beta^m B^n & 
-	-\frac{1}{\alpha} E^o \beta_j + {\epsilon^o}_{jm} B^m
+	\frac{1}{c} (\alpha - \frac{1}{\alpha} \beta^2) E^o + {\epsilon^o}_{mn} \beta^m B^n & 
+	-\frac{1}{c} \frac{1}{\alpha} E^o \beta_j + {\epsilon^o}_{jm} B^m
 }$<br>
 ${(F^2)^a}_b = {F^a}_u {F^u}_b = \pmatrix{
-	\frac{1}{\alpha} E^k \beta_k \frac{1}{\alpha} E^m \beta_m 
-	+ \frac{1}{\alpha} E_o ((\alpha - \frac{1}{\alpha} \beta^2) E^o + {\epsilon^o}_{mn} \beta^m B^n)
+	\frac{1}{c^2} \frac{1}{\alpha} E^k \beta_k \frac{1}{\alpha} E^m \beta_m 
+	+ \frac{1}{c^2} \frac{1}{\alpha} E_o ((\alpha - \frac{1}{\alpha} \beta^2) E^o + {\epsilon^o}_{mn} \beta^m B^n)
 	&
-	\frac{1}{\alpha} E^k \beta_k \frac{1}{\alpha} E_j 
-	+ \frac{1}{\alpha} E_o (-\frac{1}{\alpha} E^o \beta_j + {\epsilon^o}_{jm} B^m)
+	\frac{1}{c^2} \frac{1}{\alpha} E^k \beta_k \frac{1}{\alpha} E_j 
+	+ \frac{1}{c^2} \frac{1}{\alpha} E_o (-\frac{1}{\alpha} E^o \beta_j + {\epsilon^o}_{jm} B^m)
 	\\
-	((\alpha - \frac{1}{\alpha} \beta^2) E^i + {\epsilon^i}_{kl} \beta^k B^l) \frac{1}{\alpha} E^m \beta_m
-	+ (-\frac{1}{\alpha} E^i \beta_o + {\epsilon^i}_{ok} B^k) ((\alpha - \frac{1}{\alpha} \beta^2) E^o + {\epsilon^o}_{mn} \beta^m B^n)
+	((\alpha - \frac{1}{\alpha} \beta^2) \frac{1}{c} E^i + {\epsilon^i}_{kl} \beta^k B^l) \frac{1}{\alpha} \frac{1}{c} E^m \beta_m
+	+ (-\frac{1}{\alpha} \frac{1}{c} E^i \beta_o + {\epsilon^i}_{ok} B^k) ((\alpha - \frac{1}{\alpha} \beta^2) \frac{1}{c} E^o + {\epsilon^o}_{mn} \beta^m B^n)
 	&
-	((\alpha - \frac{1}{\alpha} \beta^2) E^i + {\epsilon^i}_{kl} \beta^k B^l) \frac{1}{\alpha} E_j
-	+ (-\frac{1}{\alpha} E^i \beta_o + {\epsilon^i}_{ok} B^k) (-\frac{1}{\alpha} E^o \beta_j + {\epsilon^o}_{jm} B^m)
+	((\alpha - \frac{1}{\alpha} \beta^2) \frac{1}{c} E^i + {\epsilon^i}_{kl} \beta^k B^l) \frac{1}{\alpha} \frac{1}{c} E_j
+	+ (-\frac{1}{\alpha} \frac{1}{c} E^i \beta_o + {\epsilon^i}_{ok} B^k) (-\frac{1}{\alpha} \frac{1}{c} E^o \beta_j + {\epsilon^o}_{jm} B^m)
 }$<br>
 <br>
-${(F^2)^t}_t = \frac{1}{\alpha^2} E^k \beta_k E^m \beta_m 
-	+ E_o E^o 
-	- \frac{1}{\alpha^2} \beta^2 E_o E^o
-	+ \frac{1}{\alpha} E_o {\epsilon^o}_{mn} \beta^m B^n
+${(F^2)^0}_0 = \frac{1}{c^2} \frac{1}{\alpha^2} E^k \beta_k E^m \beta_m 
+	+ \frac{1}{c^2} E_o E^o 
+	- \frac{1}{c^2} \frac{1}{\alpha^2} \beta^2 E_o E^o
+	+ \frac{1}{c} \frac{1}{\alpha} E_o {\epsilon^o}_{mn} \beta^m B^n
 $<br>
-$= E^2
-	+ \frac{1}{\alpha} \epsilon_{klm} E^k \beta^l B^m
-	+ \frac{1}{\alpha^2} ((E^k \beta_k)^2 - \beta^2 E^2)
+$= \frac{1}{c^2} E^2
+	+ \frac{1}{c} \frac{1}{\alpha} \epsilon_{klm} E^k \beta^l B^m
+	+ \frac{1}{c^2} \frac{1}{\alpha^2} ((E^k \beta_k)^2 - \beta^2 E^2)
 $<br>
-${(F^2)^t}_j = \frac{1}{\alpha^2} E^k \beta_k E_j 
-	- \frac{1}{\alpha^2} E_o E^o \beta_j 
-	+ \frac{1}{\alpha} E_o {\epsilon^o}_{jm} B^m
+${(F^2)^0}_j = \frac{1}{c^2} \frac{1}{\alpha^2} E^k \beta_k E_j 
+	- \frac{1}{c^2} \frac{1}{\alpha^2} E_o E^o \beta_j 
+	+ \frac{1}{c} \frac{1}{\alpha} E_o {\epsilon^o}_{jm} B^m
 $<br>
-$=  - \frac{1}{\alpha} \epsilon_{jkl} E^k B^l
-	+ 2 \frac{1}{\alpha^2} E_{[j} \beta_{k]} E^k
+$=  - \frac{1}{c} \frac{1}{\alpha} \epsilon_{jkl} E^k B^l
+	+ 2 \frac{1}{c^2} \frac{1}{\alpha^2} E_{[j} \beta_{k]} E^k
 $<br>
-${(F^2)^i}_t = \alpha E^i \frac{1}{\alpha} E^m \beta_m 
-	- \frac{1}{\alpha} \beta^2 E^i \frac{1}{\alpha} E^m \beta_m
-	+ {\epsilon^i}_{kl} \beta^k B^l \frac{1}{\alpha} E^m \beta_m
-	- \frac{1}{\alpha} E^i \beta_o \alpha  E^o
-	+ \frac{1}{\alpha} E^i \beta_o \frac{1}{\alpha} \beta^2  E^o
-	+ {\epsilon^i}_{ok} B^k \alpha E^o 
-	- {\epsilon^i}_{ok} B^k \frac{1}{\alpha} \beta^2 E^o
-	- \frac{1}{\alpha} E^i \beta_o {\epsilon^o}_{mn} \beta^m B^n 
+${(F^2)^i}_0 = \frac{1}{c^2} \alpha E^i \frac{1}{\alpha} E^m \beta_m 
+	- \frac{1}{c^2} \frac{1}{\alpha} \beta^2 E^i \frac{1}{\alpha} E^m \beta_m
+	+ \frac{1}{c} {\epsilon^i}_{kl} \beta^k B^l \frac{1}{\alpha} E^m \beta_m
+	- \frac{1}{c^2} \frac{1}{\alpha} E^i \beta_o \alpha E^o
+	+ \frac{1}{c^2} \frac{1}{\alpha} E^i \beta_o \frac{1}{\alpha} \beta^2 E^o
+	+ \frac{1}{c} {\epsilon^i}_{ok} B^k \alpha E^o 
+	- \frac{1}{c} {\epsilon^i}_{ok} B^k \frac{1}{\alpha} \beta^2 E^o
+	- \frac{1}{c} \frac{1}{\alpha} E^i \beta_o {\epsilon^o}_{mn} \beta^m B^n 
 	+ {\epsilon^i}_{ok} B^k {\epsilon^o}_{mn} \beta^m B^n
 $<br>
 $= 
 	2 B^{[i} \beta^{k]} B_k
-	+ \frac{1}{\alpha} {\epsilon^i}_{kl} \beta^k B^l E^m \beta_m
-	+ (\alpha - \frac{1}{\alpha} \beta^2) {\epsilon^i}_{kl} E^k B^l
+	+ \frac{1}{c} \frac{1}{\alpha} {\epsilon^i}_{kl} \beta^k B^l E^m \beta_m
+	+ \frac{1}{c} (\alpha - \frac{1}{\alpha} \beta^2) {\epsilon^i}_{kl} E^k B^l
 $<br>
-${(F^2)^i}_j = \alpha E^i \frac{1}{\alpha} E_j 
-	- \frac{1}{\alpha} \beta^2 E^i \frac{1}{\alpha} E_j 
-	+ {\epsilon^i}_{kl} \beta^k B^l \frac{1}{\alpha} E_j
-	+ \frac{1}{\alpha} E^i \beta_o \frac{1}{\alpha} E^o \beta_j 
-	- {\epsilon^i}_{ok} B^k \frac{1}{\alpha} E^o \beta_j 
-	- \frac{1}{\alpha} E^i \beta_o {\epsilon^o}_{jm} B^m 
+${(F^2)^i}_j = \frac{1}{c^2} \alpha E^i \frac{1}{\alpha} E_j 
+	- \frac{1}{c^2} \frac{1}{\alpha} \beta^2 E^i \frac{1}{\alpha} E_j 
+	+ \frac{1}{c} {\epsilon^i}_{kl} \beta^k B^l \frac{1}{\alpha} E_j
+	+ \frac{1}{c^2} \frac{1}{\alpha} E^i \beta_o \frac{1}{\alpha} E^o \beta_j 
+	- \frac{1}{c} {\epsilon^i}_{ok} B^k \frac{1}{\alpha} E^o \beta_j 
+	- \frac{1}{c} \frac{1}{\alpha} E^i \beta_o {\epsilon^o}_{jm} B^m 
 	+ {\epsilon^i}_{ok} B^k {\epsilon^o}_{jm} B^m
 $<br>
-$= E^i E_j 
+$= \frac{1}{c^2} E^i E_j 
 	+ B^i B_j
 	- \delta^i_j B^2 
-	- \frac{1}{\alpha} \epsilon_{jlm} \beta^m E^i B^l
-	+ \frac{1}{\alpha} {\epsilon^i}_{kl} \beta^k E_j B^l
-	- \frac{1}{\alpha} {\epsilon^i}_{kl} \beta_j E^k B^l
-	- \frac{1}{\alpha^2} \beta^2 E^i E_j 
-	+ \frac{1}{\alpha^2} E^i \beta_j \beta_k E^k 
+	- \frac{1}{c} \frac{1}{\alpha} \epsilon_{jlm} \beta^m E^i B^l
+	+ \frac{1}{c} \frac{1}{\alpha} {\epsilon^i}_{kl} \beta^k E_j B^l
+	- \frac{1}{c} \frac{1}{\alpha} {\epsilon^i}_{kl} \beta_j E^k B^l
+	- \frac{1}{c^2} \frac{1}{\alpha^2} \beta^2 E^i E_j 
+	+ \frac{1}{c^2} \frac{1}{\alpha^2} E^i \beta_j \beta_k E^k 
 $<br>
 <br>
 ${(F^2)^a}_b = {F^a}_u {F^u}_b = \pmatrix{
-	{(F^2)^t}_t &
-	{(F^2)^t}_j	 \\
-	{(F^2)^i}_t	&
+	{(F^2)^0}_0 &
+	{(F^2)^0}_j	 \\
+	{(F^2)^i}_0	&
 	{(F^2)_i}_j	
 }$<br>
 <br>
-$tr (F^2) = {(F^2)^a}_a = {(F^2)^t}_t + {(F^2)^i}_i$<br>
-$= E^2
-	+ \frac{1}{\alpha} \epsilon_{klm} E^k \beta^l B^m
-	+ \frac{1}{\alpha^2} ((E^k \beta_k)^2 - \beta^2 E^2)
-	+ E^i E_i 
+$tr (F^2) = {(F^2)^a}_a = {(F^2)^0}_0 + {(F^2)^i}_i$<br>
+$= \frac{1}{c^2} E^2
+	+ \frac{1}{c} \frac{1}{\alpha} \epsilon_{klm} E^k \beta^l B^m
+	+ \frac{1}{c^2} \frac{1}{\alpha^2} ((E^k \beta_k)^2 - \beta^2 E^2)
+	+ \frac{1}{c^2} E^i E_i 
 	+ B^i B_i
 	- \delta^i_i B^2 
-	- \frac{1}{\alpha} \epsilon_{ilm} \beta^m E^i B^l
-	+ \frac{1}{\alpha} {\epsilon^i}_{kl} \beta^k E_i B^l
-	- \frac{1}{\alpha} {\epsilon^i}_{kl} \beta_i E^k B^l
-	- \frac{1}{\alpha^2} \beta^2 E^i E_i 
-	+ \frac{1}{\alpha^2} E^i \beta_i \beta_k E^k 
+	- \frac{1}{c} \frac{1}{\alpha} \epsilon_{ilm} \beta^m E^i B^l
+	+ \frac{1}{c} \frac{1}{\alpha} {\epsilon^i}_{kl} \beta^k E_i B^l
+	- \frac{1}{c} \frac{1}{\alpha} {\epsilon^i}_{kl} \beta_i E^k B^l
+	- \frac{1}{c^2} \frac{1}{\alpha^2} \beta^2 E^i E_i 
+	+ \frac{1}{c^2} \frac{1}{\alpha^2} E^i \beta_i \beta_k E^k 
 $<br>
-$= 2 E^2
+$= 2 \frac{1}{c^2} E^2
 	- 2 B^2 
-	+ 2 \frac{1}{\alpha^2} (E^i \beta_i)^2 
-	- 2 \frac{1}{\alpha^2} \beta^2 E^2
-	- 4 \frac{1}{\alpha} \epsilon_{ijk} E^i B^j \beta^k
+	+ 2 \frac{1}{c} \frac{1}{\alpha^2} (E^i \beta_i)^2 
+	- 2 \frac{1}{c^2} \frac{1}{\alpha^2} \beta^2 E^2
+	- 4 \frac{1}{c} \frac{1}{\alpha} \epsilon_{ijk} E^i B^j \beta^k
 $<br>
 <br>
 ${T^a}_b = \frac{1}{4} \delta^a_b tr (F^2) - {(F^2)^a}_b$<br>
-${T^t}_t = \frac{1}{4} tr (F^2) - {(F^2)^t}_t$<br>
+${T^0}_0 = \frac{1}{4} tr (F^2) - {(F^2)^0}_0$<br>
 $= \frac{1}{4} (
-	2 E^2
+	2 \frac{1}{c^2} E^2
 	- 2 B^2 
-	+ 2 \frac{1}{\alpha^2} (E^i \beta_i)^2 
-	- 2 \frac{1}{\alpha^2} \beta^2 E^2
-	- 4 \frac{1}{\alpha} \epsilon_{ijk} E^i B^j \beta^k
+	+ 2 \frac{1}{c^2} \frac{1}{\alpha^2} (E^i \beta_i)^2 
+	- 2 \frac{1}{c^2} \frac{1}{\alpha^2} \beta^2 E^2
+	- 4 \frac{1}{c} \frac{1}{\alpha} \epsilon_{ijk} E^i B^j \beta^k
 ) - (
-	E^2
-	+ \frac{1}{\alpha} \epsilon_{klm} E^k \beta^l B^m
-	+ \frac{1}{\alpha^2} ((E^k \beta_k)^2 - \beta^2 E^2)
+	\frac{1}{c^2} E^2
+	+ \frac{1}{c} \frac{1}{\alpha} \epsilon_{klm} E^k \beta^l B^m
+	+ \frac{1}{c^2} \frac{1}{\alpha^2} ((E^k \beta_k)^2 - \beta^2 E^2)
 )$<br>
 $= 
-	- \frac{1}{2} E^2
+	- \frac{1}{2} \frac{1}{c^2} E^2
 	- \frac{1}{2} B^2 
-	- \frac{1}{\alpha^2} \frac{1}{2} (E^i \beta_i)^2 
-	+ \frac{1}{\alpha^2} \frac{1}{2} \beta^2 E^2
+	- \frac{1}{\alpha^2} \frac{1}{2} \frac{1}{c^2} (E^i \beta_i)^2 
+	+ \frac{1}{\alpha^2} \frac{1}{2} \frac{1}{c^2} \beta^2 E^2
 $<br>
 <br>
-${T^t}_j = - (
-	- \frac{1}{\alpha} \epsilon_{jkl} E^k B^l
-	+ 2 \frac{1}{\alpha^2} E_{[j} \beta_{k]} E^k
+${T^0}_j = - (
+	- \frac{1}{\alpha} \frac{1}{c} \epsilon_{jkl} E^k B^l
+	+ 2 \frac{1}{\alpha^2} \frac{1}{c^2} E_{[j} \beta_{k]} E^k
 )$<br>
-$=  \frac{1}{\alpha} \epsilon_{jkl} E^k B^l
-	- 2 \frac{1}{\alpha^2} E_{[j} \beta_{k]} E^k
+$=  \frac{1}{c} \frac{1}{\alpha} \epsilon_{jkl} E^k B^l
+	- 2 \frac{1}{c^2} \frac{1}{\alpha^2} E_{[j} \beta_{k]} E^k
 $<br>
 <br>
-${T^i}_t = -(
+${T^i}_0 = -(
 	2 B^{[i} \beta^{k]} B_k
-	+ \frac{1}{\alpha} {\epsilon^i}_{kl} \beta^k B^l E^m \beta_m
-	+ (\alpha - \frac{1}{\alpha} \beta^2) {\epsilon^i}_{kl} E^k B^l
+	+ \frac{1}{c} \frac{1}{\alpha} {\epsilon^i}_{kl} \beta^k B^l E^m \beta_m
+	+ \frac{1}{c} (\alpha - \frac{1}{\alpha} \beta^2) {\epsilon^i}_{kl} E^k B^l
 )$<br>
 $ = - 2 B^{[i} \beta^{k]} B_k
-	- \frac{1}{\alpha} {\epsilon^i}_{kl} \beta^k B^l E^m \beta_m
-	- (\alpha - \frac{1}{\alpha} \beta^2) {\epsilon^i}_{kl} E^k B^l
+	- \frac{1}{c} \frac{1}{\alpha} {\epsilon^i}_{kl} \beta^k B^l E^m \beta_m
+	- \frac{1}{c} (\alpha - \frac{1}{\alpha} \beta^2) {\epsilon^i}_{kl} E^k B^l
 $<br>
 
 <br>
 ${T^i}_j = \frac{1}{4} \delta^i_j tr (F^2) - {(F^2)^i}_j$<br>
 $= \frac{1}{4} \delta^i_j (
-	2 E^2
+	2 \frac{1}{c^2} E^2
 	- 2 B^2 
-	+ 2 \frac{1}{\alpha^2} (E^k \beta_k)^2 
-	- 2 \frac{1}{\alpha^2} \beta^2 E^2
-	- 4 \frac{1}{\alpha} \epsilon_{klm} E^k B^l \beta^m
+	+ 2 \frac{1}{c^2} \frac{1}{\alpha^2} (E^k \beta_k)^2 
+	- 2 \frac{1}{c^2} \frac{1}{\alpha^2} \beta^2 E^2
+	- 4 \frac{1}{c} \frac{1}{\alpha} \epsilon_{klm} E^k B^l \beta^m
 ) - (
-	\alpha E^i \frac{1}{\alpha} E_j 
-	- \frac{1}{\alpha} \beta^2 E^i \frac{1}{\alpha} E_j 
-	+ {\epsilon^i}_{kl} \beta^k B^l \frac{1}{\alpha} E_j
-	+ \frac{1}{\alpha} E^i \beta_o \frac{1}{\alpha} E^o \beta_j 
-	- {\epsilon^i}_{ok} B^k \frac{1}{\alpha} E^o \beta_j 
-	- \frac{1}{\alpha} E^i \beta_o {\epsilon^o}_{jm} B^m 
+	\frac{1}{c^2} \alpha E^i \frac{1}{\alpha} E_j 
+	- \frac{1}{c^2} \frac{1}{\alpha} \beta^2 E^i \frac{1}{\alpha} E_j 
+	+ \frac{1}{c} {\epsilon^i}_{kl} \beta^k B^l \frac{1}{\alpha} E_j
+	+ \frac{1}{c^2} \frac{1}{\alpha} E^i \beta_o \frac{1}{\alpha} E^o \beta_j 
+	- \frac{1}{c} {\epsilon^i}_{ok} B^k \frac{1}{\alpha} E^o \beta_j 
+	- \frac{1}{c} \frac{1}{\alpha} E^i \beta_o {\epsilon^o}_{jm} B^m 
 	+ {\epsilon^i}_{ok} B^k {\epsilon^o}_{jm} B^m
 )$<br>
 $= \delta^i_j (
-	\frac{1}{2} E^2 (1 - \frac{1}{\alpha^2} \beta^2)
+	\frac{1}{2} \frac{1}{c^2} E^2 (1 - \frac{1}{\alpha^2} \beta^2)
 	+ \frac{1}{2} B^2 
-	+ \frac{1}{2} \frac{1}{\alpha^2} (E^k \beta_k)^2 
-	- \frac{1}{\alpha} \epsilon_{klm} E^k B^l \beta^m
+	+ \frac{1}{2} \frac{1}{c^2} \frac{1}{\alpha^2} (E^k \beta_k)^2 
+	- \frac{1}{\alpha} \frac{1}{c} \epsilon_{klm} E^k B^l \beta^m
 ) 
-	- E^i E_j (1 - \frac{1}{\alpha^2} \beta^2)
+	- \frac{1}{c^2} E^i E_j (1 - \frac{1}{\alpha^2} \beta^2)
 	- B^i B_j
-	+ \frac{1}{\alpha} \epsilon_{jlm} \beta^m E^i B^l
-	- \frac{1}{\alpha} {\epsilon^i}_{kl} \beta^k E_j B^l
-	+ \frac{1}{\alpha} {\epsilon^i}_{kl} \beta_j E^k B^l
-	- \frac{1}{\alpha^2} E^i \beta_j \beta_k E^k 
+	+ \frac{1}{c} \frac{1}{\alpha} \epsilon_{jlm} \beta^m E^i B^l
+	- \frac{1}{c} \frac{1}{\alpha} {\epsilon^i}_{kl} \beta^k E_j B^l
+	+ \frac{1}{c} \frac{1}{\alpha} {\epsilon^i}_{kl} \beta_j E^k B^l
+	- \frac{1}{c^2} \frac{1}{\alpha^2} E^i \beta_j \beta_k E^k 
 $<br>
 <br>
 
 again, in general relativity, starting with the covariant form of $F_{ab}$...<br>
 $F_{ab} = \pmatrix{
-	0 & -\alpha \mathcal{E}_i \\
-	\alpha \mathcal{E}_i & \epsilon_{ijk} \mathcal{B}^k
+	0 & -\frac{1}{c} \alpha \mathcal{E}_i \\
+	\frac{1}{c} \alpha \mathcal{E}_i & \epsilon_{ijk} \mathcal{B}^k
 }$<br>
 $(F^2)_{ab} = F_{au} g^{uv} F_{bv}
 = \pmatrix{
-	0 & -\alpha \mathcal{E}_k \\
-	\alpha \mathcal{E}_i & \epsilon_{ikl} \mathcal{B}^l
+	0 & -\frac{1}{c} \alpha \mathcal{E}_k \\
+	\frac{1}{c} \alpha \mathcal{E}_i & \epsilon_{ikl} \mathcal{B}^l
 }
 \pmatrix{
 	-1/\alpha^2 & \beta^m / \alpha^2 \\ 
 	\beta^k / \alpha^2 & \gamma^{km} - \beta^k \beta^m / \alpha^2
 }
 \pmatrix{
-	0 & -\alpha \mathcal{E}_j \\
-	\alpha \mathcal{E}_m & \epsilon_{mjn} \mathcal{B}^n
+	0 & -\frac{1}{c} \alpha \mathcal{E}_j \\
+	\frac{1}{c} \alpha \mathcal{E}_m & \epsilon_{mjn} \mathcal{B}^n
 }$<br>
 $= \pmatrix{
-	0 & -\alpha \mathcal{E}_k \\
-	\alpha \mathcal{E}_i & \epsilon_{ikl} \mathcal{B}^l
+	0 & -\frac{1}{c} \alpha \mathcal{E}_k \\
+	\frac{1}{c} \alpha \mathcal{E}_i & \epsilon_{ikl} \mathcal{B}^l
 }
 \pmatrix{
-	\frac{1}{\alpha} \beta^m \mathcal{E}_m
+	\frac{1}{c} \frac{1}{\alpha} \beta^m \mathcal{E}_m
 	&	
-	\frac{1}{\alpha} \mathcal{E}_j
+	\frac{1}{c} \frac{1}{\alpha} \mathcal{E}_j
 	+ \frac{1}{\alpha^2} \epsilon_{jmn} \mathcal{B}^m \beta^n
 	\\	
-	\alpha \mathcal{E}^k 
-	- \frac{1}{\alpha} \beta^k \beta^m \mathcal{E}_m
+	\frac{1}{c} \alpha \mathcal{E}^k 
+	- \frac{1}{c} \frac{1}{\alpha} \beta^k \beta^m \mathcal{E}_m
 	&
-	- \frac{1}{\alpha} \beta^k \mathcal{E}_j
+	- \frac{1}{c} \frac{1}{\alpha} \beta^k \mathcal{E}_j
 	- {\epsilon_j}^{kn} \mathcal{B}_n 
 	- \frac{1}{\alpha^2} \beta^k \epsilon_{jmn} \mathcal{B}^m \beta^n
 }$<br>
 $= \pmatrix{
-	-\alpha^2 \mathcal{E}^2 
-	+ (\mathcal{E}_k \beta^k)^2
+	-\frac{1}{c^2} \alpha^2 \mathcal{E}^2 
+	+ \frac{1}{c^2} (\mathcal{E}_k \beta^k)^2
 	&
-		\mathcal{E}_j \mathcal{E}_k \beta^k 
-		+ \alpha \epsilon_{jkl} \mathcal{E}^k \mathcal{B}^l 
-		+ \frac{1}{\alpha} \mathcal{E}_k \beta^k \epsilon_{jlm} \mathcal{B}^l \beta^m
+		\frac{1}{c^2} \mathcal{E}_j \mathcal{E}_k \beta^k 
+		+ \frac{1}{c} \alpha \epsilon_{jkl} \mathcal{E}^k \mathcal{B}^l 
+		+ \frac{1}{c} \frac{1}{\alpha} \mathcal{E}_k \beta^k \epsilon_{jlm} \mathcal{B}^l \beta^m
 	\\
-	\mathcal{E}_i \beta^m \mathcal{E}_m
-	+ \alpha \epsilon_{ikl} \mathcal{E}^k \mathcal{B}^l 
-	+ \frac{1}{\alpha} \epsilon_{ikl} \mathcal{B}^k \beta^l \mathcal{E}_m \beta^m
+	\frac{1}{c^2} \mathcal{E}_i \beta^m \mathcal{E}_m
+	+ \frac{1}{c} \alpha \epsilon_{ikl} \mathcal{E}^k \mathcal{B}^l 
+	+ \frac{1}{c} \frac{1}{\alpha} \epsilon_{ikl} \mathcal{B}^k \beta^l \mathcal{E}_m \beta^m
 	&
-		\mathcal{E}_i \mathcal{E}_j
+		\frac{1}{c^2} \mathcal{E}_i \mathcal{E}_j
 		+ \mathcal{B}_i \mathcal{B}_j
 		- \gamma_{ij} \mathcal{B}^2
-		+ \frac{1}{\alpha} \mathcal{E}_i \epsilon_{jkl} \mathcal{B}^k \beta^l
-		+ \frac{1}{\alpha} \mathcal{E}_j \epsilon_{ikl} \mathcal{B}^k \beta^l
+		+ \frac{1}{c} \frac{1}{\alpha} \mathcal{E}_i \epsilon_{jkl} \mathcal{B}^k \beta^l
+		+ \frac{1}{c} \frac{1}{\alpha} \mathcal{E}_j \epsilon_{ikl} \mathcal{B}^k \beta^l
 		+ \frac{1}{\alpha^2} \epsilon_{ikl} \mathcal{B}^k \beta^l \epsilon_{jmn} \mathcal{B}^m \beta^n
 }$<br>
 <br>
 $\frac{1}{4} tr F^2 = \frac{1}{4} g^{ab} (F^2)_{ab}$<br>
 $ = 
-	+ \frac{1}{2} \mathcal{E}^2 
+	+ \frac{1}{2} \frac{1}{c^2} \mathcal{E}^2 
 	- \frac{1}{2} \mathcal{B}^2
 	+ \frac{1}{2} \frac{1}{\alpha^2} \beta^2 \mathcal{B}^2
 	- \frac{1}{2} \frac{1}{\alpha^2} (\beta^i \mathcal{B}_i)^2
-	+ \frac{1}{\alpha} \epsilon_{ijk} \mathcal{E}^i \mathcal{B}^j \beta^k
+	+ \frac{1}{c} \frac{1}{\alpha} \epsilon_{ijk} \mathcal{E}^i \mathcal{B}^j \beta^k
 $<br>
 <br>
 
 $T_{ab} = \frac{1}{4} g_{ab} tr (F^2) - (F^2)_{ab}$<br>
 $= (
-	\frac{1}{2} \mathcal{E}^2 
+	\frac{1}{2} \frac{1}{c^2} \mathcal{E}^2 
 	- \frac{1}{2} \mathcal{B}^2
 	+ \frac{1}{2} \frac{1}{\alpha^2} \beta^2 \mathcal{B}^2
 	- \frac{1}{2} \frac{1}{\alpha^2} (\beta^i \mathcal{B}_i)^2
-	+ \frac{1}{\alpha} \epsilon_{ijk} \mathcal{E}^i \mathcal{B}^j \beta^k
+	+ \frac{1}{c} \frac{1}{\alpha} \epsilon_{ijk} \mathcal{E}^i \mathcal{B}^j \beta^k
 ) \pmatrix{
 	-\alpha^2 + \beta_k \beta^k 
 	& 
@@ -752,76 +759,76 @@ $= (
 	& 
 	\gamma_{ij}
 } - \pmatrix{
-	-\alpha^2 \mathcal{E}^2 
-	+ (\mathcal{E}_k \beta^k)^2
+	-\frac{1}{c^2} \alpha^2 \mathcal{E}^2 
+	+ \frac{1}{c^2} (\mathcal{E}_k \beta^k)^2
 	&
-		\mathcal{E}_j \mathcal{E}_k \beta^k 
-		+ \alpha \epsilon_{jkl} \mathcal{E}^k \mathcal{B}^l 
-		+ \frac{1}{\alpha} \mathcal{E}_k \beta^k \epsilon_{jlm} \mathcal{B}^l \beta^m
+		\frac{1}{c^2} \mathcal{E}_j \mathcal{E}_k \beta^k 
+		+ \frac{1}{c} \alpha \epsilon_{jkl} \mathcal{E}^k \mathcal{B}^l 
+		+ \frac{1}{c} \frac{1}{\alpha} \mathcal{E}_k \beta^k \epsilon_{jlm} \mathcal{B}^l \beta^m
 	\\
-	\mathcal{E}_i \beta^m \mathcal{E}_m
-	+ \alpha \epsilon_{ikl} \mathcal{E}^k \mathcal{B}^l 
-	+ \frac{1}{\alpha} \epsilon_{ikl} \mathcal{B}^k \beta^l \mathcal{E}_m \beta^m
+	\frac{1}{c^2} \mathcal{E}_i \beta^m \mathcal{E}_m
+	+ \frac{1}{c} \alpha \epsilon_{ikl} \mathcal{E}^k \mathcal{B}^l 
+	+ \frac{1}{c} \frac{1}{\alpha} \epsilon_{ikl} \mathcal{B}^k \beta^l \mathcal{E}_m \beta^m
 	&
-		\mathcal{E}_i \mathcal{E}_j
+		\frac{1}{c^2} \mathcal{E}_i \mathcal{E}_j
 		+ \mathcal{B}_i \mathcal{B}_j
 		- \gamma_{ij} \mathcal{B}^2
-		+ \frac{1}{\alpha} \mathcal{E}_i \epsilon_{jkl} \mathcal{B}^k \beta^l
-		+ \frac{1}{\alpha} \mathcal{E}_j \epsilon_{ikl} \mathcal{B}^k \beta^l
+		+ \frac{1}{c} \frac{1}{\alpha} \mathcal{E}_i \epsilon_{jkl} \mathcal{B}^k \beta^l
+		+ \frac{1}{c} \frac{1}{\alpha} \mathcal{E}_j \epsilon_{ikl} \mathcal{B}^k \beta^l
 		+ \frac{1}{\alpha^2} \epsilon_{ikl} \mathcal{B}^k \beta^l \epsilon_{jmn} \mathcal{B}^m \beta^n
 }$<br>
 I think I lost a term because the $E^2$s and $B^2$s don't match...<br>
 $= \pmatrix{	
-	 \frac{1}{2} \alpha^2 \mathcal{E}^2 
+	 \frac{1}{2} \frac{1}{c^2} \alpha^2 \mathcal{E}^2 
 	+ \frac{1}{2} \alpha^2 \mathcal{B}^2
-	- (\mathcal{E}_k \beta^k)^2
-	+ \frac{1}{2} \beta^2 \mathcal{E}^2 
+	- \frac{1}{c^2} (\mathcal{E}_k \beta^k)^2
+	+ \frac{1}{2} \frac{1}{c^2} \beta^2 \mathcal{E}^2 
 	- \beta^2 \mathcal{B}^2
 	+ \frac{1}{2} (\beta^i \mathcal{B}_i)^2
-	- \alpha \epsilon_{ijk} \mathcal{E}^i \mathcal{B}^j \beta^k
+	- \alpha \epsilon_{ijk} \frac{1}{c} \mathcal{E}^i \mathcal{B}^j \beta^k
 	
 	+ \frac{1}{2} \frac{1}{\alpha^2} \beta^4 \mathcal{B}^2
 	- \frac{1}{2} \frac{1}{\alpha^2} \beta^2 (\beta^i \mathcal{B}_i)^2
-	+ \frac{1}{\alpha} \beta^2 \epsilon_{ijk} \mathcal{E}^i \mathcal{B}^j \beta^k
+	+ \frac{1}{c} \frac{1}{\alpha} \beta^2 \epsilon_{ijk} \mathcal{E}^i \mathcal{B}^j \beta^k
 	
 	& 
 	
-	\frac{1}{2} \mathcal{E}^2 \beta_j 
+	\frac{1}{2} \frac{1}{c^2} \mathcal{E}^2 \beta_j 
 	- \frac{1}{2} \mathcal{B}^2 \beta_j
 	+ \frac{1}{2} \frac{1}{\alpha^2} \beta^2 \mathcal{B}^2 \beta_j
 	- \frac{1}{2} \frac{1}{\alpha^2} (\beta^k \mathcal{B}_k)^2 \beta_j
-	+ \frac{1}{\alpha} \epsilon_{lmn} \mathcal{E}^l \mathcal{B}^m \beta^n \beta_j
+	+ \frac{1}{\alpha} \frac{1}{c} \epsilon_{lmn} \mathcal{E}^l \mathcal{B}^m \beta^n \beta_j
 	
-	- \mathcal{E}_j \mathcal{E}_k \beta^k 
-	- \alpha \epsilon_{jkl} \mathcal{E}^k \mathcal{B}^l 
-	- \frac{1}{\alpha} \mathcal{E}_k \beta^k \epsilon_{jlm} \mathcal{B}^l \beta^m
+	\frac{1}{c^2} - \mathcal{E}_j \mathcal{E}_k \beta^k 
+	- \frac{1}{c} \alpha \epsilon_{jkl} \mathcal{E}^k \mathcal{B}^l 
+	- \frac{1}{c} \frac{1}{\alpha} \mathcal{E}_k \beta^k \epsilon_{jlm} \mathcal{B}^l \beta^m
 
 	\\ 
 	
-	\frac{1}{2} \mathcal{E}^2 \beta_i 
+	\frac{1}{2} \frac{1}{c^2} \mathcal{E}^2 \beta_i 
 	- \frac{1}{2} \mathcal{B}^2 \beta_i
 	+ \frac{1}{2} \frac{1}{\alpha^2} \beta^2 \mathcal{B}^2 \beta_i
 	- \frac{1}{2} \frac{1}{\alpha^2} (\beta^k \mathcal{B}_k)^2 \beta_i
-	+ \frac{1}{\alpha} \epsilon_{lmn} \mathcal{E}^l \mathcal{B}^m \beta^n \beta_i
+	+ \frac{1}{c} \frac{1}{\alpha} \epsilon_{lmn} \mathcal{E}^l \mathcal{B}^m \beta^n \beta_i
 	
-	- \mathcal{E}_i \beta^m \mathcal{E}_m
-	- \alpha \epsilon_{ikl} \mathcal{E}^k \mathcal{B}^l 
-	- \frac{1}{\alpha} \epsilon_{ikl} \mathcal{B}^k \beta^l \mathcal{E}_m \beta^m
+	- \frac{1}{c^2} \mathcal{E}_i \beta^m \mathcal{E}_m
+	- \frac{1}{c} \alpha \epsilon_{ikl} \mathcal{E}^k \mathcal{B}^l 
+	- \frac{1}{c} \frac{1}{\alpha} \epsilon_{ikl} \mathcal{B}^k \beta^l \mathcal{E}_m \beta^m
 	
 	& 
 	
-	- \mathcal{E}_i \mathcal{E}_j
+	- \frac{1}{c^2} \mathcal{E}_i \mathcal{E}_j
 	- \mathcal{B}_i \mathcal{B}_j
 	
-	+ \frac{1}{2} \mathcal{E}^2 \gamma_{ij}
+	+ \frac{1}{2} \frac{1}{c^2} \mathcal{E}^2 \gamma_{ij}
 	+ \frac{1}{2} \mathcal{B}^2 \gamma_{ij}
 	
 	+ \frac{1}{2} \frac{1}{\alpha^2} \beta^2 \mathcal{B}^2 \gamma_{ij}
 	- \frac{1}{2} \frac{1}{\alpha^2} (\beta^i \mathcal{B}_i)^2 \gamma_{ij}
-	+ \frac{1}{\alpha} \epsilon_{ijk} \mathcal{E}^i \mathcal{B}^j \beta^k \gamma_{ij}
+	+ \frac{1}{c} \frac{1}{\alpha} \epsilon_{ijk} \mathcal{E}^i \mathcal{B}^j \beta^k \gamma_{ij}
 
-	- \frac{1}{\alpha} \mathcal{E}_i \epsilon_{jkl} \mathcal{B}^k \beta^l
-	- \frac{1}{\alpha} \mathcal{E}_j \epsilon_{ikl} \mathcal{B}^k \beta^l
+	- \frac{1}{c} \frac{1}{\alpha} \mathcal{E}_i \epsilon_{jkl} \mathcal{B}^k \beta^l
+	- \frac{1}{c} \frac{1}{\alpha} \mathcal{E}_j \epsilon_{ikl} \mathcal{B}^k \beta^l
 	- \frac{1}{\alpha^2} \epsilon_{ikl} \mathcal{B}^k \beta^l \epsilon_{jmn} \mathcal{B}^m \beta^n
 
 }$<br>
@@ -830,6 +837,7 @@ $= \pmatrix{
 <hr>
 <b>Einstein Field Equations of electromagnetic stress-energy in vacuum:</b><br>
 ${G^u}_v = 8 \pi {T^u}_v \frac{G}{c^4}$<br>
+For $G$ the gravitational constant, with units $\frac{m^3}{kg \cdot s^2}$<br>
 ${G^u}_v$ has units $\frac{1}{m^2}$<br>
 ${G^u}_v = -2 ({(F^2)^u}_v)^{TF}$<br>
 Notice, $G_{uv}$ is the trace-reversal of $R_{uv}$, so $G_{uv} = R_{uv} - \frac{2}{n} g_{uv} {R^a}_a$<br> 
@@ -1036,6 +1044,7 @@ ${J^i}_{free} = \sigma E^i$<br>
 <hr>
 <b>special relativity electromagnetic stress-energy in medium:</b><br>
 $T_{uv} = F_{ua} {D_v}^a - \frac{1}{4} g_{uv} F_{ab} D^{ab}$<br>
+...has units $\frac{kg}{C \cdot s} \cdot \frac{C}{m \cdot s} = \frac{kg}{m \cdot s^2}$<br>
 ${T^u}_v = -({F^u}_a {D^a}_v)^{TF}$<br>
 ${F^u}_v = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{ 
 	0 & \frac{1}{c} E_j \\ 
@@ -1211,16 +1220,16 @@ $<br>
 <hr>
 <b>electromagnetic stress-energy in medium in general relativity</b><br>
 $F_{uv} = \pmatrix{
-	0 & -\alpha \frac{1}{c} \mathcal{E}_j \\
-	\alpha \frac{1}{c} \mathcal{E}_i & \epsilon_{ijk} \mathcal{B}^k
+	0 & -\frac{1}{c} \alpha \mathcal{E}_j \\
+	\frac{1}{c} \alpha \mathcal{E}_i & \epsilon_{ijk} \mathcal{B}^k
 }$<br>
 $D_{uv} = \pmatrix{
 	0 & -c \alpha \mathcal{D}_j \\
 	c \alpha \mathcal{D}_i & \epsilon_{ijk} \mathcal{H}^k
 }$<br>
 $(F \cdot D)_{uv} = \pmatrix{
-	0 & -\alpha \frac{1}{c} \mathcal{E}_k \\
-	\alpha \frac{1}{c} \mathcal{E}_i & \epsilon_{ikl} \mathcal{B}^l
+	0 & -\frac{1}{c} \alpha \mathcal{E}_k \\
+	\frac{1}{c} \alpha \mathcal{E}_i & \epsilon_{ikl} \mathcal{B}^l
 }
 \pmatrix{
 	-1/\alpha^2 & \beta^m / \alpha^2 \\ 
@@ -1329,8 +1338,7 @@ Continuing with the scalar assumption of $\epsilon$ and $\mu$...<br>
 <br>
 $T_{uv} = -(F \cdot D)^{TF}_{uv} = -(F \cdot D)_{uv} - \frac{1}{4} g_{uv} tr (F \cdot D)$<br>
 $= \pmatrix{
-
-	+ \epsilon \alpha^2 \mathcal{E}^2
+	\epsilon \alpha^2 \mathcal{E}^2
 	- \epsilon (\mathcal{E}_k \beta^k)^2
 
 	- \frac{1}{2} \epsilon \alpha^2 \mathcal{E}^2
@@ -1443,9 +1451,16 @@ $T_{[uv]} =  \pmatrix{
 }$<br>
 <br>
 
-So here is the antisymmetric component of our Ricci tensor. $R_{uv} = 8 \pi T_{uv}$ when ${T^a}_a = 0$.<br>
+So here is the antisymmetric component of our Ricci tensor.<br>
+Einstein Field equations, asymmetric terms:<br>
+$G_{[ab]} = 8 \pi \frac{G}{c^4} T_{[ab]}$<br>
+Notice since $G_{ab} = R_{ab} - \frac{n}{2} R g_{ab}$, so $G_{[ab]} = R_{[ab]}$ even if $T_{ab}$ wasn't trace-free (since $T_{[ab]}$ is always trace-free).<br> 
+It just so happens that the electromagnetism stress-energy is trace-free anyways, but even if it wasn't this would hold true:<br>
+$R_{[ab]} = 8 \pi \frac{G}{c^4} T_{[ab]}$<br>
+<br>
+
 Time to kick it up a notch from Einstein to Einstein-Cartan.<br>
-See my worksheet <a href='Differential Geometry/1 - tensors.html'>here</a> for where I got this from.<br>
+See my worksheet <a href='Differential Geometry/10 - Ricci curvature.html'>here</a> for where I got this from.<br>
 Riemann curvature with torsion (but no commutation):<br>
 ${R^d}_{cab} = 
 	\partial_a ({\Gamma^d}_{bc}) 
@@ -1461,12 +1476,8 @@ $R_{ab} = \partial_u ({\Gamma^u}_{ba})
 $<br>
 Antisymmetry of Ricci tensor with torsion:<br>
 $R_{[ab]} = \frac{3}{2} (
-	\nabla_{[a} {T^u}_{ub]} + {T^v}_{au} {T^u}_{vb}
-) + \frac{1}{2} {R^u}_{uab}$<br>
-$R_{[ab]} = 
-	\frac{1}{2} \nabla_u {T^u}_{ba} 
-	- \partial_{[b} ({\Gamma^u}_{u|a]}) 
-$<br>
+	\nabla_{[u} {T^u}_{ba]} + {T^u}_{v[u} {T^v}_{ba]}
+)$<br>
 <br>
 
 Assuming zero shift ($\beta^i = 0$)...<br>
@@ -1477,10 +1488,88 @@ $T_{[uv]} =  \pmatrix{
 	-\frac{1}{2} \frac{1}{c} (n^2 - 1) \alpha \mathcal{S}_i &
 	0
 }$<br>
-$T_{[ti]} = \frac{1}{2} \frac{1}{c} (n^2 - 1) \alpha \mathcal{S}_i$<br>
-$R_{[ti]} = \frac{1}{2} \nabla_u {T^u}_{it} - \partial_{[i} ({\Gamma^u}_{u|t]})$<br>
-Einstein Field equations, asymmetric terms: $R_{[ab]} = 8 \pi T_{[ab]}$<br>
-$\frac{1}{2} \nabla_u {T^u}_{it} - \partial_{[i} ({\Gamma^u}_{u|t]}) = 4 \pi \frac{1}{c} (n^2 - 1) \alpha \mathcal{S}_i$<br>
+$T_{[0i]} = \frac{1}{2} \frac{1}{c} (n^2 - 1) \alpha \mathcal{S}_i$<br>
+$R_{[0i]} = \frac{3}{2} ( \nabla_{[u} {T^u}_{i0]} + {T^u}_{v[u} {T^v}_{i0]})$<br>
+<br>
+
+$S_i$ has units $\frac{kg}{s^3}$<br>
+$T_{[0i]}$ has units $\frac{kg}{m \cdot s^2}$<br>
+If $R_{ab}$ has units $\frac{1}{m^2}$ then that means $\nabla_a {T^b}_{cd}$ has units $\frac{1}{m^2}$ and ${T^a}_{bc}$ has units $\frac{1}{m}$<br>
+<br>
+
+$4 \pi \frac{G}{c^5} (n^2 - 1) \alpha \mathcal{S}_i = \frac{3}{2} (\nabla_{[u} {T^u}_{i0]} + {T^u}_{v[u} {T^v}_{i0]}) $<br>
+$8 \pi \frac{G}{c^5} (n^2 - 1) \alpha \mathcal{S}_i = 
+	\nabla_u {T^u}_{i0} 
+	+ \nabla_i {T^u}_{0u} 
+	+ \nabla_0 {T^u}_{ui} 
+	
+	+ {T^u}_{vu} {T^v}_{i0}
+	+ {T^u}_{vi} {T^v}_{0u}
+	+ {T^u}_{v0} {T^v}_{ui}
+$<br>
+$8 \pi \frac{G}{c^5} (n^2 - 1) \alpha \mathcal{S}_i = 
+	\nabla_j {T^j}_{i0} 
+	+ \nabla_i {T^j}_{0j} 
+	+ \nabla_0 {T^j}_{ji} 
+	
+	+ {T^0}_{i0} {T^j}_{0j}
+	+ {T^0}_{k0} {T^k}_{i0}
+	+ {T^j}_{kj} {T^k}_{i0}
+$<br>
+... assuming steady-state, and that $({T^a}_{bc})^2 \approx 0$...<br>
+$8 \pi \frac{G}{c^5} (n^2 - 1) \alpha \mathcal{S}_i = \nabla_j {T^j}_{i0} - \nabla_i {T^j}_{j0}$<br>
+$8 \pi \frac{G}{c^5} (n^2 - 1) \alpha \mathcal{S}_i = \epsilon_{ijp} \epsilon^{mnp} \nabla_m {T^j}_{0n}$<br>
+... so the Poynting vector is equal to the curl of the torsion two-form component perpendicular to time (second index spatial, second index time) ... crossed with the torsion first index ...<br>
+...assume zero trace of the torsion...<br>
+$8 \pi \frac{G}{c^5} (n^2 - 1) \alpha \mathcal{S}_i = \nabla_j {T^j}_{i0}$<br>
+... one term falls off, and now the Poynting vector equals the divergence of the first index of the torsion...<br>
+The other term doesn't show up explicitly in the torsion influence of the geodesic anyways...<br> 
+Now to assume zero-curl of the torsion first index and solve with Helmholtz decomposition:<br>
+${T^k}_{i0}(\vec{x}) = -\nabla^k \frac{1}{4 \pi} \int \frac{\nabla_j {T^j}_{i0}(\vec{y})}{|\vec{x} - \vec{y}|^2} d\vec{y}$<br>
+${T^k}_{i0}(\vec{x}) = -2 \frac{G}{c^5} (n^2 - 1) \nabla^k \int \frac{\alpha \mathcal{S}_i(\vec{x})}{|\vec{x} - \vec{y}|^2}  d\vec{y}$<br>
+<br>
+
+Now compare this to the geodesic equation influence from torsion.<br>
+See my worksheet <a href='Differential Geometry/8 - metric-cancelling and torsion-free connection.html'>here</a> for where I got this from.<br>
+$\dot{u}^a = -{\Gamma^a}_{bc} u^b u^c + u_b {T^b}_{dc} u^c g^{da}$<br>
+...just looking at the torsion influence of gravitation on the spatial components...<br>
+$(\dot{u}^i)_{\Theta} = u_b {T^b}_{dc} u^c g^{di}$<br>
+...maintain that no-shift contraint: $\beta^i = 0$, and $u_0 \approx 1$...<br>
+$(\dot{u}^i)_{\Theta} = u_b {T^b}_{jc} u^c \gamma^{ji}$<br>
+$(\dot{u}^i)_{\Theta} = 
+	-{T^0}_{j0} \gamma^{ji}
+	+ {T^0}_{jl} u^l \gamma^{ji}
+	- u_k {T^k}_{j0} \gamma^{ji}
+	+ u_k {T^k}_{jl} u^l \gamma^{ji}
+$<br>
+... isolate the component related to the Poynting vector (with steady-state and zero trace torsion)...<br>
+$(\dot{u}^i)_{\hat\Theta} = -u_k {T^k}_{j0} \gamma^{ji}$<br>
+...substitute ...<br>
+$(\dot{u}^i)_{\hat\Theta} = 2 \frac{G}{c^5} (n^2 - 1) \gamma^{ji} u^k \nabla_k \int \frac{\alpha \mathcal{S}_j(\vec{x})}{|\vec{x} - \vec{y}|^2}  d\vec{y}  $<br>
+And there you have it:<br>
+The influence of gravitation (geodesic ficudial force) due to torsion, specifically from the Poynting field.<br>
+<br>
+
+Example:<br>
+$u^a$ is unitless, $u^i = \frac{v^i}{c}$<br>
+$S$ is in units of $\frac{W}{m^2} = \frac{kg}{s^3}$<br>
+$\int S d\vec{x}$ is in units of $W m = \frac{kg \cdot m^3}{s^3}$<br>
+$u^k \nabla_k \int S d\vec{x}$ is in units of $W = \frac{kg \cdot m^2}{s^3}$<br>
+$\frac{G}{c^5} u^k \nabla_k \int S d\vec{x}$ is unitless.<br>
+So within the context of units:<br>
+$(\dot{v}^i)_{\hat\Theta} = 2 \frac{G}{c^5} (n^2 - 1) \gamma^{ji} v^k \nabla_k \int \frac{\alpha \mathcal{S}_j(\vec{x})}{|\vec{x} - \vec{y}|^2}  d\vec{y}  $<br>
+...for velocity $v^i = c u^i$<br>
+gravitational constant:	$G = 6.67384 \cdot 10^{-11} \cdot \frac{m^3}{kg \cdot s^2}$<br>
+speed of light:	$c = 299792458 \cdot \frac{m}{s}$<br>
+$|\dot{v}|_{\hat\Theta} = 2 \cdot \frac{6.67384 \cdot 10^{-11}}{(299792458)^5} (n^2 - 1) \cdot |v| $ ... times Poynting magnitude?<br>
+$= 5.5119119535891 \cdot 10^{-53} \cdot (n^2 - 1) \cdot |v| $ ... times Poynting magnitude?<br>
+<br>
+
+All in all, this is a really longwinded way to come up with the relation between the geodesic acceleration, the torsion, and (specifically) the Poynting vector (times the spatial velocity, again).<br>
+Why bother, especially when the geodesic acceleration itself is directly related to the torsion components ${T^0}_{j0}$ without any scalar of the velocity.<br>
+${T^0}_{j0}$ is related to $S_j$ by $S_i \propto \nabla_0 {T^0}_{i0}$<br>
+So how does $S_j$ influence ${T^0}_{i0}$?<br>
+This is still scaled by $\frac{G}{c^5}$...<br>
 <br>
 
 <hr>

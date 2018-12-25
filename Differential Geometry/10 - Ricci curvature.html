@@ -264,25 +264,39 @@ $R_{[ab]} = \frac{1}{2} (
 	+ \nabla_a {T^u}_{ub} 
 	+ \nabla_b {T^u}_{au}
 	
-	+ {T^v}_{ab} {T^u}_{uv}
+	+ {T^u}_{vu} {T^v}_{ba}
 )$<br>
-$R_{[ab]} = \frac{3}{2} \nabla_{[u} {T^u}_{ba]} + \frac{1}{2} {T^v}_{ab} {T^u}_{uv}$<br>
-Comparing this with the Bianchi identity, I wonder if this means that ${T^u}_{uv} {T^v}_{ab} = 3 {T^v}_{au} {T^u}_{vb}$?<br>
+$R_{[ab]} = \frac{3}{2} \nabla_{[u} {T^u}_{ba]} + \frac{1}{2} {T^u}_{vu} {T^v}_{ba}$<br>
+$R_{[ab]} = \frac{3}{2} (\nabla_{[u} {T^u}_{ba]} + {T^u}_{v[u} {T^v}_{ba]})$<br>
+Comparing this with the Bianchi identity, I wonder if this means that ${T^u}_{vu} {T^v}_{ba} = 3 {T^v}_{au} {T^u}_{vb}$?<br>
+Also, what is $R_{[ab]}$ in terms of ${K^a}_{bc}$?<br>
 <br>
 
-The same thing again, but without removing structure constants:<br>
-TODO this is all incorrect because<br>
-#1 the $\partial_a$'s need to be turned into $e_a$'s<br>
-#2 the trace of the Levi-Civita connections (implies the trace of the connections, since the trace of the contorsion is zero)<br>
-	is equal to the gradient of the log of the volume, transformed to the non-coordinate basis ... I suppose this is still true in the non-coordinate basis...<br>
-	but it is not true that $[\partial_a, \partial_b] = 0$ at least-- change those to structure constants ...<br>
-	... and put a note in worksheet #8 about the trace of the arbitrary connection being equal to the gradient of the log of the volume, transformed to the non-coordinate basis. 
-	Note that this is only for one particular index trace -- since the other means adding into it the structure constants, so for the other, the structure constant trace needs to be included as well.<br>
+In fact, rule of thumb, how do you turn a two-index antisymmetry into a 3-index antisymmetry?<br>
+For any aribtrary rank-3 tensor (put this back in worksheet #1):<br>
+$x_{[abc]} = \frac{1}{6} (x_{abc} + x_{bca} + x_{cab} - x_{cba} - x_{bac} - x_{acb})$<br>
+$ = \frac{1}{3} (x_{a[bc]} + x_{b[ca]} + x_{c[ab]})$<br>
+For a tensor which is antisymmetric in 2nd and 3rd indexes (similarly works with any other antisymmetric pair):<br>
+$x_{[abc]} = \frac{1}{6} (x_{abc} + x_{bca} + x_{cab} - x_{cba} - x_{bac} - x_{acb})$<br>
+$x_{[abc]} = \frac{1}{6} (x_{abc} + x_{bca} + x_{cab} + x_{cab} + x_{bca} + x_{abc})$<br>
+$x_{[abc]} = \frac{1}{3} (x_{abc} + x_{bca} + x_{cab})$<br>
+(The same is used with the Jacobi identity applied to the Faraday tensor, which is (typically) antisymmetric)<br>
+TODO Is the Faraday tensor antisymmetric in torsion or anholonomic geometry?<br>
+$F_{ab} = 2 \nabla_{[b} A_{a]}$ means it is antisymmetric by definition.  So does $F = dA$.<br>
+$F_{ab} = 2 \nabla_{[b} A_{a]}$ means it is antisymmetric by definition.  So does $F = dA$.<br>
+However, next question, is the Faraday tensor invariant of connection in torsion or anholonomic geometry?  (In a coordinate basis it is connection invariant.)<br> 
+$F_{ab} = 2 \nabla_{[b} A_{a]} = 2 ( e_{[b} ( A_{a]} ) - {\Gamma^u}_{[ba]} A_u ) = 2 e_{[b} ( A_{a]} ) + ( {T^u}_{ab} + {c_{ab}}^u ) A_u $<br>
+Hmm, does the presence of torsion (which comes from the asymmetry of the connection) imply that the differential form definition of the Faraday tensor for curved space should instead be...<br>
+$F = D A = d A + \omega \wedge A$<br>
+(put Faraday and Maxwell stuff in its own worksheet ... it might be signature-specific, mind you)<br>
+<br>
+
+Ricci antisymmetry, with torsion and commutation:<br>
 $R_{[ab]} = 
 	e_u ({\Gamma^u}_{[ba]}) 
 	- e_{[b} ({\Gamma^u}_{u|a]}) 
 	+ {\Gamma^u}_{uv} {\Gamma^v}_{[ba]} 
-	- {\Gamma^u}_{[b|v} {\Gamma^v}_{u|a]} 
+	- {\Gamma^u}_{[b|v} {\Gamma^v}_{u|a]}
 	- {\Gamma^u}_{v[a} {c_{u|b]}}^v$<br>
 $R_{[ab]} = \frac{1}{2} (
 	e_u( {T^u}_{ba} + {c_{ba}}^u )
@@ -348,7 +362,39 @@ $R_{[ab]} = \frac{1}{2} (
 	+ {c_{ub}}^v {T^u}_{av} 
 	+ {c_{uv}}^u {T^v}_{ab} 
 )$<br>
+...making great use of ${\Gamma^a}_{bc} = {\Gamma^a}_{cb} + {T^a}_{bc} + {c_{bc}}^a$...<br>
+$R_{[ab]} = \frac{1}{2} (
+	  3 \nabla_{[u} ( {T^u}_{ba]} + {c_{ba]}}^u ) 
+	+ 3 ({T^u}_{v[u} + {c_{v[u}}^u) ({T^v}_{ba]} + {c_{ba]}}^v)
+
+	- {\Gamma^u}_{vb} {c_{au}}^v 
+	- {\Gamma^u}_{va} {c_{ub}}^v 
+	+ {\Gamma^u}_{vu} {c_{ba}}^v 
+	
+	+ {c_{uv}}^u ({T^v}_{ab} + {c_{ba}}^v)
+	
+	- {T^v}_{ba} {c_{vu}}^u
+	- {T^v}_{uv} {c_{ba}}^u
+)$<br>
+... Is the following denotation correct?  Does $x_{[a} (y_{bc]} + z_{bc]})$ equal to $x_{[a} (w_{bc]} - w_{cb]})$
+	for $w_{bc} - w_{cb} = y_{bc} + z_{bc}$?  Do the indexes expand correctly?<br>
+$R_{[ab]} = \frac{3}{2} (
+	  \nabla_{[u} ( {\Gamma^u}_{ba]} - {\Gamma^u}_{ab]} ) 
+	+ ( {\Gamma^u}_{v[u} - {\Gamma^u}_{[u|v} ) ( {\Gamma^v}_{ba]} - {\Gamma^v}_{ab]} )
+)
+
++ \frac{1}{2} (
+	- {\Gamma^u}_{vb} {c_{au}}^v 
+	- {\Gamma^u}_{va} {c_{ub}}^v 
+	+ {\Gamma^u}_{vu} {c_{ba}}^v 
+	
+	+ {c_{uv}}^u ({T^v}_{ab} + {c_{ba}}^v)
+	
+	- {T^v}_{ba} {c_{vu}}^u
+	- {T^v}_{uv} {c_{ba}}^u
+)$<br>
 How to simplify the rest further ... <br>
+<br>
 
 This reminds me, what is $tr [\nabla, \nabla] (z)$ for some arbitrary degree z?<br>
 <br>
