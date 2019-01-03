@@ -92,7 +92,7 @@ Let $W = \alpha u^t = 1/\sqrt{1 - v^i v^j \gamma_{ij}}$<br>
 <br>
 
 <b>primitive variables</b><br>
-$w = \downarrow i \left[\matrix{\rho \\ v_i \\ \epsilon}\right]$ = primitive variables<br>
+$W_I = \downarrow I \left[\matrix{\rho \\ v_i \\ \epsilon}\right]$ = primitive variables<br>
 <br>
 
 <b>conservative variables</b><br>
@@ -103,114 +103,133 @@ $E = T^{\mu\nu} n_\mu n_\nu = \alpha^2 T^{00} = \alpha^2 (\rho h (u^0)^2 + p g^{
 $\tau = E - D = \rho h W^2 - p - D$ = relativistic total energy density minus rest-mass density<br>
 <br>
 
-$U^i = \downarrow i \left[\matrix{D \\ S^i \\ \tau }\right]$ = conservative variables<br>
+$U_I = \downarrow I \left[\matrix{D \\ S_i \\ \tau }\right]$ = conservative variables<br>
 <br>
 
-$F^{ij} = \downarrow i \left[\matrix{D v^j \\ S^i v^j - \delta^{ij} p \\ S^j - D v^j}\right]$ = flux vector<br>
+$F_{Ij} = \downarrow I \left[\matrix{D v_j \\ S_i v_j - \delta_{ij} p \\ S_j - D v_j}\right]$ = flux vector<br>
 <br>
 
 $\partial_\rho$:<br>
 $P_{,\rho} = (\gamma - 1) \epsilon$<br>
 $h_{,\rho} = P_{,\rho} / \rho - p / \rho^2 = ((\gamma - 1) \rho \epsilon - p) / \rho^2 = 0$<br> 
 $D_{,\rho} = W$<br>
-$S^i_{,\rho} = h W^2 v^i$<br>
+$S_{i,\rho} = h W^2 v_i$<br>
 $\tau_{,\rho} = h W^2 - P_{,\rho} - D_{,\rho} = h W^2 - (\gamma - 1) \epsilon - W = W (h W - 1) - (\gamma - 1)$<br>
 <br>
 
-$\partial_{v^k}$:<br>
-$W_{,v^k} = \partial_{v^k} (\sqrt{1-v^2})^{-1} = -\frac{1}{2} (\sqrt{1-v^2})^{-3} \cdot -2 v^k = \frac{v^k}{(\sqrt{1-v^2})^3} = v^k W^3$<br>
-$D_{,v^k} = \rho W_{,v^k} = \rho W^3 v^k = W S^k / h$<br>
-$S^i_{,v^k} = \rho h (2 W W_{,v^k} v^i + W^2 \delta^{ik}) = \rho h W^4 (v^i v^k + \delta^{ik})$<br>
-$\tau_{,v^k} = \rho h 2 W W_{,v^k} - D_{,v^k} = 2 \rho h W^4 v^k - \rho W^3 v^k = \rho W^3 v^k (2 h W - 1)$<br>
+$\partial_{v_k}$:<br>
+$W_{,v_k} = \partial_{v_k} (\sqrt{1-v^2})^{-1} = -\frac{1}{2} (\sqrt{1-v^2})^{-3} \cdot -2 v_k = \frac{v_k}{(\sqrt{1-v^2})^3} = v_k W^3$<br>
+$D_{,v_k} = \rho W_{,v_k} = \rho W^3 v_k = W S_k / h$<br>
+$S_{i,v_k} = \rho h (2 W W_{,v_k} v_i + W^2 \delta_{ik}) = \rho h W^4 (v_i v_k + \delta_{ik})$<br>
+$\tau_{,v_k} = \rho h 2 W W_{,v_k} - D_{,v_k} = 2 \rho h W^4 v_k - \rho W^3 v_k = \rho W^3 v_k (2 h W - 1)$<br>
 <br>
 
 $\partial_{,\epsilon}$:<br>
 $P_{,\epsilon} = (\gamma - 1) \rho$<br>
 $h_{,\epsilon} = 1 + P_{,\epsilon} / \rho = 1 + \gamma - 1 = \gamma$<br>
-$S^i_{,\epsilon} = \rho W^2 v^i h_{,\epsilon} = \gamma \rho W^2 v^i = \gamma S^i / h$<br>
+$S_{i,\epsilon} = \rho W^2 v_i h_{,\epsilon} = \gamma \rho W^2 v_i = \gamma S_i / h$<br>
 $\tau_{,\epsilon} = \rho h_{,\epsilon} W^2 - P_{,\epsilon} = \gamma \rho W^2 - (\gamma - 1) \rho = \rho (\gamma (W^2 - 1) + 1)$<br>
 <br>
 
-$\frac{\partial U^i}{\partial W^j} = \downarrow i \overset{ \rightarrow j }{ \left[\matrix{
-	D_{,\rho}		& D_{,v^j}		& D_{,\epsilon}		\\
-	S^i_{,\rho}		& S^i_{,v^j}	& S^i_{,\epsilon}	\\
-	\tau_{,\rho}	& \tau_{,v^j}	& \tau_{,\epsilon}
+<b>change in conserved variables wrt primitive variables:</b><br>
+
+$\frac{\partial U_I}{\partial W_J} = \downarrow I \overset{ \rightarrow J }{ \left[\matrix{
+	D_{,\rho}		& D_{,v_j}		& D_{,\epsilon}		\\
+	S_{i,\rho}		& S_{i,v_j}	& 	S_{i,\epsilon}	\\
+	\tau_{,\rho}	& \tau_{,v_j}	& \tau_{,\epsilon}
 }\right] }$<br>
 <br>
 
-$\frac{\partial U^i}{\partial W^j} = \downarrow i \overset{ \rightarrow j }{ \left[\matrix{
+$\frac{\partial U_I}{\partial W_J} = \downarrow I \overset{ \rightarrow J }{ \left[\matrix{
 	W &
-	 \rho W^3 v^j &
+	 \rho W^3 v_j &
 	 0 \\
-	h W^2 v^i &
-	 \rho h W^2 (2 W^2 v^i v^j + \delta^{ij}) &
-	 \gamma \rho W^2 v^i \\
+	h W^2 v_i &
+	 \rho h W^2 (2 W^2 v_i v_j + \delta_{ij}) &
+	 \gamma \rho W^2 v_i \\
 	W (h W - 1) - (\gamma - 1) &
-	 \rho W^3 v^j (2 h W - 1) &
+	 \rho W^3 v_j (2 h W - 1) &
 	 \rho (\gamma W^2 - (\gamma - 1))
 }\right] }$<br>
 <br>
 
-$\frac{\partial F^{ij}}{\partial W^k} = \downarrow i \overset{ \rightarrow k }{ \left[\matrix{
-	D_{,\rho} v^j &
-	 D_{,v^k} v^j + D \delta^{jk} &
+<b>change in primitive variables wrt conserved variables:</b><br>
+
+$\frac{\partial W_J}{\partial U_I} = [\frac{\partial U_I}{\partial W_J}]^{-1}$<br>
+<br>
+
+<b>change in flux wrt primitive variables:</b><br>
+
+$\frac{\partial F_{Ij}}{\partial W_K} = \downarrow I \overset{ \rightarrow K }{ \left[\matrix{
+	D_{,\rho} v_j &
+	 D_{,v_k} v_j + D \delta_{jk} &
 	 0 \\
-	S^i_{,\rho} v^j - \delta^{ij} P_{,\rho} &
-	 S^i_{,v^k} v^j + S^i \delta^{jk} &
-	 S^i_{,\epsilon} v^j - \delta^{ij} P_{,\epsilon} \\
-	S^j_{,\rho} - D_{,\rho} v^j &
-	 S^j_{,v^k} - D_{,v^k} v^j - D \delta^{jk} &
-	 S^j_{,\epsilon}
+	S_{i,\rho} v_j - \delta_{ij} P_{,\rho} &
+	 S_{i,v_k} v_j + S_i \delta_{jk} &
+	 S_{i,\epsilon} v_j - \delta_{ij} P_{,\epsilon} \\
+	S_{j,\rho} - D_{,\rho} v_j &
+	 S_{j,v_k} - D_{,v_k} v_j - D \delta_{jk} &
+	 S_{j,\epsilon}
 }\right] }$<br>
 <br>
 
-$\frac{\partial F^{ij}}{\partial W^k} = \downarrow i \overset{ \rightarrow k }{ \left[\matrix{
-	W v^j &
-	 \rho W^3 v^k v^j + D \delta^{jk} &
+$\frac{\partial F_{Ij}}{\partial W_K} = \downarrow I \overset{ \rightarrow K }{ \left[\matrix{
+	W v_j &
+	 \rho W^3 v_k v_j + D \delta_{jk} &
 	 0 \\
-	h W^2 v^i v^j - \delta^{ij} (\gamma - 1) \epsilon &
-	 \rho h W^2 (2 W^2 v^i v^k + \delta^{ik}) v^j + S^i \delta^{jk} &
-	 \gamma \rho W^2 v^i v^j - \delta^{ij} (\gamma - 1) \rho \\
-	h W^2 v^j - W v^j &
-	 \rho h W^2 (2 W^2 v^j v^k + \delta^{jk}) - \rho W^3 v^k v^j - D \delta^{jk} &
-	 \gamma \rho W^2 v^j
+	h W^2 v_i v_j - \delta_{ij} (\gamma - 1) \epsilon &
+	 \rho h W^2 (2 W^2 v_i v_k + \delta_{ik}) v_j + S_i \delta_{jk} &
+	 \gamma \rho W^2 v_i v_j - \delta_{ij} (\gamma - 1) \rho \\
+	h W^2 v_j - W v_j &
+	 \rho h W^2 (2 W^2 v_j v_k + \delta_{jk}) - \rho W^3 v_k v_j - D \delta_{jk} &
+	 \gamma \rho W^2 v_j
 }\right] }$<br>
 <br>
 
-$\frac{\partial F^{ij}}{\partial W^k} = \downarrow i \overset{ \rightarrow k }{ \left[\matrix{
-	W v^j &
-	 D (W^2 v^j v^k + \delta^{jk}) &
+$\frac{\partial F_{Ij}}{\partial W_K} = \downarrow I \overset{ \rightarrow K }{ \left[\matrix{
+	W v_j &
+	 D (W^2 v_j v_k + \delta_{jk}) &
 	 0 \\
-	h W^2 v^i v^j - \delta^{ij} (\gamma - 1) \epsilon &
-	 \rho h W^2 (2 W^2 v^i v^k + \delta^{ik}) v^j + S^i \delta^{jk} &
-	 \gamma \rho W^2 v^i v^j - \delta^{ij} (\gamma - 1) \rho \\
-	(h W - 1) W v^j &
-	 \rho h W^2 (2 W^2 v^j v^k + \delta^{jk}) - D (W^2 v^j v^k + \delta^{jk}) &
-	 \gamma \rho W^2 v^j
+	h W^2 v_i v_j - \delta_{ij} (\gamma - 1) \epsilon &
+	 \rho h W^2 (2 W^2 v_i v_k + \delta_{ik}) v_j + S_i \delta_{jk} &
+	 \gamma \rho W^2 v_i v_j - \delta_{ij} (\gamma - 1) \rho \\
+	(h W - 1) W v_j &
+	 \rho h W^2 (2 W^2 v_j v_k + \delta_{jk}) - D (W^2 v_j v_k + \delta_{jk}) &
+	 \gamma \rho W^2 v_j
 }\right] }$<br>
 <br>
 
-$\frac{\partial F^{ij}}{\partial U^l} = \downarrow i \overset{ \rightarrow k }{ \left[\matrix{
-	W v^j &
-	 D (W^2 v^j v^k + \delta^{jk}) &
+<b>acoustic matrix</b><br>
+<br>
+
+$\frac{\partial W_I}{\partial U_L} \frac{\partial F_{Lj}}{\partial U_M} \frac{\partial U_M}{\partial W_K}$<br>
+...<br>
+$= A_{IjK} + \delta_{IK} v_j$<br>
+<br>
+
+<b>change in flux wrt conservative variables:</b><br>
+
+$\frac{\partial F_{Ij}}{\partial U_L} = \downarrow I \overset{ \rightarrow K }{ \left[\matrix{
+	W v_j &
+	 D (W^2 v_j v_k + \delta_{jk}) &
 	 0 \\
-	h W^2 v^i v^j - \delta^{ij} (\gamma - 1) \epsilon &
-	 \rho h W^2 (2 W^2 v^i v^k + \delta^{ik}) v^j + S^i \delta^{jk} &
-	 \gamma \rho W^2 v^i v^j - \delta^{ij} (\gamma - 1) \rho \\
-	(h W - 1) W v^j &
-	 \rho h W^2 (2 W^2 v^j v^k + \delta^{jk}) - D (W^2 v^j v^k + \delta^{jk}) &
-	 \gamma \rho W^2 v^j
+	h W^2 v_i v_j - \delta_{ij} (\gamma - 1) \epsilon &
+	 \rho h W^2 (2 W^2 v_i v_k + \delta_{ik}) v_j + S_i \delta_{jk} &
+	 \gamma \rho W^2 v_i v_j - \delta_{ij} (\gamma - 1) \rho \\
+	(h W - 1) W v_j &
+	 \rho h W^2 (2 W^2 v_j v_k + \delta_{jk}) - D (W^2 v_j v_k + \delta_{jk}) &
+	 \gamma \rho W^2 v_j
 }\right] }
 \cdot
-\downarrow k \overset{ \rightarrow l }{ \left[\matrix{
+\downarrow K \overset{ \rightarrow L }{ \left[\matrix{
 	W &
-	 \rho W^3 v^l &
+	 \rho W^3 v_l &
 	 0 \\
-	h W^2 v^k &
-	 \rho h W^2 (2 W^2 v^k v^l + \delta^{kl}) &
-	 \gamma \rho W^2 v^k \\
+	h W^2 v_k &
+	 \rho h W^2 (2 W^2 v_k v_l + \delta_{kl}) &
+	 \gamma \rho W^2 v_k \\
 	W (h W - 1) - (\gamma - 1) &
-	 \rho W^3 v^l (2 h W - 1) &
+	 \rho W^3 v_l (2 h W - 1) &
 	 \rho (\gamma W^2 - (\gamma - 1))
 }\right]^{-1} }$<br>
 

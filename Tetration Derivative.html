@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="utf-8">
+		<title>Tetration Derivative</title>
+		<script type="text/javascript" src='tryToFindMathJax.js'></script>
+	</head>
+    <body onload='tryToFindMathJax();'>
+Exponent:<br>
+$f^g = exp(log(f^g))$<br>
+$= exp(g \cdot log(f))$<br>
+<br>
+
+Exponent Derivative:<br>
+$( f^g )' = ( exp(g \cdot log(f))'$<br>
+$= exp(g \cdot log(f)) \cdot (g \cdot log(f))'$<br>
+$= exp(g \cdot log(f)) (g' \cdot log(f) + g \cdot log'(f))$<br>
+$= f^g (g' \cdot log(f) + g f' \frac{1}{f})$<br>
+<br>
+
+Exponent Derivative of Integer Power:<br>
+$g = n, g' = 0, f = x, f' = 1$<br>
+$(f^n)' = f^n \cdot \frac{n}{x}$<br>
+$= n f^{n-1}$<br>
+<br>
+
+Exponent Derivative of $x^x$<br>
+$f = g = x, f' = g' = 1$<br>
+$(x^x)' = x^x (log(x) + x \frac{1}{x})$<br>
+$= x^x (log(x) + 1)$<br>
+<br>
+
+<hr>
+<br>
+
+Tetration:<br>
+${}^n x = \underbrace{{x^{x^{...{}^x}}}}_{\times n}$<br>
+<br>
+
+Tetration Derivative:<br>
+$({}^n x)'$<br>
+$ = (\underbrace{{x^{x^{...{}^x}}}}_{\times n})'$<br>
+$ = \underbrace{(exp(x \cdot log(
+		exp(x \cdot log(
+			...
+				(exp( x \cdot log(x)))
+			...
+		))
+	)))'}_{\times n}$<br>
+<br>
+Looks too tedious for a chain rule.  Let's try a recursive approach.<br>
+<br>
+
+$({}^0 x) = 1$<br>
+$({}^0 x)' = 0$<br>
+<br>
+
+$({}^1 x) = x$<br>
+$({}^1 x)' = x' = 1$<br>
+<br>
+
+$({}^n x)' = (x^{({}^{(n-1)} x)})'$<br>
+$ = (exp ( log(x) \cdot {}^{(n-1)} x ))'$<br>
+$ = exp ( log(x) \cdot {}^{(n-1)} x ) \cdot ( log(x) \cdot {}^{(n-1)} x )'$<br>
+$ = log(x) \cdot {}^{n} x \cdot ( ({}^{(n-1)} x)' + \frac{1}{x} \cdot {}^{(n-1)} x )$<br>
+$ = log(x) \cdot {}^{n} x \cdot ({}^{(n-1)} x)' + \frac{1}{x} \cdot {}^{n} x \cdot {}^{(n-1)} x $<br>
+... hmm, at this point I'm going to substitute again...<br>
+$ = log(x) \cdot {}^{n} x \cdot (
+	log(x) \cdot {}^{(n-1)} x \cdot ({}^{(n-2)} x)' 
+	+ \frac{1}{x} \cdot {}^{(n-1)} x \cdot {}^{(n-2)} x 
+) + \frac{1}{x} \cdot {}^{n} x \cdot {}^{(n-1)} x$<br>
+$ = (log(x))^2 \cdot {}^{n} x \cdot {}^{(n-1)} x \cdot ({}^{(n-2)} x)' 
+	+ \frac{1}{x} \cdot {}^{n} x \cdot {}^{(n-1)} x \cdot {}^{(n-2)} x \cdot log(x) 
+	+ \frac{1}{x} \cdot {}^{n} x \cdot {}^{(n-1)} x$<br>
+... substitute again ...<br>
+$ = (log(x))^2 \cdot {}^{n} x \cdot {}^{(n-1)} x \cdot (
+	log(x) \cdot {}^{(n-2)} x \cdot ({}^{(n-3)} x)' + \frac{1}{x} \cdot {}^{(n-2)} x \cdot {}^{(n-3)} x 
+) 	+ \frac{1}{x} \cdot {}^{n} x \cdot {}^{(n-1)} x \cdot {}^{(n-2)} x \cdot log(x) 
+	+ \frac{1}{x} \cdot {}^{n} x \cdot {}^{(n-1)} x$<br>
+$ = (log(x))^3 \cdot {}^{n} x \cdot {}^{(n-1)} x \cdot {}^{(n-2)} x \cdot ({}^{(n-3)} x)' 
+	+ \frac{1}{x} \cdot (log(x))^2 \cdot {}^{n} x \cdot {}^{(n-1)} x \cdot {}^{(n-2)} x \cdot {}^{(n-3)} x 
+	+ \frac{1}{x} \cdot {}^{n} x \cdot {}^{(n-1)} x \cdot {}^{(n-2)} x \cdot log(x) 
+	+ \frac{1}{x} \cdot {}^{n} x \cdot {}^{(n-1)} x$<br>
+<br>
+
+Hypothesis:<br>
+$({}^n x)' = 
+	\frac{1}{x} \cdot \Sigma_{j=0}^{(n-1)} \left( 
+		(log(x))^{j} \cdot \Pi_{k=n-j}^n \left( {}^k x \right)
+	\right)
+$<br>
+...not quite right.<br>
+<br>
+
+
+<hr>
+<br>
+
+$({}^1 x)' = 1$<br>
+$({}^2 x)' = {}^2 x \cdot (log(x) + 1) $<br>
+$({}^3 x)' = (x^{x^x})' = {}^3 x \cdot ( {}^2 x \cdot (log (x) + x \cdot \frac{1}{x}) \cdot log(x) + {}^2 x \cdot \frac{1}{x}) = {}^3 x \cdot {}^2 x \cdot ( log(x)^2 + log(x) + \frac{1}{x})$<br>
+$({}^4 x)' = (x^{x^{x^x}})' = {}^4 x \cdot {}^3 x \cdot {}^2 x \cdot ( log(x)^3 + log(x)^2 + log(x) \cdot \frac{1}{x}) + {}^4 x \cdot {}^3 x \cdot \frac{1}{x}  $<br>
+<br>
+
+	</body>
+</html>

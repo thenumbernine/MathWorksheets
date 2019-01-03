@@ -90,33 +90,22 @@ ${R^a}_{[bcd]} = 0$<br>
 <br>
 
 Exterior covariant derivative:<br>
-(more on this $D$ covariant exterior derivative later)<br>
-Let $D w^a = d w^a + {\omega^a}_b \wedge w^b$<br>
-...per-index, plus for top, minus for bottom, like the covariant derivative (TODO better explanation of why).<br>
-...by the way, where does the plus-for-top, minus-for-bottom rule come from when we're talking about exterior covariant derivatives?<br>
-For covariant derivatives it comes from the definition of $\nabla_a e_b = {\Gamma^c}_{ab} e_c$ ...
-So in this case, considering that the differential forms themselves are of a certain degree, 
- this implies that the objects we are dealing with here are in a separate basis, distinct of $e_a$ and its dual $e^a$ (this is where $e_I$ and $e^I$ come into play,
- 	or alternatively, $e^I$ is typically the differential form basis, and $e_a$ is the alternative (often coordinate?) basis with which the exterior covariant derivative operates on),
-	though it seems that we may still be able to use the same basis, as long as we simply distinguish which degrees of it are going to belong to the exterior algebra and which are not (so 3 numbers to denote tensor degree instead of 2? exterior (implicitly covariant), covariant, and contravariant?)<br> 
-So we can define $\Omega = {\Omega^a}_b e_a \otimes e^b$<br>
-And then we can define $D e_a = \nabla_{[b} e_{a]} e^b \otimes e^a$<br>
-And then we can use the same connection as before: $\nabla_{[a} e_{b]} = {\Gamma^c}_{[ab]} e_c = {\omega^c}_{[b} e_{a]}$ ... ? TODO fix this.<br> 
-And we get $D \Omega = D ({\Omega^a}_b e_a \otimes e^b) = D {\Omega^a_b} e_a \otimes e^b + {\Omega^a}_b (D e_a) \otimes e^b + {\Omega^a}_b e_a \otimes (D e^b)$<br>
-... $e_c ({\Omega^a}_b) e^c \otimes e_a \otimes e^b + {\Omega^a}_b ({\Gamma^u}_{ca} e_u \otimes e^c) \otimes e^b + {\Omega^a}_b e_a \otimes (-{\Gamma^b}_{cu} e^u \otimes e^c)$<br> 
-... (can we use the rule $A = A_a e^a = A^a e_a$ ?  seems like this is exactly what gets people into trouble when trying to define the wedge product of a vector as the metric-transformed wedge product of the vector raised to a one-form...)<br>
-... $(e_p (\Omega_{qr}) + {\Omega^u}_r \Gamma_{pqu} - \Omega_{pu} {\Gamma^u}_{rq}) e^p \otimes e^q \otimes e^r$<br> 
-This also still leaves the rule of how to expand the basis around $D = D_a e^a$ ... but probably similar to the exterior derivative $d = d_a e^a$...<br>
-I also conveniently failed to apply any sort of antisymmetry across the exterior covariant derivative indexes, but maybe that is fine, as long as the index definition matches the exterior algebra definition.<br>
-Lets compare it to its exterior algebra definition below:<br>
-$D ((e_a \otimes e^b) \otimes {\Omega^a}_b )  = (e_a \otimes e^b) \otimes (d {\Omega^a}_b + {\omega^a}_c \wedge {\Omega^c}_b - {\omega^c}_b \wedge {\Omega^a}_c)$<br>
-$= D ({R^a}_{bcd} \cdot (e_a \otimes e^b) \otimes (e^c \wedge e^d)) = (e_a \otimes e^b) \otimes (  )$<br>
-TODO...<br>
+Let $D = d + \omega$<br>
+...implicit wedge with p-forms...<br>
+...implicit composition with vectors...<br>
+...implicit sum when $\omega$ spans a basis...<br>
 <br>
 
 Exterior covariant derivative of basis one-forms:<br>
 $D e^a = d e^a + {\omega^a}_b \wedge e^b$<br>
 $D e^a = \Theta^a$<br>
+<br>
+$D e = D (\tilde{e}_a \otimes e^a)$<br>
+$= (D \tilde{e}_a) \otimes e^a + \tilde{e}_a \otimes (D e^a)$<br>
+...<br>
+$= \tilde{e}_a \otimes (d e^a + {\omega^a}_b \wedge e^b)$<br>
+$= \tilde{e}_a \otimes (-\frac{1}{2} {c_{ub}}^a e^u \wedge e^b + {\Gamma^a}_{ub} e^u \wedge e^b)$<br>
+$= \tilde{e}_a \otimes ((-\frac{1}{2} {c_{ub}}^a + {\Gamma^a}_{ub}) e^u \wedge e^b)$<br>
 <br>
 
 Exterior covariant derivative of torsion two-form (Bianchi's first identity using an exterior covariant derivative):<br>

@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<title>relativistic electromagnetism in medium</title>
+	</head>
+	<body onload='tryToFindMathJax();'>
+
+from my "relativistic electromagnetic metric in medium" worksheet:<br>
+<br>
+
+$T_{ab}$ is the stress-energy tensor.<br>
+$\mathcal{S}_i$ is the Poynting field vector.<br>
+$\mathcal{E}_i = \frac{1}{\epsilon} \mathcal{D}_i$ is the electric field vector.<br>
+$\mathcal{H}_i = \frac{1}{\mu} \mathcal{B}_i$ is the magnetic field vector.<br>
+$T_{[uv]} =  \pmatrix{
+
+	0 &
+
+	\frac{1}{2} \frac{1}{c} (n^2 - 1) (
+		\alpha \mathcal{S}_j
+		+ \frac{1}{\alpha} \epsilon_{jkl} \mathcal{H}^k \beta^l \mathcal{E}_m \beta^m
+	)
+
+	\\
+
+	-\frac{1}{2} \frac{1}{c} (n^2 - 1) (
+		\alpha \mathcal{S}_i
+		+ \frac{1}{\alpha} \epsilon_{ikl} \mathcal{H}^k \beta^l \mathcal{E}_m \beta^m
+	)
+
+	&
+
+	\frac{1}{c} (n^2 - 1) \frac{1}{\alpha} \mathcal{E}_{[i} \epsilon_{j]kl} \mathcal{H}^k \beta^l
+}$<br>
+$T_{[0i]} = \frac{1}{2} \frac{1}{c} (n^2 - 1) (
+	\alpha \mathcal{S}_i
+	+ \frac{1}{\alpha} \epsilon_{jkl} \mathcal{H}^k \beta^l \mathcal{E}_m \beta^m
+)$<br>
+$T_{[ij]} = 
+	\frac{1}{c} (n^2 - 1) \frac{1}{\alpha} \mathcal{E}_{[i} \epsilon_{j]kl} \mathcal{H}^k \beta^l
+$<br>
+<br>
+
+antisymmetric Einstein field equations:<br>
+$R_{ab}$ is the Ricci curvature tensor.<br>
+$R_{[ab]} = 8 \pi \frac{G}{c^4} T_{[ab]}$<br>
+<br>
+
+
+first Bianchi identity / antisymmetry of Ricci tensor with torsion:<br>
+${S^a}_{bc}$ is the torsion tensor<br>
+$R_{[ab]} = \frac{3}{2} (
+	\nabla_{[u} {S^u}_{ba]} + {S^u}_{v[u} {S^v}_{ba]}
+)$<br>
+$R_{[ab]} = \frac{1}{2} (
+	  \partial_u {S^u}_{ba} 
+	+ \partial_b {S^u}_{au} 
+	+ \partial_a {S^u}_{ub} 
+	
+	+ {\Gamma^u}_{uv} {S^v}_{ba}
+	+ {\Gamma^u}_{bv} {S^v}_{au}
+	+ {\Gamma^u}_{av} {S^v}_{ub}
+	
+	- {\Gamma^v}_{ub} {S^u}_{va}
+	- {\Gamma^v}_{ba} {S^u}_{vu}
+	- {\Gamma^v}_{au} {S^u}_{vb}
+	
+	- {\Gamma^v}_{ua} {S^u}_{bv}
+	- {\Gamma^v}_{ab} {S^u}_{uv}
+	- {\Gamma^v}_{bu} {S^u}_{av}
+	
+	+ {S^u}_{vu} {S^v}_{ba}
+	+ {S^u}_{vb} {S^v}_{au}
+	+ {S^u}_{va} {S^v}_{ub}
+)$<br>
+$R_{[ab]} = \frac{1}{2} (
+	  \partial_u {S^u}_{ba}
+	+ \partial_b {S^u}_{au}
+	+ \partial_a {S^u}_{ub}
+	
+	+ {\Gamma^v}_{vu} {S^u}_{ba}
+	+ {\Gamma^v}_{ua} {S^u}_{vb}
+	+ {\Gamma^v}_{ub} {S^u}_{av}
+	
+	- {c_{ab}}^v {S^u}_{uv}
+)$<br>
+<br>
+
+geodesic component due to torsion:<br>
+$(\dot{u}^i)_{\Theta} = u_b {S^b}_{dc} u^c g^{di}$<br>
+$(\dot{u}^i)_{\Theta} = u_b S^{bic} u_c$<br>
+...low-velocity approximation ($u_0 \approx 1, u_i \approx \frac{v_i}{c}$)<br>
+$(\dot{u}^i)_{\Theta} = S^{0i0}$<br>
+<br>
+
+Plane wave representation:<br>
+$q = \hat{q} exp(i \tilde{q}_u x^u)$<br>
+${S^a}_{bc} = {\hat{S}^a}_{bc} exp(i \tilde{S}_u x^u)$<br>
+${S^a}_{bc,d} = i \tilde{S}_d {\hat{S}^a}_{bc} exp(i \tilde{S}_u x^u) = i {S^a}_{bc} \tilde{S}_d$<br>
+<br>
+
+$R_{[ab]} = \frac{1}{2} (
+	  (\tilde{S}_u + {\Gamma^v}_{vu}) {S^u}_{ba}
+	+ (\delta^v_u \tilde{S}_b + {\Gamma^v}_{ub}) {S^u}_{av}
+	+ (\delta^v_u \tilde{S}_a + {\Gamma^v}_{ua}) {S^u}_{vb}
+	- {c_{ab}}^v {S^u}_{uv}
+)$<br>
+<br>
+
+$R_{[ab]} = 8 \pi \frac{G}{c^4} T_{[ab]}$<br>
+$\frac{1}{2} (
+	  (\tilde{S}_u + {\Gamma^v}_{vu}) {S^u}_{ba}
+	+ (\delta^v_u \tilde{S}_b + {\Gamma^v}_{ub}) {S^u}_{av}
+	+ (\delta^v_u \tilde{S}_a + {\Gamma^v}_{ua}) {S^u}_{vb}
+	- {c_{ab}}^v {S^u}_{uv}
+) = 8 \pi \frac{G}{c^4} T_{[ab]}$<br>
+<br>
+
+separate into space/time<br>
+$\frac{1}{2} (
+	  (\tilde{S}_u + {\Gamma^v}_{vu}) {S^u}_{i0}
+	+ (\delta^v_u \tilde{S}_i + {\Gamma^v}_{ui}) {S^u}_{0v}
+	+ (\delta^v_u \tilde{S}_0 + {\Gamma^v}_{u0}) {S^u}_{vi}
+	- {c_{0i}}^v {S^u}_{uv}
+) = 8 \pi \frac{G}{c^4} T_{[0i]} 
+= 4 \pi \frac{G}{c^5} (n^2 - 1) (
+	\alpha \mathcal{S}_i
+	+ \frac{1}{\alpha} \epsilon_{jkl} \mathcal{H}^k \beta^l \mathcal{E}_m \beta^m
+)$<br>
+$\frac{1}{2} (
+	  (\tilde{S}_u + {\Gamma^v}_{vu}) {S^u}_{ji}
+	+ (\delta^v_u \tilde{S}_j + {\Gamma^v}_{uj}) {S^u}_{iv}
+	+ (\delta^v_u \tilde{S}_i + {\Gamma^v}_{ui}) {S^u}_{vj}
+	- {c_{ij}}^v {S^u}_{uv}
+) = 8 \pi \frac{G}{c^4} T_{[ij]} 
+= 8 \pi \frac{G}{c^5} (n^2 - 1) \frac{1}{\alpha} \mathcal{E}_{[i} \epsilon_{j]kl} \mathcal{H}^k \beta^l$<br>
+<br>
+
+Hmm, maybe I can isolate the torsion before splitting into space/time?<br>
+$(
+	  \delta^r_a \delta^q_b \tilde{S}_p 
+	+ \delta^q_a \delta^r_p \tilde{S}_b
+	+ \delta^r_b  \delta^q_p \tilde{S}_a
+	+ \delta^r_a \delta^q_b {\Gamma^v}_{vp}
+	+ \delta^q_a {\Gamma^r}_{pb}
+	+ \delta^r_b {\Gamma^q}_{pa}
+	- \delta^q_p {c_{ab}}^r
+) {S^p}_{qr}
+ = 16 \pi \frac{G}{c^4} T_{[ab]}$<br>
+...and how do I invert this, to solve for ${S^a}_{bc}$?<br>
+
+
+One thing to note, the torsion geodesic component is only influenced by the symmetric components of the 1st and 3rd indexes of the torsion tensor...  maybe I can isolate that?<br>
+That term does uniquely show up in the relation with stress energy as...<br>
+$\frac{1}{2} {c_{ab}}^v {S^u}_{vu} + \tilde{S}_{[b} {S^u}_{a]u} + ... = 8 \pi \frac{G}{c^4} T_{[ab]}$<br>
+${S^u}_{iu} \approx {S^0}_{i0} \approx 16 \pi \frac{G}{c^4} \frac{1}{\tilde{S}_{0}} T_{i0} = -8 \pi \frac{G}{c^5} \frac{1}{\tilde{S}_{0}} (n^2 - 1) (\alpha \mathcal{S}_i + \frac{1}{\alpha} \epsilon_{jkl} \mathcal{H}^k \beta^l \mathcal{E}_m \beta^m)$<br>
+...for $g_{ab} \approx \eta_{ab}$, so ${S^0}_{i0} \approx -S_{0i0}$<br>
+$S_{0i0} \approx 8 \pi \frac{G}{c^5} \frac{1}{\tilde{S}_{0}} (n^2 - 1) (\alpha \mathcal{S}_i + \frac{1}{\alpha} \epsilon_{jkl} \mathcal{H}^k \beta^l \mathcal{E}_m \beta^m)$<br>
+$(\dot{u}_i)_{\Theta} \approx 8 \pi \frac{G}{c^5} \frac{1}{\tilde{S}_{0}} (n^2 - 1) (\alpha \mathcal{S}_i + \frac{1}{\alpha} \epsilon_{jkl} \mathcal{H}^k \beta^l \mathcal{E}_m \beta^m)$<br>
+...for $g_{ab} \approx \eta_{ab}$ ...<br>
+$(\dot{u}_i)_{\Theta} \approx 8 \pi \frac{G}{c^5} \frac{1}{\tilde{S}_{0}} (n^2 - 1) \mathcal{S}_i$<br>
+<br>
+
+
+	</body>
+</html>

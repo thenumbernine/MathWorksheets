@@ -174,6 +174,8 @@ Here's the CDN URLs:
 
 [Tetrad General Relativity](https://thenumbernine.github.io/math/Tetrad%20General%20Relativity.html)
 
+[Tetration Derivative](https://thenumbernine.github.io/math/Tetration%20Derivative.html)
+
 [a note on the definition of tensors](https://thenumbernine.github.io/math/a%20note%20on%20the%20definition%20of%20tensors.html)
 
 [heat to wave](https://thenumbernine.github.io/math/heat%20to%20wave.html)
@@ -185,6 +187,8 @@ Here's the CDN URLs:
 [removing beta from adm metric](https://thenumbernine.github.io/math/removing%20beta%20from%20adm%20metric.html)
 
 [spheres](https://thenumbernine.github.io/math/spheres.html)
+
+[torsion gravity](https://thenumbernine.github.io/math/torsion%20gravity.html)
 
 [wave_metric_1](https://thenumbernine.github.io/math/wave_metric_1.html)
 
