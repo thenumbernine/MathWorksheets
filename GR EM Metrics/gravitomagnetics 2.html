@@ -24,22 +24,31 @@ $\eta_{ab} = diag(-1,1,1,1)$<br>
 
 This much is distinct of the signature -- because it does not separate space+time:<br>
 Near field approximation:<br>
-$g_{ab} = \eta_{ab} + h_{ab}$<br>
+$g_{ab} = \eta_{ab} + h_{ab}$ has units $[1]$<br>
 (Even though I'm using the same definition for either +--- or -+++ signatures, shouldn't one of the two be negative'd?
 I suppose that doesn't matter if, instead, the $h_{ab}$ components of one signature are negative those of the other).<br>
 <br>
 
 The coordinate basis is $\frac{\partial}{\partial x^\mu} 
 = (
+	\frac{\partial}{\partial x^0},
+	\frac{\partial}{\partial x^1},
+	\frac{\partial}{\partial x^2},
+	\frac{\partial}{\partial x^3}
+) = (
 	\frac{1}{c} \frac{\partial}{\partial t},
 	\frac{\partial}{\partial x},
 	\frac{\partial}{\partial y},
 	\frac{\partial}{\partial z}
-)$<br>
+)$ has units $[\frac{1}{m}]$.<br>
+The dual basis is $dx^\mu
+= (dx^0, dx^1, dx^2, dx^3)
+= (c \cdot dt, dx, dy, dz)
+$ has units $[m]$.<br>
 <br>
 
-$g^{ab} \approx \eta^{ab}$<br>
-Raising and lowering is with $\eta^{ab}$<br>
+$g^{ab} \approx \eta^{ab}$ has units $[1]$,<br>
+So we will raise and lower with $\eta^{ab}$<br>
 <br>
 
 $g_{ab,c} = h_{ab,c}$ has units $[\frac{1}{m}]$<br>
@@ -176,7 +185,7 @@ and $\bar{\textbf{h}}$ is the trace-reversal of $\textbf{h}$<br>
 
 Einstein Field Equations:<br>
 $G_{ab} = 8 \pi \frac{G}{c^4} T_{ab}$ has units $[\frac{1}{m^2}]$<br>
-$T_{ab}$ has units $[\frac{kg}{m s^2}]$<br>
+$T_{ab}$ has units $[\frac{kg}{m \cdot s^2}]$<br>
 so $8 \pi \frac{G}{c^4} T_{ab}$ has units $[\frac{1}{m^2}]$<br>
 $-\frac{1}{2} {\bar{h}_{ab,c}}^c = 8 \pi \frac{G}{c^4} T_{ab}$<br>
 ${\bar{h}_{ab,c}}^c = -16 \pi \frac{G}{c^4} T_{ab}$<br>
@@ -194,9 +203,9 @@ $T_{ab} = c^2 \rho_m u_a u_b + P (g_{ab} + u_a u_b) $<br>
 $T_{ab} = (c^2 \rho_m + P) u_a u_b + P g_{ab}$<br>
 (here's another sign error difference between the original paper and MTW ... <br>
 MTW uses $u^a = (1,0,0,0), u_a = (-1,0,0,0)$ .. using eqns 5.37 of MTW)<br>
-Low-velocity approximation: $u_t \approx 1, u_i \approx \frac{v_i}{c}$<br>
-$T_{tt} = (c^2 \rho_m + P) (u_t)^2 + P g_{tt} \approx c^2 \rho_m$<br>
-$T_{ti} = (c^2 \rho_m + P) u_t u_i \approx c \rho_m v_i$<br>
+Low-velocity approximation: $u_0 \approx 1, u_i \approx \frac{v_i}{c}$<br>
+$T_{00} = (c^2 \rho_m + P) (u_0)^2 + P g_{00} \approx c^2 \rho_m$<br>
+$T_{0i} = (c^2 \rho_m + P) u_0 u_i \approx -c \rho_m v_i$<br>
 $T_{ij} = c^2 \rho_m u_i u_j + P g_{ij} \approx \rho_m v_i v_j + \delta_{ij} P$<br>
 $T_{ab} = \left[\matrix{
 	c^2 \rho_m & -c \rho_m v_i \\
@@ -215,22 +224,22 @@ $\Delta \phi = 4 \pi \rho$ has a solution $\phi = -\int_V \frac{\rho}{r} dV$<br>
 <br>
 
 Combine with EFE to find:<br>
-$\Delta \bar{h}_{tt} = -16 \pi \frac{G}{c^4} T_{tt}$<br>
-$\Delta (\frac{c^2}{4} \bar{h}_{tt}) = -4 \pi \frac{G}{c^2} T_{tt}$<br>
-Let $\Phi^g = \frac{c^2}{4} \bar{h}_{tt}$ has units $[\frac{m^2}{s^2}]$<br>
-$\Delta \Phi^g = -4 \pi \frac{G}{c^2} T_{tt}$<br>
-$\Phi^g = \frac{G}{c^2} \int_V \frac{T_{tt}}{r} dV$<br>
-$\Phi^g = \frac{1}{4\pi\epsilon_g} \int_V \frac{T_{tt}}{c^2 r} dV$<br>
+$\Delta \bar{h}_{00} = -16 \pi \frac{G}{c^4} T_{00}$<br>
+$\Delta (\frac{c^2}{4} \bar{h}_{00}) = -4 \pi \frac{G}{c^2} T_{00}$<br>
+Let $\Phi^g = \frac{c^2}{4} \bar{h}_{00}$ has units $[\frac{m^2}{s^2}]$<br>
+$\Delta \Phi^g = -4 \pi \frac{G}{c^2} T_{00}$<br>
+$\Phi^g = \frac{G}{c^2} \int_V \frac{T_{00}}{r} dV$<br>
+$\Phi^g = \frac{1}{4\pi\epsilon_g} \int_V \frac{T_{00}}{c^2 r} dV$<br>
 Tada! Just like the electric field.<br>
 <br>
 
-Next do the same trick with $T_{ti}$<br>
-$\Delta \bar{h}_{ti} = -16 \pi \frac{G}{c^4} T_{ti}$<br>
-$\Delta (-\frac{c}{4} \bar{h}_{ti}) = 4 \pi \frac{G}{c^3} T_{ti}$<br>
-Let $(A^g)_i = -\frac{c}{4} \bar{h}_{ti}$ be the gravitomagnetic potential vector, with units $[\frac{m}{s}]$<br>
-$\Delta A^g_i = 4 \pi \frac{G}{c^3} T_{ti}$<br>
-$(A^g)_i = -\frac{G}{c^3} \int_V \frac{T_{ti}}{r} dV$<br>
-$(A^g)_i = -\frac{\mu_g}{4 \pi} \int_V \frac{T_{ti}}{c r} dV$<br>
+Next do the same trick with $T_{0i}$<br>
+$\Delta \bar{h}_{0i} = -16 \pi \frac{G}{c^4} T_{0i}$<br>
+$\Delta (-\frac{c}{4} \bar{h}_{0i}) = 4 \pi \frac{G}{c^3} T_{0i}$<br>
+Let $(A^g)_i = -\frac{c}{4} \bar{h}_{0i}$ be the gravitomagnetic potential vector, with units $[\frac{m}{s}]$<br>
+$\Delta (A^g)_i = 4 \pi \frac{G}{c^3} T_{0i}$<br>
+$(A^g)_i = -\frac{G}{c^3} \int_V \frac{T_{0i}}{r} dV$<br>
+$(A^g)_i = -\frac{\mu_g}{4 \pi} \int_V \frac{T_{0i}}{c r} dV$<br>
 Just like the magnetic field.<br>
 <br>
 
@@ -239,8 +248,8 @@ Notice that we aren't considering $T_{ij}$ at all.<br>
 
 If you stop here, take what we know of $\bar{h}_{ab}$, and substitute it back into $h_{ab}$, you find something interesting.<br>
 
-$\bar{h}_{tt} = \frac{4}{c^2} \Phi^g$<br>
-$\bar{h}_{ti} = \bar{h}_{it} = -\frac{4}{c} (A^g)_i$<br>
+$\bar{h}_{00} = \frac{4}{c^2} \Phi^g$<br>
+$\bar{h}_{0i} = \bar{h}_{i0} = -\frac{4}{c} (A^g)_i$<br>
 Let's assume the rest is zero for now: $\bar{h}_{ij} = 0$<br>
 <br>
 Now let's calculate $h_{ab}$ from $\bar{h}_{ab}$<br>
@@ -256,13 +265,13 @@ solve for $h_{ab}$<br>
 $h_{ab} = \bar{h}_{ab} - \frac{1}{2} \eta_{ab} {\bar{h}^c}_c$<br>
 <br>
 
-${\bar{h}^a}_a = -\bar{h}_{tt} + \Sigma_i \bar{h}_{ii} = -\bar{h}_{tt}$<br>
+${\bar{h}^a}_a = -\bar{h}_{00} + \Sigma_i \bar{h}_{ii} = -\bar{h}_{00}$<br>
 <br>
 
 Now solve for $h_{ba}$<br>
-$h_{tt} = \bar{h}_{tt} - \frac{1}{2} \eta_{tt} {\bar{h}^a}_a = \frac{1}{2} \bar{h}_{tt}$<br>
-$h_{ti} = \bar{h}_{ti} - \frac{1}{2} \eta_{ti} {\bar{h}^a}_a = \bar{h}_{ti}$<br>
-$h_{ij} = \bar{h}_{ij} - \frac{1}{2} \eta_{ij} {\bar{h}^a}_a = \frac{1}{2} \delta_{ij} \bar{h}_{tt}$<br>
+$h_{00} = \bar{h}_{00} - \frac{1}{2} \eta_{00} {\bar{h}^a}_a = \frac{1}{2} \bar{h}_{00}$<br>
+$h_{0i} = \bar{h}_{0i} - \frac{1}{2} \eta_{0i} {\bar{h}^a}_a = \bar{h}_{0i}$<br>
+$h_{ij} = \bar{h}_{ij} - \frac{1}{2} \eta_{ij} {\bar{h}^a}_a = \frac{1}{2} \delta_{ij} \bar{h}_{00}$<br>
 We get<br>
 $h_{ab} = \left[\matrix{
 	\frac{2}{c^2} \Phi^g & -\frac{4}{c} A_x & -\frac{4}{c} A_y & -\frac{4}{c} A_z \\
@@ -279,7 +288,7 @@ $g_{ab} = \left[\matrix{
 	-\frac{4}{c} A_y & 0 & 1 + \frac{2}{c^2} \Phi^g & 0 \\
 	-\frac{4}{c} A_z & 0 & 0 & 1 + \frac{2}{c^2} \Phi^g 
 }\right]$<br>
-(TODO , shouldn't the whole metric be negative'd from the +--- signature metric?  If so, should I negative $\Phi^g$ and $A^g$, or should I just take note here that there are negative the values that their negative-signature counterparts would be?)<br>
+(TODO, shouldn't the whole metric be negative'd from the $+---$ signature metric?  If so, should I negative $\Phi^g$ and $A^g$, or should I just take note here that there are negative the values that their negative-signature counterparts would be?)<br>
 
 ...and this looks surprisingly similar to a combination of the metric representing the Newtonian limit of relativity ($g_{ab} = \eta_{ab} + 2 \delta_{ab} \Phi$),<br>
 as well as the metric (similar to Kaluza-Klein) whose geodesic looks similar to the Lorentz force ($g_{ab} = \eta_{ab} + 2 \delta_{t(a} A_{b)})$<br>
@@ -288,85 +297,96 @@ Coincidentally those are the forces which we are recreating using this model.<br
 
 <hr>
 
+Let $(A^g)_a = (\frac{1}{c} \Phi^g, (A^g)_i)$ has units $[\frac{m}{s}]$.<br>
 <br>
 
-$F^g_{ab} = 2 A^g_{[b,a]}$<br>
-$\frac{1}{c} E^g_i = F^g_{it} = 2 A^g_{[t,i]} = A^g_{t,i} - A^g_{i,t} = \Phi^g_{,i} - A^g_{i,t}$ has units $[\frac{m}{s^2}]$<br>
-so $E^g_i$ has units $[\frac{m^2}{s^3}]$<br>
-$B^g_i = \frac{1}{2} {\epsilon_i}^{jk} F^g_{jk} = {\epsilon_i}^{jk} A^g_{[k,j]} = {\epsilon_i}^{jk} A^g_{k,j}$<br>
-so $B^g_i$ has units $[\frac{m}{s^2}]$<br>
+$(F^g)_{ab} = 2 A^g_{[b,a]}$<br>
+$\frac{1}{c} (E^g)_i = (F^g)_{i0} = 2 (A^g)_{[0,i]} = (A^g)_{0,i} - (A^g)_{i,0} = \frac{1}{c} (\Phi^g)_{,i} - \frac{1}{c} (A^g)_{i,t}$ has units $[\frac{1}{s}]$<br>
+so $(E^g)_i$ has units $[\frac{m}{s^2}]$<br>
+$(B^g)_i = \frac{1}{2} {\epsilon_i}^{jk} (F^g)_{jk} = {\epsilon_i}^{jk} (A^g)_{[k,j]} = {\epsilon_i}^{jk} (A^g)_{k,j}$<br>
+so $(B^g)_i$ has units $[\frac{1}{s}]$<br>
 <br>
 
-
-$F^g_{ab} = \left[\begin{matrix}
-	0 & -\frac{1}{c} E^g_j \\
-	\frac{1}{c} E^g_i & {\epsilon_{ij}}^k B^g_k
-\end{matrix}\right]$ has units $[\frac{m}{s^2}]$<br>
+$(F^g)_{ab} = \left[\begin{matrix}
+	0 & -\frac{1}{c} (E^g)_j \\
+	\frac{1}{c} (E^g)_i & {\epsilon_{ij}}^k (B^g)_k
+\end{matrix}\right]$ has units $[\frac{1}{s}]$<br>
 <br>
 
 $(F^g)^{ab} = \left[\begin{matrix}
-	0 & \frac{1}{c} E^g_j \\
-	-\frac{1}{c} E^g_i & {\epsilon_{ij}}^k B^g_k
+	0 & \frac{1}{c} (E^g)_j \\
+	-\frac{1}{c} (E^g)_i & {\epsilon_{ij}}^k (B^g)_k
 \end{matrix}\right]$<br>
 <br>
 
-${{(F^g)}^{ab}}_{,b} = \mu_g J^g$ has units $[\frac{1}{s^2}]$<br>
-${{(F^g)}^{ab}}_{,b} = \frac{4 \pi G}{c^2} J^g$<br>
-so $J_g$ has units $[\frac{kg}{m \cdot s^2}]$<br>
+${{(F^g)}^{ab}}_{,b} = \mu_g (J^g)^a$ has units $[\frac{1}{m s}]$<br>
+${{(F^g)}^{ab}}_{,b} = \frac{4 \pi G}{c^2} (J^g)^a$<br>
+so $(J^g)^a$ has units $[\frac{kg}{m^2 \cdot s}]$<br>
 <br>
 
 ${(F^g)^{ab}}_{,b} = \mu_g (J^g)^a$ gives us...<br>
-${(F^g)^{tu}}_{,u} = \mu_g (J^g)^t$<br>
-${(F^g)^{tu}}_{,u} = \frac{1}{c} E^g_{j,j}$<br>
-substitute $\frac{1}{c} E^g_i = \Phi^g_{,i} - A^g_{i,t}$<br>
-${(F^g)^{tu}}_{,u} = \Phi^g_{,jj} - A^g_{j,tj}$<br>
-using the Lorentz gauge $A^g_{j,j} = 0$ we get
-${(F^g)^{tu}}_{,u} = \Phi^g_{,jj}$
-using $\Delta \Phi^g = -4 \pi \frac{G}{c^2} T_{tt}$<br>
-we get ${(F^g)^{tu}}_{,u} = -4 \pi \frac{G}{c^2} T_{tt}$<br> 
-and ${(F^g)^{tu}}_{,u} = \mu_g (J^g)^t$<br>
-so $\mu_g (J^g)^t = -4 \pi \frac{G}{c^2} T_{tt}$<br>
-so $J^g_t = T_{tt}$<br>
-so $E^g_{j,j} = \mu_g J^g = -\frac{4 \pi G}{c} T_{tt}$<br>
+${(F^g)^{0u}}_{,u} = \mu_g (J^g)^0$<br>
+${(F^g)^{0u}}_{,u} = \frac{1}{c} (E^g)_{j,j}$<br>
+substitute $\frac{1}{c} (E^g)_i = \frac{1}{c} (\Phi^g)_{,i} - \frac{1}{c} (A^g)_{i,t}$<br>
+${(F^g)^{0u}}_{,u} = \frac{1}{c} \Phi^g_{,jj} - \frac{1}{c} (A^g)_{j,tj}$<br>
+using the Lorentz gauge $(A^g)_{j,j} = 0$ we get<br>
+${(F^g)^{0u}}_{,u} = \frac{1}{c} (\Phi^g)_{,jj}$<br>
+using $\Delta \Phi^g = -4 \pi \frac{G}{c^2} T_{00}$<br>
+we get ${(F^g)^{0u}}_{,u} = -4 \pi \frac{G}{c^3} T_{00}$<br> 
+and ${(F^g)^{0u}}_{,u} = \mu_g (J^g)^0$<br>
+so $\mu_g (J^g)^0 = -4 \pi \frac{G}{c^3} T_{00}$<br>
+so $(J^g)_0 = \frac{1}{c} T_{00}$<br>
+so $\frac{1}{c} (E^g)_{j,j} = \mu_g (J^g)^0 = -4 \pi \frac{G}{c^3} T_{00}$<br>
 <br>
+
 
 <br>
 ${(F^g)^{iu}}_{,u} = \mu_g (J^g)^i$ gives us<br>
-${(F^g)^{iu}}_{,u} = -\frac{1}{c} E^g_{i,t} + {\epsilon_i}^{jk} B^g_{k,j}$<br>
-substitute $\frac{1}{c} E^g_i = \Phi^g_{,it} - A^g_{i,t}, B^g_i = {\epsilon_i}^{jk} A_{k,j}$<br>
-${(F^g)^{iu}}_{,u} = -(\Phi^g_{,it} - A^g_{i,tt}) + {\epsilon_{ij}}^k {\epsilon_k}^{lm} A^g_{m,lj} $<br>
-using $A^g_{i,tt} = 0$ (or am I thinking of $\bar{h}_{ab,tt} = 0$ ...)<br>
-${(F^g)^{iu}}_{,u} = -\Phi^g_{,it} + (\delta_i^l \delta_j^m - \delta_i^m \delta_j^l) A^g_{m,lj} $<br>
-${(F^g)^{iu}}_{,u} = -\Phi^g_{,it} + A^g_{j,ij} - A^g_{i,jj} $<br>
-using the Lorentz gauge $\Phi^g_{i,i} = A^g_{i,ij} = 0$<br>
-${(F^g)^{iu}}_{,u} = -\Phi^g_{,it} - A^g_{i,jj} $<br>
-and using $-\Phi^g_{,it} = 0$ (why?)<br>
-and $A^g_{i,jj} = -\frac{4 \pi G}{c^3} T_{ti}$<br>
-${(F^g)^{iu}}_{,u} = \frac{4 \pi G}{c^3} T_{ti}$<br>
-so $\mu_g (J^g)^i = \frac{4 \pi G}{c^3} T_{ti}$<br>
-so $(J^g)^i = \frac{1}{c} T_{ti}$<br>
+${(F^g)^{iu}}_{,u} = -\frac{1}{c^2} (E^g)_{i,t} + {\epsilon_i}^{jk} (B^g)_{k,j} = \mu_g (J^g)^i$<br>
+substitute $\frac{1}{c} (E^g)_i = \frac{1}{c} (\Phi^g)_{,i} - \frac{1}{c} (A^g)_{i,t}$ and $(B^g)_i = {\epsilon_i}^{jk} (A^g)_{k,j}$<br>
+${(F^g)^{iu}}_{,u} = -(\frac{1}{c^2} \Phi^g_{,it} - \frac{1}{c^2} (A^g)_{i,tt}) + {\epsilon_{ij}}^k {\epsilon_k}^{lm} (A^g)_{m,lj} $<br>
+using $(A^g)_{i,tt} = 0$ (or am I thinking of $\bar{h}_{ab,tt} = 0$ ...)<br>
+${(F^g)^{iu}}_{,u} = -\frac{1}{c^2} (\Phi^g)_{,it} + (\delta_i^l \delta_j^m - \delta_i^m \delta_j^l) (A^g)_{m,lj} $<br>
+${(F^g)^{iu}}_{,u} = -\frac{1}{c^2} (\Phi^g)_{,it} + (A^g)_{j,ij} - (A^g)_{i,jj} $<br>
+using the Lorentz gauge $(\Phi^g)_{i,i} = (A^g)_{i,ij} = 0$<br>
+${(F^g)^{iu}}_{,u} = -\frac{1}{c^2} (\Phi^g)_{,it} - (A^g)_{i,jj} $<br>
+and using $-(\Phi^g)_{,it} = 0$ (why?) and $(A^g)_{i,jj} = -\frac{4 \pi G}{c^3} T_{0i}$<br>
+${(F^g)^{iu}}_{,u} = \frac{4 \pi G}{c^3} T_{0i}$<br>
+so $\mu_g (J^g)^i = \frac{4 \pi G}{c^3} T_{0i}$<br>
+so $(J^g)^i = \frac{1}{c} T_{0i}$<br>
 <br>
+
 
 <br>
 
-Then the dual gives
+Then the dual:<br>
+<br>
+
+$(\star F^g)^{ab} = \left[\begin{matrix}
+	0 & (B^g)_j \\
+	-(B^g)_i & -\frac{1}{c} {\epsilon_{ij}}^k (E^g)_k
+\end{matrix}\right]$<br>
+<br>
+
+Then ${(\star F^g)^{ab}}_{,b} = 0$ gives us...<br> 
 $(B^g)_{i,i} = 0$<br>
 $(B^g)_{i,t} + {\epsilon_i}^{jk} (E^g)_{k,j} = 0$<br>
 <br>
 
 If we wanted to rewrite the matter variables in terms of stress-energy (so we can consider stress-energy sources other than matter, such as electromagnetism ...):<br>
-${(E^g)^i}_{,i} = -4 \pi \frac{G}{c} T_{tt} = -\frac{1}{c \epsilon_g} T_{tt}$<br>
+${(E^g)^i}_{,i} = -4 \pi \frac{G}{c^2} T_{00} = -\frac{1}{c^2 \epsilon_g} T_{00}$<br>
 ${(B^g)^i}_{,i} = 0$<br>
 $(B^g)_{i,t} + {\epsilon_i}^{jk} (E^g)_{k,j} = 0$<br>
-$(E^g)_{i,t} - c^2 {\epsilon_i}^{jk} (B^g)_{k,j} = c \mu_g T_{ti} $<br>
+$(E^g)_{i,t} - c^2 {\epsilon_i}^{jk} (B^g)_{k,j} = c^2 \mu_g (J^g)^i = \frac{1}{c \epsilon_g} T_{0i} $<br>
 <br>
 
 Rewrite this in terms of $D = \epsilon_g E$<br>
-${(D^g)^i}_{,i} = -\frac{1}{c} T_{tt}$<br>
+${(D^g)^i}_{,i} = -\frac{1}{c^2} T_{00}$<br>
 ${(B^g)^i}_{,i} = 0$<br>
 $(B^g)_{i,t} + (\epsilon_g)^{-1} {\epsilon_i}^{jk} (D^g)_{k,j} = 0$<br>
-$(D^g)_{i,t} - (\mu_g)^{-1} {\epsilon_i}^{jk} (B^g)_{k,j} = \frac{1}{c} T_{ti} $<br>
+$(D^g)_{i,t} - (\mu_g)^{-1} {\epsilon_i}^{jk} (B^g)_{k,j} = \frac{1}{c} T_{0i} $<br>
 <br>
+
 
 Another thing to keep an eye on is the fact that, in order to solve the Poisson equation, we assume $\partial_t^2 h_{ab} = 0$<br>
 I guess we are technically just approximating it to be incredibly low.<br>
@@ -390,10 +410,10 @@ $T^{(uv)} = \downarrow u(i) \overset{\rightarrow v(j)}{\left[\begin{matrix}
 $T^{uv}$ has units $\frac{kg}{m s^2}$<br>
 <br>
 
-For electromagnetism, $T_{tt}$ and $T_{ti}$ are given by:<br>
-$T_{tt} = \frac{1}{2} ((\epsilon)^{-1} D^2 + (\mu)^{-1} B^2)$<br>
-$T_{ti} = -c^2 (\frac{v_p}{c})^2 \epsilon_{jkl} D_k B_l$<br>
-$T_{it} = -c^2 \epsilon_{ikl} D_k B_l$<br>
+For electromagnetism, $T_{00}$ and $T_{0i}$ are given by:<br>
+$T_{00} = \frac{1}{2} ((\epsilon)^{-1} D^2 + (\mu)^{-1} B^2)$<br>
+$T_{0i} = -c^2 (\frac{v_p}{c})^2 \epsilon_{jkl} D_k B_l$<br>
+$T_{i0} = -c^2 \epsilon_{ikl} D_k B_l$<br>
 What do we do about the asymmetry?  That brings on a whole other level of complexity.<br>
 In fact, if we are using the de Donder gauge then we are stuck with<br>
 $-\frac{1}{2} \Box \bar{h}_{ab} = G_{ab}$<br>
@@ -408,7 +428,7 @@ But this means also introducing our torsion term $s_{abc}$ which should be coupl
 <br>
 
 if we simply symmetrize we get:<br>
-$T_{ti} = -\frac{1}{2} \frac{1}{c} (n^2 + 1) S_i$<br>
+$T_{0i} = -\frac{1}{2} \frac{1}{c} (n^2 + 1) S_i$<br>
 For, $\vec{D} \times \vec{B} = \epsilon \vec{E} \times \mu \vec{H} = \frac{1}{(v_p)^2} \vec{S} = \frac{1}{c^2} n^2 \vec{S}$, for $\vec{S}$ the Poynting vector.<br>
 <br>
 
@@ -588,8 +608,8 @@ $W = $ Lorentz boost, where 2014 Abgrall, Kumar sets $W = 1$<br>
 $\epsilon = $ material permittivity, assumed to be $\epsilon_0$ in the 2014 Abgrall Kumar paper<br>
 <br>
 and stress-energy terms:<br>
-$T_{tt} = c^2 \rho + \frac{1}{2} (\frac{1}{\epsilon} D^2 + \frac{1}{\mu} B^2) = $ energy from stress-energy (TODO double check units)<br>
-$T_{ti} = \rho v_i + S_i = $ momentum from stress-energy (TODO double-check units)<br>
+$T_{00} = c^2 \rho + \frac{1}{2} (\frac{1}{\epsilon} D^2 + \frac{1}{\mu} B^2) = $ energy from stress-energy (TODO double check units)<br>
+$T_{0i} = -c \rho v_i + \frac{1}{2 c} (n^2 + 1) S_i = $ momentum from stress-energy (TODO double-check units)<br>
 <br>
 
 
