@@ -552,6 +552,7 @@ $( E_{total,ion} )_{,t}
 		(\hat{l}_r)^{-1} E_j
 		+ (E^g)^j
 	)$<br>
+<br>
 
 electrons:<br>
 $(\rho_{elec})_{,t} + \nabla_k (\rho_{elec} v_{elec}^k ) = 0$<br>
@@ -567,17 +568,19 @@ $( E_{total,elec} )_{,t}
 		(\hat{l}_r)^{-1} E_j
 		+ (E^g)^j
 	)$<br>
+<br>
 
 GLM Maxwell equations:<br>
-${E^j}_{,t} - \hat{c}^2 \nabla_k \epsilon^{jkl} B^l + \xi \hat{c}^2 \phi_{,j} = -( \hat{\lambda}_d^2 \hat{l}_r )^{-1} (r_{ion} \rho_{ion} v_{ion}^j + r_{elec} \rho_{elec} v_{elec}^j)$<br>
-$(B^j)_{,t} + \nabla_k \epsilon^{jkl} E^l + \kappa \psi_{,j} = 0$<br>
-$\phi_{,t} + \xi \nabla_j E^j = \xi (\hat{\lambda}_d \hat{l}_r)^{-1} (r_{ion} \rho_{ion} + r_{elec} \rho_{elec})$<br>
+${D^j}_{,t} - \mu^{-1} \nabla_k \epsilon^{jkl} B^l + \hat{c}^2 \xi \phi_{,j} = -\epsilon ( \hat{\lambda}_d^2 \hat{l}_r )^{-1} (r_{ion} \rho_{ion} v_{ion}^j + r_{elec} \rho_{elec} v_{elec}^j)$<br>
+${B^j}_{,t} + \epsilon^{-1} \nabla_k \epsilon^{jkl} D^l + \kappa \psi_{,j} = 0$<br>
+$\phi_{,t} + \xi \nabla_j D^j = \epsilon \xi (\hat{\lambda}_d \hat{l}_r)^{-1} (r_{ion} \rho_{ion} + r_{elec} \rho_{elec})$<br>
 $\psi_{,t} + \kappa \hat{c}^2 \nabla_j B^j = 0$<br>
+<br>
 
 gravitomagnetic equations:<br>
-${(E^g)^j}_{,t} - \hat{c}^2 \nabla_k \epsilon^{jkl} (B^g)^l + \xi \hat{c}^2 (\phi^g)_{,j} = -\hat{c} \mu^g T_{ti}$<br>
-$((B^g)^j)_{,t} + \nabla_k \epsilon^{jkl} (E^g)^l + \kappa \psi_{,j} = 0$<br>
-$(\phi^g)_{,t} + \xi \nabla_j (E^g)^j = \xi \frac{1}{\epsilon_g \hat{c}} T_{tt}$<br>
+${(D^g)^j}_{,t} - (\mu_g)^{-1} \nabla_k \epsilon^{jkl} (B^g)^l + \xi \hat{c}^2 (\phi^g)_{,j} = -\frac{1}{\hat{c}} T_{0i}$<br>
+${(B^g)^j}_{,t} + (\epsilon_g)^{-1} \nabla_k \epsilon^{jkl} (D^g)^l + \kappa \psi_{,j} = 0$<br>
+$(\phi^g)_{,t} + \xi \nabla_j (D^g)^j = \epsilon_g \xi \frac{1}{\hat{c}} T_{00}$<br>
 $(\psi^g)_{,t} + \kappa \hat{c}^2 \nabla_j (B^g)^j = 0$<br>
 <br>
 

@@ -7,12 +7,19 @@
 	</head>
 	<body onload='tryToFindMathJax();'>
 
-<h3>Maxwell Equations of charge in vacuum</h3>
+$E_i$ = electric field<br>
+$B_i$ = magnetic field<br>
+$D_i = \epsilon E_i$<br>
+$B_i = \mu H_i$<br>
+<br>
+
+<h3>Maxwell Equations of charge</h3>
+
 $B_{x,x} + B_{y,y} + B_{z,z} = 0$<br>
-$\epsilon_0 (E_{x,x} + E_{y,y} + E_{z,z}) = \rho_{charge}$<br>
-$\epsilon_0 E_{x,t} - \frac{1}{\mu_0} B_{z,y} + \frac{1}{\mu_0} B_{y,z} = -j_x$<br>
-$\epsilon_0 E_{y,t} - \frac{1}{\mu_0} B_{x,z} + \frac{1}{\mu_0} B_{z,x} = -j_y$<br>
-$\epsilon_0 E_{z,t} - \frac{1}{\mu_0} B_{y,x} + \frac{1}{\mu_0} B_{x,y} = -j_z$<br>
+$D_{x,x} + D_{y,y} + D_{z,z} = \rho_{charge}$<br>
+$D_{x,t} - H_{z,y} + H_{y,z} = -j_x$<br>
+$D_{y,t} - H_{x,z} + H_{z,x} = -j_y$<br>
+$D_{z,t} - H_{y,x} + H_{x,y} = -j_z$<br>
 $B_{x,t} + E_{z,y} - E_{y,z} = 0$<br>
 $B_{y,t} + E_{x,z} - E_{z,x} = 0$<br>
 $B_{z,t} + E_{y,x} - E_{x,y} = 0$<br>
@@ -20,16 +27,16 @@ $B_{z,t} + E_{y,x} - E_{x,y} = 0$<br>
 
 <h3>in vector notation:</h3>
 $\partial_t \left[ \begin{matrix}
-	\epsilon_0 E_x \\
-	\epsilon_0 E_y \\
-	\epsilon_0 E_z \\
+	D_x \\
+	D_y \\
+	D_z \\
 	B_x \\
 	B_y \\
 	B_z
 \end{matrix} \right] + \nabla \cdot \left[\begin{matrix}
-	0 & -\frac{1}{\mu_0} B_z & \frac{1}{\mu_0} B_y \\
-	\frac{1}{\mu_0} B_z & 0 & -\frac{1}{\mu_0} B_x \\
-	-\frac{1}{\mu_0} B_y & \frac{1}{\mu_0} B_x & 0 \\
+	0 & -H_z & H_y \\
+	H_z & 0 & -H_x \\
+	-H_y & H_x & 0 \\
 	0 & E_z & -E_y \\
 	-E_z & 0 & E_x \\
 	E_y & -E_x & 0
@@ -46,8 +53,8 @@ $\partial_t \left[ \begin{matrix}
 $B_{i,i} = 0$<br>
 $B_{i,t} + {\epsilon_i}^{jk} E_{k,j} = 0$<br>
 <br>
-$E_{i,i} = \frac{1}{\epsilon_0} \rho_{charge}$<br>
-$(\epsilon_0 E)_{i,t} - {\epsilon_i}^{jk} (\frac{1}{\mu_0} B)_{k,j} = -j_i$<br>
+$D_{i,i} = \rho_{charge}$<br>
+$D_{i,t} - {\epsilon_i}^{jk} H_{k,j} = -j_i$<br>
 <br>
 $j_i = \sigma E_i = $ current density<br>
 $\sigma = $ electric conductivity<br>
@@ -55,7 +62,7 @@ $\sigma = $ electric conductivity<br>
 
 conservative variables:<br>
 $U_i = \left[\matrix{
-	\epsilon_0 E_i \\
+	D_i \\
 	B_i
 }\right]$<br>
 <br>
@@ -66,14 +73,14 @@ $U_i + A_{ijk} U_{k,j} = S_i$<br>
 
 index/matrix form:<br>
 $\left[\matrix{
-	\epsilon_0 E_i \\
+	D_i \\
 	B_i
 }\right] + \left[\matrix{
-	0 & - \frac{1}{\mu_0} {\epsilon_i}^{jk} \\
-	\frac{1}{\epsilon_0} {\epsilon_i}^{jk} & 0
+	0 & - \frac{1}{\mu} {\epsilon_i}^{jk} \\
+	\frac{1}{\epsilon} {\epsilon_i}^{jk} & 0
 }\right] 
 \left[\matrix{
-	\epsilon_0 E_k \\
+	D_k \\
 	B_k
 }\right]_{,j}
 = \left[\matrix{
@@ -84,85 +91,98 @@ $\left[\matrix{
 
 $A_x = \left[\matrix{
 	0 & 0 & 0 & 0 & 0 & 0 \\
-	0 & 0 & 0 & 0 & 0 & \frac{1}{\mu_0} \\
-	0 & 0 & 0 & 0 & -\frac{1}{\mu_0} & 0 \\
+	0 & 0 & 0 & 0 & 0 & \frac{1}{\mu} \\
+	0 & 0 & 0 & 0 & -\frac{1}{\mu} & 0 \\
 	0 & 0 & 0 & 0 & 0 & 0 \\
-	0 & 0 & -\frac{1}{\epsilon_0} & 0 & 0 & 0 \\
-	0 & \frac{1}{\epsilon_0} & 0 & 0 & 0 & 0
+	0 & 0 & -\frac{1}{\epsilon} & 0 & 0 & 0 \\
+	0 & \frac{1}{\epsilon} & 0 & 0 & 0 & 0
 }\right]$<br>
 <br>
 
 $A_y = \left[\matrix{
-	0 & 0 & 0 & 0 & 0 & -\frac{1}{\mu_0} \\
+	0 & 0 & 0 & 0 & 0 & -\frac{1}{\mu} \\
 	0 & 0 & 0 & 0 & 0 & 0 \\
-	0 & 0 & 0 & \frac{1}{\mu_0} & 0 & 0 \\
-	0 & 0 & \frac{1}{\epsilon_0} & 0 & 0 & 0 \\
+	0 & 0 & 0 & \frac{1}{\mu} & 0 & 0 \\
+	0 & 0 & \frac{1}{\epsilon} & 0 & 0 & 0 \\
 	0 & 0 & 0 & 0 & 0 & 0 \\
-	-\frac{1}{\epsilon_0} & 0 & 0 & 0 & 0 & 0
+	-\frac{1}{\epsilon} & 0 & 0 & 0 & 0 & 0
 }\right]$<br>
 <br>
 
 $A_z = \left[\matrix{
-	0 & 0 & 0 & 0 & \frac{1}{\mu_0} & 0 \\
-	0 & 0 & 0 & -\frac{1}{\mu_0} & 0 & 0 \\
+	0 & 0 & 0 & 0 & \frac{1}{\mu} & 0 \\
+	0 & 0 & 0 & -\frac{1}{\mu} & 0 & 0 \\
 	0 & 0 & 0 & 0 & 0 & 0 \\
-	0 & -\frac{1}{\epsilon_0} & 0 & 0 & 0 & 0 \\
-	\frac{1}{\epsilon_0} & 0 & 0 & 0 & 0 & 0 \\
+	0 & -\frac{1}{\epsilon} & 0 & 0 & 0 & 0 \\
+	\frac{1}{\epsilon} & 0 & 0 & 0 & 0 & 0 \\
 	0 & 0 & 0 & 0 & 0 & 0
 }\right]$<br>
 <br>
 
 eigen decomposition:<br>
-$A_j = Q \Lambda Q^{-1}$<br>
+$A_j = R \Lambda L$<br>
 <br>
-for the $\hat{x}$-direction, with $\hat{x}, \hat{y}, \hat{z}$ forming a basis:<br>
-$Q = \left[\matrix{
-	\sqrt{\epsilon_0} \hat{y} & 
-		\sqrt{\epsilon_0} \hat{z} & 
-		\sqrt{\epsilon_0} \hat{x} & 
-		0 & 
-		\sqrt{\epsilon_0} \hat{y} & 
-		-\sqrt{\epsilon_0} \hat{z} \\
-	-\sqrt{\mu_0} \hat{z} & 
-		\sqrt{\mu_0} \hat{y} & 
-		0 & 
-		\sqrt{\mu_0} \hat{x} & 
-		\sqrt{\mu_0} \hat{z} & 
-		-\sqrt{\mu_0} \hat{y}
+for the x-direction:<br>
+$R = \left[\matrix{
+	0 & 0 & \sqrt{\epsilon} & 0 & 0 & 0 \\
+	\sqrt{\epsilon} & 0 & 0 & 0 & \sqrt{\epsilon} & 0 \\
+	0 & \sqrt{\epsilon} & 0 & 0 & 0 & -\sqrt{\epsilon} \\
+	
+	0 & 0 & 0 & \sqrt{\mu} & 0 & 0 \\
+	0 & \sqrt{\mu} & 0 & 0 & 0 & -\sqrt{\mu} \\
+	-\sqrt{\mu} & 0 & 0 & 0 & \sqrt{\mu} & 0 
+}\right]$<br>
+...Trangenstein says...<br>
+$R = \left[\matrix{
+	 0 &  0 & -\sqrt{\epsilon} & \sqrt{\epsilon} & 0 & 0 \\
+	 0 & -\sqrt{\epsilon} &  0 & 0 & \sqrt{\epsilon} & 0 \\
+	-\sqrt{\epsilon} &  0 &  0 & 0 & 0 & -\sqrt{\epsilon} \\
+	           
+	 0 &  0 &  \sqrt{\mu} & \sqrt{\mu} & 0 & 0 \\
+	 \sqrt{\mu} &  0 &  0 & 0 & 0 & \sqrt{\mu} \\
+	 0 &  \sqrt{\mu} &  0 & 0 & \sqrt{\mu} & 0 
 }\right]$<br>
 <br>
 
-$Q^-1 = \left[\matrix{
-	\hat{z} & \hat{x} & \hat{y} & 0 & \hat{y} & -\hat{x} \\
-	0 & \hat{y} & \hat[z] & \hat{x} & -\hat{z} & \hat{y}
+$L = \left[\matrix{
+	0 & 1 & 0 & 0 & 0 & -1 \\
+	0 & 0 & 1 & 0 & 1 & 0 \\
+	1 & 0 & 0 & 0 & 0 & 0 \\
+	
+	0 & 0 & 0 & 1 & 0 & 0 \\
+	0 & 1 & 0 & 0 & 0 & 1 \\
+	0 & 0 & 1 & 0 & -1 &0 
 }\right]$<br>
+<br>
+
+$v_p = \frac{1}{\sqrt{\epsilon \mu}} = $ phase velocity<br>
 <br>
 
 $\Lambda = \left[\matrix{
-	-\frac{1}{\sqrt{\epsilon_0 \mu_0}} & 0 & 0 & 0 & 0 & 0 \\
-	0 & -\frac{1}{\sqrt{\epsilon_0 \mu_0}} & 0 & 0 & 0 & 0 \\
+	-v_p & 0 & 0 & 0 & 0 & 0 \\
+	0 & -v_p & 0 & 0 & 0 & 0 \\
 	0 & 0 & 0 & 0 & 0 & 0 \\
 	0 & 0 & 0 & 0 & 0 & 0 \\
-	0 & 0 & 0 & 0 & \frac{1}{\sqrt{\epsilon_0 \mu_0}} & 0 \\
-	0 & 0 & 0 & 0 & 0 & \frac{1}{\sqrt{\epsilon_0 \mu_0}}
+	0 & 0 & 0 & 0 & v_p & 0 \\
+	0 & 0 & 0 & 0 & 0 & v_p
 }\right]$<br>
 <br>
 
 <h3>curvilinear coordinates using vectors:</h3>
 conserved quantities:<br>
 $U^I = \left[\matrix{ 
-	\epsilon_0 E^i \\ B^i 
+	D^i \\ B^i 
 }\right]$<br>
 <br>
 
 Flux:<br>
 <br>
 $F^{Ij} = \left[\matrix{ 
-	-\frac{1}{\mu_0} {\epsilon^{ij}}_k B^k \\
+	-{\epsilon^{ij}}_k H^k \\
 	{\epsilon^{ij}}_k E^k
 }\right]$<br>
 $= \left[\matrix{ 
-	-\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} B^l \\
+	-\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} H^l \\
 	\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} E^l
 }\right]$<br>
 <br>
@@ -170,39 +190,39 @@ $= \left[\matrix{
 Flux partial derivative divergence:<br>
 <br>
 ${F^{Ij}}_{,j} = \left[\matrix{ 
-	-\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} B^l \\
+	-\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} H^l \\
 	\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} E^l
 }\right]_{,j}$<br>
 $= \left[\matrix{ 
-	-\frac{1}{\mu_0} \bar\epsilon^{ijk} ((\frac{1}{\sqrt{g}})_{,j} g_{kl} B^l + \frac{1}{\sqrt{g}} g_{kl,j} B^l + \frac{1}{\sqrt{g}} g_{kl} {B^l}_{,j}) \\
+	-\bar\epsilon^{ijk} ((\frac{1}{\sqrt{g}})_{,j} g_{kl} H^l + \frac{1}{\sqrt{g}} g_{kl,j} H^l + \frac{1}{\sqrt{g}} g_{kl} {H^l}_{,j}) \\
 	\bar\epsilon^{ijk} ((\frac{1}{\sqrt{g}})_{,j} g_{kl} E^l + \frac{1}{\sqrt{g}} g_{kl,j} E^l + \frac{1}{\sqrt{g}} g_{kl} {E^l}_{,j})
 }\right]$<br>
 $= \left[\matrix{ 
-	-\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} ( -\frac{1}{\sqrt{g}} (\sqrt{g})_{,j} B_k + g_{kl,j} B^l + g_{kl} {B^l}_{,j}) \\
+	-\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} ( -\frac{1}{\sqrt{g}} (\sqrt{g})_{,j} H_k + g_{kl,j} H^l + g_{kl} {H^l}_{,j}) \\
 	\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} ( -\frac{1}{\sqrt{g}} (\sqrt{g})_{,j} E_k + g_{kl,j} E^l + g_{kl} {E^l}_{,j})
 }\right]$<br>
 $= \left[\matrix{ 
-	-\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} {B^l}_{,j} \\
+	-\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} {H^l}_{,j} \\
 	\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} {E^l}_{,j}
 }\right] + \left[\matrix{
-	 -\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} (-\frac{1}{\sqrt{g}} (\sqrt{g})_{,j} B_k + g_{kl,j} B^l) \\
+	 -\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} (-\frac{1}{\sqrt{g}} (\sqrt{g})_{,j} H_k + g_{kl,j} H^l) \\
 	 \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} (-\frac{1}{\sqrt{g}} (\sqrt{g})_{,j} E_k + g_{kl,j} E^l) 
 }\right]$<br>
 <br>
 flux covariant derivative:<br>
 ${F^{Ij}}_{;j} = \left[\matrix{ 
-	\frac{1}{\mu_0} \bar\epsilon^{ijk} \frac{1}{\sqrt{g}} g_{kl} {B^l}_{;j} \\
+	\bar\epsilon^{ijk} \frac{1}{\sqrt{g}} g_{kl} {H^l}_{;j} \\
 	-\bar\epsilon^{ijk} \frac{1}{\sqrt{g}} g_{kl} {E^l}_{;j}	
 }\right]$<br>
 $= \left[\matrix{ 
-	\frac{1}{\mu_0} \bar\epsilon^{ijk} \frac{1}{\sqrt{g}} g_{kl} ({B^l}_{,j} + {\Gamma^l}_{mj} B^m) \\
+	\bar\epsilon^{ijk} \frac{1}{\sqrt{g}} g_{kl} ({H^l}_{,j} + {\Gamma^l}_{mj} H^m) \\
 	-\bar\epsilon^{ijk} \frac{1}{\sqrt{g}} g_{kl} ({E^l}_{,j}	+ {\Gamma^l}_{mj} E^m)
 }\right]$<br>
 $= \left[\matrix{ 
-	\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} {B^l}_{,j} \\
+	\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} {H^l}_{,j} \\
 	-\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} {E^l}_{,j}
 }\right] + \left[\matrix{
-	-\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} \Gamma_{jkl} B^l \\
+	-\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} \Gamma_{jkl} H^l \\
 	\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} \Gamma_{jkl} E^l
 }\right]$<br>
 <br>
@@ -210,31 +230,31 @@ Add and subtract the flux weighted by the volume gradient and the metric partial
 This is what the code in my curvilinear solver does by default.  But maybe this should be enabled on a per-equation-system basis.  It seems to be unnecessary for the Maxwell equations.<br>
 <br>
 ${F^{Ij}}_{;j} = \left[\matrix{ 
-	\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} {B^l}_{,j} \\
+	\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} {H^l}_{,j} \\
 	-\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} {E^l}_{,j}
 }\right]
 
  + \left[\matrix{
-	 -\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} (-\frac{1}{\sqrt{g}} (\sqrt{g})_{,j} B_k + g_{kl,j} B^l) \\
+	 -\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} (-\frac{1}{\sqrt{g}} (\sqrt{g})_{,j} H_k + g_{kl,j} H^l) \\
 	 \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} (-\frac{1}{\sqrt{g}} (\sqrt{g})_{,j} E_k + g_{kl,j} E^l) 
 }\right]
 
 - \left[\matrix{
-	 -\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} (-\frac{1}{\sqrt{g}} (\sqrt{g})_{,j} B_k + g_{kl,j} B^l) \\
+	 -\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} (-\frac{1}{\sqrt{g}} (\sqrt{g})_{,j} H_k + g_{kl,j} H^l) \\
 	 \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} (-\frac{1}{\sqrt{g}} (\sqrt{g})_{,j} E_k + g_{kl,j} E^l) 
 }\right]
 + \frac{\sqrt{g}_{,j}}{\sqrt{g}} \left[\matrix{
-	-\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} B^l \\
+	-\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} H^l \\
 	\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} E^l
 }\right]
 
 - \frac{\sqrt{g}_{,j}}{\sqrt{g}} \left[\matrix{
-	-\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} B^l \\
+	-\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} H^l \\
 	\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} E^l
 }\right]
 
 + \left[\matrix{
-	-\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} \Gamma_{jkl} B^l \\
+	-\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} \Gamma_{jkl} H^l \\
 	\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} \Gamma_{jkl} E^l
 }\right]$<br>
 
@@ -243,17 +263,17 @@ $ = \frac{\sqrt{g}}{\sqrt{g}} {F^{Ij}}_{,j}
 + \frac{\sqrt{g}_{,j}}{\sqrt{g}} F^{Ij}
 
 + \left[\matrix{
-	-\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} \Gamma_{jkl} B^l \\
+	-\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} \Gamma_{jkl} H^l \\
 	\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} \Gamma_{jkl} E^l
 }\right]
 
 - \left[\matrix{
-	 -\frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} (-{\Gamma^m}_{jm} B_k + (\Gamma_{klj} + \Gamma_{lkj}) B^l) \\
+	 -\frac{1}{\sqrt{g}} \bar\epsilon^{ijk} (-{\Gamma^m}_{jm} H_k + (\Gamma_{klj} + \Gamma_{lkj}) H^l) \\
 	 \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} (-{\Gamma^m}_{jm} E_k + (\Gamma_{klj} + \Gamma_{lkj}) E^l) 
 }\right]
 
 - \left[\matrix{
-	-{\Gamma^m}_{jm} \frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} B^l \\
+	-{\Gamma^m}_{jm} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} H^l \\
 	{\Gamma^m}_{jm} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} g_{kl} E^l
 }\right]
 $<br>
@@ -261,7 +281,7 @@ $<br>
 $ = \frac{1}{\sqrt{g}} \left( \sqrt{g} F^{Ij} \right)_{,j} 
 
 + \left[\matrix{
-	-2 \frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} \Gamma_{jkl} B^l \\
+	-2 \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} \Gamma_{jkl} H^l \\
 	2 \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} \Gamma_{jkl} E^l
 }\right]
 $<br>
@@ -270,16 +290,16 @@ $<br>
 <h3>hyperbolic conservation law system using vectors:</h3>
 ${U^i}_{,t} + {F^{ij}}_{;j} = S^i$<br>
 ${U^i}_{,t} + \frac{1}{\sqrt{g}} \left( \sqrt{g} F^{ij} \right)_{,j} = S^i + \left[\matrix{
-	2 \frac{1}{\mu_0} \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} \Gamma_{jkl} B^l \\
+	2 \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} \Gamma_{jkl} H^l \\
 	-2 \frac{1}{\sqrt{g}} \bar\epsilon^{ijk} \Gamma_{jkl} E^l
 }\right]$<br>
 <br>
 
 <h3>curvilinear coordinates using one-forms:</h3>
 $\left[\matrix{ 
-	\epsilon_0 E_i \\ B_i 
+	D_i \\ B_i 
 }\right] + \left[\matrix{ 
-	-\frac{1}{\mu_0} {\epsilon_i}^{jk} B_k \\
+	-{\epsilon_i}^{jk} H_k \\
 	{\epsilon_i}^{jk} E_k
 }\right]_{;j} = \left[\matrix{
 	-j_i \\
@@ -291,9 +311,9 @@ Raise all indexes of the Levi-Civita tensor.  Replace it with the associated Lev
 <br>
 
 $\left[\matrix{ 
-	\epsilon_0 E_i \\ B_i 
+	D_i \\ B_i 
 }\right] + \left[\matrix{ 
-	-\frac{1}{\mu_0} \frac{1}{\sqrt{g}} g_{il} \bar\epsilon^{ljk} B_k \\
+	-\frac{1}{\sqrt{g}} g_{il} \bar\epsilon^{ljk} H_k \\
 	\frac{1}{\sqrt{g}} g_{il} \bar\epsilon^{ljk} E_k
 }\right]_{;j} = \left[\matrix{
 	-j_i \\
@@ -305,12 +325,12 @@ Factor out metric terms since their covariant derivative value is zero.<br>
 <br>
 
 $\left[\matrix{ 
-	\epsilon_0 E_i \\ B_i 
+	D_i \\ B_i 
 }\right] + \frac{1}{\sqrt{g}} \left[\matrix{
 	g_{il} & 0 \\
 	0 & g_{il}
 }\right] \left[\matrix{ 
-	-\frac{1}{\mu_0} \bar\epsilon^{ljk} B_k \\
+	-\bar\epsilon^{ljk} H_k \\
 	\bar\epsilon^{ljk} E_k
 }\right]_{;j} = \left[\matrix{
 	-j_i \\
@@ -322,12 +342,12 @@ Apply covariant derivative.  Replace one-forms with partial derivatives and conn
 <br>
 
 $\left[\matrix{ 
-	\epsilon_0 E_i \\ B_i 
+	D_i \\ B_i 
 }\right] + \frac{1}{\sqrt{g}} \left[\matrix{
 	g_{il} & 0 \\
 	0 & g_{il}
 }\right] \left[\matrix{ 
-	-\frac{1}{\mu_0} \bar\epsilon^{ljk} (B_{k,j} - {\Gamma^m}_{kj} B_m) \\
+	-\bar\epsilon^{ljk} (H_{k,j} - {\Gamma^m}_{kj} H_m) \\
 	\bar\epsilon^{ljk} (E_{k,j} - {\Gamma^m}_{kj} E_m)
 }\right] = \left[\matrix{
 	-j_i \\
@@ -340,7 +360,7 @@ Factor out the remaining partial derivative terms.<br>
 <br>
 
 $\left[\matrix{ 
-	\epsilon_0 E_i \\ B_i 
+	D_i \\ B_i 
 }\right] + \frac{1}{\sqrt{g}} \left[\matrix{
 	g_{il} & 0 \\
 	0 & g_{il}
@@ -348,10 +368,10 @@ $\left[\matrix{
 
 \underbrace{
 \left[\matrix{ 
-	0 & -\frac{1}{\mu_0} \bar\epsilon^{ljk} \\
-	\frac{1}{\epsilon_0} \bar\epsilon^{ljk} & 0 
+	0 & -\frac{1}{\mu} \bar\epsilon^{ljk} \\
+	\frac{1}{\epsilon} \bar\epsilon^{ljk} & 0 
 }\right] \left[\matrix{
-	\epsilon_0 E_k \\
+	D_k \\
 	B_k
 }\right]_{,j} 
 }{} = \left[\matrix{
@@ -361,6 +381,77 @@ $\left[\matrix{
 <br>
 
 Now the underbraced terms have an eigen-decomposition.  We can compute the flux using this, and transform it afterwards using the metric.<br>
+<br>
+
+<h3>with GLM variables</h3>
+
+removing divergence as a PDE:<br>
+$D_{i,t} = -D_{i,i} = -\phi_{,i}$ for $\phi_{,t} = -E_{i,i}$<br>
+$B_{i,t} = -B_{i,i} = -\psi_{,i}$ for $\psi_{,t} = -B_{i,i}$<br>
+<br>
+
+combined with the original system:<br>
+(from <a href="http://www.ammar-hakim.org/maxwell-eigensystem.html">http://www.ammar-hakim.org/maxwell-eigensystem.html</a>)<br>
+$B_{i,t} + {\epsilon_i}^{jk} E_{k,j} + \chi_\psi \psi_{,i} = 0$<br>
+$\mu \epsilon E_{i,t} - {\epsilon_i}^{jk} B_{k,j} + \chi_\phi \phi_{,i} = -\mu j_i$<br>
+$\frac{1}{\chi_\phi} \phi_{,t} + E_{i,i} = \frac{1}{\epsilon} \rho_{charge}$<br>
+$\frac{\epsilon\mu}{\chi_\psi} \psi_{,t} + B_{i,i} = 0$<br>
+<br>
+
+rewritten in terms of $E \rightarrow D = \epsilon E$<br>
+$\mu D_{i,t} - {\epsilon_i}^{jk} B_{k,j} + \chi_\phi \phi_{,i} = -\mu j_i$<br>
+$B_{i,t} + \epsilon^{-1} {\epsilon_i}^{jk} D_{k,j} + \chi_\psi \psi_{,i} = 0$<br>
+$\frac{1}{\chi_\phi} \phi_{,t} + \epsilon^{-1} D_{i,i} = \frac{1}{\epsilon} \rho_{charge}$<br>
+$\frac{\epsilon\mu}{\chi_\psi} \psi_{,t} + B_{i,i} = 0$<br>
+<br>
+
+$D_{i,t} - \mu^{-1} {\epsilon_i}^{jk} B_{k,j} + \mu^{-1} \chi_\phi \phi_{,i} = -j_i$<br>
+$B_{i,t} + \epsilon^{-1} {\epsilon_i}^{jk} D_{k,j} + \chi_\psi \psi_{,i} = 0$<br>
+$\phi_{,t} + \chi_\phi \epsilon^{-1} D_{i,i} = \chi_\phi \frac{1}{\epsilon} \rho_{charge}$<br>
+$\psi_{,t} + \frac{\chi_\psi}{\epsilon\mu} B_{i,i} = 0$<br>
+<br>
+
+change of variables $\phi \rightarrow \phi' = \mu \phi$<br>
+$D_{i,t} - \mu^{-1} {\epsilon_i}^{jk} B_{k,j} + \mu^{-1} \chi_\phi \mu \phi_{,i} = -j_i$<br>
+$B_{i,t} + \epsilon^{-1} {\epsilon_i}^{jk} D_{k,j} + \chi_\psi \psi_{,i} = 0$<br>
+$\mu \phi_{,t} + \chi_\phi \epsilon^{-1} D_{i,i} = \chi_\phi \frac{1}{\epsilon} \rho_{charge}$<br>
+$\psi_{,t} + \frac{\chi_\psi}{\epsilon\mu} B_{i,i} = 0$<br>
+<br>
+
+simplify...<br>
+$D_{i,t} - \mu^{-1} {\epsilon_i}^{jk} B_{k,j} + \chi_\phi \phi_{,i} = -j_i$<br>
+$B_{i,t} + \epsilon^{-1} {\epsilon_i}^{jk} D_{k,j} + \chi_\psi \psi_{,i} = 0$<br>
+$\phi_{,t} + (v_p)^2 \chi_\phi D_{i,i} = (v_p)^2 \chi_\phi \rho_{charge}$<br>
+$\psi_{,t} + (v_p)^2 \chi_\psi B_{i,i} = 0$<br>
+<br>
+
+...for $v_p^2 = \frac{1}{\epsilon \mu}$<br>
+$\chi \rightarrow \chi' = \chi (v_p)^{-2}$:<br>
+$D_{i,t} + (v_p)^{-2} \chi_\phi \phi_{,i} - \mu^{-1} {\epsilon_i}^{jk} B_{k,j} = -j_i$<br>
+$B_{i,t} + (v_p)^{-2} \chi_\psi \psi_{,i} + \epsilon^{-1} {\epsilon_i}^{jk} D_{k,j} = 0$<br>
+$\phi_{,t} + \chi_\phi D_{i,i} = \chi_\phi \rho_{charge}$<br>
+$\psi_{,t} + \chi_\psi B_{i,i} = 0$<br>
+<br>
+
+alternatively, $\phi \rightarrow \phi' = \phi (v_p)^2$, $\psi \rightarrow \psi' = \psi (v_p)^2$:<br>
+Notice that this assumes $\epsilon, \mu$ are constant, otherwise I would have to pick out their derivatives (as I am doing with the curvilinear coordinate system).<br>
+$D_{i,t} - \mu^{-1} {\epsilon_i}^{jk} B_{k,j} + (v_p)^2 \chi_\phi \phi_{,i} = -j_i$<br>
+$B_{i,t} + \epsilon^{-1} {\epsilon_i}^{jk} D_{k,j} + (v_p)^2 \chi_\psi \psi_{,i} = 0$<br>
+$(v_p)^2 \phi_{,t} + (v_p)^2 \chi_\phi D_{i,i} = (v_p)^2 \chi_\phi \rho_{charge}$<br>
+$(v_p)^2 \psi_{,t} + (v_p)^2 \chi_\psi B_{i,i} = 0$<br>
+<br>
+
+simplify...<br>
+$D_{i,t} - \mu^{-1} {\epsilon_i}^{jk} B_{k,j} + (v_p)^2 \chi_\phi \phi_{,i} = -j_i$<br>
+$B_{i,t} + \epsilon^{-1} {\epsilon_i}^{jk} D_{k,j} + (v_p)^2 \chi_\psi \psi_{,i} = 0$<br>
+$\phi_{,t} + \chi_\phi D_{i,i} = \chi_\phi \rho_{charge}$<br>
+$\psi_{,t} + \chi_\psi B_{i,i} = 0$<br>
+<br>
+
+conserved quantities:<br>
+$U^I = \left[\matrix{ 
+	D^i \\ B^i \\ \phi \\ \psi
+}\right]$<br>
 <br>
 
 	</body>
