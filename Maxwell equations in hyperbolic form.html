@@ -392,13 +392,14 @@ $B_{i,t} = -B_{i,i} = -\psi_{,i}$ for $\psi_{,t} = -B_{i,i}$<br>
 
 combined with the original system:<br>
 (from <a href="http://www.ammar-hakim.org/maxwell-eigensystem.html">http://www.ammar-hakim.org/maxwell-eigensystem.html</a>)<br>
+Notice that I assume $\epsilon, \mu$ are constant, otherwise I would have to pick out their derivatives (as I am doing with the curvilinear coordinate system).<br>
 $B_{i,t} + {\epsilon_i}^{jk} E_{k,j} + \chi_\psi \psi_{,i} = 0$<br>
 $\mu \epsilon E_{i,t} - {\epsilon_i}^{jk} B_{k,j} + \chi_\phi \phi_{,i} = -\mu j_i$<br>
 $\frac{1}{\chi_\phi} \phi_{,t} + E_{i,i} = \epsilon^{-1} \rho_{charge}$<br>
 $\epsilon \mu \frac{1}{\chi_\psi} \psi_{,t} + B_{i,i} = 0$<br>
 <br>
 
-rewritten in terms of $E \rightarrow D = \epsilon E$<br>
+Rewritten in terms of $E \rightarrow D = \epsilon E$<br>
 $\mu D_{i,t} - {\epsilon_i}^{jk} B_{k,j} + \chi_\phi \phi_{,i} = -\mu j_i$<br>
 $B_{i,t} + \epsilon^{-1} {\epsilon_i}^{jk} D_{k,j} + \chi_\psi \psi_{,i} = 0$<br>
 $\frac{1}{\chi_\phi} \phi_{,t} + \epsilon^{-1} D_{i,i} = \epsilon^{-1} \rho_{charge}$<br>
@@ -426,30 +427,14 @@ $\phi_{,t} + (v_p)^2 \chi_\phi D_{i,i} = (v_p)^2 \chi_\phi \rho_{charge}$<br>
 $\psi_{,t} + (v_p)^2 \chi_\psi B_{i,i} = 0$<br>
 <br>
 
-alternatively, $\phi \rightarrow \phi' = \phi (v_p)^2$, $\psi \rightarrow \psi' = \psi (v_p)^2$:<br>
-Notice that this assumes $\epsilon, \mu$ are constant, otherwise I would have to pick out their derivatives (as I am doing with the curvilinear coordinate system).<br>
-$D_{i,t} - \mu^{-1} {\epsilon_i}^{jk} B_{k,j} + (v_p)^2 \chi_\phi \phi_{,i} = -j_i$<br>
-$B_{i,t} + \epsilon^{-1} {\epsilon_i}^{jk} D_{k,j} + (v_p)^2 \chi_\psi \psi_{,i} = 0$<br>
-$(v_p)^2 \phi_{,t} + (v_p)^2 \chi_\phi D_{i,i} = (v_p)^2 \chi_\phi \rho_{charge}$<br>
-$(v_p)^2 \psi_{,t} + (v_p)^2 \chi_\psi B_{i,i} = 0$<br>
-<br>
-
-simplify...<br>
-$D_{i,t} - \mu^{-1} {\epsilon_i}^{jk} B_{k,j} + (v_p)^2 \chi_\phi \phi_{,i} = -j_i$<br>
-$B_{i,t} + \epsilon^{-1} {\epsilon_i}^{jk} D_{k,j} + (v_p)^2 \chi_\psi \psi_{,i} = 0$<br>
-$\phi_{,t} + \chi_\phi D_{i,i} = \chi_\phi \rho_{charge}$<br>
-$\psi_{,t} + \chi_\psi B_{i,i} = 0$<br>
-<br>
-
-$\phi \rightarrow \phi' = \frac{1}{v_p} \phi$, $\psi \rightarrow \psi' = \frac{1}{v_p} \psi$, $\chi \rightarrow \chi' = \frac{1}{v_p} \chi$<br>
+scale $\phi \rightarrow \phi' = v_p \phi, \psi \rightarrow \psi' = v_p \psi$, $\chi \rightarrow \chi' = \frac{1}{v_p} \chi$<br>
 $D_{i,t} - \mu^{-1} {\epsilon_i}^{jk} B_{k,j} + \chi_\phi \phi_{,i} = -j_i$<br>
 $B_{i,t} + \epsilon^{-1} {\epsilon_i}^{jk} D_{k,j} + \chi_\psi \psi_{,i} = 0$<br>
-$\frac{1}{v_p} \phi_{,t} + \frac{1}{v_p} \chi_\phi D_{i,i} = \frac{1}{v_p} \chi_\phi \rho_{charge}$<br>
-$\frac{1}{v_p} \psi_{,t} + \frac{1}{v_p} \chi_\psi B_{i,i} = 0$<br>
+$v_p \phi_{,t} + v_p \chi_\phi D_{i,i} = v_p \chi_\phi \rho_{charge}$<br>
+$v_p \psi_{,t} + v_p \chi_\psi B_{i,i} = 0$<br>
 <br>
 
-simplify...<br>
-$\phi \rightarrow \phi' = \frac{1}{v_p} \phi$, $\psi \rightarrow \psi' = \frac{1}{v_p} \psi$, $\chi \rightarrow \chi' = \frac{1}{v_p} \chi$<br>
+Scale line #3 and line #4 by $(v_p)^{-1}$<br>
 $D_{i,t} - \mu^{-1} {\epsilon_i}^{jk} B_{k,j} + \chi_\phi \phi_{,i} = -j_i$<br>
 $B_{i,t} + \epsilon^{-1} {\epsilon_i}^{jk} D_{k,j} + \chi_\psi \psi_{,i} = 0$<br>
 $\phi_{,t} + \chi_\phi D_{i,i} = \chi_\phi \rho_{charge}$<br>
