@@ -273,9 +273,7 @@ $g_{ab} = \left[\matrix{
 	-\frac{4}{c} A_y & 0 & 1 + \frac{2}{c^2} \Phi^g & 0 \\
 	-\frac{4}{c} A_z & 0 & 0 & 1 + \frac{2}{c^2} \Phi^g 
 }\right]$<br>
-(TODO, shouldn't the whole metric be negative'd from the $+---$ signature metric?  If so, should I negative $\Phi^g$ and $A^g$, or should I just take note here that there are negative the values that their negative-signature counterparts would be?)<br>
-
-...and this looks surprisingly similar to a combination of the metric representing the Newtonian limit of relativity ($g_{ab} = \eta_{ab} + 2 \delta_{ab} \Phi$),<br>
+This looks surprisingly similar to a combination of the metric representing the Newtonian limit of relativity ($g_{ab} = \eta_{ab} + 2 \delta_{ab} \Phi$),<br>
 as well as the metric (similar to Kaluza-Klein) whose geodesic looks similar to the Lorentz force ($g_{ab} = \eta_{ab} + 2 \delta_{t(a} A_{b)})$<br>
 Coincidentally those are the forces which we are recreating using this model.<br>
 <br>
@@ -379,8 +377,57 @@ I guess we are technically just approximating it to be incredibly low.<br>
 
 <hr>
 
+What's the connection coefficients, and therefore the gravity, that this would subject something to...<br>
+$\Gamma_{abc} = \frac{1}{2} (g_{ab,c} + g_{ac,b} - g_{bc,a})$<br>
+$\Gamma_{abc} = \frac{1}{2} (h_{ab,c} + h_{ac,b} - h_{bc,a})$<br>
+${\Gamma^a}_{bc} = \frac{1}{2} ({h^a}_{b,c} + {h^a}_{c,b} - {h_{bc}}^{,a})$<br>
+<br>
 
-now, taking from my "relativistic electromagnetic metric in medium" worksheet...<br>
+${\Gamma^i}_{00} = {h^i}_{0,0} - \frac{1}{2} {h_{00}}^{,i}$<br>
+${\Gamma^i}_{j0} = \frac{1}{2} ({h^i}_{j,0} + {h^i}_{0,j} - {h_{j0}}^{,i})$<br>
+${\Gamma^i}_{jk} = \frac{1}{2} ({h^i}_{j,k} + {h^i}_{k,j} - {h_{jk}}^{,i})$<br>
+<br>
+
+Geodesics:<br>
+$\dot{u}^i = -{\Gamma^i}_{ab} u^a u^b$<br>
+$\dot{u}^i = -{\Gamma^i}_{00} (u^0)^2 - 2 {\Gamma^i}_{0j} u^0 u^j - {\Gamma^i}_{jk} u^j u^k$<br>
+$\dot{u}^i = 
+	- ({h^i}_{0,0} - \frac{1}{2} {h_{00}}^{,i}) (u^0)^2
+	- ({h^i}_{0,j} + {h^i}_{j,0} - {h_{0j}}^{,i}) u^j u^0
+	- \frac{1}{2} ({h^i}_{j,k} + {h^i}_{k,j} - {h_{jk}}^{,i}) u^j u^k$<br>
+...using $(u^i)^2 \approx 0$, $u^0 \approx 1$, lower using $\eta_{ab}$<br>
+$\dot{u}^i = 
+	- h_{i0,0} + \frac{1}{2} h_{00,i}
+	+ (-h_{i0,j} - h_{ij,0} + h_{0j,i}) u^j$<br>
+(here I'm using the negative of the metric in 'gravitomagetics' worksheet, since we're using a negative signature, and I think it worked out to be that way too... but feel free to double check)<br>
+$\dot{u}^i = 
+	4 \frac{1}{c} (A^g)_{i,0} 
+	+ \frac{1}{c^2} (\Phi^g)_{,i}
+	+ (
+		4 \frac{1}{c} (A^g)_{i,j} 
+		- 2 \frac{1}{c^2} \delta_{ij} (\Phi^g)_{,0} 
+		- 4 \frac{1}{c} (A^g)_{j,i}
+	) u^j
+$<br>
+
+...$(\Phi^g)_{,0} \approx 0$...<br>
+$c \dot{u}^i = 
+	5 (A^g)_{i,0} 
+	+ (E^g)_{i} 
+	+ 4 \epsilon^{ijk} u^j (B^g)_k
+$<br>
+$\dot{v}^i = 
+	5 (A^g)_{i,0} 
+	+ (E^g)_{i} 
+	+ 4 \epsilon^{ijk} u^j (B^g)_k
+$<br>
+...let $(A^g)_{i,0} \approx 0$...<br>
+$\dot{v}^i = (E^g)_{i} + 4 \epsilon^{ijk} u^j (B^g)_k$<br>
+<br>
+
+<hr>
+
+Now, taking from my "relativistic electromagnetic metric in medium" worksheet...<br>
 from the section "special relativity electromagnetic stress-energy in medium":<br>
 TODO redo these calculations with $g_{ab} = \eta_{ab} + h_{ab}$... starting with $F_{ab} = 2 A_{[b,a]}$ ?<br>
 <br>
@@ -448,17 +495,17 @@ $h = c^2 + e_{int} + \frac{P}{\rho}$<br>
 $[h] = \frac{m^2}{s^2}$<br>
 <br>
 
-$T_{tt} = \rho h (u_t)^2 = \rho h \gamma^2$<br>
-$[T_{tt}] = [\rho h \gamma^2] = [\rho h] = \frac{kg}{m s^2}$<br>
+$T_{00} = \rho h (u_0)^2 = \rho h \gamma^2$<br>
+$[T_{00}] = [\rho h \gamma^2] = [\rho h] = \frac{kg}{m s^2}$<br>
 <br>
 
-$T_{ti} = \rho h u_t u_i = \rho h \gamma^2 \frac{v_i}{c}$<br>
-$[T_{ti}] = \frac{kg}{m s^2}$<br>
+$T_{0i} = \rho h u_0 u_i = \rho h \gamma^2 \frac{v_i}{c}$<br>
+$[T_{0i}] = \frac{kg}{m s^2}$<br>
 <br>
 
 so $u_i = \frac{v_i}{c}$<br>
 $[u_a] = 1$<br>
-$[\gamma = u_t] = 1$<br>
+$[\gamma = u_0] = 1$<br>
 $[v_i] = \frac{m}{s}$<br>
 <br>
 
@@ -467,7 +514,7 @@ $T_{ab} = c^2 \rho_m u_a u_b + P (g_{ab} + u_a u_b) $<br>
 $T_{ab} = (c^2 \rho_m + P) u_a u_b + P g_{ab}$<br>
 (here's another sign error difference between the original paper and MTW ... <br>
 MTW uses $u^a = (1,0,0,0), u_a = (-1,0,0,0)$ .. using eqns 5.37 of MTW)<br>
-Low-velocity approximation: $u_0 \approx 1, u_i \approx \frac{v_i}{c}$<br>
+Low-velocity approximation: $u_0 \approx -1, u_i \approx \frac{v_i}{c}$<br>
 $T_{00} = (c^2 \rho_m + P) (u_0)^2 + P g_{00} \approx c^2 \rho_m$<br>
 $T_{0i} = (c^2 \rho_m + P) u_0 u_i \approx -c \rho_m v_i$<br>
 $T_{ij} = c^2 \rho_m u_i u_j + P g_{ij} \approx \rho_m v_i v_j + \delta_{ij} P$<br>
@@ -482,54 +529,16 @@ $T_{ab} = \left[\matrix{
 What is a typical pseudocartesian Schwarzschild metric magnitude at the Earth's surface?<br>
 $r = 6.37101 \cdot 10^6 m$<br>  
 $R = 2 M = 2 \cdot 5.9736 \cdot 10^{24} kg = 2 \cdot 5.9736 \cdot 10^{24} \cdot 6.6738480 \cdot 10^{11} / (299792458)^2 m$<br>
-$h_{tt} = R / r \approx 1.39249214029442194833792592812598057361306 \cdot 10^{-9}$<br>
-$h_{rr} = 1 / (1 / h_{tt} - 1) \approx 1.39249214223345634727834006089119966986800 \cdot 10^{-9} \approx h_{tt}$<br>
+$h_{00} = R / r \approx 1.39249214029442194833792592812598057361306 \cdot 10^{-9}$<br>
+$h_{rr} = 1 / (1 / h_{00} - 1) \approx 1.39249214223345634727834006089119966986800 \cdot 10^{-9} \approx h_{00}$<br>
 <hr>
 
 Now comparing the ratios between matter and charge...<br>
 
-In fact, the Maxwell charge is the electric charge, however the Einstein charge is the $T_{tt}$ term, which is both the matter and the electromagnetic energy.<br>
-Same deal with $T_{ti} = $ fluid momentum plus Poynting vector, versus $A_i = $ the vector potential of the magnetic field.<br>
+In fact, the Maxwell charge is the electric charge, however the Einstein charge is the $T_{00}$ term, which is both the matter and the electromagnetic energy.<br>
+Same deal with $T_{0i} = $ fluid momentum plus Poynting vector, versus $A_i = $ the vector potential of the magnetic field.<br>
 So I suspect that $E$ vs $E_g$ may not always line up with one another...<br>
 
-
-<hr>
-
-What's the connection coefficients, and therefore the gravity, that this would subject something to...<br>
-$\Gamma_{abc} = \frac{1}{2} (g_{ab,c} + g_{ac,b} - g_{bc,a})$<br>
-$\Gamma_{abc} = \frac{1}{2} (h_{ab,c} + h_{ac,b} - h_{bc,a})$<br>
-${\Gamma^a}_{bc} = \frac{1}{2} ({h^a}_{b,c} + {h^a}_{c,b} - {h_{bc}}^{,a})$<br>
-<br>
-
-Geodesics:<br>
-$\dot{u}^i = -{\Gamma^i}_{ab} u^a u^b$<br>
-$\dot{u}^i = -{\Gamma^i}_{tt} u^t u^t - 2 {\Gamma^i}_{tj} u^t u^j - {\Gamma^i}_{jk} u^j u^k$<br>
-$\dot{u}^i = -{\Gamma^i}_{tt} (u^t)^2 - 2 {\Gamma^i}_{tj} u^t u^j - {\Gamma^i}_{jk} u^j u^k$<br>
-$\dot{u}^i = 
-	- ({h^i}_{t,t} - \frac{1}{2} {h_{tt}}^{,i}) (u^t)^2
-	- ({h^i}_{t,j} + {h^i}_{j,t} - {h_{tj}}^{,i}) u^j u^t
-	- \frac{1}{2} ({h^i}_{j,k} + {h^i}_{k,j} - {h_{jk}}^{,i}) u^j u^k$<br>
-
-(here I'm using the negative of the metric in 'gravitomagetics' worksheet, since we're using a negative signature, and I think it worked out to be that way too... but feel free to double check)<br>
-$\dot{u}^i = \frac{1}{c^2} (
-	+ (-4 c {(A^g)^i}_{,t} - (\Phi^g)^{,i}) (u^t)^2
-	+ (-4 c {(A^g)^i}_{,j} + 2 \delta^i_j \Phi^g_{,t} + 4 c {(A^g)_j}^{,i}) u^j u^t
-	+ (\delta^i_j \Phi^g_{,k} + \delta^i_k \Phi^g_{,j} - \delta_{jk} (\Phi^g)^{,i}) u^j u^k
-) $<br>
-
-$\dot{u}^i = \frac{1}{c^2} (
-	- 4 c {(A^g)^i}_{,t} (u^t)^2 
-	- (\Phi^g)^{,i} (u^t)^2
-	- 4 c {(A^g)^i}_{,j} u^j u^t 
-	+ 2 \Phi^g_{,t} u^i u^t 
-	+ 4 c {(A^g)_j}^{,i} u^j u^t
-	+ 2 \Phi^g_{,j} u^j u^i - (\Phi^g)^{,i} u^j u_j
-) $<br>
-
-...<br>
-somehow this should become (according to Wikipedia)...<br>
-$\dot{u}^i = \rho_m ( (E^g)^i + 4 \epsilon^{ijk} v_i (B^g)_k)$<br>
-<br>
 
 <hr>
 
@@ -571,17 +580,17 @@ $( E_{total,elec} )_{,t}
 <br>
 
 GLM Maxwell equations:<br>
-${D^j}_{,t} - \mu^{-1} \nabla_k \epsilon^{jkl} B^l + \hat{c}^2 \xi \phi_{,j} = -\epsilon ( \hat{\lambda}_d^2 \hat{l}_r )^{-1} (r_{ion} \rho_{ion} v_{ion}^j + r_{elec} \rho_{elec} v_{elec}^j)$<br>
+${D^j}_{,t} - \mu^{-1} \nabla_k \epsilon^{jkl} B^l + \xi \phi_{,j} = -\epsilon ( \hat{\lambda}_d^2 \hat{l}_r )^{-1} (r_{ion} \rho_{ion} v_{ion}^j + r_{elec} \rho_{elec} v_{elec}^j)$<br>
 ${B^j}_{,t} + \epsilon^{-1} \nabla_k \epsilon^{jkl} D^l + \kappa \psi_{,j} = 0$<br>
 $\phi_{,t} + \xi \nabla_j D^j = \epsilon \xi (\hat{\lambda}_d \hat{l}_r)^{-1} (r_{ion} \rho_{ion} + r_{elec} \rho_{elec})$<br>
-$\psi_{,t} + \kappa \hat{c}^2 \nabla_j B^j = 0$<br>
+$\psi_{,t} + \kappa \nabla_j B^j = 0$<br>
 <br>
 
 gravitomagnetic equations:<br>
-${(D^g)^j}_{,t} - (\mu_g)^{-1} \nabla_k \epsilon^{jkl} (B^g)^l + \xi \hat{c}^2 (\phi^g)_{,j} = -\frac{1}{\hat{c}} T_{0i}$<br>
+${(D^g)^j}_{,t} - (\mu_g)^{-1} \nabla_k \epsilon^{jkl} (B^g)^l + \xi (\phi^g)_{,j} = -\frac{1}{\hat{c}} T_{0i}$<br>
 ${(B^g)^j}_{,t} + (\epsilon_g)^{-1} \nabla_k \epsilon^{jkl} (D^g)^l + \kappa \psi_{,j} = 0$<br>
 $(\phi^g)_{,t} + \xi \nabla_j (D^g)^j = \epsilon_g \xi \frac{1}{\hat{c}} T_{00}$<br>
-$(\psi^g)_{,t} + \kappa \hat{c}^2 \nabla_j (B^g)^j = 0$<br>
+$(\psi^g)_{,t} + \kappa \nabla_j (B^g)^j = 0$<br>
 <br>
 
 (for $\alpha = \{ ion, elec\}$)<br>
