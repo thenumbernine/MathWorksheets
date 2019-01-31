@@ -63,6 +63,7 @@ $h = \epsilon_R + p / \rho = c^2 + \epsilon + p / \rho$<br>
 Note that this source says the speed of sound $c_s = \frac{\partial p}{\partial e_R}$ while my SRHD sources say $c_s = \frac{\partial p}{\partial e}$<br>
 rest-mass internal specific enthalpy:<br>
 $h = 1 + \epsilon + p / \rho$<br>
+$h = 1 + \gamma \epsilon$<br>
 <br>
 
 <b>stress-energy tensor</b><br>
@@ -91,6 +92,13 @@ Let $v^i$ be our spatial velocity, related to $u^i$ by $v^i = \frac{u^i}{\alpha 
 Let $W = \alpha u^t = 1/\sqrt{1 - v^i v^j \gamma_{ij}}$<br>
 <br>
 
+For SRHD:<br>
+$W = 1 / \sqrt{1 - v^2}$<br>
+$W^2 = 1 / (1 - v^2)$<br>
+$1 / W^2 = 1 - v^2$<br>
+$v^2 = 1 - 1 / W^2$<br>
+<br>
+
 <b>primitive variables</b><br>
 $W_I = \downarrow I \left[\matrix{\rho \\ v_i \\ \epsilon}\right]$ = primitive variables<br>
 <br>
@@ -114,14 +122,14 @@ $P_{,\rho} = (\gamma - 1) \epsilon$<br>
 $h_{,\rho} = P_{,\rho} / \rho - p / \rho^2 = ((\gamma - 1) \rho \epsilon - p) / \rho^2 = 0$<br> 
 $D_{,\rho} = W$<br>
 $S_{i,\rho} = h W^2 v_i$<br>
-$\tau_{,\rho} = h W^2 - P_{,\rho} - D_{,\rho} = h W^2 - (\gamma - 1) \epsilon - W = W (h W - 1) - (\gamma - 1)$<br>
+$\tau_{,\rho} = h W^2 - P_{,\rho} - D_{,\rho} = h W^2 - (\gamma - 1) \epsilon - W = W (h W - 1) - (\gamma - 1) \epsilon$<br>
 <br>
 
 $\partial_{v_k}$:<br>
-$W_{,v_k} = \partial_{v_k} (\sqrt{1-v^2})^{-1} = -\frac{1}{2} (\sqrt{1-v^2})^{-3} \cdot -2 v_k = \frac{v_k}{(\sqrt{1-v^2})^3} = v_k W^3$<br>
-$D_{,v_k} = \rho W_{,v_k} = \rho W^3 v_k = W S_k / h$<br>
-$S_{i,v_k} = \rho h (2 W W_{,v_k} v_i + W^2 \delta_{ik}) = \rho h W^4 (v_i v_k + \delta_{ik})$<br>
-$\tau_{,v_k} = \rho h 2 W W_{,v_k} - D_{,v_k} = 2 \rho h W^4 v_k - \rho W^3 v_k = \rho W^3 v_k (2 h W - 1)$<br>
+$W_{,v_k} = \partial_{v_k} (\sqrt{1-v^2})^{-1} = -\frac{1}{2} (\sqrt{1-v^2})^{-3} \cdot -2 v^k = \frac{v^k}{(\sqrt{1-v^2})^3} = v^k W^3$<br>
+$D_{,v_k} = \rho W_{,v_k} = \rho W^3 v^k = W S^k / h$<br>
+$S_{i,v_k} = \rho h (2 W W_{,v_k} v_i + W^2 \delta_i^k) = \rho h W^2 (2 W^2 v_i v^k + \delta_i^k)$<br>
+$\tau_{,v_k} = \rho h 2 W W_{,v_k} - D_{,v_k} = 2 \rho h W^4 v^k - \rho W^3 v^k = \rho W^3 v^k (2 h W - 1)$<br>
 <br>
 
 $\partial_{,\epsilon}$:<br>
@@ -147,16 +155,370 @@ $\frac{\partial U_I}{\partial W_J} = \downarrow I \overset{ \rightarrow J }{ \le
 	h W^2 v_i &
 	 \rho h W^2 (2 W^2 v_i v_j + \delta_{ij}) &
 	 \gamma \rho W^2 v_i \\
-	W (h W - 1) - (\gamma - 1) &
+	W (h W - 1) - (\gamma - 1) \epsilon &
 	 \rho W^3 v_j (2 h W - 1) &
 	 \rho (\gamma W^2 - (\gamma - 1))
 }\right] }$<br>
 <br>
 
 <b>change in primitive variables wrt conserved variables:</b><br>
+<br>
 
 $\frac{\partial W_J}{\partial U_I} = [\frac{\partial U_I}{\partial W_J}]^{-1}$<br>
 <br>
+
+Inverting with Gauss-Jordan elimination:<br>
+$\left[\begin{matrix}
+	W &
+	 \rho W^3 v_j &
+	 0 & | & 1 & 0 & 0 \\
+	h W^2 v_i &
+	 \rho h W^2 (2 W^2 v_i v_j + \delta_{ij}) &
+	 \gamma \rho W^2 v_i & | & 0 & \delta_{ij} & 0 \\
+	W (h W - 1) - (\gamma - 1) \epsilon &
+	 \rho W^3 v_j (2 h W - 1) &
+	 \rho (\gamma W^2 - (\gamma - 1)) & | & 0 & 0 & 1
+\end{matrix}\right]$<br>
+$A \rightarrow \frac{1}{W} A$<br>
+$B \rightarrow B - h W v_i A$<br>
+$C \rightarrow C - A ( h W - 1 - \frac{1}{W} (\gamma - 1) \epsilon)$<br>
+$\left[\begin{matrix}
+	1 &
+	 \rho W^2 v_j &
+	 0 & 
+	 | & 
+	 \frac{1}{W} & 
+	 0 & 
+	 0 \\
+	0 &
+	 \rho h W^2 (2 W^2 v_i v_j + \delta_{ij}) - \rho h W^4 v_i v_j &
+	 \gamma \rho W^2 v_i & 
+	 | & 
+	 - h W v_i & 
+	 \delta_{ij} 
+	 & 0 \\
+	0 &
+	 \rho W^3 v_j (2 h W - 1) - \rho W^3 v_j ( h W - 1 - \frac{1}{W} (\gamma - 1) \epsilon) &
+	 \rho (\gamma W^2 - (\gamma - 1)) & 
+	 | & 
+	 - ( h W - 1 - \frac{1}{W} (\gamma - 1) \epsilon) & 
+	 0 & 
+	 1
+\end{matrix}\right]$<br>
+$\left[\begin{matrix}
+	1 &
+	 \rho W^2 v_j &
+	 0 & 
+	 | & 
+	 \frac{1}{W} & 
+	 0 & 
+	 0 \\
+	0 &
+	 \rho h W^2 (W^2 v_i v_j + \delta_{ij}) &
+	 \gamma \rho W^2 v_i & 
+	 | & 
+	 - h W v_i & 
+	 \delta_{ij} 
+	 & 0 \\
+	0 &
+	 \rho W^2 v_j (
+	 	 h W^2 
+		+ (\gamma - 1) \epsilon
+	 ) &
+	 \rho (\gamma W^2 - (\gamma - 1)) & 
+	 | & 
+	 - h W + 1 + \frac{1}{W} (\gamma - 1) \epsilon & 
+	 0 & 
+	 1
+\end{matrix}\right]$<br>
+$B \rightarrow \rho (\gamma W^2 - (\gamma - 1)) B - \gamma \rho W^2 v_i C$<br>
+$C \rightarrow (\rho (\gamma W^2 - (\gamma - 1)))^{-1} C$<br>
+$\left[\begin{matrix}
+	1 &
+	 \rho W^2 v_j &
+	 0 & 
+	 | & 
+	 \frac{1}{W} & 
+	 0 & 
+	 0 \\
+	0 &
+	 \rho h W^2 (W^2 v_i v_j + \delta_{ij}) \rho (\gamma W^2 - (\gamma - 1)) 
+		 - \gamma \rho W^2 v_i \rho W^2 v_j (
+			 h W^2 
+			+ (\gamma - 1) \epsilon
+		 ) &
+	 0 & 
+	 | & 
+	 - h W v_i \rho (\gamma W^2 - (\gamma - 1)) 
+	 	- \gamma \rho W^2 v_i (- h W + 1 + \frac{1}{W} (\gamma - 1) \epsilon) & 
+	 \delta_{ij} \rho (\gamma W^2 - (\gamma - 1)) & 
+	 - \gamma \rho W^2 v_i \\
+	0 &
+	 W^2 v_j (
+	 	 h W^2 
+		+ (\gamma - 1) \epsilon
+	 ) / (\gamma W^2 - (\gamma - 1)) &
+	 1 & 
+	 | & 
+	 (- h W (W - 1) + (\gamma - 1) \epsilon)  / (\rho W (\gamma W^2 - (\gamma - 1)))  & 
+	 0 & 
+	 (\rho (\gamma W^2 - (\gamma - 1)))^{-1}
+\end{matrix}\right]$<br>
+Let $\Phi = \gamma W^2 - \gamma + 1$<br>
+$\left[\begin{matrix}
+	1 &
+	 \rho W^2 v_j &
+	 0 & 
+	 | & 
+	 \frac{1}{W} & 
+	 0 & 
+	 0 \\
+	0 &
+		\rho^2 W^2 (
+			W^2 v_i v_j (\gamma - 1) (1 - 2 h)
+			+ h \Phi \delta_{ij}
+		 ) &
+	 0 & 
+	 | & 
+	 -\rho W v_i (\gamma W - \gamma + 1) & 
+	 \delta_{ij} \rho \Phi & 
+	 - \gamma \rho W^2 v_i \\
+	0 &
+	 W^2 v_j (
+	 	 W^2 + (\gamma W^2 + \gamma - 1) \epsilon
+	 ) / \Phi &
+	 1 & 
+	 | & 
+	 ( 
+	 	W (1 - W) h
+		+ (\gamma - 1) \epsilon 
+	 ) / (\rho W \Phi)  & 
+	 0 & 
+	 1 / (\rho \Phi)
+\end{matrix}\right]$<br>
+<br>
+
+Finding the inverse of ${A^i}_j = a \delta^i_j + b v^i v_j$<br>
+Let ${(A^{-1})^i}_j = c \delta^i_j + d v^i v_j$<br>
+${A^i}_k {(A^{-1})^k}_j$<br>
+$= (a \delta^i_k + b v^i v_k) (c \delta^k_j + d v^k v_j)$<br>
+$= a c \delta^i_j + (a d + b c + b d v^k v_k) v^i v_j$<br>
+$= \delta^i_j$
+for<br>
+$a c = 1$, so $c = \frac{1}{a}$<br>
+and<br>
+$a d + b c + b d v^k v_k = 0$<br>
+$d (a + b v^2) + b c = 0$<br>
+$d = -\frac{b}{a (a + b v^2)}$<br>
+so<br>
+${(A^{-1})^i}_j = \frac{1}{a} \delta^i_j - \frac{b}{a (a + b v^2)} v^i v_j$<br>
+$= \frac{1}{a} (\delta^i_j - \frac{b}{a + b v^2} \cdot v^i v_j)$<br>
+$= \frac{1}{a} (\delta^i_j - \frac{1}{\frac{a}{b} + v^2} \cdot v^i v_j)$<br>
+<br>
+
+Let ${\alpha^i}_j = \rho^2 W^2 (h \Phi \delta^i_j + W^2 (\gamma - 1) (1 - 2 h) v^i v_j)$<br>
+Therefore ${(\alpha^{-1})^i}_j = \frac{1}{\rho^2 W^2 h \Phi} \cdot (
+	\delta^i_j - \frac{W^2 (\gamma - 1) (1 - 2 h)}{ h \Phi + W^2 (\gamma - 1) (1 - 2 h) v^2} \cdot v^i v_j
+)$<br>
+$= \frac{1}{\rho^2 W^2 h \Phi} \cdot (
+	\delta^i_j 
+	+ \frac{
+		W^2 (2 h - 1) (\gamma - 1)
+	}{ 
+		W^2 
+		+ \epsilon \gamma (1 - (\gamma - 2) (W^2 - 1))
+	} \cdot v^i v_j
+)$<br>
+<br>
+
+$ {(\alpha^{-1})^i}_j v^j$<br>
+$= \frac{1}{\rho^2 W^2 h \Phi} \cdot (
+	\delta^i_j - \frac{W^2 (\gamma - 1) (1 - 2 h)}{ h \Phi + W^2 (\gamma - 1) (1 - 2 h) v^2} \cdot v^i v_j
+) v^j$<br>
+$= \frac{1}{\rho^2 W^2 h \Phi} \cdot (
+	v^i
+	- \frac{W^2 v^2 (\gamma - 1) (1 - 2 h)}{ h \Phi + W^2 (\gamma - 1) (1 - 2 h) v^2} \cdot v^i
+)$<br>
+$= \frac{1}{\rho^2 W^2 h \Phi} \cdot (
+	v^i
+	- \frac{(W^2 - 1) (\gamma - 1) (1 - 2 h)}{ h \Phi + (1 - 2 h) (\gamma - 1) (W^2 - 1) } \cdot v^i
+)$<br>
+$= \frac{1}{\rho^2 W^2 h \Phi} \cdot \left(
+	1 - \frac{1}{1 + \frac{h \Phi}{(W^2 - 1) (\gamma - 1) (1 - 2 h)}}
+\right) v^i$<br>
+aka...<br>
+$= \frac{1}{\rho^2 W^2 h \Phi} (
+	\frac{
+		h \Phi 
+	}{
+		h \Phi + (1 - 2 h) (\gamma - 1) (W^2 - 1)
+	}
+) v^i$<br>
+$= \frac{1}{
+	(\rho^2 W^2)(h \Phi + (1 - 2 h) (\gamma - 1) (W^2 - 1))
+} \cdot v^i$<br>
+<br>
+
+$ {(\alpha^{-1})^i}_j v_i v^j = \frac{1}{
+	(\rho^2 W^2)(h \Phi + (1 - 2 h) (\gamma - 1) (W^2 - 1))
+} \cdot v^2$<br>
+$= \frac{W^2 - 1}{
+	(\rho^2 W^4)(h \Phi + (1 - 2 h) (\gamma - 1) (W^2 - 1))
+} $<br>
+<br>
+
+$B^i \rightarrow {(\alpha^{-1})^i}_k B^k$<br>
+$\left[\begin{matrix}
+	1 &
+	 \rho W^2 v_j &
+	 0 & 
+	 | & 
+	 \frac{1}{W} & 
+	 0 & 
+	 0 \\
+	
+	0 &
+	\delta^i_j &
+	 0 & 
+	 | & 
+	 -\rho W (\gamma W - \gamma + 1) {(\alpha^{-1})^i}_k v^k & 
+	 \rho \Phi {(\alpha^{-1})^i}_j & 
+	 -\gamma \rho W^2 {(\alpha^{-1})^i}_k v^k \\
+	
+	0 &
+	 W^2 v_j (
+	 	 W^2 + (\gamma W^2 + \gamma - 1) \epsilon
+	 ) / \Phi &
+	 1 & 
+	 | & 
+	 ( 
+	 	W (1 - W) h
+		+ (\gamma - 1) \epsilon 
+	 ) / (\rho W \Phi)  & 
+	 0 & 
+	 1 / (\rho \Phi)
+\end{matrix}\right]$<br>
+$A^j \rightarrow A^j - {B^i}_j \cdot \rho W^2 v_i$<br>
+$C^j \rightarrow C^j - {B^i}_j \cdot W^2 (W^2 + (\gamma W^2 + \gamma - 1) \epsilon) / \Phi \cdot v_i$<br>
+$\left[\begin{matrix}
+	1 &
+	 0 &
+	 0 &
+	 | &
+	 \frac{1}{W} 
+	  + \rho W (\gamma W - \gamma + 1) {(\alpha^{-1})^l}_k v^k \cdot \rho W^2 v_l
+	 &
+	 -\rho \Phi {(\alpha^{-1})^l}_j \cdot \rho W^2 v_l &
+	 \gamma \rho W^2 {(\alpha^{-1})^l}_k v^k \cdot \rho W^2 v_l \\
+	
+	0 &
+	 \delta^i_j &
+	 0 &
+	 | &
+	 -\rho W (\gamma W - \gamma + 1) {(\alpha^{-1})^i}_k v^k &
+	 \rho \Phi {(\alpha^{-1})^i}_j &
+	 -\gamma \rho W^2 {(\alpha^{-1})^i}_k v^k \\
+	
+	0 &
+	 0 &
+	 1 &
+	 | &
+	 ( 
+	 	W (1 - W) h
+		+ (\gamma - 1) \epsilon
+	 ) / (\rho W \Phi) 
+	 + \rho W (\gamma W - \gamma + 1) {(\alpha^{-1})^l}_k v^k \cdot W^2 (W^2 + (\gamma W^2 + \gamma - 1) \epsilon) / \Phi \cdot v_l
+	 &
+	 -\rho \Phi {(\alpha^{-1})^l}_j \cdot W^2 (W^2 + (\gamma W^2 + \gamma - 1) \epsilon) / \Phi \cdot v_l 
+	 &
+	 1 / (\rho \Phi) +
+	 	 \gamma \rho W^2 {(\alpha^{-1})^l}_k v^k \cdot W^2 (W^2 + (\gamma W^2 + \gamma - 1) \epsilon) / \Phi \cdot v_l
+\end{matrix}\right]$<br>
+$\left[\begin{matrix}
+	1 &
+	 0 &
+	 0 &
+	 | &
+	 \frac{
+		2 h W^2 - \Phi h + \Phi - 1
+	 }{
+		W (h \Phi + (1 - 2 h) (\Phi - W^2) )
+	 } &
+	 \frac{
+		-\Phi v_j
+	 }{
+		 h \Phi + (1 - 2 h) (\Phi - W^2)
+	 } &
+	 \frac{
+	 	\Phi - 1 
+	 }{
+		 h \Phi + (1 - 2 h) (\Phi - W^2)
+	 } \\
+	
+	0 &
+	 \delta^i_j &
+	 0 &
+	 | &
+	 \frac{
+		 -(\gamma W - \gamma + 1) v^i
+	 }{
+		 \rho W (h \Phi + (1 - 2 h) (\Phi - W^2))
+	 } &
+	 
+	 \frac{1}{\rho W^2 h} \cdot (
+		\delta^i_j 
+		+ \frac{
+			W^2 (2 h - 1) (\gamma - 1)
+		}{ 
+			W^2 
+			+ \epsilon \gamma (1 - (\gamma - 2) (W^2 - 1))
+		} \cdot v^i v_j
+	 )
+	 &
+	 
+	 \frac{
+		 -\gamma v^i 
+	 }{
+		 \rho (h \Phi + (1 - 2 h) (\Phi - W^2))
+	 }
+	 \\
+	
+	0 &
+	 0 &
+	 1 &
+	 | &
+	 \frac{
+		h^2 (W (1 - W) + 1)
+		- (\epsilon + 1) h
+		- (\gamma W - \gamma + 1) (W^2 - 1) \epsilon
+		+ (h W - h W^2 + h + (W^2 - 1) \epsilon + 1) (1 - 2 h)
+	 }{ 
+		 \rho W (h \Phi + (1 - 2 h) (\Phi - W^2))
+	 }
+		
+	 + \frac{
+		(h W - W^2 + 2) (2 h - 1) W^2 
+		+ W^2 (\gamma W - \gamma + 1) (W^2 - 1) (2 h - 1) 
+	 }{ 
+		 \Phi \rho W (h \Phi + (1 - 2 h) (\Phi - W^2))
+	 }
+	 &
+	 
+	 \frac{
+	 	-(h W^2 + \epsilon (\gamma - 1)) v_j
+	 }{
+		 \rho (h \Phi + (1 - 2 h) (\Phi - W^2))
+	 }
+	 &
+	 
+	 \frac{
+		h W^2
+	 }{
+		 \rho (h \Phi + (1 - 2 h) (\Phi - W^2))
+	 }
+\end{matrix}\right]$<br>
+<br>
+
 
 <b>change in flux wrt primitive variables:</b><br>
 
