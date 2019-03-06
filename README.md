@@ -190,6 +190,8 @@ Here's the CDN URLs:
 
 [torsion gravity](https://thenumbernine.github.io/math/torsion%20gravity.html)
 
+[twisted spacetime](https://thenumbernine.github.io/math/twisted%20spacetime.html)
+
 [wave_metric_1](https://thenumbernine.github.io/math/wave_metric_1.html)
 
 [wave_metric_2](https://thenumbernine.github.io/math/wave_metric_2.html)

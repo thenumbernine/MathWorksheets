@@ -582,7 +582,7 @@ $( E_{total,elec} )_{,t}
 GLM Maxwell equations:<br>
 ${D^j}_{,t} - \mu^{-1} \nabla_k \epsilon^{jkl} B^l + \xi \phi_{,j} = -\epsilon ( \hat{\lambda}_d^2 \hat{l}_r )^{-1} (r_{ion} \rho_{ion} v_{ion}^j + r_{elec} \rho_{elec} v_{elec}^j)$<br>
 ${B^j}_{,t} + \epsilon^{-1} \nabla_k \epsilon^{jkl} D^l + \kappa \psi_{,j} = 0$<br>
-$\phi_{,t} + \xi \nabla_j D^j = \epsilon \xi (\hat{\lambda}_d \hat{l}_r)^{-1} (r_{ion} \rho_{ion} + r_{elec} \rho_{elec})$<br>
+$\phi_{,t} + \xi \nabla_j D^j = \epsilon \xi (\hat{\lambda}^2_d \hat{l}_r)^{-1} (r_{ion} \rho_{ion} + r_{elec} \rho_{elec})$<br>
 $\psi_{,t} + \kappa \nabla_j B^j = 0$<br>
 <br>
 
@@ -603,10 +603,10 @@ and $E^\alpha_{int} = \frac{P^\alpha}{\gamma - 1}$ by the ideal gas law, with he
 $r_\alpha = \frac{q_\alpha}{m_\alpha}$ = charge/mass ratio<br>
 $m_\alpha = $ ion or electron mass, where in the simulation we set $m_i = 1$<br>
 $m = \frac{m^i}{m^e}$ = ion/electron mass ratio<br>	
-$\hat{l}_r = \frac{l_r}{x_0} = \frac{W m_i v_i^T}{q_i B_0 x_0} =$ normalized ion Larmor radius<br>
-$\hat{c} = \frac{c}{(v^i)^T}$ = normalized speed of light<br>
-$\hat{\lambda}_d = \frac{\lambda_d}{l_r} = \frac{1}{l_r} \sqrt{\frac{\epsilon (v_i^T)^2}{ n_0 q_i}}$ = ion Debye length normalized with Larmor radius<br>
-$v_i^T = $ reference thermal velocity<br>
+$\hat{l}_r = \frac{l_r}{x_0} = \frac{W m_i v^T_{ion}}{q_{ion} B_0 x_0} =$ normalized ion Larmor radius<br>
+$\hat{c} = \frac{c}{v^T_{ion}}$ = normalized speed of light<br>
+$\hat{\lambda}_d = \frac{\lambda_d}{l_r} = \frac{1}{l_r} \sqrt{\frac{\epsilon (v^T_{ion})^2}{ n_0 q_{ion}}}$ = ion Debye length normalized with Larmor radius<br>
+$v^T_{ion} = $ reference thermal velocity<br>
 $B_0 = $ reference magnetic field<br>
 $x_0 = $ reference length<br>
 $E_{total,\alpha} = E_{int,\alpha} + E_{kin,\alpha} = $ densitized total energy<br>
@@ -614,6 +614,12 @@ $E_{int,\alpha} = \frac{P_\alpha}{\gamma - 1} = $ densitized internal energy, re
 $E_{kin,\alpha} = \frac{1}{2} \rho_\alpha |v_\alpha|^2 = $ densitized kinetic energy<br>
 $\gamma = \frac{5}{3} = $ the heat capacity ratio<br>
 <br>
+
+So, derived,<br>
+$L = \hat{\lambda}^2_d \hat{l}_r = \frac{\epsilon (v^T_{ion})^2 }{l_r x_0 n_0 q_{ion}}$<br>
+$= \frac{\epsilon B_0 v^T_{ion}}{W x_0 n_0 m_i}$<br>
+<br>
+
 with terms added to 2014 Abgrall, Kumar:<br>
 $W = $ Lorentz boost, where 2014 Abgrall, Kumar sets $W = 1$<br>
 $\epsilon = $ material permittivity, assumed to be $\epsilon_0$ in the 2014 Abgrall Kumar paper<br>
