@@ -24,14 +24,29 @@ substitute:<br>
 $\frac{d\tau^2}{dt^2} = -(1 - \frac{R_0}{r_0^3} r^2)$<br>
 <br>
 
-circular orbit in Minkowski spacetime:<br>
-$\vec{r} = \pmatrix{\tau \\ x \\ y} = \pmatrix{t \\ \alpha cos (\beta t) \\ \alpha sin (\beta t) }$<br>
-$\frac{\partial \vec{r}}{\partial t} = \pmatrix{1 \\ -\alpha \beta sin (\beta t) \\ \alpha \beta cos (\beta t) }$<br>
-using a Minkowski metric:<br>
-$|\frac{\partial \vec{r}}{\partial t}|^2 = -(1 - \alpha^2 \beta^2)$<br>
+Circular orbit in Minkowski spacetime:<br>
+$\vec{c} = \pmatrix{c_t \\ c_x \\ c_y} = \pmatrix{\mu \\ \alpha cos (\beta \mu) \\ \alpha sin (\beta \mu) }$<br>
+$\frac{\partial \vec{c}}{\partial \mu} = \pmatrix{1 \\ -\alpha \beta sin (\beta \mu) \\ \alpha \beta cos (\beta \mu) }$<br>
+Using a Minkowski metric:<br>
+$|\frac{\partial \vec{c}}{\partial \mu}|^2 = \frac{\partial c_\mu}{\partial \mu} \frac{\partial c_\nu}{\partial \mu} \eta_{\mu\nu} = -(1 - \alpha^2 \beta^2)$<br>
 <br>
 
-equate $\frac{d\tau^2}{dt^2} = |\frac{\partial \vec{r}}{\partial t}|^2$:<br>
+Do we need to reparameterize by arclength, or is matching derivative magnitudes enough?<br>
+$\sqrt{\left| |\frac{\partial \vec{c}}{\partial \mu}|^2 \right|} = \sqrt{1 - \alpha^2 \beta^2}$<br>
+Arclength of circular orbit in Minkowski spacetime:<br>
+$\tau = \int_0^\mu \sqrt{\left| |\frac{\partial \vec{c}}{\partial \mu}|^2 \right|} d\mu$
+	$ = \int_0^\mu \left( \sqrt{1 - \alpha^2 \beta^2} \right) d\mu$
+	$ = \mu \sqrt{1 - \alpha^2 \beta^2}$<br>
+Reparameterization by arclength:<br>
+$\mu = \frac{\tau}{\sqrt{1 - \alpha^2 \beta^2}}$<br>
+$\vec{c} = \pmatrix{c_t \\ c_x \\ c_y} = \pmatrix{
+	\frac{\tau}{\sqrt{1 - \alpha^2 \beta^2}} \\ 
+	\alpha cos (\frac{\tau \beta}{\sqrt{1 - \alpha^2 \beta^2}}) \\ 
+	\alpha sin (\frac{\tau \beta}{\sqrt{1 - \alpha^2 \beta^2}}) 
+}$<br>
+<br>
+
+Equate $\frac{d\tau^2}{dt^2} = |\frac{\partial \vec{c}}{\partial \mu}|^2$:<br>
 $\frac{R_0}{r_0^3} r^2 = \alpha^2 \beta^2$<br>
 $r \sqrt{ \frac{R_0}{r_0^3} } = \alpha \beta$ for arbitrary $\alpha \beta$<br>
 $R_0 = 2 M$, $\rho = \frac{M}{\frac{4}{3} \pi r_0^3}$, $M = \frac{4}{3} \pi r_0^3 \rho$<br>
@@ -52,9 +67,9 @@ $\beta = \omega = \sqrt{\frac{m'}{r'^3}}$<br>
 $r' = r_0$<br>
 $m' = R_0$<br>
 This makes the Minkowski metric parameterized spiral path equatl to:<br>
-$\vec{r} = \pmatrix{\tau \\ x \\ y} = \pmatrix{t \\ r cos (\omega t) \\ r sin (\omega t) }$<br>
+$\vec{c} = \pmatrix{c_t \\ c_x \\ c_y} = \pmatrix{\tau \\ r cos (\omega \tau) \\ r sin (\omega \tau) }$<br>
 $\omega = \sqrt{\frac{R_0}{r_0^3}}$<br>
-Notice that $r$ is the distance from the center of the body being measured by our Schwarzschild metric, not the distance from the center of our Minkowski metric spiral (which is $\sqrt{x^2 + y^2}$).<br>
+Notice that $r$ is the distance from the center of the body being measured by our Schwarzschild metric, not the distance from the center of our Minkowski metric spiral (which is $\sqrt{(c_x)^2 + (c_y)^2}$).<br>
 <br>	
 <br>	
 	</body>
