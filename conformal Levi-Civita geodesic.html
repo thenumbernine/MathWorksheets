@@ -17,8 +17,6 @@ However the Levi-Civita connection of the conformal metric would not be symmetri
 Doesn't BSSN formalism call the 'conformal connection' a rescaling of Levi-Civita connection?  Wouldn't this be incorrect?<br>
 <br>
 
-<hr>
-<br>
 Here I'm assuming the signature of the metric is positive.<br>
 
 <br>
@@ -40,48 +38,6 @@ however so long as $g \ne 1$ we will have $\bar{e}_a \ne \partial_a$, and we hav
 Therefore we have non-zero commutation for the Levi-Civita connection associated with $\bar{e}_a$ and $\bar{g}_{ab}$.<br>
 <br>
 
-<hr>
-<br>
-
-One such option is $\bar{e}_a = g^{-\frac{1}{2 n}} \partial_a$.<br>
-Then $\bar{g}_{ab} = \bar{e}_a \cdot \bar{e}_b = g^{-\frac{1}{n}} \partial_a \cdot \partial_b = g^{-\frac{1}{n}} g_{ab} = \phi g_{ab}$.<br>
-<br>
-
-Then the Levi-Civita connection of $\bar{e}_a$ is<br>
-${\bar{\Gamma}^a}_{bc} = \frac{1}{2} \bar{g}^{ad} (\bar{e}_c (\bar{g}_{db}) + \bar{e}_b(\bar{g}_{dc}) - \bar{e}_d(\bar{g}_{bc}) + {\bar{c}^d}_{bc} + {\bar{c}^d}_{cb} - {\bar{c}_{cb}}^d)$<br>
-For commutation:<br>
-${\bar{c}_{ab}}^c \bar{e}_c = [\bar{e}_a, \bar{e}_b] = 2 \bar{e}_{[a} (\bar{e}_{b]} ( ... ))$<br> 
-${\bar{c}_{ab}}^c \bar{e}_c = 2 g^{-\frac{1}{2 n}} \partial_{[a} ( g^{-\frac{1}{2 n}} \partial_{b]} )$<br>
-${\bar{c}_{ab}}^c \bar{e}_c = 2 g^{-\frac{1}{2 n}} ( \partial_{[a} ( g^{-\frac{1}{2 n}} ) \partial_{b]} + g^{-\frac{1}{2 n}} \partial_{[a} \partial_{b]} )$<br>
-${\bar{c}_{ab}}^c \bar{e}_c = -2 g^{-\frac{1}{2 n}} ( \frac{1}{2 n} g^{(-\frac{1}{2 n})} g^{de} \partial_{[a} (g_{de}) \partial_{b]} )$<br>
-${\bar{c}_{ab}}^c \bar{e}_c = -\frac{1}{n} g^{de} \bar{e}_{[a} (g_{de}) \bar{e}_{b]} $<br>
-${\bar{c}_{ab}}^c \bar{e}_c = -\frac{1}{n} g^{de} \bar{e}_{[a} (g_{de}) \delta_{b]}^c \bar{e}_c$<br>
-${\bar{c}_{ab}}^c = -\frac{1}{n} g^{de} \bar{e}_{[a} (g_{de}) \delta_{b]}^c$<br>
-${\bar{c}_{ab}}^c = -\frac{1}{n} g^{-\frac{1}{2n}} g^{de} \partial_{[a} (g_{de}) \delta_{b]}^c$<br>
-<br>
-
-${\bar{\Gamma}^a}_{bc} = \frac{1}{2} \bar{g}^{ad} (\bar{e}_c (\bar{g}_{db}) + \bar{e}_b(\bar{g}_{dc}) - \bar{e}_d(\bar{g}_{bc}) + {\bar{c}^d}_{bc} + {\bar{c}^d}_{cb} - {\bar{c}_{cb}}^d)$<br>
-$= \frac{1}{2} \bar{g}^{ad} (
-	g^{-\frac{1}{2n}} \partial_c (\bar{g}_{db}) 
-	+ g^{-\frac{1}{2n}} \partial_b(\bar{g}_{dc}) 
-	- g^{-\frac{1}{2n}} \partial_d(\bar{g}_{bc}) 
-	- \bar{g}^{de} \bar{g}_{cf} \frac{1}{n} g^{-\frac{1}{2n}} g^{dg} \partial_{[e} (g_{dg}) \delta_{b]}^f
-	- \bar{g}^{de} \bar{g}_{bf} \frac{1}{n} g^{-\frac{1}{2n}} g^{dg} \partial_{[e} (g_{dg}) \delta_{c]}^f
-	+ \frac{1}{n} g^{-\frac{1}{2n}} g^{ge} \partial_{[c} (g_{ge}) \delta_{b]}^d
-)$<br>
-$= \frac{1}{2} g^{-\frac{1}{2n}} \bar{g}^{ad} (
-	\partial_c (\bar{g}_{db}) 
-	+ \partial_b(\bar{g}_{dc}) 
-	- \partial_d(\bar{g}_{bc}) 
-	- \bar{g}^{de} \bar{g}_{cf} \frac{1}{n} g^{dg} \partial_{[e} (g_{dg}) \delta_{b]}^f
-	- \bar{g}^{de} \bar{g}_{bf} \frac{1}{n} g^{dg} \partial_{[e} (g_{dg}) \delta_{c]}^f
-	+ \frac{1}{n} g^{ge} \partial_{[c} (g_{ge}) \delta_{b]}^d
-)$<br>
-
-<hr>
-<br>
-General case:<br>
-
 Let $\bar{e}_a = {\bar{e}_a}^I \partial_I$ be the linear combination of coordinate basis that the basis of the conformal metric is represented as.<br>
 Then $\bar{g}_{ab} = \bar{e}_a \cdot \bar{e}_b = {\bar{e}_a}^I {\bar{e}_b}^J \partial_I \cdot \partial_J = {\bar{e}_a}^I {\bar{e}_b}^J g_{IJ}$<br>
 Hmm, notice I'm using these as sum terms, when I should be representing all this as operators.<br>
@@ -97,26 +53,10 @@ ${c_{ab}}^c = 2 \bar{e}_{[a} ({\bar{e}_{b]}}^I) {\bar{e}^c}_I$<br>
 ...for ${\bar{e}^a}_I {\bar{e}_b}^I = \delta^a_b$ and ${\bar{e}^a}_I {\bar{e}_b}^J = \delta_I^J$, i.e. $[{\bar{e}^a}_I]$ is the linear inverse of $[{\bar{e}_a}^I]$.<br>
 <br>
 
-This has the geodesic:<br>
-${\bar{\Gamma}^a}_{bc} = \frac{1}{2} \bar{g}^{ad} (
-	{\bar{e}_c}^I \partial_I (\bar{g}_{db}) 
-	+ {\bar{e}_b}^I \partial_I (\bar{g}_{dc}) 
-	- {\bar{e}_d}^I \partial_I (\bar{g}_{bc}) 
-	+ \bar{g}^{de} \bar{g}_{cf} {\bar{c}_{eb}}^f
-	+ \bar{g}^{de} \bar{g}_{bf} {\bar{c}_{ec}}^f 
-	- {\bar{c}_{cb}}^d
-)$<br>
-${\bar{\Gamma}^a}_{bc} = \frac{1}{2} \bar{g}^{ad} (
-	{\bar{e}_c}^I \partial_I (\phi g_{db}) 
-	+ {\bar{e}_b}^I \partial_I (\bar{g}_{dc}) 
-	- {\bar{e}_d}^I \partial_I (\bar{g}_{bc}) 
-	+ \bar{g}^{de} \bar{g}_{cf} {\bar{c}_{eb}}^f
-	+ \bar{g}^{de} \bar{g}_{bf} {\bar{c}_{ec}}^f 
-	- {\bar{c}_{cb}}^d
-)$<br>	
+This has the geodesic (taken from my 'metric-cancelling and torsion-free connection' worksheet):<br>
+${\bar{\Gamma}^a}_{bc} = {\Gamma^a}_{bc} + {\bar{e}^a}_I \partial_b ({\bar{e}_c}^I)$<br>	
 <br>	
 <br>	
-<br>	
-<br>	
+	
 	</body>
 </html>
