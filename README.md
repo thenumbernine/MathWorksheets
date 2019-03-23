@@ -178,6 +178,8 @@ Here's the CDN URLs:
 
 [a note on the definition of tensors](https://thenumbernine.github.io/math/a%20note%20on%20the%20definition%20of%20tensors.html)
 
+[conformal Levi-Civita geodesic](https://thenumbernine.github.io/math/conformal%20Levi%2dCivita%20geodesic.html)
+
 [heat to wave](https://thenumbernine.github.io/math/heat%20to%20wave.html)
 
 [projection in any metric](https://thenumbernine.github.io/math/projection%20in%20any%20metric.html)

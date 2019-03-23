@@ -60,7 +60,11 @@ $ \hat\Gamma_{abc} = {1 \over 2} (
 <br>
 
 Levi-Civita connection in a non-coordinate basis:<br>
-(TODO add torsion and show for all connections)<br>
+If $e_a = {e_a}^{\bar{a}} \partial_\bar{a}$ and $e^a = {e^a}_{\bar{a}} dx^\bar{a}$ are linear combinations of a coordinate basis $\partial_\bar{a}$ and dual $dx^\bar{a}$ then we can calculate the following:<br>
+Using the identities that $\delta^a_b = {e^a}_\bar{u} {e_b}^\bar{u}$ and $\delta^\bar{a}_\bar{b} = {e_u}^\bar{a} {e^u}_\bar{b}$<br>
+Let $\bar{g}_{\bar{a}\bar{b}} = \partial_\bar{a} \cdot \partial_\bar{b}$<br>
+Let $g_{ab} = e_a \cdot e_b = {e_a}^\bar{a} \partial_\bar{a} \cdot {e_b}^\bar{b} \partial_\bar{b} = {e_a}^\bar{a} \cdot {e_b}^\bar{b} \bar{g}_{\bar{a}\bar{b}}$.<br>
+Let ${c_{ab}}^c e_c = [e_a, e_b]$, so (from the 'structure constants' worksheet on structure constants of a linear transform of a coordinate basis) ${c_{ab}}^c = 2 e_{[a} ({e_{b]}}^\bar{c}) {e^c}_\bar{c}$<br>
 $\hat\Gamma_{abc} = \frac{1}{2} (
 	e_c (g_{ab})
 	+ e_b (g_{ac})
@@ -70,37 +74,75 @@ $\hat\Gamma_{abc} = \frac{1}{2} (
 	- c_{cba}
 )$<br>
 $= \frac{1}{2} (
-	e_c ({e_a}^I e_{b I})
-	+ e_b ({e_a}^I e_{c I})
-	- e_a ({e_b}^I e_{c I})
-
-	+ 2 e_{[a} ( {{e_{c]}}^I} ) e_{b I}
-	+ 2 e_{[a} ( {{e_{b]}}^I} ) e_{c I}
-	- 2 e_{[c} ( {{e_{b]}}^I} ) e_{a I}
+	e_c ({e_a}^\bar{a} {e_b}^\bar{b} \bar{g}_{\bar{a}\bar{b}})
+	+ e_b ({e_a}^\bar{a} {e_c}^\bar{c} \bar{g}_{\bar{a}\bar{c}})
+	- e_a ({e_b}^\bar{b} {e_c}^\bar{c} \bar{g}_{\bar{b}\bar{c}})
+	
+	+ 2 e_{[a} ({e_{c]}}^\bar{d}) {e^d}_\bar{d} g_{db}
+	+ 2 e_{[a} ({e_{b]}}^\bar{d}) {e^d}_\bar{d} g_{dc}
+	- 2 e_{[c} ({e_{b]}}^\bar{d}) {e^d}_\bar{d} g_{da}
 )$<br>
 $= \frac{1}{2} (
-	e_c({e_a}^I) e_{b I}
-	+ e_c(e_{b I}) {e_a}^I
-
-	+ e_b({e_a}^I) e_{c I}
-	+ e_b(e_{c I}) {e_a}^I
-
-	- e_a({e_b}^I) e_{c I}
-	- e_a(e_{c I}) {e_b}^I
-
+	  e_c ({e_a}^\bar{a}) {e_b}^\bar{b} \bar{g}_{\bar{a}\bar{b}}
+	+ {e_a}^\bar{a} e_c ({e_b}^\bar{b}) \bar{g}_{\bar{a}\bar{b}}
+	+ {e_a}^\bar{a} {e_b}^\bar{b} e_c (\bar{g}_{\bar{a}\bar{b}})
 	
-	+ e_a({e_c}^I) e_{b I}
-	- e_c({e_a}^I) e_{b I}
+	+ e_b ({e_a}^\bar{a}) {e_c}^\bar{c} \bar{g}_{\bar{a}\bar{c}}
+	+ {e_a}^\bar{a} e_b ({e_c}^\bar{c}) \bar{g}_{\bar{a}\bar{c}}
+	+ {e_a}^\bar{a} {e_c}^\bar{c} e_b (\bar{g}_{\bar{a}\bar{c}})
 	
-	+ e_a({e_b}^I) e_{c I}
-	- e_b({e_a}^I) e_{c I}
+	- e_a ({e_b}^\bar{b}) {e_c}^\bar{c} \bar{g}_{\bar{b}\bar{c}}
+	- {e_b}^\bar{b} e_a ({e_c}^\bar{c}) \bar{g}_{\bar{b}\bar{c}}
+	- {e_b}^\bar{b} {e_c}^\bar{c} e_a (\bar{g}_{\bar{b}\bar{c}})
 	
-	- e_c({e_b}^I) e_{a I}
-	+ e_b({e_c}^I) e_{a I}
+	+ e_a ({e_c}^\bar{d}) e_{b\bar{d}}
+	- e_c ({e_a}^\bar{d}) e_{b\bar{d}}
+	
+	+ e_a ({e_b}^\bar{d}) e_{c\bar{d}}
+	- e_b ({e_a}^\bar{d}) e_{c\bar{d}}
+	
+	- e_c ({e_b}^\bar{d}) e_{a\bar{d}}
+	+ e_b ({e_c}^\bar{d}) e_{a\bar{d}}
 )$<br>
-$= e_b({e_c}^I) e_{a I}$<br>
-${\hat\Gamma^a}_{bc} = {e^a}_I e_b({e_c}^I)$<br>
-Notice how this matches up with ${\Gamma^a}_{bc} = e^a (\nabla_b e_c)$<br>
+$= \frac{1}{2} (
+	  e_c ({e_a}^\bar{a}) e_{b\bar{a}}
+	+ e_c ({e_b}^\bar{b}) e_{a\bar{b}}
+	+ {e_a}^\bar{a} {e_b}^\bar{b} e_c (\bar{g}_{\bar{a}\bar{b}})
+	
+	+ e_b ({e_a}^\bar{a}) e_{c\bar{a}}
+	+ e_b ({e_c}^\bar{c}) e_{a\bar{c}}
+	+ {e_a}^\bar{a} {e_c}^\bar{c} e_b (\bar{g}_{\bar{a}\bar{c}})
+	
+	- e_a ({e_b}^\bar{b}) e_{c\bar{b}}
+	- e_a ({e_c}^\bar{c}) e_{b\bar{c}}
+	- {e_b}^\bar{b} {e_c}^\bar{c} e_a (\bar{g}_{\bar{b}\bar{c}})
+	
+	+ e_a ({e_c}^\bar{d}) e_{b\bar{d}}
+	- e_c ({e_a}^\bar{d}) e_{b\bar{d}}
+	
+	+ e_a ({e_b}^\bar{d}) e_{c\bar{d}}
+	- e_b ({e_a}^\bar{d}) e_{c\bar{d}}
+	
+	- e_c ({e_b}^\bar{d}) e_{a\bar{d}}
+	+ e_b ({e_c}^\bar{d}) e_{a\bar{d}}
+)$<br>
+$= \frac{1}{2} (
+	  {e_a}^\bar{a} {e_b}^\bar{b} {e_c}^\bar{c} \partial_\bar{c} (\bar{g}_{\bar{a}\bar{b}})
+	+ {e_a}^\bar{a} {e_c}^\bar{c} {e_b}^\bar{b} \partial_\bar{b} (\bar{g}_{\bar{a}\bar{c}})
+	- {e_b}^\bar{b} {e_c}^\bar{c} {e_a}^\bar{a} \partial_\bar{a} (\bar{g}_{\bar{b}\bar{c}})
+)	
+	+ e_b ({e_c}^\bar{c}) e_{a\bar{c}}
+$<br>
+$\hat\Gamma_{abc} = {e_a}^\bar{a} {e_b}^\bar{b} {e_c}^\bar{c} \bar{\Gamma}_{\bar{a}\bar{b}\bar{c}} + e_{a\bar{a}} e_b ({e_c}^\bar{a})$<br>
+${\hat\Gamma^a}_{bc} = {e^a}_\bar{a} {e_b}^\bar{b} {e_c}^\bar{c} {\bar{\Gamma}^\bar{a}}_{\bar{b}\bar{c}} + {e^a}_\bar{a} e_b ({e_c}^\bar{a})$<br>
+...where ${\bar{\Gamma}^\bar{a}}_{\bar{b}\bar{c}}$ is the Levi-Civita connection associated with the coordinate basis $\partial_\bar{a}$.<br>
+<br>
+
+If we use the bars on the indexes of tensors to denote transformation by the ${e_a}^\bar{a}$ basis as well,
+then we can represent the transformed coordinate basis Levi-Civita connections as then we can represent this as ${\bar{\Gamma}^a}_{bc} = {e^a}_\bar{a} {e_b}^\bar{b} {e_c}^\bar{c} {\bar{\Gamma}^\bar{a}}_{\bar{b}\bar{c}}$,<br>
+and the identity becomes:<br>
+${\hat\Gamma^a}_{bc} = {\bar{\Gamma}^a}_{bc} + {e^a}_\bar{a} e_b({e_c}^\bar{a})$<br>
+Notice how this matches up with the covariant derivative definition: ${\Gamma^a}_{bc} = e^a (\nabla_b e_c)$<br>
 <br>
 
 Let the contorsion tensor be the difference between an arbitrary connection and the Levi-Civita connection:<br>
