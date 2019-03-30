@@ -134,8 +134,6 @@ Here's the CDN URLs:
 
 [Metric for extruded dimension](https://thenumbernine.github.io/math/Metric%20for%20extruded%20dimension.html)
 
-[Metric with geodesic that changes in space with velocity in time](https://thenumbernine.github.io/math/Metric%20with%20geodesic%20that%20changes%20in%20space%20with%20velocity%20in%20time.html)
-
 [Navier-Stokes As Exterior Derivative](https://thenumbernine.github.io/math/Navier%2dStokes%20As%20Exterior%20Derivative.html)
 
 [Navier-Stokes Curl Advection](https://thenumbernine.github.io/math/Navier%2dStokes%20Curl%20Advection.html)

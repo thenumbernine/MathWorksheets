@@ -55,8 +55,27 @@ ${c_{ab}}^c = 2 \bar{e}_{[a} ({\bar{e}_{b]}}^I) {\bar{e}^c}_I$<br>
 
 This has the geodesic (taken from my 'metric-cancelling and torsion-free connection' worksheet):<br>
 ${\bar{\Gamma}^a}_{bc} = {\Gamma^a}_{bc} + {\bar{e}^a}_I \partial_b ({\bar{e}_c}^I)$<br>	
-<br>	
-<br>	
-	
+<br>
+<br>
+
+<hr>
+<br>
+
+For one conformal rescaling connection in particular: ${\bar{e}_a}^b = \delta_a^b g^{-\frac{1}{2n}}$.<br>
+Then ${\bar{e}^a}_b = \delta^a_b g^{\frac{1}{2n}}$.<br>
+Then $det[{\bar{e}_a}^b] = g^{-\frac{1}{2}}$, which fulfills our requirement for the conformal rescaling to have a determinant of 1.<br>
+$\partial_b {\bar{e}_c}^I = \partial_b g^{-\frac{1}{2n}} \delta_c^I$<br>
+$= -\frac{1}{2n} g^{-1-\frac{1}{2n}} \cdot g g^{uv} \partial_b g_{uv} \delta_c^I$<br>
+$= -\frac{1}{2n} g^{-\frac{1}{2n}} g^{uv} \partial_b g_{uv} \delta_c^I$<br>
+<br>
+
+${\bar{e}^a}_I \partial_b ({\bar{e}_c}^I) = \delta^a_I g^{\frac{1}{2n}} \cdot -\frac{1}{2n} g^{-\frac{1}{2n}} g^{uv} \partial_b g_{uv} \delta_c^I$<br>
+$ = -\frac{1}{2n} \delta^a_c g^{uv} \partial_b g_{uv}$<br>
+<br>
+
+The Levi-Civita connection becomes:<br>
+${\bar{\Gamma}^a}_{bc} = {\Gamma^a}_{bc} + {\bar{e}^a}_I \partial_b ({\bar{e}_c}^I)$<br>	
+$= {\Gamma^a}_{bc} - \frac{1}{2n} \delta^a_c g^{uv} \partial_b g_{uv}$<br>
+<br>
 	</body>
 </html>
