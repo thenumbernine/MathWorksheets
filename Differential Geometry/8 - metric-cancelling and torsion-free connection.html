@@ -356,7 +356,7 @@ $= \Gamma_{abc}
 )$<br>
 <br>
 
-${\Gamma^{a'}}_{b'c'} = g^{a'd'} \Gamma_{d'b'c'}$<br>
+${{\Gamma'}^{a'}}_{b'c'} = g^{a'd'} {\Gamma'}_{d'b'c'}$<br>
 $= g^{a'd'} (
 	\Gamma_{dbc} 
 	\frac{\partial x^c}{\partial x^{c'}} 
@@ -471,6 +471,36 @@ $\dot{u}^a = -({\Gamma^a}_{bc} - {K^a}_{bc}) u^b u^c$<br>
 $\dot{u}^a = -({\Gamma^a}_{bc} - \frac{1}{2} ({{T_c}^a}_b + {{T_b}^a}_c + {T^a}_{bc})) u^b u^c$<br>
 $\dot{u}^a = -{\Gamma^a}_{bc} u^b u^c + {{T_b}^a}_c u^b u^c$<br>
 $\dot{u}^a = -{\Gamma^a}_{bc} u^b u^c + u_b {T^b}_{dc} u^c g^{da}$<br>
+<br>
+
+change of basis of torsion-free holonomic geodesic:<br>
+$\frac{\partial^2 x^a}{\partial \tau^2} + {\Gamma^a}_{bc} \frac{\partial x^b}{\partial \tau} \frac{\partial x^c}{\partial \tau} = 0$<br>
+
+$\frac{\partial}{\partial \tau} (\frac{\partial x^a}{\partial x^{a'}} \frac{\partial x^{a'}}{\partial \tau}) 
+	+ {\Gamma^a}_{bc} 
+	\cdot \frac{\partial x^b}{\partial x^{b'}} \frac{\partial x^{b'}}{\partial \tau} 
+	\cdot \frac{\partial x^c}{\partial x^{c'}} \frac{\partial x^{c'}}{\partial \tau} 
+= 0$<br>
+
+$\frac{\partial}{\partial \tau} \frac{\partial x^a}{\partial x^{a'}} \cdot \frac{\partial x^{a'}}{\partial \tau}
+	+ \frac{\partial x^a}{\partial x^{a'}} \cdot \frac{\partial}{\partial \tau} \frac{\partial x^{a'}}{\partial \tau}
+	
+	+ {\Gamma^a}_{bc} \frac{\partial x^b}{\partial x^{b'}} \frac{\partial x^c}{\partial x^{c'}} 
+	\cdot \frac{\partial x^{b'}}{\partial \tau} \frac{\partial x^{c'}}{\partial \tau} 
+= 0$<br>
+
+$\frac{\partial^2 x^{a'}}{\partial \tau^2}
+	+ (
+		\frac{\partial x^{a'}}{\partial x^a} 
+		{\Gamma^a}_{bc} \frac{\partial x^b}{\partial x^{b'}} \frac{\partial x^c}{\partial x^{c'}} 
+		
+		+ \frac{\partial x^{a'}}{\partial x^a} \frac{\partial^2 x^a}{\partial x^{b'} \partial x^{c'}} 
+
+	) \frac{\partial x^{b'}}{\partial \tau} \frac{\partial x^{c'}}{\partial \tau}
+= 0$<br>
+This matches the change-of-basis of metric-cancelling connection, which we can now substitute:<br>
+$\frac{\partial^2 x^{a'}}{\partial \tau^2} + {\Gamma^{a'}}_{b'c'} \frac{\partial x^{b'}}{\partial \tau} \frac{\partial x^{c'}}{\partial \tau} = 0$<br>
+<br>
 <br>
 
 <a href='.'>Back</a><br><br>
