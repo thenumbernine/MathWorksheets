@@ -54,7 +54,7 @@ Christoffel of the 2nd kind / affine connection: $ {\hat\Gamma^a}_{bc} = g^{ad} 
 <br>
 
 in a holonomic basis (so ${c_{ab}}^c = 0$):<br>
-$ \hat\Gamma_{abc} = {1 \over 2} (
+$ \hat\Gamma_{abc} = \frac{1}{2} (
 	e_c (g_{ab}) + e_b (g_{ac}) - e_a (g_{bc})
 ) $<br>
 <br>
@@ -433,10 +433,29 @@ $= \frac{\partial x^{a'}}{\partial x^a}
 $<br>
 <br>
 
-TODO:<br>
-geodesics minimize distance along a trajectory:<br>
-$S = \int \sqrt{ g_{uv} \frac{dx^u}{d\lambda} \frac{dx^v}{d\lambda} } d\lambda$<br>
+geodesics minimize distance along a trajectory (using a coordinate basis):<br>
 Minimize $S$ by solving for $\delta S = 0$:<br>
+Let $S = \int \sqrt{ g_{uv} \frac{dx^u}{d\tau} \frac{dx^v}{d\tau} } d\tau$<br>
+We can just as easily minimize $S \rightarrow S = \int g_{uv} \frac{dx^u}{d\tau} \frac{dx^v}{d\tau} d\tau$<br>
+Now solve for $\frac{\delta S}{\delta x^a} = 0$<br>
+$S = \int g_{uv} \dot{x}^u \dot{x}^v d\tau$<br>
+$\delta S = \int (\delta g_{uv} \dot{x}^u \dot{x}^v + 2 g_{uv} \delta \dot{x}^u \dot{x}^v ) d\tau$<br>
+Next we use integration by parts and assign the total integral to zero: $u dv = uv - v du$ for $uv = 0$<br>
+Using $u = 2 g_{uv} \dot{x}^v$, $dv = \delta \dot{x}^u$, and therefore $v = \delta x^u$, $du = 2 (\dot{g}_{uv} \dot{x}^v + g_{uv} \ddot{x}^v) d\tau$<br>
+$\delta S = \int (\delta g_{uv} \dot{x}^u \dot{x}^v - 2 \delta x^u (\dot{g}_{uv} \dot{x}^v + g_{uv} \ddot{x}^v)) d\tau$<br>
+Substitute $\delta g_{uv} = \frac{\partial g_{uv}}{\partial x^w} \cdot \delta x^w$ and $\frac{\partial g_{uv}}{\partial \tau} = \frac{\partial g_{uv}}{\partial x^w} \cdot \frac{\partial x^w}{\partial \tau}$<br>
+$\delta S = \int (\delta x^w \frac{\partial}{\partial x^w} g_{uv} \dot{x}^u \dot{x}^v - 2 \delta x^u (\frac{\partial}{\partial x^w} g_{uv} \dot{x}^w \dot{x}^v + g_{uv} \ddot{x}^v)) d\tau$<br>
+Reindex and factor out $\delta x^u$<br>
+$\delta S = \int \delta x^u (\frac{\partial}{\partial x^u} g_{ab} \dot{x}^a \dot{x}^b - 2 \frac{\partial}{\partial x^a} g_{ub} \dot{x}^a \dot{x}^b - 2 g_{uv} \ddot{x}^v) d\tau$<br>
+Solve for $\delta S = 0$<br>
+$0 = \frac{\partial}{\partial x^u} g_{ab} \dot{x}^a \dot{x}^b - 2 \frac{\partial}{\partial x^a} g_{ub} \dot{x}^a \dot{x}^b - 2 g_{uv} \ddot{x}^v$<br>
+$0 = g^{cu} ( \frac{\partial}{\partial x^u} g_{ab} \dot{x}^a \dot{x}^b - 2 \frac{\partial}{\partial x^a} g_{ub} \dot{x}^a \dot{x}^b - 2 g_{uv} \ddot{x}^v )$<br>
+$\ddot{x}^c - \frac{1}{2} g^{cu} (\frac{\partial}{\partial x^u} g_{ab} - 2 \frac{\partial}{\partial x^a} g_{ub}) \dot{x}^a \dot{x}^b = 0$<br>
+Separate the term with a factor of 2:<br>
+$\ddot{x}^c + \frac{1}{2} g^{cu} (\frac{\partial}{\partial x^b} g_{ua} + \frac{\partial}{\partial x^a} g_{ub} - \frac{\partial}{\partial x^u} g_{ab}) \dot{x}^a \dot{x}^b = 0$<br>
+$\ddot{x}^c + {\Gamma^c}_{ab} \dot{x}^a \dot{x}^b = 0$<br>
+For ${\Gamma^c}_{ab} = \frac{1}{2} g^{cu} (\frac{\partial}{\partial x^b} g_{ua} + \frac{\partial}{\partial x^a} g_{ub} - \frac{\partial}{\partial x^u} g_{ab})$<br>
+This fits with the above definition of a metric-cancelling covariant derivative that has no torsion and no commutation.<br>
 <br>
 
 acceleration of geodesic motion:<br>
