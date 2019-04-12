@@ -519,6 +519,155 @@ $\left[\begin{matrix}
 \end{matrix}\right]$<br>
 <br>
 
+$\frac{1}{W (h \Phi + (1 - 2 h) (\Phi - W^2))} \cdot
+\overset{\downarrow I \rightarrow J}{
+\left[\begin{matrix}
+	2 h W^2 - \Phi h + \Phi - 1
+	&
+	-W \Phi v_j
+	&
+	W (\Phi - 1)
+	\\
+	
+	- \frac{1}{\rho} (\gamma W - \gamma + 1) v^i
+	&
+	 
+	\frac{1}{\rho W^2 h} \cdot 
+	W (h \Phi + (1 - 2 h) (\Phi - W^2)) \cdot
+	(
+		\delta^i_j 
+		+ \frac{
+			W^2 (2 h - 1) (\gamma - 1)
+		}{ 
+			W^2 
+			+ \epsilon \gamma (1 - (\gamma - 2) (W^2 - 1))
+		} \cdot v^i v_j
+	)
+	&
+	 
+	-\frac{1}{\rho} W \gamma v^i 
+	\\
+	
+	\frac{1}{\Phi \rho} (
+		
+		+ (\gamma - 1) (W^2 - 1) (2 - W)
+
+		+ h (
+			+ \epsilon 
+			- 2 W^2 \epsilon 
+
+			- 2 
+			- W^2
+
+			+ 3 \gamma 
+			- W^2 \gamma
+			+ W^5 \gamma
+
+			+ W (\gamma - 1) (
+				- 2
+				+ h
+				- 2 W^3
+			)
+			
+			+ (\gamma - 2) (
+				+ W^3
+				+ h
+				- h W^2 2
+				- h W^3
+				+ h W^4
+			)
+		)
+	)
+	&
+	 
+	-\frac{1}{\rho} W (h W^2 + \epsilon (\gamma - 1)) v_j
+	&
+	 
+	\frac{1}{\rho} h W^3
+
+\end{matrix}\right] }$<br>
+<br>
+
+
+<b>verify</b><br>
+
+
+$\frac{\partial U_I}{\partial W_J} \cdot \frac{\partial W_J}{\partial U_K}$<br>
+<br>
+
+$\left[\matrix{
+	D_{,\rho}		& D_{,v_j}		& D_{,\epsilon}		\\
+	S_{i,\rho}		& S_{i,v_j}	& 	S_{i,\epsilon}	\\
+	\tau_{,\rho}	& \tau_{,v_j}	& \tau_{,\epsilon}
+}\right]
+\cdot
+
+\frac{1}{W (h \Phi + (1 - 2 h) (\Phi - W^2))} \cdot
+\left[\begin{matrix}
+	2 h W^2 - \Phi h + \Phi - 1
+	&
+	- \frac{1}{\rho} (\gamma W - \gamma + 1) v^k
+	&
+	\frac{1}{\Phi \rho} (
+		
+		+ (\gamma - 1) (W^2 - 1) (2 - W)
+
+		+ h (
+			+ \epsilon 
+			- 2 W^2 \epsilon 
+
+			- 2 
+			- W^2
+
+			+ 3 \gamma 
+			- W^2 \gamma
+			+ W^5 \gamma
+
+			+ W (\gamma - 1) (
+				- 2
+				+ h
+				- 2 W^3
+			)
+			
+			+ (\gamma - 2) (
+				+ W^3
+				+ h
+				- h W^2 2
+				- h W^3
+				+ h W^4
+			)
+		)
+	)
+	\\
+	
+	
+	-W \Phi v_j
+	&
+	\frac{1}{\rho W^2 h} \cdot 
+	W (h \Phi + (1 - 2 h) (\Phi - W^2)) \cdot
+	(
+		\delta^k_j 
+		+ \frac{
+			W^2 (2 h - 1) (\gamma - 1)
+		}{ 
+			W^2 
+			+ \epsilon \gamma (1 - (\gamma - 2) (W^2 - 1))
+		} \cdot v^k v_j
+	)
+	&
+	-\frac{1}{\rho} W (h W^2 + \epsilon (\gamma - 1)) v_j
+	\\
+	
+	W (\Phi - 1)
+	&
+	 
+	-\frac{1}{\rho} W \gamma v^k 
+	&
+	 
+	\frac{1}{\rho} h W^3
+
+\end{matrix}\right]$<br>
+<br>
 
 <b>change in flux wrt primitive variables:</b><br>
 
