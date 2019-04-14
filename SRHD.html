@@ -595,10 +595,18 @@ $\frac{1}{W (h \Phi + (1 - 2 h) (\Phi - W^2))} \cdot
 $\frac{\partial U_I}{\partial W_J} \cdot \frac{\partial W_J}{\partial U_K}$<br>
 <br>
 
-$\left[\matrix{
-	D_{,\rho}		& D_{,v_j}		& D_{,\epsilon}		\\
-	S_{i,\rho}		& S_{i,v_j}	& 	S_{i,\epsilon}	\\
-	\tau_{,\rho}	& \tau_{,v_j}	& \tau_{,\epsilon}
+$= \left[\matrix{
+	W &
+	 \rho W^3 v_j &
+	 0 \\
+	
+	h W^2 v_i &
+	 \rho h W^2 (2 W^2 v_i v_j + \delta_{ij}) &
+	 \gamma \rho W^2 v_i \\
+	
+	W (h W - 1) - (\gamma - 1) \epsilon &
+	 \rho W^3 v_j (2 h W - 1) &
+	 \rho (\gamma W^2 - (\gamma - 1))
 }\right]
 \cdot
 
@@ -667,6 +675,49 @@ $\left[\matrix{
 	\frac{1}{\rho} h W^3
 
 \end{matrix}\right]$<br>
+
+$= \frac{1}{W (h \Phi + (1 - 2 h) (\Phi - W^2))} \cdot
+\overset{\downarrow I \rightarrow K}{\left[\begin{matrix}
+	W (2 h W^2 - \Phi h + \Phi - 1) 
+	-W \Phi v_j \rho W^3 v_j 
+	&
+	&
+	\\
+
+	&
+	&
+	\\
+
+	&
+	&
+	\\
+
+\end{matrix}\right]}$<br>
+
+$= \frac{1}{W (h \Phi + (1 - 2 h) (\Phi - W^2))} \cdot
+\overset{\downarrow I \rightarrow K}{\left[\begin{matrix}
+
+	W (h \Phi + (1 - 2 h) (\Phi - W^2)) 
+	
+	+ ... (erroneous terms) ... \gamma W (1 - W) (W^2 - 1)
+	
+	&
+
+	&
+	&
+	\\
+
+	&
+	&
+	\\
+
+	&
+	&
+	\\
+
+\end{matrix}\right]}$<br>
+
+
 <br>
 
 <b>change in flux wrt primitive variables:</b><br>

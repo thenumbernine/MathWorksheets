@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<title>Schwarzschild</title>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+	</head>
+    <body onload='tryToFindMathJax();'>
+
+<h3>Schwarzschild metric</h3>
+<br>
+
+$ds^2 = (\frac{R - r}{r}) dt^2 + (\frac{r}{r - R}) dr^2 + r^2 (d\theta^2 + sin(\theta)^2 d\phi^2)$<br>
+<br>
+
+$g_{tt} = \frac{R - r}{r}$<br>
+$g_{rr} = \frac{r}{r - R}$<br>
+$g_{\theta\theta} = r^2$<br>
+$g_{\phi\phi} = r^2 sin(\theta)^2$<br>
+<br>
+
+$g^{tt} = \frac{r}{R - r}$<br>
+$g^{rr} = \frac{r - R}{r}$<br>
+$g^{\theta\theta} = \frac{1}{r^2}$<br>
+$g^{\phi\phi} = \frac{1}{r^2 sin(\theta)^2}$<br>
+<br>
+
+$g_{tt,r} = -\frac{R}{r^2}$<br>
+$g_{rr,r} = -\frac{1}{(1 - \frac{R}{r})^2} \cdot \frac{R}{r^2} 
+	= -\frac{R}{r^2 (1 - \frac{R}{r})^2}$<br>
+$g_{\theta\theta,r} = 2r$<br>
+$g_{\phi\phi,r} = 2 r sin(\theta)^2$<br>
+$g_{\phi\phi,\theta} = 2 r^2 sin(\theta) cos(\theta)$<br>
+<br>
+
+$\Gamma_{abc} = \frac{1}{2} ( g_{ab,c} + g_{ac,b} - g_{bc,a} )$<br>
+$\Gamma_{rrr} = \frac{1}{2} g_{rr,r} = -\frac{R}{2 r^2 (1 - \frac{R}{r})^2}$<br>
+$\Gamma_{rtt} = -\frac{1}{2} g_{tt,r} = \frac{R}{2 r^2}$<br>
+$\Gamma_{trt} = \Gamma_{ttr} = \frac{1}{2} g_{tt,r} = -\frac{R}{2 r^2}$<br>
+$\Gamma_{r\theta\theta} = -\frac{1}{2} g_{\theta\theta,r} = -r$<br>
+$\Gamma_{\theta r\theta} = \Gamma_{\theta\theta r} = \frac{1}{2} g_{\theta\theta r} = r$<br>
+$\Gamma_{r\phi\phi} = -\frac{1}{2} g_{\phi\phi,r} = -r sin(\theta)^2$<br>
+$\Gamma_{\phi r\phi} = \Gamma_{\phi\phi r} = \frac{1}{2} g_{\phi\phi,r} = r sin(\theta)^2$<br>
+$\Gamma_{\theta\phi\phi} = -\frac{1}{2} g_{\phi\phi,\theta} = -r^2 sin(\theta) cos(\theta)$<br>
+$\Gamma_{\phi\theta\phi} = \Gamma_{\phi\phi\theta} = \frac{1}{2} g_{\phi\phi,\theta} = r^2 sin(\theta) cos(\theta)$<br>
+<br>
+
+${\Gamma^r}_{rr} = g^{rr} \Gamma_{rrr} = (1 - \frac{R}{r}) \cdot -\frac{R}{2 r^2 (1 - \frac{R}{r})^2} = -\frac{R}{2 r^2 (1 - \frac{R}{r})}$<br>
+${\Gamma^r}_{tt} = g^{rr} \Gamma_{rtt} = (1 - \frac{R}{r}) \cdot \frac{R}{2 r^2} = \frac{R (1 - \frac{R}{r})}{2 r^2}$<br>
+${\Gamma^t}_{rt} = {\Gamma^t}_{tr} = g^{tt} \Gamma_{trt} = -\frac{1}{(1 - \frac{R}{r})} \cdot -\frac{R}{2 r^2} = \frac{R}{2 r^2 (1 - \frac{R}{r})}$<br>
+${\Gamma^r}_{\theta\theta} = g^{rr} \Gamma_{r\theta\theta} = (1 - \frac{R}{r}) \cdot -r = R - r$<br>
+${\Gamma^\theta}_{r\theta} = {\Gamma^\theta}_{\theta r} = g^{\theta\theta} \Gamma_{\theta\theta r} = \frac{1}{r^2} \cdot r = \frac{1}{r}$<br>
+${\Gamma^r}_{\phi\phi} = g^{rr} \Gamma_{r\phi\phi} = (1 - \frac{R}{r}) \cdot -r sin(\theta)^2 = (R - r) sin(\theta)^2$<br>
+${\Gamma^\phi}_{r\phi} = {\Gamma^\phi}_{\phi r} = g^{\phi\phi} \Gamma_{\phi\phi r} = \frac{1}{r^2 sin(\theta)^2} \cdot r sin(\theta)^2 = \frac{1}{r}$<br>
+${\Gamma^\phi}_{\theta\phi} = {\Gamma^\phi}_{\phi\theta} = g^{\phi\phi} \Gamma_{\phi\theta\phi} = \frac{1}{r^2 sin(\theta)^2} \cdot r^2 sin(\theta) cos(\theta) = \frac{cos(\theta)}{sin(\theta)}$<br> 
+<br>
+
+Gravity is from:<br>
+$\ddot{r} = -{\Gamma^r}_{tt} (\dot{t})^2 + ...$<br>
+For $\dot{t} = 1$ and $\dot{x}^i = 0$ otherwise<br>
+$\ddot{r} = \frac{R (R - r)}{2 r^3}$<br>
+Let $2 M = R$, for mass $M$<br>
+$\ddot{r} = -\frac{M}{r^2} (1 - \frac{2 M}{r})$<br>
+<br>
+
+<hr>
+<br>
+
+Now again but with $R_{,u} \ne 0$<br>
+<br>
+
+$g_{tt,u} = ((R_{,u} - \delta_{ru}) r - (R - r) \delta_{ru}) / r^2$<br>
+$g_{tt,t} = R_{,t} / r$<br>
+$g_{tt,r} = (R_{,r} r - R) / r^2$<br>
+$g_{tt,\theta} = R_{,\theta} / r$<br>
+$g_{tt,\phi} = R_{,\phi} / r$<br>
+$g_{rr,u} = (\delta_{ru} (r - R) - r (\delta_{ru} - R_{,u})) / (r - R)^2$<br>
+$g_{rr,t} = r R_{,t} / (r - R)^2$<br>
+$g_{rr,r} = (r - R + r R_{,r}) / (r - R)^2$<br>
+$g_{rr,\theta} = r R_{,\theta} / (r - R)^2$<br>
+$g_{rr,\phi} = r R_{,\phi} / (r - R)^2$<br>
+$g_{\theta\theta,r} = 2 r$<br>
+$g_{\phi\phi,r} = 2 r sin(\theta)^2$<br>
+$g_{\phi\phi,\theta} = 2 r^2 sin(\theta) cos(\theta)$<br>
+<br>
+
+$\Gamma_{rtt} = \frac{1}{2} (g_{rt,t} + g_{rt,t} - g_{tt,r}) = \frac{R - R_{,r} r}{2 r^2}$<br>
+${\Gamma^r}_{tt} = \frac{r - R}{r} \cdot \frac{R - R_{,r} r}{2 r^2} = \frac{(r - R)(R - R_{,r} r)}{2 r^3}$<br>
+<br>
+
+Gravity is:<br>
+$\ddot{r} = -{\Gamma^r}_{tt} (\dot{t})^2 + ...$<br>
+For $\dot{t} = 1$ and $\dot{x}^i = 0$ otherwise.<br>
+Let $2 M = R$, for mass $M$<br>
+$\ddot{r} = (\frac{2 M_{,r}}{r} - \frac{M}{r^2}) (1 - \frac{2M}{r})$<br>
+Representing everything as meters...<br>
+$\ddot{r} = G (\frac{2 M_{,r}}{r} - \frac{M}{r^2}) (1 - \frac{2M}{r})$<br>
+For $G = 6.67384 \cdot 10^{-11} \frac{m^3}{kg \cdot s^2}$<br>
+<br>
+
+For the Earth, $R = 0.00887 m$, and at the surface $r = 6.371 \cdot 10^6 m$, so $\frac{R}{r} = 1.3922461152095 \cdot 10^{-9} m$<br>
+So lets assume $\frac{R}{r} \approx 0$.<br> 
+For the Earth $M = 5.972 \cdot 10^{24} kg$, $M_{,r} = 0$<br>
+$\ddot{r} = -\frac{G M}{r^2}$<br>
+Looks just like Newton gravitation accelertion.<br>
+<br>
+
+Let's assume M is much smaller, such that $\frac{M}{r^2} \approx 0$<br>
+Also assume $r \approx 1 m$<br>
+$\ddot{r} = \frac{2 G M_{,r}}{r} = 2 \cdot (6.67384 \cdot 10^{-11} \frac{m^3}{kg \cdot s^2}) \cdot (\frac{1}{1 m}) \cdot (\frac{\partial M}{\partial r})$<br>
+<br>
+
+While we're here, let's look at charge:<br>
+Replace M with q<br>
+Using $C = 8.6172202304994 \cdot 10^{-18} m$, assuming q is in units of C.<br>
+$\ddot{r} = \frac{2 q_{,r}}{r} = 2 \cdot (8.6172202304994 \cdot 10^{-18} \frac{m}{C}) \cdot (299792458 \frac{m}{s})^2 \cdot (\frac{1}{1 m}) \cdot (\frac{\partial q}{\partial r})$<br>
+$ = 2 \cdot (0.86172202304994 \cdot 10^{-17} \frac{1}{C}) \cdot (0.89875517873681764 \cdot 10^{17} \frac{m^2}{s^2}) \cdot (\frac{\partial q}{\partial r})$<br>
+$ = 1.5489542616954018298980047858832 \cdot \frac{\partial q}{\partial r} \frac{1}{C} \cdot \frac{m^2}{s^2}$<br>
+$ \approx 1.5 \cdot \frac{\partial q}{\partial r} \frac{1}{C} \cdot \frac{m^2}{s^2}$<br>
+
+<br>
+
+</html>

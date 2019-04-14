@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="utf-8">
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<title>Maxwell equations with octonions</title>
+	</head>
+	<body onload='tryToFindMathJax();'>
+
+Octonions from the Cayley-Dickson page:<br>
+$\matrix{
+		& e_0 & e_1 & e_2 & e_3 & e_4 & e_5 & e_6 & e_7 \\
+	e_0 & e_0 & e_1 & e_2 & e_3 & e_4 & e_5 & e_6 & e_7 \\
+	e_1 & e_1 & -e_0 & e_3 & -e_2 & e_5 & -e_4 & -e_7 & e_6 \\
+	e_2 & e_2 & -e_3 & -e_0 & e_1 & e_6 & e_7 & -e_4 & -e_5 \\
+	e_3 & e_3 & e_2 & -e_1 & -e_0 & e_7 & -e_6 & e_5 & -e_4 \\
+	e_4 & e_4 & -e_5 & -e_6 & -e_7 & -e_0 & e_1 & e_2 & e_3 \\
+	e_5 & e_5 & e_4 & -e_7 & e_6 & -e_1 & -e_0 & -e_3 & e_2 \\
+	e_6 & e_6 & e_7 & e_4 & -e_5 & -e_2 & e_3 & -e_0 & -e_1 \\
+	e_7 & e_7 & -e_6 & e_5 & e_4 & -e_3 & -e_2 & e_1 & -e_0 \\
+}$<br>
+<br>
+
+in shorthand?:<br>
+$\matrix{
+					& e_0 a				& e_{123} \vec{A} 												& e_4 a 				& e_{567} \vec{A} 	\\
+	e_0 b 			& e_0 a b			& e_{123} \vec{A} b 											& e_4 a					& e_{567} \vec{A} b \\
+	e_{123} \vec{B} & e_{123} a \vec{B}	& -e_0 \vec{A} \cdot \vec{B} + e_{123} \vec{A} \times \vec{B}	& e_{567} a \vec{B} 	& -e_4 \vec{A} \cdot \vec{B} - e_{567} \vec{A} \times \vec{B} \\
+	e_4 b 			& e_4 a b			& -e_{567} \vec{A} b 											& -e_0 a b				& e_{123} \vec{A} b \\
+	e_{567} \vec{B} & e_{567} a \vec{B}	& e_4 \vec{A} \cdot \vec{B} - e_{567} \vec{A} \times \vec{B} 	& -e_{123} a \vec{B} 	& -e_0 \vec{A} \cdot \vec{B} - e_{123} \vec{A} \times \vec{B}
+}$<br>
+<br>
+
+This is just an idea of incorporating vector notation.  Not a good one though.  What would be a better one?<br>
+<br>
+
+<hr>
+<br>
+
+$J = e_1 J_x + e_2 J_y + e_3 J_z$<br>
+<br>
+
+$E = e_1 E_x + e_2 E_y + e_3 E_z$<br>
+<br>
+
+$B = e_1 B_x + e_2 B_y + e_3 B_z$<br>
+<br>
+
+$F = E - e_4 B$<br>
+$F = e_1 E_x + e_2 E_y + e_3 E_z + e_5 B_x + e_6 B_y + e_7 B_z$<br>
+<Br>
+
+$D = e_1 \partial_x + e_2 \partial_y + e_3 \partial_z - e_4 \partial_t$<br>
+<br>
+
+$K = e_4 (J + e_4 \rho)$<br>
+$K = -e_0 \rho - e_5 J_x - e_6 J_y - e_7 J_z$<br>
+<br>
+
+$D F = K$<br>
+<br>
+
+gives...<br>
+$(e_1 \partial_x + e_2 \partial_y + e_3 \partial_z - e_4 \partial_t) (e_1 E_x + e_2 E_y + e_3 E_z + e_5 B_x + e_6 B_y + e_7 B_z) = -e_0 \rho - e_5 J_x - e_6 J_y - e_7 J_z$<br>
+$(e_{123} \vec{\nabla} - e_4 \partial_t) ( e_{123} \vec{E} + e_{567} \vec{B}) = -e_0 \rho - e_{567} \vec{J}$<br>
+$e_{123} \vec{\nabla} e_{123} \vec{E} 
+	- e_4 \partial_t e_{123} \vec{E} 
+	+ e_{123} \vec{\nabla} e_{567} \vec{B} 
+	- e_4 \partial_t e_{567} \vec{B} 
+	= -e_0 \rho - e_{567} \vec{J}$<br>
+$
+-e_0 (\vec{\nabla} \cdot \vec{E}) + e_{123} (\vec{\nabla} \times \vec{E})
+	+ e_{567} \partial_t \vec{E} 
+	- e_4 \vec{\nabla} \cdot \vec{B} - e_{567} (\vec{\nabla} \times \vec{B})
+	+ e_{123} \partial_t \vec{B} 
+	= -e_0 \rho - e_{567} \vec{J}$<br>
+<br>
+
+unraveled:<br>
+$\begin{matrix}
+	e_0:	& \vec{\nabla} \cdot \vec{E} = \rho \\
+	e_4:	& \vec{\nabla} \cdot \vec{B} = 0 \\
+	e_{123}:& \partial_t \vec{B} + \vec{\nabla} \times \vec{E}  = 0 \\
+	e_{567}:& -\partial_t \vec{E} + \vec{\nabla} \times \vec{B} = \vec{J}
+\end{matrix}$<br>
+<br>
+
+	</body>
+</html>

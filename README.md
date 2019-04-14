@@ -128,6 +128,8 @@ Here's the CDN URLs:
 
 [Maxwell in inhomogeneous medium](https://thenumbernine.github.io/math/Maxwell%20in%20inhomogeneous%20medium.html)
 
+[Maxwell octonions](https://thenumbernine.github.io/math/Maxwell%20octonions.html)
+
 [Metric Eigenmodes 2](https://thenumbernine.github.io/math/Metric%20Eigenmodes%202.html)
 
 [Metric Eigenmodes](https://thenumbernine.github.io/math/Metric%20Eigenmodes.html)
@@ -167,6 +169,8 @@ Here's the CDN URLs:
 [Relativistic Electromagnetism metric](https://thenumbernine.github.io/math/Relativistic%20Electromagnetism%20metric.html)
 
 [SRHD](https://thenumbernine.github.io/math/SRHD.html)
+
+[Schwarzschild](https://thenumbernine.github.io/math/Schwarzschild.html)
 
 [Solving Connections From Riemann](https://thenumbernine.github.io/math/Solving%20Connections%20From%20Riemann.html)
 
