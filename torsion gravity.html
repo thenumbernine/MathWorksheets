@@ -3,14 +3,14 @@
 	<head>
         <meta charset='utf-8'>
 		<script type='text/javascript' src='tryToFindMathJax.js'></script>
-		<title>relativistic electromagnetism in medium</title>
+		<title>torsion gravity due to relativistic electromagnetism in medium</title>
 	</head>
 	<body onload='tryToFindMathJax();'>
 
 from my "relativistic electromagnetic metric in medium" worksheet:<br>
 <br>
 
-$T_{ab}$ is the stress-energy tensor.<br>
+$T_{ab}$ is the stress-energy tensor, in units of $\frac{kg}{m \cdot s^2}$.<br>
 $\mathcal{S}_i$ is the Poynting field vector.<br>
 $\mathcal{E}_i = \frac{1}{\epsilon} \mathcal{D}_i$ is the electric field vector.<br>
 $\mathcal{H}_i = \frac{1}{\mu} \mathcal{B}_i$ is the magnetic field vector.<br>
@@ -50,119 +50,169 @@ $R_{[ab]} = 8 \pi \frac{G}{c^4} T_{[ab]}$<br>
 
 
 first Bianchi identity / antisymmetry of Ricci tensor with torsion:<br>
-${S^a}_{bc}$ is the torsion tensor<br>
+${T^a}_{bc}$ is the torsion tensor<br>
 $R_{[ab]} = \frac{3}{2} (
-	\nabla_{[u} {S^u}_{ba]} + {S^u}_{v[u} {S^v}_{ba]}
+	\nabla_{[u} {T^u}_{ba]} + {T^u}_{v[u} {T^v}_{ba]}
 )$<br>
 $R_{[ab]} = \frac{1}{2} (
-	  \partial_u {S^u}_{ba} 
-	+ \partial_b {S^u}_{au} 
-	+ \partial_a {S^u}_{ub} 
+	  \partial_u {T^u}_{ba} 
+	+ \partial_b {T^u}_{au} 
+	+ \partial_a {T^u}_{ub} 
 	
-	+ {\Gamma^u}_{uv} {S^v}_{ba}
-	+ {\Gamma^u}_{bv} {S^v}_{au}
-	+ {\Gamma^u}_{av} {S^v}_{ub}
+	+ {\Gamma^u}_{uv} {T^v}_{ba}
+	+ {\Gamma^u}_{bv} {T^v}_{au}
+	+ {\Gamma^u}_{av} {T^v}_{ub}
 	
-	- {\Gamma^v}_{ub} {S^u}_{va}
-	- {\Gamma^v}_{ba} {S^u}_{vu}
-	- {\Gamma^v}_{au} {S^u}_{vb}
+	- {\Gamma^v}_{ub} {T^u}_{va}
+	- {\Gamma^v}_{ba} {T^u}_{vu}
+	- {\Gamma^v}_{au} {T^u}_{vb}
 	
-	- {\Gamma^v}_{ua} {S^u}_{bv}
-	- {\Gamma^v}_{ab} {S^u}_{uv}
-	- {\Gamma^v}_{bu} {S^u}_{av}
+	- {\Gamma^v}_{ua} {T^u}_{bv}
+	- {\Gamma^v}_{ab} {T^u}_{uv}
+	- {\Gamma^v}_{bu} {T^u}_{av}
 	
-	+ {S^u}_{vu} {S^v}_{ba}
-	+ {S^u}_{vb} {S^v}_{au}
-	+ {S^u}_{va} {S^v}_{ub}
+	+ {T^u}_{vu} {T^v}_{ba}
+	+ {T^u}_{vb} {T^v}_{au}
+	+ {T^u}_{va} {T^v}_{ub}
 )$<br>
 $R_{[ab]} = \frac{1}{2} (
-	  \partial_u {S^u}_{ba}
-	+ \partial_b {S^u}_{au}
-	+ \partial_a {S^u}_{ub}
+	  \partial_u {T^u}_{ba}
+	+ \partial_b {T^u}_{au}
+	+ \partial_a {T^u}_{ub}
 	
-	+ {\Gamma^v}_{vu} {S^u}_{ba}
-	+ {\Gamma^v}_{ua} {S^u}_{vb}
-	+ {\Gamma^v}_{ub} {S^u}_{av}
+	+ {\Gamma^v}_{vu} {T^u}_{ba}
+	+ {\Gamma^v}_{ua} {T^u}_{vb}
+	+ {\Gamma^v}_{ub} {T^u}_{av}
 	
-	- {c_{ab}}^v {S^u}_{uv}
+	- {c_{ab}}^v {T^u}_{uv}
 )$<br>
 <br>
 
 geodesic component due to torsion:<br>
-$(\dot{u}^i)_{\Theta} = u_b {S^b}_{dc} u^c g^{di}$<br>
-$(\dot{u}^i)_{\Theta} = u_b S^{bic} u_c$<br>
+$(\dot{u}^i)_{\Theta} = u_b {T^b}_{dc} u^c g^{di}$<br>
+$(\dot{u}^i)_{\Theta} = u_b T^{bic} u_c$<br>
 ...low-velocity approximation ($u_0 \approx 1, u_i \approx \frac{v_i}{c}$)<br>
-$(\dot{u}^i)_{\Theta} = S^{0i0}$<br>
+$(\dot{u}^i)_{\Theta} = T^{0i0}$<br>
 <br>
 
 Plane wave representation:<br>
 $q = \hat{q} exp(i \tilde{q}_u x^u)$<br>
-${S^a}_{bc} = {\hat{S}^a}_{bc} exp(i \tilde{S}_u x^u)$<br>
-${S^a}_{bc,d} = i \tilde{S}_d {\hat{S}^a}_{bc} exp(i \tilde{S}_u x^u) = i {S^a}_{bc} \tilde{S}_d$<br>
+${T^a}_{bc} = {\hat{T}^a}_{bc} exp(i \tilde{T}_u x^u)$<br>
+${T^a}_{bc,d} = i \tilde{T}_d {\hat{T}^a}_{bc} exp(i \tilde{T}_u x^u) = i {T^a}_{bc} \tilde{T}_d$<br>
 <br>
 
 $R_{[ab]} = \frac{1}{2} (
-	  (\tilde{S}_u + {\Gamma^v}_{vu}) {S^u}_{ba}
-	+ (\delta^v_u \tilde{S}_b + {\Gamma^v}_{ub}) {S^u}_{av}
-	+ (\delta^v_u \tilde{S}_a + {\Gamma^v}_{ua}) {S^u}_{vb}
-	- {c_{ab}}^v {S^u}_{uv}
+	  (\tilde{T}_u + {\Gamma^v}_{vu}) {T^u}_{ba}
+	+ (\delta^v_u \tilde{T}_b + {\Gamma^v}_{ub}) {T^u}_{av}
+	+ (\delta^v_u \tilde{T}_a + {\Gamma^v}_{ua}) {T^u}_{vb}
+	- {c_{ab}}^v {T^u}_{uv}
 )$<br>
 <br>
 
 $R_{[ab]} = 8 \pi \frac{G}{c^4} T_{[ab]}$<br>
 $\frac{1}{2} (
-	  (\tilde{S}_u + {\Gamma^v}_{vu}) {S^u}_{ba}
-	+ (\delta^v_u \tilde{S}_b + {\Gamma^v}_{ub}) {S^u}_{av}
-	+ (\delta^v_u \tilde{S}_a + {\Gamma^v}_{ua}) {S^u}_{vb}
-	- {c_{ab}}^v {S^u}_{uv}
+	  (\tilde{T}_u + {\Gamma^v}_{vu}) {T^u}_{ba}
+	+ (\delta^v_u \tilde{T}_b + {\Gamma^v}_{ub}) {T^u}_{av}
+	+ (\delta^v_u \tilde{T}_a + {\Gamma^v}_{ua}) {T^u}_{vb}
+	- {c_{ab}}^v {T^u}_{uv}
 ) = 8 \pi \frac{G}{c^4} T_{[ab]}$<br>
 <br>
 
 separate into space/time<br>
 $\frac{1}{2} (
-	  (\tilde{S}_u + {\Gamma^v}_{vu}) {S^u}_{i0}
-	+ (\delta^v_u \tilde{S}_i + {\Gamma^v}_{ui}) {S^u}_{0v}
-	+ (\delta^v_u \tilde{S}_0 + {\Gamma^v}_{u0}) {S^u}_{vi}
-	- {c_{0i}}^v {S^u}_{uv}
+	  (\tilde{T}_u + {\Gamma^v}_{vu}) {T^u}_{i0}
+	+ (\delta^v_u \tilde{T}_i + {\Gamma^v}_{ui}) {T^u}_{0v}
+	+ (\delta^v_u \tilde{T}_0 + {\Gamma^v}_{u0}) {T^u}_{vi}
+	- {c_{0i}}^v {T^u}_{uv}
 ) = 8 \pi \frac{G}{c^4} T_{[0i]} 
 = 4 \pi \frac{G}{c^5} (n^2 - 1) (
 	\alpha \mathcal{S}_i
 	+ \frac{1}{\alpha} \epsilon_{jkl} \mathcal{H}^k \beta^l \mathcal{E}_m \beta^m
 )$<br>
 $\frac{1}{2} (
-	  (\tilde{S}_u + {\Gamma^v}_{vu}) {S^u}_{ji}
-	+ (\delta^v_u \tilde{S}_j + {\Gamma^v}_{uj}) {S^u}_{iv}
-	+ (\delta^v_u \tilde{S}_i + {\Gamma^v}_{ui}) {S^u}_{vj}
-	- {c_{ij}}^v {S^u}_{uv}
+	  (\tilde{T}_u + {\Gamma^v}_{vu}) {T^u}_{ji}
+	+ (\delta^v_u \tilde{T}_j + {\Gamma^v}_{uj}) {T^u}_{iv}
+	+ (\delta^v_u \tilde{T}_i + {\Gamma^v}_{ui}) {T^u}_{vj}
+	- {c_{ij}}^v {T^u}_{uv}
 ) = 8 \pi \frac{G}{c^4} T_{[ij]} 
 = 8 \pi \frac{G}{c^5} (n^2 - 1) \frac{1}{\alpha} \mathcal{E}_{[i} \epsilon_{j]kl} \mathcal{H}^k \beta^l$<br>
 <br>
 
 Hmm, maybe I can isolate the torsion before splitting into space/time?<br>
 $(
-	  \delta^r_a \delta^q_b \tilde{S}_p 
-	+ \delta^q_a \delta^r_p \tilde{S}_b
-	+ \delta^r_b  \delta^q_p \tilde{S}_a
+	  \delta^r_a \delta^q_b \tilde{T}_p 
+	+ \delta^q_a \delta^r_p \tilde{T}_b
+	+ \delta^r_b  \delta^q_p \tilde{T}_a
 	+ \delta^r_a \delta^q_b {\Gamma^v}_{vp}
 	+ \delta^q_a {\Gamma^r}_{pb}
 	+ \delta^r_b {\Gamma^q}_{pa}
 	- \delta^q_p {c_{ab}}^r
-) {S^p}_{qr}
+) {T^p}_{qr}
  = 16 \pi \frac{G}{c^4} T_{[ab]}$<br>
-...and how do I invert this, to solve for ${S^a}_{bc}$?<br>
+...and how do I invert this, to solve for ${T^a}_{bc}$?<br>
 
 
 One thing to note, the torsion geodesic component is only influenced by the symmetric components of the 1st and 3rd indexes of the torsion tensor...  maybe I can isolate that?<br>
 That term does uniquely show up in the relation with stress energy as...<br>
-$\frac{1}{2} {c_{ab}}^v {S^u}_{vu} + \tilde{S}_{[b} {S^u}_{a]u} + ... = 8 \pi \frac{G}{c^4} T_{[ab]}$<br>
-${S^u}_{iu} \approx {S^0}_{i0} \approx 16 \pi \frac{G}{c^4} \frac{1}{\tilde{S}_{0}} T_{i0} = -8 \pi \frac{G}{c^5} \frac{1}{\tilde{S}_{0}} (n^2 - 1) (\alpha \mathcal{S}_i + \frac{1}{\alpha} \epsilon_{jkl} \mathcal{H}^k \beta^l \mathcal{E}_m \beta^m)$<br>
-...for $g_{ab} \approx \eta_{ab}$, so ${S^0}_{i0} \approx -S_{0i0}$<br>
-$S_{0i0} \approx 8 \pi \frac{G}{c^5} \frac{1}{\tilde{S}_{0}} (n^2 - 1) (\alpha \mathcal{S}_i + \frac{1}{\alpha} \epsilon_{jkl} \mathcal{H}^k \beta^l \mathcal{E}_m \beta^m)$<br>
-$(\dot{u}_i)_{\Theta} \approx 8 \pi \frac{G}{c^5} \frac{1}{\tilde{S}_{0}} (n^2 - 1) (\alpha \mathcal{S}_i + \frac{1}{\alpha} \epsilon_{jkl} \mathcal{H}^k \beta^l \mathcal{E}_m \beta^m)$<br>
+$\frac{1}{2} {c_{ab}}^v {T^u}_{vu} + \tilde{T}_{[b} {T^u}_{a]u} + ... = 8 \pi \frac{G}{c^4} T_{[ab]}$<br>
+${T^u}_{iu} \approx {T^0}_{i0} \approx 16 \pi \frac{G}{c^4} \frac{1}{\tilde{T}_{0}} T_{i0} = -8 \pi \frac{G}{c^5} \frac{1}{\tilde{T}_{0}} (n^2 - 1) (\alpha \mathcal{S}_i + \frac{1}{\alpha} \epsilon_{jkl} \mathcal{H}^k \beta^l \mathcal{E}_m \beta^m)$<br>
+...for $g_{ab} \approx \eta_{ab}$, so ${T^0}_{i0} \approx -T_{0i0}$<br>
+$T_{0i0} \approx 8 \pi \frac{G}{c^5} \frac{1}{\tilde{T}_{0}} (n^2 - 1) (\alpha \mathcal{S}_i + \frac{1}{\alpha} \epsilon_{jkl} \mathcal{H}^k \beta^l \mathcal{E}_m \beta^m)$<br>
+$(\dot{u}_i)_{\Theta} \approx 8 \pi \frac{G}{c^5} \frac{1}{\tilde{T}_{0}} (n^2 - 1) (\alpha \mathcal{S}_i + \frac{1}{\alpha} \epsilon_{jkl} \mathcal{H}^k \beta^l \mathcal{E}_m \beta^m)$<br>
 ...for $g_{ab} \approx \eta_{ab}$ ...<br>
-$(\dot{u}_i)_{\Theta} \approx 8 \pi \frac{G}{c^5} \frac{1}{\tilde{S}_{0}} (n^2 - 1) \mathcal{S}_i$<br>
+$(\dot{u}_i)_{\Theta} \approx 8 \pi \frac{G}{c^5} \frac{1}{\tilde{T}_{0}} (n^2 - 1) \mathcal{S}_i$<br>
+<br>
+<hr>
 <br>
 
+Now for the influence of Noether current and spin tensor onto torsion.<br>
+Going off of the <a href='https://en.wikipedia.org/wiki/Einstein%E2%80%93Cartan_theory'>Einstein-Cartan-Sciama-Kibble Wikipedia page</a>.<br>
+(I'm moving the last index to the first, so it matches with my 'Differential Geometry' worksheets...)<br>
+TODO more background and derivation of these relations.<br>
+${T^c}_{ab} + {T^d}_{da} \delta_b^c - {T^d}_{db} \delta_a^c = \frac{8 \pi G}{c^4} {S^c}_{ab}$<br>
+(But wait, isn't torsion tensor antisymmetric wrt the two spinning indexes, which in this paper I think is the 1st and 2nd? Doesn't that mean the 1st and 2nd are always zero when contracted with a symmetric tensor?  So where did this relation come from anyways?)<br>
+So ${T^a}_{bc}$ is in units of $\frac{1}{m}$<br>
+And ${S^a}_{bc}$ is in units of $\frac{kg}{s^2}$<br>
+From <a href='https://en.wikipedia.org/wiki/Spin_tensor'>spin tensor</a> Wikipedia page:<br>
+$e_v(T^{uv}) = 0$<br>
+four-momentum: $P^u = \int T^{u0}(x,t) d^4 x$<br>
+$M_y^{abu}(x) = M_0^{abu}(x) + y^a T^{bu}(x) - y^b T^{au}(x)$<br>
+$M_y^{abu}(x) = (y^a - x^a) T^{bu}(x) - (y^b - x^b) T^{au}(x)$<br>
+angular momentum tensor $M^{uv} = \int M_0^{uv0} (x,t) d^4 x$<br>
+$S^{cab}(x) = M_x^{abu}(x) = M_0^{abu}(x) + x^a T^{bu} (x) - x^b T^{au}(x)$<br>
+and $\partial_u M_0^{abu}(x) = 0$<br>
+means $e_u (S^{uab}) = T^{ba} - T^{ab}$<br>	
+<br>
+Misner, Thorne, Wheeler "Gravitation". (Notice MTW operates on the assumption that $T^{[ab]} = 0$.)<br>
+$J^{abc}(\vec{x}, \vec{y}) = (x^a - y^a) T^{bc}(\vec{x}) - (x^b - y^b) T^{ac}(\vec{x})$ eqn. 5.46, where $\vec{x}$ is the 'field point' parameter of $J^{abc}$ and $\vec{y}$ is the 'origin' of the angular momentum field.<br>
+$\frac{\partial}{\partial x^c}( J^{abc} ) = \delta^a_c T^{bc} + (x^a - y^a) \frac{\partial}{\partial x^c}(T^{bc}) - \delta^b_c T^{ac} - (x^b - y^b) \frac{\partial}{\partial x^c}(T^{ac})$ eqn. 5.46<br>
+(how to distinguish between $\frac{\partial}{\partial x^c}$ and $e_c(\cdot)$?)<br>
+$\frac{\partial}{\partial x^c}( J^{abc} ) = T^{ba} - T^{ab} + (x^a - y^a) \frac{\partial}{\partial x^c}(T^{bc}) - (x^b - y^b) \frac{\partial}{\partial x^c}(T^{ac})$ eqn. 5.46<br>
+While MTW has $T^{[ab]} = 0$ and torsion metrics don't, both MTW and Wiki say $\frac{\partial}{\partial x^v}( T^{uv} ) = 0$, though Wiki says $\frac{\partial}{\partial x^u}( T^{uv} )$ is not necessarily zero.<br>
+$\frac{\partial}{\partial x^c}( J^{abc} ) = T^{ba} - T^{ab}$ eqn 5.47<br>
+$e_c( J^{abc} ) = T^{ba} - T^{ab}$<br>
+<br>
 
+Wiki says $P^u = \int T^{u0}(\vec{x},t) d^4 x = \int T^{uv} \Sigma_{vabc} dx^a dx^b dx^c$ ... ? Did I do that right?<br>
+<br>
+<br>
+
+So Wikipedia's M is the same as MTW's J, and S is just the M tensor at $x=0$<br>
+But where does the relation between torsion T and spin S come from?<br>
+<br>
+<br>
+
+${T^c}_{ab} + {T^d}_{da} \delta_b^c - {T^d}_{db} \delta_a^c = \frac{8 \pi G}{c^4} {S^c}_{ab}$<br>
+${T^a}_{ab} + {T^d}_{db} - n {T^d}_{db} = \frac{8 \pi G}{c^4} {S^a}_{ab}$<br>
+${T^a}_{ab} = \frac{8 \pi G}{c^4 (2 - n)} {S^a}_{ab}$<br>
+But wait, aren't these all antisymmetric on the 1st and 2nd indexes?<br>
+Then ${T^a}_{ab} = {S^a}_{ab} = 0$ anyways, and we just get<br>
+${T^c}_{ab} = \frac{8 \pi G}{c^4} {S^c}_{ab}$<br>
+<br>
+<br>
+$[S^{abc}] = [M^{abc}] = [J^{abc}] = [T^{ab}] \cdot m = \frac{kg}{s^2}$<br>
+$[T^{abc}] = \frac{1}{m}$<br>
+<br>
+	
 	</body>
 </html>
