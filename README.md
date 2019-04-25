@@ -16,6 +16,8 @@ Here's the CDN URLs:
 
 [Curvature From Lower Dimensions](https://thenumbernine.github.io/math/Curvature%20From%20Lower%20Dimensions.html)
 
+[Differential Geometry/0 - curves](https://thenumbernine.github.io/math/Differential%20Geometry/0%20%2d%20curves.html)
+
 [Differential Geometry/0 - tensors - intro](https://thenumbernine.github.io/math/Differential%20Geometry/0%20%2d%20tensors%20%2d%20intro.html)
 
 [Differential Geometry/1 - index notation](https://thenumbernine.github.io/math/Differential%20Geometry/1%20%2d%20index%20notation.html)
@@ -65,6 +67,8 @@ Here's the CDN URLs:
 [EMHD Hyperbolic Conservation Laws](https://thenumbernine.github.io/math/EMHD%20Hyperbolic%20Conservation%20Laws.html)
 
 [EMHD Linear Stability Analysis](https://thenumbernine.github.io/math/EMHD%20Linear%20Stability%20Analysis.html)
+
+[Einstein-Cartan-Sciama-Kibble](https://thenumbernine.github.io/math/Einstein%2dCartan%2dSciama%2dKibble.html)
 
 [Einstein-Maxwell Hyperbolic Conservation Laws](https://thenumbernine.github.io/math/Einstein%2dMaxwell%20Hyperbolic%20Conservation%20Laws.html)
 
@@ -170,7 +174,7 @@ Here's the CDN URLs:
 
 [SRHD](https://thenumbernine.github.io/math/SRHD.html)
 
-[Schwarzschild](https://thenumbernine.github.io/math/Schwarzschild.html)
+[Schwarzschild with mass varying with time](https://thenumbernine.github.io/math/Schwarzschild%20with%20mass%20varying%20with%20time.html)
 
 [Solving Connections From Riemann](https://thenumbernine.github.io/math/Solving%20Connections%20From%20Riemann.html)
 

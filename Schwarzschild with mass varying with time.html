@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<title>Schwarzschild</title>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+	</head>
+    <body onload='tryToFindMathJax();'>
+
+<h3>Schwarzschild metric, mass varying with time</h3>
+<br>
+
+Let $c = 299792458 \frac{m}{s} =$ the speed of light.<br>
+<br>
+
+$ds^2 = (\frac{R - r}{r}) (c \cdot dt)^2 + (\frac{r}{r - R}) dr^2 + r^2 (d\theta^2 + sin(\theta)^2 d\phi^2)$<br>
+<br>
+
+$g_{tt} = \frac{R - r}{r}$<br>
+$g_{rr} = \frac{r}{r - R}$<br>
+$g_{\theta\theta} = r^2$<br>
+$g_{\phi\phi} = r^2 sin(\theta)^2$<br>
+<br>
+
+$g^{tt} = \frac{r}{R - r}$<br>
+$g^{rr} = \frac{r - R}{r}$<br>
+$g^{\theta\theta} = \frac{1}{r^2}$<br>
+$g^{\phi\phi} = \frac{1}{r^2 sin(\theta)^2}$<br>
+<br>
+
+$g_{tt,r} = -\frac{R}{r^2}$<br>
+$g_{rr,r} = -\frac{1}{(1 - \frac{R}{r})^2} \cdot \frac{R}{r^2} 
+	= -\frac{R}{r^2 (1 - \frac{R}{r})^2}$<br>
+$g_{\theta\theta,r} = 2r$<br>
+$g_{\phi\phi,r} = 2 r sin(\theta)^2$<br>
+$g_{\phi\phi,\theta} = 2 r^2 sin(\theta) cos(\theta)$<br>
+<br>
+
+$\Gamma_{abc} = \frac{1}{2} ( g_{ab,c} + g_{ac,b} - g_{bc,a} )$<br>
+$\Gamma_{rrr} = \frac{1}{2} g_{rr,r} = -\frac{R}{2 r^2 (1 - \frac{R}{r})^2}$<br>
+$\Gamma_{rtt} = -\frac{1}{2} g_{tt,r} = \frac{R}{2 r^2}$<br>
+$\Gamma_{trt} = \Gamma_{ttr} = \frac{1}{2} g_{tt,r} = -\frac{R}{2 r^2}$<br>
+$\Gamma_{r\theta\theta} = -\frac{1}{2} g_{\theta\theta,r} = -r$<br>
+$\Gamma_{\theta r\theta} = \Gamma_{\theta\theta r} = \frac{1}{2} g_{\theta\theta r} = r$<br>
+$\Gamma_{r\phi\phi} = -\frac{1}{2} g_{\phi\phi,r} = -r sin(\theta)^2$<br>
+$\Gamma_{\phi r\phi} = \Gamma_{\phi\phi r} = \frac{1}{2} g_{\phi\phi,r} = r sin(\theta)^2$<br>
+$\Gamma_{\theta\phi\phi} = -\frac{1}{2} g_{\phi\phi,\theta} = -r^2 sin(\theta) cos(\theta)$<br>
+$\Gamma_{\phi\theta\phi} = \Gamma_{\phi\phi\theta} = \frac{1}{2} g_{\phi\phi,\theta} = r^2 sin(\theta) cos(\theta)$<br>
+<br>
+
+${\Gamma^r}_{rr} = g^{rr} \Gamma_{rrr} = (1 - \frac{R}{r}) \cdot -\frac{R}{2 r^2 (1 - \frac{R}{r})^2} = -\frac{R}{2 r^2 (1 - \frac{R}{r})}$<br>
+${\Gamma^r}_{tt} = g^{rr} \Gamma_{rtt} = (1 - \frac{R}{r}) \cdot \frac{R}{2 r^2} = \frac{R (1 - \frac{R}{r})}{2 r^2}$<br>
+${\Gamma^t}_{rt} = {\Gamma^t}_{tr} = g^{tt} \Gamma_{trt} = -\frac{1}{(1 - \frac{R}{r})} \cdot -\frac{R}{2 r^2} = \frac{R}{2 r^2 (1 - \frac{R}{r})}$<br>
+${\Gamma^r}_{\theta\theta} = g^{rr} \Gamma_{r\theta\theta} = (1 - \frac{R}{r}) \cdot -r = R - r$<br>
+${\Gamma^\theta}_{r\theta} = {\Gamma^\theta}_{\theta r} = g^{\theta\theta} \Gamma_{\theta\theta r} = \frac{1}{r^2} \cdot r = \frac{1}{r}$<br>
+${\Gamma^r}_{\phi\phi} = g^{rr} \Gamma_{r\phi\phi} = (1 - \frac{R}{r}) \cdot -r sin(\theta)^2 = (R - r) sin(\theta)^2$<br>
+${\Gamma^\phi}_{r\phi} = {\Gamma^\phi}_{\phi r} = g^{\phi\phi} \Gamma_{\phi\phi r} = \frac{1}{r^2 sin(\theta)^2} \cdot r sin(\theta)^2 = \frac{1}{r}$<br>
+${\Gamma^\phi}_{\theta\phi} = {\Gamma^\phi}_{\phi\theta} = g^{\phi\phi} \Gamma_{\phi\theta\phi} = \frac{1}{r^2 sin(\theta)^2} \cdot r^2 sin(\theta) cos(\theta) = \frac{cos(\theta)}{sin(\theta)}$<br> 
+<br>
+
+Gravity is from spacetime geodesic acceleration:<br>
+$\ddot{r} = -{\Gamma^r}_{tt} (c \cdot \dot{t})^2 + ...$<br>
+For $\dot{t} = 1$ and $\dot{x}^i = 0$ otherwise<br>
+$\ddot{r} = c^2 \frac{R (R - r)}{2 r^3}$<br>
+Let $2 \frac{G}{c^2} M = R$, for mass M in kg and Schwarzschild radius R in m<br>
+For gravitational constant $G = 6.67384 \cdot 10^{-11} \frac{m^3}{kg \cdot s^2}$<br>
+$\ddot{r}_{Schwarzschild} = -G \frac{M}{r^2} (1 - \frac{G}{c^2} \frac{2 M}{r})$<br>
+<br>
+
+Notice that the ratio of Schwarzschild gravity to Newton gravity is:<br>
+For the Earth:<br>
+$M = 5.972 \cdot 10^{24} kg$<br>
+$R = \frac{2 G M}{c^2}  = 0.00887 m$.
+At the surface $r = 6.371 \cdot 10^6 m$<br>
+so $\frac{R}{r} = \frac{2 G M}{c^2 r} = 1.3922461152095 \cdot 10^{-9}$<br>
+and $1 - \frac{R}{r} = 0.99999999860775$<br> 
+<br>
+
+For very small $\frac{G}{c^2} \frac{2 M}{r}$, we can approximate<br>
+$\ddot{r}_{Newton} = -\frac{G M}{r^2}$<br>
+which is Newton gravity.<br>
+<br>
+
+
+<hr>
+<br>
+
+Now again but with $R_{,u} \ne 0$<br>
+<br>
+
+$g_{tt,u} = ((R_{,u} - \delta_{ru}) r - (R - r) \delta_{ru}) / r^2$<br>
+$g_{tt,t} = R_{,t} / r$<br>
+$g_{tt,r} = (R_{,r} r - R) / r^2$<br>
+$g_{tt,\theta} = R_{,\theta} / r$<br>
+$g_{tt,\phi} = R_{,\phi} / r$<br>
+$g_{rr,u} = (\delta_{ru} (r - R) - r (\delta_{ru} - R_{,u})) / (r - R)^2$<br>
+$g_{rr,t} = r R_{,t} / (r - R)^2$<br>
+$g_{rr,r} = (r - R + r R_{,r}) / (r - R)^2$<br>
+$g_{rr,\theta} = r R_{,\theta} / (r - R)^2$<br>
+$g_{rr,\phi} = r R_{,\phi} / (r - R)^2$<br>
+$g_{\theta\theta,r} = 2 r$<br>
+$g_{\phi\phi,r} = 2 r sin(\theta)^2$<br>
+$g_{\phi\phi,\theta} = 2 r^2 sin(\theta) cos(\theta)$<br>
+<br>
+
+$\Gamma_{rtt} = \frac{1}{2} (g_{rt,t} + g_{rt,t} - g_{tt,r}) = \frac{R - R_{,r} r}{2 r^2}$<br>
+${\Gamma^r}_{tt} = \frac{r - R}{r} \cdot \frac{R - R_{,r} r}{2 r^2} = \frac{(r - R)(R - R_{,r} r)}{2 r^3}$<br>
+<br>
+
+Gravity is:<br>
+$\ddot{r} = -{\Gamma^r}_{tt} (c \cdot \dot{t})^2 + ...$<br>
+For $\dot{t} = 1$ and $\dot{x}^i = 0$ otherwise.<br>
+$\ddot{r} = G (\frac{2 M_{,r}}{r} - \frac{M}{r^2}) (1 - \frac{G}{c^2} \frac{2M}{r})$<br>
+<br>
+
+Let's assume M is much smaller, such that $\frac{M}{r^2} \approx 0$<br>
+$\ddot{r} = \frac{2 G M_{,r}}{r} = 2 \cdot (6.67384 \cdot 10^{-11} \frac{m^3}{kg \cdot s^2}) \cdot \frac{1}{r} \cdot (\frac{\partial M}{\partial r})$<br>
+<br>
+
+While we're here, let's look at charge:<br>
+Replace M with q<br>
+Coulomb's constant:	$k_e = 8987551787.3682 \cdot \frac{kg \cdot m^3}{C^2 \cdot s^2}$<br>
+so $\sqrt{\frac{k_e \cdot G}{c^4}} 
+	= \sqrt{ 
+		\frac{
+			(8987551787.3682 \frac{kg \cdot m^3}{C^2 \cdot s^2}) 
+			\cdot (6.67384 \cdot 10^{-11} \cdot \frac{m^3}{kg \cdot s^2}) 
+		}{
+			(299792458 \frac{m}{s} )^4
+		}
+	} = 8.6172202304994 \cdot 10^{-18} \cdot \frac{m}{C}$<br>
+Also, $\sqrt{k_e \cdot G} = 0.7744771308477 \frac{m^3}{C \cdot s^2}$<br>
+<br>
+
+$\ddot{r} = \frac{2 q_{,r}}{r} = 2 \cdot \sqrt{k_e \cdot G} \cdot \frac{1}{r} \cdot (\frac{\partial q}{\partial r})$<br>
+$ = 2 \cdot (0.7744771308477 \frac{m^3}{C \cdot s^2}) \cdot \frac{1}{r} \cdot (\frac{\partial q}{\partial r})$<br>
+$ = 1.5489542616954018298980047858832 \cdot \frac{\partial q}{\partial r} \cdot \frac{1}{r} \cdot \frac{m^3}{C \cdot s^2}$<br>
+$ \approx 1.5 \cdot \frac{\partial q}{\partial r} \cdot \frac{1}{r} \cdot \frac{m^3}{C \cdot s^2}$<br>
+
+<br>
+
+<hr>
+<br>
+
+Winding a wire into a ball.<br>
+<br>
+
+$l = $ length of wire<br>
+$R_{out} = $ radius of wire<br>
+$r = $ ball radius<br>
+<br>
+
+volume of wire cylinder equals volume of ball:<br>
+$\pi R_{out}^2 l = \frac{4}{3} \pi r^3$<br>
+$l = \frac{4}{3} \frac{r^3}{R_{out}^2}$<br>
+<br>
+
+change in length with respect to change in radius:<br>
+$\frac{\partial l}{\partial r} = 4 (\frac{r}{R_{out}})^2$<br>
+<br>
+
+Assume the wire has a charge density at length $l$ along the wire of $q(l)$ in units of $\frac{C}{m}$<br>
+$q(l) = q_0 \cdot \pi \cdot R_{in}^2 \cdot f(l)$<br>
+$R_{in} =$ the inner radius of the wire which is conductive, so $0 &lt; R_{in} &lt; R_{out}$<br>
+$f(l) = $ the amplitude function of the current through the wire... which should be in terms of time as well as length.<br>
+<br>
+$q_0 =$ the charge density of the material, in units of $\frac{C}{m^3}$<br>
+According to <a href='https://en.wikipedia.org/wiki/Charge_density'>https://en.wikipedia.org/wiki/Charge_density</a>, for copper we get $q_0 = 10^{22} \cdot 1.6 \cdot 10^{-19} \frac{C}{cm^3} \cdot (\frac{100 cm}{1 m})^3 = 1.6 \cdot 10^9 \frac{C}{m^3}$<br>
+<br>
+AWG 10 wire: <a href='https://www.engineeringtoolbox.com/awg-wire-gauge-circular-mils-d_819.html'>https://www.engineeringtoolbox.com/awg-wire-gauge-circular-mils-d_819.html</a>
+has a radius of about 1.3 mm, but this includes the sheath, so that is $R_{out}$<br>
+<br>
+
+$\frac{\partial q}{\partial l} = q_0 \cdot \pi \cdot R_{in}^2 \cdot \frac{\partial f}{\partial l}$<br>
+<br>
+
+$\frac{\partial q}{\partial r} = \frac{\partial q}{\partial l} \cdot \frac{\partial l}{\partial r}$<br>
+$= (q_0 \cdot \pi \cdot R_{in}^2 \cdot \frac{\partial f}{\partial l}) \cdot (4 (\frac{r}{R_{out}})^2)$<br>
+$= 4 \pi q_0 \cdot \frac{\partial f}{\partial l} \cdot (r \frac{R_{in}}{R_{out}})^2$<br>
+Substitute our copper wire values:<br>
+Say $R_{in} \approx R_{out}$<br>
+$\frac{\partial q}{\partial r} = 6.4 \pi \cdot 10^9 \frac{C}{m^3} \cdot r^2 \cdot \frac{\partial f}{\partial l}$<br>
+<br>
+
+substitute into our stress-energy-radially-varying Schwarzschild acceleration formula:<br>
+$\ddot{r} \approx 1.5 \cdot \frac{\partial q}{\partial r} \cdot \frac{1}{r} \cdot \frac{m^3}{C \cdot s^2}$<br>
+$\approx 1.5 \cdot 6.4 \pi \cdot 10^9 \frac{C}{m^3} \cdot r^2 \cdot \frac{\partial f}{\partial l} \cdot \frac{1}{r} \cdot \frac{m^3}{C \cdot s^2}$<br>
+$\approx 1.5 \cdot 6.4 \pi \cdot 10^9 \cdot r \cdot \frac{\partial f}{\partial l} \cdot \frac{1}{s^2}$<br>
+
+</html>
