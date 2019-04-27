@@ -189,7 +189,7 @@ $Q(r,t) = - v \cdot q_0 \cdot \pi \cdot R_{in}^2 \cdot (
 	- \Phi(t) 
 )$<br>
 $Q(r,t)$ is in units of $C$.<br>
-$\frac{d Q}{d r} = \frac{d Q}{d l} \cdot \frac{d l}{d r} = q(l,t) \cdot \frac{d l}{d r} = q(l,t) \cdot 4 \cdot (\frac{r}{R_{out}})^2$ is in units of $\frac{C}{m}$<br>
+$\frac{\partial Q}{\partial r} = \frac{\partial Q}{\partial l} \cdot \frac{d l}{d r} = q(l,t) \cdot \frac{d l}{d r} = q(l,t) \cdot 4 \cdot (\frac{r}{R_{out}})^2$ is in units of $\frac{C}{m}$<br>
 <br>
 
 AWG 10 wire: <a href='https://www.engineeringtoolbox.com/awg-wire-gauge-circular-mils-d_819.html'>https://www.engineeringtoolbox.com/awg-wire-gauge-circular-mils-d_819.html</a>
@@ -208,23 +208,15 @@ copper charge density: $q_0 = 1.3590552871534 \cdot 10^{10} \frac{C}{m^3}$<br>
 <br>
 
 mean velocity of moving electrons: $v_{copper} = \frac{I}{A \cdot q_{copper}} = \frac{I}{\pi R_{in}^2 \cdot q_{copper}}  \approx 7.5 \cdot 10^{-5} \frac{m}{s}$<br>
-$\frac{d f}{d l} =  -\frac{1}{v} \cdot \phi' = -\frac{1}{7.5 \cdot 10^{-5} \frac{m}{s}} \cdot \phi'$<br>
-<br>
-
-$\frac{\partial q}{\partial l} = q_0 \cdot \pi \cdot R_{in}^2 \cdot \frac{d f}{d l}$<br>
-<br>
-
-$\frac{\partial q}{\partial r} = \frac{\partial q}{\partial l} \cdot \frac{\partial l}{\partial r}$<br>
-$= (q_0 \cdot \pi \cdot R_{in}^2 \cdot \frac{d f}{d l}) \cdot (4 (\frac{r}{R_{out}})^2)$<br>
-$= 4 \pi q_0 \cdot \frac{d f}{d l} \cdot (r \frac{R_{in}}{R_{out}})^2$<br>
-Substitute our copper wire values:<br>
-Say $R_{in} \approx R_{out}$<br>
-$\frac{\partial q}{\partial r} = 6.4 \pi \cdot 10^9 \frac{C}{m^3} \cdot r^2 \cdot \frac{d f}{d l}$<br>
 <br>
 
 substitute into our stress-energy-radially-varying Schwarzschild acceleration formula:<br>
-$\ddot{r} \approx 1.5 \cdot \frac{\partial q}{\partial r} \cdot \frac{1}{r} \cdot \frac{m^3}{C \cdot s^2}$<br>
-$\approx 1.5 \cdot 6.4 \pi \cdot 10^9 \frac{C}{m^3} \cdot r^2 \cdot \frac{d f}{d l} \cdot \frac{1}{r} \cdot \frac{m^3}{C \cdot s^2}$<br>
-$\approx -1.5 \cdot 6.4 \cdot \frac{1}{7.5} \cdot \pi \cdot 10^{14} \cdot r \cdot \phi' \cdot \frac{m}{s}$<br>
-
+$\ddot{r} \approx 1.5 \cdot \frac{\partial Q}{\partial r} \cdot \frac{1}{r} \cdot \frac{m^3}{C \cdot s^2}$<br>
+$\ddot{r} \approx 6 \cdot q(l(r),t) \cdot \frac{r}{(R_{out})^2} \cdot \frac{m^3}{C \cdot s^2}$<br>
+$\ddot{r} \approx 6 \pi q_0 f(l(r), t) r \left( \frac{R_{in}}{R_{out}} \right)^2 \frac{m^3}{C \cdot s^2}$<br>
+$\ddot{r} \approx 6 \pi q_0 \phi(t - \frac{4}{3} \frac{1}{v} \frac{r^3}{R_{out}^2}) r \left( \frac{R_{in}}{R_{out}} \right)^2 \frac{m^3}{C \cdot s^2}$<br>
+<br>
+<br>
+	
+	</body>
 </html>
