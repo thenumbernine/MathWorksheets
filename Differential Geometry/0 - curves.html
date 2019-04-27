@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Differential Geometry</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+	</head>
+    <body onload='tryToFindMathJax();'>
+
+<a href='.'>Back</a><br><br>
+<br>
+
+With help from <a href='https://en.wikipedia.org/wiki/Frenet%E2%80%93Serret_formulas'>https://en.wikipedia.org/wiki/Frenet–Serret_formulas</a><Br>
+<br>
+
+Let a curve be defined as $\vec{r}(t) : \mathbb{R} \rightarrow \mathbb{R}^n$<br>
+$\vec{r} = \{ r_i(t), 1 \le i \le n \}$<br>
+<br>
+
+Velocity: $\vec{v} = \frac{\partial \vec{r}}{\partial t}$<br>
+<br>
+
+Speed: $\sigma = |\vec{v}| = \sqrt{\Sigma_j (\frac{\partial r_j}{\partial t})^2 }$<br>
+$\sigma \ge 0$<br>
+$\frac{\partial \sigma}{\partial t} = \frac{1}{2 \sigma}$<br>
+<br>
+
+Arclength: $s(t) := \int_{t_0}^t \sigma(t') dt'$<br>
+$\frac{\partial s}{\partial t} = \sigma$<br>
+<br>
+
+$t = s^{-1}( s(t) )$<br>
+Notice the ambuguity that $(s)$ is a parameter (and can be replaced by any other letter) while $s^{-1}(\cdot)$ is the inverse of the arclength function.<br>
+Arclength inverse:<br>
+$t(s) = s^{-1}( s )$<br>
+<br>
+
+Reparameterization by arclength: $r_i(s) := r_i(t(s))$<br>
+Notice that $r_i(t)$ and $r_i(s)$ are represented identically with the only difference being the parameter variable, however using a $t$ denotes the original function while using a $s$ denotes the arclength parameterization of the function.<br>
+<br>
+
+Velocity wrt arclength:<br>
+$\frac{\partial \vec{r}}{\partial s} = \frac{\partial \vec{r}}{\partial t} \frac{\partial t}{\partial s} = \frac{1}{\sigma} \vec{v}$<br>
+<br>
+
+un-normalized tangent:<br>
+$\vec{\bar{e}}_1 = \frac{\partial \vec{r}}{\partial s}$<br>
+<br>
+
+un-normalized tangent length:<br>
+$|\vec{\bar{e}}_1| = |\frac{\partial \vec{r}}{\partial s}| = \frac{1}{\sigma} |\vec{v}| = \frac{\sigma}{\sigma} = 1$<br>
+<br>
+
+tangent:<br>
+$\vec{e}_1 = unit(\vec{\bar{e}}_1) = \vec{\bar{e}}_1 = \frac{\partial \vec{r}}{\partial s} = \frac{1}{\sigma} \vec{v}$<br>
+$\vec{T} = \vec{e}_1$<br>
+<br>
+
+tangent orthogonality to derivative:<br>
+$\vec{T} \cdot \vec{T} = 1$<br>
+$\frac{\partial}{\partial s} (\vec{T} \cdot \vec{T}) = 0$<br>
+$\frac{\partial \vec{T}}{\partial s} \cdot \vec{T} = 0$<br>
+$\frac{\partial^2 \vec{r}}{\partial s^2} \cdot \frac{\partial \vec{r}}{\partial s} = 0$<br>
+<br>
+
+un-normalized normal:<br>
+$\vec{\bar{e}}_2 = \frac{\partial^2 \vec{r}}{\partial s^2} - (\frac{\partial^2 \vec{r}}{\partial s^2} \cdot \vec{e}_1) \vec{e}_1$<br>
+$= \frac{\partial^2 \vec{r}}{\partial s^2} - (\frac{\partial^2 \vec{r}}{\partial s^2} \cdot \frac{\partial \vec{r}}{\partial s}) \frac{\partial \vec{r}}{\partial s}$<br>
+$= \frac{\partial^2 \vec{r}}{\partial s^2}$<br>
+<br>
+
+normal:<br>
+$\vec{N} = \vec{e}_2$<br>
+$= unit( \vec{\bar{e}}_2 )$<br>
+$= unit( \frac{\partial^2 \vec{r}}{\partial s^2} )$<br>
+$= \frac{
+	\frac{\partial^2 \vec{r}}{\partial s^2}
+}{
+	\left| \frac{\partial^2 \vec{r}}{\partial s^2} \right|
+}$<br>
+<br>
+
+curvature:<br>
+$\chi_1 = \frac{1}{\left|
+	\frac{\partial^2 \vec{r}}{\partial s^2}
+\right|}$<br>
+$\kappa = \chi_1$<br>
+<br>
+
+So $\frac{\partial}{\partial s} \vec{e}_1 = \chi_1 \vec{e}_2$<br>
+i.e. $\frac{\partial}{\partial s} \vec{T} = \kappa \vec{N}$<br>
+<br>
+
+Normal derivative:<br>
+$\frac{\partial}{\partial s} \vec{e}_2
+	= \frac{\partial}{\partial s} \left(
+		\frac{
+			\vec{\bar{e}}_2
+		}{
+			\left| 
+				\vec{\bar{e}}_2
+			\right|
+		}
+	\right)
+$<br>
+$ = \frac{
+		\frac{\partial}{\partial s} \vec{\bar{e}}_2
+		\left| \vec{\bar{e}}_2 \right|
+		- 	
+		\vec{\bar{e}}_2
+		\frac{\partial}{\partial s} \left| \vec{\bar{e}}_2 \right|
+	}{
+		\left| \vec{\bar{e}}_2 \right|^2
+	}
+$<br>
+$ = 
+\chi_1^2 (
+	\frac{\partial^3 \vec{r}}{\partial s^3}
+	\left| \vec{\bar{e}}_2 \right|
+	- 	
+	\frac{\partial^2 \vec{r}}{\partial s^2}
+	\frac{\partial}{\partial s} \left| \vec{\bar{e}}_2 \right|
+)$<br>
+<br>
+
+Frenet frame:<br>
+$\frac{\partial}{\partial s} \left[ \begin{matrix}
+	\vec{T} \\ \vec{N} \\ \vec{B}
+\end{matrix} \right] = \left[ \begin{matrix}
+	0 & \chi_1 & 0 \\
+	-\chi_1 & 0 & \chi_2 \\
+	0 & -\chi_2 & 0 \\
+\end{matrix} \right] \left[ \begin{matrix}
+	\vec{T} \\ \vec{N} \\ \vec{B}
+\end{matrix} \right]$<br>
+<br>
+
+<a href='.'>Back</a><br><br>
+	</body>
+</html>

@@ -2,7 +2,7 @@
 <html>
 	<head>
         <meta charset='utf-8'>
-		<title>Schwarzschild</title>
+		<title>Schwarzschild with mass varying with time</title>
 		<script type='text/javascript' src='tryToFindMathJax.js'></script>
 	</head>
     <body onload='tryToFindMathJax();'>
@@ -118,7 +118,7 @@ $\ddot{r} = \frac{2 G M_{,r}}{r} = 2 \cdot (6.67384 \cdot 10^{-11} \frac{m^3}{kg
 <br>
 
 While we're here, let's look at charge:<br>
-Replace M with q<br>
+Replace M with Q<br>
 Coulomb's constant:	$k_e = 8987551787.3682 \cdot \frac{kg \cdot m^3}{C^2 \cdot s^2}$<br>
 so $\sqrt{\frac{k_e \cdot G}{c^4}} 
 	= \sqrt{ 
@@ -132,11 +132,14 @@ so $\sqrt{\frac{k_e \cdot G}{c^4}}
 Also, $\sqrt{k_e \cdot G} = 0.7744771308477 \frac{m^3}{C \cdot s^2}$<br>
 <br>
 
-$\ddot{r} = \frac{2 q_{,r}}{r} = 2 \cdot \sqrt{k_e \cdot G} \cdot \frac{1}{r} \cdot (\frac{\partial q}{\partial r})$<br>
-$ = 2 \cdot (0.7744771308477 \frac{m^3}{C \cdot s^2}) \cdot \frac{1}{r} \cdot (\frac{\partial q}{\partial r})$<br>
-$ = 1.5489542616954018298980047858832 \cdot \frac{\partial q}{\partial r} \cdot \frac{1}{r} \cdot \frac{m^3}{C \cdot s^2}$<br>
-$ \approx 1.5 \cdot \frac{\partial q}{\partial r} \cdot \frac{1}{r} \cdot \frac{m^3}{C \cdot s^2}$<br>
+$\ddot{r} = \frac{2 Q_{,r}}{r} = 2 \cdot \sqrt{k_e \cdot G} \cdot \frac{1}{r} \cdot (\frac{\partial Q}{\partial r})$<br>
+$ = 2 \cdot (0.7744771308477 \frac{m^3}{C \cdot s^2}) \cdot \frac{1}{r} \cdot (\frac{\partial Q}{\partial r})$<br>
+$ = 1.5489542616954018298980047858832 \cdot \frac{\partial Q}{\partial r} \cdot \frac{1}{r} \cdot \frac{m^3}{C \cdot s^2}$<br>
+$ \approx 1.5 \cdot \frac{\partial Q}{\partial r} \cdot \frac{1}{r} \cdot \frac{m^3}{C \cdot s^2}$<br>
+<br>
 
+Notice that in the same way $M = \int_V \rho dV$, so is $Q = \int_V q dV$<br>
+Where $[\rho] = \frac{kg}{m^3}$ and $[q] = \frac{C}{m^3}$<br>
 <br>
 
 <hr>
@@ -153,38 +156,75 @@ $r = $ ball radius<br>
 volume of wire cylinder equals volume of ball:<br>
 $\pi R_{out}^2 l = \frac{4}{3} \pi r^3$<br>
 $l = \frac{4}{3} \frac{r^3}{R_{out}^2}$<br>
+$r = (\frac{3}{4} {R_{out}}^2 l)^{\frac{1}{3}}$<br>
 <br>
 
 change in length with respect to change in radius:<br>
 $\frac{\partial l}{\partial r} = 4 (\frac{r}{R_{out}})^2$<br>
 <br>
 
-Assume the wire has a charge density at length $l$ along the wire of $q(l)$ in units of $\frac{C}{m}$<br>
-$q(l) = q_0 \cdot \pi \cdot R_{in}^2 \cdot f(l)$<br>
-$R_{in} =$ the inner radius of the wire which is conductive, so $0 &lt; R_{in} &lt; R_{out}$<br>
-$f(l) = $ the amplitude function of the current through the wire... which should be in terms of time as well as length.<br>
-<br>
-$q_0 =$ the charge density of the material, in units of $\frac{C}{m^3}$<br>
-According to <a href='https://en.wikipedia.org/wiki/Charge_density'>https://en.wikipedia.org/wiki/Charge_density</a>, for copper we get $q_0 = 10^{22} \cdot 1.6 \cdot 10^{-19} \frac{C}{cm^3} \cdot (\frac{100 cm}{1 m})^3 = 1.6 \cdot 10^9 \frac{C}{m^3}$<br>
-<br>
-AWG 10 wire: <a href='https://www.engineeringtoolbox.com/awg-wire-gauge-circular-mils-d_819.html'>https://www.engineeringtoolbox.com/awg-wire-gauge-circular-mils-d_819.html</a>
-has a radius of about 1.3 mm, but this includes the sheath, so that is $R_{out}$<br>
+Wire signal source:<br>
+$\phi(t) = $ signal source.<br>
+$\phi(t)$ is unitless.<br>
+$\phi'(t)$ is in units of $\frac{1}{s}$.<br>
+$\Phi(t) = \int_{t=0}^{t=t'} \phi(t') dt'$ is in units of $s$.<br>
+$\Phi'(t) = \phi(t)$.<br>
 <br>
 
-$\frac{\partial q}{\partial l} = q_0 \cdot \pi \cdot R_{in}^2 \cdot \frac{\partial f}{\partial l}$<br>
+Wire signal value at any point in space and time:<br>
+$f(l,t) = \phi(t - l/v)$ the amplitude function of the current through the wire, which propagates at a velocity of $v$.<br>
+for $v = $ mean velocity of electrons through wire.<br>
+$\frac{d f}{d l} = -\frac{1}{v} \phi'$ has units $\frac{1}{m}$<br>
+<br>
+
+Assume the wire has a charge density at length $l$ along the wire of $q(l)$ in units of $\frac{C}{m}$<br>
+$q(l,t) = q_0 \cdot A \cdot f(l,t) = q_0 \cdot \pi \cdot R_{in}^2 \cdot f(l,t)$<br>
+$R_{in} =$ the inner radius of the wire which is conductive, so $0 &lt; R_{in} &lt; R_{out}$<br>
+$Q(l,t) = \int_{l=0}^{l=l'} q(l',t) dl'$<br>
+$Q(r,t) = \int_{l=0}^{l = \frac{4}{3} \frac{r^3}{R_{out}^2}} q(l,t) dl$<br>
+$Q(r,t) = q_0 \cdot \pi \cdot R_{in}^2 \cdot \int_{l=0}^{l = \frac{4}{3} \frac{r^3}{R_{out}^2}} \phi(t - l/v) dl$<br>
+$Q(r,t) = q_0 \cdot \pi \cdot R_{in}^2 \cdot ( -v \cdot \Phi(t - l/v) )|_{l=0}^{l = \frac{4}{3} \frac{r^3}{R_{out}^2}}$<br>
+$Q(r,t) = - v \cdot q_0 \cdot \pi \cdot R_{in}^2 \cdot ( 
+	\Phi(t - \frac{1}{v} \frac{4}{3} \frac{r^3}{R_{out}^2} ) 
+	- \Phi(t) 
+)$<br>
+$Q(r,t)$ is in units of $C$.<br>
+$\frac{d Q}{d r} = \frac{d Q}{d l} \cdot \frac{d l}{d r} = q(l,t) \cdot \frac{d l}{d r} = q(l,t) \cdot 4 \cdot (\frac{r}{R_{out}})^2$ is in units of $\frac{C}{m}$<br>
+<br>
+
+AWG 10 wire: <a href='https://www.engineeringtoolbox.com/awg-wire-gauge-circular-mils-d_819.html'>https://www.engineeringtoolbox.com/awg-wire-gauge-circular-mils-d_819.html</a>
+has a radius of about 1.3 mm, but this includes the sheath, so that is $R_{out}$<br>
+copper according to <a href='https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/audio/part6/page2.html'>https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/audio/part6/page2.html</a><br>
+copper's atomic weight: $63.54 g$<br> 
+Avogadro's constant $N_A = 6.02214085774 \cdot 10^{23} \cdot \frac{1}{mol}$<br>
+copper's nominal valency = 1, so 1 atom = 1 electron.<br>
+so $63.54 g = 6.02214085774 \cdot 10^{23} atoms = 6.02214085774 \cdot 10^{23} \cdot e$<br>
+free electrons per gram of copper $= N_A / $atomic weight$ = \frac{6.02214085774 \cdot 10^{23}}{63.54} \cdot \frac{e}{g}$<br>
+copper's density: $8.95 \frac{g}{cm^3} = 8.95 \cdot 10^3 \cdot \frac{kg}{m^3}$<br>
+copper electron density: $\rho_{copper} = (\frac{6.02214085774 \cdot 10^{23}}{63.54} \cdot \frac{e}{g} \cdot \frac{10^3 g}{1 kg}) \cdot (8.95 \cdot 10^3 \cdot \frac{kg}{m^3})$
+$= 8.4825559768292 \cdot 10^{28} \frac{e}{m^3}$<br>
+electron charge: $e = 1.602176620898 \cdot 10^{-19} C$<br>
+copper charge density: $q_0 = 1.3590552871534 \cdot 10^{10} \frac{C}{m^3}$<br>
+<br>
+
+mean velocity of moving electrons: $v_{copper} = \frac{I}{A \cdot q_{copper}} = \frac{I}{\pi R_{in}^2 \cdot q_{copper}}  \approx 7.5 \cdot 10^{-5} \frac{m}{s}$<br>
+$\frac{d f}{d l} =  -\frac{1}{v} \cdot \phi' = -\frac{1}{7.5 \cdot 10^{-5} \frac{m}{s}} \cdot \phi'$<br>
+<br>
+
+$\frac{\partial q}{\partial l} = q_0 \cdot \pi \cdot R_{in}^2 \cdot \frac{d f}{d l}$<br>
 <br>
 
 $\frac{\partial q}{\partial r} = \frac{\partial q}{\partial l} \cdot \frac{\partial l}{\partial r}$<br>
-$= (q_0 \cdot \pi \cdot R_{in}^2 \cdot \frac{\partial f}{\partial l}) \cdot (4 (\frac{r}{R_{out}})^2)$<br>
-$= 4 \pi q_0 \cdot \frac{\partial f}{\partial l} \cdot (r \frac{R_{in}}{R_{out}})^2$<br>
+$= (q_0 \cdot \pi \cdot R_{in}^2 \cdot \frac{d f}{d l}) \cdot (4 (\frac{r}{R_{out}})^2)$<br>
+$= 4 \pi q_0 \cdot \frac{d f}{d l} \cdot (r \frac{R_{in}}{R_{out}})^2$<br>
 Substitute our copper wire values:<br>
 Say $R_{in} \approx R_{out}$<br>
-$\frac{\partial q}{\partial r} = 6.4 \pi \cdot 10^9 \frac{C}{m^3} \cdot r^2 \cdot \frac{\partial f}{\partial l}$<br>
+$\frac{\partial q}{\partial r} = 6.4 \pi \cdot 10^9 \frac{C}{m^3} \cdot r^2 \cdot \frac{d f}{d l}$<br>
 <br>
 
 substitute into our stress-energy-radially-varying Schwarzschild acceleration formula:<br>
 $\ddot{r} \approx 1.5 \cdot \frac{\partial q}{\partial r} \cdot \frac{1}{r} \cdot \frac{m^3}{C \cdot s^2}$<br>
-$\approx 1.5 \cdot 6.4 \pi \cdot 10^9 \frac{C}{m^3} \cdot r^2 \cdot \frac{\partial f}{\partial l} \cdot \frac{1}{r} \cdot \frac{m^3}{C \cdot s^2}$<br>
-$\approx 1.5 \cdot 6.4 \pi \cdot 10^9 \cdot r \cdot \frac{\partial f}{\partial l} \cdot \frac{1}{s^2}$<br>
+$\approx 1.5 \cdot 6.4 \pi \cdot 10^9 \frac{C}{m^3} \cdot r^2 \cdot \frac{d f}{d l} \cdot \frac{1}{r} \cdot \frac{m^3}{C \cdot s^2}$<br>
+$\approx -1.5 \cdot 6.4 \cdot \frac{1}{7.5} \cdot \pi \cdot 10^{14} \cdot r \cdot \phi' \cdot \frac{m}{s}$<br>
 
 </html>
