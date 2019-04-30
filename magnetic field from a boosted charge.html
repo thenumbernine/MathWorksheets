@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<title>magnetic field generated from boosting charge</title>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+	</head>
+    <body onload='tryToFindMathJax();'>
+
+$c = 299792458 \frac{m}{s} =$ the speed of light.<br>
+$k_e = \frac{1}{4 \pi \epsilon_0} \approx 8.9875517873682 \cdot 10^9 \cdot \frac{N \cdot m^2}{C^2}$ is Coulomb's constant<br>
+<br>
+
+copper according to <a href='https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/audio/part6/page2.html'>https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/audio/part6/page2.html</a><br>
+copper's atomic weight: $63.54 g$<br> 
+Avogadro's constant $N_A = 6.02214085774 \cdot 10^{23} \cdot \frac{1}{mol}$<br>
+copper's nominal valency = 1, so 1 atom = 1 electron.<br>
+so $63.54 g = 6.02214085774 \cdot 10^{23} atoms = 6.02214085774 \cdot 10^{23} \cdot e$<br>
+free electrons per gram of copper $= N_A / $atomic weight$ = \frac{6.02214085774 \cdot 10^{23}}{63.54} \cdot \frac{e}{g}$<br>
+copper's density: $8.95 \frac{g}{cm^3} = 8.95 \cdot 10^3 \cdot \frac{kg}{m^3}$<br>
+copper electron density: $\rho_{copper} = (\frac{6.02214085774 \cdot 10^{23}}{63.54} \cdot \frac{e}{g} \cdot \frac{10^3 g}{1 kg}) \cdot (8.95 \cdot 10^3 \cdot \frac{kg}{m^3})$
+$= 8.4825559768292 \cdot 10^{28} \frac{e}{m^3}$<br>
+electron charge: $e = 1.602176620898 \cdot 10^{-19} C$<br>
+copper charge density: $q_{copper} = 1.3590552871534 \cdot 10^{10} \frac{C}{m^3}$<br>
+<br>
+
+Electric field<br>
+$E(x) = \int \frac{q(x')}{|x' - x|^2} \cdot \frac{(x' - x)}{|x' - x|} dx'$<br>
+...around a charged wire:<br>
+$E(r) = \frac{\lambda}{2 \pi \epsilon_0 r}$<br>
+$\lambda = $ charge density per unit meter along wire<br>
+<br>
+
+$R = $copper wire conductive radius.<br>
+AWG 10 wire: <a href='https://www.engineeringtoolbox.com/awg-wire-gauge-circular-mils-d_819.html'>https://www.engineeringtoolbox.com/awg-wire-gauge-circular-mils-d_819.html</a>
+has a radius of about 1.3 mm, but this includes the sheath.<br>
+<br>
+
+Electric field for our copper wire:<br>
+$\lambda = q_{copper} \cdot \pi \cdot R_{in}^2 = 1.3590552871534 \cdot 10^{10} \frac{C}{m^3} \cdot \pi \cdot (1.3 \cdot 10^{-3} m)^2 = 7.2156207990445 \cdot 10^4 \cdot \frac{C}{m}$<br>
+$E(r) = 7.2156207990445 \cdot 10^4 \cdot \frac{C}{m} \cdot \frac{1}{2 \pi \epsilon_0} \cdot \frac{1}{r} = \frac{1}{r} \cdot 3.2425382804712 \cdot 10^{14} \cdot \frac{N \cdot m}{C}$<br>
+<br>
+
+$v = \frac{I}{A \cdot q} = $ mean velocity of moving electrons.<br>
+For copper charge density for AWG 10 wire, and for $I = 1 A$ we get:<br>
+$v_{copper} = \frac{1 \frac{C}{s}}{(\pi \cdot (1.3 \cdot 10^{-3} m)^2) \cdot (1.3590552871534 \cdot 10^{10} \frac{C}{m^3})}  \approx 1.3858821407749 \cdot 10^{-5} \frac{m}{s}$<br>
+<br>
+
+Faraday tensor:<br>
+$F_{ab} = \downarrow a \overset{\rightarrow b}{\left[ \begin{matrix}
+	0 & -\frac{1}{c} E_x & -\frac{1}{c} E_y & -\frac{1}{c} E_z \\
+	\frac{1}{c} E_x & 0 & B_z & -B_y \\
+	\frac{1}{c} E_y & -B_z & 0 & B_x \\
+	\frac{1}{c} E_z & B_y & B_x & 0
+\end{matrix}\right]}$<br>
+<br>
+$E_i$ has units $\frac{N}{C} = \frac{kg \cdot m}{C \cdot s^2}$.<br>
+$B_i$ has units $\frac{N \cdot s}{C \cdot m} = \frac{kg}{C \cdot s}$<br>
+$F_{ab}$ has units of $\frac{kg}{C \cdot s}$<br>
+<br>
+
+For a boosted electromagnetic field:<br>
+$F'_{ab} = {\Lambda^c}_a F_{cd} {\Lambda^d}_b$<br>
+
+$= \downarrow a \overset{\rightarrow c}{\left[ \begin{matrix}
+	\gamma & -\beta \gamma & 0 & 0 \\
+	-\beta \gamma & \gamma & 0 & 0 \\
+	0 & 0 & 1 & 0 \\
+	0 & 0 & 0 & 1 \\
+\end{matrix}\right]}
+\cdot
+\downarrow c \overset{\rightarrow d}{\left[ \begin{matrix}
+	0 & -\frac{1}{c} E_x & -\frac{1}{c} E_y & -\frac{1}{c} E_z \\
+	\frac{1}{c} E_x & 0 & B_z & -B_y \\
+	\frac{1}{c} E_y & -B_z & 0 & B_x \\
+	\frac{1}{c} E_z & B_y & B_x & 0
+\end{matrix}\right]}
+\downarrow d \overset{\rightarrow b}{\left[ \begin{matrix}
+	\gamma & -\beta \gamma & 0 & 0 \\
+	-\beta \gamma & \gamma & 0 & 0 \\
+	0 & 0 & 1 & 0 \\
+	0 & 0 & 0 & 1 \\
+\end{matrix}\right]}$<br>
+
+$= \downarrow a \overset{\rightarrow c}{\left[ \begin{matrix}
+	\gamma & -\beta \gamma & 0 & 0 \\
+	-\beta \gamma & \gamma & 0 & 0 \\
+	0 & 0 & 1 & 0 \\
+	0 & 0 & 0 & 1 \\
+\end{matrix}\right]}
+\cdot
+\downarrow c \overset{\rightarrow b}{\left[ \begin{matrix}
+	\beta \gamma \frac{1}{c} E_x & -\gamma \frac{1}{c} E_x & -\frac{1}{c} E_y & -\frac{1}{c} E_z \\
+	\gamma \frac{1}{c} E_x & -\beta \gamma \frac{1}{c} E_x & B_z & -B_y \\
+	\gamma \frac{1}{c} E_y + \beta \gamma B_z & -\beta \gamma \frac{1}{c} E_y - \gamma B_z & 0 & B_x \\
+	\gamma \frac{1}{c} E_z - \beta \gamma B_y & -\beta \gamma \frac{1}{c} E_z + \gamma B_y & B_x & 0
+\end{matrix}\right]}$<br>
+<br>
+
+$= \downarrow a \overset{\rightarrow b}{\left[ \begin{matrix}
+	0 &
+	-\frac{1}{c} E_x &
+	\gamma (-\frac{1}{c} E_y - \beta B_z) &
+	\gamma (-\frac{1}{c} E_z + \beta B_y) \\
+	
+	\frac{1}{c} E_x &
+	0 &
+	\gamma (\beta \frac{1}{c} E_y + B_z) &
+	\gamma (\beta \frac{1}{c} E_z - B_y) \\
+
+	\gamma (\frac{1}{c} E_y + \beta B_z) & \gamma (-\beta \frac{1}{c} E_y - B_z) & 0 & B_x \\
+	
+	\gamma (\frac{1}{c} E_z - \beta B_y) & \gamma (-\beta \frac{1}{c} E_z + B_y) & B_x & 0
+\end{matrix}\right]}$<br>
+<br>
+
+
+For a resting electromagnetic field of magnitude $E$.<br>
+$F_{ab} = \downarrow a \overset{\rightarrow b}{\left[ \begin{matrix}
+	0 & -\frac{1}{c} E \frac{x}{r} & -\frac{1}{c} E \frac{y}{r} & -\frac{1}{c} E \frac{z}{r} \\
+	\frac{1}{c} E \frac{x}{r} & 0 & 0 & 0 \\
+	\frac{1}{c} E \frac{y}{r} & 0 & 0 & 0 \\
+	\frac{1}{c} E \frac{z}{r} & 0 & 0 & 0
+\end{matrix}\right]}$<br>
+<br>
+
+Lorentz boost in the x direction:<br>
+$\gamma = \frac{1}{\sqrt{1 - (\frac{v}{c})^2}}$<br>
+$\beta = \frac{v}{c} \cdot \gamma$<br>
+<br>
+
+${\Lambda^a}_b = 
+\downarrow a \overset{\rightarrow b}{\left[ \begin{matrix}
+	\gamma & -\beta \gamma & 0 & 0 \\
+	-\beta \gamma & \gamma & 0 & 0 \\
+	0 & 0 & 1 & 0 \\
+	0 & 0 & 0 & 1 \\
+\end{matrix}\right]}
+$<br>
+<br>
+
+$F'_{ab} = \downarrow a \overset{\rightarrow b}{\left[ \begin{matrix}
+	0 &
+	-\frac{1}{c} E \frac{x}{r} &
+	-\gamma \frac{1}{c} E \frac{y}{r} &
+	-\gamma \frac{1}{c} E \frac{z}{r} \\
+	
+	\frac{1}{c} E \frac{x}{r} &
+	0 &
+	\beta \gamma \frac{1}{c} E \frac{y}{r} &
+	\beta \gamma \frac{1}{c} E \frac{z}{r} \\
+
+	\gamma \frac{1}{c} E \frac{y}{r} & -\beta \gamma \frac{1}{c} E \frac{y}{r} & 0 & 0 \\
+	                          
+	\gamma \frac{1}{c} E \frac{z}{r} & -\beta \gamma \frac{1}{c} E \frac{z}{r} & 0 & 0
+\end{matrix}\right]}$<br>
+<br>
+<br>
+So the electric field in the direction perpendicular to the boost is scaled down by $\gamma$.<br>
+And a magnetic field is created equal to:<br>
+$\vec{B} = 
+	\beta \gamma \frac{1}{c} E \cdot
+\left[\begin{matrix}
+	0 \\
+	-\frac{z}{r} \\
+	\frac{y}{r}
+\end{matrix}\right]$<br>
+$|B| = \beta \gamma \frac{1}{c} E$<br>
+<br>
+
+For electron flow through copper:<br>
+$\beta = \frac{v}{c} = 4.6228052233886 \cdot 10^{-14}$<br>
+$\gamma = \frac{1}{\sqrt{1 - 2.1370328133389 \cdot 10^{-27}}} \approx 1$<br>
+$|B| = (4.6228052233886 \cdot 10^{-14}) \cdot \frac{1}{299792458 \frac{m}{s}} \cdot \frac{1}{r} \cdot 3.2425382804712 \cdot 10^{14} \cdot \frac{N \cdot m}{C}$<br>
+$|B| = 14.9896229 \cdot \frac{1}{c} \cdot \frac{1}{m} \cdot \frac{N \cdot s}{C} = 5 \cdot 10^{-8} \frac{N \cdot s}{C}$<br>
+so at $1 cm$ this gives us a magnetic field of:<br>
+$|B| = 5 \cdot 10^{-6} \frac{N \cdot s}{C \cdot m} = 5 \cdot 10^{-6} T$<br>
+<br>
+
+
+	</body>
+</html>

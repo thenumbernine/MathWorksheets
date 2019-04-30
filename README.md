@@ -188,6 +188,8 @@ Here's the CDN URLs:
 
 [heat to wave](https://thenumbernine.github.io/math/heat%20to%20wave.html)
 
+[magnetic field from a boosted charge](https://thenumbernine.github.io/math/magnetic%20field%20from%20a%20boosted%20charge.html)
+
 [projection in any metric](https://thenumbernine.github.io/math/projection%20in%20any%20metric.html)
 
 [relativistic electromagnetic metric in medium](https://thenumbernine.github.io/math/relativistic%20electromagnetic%20metric%20in%20medium.html)
