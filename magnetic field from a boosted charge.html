@@ -4,7 +4,45 @@
         <meta charset='utf-8'>
 		<title>magnetic field generated from boosting charge</title>
 		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<script type='text/javascript' src='PeriodicTable.js'></script>
 		<script type='text/javascript' src='angular.min.js'></script>
+<script>
+function setMaterial(element) {
+	var scope = angular.element(document.body).scope();
+	scope.$apply(function(){	
+		scope.atomic_mass_in_g = element.atomic_mass;
+		scope.nominal_valency = 1;
+		scope.material_density_in_g_per_cm3 = element.density;
+	
+	});
+}
+function init() {
+	tryToFindMathJax();
+
+	var defaultMaterial;
+	var defaultIndex = 0;
+	var select = document.getElementById('materials');
+	for (var i = 0; i < PeriodicTable.elements.length; ++i) {
+		var element = PeriodicTable.elements[i];
+		
+		var option = document.createElement('option');
+		option.appendChild(document.createTextNode(element.name));
+		option.element = element;
+		if (element.name == 'Copper') {
+			defaultMaterial = element;
+			defaultIndex = i+1;//select.options.length;
+		}
+		select.appendChild(option);
+	}
+	select.selectedIndex = defaultIndex;
+	setMaterial(defaultMaterial);
+}
+function selchange() {
+	var select = document.getElementById('materials');
+	var option = select.options[select.selectedIndex];
+	if (option) setMaterial(option.element);
+}
+</script>
 	</head>
     <body 
 		ng-app
@@ -15,14 +53,16 @@
 			Coulomb_constant=8.9875517873682e+9;
 			Avogadro_constant=6.02214085774e+23;
 			electron_charge=1.602176620898e-19;
-			atomic_weight_in_g=63.54;
+			
+			atomic_mass_in_g=63.54;
 			nominal_valency=1;
 			material_density_in_g_per_cm3=8.95;
+			
 			wire_radius_in_mm=1.3;
 			current_in_A=1;
 			distance_in_m=.01;
 		"
-		onload='tryToFindMathJax();'>
+		onload='init();'>
 
 constants:<br>
 $c = $<input ng-model='speed_of_light_in_m_per_s'/> $\cdot \frac{m}{s} =$ the speed of light.<br>
@@ -31,11 +71,8 @@ $N_A = $<input ng-model='Avogadro_constant'/> $\cdot \frac{1}{mol}$ = Avogadro's
 $e =$ <input ng-model='electron_charge'/> $\cdot C$ = electron charge<br>
 <br>
 
-material variables: <select>
-<option name=''></option>
-<option name='copper'>copper</option>
-</select><br>
-atomic weight: <input ng-model='atomic_weight_in_g'/> g<br>
+material variables: <select onchange='selchange()' id='materials'><option name=''></option></select><br>
+atomic mass: <input ng-model='atomic_mass_in_g'/> g<br>
 nominal valency: 1 atom = <input ng-model='nominal_valency'/> electrons<br>
 density: $\rho =$ <input ng-model='material_density_in_g_per_cm3'/> g / cm^3<br> 
 wire radius: $R =$ <input ng-model='wire_radius_in_mm'/> mm<br>
@@ -46,8 +83,8 @@ current = <input ng-model='current_in_A'/> A<br>
 distance of measurement = <input ng-model='distance_in_m'/> m<br>
 <br>
 
-(atomic weight) {{atomic_weight_in_kg = 1e-3 * atomic_weight_in_g}} kg = (Avogadro's constant) {{Avogadro_constant}} atoms = (Avogadro's constant * nominal valency) {{Avogadro_constant * nominal_valency}} electrons.<br>
-Free electrons per kg = Avogadro's constant * nominal valency / atomic weight = {{free_electrons_per_kg = Avogadro_constant * nominal_valency / atomic_weight_in_kg}} $\frac{e}{kg}$<br>
+(atomic mass) {{atomic_mass_in_kg = 1e-3 * atomic_mass_in_g}} kg = (Avogadro's constant) {{Avogadro_constant}} atoms = (Avogadro's constant * nominal valency) {{Avogadro_constant * nominal_valency}} electrons.<br>
+Free electrons per kg = Avogadro's constant * nominal valency / atomic weight = {{free_electrons_per_kg = Avogadro_constant * nominal_valency / atomic_mass_in_kg}} $\frac{e}{kg}$<br>
 Matter density = {{material_density_in_g_per_cm3}} $\frac{g}{cm^3}$ = {{material_density_in_kg_per_m3 = material_density_in_g_per_cm3 * 1e+3}} $\frac{kg}{m^3}$<br>
 Electron density = $\rho_{charge}$ = free electrons per kg * matter density = {{electron_density_in_e_per_m3 = free_electrons_per_kg * material_density_in_kg_per_m3}} $\frac{e}{m^3}$<br> 
 Charge density = $q$ = electron density * electron charge = {{charge_density_in_C_per_m3 = electron_density_in_e_per_m3 * electron_charge}} $\frac{C}{m^3}$<br>
@@ -191,7 +228,9 @@ $B = \beta \gamma \frac{1}{c} E$ = electric field magnitude<br>
 $B = \frac{1}{c \cdot r} \cdot $ {{Lorentz_beta * Lorentz_gamma * electric_field_in_N_m_per_C_r}} $\cdot \frac{N}{C \cdot m}$
 $= \frac{1}{r} \cdot $ {{magnetic_field_in_N_s_per_C_r = Lorentz_beta * Lorentz_gamma / speed_of_light_in_m_per_s * electric_field_in_N_m_per_C_r}} $\cdot \frac{N \cdot s}{C}$<br>
 so at {{distance_in_m}} $ m$ this gives us a magnetic field of:<br>
-$B =$ {{magnetic_field_in_N_s_per_C_r / distance_in_m}} $\frac{N \cdot s}{C \cdot m} =$ {{magnetic_field_in_N_s_per_C_r / distance_in_m}} T<br>
+$B =$ {{magnetic_field_in_N_s_per_C_r / distance_in_m}}
+$\frac{N \cdot s}{C \cdot m} =$
+{{magnetic_field_in_N_s_per_C_r / distance_in_m}} T<br>
 <br>
 
 	</body>
