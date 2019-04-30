@@ -4,46 +4,65 @@
         <meta charset='utf-8'>
 		<title>magnetic field generated from boosting charge</title>
 		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<script type='text/javascript' src='angular.min.js'></script>
 	</head>
-    <body onload='tryToFindMathJax();'>
+    <body 
+		ng-app
+		ng-init="
+			PI=3.1415926535898;
+			
+			speed_of_light_in_m_per_s=299792458;
+			Coulomb_constant=8.9875517873682e+9;
+			Avogadro_constant=6.02214085774e+23;
+			electron_charge=1.602176620898e-19;
+			atomic_weight_in_g=63.54;
+			nominal_valency=1;
+			material_density_in_g_per_cm3=8.95;
+			wire_radius_in_mm=1.3;
+			current_in_A=1;
+			distance_in_m=.01;
+		"
+		onload='tryToFindMathJax();'>
 
-$c = 299792458 \frac{m}{s} =$ the speed of light.<br>
-$k_e = \frac{1}{4 \pi \epsilon_0} \approx 8.9875517873682 \cdot 10^9 \cdot \frac{N \cdot m^2}{C^2}$ is Coulomb's constant<br>
+constants:<br>
+$c = $<input ng-model='speed_of_light_in_m_per_s'/> $\cdot \frac{m}{s} =$ the speed of light.<br>
+$k_e = $<input ng-model='Coulomb_constant'/> $\cdot \frac{N \cdot m^2}{C^2}$ = Coulomb's constant (typically $\frac{1}{4 \pi \epsilon_0}$).<br>
+$N_A = $<input ng-model='Avogadro_constant'/> $\cdot \frac{1}{mol}$ = Avogadro's constant.<br>
+$e =$ <input ng-model='electron_charge'/> $\cdot C$ = electron charge<br>
 <br>
 
-copper according to <a href='https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/audio/part6/page2.html'>https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/audio/part6/page2.html</a><br>
-copper's atomic weight: $63.54 g$<br> 
-Avogadro's constant $N_A = 6.02214085774 \cdot 10^{23} \cdot \frac{1}{mol}$<br>
-copper's nominal valency = 1, so 1 atom = 1 electron.<br>
-so $63.54 g = 6.02214085774 \cdot 10^{23} atoms = 6.02214085774 \cdot 10^{23} \cdot e$<br>
-free electrons per gram of copper $= N_A / $atomic weight$ = \frac{6.02214085774 \cdot 10^{23}}{63.54} \cdot \frac{e}{g}$<br>
-copper's density: $8.95 \frac{g}{cm^3} = 8.95 \cdot 10^3 \cdot \frac{kg}{m^3}$<br>
-copper electron density: $\rho_{copper} = (\frac{6.02214085774 \cdot 10^{23}}{63.54} \cdot \frac{e}{g} \cdot \frac{10^3 g}{1 kg}) \cdot (8.95 \cdot 10^3 \cdot \frac{kg}{m^3})$
-$= 8.4825559768292 \cdot 10^{28} \frac{e}{m^3}$<br>
-electron charge: $e = 1.602176620898 \cdot 10^{-19} C$<br>
-copper charge density: $q_{copper} = 1.3590552871534 \cdot 10^{10} \frac{C}{m^3}$<br>
+material variables: <select>
+<option name=''></option>
+<option name='copper'>copper</option>
+</select><br>
+atomic weight: <input ng-model='atomic_weight_in_g'/> g<br>
+nominal valency: 1 atom = <input ng-model='nominal_valency'/> electrons<br>
+density: $\rho =$ <input ng-model='material_density_in_g_per_cm3'/> g / cm^3<br> 
+wire radius: $R =$ <input ng-model='wire_radius_in_mm'/> mm<br>
 <br>
 
-Electric field<br>
-$E(x) = \int \frac{q(x')}{|x' - x|^2} \cdot \frac{(x' - x)}{|x' - x|} dx'$<br>
-...around a charged wire:<br>
-$E(r) = \frac{\lambda}{2 \pi \epsilon_0 r}$<br>
-$\lambda = $ charge density per unit meter along wire<br>
+electricity variables:<br>
+current = <input ng-model='current_in_A'/> A<br>
+distance of measurement = <input ng-model='distance_in_m'/> m<br>
 <br>
 
-$R = $copper wire conductive radius.<br>
-AWG 10 wire: <a href='https://www.engineeringtoolbox.com/awg-wire-gauge-circular-mils-d_819.html'>https://www.engineeringtoolbox.com/awg-wire-gauge-circular-mils-d_819.html</a>
-has a radius of about 1.3 mm, but this includes the sheath.<br>
+(atomic weight) {{atomic_weight_in_kg = 1e-3 * atomic_weight_in_g}} kg = (Avogadro's constant) {{Avogadro_constant}} atoms = (Avogadro's constant * nominal valency) {{Avogadro_constant * nominal_valency}} electrons.<br>
+Free electrons per kg = Avogadro's constant * nominal valency / atomic weight = {{free_electrons_per_kg = Avogadro_constant * nominal_valency / atomic_weight_in_kg}} $\frac{e}{kg}$<br>
+Matter density = {{material_density_in_g_per_cm3}} $\frac{g}{cm^3}$ = {{material_density_in_kg_per_m3 = material_density_in_g_per_cm3 * 1e+3}} $\frac{kg}{m^3}$<br>
+Electron density = $\rho_{charge}$ = free electrons per kg * matter density = {{electron_density_in_e_per_m3 = free_electrons_per_kg * material_density_in_kg_per_m3}} $\frac{e}{m^3}$<br> 
+Charge density = $q$ = electron density * electron charge = {{charge_density_in_C_per_m3 = electron_density_in_e_per_m3 * electron_charge}} $\frac{C}{m^3}$<br>
 <br>
 
-Electric field for our copper wire:<br>
-$\lambda = q_{copper} \cdot \pi \cdot R_{in}^2 = 1.3590552871534 \cdot 10^{10} \frac{C}{m^3} \cdot \pi \cdot (1.3 \cdot 10^{-3} m)^2 = 7.2156207990445 \cdot 10^4 \cdot \frac{C}{m}$<br>
-$E(r) = 7.2156207990445 \cdot 10^4 \cdot \frac{C}{m} \cdot \frac{1}{2 \pi \epsilon_0} \cdot \frac{1}{r} = \frac{1}{r} \cdot 3.2425382804712 \cdot 10^{14} \cdot \frac{N \cdot m}{C}$<br>
+Electric field: $E(x) = \int \frac{q(x')}{|x' - x|^2} \cdot \frac{(x' - x)}{|x' - x|} dx'$<br>
+Electric field around our wire:<br>
+$R =$ {{wire_radius_in_m = wire_radius_in_mm * 1e-3}} m = wire radius<br>
+$A =$ {{wire_cross_section_area_in_m2 = PI * wire_radius_in_m * wire_radius_in_m}} $m^2 =$ wire cross-section area<br>
+$\lambda = A \cdot q =$ {{charge_per_unit_length_in_C_per_m = charge_density_in_C_per_m3 * wire_cross_section_area_in_m2}} $\frac{C}{m}$ = charge density per unit meter along wire<br>
+$E(r) = \lambda \cdot \frac{1}{2} k_e \cdot \frac{1}{r} =$ {{electric_field_in_N_m_per_C_r = charge_per_unit_length_in_C_per_m * .5 * Coulomb_constant}} $\cdot \frac{1}{r} \cdot \frac{N \cdot m}{C}$<br>
 <br>
 
-$v = \frac{I}{A \cdot q} = $ mean velocity of moving electrons.<br>
-For copper charge density for AWG 10 wire, and for $I = 1 A$ we get:<br>
-$v_{copper} = \frac{1 \frac{C}{s}}{(\pi \cdot (1.3 \cdot 10^{-3} m)^2) \cdot (1.3590552871534 \cdot 10^{10} \frac{C}{m^3})}  \approx 1.3858821407749 \cdot 10^{-5} \frac{m}{s}$<br>
+Mean velocity of moving electrons within wire:<br>
+$v = \frac{I}{A \cdot q} = ${{mean_electron_velocity_in_m_per_s = current_in_A / (wire_cross_section_area_in_m2 * charge_density_in_C_per_m3)}} $\frac{m}{s}$<br>
 <br>
 
 Faraday tensor:<br>
@@ -58,6 +77,23 @@ $E_i$ has units $\frac{N}{C} = \frac{kg \cdot m}{C \cdot s^2}$.<br>
 $B_i$ has units $\frac{N \cdot s}{C \cdot m} = \frac{kg}{C \cdot s}$<br>
 $F_{ab}$ has units of $\frac{kg}{C \cdot s}$<br>
 <br>
+
+Lorentz boost in the x direction:<br>
+${\Lambda^a}_b = 
+\downarrow a \overset{\rightarrow b}{\left[ \begin{matrix}
+	\gamma & -\beta \gamma & 0 & 0 \\
+	-\beta \gamma & \gamma & 0 & 0 \\
+	0 & 0 & 1 & 0 \\
+	0 & 0 & 0 & 1 \\
+\end{matrix}\right]}
+$<br>
+<br>
+
+For electron flow through our material:<br>
+$\beta = \frac{v}{c} =$ {{Lorentz_beta = mean_electron_velocity_in_m_per_s / speed_of_light_in_m_per_s}}<br>
+$\gamma = 1 / \sqrt{1 - \beta^2} \approx$ {{Lorentz_gamma = 1 / (1 - Math.pow(Lorentz_beta, .5))}}<br>
+<br>
+
 
 For a boosted electromagnetic field:<br>
 $F'_{ab} = {\Lambda^c}_a F_{cd} {\Lambda^d}_b$<br>
@@ -114,7 +150,6 @@ $= \downarrow a \overset{\rightarrow b}{\left[ \begin{matrix}
 \end{matrix}\right]}$<br>
 <br>
 
-
 For a resting electromagnetic field of magnitude $E$.<br>
 $F_{ab} = \downarrow a \overset{\rightarrow b}{\left[ \begin{matrix}
 	0 & -\frac{1}{c} E \frac{x}{r} & -\frac{1}{c} E \frac{y}{r} & -\frac{1}{c} E \frac{z}{r} \\
@@ -122,21 +157,6 @@ $F_{ab} = \downarrow a \overset{\rightarrow b}{\left[ \begin{matrix}
 	\frac{1}{c} E \frac{y}{r} & 0 & 0 & 0 \\
 	\frac{1}{c} E \frac{z}{r} & 0 & 0 & 0
 \end{matrix}\right]}$<br>
-<br>
-
-Lorentz boost in the x direction:<br>
-$\gamma = \frac{1}{\sqrt{1 - (\frac{v}{c})^2}}$<br>
-$\beta = \frac{v}{c} \cdot \gamma$<br>
-<br>
-
-${\Lambda^a}_b = 
-\downarrow a \overset{\rightarrow b}{\left[ \begin{matrix}
-	\gamma & -\beta \gamma & 0 & 0 \\
-	-\beta \gamma & \gamma & 0 & 0 \\
-	0 & 0 & 1 & 0 \\
-	0 & 0 & 0 & 1 \\
-\end{matrix}\right]}
-$<br>
 <br>
 
 $F'_{ab} = \downarrow a \overset{\rightarrow b}{\left[ \begin{matrix}
@@ -165,18 +185,14 @@ $\vec{B} =
 	-\frac{z}{r} \\
 	\frac{y}{r}
 \end{matrix}\right]$<br>
-$|B| = \beta \gamma \frac{1}{c} E$<br>
+$B = \beta \gamma \frac{1}{c} E$ = electric field magnitude<br>
 <br>
 
-For electron flow through copper:<br>
-$\beta = \frac{v}{c} = 4.6228052233886 \cdot 10^{-14}$<br>
-$\gamma = \frac{1}{\sqrt{1 - 2.1370328133389 \cdot 10^{-27}}} \approx 1$<br>
-$|B| = (4.6228052233886 \cdot 10^{-14}) \cdot \frac{1}{299792458 \frac{m}{s}} \cdot \frac{1}{r} \cdot 3.2425382804712 \cdot 10^{14} \cdot \frac{N \cdot m}{C}$<br>
-$|B| = 14.9896229 \cdot \frac{1}{c} \cdot \frac{1}{m} \cdot \frac{N \cdot s}{C} = 5 \cdot 10^{-8} \frac{N \cdot s}{C}$<br>
-so at $1 cm$ this gives us a magnetic field of:<br>
-$|B| = 5 \cdot 10^{-6} \frac{N \cdot s}{C \cdot m} = 5 \cdot 10^{-6} T$<br>
+$B = \frac{1}{c \cdot r} \cdot $ {{Lorentz_beta * Lorentz_gamma * electric_field_in_N_m_per_C_r}} $\cdot \frac{N}{C \cdot m}$
+$= \frac{1}{r} \cdot $ {{magnetic_field_in_N_s_per_C_r = Lorentz_beta * Lorentz_gamma / speed_of_light_in_m_per_s * electric_field_in_N_m_per_C_r}} $\cdot \frac{N \cdot s}{C}$<br>
+so at {{distance_in_m}} $ m$ this gives us a magnetic field of:<br>
+$B =$ {{magnetic_field_in_N_s_per_C_r / distance_in_m}} $\frac{N \cdot s}{C \cdot m} =$ {{magnetic_field_in_N_s_per_C_r / distance_in_m}} T<br>
 <br>
-
 
 	</body>
 </html>
