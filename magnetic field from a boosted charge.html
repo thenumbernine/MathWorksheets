@@ -11,14 +11,12 @@ function setMaterial(element) {
 	var scope = angular.element(document.body).scope();
 	scope.$apply(function(){	
 		scope.atomic_mass_in_g = element.atomic_mass;
-		scope.nominal_valency = 1;
+		scope.material_nominal_valency = 1;
 		scope.material_density_in_g_per_cm3 = element.density;
 	
 	});
 }
 function init() {
-	tryToFindMathJax();
-
 	var defaultMaterial;
 	var defaultIndex = 0;
 	var select = document.getElementById('materials');
@@ -36,6 +34,8 @@ function init() {
 	}
 	select.selectedIndex = defaultIndex;
 	setMaterial(defaultMaterial);
+
+	tryToFindMathJax();
 }
 function selchange() {
 	var select = document.getElementById('materials');
@@ -55,12 +55,15 @@ function selchange() {
 			electron_charge=1.602176620898e-19;
 			
 			atomic_mass_in_g=63.54;
-			nominal_valency=1;
+			material_nominal_valency=1;
 			material_density_in_g_per_cm3=8.95;
-			
+			material_electrical_resistivity_in_ohm_m=1.6e-8;
+		
+			wire_length_in_m=1000;
 			wire_radius_in_mm=1.3;
-			current_in_A=1;
+			voltage_in_V=6;
 			distance_in_m=.01;
+		
 		"
 		onload='init();'>
 
@@ -72,34 +75,47 @@ $e =$ <input ng-model='electron_charge'/> $\cdot C$ = electron charge<br>
 <br>
 
 material variables: <select onchange='selchange()' id='materials'><option name=''></option></select><br>
-atomic mass: <input ng-model='atomic_mass_in_g'/> g<br>
-nominal valency: 1 atom = <input ng-model='nominal_valency'/> electrons<br>
-density: $\rho =$ <input ng-model='material_density_in_g_per_cm3'/> g / cm^3<br> 
-wire radius: $R =$ <input ng-model='wire_radius_in_mm'/> mm<br>
+<input ng-model='atomic_mass_in_g'/> $g =$ atomic mass.<br>
+nominal valency: 1 atom = <input ng-model='material_nominal_valency'/> electrons<br>
+$\rho =$ <input ng-model='material_density_in_g_per_cm3'/> $\frac{g}{cm^3}$ = density<br> 
+$\rho_{res} = $ <input ng-model='material_electrical_resistivity_in_ohm_m'/> $\Omega \cdot m$ = electrical resistivity<br>
 <br>
 
-electricity variables:<br>
-current = <input ng-model='current_in_A'/> A<br>
-distance of measurement = <input ng-model='distance_in_m'/> m<br>
+wire properties:<br>
+$l =$ <input ng-model='wire_length_in_m'/> $m$ = wire distance<br>
+$R =$ <input ng-model='wire_radius_in_mm'/> $mm$ = wire radius<br>
 <br>
 
-(atomic mass) {{atomic_mass_in_kg = 1e-3 * atomic_mass_in_g}} kg = (Avogadro's constant) {{Avogadro_constant}} atoms = (Avogadro's constant * nominal valency) {{Avogadro_constant * nominal_valency}} electrons.<br>
-Free electrons per kg = Avogadro's constant * nominal valency / atomic weight = {{free_electrons_per_kg = Avogadro_constant * nominal_valency / atomic_mass_in_kg}} $\frac{e}{kg}$<br>
-Matter density = {{material_density_in_g_per_cm3}} $\frac{g}{cm^3}$ = {{material_density_in_kg_per_m3 = material_density_in_g_per_cm3 * 1e+3}} $\frac{kg}{m^3}$<br>
-Electron density = $\rho_{charge}$ = free electrons per kg * matter density = {{electron_density_in_e_per_m3 = free_electrons_per_kg * material_density_in_kg_per_m3}} $\frac{e}{m^3}$<br> 
-Charge density = $q$ = electron density * electron charge = {{charge_density_in_C_per_m3 = electron_density_in_e_per_m3 * electron_charge}} $\frac{C}{m^3}$<br>
+power source:<br>
+$V =$ <input ng-model='voltage_in_V'/> V = voltage<br>
+<br>
+
+reading of magnetic field:<br>
+$r =$ <input ng-model='distance_in_m'/> m = distance of measurement<br>
+<br>
+
+(atomic mass) {{atomic_mass_in_kg = 1e-3 * atomic_mass_in_g}} kg = (Avogadro's constant) {{Avogadro_constant}} atoms = (Avogadro's constant * nominal valency) {{Avogadro_constant * material_nominal_valency}} electrons.<br>
+Free electrons per kg = Avogadro's constant * nominal valency / atomic weight = {{free_electrons_per_kg = Avogadro_constant * material_nominal_valency / atomic_mass_in_kg}} $\frac{e}{kg}$<br>
+$\rho =$ {{material_density_in_g_per_cm3}} $\frac{g}{cm^3}$ = {{material_density_in_kg_per_m3 = material_density_in_g_per_cm3 * 1e+3}} $\frac{kg}{m^3} = $ = matter density.<br>
+$\rho_{charge} =$ free electrons per kg * matter density = {{electron_density_in_e_per_m3 = free_electrons_per_kg * material_density_in_kg_per_m3}} $\frac{e}{m^3}$ = electron density.<br> 
+$q = \rho_{charge} \cdot e =$ {{charge_density_in_C_per_m3 = electron_density_in_e_per_m3 * electron_charge}} $\frac{C}{m^3} = $ charge density.<br>
+<br>
+
+more wire properties:<br>
+$R =$ {{wire_radius_in_m = wire_radius_in_mm * 1e-3}} m = wire radius<br>
+$A = \pi R^2 =$ {{wire_cross_section_area_in_m2 = PI * wire_radius_in_m * wire_radius_in_m}} $m^2 =$ wire cross-section area<br>
+$R_{res} = \frac{\rho_{res} \cdot l}{A} =$ {{wire_resistivity_in_ohms = material_electrical_resistivity_in_ohm_m * wire_length_in_m / wire_cross_section_area_in_m2}} $\Omega$<br>
+$I = \frac{V}{R_{res}} = \frac{V \cdot \pi \cdot R^2}{\rho_{res} \cdot l} =$ {{current_in_A = voltage_in_V / wire_resistivity_in_ohms}} A = current.<br>
 <br>
 
 Electric field: $E(x) = \int \frac{q(x')}{|x' - x|^2} \cdot \frac{(x' - x)}{|x' - x|} dx'$<br>
 Electric field around our wire:<br>
-$R =$ {{wire_radius_in_m = wire_radius_in_mm * 1e-3}} m = wire radius<br>
-$A =$ {{wire_cross_section_area_in_m2 = PI * wire_radius_in_m * wire_radius_in_m}} $m^2 =$ wire cross-section area<br>
-$\lambda = A \cdot q =$ {{charge_per_unit_length_in_C_per_m = charge_density_in_C_per_m3 * wire_cross_section_area_in_m2}} $\frac{C}{m}$ = charge density per unit meter along wire<br>
-$E(r) = \lambda \cdot \frac{1}{2} k_e \cdot \frac{1}{r} =$ {{electric_field_in_N_m_per_C_r = charge_per_unit_length_in_C_per_m * .5 * Coulomb_constant}} $\cdot \frac{1}{r} \cdot \frac{N \cdot m}{C}$<br>
+$\lambda = A q = \pi R^2 \rho_{charge} e =$ {{charge_per_unit_length_in_C_per_m = charge_density_in_C_per_m3 * wire_cross_section_area_in_m2}} $\frac{C}{m}$ = charge density per unit meter along wire<br>
+$E(r) = \frac{1}{2} \lambda k_e \frac{1}{r} = \frac{1}{2} \pi R^2 \rho_{charge} e k_e \frac{1}{r} =$ {{electric_field_in_N_m_per_C_r = charge_per_unit_length_in_C_per_m * .5 * Coulomb_constant}} $\cdot \frac{1}{r} \cdot \frac{N \cdot m}{C}$<br>
 <br>
 
 Mean velocity of moving electrons within wire:<br>
-$v = \frac{I}{A \cdot q} = ${{mean_electron_velocity_in_m_per_s = current_in_A / (wire_cross_section_area_in_m2 * charge_density_in_C_per_m3)}} $\frac{m}{s}$<br>
+$v = \frac{I}{\lambda} = \frac{V}{\rho_{charge} e \cdot \rho_{res} \cdot l} =$ {{mean_electron_velocity_in_m_per_s = current_in_A / (wire_cross_section_area_in_m2 * charge_density_in_C_per_m3)}} $\frac{m}{s}$<br>
 <br>
 
 Faraday tensor:<br>
@@ -222,12 +238,14 @@ $\vec{B} =
 	-\frac{z}{r} \\
 	\frac{y}{r}
 \end{matrix}\right]$<br>
-$B = \beta \gamma \frac{1}{c} E$ = electric field magnitude<br>
+$B = \frac{1}{c} \beta \gamma E = \frac{\gamma \cdot V \cdot \pi \cdot R^2 \cdot k_e}{2 \cdot c^2 \cdot \rho_{res} \cdot l \cdot r}$ = electric field magnitude<br>
 <br>
 
 $B = \frac{1}{c \cdot r} \cdot $ {{Lorentz_beta * Lorentz_gamma * electric_field_in_N_m_per_C_r}} $\cdot \frac{N}{C \cdot m}$
-$= \frac{1}{r} \cdot $ {{magnetic_field_in_N_s_per_C_r = Lorentz_beta * Lorentz_gamma / speed_of_light_in_m_per_s * electric_field_in_N_m_per_C_r}} $\cdot \frac{N \cdot s}{C}$<br>
-so at {{distance_in_m}} $ m$ this gives us a magnetic field of:<br>
+$= \frac{1}{r} \cdot $ {{magnetic_field_in_N_s_per_C_r = Lorentz_beta * Lorentz_gamma * (electric_field_in_N_m_per_C_r / speed_of_light_in_m_per_s)}} $\cdot \frac{N \cdot s}{C}$<br>
+<br>
+
+At {{distance_in_m}} $ m$ this gives us a magnetic field of:<br>
 $B =$ {{magnetic_field_in_N_s_per_C_r / distance_in_m}}
 $\frac{N \cdot s}{C \cdot m} =$
 {{magnetic_field_in_N_s_per_C_r / distance_in_m}} T<br>
