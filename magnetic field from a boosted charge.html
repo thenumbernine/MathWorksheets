@@ -13,7 +13,6 @@ var templateSpans = [];
 function refreshTemplate(dontUpdateInputs) {
 	for (var i = 0; i < templateSpans.length; ++i) {
 		var span = templateSpans[i];
-console.log('evaluating '+span.expr);		
 		var result;
 		with (templateContext) {
 			result = eval(span.expr);
@@ -43,11 +42,12 @@ function setMaterial(element) {
 
 function init() {
 
-	var r = /{{(.*?)}}/g;
+	var r = /{{([^}]*)}}/;
 	var html = document.body.innerHTML;
 	var templateIndex = 0;
 	var match;
 	while ((match = r.exec(html)) != null) {
+console.log(match[0]);
 		var templateID = 'template_' + templateIndex;
 		html = html.substr(0, match.index) 
 			+ '<span id="' + templateID + '">' + templateID + '</span>'
