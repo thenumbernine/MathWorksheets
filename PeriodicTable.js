@@ -1,5 +1,5 @@
-//from https://github.com/Bowserinator/Periodic-Table-JSON
-PeriodicTable = [{
+PeriodicTable = 	//from https://github.com/Bowserinator/Periodic-Table-JSON
+[{
     "phase":"Gas",
     "named_by":"Antoine Lavoisier",
     "symbol":"H",

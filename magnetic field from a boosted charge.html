@@ -54,6 +54,9 @@ function selchange() {
 	</head>
     <body onload='init();'>
 
+indexes span $x^a \in \{ x^0, x^0, x^2, x^3 \}$, where $dx^0 = c dt$ and $\partial_0 = \frac{1}{c} \partial_t$<br>
+<br>
+
 constants:<br>
 $c = $<input name='speed_of_light_in_m_per_s' value='299792458'/> $\cdot \frac{m}{s} =$ the speed of light.<br>
 $k_e = $<input name='Coulomb_constant' value='8.9875517873682e+9'/> $\cdot \frac{N \cdot m^2}{C^2}$ = Coulomb's constant (typically $\frac{1}{4 \pi \epsilon_0}$).<br>
@@ -77,8 +80,8 @@ power source:<br>
 $V =$ <input name='voltage_in_V' value='6'/> V = voltage<br>
 <br>
 
-reading of magnetic field:<br>
-$r =$ <input name='field_measure_distance_in_m' value='.01'/> m = distance of measurement<br>
+distance at which to measure the electric and magnetic field:<br>
+$r =$ <input name='field_measure_distance_in_m' value='.01'/> $m = \sqrt{y^2 + z^2} =$ distance of measurement from our wire along the x-axis.<br>
 <br>
 
 (atomic mass) {{atomic_mass_in_kg = 1e-3 * atomic_mass_in_g}} kg = (Avogadro's constant) {{Avogadro_constant}} atoms = (Avogadro's constant * nominal valency) {{Avogadro_constant * material_nominal_valency}} electrons.<br>
@@ -88,7 +91,7 @@ $\rho_{charge} = n_e \cdot \rho = $ free electrons per kg * matter density = {{e
 $q = \rho_{charge} \cdot e =$ {{charge_density_in_C_per_m3 = electron_density_in_e_per_m3 * electron_charge}} $\frac{C}{m^3} = $ charge density.<br>
 <br>
 
-more wire properties:<br>
+derived wire properties:<br>
 $R =$ {{wire_radius_in_m = wire_radius_in_mm * 1e-3}} m = wire radius<br>
 $A = \pi R^2 =$ {{wire_cross_section_area_in_m2 = Math.PI * wire_radius_in_m * wire_radius_in_m}} $m^2 =$ wire cross-section area<br>
 $R_{res} = \frac{\rho_{res} \cdot l}{A} =$ {{wire_resistivity_in_ohms = material_electrical_resistivity_in_ohm_m * wire_length_in_m / wire_cross_section_area_in_m2}} $\Omega$<br>
@@ -116,6 +119,16 @@ $F_{ab} = \downarrow a \overset{\rightarrow b}{\left[ \begin{matrix}
 $E_i$ has units $\frac{N}{C} = \frac{kg \cdot m}{C \cdot s^2}$.<br>
 $B_i$ has units $\frac{N \cdot s}{C \cdot m} = \frac{kg}{C \cdot s}$<br>
 $F_{ab}$ has units of $\frac{kg}{C \cdot s}$<br>
+<br>
+
+In terms of electromagnetic four-potential:<br>
+$F_{ab} = 2 \partial_{[a} A_{b]}$<br>
+$F_{ab} = \downarrow a \overset{\rightarrow b}{\left[ \begin{matrix}
+	0 & \frac{1}{c} \partial_t \vec{A} - \vec{\nabla} A_t \\
+	\vec{\nabla} A_t - \frac{1}{c} \partial_t \vec{A} & (\vec{\nabla} \times \vec{A}) \times
+\end{matrix}\right]}$<br>
+$A_t$ is in units of $V = \frac{N \cdot m}{C}$<br>
+$A_i$ is in units of $\frac{V \cdot s}{m} = \frac{N \cdot s}{C}$<br>
 <br>
 
 Lorentz boost in the x direction:<br>
@@ -215,7 +228,10 @@ $F'_{ab} = \downarrow a \overset{\rightarrow b}{\left[ \begin{matrix}
 	\gamma \frac{1}{c} E \frac{z}{r} & -\beta \gamma \frac{1}{c} E \frac{z}{r} & 0 & 0
 \end{matrix}\right]}$<br>
 <br>
+
+One possible pre-boosted 4-potential: $A_t = E \sqrt{y^2 + z^2}$, $A_i = 0$.<br>
 <br>
+
 So the electric field in the direction perpendicular to the boost is scaled up by $\gamma \ge 1$.<br>
 And a magnetic field is created equal to:<br>
 $\vec{B} = 
@@ -233,9 +249,8 @@ $= \frac{1}{r} \cdot $ {{magnetic_field_in_N_s_per_C_r = Lorentz_beta * Lorentz_
 <br>
 
 Measuring the magnetic field at a distance of {{field_measure_distance_in_m}} $ m$ from the wire gives us:<br>
-$B =$ {{magnetic_field_in_N_s_per_C_r / field_measure_distance_in_m}}
-$\frac{N \cdot s}{C \cdot m} =$
-{{magnetic_field_in_N_s_per_C_r / field_measure_distance_in_m}} T<br>
+$E =$ {{electric_field_in_N_m_per_C = electric_field_in_N_m_per_C_r / field_measure_distance_in_m}} $\frac{N}{C} =$ {{electric_field_in_N_m_per_C}} $\frac{V}{m}$<br>
+$B =$ {{magnetic_field_in_N_s_per_C = magnetic_field_in_N_s_per_C_r / field_measure_distance_in_m}} $\frac{N \cdot s}{C \cdot m} =$ {{magnetic_field_in_N_s_per_C}} T<br>
 <br>
 
 	</body>
