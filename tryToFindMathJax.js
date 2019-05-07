@@ -1,4 +1,11 @@
-function loadScript(args) {
+var tryToFindMathJax = {};
+
+tryToFindMathJax.urls = [
+	'file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML',
+	'/MathJax/MathJax.js?config=TeX-MML-AM_CHTML',
+	'https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML'];
+
+tryToFindMathJax.loadScript = function(args) {
 	console.log("loading "+args.src);
 	var el = document.createElement('script');
 	document.body.append(el);
@@ -11,25 +18,22 @@ function loadScript(args) {
 		if (args.fail !== undefined) args.fail();
 	};
 	el.src = args.src;
-}
+};
 
-function tryToFindMathJax() {
+tryToFindMathJax.init = function () {
 	console.log('init...');
-	var urls = [
-		'file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML',
-		'/MathJax/MathJax.js?config=TeX-MML-AM_CHTML',
-		'https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML'	];
+
 	var i = 0;
 	var loadNext = function() {
-		loadScript({
-			src : urls[i],
+		tryToFindMathJax.loadScript({
+			src : tryToFindMathJax.urls[i],
 			done : function() {
 				console.log("success!");
 				MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
 			},
 			fail : function() {
 				++i;
-				if (i >= urls.length) {
+				if (i >= tryToFindMathJax.urls.length) {
 					console.log("looks like all our sources have failed!");
 				} else {
 					loadNext();
@@ -39,3 +43,7 @@ function tryToFindMathJax() {
 	}
 	loadNext();
 }
+
+window.addEventListener('load', function() {
+	tryToFindMathJax.init();
+}, false);

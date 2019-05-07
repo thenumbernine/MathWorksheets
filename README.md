@@ -198,6 +198,8 @@ Here's the CDN URLs:
 
 [spheres](https://thenumbernine.github.io/math/spheres.html)
 
+[stress-energy tensor](https://thenumbernine.github.io/math/stress%2denergy%20tensor.html)
+
 [torsion gravity](https://thenumbernine.github.io/math/torsion%20gravity.html)
 
 [twisted spacetime](https://thenumbernine.github.io/math/twisted%20spacetime.html)

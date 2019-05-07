@@ -4,13 +4,14 @@
         <meta charset='utf-8'>
 		<title>Schwarzschild with mass varying with time</title>
 		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<script type='text/javascript' src='template.js'/></script>
 	</head>
-    <body onload='tryToFindMathJax();'>
+    <body onload='template.addDOM(document.body); tryToFindMathJax();'>
 
 <h3>Schwarzschild metric, mass varying with time</h3>
 <br>
 
-$c = 299792458 \frac{m}{s} =$ the speed of light.<br>
+$c =$ <input name='speed_of_light_in_m_per_s' value='299792458'/> $\frac{m}{s} =$ the speed of light.<br>
 <br>
 
 $ds^2 = (\frac{R - r}{r}) (c \cdot dt)^2 + (\frac{r}{r - R}) dr^2 + r^2 (d\theta^2 + sin(\theta)^2 d\phi^2)$<br>
@@ -63,22 +64,25 @@ $\ddot{r} = -{\Gamma^r}_{tt} (c \cdot \dot{t})^2 + ...$<br>
 For $\dot{t} = 1$ and $\dot{x}^i = 0$ otherwise<br>
 $\ddot{r} = c^2 \frac{R (R - r)}{2 r^3}$<br>
 Let $2 \frac{G}{c^2} M = R$, for mass M in kg and Schwarzschild radius R in m<br>
-For gravitational constant $G = 6.67384 \cdot 10^{-11} \frac{m^3}{kg \cdot s^2}$<br>
+For gravitational constant $G =$ <input name='gravitational_constant_in_m3_per_kg_s2' value='6.67384e-11'/> $\frac{m^3}{kg \cdot s^2}$<br>
 $\ddot{r}_{Schwarzschild} = -G \frac{M}{r^2} (1 - \frac{G}{c^2} \frac{2 M}{r})$<br>
 <br>
 
 Notice that the ratio of Schwarzschild gravity to Newton gravity is:<br>
 For the Earth:<br>
-$M = 5.972 \cdot 10^{24} kg$<br>
-$R = \frac{2 G M}{c^2}  = 0.00887 m$.
-At the surface $r = 6.371 \cdot 10^6 m$<br>
-so $\frac{R}{r} = \frac{2 G M}{c^2 r} = 1.3922461152095 \cdot 10^{-9}$<br>
-and $1 - \frac{R}{r} = 0.99999999860775$<br> 
+$M =$ <input name='earth_mass_in_kg' value='5.972e+24'/> $kg$<br>
+$R = \frac{2 G M}{c^2}  =$ {{earth_Schwarzschild_radius_in_m = 2 * gravitational_constant_in_m3_per_kg_s2 * earth_mass_in_kg / (speed_of_light_in_m_per_s * speed_of_light_in_m_per_s)}} $m$.<br>
+At the surface $r =$ <input name='earth_radius_in_m' value='6.371e+6'/> $m$<br>
+so $\frac{R}{r} = \frac{2 G M}{c^2 r} =$ {{earth_Schwarzschild_to_radius_ratio = earth_Schwarzschild_radius_in_m / earth_radius_in_m}}<br>
+and $1 - \frac{R}{r} = $ {{1 - earth_Schwarzschild_to_radius_ratio}}<br> 
 <br>
 
 For very small $\frac{G}{c^2} \frac{2 M}{r}$, we can approximate<br>
 $\ddot{r}_{Newton} = -\frac{G M}{r^2}$<br>
 which is Newton gravity.<br>
+<br>
+
+At the Earth's surface this is {{gravitational_constant_in_m3_per_kg_s2 * earth_mass_in_kg / (earth_radius_in_m * earth_radius_in_m)}} $\frac{m}{s^2}$<br>
 <br>
 
 
@@ -114,22 +118,22 @@ $\ddot{r} = G (\frac{2 M_{,r}}{r} - \frac{M}{r^2}) (1 - \frac{G}{c^2} \frac{2M}{
 <br>
 
 Let's assume M is much smaller, such that $\frac{M}{r^2} \approx 0$<br>
-$\ddot{r} = \frac{2 G M_{,r}}{r} = 2 \cdot (6.67384 \cdot 10^{-11} \frac{m^3}{kg \cdot s^2}) \cdot \frac{1}{r} \cdot (\frac{\partial M}{\partial r})$<br>
+$\ddot{r} = \frac{2 G M_{,r}}{r} = $ {{2 * gravitational_constant_in_m3_per_kg_s2}} $\frac{m^3}{kg \cdot s^2} \cdot \frac{1}{r} \cdot (\frac{\partial M}{\partial r})$<br>
 <br>
 
 While we're here, let's look at charge:<br>
 Replace M with Q<br>
-Coulomb's constant:	$k_e = 8987551787.3682 \cdot \frac{kg \cdot m^3}{C^2 \cdot s^2}$<br>
-so $\sqrt{\frac{k_e \cdot G}{c^4}} 
-	= \sqrt{ 
-		\frac{
-			(8987551787.3682 \frac{kg \cdot m^3}{C^2 \cdot s^2}) 
-			\cdot (6.67384 \cdot 10^{-11} \cdot \frac{m^3}{kg \cdot s^2}) 
-		}{
-			(299792458 \frac{m}{s} )^4
-		}
-	} = 8.6172202304994 \cdot 10^{-18} \cdot \frac{m}{C}$<br>
-Also, $\sqrt{k_e \cdot G} = 0.7744771308477 \frac{m^3}{C \cdot s^2}$<br>
+(But can you simply replace M with Q?  
+	Relativistic gravitation is caused from $G_{ab} = T_{ab}$.
+	The 'swarm-of-mass' stress-energy attributed to matter gravitational effects is due to the density -- i.e. the intrinsic rest-mass of all particles within a region of space.
+	However the stress-energy attributed to electromagnetism gravitational effects is only due to the electric and magnetic fields, which are derived from calculations of the charge of the particles in nearby space.
+	Should there exist a 'swarm-of-mass' stress-energy based on particle charge, in addition to mass?
+	Should there exist a stress-energy based on gravitational effects at a particular location in spacetime, as there is due to electromagnetic fields?)
+<br>
+
+Coulomb's constant:	$k_e =$ <input name='Coulomb_constant_in_kg_m3_per_C2_s2' value='8.9875517873682e+9'/> $\cdot \frac{kg \cdot m^3}{C^2 \cdot s^2}$<br>
+so $\sqrt{k_e \cdot G} =$ {{sqrt_ke_G_in_m3_per_C_s2 = Math.sqrt(Coulomb_constant_in_kg_m3_per_C2_s2 * gravitational_constant_in_m3_per_kg_s2)}} $\cdot \frac{m^3}{C \cdot s^2}$<br>
+and $\sqrt{\frac{k_e \cdot G}{c^4}} =$ {{sqrt_ke_G_in_m3_per_C_s2 / (speed_of_light_in_m_per_s * speed_of_light_in_m_per_s)}} $\cdot \frac{m}{C}$<br>
 <br>
 
 $\ddot{r} = \frac{2 Q_{,r}}{r} = 2 \cdot \sqrt{k_e \cdot G} \cdot \frac{1}{r} \cdot (\frac{\partial Q}{\partial r})$<br>
@@ -141,6 +145,11 @@ $ \approx 1.5 \cdot \frac{\partial Q}{\partial r} \cdot \frac{1}{r} \cdot \frac{
 Notice that in the same way $M = \int_V \rho dV$, so is $Q = \int_V q dV$<br>
 Where $[\rho] = \frac{kg}{m^3}$ and $[q] = \frac{C}{m^3}$<br>
 <br>
+
+<hr>
+<br>
+
+Side thoughts... charge vs. mass of particles, and their relativistic effects of each...<br>
 
 <hr>
 <br>

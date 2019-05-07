@@ -17,10 +17,13 @@ function setMaterial(element) {
 	template.refresh();
 }
 
+function selchange() {
+	var select = document.getElementById('materials');
+	var option = select.options[select.selectedIndex];
+	if (option) setMaterial(option.element);
+}
 
 function init() {
-	template.init(document.body);
-	
 	var defaultMaterial;
 	var defaultIndex = 0;
 	var select = document.getElementById('materials');
@@ -38,70 +41,60 @@ function init() {
 		select.appendChild(option);
 	}
 	select.selectedIndex = defaultIndex;
-	
 	setMaterial(defaultMaterial);
-
-	tryToFindMathJax();
 }
 
-function selchange() {
-	var select = document.getElementById('materials');
-	var option = select.options[select.selectedIndex];
-	if (option) setMaterial(option.element);
-}
+Template.prototype.done = init;
 
 </script>
 	</head>
-    <body onload='init();'>
+    <body templated>
 
 indexes span $x^a \in \{ x^0, x^0, x^2, x^3 \}$, where $dx^0 = c dt$ and $\partial_0 = \frac{1}{c} \partial_t$<br>
 <br>
 
 constants:<br>
 $c = $<input name='speed_of_light_in_m_per_s' value='299792458'/> $\cdot \frac{m}{s} =$ the speed of light.<br>
-$k_e = $<input name='Coulomb_constant' value='8.9875517873682e+9'/> $\cdot \frac{N \cdot m^2}{C^2}$ = Coulomb's constant (typically $\frac{1}{4 \pi \epsilon_0}$).<br>
-$N_A = $<input name='Avogadro_constant' value='6.02214085774e+23'/> $\cdot \frac{1}{mol}$ = Avogadro's constant.<br>
-$e =$ <input name='electron_charge' value='1.602176620898e-19'/> $\cdot C$ = electron charge<br>
+$k_e = $<input name='Coulomb_constant_in_kg_m3_per_C2_s2' value='8.9875517873682e+9'/> $\cdot \frac{N \cdot m^2}{C^2}$ = Coulomb's constant (typically $\frac{1}{4 \pi \epsilon_0}$).<br>
+$N_A = $<input name='Avogadro_constant_in_1_per_mol' value='6.02214085774e+23'/> $\cdot \frac{1}{mol}$ = Avogadro's constant.<br>
+$e =$ <input name='electron_charge_in_C' value='1.602176620898e-19'/> $\cdot C$ = electron charge<br>
 <br>
 
 material variables: <select onchange='selchange()' id='materials'><option name=''></option></select><br>
 $m_a =$ <input name='atomic_mass_in_g' value='63.54'/> $\frac{g}{mol} =$ atomic mass.<br>
 $n_v =$ <input name='material_nominal_valency' value='1'/> nominal valency.<br>
-$\rho =$ <input name='material_density_in_g_per_cm3' value='8.95'/> $\frac{g}{cm^3}$ = density<br> 
+$\rho =$ <input name='material_density_in_g_per_cm3' value='8.95'/> $\frac{g}{cm^3} =$ {{material_density_in_kg_per_m3 = material_density_in_g_per_cm3 * 1e+3}} $\frac{kg}{m^3} = $ matter density.<br>
 $\rho_{res} = $ <input name='material_electrical_resistivity_in_ohm_m' value='1.6e-8'/> $\Omega \cdot m$ = electrical resistivity<br>
 <br>
 
 wire properties:<br>
 $l =$ <input name='wire_length_in_m' value='1000'/> $m$ = wire distance<br>
-$R =$ <input name='wire_radius_in_mm' value='1.3'/> $mm$ = wire radius<br>
+$R =$ <input name='wire_radius_in_mm' value='1.3'/> $mm =$ {{wire_radius_in_m = wire_radius_in_mm * 1e-3}} $m =$ wire radius.<br>
 <br>
 
 power source:<br>
 $V =$ <input name='voltage_in_V' value='6'/> V = voltage<br>
 <br>
 
-distance at which to measure the electric and magnetic field:<br>
-$r =$ <input name='field_measure_distance_in_m' value='.01'/> $m = \sqrt{y^2 + z^2} =$ distance of measurement from our wire along the x-axis.<br>
+$r = \sqrt{y^2 + z^2} =$ <input name='field_measure_distance_in_m' value='.01'/> $m = $ distance of measurement from the wire along the x-axis.<br>
 <br>
 
-(atomic mass) {{atomic_mass_in_kg = 1e-3 * atomic_mass_in_g}} kg = (Avogadro's constant) {{Avogadro_constant}} atoms = (Avogadro's constant * nominal valency) {{Avogadro_constant * material_nominal_valency}} electrons.<br>
-$n_e = \frac{N_A \cdot n_v}{m_a} = $ Avogadro's constant * nominal valency / atomic mass = {{free_electrons_per_kg = Avogadro_constant * material_nominal_valency / atomic_mass_in_kg}} $\frac{e}{kg} = $ free electrons per kg.<br>
-$\rho =$ {{material_density_in_g_per_cm3}} $\frac{g}{cm^3}$ = {{material_density_in_kg_per_m3 = material_density_in_g_per_cm3 * 1e+3}} $\frac{kg}{m^3} = $ matter density.<br>
+(atomic mass) {{atomic_mass_in_kg = 1e-3 * atomic_mass_in_g}} kg = (Avogadro's constant) {{Avogadro_constant_in_1_per_mol}} atoms = (Avogadro's constant * nominal valency) {{Avogadro_constant_in_1_per_mol * material_nominal_valency}} electrons.<br>
+$n_e = \frac{N_A \cdot n_v}{m_a} = $ Avogadro's constant * nominal valency / atomic mass = {{free_electrons_per_kg = Avogadro_constant_in_1_per_mol * material_nominal_valency / atomic_mass_in_kg}} $\frac{e}{kg} = $ free electrons per kg.<br>
 $\rho_{charge} = n_e \cdot \rho = $ free electrons per kg * matter density = {{electron_density_in_e_per_m3 = free_electrons_per_kg * material_density_in_kg_per_m3}} $\frac{e}{m^3}$ = electron density.<br> 
-$q = \rho_{charge} \cdot e =$ {{charge_density_in_C_per_m3 = electron_density_in_e_per_m3 * electron_charge}} $\frac{C}{m^3} = $ charge density.<br>
+$q = \rho_{charge} \cdot e =$ {{charge_density_in_C_per_m3 = electron_density_in_e_per_m3 * electron_charge_in_C}} $\frac{C}{m^3} = $ charge density.<br>
 <br>
 
 derived wire properties:<br>
-$R =$ {{wire_radius_in_m = wire_radius_in_mm * 1e-3}} m = wire radius<br>
 $A = \pi R^2 =$ {{wire_cross_section_area_in_m2 = Math.PI * wire_radius_in_m * wire_radius_in_m}} $m^2 =$ wire cross-section area<br>
 $R_{res} = \frac{\rho_{res} \cdot l}{A} =$ {{wire_resistivity_in_ohms = material_electrical_resistivity_in_ohm_m * wire_length_in_m / wire_cross_section_area_in_m2}} $\Omega$<br>
 $I = \frac{V}{R_{res}} = \frac{V \cdot \pi \cdot R^2}{\rho_{res} \cdot l} =$ {{current_in_A = voltage_in_V / wire_resistivity_in_ohms}} A = current.<br>
 <br>
 
 Electric field: $E(x) = \int \frac{q(x')}{|x' - x|^2} \cdot \frac{(x' - x)}{|x' - x|} dx'$<br>
-Electric field around our wire:<br>
+Electric field around a wire:<br>
 $\lambda = A q = \pi R^2 \rho_{charge} e =$ {{charge_per_unit_length_in_C_per_m = charge_density_in_C_per_m3 * wire_cross_section_area_in_m2}} $\frac{C}{m}$ = charge density per unit meter along wire<br>
-$E(r) = \frac{1}{2} \lambda k_e \frac{1}{r} = \frac{1}{2} \pi R^2 \rho_{charge} e k_e \frac{1}{r} =$ {{electric_field_in_N_m_per_C_r = charge_per_unit_length_in_C_per_m * .5 * Coulomb_constant}} $\cdot \frac{1}{r} \cdot \frac{N \cdot m}{C}$<br>
+$E(r) = \frac{1}{2} \lambda k_e \frac{1}{r} = \frac{1}{2} \pi R^2 \rho_{charge} e k_e \frac{1}{r} =$ {{electric_field_in_N_m_per_C_r = charge_per_unit_length_in_C_per_m * .5 * Coulomb_constant_in_kg_m3_per_C2_s2}} $\cdot \frac{1}{r} \cdot \frac{N \cdot m}{C}$<br>
 <br>
 
 Mean velocity of moving electrons within wire:<br>
@@ -142,7 +135,7 @@ ${\Lambda^a}_b =
 $<br>
 <br>
 
-For electron flow through our material:<br>
+For electron flow through a material:<br>
 $\beta = \frac{v}{c} =$ {{Lorentz_beta = mean_electron_velocity_in_m_per_s / speed_of_light_in_m_per_s}}<br>
 $\gamma = 1 / \sqrt{1 - \beta^2} \approx$ {{Lorentz_gamma = 1 / (1 - Math.pow(Lorentz_beta, .5))}}<br>
 <br>
