@@ -5,83 +5,22 @@
 		<title>magnetic field generated from boosting charge</title>
 		<script type='text/javascript' src='tryToFindMathJax.js'></script>
 		<script type='text/javascript' src='PeriodicTable.js'></script>
+		<script type='text/javascript' src='template.js'/></script>
 <script>
 
-var templateContext = {};
-var templateSpans = [];
-
-function refreshTemplate(dontUpdateInputs) {
-	for (var i = 0; i < templateSpans.length; ++i) {
-		var span = templateSpans[i];
-		var result;
-		with (templateContext) {
-			result = eval(span.expr);
-		}
-		if (typeof(result) == 'number') {
-			result = result.toExponential();
-		}
-		span.span.innerText = result;
-	}
-
-	if (!dontUpdateInputs) {
-		var inputs = document.getElementsByTagName('input');
-		for (var i = 0; i < inputs.length; ++i) {
-			var input = inputs[i];
-			input.value = templateContext[input.name];
-		}
-	}
-}
-
 function setMaterial(element) {
-	templateContext.atomic_mass_in_g = element.atomic_mass;
-	templateContext.material_nominal_valency = 1;
-	templateContext.material_density_in_g_per_cm3 = element.density;
-	templateContext.material_electrical_resistivity_in_ohm_m = element.resistivity;
-	refreshTemplate();
+	if (element === undefined) return;
+	template.context.atomic_mass_in_g = element.atomic_mass;
+	template.context.material_nominal_valency = 1;
+	template.context.material_density_in_g_per_cm3 = element.density;
+	template.context.material_electrical_resistivity_in_ohm_m = element.resistivity;
+	template.refresh();
 }
+
 
 function init() {
-
-	var r = /{{([^}]*)}}/;
-	var html = document.body.innerHTML;
-	var templateIndex = 0;
-	var match;
-	while ((match = r.exec(html)) != null) {
-console.log(match[0]);
-		var templateID = 'template_' + templateIndex;
-		html = html.substr(0, match.index) 
-			+ '<span id="' + templateID + '">' + templateID + '</span>'
-			+ html.substr(match.index + match[0].length);
-		++templateIndex;
-		templateSpans.push({
-			id : templateID,
-			expr : match[1],
-		});
-	}
-	document.body.innerHTML = html;
-
-	//is the DOM built yet?
-	for (var i = 0; i < templateSpans.length; ++i) {
-		var templateSpan = templateSpans[i];
-		templateSpan.span = document.getElementById(templateSpan.id);
-	}
-
-	//now collect all inputs
-	var inputs = document.getElementsByTagName('input');
-	for (var i = 0; i < inputs.length; ++i) {
-		(function(){
-			var input = inputs[i];	
-			templateContext[input.name] = input.value;
-			input.onkeyup = function() {
-				templateContext[input.name] = input.value;
-				refreshTemplate(true);	//refresh everything related to it
-			};
-		})();
-	}
-
-	//now refresh it all
-	refreshTemplate(true);
-
+	template.init(document.body);
+	
 	var defaultMaterial;
 	var defaultIndex = 0;
 	var select = document.getElementById('materials');
@@ -100,19 +39,17 @@ console.log(match[0]);
 	}
 	select.selectedIndex = defaultIndex;
 	
-	//setMaterial(defaultMaterial);
+	setMaterial(defaultMaterial);
 
 	tryToFindMathJax();
-
-	//templating init
-	//- run regex on document.body.innerHTML with 'with' of the context object
-	//- any inputs, implicitly create variables within the context object
 }
+
 function selchange() {
 	var select = document.getElementById('materials');
 	var option = select.options[select.selectedIndex];
 	if (option) setMaterial(option.element);
 }
+
 </script>
 	</head>
     <body onload='init();'>
