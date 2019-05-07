@@ -62,8 +62,8 @@ $e =$ <input name='electron_charge' value='1.602176620898e-19'/> $\cdot C$ = ele
 <br>
 
 material variables: <select onchange='selchange()' id='materials'><option name=''></option></select><br>
-<input name='atomic_mass_in_g' value='63.54'/> $g =$ atomic mass.<br>
-nominal valency: 1 atom = <input name='material_nominal_valency' value='1'/> electrons<br>
+$m_a =$ <input name='atomic_mass_in_g' value='63.54'/> $\frac{g}{mol} =$ atomic mass.<br>
+$n_v =$ <input name='material_nominal_valency' value='1'/> nominal valency.<br>
 $\rho =$ <input name='material_density_in_g_per_cm3' value='8.95'/> $\frac{g}{cm^3}$ = density<br> 
 $\rho_{res} = $ <input name='material_electrical_resistivity_in_ohm_m' value='1.6e-8'/> $\Omega \cdot m$ = electrical resistivity<br>
 <br>
@@ -82,9 +82,9 @@ $r =$ <input name='field_measure_distance_in_m' value='.01'/> m = distance of me
 <br>
 
 (atomic mass) {{atomic_mass_in_kg = 1e-3 * atomic_mass_in_g}} kg = (Avogadro's constant) {{Avogadro_constant}} atoms = (Avogadro's constant * nominal valency) {{Avogadro_constant * material_nominal_valency}} electrons.<br>
-Free electrons per kg = Avogadro's constant * nominal valency / atomic weight = {{free_electrons_per_kg = Avogadro_constant * material_nominal_valency / atomic_mass_in_kg}} $\frac{e}{kg}$<br>
-$\rho =$ {{material_density_in_g_per_cm3}} $\frac{g}{cm^3}$ = {{material_density_in_kg_per_m3 = material_density_in_g_per_cm3 * 1e+3}} $\frac{kg}{m^3} = $ = matter density.<br>
-$\rho_{charge} =$ free electrons per kg * matter density = {{electron_density_in_e_per_m3 = free_electrons_per_kg * material_density_in_kg_per_m3}} $\frac{e}{m^3}$ = electron density.<br> 
+$n_e = \frac{N_A \cdot n_v}{m_a} = $ Avogadro's constant * nominal valency / atomic mass = {{free_electrons_per_kg = Avogadro_constant * material_nominal_valency / atomic_mass_in_kg}} $\frac{e}{kg} = $ free electrons per kg.<br>
+$\rho =$ {{material_density_in_g_per_cm3}} $\frac{g}{cm^3}$ = {{material_density_in_kg_per_m3 = material_density_in_g_per_cm3 * 1e+3}} $\frac{kg}{m^3} = $ matter density.<br>
+$\rho_{charge} = n_e \cdot \rho = $ free electrons per kg * matter density = {{electron_density_in_e_per_m3 = free_electrons_per_kg * material_density_in_kg_per_m3}} $\frac{e}{m^3}$ = electron density.<br> 
 $q = \rho_{charge} \cdot e =$ {{charge_density_in_C_per_m3 = electron_density_in_e_per_m3 * electron_charge}} $\frac{C}{m^3} = $ charge density.<br>
 <br>
 
@@ -190,10 +190,10 @@ $= \downarrow a \overset{\rightarrow b}{\left[ \begin{matrix}
 \end{matrix}\right]}$<br>
 <br>
 
-For a resting electromagnetic field of magnitude $E$.<br>
+For a resting electromagnetic field of magnitude $E$ around a wire oriented in the x direction:<br>
 $F_{ab} = \downarrow a \overset{\rightarrow b}{\left[ \begin{matrix}
-	0 & -\frac{1}{c} E \frac{x}{r} & -\frac{1}{c} E \frac{y}{r} & -\frac{1}{c} E \frac{z}{r} \\
-	\frac{1}{c} E \frac{x}{r} & 0 & 0 & 0 \\
+	0 & 0 & -\frac{1}{c} E \frac{y}{r} & -\frac{1}{c} E \frac{z}{r} \\
+	0 & 0 & 0 & 0 \\
 	\frac{1}{c} E \frac{y}{r} & 0 & 0 & 0 \\
 	\frac{1}{c} E \frac{z}{r} & 0 & 0 & 0
 \end{matrix}\right]}$<br>
@@ -201,11 +201,11 @@ $F_{ab} = \downarrow a \overset{\rightarrow b}{\left[ \begin{matrix}
 
 $F'_{ab} = \downarrow a \overset{\rightarrow b}{\left[ \begin{matrix}
 	0 &
-	-\frac{1}{c} E \frac{x}{r} &
+	0 &
 	-\gamma \frac{1}{c} E \frac{y}{r} &
 	-\gamma \frac{1}{c} E \frac{z}{r} \\
 	
-	\frac{1}{c} E \frac{x}{r} &
+	0 &
 	0 &
 	\beta \gamma \frac{1}{c} E \frac{y}{r} &
 	\beta \gamma \frac{1}{c} E \frac{z}{r} \\
@@ -216,7 +216,7 @@ $F'_{ab} = \downarrow a \overset{\rightarrow b}{\left[ \begin{matrix}
 \end{matrix}\right]}$<br>
 <br>
 <br>
-So the electric field in the direction perpendicular to the boost is scaled down by $\gamma$.<br>
+So the electric field in the direction perpendicular to the boost is scaled up by $\gamma \ge 1$.<br>
 And a magnetic field is created equal to:<br>
 $\vec{B} = 
 	\beta \gamma \frac{1}{c} E \cdot
@@ -232,7 +232,7 @@ $B = \frac{1}{c \cdot r} \cdot $ {{Lorentz_beta * Lorentz_gamma * electric_field
 $= \frac{1}{r} \cdot $ {{magnetic_field_in_N_s_per_C_r = Lorentz_beta * Lorentz_gamma * (electric_field_in_N_m_per_C_r / speed_of_light_in_m_per_s)}} $\cdot \frac{N \cdot s}{C}$<br>
 <br>
 
-At {{field_measure_distance_in_m}} $ m$ this gives us a magnetic field of:<br>
+Measuring the magnetic field at a distance of {{field_measure_distance_in_m}} $ m$ from the wire gives us:<br>
 $B =$ {{magnetic_field_in_N_s_per_C_r / field_measure_distance_in_m}}
 $\frac{N \cdot s}{C \cdot m} =$
 {{magnetic_field_in_N_s_per_C_r / field_measure_distance_in_m}} T<br>
