@@ -3,7 +3,7 @@
 	<head>
         <meta charset="UTF-8">
 		<script type='text/javascript' src='tryToFindMathJax.js'></script>
-		<title>Kaluza-Klein with constant scalar field</title>
+		<title>Kaluza-Klein</title>
 	</head>
 	<body onload='tryToFindMathJax();'>
 
@@ -18,7 +18,6 @@ the rest of $a - z$ = time+space+electromagnetism.<br>
 
 $A_u =$ electromagnetic potential, in units of $\frac{kg \cdot m}{C \cdot s}$<br>
 $\phi =$ scalar field, in units of $\frac{C \cdot s}{kg \cdot m}$<br>
-$\phi$ is constant so $\phi_{,a} = 0$.<br>
 <br>
 
 in 4+1:<br>
@@ -66,36 +65,187 @@ $\tilde{g}^{ab} = \pmatrix{
 <br>
 
 metric partial, in 4+1:<br>
-$\tilde{g}_{ab,c} = \overset{\downarrow c[\downarrow a \rightarrow b]}{\pmatrix{
-	g_{\mu\nu,c} + \phi^2 (A_{\mu,c} A_\nu + A_\mu A_{\nu,c}) & \phi^2 A_{\mu,c} \\ 
-	\phi^2 A_{\nu,c} & 0
+
+$\tilde{g}_{ab,c} = \overset{\downarrow c(\rho)[\downarrow a(\mu) \rightarrow b(\nu)]}{\pmatrix{
+	\pmatrix{
+		\tilde{g}_{\mu\nu,\rho} &
+		\tilde{g}_{\mu 5, \rho} \\
+		\tilde{g}_{5 \nu,\rho} &
+		\tilde{g}_{5 5, \rho}
+	} \\
+	\pmatrix{
+		\tilde{g}_{\mu\nu, 5} &
+		\tilde{g}_{\mu 5, 5} \\
+		\tilde{g}_{5 \nu, 5} &
+		\tilde{g}_{5 5, 5}
+	}
+}}$<br>
+
+$= \overset{\downarrow c[\downarrow a \rightarrow b]}{\pmatrix{
+	g_{\mu\nu,c} + 2 \phi \phi_{,c} A_\mu A_\nu + \phi^2 (A_{\mu,c} A_\nu + A_\mu A_{\nu,c}) &
+		2 \phi \phi_{,c} A_\mu + \phi^2 A_{\mu,c} \\ 
+	2 \phi \phi_{,c} A_\nu + \phi^2 A_{\nu,c} & 2 \phi \phi_{,c}
 }}$<br>
 $= {}_{\downarrow c(\rho)}
 \pmatrix{
 	{}_{\downarrow a(\mu)}
 	\overset{\rightarrow b(\nu)}{
 	\pmatrix{
-		g_{\mu\nu,\rho} + \phi^2 (A_{\mu,\rho} A_\nu + A_\mu A_{\nu,\rho}) & \phi^2 A_{\mu,\rho} \\ 
-		\phi^2 A_{\nu,\rho} & 0
+		g_{\mu\nu,\rho} 
+		+ 2 \phi \phi_{,\rho} A_\mu A_\nu 
+		+ \phi^2 (A_{\mu,\rho} A_\nu + A_\mu A_{\nu,\rho}) & 
+		
+		2 \phi \phi_{,\rho} A_\mu + \phi^2 A_{\mu,\rho} \\ 
+		
+		2 \phi \phi_{,\rho} A_\nu + \phi^2 A_{\nu,\rho} & 
+		
+		2 \phi \phi_{,\rho}
 	}} \\
 	\pmatrix{
-		g_{\mu\nu,5} + \phi^2 (A_{\mu,5} A_\nu + A_\mu A_{\nu,5}) & \phi^2 A_{\mu,5} \\ 
-		\phi^2 A_{\nu,5} & 0
+		g_{\mu\nu,5} + 2 \phi \phi_{,5} A_\mu A_\nu + \phi^2 (A_{\mu,5} A_\nu + A_\mu A_{\nu,5}) &
+		
+		2 \phi \phi_{,5} A_\mu + \phi^2 A_{\mu,5} \\ 
+		
+		2 \phi \phi_{,5} A_\nu + \phi^2 A_{\nu,5} & 
+		
+		2 \phi \phi_{,5}
 	}
-}$
+}$<br>
 <br>
 
-$\tilde\Gamma_{abc} = \frac{1}{2} (g_{ab,c} + g_{ac,b} - g_{bc,a})$<br>
-$= \overset{\downarrow c[\downarrow a \rightarrow b]}{\pmatrix{
+$\tilde\Gamma_{abc} = \frac{1}{2} (\tilde{g}_{ab,c} + \tilde{g}_{ac,b} - \tilde{g}_{bc,a})$<br>
+
+$= \overset{\downarrow c(\rho)[\downarrow a(\mu) \rightarrow b(\nu)]}{\pmatrix{
 	\pmatrix{
-		\Gamma_{uvw} + \phi^2 (
+		\tilde\Gamma_{\mu\nu\rho} &
+		\tilde\Gamma_{\mu 5 \rho} \\
+		\tilde\Gamma_{5 \nu\rho} &
+		\tilde\Gamma_{5 5 \rho}
+	} \\
+	\pmatrix{
+		\tilde\Gamma_{\mu\nu 5} &
+		\tilde\Gamma_{\mu 5 5} \\
+		\tilde\Gamma_{5 \nu 5} &
+		\tilde\Gamma_{5 5 5}
+	}
+}}$<br>
+
+$= \frac{1}{2} \overset{\downarrow c(\rho)[\downarrow a(\mu) \rightarrow b(\nu)]}{\pmatrix{
+	\pmatrix{
+		\tilde{g}_{\mu \nu, \rho} 
+			+ \tilde{g}_{\mu \rho, \nu} 
+			- \tilde{g}_{\nu \rho, \mu} &
+		\tilde{g}_{\mu 5, \rho} 
+			+ \tilde{g}_{\mu \rho, 5} 
+			- \tilde{g}_{\rho 5, \mu} \\
+		\tilde{g}_{\nu 5, \rho} 
+			+ \tilde{g}_{\rho 5, \nu} 
+			- \tilde{g}_{\nu \rho, 5} &
+		\tilde{g}_{5 5, \rho} 
+	} \\
+	\pmatrix{
+		\tilde{g}_{\mu \nu, 5} 
+			+ \tilde{g}_{\mu 5, \nu} 
+			- \tilde{g}_{\nu 5, \mu} &
+		2 \tilde{g}_{\mu 5, 5} - \tilde{g}_{5 5, \mu} \\
+		\tilde{g}_{5 5, \nu} &
+		\tilde{g}_{5 5, 5} 
+	}
+}}$<br>
+
+TODO bottom half of this and more.<br>
+$= \overset{\downarrow c(\rho)[\downarrow a(\mu) \rightarrow b(\nu)]}{\pmatrix{
+	\pmatrix{
+		\Gamma_{\mu\nu\rho} 
+	
+		+ \phi (
+			A_\mu A_\nu \phi_{,\rho}
+			+ A_\mu A_\rho \phi_{,\nu}
+			- A_\nu A_\rho \phi_{,\mu}
+		)
+
+		+ \phi^2 (
+			A_\mu A_{(\nu,\rho)}
+			+ A_\nu A_{[\mu,\rho]} 
+			+ A_\rho A_{[\mu,\nu]} 
+		) 
+			
+		&
+		
+		\frac{1}{2} g_{\mu\rho,5} 
+	
+		+ \phi (
+			2 A_{[\mu} \phi_{,\rho]}
+			+ \phi_{,5} A_\mu A_\rho 
+		)
+	
+		+ \phi^2 (
+			A_{(\rho} A_{\mu),5} 
+			+ A_{[\mu,\rho]}
+		)
+		\\
+		
+		\frac{1}{2} g_{\nu\rho,5} 
+	
+		+ \phi (
+			2 A_{[\nu} \phi_{,\rho]}
+			+ \phi_{,5} A_\nu A_\rho 
+		)
+	
+		+ \phi^2 (
+			A_{(\rho} A_{\nu),5} 
+			+ A_{[\nu,\rho]}
+		)	
+		
+		&
+		
+		\phi \phi_{,\rho} 
+	} \\
+	\pmatrix{
+		\frac{1}{2} ( 
+		\tilde{g}_{\mu \nu, 5} 
+			+ \tilde{g}_{\mu 5, \nu} 
+			- \tilde{g}_{\nu 5, \mu} 
+		)
+		&
+		\frac{1}{2} ( 
+		\tilde{g}_{\mu 5, 5} 
+			+ \tilde{g}_{\mu 5, 5} 
+			- \tilde{g}_{5 5, \mu} 
+		)
+		\\
+		\frac{1}{2} ( 
+		\tilde{g}_{5 \nu, 5} 
+			+ \tilde{g}_{5 5, \nu} 
+			- \tilde{g}_{\nu 5, 5}
+		)
+		&
+		\frac{1}{2} ( 
+		\tilde{g}_{5 5, 5} 
+			+ \tilde{g}_{5 5, 5} 
+			- \tilde{g}_{5 5, 5}
+		)
+	}
+}}$<br>
+
+$= \overset{\downarrow c(\rho)[\downarrow a(\mu) \rightarrow b(\nu)]}{\pmatrix{
+	\pmatrix{
+		\Gamma_{\mu\nu\rho} 
+		
+		+ \phi (
+			\phi_{,\rho} A_\mu A_\nu 
+			+ \phi_{,\nu} A_\mu A_\rho
+			- \phi_{,\mu} A_\nu A_\rho
+		)	
+		+ \phi^2 (
 			  A_\mu A_{(\nu,\rho)}
 			  + A_\nu A_{[\mu,\rho]}
 			  + A_\rho A_{[\mu,\nu]}
-		) &
+		) 
+		&
 		\frac{1}{2} g_{\mu\rho,5} + \phi^2 A_{[\mu,\rho]} \\
 		-\frac{1}{2} g_{\nu\rho,5} + \phi^2 A_{(\nu,\rho)} & 
-		0	
+		0
 	} \\
 	\pmatrix{
 		\frac{1}{2} g_{\mu\nu,5} + \phi^2 A_{[\mu,\nu]} & \phi^2 A_{\mu,5} \\
