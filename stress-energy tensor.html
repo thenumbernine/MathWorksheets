@@ -10,13 +10,13 @@
 	<body templated>
 $c =$ <input name='speed_of_light_in_m_per_s' value='299792458'/> $\frac{m}{s} =$ the speed of light.<br>
 $G =$ <input name='gravitational_constant_in_m3_per_kg_s2' value='6.67384e-11'/> $\frac{m^3}{kg \cdot s^2} =$ gravitational constant<br>
-$k_e =$ <input name='Coulomb_constant_in_kg_m3_per_C2_s2' value='8.9875517873682e+9'/> $\cdot \frac{kg \cdot m^3}{C^2 \cdot s^2} = \frac{kg}{C} \cdot \frac{m^3}{C \cdot s^2} =$ Coulomb's constant.<br>
+$k_e =$ <input name='Coulomb_constant_in_kg_m3_per_C2_s2' value='8.9875517873682e+9'/> $\cdot \frac{kg \cdot m^3}{C^2 \cdot s^2} =$ {{Coulomb_constant_in_kg_m3_per_C2_s2}} $\frac{kg}{C} \cdot \frac{m^3}{C \cdot s^2} =$ Coulomb's constant.<br>
 (Coulomb's constant units are the same as the gravitational constant's units, but with $kg$ swapped with $C$, and then with an extra ratio of $kg$ to $C$.)<br>
 <br>
 
 Derived values:<br>
-$\epsilon_0 = \frac{1}{4 \pi k_e} =$ {{vacuum_permittivity_in_C2_s2_per_kg_m3 = 1 / (4 * Math.PI * Coulomb_constant_in_kg_m3_per_C2_s2) }} $ \frac{C^2 \cdot s^2}{kg \cdot m^3} = \frac{C}{kg} \cdot \frac{C \cdot s^2}{m^3} =$ vacuum permittivity.<br>
-$\mu_0 = \frac{1}{\epsilon_0 c^2} =$ {{vacuum_permeability_in_kg_m_per_C2 = 1 / (speed_of_light_in_m_per_s * speed_of_light_in_m_per_s * vacuum_permittivity_in_C2_s2_per_kg_m3)}} $\frac{kg \cdot m}{C^2} = \frac{kg}{C} \cdot \frac{m}{C} =$ vacuum permeability.<br>
+$\epsilon_0 = \frac{1}{4 \pi k_e} =$ {{vacuum_permittivity_in_C2_s2_per_kg_m3 = 1 / (4 * Math.PI * Coulomb_constant_in_kg_m3_per_C2_s2) }} $ \frac{C^2 \cdot s^2}{kg \cdot m^3} =$ {{vacuum_permittivity_in_C2_s2_per_kg_m3}} $\frac{C}{kg} \cdot \frac{C \cdot s^2}{m^3} =$ vacuum permittivity.<br>
+$\mu_0 = \frac{1}{\epsilon_0 c^2} =$ {{vacuum_permeability_in_kg_m_per_C2 = 1 / (speed_of_light_in_m_per_s * speed_of_light_in_m_per_s * vacuum_permittivity_in_C2_s2_per_kg_m3)}} $\frac{kg \cdot m}{C^2} =$ {{vacuum_permeability_in_kg_m_per_C2 }} $\frac{kg}{C} \cdot \frac{m}{C} =$ vacuum permeability.<br>
 <br>
 
 To boot, how about those gravitomagnetic permittivity and permeability:<br>
@@ -26,6 +26,18 @@ $\mu_G = \frac{1}{\epsilon_G c^2} =$ {{gravitomagnetic_vacuum_permeability_in_m_
 
 In both cases, $\frac{1}{c^2} = \mu_0 \epsilon_0 = \mu_g \epsilon_G = $ {{1 / (speed_of_light_in_m_per_s * speed_of_light_in_m_per_s)}} $\frac{s^2}{m^2}$.<br>
 <br>
+
+natural units, setting $c = G = k_e = 1$<br>
+$1 = \sqrt{k_e \cdot G} =$ {{sqrt_ke_G_in_m3_per_C_s2 = Math.sqrt(Coulomb_constant_in_kg_m3_per_C2_s2 * gravitational_constant_in_m3_per_kg_s2)}} $\cdot \frac{m^3}{C \cdot s^2}$<br>
+$1 = \sqrt{\frac{k_e \cdot G}{c^4}} =$ {{C_in_m = sqrt_ke_G_in_m3_per_C_s2 / (speed_of_light_in_m_per_s * speed_of_light_in_m_per_s)}} $\cdot \frac{m}{C}$,
+	so $1 C =$ {{C_in_m}} $m$.<br>
+$1 = \sqrt{\frac{k_e}{G}} =$ {{C_in_kg = Math.sqrt(Coulomb_constant_in_kg_m3_per_C2_s2 / gravitational_constant_in_m3_per_kg_s2)}} $\cdot \frac{kg}{C}$,
+	so $1 C =$ {{C_in_kg}} $kg$,
+	and $1 kg =$ {{kg_in_C = 1 / C_in_kg}} $C$.<br>
+Therefore, using natural units, $k_e =$ {{Coulomb_constant_in_m3_per_C_s2 = Coulomb_constant_in_kg_m3_per_C2_s2 * kg_in_C}} $\frac{m^3}{C \cdot s^2} =$ {{Coulomb_constant_in_m3_per_C_s2 * kg_in_C}} $\frac{m^3}{kg \cdot s^2}$ by unit conversion.<br>
+(Which makes sense if $k_e = G = 1$, then of course their conversion to identical units will have an identical value).<br>
+<br>
+
 
 equilibrium fluid:<br>
 TODO the derivation<br>
@@ -113,12 +125,12 @@ $T_{ab} = \frac{1}{\mu_0} (
 <br>
 
 What about, alternatively, an equilibrium fluid but with electromagnetic terms instead?<br>
-$\sqrt{k_e \cdot G} =$ {{sqrt_ke_G_in_m3_per_C_s2 = Math.sqrt(Coulomb_constant_in_kg_m3_per_C2_s2 * gravitational_constant_in_m3_per_kg_s2)}} $\cdot \frac{m^3}{C \cdot s^2}$<br>
-$\sqrt{\frac{k_e \cdot G}{c^4}} =$ {{sqrt_ke_G_in_m3_per_C_s2 / (speed_of_light_in_m_per_s * speed_of_light_in_m_per_s)}} $\cdot \frac{m}{C}$<br>
-$\sqrt{\frac{k_e}{G}} =$ {{Math.sqrt(Coulomb_constant_in_kg_m3_per_C2_s2 / gravitational_constant_in_m3_per_kg_s2)}} $\cdot \frac{kg}{C}$<br>
-$T_{ab} = \sqrt{\frac{k_e}{G}} ( (c^2 \rho_{charge} + \phi) J_a J_b + g_{ab} \phi)$<br>
+$T_{ab} = \sqrt{\frac{k_e}{G}} ( (c^2 \rho_{charge} + \phi) u_a u_b + g_{ab} \phi)$<br>
 $\rho_{charge} = \left[ \frac{C}{m^3} \right] =$ charge density.<br>
-$J_u = \left[ \frac{C}{m^2 \cdot s} \right] =$ charge current density.<br>
+$c^2 \rho_{charge} = \left[ \frac{C}{m \cdot s^2} \right]$<br>
+$\phi = \left[ \frac{C}{m \cdot s^2} \right]$ is the electrical equivalent of pressure.<br>
+$J_u = (c \rho, j^i)$ in units of $\left[ \frac{C}{m^2 \cdot s} \right] =$ current density.<br>
+$u_a = \frac{1}{c \cdot \rho_{charge}} J_a$ is in units $\left[ 1 \right]$<br>
 <br>
 
 	</body>
