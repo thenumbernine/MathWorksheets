@@ -8,16 +8,118 @@
 		<script type='text/javascript' src='template.js'/></script>
 	</head>
 	<body templated>
+$c =$ <input name='speed_of_light_in_m_per_s' value='299792458'/> $\frac{m}{s} =$ the speed of light.<br>
+$G =$ <input name='gravitational_constant_in_m3_per_kg_s2' value='6.67384e-11'/> $\frac{m^3}{kg \cdot s^2} =$ gravitational constant<br>
+$k_e =$ <input name='Coulomb_constant_in_kg_m3_per_C2_s2' value='8.9875517873682e+9'/> $\cdot \frac{kg \cdot m^3}{C^2 \cdot s^2} = \frac{kg}{C} \cdot \frac{m^3}{C \cdot s^2} =$ Coulomb's constant.<br>
+(Coulomb's constant units are the same as the gravitational constant's units, but with $kg$ swapped with $C$, and then with an extra ratio of $kg$ to $C$.)<br>
+<br>
+
+Derived values:<br>
+$\epsilon_0 = \frac{1}{4 \pi k_e} =$ {{vacuum_permittivity_in_C2_s2_per_kg_m3 = 1 / (4 * Math.PI * Coulomb_constant_in_kg_m3_per_C2_s2) }} $ \frac{C^2 \cdot s^2}{kg \cdot m^3} = \frac{C}{kg} \cdot \frac{C \cdot s^2}{m^3} =$ vacuum permittivity.<br>
+$\mu_0 = \frac{1}{\epsilon_0 c^2} =$ {{vacuum_permeability_in_kg_m_per_C2 = 1 / (speed_of_light_in_m_per_s * speed_of_light_in_m_per_s * vacuum_permittivity_in_C2_s2_per_kg_m3)}} $\frac{kg \cdot m}{C^2} = \frac{kg}{C} \cdot \frac{m}{C} =$ vacuum permeability.<br>
+<br>
+
+To boot, how about those gravitomagnetic permittivity and permeability:<br>
+$\epsilon_G = \frac{1}{4 \pi G} =$ {{gravitomagnetic_vacuum_permittivity_in_kg_s2_per_m3 = 1 / (4 * Math.PI * gravitational_constant_in_m3_per_kg_s2) }} $ \frac{kg \cdot s^2}{m^3}$ = gravitational vacuum permittivity.<br>
+$\mu_G = \frac{1}{\epsilon_G c^2} =$ {{gravitomagnetic_vacuum_permeability_in_m_per_kg = 1 / (speed_of_light_in_m_per_s * speed_of_light_in_m_per_s * gravitomagnetic_vacuum_permittivity_in_kg_s2_per_m3)}} $\frac{m}{kg} =$ gravitational vacuum permeability.<br>
+<br>
+
+In both cases, $\frac{1}{c^2} = \mu_0 \epsilon_0 = \mu_g \epsilon_G = $ {{1 / (speed_of_light_in_m_per_s * speed_of_light_in_m_per_s)}} $\frac{s^2}{m^2}$.<br>
+<br>
 
 equilibrium fluid:<br>
 TODO the derivation<br>
-$T_{ab} = (\rho + \frac{1}{c^2} P) u_a u_b + g_{ab}$<br>
+$T_{ab} = (c^2 \rho + P) u_a u_b + P g_{ab}$<br>
+$\left[ T_{ab} \right] = \frac{kg}{m \cdot s^2}$<br>
 for:<br>
 $\rho = \left[ \frac{kg}{m^3} \right] =$ density<br>
 $P = \left[ \frac{kg}{m \cdot s^2} \right] =$ pressure<br>
+$u_a = \left[ 1 \right] =$ 4-velocity.<br>
 <br>
 
+electromagnetic field:<br>
+$T_{ab} = \frac{1}{\mu_0} (F_{au} F_{bv} g^{uv} - \frac{1}{4} g_{ab} F_{uv} F^{uv})$<br>
+$\left[ T_{ab} \right] = \frac{kg}{m \cdot s^2}$<br>
+for:<br>
+Faraday tensor:<br>
+$F_{ab} = \frac{1}{c} 2 E_{[a} t_{b]} + \epsilon_{abcd} t^c B^d$<br>
+$\left[ F_{ab} \right] = \frac{kg}{C \cdot s}$<br>
+$t_a = \left[ 1 \right] =$ timelike unit vector, such that $t^a t_a = -1$<br>
+$E_a = \left[ \frac{kg \cdot m}{C \cdot s^2} \right] =$ spatial electric field, such that $t^a E_a = 0$<br>
+$B_a = \left[ \frac{kg}{C \cdot s} \right] =$ spatial magnetic field, such that $t^a B_a = 0$<br>
+<br>
 
+Substituting:<br>
+$T_{ab} = \frac{1}{\mu_0} (
+	(\frac{1}{c} 2 E_{[a} t_{u]} + \epsilon_{aucd} t^c B^d)
+	(\frac{1}{c} 2 E_{[b} t_{v]} + \epsilon_{bvef} t^e B^f)
+	g^{uv} - \frac{1}{4} g_{ab} 
+	(\frac{1}{c} 2 E_{[u} t_{v]} + \epsilon_{uvcd} t^c B^d)
+	(\frac{1}{c} 2 E^{[u} t^{v]} + \epsilon^{uvef} t_e B_f)
+)$<br>
+$T_{ab} = \frac{1}{\mu_0} (
+	4 \frac{1}{c^2} E_{[a} t_{u]} E_{[b} t_{v]} g^{uv}
+	+ 2 \frac{1}{c} E_{[a} t_{u]} \epsilon_{bvef} t^e B^f g^{uv}
+	+ 2 \frac{1}{c} \epsilon_{aucd} t^c B^d E_{[b} t_{v]} g^{uv}
+	+ \epsilon_{aucd} t^c B^d \epsilon_{bvef} t^e B^f g^{uv}
+	- \frac{1}{c^2} g_{ab} E^{[u} t^{v]} E_{[u} t_{v]} 
+	- \frac{1}{2} \frac{1}{c} g_{ab} E^{[u} t^{v]} \epsilon_{uvcd} t^c B^d
+	- \frac{1}{2} \frac{1}{c} g_{ab} \epsilon^{uvef} t_e B_f E_{[u} t_{v]} 
+	- \frac{1}{4} g_{ab} \epsilon^{uvef} t_e B_f \epsilon_{uvcd} t^c B^d
+)$<br>
+$T_{ab} = \frac{1}{\mu_0} (
+	\frac{1}{c^2} E_a t_u E_b t_v g^{uv}
+	- \frac{1}{c^2} E_u t_a E_b t_v g^{uv}
+	- \frac{1}{c^2} E_a t_u E_v t_b g^{uv}
+	+ \frac{1}{c^2} E_u t_a E_v t_b g^{uv}
+	
+	+ \frac{1}{c} E_a t_u \epsilon_{bvef} t^e B^f g^{uv}
+	- \frac{1}{c} E_u t_a \epsilon_{bvef} t^e B^f g^{uv}
+	
+	+ \frac{1}{c} \epsilon_{aucd} t^c B^d E_b t_v g^{uv}
+	- \frac{1}{c} \epsilon_{aucd} t^c B^d E_v t_b g^{uv}
+	
+	+ \epsilon_{aucd} t^c B^d \epsilon_{bvef} t^e B^f g^{uv}
+	
+	- \frac{1}{4} \frac{1}{c^2} g_{ab} E^u t^v E_u t_v 
+	+ \frac{1}{4} \frac{1}{c^2} g_{ab} E^v t^u E_u t_v 
+	+ \frac{1}{4} \frac{1}{c^2} g_{ab} E^u t^v E_v t_u 
+	- \frac{1}{4} \frac{1}{c^2} g_{ab} E^v t^u E_v t_u 
+	
+	- \frac{1}{4} \frac{1}{c} g_{ab} E^u t^v \epsilon_{uvcd} t^c B^d
+	+ \frac{1}{4} \frac{1}{c} g_{ab} E^v t^u \epsilon_{uvcd} t^c B^d
+	
+	- \frac{1}{4} \frac{1}{c} g_{ab} \epsilon^{uvef} t_e B_f E_u t_v 
+	+ \frac{1}{4} \frac{1}{c} g_{ab} \epsilon^{uvef} t_e B_f E_v t_u 
+	
+	- \frac{1}{4} g_{ab} \epsilon^{uvef} t_e B_f \epsilon_{uvcd} t^c B^d
+)$<br>
+$T_{ab} = \frac{1}{\mu_0} (
+	t_a t_b (
+		\frac{1}{c^2} E_u E^u
+		+ B_u B^u
+	)
+
+	+ \frac{1}{c} (t_a \epsilon_{bcde} + t_b \epsilon_{acde}) t^c E^d B^e
+
+	- \frac{1}{c^2} E_a E_b
+	- B_a B_b
+	
+	+ \frac{1}{2} g_{ab} (
+		\frac{1}{c^2} E_u E^u
+		+ B_u B^u
+	)
+)$<br>
+<br>
+
+What about, alternatively, an equilibrium fluid but with electromagnetic terms instead?<br>
+$\sqrt{k_e \cdot G} =$ {{sqrt_ke_G_in_m3_per_C_s2 = Math.sqrt(Coulomb_constant_in_kg_m3_per_C2_s2 * gravitational_constant_in_m3_per_kg_s2)}} $\cdot \frac{m^3}{C \cdot s^2}$<br>
+$\sqrt{\frac{k_e \cdot G}{c^4}} =$ {{sqrt_ke_G_in_m3_per_C_s2 / (speed_of_light_in_m_per_s * speed_of_light_in_m_per_s)}} $\cdot \frac{m}{C}$<br>
+$\sqrt{\frac{k_e}{G}} =$ {{Math.sqrt(Coulomb_constant_in_kg_m3_per_C2_s2 / gravitational_constant_in_m3_per_kg_s2)}} $\cdot \frac{kg}{C}$<br>
+$T_{ab} = \sqrt{\frac{k_e}{G}} ( (c^2 \rho_{charge} + \phi) J_a J_b + g_{ab} \phi)$<br>
+$\rho_{charge} = \left[ \frac{C}{m^3} \right] =$ charge density.<br>
+$J_u = \left[ \frac{C}{m^2 \cdot s} \right] =$ charge current density.<br>
+<br>
 
 	</body>
 </html>

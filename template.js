@@ -68,8 +68,18 @@ Template.prototype = {
 		for (var i = 0; i < this.spans.length; ++i) {
 			var span = this.spans[i];
 			var result;
+			var error;
 			with (this.context) {
-				result = eval(span.expr);
+				try {
+					result = eval(span.expr);
+				} catch (e) {
+					result = e.message;
+					error = true;
+				}
+			}
+			if (error) {
+				span.span.style.color = 'red';
+				result = '[' + result + ']';
 			}
 			if (typeof(result) == 'number') {
 				result = result.toExponential();
