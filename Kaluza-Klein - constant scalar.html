@@ -1,91 +1,131 @@
 <!doctype html>
 <html>
 	<head>
-        <meta charset="UTF-8">
+        <meta charset='utf-8'>
 		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<script type='text/javascript' src='template.js'></script>
 		<title>Kaluza-Klein with constant scalar field</title>
 	</head>
-	<body onload='tryToFindMathJax();'>
+	<body templated>
 
-Kaluza-Klein<br>
-with constant scalar field<br>
+Kaluza-Klein with constant scalar field<br>
 <br>
 
+index notation convention:<br>
 $\alpha - \omega$ = time+space.<br>
 $ijklmn$ = space.<br>
 the rest of $a - z$ = time+space+electromagnetism.<br>
 <br>
 
-$A_u =$ electromagnetic potential, in units of $\frac{kg \cdot m}{C \cdot s}$<br>
-$\phi =$ scalar field, in units of $\frac{C \cdot s}{kg \cdot m}$<br>
-$\phi$ is constant so $\phi_{,a} = 0$.<br>
+
+Constants:<br>
+$c =$ <input name='speed_of_light_in_m_per_s' value='299792458'/> $\frac{m}{s} =$ the speed of light.<br>
+$G =$ <input name='gravitational_constant_in_m3_per_kg_s2' value='6.67384e-11'/> $\frac{m^3}{kg \cdot s^2} =$ gravitational constant<br>
+$k_e =$ <input name='Coulomb_constant_in_kg_m3_per_C2_s2' value='8.9875517873682e+9'/> $\cdot \frac{kg \cdot m^3}{C^2 \cdot s^2} =$ {{Coulomb_constant_in_kg_m3_per_C2_s2}} $\frac{kg}{C} \cdot \frac{m^3}{C \cdot s^2} =$ Coulomb's constant.<br>
 <br>
 
-in 4+1:<br>
+$1 = \sqrt{\frac{k_e}{G}} =$ {{C_in_kg = Math.sqrt(Coulomb_constant_in_kg_m3_per_C2_s2 / gravitational_constant_in_m3_per_kg_s2)}} $\cdot \frac{kg}{C}$,
+	so $1 C =$ {{C_in_kg}} $kg$,
+	and $1 kg =$ {{kg_in_C = 1 / C_in_kg}} $C$.<br>
+<br>
+
+$A_u =$ electromagnetic potential, in units of $\frac{kg \cdot m}{C \cdot s}$<br>
+$A_5 = 1$ but has units $\frac{kg \cdot m}{C \cdot s}$, so $A_5 = c \cdot \sqrt{\frac{k_e}{G}} = 3.4789926447386 \cdot 10^{18} \cdot \frac{kg \cdot m}{C \cdot s}$.<br>
+$\phi &gt; 0 =$ scalar field, in units of $\frac{C \cdot s}{kg \cdot m}$<br>
+<br>
+
+spacetime+EM metric in 4+1:<br>
 $\tilde{g}_{ab} 
 = {}_{\downarrow a(\mu)} \overset{\rightarrow b(\nu)}{\pmatrix{
 	\tilde{g}_{\mu\nu} & \tilde{g}_{\mu 5} \\
 	\tilde{g}_{5\nu} & \tilde{g}_{55}
 }}
 = \pmatrix{
-	g_{\mu\nu} + \phi^2 A_\mu A_\nu
-	& \phi^2 A_\mu
-	\\ \phi^2 A_\nu
-	& \phi^2
-}$<br>
-$\tilde{g}^{ab} = \pmatrix{
-	g^{\mu\nu} 
-	& -A^\mu
-	\\ -A^\nu
-	& g^{\alpha\beta} A_\alpha A_\beta + \frac{1}{\phi^2}
+	g_{\mu\nu} + \phi^2 A_\mu A_\nu & 
+	\phi^2 A_\mu A_5 \\ 
+	
+	\phi^2 A_\nu A_5 &
+	\phi^2 (A_5)^2
 }$<br>
 <br>
+
+metric inverse:<br>
+$\tilde{g}^{ab} = \pmatrix{
+	g^{\mu\nu} 
+	& -\frac{A^\mu}{A_5}
+	\\ -\frac{A^\nu}{A_5}
+	& g^{\alpha\beta} A_\alpha A_\beta + \frac{1}{\phi^2 (A_5)^2}
+}$<br>
+<br>
+
+cylindrical constraint:<br>
+$\tilde{g}_{ab,5} = 0$<br>
+<br>
+
+which implies:<br>
+$(g_{\mu\nu} + \phi^2 A_\mu A_\nu)_{,5} = 0$<br>
+$(\phi^2 A_\mu A_5)_{,5} = 0$<br>
+$2 \phi \phi_{,5} (A_5)^2 = 0$<br>
+<br>
+
+which implies:<br>
+$\phi_{,5} = 0$<br>
+$A_{\mu,5} = 0$<br>
+$g_{\mu\nu,5} = 0$<br>
+<br>
+
+In addition, I will impose a constant scalar field to see what happens:<br>
+$\phi_{,a} = 0$<br>
+<br>
+
 
 in ADM 1+3+1:<br>
 $\tilde{g}_{ab} = \pmatrix{
 	-\alpha^2 + \beta^k \beta_k + \phi^2 (A_t)^2 
 	& \beta_j + \phi^2 A_t A_j 
-	& \phi^2 A_t 
+	& \phi^2 A_t A_5
 	\\ \beta_i + \phi^2 A_t A_i 
 	& \gamma_{ij} + \phi^2 A_i A_j 
-	& \phi^2 A_i \\ \phi^2 A_t 
-	& \phi^2 A_j 
-	& \phi^2
+	& \phi^2 A_i \\ \phi^2 A_t A_5
+	& \phi^2 A_j A_5
+	& \phi^2 (A_5)^2
 }$<br>
 $\tilde{g}^{ab} = \pmatrix{
 	-\alpha^2 
 	& \beta^j / \alpha^2 
-	& -A^t 
+	& -\frac{A^t}{A_5} 
 	\\ \beta^i / \alpha^2 
 	& \gamma^{ij} - \beta^i \beta^j / \alpha^2 
-	& -A^i 
-	\\ -A^t 
-	& -A^j 
-	& A^2 + \phi^2
+	& -\frac{A^i}{A_5}
+	\\ -\frac{A^t}{A_5}
+	& -\frac{A^j}{A_5}
+	& g^{\mu\nu} A_\mu A_\nu + \frac{1}{\phi^2 (A_5)^2}
 }$<br>
 <br>
 
-metric partial, in 4+1:<br>
+metric partial:<br>
 $\tilde{g}_{ab,c} = \overset{\downarrow c[\downarrow a \rightarrow b]}{\pmatrix{
-	g_{\mu\nu,c} + \phi^2 (A_{\mu,c} A_\nu + A_\mu A_{\nu,c}) & \phi^2 A_{\mu,c} \\ 
-	\phi^2 A_{\nu,c} & 0
+	g_{\mu\nu,c} + \phi^2 (A_{\mu,c} A_\nu + A_\mu A_{\nu,c}) & \phi^2 A_{\mu,c} A_5 \\ 
+	\phi^2 A_{\nu,c} A_5 & 0
 }}$<br>
 $= {}_{\downarrow c(\rho)}
 \pmatrix{
 	{}_{\downarrow a(\mu)}
 	\overset{\rightarrow b(\nu)}{
 	\pmatrix{
-		g_{\mu\nu,\rho} + \phi^2 (A_{\mu,\rho} A_\nu + A_\mu A_{\nu,\rho}) & \phi^2 A_{\mu,\rho} \\ 
-		\phi^2 A_{\nu,\rho} & 0
+		g_{\mu\nu,\rho} + \phi^2 (A_{\mu,\rho} A_\nu + A_\mu A_{\nu,\rho}) & \phi^2 A_{\mu,\rho} A_5 \\ 
+		\phi^2 A_{\nu,\rho} A_5 & 0
 	}} \\
 	\pmatrix{
-		g_{\mu\nu,5} + \phi^2 (A_{\mu,5} A_\nu + A_\mu A_{\nu,5}) & \phi^2 A_{\mu,5} \\ 
-		\phi^2 A_{\nu,5} & 0
+		0 & 0 \\ 
+		0 & 0
 	}
-}$
+}$<br>
 <br>
 
-$\tilde\Gamma_{abc} = \frac{1}{2} (g_{ab,c} + g_{ac,b} - g_{bc,a})$<br>
+Levi-Civita connection:<br>
+$\tilde{\Gamma}_{abc}$ is in units of $\frac{1}{m}$<br>
+$\tilde{\Gamma}_{abc} = \frac{1}{2} (\tilde{g}_{ab,c} + \tilde{g}_{ac,b} - \tilde{g}_{bc,a})$<br>
 $= \overset{\downarrow c[\downarrow a \rightarrow b]}{\pmatrix{
 	\pmatrix{
 		\Gamma_{uvw} + \phi^2 (
@@ -93,66 +133,80 @@ $= \overset{\downarrow c[\downarrow a \rightarrow b]}{\pmatrix{
 			  + A_\nu A_{[\mu,\rho]}
 			  + A_\rho A_{[\mu,\nu]}
 		) &
-		\frac{1}{2} g_{\mu\rho,5} + \phi^2 A_{[\mu,\rho]} \\
-		-\frac{1}{2} g_{\nu\rho,5} + \phi^2 A_{(\nu,\rho)} & 
+		\phi^2 A_{[\mu,\rho]} A_5 \\
+		\phi^2 A_{(\nu,\rho)} A_5 & 
 		0	
 	} \\
 	\pmatrix{
-		\frac{1}{2} g_{\mu\nu,5} + \phi^2 A_{[\mu,\nu]} & \phi^2 A_{\mu,5} \\
+		\phi^2 A_{[\mu,\nu]} A_5 & 0 \\
 		0 & 0
 	}
 }}$<br>
+<br>
 
-${\tilde\Gamma^a}_{bc} = g^{ad} \cdot \tilde\Gamma_{dbc}$<br>
+${\tilde{\Gamma}^a}_{bc}$ is in units of $\frac{1}{m}$<br>
+${\tilde{\Gamma}^a}_{bc} = g^{ad} \cdot \tilde{\Gamma}_{dbc}$<br>
 $=\overset{\downarrow c [ \downarrow a \rightarrow b]}{\pmatrix{
 	\pmatrix{
-		{\Gamma^\mu}_{\nu\rho} + \frac{1}{2} g^{\mu\alpha} \phi^2 (A_\nu F_{\rho\alpha} + A_\rho F_{\nu\alpha}) + \frac{1}{2} A^\mu g_{\nu\rho,5} &
-		\frac{1}{2} g^{\mu\alpha} (g_{\alpha\rho,5} + \phi^2 F_{\rho\alpha}) \\
-		-A^\alpha (\Gamma_{\alpha\nu\rho} + \frac{1}{2} \phi^2 (A_\nu F_{\rho\alpha} + A_\rho F_{\nu\alpha})) - \frac{1}{2} A^2 g_{\nu\rho,5} - \frac{1}{2\phi^2} g_{\nu\rho,5} + A_{(\nu,\rho)} &
-		-\frac{1}{2} A^\alpha (g_{\alpha\rho,5} + \phi^2 F_{\rho\alpha})
+		{\Gamma^\mu}_{\nu\rho} + g^{\mu\alpha} \phi^2 A_{(\nu} F_{\rho)\alpha} &
+		\frac{1}{2} \phi^2 g^{\mu\alpha} F_{\rho\alpha} A_5 \\
+		-\frac{1}{A_5} A^\alpha (\Gamma_{\alpha\nu\rho} + \frac{1}{2} \phi^2 (A_\nu F_{\rho\alpha} + A_\rho F_{\nu\alpha})) + \frac{A_{(\nu,\rho)}}{A_5} &
+		-\frac{1}{2} \phi^2 A^\alpha F_{\rho\alpha}
 	} \\ 
 	\pmatrix{
-		\frac{1}{2} g^{\mu\alpha} (g_{\alpha\nu,5} + \phi^2 F_{\nu\alpha}) &
-		\phi^2 g^{\mu\alpha} A_{\alpha,5} \\
-		-\frac{1}{2} A^\alpha (g_{\alpha\nu,5} + \phi^2 F_{\nu\alpha}) &
-		-\phi^2 A^\alpha A_{\alpha,5}
+		\frac{1}{2} \phi^2 g^{\mu\alpha} F_{\nu\alpha} A_5 &
+		0 \\
+		-\frac{1}{2} \phi^2 A^\alpha F_{\nu\alpha} &
+		0	
 	}
 }}$<br>
+for $F_{\mu\nu}$ is in units of $\frac{kg}{C \cdot s}$<br>
 <br>
 
 Geodesic equation:<br>
+$\tilde{x}$ is in units of $m$<br>
+$\tilde{u} = \dot{\tilde{x}}$ is in units of $1$<br>
+$\dot{\tilde{u}}$ is in units of $\frac{1}{m}$<br>
+<br>
+
 $\dot{\tilde{u}}^u + {\tilde{\Gamma}^u}_{ab} \tilde{u}^a \tilde{u}^b = 0$<br>
 <br>
-spacetime:<br>
+
+spacetime components of the geodesic:<br>
 $\dot{\tilde{u}}^\mu + {\tilde{\Gamma}^\mu}_{\alpha\beta} \tilde{u}^\alpha \tilde{u}^\beta 
 	+ 2 {\tilde{\Gamma}^\mu}_{\alpha 5} \tilde{u}^\alpha \tilde{u}^5
 	+ {\tilde{\Gamma}^\mu}_{55} (\tilde{u}^5)^2 = 0$<br>
-$\dot{\tilde{u}}^\mu + {\Gamma^\mu}_{\alpha\beta} \tilde{u}^\alpha \tilde{u}^\beta
-	+ (\phi^2 A_{(\alpha} {F_{\beta)}}^\mu + \frac{1}{2} A^\mu g_{\alpha\beta,5}) \tilde{u}^\alpha \tilde{u}^\beta 
-	+ (g^{\mu\nu} g_{\nu\alpha,5} + \phi^2 {F_\alpha}^\mu) \tilde{u}^\alpha \tilde{u}^5
-	+ \phi^2 g^{\mu\nu} A_{\nu,5} (\tilde{u}^5)^2 = 0$<br>
-if everything is constant in the 5th dimension:<br>
-$\dot{\tilde{u}}^\mu + {\Gamma^\mu}_{\alpha\beta} \tilde{u}^\alpha \tilde{u}^\beta
-	+ \phi^2 A_{(\alpha} {F_{\beta)}}^\mu \tilde{u}^\alpha \tilde{u}^\beta 
-	+ \phi^2 {F_\alpha}^\mu \tilde{u}^\alpha \tilde{u}^5
-	= 0$<br>
-if $\tilde{u}^5 = \frac{q}{m}$<br>
-$\dot{\tilde{u}}^\mu + {\Gamma^\mu}_{\alpha\beta} \tilde{u}^\alpha \tilde{u}^\beta
-	+ \phi^2 A_{(\alpha} {F_{\beta)}}^\mu \tilde{u}^\alpha \tilde{u}^\beta 
-	+ \phi^2 \frac{q}{m} {F_\alpha}^\mu \tilde{u}^\alpha 
-	= 0$<br>
+$\dot{\tilde{u}}^\mu 
+	=
+	- {\Gamma^\mu}_{\alpha\beta} \tilde{u}^\alpha \tilde{u}^\beta
+	- \phi^2 A_{(\alpha} {F_{\beta)}}^\mu \tilde{u}^\alpha \tilde{u}^\beta 
+	+ \phi^2 {F^\mu}_\alpha A_5 \tilde{u}^\alpha \tilde{u}^5$<br>
 <br>
+
+if $\tilde{u}^5 = \sqrt{\frac{k_e}{G}} \cdot \frac{q}{m}$:<br>
+for $q =$ particle charge in units of $C$<br>
+and $m =$ particle mass in terms of $kg$<br>
+$\dot{\tilde{u}}^\mu =
+	- {\Gamma^\mu}_{\alpha\beta} \tilde{u}^\alpha \tilde{u}^\beta
+	+ \phi^2 \frac{c \cdot k_e}{G} \frac{q}{m} {F^\mu}_\alpha \tilde{u}^\alpha 
+	- \phi^2 A_{(\alpha} {F_{\beta)}}^\mu \tilde{u}^\alpha \tilde{u}^\beta $<br>
+<br>
+
+if $\phi = \frac{1}{c} \sqrt{\frac{G}{k_e}}$:<br>
+$\dot{\tilde{u}}^\mu =
+	- {\Gamma^\mu}_{\alpha\beta} \tilde{u}^\alpha \tilde{u}^\beta
+	+ \frac{1}{c} \frac{q}{m} {F^\mu}_\alpha \tilde{u}^\alpha 
+	- \frac{1}{c^2} \frac{G}{k_e} A_{(\alpha} {F_{\beta)}}^\mu \tilde{u}^\alpha \tilde{u}^\beta $<br>
+<br>
+
 fifth term:<br>
 $\dot{\tilde{u}}^5 + {\tilde{\Gamma}^5}_{\alpha\beta} \tilde{u}^\alpha \tilde{u}^\beta 
 	+ 2 {\tilde{\Gamma}^5}_{\alpha 5} \tilde{u}^\alpha \tilde{u}^5
 	+ {\tilde{\Gamma}^5}_{55} (\tilde{u}^5)^2 = 0$<br>
 $\dot{\tilde{u}}^5 
 	+ (-A^\mu \Gamma_{\mu\alpha\beta} - \frac{1}{2} \phi^2 A_\mu A_{(\alpha} {F_{\beta)}}^\mu 
-		- \frac{1}{2} A^2 g_{\alpha\beta,5} 
-		- \frac{1}{2\phi^2} g_{\alpha\beta,5} 
 		+ A_{(\alpha,\beta)}
 	) \tilde{u}^\alpha \tilde{u}^\beta 
-	- A^\mu (g_{\mu\alpha,5} + \phi^2 F_{\alpha\mu}) \tilde{u}^\alpha \tilde{u}^5
-	- \phi^2 A^\mu A_{\mu,5} (\tilde{u}^5)^2 = 0$<br>
+	+ \phi^2 F_{\alpha\mu}) \tilde{u}^\alpha \tilde{u}^5 = 0$<br>
 	</body>
 </html>
