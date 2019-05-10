@@ -110,9 +110,9 @@ Here's the CDN URLs:
 
 [Kaluza-Klein - constant scalar](https://thenumbernine.github.io/math/Kaluza%2dKlein%20%2d%20constant%20scalar.html)
 
-[Kaluza-Klein - without cylindrical constraint](https://thenumbernine.github.io/math/Kaluza%2dKlein%20%2d%20without%20cylindrical%20constraint.html)
+[Kaluza-Klein - varying scalar](https://thenumbernine.github.io/math/Kaluza%2dKlein%20%2d%20varying%20scalar.html)
 
-[Kaluza-Klein](https://thenumbernine.github.io/math/Kaluza%2dKlein.html)
+[Kaluza-Klein - without cylindrical constraint](https://thenumbernine.github.io/math/Kaluza%2dKlein%20%2d%20without%20cylindrical%20constraint.html)
 
 [Kerr Cartesian](https://thenumbernine.github.io/math/Kerr%20Cartesian.html)
 
