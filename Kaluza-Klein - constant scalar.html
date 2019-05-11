@@ -17,6 +17,9 @@ $ijklmn$ = space.<br>
 the rest of $a - z$ = time+space+electromagnetism.<br>
 <br>
 
+unit coordinate convention: $dx^0 = c dt$<br>
+<br>
+
 
 This is using natural units, were<br>
 $1 = c =$ <input name='speed_of_light_in_m_per_s' value='299792458'/> $\frac{m}{s} =$ the speed of light.<br>
@@ -30,7 +33,7 @@ $1 = \sqrt{\frac{k_e}{G}} =$ {{C_in_kg = Math.sqrt(Coulomb_constant_in_kg_m3_per
 <br>
 
 $A_u =$ electromagnetic four-potential, in units of $\frac{kg \cdot m}{C \cdot s}$<br>
-$A_5 = 1$ but has units $\frac{kg \cdot m}{C \cdot s}$, so $A_5 = c \cdot \sqrt{\frac{k_e}{G}} = 3.4789926447386 \cdot 10^{18} \cdot \frac{kg \cdot m}{C \cdot s}$.<br>
+$A_5 = 1$ but has units $\frac{kg \cdot m}{C \cdot s}$, so $A_5 = c \cdot \sqrt{\frac{k_e}{G}} =$ {{speed_of_light_in_m_per_s * C_in_kg}} $ \cdot \frac{kg \cdot m}{C \cdot s}$.<br>
 $\phi &gt; 0 =$ scalar field, in units of $\frac{C \cdot s}{kg \cdot m}$<br>
 <br>
 
@@ -236,76 +239,111 @@ This means $F_{a5} = F_{5a} = 0$, and this means $F^{ab}$ will have the same val
 <br>
 
 position and velocity:<br>
-$\tilde{x}^a$ is in units of $m$<br>
-$\tilde{u}^a = \dot{\tilde{x}}^a$ is in units of $1$<br>
-$\dot{\tilde{u}}^a$ is in units of $\frac{1}{m}$<br>
+$x^a$ is in units of $m$<br>
+$u^a = \partial_\tau x^a$ is in units of $1$<br>
+$\partial_\tau u^a$ is in units of $\frac{1}{m}$ (notice that, to get a time value, you must use $c \partial_\tau$, which is in units of $\frac{1}{s}$).<br>
 <br>
 
 geodesic equation:<br>
-$\dot{\tilde{u}}^u + {\tilde{\Gamma}^u}_{ab} \tilde{u}^a \tilde{u}^b = 0$<br>
-$\dot{\tilde{u}}^u + {\tilde{\Gamma}^u}_{\alpha\beta} \tilde{u}^\alpha \tilde{u}^\beta 
-	+ 2 {\tilde{\Gamma}^u}_{\alpha 5} \tilde{u}^\alpha \tilde{u}^5
-	+ {\tilde{\Gamma}^u}_{55} (\tilde{u}^5)^2 = 0$<br>
+$\partial_\tau u^u + {\tilde{\Gamma}^u}_{ab} u^a u^b = 0$<br>
+$\partial_\tau u^u + {\tilde{\Gamma}^u}_{\alpha\beta} u^\alpha u^\beta 
+	+ 2 {\tilde{\Gamma}^u}_{\alpha 5} u^\alpha u^5
+	+ {\tilde{\Gamma}^u}_{55} (u^5)^2 = 0$<br>
 <br>
 
 spacetime components of the geodesic:<br>
-$\dot{\tilde{u}}^\mu + {\tilde{\Gamma}^\mu}_{\alpha\beta} \tilde{u}^\alpha \tilde{u}^\beta 
-	+ 2 {\tilde{\Gamma}^\mu}_{\alpha 5} \tilde{u}^\alpha \tilde{u}^5
-	+ {\tilde{\Gamma}^\mu}_{55} (\tilde{u}^5)^2 = 0$<br>
-$\dot{\tilde{u}}^\mu 
-	+ {\Gamma^\mu}_{\alpha\beta} \tilde{u}^\alpha \tilde{u}^\beta
-	+ \phi^2 A_{(\alpha} {F_{\beta)}}^\mu \tilde{u}^\alpha \tilde{u}^\beta 
-	+ \phi^2 {F_\alpha}^\mu A_5 \tilde{u}^\alpha \tilde{u}^5
+$\partial_\tau u^\mu + {\tilde{\Gamma}^\mu}_{\alpha\beta} u^\alpha u^\beta 
+	+ 2 {\tilde{\Gamma}^\mu}_{\alpha 5} u^\alpha u^5
+	+ {\tilde{\Gamma}^\mu}_{55} (u^5)^2 = 0$<br>
+$\partial_\tau u^\mu 
+	+ {\Gamma^\mu}_{\alpha\beta} u^\alpha u^\beta
+	+ \phi^2 A_{(\alpha} {F_{\beta)}}^\mu u^\alpha u^\beta 
+	+ \phi^2 {F_\alpha}^\mu A_5 u^\alpha u^5
 	= 0$<br>
-$\dot{\tilde{u}}^\mu =
-	- {\Gamma^\mu}_{\alpha\beta} \tilde{u}^\alpha \tilde{u}^\beta
-	+ \phi^2 A_5 {F^\mu}_\alpha \tilde{u}^\alpha \tilde{u}^5
-	- \phi^2 A_{(\alpha} {F_{\beta)}}^\mu \tilde{u}^\alpha \tilde{u}^\beta 
+$\partial_\tau u^\mu =
+	- {\Gamma^\mu}_{\alpha\beta} u^\alpha u^\beta
+	+ \phi^2 A_5 {F^\mu}_\alpha u^\alpha u^5
+	+ \phi^2 A_\alpha {F^\mu}_\beta u^\alpha u^\beta 
 $<br>
 <br>
 
-if $\tilde{u}^5 = \sqrt{\frac{k_e}{G}} \cdot \frac{q}{m}$:<br>
+if $u^5 = \sqrt{\frac{k_e}{G}} \cdot \frac{q}{M}$:<br>
 for $q =$ particle charge in units of $C$<br>
-and $m =$ particle mass in terms of $kg$<br>
-$\dot{\tilde{u}}^\mu =
-	- {\Gamma^\mu}_{\alpha\beta} \tilde{u}^\alpha \tilde{u}^\beta
-	+ \phi^2 \frac{c \cdot k_e}{G} \frac{q}{m} {F^\mu}_\alpha \tilde{u}^\alpha 
-	- \phi^2 A_{(\alpha} {F_{\beta)}}^\mu \tilde{u}^\alpha \tilde{u}^\beta $<br>
+and $M =$ particle mass in terms of $kg$<br>
+$\partial_\tau u^\mu =
+	- {\Gamma^\mu}_{\alpha\beta} u^\alpha u^\beta
+	+ \phi^2 \frac{c \cdot k_e}{G} \frac{q}{M} {F^\mu}_\alpha u^\alpha 
+	+ \phi^2 A_\alpha {F^\mu}_\beta u^\alpha u^\beta $<br>
 <br>
 
 if $\phi = \frac{1}{c} \sqrt{\frac{G}{k_e}}$:<br>
-$\dot{\tilde{u}}^\mu =
-	- {\Gamma^\mu}_{\alpha\beta} \tilde{u}^\alpha \tilde{u}^\beta
-	+ \frac{1}{c} \frac{q}{m} {F^\mu}_\alpha \tilde{u}^\alpha 
-	- \frac{1}{c^2} \frac{G}{k_e} A_{(\alpha} {F_{\beta)}}^\mu \tilde{u}^\alpha \tilde{u}^\beta $<br>
-$\dot{\tilde{u}}^\mu =
-	- {\Gamma^\mu}_{\alpha\beta} \tilde{u}^\alpha \tilde{u}^\beta
-	+ \frac{1}{c} \frac{q}{m} {F^\mu}_\alpha \tilde{u}^\alpha 
-	-$ {{gravitational_constant_in_m3_per_kg_s2 / (Coulomb_constant_in_kg_m3_per_C2_s2 * speed_of_light_in_m_per_s * speed_of_light_in_m_per_s)}} $\frac{s^2 \cdot C^2}{m^2 \cdot kg^2} \cdot A_{(\alpha} {F_{\beta)}}^\mu \tilde{u}^\alpha \tilde{u}^\beta $<br>
+$\partial_\tau u^\mu =
+	- {\Gamma^\mu}_{\alpha\beta} u^\alpha u^\beta
+	+ \frac{1}{c} \frac{q}{M} {F^\mu}_\alpha u^\alpha 
+	+ \frac{1}{c^2} \frac{G}{k_e} A_\alpha {F^\mu}_\beta u^\alpha u^\beta $<br>
+using $\frac{1}{c^2} \frac{G}{k_e} =$  {{G_over_k_e_c2 = gravitational_constant_in_m3_per_kg_s2 / (Coulomb_constant_in_kg_m3_per_C2_s2 * speed_of_light_in_m_per_s * speed_of_light_in_m_per_s)}} $\frac{s^2 \cdot C^2}{m^2 \cdot kg^2}$:<br>
+$\partial_\tau u^\mu =
+	- {\Gamma^\mu}_{\alpha\beta} u^\alpha u^\beta
+	+ \frac{1}{c} \frac{q}{M} {F^\mu}_\alpha u^\alpha 
+	+$ {{G_over_k_e_c2}} $\cdot \frac{s^2 \cdot C^2}{m^2 \cdot kg^2} \cdot A_\alpha {F^\mu}_\beta u^\alpha u^\beta $<br>
+<br>
+
+using the low-velocity approximation $u^0 \approx 1$, $u^i \approx \frac{v^i}{c}$<br>
+and using the Newtonian connection approximation ${\Gamma^i}_{00} = -\frac{G \cdot M}{c^2 \cdot r^2}$ (so ${\Gamma^i}_{tt} = -\frac{G \cdot M}{r^2}$) and ${\Gamma^\mu}_{\alpha\beta} = 0$ otherwise.<br>
+spatial term:<br>
+$c \partial_\tau v^i =
+	- c^2 {\Gamma^i}_{00}
+	+ c \frac{q}{M} {F^i}_0
+	+ \frac{q}{M} {F^i}_j v^j
+	+ \frac{G}{k_e} (A_0 + \frac{1}{c} A_j v^j) ({F^i}_0 + \frac{1}{c} {F^i}_k v^k )
+$<br>
+Let ${F^i}_0 \approx \frac{1}{c} E^i$ and ${F^i}_j \approx {\epsilon^i}_{jk} B^k$<br>
+Let $A_0 = \frac{1}{c} \Phi$ be the electromagnetic potential.<br>
+$c \partial_\tau v^i =
+	\frac{GM}{r^2}
+	+ \frac{q}{M} (E^i + {\epsilon^i}_{jk} v^j B^k)
+	+ \frac{1}{c^2} \frac{G}{k_e} (\Phi + A_j v^j) (E^i + {\epsilon^i}_{kl} v^k B^l )
+$<br>
+$c \partial_\tau v^i = \frac{GM}{r^2} + (\frac{q}{M} + \frac{1}{c^2} \frac{G}{k_e} (\Phi + A_j v^j))(E^i + {\epsilon^i}_{kl} v^k B^l )$<br>
+...and we see that, in the Lorentz force law component, the charge should be offset by the electromagnetic potential field, which itself grows with distance.  Wouldn't that mean infinite charge?  How do the units pan out?  What if you plug in a potential field at a distance of the size of the known universe?<br>
 <br>
 
 fifth term:<br>
-$\dot{\tilde{u}}^5 + {\tilde{\Gamma}^5}_{\alpha\beta} \tilde{u}^\alpha \tilde{u}^\beta 
-	+ 2 {\tilde{\Gamma}^5}_{\alpha 5} \tilde{u}^\alpha \tilde{u}^5
-	+ {\tilde{\Gamma}^5}_{55} (\tilde{u}^5)^2 = 0$<br>
-$\dot{\tilde{u}}^5 
+$\partial_\tau u^5 + {\tilde{\Gamma}^5}_{\alpha\beta} u^\alpha u^\beta 
+	+ 2 {\tilde{\Gamma}^5}_{\alpha 5} u^\alpha u^5
+	+ {\tilde{\Gamma}^5}_{55} (u^5)^2 = 0$<br>
+$\partial_\tau u^5 
 	+ \frac{1}{A_5} (
-		-A_\mu ({\Gamma^\mu}_{\alpha\beta} + \frac{1}{2} \phi^2 A_{(\alpha} {F_{\beta)}}^\mu) 
+		A_\mu (
+			- {\Gamma^\mu}_{\alpha\beta} 
+			+ \frac{1}{2} \phi^2 A_{(\alpha} {F^\mu}_{\beta)}
+		) 
 		+ A_{(\alpha,\beta)}
-	) \tilde{u}^\alpha \tilde{u}^\beta 
-	- \phi^2 A_\nu {F_\alpha}^\nu \tilde{u}^\alpha \tilde{u}^5 = 0$<br>
-$\sqrt{\frac{k_e}{G}} \cdot \frac{\dot{q} m - q \dot{m}}{m^2} =
+	) u^\alpha u^\beta 
+	+ \phi^2 A_\nu {F^\nu}_\alpha u^\alpha u^5 = 0$<br>
+$\sqrt{\frac{k_e}{G}} \cdot \frac{\partial_\tau q M - q \partial_\tau M}{M^2} =
 	\frac{1}{c} \sqrt{\frac{G}{k_e}}
 	(
 		A_\mu (
 			{\Gamma^\mu}_{\alpha\beta} 
-			+ \frac{1}{2} \frac{1}{c^2} \frac{G}{k_e} A_{(\alpha} {F_{\beta)}}^\mu
-		) \tilde{u}^\alpha \tilde{u}^\beta
-		- A_{(\alpha,\beta)} \tilde{u}^\alpha \tilde{u}^\beta
-	) 
-	+ \frac{1}{c^2} \frac{G}{k_e} A_\nu {F_\alpha}^\nu \tilde{u}^\alpha \sqrt{\frac{k_e}{G}} \cdot \frac{q}{m}$<br>
-TODO finish charge derivative<br>
+			- \frac{1}{2} \frac{1}{c^2} \frac{G}{k_e} A_{(\alpha} {F^\mu}_{\beta)}
+		) u^\alpha u^\beta
+		- A_{(\alpha,\beta)} u^\alpha u^\beta
+	)
+	- \frac{1}{c^2} \sqrt{\frac{G}{k_e}} A_\nu {F^\nu}_\alpha u^\alpha \cdot \frac{q}{M}$<br>
+
+$\partial_\tau q =
+	q \frac{\partial_\tau M}{M} 
+	+ \frac{1}{c} \frac{G}{k_e} M A_\mu {\Gamma^\mu}_{\alpha\beta} u^\alpha u^\beta
+	- \frac{1}{c} \frac{G}{k_e} M A_{(\alpha,\beta)} u^\alpha u^\beta
+	- \frac{1}{c^2} \frac{G}{k_e} A_\nu {F^\nu}_\alpha u^\alpha q
+	- \frac{1}{2} \frac{1}{c^3} \frac{G^2}{k_e^2} M A_\mu A_{(\alpha} {F^\mu}_{\beta)} u^\alpha u^\beta
+$<br>
 <br>
+TODO's:<br>
+- straighten out the $M$'s ... which is our mass, and which is the other particle's mass (creating the field this particle is interacting with).<br>
+- for some known 4-potential (current through a wire), calculate the magnitude of $A \cdot F$ and $A^2$, and see if it should be measurable.<br>
+- for $\partial_\tau u^5$, for low-velocity Newtonian gravitation approximation, see if the charge can change.<br>
 <br>
 <br>
 
