@@ -94,7 +94,7 @@ $I = \frac{V}{R_{res}} = \frac{V \cdot \pi \cdot R^2}{\rho_{res} \cdot l} =$ {{c
 Electric field: $E(x) = \int \frac{q(x')}{|x' - x|^2} \cdot \frac{(x' - x)}{|x' - x|} dx'$<br>
 Electric field around a wire:<br>
 $\lambda = A q = \pi R^2 \rho_{charge} e =$ {{charge_per_unit_length_in_C_per_m = charge_density_in_C_per_m3 * wire_cross_section_area_in_m2}} $\frac{C}{m}$ = charge density per unit meter along wire<br>
-$E(r) = \frac{1}{2} \lambda k_e \frac{1}{r} = \frac{1}{2} \pi R^2 \rho_{charge} e k_e \frac{1}{r} =$ {{electric_field_in_N_m_per_C_r = charge_per_unit_length_in_C_per_m * .5 * Coulomb_constant_in_kg_m3_per_C2_s2}} $\cdot \frac{1}{r} \cdot \frac{N \cdot m}{C}$<br>
+$E(r) = \frac{1}{2} \lambda k_e \frac{1}{r} = \frac{1}{2} \pi R^2 \rho_{charge} e k_e \frac{1}{r} =$ {{electric_field_in_kg_m2_per_C_s2_r = charge_per_unit_length_in_C_per_m * .5 * Coulomb_constant_in_kg_m3_per_C2_s2}} $\cdot \frac{1}{r} \cdot \frac{kg \cdot m^2}{C \cdot s^2}$<br>
 <br>
 
 Mean velocity of moving electrons within wire:<br>
@@ -120,8 +120,8 @@ $F_{ab} = \downarrow a \overset{\rightarrow b}{\left[ \begin{matrix}
 	0 & \frac{1}{c} \partial_t \vec{A} - \vec{\nabla} A_t \\
 	\vec{\nabla} A_t - \frac{1}{c} \partial_t \vec{A} & (\vec{\nabla} \times \vec{A}) \times
 \end{matrix}\right]}$<br>
-$A_t$ is in units of $V = \frac{N \cdot m}{C}$<br>
-$A_i$ is in units of $\frac{V \cdot s}{m} = \frac{N \cdot s}{C}$<br>
+$A_t$ is in units of $V = \frac{kg \cdot m^2}{C \cdot s^2}$<br>
+$A_i$ is in units of $\frac{V \cdot s}{m} = \frac{kg \cdot m}{C \cdot s}$<br>
 <br>
 
 Lorentz boost in the x direction:<br>
@@ -237,14 +237,27 @@ $\vec{B} =
 $B = \frac{1}{c} \beta \gamma E = \frac{\gamma \cdot V \cdot \pi \cdot R^2 \cdot k_e}{2 \cdot c^2 \cdot \rho_{res} \cdot l \cdot r}$ = electric field magnitude<br>
 <br>
 
-$B = \frac{1}{c \cdot r} \cdot $ {{Lorentz_beta * Lorentz_gamma * electric_field_in_N_m_per_C_r}} $\cdot \frac{N}{C \cdot m}$
-$= \frac{1}{r} \cdot $ {{magnetic_field_in_N_s_per_C_r = Lorentz_beta * Lorentz_gamma * (electric_field_in_N_m_per_C_r / speed_of_light_in_m_per_s)}} $\cdot \frac{N \cdot s}{C}$<br>
+$B = \frac{1}{c \cdot r} \cdot $ {{Lorentz_beta * Lorentz_gamma * electric_field_in_kg_m2_per_C_s2_r}} $\cdot \frac{kg}{C \cdot s^2}$
+$= \frac{1}{r} \cdot $ {{magnetic_field_in_kg_m_per_C_s_r = Lorentz_beta * Lorentz_gamma * (electric_field_in_kg_m2_per_C_s2_r / speed_of_light_in_m_per_s)}} $\cdot \frac{kg \cdot m}{C \cdot s}$<br>
 <br>
 
 Measuring the magnetic field at a distance of {{field_measure_distance_in_m}} $ m$ from the wire gives us:<br>
-$E =$ {{electric_field_in_N_m_per_C = electric_field_in_N_m_per_C_r / field_measure_distance_in_m}} $\frac{N}{C} =$ {{electric_field_in_N_m_per_C}} $\frac{V}{m}$<br>
-$B =$ {{magnetic_field_in_N_s_per_C = magnetic_field_in_N_s_per_C_r / field_measure_distance_in_m}} $\frac{N \cdot s}{C \cdot m} =$ {{magnetic_field_in_N_s_per_C}} T<br>
+$E =$ {{electric_field_in_kg_m2_per_C_s2 = electric_field_in_kg_m2_per_C_s2_r / field_measure_distance_in_m}} $\frac{kg \cdot m}{C \cdot s^2} =$ {{electric_field_in_kg_m2_per_C_s2}} $\frac{V}{m}$<br>
+$B =$ {{magnetic_field_in_kg_m_per_C_s = magnetic_field_in_kg_m_per_C_s_r / field_measure_distance_in_m}} $\frac{kg}{C \cdot s} =$ {{magnetic_field_in_kg_m_per_C_s}} T<br>
 <br>
 
+$\epsilon_0 = \frac{1}{4 \pi k_e} = $ {{vacuum_permittivity_in_C2_s2_per_kg_m3 = 1 / (4 * Math.PI * Coulomb_constant_in_kg_m3_per_C2_s2)}} $\cdot \frac{C^2 \cdot s^2}{kg \cdot m^3}$<br>
+$\epsilon_r =$ <input name='relative_permittivity_in_1' value='1'/> = relative permittivity of material<br>
+$\epsilon = \epsilon_0 \epsilon_r = $ {{material_permittivity_in_C2_s2_per_kg_m3 = vacuum_permittivity_in_C2_s2_per_kg_m3 * relative_permittivity_in_1}} $\cdot \frac{C^2 \cdot s^2}{kg \cdot m^3} =$ permittivity of material<br>
+$D = \epsilon E =$ {{displacement_field_in_C_per_m = electric_field_in_kg_m2_per_C_s2 * material_permittivity_in_C2_s2_per_kg_m3}} $\cdot \frac{C}{m} =$ displacement field<br>
+<br>
+
+$\mu_0 = \frac{1}{c^2 \cdot \epsilon_0} = $ {{vacuum_permeability_in_kg_m_per_C2 = 1 / (speed_of_light_in_m_per_s * speed_of_light_in_m_per_s * vacuum_permittivity_in_C2_s2_per_kg_m3)}} $\cdot \frac{kg \cdot m}{C^2} =$ vacuum permeability<br>
+$\mu_r =$ <input name='relative_permeability_in_1' value='1'/> = relative permeability of material<br>
+$\mu = \mu_0 \mu_r =$ {{material_permittivity_in_kg_m_per_C2 = vacuum_permeability_in_kg_m_per_C2 * relative_permeability_in_1}} $ \cdot \frac{kg \cdot m}{C^2} =$ permeability of material<br>
+$H = \frac{1}{\mu} B =$ {{magnetizing_field_in_C_per_s = magnetic_field_in_kg_m_per_C_s / material_permittivity_in_kg_m_per_C2}} $\cdot \frac{C}{s} =$ magnetizing field<br> 
+<br>
+	
+<br>
 	</body>
 </html>
