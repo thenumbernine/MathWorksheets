@@ -1,0 +1,282 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type='text/javascript' src='../tryToFindMathJax.js'></script>
+		<title>gravitoelectromagnetics</title>
+	</head>
+	<body>
+
+This started as a diff from my 'gravitomagnetics +---' worksheet, which followed the Tajmar &amp; De Matos paper.<br>
+It has additional ideas, but I don't want to muddle the last worksheet up too much.<br>
+Alright, I've made enough stupid sign errors that I'm just going to start from the top and make these two worksheets 1:1<br>
+Except that this worksheet is going to be signature -+++, just like all my others.<br>
+<br>
+
+Constants:<br>
+$c = 299792458 \frac{m}{s} = $ speed of light<br>
+$G = 6.67384 \cdot 10^{-11} \frac{m^3}{kg \cdot s^2} = $ gravitational constant<br>
+$[\frac{G}{c^4}] = [\frac{s^2}{kg \cdot m}]$ units<br>
+<br>
+
+$\eta_{ab} = diag(-1,1,1,1)$<br>
+<br>
+
+This much is distinct of the signature -- because it does not separate space+time:<br>
+Near field approximation:<br>
+$g_{ab} = \eta_{ab} + h_{ab}$ has units $[1]$<br>
+(Even though I'm using the same definition for either +--- or -+++ signatures, shouldn't one of the two be negative'd?
+I suppose that doesn't matter if, instead, the $h_{ab}$ components of one signature are negative those of the other).<br>
+<br>
+
+The coordinate basis is $\frac{\partial}{\partial x^\mu} 
+= (
+	\frac{\partial}{\partial x^0},
+	\frac{\partial}{\partial x^1},
+	\frac{\partial}{\partial x^2},
+	\frac{\partial}{\partial x^3}
+) = (
+	\frac{1}{c} \frac{\partial}{\partial t},
+	\frac{\partial}{\partial x},
+	\frac{\partial}{\partial y},
+	\frac{\partial}{\partial z}
+)$ has units $[\frac{1}{m}]$.<br>
+The dual basis is $dx^\mu
+= (dx^0, dx^1, dx^2, dx^3)
+= (c \cdot dt, dx, dy, dz)
+$ has units $[m]$.<br>
+<br>
+
+$g^{ab} \approx \eta^{ab}$ has units $[1]$,<br>
+So we will raise and lower with $\eta^{ab}$<br>
+<br>
+
+$g_{ab,c} = h_{ab,c}$ has units $[\frac{1}{m}]$<br>
+$\Gamma_{abc} = \frac{1}{2} (h_{ab,c} + h_{ac,b} - h_{bc,a})$ has units $[\frac{1}{m}]$<br>
+${\Gamma^a}_{bc} = \frac{1}{2} ({h^a}_{b,c} + {h^a}_{c,b} - {h_{bc}}^{,a})$ has units $[\frac{1}{m}]$<br>
+
+${R^a}_{bcd} = 2 ({\Gamma^a}_{b[d,c]} + {\Gamma^a}_{e[c} {\Gamma^e}_{d]b})$ has units $[\frac{1}{m^2}]$<br>
+$= {h^a}_{b,[dc]} + {h^a}_{[d,c]b} - {{h_{b[d}}^{,a}}_{,c]}
+	+ \frac{1}{2} ({h^a}_{e,[c} + {h^a}_{[c|,e} - {h_{e[c}}^{,a})
+	({h^e}_{b,|d]} + {h^e}_{d],b} - {h_{d]b}}^{,e})$<br>
+$= {h^a}_{[d,c]b} - {h_{b[d,c]}}^{,a}
+	+ \frac{1}{2} (
+		+ {h^a}_{e,[c} {h^e}_{b,|d]} 
+		+ {h^a}_{e,[c} {h^e}_{d],b} 
+		- {h^a}_{e,[c} {h_{d]b}}^{,e}
+		+ {h^a}_{[c|,e} {h^e}_{b,|d]} 
+		+ {h^a}_{[c|,e} {h^e}_{d],b} 
+		- {h^a}_{[c|,e} {h_{d]b}}^{,e}
+		- {h_{e[c}}^{,a} {h^e}_{b,|d]} 
+		- {h_{e[c}}^{,a} {h^e}_{d],b} 
+		+ {h_{e[c}}^{,a} {h_{d]b}}^{,e}
+	)
+$<br>
+<br>
+
+$R_{ab} = {R^c}_{acb}$ has units $[\frac{1}{m^2}]$<br>
+
+$= 
+	\frac{1}{2} (
+		{{h_{bc}}^{,c}}_a 
+		- {h_{ab,c}}^{,c}
+		- {h^c}_{c,ab} 
+		+ {{h_{ac}}^{,c}}_b
+	)	
+	+ \frac{1}{4} (
+		
+		{h^c}_{c,e} {h^e}_{a,b} 
+		+ {h^c}_{c,e} {h^e}_{b,a} 
+		
+		- {h^c}_{c,e} {h_{ab}}^{,e}
+
+		- {h^c}_{e,b} {h^e}_{a,c}
+		- {h^c}_{e,b} {h^e}_{c,a}
+		+ {h^c}_{e,b} {h_{ac}}^{,e}
+		
+		- 2 {{h_b}^c}_{,e} {{h_a}^e}_{,c}
+		+ 2 {{h_b}^c}_{,e} {h_{ac}}^{,e}
+
+	)
+$<br>
+
+Choosing the gauge condition (de Donder gauge):<br>
+$(h_{ab} - \frac{1}{2} \eta_{ab} {h^c}_c)^{,b} = 0$ has units $[1]$<br>
+${h_{ab}}^{,b} = \frac{1}{2} {h_c}^{c,a}$<br>
+Let $h = {h^a}_a$<br>
+$\nabla \cdot \textbf{h} = \frac{1}{2} \nabla h$<br>
+<br>
+
+$R_{ab} = 
+	\frac{1}{2} (
+		\frac{1}{2} {{h_c}^c}_{,ba}
+		- {h_{ab,c}}^{,c}
+		- {h^c}_{c,ab} 
+		\frac{1}{2} {{h_c}^c}_{,ba}
+	)	
+	+ \frac{1}{4} (
+		{h^c}_{c,e} {h^e}_{a,b} 
+		+ {h^c}_{c,e} {h^e}_{b,a} 
+		
+		- {h^c}_{c,e} {h_{ab}}^{,e}
+
+		- {h^c}_{e,b} {h^e}_{a,c}
+		- {h^c}_{e,b} {h^e}_{c,a}
+		+ {h^c}_{e,b} {h_{ac}}^{,e}
+		
+		- 2 {{h_b}^c}_{,e} {{h_a}^e}_{,c}
+		+ 2 {{h_b}^c}_{,e} {h_{ac}}^{,e}
+
+	)
+$<br>
+
+$R_{ab} = 
+	- \frac{1}{2} {h_{ab,c}}^{,c}
+	
+	+ \frac{1}{4} (
+		{h^c}_{c,e} {h^e}_{a,b} 
+		+ {h^c}_{c,e} {h^e}_{b,a} 
+		
+		- {h^c}_{c,e} {h_{ab}}^{,e}
+
+		- {h^c}_{e,b} {h^e}_{a,c}
+		- {h^c}_{e,b} {h^e}_{c,a}
+		+ {h^c}_{e,b} {h_{ac}}^{,e}
+		
+		- 2 {{h_b}^c}_{,e} {{h_a}^e}_{,c}
+		+ 2 {{h_b}^c}_{,e} {h_{ac}}^{,e}
+
+	)
+$<br>
+All the squared terms should go away because $h_{ab} &lt;&lt; 1$, therefore $(h_{ab})^2 \approx 0$<br>
+$R_{ab} = -\frac{1}{2} {h_{ab,c}}^c$<br>
+$= -\frac{1}{2} \Box h_{ab}$
+$= -\frac{1}{2} \Box \textbf{h}$<br>
+<br>
+
+Next Gaussian curvature:<br>
+$R = \eta^{ab} R_{ab} = -\frac{1}{2} {{{h^a}_a}^{,b}}_b$ has units $[\frac{1}{m^2}]$<br>
+$= -\frac{1}{2} \Box {h^a}_a$
+$ = -\frac{1}{2} \Box h$<br>
+<br>
+
+Einstein tensor:<br>
+$G_{ab} = R_{ab} - \frac{1}{2} g_{ab} R$ has units $[\frac{1}{m^2}]$<br>
+Linerized approximation:<br>
+$G_{ab} = R_{ab} - \frac{1}{2} \eta_{ab} R$<br>
+$= -\frac{1}{2} {h_{ab,c}}^c + \frac{1}{4} \eta_{ab} {{{h^c}_c}^{,d}}_d$<br>
+<br>
+
+Define gravitational potential:<br>
+$\bar{h}_{ab} = h_{ab} - \frac{1}{2} \eta_{ab} {h^c}_c$<br>
+${\bar{h}_{ab}}^{,b} = (h_{ab} - \frac{1}{2} \eta_{ab} {h^c}_c)^{,b} = 0$ by the de Donder gauge.<br>
+or $\nabla \cdot \bar{\textbf{h}} = 0$<br>
+${\bar{h}_{ab,c}}^c = {h_{ab,c}}^c - \frac{1}{2} \eta_{ab} {{{h^c}_c}^{,d}}_d$<br>
+(combined with units of $T_{ab}$ below, this means $\bar{h}_{ab,cd}$ has units $\frac{1}{m^2}$)<br>
+<br>
+
+Substitute into Einstein tensor:<br>
+$G_{ab} = -\frac{1}{2} {h_{ab,c}}^c + \frac{1}{4} \eta_{ab} {{{h^c}_c}^{,d}}_d$<br>
+$= -\frac{1}{2} {\bar{h}_{ab,c}}^c$<br>
+$= -\frac{1}{2} \Box \bar{h}_{ab} = -\frac{1}{2} \Box \bar{\textbf{h}}$<br>
+....which makes perfect sense, because the Einstein tensor is the trace-reversal of the Ricci tensor, 
+and $\bar{\textbf{h}}$ is the trace-reversal of $\textbf{h}$<br>
+<br>
+
+Einstein Field Equations:<br>
+$G_{ab} = 8 \pi \frac{G}{c^4} T_{ab}$ has units $[\frac{1}{m^2}]$<br>
+$T_{ab}$ has units $[\frac{kg}{m \cdot s^2}]$<br>
+so $8 \pi \frac{G}{c^4} T_{ab}$ has units $[\frac{1}{m^2}]$<br>
+$-\frac{1}{2} {\bar{h}_{ab,c}}^c = 8 \pi \frac{G}{c^4} T_{ab}$<br>
+${\bar{h}_{ab,c}}^c = -16 \pi \frac{G}{c^4} T_{ab}$<br>
+<br>
+(Ok this is the first part we separate space+time, so now metric signature matters)<br>
+<br>
+Separating space and time:<br>
+$-\frac{1}{c^2} \frac{\partial^2}{\partial t^2} \bar{h}_{ab} + \Delta \bar{h}_{ab} = -16 \pi \frac{G}{c^4} T_{ab}$<br>
+Assuming a steady state:<br>
+$\Delta \bar{h}_{ab} = -16 \pi \frac{G}{c^4} T_{ab}$<br>
+<br>
+
+Let $\epsilon_g = \frac{1}{4 \pi G}$ has units $[\frac{kg \cdot s^2}{m^3}]$<br>
+so $G = \frac{1}{4\pi\epsilon_g}$<br>
+Let $\mu_g = \frac{4 \pi G}{c^2}$ has units $[\frac{m}{kg}]$<br>
+This gives the familiar formula: $c^2 = \frac{1}{\epsilon_g \mu_g}$ has units $[\frac{m^2}{s^2}]$<br>
+<br>
+
+Poisson's equation:<br>
+$\Delta \phi = 4 \pi \rho$ has a solution $\phi = -\int_V \frac{\rho}{r} dV$<br>
+<br>
+
+Combine with EFE to find:<br>
+$\Delta \bar{h}_{00} = -16 \pi \frac{G}{c^4} T_{00}$<br>
+$\Delta (\frac{c^2}{4} \bar{h}_{00}) = -4 \pi \frac{G}{c^2} T_{00}$<br>
+Let $\Phi^g = \frac{c^2}{4} \bar{h}_{00}$ has units $[\frac{m^2}{s^2}]$<br>
+$\Delta \Phi^g = -4 \pi \frac{G}{c^2} T_{00}$<br>
+$\Phi^g = \frac{G}{c^2} \int_V \frac{T_{00}}{r} dV$<br>
+$\Phi^g = \frac{1}{4\pi\epsilon_g} \int_V \frac{T_{00}}{c^2 r} dV$<br>
+Tada! Just like the electric field.<br>
+<br>
+
+Next do the same trick with $T_{0i}$<br>
+$\Delta \bar{h}_{0i} = -16 \pi \frac{G}{c^4} T_{0i}$<br>
+$\Delta (-\frac{c}{4} \bar{h}_{0i}) = 4 \pi \frac{G}{c^3} T_{0i}$<br>
+Let $(A^g)_i = -\frac{c}{4} \bar{h}_{0i}$ be the gravitomagnetic potential vector, with units $[\frac{m}{s}]$<br>
+$\Delta (A^g)_i = 4 \pi \frac{G}{c^3} T_{0i}$<br>
+$(A^g)_i = -\frac{G}{c^3} \int_V \frac{T_{0i}}{r} dV$<br>
+$(A^g)_i = -\frac{\mu_g}{4 \pi} \int_V \frac{T_{0i}}{c r} dV$<br>
+Just like the magnetic field.<br>
+<br>
+
+Notice that we aren't considering $T_{ij}$ at all.<br>
+<hr>
+
+If you stop here, take what we know of $\bar{h}_{ab}$, and substitute it back into $h_{ab}$, you find something interesting.<br>
+
+$\bar{h}_{00} = \frac{4}{c^2} \Phi^g$<br>
+$\bar{h}_{0i} = \bar{h}_{i0} = -\frac{4}{c} (A^g)_i$<br>
+Let's assume the rest is zero for now: $\bar{h}_{ij} = 0$<br>
+<br>
+Now let's calculate $h_{ab}$ from $\bar{h}_{ab}$<br>
+$\bar{h}$ definition:<br>
+$\bar{h}_{ab} = h_{ab} - \frac{1}{2} \eta_{ab} {h^c}_c$<br>
+contract with $\eta^{ab}$:<br>
+${\bar{h}^a}_a = {h^a}_a - \frac{1}{2} \eta^{ab} \eta_{ab} {h^c}_c$<br>
+${\bar{h}^a}_a = {h^a}_a - \frac{4}{2} {h^a}_a$<br>
+${\bar{h}^a}_a = -{h^a}_a$<br>
+substitute back into definition:<br>
+$\bar{h}_{ab} = h_{ab} + \frac{1}{2} \eta_{ab} {\bar{h}^c}_c$<br>
+solve for $h_{ab}$<br>
+$h_{ab} = \bar{h}_{ab} - \frac{1}{2} \eta_{ab} {\bar{h}^c}_c$<br>
+<br>
+
+${\bar{h}^a}_a = -\bar{h}_{00} + \Sigma_i \bar{h}_{ii} = -\bar{h}_{00}$<br>
+<br>
+
+Now solve for $h_{ba}$<br>
+$h_{00} = \bar{h}_{00} - \frac{1}{2} \eta_{00} {\bar{h}^a}_a = \frac{1}{2} \bar{h}_{00}$<br>
+$h_{0i} = \bar{h}_{0i} - \frac{1}{2} \eta_{0i} {\bar{h}^a}_a = \bar{h}_{0i}$<br>
+$h_{ij} = \bar{h}_{ij} - \frac{1}{2} \eta_{ij} {\bar{h}^a}_a = \frac{1}{2} \delta_{ij} \bar{h}_{00}$<br>
+We get<br>
+$h_{ab} = \left[\begin{matrix}
+	\frac{2}{c^2} \Phi^g & -\frac{4}{c} A_x & -\frac{4}{c} A_y & -\frac{4}{c} A_z \\
+	-\frac{4}{c} A_x & \frac{2}{c^2} \Phi^g & 0 & 0 \\
+	-\frac{4}{c} A_y & 0 & \frac{2}{c^2} \Phi^g & 0 \\
+	-\frac{4}{c} A_z & 0 & 0 & \frac{2}{c^2} \Phi^g 
+\end{matrix}\right]$<br>
+<br>
+
+Add this to the flat-space metric $\eta_{ab}$ to find: ($g_{ab} = \eta_{ab} + h_{ab}$)<br>
+$g_{ab} = \left[\begin{matrix}
+	-1 + \frac{2}{c^2} \Phi^g & -\frac{4}{c} A_x & -\frac{4}{c} A_y & -\frac{4}{c} A_z \\
+	-\frac{4}{c} A_x & 1 + \frac{2}{c^2} \Phi^g & 0 & 0 \\
+	-\frac{4}{c} A_y & 0 & 1 + \frac{2}{c^2} \Phi^g & 0 \\
+	-\frac{4}{c} A_z & 0 & 0 & 1 + \frac{2}{c^2} \Phi^g 
+\end{matrix}\right]$<br>
+This looks surprisingly similar to a combination of the metric representing the Newtonian limit of relativity ($g_{ab} = \eta_{ab} + 2 \delta_{ab} \Phi$),<br>
+as well as the metric (similar to Kaluza-Klein) whose geodesic looks similar to the Lorentz force ($g_{ab} = \eta_{ab} + 2 \delta_{t(a} A_{b)})$<br>
+Coincidentally those are the forces which we are recreating using this model.<br>
+<br>
+
+	</body>
+</html>

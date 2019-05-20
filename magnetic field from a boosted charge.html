@@ -242,20 +242,20 @@ $= \frac{1}{r} \cdot $ {{magnetic_field_in_kg_m_per_C_s_r = Lorentz_beta * Loren
 <br>
 
 Measuring the magnetic field at a distance of {{field_measure_distance_in_m}} $ m$ from the wire gives us:<br>
-$E =$ {{electric_field_in_kg_m2_per_C_s2 = electric_field_in_kg_m2_per_C_s2_r / field_measure_distance_in_m}} $\frac{kg \cdot m}{C \cdot s^2} =$ {{electric_field_in_kg_m2_per_C_s2}} $\frac{V}{m}$<br>
-$B =$ {{magnetic_field_in_kg_m_per_C_s = magnetic_field_in_kg_m_per_C_s_r / field_measure_distance_in_m}} $\frac{kg}{C \cdot s} =$ {{magnetic_field_in_kg_m_per_C_s}} T<br>
+$E =$ {{electric_field_in_kg_m_per_C_s2 = electric_field_in_kg_m2_per_C_s2_r / field_measure_distance_in_m}} $\frac{kg \cdot m}{C \cdot s^2} =$ {{electric_field_in_kg_m_per_C_s2}} $\frac{V}{m}$<br>
+$B =$ {{magnetic_field_in_kg_per_C_s = magnetic_field_in_kg_m_per_C_s_r / field_measure_distance_in_m}} $\frac{kg}{C \cdot s} =$ {{magnetic_field_in_kg_per_C_s}} T<br>
 <br>
 
 $\epsilon_0 = \frac{1}{4 \pi k_e} = $ {{vacuum_permittivity_in_C2_s2_per_kg_m3 = 1 / (4 * Math.PI * Coulomb_constant_in_kg_m3_per_C2_s2)}} $\cdot \frac{C^2 \cdot s^2}{kg \cdot m^3}$<br>
 $\epsilon_r =$ <input name='relative_permittivity_in_1' value='1'/> = relative permittivity of material<br>
 $\epsilon = \epsilon_0 \epsilon_r = $ {{material_permittivity_in_C2_s2_per_kg_m3 = vacuum_permittivity_in_C2_s2_per_kg_m3 * relative_permittivity_in_1}} $\cdot \frac{C^2 \cdot s^2}{kg \cdot m^3} =$ permittivity of material<br>
-$D = \epsilon E =$ {{displacement_field_in_C_per_m = electric_field_in_kg_m2_per_C_s2 * material_permittivity_in_C2_s2_per_kg_m3}} $\cdot \frac{C}{m} =$ displacement field<br>
+$D = \epsilon E =$ {{displacement_field_in_C_per_m2 = electric_field_in_kg_m_per_C_s2 * material_permittivity_in_C2_s2_per_kg_m3}} $\cdot \frac{C}{m^2} =$ displacement field<br>
 <br>
 
 $\mu_0 = \frac{1}{c^2 \cdot \epsilon_0} = $ {{vacuum_permeability_in_kg_m_per_C2 = 1 / (speed_of_light_in_m_per_s * speed_of_light_in_m_per_s * vacuum_permittivity_in_C2_s2_per_kg_m3)}} $\cdot \frac{kg \cdot m}{C^2} =$ vacuum permeability<br>
 $\mu_r =$ <input name='relative_permeability_in_1' value='1'/> = relative permeability of material<br>
 $\mu = \mu_0 \mu_r =$ {{material_permittivity_in_kg_m_per_C2 = vacuum_permeability_in_kg_m_per_C2 * relative_permeability_in_1}} $ \cdot \frac{kg \cdot m}{C^2} =$ permeability of material<br>
-$H = \frac{1}{\mu} B =$ {{magnetizing_field_in_C_per_s = magnetic_field_in_kg_m_per_C_s / material_permittivity_in_kg_m_per_C2}} $\cdot \frac{C}{s} =$ magnetizing field<br> 
+$H = \frac{1}{\mu} B =$ {{magnetizing_field_in_C_per_s = magnetic_field_in_kg_per_C_s / material_permittivity_in_kg_m_per_C2}} $\cdot \frac{C}{s} =$ magnetizing field<br> 
 <br>
 	
 <br>

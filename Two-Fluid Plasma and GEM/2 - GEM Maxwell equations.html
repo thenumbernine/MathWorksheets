@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type='text/javascript' src='../tryToFindMathJax.js'></script>
+		<title>GEM Maxwell equations</title>
+	</head>
+	<body>
+
+Let $(A^g)_a = (\frac{1}{c} \Phi^g, (A^g)_i)$ has units $[\frac{m}{s}]$.<br>
+<br>
+
+$(F^g)_{ab} = 2 A^g_{[b,a]}$<br>
+$\frac{1}{c} (E^g)_i = (F^g)_{i0} = 2 (A^g)_{[0,i]} = (A^g)_{0,i} - (A^g)_{i,0} = \frac{1}{c} (\Phi^g)_{,i} - \frac{1}{c} (A^g)_{i,t}$ has units $[\frac{1}{s}]$<br>
+so $(E^g)_i$ has units $[\frac{m}{s^2}]$<br>
+$(B^g)_i = \frac{1}{2} {\epsilon_i}^{jk} (F^g)_{jk} = {\epsilon_i}^{jk} (A^g)_{[k,j]} = {\epsilon_i}^{jk} (A^g)_{k,j}$<br>
+so $(B^g)_i$ has units $[\frac{1}{s}]$<br>
+<br>
+
+$(F^g)_{ab} = \left[\begin{matrix}
+	0 & -\frac{1}{c} (E^g)_j \\
+	\frac{1}{c} (E^g)_i & {\epsilon_{ij}}^k (B^g)_k
+\end{matrix}\right]$ has units $[\frac{1}{s}]$<br>
+<br>
+
+$(F^g)^{ab} = \left[\begin{matrix}
+	0 & \frac{1}{c} (E^g)_j \\
+	-\frac{1}{c} (E^g)_i & {\epsilon_{ij}}^k (B^g)_k
+\end{matrix}\right]$<br>
+<br>
+
+${{(F^g)}^{ab}}_{,b} = \mu_g (J^g)^a$ has units $[\frac{1}{m s}]$<br>
+${{(F^g)}^{ab}}_{,b} = \frac{4 \pi G}{c^2} (J^g)^a$<br>
+so $(J^g)^a$ has units $[\frac{kg}{m^2 \cdot s}]$<br>
+<br>
+
+${(F^g)^{ab}}_{,b} = \mu_g (J^g)^a$ gives us...<br>
+${(F^g)^{0u}}_{,u} = \mu_g (J^g)^0$<br>
+${(F^g)^{0u}}_{,u} = \frac{1}{c} (E^g)_{j,j}$<br>
+substitute $\frac{1}{c} (E^g)_i = \frac{1}{c} (\Phi^g)_{,i} - \frac{1}{c} (A^g)_{i,t}$<br>
+${(F^g)^{0u}}_{,u} = \frac{1}{c} \Phi^g_{,jj} - \frac{1}{c} (A^g)_{j,tj}$<br>
+using the Lorentz gauge $(A^g)_{j,j} = 0$ we get<br>
+${(F^g)^{0u}}_{,u} = \frac{1}{c} (\Phi^g)_{,jj}$<br>
+using $\Delta \Phi^g = -4 \pi \frac{G}{c^2} T_{00}$<br>
+we get ${(F^g)^{0u}}_{,u} = -4 \pi \frac{G}{c^3} T_{00}$<br> 
+and ${(F^g)^{0u}}_{,u} = \mu_g (J^g)^0$<br>
+so $\mu_g (J^g)^0 = -4 \pi \frac{G}{c^3} T_{00}$<br>
+so $(J^g)_0 = \frac{1}{c} T_{00}$<br>
+so $\frac{1}{c} (E^g)_{j,j} = \mu_g (J^g)^0 = -4 \pi \frac{G}{c^3} T_{00}$<br>
+<br>
+
+
+<br>
+${(F^g)^{iu}}_{,u} = \mu_g (J^g)^i$ gives us<br>
+${(F^g)^{iu}}_{,u} = -\frac{1}{c^2} (E^g)_{i,t} + {\epsilon_i}^{jk} (B^g)_{k,j} = \mu_g (J^g)^i$<br>
+substitute $\frac{1}{c} (E^g)_i = \frac{1}{c} (\Phi^g)_{,i} - \frac{1}{c} (A^g)_{i,t}$ and $(B^g)_i = {\epsilon_i}^{jk} (A^g)_{k,j}$<br>
+${(F^g)^{iu}}_{,u} = -(\frac{1}{c^2} \Phi^g_{,it} - \frac{1}{c^2} (A^g)_{i,tt}) + {\epsilon_{ij}}^k {\epsilon_k}^{lm} (A^g)_{m,lj} $<br>
+using $(A^g)_{i,tt} = 0$ (or am I thinking of $\bar{h}_{ab,tt} = 0$ ...)<br>
+${(F^g)^{iu}}_{,u} = -\frac{1}{c^2} (\Phi^g)_{,it} + (\delta_i^l \delta_j^m - \delta_i^m \delta_j^l) (A^g)_{m,lj} $<br>
+${(F^g)^{iu}}_{,u} = -\frac{1}{c^2} (\Phi^g)_{,it} + (A^g)_{j,ij} - (A^g)_{i,jj} $<br>
+using the Lorentz gauge $(\Phi^g)_{i,i} = (A^g)_{i,ij} = 0$<br>
+${(F^g)^{iu}}_{,u} = -\frac{1}{c^2} (\Phi^g)_{,it} - (A^g)_{i,jj} $<br>
+and using $-(\Phi^g)_{,it} = 0$ (why?) and $(A^g)_{i,jj} = -\frac{4 \pi G}{c^3} T_{0i}$<br>
+${(F^g)^{iu}}_{,u} = \frac{4 \pi G}{c^3} T_{0i}$<br>
+so $\mu_g (J^g)^i = \frac{4 \pi G}{c^3} T_{0i}$<br>
+so $(J^g)^i = \frac{1}{c} T_{0i}$<br>
+<br>
+
+
+<br>
+
+Then the dual:<br>
+<br>
+
+$(\star F^g)^{ab} = \left[\begin{matrix}
+	0 & (B^g)_j \\
+	-(B^g)_i & -\frac{1}{c} {\epsilon_{ij}}^k (E^g)_k
+\end{matrix}\right]$<br>
+<br>
+
+Then ${(\star F^g)^{ab}}_{,b} = 0$ gives us...<br> 
+$(B^g)_{i,i} = 0$<br>
+$(B^g)_{i,t} + {\epsilon_i}^{jk} (E^g)_{k,j} = 0$<br>
+<br>
+
+If we wanted to rewrite the matter variables in terms of stress-energy (so we can consider stress-energy sources other than matter, such as electromagnetism ...):<br>
+${(E^g)^i}_{,i} = -4 \pi \frac{G}{c^2} T_{00} = -\frac{1}{c^2 \epsilon_g} T_{00}$<br>
+${(B^g)^i}_{,i} = 0$<br>
+$(B^g)_{i,t} + {\epsilon_i}^{jk} (E^g)_{k,j} = 0$<br>
+$(E^g)_{i,t} - c^2 {\epsilon_i}^{jk} (B^g)_{k,j} = c^2 \mu_g (J^g)^i = \frac{1}{c \epsilon_g} T_{0i} $<br>
+<br>
+
+Rewrite this in terms of $D^g = \epsilon_g E^g$ which has units $[ \frac{kg}{m^2} ]$<br>
+${(D^g)^i}_{,i} = -\frac{1}{c^2} T_{00}$<br>
+${(B^g)^i}_{,i} = 0$<br>
+$(B^g)_{i,t} + (\epsilon_g)^{-1} {\epsilon_i}^{jk} (D^g)_{k,j} = 0$<br>
+$(D^g)_{i,t} - (\mu_g)^{-1} {\epsilon_i}^{jk} (B^g)_{k,j} = \frac{1}{c} T_{0i} $<br>
+<br>
+
+As a linear system:<br>
+$\partial_t \left[ \begin{matrix}
+	(D^g)_i \\
+	(B^g)_i
+\end{matrix} \right] + \left[ \begin{matrix}
+	0 & -\frac{1}{\mu_g} {\epsilon_i}^{jk} \\
+	\frac{1}{\epsilon_g} {\epsilon_i}^{jk} & 0
+\end{matrix} \right] \partial_j \left[ \begin{matrix}
+	(D^g)_k \\
+	(B^g)_k
+\end{matrix} \right] = \left[ \begin{matrix}
+	\frac{1}{c} T_{0i} \\ 
+	0
+\end{matrix} \right]$<br>
+<br>
+
+Another thing to keep an eye on is the fact that, in order to solve the Poisson equation, we assume $\partial_t^2 h_{ab} = 0$<br>
+I guess we are technically just approximating it to be incredibly low.<br>
+<br>
+
+	</body>
+</html>

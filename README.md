@@ -98,10 +98,6 @@ Here's the CDN URLs:
 
 [GR EM Metrics/flat space gravitomagnetics](https://thenumbernine.github.io/math/GR%20EM%20Metrics/flat%20space%20gravitomagnetics.html)
 
-[GR EM Metrics/gravitomagnetics 2](https://thenumbernine.github.io/math/GR%20EM%20Metrics/gravitomagnetics%202.html)
-
-[GR EM Metrics/gravitomagnetics](https://thenumbernine.github.io/math/GR%20EM%20Metrics/gravitomagnetics.html)
-
 [GR EM Metrics/metric of curved space and EM potential](https://thenumbernine.github.io/math/GR%20EM%20Metrics/metric%20of%20curved%20space%20and%20EM%20potential.html)
 
 [GR EM Metrics/metric of flat space and EM potential](https://thenumbernine.github.io/math/GR%20EM%20Metrics/metric%20of%20flat%20space%20and%20EM%20potential.html)
@@ -184,11 +180,27 @@ Here's the CDN URLs:
 
 [Tetration Derivative](https://thenumbernine.github.io/math/Tetration%20Derivative.html)
 
+[Two-Fluid Plasma and GEM/0 - following Tajmar and De Matos paper](https://thenumbernine.github.io/math/Two%2dFluid%20Plasma%20and%20GEM/0%20%2d%20following%20Tajmar%20and%20De%20Matos%20paper.html)
+
+[Two-Fluid Plasma and GEM/1 - GEM](https://thenumbernine.github.io/math/Two%2dFluid%20Plasma%20and%20GEM/1%20%2d%20GEM.html)
+
+[Two-Fluid Plasma and GEM/2 - GEM Maxwell equations](https://thenumbernine.github.io/math/Two%2dFluid%20Plasma%20and%20GEM/2%20%2d%20GEM%20Maxwell%20equations.html)
+
+[Two-Fluid Plasma and GEM/3 - connections and GEM acceleration](https://thenumbernine.github.io/math/Two%2dFluid%20Plasma%20and%20GEM/3%20%2d%20connections%20and%20GEM%20acceleration.html)
+
+[Two-Fluid Plasma and GEM/4 - stress-energy from EM](https://thenumbernine.github.io/math/Two%2dFluid%20Plasma%20and%20GEM/4%20%2d%20stress%2denergy%20from%20EM.html)
+
+[Two-Fluid Plasma and GEM/5 - stress-energy from matter](https://thenumbernine.github.io/math/Two%2dFluid%20Plasma%20and%20GEM/5%20%2d%20stress%2denergy%20from%20matter.html)
+
+[Two-Fluid Plasma and GEM/6 - two-fluid plasma model](https://thenumbernine.github.io/math/Two%2dFluid%20Plasma%20and%20GEM/6%20%2d%20two%2dfluid%20plasma%20model.html)
+
 [a note on the definition of tensors](https://thenumbernine.github.io/math/a%20note%20on%20the%20definition%20of%20tensors.html)
 
 [conformal Levi-Civita geodesic](https://thenumbernine.github.io/math/conformal%20Levi%2dCivita%20geodesic.html)
 
 [heat to wave](https://thenumbernine.github.io/math/heat%20to%20wave.html)
+
+[hyperbolic rotations](https://thenumbernine.github.io/math/hyperbolic%20rotations.html)
 
 [magnetic field from a boosted charge](https://thenumbernine.github.io/math/magnetic%20field%20from%20a%20boosted%20charge.html)
 

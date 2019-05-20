@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type='text/javascript' src='../tryToFindMathJax.js'></script>
+		<title>stress-energy from EM</title>
+	</head>
+	<body>
+
+Now, taking from my "relativistic electromagnetic metric in medium" worksheet...<br>
+from the section "special relativity electromagnetic stress-energy in medium":<br>
+<br>
+
+$T^{(uv)} = \downarrow u(i) \overset{\rightarrow v(j)}{\left[\begin{matrix}
+	\frac{1}{2} (\frac{1}{\epsilon} D^2 + \frac{1}{\mu} B^2) &
+	\frac{1}{2} \frac{1}{c} (n^2 + 1) S_j \\
+	\frac{1}{2} \frac{1}{c} (n^2 + 1) S_i &
+	\frac{1}{2} \eta^{ij} (\frac{1}{\epsilon} D^2 + \frac{1}{\mu} B^2) - \frac{1}{\epsilon} D^i D^j - \frac{1}{\mu} B^i B^j
+\end{matrix}\right]}$<br>
+
+$T^{uv}$ has units $\frac{kg}{m s^2}$<br>
+<br>
+
+For electromagnetism, $T_{00}$ and $T_{0i}$ are given by:<br>
+$T_{00} = \frac{1}{2} ((\epsilon)^{-1} D^2 + (\mu)^{-1} B^2)$<br>
+$T_{0i} = -c^2 (\frac{v_p}{c})^2 \epsilon_{jkl} D_k B_l$<br>
+$T_{i0} = -c^2 \epsilon_{ikl} D_k B_l$<br>
+What do we do about the asymmetry?  That brings on a whole other level of complexity.<br>
+In fact, if we are using the de Donder gauge then we are stuck with<br>
+$-\frac{1}{2} \Box \bar{h}_{ab} = G_{ab}$<br>
+aka<br>
+$-\frac{1}{2} \Box (h^{TR})_{ab} = (R^{TR})_{ab}$<br>
+With 'TR' meaning 'trace-reversal'.<br>
+This means that any asymmetry in the Ricci curvature will also have to show up in the metric (right?  or will the $\Box$ get rid of it?  I can't see how...).<br>
+It does make me think I do, in fact, need to use a symmetrizing mechanism.  Options?<br>
+There's the simple $T'_{ab} := T_{(ab)}$.<br>
+There's the Belinfante and Rosenfeld symmetrization: $T'^{ab} = T^{ab} + \frac{1}{2} (s^{bac} + s^{bca} + s^{acb})_{,c}$<br>
+But this means also introducing our torsion term $s_{abc}$ which should be coupled to our particle spins... $2 T^{[ab]} = {s^{abc}}_{,c}$<br>
+<br>
+
+if we simply symmetrize we get:<br>
+$T_{0i} = -\frac{1}{2} \frac{1}{c} (n^2 + 1) S_i$<br>
+For, $\vec{D} \times \vec{B} = \epsilon \vec{E} \times \mu \vec{H} = \frac{1}{(v_p)^2} \vec{S} = \frac{1}{c^2} n^2 \vec{S}$, for $\vec{S}$ the Poynting vector.<br>
+<br>
+
+
+
+	</body>
+</html>

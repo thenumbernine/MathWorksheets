@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type='text/javascript' src='../tryToFindMathJax.js'></script>
+		<title>connections</title>
+	</head>
+	<body>
+
+What's the connection coefficients, and therefore the gravity, that this would subject something to...<br>
+$\Gamma_{abc} = \frac{1}{2} (g_{ab,c} + g_{ac,b} - g_{bc,a})$<br>
+$\Gamma_{abc} = \frac{1}{2} (h_{ab,c} + h_{ac,b} - h_{bc,a})$<br>
+${\Gamma^a}_{bc} = \frac{1}{2} ({h^a}_{b,c} + {h^a}_{c,b} - {h_{bc}}^{,a})$<br>
+<br>
+
+${\Gamma^i}_{00} = {h^i}_{0,0} - \frac{1}{2} {h_{00}}^{,i}$<br>
+${\Gamma^i}_{j0} = \frac{1}{2} ({h^i}_{j,0} + {h^i}_{0,j} - {h_{j0}}^{,i})$<br>
+${\Gamma^i}_{jk} = \frac{1}{2} ({h^i}_{j,k} + {h^i}_{k,j} - {h_{jk}}^{,i})$<br>
+<br>
+
+Geodesics:<br>
+$\dot{u}^i = -{\Gamma^i}_{ab} u^a u^b$<br>
+$\dot{u}^i = -{\Gamma^i}_{00} (u^0)^2 - 2 {\Gamma^i}_{0j} u^0 u^j - {\Gamma^i}_{jk} u^j u^k$<br>
+$\dot{u}^i = 
+	- ({h^i}_{0,0} - \frac{1}{2} {h_{00}}^{,i}) (u^0)^2
+	- ({h^i}_{0,j} + {h^i}_{j,0} - {h_{0j}}^{,i}) u^j u^0
+	- \frac{1}{2} ({h^i}_{j,k} + {h^i}_{k,j} - {h_{jk}}^{,i}) u^j u^k$<br>
+...using $(u^i)^2 \approx 0$, $u^0 \approx 1$, lower using $\eta_{ab}$<br>
+$\dot{u}^i = 
+	- h_{i0,0} + \frac{1}{2} h_{00,i}
+	+ (-h_{i0,j} - h_{ij,0} + h_{0j,i}) u^j$<br>
+$\dot{u}^i = 
+	4 \frac{1}{c} (A^g)_{i,0} 
+	+ \frac{1}{c^2} (\Phi^g)_{,i}
+	+ (
+		4 \frac{1}{c} (A^g)_{i,j} 
+		- 2 \frac{1}{c^2} \delta_{ij} (\Phi^g)_{,0} 
+		- 4 \frac{1}{c} (A^g)_{j,i}
+	) u^j
+$<br>
+
+$c \dot{u}^i = 
+	5 (A^g)_{i,0} 
+	+ (E^g)_{i} 
+	+ 4 \epsilon^{ijk} u^j (B^g)_k
+	- 2 \frac{1}{c} (\Phi^g)_{,0} u_i
+$<br>
+$\dot{v}^i = 
+	5 (A^g)_{i,0} 
+	+ (E^g)_{i} 
+	+ 4 \epsilon^{ijk} u^j (B^g)_k
+	- 2 \frac{1}{c^2} (\Phi^g)_{,0} v_i
+$<br>
+...let $5 (A^g)_{i,0} - 2 \frac{1}{c^2} (\Phi^g)_{,0} v_i \approx 0$...<br>
+$\dot{v}^i = (E^g)_{i} + 4 \frac{1}{c} \epsilon^{ijk} v^j (B^g)_k$<br>
+<br>
+
+	</body>
+</html>

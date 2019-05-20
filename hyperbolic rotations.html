@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<title>hyperbolic rotations</title>
+	</head>
+	<body>
+
+<b>rotations in the complex plane / trigonometry</b><br>
+definition of exponential function:<br>
+<br>
+
+exponential of imaginary value:<br>
+$exp(i \theta) = \Sigma_{m=0}^\infty \frac{(i \theta)^m}{m!}$<br>
+$= \Sigma_{m=0}^\infty (-1)^m \frac{\theta^(2 m)}{(2 m)!}
+	+ \Sigma_{m=0}^\infty (-1)^m \frac{(\theta)^(2 m + 1)}{(2 m + 1)!} $<br>
+$= cos(\theta) + i sin(\theta)$<br>
+This is called Moore's law, or DeMoore's law, or something like that.<br>
+<br>
+
+Inverse of imaginary exponential map / rotation formula:<br>
+$exp(-i \theta) = cos(-\theta) + i sin(-\theta)$<br>
+$ = cos(\theta) - i sin(\theta)$<br>
+Therefore<br>
+$cos(\theta) = \frac{1}{2}( exp(i \theta) + exp(-i \theta))$<br>
+$sin(\theta) = \frac{1}{2 i}( exp(i \theta) - exp(-i \theta))$<br>
+<br>
+
+<hr>
+<br>
+
+<b>rotations in $\textbf{R}^n$</b><br>
+<br>
+
+Cartesian basis: $e_i$<br>
+inner product: $e_i \cdot e_j = \delta_{ij}$ for $\delta_{ij} =$ Kronecher delta.<br>
+<br>
+
+exponential map:<br>
+$exp(x) = \Sigma_{m=0}^\infty \frac{x^m}{m!}$<br>
+<br>
+
+2D rotation:<br>
+$\left[ \begin{matrix} x' \\ y' \end{matrix} \right] = \left[ \begin{matrix}
+	cos \theta & -sin \theta \\
+	sin \theta & cos \theta
+\end{matrix} \right] \left[ \begin{matrix}
+	x \\ y
+\end{matrix} \right]$<br>
+<br>
+
+3D (and higher?) rotations<br>
+rotation around an axis $\vec{n}$ by some angle $\theta$:<br>
+for unit vector $\vec{n} = n^i e_i$<br>
+for initial vector $\vec{x}$ and result vector $\vec{x}'$<br>
+$\vec{x}' = R(\vec{n}, \theta) \vec{x}$<br>
+<br>
+
+Let $\vec{\omega} = \omega^i e_i$<br>
+<br>
+
+Exponential map:<br>
+$exp( \epsilon_{ijk} \omega^k ) = \Sigma_{m=0}^\infty (\epsilon_{ijk} \omega^k)^m$<br>
+... TODO some work...<br>
+$ = \delta_{ij} cos(\theta) + n_i n_j (1 - cos(\theta)) + \epsilon_{ijk} n^k sin(\theta))$<br>
+(aka Rodrigues rotation formula)<br>
+<br>
+
+<hr>
+<b>hyperbolic trigonometry</b><br>
+<br>
+
+
+	</body>
+</html>
