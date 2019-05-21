@@ -34,29 +34,23 @@ $D = \epsilon E =$ displacement field, in $\frac{C}{m^2}$<br>
 $B =$ magnetic field, in $\frac{kg}{C \cdot s}$<br>
 $H = \frac{1}{\mu} D = $ magnetizing field, in $\frac{C}{s}$<br>
 <br>
-$\rho_{charge} = \epsilon \xi (\hat{\lambda}^2_d \hat{l}_r)^{-1} (r_{ion} \rho_{ion} + r_{elec} \rho_{elec}) =$ charge density, in $\frac{C}{m^3}$<br>
-$J = \epsilon ( \hat{\lambda}_d^2 \hat{l}_r )^{-1} (r_{ion} \rho_{ion} v_{ion}^j + r_{elec} \rho_{elec} v_{elec}^j) =$ charge current, in $\frac{C}{m \cdot s}$<br>
-<br>
-
-GLM variables:<br>
-$\phi =$ electric divergence potential, in $\frac{C}{m^2}$<br>
-$\xi =$ speed of propagation of electric divergence, in $\frac{m}{s}$<br>
-$\psi =$ magnetic divergence potential, in $\frac{kg}{C \cdot s}$<br>
-$\kappa =$ speed of propagation of magnetic divergence, in $\frac{m}{s}$<br>
+$\rho_{charge} = \epsilon (\hat{\lambda}^2_d \hat{l}_r)^{-1} (r_{ion} \rho_{ion} + r_{elec} \rho_{elec}) =$ charge density, in $\frac{C}{m^3}$<br>
+$J^i = \epsilon ( \hat{\lambda}_d^2 \hat{l}_r )^{-1} (r_{ion} \rho_{ion} v_{ion}^i + r_{elec} \rho_{elec} v_{elec}^i) =$ current density, in $\frac{C}{m \cdot s}$<br>
+(TODO why the extra Larmor / Debye variables?)<br>
 <br>
 
 GLM Maxwell equations:<br>
-$[\frac{C}{m^2 \cdot s}]: {D^j}_{,t} - \mu^{-1} \nabla_k \epsilon^{jkl} {B^l}_{,j} + \xi \phi_{,j} = -J$<br>
-$[\frac{kg}{C \cdot s^2}]: {B^j}_{,t} + \epsilon^{-1} \nabla_k \epsilon^{jkl} {D^l}_{,j} + \kappa \psi_{,j} = 0$<br>
-$[\frac{C}{m^2 \cdot s}]: \phi_{,t} + \xi \nabla_j D^j = c \rho_{charge}$ ... TODO I don't remember that 'c' being there, but how else would the units work out?<br>
-$[\frac{kg}{C \cdot s^2}]: \psi_{,t} + \kappa \nabla_j B^j = 0$<br>
+$[\frac{C}{m^2 \cdot s}]: D_{i,t} - \mu^{-1} \nabla_k {\epsilon_i}^{jk} B_{k,j} + \xi \phi_{,i} = -J_i$<br>
+$[\frac{kg}{C \cdot s^2}]: B_{i,t} + \epsilon^{-1} \nabla_k {\epsilon_i}^{jk} D_{k,j} + \kappa \psi_{,i} = 0$<br>
+$[\frac{C}{m^2 \cdot s}]: \phi_{,t} + \xi {D^j}_{,j} = \xi \rho_{charge}$<br>
+$[\frac{kg}{C \cdot s^2}]: \psi_{,t} + \kappa {B^j}_{,j} = 0$<br>
 <br>
 
 gravitoelectromagnetic equations:<br>
-${(D^g)^j}_{,t} - (\mu_g)^{-1} \nabla_k \epsilon^{jkl} {(B^g)^l}_{,j} + \xi (\phi^g)_{,j} = -\frac{1}{\hat{c}} T_{0i}$<br>
-${(B^g)^j}_{,t} + (\epsilon_g)^{-1} \nabla_k \epsilon^{jkl} {(D^g)^l}_{,j} + \kappa (\psi^g)_{,j} = 0$<br>
-$(\phi^g)_{,t} + \xi \nabla_j (D^g)^j = \epsilon_g \xi \frac{1}{\hat{c}} T_{00}$<br>
-$(\psi^g)_{,t} + \kappa \nabla_j (B^g)^j = 0$<br>
+$(D^g)_{i,t} - (\mu_g)^{-1} \nabla_k {\epsilon_i}^{jk} (B^g)_{k,j} + \xi (\phi^g)_{,i} = -\frac{1}{\hat{c}} T_{0i}$<br>
+$(B^g)_{i,t} + (\epsilon_g)^{-1} \nabla_k {\epsilon_i}^{jk} (D^g)_{k,j} + \kappa (\psi^g)_{,i} = 0$<br>
+$(\phi^g)_{,t} + \xi {(D^g)^j}_{,j} = \epsilon_g \xi \frac{1}{\hat{c}} T_{00}$<br>
+$(\psi^g)_{,t} + \kappa {(B^g)^j}_{,j} = 0$<br>
 <br>
 
 fluid properties (for $\alpha = \{ ion, elec\}$):<br>
@@ -69,7 +63,7 @@ $\mathcal{E}_{\alpha,kin} = \frac{1}{2} \rho_\alpha |v_\alpha|^2 = $ densitized 
 $\mathcal{E}_{\alpha,total} = \mathcal{E}_{\alpha,int} + \mathcal{E}_{\alpha,kin} = $ densitized total energy, in $\frac{kg}{m \cdot s^2}$<br>
 <br>
 
-$r_\alpha = \frac{q_\alpha}{m_\alpha}$ = charge/mass ratio<br>
+$r_\alpha = \frac{q_\alpha}{m_\alpha}$ = charge/mass ratio of the particle of the species<br>
 $m_\alpha = $ ion or electron mass, where in the simulation we set $m_{ion} = 1$<br>
 <br>
 

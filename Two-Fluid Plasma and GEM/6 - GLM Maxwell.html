@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type='text/javascript' src='../tryToFindMathJax.js'></script>
+		<script type='text/javascript' src='../template.js'/></script>
+		<title>two-fluid plasma model</title>
+	</head>
+	<body templated>
+
+electromagnetic properties:<br>
+$E =$ electric field, in $\frac{kg \cdot m}{C \cdot s^2}$<br>
+$D = \epsilon E =$ displacement field, in $\frac{C}{m^2}$<br>
+$B =$ magnetic field, in $\frac{kg}{C \cdot s}$<br>
+$H = \frac{1}{\mu} D = $ magnetizing field, in $\frac{C}{s}$<br>
+<br>
+$\rho =$ charge density, in $\frac{C}{m^3}$<br>
+$J =$ current density, in $\frac{C}{m \cdot s}$<br>
+<br>
+
+GLM variables:<br>
+$\phi =$ electric divergence, in $\frac{C}{m}$<br>
+$\xi =$ speed of propagation of electric divergence, in $\frac{m}{s}$<br>
+$\psi =$ magnetic divergence, in $\frac{kg \cdot m}{C \cdot s}$<br>
+$\kappa =$ speed of propagation of magnetic divergence, in $\frac{m}{s}$<br>
+<br>
+
+Maxwell equations, in vector notation:<br>
+$\partial_t D - \frac{1}{\mu} \nabla \times B = -J$<br>
+$\partial_t B + \frac{1}{\epsilon} \nabla \times D = 0$<br>
+<br>
+
+(following 2000 Munz):<br>
+$\partial_t \mathcal{D}(\Phi) - c^2 \Delta \Phi = 0$<br>
+continuity equation: $\partial_t \rho + \nabla \cdot J = 0$<br>
+$\partial_t \mathcal{D}(\Phi) - c^2 \Delta \Phi = \frac{1}{\epsilon_0} (\partial_t \rho + \nabla \cdot J)$<br>
+Let $\mathcal{D}(\Phi) = \frac{\Phi}{\xi^2}$<br>
+$\partial_t \frac{\Phi}{\xi^2} - c^2 \Delta \Phi = \frac{1}{\epsilon_0} (\partial_t \rho + \nabla \cdot J)$<br>
+$\partial_t \Phi - \xi^2 c^2 \Delta \Phi = \frac{\xi^2}{\epsilon_0} (\partial_t \rho + \nabla \cdot J)$<br>
+<br>
+
+combine this with $\partial_t \Phi + \xi c \frac{\partial \Phi}{\partial \zeta} = 0$, and $\frac{\partial \Phi}{\partial \zeta} = \vec{n} \cdot \nabla \Phi$<br>
+so $\partial_t \Phi + \xi c \vec{n} \cdot \nabla \Phi = 0$<br>
+<br>
+
+	</body>
+</html>
