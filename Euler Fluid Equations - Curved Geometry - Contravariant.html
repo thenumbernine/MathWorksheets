@@ -1,11 +1,11 @@
 <!doctype html>
 <html>
 	<head>
-        <meta charset="UTF-8">
+        <meta charset='utf-8'>
 		<script type='text/javascript' src='tryToFindMathJax.js'></script>
 		<title>Euler Fluid Equation - Curved Geometry - Contravariant</title>
 	</head>
-	<body onload='tryToFindMathJax();'>
+	<body>
 
 Riemannian geometry identity:<br>
 ${\Gamma^i}_{ki} = \frac{1}{2 g} g_{,k} = ln(\sqrt{g})_{,k}$<br>
@@ -15,19 +15,19 @@ $ = \frac{(\sqrt{g})_{,k}}{\sqrt{g}}$<br>
 <h3>Euler Fluid Equations</h3>
 
 variables:<br>
-$\rho =$ density<br>
-$v^i =$ velocity<br>
-$m^i = \rho v^i = $ momentum<br>
-$\gamma =$ heat capacity ratio<br>
+$\rho =$ density, in units of $\frac{kg}{m^3}$<br>
+$v^i =$ velocity, in units of $\frac{m}{s}$<br>
+$m^i = \rho v^i = $ momentum, in units of $\frac{kg}{m^2 \cdot s}$<br>
+$\gamma =$ heat capacity ratio, in units of $[1]$<br>
 $\tilde\gamma = \gamma - 1$<br>
-$P = \tilde\gamma \rho e_{int} = \tilde\gamma E_{int} = \tilde\gamma (E_{total} - E_{kin}) = $ pressure<br>
-$g_{ij} = $ metric tensor.<br>
+$P = \tilde\gamma \rho e_{int} = \tilde\gamma E_{int} = \tilde\gamma (E_{total} - E_{kin}) = $ pressure, in units of $\frac{kg}{m \cdot s^2}$<br>
+$g_{ij} = $ metric tensor, in units of $[1]$.<br>
 $v^2 = v^i g_{ij} v^j$<br>
-$E_{kin} = \frac{1}{2} \rho v^2$<br>
-$E_{int} = \frac{P}{\tilde\gamma}$<br>
-$E_{total} = E_{kin} + E_{int}$<br>
-$H_{total} = E_{total} + P = \frac{1}{2} \rho v^2 + \frac{\gamma}{\tilde\gamma} P$<br>
-$ = E_{total} + \tilde\gamma E_{total} + \tilde\gamma E_{kin} = \gamma E_{total} + \tilde\gamma E_{kin}$<br>
+$E_{kin} = \frac{1}{2} \rho v^2$, in units of $\frac{kg}{m \cdot s^2}$<br>
+$E_{int} = \frac{P}{\tilde\gamma}$, in units of $\frac{kg}{m \cdot s^2}$<br>
+$E_{total} = E_{kin} + E_{int}$, in units of $\frac{kg}{m \cdot s^2}$<br>
+$H_{total} = E_{total} + P = \frac{1}{2} \rho v^2 + \frac{\gamma}{\tilde\gamma} P$
+$ = E_{total} + \tilde\gamma E_{total} + \tilde\gamma E_{kin} = \gamma E_{total} + \tilde\gamma E_{kin}$, in units of $\frac{kg}{m \cdot s^2}$<br>
 <br>
 
 Let $IJK...$ spanning $\{ \rho, v^i, E_{total} \}$<br>
@@ -36,35 +36,39 @@ Let $IJK...$ spanning $\{ \rho, v^i, E_{total} \}$<br>
 Conservative and primitive variables:<br>
 <br>
 
-$W^I = \left[\matrix{ \rho \\ v^i \\ P }\right]$<br>
-$U^I = \left[\matrix{ \rho \\ \rho v^i \\ E_{total} }\right]$<br>
+$W^I = \left[\begin{matrix} \rho \\ v^i \\ P \end{matrix}\right]$ 
+in units of $\left[\begin{matrix} \frac{kg}{m^3} \\ \frac{m}{s} \\ \frac{kg}{m \cdot s^2} \end{matrix}\right]$<br>
+
+$U^I = \left[\begin{matrix} \rho \\ \rho v^i \\ E_{total} \end{matrix}\right]$ 
+in units of $\left[\begin{matrix} \frac{kg}{m^3} \\ \frac{kg}{m^2 \cdot s} \\ \frac{kg}{m \cdot s^2} \end{matrix}\right]$<br>
 <br>
 
 Flux:<br>
 $F^{Ij}$
-$ = \left[\matrix{ \rho v^j \\ \rho v^i v^j + g^{ij} P \\ v^j H_{total} }\right]$
-$ = \left[\matrix{ 
+$ = \left[\begin{matrix} \rho v^j \\ \rho v^i v^j + g^{ij} P \\ v^j H_{total} \end{matrix}\right]$
+$ = \left[\begin{matrix} 
 	m^j \\ 
 	\frac{1}{\rho} m^i m^j + g^{ij} \tilde\gamma (E_{total} - \frac{1}{2} \frac{1}{\rho} m^2) \\ 
 	\frac{1}{\rho} m^j (\gamma E_{total} - \tilde\gamma \frac{1}{2} \frac{1}{\rho} m^2)
-}\right]$<br>
+\end{matrix}\right]$
+in units of $\left[\begin{matrix} \frac{kg}{m^2 \cdot s} \\ \frac{kg}{m \cdot s^2} \\ \frac{kg}{s^3} \end{matrix}\right]$<br>
 <br>
 
 Flux partial derivative:<br>
 <br>
 
 ${F^{Ij}}_{,j}$<br>
-$= \left[\matrix{ 
+$= \left[\begin{matrix} 
 	m^j \\ 
 	\frac{1}{\rho} m^i m^j + g^{ij} \tilde\gamma (E_{total} - \frac{1}{\rho} \frac{1}{2} m^2) \\ 
 	\frac{1}{\rho} m^j (\gamma E_{total} - \tilde\gamma \frac{1}{\rho} \frac{1}{2} m^2)
-}\right]_{,j}$<br>
-$= \left[\matrix{ 
+\end{matrix}\right]_{,j}$<br>
+$= \left[\begin{matrix} 
 	(m^j)_{,j} \\ 
 	(\frac{1}{\rho} m^i m^j + g^{ij} \tilde\gamma (E_{total} - \frac{1}{\rho} \frac{1}{2} m^2))_{,j} \\ 
 	(\frac{1}{\rho} m^j (\gamma E_{total} - \tilde\gamma \frac{1}{\rho} \frac{1}{2} m^2))_{,j}
-}\right]$<br>
-$ = \left[\matrix{ 
+\end{matrix}\right]$<br>
+$ = \left[\begin{matrix} 
 	{m^j}_{,j} \\ 
 	
 	-\frac{1}{\rho^2} \rho_{,j} m^i m^j
@@ -86,8 +90,8 @@ $ = \left[\matrix{
 		- \tilde\gamma \frac{1}{\rho} {m^k}_{,j} m_k 
 		- \tilde\gamma \frac{1}{2} \frac{1}{\rho} m^k m^l g_{kl,j}
 	)
-}\right]$<br>
-$ = \left[\matrix{ 
+\end{matrix}\right]$<br>
+$ = \left[\begin{matrix} 
 	0 & \delta^j_k & 0 \\ 
 	
 	- \frac{1}{\rho^2} m^i m^j
@@ -113,24 +117,24 @@ $ = \left[\matrix{
 	&
 	\frac{1}{\rho} \gamma m^j
 
-}\right] \left[\matrix{
+\end{matrix}\right] \left[\begin{matrix}
 	\rho \\
 	m^k \\
 	E_{total}
-}\right]_{,j} + \left[\matrix{
+\end{matrix}\right]_{,j} + \left[\begin{matrix}
 	0 
 	\\
 	{g^{ij}}_{,j} P
 	- \frac{1}{2} \tilde\gamma \frac{1}{\rho} m^k m^l g_{kl,j} g^{ij} 
 	\\
 	- \frac{1}{2} \tilde\gamma \frac{1}{\rho^2} m^j m^k m^l g_{kl,j}
-}\right]$<br>
+\end{matrix}\right]$<br>
 <br>
 
 Flux covariant derivative:<br>
 
 ${F^{Ij}}_{;j}$<br>
-$ = \left[\matrix{ 
+$ = \left[\begin{matrix} 
 	{m^j}_{;j} \\ 
 	
 	-\frac{1}{\rho^2} \rho_{,j} m^i m^j
@@ -152,8 +156,8 @@ $ = \left[\matrix{
 		- \tilde\gamma \frac{1}{\rho} {m^k}_{;j} m_k 
 		- \tilde\gamma \frac{1}{2} \frac{1}{\rho} m^k m^l g_{kl;j}
 	)
-}\right]$<br>
-$ = \left[\matrix{ 
+\end{matrix}\right]$<br>
+$ = \left[\begin{matrix} 
 	{m^j}_{;j} \\ 
 	
 	-\frac{1}{\rho^2} \rho_{,j} m^i m^j
@@ -172,9 +176,9 @@ $ = \left[\matrix{
 		+ \tilde\gamma \frac{1}{2} \frac{1}{\rho^2} \rho_{,j} m^2
 		- \tilde\gamma \frac{1}{\rho} {m^k}_{;j} m_k 
 	)
-}\right]$<br>
+\end{matrix}\right]$<br>
 
-$= \left[\matrix{ 
+$= \left[\begin{matrix} 
 	{m^j}_{,j} + {\Gamma^j}_{kj} m^k \\ 
 	
 	-\frac{1}{\rho^2} \rho_{,j} m^i m^j
@@ -194,13 +198,13 @@ $= \left[\matrix{
 		- \tilde\gamma \frac{1}{\rho} m_k {m^k}_{,j}
 	)
 
-}\right]$<br>
+\end{matrix}\right]$<br>
 <br>
 
 Moving connections outside, and isolating the volume gradient times the conserved quantities:<br>
 <br>
 
-$= \left[\matrix{ 
+$= \left[\begin{matrix} 
 	{m^j}_{,j} \\ 
 	
 	- \frac{1}{\rho^2} m^i m^j \rho_{,j}
@@ -222,27 +226,27 @@ $= \left[\matrix{
 	
 	+ \frac{1}{\rho} m^j \gamma E_{total,j} 
 
-}\right]
-+ \left[\matrix{
+\end{matrix}\right]
++ \left[\begin{matrix}
 	{\Gamma^j}_{kj} m^k \\
 	\frac{1}{\rho} m^i {\Gamma^j}_{kj} m^k
 	+ {\Gamma^j}_{kj} g^{ik} P
 	\\
 	\frac{1}{\rho} {\Gamma^j}_{kj} m^k H_{total}
-}\right]
-+ \left[\matrix{
+\end{matrix}\right]
++ \left[\begin{matrix}
 	0 \\
 	\frac{1}{\rho} {\Gamma^i}_{kj} m^k m^j
 	- {\Gamma^j}_{kj} g^{ik} P
 	\\
 	0
-}\right]$<br>
+\end{matrix}\right]$<br>
 <br>
 
 Introducing metric partials, to write the flux covariant derivative in terms of the flux partial derivative:<br>
 <br>
 
-$= \left[\matrix{ 
+$= \left[\begin{matrix} 
 	{m^j}_{,j} \\ 
 	
 	- \frac{1}{\rho^2} m^i m^j \rho_{,j}
@@ -268,15 +272,15 @@ $= \left[\matrix{
 
 	- \frac{1}{\rho} m^j \tilde\gamma \frac{1}{2} \frac{1}{\rho} m^k m^l g_{kl,j}
 
-}\right]
-+ \left[\matrix{
+\end{matrix}\right]
++ \left[\begin{matrix}
 	{\Gamma^j}_{kj} m^k \\
 	\frac{1}{\rho} m^i {\Gamma^j}_{kj} m^k
 	+ {\Gamma^j}_{kj} g^{ik} P
 	\\
 	\frac{1}{\rho} {\Gamma^j}_{kj} m^k H_{total}
-}\right]
-+ \left[\matrix{
+\end{matrix}\right]
++ \left[\begin{matrix}
 	0 \\
 	\frac{1}{\rho} {\Gamma^i}_{kj} m^k m^j
 	- {\Gamma^j}_{kj} g^{ik} P
@@ -284,29 +288,29 @@ $= \left[\matrix{
 	+ \tilde\gamma \frac{1}{2} \frac{1}{\rho} m^k m^l g_{kl,j} g^{ij}
 	\\
 	\frac{1}{\rho} m^j \tilde\gamma \frac{1}{2} \frac{1}{\rho} m^k m^l g_{kl,j}
-}\right]$<br>
+\end{matrix}\right]$<br>
 <br>
 
-$= \frac{\sqrt{g}}{\sqrt{g}} {F^{Ij}}_{,j} + \frac{\sqrt{g}_{,j}}{\sqrt{g}} F^{Ij} + \left[\matrix{
+$= \frac{\sqrt{g}}{\sqrt{g}} {F^{Ij}}_{,j} + \frac{\sqrt{g}_{,j}}{\sqrt{g}} F^{Ij} + \left[\begin{matrix}
 	0 \\
 	\frac{1}{\rho} {\Gamma^i}_{kj} m^k m^j
 	- {\Gamma^j}_{kj} g^{ik} P
 	- {g^{ij}}_{,j} P
 	\\
 	0
-}\right]$<br>
+\end{matrix}\right]$<br>
 
 $= \frac{1}{\sqrt{g}} \left( 
 	\sqrt{g} F^{Ij}
 \right)_{,j}
 
-+ \left[\matrix{
++ \left[\begin{matrix}
 	0 \\
 	{\Gamma^i}_{jk} \frac{1}{\rho} m^k m^j
 	- {\Gamma^j}_{kj} g^{ik} P 
 	\\
 	0 
-}\right]$<br>
+\end{matrix}\right]$<br>
 
 <br>
 
@@ -319,13 +323,13 @@ ${U^I}_{,t} + \frac{1}{\sqrt{g}} \left(
 	\sqrt{g} F^{Ij}
 \right)_{,j}
 
-= \left[\matrix{
+= \left[\begin{matrix}
 	0 \\
 	-\frac{1}{\rho} {\Gamma^i}_{jk}  m^k m^j
 	+ {\Gamma^j}_{kj} g^{ik} P 
 	\\
 	0
-}\right]$<br>
+\end{matrix}\right]$<br>
 <br>
 
 Maxima has a much harder time calculating the eigenvalues/vectors with those $\delta^{ij}$'s replaced with $g^{ij}$'s.<br>
@@ -334,50 +338,50 @@ TODO redo this.<br>
 <br>
 
 $\frac{\partial W^N}{\partial U^I} \cdot \frac{\partial F^{Ij}}{\partial W^M}$
-$= \downarrow N \overset{\rightarrow I}{\left[\matrix{
+$= \downarrow N \overset{\rightarrow I}{\left[\begin{matrix}
 	1 & 0 & 0 \\
 	-v^n / \rho & \delta^n_i / \rho & 0 \\
 	\frac{1}{2} \tilde\gamma v^2 & -\tilde\gamma v_i & \tilde\gamma
-}\right]} \cdot \downarrow I \overset{\rightarrow M}{\left[\matrix{
+\end{matrix}\right]} \cdot \downarrow I \overset{\rightarrow M}{\left[\begin{matrix}
 	v^j & \rho \delta^j_m & 0 \\
 	v^i v^j & \rho (v^j \delta^i_m + v^i \delta^j_m) & g^{ij} \\
 	\frac{1}{2} v^j v^2 & \delta^j_m H_{total} + \rho v^j v_m & \frac{\gamma}{\tilde{\gamma}} v^j
-}\right]}$
-$= \downarrow N \overset{\rightarrow M}{\left[\matrix{
+\end{matrix}\right]}$
+$= \downarrow N \overset{\rightarrow M}{\left[\begin{matrix}
 	v^j & \rho \delta^j_m & 0 \\
 	0 & v^j \delta^n_m & g^{jn} / \rho \\
 	0 & \delta^j_m \gamma P & v^j
-}\right]}$
+\end{matrix}\right]}$
 $= {A^{jN}}_M + v^j \delta^N_M$<br>
 <br>
 ...for acoustic tensor:<br>
-${A^{jN}}_M = \downarrow N \overset{\rightarrow M}{\left[\matrix{
+${A^{jN}}_M = \downarrow N \overset{\rightarrow M}{\left[\begin{matrix}
 	0 & \rho \delta^j_m & 0 \\
 	0 & 0 & g^{jn} / \rho \\
 	0 & \delta^j_m \gamma P & 0
-}\right]}$<br>
+\end{matrix}\right]}$<br>
 <br>
 
 Acoustic tensor eigen-decomposition:<br> 
 
-${(\Lambda_{A^j})^I}_K = \downarrow I \overset{\rightarrow K}{ \left[\matrix{
+${(\Lambda_{A^j})^I}_K = \downarrow I \overset{\rightarrow K}{ \left[\begin{matrix}
 	-c_s \sqrt{g^{jj}} & 0 & 0 \\
 	0 & 0 & 0 \\
 	0 & 0 & c_s \sqrt{g^{jj}}
-}\right]}$<br>
+\end{matrix}\right]}$<br>
 <br>
 
-${(V^R_{A^j})^I}_K = \downarrow I \overset{\rightarrow K}{ \left[\matrix{
+${(V^R_{A^j})^I}_K = \downarrow I \overset{\rightarrow K}{ \left[\begin{matrix}
 	1 & \delta^j_k & 1 \\
 	-\frac{c_s g^{ij}}{\rho \sqrt{g^{jj}}} & \frac{1}{\rho} (\delta^i_k - \delta^{ij} \delta_{jk}) & \frac{c_s g^{ij}}{\rho \sqrt{g^{jj}}} \\
 	(c_s)^2 & 0 & (c_s)^2
-}\right]}$<br>
+\end{matrix}\right]}$<br>
 
-${(V^L_{A^j} )^I}_K = \downarrow I \overset{\rightarrow K}{ \left[\matrix{
+${(V^L_{A^j} )^I}_K = \downarrow I \overset{\rightarrow K}{ \left[\begin{matrix}
 	0 & - \frac{\rho \delta^j_k}{2 c_s \sqrt{g^{jj}}} & \frac{1}{2 (c_s)^2} \\
 	\delta^{ij} & \rho (\delta^i_k - \delta^j_k \frac{g^{ij}}{g^{jj}}) & -\frac{\delta^{ij}}{(c_s)^2} \\
 	0 & \frac{\rho \delta^j_k}{2 c_s \sqrt{g^{jj}}} & \frac{1}{2 (c_s)^2}
-}\right]}$<br>
+\end{matrix}\right]}$<br>
 <br>
 
 
@@ -386,73 +390,73 @@ I'll just write them out completely:<br>
 <br>
 eigenvalues, right eigenvectors, left eigenvectors:<br>
 
-$\Lambda_{A^x} = \left[\matrix{
+$\Lambda_{A^x} = \left[\begin{matrix}
 	-c_s \sqrt{g^{xx}} & 0 & 0 & 0 & 0 \\
 	0 & 0 & 0 & 0 & 0 \\
 	0 & 0 & 0 & 0 & 0 \\
 	0 & 0 & 0 & 0 & 0 \\
 	0 & 0 & 0 & 0 & c_s \sqrt{g^{xx}} 
-}\right]$, 
-$V^R_{A^x} = \left[\matrix{
+\end{matrix}\right]$, 
+$V^R_{A^x} = \left[\begin{matrix}
 	1 & 1 & 0 & 0 & 1 \\
 	-\frac{c_s \sqrt{g^{xx}}}{\rho} & 0 & 0 & 0 & \frac{c_s \sqrt{g^{xx}}}{\rho} \\
 	-\frac{c_s g^{xy}}{\rho \sqrt{g^{xx}}} & 0 & \frac{1}{\rho} & 0 & \frac{c_s g^{xy}}{\rho \sqrt{g^{xx}}} \\
 	-\frac{c_s g^{xz}}{\rho \sqrt{g^{xx}}} & 0 & 0 & \frac{1}{\rho} & \frac{c_s g^{xz}}{\rho \sqrt{g^{xx}}} \\
 	(c_s)^2 & 0 & 0 & 0 & (c_s)^2 
-}\right]$
-$V^L_{A^x} = \left[\matrix{
+\end{matrix}\right]$
+$V^L_{A^x} = \left[\begin{matrix}
 	0 & -\frac{\rho}{2 c_s \sqrt{g^{xx}}} & 0 & 0 & \frac{1}{2 (c_s)^2} \\
 	1 & 0 & 0 & 0 & -\frac{1}{(c_s)^2} \\
 	0 & -\rho \frac{g^{xy}}{g^{xx}} & \rho & 0 & 0 \\
 	0 & -\rho \frac{g^{xz}}{g^{xx}} & 0 & \rho & 0 \\
 	0 & \frac{\rho}{2 c_s \sqrt{g^{xx}}} & 0 & 0 & \frac{1}{2 (c_s)^2}
-}\right]$
+\end{matrix}\right]$
 <br>
 
-$\Lambda_{A^y} = \left[\matrix{
+$\Lambda_{A^y} = \left[\begin{matrix}
 	-c_s \sqrt{g^{yy}} & 0 & 0 & 0 & 0 \\
 	0 & 0 & 0 & 0 & 0 \\
 	0 & 0 & 0 & 0 & 0 \\
 	0 & 0 & 0 & 0 & 0 \\
 	0 & 0 & 0 & 0 & c_s \sqrt{g^{yy}} 
-}\right]$
-$V^R_{A^y} = \left[\matrix{
+\end{matrix}\right]$
+$V^R_{A^y} = \left[\begin{matrix}
 	1 & 0 & 1 & 0 & 1 \\
 	-\frac{c_s g^{yx}}{\rho \sqrt{g^{yy}}} & \frac{1}{\rho} & 0 & 0 & \frac{c_s g^{yx}}{\rho \sqrt{g^{yy}}} \\
 	-\frac{c_s \sqrt{g^{yy}}}{\rho} & 0 & 0 & 0 & \frac{c_s \sqrt{g^{yy}}}{\rho} \\
 	-\frac{c_s g^{yz}}{\rho \sqrt{g^{yy}}} & 0 & 0 & \frac{1}{\rho} & \frac{c_s g^{yz}}{\rho \sqrt{g^{yy}}} \\
 	(c_s)^2 & 0 & 0 & 0 & (c_s)^2 
-}\right]$
-$V^L_{A^y} = \left[\matrix{
+\end{matrix}\right]$
+$V^L_{A^y} = \left[\begin{matrix}
 	0 & 0 & -\frac{\rho}{2 c_s \sqrt{g^{yy}}} & 0 & \frac{1}{2 (c_s)^2} \\
 	0 & \rho & -\rho \frac{g^{yx}}{g^{yy}}  & 0 & 0 \\ 
 	1 & 0 & 0 & 0 & -\frac{1}{(c_s)^2} \\
 	0 & 0 & -\rho \frac{g^{yz}}{g^{yy}} & \rho & 0 \\
 	0 & 0 & \frac{\rho}{2 c_s \sqrt{g^{yy}}} & 0 & \frac{1}{2 (c_s)^2}
-}\right]$
+\end{matrix}\right]$
 <br>
 
-$\Lambda_{A^z} = \left[\matrix{
+$\Lambda_{A^z} = \left[\begin{matrix}
 	-c_s \sqrt{g^{zz}} & 0 & 0 & 0 & 0 \\
 	0 & 0 & 0 & 0 & 0 \\
 	0 & 0 & 0 & 0 & 0 \\
 	0 & 0 & 0 & 0 & 0 \\
 	0 & 0 & 0 & 0 & c_s \sqrt{g^{zz}} 
-}\right]$
-$V^R_{A^z} = \left[\matrix{
+\end{matrix}\right]$
+$V^R_{A^z} = \left[\begin{matrix}
 	1 & 0 & 0 & 1 & 1 \\
 	-\frac{c_s g^{xz}}{\rho \sqrt{g^{zz}}} & \frac{1}{\rho} & 0 & 0 & \frac{c_s g^{xz}}{\rho \sqrt{g^{zz}}} \\
 	-\frac{c_s g^{yz}}{\rho \sqrt{g^{zz}}} & 0 & \frac{1}{\rho} & 0 & \frac{c_s g^{yz}}{\rho \sqrt{g^{zz}}} \\
 	-\frac{c_s \sqrt{g^{zz}}}{\rho} & 0 & 0 & 0 & \frac{c_s \sqrt{g^{zz}}}{\rho} \\
 	(c_s)^2 & 0 & 0 & 0 & (c_s)^2 
-}\right]$
-$V^L_{A^z} = \left[\matrix{
+\end{matrix}\right]$
+$V^L_{A^z} = \left[\begin{matrix}
 	0 & 0 & 0 & -\frac{\rho}{2 c_s \sqrt{g^{zz}}} & \frac{1}{2 (c_s)^2} \\
 	0 & \rho & 0 & -\rho \frac{g^{zx}}{g^{zz}} & 0 \\ 
 	0 & 0 & \rho & -\rho \frac{g^{zy}}{g^{zz}} & 0 \\
 	1 & 0 & 0 & 0 & -\frac{1}{(c_s)^2} \\
 	0 & 0 & 0 & \frac{\rho}{2 c_s \sqrt{g^{zz}}} & \frac{1}{2 (c_s)^2}
-}\right]$
+\end{matrix}\right]$
 <br>
 
 Now $\frac{\partial F^{jI}}{\partial U^J}$
@@ -461,28 +465,28 @@ $ = \frac{\partial U}{\partial W} \frac{\partial W}{\partial U} \frac{\partial F
 $ = \frac{\partial U}{\partial W} (A + v^j I) \frac{\partial W}{\partial U}$<br>
 <br>
 
-The eigenvalues of $F$ are $A + v^j I = \left[\matrix{
+The eigenvalues of $F$ are $A + v^j I = \left[\begin{matrix}
 	v^j - c_s \sqrt{g^{jj}} & 0 & 0 & 0 & 0 \\
 	0 & v^j & 0 & 0 & 0 \\
 	0 & 0 & v^j & 0 & 0 \\
 	0 & 0 & 0 & v^j & 0 \\
 	0 & 0 & 0 & 0 & v^j + c_s \sqrt{g^{jj}}
-}\right]$<br>
+\end{matrix}\right]$<br>
 <br>
 
 The right eigenvectors of $F^j$ are ${(V^R_{F^j})^I}_M = \frac{\partial U^I}{\partial W^K} \cdot {(V^R_{A^j})^K}_M$<br>
 <br>
 
-$= \downarrow I \overset{\rightarrow K}{\left[\matrix{
+$= \downarrow I \overset{\rightarrow K}{\left[\begin{matrix}
 	1 & 0 & 0 \\
 	v^i & \rho \delta^i_k & 0 \\
 	\frac{1}{2} v^2 & \rho v_k & 1/\tilde\gamma
-}\right]} \cdot \downarrow K \overset{\rightarrow M}{ \left[\matrix{
+\end{matrix}\right]} \cdot \downarrow K \overset{\rightarrow M}{ \left[\begin{matrix}
 	1 & \delta^j_m & 1 \\
 	-\frac{c_s g^{kj}}{\rho \sqrt{g^{jj}}} & \frac{1}{\rho} (\delta^k_m - \delta^{kj} \delta_{jm}) & \frac{c_s g^{kj}}{\rho \sqrt{g^{jj}}} \\
 	(c_s)^2 & 0 & (c_s)^2
-}\right]}$
-$ = \downarrow I \overset{\rightarrow M}{\left[\matrix{
+\end{matrix}\right]}$
+$ = \downarrow I \overset{\rightarrow M}{\left[\begin{matrix}
 	1 & \delta^j_m & 1 \\
 	v^i - c_s g^{ij} / \sqrt{g^{jj}} &
 		\delta^i_m + \delta^j_m (v^i  - \delta^{ij}) &
@@ -490,24 +494,24 @@ $ = \downarrow I \overset{\rightarrow M}{\left[\matrix{
 	h_{total} - v^j c_s / \sqrt{g^{jj}} &
 		\frac{1}{2} v^2 \delta^j_m + v_m (1 - \delta^j_m) &
 			h_{total} + v^j c_s / \sqrt{g^{jj}}
-}\right]}$<br>
+\end{matrix}\right]}$<br>
 <br>
 
 The left eigenvectors of $F^j$ are ${(V^L_{F^j})^I}_M = V^L_{A^j} \cdot \frac{\partial W}{\partial U}$<br>
 <br>
 
-$= \downarrow I \overset{\rightarrow K}{ \left[\matrix{
+$= \downarrow I \overset{\rightarrow K}{ \left[\begin{matrix}
 	0 & - \frac{\rho \delta^j_k}{2 c_s \sqrt{g^{jj}}} & \frac{1}{2 (c_s)^2} \\
 	\delta^{ij} & \rho (\delta^i_k - \delta^j_k \frac{g^{ij}}{g^{jj}}) & -\frac{\delta^{ij}}{(c_s)^2} \\
 	0 & \frac{\rho \delta^j_k}{2 c_s \sqrt{g^{jj}}} & \frac{1}{2 (c_s)^2}
-}\right]}
-\cdot \downarrow K \overset{\rightarrow M}{ \left[\matrix{
+\end{matrix}\right]}
+\cdot \downarrow K \overset{\rightarrow M}{ \left[\begin{matrix}
 	1 & 0 & 0 \\
 	-v^k / \rho & \delta^k_m / \rho & 0 \\
 	\frac{1}{2} \tilde\gamma v^2 & -\tilde\gamma v_m & \tilde\gamma
-}\right]}$<br>
+\end{matrix}\right]}$<br>
 
-$= \frac{1}{2 (c_s)^2} \cdot \downarrow I \overset{\rightarrow M}{ \left[\matrix{
+$= \frac{1}{2 (c_s)^2} \cdot \downarrow I \overset{\rightarrow M}{ \left[\begin{matrix}
 	\frac{1}{2} \tilde{\gamma} v^2 + c_s v^j / \sqrt{g^{jj}} &
 		-\delta^j_m c_s / \sqrt{g^{jj}} -\tilde{\gamma} v_m &
 			\tilde{\gamma} \\
@@ -517,7 +521,7 @@ $= \frac{1}{2 (c_s)^2} \cdot \downarrow I \overset{\rightarrow M}{ \left[\matrix
 	 \frac{1}{2} \tilde{\gamma} v^2 - c_s v^j / \sqrt{g^{jj}} &
 		\delta^j_m c_s / \sqrt{g^{jj}} - \tilde{\gamma} v_m &
 			\tilde{\gamma}
-}\right]}$<br>
+\end{matrix}\right]}$<br>
 
 <br>
 
@@ -526,81 +530,81 @@ That's really ugly so I will write it out completely as well<br>
 eigenvalues, right eigenvectors, left eigenvectors:<br>
 <br>
 
-$\Lambda_{F^x} = \left[\matrix{
+$\Lambda_{F^x} = \left[\begin{matrix}
 	v^x - c_s \sqrt{g^{xx}} & 0 & 0 & 0 & 0 \\
 	0 & v^x & 0 & 0 & 0 \\
 	0 & 0 & v^x & 0 & 0 \\
 	0 & 0 & 0 & v^x & 0 \\
 	0 & 0 & 0 & 0 & v^x + c_s \sqrt{g^{xx}}
-}\right]$
+\end{matrix}\right]$
 
-$V^R_{F^x} = \left[\matrix{
+$V^R_{F^x} = \left[\begin{matrix}
 	1 & 1 & 0 & 0 & 1\\
 	v^x- c_s \sqrt{g^{xx}} & v^x & 0 & 0 & v^x+ c_s \sqrt{g^{xx}}\\
 	v^y-\frac{ c_s g^{xy}}{\sqrt{g^{xx}}} & v^y & 1 & 0 & v^y+\frac{ c_s g^{xy}}{\sqrt{g^{xx}}}\\
 	v^z-\frac{ c_s g^{xz}}{\sqrt{g^{xx}}} & v^z & 0 & 1 & v^z+\frac{ c_s g^{xz}}{\sqrt{g^{xx}}}\\
 	h_{total}-\frac{ c_s v^x}{\sqrt{g^{xx}}} & \frac{v^2}{2} & v_y & v_z & \frac{ c_s v^x}{\sqrt{g^{xx}}}+h_{total}
-}\right]$	
+\end{matrix}\right]$	
 
-$V^L_{F^x} = \left[\matrix{
+$V^L_{F^x} = \left[\begin{matrix}
 	\frac{v^x}{2 c_s \sqrt{g^{xx}}}+\frac{\tilde{\gamma} v^2}{4{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_x}{2{{ c_s }^{2}}}-\frac{1}{2 c_s \sqrt{g^{xx}}} & -\frac{\tilde{\gamma} v_y}{2{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_z}{2{{ c_s }^{2}}} & \frac{\tilde{\gamma}}{2{{ c_s }^{2}}}\\
 	1-\frac{\tilde{\gamma} v^2}{2{{ c_s }^{2}}} & \frac{\tilde{\gamma} v_x}{{{ c_s }^{2}}} & \frac{\tilde{\gamma} v_y}{{{ c_s }^{2}}} & \frac{\tilde{\gamma} v_z}{{{ c_s }^{2}}} & -\frac{\tilde{\gamma}}{{{ c_s }^{2}}}\\
 	\frac{g^{xy} v^x}{g^{xx}}-v^y & -\frac{g^{xy}}{g^{xx}} & 1 & 0 & 0\\
 	\frac{g^{xz} v^x}{g^{xx}}-v^z & -\frac{g^{xz}}{g^{xx}} & 0 & 1 & 0\\
 	\frac{\tilde{\gamma} v^2}{4{{ c_s }^{2}}}-\frac{v^x}{2 c_s \sqrt{g^{xx}}} & -\frac{\tilde{\gamma} v_x}{2{{ c_s }^{2}}}+\frac{1}{2 c_s \sqrt{g^{xx}}} & -\frac{\tilde{\gamma} v_y}{2{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_z}{2{{ c_s }^{2}}} & \frac{\tilde{\gamma}}{2{{ c_s }^{2}}}
-}\right]$
+\end{matrix}\right]$
 
 <br>
 
-$\Lambda_{F^y} = \left[\matrix{
+$\Lambda_{F^y} = \left[\begin{matrix}
 	v^y - c_s \sqrt{g^{yy}} & 0 & 0 & 0 & 0 \\
 	0 & v^y & 0 & 0 & 0 \\
 	0 & 0 & v^y & 0 & 0 \\
 	0 & 0 & 0 & v^y & 0 \\
 	0 & 0 & 0 & 0 & v^y + c_s \sqrt{g^{yy}}
-}\right]$
+\end{matrix}\right]$
 
-$V^R_{F^y} = \left[\matrix{
+$V^R_{F^y} = \left[\begin{matrix}
 	1 & 0 & 1 & 0 & 1\\
 	v^x-\frac{ c_s g^{xy}}{\sqrt{g^{yy}}} & 1 & v^x & 0 & v^x+\frac{ c_s g^{xy}}{\sqrt{g^{yy}}}\\
 	v^y- c_s \sqrt{g^{yy}} & 0 & v^y & 0 & v^y+ c_s \sqrt{g^{yy}}\\
 	v^z-\frac{ c_s g^{yz}}{\sqrt{g^{yy}}} & 0 & v^z & 1 & v^z+\frac{ c_s g^{yz}}{\sqrt{g^{yy}}}\\
 	h_{total}-\frac{ c_s v^y}{\sqrt{g^{yy}}} & v_x & \frac{v^2}{2} & v_z & \frac{ c_s v^y}{\sqrt{g^{yy}}}+h_{total}
-}\right]$
+\end{matrix}\right]$
 
-$V^L_{F^y} = \left[\matrix{
+$V^L_{F^y} = \left[\begin{matrix}
 	\frac{v^y}{2 c_s \sqrt{g^{yy}}}+\frac{\tilde{\gamma} v^2}{4{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_x}{2{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_y}{2{{ c_s }^{2}}}-\frac{1}{2 c_s \sqrt{g^{yy}}} & -\frac{\tilde{\gamma} v_z}{2{{ c_s }^{2}}} & \frac{\tilde{\gamma}}{2{{ c_s }^{2}}}\\
 	\frac{g^{xy} v^y}{g^{yy}}-v^x & 1 & -\frac{g^{xy}}{g^{yy}} & 0 & 0\\
 	1-\frac{\tilde{\gamma} v^2}{2{{ c_s }^{2}}} & \frac{\tilde{\gamma} v_x}{{{ c_s }^{2}}} & \frac{\tilde{\gamma} v_y}{{{ c_s }^{2}}} & \frac{\tilde{\gamma} v_z}{{{ c_s }^{2}}} & -\frac{\tilde{\gamma}}{{{ c_s }^{2}}}\\
 	\frac{g^{yz} v^y}{g^{yy}}-v^z & 0 & -\frac{g^{yz}}{g^{yy}} & 1 & 0\\
 	\frac{\tilde{\gamma} v^2}{4{{ c_s }^{2}}}-\frac{v^y}{2 c_s \sqrt{g^{yy}}} & -\frac{\tilde{\gamma} v_x}{2{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_y}{2{{ c_s }^{2}}}+\frac{1}{2 c_s \sqrt{g^{yy}}} & -\frac{\tilde{\gamma} v_z}{2{{ c_s }^{2}}} & \frac{\tilde{\gamma}}{2{{ c_s }^{2}}}
-}\right]$
+\end{matrix}\right]$
 
 <br>
 
-$\Lambda_{F^z} = \left[\matrix{
+$\Lambda_{F^z} = \left[\begin{matrix}
 	v^z - c_s \sqrt{g^{zz}} & 0 & 0 & 0 & 0 \\
 	0 & v^z & 0 & 0 & 0 \\
 	0 & 0 & v^z & 0 & 0 \\
 	0 & 0 & 0 & v^z & 0 \\
 	0 & 0 & 0 & 0 & v^z + c_s \sqrt{g^{zz}}
-}\right]$
+\end{matrix}\right]$
 
-$V^R_{F^z} = \left[\matrix{
+$V^R_{F^z} = \left[\begin{matrix}
 	1 & 0 & 0 & 1 & 1\\
 	v^x-\frac{ c_s g^{xz}}{\sqrt{g^{zz}}} & 1 & 0 & v^x & v^x+\frac{ c_s g^{xz}}{\sqrt{g^{zz}}}\\
 	v^y-\frac{ c_s g^{yz}}{\sqrt{g^{zz}}} & 0 & 1 & v^y & v^y+\frac{ c_s g^{yz}}{\sqrt{g^{zz}}}\\
 	v^z- c_s \sqrt{g^{zz}} & 0 & 0 & v^z & v^z+ c_s \sqrt{g^{zz}}\\
 	h_{total}-\frac{ c_s v^z}{\sqrt{g^{zz}}} & v_x & v_y & \frac{v^2}{2} & \frac{ c_s v^z}{\sqrt{g^{zz}}}+h_{total}
-}\right]$
+\end{matrix}\right]$
 
-$V^L_{F^z} = \left[\matrix{
+$V^L_{F^z} = \left[\begin{matrix}
 	\frac{v^z}{2 c_s \sqrt{g^{zz}}}+\frac{\tilde{\gamma} v^2}{4{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_x}{2{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_y}{2{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_z}{2{{ c_s }^{2}}}-\frac{1}{2 c_s \sqrt{g^{zz}}} & \frac{\tilde{\gamma}}{2{{ c_s }^{2}}}\\
 	\frac{g^{xz} v^z}{g^{zz}}-v^x & 1 & 0 & -\frac{g^{xz}}{g^{zz}} & 0\\
 	\frac{g^{yz} v^z}{g^{zz}}-v^y & 0 & 1 & -\frac{g^{yz}}{g^{zz}} & 0\\
 	1-\frac{\tilde{\gamma} v^2}{2{{ c_s }^{2}}} & \frac{\tilde{\gamma} v_x}{{{ c_s }^{2}}} & \frac{\tilde{\gamma} v_y}{{{ c_s }^{2}}} & \frac{\tilde{\gamma} v_z}{{{ c_s }^{2}}} & -\frac{\tilde{\gamma}}{{{ c_s }^{2}}}\\
 	\frac{\tilde{\gamma} v^2}{4{{ c_s }^{2}}}-\frac{v^z}{2 c_s \sqrt{g^{zz}}} & -\frac{\tilde{\gamma} v_x}{2{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_y}{2{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_z}{2{{ c_s }^{2}}}+\frac{1}{2 c_s \sqrt{g^{zz}}} & \frac{\tilde{\gamma}}{2{{ c_s }^{2}}}
-}\right]$
+\end{matrix}\right]$
 
 <br>
 

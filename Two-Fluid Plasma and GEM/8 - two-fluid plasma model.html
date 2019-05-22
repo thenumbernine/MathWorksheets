@@ -34,9 +34,9 @@ $D^i = \epsilon E =$ displacement field, in $\frac{C}{m^2}$<br>
 $B^i =$ magnetic field, in $\frac{kg}{C \cdot s}$<br>
 $H^i = \frac{1}{\mu} B = $ magnetizing field, in $\frac{C}{m \cdot s}$<br>
 <br>
-$\rho_{charge} = \epsilon (\hat{\lambda}^2_d \hat{l}_r)^{-1} (r_{ion} \rho_{ion} + r_{elec} \rho_{elec}) =$ charge density, in $\frac{C}{m^3}$<br>
-$J^i = \epsilon ( \hat{\lambda}_d^2 \hat{l}_r )^{-1} (r_{ion} \rho_{ion} v_{ion}^i + r_{elec} \rho_{elec} v_{elec}^i) =$ current density, in $\frac{C}{m^2 \cdot s}$<br>
-(TODO why the extra Larmor / Debye variables?  Do the units of $\epsilon ( \hat{\lambda}_d^2 \hat{l}_r )^{-1}$ cancel?)<br>
+$\rho_{charge} = \epsilon (\hat{\lambda}^2_d \hat{r}_L)^{-1} (r_{ion} \rho_{ion} + r_{elec} \rho_{elec}) =$ charge density, in $\frac{C}{m^3}$<br>
+$J^i = \epsilon ( \hat{\lambda}_d^2 \hat{r}_L )^{-1} (r_{ion} \rho_{ion} v_{ion}^i + r_{elec} \rho_{elec} v_{elec}^i) =$ current density, in $\frac{C}{m^2 \cdot s}$<br>
+(TODO why the extra Larmor / Debye variables?  Do the units of $\epsilon ( \hat{\lambda}_d^2 \hat{r}_L )^{-1}$ cancel?)<br>
 <br>
 
 GLM variables:<br>
@@ -101,15 +101,27 @@ $r_\alpha = \frac{q_\alpha}{m_\alpha}$ = charge/mass ratio of the particle of th
 $m_\alpha = $ ion or electron mass, in $kg$.  In the simulation we set $m_{ion} = 1$. (TODO more on normalizing units.)<br>
 <br>
 
+$v_{th,\alpha} = $ reference thermal velocity, in units of $[\frac{m}{s}]$.<br>
+Defined in 2003 Loverich as $v_{th,\alpha} = \sqrt{\frac{2 P_\alpha}{\rho_\alpha}}$<br>
+No mention of it in 2014 Abgrall, Kumar ... is it set to a constant?  2014 Abgrall, Kumar do use it for normalizing speed of light, etc (whereas 2003 Loverich uses a separate $U_0$).
+If it isn't constant in 2014 Abgrall, Kumar, then neither would other constants (like the speed of light) be constant.<br>
+<br>
+
+Reference lengths:<br>
+$x_0 = $ reference length.<br>
+$v_0 = $ reference speed, in units of $[\frac{m}{s}]$.  2014 Abgrall, Kumar uses $v_{th,\alpha}$ in place of this.<br>
+$B_0 = $ reference magnetic field, in units of $[\frac{kg}{C \cdot s}]$.  This is not the 0'th component of B, the magnetic field (which has a value of zero).<br>
+<br>
+
 $W = $ Lorentz boost, in units of $[1]$.  2014 Abgrall, Kumar sets $W = 1$<br>
-$\epsilon = $ material permittivity, assumed to be $\epsilon_0$ in the 2014 Abgrall Kumar paper<br>
 <br>
 
-$m = \frac{m_{ion}}{m_{elec}}$ = ion/electron mass ratio, in $[1]$<br>	
+In the 2014 Abgrall Kumar paper the permittivity $\epsilon$ is assumed to be vacuum permittivity $\epsilon_0$.<br>
 <br>
 
-$v_{th,ion} = \sqrt{\frac{2 P_{ion}}{\rho_{ion}}} =$ reference thermal velocity (defined in 2003 Loverich), in units of $[\frac{m}{s}]$.<br>
-$B_0 = $ reference magnetic field, in units of $[\frac{kg}{C \cdot s}]$<br>
+$m = \frac{m_{ion}}{m_{elec}}$ = ion/electron mass ratio, in units of $[1]$<br>	
+<br>
+
 $\omega_L = \frac{q B}{m} =$ gyrofrequency, or Larmor frequency, in units of $[\frac{1}{s}]$.  (from <a href='https://en.wikipedia.org/wiki/Gyroradius'>https://en.wikipedia.org/wiki/Gyroradius</a>).<br>
 <br>
 Larmor radius:<br>
@@ -117,14 +129,16 @@ $r_L = \frac{W m_{ion} v_{th,ion}}{q_{ion} B_0} =$ ion Larmor radius, in units o
 $r_L = \frac{v_{th,ion} m c^2}{e |B|}$ according to this page: <a href='https://www.encyclopediaofmath.org/index.php/Larmor_radius'>https://www.encyclopediaofmath.org/index.php/Larmor_radius</a>.<br>
 $r_L = \frac{m v_\perp}{|q| B}$ according to wikipedia: <a href='https://en.wikipedia.org/wiki/Gyroradius'>https://en.wikipedia.org/wiki/Gyroradius</a><br>
 <br>
-$\hat{l}_r = \frac{r_L}{x_0} = \frac{W m_{ion} v_{th,ion}}{q_{ion} B_0 x_0} =$ normalized ion Larmor radius, in units of $[1]$<br>
+
+Normalized units:<br>
+<br>
+$\hat{r}_L = \frac{r_L}{x_0} = \frac{W m_{ion} v_{th,ion}}{q_{ion} B_0 x_0} =$ normalized ion Larmor radius, in units of $[1]$<br>
 $\hat{c} = \frac{c}{v_{th,ion}}$ = normalized speed of light, in units of $[1]$<br>
 $\hat{\lambda}_d = \frac{\lambda_d}{r_L} = \frac{1}{r_L} \sqrt{\frac{\epsilon (v_{th,ion})^2}{ n_0 q_{ion}}}$ = ion Debye length normalized with Larmor radius<br>
-$x_0 = $ reference length<br>
 <br>
 
 So, derived,<br>
-$L = \hat{\lambda}^2_d \hat{l}_r = \frac{\epsilon (v_{th,ion})^2 }{r_L x_0 n_0 q_{ion}}$<br>
+$L = \hat{\lambda}^2_d \hat{r}_L = \frac{\epsilon (v_{th,ion})^2 }{r_L x_0 n_0 q_{ion}}$<br>
 $= \frac{\epsilon B_0 v_{th,ion}}{W x_0 n_0 m_i}$<br>
 <br>
 
@@ -134,13 +148,13 @@ $[\frac{kg}{m^3 \cdot s}]: (\rho_{ion})_{,t} + \nabla_k (\rho_{ion} v_{ion}^k) =
 $[\frac{kg}{m^2 \cdot s^2}]: ( \rho_{ion} v_{ion}^j )_{,t} 
 	+ \nabla_k ( \rho_{ion} v_{ion}^j v_{ion}^k + P_{ion} g^{jk}) 
 	= \rho_{ion} (
-		(\hat{l}_r)^{-1} (E^j + \epsilon^{jkl} (v_{ion})_k B_l) 
+		(\hat{r}_L)^{-1} (E^j + \epsilon^{jkl} (v_{ion})_k B_l) 
 		+ ((E^g)^j + 4 \epsilon^{jkl} (v_{ion})_k (B^g)_l)
 	)$<br>
 $[\frac{kg}{m \cdot s^3}]: ( \mathcal{E}_{ion,total} )_{,t} 
 	+ \nabla_k (( E_{ion,total} + P_{ion}) v_{ion}^k) 
 	= \rho_{ion} v_{ion}^j (
-		(\hat{l}_r)^{-1} E_j
+		(\hat{r}_L)^{-1} E_j
 		+ (E^g)^j
 	)$<br>
 <br>
@@ -150,13 +164,13 @@ $[\frac{kg}{m^3 \cdot s}]: (\rho_{elec})_{,t} + \nabla_k (\rho_{elec} v_{elec}^k
 $[\frac{kg}{m^2 \cdot s^2}]: ( \rho_{elec} v_{elec}^j )_{,t} 
 	+ \nabla_k ( \rho_{elec} v_{elec}^j v_{elec}^k + P_{elec} g^{jk}) 
 	= \rho_{elec} (
-		(\hat{l}_r)^{-1} (E^j + \epsilon^{jkl} (v_{elec})_k B_l) 
+		(\hat{r}_L)^{-1} (E^j + \epsilon^{jkl} (v_{elec})_k B_l) 
 		+ ((E^g)^j + 4 \epsilon^{jkl} (v_{elec})_k (B^g)_l)
 	)$<br>
 $[\frac{kg}{m \cdot s^3}]: ( E_{elec,total} )_{,t} 
 	+ \nabla_k (( E_{elec,total} + P_{elec} ) v_{elec}^k ) 
 	= \rho_{elec} v_{elec}^j (
-		(\hat{l}_r)^{-1} E_j
+		(\hat{r}_L)^{-1} E_j
 		+ (E^g)^j
 	)$<br>
 <br>
