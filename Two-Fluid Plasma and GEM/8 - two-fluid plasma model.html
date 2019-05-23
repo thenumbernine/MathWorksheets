@@ -16,7 +16,8 @@ with some extras from Wikipedia<br>
 
 constants:<br>
 $c =$ <input name='speed_of_light_in_m_per_s' value='299792458'/> $\frac{m}{s} =$ speed of light.<br>
-$k_e = $<input name='Coulomb_constant_in_kg_m3_per_C2_s2' value='8.9875517873682e+9'/> $\cdot \frac{kg \cdot m^3}{C^2 \cdot s^2}$ = Coulomb's constant (typically $\frac{1}{4 \pi \epsilon_0}$).<br>
+$k_e = $<input name='Coulomb_constant_in_kg_m3_per_C2_s2' value='8.9875517873682e+9'/> $\cdot \frac{kg \cdot m^3}{C^2 \cdot s^2} =$ Coulomb's constant (typically $\frac{1}{4 \pi \epsilon_0}$).<br>
+$k_B = $<input name='Boltzmann_constant_in_kg_m2_per_K_s2' value='1.3806503e-23'/> $\cdot \frac{kg \cdot m^2}{K \cdot s^2} =$ Boltzmann's constant.<br>
 $\epsilon_0 = \frac{1}{4 \pi k_e} = $ {{vacuum_permittivity_in_C2_s2_per_kg_m3 = 1 / (4 * Math.PI * Coulomb_constant_in_kg_m3_per_C2_s2)}} $\cdot \frac{C^2 \cdot s^2}{kg \cdot m^3}$<br>
 $\mu_0 = \frac{1}{c^2 \cdot \epsilon_0} = $ {{vacuum_permeability_in_kg_m_per_C2 = 1 / (speed_of_light_in_m_per_s * speed_of_light_in_m_per_s * vacuum_permittivity_in_C2_s2_per_kg_m3)}} $\cdot \frac{kg \cdot m}{C^2} =$ vacuum permeability<br>
 such that $\frac{1}{\mu_0 \epsilon_0} = c^2 =$ {{speed_of_light_in_m_per_s * speed_of_light_in_m_per_s}} $\frac{m^2}{s^2}$<br>
@@ -29,14 +30,14 @@ $v_p = \frac{1}{\sqrt{\mu \epsilon} } =$ phase velocity through medium<br>
 <br>
 
 electromagnetic properties:<br>
-$E^i =$ electric field, in $\frac{kg \cdot m}{C \cdot s^2}$<br>
-$D^i = \epsilon E =$ displacement field, in $\frac{C}{m^2}$<br>
-$B^i =$ magnetic field, in $\frac{kg}{C \cdot s}$<br>
-$H^i = \frac{1}{\mu} B = $ magnetizing field, in $\frac{C}{m \cdot s}$<br>
+$E_i =$ electric field, in $\frac{kg \cdot m}{C \cdot s^2}$<br>
+$D_i = \epsilon E =$ displacement field, in $\frac{C}{m^2}$<br>
+$B_i =$ magnetic field, in $\frac{kg}{C \cdot s}$<br>
+$H_i = \frac{1}{\mu} B = $ magnetizing field, in $\frac{C}{m \cdot s}$<br>
 <br>
-$\rho_{charge} = \epsilon (\hat{\lambda}^2_d \hat{r}_L)^{-1} (r_{ion} \rho_{ion} + r_{elec} \rho_{elec}) =$ charge density, in $\frac{C}{m^3}$<br>
-$J^i = \epsilon ( \hat{\lambda}_d^2 \hat{r}_L )^{-1} (r_{ion} \rho_{ion} v_{ion}^i + r_{elec} \rho_{elec} v_{elec}^i) =$ current density, in $\frac{C}{m^2 \cdot s}$<br>
-(TODO why the extra Larmor / Debye variables?  Do the units of $\epsilon ( \hat{\lambda}_d^2 \hat{r}_L )^{-1}$ cancel?)<br>
+$\rho_{charge} = (\hat{\lambda}_D^2 \hat{r}_L)^{-1} (r_{ion} \rho_{ion} + r_{elec} \rho_{elec}) =$ charge density, in $\frac{C}{m^3}$<br>
+$J_i = ( \hat{\lambda}_D^2 \hat{r}_L )^{-1} (r_{ion} \rho_{ion} v_{ion}^i + r_{elec} \rho_{elec} v_{elec}^i) =$ current density, in $\frac{C}{m^2 \cdot s}$<br>
+(TODO why the extra Larmor / Debye variables?  Do the units of $( \hat{\lambda}_D^2 \hat{r}_L )^{-1}$ cancel?)<br>
 <br>
 
 GLM variables:<br>
@@ -47,10 +48,177 @@ $\kappa =$ speed of propagation of magnetic divergence, in $\frac{m}{s}$<br>
 <br>
 
 GLM Maxwell equations:<br>
-$[\frac{C}{m^2 \cdot s}]: D_{i,t} - \mu^{-1} {\epsilon_i}^{jk} B_{k,j} + \xi \phi_{,i} = -J_i$<br>
-$[\frac{kg}{C \cdot s^2}]: B_{i,t} + \epsilon^{-1} {\epsilon_i}^{jk} D_{k,j} + \kappa \psi_{,i} = 0$<br>
-$[\frac{C}{m^2 \cdot s}]: \phi_{,t} + \xi {D^j}_{,j} = \xi \rho_{charge}$<br>
-$[\frac{kg}{C \cdot s^2}]: \psi_{,t} + \kappa {B^j}_{,j} = 0$<br>
+$[\frac{C}{m^2 \cdot s}]: \partial_t D_i - \mu^{-1} {\epsilon_i}^{jk} \nabla_j B_k + \xi \nabla_i \phi = -J_i$<br>
+$[\frac{kg}{C \cdot s^2}]: \partial_t B_i + \epsilon^{-1} {\epsilon_i}^{jk} \nabla_j D_k + \kappa \nabla_i \psi = 0$<br>
+$[\frac{C}{m^2 \cdot s}]: \partial_t \phi + \xi \nabla_j D^j = \xi \rho_{charge}$<br>
+$[\frac{kg}{C \cdot s^2}]: \partial_t \psi + \kappa \nabla_j B^j = 0$<br>
+<br>
+
+As a linear system:<br>
+$\partial_t \left[\begin{matrix}
+	D_i \\ B_i \\ \phi \\ \psi
+\end{matrix}\right] = \left[\begin{matrix}
+	0 & -\frac{1}{\mu} {\epsilon_i}^{jk} & \xi & 0 \\
+	\frac{1}{\epsilon} {\epsilon_i}^{jk} & 0 & 0 & \kappa \\
+	\delta^{jk} \xi & 0 & 0 & 0 \\
+	0 & \delta^{jk} \kappa & 0 & 0
+\end{matrix}\right] \nabla_j \left[\begin{matrix}
+	D_k \\ B_k \\ \phi \\ \psi
+\end{matrix}\right] = \left[\begin{matrix}
+	-J_i \\ 0 \\ \xi \rho_{charge} \\ 0
+\end{matrix}\right]$<br>
+<br>
+
+Decomposed into individual matrices:<br>
+Let $U = \left[\begin{matrix}
+	D_i \\ B_i \\ \phi \\ \psi
+\end{matrix}\right],
+S = \left[\begin{matrix}
+	-J_i \\ 0 \\ \xi \rho_{charge} \\ 0
+\end{matrix}\right]$<br>
+<br>
+
+the system becomes:<br>
+$\partial_t U + A^j \nabla_j U = S$<br>
+<br>
+
+for flux jacobians:<br>
+$A^x = \left[\begin{matrix}
+0 & 0 & 0 & 0 & 0 & 0 & {\chi_\phi} & 0 \\
+0 & 0 & 0 & 0 & 0 & \frac{1}{\mu} & 0 & 0 \\
+0 & 0 & 0 & 0 & \frac{-1}{\mu} & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & {\chi_\psi} \\
+0 & 0 & \frac{-1}{\epsilon} & 0 & 0 & 0 & 0 & 0 \\
+0 & \frac{1}{\epsilon} & 0 & 0 & 0 & 0 & 0 & 0 \\
+{\chi_\phi} & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & {\chi_\psi} & 0 & 0 & 0 & 0
+\end{matrix}\right]$,
+$A^y = \left[\begin{matrix}
+0 & 0 & 0 & 0 & 0 & \frac{-1}{\mu} & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & {\chi_\phi} & 0 \\
+0 & 0 & 0 & \frac{1}{\mu} & 0 & 0 & 0 & 0 \\
+0 & 0 & \frac{1}{\epsilon} & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & {\chi_\psi} \\
+\frac{-1}{\epsilon} & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & {\chi_\phi} & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & {\chi_\psi} & 0 & 0 & 0
+\end{matrix}\right]$,
+$A^z = \left[\begin{matrix}
+0 & 0 & 0 & 0 & \frac{1}{\mu} & 0 & 0 & 0 \\
+0 & 0 & 0 & \frac{-1}{\mu} & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & {\chi_\phi} & 0 \\
+0 & \frac{-1}{\epsilon} & 0 & 0 & 0 & 0 & 0 & 0 \\
+\frac{1}{\epsilon} & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & {\chi_\psi} \\
+0 & 0 & {\chi_\phi} & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & {\chi_\psi} & 0 & 0
+\end{matrix}\right]$<br>
+<br>
+
+with flux jacobian eigensystems:<br>
+$A^x = 
+\left[\begin{matrix}
+-{\frac{1}{\sqrt{2} \sqrt{\epsilon}}} & 0 & 0 & 0 & 0 & 0 & \frac{1}{\sqrt{2} \sqrt{\epsilon}} & 0 \\
+0 & 0 & 0 & \frac{-{\sqrt{\epsilon}}}{\sqrt{2}} & 0 & \frac{\sqrt{\epsilon}}{\sqrt{2}} & 0 & 0 \\
+0 & 0 & \frac{\sqrt{\epsilon}}{\sqrt{2}} & 0 & \frac{-{\sqrt{\epsilon}}}{\sqrt{2}} & 0 & 0 & 0 \\
+0 & -{\frac{1}{\sqrt{2} \sqrt{\epsilon}}} & 0 & 0 & 0 & 0 & 0 & \frac{1}{\sqrt{2} \sqrt{\epsilon}} \\
+0 & 0 & \frac{\sqrt\mu}{\sqrt{2}} & 0 & \frac{\sqrt\mu}{\sqrt{2}} & 0 & 0 & 0 \\
+0 & 0 & 0 & \frac{\sqrt\mu}{\sqrt{2}} & 0 & \frac{\sqrt\mu}{\sqrt{2}} & 0 & 0 \\
+\frac{1}{\sqrt{2} \sqrt{\epsilon}} & 0 & 0 & 0 & 0 & 0 & \frac{1}{\sqrt{2} \sqrt{\epsilon}} & 0 \\
+0 & \frac{1}{\sqrt{2} \sqrt{\epsilon}} & 0 & 0 & 0 & 0 & 0 & \frac{1}{\sqrt{2} \sqrt{\epsilon}}
+\end{matrix}\right]
+\cdot
+\left[\begin{matrix}
+-\chi_\phi & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & -\chi_\psi & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & \frac{-1}{\sqrt{\mu \cdot \epsilon}} & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & \frac{-1}{\sqrt{\mu \cdot \epsilon}} & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & \frac{1}{\sqrt{\mu \cdot \epsilon}} & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & \frac{1}{\sqrt{\mu \cdot \epsilon}} & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & {\chi_\phi} & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & {\chi_\psi}
+\end{matrix}\right]
+\cdot
+\left[\begin{matrix}
+\frac{-{\sqrt{\epsilon}}}{\sqrt{2}} & 0 & 0 & 0 & 0 & 0 & \frac{\sqrt{\epsilon}}{\sqrt{2}} & 0 \\
+0 & 0 & 0 & \frac{-{\sqrt{\epsilon}}}{\sqrt{2}} & 0 & 0 & 0 & \frac{\sqrt{\epsilon}}{\sqrt{2}} \\
+0 & 0 & \frac{1}{\sqrt{2} \sqrt{\epsilon}} & 0 & \frac{1}{\sqrt{2} \sqrt{\mu}} & 0 & 0 & 0 \\
+0 & \frac{1}{-{\sqrt{2} \sqrt{\epsilon}}} & 0 & 0 & 0 & \frac{1}{\sqrt{2} \sqrt{\mu}} & 0 & 0 \\
+0 & 0 & -{\frac{1}{\sqrt{\epsilon} \sqrt{2}}} & 0 & \frac{1}{\sqrt{2} \sqrt{\mu}} & 0 & 0 & 0 \\
+0 & \frac{1}{\sqrt{\epsilon} \sqrt{2}} & 0 & 0 & 0 & \frac{1}{\sqrt{2} \sqrt{\mu}} & 0 & 0 \\
+\frac{\sqrt{\epsilon}}{\sqrt{2}} & 0 & 0 & 0 & 0 & 0 & \frac{\sqrt{\epsilon}}{\sqrt{2}} & 0 \\
+0 & 0 & 0 & \frac{\sqrt{\epsilon}}{\sqrt{2}} & 0 & 0 & 0 & \frac{\sqrt{\epsilon}}{\sqrt{2}}
+\end{matrix}\right]$<br>
+
+$A^y = 
+\left[\begin{matrix}
+0 & 0 & 0 & \frac{\sqrt{\epsilon}}{\sqrt{2}} & 0 & \frac{-{\sqrt{\epsilon}}}{\sqrt{2}} & 0 & 0 \\
+-{\frac{1}{\sqrt{2} \sqrt{\epsilon}}} & 0 & 0 & 0 & 0 & 0 & \frac{1}{\sqrt{2} \sqrt{\epsilon}} & 0 \\
+0 & 0 & \frac{-{\sqrt{\epsilon}}}{\sqrt{2}} & 0 & \frac{\sqrt{\epsilon}}{\sqrt{2}} & 0 & 0 & 0 \\
+0 & 0 & \frac{\sqrt\mu}{\sqrt{2}} & 0 & \frac{\sqrt\mu}{\sqrt{2}} & 0 & 0 & 0 \\
+0 & -{\frac{1}{\sqrt{2} \sqrt{\epsilon}}} & 0 & 0 & 0 & 0 & 0 & \frac{1}{\sqrt{2} \sqrt{\epsilon}} \\
+0 & 0 & 0 & \frac{\sqrt\mu}{\sqrt{2}} & 0 & \frac{\sqrt\mu}{\sqrt{2}} & 0 & 0 \\
+\frac{1}{\sqrt{2} \sqrt{\epsilon}} & 0 & 0 & 0 & 0 & 0 & \frac{1}{\sqrt{2} \sqrt{\epsilon}} & 0 \\
+0 & \frac{1}{\sqrt{2} \sqrt{\epsilon}} & 0 & 0 & 0 & 0 & 0 & \frac{1}{\sqrt{2} \sqrt{\epsilon}}
+\end{matrix}\right]
+\cdot
+\left[\begin{matrix}
+-\chi_\phi & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & -\chi_\psi & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & \frac{-1}{\sqrt{\mu \cdot \epsilon}} & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & \frac{-1}{\sqrt{\mu \cdot \epsilon}} & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & \frac{1}{\sqrt{\mu \cdot \epsilon}} & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & \frac{1}{\sqrt{\mu \cdot \epsilon}} & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & {\chi_\phi} & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & {\chi_\psi}
+\end{matrix}\right]
+\cdot
+\left[\begin{matrix}
+0 & \frac{-{\sqrt{\epsilon}}}{\sqrt{2}} & 0 & 0 & 0 & 0 & \frac{\sqrt{\epsilon}}{\sqrt{2}} & 0 \\
+0 & 0 & 0 & 0 & \frac{-{\sqrt{\epsilon}}}{\sqrt{2}} & 0 & 0 & \frac{\sqrt{\epsilon}}{\sqrt{2}} \\
+0 & 0 & \frac{1}{-{\sqrt{2} \sqrt{\epsilon}}} & \frac{1}{\sqrt{2} \sqrt{\mu}} & 0 & 0 & 0 & 0 \\
+\frac{1}{\sqrt{2} \sqrt{\epsilon}} & 0 & 0 & 0 & 0 & \frac{1}{\sqrt{2} \sqrt{\mu}} & 0 & 0 \\
+0 & 0 & \frac{1}{\sqrt{\epsilon} \sqrt{2}} & \frac{1}{\sqrt{2} \sqrt{\mu}} & 0 & 0 & 0 & 0 \\
+-{\frac{1}{\sqrt{\epsilon} \sqrt{2}}} & 0 & 0 & 0 & 0 & \frac{1}{\sqrt{2} \sqrt{\mu}} & 0 & 0 \\
+0 & \frac{\sqrt{\epsilon}}{\sqrt{2}} & 0 & 0 & 0 & 0 & \frac{\sqrt{\epsilon}}{\sqrt{2}} & 0 \\
+0 & 0 & 0 & 0 & \frac{\sqrt{\epsilon}}{\sqrt{2}} & 0 & 0 & \frac{\sqrt{\epsilon}}{\sqrt{2}}
+\end{matrix}\right]$
+<br>
+
+$A^z = 
+\left[\begin{matrix}
+0 & 0 & 0 & \frac{-{\sqrt{\epsilon}}}{\sqrt{2}} & 0 & \frac{\sqrt{\epsilon}}{\sqrt{2}} & 0 & 0 \\
+0 & 0 & \frac{\sqrt{\epsilon}}{\sqrt{2}} & 0 & \frac{-{\sqrt{\epsilon}}}{\sqrt{2}} & 0 & 0 & 0 \\
+-{\frac{1}{\sqrt{2} \sqrt{\epsilon}}} & 0 & 0 & 0 & 0 & 0 & \frac{1}{\sqrt{2} \sqrt{\epsilon}} & 0 \\
+0 & 0 & \frac{\sqrt\mu}{\sqrt{2}} & 0 & \frac{\sqrt\mu}{\sqrt{2}} & 0 & 0 & 0 \\
+0 & 0 & 0 & \frac{\sqrt\mu}{\sqrt{2}} & 0 & \frac{\sqrt\mu}{\sqrt{2}} & 0 & 0 \\
+0 & -{\frac{1}{\sqrt{2} \sqrt{\epsilon}}} & 0 & 0 & 0 & 0 & 0 & \frac{1}{\sqrt{2} \sqrt{\epsilon}} \\
+\frac{1}{\sqrt{2} \sqrt{\epsilon}} & 0 & 0 & 0 & 0 & 0 & \frac{1}{\sqrt{2} \sqrt{\epsilon}} & 0 \\
+0 & \frac{1}{\sqrt{2} \sqrt{\epsilon}} & 0 & 0 & 0 & 0 & 0 & \frac{1}{\sqrt{2} \sqrt{\epsilon}}
+\end{matrix}\right]
+\cdot
+\left[\begin{matrix}
+-\chi_\phi & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & -\chi_\psi & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & \frac{-1}{\sqrt{\mu \cdot \epsilon}} & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & \frac{-1}{\sqrt{\mu \cdot \epsilon}} & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & \frac{1}{\sqrt{\mu \cdot \epsilon}} & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & \frac{1}{\sqrt{\mu \cdot \epsilon}} & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & {\chi_\phi} & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & {\chi_\psi}
+\end{matrix}\right]
+\cdot
+\left[\begin{matrix}
+0 & 0 & \frac{-{\sqrt{\epsilon}}}{\sqrt{2}} & 0 & 0 & 0 & \frac{\sqrt{\epsilon}}{\sqrt{2}} & 0 \\
+0 & 0 & 0 & 0 & 0 & \frac{-{\sqrt{\epsilon}}}{\sqrt{2}} & 0 & \frac{\sqrt{\epsilon}}{\sqrt{2}} \\
+0 & \frac{1}{\sqrt{2} \sqrt{\epsilon}} & 0 & \frac{1}{\sqrt{2} \sqrt{\mu}} & 0 & 0 & 0 & 0 \\
+\frac{1}{-{\sqrt{2} \sqrt{\epsilon}}} & 0 & 0 & 0 & \frac{1}{\sqrt{2} \sqrt{\mu}} & 0 & 0 & 0 \\
+0 & \frac{1}{-{\sqrt{2} \sqrt{\epsilon}}} & 0 & \frac{1}{\sqrt{\mu} \sqrt{2}} & 0 & 0 & 0 & 0 \\
+\frac{1}{\sqrt{\epsilon} \sqrt{2}} & 0 & 0 & 0 & \frac{1}{\sqrt{2} \sqrt{\mu}} & 0 & 0 & 0 \\
+0 & 0 & \frac{\sqrt{\epsilon}}{\sqrt{2}} & 0 & 0 & 0 & \frac{\sqrt{\epsilon}}{\sqrt{2}} & 0 \\
+0 & 0 & 0 & 0 & 0 & \frac{\sqrt{\epsilon}}{\sqrt{2}} & 0 & \frac{\sqrt{\epsilon}}{\sqrt{2}}
+\end{matrix}\right]$
+<br>
 <br>
 
 <hr>
@@ -70,6 +238,16 @@ $(B_g)^i =$ gravito-magnetic field, in $\frac{1}{s}$<br>
 $(H_g)^i = \frac{1}{\mu_g} B_g =$ gravito-magnetic field, in $\frac{kg}{m \cdot s}$<br> 
 <br>
 
+stress-energy terms:<br>
+$T_{00} = c^2 (\rho_{ion} + \rho_{elec}) + \frac{1}{2} (\frac{1}{\epsilon} D^2 + \frac{1}{\mu} B^2) = $ energy from stress-energy<br>
+$T_{0i} = -c (\rho_{ion} v_{ion,i} + \rho_{elec} v_{elec,i}) + \frac{1}{2 c} (n^2 + 1) S_i = $ momentum from stress-energy<br>
+(does gravitation self-interact?  should we also consider the energy of $\frac{1}{2} (\frac{1}{\epsilon_g} (D_g)^2 + \frac{1}{\mu_g} (B_g)^2)$?  How significant would that be?)<br>
+<br>
+
+$(\rho_g) = \frac{1}{c^2} T_{00} = \rho_{ion} + \rho_{elec} + \frac{1}{2 c^2} (\frac{1}{\epsilon} D^2 + \frac{1}{\mu} B^2) =$ matter density, in $\frac{kg}{m^3}$<br>
+$(J_g)_i = \frac{1}{c} T_{0i} = -\rho_{ion} v_{ion,i} - \rho_{elec} v_{elec,i} + \frac{1}{2 c^2} (n^2 + 1) S_i$ matter momentum, in $\frac{kg}{m^2 \cdot s}$<br>
+<br>
+
 GLM-GEM variables:<br>
 $\phi_g =$ gravito-electric divergence potential, in $\frac{kg}{m^2}$<br>
 $\xi_g =$ speed of propagation of gravito-electric divergence, in $\frac{m}{s}$<br>
@@ -78,10 +256,26 @@ $\kappa_g =$ speed of propagation of gravito-magnetic divergence, in $\frac{m}{s
 <br>
 
 GEM equations:<br>
-$[\frac{kg}{m^2 \cdot s}]: (D^g)_{i,t} - (\mu_g)^{-1} {\epsilon_i}^{jk} (B^g)_{k,j} + \xi_g (\phi^g)_{,i} = -\frac{1}{c} T_{0i}$<br>
-$[\frac{1}{s^2}]: (B^g)_{i,t} + (\epsilon_g)^{-1} {\epsilon_i}^{jk} (D^g)_{k,j} + \kappa_g (\psi^g)_{,i} = 0$<br>
-$[\frac{kg}{m^2 \cdot s}]: (\phi^g)_{,t} + \xi_g {(D^g)^j}_{,j} = \xi_g T_{00}$<br>
-$[\frac{1}{s^2}]: (\psi^g)_{,t} + \kappa_g {(B^g)^j}_{,j} = 0$<br>
+$[\frac{kg}{m^2 \cdot s}]: \partial_t (D_g)_i - (\mu_g)^{-1} {\epsilon_i}^{jk} \nabla_j (B_g)_k + \xi_g (\phi_g)_{,i} = -(J_g)_i$<br>
+$[\frac{1}{s^2}]: \partial_t (B_g)_i + (\epsilon_g)^{-1} {\epsilon_i}^{jk} \nabla_j (D_g)_k + \kappa_g (\psi_g)_{,i} = 0$<br>
+$[\frac{kg}{m^2 \cdot s}]: \partial_t (\phi_g) + \xi_g \nabla_j (D_g)^j = \xi_g \rho_g$<br>
+$[\frac{1}{s^2}]: \partial_t (\psi_g) + \kappa_g \nabla_j (B_g)^j = 0$<br>
+<br>
+
+Decomposed into individual matrices:<br>
+Let $U = \left[\begin{matrix}
+	(D_g)_i \\ (B_g)_i \\ \phi \\ \psi
+\end{matrix}\right],
+S = \left[\begin{matrix}
+	-(J_g)_i \\ 0 \\ \xi_g \rho_g \\ 0
+\end{matrix}\right]$<br>
+<br>
+
+the system becomes:<br>
+$\partial_t U + A^j \nabla_j U = S$<br>
+<br>
+
+The eigen decomposition of the GLM GEM system is similar to that of the GLM Maxwell system above.<br>
 <br>
 
 <hr>
@@ -109,76 +303,75 @@ If it isn't constant in 2014 Abgrall, Kumar, then neither would other constants 
 
 Reference lengths:<br>
 $x_0 = $ reference length.<br>
-$v_0 = $ reference speed, in units of $[\frac{m}{s}]$.  2014 Abgrall, Kumar uses $v_{th,\alpha}$ in place of this.<br>
+$v_0 = $ reference speed, in units of $[\frac{m}{s}]$.  2014 Abgrall, Kumar uses $v_{th,\alpha}$ in place of this (which I think it fixes to be a constant?).<br>
 $B_0 = $ reference magnetic field, in units of $[\frac{kg}{C \cdot s}]$.  This is not the 0'th component of B, the magnetic field (which has a value of zero).<br>
 <br>
 
 $W = $ Lorentz boost, in units of $[1]$.  2014 Abgrall, Kumar sets $W = 1$<br>
 <br>
 
-In the 2014 Abgrall Kumar paper the permittivity $\epsilon$ is assumed to be vacuum permittivity $\epsilon_0$.<br>
+$\omega_{L,\alpha} = r_\alpha B = \frac{q_\alpha B}{m_\alpha} =$ gyrofrequency, or Larmor frequency, in units of $[\frac{1}{s}]$.  (from <a href='https://en.wikipedia.org/wiki/Gyroradius'>https://en.wikipedia.org/wiki/Gyroradius</a>).<br>
 <br>
 
-$m = \frac{m_{ion}}{m_{elec}}$ = ion/electron mass ratio, in units of $[1]$<br>	
-<br>
-
-$\omega_L = \frac{q B}{m} =$ gyrofrequency, or Larmor frequency, in units of $[\frac{1}{s}]$.  (from <a href='https://en.wikipedia.org/wiki/Gyroradius'>https://en.wikipedia.org/wiki/Gyroradius</a>).<br>
-<br>
-Larmor radius:<br>
-$r_L = \frac{W m_{ion} v_{th,ion}}{q_{ion} B_0} =$ ion Larmor radius, in units of $[m]$, according to 2014 Abgrall, Kumar.<br>
+$r_L =$ Larmor radius, in units of $[m]$.<br>
+$r_L = \frac{W m_{ion} v_{th,ion}}{q_{ion} B_0} =$ according to 2014 Abgrall, Kumar.<br>
 $r_L = \frac{v_{th,ion} m c^2}{e |B|}$ according to this page: <a href='https://www.encyclopediaofmath.org/index.php/Larmor_radius'>https://www.encyclopediaofmath.org/index.php/Larmor_radius</a>.<br>
-$r_L = \frac{m v_\perp}{|q| B}$ according to wikipedia: <a href='https://en.wikipedia.org/wiki/Gyroradius'>https://en.wikipedia.org/wiki/Gyroradius</a><br>
+$r_L = \frac{m_\alpha v_\perp}{|q_\alpha| B} = \frac{v_\perp}{\omega_{L,\alpha}}$ according to wikipedia: <a href='https://en.wikipedia.org/wiki/Gyroradius'>https://en.wikipedia.org/wiki/Gyroradius</a><br>
+<br>
+
+$\lambda_D = $ ion Debye length<br>
+$\lambda_D = \sqrt{\frac{\epsilon_0 (v_{th,ion})^2}{ n_0 q_{ion}}}$ in 2014 Abgrall, Kumar... and I don't think they define $n_0$, but other papers do as number density ... and the units are messed up, in $m \cdot \sqrt{\frac{C}{kg}}$... if we square the charge (like everyone else does) then all we seem to be missing is the mass of the particle ... inserting that brings us to units of $m$.<br>
+$\lambda_D = \sqrt{\frac{\epsilon_0 v_0^2 m_0}{n_0 q_0^2}}$ in another source (?), which is in units of $m$.  Seems to be the corrected source from above.<br> 
+From <a href='https://en.wikipedia.org/wiki/Debye_length'>https://en.wikipedia.org/wiki/Debye_length</a>:<br>
+$\lambda_D = \sqrt{\frac{\epsilon_0 k_B / q_e^2}{n_e / T_e + \Sigma_j z_j^2 n_j / T_i}}$, for $z_j = q_j / q_{electron}$, in units of $m$<br>
+$\lambda_D = \sqrt{\frac{\epsilon_0 k_B T_e}{n_e q_e^2}}$ for isothermal cold plasma ... if $q_e$ is in $C$ and $n_e$ is in $\frac{1}{m^3}$ then this is in units of $m$.<br>
 <br>
 
 Normalized units:<br>
+$x_0 =$ reference length, in $m$.<br>
+$v_0 =$ reference velocity, in $\frac{m}{s}$.  2014 Abgrall, Kumar uses $v_0 = v_{th,ion}$.<br>
 <br>
-$\hat{r}_L = \frac{r_L}{x_0} = \frac{W m_{ion} v_{th,ion}}{q_{ion} B_0 x_0} =$ normalized ion Larmor radius, in units of $[1]$<br>
-$\hat{c} = \frac{c}{v_{th,ion}}$ = normalized speed of light, in units of $[1]$<br>
-$\hat{\lambda}_d = \frac{\lambda_d}{r_L} = \frac{1}{r_L} \sqrt{\frac{\epsilon (v_{th,ion})^2}{ n_0 q_{ion}}}$ = ion Debye length normalized with Larmor radius<br>
+$\hat{r}_L = \frac{r_L}{x_0} =$ normalized ion Larmor radius, in units of $[1]$<br>
+$\hat{c} = \frac{c}{v_0}$ = normalized speed of light, in units of $[1]$<br>
+$\hat{\lambda}_D = \frac{\lambda_D}{r_L} =$ ion Debye length in units of the Larmor radius.<br>
 <br>
 
 So, derived,<br>
-$L = \hat{\lambda}^2_d \hat{r}_L = \frac{\epsilon (v_{th,ion})^2 }{r_L x_0 n_0 q_{ion}}$<br>
+$L = \hat{\lambda}_D^2 \hat{r}_L = \frac{\epsilon (v_{th,ion})^2 }{r_L x_0 n_0 q_{ion}}$<br>
 $= \frac{\epsilon B_0 v_{th,ion}}{W x_0 n_0 m_i}$<br>
 <br>
 
 
 ions:<br>
-$[\frac{kg}{m^3 \cdot s}]: (\rho_{ion})_{,t} + \nabla_k (\rho_{ion} v_{ion}^k) = 0$<br>
-$[\frac{kg}{m^2 \cdot s^2}]: ( \rho_{ion} v_{ion}^j )_{,t} 
+$[\frac{kg}{m^3 \cdot s}]: \partial_t (\rho_{ion}) + \nabla_k (\rho_{ion} v_{ion}^k) = 0$<br>
+$[\frac{kg}{m^2 \cdot s^2}]: \partial_t ( \rho_{ion} v_{ion}^j ) 
 	+ \nabla_k ( \rho_{ion} v_{ion}^j v_{ion}^k + P_{ion} g^{jk}) 
 	= \rho_{ion} (
 		(\hat{r}_L)^{-1} (E^j + \epsilon^{jkl} (v_{ion})_k B_l) 
-		+ ((E^g)^j + 4 \epsilon^{jkl} (v_{ion})_k (B^g)_l)
+		+ ((E_g)^j + 4 \epsilon^{jkl} (v_{ion})_k (B_g)_l)
 	)$<br>
-$[\frac{kg}{m \cdot s^3}]: ( \mathcal{E}_{ion,total} )_{,t} 
+$[\frac{kg}{m \cdot s^3}]: \partial_t ( \mathcal{E}_{ion,total} ) 
 	+ \nabla_k (( E_{ion,total} + P_{ion}) v_{ion}^k) 
 	= \rho_{ion} v_{ion}^j (
 		(\hat{r}_L)^{-1} E_j
-		+ (E^g)^j
+		+ (E_g)^j
 	)$<br>
 <br>
 
 electrons:<br>
-$[\frac{kg}{m^3 \cdot s}]: (\rho_{elec})_{,t} + \nabla_k (\rho_{elec} v_{elec}^k ) = 0$<br>
-$[\frac{kg}{m^2 \cdot s^2}]: ( \rho_{elec} v_{elec}^j )_{,t} 
+$[\frac{kg}{m^3 \cdot s}]: \partial_t (\rho_{elec}) + \nabla_k (\rho_{elec} v_{elec}^k ) = 0$<br>
+$[\frac{kg}{m^2 \cdot s^2}]: \partial_t ( \rho_{elec} v_{elec}^j ) 
 	+ \nabla_k ( \rho_{elec} v_{elec}^j v_{elec}^k + P_{elec} g^{jk}) 
 	= \rho_{elec} (
 		(\hat{r}_L)^{-1} (E^j + \epsilon^{jkl} (v_{elec})_k B_l) 
-		+ ((E^g)^j + 4 \epsilon^{jkl} (v_{elec})_k (B^g)_l)
+		+ ((E_g)^j + 4 \epsilon^{jkl} (v_{elec})_k (B_g)_l)
 	)$<br>
-$[\frac{kg}{m \cdot s^3}]: ( E_{elec,total} )_{,t} 
+$[\frac{kg}{m \cdot s^3}]: \partial_t ( E_{elec,total} )
 	+ \nabla_k (( E_{elec,total} + P_{elec} ) v_{elec}^k ) 
 	= \rho_{elec} v_{elec}^j (
 		(\hat{r}_L)^{-1} E_j
-		+ (E^g)^j
+		+ (E_g)^j
 	)$<br>
-<br>
-
-stress-energy terms:<br>
-$T_{00} = c^2 (\rho_{ion} + \rho_{elec}) + \frac{1}{2} (\frac{1}{\epsilon} D^2 + \frac{1}{\mu} B^2) = $ energy from stress-energy<br>
-$T_{0i} = -c (\rho_{ion} v_{ion,i} + \rho_{elec} v_{elec,i}) + \frac{1}{2 c} (n^2 + 1) S_i = $ momentum from stress-energy<br>
-(does gravitation self-interact?  should we also consider the energy of $\frac{1}{2} (\frac{1}{\epsilon_g} (D^g)^2 + \frac{1}{\mu_g} (B^g)^2)$?  How significant would that be?)<br>
 <br>
 
 	</body>

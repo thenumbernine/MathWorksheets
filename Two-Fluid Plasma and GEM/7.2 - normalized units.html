@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type='text/javascript' src='../tryToFindMathJax.js'></script>
+		<script type='text/javascript' src='../template.js'/></script>
+		<title>normalized units</title>
+	</head>
+	<body templated>
+constants:<br>
+$c =$ <input name='speed_of_light_in_m_per_s' value='299792458'/> $\frac{m}{s} =$ speed of light.<br>
+$k_e = $<input name='Coulomb_constant_in_kg_m3_per_C2_s2' value='8.9875517873682e+9'/> $\cdot \frac{kg \cdot m^3}{C^2 \cdot s^2} =$ Coulomb's constant (typically $\frac{1}{4 \pi \epsilon_0}$).<br>
+$e =$ <input name='electron_charge_in_C' value='1.60217646e-19'/> $\cdot C =$ electron charge.<br>
+$\epsilon_0 = \frac{1}{4 \pi k_e} = $ {{vacuum_permittivity_in_C2_s2_per_kg_m3 = 1 / (4 * Math.PI * Coulomb_constant_in_kg_m3_per_C2_s2)}} $\cdot \frac{C^2 \cdot s^2}{kg \cdot m^3}$.<br>
+$\mu_0 = \frac{1}{c^2 \cdot \epsilon_0} = $ {{vacuum_permeability_in_kg_m_per_C2 = 1 / (speed_of_light_in_m_per_s * speed_of_light_in_m_per_s * vacuum_permittivity_in_C2_s2_per_kg_m3)}} $\cdot \frac{kg \cdot m}{C^2} =$ vacuum permeability.<br>
+such that $\frac{1}{\mu_0 \epsilon_0} = c^2 =$ {{speed_of_light_in_m_per_s * speed_of_light_in_m_per_s}} $\frac{m^2}{s^2}$.<br>
+<br>
+<hr>
+<br>
+
+normalized units via SI:<br>
+$x_0 =$ reference length, in $m$.<br>
+$t_0 =$ reference timescale, in $s$.<br>
+$m_0 =$ reference weight, in $kg$.<br>
+$q_0 =$ reference charge, in $C$.<br>
+$T_0 =$ reference temperature, in $K$.<br>
+<br>
+<hr>
+<br>
+
+normalized using (?):<br>
+$x_0 =$ reference length, in $m$.<br>
+$m_0 =$ reference mass, in $kg$.  Is this defined in the simulation, or is it derived as $m_0 = B_0 q_0 t_0$?<br>
+$q_0 = e =$ reference charge, in $C$.<br>
+$B_0 =$ reference magnetic field strength, in $T = \frac{kg}{C \cdot s}$.  Should this be derived from other constants, as $B_0 = \frac{m_0}{q_0 t_0}$?<br>
+$n_0 =$ reference number density, in $\frac{1}{m^3}$.  This would scale with length units, as $n_0 \propto \frac{1}{x_0^3}$?  Particle number density can be calculated as $n = \frac{\rho}{m}$.<br>
+...and derived reference values:<br>
+$d_D = \sqrt{\frac{\epsilon_0 u_0^2 m_0}{n_0 q_0^2}} =$ Debye length, in $m$.<br>
+$u_0 = \sqrt{\frac{d_D^2 n_0 q_0^2}{\epsilon_0 m_0}} =$ reference velocity, in $\frac{m}{s}$.  This is circularly dependent on Debye length, so one of these has to be fixed in the simulation and the other derived.<br>
+$t_0 = \frac{x_0}{u_0} =$ reference timescale, in $s$.<br>
+$E_0 = c B_0 =$ reference electric field strength in $\frac{kg \cdot m}{C \cdot s^2}$.  Should this be derived, just as $B_0$ should?<br>
+$d_L = \frac{m_0 u_0}{q_0 B_0} =$ Larmor radius, in $m$.<br>
+$T_0$ is not needed, as temperature units are not used.<br>
+So either $m_0$ is provided and $B_0$ is derived, or $B_0$ is provided and $m_0$ is derived (the paper hints at this).<br>
+Likewise, either $u_0$ or $d_D$ is provided and the other is derived.  I suspect that $d_D$ is provided.<br>
+<br>
+<hr>
+<br>
+
+normalized using 2014 Abgrall, Kumar:<br>
+$x_0 =$ reference length, in $m$.  Referenced in the paper but never explicitly defined.<br>
+$m_i =$ ion mass, "is assumed to be 1" (section 1), but later stated (in section 3.1) to be set to 2 ... Then we have $m = \frac{m_i}{m_e}$, makes me think this means $m_0 = m_i$ and $m_e = \frac{1}{1836.1526734311} m_i$, though the simulation assigns it $m_e = \frac{1}{25} m_i$ (section 3.2).<br>
+$v_0 = v_i^T =$ reference thermal velocity of ions, used to compute Debye length where $u_0$ is used in (?) above, so I'm assuming this is the equivalent of the reference velocity.<br>
+$\hat{l}_r = \frac{l_r}{x_0} = \frac{m_i v_i^T}{q_i B_0 x_0} =$ Larmor radius, is initialized as $10^{-2}, 10^{-4}, 10^{-6}$ in simulations (section 3.2).<br>
+derived reference values:<br>
+$t_0 = \frac{x_0}{v_0} =$ reference timescale, in $s$.<br>
+If $\hat{l}_r$ is provided and $x_0$ is provided then we must derive $l_r = \hat{l}_r x_0 = \frac{m_i}{v_i^T}{q_i B_0}$.  From this, $m_i$ is already stated, so we are left with $v_i^T, q_i, B_0$<br>
+<br>
+
+
+	</body>
+</html>

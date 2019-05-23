@@ -192,9 +192,11 @@ Here's the CDN URLs:
 
 [Two-Fluid Plasma and GEM/5 - stress-energy from matter](https://thenumbernine.github.io/math/Two%2dFluid%20Plasma%20and%20GEM/5%20%2d%20stress%2denergy%20from%20matter.html)
 
-[Two-Fluid Plasma and GEM/6 - GLM Maxwell](https://thenumbernine.github.io/math/Two%2dFluid%20Plasma%20and%20GEM/6%20%2d%20GLM%20Maxwell.html)
+[Two-Fluid Plasma and GEM/6 - GLM Maxwell derivation](https://thenumbernine.github.io/math/Two%2dFluid%20Plasma%20and%20GEM/6%20%2d%20GLM%20Maxwell%20derivation.html)
 
-[Two-Fluid Plasma and GEM/7 - cyclotron frequency](https://thenumbernine.github.io/math/Two%2dFluid%20Plasma%20and%20GEM/7%20%2d%20cyclotron%20frequency.html)
+[Two-Fluid Plasma and GEM/7.1 - cyclotron frequency](https://thenumbernine.github.io/math/Two%2dFluid%20Plasma%20and%20GEM/7.1%20%2d%20cyclotron%20frequency.html)
+
+[Two-Fluid Plasma and GEM/7.2 - normalized units](https://thenumbernine.github.io/math/Two%2dFluid%20Plasma%20and%20GEM/7.2%20%2d%20normalized%20units.html)
 
 [Two-Fluid Plasma and GEM/8 - two-fluid plasma model](https://thenumbernine.github.io/math/Two%2dFluid%20Plasma%20and%20GEM/8%20%2d%20two%2dfluid%20plasma%20model.html)
 
