@@ -46,7 +46,11 @@ $= 	-\frac{1}{6} \alpha K
 	+ \frac{1}{6} {\beta^k}_{,k}$<br>
 <br>
 
-TODO prove: (I think it's in my 'loop quantum gravity' page 3 or 4 docs)<br>
+Gauss' equation:<br>
+$R^\perp_{ijkl} + K_{ik} K_{jl} - K_{il} K_{jk} = \perp R_{ijkl}$<br>
+<br>
+
+TODO put the proof here.  It's in my 'Differential Geometry' notes on worksheet 15.<br>
 $R = K_{ij} K^{ij} - K^2 + 16 \pi \rho$<br>
 from there,<br>
 using $K_{ij} = A_{ij} + \frac{1}{3} \gamma_{ij} K$<br>
@@ -62,9 +66,26 @@ $= A_{ij} A^{ij} - \frac{2}{3} K^2 + 16 \pi \rho$<br>
 $= \tilde{A}_{ij} \tilde{A}^{ij} - \frac{2}{3} K^2 + 16 \pi \rho$<br>
 <br>
 
-TODO prove:<br>
-${\tilde{\Gamma}^k}_{ij} = {\Gamma^k}_{ij} - 2 (
-	\delta^k_i \phi_{,j} + \delta^k_j \phi_{,i} - \gamma_{ij} \gamma^{kl} \phi_{,l})$<br>
+partial derivative of conformal metric:<br>
+$\tilde{\gamma}_{ij,k} = (exp(-4 \phi) \gamma_{ij})_{,k}$<br>
+$= exp(-4 \phi) \gamma_{ij,k} - 4 exp(-4 \phi) \gamma_{ij} \phi_{,k}$<br>
+$= exp(-4 \phi) (\gamma_{ij,k} - 4 \gamma_{ij} \phi_{,k})$<br>
+$= exp(-4 \phi) \gamma_{ij,k} - 4 \tilde{\gamma}_{ij} \phi_{,k}$<br>
+<br>
+
+"Connection of the conformal metric".
+This is the Levi-Civita formula but applied to the conformal metric.<br>
+It is, however, not the conformal metric's geodesic.  See my worksheet on 'conformal Levi-Civita geodesic' for more on this.<br>
+$\tilde{\Gamma}_{ijk} = \frac{1}{2} (\tilde{\gamma}_{ij,k} + \tilde{\gamma}_{ik,j} - \tilde{\gamma}_{jk,k})$<br>
+$= \frac{1}{2} exp(-4 \phi) (\gamma_{ij,k} + \gamma_{ik,j} - \gamma_{jk,k} - 4 (\gamma_{ij} \phi_{,k} + \gamma_{ik} \phi_{,j} - \gamma_{jk} \phi_{,i}))$<br>
+$= exp(-4 \phi) (\Gamma_{ijk} - 2 (\gamma_{ij} \phi_{,k} + \gamma_{ik} \phi_{,j} - \gamma_{jk} \phi_{,i}))$<br>
+<br>
+
+${\tilde{\Gamma}^i}_{jk} = \tilde{\gamma}^{il} \tilde{\Gamma}_{ljk}$<br>
+$= exp(4\phi) \gamma^{il} \cdot exp(-4 \phi) (\Gamma_{ljk} - 2 (\gamma_{lj} \phi_{,k} + \gamma_{lk} \phi_{,j} - \gamma_{jk} \phi_{,l}))$<br>
+$= {\Gamma^i}_{jk} - 2 (\delta^i_j \phi_{,k} + \delta^i_k \phi_{,j} - \gamma^{il} \gamma_{jk} \phi_{,l})$<br>
+<br>
+
 so<br>
 ${\Gamma^k}_{ij} = {\tilde{\Gamma}^k}_{ij} + 2 (
 	\delta^k_i \phi_{,j} + \delta^k_j \phi_{,i} - \gamma_{ij} \gamma^{kl} \phi_{,l})$<br>
@@ -90,6 +111,104 @@ $<br>
 $= exp(4 \phi) \Gamma^i + 2 \tilde{\gamma}^{ij} \phi_{,j}$<br>
 so<br>
 $\Gamma^i = exp(-4 \phi) (\tilde{\Gamma}^i - 2 \tilde{\gamma}^{ij} \phi_{,j})$<br>
+<br>
+
+Riemann metric of 3-manifold:<br>
+${R^i}_{jkl} = 2 {\Gamma^i}_{j[l,k]} + 2 {\Gamma^i}_{m[k} {\Gamma^m}_{l]j}$<br>
+...written in terms of the 3-'conformal'-metric connection...<br>
+$= 2 ({\tilde{\Gamma}^i}_{j[l} + 2 (\delta^i_j \phi_{,[l} + \delta^i_{[l|} \phi_{,j} - \gamma^{im} \phi_{,m} \gamma_{j[l}))_{,k]}
+	+ 2 (
+		{\tilde{\Gamma}^i}_{m[k} + 2 (\delta^i_m \phi_{,[k} + \delta^i_{[k|} \phi_{,m} - \gamma^{in} \phi_{,n} \gamma_{m[k})
+	) (
+		{\tilde{\Gamma}^m}_{l]j} + 2 (\delta^m_{|l]} \phi_{,j} + \delta^m_j \phi_{,|l]} - \gamma^{mp} \phi_{,p} \gamma_{l]j})
+	)
+$<br>
+$= 2 (
+	{\tilde{\Gamma}^i}_{j[l,k]} 
+	+ 2 (\delta^i_j \phi_{,[lk]} + \delta^i_{[l} \phi_{,k]j} 
+		- {\gamma^{im}}_{,[k|} \phi_{,m} \gamma_{|l]j}
+		- \gamma^{im} \phi_{,m[k} \gamma_{l]j}
+		- \gamma^{im} \phi_{,m} \gamma_{j[l,k]}
+	))
+	+ 2 (
+		{\tilde{\Gamma}^i}_{m[k} {\tilde{\Gamma}^m}_{l]j} 
+		+ 2 {\tilde{\Gamma}^i}_{m[k} (\delta^m_{|l]} \phi_{,j} + \delta^m_j \phi_{,|l]} - \gamma^{mp} \phi_{,p} \gamma_{l]j})
+		+ 2 (\delta^i_m \phi_{,[k} + \delta^i_{[k|} \phi_{,m} - \gamma^{in} \phi_{,n} \gamma_{m[k}) {\tilde{\Gamma}^m}_{l]j} 
+		+ 4 (\delta^i_m \phi_{,[k} + \delta^i_{[k|} \phi_{,m} - \gamma^{in} \phi_{,n} \gamma_{m[k})
+			(\delta^m_{|l]} \phi_{,j} + \delta^m_j \phi_{,|l]} - \gamma^{mp} \phi_{,p} \gamma_{l]j})
+	)
+$<br>
+$= 2 {\tilde{\Gamma}^i}_{j[l,k]} 
+	+ 2 {\tilde{\Gamma}^i}_{m[k} {\tilde{\Gamma}^m}_{l]j} 
+
+	+ 2 {\tilde{\Gamma}^i}_{jk} \phi_{,l} 
+	- 2 {\tilde{\Gamma}^i}_{jl} \phi_{,k} 
+	- 2 {\tilde{\Gamma}^i}_{km} \gamma_{jl} \gamma^{mp} \phi_{,p}
+	+ 2 {\tilde{\Gamma}^i}_{lm} \gamma_{jk} \gamma^{mp} \phi_{,p}
+	+ 2 \phi_{,k} {\tilde{\Gamma}^i}_{jl}
+	- 2 \phi_{,l} {\tilde{\Gamma}^i}_{jk}
+	+ 2 \delta^i_k {\tilde{\Gamma}^m}_{jl} \phi_{,m}
+	- 2 \delta^i_l {\tilde{\Gamma}^m}_{jk} \phi_{,m}
+	- 2 \gamma^{in} \phi_{,n} \gamma_{km} {\tilde{\Gamma}^m}_{jl}
+	+ 2 \gamma^{in} \phi_{,n} \gamma_{lm} {\tilde{\Gamma}^m}_{jk}
+	
+	+ 2 \delta^i_l \phi_{,jk} 
+	- 2 \delta^i_k \phi_{,jl} 
+	
+	- 2 \gamma^{im} \phi_{,m} \gamma_{jl,k}
+	+ 2 \gamma^{im} \phi_{,m} \gamma_{jk,l}
+	
+	- 2 \gamma^{im} \phi_{,km} \gamma_{jl}
+	+ 2 \gamma^{im} \phi_{,lm} \gamma_{jk}
+	
+	+ 2 \gamma^{im} \gamma_{mn,k} \gamma_{jl} \gamma^{np} \phi_{,p}
+	- 2 \gamma^{im} \gamma_{mn,l} \gamma_{jk} \gamma^{np} \phi_{,p}
+	
+	+ 4 \delta^i_k \phi_{,l} \phi_{,j} 
+	- 4 \delta^i_l \phi_{,k} \phi_{,j} 
+	+ 4 \delta^i_j \phi_{,k} \phi_{,l} 
+	- 4 \delta^i_j \phi_{,l} \phi_{,k} 
+	- 4 \delta^i_k \gamma_{lj} \gamma^{mn} \phi_{,m} \phi_{,n}
+	+ 4 \delta^i_l \gamma_{kj} \gamma^{mn} \phi_{,m} \phi_{,n}
+	+ 4 \gamma^{im} \phi_{,m} \gamma_{jl} \phi_{,k}
+	- 4 \gamma^{im} \phi_{,m} \gamma_{jk} \phi_{,l}
+$<br>
+<br>
+
+Ricci tensor:<br>
+$R_{jl} = 
+	{\tilde{\Gamma}^i}_{jl,i} 
+	- {\tilde{\Gamma}^i}_{ji,l} 
+	
+	+ {\tilde{\Gamma}^m}_{jl} {\tilde{\Gamma}^i}_{mi} 
+	- {\tilde{\Gamma}^i}_{ml} {\tilde{\Gamma}^m}_{ij} 
+
+	+ 2 {\tilde{\Gamma}^i}_{ji} \phi_{,l} 
+	- 2 {\tilde{\Gamma}^i}_{jl} \phi_{,i} 
+	- 2 \gamma_{jl} {\tilde{\Gamma}^i}_{im} \gamma^{mp} \phi_{,p}
+	+ 2 \gamma_{ji} {\tilde{\Gamma}^i}_{lm} \gamma^{mp} \phi_{,p}
+	+ 2 \phi_{,i} {\tilde{\Gamma}^i}_{jl}
+	- 2 \phi_{,l} {\tilde{\Gamma}^i}_{ji}
+	+ 4 {\tilde{\Gamma}^m}_{jl} \phi_{,m}
+	
+	- 2 \phi_{,m} {\tilde{\Gamma}^m}_{jl}
+	+ 2 \gamma^{in} \phi_{,n} \gamma_{lm} {\tilde{\Gamma}^m}_{ji}
+	
+	- 2 \phi_{,jl}
+	
+	+ 4 \phi_{,l} \phi_{,j} 
+	
+	- 2 \gamma^{im} \phi_{,m} \gamma_{jl,i}
+	- 2 \gamma_{jl} \gamma^{im} \phi_{,im}
+	- 4 \gamma_{jl} \gamma^{ik} \phi_{,k} \phi_{,i}
+	
+	+ 2 \gamma_{jl} \gamma^{im} \gamma_{mn,i} \gamma^{np} \phi_{,p}
+	
+$<br>
+<br>
+
+Relations between the 4-metric affine connection and the 3-metric affine connection?<br>
+That's just going to be the extrinsic curvature, which is the lapse times the connection in the tangent dimension<br>
 <br>
 
 $D_i D_j \alpha$<br>

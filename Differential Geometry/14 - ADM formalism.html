@@ -147,20 +147,22 @@ $={\gamma_a}^e {\gamma_b}^g \cdot 0 \cdot \nabla_e n_g + {\gamma_a}^e {\gamma_c}
 $\nabla^\perp_a \gamma_{bc}=0$<br>
 <br>
 
-Spatial metric Levi-Civita connection:<br>
+spatial metric Levi-Civita connection:<br>
 ${(\hat\Gamma^\perp)^i}_{jk} = \gamma^{im} (\hat\Gamma^\perp)_{mjk}$<br>
 $= \gamma^{im} \cdot \frac{1}{2} ( \partial_k \gamma_{mj} + \partial_j \gamma_{mk} - \partial_m \gamma_{jk})$<br>
+...using $\gamma_{ij} = g_{ij}$ within our hypersurface...<br>
 $= \gamma^{im} \cdot \frac{1}{2} ( \partial_k g_{mj} + \partial_j g_{mk} - \partial_m g_{jk})$<br>
 $= \gamma^{im} \hat\Gamma_{mjk}$<br>
 <br>
 
-Spatial projection of Levi-Civita connection:<br>
+spatial projection of Levi-Civita connection:<br>
 $\perp {\hat\Gamma^i}_{jk} = {\gamma_a}^i {\gamma_j}^b {\gamma_k}^c {\hat\Gamma^a}_{bc}$<br>
 $ = (\delta_a^i + n_a n^i) (\delta_j^b + n_j n^b) (\delta_k^c + n_k n^c) {\hat\Gamma^a}_{bc}$<br>
 ...using $n_i = 0$...<br>
 $ = (\delta_a^i + n_a n^i) (\delta_j^b) (\delta_k^c) {\hat\Gamma^a}_{bc}$<br>
 $ = (\delta_a^i + n_a n^i) {\hat\Gamma^a}_{jk}$<br>
 $ = {\hat\Gamma^i}_{jk} + n_a n^i {\hat\Gamma^a}_{jk}$<br>
+...using $n_i = 0$...<br>
 $ = {\hat\Gamma^i}_{jk} + n_t n^i {\hat\Gamma^t}_{jk}$<br>
 $ = {\hat\Gamma^i}_{jk} + (-\alpha) (-\frac{1}{\alpha} \beta^i) {\hat\Gamma^t}_{jk}$<br>
 $ = {\hat\Gamma^i}_{jk} + \beta^i {\hat\Gamma^t}_{jk}$<br>
@@ -199,6 +201,8 @@ In fact, so long as $e_i = (e^\perp)_i$, $(\Gamma^\perp)_{ijk} = \Gamma_{ijk}$ .
 Since, even if ${\hat{c}_{ij}}^t \ne 0$, which means $(e_i(e_j(f)) - e_j(e_i(f))) \cdot e_t(f) \ne 0$, this only produces a ${\hat{c}_{ij}}^t$ value, which would not be used in the calculations of $\Gamma_{ijk}$<br>
 But does $\perp {\Gamma^i}_{jk} = {(\Gamma^\perp)^i}_{jk}$?<br>
 Because, if no, then this means that projection introduces torsion.<br>
+I saw somewhere that the extrinsic curvature tensor formula is defined for torsion-free manifolds.  So, there you go.<br>
+Want to redefine it for a nonzero torsion curvature tensor?<br>
 <br>
 
 Riemann curvature of projected covariant derivative connection:<br>
@@ -208,10 +212,6 @@ ${(R^\perp)^c}_{dab} =
 	- {(\Gamma^\perp)^c}_{ud} {(c^\perp)_{ab}}^u
 $<br>
 ${(R^\perp)^c}_{dba} v_c = 2 \nabla^\perp_{[a} \nabla^\perp_{b]} v_d + {(T^\perp)^u}_{ab} \nabla^\perp_u v^c$<br>
-<br>
-
-Is the projection of the torsion equal to the torsion of the projection?<br>
-TODO<br> 
 <br>
 
 <hr>
