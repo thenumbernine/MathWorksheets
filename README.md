@@ -68,8 +68,6 @@ Here's the CDN URLs:
 
 [EMHD Linear Stability Analysis](https://thenumbernine.github.io/math/EMHD%20Linear%20Stability%20Analysis.html)
 
-[Einstein-Cartan-Sciama-Kibble](https://thenumbernine.github.io/math/Einstein%2dCartan%2dSciama%2dKibble.html)
-
 [Einstein-Maxwell Hyperbolic Conservation Laws](https://thenumbernine.github.io/math/Einstein%2dMaxwell%20Hyperbolic%20Conservation%20Laws.html)
 
 [Electromagnetic Tensor Self-Dual](https://thenumbernine.github.io/math/Electromagnetic%20Tensor%20Self%2dDual.html)
@@ -223,6 +221,8 @@ Here's the CDN URLs:
 [torsion gravity](https://thenumbernine.github.io/math/torsion%20gravity.html)
 
 [twisted spacetime](https://thenumbernine.github.io/math/twisted%20spacetime.html)
+
+[wave equation hyperbolic form](https://thenumbernine.github.io/math/wave%20equation%20hyperbolic%20form.html)
 
 [wave_metric_1](https://thenumbernine.github.io/math/wave_metric_1.html)
 
