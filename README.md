@@ -164,6 +164,8 @@ Here's the CDN URLs:
 
 [Numerical Relativity/equal up to principal part](https://thenumbernine.github.io/math/Numerical%20Relativity/equal%20up%20to%20principal%20part.html)
 
+[Numerical Relativity/trace-free](https://thenumbernine.github.io/math/Numerical%20Relativity/trace%2dfree.html)
+
 [Numerical Relativity/z4](https://thenumbernine.github.io/math/Numerical%20Relativity/z4.html)
 
 [Relativistic Electromagnetism metric](https://thenumbernine.github.io/math/Relativistic%20Electromagnetism%20metric.html)

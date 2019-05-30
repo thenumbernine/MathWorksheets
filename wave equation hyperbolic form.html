@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<title>wave equation in hyperbolic form</title>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+	</head>
+    <body>
+
+wave equation:<br>
+$\square \phi = 0$<br>
+where $\square$ is the <a href='https://en.wikipedia.org/wiki/D%27Alembert_operator'>d'Alembert operator</a><br>
+$\phi_{,tt} - c^2 {\phi_{;i}}^i = 0$<br>
+$\phi_{,tt} - c^2 g^{ij} \phi_{;ij} = 0$<br>
+$\phi_{,tt} - c^2 g^{ij} (\phi_{,i})_{;j} = 0$<br>
+$\phi_{,tt} - c^2 g^{ij} (\phi_{,ij} - {\Gamma^k}_{ij} \phi_{,k}) = 0$<br>
+$\phi_{,tt} - c^2 g^{ij} \phi_{,ij} + c^2 {\Gamma^{ij}}_j \phi_{,i} = 0$<br>
+<br>
+
+Let $a = \phi_{,t}$<br>
+Let $b_i = \phi_,i$<br>
+<br>
+
+$\phi_{,t} = a$<br>
+$a_{,t} - c^2 g^{jk} b_{j,k} = -c^2 {\Gamma^{jk}}_k b_j$<br>
+$b_{i,t} - a_{,i} = 0$<br>
+<br>
+
+Produces:<br>
+$\left[\begin{matrix}
+	a \\ b_i
+\end{matrix}\right]_{,t} + \left[\begin{matrix}
+	0 & -c^2 g^{jk} \\
+	-\delta^i_k & 0
+\end{matrix}\right] \left[\begin{matrix}
+	a \\ b_j
+\end{matrix}\right]_{,k} = \left[\begin{matrix}
+	-c^2 {\Gamma^{jk}}_k b_j \\ 0
+\end{matrix}\right]$<br>
+<br>
+
+Flux Jacobian in x dir:<br>
+$\left[\begin{matrix}
+	 0 & -c^2 g^{xx} & -c^2 g^{xy} & -c^2 g^{xz} \\
+	-1 &     0     &     0     &     0     \\
+	 0 &     0     &     0     &     0     \\
+	 0 &     0     &     0     &     0     \\
+\end{matrix}\right]$<br>
+<br>
+
+Flux Jacobian in y dir:<br>
+$\left[\begin{matrix}
+	  0 & -c^2 g^{xy} & -c^2 g^{yy} & -c^2 g^{yz} \\
+	  0 &     0     &     0     &     0     \\
+	 -1 &     0     &     0     &     0     \\
+	  0 &     0     &     0     &     0     \\
+\end{matrix}\right]$<br>
+<br>
+
+Flux Jacobian in z dir:<br>
+$\left[\begin{matrix}
+	  0 & -c^2 g^{xz} & -c^2 g^{yz} & -c^2 g^{zz} \\
+	  0 &     0     &     0     &     0     \\
+	  0 &     0     &     0     &     0     \\
+	 -1 &     0     &     0     &     0     \\
+\end{matrix}\right]$<br>
+<br>
+
+x dir has eigensystem:<br>
+$\lambda_x = \{-c \sqrt{g^{xx}}, 0, 0, c \sqrt{g^{xx}} \}$<br>
+$R_x = \left[\begin{matrix}
+	c \sqrt{g^{xx}} & 0 & 0 & -c \sqrt{g^{xx}} \\
+	1 & -c^2 g^{xy} & -c^2 g^{xz} & 1 \\
+	0 & c^2 g^{xx} & 0 & 0 \\
+	0 & 0 & c^2*g^{xx} & 0
+\end{matrix}\right]$<br>
+$L_x = (R_x)^{-1} = \left[\begin{matrix}
+	\frac{1}{2 c \sqrt{g^{xx}}} & \frac{1}{2} & \frac{g^{xy}}{2 g^{xx}} & \frac{g^{xz}}{2 g^{xx}} \\
+	0 & 0 & \frac{1}{c^2 g^{xx}} & 0 \\
+	0 & 0 & 0 & \frac{1}{c^2 g^{xx}} \\
+	-\frac{1}{2 c \sqrt{g^{xx}}} & \frac{1}{2} & \frac{g^{xy}}{2 g^{xx}} & \frac{g^{xz}}{2 g^{xx}}
+\end{matrix}\right]$<br>
+<br>
+
+y dir has eigensystem:<br>
+$\lambda_y = \{-c \sqrt{g^{yy}}, 0, 0, c \sqrt{g^{yy}} \}$<br>
+$R_y = \left[\begin{matrix}
+	c \sqrt{g^{yy}} & 0 & 0 & -c \sqrt{g^{yy}} \\
+	0 & 0 & c^2 g^{yy} & 0 \\
+	1 & -c^2 g^{yz} & -c^2 g^{xy} & 1 \\
+	0 & c^2 g^{yy} & 0 & 0
+\end{matrix}\right]$<br>
+$L_y = (R_y)^{-1} = \left[\begin{matrix}
+	\frac{1}{2 c \sqrt{g^{yy}}} & \frac{g^{xy}}{2 g^{yy}} & \frac{1}{2} & \frac{g^{yz}}{2 g^{yy}} \\
+	0 & 0 & 0 & \frac{1}{c^2 g^{yy}} \\
+	0 & \frac{1}{c^2 g^{yy}} & 0 & 0 \\
+	-\frac{1}{2 c \sqrt{g^{yy}}} & \frac{g^{xy}}{2 g^{yy}} & \frac{1}{2} & \frac{g^{yz}}{2 g^{yy}}
+\end{matrix}\right]$<br>
+<br>
+
+z dir has eigensystem:<br>
+$\lambda = \{-c \sqrt{g^{zz}}, 0, 0, c \sqrt{g^{zz}} \}$<br>
+$R_z = \left[\begin{matrix}
+	c \sqrt{g^{zz}} & 0 & 0 & -c \sqrt{g^{zz}} \\
+	0 & c^2 g^{zz} & 0 & 0 \\
+	0 & 0 & c^2 g^{zz} & 0 \\
+	1 & -c^2 g^{xz} & -c^2 g^{yz} & 1
+\end{matrix}\right]$<br>
+$L_z = (R_z)^{-1} = \left[\begin{matrix}
+	\frac{1}{2 c \sqrt{g^{zz}}} & \frac{g^{xz}}{2 g^{zz}} & \frac{g^{yz}}{2 g^{zz}} & \frac{1}{2} \\
+	0 & \frac{1}{c^2 g^{zz}} & 0 & 0 \\
+	0 & 0 & \frac{1}{c^2 g^{zz}} & 0 \\
+	-\frac{1}{2 c \sqrt{g^{zz}}} & \frac{g^{xz}}{2 g^{zz}} & \frac{g^{yz}}{2 g^{zz}} & \frac{1}{2}
+\end{matrix}\right]$<br>
+<br>
+
+<hr>
+<br>
+
+Let's try that again but with volume element weighting:<br>
+	
+$\phi_{,tt} - c^2 {\phi_{;i}}^i = 0$<br>
+Assuming $g_{ij}$ is not a function of $t$...<br>
+$\phi_{,tt} - \frac{1}{\sqrt{|g|}} (\sqrt{|g|} c^2 g^{ij} \phi_{,i})_{,j} = 0$<br>
+<br>
+$a_{,t} - \frac{1}{\sqrt{|g|}} (\sqrt{|g|} c^2 g^{ij} b_i)_{,j} = 0$<br>
+$b_{i,t} - \frac{1}{\sqrt{|g|}} (\sqrt{|g|} a)_{,i} = -{\Gamma^j}_{ij} a$<br>
+<br>
+$\left[\begin{matrix}
+	a \\ b_i
+\end{matrix}\right]_{,t}
++ \frac{1}{\sqrt{|g|}} \left(
+	\sqrt{|g|} \cdot
+	\left[\begin{matrix}
+		0 & -c^2 g^{jk} \\
+		-\delta^i_k & 0
+	\end{matrix}\right] \left[\begin{matrix}
+		a \\ b_j
+	\end{matrix}\right]
+\right)_{,k}
+= \left[\begin{matrix}
+	0 \\ -{\Gamma^j}_{ij} a 
+\end{matrix}\right]$<br>
+<br>
+
+<hr>
+<br>
+
+How about changing the first-order variables?<br>
+
+$a = \phi_{,t}$<br>
+$b_i = \sqrt{|g|} \phi_{,i}$<br>
+assuming a steady grid, so $g_{ij,t} = 0$<br>
+<br>
+$a_{,t} - \frac{1}{\sqrt{|g|}} (c^2 g^{ij} b_i)_{,j} = 0$<br>
+$b_{i,t} - \sqrt{|g|} a_{,i} = 0$<br>
+<br>
+
+<hr>
+<br>
+
+$a = \sqrt{|g|} \phi_{,t}$<br>
+$b_i = \sqrt{|g|} \phi_{,i}$<br>
+$b_{i,t} = \sqrt{|g|} \phi_{,ti}$<br>
+$b_{i,t} = (\sqrt{|g|} \phi_{,t})_{,i} - (\sqrt{|g|})_{,i} \phi_{,t}$<br>
+$b_{i,t} - a_{,i} = -\frac{1}{\sqrt{|g|}} (\sqrt{|g|})_{,i} a$<br>
+$\frac{1}{\sqrt{|g|}} a_{,t} - \frac{1}{\sqrt{|g|}} (c^2 g^{ij} b_i)_{,j} = 0$<br>
+$a_{,t} - (c^2 g^{ij} b_i)_{,j} = 0$<br>
+$b_{i,t} - a_{,i} = -{\Gamma^j}_{ij} a$<br>
+<br>
+
+	</body>
+</html>

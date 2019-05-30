@@ -7,6 +7,12 @@
 	</head>
     <body>
 
+Sources:
+2008 Alcubierre. "Introduction to 3+1 Numerical Relativity"<br> 
+2010 Baumgarte, Shapiro. "Numerical Relativity: Solving Einstein's Equations on the Computer"<br>
+2018 Ruchlin, Etienne, Baumgarte. "SENR-NRPy+:  Numerical relativity in singular curvilinearcoordinate systems"<br>
+<br>
+
 ADM evolution:<br>
 $\alpha_{,t} = -\alpha^2 f K + \alpha_{,j} \beta^j$<br>
 $\gamma_{ij,t} = -2 \alpha K_{ij} 
@@ -15,35 +21,169 @@ $K_{ij,t} = -D_i D_j \alpha + \alpha (R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j) + 4 
 	+ K_{ij,k} \beta^k + 2 K_{k(i} {\beta^k}_{,j)}$<br>
 <br>
 
-The following aux vars are used:<br>
-$\gamma = det || \gamma_{ij} ||$<br>
+determinant of spatial metric:<br>
+$\gamma = det(\gamma_{ij})$<br>
+<br>
+
+Trace-free extrinsic curvature:<br>
 $A_{ij} = K_{ij} - \frac{1}{3} \gamma_{ij} K$<br>
 <br>
 
-BSSNOK uses the following variables:<br>
-$\phi = \frac{1}{12} ln \gamma$<br>
+metric of the grid coordinate system:<br>
+$\hat{\gamma}_{ij}$<br>
+determinant of the grid coordinate system metric:<br>
+$\hat{\gamma} = det(\hat{\gamma}_{ij})$<br>
+<br>
+
+Connection of the grid coordinate system:<br>
+${\hat{\Gamma}^i}_{ij} = \frac{1}{2} \hat{\gamma}^{il} (\hat{\gamma}_{lj,k} + \hat{\gamma}_{lk,j} - \hat{\gamma}_{jk,l}) =$ Levi-Civita connection of the grid coordinate system.<br>
+<br>
+
+determinant of the conformally rescaled metric:<br>
+$\bar{\gamma} = det(\bar{\gamma}_{ij})$<br>
+<br>
+
+constrain the conformal metric determinant to equal the grid metric determinant:<br>
+$\bar{\gamma} = \hat{\gamma}$<br>
+<br>
+
+Conformal rescaling factor.<br>
+This is a state variable of the 2008 Alcubierre and 2010 Baumgarte, Shapiro.<br>
+$\phi = \frac{1}{12} ln \frac{\gamma}{\hat{\gamma}}$<br>
+<br>
+
+here's a convenient value to have around:<br>
+$\psi = exp(-4 \phi)$<br>
+$= exp(-4 \cdot \frac{1}{12} ln \frac{\gamma}{\hat{\gamma}})$<br>
+$= (\frac{\hat{\gamma}}{\gamma})^{\frac{1}{3}}$<br>
+<br>
+
+and here's another, which is a state variable of 2018 Ruchlin:<br>
+$W = \sqrt{\psi} = exp(-2 \phi)$<br>
+$= (\frac{\hat{\gamma}}{\gamma})^{\frac{1}{6}}$<br>
+<br>
+
+conformally rescaled metric definition:<br>
+$\bar{\gamma}_{ij} = exp(-4 \phi) \gamma_{ij}$<br>
+$= (\frac{\hat{\gamma}}{\gamma})^{\frac{1}{3}} \gamma_{ij}$<br>
+<br>
+
+verify that the determinant of the conformally rescaled metric is equal to its constrained value:<br>
+$det(\bar{\gamma}_{ij}) = det(exp(-4 \phi) \gamma_{ij})$<br>
+$= det( (\frac{\hat{\gamma}}{\gamma})^{\frac{1}{3}} \gamma_{ij})$<br>
+$= \frac{\hat{\gamma}}{\gamma} \gamma$<Br>
+$= \hat{\gamma}$<br>
+<br>
+
+difference between conformal metric and grid metric<br>
+$\epsilon_{ij} = \bar{\gamma}_{ij} - \hat{\gamma}_{ij}$<br>
+$\epsilon_{ij} = exp(-4 \phi) \gamma_{ij} - \hat{\gamma}_{ij}$<br>
+$\epsilon_{ij} = W^2 \gamma_{ij} - \hat{\gamma}_{ij}$<br>
+<br>
+
+partial derivative of conformal metric:<br>
+$\bar{\gamma}_{ij,k} = (exp(-4 \phi) \gamma_{ij})_{,k}$<br>
+$= exp(-4 \phi) \gamma_{ij,k} - 4 exp(-4 \phi) \gamma_{ij} \phi_{,k}$<br>
+$= exp(-4 \phi) (\gamma_{ij,k} - 4 \gamma_{ij} \phi_{,k})$<br>
+$= exp(-4 \phi) \gamma_{ij,k} - 4 \bar{\gamma}_{ij} \phi_{,k}$<br>
+<br>
+
+"Connection of the conformal metric".
+This is the Levi-Civita formula but applied to the conformal metric.<br>
+It is, however, not the conformal metric's geodesic.  See my worksheet on 'conformal Levi-Civita geodesic' for more on this.<br>
+$\bar{\Gamma}_{ijk} = \frac{1}{2} (\bar{\gamma}_{ij,k} + \bar{\gamma}_{ik,j} - \bar{\gamma}_{jk,k})$<br>
+$= \frac{1}{2} exp(-4 \phi) (\gamma_{ij,k} + \gamma_{ik,j} - \gamma_{jk,k} - 4 (\gamma_{ij} \phi_{,k} + \gamma_{ik} \phi_{,j} - \gamma_{jk} \phi_{,i}))$<br>
+$= exp(-4 \phi) (\Gamma_{ijk} - 2 (\gamma_{ij} \phi_{,k} + \gamma_{ik} \phi_{,j} - \gamma_{jk} \phi_{,i}))$<br>
+<br>
+
+${\bar{\Gamma}^i}_{jk} = \bar{\gamma}^{il} \bar{\Gamma}_{ljk}$<br>
+$= exp(4\phi) \gamma^{il} \cdot exp(-4 \phi) (\Gamma_{ljk} - 2 (\gamma_{lj} \phi_{,k} + \gamma_{lk} \phi_{,j} - \gamma_{jk} \phi_{,l}))$<br>
+$= {\Gamma^i}_{jk} - 2 (\delta^i_j \phi_{,k} + \delta^i_k \phi_{,j} - \gamma^{il} \gamma_{jk} \phi_{,l})$<br>
+<br>
+
+so<br>
+${\Gamma^k}_{ij} = {\bar{\Gamma}^k}_{ij} + 2 (
+	\delta^k_i \phi_{,j} + \delta^k_j \phi_{,i} - \gamma_{ij} \gamma^{kl} \phi_{,l})$<br>
+<br>
+
+conformal connection:<br>
+$\bar{\Gamma}^i = {\bar{\Gamma}^i}_{jk} \bar{\gamma}^{jk}$<br>
+$= (
+	{\Gamma^i}_{jk} - 2 (
+		\delta^i_j \phi_{,k} + \delta^i_k \phi_{,j} - \gamma_{jk} \gamma^{il} \phi_{,l}
+	)
+) \bar{\gamma}^{jk}$<br>
+$= 
+	{\Gamma^i}_{jk} exp(4 \phi) \gamma^{jk} 
+	- 2 exp(4 \phi) \gamma^{ij} \phi_{,j} 
+	- 2 exp(4 \phi) \gamma^{ij} \phi_{,j}
+	+ 2 exp(4 \phi) \gamma^{jk} \gamma_{jk} \gamma^{il} \phi_{,l}
+$<br>
+$= exp(4 \phi) \Gamma^i
+	- 4 \bar{\gamma}^{ij} \phi_{,j} 
+	+ 6 \bar{\gamma}^{il} \phi_{,l}
+$<br>
+$= exp(4 \phi) \Gamma^i + 2 \bar{\gamma}^{ij} \phi_{,j}$<br>
+so<br>
+$\Gamma^i = exp(-4 \phi) (\bar{\Gamma}^i - 2 \bar{\gamma}^{ij} \phi_{,j})$<br>
+<br>
+
+conformal connection:<br>
+$\bar{\Gamma}^i = {\bar{\Gamma}^i}_{jk} \bar{\gamma}^{jk}$<br>
+$= {\bar{\Gamma}^i}_{jk} \bar{\gamma}^{jk}
+	+ {\bar{\Gamma}^k}_{jk} \bar{\gamma}^{ij}
+	- {\bar{\Gamma}^k}_{jk} \bar{\gamma}^{ij}
+$<br>
+$= \bar{\gamma}^{ik} \bar{\Gamma}_{kjl} \bar{\gamma}^{lj}
+	+ \bar{\gamma}^{ik} \bar{\Gamma}_{ljk} \bar{\gamma}^{lj}
+	- {\bar{\Gamma}^k}_{jk} \bar{\gamma}^{ij}
+$<br>
+$= - {\bar{\Gamma}^k}_{jk} \bar{\gamma}^{ij}
+	+ \bar{\gamma}^{ik} (\bar{\Gamma}_{kjl} + \bar{\Gamma}_{ljk}) \bar{\gamma}^{lj}
+$<br>
+... using $\Gamma^{ikj} + \Gamma_{jki} = \gamma_{ij,k}$<br>
+... using ${\Gamma^j}_{ij} = \frac{1}{\sqrt{\gamma}} (\sqrt{\gamma})_{,i}$ ...<br>
+(Notice: this identity is defined for Levi-Civita connections.  
+The conformal connection is not a geodesic connection even though it has the same form as the definition of the Levi-Civita connection, however it has a rescaled metric.
+This substitution uses an identity that is a byproduct of the Levi-Civita connection definition, but does not rely on the relation with geodesics. (Right?))<br>
+$= - \frac{1}{\sqrt{\bar{\gamma}}} (\sqrt{\bar{\gamma}})_{,j} \bar{\gamma}^{ij}
+	+ \bar{\gamma}^{ik} \bar{\gamma}_{kl,j} \bar{\gamma}^{lj}
+$<br>
+$= -\frac{1}{\sqrt{\bar{\gamma}}} ( 
+	(\sqrt{\bar{\gamma}})_{,j} \bar{\gamma}^{ij}
+	+ \sqrt{\bar{\gamma}} {\bar{\gamma}^{ij}}_{,j}
+)$<br>
+$= -\frac{1}{\sqrt{\bar{\gamma}}} ( \sqrt{\bar{\gamma}} \bar{\gamma}^{ij})_{,j}$<br>
+The steps so far work for any Levi-Civita connection.<br>
+Now substitute $\bar{\gamma} = \hat{\gamma}$:<br>
+$= -\frac{1}{\sqrt{\hat{\gamma}}} ( \sqrt{\hat{\gamma}} \hat{\gamma}^{ij})_{,j}$<br>
+Now if our grid metric has a constant determinant then we can use the fact that $\bar{\gamma}$ is constant to simplify the expression to: $\bar{\Gamma}^i = -{\bar{\gamma}^{ij}}_{,j}$<br>
+<br>
+
+
+Difference between conformal connection and the grid connection:<br>
+While connections themselves are not tensors (they are pseudotensors), the difference between connections is a tensor (citation?)<br>
+${\Delta^i}_{ij} = {\bar{\Gamma}^i}_{ij} - {\hat{\Gamma}^i}_{ij}$<br>
+<br>
+
+Trace of the difference of the connections:<br>
+$\Delta^i = {\Delta^i}_{jk} \bar{\gamma}^{jk}$<br>
+<br>
+
+Notice that the original state variable had the following identities:<br>
+$\bar{\Gamma}^i = -{\bar{\gamma}^{ij}}_{,j}$<br>
+However, now that $\bar{\gamma}$ varies as a function of space, we cannot rely on the identity $\bar{\Gamma}^i = -{\bar{\gamma}^{ij}}_{,j}$<br>
+<br>
+
+$\bar{\Lambda}^i = \Delta^i + \mathcal{C}^i$, for some sort of $\mathcal{C}^i$<br>
+<br>
+
+extrinsic curvature trace:<br>
 $K = \gamma^{ij} K_{ij}$<br>
-$\tilde{\gamma}_{ij} = exp(-4 \phi) \gamma_{ij} = \gamma^{-\frac{1}{3}} \gamma_{ij}$<br>
-$\tilde{A}_{ij} = exp(-4 \phi) A_{ij} = \gamma^{-\frac{1}{3}} A_{ij}$<br>
-$\tilde{\Gamma}^i = \tilde{\gamma}^{jk} {\tilde{\Gamma}^i}_{jk} = -{\tilde{\gamma}^{ij}}_{,j} = e^{4\phi} \Gamma^i + 2 \tilde{\gamma}^{ij} \phi_{,j}$<br>
 <br>
 
-Solving the time evolution of these variables:<br>
-<br>
-
-$\phi_{,\mu} = (\frac{1}{12} ln \gamma)_{,\mu}$<br>
-$= \frac{1}{12} \gamma^{-1} \gamma \gamma^{ij} \gamma_{ij,\mu}$<br>
-$= \frac{1}{12} \gamma^{ij} \gamma_{ij,\mu}$<br>
-<br>
-
-$\phi_{,t} = \frac{1}{12} \gamma^{ij} \gamma_{ij,t}$<br>
-$= \frac{1}{12} \gamma^{ij} (
-	-2 \alpha K_{ij} 
-	+ \gamma_{ij,k} \beta^k 
-	+ 2 \gamma_{k(i} {\beta^k}_{,j)})$<br>
-$= 	-\frac{1}{6} \alpha K
-	+ \phi_{,k} \beta^k 
-	+ \frac{1}{6} {\beta^k}_{,k}$<br>
+conformally rescaled trace-free extrinsic curvature:<br>
+$\bar{A}_{ij} = exp(-4 \phi) A_{ij} = (\frac{\hat{\gamma}}{\gamma})^{\frac{1}{3}} A_{ij}$<br>
 <br>
 
 Gauss' equation:<br>
@@ -63,94 +203,78 @@ $= A_{ij} A^{ij}
 	+ \frac{2}{3} (K_{ij} - \frac{1}{3} \gamma_{ij} K) \gamma^{ij} K
 	- \frac{2}{3} K^2 + 16 \pi \rho$<br>
 $= A_{ij} A^{ij} - \frac{2}{3} K^2 + 16 \pi \rho$<br>
-$= \tilde{A}_{ij} \tilde{A}^{ij} - \frac{2}{3} K^2 + 16 \pi \rho$<br>
+$= \bar{A}_{ij} \bar{A}^{ij} - \frac{2}{3} K^2 + 16 \pi \rho$<br>
 <br>
 
-partial derivative of conformal metric:<br>
-$\tilde{\gamma}_{ij,k} = (exp(-4 \phi) \gamma_{ij})_{,k}$<br>
-$= exp(-4 \phi) \gamma_{ij,k} - 4 exp(-4 \phi) \gamma_{ij} \phi_{,k}$<br>
-$= exp(-4 \phi) (\gamma_{ij,k} - 4 \gamma_{ij} \phi_{,k})$<br>
-$= exp(-4 \phi) \gamma_{ij,k} - 4 \tilde{\gamma}_{ij} \phi_{,k}$<br>
-<br>
-
-"Connection of the conformal metric".
-This is the Levi-Civita formula but applied to the conformal metric.<br>
-It is, however, not the conformal metric's geodesic.  See my worksheet on 'conformal Levi-Civita geodesic' for more on this.<br>
-$\tilde{\Gamma}_{ijk} = \frac{1}{2} (\tilde{\gamma}_{ij,k} + \tilde{\gamma}_{ik,j} - \tilde{\gamma}_{jk,k})$<br>
-$= \frac{1}{2} exp(-4 \phi) (\gamma_{ij,k} + \gamma_{ik,j} - \gamma_{jk,k} - 4 (\gamma_{ij} \phi_{,k} + \gamma_{ik} \phi_{,j} - \gamma_{jk} \phi_{,i}))$<br>
-$= exp(-4 \phi) (\Gamma_{ijk} - 2 (\gamma_{ij} \phi_{,k} + \gamma_{ik} \phi_{,j} - \gamma_{jk} \phi_{,i}))$<br>
-<br>
-
-${\tilde{\Gamma}^i}_{jk} = \tilde{\gamma}^{il} \tilde{\Gamma}_{ljk}$<br>
-$= exp(4\phi) \gamma^{il} \cdot exp(-4 \phi) (\Gamma_{ljk} - 2 (\gamma_{lj} \phi_{,k} + \gamma_{lk} \phi_{,j} - \gamma_{jk} \phi_{,l}))$<br>
-$= {\Gamma^i}_{jk} - 2 (\delta^i_j \phi_{,k} + \delta^i_k \phi_{,j} - \gamma^{il} \gamma_{jk} \phi_{,l})$<br>
-<br>
-
-so<br>
-${\Gamma^k}_{ij} = {\tilde{\Gamma}^k}_{ij} + 2 (
-	\delta^k_i \phi_{,j} + \delta^k_j \phi_{,i} - \gamma_{ij} \gamma^{kl} \phi_{,l})$<br>
-<br>
-
-$\tilde{\Gamma}^i$<br>
-$= {\tilde{\Gamma}^i}_{jk} \tilde{\gamma}^{jk}$<br>
-$= (
-	{\Gamma^i}_{jk} - 2 (
-		\delta^i_j \phi_{,k} + \delta^i_k \phi_{,j} - \gamma_{jk} \gamma^{il} \phi_{,l}
-	)
-) \tilde{\gamma}^{jk}$<br>
-$= 
-	{\Gamma^i}_{jk} exp(4 \phi) \gamma^{jk} 
-	- 2 exp(4 \phi) \gamma^{ij} \phi_{,j} 
-	- 2 exp(4 \phi) \gamma^{ij} \phi_{,j}
-	+ 2 exp(4 \phi) \gamma^{jk} \gamma_{jk} \gamma^{il} \phi_{,l}
-$<br>
-$= exp(4 \phi) \Gamma^i
-	- 4 \tilde{\gamma}^{ij} \phi_{,j} 
-	+ 6 \tilde{\gamma}^{il} \phi_{,l}
-$<br>
-$= exp(4 \phi) \Gamma^i + 2 \tilde{\gamma}^{ij} \phi_{,j}$<br>
-so<br>
-$\Gamma^i = exp(-4 \phi) (\tilde{\Gamma}^i - 2 \tilde{\gamma}^{ij} \phi_{,j})$<br>
-<br>
-
-Riemann metric of 3-manifold:<br>
+Riemann curvature tensor of 3-manifold:<br>
 ${R^i}_{jkl} = 2 {\Gamma^i}_{j[l,k]} + 2 {\Gamma^i}_{m[k} {\Gamma^m}_{l]j}$<br>
-...written in terms of the 3-'conformal'-metric connection...<br>
-$= 2 ({\tilde{\Gamma}^i}_{j[l} + 2 (\delta^i_j \phi_{,[l} + \delta^i_{[l|} \phi_{,j} - \gamma^{im} \phi_{,m} \gamma_{j[l}))_{,k]}
+$= {\Gamma^i}_{jl,k} - {\Gamma^i}_{jk,l} + {\Gamma^i}_{mk} {\Gamma^m}_{lj} - {\Gamma^i}_{ml} {\Gamma^m}_{kj}$<br>
+<br>
+
+Ricci curvature tensor of 3-manifold:<br>
+$R_{ij} = {R^k}_{ikj} = {\Gamma^k}_{ij,k} - {\Gamma^k}_{ik,j} + {\Gamma^k}_{lk} {\Gamma^l}_{ji} - {\Gamma^k}_{lj} {\Gamma^l}_{ki}$<br>
+<br>
+
+Gaussian curvature scalar:<br>
+$R = \gamma^{ij} R_{ij} = {R^{ij}}_{ij} = \gamma^{ij} ({\Gamma^k}_{ij,k} - {\Gamma^k}_{ik,j}) + {\Gamma^k}_{kl} {\Gamma^{lj}}_{j} - {\Gamma^k}_{lj} {\Gamma^{lj}}_k$<br>
+<br>
+
+Trace-free component of Ricci curvature tensor:<br>
+$(R_{ij})^{TF} = R_{ij} - \frac{1}{3} \gamma_{ij} R$<br>
+$ = {\Gamma^k}_{ij,k} - {\Gamma^k}_{ik,j} + {\Gamma^k}_{lk} {\Gamma^l}_{ji} - {\Gamma^k}_{lj} {\Gamma^l}_{ki}
+- \frac{1}{3} \gamma_{ij} (
+	\gamma^{kl} ({\Gamma^m}_{kl,m} - {\Gamma^m}_{km,l}) + {\Gamma^k}_{kl} {\Gamma^{lm}}_{m} - {\Gamma^k}_{lm} {\Gamma^{lm}}_k
+)$<br>
+$ = 
+	{\Gamma^p}_{qr,s} (
+		\delta_p^k \delta^q_i \delta^r_j \delta^s_k
+		- \delta_p^k \delta^q_i \delta^r_k \delta^s_j
+		- \frac{1}{3} \gamma_{ij} \gamma^{qr} \delta^s_p
+		+ \frac{1}{3} \gamma_{ij} \gamma^{qs} \delta^r_p
+	)
+	+ {\Gamma^k}_{lk} {\Gamma^l}_{ji} 
+	- {\Gamma^k}_{lj} {\Gamma^l}_{ki}
+	- \frac{1}{3} \gamma_{ij} {\Gamma^k}_{kl} {\Gamma^{lm}}_m
+	+ \frac{1}{3} \gamma_{ij} {\Gamma^k}_{lm} {\Gamma^{lm}}_k
+$<br>
+<br>
+
+Riemann curvature tensor of 3-manifold written in terms of the 3-'conformal'-metric connection...<br>
+$= 2 ({\bar{\Gamma}^i}_{j[l} + 2 (\delta^i_j \phi_{,[l} + \delta^i_{[l|} \phi_{,j} - \gamma^{im} \phi_{,m} \gamma_{j[l}))_{,k]}
 	+ 2 (
-		{\tilde{\Gamma}^i}_{m[k} + 2 (\delta^i_m \phi_{,[k} + \delta^i_{[k|} \phi_{,m} - \gamma^{in} \phi_{,n} \gamma_{m[k})
+		{\bar{\Gamma}^i}_{m[k} + 2 (\delta^i_m \phi_{,[k} + \delta^i_{[k|} \phi_{,m} - \gamma^{in} \phi_{,n} \gamma_{m[k})
 	) (
-		{\tilde{\Gamma}^m}_{l]j} + 2 (\delta^m_{|l]} \phi_{,j} + \delta^m_j \phi_{,|l]} - \gamma^{mp} \phi_{,p} \gamma_{l]j})
+		{\bar{\Gamma}^m}_{l]j} + 2 (\delta^m_{|l]} \phi_{,j} + \delta^m_j \phi_{,|l]} - \gamma^{mp} \phi_{,p} \gamma_{l]j})
 	)
 $<br>
 $= 2 (
-	{\tilde{\Gamma}^i}_{j[l,k]} 
+	{\bar{\Gamma}^i}_{j[l,k]} 
 	+ 2 (\delta^i_j \phi_{,[lk]} + \delta^i_{[l} \phi_{,k]j} 
 		- {\gamma^{im}}_{,[k|} \phi_{,m} \gamma_{|l]j}
 		- \gamma^{im} \phi_{,m[k} \gamma_{l]j}
 		- \gamma^{im} \phi_{,m} \gamma_{j[l,k]}
 	))
 	+ 2 (
-		{\tilde{\Gamma}^i}_{m[k} {\tilde{\Gamma}^m}_{l]j} 
-		+ 2 {\tilde{\Gamma}^i}_{m[k} (\delta^m_{|l]} \phi_{,j} + \delta^m_j \phi_{,|l]} - \gamma^{mp} \phi_{,p} \gamma_{l]j})
-		+ 2 (\delta^i_m \phi_{,[k} + \delta^i_{[k|} \phi_{,m} - \gamma^{in} \phi_{,n} \gamma_{m[k}) {\tilde{\Gamma}^m}_{l]j} 
+		{\bar{\Gamma}^i}_{m[k} {\bar{\Gamma}^m}_{l]j} 
+		+ 2 {\bar{\Gamma}^i}_{m[k} (\delta^m_{|l]} \phi_{,j} + \delta^m_j \phi_{,|l]} - \gamma^{mp} \phi_{,p} \gamma_{l]j})
+		+ 2 (\delta^i_m \phi_{,[k} + \delta^i_{[k|} \phi_{,m} - \gamma^{in} \phi_{,n} \gamma_{m[k}) {\bar{\Gamma}^m}_{l]j} 
 		+ 4 (\delta^i_m \phi_{,[k} + \delta^i_{[k|} \phi_{,m} - \gamma^{in} \phi_{,n} \gamma_{m[k})
 			(\delta^m_{|l]} \phi_{,j} + \delta^m_j \phi_{,|l]} - \gamma^{mp} \phi_{,p} \gamma_{l]j})
 	)
 $<br>
-$= 2 {\tilde{\Gamma}^i}_{j[l,k]} 
-	+ 2 {\tilde{\Gamma}^i}_{m[k} {\tilde{\Gamma}^m}_{l]j} 
+$= 2 {\bar{\Gamma}^i}_{j[l,k]} 
+	+ 2 {\bar{\Gamma}^i}_{m[k} {\bar{\Gamma}^m}_{l]j} 
 
-	+ 2 {\tilde{\Gamma}^i}_{jk} \phi_{,l} 
-	- 2 {\tilde{\Gamma}^i}_{jl} \phi_{,k} 
-	- 2 {\tilde{\Gamma}^i}_{km} \gamma_{jl} \gamma^{mp} \phi_{,p}
-	+ 2 {\tilde{\Gamma}^i}_{lm} \gamma_{jk} \gamma^{mp} \phi_{,p}
-	+ 2 \phi_{,k} {\tilde{\Gamma}^i}_{jl}
-	- 2 \phi_{,l} {\tilde{\Gamma}^i}_{jk}
-	+ 2 \delta^i_k {\tilde{\Gamma}^m}_{jl} \phi_{,m}
-	- 2 \delta^i_l {\tilde{\Gamma}^m}_{jk} \phi_{,m}
-	- 2 \gamma^{in} \phi_{,n} \gamma_{km} {\tilde{\Gamma}^m}_{jl}
-	+ 2 \gamma^{in} \phi_{,n} \gamma_{lm} {\tilde{\Gamma}^m}_{jk}
+	+ 2 {\bar{\Gamma}^i}_{jk} \phi_{,l} 
+	- 2 {\bar{\Gamma}^i}_{jl} \phi_{,k} 
+	- 2 {\bar{\Gamma}^i}_{km} \gamma_{jl} \gamma^{mp} \phi_{,p}
+	+ 2 {\bar{\Gamma}^i}_{lm} \gamma_{jk} \gamma^{mp} \phi_{,p}
+	+ 2 \phi_{,k} {\bar{\Gamma}^i}_{jl}
+	- 2 \phi_{,l} {\bar{\Gamma}^i}_{jk}
+	+ 2 \delta^i_k {\bar{\Gamma}^m}_{jl} \phi_{,m}
+	- 2 \delta^i_l {\bar{\Gamma}^m}_{jk} \phi_{,m}
+	- 2 \gamma^{in} \phi_{,n} \gamma_{km} {\bar{\Gamma}^m}_{jl}
+	+ 2 \gamma^{in} \phi_{,n} \gamma_{lm} {\bar{\Gamma}^m}_{jk}
 	
 	+ 2 \delta^i_l \phi_{,jk} 
 	- 2 \delta^i_k \phi_{,jl} 
@@ -177,22 +301,22 @@ $<br>
 
 Ricci tensor:<br>
 $R_{jl} = 
-	{\tilde{\Gamma}^i}_{jl,i} 
-	- {\tilde{\Gamma}^i}_{ji,l} 
+	{\bar{\Gamma}^i}_{jl,i} 
+	- {\bar{\Gamma}^i}_{ji,l} 
 	
-	+ {\tilde{\Gamma}^m}_{jl} {\tilde{\Gamma}^i}_{mi} 
-	- {\tilde{\Gamma}^i}_{ml} {\tilde{\Gamma}^m}_{ij} 
+	+ {\bar{\Gamma}^m}_{jl} {\bar{\Gamma}^i}_{mi} 
+	- {\bar{\Gamma}^i}_{ml} {\bar{\Gamma}^m}_{ij} 
 
-	+ 2 {\tilde{\Gamma}^i}_{ji} \phi_{,l} 
-	- 2 {\tilde{\Gamma}^i}_{jl} \phi_{,i} 
-	- 2 \gamma_{jl} {\tilde{\Gamma}^i}_{im} \gamma^{mp} \phi_{,p}
-	+ 2 \gamma_{ji} {\tilde{\Gamma}^i}_{lm} \gamma^{mp} \phi_{,p}
-	+ 2 \phi_{,i} {\tilde{\Gamma}^i}_{jl}
-	- 2 \phi_{,l} {\tilde{\Gamma}^i}_{ji}
-	+ 4 {\tilde{\Gamma}^m}_{jl} \phi_{,m}
+	+ 2 {\bar{\Gamma}^i}_{ji} \phi_{,l} 
+	- 2 {\bar{\Gamma}^i}_{jl} \phi_{,i} 
+	- 2 \gamma_{jl} {\bar{\Gamma}^i}_{im} \gamma^{mp} \phi_{,p}
+	+ 2 \gamma_{ji} {\bar{\Gamma}^i}_{lm} \gamma^{mp} \phi_{,p}
+	+ 2 \phi_{,i} {\bar{\Gamma}^i}_{jl}
+	- 2 \phi_{,l} {\bar{\Gamma}^i}_{ji}
+	+ 4 {\bar{\Gamma}^m}_{jl} \phi_{,m}
 	
-	- 2 \phi_{,m} {\tilde{\Gamma}^m}_{jl}
-	+ 2 \gamma^{in} \phi_{,n} \gamma_{lm} {\tilde{\Gamma}^m}_{ji}
+	- 2 \phi_{,m} {\bar{\Gamma}^m}_{jl}
+	+ 2 \gamma^{in} \phi_{,n} \gamma_{lm} {\bar{\Gamma}^m}_{ji}
 	
 	- 2 \phi_{,jl}
 	
@@ -211,17 +335,108 @@ Relations between the 4-metric affine connection and the 3-metric affine connect
 That's just going to be the extrinsic curvature, which is the lapse times the connection in the tangent dimension<br>
 <br>
 
+Splitting the 3-manifold Ricci into $R^\phi_{ij}$ and $\bar{R}_{ij}$:<br>
+<br>
+$R_{ij} = R^\phi_{ij} + \bar{R}_{ij}$<br>
+<br>
+
+TODO derive this<br>
+2008 Alcubierre eqn 2.8.18; 2010 Baumgarte, Shapiro eqn 3.10:<br>
+$R^\phi_{ij} =
+	-2 \bar{D}_i \bar{D}_j \phi 
+	- 2 \bar{\gamma}_{ij} \bar{\gamma}^{kl} \bar{D}_k \bar{D}_l \phi 
+	+ 4 \bar{D}_i \phi \bar{D}_j \phi 
+	- 4 \bar{\gamma}_{ij} \bar{\gamma}^{kl} \bar{D}_k \phi \bar{D}_l \phi
+$<br>
+with $\bar{D}_i$ the covariant derivative associated with the conformal metric.<br>
+<br>
+
+TODO derive this<br>
+2008 Alcubierre eqn 2.8.17; 2010 Baumgarte, Shapiro eqn 11.41:<br>
+$\bar{R}_{ij} = 
+	-\frac{1}{2} \bar{\gamma}^{kl} \bar{\gamma}_{ij,kl}
+	+ \frac{1}{2} \bar{\gamma}_{ik} {\bar{\Gamma}^k}_{,j}
+	+ \frac{1}{2} \bar{\gamma}_{jk} {\bar{\Gamma}^k}_{,i}
+	+ \frac{1}{2} \bar{\Gamma}^k \bar{\Gamma}_{ijk}
+	+ \frac{1}{2} \bar{\Gamma}^k \bar{\Gamma}_{jik}
+	+ \bar{\gamma}^{lm} (
+		{\bar{\Gamma}^k}_{li} \bar{\Gamma}_{jkm}
+		+ {\bar{\Gamma}^k}_{lj} \bar{\Gamma}_{ikm}
+		+ {\bar{\Gamma}^k}_{im} \bar{\Gamma}_{klj}
+	)
+$<br>
+<br>
+
+<hr>
+Solving the time evolution of these variables:<br>
+<br>
+
+$\phi_{,\mu} = (\frac{1}{12} ln \frac{\gamma}{\hat{\gamma}})_{,\mu}$<br>
+$= \frac{1}{12} \frac{\hat{\gamma}}{\gamma} (\frac{\gamma}{\hat{\gamma}})_{,\mu}$<br>
+$= \frac{1}{12} \frac{\hat{\gamma}}{\gamma} (
+	\frac{
+		\gamma_{,\mu} \hat{\gamma} - \gamma \hat{\gamma}_{,\mu}
+	}{\hat{\gamma}^2}
+)$<br>
+$= \frac{1}{12} \frac{1}{\gamma} (
+	\gamma_{,\mu}
+	- \frac{\gamma}{\hat{\gamma}} \hat{\gamma}_{,\mu}
+)$<br>
+using $\gamma_{,\mu} = \gamma \gamma^{ij} \gamma_{ij,\mu}$<br>
+$= \frac{1}{12} \frac{1}{\gamma} (
+	\gamma \gamma^{ij} \gamma_{ij,\mu}
+	- \frac{\gamma}{\hat{\gamma}} \hat{\gamma} \hat{\gamma}^{ij} \hat{\gamma}_{ij,\mu}
+)$<br>
+$= \frac{1}{12} (\gamma^{ij} \gamma_{ij,\mu} - \hat{\gamma}^{ij} \hat{\gamma}_{ij,\mu})$<br>
+<br>
+
+$\phi_{,k} = \frac{1}{12} (\gamma^{ij} \gamma_{ij,k} - \hat{\gamma}^{ij} \hat{\gamma}_{ij,k})$<br>
+<br>
+
+$\phi_{,t} = \frac{1}{12} (\gamma^{ij} \gamma_{ij,t} - \hat{\gamma}^{ij} \hat{\gamma}_{ij,t})$<br>
+For static meshes, $\hat{\gamma}_{ij,t} = 0$:<br>
+$= \frac{1}{12} \gamma^{ij} \gamma_{ij,t}$<br>
+$= \frac{1}{12} \gamma^{ij} (
+	-2 \alpha K_{ij} 
+	+ \gamma_{ij,k} \beta^k 
+	+ 2 \gamma_{k(i} {\beta^k}_{,j)})$<br>
+$= 	-\frac{1}{6} \alpha K
+	+ \phi_{,k} \beta^k 
+	+ \frac{1}{6} {\beta^k}_{,k}$<br>
+<br>
+
+$W_{,\mu} = (exp(-2 \phi))_{,\mu}$<br>
+$= -2 \phi_{,\mu} W$<br>
+<br>
+
+$W_{,k} = -2 \phi_{,k} W$<br>
+$= -\frac{1}{6} W (\gamma^{ij} \gamma_{ij,k} - \hat{\gamma}^{ij} \hat{\gamma}_{ij,k})$<br>
+<br>
+
+$W_{,t} = W (\frac{1}{3} \alpha K
+	+ 2 \phi_{,k} \beta^k 
+	+ \frac{1}{3} {\beta^k}_{,k})$<br>
+$= W (\frac{1}{3} \alpha K
+	+ \beta^k (
+		\frac{1}{6} (\gamma^{ij} \gamma_{ij,k} - \hat{\gamma}^{ij} \hat{\gamma}_{ij,k})
+	)
+	+ \frac{1}{3} {\beta^k}_{,k})$<br>
+<br>
+
+<hr>
+<br>
+
 $D_i D_j \alpha$<br>
 $= D_i \alpha_{,j}$<br>
 $= \alpha_{,ij} - {\Gamma^k}_{ij} \alpha_{,k}$<br>
 $= \alpha_{,ij} - (
-	{\tilde{\Gamma}^k}_{ij} 
+	{\bar{\Gamma}^k}_{ij} 
 	+ 2 \delta^k_i \phi_{,j} 
 	+ 2 \delta^k_j \phi_{,i} 
 	- 2 \gamma_{ij} \gamma^{kl} \phi_{,l}
 ) \alpha_{,k}$<br>
 $= \alpha_{,ij} 
-	- {\tilde{\Gamma}^k}_{ij}  \alpha_{,k}
+	- {\bar{\Gamma}^k}_{ij}  \alpha_{,k}
 	- 2 \phi_{,j} \alpha_{,i}
 	- 2 \phi_{,i} \alpha_{,j}
 	+ 2 \gamma_{ij} \gamma^{kl} \phi_{,l} \alpha_{,k}$<br>
@@ -230,8 +445,8 @@ $= \alpha_{,ij}
 $\gamma^{ij} D_i D_j \alpha$<br>
 $= \gamma^{ij} (\alpha_{,ij} - {\Gamma^k}_{ij} \alpha_{,k})$<br>
 $= \gamma^{ij} \alpha_{,ij} - \Gamma^k \alpha_{,k}$<br>
-$= \gamma^{ij} \alpha_{,ij} - exp(-4 \phi) (\tilde{\Gamma}^k - 2 \tilde{\gamma}^{kl} \phi_{,l}) \alpha_{,k}$<br>
-$= \gamma^{ij} \alpha_{,ij} - exp(-4 \phi) \tilde{\Gamma}^i \alpha_{,i} + 2 exp(-4 \phi) \tilde{\gamma}^{ij} \phi_{,i} \alpha_{,j}$<br>
+$= \gamma^{ij} \alpha_{,ij} - exp(-4 \phi) (\bar{\Gamma}^k - 2 \bar{\gamma}^{kl} \phi_{,l}) \alpha_{,k}$<br>
+$= \gamma^{ij} \alpha_{,ij} - exp(-4 \phi) \bar{\Gamma}^i \alpha_{,i} + 2 exp(-4 \phi) \bar{\gamma}^{ij} \phi_{,i} \alpha_{,j}$<br>
 <br>
 
 $K_{,t} = (\gamma^{ij} K_{ij})_{,t}$<br>
@@ -274,25 +489,25 @@ $=  - \gamma^{ij} D_i D_j \alpha
 	+ 4 \pi \alpha (S - 3 \rho)
 	+ \beta^k K_{,k}
 $<br>
-using $R = \tilde{A}_{ij} \tilde{A}^{ij} - \frac{2}{3} K^2 + 16 \pi \rho$<br>
+using $R = \bar{A}_{ij} \bar{A}^{ij} - \frac{2}{3} K^2 + 16 \pi \rho$<br>
 $=  - \gamma^{ij} D_i D_j \alpha 
-	+ \alpha (\tilde{A}_{ij} \tilde{A}^{ij} - \frac{2}{3} K^2 + 16 \pi \rho)
+	+ \alpha (\bar{A}_{ij} \bar{A}^{ij} - \frac{2}{3} K^2 + 16 \pi \rho)
 	+ \alpha K^2
 	+ 4 \pi \alpha (S - 3 \rho)
 	+ \beta^k K_{,k}
 $<br>
 $=  - \gamma^{ij} D_i D_j \alpha 
-	+ \alpha (\tilde{A}_{ij} \tilde{A}^{ij} + \frac{1}{3} K^2)
+	+ \alpha (\bar{A}_{ij} \bar{A}^{ij} + \frac{1}{3} K^2)
 	+ 4 \pi \alpha (S + \rho)
 	+ \beta^k K_{,k}
 $<br>
 
 <br>
 
-$\mathcal{L}_{\vec\beta} \tilde{\gamma}_{ij}
-= \tilde{\gamma}_{ij,k} \beta^k 
-	+ \tilde{\gamma}_{kj} {\beta^k}_{,i}
-	+ \tilde{\gamma}_{ik} {\beta^k}_{,j}$<br>
+$\mathcal{L}_{\vec\beta} \bar{\gamma}_{ij}
+= \bar{\gamma}_{ij,k} \beta^k 
+	+ \bar{\gamma}_{kj} {\beta^k}_{,i}
+	+ \bar{\gamma}_{ik} {\beta^k}_{,j}$<br>
 $ = (exp(-4 \phi) \gamma_{ij})_{,k} \beta^k 
 	+ exp(-4 \phi) \gamma_{kj} {\beta^k}_{,i}
 	+ exp(-4 \phi) \gamma_{ik} {\beta^k}_{,j}$<br>
@@ -306,57 +521,20 @@ $ = exp(-4 \phi) (
 	+ \gamma_{ik} {\beta^k}_{,j})$<br>
 <br>
 
-trace-free:<br>
-$(A_{ij})^{TF}$
-$= A_{ij} - \frac{1}{3} \gamma_{ij} \gamma^{kl} A_{kl}$<br>
-such that<br>
-$tr A = {A^k}_k = \gamma^{ij} A_{ij}$<br>
-$= \gamma^{ij} (A_{ij} - \frac{1}{3} \gamma_{ij} \gamma^{kl} A_{kl})$<br>
-$= \gamma^{ij} A_{ij} - \frac{1}{3} \gamma^{ij} \gamma_{ij} \gamma^{kl} A_{kl}$<br>
-$= {A^k}_k - \frac{3}{3} {A^k}_k$<br>
-$= 0$<br>
-<br>
-
-linearity of trace-free:<br>
-$(A_{ij} + B_{ij})^{TF}$<br>
-$= (A_{ij} + B_{ij}) - \frac{1}{3} \gamma_{ij} \gamma^{kl} (A_{kl} + B_{kl})$<br>
-$= A_{ij} 
-	+ B_{ij} 
-	- \frac{1}{3} \gamma_{ij} \gamma^{kl} A_{kl} 
-	- \frac{1}{3} \gamma_{ij} \gamma^{kl} B_{kl}$<br>
-$= A_{ij} 
-	- \frac{1}{3} \gamma_{ij} \gamma^{kl} A_{kl} 
-	+ B_{ij} 
-	- \frac{1}{3} \gamma_{ij} \gamma^{kl} B_{kl}$<br>
-$= (A_{ij})^{TF} + (B_{ij})^{TF}$<br>
-<br>
-$(\alpha A_{ij})^{TF}$<br>
-$= (\alpha A_{ij}) - \frac{1}{3} \gamma_{ij} \gamma^{kl} (\alpha A_{kl})$<br>
-$= \alpha (A_{ij} - \frac{1}{3} \gamma_{ij} \gamma^{kl} A_{kl})$<br>
-$= \alpha (A_{ij})^{TF}$<br>
-<br>
-prove factors of the metric are removed from the trace-free operation:<br>
-$(A_{ij} + \alpha \gamma_{ij})^{TF}$<br>
-$= (A_{ij} + \alpha \gamma_{ij}) - \frac{1}{3} \gamma_{ij} \gamma^{kl} (A_{kl} + \alpha \gamma_{kl})$<br>
-$= A_{ij} + \alpha \gamma_{ij} - \frac{1}{3} \gamma_{ij} \gamma^{kl} A_{kl} - \frac{1}{3} \gamma_{ij} \gamma^{kl} \alpha \gamma_{kl}$<br>
-$= A_{ij} - \frac{1}{3} \gamma_{ij} \gamma^{kl} A_{kl}$<br>
-$= (A_{ij})^{TF}$<br>
-<br>
-
 $(D_i D_j \alpha)^{TF}$<br>
 $= D_i D_j \alpha - \frac{1}{3} \gamma_{ij} \gamma^{kl} D_k D_l \alpha $<br>
 $= D_i D_j \alpha - \frac{1}{3} \gamma_{ij} (
 	\gamma^{kl} \alpha_{,kl} 
-	- exp(-4 \phi) \tilde{\Gamma}^k \alpha_{,k} 
-	+ 2 exp(-4 \phi) \tilde{\gamma}^{kl} \phi_{,k} \alpha_{,l}
+	- exp(-4 \phi) \bar{\Gamma}^k \alpha_{,k} 
+	+ 2 exp(-4 \phi) \bar{\gamma}^{kl} \phi_{,k} \alpha_{,l}
 )$<br>
 $= 	D_i D_j \alpha 
-	- \frac{1}{3} \tilde{\gamma}_{ij} \tilde{\gamma}^{kl} \alpha_{,kl} 
-	+ \frac{1}{3} \tilde{\gamma}_{ij} \tilde{\Gamma}^k \alpha_{,k} 
-	- \frac{2}{3} \tilde{\gamma}_{ij} \tilde{\gamma}^{kl} \phi_{,k} \alpha_{,l}$<br>
+	- \frac{1}{3} \bar{\gamma}_{ij} \bar{\gamma}^{kl} \alpha_{,kl} 
+	+ \frac{1}{3} \bar{\gamma}_{ij} \bar{\Gamma}^k \alpha_{,k} 
+	- \frac{2}{3} \bar{\gamma}_{ij} \bar{\gamma}^{kl} \phi_{,k} \alpha_{,l}$<br>
 <br>
 
-$\tilde{\gamma}_{ij,t} = (exp(-4 \phi) \gamma_{ij})_{,t}$<br>
+$\bar{\gamma}_{ij,t} = (exp(-4 \phi) \gamma_{ij})_{,t}$<br>
 $ = -4 \phi_{,t} exp(-4 \phi) \gamma_{ij} + exp(-4 \phi) \gamma_{ij,t}$<br>
 $ = -4 (
 		-\frac{1}{6} \alpha K
@@ -377,20 +555,20 @@ $ =
 		+ \gamma_{kj} {\beta^k}_{,i} 
 	)$<br>
 $ = 
-	- 2 \alpha \tilde{A}_{ij}
-	+ \tilde{\gamma}_{ij,k} \beta^k
-	+ \tilde{\gamma}_{kj} {\beta^k}_{,i}
-	+ \tilde{\gamma}_{ik} {\beta^k}_{,j}
-	- \frac{2}{3} \tilde{\gamma}_{ij} {\beta^k}_{,k}
+	- 2 \alpha \bar{A}_{ij}
+	+ \bar{\gamma}_{ij,k} \beta^k
+	+ \bar{\gamma}_{kj} {\beta^k}_{,i}
+	+ \bar{\gamma}_{ik} {\beta^k}_{,j}
+	- \frac{2}{3} \bar{\gamma}_{ij} {\beta^k}_{,k}
 	$<br>
 <br>
 
-$\mathcal{L}_{\vec\beta} \tilde{A}_{ij}
-=\tilde{A}_{ij,k} \beta^k + \tilde{A}_{kj} {\beta^k}_{,i} + \tilde{A}_{ik} {\beta^k}_{,j}$<br>
+$\mathcal{L}_{\vec\beta} \bar{A}_{ij}
+=\bar{A}_{ij,k} \beta^k + \bar{A}_{kj} {\beta^k}_{,i} + \bar{A}_{ik} {\beta^k}_{,j}$<br>
 <br>
 
-$K \tilde{A}_{ij} - 2 \tilde{A}_{il} {\tilde{A}^l}_j$<br>
-$= exp(-4 \phi) K A_{ij} - 2 \tilde{A}_{ik} \tilde{\gamma}^{kl} \tilde{A}_{lj}$<br>
+$K \bar{A}_{ij} - 2 \bar{A}_{il} {\bar{A}^l}_j$<br>
+$= exp(-4 \phi) K A_{ij} - 2 \bar{A}_{ik} \bar{\gamma}^{kl} \bar{A}_{lj}$<br>
 $= exp(-4 \phi) K A_{ij} - 2 exp(-4 \phi) \gamma^{kl} A_{ik} A_{lj}$<br>
 $= exp(-4 \phi) K (K_{ij} - \frac{1}{3} \gamma_{ij} K) 
 	- 2 exp(-4 \phi) \gamma^{kl} (K_{ik} - \frac{1}{3} \gamma_{ik} K) (K_{lj} - \frac{1}{3} \gamma_{lj} K)$<br>
@@ -417,14 +595,14 @@ $= exp(-4 \phi) (
 )$<br>
 <br>
 
-$\tilde{A}_{ij,t} = (exp(-4 \phi) A_{ij})_{,t}$<br>
+$\bar{A}_{ij,t} = (exp(-4 \phi) A_{ij})_{,t}$<br>
 $= -4 \phi_{,t} exp(-4 \phi) A_{ij} + exp(-4 \phi) A_{ij,t}$<br>
-$= -4 \phi_{,t} \tilde{A}_{ij} + exp(-4 \phi) (K_{ij} - \frac{1}{3} \gamma_{ij} K)_{,t}$<br>
-$= -4 \tilde{A}_{ij} \phi_{,t}
+$= -4 \phi_{,t} \bar{A}_{ij} + exp(-4 \phi) (K_{ij} - \frac{1}{3} \gamma_{ij} K)_{,t}$<br>
+$= -4 \bar{A}_{ij} \phi_{,t}
 	+ exp(-4 \phi) K_{ij,t} 
 	- \frac{1}{3} exp(-4 \phi) K \gamma_{ij,t} 
 	- \frac{1}{3} exp(-4 \phi) \gamma_{ij} K_{,t}$<br>
-$= -4 \tilde{A}_{ij} (
+$= -4 \bar{A}_{ij} (
 		-\frac{1}{6} \alpha K
 		+ \phi_{,k} \beta^k 
 		+ \frac{1}{6} {\beta^k}_{,k}
@@ -445,7 +623,7 @@ $= -4 \tilde{A}_{ij} (
 	)
 	- \frac{1}{3} exp(-4 \phi) \gamma_{ij} (
 		- \gamma^{kl} D_k D_l \alpha 
-		+ \alpha (\tilde{A}_{kl} \tilde{A}^{kl} + \frac{1}{3} K^2)
+		+ \alpha (\bar{A}_{kl} \bar{A}^{kl} + \frac{1}{3} K^2)
 		+ 4 \pi \alpha (S + \rho)
 		+ \beta^k K_{,k}
 	)$<br>
@@ -453,16 +631,16 @@ $=
 	- exp(-4 \phi) D_i D_j \alpha 
 	+ \frac{1}{3} exp(-4 \phi) \gamma_{ij} \gamma^{kl} D_k D_l \alpha 
 	
-	+ 4 \tilde{A}_{ij} \frac{1}{6} \alpha K
+	+ 4 \bar{A}_{ij} \frac{1}{6} \alpha K
 	+ exp(-4 \phi) \alpha (R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j) 
 	+ \frac{1}{3} exp(-4 \phi) K 2 \alpha K_{ij} 
-	- \frac{1}{3} exp(-4 \phi) \gamma_{ij} \alpha (\tilde{A}_{kl} \tilde{A}^{kl} + \frac{1}{3} K^2)
+	- \frac{1}{3} exp(-4 \phi) \gamma_{ij} \alpha (\bar{A}_{kl} \bar{A}^{kl} + \frac{1}{3} K^2)
 	
 	+ exp(-4 \phi) 4 \pi \alpha (\gamma_{ij} (S - \rho) - 2 S_{ij})
 	- \frac{1}{3} exp(-4 \phi) \gamma_{ij} 4 \pi \alpha (S + \rho)
 	
-	- 4 \tilde{A}_{ij} \phi_{,k} \beta^k 
-	- 4 \tilde{A}_{ij} \frac{1}{6} {\beta^k}_{,k}
+	- 4 \bar{A}_{ij} \phi_{,k} \beta^k 
+	- 4 \bar{A}_{ij} \frac{1}{6} {\beta^k}_{,k}
 	+ exp(-4 \phi) K_{ij,k} \beta^k 
 	+ exp(-4 \phi) K_{ki} {\beta^k}_{,j}
 	+ exp(-4 \phi) K_{kj} {\beta^k}_{,i}
@@ -474,7 +652,7 @@ $<br>
 $= 
 	exp(-4 \phi) (-(D_i D_j \alpha)^{TF} - 8 \pi \alpha (S_{ij})^{TF}) 
 	
-	+ \alpha \frac{2}{3} \tilde{A}_{ij} K
+	+ \alpha \frac{2}{3} \bar{A}_{ij} K
 	+ \alpha \frac{2}{3} exp(-4 \phi) K_{ij} K 
 	
 	+ exp(-4 \phi) \alpha R_{ij} 
@@ -485,15 +663,15 @@ $=
 	+ exp(-4 \phi) \alpha K K_{ij} 
 	- exp(-4 \phi) \alpha 2 K_{ik} {K^k}_j
 	
-	- \frac{1}{3} \alpha \tilde{\gamma}_{ij} {K^l}_k {K^k}_l
+	- \frac{1}{3} \alpha \bar{\gamma}_{ij} {K^l}_k {K^k}_l
 	
 	- \frac{4}{3} \pi \alpha exp(-4 \phi) \gamma_{ij} \rho
 	- 4 \pi \alpha exp(-4 \phi) \gamma_{ij} \rho
 	
-	+ \tilde{A}_{ij,k} \beta^k 
-	+ \tilde{A}_{kj} {\beta^k}_{,i}
-	+ \tilde{A}_{ki} {\beta^k}_{,j}
-	- \frac{2}{3} \tilde{A}_{ij} {\beta^k}_{,k}
+	+ \bar{A}_{ij,k} \beta^k 
+	+ \bar{A}_{kj} {\beta^k}_{,i}
+	+ \bar{A}_{ki} {\beta^k}_{,j}
+	- \frac{2}{3} \bar{A}_{ij} {\beta^k}_{,k}
 $<br>
 $= 
 	exp(-4 \phi) (-(D_i D_j \alpha)^{TF} + \alpha ((R_{ij})^{TF} - 8 \pi (S_{ij})^{TF})) 
@@ -514,10 +692,10 @@ $=
 		- \frac{4}{3} \pi \gamma_{ij} \rho
 		- 4 \pi \gamma_{ij} \rho
 	)	
-	+ \tilde{A}_{ij,k} \beta^k 
-	+ \tilde{A}_{kj} {\beta^k}_{,i}
-	+ \tilde{A}_{ki} {\beta^k}_{,j}
-	- \frac{2}{3} \tilde{A}_{ij} {\beta^k}_{,k}
+	+ \bar{A}_{ij,k} \beta^k 
+	+ \bar{A}_{kj} {\beta^k}_{,i}
+	+ \bar{A}_{ki} {\beta^k}_{,j}
+	- \frac{2}{3} \bar{A}_{ij} {\beta^k}_{,k}
 $<br>
 $= 
 	exp(-4 \phi) (-(D_i D_j \alpha)^{TF} + \alpha ((R_{ij})^{TF} - 8 \pi (S_{ij})^{TF})) 
@@ -526,31 +704,25 @@ $=
 		+ \frac{7}{3} K K_{ij} 
 		- \frac{5}{9} K^2 \gamma_{ij}
 	)	
-	+ \tilde{A}_{ij,k} \beta^k 
-	+ \tilde{A}_{kj} {\beta^k}_{,i}
-	+ \tilde{A}_{ki} {\beta^k}_{,j}
-	- \frac{2}{3} \tilde{A}_{ij} {\beta^k}_{,k}
+	+ \bar{A}_{ij,k} \beta^k 
+	+ \bar{A}_{kj} {\beta^k}_{,i}
+	+ \bar{A}_{ki} {\beta^k}_{,j}
+	- \frac{2}{3} \bar{A}_{ij} {\beta^k}_{,k}
 $<br>
 $= 
 	exp(-4 \phi)(-D_i D_j \alpha + \alpha (R_{ij} - 8 \pi S_{ij}))^{TF}
-	+ \alpha (K \tilde{A}_{ij} - 2 \tilde{A}_{ik} {\tilde{A}^k}_j)
-	+ \tilde{A}_{ij,k} \beta^k 
-	+ \tilde{A}_{kj} {\beta^k}_{,i}
-	+ \tilde{A}_{ki} {\beta^k}_{,j}
-	- \frac{2}{3} \tilde{A}_{ij} {\beta^k}_{,k}
+	+ \alpha (K \bar{A}_{ij} - 2 \bar{A}_{ik} {\bar{A}^k}_j)
+	+ \bar{A}_{ij,k} \beta^k 
+	+ \bar{A}_{kj} {\beta^k}_{,i}
+	+ \bar{A}_{ki} {\beta^k}_{,j}
+	- \frac{2}{3} \bar{A}_{ij} {\beta^k}_{,k}
 $<br>
 <br>
 
-$\tilde\Gamma^i$<br>
-$= {\tilde\Gamma^i}_{jk} \tilde{\gamma}^{jk}$<br>
-TODO show this relation<br>
-$= -\frac{1}{\sqrt{\tilde{\gamma}}} ( \sqrt{\tilde{\gamma}} \tilde{\gamma}^{ij}  )_{,j}$<br>
-$= -{\tilde{\gamma}^{ij}}_{,j}$<br>
-<br>
 
 <!--
-${\tilde\Gamma^i}_{,t}$<br>
-$= -{\tilde{\gamma}^{ij}}_{,jt}$<br>
+${\bar{\Gamma}^i}_{,t}$<br>
+$= -{\bar{\gamma}^{ij}}_{,jt}$<br>
 $= -(exp(4 \phi) \gamma^{ij})_{,jt}$<br>
 $= -(exp(4 \phi) (4 \phi_{,t} \gamma^{ij} + {\gamma^{ij}}_{,t}))_{,j}$<br>
 $= -(exp(4 \phi) (4 \phi_{,t} \gamma^{ij} - \gamma^{il} \gamma^{mj} \gamma_{lm,t}))_{,j}$<br>
@@ -617,49 +789,49 @@ $<br>
 <br>
 -->
 
-${\tilde\Gamma^i}_{,t}$<br>
-$= -{\tilde{\gamma}^{ij}}_{,jt}$<br>
-$= (\tilde{\gamma}^{ik} \tilde{\gamma}^{lj} \tilde{\gamma}_{kl,t})_{,j}$<br>
-$= (\tilde{\gamma}^{ik} \tilde{\gamma}^{lj} 
-	(- 2 \alpha \tilde{A}_{kl}
-		+ \tilde{\gamma}_{kl,m} \beta^m
-		+ \tilde{\gamma}_{ml} {\beta^m}_{,k}
-		+ \tilde{\gamma}_{km} {\beta^m}_{,l}
-		- \frac{2}{3} \tilde{\gamma}_{kl} {\beta^m}_{,m})
+${\bar{\Gamma}^i}_{,t}$<br>
+$= -{\bar{\gamma}^{ij}}_{,jt}$<br>
+$= (\bar{\gamma}^{ik} \bar{\gamma}^{lj} \bar{\gamma}_{kl,t})_{,j}$<br>
+$= (\bar{\gamma}^{ik} \bar{\gamma}^{lj} 
+	(- 2 \alpha \bar{A}_{kl}
+		+ \bar{\gamma}_{kl,m} \beta^m
+		+ \bar{\gamma}_{ml} {\beta^m}_{,k}
+		+ \bar{\gamma}_{km} {\beta^m}_{,l}
+		- \frac{2}{3} \bar{\gamma}_{kl} {\beta^m}_{,m})
 )_{,j}$<br>
 $= (
-	-2 \alpha \tilde{A}^{ij}
-	- {\tilde{\gamma}^{ij}}_{,k} \beta^k
-	+ \tilde{\gamma}^{ik} {\beta^j}_{,k}
-	+ \tilde{\gamma}^{jk} {\beta^i}_{,k}
-	- \frac{2}{3} \tilde{\gamma}^{ij} {\beta^k}_{,k}
+	-2 \alpha \bar{A}^{ij}
+	- {\bar{\gamma}^{ij}}_{,k} \beta^k
+	+ \bar{\gamma}^{ik} {\beta^j}_{,k}
+	+ \bar{\gamma}^{jk} {\beta^i}_{,k}
+	- \frac{2}{3} \bar{\gamma}^{ij} {\beta^k}_{,k}
 )_{,j}$<br>
 $= 
-	- 2 \alpha_{,j} \tilde{A}^{ij}
-	- 2 \alpha {\tilde{A}^{ij}}_{,j}
+	- 2 \alpha_{,j} \bar{A}^{ij}
+	- 2 \alpha {\bar{A}^{ij}}_{,j}
 	
-	- {\tilde{\gamma}^{ij}}_{,jk} \beta^k
-	- {\tilde{\gamma}^{ij}}_{,k} {\beta^k}_{,j}
+	- {\bar{\gamma}^{ij}}_{,jk} \beta^k
+	- {\bar{\gamma}^{ij}}_{,k} {\beta^k}_{,j}
 	
-	+ {\tilde{\gamma}^{ik}}_{,j} {\beta^j}_{,k}
-	+ \tilde{\gamma}^{ik} {\beta^j}_{,jk}
+	+ {\bar{\gamma}^{ik}}_{,j} {\beta^j}_{,k}
+	+ \bar{\gamma}^{ik} {\beta^j}_{,jk}
 	
-	+ {\tilde{\gamma}^{jk}}_{,j} {\beta^i}_{,k}
-	+ \tilde{\gamma}^{jk} {\beta^i}_{,jk}
+	+ {\bar{\gamma}^{jk}}_{,j} {\beta^i}_{,k}
+	+ \bar{\gamma}^{jk} {\beta^i}_{,jk}
 	
-	- \frac{2}{3} {\tilde{\gamma}^{ij}}_{,j} {\beta^k}_{,k}
-	- \frac{2}{3} \tilde{\gamma}^{ij} {\beta^k}_{,jk}
+	- \frac{2}{3} {\bar{\gamma}^{ij}}_{,j} {\beta^k}_{,k}
+	- \frac{2}{3} \bar{\gamma}^{ij} {\beta^k}_{,jk}
 $<br>
-$= 	\tilde{\gamma}^{jk} {\beta^i}_{,jk}
+$= 	\bar{\gamma}^{jk} {\beta^i}_{,jk}
 	
-	+ \frac{1}{3} \tilde{\gamma}^{ij} {\beta^k}_{,jk}
+	+ \frac{1}{3} \bar{\gamma}^{ij} {\beta^k}_{,jk}
 	
-	+ {\tilde{\Gamma}^i}_{,j} \beta^j
-	- \tilde{\Gamma}^j {\beta^i}_{,j}
+	+ {\bar{\Gamma}^i}_{,j} \beta^j
+	- \bar{\Gamma}^j {\beta^i}_{,j}
 	
-	+ \frac{2}{3} \tilde{\Gamma}^i {\beta^j}_{,j}
-	- 2 \alpha {\tilde{A}^{ij}}_{,j}
-	- 2 \alpha_{,j} \tilde{A}^{ij}
+	+ \frac{2}{3} \bar{\Gamma}^i {\beta^j}_{,j}
+	- 2 \alpha {\bar{A}^{ij}}_{,j}
+	- 2 \alpha_{,j} \bar{A}^{ij}
 $<br>
 <br>
 
@@ -692,31 +864,31 @@ $= 	\frac{2}{3} \alpha \chi K
 <br>
 
 $D_i D_j \alpha = \alpha_{,ij} 
-	- {\tilde{\Gamma}^k}_{ij}  \alpha_{,k}
+	- {\bar{\Gamma}^k}_{ij}  \alpha_{,k}
 	- 2 \phi_{,j} \alpha_{,i}
 	- 2 \phi_{,i} \alpha_{,j}
 	+ 2 \gamma_{ij} \gamma^{kl} \phi_{,l} \alpha_{,k}$<br>
 $= \alpha_{,ij} 
-	- {\tilde{\Gamma}^k}_{ij}  \alpha_{,k}
+	- {\bar{\Gamma}^k}_{ij}  \alpha_{,k}
 	- 2 \alpha_{,i} (-\frac{1}{4 \chi} \chi_{,j})
 	- 2 \alpha_{,j} (-\frac{1}{4 \chi} \chi_{,i})
 	+ 2 \gamma_{ij} \gamma^{kl} (-\frac{1}{4 \chi} \chi_{,l}) \alpha_{,k}$<br>
 $= \alpha_{,ij} 
-	- {\tilde{\Gamma}^k}_{ij}  \alpha_{,k}
+	- {\bar{\Gamma}^k}_{ij}  \alpha_{,k}
 	+ \frac{1}{2 \chi} (
 		\alpha_{,i} \chi_{,j}
 		+ \alpha_{,j} \chi_{,i}
-		- \tilde{\gamma}_{ij} \tilde{\gamma}^{kl} \chi_{,l} \alpha_{,k}
+		- \bar{\gamma}_{ij} \bar{\gamma}^{kl} \chi_{,l} \alpha_{,k}
 	)$<br>
 <br>
 
 $\gamma^{ij} D_i D_j \alpha$<br>
 $= \gamma^{ij} \alpha_{,ij} 
-	- exp(-4 \phi) \tilde{\Gamma}^i \alpha_{,i} 
-	+ 2 exp(-4 \phi) \tilde{\gamma}^{ij} \phi_{,i} \alpha_{,j}$<br>
-$= \chi \tilde{\gamma}^{ij} \alpha_{,ij} 
-	- \chi \tilde{\Gamma}^i \alpha_{,i} 
-	- \frac{1}{2} \tilde{\gamma}^{ij} \chi_{,i} \alpha_{,j}$<br>
+	- exp(-4 \phi) \bar{\Gamma}^i \alpha_{,i} 
+	+ 2 exp(-4 \phi) \bar{\gamma}^{ij} \phi_{,i} \alpha_{,j}$<br>
+$= \chi \bar{\gamma}^{ij} \alpha_{,ij} 
+	- \chi \bar{\Gamma}^i \alpha_{,i} 
+	- \frac{1}{2} \bar{\gamma}^{ij} \chi_{,i} \alpha_{,j}$<br>
 <br>
 
 $(D_i D_j \alpha)^{TF}$<br>
@@ -724,61 +896,61 @@ $= 	D_i D_j \alpha
 	- \frac{1}{3} \gamma_{ij} \gamma^{kl} D_k D_l \alpha$<br>
 $= 	D_i D_j \alpha 
 	- \frac{1}{3} \gamma_{ij} (	
-		\chi \tilde{\gamma}^{kl} \alpha_{,kl} 
-		- \chi \tilde{\Gamma}^k \alpha_{,k} 
-		- \frac{1}{2} \tilde{\gamma}^{kl} \chi_{,k} \alpha_{,l}
+		\chi \bar{\gamma}^{kl} \alpha_{,kl} 
+		- \chi \bar{\Gamma}^k \alpha_{,k} 
+		- \frac{1}{2} \bar{\gamma}^{kl} \chi_{,k} \alpha_{,l}
 )$<br>
 $= 	D_i D_j \alpha 
-	- \frac{1}{3} \tilde{\gamma}_{ij} \tilde{\gamma}^{kl} \alpha_{,kl} 
-	+ \frac{1}{3} \tilde{\gamma}_{ij} \tilde{\Gamma}^k \alpha_{,k} 
-	+ \frac{1}{6 \chi} \tilde{\gamma}_{ij} \tilde{\gamma}^{kl} \chi_{,k} \alpha_{,l}
+	- \frac{1}{3} \bar{\gamma}_{ij} \bar{\gamma}^{kl} \alpha_{,kl} 
+	+ \frac{1}{3} \bar{\gamma}_{ij} \bar{\Gamma}^k \alpha_{,k} 
+	+ \frac{1}{6 \chi} \bar{\gamma}_{ij} \bar{\gamma}^{kl} \chi_{,k} \alpha_{,l}
 $<br>
 Substitute $D_i D_j \alpha$<br>
 $= \alpha_{,ij} 
-	- {\tilde{\Gamma}^k}_{ij}  \alpha_{,k}
+	- {\bar{\Gamma}^k}_{ij}  \alpha_{,k}
 	+ \frac{1}{2 \chi} \alpha_{,i} \chi_{,j}
 	+ \frac{1}{2 \chi} \alpha_{,j} \chi_{,i}
-	- \frac{1}{2 \chi} \tilde{\gamma}_{ij} \tilde{\gamma}^{kl} \chi_{,l} \alpha_{,k}
-	- \frac{1}{3} \tilde{\gamma}_{ij} \tilde{\gamma}^{kl} \alpha_{,kl} 
-	+ \frac{1}{3} \tilde{\gamma}_{ij} \tilde{\Gamma}^k \alpha_{,k} 
-	+ \frac{1}{6 \chi} \tilde{\gamma}_{ij} \tilde{\gamma}^{kl} \chi_{,k} \alpha_{,l}
+	- \frac{1}{2 \chi} \bar{\gamma}_{ij} \bar{\gamma}^{kl} \chi_{,l} \alpha_{,k}
+	- \frac{1}{3} \bar{\gamma}_{ij} \bar{\gamma}^{kl} \alpha_{,kl} 
+	+ \frac{1}{3} \bar{\gamma}_{ij} \bar{\Gamma}^k \alpha_{,k} 
+	+ \frac{1}{6 \chi} \bar{\gamma}_{ij} \bar{\gamma}^{kl} \chi_{,k} \alpha_{,l}
 $<br>
 $= \alpha_{,ij} 
-	- {\tilde{\Gamma}^k}_{ij}  \alpha_{,k}
-	+ \frac{1}{3} \tilde{\gamma}_{ij} \tilde{\Gamma}^k \alpha_{,k} 
+	- {\bar{\Gamma}^k}_{ij}  \alpha_{,k}
+	+ \frac{1}{3} \bar{\gamma}_{ij} \bar{\Gamma}^k \alpha_{,k} 
 	+ \frac{1}{2 \chi} \alpha_{,i} \chi_{,j}
 	+ \frac{1}{2 \chi} \alpha_{,j} \chi_{,i}
-	- \frac{1}{3 \chi} \tilde{\gamma}_{ij} \tilde{\gamma}^{kl} \chi_{,l} \alpha_{,k}
-	- \frac{1}{3} \tilde{\gamma}_{ij} \tilde{\gamma}^{kl} \alpha_{,kl} 
+	- \frac{1}{3 \chi} \bar{\gamma}_{ij} \bar{\gamma}^{kl} \chi_{,l} \alpha_{,k}
+	- \frac{1}{3} \bar{\gamma}_{ij} \bar{\gamma}^{kl} \alpha_{,kl} 
 $<br>
 <br>
 
 $R^\phi_{ij}$<br>
 TODO derive this<br>
-$= 	-2 \tilde{D}_i \tilde{D}_j \phi 
-	- 2 \tilde{\gamma}_{ij} \tilde{\gamma}^{kl} \tilde{D}_k \tilde{D}_l \phi 
-	+ 4 \tilde{D}_i \phi \tilde{D}_j \phi 
-	- 4 \tilde{\gamma}_{ij} \tilde{\gamma}^{kl} \tilde{D}_k \phi \tilde{D}_l \phi
+$= 	-2 \bar{D}_i \bar{D}_j \phi 
+	- 2 \bar{\gamma}_{ij} \bar{\gamma}^{kl} \bar{D}_k \bar{D}_l \phi 
+	+ 4 \bar{D}_i \phi \bar{D}_j \phi 
+	- 4 \bar{\gamma}_{ij} \bar{\gamma}^{kl} \bar{D}_k \phi \bar{D}_l \phi
 $<br>
-$= 	-2 (\phi_{,ji} - {\tilde{\Gamma}^k}_{ji} \phi_{,k})
-	- 2 \tilde{\gamma}_{ij} \tilde{\gamma}^{kl} (\phi_{,lk} - {\tilde{\Gamma}^m}_{lk} \phi_{,m}) 
+$= 	-2 (\phi_{,ji} - {\bar{\Gamma}^k}_{ji} \phi_{,k})
+	- 2 \bar{\gamma}_{ij} \bar{\gamma}^{kl} (\phi_{,lk} - {\bar{\Gamma}^m}_{lk} \phi_{,m}) 
 	+ 4 \phi_{,i} \phi_{,j}
-	- 4 \tilde{\gamma}_{ij} \tilde{\gamma}^{kl} \phi_{,k} \phi_{,l}
+	- 4 \bar{\gamma}_{ij} \bar{\gamma}^{kl} \phi_{,k} \phi_{,l}
 $<br>
-$= 	-2 ((-\frac{1}{4 \chi} \chi_{,j})_{,i} - {\tilde{\Gamma}^k}_{ji} (-\frac{1}{4 \chi} \chi_{,k}))
-	- 2 \tilde{\gamma}_{ij} \tilde{\gamma}^{kl} ( (-\frac{1}{4 \chi} \chi_{,l})_{,k} - {\tilde{\Gamma}^m}_{lk} (-\frac{1}{4 \chi} \chi_{,m}))
+$= 	-2 ((-\frac{1}{4 \chi} \chi_{,j})_{,i} - {\bar{\Gamma}^k}_{ji} (-\frac{1}{4 \chi} \chi_{,k}))
+	- 2 \bar{\gamma}_{ij} \bar{\gamma}^{kl} ( (-\frac{1}{4 \chi} \chi_{,l})_{,k} - {\bar{\Gamma}^m}_{lk} (-\frac{1}{4 \chi} \chi_{,m}))
 	+ 4 (-\frac{1}{4 \chi} \chi_{,i})(-\frac{1}{4 \chi} \chi_{,j})
-	- 4 \tilde{\gamma}_{ij} \tilde{\gamma}^{kl} (-\frac{1}{4 \chi} \chi_{,k})(-\frac{1}{4 \chi} \chi_{,l})
+	- 4 \bar{\gamma}_{ij} \bar{\gamma}^{kl} (-\frac{1}{4 \chi} \chi_{,k})(-\frac{1}{4 \chi} \chi_{,l})
 $<br>
 $= 	\frac{1}{4 \chi^2} (
 		- \chi_{,i} \chi_{,j}
 		+ 2 \chi \chi_{,ij}
-		- 2 \chi {\tilde{\Gamma}^k}_{ji} \chi_{,k}
+		- 2 \chi {\bar{\Gamma}^k}_{ji} \chi_{,k}
 		
-		+ \tilde{\gamma}_{ij} \tilde{\gamma}^{kl} (
+		+ \bar{\gamma}_{ij} \bar{\gamma}^{kl} (
 			- 3 \chi_{,k} \chi_{,l}
 			+ 2 \chi \chi_{,kl}
-			- 2 \chi {\tilde{\Gamma}^m}_{lk} \chi_{,m}
+			- 2 \chi {\bar{\Gamma}^m}_{lk} \chi_{,m}
 		)
 	)
 $<br>
@@ -789,12 +961,12 @@ $= 	(
 	\frac{1}{4 \chi^2} (
 		- \chi_{,i} \chi_{,j}
 		+ 2 \chi \chi_{,ij}
-		- 2 \chi {\tilde{\Gamma}^k}_{ji} \chi_{,k}
+		- 2 \chi {\bar{\Gamma}^k}_{ji} \chi_{,k}
 		
-		+ \tilde{\gamma}_{ij} \tilde{\gamma}^{kl} (
+		+ \bar{\gamma}_{ij} \bar{\gamma}^{kl} (
 			- 3 \chi_{,k} \chi_{,l}
 			+ 2 \chi \chi_{,kl}
-			- 2 \chi {\tilde{\Gamma}^m}_{lk} \chi_{,m}
+			- 2 \chi {\bar{\Gamma}^m}_{lk} \chi_{,m}
 		)
 	)
 )^{TF}	
@@ -802,11 +974,13 @@ $<br>
 $= \frac{1}{2 \chi^2}
 (- \chi_{,i} \chi_{,j}
 	+ 2 \chi \chi_{,ij}
-	- 2 \chi {\tilde{\Gamma}^k}_{ji} \chi_{,k}
+	- 2 \chi {\bar{\Gamma}^k}_{ji} \chi_{,k}
 )^{TF}
 $<br>
 
 <hr>
+<br>
+
 Z4c formalism ... basically BSSN except with the added $\Theta$ from Z4, and replacing $K_{ij}$ with $\hat{K}_{ij}$<br>
 (Following 2011 Cao, Hilditch "Numerical stability of the Z4c formulation of general relativity")<br>
 TODO derive this from the Z4 equations: $G_{ab} = 8 \pi T_{ab} + \mathcal{L}_Z g_{ab}$<br>
@@ -819,8 +993,8 @@ Now with regards to a background metric $\hat{\gamma}_{ij}$.<br>
 ...and background metric inverse $\hat{\gamma}^{ij}$<br>
 <br>
 
-This looks to work just like before, except that instead of restricting $\bar\gamma = 1$, we are restricting it to $\bar\gamma = \hat\gamma$.<br>
-Likewise the ${\tilde\Gamma^i}_{ij}$ is replaced with ${\Delta^i}_{ij} = {\tilde\Gamma^i}_{ij} - {\hat\Gamma^i}_{ij}$<br>
+This looks to work just like before, except that instead of restricting $\bar{\gamma} = 1$, we are restricting it to $\bar{\gamma} = \hat{\gamma}$.<br>
+Likewise the ${\bar{\Gamma}^i}_{ij}$ is replaced with 
 <br>
 	</body>
 </html>
