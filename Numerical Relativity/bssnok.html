@@ -24,16 +24,28 @@ $K_{ij,t} = -D_i D_j \alpha + \alpha (R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j) + 4 
 	+ K_{ij,k} \beta^k + 2 K_{k(i} {\beta^k}_{,j)}$<br>
 <br>
 
+spatial metric / ADM variable:<br>
+$\gamma_{ij}$<br>
+<br>
+
+spatial metric inverse:<br>
+$\gamma^{ij}$ such that $[\gamma_{ij}]^{-1} = [\gamma^{ij}]$<br>
+<br>
+
 determinant of spatial metric:<br>
-$\gamma = det(\gamma_{ij})$<br>
+$\gamma = det[\gamma_{ij}]$<br>
 <br>
 
 metric of the grid coordinate system:<br>
 $\hat{\gamma}_{ij}$<br>
 <br>
 
+grid metric inverse:<br>
+$\hat{\gamma}^{ij}$ such that $[\hat{\gamma}_{ij}]^{-1} = [\hat{\gamma}^{ij}]$<br>
+<br>
+
 determinant of the grid coordinate system metric:<br>
-$\hat{\gamma} = det(\hat{\gamma}_{ij})$<br>
+$\hat{\gamma} = det[\hat{\gamma}_{ij}]$<br>
 <br>
 
 Connection of the grid coordinate system:<br>
@@ -50,6 +62,10 @@ $\bar{\gamma} = det(\bar{\gamma}_{ij})$<br>
 
 constrain the conformal metric determinant to equal the grid metric determinant:<br>
 $\bar{\gamma} = \hat{\gamma}$<br>
+<br>
+
+Notice that tensors marked with either $\bar{}$ or $\hat{}$ will be raised and lowered by their respective metrices: either $\bar{\gamma}_{ij}$ or $\hat{\gamma}_{ij}$<br>
+This means that the original contra- or co-variance of a metric is important to distinguish, especially if it is being applied to a metric other than the one it is denoted to raise/lower with (i.e. $\bar{\gamma}_{jk} \beta^k$).
 <br>
 
 derivative of conformal and grid metric determinants:<br>
@@ -180,7 +196,7 @@ Now if our grid metric has a constant determinant then we can use the fact that 
 <br>
 
 Difference between conformal connection and the grid connection:<br>
-While connections themselves are not tensors (they are pseudotensors), the difference between connections is a tensor (citation?)<br>
+While connections themselves are not tensors (they are pseudotensors), the difference between connections is a tensor (citation / evidence?).<br>
 ${\Delta^i}_{ij} = {\bar{\Gamma}^i}_{ij} - {\hat{\Gamma}^i}_{ij}$<br>
 <br>
 
@@ -197,22 +213,26 @@ $A_{ij} = K_{ij} - \frac{1}{3} \gamma_{ij} K$<br>
 $K_{ij} = A_{ij} + \frac{1}{3} \gamma_{ij} K$<br>
 <br>
 
-difference between conformal metric and grid metric<br>
-$\epsilon_{ij} = \bar{\gamma}_{ij} - \hat{\gamma}_{ij}$<br>
-$\epsilon_{ij} = exp(-4 \phi) \gamma_{ij} - \hat{\gamma}_{ij}$<br>
-$\epsilon_{ij} = W^2 \gamma_{ij} - \hat{\gamma}_{ij}$<br>
-<br>
-$\bar{\gamma}_{ij} = \epsilon_{ij} + \hat{\gamma}_{ij}$<br>
+Difference between conformal metric and grid metric<br>
+$\bar{\epsilon}_{ij} = \bar{\gamma}_{ij} - \hat{\gamma}_{ij}$<br>
+$\bar{\epsilon}_{ij} = exp(-4 \phi) \gamma_{ij} - \hat{\gamma}_{ij}$<br>
+$\bar{\epsilon}_{ij} = W^2 \gamma_{ij} - \hat{\gamma}_{ij}$<br>
 <br>
 
-$\epsilon_{ij,k} = \bar{\gamma}_{ij,k} - \hat{\gamma}_{ij,k}$<br>
+$\bar{\gamma}_{ij} = \bar{\epsilon}_{ij} + \hat{\gamma}_{ij}$<br>
+$\hat{\gamma}_{ij} = \bar{\gamma}_{ij} - \bar{\epsilon}_{ij}$<br>
 <br>
 
+Derivative of difference of metrics:<br>
+$\bar{\epsilon}_{ij,k} = \bar{\gamma}_{ij,k} - \hat{\gamma}_{ij,k}$<br>
+<br>
+
+Difference of connections:<br>
 $\bar{\Gamma}_{ijk} - \hat{\Gamma}_{ijk} = \frac{1}{2} (
 	\bar{\gamma}_{ij,k} + \bar{\gamma}_{ik,j} - \bar{\gamma}_{jk,i}
 	- \hat{\gamma}_{ij,k} - \hat{\gamma}_{ik,j} + \hat{\gamma}_{jk,i}
 )$<br>
-$= \frac{1}{2} (\epsilon_{ij,k} + \epsilon_{ik,j} - \epsilon_{jk,i})$<br>
+$= \frac{1}{2} (\bar{\epsilon}_{ij,k} + \bar{\epsilon}_{ik,j} - \bar{\epsilon}_{jk,i})$<br>
 <br>
 
 extrinsic curvature trace:<br>
@@ -529,9 +549,9 @@ $= \beta_{j,i}
 	+ \beta_{i,j} 
 	- 2 \beta_k \bar{\gamma}^{kl} (
 		\frac{1}{2} (
-			\epsilon_{li,j} 
-			+ \epsilon_{lj,i} 
-			- \epsilon_{ij,l}
+			\bar{\epsilon}_{li,j} 
+			+ \bar{\epsilon}_{lj,i} 
+			- \bar{\epsilon}_{ij,l}
 		)
 		+ \hat{\Gamma}_{ijk}
 	)
@@ -542,9 +562,9 @@ $<br>
 $= \beta_{j,i} 
 	+ \beta_{i,j} 
 	- \beta_k \bar{\gamma}^{kl} (
-		\epsilon_{li,j} 
-		+ \epsilon_{lj,i} 
-		- \epsilon_{ij,l}
+		\bar{\epsilon}_{li,j} 
+		+ \bar{\epsilon}_{lj,i} 
+		- \bar{\epsilon}_{ij,l}
 	)
 	- 2 \beta_k \bar{\gamma}^{kl} \hat{\Gamma}_{ijk}
 	- 4 \beta_i \phi_{,j} 
@@ -554,9 +574,9 @@ $<br>
 $= \beta_{j,i} 
 	+ \beta_{i,j} 
 	- exp(4 \phi) \beta^k (
-		\epsilon_{ki,j} 
-		+ \epsilon_{kj,i} 
-		- \epsilon_{ij,k}
+		\bar{\epsilon}_{ki,j} 
+		+ \bar{\epsilon}_{kj,i} 
+		- \bar{\epsilon}_{ij,k}
 	)
 	- 2 \beta_k \bar{\gamma}^{kl} \hat{\Gamma}_{ijk}
 	- 4 \beta_i \phi_{,j} 
@@ -591,9 +611,9 @@ $= \beta_{j,i}
 $= \beta_{j,i} 
 	+ \beta_{i,j} 
 	- exp(4 \phi) \beta^k (
-		\epsilon_{ki,j}
-		+ \epsilon_{kj,i}
-		- \epsilon_{ij,k}
+		\bar{\epsilon}_{ki,j}
+		+ \bar{\epsilon}_{kj,i}
+		- \bar{\epsilon}_{ij,k}
 		+ \hat{\gamma}_{ki,j}
 		+ \hat{\gamma}_{kj,i}
 		- \hat{\gamma}_{ij,k}
@@ -690,9 +710,9 @@ $= \frac{2}{3} \bar{\gamma}_{ij} (\alpha {\bar{A}^k}_k - \bar{D}_k \beta^k)
 	
 	+ 2 \bar{\gamma}_{k(j} {\beta^k}_{,i)} 
 	+ \bar{\gamma}_{ij,k} \beta^k
-	- \epsilon_{ij,k} \beta^k
-	+ \frac{1}{2} \epsilon_{ki,j} \beta^k
-	+ \frac{1}{2} \epsilon_{kj,i} \beta^k
+	- \bar{\epsilon}_{ij,k} \beta^k
+	+ \frac{1}{2} \bar{\epsilon}_{ki,j} \beta^k
+	+ \frac{1}{2} \bar{\epsilon}_{kj,i} \beta^k
 	
 	- 2 \alpha \bar{A}_{ij}
 $<br>
@@ -700,10 +720,10 @@ $= \frac{2}{3} \bar{\gamma}_{ij} (\alpha {\bar{A}^k}_k - \bar{D}_k \beta^k)
 	+ 2 \bar{\gamma}_{k(j} {\beta^k}_{,i)} 
 	- 2 \alpha \bar{A}_{ij}
 	+ 2 \beta^l \bar{\Gamma}_{(ij)l} 
-	- \beta^l \epsilon_{(ij),l}
-	- \beta^l \epsilon_{(ji),l}
-	+ \beta^l \epsilon_{l(i,j)}
-	+ \epsilon_{ij,k} \beta^k
+	- \beta^l \bar{\epsilon}_{(ij),l}
+	- \beta^l \bar{\epsilon}_{(ji),l}
+	+ \beta^l \bar{\epsilon}_{l(i,j)}
+	+ \bar{\epsilon}_{ij,k} \beta^k
 $<br>
 $= \frac{2}{3} \bar{\gamma}_{ij} (\alpha {\bar{A}^k}_k - \bar{D}_k \beta^k)
 	+ 2 \bar{\gamma}_{k(j} {\beta^k}_{,i)} 
@@ -711,31 +731,31 @@ $= \frac{2}{3} \bar{\gamma}_{ij} (\alpha {\bar{A}^k}_k - \bar{D}_k \beta^k)
 	+ 2 \beta^l (
 		\bar{\Gamma}_{(ij)l} 
 		- \frac{1}{2} (
-			\epsilon_{(ij),l}
-			+ \epsilon_{(ji),l}
-			- \epsilon_{l(i,j)}
+			\bar{\epsilon}_{(ij),l}
+			+ \bar{\epsilon}_{(ji),l}
+			- \bar{\epsilon}_{l(i,j)}
 		)
 	)
-	+ \epsilon_{ij,k} \beta^k
+	+ \bar{\epsilon}_{ij,k} \beta^k
 $<br>
 $= \frac{2}{3} \bar{\gamma}_{ij} (\alpha {\bar{A}^k}_k - \bar{D}_k \beta^k)
-	+ 2 (\epsilon_{k(j} + \hat{\gamma}_{k(j}) {\beta^k}_{,i)} 
+	+ 2 (\bar{\epsilon}_{k(j} + \hat{\gamma}_{k(j}) {\beta^k}_{,i)} 
 	+ 2 \hat{\Gamma}_{(ij)l} \beta^l
 	- 2 \alpha \bar{A}_{ij}
-	+ \epsilon_{ij,k} \beta^k
+	+ \bar{\epsilon}_{ij,k} \beta^k
 $<br>
 $= \frac{2}{3} \bar{\gamma}_{ij} (\alpha {\bar{A}^k}_k - \bar{D}_k \beta^k)
 	+ 2 \hat{\gamma}_{k(j} ({\beta^k}_{,i)} + {\hat{\Gamma}^k}_{i)l} \beta^l)
 	- 2 \alpha \bar{A}_{ij}
-	+ \epsilon_{ij,k} \beta^k
-	+ 2 \epsilon_{k(j} {\beta^k}_{,i)}
+	+ \bar{\epsilon}_{ij,k} \beta^k
+	+ 2 \bar{\epsilon}_{k(j} {\beta^k}_{,i)}
 $<br>
 $= \frac{2}{3} \bar{\gamma}_{ij} (\alpha {\bar{A}^k}_k - \bar{D}_k \beta^k)
 	+ 2 \hat{\gamma}_{k(j} \hat{D}_{i)} \beta^k
 	- 2 \alpha \bar{A}_{ij}
-	+ \epsilon_{ij,k} \beta^k
-	+ \epsilon_{ki} {\beta^k}_{,j}
-	+ \epsilon_{kj} {\beta^k}_{,i}
+	+ \bar{\epsilon}_{ij,k} \beta^k
+	+ \bar{\epsilon}_{ki} {\beta^k}_{,j}
+	+ \bar{\epsilon}_{kj} {\beta^k}_{,i}
 $<br>
 (oops, $\hat{\gamma}_{ij}$ can't raise/lower $\beta^k$, not without converting it back to $\gamma_{ij}$...)<br>
 
@@ -743,39 +763,39 @@ try again...
 
 $= \frac{2}{3} \bar{\gamma}_{ij} (\alpha {\bar{A}^k}_k - \bar{D}_k \beta^k)
 	+ 2 (
-		4 exp(4 \phi) \phi_{,(i} (\epsilon_{j)k} + \hat{\gamma}_{j)k}) \beta^k
-		+ exp(4 \phi) \hat{D}_{(i} (\epsilon_{j)k}) \beta^k
-		+ exp(4 \phi) (\epsilon_{j)k} + \hat{\gamma}_{j)k}) \hat{D}_{(i} \beta^k
+		4 exp(4 \phi) \phi_{,(i} (\bar{\epsilon}_{j)k} + \hat{\gamma}_{j)k}) \beta^k
+		+ exp(4 \phi) \hat{D}_{(i} (\bar{\epsilon}_{j)k}) \beta^k
+		+ exp(4 \phi) (\bar{\epsilon}_{j)k} + \hat{\gamma}_{j)k}) \hat{D}_{(i} \beta^k
 	)
 	- 2 \alpha \bar{A}_{ij}
-	+ \epsilon_{ij,k} \beta^k
-	+ \epsilon_{ki} {\beta^k}_{,j}
-	+ \epsilon_{kj} {\beta^k}_{,i}
+	+ \bar{\epsilon}_{ij,k} \beta^k
+	+ \bar{\epsilon}_{ki} {\beta^k}_{,j}
+	+ \bar{\epsilon}_{kj} {\beta^k}_{,i}
 $<br>
 $= \frac{2}{3} \bar{\gamma}_{ij} (\alpha {\bar{A}^k}_k - \bar{D}_k \beta^k)
 	+ 2 (
-		\hat{D}_{(i} (exp(4 \phi)) (\epsilon_{j)k} + \hat{\gamma}_{j)k}) \beta^k
-		+ exp(4 \phi) \hat{D}_{(i} (\epsilon_{j)k} + \hat{\gamma}_{j)k}) \beta^k
-		+ exp(4 \phi) (\epsilon_{j)k} + \hat{\gamma}_{j)k}) \hat{D}_{(i} \beta^k
+		\hat{D}_{(i} (exp(4 \phi)) (\bar{\epsilon}_{j)k} + \hat{\gamma}_{j)k}) \beta^k
+		+ exp(4 \phi) \hat{D}_{(i} (\bar{\epsilon}_{j)k} + \hat{\gamma}_{j)k}) \beta^k
+		+ exp(4 \phi) (\bar{\epsilon}_{j)k} + \hat{\gamma}_{j)k}) \hat{D}_{(i} \beta^k
 	)
 	- 2 \alpha \bar{A}_{ij}
-	+ \epsilon_{ij,k} \beta^k
-	+ \epsilon_{ki} {\beta^k}_{,j}
-	+ \epsilon_{kj} {\beta^k}_{,i}
+	+ \bar{\epsilon}_{ij,k} \beta^k
+	+ \bar{\epsilon}_{ki} {\beta^k}_{,j}
+	+ \bar{\epsilon}_{kj} {\beta^k}_{,i}
 $<br>
 $= \frac{2}{3} \bar{\gamma}_{ij} (\alpha {\bar{A}^k}_k - \bar{D}_k \beta^k)
-	+ 2 \hat{D}_{(i} ( exp(4 \phi) (\epsilon_{j)k} + \hat{\gamma}_{j)k}) \beta^k )
+	+ 2 \hat{D}_{(i} ( exp(4 \phi) (\bar{\epsilon}_{j)k} + \hat{\gamma}_{j)k}) \beta^k )
 	- 2 \alpha \bar{A}_{ij}
-	+ \epsilon_{ij,k} \beta^k
-	+ \epsilon_{ki} {\beta^k}_{,j}
-	+ \epsilon_{kj} {\beta^k}_{,i}
+	+ \bar{\epsilon}_{ij,k} \beta^k
+	+ \bar{\epsilon}_{ki} {\beta^k}_{,j}
+	+ \bar{\epsilon}_{kj} {\beta^k}_{,i}
 $<br>
 $= \frac{2}{3} \bar{\gamma}_{ij} (\alpha {\bar{A}^k}_k - \bar{D}_k \beta^k)
 	+ 2 \hat{D}_{(i} ( \gamma_{j)k} \beta^k )
 	- 2 \alpha \bar{A}_{ij}
-	+ \epsilon_{ij,k} \beta^k
-	+ \epsilon_{ki} {\beta^k}_{,j}
-	+ \epsilon_{kj} {\beta^k}_{,i}
+	+ \bar{\epsilon}_{ij,k} \beta^k
+	+ \bar{\epsilon}_{ki} {\beta^k}_{,j}
+	+ \bar{\epsilon}_{kj} {\beta^k}_{,i}
 $<br>
 
 
@@ -784,21 +804,20 @@ $= \frac{2}{3} \bar{\gamma}_{ij} (\alpha {\bar{A}^k}_k - \bar{D}_k \beta^k)
 	+ 2 \hat{D}_{(i} \beta_{j)}
 	- 2 \alpha \bar{A}_{ij}
 $ ... plus the Lie derivative terms (which are what?) ... $
-	+ \epsilon_{ij,k} \beta^k
-	+ \epsilon_{ki} {\beta^k}_{,j}
-	+ \epsilon_{kj} {\beta^k}_{,i}
+	+ \bar{\epsilon}_{ij,k} \beta^k
+	+ \bar{\epsilon}_{ki} {\beta^k}_{,j}
+	+ \bar{\epsilon}_{kj} {\beta^k}_{,i}
 $<br>
-
 <br>
 
-$\epsilon_{ij,\mu} = \bar{\gamma}_{ij,\mu} - \hat{\gamma}_{ij,\mu}$<br>
+$\bar{\epsilon}_{ij,\mu} = \bar{\gamma}_{ij,\mu} - \hat{\gamma}_{ij,\mu}$<br>
 <br>
 
-$\epsilon_{ij,k} = \bar{\gamma}_{ij,k} - \hat{\gamma}_{ij,k}$<br>
-$\bar{\gamma}_{ij,k} = \epsilon_{ij,k} + \hat{\gamma}_{ij,k}$<br>
+$\bar{\epsilon}_{ij,k} = \bar{\gamma}_{ij,k} - \hat{\gamma}_{ij,k}$<br>
+$\bar{\gamma}_{ij,k} = \bar{\epsilon}_{ij,k} + \hat{\gamma}_{ij,k}$<br>
 <br>
 
-$\epsilon_{ij,t} = \bar{\gamma}_{ij,t}$<br>
+$\bar{\epsilon}_{ij,t} = \bar{\gamma}_{ij,t}$<br>
 $= \frac{2}{3} \bar{\gamma}_{ij} (\alpha {\bar{A}^k}_k - \bar{D}_k \beta^k)
 	+ 2 \hat{D}_{(i} \beta_{j)}
 	-2 \alpha \bar{A}_{ij}
@@ -1296,6 +1315,31 @@ $= 	\bar{\gamma}^{jk} {\beta^i}_{,jk}
 	- 2 \alpha {\bar{A}^{ij}}_{,j}
 	- 2 \alpha_{,j} \bar{A}^{ij}
 $<br>
+<br>
+
+${\bar{\Lambda}^i}_{,t} = (\Delta^i - \mathcal{C}^i)_{,t}$<br>
+$= {\Delta^i}_{,t}$<br>
+$= ({\Delta^i}_{jk} \bar{\gamma}^{jk})_{,t}$<br>
+$= (
+	{\bar{\Gamma}^i}_{jk} \bar{\gamma}^{jk} 
+	- {\hat{\Gamma}^i}_{jk} \bar{\gamma}^{jk}
+)_{,t}$<br>
+
+$= (
+	- \frac{1}{\sqrt{\bar{\gamma}}} ( \sqrt{\bar{\gamma}} \bar{\gamma}^{ij})_{,j}
+	+ \frac{1}{\sqrt{\hat{\gamma}}} ( \sqrt{\hat{\gamma}} \hat{\gamma}^{ij})_{,j}
+)_{,t}$<br>
+
+$= \frac{1}{2} (
+	\bar{\gamma}^{il} (\bar{\gamma}_{lj,k} + \bar{\gamma}_{lk,j} - \bar{\gamma}_{jk,l}) \bar{\gamma}^{jk} 
+	- \hat{\gamma}^{il} (\hat{\gamma}_{lj,k} + \hat{\gamma}_{lk,j} - \hat{\gamma}_{jk,l}) \bar{\gamma}^{jk}
+)_{,t}$<br>
+$= (
+	\bar{\gamma}^{il} \bar{\gamma}_{lj,k} \bar{\gamma}^{jk}
+	- \frac{1}{2} \bar{\gamma}^{il} \bar{\gamma}_{jk,l} \bar{\gamma}^{jk}
+	- \hat{\gamma}^{il} \hat{\gamma}_{lj,k} \bar{\gamma}^{jk}
+	+ \frac{1}{2} \hat{\gamma}^{il} \hat{\gamma}_{jk,l} \bar{\gamma}^{jk}
+)_{,t}$<br>
 <br>
 
 <hr>
