@@ -880,7 +880,7 @@ $ =
 	- 4 \bar{\gamma}_{ij} \bar{\gamma}^{lk} \phi_{,k} \phi_{,l}
 $<br>
 $ = \bar{R}_{ij} + R^\phi_{ij}$<br>
-for $R^{\phi}_{ij} = 
+...where $R^{\phi}_{ij} = 
 	- 2 \phi_{,ij}
 	+ 2 {\bar{\Gamma}^k}_{ij} \phi_{,k}
 	- 2 \bar{\gamma}_{ij} \bar{\gamma}^{lk} \phi_{,kl}
@@ -927,7 +927,103 @@ $\bar{R}_{ij} =
 	+ 8 \bar{\gamma}_{ij} \bar{\gamma}^{kl} \bar{\gamma}_{lm} \phi_{,k} \bar{\gamma}^{mn} \phi_{,n}
 	+ 2 \bar{\gamma}_{ij} \bar{\gamma}^{kl} \bar{\Gamma}_{lkm} \bar{\gamma}^{mn} \phi_{,n}
 $<br>
+$\bar{R}_{ij} =
+	(
+		{\bar{\gamma}^{kl}}_{,k} \bar{\Gamma}_{lik}
+		+ \frac{1}{2} \bar{\gamma}^{kl} (
+			\bar{\gamma}_{li,jk}
+			+ \bar{\gamma}_{lj,ik}
+			- \bar{\gamma}_{ij,lk}
+		)
+	)
+	- (
+		{\bar{\gamma}^{kl}}_{,j} \bar{\Gamma}_{lik}
+		+ \frac{1}{2} \bar{\gamma}^{kl} ( 
+			\bar{\gamma}_{li,kj}
+			+ \bar{\gamma}_{lk,ij}
+			- \bar{\gamma}_{ik,lj}
+		)
+	)
+	+ {\bar{\Gamma}^l}_{ij} {\bar{\Gamma}^k}_{lk} 
+	- {\bar{\Gamma}^l}_{ki} {\bar{\Gamma}^k}_{lj} 
+	+ 8 \bar{\gamma}_{ij} \bar{\gamma}^{kl} \phi_{,k} \phi_{,l}
+$<br>
+$\bar{R}_{ij} =
+	{\bar{\gamma}^{kl}}_{,k} \bar{\Gamma}_{lik}
+	+ \frac{1}{2} \bar{\gamma}^{kl} (
+		\bar{\gamma}_{li,jk}
+		+ \bar{\gamma}_{lj,ik}
+		- \bar{\gamma}_{ij,lk}
+	)
+	- {\bar{\gamma}^{kl}}_{,j} \bar{\Gamma}_{lik}
+	- \frac{1}{2} \bar{\gamma}^{kl} ( 
+		\bar{\gamma}_{li,kj}
+		+ \bar{\gamma}_{lk,ij}
+		- \bar{\gamma}_{ik,lj}
+	)
+	
+	+ {\bar{\Gamma}^l}_{ij} {\bar{\Gamma}^k}_{lk} 
+	- {\bar{\Gamma}^l}_{ki} {\bar{\Gamma}^k}_{lj} 
+	+ 8 \bar{\gamma}_{ij} \bar{\gamma}^{kl} \phi_{,k} \phi_{,l}
+$<br>
+$\bar{R}_{ij} =
+	- \bar{\gamma}^{km} \bar{\gamma}_{mn,k} \bar{\gamma}^{nl} \bar{\Gamma}_{lik}
+	+ \bar{\gamma}^{km} \bar{\gamma}_{mn,j} \bar{\gamma}^{nl} \bar{\Gamma}_{lik}
+	- \frac{1}{2} \bar{\gamma}^{kl} ( 
+		\bar{\gamma}_{ik,jl}
+		+ \bar{\gamma}_{jk,il}
+		- \bar{\gamma}_{ij,kl}
+		- \bar{\gamma}_{kl,ij}
+	)
+	
+	+ {\bar{\Gamma}^l}_{ij} {\bar{\Gamma}^k}_{lk} 
+	- {\bar{\Gamma}^l}_{ki} {\bar{\Gamma}^k}_{lj} 
+	+ 8 \bar{\gamma}_{ij} \bar{\gamma}^{kl} \phi_{,k} \phi_{,l}
+$<br>
+$\bar{R}_{ij} =
+	- \bar{\gamma}^{km} (\bar{\Gamma}_{mkn} + \bar{\Gamma}_{nkm}) \bar{\gamma}^{nl} \bar{\Gamma}_{lik}
+	+ \bar{\gamma}^{km} (\bar{\Gamma}_{mjn} + \bar{\Gamma}_{njm}) \bar{\gamma}^{nl} \bar{\Gamma}_{lik}
+	- \frac{1}{2} \bar{\gamma}^{kl} ( 
+		\bar{\gamma}_{ik,jl}
+		+ \bar{\gamma}_{jk,il}
+		- \bar{\gamma}_{ij,kl}
+		- \bar{\gamma}_{kl,ij}
+	)
+	
+	+ {\bar{\Gamma}^l}_{ij} {\bar{\Gamma}^k}_{lk} 
+	- {\bar{\Gamma}^l}_{ki} {\bar{\Gamma}^k}_{lj} 
+	+ 8 \bar{\gamma}_{ij} \bar{\gamma}^{kl} \phi_{,k} \phi_{,l}
+$<br>
+$\bar{R}_{ij} =
+	- {\bar{\Gamma}^k}_{lk} {\bar{\Gamma}^l}_{ik} 
+	- {\bar{\Gamma}^{lk}}_k \bar{\Gamma}_{lik}
+	+ {\bar{\Gamma}^k}_{jn} \bar{\gamma}^{nl} \bar{\Gamma}_{lik} 
+	+ {\bar{\Gamma}^{lk}}_j \bar{\Gamma}_{lik}
+	- \frac{1}{2} \bar{\gamma}^{kl} ( 
+		\bar{\gamma}_{ik,jl}
+		+ \bar{\gamma}_{jk,il}
+		- \bar{\gamma}_{ij,kl}
+		- \bar{\gamma}_{kl,ij}
+	)
+	
+	+ {\bar{\Gamma}^l}_{ij} {\bar{\Gamma}^k}_{lk} 
+	- {\bar{\Gamma}^l}_{ki} {\bar{\Gamma}^k}_{lj} 
+	+ 8 \bar{\gamma}_{ij} \bar{\gamma}^{kl} \phi_{,k} \phi_{,l}
+$<br>
+
 (TODO derive this)<br>
+$\bar{R}_{ij} = 
+	-\frac{1}{2} \bar{\gamma}^{kl} \bar{\gamma}_{ij,kl}
+	+ \frac{1}{2} \bar{\gamma}_{ik} ({\bar{\Gamma}^k}_{lm} \bar{\gamma}^{lm})_{,j}
+	+ \frac{1}{2} \bar{\gamma}_{jk} ({\bar{\Gamma}^k}_{lm} \bar{\gamma}^{lm})_{,i}
+	+ \frac{1}{2} \bar{\Gamma}^k \bar{\Gamma}_{ijk}
+	+ \frac{1}{2} \bar{\Gamma}^k \bar{\Gamma}_{jik}
+	+ \bar{\gamma}^{lm} (
+		{\bar{\Gamma}^k}_{li} \bar{\Gamma}_{jkm}
+		+ {\bar{\Gamma}^k}_{lj} \bar{\Gamma}_{ikm}
+		+ {\bar{\Gamma}^k}_{im} \bar{\Gamma}_{klj}
+	)
+$<br>
 $\bar{R}_{ij} = 
 	-\frac{1}{2} \bar{\gamma}^{kl} \bar{\gamma}_{ij,kl}
 	+ \frac{1}{2} \bar{\gamma}_{ik} {\bar{\Gamma}^k}_{,j}
@@ -969,7 +1065,7 @@ $= exp(-4 \phi) \alpha (
 )^{TF}$<br>
 $= exp(-4 \phi) ( 
 	- 2 \alpha \bar{D}_i \bar{D}_j \phi 
-	+ 4 \alpha \bar{D}_i \bar{D}_j 
+	+ 4 \alpha \bar{D}_i \phi \bar{D}_j \phi
 	+ \alpha \bar{R}_{ij}
 )^{TF}$<br>
 <br>
