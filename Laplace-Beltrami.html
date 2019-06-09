@@ -7,6 +7,29 @@
 	</head>
     <body>
 
+Laplace operator:<br>
+$\Delta f = \nabla \cdot \nabla f = 4 \pi \rho$<br>
+Let $f = \frac{c}{|x|}$<br>
+So $\nabla_a f = -c \frac{1}{|x|^2} \frac{x_a}{|x|}$<br> 
+So $\nabla^a \nabla_a f = -c g^{ab} (
+	\nabla_b (\frac{1}{|x|^2}) \frac{x_a}{|x|} 
+	+ \frac{1}{|x|^2} \nabla_b \frac{x_a}{|x|} 
+)$<br> 
+$= -c g^{ab} (
+	-2 \frac{1}{|x|^3} \frac{x_b}{|x|} \frac{x_a}{|x|} 
+	+ \frac{1}{|x|^2} (
+		g_{ab} \frac{1}{|x|} 
+		- x_a \frac{1}{|x|^2} \frac{x_b}{|x|} 
+	)
+)$<br> 
+$= -c g^{ab} (
+	\frac{1}{|x|^3} g_{ab}
+	- \frac{3}{|x|^5} x_a x_b
+)$<br> 
+$= -c (n-3) \frac{1}{|x|^3}$ for $n =$ the dimension of the manifold<br> 
+
+<br>
+
 scalar fields in Cartesian coordinates:<br>
 <br>
 
