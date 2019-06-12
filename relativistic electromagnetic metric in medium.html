@@ -1016,25 +1016,25 @@ So $D_{uv} = \frac{1}{\mu_0} F_{uv} - M_{uv}$<br>
 <br>
 
 $(J_{free})^u = {D^{uv}}_{,v}$<br>
-$(J_{free})^t = {D^{tu}}_{,u} = c D_{j,j} = c \rho_{free}$<br>
-$(J_{free})^i = -D_{i,t} + \bar\epsilon^{ijk} H_{k,j}$<br>
+$(J_{free})^0 = {D^{0u}}_{,u} = c D_{j,j} = c \rho_{free}$<br>
+$(J_{free})^i = -D_{i,0} + \bar\epsilon^{ijk} H_{k,j}$<br>
 $(J_{free})^u$ is in units of $\frac{C}{m^2 \cdot s}$<br>
-${(J_{free})^u}_{,u} = D_{j,jt} - D_{i,ti} + \bar\epsilon^{ijk} H_{k,ji} = 0$<br>
+${(J_{free})^u}_{,u} = D_{j,j0} - D_{i,0i} + \bar\epsilon^{ijk} H_{k,ji} = 0$<br>
 ${(J_{free})^u}_{,u}$ is in units of $\frac{C}{m^3 \cdot s}$<br>
 <br>
 
 $(J_{bound})^u = {M^{uv}}_{,v}$<br>
 $(J_{bound})^u$ is in units of $\frac{C}{m^2 \cdot s}$<br>
-$(J_{bound})^t = {M^{tv}}_{,v} = -c P_{j,j} = c \rho_{bound}$<br>
-$(J_{bound})^i = P_{i,t} + \bar\epsilon^{ijk} M_{k,j}$<br>
+$(J_{bound})^0 = {M^{0v}}_{,v} = -c P_{j,j} = c \rho_{bound}$<br>
+$(J_{bound})^i = P_{i,0} + \bar\epsilon^{ijk} M_{k,j}$<br>
 $(J_{bound})^u$ is in units of $\frac{C}{m^2 \cdot s}$<br>
-${(J_{bound})^u}_{,u} = -P_{j,jt} + P_{i,it} + \bar\epsilon^{ijk} M_{k,ji} = 0$<br>
+${(J_{bound})^u}_{,u} = -P_{j,j0} + P_{i,i0} + \bar\epsilon^{ijk} M_{k,ji} = 0$<br>
 ${(J_{bound})^u}_{,u}$ is in units of $\frac{C}{m^3 \cdot s}$<br>
 <br>
 
 $J^a = (J_{free})^a + (J_{bound})^a$ is in units of $\frac{C}{m^3 \cdot s}$<br>
-$(J_{free})^a = \pmatrix{ c \rho_{free} \\ {J^i}_{free} } = \pmatrix{ c D_{j,j} \\ -D_{i,t} + {\bar\epsilon_i}^{jk} H_{k,j} }$<br>
-$(J_{bound})^a = \pmatrix{ c \rho_{bound} \\ {J^i}_{bound} } = \pmatrix{ -c P_{j,j} \\ P_{i,t} + {\bar\epsilon_i}^{jk} M_{k,j} }$<br>
+$(J_{free})^a = \pmatrix{ c \rho_{free} \\ {J^i}_{free} } = \pmatrix{ c D_{j,j} \\ -D_{i,0} + {\bar\epsilon_i}^{jk} H_{k,j} }$<br>
+$(J_{bound})^a = \pmatrix{ c \rho_{bound} \\ {J^i}_{bound} } = \pmatrix{ -c P_{j,j} \\ P_{i,0} + {\bar\epsilon_i}^{jk} M_{k,j} }$<br>
 <br>
 
 For linear susceptibility:<br>
@@ -1137,7 +1137,7 @@ $T^{[uv]} = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
 }}$<br>
 $\vec{D} \times \vec{B}$ has units $\frac{kg}{m^2 \cdot s}$<br>
 $\vec{E} \times \vec{H} = \vec{S}$ has units $\frac{kg}{s^3}$<br>
-$T^{[it]} = \frac{1}{2} \frac{1}{c} (n^2 - 1) S_i$ has units $\frac{kg}{m \cdot s^2}$<br>
+$T^{[i0]} = \frac{1}{2} \frac{1}{c} (n^2 - 1) S_i$ has units $\frac{kg}{m \cdot s^2}$<br>
 <br>
 For curiousity's sake, what is the symmetric component?<br>
 $T^{(uv)} = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
@@ -1148,7 +1148,7 @@ $T^{(uv)} = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
 }}$<br>
 <br>
 Simplifying...<br>
-$T^{(it)} = \frac{1}{2} (c (\frac{v_p}{c})^2 \bar\epsilon_{ikl} D_k B_l + c \bar\epsilon_{ikl} D_k B_l)$<br>
+$T^{(i0)} = \frac{1}{2} (c (\frac{v_p}{c})^2 \bar\epsilon_{ikl} D_k B_l + c \bar\epsilon_{ikl} D_k B_l)$<br>
 $= \frac{1}{2} c (1 + (\frac{v_p}{c})^2) \bar\epsilon_{ikl} D_k B_l$<br>
 $= \frac{1}{2} \frac{1}{c} (n^2 + 1) S_i$<br>
 <br>
@@ -1195,11 +1195,11 @@ $T^{uv} = \pmatrix{
 And now for ${T^{uv}}_{,u}$...<br>
 <br>
 ${T^{uv}}_{,v} = $...<br>
-${T^{tv}}_{,v} = \frac{1}{2} \frac{1}{c} (\frac{1}{\epsilon} D^2 + \frac{1}{\mu} B^2)_{,t} 
+${T^{0v}}_{,v} = \frac{1}{2} \frac{1}{c} (\frac{1}{\epsilon} D^2 + \frac{1}{\mu} B^2)_{,0} 
 	+ \frac{1}{c} \bar\epsilon_{jkl} (\frac{1}{\mu\epsilon} D_k B_l)_{,j}$<br>
-${T^{iv}}_{,v} = \bar\epsilon_{ikl} (D_k B_l)_{,t}
+${T^{iv}}_{,v} = \bar\epsilon_{ikl} (D_k B_l)_{,0}
 	+ (\frac{1}{2} \eta^{ij} (\frac{1}{\epsilon} D^2 + \frac{1}{\mu} B^2) - \frac{1}{\epsilon} D^i D^j - \frac{1}{\mu} B^i B^j)_{,j}$<br>
-$ = \bar\epsilon_{ikl} (D_k B_l)_{,t}
+$ = \bar\epsilon_{ikl} (D_k B_l)_{,0}
 	
 	+ \frac{1}{2} (\frac{1}{\epsilon})_{,i} D^2
 	- (\frac{1}{\epsilon})_{,j} D_i D_j
