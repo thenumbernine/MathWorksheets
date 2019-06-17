@@ -947,7 +947,7 @@ $\bar{R}_{ij} =
 $<br>
 $\bar{R}_{ij} =
 	(
-		{\bar{\gamma}^{kl}}_{,k} \bar{\Gamma}_{lik}
+		{\bar{\gamma}^{kl}}_{,k} \bar{\Gamma}_{lij}
 		+ \frac{1}{2} \bar{\gamma}^{kl} (
 			\bar{\gamma}_{li,jk}
 			+ \bar{\gamma}_{lj,ik}
@@ -967,7 +967,7 @@ $\bar{R}_{ij} =
 	+ 8 \bar{\gamma}_{ij} \bar{\gamma}^{kl} \phi_{,k} \phi_{,l}
 $<br>
 $\bar{R}_{ij} =
-	{\bar{\gamma}^{kl}}_{,k} \bar{\Gamma}_{lik}
+	{\bar{\gamma}^{kl}}_{,k} \bar{\Gamma}_{lij}
 	+ \frac{1}{2} \bar{\gamma}^{kl} (
 		\bar{\gamma}_{li,jk}
 		+ \bar{\gamma}_{lj,ik}
@@ -985,7 +985,7 @@ $\bar{R}_{ij} =
 	+ 8 \bar{\gamma}_{ij} \bar{\gamma}^{kl} \phi_{,k} \phi_{,l}
 $<br>
 $\bar{R}_{ij} =
-	- \bar{\gamma}^{km} \bar{\gamma}_{mn,k} \bar{\gamma}^{nl} \bar{\Gamma}_{lik}
+	- \bar{\gamma}^{km} \bar{\gamma}_{mn,k} \bar{\gamma}^{nl} \bar{\Gamma}_{lij}
 	+ \bar{\gamma}^{km} \bar{\gamma}_{mn,j} \bar{\gamma}^{nl} \bar{\Gamma}_{lik}
 	- \frac{1}{2} \bar{\gamma}^{kl} ( 
 		\bar{\gamma}_{ik,jl}
@@ -999,7 +999,7 @@ $\bar{R}_{ij} =
 	+ 8 \bar{\gamma}_{ij} \bar{\gamma}^{kl} \phi_{,k} \phi_{,l}
 $<br>
 $\bar{R}_{ij} =
-	- \bar{\gamma}^{km} (\bar{\Gamma}_{mkn} + \bar{\Gamma}_{nkm}) \bar{\gamma}^{nl} \bar{\Gamma}_{lik}
+	- \bar{\gamma}^{km} (\bar{\Gamma}_{mkn} + \bar{\Gamma}_{nkm}) \bar{\gamma}^{nl} \bar{\Gamma}_{lij}
 	+ \bar{\gamma}^{km} (\bar{\Gamma}_{mjn} + \bar{\Gamma}_{njm}) \bar{\gamma}^{nl} \bar{\Gamma}_{lik}
 	- \frac{1}{2} \bar{\gamma}^{kl} ( 
 		\bar{\gamma}_{ik,jl}
@@ -1013,8 +1013,8 @@ $\bar{R}_{ij} =
 	+ 8 \bar{\gamma}_{ij} \bar{\gamma}^{kl} \phi_{,k} \phi_{,l}
 $<br>
 $\bar{R}_{ij} =
-	- {\bar{\Gamma}^k}_{lk} {\bar{\Gamma}^l}_{ik} 
-	- {\bar{\Gamma}^{lk}}_k \bar{\Gamma}_{lik}
+	- {\bar{\Gamma}^k}_{lk} {\bar{\Gamma}^l}_{ij}
+	- {\bar{\Gamma}^{lk}}_k \bar{\Gamma}_{lij}
 	+ {\bar{\Gamma}^k}_{jn} \bar{\gamma}^{nl} \bar{\Gamma}_{lik} 
 	+ {\bar{\Gamma}^{lk}}_j \bar{\Gamma}_{lik}
 	- \frac{1}{2} \bar{\gamma}^{kl} ( 
@@ -1026,6 +1026,20 @@ $\bar{R}_{ij} =
 	
 	+ {\bar{\Gamma}^l}_{ij} {\bar{\Gamma}^k}_{lk} 
 	- {\bar{\Gamma}^l}_{ki} {\bar{\Gamma}^k}_{lj} 
+	+ 8 \bar{\gamma}_{ij} \bar{\gamma}^{kl} \phi_{,k} \phi_{,l}
+$<br>
+
+$\bar{R}_{ij} =
+	
+	+ {\bar{\Gamma}^l}_{ij} {\bar{\Gamma}^k}_{lk} 
+	- {\bar{\Gamma}^k}_{lj} {\bar{\Gamma}^l}_{ik} 
+	
+	- {\bar{\Gamma}^k}_{lk} {\bar{\Gamma}^l}_{ij}
+	- {\bar{\Gamma}^{lk}}_k \bar{\Gamma}_{lij}
+	+ {\bar{\Gamma}^k}_{jl} {\bar{\Gamma}^l}_{ik} 
+	+ {\bar{\Gamma}^{lk}}_j \bar{\Gamma}_{lik}
+	- \bar{\gamma}^{kl} \bar{\Gamma}_{kij,l}
+	+ \frac{1}{2} \bar{\gamma}^{kl} \bar{\gamma}_{kl,ij}
 	+ 8 \bar{\gamma}_{ij} \bar{\gamma}^{kl} \phi_{,k} \phi_{,l}
 $<br>
 
@@ -1088,7 +1102,7 @@ $<br>
 This is 2008 Alcubierre eqn 2.8.17; 2010 Baumgarte, Shapiro eqn 11.41.<br>
 ... TODO more steps ...<br>
 $\bar{R}_{ij} =
-	-\frac{1}{2} \bar{\gamma}_{ij} \bar{\gamma}^{kl} \hat{D}_k \hat{D}_l
+	-\frac{1}{2} \bar{\gamma}^{kl} \hat{D}_k \hat{D}_l \bar{\gamma}_{ij}
 	+ \bar{\gamma}_{k(i} \hat{D}_{j)} \bar{\Lambda}^k
 	+ \Delta^k \Delta_{(ij)k}
 	+ \bar{\gamma}^{kl} (

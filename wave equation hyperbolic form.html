@@ -17,25 +17,25 @@ $\phi_{,tt} - c^2 g^{ij} (\phi_{,ij} - {\Gamma^k}_{ij} \phi_{,k}) = 0$<br>
 $\phi_{,tt} - c^2 g^{ij} \phi_{,ij} + c^2 {\Gamma^{ij}}_j \phi_{,i} = 0$<br>
 <br>
 
-Let $a = \phi_{,t}$<br>
-Let $b_i = \phi_,i$<br>
+Let $\Pi = \phi_{,t}$<br>
+Let $\Psi_i = \phi_{,i}$<br>
 <br>
 
-$\phi_{,t} = a$<br>
-$a_{,t} - c^2 g^{jk} b_{j,k} = -c^2 {\Gamma^{jk}}_k b_j$<br>
-$b_{i,t} - a_{,i} = 0$<br>
+$\phi_{,t} = \Pi$<br>
+$\Pi_{,t} - c^2 g^{jk} \Psi_{j,k} = -c^2 {\Gamma^{jk}}_k \Psi_j$<br>
+$\Psi_{i,t} - \Pi_{,i} = 0$<br>
 <br>
 
 Produces:<br>
 $\left[\begin{matrix}
-	a \\ b_i
+	\Pi \\ \Psi_i
 \end{matrix}\right]_{,t} + \left[\begin{matrix}
 	0 & -c^2 g^{jk} \\
 	-\delta^i_k & 0
 \end{matrix}\right] \left[\begin{matrix}
-	a \\ b_j
+	\Pi \\ \Psi_j
 \end{matrix}\right]_{,k} = \left[\begin{matrix}
-	-c^2 {\Gamma^{jk}}_k b_j \\ 0
+	-c^2 {\Gamma^{jk}}_k \Psi_j \\ 0
 \end{matrix}\right]$<br>
 <br>
 
@@ -123,11 +123,11 @@ $\phi_{,tt} - c^2 {\phi_{;i}}^i = 0$<br>
 Assuming $g_{ij}$ is not a function of $t$...<br>
 $\phi_{,tt} - \frac{1}{\sqrt{|g|}} (\sqrt{|g|} c^2 g^{ij} \phi_{,i})_{,j} = 0$<br>
 <br>
-$a_{,t} - \frac{1}{\sqrt{|g|}} (\sqrt{|g|} c^2 g^{ij} b_i)_{,j} = 0$<br>
-$b_{i,t} - \frac{1}{\sqrt{|g|}} (\sqrt{|g|} a)_{,i} = -{\Gamma^j}_{ij} a$<br>
+$\Pi_{,t} - \frac{1}{\sqrt{|g|}} (\sqrt{|g|} c^2 g^{ij} \Psi_i)_{,j} = 0$<br>
+$\Psi_{i,t} - \frac{1}{\sqrt{|g|}} (\sqrt{|g|} \Pi)_{,i} = -{\Gamma^j}_{ij} \Pi$<br>
 <br>
 $\left[\begin{matrix}
-	a \\ b_i
+	\Pi \\ \Psi_i
 \end{matrix}\right]_{,t}
 + \frac{1}{\sqrt{|g|}} \left(
 	\sqrt{|g|} \cdot
@@ -135,11 +135,11 @@ $\left[\begin{matrix}
 		0 & -c^2 g^{jk} \\
 		-\delta^i_k & 0
 	\end{matrix}\right] \left[\begin{matrix}
-		a \\ b_j
+		\Pi \\ \Psi_j
 	\end{matrix}\right]
 \right)_{,k}
 = \left[\begin{matrix}
-	0 \\ -{\Gamma^j}_{ij} a 
+	0 \\ -{\Gamma^j}_{ij} \Pi
 \end{matrix}\right]$<br>
 <br>
 
@@ -148,25 +148,25 @@ $\left[\begin{matrix}
 
 How about changing the first-order variables?<br>
 
-$a = \phi_{,t}$<br>
-$b_i = \sqrt{|g|} \phi_{,i}$<br>
+$\Pi = \phi_{,t}$<br>
+$\Psi_i = \sqrt{|g|} \phi_{,i}$<br>
 assuming a steady grid, so $g_{ij,t} = 0$<br>
 <br>
-$a_{,t} - \frac{1}{\sqrt{|g|}} (c^2 g^{ij} b_i)_{,j} = 0$<br>
-$b_{i,t} - \sqrt{|g|} a_{,i} = 0$<br>
+$\Pi_{,t} - \frac{1}{\sqrt{|g|}} (c^2 g^{ij} \Psi_i)_{,j} = 0$<br>
+$\Psi_{i,t} - \sqrt{|g|} \Pi_{,i} = 0$<br>
 <br>
 
 <hr>
 <br>
 
-$a = \sqrt{|g|} \phi_{,t}$<br>
-$b_i = \sqrt{|g|} \phi_{,i}$<br>
-$b_{i,t} = \sqrt{|g|} \phi_{,ti}$<br>
-$b_{i,t} = (\sqrt{|g|} \phi_{,t})_{,i} - (\sqrt{|g|})_{,i} \phi_{,t}$<br>
-$b_{i,t} - a_{,i} = -\frac{1}{\sqrt{|g|}} (\sqrt{|g|})_{,i} a$<br>
-$\frac{1}{\sqrt{|g|}} a_{,t} - \frac{1}{\sqrt{|g|}} (c^2 g^{ij} b_i)_{,j} = 0$<br>
-$a_{,t} - (c^2 g^{ij} b_i)_{,j} = 0$<br>
-$b_{i,t} - a_{,i} = -{\Gamma^j}_{ij} a$<br>
+$\Pi = \sqrt{|g|} \phi_{,t}$<br>
+$\Psi_i = \sqrt{|g|} \phi_{,i}$<br>
+$\Psi_{i,t} = \sqrt{|g|} \phi_{,ti}$<br>
+$\Psi_{i,t} = (\sqrt{|g|} \phi_{,t})_{,i} - (\sqrt{|g|})_{,i} \phi_{,t}$<br>
+$\Psi_{i,t} - \Pi_{,i} = -\frac{1}{\sqrt{|g|}} (\sqrt{|g|})_{,i} \Pi$<br>
+$\frac{1}{\sqrt{|g|}} \Pi_{,t} - \frac{1}{\sqrt{|g|}} (c^2 g^{ij} \Psi_i)_{,j} = 0$<br>
+$\Pi_{,t} - (c^2 g^{ij} \Psi_i)_{,j} = 0$<br>
+$\Psi_{i,t} - \Pi_{,i} = -{\Gamma^j}_{ij} \Pi$<br>
 <br>
 
 	</body>
