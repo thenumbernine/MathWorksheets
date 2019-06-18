@@ -158,6 +158,8 @@ Here's the CDN URLs:
 
 [Numerical Relativity/adm from efe](https://thenumbernine.github.io/math/Numerical%20Relativity/adm%20from%20efe.html)
 
+[Numerical Relativity/bssnok-scalar](https://thenumbernine.github.io/math/Numerical%20Relativity/bssnok%2dscalar.html)
+
 [Numerical Relativity/bssnok](https://thenumbernine.github.io/math/Numerical%20Relativity/bssnok.html)
 
 [Numerical Relativity/eigenwhatever](https://thenumbernine.github.io/math/Numerical%20Relativity/eigenwhatever.html)

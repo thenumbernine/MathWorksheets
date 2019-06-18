@@ -1,0 +1,187 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<title>Numerical Relativity - BSSNOK</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+	</head>
+    <body>
+
+Sources:<br>
+2017 Escorihuela-Tomàs, Sanchis-Gual, Degollado, Font, "Quasistationary solutions of scalar fields aroundcollapsing self-interacting boson stars"<br>
+<br>
+
+$(\square - \frac{dV}{d|\Phi|^2}) \Phi = 0$<br>
+$g^{ab} \nabla_a \nabla_b \Phi - \frac{dV}{d|\Phi|^2} \Phi = 0$<br>
+$g^{ab} \nabla_a \Phi_{,b} - \frac{dV}{d|\Phi|^2} \Phi = 0$<br>
+$g^{ab} \Phi_{,ab} - {\Gamma^c}_{ab} \Phi_{,c} - \frac{dV}{d|\Phi|^2} \Phi = 0$<br>
+<br>
+
+substitute ADM metric components:<br>
+$g^{tt} \Phi_{,tt}
+	+ 2 g^{ti} \Phi_{,ti}
+	+ g^{ij} \Phi_{,ij}
+	- \Gamma^c \Phi_{,c}
+	- \frac{dV}{d|\Phi|^2} \Phi = 0$<br>
+$-\alpha^{-2} \Phi_{,tt}
+	+ 2 \alpha^{-2} \beta^i \Phi_{,ti}
+	+ (\gamma^{ij}
+	- \alpha^{-2} \beta^i \beta^j) \Phi_{,ij}
+	- \Gamma^t \Phi_{,t}
+	- \Gamma^i \Phi_{,i}
+	- \frac{dV}{d|\Phi|^2} \Phi = 0$<br>
+$-\Phi_{,tt}
+	+ 2 \beta^i \Phi_{,ti}
+	+ (\alpha^2 \gamma^{ij} - \beta^i \beta^j) \Phi_{,ij}
+	- \alpha^2 \Gamma^t \Phi_{,t}
+	- \alpha^2 \Gamma^i \Phi_{,i}
+	- \alpha^2 \frac{dV}{d|\Phi|^2} \Phi = 0$<br>
+solve for $\Phi_{,tt}$:<br>
+$\Phi_{,tt} =
+	2 \beta^i \Phi_{,ti}
+	+ (\alpha^2 \gamma^{ij} - \beta^i \beta^j) \Phi_{,ij}
+	- \alpha^2 \Gamma^t \Phi_{,t}
+	- \alpha^2 \Gamma^i \Phi_{,i}
+	- \alpha^2 \frac{dV}{d|\Phi|^2} \Phi$<br>
+<br>
+Notice that $\Gamma^u$ is the connection of the 4-metric, not of the 3-metric.<br>
+Substituting it for our 3-metric connection:<br>
+<br>
+
+Let $\Pi = n^\mu \Phi_{,\mu}$<br>
+$\Pi = n^t \Phi_{,t} + n^i \Phi_{,i}$<br>
+$\Pi = \frac{1}{\alpha} ( \Phi_{,t} - \beta^i \Phi_{,i} )$ (eqn. 5)<br>
+<br>
+
+Let $\Psi_i = \Phi_{,i}$ (eqn. 6)<br>
+<br>
+
+Solve $\Pi$ for $\Phi_{,t}$:<br>
+$\Pi = \frac{1}{\alpha} ( \Phi_{,t} - \beta^i \Phi_{,i} )$<br>
+$\alpha \Pi = \Phi_{,t} - \beta^i \Phi_{,i}$<br>
+$\Phi_{,t} = \alpha \Pi + \beta^i \Phi_{,i}$ (eqn. 7)<br>
+$\frac{d}{dt} \Phi = \alpha \Pi$<br>
+<br>
+
+Solve $\Pi_{,i}$ for $\Psi_{i,t}$:<br>
+$\Pi = \frac{1}{\alpha} ( \Phi_{,t} - \beta^i \Phi_{,i} )$<br>
+$\Pi_{,i} = 
+	-\frac{1}{\alpha^2} \alpha_{,i} ( \Phi_{,t} - \beta^j \Phi_{,j} )
+	+ \frac{1}{\alpha} ( \Phi_{,t} - \beta^j \Phi_{,j} )_{,i}
+$<br>
+$\Pi_{,i} = 
+	-\frac{1}{\alpha^2} \alpha_{,i} \Phi_{,t} 
+	+ \frac{1}{\alpha^2} \alpha_{,i} \beta^j \Phi_{,j} 
+	+ \frac{1}{\alpha} \Phi_{,ti} 
+	- \frac{1}{\alpha} {\beta^j}_{,i} \Phi_{,j} 
+	- \frac{1}{\alpha} \beta^j \Phi_{,ji} 
+$<br>
+substitute $\Phi_{,t}$:<br>
+$\Pi_{,i} = 
+	-\frac{1}{\alpha^2} \alpha_{,i} (\alpha \Pi + \beta^i \Phi_{,i})
+	+ \frac{1}{\alpha^2} \alpha_{,i} \beta^j \Phi_{,j} 
+	+ \frac{1}{\alpha} \Phi_{,ti} 
+	- \frac{1}{\alpha} {\beta^j}_{,i} \Phi_{,j} 
+	- \frac{1}{\alpha} \beta^j \Phi_{,ji} 
+$<br>
+$\Pi_{,i} = 
+	-\frac{1}{\alpha} \alpha_{,i} \Pi 
+	+ \frac{1}{\alpha} \Phi_{,ti} 
+	- \frac{1}{\alpha} {\beta^j}_{,i} \Phi_{,j} 
+	- \frac{1}{\alpha} \beta^j \Phi_{,ji} 
+$<br>
+substitute $\Phi_{,i} = \Psi_i$<br>
+$\alpha \Pi_{,i} = 
+	-\alpha_{,i} \Pi 
+	+ \Psi_{i,t} 
+	- {\beta^j}_{,i} \Phi_{,j} 
+	- \beta^j \Psi_{i,j} 
+$<br>
+solve for $\Psi_{i,t}$<br>
+$\Psi_{i,t} =
+	(\alpha \Pi)_{,i} 
+	+ \beta^j \Psi_{i,j} 
+	+ {\beta^j}_{,i} \Phi_{,j} 
+$ (eqn. 8)<br>
+$\frac{d}{dt} \Psi_i = (\alpha \Pi)_{,i}$<br>
+<br>
+
+Solve $\Pi_{,t}$ by substituting our wave equation:<br>
+$\Pi = \frac{1}{\alpha} ( \Phi_{,t} - \beta^i \Phi_{,i} )$<br>
+$\Pi_{,t} = 
+	-\frac{1}{\alpha^2} \alpha_{,t} ( \Phi_{,t} - \beta^i \Phi_{,i} )
+	+ \frac{1}{\alpha} ( \Phi_{,t} - \beta^i \Phi_{,i} )_{,t}$<br>
+$\Pi_{,t} = 
+	-\frac{1}{\alpha^2} \alpha_{,t} ( \Phi_{,t} - \beta^i \Phi_{,i} )
+	+ \frac{1}{\alpha} ( 
+		\Phi_{,tt} 
+		- {\beta^i}_{,t} \Phi_{,i}
+		- \beta^i \Phi_{,it}
+	)$<br>
+$\Pi_{,t} = 
+	-\frac{1}{\alpha^2} \alpha_{,t} \Pi
+	+ \frac{1}{\alpha} \Phi_{,tt} 
+	- \frac{1}{\alpha} {\beta^i}_{,t} \Phi_{,i}
+	- \frac{1}{\alpha} \beta^i \Phi_{,it}
+	$<br>
+substitute $\Phi_{,tt}$ from our wave equation:<br>
+$\Pi_{,t} = 
+	-\frac{1}{\alpha^2} \alpha_{,t} \Pi
+	- \frac{1}{\alpha} {\beta^i}_{,t} \Phi_{,i}
+	- \frac{1}{\alpha} \beta^i \Phi_{,it}
+	+ \frac{1}{\alpha} (
+		2 \beta^i \Phi_{,ti}
+		+ (\alpha^2 \gamma^{ij} - \beta^i \beta^j) \Phi_{,ij}
+		- \alpha^2 \Gamma^t \Phi_{,t}
+		- \alpha^2 \Gamma^i \Phi_{,i}
+		- \alpha^2 \frac{dV}{d|\Phi|^2} \Phi
+	)$<br>
+$\Pi_{,t} = 
+	-\frac{1}{\alpha^2} \alpha_{,t} \Pi
+	- \frac{1}{\alpha} {\beta^i}_{,t} \Psi_i
+	+ \frac{1}{\alpha} \beta^i \Psi_{i,t}
+	+ \frac{1}{\alpha} (\alpha^2 \gamma^{ij} - \beta^i \beta^j) \Psi_{i,j}
+	- \alpha \Gamma^t (\alpha \Pi + \beta^i \Psi_i)
+	- \alpha \Gamma^i \Psi_i
+	- \alpha \frac{dV}{d|\Phi|^2} \Phi
+	$<br>
+$\Pi_{,t} = 
+	-\frac{1}{\alpha^2} \alpha_{,t} \Pi
+	- \frac{1}{\alpha} {\beta^i}_{,t} \Psi_i
+	+ \frac{1}{\alpha} \beta^i (\alpha_{,i} \Pi + \alpha \Pi_{,i} + \beta^j \Psi_{i,j} + {\beta^j}_{,i} \Psi_j)
+	+ \alpha \gamma^{ij} \Psi_{i,j}
+	- \frac{1}{\alpha} \beta^i \beta^j \Psi_{i,j}
+	- \alpha \Gamma^t \alpha \Pi 
+	- \alpha \Gamma^t \beta^i \Psi_i
+	- \alpha \Gamma^i \Psi_i
+	- \alpha \frac{dV}{d|\Phi|^2} \Phi
+	$<br>
+$\Pi_{,t} = 
+	-\frac{1}{\alpha^2} \alpha_{,t} \Pi
+	- \frac{1}{\alpha} {\beta^i}_{,t} \Psi_i
+	+ \frac{1}{\alpha} \beta^i \alpha_{,i} \Pi 
+	+ \beta^i \Pi_{,i} 
+	+ \frac{1}{\alpha} \beta^i \beta^j \Psi_{i,j} 
+	+ \frac{1}{\alpha} \beta^i {\beta^j}_{,i} \Psi_j
+	+ \alpha \gamma^{ij} \Psi_{i,j}
+	- \frac{1}{\alpha} \beta^i \beta^j \Psi_{i,j}
+	- \alpha \Gamma^t \alpha \Pi 
+	- \alpha \Gamma^t \beta^i \Psi_i
+	- \alpha \Gamma^i \Psi_i
+	- \alpha \frac{dV}{d|\Phi|^2} \Phi
+	$<br>
+$\Pi_{,t} = 
+	-\frac{1}{\alpha^2} \alpha_{,t} \Pi
+	+ \frac{1}{\alpha} \beta^i \alpha_{,i} \Pi 
+	- \alpha^2 \Gamma^t \Pi 
+	- \frac{1}{\alpha} {\beta^i}_{,t} \Psi_i
+	+ \frac{1}{\alpha} \beta^i {\beta^j}_{,i} \Psi_j
+	- \alpha \Gamma^i \Psi_i
+	- \alpha \Gamma^t \beta^i \Psi_i
+	+ \beta^i \Pi_{,i} 
+	+ \alpha \gamma^{ij} \Psi_{i,j}
+	- \alpha \frac{dV}{d|\Phi|^2} \Phi
+	$<br>	
+
+	</body>
+</html>
