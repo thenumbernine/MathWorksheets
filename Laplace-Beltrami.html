@@ -54,29 +54,45 @@ $= f_{,ab} g^{ab} - \Gamma^c f_{,c}$<br>
 <br>
 
 another derivation:<br>
-$\Delta \phi = {\phi_{;a}}^a$<br>
-$= g^{ab} \phi_{;ab}$<br>
-$= g^{ab} (\phi_{,a})_{;b}$<br>
-$= g^{ab} (\phi_{,ab} - {\Gamma^c}_{ab} \phi_{,c})$<br>
-$= {\Gamma_b}^{ba} \phi_{,a} 
-	- {\Gamma_b}^{ba} \phi_{,a}
-	- {\Gamma^{ab}}_b \phi_{,a}
-	+ g^{ab} \phi_{,ab}
+$\Delta \phi = g^{ab} \nabla_a \nabla_b \phi$<br>
+$= g^{ab} \nabla_b e_a(\phi)$<br>
+$= g^{ab} (e_b( e_a(\phi)) - {\Gamma^c}_{ba} e_c(\phi))$<br>
+$= g^{ab} e_b(e_a(\phi)) - {\Gamma^{ab}}_b e_a(\phi)$<br>
+$= {\Gamma_b}^{ab} e_a(\phi)
+	- {\Gamma_b}^{ab} e_a(\phi)
+	- {\Gamma^{ab}}_b e_a(\phi)
+	+ g^{ab} e_a(e_b(\phi))
 $<br>
-$= {\Gamma^c}_{bc} g^{ab} \phi_{,a}
-	- g^{ac} (\Gamma_{cbd} + \Gamma_{dbc}) g^{db} \phi_{,a}
-	+ g^{ab} \phi_{,ab}
+$= {\Gamma_{cb}}^c g^{ab} e_a(\phi)
+	- g^{bd} \Gamma_{dcb} g^{ac} e_a(\phi)
+	- g^{bd} \Gamma_{cbd} g^{ac} e_a(\phi)
+	+ g^{ab} e_a(e_b(\phi))
 $<br>
-$= \frac{1}{\sqrt{|g|}} (\sqrt{|g|})_{,b} g^{ab} \phi_{,a}
-	- g^{ac} g_{cd,b} g^{db} \phi_{,a}
-	+ g^{ab} \phi_{,ab}
+$= {\Gamma^c}_{bc} g^{ab} e_a(\phi)
+	- g^{ac} (\Gamma_{dcb} + \Gamma_{cbd}) g^{db} e_a(\phi)
+	+ g^{ab} e_a(e_b(\phi))
+$<br>
+$= {\Gamma^c}_{bc} g^{ab} e_a(\phi)
+	- g^{ac} (
+		\Gamma_{dbc} + c_{cbd}
+		+ \Gamma_{cbd} 
+	) g^{db} e_a(\phi)
+	+ g^{ab} e_a(e_b(\phi))
+$<br>
+$= \frac{1}{\sqrt{|g|}} (\sqrt{|g|})_{,b} g^{ab} e_a(\phi)
+	- g^{ac} (g_{cd,b} + c_{cbd}) g^{db} e_a(\phi)
+	+ g^{ab} e_a(e_b(\phi))
 $<br>
 $= \frac{1}{\sqrt{|g|}} (
-	(\sqrt{|g|})_{,b} g^{ab} \phi_{,a}
-	+ \sqrt{|g|} {g^{ab}}_{,b} \phi_{,a}
-	+ \sqrt{|g|} g^{ab} \phi_{,ab}
+	(\sqrt{|g|})_{,b} g^{ab} e_a(\phi)
+	+ \sqrt{|g|} {g^{ab}}_{,b} e_a(\phi)
+	+ \sqrt{|g|} g^{ab} e_a(e_b(\phi))
+	- {c^{ab}}_b e_a(\phi)
 )$<br>
-$= \frac{1}{\sqrt{|g|}} (\sqrt{|g|} g^{ab} \phi_{,a})_{,b}$<br>
+$= \frac{1}{\sqrt{|g|}} (\sqrt{|g|} g^{ab} e_a(\phi))_{,b}
+	- \frac{1}{\sqrt{|g|}} {c^{ab}}_b e_a(\phi)
+$<br>
+TODO double-check the commutation code, or see if it can disappear somewhere.<br>
 <br>
 
 	</body>

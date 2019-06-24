@@ -121,9 +121,9 @@ Let's try that again but with volume element weighting:<br>
 	
 $\phi_{,tt} - c^2 {\phi_{;i}}^i = 0$<br>
 Assuming $g_{ij}$ is not a function of $t$...<br>
-$\phi_{,tt} - \frac{1}{\sqrt{|g|}} (\sqrt{|g|} c^2 g^{ij} \phi_{,i})_{,j} = 0$<br>
+$\phi_{,tt} - \frac{1}{\sqrt{|g|}} (\sqrt{|g|} c^2 g^{ij} \phi_{,i})_{,j} - \frac{1}{\sqrt{|g|}} {c^{ij}}_j \phi_{,i} = 0$<br>
 <br>
-$\Pi_{,t} - \frac{1}{\sqrt{|g|}} (\sqrt{|g|} c^2 g^{ij} \Psi_i)_{,j} = 0$<br>
+$\Pi_{,t} - \frac{1}{\sqrt{|g|}} (\sqrt{|g|} c^2 g^{ij} \Psi_i)_{,j} = \frac{1}{\sqrt{|g|}} {c^{ij}}_j \phi_{,i}$<br>
 $\Psi_{i,t} - \frac{1}{\sqrt{|g|}} (\sqrt{|g|} \Pi)_{,i} = -{\Gamma^j}_{ij} \Pi$<br>
 <br>
 $\left[\begin{matrix}
@@ -139,9 +139,45 @@ $\left[\begin{matrix}
 	\end{matrix}\right]
 \right)_{,k}
 = \left[\begin{matrix}
-	0 \\ -{\Gamma^j}_{ij} \Pi
+	\frac{1}{\sqrt{|g|}} {c^{ij}}_j \phi_{,i} \\ 
+	-{\Gamma^j}_{ij} \Pi
 \end{matrix}\right]$<br>
 <br>
+
+or, if you want to model the $\phi_{,i}$ as a flux term,<br>
+<br>
+
+$\phi_{,t} = \Pi$<br>
+$\Pi_{,t} 
+	- \frac{1}{\sqrt{|g|}} {c^{ij}}_j \phi_{,i} 
+	- \frac{1}{\sqrt{|g|}} (\sqrt{|g|} c^2 g^{ij} \Psi_i)_{,j} 
+	= 0$<br>
+$\Pi_{,t} 
+	- \frac{1}{\sqrt{|g|}} (\sqrt{|g|} (c^2 g^{ij} \Psi_i + \frac{1}{\sqrt{|g|}} {c^{ji}}_i \phi))_{,j} 
+	= 
+	- \frac{1}{\sqrt{|g|}} {c^{ij}}_{j,i} \phi$<br>
+$\Psi_{i,t} - \frac{1}{\sqrt{|g|}} (\sqrt{|g|} \Pi)_{,i} = -{\Gamma^j}_{ij} \Pi$<br>
+<br>
+
+$\left[\begin{matrix}
+	\phi \\ \Pi \\ \Psi_i
+\end{matrix}\right]_{,t}
++ \frac{1}{\sqrt{|g|}} \left(
+	\sqrt{|g|} \cdot
+	\left[\begin{matrix}
+		0 & 0 & 0 \\
+		\frac{1}{\sqrt{|g|}} {c^{kj}}_j & 0 & -c^2 g^{jk} \\
+		0 & -\delta^i_k & 0
+	\end{matrix}\right] \left[\begin{matrix}
+		\phi \\ \Pi \\ \Psi_j
+	\end{matrix}\right]
+\right)_{,k}
+= \left[\begin{matrix}
+	\Pi \\ 
+	\frac{1}{\sqrt{|g|}} {c^{kj}}_{j,k} \phi \\ 
+	-{\Gamma^j}_{ij} \Pi
+\end{matrix}\right]$<br>
+
 
 <hr>
 <br>

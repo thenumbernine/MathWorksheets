@@ -27,15 +27,18 @@ $\Gamma_{(a|b|c)} = \frac{1}{2} e_b (g_{ac})$<br>
 <br>
 
 From here we can define our covariant derivative in terms of structure constants and torsion:<br>
-$e_a (g_{bc}) = \Gamma_{bac} + \Gamma_{cab}$<br>
-$e_c (g_{ab}) = \Gamma_{bca} + \Gamma_{acb}$<br>
+$e_a (g_{bc}) = \Gamma_{cab} + \Gamma_{bac}$<br>
 $e_b (g_{ac}) = \Gamma_{abc} + \Gamma_{cba}$<br>
+$e_c (g_{ab}) = \Gamma_{bca} + \Gamma_{acb}$<br>
 ...subtract...<br>
-$e_a (g_{bc}) - e_c (g_{ab}) - e_b (g_{ac}) = (\Gamma_{bac} + \Gamma_{cab}) - (\Gamma_{bca} + \Gamma_{acb}) - (\Gamma_{abc} + \Gamma_{cba})$<br>
-$e_a (g_{bc}) - e_c (g_{ab}) - e_b (g_{ac}) =  - \Gamma_{acb} - \Gamma_{abc} + \Gamma_{bac} - \Gamma_{bca} + \Gamma_{cab} - \Gamma_{cba}$<br>
-$e_a (g_{bc}) - e_c (g_{ab}) - e_b (g_{ac}) =  -\Gamma_{abc} - T_{acb} - c_{cba} - \Gamma_{abc} + T_{bac} + c_{acb} + T_{cab} + c_{abc}$<br>
-$\Gamma_{abc} = \frac{1}{2} ( 
-	e_c (g_{ab}) + e_b (g_{ac}) - e_a (g_{bc})
+$e_c(g_{ab}) + e_b(g_{ac}) - e_a(g_{bc}) 
+	= \Gamma_{bca} + \Gamma_{acb} + \Gamma_{abc} + \Gamma_{cba} - \Gamma_{cab} - \Gamma_{bac}$<br>
+$e_c(g_{ab}) + e_b(g_{ac}) - e_a(g_{bc}) = 2 \Gamma_{abc} 
+	- c_{acb} - T_{bac}
+	- c_{abc} - T_{cab}
+	- c_{bca} - T_{abc}$<br>
+$\Gamma_{abc} = \frac{1}{2} (
+	e_c(g_{ab}) + e_b(g_{ac}) - e_a(g_{bc}) 
 	+ c_{abc} + c_{acb} - c_{cba}
 	+ T_{cab} + T_{bac} - T_{acb}
 )$<br>
@@ -48,6 +51,13 @@ $\hat\Gamma_{abc} = \frac{1}{2} (
 	+ c_{abc} + c_{acb} - c_{cba}
 )$<br>
 which is also known as the "Christoffel symbol of the 1st kind"<br>
+<br>
+
+Misner Thorne Wheeler "Gravitation" list this as $\hat\Gamma_{abc} = \frac{1}{2} ( 
+	e_c (g_{ab}) + e_b (g_{ac}) - e_a (g_{bc})
+	+ c_{abc} + c_{acb} - c_{bca})$, 
+so notice the last commutation coefficient is negative'd.  This coincides with its reversed definition of $\nabla_b e_c {\Gamma^a}_{cb} e_a$, which would make sense.  If you reverse b and c then the one term that is negative'd is the last commutation term.
+However, in contrast, Wikipedia <a href='https://en.wikipedia.org/wiki/Christoffel_symbols#Connection_coefficients_in_a_nonholonomic_basis'>here</a> holds my un-reversed definition of ${\Gamma^a}_{bc}$ but still lists the same anholonomic definition.  Maybe the authors of the different sections of the page used different conventions?<br>
 <br>
 
 Christoffel of the 2nd kind / affine connection: $ {\hat\Gamma^a}_{bc} = g^{ad} \hat\Gamma_{dbc} $<br>
@@ -172,7 +182,7 @@ $e_a ( log \sqrt{|g|} ) = \frac{1}{2} g^{uv} e_a ( g_{uv} )$<br>
 <br>
 
 Trace of Levi-Civita connection:<br>
-${\hat\Gamma^u}_{au} = \frac{1}{2} g^{uv} (e_v (g_{ua}) + e_a (g_{uv}) - e_u (g_{av}) + c_{uav} + c_{uva} - c_{vau})$<br>
+${\hat\Gamma^u}_{au} = \frac{1}{2} g^{uv} (e_u (g_{va}) + e_a (g_{vu}) - e_v (g_{au}) + c_{vau} + c_{vua} - c_{uav})$<br>
 ${\hat\Gamma^u}_{au} = \frac{1}{2} g^{uv} e_a (g_{uv})$<br>
 ${\hat\Gamma^u}_{au} = e_a ( log \sqrt{|g|} )$<br>
 <br>

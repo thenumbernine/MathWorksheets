@@ -10,18 +10,23 @@
 Sources:<br>
 2008 Alcubierre. "Introduction to 3+1 Numerical Relativity"<br> 
 2010 Baumgarte, Shapiro. "Numerical Relativity: Solving Einstein's Equations on the Computer"<br>
-2018 Ruchlin, Etienne, Baumgarte. "SENR-NRPy+:  Numerical relativity in singular curvilinearcoordinate systems"<br>
+2017 Ruchlin, Etienne, Baumgarte. "SENR-NRPy+:  Numerical relativity in singular curvilinearcoordinate systems"<br>
 <br>
 
 Taken from my Differential Geometry ADM formalism worksheet:<br>
 ADM lapse evolution:<br>
-$\alpha_{,t} = -\alpha^2 f K + \alpha_{,j} \beta^j$<br>
+$\alpha_{,t} = -\alpha^2 f K + \alpha_{,j} \beta^j$ (2017 Ruchlin eqn. 13)<br>
+or, specifically, $\alpha_{,t} = -\alpha(1 - \alpha) K + \alpha_{,i} \beta^i$ (2017 Ruchlin eqn. 66)<br>
 ADM spatial metric evolution:<br>
 $\gamma_{ij,t} = -2 \alpha K_{ij} + 2 D_{(i} \beta_{j)}$
 $= -2 \alpha K_{ij} + \gamma_{ij,k} \beta^k + 2 \gamma_{k(i} {\beta^k}_{,j)}$<br>
 ADM extrinsic curvature evolution:<br>
 $K_{ij,t} = -D_i D_j \alpha + \alpha (R_{ij} + K K_{ij} - 2 K_{ik} {K^k}_j) + 4 \pi \alpha (\gamma_{ij} (S - \rho) - 2 S_{ij})
 	+ K_{ij,k} \beta^k + 2 K_{k(i} {\beta^k}_{,j)}$<br>
+non-advecting Gamma driver function:<br>
+2017 Ruchlin eqn. 67:<br>
+${\beta^i}_{,t} = B^i$<br>
+${B^i}_{,t} = \frac{3}{4} {\bar{\Lambda}^i}_{,t} - \eta B^i$<br>
 <br>
 
 spatial metric / ADM variable:<br>
@@ -89,7 +94,7 @@ $= exp(-4 \cdot \frac{1}{12} ln \frac{\gamma}{\hat{\gamma}})$<br>
 $= (\frac{\hat{\gamma}}{\gamma})^{\frac{1}{3}}$<br>
 <br>
 
-and here's another, which is a state variable of 2018 Ruchlin:<br>
+and here's another, which is a state variable of 2017 Ruchlin:<br>
 $W = \sqrt{\chi} = exp(-2 \phi)$<br>
 $W = (\frac{\hat{\gamma}}{\gamma})^{\frac{1}{6}}$<br>
 <br>
@@ -380,24 +385,94 @@ $=	-\frac{1}{3} W (
 	) 
 	+ \beta^k W_{,k} 
 $<br>
-This is the time evolution from 2018 Ruchlin et al., with source terms added.<br>
+This is the time evolution from 2017 Ruchlin et al., with source terms added.<br>
 <br>
 
 Try with first transforming to upper...<br>
-(Which is $\beta$ naturally - covariant or contravariant?  Beyond that raising and lowering, after applying $\bar{D}$, is going to include $exp(-4\phi)$)<br>
+(Which is $\beta$ naturally - covariant or contravariant?  Beyond that raising and lowering, after applying $\bar{D}$, is going to include $exp(-4\phi)$.
+This is why it helps to denote the indexes with transformations rather than the tensors themselves.)<br>
 $D_{(i} \beta_{j)}$<br>
 $= \gamma_{k(j} D_{i)} \beta^k$<br>
 $= \gamma_{k(j} ({\beta^k}_{,i)} + {\Gamma^k}_{i)l} \beta^l)$<br>
 $= \gamma_{k(j} {\beta^k}_{,i)} + \Gamma_{(ij)k} \beta^k$<br>
+using $\gamma_{ij,k} = 2 \Gamma_{(ij)k}$<br>
+$= \gamma_{k(j} {\beta^k}_{,i)} + \frac{1}{2} \gamma_{ij,k} \beta^k$<br>
+$= \frac{1}{2} \gamma_{ki} {\beta^k}_{,j} 
+	+ \frac{1}{2} \gamma_{kj} {\beta^k}_{,i} 
+	+ \frac{1}{2} \gamma_{ij,k} \beta^k$<br>
+$= \frac{1}{2} \mathcal{L}_\vec{\beta} \gamma_{ij}$<br>
 <br>
 
 $\bar{D}_{(i} \beta_{j)}$<br>
+IF we are supposed to assume raising/lowering of $\bar{D}_i \beta_j$ should take place using the metric of the covariant derivative, $\bar{\gamma}_{ij}$:<br>
 $= \bar{\gamma}_{k(j} \bar{D}_{i)} \beta^k$<br>
 $= \bar{\gamma}_{k(j} ({\beta^k}_{,i)} + {\bar{\Gamma}^k}_{i)l} \beta^l)$<br>
 $= \bar{\gamma}_{k(j} {\beta^k}_{,i)} + \bar{\Gamma}_{(ij)k} \beta^k$<br>
+OR if we are supposed to be assuming $\beta_i = \gamma_{ij} \beta^j$:<br>
+$\bar{D}_{(i} \beta_{j)}$<br>
+$= \bar{D}_{(i} (\gamma_{j)k} \beta^k)$<br>
+$= \bar{D}_{(i} (exp(4 \phi) \bar{\gamma}_{j)k} \beta^k)$<br>
+$= \bar{D}_{(i} (exp(4 \phi)) \bar{\gamma}_{j)k} \beta^k
+	+ exp(4 \phi) \bar{\gamma}_{j)k} \bar{D}_{(i} (\beta^k)$<br>
+$= 4 exp(4 \phi) \phi_{,(i} \bar{\gamma}_{j)k} \beta^k
+	+ exp(4 \phi) \bar{\gamma}_{k(j} ( 
+		{\beta^k}_{,i)} + {\bar{\Gamma}^k}_{i)l} \beta^l
+	)$<br>
+$= 4 \phi_{,(i} \gamma_{j)k} \beta^k
+	+ exp(4 \phi) \bar{\gamma}_{k(j} ( 
+		{\beta^k}_{,i)} + {\bar{\Gamma}^k}_{i)l} \beta^l
+	)$<br>
+$= 4 \phi_{,(i} \beta_{j)}
+	+ \gamma_{k(j} {\beta^k}_{,i)} 
+	+ exp(4 \phi) \bar{\Gamma}_{(ij)k} \beta^k
+	$<br>
+using $\bar{\Gamma}_{ijk} = exp(-4 \phi) (\Gamma_{ijk} - 2 (\gamma_{ij} \phi_{,k} + \gamma_{ik} \phi_{,j} - \gamma_{jk} \phi_{,i}))$<br>
+$= 4 \phi_{,(i} \beta_{j)}
+	+ \gamma_{k(j} {\beta^k}_{,i)} 
+	+ exp(4 \phi) \beta^k 
+	 	\cdot exp(-4 \phi) (
+			\Gamma_{(ij)k} 
+			- 2 (
+				\gamma_{(ij)} \phi_{,k} 
+				+ \gamma_{k(i} \phi_{,j)} 
+				- \gamma_{k(j} \phi_{,i)}
+			)
+		)$<br>
+$= 4 \phi_{,(i} \beta_{j)}
+	+ \gamma_{k(j} {\beta^k}_{,i)} 
+	+ \Gamma_{(ij)k} \beta^k 
+	- 2 \gamma_{ij} \phi_{,k} \beta^k 
+	$<br>
+using $D_{(i} \beta_{j)} = \gamma_{k(j} {\beta^k}_{,i)} + \Gamma_{(ij)k} \beta^k$<br>
+$= 4 \phi_{,(i} \beta_{j)}
+	- 2 \gamma_{ij} \phi_{,k} \beta^k 
+	+ D_{(i} \beta_{j)}$<br>
+$= D_{(i} \beta_{j)} 
+	+ 2 (
+		\phi_{,i} \beta_j
+		+ \phi_{,j} \beta_i
+		- \gamma_{ij} \phi_{,k} \beta^k 
+	)$<br>
+$= D_{(i} \beta_{j)} + ({\Gamma^k}_{ij} - {\bar{\Gamma}^k}_{ij}) \beta_k$<br>
+so $D_{(i} \beta_{j)} - {\Gamma^k}_{ij} \beta_k = D_{(i} \beta_{j)} - {\bar{\Gamma}^k}_{ij} \beta_k$<br>
+This makes sense, if the remaining term in both after subtracting out connections is the $\beta_{(i,j)}$<br>
+$= D_{(i} \beta_{j)} + (\Gamma_{kij} - exp(4 \phi) \bar{\Gamma}_{kij}) \beta^k$<br>
+or, alternatively...<br>
+$\bar{D}_{(i} \beta_{j)} = 4 \phi_{,(i} \beta_{j)}
+	+ \gamma_{k(j} {\beta^k}_{,i)} 
+	+ exp(4 \phi) \bar{\Gamma}_{(ij)k} \beta^k
+$<br>
+using $\bar{\Gamma}_{(ij)k} = \frac{1}{2} \bar{\gamma}_{ij,k}$:<br>
+$= 4 \phi_{,(i} \beta_{j)}
+	+ exp(4 \phi) \bar{\gamma}_{k(j} {\beta^k}_{,i)} 
+	+ \frac{1}{2} exp(4 \phi) \bar{\gamma}_{ij,k} \beta^k
+$<br>
+$= 4 \phi_{,(i} \beta_{j)} 
+	+ exp(4 \phi) \mathcal{L}_\vec{\beta} \bar{\gamma}_{ij}$<br>
 <br>
 
 $D_{(i} \beta_{j)}$<br>
+IF we are supposed to assume raising/lowering of a covariant derivative should use the metric associated with the covariant derivative:<br>
 $= exp(4 \phi) \bar{\gamma}_{k(j} {\beta^k}_{,i)} + (
 	exp(4 \phi) (
 		\bar{\Gamma}_{(ij)k} 
@@ -429,15 +504,153 @@ $exp(-4 \phi) D_{(i} \beta_{j)} =
 	\bar{D}_{(i} \beta_{j)}
 	+ 2 \bar{\gamma}_{ij} \phi_{,k} \beta^k
 $<br>
+OR if we are supposed to raise/lower terms that we are covariant-differentiating with their own respective metrics:<br>
+$\bar{D}_{(i} \beta_{j)} = 
+	4 \phi_{,(i} \beta_{j)}
+	- 2 \gamma_{ij} \phi_{,k} \beta^k 
+	+ D_{(i} \beta_{j)}$<br>
+$D_{(i} \beta_{j)} = 
+	\bar{D}_{(i} \beta_{j)} 
+	- 4 \phi_{,(i} \beta_{j)}
+	+ 2 \gamma_{ij} \phi_{,k} \beta^k$<br>
 <br>
 
 $\hat{D}_{(i} \beta_{j)}$<br>
+IF we are supposed to assume raising/lowering of a covariant derivative should use the metric associated with the covariant derivative:<br>
 $= \hat{\gamma}_{k(j} \hat{D}_{i)} \beta^k$<br>
 $= \hat{\gamma}_{k(j} ({\beta^k}_{,i)} + {\hat{\Gamma}^k}_{i)l} \beta^l)$<br>
 $= \hat{\gamma}_{k(j} {\beta^k}_{,i)} + \hat{\Gamma}_{(ij)k} \beta^k$<br>
+OR if we are supposed to raise/lower terms that we are covariant-differentiating with their own respective metrics:<br>
+$\hat{D}_{(i} \beta_{j)}$<br>
+$ = \hat{D}_{(i} (\gamma_{j)k} \beta^k)$<br>
+$ = \hat{D}_{(i} (exp(4 \phi) \bar{\gamma}_{j)k} \beta^k)$<br>
+$ = \hat{D}_{(i} (exp(4 \phi) (\bar{\epsilon}_{j)k} + \hat{\gamma}_{j)k}) \beta^k)$<br>
+$ = \hat{D}_{(i} exp(4 \phi) (\bar{\epsilon}_{j)k} + \hat{\gamma}_{j)k}) \beta^k
+	+ exp(4 \phi) \hat{D}_{(i} (\bar{\epsilon}_{j)k} + \hat{\gamma}_{j)k}) \beta^k
+	+ exp(4 \phi) (\bar{\epsilon}_{k(j} + \hat{\gamma}_{k(j}) \hat{D}_{i)} \beta^k
+$<br>
+$ = 4 exp(4 \phi) \phi_{,(i} \bar{\gamma}_{j)k} \beta^k
+	+ exp(4 \phi) \hat{D}_{(i} (\bar{\epsilon}_{j)k}) \beta^k
+	+ exp(4 \phi) \bar{\gamma}_{k(j} \hat{D}_{i)} \beta^k
+$<br>
+$ = 4 \phi_{,(i} \gamma_{j)k} \beta^k
+	+ exp(4 \phi) \beta^k \bar{\epsilon}_{k(j,i)}
+	- exp(4 \phi) \beta^k {\hat{\Gamma}^l}_{k(i} \bar{\epsilon}_{j)l}
+	- exp(4 \phi) \beta^k {\hat{\Gamma}^l}_{(ij)} \bar{\epsilon}_{kl}
+	+ \gamma_{k(j} {\beta^k}_{,i)}
+	+ \gamma_{k(j} {\hat{\Gamma}^k}_{i)l} \beta^l
+$<br>
+using $\bar{D}_{(i} \beta_{j)} = 4 \phi_{,(i} \beta_{j)}
+	+ exp(4 \phi) \bar{\gamma}_{k(j} {\beta^k}_{,i)} 
+	+ \frac{1}{2} exp(4 \phi) \bar{\gamma}_{ij,k} \beta^k
+$<br>
+$ = exp(4 \phi) \beta^k \bar{\epsilon}_{k(j,i)}
+	- exp(4 \phi) \beta^k {\hat{\Gamma}^l}_{k(i} \bar{\epsilon}_{j)l}
+	- exp(4 \phi) \beta^k {\hat{\Gamma}^l}_{(ij)} \bar{\epsilon}_{kl}
+	+ \gamma_{k(j} {\hat{\Gamma}^k}_{i)l} \beta^l
+
+	+ \bar{D}_{(i} \beta_{j)} 
+	- \frac{1}{2} exp(4 \phi) \bar{\gamma}_{ij,k} \beta^k
+$<br>
+$ = exp(4 \phi) \beta^k \bar{\epsilon}_{k(j,i)}
+	- exp(4 \phi) \beta^k {\hat{\Gamma}^l}_{k(i} \bar{\epsilon}_{j)l}
+	+ exp(4 \phi) \beta^k {\hat{\Gamma}^l}_{k(i} \bar{\gamma}_{j)l}
+	- exp(4 \phi) \beta^k {\hat{\Gamma}^l}_{(ij)} \bar{\epsilon}_{kl}
+
+	+ \bar{D}_{(i} \beta_{j)} 
+	- exp(4 \phi) \bar{\Gamma}_{(ij)k} \beta^k
+$<br>
+$ = \bar{D}_{(i} \beta_{j)} 
+	+ exp(4 \phi) (
+		\beta^k \bar{\epsilon}_{k(j,i)}
+		- \beta^k {\hat{\Gamma}^l}_{k(i} \bar{\epsilon}_{j)l}
+		+ \beta^k {\hat{\Gamma}^l}_{k(i} \bar{\gamma}_{j)l}
+		- \beta^k {\hat{\Gamma}^l}_{(ij)} \bar{\epsilon}_{kl}
+		- \beta^k {\bar{\Gamma}^l}_{k(j} \bar{\gamma}_{i)l}
+	)
+$<br>
+$ = \bar{D}_{(i} \beta_{j)} 
+	+ exp(4 \phi) (
+		\beta^k \bar{\epsilon}_{k(j,i)}
+		+ \beta^k \hat{\gamma}_{j)l} {\hat{\Gamma}^l}_{k(i} 
+		- \beta^k {\hat{\Gamma}^l}_{(ij)} \bar{\epsilon}_{kl}
+		- \beta^k {\bar{\Gamma}^l}_{k(j} \bar{\gamma}_{i)l}
+	)
+$<br>
+$ = \bar{D}_{(i} \beta_{j)} 
+	+ exp(4 \phi) (
+		\beta^k \bar{\epsilon}_{k(j,i)}
+		+ \beta^k \hat{\Gamma}_{(ij)k} 
+		- \beta^k {\hat{\Gamma}^l}_{(ij)} \bar{\epsilon}_{kl}
+		- \beta^k \bar{\gamma}_{i)l} {\bar{\Gamma}^l}_{k(j}
+	)
+$<br>
+$ = \bar{D}_{(i} \beta_{j)} 
+	+ exp(4 \phi) (
+		\beta^k \bar{\epsilon}_{k(j,i)}
+		+ \frac{1}{2} \beta^k \hat{\gamma}_{ij,k} 
+		+ \beta^k {\hat{\Gamma}^l}_{(ij)} \hat{\gamma}_{kl}
+		- \beta^k {\hat{\Gamma}^l}_{(ij)} \bar{\gamma}_{kl} 
+		- \beta^k \bar{\Gamma}_{(ij)k}
+	)
+$<br>
+$ = \bar{D}_{(i} \beta_{j)} 
+	+ exp(4 \phi) (
+		\beta^k \bar{\epsilon}_{k(j,i)}
+		+ \frac{1}{2} \beta^k \bar{\gamma}_{ij,k} 
+		- \frac{1}{2} \beta^k \bar{\epsilon}_{ij,k} 
+		+ \beta^k \hat{\Gamma}_{kij} 
+		- \beta^k {\hat{\Gamma}^l}_{(ij)} \bar{\gamma}_{kl} 
+		- \frac{1}{2} \beta^k \bar{\gamma}_{ij,k}
+	)
+$<br>
+$ = \bar{D}_{(i} \beta_{j)} 
+	+ exp(4 \phi) (
+		\beta^k \bar{\epsilon}_{k(j,i)}
+		- \frac{1}{2} \beta^k \bar{\epsilon}_{ij,k} 
+		+ \beta^k {\hat{\Gamma}^l}_{(ij)} \hat{\gamma}_{kl}
+		- \beta^k {\hat{\Gamma}^l}_{(ij)} \bar{\gamma}_{kl} 
+	)
+$<br>
+$ = \bar{D}_{(i} \beta_{j)} 
+	+ exp(4 \phi) (
+		\frac{1}{2} \beta^k \bar{\epsilon}_{ki,j}
+		+ \frac{1}{2} \beta^k \bar{\epsilon}_{kj,i}
+		- \frac{1}{2} \beta^k \bar{\epsilon}_{ij,k} 
+		- \beta^k {\hat{\Gamma}^l}_{ij} \bar{\epsilon}_{kl} 
+	)
+$<br>
+$ = \bar{D}_{(i} \beta_{j)} 
+	+ exp(4 \phi) (
+		\beta^k \bar{\Gamma}_{kij} 
+		- \beta^k \hat{\Gamma}_{kij}
+		- \beta^k {\hat{\Gamma}^l}_{ij} \bar{\gamma}_{kl} 
+		+ \beta^k {\hat{\Gamma}^l}_{ij} \hat{\gamma}_{kl} 
+	)
+$<br>
+$ = \bar{D}_{(i} \beta_{j)} 
+	+ exp(4 \phi) (
+		\beta^k \bar{\Gamma}_{kij} 
+		- \beta^k {\hat{\Gamma}^l}_{ij} \bar{\gamma}_{kl} 
+	)
+$<br>
+$ = \bar{D}_{(i} \beta_{j)} 
+	+ exp(4 \phi) (
+		\beta^k {\bar{\Gamma}^l}_{ij} \bar{\gamma}_{kl}
+		- \beta^k {\hat{\Gamma}^l}_{ij} \bar{\gamma}_{kl} 
+	)
+$<br>
+$ = \bar{D}_{(i} \beta_{j)}
+	+ \beta_k ({\bar{\Gamma}^l}_{ij} - {\hat{\Gamma}^l}_{ij})
+$<br>
+$\hat{D}_{(i} \beta_{j)} - \bar{D}_{(i} \beta_{j)} = \beta_k ({\bar{\Gamma}^l}_{ij} - {\hat{\Gamma}^l}_{ij})$<br>
+This, once again, looks correct, as the difference of two covariant derivatives is the difference of their respective connections.<br>
+TODO get this result to match the result of the alternative assumption.
+I honestly feel better about this assumption than the other (especially since this assumption lets the $D_{(i} \beta_{j)} - \bar{D}_{(i} \beta_{j)}$ connection coefficients match up).<br>
 <br>
 
 $\bar{D}_{(i} \beta_{j)} - \hat{D}_{(i} \beta_{j)}$<br>
+IF we are supposed to assume raising/lowering of a covariant derivative should use the metric associated with the covariant derivative:<br>
 $= \bar{\gamma}_{k(j} \bar{D}_{i)} \beta^k - \hat{\gamma}_{k(j} \hat{D}_{i)} \beta^k$<br>
 $= \bar{\gamma}_{k(j} ({\beta^k}_{,i)} + {\bar{\Gamma}^k}_{i)l} \beta^l) - \hat{\gamma}_{k(j} ({\beta^k}_{,i)} + {\hat{\Gamma}^k}_{i)l} \beta^l)$<br>
 $= \bar{\gamma}_{k(j} {\beta^k}_{,i)} + \bar{\Gamma}_{(ij)k} \beta^k - \hat{\gamma}_{k(j} {\beta^k}_{,i)} - \hat{\Gamma}_{(ij)k} \beta^k$<br>
@@ -445,9 +658,14 @@ $= (\bar{\gamma}_{k(j} - \hat{\gamma}_{k(j}) {\beta^k}_{,i)} + (\bar{\Gamma}_{(i
 $= \bar{\epsilon}_{k(j} {\beta^k}_{,i)} + \frac{1}{2} (\bar{\epsilon}_{ij,k} + \bar{\epsilon}_{k(i,j)} - \bar{\epsilon}_{k(j,i)}) \beta^k$<br>
 $= \bar{\epsilon}_{k(j} {\beta^k}_{,i)} + \frac{1}{2} \bar{\epsilon}_{ij,k} \beta^k$<br>
 so $\bar{D}_{(i} \beta_{j)} = \hat{D}_{(i} \beta_{j)} + \bar{\epsilon}_{k(j} {\beta^k}_{,i)} + \frac{1}{2} \bar{\epsilon}_{ij,k} \beta^k$<br>
+OR if we are supposed to raise/lower terms that we are covariant-differentiating with their own respective metrics:<br>
+$\bar{D}_{(i} \beta_{j)} - \hat{D}_{(i} \beta_{j)}$<br>
+$= \beta_k ({\hat{\Gamma}^l}_{ij} - {\bar{\Gamma}^l}_{ij})$<br>
 <br>
 
-so $exp(-4 \phi) D_{(i} \beta_{j)} =	
+so 
+IF we are supposed to assume raising/lowering of a covariant derivative should use the metric associated with the covariant derivative<br>
+$exp(-4 \phi) D_{(i} \beta_{j)} =	
 	\bar{D}_{(i} \beta_{j)}
 	+ 2 (
 		\bar{\gamma}_{ij} \phi_{,k} 
@@ -461,7 +679,41 @@ $exp(-4 \phi) D_{(i} \beta_{j)} =
 	+ \frac{1}{2} \bar{\epsilon}_{ij,k} \beta^k
 	+ 2 \bar{\gamma}_{ij} \phi_{,k} \beta^k
 $<br>
-
+OR if we are supposed to raise/lower terms that we are covariant-differentiating with their own respective metrics:<br>
+$exp(-4 \phi) D_{(i} \beta_{j)}$<br>
+$ = exp(-4 \phi) (
+	\bar{D}_{(i} \beta_{j)} 
+	- 4 \phi_{,(i} \beta_{j)}
+	+ 2 \gamma_{ij} \phi_{,k} \beta^k
+)$<br>
+$ = exp(-4 \phi) (
+	- 4 \phi_{,(i} \beta_{j)}
+	+ 2 \gamma_{ij} \phi_{,k} \beta^k
+	+ \bar{D}_{(i} \beta_{j)} 
+)$<br>
+$ = exp(-4 \phi) (
+	- 4 \phi_{,(i} \beta_{j)}
+	+ 2 \gamma_{ij} \phi_{,k} \beta^k
+	+ \hat{D}_{(i} \beta_{j)} 
+	- exp(4 \phi) (
+		\beta^k \bar{\epsilon}_{k(j,i)}
+		- \beta^k {\hat{\Gamma}^l}_{k(i} \bar{\epsilon}_{j)l}
+		- \beta^k {\hat{\Gamma}^l}_{(ij)} \bar{\epsilon}_{kl}
+		- \beta^k {\bar{\Gamma}^l}_{k(j} \bar{\gamma}_{i)l}
+	)
+	+ \gamma_{k(j} {\hat{\Gamma}^k}_{i)l} \beta^l
+)$<br>
+$ = exp(-4 \phi) (
+		- 4 \phi_{,(i} \beta_{j)}
+		+ 2 \gamma_{ij} \phi_{,k} \beta^k
+		+ \hat{D}_{(i} \beta_{j)} 
+		+ \gamma_{k(j} {\hat{\Gamma}^k}_{i)l} \beta^l
+	)
+	- \beta^k \bar{\epsilon}_{k(j,i)}
+	+ \beta^k {\hat{\Gamma}^l}_{k(i} \bar{\epsilon}_{j)l}
+	+ \beta^k {\hat{\Gamma}^l}_{(ij)} \bar{\epsilon}_{kl}
+	+ \beta^k {\bar{\Gamma}^l}_{k(j} \bar{\gamma}_{i)l}
+$<br>
 <br>
 
 $\bar{\gamma}_{ij,t} = (exp(-4 \phi) \gamma_{ij})_{,t}$<br>
@@ -546,7 +798,16 @@ $= \frac{2}{3} \bar{\gamma}_{ij} (\alpha {\bar{A}^k}_k - \bar{D}_k \beta^k)
 	+ \bar{\epsilon}_{kj} {\beta^k}_{,i}
 	+ \bar{\epsilon}_{ij,k} \beta^k
 $<br>
-This is the time evolution from 2018 Ruchlin et al., with source terms added.<br>
+This is the time evolution from 2017 Ruchlin et al., with source terms added.<br>
+substitute $\bar{D}_{(i} \beta_{j)} = \hat{D}_{(i} \beta_{j)} + \bar{\epsilon}_{k(j} {\beta^k}_{,i)} + \frac{1}{2} \bar{\epsilon}_{ij,k} \beta^k$<br>
+$= \frac{2}{3} \bar{\gamma}_{ij} (\alpha {\bar{A}^k}_k - \bar{D}_k \beta^k)
+	- 2 \alpha \bar{A}_{ij}
+	+ 2 \bar{D}_{(i} \beta_{j)}$<br>
+substitute 
+$= \frac{2}{3} \bar{\gamma}_{ij} (\alpha {\bar{A}^k}_k - \bar{D}_k \beta^k)
+	- 2 \alpha \bar{A}_{ij}
+	+ \bar{D}_i (\gamma_{jk} \beta^k)
+	+ \bar{D}_j (\gamma_{ik} \beta^k)$<br>
 <br>
 
 $D_i D_j \alpha$<br>
@@ -685,7 +946,7 @@ $= \frac{1}{3} \alpha K^2
 	+ 4 \pi \alpha (S + \rho)
 	+ \beta^k K_{,k}
 $<br>
-This is the time evolution from 2018 Ruchlin et al., with source terms added.<br>
+This is the time evolution from 2017 Ruchlin et al., with source terms added.<br>
 <br>
 
 $\mathcal{L}_{\vec\beta} \bar{\gamma}_{ij}
@@ -1110,7 +1371,7 @@ $\bar{R}_{ij} =
 		+ {\Delta^m}_{ik} \Delta_{mjl}
 	)
 $
-This is in 2018 Ruchlin eqn 12.<br>
+This is in 2017 Ruchlin eqn 12.<br>
 <br>
 
 
@@ -1338,7 +1599,7 @@ $=
 	+ \bar{A}_{kj} {\beta^k}_{,i}
 	+ \bar{A}_{ki} {\beta^k}_{,j}
 $<br>
-This is the time evolution from 2018 Ruchlin et al., with source terms added.<br>
+This is the time evolution from 2017 Ruchlin et al., with source terms added.<br>
 <br>
 
 $\bar{\gamma}^{jk} \hat{D}_j \hat{D}_k \beta^i$<br>
@@ -1414,6 +1675,8 @@ ${\bar{\Lambda}^i}_{,t} =
 	- \frac{2}{3} {\hat{\Gamma}^i}_{lm} \bar{\gamma}^{lm} {\bar{\Gamma}^j}_{kj} \beta^k
 	+ 2 \bar{A}^{jk} {\bar{\Gamma}^i}_{jk}
 	- 2 \bar{A}^{jk} {\hat{\Gamma}^i}_{jk}
+	+ {\bar{\Lambda}^i}_{,j} \beta^j
+	- \bar{\Lambda}^j {\beta^i}_{,j}
 $<br>
 ${\bar{\Lambda}^i}_{,t} = 
 	\bar{\gamma}^{jk} {\beta^i}_{,jk} 
@@ -1434,6 +1697,8 @@ ${\bar{\Lambda}^i}_{,t} =
 	+ 2 \bar{A}^{jk} {\bar{\Gamma}^i}_{jk}
 	- 2 \bar{A}^{jk} {\hat{\Gamma}^i}_{jk}
 	- \frac{4}{3} \alpha \bar{\gamma}^{ij} K_{,j}
+	+ {\bar{\Lambda}^i}_{,j} \beta^j
+	- \bar{\Lambda}^j {\beta^i}_{,j}
 $<br>
 ${\bar{\Lambda}^i}_{,t} = 
 	\bar{\gamma}^{jk} ( 
@@ -1456,6 +1721,8 @@ ${\bar{\Lambda}^i}_{,t} =
 	+ 2 \bar{A}^{jk} {\bar{\Gamma}^i}_{jk}
 	- 2 \bar{A}^{jk} {\hat{\Gamma}^i}_{jk}
 	- \frac{4}{3} \alpha \bar{\gamma}^{ij} K_{,j}
+	+ {\bar{\Lambda}^i}_{,j} \beta^j
+	- \bar{\Lambda}^j {\beta^i}_{,j}
 $<br>
 ${\bar{\Lambda}^i}_{,t} = 
 	\bar{\gamma}^{jk} \hat{D}_j ({\beta^i}_{,k} + {\hat{\Gamma}^i}_{lk} \beta^l)
@@ -1466,8 +1733,10 @@ ${\bar{\Lambda}^i}_{,t} =
 	+ 2 \bar{A}^{jk} {\bar{\Gamma}^i}_{jk}
 	- 2 \bar{A}^{jk} {\hat{\Gamma}^i}_{jk}
 	- \frac{4}{3} \alpha \bar{\gamma}^{ij} K_{,j}
+	+ {\bar{\Lambda}^i}_{,j} \beta^j
+	- \bar{\Lambda}^j {\beta^i}_{,j}
 $<br>
-This is the time evolution from 2018 Ruchlin et al., with source terms added.<br>
+This is the time evolution from 2017 Ruchlin et al., with source terms added.<br>
 ${\bar{\Lambda}^i}_{,t} = 
 	\bar{\gamma}^{jk} \hat{D}_j \hat{D}_k \beta^i
 	+ \frac{2}{3} \Delta^i \bar{D}_j \beta^j
@@ -1475,8 +1744,142 @@ ${\bar{\Lambda}^i}_{,t} =
 	- 2 \bar{A}^{ij} (\alpha_{,j} - 6 \phi_{,j})
 	+ 2 \bar{A}^{jk} {\Delta^i}_{jk}
 	- \frac{4}{3} \alpha \bar{\gamma}^{ij} K_{,j}
+	+ {\bar{\Lambda}^i}_{,j} \beta^j
+	- \bar{\Lambda}^j {\beta^i}_{,j}
 $<br>
 <br>
+
+So overall the coordinate-free BSSN evolution equations involve evolution of (matching the paper):<br>
+$(\alpha, \beta^i, B^i, \bar{\epsilon}_{ij}, W, K, \bar{A}_{ij}, \bar{\Lambda}^i)$<br>
+$\alpha_{,t} = -\alpha^2 f(\alpha) K + \alpha_{,i} \beta^i$<br>
+${\beta^i}_{,t} = B^i$<br>
+${B^i}_{,t} = \frac{3}{4} {\bar{\Lambda}^i}_{,t} - \eta B^i$<br>
+$\bar{\epsilon}_{ij,t} = 
+	\frac{2}{3} \bar{\gamma}_{ij} (\alpha {\bar{A}^k}_k - \bar{D}_k \beta^k)
+	+ 2 \hat{D}_{(i} \beta_{j)}
+	- 2 \alpha \bar{A}_{ij}
+	+ \bar{\epsilon}_{ij,k} \beta^k
+	+ \bar{\epsilon}_{kj} {\beta^k}_{,i}
+	+ \bar{\epsilon}_{ki} {\beta^k}_{,j}$<br>
+$W_{,t} =
+	-\frac{1}{3} W (
+		\bar{D}_k \beta^k
+		- \alpha K
+	) 
+	+ W_{,i} \beta^i$<br>
+$K_{,t} = \frac{1}{3} \alpha K^2
+	+ \alpha \bar{A}_{ij} \bar{A}^{ij} 
+	- exp(-4 \phi) (
+		\bar{D}^i \bar{D}_i \alpha 
+		+ 2 \bar{D}^i \alpha \bar{D}_i \phi
+	)
+	+ 4 \pi \alpha (S + \rho)
+	+ K_{,i} \beta^i$<br>
+$\bar{A}_{ij,t} = 
+	- \frac{2}{3} \bar{A}_{ij} \bar{D}_k \beta^k 
+	- 2 \alpha \bar{A}_{ik} {\bar{A}^k}_j
+	+ \alpha K \bar{A}_{ij} 
+	+ exp(-4 \phi)(
+		- 2 \alpha \bar{D}_i \bar{D}_j \phi
+		+ 4 \alpha \bar{D}_i \phi \bar{D}_j \phi	
+		+ 4 \bar{D}_{(i} \phi \bar{D}_{j)} \alpha
+		- \bar{D}_i \bar{D}_j \alpha
+		+ \alpha (\bar{R}_{ij} - 8 \pi S_{ij})
+	)^{TF}
+	+ \bar{A}_{ij,k} \beta^k
+	+ \bar{A}_{kj} {\beta^k}_{,i}
+	+ \bar{A}_{ki} {\beta^k}_{,j}$<br>
+${\bar{\Lambda}^i}_{,t} = 
+	\bar{\gamma}^{jk} \hat{D}_j \hat{D}_k \beta^i
+	+ \frac{2}{3} \Delta^i \bar{D}_j \beta^j
+	+ \frac{1}{3} \bar{D}^i \bar{D}_j \beta^j
+	- 2 \bar{A}^{ij} (\alpha_{,j} - 6 \phi_{,j})
+	+ 2 \bar{A}^{jk} {\Delta^i}_{jk}
+	- \frac{4}{3} \alpha \bar{\gamma}^{ij} K_{,j}
+	+ {\bar{\Lambda}^i}_{,j} \beta^j
+	- \bar{\Lambda}^j {\beta^i}_{,j}$<br>
+<br>
+
+Simplifying all covariant derivatives:<br>
+$\alpha_{,t} = -\alpha^2 f(\alpha) K + \alpha_{,i} \beta^i$<br>
+${\beta^i}_{,t} = B^i$<br>
+${B^i}_{,t} = \frac{3}{4} {\bar{\Lambda}^i}_{,t} - \eta B^i$<br>
+$\bar{\epsilon}_{ij,t} = 
+	\frac{2}{3} \bar{\gamma}_{ij} (
+		\alpha {\bar{A}^k}_k 
+		- {\beta^k}_{,k}
+		- {\bar{\Gamma}^k}_{lk} \beta^l
+	)
+	+ 2 \beta_{(i,j)} 
+	- 2 {\hat{\Gamma}^k}_{ij} \beta_k
+	- 2 \alpha \bar{A}_{ij}
+	+ \bar{\epsilon}_{ij,k} \beta^k
+	+ \bar{\epsilon}_{kj} {\beta^k}_{,i}
+	+ \bar{\epsilon}_{ki} {\beta^k}_{,j}$<br>
+$W_{,t} =
+	-\frac{1}{3} W (
+		{\beta^k}_{,k}
+		+ {\bar{\Gamma}^k}_{lk} \beta^l
+		- \alpha K
+	)
+	+ W_{,i} \beta^i$<br>
+$K_{,t} = \frac{1}{3} \alpha K^2
+	+ \alpha \bar{A}_{ij} \bar{A}^{ij} 
+	- exp(-4 \phi) (
+		\bar{\gamma}^{ij} \alpha_{,ij}
+		- \bar{\Gamma}^k \alpha_{,k}
+		+ 2 \bar{\gamma}^{ij} \alpha_{,i} \phi_{,j}
+	)
+	+ 4 \pi \alpha (S + \rho)
+	+ K_{,i} \beta^i$<br>
+$\bar{A}_{ij,t} = 
+	- \frac{2}{3} \bar{A}_{ij} (
+		{\beta^k}_{,k}
+		+ {\bar{\Gamma}^k}_{lk} \beta^l
+	)
+	- 2 \alpha \bar{A}_{ik} {\bar{A}^k}_j
+	+ \alpha K \bar{A}_{ij} 
+	+ exp(-4 \phi)(
+		- 2 \alpha (\phi_{,ij} - {\bar{\Gamma}^k}_{ij} \phi_{,k})
+		+ 4 \alpha \phi_{,i} \phi_{,j}
+		+ 4 \phi_{,(i} \alpha_{,j)}
+		- \alpha_{,ij} 
+		+ {\bar{\Gamma}^k}_{ij} \alpha_{,k}
+		+ \alpha (\bar{R}_{ij} - 8 \pi S_{ij})
+	)^{TF}
+	+ \bar{A}_{ij,k} \beta^k
+	+ \bar{A}_{kj} {\beta^k}_{,i}
+	+ \bar{A}_{ki} {\beta^k}_{,j}$<br>
+${\bar{\Lambda}^i}_{,t} = 
+	\bar{\gamma}^{jk} (
+		{\beta^i}_{,kj} 
+		+ {\hat{\Gamma}^i}_{lk,j} \beta^l
+		+ {\hat{\Gamma}^i}_{lk} {\beta^l}_{,j}
+		+ {\hat{\Gamma}^i}_{mj} (
+			{\beta^m}_{,k} 
+			+ {\hat{\Gamma}^m}_{lk} \beta^l
+		)
+		- {\hat{\Gamma}^m}_{kj} (
+			{\beta^i}_{,m} 
+			+ {\hat{\Gamma}^i}_{lm} \beta^l
+		)
+	)	
+	+ \frac{2}{3} \Delta^i (
+		{\beta^j}_{,j} 
+		+ {\bar{\Gamma}^j}_{kj} \beta^k
+	)
+	+ \frac{1}{3} \bar{\gamma}^{il} (
+		{\beta^j}_{,jl} 
+		+ {\bar{\Gamma}^j}_{kj} {\beta^k}_{,l}
+		+ {\bar{\Gamma}^j}_{kj,l} \beta^k
+	)
+	- 2 \bar{A}^{ij} (\alpha_{,j} - 6 \phi_{,j})
+	+ 2 \bar{A}^{jk} {\Delta^i}_{jk}
+	- \frac{4}{3} \alpha \bar{\gamma}^{ij} K_{,j}
+	+ {\bar{\Lambda}^i}_{,j} \beta^j
+	- \bar{\Lambda}^j {\beta^i}_{,j}$<br>
+<br>
+
 
 <hr>
 Next the whole thing over with $\chi = exp(-4 \phi)$<br>
@@ -1632,5 +2035,430 @@ TODO derive this from the Z4 equations: $G_{ab} = 8 \pi T_{ab} + \mathcal{L}_Z g
 $\hat{K} = K - 2 \Theta$<br>
 <br>
 
+<hr>
+<br>
+
+Rescaling:<br>
+Let ${e_a}^I$ be the basis that transforms from spatial metric ($a-z$) to the kronecher delta diagonal metric ($A-Z$).<br>
+Let ${e^a}_I$ be its dual such that ${e_a}^I {e^b}_I = \delta_a^b$ and ${e_a}^I {e^a}_J = \delta^I_J$.<br>
+Such that $\gamma_{ab} = {e_a}^I {e_b}^J \delta_{IJ}$<br>
+<br>
+I take that back.  The tetrad relativity folks use this definition of ${e_a}^I$, but the numerical relativity folks use $e_a := \sqrt{\gamma_{aa}} \partial_a$.
+This at least accomplishes the same goal of diagonalizing the spherical metric $\gamma_{ij} = diag(1, r^2, r^2 sin(\theta)^2) = \{ \gamma_{rr} = 1, \gamma_{\theta\theta} = r^2, \gamma_{\phi\phi} = r^2 sin(\theta)^2 \}$.<br>
+Notice, for spherical coordinates that gives us ${e_a}^I = \downarrow a \overset{\rightarrow I}{\left[ \begin{matrix}
+	1 & 0 & 0 \\
+	0 & r & 0 \\
+	0 & 0 & r sin(\theta)
+\end{matrix} \right] }$<br>
+<br>
+
+So now we talk about storing our variables in their diagonalized coordinate state.  Do we advect them in this diagonalized coordinate state as well?
+If all our values are tensoral then we should be fine.
+How is that working for the partial derivatives?  I suppose they all work out somehow?
+It almost seems like this might be the same amount of work as just using a fixed tetrad basis in the first place ... and using a fixed basis might even let us cut some corners in other places (like our Levi-Civita connection definition).<br>
+<br>
+As far as those partial derivatives are concerned, if you compute the partial derivatives in terms of coordinates (i.e. do a finite difference between the coordinate forms of the metrics)
+then that will fix that.  But won't that re-introduce the singularities that we just went through so much effort to remove?<br>
+<br>
+
+$\epsilon_{IJ} = {e^i}_I {e^j}_J \epsilon_{ij}$<br>
+$\epsilon_{IJ} = {e^i}_I {e^j}_J (\bar{\gamma}_{ij} - \hat{\gamma}_{ij})$<br>
+<br>
+
+${e_i}^I {e_j}^J \epsilon_{IJ} = \bar{\gamma}_{ij} - \hat{\gamma}_{ij}$<br>
+$exp(-4\phi) \gamma_{ij} = {e_i}^I {e_j}^J \epsilon_{IJ} + \hat{\gamma}_{ij}$<br>
+$\gamma_{ij} = exp(4\phi) ({e_i}^I {e_j}^J \epsilon_{IJ} + \hat{\gamma}_{ij})$<br>
+<br>
+(notice I call $\epsilon_{IJ}$ what the paper calls $h_{ij}$)<br>
+<br>
+
+$\bar{\Lambda}^I = {e_i}^I \bar{\Lambda}^i$ (notice the paper calls this $\bar{\lambda}^i)$<br>
+$\bar{A}_{IJ} = {e^i}_I {e^j}_J \bar{A}_{ij}$<br>
+$\beta^I = {e_i}^I \beta^i$<br>
+Notice $\beta^i$ is the only tensor here not 'conformally rescaled', so should I instead be transforming $\bar{beta}^i = exp(4\phi) \beta^i$?<br>
+<br>
+
+Now, substituting in the rescaled index form of tensors, the evolution equations look like:<br>
+<br>
+$\alpha_{,t} = -\alpha^2 f(\alpha) K + \alpha_{,i} {e^i}_I \beta^I$<br>
+$= -\alpha^2 f(\alpha) K + \alpha_{,J} {e_i}^J {e^i}_I \beta^I$<br>
+$= -\alpha^2 f(\alpha) K + \alpha_{,I} \beta^I$<br>
+Looks the same as it did before, just with coordinate indexes replaced with rescaled indexes.<br>
+<br>
+
+Notice that $\alpha_{,I} = {e^i}_I \alpha_{,i}$ is the $\alpha$ variable, partial derivative, and then rescaled.<br>
+This means $e_I$ is an anholonomic basis, which means it may have commutation coefficients (i.e. there may exist $[e_I, e_J] = {c_{IJ}}^K e_K \ne 0$).<br>
+<br>
+
+$({e^i}_I \beta^I)_{,t} = B^i$<br>
+Let ${e^i}_{I,t} = 0$<br>
+${e^i}_I {\beta^I}_{,t} = B^i$<br>
+${\beta^I}_{,t} = {e_i}^I B^i$<br>
+${\beta^I}_{,t} = B^I$<br>
+<br>
+
+$({e^i}_I B^I)_{,t} = \frac{3}{4} ({e^i}_I \bar{\Lambda}^I)_{,t} - \eta {e^i}_I B^I$<br>
+${B^I}_{,t} = \frac{3}{4} {\bar{\Lambda}^I}_{,t} - \eta B^I$<br>
+<br>
+
+$({e_i}^I {e_j}^J \bar{\epsilon}_{IJ})_{,t} = 
+	\frac{2}{3} \bar{\gamma}_{ij} (
+		\alpha \bar{\gamma}^{kl} ({e_k}^K {e_l}^L \bar{A}_{KL})
+		- ({e^k}_K \beta^K)_{,k}
+		- {\bar{\Gamma}^k}_{lk} ({e^l}_L \beta^L)
+	)
+	+ 2 (\gamma_{k(i} {e^k}_K \beta^K)_{,j)}
+	- 2 {\hat{\Gamma}^k}_{ij} {e_k}^K \beta_K
+	- 2 \alpha {e_i}^I {e_j}^J \bar{A}_{IJ}
+	+ ({e_i}^I {e_j}^J \bar{\epsilon}_{IJ})_{,k} {e^k}_K \beta^K
+	+ \bar{\epsilon}_{kj} ({e^k}_K \beta^K)_{,i}
+	+ \bar{\epsilon}_{ki} ({e^k}_K \beta^K)_{,j}$<br>
+Notice that whenever I use $\gamma_{IJ}, \gamma^{IJ}, \bar{\gamma}_{IJ}, {\hat{\Gamma}^K}_{IJ}$, etc, I am referring to the coordinate-rescaled metrics / connections,
+and not any other metric or connection (i.e. not the geodesic connection using the rescaled basis).<br>
+$\bar{\epsilon}_{IJ,t} = 
+	{e^i}_I {e^j}_J \cdot (
+		\frac{2}{3} \bar{\gamma}_{ij} (
+			\alpha \bar{\gamma}^{kl} ({e_k}^K {e_l}^L \bar{A}_{KL})
+			- {e^k}_{K,k} \beta^K
+			- {e^k}_K {\beta^K}_{,k}
+			- {\bar{\Gamma}^k}_{lk} ({e^l}_L \beta^L)
+		)
+		+ 2 \gamma_{k(i,j)} {e^k}_K \beta^K
+		+ 2 \gamma_{k(i} {e^k}_{K|,j)} \beta^K
+		+ 2 \gamma_{k(i} {\beta^K}_{,j)} {e^k}_K
+		- 2 {\hat{\Gamma}^k}_{ij} {e_k}^K \beta_K
+	)
+	- 2 \alpha \bar{A}_{IJ}
+	+ {e^i}_I {e^j}_J \cdot (
+		+ (
+			{{e_i}^L}_{,k} {e_j}^M \bar{\epsilon}_{LM}
+			+ {e_i}^L {{e_j}^M}_{,k} \bar{\epsilon}_{LM}
+			+ {e_i}^L {e_j}^M \bar{\epsilon}_{LM,k}
+		) {e^k}_K \beta^K
+		+ \bar{\epsilon}_{kj} (
+			{e^k}_{K,i} \beta^K
+			+ {e^k}_K {\beta^K}_{,i}
+		)
+		+ \bar{\epsilon}_{ki} (
+			{e^k}_{K,j} \beta^K
+			+ {e^k}_K {\beta^K}_{,j}
+		)
+	)$<br>
+$\bar{\epsilon}_{IJ,t} = 
+	\frac{2}{3} \bar{\gamma}_{IJ} (
+		\alpha \bar{\gamma}^{KL} \bar{A}_{KL}
+		- {e^k}_{K,k} \beta^K
+		- {\beta^K}_{,K}
+		- {\bar{\Gamma}^K}_{LK} \beta^L
+	)
+	
+	+ {e^i}_I {e^k}_K \gamma_{ki,J} \beta^K
+	+ {e^j}_J {e^k}_K \gamma_{kj,I} \beta^K
+	
+	+ \gamma_{LI} {e_k}^L {e^k}_{K,J} \beta^K
+	+ \gamma_{LJ} {e_k}^L {e^k}_{K,I} \beta^K
+	
+	+ 2 \gamma_{K(I} {\beta^K}_{,J)}
+	
+	- 2 {\hat{\Gamma}^K}_{IJ} \beta_K
+	- 2 \alpha \bar{A}_{IJ}
+	+ {e^i}_I {{e_i}^L}_{,K} \bar{\epsilon}_{LJ} \beta^K
+	+ {e^j}_J {{e_j}^M}_{,K} \bar{\epsilon}_{IM} \beta^K
+	+ \bar{\epsilon}_{IJ,K} \beta^K
+	+ \bar{\epsilon}_{LJ} {e_k}^L {e^k}_{K,I} \beta^K
+	+ \bar{\epsilon}_{KJ} {\beta^K}_{,I}
+	+ \bar{\epsilon}_{LI} {e_k}^L {e^k}_{K,J} \beta^K
+	+ \bar{\epsilon}_{KI} {\beta^K}_{,J}
+	$<br>
+$\bar{\epsilon}_{IJ,t} = 
+	\frac{2}{3} \bar{\gamma}_{IJ} (
+		\alpha \bar{\gamma}^{KL} \bar{A}_{KL}
+		- {\beta^K}_{,K}
+		- {\bar{\Gamma}^K}_{LK} \beta^L
+	)
+	
+	+ 4 \phi_{,J} exp(4 \phi) (\bar{\epsilon}_{IK} + \hat{\gamma}_{IK}) \beta^K
+	+ exp(4 \phi) \bar{\epsilon}_{KI,J} \beta^K
+	
+	+ 4 \phi_{,I} exp(4 \phi) (\bar{\epsilon}_{JK} + \hat{\gamma}_{JK}) \beta^K
+	+ exp(4 \phi) \bar{\epsilon}_{KJ,I} \beta^K
+	
+	+ 2 \gamma_{K(I} {\beta^K}_{,J)}
+	
+	- 2 {\hat{\Gamma}^K}_{IJ} \beta_K
+	- 2 \alpha \bar{A}_{IJ}
+	
+	+ \bar{\epsilon}_{IJ,K} \beta^K
+	+ \bar{\epsilon}_{KJ} {\beta^K}_{,I}
+	+ \bar{\epsilon}_{KI} {\beta^K}_{,J}
+$<br>
+$ 	- \frac{2}{3} \bar{\gamma}_{IJ} {e^k}_{K,k} \beta^K
+
+	+ exp(4 \phi) {e^k}_K {{e_k}^L}_{,J} \bar{\epsilon}_{LI} \beta^K
+	+ exp(4 \phi) {e^i}_I {{e_i}^M}_{,J} \bar{\epsilon}_{KM} \beta^K
+	+ exp(4 \phi) {e^i}_I {e^k}_K \hat{\gamma}_{kl,J} \beta^K
+	
+	+ exp(4 \phi) {e^k}_K {{e_k}^L}_{,I} \bar{\epsilon}_{LJ} \beta^K
+	+ exp(4 \phi) {e^j}_J {{e_j}^M}_{,I} \bar{\epsilon}_{KM} \beta^K
+	
+	+ exp(4 \phi) {e^j}_J {e^k}_K \hat{\gamma}_{kl,I} \beta^K
+	
+	+ \gamma_{LI} {e_k}^L {e^k}_{K,J} \beta^K
+	+ \gamma_{LJ} {e_k}^L {e^k}_{K,I} \beta^K
+	
+	+ \bar{\epsilon}_{LJ} {e^i}_I {{e_i}^L}_{,K} \beta^K
+	+ \bar{\epsilon}_{IM} {e^i}_J {{e_i}^M}_{,K} \beta^K
+	
+	+ \bar{\epsilon}_{LJ} {e_k}^L {e^k}_{K,I} \beta^K
+	+ \bar{\epsilon}_{LI} {e_k}^L {e^k}_{K,J} \beta^K
+$<br>
+
+<br>
+
+$W_{,t} =
+	-\frac{1}{3} W (
+		({e^k}_K \beta^K)_{,k}
+		+ {e^k}_K {e_l}^L {e_k}^M {e^l}_N {\bar{\Gamma}^K}_{LM} \beta^N
+		- \alpha K
+	)
+	+ W_{,i} {e^i}_I \beta^I$<br>
+$W_{,t} =
+	-\frac{1}{3} W (
+		{e^k}_{K,k} \beta^K
+		+ {e^k}_K {\beta^K}_{,k}
+		+ {\bar{\Gamma}^K}_{LK} \beta^L
+		- \alpha K
+	)
+	+ W_{,I} \beta^I$<br>
+$W_{,t} =
+	-\frac{1}{3} W (
+		{e^k}_{K,k} \beta^K
+		+ {\beta^K}_{,K}
+		+ {\bar{\Gamma}^K}_{LK} \beta^L
+		- \alpha K
+	)
+	+ W_{,I} \beta^I$<br>
+<br>
+
+$K_{,t} = \frac{1}{3} \alpha K^2
+	+ {e_i}^I {e_j}^J {e^i}_K {e^j}_L \alpha \bar{A}_{IJ} \bar{A}^{KL} 
+	- exp(-4 \phi) (
+		\bar{\gamma}^{ij} \alpha_{,ij}
+		- \bar{\Gamma}^k \alpha_{,k}
+		+ 2 \bar{\gamma}^{ij} \alpha_{,i} \phi_{,j}
+	)
+	+ 4 \pi \alpha (S + \rho)
+	+ K_{,i} {e^i}_I \beta^I$<br>
+$K_{,t} = \frac{1}{3} \alpha K^2
+	+ \alpha \bar{A}_{IJ} \bar{A}^{IJ} 
+	- exp(-4 \phi) (
+		\bar{\gamma}^{ij} \alpha_{,ij}
+		- \bar{\Gamma}^K \alpha_{,K}
+		+ 2 \bar{\gamma}^{IJ} \alpha_{,I} \phi_{,J}
+	)
+	+ 4 \pi \alpha (S + \rho)
+	+ K_{,I} \beta^I$<br>
+<br>
+
+$({e_i}^I {e_j}^J \bar{A}_{IJ})_{,t} = 
+	- \frac{2}{3} {e_i}^I {e_j}^J \bar{A}_{IJ} (
+		({e^k}_K \beta^K)_{,k}
+		+ {\bar{\Gamma}^K}_{LK} \beta^L
+	)
+	- 2 \alpha {e_i}^I {e_j}^J \bar{A}_{IK} {\bar{A}^K}_J
+	+ \alpha K {e_i}^I {e_j}^J \bar{A}_{ij} 
+	+ {e_i}^I {e_j}^J exp(-4 \phi)(
+		- 2 \alpha (\phi_{,ij} - {\bar{\Gamma}^k}_{ij} \phi_{,k})
+		+ 4 \alpha \phi_{,i} \phi_{,j}
+		+ 4 \phi_{,(i} \alpha_{,j)}
+		- \alpha_{,ij} 
+		+ {\bar{\Gamma}^K}_{ij} \alpha_{,K}
+		+ \alpha (\bar{R}_{ij} - 8 \pi S_{ij})
+	)^{TF}
+	+ {e_i}^I {e_j}^J ({e_i}^L {e_j}^M \bar{A}_{LM})_{,K} \beta^K
+	+ {e_i}^I {e_j}^J \bar{A}_{kj} ({e^k}_K \beta^K)_{,i}
+	+ {e_i}^I {e_j}^J \bar{A}_{ki} ({e^k}_K \beta^K)_{,j}$<br>
+$\bar{A}_{IJ,t} = 
+	- \frac{2}{3} \bar{A}_{IJ} (
+		({e^k}_K \beta^K)_{,k}
+		+ {\bar{\Gamma}^K}_{LK} \beta^L
+	)
+	- 2 \alpha \bar{A}_{IK} {\bar{A}^K}_J
+	+ \alpha K \bar{A}_{ij} 
+	+ exp(-4 \phi)(
+		- 2 \alpha ({e^i}_I {e^j}_J \phi_{,ij} - {\bar{\Gamma}^K}_{IJ} \phi_{,K})
+		+ 4 \alpha \phi_{,I} \phi_{,J}
+		+ 4 \phi_{,(I} \alpha_{,J)}
+		- {e^i}_I {e^j}_J \alpha_{,IJ} 
+		+ {\bar{\Gamma}^K}_{IJ} \alpha_{,K}
+		+ \alpha (\bar{R}_{IJ} - 8 \pi S_{IJ})
+	)^{TF}
+	
+	+ {e_i}^I {{e_i}^L}_{,K} \bar{A}_{LJ} \beta^K
+	+ {e_j}^J {{e_j}^M}_{,K} \bar{A}_{IM} \beta^K
+	+ \bar{A}_{IJ,K} \beta^K
+	
+	+ \bar{A}_{kJ} {e^k}_{K,I} \beta^K 
+	+ \bar{A}_{KJ} {\beta^K}_{,I}
+	+ \bar{A}_{kI} {e^k}_{K,J} \beta^K 
+	+ \bar{A}_{KI} {\beta^K}_{,J}$<br>
+<br>
+
+$({e^i}_I \bar{\Lambda}^I)_{,t} = 
+	\bar{\gamma}^{jk} (
+		({e^i}_I \beta^I)_{,kj} 
+		+ {\hat{\Gamma}^i}_{lk,j} {e^l}_L \beta^L
+		+ {\hat{\Gamma}^i}_{lk} ({e^l}_L \beta^L)_{,j}
+		+ {\hat{\Gamma}^i}_{mj} (
+			({e^m}_M \beta^M)_{,k} 
+			+ {\hat{\Gamma}^m}_{lk} {e^l}_L \beta^L
+		)
+		- {\hat{\Gamma}^m}_{kj} (
+			({e^i}_I \beta^I)_{,m} 
+			+ {\hat{\Gamma}^i}_{lm} {e^l}_L \beta^L
+		)
+	)	
+	+ \frac{2}{3} \Delta^i (
+		({e^j}_J \beta^J)_{,j} 
+		+ {\bar{\Gamma}^j}_{kj} {e^k}_K \beta^K
+	)
+	+ \frac{1}{3} \bar{\gamma}^{il} (
+		({e^j}_J \beta^J)_{,jl} 
+		+ {\bar{\Gamma}^j}_{kj} ({e^k}_K \beta^K)_{,l}
+		+ {\bar{\Gamma}^j}_{kj,l} {e^k}_K \beta^K
+	)
+	- 2 {e^i}_I {e^j}_J \bar{A}^{IJ} (\alpha_{,j} - 6 \phi_{,j})
+	+ 2 {e^j}_J {e^k}_K \bar{A}^{JK} {\Delta^i}_{jk}
+	- \frac{4}{3} \alpha \bar{\gamma}^{ij} K_{,j}
+	+ ({e^i}_I \bar{\Lambda}^I)_{,j} {e^j}_J \beta^J
+	- {e^j}_J \bar{\Lambda}^J ({e^i}_I \beta^I)_{,j}$<br>
+${\bar{\Lambda}^I}_{,t} = 
+	{e_n}^I \bar{\gamma}^{jk} (
+		{e^n}_{N,kj} \beta^N 
+		+ 2 {e^n}_{N,k} {\beta^N}_{,j} 
+		+ {e^n}_N {\beta^N}_{,kj}
+		
+		+ {\hat{\Gamma}^n}_{lk,j} {e^l}_L \beta^L
+		+ {\hat{\Gamma}^n}_{lk} {e^l}_{L,j} \beta^L
+		+ {\hat{\Gamma}^n}_{lk} {e^l}_L {\beta^L}_{,j}
+		+ {\hat{\Gamma}^n}_{mj} (
+			{e^m}_{M,k} \beta^M
+			+ {e^m}_M {\beta^M}_{,k} 
+			+ {\hat{\Gamma}^m}_{Lk} \beta^L
+		)
+		- {\hat{\Gamma}^m}_{kj} (
+			{e^n}_{N,m} \beta^N
+			+ {e^n}_N {\beta^N}_{,m} 
+			+ {\hat{\Gamma}^n}_{lm} {e^l}_L \beta^L
+		)
+	)	
+	+ \frac{2}{3} {e_n}^I \Delta^n (
+		{e^j}_{J,j} \beta^J
+		+ {e^j}_J {\beta^J}_{,j} 
+		+ {\bar{\Gamma}^j}_{kj} {e^k}_K \beta^K
+	)
+	+ \frac{1}{3} {e_n}^I \bar{\gamma}^{nl} (
+		{e^j}_{J,jl} \beta^J
+		+ {e^j}_{J,j} {\beta^J}_{,l}
+		+ {e^j}_{J,l} {\beta^J}_{,j}
+		+ {e^j}_J {\beta^J}_{,jl}
+		
+		+ {\bar{\Gamma}^j}_{kj} {e^k}_{K,l} \beta^K 
+		+ {\bar{\Gamma}^j}_{kj} {e^k}_K {\beta^K}_{,l}
+		+ {\bar{\Gamma}^j}_{kj,l} {e^k}_K \beta^K
+	)
+	- 2 {e_n}^I {e^n}_N {e^j}_J \bar{A}^{NJ} (\alpha_{,j} - 6 \phi_{,j})
+	+ 2 {e_n}^I {e^j}_J {e^k}_K \bar{A}^{JK} {\Delta^n}_{jk}
+	- \frac{4}{3} {e_n}^I \alpha \bar{\gamma}^{nj} K_{,j}
+	
+	+ {e_n}^I {e^n}_{N,j} \bar{\Lambda}^N {e^j}_J \beta^J
+	+ {e_n}^I {e^n}_N {\bar{\Lambda}^N}_{,j} {e^j}_J \beta^J
+	
+	- {e_n}^I {e^j}_J \bar{\Lambda}^J {e^n}_{N,j} \beta^N
+	- {e_n}^I {e^j}_J \bar{\Lambda}^J {e^n}_N {\beta^N}_{,j}
+	$<br>
+${\bar{\Lambda}^I}_{,t} = 
+	\bar{\gamma}^{JK} (
+		{e_J}^j {e_K}^k {e_i}^I {e^i}_{L,jk} \beta^L 
+		+ 2 {e_i}^I {e^i}_{L,K} {\beta^L}_{,J} 
+		+ {e_J}^j {e_K}^k {\beta^I}_{,jk}
+		
+		+ {e_n}^I {e^k}_K {e^l}_L {\hat{\Gamma}^n}_{lk,J} \beta^L
+		+ {\hat{\Gamma}^I}_{MK} {e^M}_{L,J} \beta^L
+		+ {\hat{\Gamma}^I}_{LK} {\beta^L}_{,J}
+		+ {\hat{\Gamma}^I}_{NJ} (
+			{e^N}_{M,K} \beta^M
+			+ {e^N}_M {\beta^M}_{,K} 
+			+ {\hat{\Gamma}^N}_{LK} \beta^L
+		)
+		- {\hat{\Gamma}^M}_{KJ} (
+			{e_n}^I {e^n}_{N,M} \beta^N
+			+ {e^I}_N {\beta^N}_{,M} 
+			+ {\hat{\Gamma}^I}_{LM} \beta^L
+		)
+	)	
+	+ \frac{2}{3} \Delta^I (
+		{e^j}_{J,j} \beta^J
+		+ {\beta^J}_{,J} 
+		+ {\bar{\Gamma}^J}_{KJ} \beta^K
+	)
+	+ \frac{1}{3} \bar{\gamma}^{IL} (
+		{e^l}_L {e^j}_{J,jl} \beta^J
+		+ {e^j}_{J,j} {\beta^J}_{,L}
+		+ {e_j}^M {e^j}_{J,L} {\beta^J}_{,M}
+		+ {e^l}_L {e^j}_J {\beta^J}_{,jl}
+		
+		+ {\bar{\Gamma}^J}_{MJ} {e_k}^M {e^k}_{K,L} \beta^K 
+		+ {\bar{\Gamma}^J}_{KJ} {\beta^K}_{,L}
+		+ {\bar{\Gamma}^j}_{kj,L} {e^k}_K \beta^K
+	)
+	- 2 \bar{A}^{IJ} (\alpha_{,J} - 6 \phi_{,J})
+	+ 2 \bar{A}^{JK} {\Delta^I}_{JK}
+	- \frac{4}{3} \alpha \bar{\gamma}^{IJ} K_{,J}
+	
+	+ {e_n}^I {e^n}_{N,J} \bar{\Lambda}^N \beta^J
+	+ {\bar{\Lambda}^I}_{,J} \beta^J
+	
+	- \bar{\Lambda}^J {e_n}^I {e^n}_{N,J} \beta^N
+	- \bar{\Lambda}^J {\beta^I}_{,J}
+	$<br>
+<br>
+
+<hr>
+<br>
+
+Example:<br>
+Schwarzschild:<br>
+$ds^2 + -(1 - \frac{R}{r}) dt^2 + (1 - \frac{R}{r})^{-1} dr^2 + r^2 d\theta^2 + r^2 sin(\theta)^2 d\phi^2$<br>
+Let $r = r' (1 + \frac{R}{4 r'})^2$<br>
+Schwarzschild isotropic coordinates:<br>
+$ds^2 = -\frac{(1 - \frac{R}{4 r'})^2}{(1 + \frac{R}{4 r'})^2} dt^2 + (1 + \frac{R}{4 r'})^4 ( dr'^2 + r'^2 (d\theta^2 + sin(\theta)^2 d\phi^2))$<br>
+<br>
+
+metric components:<br>
+$g_{tt} = -\frac{(1 - \frac{R}{4 r'})^2}{(1 + \frac{R}{4 r'})^2}$<br>
+$g_{r'r'} = (1 + \frac{R}{4 r'})^4$<br>
+$g_{\theta\theta} = (1 + \frac{R}{4 r'})^4 \cdot r'^2$<br>
+$g_{\phi\phi} = (1 + \frac{R}{4 r'})^4 \cdot r'^2 sin(\theta)^2$<br>
+<br>
+
+deriving ADM Metric components:<br>
+$g_{ti} = \beta_i = 0$<br>
+$g_{tt} = -\alpha^2 + \beta^2 = -\alpha^2 = -\frac{(1 - \frac{R}{4 r'})^2}{(1 + \frac{R}{4 r'})^2}$<br>
+$g_{ij} = \gamma_{ij} = (1 + \frac{R}{4 r'})^4 \cdot diag(1, r'^2, r'^2 sin(\theta)^2)$<br>
+so<br>
+$\alpha = \frac{(1 - \frac{R}{4 r'})}{(1 + \frac{R}{4 r'})}$<br>
+$\beta^i = 0$<br>
+$\gamma_{ij} = (1 + \frac{R}{4 r'})^4 \cdot diag(1, r'^2, r'^2 sin(\theta)^2)$<br>
+<br>
+$\gamma = det(\gamma_{ij}) = (1 + \frac{R}{4 r'})^{12} r'^4 sin(\theta)^2$<br>
+let $\hat{\gamma}_{ij} = diag(1, r'^2, r'^2 sin(\theta)^2)$<br>
+so $\hat{\gamma} = det(\hat{\gamma}_{ij}) = r'^4 sin(\theta)^2$<br>
+so $\gamma = (1 + \frac{R}{4 r'})^{12} \hat{\gamma}$<br>
+so $\frac{\gamma}{\hat{\gamma}} = (1 + \frac{R}{4 r'})^{12}$<br>
+<br>
+$\phi = \frac{1}{12} ln(\frac{\gamma}{\hat{\gamma}})$<br>
+$ = \frac{1}{12} ln( (1 + \frac{R}{4 r'})^{12} )$<br>
+$ = ln(1 + \frac{R}{4 r'})$<br>
 	</body>
 </html>

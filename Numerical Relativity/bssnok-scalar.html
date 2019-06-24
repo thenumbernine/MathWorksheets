@@ -17,32 +17,38 @@ $g^{ab} \nabla_a \Phi_{,b} - \frac{dV}{d|\Phi|^2} \Phi = 0$<br>
 $g^{ab} \Phi_{,ab} - {\Gamma^c}_{ab} \Phi_{,c} - \frac{dV}{d|\Phi|^2} \Phi = 0$<br>
 <br>
 
+Let $V = \mu^2 |\Phi|^2 + \frac{1}{2} \lambda |\Phi|^4$<br>
+$\frac{dV}{d|\Phi|^2} = \mu^2 + \lambda |\Phi|^2$<br>
+Let $\Lambda = \frac{\lambda}{4 \pi \mu^2}$, so $\lambda = 4 \pi \Lambda \mu^2$<br>
+$\frac{dV}{d|\Phi|^2} = \mu^2 (1 + 4 \pi \Lambda |\Phi|^2)$<br>
+<br>
+
 substitute ADM metric components:<br>
 $g^{tt} \Phi_{,tt}
 	+ 2 g^{ti} \Phi_{,ti}
 	+ g^{ij} \Phi_{,ij}
 	- \Gamma^c \Phi_{,c}
-	- \frac{dV}{d|\Phi|^2} \Phi = 0$<br>
+	- (\mu^2 + \lambda |\Phi|^2) \Phi = 0$<br>
 $-\alpha^{-2} \Phi_{,tt}
 	+ 2 \alpha^{-2} \beta^i \Phi_{,ti}
 	+ (\gamma^{ij}
 	- \alpha^{-2} \beta^i \beta^j) \Phi_{,ij}
 	- \Gamma^t \Phi_{,t}
 	- \Gamma^i \Phi_{,i}
-	- \frac{dV}{d|\Phi|^2} \Phi = 0$<br>
+	- (\mu^2 + \lambda |\Phi|^2) \Phi = 0$<br>
 $-\Phi_{,tt}
 	+ 2 \beta^i \Phi_{,ti}
 	+ (\alpha^2 \gamma^{ij} - \beta^i \beta^j) \Phi_{,ij}
 	- \alpha^2 \Gamma^t \Phi_{,t}
 	- \alpha^2 \Gamma^i \Phi_{,i}
-	- \alpha^2 \frac{dV}{d|\Phi|^2} \Phi = 0$<br>
+	- \alpha^2 (\mu^2 + \lambda |\Phi|^2) \Phi = 0$<br>
 solve for $\Phi_{,tt}$:<br>
 $\Phi_{,tt} =
 	2 \beta^i \Phi_{,ti}
 	+ (\alpha^2 \gamma^{ij} - \beta^i \beta^j) \Phi_{,ij}
 	- \alpha^2 \Gamma^t \Phi_{,t}
 	- \alpha^2 \Gamma^i \Phi_{,i}
-	- \alpha^2 \frac{dV}{d|\Phi|^2} \Phi$<br>
+	- \alpha^2 (\mu^2 + \lambda |\Phi|^2) \Phi$<br>
 <br>
 Notice that $\Gamma^u$ is the connection of the 4-metric, not of the 3-metric.<br>
 Substituting it for our 3-metric connection:<br>
@@ -134,7 +140,7 @@ $\Pi_{,t} =
 		+ (\alpha^2 \gamma^{ij} - \beta^i \beta^j) \Phi_{,ij}
 		- \alpha^2 \Gamma^t \Phi_{,t}
 		- \alpha^2 \Gamma^i \Phi_{,i}
-		- \alpha^2 \frac{dV}{d|\Phi|^2} \Phi
+		- \alpha^2 (\mu^2 + \lambda |\Phi|^2) \Phi
 	)$<br>
 $\Pi_{,t} = 
 	-\frac{1}{\alpha^2} \alpha_{,t} \Pi
@@ -143,7 +149,7 @@ $\Pi_{,t} =
 	+ \frac{1}{\alpha} (\alpha^2 \gamma^{ij} - \beta^i \beta^j) \Psi_{i,j}
 	- \alpha \Gamma^t (\alpha \Pi + \beta^i \Psi_i)
 	- \alpha \Gamma^i \Psi_i
-	- \alpha \frac{dV}{d|\Phi|^2} \Phi
+	- \alpha (\mu^2 + \lambda |\Phi|^2) \Phi
 	$<br>
 $\Pi_{,t} = 
 	-\frac{1}{\alpha^2} \alpha_{,t} \Pi
@@ -154,7 +160,7 @@ $\Pi_{,t} =
 	- \alpha \Gamma^t \alpha \Pi 
 	- \alpha \Gamma^t \beta^i \Psi_i
 	- \alpha \Gamma^i \Psi_i
-	- \alpha \frac{dV}{d|\Phi|^2} \Phi
+	- \alpha (\mu^2 + \lambda |\Phi|^2) \Phi
 	$<br>
 $\Pi_{,t} = 
 	-\frac{1}{\alpha^2} \alpha_{,t} \Pi
@@ -168,7 +174,7 @@ $\Pi_{,t} =
 	- \alpha \Gamma^t \alpha \Pi 
 	- \alpha \Gamma^t \beta^i \Psi_i
 	- \alpha \Gamma^i \Psi_i
-	- \alpha \frac{dV}{d|\Phi|^2} \Phi
+	- \alpha (\mu^2 + \lambda |\Phi|^2) \Phi
 	$<br>
 $\Pi_{,t} = 
 	-\frac{1}{\alpha^2} \alpha_{,t} \Pi
@@ -178,10 +184,10 @@ $\Pi_{,t} =
 	+ \frac{1}{\alpha} \beta^i {\beta^j}_{,i} \Psi_j
 	- \alpha \Gamma^i \Psi_i
 	- \alpha \Gamma^t \beta^i \Psi_i
-	+ \beta^i \Pi_{,i} 
 	+ \alpha \gamma^{ij} \Psi_{i,j}
-	- \alpha \frac{dV}{d|\Phi|^2} \Phi
-	$<br>	
+	+ \beta^i \Pi_{,i} 
+	- \alpha (\mu^2 + \lambda |\Phi|^2) \Phi
+	$<br>
 
 	</body>
 </html>

@@ -64,14 +64,64 @@ $U^i(t_2) = U^i(t_1) - {{\Delta t}\over{\Delta x^j}}  (F^{ij}(x^{\sigma^+}) - F^
 <br>
 
 <b>same thing but curved space</b><br>
-$\nabla_\mu F^{I\mu} = 0$<br>
+I'm going to put the $\mu$ as the first index for ease later.<bR>
+$\nabla_\mu F^{\mu I} = 0$<br>
 assume timelike hypersurfaces are flat for now:<br>
 $\partial_t F^{It} + \nabla_j F^{Ij} = 0$<br>
-let $U^i = F^{It}$<br>
-$\partial_t U^I + \nabla_j F^{Ij} = 0$<br>
+Let $U^I = F^{It}$<br>
+$\partial_t U^I + \nabla_j F^{j I} = 0$<br>
 Substitute covariant derivative for connection coefficients...<br>
-Notice: this part excludes consideration of any possible tensors <i>within</i> the flux vector.<br>
-$\partial_t U^I + \partial_j F^{Ij} + {\Gamma^j}_{kj} F^{Ik} = 0$<br>
-$\partial_t U^I + \partial_j F^{Ij} + {\Gamma^j}_{kj} F^{Ik} + {\Gamma^{i_1}}_{kj} F^{i_1 k} + ... + {\Gamma^{i_n}}_{kj} F^{i_n k} = 0$<br>
+Now we have to consider the tensoral elements of $U^I$<br>
+For a $\pmatrix{p \\ q}$ tensor, we get the following:<br>
+$\partial_t {U^{i_1 ... i_p}}_{k_1 ... k_q} + \nabla_j {F^{j i_1 ... i_p}}_{k_1 ... k_q} = 0$<br>
+Expand the $\nabla_j$, don't assume a coordinate basis, however if you are using a coordinate basis then $e_j = \partial_j$.<br>
+$\partial_t {U^{i_1 ... i_p}}_{k_1 ... k_q} 
+	+ e_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q})
+	+ {\Gamma^j}_{jl} {F^{l i_1 ... i_p}}_{k_1 ... k_q} 
+	+ {\Gamma^{i_m}}_{j l} {F^{j i_1 ... i_{m-1} l i_{m+1} ... i_p}}_{k_1 ... k_q} 
+	- {\Gamma^l}_{j k_m} {F^{j i_1  ... i_p}}_{k_1 ... k_{m-1} l k_{m+1}... k_q} 
+	= 0$<br>
+Swap the ${\Gamma^i}_{jk} = {\Gamma^i}_{kj} + {c_{jk}}^i$.  Notice that I'm not assuming a holonomic connection.<br>
+$\partial_t {U^{i_1 ... i_p}}_{k_1 ... k_q} 
+	+ e_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q})
+	+ ({\Gamma^j}_{lj} + {c_{lj}}^j) {F^{l i_1 ... i_p}}_{k_1 ... k_q} 
+	+ {\Gamma^{i_m}}_{j l} {F^{j i_1 ... i_{m-1} l i_{m+1} ... i_p}}_{k_1 ... k_q} 
+	- {\Gamma^l}_{j k_m} {F^{j i_1  ... i_p}}_{k_1 ... k_{m-1} l k_{m+1}... k_q} 
+	= 0$<br>
+Substitute ${\Gamma^j}_{ij} = e_i (ln \sqrt{g})$:<br>
+Notice that, if you are using a non-coordinate basis with identity metric then this reduces to zero.<br>
+$\partial_t {U^{i_1 ... i_p}}_{k_1 ... k_q} 
+	+ \frac{\sqrt{g}}{\sqrt{g}} e_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q})
+	+ \frac{1}{\sqrt{g}} e_j (\sqrt{g}) {F^{j i_1 ... i_p}}_{k_1 ... k_q} 
+	+ {c_{lj}}^j {F^{l i_1 ... i_p}}_{k_1 ... k_q} 
+	+ {\Gamma^{i_m}}_{j l} {F^{j i_1 ... i_{m-1} l i_{m+1} ... i_p}}_{k_1 ... k_q} 
+	- {\Gamma^l}_{j k_m} {F^{j i_1  ... i_p}}_{k_1 ... k_{m-1} l k_{m+1}... k_q} 
+	= 0$<br>
+Move the rest of the terms to the source side:<br>
+$\partial_t {U^{i_1 ... i_p}}_{k_1 ... k_q} 
+	+ \frac{1}{\sqrt{g}} e_j (\sqrt{g} {F^{j i_1 ... i_p}}_{k_1 ... k_q})
+	= 
+	- {c_{lj}}^j {F^{l i_1 ... i_p}}_{k_1 ... k_q} 
+	- {\Gamma^{i_m}}_{j l} {F^{j i_1 ... i_{m-1} l i_{m+1} ... i_p}}_{k_1 ... k_q} 
+	+ {\Gamma^l}_{j k_m} {F^{j i_1  ... i_p}}_{k_1 ... k_{m-1} l k_{m+1}... k_q} 
+$<br>
+Notice that, in order to take advantage of the volume weighting in a non-coordinate basis, you must apply the non-coordinate basis operator and not merely the partial derivative.<br>
+Expanding the $e_j$ operator in terms of its linear combination of coordinate basis, denoted $e_\bar{a}$:<br>
+$\partial_t {U^{i_1 ... i_p}}_{k_1 ... k_q} 
+	+ \frac{1}{\sqrt{g}} {e_j}^\bar{j} e_\bar{j} (\sqrt{g} {F^{j i_1 ... i_p}}_{k_1 ... k_q})
+	= 
+	- {c_{lj}}^j {F^{l i_1 ... i_p}}_{k_1 ... k_q} 
+	- {\Gamma^{i_m}}_{j l} {F^{j i_1 ... i_{m-1} l i_{m+1} ... i_p}}_{k_1 ... k_q} 
+	+ {\Gamma^l}_{j k_m} {F^{j i_1  ... i_p}}_{k_1 ... k_{m-1} l k_{m+1}... k_q} 
+$<br>
+So implementing this as difference operations, what this means is...<br>
+(1) For holonomic only: Weight your flux by the coordinate volume at that interface.  Notice that anholonomic, normalized will have a $g = I$ and therefore involve no weight.<br>
+(2) Compute your partial derivatives.<br>
+(3) For anholonomic only: transform your derivative by the coordinate-to-non-coordinate linear transformation.<br>
+(4) For holonomic only: Divide out the weight of the coordinate volume at the center.<br>
+...<br>
+<br>
+
+	
 	</body>
 </html>

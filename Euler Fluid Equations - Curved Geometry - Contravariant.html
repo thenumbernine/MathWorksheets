@@ -182,11 +182,11 @@ $ = \left[\begin{matrix}
 \end{matrix}\right]$<br>
 
 $= \left[\begin{matrix} 
-	{m^j}_{,j} + {\Gamma^j}_{kj} m^k \\ 
+	{m^j}_{,j} + {\Gamma^j}_{jk} m^k \\ 
 	
 	-\frac{1}{\rho^2} \rho_{,j} m^i m^j
-	+ \frac{1}{\rho} ({m^i}_{,j} + {\Gamma^i}_{kj} m^k) m^j
-	+ \frac{1}{\rho} m^i ({m^j}_{,j} + {\Gamma^j}_{kj} m^k)
+	+ \frac{1}{\rho} ({m^i}_{,j} + {\Gamma^i}_{jk} m^k) m^j
+	+ \frac{1}{\rho} m^i ({m^j}_{,j} + {\Gamma^j}_{jk} m^k)
 	+ g^{ij} \tilde\gamma (
 		E_{total,j}
 		+ \frac{1}{2} \frac{1}{\rho^2} \rho_{,j} m^2
@@ -194,7 +194,7 @@ $= \left[\begin{matrix}
 	)	
 	\\
 
-	(-\frac{1}{\rho^2} \rho_{,j} m^j + \frac{1}{\rho} ({m^j}_{,j} + {\Gamma^j}_{kj} m^k)) H_{total}
+	(-\frac{1}{\rho^2} \rho_{,j} m^j + \frac{1}{\rho} ({m^j}_{,j} + {\Gamma^j}_{jk} m^k)) H_{total}
 	+ \frac{1}{\rho} m^j (
 		\gamma E_{total,j} 
 		+ \tilde\gamma \frac{1}{2} \frac{1}{\rho^2} \rho_{,j} m^2
@@ -231,16 +231,16 @@ $= \left[\begin{matrix}
 
 \end{matrix}\right]
 + \left[\begin{matrix}
-	{\Gamma^j}_{kj} m^k \\
-	\frac{1}{\rho} m^i {\Gamma^j}_{kj} m^k
-	+ {\Gamma^j}_{kj} g^{ik} P
+	{\Gamma^j}_{jk} m^k \\
+	\frac{1}{\rho} m^i {\Gamma^j}_{jk} m^k
+	+ {\Gamma^j}_{jk} g^{ik} P
 	\\
-	\frac{1}{\rho} {\Gamma^j}_{kj} m^k H_{total}
+	\frac{1}{\rho} {\Gamma^j}_{jk} m^k H_{total}
 \end{matrix}\right]
 + \left[\begin{matrix}
 	0 \\
-	\frac{1}{\rho} {\Gamma^i}_{kj} m^k m^j
-	- {\Gamma^j}_{kj} g^{ik} P
+	\frac{1}{\rho} {\Gamma^i}_{jk} m^k m^j
+	- {\Gamma^j}_{jk} g^{ik} P
 	\\
 	0
 \end{matrix}\right]$<br>
@@ -277,16 +277,16 @@ $= \left[\begin{matrix}
 
 \end{matrix}\right]
 + \left[\begin{matrix}
-	{\Gamma^j}_{kj} m^k \\
-	\frac{1}{\rho} m^i {\Gamma^j}_{kj} m^k
-	+ {\Gamma^j}_{kj} g^{ik} P
+	{\Gamma^j}_{jk} m^k \\
+	\frac{1}{\rho} m^i {\Gamma^j}_{jk} m^k
+	+ {\Gamma^j}_{jk} g^{ik} P
 	\\
-	\frac{1}{\rho} {\Gamma^j}_{kj} m^k H_{total}
+	\frac{1}{\rho} {\Gamma^j}_{jk} m^k H_{total}
 \end{matrix}\right]
 + \left[\begin{matrix}
 	0 \\
-	\frac{1}{\rho} {\Gamma^i}_{kj} m^k m^j
-	- {\Gamma^j}_{kj} g^{ik} P
+	\frac{1}{\rho} {\Gamma^i}_{jk} m^k m^j
+	- {\Gamma^j}_{jk} g^{ik} P
 	- {g^{ij}}_{,j} P
 	+ \tilde\gamma \frac{1}{2} \frac{1}{\rho} m^k m^l g_{kl,j} g^{ij}
 	\\
@@ -294,26 +294,54 @@ $= \left[\begin{matrix}
 \end{matrix}\right]$<br>
 <br>
 
-$= \frac{\sqrt{g}}{\sqrt{g}} {F^{Ij}}_{,j} + \frac{\sqrt{g}_{,j}}{\sqrt{g}} F^{Ij} + \left[\begin{matrix}
-	0 \\
-	\frac{1}{\rho} {\Gamma^i}_{kj} m^k m^j
-	- {\Gamma^j}_{kj} g^{ik} P
-	- {g^{ij}}_{,j} P
-	\\
-	0
-\end{matrix}\right]$<br>
+$= \frac{\sqrt{g}}{\sqrt{g}} {F^{Ij}}_{,j} 
+	+ (
+		\frac{\sqrt{g}_{,j}}{\sqrt{g}} 
+		+ {c_{kj}}^k
+	) F^{Ij} 
+	+ \left[\begin{matrix}
+		0 \\
+		\frac{1}{\rho} {\Gamma^i}_{jk} m^k m^j
+		- {\Gamma^j}_{jk} g^{ik} P
+		+ ({\Gamma^i}_{jk} g^{jk} + {\Gamma^j}_{jk} g^{ki}) P
+		- \frac{1}{\rho} \tilde{\gamma} m^k m^l \Gamma_{kjl} g^{ij}
+		\\
+		\frac{1}{\rho^2} \tilde{\gamma} m^j m^k m^l \Gamma_{kjl}
+	\end{matrix}\right]$<br>
 
-$= \frac{1}{\sqrt{g}} \left( 
-	\sqrt{g} F^{Ij}
-\right)_{,j}
+$= \frac{\sqrt{g}}{\sqrt{g}} {F^{Ij}}_{,j} 
+	+ \frac{\sqrt{g}_{,j}}{\sqrt{g}}  F^{Ij} 
+	+ ({\Gamma^k}_{kj} - {\Gamma^k}_{jk})
+	\cdot \left[\begin{matrix}
+		m^j \\
+		\frac{1}{\rho} m^i m^j + g^{ij} P \\
+		v^j H_{total}
+	\end{matrix}\right]
+	+ \left[\begin{matrix}
+		0 \\
+		{\Gamma^i}_{jk} (
+			\frac{1}{\rho} m^k m^j
+			+ g^{jk} P
+		)
+		- \frac{1}{\rho} \tilde{\gamma} m^k m^l \Gamma_{kjl} g^{ij}
+		\\
+		\frac{1}{\rho^2} \tilde{\gamma} m^j m^k m^l \Gamma_{jkl}
+	\end{matrix}\right]$<br>
 
-+ \left[\begin{matrix}
-	0 \\
-	{\Gamma^i}_{jk} \frac{1}{\rho} m^k m^j
-	- {\Gamma^j}_{kj} g^{ik} P 
-	\\
-	0 
-\end{matrix}\right]$<br>
+$= \frac{1}{\sqrt{g}} \left(
+		\sqrt{g} F^{Ij} 
+	\right)_{,j} 
+	+ \left[\begin{matrix}
+		{c_{kj}}^k m^j \\
+		
+		{c_{kj}}^k (\frac{1}{\rho} m^i m^j + g^{ij} P)
+		+ {\Gamma^i}_{jk} (\frac{1}{\rho} m^k m^j + g^{jk} P)
+		- \frac{1}{\rho} \tilde{\gamma} m^k m^l \Gamma_{kjl} g^{ij}
+		\\
+		
+		{c_{kj}}^k v^j H_{total}
+		+ \frac{1}{\rho^2} \tilde{\gamma} m^j m^k m^l \Gamma_{jkl}
+	\end{matrix}\right]$<br>
 
 <br>
 
@@ -328,11 +356,13 @@ ${U^I}_{,t} + \frac{1}{\sqrt{g}} \left(
 
 = \left[\begin{matrix}
 	0 \\
-	-\frac{1}{\rho} {\Gamma^i}_{jk}  m^k m^j
-	+ {\Gamma^j}_{kj} g^{ik} P 
+	- {\Gamma^i}_{jk} (\frac{1}{\rho} m^k m^j + g^{jk} P)
+	+ \frac{1}{\rho} \tilde{\gamma} m^k m^l \Gamma_{kjl} g^{ij}
 	\\
-	0
-\end{matrix}\right]$<br>
+	- \frac{1}{\rho^2} \tilde{\gamma} m^j m^k m^l \Gamma_{jkl}
+\end{matrix}\right]
+	- {c_{kj}}^k F^{Ij} 
+$<br>
 <br>
 
 Maxima has a much harder time calculating the eigenvalues/vectors with those $\delta^{ij}$'s replaced with $g^{ij}$'s.<br>
