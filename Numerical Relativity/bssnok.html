@@ -2075,7 +2075,8 @@ $\gamma_{ij} = exp(4\phi) ({e_i}^I {e_j}^J \epsilon_{IJ} + \hat{\gamma}_{ij})$<b
 $\bar{\Lambda}^I = {e_i}^I \bar{\Lambda}^i$ (notice the paper calls this $\bar{\lambda}^i)$<br>
 $\bar{A}_{IJ} = {e^i}_I {e^j}_J \bar{A}_{ij}$<br>
 $\beta^I = {e_i}^I \beta^i$<br>
-Notice $\beta^i$ is the only tensor here not 'conformally rescaled', so should I instead be transforming $\bar{beta}^i = exp(4\phi) \beta^i$?<br>
+Notice $\beta^i$ is the only tensor here not 'conformally rescaled', so should I instead be transforming $\bar{\beta}^i = exp(4\phi) \beta^i$?<br>
+Then again, since $\beta^i$ is the vector which we are using the Lie derivative wrt to, maybe I shouldn't be transforming it at all?<br>
 <br>
 
 Now, substituting in the rescaled index form of tensors, the evolution equations look like:<br>
@@ -2423,6 +2424,95 @@ ${\bar{\Lambda}^I}_{,t} =
 	- \bar{\Lambda}^J {\beta^I}_{,J}
 	$<br>
 <br>
+
+Nevermind that, lets assume we are converting to coordinates before partial differentating.<br>
+This way we don't have to worry about introducing partial derivatives of the rescaling terms.<br>
+<br>
+
+$\alpha_{,t} = -\alpha^2 f(\alpha) K + \alpha_{,i} {e^i}_I \beta^I$<br>
+${\beta^I}_{,t} = B^I$<br>
+${B^I}_{,t} = \frac{3}{4} {\bar{\Lambda}^I}_{,t} - \eta B^I$<br>
+$\bar{\epsilon}_{IJ,t} = 
+	- 2 \alpha \bar{A}_{IJ}
+	\frac{2}{3} \bar{\gamma}_{IJ} (
+		\alpha {\bar{A}^K}_K
+		- {\beta^k}_{,k}
+		- {\bar{\Gamma}^K}_{LK} \beta^L
+	)
+	{e^i}_I {e^j}_J (
+		- 2 {\hat{\Gamma}^k}_{ij} \beta_k
+		+ {e^k}_K \bar{\epsilon}_{ij,k} \beta^K
+		+ 2 \gamma_{k(i} {\beta^k}_{(,j)} 
+		+ 2 \bar{\epsilon}_{k(i} {\beta^k}_{,j)}
+	)
+$<br>
+$W_{,t} =
+	-\frac{1}{3} W (
+		{\beta^k}_{,k}
+		+ {\bar{\Gamma}^K}_{LK} \beta^L
+		- \alpha K
+	)
+	+ W_{,i} {e^i}_I \beta^I$<br>
+$K_{,t} = \frac{1}{3} \alpha K^2
+	+ \alpha \bar{A}_{IJ} \bar{A}^{IJ} 
+	- exp(-4 \phi) (
+		\bar{\gamma}^{ij} \alpha_{,ij}
+		- \bar{\Gamma}^k \alpha_{,k}
+		+ 2 \bar{\gamma}^{ij} \alpha_{,i} \phi_{,j}
+	)
+	+ 4 \pi \alpha (S + \rho)
+	+ K_{,i} {e^i}_I \beta^I$<br>
+$\bar{A}_{IJ,t} = 
+	- \frac{2}{3} \bar{A}_{IJ} (
+		{\beta^k}_{,k}
+		+ {\bar{\Gamma}^K}_{LK} \beta^L
+	)
+	- 2 \alpha \bar{A}_{IK} {\bar{A}^K}_J
+	+ \alpha K \bar{A}_{IJ} 
+	+ exp(-4 \phi)(
+		- 2 \alpha ({e^i}_I {e^j}_J \phi_{,ij} - {\bar{\Gamma}^K}_{IJ} {e^k}_K \phi_{,k})
+		+ 4 \alpha {e^i}_I {e^j}_J \phi_{,i} \phi_{,j}
+		+ 4 {e^i}_I {e^j}_J \phi_{,(i} \alpha_{,j)}
+		- {e^i}_I {e^j}_J \alpha_{,ij} 
+		+ {\bar{\Gamma}^K}_{IJ} {e^k}_K \alpha_{,k}
+		+ \alpha (\bar{R}_{IJ} - 8 \pi S_{IJ})
+	)^{TF}
+	+ \bar{A}_{ij,k} {e^k}_K \beta^K
+	+ \bar{A}_{KJ} {e_k}^K {\beta^k}_{,I}
+	+ \bar{A}_{KI} {e_k}^K {\beta^k}_{,J}$<br>
+${\bar{\Lambda}^I}_{,t} = 
+	\bar{\gamma}^{jk} {e_i}^I (
+		{\beta^i}_{,kj} 
+		+ {\hat{\Gamma}^i}_{lk,j} {e^l}_L \beta^L
+		+ {\hat{\Gamma}^i}_{lk} {\beta^l}_{,j}
+		+ {\hat{\Gamma}^i}_{mj} (
+			{\beta^m}_{,k} 
+			+ {\hat{\Gamma}^m}_{lk} {e^l}_L \beta^L
+		)
+		- {\hat{\Gamma}^m}_{kj} (
+			{\beta^i}_{,m}
+			+ {\hat{\Gamma}^i}_{lm} {e^l}_L \beta^L
+		)
+	)	
+	+ \frac{2}{3} \Delta^I (
+		{\beta^j}_{,j} 
+		+ {\bar{\Gamma}^J}_{KJ} \beta^K
+	)
+	+ \frac{1}{3} \bar{\gamma}^{IL} (
+		{\beta^j}_{,jl} {e^l}_L
+		+ {\bar{\Gamma}^j}_{kj} {\beta^k}_{,l} {e^l}_L
+		+ {\bar{\Gamma}^j}_{kj,l} {e^l}_L {e^k}_K \beta^K
+	)
+	- 2 \bar{A}^{IJ} {e^j}_J (\alpha_{,j} - 6 \phi_{,j})
+	+ 2 \bar{A}^{JK} {\Delta^I}_{JK}
+	- \frac{4}{3} \alpha {e_i}^I \bar{\gamma}^{ij} K_{,j}
+	+ {e_i}^I {\bar{\Lambda}^i}_{,j} {e^j}_J \beta^J
+	- {e_i}^I \bar{\Lambda}^J {e^j}_J {\beta^i}_{,j}$<br>
+<br>
+<br>
+
+But what if we assume $\mathcal{L}_\vec\beta$ is a tensor? Then can we just combine those terms into the $\frac{d}{dt}$?<br> 
+Then the $\beta^i$ of the Lie derivative still needs to be rescaled.<br>
 
 <hr>
 <br>

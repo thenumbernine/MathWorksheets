@@ -122,6 +122,37 @@ So implementing this as difference operations, what this means is...<br>
 ...<br>
 <br>
 
+<b>try again, keep things in integral form...</b><br>
+Following 2019 Trangenstein "Numeric Simulations of Hyperbolic Conservation Laws", section 7.4:<br>
+Notice that his book coincides with anholonomic orthonormal basis.<br>
+So that's what I'm using here.  $u_1 ... u_n$ are my coordinate chart parameters.  Indexes are in anholonomic non-coordinates.<br>
+$\bar{j} =$ the coordinate basis index, ${e_\hat{j}}^j =$ change of basis from non-coordinate to coordinate (non-Cartesian) basis.<br>
+$0 = \int_{t_1}^{t_2} 
+	\int_{u_{1,L}}^{u_{1,R}}
+	...
+	\int_{u_{n,L}}^{u_{n,R}}
+
+	\left(
+		\frac{\partial}{\partial t}({U^{i_1 ... i_p}}_{k_1 ... k_q})
+
+		+ \frac{1}{V} (
+			{e_\bar{j}}^j
+			\nabla_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q} V)
+		)
 	
+	\right)
+
+	V
+
+	du_n ... du_1
+	dt
+$<br>
+...for $V = det({e_i}^a)$, the determinant of the derivative of the coordinate basis with the Cartesian basis.<br>
+<br>
+
+TODO check this out too:<br>
+<a href="https://www.groundai.com/project/fifth-order-finite-volume-weno-in-general-orthogonally-curvilinear-coordinates4982/1">https://www.groundai.com/project/fifth-order-finite-volume-weno-in-general-orthogonally-curvilinear-coordinates4982/1</a><br>
+<br>
+
 	</body>
 </html>
