@@ -2615,5 +2615,21 @@ so $\frac{\gamma}{\hat{\gamma}} = (1 + \frac{R}{4 r'})^{12}$<br>
 $\phi = \frac{1}{12} ln(\frac{\gamma}{\hat{\gamma}})$<br>
 $ = \frac{1}{12} ln( (1 + \frac{R}{4 r'})^{12} )$<br>
 $ = ln(1 + \frac{R}{4 r'})$<br>
+<br>
+$exp(-4 \phi) = exp(-4 ln(1 - \frac{R}{4 r'}))$<br>
+$= (1 - \frac{R}{4 r'})^{-4}$<br>
+<br>
+
+$\bar{\gamma}_{ij} = exp(-4 \phi) \gamma_{ij}$<br>
+$= (1 - \frac{R}{4 r'})^{-4} \cdot (1 - \frac{R}{4 r'})^4 \cdot diag(1, r'^2, r'^2 sin(\theta)^2)$<br>
+$= diag(1, r'^2, r'^2 sin(\theta)^2)$<br>
+<br>
+
+$\bar{\epsilon}_{ij} = \bar{\gamma}_{ij} - \hat{\gamma}_{ij}$<br>
+$= diag(1, r'^2, r'^2 sin(\theta)^2) - diag(1, r'^2, r'^2 sin(\theta)^2)$<br>
+$= 0$<br>
+$\bar{\epsilon}_{IJ} = {e^i}_I {e^j}_J \bar{\epsilon}_{ij} = 0$<br>
+<br>
+
 	</body>
 </html>
