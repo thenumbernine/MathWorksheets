@@ -1652,6 +1652,9 @@ $= \frac{1}{2} (
 	) \bar{\gamma}^{jk}
 )_{,t}$<br>
 ...TODO a few more steps...<br>
+...TODO TODO ... the 2017 paper has the term $-2 \bar{A}^{jk} {\Delta^i}_{jk}$
+ but Etienne's SENR Mathematica notebook has the term $-2 \alpha \bar{A}^{jk} {\Delta^i}_{jk}$... so verify which is correct.<br>
+Maybe I'm reading an earlier version of the paper?<br>
 ${\bar{\Lambda}^i}_{,t} = 
 	\bar{\gamma}^{jk} {\beta^i}_{,jk} 
 	+ \frac{1}{3} \bar{\gamma}^{ik} {\beta^j}_{,jk} 
@@ -2039,17 +2042,27 @@ $\hat{K} = K - 2 \Theta$<br>
 <br>
 
 Rescaling:<br>
-Let ${e_a}^I$ be the basis that transforms from spatial metric ($a-z$) to the kronecher delta diagonal metric ($A-Z$).<br>
-Let ${e^a}_I$ be its dual such that ${e_a}^I {e^b}_I = \delta_a^b$ and ${e_a}^I {e^a}_J = \delta^I_J$.<br>
-Such that $\gamma_{ab} = {e_a}^I {e_b}^J \delta_{IJ}$<br>
+Let ${e_i}^I$ be the basis that transforms from spatial metric ($a-z$) to the kronecher delta diagonal metric ($A-Z$).<br>
+Let ${e^i}_I$ be its dual such that ${e_i}^I {e^j}_I = \delta_i^j$ and ${e_i}^I {e^i}_J = \delta^I_J$.<br>
+Such that $\gamma_{ij} = {e_i}^I {e_j}^J \delta_{IJ}$<br>
 <br>
-I take that back.  The tetrad relativity folks use this definition of ${e_a}^I$, but the numerical relativity folks use $e_a := \sqrt{\gamma_{aa}} \partial_a$.
+I take that back.  The tetrad relativity folks use this definition of ${e_i}^I$, but the numerical relativity folks use $e_i := \sqrt{\gamma_{ii}} \partial_i$.
 This at least accomplishes the same goal of diagonalizing the spherical metric $\gamma_{ij} = diag(1, r^2, r^2 sin(\theta)^2) = \{ \gamma_{rr} = 1, \gamma_{\theta\theta} = r^2, \gamma_{\phi\phi} = r^2 sin(\theta)^2 \}$.<br>
-Notice, for spherical coordinates that gives us ${e_a}^I = \downarrow a \overset{\rightarrow I}{\left[ \begin{matrix}
+Notice, for spherical coordinates that gives us 
+${e_i}^I = \downarrow i \overset{\rightarrow I}{\left[ \begin{matrix}
 	1 & 0 & 0 \\
 	0 & r & 0 \\
 	0 & 0 & r sin(\theta)
-\end{matrix} \right] }$<br>
+\end{matrix} \right] }$
+and
+${e^i}_I = \downarrow i \overset{\rightarrow I}{\left[ \begin{matrix}
+	1 & 0 & 0 \\
+	0 & \frac{1}{r} & 0 \\
+	0 & 0 & \frac{1}{r sin(\theta)}
+\end{matrix} \right] }$
+<br>
+<br>
+In other words, divide out r in our initial conditions when preparing $\bar{\epsilon}_{IJ}$, and then subsequently multiply in $r$ as we convert it back into coordinate form $\bar{\epsilon}_{ij}$.<br>
 <br>
 
 So now we talk about storing our variables in their diagonalized coordinate state.  Do we advect them in this diagonalized coordinate state as well?
@@ -2069,14 +2082,16 @@ ${e_i}^I {e_j}^J \epsilon_{IJ} = \bar{\gamma}_{ij} - \hat{\gamma}_{ij}$<br>
 $exp(-4\phi) \gamma_{ij} = {e_i}^I {e_j}^J \epsilon_{IJ} + \hat{\gamma}_{ij}$<br>
 $\gamma_{ij} = exp(4\phi) ({e_i}^I {e_j}^J \epsilon_{IJ} + \hat{\gamma}_{ij})$<br>
 <br>
-(notice I call $\epsilon_{IJ}$ what the paper calls $h_{ij}$)<br>
+(notice I call $\epsilon_{IJ}$ what the 2017 Ruchlin paper, and Etienne's SENR code, calls $h_{ij}$)<br>
 <br>
 
-$\bar{\Lambda}^I = {e_i}^I \bar{\Lambda}^i$ (notice the paper calls this $\bar{\lambda}^i)$<br>
+$\bar{\Lambda}^I = {e_i}^I \bar{\Lambda}^i$ (notice 2017 Ruchlin calls this $\bar{\lambda}^i)$<br>
 $\bar{A}_{IJ} = {e^i}_I {e^j}_J \bar{A}_{ij}$<br>
-$\beta^I = {e_i}^I \beta^i$<br>
+$\beta^I = {e_i}^I \beta^i$ (notice Etienne's SENR calls this $ב^i$)<br>
+$B^I = {e_i}^I B^i$ (notice Etienne's SENR calls this $בּ^i$)<br>
 Notice $\beta^i$ is the only tensor here not 'conformally rescaled', so should I instead be transforming $\bar{\beta}^i = exp(4\phi) \beta^i$?<br>
 Then again, since $\beta^i$ is the vector which we are using the Lie derivative wrt to, maybe I shouldn't be transforming it at all?<br>
+(Fwiw, Etienne's SENR Mathematica notebook <i>does</i> rescale $B^i$ and $\beta^i$ and <i>does not</i> conformally rescale it.)<br>
 <br>
 
 Now, substituting in the rescaled index form of tensors, the evolution equations look like:<br>
@@ -2380,9 +2395,9 @@ ${\bar{\Lambda}^I}_{,t} =
 	$<br>
 ${\bar{\Lambda}^I}_{,t} = 
 	\bar{\gamma}^{JK} (
-		{e_J}^j {e_K}^k {e_i}^I {e^i}_{L,jk} \beta^L 
+		{e^j}_J {e^k}_K {e_i}^I {e^i}_{L,jk} \beta^L 
 		+ 2 {e_i}^I {e^i}_{L,K} {\beta^L}_{,J} 
-		+ {e_J}^j {e_K}^k {\beta^I}_{,jk}
+		+ {e^j}_J {e^k}_K {\beta^I}_{,jk}
 		
 		+ {e_n}^I {e^k}_K {e^l}_L {\hat{\Gamma}^n}_{lk,J} \beta^L
 		+ {\hat{\Gamma}^I}_{MK} {e^M}_{L,J} \beta^L
@@ -2513,11 +2528,61 @@ ${\bar{\Lambda}^I}_{,t} =
 
 But what if we assume $\mathcal{L}_\vec\beta$ is a tensor? Then can we just combine those terms into the $\frac{d}{dt}$?<br> 
 Then the $\beta^i$ of the Lie derivative still needs to be rescaled.<br>
+<br>
+
+Fwiw, the Etienne SENR Mathematica worksheets do factor out the the chain rule, like so:<br>
+TODO things in this form: $\bar{\epsilon}_{ij,k} = \bar{\epsilon}_{IJ,k} ({e_i}^I {e_j}^J) + \bar{\epsilon}_{IJ} ({e_i}^I {e_j}^J)_{,k}$<br>
+Notice that, for spherical, we have the following:<br>
+Transform covariant from coordinate to non-coordinate / transform contravariant from non-coordinate to coordinate: ${e^i}_I = diag(1, \frac{1}{r}, \frac{1}{r sin(\theta)})$<br>
+Derivative thereof: ${{e^i}_I}_{,j} 
+= \left[ \begin{matrix}
+	\partial_r {e^i}_I \\
+	\partial_\theta {e^i}_I \\
+	\partial_\phi {e^i}_I \\
+\end{matrix} \right]
+= \left[ \begin{matrix}
+	diag(0, -\frac{1}{r^2}, -\frac{1}{r^2 sin(\theta)}) \\
+	diag(0, 0, -\frac{cos(\theta)}{r sin(\theta)^2}) \\
+	diag(0, 0, 0),
+\end{matrix} \right]$<br>
+Transform contravariant from coordinate to non-coordinate / transform covariant from non-coordinate to coordinate: ${e_i}^I = diag(1, r, r sin(\theta))$<br>
+Derivative thereof: ${{e_i}^I}_{,j} 
+= \left[ \begin{matrix}
+	\partial_r {e_i}^I \\
+	\partial_\theta {e_i}^I \\
+	\partial_\phi {e_i}^I \\
+\end{matrix} \right]
+= \left[ \begin{matrix}
+	diag(0, 1, sin(\theta)) \\
+	diag(0, 0, r cos(\theta)) \\
+	diag(0, 0, 0),
+\end{matrix} \right]$<br>
+<br>
+
+Notice that this one, as sparse as it is, and with no inverses (thankfully), is what we use with our chain rule to transform $\bar{\epsilon}_{IJ,k}$ into $\bar{\epsilon}_{ij,k}$.<br>
+However it is the ugly one, above, which we use to transform our ${\beta^I}_{,j}$, ${B^I}_{,j}$, and ${\bar{\Lambda}^I}_{,j}$ into their respective coordinate representation.<br>
+It is also the ugly one which is used to transform any derivative back into non-coordinate form.<br>
+<br>
 
 <hr>
 <br>
 
 Example:<br>
+
+Minkowski:<br>
+$ds^2 = -dt^2 + dr^2 + r^2 (d\theta^2 + sin(\theta)^2 d\phi^2)$<br>
+$g_{tt} = -1$, $g_{rr} = 1$, $g_{\theta\theta} = r^2$, $g_{\phi\phi} = r^2 sin(\theta0^2$<br>
+$\alpha = 1$, $\beta^i = 0$, $\gamma_{ij} = diag(1, r^2, r^2 sin(\theta)^2)$<br>
+$\gamma = det(\gamma_{ij}) = r^4 sin(\theta)^2$<br>
+grid metric: $\hat{\gamma}_{ij} = diag(1, r^2, r^2 sin(\theta)^2)$<br>
+$\hat{\gamma} = det(\hat{\gamma}_{ij}) = r^4 sin(\theta)^2$<br>
+$\frac{\gamma}{\hat{\gamma}} = 1$<br>
+$\phi = \frac{1}{12} ln(\frac{\gamma}{\hat{\gamma}}) = 0$<br>
+$W = exp(-4 \phi) = 1$<br>
+so $\bar{\gamma}_{ij} = exp(-4\phi) \gamma_{ij} = \gamma_{ij} = \hat{\gamma}_{ij}$<br>
+$\bar{\epsilon}_{IJ} = {e^i}_I {e^j}_J \bar{\epsilon}_{ij} = {e^i}_I {e^j}_J (\bar{\gamma}_{ij} - \hat{\gamma}_{ij}) = 0$<br>
+<br>
+
 Schwarzschild:<br>
 $ds^2 + -(1 - \frac{R}{r}) dt^2 + (1 - \frac{R}{r})^{-1} dr^2 + r^2 d\theta^2 + r^2 sin(\theta)^2 d\phi^2$<br>
 Let $r = r' (1 + \frac{R}{4 r'})^2$<br>

@@ -69,5 +69,31 @@ $ = \left[\begin{matrix}
 Tada! Change of coordinate absorbs shift into the metric.<br>
 <br>
 
+Now let ${{A'}^u}_{u'} = \frac{1}{\sqrt{\alpha^2 - \beta^2}} {A^u}_{u'}$<br>
+Then we get:<br>
+$g_{u'v'} = {{A'}^u}_{u'} g_{uv} {{A'}^v}_{v'}$<br>
+$ = \left[\begin{matrix}
+	-1 & 0 \\
+	0 & \gamma_{ij} / (\alpha^2 - \beta^2) + \beta_i \beta_j / (\alpha^2 - \beta^2)^2
+\end{matrix}\right]$<br>
+<br>	
+Now let ${\gamma'}_{ij} = \frac{1}{(\alpha^2 - \beta^2)} \left( 
+	\gamma_{ij} + \frac{1}{(\alpha^2 - \beta^2)} \beta_i \beta_j 
+\right)$<br>
+$g_{u'v'} = \left[\begin{matrix}
+	-1 & 0 \\
+	0 & {\gamma'}_{ij}
+\end{matrix}\right]$<br>
+Tada.<br>
+<br>
+
+TODO: inverse of $A$ squared should produce the metric.<br>
+$g = e \cdot \eta \cdot e^T$<br>
+$e^{-1} \cdot g \cdot e^{-T} = \eta$<br>
+so for some $e^{-1}$ which 'boosts' / transforms $g$ into $\eta$,
+its inverse $e$ applied to $\eta$ will produce (or 'unboost' $\eta$ into) $g$.<br>
+And all this is turning into the ADM decomposition of tetrad formalism.<br>
+<br>
+	
 	</body>
 </html>
