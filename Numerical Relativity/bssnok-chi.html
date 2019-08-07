@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<title>Numerical Relativity - Z4C</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+	</head>
+    <body>
+
+Continuing off of the BSSNOK worksheet.<br>
+Following the $\chi = exp(-4\phi)$ option<br>
+Next the whole thing over with $\chi = exp(-4 \phi)$<br>
+<br>
+
+$\chi_{,\mu}$<br>
+$= exp(-4 \phi)_{,\mu}$<br>
+$= -4 exp(-4 \phi) \phi_{,\mu}$<br>
+$= -4 \chi \phi_{,\mu}$<br>
+so $\phi_{,\mu} = -\frac{1}{4 \chi} \chi_{,\mu}$<br>
+<br>
+
+$\chi_{,t}$<br>
+$= -4 \chi \phi_{,t}$<br>
+$= -4 \chi ( -\frac{1}{6} \alpha K
+	+ \phi_{,k} \beta^k 
+	+ \frac{1}{6} {\beta^k}_{,k} )$<br>
+$= \chi ( 
+	\frac{2}{3} \alpha K
+	- 4 (
+		-\frac{1}{4 \chi} \chi_{,k}
+	)\beta^k 
+	- \frac{2}{3} {\beta^k}_{,k} 
+)$<br>
+$= 	\frac{2}{3} \alpha \chi K
+	+ \chi_{,k} \beta^k 
+	- \frac{2}{3} \chi {\beta^k}_{,k}$<br>
+<br>
+
+$D_i D_j \alpha = \alpha_{,ij} 
+	- {\bar{\Gamma}^k}_{ij}  \alpha_{,k}
+	- 2 \phi_{,j} \alpha_{,i}
+	- 2 \phi_{,i} \alpha_{,j}
+	+ 2 \gamma_{ij} \gamma^{kl} \phi_{,l} \alpha_{,k}$<br>
+$= \alpha_{,ij} 
+	- {\bar{\Gamma}^k}_{ij}  \alpha_{,k}
+	- 2 \alpha_{,i} (-\frac{1}{4 \chi} \chi_{,j})
+	- 2 \alpha_{,j} (-\frac{1}{4 \chi} \chi_{,i})
+	+ 2 \gamma_{ij} \gamma^{kl} (-\frac{1}{4 \chi} \chi_{,l}) \alpha_{,k}$<br>
+$= \alpha_{,ij} 
+	- {\bar{\Gamma}^k}_{ij}  \alpha_{,k}
+	+ \frac{1}{2 \chi} (
+		\alpha_{,i} \chi_{,j}
+		+ \alpha_{,j} \chi_{,i}
+		- \bar{\gamma}_{ij} \bar{\gamma}^{kl} \chi_{,l} \alpha_{,k}
+	)$<br>
+<br>
+
+$\gamma^{ij} D_i D_j \alpha$<br>
+$= \gamma^{ij} \alpha_{,ij} 
+	- exp(-4 \phi) \bar{\Gamma}^i \alpha_{,i} 
+	+ 2 exp(-4 \phi) \bar{\gamma}^{ij} \phi_{,i} \alpha_{,j}$<br>
+$= \chi \bar{\gamma}^{ij} \alpha_{,ij} 
+	- \chi \bar{\Gamma}^i \alpha_{,i} 
+	- \frac{1}{2} \bar{\gamma}^{ij} \chi_{,i} \alpha_{,j}$<br>
+<br>
+
+$(D_i D_j \alpha)^{TF}$<br>
+$= 	D_i D_j \alpha 
+	- \frac{1}{3} \gamma_{ij} \gamma^{kl} D_k D_l \alpha$<br>
+$= 	D_i D_j \alpha 
+	- \frac{1}{3} \gamma_{ij} (	
+		\chi \bar{\gamma}^{kl} \alpha_{,kl} 
+		- \chi \bar{\Gamma}^k \alpha_{,k} 
+		- \frac{1}{2} \bar{\gamma}^{kl} \chi_{,k} \alpha_{,l}
+)$<br>
+$= 	D_i D_j \alpha 
+	- \frac{1}{3} \bar{\gamma}_{ij} \bar{\gamma}^{kl} \alpha_{,kl} 
+	+ \frac{1}{3} \bar{\gamma}_{ij} \bar{\Gamma}^k \alpha_{,k} 
+	+ \frac{1}{6 \chi} \bar{\gamma}_{ij} \bar{\gamma}^{kl} \chi_{,k} \alpha_{,l}
+$<br>
+Substitute $D_i D_j \alpha$<br>
+$= \alpha_{,ij} 
+	- {\bar{\Gamma}^k}_{ij}  \alpha_{,k}
+	+ \frac{1}{2 \chi} \alpha_{,i} \chi_{,j}
+	+ \frac{1}{2 \chi} \alpha_{,j} \chi_{,i}
+	- \frac{1}{2 \chi} \bar{\gamma}_{ij} \bar{\gamma}^{kl} \chi_{,l} \alpha_{,k}
+	- \frac{1}{3} \bar{\gamma}_{ij} \bar{\gamma}^{kl} \alpha_{,kl} 
+	+ \frac{1}{3} \bar{\gamma}_{ij} \bar{\Gamma}^k \alpha_{,k} 
+	+ \frac{1}{6 \chi} \bar{\gamma}_{ij} \bar{\gamma}^{kl} \chi_{,k} \alpha_{,l}
+$<br>
+$= \alpha_{,ij} 
+	- {\bar{\Gamma}^k}_{ij}  \alpha_{,k}
+	+ \frac{1}{3} \bar{\gamma}_{ij} \bar{\Gamma}^k \alpha_{,k} 
+	+ \frac{1}{2 \chi} \alpha_{,i} \chi_{,j}
+	+ \frac{1}{2 \chi} \alpha_{,j} \chi_{,i}
+	- \frac{1}{3 \chi} \bar{\gamma}_{ij} \bar{\gamma}^{kl} \chi_{,l} \alpha_{,k}
+	- \frac{1}{3} \bar{\gamma}_{ij} \bar{\gamma}^{kl} \alpha_{,kl} 
+$<br>
+<br>
+
+$R^\phi_{ij}$<br>
+$= 	-2 \bar{D}_i \bar{D}_j \phi 
+	- 2 \bar{\gamma}_{ij} \bar{\gamma}^{kl} \bar{D}_k \bar{D}_l \phi 
+	+ 4 \bar{D}_i \phi \bar{D}_j \phi 
+	- 4 \bar{\gamma}_{ij} \bar{\gamma}^{kl} \bar{D}_k \phi \bar{D}_l \phi
+$<br>
+$= 	-2 (\phi_{,ji} - {\bar{\Gamma}^k}_{ji} \phi_{,k})
+	- 2 \bar{\gamma}_{ij} \bar{\gamma}^{kl} (\phi_{,lk} - {\bar{\Gamma}^m}_{lk} \phi_{,m}) 
+	+ 4 \phi_{,i} \phi_{,j}
+	- 4 \bar{\gamma}_{ij} \bar{\gamma}^{kl} \phi_{,k} \phi_{,l}
+$<br>
+$= 	-2 ((-\frac{1}{4 \chi} \chi_{,j})_{,i} - {\bar{\Gamma}^k}_{ji} (-\frac{1}{4 \chi} \chi_{,k}))
+	- 2 \bar{\gamma}_{ij} \bar{\gamma}^{kl} ( (-\frac{1}{4 \chi} \chi_{,l})_{,k} - {\bar{\Gamma}^m}_{lk} (-\frac{1}{4 \chi} \chi_{,m}))
+	+ 4 (-\frac{1}{4 \chi} \chi_{,i})(-\frac{1}{4 \chi} \chi_{,j})
+	- 4 \bar{\gamma}_{ij} \bar{\gamma}^{kl} (-\frac{1}{4 \chi} \chi_{,k})(-\frac{1}{4 \chi} \chi_{,l})
+$<br>
+$= 	\frac{1}{4 \chi^2} (
+		- \chi_{,i} \chi_{,j}
+		+ 2 \chi \chi_{,ij}
+		- 2 \chi {\bar{\Gamma}^k}_{ji} \chi_{,k}
+		
+		+ \bar{\gamma}_{ij} \bar{\gamma}^{kl} (
+			- 3 \chi_{,k} \chi_{,l}
+			+ 2 \chi \chi_{,kl}
+			- 2 \chi {\bar{\Gamma}^m}_{lk} \chi_{,m}
+		)
+	)
+$<br>
+<br>
+
+$(R^\phi_{ij})^{TF}$<br>
+$= 	(
+	\frac{1}{4 \chi^2} (
+		- \chi_{,i} \chi_{,j}
+		+ 2 \chi \chi_{,ij}
+		- 2 \chi {\bar{\Gamma}^k}_{ji} \chi_{,k}
+		
+		+ \bar{\gamma}_{ij} \bar{\gamma}^{kl} (
+			- 3 \chi_{,k} \chi_{,l}
+			+ 2 \chi \chi_{,kl}
+			- 2 \chi {\bar{\Gamma}^m}_{lk} \chi_{,m}
+		)
+	)
+)^{TF}	
+$<br>
+$= \frac{1}{2 \chi^2}
+(- \chi_{,i} \chi_{,j}
+	+ 2 \chi \chi_{,ij}
+	- 2 \chi {\bar{\Gamma}^k}_{ji} \chi_{,k}
+)^{TF}
+$<br>
+
+
+
+
+<hr>
+<br>
+
+Z4c formalism ... basically BSSN except with the added $\Theta$ from Z4, and replacing $K_{ij}$ with $\hat{K}_{ij}$<br>
+(Following 2011 Cao, Hilditch "Numerical stability of the Z4c formulation of general relativity")<br>
+TODO derive this from the Z4 equations: $G_{ab} = 8 \pi T_{ab} + \mathcal{L}_Z g_{ab}$<br>
+$\hat{K} = K - 2 \Theta$<br>
+<br>
+
+
+	</body>
+</html>

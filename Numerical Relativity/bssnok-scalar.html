@@ -8,13 +8,22 @@
     <body>
 
 Sources:<br>
+2010 Alcubierre, Mendez, "Formulations of the 3+1 evolution equations in curvilinear coordinates"
 2017 Escorihuela-Tomàs, Sanchis-Gual, Degollado, Font, "Quasistationary solutions of scalar fields aroundcollapsing self-interacting boson stars"<br>
+<br>
+
+Reference:<br>
+2008 Alcubierre "Introduction to 3+1 Numerical Relativity" Appendix B:<br>
+$\Gamma^t = -\frac{1}{\alpha^3} (\alpha_{,t} - \beta^m \alpha_{,m} + \alpha^2 K)$<br>
+$\Gamma^i = {}^{(3)} \Gamma^i + \frac{1}{\alpha^3} \beta^i (\alpha_{,t} - \beta^m \alpha_{,m} + \alpha^2 K) 
+	- \frac{1}{\alpha^2} ({\beta^i}_{,t} - \beta^m {\beta^i}_{,m} \alpha \alpha_{,j} \gamma^{ij})
+$<br>
 <br>
 
 $(\square - \frac{dV}{d|\Phi|^2}) \Phi = 0$<br>
 $g^{ab} \nabla_a \nabla_b \Phi - \frac{dV}{d|\Phi|^2} \Phi = 0$<br>
 $g^{ab} \nabla_a \Phi_{,b} - \frac{dV}{d|\Phi|^2} \Phi = 0$<br>
-$g^{ab} \Phi_{,ab} - {\Gamma^c}_{ab} \Phi_{,c} - \frac{dV}{d|\Phi|^2} \Phi = 0$<br>
+$g^{ab} \Phi_{,ab} - g^{ab} {\Gamma^c}_{ab} \Phi_{,c} - \frac{dV}{d|\Phi|^2} \Phi = 0$<br>
 <br>
 
 Let $V = \mu^2 |\Phi|^2 + \frac{1}{2} \lambda |\Phi|^4$<br>
@@ -49,9 +58,24 @@ $\Phi_{,tt} =
 	- \alpha^2 \Gamma^t \Phi_{,t}
 	- \alpha^2 \Gamma^i \Phi_{,i}
 	- \alpha^2 (\mu^2 + \lambda |\Phi|^2) \Phi$<br>
-<br>
-Notice that $\Gamma^u$ is the connection of the 4-metric, not of the 3-metric.<br>
+Notice that ${\Gamma^u}_{ab}$ is the connection of the 4-metric, not of the 3-metric.<br>
 Substituting it for our 3-metric connection:<br>
+$\Phi_{,tt} =
+	2 \beta^i \Phi_{,ti}
+	+ (\alpha^2 \gamma^{ij} - \beta^i \beta^j) \Phi_{,ij}
+	+ \frac{1}{\alpha} (\alpha_{,t} - \beta^m \alpha_{,m} + \alpha^2 K) \Phi_{,t}
+	- \alpha^2 (
+		{}^{(3)} \Gamma^i 
+		+ \frac{1}{\alpha^3} \beta^i (
+			\alpha_{,t} 
+			- \beta^m \alpha_{,m} + \alpha^2 K
+		) 
+		- \frac{1}{\alpha^2} (
+			{\beta^i}_{,t} 
+			- \beta^m {\beta^i}_{,m} \alpha \alpha_{,j} \gamma^{ij}
+		)
+	) \Phi_{,i}
+	- \alpha^2 (\mu^2 + \lambda |\Phi|^2) \Phi$<br>
 <br>
 
 Let $\Pi = n^\mu \Phi_{,\mu}$<br>
@@ -188,6 +212,52 @@ $\Pi_{,t} =
 	+ \beta^i \Pi_{,i} 
 	- \alpha (\mu^2 + \lambda |\Phi|^2) \Phi
 	$<br>
+
+$\frac{d}{dt} \Pi = 
+	-\frac{1}{\alpha^2} \alpha_{,t} \Pi
+	+ \frac{1}{\alpha} \beta^i \alpha_{,i} \Pi 
+	- \alpha^2 \Gamma^t \Pi 
+	- \frac{1}{\alpha} {\beta^i}_{,t} \Psi_i
+	+ \frac{1}{\alpha} \beta^i {\beta^j}_{,i} \Psi_j
+	- \alpha \Gamma^i \Psi_i
+	- \alpha \Gamma^t \beta^i \Psi_i
+	+ \alpha \gamma^{ij} \Psi_{i,j}
+	- \alpha (\mu^2 + \lambda |\Phi|^2) \Phi
+	$<br>
+<br>
+<hr>
+<br>
+
+Stress-energy:<br>
+$T_{ab} = \Phi_{,a} \Phi_{,b} - \frac{1}{2} g_{ab} g^{cd} \Phi_{,c} \Phi_{,d}$<br>
+<br>
+
+$\rho = n^a n^b T_{ab}$<br> 
+$= n^a n^b (\Phi_{,a} \Phi_{,b} - \frac{1}{2} g_{ab} g^{cd} \Phi_{,c} \Phi_{,d})$<br>
+$= \Pi^2 + \frac{1}{2} g^{cd} \Phi_{,c} \Phi_{,d}$<br>
+$= \Pi^2 + \frac{1}{2} (\gamma^{cd} - n^c n^d) \Phi_{,c} \Phi_{,d}$<br>
+$= \Pi^2 + \frac{1}{2} (\gamma^{cd} \Psi_c \Psi_d - \Pi^2)$<br>
+$= \frac{1}{2} (\Pi^2 + \gamma^{cd} \Psi_c \Psi_d)$<br>
+(2010 Alcubierre, Mendez has $= \frac{1}{2} (\Pi^2 + \frac{1}{exp(-4 \phi)} \Psi^2)$ ?)<br>
+<br>
+
+$S^u = -\gamma^{ua} n^b T_{ab}$<br>
+$= -\gamma^{ua} n^b (\Phi_{,a} \Phi_{,b} - \frac{1}{2} g_{ab} g^{cd} \Phi_{,c} \Phi_{,d})$<br>
+$= -\gamma^{ua} \Psi_a \Pi$<br>
+...<br>
+(2010 Alcubierre, Mendez has $ = -\Pi \Psi$)<br>
+<br>
+
+$S_{uv} = {\gamma_u}^a {\gamma_v}^b T_{ab}$<br>
+$= {\gamma_u}^a {\gamma_v}^b (
+	\Phi_{,a} \Phi_{,b} - \frac{1}{2} g_{ab} g^{cd} \Phi_{,c} \Phi_{,d}
+)$<br>
+$= \Psi_u \Psi_v - \frac{1}{2} \gamma_{uv} (\gamma^{cd} - n^c n^d) \Phi_{,c} \Phi_{,d}$<br>
+$= \frac{1}{2} (\gamma_{uv} \Pi^2
+	- (\gamma_{uv} \gamma^{cd} - 2 {\gamma_u}^c {\gamma_v}^d) \Psi_c \Psi_d
+)$<br>
+(2010 Alcubierre, Mendez has $\pm$ for ${T^r}_r$ and ${T^\theta}_\theta$)<br>
+<br>
 
 	</body>
 </html>

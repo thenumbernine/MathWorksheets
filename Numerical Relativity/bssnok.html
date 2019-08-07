@@ -1807,18 +1807,18 @@ Simplifying all covariant derivatives:<br>
 $\alpha_{,t} = -\alpha^2 f(\alpha) K + \alpha_{,i} \beta^i$<br>
 ${\beta^i}_{,t} = B^i$<br>
 ${B^i}_{,t} = \frac{3}{4} {\bar{\Lambda}^i}_{,t} - \eta B^i$<br>
+(Notice here for $\bar{\epsilon}_{ij,t}$ I'm assuming that $\hat{D}_i \beta_j = \hat{D}_i (\hat{\gamma}_{jk} \beta^k) = \hat{\gamma}_{jk} \hat{D}_i \beta^k$)<br>
+(And a few more steps.  TODO move these few more steps up to the first derivation of $\bar{\epsilon}_{ij,t}$).<br>
 $\bar{\epsilon}_{ij,t} = 
 	\frac{2}{3} \bar{\gamma}_{ij} (
 		\alpha {\bar{A}^k}_k 
 		- {\beta^k}_{,k}
 		- {\bar{\Gamma}^k}_{lk} \beta^l
 	)
-	+ 2 \beta_{(i,j)} 
-	- 2 {\hat{\Gamma}^k}_{ij} \beta_k
 	- 2 \alpha \bar{A}_{ij}
-	+ \bar{\epsilon}_{ij,k} \beta^k
-	+ \bar{\epsilon}_{kj} {\beta^k}_{,i}
-	+ \bar{\epsilon}_{ki} {\beta^k}_{,j}$<br>
+	+ 2 \bar{\gamma}_{k(i} {\beta^k}_{,j)}
+	+ \bar{\gamma}_{ij,k} \beta^k
+$<br>
 $W_{,t} =
 	-\frac{1}{3} W (
 		{\beta^k}_{,k}
@@ -1883,163 +1883,7 @@ ${\bar{\Lambda}^i}_{,t} =
 	- \bar{\Lambda}^j {\beta^i}_{,j}$<br>
 <br>
 
-
 <hr>
-Next the whole thing over with $\chi = exp(-4 \phi)$<br>
-<br>
-
-$\chi_{,\mu}$<br>
-$= exp(-4 \phi)_{,\mu}$<br>
-$= -4 exp(-4 \phi) \phi_{,\mu}$<br>
-$= -4 \chi \phi_{,\mu}$<br>
-so $\phi_{,\mu} = -\frac{1}{4 \chi} \chi_{,\mu}$<br>
-<br>
-
-$\chi_{,t}$<br>
-$= -4 \chi \phi_{,t}$<br>
-$= -4 \chi ( -\frac{1}{6} \alpha K
-	+ \phi_{,k} \beta^k 
-	+ \frac{1}{6} {\beta^k}_{,k} )$<br>
-$= \chi ( 
-	\frac{2}{3} \alpha K
-	- 4 (
-		-\frac{1}{4 \chi} \chi_{,k}
-	)\beta^k 
-	- \frac{2}{3} {\beta^k}_{,k} 
-)$<br>
-$= 	\frac{2}{3} \alpha \chi K
-	+ \chi_{,k} \beta^k 
-	- \frac{2}{3} \chi {\beta^k}_{,k}$<br>
-<br>
-
-$D_i D_j \alpha = \alpha_{,ij} 
-	- {\bar{\Gamma}^k}_{ij}  \alpha_{,k}
-	- 2 \phi_{,j} \alpha_{,i}
-	- 2 \phi_{,i} \alpha_{,j}
-	+ 2 \gamma_{ij} \gamma^{kl} \phi_{,l} \alpha_{,k}$<br>
-$= \alpha_{,ij} 
-	- {\bar{\Gamma}^k}_{ij}  \alpha_{,k}
-	- 2 \alpha_{,i} (-\frac{1}{4 \chi} \chi_{,j})
-	- 2 \alpha_{,j} (-\frac{1}{4 \chi} \chi_{,i})
-	+ 2 \gamma_{ij} \gamma^{kl} (-\frac{1}{4 \chi} \chi_{,l}) \alpha_{,k}$<br>
-$= \alpha_{,ij} 
-	- {\bar{\Gamma}^k}_{ij}  \alpha_{,k}
-	+ \frac{1}{2 \chi} (
-		\alpha_{,i} \chi_{,j}
-		+ \alpha_{,j} \chi_{,i}
-		- \bar{\gamma}_{ij} \bar{\gamma}^{kl} \chi_{,l} \alpha_{,k}
-	)$<br>
-<br>
-
-$\gamma^{ij} D_i D_j \alpha$<br>
-$= \gamma^{ij} \alpha_{,ij} 
-	- exp(-4 \phi) \bar{\Gamma}^i \alpha_{,i} 
-	+ 2 exp(-4 \phi) \bar{\gamma}^{ij} \phi_{,i} \alpha_{,j}$<br>
-$= \chi \bar{\gamma}^{ij} \alpha_{,ij} 
-	- \chi \bar{\Gamma}^i \alpha_{,i} 
-	- \frac{1}{2} \bar{\gamma}^{ij} \chi_{,i} \alpha_{,j}$<br>
-<br>
-
-$(D_i D_j \alpha)^{TF}$<br>
-$= 	D_i D_j \alpha 
-	- \frac{1}{3} \gamma_{ij} \gamma^{kl} D_k D_l \alpha$<br>
-$= 	D_i D_j \alpha 
-	- \frac{1}{3} \gamma_{ij} (	
-		\chi \bar{\gamma}^{kl} \alpha_{,kl} 
-		- \chi \bar{\Gamma}^k \alpha_{,k} 
-		- \frac{1}{2} \bar{\gamma}^{kl} \chi_{,k} \alpha_{,l}
-)$<br>
-$= 	D_i D_j \alpha 
-	- \frac{1}{3} \bar{\gamma}_{ij} \bar{\gamma}^{kl} \alpha_{,kl} 
-	+ \frac{1}{3} \bar{\gamma}_{ij} \bar{\Gamma}^k \alpha_{,k} 
-	+ \frac{1}{6 \chi} \bar{\gamma}_{ij} \bar{\gamma}^{kl} \chi_{,k} \alpha_{,l}
-$<br>
-Substitute $D_i D_j \alpha$<br>
-$= \alpha_{,ij} 
-	- {\bar{\Gamma}^k}_{ij}  \alpha_{,k}
-	+ \frac{1}{2 \chi} \alpha_{,i} \chi_{,j}
-	+ \frac{1}{2 \chi} \alpha_{,j} \chi_{,i}
-	- \frac{1}{2 \chi} \bar{\gamma}_{ij} \bar{\gamma}^{kl} \chi_{,l} \alpha_{,k}
-	- \frac{1}{3} \bar{\gamma}_{ij} \bar{\gamma}^{kl} \alpha_{,kl} 
-	+ \frac{1}{3} \bar{\gamma}_{ij} \bar{\Gamma}^k \alpha_{,k} 
-	+ \frac{1}{6 \chi} \bar{\gamma}_{ij} \bar{\gamma}^{kl} \chi_{,k} \alpha_{,l}
-$<br>
-$= \alpha_{,ij} 
-	- {\bar{\Gamma}^k}_{ij}  \alpha_{,k}
-	+ \frac{1}{3} \bar{\gamma}_{ij} \bar{\Gamma}^k \alpha_{,k} 
-	+ \frac{1}{2 \chi} \alpha_{,i} \chi_{,j}
-	+ \frac{1}{2 \chi} \alpha_{,j} \chi_{,i}
-	- \frac{1}{3 \chi} \bar{\gamma}_{ij} \bar{\gamma}^{kl} \chi_{,l} \alpha_{,k}
-	- \frac{1}{3} \bar{\gamma}_{ij} \bar{\gamma}^{kl} \alpha_{,kl} 
-$<br>
-<br>
-
-$R^\phi_{ij}$<br>
-$= 	-2 \bar{D}_i \bar{D}_j \phi 
-	- 2 \bar{\gamma}_{ij} \bar{\gamma}^{kl} \bar{D}_k \bar{D}_l \phi 
-	+ 4 \bar{D}_i \phi \bar{D}_j \phi 
-	- 4 \bar{\gamma}_{ij} \bar{\gamma}^{kl} \bar{D}_k \phi \bar{D}_l \phi
-$<br>
-$= 	-2 (\phi_{,ji} - {\bar{\Gamma}^k}_{ji} \phi_{,k})
-	- 2 \bar{\gamma}_{ij} \bar{\gamma}^{kl} (\phi_{,lk} - {\bar{\Gamma}^m}_{lk} \phi_{,m}) 
-	+ 4 \phi_{,i} \phi_{,j}
-	- 4 \bar{\gamma}_{ij} \bar{\gamma}^{kl} \phi_{,k} \phi_{,l}
-$<br>
-$= 	-2 ((-\frac{1}{4 \chi} \chi_{,j})_{,i} - {\bar{\Gamma}^k}_{ji} (-\frac{1}{4 \chi} \chi_{,k}))
-	- 2 \bar{\gamma}_{ij} \bar{\gamma}^{kl} ( (-\frac{1}{4 \chi} \chi_{,l})_{,k} - {\bar{\Gamma}^m}_{lk} (-\frac{1}{4 \chi} \chi_{,m}))
-	+ 4 (-\frac{1}{4 \chi} \chi_{,i})(-\frac{1}{4 \chi} \chi_{,j})
-	- 4 \bar{\gamma}_{ij} \bar{\gamma}^{kl} (-\frac{1}{4 \chi} \chi_{,k})(-\frac{1}{4 \chi} \chi_{,l})
-$<br>
-$= 	\frac{1}{4 \chi^2} (
-		- \chi_{,i} \chi_{,j}
-		+ 2 \chi \chi_{,ij}
-		- 2 \chi {\bar{\Gamma}^k}_{ji} \chi_{,k}
-		
-		+ \bar{\gamma}_{ij} \bar{\gamma}^{kl} (
-			- 3 \chi_{,k} \chi_{,l}
-			+ 2 \chi \chi_{,kl}
-			- 2 \chi {\bar{\Gamma}^m}_{lk} \chi_{,m}
-		)
-	)
-$<br>
-<br>
-
-$(R^\phi_{ij})^{TF}$<br>
-$= 	(
-	\frac{1}{4 \chi^2} (
-		- \chi_{,i} \chi_{,j}
-		+ 2 \chi \chi_{,ij}
-		- 2 \chi {\bar{\Gamma}^k}_{ji} \chi_{,k}
-		
-		+ \bar{\gamma}_{ij} \bar{\gamma}^{kl} (
-			- 3 \chi_{,k} \chi_{,l}
-			+ 2 \chi \chi_{,kl}
-			- 2 \chi {\bar{\Gamma}^m}_{lk} \chi_{,m}
-		)
-	)
-)^{TF}	
-$<br>
-$= \frac{1}{2 \chi^2}
-(- \chi_{,i} \chi_{,j}
-	+ 2 \chi \chi_{,ij}
-	- 2 \chi {\bar{\Gamma}^k}_{ji} \chi_{,k}
-)^{TF}
-$<br>
-
-
-
-
-<hr>
-<br>
-
-Z4c formalism ... basically BSSN except with the added $\Theta$ from Z4, and replacing $K_{ij}$ with $\hat{K}_{ij}$<br>
-(Following 2011 Cao, Hilditch "Numerical stability of the Z4c formulation of general relativity")<br>
-TODO derive this from the Z4 equations: $G_{ab} = 8 \pi T_{ab} + \mathcal{L}_Z g_{ab}$<br>
-$\hat{K} = K - 2 \Theta$<br>
-<br>
-
-<hr>
-<br>
 
 Rescaling:<br>
 Let ${e_i}^I$ be the basis that transforms from spatial metric ($a-z$) to the kronecher delta diagonal metric ($A-Z$).<br>
@@ -2442,23 +2286,23 @@ ${\bar{\Lambda}^I}_{,t} =
 
 Nevermind that, lets assume we are converting to coordinates before partial differentating.<br>
 This way we don't have to worry about introducing partial derivatives of the rescaling terms.<br>
+Nevermind that nevermind.  Looks like differentiating the rescaling separately helps cancel out the scale factors.<br>
 <br>
 
 $\alpha_{,t} = -\alpha^2 f(\alpha) K + \alpha_{,i} {e^i}_I \beta^I$<br>
 ${\beta^I}_{,t} = B^I$<br>
 ${B^I}_{,t} = \frac{3}{4} {\bar{\Lambda}^I}_{,t} - \eta B^I$<br>
 $\bar{\epsilon}_{IJ,t} = 
-	- 2 \alpha \bar{A}_{IJ}
 	\frac{2}{3} \bar{\gamma}_{IJ} (
 		\alpha {\bar{A}^K}_K
 		- {\beta^k}_{,k}
 		- {\bar{\Gamma}^K}_{LK} \beta^L
 	)
-	{e^i}_I {e^j}_J (
-		- 2 {\hat{\Gamma}^k}_{ij} \beta_k
-		+ {e^k}_K \bar{\epsilon}_{ij,k} \beta^K
-		+ 2 \gamma_{k(i} {\beta^k}_{(,j)} 
-		+ 2 \bar{\epsilon}_{k(i} {\beta^k}_{,j)}
+	- 2 \alpha \bar{A}_{IJ}
+	+ {e^i}_I {e^j}_J (
+		\bar{\gamma}_{ij,k} \beta^k
+		+ \bar{\gamma}_{ki} {\beta^k}_{,j}
+		+ \bar{\gamma}_{kj} {\beta^k}_{,i}
 	)
 $<br>
 $W_{,t} =
@@ -2563,6 +2407,289 @@ Notice that this one, as sparse as it is, and with no inverses (thankfully), is 
 However it is the ugly one, above, which we use to transform our ${\beta^I}_{,j}$, ${B^I}_{,j}$, and ${\bar{\Lambda}^I}_{,j}$ into their respective coordinate representation.<br>
 It is also the ugly one which is used to transform any derivative back into non-coordinate form.<br>
 <br>
+
+Ok more thinking on this.  One pain point was $\bar{A}_{IJ,t}$, caused by $\bar{R}_{ij}$ caused by $\bar{\gamma}^{kl} \bar{\gamma}_{ij,kl}$<br>
+It was giving bad values until I factored it out.<br>
+I'm going to have to do this with every term.<br>
+Time to fire up the index notation CAS?<br>
+<br>
+
+${e_i}^I = \delta_i^I \cdot f_i$, where $f_i = \sqrt{\gamma_{ii}}$ ... so for spherical we get $f_i = \{1, r, r sin(\theta)\}$ and $f^i = \frac{1}{f_i}$ (f's are a sequence, not a tensor).<br>
+<br>
+
+${e_i}^I {\beta^i}_{,j} {e^j}_J$<br>
+$= {e_i}^I (\beta^M {e^i}_M)_{,j} {e^j}_J$<br>
+$= {e_i}^I ({\beta^M}_{,j} {e^i}_M + \beta^M {e^i}_M,j) {e^j}_J$<br>
+$= {\beta^I}_{,j} {e^j}_J + \beta^M {e_i}^I {e^i}_M,j {e^j}_J$<br>
+$= {\beta^I}_{,j} \delta^j_J f^j + \beta^M \delta_i^I f_i (\delta^i_M f^i)_{,j} \delta^j_J f_j$<br>
+$= ({\beta^I}_{,j} + \beta^I f_I (f^I)_{,j}) \delta^j_J f_j$<br>
+$= ({\beta^I}_{,j} - \beta^I \frac{f_{I,j}}{f_I}) f_j$<br>
+<br>
+
+${e_i}^I {\beta^i}_{,jk} {e^j}_J {e^k}_K$<br>
+$= {e_i}^I (\beta^M {e^i}_M)_{,jk} {e^j}_J {e^k}_K$<br>
+$= {e_i}^I (
+	{\beta^M}_{,j} {e^i}_M
+	+ \beta^M {e^i}_{M,j}
+)_{,k} {e^j}_J {e^k}_K$<br>
+$= (
+	{\beta^M}_{,jk} {e^i}_M
+	+ {\beta^M}_{,j} {e^i}_{M,k}
+	+ {\beta^M}_{,k} {e^i}_{M,j}
+	+ \beta^M {e^i}_{M,jk}
+) {e_i}^I {e^j}_J {e^k}_K$<br>
+$= (
+	{\beta^M}_{,jk} \delta^i_M f^i
+	+ {\beta^M}_{,j} (\delta^i_M f^i)_{,k}
+	+ {\beta^M}_{,k} (\delta^i_M f^i)_{,j}
+	+ \beta^M (\delta^i_M f^i)_{,jk}
+) \delta_i^I \delta^j_J \delta^k_K f_i f^j f^k$<br>
+$= (
+	{\beta^I}_{,jk}
+	- {\beta^I}_{,j} \frac{f_{i,k}}{f_i}
+	- {\beta^I}_{,k} \frac{f_{i,j}}{f_i}
+	+ \beta^I (
+		- \frac{f_{i,jk}}{(f_i)} 
+		+ \frac{2 f_{i,j} f_{i,k}}{(f_i)^2}
+	)
+) \delta^j_J \delta^k_K f^j f^k$<br>
+<br>
+
+$W_{,t} =
+	-\frac{1}{3} W (
+		{\beta^k}_{,k}
+		+ {\bar{\Gamma}^K}_{LK} \beta^L
+		- \alpha K
+	)
+	+ W_{,i} {e^i}_I \beta^I$<br>
+$W_{,t} =
+	-\frac{1}{3} W (
+		{\beta^K}_{,k} {e^k}_K 
+		+ {\beta^K} {e^k}_{K,k}
+		+ {\bar{\Gamma}^K}_{LK} \beta^L
+		- \alpha K
+	)
+	+ W_{,i} {e^i}_I \beta^I$<br>
+$W_{,t} =
+	-\frac{1}{3} W (
+		{\beta^K}_{,k} {\delta^k}_K f^k
+		+ {\beta^K} {\delta^k}_K {f^k}_{,k}
+		+ {\bar{\Gamma}^K}_{LK} \beta^L
+		- \alpha K
+	)
+	+ W_{,i} {e^i}_I \beta^I$<br>
+$W_{,t} =
+	-\frac{1}{3} W (
+		{\beta^K}_{,k} {\delta^k}_K f^k
+		+ {\beta^K} {f^k}_{,k}
+		+ {\bar{\Gamma}^K}_{LK} \beta^L
+		- \alpha K
+	)
+	+ W_{,i} {e^i}_I \beta^I$<br>
+<br>
+
+$({e_i}^I {e_j}^J)_{,k}$<br>
+$= {{e_i}^I}_{,k} {e_j}^J + {e_i}^I {{e_j}^J}_{,k}$<br>
+$= \delta_i^I f_{i,k} \delta_j^J + \delta_i^I \delta_j^J f_{j,k}$<br>
+<br>
+
+$({e_i}^I {e_j}^J)_{,kl}$<br>
+$= ({{e_i}^I}_{,k} {e_j}^J + {e_i}^I {{e_j}^J}_{,k})_{,l}$<br>
+$= {{e_i}^I}_{,kl} {e_j}^J + {e_i}^I {{e_j}^J}_{,kl} + {{e_i}^I}_{,k} {{e_j}^J}_{,l} + {{e_i}^I}_{,l} {{e_j}^J}_{,k}$<br>
+<br>
+
+${e^i}_I {e^j}_J \bar{A}_{ij,k}$<br>
+$= {e^i}_I {e^j}_J ( {e_i}^M {e_j}^N \bar{A}_{MN} )_{,k}$<br>
+$= {e^i}_I {e^j}_J ( 
+	{e_i}^M {e_j}^N \bar{A}_{MN,k}
+	+ ({e_i}^M {e_j}^N)_{,k} \bar{A}_{MN}
+)$<br>
+$= 
+	({e_i}^M {e_j}^N)_{,k} {e^i}_I {e^j}_J \bar{A}_{MN}
+	+ \bar{A}_{IJ,k}
+$<br>
+$= 
+	(\delta_i^M \delta_j^N f_i f_j)_{,k} \delta^i_I \delta^j_J f^i f^j \bar{A}_{MN}
+	+ \bar{A}_{IJ,k}
+$<br>
+$= 
+	(f_{I,k} / f_I + f_{J,k} / f_J) \bar{A}_{IJ}
+	+ \bar{A}_{IJ,k} 
+$<br>
+<br>
+
+
+${e^i}_I {e^j}_J \bar{\gamma}_{ij,k}$<br>
+$= {e^i}_I {e^j}_J ( {e_i}^M {e_j}^N (\hat{\gamma}_{MN} + \bar{\epsilon}_{MN} ))_{,k}$<br>
+$= {e^i}_I {e^j}_J ( 
+	{e_i}^M {e_j}^N (\delta_{MN} + \bar{\epsilon}_{MN} )_{,k}
+	+ ({e_i}^M {e_j}^N)_{,k} (\delta_{MN} + \bar{\epsilon}_{MN} )
+)$<br>
+$= 
+	({e_i}^M {e_j}^N)_{,k} {e^i}_I {e^j}_J (\delta_{MN} + \bar{\epsilon}_{MN})
+	+ \bar{\epsilon}_{IJ,k}
+$<br>
+$= 
+	(\delta_i^M \delta_j^N f_i f_j)_{,k} \delta^i_I \delta^j_J f^i f^j (\delta_{MN} + \bar{\epsilon}_{MN})
+	+ \bar{\epsilon}_{IJ,k}
+$<br>
+$= 
+	(f_{I,k} / f_I + f_{J,k} / f_J) (\delta_{IJ} + \bar{\epsilon}_{IJ})
+	+ \bar{\epsilon}_{IJ,k} 
+$<br>
+<br>
+
+${e^i}_I {e^j}_J \hat{\gamma}_{ij,k}$<br>
+$= (f_{I,k} / f_I + f_{J,k} / f_J) \delta_{IJ}$<br>
+<br>
+
+${e_i}^I {e_j}^J {\hat{\gamma}^{ij}}_{,k}$<br>
+$= -(f_{I,k} / f_I + f_{J,k} / f_J) \delta^{IJ}$<br>
+<br>
+
+${e^i}_I {e^j}_J \bar{\gamma}_{ij,kl} \bar{\gamma}^{kl}$<br>
+$= {e^i}_I {e^j}_J (\hat{\gamma}_{ij,kl} + \epsilon_{ij,kl}) \bar{\gamma}^{kl}$<br>
+$= {e^i}_I {e^j}_J (({e_i}^M {e_j}^N \delta_{MN})_{,kl} + ({e_i}^M {e_j}^N \epsilon_{MN})_{,kl}) {e^k}_K {e^l}_L \bar{\gamma}^{KL}$<br>
+$= {e^i}_I {e^j}_J (({e_i}^M {e_j}^N)_{,kl} \delta_{MN} + (({e_i}^M {e_j}^N)_{,k} \epsilon_{MN} + {e_i}^M {e_j}^N \epsilon_{MN,k})_{,l}) {e^k}_K {e^l}_L \bar{\gamma}^{KL}$<br>
+$= (
+	({e_i}^M {e_j}^N)_{,kl} (\delta_{MN} + \epsilon_{MN})
+	+ ({e_i}^M {e_j}^N)_{,k} \epsilon_{MN,l}
+	+ ({e_i}^M {e_j}^N)_{,l} \epsilon_{MN,k}
+	+ {e_i}^M {e_j}^N \epsilon_{MN,kl}
+) {e^i}_I {e^j}_J {e^k}_K {e^l}_L \bar{\gamma}^{KL}$<br>
+$= (
+	(\delta_{MN} + \epsilon_{MN}) (
+		{{e_i}^M}_{,kl} {e_j}^N 
+		+ 2 {{e_i}^M}_{,k} {{e_j}^N}_{,l}
+		+ {e_i}^M {{e_j}^N}_{,kl}
+	)
+	+ 2 ({{e_i}^M}_{,k} {e_j}^N + {e_i}^M {{e_j}^N}_{,k}) \epsilon_{MN},l 
+	+ {e_i}^M {e_j}^N \epsilon_{MN,kl}
+) {e^i}_I {e^j}_J {e^k}_K {e^l}_L \bar{\gamma}^{KL}$<br>
+$= (
+	(\delta_{MN} + \epsilon_{MN}) (
+		\delta_i^M \delta_j^N f_{i,kl} f_j
+		+ 2 \delta_i^M \delta_j^N f_{i,k} f_{j,l} 
+		+ \delta_i^M \delta_j^N f_i f_{j,kl}
+	)
+	+ 2 \delta_i^M \delta_j^N f_{i,k} f_j \epsilon_{MN,l} 
+	+ 2 \delta_i^M \delta_j^N f_i f_{j,k} \epsilon_{MN,l} 
+	+ \delta_i^M \delta_j^N f_i f_j \epsilon_{MN,kl}
+) \delta^i_I \delta^j_J \delta^k_K \delta^l_L f^i f^j f^k f^l \bar{\gamma}^{KL}$<br>
+$= (
+	(\delta_{IJ} + \epsilon_{IJ}) (
+		f_{I,kl} f^I
+		+ 2 f_{I,k} f^I f_{J,l} f^J
+		+ f_{J,kl} f^J
+	)
+	+ 2 \epsilon_{IJ},l (
+		f_{I,k} f^I
+		+ f_{J,k} f^J
+	)
+	+ \epsilon_{IJ,kl}
+) f^K f^L \delta^k_K \delta^l_L \bar{\gamma}^{KL}$<br>
+<br>
+
+$\bar{\epsilon}_{IJ,t} = 
+	\frac{2}{3} \bar{\gamma}_{IJ} (
+		\alpha {\bar{A}^K}_K
+		- {\beta^k}_{,k}
+		- {\bar{\Gamma}^K}_{LK} \beta^L
+	)
+	- 2 \alpha \bar{A}_{IJ}
+	+ {e^i}_I {e^j}_J (
+		\bar{\gamma}_{ij,k} \beta^k
+		+ \bar{\gamma}_{ki} {\beta^k}_{,j}
+		+ \bar{\gamma}_{kj} {\beta^k}_{,i}
+	)
+$<br>
+<br>
+
+And in its final form:<br>
+<br>
+
+$\alpha_{,t} = -\alpha^2 f(\alpha) K + \alpha_{,i} {e^i}_I \beta^I$<br>
+$W_{,t} =
+	-\frac{1}{3} W (
+		{\beta^K}_{,k} {\delta^k}_K f^k
+		+ {\beta^K} {f^k}_{,k}
+		+ {\bar{\Gamma}^K}_{LK} \beta^L
+		- \alpha K
+	)
+	+ W_{,i} {e^i}_I \beta^I$<br>
+$K_{,t} = \frac{1}{3} \alpha K^2
+	+ \alpha \bar{A}_{IJ} \bar{A}^{IJ} 
+	- exp(-4 \phi) (
+		\bar{\gamma}^{IJ} {e^i}_I {e^j}_J \alpha_{,ij}
+		- \bar{\Gamma}^K {e^k}_K \alpha_{,k}
+		+ 2 \bar{\gamma}^{IJ} {e^i}_I {e^j}_J \alpha_{,i} \phi_{,j}
+	)
+	+ 4 \pi \alpha (S + \rho)
+	+ K_{,i} {e^i}_I \beta^I$<br>
+${\beta^I}_{,t} = B^I$<br>
+${B^I}_{,t} = \frac{3}{4} {\bar{\Lambda}^I}_{,t} - \eta B^I$<br>
+$\bar{\epsilon}_{IJ,t} = 
+	- 2 \alpha \bar{A}_{IJ}
+	\frac{2}{3} \bar{\gamma}_{IJ} (
+		\alpha {\bar{A}^K}_K
+		- {\beta^k}_{,k}
+		- {\bar{\Gamma}^K}_{LK} \beta^L
+	)
+	{e^i}_I {e^j}_J (
+		- 2 {\hat{\Gamma}^k}_{ij} \beta_k
+		+ {e^k}_K \bar{\epsilon}_{ij,k} \beta^K
+		+ 2 \gamma_{k(i} {\beta^k}_{(,j)} 
+		+ 2 \bar{\epsilon}_{k(i} {\beta^k}_{,j)}
+	)
+$<br>
+$\bar{A}_{IJ,t} = 
+	- \frac{2}{3} \bar{A}_{IJ} (
+		{\beta^k}_{,k}
+		+ {\bar{\Gamma}^K}_{LK} \beta^L
+	)
+	- 2 \alpha \bar{A}_{IK} {\bar{A}^K}_J
+	+ \alpha K \bar{A}_{IJ} 
+	+ exp(-4 \phi)(
+		- 2 \alpha ({e^i}_I {e^j}_J \phi_{,ij} - {\bar{\Gamma}^K}_{IJ} {e^k}_K \phi_{,k})
+		+ 4 \alpha {e^i}_I {e^j}_J \phi_{,i} \phi_{,j}
+		+ 4 {e^i}_I {e^j}_J \phi_{,(i} \alpha_{,j)}
+		- {e^i}_I {e^j}_J \alpha_{,ij} 
+		+ {\bar{\Gamma}^K}_{IJ} {e^k}_K \alpha_{,k}
+		+ \alpha (\bar{R}_{IJ} - 8 \pi S_{IJ})
+	)^{TF}
+	+ \bar{A}_{ij,k} {e^k}_K \beta^K
+	+ \bar{A}_{KJ} {e_k}^K {\beta^k}_{,I}
+	+ \bar{A}_{KI} {e_k}^K {\beta^k}_{,J}$<br>
+${\bar{\Lambda}^I}_{,t} = 
+	\bar{\gamma}^{jk} {e_i}^I (
+		{\beta^i}_{,kj} 
+		+ {\hat{\Gamma}^i}_{lk,j} {e^l}_L \beta^L
+		+ {\hat{\Gamma}^i}_{lk} {\beta^l}_{,j}
+		+ {\hat{\Gamma}^i}_{mj} (
+			{\beta^m}_{,k} 
+			+ {\hat{\Gamma}^m}_{lk} {e^l}_L \beta^L
+		)
+		- {\hat{\Gamma}^m}_{kj} (
+			{\beta^i}_{,m}
+			+ {\hat{\Gamma}^i}_{lm} {e^l}_L \beta^L
+		)
+	)	
+	+ \frac{2}{3} \Delta^I (
+		{\beta^j}_{,j} 
+		+ {\bar{\Gamma}^J}_{KJ} \beta^K
+	)
+	+ \frac{1}{3} \bar{\gamma}^{IL} (
+		{\beta^j}_{,jl} {e^l}_L
+		+ {\bar{\Gamma}^j}_{kj} {\beta^k}_{,l} {e^l}_L
+		+ {\bar{\Gamma}^j}_{kj,l} {e^l}_L {e^k}_K \beta^K
+	)
+	- 2 \bar{A}^{IJ} {e^j}_J (\alpha_{,j} - 6 \phi_{,j})
+	+ 2 \bar{A}^{JK} {\Delta^I}_{JK}
+	- \frac{4}{3} \alpha {e_i}^I \bar{\gamma}^{ij} K_{,j}
+	+ {e_i}^I {\bar{\Lambda}^i}_{,j} {e^j}_J \beta^J
+	- {e_i}^I \bar{\Lambda}^J {e^j}_J {\beta^i}_{,j}$<br>
+<br>
+
 
 <hr>
 <br>

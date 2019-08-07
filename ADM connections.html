@@ -14,6 +14,7 @@ Granted an easy way around the Riemann and Ricci is via the Gauss-Codazzi-Ricci.
 My curiousity wasn't satisfied, but halfway through this I got bored.<br>
 If you want to see it in more detail, check out the automatic generation on my symmath page
 <a href='https://htmlpreview.github.io/?https://github.com/thenumbernine/symmath-lua/blob/master/tests/output/ADM%20gravity%20using%20expressions%2ehtml'>here</a>.<br>
+Another source: 2008 Alcubierre "Introduction to 3+1 Numerical Relativity" Appendix B.<br>
 <br>
 
 metric:<br>
@@ -146,6 +147,118 @@ $= \frac{1}{2} 1 / \alpha^2 (
 	- \beta^i \gamma_{jk,t}
 )
 + {^3\Gamma^i}_{jk}$<br>
+<br>
+
+Connection contraction:<br>
+$\Gamma^u = {\Gamma^u}_{vw} g^{vw}$<br>
+$\Gamma^t = {\Gamma^t}_{ab} g^{ab}
+	= {\Gamma^t}_{tt} g^{tt} + 2 {\Gamma^t}_{ti} g^{ti} + {\Gamma^t}_{ij} g^{ij}$<br>
+$=	-1/\alpha^4 (
+		\alpha \alpha_{,t}
+		+ \frac{1}{2} \beta^j \beta^k \gamma_{jk,t}
+		+ \alpha \alpha_{,k} \beta^k
+		- \beta^k \beta^j {\beta^l}_{,k} \gamma_{jl}
+		- \frac{1}{2} \beta^k \beta^j \beta^l \gamma_{jl,k}
+	)
+	+ 2 \beta^i / \alpha^2 (
+		-1 / \alpha^2 ( 
+			-\alpha \alpha_{,i} 
+			+ \beta^j {\beta^k}_{,i} \gamma_{jk} 
+			+ \frac{1}{2} \beta^j \beta^k \gamma_{jk,i} 
+		)
+		+ \frac{1}{2} \beta^j / \alpha^2 (
+			\gamma_{ij,t} 
+			+ {\beta^k}_{,i} \gamma_{jk} 
+			+ \beta^k \gamma_{jk,i} 
+			- {\beta^k}_{,j} \gamma_{ik} 
+			- \beta^k \gamma_{ik,j}
+		)
+	)
+	+ \frac{1}{2} (\gamma^{ij} - \beta^i \beta^j / \alpha^2) 1/\alpha^2 (
+		- {\beta^k}_{,i} \gamma_{kj} 
+		- {\beta^k}_{,j} \gamma_{ki} 
+		+ \gamma_{ij,t}
+		- \beta^k \gamma_{kj,i} 
+		- \beta^k \gamma_{jk,i}
+		+ \beta^k \gamma_{ij,k} 
+	)$<br>
+$=	- 1 / \alpha^3 \alpha_{,t}
+	+ 1 / \alpha^3 \alpha_{,k} \beta^k
+	- 1 / \alpha^2 \gamma^{ij} {\beta^k}_{,j} \gamma_{ik} 
+	- 1 / \alpha^2 \gamma^{ij} \beta^k \gamma_{jk,i}
+	+ \frac{1}{2} 1/\alpha^2 \gamma^{ij} \gamma_{ij,t}
+	+ \frac{1}{2} 1/\alpha^2 \gamma^{ij} \beta^k \gamma_{ij,k} 
+$<br>
+$\Gamma^k = {\Gamma^k}_{ab} g^{ab}
+	= {\Gamma^k}_{tt} g^{tt} + 2 {\Gamma^k}_{ti} g^{ti} + {\Gamma^k}_{ij} g^{ij}$<br>
+$= 	-1/\alpha^2 \frac{1}{\alpha^2} (
+		- \beta^k \alpha \alpha_{,t}
+		- \beta^k \beta^j \alpha \alpha_{,j} 
+		+ \gamma^{kj} \alpha \alpha_{,j} 
+		+ {\beta^k}_{,t}
+		- \frac{1}{2} \beta^k \beta^j \beta^i \gamma_{ji,t}
+		+ \gamma^{kj} \beta^i \gamma_{ji,t}
+		+ \beta^k \beta^j \beta^i {\beta^l}_{,j} \gamma_{il} 
+		+ \frac{1}{2} \beta^k \beta^j \beta^i \beta^l \gamma_{il,j}
+		- \beta^i {\beta^l}_{,j} \gamma^{kj} \gamma_{il} 
+		- \frac{1}{2} \gamma^{kj} \beta^i \beta^l \gamma_{il,j} 
+	)
+
+	+ 2 \beta^i / \alpha^2 (
+		1 / \alpha^2 (
+			- \beta^k \alpha \alpha_{,i} 
+			+ \frac{1}{2} \beta^k \beta^m {\beta^l}_{,i} \gamma_{lm} 
+			+ \frac{1}{2} \beta^k \beta^m {\beta^l}_{,m} \gamma_{li} 
+			- \frac{1}{2} \beta^k \beta^m \gamma_{mi,t} 
+			+ \frac{1}{2} \beta^k \beta^m \beta^l \gamma_{li,m}
+		)
+		+ \frac{1}{2} \gamma^{km} \gamma_{mi,t} 
+		+ \frac{1}{2} {\beta^k}_{,i}
+		- \frac{1}{2} \gamma_{li} {\beta^l}_{,m} \gamma^{km} 
+		+ \frac{1}{2} \gamma^{km} \beta^l \gamma_{lm,i} 
+		- \frac{1}{2} \gamma^{km} \beta^l \gamma_{li,m}
+	)
+	+ (\gamma^{ij} - \beta^i \beta^j / \alpha^2) (
+		\frac{1}{2} 1 / \alpha^2 (
+			\beta^k {\beta^l}_{,i} \gamma_{lj} 
+			+ \beta^k {\beta^l}_{,j} \gamma_{li} 
+			+ \beta^k \beta^l \gamma_{ji,l}
+			- \beta^k \gamma_{ji,t}
+		)
+		+ {^3\Gamma^k}_{ij}
+	)
+$<br>
+$= 	
+	+ 1 / \alpha^3 \beta^k \alpha_{,t}
+	- 1 / \alpha^3 \beta^k \beta^j \alpha_{,j} 
+	- 1 / \alpha^3 \gamma^{kj} \alpha_{,j} 
+	
+	- 1 / \alpha^4 {\beta^k}_{,t}
+	
+	+ 1 / \alpha^2 \gamma^{kj} \beta^i \gamma_{ij,t} 
+	- 1 / \alpha^4 \gamma^{kj} \beta^i \gamma_{ij,t}
+	
+	+ 1 / \alpha^4 \beta^i \beta^j \beta^k {\beta^l}_{,i} \gamma_{jl} 
+	+ 1 / \alpha^4 \beta^i {\beta^l}_{,j} \gamma^{kj} \gamma_{il} 
+	+ 1 / \alpha^2 \beta^i {\beta^k}_{,i}
+	- 1 / \alpha^2 \beta^i \gamma_{li} {\beta^l}_{,j} \gamma^{kj} 
+	+ 1 / \alpha^2 \gamma^{ij} \beta^k {\beta^l}_{,i} \gamma_{lj} 
+	- 1 / \alpha^4 \beta^i \beta^j \beta^k {\beta^l}_{,i} \gamma_{lj} 
+	
+	+ \frac{1}{2} 1 / \alpha^4 \gamma^{jk} \beta^i \beta^l \gamma_{il,j} 
+	+ \frac{1}{2} 1 / \alpha^4 \beta^i \beta^j \beta^k \beta^l \gamma_{il,j}
+	+ 1 / \alpha^2 \gamma^{kj} \beta^i \beta^l \gamma_{lj,i} 
+	- 1 / \alpha^2 \gamma^{kj} \beta^i \beta^l \gamma_{li,j}
+	+ \frac{1}{2} 1 / \alpha^2 \gamma^{ij} \beta^k \beta^l \gamma_{ij,l}
+	- \frac{1}{2} / \alpha^4 \beta^i \beta^j \beta^k \beta^l \gamma_{ij,l}
+	
+	- \frac{1}{2} / \alpha^4 \beta^i \beta^j \beta^k \gamma_{ij,t}
+	- \frac{1}{2} / \alpha^2 \gamma^{ij} \beta^k \gamma_{ij,t}
+	+ \frac{1}{2} / \alpha^4 \beta^i \beta^j \beta^k \gamma_{ij,t}
+	
+	+ {^3\Gamma^k}_{ij} \gamma^{ij}
+	- 1 / \alpha^2 \beta^i \beta^j {^3\Gamma^k}_{ij}
+$<br>
 <br>
 
 Connection derivatives used for Riemann tensor:<br>
