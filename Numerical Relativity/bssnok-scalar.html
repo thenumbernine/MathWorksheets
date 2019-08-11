@@ -2,7 +2,7 @@
 <html>
 	<head>
         <meta charset='utf-8'>
-		<title>Numerical Relativity - BSSNOK</title>
+		<title>Numerical Relativity - BSSNOK - Scalar Field</title>
 		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
 	</head>
     <body>
@@ -12,12 +12,16 @@ Sources:<br>
 2017 Escorihuela-Tomàs, Sanchis-Gual, Degollado, Font, "Quasistationary solutions of scalar fields aroundcollapsing self-interacting boson stars"<br>
 <br>
 
-Reference:<br>
+Reference equations:<br>
 2008 Alcubierre "Introduction to 3+1 Numerical Relativity" Appendix B:<br>
 $\Gamma^t = -\frac{1}{\alpha^3} (\alpha_{,t} - \beta^m \alpha_{,m} + \alpha^2 K)$<br>
 $\Gamma^i = {}^{(3)} \Gamma^i + \frac{1}{\alpha^3} \beta^i (\alpha_{,t} - \beta^m \alpha_{,m} + \alpha^2 K) 
-	- \frac{1}{\alpha^2} ({\beta^i}_{,t} - \beta^m {\beta^i}_{,m} \alpha \alpha_{,j} \gamma^{ij})
+	- \frac{1}{\alpha^2} ({\beta^i}_{,t} - \beta^m {\beta^i}_{,m} + \alpha \alpha_{,j} \gamma^{ij})
 $<br>
+<br>
+
+$n^a = (n^t, n^i) = (\frac{1}{\alpha}, -\frac{\beta^i}{\alpha})$<br>
+$n_a = (n_t, n_i) = (-\alpha, 0)$<br>
 <br>
 
 $(\square - \frac{dV}{d|\Phi|^2}) \Phi = 0$<br>
@@ -72,18 +76,25 @@ $\Phi_{,tt} =
 		) 
 		- \frac{1}{\alpha^2} (
 			{\beta^i}_{,t} 
-			- \beta^m {\beta^i}_{,m} \alpha \alpha_{,j} \gamma^{ij}
+			- \beta^m {\beta^i}_{,m} 
+			+ \alpha \alpha_{,j} \gamma^{ij}
 		)
 	) \Phi_{,i}
 	- \alpha^2 (\mu^2 + \lambda |\Phi|^2) \Phi$<br>
 <br>
 
 Let $\Pi = n^\mu \Phi_{,\mu}$<br>
+ADM component-wise:<br>
 $\Pi = n^t \Phi_{,t} + n^i \Phi_{,i}$<br>
 $\Pi = \frac{1}{\alpha} ( \Phi_{,t} - \beta^i \Phi_{,i} )$ (eqn. 5)<br>
 <br>
 
-Let $\Psi_i = \Phi_{,i}$ (eqn. 6)<br>
+Let $\Psi_i = \nabla^\perp_i \Phi$ (eqn. 6)<br>
+For $\nabla^\perp_i = \gamma^a_i \nabla_a =$ the spatial covariant derivative operator<br>
+For $\gamma_{ab} = g_{ab} + n_a n_b =$ the spatial projection operator<br>
+$\Psi_i = \gamma^a_i \nabla_a \Phi$<br>
+$\Psi_i = (\delta^a_i + n^a n_i) \Phi_,a$<br>
+$\Psi_i = \Phi_,i$<br>
 <br>
 
 Solve $\Pi$ for $\Phi_{,t}$:<br>
@@ -91,6 +102,7 @@ $\Pi = \frac{1}{\alpha} ( \Phi_{,t} - \beta^i \Phi_{,i} )$<br>
 $\alpha \Pi = \Phi_{,t} - \beta^i \Phi_{,i}$<br>
 $\Phi_{,t} = \alpha \Pi + \beta^i \Phi_{,i}$ (eqn. 7)<br>
 $\frac{d}{dt} \Phi = \alpha \Pi$<br>
+$\Phi_{,t} = \alpha \Pi + \beta^i \Psi_i$<br>
 <br>
 
 Solve $\Pi_{,i}$ for $\Psi_{i,t}$:<br>
@@ -225,38 +237,407 @@ $\frac{d}{dt} \Pi =
 	- \alpha (\mu^2 + \lambda |\Phi|^2) \Phi
 	$<br>
 <br>
+
+<hr>
+<br>
+
+Hyperbolic conservation system:<br>
+<br>
+Only using $\Phi, \Psi_i, \Pi$:<br>
+<br>
+
+$\Phi_{,t} 
+	- \beta^i \Phi_{,i}	
+	= \alpha \Pi$<br>
+
+$\Psi_{i,t} 
+	- \alpha \Pi_{,i} 
+	- \beta^j \Psi_{i,j} 
+	- {\beta^j}_{,i} \Phi_{,j} 
+=
+	\alpha_{,i} \Pi 
+$<br>
+
+$\Pi_{,t} 
+	- \alpha \gamma^{ij} \Psi_{i,j}
+	- \beta^i \Pi_{,i} 
+= 
+	- \frac{1}{\alpha^2} \alpha_{,t} \Pi
+	+ \frac{1}{\alpha} \beta^i \alpha_{,i} \Pi 
+	- \alpha^2 \Gamma^t \Pi 
+	- \frac{1}{\alpha} {\beta^i}_{,t} \Psi_i
+	+ \frac{1}{\alpha} \beta^i {\beta^j}_{,i} \Psi_j
+	- \alpha \Gamma^i \Psi_i
+	- \alpha \Gamma^t \beta^i \Psi_i
+	- \alpha (\mu^2 + \lambda |\Phi|^2) \Phi
+$<br>
+<br>
+
+$\left[\begin{matrix}
+	\Phi \\
+	\Psi_i \\
+	\Pi
+\end{matrix}\right]_{,t}
++ \left[\begin{matrix}
+	- \beta^i \Phi_{,i}	\\
+	
+	- \alpha \Pi_{,i} 
+		- \beta^j \Psi_{i,j} 
+		- {\beta^j}_{,i} \Phi_{,j} \\
+	
+	- \alpha \gamma^{ij} \Psi_{i,j}
+		- \beta^i \Pi_{,i} 
+\end{matrix}\right]
+= \left[\begin{matrix}
+	\alpha \Pi \\
+	\alpha_{,i} \Pi \\
+	- \frac{1}{\alpha^2} \alpha_{,t} \Pi
+		+ \frac{1}{\alpha} \beta^i \alpha_{,i} \Pi 
+		- \alpha^2 \Gamma^t \Pi 
+		- \frac{1}{\alpha} {\beta^i}_{,t} \Psi_i
+		+ \frac{1}{\alpha} \beta^i {\beta^j}_{,i} \Psi_j
+		- \alpha \Gamma^i \Psi_i
+		- \alpha \Gamma^t \beta^i \Psi_i
+		- \alpha (\mu^2 + \lambda |\Phi|^2) \Phi
+\end{matrix}\right]$<br>
+$\left[\begin{matrix}
+	\Phi \\
+	\Psi_i \\
+	\Pi
+\end{matrix}\right]_{,t}
++ \left[\begin{matrix}
+	-\beta^i & 0 & 0 \\
+	
+	- {\beta^j}_{,i} \Phi &
+		- \beta^j \delta^k_i &
+		- \alpha \delta^j_i
+		\\
+
+	0 & - \alpha \gamma^{jk} & - \beta^j 
+\end{matrix}\right] \left[\begin{matrix}
+	\Phi \\
+	\Psi_k \\
+	\Pi
+\end{matrix}\right]_{,j}
+= \left[\begin{matrix}
+	\alpha \Pi \\
+	\alpha_{,i} \Pi \\
+	- \frac{1}{\alpha^2} \alpha_{,t} \Pi
+		+ \frac{1}{\alpha} \beta^i \alpha_{,i} \Pi 
+		- \alpha^2 \Gamma^t \Pi 
+		- \frac{1}{\alpha} {\beta^i}_{,t} \Psi_i
+		+ \frac{1}{\alpha} \beta^i {\beta^j}_{,i} \Psi_j
+		- \alpha \Gamma^i \Psi_i
+		- \alpha \Gamma^t \beta^i \Psi_i
+		- \alpha (\mu^2 + \lambda |\Phi|^2) \Phi
+\end{matrix}\right]$<br>
+<br>
+
+Using $\alpha, \beta^k, \gamma_{ij}, \Phi, \Psi_k, \Pi$:<br>
+<br>
+
+$\Phi_{,t} 
+	- \beta^i \Phi_{,i}	
+	= \alpha \Pi$<br>
+
+$\Psi_{i,t} 
+	- \alpha_{,i} \Pi 
+	- \alpha \Pi_{,i} 
+	- \beta^j \Psi_{i,j} 
+	- {\beta^j}_{,i} \Phi_{,j} 
+= 0
+$<br>
+
+$\Pi_{,t} 
+	- \frac{1}{\alpha} \beta^i \alpha_{,i} \Pi 
+	- \alpha \gamma^{ij} \Psi_{i,j}
+	- \beta^i \Pi_{,i} 
+
+
+	- \frac{1}{\alpha} \beta^i {\beta^j}_{,i} \Psi_j
+	+ \frac{1}{\alpha^2} \beta^m \alpha_{,m} \beta^i \Psi_i
+	+ \alpha \Psi_i (
+		{}^{(3)} \Gamma^i 
+		- \frac{1}{\alpha^3} \beta^i \beta^m \alpha_{,m} 
+	)
+= 
+	
+	- \frac{1}{\alpha^2} \alpha_{,t} \Pi
+	+ \frac{1}{\alpha^2} \alpha_{,t} \beta^i \Psi_i
+	+ \frac{1}{\alpha} \alpha_{,t} \Pi 
+	- \frac{1}{\alpha} {\beta^i}_{,t} \Psi_i
+	- \alpha \Psi_i (
+		\frac{1}{\alpha^3} \beta^i \alpha_{,t} 
+		- \frac{1}{\alpha^2} {\beta^i}_{,t} 
+	)
+	
+	- \frac{1}{\alpha} \beta^m \alpha_{,m} \Pi 
+	+ \alpha K \Pi 
+	+ K \beta^i \Psi_i
+	- \frac{1}{\alpha^2} \Psi_i \beta^i \alpha^2 K
+	- \alpha (\mu^2 + \lambda |\Phi|^2) \Phi
+	
+	- \Psi_i \frac{1}{\alpha} (\beta^m {\beta^i}_{,m} + \alpha \alpha_{,j} \gamma^{ij})
+$<br>
+<br>
+
+Using<br>
+$\alpha_{,t} = -\alpha^2 f(\alpha) K + \alpha_{,j} \beta^j$<br>
+${\beta^i}_{,t} = {\beta^i}_{,j} \beta^j + B^i$<br>
+$\gamma_{ij,t} = -2 \alpha K_{ij} + \gamma_{ij,k} \beta^k + 2 \gamma_{k(i} {\beta^k}_{,j)}$<br>
+<br>
+
+$\Pi_{,t} 
+	+ \frac{1}{\alpha^2} \alpha_{,j} \beta^j \Pi
+	- \frac{1}{\alpha} \alpha_{,j} \beta^j \Pi
+	
+	- \alpha \gamma^{ij} \Psi_{i,j}
+	- \beta^i \Pi_{,i} 
+
+	- \frac{1}{\alpha} \beta^i {\beta^j}_{,i} \Psi_j
+	+ \alpha \Psi_i {}^{(3)} \Gamma^i 
+= 
+	(1 - \alpha) f(\alpha) K \Pi 
+	
+	+ \alpha K \Pi 
+	- \alpha (\mu^2 + \lambda |\Phi|^2) \Phi
+	
+	- \Psi_i \gamma^{ij} \beta^k {\beta^i}_{,k} \alpha_{,j}
+$<br>
+<br>
+
+$\left[\begin{matrix}
+	\alpha \\
+	\beta^k \\
+	\gamma_{ij} \\
+	\Phi \\
+	\Psi_k \\
+	\Pi
+\end{matrix}\right]_{,t}
++ \left[\begin{matrix}
+	- \alpha_{,j} \beta^j \\
+
+	- {\beta^k}_{,j} \beta^j \\
+
+	- \gamma_{ij,k} \beta^k 
+	- \gamma_{ki} {\beta^k}_{,j}
+	- \gamma_{kj} {\beta^k}_{,i} \\
+	
+	- \beta^i \Phi_{,i}	\\
+	
+	- \alpha_{,k} \Pi 
+	- \alpha \Pi_{,k} 
+	- \beta^j \Psi_{k,j} 
+	- {\beta^j}_{,k} \Phi_{,j} \\ 
+
+	+ \frac{1}{\alpha^2} \alpha_{,j} \beta^j \Pi
+	- \frac{1}{\alpha} \alpha_{,j} \beta^j \Pi
+	
+	- \alpha \gamma^{ij} \Psi_{i,j}
+	- \beta^i \Pi_{,i} 
+
+	- \frac{1}{\alpha} \beta^i {\beta^j}_{,i} \Psi_j
+	+ \alpha \Psi_i {}^{(3)} \Gamma^i 
+
+\end{matrix}\right]
+= \left[\begin{matrix}
+	- \alpha^2 f(\alpha) K \\ 
+
+	B^k \\
+
+	-2 \alpha K_{ij} \\
+	
+	\alpha \Pi \\
+
+	0 \\
+
+	(f - \alpha f + \alpha) K \Pi 
+	- \alpha (\mu^2 + \lambda |\Phi|^2) \Phi
+	- \Psi_i \gamma^{ij} \beta^k {\beta^i}_{,k} \alpha_{,j}
+
+\end{matrix}\right]
+$<br>
+
+$\left[\begin{matrix}
+	\alpha \\
+	\beta^k \\
+	\gamma_{ij} \\
+	\Phi \\
+	\Psi_k \\
+	\Pi
+\end{matrix}\right]_{,t}
++ \left[\begin{matrix}
+	-\beta^r & 0 & 0 & 0 & 0 & 0 \\
+
+	0 & -\delta^k_m \beta^r & 0 & 0 & 0 & 0 \\
+
+	0 & -\gamma_{mi} \delta^r_j - \gamma_{mj} \delta^r_i & 
+	- \delta^p_i \delta^q_j \beta^r & 0 & 0 & 0 \\
+	
+	0 & 0 & 0 & -\delta^m_k \beta^r & 0 & 0 \\
+	
+	- \delta^r_k \Pi & 
+	- \delta^r_k \Psi_m &
+	0 &
+	0 &
+	- \delta^m_k \beta^r &
+	- \alpha \delta^r_k \\ 
+
+	(\frac{1}{\alpha^2} - \frac{1}{\alpha}) \beta^r \Pi & 
+	- \frac{1}{\alpha} \beta^r \Psi_m & 
+	+ \frac{1}{2} \alpha (2 \Psi^p \gamma^{qr} - \Psi^r \gamma^{pq}) &
+	0 &
+	- \alpha \gamma^{rm} &
+	- \beta^r 
+
+\end{matrix}\right]
+\left[\begin{matrix}
+	\alpha \\
+	\beta^m \\
+	\gamma_{pq} \\
+	\Phi \\
+	\Psi_m \\
+	\Pi
+\end{matrix}\right]_{,r}
+
+= \left[\begin{matrix}
+	- \alpha^2 f(\alpha) K \\ 
+
+	B^k \\
+
+	-2 \alpha K_{ij} \\
+	
+	\alpha \Pi \\
+
+	0 \\
+
+	(f - \alpha f + \alpha) K \Pi 
+	- \alpha (\mu^2 + \lambda |\Phi|^2) \Phi
+	- \Psi^j \beta^k {\beta^i}_{,k} \alpha_{,j}
+
+\end{matrix}\right]
+$<br>
+<br>
 <hr>
 <br>
 
 Stress-energy:<br>
-$T_{ab} = \Phi_{,a} \Phi_{,b} - \frac{1}{2} g_{ab} g^{cd} \Phi_{,c} \Phi_{,d}$<br>
+2017 Escorihuela-Tomàs et al, eqn 2:<br>
+$T_{ab} = \frac{1}{2} (
+		(\Phi_{,a})^* \Phi_{,b} 
+		+ \Phi_{,a} (\Phi_{,b})^*
+	) 
+	- \frac{1}{2} g_{ab} (
+		g^{cd} (\Phi_{,c})^* \Phi_{,d}
+		+ \mu^2 |\Phi \Phi^*|
+		+ \frac{1}{2} \lambda |\Phi \Phi^*|^2
+	)$<br>
 <br>
 
 $\rho = n^a n^b T_{ab}$<br> 
-$= n^a n^b (\Phi_{,a} \Phi_{,b} - \frac{1}{2} g_{ab} g^{cd} \Phi_{,c} \Phi_{,d})$<br>
-$= \Pi^2 + \frac{1}{2} g^{cd} \Phi_{,c} \Phi_{,d}$<br>
-$= \Pi^2 + \frac{1}{2} (\gamma^{cd} - n^c n^d) \Phi_{,c} \Phi_{,d}$<br>
-$= \Pi^2 + \frac{1}{2} (\gamma^{cd} \Psi_c \Psi_d - \Pi^2)$<br>
-$= \frac{1}{2} (\Pi^2 + \gamma^{cd} \Psi_c \Psi_d)$<br>
-(2010 Alcubierre, Mendez has $= \frac{1}{2} (\Pi^2 + \frac{1}{exp(-4 \phi)} \Psi^2)$ ?)<br>
+$= n^a n^b (
+	\frac{1}{2} (
+		(\Phi_{,a})^* \Phi_{,b} 
+		+ \Phi_{,a} (\Phi_{,b})^*
+	)
+	- \frac{1}{2} g_{ab} (
+		g^{cd} (\Phi_{,c})^* \Phi_{,d}
+		+ \mu^2 |\Phi \Phi^*|
+		+ \frac{1}{2} \lambda |\Phi \Phi^*|^2
+	)
+)$<br>
+$= 
+	\frac{1}{2} (
+		n^a (\Phi_{,a})^* n^b \Phi_{,b} 
+		+ n^a \Phi_{,a} n^b (\Phi_{,b})^*
+		+ g^{cd} (\Phi_{,c})^* \Phi_{,d}
+		+ \mu^2 |\Phi \Phi^*|
+		+ \frac{1}{2} \lambda |\Phi \Phi^*|^2
+	)
+$<br>
+$= 
+	\frac{1}{2} (
+		\Pi^* \cdot \Pi
+		+ \Pi \cdot \Pi^*
+	)
+	+ \frac{1}{2} (\gamma^{cd} - n^c n^d) (\Phi_{,c})^* \Phi_{,d}
+	+ \frac{1}{2} \mu^2 |\Phi \Phi^*|
+	+ \frac{1}{4} \lambda |\Phi \Phi^*|^2
+$<br>
+$= 
+	\frac{1}{2} (
+		\Pi^* \cdot \Pi
+		+ \Pi \cdot \Pi^*
+	)
+	+ \frac{1}{2} (\gamma^{cd} (\Phi_{,c})^* \Phi_{,d} - \Pi^* \cdot \Pi)
+	+ \frac{1}{2} \mu^2 |\Phi \Phi^*|
+	+ \frac{1}{4} \lambda |\Phi \Phi^*|^2
+$<br>
+$= \frac{1}{2} (
+	\Pi \cdot \Pi^*
+	+ (\Psi^c)^* \Psi_c
+	+ \mu^2 |\Phi \Phi^*|
+	+ \frac{1}{2} \lambda |\Phi \Phi^*|^2
+)$<br>
+(2010 Alcubierre, Mendez has $= \frac{1}{2} (\Pi^2 + \frac{1}{exp(-4 \phi)} \Psi^2)$)<br>
 <br>
 
 $S^u = -\gamma^{ua} n^b T_{ab}$<br>
-$= -\gamma^{ua} n^b (\Phi_{,a} \Phi_{,b} - \frac{1}{2} g_{ab} g^{cd} \Phi_{,c} \Phi_{,d})$<br>
-$= -\gamma^{ua} \Psi_a \Pi$<br>
-...<br>
+$S^u = -\gamma^{ua} n^b (
+	\frac{1}{2} (
+		(\Phi_{,a})^* \Phi_{,b} 
+		+ \Phi_{,a} (\Phi_{,b})^*
+	) 
+	- \frac{1}{2} g_{ab} g^{cd} (\Phi_{,c})^* \Phi_{,d}
+	- \frac{1}{2} \mu^2 g_{ab} |\Phi \Phi^*|
+	- \frac{1}{4} \lambda g_{ab} |\Phi \Phi^*|^2
+)$<br>
+$S^u = -\frac{1}{2} \gamma^{ua} ((\Phi_{,a})^* \Pi + \Phi_{,a} \Pi^*)$<br>
 (2010 Alcubierre, Mendez has $ = -\Pi \Psi$)<br>
 <br>
 
 $S_{uv} = {\gamma_u}^a {\gamma_v}^b T_{ab}$<br>
-$= {\gamma_u}^a {\gamma_v}^b (
-	\Phi_{,a} \Phi_{,b} - \frac{1}{2} g_{ab} g^{cd} \Phi_{,c} \Phi_{,d}
+$S_{uv} = \frac{1}{2} {\gamma_u}^a {\gamma_v}^b (
+	(\Phi_{,a})^* \Phi_{,b} 
+	+ \Phi_{,a} (\Phi_{,b})^*
+	- g_{ab} (
+		g^{cd} (\Phi_{,c})^* \Phi_{,d}
+		+ \mu^2 |\Phi \Phi^*|
+		+ \frac{1}{2} \lambda |\Phi \Phi^*|^2
+	)
 )$<br>
-$= \Psi_u \Psi_v - \frac{1}{2} \gamma_{uv} (\gamma^{cd} - n^c n^d) \Phi_{,c} \Phi_{,d}$<br>
-$= \frac{1}{2} (\gamma_{uv} \Pi^2
-	- (\gamma_{uv} \gamma^{cd} - 2 {\gamma_u}^c {\gamma_v}^d) \Psi_c \Psi_d
+$S_{uv} = \frac{1}{2} (
+	{\gamma_u}^a {\gamma_v}^b (\Phi_{,a})^* \Phi_{,b} 
+	+ {\gamma_u}^a {\gamma_v}^b \Phi_{,a} (\Phi_{,b})^*
+	- \gamma_{uv} (
+		(\gamma^{cd} - n^c n^d) (\Phi_{,c})^* \Phi_{,d}
+		+ \mu^2 |\Phi \Phi^*|
+		+ \frac{1}{2} \lambda |\Phi \Phi^*|^2
+	)
 )$<br>
-(2010 Alcubierre, Mendez has $\pm$ for ${T^r}_r$ and ${T^\theta}_\theta$)<br>
+$S_{uv} = \frac{1}{2} (
+	{\gamma_u}^a {\gamma_v}^b (
+		(\Phi_{,a})^* \Phi_{,b} 
+		+ \Phi_{,a} (\Phi_{,b})^*
+	)
+	- \gamma_{uv} (
+		\gamma^{cd} (\Phi_{,c})^* \Phi_{,d}
+		- (\Pi)^* \Pi
+		+ \mu^2 |\Phi \Phi^*|
+		+ \frac{1}{2} \lambda |\Phi \Phi^*|^2
+	)
+)$<br>
+$S_{uv} = \frac{1}{2} (
+	(\Phi_{,u})^* \Phi_{,v} 
+	+ \Phi_{,u} (\Phi_{,v})^*
+	- \gamma_{uv} (
+		\gamma^{cd} (\Phi_{,c})^* \Phi_{,d}
+		- (\Pi)^* \Pi
+		+ \mu^2 |\Phi \Phi^*|
+		+ \frac{1}{2} \lambda |\Phi \Phi^*|^2
+	)
+)$<br>
+(2010 Alcubierre, Mendez has $\frac{1}{2} (\Pi^2 \pm \frac{\Psi^2}{exp(-4 \phi)} )$ for ${T^r}_r$ and ${T^\theta}_\theta$)<br>
 <br>
 
 	</body>
