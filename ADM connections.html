@@ -19,8 +19,8 @@ Another source: 2008 Alcubierre "Introduction to 3+1 Numerical Relativity" Appen
 
 metric:<br>
 $g_{uv} = \left[\matrix{
-	-\alpha^2 + \beta^k \beta^l \gamma_{kl} & \beta^k \gamma_{kj} \\
-	\beta^k \gamma_{ki} & \gamma_{ij}
+	-\alpha^2 + \beta^k \beta^l \gamma_{kl} & \beta_j \\
+	\beta_i & \gamma_{ij}
 }\right]$<br>
 <br>
 
@@ -31,24 +31,23 @@ $g^{uv} = \left[\matrix{
 }\right]$<br>
 <br>
 
-Christoffel of 1st kind:<br>
+metric partials:<br>
+$g_{tt,\mu} = -2 \alpha \alpha_{,\mu} + 2 {\beta^k}_{,\mu} \beta_k$<br>
+$g_{ti,\mu} = \beta_{i,\mu}$<br>
+$g_{ij,\mu} = \gamma_{ij,\mu}$<br>
+<br>
+
+4-metric connection coefficients:<br>
 $\Gamma_{uvw} = \frac{1}{2}(g_{uv,w} + g_{uw,v} - g_{vw,u})$<br>
 individually:<br>
 $\Gamma_{ttt} 
 	= \frac{1}{2} g_{tt,t} 
-	= -\alpha \alpha_{,t} + \beta^j {\beta^k}_{,t} \gamma_{jk} + \frac{1}{2} \beta^j \beta^k \gamma_{jk,t}$<br>
-$\Gamma_{tti} = \Gamma_{tit} = \frac{1}{2}g_{tt,i} $
-$= -\alpha \alpha_{,i} + \beta^j {\beta^k}_{,i} \gamma_{jk} + \frac{1}{2} \beta^j \beta^k \gamma_{jk,i}$<br>
-$\Gamma_{itt}
-	= g_{it,t} - \frac{1}{2} g_{tt,i}
-	= {\beta^j}_{,t} \gamma_{ij} + \beta^j \gamma_{ij,t} + \alpha \alpha_{,i} - \beta^j {\beta^k}_{,i} \gamma_{jk} - \frac{1}{2} \beta^j \beta^k \gamma_{jk,i}$<br>
-$\Gamma_{tij} = \frac{1}{2}(g_{ti,j} + g_{tj,i} - g_{ij,t}) 
-	= \frac{1}{2}({\beta^k}_{,j} \gamma_{ki} + \beta^k \gamma_{ki,j} + {\beta^k}_{,i} \gamma_{kj} + \beta^k \gamma_{kj,i} - \gamma_{ij,t})$<br>
-$\Gamma_{itj} = \Gamma_{ijt} = \frac{1}{2}(g_{it,j} + g_{ij,t} - g_{tj,i}) 
-	= \frac{1}{2}(\gamma_{ij,t} + {\beta^k}_{,j} \gamma_{ki} + \beta^k \gamma_{ki,j} - {\beta^k}_{,i} \gamma_{kj} - \beta^k \gamma_{kj,i})$<br>
-$\Gamma_{ijk} = \frac{1}{2}(g_{ij,k} + g_{ik,j} - g_{jk,i}) $
-$= \frac{1}{2}(\gamma_{ij,k} + \gamma_{ik,j} - \gamma_{jk,i})$
-$= {^3\Gamma}_{ijk}$<br>
+	= -\alpha \alpha_{,t} + \beta^k \beta_{k,t}$<br>
+$\Gamma_{tti} = \Gamma_{tit} = \frac{1}{2} g_{tt,i} = -\alpha \alpha_{,i} + \beta^k \beta_{k,i}$<br>
+$\Gamma_{itt} = g_{it,t} - \frac{1}{2} g_{tt,i} = \beta_{i,t} + \alpha \alpha_{,i} - \beta^k \beta_{k,i}$<br>
+$\Gamma_{tij} = \frac{1}{2}(g_{ti,j} + g_{tj,i} - g_{ij,t}) = \frac{1}{2}(\beta_{i,j} + \beta_{j,i} - \gamma_{ij,t})$<br>
+$\Gamma_{itj} = \Gamma_{ijt} = \frac{1}{2}(g_{ij,t} + g_{it,j} - g_{tj,i}) = \frac{1}{2}(\gamma_{ij,t} + \beta_{i,j} - \beta_{j,i})$<br>
+$\Gamma_{ijk} = \frac{1}{2}(g_{ij,k} + g_{ik,j} - g_{jk,i}) = \frac{1}{2}(\gamma_{ij,k} + \gamma_{ik,j} - \gamma_{jk,i}) = {^3\Gamma}_{ijk}$<br>
 <br>
 
 Connections / Christoffel of 2nd kind:<br>
@@ -189,6 +188,10 @@ $=	- 1 / \alpha^3 \alpha_{,t}
 	+ \frac{1}{2} 1/\alpha^2 \gamma^{ij} \gamma_{ij,t}
 	+ \frac{1}{2} 1/\alpha^2 \gamma^{ij} \beta^k \gamma_{ij,k} 
 $<br>
+2008 Alcubierre says:<br>
+$\Gamma^t = -\frac{1}{\alpha^3} ( \alpha_{,t} - \beta^m \alpha_{,m}) - \frac{1}{\alpha} K$<br>
+<br>
+
 $\Gamma^k = {\Gamma^k}_{ab} g^{ab}
 	= {\Gamma^k}_{tt} g^{tt} + 2 {\Gamma^k}_{ti} g^{ti} + {\Gamma^k}_{ij} g^{ij}$<br>
 $= 	-1/\alpha^2 \frac{1}{\alpha^2} (
@@ -259,6 +262,8 @@ $=
 	+ {^3\Gamma^k}_{ij} \gamma^{ij}
 	- 1 / \alpha^2 \beta^i \beta^j {^3\Gamma^k}_{ij}
 $<br>
+2008 Alcubierre says:<br>
+$\Gamma^i = {}^3 \Gamma^i + \beta^i (\frac{1}{\alpha^3} (\alpha_{,t} - \beta^m \alpha_{,m}) + \frac{1}{\alpha} K) - \frac{1}{\alpha^2} ({\beta^i}_{,t} - {\beta^i}_{,m} \beta^m) - \frac{1}{\alpha} \alpha_{,j} \gamma^{ij}$<br>
 <br>
 
 Connection derivatives used for Riemann tensor:<br>
@@ -334,6 +339,11 @@ ${\Gamma^j}_{ti,j}$<br>
 ${\Gamma^j}_{tj,i}$<br>
 ${\Gamma^k}_{ij,k} = {^3\Gamma^k}_{ij,k}$<br>
 ${\Gamma^k}_{ki,j} = {^3\Gamma^k}_{ki,j}$<br>
+<br>
+
+Extrinsic curvature (of spatial indexes):<br>
+(From ADM worksheet)<br>
+$K_{ij} = -\alpha {\Gamma^i}_{ij}$<br>
 <br>
 
 Riemann tensor representations used for the Ricci tensor:<br>

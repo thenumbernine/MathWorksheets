@@ -279,14 +279,14 @@ $\left[\begin{matrix}
 	\Pi
 \end{matrix}\right]_{,t}
 + \left[\begin{matrix}
-	- \beta^i \Phi_{,i}	\\
+	- \beta^j \Phi_{,j}	\\
 	
 	- \alpha \Pi_{,i} 
 		- \beta^j \Psi_{i,j} 
 		- {\beta^j}_{,i} \Phi_{,j} \\
 	
-	- \alpha \gamma^{ij} \Psi_{i,j}
-		- \beta^i \Pi_{,i} 
+	- \alpha \gamma^{kj} \Psi_{k,j}
+		- \beta^j \Pi_{,j} 
 \end{matrix}\right]
 = \left[\begin{matrix}
 	\alpha \Pi \\
@@ -306,9 +306,9 @@ $\left[\begin{matrix}
 	\Pi
 \end{matrix}\right]_{,t}
 + \left[\begin{matrix}
-	-\beta^i & 0 & 0 \\
+	-\beta^j & 0 & 0 \\
 	
-	- {\beta^j}_{,i} \Phi &
+	- {\beta^j}_{,i} &
 		- \beta^j \delta^k_i &
 		- \alpha \delta^j_i
 		\\
@@ -529,8 +529,7 @@ $T_{ab} = \frac{1}{2} (
 	) 
 	- \frac{1}{2} g_{ab} (
 		g^{cd} (\Phi_{,c})^* \Phi_{,d}
-		+ \mu^2 |\Phi \Phi^*|
-		+ \frac{1}{2} \lambda |\Phi \Phi^*|^2
+		+ V
 	)$<br>
 <br>
 
@@ -542,42 +541,33 @@ $= n^a n^b (
 	)
 	- \frac{1}{2} g_{ab} (
 		g^{cd} (\Phi_{,c})^* \Phi_{,d}
-		+ \mu^2 |\Phi \Phi^*|
-		+ \frac{1}{2} \lambda |\Phi \Phi^*|^2
+		+ V
 	)
 )$<br>
-$= 
-	\frac{1}{2} (
-		n^a (\Phi_{,a})^* n^b \Phi_{,b} 
-		+ n^a \Phi_{,a} n^b (\Phi_{,b})^*
-		+ g^{cd} (\Phi_{,c})^* \Phi_{,d}
-		+ \mu^2 |\Phi \Phi^*|
-		+ \frac{1}{2} \lambda |\Phi \Phi^*|^2
-	)
-$<br>
-$= 
-	\frac{1}{2} (
-		\Pi^* \cdot \Pi
-		+ \Pi \cdot \Pi^*
-	)
-	+ \frac{1}{2} (\gamma^{cd} - n^c n^d) (\Phi_{,c})^* \Phi_{,d}
-	+ \frac{1}{2} \mu^2 |\Phi \Phi^*|
-	+ \frac{1}{4} \lambda |\Phi \Phi^*|^2
-$<br>
+$= \frac{1}{2} (
+	n^a (\Phi_{,a})^* n^b \Phi_{,b} 
+	+ n^a \Phi_{,a} n^b (\Phi_{,b})^*
+	+ g^{cd} (\Phi_{,c})^* \Phi_{,d}
+	+ V
+)$<br>
+$= \frac{1}{2} (
+	\Pi^* \cdot \Pi
+	+ \Pi \cdot \Pi^*
+	+ (\gamma^{cd} - n^c n^d) (\Phi_{,c})^* \Phi_{,d}
+	+ V
+)$<br>
 $= 
 	\frac{1}{2} (
 		\Pi^* \cdot \Pi
 		+ \Pi \cdot \Pi^*
 	)
 	+ \frac{1}{2} (\gamma^{cd} (\Phi_{,c})^* \Phi_{,d} - \Pi^* \cdot \Pi)
-	+ \frac{1}{2} \mu^2 |\Phi \Phi^*|
-	+ \frac{1}{4} \lambda |\Phi \Phi^*|^2
+	+ \frac{1}{2} V
 $<br>
 $= \frac{1}{2} (
 	\Pi \cdot \Pi^*
 	+ (\Psi^c)^* \Psi_c
-	+ \mu^2 |\Phi \Phi^*|
-	+ \frac{1}{2} \lambda |\Phi \Phi^*|^2
+	+ V
 )$<br>
 (2010 Alcubierre, Mendez has $= \frac{1}{2} (\Pi^2 + \frac{1}{exp(-4 \phi)} \Psi^2)$)<br>
 <br>
@@ -588,9 +578,10 @@ $S^u = -\gamma^{ua} n^b (
 		(\Phi_{,a})^* \Phi_{,b} 
 		+ \Phi_{,a} (\Phi_{,b})^*
 	) 
-	- \frac{1}{2} g_{ab} g^{cd} (\Phi_{,c})^* \Phi_{,d}
-	- \frac{1}{2} \mu^2 g_{ab} |\Phi \Phi^*|
-	- \frac{1}{4} \lambda g_{ab} |\Phi \Phi^*|^2
+	- \frac{1}{2} g_{ab} (
+		g^{cd} (\Phi_{,c})^* \Phi_{,d}
+		+ V
+	)
 )$<br>
 $S^u = -\frac{1}{2} \gamma^{ua} ((\Phi_{,a})^* \Pi + \Phi_{,a} \Pi^*)$<br>
 (2010 Alcubierre, Mendez has $ = -\Pi \Psi$)<br>
@@ -602,8 +593,7 @@ $S_{uv} = \frac{1}{2} {\gamma_u}^a {\gamma_v}^b (
 	+ \Phi_{,a} (\Phi_{,b})^*
 	- g_{ab} (
 		g^{cd} (\Phi_{,c})^* \Phi_{,d}
-		+ \mu^2 |\Phi \Phi^*|
-		+ \frac{1}{2} \lambda |\Phi \Phi^*|^2
+		+ V
 	)
 )$<br>
 $S_{uv} = \frac{1}{2} (
@@ -611,8 +601,7 @@ $S_{uv} = \frac{1}{2} (
 	+ {\gamma_u}^a {\gamma_v}^b \Phi_{,a} (\Phi_{,b})^*
 	- \gamma_{uv} (
 		(\gamma^{cd} - n^c n^d) (\Phi_{,c})^* \Phi_{,d}
-		+ \mu^2 |\Phi \Phi^*|
-		+ \frac{1}{2} \lambda |\Phi \Phi^*|^2
+		+ V
 	)
 )$<br>
 $S_{uv} = \frac{1}{2} (
@@ -623,8 +612,7 @@ $S_{uv} = \frac{1}{2} (
 	- \gamma_{uv} (
 		\gamma^{cd} (\Phi_{,c})^* \Phi_{,d}
 		- (\Pi)^* \Pi
-		+ \mu^2 |\Phi \Phi^*|
-		+ \frac{1}{2} \lambda |\Phi \Phi^*|^2
+		+ V
 	)
 )$<br>
 $S_{uv} = \frac{1}{2} (
@@ -633,8 +621,7 @@ $S_{uv} = \frac{1}{2} (
 	- \gamma_{uv} (
 		\gamma^{cd} (\Phi_{,c})^* \Phi_{,d}
 		- (\Pi)^* \Pi
-		+ \mu^2 |\Phi \Phi^*|
-		+ \frac{1}{2} \lambda |\Phi \Phi^*|^2
+		+ V
 	)
 )$<br>
 (2010 Alcubierre, Mendez has $\frac{1}{2} (\Pi^2 \pm \frac{\Psi^2}{exp(-4 \phi)} )$ for ${T^r}_r$ and ${T^\theta}_\theta$)<br>
