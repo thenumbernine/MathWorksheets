@@ -36,32 +36,75 @@ Let $\Lambda = \frac{\lambda}{4 \pi \mu^2}$, so $\lambda = 4 \pi \Lambda \mu^2$<
 $\frac{dV}{d|\Phi|^2} = \mu^2 (1 + 4 \pi \Lambda |\Phi|^2)$<br>
 <br>
 
-substitute ADM metric components:<br>
+substituting ADM metric components:<br>
 $g^{tt} \Phi_{,tt}
 	+ 2 g^{ti} \Phi_{,ti}
 	+ g^{ij} \Phi_{,ij}
 	- \Gamma^c \Phi_{,c}
-	- (\mu^2 + \lambda |\Phi|^2) \Phi = 0$<br>
+	- \frac{dV}{d|\Phi|^2} \Phi = 0$<br>
+
 $-\alpha^{-2} \Phi_{,tt}
 	+ 2 \alpha^{-2} \beta^i \Phi_{,ti}
 	+ (\gamma^{ij}
 	- \alpha^{-2} \beta^i \beta^j) \Phi_{,ij}
 	- \Gamma^t \Phi_{,t}
 	- \Gamma^i \Phi_{,i}
-	- (\mu^2 + \lambda |\Phi|^2) \Phi = 0$<br>
+	- \frac{dV}{d|\Phi|^2} \Phi = 0$<br>
+
+$-\alpha^{-2} \Phi_{,tt}
+	+ 2 \alpha^{-2} \beta^i \Phi_{,ti}
+	+ (\gamma^{ij}
+	- \alpha^{-2} \beta^i \beta^j) \Phi_{,ij}
+	
+	+ \frac{1}{\alpha^3} \Phi_{,t} (
+		\alpha_{,t} 
+		- \beta^m \alpha_{,m} 
+		+ \alpha^2 K
+	)
+	
+	- \Phi_{,i} (
+		{}^{(3)} \Gamma^i 
+		
+		+ \frac{1}{\alpha^3} \beta^i (
+			\alpha_{,t} 
+			- \beta^m \alpha_{,m} 
+			+ \alpha^2 K
+		) 
+		
+		- \frac{1}{\alpha^2} (
+			{\beta^i}_{,t} 
+			- \beta^m {\beta^i}_{,m} 
+			+ \alpha \alpha_{,j} \gamma^{ij}
+		)
+	)
+	
+	- \frac{dV}{d|\Phi|^2} \Phi = 0$<br>
+
 $-\Phi_{,tt}
 	+ 2 \beta^i \Phi_{,ti}
 	+ (\alpha^2 \gamma^{ij} - \beta^i \beta^j) \Phi_{,ij}
-	- \alpha^2 \Gamma^t \Phi_{,t}
-	- \alpha^2 \Gamma^i \Phi_{,i}
-	- \alpha^2 (\mu^2 + \lambda |\Phi|^2) \Phi = 0$<br>
+	+ \Phi_{,t} \frac{1}{\alpha} (\alpha_{,t} - \beta^m \alpha_{,m} + \alpha^2 K)
+	- \alpha^2 \Phi_{,i} (
+		{}^{(3)} \Gamma^i 
+		+ \frac{1}{\alpha^3} \beta^i (\alpha_{,t} - \beta^m \alpha_{,m} + \alpha^2 K) 
+		- \frac{1}{\alpha^2} ({\beta^i}_{,t} - \beta^m {\beta^i}_{,m} + \alpha \alpha_{,j} \gamma^{ij})
+	)
+	- \alpha^2 \frac{dV}{d|\Phi|^2} \Phi = 0$<br>
+
 solve for $\Phi_{,tt}$:<br>
-$\Phi_{,tt} =
+
+$\Phi_{,tt} = 
 	2 \beta^i \Phi_{,ti}
 	+ (\alpha^2 \gamma^{ij} - \beta^i \beta^j) \Phi_{,ij}
-	- \alpha^2 \Gamma^t \Phi_{,t}
-	- \alpha^2 \Gamma^i \Phi_{,i}
-	- \alpha^2 (\mu^2 + \lambda |\Phi|^2) \Phi$<br>
+	+ \Phi_{,t} \frac{1}{\alpha} (\alpha_{,t} - \beta^m \alpha_{,m} + \alpha^2 K)
+	- \alpha^2 \Phi_{,i} (
+		{}^{(3)} \Gamma^i 
+		+ \frac{1}{\alpha^3} \beta^i (\alpha_{,t} - \beta^m \alpha_{,m} + \alpha^2 K) 
+		- \frac{1}{\alpha^2} ({\beta^i}_{,t} - \beta^m {\beta^i}_{,m} + \alpha \alpha_{,j} \gamma^{ij})
+	)
+	- \alpha^2 \frac{dV}{d|\Phi|^2} \Phi$<br>
+<br>
+
 Notice that ${\Gamma^u}_{ab}$ is the connection of the 4-metric, not of the 3-metric.<br>
 Substituting it for our 3-metric connection:<br>
 $\Phi_{,tt} =
@@ -80,7 +123,7 @@ $\Phi_{,tt} =
 			+ \alpha \alpha_{,j} \gamma^{ij}
 		)
 	) \Phi_{,i}
-	- \alpha^2 (\mu^2 + \lambda |\Phi|^2) \Phi$<br>
+	- \alpha^2 \frac{dV}{d|\Phi|^2} \Phi$<br>
 <br>
 
 Let $\Pi = n^\mu \Phi_{,\mu}$<br>
@@ -174,18 +217,33 @@ $\Pi_{,t} =
 	+ \frac{1}{\alpha} (
 		2 \beta^i \Phi_{,ti}
 		+ (\alpha^2 \gamma^{ij} - \beta^i \beta^j) \Phi_{,ij}
-		- \alpha^2 \Gamma^t \Phi_{,t}
-		- \alpha^2 \Gamma^i \Phi_{,i}
-		- \alpha^2 (\mu^2 + \lambda |\Phi|^2) \Phi
+		+ \Phi_{,t} \frac{1}{\alpha} (\alpha_{,t} - \beta^m \alpha_{,m} + \alpha^2 K)
+		- \alpha^2 \Phi_{,i} (
+			{}^{(3)} \Gamma^i + \frac{1}{\alpha^3} \beta^i (\alpha_{,t} - \beta^m \alpha_{,m} + \alpha^2 K) 
+			- \frac{1}{\alpha^2} ({\beta^i}_{,t} - \beta^m {\beta^i}_{,m} + \alpha \alpha_{,j} \gamma^{ij})
+		)
+		- \alpha^2 \frac{dV}{d|\Phi|^2} \Phi
 	)$<br>
 $\Pi_{,t} = 
 	-\frac{1}{\alpha^2} \alpha_{,t} \Pi
 	- \frac{1}{\alpha} {\beta^i}_{,t} \Psi_i
 	+ \frac{1}{\alpha} \beta^i \Psi_{i,t}
 	+ \frac{1}{\alpha} (\alpha^2 \gamma^{ij} - \beta^i \beta^j) \Psi_{i,j}
-	- \alpha \Gamma^t (\alpha \Pi + \beta^i \Psi_i)
-	- \alpha \Gamma^i \Psi_i
-	- \alpha (\mu^2 + \lambda |\Phi|^2) \Phi
+	+ (\alpha \Pi + \beta^i \Psi_i) \frac{1}{\alpha^2} (\alpha_{,t} - \beta^m \alpha_{,m} + \alpha^2 K)
+	- \alpha \Psi_i (
+		{}^{(3)} \Gamma^i 
+		+ \frac{1}{\alpha^3} \beta^i (
+			\alpha_{,t} 
+			- \beta^m \alpha_{,m} 
+			+ \alpha^2 K
+		)
+		- \frac{1}{\alpha^2} (
+			{\beta^i}_{,t} 
+			- \beta^m {\beta^i}_{,m} 
+			+ \alpha \alpha_{,j} \gamma^{ij}
+		)
+	)
+	- \alpha \frac{dV}{d|\Phi|^2} \Phi
 	$<br>
 $\Pi_{,t} = 
 	-\frac{1}{\alpha^2} \alpha_{,t} \Pi
@@ -193,10 +251,21 @@ $\Pi_{,t} =
 	+ \frac{1}{\alpha} \beta^i (\alpha_{,i} \Pi + \alpha \Pi_{,i} + \beta^j \Psi_{i,j} + {\beta^j}_{,i} \Psi_j)
 	+ \alpha \gamma^{ij} \Psi_{i,j}
 	- \frac{1}{\alpha} \beta^i \beta^j \Psi_{i,j}
-	- \alpha \Gamma^t \alpha \Pi 
-	- \alpha \Gamma^t \beta^i \Psi_i
-	- \alpha \Gamma^i \Psi_i
-	- \alpha (\mu^2 + \lambda |\Phi|^2) \Phi
+	+ (\alpha \Pi + \beta^i \Psi_i) \frac{1}{\alpha^2} (\alpha_{,t} - \beta^m \alpha_{,m} + \alpha^2 K)
+	- \alpha \Psi_i (
+		{}^{(3)} \Gamma^i 
+		+ \frac{1}{\alpha^3} \beta^i (
+			\alpha_{,t} 
+			- \beta^m \alpha_{,m} 
+			+ \alpha^2 K
+		)
+		- \frac{1}{\alpha^2} (
+			{\beta^i}_{,t} 
+			- \beta^m {\beta^i}_{,m} 
+			+ \alpha \alpha_{,j} \gamma^{ij}
+		)
+	)
+	- \alpha \frac{dV}{d|\Phi|^2} \Phi
 	$<br>
 $\Pi_{,t} = 
 	-\frac{1}{\alpha^2} \alpha_{,t} \Pi
@@ -207,34 +276,49 @@ $\Pi_{,t} =
 	+ \frac{1}{\alpha} \beta^i {\beta^j}_{,i} \Psi_j
 	+ \alpha \gamma^{ij} \Psi_{i,j}
 	- \frac{1}{\alpha} \beta^i \beta^j \Psi_{i,j}
-	- \alpha \Gamma^t \alpha \Pi 
-	- \alpha \Gamma^t \beta^i \Psi_i
-	- \alpha \Gamma^i \Psi_i
-	- \alpha (\mu^2 + \lambda |\Phi|^2) \Phi
+	+ (\alpha \Pi + \beta^i \Psi_i) \frac{1}{\alpha^2} (\alpha_{,t} - \beta^m \alpha_{,m} + \alpha^2 K)
+	- \alpha \Psi_i (
+		{}^{(3)} \Gamma^i 
+		+ \frac{1}{\alpha^3} \beta^i (
+			\alpha_{,t} 
+			- \beta^m \alpha_{,m} 
+			+ \alpha^2 K
+		)
+		- \frac{1}{\alpha^2} (
+			{\beta^i}_{,t} 
+			- \beta^m {\beta^i}_{,m} 
+			+ \alpha \alpha_{,j} \gamma^{ij}
+		)
+	)
+	- \alpha \frac{dV}{d|\Phi|^2} \Phi
 	$<br>
+
 $\Pi_{,t} = 
-	-\frac{1}{\alpha^2} \alpha_{,t} \Pi
-	+ \frac{1}{\alpha} \beta^i \alpha_{,i} \Pi 
-	- \alpha^2 \Gamma^t \Pi 
-	- \frac{1}{\alpha} {\beta^i}_{,t} \Psi_i
-	+ \frac{1}{\alpha} \beta^i {\beta^j}_{,i} \Psi_j
-	- \alpha \Gamma^i \Psi_i
-	- \alpha \Gamma^t \beta^i \Psi_i
-	+ \alpha \gamma^{ij} \Psi_{i,j}
+	\alpha \gamma^{ij} \Psi_{i,j}
 	+ \beta^i \Pi_{,i} 
-	- \alpha (\mu^2 + \lambda |\Phi|^2) \Phi
+	
+	- \frac{1}{\alpha^2} \alpha_{,t} \Pi
+	+ \frac{1}{\alpha} \alpha_{,t} \Pi 
+	+ \alpha K \Pi
+	
+	+ \Psi_i \alpha_{,j} \gamma^{ij}
+	- \Psi_i \alpha {}^{(3)} \Gamma^i
+	
+	- \alpha \frac{dV}{d|\Phi|^2} \Phi
 	$<br>
 
 $\frac{d}{dt} \Pi = 
-	-\frac{1}{\alpha^2} \alpha_{,t} \Pi
-	+ \frac{1}{\alpha} \beta^i \alpha_{,i} \Pi 
-	- \alpha^2 \Gamma^t \Pi 
-	- \frac{1}{\alpha} {\beta^i}_{,t} \Psi_i
-	+ \frac{1}{\alpha} \beta^i {\beta^j}_{,i} \Psi_j
-	- \alpha \Gamma^i \Psi_i
-	- \alpha \Gamma^t \beta^i \Psi_i
-	+ \alpha \gamma^{ij} \Psi_{i,j}
-	- \alpha (\mu^2 + \lambda |\Phi|^2) \Phi
+	\alpha \gamma^{ij} \Psi_{i,j}
+	
+	- \frac{1}{\alpha^2} \alpha_{,t} \Pi
+	+ \frac{1}{\alpha} \alpha_{,t} \Pi 
+	+ \alpha K \Pi
+	
+	+ \Psi_i \alpha_{,j} \gamma^{ij}
+	- \Psi_i \alpha {}^{(3)} \Gamma^i
+	
+	- \alpha \frac{dV}{d|\Phi|^2} \Phi
+
 	$<br>
 <br>
 
@@ -258,19 +342,23 @@ $\Psi_{i,t}
 	\alpha_{,i} \Pi 
 $<br>
 
+
 $\Pi_{,t} 
 	- \alpha \gamma^{ij} \Psi_{i,j}
 	- \beta^i \Pi_{,i} 
-= 
+	
+	= 
+	
 	- \frac{1}{\alpha^2} \alpha_{,t} \Pi
-	+ \frac{1}{\alpha} \beta^i \alpha_{,i} \Pi 
-	- \alpha^2 \Gamma^t \Pi 
-	- \frac{1}{\alpha} {\beta^i}_{,t} \Psi_i
-	+ \frac{1}{\alpha} \beta^i {\beta^j}_{,i} \Psi_j
-	- \alpha \Gamma^i \Psi_i
-	- \alpha \Gamma^t \beta^i \Psi_i
-	- \alpha (\mu^2 + \lambda |\Phi|^2) \Phi
-$<br>
+	+ \frac{1}{\alpha} \alpha_{,t} \Pi 
+	+ \alpha K \Pi
+	
+	+ \Psi_i \alpha_{,j} \gamma^{ij}
+	- \Psi_i \alpha {}^{(3)} \Gamma^i
+	
+	- \alpha \frac{dV}{d|\Phi|^2} \Phi
+	$<br>
+
 <br>
 
 $\left[\begin{matrix}
@@ -291,15 +379,16 @@ $\left[\begin{matrix}
 = \left[\begin{matrix}
 	\alpha \Pi \\
 	\alpha_{,i} \Pi \\
+
 	- \frac{1}{\alpha^2} \alpha_{,t} \Pi
-		+ \frac{1}{\alpha} \beta^i \alpha_{,i} \Pi 
-		- \alpha^2 \Gamma^t \Pi 
-		- \frac{1}{\alpha} {\beta^i}_{,t} \Psi_i
-		+ \frac{1}{\alpha} \beta^i {\beta^j}_{,i} \Psi_j
-		- \alpha \Gamma^i \Psi_i
-		- \alpha \Gamma^t \beta^i \Psi_i
-		- \alpha (\mu^2 + \lambda |\Phi|^2) \Phi
+	+ \frac{1}{\alpha} \alpha_{,t} \Pi 
+	+ \alpha K \Pi
+	+ \Psi_i \alpha_{,j} \gamma^{ij}
+	- \Psi_i \alpha {}^{(3)} \Gamma^i
+	- \alpha \frac{dV}{d|\Phi|^2} \Phi
+
 \end{matrix}\right]$<br>
+
 $\left[\begin{matrix}
 	\Phi \\
 	\Psi_i \\
@@ -322,14 +411,13 @@ $\left[\begin{matrix}
 = \left[\begin{matrix}
 	\alpha \Pi \\
 	\alpha_{,i} \Pi \\
+	
 	- \frac{1}{\alpha^2} \alpha_{,t} \Pi
-		+ \frac{1}{\alpha} \beta^i \alpha_{,i} \Pi 
-		- \alpha^2 \Gamma^t \Pi 
-		- \frac{1}{\alpha} {\beta^i}_{,t} \Psi_i
-		+ \frac{1}{\alpha} \beta^i {\beta^j}_{,i} \Psi_j
-		- \alpha \Gamma^i \Psi_i
-		- \alpha \Gamma^t \beta^i \Psi_i
-		- \alpha (\mu^2 + \lambda |\Phi|^2) \Phi
+	+ \frac{1}{\alpha} \alpha_{,t} \Pi 
+	+ \alpha K \Pi
+	+ \Psi_i \alpha_{,j} \gamma^{ij}
+	- \Psi_i \alpha {}^{(3)} \Gamma^i
+	- \alpha \frac{dV}{d|\Phi|^2} \Phi
 \end{matrix}\right]$<br>
 <br>
 
@@ -352,15 +440,19 @@ $\left[\begin{matrix}
 	\Psi_j
 \end{matrix}\right]_{,k}
 = \left[\begin{matrix}
-	- \frac{1}{\alpha^2} \alpha_{,t} \Pi
-		+ \frac{1}{\alpha} \beta^i \alpha_{,i} \Pi 
-		- \alpha^2 \Gamma^t \Pi 
-		- \frac{1}{\alpha} {\beta^i}_{,t} \Psi_i
-		+ \frac{1}{\alpha} \beta^i {\beta^k}_{,i} \Psi_k
-		- \alpha \Gamma^i \Psi_i
-		- \alpha \Gamma^t \beta^i \Psi_i
-		- \alpha (\mu^2 + \lambda |\Phi|^2) \Phi
+	\Pi (
+		\frac{1}{\alpha} \alpha_{,t} (1 - \frac{1}{\alpha})
+		+ \alpha K
+	)
+	+ \Psi_i (
+		\alpha_{,j} \gamma^{ij}
+		- \alpha {}^{(3)} \Gamma^i
+	)
+	- \alpha \frac{dV}{d|\Phi|^2} \Phi
+
+	
 	\\
+	
 	\alpha_{,i} \Pi 
 	+ {\beta^k}_{,i} \Psi_k
 \end{matrix}\right]$<br>
@@ -408,7 +500,7 @@ $\Pi_{,t}
 	+ \alpha K \Pi 
 	+ K \beta^i \Psi_i
 	- \frac{1}{\alpha^2} \Psi_i \beta^i \alpha^2 K
-	- \alpha (\mu^2 + \lambda |\Phi|^2) \Phi
+	- \alpha \frac{dV}{d|\Phi|^2} \Phi
 	
 	- \Psi_i \frac{1}{\alpha} (\beta^m {\beta^i}_{,m} + \alpha \alpha_{,j} \gamma^{ij})
 $<br>
@@ -433,7 +525,7 @@ $\Pi_{,t}
 	(1 - \alpha) f(\alpha) K \Pi 
 	
 	+ \alpha K \Pi 
-	- \alpha (\mu^2 + \lambda |\Phi|^2) \Phi
+	- \alpha \frac{dV}{d|\Phi|^2} \Phi
 	
 	- \Psi_i \gamma^{ij} \beta^k {\beta^i}_{,k} \alpha_{,j}
 $<br>
@@ -485,7 +577,7 @@ $\left[\begin{matrix}
 	0 \\
 
 	(f - \alpha f + \alpha) K \Pi 
-	- \alpha (\mu^2 + \lambda |\Phi|^2) \Phi
+	- \alpha \frac{dV}{d|\Phi|^2} \Phi
 	- \Psi_i \gamma^{ij} \beta^k {\beta^i}_{,k} \alpha_{,j}
 
 \end{matrix}\right]
@@ -545,7 +637,7 @@ $\left[\begin{matrix}
 	0 \\
 
 	(f - \alpha f + \alpha) K \Pi 
-	- \alpha (\mu^2 + \lambda |\Phi|^2) \Phi
+	- \alpha \frac{dV}{d|\Phi|^2} \Phi
 	- \Psi^j \beta^k {\beta^i}_{,k} \alpha_{,j}
 
 \end{matrix}\right]
@@ -660,5 +752,56 @@ $S_{uv} = \frac{1}{2} (
 (2010 Alcubierre, Mendez has $\frac{1}{2} (\Pi^2 \pm \frac{\Psi^2}{exp(-4 \phi)} )$ for ${T^r}_r$ and ${T^\theta}_\theta$)<br>
 <br>
 
+<hr>
+<br>
+
+Weighting the internal partial derivative using the volume element:<br>
+<br>
+
+manifold:<br>
+$g^{ab} \nabla_a \nabla_b \Phi = S$<br>
+$g^{ab} \Phi_{,ab} - g^{ab} {\Gamma^c}_{ab} \Phi_{,c} = S$<br>
+$g^{ab} \Phi_{,ab} - \Gamma^c \Phi_{,c} = S$<br>
+<br>
+
+submanifold:<br>
+$\gamma^{ij} {}^{(3)} \nabla_i {}^{(3)} \nabla_j \Phi = S$<br>
+$\gamma^{ij} \Phi_{,ij} - {}^{(3)} \Gamma^k \Phi_{,k} = S$<br>
+<br>
+
+back to the manifold:<br>
+$
+	g^{tt} \Phi_{,tt} 
+	+ 2 g^{ti} \Phi_{,ti} 
+	+ g^{ij} \Phi_{,ij} 
+	- \Gamma^t \Phi_{,t} 
+	- \Gamma^k \Phi_{,k} 
+	= S$<br>
+
+$	g^{tt} \Phi_{,tt} 
+	+ 2 g^{ti} \Phi_{,ti} 
+	+ g^{ij} \Phi_{,ij} 
+	- \Phi_{,i} (
+		{}^{(3)} \Gamma^i
+		+ \frac{1}{\alpha^3} \beta^i (\alpha_{,t} - \beta^m \alpha_{,m} + \alpha^2 K) 
+			- \frac{1}{\alpha^2} ({\beta^i}_{,t} - \beta^m {\beta^i}_{,m} + \alpha \alpha_{,j} \gamma^{ij})
+	) = S + \Gamma^t \Phi_{,t}
+$<br>
+
+<br>
+<br>
+...<br>
+Let $\Pi = \Phi_{,t}, \Psi_i = \Phi_{,i}$<br>
+$
+	g^{tt} \Pi_{,t} 
+	+ 2 g^{ti} \Pi_{,i} 
+	+ g^{ij} \Psi_{i,j} 
+	= 
+	\Gamma^t \Pi
+	+ \Gamma^i \Psi_i 
+	+ S
+$<br>
+	
+	
 	</body>
 </html>
