@@ -126,7 +126,21 @@ So implementing this as difference operations, what this means is...<br>
 Following 2019 Trangenstein "Numeric Simulations of Hyperbolic Conservation Laws", section 7.4:<br>
 Notice that his book coincides with anholonomic orthonormal basis.<br>
 So that's what I'm using here.  $u_1 ... u_n$ are my coordinate chart parameters.  Indexes are in anholonomic non-coordinates.<br>
-$\bar{j} =$ the coordinate basis index, ${e_\hat{j}}^j =$ change of basis from non-coordinate to coordinate (non-Cartesian) basis.<br>
+$\bar{j} =$ the coordinate basis index, ${e^\bar{j}}_j =$ change of basis from non-coordinate to coordinate (non-Cartesian) basis.<br>
+<br>
+
+Mind you, the connections of ${U^I}_J$ will have subsets that are tensors.<br>
+Now to formally define them...<br>
+Let ${U^I}_J$ be a collection of all tensors, where $I$ span all contravariant indexes and $J$ span all covariant indexes.<br>
+Where should the scalars go, in I or J?  It shouldn't matter.<br>
+$U^{i_{0,1} ... i_{0,p_0}}$<br>
+Next come the vectors and one-forms...<br>
+${U^{i_{0,1} ... i_{0,p_0} i_{1,1} ... i_{1,p_1}}}_{j_{1,1} ... j_{1,q_1}}$<br>
+Next come the rest of the s-forms...<br>
+${U^{i_{0,1} ... i_{0,p_0} i_{1,1} ... i_{1,p_1} ... i_{s,1} ... i_{s,p_s} }}_{j_{1,1} ... j_{1,q_1} ... j_{s,1} ... j_{s,q_s}}$<br>
+<br>
+But from now on we will only consider $U$ to be a single $\left( \begin{matrix} p \\ q \end{matrix} \right)$-form.  You can repeat for collections of tensors.<br>
+
 $0 = \int_{t_1}^{t_2} 
 	\int_{u_{1,L}}^{u_{1,R}}
 	...
@@ -136,7 +150,6 @@ $0 = \int_{t_1}^{t_2}
 		\frac{\partial}{\partial t}({U^{i_1 ... i_p}}_{k_1 ... k_q})
 
 		+ \frac{1}{V} (
-			{e_\bar{j}}^j
 			\nabla_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q} V)
 		)
 	
@@ -147,7 +160,1279 @@ $0 = \int_{t_1}^{t_2}
 	du_n ... du_1
 	dt
 $<br>
-...for $V = det({e_i}^a)$, the determinant of the derivative of the coordinate basis with the Cartesian basis.<br>
+$0 = \int_{t_1}^{t_2} 
+	\int_{u_{1,L}}^{u_{1,R}}
+	...
+	\int_{u_{n,L}}^{u_{n,R}}
+
+	\left(
+		\frac{\partial}{\partial t}({U^{i_1 ... i_p}}_{k_1 ... k_q})
+
+		+ \frac{1}{V} (
+			\nabla_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q} V)
+		)
+	
+	\right)
+
+	V
+
+	du_n ... du_1
+	dt
+$<br>
+...for $V = det({e_i}^a)$, the determinant of the derivative of the coordinate basis with the Cartesian basis (assuming the non-coordinate basis is normalized).<br>
+<br>
+assuming the grid is not dependent on time ($\frac{dV}{dt} = 0$)<br>
+$0 =
+	\int_{t_1}^{t_2} 
+	\frac{\partial}{\partial t}
+	\left(	
+		\int_{u_{1,L}}^{u_{1,R}}
+		...
+		\int_{u_{n,L}}^{u_{n,R}}
+		\left(
+			{U^{i_1 ... i_p}}_{k_1 ... k_q}
+			V
+		\right)
+		du_n ... du_1
+	\right)
+	dt
+
+	+
+
+	\int_{t_1}^{t_2} 
+	\int_{u_{1,L}}^{u_{1,R}}
+	...
+	\int_{u_{n,L}}^{u_{n,R}}
+	\left(
+			\nabla_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q} V)
+	\right)
+	du_n ... du_1
+	dt
+$<br>
+$0 =
+	\left(	
+		\int_{u_{1,L}}^{u_{1,R}}
+		...
+		\int_{u_{n,L}}^{u_{n,R}}
+		\left(
+			{U^{i_1 ... i_p}}_{k_1 ... k_q}
+			V
+		\right)
+		du_n ... du_1
+	\right)|^{t_2}_{t_1}
+
+	+
+
+	\int_{t_1}^{t_2} 
+	\int_{u_{1,L}}^{u_{1,R}}
+	...
+	\int_{u_{n,L}}^{u_{n,R}}
+	\left(
+			\nabla_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q} V)
+	\right)
+	du_n ... du_1
+	dt
+$<br>
+assuming the flux is not dependent on time:<br>
+$0 =
+	\left(	
+		\int_{u_{1,L}}^{u_{1,R}}
+		...
+		\int_{u_{n,L}}^{u_{n,R}}
+		\left(
+			{U^{i_1 ... i_p}}_{k_1 ... k_q}
+			V
+		\right)
+		du_n ... du_1
+	\right)|^{t_2}_{t_1}
+
+	+
+
+	\int_{t_1}^{t_2} 
+	dt
+	\cdot
+	\int_{u_{1,L}}^{u_{1,R}}
+	...
+	\int_{u_{n,L}}^{u_{n,R}}
+	\left(
+			\nabla_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q} V)
+	\right)
+	du_n ... du_1
+$<br>
+$0 =
+	\left(	
+		\int_{u_{1,L}}^{u_{1,R}}
+		...
+		\int_{u_{n,L}}^{u_{n,R}}
+		\left(
+			{U^{i_1 ... i_p}}_{k_1 ... k_q}
+			V
+		\right)
+		du_n ... du_1
+	\right)|^{t_2}_{t_1}
+
+	+
+
+	(t_2 - t_1) \cdot
+	\int_{u_{1,L}}^{u_{1,R}}
+	...
+	\int_{u_{n,L}}^{u_{n,R}}
+	\left(
+			\nabla_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q} V)
+	\right)
+	du_n ... du_1
+$<br>
+assuming the state is not dependent on space -- that it is constant throughout the integral region<br>
+$
+	{U^{i_1 ... i_p}}_{k_1 ... k_q}|^{t_2}_{t_1}
+	\cdot
+	\left(	
+		\int_{u_{1,L}}^{u_{1,R}}
+		...
+		\int_{u_{n,L}}^{u_{n,R}}
+			V
+		du_n ... du_1
+	\right)
+
+	=
+
+	-
+
+	(t_2 - t_1) \cdot
+	\int_{u_{1,L}}^{u_{1,R}}
+	...
+	\int_{u_{n,L}}^{u_{n,R}}
+	\left(
+			\nabla_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q} V)
+	\right)
+	du_n ... du_1
+$<br>
+$
+	{U^{i_1 ... i_p}}_{k_1 ... k_q}|^{t_2}_{t_1}
+
+	=
+
+	- \frac{
+		(t_2 - t_1)
+	}{
+		\left(	
+			\int_{u_{1,L}}^{u_{1,R}}
+			...
+			\int_{u_{n,L}}^{u_{n,R}}
+				V
+			du_n ... du_1
+		\right)
+	} \cdot
+	\int_{u_{1,L}}^{u_{1,R}}
+	...
+	\int_{u_{n,L}}^{u_{n,R}}
+	\left(
+			\nabla_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q} V)
+	\right)
+	du_n ... du_1
+$<br>
+
+(But why would you integrate the volume over the volume?  Shouldn't you omit the $V$?)<br>
+For coordinate basis, ${e_i}^a = \delta_i^a$ and V = 1...<br>
+$
+	{U^{i_1 ... i_p}}_{k_1 ... k_q}(t=t_2)
+	- {U^{i_1 ... i_p}}_{k_1 ... k_q}(t=t_1)
+
+	=
+
+	- \frac{
+		(t_2 - t_1)
+	}{
+		\left(	
+			\int_{u_{1,L}}^{u_{1,R}}
+			...
+			\int_{u_{n,L}}^{u_{n,R}}
+			du_n ... du_1
+		\right)
+	} \cdot
+	\int_{u_{1,L}}^{u_{1,R}}
+	...
+	\int_{u_{n,L}}^{u_{n,R}}
+	\left(
+			\nabla_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q})
+	\right)
+	du_n ... du_1
+$<br>
+For a Cartesian basis, where $\nabla = \partial$ and $g_{ab} =\delta_{ab}$<br>
+$
+	{U^{i_1 ... i_p}}_{k_1 ... k_q}(t=t_2)
+	- {U^{i_1 ... i_p}}_{k_1 ... k_q}(t=t_1)
+
+	=
+
+	- \frac{
+		(t_2 - t_1)
+	}{
+		\left(	
+			\int_{u_{1,L}}^{u_{1,R}}
+			...
+			\int_{u_{n,L}}^{u_{n,R}}
+			du_n ... du_1
+		\right)
+	} \cdot
+	\int_{u_{1,L}}^{u_{1,R}}
+	...
+	\int_{u_{n,L}}^{u_{n,R}}
+	\left(
+			\partial_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q})
+	\right)
+	du_n ... du_1
+$<br>
+$
+	{U^{i_1 ... i_p}}_{k_1 ... k_q}(t=t_2)
+	- {U^{i_1 ... i_p}}_{k_1 ... k_q}(t=t_1)
+
+	=
+
+	- \frac{
+		(t_2 - t_1)
+	}{
+		\left(	
+			\int_{u_{1,L}}^{u_{1,R}}
+			...
+			\int_{u_{n,L}}^{u_{n,R}}
+			du_n ... du_1
+		\right)
+	} \cdot
+	
+	\Sigma_{j=1}^n
+	\int_{u_{1,L}}^{u_{1,R}}
+	...
+	\int_{u_{j-1,L}}^{u_{j-1,R}}
+	\int_{u_{j+1,L}}^{u_{j+1,R}}
+	...
+	\int_{u_{n,L}}^{u_{n,R}}
+	\int_{u_{j,L}}^{u_{j,R}}
+	\left(
+			\partial_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q})
+	\right)
+	du_j du_n ... du_{j+1} du_{j-1} .. du_1
+$<br>
+...using the FTC ...<br>
+$
+	{U^{i_1 ... i_p}}_{k_1 ... k_q}(t=t_2)
+	- {U^{i_1 ... i_p}}_{k_1 ... k_q}(t=t_1)
+
+	=
+
+	- \frac{
+		(t_2 - t_1)
+	}{
+		\Pi_{j=1}^n
+		\left(	
+			u_{j,R} - u_{j,L}
+		\right)
+	} \cdot
+	
+	\Sigma_{j=1}^n
+	\int_{u_{1,L}}^{u_{1,R}}
+	...
+	\int_{u_{j-1,L}}^{u_{j-1,R}}
+	\int_{u_{j+1,L}}^{u_{j+1,R}}
+	...
+	\int_{u_{n,L}}^{u_{n,R}}
+	\left(
+			{F^{j i_1 ... i_p}}_{k_1 ... k_q}(u_j = u_{j,R})
+			- {F^{j i_1 ... i_p}}_{k_1 ... k_q}(u_j = u_{j,L})
+	\right)
+	du_n ... du_{j+1} du_{j-1} .. du_1
+$<br>
+Assuming the flux is not dependent on space:<br>
+$
+	{U^{i_1 ... i_p}}_{k_1 ... k_q}(t=t_2)
+	- {U^{i_1 ... i_p}}_{k_1 ... k_q}(t=t_1)
+
+	=
+
+	- \frac{
+		(t_2 - t_1)
+	}{
+		\Pi_{j=1}^n
+		\left(	
+			u_{j,R} - u_{j,L}
+		\right)
+	} \cdot
+	
+	\Sigma_{j=1}^n
+	\left(
+			{F^{j i_1 ... i_p}}_{k_1 ... k_q}(u_j = u_{j,R})
+			- {F^{j i_1 ... i_p}}_{k_1 ... k_q}(u_j = u_{j,L})
+	\right)
+	\int_{u_{1,L}}^{u_{1,R}}
+	...
+	\int_{u_{j-1,L}}^{u_{j-1,R}}
+	\int_{u_{j+1,L}}^{u_{j+1,R}}
+	...
+	\int_{u_{n,L}}^{u_{n,R}}
+	du_n ... du_{j+1} du_{j-1} .. du_1
+$<br>
+$
+	{U^{i_1 ... i_p}}_{k_1 ... k_q}(t=t_2)
+	- {U^{i_1 ... i_p}}_{k_1 ... k_q}(t=t_1)
+
+	=
+
+	- \frac{
+		(t_2 - t_1)
+	}{
+		\Pi_{j=1}^n
+		\left(	
+			u_{j,R} - u_{j,L}
+		\right)
+	} \cdot
+	
+	\Sigma_{j=1}^n
+	\left(
+		\left(
+			{F^{j i_1 ... i_p}}_{k_1 ... k_q}(u_j = u_{j,R})
+			- {F^{j i_1 ... i_p}}_{k_1 ... k_q}(u_j = u_{j,L})
+		\right)
+		\cdot
+		\Pi_{k=1,k\ne j}^{k=n}
+		\left(
+			u_{k,R} - u_{k,L}
+		\right)
+	\right)
+$<br>
+$
+	{U^{i_1 ... i_p}}_{k_1 ... k_q}(t=t_2)
+	- {U^{i_1 ... i_p}}_{k_1 ... k_q}(t=t_1)
+
+	=
+
+	- (t_2 - t_1)
+	\cdot
+	\Sigma_{j=1}^n
+	\left(
+		\frac{
+			1
+		}{
+			u_{j,R} - u_{j,L}
+		} 
+		\cdot
+		
+		\left(
+				{F^{j i_1 ... i_p}}_{k_1 ... k_q}(u_j = u_{j,R})
+				- {F^{j i_1 ... i_p}}_{k_1 ... k_q}(u_j = u_{j,L})
+		\right)
+	\right)
+$<br>
+
+<br>
+Go back before the assumption of $\nabla = \partial$<br>...
+$
+	{U^{i_1 ... i_p}}_{k_1 ... k_q}(t=t_2)
+	- {U^{i_1 ... i_p}}_{k_1 ... k_q}(t=t_1)
+
+	=
+
+	- \frac{
+		(t_2 - t_1)
+	}{
+		\left(	
+			\int_{u_{1,L}}^{u_{1,R}}
+			...
+			\int_{u_{n,L}}^{u_{n,R}}
+			du_n ... du_1
+		\right)
+	} \cdot
+	\int_{u_{1,L}}^{u_{1,R}}
+	...
+	\int_{u_{n,L}}^{u_{n,R}}
+	\left(
+			\nabla_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q})
+	\right)
+	du_n ... du_1
+$<br>
+$
+	{U^{i_1 ... i_p}}_{k_1 ... k_q}(t=t_2)
+	- {U^{i_1 ... i_p}}_{k_1 ... k_q}(t=t_1)
+
+	=
+
+	- \frac{
+		(t_2 - t_1)
+	}{
+		\Pi_{j=1}^n
+		\left(
+			u_{j,R} - u_{j,L}
+		\right)
+	} \cdot
+	\int_{u_{1,L}}^{u_{1,R}}
+	...
+	\int_{u_{n,L}}^{u_{n,R}}
+	\left(
+			\nabla_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q})
+	\right)
+	du_n ... du_1
+$<br>
+...expand covariant derivative into connections...<br>
+$
+	{U^{i_1 ... i_p}}_{k_1 ... k_q}(t=t_2)
+	- {U^{i_1 ... i_p}}_{k_1 ... k_q}(t=t_1)
+
+	=
+
+	- \frac{
+		(t_2 - t_1)
+	}{
+		\Pi_{j=1}^n
+		\left(
+			u_{j,R} - u_{j,L}
+		\right)
+	} \cdot
+	\int_{u_{1,L}}^{u_{1,R}}
+	...
+	\int_{u_{n,L}}^{u_{n,R}}
+	\left(
+			\partial_j \left( {F^{j i_1 ... i_p}}_{k_1 ... k_q} \right)
+			+ \Sigma_l \left( {F^{j i_1 ... i_{l-1} m i_{l+1} ... i_p}}_{k_1 ... k_q} {\Gamma^{i_l}}_{mj} \right)
+			- \Sigma_l \left( {F^{j i_1 ... i_p}}_{k_1 ... k_{l-1} m k_{l+1} ... k_q} {\Gamma^m}_{k_l j} \right)
+	\right)
+	du_n ... du_1
+$<br>
+$
+	{U^{i_1 ... i_p}}_{k_1 ... k_q}(t=t_2)
+	- {U^{i_1 ... i_p}}_{k_1 ... k_q}(t=t_1)
+
+	=
+
+	- \frac{
+		(t_2 - t_1)
+	}{
+		\Pi_{j=1}^n
+		\left(
+			u_{j,R} - u_{j,L}
+		\right)
+	} \cdot
+	\left(	
+		\int_{u_{1,L}}^{u_{1,R}}
+		...
+		\int_{u_{n,L}}^{u_{n,R}}
+		\left(
+				\partial_j \left( {F^{j i_1 ... i_p}}_{k_1 ... k_q} \right)
+		\right)
+		du_n ... du_1
+				
+		+ \int_{u_{1,L}}^{u_{1,R}}
+		...
+		\int_{u_{n,L}}^{u_{n,R}}
+		\left(
+				\Sigma_l \left( {F^{j i_1 ... i_{l-1} m i_{l+1} ... i_p}}_{k_1 ... k_q} {\Gamma^{i_l}}_{mj} \right)
+		\right)
+		du_n ... du_1
+				
+		- \int_{u_{1,L}}^{u_{1,R}}
+		...
+		\int_{u_{n,L}}^{u_{n,R}}
+		\left(
+				\Sigma_l \left( {F^{j i_1 ... i_p}}_{k_1 ... k_{l-1} m k_{l+1} ... k_q} {\Gamma^m}_{k_l j} \right)
+		\right)
+		du_n ... du_1
+	\right)
+$<br>
+...using the FTC and assuming flux is not dependent on space...<br>
+$
+	{U^{i_1 ... i_p}}_{k_1 ... k_q}(t=t_2)
+	- {U^{i_1 ... i_p}}_{k_1 ... k_q}(t=t_1)
+
+	=
+
+	- \frac{
+		(t_2 - t_1)
+	}{
+		\Pi_{j=1}^n
+		\left(
+			u_{j,R} - u_{j,L}
+		\right)
+	} \cdot
+	\left(	
+		\Sigma_{j=1}^n
+		\left(
+			\left(
+				{F^{j i_1 ... i_p}}_{k_1 ... k_q}(u_j = u_{j,R})
+				- {F^{j i_1 ... i_p}}_{k_1 ... k_q}(u_j = u_{j,L})
+			\right)
+			\cdot
+			\Pi_{k=1,k\ne j}^{k=n}
+			\left(
+				u_{k,R} - u_{k,L}
+			\right)
+		\right)
+		
+		+ \int_{u_{1,L}}^{u_{1,R}}
+		...
+		\int_{u_{n,L}}^{u_{n,R}}
+		\left(
+				\Sigma_l \left( {F^{j i_1 ... i_{l-1} m i_{l+1} ... i_p}}_{k_1 ... k_q} {\Gamma^{i_l}}_{mj} \right)
+		\right)
+		du_n ... du_1
+				
+		- \int_{u_{1,L}}^{u_{1,R}}
+		...
+		\int_{u_{n,L}}^{u_{n,R}}
+		\left(
+				\Sigma_l \left( {F^{j i_1 ... i_p}}_{k_1 ... k_{l-1} m k_{l+1} ... k_q} {\Gamma^m}_{k_l j} \right)
+		\right)
+		du_n ... du_1
+	\right)
+$<br>
+$
+	{U^{i_1 ... i_p}}_{k_1 ... k_q}(t=t_2)
+	- {U^{i_1 ... i_p}}_{k_1 ... k_q}(t=t_1)
+
+	=
+
+	- (t_2 - t_1)
+	\Sigma_{j=1}^n
+	\left(	
+		\frac{
+			1
+		}{
+			u_{j,R} - u_{j,L}
+		} \cdot
+	
+		\left(
+			{F^{j i_1 ... i_p}}_{k_1 ... k_q}(u_j = u_{j,R})
+			- {F^{j i_1 ... i_p}}_{k_1 ... k_q}(u_j = u_{j,L})
+		\right)
+
+		+ 
+		\frac{
+			1
+		}{
+			\Pi_{j=1}^n
+			\left(
+				u_{j,R} - u_{j,L}
+			\right)
+		} \cdot
+		\left(
+			\int_{u_{1,L}}^{u_{1,R}}
+			...
+			\int_{u_{n,L}}^{u_{n,R}}
+			\left(
+					\Sigma_l \left( {F^{j i_1 ... i_{l-1} m i_{l+1} ... i_p}}_{k_1 ... k_q} {\Gamma^{i_l}}_{mj} \right)
+			\right)
+			du_n ... du_1
+					
+			- \int_{u_{1,L}}^{u_{1,R}}
+			...
+			\int_{u_{n,L}}^{u_{n,R}}
+			\left(
+					\Sigma_l \left( {F^{j i_1 ... i_p}}_{k_1 ... k_{l-1} m k_{l+1} ... k_q} {\Gamma^m}_{k_l j} \right)
+			\right)
+			du_n ... du_1
+		\right)
+	\right)
+$<br>
+<br>
+
+Now go back to when we are using a non-coordinate system...<br>
+$
+	{U^{i_1 ... i_p}}_{k_1 ... k_q}|^{t_2}_{t_1}
+
+	=
+
+	- (t_2 - t_1)
+	\frac{
+		1
+	}{
+		\left(	
+			\int_{u_{1,L}}^{u_{1,R}}
+			...
+			\int_{u_{n,L}}^{u_{n,R}}
+				V
+			du_n ... du_1
+		\right)
+	} \cdot
+	\int_{u_{1,L}}^{u_{1,R}}
+	...
+	\int_{u_{n,L}}^{u_{n,R}}
+	\left(
+			\nabla_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q} V)
+	\right)
+	du_n ... du_1
+$<br>
+...expand covariant derivative into connections...<br>
+$
+	{U^{i_1 ... i_p}}_{k_1 ... k_q}(t=t_2)
+	- {U^{i_1 ... i_p}}_{k_1 ... k_q}(t=t_1)
+
+	=
+
+	- \frac{
+		(t_2 - t_1)
+	}{
+		\left(	
+			\int_{u_{1,L}}^{u_{1,R}}
+			...
+			\int_{u_{n,L}}^{u_{n,R}}
+				V
+			du_n ... du_1
+		\right)
+	} \cdot
+	\int_{u_{1,L}}^{u_{1,R}}
+	...
+	\int_{u_{n,L}}^{u_{n,R}}
+	\left(
+		{e^\bar{j}}_j \partial_\bar{j} \left( {F^{j i_1 ... i_p}}_{k_1 ... k_q} V \right)
+		+ \Sigma_l \left( {F^{j i_1 ... i_{l-1} m i_{l+1} ... i_p}}_{k_1 ... k_q} {\Gamma^{i_l}}_{mj} V \right)
+		- \Sigma_l \left( {F^{j i_1 ... i_p}}_{k_1 ... k_{l-1} m k_{l+1} ... k_q} {\Gamma^m}_{k_l j} V \right)
+	\right)
+	du_n ... du_1
+$<br>
+
+<br>
+Specific examples:<br>
+<br>
+
+<b>Spherical, anholonomic</b><br>
+${e_\bar{j}}^j = \left[ \begin{matrix}
+	1 & 0 & 0 \\
+	0 & r & 0 \\
+	0 & 0 & r sin (\theta)
+\end{matrix} \right]$<br>
+${e^\bar{j}}_j = \left[ \begin{matrix}
+	1 & 0 & 0 \\
+	0 & \frac{1}{r} & 0 \\
+	0 & 0 & \frac{1}{r sin(\theta)}
+\end{matrix} \right]$<br>
+$V = det({e_\bar{j}}^j) = r^2 sin(\theta)$<br>
+connections of the anholonomic normalized basis:<br>
+${\Gamma^r}_{\phi \phi} = -\frac{1}{r}$<br>
+${\Gamma^r}_{\theta \theta} = -\frac{1}{r}$<br>
+${\Gamma^\theta}_{\theta r} = \frac{1}{r}$<br>
+${\Gamma^\theta}_{\phi \phi} = -\frac{1}{r} \frac{cos(\theta)}{sin(\theta)}$<br>
+${\Gamma^\phi}_{\phi r} = \frac{1}{r}$<br>
+${\Gamma^\phi}_{\phi \theta} = \frac{1}{r} \frac{cos(\theta)}{sin(\theta)}$<br>
+<br>
+
+$0 = \int_{t_1}^{t_2} 
+	\int_{r_L}^{r_R}
+	\int_{\theta_L}^{\theta_R}
+	\int_{\phi_L}^{\phi_R}
+
+	\left(
+		\frac{\partial}{\partial t}(U)
+
+		+ 
+		\frac{1}{
+			r^2 sin(\theta)
+		} (
+			\nabla_j (
+				r^2 sin(\theta)
+				F^j
+			)
+		)
+	
+	\right)
+
+	r^2 sin(\theta)
+
+	d\phi
+	d\theta
+	dr
+	dt
+$<br>
+$0 = \int_{t_1}^{t_2} 
+	\int_{r_L}^{r_R}
+	\int_{\theta_L}^{\theta_R}
+	\int_{\phi_L}^{\phi_R}
+
+	\left(
+		r^2 sin(\theta)
+		\frac{\partial}{\partial t}(U)
+
+		+ \nabla_r (
+			r^2 sin(\theta)
+			F^r
+		)
+		+ \nabla_\theta (
+			r^2 sin(\theta)
+			F^\theta
+		)
+		+ \nabla_\phi (
+			r^2 sin(\theta)
+			F^\phi
+		)
+	\right)
+
+	d\phi
+	d\theta
+	dr
+	dt
+$<br>
+$0 = \int_{t_1}^{t_2} 
+	\int_{r_L}^{r_R}
+	\int_{\theta_L}^{\theta_R}
+	\int_{\phi_L}^{\phi_R}
+
+	\left(
+		r^2 sin(\theta)
+		\frac{\partial}{\partial t}(U)
+
+		+ sin(\theta) \partial_r (
+			r^2
+			F^r
+		)
+		
+		+ r^2 \partial_\theta (
+			sin(\theta)
+			F^\theta
+		)
+		
+		+ r^2 sin(\theta) \partial_\phi (
+			F^\phi
+		)
+	\right)
+
+	d\phi
+	d\theta
+	dr
+	dt
+$<br>
+$0 = \int_{t_1}^{t_2} 
+	\int_{r_L}^{r_R}
+	\int_{\theta_L}^{\theta_R}
+	\int_{\phi_L}^{\phi_R}
+	\left(
+		r^2 sin(\theta)
+		\frac{\partial}{\partial t}(U)
+	\right)
+	d\phi
+	d\theta
+	dr
+	dt
+
+		+ 
+	
+	\int_{t_1}^{t_2} 
+	\int_{r_L}^{r_R}
+	\int_{\theta_L}^{\theta_R}
+	\int_{\phi_L}^{\phi_R}
+	\left(
+		sin(\theta) \partial_r (
+			r^2
+			F^r
+		)
+	\right)
+	d\phi
+	d\theta
+	dr
+	dt
+		
+		+ 
+		
+	\int_{t_1}^{t_2} 
+	\int_{r_L}^{r_R}
+	\int_{\theta_L}^{\theta_R}
+	\int_{\phi_L}^{\phi_R}
+	\left(
+		r^2 \partial_\theta (
+			sin(\theta)
+			F^\theta
+		)
+	\right)
+	d\phi
+	d\theta
+	dr
+	dt
+		
+		+ 
+		
+	\int_{t_1}^{t_2} 
+	\int_{r_L}^{r_R}
+	\int_{\theta_L}^{\theta_R}
+	\int_{\phi_L}^{\phi_R}
+	\left(
+		r^2 sin(\theta) \partial_\phi (
+			F^\phi
+		)
+	\right)
+	d\phi
+	d\theta
+	dr
+	dt
+$<br>
+$0 = 
+	\int_{\phi_L}^{\phi_R} d\phi
+	\cdot
+	\int_{r_L}^{r_R}
+	\int_{\theta_L}^{\theta_R}
+	\int_{t_1}^{t_2} 
+		\frac{\partial}{\partial t}(U)
+	dt
+	r^2 sin(\theta)
+	d\theta
+	dr
+
+		+ 
+	
+	\int_{t_1}^{t_2} dt
+	\cdot
+	\int_{\phi_L}^{\phi_R} d\phi
+	\cdot
+	\int_{\theta_L}^{\theta_R}
+	\int_{r_L}^{r_R}
+		\partial_r (
+			r^2
+			F^r
+		)
+	dr
+	sin(\theta) 
+	d\theta
+		
+		+ 
+		
+	\int_{t_1}^{t_2} dt
+	\cdot
+	\int_{\phi_L}^{\phi_R} d\phi
+	\cdot
+	\int_{r_L}^{r_R}
+	\int_{\theta_L}^{\theta_R}
+		\partial_\theta (
+			sin(\theta)
+			F^\theta
+		)
+	d\theta
+	r^2 
+	dr
+		
+		+ 
+		
+	\int_{t_1}^{t_2} dt
+	\cdot
+	\int_{r_L}^{r_R}
+	\int_{\theta_L}^{\theta_R}
+	\int_{\phi_L}^{\phi_R}
+		\partial_\phi (
+			F^\phi
+		)
+	d\phi
+	sin(\theta)
+	d\theta
+	r^2
+	dr
+$<br>
+$0 = 
+	(U|_{t=t_2} - U|_{t=t_1})
+	\cdot \frac{1}{3} ( (r_R)^3 - (r_L)^3 )
+	\cdot (-cos(\theta_R) + cos(\theta_L))
+	\cdot (\phi_R - \phi_L)
+
+		+ 
+	
+	(t_2 - t_1)
+	\cdot ( (r_R)^2 F^r|_{r=r_R} - (r_L)^2 F^r|_{r=r_L} )
+	\cdot (-cos(\theta_R) + cos(\theta_L))
+	\cdot (\phi_R - \phi_L)
+		
+		+ 
+		
+	(t_2 - t_1)
+	\cdot \frac{1}{3} ( (r_R)^3 - (r_L)^3 )
+	\cdot (
+		sin(\theta_R) F^\theta|_{\theta=\theta_R}
+		- sin(\theta_L) F^\theta|_{\theta=\theta_L}
+	)
+	\cdot (\phi_R - \phi_L)
+		
+		+ 
+		
+	(t_2 - t_1)
+	\cdot \frac{1}{3} ( (r_R)^3 - (r_L)^3 )
+	\cdot (-cos(\theta_R) + cos(\theta_L))
+	\cdot (
+		F^\phi|_{\phi=\phi_R}
+		- F^\phi|_{\phi=\phi_L}
+	)
+$<br>
+$U|_{t=t_2} = 
+	U|_{t=t_1}
+
+	- 
+	
+	(t_2 - t_1)
+	\left(
+		\frac{
+			(r_R)^2 F^r|_{r=r_R} - (r_L)^2 F^r|_{r=r_L}
+		}{
+			\frac{1}{3} ( (r_R)^3 - (r_L)^3 )
+		}
+		
+		+ 
+		
+		\frac{
+			sin(\theta_R) F^\theta|_{\theta=\theta_R}
+			- sin(\theta_L) F^\theta|_{\theta=\theta_L}
+		}{
+			 cos(\theta_L) - cos(\theta_R)
+		}
+		
+		+ 
+		
+		\frac{
+			F^\phi|_{\phi=\phi_R}
+			- F^\phi|_{\phi=\phi_L}
+		}{
+			\phi_R - \phi_L
+		}
+	\right)
+$<br>
+<br>
+
+now for the vector case...<br>
+$0 = \int_{t_1}^{t_2} 
+	\int_{r_L}^{r_R}
+	\int_{\theta_L}^{\theta_R}
+	\int_{\phi_L}^{\phi_R}
+
+	\left(
+		r^2 sin(\theta)
+		\frac{\partial}{\partial t}(U^i)
+
+		+ \nabla_r (
+			r^2 sin(\theta)
+			F^{r i}
+		)
+		+ \nabla_\theta (
+			r^2 sin(\theta)
+			F^{\theta i}
+		)
+		+ \nabla_\phi (
+			r^2 sin(\theta)
+			F^{\phi i}
+		)
+	\right)
+
+	d\phi
+	d\theta
+	dr
+	dt
+$<br>
+$0 = \int_{t_1}^{t_2} 
+	\int_{r_L}^{r_R}
+	\int_{\theta_L}^{\theta_R}
+	\int_{\phi_L}^{\phi_R}
+
+	\left(
+		r^2 sin(\theta) \frac{\partial}{\partial t}(U^i)
+
+		+ \partial_r ( r^2 sin(\theta) F^{r i} )
+
+		+ r^2 sin(\theta) F^{r k} {\Gamma^i}_{r k}	
+		
+		+ \partial_\theta ( r^2 sin(\theta) F^{\theta i} )
+		
+		+ r^2 sin(\theta) F^{\theta k} {\Gamma^i}_{\theta k}
+		
+		+ \partial_\phi ( r^2 sin(\theta) F^{\phi i} )
+	
+		+ r^2 sin(\theta) F^{\phi k} {\Gamma^i}_{\phi k}
+
+	\right)
+
+	d\phi
+	d\theta
+	dr
+	dt
+$<br>
+$0 = \int_{t_1}^{t_2} 
+	\int_{r_L}^{r_R}
+	\int_{\theta_L}^{\theta_R}
+	\int_{\phi_L}^{\phi_R}
+
+	\left(
+		r^2 sin(\theta) \frac{\partial}{\partial t}(U^i)
+
+		+ \partial_r ( r^2 sin(\theta) F^{r i} )
+
+		+ r^2 sin(\theta) (F^{r r} {\Gamma^i}_{r r} + F^{r \theta} {\Gamma^i}_{r \theta} + F^{r \phi} {\Gamma^i}_{r \phi} )
+		
+		+ \partial_\theta ( r^2 sin(\theta) F^{\theta i} )
+		
+		+ r^2 sin(\theta) (F^{\theta r} {\Gamma^i}_{\theta r} + F^{\theta \theta} {\Gamma^i}_{\theta \theta} + F^{\theta \phi} {\Gamma^i}_{\theta \phi})
+		
+		+ \partial_\phi ( r^2 sin(\theta) F^{\phi i} )
+	
+		+ r^2 sin(\theta) (F^{\phi r} {\Gamma^i}_{\phi r} + F^{\phi \theta} {\Gamma^i}_{\phi \theta} + F^{\phi \phi} {\Gamma^i}_{\phi \phi})
+
+	\right)
+
+	d\phi
+	d\theta
+	dr
+	dt
+$<br>
+$\left\{ \begin{matrix}
+	0 = \int_{t_1}^{t_2} 
+		\int_{r_L}^{r_R}
+		\int_{\theta_L}^{\theta_R}
+		\int_{\phi_L}^{\phi_R}
+
+		\left(
+			r^2 sin(\theta) \frac{\partial}{\partial t}(U^r)
+
+			+ \partial_r ( r^2 sin(\theta) F^{r r} )
+
+			+ r^2 sin(\theta) (F^{r r} {\Gamma^r}_{r r} + F^{r \theta} {\Gamma^r}_{r \theta} + F^{r \phi} {\Gamma^r}_{r \phi} )
+			
+			+ \partial_\theta ( r^2 sin(\theta) F^{\theta r} )
+			
+			+ r^2 sin(\theta) (F^{\theta r} {\Gamma^r}_{\theta r} + F^{\theta \theta} {\Gamma^r}_{\theta \theta} + F^{\theta \phi} {\Gamma^r}_{\theta \phi})
+			
+			+ \partial_\phi ( r^2 sin(\theta) F^{\phi r} )
+		
+			+ r^2 sin(\theta) (F^{\phi r} {\Gamma^r}_{\phi r} + F^{\phi \theta} {\Gamma^r}_{\phi \theta} + F^{\phi \phi} {\Gamma^r}_{\phi \phi})
+
+		\right)
+
+		d\phi
+		d\theta
+		dr
+		dt
+	\\
+
+	0 = \int_{t_1}^{t_2} 
+		\int_{r_L}^{r_R}
+		\int_{\theta_L}^{\theta_R}
+		\int_{\phi_L}^{\phi_R}
+
+		\left(
+			r^2 sin(\theta) \frac{\partial}{\partial t}(U^\theta)
+
+			+ \partial_r ( r^2 sin(\theta) F^{r \theta} )
+
+			+ r^2 sin(\theta) (F^{r r} {\Gamma^\theta}_{r r} + F^{r \theta} {\Gamma^\theta}_{r \theta} + F^{r \phi} {\Gamma^\theta}_{r \phi} )
+			
+			+ \partial_\theta ( r^2 sin(\theta) F^{\theta \theta} )
+			
+			+ r^2 sin(\theta) (F^{\theta r} {\Gamma^\theta}_{\theta r} + F^{\theta \theta} {\Gamma^\theta}_{\theta \theta} + F^{\theta \phi} {\Gamma^\theta}_{\theta \phi})
+			
+			+ \partial_\phi ( r^2 sin(\theta) F^{\phi \theta} )
+		
+			+ r^2 sin(\theta) (F^{\phi r} {\Gamma^\theta}_{\phi r} + F^{\phi \theta} {\Gamma^\theta}_{\phi \theta} + F^{\phi \phi} {\Gamma^\theta}_{\phi \phi})
+
+		\right)
+
+		d\phi
+		d\theta
+		dr
+		dt
+	\\
+	0 = \int_{t_1}^{t_2} 
+		\int_{r_L}^{r_R}
+		\int_{\theta_L}^{\theta_R}
+		\int_{\phi_L}^{\phi_R}
+
+		\left(
+			r^2 sin(\theta) \frac{\partial}{\partial t}(U^\phi)
+
+			+ \partial_r ( r^2 sin(\theta) F^{r \phi} )
+
+			+ r^2 sin(\theta) (F^{r r} {\Gamma^\phi}_{r r} + F^{r \theta} {\Gamma^\phi}_{r \theta} + F^{r \phi} {\Gamma^\phi}_{r \phi} )
+			
+			+ \partial_\theta ( r^2 sin(\theta) F^{\theta \phi} )
+			
+			+ r^2 sin(\theta) (F^{\theta r} {\Gamma^\phi}_{\theta r} + F^{\theta \theta} {\Gamma^\phi}_{\theta \theta} + F^{\theta \phi} {\Gamma^\phi}_{\theta \phi})
+			
+			+ \partial_\phi ( r^2 sin(\theta) F^{\phi \phi} )
+		
+			+ r^2 sin(\theta) (F^{\phi r} {\Gamma^\phi}_{\phi r} + F^{\phi \theta} {\Gamma^\phi}_{\phi \theta} + F^{\phi \phi} {\Gamma^\phi}_{\phi \phi})
+
+		\right)
+
+		d\phi
+		d\theta
+		dr
+		dt
+	\\
+\end{matrix} \right\}$<br>
+$\left\{ \begin{matrix}
+	0 = \int_{t_1}^{t_2} 
+		\int_{r_L}^{r_R}
+		\int_{\theta_L}^{\theta_R}
+		\int_{\phi_L}^{\phi_R}
+
+		\left(
+			r^2 sin(\theta) \frac{\partial}{\partial t}(U^r)
+			+ \partial_r ( r^2 sin(\theta) F^{r r} )
+			+ \partial_\theta ( r^2 sin(\theta) F^{\theta r} )
+			+ \partial_\phi ( r^2 sin(\theta) F^{\phi r} )
+			+ r^2 sin(\theta) (-F^{\theta \theta} \frac{1}{r})
+			+ r^2 sin(\theta) (-F^{\phi \phi} \frac{1}{r})
+		\right)
+
+		d\phi
+		d\theta
+		dr
+		dt
+	\\
+
+	0 = \int_{t_1}^{t_2} 
+		\int_{r_L}^{r_R}
+		\int_{\theta_L}^{\theta_R}
+		\int_{\phi_L}^{\phi_R}
+
+		\left(
+			r^2 sin(\theta) \frac{\partial}{\partial t}(U^\theta)
+			+ \partial_r ( r^2 sin(\theta) F^{r \theta} )
+			+ \partial_\theta ( r^2 sin(\theta) F^{\theta \theta} )
+			+ \partial_\phi ( r^2 sin(\theta) F^{\phi \theta} )
+			+ r^2 sin(\theta) (F^{\theta r} \frac{1}{r})
+			+ r^2 sin(\theta) (-F^{\phi \phi} \frac{cos(\theta)}{r sin(\theta)})
+		\right)
+
+		d\phi
+		d\theta
+		dr
+		dt
+	\\
+	0 = \int_{t_1}^{t_2} 
+		\int_{r_L}^{r_R}
+		\int_{\theta_L}^{\theta_R}
+		\int_{\phi_L}^{\phi_R}
+
+		\left(
+			r^2 sin(\theta) \frac{\partial}{\partial t}(U^\phi)
+			+ \partial_r ( r^2 sin(\theta) F^{r \phi} )
+			+ \partial_\theta ( r^2 sin(\theta) F^{\theta \phi} )
+			+ \partial_\phi ( r^2 sin(\theta) F^{\phi \phi} )
+			+ r^2 sin(\theta) (F^{\phi r} \frac{1}{r} + F^{\phi \theta} \frac{cos(\theta)}{r sin(\theta)})
+		\right)
+
+		d\phi
+		d\theta
+		dr
+		dt
+	\\
+\end{matrix} \right\}$<br>
+$\left\{ \begin{matrix}
+	0 = \int_{t_1}^{t_2} 
+		\int_{r_L}^{r_R}
+		\int_{\theta_L}^{\theta_R}
+		\int_{\phi_L}^{\phi_R}
+
+		\left(
+			r^2 sin(\theta) \frac{\partial}{\partial t}(U^r)
+			+ \partial_r ( r^2 sin(\theta) F^{r r} )
+			+ \partial_\theta ( r^2 sin(\theta) F^{\theta r} )
+			+ \partial_\phi ( r^2 sin(\theta) F^{\phi r} )
+			- r sin(\theta) F^{\theta \theta}
+			- r sin(\theta) F^{\phi \phi}
+		\right)
+
+		d\phi
+		d\theta
+		dr
+		dt
+	\\
+
+	0 = \int_{t_1}^{t_2} 
+		\int_{r_L}^{r_R}
+		\int_{\theta_L}^{\theta_R}
+		\int_{\phi_L}^{\phi_R}
+
+		\left(
+			r^2 sin(\theta) \frac{\partial}{\partial t}(U^\theta)
+			+ \partial_r ( r^2 sin(\theta) F^{r \theta} )
+			+ \partial_\theta ( r^2 sin(\theta) F^{\theta \theta} )
+			+ \partial_\phi ( r^2 sin(\theta) F^{\phi \theta} )
+			+ r sin(\theta) F^{\theta r}
+			- r cos(\theta) F^{\phi \phi}
+		\right)
+
+		d\phi
+		d\theta
+		dr
+		dt
+	\\
+	0 = \int_{t_1}^{t_2} 
+		\int_{r_L}^{r_R}
+		\int_{\theta_L}^{\theta_R}
+		\int_{\phi_L}^{\phi_R}
+
+		\left(
+			r^2 sin(\theta) \frac{\partial}{\partial t}(U^\phi)
+			+ \partial_r ( r^2 sin(\theta) F^{r \phi} )
+			+ \partial_\theta ( r^2 sin(\theta) F^{\theta \phi} )
+			+ \partial_\phi ( r^2 sin(\theta) F^{\phi \phi} )
+			+ r sin(\theta) F^{\phi r}
+			+ r cos(\theta) F^{\phi \theta} 
+		\right)
+
+		d\phi
+		d\theta
+		dr
+		dt
+	\\
+\end{matrix} \right\}$<br>
+$\left\{ \begin{matrix}
+	0 = 
+		(U^r|_{t=t_2} - U^r|_{t=t_1}) \cdot (\frac{1}{3} ( (r_R)^3 - (r_L)^3 )) \cdot (-cos(\theta_R) + cos(\theta_L)) \cdot (\phi_R - \phi_L) 
+		+ (t_2 - t_1) \cdot ( (r_R)^2 F^{rr}|_{r=r_R} - (r_L)^2 F^{rr}|_{r=r_L} ) \cdot (-cos(\theta_R) + cos(\theta_L)) \cdot (\phi_R - \phi_L)
+		+ (t_2 - t_1) \cdot (\frac{1}{3} ( (r_R)^3 - (r_L)^3 )) \cdot (sin(\theta_R) F^{\theta r}|_{\theta=\theta_R} - sin(\theta_L) F^{\theta r}|_{\theta=\theta_L}) \cdot (\phi_R - \phi_L)
+		+ (t_2 - t_1) \cdot (\frac{1}{3} ( (r_R)^3 - (r_L)^3 )) \cdot (-cos(\theta_R) + cos(\theta_L)) \cdot (F^{\phi r}|_{\phi=\phi_R} - F^{\phi r}|_{\phi=\phi_L})
+		- (t_2 - t_1) \cdot (\frac{1}{2} ( (r_R)^2 - (r_L)^2 )) \cdot (-cos(\theta_R) + cos(\theta_L)) \cdot (\phi_R - \phi_L) \cdot F^{\theta \theta}
+		- (t_2 - t_1) \cdot (\frac{1}{2} ( (r_R)^2 - (r_L)^2 )) \cdot (-cos(\theta_R) + cos(\theta_L)) \cdot (\phi_R - \phi_L) \cdot F^{\phi \phi}
+
+	\\
+
+	0 = 
+		(U^\theta|_{t=t_2} - U^\theta|_{t=t_1}) \cdot (\frac{1}{3} ( (r_R)^3 - (r_L)^3 )) \cdot (-cos(\theta_R) + cos(\theta_L)) \cdot (\phi_R - \phi_L) 
+		+ (t_2 - t_1) \cdot ( (r_R)^2 F^{r \theta}|_{r=r_R} - (r_L)^2 F^{r \theta}|_{r=r_L} ) \cdot (-cos(\theta_R) + cos(\theta_L)) \cdot (\phi_R - \phi_L)
+		+ (t_2 - t_1) \cdot (\frac{1}{3} ( (r_R)^3 - (r_L)^3 )) \cdot (sin(\theta_R) F^{\theta \theta}|_{\theta=\theta_R} - sin(\theta_L) F^{\theta \theta}|_{\theta=\theta_L}) \cdot (\phi_R - \phi_L)
+		+ (t_2 - t_1) \cdot (\frac{1}{3} ( (r_R)^3 - (r_L)^3 )) \cdot (-cos(\theta_R) + cos(\theta_L)) \cdot (F^{\phi \theta}|_{\phi=\phi_R} - F^{\phi \theta}|_{\phi=\phi_L})
+		+ (t_2 - t_1) \cdot (\frac{1}{2} ( (r_R)^2 - (r_L)^2 )) \cdot (-cos(\theta_R) + cos(\theta_L)) \cdot (\phi_R - \phi_L) \cdot F^{\theta r}
+		- (t_2 - t_1) \cdot (\frac{1}{2} ( (r_R)^2 - (r_L)^2 )) \cdot (sin(\theta_R) - sin(\theta_L)) \cdot (\phi_R - \phi_L) \cdot F^{\phi \phi}
+		
+	\\
+	0 = 
+		(U^\phi|_{t=t_2} - U^\phi|_{t=t_1}) \cdot (\frac{1}{3} ( (r_R)^3 - (r_L)^3 )) \cdot (-cos(\theta_R) + cos(\theta_L)) \cdot (\phi_R - \phi_L) 
+		+ (t_2 - t_1) \cdot ( (r_R)^2 F^{r \phi}|_{r=r_R} - (r_L)^2 F^{r \phi}|_{r=r_L} ) \cdot (-cos(\theta_R) + cos(\theta_L)) \cdot (\phi_R - \phi_L)
+		+ (t_2 - t_1) \cdot (\frac{1}{3} ( (r_R)^3 - (r_L)^3 )) \cdot (sin(\theta_R) F^{\theta \phi}|_{\theta=\theta_R} - sin(\theta_L) F^{\theta \phi}|_{\theta=\theta_L}) \cdot (\phi_R - \phi_L)
+		+ (t_2 - t_1) \cdot (\frac{1}{3} ( (r_R)^3 - (r_L)^3 )) \cdot (-cos(\theta_R) + cos(\theta_L)) \cdot (F^{\phi \phi}|_{\phi=\phi_R} - F^{\phi \phi}|_{\phi=\phi_L})
+		+ (t_2 - t_1) \cdot (\frac{1}{2} ( (r_R)^2 - (r_L)^2 )) \cdot (-cos(\theta_R) + cos(\theta_L)) \cdot (\phi_R - \phi_L) \cdot F^{\phi r}
+		+ (t_2 - t_1) \cdot (\frac{1}{2} ( (r_R)^2 - (r_L)^2 )) \cdot (sin(\theta_R) - sin(\theta_L)) \cdot (\phi_R - \phi_L) \cdot F^{\phi \theta}
+
+\end{matrix} \right\}$<br>
+$\left\{ \begin{matrix}
+	0 = 
+		U^r|_{t=t_2} - U^r|_{t=t_1}
+		+ (t_2 - t_1) \cdot 
+		\left( \frac{ ( (r_R)^2 F^{rr}|_{r=r_R} - (r_L)^2 F^{rr}|_{r=r_L} ) }{ (\frac{1}{3} ( (r_R)^3 - (r_L)^3 )) }
+			+ \frac{ (sin(\theta_R) F^{\theta r}|_{\theta=\theta_R} - sin(\theta_L) F^{\theta r}|_{\theta=\theta_L}) }{ (-cos(\theta_R) + cos(\theta_L)) }
+			+ \frac{ (F^{\phi r}|_{\phi=\phi_R} - F^{\phi r}|_{\phi=\phi_L}) }{ (\phi_R - \phi_L) }
+			- F^{\theta \theta}
+			- F^{\phi \phi}
+		\right)
+
+	\\
+
+	0 = 
+		(U^\theta|_{t=t_2} - U^\theta|_{t=t_1}) \cdot (\frac{1}{3} ( (r_R)^3 - (r_L)^3 )) \cdot (-cos(\theta_R) + cos(\theta_L)) \cdot (\phi_R - \phi_L) 
+		+ (t_2 - t_1) \cdot ( (r_R)^2 F^{r \theta}|_{r=r_R} - (r_L)^2 F^{r \theta}|_{r=r_L} ) \cdot (-cos(\theta_R) + cos(\theta_L)) \cdot (\phi_R - \phi_L)
+		+ (t_2 - t_1) \cdot (\frac{1}{3} ( (r_R)^3 - (r_L)^3 )) \cdot (sin(\theta_R) F^{\theta \theta}|_{\theta=\theta_R} - sin(\theta_L) F^{\theta \theta}|_{\theta=\theta_L}) \cdot (\phi_R - \phi_L)
+		+ (t_2 - t_1) \cdot (\frac{1}{3} ( (r_R)^3 - (r_L)^3 )) \cdot (-cos(\theta_R) + cos(\theta_L)) \cdot (F^{\phi \theta}|_{\phi=\phi_R} - F^{\phi \theta}|_{\phi=\phi_L})
+		+ (t_2 - t_1) \cdot (\frac{1}{2} ( (r_R)^2 - (r_L)^2 )) \cdot (-cos(\theta_R) + cos(\theta_L)) \cdot (\phi_R - \phi_L) \cdot F^{\theta r}
+		- (t_2 - t_1) \cdot (\frac{1}{2} ( (r_R)^2 - (r_L)^2 )) \cdot (sin(\theta_R) - sin(\theta_L)) \cdot (\phi_R - \phi_L) \cdot F^{\phi \phi}
+		
+	\\
+	0 = 
+		(U^\phi|_{t=t_2} - U^\phi|_{t=t_1}) \cdot (\frac{1}{3} ( (r_R)^3 - (r_L)^3 )) \cdot (-cos(\theta_R) + cos(\theta_L)) \cdot (\phi_R - \phi_L) 
+		+ (t_2 - t_1) \cdot ( (r_R)^2 F^{r \phi}|_{r=r_R} - (r_L)^2 F^{r \phi}|_{r=r_L} ) \cdot (-cos(\theta_R) + cos(\theta_L)) \cdot (\phi_R - \phi_L)
+		+ (t_2 - t_1) \cdot (\frac{1}{3} ( (r_R)^3 - (r_L)^3 )) \cdot (sin(\theta_R) F^{\theta \phi}|_{\theta=\theta_R} - sin(\theta_L) F^{\theta \phi}|_{\theta=\theta_L}) \cdot (\phi_R - \phi_L)
+		+ (t_2 - t_1) \cdot (\frac{1}{3} ( (r_R)^3 - (r_L)^3 )) \cdot (-cos(\theta_R) + cos(\theta_L)) \cdot (F^{\phi \phi}|_{\phi=\phi_R} - F^{\phi \phi}|_{\phi=\phi_L})
+		+ (t_2 - t_1) \cdot (\frac{1}{2} ( (r_R)^2 - (r_L)^2 )) \cdot (-cos(\theta_R) + cos(\theta_L)) \cdot (\phi_R - \phi_L) \cdot F^{\phi r}
+		+ (t_2 - t_1) \cdot (\frac{1}{2} ( (r_R)^2 - (r_L)^2 )) \cdot (sin(\theta_R) - sin(\theta_L)) \cdot (\phi_R - \phi_L) \cdot F^{\phi \theta}
+
+\end{matrix} \right\}$<br>
+
 <br>
 
 TODO check this out too:<br>
