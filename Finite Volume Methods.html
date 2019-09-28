@@ -812,6 +812,7 @@ ${\Gamma^\phi}_{\phi r} = \frac{1}{r}$<br>
 ${\Gamma^\phi}_{\phi \theta} = \frac{1}{r} \frac{cos(\theta)}{sin(\theta)}$<br>
 <br>
 
+for the scalar case...<br>
 $0 = \int_{t_1}^{t_2} 
 	\int_{r_L}^{r_R}
 	\int_{\theta_L}^{\theta_R}
@@ -1402,37 +1403,117 @@ $\left\{ \begin{matrix}
 
 \end{matrix} \right\}$<br>
 $\left\{ \begin{matrix}
-	0 = 
-		U^r|_{t=t_2} - U^r|_{t=t_1}
-		+ (t_2 - t_1) \cdot 
-		\left( \frac{ ( (r_R)^2 F^{rr}|_{r=r_R} - (r_L)^2 F^{rr}|_{r=r_L} ) }{ (\frac{1}{3} ( (r_R)^3 - (r_L)^3 )) }
-			+ \frac{ (sin(\theta_R) F^{\theta r}|_{\theta=\theta_R} - sin(\theta_L) F^{\theta r}|_{\theta=\theta_L}) }{ (-cos(\theta_R) + cos(\theta_L)) }
-			+ \frac{ (F^{\phi r}|_{\phi=\phi_R} - F^{\phi r}|_{\phi=\phi_L}) }{ (\phi_R - \phi_L) }
-			- F^{\theta \theta}
-			- F^{\phi \phi}
-		\right)
-
-	\\
-
-	0 = 
-		(U^\theta|_{t=t_2} - U^\theta|_{t=t_1}) \cdot (\frac{1}{3} ( (r_R)^3 - (r_L)^3 )) \cdot (-cos(\theta_R) + cos(\theta_L)) \cdot (\phi_R - \phi_L) 
-		+ (t_2 - t_1) \cdot ( (r_R)^2 F^{r \theta}|_{r=r_R} - (r_L)^2 F^{r \theta}|_{r=r_L} ) \cdot (-cos(\theta_R) + cos(\theta_L)) \cdot (\phi_R - \phi_L)
-		+ (t_2 - t_1) \cdot (\frac{1}{3} ( (r_R)^3 - (r_L)^3 )) \cdot (sin(\theta_R) F^{\theta \theta}|_{\theta=\theta_R} - sin(\theta_L) F^{\theta \theta}|_{\theta=\theta_L}) \cdot (\phi_R - \phi_L)
-		+ (t_2 - t_1) \cdot (\frac{1}{3} ( (r_R)^3 - (r_L)^3 )) \cdot (-cos(\theta_R) + cos(\theta_L)) \cdot (F^{\phi \theta}|_{\phi=\phi_R} - F^{\phi \theta}|_{\phi=\phi_L})
-		+ (t_2 - t_1) \cdot (\frac{1}{2} ( (r_R)^2 - (r_L)^2 )) \cdot (-cos(\theta_R) + cos(\theta_L)) \cdot (\phi_R - \phi_L) \cdot F^{\theta r}
-		- (t_2 - t_1) \cdot (\frac{1}{2} ( (r_R)^2 - (r_L)^2 )) \cdot (sin(\theta_R) - sin(\theta_L)) \cdot (\phi_R - \phi_L) \cdot F^{\phi \phi}
 		
+	U^r|_{t=t_2} 
+	= U^r|_{t=t_1}
+	- (t_2 - t_1) \cdot 
+	\left( 
+		\frac{ (r_R)^2 F^{rr}|_{r=r_R} - (r_L)^2 F^{rr}|_{r=r_L} }{ \frac{1}{3} ( (r_R)^3 - (r_L)^3 ) }
+		+ \frac{ sin(\theta_R) F^{\theta r}|_{\theta=\theta_R} - sin(\theta_L) F^{\theta r}|_{\theta=\theta_L} }{ -cos(\theta_R) + cos(\theta_L) }
+		+ \frac{ F^{\phi r}|_{\phi=\phi_R} - F^{\phi r}|_{\phi=\phi_L} }{ \phi_R - \phi_L }
+		- F^{\theta \theta}
+		- F^{\phi \phi}
+	\right)
+
 	\\
-	0 = 
-		(U^\phi|_{t=t_2} - U^\phi|_{t=t_1}) \cdot (\frac{1}{3} ( (r_R)^3 - (r_L)^3 )) \cdot (-cos(\theta_R) + cos(\theta_L)) \cdot (\phi_R - \phi_L) 
-		+ (t_2 - t_1) \cdot ( (r_R)^2 F^{r \phi}|_{r=r_R} - (r_L)^2 F^{r \phi}|_{r=r_L} ) \cdot (-cos(\theta_R) + cos(\theta_L)) \cdot (\phi_R - \phi_L)
-		+ (t_2 - t_1) \cdot (\frac{1}{3} ( (r_R)^3 - (r_L)^3 )) \cdot (sin(\theta_R) F^{\theta \phi}|_{\theta=\theta_R} - sin(\theta_L) F^{\theta \phi}|_{\theta=\theta_L}) \cdot (\phi_R - \phi_L)
-		+ (t_2 - t_1) \cdot (\frac{1}{3} ( (r_R)^3 - (r_L)^3 )) \cdot (-cos(\theta_R) + cos(\theta_L)) \cdot (F^{\phi \phi}|_{\phi=\phi_R} - F^{\phi \phi}|_{\phi=\phi_L})
-		+ (t_2 - t_1) \cdot (\frac{1}{2} ( (r_R)^2 - (r_L)^2 )) \cdot (-cos(\theta_R) + cos(\theta_L)) \cdot (\phi_R - \phi_L) \cdot F^{\phi r}
-		+ (t_2 - t_1) \cdot (\frac{1}{2} ( (r_R)^2 - (r_L)^2 )) \cdot (sin(\theta_R) - sin(\theta_L)) \cdot (\phi_R - \phi_L) \cdot F^{\phi \theta}
+
+	U^\theta|_{t=t_2} 
+	= U^\theta|_{t=t_1}
+	- (t_2 - t_1) \cdot 
+	\left( 
+		\frac{ (r_R)^2 F^{r \theta}|_{r=r_R} - (r_L)^2 F^{r \theta}|_{r=r_L} }{ \frac{1}{3} ( (r_R)^3 - (r_L)^3 ) }
+		+ \frac{ sin(\theta_R) F^{\theta \theta}|_{\theta=\theta_R} - sin(\theta_L) F^{\theta \theta}|_{\theta=\theta_L} }{ -cos(\theta_R) + cos(\theta_L) }
+		+ \frac{ F^{\phi \theta}|_{\phi=\phi_R} - F^{\phi \theta}|_{\phi=\phi_L} }{ \phi_R - \phi_L }
+		+ F^{\theta r}
+		- \frac{ sin(\theta_R) - sin(\theta_L) }{ -cos(\theta_R) + cos(\theta_L) } \cdot F^{\phi \phi}
+	\right)	
+	
+	\\
+	
+	U^\phi|_{t=t_2} 
+	= U^\phi|_{t=t_1}
+	- (t_2 - t_1) \cdot 
+	\left(
+		\frac{ (r_R)^2 F^{r \phi}|_{r=r_R} - (r_L)^2 F^{r \phi}|_{r=r_L} }{ \frac{1}{3} ( (r_R)^3 - (r_L)^3 ) }
+		+ \frac{ (sin(\theta_R) F^{\theta \phi}|_{\theta=\theta_R} - sin(\theta_L) F^{\theta \phi}|_{\theta=\theta_L}) }{ (-cos(\theta_R) + cos(\theta_L)) }
+		+ \frac{ (F^{\phi \phi}|_{\phi=\phi_R} - F^{\phi \phi}|_{\phi=\phi_L}) }{ \phi_R - \phi_L }
+		+ F^{\phi r}
+		+ \frac{ (sin(\theta_R) - sin(\theta_L)) }{ (-cos(\theta_R) + cos(\theta_L)) } \cdot F^{\phi \theta}
+	\right)
 
 \end{matrix} \right\}$<br>
 
+$\left[ \begin{matrix}
+	U^r \\
+	U^\theta \\
+	U^\phi
+\end{matrix} \right]_{t=t_2} 
+= 
+\left[ \begin{matrix}
+	U^r \\
+	U^\theta \\
+	U^\phi
+\end{matrix} \right]_{t=t_1} 
+- (t_2 - t_1) \cdot 
+\left(
+
+	\frac{1}{
+		\frac{1}{3} ( (r_R)^3 - (r_L)^3 )
+	} \cdot
+	\left[ \begin{matrix}
+		(r_R)^2 F^{rr}|_{r=r_R} - (r_L)^2 F^{rr}|_{r=r_L}
+		\\
+		(r_R)^2 F^{r \theta}|_{r=r_R} - (r_L)^2 F^{r \theta}|_{r=r_L}
+		\\
+		(r_R)^2 F^{r \phi}|_{r=r_R} - (r_L)^2 F^{r \phi}|_{r=r_L}
+	\end{matrix} \right]
+
+	+
+
+	\frac{1}{
+		-cos(\theta_R) + cos(\theta_L)
+	} \cdot
+	\left[ \begin{matrix}
+		sin(\theta_R) F^{\theta r}|_{\theta=\theta_R} - sin(\theta_L) F^{\theta r}|_{\theta=\theta_L}
+		\\	
+		sin(\theta_R) F^{\theta \theta}|_{\theta=\theta_R} - sin(\theta_L) F^{\theta \theta}|_{\theta=\theta_L}
+		\\	
+		sin(\theta_R) F^{\theta \phi}|_{\theta=\theta_R} - sin(\theta_L) F^{\theta \phi}|_{\theta=\theta_L}
+	\end{matrix} \right]
+	
+	+
+
+	\frac{1}{
+		\phi_R - \phi_L
+	} \cdot
+	\left[ \begin{matrix}
+		F^{\phi r}|_{\phi=\phi_R} - F^{\phi r}|_{\phi=\phi_L}
+		\\
+		F^{\phi \theta}|_{\phi=\phi_R} - F^{\phi \theta}|_{\phi=\phi_L}
+		\\
+		F^{\phi \phi}|_{\phi=\phi_R} - F^{\phi \phi}|_{\phi=\phi_L}
+	\end{matrix} \right]
+	
+	+
+
+	\left[ \begin{matrix}
+
+		- F^{\theta \theta}
+		- F^{\phi \phi}
+
+		\\
+
+		F^{\theta r}
+		- \frac{ sin(\theta_R) - sin(\theta_L) }{ -cos(\theta_R) + cos(\theta_L) } \cdot F^{\phi \phi}
+		
+		\\
+		
+		F^{\phi r}
+		+ \frac{ (sin(\theta_R) - sin(\theta_L)) }{ (-cos(\theta_R) + cos(\theta_L)) } \cdot F^{\phi \theta}
+
+	\end{matrix} \right]
+\right)
+$<br>
 <br>
 
 TODO check this out too:<br>
