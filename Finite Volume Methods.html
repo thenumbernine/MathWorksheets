@@ -123,7 +123,7 @@ So implementing this as difference operations, what this means is...<br>
 <br>
 
 <b>try again, keep things in integral form...</b><br>
-Following 2019 Trangenstein "Numeric Simulations of Hyperbolic Conservation Laws", section 7.4:<br>
+Following 2009 Trangenstein "Numeric Simulations of Hyperbolic Conservation Laws", section 7.4:<br>
 Notice that his book coincides with anholonomic orthonormal basis.<br>
 So that's what I'm using here.  $u_1 ... u_n$ are my coordinate chart parameters.  Indexes are in anholonomic non-coordinates.<br>
 $\bar{j} =$ the coordinate basis index, ${e^\bar{j}}_j =$ change of basis from non-coordinate to coordinate (non-Cartesian) basis.<br>
@@ -791,7 +791,38 @@ $<br>
 Specific examples:<br>
 <br>
 
-<b>Spherical, anholonomic</b><br>
+<b>Cylindrical holonomic (grid metric)</b><br>
+connections of the holonomic basis:<br>
+connection coefficients / 2nd kind Christoffel:
+	${{{{ \Gamma}^{\phi}}_{\phi}}_r} = {\frac{1}{r}}$
+;	${{{{ \Gamma}^{\phi}}_r}_{\phi}} = {\frac{1}{r}}$
+;	${{{{ \Gamma}^r}_{\phi}}_{\phi}} = {-{r}}$<br>
+<br>
+
+<b>Cylindrical, anholonomic, normalized basis</b><br>
+${e_\bar{j}}^j = \left[ \begin{matrix}
+	1 & 0 & 0 \\
+	0 & r & 0 \\
+	0 & 0 & 1
+\end{matrix} \right]$<br>
+${e^\bar{j}}_j = \left[ \begin{matrix}
+	1 & 0 & 0 \\
+	0 & \frac{1}{r} & 0 \\
+	0 & 0 & 1
+\end{matrix} \right]$<br>
+$V = det({e_\bar{j}}^j) = r$<br>
+connections of the anholonomic normalized basis:<br>
+commutation coefficients:
+	${{{{ c}_{\hat{\theta}}}_r}^{\hat{\theta}}} = {\frac{1}{r}}$
+;	${{{{ c}_r}_{\hat{\theta}}}^{\hat{\theta}}} = {-{\frac{1.0}{r}}}$<br>
+connection coefficients / 2nd kind Christoffel:
+	${{{{ \Gamma}^{\hat{\theta}}}_{\hat{\theta}}}_r} = {\frac{1}{r}}$
+;	${{{{ \Gamma}^r}_{\hat{\theta}}}_{\hat{\theta}}} = {-{\frac{1.0}{r}}}$<br>
+<br>
+<br>
+
+
+<b>Spherical, anholonomic, normalized</b><br>
 ${e_\bar{j}}^j = \left[ \begin{matrix}
 	1 & 0 & 0 \\
 	0 & r & 0 \\
@@ -810,6 +841,24 @@ ${\Gamma^\theta}_{\theta r} = \frac{1}{r}$<br>
 ${\Gamma^\theta}_{\phi \phi} = -\frac{1}{r} \frac{cos(\theta)}{sin(\theta)}$<br>
 ${\Gamma^\phi}_{\phi r} = \frac{1}{r}$<br>
 ${\Gamma^\phi}_{\phi \theta} = \frac{1}{r} \frac{cos(\theta)}{sin(\theta)}$<br>
+
+
+commutation coefficients:
+	${{{{ c}_{\hat{\theta}}}_r}^{\hat{\theta}}} = {\frac{1}{r}}$
+;	${{{{ c}_r}_{\hat{\theta}}}^{\hat{\theta}}} = {-{\frac{1}{r}}}$
+;	${{{{ c}_{\hat{\phi}}}_r}^{\hat{\phi}}} = {\frac{1}{r}}$
+;	${{{{ c}_{\hat{\phi}}}_{\hat{\theta}}}^{\hat{\phi}}} = {\frac{cos\left(  \theta\right)}{{{r}} {{sin\left(  \theta\right)}}}}$
+;	${{{{ c}_r}_{\hat{\phi}}}^{\hat{\phi}}} = {-{\frac{1.0}{r}}}$
+;	${{{{ c}_{\hat{\theta}}}_{\hat{\phi}}}^{\hat{\phi}}} = {\frac{-{cos\left(  \theta\right)}}{{{r}} {{sin\left(  \theta\right)}}}}$<br>
+
+connection coefficients / 2nd kind Christoffel:
+	${{{{ \Gamma}^{\hat{\theta}}}_{\hat{\theta}}}_r} = {\frac{1}{r}}$
+;	${{{{ \Gamma}^{\hat{\phi}}}_{\hat{\phi}}}_r} = {\frac{1}{r}}$
+;	${{{{ \Gamma}^r}_{\hat{\theta}}}_{\hat{\theta}}} = {-{\frac{1.0}{r}}}$
+;	${{{{ \Gamma}^{\hat{\phi}}}_{\hat{\phi}}}_{\hat{\theta}}} = {\frac{cos\left(  \theta\right)}{{{r}} {{sin\left(  \theta\right)}}}}$
+;	${{{{ \Gamma}^r}_{\hat{\phi}}}_{\hat{\phi}}} = {-{\frac{1.0}{r}}}$
+;	${{{{ \Gamma}^{\hat{\theta}}}_{\hat{\phi}}}_{\hat{\phi}}} = {\frac{-{cos\left(  \theta\right)}}{{{r}} {{sin\left(  \theta\right)}}}}$<br>
+
 <br>
 
 for the scalar case...<br>
