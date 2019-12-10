@@ -15,6 +15,7 @@ Where $g_{ij}$ is the metric associated with ${\Gamma^i}_{jk}$<br>
 <h3>Euler Fluid Equations</h3>
 
 variables:<br>
+$n^i =$ flux surface normal, units of [1].<br>
 $\rho =$ density, in units of $\frac{kg}{m^3}$<br>
 $v^i =$ velocity, in units of $\frac{m}{s}$<br>
 $m^i = \rho v^i = $ momentum, in units of $\frac{kg}{m^2 \cdot s}$<br>
@@ -33,7 +34,7 @@ $H_{total} = E_{total} + P = \frac{1}{2} \rho v^2 + \frac{\gamma}{\tilde\gamma} 
 $ = E_{total} + \tilde\gamma E_{total} + \tilde\gamma E_{kin} = \gamma E_{total} + \tilde\gamma E_{kin}$, total enthalpy, in units of $\frac{kg}{m \cdot s^2}$<br>
 <br>
 
-Let $IJK...$ spanning $\{ \rho, v^i, E_{total} \}$<br>
+Let capital indexes $IJK...$ span all conserved quantity variables $\{ \rho, v^i, E_{total} \}$<br>
 <br>
 
 Conservative and primitive variables:<br>
@@ -46,16 +47,56 @@ $U^I = \left[\begin{matrix} \rho \\ \rho v^i \\ E_{total} \end{matrix}\right]$
 in units of $\left[\begin{matrix} \frac{kg}{m^3} \\ \frac{kg}{m^2 \cdot s} \\ \frac{kg}{m \cdot s^2} \end{matrix}\right]$<br>
 <br>
 
+Partial of conserved quantities wrt primitivies:<br>
+<br>
+
+$\frac{\partial U^I}{\partial W^J} = \downarrow I \overset{\rightarrow J}{\left[\begin{matrix}
+	1 & 0 & 0 \\
+	v^i & \rho \delta^i_j & 0 \\
+	\frac{1}{2} v^2 & \rho v_j & \frac{1}{\tilde\gamma}
+\end{matrix}\right]}$<br>
+<br>
+
+$\frac{\partial W^I}{\partial U^J} = \downarrow I \overset{\rightarrow J}{\left[\begin{matrix}
+	1 & 0 & 0 \\
+	-\frac{1}{\rho} v^i & \frac{1}{\rho} \delta^i_j & 0 \\
+	\frac{1}{2} \tilde\gamma v^2 & -\tilde\gamma v_j & \tilde\gamma
+\end{matrix}\right]}$<br>
+<br>
+
 Flux:<br>
-$F^{Ij}$
-$ = \left[\begin{matrix} \rho v^j \\ \rho v^i v^j + g^{ij} P \\ v^j H_{total} \end{matrix}\right]$
+$F^I (n)$
+$ = \left[\begin{matrix} \rho v^l n_l \\ \rho v^i v^l n_l + n^i P \\ v^l n_l H_{total} \end{matrix}\right]$
+
 $ = \left[\begin{matrix} 
-	m^j \\ 
-	\frac{1}{\rho} m^i m^j + g^{ij} \tilde\gamma (E_{total} - \frac{1}{2} \frac{1}{\rho} m^2) \\ 
-	\frac{1}{\rho} m^j (\gamma E_{total} - \tilde\gamma \frac{1}{2} \frac{1}{\rho} m^2)
+	m^j n_j \\ 
+	\frac{1}{\rho} m^i m^j n_j + n^i \tilde\gamma (E_{total} - \frac{1}{2} \frac{1}{\rho} m^2) \\ 
+	\frac{1}{\rho} m^j n_j (\gamma E_{total} - \tilde\gamma \frac{1}{2} \frac{1}{\rho} m^2)
 \end{matrix}\right]$
 in units of $\left[\begin{matrix} \frac{kg}{m^2 \cdot s} \\ \frac{kg}{m \cdot s^2} \\ \frac{kg}{s^3} \end{matrix}\right]$<br>
 <br>
+
+Flux derivative with respect to primitive variables:<br>
+<br>
+
+$\frac{\partial F^I}{\partial W^J} = \downarrow I \overset{\rightarrow J}{
+\left[\begin{matrix}
+	v^l n_l 				& \rho n_j									& 0 \\
+	v^i v^l n_l 			& \rho v^l n_l \delta^i_j + \rho v^i n_j	& n^i \\
+	\frac{1}{2} v^2 v^l n_l & n_j H_{total} + v^l n_l \rho v_j			& v^l n_l \frac{\gamma}{\tilde\gamma} 
+\end{matrix}\right]
+}$<br>
+<br>
+
+$\frac{\partial F^I}{\partial U^J} = \frac{\partial F^I}{\partial W^K} \cdot \frac{\partial W^K}{\partial U^J}$:<br>
+TODO<br>
+<br>
+
+<hr>
+TODO beneath this line replace F as a function of $g^{ij}$ with F as a function fo $n_i$<br>
+<hr>
+<br>
+
 
 Flux partial derivative:<br>
 <br>
@@ -365,279 +406,708 @@ ${U^I}_{,t} + \frac{1}{\sqrt{g}} \left(
 $<br>
 <br>
 
+<hr>
+TODO above this line replace F as a function of $g^{ij}$ with F as a function fo $n_i$<br>
+<hr>
+<br>
+
+
 Maxima has a much harder time calculating the eigenvalues/vectors with those $\delta^{ij}$'s replaced with $g^{ij}$'s.<br>
 But I can get around that by using acoustic tensor to find the eigen-decomposition of the flux in curved coordinates:<br>
-TODO redo this.<br>
+TODO...?<br>
 <br>
 
-$\frac{\partial W^N}{\partial U^I} \cdot \frac{\partial F^{Ij}}{\partial W^M}$
+Eigen decomposition of flux jacobian: 
+$\frac{\partial F^I}{\partial U^J} = R_F \Lambda_F L_F$<br>
+$\frac{\partial F}{\partial U} = \frac{\partial F}{\partial W} \frac{\partial W}{\partial U}$<br>
+$\frac{\partial W}{\partial U} \frac{\partial F}{\partial W} \frac{\partial W}{\partial U} \frac{\partial U}{\partial W} = \frac{\partial W}{\partial U} ( R_F \Lambda_F L_F ) \frac{\partial U}{\partial W}$<br>
+$\frac{\partial W}{\partial U} \frac{\partial F}{\partial W} = (\frac{\partial W}{\partial U} R_F) \Lambda_F (L_F \frac{\partial U}{\partial W})$<br>
+Let $A + I v_n = \frac{\partial W}{\partial U} \frac{\partial F}{\partial W}$, $\Lambda_A = \Lambda_F + I v_n$<br>
+$A + I v_n = (\frac{\partial W}{\partial U} R_F) (\Lambda_A + I v_n) (L_F \frac{\partial U}{\partial W})$<br>
+$A = (\frac{\partial W}{\partial U} R_F) \Lambda_A (L_F \frac{\partial U}{\partial W})$<br>
+Let $R_A = \frac{\partial W}{\partial U} R_F$, $L_A = L_F \frac{\partial U}{\partial W}$<br>
+$A = R_A \Lambda_A L_A$<br>
+<br>
+
+$\frac{\partial W^I}{\partial U^K} \cdot \frac{\partial F^K}{\partial W^J}$
 $= \downarrow N \overset{\rightarrow I}{\left[\begin{matrix}
 	1 & 0 & 0 \\
-	-v^n / \rho & \delta^n_i / \rho & 0 \\
-	\frac{1}{2} \tilde\gamma v^2 & -\tilde\gamma v_i & \tilde\gamma
-\end{matrix}\right]} \cdot \downarrow I \overset{\rightarrow M}{\left[\begin{matrix}
-	v^j & \rho \delta^j_m & 0 \\
-	v^i v^j & \rho (v^j \delta^i_m + v^i \delta^j_m) & g^{ij} \\
-	\frac{1}{2} v^j v^2 & \delta^j_m H_{total} + \rho v^j v_m & \frac{\gamma}{\tilde{\gamma}} v^j
+	-\frac{1}{\rho} v^i & \frac{1}{\rho} \delta^i_k & 0 \\
+	\frac{1}{2} \tilde\gamma v^2 & -\tilde\gamma v_k & \tilde\gamma
+\end{matrix}\right]} \cdot \downarrow K \overset{\rightarrow J}{\left[\begin{matrix}
+	v^l n_l & \rho n_j & 0 \\
+	v^k v^l n_l & \rho (v^l n_l \delta^k_j + v^k n_j) & n^k \\
+	\frac{1}{2} v^2 v^l n_l & n_j H_{total} + \rho v^l n_l v_j & \frac{\gamma}{\tilde{\gamma}} v^l n_l
 \end{matrix}\right]}$
 $= \downarrow N \overset{\rightarrow M}{\left[\begin{matrix}
-	v^j & \rho \delta^j_m & 0 \\
-	0 & v^j \delta^n_m & g^{jn} / \rho \\
-	0 & \delta^j_m \gamma P & v^j
+	v^l n_l & \rho n_j & 0 \\
+	0 & v^l n_l \delta^i_j & \frac{1}{\rho} n^i \\
+	0 & \gamma P n_j & v^l n_l
 \end{matrix}\right]}$
-$= {A^{jN}}_M + v^j \delta^N_M$<br>
+$= {A^I}_J + v^l n_l \delta^I_J$<br>
 <br>
 ...for acoustic tensor:<br>
-${A^{jN}}_M = \downarrow N \overset{\rightarrow M}{\left[\begin{matrix}
-	0 & \rho \delta^j_m & 0 \\
-	0 & 0 & g^{jn} / \rho \\
-	0 & \delta^j_m \gamma P & 0
+${A^I}_J = \downarrow I \overset{\rightarrow J}{\left[\begin{matrix}
+	0 & \rho n_j & 0 \\
+	0 & 0 & \frac{1}{\rho} n^i \\
+	0 & \gamma P n_j & 0
 \end{matrix}\right]}$<br>
 <br>
 
-Acoustic tensor eigen-decomposition:<br> 
+Acoustic tensor eigenvalues:<br>
+<br>
 
-${(\Lambda_{A^j})^I}_K = \downarrow I \overset{\rightarrow K}{ \left[\begin{matrix}
-	-c_s \sqrt{g^{jj}} & 0 & 0 \\
+$\left|\begin{matrix}
+	-\lambda & \rho n_j & 0 \\
+	0 & -\lambda \delta^i_j & \frac{1}{\rho} n_i \\
+	0 & \gamma P n_j & -\lambda
+\end{matrix}\right| = 0$<br>
+<br>
+
+$\left|\begin{matrix}
+	-\lambda & \rho n_x & \rho n_y & \rho n_z & 0 \\
+	0 & -\lambda & 0 & 0 & \frac{1}{\rho} n^x \\
+	0 & 0 & -\lambda & 0 & \frac{1}{\rho} n^y \\
+	0 & 0 & 0 & -\lambda & \frac{1}{\rho} n^z \\
+	0 & n_x \gamma P & n_y \gamma P & n_z \gamma P & -\lambda
+\end{matrix}\right| = 0$<br>
+<br>
+
+$-\lambda \cdot \left|\begin{matrix}
+	-\lambda & 0 & 0 & \frac{1}{\rho} n^x \\
+	0 & -\lambda & 0 & \frac{1}{\rho} n^y \\
+	0 & 0 & -\lambda & \frac{1}{\rho} n^z \\
+	n_x \gamma P & n_y \gamma P & n_z \gamma P & -\lambda
+\end{matrix}\right| = 0$<br>
+<br>
+
+$-\lambda \cdot \left(
+	-\lambda \cdot \left|\begin{matrix}
+		-\lambda & 0 & \frac{1}{\rho} n^y \\
+		0 & -\lambda & \frac{1}{\rho} n^z \\
+		n_y \gamma P & n_z \gamma P & -\lambda
+	\end{matrix}\right|
+	
+	- \frac{1}{\rho} n^x \cdot \left|\begin{matrix}
+		0 & -\lambda & 0 \\
+		0 & 0 & -\lambda \\
+		n_x \gamma P & n_y \gamma P & n_z \gamma P 
+	\end{matrix}\right|
+\right) = 0$<br>
+<br>
+
+$-\lambda \cdot \left(
+	-\lambda \cdot \left(
+		-\lambda \left|\begin{matrix}
+			-\lambda & \frac{1}{\rho} n^z \\
+			n_z \gamma P & -\lambda
+		\end{matrix}\right|
+		+ \frac{1}{\rho} n^y \cdot \left|\begin{matrix}
+			0 & -\lambda \\
+			n_y \gamma P & n_z \gamma P
+		\end{matrix}\right|
+	\right)
+
+	- \frac{1}{\rho} n^x \cdot 
+	n_x \gamma P \cdot
+	\left|\begin{matrix}
+		-\lambda & 0 \\
+		0 & -\lambda
+	\end{matrix}\right|
+\right) = 0$<br>
+<br>
+
+$-\lambda \cdot \left(
+	-\lambda \cdot \left(
+		-\lambda (
+			\lambda^2
+			- \frac{\gamma P}{\rho} n^z n_z
+		)
+		+ \lambda \frac{\gamma P}{\rho} n^y n_y
+	\right)
+
+	- \lambda^2 \frac{\gamma P}{\rho} n^x n_x
+\right) = 0$<br>
+<br>
+
+$-\lambda^3 \cdot \left(
+	\lambda^2
+	- \frac{\gamma P}{\rho} n^x n_x
+	- \frac{\gamma P}{\rho} n^y n_y
+	- \frac{\gamma P}{\rho} n^z n_z
+\right) = 0$<br>
+<br>
+
+$-\lambda^3 \cdot \left(\lambda^2 - \frac{\gamma P}{\rho} n^k n_k \right) = 0$<br>
+<br>
+
+Assume $n^k n_k = 1$?<br>
+But what if it's not?  What if $n_k = \partial_k$ and $|n_k| = 1$, then $|n^k| = |g^{kl}|$...<br>
+This is the case if we write the flux in terms of the coordinate by replacing $n_k$ with $\delta_k^l$ and $n^k$ with $g^{kl}$.<br>
+So I will instead say $n^k n_k = n^2$.<br>
+<br>
+
+$-\lambda^3 \cdot \left(\lambda^2 - \frac{\gamma P}{\rho} n^2 \right) = 0$<br>
+
+$-\lambda^3 
+	(\lambda + |n| \sqrt{\frac{\gamma P}{\rho}}) 
+	(\lambda - |n| \sqrt{\frac{\gamma P}{\rho}}) 
+	= 0$<br>
+<br>
+
+So $\lambda = \{
+	-|n| \sqrt{\frac{\gamma P}{\rho}},
+	0, 0, 0,
+	|n| \sqrt{\frac{\gamma P}{\rho}}
+\}$<br>
+<br>
+$\lambda = \{
+	-|n| c_s,
+	0, 0, 0,
+	|n| c_s
+\}$<br>
+
+<br>
+
+Acoustic tensor right eigenvectors:<br> 
+<br>
+
+For $\lambda = 0$:<br>
+<br>
+
+$\left[\begin{matrix}
+	0 & \rho n_x & \rho n_y & \rho n_z & 0 \\
+	0 & 0 & 0 & 0 & \frac{1}{\rho} n^x \\
+	0 & 0 & 0 & 0 & \frac{1}{\rho} n^y \\
+	0 & 0 & 0 & 0 & \frac{1}{\rho} n^z \\
+	0 & n_x \gamma P & n_y \gamma P & n_z \gamma P & 0
+\end{matrix}\right] \left[\begin{matrix}
+	X^\rho \\ X^{v_x} \\ X^{v_y} \\ X^{v_z} \\ X^P
+\end{matrix}\right] = 0$<br>
+<br>
+
+...for $n_x \ne 0$:<br>
+<br>
+
+$\left[\begin{matrix}
+	0 & 1 & n_y / n_x & n_z / n_x & 0 \\
+	0 & 0 & 0 & 0 & 1 \\
+	0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0
+\end{matrix}\right] \left[\begin{matrix}
+	X^\rho \\ X^{v_x} \\ X^{v_y} \\ X^{v_z} \\ X^P
+\end{matrix}\right] = 0$<br>
+<br>
+
+$X^{v_x} + n_y / n_x X^{v_y} + n_z / n_x X^{v_z} = 0$<br>
+$X^P = 0$<br>
+<br>
+
+Let $u_1 = X^\rho, u_2 = X^{v_y}, u_3 = X^{v_z}$<br>
+<br>
+
+$\left[\begin{matrix}
+	X^\rho \\ X^{v_x} \\ X^{v_y} \\ X^{v_z} \\ X^P
+\end{matrix}\right] = \left[\begin{matrix}
+	1 & 0 & 0 \\
+	0 & -n_y / n_x & -n_z / n_x \\
+	0 & 1 & 0 \\
+	0 & 0 & 1 \\
 	0 & 0 & 0 \\
-	0 & 0 & c_s \sqrt{g^{jj}}
-\end{matrix}\right]}$<br>
-<br>
-
-${(V^R_{A^j})^I}_K = \downarrow I \overset{\rightarrow K}{ \left[\begin{matrix}
-	1 & \delta^j_k & 1 \\
-	-\frac{c_s g^{ij}}{\rho \sqrt{g^{jj}}} & \frac{1}{\rho} (\delta^i_k - \delta^{ij} \delta_{jk}) & \frac{c_s g^{ij}}{\rho \sqrt{g^{jj}}} \\
-	(c_s)^2 & 0 & (c_s)^2
-\end{matrix}\right]}$<br>
-
-${(V^L_{A^j} )^I}_K = \downarrow I \overset{\rightarrow K}{ \left[\begin{matrix}
-	0 & - \frac{\rho \delta^j_k}{2 c_s \sqrt{g^{jj}}} & \frac{1}{2 (c_s)^2} \\
-	\delta^{ij} & \rho (\delta^i_k - \delta^j_k \frac{g^{ij}}{g^{jj}}) & -\frac{\delta^{ij}}{(c_s)^2} \\
-	0 & \frac{\rho \delta^j_k}{2 c_s \sqrt{g^{jj}}} & \frac{1}{2 (c_s)^2}
-\end{matrix}\right]}$<br>
-<br>
-
-
-...with some index notation summation abuse present, especially surrounding the $j$ index, and projecting out the $j$'th index from the $\delta^i_k$ in the middle.
-I'll just write them out completely:<br>
-<br>
-eigenvalues, right eigenvectors, left eigenvectors:<br>
-
-$\Lambda_{A^x} = \left[\begin{matrix}
-	-c_s \sqrt{g^{xx}} & 0 & 0 & 0 & 0 \\
-	0 & 0 & 0 & 0 & 0 \\
-	0 & 0 & 0 & 0 & 0 \\
-	0 & 0 & 0 & 0 & 0 \\
-	0 & 0 & 0 & 0 & c_s \sqrt{g^{xx}} 
-\end{matrix}\right]$, 
-$V^R_{A^x} = \left[\begin{matrix}
-	1 & 1 & 0 & 0 & 1 \\
-	-\frac{c_s \sqrt{g^{xx}}}{\rho} & 0 & 0 & 0 & \frac{c_s \sqrt{g^{xx}}}{\rho} \\
-	-\frac{c_s g^{xy}}{\rho \sqrt{g^{xx}}} & 0 & \frac{1}{\rho} & 0 & \frac{c_s g^{xy}}{\rho \sqrt{g^{xx}}} \\
-	-\frac{c_s g^{xz}}{\rho \sqrt{g^{xx}}} & 0 & 0 & \frac{1}{\rho} & \frac{c_s g^{xz}}{\rho \sqrt{g^{xx}}} \\
-	(c_s)^2 & 0 & 0 & 0 & (c_s)^2 
-\end{matrix}\right]$
-$V^L_{A^x} = \left[\begin{matrix}
-	0 & -\frac{\rho}{2 c_s \sqrt{g^{xx}}} & 0 & 0 & \frac{1}{2 (c_s)^2} \\
-	1 & 0 & 0 & 0 & -\frac{1}{(c_s)^2} \\
-	0 & -\rho \frac{g^{xy}}{g^{xx}} & \rho & 0 & 0 \\
-	0 & -\rho \frac{g^{xz}}{g^{xx}} & 0 & \rho & 0 \\
-	0 & \frac{\rho}{2 c_s \sqrt{g^{xx}}} & 0 & 0 & \frac{1}{2 (c_s)^2}
-\end{matrix}\right]$
-<br>
-
-$\Lambda_{A^y} = \left[\begin{matrix}
-	-c_s \sqrt{g^{yy}} & 0 & 0 & 0 & 0 \\
-	0 & 0 & 0 & 0 & 0 \\
-	0 & 0 & 0 & 0 & 0 \\
-	0 & 0 & 0 & 0 & 0 \\
-	0 & 0 & 0 & 0 & c_s \sqrt{g^{yy}} 
-\end{matrix}\right]$
-$V^R_{A^y} = \left[\begin{matrix}
-	1 & 0 & 1 & 0 & 1 \\
-	-\frac{c_s g^{yx}}{\rho \sqrt{g^{yy}}} & \frac{1}{\rho} & 0 & 0 & \frac{c_s g^{yx}}{\rho \sqrt{g^{yy}}} \\
-	-\frac{c_s \sqrt{g^{yy}}}{\rho} & 0 & 0 & 0 & \frac{c_s \sqrt{g^{yy}}}{\rho} \\
-	-\frac{c_s g^{yz}}{\rho \sqrt{g^{yy}}} & 0 & 0 & \frac{1}{\rho} & \frac{c_s g^{yz}}{\rho \sqrt{g^{yy}}} \\
-	(c_s)^2 & 0 & 0 & 0 & (c_s)^2 
-\end{matrix}\right]$
-$V^L_{A^y} = \left[\begin{matrix}
-	0 & 0 & -\frac{\rho}{2 c_s \sqrt{g^{yy}}} & 0 & \frac{1}{2 (c_s)^2} \\
-	0 & \rho & -\rho \frac{g^{yx}}{g^{yy}}  & 0 & 0 \\ 
-	1 & 0 & 0 & 0 & -\frac{1}{(c_s)^2} \\
-	0 & 0 & -\rho \frac{g^{yz}}{g^{yy}} & \rho & 0 \\
-	0 & 0 & \frac{\rho}{2 c_s \sqrt{g^{yy}}} & 0 & \frac{1}{2 (c_s)^2}
-\end{matrix}\right]$
-<br>
-
-$\Lambda_{A^z} = \left[\begin{matrix}
-	-c_s \sqrt{g^{zz}} & 0 & 0 & 0 & 0 \\
-	0 & 0 & 0 & 0 & 0 \\
-	0 & 0 & 0 & 0 & 0 \\
-	0 & 0 & 0 & 0 & 0 \\
-	0 & 0 & 0 & 0 & c_s \sqrt{g^{zz}} 
-\end{matrix}\right]$
-$V^R_{A^z} = \left[\begin{matrix}
-	1 & 0 & 0 & 1 & 1 \\
-	-\frac{c_s g^{xz}}{\rho \sqrt{g^{zz}}} & \frac{1}{\rho} & 0 & 0 & \frac{c_s g^{xz}}{\rho \sqrt{g^{zz}}} \\
-	-\frac{c_s g^{yz}}{\rho \sqrt{g^{zz}}} & 0 & \frac{1}{\rho} & 0 & \frac{c_s g^{yz}}{\rho \sqrt{g^{zz}}} \\
-	-\frac{c_s \sqrt{g^{zz}}}{\rho} & 0 & 0 & 0 & \frac{c_s \sqrt{g^{zz}}}{\rho} \\
-	(c_s)^2 & 0 & 0 & 0 & (c_s)^2 
-\end{matrix}\right]$
-$V^L_{A^z} = \left[\begin{matrix}
-	0 & 0 & 0 & -\frac{\rho}{2 c_s \sqrt{g^{zz}}} & \frac{1}{2 (c_s)^2} \\
-	0 & \rho & 0 & -\rho \frac{g^{zx}}{g^{zz}} & 0 \\ 
-	0 & 0 & \rho & -\rho \frac{g^{zy}}{g^{zz}} & 0 \\
-	1 & 0 & 0 & 0 & -\frac{1}{(c_s)^2} \\
-	0 & 0 & 0 & \frac{\rho}{2 c_s \sqrt{g^{zz}}} & \frac{1}{2 (c_s)^2}
-\end{matrix}\right]$
-<br>
-
-Now $\frac{\partial F^{jI}}{\partial U^J}$
-$ = \frac{\partial F^{jI}}{\partial W^K} \cdot \frac{\partial W^K}{\partial U^J}$
-$ = \frac{\partial U}{\partial W} \frac{\partial W}{\partial U} \frac{\partial F}{\partial W} \frac{\partial W}{\partial U}$
-$ = \frac{\partial U}{\partial W} (A + v^j I) \frac{\partial W}{\partial U}$<br>
-<br>
-
-The eigenvalues of $F$ are $A + v^j I = \left[\begin{matrix}
-	v^j - c_s \sqrt{g^{jj}} & 0 & 0 & 0 & 0 \\
-	0 & v^j & 0 & 0 & 0 \\
-	0 & 0 & v^j & 0 & 0 \\
-	0 & 0 & 0 & v^j & 0 \\
-	0 & 0 & 0 & 0 & v^j + c_s \sqrt{g^{jj}}
+\end{matrix}\right] \left[\begin{matrix}
+	u_1 \\ u_2 \\ u_3
 \end{matrix}\right]$<br>
 <br>
 
-The right eigenvectors of $F^j$ are ${(V^R_{F^j})^I}_M = \frac{\partial U^I}{\partial W^K} \cdot {(V^R_{A^j})^K}_M$<br>
+$\left[\begin{matrix}
+	X^\rho \\ X^{v_x} \\ X^{v_y} \\ X^{v_z} \\ X^P
+\end{matrix}\right] = \left[\begin{matrix}
+	1 & 0 & 0 \\
+	0 & -n_y & -n_z \\
+	0 & n_x & 0 \\
+	0 & 0 & n_x \\
+	0 & 0 & 0 \\
+\end{matrix}\right] \left[\begin{matrix}
+	u_1 \\ u_2 \\ u_3
+\end{matrix}\right]$<br>
+<br>
+
+...for $n_x = 0, n_y \ne 0$:<br>
+<br>
+
+$\left[\begin{matrix}
+	0 & 0 & 1 & n_z / n_y & 0 \\
+	0 & 0 & 0 & 0 & 1 \\
+	0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0
+\end{matrix}\right] \left[\begin{matrix}
+	X^\rho \\ X^{v_x} \\ X^{v_y} \\ X^{v_z} \\ X^P
+\end{matrix}\right] = 0$<br>
+<br>
+
+$X^{v_y} + n_z / n_y X^{v_z} = 0$<br>
+$X^P = 0$<br>
+<br>
+
+Let $u_1 = X^\rho, u_2 = X^{v_z}, u_3 = X^{v_x}$<br>
+<br>
+
+$\left[\begin{matrix}
+	X^\rho \\ X^{v_x} \\ X^{v_y} \\ X^{v_z} \\ X^P
+\end{matrix}\right] = \left[\begin{matrix}
+	1 & 0 & 0 \\
+	0 & 0 & 1 \\
+	0 & -n_z / n_y & 0\\
+	0 & 1 & 0 \\
+	0 & 0 & 0 \\
+\end{matrix}\right] \left[\begin{matrix}
+	u_1 \\ u_2 \\ u_3
+\end{matrix}\right]$<br>
+<br>
+
+$\left[\begin{matrix}
+	X^\rho \\ X^{v_x} \\ X^{v_y} \\ X^{v_z} \\ X^P
+\end{matrix}\right] = \left[\begin{matrix}
+	1 & 0 & 0 \\
+	0 & 0 & 1 \\
+	0 & -n_z & 0 \\
+	0 & n_y & 0 \\
+	0 & 0 & 0 \\
+\end{matrix}\right] \left[\begin{matrix}
+	u_1 \\ u_2 \\ u_3
+\end{matrix}\right]$<br>
+<br>
+
+...for $n_x = 0, n_y = 0, n_z \ne 0$:<br>
+<br>
+
+$\left[\begin{matrix}
+	0 & 0 & 0 & 1 & 0 \\
+	0 & 0 & 0 & 0 & 1 \\
+	0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0
+\end{matrix}\right] \left[\begin{matrix}
+	X^\rho \\ X^{v_x} \\ X^{v_y} \\ X^{v_z} \\ X^P
+\end{matrix}\right] = 0$<br>
+<br>
+
+$X^{v_z} = 0$<br>
+$X^P = 0$<br>
+<br>
+
+Let $u_1 = X^\rho, u_2 = X^{v_x}, u_3 = X^{v_y}$<br>
+<br>
+
+$\left[\begin{matrix}
+	X^\rho \\ X^{v_x} \\ X^{v_y} \\ X^{v_z} \\ X^P
+\end{matrix}\right] = \left[\begin{matrix}
+	1 & 0 & 0 \\
+	0 & 1 & 0 \\
+	0 & 0 & 1 \\
+	0 & 0 & 0 \\
+	0 & 0 & 0 \\
+\end{matrix}\right] \left[\begin{matrix}
+	u_1 \\ u_2 \\ u_3
+\end{matrix}\right]$<br>
+<br>
+
+For $\lambda = 0$, and with orthonormal basis $\{n^j, (n_2)^j, (n_3)^j\}$, such that $|n_2|^2 = |n_3|^3 = |n|^2 = n^i n_i$ and $\epsilon_{ijk} n^i (n_2)^j (n_3)^k = 1, n^i (n_2)_i = 0, n^i (n_3)_i = 0$.<br>
+<br>
+
+$\left[\begin{matrix}
+	X^\rho \\ X^{v_x} \\ X^{v_y} \\ X^{v_z} \\ X^P
+\end{matrix}\right] = \left[\begin{matrix}
+	1 & 0 & 0 \\
+	0 & n_2^x & n_3^x \\
+	0 & n_2^y & n_3^y \\
+	0 & n_2^z & n_3^z \\
+	0 & 0 & 0 \\
+\end{matrix}\right] \left[\begin{matrix}
+	u_1 \\ u_2 \\ u_3
+\end{matrix}\right]$<br>
+<br>
+
+For $\lambda = |n| \sqrt{\frac{\gamma P}{\rho}}$:<br>
+<br>
+
+$\left[\begin{matrix}
+	-|n| \sqrt{\frac{\gamma P}{\rho}} & \rho n_x & \rho n_y & \rho n_z & 0 \\
+	0 & -|n| \sqrt{\frac{\gamma P}{\rho}} & 0 & 0 & \frac{1}{\rho} n^x \\
+	0 & 0 & -|n| \sqrt{\frac{\gamma P}{\rho}} & 0 & \frac{1}{\rho} n^y \\
+	0 & 0 & 0 & -|n| \sqrt{\frac{\gamma P}{\rho}} & \frac{1}{\rho} n^z \\
+	0 & n_x \gamma P & n_y \gamma P & n_z \gamma P & -|n| \sqrt{\frac{\gamma P}{\rho}}
+\end{matrix}\right] \left[\begin{matrix}
+	X^\rho \\ X^{v_x} \\ X^{v_y} \\ X^{v_z} \\ X^P
+\end{matrix}\right] = 0$<br>
+<br>
+
+$\left[\begin{matrix}
+	-|n| \sqrt{\frac{\gamma P}{\rho^3}} & n_x & n_y & n_z & 0 \\
+	0 & 1 & 0 & 0 & -\frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^x \\
+	0 & 0 & 1 & 0 & -\frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^y \\
+	0 & 0 & 0 & 1 & -\frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^z \\
+	0 & n_x & n_y & n_z & -|n| \sqrt{\frac{1}{\gamma P \rho}}
+\end{matrix}\right] \left[\begin{matrix}
+	X^\rho \\ X^{v_x} \\ X^{v_y} \\ X^{v_z} \\ X^P
+\end{matrix}\right] = 0$<br>
+<br>
+
+$\left[\begin{matrix}
+	-|n| \sqrt{\frac{\gamma P}{\rho^3}} & 0 & 0 & 0 & 
+		\frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^x n_x
+		+ \frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^y n_y
+		+ \frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^z n_z
+		\\
+	0 & 1 & 0 & 0 & -\frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^x \\
+	0 & 0 & 1 & 0 & -\frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^y \\
+	0 & 0 & 0 & 1 & -\frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^z \\
+	0 & 0 & 0 & 0 & -|n| \sqrt{\frac{1}{\gamma P \rho}}
+		+ \frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^x n_x
+		+ \frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^y n_y
+		+ \frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^z n_z
+\end{matrix}\right] \left[\begin{matrix}
+	X^\rho \\ X^{v_x} \\ X^{v_y} \\ X^{v_z} \\ X^P
+\end{matrix}\right] = 0$<br>
+<br>
+
+$\left[\begin{matrix}
+	-|n| \sqrt{\frac{\gamma P}{\rho^3}} & 0 & 0 & 0 & |n| \sqrt{{1}{\gamma P \rho}} \\
+	0 & 1 & 0 & 0 & -\frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^x \\
+	0 & 0 & 1 & 0 & -\frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^y \\
+	0 & 0 & 0 & 1 & -\frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^z \\
+	0 & 0 & 0 & 0 & 0
+\end{matrix}\right] \left[\begin{matrix}
+	X^\rho \\ X^{v_x} \\ X^{v_y} \\ X^{v_z} \\ X^P
+\end{matrix}\right] = 0$<br>
+<br>
+
+$\left[\begin{matrix}
+	1 & 0 & 0 & 0 & -\frac{\rho}{\gamma P} \\
+	0 & 1 & 0 & 0 & -\frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^x \\
+	0 & 0 & 1 & 0 & -\frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^y \\
+	0 & 0 & 0 & 1 & -\frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^z \\
+	0 & 0 & 0 & 0 & 0
+\end{matrix}\right] \left[\begin{matrix}
+	X^\rho \\ X^{v_x} \\ X^{v_y} \\ X^{v_z} \\ X^P
+\end{matrix}\right] = 0$<br>
+<br>
+
+Let $u = X^P$<br>
+<br>
+
+$\left[\begin{matrix}
+	X^\rho \\ X^{v_x} \\ X^{v_y} \\ X^{v_z} \\ X^P
+\end{matrix}\right] = u \left[\begin{matrix}
+	\frac{\rho}{\gamma P} \\
+	\frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^x \\
+	\frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^y \\
+	\frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^z \\
+	1
+\end{matrix}\right]$<br>
+<br>
+
+$\left[\begin{matrix}
+	X^\rho \\ X^{v_x} \\ X^{v_y} \\ X^{v_z} \\ X^P
+\end{matrix}\right] = u \left[\begin{matrix}
+	\sqrt{\frac{\rho^3}{\gamma P}} \\
+	\frac{n^x}{|n|} \\
+	\frac{n^y}{|n|} \\
+	\frac{n^z}{|n|} \\
+	\sqrt{\gamma P \rho}
+\end{matrix}\right]$<br>
+<br>
+
+$\left[\begin{matrix}
+	X^\rho \\ X^{v_x} \\ X^{v_y} \\ X^{v_z} \\ X^P
+\end{matrix}\right] = u \left[\begin{matrix}
+	\frac{\rho}{c_s} \\
+	\frac{n^x}{|n|} \\
+	\frac{n^y}{|n|} \\
+	\frac{n^z}{|n|} \\
+	\rho c_s
+\end{matrix}\right]$<br>
+<br>
+
+For $\lambda = -|n| \sqrt{\frac{\gamma P}{\rho}}$:<br>
+<br>
+
+$\left[\begin{matrix}
+	|n| \sqrt{\frac{\gamma P}{\rho}} & \rho n_x & \rho n_y & \rho n_z & 0 \\
+	0 & |n| \sqrt{\frac{\gamma P}{\rho}} & 0 & 0 & \frac{1}{\rho} n^x \\
+	0 & 0 & |n| \sqrt{\frac{\gamma P}{\rho}} & 0 & \frac{1}{\rho} n^y \\
+	0 & 0 & 0 & |n| \sqrt{\frac{\gamma P}{\rho}} & \frac{1}{\rho} n^z \\
+	0 & n_x \gamma P & n_y \gamma P & n_z \gamma P & |n| \sqrt{\frac{\gamma P}{\rho}}
+\end{matrix}\right] \left[\begin{matrix}
+	X^\rho \\ X^{v_x} \\ X^{v_y} \\ X^{v_z} \\ X^P
+\end{matrix}\right] = 0$<br>
+<br>
+
+$\left[\begin{matrix}
+	|n| \sqrt{\frac{\gamma P}{\rho^3}} & n_x & n_y & n_z & 0 \\
+	0 & 1 & 0 & 0 & \frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^x \\
+	0 & 0 & 1 & 0 & \frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^y \\
+	0 & 0 & 0 & 1 & \frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^z \\
+	0 & n_x & n_y & n_z & |n| \sqrt{\frac{1}{\gamma P \rho}}
+\end{matrix}\right] \left[\begin{matrix}
+	X^\rho \\ X^{v_x} \\ X^{v_y} \\ X^{v_z} \\ X^P
+\end{matrix}\right] = 0$<br>
+<br>
+
+$\left[\begin{matrix}
+	|n| \sqrt{\frac{\gamma P}{\rho^3}} & 0 & 0 & 0 & 
+		-\frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^x n_x
+		-\frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^y n_y
+		-\frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^z n_z
+		\\
+	0 & 1 & 0 & 0 & \frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^x \\
+	0 & 0 & 1 & 0 & \frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^y \\
+	0 & 0 & 0 & 1 & \frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^z \\
+	0 & 0 & 0 & 0 & |n| \sqrt{\frac{1}{\gamma P \rho}}
+		-\frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^x n_x
+		-\frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^y n_y
+		-\frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^z n_z
+\end{matrix}\right] \left[\begin{matrix}
+	X^\rho \\ X^{v_x} \\ X^{v_y} \\ X^{v_z} \\ X^P
+\end{matrix}\right] = 0$<br>
+<br>
+
+$\left[\begin{matrix}
+	|n| \sqrt{\frac{\gamma P}{\rho^3}} & 0 & 0 & 0 & -|n| \sqrt{\frac{1}{\gamma P \rho}} \\
+	0 & 1 & 0 & 0 & \frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^x \\
+	0 & 0 & 1 & 0 & \frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^y \\
+	0 & 0 & 0 & 1 & \frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^z \\
+	0 & 0 & 0 & 0 & 0
+\end{matrix}\right] \left[\begin{matrix}
+	X^\rho \\ X^{v_x} \\ X^{v_y} \\ X^{v_z} \\ X^P
+\end{matrix}\right] = 0$<br>
+<br>
+
+$\left[\begin{matrix}
+	1 & 0 & 0 & 0 & -\frac{\rho}{\gamma P} \\
+	0 & 1 & 0 & 0 & \frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^x \\
+	0 & 0 & 1 & 0 & \frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^y \\
+	0 & 0 & 0 & 1 & \frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^z \\
+	0 & 0 & 0 & 0 & 0
+\end{matrix}\right] \left[\begin{matrix}
+	X^\rho \\ X^{v_x} \\ X^{v_y} \\ X^{v_z} \\ X^P
+\end{matrix}\right] = 0$<br>
+<br>
+
+Let $u = X^P$<br>
+<br>
+
+$\left[\begin{matrix}
+	X^\rho \\ X^{v_x} \\ X^{v_y} \\ X^{v_z} \\ X^P
+\end{matrix}\right] = u \left[\begin{matrix}
+	\frac{\rho}{\gamma P} \\
+	-\frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^x \\
+	-\frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^y \\
+	-\frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^z \\
+	1
+\end{matrix}\right]$<br>
+<br>
+
+$\left[\begin{matrix}
+	X^\rho \\ X^{v_x} \\ X^{v_y} \\ X^{v_z} \\ X^P
+\end{matrix}\right] = u \left[\begin{matrix}
+	\sqrt{\frac{\rho^3}{\gamma P}} \\
+	-\frac{n^x}{|n|} \\
+	-\frac{n^y}{|n|} \\
+	-\frac{n^z}{|n|} \\
+	\sqrt{\gamma P \rho}
+\end{matrix}\right]$<br>
+<br>
+
+$\left[\begin{matrix}
+	X^\rho \\ X^{v_x} \\ X^{v_y} \\ X^{v_z} \\ X^P
+\end{matrix}\right] = u \left[\begin{matrix}
+	\frac{\rho}{c_s} \\
+	-\frac{n^x}{|n|} \\
+	-\frac{n^y}{|n|} \\
+	-\frac{n^z}{|n|} \\
+	\rho c_s
+\end{matrix}\right]$<br>
+<br>
+
+Right eigenvector matrix from collected right eigenvectors:<br>
+<br>
+
+$\left[\begin{matrix}
+	\frac{\rho}{c_s}	& 1 & 0 	& 0 	& \frac{\rho}{c_s} \\
+	-\frac{n^x}{|n|}	& 0 & n_2^x & n_3^x & \frac{n^x}{|n|} \\
+	-\frac{n^y}{|n|}	& 0 & n_2^y & n_3^y & \frac{n^y}{|n|} \\
+	-\frac{n^z}{|n|}	& 0 & n_2^z & n_3^z & \frac{n^z}{|n|} \\
+	\rho c_s 			& 0 & 0 	& 0 	& \rho c_s 
+\end{matrix}\right]$<br>
+<br>
+
+Left eigenvector matrix from inverse of right eigenvector matrix:<br>
+<br>
+
+$\left[\begin{matrix}
+	0 & -\frac{n_x}{2 |n|} 	& -\frac{n_y}{2 |n|} & -\frac{n_z}{2 |n|} 	& \frac{1}{2 \rho c_s} \\
+	1 &  0 					& 0					 & 0					& -\frac{1}{(c_s)^2} \\
+	0 &  (n_2)_x 			& (n_2)_y			 & (n_2)_z				& 0 \\
+	0 &  (n_3)_x 			& (n_3)_y			 & (n_3)_z				& 0 \\
+	0 &  \frac{n_x}{2 |n|}  & \frac{n_y}{2 |n|}  & \frac{n_z}{2 |n|} 	& \frac{1}{2 \rho c_s} 
+\end{matrix}\right]$<br>
+<br>
+
+Scale right eigenvector columns by $\{ \frac{c_s}{\rho}, 1, \frac{1}{\rho}, \frac{1}{\rho}, \frac{c_s}{\rho} \}$...<br>
+<br>
+
+$V_A^R = \left[\begin{matrix}
+	1							& 1 & 0 				   & 0 					  & 1 \\
+	-\frac{c_s n^x}{\rho |n|}	& 0 & \frac{1}{\rho} n_2^x & \frac{1}{\rho} n_3^x & \frac{c_s n^x}{\rho |n|} \\
+	-\frac{c_s n^y}{\rho |n|}	& 0 & \frac{1}{\rho} n_2^y & \frac{1}{\rho} n_3^y & \frac{c_s n^y}{\rho |n|} \\
+	-\frac{c_s n^z}{\rho |n|}	& 0 & \frac{1}{\rho} n_2^z & \frac{1}{\rho} n_3^z & \frac{c_s n^z}{\rho |n|} \\
+	(c_s)^2						& 0 & 0 				   & 0 					  & (c_s)^2
+\end{matrix}\right]$<br>
+<br>
+
+Scale left eigenvector rows by $\{ \frac{\rho}{c_s}, 1, \rho, \rho, \frac{\rho}{c_s} \}$...<br>
+<br>
+
+$V_A^L = \left[\begin{matrix}
+	0 & -\frac{\rho n_x}{2 c_s |n|} 	& -\frac{\rho n_y}{2 c_s |n|} 	& -\frac{\rho n_z}{2 c_s |n|} 	& \frac{1}{2 (c_s)^2} \\
+	1 &  0 								& 0							 	& 0								& -\frac{1}{(c_s)^2} \\
+	0 &  \rho (n_2)_x 					& \rho (n_2)_y					& \rho (n_2)_z					& 0 \\
+	0 &  \rho (n_3)_x 					& \rho (n_3)_y					& \rho (n_3)_z					& 0 \\
+	0 &  \frac{\rho n_x}{2 c_s |n|}		& \frac{\rho n_y}{2 c_s |n|}	& \frac{\rho n_z}{2 c_s |n|} 	& \frac{1}{2 (c_s)^2} 
+\end{matrix}\right]$<br>
+<br>
+
+Eigensystem of acoustic matrix:<br>
+<br>
+
+${(\Lambda_A)^I}_K = \downarrow I \overset{\rightarrow J}{ \left[\begin{matrix}
+	-c_s |n| & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & c_s |n|
+\end{matrix}\right]}$<br>
+<br>
+
+${(V^R_A)^I}_J = \downarrow I \overset{\rightarrow J}{ \left[\begin{matrix}
+	1							& 1 & 0 				   & 0 					  & 1 \\
+	-\frac{c_s n^x}{\rho |n|}	& 0 & \frac{1}{\rho} n_2^x & \frac{1}{\rho} n_3^x & \frac{c_s n^x}{\rho |n|} \\
+	-\frac{c_s n^y}{\rho |n|}	& 0 & \frac{1}{\rho} n_2^y & \frac{1}{\rho} n_3^y & \frac{c_s n^y}{\rho |n|} \\
+	-\frac{c_s n^z}{\rho |n|}	& 0 & \frac{1}{\rho} n_2^z & \frac{1}{\rho} n_3^z & \frac{c_s n^z}{\rho |n|} \\
+	(c_s)^2						& 0 & 0 				   & 0 					  & (c_s)^2
+\end{matrix}\right]}$<br>
+<br>
+
+${(V^L_A)^I}_J = \downarrow I \overset{\rightarrow J}{ \left[\begin{matrix}
+	0 & -\frac{\rho n_x}{2 c_s |n|} 	& -\frac{\rho n_y}{2 c_s |n|} 	& -\frac{\rho n_z}{2 c_s |n|} 	& \frac{1}{2 (c_s)^2} \\
+	1 &  0 								& 0							 	& 0								& -\frac{1}{(c_s)^2} \\
+	0 &  \rho (n_2)_x 					& \rho (n_2)_y					& \rho (n_2)_z					& 0 \\
+	0 &  \rho (n_3)_x 					& \rho (n_3)_y					& \rho (n_3)_z					& 0 \\
+	0 &  \frac{\rho n_x}{2 c_s |n|}		& \frac{\rho n_y}{2 c_s |n|}	& \frac{\rho n_z}{2 c_s |n|} 	& \frac{1}{2 (c_s)^2} 
+\end{matrix}\right]}$<br>
+<br>
+
+<br>
+
+Now $\frac{\partial F^I}{\partial U^J}$
+$ = \frac{\partial F^I}{\partial W^K} \cdot \frac{\partial W^K}{\partial U^J}$
+$ = \frac{\partial U}{\partial W} \frac{\partial W}{\partial U} \frac{\partial F}{\partial W} \frac{\partial W}{\partial U}$
+$ = \frac{\partial U}{\partial W} (A + v^l n_l I) \frac{\partial W}{\partial U}$<br>
+<br>
+
+The eigenvalues of $F$ are $A + v^l n_l I = \left[\begin{matrix}
+	v^l n_l - c_s |n| & 0 & 0 & 0 & 0 \\
+	0 & v^l n_l & 0 & 0 & 0 \\
+	0 & 0 & v^l n_l & 0 & 0 \\
+	0 & 0 & 0 & v^l n_l & 0 \\
+	0 & 0 & 0 & 0 & v^l n_l + c_s |n|
+\end{matrix}\right]$<br>
+<br>
+
+The right eigenvectors of $F$ are ${(V^R_F)^I}_J = \frac{\partial U^I}{\partial W^K} \cdot {(V^R_A)^K}_J$<br>
 <br>
 
 $= \downarrow I \overset{\rightarrow K}{\left[\begin{matrix}
-	1 & 0 & 0 \\
-	v^i & \rho \delta^i_k & 0 \\
-	\frac{1}{2} v^2 & \rho v_k & 1/\tilde\gamma
-\end{matrix}\right]} \cdot \downarrow K \overset{\rightarrow M}{ \left[\begin{matrix}
-	1 & \delta^j_m & 1 \\
-	-\frac{c_s g^{kj}}{\rho \sqrt{g^{jj}}} & \frac{1}{\rho} (\delta^k_m - \delta^{kj} \delta_{jm}) & \frac{c_s g^{kj}}{\rho \sqrt{g^{jj}}} \\
-	(c_s)^2 & 0 & (c_s)^2
+	1 & 0 & 0 & 0 & 0 \\
+	v^x & \rho & 0 & 0 & 0 \\
+	v^y & 0 & \rho & 0 & 0 \\
+	v^z & 0 & 0 & \rho & 0 \\
+	\frac{1}{2} v^2 & \rho v_x & \rho v_y & \rho v_z & \frac{1}{\tilde\gamma}
+\end{matrix}\right]} \cdot \downarrow K \overset{\rightarrow J}{ \left[\begin{matrix}
+	1							& 1 & 0 				   & 0 					  & 1 \\
+	-\frac{c_s n^x}{\rho |n|}	& 0 & \frac{1}{\rho} n_2^x & \frac{1}{\rho} n_3^x & \frac{c_s n^x}{\rho |n|} \\
+	-\frac{c_s n^y}{\rho |n|}	& 0 & \frac{1}{\rho} n_2^y & \frac{1}{\rho} n_3^y & \frac{c_s n^y}{\rho |n|} \\
+	-\frac{c_s n^z}{\rho |n|}	& 0 & \frac{1}{\rho} n_2^z & \frac{1}{\rho} n_3^z & \frac{c_s n^z}{\rho |n|} \\
+	(c_s)^2						& 0 & 0 				   & 0 					  & (c_s)^2
 \end{matrix}\right]}$
-$ = \downarrow I \overset{\rightarrow M}{\left[\begin{matrix}
-	1 & \delta^j_m & 1 \\
-	v^i - c_s g^{ij} / \sqrt{g^{jj}} &
-		\delta^i_m + \delta^j_m (v^i  - \delta^{ij}) &
-			v^i + c_s g^{ij} / \sqrt{g^{jj}} \\
-	h_{total} - v^j c_s / \sqrt{g^{jj}} &
-		\frac{1}{2} v^2 \delta^j_m + v_m (1 - \delta^j_m) &
-			h_{total} + v^j c_s / \sqrt{g^{jj}}
+$ = \downarrow I \overset{\rightarrow J}{\left[\begin{matrix}
+	1 																			& 1 			  & 0 			& 0 		  	& 1 \\
+	v^x - c_s \frac{n^x}{|n|}													& v^x 			  & (n_2)^x 	& (n_3)^x 		& v^x + c_s \frac{n^x}{|n|} \\
+	v^y - c_s \frac{n^y}{|n|}													& v^y 			  & (n_2)^y 	& (n_3)^y 		& v^y + c_s \frac{n^y}{|n|} \\
+	v^z - c_s \frac{n^z}{|n|}													& v^z 			  & (n_2)^z 	& (n_3)^z 		& v^z + c_s \frac{n^z}{|n|} \\
+	\frac{v^2}{2} + \frac{1}{\tilde\gamma} (c_s)^2 - c_s v^k \frac{n_k}{|n|}	& \frac{1}{2} v^2 & v^k (n_2)_k & v^k (n_3)_k 	& \frac{v^2}{2} + \frac{1}{\tilde\gamma} (c_s)^2 + c_s v^k \frac{n_k}{|n|}
+\end{matrix}\right]}$<br>
+$ = \downarrow I \overset{\rightarrow J}{\left[\begin{matrix}
+	1 									& 1 			  & 0 			& 0 		  	& 1 \\
+	v^x - c_s \frac{n^x}{|n|}			& v^x 			  & (n_2)^x 	& (n_3)^x 		& v^x + c_s \frac{n^x}{|n|} \\
+	v^y - c_s \frac{n^y}{|n|}			& v^y 			  & (n_2)^y 	& (n_3)^y 		& v^y + c_s \frac{n^y}{|n|} \\
+	v^z - c_s \frac{n^z}{|n|}			& v^z 			  & (n_2)^z 	& (n_3)^z 		& v^z + c_s \frac{n^z}{|n|} \\
+	h_{total} - c_s v^k \frac{n_k}{|n|}	& \frac{1}{2} v^2 & v^k (n_2)_k & v^k (n_3)_k 	& h_{total} + c_s v^k \frac{n_k}{|n|}
 \end{matrix}\right]}$<br>
 <br>
 
-The left eigenvectors of $F^j$ are ${(V^L_{F^j})^I}_M = V^L_{A^j} \cdot \frac{\partial W}{\partial U}$<br>
+The left eigenvectors of $F$ are ${(V^L_F)^I}_J = {(V^L_A)^I}_K \cdot \frac{\partial W^K}{\partial U^J}$<br>
 <br>
 
 $= \downarrow I \overset{\rightarrow K}{ \left[\begin{matrix}
-	0 & - \frac{\rho \delta^j_k}{2 c_s \sqrt{g^{jj}}} & \frac{1}{2 (c_s)^2} \\
-	\delta^{ij} & \rho (\delta^i_k - \delta^j_k \frac{g^{ij}}{g^{jj}}) & -\frac{\delta^{ij}}{(c_s)^2} \\
-	0 & \frac{\rho \delta^j_k}{2 c_s \sqrt{g^{jj}}} & \frac{1}{2 (c_s)^2}
+	0 & -\frac{\rho n_x}{2 c_s |n|} 	& -\frac{\rho n_y}{2 c_s |n|} 	& -\frac{\rho n_z}{2 c_s |n|} 	& \frac{1}{2 (c_s)^2} \\
+	1 &  0 								& 0							 	& 0								& -\frac{1}{(c_s)^2} \\
+	0 &  \rho (n_2)_x 					& \rho (n_2)_y					& \rho (n_2)_z					& 0 \\
+	0 &  \rho (n_3)_x 					& \rho (n_3)_y					& \rho (n_3)_z					& 0 \\
+	0 &  \frac{\rho n_x}{2 c_s |n|}		& \frac{\rho n_y}{2 c_s |n|}	& \frac{\rho n_z}{2 c_s |n|} 	& \frac{1}{2 (c_s)^2} 
 \end{matrix}\right]}
-\cdot \downarrow K \overset{\rightarrow M}{ \left[\begin{matrix}
-	1 & 0 & 0 \\
-	-v^k / \rho & \delta^k_m / \rho & 0 \\
-	\frac{1}{2} \tilde\gamma v^2 & -\tilde\gamma v_m & \tilde\gamma
+\cdot \downarrow K \overset{\rightarrow J}{ \left[\begin{matrix}
+	1 & 0 & 0 & 0 & 0 \\
+	-\frac{1}{\rho} v^x & \frac{1}{\rho} & 0 & 0 & 0 \\
+	-\frac{1}{\rho} v^y & 0 & \frac{1}{\rho} & 0 & 0 \\
+	-\frac{1}{\rho} v^z & 0 & 0 & \frac{1}{\rho} & 0 \\
+	\frac{1}{2} \tilde\gamma v^2 & -\tilde\gamma v_x & -\tilde\gamma v_y & -\tilde\gamma v_z & \tilde\gamma
 \end{matrix}\right]}$<br>
+$= \downarrow I \overset{\rightarrow J}{ \left[\begin{matrix}
+	\frac{1}{2 c_s} (\tilde\gamma \frac{v^2}{2 c_s} + v^k \frac{n_k}{|n|} ) &
+	\frac{1}{2 c_s} ( -\tilde\gamma \frac{1}{c_s} v_x - \frac{n^x}{|n|} ) &
+	\frac{1}{2 c_s} ( -\tilde\gamma \frac{1}{c_s} v_y - \frac{n^y}{|n|} ) &
+	\frac{1}{2 c_s} ( -\tilde\gamma \frac{1}{c_s} v_z - \frac{n^z}{|n|} ) &
+	\frac{\tilde\gamma}{2 (c_s)^2} \\
 
-$= \frac{1}{2 (c_s)^2} \cdot \downarrow I \overset{\rightarrow M}{ \left[\begin{matrix}
-	\frac{1}{2} \tilde{\gamma} v^2 + c_s v^j / \sqrt{g^{jj}} &
-		-\delta^j_m c_s / \sqrt{g^{jj}} -\tilde{\gamma} v_m &
-			\tilde{\gamma} \\
-	\delta^{ij} (2 (c_s)^2 - \tilde{\gamma} v^2) + 2 (c_s)^2 (v^j \frac{g^{ij}}{g^{jj}} - v^i) &
-		2 (c_s)^2 (\delta^i_m - \delta^j_m \frac{g^{ij}}{g^{jj}}) + 2 \delta^{ij} \tilde{\gamma} v_m &
-			-2 \delta^{ij} \tilde{\gamma} \\
-	 \frac{1}{2} \tilde{\gamma} v^2 - c_s v^j / \sqrt{g^{jj}} &
-		\delta^j_m c_s / \sqrt{g^{jj}} - \tilde{\gamma} v_m &
-			\tilde{\gamma}
+	1 - \frac{\tilde\gamma v^2}{2 (c_s)^2} &
+	\frac{ \tilde\gamma v_x }{(c_s)^2} &
+	\frac{ \tilde\gamma v_y }{(c_s)^2} &
+	\frac{ \tilde\gamma v_z }{(c_s)^2} &
+	-\frac{ \tilde\gamma }{(c_s)^2} \\
+
+	-v^l (n_2)_l &
+	(n_2)_x &
+	(n_2)_y &
+	(n_2)_z &
+	0 \\
+	
+	-v^l (n_3)_l &
+	(n_3)_x &
+	(n_3)_y &
+	(n_3)_z &
+	0 \\
+
+	\frac{1}{2 c_s} (\tilde\gamma \frac{v^2}{2 c_s} - v^k \frac{n_k}{|n|} ) &
+	\frac{1}{2 c_s} ( -\tilde\gamma \frac{1}{c_s} v_x + \frac{n^x}{|n|} ) &
+	\frac{1}{2 c_s} ( -\tilde\gamma \frac{1}{c_s} v_y + \frac{n^y}{|n|} ) &
+	\frac{1}{2 c_s} ( -\tilde\gamma \frac{1}{c_s} v_z + \frac{n^z}{|n|} ) &
+	\frac{\tilde\gamma}{2 (c_s)^2} \\
+	
 \end{matrix}\right]}$<br>
-
-<br>
-
-That's really ugly so I will write it out completely as well<br>
-<br>
-eigenvalues, right eigenvectors, left eigenvectors:<br>
-<br>
-
-$\Lambda_{F^x} = \left[\begin{matrix}
-	v^x - c_s \sqrt{g^{xx}} & 0 & 0 & 0 & 0 \\
-	0 & v^x & 0 & 0 & 0 \\
-	0 & 0 & v^x & 0 & 0 \\
-	0 & 0 & 0 & v^x & 0 \\
-	0 & 0 & 0 & 0 & v^x + c_s \sqrt{g^{xx}}
-\end{matrix}\right]$
-
-$V^R_{F^x} = \left[\begin{matrix}
-	1 & 1 & 0 & 0 & 1\\
-	v^x- c_s \sqrt{g^{xx}} & v^x & 0 & 0 & v^x+ c_s \sqrt{g^{xx}}\\
-	v^y-\frac{ c_s g^{xy}}{\sqrt{g^{xx}}} & v^y & 1 & 0 & v^y+\frac{ c_s g^{xy}}{\sqrt{g^{xx}}}\\
-	v^z-\frac{ c_s g^{xz}}{\sqrt{g^{xx}}} & v^z & 0 & 1 & v^z+\frac{ c_s g^{xz}}{\sqrt{g^{xx}}}\\
-	h_{total}-\frac{ c_s v^x}{\sqrt{g^{xx}}} & \frac{v^2}{2} & v_y & v_z & \frac{ c_s v^x}{\sqrt{g^{xx}}}+h_{total}
-\end{matrix}\right]$	
-
-$V^L_{F^x} = \left[\begin{matrix}
-	\frac{v^x}{2 c_s \sqrt{g^{xx}}}+\frac{\tilde{\gamma} v^2}{4{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_x}{2{{ c_s }^{2}}}-\frac{1}{2 c_s \sqrt{g^{xx}}} & -\frac{\tilde{\gamma} v_y}{2{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_z}{2{{ c_s }^{2}}} & \frac{\tilde{\gamma}}{2{{ c_s }^{2}}}\\
-	1-\frac{\tilde{\gamma} v^2}{2{{ c_s }^{2}}} & \frac{\tilde{\gamma} v_x}{{{ c_s }^{2}}} & \frac{\tilde{\gamma} v_y}{{{ c_s }^{2}}} & \frac{\tilde{\gamma} v_z}{{{ c_s }^{2}}} & -\frac{\tilde{\gamma}}{{{ c_s }^{2}}}\\
-	\frac{g^{xy} v^x}{g^{xx}}-v^y & -\frac{g^{xy}}{g^{xx}} & 1 & 0 & 0\\
-	\frac{g^{xz} v^x}{g^{xx}}-v^z & -\frac{g^{xz}}{g^{xx}} & 0 & 1 & 0\\
-	\frac{\tilde{\gamma} v^2}{4{{ c_s }^{2}}}-\frac{v^x}{2 c_s \sqrt{g^{xx}}} & -\frac{\tilde{\gamma} v_x}{2{{ c_s }^{2}}}+\frac{1}{2 c_s \sqrt{g^{xx}}} & -\frac{\tilde{\gamma} v_y}{2{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_z}{2{{ c_s }^{2}}} & \frac{\tilde{\gamma}}{2{{ c_s }^{2}}}
-\end{matrix}\right]$
-
-<br>
-
-$\Lambda_{F^y} = \left[\begin{matrix}
-	v^y - c_s \sqrt{g^{yy}} & 0 & 0 & 0 & 0 \\
-	0 & v^y & 0 & 0 & 0 \\
-	0 & 0 & v^y & 0 & 0 \\
-	0 & 0 & 0 & v^y & 0 \\
-	0 & 0 & 0 & 0 & v^y + c_s \sqrt{g^{yy}}
-\end{matrix}\right]$
-
-$V^R_{F^y} = \left[\begin{matrix}
-	1 & 0 & 1 & 0 & 1\\
-	v^x-\frac{ c_s g^{xy}}{\sqrt{g^{yy}}} & 1 & v^x & 0 & v^x+\frac{ c_s g^{xy}}{\sqrt{g^{yy}}}\\
-	v^y- c_s \sqrt{g^{yy}} & 0 & v^y & 0 & v^y+ c_s \sqrt{g^{yy}}\\
-	v^z-\frac{ c_s g^{yz}}{\sqrt{g^{yy}}} & 0 & v^z & 1 & v^z+\frac{ c_s g^{yz}}{\sqrt{g^{yy}}}\\
-	h_{total}-\frac{ c_s v^y}{\sqrt{g^{yy}}} & v_x & \frac{v^2}{2} & v_z & \frac{ c_s v^y}{\sqrt{g^{yy}}}+h_{total}
-\end{matrix}\right]$
-
-$V^L_{F^y} = \left[\begin{matrix}
-	\frac{v^y}{2 c_s \sqrt{g^{yy}}}+\frac{\tilde{\gamma} v^2}{4{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_x}{2{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_y}{2{{ c_s }^{2}}}-\frac{1}{2 c_s \sqrt{g^{yy}}} & -\frac{\tilde{\gamma} v_z}{2{{ c_s }^{2}}} & \frac{\tilde{\gamma}}{2{{ c_s }^{2}}}\\
-	\frac{g^{xy} v^y}{g^{yy}}-v^x & 1 & -\frac{g^{xy}}{g^{yy}} & 0 & 0\\
-	1-\frac{\tilde{\gamma} v^2}{2{{ c_s }^{2}}} & \frac{\tilde{\gamma} v_x}{{{ c_s }^{2}}} & \frac{\tilde{\gamma} v_y}{{{ c_s }^{2}}} & \frac{\tilde{\gamma} v_z}{{{ c_s }^{2}}} & -\frac{\tilde{\gamma}}{{{ c_s }^{2}}}\\
-	\frac{g^{yz} v^y}{g^{yy}}-v^z & 0 & -\frac{g^{yz}}{g^{yy}} & 1 & 0\\
-	\frac{\tilde{\gamma} v^2}{4{{ c_s }^{2}}}-\frac{v^y}{2 c_s \sqrt{g^{yy}}} & -\frac{\tilde{\gamma} v_x}{2{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_y}{2{{ c_s }^{2}}}+\frac{1}{2 c_s \sqrt{g^{yy}}} & -\frac{\tilde{\gamma} v_z}{2{{ c_s }^{2}}} & \frac{\tilde{\gamma}}{2{{ c_s }^{2}}}
-\end{matrix}\right]$
-
-<br>
-
-$\Lambda_{F^z} = \left[\begin{matrix}
-	v^z - c_s \sqrt{g^{zz}} & 0 & 0 & 0 & 0 \\
-	0 & v^z & 0 & 0 & 0 \\
-	0 & 0 & v^z & 0 & 0 \\
-	0 & 0 & 0 & v^z & 0 \\
-	0 & 0 & 0 & 0 & v^z + c_s \sqrt{g^{zz}}
-\end{matrix}\right]$
-
-$V^R_{F^z} = \left[\begin{matrix}
-	1 & 0 & 0 & 1 & 1\\
-	v^x-\frac{ c_s g^{xz}}{\sqrt{g^{zz}}} & 1 & 0 & v^x & v^x+\frac{ c_s g^{xz}}{\sqrt{g^{zz}}}\\
-	v^y-\frac{ c_s g^{yz}}{\sqrt{g^{zz}}} & 0 & 1 & v^y & v^y+\frac{ c_s g^{yz}}{\sqrt{g^{zz}}}\\
-	v^z- c_s \sqrt{g^{zz}} & 0 & 0 & v^z & v^z+ c_s \sqrt{g^{zz}}\\
-	h_{total}-\frac{ c_s v^z}{\sqrt{g^{zz}}} & v_x & v_y & \frac{v^2}{2} & \frac{ c_s v^z}{\sqrt{g^{zz}}}+h_{total}
-\end{matrix}\right]$
-
-$V^L_{F^z} = \left[\begin{matrix}
-	\frac{v^z}{2 c_s \sqrt{g^{zz}}}+\frac{\tilde{\gamma} v^2}{4{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_x}{2{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_y}{2{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_z}{2{{ c_s }^{2}}}-\frac{1}{2 c_s \sqrt{g^{zz}}} & \frac{\tilde{\gamma}}{2{{ c_s }^{2}}}\\
-	\frac{g^{xz} v^z}{g^{zz}}-v^x & 1 & 0 & -\frac{g^{xz}}{g^{zz}} & 0\\
-	\frac{g^{yz} v^z}{g^{zz}}-v^y & 0 & 1 & -\frac{g^{yz}}{g^{zz}} & 0\\
-	1-\frac{\tilde{\gamma} v^2}{2{{ c_s }^{2}}} & \frac{\tilde{\gamma} v_x}{{{ c_s }^{2}}} & \frac{\tilde{\gamma} v_y}{{{ c_s }^{2}}} & \frac{\tilde{\gamma} v_z}{{{ c_s }^{2}}} & -\frac{\tilde{\gamma}}{{{ c_s }^{2}}}\\
-	\frac{\tilde{\gamma} v^2}{4{{ c_s }^{2}}}-\frac{v^z}{2 c_s \sqrt{g^{zz}}} & -\frac{\tilde{\gamma} v_x}{2{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_y}{2{{ c_s }^{2}}} & -\frac{\tilde{\gamma} v_z}{2{{ c_s }^{2}}}+\frac{1}{2 c_s \sqrt{g^{zz}}} & \frac{\tilde{\gamma}}{2{{ c_s }^{2}}}
-\end{matrix}\right]$
 
 <br>
 
