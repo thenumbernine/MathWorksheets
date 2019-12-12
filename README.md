@@ -68,6 +68,8 @@ Here's the CDN URLs:
 
 [EMHD Linear Stability Analysis](https://thenumbernine.github.io/math/EMHD%20Linear%20Stability%20Analysis.html)
 
+[Einstein-Cartan-Sciama-Kibble](https://thenumbernine.github.io/math/Einstein%2dCartan%2dSciama%2dKibble.html)
+
 [Einstein-Maxwell Hyperbolic Conservation Laws](https://thenumbernine.github.io/math/Einstein%2dMaxwell%20Hyperbolic%20Conservation%20Laws.html)
 
 [Electromagnetic Tensor Self-Dual](https://thenumbernine.github.io/math/Electromagnetic%20Tensor%20Self%2dDual.html)
@@ -158,6 +160,8 @@ Here's the CDN URLs:
 
 [Numerical Relativity/adm from efe](https://thenumbernine.github.io/math/Numerical%20Relativity/adm%20from%20efe.html)
 
+[Numerical Relativity/bssnok-chi](https://thenumbernine.github.io/math/Numerical%20Relativity/bssnok%2dchi.html)
+
 [Numerical Relativity/bssnok-scalar](https://thenumbernine.github.io/math/Numerical%20Relativity/bssnok%2dscalar.html)
 
 [Numerical Relativity/bssnok](https://thenumbernine.github.io/math/Numerical%20Relativity/bssnok.html)
@@ -169,6 +173,8 @@ Here's the CDN URLs:
 [Numerical Relativity/trace-free](https://thenumbernine.github.io/math/Numerical%20Relativity/trace%2dfree.html)
 
 [Numerical Relativity/z4](https://thenumbernine.github.io/math/Numerical%20Relativity/z4.html)
+
+[Quantum Computing](https://thenumbernine.github.io/math/Quantum%20Computing.html)
 
 [Relativistic Electromagnetism metric](https://thenumbernine.github.io/math/Relativistic%20Electromagnetism%20metric.html)
 
