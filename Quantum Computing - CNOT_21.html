@@ -1,0 +1,412 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<title>Quantum Computing</title>
+	</head>
+	<body>
+
+Following the notes "Quantum Information and Computing" lecture notes by Richard Jozsa, DAMTP Cambridge, January 2019 version.<br>
+<br>
+<br>
+<hr>
+Define a qubit as a $\mathbb{C}^2$ vector space.<br>
+<br>
+
+Let $|\psi\rangle$ be a '-ket' vector in our qubit with components (and vector representation).
+So $|\psi\rangle = \left[\begin{matrix}
+	\psi_0 \\ \psi_1
+\end{matrix}\right]$<br>
+<br>
+
+Let $\langle\psi| = (|\psi\rangle)^*$ define the 'bra-' vector which is the Hermitian adjoint of the respective '-ket vector.<br>
+So $\langle\psi| = \left[\begin{matrix}
+	\overline{\psi_0} & \overline{\psi_1}
+\end{matrix}\right]$<br>
+<br>
+
+Notice that combining 'bra-' and '-ket' vectors will combine the 'bra(c)ket' as an inner product:<br>
+$\langle a|b \rangle = \langle a, b \rangle 
+= (a_0 \langle 0| + a_1 \langle 1|) (b_0 |0\rangle + b_1 |1\rangle)
+= a_0 b_0 \langle 0|0\rangle + a_1 b_0 \langle 1|0\rangle + a_0 b_1 \langle 0|1\rangle + a_1 b_1 \langle 1|1\rangle
+= a_0 b_0 + a_1 b_1 
+$<br>
+<br>
+
+Repeating the process using vector notation:<br>
+$\langle a|b \rangle = \langle a, b \rangle 
+= \left[\begin{matrix}
+	a_0 & a_1
+\end{matrix}\right] \left[\begin{matrix}
+	b_0 \\ b_1
+\end{matrix}\right]
+= a_0 b_0 + a_1 b_1$<br>
+<br>
+
+In analogy to differential geometry, '-ket' vectors can be thought of as vectors and 'bra-' vectors can be thought of as one-forms.<br>
+<br>
+
+Bra(c)ket vectors combine in inner products $\langle e_i | e_j \rangle = \delta_{ij}$ in the same way that our differential geometry one-form basis $e^i = dx^i$ and vector basis $e_i = \frac{\partial}{\partial x^i}$ 
+combine to form an inner product: $e^i(e_j) = dx^i ( \frac{\partial}{\partial x^j} ) = \frac{\partial x^i}{\partial x^j} = \delta^i_j$<br>
+<br>
+
+<hr>
+1-qubit basis vectors: <br>
+Let $\{ |0\rangle, |1\rangle \}$ be our qubit vector space orthonormal basis.<br>
+<br>
+
+Lets use $\{ |0\rangle, |1\rangle \}$ for our vector component, so that we represent the basis as:<br>
+$|0 \rangle = \left[\begin{matrix} 1 \\ 0 \end{matrix} \right]$, $|1 \rangle = \left[\begin{matrix} 0 \\ 1 \end{matrix} \right]$<br>
+<br>
+
+Combine our basis as column vectors to explicitly state that our basis as columns is equal to the identity matrix:<br>
+
+$\left[\begin{matrix}
+	&|& \\
+	|0\rangle &|& |1\rangle \\
+	&|&
+\end{matrix}\right] = 
+\left[\begin{matrix}
+	1 & 0 \\
+	0 & 1
+\end{matrix}\right]$<br> 
+<br>
+
+One alternative basis that comes up often:<br>
+$|+\rangle = \frac{1}{\sqrt{2}} (|0\rangle + |1\rangle)$<br>
+$|-\rangle = \frac{1}{\sqrt{2}} (|0\rangle - |1\rangle)$<br>
+<br>
+Using components of our $\{ |0\rangle, |1\rangle \}$, we find:<br>
+$|+\rangle = \frac{1}{\sqrt{2}} \left[\begin{matrix} 1 \\ 1 \end{matrix}\right]$<br> 
+$|-\rangle = \frac{1}{\sqrt{2}} \left[\begin{matrix} 1 \\ -1 \end{matrix}\right]$<br> 
+<br>
+
+Computing the inverse, we get:<br>
+$|+\rangle = \frac{1}{\sqrt{2}} \left[\begin{matrix} &|& \\ |0\rangle &|& |1\rangle \\ &|& \end{matrix}\right] \left[\begin{matrix} 1 \\ 1 \end{matrix}\right]$<br>
+$|-\rangle = \frac{1}{\sqrt{2}} \left[\begin{matrix} &|& \\ |0\rangle &|& |1\rangle \\ &|& \end{matrix}\right] \left[\begin{matrix} 1 \\ -1 \end{matrix}\right]$<br>
+...combined...<br>
+$\left[\begin{matrix}
+	&|& \\
+	|+\rangle &|& |-\rangle \\
+	&|&
+\end{matrix}\right] = \frac{1}{\sqrt{2}} \left[\begin{matrix} &|& \\ |0\rangle &|& |1\rangle \\ &|& \end{matrix}\right] 
+\left[\begin{matrix} 1 & 1 \\ 1 & -1 \end{matrix}\right]
+= \frac{1}{\sqrt{2}} \left[\begin{matrix}
+	1 & 1 \\
+	1 & -1
+\end{matrix}\right]$<br>
+<br>
+
+So what is the $\{ |0\rangle, |1\rangle \}$ basis in terms of the $\{ |+\rangle, |-\rangle \}$ basis?<br>
+<br>
+$\left[\begin{matrix} &|& \\ |0\rangle &|& |1\rangle \\ &|& \end{matrix}\right]
+= \left[\begin{matrix}
+	&|& \\
+	|+\rangle &|& |-\rangle \\
+	&|&
+\end{matrix}\right] 
+	\left( \frac{1}{\sqrt{2}} \left[\begin{matrix} 1 & 1 \\ 1 & -1 \end{matrix}\right] \right)^{-1}
+= \left[\begin{matrix}
+	&|& \\
+	|+\rangle &|& |-\rangle \\
+	&|&
+\end{matrix}\right] 
+	\frac{1}{\sqrt{2}} \left[\begin{matrix} 1 & 1 \\ 1 & -1 \end{matrix}\right]
+$<br>
+<br>
+...which means...<br>
+<br>
+$|0\rangle = \frac{1}{\sqrt{2}} (|+\rangle + |-\rangle)$<br>
+$|1\rangle = \frac{1}{\sqrt{2}} (|+\rangle - |-\rangle)$<br>
+<br>
+
+Which shows us that the transform from $\{ |0\rangle, |1\rangle \}$ to $\{ |+\rangle, |-\rangle \}$ is its own inverse.<br>
+<br>
+
+<hr>
+Next comes the outer product:<br>
+<br> 
+
+For the outer product of '-ket' and '-ket vectors:<br>
+$|a \rangle = \left[\begin{matrix} a_0 \\ a_1 \end{matrix}\right]$ and $|b \rangle = \left[\begin{matrix} b_0 \\ b_1 \end{matrix} \right]$ we get:<br>
+$|a \rangle \otimes |b \rangle 
+= |a \rangle |b \rangle 
+= |ab \rangle 
+= \left[\begin{matrix}
+	a_0 |b \rangle \\ a_1 |b \rangle
+\end{matrix} \right] 
+= \left[ \begin{matrix} 
+	a_0 \left[\begin{matrix}
+		b_0 \\ b_1 
+	\end{matrix}\right] \\ 
+	a_1 \left[\begin{matrix}
+		b_0 \\ b_1 
+	\end{matrix}\right]
+\end{matrix} \right]
+= \left[ \begin{matrix} a_0 b_0 \\ a_0 b_1 \\ a_1 b_0 \\ a_1 b_1 \end{matrix} \right]$<br>
+<br>
+
+Therefore $|00\rangle = \left[\begin{matrix}
+	1 \\ 0 \\ 0 \\ 0
+\end{matrix}\right]$,
+$|01\rangle = \left[\begin{matrix}
+	0 \\ 1 \\ 0 \\ 0
+\end{matrix}\right]$,
+$|10\rangle = \left[\begin{matrix}
+	0 \\ 0 \\ 1 \\ 0
+\end{matrix}\right]$,
+$|11\rangle = \left[\begin{matrix}
+	0 \\ 0 \\ 0 \\ 1
+\end{matrix}\right]$<br>
+<br>
+
+Combine them all to form our '-ket' degree-2 identity basis:<br>
+<br>
+$\left[ \begin{matrix} & | & & | & & | & \\  |00\rangle & | & |01 \rangle & | & |10 \rangle & | & |11 \rangle \\  & | & & | & & | &  \end{matrix} \right] 
+= \left[ \begin{matrix} 
+	1 &|& 0 &|& 0 &|& 0 \\ 
+	0 &|& 1 &|& 0 &|& 0 \\ 
+	0 &|& 0 &|& 1 &|& 0 \\ 
+	0 &|& 0 &|& 0 &|& 1 
+\end{matrix} \right]$<br>
+<br>
+
+Therefore a '-ket' degree-2 vector $\left[\begin{matrix}
+	a \\ b \\ c \\ d
+\end{matrix}\right]$<br>
+can be represented as $a |00\rangle + b |01\rangle + c |10\rangle + d|11\rangle$<br>
+<br>
+
+Notice that not just any $a, b, c, d$ are valid as outer products of two '-ket' vectors.<br>
+Only $ad - bc = 0$ works, and any other values are said to be 'entangled'.  TODO demonstrate this.<br>
+<br>
+
+Once again to connect this with differential geometry, 
+A degree-2 '-ket' vector $|e_i e_j\rangle$ is equivalent to a differential geometry degree-2 bivector $e_i \otimes e_j$.<br>
+<br>
+
+Equivalently for the outer product of '-ket' and 'bra-' vectors:<br>
+<br>
+
+$|a\rangle \otimes \langle b| = \left[\begin{matrix}
+	a_0 \\ a_1
+\end{matrix}\right] \left[\begin{matrix}
+	b_0 & b_1
+\end{matrix}\right] = \left[\begin{matrix}
+	a_0 b_0 & a_0 b_1 \\
+	a_1 b_0 & a_1 b_1
+\end{matrix}\right]$<br>
+<br>
+
+Therefore any (1,1)-degree tensor can be represented as:<br>
+$A = \left[\begin{matrix}
+	a & b \\
+	c & d
+\end{matrix}\right]$<br>
+
+$= a \left[\begin{matrix}
+	1 & 0 \\
+	0 & 0
+\end{matrix}\right]
++ b \left[\begin{matrix}
+	0 & 1 \\
+	0 & 0
+\end{matrix}\right]
++ c \left[\begin{matrix}
+	0 & 0 \\
+	1 & 0
+\end{matrix}\right]
++ d \left[\begin{matrix}
+	0 & 0 \\
+	0 & 1
+\end{matrix}\right]$<br>
+
+$= a \left[\begin{matrix} 1 \\ 0 \end{matrix}\right] \left[\begin{matrix} 1 & 0 \end{matrix}\right]
++ b \left[\begin{matrix} 1 \\ 0 \end{matrix}\right] \left[\begin{matrix} 0 & 1 \end{matrix}\right]
++ c \left[\begin{matrix} 0 \\ 1 \end{matrix}\right] \left[\begin{matrix} 1 & 0 \end{matrix}\right]
++ d \left[\begin{matrix} 0 \\ 1 \end{matrix}\right] \left[\begin{matrix} 0 & 1 \end{matrix}\right]
+$<br>
+
+$= a |0\rangle \langle 0|
++ b |0\rangle \langle 1|
++ c |1\rangle \langle 0|
++ d |1\rangle \langle 1|
+$<br>
+
+<br>
+
+<hr>
+1-qubit gates:<br>
+Hadamard gate H is defined as:<br>
+<br>
+
+$H = \frac{1}{\sqrt{2}} \left[\begin{matrix}
+	1 & 1 \\
+	1 & -1
+\end{matrix}\right]$<br>
+<br>
+
+In component form with basis $\{ |0\rangle, |1\rangle \}$ this becomes $H = \left[\begin{matrix}  & | & \\ |+\rangle & | & |-\rangle \\ & | &  \end{matrix}\right]$<br>
+<br>
+
+Also $H = \frac{1}{\sqrt{2}} \left[\begin{matrix} 1 & 0 \\ 1 & 0 \end{matrix}\right]
+			+ \frac{1}{\sqrt{2}} \left[\begin{matrix} 0 & 1 \\ 0 & -1 \end{matrix}\right]$<br>
+<br>
+
+So $H = \frac{1}{\sqrt{2}} \left[\begin{matrix} 1 \\ 1 \end{matrix} \right]
+	\cdot \left[\begin{matrix} 1 & 0 \end{matrix}\right]
++ \frac{1}{\sqrt{2}} \left[\begin{matrix} 1 \\ -1 \end{matrix} \right]
+	\cdot \left[\begin{matrix} 0 & 1 \end{matrix}\right]$<br>
+<br>
+
+So $H = |+\rangle \langle 0| + |-\rangle \langle 1|$<br>
+<br>
+Substitute the definitions of $\langle 0|, \langle 1|$ in terms of $\langle +|, \langle -|$ to find:<br>
+So $H = |+\rangle \frac{1}{\sqrt{2}} (\langle+| + \langle-|) + |-\rangle \frac{1}{\sqrt{2}} (\langle+| - \langle-|)$<br>
+simplify to find:<br>
+So $H = \frac{1}{\sqrt{2}} \left( 
+	(|+\rangle \langle+|) + (|+\rangle \langle-|) + (|-\rangle \langle+|) - (|-\rangle \langle-|)
+\right)$<br>
+<br>
+
+<br>
+2-qubit basis vectors / outer product:<br>
+<br>
+$CX = \left[\begin{matrix}
+ 1 & 0 & 0 & 0 \\
+ 0 & 1 & 0 & 0 \\
+ 0 & 0 & 0 & 1 \\
+ 0 & 0 & 1 & 0
+ \end{matrix} \right]$<br>
+<br>
+Rewriting this in terms of the 2-qubit basis vectors we can say:<br>
+$CX = \left[ \begin{matrix} & | & & | & & | & \\  |00\rangle & | & |01 \rangle & | & |11 \rangle & | & |10 \rangle \\  & | & & | & & | &  \end{matrix} \right]$<br>
+ <br>
+ Also, for notation's sake, $CX = CNOT$ and $CX = CX_{12} = CNOT_{12}$<br>
+<br>
+Now we can say:<br>
+$CX = CX \cdot I$<br>
+$= CX \cdot \left[ \begin{matrix} & | & & | & & | & \\  |00\rangle & | & |01 \rangle & | & |10 \rangle & | & |11 \rangle \\  & | & & | & & | &  \end{matrix} \right]$<br>
+$= \left[ \begin{matrix} & | & & | & & | & \\  CX |00\rangle & | & CX |01 \rangle & | & CX |10 \rangle & | & CX |11 \rangle \\  & | & & | & & | &  \end{matrix} \right]$<br>
+$= \left[ \begin{matrix} & | & & | & & | & \\  |00\rangle & | & |01 \rangle & | & |11 \rangle & | & |10 \rangle \\  & | & & | & & | &  \end{matrix} \right]$<br>
+...which implies that the columns of CX are equal to the results of CX when each equivalent 2-qubit basis vector is applied to CX.<br>
+<br>
+In other words:<br>
+$CX |00 \rangle = |00 \rangle$<br>
+$CX |01 \rangle = |01 \rangle$<br>
+$CX |10 \rangle = |11 \rangle$<br>
+$CX |11 \rangle = |10 \rangle$<br>
+So $CX |b_1 b_2 \rangle = CX |b_1 \rangle | b_2 \rangle = |b_1 \rangle |b_1 XOR \ b_2\rangle$ <br>
+<br>
+Note that $CX = CNOT = CX_{12} = CNOT_{12}$<br>
+<br>
+Now comes $CNOT_{21}$, which is defined only in terms of its function results:<br>
+$CNOT_{21} |b_1 \rangle |b_2 \rangle = |b_1 XOR \ b_2 \rangle |b_2 \rangle$<br>
+<br>
+Reverse-engineering this function:<br>
+$CNOT_{21} |00 \rangle = |00 \rangle$<br>
+$CNOT_{21} |01 \rangle = |11 \rangle$<br>
+$CNOT_{21} |10 \rangle = |10 \rangle$<br>
+$CNOT_{21} |11 \rangle = |01 \rangle$<br>
+...and representing the results as a linear system ...<br>
+$\left[ \begin{matrix} & | & & | & & | & \\  |00\rangle & | & |11 \rangle & | & |10 \rangle & | & |01 \rangle \\  & | & & | & & | &  \end{matrix} \right]$
+$= \left[ \begin{matrix} & | & & | & & | & \\  CNOT_{21} |00\rangle & | & CNOT_{21} |01 \rangle & | & CNOT_{21} |10 \rangle & | & CNOT_{21} |11 \rangle \\  & | & & | & & | &  \end{matrix} \right]$<br>
+$= CNOT_{21} \left[ \begin{matrix} & | & & | & & | & \\  |00\rangle & | & |01 \rangle & | & |10 \rangle & | & |11 \rangle \\  & | & & | & & | &  \end{matrix} \right]$<br>
+$= CNOT_{21} \cdot I = CNOT_{21}$<br>
+<br>
+So we can say that:<br>
+$CNOT_{21} = \left[ \begin{matrix}
+	1 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 1 \\
+	0 & 0 & 1 & 0 \\
+	0 & 1 & 0 & 0
+\end{matrix} \right]$<br>
+<br>
+
+<br>
+The notes also explain that $CNOT_{21} = (H \otimes H) \cdot CNOT_{12} \cdot (H \otimes H)$<br>
+<br>
+
+$H \otimes H = \frac{1}{\sqrt{2}} \left[\begin{matrix}
+\frac{1}{\sqrt{2}} \left[\begin{matrix}
+	1 & 1 \\
+	1 & -1
+\end{matrix}\right] &
+\frac{1}{\sqrt{2}} \left[\begin{matrix}
+	1 & 1 \\
+	1 & -1
+\end{matrix}\right] \\
+
+\frac{1}{\sqrt{2}} \left[\begin{matrix}
+	1 & 1 \\
+	1 & -1
+\end{matrix}\right] &
+-\frac{1}{\sqrt{2}} \left[\begin{matrix}
+	1 & 1 \\
+	1 & -1
+\end{matrix}\right]
+
+\end{matrix}\right]$
+$ = \frac{1}{2} \left[\begin{matrix}
+	1 & 1 & 1 & 1 \\
+	1 & -1 & 1 & -1 \\
+	1 & 1 & -1 & -1 \\
+	1 & -1 & -1 & 1
+\end{matrix}\right]$<br>
+<br>
+
+The identity from the book, page 19: $CNOT_{21} = (H \otimes H) \cdot CNOT_{12} \cdot (H \otimes H)$<br>
+
+$CNOT_{21} = 
+\frac{1}{2} \left[\begin{matrix}
+	1 & 1 & 1 & 1 \\
+	1 & -1 & 1 & -1 \\
+	1 & 1 & -1 & -1 \\
+	1 & -1 & -1 & 1
+\end{matrix}\right] \cdot CNOT_{12}
+\cdot \frac{1}{2} \left[\begin{matrix}
+	1 & 1 & 1 & 1 \\
+	1 & -1 & 1 & -1 \\
+	1 & 1 & -1 & -1 \\
+	1 & -1 & -1 & 1
+\end{matrix}\right]$<br>
+<br>
+
+$CNOT_{21} = 
+\frac{1}{2} \left[\begin{matrix}
+	1 & 1 & 1 & 1 \\
+	1 & -1 & 1 & -1 \\
+	1 & 1 & -1 & -1 \\
+	1 & -1 & -1 & 1
+\end{matrix}\right] 
+\cdot \left[\begin{matrix}
+	1 & 0 & 0 & 0 \\
+	0 & 1 & 0 & 0 \\
+	0 & 0 & 0 & 1 \\
+	0 & 0 & 1 & 0
+\end{matrix}\right]
+\cdot \frac{1}{2} \left[\begin{matrix}
+	1 & 1 & 1 & 1 \\
+	1 & -1 & 1 & -1 \\
+	1 & 1 & -1 & -1 \\
+	1 & -1 & -1 & 1
+\end{matrix}\right]$<br>
+<br>
+
+$CNOT_{21} = \left[\begin{matrix}
+	1 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 1 \\
+	0 & 0 & 1 & 0 \\
+	0 & 1 & 0 & 0
+\end{matrix}\right]$<br>
+<br>
+So this is verified to agree with the book's identity.<br>
+<br>
+
+<br>
+<br>
+<br>
+<br>
+	</body>
+</html>
