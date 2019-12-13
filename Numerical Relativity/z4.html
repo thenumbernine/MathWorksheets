@@ -253,6 +253,7 @@ $\left[\matrix{
 + \left[\matrix{
 	-\beta^m \delta_k^r &
 		0 &
+		0 &
 		f \gamma^{pq} \delta^r_k &
 		- f \alpha m \delta^r_k &
 		0 \\ 
@@ -265,12 +266,14 @@ $\left[\matrix{
 		\alpha \frac{\partial Q^l}{\partial Z_m} \\
 
 	0 &
+		-\delta^{(p}_i \delta^{q)}_j \delta^r_k &
 		- \delta^m_k \delta^p_i \delta^q_j \beta^r &
 		\alpha \delta^p_i \delta^q_j \delta^r_k &
 		0 & 
 		0 \\
 
-	\alpha \delta^m_{(i} \delta^r_{j)} &
+	\alpha \delta^{(m}_i \delta^{r)}_j &
+		0 & 
 		- \alpha (
 			\gamma^{pr} \delta_i^m \delta_j^q
 			- \gamma^{pq} \delta_i^m \delta_j^r
@@ -282,6 +285,7 @@ $\left[\matrix{
 		-2 \alpha \delta^m_{(i} \delta^r_{j)} \\
 
 	0 &
+		0 & 
 		- \frac{1}{2} \alpha (
 			\gamma^{pr} \delta_i^m \delta_j^q
 			- \gamma^{pq} \delta_i^m \delta_j^r
@@ -293,6 +297,7 @@ $\left[\matrix{
 		- \alpha \delta^m_r \\
 
 	0 &
+		0 &
 		0 &
 		- \alpha (\gamma^{qr} \delta^p_k - \gamma^{qp} \delta^r_k) &
 		- \alpha \delta^r_k &
@@ -354,6 +359,9 @@ $\left[\matrix{
 		- \alpha \Theta a_k
 
 }\right]$<br>
+<br>
+(TODO I stopped halfway through introducing ${b^i}_j$ terms and forgot where I was.  Finish adding source terms, double chekc maybe, and then try using $b_{ij}$ instead (to remove $\gamma^{ij}$'s from the flux Jacobian.)<br>
+<br>
 
 <!-- TODO the 2nd deriv beta, turn that into a 1st-deriv b, and put an evolution equation for b in here ...
  ... or just say that we are goign to recompute beta's every iteration -->

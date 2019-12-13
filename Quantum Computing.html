@@ -9,7 +9,10 @@
 
 Following the notes "Quantum Information and Computing" lecture notes by Richard Jozsa, DAMTP Cambridge, January 2019 version.<br>
 <br>
+
+So these are notes of notes.<br>
 <br>
+
 <hr>
 Define a qubit as a $\mathbb{C}^2$ vector space.<br>
 <br>
@@ -233,7 +236,15 @@ $= a |0\rangle \langle 0|
 + c |1\rangle \langle 0|
 + d |1\rangle \langle 1|
 $<br>
+<br>
 
+Notice that the inner product applied to higher degree vectors uses the 'plug in the first slot' rule:<br>
+$\left( \langle e_i | \otimes \langle e_j | \right) \cdot \left( | e_k \rangle \otimes |e_l \rangle \right)$
+$= \langle e_i | e_k \rangle \langle e_j | |e_l \rangle$
+$= \delta_{ik} \delta_{jl}$<br>
+<br>
+This looks just like the differential geometry plug-in-first-slot rule for differential q-forms acting on p-vectors:<br>
+$e^i \otimes e^j (e_k \otimes ... \otimes e_l) = \delta^i_k \delta^j_l$<br>
 <br>
 
 <hr>
@@ -269,7 +280,45 @@ So $H = \frac{1}{\sqrt{2}} \left(
 	(|+\rangle \langle+|) + (|+\rangle \langle-|) + (|-\rangle \langle+|) - (|-\rangle \langle-|)
 \right)$<br>
 <br>
+Notice that, when using the $\{ |0\rangle, |1\rangle \}$ basis, we see:<br>
+$H = \frac{1}{\sqrt{2}} \left( 
+	(|0\rangle \langle 0|) + (|0\rangle \langle 1|) + (|1\rangle \langle 0|) - (|1\rangle \langle 1|)
+\right)$<br>
+So this means that H has the same components using the $\{ |0\rangle, |1\rangle \}$ basis
+or using the $\{ |+\rangle, |-\rangle \}$ basis.<br>
+<br>
 
+<hr>
+
+$X = \left[\begin{matrix}
+	0 & 1 \\
+	1 & 0
+\end{matrix}\right]$<br>
+<br>
+
+Therefore 
+$X = X \left[\begin{matrix} 1 & 0 \\ 0 & 1 \end{matrix}\right]
+= X \left[\begin{matrix} &|& \\ |0\rangle &|& |1\rangle \\ &|& \end{matrix}\right]
+= \left[\begin{matrix} &|& \\ X |0\rangle &|& X |1\rangle \\ &|& \end{matrix}\right]
+= \left[\begin{matrix} 0 & 1 \\ 1 & 0 \end{matrix}\right]
+= \left[\begin{matrix} &|& \\ |1\rangle &|& |0\rangle \\ &|& \end{matrix}\right]
+$<br>
+<br>
+
+This means, for all discrete basis values:<br>
+$X |0\rangle = |1\rangle$<br>
+$X |1\rangle = |0\rangle$<br>
+<br>
+
+So one way to look at a linear transform of a qubit is that the leading '1' in the column corresponds with the output value associated with the input value of the index of that column.<br>
+<br>
+
+This means that X works like a classical binary NOT operation.<br>
+
+In terms of the geometric interpretation of X, it operates as a mirror along the 45-degree line<br>
+<br>
+
+<hr>
 <br>
 2-qubit basis vectors / outer product:<br>
 <br>
@@ -283,12 +332,12 @@ $CX = \left[\begin{matrix}
 Rewriting this in terms of the 2-qubit basis vectors we can say:<br>
 $CX = \left[ \begin{matrix} & | & & | & & | & \\  |00\rangle & | & |01 \rangle & | & |11 \rangle & | & |10 \rangle \\  & | & & | & & | &  \end{matrix} \right]$<br>
  <br>
- Also, for notation's sake, $CX = CNOT$ and $CX = CX_{12} = CNOT_{12}$<br>
+ Also, for notation's sake, $CX = CNOT = CX_{12} = CNOT_{12}$<br>
 <br>
 Now we can say:<br>
-$CX = CX \cdot I$<br>
-$= CX \cdot \left[ \begin{matrix} & | & & | & & | & \\  |00\rangle & | & |01 \rangle & | & |10 \rangle & | & |11 \rangle \\  & | & & | & & | &  \end{matrix} \right]$<br>
-$= \left[ \begin{matrix} & | & & | & & | & \\  CX |00\rangle & | & CX |01 \rangle & | & CX |10 \rangle & | & CX |11 \rangle \\  & | & & | & & | &  \end{matrix} \right]$<br>
+$CX = CX \cdot I$
+$= CX \cdot \left[ \begin{matrix} & | & & | & & | & \\  |00\rangle & | & |01 \rangle & | & |10 \rangle & | & |11 \rangle \\  & | & & | & & | &  \end{matrix} \right]$
+$= \left[ \begin{matrix} & | & & | & & | & \\  CX |00\rangle & | & CX |01 \rangle & | & CX |10 \rangle & | & CX |11 \rangle \\  & | & & | & & | &  \end{matrix} \right]$
 $= \left[ \begin{matrix} & | & & | & & | & \\  |00\rangle & | & |01 \rangle & | & |11 \rangle & | & |10 \rangle \\  & | & & | & & | &  \end{matrix} \right]$<br>
 ...which implies that the columns of CX are equal to the results of CX when each equivalent 2-qubit basis vector is applied to CX.<br>
 <br>
