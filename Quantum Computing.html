@@ -29,6 +29,59 @@ So $\langle\psi| = \left[\begin{matrix}
 \end{matrix}\right]$<br>
 <br>
 
+<hr>
+1-qubit basis vectors: <br>
+Let $\{ |0\rangle, |1\rangle \}$ be our qubit vector space orthonormal basis.<br>
+<br>
+
+$|0 \rangle = \left[\begin{matrix} 1 \\ 0 \end{matrix} \right]$, $|1 \rangle = \left[\begin{matrix} 0 \\ 1 \end{matrix} \right]$<br>
+<br>
+
+Notice this means that the -ket vectors represented as column vectors of a matrix take on the following form to depict the orthonormal basis:<br>
+$\left[\begin{matrix}
+	& | & \\
+	| 0 \rangle & | & | 1 \rangle \\
+	& | & 
+\end{matrix}\right] = \left[\begin{matrix}
+	1 & | & 0 \\
+	0 & | & 1
+\end{matrix}\right]$<br>
+<br>
+
+Using our bra- and -ket definitions, we can define the inner product of our basis as the following:<br>
+<br>
+
+$\langle 0 | 0 \rangle = \left[ \begin{matrix} 1 & 0 \end{matrix} \right] \left[ \begin{matrix} 1 \\ 0 \end{matrix} \right] = 1$<br>
+$\langle 0 | 1 \rangle = \left[ \begin{matrix} 1 & 0 \end{matrix} \right] \left[ \begin{matrix} 0 \\ 1 \end{matrix} \right] = 0$<br>
+$\langle 1 | 0 \rangle = \left[ \begin{matrix} 0 & 1 \end{matrix} \right] \left[ \begin{matrix} 1 \\ 0 \end{matrix} \right] = 0$<br>
+$\langle 1 | 1 \rangle = \left[ \begin{matrix} 0 & 1 \end{matrix} \right] \left[ \begin{matrix} 0 \\ 1 \end{matrix} \right] = 1$<br>
+<br>
+
+This can also be written in matrix form as:<br>
+$\left[\begin{matrix}
+	\langle 0 | \\
+	--- \\
+	\langle 1 |
+\end{matrix}\right] \left[\begin{matrix}
+	& | & \\
+	| 0 \rangle & | & | 1 \rangle \\
+	& | & 
+\end{matrix}\right] = \left[\begin{matrix}
+	1 & 0 \\
+	-- & -- \\
+	0 & 1
+\end{matrix}\right] \left[\begin{matrix}
+	1 & | & 0 \\
+	0 & | & 1
+\end{matrix}\right] = \left[\begin{matrix}
+	\langle 0 | 0 \rangle & \langle 0 | 1 \rangle \\
+	\langle 1 | 0 \rangle & \langle 1 | 1 \rangle 
+\end{matrix}\right] = \left[\begin{matrix}
+	1 & 0 \\
+	0 & 1
+\end{matrix}\right]$<br>
+<br>
+
 Notice that combining 'bra-' and '-ket' vectors will combine the 'bra(c)ket' as an inner product:<br>
 $\langle a|b \rangle = \langle a, b \rangle 
 = (a_0 \langle 0| + a_1 \langle 1|) (b_0 |0\rangle + b_1 |1\rangle)
@@ -51,29 +104,10 @@ In analogy to differential geometry, '-ket' vectors can be thought of as vectors
 <br>
 
 Bra(c)ket vectors combine in inner products $\langle e_i | e_j \rangle = \delta_{ij}$ in the same way that our differential geometry one-form basis $e^i = dx^i$ and vector basis $e_i = \frac{\partial}{\partial x^i}$ 
-combine to form an inner product: $e^i(e_j) = dx^i ( \frac{\partial}{\partial x^j} ) = \frac{\partial x^i}{\partial x^j} = \delta^i_j$<br>
+Combine to form an inner product: $e^i(e_j) = dx^i ( \frac{\partial}{\partial x^j} ) = \frac{\partial x^i}{\partial x^j} = \delta^i_j$<br>
 <br>
 
 <hr>
-1-qubit basis vectors: <br>
-Let $\{ |0\rangle, |1\rangle \}$ be our qubit vector space orthonormal basis.<br>
-<br>
-
-Lets use $\{ |0\rangle, |1\rangle \}$ for our vector component, so that we represent the basis as:<br>
-$|0 \rangle = \left[\begin{matrix} 1 \\ 0 \end{matrix} \right]$, $|1 \rangle = \left[\begin{matrix} 0 \\ 1 \end{matrix} \right]$<br>
-<br>
-
-Combine our basis as column vectors to explicitly state that our basis as columns is equal to the identity matrix:<br>
-
-$\left[\begin{matrix}
-	&|& \\
-	|0\rangle &|& |1\rangle \\
-	&|&
-\end{matrix}\right] = 
-\left[\begin{matrix}
-	1 & 0 \\
-	0 & 1
-\end{matrix}\right]$<br> 
 <br>
 
 One alternative basis that comes up often:<br>
@@ -240,7 +274,7 @@ $<br>
 
 Notice that the inner product applied to higher degree vectors uses the 'plug in the first slot' rule:<br>
 $\left( \langle e_i | \otimes \langle e_j | \right) \cdot \left( | e_k \rangle \otimes |e_l \rangle \right)$
-$= \langle e_i | e_k \rangle \langle e_j | |e_l \rangle$
+$= \langle e_i | e_k \rangle \langle e_j | e_l \rangle$
 $= \delta_{ik} \delta_{jl}$<br>
 <br>
 This looks just like the differential geometry plug-in-first-slot rule for differential q-forms acting on p-vectors:<br>
@@ -289,7 +323,12 @@ or using the $\{ |+\rangle, |-\rangle \}$ basis.<br>
 <br>
 
 <hr>
+<br>
 
+1-qubit gates:<br>
+<br>
+
+The X gate:<br>
 $X = \left[\begin{matrix}
 	0 & 1 \\
 	1 & 0
@@ -320,8 +359,13 @@ In terms of the geometric interpretation of X, it operates as a mirror along the
 
 <hr>
 <br>
+
 2-qubit basis vectors / outer product:<br>
 <br>
+
+The CX gate.  Notice that 'CX' is the name of the variable, not 'C' times 'X'.<br>
+<br>
+
 $CX = \left[\begin{matrix}
  1 & 0 & 0 & 0 \\
  0 & 1 & 0 & 0 \\
