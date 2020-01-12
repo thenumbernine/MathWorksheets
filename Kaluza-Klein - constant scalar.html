@@ -181,7 +181,7 @@ $=\overset{\downarrow c [ \downarrow a \rightarrow b]}{\left[ \begin{matrix}
 				  A_\delta A_{(\beta,\gamma)}
 				  + A_{(\beta} F_{\gamma)\delta}
 			)
-		) - \frac{1}{A_5} g^{\alpha\mu} A_\mu \phi^2 A_{(\beta,\gamma)} A_5 &
+		) - g^{\alpha\mu} A_\mu \phi^2 A_{(\beta,\gamma)} &
 		
 		g^{\alpha\delta} \frac{1}{2} \phi^2 F_{\gamma\delta} A_5 \\ 
 		
@@ -190,9 +190,9 @@ $=\overset{\downarrow c [ \downarrow a \rightarrow b]}{\left[ \begin{matrix}
 				  A_\delta A_{(\beta,\gamma)}
 				  + A_{(\beta} F_{\gamma)\delta}
 			)
-		) + \frac{1}{(A_5)^2} (g^{\mu\nu} A_\mu A_\nu + \frac{1}{\phi^2}) \phi^2 A_{(\beta,\gamma)} A_5 &
+		) + \frac{1}{A_5} (g^{\mu\nu} A_\mu A_\nu + \frac{1}{\phi^2}) \phi^2 A_{(\beta,\gamma)} &
 		
-		-\frac{1}{A_5} g^{\delta\mu} A_\mu \frac{1}{2} \phi^2 F_{\gamma\delta} A_5 
+		- g^{\delta\mu} A_\mu \frac{1}{2} \phi^2 F_{\gamma\delta}
 
 	\end{matrix} \right] \\ 
 	\left[ \begin{matrix}
@@ -200,7 +200,7 @@ $=\overset{\downarrow c [ \downarrow a \rightarrow b]}{\left[ \begin{matrix}
 		g^{\alpha\delta} \frac{1}{2} \phi^2 F_{\beta\delta} A_5 &
 		0 \\ 
 		
-		-\frac{1}{A_5} g^{\delta\mu} A_\mu \frac{1}{2} \phi^2 F_{\beta\delta} A_5 &
+		- g^{\delta\mu} A_\mu \frac{1}{2} \phi^2 F_{\beta\delta} &
 		0
 
 	\end{matrix} \right]
@@ -212,7 +212,7 @@ $=\overset{\downarrow c [ \downarrow a \rightarrow b]}{\left[ \begin{matrix}
 		+ \phi^2 A_{(\beta} {F_{\gamma)}}^\alpha &
 		
 		\frac{1}{2} \phi^2 A_5 {F_\gamma}^\alpha \\ 
-	
+
 		\frac{1}{A_5} (
 			- A_\mu (
 				{\Gamma^\mu}_{\beta\gamma} 
@@ -340,6 +340,320 @@ $\partial_\tau q =
 	- \frac{1}{2} \frac{1}{c^3} \frac{G^2}{k_e^2} M A_\mu A_{(\alpha} {F^\mu}_{\beta)} u^\alpha u^\beta
 $<br>
 <br>
+
+
+connection partial:<br>
+TODO I left $A_5$ out, but put it back in.<br>
+<br>
+${\tilde{\Gamma}^a}_{bc,d}$ is in units of $\frac{1}{m^2}$<br>
+${\tilde{\Gamma}^a}_{bc,d} = \overset{\downarrow c \rightarrow d [ \downarrow a \rightarrow b]}{\left[ \begin{matrix}
+	\left[ \begin{matrix}
+		(
+			{\Gamma^\alpha}_{\beta\gamma} 
+			+ \phi^2 A_{(\beta} {F_{\gamma)}}^\alpha 
+		)_{,\delta} &
+		
+		(\frac{1}{2} \phi^2 {F_\gamma}^\alpha)_{,\delta} \\ 
+	
+		(
+			- A_\mu (
+				{\Gamma^\mu}_{\beta\gamma} 
+				+ \phi^2 A_{(\beta} {F_{\gamma)}}^\mu
+			)
+			+ A_{(\beta,\gamma)}
+		 )_{,\delta} &
+		
+		(-\frac{1}{2} \phi^2 A_\mu {F_\gamma}^\mu)_{,\delta}
+
+	\end{matrix} \right] 
+	&
+	\left[ \begin{matrix}
+
+		(
+			{\Gamma^\alpha}_{\beta\gamma} 
+			+ \phi^2 A_{(\beta} {F_{\gamma)}}^\alpha
+		)_{,5} &
+		
+		(\frac{1}{2} \phi^2 {F_\gamma}^\alpha)_{,5} \\ 
+	
+		(
+			- A_\mu (
+				{\Gamma^\mu}_{\beta\gamma} 
+				+ \phi^2 A_{(\beta} {F_{\gamma)}}^\mu
+			)
+			+ A_{(\beta,\gamma)}
+		 )_{,5} &
+		
+		(-\frac{1}{2} \phi^2 A_\mu {F_\gamma}^\mu)_{,5}
+
+	\end{matrix} \right] 
+	\\ 
+	
+	\left[ \begin{matrix}
+
+		(\frac{1}{2} \phi^2 {F_\beta}^\alpha)_{,\delta} &
+		0 \\ 
+		
+		(-\frac{1}{2} \phi^2 A_\mu {F_\beta}^\mu)_{,\delta} &
+		0
+
+	\end{matrix} \right] 
+	&
+	\left[ \begin{matrix}
+
+		(\frac{1}{2} \phi^2 {F_\beta}^\alpha)_{,5} &
+		0 \\ 
+		
+		(-\frac{1}{2} \phi^2 A_\mu {F_\beta}^\mu)_{,5} &
+		0
+
+	\end{matrix} \right]
+
+\end{matrix} \right] }$<br>
+<br>
+$= \overset{\downarrow c \rightarrow d [ \downarrow a \rightarrow b]}{\left[ \begin{matrix}
+	\left[ \begin{matrix}
+		
+		{\Gamma^\alpha}_{\beta\gamma,\delta} 
+		+ \phi^2 {F_{(\gamma}}^\alpha A_{\beta),\delta}
+		+ \phi^2 A_{(\beta} { F_{\gamma)} }^\alpha {}_{,\delta}
+		&
+		
+		\frac{1}{2} \phi^2 {{F_\gamma}^\alpha}_{,\delta}
+		\\ 
+
+		- A_{\mu,\delta} (
+			{\Gamma^\mu}_{\beta\gamma} 
+			+ \phi^2 A_{(\beta} {F_{\gamma)}}^\mu
+		)
+		- A_\mu (
+			{\Gamma^\mu}_{\beta\gamma,\delta} 
+			+ \phi^2 {F_{(\gamma}}^\mu A_{\beta),\delta}
+			+ \phi^2 A_{(\beta} {F_{\gamma)}}^\mu {}_{,\delta}
+		)
+		+ A_{(\beta,\gamma),\delta}
+		&
+		
+		- \frac{1}{2} \phi^2 A_{\mu,\delta} {F_\gamma}^\mu
+		- \frac{1}{2} \phi^2 A_\mu {{F_\gamma}^\mu}_{,\delta}
+
+	\end{matrix} \right] 
+	&
+	\left[ \begin{matrix}
+
+		0 &
+		0 \\ 
+		0 &
+		0	
+
+	\end{matrix} \right] 
+	\\ 
+	
+	\left[ \begin{matrix}
+
+		\frac{1}{2} \phi^2 {F_\beta}^\alpha {}_{,\delta}
+		&
+		
+		0 \\ 
+		
+		- \frac{1}{2} \phi^2 A_{\mu,\delta} {F_\beta}^\mu
+		- \frac{1}{2} \phi^2 A_\mu {F_\beta}^\mu {}_{,\delta}
+		&
+		
+		0
+
+	\end{matrix} \right] 
+	&
+	\left[ \begin{matrix}
+
+		0 &
+		0 \\ 
+		0 &
+		0
+
+	\end{matrix} \right]
+
+\end{matrix} \right] }$<br>
+<br>
+
+${\tilde{\Gamma}^a}_{b[d,c]} 
+= \overset{\downarrow c \rightarrow d [ \downarrow a \rightarrow b]}{\left[ \begin{matrix}
+	\left[ \begin{matrix}
+		
+		{\Gamma^\alpha}_{\beta[\delta,\gamma]} 
+		- \frac{1}{2} \phi^2 A_{\beta,[\delta} {F_{\gamma]}}^\alpha
+		- \frac{1}{2} \phi^2 {F_{\beta}}^\alpha A_{[\gamma,\delta]}
+		- \frac{1}{2} \phi^2 A_{\beta} { F_{[\gamma} }^\alpha {}_{,\delta]}
+		- \frac{1}{2} \phi^2 { F_{\beta} }^\alpha {}_{,[\delta} A_{\gamma]}
+		&
+		
+		\frac{1}{2} \phi^2 {F_{[\delta}}^\alpha {}_{,\gamma]}
+		\\ 
+
+		A_{\mu,[\delta} (
+			{\Gamma^\mu}_{\gamma]\beta} 
+			+ \frac{1}{2} \phi^2 {F_{\gamma]}}^\mu A_{\beta}
+			+ \frac{1}{2} \phi^2 A_{\gamma]} {F_{\beta}}^\mu
+		)
+		+ A_\mu (
+			{\Gamma^\mu}_{\beta[\gamma,\delta]} 
+			+ \frac{1}{2} \phi^2 A_{\beta,[\delta} {F_{\gamma]}}^\mu
+			+ \frac{1}{2} \phi^2 {F_{\beta}}^\mu A_{[\gamma,\delta]}
+			+ \frac{1}{2} \phi^2 A_{\beta} {F_{[\gamma}}^\mu {}_{,\delta]}
+			+ \frac{1}{2} \phi^2 {F_{\beta}}^\mu {}_{,[\delta} A_{\gamma]}
+		)
+		- \frac{1}{2} A_{[\gamma,\delta]\beta}
+		&
+		
+		\frac{1}{2} \phi^2 A_{\mu,[\delta} {F_{\gamma]}}^\mu
+		+ \frac{1}{2} \phi^2 A_\mu {F_{[\gamma}}^\mu {}_{,\delta]}
+
+	\end{matrix} \right] 
+	&
+
+	\left[ \begin{matrix}
+
+		\frac{1}{2} \phi^2 {F_\beta}^\alpha {}_{,\delta}
+		&
+		
+		0 \\ 
+		
+		- \frac{1}{2} \phi^2 A_{\mu,\delta} {F_\beta}^\mu
+		- \frac{1}{2} \phi^2 A_\mu {F_\beta}^\mu {}_{,\delta}
+		&
+		
+		0
+
+	\end{matrix} \right]
+	\\ 
+	
+	\left[ \begin{matrix}
+
+		- \frac{1}{2} \phi^2 {F_\beta}^\alpha {}_{,\delta}
+		&
+		
+		0 \\ 
+		
+		\frac{1}{2} \phi^2 A_{\mu,\delta} {F_\beta}^\mu
+		+ \frac{1}{2} \phi^2 A_\mu {F_\beta}^\mu {}_{,\delta}
+		&
+		
+		0
+
+	\end{matrix} \right]
+	&
+	\left[ \begin{matrix}
+
+		0 &
+		0 \\ 
+		0 &
+		0
+
+	\end{matrix} \right]
+
+\end{matrix} \right] }$<br>
+<br>
+$= \overset{\downarrow c \rightarrow d [ \downarrow a \rightarrow b]}{\left[ \begin{matrix}
+	\left[ \begin{matrix}
+		
+		{\Gamma^\alpha}_{\beta[\delta,\gamma]} 
+		- \frac{1}{2} \phi^2 A_{\beta,[\delta} {F_{\gamma]}}^\alpha
+		- \frac{1}{4} \phi^2 {F_{\beta}}^\alpha F_{\delta,\gamma}
+		- \frac{1}{2} \phi^2 A_\beta { F_{[\gamma} }^\alpha {}_{,\delta]}
+		- \frac{1}{2} \phi^2 { F_\beta }^\alpha {}_{,[\delta} A_{\gamma]}
+		&
+		
+		\frac{1}{2} \phi^2 {F_{[\delta}}^\alpha {}_{,\gamma]}
+		\\ 
+
+		A_{\mu,[\delta} (
+			{\Gamma^\mu}_{\gamma]\beta} 
+			+ \frac{1}{2} \phi^2 {F_{\gamma]}}^\mu A_{\beta}
+			+ \frac{1}{2} \phi^2 A_{\gamma]} {F_{\beta}}^\mu
+		)
+		+ A_\mu (
+			{\Gamma^\mu}_{\beta[\gamma,\delta]} 
+			+ \frac{1}{2} \phi^2 A_{\beta,[\delta} {F_{\gamma]}}^\mu
+			+ \frac{1}{4} \phi^2 {F_{\beta}}^\mu F_{\delta,\gamma}
+			+ \frac{1}{2} \phi^2 A_{\beta} {F_{[\gamma}}^\mu {}_{,\delta]}
+			+ \frac{1}{2} \phi^2 {F_{\beta}}^\mu {}_{,[\delta} A_{\gamma]}
+		)
+		- \frac{1}{4} F_{\delta\gamma,\beta}
+		&
+		
+		\frac{1}{2} \phi^2 A_{\mu,[\delta} {F_{\gamma]}}^\mu
+		+ \frac{1}{2} \phi^2 A_\mu {F_{[\gamma}}^\mu {}_{,\delta]}
+
+	\end{matrix} \right] 
+	&
+
+	\left[ \begin{matrix}
+
+		\frac{1}{2} \phi^2 {F_\beta}^\alpha {}_{,\delta}
+		&
+		
+		0 \\ 
+		
+		- \frac{1}{2} \phi^2 A_{\mu,\delta} {F_\beta}^\mu
+		- \frac{1}{2} \phi^2 A_\mu {F_\beta}^\mu {}_{,\delta}
+		&
+		
+		0
+
+	\end{matrix} \right]
+	\\ 
+	
+	\left[ \begin{matrix}
+
+		- \frac{1}{2} \phi^2 {F_\beta}^\alpha {}_{,\delta}
+		&
+		
+		0 \\ 
+		
+		\frac{1}{2} \phi^2 A_{\mu,\delta} {F_\beta}^\mu
+		+ \frac{1}{2} \phi^2 A_\mu {F_\beta}^\mu {}_{,\delta}
+		&
+		
+		0
+
+	\end{matrix} \right]
+	&
+	\left[ \begin{matrix}
+
+		0 &
+		0 \\ 
+		0 &
+		0
+
+	\end{matrix} \right]
+
+\end{matrix} \right] }$<br>
+<br>
+
+${\tilde{\Gamma}^a}_{ec} {\tilde{\Gamma}^e}_{db} = $...<br>
+<br>
+
+${\tilde{\Gamma}^a}_{e[c} {\tilde{\Gamma}^e}_{d]b} = $...<br>
+<br>
+
+${\tilde{R}^a}_{bcd} = 2 ({\tilde{\Gamma}^a}_{b[d,c]} + {\tilde{\Gamma}^a}_{e[c} {\tilde{\Gamma}^e}_{d]b})$<br>
+$= $...<br>
+<br>
+
+$\tilde{R}_{ab} = {\tilde{R}^c}_{acb}$<br>
+$= $...<br>
+<br>
+
+$\tilde{G}_{ab} = \tilde{R}_{ab} - \frac{1}{2} \tilde{g}_{ab} {\tilde{R}^c}_c$<br>
+$= $...<br>
+<br>
+
+$\tilde{T}_{ab} = M u_a u_b$<br>
+so $\tilde{T}_{5\mu} = M u_5 u_\mu = M \cdot \frac{q}{M} u_\mu = q u_\mu = J_\mu$<br>
+so $G_{5\mu} = 8 \pi T_{5\mu}$ should reproduce the Gauss-Amepere law $g^{\nu\alpha} \nabla_\alpha F_{\mu\nu} = 4 \pi J_\mu$.<br>
+(TODO these are densities, so they are in units $\frac{kg}{m^3}$ and $\frac{C}{m^3}$, unlike the q and M used above).<br>
+<br>
+
 TODO's:<br>
 - straighten out the $M$'s ... which is our mass, and which is the other particle's mass (creating the field this particle is interacting with).<br>
 - for some known 4-potential (current through a wire), calculate the magnitude of $A \cdot F$ and $A^2$, and see if it should be measurable.<br>

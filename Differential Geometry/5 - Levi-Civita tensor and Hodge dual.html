@@ -40,16 +40,39 @@ $4! = 3! \delta^I_I = 2! \delta^{IJ}_{IJ} = \delta^{IJK}_{IJK} = \delta^{IJKL}_{
 <br>
 
 Hodge Dual of a tensor:<br>
-For $k$-degree tensors in $n$-dimension space<br>
-$\ast T_{a_{k+1} \dots a_n} = {1\over k!} T^{a_1 \dots a_k} \epsilon_{a_1 \dots a_n}$<br>
-specific instances for 4D Lorentzian space:<br>
-$\ast T_{abcd} = T \epsilon_{abcd}$<br>
-$\ast T_{bcd} = T^a \epsilon_{abcd}$<br>
-$\ast T_{cd} = {1\over2} T^{ab} \epsilon_{abcd}$<br>
-$\ast T_c = {1\over3!}T^{abc} \epsilon_{abcd}$<br>
-$\ast T = {1\over4!} T^{abcd} \epsilon_{abcd}$<br>
+Define the Hodge dual on a k-degree tensor in n dimensions as:<br>
+For $T = T_{i_1 ... i_k} dx^1 \otimes ... \otimes dx^k$,<br>
+let $\star T = \star (T_{i_1 ... i_k} dx^1 \otimes ... \otimes dx^k)$<br>
+$= \frac{1}{k!} T_{i_1 ... i_k} {\epsilon^{i_1 ... i_k}}_{i_{k+1} ... i_n} dx^{i_{k+1}} \otimes ... \otimes dx^{i_n}$<br>
+$= \frac{1}{n!} T_{i_1 ... i_k} {\epsilon^{i_1 ... i_k}}_{i_{k+1} ... i_n} dx^{i_{k+1}} \wedge ... \wedge dx^{i_n}$<br>
+$= \frac{1}{n!} T_{j_1 ... j_k} (g^{i_1 j_1} \cdot ... \cdot g^{i_k j_k}) \epsilon_{i_1 ... i_k i_{k+1} ... i_n} dx^{i_{k+1}} \wedge ... \wedge dx^{i_n}$<br>
+$= (\star T)_{i_{k+1} ... i_n} dx^{i_{k+1}} \otimes ... \otimes dx^{i_n}$<br>
+so for $T_{i_1 ... i_n}$ we have  $(\star T)_{i_{k+1} ... i_n} = \frac{1}{k!} T_{i_1 ... i_k} {\epsilon^{i_1 ... i_k}}_{i_{k+1} ... i_n}$<br>
 <br>
 
+specific instances for 4D Lorentzian space:<br>
+
+For a 0-degree tensor:
+$\star T = T \epsilon_{abcd} dx^a \otimes dx^b \otimes dx^c \otimes dx^d$,<br>
+so $(\star T)_{abcd} = T \epsilon_{abcd}$<br>
+For a 1-degree tensor:
+$\star (T_a dx^a) = T_a {\epsilon^a}_{bcd} dx^b \otimes dx^c \otimes dx^d$,<br>
+so $(\star T)_{abc} = T_a {\epsilon^a}_{bcd}$<br>
+For a 2-degree tensor:
+$\star (T_{ab} dx^a \otimes dx^b)
+= \frac{1}{2} T_{uv} {\epsilon^{uv}}_{ab} dx^a \otimes dx^b
+= (\star T)_{ab} dx^a \otimes dx^b
+$,<br>
+so $(\star T)_{ab} = \frac{1}{2} T_{uv} {\epsilon^{uv}}_{ab}$.<br>
+For a 3-degree tensor:
+$\star (T_{abc} dx^a \otimes dx^b \otimes dx^c) = \frac{1}{3!} T_{abc} {\epsilon^{abc}}_d dx^d
+= (\star T)_d dx^d
+$,<br>
+so $(\star T)_d = \frac{1}{3!} T_{abc} {\epsilon^{abc}}_d$<br>
+For a 4-degree tensor:
+$\star (T_{abcd} dx^a \otimes dx^b \otimes dx^c \otimes dx^d) = \frac{1}{4!} T_{abcd} \epsilon^{abcd}$,<br>
+so $\star T = \frac{1}{4!} T_{abcd} \epsilon^{abcd}$<br>
+<br>
 
 <a href='.'>Back</a><br><br>
 	</body>

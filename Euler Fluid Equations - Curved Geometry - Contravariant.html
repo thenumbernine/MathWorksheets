@@ -37,6 +37,10 @@ $ = E_{total} + \tilde\gamma E_{total} + \tilde\gamma E_{kin} = \gamma E_{total}
 Let capital indexes $IJK...$ span all conserved quantity variables $\{ \rho, v^i, E_{total} \}$<br>
 <br>
 
+Conservation form:<br>
+$\int ( \partial_t U^I + \nabla_n F^I ) dV = 0$<br>
+<br>
+
 Conservative and primitive variables:<br>
 <br>
 
@@ -89,7 +93,33 @@ $\frac{\partial F^I}{\partial W^J} = \downarrow I \overset{\rightarrow J}{
 <br>
 
 $\frac{\partial F^I}{\partial U^J} = \frac{\partial F^I}{\partial W^K} \cdot \frac{\partial W^K}{\partial U^J}$:<br>
-TODO<br>
+$ = 
+\left[\begin{matrix}
+	v^l n_l 				& \rho n_k									& 0 \\
+	v^i v^l n_l 			& \rho v^l n_l \delta^i_k + \rho v^i n_k	& n^i \\
+	\frac{1}{2} v^2 v^l n_l & n_k H_{total} + v^l n_l \rho v_k			& v^l n_l \frac{\gamma}{\tilde\gamma} 
+\end{matrix}\right]
+\left[\begin{matrix}
+	1 & 0 & 0 \\
+	-\frac{1}{\rho} v^k & \frac{1}{\rho} \delta^k_j & 0 \\
+	\frac{1}{2} \tilde\gamma v^2 & -\tilde\gamma v_j & \tilde\gamma
+\end{matrix}\right]
+$<br>
+$ = 
+\left[\begin{matrix}
+	0 & n_j & 0 \\	
+
+	- v^i v^k n_k + \frac{1}{2} \tilde\gamma v^2 n^i &
+	v^l n_l \delta^i_j + (2 - \gamma) n^i v_j &
+	\tilde\gamma n^i \\
+
+	-v^k n_k (h_{total} - \frac{1}{2} v^2 \tilde\gamma) &
+
+	n_j h_{total} - v^l n_l \tilde\gamma v_j &
+	
+	v^l n_l \gamma
+\end{matrix}\right]
+$<br>
 <br>
 
 <hr>
