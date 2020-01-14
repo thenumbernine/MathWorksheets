@@ -60,6 +60,19 @@ Let $\frac{1}{c} E_u = F_{uv} n^v$ for the hypersurface normal $n^a$<br>
 Let $B_u = {\epsilon_{uv}}^{ab} F_{ab} n^v$<br>
 <br>
 
+TODO replace ${\bar{\epsilon}_{ij}}^k$ with ${\epsilon_{ij}}^k$<br>
+so that the spatial metric shows up.<br>
+Maybe even use $\epsilon_{ijk} = -\frac{1}{\alpha} \epsilon_{0ijk}$ for the 3D-4D relation using ADM lapse $\alpha$.<br>
+From the 'relativistic electromagnetism metric in medium' worksheet:<br>
+Let $\epsilon_{abcd} = \sqrt{|g|} [abcd] = \sqrt{|g|} \bar\epsilon_{abcd} $ is the spacetime Levi-Civita permutation tensor<br> 
+So $\epsilon_{0ijk} = \alpha \sqrt\gamma \bar\epsilon_{0ijk} = \alpha \sqrt\gamma \bar\epsilon_{ijk}$ (see the ADM section for more details)<br>
+$\epsilon_{ijk} = \sqrt\gamma [ijk] = \sqrt\gamma \bar\epsilon_{ijk}$ is the spatial Levi-Civita permutation tensor<br>
+So $\epsilon_{0ijk} = \alpha \epsilon_{ijk}$<br>
+And ${\epsilon^0}_{ijk} = g^{0a} \epsilon_{aijk} = g^{00} \epsilon_{0ijk} + g^{0\Sigma} \epsilon_{\Sigma ijk}$, but since $ijk \in \Sigma$ we know $\epsilon_{\Sigma ijk} = 0$<br>
+So ${\epsilon^0}_{ijk} = -\frac{1}{\alpha^2} \epsilon_{0ijk} = -\frac{1}{\alpha} \epsilon_{ijk} = -\frac{1}{\alpha} \sqrt\gamma \bar\epsilon_{0ijk} = -\frac{1}{\alpha} \sqrt\gamma \bar\epsilon_{ijk}$<br>
+So ${\epsilon^{0i}}_{jk} = -\frac{1}{\alpha^2} \gamma^{im} \epsilon_{0mjk}$<br>
+<br>
+
 $F_{uv} = \downarrow u(i) \overset{\rightarrow v(j)}{ \left[\begin{matrix}
 	0 & -\frac{1}{c} E_j \\ 
 	\frac{1}{c} E_i & {\bar\epsilon_{ij}}^k B_k
@@ -137,7 +150,7 @@ $J_i$ is of units $[\frac{C}{m^2 \cdot s}]$.<br>
 $\rho_{charge}$ is of units $[\frac{C}{m^3}]$.<br>
 $\rho_{free}$ is of units $[\frac{C}{m^3}]$.<br>
 TODO I'm using $\rho_{charge}$ in the expression for the Lorentz force law.  Are these expressions supposed to use the free or bound or total charge?<br>
-TODO The displacemet field below uses the free charge only.  That's why I'm assigning $\frac{1}{2} \delta D = J$, but is this true in general, or should the source term of this equation be modified?<br>
+TODO The displacemet field below uses the free charge only.  That's why I'm assigning $\delta D = J$, but is this true in general, or should the source term of this equation be modified?<br>
 TODO Notice, the Wikipedia 'Four-Current' page defines the four-current in contravariant terms, which means it will differ from my definition by the metric lapse and shift.<br> 
 <br>
 
@@ -145,7 +158,7 @@ Lorentz force law:<br>
 $\ddot{x}^a = \frac{q}{m} {F^a}_b \dot{x}^b$<br>
 ...where m = mass of particle at x, q = charge of particle at x, and $F_{ab}$ is the Faraday tensor equal to $F = dA$, made up of E and B,<br>
 where B is constrained by $\nabla \cdot B = 0$ because of the property $dF = d^2 A = 0$,<br>
-and $E = \epsilon^{-1}(D)$ is constrained by $\nabla \cdot D = \rho_{free}$ because of the property $\frac{1}{2} \delta D = J$,<br>
+and $E = \epsilon^{-1}(D)$ is constrained by $\nabla \cdot D = \rho_{free}$ because of the property $\delta D = J$,<br>
 and ${F^a}_b = g^{ac} F_{cb}$ for $g^{ab}$ the inverse of the metric tensor of the manifold that this takes place on.<br>
 The metric itself $g_{ab}$ is derived from the mass (of the other particles?), $D^2 \omega $'s contracted trace reversal $= R_{uv} = 8 \pi T_{uv}$<br>
 <br>
@@ -693,8 +706,8 @@ $ \lambda^2 (\lambda + \frac{1}{\sqrt{\epsilon\mu}} |n|)^2  (\lambda - \frac{1}{
 
 Eigenvalues:<br>
 $\lambda = 0$ multiplicity 2<br>
-$\lambda = -\frac{1}{\sqrt{\epsilon\mu}}$ multiplicity 2<br>
-$\lambda = \frac{1}{\sqrt{\epsilon\mu}}$ multiplicity 2<br>
+$\lambda = -\frac{|n|}{\sqrt{\epsilon\mu}}$ multiplicity 2<br>
+$\lambda = \frac{|n|}{\sqrt{\epsilon\mu}}$ multiplicity 2<br>
 <br>
 
 Eigenvectors of $\lambda = 0$:<br>
@@ -791,21 +804,168 @@ $\left[\begin{matrix}
 \end{matrix}\right]$<br>
 <br>
 
-Eigenvectors of $\lambda = -\frac{1}{\sqrt{\epsilon\mu}}$:<br>
+$\left[\begin{matrix}
+	\vec{X}_D \\ \vec{X}_B
+\end{matrix}\right] =
+\left[\begin{matrix}
+	\vec{n} & 0 	\\
+	0 	& \vec{n} 	\\
+\end{matrix}\right] \left[\begin{matrix}
+	u_1 \\ u_2
+\end{matrix}\right]$<br>
+<br>
+
+Eigenvectors of $\lambda = -\frac{|n|}{\sqrt{\epsilon\mu}}$:<br>
 <br>
 
 $\left[\begin{matrix}
-	\frac{1}{\sqrt{\epsilon\mu}}	& 0 							& 0 							& 0 							& \frac{1}{\mu} n^z 			& -\frac{1}{\mu} n^y 			\\
-	0 								& \frac{1}{\sqrt{\epsilon\mu}} 	& 0 							& -\frac{1}{\mu} n^z 			& 0 							& \frac{1}{\mu} n^x 			\\
-	0 								& 0 							& \frac{1}{\sqrt{\epsilon\mu}} 	& \frac{1}{\mu} n^y				& -\frac{1}{\mu} n^x 			& 0 							\\
-	0 								& -\frac{1}{\epsilon} n^z 		& \frac{1}{\epsilon} n^y		& \frac{1}{\sqrt{\epsilon\mu}} 	& 0 							& 0 							\\
-	\frac{1}{\epsilon} n^z 			& 0 							& -\frac{1}{\epsilon} n^x 		& 0 							& \frac{1}{\sqrt{\epsilon\mu}} 	& 0 							\\
-	-\frac{1}{\epsilon} n^y			& \frac{1}{\epsilon} n^x 		& 0 							& 0 							& 0 							& \frac{1}{\sqrt{\epsilon\mu}}
+	\frac{|n|}{\sqrt{\epsilon\mu}}	& 0 								& 0 								& 0 								& \frac{1}{\mu} n^z 				& -\frac{1}{\mu} n^y 			\\
+	0 								& \frac{|n|}{\sqrt{\epsilon\mu}} 	& 0 								& -\frac{1}{\mu} n^z 				& 0 								& \frac{1}{\mu} n^x 			\\
+	0 								& 0 								& \frac{|n|}{\sqrt{\epsilon\mu}} 	& \frac{1}{\mu} n^y					& -\frac{1}{\mu} n^x 				& 0 							\\
+	0 								& -\frac{1}{\epsilon} n^z 			& \frac{1}{\epsilon} n^y			& \frac{|n|}{\sqrt{\epsilon\mu}} 	& 0 								& 0 							\\
+	\frac{1}{\epsilon} n^z 			& 0 								& -\frac{1}{\epsilon} n^x 			& 0 								& \frac{|n|}{\sqrt{\epsilon\mu}} 	& 0 							\\
+	-\frac{1}{\epsilon} n^y			& \frac{1}{\epsilon} n^x 			& 0 								& 0 								& 0 								& \frac{|n|}{\sqrt{\epsilon\mu}}
 \end{matrix}\right] \left[\begin{matrix}
 	X_{D_x} \\ X_{D_y} \\ X_{D_z} \\ X_{B_x} \\ X_{B_y} \\ X_{B_z}
 \end{matrix}\right] = 0$<br>
 <br>
 
+$\left[\begin{matrix}
+	1	& 0 								& 0 								& 0 								& \frac{1}{|n|} \sqrt{\frac{\epsilon}{\mu}} n^z 				& -\frac{1}{|n|} \sqrt{\frac{\epsilon}{\mu}} n^y			\\
+	0 	& \frac{|n|}{\sqrt{\epsilon\mu}} 	& 0 								& -\frac{1}{\mu} n^z 				& 0 															& \frac{1}{\mu} n^x 										\\
+	0 	& 0 								& \frac{|n|}{\sqrt{\epsilon\mu}} 	& \frac{1}{\mu} n^y					& -\frac{1}{\mu} n^x 											& 0 														\\
+	0 	& -\frac{1}{\epsilon} n^z 			& \frac{1}{\epsilon} n^y			& \frac{|n|}{\sqrt{\epsilon\mu}} 	& 0 															& 0 														\\
+	0	& 0 								& -\frac{1}{\epsilon} n^x 			& 0 								& \frac{1}{\sqrt{\epsilon\mu}} (|n| - \frac{1}{|n|} (n^z)^2) 	& \frac{1}{|n|} \frac{1}{\sqrt{\epsilon\mu}} n^y n^z		\\
+	0	& \frac{1}{\epsilon} n^x 			& 0 								& 0 								& \frac{1}{|n|} \frac{1}{\sqrt{\epsilon\mu}} n^y n^z 			& \frac{1}{\sqrt{\epsilon\mu}} (|n| - \frac{1}{|n|} (n^y)^2)
+\end{matrix}\right] \left[\begin{matrix}
+	X_{D_x} \\ X_{D_y} \\ X_{D_z} \\ X_{B_x} \\ X_{B_y} \\ X_{B_z}
+\end{matrix}\right] = 0$<br>
+<br>
+
+$\left[\begin{matrix}
+	|n| \sqrt{\frac{\mu}{\epsilon}}	& 0 & 0 								& 0 															& n^z 															& -n^y																				\\
+	0 	 	 	 	 	 	 	 	& 1	& 0 								& -\frac{1}{|n|} \sqrt{\frac{\epsilon}{\mu}} n^z 				& 0 															& \frac{1}{|n|} \sqrt{\frac{\epsilon}{\mu}} n^x 									\\
+	0 	 	 	 	 	 	 	 	& 0 & \frac{|n|}{\sqrt{\epsilon\mu}} 	& \frac{1}{\mu} n^y												& -\frac{1}{\mu} n^x 											& 0 																				\\
+	0 	 	 	 	 	 	 	 	& 0	& \frac{1}{\epsilon} n^y			& \frac{1}{\sqrt{\epsilon\mu}} (|n| - \frac{1}{|n|} (n^z)^2) 	& 0 															& \frac{1}{|n|} \frac{1}{\sqrt{\epsilon\mu}} n^x n^z 	 	 	 	 	 	 	 	\\
+	0								& 0	& -\frac{1}{\epsilon} n^x 			& 0 															& \frac{1}{\sqrt{\epsilon\mu}} (|n| - \frac{1}{|n|} (n^z)^2) 	& \frac{1}{|n|} \frac{1}{\sqrt{\epsilon\mu}} n^y n^z 	 	 	 	 	 	 	 	\\
+	0								& 0	& 0 								& \frac{1}{|n|} \frac{1}{\sqrt{\epsilon\mu}} n^x n^z 			& \frac{1}{|n|} \frac{1}{\sqrt{\epsilon\mu}} n^y n^z 			& \frac{1}{\sqrt{\epsilon\mu}} (|n| - \frac{1}{|n|} (n^x)^2 - \frac{1}{|n|} (n^y)^2)
+\end{matrix}\right] \left[\begin{matrix}
+	X_{D_x} \\ X_{D_y} \\ X_{D_z} \\ X_{B_x} \\ X_{B_y} \\ X_{B_z}
+\end{matrix}\right] = 0$<br>
+<br>
+
+$\left[\begin{matrix}
+	|n| \sqrt{\frac{\mu}{\epsilon}}	& 0 								& 0 & 0 																					& n^z 																					& -n^y																				\\
+	0 	 	 	 	 	 	 	 	& |n| \sqrt{\frac{\mu}{\epsilon}}	& 0 & -n^z 																					& 0 																					& n^x 																				\\
+	0 	 	 	 	 	 	 	 	& 0 								& 1 & \frac{1}{|n|} \sqrt{\frac{\epsilon}{\mu}} n^y											& -\frac{1}{|n|} \sqrt{\frac{\epsilon}{\mu}} n^x 										& 0 																				\\
+	0 	 	 	 	 	 	 	 	& 0									& 0	& \frac{1}{\sqrt{\epsilon\mu}} (|n| - \frac{1}{|n|} (n^y)^2 - \frac{1}{|n|} (n^z)^2) 	& \frac{1}{|n|} \frac{1}{\sqrt{\epsilon\mu}} n^x n^y 	 	 	 	 	 	 	 	 	& \frac{1}{|n|} \frac{1}{\sqrt{\epsilon\mu}} n^x n^z 	 	 	 	 	 	 	 	\\
+	0								& 0									& 0 & \frac{1}{|n|} \frac{1}{\sqrt{\epsilon\mu}} n^x n^y 									& \frac{1}{\sqrt{\epsilon\mu}} (|n| - \frac{1}{|n|} (n^x)^2 - \frac{1}{|n|} (n^z)^2) 	& \frac{1}{|n|} \frac{1}{\sqrt{\epsilon\mu}} n^y n^z 	 	 	 	 	 	 	 	\\
+	0								& 0									& 0 & \frac{1}{|n|} \frac{1}{\sqrt{\epsilon\mu}} n^x n^z 									& \frac{1}{|n|} \frac{1}{\sqrt{\epsilon\mu}} n^y n^z 									& \frac{1}{\sqrt{\epsilon\mu}} (|n| - \frac{1}{|n|} (n^x)^2 - \frac{1}{|n|} (n^y)^2)
+\end{matrix}\right] \left[\begin{matrix}
+	X_{D_x} \\ X_{D_y} \\ X_{D_z} \\ X_{B_x} \\ X_{B_y} \\ X_{B_z}
+\end{matrix}\right] = 0$<br>
+<br>
+
+$\left[\begin{matrix}
+	|n| \sqrt{\frac{\mu}{\epsilon}}	& 0 								& 0									& 0 													& n^z 													& -n^y													\\
+	0 	 	 	 	 	 	 	 	& |n| \sqrt{\frac{\mu}{\epsilon}}	& 0									& -n^z 													& 0 													& n^x 													\\
+	0 	 	 	 	 	 	 	 	& 0 								& |n| \sqrt{\frac{\mu}{\epsilon}}	& n^y													& -n^x 													& 0 													\\
+	0 	 	 	 	 	 	 	 	& 0									& 0									& \frac{1}{|n|} \frac{1}{\sqrt{\epsilon\mu}} (n^x)^2 	& \frac{1}{|n|} \frac{1}{\sqrt{\epsilon\mu}} n^x n^y 	& \frac{1}{|n|} \frac{1}{\sqrt{\epsilon\mu}} n^x n^z	\\
+	0								& 0									& 0									& \frac{1}{|n|} \frac{1}{\sqrt{\epsilon\mu}} n^x n^y 	& \frac{1}{|n|} \frac{1}{\sqrt{\epsilon\mu}} (n^y)^2 	& \frac{1}{|n|} \frac{1}{\sqrt{\epsilon\mu}} n^y n^z	\\
+	0								& 0									& 0									& \frac{1}{|n|} \frac{1}{\sqrt{\epsilon\mu}} n^x n^z 	& \frac{1}{|n|} \frac{1}{\sqrt{\epsilon\mu}} n^y n^z 	& \frac{1}{|n|} \frac{1}{\sqrt{\epsilon\mu}} (n^z)^2
+\end{matrix}\right] \left[\begin{matrix}
+	X_{D_x} \\ X_{D_y} \\ X_{D_z} \\ X_{B_x} \\ X_{B_y} \\ X_{B_z}
+\end{matrix}\right] = 0$<br>
+<br>
+
+$\left[\begin{matrix}
+	|n| \sqrt{\frac{\mu}{\epsilon}}	& 0 								& 0									& 0 	& n^z 	& -n^y	\\
+	0 	 	 	 	 	 	 	 	& |n| \sqrt{\frac{\mu}{\epsilon}}	& 0									& -n^z 	& 0 	& n^x 	\\
+	0 	 	 	 	 	 	 	 	& 0 								& |n| \sqrt{\frac{\mu}{\epsilon}}	& n^y	& -n^x 	& 0 	\\
+	0 	 	 	 	 	 	 	 	& 0									& 0									& n^x 	& n^y 	& n^z 	\\
+	0								& 0									& 0									& n^x 	& n^y 	& n^z 	\\
+	0								& 0									& 0									& n^x 	& n^y 	& n^z
+\end{matrix}\right] \left[\begin{matrix}
+	X_{D_x} \\ X_{D_y} \\ X_{D_z} \\ X_{B_x} \\ X_{B_y} \\ X_{B_z}
+\end{matrix}\right] = 0$<br>
+<br>
+
+$\left[\begin{matrix}
+	|n| \sqrt{\frac{\mu}{\epsilon}}	& 0 								& 0									& 0 	& n^z 							& -n^y						\\
+	0 	 	 	 	 	 	 	 	& |n| \sqrt{\frac{\mu}{\epsilon}}	& 0									& 0 	& \frac{n^y n^z}{n^x}			& n^x + \frac{(n^z)^2}{n^x} \\
+	0 	 	 	 	 	 	 	 	& 0 								& |n| \sqrt{\frac{\mu}{\epsilon}}	& 0		& -n^x - \frac{(n^y)^2}{n^x} 	& -\frac{n^y n^z}{n^x} 		\\
+	0 	 	 	 	 	 	 	 	& 0									& 0									& n^x 	& n^y 							& n^z 						\\
+	0								& 0									& 0									& 0 	& 0 							& 0 						\\
+	0								& 0									& 0									& 0 	& 0 							& 0 
+\end{matrix}\right] \left[\begin{matrix}
+	X_{D_x} \\ X_{D_y} \\ X_{D_z} \\ X_{B_x} \\ X_{B_y} \\ X_{B_z}
+\end{matrix}\right] = 0$<br>
+<br>
+
+Let $u_2 = X_{B_y}, u_1 = X_{B_z}$<br>
+<br>
+
+$|n| \sqrt{\frac{\mu}{\epsilon}} X_{D_x} = -n^z u_2 + n^y u_1$<br>
+$|n| \sqrt{\frac{\mu}{\epsilon}} X_{D_y} = -\frac{n^y n^z}{n^x} u_2 - (n^x + \frac{(n^z)^2}{n^x}) u_1$<br>
+$|n| \sqrt{\frac{\mu}{\epsilon}} X_{D_z} = (n^x + \frac{(n^y)^2}{n^x}) u_2 + \frac{n^y n^z}{n^x} u_1$<br>
+$n^x X_{B_x} = -n^y u_2 - n^z u_1$<br>
+<br>
+
+$\left[\begin{matrix}
+	X_{D_x} \\ X_{D_y} \\ X_{D_z} \\ X_{B_x} \\ X_{B_y} \\ X_{B_z}
+\end{matrix}\right] = \left[\begin{matrix}
+	\frac{1}{|n|} \sqrt{\frac{\epsilon}{\mu}} n^y 							& -\frac{1}{|n|} \sqrt{\frac{\epsilon}{\mu}} n^z 						\\
+	-\frac{1}{|n|} \sqrt{\frac{\epsilon}{\mu}} (n^x + \frac{(n^z)^2}{n^x}) 	& -\frac{1}{|n|} \sqrt{\frac{\epsilon}{\mu}} \frac{n^y n^z}{n^x} 		\\
+	\frac{1}{|n|} \sqrt{\frac{\epsilon}{\mu}} \frac{n^y n^z}{n^x} 			& \frac{1}{|n|} \sqrt{\frac{\epsilon}{\mu}} (n^x + \frac{(n^y)^2}{n^x}) \\
+	-\frac{n^z}{n^x} 														& -\frac{n^y}{n^x} 														\\
+	0 																		& 1 																	\\
+	1                                                                       & 0 																		
+\end{matrix}\right] 
+\left[\begin{matrix} u_1 \\ u_2 \end{matrix}\right]$<br>
+<br>
+
+Let $u_1 \rightarrow \frac{|n|}{n^x} u_1, -u_2 \rightarrow \frac{|n|}{n^x} u_2$<br>
+<br>
+
+$\left[\begin{matrix}
+	X_{D_x} \\ X_{D_y} \\ X_{D_z} \\ X_{B_x} \\ X_{B_y} \\ X_{B_z}
+\end{matrix}\right] = \left[\begin{matrix}
+	\sqrt{\frac{\epsilon}{\mu}} n^x n^y 			& \sqrt{\frac{\epsilon}{\mu}} n^x n^z 			\\
+	\sqrt{\frac{\epsilon}{\mu}} ((n^y)^2 - |n|^2)	& \sqrt{\frac{\epsilon}{\mu}} n^y n^z 			\\
+	\sqrt{\frac{\epsilon}{\mu}} n^y n^z 			& \sqrt{\frac{\epsilon}{\mu}} ((n^z)^2 - |n|^2) \\
+	-|n| n^z 										& |n| n^y 										\\
+	0 												& -|n| n^x 										\\
+	|n| n^x											& 0 												
+\end{matrix}\right] 
+\left[\begin{matrix} u_1 \\ u_2 \end{matrix}\right]$<br>
+<br>
+
+Rewritten in vector form:<br>
+<br>
+
+$\left[\begin{matrix}
+	\vec{X}_D \\ \vec{X}_B
+\end{matrix}\right] = \left[\begin{matrix}
+	\sqrt{\frac{\epsilon}{\mu}} ((\vec{n} \cdot \vec{e}_y) \vec{n} - (\vec{n} \cdot \vec{n}) \vec{e}_y) & \sqrt{\frac{\epsilon}{\mu}} ((\vec{n} \cdot \vec{e}_z) \vec{n} - (\vec{n} \cdot \vec{n}) \vec{e}_z) \\
+	|n| (\vec{n} \times \vec{e}_y) 																		& |n| (\vec{n} \times \vec{e}_z)
+\end{matrix}\right] 
+\left[\begin{matrix} u_1 \\ u_2 \end{matrix}\right]$<br>
+<br>
+
+$\left[\begin{matrix}
+	\vec{X}_D \\ \vec{X}_B
+\end{matrix}\right] = \left[\begin{matrix}
+	\sqrt{\frac{\epsilon}{\mu}} \vec{n} \times (\vec{n} \times \vec{e}_y)	& \sqrt{\frac{\epsilon}{\mu}} \vec{n} \times (\vec{n} \times \vec{e}_z)	\\
+	|n| (\vec{n} \times \vec{e}_y) 											& |n| (\vec{n} \times \vec{e}_z)
+\end{matrix}\right] 
+\left[\begin{matrix} u_1 \\ u_2 \end{matrix}\right]$<br>
+<br>
+
+
+TODO notice that I'm missing the metric from all of this.<br>
+Also notice below that I'm pulling the metric out on the left hand of the flux Jacobian.<br>
+If I don't pull the metric out then I bet I will find it in the inner product of n above.<br>
+<br>
 
 
 <hr>
