@@ -72,6 +72,18 @@ Here's the CDN URLs:
 
 [Einstein-Maxwell Hyperbolic Conservation Laws](https://thenumbernine.github.io/math/Einstein%2dMaxwell%20Hyperbolic%20Conservation%20Laws.html)
 
+[Electromagnetism/0 - intro](https://thenumbernine.github.io/math/Electromagnetism/0%20%2d%20intro.html)
+
+[Electromagnetism/1 - Faraday tensor in special relativity](https://thenumbernine.github.io/math/Electromagnetism/1%20%2d%20Faraday%20tensor%20in%20special%20relativity.html)
+
+[Electromagnetism/2 - Faraday tensor in general relativity in vacuum](https://thenumbernine.github.io/math/Electromagnetism/2%20%2d%20Faraday%20tensor%20in%20general%20relativity%20in%20vacuum.html)
+
+[Electromagnetism/3 - Faraday tensor as 2-form](https://thenumbernine.github.io/math/Electromagnetism/3%20%2d%20Faraday%20tensor%20as%202%2dform.html)
+
+[Electromagnetism/4 - electromagnetic stress-energy in vacuum](https://thenumbernine.github.io/math/Electromagnetism/4%20%2d%20electromagnetic%20stress%2denergy%20in%20vacuum.html)
+
+[Electromagnetism/5 - electromagnetism in medium](https://thenumbernine.github.io/math/Electromagnetism/5%20%2d%20electromagnetism%20in%20medium.html)
+
 [Electromagnetism/Electromagnetic Tensor Self-Dual](https://thenumbernine.github.io/math/Electromagnetism/Electromagnetic%20Tensor%20Self%2dDual.html)
 
 [Electromagnetism/Maxwell Equations - Eigenmode Analysis](https://thenumbernine.github.io/math/Electromagnetism/Maxwell%20Equations%20%2d%20Eigenmode%20Analysis.html)
@@ -83,8 +95,6 @@ Here's the CDN URLs:
 [Electromagnetism/Maxwell octonions](https://thenumbernine.github.io/math/Electromagnetism/Maxwell%20octonions.html)
 
 [Electromagnetism/Relativistic Electromagnetism metric](https://thenumbernine.github.io/math/Electromagnetism/Relativistic%20Electromagnetism%20metric.html)
-
-[Electromagnetism/relativistic electromagnetic metric in medium](https://thenumbernine.github.io/math/Electromagnetism/relativistic%20electromagnetic%20metric%20in%20medium.html)
 
 [Equations of Structure - Schwarzschild](https://thenumbernine.github.io/math/Equations%20of%20Structure%20%2d%20Schwarzschild.html)
 

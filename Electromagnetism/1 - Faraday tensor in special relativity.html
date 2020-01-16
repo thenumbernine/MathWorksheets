@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<script type='text/javascript' src='../tryToFindMathJax.js'></script>
+		<title>Faraday tensor in special relativity</title>
+	</head>
+	<body>
+
+TODO start everything with potentials in differential geometry.  $A = A_u dx^u, F = dA, dF = d^2 A = 0, \delta F = J$<br>
+<br>
+
+TODO make the distiction up from - before using GR math - that $E^i, B^i$ are associated with the contravariant definition $F^{ab}$ and $\mathcal{E}_i, \mathcal{B}_i$ are associated with the covariant definition $F_{ab}$.<br>
+<br>
+
+Units of $E_i$ are in $\frac{N}{C} = \frac{kg \cdot m}{C \cdot s^2}$.<br>
+Units of $B_i$ are in $\frac{N \cdot s}{C \cdot m} = \frac{kg}{C \cdot s}$<br>
+<br>
+
+In Cartesian coordinates:<br>
+$F_{ab} = \downarrow a \overset{\rightarrow b}{\pmatrix{
+	0 & -\frac{1}{c} E_x & -\frac{1}{c} E_y & -\frac{1}{c} E_z \\
+	\frac{1}{c} E_x & 0 & B_z & -B_y \\
+	\frac{1}{c} E_y & -B_z & 0 & B_x \\
+	\frac{1}{c} E_z & B_y & B_x & 0
+}}$<br>
+$F_{ab}$ has units of $\frac{kg}{C \cdot s}$<br>
+<br>
+
+In generalized time+space coordinates:<br>
+$F_{ab} = \downarrow a(i) \overset{\rightarrow b(j)}{\pmatrix{ 
+	0 & -\frac{1}{c} E_j \\ 
+	\frac{1}{c} E_i & {\bar\epsilon_{ij}}^k B_k
+}}$ (eqn 3.7)<br>
+$F^{ab} = \eta^{au} F_{uv} \eta^{vb} = \downarrow a \overset{\rightarrow b}{\pmatrix{ 0 & \frac{1}{c} E_j \\ -\frac{1}{c} E_i & {\bar\epsilon_{ij}}^k B_k}}$<br>
+<br>
+
+$J^a = \pmatrix{c \rho \\ J^i}$ is in $\frac{kg}{m^2 \cdot s}$<br>
+$\rho$ is in $\frac{C}{m^3}$<br>
+$J^i$ is in $\frac{C}{m^3} \frac{m}{s} = \frac{C}{m^2 \cdot s}$<br>
+<br>
+
+${F^{ab}}_{,b}$ is in $\frac{kg}{C \cdot m \cdot s}$<br>
+$\frac{1}{\mu_0} {F^{ab}}_{,b}$ is in $\frac{C}{m^2 \cdot s}$<br>
+${F^{ab}}_{,b} = \mu_0 J^a$ (eqn 3.36)<br>
+<br>
+
+This becomes:<br>
+$\frac{1}{c} E_{j,j} = \mu_0 c \rho$<br>
+$E_{j,j} = \frac{1}{\epsilon_0} \rho$<br>
+$-\frac{1}{c^2} E_{i,t} + {\bar\epsilon_i}^{jk} B_{k,j} = \mu_0 J^i$<br>
+$-\epsilon_0 E_{i,t} + \frac{1}{\mu_0} {\bar\epsilon_i}^{jk} B_{k,j} = J^i$<br>
+<br>
+
+TODO also put $\delta F = -\star d \star F = J$ here maybe<br>
+<br>
+
+<b><i>TODO FIXME THIS DEFINITION IS NEGATIVE'D for the sign convention that I'm using:<br>
+Fix this and everything subsequent that is using it.</i></b><br>
+<br>
+
+$\star F_{ab} = \downarrow a \overset{\rightarrow b}{\pmatrix{
+	0 & -B_j \\
+	B_i & -\frac{1}{c} {\bar\epsilon_{ij}}^k E_k
+}}$<br>
+$\star F^{ab} = \downarrow a \overset{\rightarrow b}{\pmatrix{
+	0 & B_j \\
+	-B_i & -\frac{1}{c} {\bar\epsilon_{ij}}^k E_k
+}}$<br>
+${(\star F)^{ab}}_{,b} = 0$<br>
+${B^j}_{,j} = 0$<br>
+$B_{i,t} + {\bar\epsilon_i}^{jk} E_{k,j} = 0$<br>
+<br>
+
+TODO also put $dF = d^2 A = 0$ here maybe<br>
+<br>
+
+	</body>
+</html>

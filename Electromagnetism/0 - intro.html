@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<script type='text/javascript' src='../tryToFindMathJax.js'></script>
+		<title>Introduction</title>
+	</head>
+	<body>
+
+Let $\eta_{ab} = diag(-1,1,1,1)$ (someday I'll switch)<br>
+Indexes denoted $ijklmn$ are raised/lowered with the spatial metric $\gamma_{ij}$ alone.<br>
+All others are raised/lowered by the spacetime metric $g_{ab}$.<br>
+<br>
+
+$\partial = (\frac{1}{c} \partial_t, \partial_i) = (\partial_0, \partial_i)$ is in units of $\frac{1}{m}$<br>
+$dx = (c dt, dx^i) = (dx^0, dx^i)$ is in units $m$<br>
+$\partial_u T = T_{,u} = (\partial_0, \partial_i) T$<br>
+<br>
+
+Vectors / matrices are displayed as $V = \left[ V_0, V_x, V_y, V_z \right] = \left[ c V_t, V_x, V_y, V_z \right]$.<br>
+Take note when referencing $V_t$ that it is equal to $V_t = \frac{1}{c} V_0$.<br>
+<br>
+
+In SI units (from my 'natural units' worksheet in my symmath library):<br>
+$\epsilon_0 = \frac{10^7}{4 \pi c^2} \frac{C^2}{kg \cdot m}$ ... is in units $\frac{C^2 \cdot s^2}{kg \cdot m^3}$<br>
+$\mu_0 = \frac{4 \pi}{10^7} \frac{kg \cdot m}{C^2}$<br>
+$\frac{1}{c^2} = \mu_0 \epsilon_0$ ... is in units $\frac{s^2}{m^2}$<br>
+<br>
+
+$\vec\nabla \cdot \vec{V} = {V^i}_{,i}$<br>
+$(\vec\nabla \times \vec{V})^i = \bar\epsilon^{ijk} V_{k,j}$<br>
+<br>
+
+<hr>
+<br>
+
+<b>Recap from my ADM metric worksheet in the Differential Geometry section:</b><br>
+<br>
+
+(In terms of units, there might be a $c$ somewhere in here...)<br>
+$[g_{uv}] = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
+	-\alpha^2 + \beta_k \beta^k & \beta_j \\ 
+	\beta_i & \gamma_{ij}
+}}$<br>
+$[g^{uv}] = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
+	-1/\alpha^2 & \beta^j / \alpha^2 \\ 
+	\beta^i / \alpha^2 & \gamma^{ij} - \beta^i \beta^j / \alpha^2
+}}$<br>
+For $\alpha$ the lapse between $\Sigma_t$ and $\Sigma_{t + dt}$<br>
+And $\beta$ the shift in coordinates, $\beta \in \Sigma$.  Note that, for any vector $u \in \Sigma$ that $u^0 = 0$.<br>
+And $\gamma_{ij}$ the metric of $\Sigma$<br>
+Where $ \beta_j = \gamma_{ij} \beta^i = \gamma_{u j} \beta^u = g_{u j} \beta^j $ courtesy of the fact that $ g_{ij} = \gamma_{ij} $ and $ \beta^0 = 0 $.<br>
+But this also means, for some $u \in \Sigma$, $u^0 = 0$, however $u_t = u^j \beta_j$, while $u_i = \gamma_{ij} u^j$.<br>
+<br>
+ADM metric determinant: $g = det[g_{ab}] = \alpha \sqrt{\gamma}$<br>
+ADM spatial metric determinant: $\gamma = det[\gamma_{ij}]$<br>
+<br>
+
+normal in the ADM metric:<br>
+$n_u = \overset{\rightarrow u(i)}{\pmatrix{ -\alpha & 0 }} $<br>
+<br>
+$n^u = \downarrow u(i)\pmatrix{ 1/\alpha \\ -\beta^i/\alpha}$<br>
+<br>
+notice: $n_u n^u = -1$<br>
+<br>
+
+<hr>
+<br>
+
+<b>Recap from my Levi-Civita tensor worksheet in the Differential Geometry section, with specifics for the ADM metric:</b><br>
+<br>
+
+Let $[abcd] = \bar\epsilon_{abcd} = $ permutation symbol for $abcd$<br>
+Same with $[ijk] = \bar\epsilon_{ijk} = $ spatial permutation symbol for $ijk$<br>
+I'm going to raise and lower $\bar\epsilon_{ijk}$ by $\eta_{ij}$<br>
+Therefore $\bar\epsilon_{0ijk} = \bar\epsilon_{ijk} = \bar\epsilon^{ijk} = -\bar\epsilon_{ijk0} = -\bar\epsilon^{0ijk}$.<br>
+If I was to start describing things in terms of a diagonalized basis at each point, and if I was to give them a separate coordinate system, then I might replace $\bar\epsilon_{abcd}$ with the Levi-Civita permutation tensor associated with the indexes associated with the diagonalized metric.<br> 
+<br>
+
+Let $\epsilon_{abcd} = \sqrt{|g|} [abcd] = \sqrt{|g|} \bar\epsilon_{abcd} $ is the spacetime Levi-Civita permutation tensor<br> 
+So $\epsilon_{0ijk} = \alpha \sqrt\gamma \bar\epsilon_{0ijk} = \alpha \sqrt\gamma \bar\epsilon_{ijk}$ (see the ADM section for more details)<br>
+$\epsilon_{ijk} = \sqrt\gamma [ijk] = \sqrt\gamma \bar\epsilon_{ijk}$ is the spatial Levi-Civita permutation tensor<br>
+So $\epsilon_{0ijk} = \alpha \epsilon_{ijk}$<br>
+And ${\epsilon^0}_{ijk} = g^{0a} \epsilon_{aijk} = g^{00} \epsilon_{0ijk} + g^{0\Sigma} \epsilon_{\Sigma ijk}$, but since $ijk \in \Sigma$ we know $\epsilon_{\Sigma ijk} = 0$<br>
+So ${\epsilon^0}_{ijk} = -\frac{1}{\alpha^2} \epsilon_{0ijk} = -\frac{1}{\alpha} \epsilon_{ijk} = -\frac{1}{\alpha} \sqrt\gamma \bar\epsilon_{0ijk} = -\frac{1}{\alpha} \sqrt\gamma \bar\epsilon_{ijk}$<br>
+<br>
+
+This can also be proven by explicitly lowering each index by the ADM metric:<br>
+${\epsilon^{0i}}_{jk}$
+$= g^{0a} g^{ib} \epsilon_{abjk} $<br>
+$= (
+	g^{0m} g^{i0} \epsilon_{m0jk} 
+	+ g^{00} g^{in} \epsilon_{0njk}
+	+ g^{0m} g^{in} \epsilon_{mnjk}
+) $<br>
+$= (
+	- \frac{1}{\alpha^2} \gamma^{im} \epsilon_{0mjk}
+	+ \frac{1}{\alpha^2} \beta^m (\gamma^{in} - \frac{1}{\alpha^2} \beta^i \beta^n) \epsilon_{mnjk}
+) $<br>
+$= -\frac{1}{\alpha^2} \gamma^{im} (
+	\epsilon_{0mjk} - \beta^n \epsilon_{nmjk} 
+) $<br>
+$= -\frac{1}{\alpha^2} \gamma^{im} \epsilon_{0mjk}$<br>
+<br>
+
+In ADM, $\epsilon^{0abc} u_a v_b w_c = \epsilon^{0ijk} u_i v_j w_k$ since $\epsilon^{00ab} = 0$ due to its antisymmetric. The associated $u_0, v_0, w_0$ components will be cancelled.<br>
+<br>
+
+<hr>
+<br>
+Sources:<br>
+Misner, Throne, Wheeler 1973<br>
+Baumgarte &amp; Shapiro, 2010<br>
+That one Alcubierre et al paper on charged black holes<br>
+Tajmar and DeMatos' paper<br>
+A few wiki pages:<br>
+<a href="https://en.wikipedia.org/wiki/Covariant_formulation_of_classical_electromagnetism">https://en.wikipedia.org/wiki/Covariant_formulation_of_classical_electromagnetism</a><br>
+<a href="https://en.wikipedia.org/wiki/Electromagnetic_tensor">https://en.wikipedia.org/wiki/Electromagnetic_tensor</a><br>
+<a href="https://en.wikipedia.org/wiki/Maxwell%27s_equations">https://en.wikipedia.org/wiki/Maxwell%27s_equations</a><br>
+<a href="https://en.wikipedia.org/wiki/Magnetic_susceptibility">https://en.wikipedia.org/wiki/Magnetic_susceptibility</a><br>
+<a href="https://en.wikipedia.org/wiki/Electric_susceptibility">https://en.wikipedia.org/wiki/Electric_susceptibility</a><br>
+<a href="https://en.wikipedia.org/wiki/Maxwell%27s_equations_in_curved_spacetime">https://en.wikipedia.org/wiki/Maxwell%27s_equations_in_curved_spacetime</a><br>
+<br>	
+
+	</body>
+</html>

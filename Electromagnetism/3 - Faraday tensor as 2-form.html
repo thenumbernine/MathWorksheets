@@ -1,0 +1,231 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<script type='text/javascript' src='../tryToFindMathJax.js'></script>
+		<title>Faraday tensor as 2-form</title>
+	</head>
+	<body>
+
+<b>Faraday tensor as 2-form</b><br>
+TODO move this all to section 1, but only the SR-specific stuff, then put the GR-specific stuff here.<br>
+<br>
+
+$F = dA$<br>
+$F_{ab} = 2 \partial_{[a} A_{b]} = 2 \nabla_{[a} A_{b]}$ (notice the connections cancel)<br>
+$F = \frac{1}{2} F_{ab} dx^a \wedge dx^b = F_{ab} dx^a \otimes dx^b = dx^b \wedge \partial_b (A_a dx^a) = \partial_{[a} A_{b]} dx^a \wedge dx^b = 2 \partial_{[a} A_{b]} dx^a \otimes dx^b$<br>
+<br>
+
+$d F = d^2 A = 0$<br>
+becomes:<br>
+$0 = (F_{23,1} + F_{31,2} + F_{12,3} - F_{32,1} - F_{13,2} - F_{21,3}) dx^1 \wedge dx^2 \wedge dx^3$<br>
+$0 = (F_{23,0} + F_{30,2} + F_{02,3} - F_{32,0} - F_{03,2} - F_{20,3}) dx^0 \wedge dx^2 \wedge dx^3$<br>
+$0 = (F_{13,0} + F_{30,1} + F_{01,3} - F_{31,0} - F_{03,1} - F_{10,3}) dx^0 \wedge dx^1 \wedge dx^3$<br>
+$0 = (F_{12,0} + F_{20,1} + F_{01,2} - F_{21,0} - F_{02,1} - F_{10,2}) dx^0 \wedge dx^1 \wedge dx^2$<br>
+in special relativity this becomes:<br>
+$B_{1,1} + B_{2,2} + B_{3,3} = 0$<br>
+$B_{1,t} + E_{3,2} - E_{2,3} = 0$<br>
+$B_{2,t} + E_{1,3} - E_{3,1} = 0$<br>
+$B_{3,t} + E_{2,1} - E_{1,2} = 0$<br>
+in general relativity we have to jump through more hoops to define B correctly using the dual, which requires the metric.<br>
+<br>
+
+in a vacuum, in Minkowski metric:<br>
+$d \star F = \star J$<br>
+$\star d \star F = -J$<br>
+$\delta F = J$<br>
+TODO where does that 1/2 come from?<br>
+becomes:<br>
+$J_0 \star dx^0 = \frac{1}{2} ((\star F)_{23,1} + (\star F)_{31,2} + (\star F)_{12,3} - (\star F)_{32,1} - (\star F)_{13,2} - (\star F)_{21,3}) (dx^1 \wedge dx^2 \wedge dx^3)$<br>
+$J_1 \star dx^1 = \frac{1}{2} ((\star F)_{23,0} + (\star F)_{30,2} + (\star F)_{02,3} - (\star F)_{32,0} - (\star F)_{03,2} - (\star F)_{20,3}) (dx^0 \wedge dx^2 \wedge dx^3)$<br>
+$J_2 \star dx^2 = \frac{1}{2} ((\star F)_{13,0} + (\star F)_{30,1} + (\star F)_{01,3} - (\star F)_{31,0} - (\star F)_{03,1} - (\star F)_{10,3}) (dx^0 \wedge dx^1 \wedge dx^3)$<br>
+$J_3 \star dx^3 = \frac{1}{2} ((\star F)_{12,0} + (\star F)_{20,1} + (\star F)_{01,2} - (\star F)_{21,0} - (\star F)_{02,1} - (\star F)_{10,2}) (dx^0 \wedge dx^1 \wedge dx^2)$<br>
+becomes:<br>
+$J_0 \star dx^0 = \frac{1}{2} ((\star F)_{23,1} + (\star F)_{31,2} + (\star F)_{12,3} - (\star F)_{32,1} - (\star F)_{13,2} - (\star F)_{21,3}) \star (-dx^0)$<br>
+$J_1 \star dx^1 = \frac{1}{2} ((\star F)_{23,0} + (\star F)_{30,2} + (\star F)_{02,3} - (\star F)_{32,0} - (\star F)_{03,2} - (\star F)_{20,3}) \star dx^1$<br>
+$J_2 \star dx^2 = \frac{1}{2} ((\star F)_{13,0} + (\star F)_{30,1} + (\star F)_{01,3} - (\star F)_{31,0} - (\star F)_{03,1} - (\star F)_{10,3}) \star (-dx^2)$<br>
+$J_3 \star dx^3 = \frac{1}{2} ((\star F)_{12,0} + (\star F)_{20,1} + (\star F)_{01,2} - (\star F)_{21,0} - (\star F)_{02,1} - (\star F)_{10,2}) \star dx^3$<br>
+becomes:<br>
+$c \rho_{free} \star dx^0 = c (E_{1,1} + E_{2,2} + E_{3,3}) \star dx^0$<br>
+$J_1 \star dx^1 = ( -c E_{1,0} + B_{3,2} - B_{2,3}) \star dx^1$<br>
+$J_2 \star dx^2 = ( -c E_{2,0} + B_{1,3} - B_{3,1}) \star dx^2$<br>
+$J_3 \star dx^3 = ( -c E_{3,0} + B_{2,1} - B_{1,2}) \star dx^3$<br>
+becomes:<br>
+$E_{1,1} + E_{2,2} + E_{3,3} = \rho_{free}$<br>
+$E_{1,t} - B_{3,2} + B_{2,3} = -J_1$<br>
+$E_{2,t} - B_{1,3} + B_{3,1} = -J_2$<br>
+$E_{3,t} - B_{2,1} + B_{1,2} = -J_3$<br>
+<br>
+
+in a vacuum, in Minkowski metric:<br>
+$\nabla \cdot F = J$<br>
+<br>
+
+TODO somewhere in here...<br>
+I've mentioned Maxwell's laws in SR, but not in GR:<br>
+${F^{ab}}_{;b} - {R^a}_b A^b = J^a$<br>
+Which brings me to another question, what is the Ricci curvature in ADM metric decomposition?<br>
+<br>
+
+<hr>
+<b>splitting apart space and time in the differential form representation:</b><br>
+In special relativity:<br>
+Flanders, ch.2, and Gravitation box 4.3<br>
+Notice, $\omega \wedge \star \omega = \langle \omega, \omega \rangle dV$<br>
+$\langle \alpha, \beta \rangle = \alpha \wedge \star \beta$ and $\langle \alpha, \alpha \rangle = \Sigma_{i_1 ... i_p} (\alpha_{i_1 ... i_p})^2$<br>
+So $dx^0 \wedge dx \wedge \star (dx^0 \wedge dx) = dx^0 \wedge dx \wedge (-dy \wedge dz) = \langle dx^0 \wedge dx, dx^0 \wedge dx \rangle dV = \langle dx^0, dx^0 \rangle \langle dx, dx \rangle dV = -dV$, therefore $\star (dx^0 \wedge dx) = -dy \wedge dz$.<br>
+So $dy \wedge dz \wedge \star (dy \wedge dz) = dy \wedge dz \wedge (dx^0 \wedge dx) = \langle dy \wedge dz, dy \wedge dz \rangle dV = \langle dy, dy \rangle \langle dz, dz \rangle dV = dV$, therefore $\star (dy \wedge dz) = dx^0 \wedge dx$.<br>
+So $dx^0 \wedge dx \wedge dy \wedge dz \wedge \star (dx^0 \wedge dx \wedge dy \wedge dz) = dx^0 \wedge dx \wedge dy \wedge dz = \langle dx^0 \wedge dx \wedge dy \wedge dz, dx^0 \wedge dx \wedge dy \wedge dz \rangle dV = \langle dx^0, dx^0 \rangle \langle dx, dx \rangle \langle dy, dy \rangle \langle dz, dz \rangle dV = -dV$, therefore $\star dV = \star (dx^0 \wedge dx \wedge dy \wedge dz) = -1$<br>
+So $1 \wedge \star (1) = \langle 1, 1 \rangle dx^0 \wedge dx \wedge dy \wedge dz = dV$, therefore $\star 1 = dx^0 \wedge dx \wedge dy \wedge dz = dV$<br>
+So in the (-,+,+,+) signature, $\star^2 = -1$<br>
+<br>
+
+In an ADM metric:<br>
+$\star (dx^0 \wedge dx^i) = \frac{1}{2} {\epsilon^{0i}}_{jk} dx^j \wedge dx^k$
+$= -\frac{1}{2} \frac{1}{\alpha} {\epsilon^i}_{jk} dx^j \wedge dx^k$<br>
+<br>
+So $\star (V \wedge dx^0) = \star (V_i dx^i \wedge dx^0) = V_i \star (dx^i \wedge dx^0)$<br>
+$= -\frac{1}{2} V_i {\epsilon^{0i}}_{jk} dx^j \wedge dx^k$<br>
+$= \frac{1}{2} \frac{1}{\alpha} V^i \epsilon_{ijk} dx^j \wedge dx^k$<br>
+<br>
+
+$F = F_{0i} dx^0 \wedge dx^i + \frac{1}{2} F_{ij} dx^i \wedge dx^j$<br> 
+Let $F = \alpha (\frac{1}{c} \mathcal{E} \wedge dx^0 + \star (\mathcal{B} \wedge dx^0))$<br>
+$= \alpha (\mathcal{E} \wedge dt + \star (\mathcal{B} \wedge dx^0))$.<br>
+Where $\mathcal{E} = \mathcal{E}_i dx^i$<br>
+And $\mathcal{B} = \mathcal{B}_i dx^i$<br>
+Notice that $\mathcal{E}, \mathcal{B}$ are different than $E, B$.<br>
+$F_{uv} = \pmatrix{
+	0 & -\frac{1}{c} \alpha \mathcal{E} \\
+	\frac{1}{c} \alpha \mathcal{E} & \alpha \star (\mathcal{B} \wedge dx^0)
+}$<br>
+$F_{uv} = \pmatrix{
+	0 & -\frac{1}{c} \alpha \mathcal{E}_j \\
+	\frac{1}{c} \alpha \mathcal{E}_i & \epsilon_{ijk} \mathcal{B}^k
+}$<br>
+So $F_{i0} = \frac{1}{c} \alpha \mathcal{E}_i$<br>
+And $F_{ij} = \epsilon_{ijk} B^k$<br>
+<br>
+
+$\mathcal{E}_t$ and $\mathcal{B}_t$ can be chosen arbitrarily, since any values that are used will be cancelled.<br>
+<br>
+
+Comparing $E$ and $\mathcal{E}$:<br>
+$\frac{1}{c} \alpha \mathcal{E}_i = \frac{1}{c} \alpha E_i + 2 \frac{1}{c} \frac{1}{\alpha} \beta^k \beta_{[i} E_{k]} + \frac{1}{\alpha} \epsilon_{ikl} \beta^k B^l$<br>
+$\frac{1}{c} \mathcal{E}_i = \frac{1}{c} E_i + \frac{1}{\alpha^2} (2 \frac{1}{c} \beta^k \beta_{[i} E_{k]} + \epsilon_{ikl} \beta^k B^l)$<br>
+$\frac{1}{c} \mathcal{E}_i = \frac{1}{c} (\delta^k_i + 2 \frac{1}{\alpha^2} \beta^j \beta_{[i} \delta^k_{j]}) E_k + \frac{1}{\alpha^2} \epsilon_{ikl} \beta^k B^l$<br>
+<br>
+
+Comparing $B$ to $\mathcal{B}$:<br>
+$\epsilon_{ijk} \mathcal{B}^k = 2 \frac{1}{c} \frac{1}{\alpha} \beta_{[i} E_{j]} + \epsilon_{ijk} B^k$<br>
+$\mathcal{B}_i = B_i + \frac{1}{c} \frac{1}{\alpha} \epsilon_{ijk} \beta^j E^k$<br>
+<br>
+
+Combining ${F^a}_b, \mathcal{E}_i$, and $\mathcal{B}_i$, we find:<br>
+${F^a}_b = \pmatrix{
+	\frac{1}{c} \frac{1}{\alpha} \beta^k E_k & 
+	\frac{1}{c} \frac{1}{\alpha} E_j
+	\\
+	\frac{1}{c} (\alpha - \frac{1}{\alpha} \beta^2) E^i + {\epsilon^i}_{kl} \beta^k B^l & 
+	\frac{1}{c} {\epsilon^i}_{jk} B^k - \frac{1}{\alpha} E^i \beta_j
+}$<br>
+${F^a}_b = \pmatrix{
+	\frac{1}{c} \frac{1}{\alpha} E_t & 
+	\frac{1}{c} \frac{1}{\alpha} E_j
+	\\
+	\frac{1}{c} \alpha \mathcal{E}^i - \frac{1}{c} \frac{1}{\alpha} \beta^i \beta_k E^k & 
+	{\epsilon^i}_{jk} \mathcal{B}^k - \frac{1}{c} \frac{1}{\alpha} \beta^i E_j
+}$<br>
+(Notice this $\mathcal{E}^i$ is only raised with $\gamma^{ij} \mathcal{E}_j$, and not the whole $g^{ia} \mathcal{E}_a$)<br>
+Because this one is what I'll be looking at later with the stress-energy tensor.<br>
+<br>
+
+<hr>
+<b>Differential forms in terms of the electromagnetic 4-potential</b><br>
+In component form using ADM coordinates:<br>
+$A_u = \pmatrix{\frac{1}{c} \phi \\ A_i}$<br>
+$A_i$ is in units of $\frac{kg \cdot m}{C \cdot s}$<br>
+$\phi$ is in units of $\frac{kg \cdot m^2}{C \cdot s^2}$<br>
+$F_{ab} = \pmatrix{
+	0 & F_{0j} \\ 
+	F_{i0} & F_{ij}
+} = \pmatrix{
+	0 & 2 \partial_{[0} A_{j]} \\
+	2 \partial_{[i} A_{0]} & 2 \partial_{[i} A_{j]}
+} = \pmatrix{
+	0 & \frac{1}{c} (A_{j,t} - \phi_{,j}) \\
+	-\frac{1}{c} (A_{i,t} - \phi_{,i}) & A_{j,i} - A_{i,j}
+}$<br>
+So $\mathcal{E}_i = \frac{1}{c} \frac{1}{\alpha} (-A_{i,t} + \phi_{,i})$<br>
+And $A_{j,i} - A_{i,j} = \epsilon_{ijk} \mathcal{B}^k$<br>
+$\epsilon^{ijl} (A_{j,i} - A_{i,j}) = \epsilon^{ijl} \epsilon_{ijk} \mathcal{B}^k$<br>
+$\mathcal{B}^i = \epsilon^{ijk} A_{k,j}$<br>
+<br>
+
+$F \wedge \star F = \alpha^2 (\frac{1}{c} \mathcal{E} \wedge dx^0 + \star (\mathcal{B} \wedge dx^0)) \wedge \star (\frac{1}{c} \mathcal{E} \wedge dx^0 + \star (\mathcal{B} \wedge dx^0))$<br>
+$= \alpha^2 (
+	\frac{1}{c} \mathcal{E} \wedge dx^0 
+	+ \star (\mathcal{B} \wedge dx^0)
+) \wedge (
+	\star (\frac{1}{c} \mathcal{E} \wedge dx^0) 
+	- (\mathcal{B} \wedge dx^0)
+)$<br>
+$= \alpha^2 (
+	\frac{1}{c} \mathcal{E} \wedge dx^0 \wedge \star (\frac{1}{c} \mathcal{E} \wedge dx^0)
+	+ \star (\mathcal{B} \wedge dx^0) \wedge \star (\frac{1}{c} \mathcal{E} \wedge dx^0)
+	- \frac{1}{c} \mathcal{E} \wedge dx^0 \wedge (\mathcal{B} \wedge dx^0)
+	- \star (\mathcal{B} \wedge dx^0) \wedge (\mathcal{B} \wedge dx^0)
+)$<br>
+$= \alpha^2 (
+	\frac{1}{c} \mathcal{E} \wedge dx^0 \wedge \star (\frac{1}{c} \mathcal{E} \wedge dx^0)
+	- \star (\mathcal{B} \wedge dx^0) \wedge (\mathcal{B} \wedge dx^0)
+)$<br>
+$= \alpha^2 (
+	\frac{1}{c} \mathcal{E}_i dx^i \wedge dx^0 \wedge \frac{1}{2} \frac{1}{c} \mathcal{E}_m {\epsilon^{0m}}_{jk} dx^j \wedge dx^k
+	- \frac{1}{2} \mathcal{B}_m {\epsilon^{0m}}_{jk} dx^j \wedge dx^k\wedge (\mathcal{B}_i dx^i \wedge dx^0)
+)$<br>
+$= -\frac{1}{2} \alpha^2 (\frac{1}{c^2} \mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) {\epsilon^{0m}}_{jk} dx^0 \wedge dx^i \wedge dx^j \wedge dx^k$<br>
+$= -2 \alpha^2 (\frac{1}{c^2} \mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) g^{ta} g^{mb} \epsilon_{abjk} \epsilon^{0ijk} dV$<br>
+$= 2 \alpha^2 (\frac{1}{c^2} \mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) g^{ta} g^{mb} \delta^{ti}_{ab} dV$<br>
+$= 2 \alpha^2 (\frac{1}{c^2} \mathcal{E}_i \mathcal{E}_m - \mathcal{B}_i \mathcal{B}_m) g^{ta} g^{mb} (\delta^t_a \delta^i_b - \delta^t_b \delta^i_a) dV$<br>
+$= 2 \alpha^2 (\frac{1}{c^2} \mathcal{E}_i \mathcal{E}_j - \mathcal{B}_i \mathcal{B}_j) (g^{tt} g^{ij} - g^{ti} g^{tj}) dV$<br>
+$= 2 \alpha^2 (\frac{1}{c^2} \mathcal{E}_i \mathcal{E}_j - \mathcal{B}_i \mathcal{B}_j) (-\frac{1}{\alpha^2} (\gamma^{ij} - \frac{1}{\alpha^2} \beta^i \beta^j) - \frac{1}{\alpha^4} \beta^i \beta^j) dV$<br>
+$= -2 \gamma^{ij} (\frac{1}{c^2} \mathcal{E}_i \mathcal{E}_j - \mathcal{B}_i \mathcal{B}_j) dV$<br>
+If we choose $\mathcal{E}_t = \mathcal{B}_t = 0$:<br>
+$= -2 g^{ab} (\frac{1}{c^2} \mathcal{E}_a \mathcal{E}_b - \mathcal{B}_a \mathcal{B}_b) dV$<br>
+$= -2 (\frac{1}{c^2} \mathcal{E}^2 - \mathcal{B}^2) dV$<br>
+...TODO show this one too<br>
+$= g^{ua} F_{ab} g^{bv} F_{uv} dV$<br>
+$ = F_{ab} F^{ab} dV$<br>
+$ = -tr(F^2) dV$<br>
+<br>
+
+$F \wedge F = \alpha^2 (\frac{1}{c} \mathcal{E} \wedge dx^0 + \star (\mathcal{B} \wedge dx^0)) \wedge (\frac{1}{c} \mathcal{E} \wedge dx^0 + \star (\mathcal{B} \wedge dx^0))$<br>
+$= \alpha^2 (
+	\frac{1}{c} \mathcal{E} \wedge dx^0 \wedge \frac{1}{c} \mathcal{E} \wedge dx^0
+	+ \star (\mathcal{B} \wedge dx^0) \wedge \frac{1}{c} \mathcal{E} \wedge dx^0 
+	+ \frac{1}{c} \mathcal{E} \wedge dx^0 \wedge \star (\mathcal{B} \wedge dx^0) 
+	+ \star (\mathcal{B} \wedge dx^0) \wedge \star (\mathcal{B} \wedge dx^0)
+)$<br>
+$= \alpha^2 (
+	\star (\mathcal{B} \wedge dx^0) \wedge \frac{1}{c} \mathcal{E} \wedge dx^0 
+	+ \frac{1}{c} \mathcal{E} \wedge dx^0 \wedge \star (\mathcal{B} \wedge dx^0)
+)$<br>
+$= \alpha^2 (
+	\frac{1}{2} \mathcal{B}_i {\epsilon^{0i}}_{jk} dx^j \wedge dx^k \wedge \frac{1}{c} \mathcal{E} \wedge dx^0 
+	+ \frac{1}{c} \mathcal{E} \wedge dx^0 \wedge \frac{1}{2} \mathcal{B}_i {\epsilon^{0i}}_{jk} dx^j \wedge dx^k
+)$<br>
+$= -\frac{1}{c} \alpha^2 \mathcal{E}_i \mathcal{B}_l {\epsilon^{0l}}_{jk} dx^0 \wedge dx^i \wedge dx^j \wedge dx^k$<br>
+$= -4 \frac{1}{c} \alpha^2 \mathcal{E}_i \mathcal{B}_l {\epsilon^{0l}}_{jk} \epsilon^{0ijk} dV$<br>
+$= -4 \frac{1}{c} \alpha^2 \mathcal{E}_i \mathcal{B}_l g^{ta} g^{lb} \epsilon_{abjk} \epsilon^{0ijk} dV$<br>
+$= -4 \frac{1}{c} \alpha^2 \mathcal{E}_i \mathcal{B}_l g^{ta} g^{lb} \delta^{ti}_{ab} dV$<br>
+$= -4 \frac{1}{c} \alpha^2 \mathcal{E}_i \mathcal{B}_l g^{ta} g^{lb} (\delta^t_a \delta^i_b - \delta^t_b \delta^i_a) dV$<br>
+$= -4 \frac{1}{c} \alpha^2 \mathcal{E}_i \mathcal{B}_j (g^{tt} g^{ij} - g^{ti} g^{tj}) dV$<br>
+$= -4 \frac{1}{c} \alpha^2 \mathcal{E}_i \mathcal{B}_j (-\frac{1}{\alpha^2} (\gamma^{ij} - \frac{1}{\alpha^2} \beta^i \beta^j) - \frac{1}{\alpha^4} \beta^i \beta^j) dV$<br>
+$= 4 \frac{1}{c} \gamma^{ij} \mathcal{E}_i \mathcal{B}_j dV$<br>
+So $\star (F \wedge F) = 4 \frac{1}{c} \gamma^{ij} \mathcal{E}_i \mathcal{B}_j$<br>
+This looks suspiciously like $F \cdot \star F$<br>...
+<br>
+
+	</body>
+</html>

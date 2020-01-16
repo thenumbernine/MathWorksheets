@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<script type='text/javascript' src='../tryToFindMathJax.js'></script>
+		<title>Faraday tensor in general relativity in vacuum</title>
+	</head>
+	<body>
+
+From Baumgarate &amp; Shapiro, eqn 5.114:<br>
+$F^{ab} = \frac{1}{c} n^a E^b - \frac{1}{c} n^b E^a + n_d \epsilon^{dabc} B_c$<br>
+$E^a = c F^{ab} n_b$<br>
+$B^a = \frac{1}{2} \epsilon^{abcd} n_b F_{dc}$<br>
+This fits our convention above, which means if I were to negative the E components of F (like most texts do) then I would have to negative n, or the definition of E wrt F and n, as well.<br>
+<br>
+For ADM $n_a = (-\alpha, 0)$, $n^a = (1/\alpha, -\beta^i/\alpha)$, where the first component is time, this means:<br>
+$E^a = c F^{ab} n_b = -\alpha F^{a0} = \alpha F^{0a}$<br>
+Since $F^{ab}$ is antisymmetric, this means $F^{tt} = 0$, and $E^t = 0$, so $E^a n_a = 0$, so $E^a$ is a spatial vector.<br>
+$E_a = g_{ab} E^b = g_{aj} E^j = \pmatrix{ \beta_j E^j & \gamma_{ij} E^j } = \pmatrix{\beta^j E_j & E_i}$<br>
+so $E_i = g_{ia} E^a = g_{ij} E^j$ and $E_0 = \beta^j E_j$<br>
+<br>
+
+Now $n_d \epsilon^{dabc} = n_0 \epsilon^{0abc} = -\alpha \epsilon^{0abc} = \epsilon^{abc}$ where the last term is purely spatial (being orthogonal to $t$), so any timelike components of $abc$ are cancelled.<br>
+$F^{ij} = n_d \epsilon^{dijc} B_c = -\alpha \epsilon^{0ijk} B_k = \epsilon^{ijk} B_k$<br>
+<br>
+
+$F^{ab} = \downarrow a(i) \overset{\rightarrow b(j)}{\pmatrix{
+	0 & \frac{1}{c} \frac{1}{\alpha} E^j \\
+	-\frac{1}{c} \frac{1}{\alpha} E^i & \epsilon^{ijk} B_k
+}}$<br>
+<br>
+
+${F^a}_b = F^{au} g_{ub} = \pmatrix{
+	0 & \frac{1}{c} \frac{1}{\alpha} E^k \\
+	-\frac{1}{c} \frac{1}{\alpha} E^i & \epsilon^{ikl} B_l
+} \pmatrix{-\alpha^2 + \beta^2 & \beta_j \\ \beta_k & \gamma_{kj}}$<br>
+${F^a}_b = \pmatrix{
+	\frac{1}{c} \frac{1}{\alpha} E^k \beta_k & 
+	\frac{1}{c} \frac{1}{\alpha} E_j
+	\\
+	\frac{1}{c} (\alpha - \frac{1}{\alpha} \beta^2) E^i + {\epsilon^i}_{kl} \beta^k B^l & 
+	-\frac{1}{c} \frac{1}{\alpha} E^i \beta_j + {\epsilon^i}_{jk} B^k
+}$<br>
+<br>
+
+$F_{ab} = g_{au} {F^u}_b =
+\pmatrix{-\alpha^2 + \beta^2 & \beta_k \\ \beta_i & \gamma_{ik}}
+\pmatrix{
+	\frac{1}{c} \frac{1}{\alpha} E^l \beta_l & 
+	\frac{1}{c} \frac{1}{\alpha} E_j
+	\\
+	\frac{1}{c} (\alpha - \frac{1}{\alpha} \beta^2) E^k + {\epsilon^k}_{lm} \beta^l B^m & 
+	-\frac{1}{c} \frac{1}{\alpha} E^k \beta_j + {\epsilon^k}_{jl} B^l
+}
+$<br>
+
+$F_{ab} = {F_a}^u g_{ub} = \pmatrix{
+	-\frac{1}{c} \frac{1}{\alpha} \beta_k E^k & 
+	\frac{1}{c} \frac{1}{\alpha} (-\alpha^2 + \beta^2) E^l - \alpha \beta_k \epsilon^{0klm} B_m 
+	\\
+	-\frac{1}{c} \frac{1}{\alpha} E_i & 
+	\frac{1}{c} \frac{1}{\alpha} \beta_i E^l - \alpha \gamma_{ik} \epsilon^{0klm} B_m
+} \pmatrix{
+	-\alpha^2 + \beta^2 & \beta_j \\ 
+	\beta_l & \gamma_{lj}
+}$<br>
+
+$F_{ab} = \pmatrix{
+	\frac{1}{c} (-\alpha^2 + \beta^2) (-\frac{1}{\alpha} \beta_k E^k)
+	+ \beta_l (\frac{1}{c} \frac{1}{\alpha} (-\alpha^2 + \beta^2) E^l + \beta_k \epsilon^{klm} B_m)
+	& 
+	\frac{1}{c} \beta_j (-\frac{1}{\alpha} \beta_k E^k)
+	+ \gamma_{lj} (\frac{1}{c} \frac{1}{\alpha} (-\alpha^2 + \beta^2) E^l + \beta_k \epsilon^{klm} B_m) 
+	\\
+	\frac{1}{c} (-\alpha^2 + \beta^2) (-\frac{1}{\alpha} E_i)
+	+ \beta_l (\frac{1}{c} \frac{1}{\alpha} \beta_i E^l + \gamma_{ik} \epsilon^{klm} B_m)
+	&	
+	\beta_j (-\frac{1}{c} \frac{1}{\alpha} E_i)
+	+ \gamma_{lj} (\frac{1}{c} \frac{1}{\alpha} \beta_i E^l + \gamma_{ik} \epsilon^{klm} B_m)
+}$<br>
+
+$F_{ab} = \pmatrix{
+	0 & 
+	- (
+		\frac{1}{c} \alpha E_j
+		- \frac{1}{c} \frac{1}{\alpha} \beta^2 E_j
+		+ \frac{1}{c} \frac{1}{\alpha} \beta_j \beta^k E_k
+		+ \gamma_{kj} \beta_l \epsilon^{klm} B_m
+	)
+	\\
+	\frac{1}{c} \alpha E_i
+	- \frac{1}{c} \frac{1}{\alpha} \beta^2 E_i
+	+ \frac{1}{c} \frac{1}{\alpha} \beta_i \beta^k E_k
+	+ \gamma_{ik} \beta_l \epsilon^{klm} B_m
+	&	
+	\frac{1}{c} \frac{1}{\alpha} \beta_i E_j 
+	- \frac{1}{c} \frac{1}{\alpha} \beta_j E_i
+	+ \gamma_{ik} \gamma_{jl} \epsilon^{klm} B_m
+}$<br>
+
+$F_{ab} = \pmatrix{
+	0 & 
+	- (
+		\frac{1}{c} \alpha E_j 
+		+ 2 \frac{1}{c} \frac{1}{\alpha} \beta^k \beta_{[j} E_{k]}
+		+ \epsilon_{jkl} \beta^k B^l
+	)
+	\\
+	\frac{1}{c} \alpha E_i 
+	+ 2 \frac{1}{c} \frac{1}{\alpha} \beta^k \beta_{[i} E_{k]}
+	+ \epsilon_{ikl} \beta^k B^l
+	&	
+	2 \frac{1}{c} \frac{1}{\alpha} \beta_{[i} E_{j]}
+	+ \epsilon_{ijk} B^k
+}$<br>
+<br>
+
+
+
+	</body>
+</html>
