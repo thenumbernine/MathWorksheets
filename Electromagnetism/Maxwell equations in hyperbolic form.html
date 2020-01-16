@@ -19,6 +19,8 @@ $\mu_0 =$ vacuum permeability, in units $[\frac{kg \cdot m}{C^2}]$<br>
 $\frac{1}{\sqrt{\epsilon_0 \mu_0}} = c$<br>
 <br>
 
+TODO to match with the 'relativistic magnetism in medium' worksheet, $E \rightarrow \mathcal{E}, B \rightarrow \mathcal{B}$<br>
+<br>
 $E_i$ = electric field, in units $[\frac{kg \cdot m}{C \cdot s^2}]$<br>
 $B_i$ = magnetic field, in units $[\frac{kg}{C \cdot s}]$<br>
 $D_i = \epsilon E_i =$ electric displacement field, in units $[\frac{C}{m^2}]$<br>
@@ -27,7 +29,7 @@ $B_i = \mu H_i$, for $H_i =$ magnetizing field, in units $[\frac{C}{m \cdot s}]$
 
 $\epsilon =$ permittivity, in units $[\frac{C^2 \cdot s^2}{kg \cdot m^3}]$<br>
 $\mu =$ permeability, in units $[\frac{kg \cdot m}{C^2}]$<br>
-$v_p = \frac{1}{\sqrt{\epsilon \mu}} = $ phase velocity<br>
+$v_p = \frac{1}{\sqrt{\epsilon \mu}} = $ phase velocity, in units $[\frac{m}{s}]$<br>
 <br>
 
 Wedge product:<br>
@@ -56,14 +58,13 @@ $F_{uv} = \partial_u A_v - \partial_v A_u = 2 \partial_{[u} A_{v]}$<br>
 $F = E_i \wedge dt + c \star (B_i \wedge dt)$<br>
 <br>
 
-Let $\frac{1}{c} E_u = F_{uv} n^v$ for the hypersurface normal $n^a$<br>
-Let $B_u = {\epsilon_{uv}}^{ab} F_{ab} n^v$<br>
+(Notice in 'relativistic electromagnetism in medium' this is the original $E, B$ definition, not the $\mathcal{E}, \mathcal{B}$ definition):<br>
+Let $E^a = c F^{ab} n_b$ for the hypersurface normal $n^a$<br>
+Let $B^a = \frac{1}{2} \epsilon^{abcd} n_b F_{dc}$<br>
 <br>
 
-TODO replace ${\bar{\epsilon}_{ij}}^k$ with ${\epsilon_{ij}}^k$<br>
-so that the spatial metric shows up.<br>
-Maybe even use $\epsilon_{ijk} = -\frac{1}{\alpha} \epsilon_{0ijk}$ for the 3D-4D relation using ADM lapse $\alpha$.<br>
 From the 'relativistic electromagnetism metric in medium' worksheet:<br>
+(Notice that $\alpha, \beta^i, \gamma_{ij}$ are ADM metric parameters)<br>
 Let $\epsilon_{abcd} = \sqrt{|g|} [abcd] = \sqrt{|g|} \bar\epsilon_{abcd} $ is the spacetime Levi-Civita permutation tensor<br> 
 So $\epsilon_{0ijk} = \alpha \sqrt\gamma \bar\epsilon_{0ijk} = \alpha \sqrt\gamma \bar\epsilon_{ijk}$ (see the ADM section for more details)<br>
 $\epsilon_{ijk} = \sqrt\gamma [ijk] = \sqrt\gamma \bar\epsilon_{ijk}$ is the spatial Levi-Civita permutation tensor<br>
@@ -74,15 +75,22 @@ So ${\epsilon^{0i}}_{jk} = -\frac{1}{\alpha^2} \gamma^{im} \epsilon_{0mjk}$<br>
 <br>
 
 $F_{uv} = \downarrow u(i) \overset{\rightarrow v(j)}{ \left[\begin{matrix}
-	0 & -\frac{1}{c} E_j \\ 
-	\frac{1}{c} E_i & {\bar\epsilon_{ij}}^k B_k
+	0 & -\frac{1}{c} \alpha E_j \\ 
+	\frac{1}{c} \alpha E_i & {\epsilon_{ij}}^k B_k
 \end{matrix}\right] }$<br>
+
+$F_{uv} = \downarrow u(i) \overset{\rightarrow v(j)}{ \left[\begin{matrix}
+	0 & -\frac{1}{c} \alpha E_j \\ 
+	\frac{1}{c} \alpha E_i & \gamma \bar\epsilon_{ijk} B^k
+\end{matrix}\right] }$<br>
+
+
 In 3+1:<br>
 $F_{uv} = \left[\begin{matrix}
-	0 & -\frac{1}{c} E_1 & -\frac{1}{c} E_2 & -\frac{1}{c} E_3 \\ 
-	\frac{1}{c} E_1 & 0 & B_3 & -B_2 \\
-	\frac{1}{c} E_2 & -B_3 & 0 & B_1 \\
-	\frac{1}{c} E_3 & B_2 & -B_1 & 0
+	0 & -\frac{1}{c} \alpha E_1 & -\frac{1}{c} \alpha E_2 & -\frac{1}{c} \alpha E_3 \\ 
+	\frac{1}{c} \alpha E_1 & 0 & \gamma B^3 & -\gamma B^2 \\
+	\frac{1}{c} \alpha E_2 & -\gamma B^3 & 0 & \gamma B^1 \\
+	\frac{1}{c} \alpha E_3 & \gamma B^2 & -\gamma B^1 & 0
 \end{matrix}\right]$<br>
 <br>
 
@@ -90,11 +98,42 @@ $\star F = \star (F_{ab} dx^a \wedge dx^b) = F_{ab} \star (dx^a \wedge dx^b) = (
 (Notice that $(\star F)_{ab}$ is a variable denotation, and not an operator, while $\star dx^a$ is an operator.)<br>
 TODO don't forget to add in the influence from $g_{ab}$<br>
 $(\star F)_{ab} = \frac{1}{2} F_{uv} {\epsilon^{uv}}_{ab}$<br>
+$(\star F)_{0i} = \frac{1}{2} F_{jk} {\epsilon^{jk}}_{0i} = \frac{1}{2} F^{jk} \epsilon_{jk0i} = \frac{1}{2} F^{jk} \epsilon_{0ijk}$<br>
+$(\star F)_{0i} = \frac{1}{2} \alpha \epsilon_{ijk} g^{ja} g^{kb} F_{ab}$<br>
+$(\star F)_{0i} = \frac{1}{2} \alpha \epsilon_{ijk} (g^{j0} g^{k0} F_{00} + g^{j0} g^{km} F_{0m} + g^{jn} g^{k0} F_{n0} + g^{jm} g^{kn} F_{mn})$
+$(\star F)_{0i} = \frac{1}{2} \alpha \epsilon_{ijk} (-\frac{1}{\alpha^2} \beta^j (\gamma^{km} - \frac{1}{\alpha^2} \beta^k \beta^m) \frac{1}{c} \alpha E_m + \frac{1}{\alpha^2} (\gamma^{jn} - \frac{1}{\alpha^2} \beta^j \beta^n) \beta^k \frac{1}{c} \alpha E_n + (\gamma^{jm} - \frac{1}{\alpha^2} \beta^j \beta^m) (\gamma^{kn} - \frac{1}{\alpha^2} \beta^k \beta^n) \epsilon_{mnp} B^p)$<br>
+$(\star F)_{0i} = \frac{1}{2} \alpha \epsilon_{ijk} (-2 \frac{1}{\alpha^2} \beta^j (\gamma^{km} - \frac{1}{\alpha^2} \beta^k \beta^m) \frac{1}{c} \alpha E_m + (\gamma^{jm} - \frac{1}{\alpha^2} \beta^j \beta^m) (\gamma^{kn} - \frac{1}{\alpha^2} \beta^k \beta^n) \epsilon_{mnp} B^p)$<br>
+$(\star F)_{0i} = \frac{1}{2} (
+	- 2 \frac{1}{c} \epsilon_{ijk} \beta^j E^k 
+	+ \alpha \epsilon_{ijk} \epsilon^{mjk} B^m 
+	+ 2 \frac{1}{\alpha} \epsilon_{ijk} \epsilon^{mnk} \beta^j \beta_m B_n
+)$<br>
+$(\star F)_{0i} = \frac{1}{2} (
+	- 2 \frac{1}{c} \epsilon_{ijk} \beta^j E^k 
+	+ \alpha \delta^{mj}_{ij} B^m 
+	+ 2 \frac{1}{\alpha} \delta^{mn}_{ij} \beta^j \beta_m B_n
+)$<br>
+$(\star F)_{0i} = \frac{1}{2} (
+	- 2 \frac{1}{c} \epsilon_{ijk} \beta^j E^k 
+	+ \alpha (\delta^m_i \delta^j_j - \delta^m_j \delta^j_i) B^m 
+	+ 2 \frac{1}{\alpha} (\delta^m_i \delta^n_j - \delta^m_j \delta^n_i) \beta^j \beta_m B_n
+)$<br>
+$(\star F)_{0i} = \alpha B^i 
+	+ \frac{1}{\alpha} \beta_i \beta^j B_j 
+	- \frac{1}{\alpha} \beta^j \beta_j B_i
+	- \frac{1}{c} \epsilon_{ijk} \beta^j E^k 
+$<br>
+TODO here I think my sign is backwards.<br>
+<br>
+$(\star F)_{jk} = \frac{1}{2} F_{0i} {\epsilon^{0i}}_{jk}$<br>
+$(\star F)_{jk} = \frac{1}{2} F_{0i} g^{0a} g^{ib} \epsilon_{abjk}$<br>
+<br>
+
 $(\star F)_{ab} = \left[\begin{matrix}
-	0 & -B_1 & -B_2 & -B_3 \\
-	B_1 & 0 & -\frac{1}{c} E_3 & \frac{1}{c} E_2 \\
-	B_2 & \frac{1}{c} E_3 & 0 & -\frac{1}{c} E_1 \\
-	B_3 & -\frac{1}{c} E_2 & \frac{1}{c} E_1 & 0
+	0 & -\alpha B_1 & -\alpha B_2 & -\alpha B_3 \\
+	\alpha B_1 & 0 & -\frac{1}{c} E_3 & \frac{1}{c} E_2 \\
+	\alpha B_2 & \frac{1}{c} E_3 & 0 & -\frac{1}{c} E_1 \\
+	\alpha B_3 & -\frac{1}{c} E_2 & \frac{1}{c} E_1 & 0
 \end{matrix}\right]$<br>
 <br>
 

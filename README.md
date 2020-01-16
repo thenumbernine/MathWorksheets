@@ -72,7 +72,19 @@ Here's the CDN URLs:
 
 [Einstein-Maxwell Hyperbolic Conservation Laws](https://thenumbernine.github.io/math/Einstein%2dMaxwell%20Hyperbolic%20Conservation%20Laws.html)
 
-[Electromagnetic Tensor Self-Dual](https://thenumbernine.github.io/math/Electromagnetic%20Tensor%20Self%2dDual.html)
+[Electromagnetism/Electromagnetic Tensor Self-Dual](https://thenumbernine.github.io/math/Electromagnetism/Electromagnetic%20Tensor%20Self%2dDual.html)
+
+[Electromagnetism/Maxwell Equations - Eigenmode Analysis](https://thenumbernine.github.io/math/Electromagnetism/Maxwell%20Equations%20%2d%20Eigenmode%20Analysis.html)
+
+[Electromagnetism/Maxwell equations in hyperbolic form](https://thenumbernine.github.io/math/Electromagnetism/Maxwell%20equations%20in%20hyperbolic%20form.html)
+
+[Electromagnetism/Maxwell in inhomogeneous medium](https://thenumbernine.github.io/math/Electromagnetism/Maxwell%20in%20inhomogeneous%20medium.html)
+
+[Electromagnetism/Maxwell octonions](https://thenumbernine.github.io/math/Electromagnetism/Maxwell%20octonions.html)
+
+[Electromagnetism/Relativistic Electromagnetism metric](https://thenumbernine.github.io/math/Electromagnetism/Relativistic%20Electromagnetism%20metric.html)
+
+[Electromagnetism/relativistic electromagnetic metric in medium](https://thenumbernine.github.io/math/Electromagnetism/relativistic%20electromagnetic%20metric%20in%20medium.html)
 
 [Equations of Structure - Schwarzschild](https://thenumbernine.github.io/math/Equations%20of%20Structure%20%2d%20Schwarzschild.html)
 
@@ -124,14 +136,6 @@ Here's the CDN URLs:
 
 [MHD](https://thenumbernine.github.io/math/MHD.html)
 
-[Maxwell Equations - Eigenmode Analysis](https://thenumbernine.github.io/math/Maxwell%20Equations%20%2d%20Eigenmode%20Analysis.html)
-
-[Maxwell equations in hyperbolic form](https://thenumbernine.github.io/math/Maxwell%20equations%20in%20hyperbolic%20form.html)
-
-[Maxwell in inhomogeneous medium](https://thenumbernine.github.io/math/Maxwell%20in%20inhomogeneous%20medium.html)
-
-[Maxwell octonions](https://thenumbernine.github.io/math/Maxwell%20octonions.html)
-
 [Metric Eigenmodes 2](https://thenumbernine.github.io/math/Metric%20Eigenmodes%202.html)
 
 [Metric Eigenmodes](https://thenumbernine.github.io/math/Metric%20Eigenmodes.html)
@@ -176,8 +180,6 @@ Here's the CDN URLs:
 
 [Quantum Computing](https://thenumbernine.github.io/math/Quantum%20Computing.html)
 
-[Relativistic Electromagnetism metric](https://thenumbernine.github.io/math/Relativistic%20Electromagnetism%20metric.html)
-
 [SRHD](https://thenumbernine.github.io/math/SRHD.html)
 
 [Schwarzschild with mass varying with time](https://thenumbernine.github.io/math/Schwarzschild%20with%20mass%20varying%20with%20time.html)
@@ -219,8 +221,6 @@ Here's the CDN URLs:
 [magnetic field from a boosted charge](https://thenumbernine.github.io/math/magnetic%20field%20from%20a%20boosted%20charge.html)
 
 [projection in any metric](https://thenumbernine.github.io/math/projection%20in%20any%20metric.html)
-
-[relativistic electromagnetic metric in medium](https://thenumbernine.github.io/math/relativistic%20electromagnetic%20metric%20in%20medium.html)
 
 [removing beta from adm metric](https://thenumbernine.github.io/math/removing%20beta%20from%20adm%20metric.html)
 
