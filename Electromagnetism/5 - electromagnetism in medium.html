@@ -769,27 +769,27 @@ so $F_{[ab]} = 2 E_{[a} n_{b]} + {\epsilon_{ab}}^{cd} n_{[c} B_{d]}$<br>
 Then I'm suspicious that tensors $\star \epsilon = (\mu)^{-1}$ or something like that.<br>
 <br>
 
-<b>Tensor combination of permeabillity and permittivity:</b><br>
-$D_{uv} = {P_{uv}}^{ab} F_{ab}$<br>
+<b>Maxwell's laws in general relativity using the constitutive tensor as a combination of permeabillity and permittivity tensors:</b><br>
+$D_{uv} = {Z_{uv}}^{ab} F_{ab}$<br>
 $D_{0i} = c^2 \epsilon F_{0i}$<br>
 $D_{i0} = c^2 \epsilon F_{i0}$<br>
 $D_{ij} = \frac{1}{\mu} F_{ij}$<br>
 Therefore<br>
-$c^2 \epsilon = \frac{\epsilon}{\epsilon_0} \frac{1}{\mu_0} = {P_{0i}}^{0i} = {P_{i0}}^{i0} = -{P_{0i}}^{i0} = -{P_{i0}}^{0i}$<br>
-$\frac{1}{\mu} = \frac{\mu}{\mu_0} \frac{1}{\mu_0} = {P_{jk}}^{jk} = {P_{kj}}^{kj} = -{P_{jk}}^{kj} = -{P_{kj}}^{jk}$<br>
-${P_{aa}}^{bc} = {P_{bc}}^{aa} = 0$<br>
+$c^2 \epsilon = \frac{\epsilon}{\epsilon_0} \frac{1}{\mu_0} = {Z_{0i}}^{0i} = {Z_{i0}}^{i0} = -{Z_{0i}}^{i0} = -{Z_{i0}}^{0i}$<br>
+$\frac{1}{\mu} = \frac{\mu_0}{\mu} \frac{1}{\mu_0} = {Z_{jk}}^{jk} = {Z_{kj}}^{kj} = -{Z_{jk}}^{kj} = -{Z_{kj}}^{jk}$<br>
+${Z_{aa}}^{bc} = {Z_{bc}}^{aa} = 0$<br>
 <br>
 
 How suspicious, when the susceptibilities are scalars the tensor that relates the Faraday tensor with the displacement tensor fulfills all the properties of a Riemann curvature tensor.<br>
-${P_{ab}}^{cd} = \frac{1}{\mu} \left[\begin{matrix}
+${Z_{ab}}^{cd} = \frac{1}{\mu_0} \left[\begin{matrix}
 	& & 01 & 02 & 03 & 23 & 31 & 12 \\
 	\\
 	01 & & \epsilon_r & \cdot & \cdot & \cdot & \cdot & \cdot \\
 	02 & & \cdot & \epsilon_r & \cdot & \cdot & \cdot & \cdot \\
 	03 & & \cdot & \cdot & \epsilon_r & \cdot & \cdot & \cdot \\
-	23 & & \cdot & \cdot & \cdot & \mu_r & \cdot & \cdot \\
-	31 & & \cdot & \cdot & \cdot & \cdot & \mu_r & \cdot \\
-	12 & & \cdot & \cdot & \cdot & \cdot & \cdot & \mu_r
+	23 & & \cdot & \cdot & \cdot & (\mu_r)^{-1} & \cdot & \cdot \\
+	31 & & \cdot & \cdot & \cdot & \cdot & (\mu_r)^{-1} & \cdot \\
+	12 & & \cdot & \cdot & \cdot & \cdot & \cdot & (\mu_r)^{-1}
 \end{matrix}\right]$<br>
 for $\epsilon_r = \frac{\epsilon}{\epsilon_0}, \mu_r = \frac{\mu}{\mu_0}$<br>
 <br>
@@ -798,8 +798,8 @@ It also fulfills all the properties of a Levi-Civita permutation tensor, and of 
 Maybe that's because the basis of the electromagnetic fields are rotations around the basis of the position vector?<br>
 <br>
 
-Another thing to think about: in Kaluza-Klein the Gauss-Ampere constraint ${D_{au}}^{;u} = ({P_{au}}^{bc} F_{bc})^{;u} \approx {P_{au}}^{bc} {F_{bc}}^{;u} = 4 \pi J_a$ shows up as a 5th dimension right beside the Riemann curvature constraint in the Einstein Field Equations: $G_{ab} = {(\star R \star)^u}_{aub} = 8 \pi T_{ab}$.<br>
-It looks even more uncannily like the Riemann curvature tensor if treat the approximation to be an equality: ${P_{ab}}^{cd;u} = 0$, just like the Bianchi identity ${R_{ab}}^{[cd;e]} = 0$, though the Gauss-Ampere law itself appears in vacuum form in Kaluza-Klein with cylindrical constrints.  Maybe we can relax that constraint to add in some extra terms?<br>
+Another thing to think about: in Kaluza-Klein the Gauss-Ampere constraint ${D_{au}}^{;u} = ({Z_{au}}^{bc} F_{bc})^{;u} \approx {Z_{au}}^{bc} {F_{bc}}^{;u} = 4 \pi J_a$ shows up as a 5th dimension right beside the Riemann curvature constraint in the Einstein Field Equations: $G_{ab} = {(\star R \star)^u}_{aub} = 8 \pi T_{ab}$.<br>
+It looks even more uncannily like the Riemann curvature tensor if we treat the approximation to be an equality: ${Z_{ab}}^{cd;u} = 0$, just like the Bianchi identity ${R_{ab}}^{[cd;e]} = 0$, though the Gauss-Ampere law itself appears in vacuum form in Kaluza-Klein with cylindrical constrints.  Maybe we can relax that constraint to add in some extra terms?<br>
 Notice that potentials $\phi = A_0 = g_{50}$ is on the same footing as $\frac{1}{2} \phi_{grav} \approx 1 - g_{ii} \approx -1 - g_{00}$.<br>
 Notice as well the Lorentz force contributions $F = dA$ is on the same footing as the gravitational force contribution from the spacetime connection 1-form $de_b = {\omega^a}_b \otimes e_a = {\Gamma^a}_{cb} dx^c \otimes e_a$.<br>
 <br>

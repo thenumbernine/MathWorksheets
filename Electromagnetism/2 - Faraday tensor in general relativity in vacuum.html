@@ -7,6 +7,9 @@
 	</head>
 	<body>
 
+Faraday tensor defined using vectors:<br>
+<br>
+
 From Baumgarate &amp; Shapiro, eqn 5.114:<br>
 $F^{ab} = \frac{1}{c} n^a E^b - \frac{1}{c} n^b E^a + n_d \epsilon^{dabc} B_c$<br>
 $E^a = c F^{ab} n_b$<br>
@@ -14,7 +17,12 @@ $B^a = \frac{1}{2} \epsilon^{abcd} n_b F_{dc}$<br>
 This fits our convention above, which means if I were to negative the E components of F (like most texts do) then I would have to negative n, or the definition of E wrt F and n, as well.<br>
 <br>
 For ADM $n_a = (-\alpha, 0)$, $n^a = (1/\alpha, -\beta^i/\alpha)$, where the first component is time, this means:<br>
+<br>
+
+$F^{0i} = \frac{1}{c} n^0 E^i - \frac{1}{c} n^i E^0 + n_d \epsilon^{d0ic} B_c = \frac{1}{c} \frac{1}{\alpha} E^i$<br>
 $E^a = c F^{ab} n_b = -\alpha F^{a0} = \alpha F^{0a}$<br>
+<br>
+
 Since $F^{ab}$ is antisymmetric, this means $F^{tt} = 0$, and $E^t = 0$, so $E^a n_a = 0$, so $E^a$ is a spatial vector.<br>
 $E_a = g_{ab} E^b = g_{aj} E^j = \pmatrix{ \beta_j E^j & \gamma_{ij} E^j } = \pmatrix{\beta^j E_j & E_i}$<br>
 so $E_i = g_{ia} E^a = g_{ij} E^j$ and $E_0 = \beta^j E_j$<br>

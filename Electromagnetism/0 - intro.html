@@ -27,8 +27,21 @@ $\mu_0 = \frac{4 \pi}{10^7} \frac{kg \cdot m}{C^2}$<br>
 $\frac{1}{c^2} = \mu_0 \epsilon_0$ ... is in units $\frac{s^2}{m^2}$<br>
 <br>
 
-$\vec\nabla \cdot \vec{V} = {V^i}_{,i}$<br>
-$(\vec\nabla \times \vec{V})^i = \bar\epsilon^{ijk} V_{k,j}$<br>
+vector math rules:<br>
+$\vec\nabla \cdot \vec{V} = {V^i}_{,i}$ but this neglects the metric which isn't good.<br>
+$(\vec\nabla \times \vec{V})^i = \bar\epsilon^{ijk} V_{k,j}$ but this neglects the metric which isn't good, and I only use this symbol in the macroscopic equations in medium, possibly only in SR, so I should change this definition.<br>
+<br>
+
+exterior algebra rules:<br>
+$a \wedge b = a \otimes b - b \otimes a$<br>
+<br>
+
+$a^1 \wedge ... \wedge a^p = \delta^{1...p}_{i_1 ... i_p} a^{i_1} \otimes ... \otimes a^{i_p}$<br>
+$= p! \delta^{1...p}_{[i_1 ... i_p]} a^{i_1} \otimes ... \otimes a^{i_p}$<br>
+$= \epsilon_{i_1 ... i_p} a^{i_1} \otimes ... \otimes a^{i_p}$<br>
+<br>
+
+$d T = dx^u \wedge \partial_u T$<br>
 <br>
 
 <hr>
@@ -38,14 +51,15 @@ $(\vec\nabla \times \vec{V})^i = \bar\epsilon^{ijk} V_{k,j}$<br>
 <br>
 
 (In terms of units, there might be a $c$ somewhere in here...)<br>
-$[g_{uv}] = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
+$[g_{uv}] = \downarrow u(i) \overset{\rightarrow v(j)}{
+\left[ \begin{matrix}
 	-\alpha^2 + \beta_k \beta^k & \beta_j \\ 
 	\beta_i & \gamma_{ij}
-}}$<br>
-$[g^{uv}] = \downarrow u(i) \overset{\rightarrow v(j)}{\pmatrix{
+\end{matrix} \right] }$<br>
+$[g^{uv}] = \downarrow u(i) \overset{\rightarrow v(j)}{ \left[ \begin{matrix}
 	-1/\alpha^2 & \beta^j / \alpha^2 \\ 
 	\beta^i / \alpha^2 & \gamma^{ij} - \beta^i \beta^j / \alpha^2
-}}$<br>
+\end{matrix} \right] }$<br>
 For $\alpha$ the lapse between $\Sigma_t$ and $\Sigma_{t + dt}$<br>
 And $\beta$ the shift in coordinates, $\beta \in \Sigma$.  Note that, for any vector $u \in \Sigma$ that $u^0 = 0$.<br>
 And $\gamma_{ij}$ the metric of $\Sigma$<br>
@@ -57,9 +71,9 @@ ADM spatial metric determinant: $\gamma = det[\gamma_{ij}]$<br>
 <br>
 
 normal in the ADM metric:<br>
-$n_u = \overset{\rightarrow u(i)}{\pmatrix{ -\alpha & 0 }} $<br>
+$n_u = \overset{\rightarrow u(i)}{ \left[ \begin{matrix} -\alpha & 0 \end{matrix} \right] } $<br>
 <br>
-$n^u = \downarrow u(i)\pmatrix{ 1/\alpha \\ -\beta^i/\alpha}$<br>
+$n^u = \downarrow u(i) \left[ \begin{matrix} 1/\alpha \\ -\beta^i/\alpha \end{matrix} \right]$<br>
 <br>
 notice: $n_u n^u = -1$<br>
 <br>
@@ -77,33 +91,195 @@ Therefore $\bar\epsilon_{0ijk} = \bar\epsilon_{ijk} = \bar\epsilon^{ijk} = -\bar
 If I was to start describing things in terms of a diagonalized basis at each point, and if I was to give them a separate coordinate system, then I might replace $\bar\epsilon_{abcd}$ with the Levi-Civita permutation tensor associated with the indexes associated with the diagonalized metric.<br> 
 <br>
 
+TODO put the rest of this in the Differential Geometry ADM formalism worksheet:<br>
+TODO spatial indexes of vectors ... should raised vectors be raised using the 3 or 4 metric? How to distinguish?<br>
+<br>
+
 Let $\epsilon_{abcd} = \sqrt{|g|} [abcd] = \sqrt{|g|} \bar\epsilon_{abcd} $ is the spacetime Levi-Civita permutation tensor<br> 
 So $\epsilon_{0ijk} = \alpha \sqrt\gamma \bar\epsilon_{0ijk} = \alpha \sqrt\gamma \bar\epsilon_{ijk}$ (see the ADM section for more details)<br>
 $\epsilon_{ijk} = \sqrt\gamma [ijk] = \sqrt\gamma \bar\epsilon_{ijk}$ is the spatial Levi-Civita permutation tensor<br>
 So $\epsilon_{0ijk} = \alpha \epsilon_{ijk}$<br>
 And ${\epsilon^0}_{ijk} = g^{0a} \epsilon_{aijk} = g^{00} \epsilon_{0ijk} + g^{0\Sigma} \epsilon_{\Sigma ijk}$, but since $ijk \in \Sigma$ we know $\epsilon_{\Sigma ijk} = 0$<br>
 So ${\epsilon^0}_{ijk} = -\frac{1}{\alpha^2} \epsilon_{0ijk} = -\frac{1}{\alpha} \epsilon_{ijk} = -\frac{1}{\alpha} \sqrt\gamma \bar\epsilon_{0ijk} = -\frac{1}{\alpha} \sqrt\gamma \bar\epsilon_{ijk}$<br>
+Notice that ${\epsilon^0}_{ijk}$ does not account for all terms of ${\epsilon^0}_{\alpha\beta\gamma}$.<br>
 <br>
 
-This can also be proven by explicitly lowering each index by the ADM metric:<br>
 ${\epsilon^{0i}}_{jk}$
 $= g^{0a} g^{ib} \epsilon_{abjk} $<br>
 $= (
-	g^{0m} g^{i0} \epsilon_{m0jk} 
+	  g^{00} g^{i0} \epsilon_{00jk}
+	+ g^{0m} g^{i0} \epsilon_{m0jk} 
 	+ g^{00} g^{in} \epsilon_{0njk}
 	+ g^{0m} g^{in} \epsilon_{mnjk}
 ) $<br>
 $= (
-	- \frac{1}{\alpha^2} \gamma^{im} \epsilon_{0mjk}
-	+ \frac{1}{\alpha^2} \beta^m (\gamma^{in} - \frac{1}{\alpha^2} \beta^i \beta^n) \epsilon_{mnjk}
-) $<br>
-$= -\frac{1}{\alpha^2} \gamma^{im} (
-	\epsilon_{0mjk} - \beta^n \epsilon_{nmjk} 
-) $<br>
+	0
+	+ \alpha^{-4} \beta^m \beta^i \epsilon_{m0jk} 
+	- \alpha^{-2} (\gamma^{in} - \alpha^{-2} \beta^i \beta^n) \epsilon_{0njk}
+	+ \alpha^{-2} \beta^m (\gamma^{in} - \alpha^{-2} \beta^i \beta^n) \epsilon_{mnjk}
+)$<br>
 $= -\frac{1}{\alpha^2} \gamma^{im} \epsilon_{0mjk}$<br>
+$= -\frac{1}{\alpha} \gamma^{im} \epsilon_{mjk}$<br>
+$= -\frac{1}{\alpha} {\epsilon^i}_{jk}$ ... where the hypersurface Levi-Civita tensor is raised by the 3-metric.<br>
+Notice that, like above ${\epsilon^{0i}}_{jk}$ do not account for all terms of ${\epsilon^{0i}}_{\mu\nu}$.<br>
 <br>
 
-In ADM, $\epsilon^{0abc} u_a v_b w_c = \epsilon^{0ijk} u_i v_j w_k$ since $\epsilon^{00ab} = 0$ due to its antisymmetric. The associated $u_0, v_0, w_0$ components will be cancelled.<br>
+In ADM formalism, $\epsilon^{0abc} u_a v_b w_c = \epsilon^{0ijk} u_i v_j w_k$ since $\epsilon^{00ab} = 0$ due to its antisymmetric. The associated $u_0, v_0, w_0$ components will be cancelled.<br>
+<br>
+
+In ADM formalism:<br>
+<br>
+
+$\star dx^0 = {\epsilon^0}_{\alpha\beta\gamma} dx^\alpha \otimes dx^\beta \otimes dx^\gamma$<br>
+$= g^{0\mu} \epsilon_{\mu\alpha\beta\gamma} dx^\alpha \otimes dx^\beta \otimes dx^\gamma$<br>
+$= (g^{00} \epsilon_{0 \alpha \beta \gamma} + g^{0i} \epsilon_{i \alpha \beta \gamma}) dx^\alpha \otimes dx^\beta \otimes dx^\gamma$<br>
+$= (-\alpha^{-2} \epsilon_{0\alpha\beta\gamma} + \alpha^{-2} \beta^i \epsilon_{i\alpha\beta\gamma}) dx^\alpha \otimes dx^\beta \otimes dx^\gamma$<br>
+$= -\alpha^{-2} \epsilon_{0ijk} dx^i \otimes dx^j \otimes dx^k 
+	+ \alpha^{-2} \beta^i \epsilon_{i0jk} dx^0 \otimes dx^j \otimes dx^k
+	+ \alpha^{-2} \beta^i \epsilon_{ij0k} dx^j \otimes dx^0 \otimes dx^k
+	+ \alpha^{-2} \beta^i \epsilon_{ijk0} dx^j \otimes dx^k \otimes dx^0
+$<br>
+$= -\alpha^{-2} \epsilon_{0ijk} dx^i \otimes dx^j \otimes dx^k 
+	- \alpha^{-2} \beta^i \epsilon_{0ijk} dx^0 \otimes dx^j \otimes dx^k
+	+ \alpha^{-2} \beta^i \epsilon_{0ijk} dx^j \otimes dx^0 \otimes dx^k
+	- \alpha^{-2} \beta^i \epsilon_{0ijk} dx^j \otimes dx^k \otimes dx^0
+$<br>
+Therefore, for $\star dx^0 = (\star dx^0)_{\alpha\beta\gamma} dx^\alpha \otimes dx^\beta \otimes dx^\gamma$, we find:<br>
+$(\star dx^0)_{ijk} = -\frac{1}{\alpha^2} \epsilon_{0ijk} = -\frac{1}{\alpha} \epsilon_{ijk} = -\frac{1}{\alpha} \sqrt\gamma \bar\epsilon_{ijk}$<br>
+$(\star dx^0)_{0jk} = -\frac{1}{\alpha^2} \beta^i \epsilon_{0ijk} = -\frac{1}{\alpha} \beta^i \epsilon_{ijk} = -\frac{1}{\alpha} \sqrt\gamma \beta^i \bar\epsilon_{ijk}$<br>
+<br>
+
+$\star dx^i = {\epsilon^i}_{\alpha\beta\gamma} dx^\alpha \otimes dx^\beta \otimes dx^\gamma$<br>
+$= (g^{i0} \epsilon_{0\alpha\beta\gamma} + g^{ij} \epsilon_{j\alpha\beta\gamma}) dx^\alpha \otimes dx^\beta \otimes dx^\gamma$<br>
+$= (\alpha^{-2} \beta^i \epsilon_{0\alpha\beta\gamma} + (\gamma^{ij} - \alpha^{-2} \beta^i \beta^j) \epsilon_{j\alpha\beta\gamma}) dx^\alpha \otimes dx^\beta \otimes dx^\gamma$<br>
+$= \alpha^{-2} \beta^i \epsilon_{0\alpha\beta\gamma} dx^\alpha \otimes dx^\beta \otimes dx^\gamma 
+	+ (\gamma^{ij} - \alpha^{-2} \beta^i \beta^j) \epsilon_{j\alpha\beta\gamma} dx^\alpha \otimes dx^\beta \otimes dx^\gamma
+$<br>
+$= \alpha^{-2} \beta^i \epsilon_{0jkl} dx^j \otimes dx^k \otimes dx^l
+	+ (\gamma^{im} - \alpha^{-2} \beta^i \beta^m) \epsilon_{m0jk} dx^0 \otimes dx^j \otimes dx^k
+	+ (\gamma^{im} - \alpha^{-2} \beta^i \beta^m) \epsilon_{mj0k} dx^j \otimes dx^0 \otimes dx^k
+	+ (\gamma^{im} - \alpha^{-2} \beta^i \beta^m) \epsilon_{mjk0} dx^j \otimes dx^k \otimes dx^0
+$<br>
+Therefore, for $\star dx^i = (\star dx^i)_{\alpha \beta \gamma} dx^\alpha \otimes dx^\beta \otimes dx^\gamma$, we find:<br>
+$(\star dx^i)_{jkl} = \frac{1}{\alpha^2} \beta^i \epsilon_{0jkl} = \frac{1}{\alpha} \beta^i \epsilon_{jkl}$<br>
+$(\star dx^i)_{0jk} = (\frac{1}{\alpha^2} \beta^i \beta^m - \gamma^{im}) \epsilon_{0mjk} = (\frac{1}{\alpha} \beta^i \beta^m - \alpha \gamma^{im}) \epsilon_{mjk} = \frac{1}{\alpha} \beta^i \beta^m \epsilon_{mjk} - \alpha {\epsilon^i}_{jk}$<br>
+<br>
+
+$\star (dx^0 \otimes dx^i) = {\epsilon^{0i}}_{\alpha\beta} dx^\alpha \otimes dx^\beta$<br>
+$= {\epsilon^{0i}}_{\alpha\beta} dx^\alpha \otimes dx^\beta$<br>
+$= g^{0\mu} g^{i\nu} \epsilon_{\mu\nu\alpha\beta} dx^\alpha \otimes dx^\beta$<br>
+$= 
+	g^{00} g^{i0} \epsilon_{00\alpha\beta} dx^\alpha \otimes dx^\beta
+	+ g^{00} g^{ij} \epsilon_{0j\alpha\beta} dx^\alpha \otimes dx^\beta
+	+ g^{0j} g^{i0} \epsilon_{j0\alpha\beta} dx^\alpha \otimes dx^\beta
+	+ g^{0j} g^{ik} \epsilon_{jk\alpha\beta} dx^\alpha \otimes dx^\beta
+$<br>
+$=
+	(g^{00} g^{ij} - g^{0j} g^{i0}) \epsilon_{0jkl} dx^k \otimes dx^l
+	+ g^{0j} g^{ik} \epsilon_{jk0m} dx^0 \otimes dx^m
+	+ g^{0j} g^{ik} \epsilon_{jkm0} dx^m \otimes dx^0
+$<br>
+$= 
+	(-\frac{1}{\alpha^2} (\gamma^{ij} - \frac{1}{\alpha^2} \beta^i \beta^j) - \frac{1}{\alpha^4} \beta^i \beta^j) \epsilon_{0jkl} dx^k \otimes dx^l
+	+ \frac{1}{\alpha^2} \beta^j (\gamma^{ik} - \frac{1}{\alpha^2} \beta^i \beta^k) \epsilon_{0jkm} dx^0 \otimes dx^m
+	- \frac{1}{\alpha^2} \beta^j (\gamma^{ik} - \frac{1}{\alpha^2} \beta^i \beta^k) \epsilon_{0jkm} dx^m \otimes dx^0
+$<br>
+$= 
+	(
+		-\frac{1}{\alpha^2} (\gamma^{ij} - \frac{1}{\alpha^2} \beta^i \beta^j) 
+		- \frac{1}{\alpha^4} \beta^i \beta^j
+	) \epsilon_{0jkl} dx^k \otimes dx^l
+	
+	+ \frac{1}{\alpha^2} \beta^j (
+		\gamma^{ik} 
+		- \frac{1}{\alpha^2} \beta^i \beta^k
+	) \epsilon_{0jkm} dx^0 \otimes dx^m
+	
+	- \frac{1}{\alpha^2} \beta^j (
+		\gamma^{ik} 
+		- \frac{1}{\alpha^2} \beta^i \beta^k
+	) \epsilon_{0jkm} dx^m \otimes dx^0
+$<br>
+Therefore, for $\star (dx^0 \otimes dx^i) = (\star (dx^0 \otimes dx^i))_{\alpha\beta} dx^\alpha \otimes dx^\beta$<br>
+
+$(\star (dx^0 \otimes dx^i))_{kl} = -\frac{1}{\alpha^2} \gamma^{ij} \epsilon_{0jkl} 
+= -\frac{1}{\alpha} \gamma^{ij} \epsilon_{jkl} 
+= -\frac{1}{\alpha} {\epsilon^i}_{kl}$<br>
+
+$(\star (dx^0 \otimes dx^i))_{0m} = -(\star (dx^0 \otimes dx^i))_{m0} 
+= \frac{1}{\alpha^2} (
+	\beta^j \gamma^{ik} 
+	- \frac{1}{\alpha^2} \beta^i \beta^j \beta^k
+) \epsilon_{0jkm}
+= \frac{1}{\alpha^2} \beta^j \gamma^{ik} \epsilon_{0jkm}
+= \frac{1}{\alpha} \beta^j \gamma^{ik} \epsilon_{jkm}
+= -\frac{1}{\alpha} \beta^j {\epsilon^i}_{jm}
+$<br>
+...where the hypersurface Levi-Civita tensor is raised by the 3-metric.<br>
+<br>
+
+So for spatial one-form $V = V_\mu dx^\mu = V_i dx^i$ with $V_0 = 0$, we get:<br>
+$\star (V \otimes dx^0) = \star (V_i dx^i \otimes dx^0) = -V_i \star (dx^0 \otimes dx^i)$<br>
+<br>
+
+$\star (dx^j \otimes dx^k) = {\epsilon^{jk}}_{\alpha\beta} dx^\alpha \otimes dx^\beta$<br>
+$= g^{j\mu} g^{k\nu} \epsilon_{\mu\nu\alpha\beta} dx^\alpha \otimes dx^\beta$<br>
+$= (
+	  g^{j0} g^{k0} \epsilon_{00\alpha\beta}
+	+ g^{jl} g^{k0} \epsilon_{l0\alpha\beta}
+	+ g^{j0} g^{km} \epsilon_{0m\alpha\beta}
+	+ g^{jl} g^{km} \epsilon_{lm\alpha\beta}
+) dx^\alpha \otimes dx^\beta$<br>
+$= 
+	(
+		\frac{1}{\alpha^2} (\gamma^{jl} - \frac{1}{\alpha^2} \beta^j \beta^l) \beta^k \epsilon_{l0pq}
+		+ \frac{1}{\alpha^2} \beta^j (\gamma^{km} - \frac{1}{\alpha^2} \beta^k \beta^m) \epsilon_{0mpq}
+	) dx^p \otimes dx^q
+	+ (\gamma^{jl} - \frac{1}{\alpha^2} \beta^j \beta^l) (\gamma^{km} - \frac{1}{\alpha^2} \beta^k \beta^m) \epsilon_{lm0p} dx^0 \otimes dx^p
+	+ (\gamma^{jl} - \frac{1}{\alpha^2} \beta^j \beta^l) (\gamma^{km} - \frac{1}{\alpha^2} \beta^k \beta^m) \epsilon_{lmp0} dx^p \otimes dx^0
+$<br>
+$= 
+	\frac{1}{\alpha^2} (\beta^j \gamma^{km} - \gamma^{jm} \beta^k) \epsilon_{0mpq} dx^p \otimes dx^q
+	
+	+ (
+		\gamma^{jl} \gamma^{km} 
+		- \frac{1}{\alpha^2} \beta^k \beta^m \gamma^{jl}
+		- \frac{1}{\alpha^2} \beta^j \beta^l \gamma^{km} 
+	) \epsilon_{0lmp} dx^0 \otimes dx^p
+	
+	- (
+		\gamma^{jl} \gamma^{km} 
+		- \frac{1}{\alpha^2} \beta^k \beta^m \gamma^{jl}
+		- \frac{1}{\alpha^2} \beta^j \beta^l \gamma^{km} 
+	) \epsilon_{0lmp} dx^p \otimes dx^0
+
+$<br>
+$(\star (dx^j \otimes dx^k))_{pq} 
+	= \frac{1}{\alpha^2} (\beta^j \gamma^{km} - \gamma^{jm} \beta^k) \epsilon_{0mpq}
+	= \frac{1}{\alpha} (\beta^j \gamma^{km} - \gamma^{jm} \beta^k) \epsilon_{mpq}
+	= 2 \frac{1}{\alpha} \beta^{[j} {\epsilon^{k]}}_{pq}
+$<br>
+$(\star (dx^j \otimes dx^k))_{0p} = -(\star (dx^j \otimes dx^k))_{p0} 
+= (
+	\gamma^{jl} \gamma^{km} 
+	- \frac{1}{\alpha^2} \beta^k \beta^m \gamma^{jl}
+	- \frac{1}{\alpha^2} \beta^j \beta^l \gamma^{km} 
+) \epsilon_{0lmp}
+= (
+	\alpha \gamma^{jl} \gamma^{km} 
+	- \frac{1}{\alpha} \beta^k \beta^m \gamma^{jl}
+	- \frac{1}{\alpha} \beta^j \beta^l \gamma^{km} 
+) \epsilon_{lmp}
+$<br>
+<br>
+
+Double-dual:<br>
+$\star F_{ab} dx^a \otimes dx^b = \frac{1}{2} F_{ab} {\epsilon^{ab}}_{cd} dx^c \otimes dx^d$<br>
+$\star^2 F_{ab} dx^a \otimes dx^b = \frac{1}{4} F_{ab} {\epsilon^{ab}}_{uv} {\epsilon^{uv}}_{cd} dx^c \otimes dx^d$<br>
+$= \frac{1}{4} F_{ab} {\epsilon^{ab}}_{uv} {\epsilon_{cd}}^{uv} dx^c \otimes dx^d$<br>
+$= -\frac{1}{2} F_{ab} \delta^{ab}_{cd} dx^c \otimes dx^d$<br>
+$= -F_{ab} (\delta^a_{[c} \delta^b_{d]}) dx^c \otimes dx^d$<br>
+$= -F_{cd} dx^c \otimes dx^d$<br>
 <br>
 
 <hr>
