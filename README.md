@@ -76,7 +76,9 @@ Here's the CDN URLs:
 
 [Electromagnetism/1 - Faraday tensor in special relativity](https://thenumbernine.github.io/math/Electromagnetism/1%20%2d%20Faraday%20tensor%20in%20special%20relativity.html)
 
-[Electromagnetism/2 - Faraday tensor in general relativity in vacuum](https://thenumbernine.github.io/math/Electromagnetism/2%20%2d%20Faraday%20tensor%20in%20general%20relativity%20in%20vacuum.html)
+[Electromagnetism/2 - Faraday tensor in GR ADM in vacuum with E and B as vectors](https://thenumbernine.github.io/math/Electromagnetism/2%20%2d%20Faraday%20tensor%20in%20GR%20ADM%20in%20vacuum%20with%20E%20and%20B%20as%20vectors.html)
+
+[Electromagnetism/2.5 - Faraday tensor in GR ADM in vacuum with E and B as one-forms](https://thenumbernine.github.io/math/Electromagnetism/2.5%20%2d%20Faraday%20tensor%20in%20GR%20ADM%20in%20vacuum%20with%20E%20and%20B%20as%20one%2dforms.html)
 
 [Electromagnetism/3 - Faraday tensor as 2-form](https://thenumbernine.github.io/math/Electromagnetism/3%20%2d%20Faraday%20tensor%20as%202%2dform.html)
 
