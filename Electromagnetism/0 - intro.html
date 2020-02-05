@@ -18,13 +18,14 @@ $\partial_u T = T_{,u} = (\partial_0, \partial_i) T$<br>
 <br>
 
 Vectors / matrices are displayed as $V = \left[ V_0, V_x, V_y, V_z \right] = \left[ c V_t, V_x, V_y, V_z \right]$.<br>
-Take note when referencing $V_t$ that it is equal to $V_t = \frac{1}{c} V_0$.<br>
+Take note when referencing $V_t$ that<br>
+$V_t dt = V_t \frac{1}{c} dx^0 = V_0 dx^0$, therefore $V_t = \frac{1}{c} V_0$<br>
 <br>
 
 In SI units (from my 'natural units' worksheet in my symmath library):<br>
-$\epsilon_0 = \frac{10^7}{4 \pi c^2} \frac{C^2}{kg \cdot m}$ ... is in units $\frac{C^2 \cdot s^2}{kg \cdot m^3}$<br>
-$\mu_0 = 1.25663706212 \cdot 10^{-6} \frac{kg \cdot m}{C^2}$<br>
-$\frac{1}{c^2} = \mu_0 \epsilon_0$ ... is in units $\frac{s^2}{m^2}$<br>
+$\mu_0 = 1.25663706212 \cdot 10^{-6} \frac{kg \cdot m}{C^2} \approx \frac{4 \pi}{10^7} \frac{kg \cdot m}{C^2}$<br>
+$\epsilon_0 = \frac{1}{\mu_0 c^2}$ is in units $\frac{C^2 \cdot s^2}{kg \cdot m^3}$<br>
+$\frac{1}{c^2} = \mu_0 \epsilon_0$ is in units $\frac{s^2}{m^2}$<br>
 <br>
 
 vector math rules:<br>
@@ -41,7 +42,18 @@ $= p! \delta^{1...p}_{[i_1 ... i_p]} a^{i_1} \otimes ... \otimes a^{i_p}$<br>
 $= \epsilon_{i_1 ... i_p} a^{i_1} \otimes ... \otimes a^{i_p}$<br>
 <br>
 
-$d T = dx^u \wedge \partial_u T$<br>
+k-form on n-dimensional manifold:<br>
+$T = T_{\alpha_1 ... \alpha_k} dx^{\alpha_1} \otimes ... \otimes dx^{\alpha_k}$<br>
+$= \frac{1}{k!} \cdot T_{\alpha_1 ... \alpha_k} dx^{\alpha_1} \wedge ... \wedge dx^{\alpha_k}$<br>
+<br>
+
+Exterior derivative:<br>
+$dT = (dT)_{\alpha_1 ... \alpha_{k+1}} dx^{\alpha_1} \otimes ... \otimes dx^{\alpha_{k+1}}$<br>
+$= \partial_{\beta_1} T_{\beta_2 ... \beta_{k+1}} \delta^{\beta_1 ... \beta_{k+1}}_{\alpha_1 ... \alpha_{k+1}} dx^{\alpha_1} \otimes ... \otimes dx^{\alpha_{k+1}}$<br>
+$= (k+1)! \cdot \partial_{[\alpha_1} T_{\alpha_2 ... \alpha_{k+1}]} dx^{\alpha_1} \otimes ... \otimes dx^{\alpha_{k+1}}$<br>
+$= \partial_{\alpha_1} T_{\alpha_2 ... \alpha_{k+1}} dx^{\alpha_1} \wedge ... \wedge dx^{\alpha_{k+1}}$<br>
+$= dx^{\alpha_1} \wedge \partial_{\alpha_1} (T_{\alpha_2 ... \alpha_{k+1}} dx^{\alpha_2} \wedge ... \wedge dx^{\alpha_{k+1}})$<br>
+$= dx^\mu \wedge \partial_\mu T$<br>
 <br>
 
 <hr>

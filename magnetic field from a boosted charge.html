@@ -76,7 +76,7 @@ power source:<br>
 $V =$ <input name='voltage_in_V' value='6'/> V = voltage<br>
 <br>
 
-$r = \sqrt{y^2 + z^2} =$ <input name='field_measure_distance_in_m' value='.01'/> $m = $ distance of measurement from the wire along the x-axis.<br>
+$r = \sqrt{y^2 + z^2} =$ <input name='field_measure_distance_in_m' value='.1'/> $m = $ distance of measurement from the wire along the x-axis.<br>
 <br>
 
 (atomic mass) {{atomic_mass_in_kg = 1e-3 * atomic_mass_in_g}} kg = (Avogadro's constant) {{Avogadro_constant_in_1_per_mol}} atoms = (Avogadro's constant * nominal valency) {{Avogadro_constant_in_1_per_mol * material_nominal_valency}} electrons.<br>
@@ -222,7 +222,13 @@ $F'_{ab} = \downarrow a \overset{\rightarrow b}{\left[ \begin{matrix}
 \end{matrix}\right]}$<br>
 <br>
 
-One possible pre-boosted 4-potential: $A_t = \frac{1}{2} \lambda k_e ln(r)$, $A_i = 0$.<br>
+One possible pre-boosted 4-potential:<br>
+$A_i = 0 = $ magnetic vector potential.<br>
+$r_0 = $<input name='electric_potential_reference_dist_in_m' value='1'/> = electromagnetic potential reference length.<br>
+$A_t = \frac{1}{2} \lambda k_e ln( \frac{r}{r_0} ) = $ {{
+	.5 * charge_per_unit_length_in_C_per_m * Coulomb_constant_in_kg_m3_per_C2_s2
+	* Math.log(field_measure_distance_in_m / electric_potential_reference_dist_in_m)
+}} $ \frac{ kg \cdot m^2 }{ C \cdot s^2} $ = electric potential.<br>
 <br>
 
 So the electric field in the direction perpendicular to the boost is scaled up by $\gamma \ge 1$.<br>

@@ -84,7 +84,7 @@ $= e_a (e_b (\phi)) e^a \wedge e^b$<br>
 
 
 
-Exterior derivative: $d = e_a(...) e^a \wedge ...$<br>
+Exterior derivative: $d = e^a \wedge e_a(...)$<br>
 $d ( {T^{a_1 ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q} )$<br>
 $= e_a ( {T^{a_1 ... a_p}}_{b_1 ... b_q} ) e^a \wedge (e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q})$<br>
 TODO what about subsequent applications to $d e^{a_i}$ and $d e_{b_j}$?<br>
@@ -99,6 +99,7 @@ $d (\phi) = e_a (\phi) e^a$<br>
 
 Exterior and covariant derivative for 2-forms:<br>
 TODO explain this more<br>
+(See my Electromagnetism worksheets for more on this)<br>
 $dF = \nabla \cdot\ast F$, $d$ $\ast{F} = \nabla \cdot F$<br>
 <br>
 
@@ -115,6 +116,16 @@ $d w = d (w_{i_1 ... i_p} e^{i_1} \wedge ... \wedge e^{i_p})$<br>
 $= d (w_{i_1 ... i_p}) \wedge e^{i_1} \wedge ... \wedge e^{i_p}
 	+ (-1)^{j-1} w_{i_1 ... i_p} e^{i_1} \wedge ... \wedge d(e^{i_j}) \wedge ... \wedge e^{i_p}
 $<br>
+<br>
+
+$d T = (d T)_{i_1 ... i_{p+1}} e^{i_1} \otimes ... \otimes e^{i_{p+1}}$<br>
+$= e_{j_1} (T_{j_2 ... j_{p+1}}) \delta^{j_1 ... j_{p+1}}_{i_1 ... i_{p+1}} e^{i_1} \otimes ... \otimes e^{i_{p+1}}$<br>
+$= (p+1)! \cdot e_{[i_1} ( T_{i_2 ... i_{p+1}]} ) e^{i_1} \otimes ... \otimes e^{i_{p+1}}$<br>
+$= e_{i_1} ( T_{i_2 ... i_{p+1}} ) e^{i_1} \wedge ... \wedge e^{i_{p+1}}$<br>
+$= e^{i_1} \wedge e_{i_1} ( T_{i_2 ... i_{p+1}} ) e^{i_2} \wedge ... \wedge e^{i_{p+1}})$<br>
+$= e^a \wedge e_a (T)$<br>
+TODO again ... $e_a (T) = e_a (T_{i_1 ... i_p} e^1 \otimes ... \otimes e^p)$ ... $ = e_a (T_{i_1 ... i_p}) e^1 \otimes ... \otimes e^p$.<br>
+Is it always true that $e_i (e^j) = 0$, so $e_i (T) = e_i (T_I e^I) = e_i (T_I) e^I$ ?  While $e^j (e_i) = \delta^j_i$.<br>
 <br>
 
 ...in a coordinate basis, where $e^\bar{a} = dx^\bar{a}$ and $d(dx^\bar{a}) = 0$:<br>
