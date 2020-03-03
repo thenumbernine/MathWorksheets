@@ -7,139 +7,383 @@
 	</head>
 	<body>
 
-<h3>Finite Volume Methods</h3>
-
-let $\mu$ span across all coordinates $t,x,y,z$<br>
-let $i$ span all states of $U$<br>
-$\partial_\mu F^{i\mu} = 0$<br>
-separate space and time:<br>
-$\partial_t F^{it} + \partial_{x^j} F^{ij} = 0$<br>
-let $F^{it} = U^i$<br>
-$\partial_t U^i + \partial_{x^j} F^{ij} = 0$<br>
-integrate over a volume of spacetime $\Omega$<br>
-$\int_\Omega \partial_\mu F^{i\mu} dx^4 = 0$<br>
-apply the divergence theorem<br>
-$\int_{\partial\Omega} F^{i\mu} n_\mu d\Sigma = 0$<br>
-for $n_\mu$ being the spacetime normal<br>
-assume the timelike top and bottom are flat (i.e. only vary in spatial dimensions)<br>
-such that the lower timelike boundary $\partial\Omega_\tau^-$ (which is spatial) has constant time coordinate $t_1$ and constant normal $n_t = -1$ and $n_i = 0$<br>
-and the upper timelike boundary $\partial\Omega_\tau^+$ (which is also spatial) has constant time coordinate $t_2$ and constant normal $n_t = 1$ and $n_i = 0$<br>
-$\int_{\partial\Omega_\Sigma} F^{ij} n_j d\sigma + \int_{\partial\Omega_\tau^+} F^{it} (t_2) dx^3 - \int_{\partial\Omega_\tau^-} F^{it} (t_1) dx^3 = 0$<br>
-substitute the definition of the timelike flux component $F^{it} = U^i$<br>
-$\int_{\partial\Omega_\Sigma} F^{ij} n_j d\sigma + \int_{\partial\Omega_\tau^+} U^i(t_2) dx^3 - \int_{\partial\Omega_\tau^-} U^i(t_1) dx^3 = 0$<br>
-assume that the cells never shrink or grow in size, so the timelike top and bottom are equal, i.e. $\partial\Omega_\tau^+ = \partial\Omega_\tau^- = \partial\Omega_\tau$<br>
-$\int_{\partial\Omega_\Sigma} F^{ij} n_j d\sigma + \int_{\partial\Omega_\tau} U^i(t_2) dx^3 - \int_{\partial\Omega_\tau} U^i(t_1) dx^3 = 0$<br>
-also assume $U^i$ does not vary spatially along the timelike top and bottom surfaces $\partial\Omega_\tau^+$ or $\partial\Omega_\tau^-$<br>
-$\int_{\partial\Omega_\Sigma} F^{ij} n_j d\sigma + (U^i(t_2) - U^i(t_1)) \int_{\partial\Omega_\tau}  dx^3 = 0$<br>
-$\int_{\partial\Omega_\Sigma} F^{ij} n_j d\sigma + (U^i(t_2) - U^i(t_1)) |\partial\Omega_\tau| = 0$<br>
-Let $V$ be the spatial volume of the cell, such that $V = |\partial\Omega_\tau|$<br>
-$\int_{\partial\Omega_\Sigma} F^{ij} n_j d\sigma + (U^i(t_2) - U^i(t_1)) V = 0$<br>
-$(U^i(t_2) - U^i(t_1)) V = -\int_{\partial\Omega_\Sigma} F^{ij} n_j d\sigma$<br>
-Represent the boundary $\Omega_\Sigma$ as the product of the spacelike component $\Omega_\sigma$ and timelike components $\Omega_\Sigma^t$<br>
-Note that $\Omega_\Sigma^t$ is just the subset along the reals $[t_1, t_2]$<br>
-$(U^i(t_2) - U^i(t_1)) V = -\int_{\partial\Omega_\Sigma^t} \int_{\partial\Omega_\sigma} F^{ij} n_j d\sigma dt$<br>
-Assume that the flux $F^{ij}$ is constant with respect to time<br>
-$(U^i(t_2) - U^i(t_1)) V = -\int_{\partial\Omega_\Sigma^t} dt \int_{\partial\Omega_\sigma} F^{ij} n_j d\sigma$<br>
-Let $\Delta t = t_2 - t_1$<br>
-$(U^i(t_2) - U^i(t_1)) V = -\Delta t \int_{\partial\Omega_\sigma} F^{ij} n_j d\sigma$<br>
-${{U^i(t_2) - U^i(t_1)}\over{\Delta t}} = -{{\int_{\partial\Omega_\sigma} F^{ij} n_j d\sigma}\over{V}}$<br>
-Let $\partial\Omega_\sigma$ be the sum of individual surfaces $\partial\Omega_\sigma^k$ each with normal $n^\sigma_{jk}$ the $k$th surface normal in the direction $x^j$<br> 
-Let $F^{ij}$ remain constant along each surface<br>
-${{U^i(t_2) - U^i(t_1)}\over{\Delta t}} = -{{ |\partial\Omega_\sigma^k| F^{ij} n^\sigma_{jk} }\over{V}}$<br>
-Let $S_k = |\partial\Omega_\sigma^k|$ be the surface area of each spatial boundary portion<br>
-${{U^i(t_2) - U^i(t_1)}\over{\Delta t}} = -{{ S_k F^{ij} n^\sigma_{jk} }\over{V}}$<br>
-Assume we're using axis-aligned boundaries, and the span along the $i$th dimension is $\Delta x^i$<br>
-The spacelike volume of the surface is given by $V = \Pi_{i=1}^n \Delta x^i$<br>
-Each $k$th dimension has two surfaces, $S_k^+$ and $S_k^-$, both with area $\Pi_{i=1,i\ne k}^n \Delta x^i$<br>
-$S_k^-$ has surface normal $n^{\sigma-}_{jk} = -\delta_{jk}$<br>
-$S_k^+$ has surface normal $n^{\sigma+}_{jk} = \delta_{jk}$<br>
-Let $x^{\sigma^\pm}$ represent any point on surface $S_k^\pm$, and let the flux $F^{ij}(x^{\sigma^\pm})$ be constant along the surface $S_k^\pm$<br>
-${{U^i(t_2) - U^i(t_1)}\over{\Delta t}} = -{{\Pi_{m=1,m\ne k}^n \Delta x^m (F^{ij}(x^{\sigma^+}) \delta_{jk} + F^{ij}(x^{\sigma^-}) (-\delta_{jk})) }\over{\Pi_{m=1}^n \Delta x^m}}$<br>
-${{U^i(t_2) - U^i(t_1)}\over{\Delta t}} = -{{\Pi_{m=1,m\ne k}^n \Delta x^m (F^{ik}(x^{\sigma^+}) - F^{ik}(x^{\sigma^-})) }\over{\Pi_{m=1}^n \Delta x^m}}$<br>
-${{U^i(t_2) - U^i(t_1)}\over{\Delta t}} = -{{F^{ik}(x^{\sigma^+}) - F^{ik}(x^{\sigma^-}) }\over{\Delta x^k}}$<br>
-Solve for $U^i(t_2)$<br>
-$U^i(t_2) = U^i(t_1) - {{\Delta t}\over{\Delta x^j}}  (F^{ij}(x^{\sigma^+}) - F^{ij}(x^{\sigma^-}))$<br>
-<br>
-<br>
-<br>
-
-<b>same thing but curved space</b><br>
-I'm going to put the $\mu$ as the first index for ease later.<bR>
-$\nabla_\mu F^{\mu I} = 0$<br>
-assume timelike hypersurfaces are flat for now:<br>
-$\partial_t F^{It} + \nabla_j F^{Ij} = 0$<br>
-Let $U^I = F^{It}$<br>
-$\partial_t U^I + \nabla_j F^{j I} = 0$<br>
-Substitute covariant derivative for connection coefficients...<br>
-Now we have to consider the tensoral elements of $U^I$<br>
-For a $\pmatrix{p \\ q}$ tensor, we get the following:<br>
-$\partial_t {U^{i_1 ... i_p}}_{k_1 ... k_q} + \nabla_j {F^{j i_1 ... i_p}}_{k_1 ... k_q} = 0$<br>
-Expand the $\nabla_j$, don't assume a coordinate basis, however if you are using a coordinate basis then $e_j = \partial_j$.<br>
-$\partial_t {U^{i_1 ... i_p}}_{k_1 ... k_q} 
-	+ e_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q})
-	+ {\Gamma^j}_{jl} {F^{l i_1 ... i_p}}_{k_1 ... k_q} 
-	+ {\Gamma^{i_m}}_{j l} {F^{j i_1 ... i_{m-1} l i_{m+1} ... i_p}}_{k_1 ... k_q} 
-	- {\Gamma^l}_{j k_m} {F^{j i_1  ... i_p}}_{k_1 ... k_{m-1} l k_{m+1}... k_q} 
-	= 0$<br>
-Swap the ${\Gamma^i}_{jk} = {\Gamma^i}_{kj} + {c_{jk}}^i$.  Notice that I'm not assuming a holonomic connection.<br>
-$\partial_t {U^{i_1 ... i_p}}_{k_1 ... k_q} 
-	+ e_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q})
-	+ ({\Gamma^j}_{lj} + {c_{lj}}^j) {F^{l i_1 ... i_p}}_{k_1 ... k_q} 
-	+ {\Gamma^{i_m}}_{j l} {F^{j i_1 ... i_{m-1} l i_{m+1} ... i_p}}_{k_1 ... k_q} 
-	- {\Gamma^l}_{j k_m} {F^{j i_1  ... i_p}}_{k_1 ... k_{m-1} l k_{m+1}... k_q} 
-	= 0$<br>
-Substitute ${\Gamma^j}_{ij} = e_i (ln \sqrt{g})$:<br>
-Notice that, if you are using a non-coordinate basis with identity metric then this reduces to zero.<br>
-$\partial_t {U^{i_1 ... i_p}}_{k_1 ... k_q} 
-	+ \frac{\sqrt{g}}{\sqrt{g}} e_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q})
-	+ \frac{1}{\sqrt{g}} e_j (\sqrt{g}) {F^{j i_1 ... i_p}}_{k_1 ... k_q} 
-	+ {c_{lj}}^j {F^{l i_1 ... i_p}}_{k_1 ... k_q} 
-	+ {\Gamma^{i_m}}_{j l} {F^{j i_1 ... i_{m-1} l i_{m+1} ... i_p}}_{k_1 ... k_q} 
-	- {\Gamma^l}_{j k_m} {F^{j i_1  ... i_p}}_{k_1 ... k_{m-1} l k_{m+1}... k_q} 
-	= 0$<br>
-Move the rest of the terms to the source side:<br>
-$\partial_t {U^{i_1 ... i_p}}_{k_1 ... k_q} 
-	+ \frac{1}{\sqrt{g}} e_j (\sqrt{g} {F^{j i_1 ... i_p}}_{k_1 ... k_q})
-	= 
-	- {c_{lj}}^j {F^{l i_1 ... i_p}}_{k_1 ... k_q} 
-	- {\Gamma^{i_m}}_{j l} {F^{j i_1 ... i_{m-1} l i_{m+1} ... i_p}}_{k_1 ... k_q} 
-	+ {\Gamma^l}_{j k_m} {F^{j i_1  ... i_p}}_{k_1 ... k_{m-1} l k_{m+1}... k_q} 
-$<br>
-Notice that, in order to take advantage of the volume weighting in a non-coordinate basis, you must apply the non-coordinate basis operator and not merely the partial derivative.<br>
-Expanding the $e_j$ operator in terms of its linear combination of coordinate basis, denoted $e_\bar{a}$:<br>
-$\partial_t {U^{i_1 ... i_p}}_{k_1 ... k_q} 
-	+ \frac{1}{\sqrt{g}} {e_j}^\bar{j} e_\bar{j} (\sqrt{g} {F^{j i_1 ... i_p}}_{k_1 ... k_q})
-	= 
-	- {c_{lj}}^j {F^{l i_1 ... i_p}}_{k_1 ... k_q} 
-	- {\Gamma^{i_m}}_{j l} {F^{j i_1 ... i_{m-1} l i_{m+1} ... i_p}}_{k_1 ... k_q} 
-	+ {\Gamma^l}_{j k_m} {F^{j i_1  ... i_p}}_{k_1 ... k_{m-1} l k_{m+1}... k_q} 
-$<br>
-So implementing this as difference operations, what this means is...<br>
-(1) For holonomic only: Weight your flux by the coordinate volume at that interface.  Notice that anholonomic, normalized will have a $g = I$ and therefore involve no weight.<br>
-(2) Compute your partial derivatives.<br>
-(3) For anholonomic only: transform your derivative by the coordinate-to-non-coordinate linear transformation.<br>
-(4) For holonomic only: Divide out the weight of the coordinate volume at the center.<br>
-...<br>
-<br>
-
-<b>try again, keep things in integral form...</b><br>
 Following 2009 Trangenstein "Numeric Simulations of Hyperbolic Conservation Laws", section 7.4:<br>
 Notice that his book coincides with anholonomic orthonormal basis.<br>
 So that's what I'm using here.  $u_1 ... u_n$ are my coordinate chart parameters.  Indexes are in anholonomic non-coordinates.<br>
-$\bar{j} =$ the coordinate basis index, ${e^\bar{j}}_j =$ change of basis from non-coordinate to coordinate (non-Cartesian) basis.<br>
+$\bar{j} =$ the coordinate basis index, ${e^\bar{j}}_j =$ change of basis from coordinate (non-Cartesian) to non-coordinate basis.<br>
 <br>
 
-Mind you, the connections of ${U^I}_J$ will have subsets that are tensors.<br>
-Now to formally define them...<br>
-Let ${U^I}_J$ be a collection of all tensors, where $I$ span all contravariant indexes and $J$ span all covariant indexes.<br>
-Where should the scalars go, in I or J?  It shouldn't matter.<br>
-$U^{i_{0,1} ... i_{0,p_0}}$<br>
-Next come the vectors and one-forms...<br>
-${U^{i_{0,1} ... i_{0,p_0} i_{1,1} ... i_{1,p_1}}}_{j_{1,1} ... j_{1,q_1}}$<br>
-Next come the rest of the s-forms...<br>
-${U^{i_{0,1} ... i_{0,p_0} i_{1,1} ... i_{1,p_1} ... i_{s,1} ... i_{s,p_s} }}_{j_{1,1} ... j_{1,q_1} ... j_{s,1} ... j_{s,q_s}}$<br>
+Conservation of our field F is a $\pmatrix{ p+1 \\ q}$ in space and time:<br>
+$\nabla \cdot F = 0$<br>
+with indexes:<br>
+$\nabla_\mu \cdot {F^{\mu \bar{i}_1 ... \bar{i}_p}}_{\bar{k}_1 ... \bar{k}_q} = 0$<br>
+separating time:<br>
+$
+	\nabla_t \cdot {F^{t \bar{i}_1 ... \bar{i}_p}}_{\bar{k}_1 ... \bar{k}_q} 
+	+ \nabla_\bar{j} \cdot {F^{\bar{j} \bar{i}_1 ... \bar{i}_p}}_{\bar{k}_1 ... \bar{k}_q} 
+= 0$<br>
+assume all ${\Gamma^t}_{\alpha\beta} = 0$ and all ${\Gamma^\alpha}_{t\mu} = 0$<br>
+$
+	\partial_t \cdot {F^{t \bar{i}_1 ... \bar{i}_p}}_{\bar{k}_1 ... \bar{k}_q} 
+	+ \nabla_\bar{j} \cdot {F^{\bar{j} \bar{i}_1 ... \bar{i}_p}}_{\bar{k}_1 ... \bar{k}_q} 
+= 0$<br>
+Let our state ${U^{\bar{i}_1 ... \bar{i}_p}}_{\bar{k}_1 ... \bar{k}_q} = {F^{t \bar{i}_1 ... \bar{i}_p}}_{\bar{k}_1 ... \bar{k}_q}$ be whatever is travelling through time:<br>
+$
+	\partial_t \cdot {U^{\bar{i}_1 ... \bar{i}_p}}_{\bar{k}_1 ... \bar{k}_q} 
+	+ \nabla_{\bar{j}} \cdot {F^{\bar{j} \bar{i}_1 ... \bar{i}_p}}_{\bar{k}_1 ... \bar{k}_q} 
+= 0$<br>
 <br>
-But from now on we will only consider $U$ to be a single $\left( \begin{matrix} p \\ q \end{matrix} \right)$-form.  You can repeat for collections of tensors.<br>
+We will only consider $U$ to be a single $\left( \begin{matrix} p \\ q \end{matrix} \right)$-form.  You can repeat for collections of tensors.<br>
+<br>
+The indexes $\bar{i}_1 ... \bar{i}_p, \bar{j}_1 ... \bar{j}_q$ span our chart coordinates $u_1 ... u_n$.<br>
+<br>
+
+Include the change-of-coordinates:<br>
+$
+	\partial_t \cdot (
+		{U^{i_1 ... i_p}}_{k_1 ... k_q} 
+		\cdot {e^{\bar{i}_1}}_{i_1} \cdot ... \cdot {e^{\bar{i}_p}}_{i_p}
+		\cdot {e_{\bar{k}_1}}^{k_1} \cdot ... \cdot {e_{\bar{k}_q}}^{k_p}
+	)
+	+ \nabla_{\bar{j}} \cdot (
+		{F^{\bar{j} i_1 ... i_p}}_{k_1 ... k_q}
+		\cdot {e^{\bar{i}_1}}_{i_1} \cdot ... \cdot {e^{\bar{i}_p}}_{i_p}
+		\cdot {e_{\bar{k}_1}}^{k_1} \cdot ... \cdot {e_{\bar{k}_q}}^{k_p}
+	)
+= 0$<br>
+Assume the grid is constant, so $\partial_t {e_\bar{i}}^i = 0$:<br>
+$
+	\partial_t \cdot (
+		{U^{i_1 ... i_p}}_{k_1 ... k_q} 
+	)
+	\cdot {e^{\bar{i}_1}}_{i_1} \cdot ... \cdot {e^{\bar{i}_p}}_{i_p}
+	\cdot {e_{\bar{k}_1}}^{k_1} \cdot ... \cdot {e_{\bar{k}_q}}^{k_p}
+	
+	+ \nabla_{\bar{j}} \cdot (
+		{F^{\bar{j} i_1 ... i_p}}_{k_1 ... k_q}
+		\cdot {e^{\bar{i}_1}}_{i_1} \cdot ... \cdot {e^{\bar{i}_p}}_{i_p}
+		\cdot {e_{\bar{k}_1}}^{k_1} \cdot ... \cdot {e_{\bar{k}_q}}^{k_p}
+	)
+= 0$<br>
+
+Note that the connection of this $\nabla_{\bar{j}}$ is associated with the coordinate metric and therefore is symmetric.<br>
+You could equivalently use the connection $\nabla_j$ associated with the anholonomic components, which is antisymmetric, and then you would not need to worry about rescaling the components (because that information would already be stored in the connection).<br>
+That would look like this:<br>
+$(
+	\partial_t \cdot (
+		{U^{i_1 ... i_p}}_{k_1 ... k_q} 
+	)
+	+ \nabla_j \cdot {F^{j i_1 ... i_p}}_{k_1 ... k_q}
+) 
+\cdot {e^{\bar{i}_1}}_{i_1} \cdot ... \cdot {e^{\bar{i}_p}}_{i_p}
+\cdot {e_{\bar{k}_1}}^{k_1} \cdot ... \cdot {e_{\bar{k}_q}}^{k_p}
+= 0$<br>
+<br>
+
+Is it safe to integrate the normalized-coordinate components across the volume, or should the components be converted to coordinate components inside the integral and then converted back to non-coordinates outside the integral?<br>
+
+$
+	\partial_t \cdot (
+		{U^{i_1 ... i_p}}_{k_1 ... k_q} 
+	)
+	+ \nabla_j \cdot {F^{j i_1 ... i_p}}_{k_1 ... k_q}
+= 0$<br>
+...?<br>
+<br>
+
+<hr>
+<br>
+
+For $\pmatrix{0 \\ 0}$ case:<br>
+
+For scalar conservation laws you don't have to worry about renormalizing indexes.<br>
+Also in this case the divergence turns out to be $\nabla F = \frac{1}{V} \partial (V F)$,
+where $V = det({e_i}^a)$, the determinant of the derivative of the coordinate basis with the Cartesian basis (assuming the non-coordinate basis is normalized).<br>
+<br>
+		
+$\frac{\partial}{\partial t} U + \frac{1}{V} \partial_j (V F^j) = 0$<br>
+<br>
+
+Next integrate the divergence over the volume.<br>
+<br>
+
+$0 = \int_{t_1}^{t_2} 
+	\int_{u_{1,L}}^{u_{1,R}}
+	...
+	\int_{u_{n,L}}^{u_{n,R}}
+
+	\left(
+		\frac{\partial}{\partial t} U
+		+ \frac{1}{V} \partial_j (V F^j)
+	\right)
+
+	V
+	du_n ... du_1
+	dt
+$<br>
+<br>
+
+$0 = \int_{t_1}^{t_2} 
+	\int_{u_{1,L}}^{u_{1,R}}
+	...
+	\int_{u_{n,L}}^{u_{n,R}}
+
+	\left(
+		V \frac{\partial}{\partial t} U
+		+ \partial_j (V F^j)
+	\right)
+	du_n ... du_1
+	dt
+$<br>
+<br>
+
+$0 = 
+	\int_{t_1}^{t_2} 
+	\int_{u_{1,L}}^{u_{1,R}}
+	...
+	\int_{u_{n,L}}^{u_{n,R}}
+	\left(
+		V \frac{\partial}{\partial t} U
+	\right)
+	du_n ... du_1
+	dt
+
+	+ \int_{t_1}^{t_2} 
+	\int_{u_{1,L}}^{u_{1,R}}
+	...
+	\int_{u_{n,L}}^{u_{n,R}}
+	\partial_j (V F^j)
+	du_n ... du_1
+	dt
+$<br>
+<br>
+
+Assume the grid volume and the flux doesn't change over time.
+Assume U is constant throughout the region<br>
+<br>
+
+$0 = 
+	\int_{u_{1,L}}^{u_{1,R}}
+	...
+	\int_{u_{n,L}}^{u_{n,R}}
+	V  
+	du_n ... du_1
+	\cdot 
+	\left(
+		U|_{t=t_2} - U|_{t=t_1}
+	\right)
+
+	+ (t_2 - t_1)
+	\int_{u_{1,L}}^{u_{1,R}}
+	...
+	\int_{u_{n,L}}^{u_{n,R}}
+	\partial_j (V F^j)
+	du_n ... du_1
+$<br>
+<br>
+
+Let $\mathcal{V} = 
+	\int_{u_{1,L}}^{u_{1,R}}
+	...
+	\int_{u_{n,L}}^{u_{n,R}}
+	V  
+	du_n ... du_1
+$<br>
+Let $\Delta t = t_2 - t_1$<br>
+<br>
+
+$U|_{t=t_2} = 
+	U|_{t=t_1}
+	-
+	\frac{\Delta t}{\mathcal{V}}
+	\int_{u_{1,L}}^{u_{1,R}}
+	\overset{\hat{j}}{...}
+	\int_{u_{n,L}}^{u_{n,R}}
+	\left(
+	(V F^j)|_{u_j=u_{j,R}}
+	- (V F^j)|_{u_j=u_{j,L}}
+	\right)
+	du_n \overset{\hat{j}}{...} du_1
+$<br>
+<br>
+
+Assume the flux is constant across the surface:<br>
+<br>
+
+$U|_{t=t_2} = 
+	U|_{t=t_1}
+	-
+	\frac{\Delta t}{\mathcal{V}}
+	\int_{u_{1,L}}^{u_{1,R}}
+	\overset{\hat{j}}{...}
+	\int_{u_{n,L}}^{u_{n,R}}
+	\left(
+	(V F^j)|_{u_j=u_{j,R}} )
+	- (V F^j)|_{u_j=u_{j,L}} )
+	\right)
+	du_n \overset{\hat{j}}{...} du_1
+$<br>
+<br>
+
+Assume $F^j$ is constant throughout the surfaces $u = u_{j,L}$ and $u = u_{j,R}$:<br>
+<br>
+
+$U|_{t=t_2} = 
+	U|_{t=t_1}
+	-
+	\frac{\Delta t}{\mathcal{V}}
+	\left( 
+		F^j|_{u_j=u_{j,R}}
+		\int_{u_{1,L}}^{u_{1,R}}
+		\overset{\hat{j}}{...}
+		\int_{u_{n,L}}^{u_{n,R}}
+		V|_{u_j=u_{j,R}}
+		du_n \overset{\hat{j}}{...} du_1
+		
+		- F^j|_{u_j=u_{j,L}}
+		\int_{u_{1,L}}^{u_{1,R}}
+		\overset{\hat{j}}{...}
+		\int_{u_{n,L}}^{u_{n,R}}
+		V|_{u_j=u_{j,L}}
+		du_n \overset{\hat{j}}{...} du_1
+	\right)
+$<br>
+<br>
+
+Let $\Sigma_j = \int_{u_{1,L}}^{u_{1,R}}
+	\overset{\hat{j}}{...}
+	\int_{u_{n,L}}^{u_{n,R}}
+	V|_{u_j=u_{j,R}}
+	du_n \overset{\hat{j}}{...} du_1
+$<br>
+
+$U|_{t=t_2} = 
+	U|_{t=t_1}
+	-
+	\frac{\Delta t}{\mathcal{V}}
+	\left( 
+		(F^j \Sigma_j)|_{u_j=u_{j,R}}
+		- (F^j \Sigma_j)|_{u_j=u_{j,L}}
+	\right)
+$<br>
+<br>
+
+
+
+Now for specific coordinate system examples of $\pmatrix{0 \\ 0}$:<br>
+<br>
+
+
+Cartesian:<br>
+$g_{ij} = \delta_{ij}$<br>
+${e_{\bar{i}}}^i = \delta_\bar{i}^i$<br>
+$V = 1$<br>
+$\mathcal{V} = \Pi_{k=1}^n \Delta u_k$<br>
+$\Sigma_j = \Pi_{k=1,k\ne j}^n \Delta u_k$<br>
+<br>
+
+$U|_{t=t_2} = 
+	U|_{t=t_1}
+	-
+	\frac{\Delta t}{
+		\Pi_{k=1}^n (\Delta u_k)
+	}
+	\left( 
+		(
+			F^j
+			\Pi_{k=1,k\ne j}^n (\Delta u_k)
+		)|_{u_j=u_{j,R}}
+		
+		- (
+			F^j
+			\Pi_{k=1,k\ne j}^n (\Delta u_k)
+		)|_{u_j=u_{j,L}}
+	\right)
+$<br>
+<br>
+
+$U|_{t=t_2} = U|_{t=t_1} - \frac{\Delta t}{\Delta u_j} \left( F^j|_{u_j=u_{j,R}} - F^j|_{u_j=u_{j,L}} \right)$<br>
+<br>
+
+
+Polar, $u = \{ r, \phi \}$<br>
+$g_{\bar{i}\bar{j}} = diag(1, r^2)$<br>
+${e_{\bar{i}}}^i = diag(1, r)$<br>
+$V = r$<br>
+$\mathcal{V} = \frac{1}{2} (r_R^2 - r_L^2) (\phi_R - \phi_L) = \frac{1}{2} \Delta (r^2) \Delta \phi$<br>
+$\Sigma_r = \int_{\phi=\phi_L}^{\phi=\phi_R} r d\phi = r (\phi_R - \phi_L) = r \Delta \phi$<br>
+$\Sigma_\phi = \int_{r=r_L}^{r=r_R} r dr = \frac{1}{2} (r_R^2 - r_L^2) = \frac{1}{2} \Delta (r^2)$<br>
+<br>
+
+$U|_{t=t_2} = 
+	U|_{t=t_1}
+	-
+	\frac{\Delta t}{
+		\frac{1}{2} \Delta (r^2) \Delta \phi
+	}
+	\left( 
+		  F^r|_{u_r=u_{r,R}} \cdot r_R \Delta \phi
+		- F^r|_{u_r=u_{r,L}} \cdot r_L \Delta \phi
+		
+		+ F^\phi|_{u_\phi=u_{\phi,R}} \cdot \frac{1}{2} \Delta (r^2) 
+		- F^\phi|_{u_\phi=u_{\phi,L}} \cdot \frac{1}{2} \Delta (r^2)
+	\right)
+$<br>
+<br>
+
+$U|_{t=t_2} = 
+	U|_{t=t_1}
+	- \Delta t
+	\left( 
+		\frac{2}{ \Delta (r^2) }
+		\left( 
+			  F^r|_{u_r=u_{r,R}} \cdot r_R
+			- F^r|_{u_r=u_{r,L}} \cdot r_L
+		\right)
+		
+		+ 
+		\frac{1}{ \Delta \phi }
+		\left( 
+			  F^\phi|_{u_\phi=u_{\phi,R}}
+			- F^\phi|_{u_\phi=u_{\phi,L}}
+		\right)
+	\right)
+$<br>
+<br>
+
+
+Spherical, $u = \{r, \theta, \phi\}$<br>
+$g_{\bar{i}\bar{j}} = diag(1, r^2, r^2 sin(\theta)^2)$<br>
+${e_{\bar{i}}}^i = diag(1, r, r sin(\theta))$<br>
+$V = r^2 sin(\theta)$<br>
+$\mathcal{V} = \frac{1}{3} (r_R^3 - r_L^3) (\phi_R - \phi_L) (cos(\theta_R) - cos(\theta_L)) = \frac{1}{3} \Delta (r^3) \Delta cos(\theta)$<br>
+$\Sigma_r = \int_{\theta=\theta_L}^{\theta=\theta_R} \int_{\phi=\phi_L}^{\phi=\phi_R} r^2 sin(\theta) d\phi d\theta = r^2 (cos(\theta_R) - cos(\theta_L)) (\phi_R - \phi_L) = r^2 \Delta cos(\theta) \Delta \phi$<br>
+$\Sigma_\theta = \int_{r=r_L}^{r=r_R} \int_{\phi=\phi_L}^{\phi=\phi_R} r^2 sin(\theta) d\phi dr = \frac{1}{3} (r_R^3 - r_L^3) sin(\theta) (\phi_R - \phi_L) = \frac{1}{3} \Delta (r^3) sin(\theta) \Delta \phi$<br>
+$\Sigma_\phi = \int_{r=r_L}^{r=r_R} \int_{\theta=\theta_L}^{\theta=\theta_R} r^2 sin(\theta) d\theta dr = \frac{1}{3} (r_R^3 - r_L^3) (cos(\theta_R) - cos(\theta_L)) = \frac{1}{3} \Delta (r^3) \Delta cos(\theta)$<br>
+<br>
+
+$U|_{t=t_2} = 
+	U|_{t=t_1}
+	-
+	\frac{\Delta t}{\mathcal{V}}
+	\left( 
+		(F^r \Sigma_r)|_{u_r=u_{r,R}}
+		- (F^r \Sigma_r)|_{u_r=u_{r,L}}
+		+ (F^\theta \Sigma_\theta)|_{u_\theta=u_{\theta,R}}
+		- (F^\theta \Sigma_\theta)|_{u_\theta=u_{\theta,L}}
+		+ (F^\phi \Sigma_\phi)|_{u_\phi=u_{\phi,R}}
+		- (F^\phi \Sigma_\phi)|_{u_\phi=u_{\phi,L}}
+	\right)
+$<br>
+<br>
+
+
+
+<br>
+<hr>
+<br>
+
+TODO fix this: $\frac{1}{V} \partial_j V$ is not correct for all $\pmatrix{p \\ q}$ tensors.<br>
 
 $0 = \int_{t_1}^{t_2} 
 	\int_{u_{1,L}}^{u_{1,R}}
@@ -150,7 +394,7 @@ $0 = \int_{t_1}^{t_2}
 		\frac{\partial}{\partial t}({U^{i_1 ... i_p}}_{k_1 ... k_q})
 
 		+ \frac{1}{V} (
-			\nabla_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q} V)
+			\partial_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q} V)
 		)
 	
 	\right)
@@ -160,26 +404,6 @@ $0 = \int_{t_1}^{t_2}
 	du_n ... du_1
 	dt
 $<br>
-$0 = \int_{t_1}^{t_2} 
-	\int_{u_{1,L}}^{u_{1,R}}
-	...
-	\int_{u_{n,L}}^{u_{n,R}}
-
-	\left(
-		\frac{\partial}{\partial t}({U^{i_1 ... i_p}}_{k_1 ... k_q})
-
-		+ \frac{1}{V} (
-			\nabla_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q} V)
-		)
-	
-	\right)
-
-	V
-
-	du_n ... du_1
-	dt
-$<br>
-...for $V = det({e_i}^a)$, the determinant of the derivative of the coordinate basis with the Cartesian basis (assuming the non-coordinate basis is normalized).<br>
 <br>
 assuming the grid is not dependent on time ($\frac{dV}{dt} = 0$)<br>
 $0 =
@@ -204,7 +428,7 @@ $0 =
 	...
 	\int_{u_{n,L}}^{u_{n,R}}
 	\left(
-			\nabla_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q} V)
+			\partial_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q} V)
 	\right)
 	du_n ... du_1
 	dt
@@ -228,7 +452,7 @@ $0 =
 	...
 	\int_{u_{n,L}}^{u_{n,R}}
 	\left(
-			\nabla_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q} V)
+			\partial_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q} V)
 	\right)
 	du_n ... du_1
 	dt
@@ -255,7 +479,7 @@ $0 =
 	...
 	\int_{u_{n,L}}^{u_{n,R}}
 	\left(
-			\nabla_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q} V)
+			\partial_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q} V)
 	\right)
 	du_n ... du_1
 $<br>
@@ -278,7 +502,7 @@ $0 =
 	...
 	\int_{u_{n,L}}^{u_{n,R}}
 	\left(
-			\nabla_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q} V)
+			\partial_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q} V)
 	\right)
 	du_n ... du_1
 $<br>
@@ -303,7 +527,7 @@ $
 	...
 	\int_{u_{n,L}}^{u_{n,R}}
 	\left(
-			\nabla_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q} V)
+			\partial_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q} V)
 	\right)
 	du_n ... du_1
 $<br>
@@ -327,7 +551,7 @@ $
 	...
 	\int_{u_{n,L}}^{u_{n,R}}
 	\left(
-			\nabla_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q} V)
+			\partial_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q} V)
 	\right)
 	du_n ... du_1
 $<br>
@@ -354,7 +578,7 @@ $
 	...
 	\int_{u_{n,L}}^{u_{n,R}}
 	\left(
-			\nabla_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q})
+			\partial_j ({F^{j i_1 ... i_p}}_{k_1 ... k_q})
 	\right)
 	du_n ... du_1
 $<br>

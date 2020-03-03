@@ -94,7 +94,7 @@ $I = \frac{V}{R_{res}} = \frac{V \cdot \pi \cdot R^2}{\rho_{res} \cdot l} =$ {{c
 Electric field: $E(x) = \int \frac{q(x')}{|x' - x|^2} \cdot \frac{(x' - x)}{|x' - x|} dx'$<br>
 Electric field around a wire:<br>
 $\lambda = A q = \pi R^2 \rho_{charge} e =$ {{charge_per_unit_length_in_C_per_m = charge_density_in_C_per_m3 * wire_cross_section_area_in_m2}} $\frac{C}{m}$ = charge density per unit meter along wire<br>
-$E(r) = \frac{1}{2} \lambda k_e \frac{1}{r} = \frac{1}{2} \pi R^2 \rho_{charge} e k_e \frac{1}{r} =$ {{electric_field_in_kg_m2_per_C_s2_r = charge_per_unit_length_in_C_per_m * .5 * Coulomb_constant_in_kg_m3_per_C2_s2}} $\cdot \frac{1}{r} \cdot \frac{kg \cdot m^2}{C \cdot s^2}$<br>
+$E(r) = 2 k_e \lambda \frac{1}{r} = 2 k_e \pi R^2 \rho_{charge} e \frac{1}{r} =$ {{electric_field_in_kg_m2_per_C_s2_r = 2 * Coulomb_constant_in_kg_m3_per_C2_s2 * charge_per_unit_length_in_C_per_m}} $\cdot \frac{1}{r} \cdot \frac{kg \cdot m^2}{C \cdot s^2}$<br>
 <br>
 
 Mean velocity of moving electrons within wire:<br>
@@ -225,9 +225,8 @@ $F'_{ab} = \downarrow a \overset{\rightarrow b}{\left[ \begin{matrix}
 One possible pre-boosted 4-potential:<br>
 $A_i = 0 = $ magnetic vector potential.<br>
 $r_0 = $<input name='electric_potential_reference_dist_in_m' value='1'/> = electromagnetic potential reference length.<br>
-$A_t = \frac{1}{2} \lambda k_e ln( \frac{r}{r_0} ) = $ {{
-	.5 * charge_per_unit_length_in_C_per_m * Coulomb_constant_in_kg_m3_per_C2_s2
-	* Math.log(field_measure_distance_in_m / electric_potential_reference_dist_in_m)
+$A_t = 2 \lambda k_e ln( \frac{r}{r_0} ) = $ {{
+	2 * charge_per_unit_length_in_C_per_m * Coulomb_constant_in_kg_m3_per_C2_s2 * Math.log(field_measure_distance_in_m / electric_potential_reference_dist_in_m)
 }} $ \frac{ kg \cdot m^2 }{ C \cdot s^2} $ = electric potential.<br>
 <br>
 
@@ -240,7 +239,7 @@ $\vec{B} =
 	-\frac{z}{r} \\
 	\frac{y}{r}
 \end{matrix}\right]$<br>
-$B = \frac{1}{c} \beta \gamma E = \frac{\gamma \cdot V \cdot \pi \cdot R^2 \cdot k_e}{2 \cdot c^2 \cdot \rho_{res} \cdot l \cdot r}$ = magnetic field magnitude<br>
+$B = \frac{1}{c} \beta \gamma E = \frac{2 \cdot \gamma \cdot V \cdot \pi \cdot R^2 \cdot k_e}{c^2 \cdot \rho_{res} \cdot l \cdot r}$ = magnetic field magnitude<br>
 <br>
 
 $B = \frac{1}{c \cdot r} \cdot $ {{Lorentz_beta * Lorentz_gamma * electric_field_in_kg_m2_per_C_s2_r}} $\cdot \frac{kg}{C \cdot s^2}$

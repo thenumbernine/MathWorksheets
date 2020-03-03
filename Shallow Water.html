@@ -1,0 +1,822 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<title>Shallow Water in Hyperbolic Form</title>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+	</head>
+    <body>
+
+Conservation Law:<br>
+
+$U = \left[ \begin{matrix}
+	h \\
+	h v^i
+\end{matrix} \right]$<br>
+<br>
+
+$W = \left[ \begin{matrix}
+	h \\
+	v^i
+\end{matrix} \right]$<br>
+<br>
+
+$\frac{\partial U^I}{\partial W^J} = \downarrow I \overset{\rightarrow J}{
+	\left[ \begin{matrix}
+		1 & 0 \\
+		v^i & h \delta^i_j
+	\end{matrix} \right]
+}$<br>
+<br>
+
+$\frac{\partial W^I}{\partial U^J} = \downarrow I \overset{\rightarrow J}{
+	\left[ \begin{matrix}
+		1 & 0 \\
+		-\frac{1}{h} v^i & \frac{1}{h} \delta^i_j
+	\end{matrix} \right]
+}$<br>
+<br>
+
+Let $h > 0$ to maintain that $\frac{\partial W^I}{\partial U^J}$ is non-singular.<br>
+<br>
+
+$F^I(n) = \left[ \begin{matrix}
+	h v^k n_k \\
+	h v^i v^k n_k + \frac{1}{2} g h^2 n^i
+\end{matrix} \right]$<br>
+<br>
+
+$\frac{\partial F^I}{\partial W^J} = \downarrow I \overset{\rightarrow J}{
+	\left[ \begin{matrix}
+		v_n & 
+		h n_j \\
+		
+		v^i v_n + g h n^i &
+		h (\delta^i_j v_n + v^i n_j)
+	\end{matrix} \right]
+}$<br>
+<br>
+...for $v_n = v^k n_k$<br>
+<br>
+
+Create the acoustic plus wavespeed matrix:<br>
+<br>
+
+$\frac{\partial W^I}{\partial U_K} \frac{\partial F^K}{\partial W_J} = \downarrow I \overset{\rightarrow K}{
+	\left[ \begin{matrix}
+		1 & 0 \\
+		-\frac{1}{h} v^i & \frac{1}{h} \delta^i_k
+	\end{matrix} \right]
+} \cdot \downarrow K \overset{\rightarrow J}{
+	\left[ \begin{matrix}
+		v_n & 
+		h n_j \\
+		
+		v^k v_n + g h n^k &
+		h (\delta^k_j v_n + v^k n_j)
+	\end{matrix} \right]
+}$<br>
+<br>
+
+$\frac{\partial W^I}{\partial U_K} \frac{\partial F^K}{\partial W_J} = \downarrow I \overset{\rightarrow J}{
+	\left[ \begin{matrix}
+		v_n &
+		h n_j \\
+
+		g n^i &
+		\delta^i_j v_n
+	\end{matrix} \right]
+}$<br>
+<br>
+
+Separate out the acoustic matrix:<br>
+<br>
+
+${A^I}_J = \frac{\partial W^I}{\partial U^K} \frac{\partial F^K}{\partial W^J} - \delta^I_J v_n$<br>
+<br>
+
+${A^I}_J = \downarrow I \overset{\rightarrow J}{
+	\left[ \begin{matrix}
+		0 &
+		h n_j \\
+
+		g n^i &
+		0
+	\end{matrix} \right]
+}$<br>
+<br>
+
+
+
+Solve for the eigenvalues of ${A^I}_J$:<br>
+<br>
+${A^I}_J (R_A)^J = \lambda (R_A)^J$<br>
+<br>
+$({A^I}_J - \lambda \delta^I_J) (R_A)^J = 0$<br>
+<br>               
+$|{A^I}_J - \lambda \delta^I_J| = 0$<br>
+<br>
+
+$\left| \begin{matrix}
+	-\lambda & 
+	h n_j \\
+	
+	g n^i &
+	-\lambda \delta^i_j
+\end{matrix} \right| = 0$<br>
+<br>
+
+Expand components for 2D:<br>
+<br>
+
+$\left| \begin{matrix}
+	-\lambda & 
+	h n_x &
+	h n_y \\
+	
+	g n^x &
+	-\lambda &
+	0 \\
+
+	g n^y &
+	0 &
+	-\lambda
+\end{matrix} \right| = 0$<br>
+<br>
+
+$-\lambda \left| \begin{matrix}
+	-\lambda & h n_x \\
+	g n^x & -\lambda
+\end{matrix} \right|
++ g n^y \left| \begin{matrix}
+	h n_x & h n_y \\
+	-\lambda & 0
+\end{matrix} \right|
+= 0$<br>
+<br>
+
+$-\lambda (
+	\lambda^2 
+	- g h n_x n^x 
+)
++ \lambda g h n^y n_y
+= 0$<br>
+<br>
+
+$-\lambda (\lambda^2 - g h (n_x n^x + n^y n_y)) = 0$<br>
+<br>
+
+Let $|n|^2 = n_k n^k = n_x n^x + n_y n^y$<br>
+<br>
+
+$-\lambda (\lambda^2 - g h |n|^2) = 0$<br>
+<br>
+
+$-\lambda (\lambda - |n| \sqrt{gh}) (\lambda + |n| \sqrt{gh}) = 0$<br>
+<br>
+
+This has solutions: $\lambda = \{ 0, \pm |n| \sqrt{gh} \}$<br>
+<br>
+
+Let $c = \sqrt{gh}$ be the wavespeed (difference from the center wave $v_n$).<br>
+<br>
+
+Then we find: $\lambda = \{ 0, \pm |n| c \}$<br>
+<br>
+
+Solve for the right-eigenvectors:<br>
+<br>
+
+<br>
+Case $\lambda = 0$:<br>
+<br>
+
+$\left[ \begin{matrix}
+	0 &
+	h n_x &
+	h n_y \\
+	
+	g n^x &
+	0 &
+	0 \\
+
+	g n^y &
+	0 &
+	0
+\end{matrix} \right] 
+\left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right]
+= 0$<br>
+<br>
+
+Rescale first row by $\frac{1}{h}$.<br>
+Rescale second and third row by $\frac{1}{g}$<br>
+<br>
+
+$\left[ \begin{matrix}
+	0 &
+	n_x &
+	n_y \\
+	
+	n^x &
+	0 &
+	0 \\
+
+	n^y &
+	0 &
+	0
+\end{matrix} \right] 
+\left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right]
+= 0$<br>
+<br>
+
+For $n^x \ne 0$:<br>
+<br>
+
+Subtract $\frac{n^y}{n^x}$ by the second row to the first row to cancel it.<br>
+Also swap rows to give us a leading diagonal:<br>
+<br>
+
+$\left[ \begin{matrix}
+	n^x &
+	0 &
+	0 \\
+
+	0 &
+	n_x &
+	n_y \\
+	
+	0 &
+	0 &
+	0
+\end{matrix} \right]
+\left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right]
+= 0$<br>
+<br>
+
+$X^h = 0$<br>
+<br>
+
+For $n^x \ne 0, n_x \ne 0$:<br>
+<br>
+
+Let $u = X^{v^y}$<br>
+<br>
+
+$n_x X^{v^x} + u n_y = 0$<br>
+<br>
+
+$X^{v^x} = -u \frac{n_y}{n_x}$<br>
+<br>
+	
+Therefore our right-eigenvector is:<br>
+<br>
+
+$\left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right]
+= u \left[ \begin{matrix}
+	0 \\
+	-\frac{n_y}{n_x} \\
+	1
+\end{matrix} \right]$<br>
+<br>
+
+Rescale by $n_x$:<br>
+<br>
+
+$\left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right]
+= u \left[ \begin{matrix}
+	0 \\
+	-n_y \\
+	n_x
+\end{matrix} \right]$<br>
+<br>
+
+For $n^x \ne 0, n_x = 0$:<br>
+By $|n|^2 = n^x n_x + n^y n_y > 0$ we know that $n_y \ne 0$.<br>
+(When does $n^x \ne 0$ but $n_x = \Sigma_k g_{xk} n^k = 0$? Whenever $g_{xx} n^x = -g_{xy} n^y$.)<br>
+<br>
+
+$\left[ \begin{matrix}
+	n^x &
+	0 &
+	0 \\
+
+	0 &
+	0 &
+	n_y \\
+	
+	0 &
+	0 &
+	0
+\end{matrix} \right]
+\left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right]
+= 0$<br>
+<br>
+
+Let $u = -X^{v^x}$<br>
+<br>
+
+$\left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right]
+= u \left[ \begin{matrix}
+	0 \\
+	-1 \\
+	0
+\end{matrix} \right]$<br>
+<br>
+
+For $n^x = 0$:<br>
+<br>
+
+$\left[ \begin{matrix}
+	0 &
+	n_x &
+	n_y \\
+	
+	0 &
+	0 &
+	0 \\
+
+	n^y &
+	0 &
+	0
+\end{matrix} \right] 
+\left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right]
+= 0$<br>
+<br>
+
+Swap rows to get leading diagonal:<br>
+<br>
+
+$\left[ \begin{matrix}
+	n^y &
+	0 &
+	0 \\
+
+	0 &
+	n_x &
+	n_y \\
+	
+	0 &
+	0 &
+	0
+\end{matrix} \right] 
+\left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right]
+= 0$<br>
+<br>
+
+For $n^x = 0, n_x \ne 0$:<br>
+<br>
+
+$\left[ \begin{matrix}
+	n^y &
+	0 &
+	0 \\
+
+	0 &
+	n_x &
+	n_y \\
+	
+	0 &
+	0 &
+	0
+\end{matrix} \right] 
+\left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right]
+= 0$<br>
+<br>
+
+Let $u = X^{v^y}$<br>
+<br>
+
+$n_x X^{v^x} + n_y X^{v^y} = 0$<br>
+$n_x X^{v^x} + n_y u = 0$<br>
+$X^{v^x} = -\frac{n_y}{n_x} u$<br>
+<br>
+
+$\left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right]
+= u \left[ \begin{matrix}
+	0 \\
+	-\frac{n_y}{n_x} \\
+	1
+\end{matrix} \right]$<br>
+<br>
+
+Rescale by $u \rightarrow n_x u$<br>
+<br>
+
+$\left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right]
+= u \left[ \begin{matrix}
+	0 \\
+	-n_y \\
+	n_x
+\end{matrix} \right]$<br>
+<br>
+
+For $n^x = 0, n_x = 0$:<br>
+By $|n|^2 > 0$ we know that $n^y n_y \ne 0$<br>
+<br>
+
+$\left[ \begin{matrix}
+	0 &
+	0 &
+	n_y \\
+	
+	0 &
+	0 &
+	0 \\
+
+	n^y &
+	0 &
+	0
+\end{matrix} \right] 
+\left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right]
+= 0$<br>
+<br>
+
+Swap for leading row.<br>
+<br>
+
+$\left[ \begin{matrix}
+	n^y &
+	0 &
+	0 \\
+
+	0 &
+	0 &
+	n_y \\
+	
+	0 &
+	0 &
+	0
+\end{matrix} \right] 
+\left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right]
+= 0$<br>
+<br>
+
+Let $u = -X^{v^x}$<br>
+<br>
+
+$\left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right]
+= \left[ \begin{matrix}
+	0 \\
+	-1 \\
+	0
+\end{matrix} \right]$<br>
+<br>
+
+So for all conditions:<br>
+<br>
+
+$\left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right]
+= \left[ \begin{matrix}
+	0 \\
+	-n_y \\
+	n_x
+\end{matrix} \right]$<br>
+<br>
+
+<br>
+Case $\lambda = |n| c$:<br>
+<br>
+
+$\left[ \begin{matrix}
+	-|n| \sqrt{gh} & 
+	h n_x &
+	h n_y \\
+	
+	g n^x &
+	-|n| \sqrt{gh} &
+	0 \\
+
+	g n^y &
+	0 &
+	-|n| \sqrt{gh}
+\end{matrix} \right] \left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right] = 0$<br>
+<br>
+
+Set the second row to $n^x \sqrt{g}$ times the first row plus $|n| \sqrt{h}$ times the second row.<br>
+Set the third row to $n^y \sqrt{g}$ times the first row plus $|n| \sqrt{h}$ times the third row.<br>
+<br>
+
+$\left[ \begin{matrix}
+	-|n| \sqrt{gh} & 
+	h n_x &
+	h n_y \\
+	
+	0 &
+	-\sqrt{g} h n_y n^y &
+	\sqrt{g} h n^x n_y \\
+
+	0 &
+	\sqrt{g} h n^y n_x &
+	-\sqrt{g} h n^x n_x
+\end{matrix} \right] \left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right] = 0$<br>
+<br>
+
+Scale the first row by $\frac{1}{h}$.<br>
+Scale the second row by $\frac{1}{\sqrt{g}h n_y}$. TODO only for $n_y \ne 0$.<br>
+Scale the third row by $\frac{1}{\sqrt{g}h n_x}$. TODO only for $n_x \ne 0$.<br>
+<br>
+
+$\left[ \begin{matrix}
+	-|n| \sqrt{\frac{g}{h}} & 
+	n_x &
+	n_y \\
+	
+	0 &
+	-n^y &
+	n^x \\
+
+	0 &
+	n^y &
+	-n^x
+\end{matrix} \right] \left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right] = 0$<br>
+<br>
+
+Add second row to third row to cancel it.<br>
+Set the first row to the first row plus the second row times $\frac{n_x}{n^y}$.<br>
+<br>
+
+$\left[ \begin{matrix}
+	-|n| \sqrt{\frac{g}{h}} & 
+	0 &
+	n_y \frac{n^x n_x}{n^y} \\
+	
+	0 &
+	-n^y &
+	n^x \\
+
+	0 &
+	0 &
+	0
+\end{matrix} \right] \left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right] = 0$<br>
+<br>
+
+Let $X^{v^y} = u$<br>
+<br>
+
+$X^h = u \frac{n_y n^x n_x \sqrt{h}}{n^y |n| \sqrt{g}}$<br>
+$X^{v^x} = u \frac{n^x}{n^y}$<br>
+$X^{v^y} = u$<br>
+<br>
+
+$\left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right] = u \left[ \begin{matrix}
+	\frac{n_y n^x n_x \sqrt{h}}{n^y |n| \sqrt{g}} \\
+	\frac{n^x}{n^y} \\
+	1
+\end{matrix} \right]$<br>
+<br>
+
+Scale by $n^y$<br>
+<br>
+
+$\left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right] = u \left[ \begin{matrix}
+	\frac{n_y n^x n_x \sqrt{h}}{|n| \sqrt{g}} \\
+	n^x \\
+	n^y
+\end{matrix} \right]$<br>
+<br>
+
+<br>
+Case $\lambda = -|n| c$:<br>
+<br>
+
+$\left[ \begin{matrix}
+	|n| \sqrt{gh} & 
+	h n_x &
+	h n_y \\
+	
+	g n^x &
+	|n| \sqrt{gh} &
+	0 \\
+
+	g n^y &
+	0 &
+	|n| \sqrt{gh}
+\end{matrix} \right] \left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right] = 0$<br>
+<br>
+
+Set the second row to $|n| \sqrt{h}$ times the second row minus $n^x \sqrt{g}$ times the first row.<br>
+Set the third row to $|n| \sqrt{h}$ times the third row minus $n^y \sqrt{g}$ times the first row.<br>
+<br>
+
+$\left[ \begin{matrix}
+	|n| \sqrt{gh} & 
+	h n_x &
+	h n_y \\
+	
+	0 &
+	\sqrt{g} h n^y n_y &
+	-\sqrt{g} h n^x n_y \\
+
+	0 &
+	-\sqrt{g} h n_x n^y &
+	\sqrt{g} h n^x n_x
+\end{matrix} \right] \left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right] = 0$<br>
+<br>
+
+Scale the first row by $\frac{1}{h}$.<br>
+Scale the second row by $-\frac{1}{\sqrt{g}h n_y}$.<br>
+Scale the third row by $-\frac{1}{\sqrt{g}h n_x}$.<br>
+<br>
+
+$\left[ \begin{matrix}
+	|n| \sqrt{\frac{g}{h}} & 
+	n_x &
+	n_y \\
+	
+	0 &
+	-n^y &
+	n^x \\
+
+	0 &
+	n^y &
+	-n^x
+\end{matrix} \right] \left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right] = 0$<br>
+<br>
+
+Add second row to third row to cancel it.<br>
+Set the first row to the first row plus the second row times $\frac{n_x}{n^y}$.<br>
+<br>
+
+$\left[ \begin{matrix}
+	|n| \sqrt{\frac{g}{h}} & 
+	0 &
+	n_y \frac{n^x n_x}{n^y} \\
+	
+	0 &
+	-n^y &
+	n^x \\
+
+	0 &
+	0 &
+	0
+\end{matrix} \right] \left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right] = 0$<br>
+<br>
+
+Let $X^{v^y} = u$<br>
+<br>
+
+$X^h = -u \frac{n_y n^x n_x \sqrt{h}}{n^y |n| \sqrt{g}}$<br>
+$X^{v^x} = u \frac{n^x}{n^y}$<br>
+$X^{v^y} = u$<br>
+<br>
+
+$\left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right] = u \left[ \begin{matrix}
+	-\frac{n_y n^x n_x \sqrt{h}}{n^y |n| \sqrt{g}} \\
+	\frac{n^x}{n^y} \\
+	1
+\end{matrix} \right]$<br>
+<br>
+
+Scale by $n^y$<br>
+<br>
+
+$\left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right] = u \left[ \begin{matrix}
+	-\frac{n_y n^x n_x \sqrt{h}}{|n| \sqrt{g}} \\
+	n^x \\
+	n^y
+\end{matrix} \right]$<br>
+<br>
+
+<br>
+Eigenvalues:<br>
+<br>
+
+$\Lambda_A = \left[ \begin{matrix}
+	-|n| \sqrt{gh} & 0 & 0 \\
+	0 & 0 & 0 \\
+	0 & 0 & |n| \sqrt{gh}
+\end{matrix} \right]$<br>
+<br>
+
+<br>
+Right eigenvectors:<br>
+<br>
+
+$R_A = \left[ \begin{matrix}
+	-\frac{n_y n^x n_x \sqrt{h}}{|n| \sqrt{g}} &
+	0 &
+	\frac{n_y n^x n_x \sqrt{h}}{|n| \sqrt{g}} \\
+	
+	n^x &
+	-n_y &
+	n^x \\
+	
+	n^y &
+	n_x &
+	n^y
+\end{matrix} \right]$<br>
+<br>
+	</body>
+</html>
