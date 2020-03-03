@@ -560,22 +560,23 @@ $\left[ \begin{matrix}
 \end{matrix} \right] = 0$<br>
 <br>
 
-Set the second row to $n^x \sqrt{g}$ times the first row plus $|n| \sqrt{h}$ times the second row.<br>
-Set the third row to $n^y \sqrt{g}$ times the first row plus $|n| \sqrt{h}$ times the third row.<br>
+Scale first row by $\frac{1}{|n| \sqrt{gh}}$.<br>
+Scale second row by $\frac{1}{|n| \sqrt{gh}}$<br>
+Scale third row by $\frac{1}{|n| \sqrt{gh}}$<br>
 <br>
 
 $\left[ \begin{matrix}
-	-|n| \sqrt{gh} & 
-	h n_x &
-	h n_y \\
+	-1 & 
+	\sqrt{\frac{h}{g}} \frac{n_x}{|n|} &
+	\sqrt{\frac{h}{g}} \frac{n_y}{|n|} \\
 	
-	0 &
-	-\sqrt{g} h n_y n^y &
-	\sqrt{g} h n^x n_y \\
+	\sqrt{\frac{g}{h}} \frac{n^x}{|n|} &
+	-1 &
+	0 \\
 
+	\sqrt{\frac{g}{h}} \frac{n^y}{|n|} &
 	0 &
-	\sqrt{g} h n^y n_x &
-	-\sqrt{g} h n^x n_x
+	-1
 \end{matrix} \right] \left[ \begin{matrix}
 	X^h \\
 	X^{v^x} \\
@@ -583,9 +584,9 @@ $\left[ \begin{matrix}
 \end{matrix} \right] = 0$<br>
 <br>
 
-Scale the first row by $\frac{1}{h}$.<br>
-Scale the second row by $\frac{1}{\sqrt{g}h n_y}$. TODO only for $n_y \ne 0$.<br>
-Scale the third row by $\frac{1}{\sqrt{g}h n_x}$. TODO only for $n_x \ne 0$.<br>
+Set second row to $\sqrt{\frac{g}{h}} n^x$ times first row plus $|n|$ times second row.<br>
+Set third row to $\sqrt{\frac{g}{h}} n^y$ times first row plus $|n|$ times third row.<br>
+Scale first row by $|n| \sqrt{\frac{g}{h}}$.<br>
 <br>
 
 $\left[ \begin{matrix}
@@ -594,12 +595,12 @@ $\left[ \begin{matrix}
 	n_y \\
 	
 	0 &
-	-n^y &
-	n^x \\
+	-n_y n^y &
+	n_y n^x \\
 
 	0 &
-	n^y &
-	-n^x
+	n_x n^y &
+	-n_x n^x
 \end{matrix} \right] \left[ \begin{matrix}
 	X^h \\
 	X^{v^x} \\
@@ -607,14 +608,14 @@ $\left[ \begin{matrix}
 \end{matrix} \right] = 0$<br>
 <br>
 
-Add second row to third row to cancel it.<br>
-Set the first row to the first row plus the second row times $\frac{n_x}{n^y}$.<br>
+For $n_x = 0$ (therefore $n_y \ne 0$):<br>
+Scale second row by $\frac{1}{n_y}$<br>
 <br>
 
 $\left[ \begin{matrix}
 	-|n| \sqrt{\frac{g}{h}} & 
 	0 &
-	n_y \frac{n^x n_x}{n^y} \\
+	n_y \\
 	
 	0 &
 	-n^y &
@@ -630,12 +631,7 @@ $\left[ \begin{matrix}
 \end{matrix} \right] = 0$<br>
 <br>
 
-Let $X^{v^y} = u$<br>
-<br>
-
-$X^h = u \frac{n_y n^x n_x \sqrt{h}}{n^y |n| \sqrt{g}}$<br>
-$X^{v^x} = u \frac{n^x}{n^y}$<br>
-$X^{v^y} = u$<br>
+Let $u = X^{v^y}$<br>
 <br>
 
 $\left[ \begin{matrix}
@@ -643,13 +639,13 @@ $\left[ \begin{matrix}
 	X^{v^x} \\
 	X^{v^y}
 \end{matrix} \right] = u \left[ \begin{matrix}
-	\frac{n_y n^x n_x \sqrt{h}}{n^y |n| \sqrt{g}} \\
+	\sqrt{\frac{h}{g}} \frac{n_y}{|n|} \\
 	\frac{n^x}{n^y} \\
 	1
 \end{matrix} \right]$<br>
 <br>
 
-Scale by $n^y$<br>
+Scale by $u \rightarrow n^y u$.<br>
 <br>
 
 $\left[ \begin{matrix}
@@ -657,11 +653,190 @@ $\left[ \begin{matrix}
 	X^{v^x} \\
 	X^{v^y}
 \end{matrix} \right] = u \left[ \begin{matrix}
-	\frac{n_y n^x n_x \sqrt{h}}{|n| \sqrt{g}} \\
+	\sqrt{\frac{h}{g}} \frac{n_y n^y}{|n|} \\
 	n^x \\
 	n^y
 \end{matrix} \right]$<br>
 <br>
+
+Notice that $n_x = 0$ implies $|n|^2 = n_x n^x + n_y n^y = n_y n^y$.<br>
+<br>
+
+$\left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right] = u \left[ \begin{matrix}
+	\sqrt{\frac{h}{g}} |n| \\
+	n^x \\
+	n^y
+\end{matrix} \right]$<br>
+<br>
+
+For $n_y = 0$ (therefore $n_x \ne 0$):<br>
+Therefore $|n|^2 = n_x n^x$<br>
+<br>
+
+$\left[ \begin{matrix}
+	-|n| \sqrt{\frac{g}{h}} & 
+	n_x &
+	0 \\
+	
+	0 &
+	0 &
+	0 \\
+
+	0 &
+	n_x n^y &
+	-n_x n^x
+\end{matrix} \right] \left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right] = 0$<br>
+<br>
+
+Scale third row by $\frac{1}{n_x}$.<br>
+Exchange 2nd and 3rd rows.<br>
+<br>
+
+$\left[ \begin{matrix}
+	-|n| \sqrt{\frac{g}{h}} & 
+	n_x &
+	0 \\
+	
+	0 &
+	n^y &
+	-n^x \\
+
+	0 &
+	0 &
+	0
+\end{matrix} \right] \left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right] = 0$<br>
+<br>
+
+Let $u = X^{v^x}$<br>
+<br>
+
+$\left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right] = u \left[ \begin{matrix}
+	\sqrt{\frac{h}{g}} \frac{n_x}{|n|} \\
+	1 \\
+	\frac{n^y}{n^x}
+\end{matrix} \right]$<br>
+<br>
+
+Scale by $u \rightarrow u n^x$<br>
+<br>
+
+$\left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right] = u \left[ \begin{matrix}
+	\sqrt{\frac{h}{g}} |n| \\
+	n^x \\
+	n^y
+\end{matrix} \right]$<br>
+<br>
+
+For $n_x \ne 0, n_y \ne 0$:<br>
+<br>
+
+$\left[ \begin{matrix}
+	-|n| \sqrt{\frac{g}{h}} & 
+	n_x &
+	n_y \\
+	
+	0 &
+	-n_y n^y &
+	n_y n^x \\
+
+	0 &
+	n_x n^y &
+	-n_x n^x
+\end{matrix} \right] \left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right] = 0$<br>
+<br>
+
+For $n_x \ne 0, n_y \ne 0$:<br>
+<br>
+
+Scale second row by $\frac{1}{n_y}$.<br>
+Scale third row by $\frac{1}{n_x}$ and add second to it.<br>
+<br>
+
+$\left[ \begin{matrix}
+	-|n| \sqrt{\frac{g}{h}} & 
+	n_x &
+	n_y \\
+	
+	0 &
+	-n^y &
+	n^x \\
+
+	0 &
+	0 &
+	0
+\end{matrix} \right] \left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right] = 0$<br>
+<br>
+
+Let $u = X^{v^y}$<br>
+<br>
+
+$\left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right] = \left[ \begin{matrix}
+	\sqrt{\frac{h}{g}} \frac{1}{|n|} (\frac{n_x n^x}{n^y} + n_y) \\
+	\frac{n^x}{n^y} \\
+	1
+\end{matrix} \right]$<br>
+<br>
+
+Let $u \rightarrow n^y u$<br>
+<br>
+
+$\left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right] = \left[ \begin{matrix}
+	\sqrt{\frac{h}{g}} |n| \\
+	n^x \\
+	n^y
+\end{matrix} \right]$<br>
+<br>
+
+So for all conditions:<br>
+<br>
+
+$\left[ \begin{matrix}
+	X^h \\
+	X^{v^x} \\
+	X^{v^y}
+\end{matrix} \right] = \left[ \begin{matrix}
+	\sqrt{\frac{h}{g}} |n| \\
+	n^x \\
+	n^y
+\end{matrix} \right]$<br>
+<br>
+
 
 <br>
 Case $\lambda = -|n| c$:<br>
@@ -686,117 +861,29 @@ $\left[ \begin{matrix}
 \end{matrix} \right] = 0$<br>
 <br>
 
-Set the second row to $|n| \sqrt{h}$ times the second row minus $n^x \sqrt{g}$ times the first row.<br>
-Set the third row to $|n| \sqrt{h}$ times the third row minus $n^y \sqrt{g}$ times the first row.<br>
-<br>
-
-$\left[ \begin{matrix}
-	|n| \sqrt{gh} & 
-	h n_x &
-	h n_y \\
-	
-	0 &
-	\sqrt{g} h n^y n_y &
-	-\sqrt{g} h n^x n_y \\
-
-	0 &
-	-\sqrt{g} h n_x n^y &
-	\sqrt{g} h n^x n_x
-\end{matrix} \right] \left[ \begin{matrix}
-	X^h \\
-	X^{v^x} \\
-	X^{v^y}
-\end{matrix} \right] = 0$<br>
-<br>
-
-Scale the first row by $\frac{1}{h}$.<br>
-Scale the second row by $-\frac{1}{\sqrt{g}h n_y}$.<br>
-Scale the third row by $-\frac{1}{\sqrt{g}h n_x}$.<br>
-<br>
-
-$\left[ \begin{matrix}
-	|n| \sqrt{\frac{g}{h}} & 
-	n_x &
-	n_y \\
-	
-	0 &
-	-n^y &
-	n^x \\
-
-	0 &
-	n^y &
-	-n^x
-\end{matrix} \right] \left[ \begin{matrix}
-	X^h \\
-	X^{v^x} \\
-	X^{v^y}
-\end{matrix} \right] = 0$<br>
-<br>
-
-Add second row to third row to cancel it.<br>
-Set the first row to the first row plus the second row times $\frac{n_x}{n^y}$.<br>
-<br>
-
-$\left[ \begin{matrix}
-	|n| \sqrt{\frac{g}{h}} & 
-	0 &
-	n_y \frac{n^x n_x}{n^y} \\
-	
-	0 &
-	-n^y &
-	n^x \\
-
-	0 &
-	0 &
-	0
-\end{matrix} \right] \left[ \begin{matrix}
-	X^h \\
-	X^{v^x} \\
-	X^{v^y}
-\end{matrix} \right] = 0$<br>
-<br>
-
-Let $X^{v^y} = u$<br>
-<br>
-
-$X^h = -u \frac{n_y n^x n_x \sqrt{h}}{n^y |n| \sqrt{g}}$<br>
-$X^{v^x} = u \frac{n^x}{n^y}$<br>
-$X^{v^y} = u$<br>
+Same as above but with the sign flipped:<br>
 <br>
 
 $\left[ \begin{matrix}
 	X^h \\
 	X^{v^x} \\
 	X^{v^y}
-\end{matrix} \right] = u \left[ \begin{matrix}
-	-\frac{n_y n^x n_x \sqrt{h}}{n^y |n| \sqrt{g}} \\
-	\frac{n^x}{n^y} \\
-	1
-\end{matrix} \right]$<br>
-<br>
-
-Scale by $n^y$<br>
-<br>
-
-$\left[ \begin{matrix}
-	X^h \\
-	X^{v^x} \\
-	X^{v^y}
-\end{matrix} \right] = u \left[ \begin{matrix}
-	-\frac{n_y n^x n_x \sqrt{h}}{|n| \sqrt{g}} \\
+\end{matrix} \right] = \left[ \begin{matrix}
+	-\sqrt{\frac{h}{g}} |n| \\
 	n^x \\
 	n^y
 \end{matrix} \right]$<br>
 <br>
+
 
 <br>
 Eigenvalues:<br>
 <br>
 
 $\Lambda_A = \left[ \begin{matrix}
-	-|n| \sqrt{gh} & 0 & 0 \\
+	-|n| c & 0 & 0 \\
 	0 & 0 & 0 \\
-	0 & 0 & |n| \sqrt{gh}
+	0 & 0 & |n| c
 \end{matrix} \right]$<br>
 <br>
 
@@ -805,9 +892,9 @@ Right eigenvectors:<br>
 <br>
 
 $R_A = \left[ \begin{matrix}
-	-\frac{n_y n^x n_x \sqrt{h}}{|n| \sqrt{g}} &
+	-\sqrt{\frac{h}{g}} |n| &
 	0 &
-	\frac{n_y n^x n_x \sqrt{h}}{|n| \sqrt{g}} \\
+	\sqrt{\frac{h}{g}} |n| \\
 	
 	n^x &
 	-n_y &
@@ -818,5 +905,147 @@ $R_A = \left[ \begin{matrix}
 	n^y
 \end{matrix} \right]$<br>
 <br>
+
+Rescale the whole thing by $\frac{1}{|n|}$<br>
+<br>
+
+$R_A = \left[ \begin{matrix}
+	-\sqrt{\frac{h}{g}} &
+	0 &
+	\sqrt{\frac{h}{g}} \\
+	
+	\frac{n^x}{|n|} &
+	-\frac{n_y}{|n|} &
+	\frac{n^x}{|n|} \\
+	
+	\frac{n^y}{|n|} &
+	\frac{n_x}{|n|} &
+	\frac{n^y}{|n|}
+\end{matrix} \right]$<br>
+<br>
+
+In index form:<br>
+For $(n_2)_i$ is orthogonal to $n_i$, such that $(n_2)^i n_j = \delta^i_j$<br>
+<br>
+
+${(R_A)^I}_J = \left[ \begin{matrix}
+	-\sqrt{\frac{h}{g}} &
+	0 &
+	\sqrt{\frac{h}{g}} \\
+	
+	\frac{n^i}{|n|} &
+	\frac{(n_2)_i}{|n|} &
+	\frac{n^i}{|n|}
+\end{matrix} \right]$<br>
+<br>
+
+
+<br>
+Left eigenvectors:<br>
+<br>
+
+$L_A = (R_A)^{-1}$<br>
+<br>
+
+$L_A = \left[ \begin{matrix}
+	-\frac{1}{2} \sqrt{\frac{g}{h}} & \frac{n_x}{2 |n|} & \frac{n_y}{2 |n|} \\
+	0 & -\frac{n^y}{|n|} & \frac{n^x}{|n|} \\
+	\frac{1}{2} \sqrt{\frac{g}{h}} & \frac{n_x}{2 |n|} & \frac{n_y}{2 |n|} 
+\end{matrix} \right]$<br>
+<br>
+
+In index form:<br>
+<br>
+
+$L_A = \left[ \begin{matrix}
+	-\frac{1}{2} \sqrt{\frac{g}{h}} & \frac{n_i}{2 |n|} \\
+	0 & \frac{(n_2)^i}{|n|} \\
+	\frac{1}{2} \sqrt{\frac{g}{h}} & \frac{n_i}{2 |n|} 
+\end{matrix} \right]$<br>
+<br>
+
+
+$\frac{\partial F^I}{\partial U^J} = \frac{\partial F}{\partial W} \frac{\partial W}{\partial U} 
+	= \frac{\partial U}{\partial W} \frac{\partial W}{\partial U} \frac{\partial F}{\partial W} \frac{\partial W}{\partial U} 
+	= \frac{\partial U}{\partial W} (A + v^k n_k I) \frac{\partial W}{\partial U}$<br>
+<br>
+
+The eigenvalues of $F$ are $\Lambda_A + v_n I = \left[ \begin{matrix}
+	v_n - |n| c & 0 & 0 \\
+	0 & v_n & 0 \\
+	0 & 0 & v_n + |n| c
+\end{matrix} \right]$<br>
+<br>
+
+The right eigenvectors of $F$ are $R_F = \frac{\partial U}{\partial W} R_A$<br>
+<br>
+
+$R_F = 
+\left[ \begin{matrix}
+	1 & 0 & 0 \\
+	v^x & h & 0 \\ 
+	v^y & 0 & h
+\end{matrix} \right]
+\left[ \begin{matrix}
+	-\sqrt{\frac{h}{g}} &
+	0 &
+	\sqrt{\frac{h}{g}} \\
+	
+	\frac{n^x}{|n|} &
+	\frac{(n_2)_k}{|n|} &
+	\frac{n^x}{|n|} \\
+
+	\frac{n^y}{|n|} &
+	\frac{(n_2)_k}{|n|} &
+	\frac{n^y}{|n|} 
+\end{matrix} \right]$<br>
+<br>
+
+$R_F = \left[ \begin{matrix}
+	-\sqrt{\frac{h}{g}} & 
+	0 & 
+	\sqrt{\frac{h}{g}} \\
+
+	\frac{n^x}{|n|} h - \sqrt{\frac{h}{g}} v^x &
+	-h \frac{n_y}{|n|} &
+	\frac{n^x}{|n|} h - \sqrt{\frac{h}{g}} v^x \\
+
+	\frac{n^y}{|n|} h - \sqrt{\frac{h}{g}} v^y &
+	h \frac{n_x}{|n|} &
+	\frac{n^y}{|n|} h - \sqrt{\frac{h}{g}} v^y
+\end{matrix} \right]$<br>
+<br>
+
+The left eigenvectors of $F$ are $L_F = L_A \frac{\partial W}{\partial U}$<br>
+<br>
+
+$L_F = \left[ \begin{matrix}
+	-\frac{1}{2} \sqrt{\frac{g}{h}} & \frac{n_x}{2 |n|} & \frac{n_y}{2 |n|} \\
+	0 & \frac{(n_2)^x}{|n|} & \frac{(n_2)^y}{|n|} \\
+	\frac{1}{2} \sqrt{\frac{g}{h}} & \frac{n_x}{2 |n|} & \frac{n_y}{2 |n|}
+\end{matrix} \right]
+\left[ \begin{matrix}
+	1 & 0 & 0 \\
+	-\frac{1}{h} v^x & \frac{1}{h} & 0 \\ 
+	-\frac{1}{h} v^y & 0 & \frac{1}{h}
+\end{matrix} \right]
+$<br>
+<br>
+
+$L_F = \left[ \begin{matrix}
+	-\frac{1}{2} \sqrt{\frac{g}{h}} - \frac{v_n}{2 h |n|} &
+	\frac{n_x}{2 h |n|} &
+	\frac{n_y}{2 h |n|} \\
+
+	-\frac{v_n}{h |n|} &
+	-\frac{n^y}{h |n|} &
+	\frac{n^x}{h |n|} \\
+
+	\frac{1}{2} \sqrt{\frac{g}{h}} - \frac{v_n}{2 h |n|} &
+	\frac{n_x}{2 h |n|} &
+	\frac{n_y}{2 h |n|}
+\end{matrix} \right]$<br>
+<br>
+
 	</body>
 </html>
