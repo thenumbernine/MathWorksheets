@@ -59,6 +59,50 @@ $\frac{\partial F^I}{\partial W^J} = \downarrow I \overset{\rightarrow J}{
 ...for $v_n = v^k n_k$<br>
 <br>
 
+$\frac{\partial F}{\partial U} = \frac{\partial F}{\partial W} \frac{\partial W}{\partial U}$<br>
+<br>
+
+$= \left[ \begin{matrix}
+	v_n & 
+	h n_x &
+	h n_y \\
+	
+	v^x v_n + g h n^x &
+	h (v_n + v^x n_x) &
+	h v^x n_y \\
+
+	v^y v_n + g h n^y &
+	h v^y n_x &
+	h (v_n + v^y n_y) \\
+\end{matrix} \right]
+\left[ \begin{matrix}
+	1 & 0 & 0 \\
+	-\frac{1}{h} v^x & \frac{1}{h} & 0 \\ 
+	-\frac{1}{h} v^y & 0 & \frac{1}{h}
+\end{matrix} \right]$<br>
+<br>
+
+$= \left[ \begin{matrix}
+	0 &
+	n_x &
+	n_y \\
+
+	g h n^x - v^x v_n &
+	v_n + v^x n_x &
+	v^x n_y \\
+
+	g h n^y - v^y v_n &
+	v^y n_x &
+	v_n + v^y n_y
+\end{matrix} \right]$<br>
+<br>
+
+$= \left[ \begin{matrix}
+	0 & n_j \\
+	g h n^i - v_n v^i & v^i n_j + v_n \delta^i_j
+\end{matrix} \right]$<br>
+<br>
+
 Create the acoustic plus wavespeed matrix:<br>
 <br>
 
