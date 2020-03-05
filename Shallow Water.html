@@ -950,36 +950,18 @@ $R_A = \left[ \begin{matrix}
 \end{matrix} \right]$<br>
 <br>
 
-Rescale the whole thing by $\frac{1}{|n|}$<br>
-<br>
-
-$R_A = \left[ \begin{matrix}
-	-\sqrt{\frac{h}{g}} &
-	0 &
-	\sqrt{\frac{h}{g}} \\
-	
-	\frac{n^x}{|n|} &
-	-\frac{n_y}{|n|} &
-	\frac{n^x}{|n|} \\
-	
-	\frac{n^y}{|n|} &
-	\frac{n_x}{|n|} &
-	\frac{n^y}{|n|}
-\end{matrix} \right]$<br>
-<br>
-
 In index form:<br>
 For $(n_2)_i$ is orthogonal to $n_i$, such that $(n_2)^i n_j = \delta^i_j$<br>
 <br>
 
 ${(R_A)^I}_J = \left[ \begin{matrix}
-	-\sqrt{\frac{h}{g}} &
+	-\sqrt{\frac{h}{g}} |n| &
 	0 &
-	\sqrt{\frac{h}{g}} \\
+	\sqrt{\frac{h}{g}} |n| \\
 	
-	\frac{n^i}{|n|} &
-	\frac{(n_2)_i}{|n|} &
-	\frac{n^i}{|n|}
+	n^i &
+	(n_2)_i &
+	n^i
 \end{matrix} \right]$<br>
 <br>
 
@@ -992,9 +974,17 @@ $L_A = (R_A)^{-1}$<br>
 <br>
 
 $L_A = \left[ \begin{matrix}
-	-\frac{1}{2} \sqrt{\frac{g}{h}} & \frac{n_x}{2 |n|} & \frac{n_y}{2 |n|} \\
-	0 & -\frac{n^y}{|n|} & \frac{n^x}{|n|} \\
-	\frac{1}{2} \sqrt{\frac{g}{h}} & \frac{n_x}{2 |n|} & \frac{n_y}{2 |n|} 
+	-\frac{1}{2 |n|} \sqrt{\frac{g}{h}} & 
+	\frac{n_x}{2 |n|^2} & 
+	\frac{n_y}{2 |n|^2} \\
+	
+	0 & 
+	-\frac{n^y}{|n|^2} & 
+	\frac{n^x}{|n|^2} \\
+	
+	\frac{1}{2 |n|} \sqrt{\frac{g}{h}} & 
+	\frac{n_x}{2 |n|^2} & 
+	\frac{n_y}{2 |n|^2} 
 \end{matrix} \right]$<br>
 <br>
 
@@ -1002,9 +992,9 @@ In index form:<br>
 <br>
 
 $L_A = \left[ \begin{matrix}
-	-\frac{1}{2} \sqrt{\frac{g}{h}} & \frac{n_i}{2 |n|} \\
-	0 & \frac{(n_2)^i}{|n|} \\
-	\frac{1}{2} \sqrt{\frac{g}{h}} & \frac{n_i}{2 |n|} 
+	-\frac{1}{2 |n|} \sqrt{\frac{g}{h}} & \frac{n_i}{2 |n|^2} \\
+	0 & \frac{(n_2)^i}{|n|^2} \\
+	\frac{1}{2 |n|} \sqrt{\frac{g}{h}} & \frac{n_i}{2 |n|^2} 
 \end{matrix} \right]$<br>
 <br>
 
@@ -1031,32 +1021,32 @@ $R_F =
 	v^y & 0 & h
 \end{matrix} \right]
 \left[ \begin{matrix}
-	-\sqrt{\frac{h}{g}} &
+	-\sqrt{\frac{h}{g}} |n| &
 	0 &
-	\sqrt{\frac{h}{g}} \\
+	\sqrt{\frac{h}{g}} |n| \\
 	
-	\frac{n^x}{|n|} &
-	\frac{(n_2)_k}{|n|} &
-	\frac{n^x}{|n|} \\
+	\frac{n^x}{|n|^2} &
+	\frac{(n_2)_k}{|n|^2} &
+	\frac{n^x}{|n|^2} \\
 
-	\frac{n^y}{|n|} &
-	\frac{(n_2)_k}{|n|} &
-	\frac{n^y}{|n|} 
+	\frac{n^y}{|n|^2} &
+	\frac{(n_2)_k}{|n|^2} &
+	\frac{n^y}{|n|^2} 
 \end{matrix} \right]$<br>
 <br>
 
 $R_F = \left[ \begin{matrix}
-	-\sqrt{\frac{h}{g}} & 
+	-\sqrt{\frac{h}{g}} |n| & 
 	0 & 
-	\sqrt{\frac{h}{g}} \\
+	\sqrt{\frac{h}{g}} |n| \\
 
-	\frac{n^x}{|n|} h - \sqrt{\frac{h}{g}} v^x &
-	-h \frac{n_y}{|n|} &
-	\frac{n^x}{|n|} h - \sqrt{\frac{h}{g}} v^x \\
+	n^x h - \sqrt{\frac{h}{g}} |n| v^x &
+	-h n_y &
+	n^x h + \sqrt{\frac{h}{g}} |n| v^x \\
 
-	\frac{n^y}{|n|} h - \sqrt{\frac{h}{g}} v^y &
-	h \frac{n_x}{|n|} &
-	\frac{n^y}{|n|} h - \sqrt{\frac{h}{g}} v^y
+	n^y h - \sqrt{\frac{h}{g}} |n| v^y &
+	h n_x &
+	n^y h + \sqrt{\frac{h}{g}} |n| v^y
 \end{matrix} \right]$<br>
 <br>
 
@@ -1064,9 +1054,17 @@ The left eigenvectors of $F$ are $L_F = L_A \frac{\partial W}{\partial U}$<br>
 <br>
 
 $L_F = \left[ \begin{matrix}
-	-\frac{1}{2} \sqrt{\frac{g}{h}} & \frac{n_x}{2 |n|} & \frac{n_y}{2 |n|} \\
-	0 & \frac{(n_2)^x}{|n|} & \frac{(n_2)^y}{|n|} \\
-	\frac{1}{2} \sqrt{\frac{g}{h}} & \frac{n_x}{2 |n|} & \frac{n_y}{2 |n|}
+	-\frac{1}{2 |n|} \sqrt{\frac{g}{h}} & 
+	\frac{n_x}{2 |n|^2} & 
+	\frac{n_y}{2 |n|^2} \\
+	
+	0 & 
+	\frac{(n_2)^x}{|n|^2} & 
+	\frac{(n_2)^y}{|n|^2} \\
+	
+	\frac{1}{2 |n|} \sqrt{\frac{g}{h}} & 
+	\frac{n_x}{2 |n|^2} & 
+	\frac{n_y}{2 |n|^2}
 \end{matrix} \right]
 \left[ \begin{matrix}
 	1 & 0 & 0 \\
@@ -1077,17 +1075,17 @@ $<br>
 <br>
 
 $L_F = \left[ \begin{matrix}
-	-\frac{1}{2} \sqrt{\frac{g}{h}} - \frac{v_n}{2 h |n|} &
-	\frac{n_x}{2 h |n|} &
-	\frac{n_y}{2 h |n|} \\
+	-\frac{1}{2 |n|} \sqrt{\frac{g}{h}} - \frac{v_n}{2 h |n|^2} &
+	\frac{n_x}{2 h |n|^2} &
+	\frac{n_y}{2 h |n|^2} \\
 
-	-\frac{v_n}{h |n|} &
-	-\frac{n^y}{h |n|} &
-	\frac{n^x}{h |n|} \\
+	\frac{v^x n^y - v^y n^x}{h |n|^2} &
+	-\frac{n^y}{h |n|^2} &
+	\frac{n^x}{h |n|^2} \\
 
-	\frac{1}{2} \sqrt{\frac{g}{h}} - \frac{v_n}{2 h |n|} &
-	\frac{n_x}{2 h |n|} &
-	\frac{n_y}{2 h |n|}
+	\frac{1}{2 |n|} \sqrt{\frac{g}{h}} - \frac{v_n}{2 h |n|^2} &
+	\frac{n_x}{2 h |n|^2} &
+	\frac{n_y}{2 h |n|^2}
 \end{matrix} \right]$<br>
 <br>
 
