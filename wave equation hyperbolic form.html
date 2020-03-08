@@ -7,297 +7,111 @@
 	</head>
     <body>
 
-TODO take from the 'Numerical Relativity/bssnok-scalar' and move it here, then remove it from bssnok-scalar.<br>
+Start with my 'wave equation in spacetime' worksheet for an introduction to a scalar wave propagating in curved spacetime: <a href='https://thenumbernine.github.io/symmath/tests/output/wave%20equation%20in%20spacetime.html'>https://thenumbernine.github.io/symmath/tests/output/wave%20equation%20in%20spacetime.html</a><br>
 <br>
 
 unit conversion: $dx^0 = c dt, \partial_0 = \frac{1}{c} \partial_t$<br>
-<br>
-
-ADM components of the metric:<br>
-<br>
-
-$g_{\mu\nu} = \overset{\mu(i)\downarrow \nu(j)\rightarrow}{\left[ \begin{matrix}
-	-\alpha^2 + \beta_k \beta^k & 
-	\beta_j \\ 
-	
-	\beta_i & 
-	\gamma_{ij}
-\end{matrix} \right]}$<br>
-<br>
-
-$g^{\mu\nu} = \overset{\mu(i)\downarrow \nu(j)\rightarrow}{\left[ \begin{matrix}
-	-\frac{1}{\alpha^2} & 
-	\frac{1}{\alpha^2} \beta^j \\ 
-	
-	\frac{1}{\alpha^2} \beta^i & 
-	\gamma^{ij} - \frac{1}{\alpha^2} \beta^i \beta^j
-\end{matrix} \right]}$<br>
-<br>
-
-ADM normal:<br>
-$n_\mu = (-\alpha, 0 )$<br>
-$n^\mu = ( \frac{1}{\alpha}, -\frac{\beta^i}{\alpha} )$<br>
-<br>
-
-Reference equations:<br>
-2008 Alcubierre "Introduction to 3+1 Numerical Relativity" Appendix B:<br>
-$\bar{\Gamma}^t = -\frac{1}{\alpha^3} (\alpha_{,0} - \beta^m \alpha_{,m} + \alpha^2 K)$<br>
-$\bar{\Gamma}^i = \Gamma^i + \frac{1}{\alpha^3} \beta^i (\alpha_{,0} - \beta^m \alpha_{,m} + \alpha^2 K) 
-	- \frac{1}{\alpha^2} ({\beta^i}_{,0} - \beta^m {\beta^i}_{,m} + \alpha \alpha_{,j} \gamma^{ij})
-$<br>
-...for $\bar{\Gamma}$ the 4-metric connection.<br>
-<br>
-
-<hr>
-<br>
-
-wave equation:<br>
-$\square \Phi = 0$ where $\square$ is the <a href='https://en.wikipedia.org/wiki/D%27Alembert_operator'>d'Alembert operator</a><br>
-<br>
-
-$g^{\mu\nu} \Phi_{;\mu\nu} = 0$<br>
-$g^{\mu\nu} (\Phi_{,\mu\nu} - {\bar{\Gamma}^\alpha}_{\mu\nu} \Phi_{,\alpha}) = 0$<br>
-<br>
-
-separate into space+time:<br>
-$g^{00} \Phi_{,00} + 2 g^{0i} \Phi_{,0i} + g^{ij} \Phi_{,ij} - g^{\mu\nu} {\bar{\Gamma}^0}_{\mu\nu} \Phi_{,0} - g^{\mu\nu} {\bar{\Gamma}^i}_{\mu\nu} \Phi_{,i} = 0$<br>
-<br>
-
-Substitute ADM components:<br>
-$-\alpha^{-2} \Phi_{,00} + 2 \alpha^{-2} \beta^{i} \Phi_{,0i} + (\gamma^{ij} - \alpha^{-2} \beta^i \beta^j) \Phi_{,ij} - \bar{\Gamma}^0 \Phi_{,0} - \bar{\Gamma}^i \Phi_{,i} = 0$<br>
-$\Phi_{,00} - 2 \beta^{i} \Phi_{,0i} + (\beta^i \beta^j - \alpha^2 \gamma^{ij}) \Phi_{,ij} + \alpha^2 \bar{\Gamma}^0 \Phi_{,0} + \alpha^2 \bar{\Gamma}^i \Phi_{,i} = 0$<br>
-<br>
-
-Let $\Pi = n^\mu \Phi_{,\mu}$<br>
-$\Pi = n^0 \Phi_{,0} + n^i \Phi_{,i}$<br>
-$\Pi = \frac{1}{\alpha} (\Phi_{,0} - \beta^i \Phi_{,i})$<br>
-<br>
-
-So $\Phi_{,0} - \beta^j \Phi_{,j} = \alpha \Pi$<br>
-Let $\frac{d}{dx^0} = \partial_0 - \mathcal{L}_\vec\beta$<br>
-So $\frac{d}{dx^0} \Phi = \alpha \Pi$<br>
-<br>
-
-Spatial derivative of $\Phi_{,0}$:<br>
-$\Phi_{,0i} = {\beta^j}_{,i} \Phi_{,j} + \beta^j \Phi_{,ij} + \alpha_{,i} \Pi + \alpha \Pi_{,i}$<br>
-<br>
-
-Derivative of $\Pi$:<br>
-$\Pi_{,\mu} 
-= -\frac{1}{\alpha^2} \alpha_{,\mu} (\Phi_{,0} - \beta^j \Phi_{,j})
-+ \frac{1}{\alpha} (
-	\Phi_{,0\mu} 
-	- {\beta^j}_{,\mu} \Phi_{,j}
-	- \beta^j \Phi_{,j \mu}
-)$<br>
-$\Pi_{,\mu} = \frac{1}{\alpha} (
-	\Phi_{,0\mu} 
-	- \alpha_{,\mu} \Pi
-	- {\beta^j}_{,\mu} \Phi_{,j}
-	- \beta^j \Phi_{,j \mu}
-)$<br>
-<br>
-
-spatial deriative of $\Pi$:<br>
-$\Pi_{,i} = \frac{1}{\alpha} (
-	\Phi_{,0i} 
-	- \alpha_{,i} \Pi 
-	- {\beta^j}_{,i} \Phi_{,j}
-	- \beta^j \Phi_{,j i}
-)$<br>
-solve for $\Phi_{,0i}$:<br>
-$\Phi_{,0i} = 
-	\alpha \Pi_{,i} 
-	+ \alpha_{,i} \Pi 
-	+ {\beta^j}_{,i} \Phi_{,j}
-	+ \beta^j \Phi_{,j i}
-$<br>
-<br>
-
-timelike derivative of $\Pi$:<br>
-$\Pi_{,0} = \frac{1}{\alpha} (
-	\Phi_{,00} 
-	- \alpha_{,0} \Pi
-	- {\beta^j}_{,0} \Phi_{,j}
-	- \beta^j \Phi_{,j 0}
-)$<br>
-solve for $\Phi_{,00} - \beta^j \Phi_{,0j}$<br>
-$\alpha \Pi_{,0} = 
-	\Phi_{,00} 
-	- \alpha_{,0} \Pi
-	- {\beta^j}_{,0} \Phi_{,j}
-	- \beta^j \Phi_{,j 0}
-$<br>
-$\Phi_{,00} - \beta^j \Phi_{,j 0} = 
-	\alpha \Pi_{,0} 
-	+ \alpha_{,0} \Pi
-	+ {\beta^j}_{,0} \Phi_{,j}
-$<br>
-now substitute $\Phi_{,0i}$ for its definition in terms of $\Pi_{,i}$:<br>
-$\Pi_{,0} = \frac{1}{\alpha} (
-	\Phi_{,00} 
-	- \alpha_{,0} \Pi
-	- {\beta^j}_{,0} \Phi_{,j}
-	- \beta^j (
-		\alpha \Pi_{,j} 
-		+ \alpha_{,j} \Pi 
-		+ {\beta^k}_{,j} \Phi_{,k}
-		+ \beta^k \Phi_{,k j}
-	)
-)$<br>
-$\Pi_{,0} + \beta^j \Pi_{,j} = \frac{1}{\alpha} (
-	\Phi_{,00} 
-	- \alpha_{,0} \Pi
-	- {\beta^j}_{,0} \Phi_{,j}
-	- \alpha_{,j} \beta^j \Pi 
-	- \beta^j {\beta^k}_{,j} \Phi_{,k}
-	- \beta^j \beta^k \Phi_{,k j}
-)$<br>
-<br>
-
-Let $\Psi^i = \gamma^{ij} \nabla^\perp_j \Phi$<br>
-$\Psi^i = \gamma^{ij} \Phi_{,j}$<br>
-<br>
-
-Derivative of $\Psi^i$:<br>
-${\Psi^i}_{,\alpha} = (\gamma^{ij} \Phi_{,j})_{,\alpha}$<br>
-${\Psi^i}_{,\alpha} = {\gamma^{ij}}_{,\alpha} \Phi_{,j} + \gamma^{ij} \Phi_{,j \alpha}$<br>
-${\Psi^i}_{,\alpha} = -\gamma^{im} \gamma_{mn,\alpha} \gamma^{nj} \Phi_{,j} + \gamma^{ij} \Phi_{,j \alpha}$<br>
-<br>
-
-timelike derivative of $\Psi^i$:<br>
-${\Psi^i}_{,0} = -\gamma^{im} \gamma_{mn,0} \gamma^{nj} \Phi_{,j} + \gamma^{ij} \Pi_{,j}$<br>
-substitute $\gamma_{ij,0} = \gamma_{ij,k} \beta^k + \gamma_{jk} {\beta^k}_{,i} + \gamma_{ik} {\beta^k}_{,j} - 2 \alpha K_{ij}$<br>
-${\Psi^i}_{,0} = -(
-	\gamma_{mn,k} \beta^k 
-	+ \gamma_{mk} {\beta^k}_{,n} 
-	+ \gamma_{kn} {\beta^k}_{,m} 
-	- 2 \alpha K_{mn}
-)\gamma^{im} \gamma^{nj} \Phi_{,j} + \gamma^{ij} \Pi_{,j}$<br>
-${\Psi^i}_{,0} = (
-	2 \alpha K^{ij}
-	+ (
-		- \gamma_{mn,k} \beta^k 
-		- \gamma_{mk} {\beta^k}_{,n} 
-		- \gamma_{kn} {\beta^k}_{,m} 
-	) \gamma^{im} \gamma^{nj} 
-) \Phi_{,j} + \gamma^{ij} \Pi_{,j}$<br>
-<br>
-
-spacelike derivative of $\Psi^i$:<br>
-${\Psi^i}_{,k} = -\gamma^{im} \gamma_{mn,k} \gamma^{nj} \Phi_{,j} + \gamma^{ij} \Phi_{,j k}$<br>
-So $\Phi_{,ij} = \gamma_{ik} {\Psi^k}_{,j} + \gamma_{ik,j} \Phi^{,k}$<br>
-<br>
-
-Now the field equations:<br>
-$\Phi_{,00} - 2 \beta^{i} \Phi_{,0i} + (\beta^i \beta^j - \alpha^2 \gamma^{ij}) \Phi_{,ij} + \alpha^2 \bar{\Gamma}^0 \Phi_{,0} + \alpha^2 \bar{\Gamma}^i \Phi_{,i} = 0$<br>
-$(\alpha \Pi + \beta^i \Phi_{,i})_{,0} 
-	- 2 \beta^{i} \Phi_{,0i} 
-	+ (\beta^i \beta^j - \alpha^2 \gamma^{ij}) (\gamma_{ik} {\Psi^k}_{,j} + \gamma_{ik,j} \Phi^{,k}) 
-	+ \alpha^2 \bar{\Gamma}^0 \Phi_{,0} 
-	+ \alpha^2 \bar{\Gamma}^i \Phi_{,i} 
-	= 0$<br>
-<br>
-
-FIXME:<br>
-<hr>
-<br>
-
-Notice that $\Phi_{,0i} = \Pi_{,i} = \Psi_{i,0}$, so we have some freedom in our choice of substitution.<br>
-This also becomes one of our conservation equations:<br>
-$\Psi_{i,0} - \Pi_{,i} = 0$<br>
-$\Psi_{i,t} - c \Pi_{,i} = 0$<br>
-<br>
-
-$g^{00} \Pi_{,0} + 2 g^{0i} \Pi_{,i} + g^{ij} \Psi_{i,j} - g^{\mu\nu} {\bar{\Gamma}^0}_{\mu\nu} \Pi - g^{\mu\nu} {\bar{\Gamma}^i}_{\mu\nu} \Psi_i = 0$<br>
-$\Pi_{,t} + \frac{2 c g^{0i}}{g^{00}} \Pi_{,i} + \frac{c g^{ij}}{g^{00}} \Psi_{i,j} = \frac{c}{g^{00}} (g^{\mu\nu} {\bar{\Gamma}^0}_{\mu\nu} \Pi + g^{\mu\nu} {\bar{\Gamma}^i}_{\mu\nu} \Psi_i)$<br>
-<br>
-
-Collection equations.  Rewrite flux in terms of a specific direction:<br>
-<br>
-
-$\Pi_{,t} + \frac{2 c g^{0k}}{g^{00}} \Pi_{,k} + \frac{c g^{jk}}{g^{00}} \Psi_{j,k} = \frac{c}{g^{00}} (g^{\mu\nu} {\bar{\Gamma}^0}_{\mu\nu} \Pi + g^{\mu\nu} {\bar{\Gamma}^i}_{\mu\nu} \Psi_i)$<br>
-$\Psi_{i,t} - c \delta^k_i \Pi_{,k} = 0$<br>
 <br>
 
 Written as a linear system:<br>
 <br>
 
 $\left[ \begin{matrix}
-	\Pi \\
-	\Psi_i
-\end{matrix} \right]_{,t}
-+ \left[ \begin{matrix}
-	\frac{2 c g^{0k}}{g^{00}} &
-	\frac{c g^{jk}}{g^{00}} \\
-
-	-c \delta^k_i &
-	0
-\end{matrix} \right] 
-\left[ \begin{matrix}
-	\Pi \\
-	\Psi_j
-\end{matrix} \right]_{,k}
-= \left[ \begin{matrix}
-	\frac{c}{g^{00}} (g^{\mu\nu} {\bar{\Gamma}^0}_{\mu\nu} \Pi + g^{\mu\nu} {\bar{\Gamma}^i}_{\mu\nu} \Psi_i) \\
-	0
+  \Pi \\
+  \Psi_i
+\end{matrix} \right]_{,0}
+= \left[ \begin{matrix}  
+	\Pi_{,i} \beta^i
+	+ \Psi_i \alpha_{,j} \gamma^{ij} 
+	+ K \Pi \alpha 
+	+ \alpha \Psi_{i,j} \gamma^{ij} 
+	- \alpha \Psi_i \Gamma^i 
+	- f \alpha \\
+	
+	\Psi_j {\beta^j}_{,i}
+	+ \beta^j \Psi_{i,j}
+	+ \alpha_{,i} \Pi
+	+ \alpha \Pi_{,i}
 \end{matrix} \right]$<br>
-<br>
-
-Linear system in terms of ADM components:<br>
-TODO replace the 4-connections with 3-connections and extrinsic curvature.<br>
 <br>
 
 $\left[ \begin{matrix}
-	\Pi \\
-	\Psi_i
-\end{matrix} \right]_{,t}
-+ \left[ \begin{matrix}
-	-2 c \beta^k &
-	c  \beta^j \beta^k - c \alpha^2 \gamma^{jk} \\
+  \Pi \\
+  \Psi_i
+\end{matrix} \right]_{,0}
++ \left[ \begin{matrix}  
+	- \Pi_{,i} \beta^i
+	- \alpha \Psi_{i,j} \gamma^{ij} \\	
 
-	-c \delta^k_i &
-	0
-\end{matrix} \right] 
-\left[ \begin{matrix}
-	\Pi \\
-	\Psi_j
-\end{matrix} \right]_{,k}
+	- \beta^j \Psi_{i,j}
+	- \alpha \Pi_{,i}
+\end{matrix} \right]
 = \left[ \begin{matrix}
-	-2\alpha^2 c (g^{\mu\nu} {\bar{\Gamma}^0}_{\mu\nu} \Pi + g^{\mu\nu} {\bar{\Gamma}^i}_{\mu\nu} \Psi_i) \\
-	0
+	\Psi_i \alpha_{,j} \gamma^{ij} 
+	+ K \Pi \alpha 
+	- \alpha \Psi_i \Gamma^i 
+	- f \alpha \\
+	
+	\Psi_j {\beta^j}_{,i}
+	+ \alpha_{,i} \Pi
 \end{matrix} \right]$<br>
 <br>
 
+$\left[ \begin{matrix}
+  \Pi \\
+  \Psi_i
+\end{matrix} \right]_{,t}
++ c \left[ \begin{matrix}  
+	-\beta^k &
+	-\alpha \gamma^{jk} \\	
+
+	- \alpha \delta^k_i &
+	- \beta^k \delta^j_i
+\end{matrix} \right]
+\left[ \begin{matrix}
+  \Pi \\
+  \Psi_j
+\end{matrix} \right]_{,k}
+= \left[ \begin{matrix}
+	\Psi_i \alpha_{,j} \gamma^{ij} 
+	+ K \Pi \alpha 
+	- \alpha \Psi_i \Gamma^i 
+	- f \alpha \\
+	
+	\Psi_j {\beta^j}_{,i}
+	+ \alpha_{,i} \Pi
+\end{matrix} \right]$<br>
+<br>
 
 (TODO explain this better)<br>
 Let $n = n^i \partial_i$ be the vector normal to the flux surface.<br>
 Contravariant normals would have values $n^i = g^{ij} n_j$<br>
 Then normals along the cartesian $x,y,z$ would have values, i.e. in the k direction: $n_i = \delta_{ik}$ and $n^i = g^{ik}$<br>
 The length of a normal $|n| = \sqrt{n^i n_i}$ along any cartesian basis in the k direction would be $|n| = \sqrt{\underset{i}{\Sigma} (g^{ik} \delta_{ik})} = \sqrt{g^{kk}}$<br>
+Also let $n_2$ and $n_3$ be orthogonal to $n$ such that $n^i (n_2)_i = n^i (n_3)_i = 0$ and $|n_2| = |n_3| = |n|$<br>
 <br>
 
 Flux Jacobian:<br>
 <br>
 
-$F = \left[ \begin{matrix}
-	-2 c \beta^k &
-	c \beta^j \beta^k - c \alpha^2 \gamma^{jk} \\
+$F = \left[ \begin{matrix}  
+	-c \beta^k &
+	-c \alpha \gamma^{jk} \\	
 
-	-c \delta^k_i &
-	0
+	-c \alpha \delta^k_i &
+	-c \beta^k \delta^j_i
 \end{matrix} \right]$<br>
 <br>
 
 Flux Jacobian in terms of flux surface normal:<br>
 <br>
 
-$F = \left[ \begin{matrix}
-	-2 c \beta_n &
-	c \beta^j \beta_n - c \alpha^2 n^j \\
+$F = \left[ \begin{matrix}  
+	-c \beta_n &
+	-c \alpha n^j \\	
 
-	-c n_i &
-	0
+	-c \alpha n_i &
+	-c \beta_n \delta^j_i
 \end{matrix} \right]$<br>
 <br>
 
@@ -308,171 +122,282 @@ Expand components into x,y,z:<br>
 <br>
 
 $F = \left[ \begin{matrix}
-	-2 c \beta_n &
-	c \beta^x \beta_n - c \alpha^2 n^x &
-	c \beta^y \beta_n - c \alpha^2 n^y &
-	c \beta^z \beta_n - c \alpha^2 n^z \\
+	-c \beta_n &
+	-c \alpha n^x &
+	-c \alpha n^y &
+	-c \alpha n^z \\
 
-	-c n_x & 0 & 0 & 0 \\
-	-c n_y & 0 & 0 & 0 \\
-	-c n_z & 0 & 0 & 0
+	-c \alpha n_x & -c \beta_n & 0 & 0 \\
+	-c \alpha n_y & 0 & -c \beta_n & 0 \\
+	-c \alpha n_z & 0 & 0 & -c \beta_n
 \end{matrix} \right]$<br>
 <br>
 
-Eigenvalues of F:<br>
-$F R = \lambda R$<br>
-$(F - I \lambda) R = 0$<br>
-$|F - I \lambda| = 0$<br>
+Acoustic matrix:<br>
+<br>
+
+$A = F + c \beta_n I$<br>
+<br>
+
+$A = \left[ \begin{matrix}
+	0 &
+	-c \alpha n^x &
+	-c \alpha n^y &
+	-c \alpha n^z \\
+
+	-c \alpha n_x & 0 & 0 & 0 \\
+	-c \alpha n_y & 0 & 0 & 0 \\
+	-c \alpha n_z & 0 & 0 & 0
+\end{matrix} \right]$<br>
+<br>
+
+Eigenvalues of A:<br>
+$A R_A = \lambda R_A$<br>
+$(A - I \lambda) R_A = 0$<br>
+$|A - I \lambda| = 0$<br>
 <br>
 
 $\left| \begin{matrix}
-	-2 c \beta_n - \lambda &
-	c \beta^x \beta_n - c \alpha^2 n^x &
-	c \beta^y \beta_n - c \alpha^2 n^y &
-	c \beta^z \beta_n - c \alpha^2 n^z \\
+	-\lambda &
+	- c \alpha n^x &
+	- c \alpha n^y &
+	- c \alpha n^z \\
 
-	-c n_x & -\lambda & 0 & 0 \\
-	-c n_y & 0 & -\lambda & 0 \\
-	-c n_z & 0 & 0 & -\lambda
+	-c \alpha n_x & -\lambda & 0 & 0 \\
+	-c \alpha n_y & 0 & -\lambda & 0 \\
+	-c \alpha n_z & 0 & 0 & -\lambda
 \end{matrix} \right| = 0$<br>
 <br>
 
-$c n_z 
+$c \alpha n_z
 \left| \begin{matrix}
-	c \beta^x \beta_n - c \alpha^2 n^x &
-	c \beta^y \beta_n - c \alpha^2 n^y &
-	c \beta^z \beta_n - c \alpha^2 n^z \\
+	- c \alpha n^x &
+	- c \alpha n^y &
+	- c \alpha n^z \\
 
 	-\lambda & 0 & 0 \\
-	0 & -\lambda & 0
-\end{matrix} \right| 
+	0 & -\lambda & 0 \\
+\end{matrix} \right|
 
 - \lambda
 \left| \begin{matrix}
-	-2 c \beta_n - \lambda &
-	c \beta^x \beta_n - c \alpha^2 n^x &
-	c \beta^y \beta_n - c \alpha^2 n^y \\
+	-\lambda &
+	- c \alpha n^x &
+	- c \alpha n^y \\
 
-	-c n_x & -\lambda & 0 \\
-	-c n_y & 0 & -\lambda
-\end{matrix} \right| 
-= 0$<br>
+	-c \alpha n_x & -\lambda & 0 \\
+	-c \alpha n_y & 0 & -\lambda 
+\end{matrix} \right| = 0$<br>
 <br>
 
-$c n_z (c \beta^z \beta_n - c \alpha^2 n^z)
-\left| \begin{matrix}
-	-\lambda & 0 \\
-	0 & -\lambda
-\end{matrix} \right| 
-
+$-c^2 \alpha^2 n_z n^z \lambda^2
 - \lambda \left(
-	-c n_y
+	-c \alpha n_y
 	\left| \begin{matrix}
-		c \beta^x \beta_n - c \alpha^2 n^x &
-		c \beta^y \beta_n - c \alpha^2 n^y \\
+		- c \alpha n^x &
+		- c \alpha n^y \\
 
 		-\lambda & 0
-	\end{matrix} \right| 
+	\end{matrix} \right|
 
-	- \lambda 
+	- \lambda
 	\left| \begin{matrix}
-		-2 c \beta_n - \lambda &
-		c \beta^x \beta_n - c \alpha^2 n^x \\
+		-\lambda &
+		- c \alpha n^x \\
 
-		-c n_x & -\lambda 
-	\end{matrix} \right| 
-
+		-c \alpha n_x & -\lambda 
+	\end{matrix} \right|
 \right)
-= 0$<br>
+ = 0$<br>
 <br>
 
-$c n_z \lambda^2 (c \beta^z \beta_n - c \alpha^2 n^z)
-
+$-c^2 \alpha^2 n_z n^z \lambda^2
 - \lambda \left(
-	
-	-c n_y \lambda 
-	(c \beta^y \beta_n - c \alpha^2 n^y)
+	c^2 \alpha^2 n_y n^y \lambda 
 
 	- \lambda (
-		-\lambda (-2 c \beta_n - \lambda)
-		+ c n_x (c \beta^x \beta_n - c \alpha^2 n^x)
+		\lambda^2
+		- c^2 \alpha^2 n^x n_x 
 	)
 \right)
+ = 0$<br>
+<br>
+
+$\lambda^2 (
+	\lambda^2
+	- c^2 \alpha^2 n_x n^x
+	- c^2 \alpha^2 n_y n^y
+	- c^2 \alpha^2 n_z n^z
+) = 0$<br>
+<br>
+
+$\lambda^2 (\lambda^2 - c^2 \alpha^2 |n|^2) = 0$<br>
+$\lambda^2 (\lambda + c \alpha |n|) (\lambda - c \alpha |n|) = 0$<br>
+<br>
+
+...has eigenvalues:<br>
+$\lambda = \{-\alpha c |n|, 0, 0, \alpha c |n| \}$<br>
+<br>
+
+For $\lambda = 0$:<br>
+<br>
+
+$\left[ \begin{matrix}
+	0 &
+	-c \alpha n^x &
+	-c \alpha n^y &
+	-c \alpha n^z \\
+
+	-c \alpha n_x & 0 & 0 & 0 \\
+	-c \alpha n_y & 0 & 0 & 0 \\
+	-c \alpha n_z & 0 & 0 & 0
+\end{matrix} \right] 
+\left[ \begin{matrix}
+	X^\Pi \\
+	X^{\Psi_x} \\
+	X^{\Psi_y} \\
+	X^{\Psi_z}
+\end{matrix} \right]
 = 0$<br>
 <br>
 
-$
-+ \lambda^4
+$\left[ \begin{matrix}
+	0 &
+	n^x &
+	n^y &
+	n^z \\
 
-+ 2 c \beta_n \lambda^3 
-
-+ c^2 n_y \beta^y \beta_n \lambda^2
-- c^2 \alpha^2 n_y n^y \lambda^2
-+ c^2 n_x \beta^x \beta_n \lambda^2 
-- c^2 n_x n^x \alpha^2 \lambda^2
-+ c^2 \beta^z n_z \beta_n \lambda^2 
-- c \alpha^2 n^z c n_z \lambda^2
-
+	1 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0
+\end{matrix} \right]
+\left[ \begin{matrix}
+	X^\Pi \\
+	X^{\Psi_x} \\
+	X^{\Psi_y} \\
+	X^{\Psi_z}
+\end{matrix} \right]
 = 0$<br>
 <br>
 
+...we have the solution...<br>
+<br>
+
+$\left[ \begin{matrix}
+	X^\Pi \\
+	X^{\Psi_x} \\
+	X^{\Psi_y} \\
+	X^{\Psi_z}
+\end{matrix} \right]
+= \left[ \begin{matrix}
+	0 & 0 \\
+	(n_2)_x & (n_3)_x \\
+	(n_2)_y & (n_3)_y \\
+	(n_2)_z & (n_3)_z
+\end{matrix} \right]$<br>
+<br>
+
+For $\lambda = \pm \alpha c |n|$:<br>
+<br>
+
+$\left[ \begin{matrix}
+	\mp c \alpha |n| &
+	-c \alpha n^x &
+	-c \alpha n^y &
+	-c \alpha n^z \\
+
+	-c \alpha n_x & \mp c \alpha |n| & 0 & 0 \\
+	-c \alpha n_y & 0 & \mp c \alpha |n| & 0 \\
+	-c \alpha n_z & 0 & 0 & \mp c \alpha |n|
+\end{matrix} \right] 
+\left[ \begin{matrix}
+	X^\Pi \\
+	X^{\Psi_x} \\
+	X^{\Psi_y} \\
+	X^{\Psi_z}
+\end{matrix} \right]
+= 0$<br>
+<br>
+
+...we have the solution...<br>
+<br>
+
+$\left[ \begin{matrix}
+	X^\Pi \\
+	X^{\Psi_x} \\
+	X^{\Psi_y} \\
+	X^{\Psi_z}
+\end{matrix} \right]
+= \left[ \begin{matrix}
+	\mp |n| \\
+	n_x \\
+	n_y \\
+	n_z 
+\end{matrix} \right]$<br>
+<br>
+
+Combined:<br>
+<br>
+
+$\Lambda_A = \left[ \begin{matrix}
+	-c \alpha |n| & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & c \alpha |n|
+\end{matrix} \right]$<br>
+<br>
+
+$R_A = \left[ \begin{matrix}
+	|n| & 0			& 0			& -|n| \\
+	n_x & (n_2)_x	& (n_3)_x	& n_x \\
+	n_y & (n_2)_y	& (n_3)_y	& n_y \\
+	n_z & (n_2)_z	& (n_3)_z	& n_z
+\end{matrix} \right]$<br>
+<br>
+
+$L_A = (R_A)^{-1} = \left[ \begin{matrix}
+	\frac{1}{2|n|} &
+	\frac{1}{2|n|^2} n^x & 
+	\frac{1}{2|n|^2} n^y & 
+	\frac{1}{2|n|^2} n^z \\
+
+	0 &
+	\frac{1}{|n|^2} (n_2)^x & 
+	\frac{1}{|n|^2} (n_2)^y & 
+	\frac{1}{|n|^2} (n_2)^z \\
+	
+	0 &
+	\frac{1}{|n|^2} (n_3)^x & 
+	\frac{1}{|n|^2} (n_3)^y & 
+	\frac{1}{|n|^2} (n_3)^z \\
+
+	-\frac{1}{2|n|} &
+	\frac{1}{2|n|^2} n^x & 
+	\frac{1}{2|n|^2} n^y & 
+	\frac{1}{2|n|^2} n^z \\
+\end{matrix} \right]$<br>
+<br>
+
+Now since we have no change of basis from F to A we can say that $R_F = R_A$ and $L_F = L_A$<br>
+<br>
+
+Last, $\Lambda_F = \Lambda_A - c \beta_n I$<br>
+<br>
+
+$\Lambda_A = \left[ \begin{matrix}
+	-c \beta_n -c \alpha |n| & 0 & 0 & 0 \\
+	0 & -c \beta_n  & 0 & 0 \\
+	0 & 0 & -c \beta_n  & 0 \\
+	0 & 0 & 0 & -c \beta_n + c \alpha |n|
+\end{matrix} \right]$<br>
+<br>
+
+
+<!--
 FIXME:<br>
 <hr>
 <br>
 
-TODO redo eigendecomposition<br>
-<br>
-
-x dir has eigensystem:<br>
-$\lambda_x = \{-c \sqrt{g^{xx}}, 0, 0, c \sqrt{g^{xx}} \}$<br>
-$R_x = \left[\begin{matrix}
-	\sqrt{g^{xx}} & 0 & 0 & -\sqrt{g^{xx}} \\
-	1 & -g^{xy} & -g^{xz} & 1 \\
-	0 & g^{xx} & 0 & 0 \\
-	0 & 0 & g^{xx} & 0
-\end{matrix}\right]$<br>
-$L_x = (R_x)^{-1} = \left[\begin{matrix}
-	\frac{1}{2 \sqrt{g^{xx}}} & \frac{1}{2} & \frac{g^{xy}}{2 g^{xx}} & \frac{g^{xz}}{2 g^{xx}} \\
-	0 & 0 & \frac{1}{g^{xx}} & 0 \\
-	0 & 0 & 0 & \frac{1}{g^{xx}} \\
-	-\frac{1}{2 \sqrt{g^{xx}}} & \frac{1}{2} & \frac{g^{xy}}{2 g^{xx}} & \frac{g^{xz}}{2 g^{xx}}
-\end{matrix}\right]$<br>
-<br>
-
-y dir has eigensystem:<br>
-$\lambda_y = \{-c \sqrt{g^{yy}}, 0, 0, c \sqrt{g^{yy}} \}$<br>
-$R_y = \left[\begin{matrix}
-	\sqrt{g^{yy}} & 0 & 0 & -\sqrt{g^{yy}} \\
-	0 & 0 & g^{yy} & 0 \\
-	1 & -g^{yz} & -g^{xy} & 1 \\
-	0 & g^{yy} & 0 & 0
-\end{matrix}\right]$<br>
-$L_y = (R_y)^{-1} = \left[\begin{matrix}
-	\frac{1}{2 \sqrt{g^{yy}}} & \frac{g^{xy}}{2 g^{yy}} & \frac{1}{2} & \frac{g^{yz}}{2 g^{yy}} \\
-	0 & 0 & 0 & \frac{1}{g^{yy}} \\
-	0 & \frac{1}{g^{yy}} & 0 & 0 \\
-	-\frac{1}{2 \sqrt{g^{yy}}} & \frac{g^{xy}}{2 g^{yy}} & \frac{1}{2} & \frac{g^{yz}}{2 g^{yy}}
-\end{matrix}\right]$<br>
-<br>
-
-z dir has eigensystem:<br>
-$\lambda = \{-c \sqrt{g^{zz}}, 0, 0, c \sqrt{g^{zz}} \}$<br>
-$R_z = \left[\begin{matrix}
-	\sqrt{g^{zz}} & 0 & 0 & -\sqrt{g^{zz}} \\
-	0 & g^{zz} & 0 & 0 \\
-	0 & 0 & g^{zz} & 0 \\
-	1 & -g^{xz} & -g^{yz} & 1
-\end{matrix}\right]$<br>
-$L_z = (R_z)^{-1} = \left[\begin{matrix}
-	\frac{1}{2 \sqrt{g^{zz}}} & \frac{g^{xz}}{2 g^{zz}} & \frac{g^{yz}}{2 g^{zz}} & \frac{1}{2} \\
-	0 & \frac{1}{g^{zz}} & 0 & 0 \\
-	0 & 0 & \frac{1}{g^{zz}} & 0 \\
-	-\frac{1}{2 \sqrt{g^{zz}}} & \frac{g^{xz}}{2 g^{zz}} & \frac{g^{yz}}{2 g^{zz}} & \frac{1}{2}
-\end{matrix}\right]$<br>
-<br>
-
-<hr>
-<br>
 
 Let's try that again but with volume element weighting:<br>
 	
@@ -561,6 +486,6 @@ $\frac{1}{\sqrt{|g|}} \Pi_{,t} - \frac{1}{\sqrt{|g|}} (c^2 g^{ij} \Psi_i)_{,j} =
 $\Pi_{,t} - (c^2 g^{ij} \Psi_i)_{,j} = 0$<br>
 $\Psi_{i,t} - \Pi_{,i} = -{\Gamma^j}_{ji} \Pi$<br>
 <br>
-
+-->
 	</body>
 </html>
