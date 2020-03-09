@@ -411,7 +411,7 @@ Of course the only new term we would produce is associated with $\Psi_i$, where 
 Removing extra terms is typically the case when we look at the covariant derivative form of most equations, where the volume form naturally pops out from the covariant derivative of a vector field: $\nabla_i v^i = {v^i}_{,i} + {\Gamma^i}_{ki} v^k = \frac{1}{\sqrt\gamma} (\sqrt\gamma v^i)_{,i}$<br>
 <br>
 
-re-inserting $\frac{1}{\sqrt\gamma} \cdot \sqrt\gamma \cdot ...$ all the flux terms, and adding and subtracting the derivative of all the other terms...<br>
+After re-inserting $\frac{1}{\sqrt\gamma} \cdot \sqrt\gamma \cdot ...$ next to the state variable spatial derivatives, we find...<br>
 <br>
 
 $\left[ \begin{matrix}
@@ -419,36 +419,11 @@ $\left[ \begin{matrix}
 	\Psi_i
 \end{matrix} \right]_{,0}
 + \left[ \begin{matrix}  
-	\frac{1}{\sqrt\gamma} (
-		-\sqrt\gamma \beta^k \Pi_{,k}
-		- \sqrt\gamma_{,k} \beta^k \Pi
-		+ \sqrt\gamma_{,k} \beta^k \Pi
-		- \sqrt\gamma {\beta^k}_{,k} \Pi
-		+ \sqrt\gamma {\beta^k}_{,k} \Pi
-		
-		- \sqrt\gamma \alpha \gamma^{jk} \Psi_{j,k} 
-		- \sqrt\gamma_{,k} \alpha \gamma^{jk} \Psi_j 
-		+ \sqrt\gamma_{,k} \alpha \gamma^{jk} \Psi_j 
-		- \sqrt\gamma \alpha_{,k} \gamma^{jk} \Psi_j 
-		+ \sqrt\gamma \alpha_{,k} \gamma^{jk} \Psi_j 
-		- \sqrt\gamma \alpha {\gamma^{jk}}_{,k} \Psi_j 
-		+ \sqrt\gamma \alpha {\gamma^{jk}}_{,k} \Psi_j 
-	) \\	
+	- \beta^k \frac{1}{\sqrt\gamma} ((\sqrt\gamma \Pi)_{,k} - (\sqrt\gamma)_{,k} \Pi)
+	- \alpha \gamma^{jk} \frac{1}{\sqrt\gamma} ((\sqrt\gamma \Psi_j)_{,k} - (\sqrt\gamma)_{,k} \Psi_j) \\	
 
-	\frac{1}{\sqrt\gamma} (
-		
-		- \sqrt\gamma \alpha \delta^k_i \Pi_{,k}
-		- \sqrt\gamma_{,k} \alpha \delta^k_i \Pi
-		+ \sqrt\gamma_{,k} \alpha \delta^k_i \Pi
-		- \sqrt\gamma \alpha_{,k} \delta^k_i \Pi
-		+ \sqrt\gamma \alpha_{,k} \delta^k_i \Pi
-		
-		- \sqrt\gamma \beta^k \delta^j_i \Psi_{j,k}
-		- \sqrt\gamma_{,k} \beta^k \delta^j_i \Psi_j
-		+ \sqrt\gamma_{,k} \beta^k \delta^j_i \Psi_j
-		- \sqrt\gamma {\beta^k}_{,k} \delta^j_i \Psi_j
-		+ \sqrt\gamma {\beta^k}_{,k} \delta^j_i \Psi_j
-	)
+	- \alpha \delta^k_i \frac{1}{\sqrt\gamma} ((\sqrt\gamma \Pi)_{,k} - (\sqrt\gamma)_{,k} \Pi)
+	- \beta^k \delta^j_i \frac{1}{\sqrt\gamma} ((\sqrt\gamma \Psi_j)_{,k} - (\sqrt\gamma)_{,k} \Psi_j)
 \end{matrix} \right]
 = \left[ \begin{matrix}
 	\Psi_i \alpha_{,j} \gamma^{ij} 
@@ -461,187 +436,79 @@ $\left[ \begin{matrix}
 \end{matrix} \right]$<br>
 <br>
 
-factoring out the derivative:<br>
-<br>
-
 $\left[ \begin{matrix}
 	\Pi \\
 	\Psi_i
 \end{matrix} \right]_{,0}
-+ \left[ \begin{matrix}  
-	\frac{1}{\sqrt\gamma} (
-		- (\sqrt\gamma \beta^k \Pi)_{,k}
-		- (\sqrt\gamma \alpha \gamma^{jk} \Psi_j)_{,k} 
-	)	
++ \frac{1}{\sqrt\gamma}
+\left[ \begin{matrix}  
+	- \beta^k  & 
+	- \alpha \gamma^{jk} \\
 
-	+ \frac{1}{\sqrt\gamma} \sqrt\gamma_{,k} (
-		\beta^k \Pi
-		+ \alpha \gamma^{jk} \Psi_j 
-	) 
-	
-	+ {\beta^k}_{,k} \Pi
-	+ \alpha_{,k} \gamma^{jk} \Psi_j 
-	+ \alpha {\gamma^{jk}}_{,k} \Psi_j 
-	
-	\\	
-
-	\frac{1}{\sqrt\gamma} (
-		- (\sqrt\gamma \alpha \delta^k_i \Pi)_{,k}
-		- (\sqrt\gamma \beta^k \delta^j_i \Psi_j)_{,k}
-	)		
-	
-	+ \frac{1}{\sqrt\gamma} \sqrt\gamma_{,k} (
-		+ \alpha \delta^k_i \Pi
-		+ \beta^k \delta^j_i \Psi_j
-	)		
-	
-	+ \alpha_{,k} \delta^k_i \Pi
-	+ {\beta^k}_{,k} \delta^j_i \Psi_j
+	- \alpha \delta^k_i & 
+	- \beta^k \delta^j_i
 \end{matrix} \right]
-= \left[ \begin{matrix}
-	\Psi_i \alpha_{,j} \gamma^{ij} 
-	+ K \Pi \alpha 
-	- \alpha \Psi_i \Gamma^i 
-	- f \alpha \\
-	
-	\Psi_j {\beta^j}_{,i}
-	+ \alpha_{,i} \Pi
-\end{matrix} \right]$<br>
-<br>
-
-moving over new source terms:<br>
-<br>
-
-$\left[ \begin{matrix}
-	\Pi \\
-	\Psi_i
-\end{matrix} \right]_{,0}
-+ \left[ \begin{matrix}  
-	\frac{1}{\sqrt\gamma} (
-		- (\sqrt\gamma \beta^k \Pi)_{,k}
-		- (\sqrt\gamma \alpha \gamma^{jk} \Psi_j)_{,k} 
-	) \\	
-
-	\frac{1}{\sqrt\gamma} (
-		- (\sqrt\gamma \alpha \delta^k_i \Pi)_{,k}
-		- (\sqrt\gamma \beta^k \delta^j_i \Psi_j)_{,k}
-	)
-\end{matrix} \right]
-= \left[ \begin{matrix}
-	\Psi^j \alpha_{,j}
-	+ K \Pi \alpha 
-	- \alpha \Psi_i \Gamma^i 
-	- f \alpha 
-
-	- \frac{\sqrt\gamma_{,k} }{\sqrt\gamma} \beta^k \Pi
-	- \frac{\sqrt\gamma_{,k} }{\sqrt\gamma} \alpha \Psi^k 
-	
-	- {\beta^k}_{,k} \Pi
-	- \alpha_{,k} \Psi^k 
-	- \alpha {\gamma^{jk}}_{,k} \Psi_j
-	
-	\\
-
-
-	\Psi_j {\beta^j}_{,i}
-	+ \alpha_{,i} \Pi
-
-	- \frac{\sqrt\gamma_{,i} }{\sqrt\gamma} \alpha \Pi
-	- \frac{\sqrt\gamma_{,k} }{\sqrt\gamma} \beta^k \Psi_i
-	
-	- \alpha_{,i} \Pi
-	- {\beta^k}_{,k} \Psi_i
-\end{matrix} \right]$<br>
-<br>
-
-writing it all as a volume-weighted flux:<br>
-<br>
-
-$\left[ \begin{matrix}
-	\Pi \\
-	\Psi_i
-\end{matrix} \right]_{,0}
-+ 
-\frac{1}{\sqrt\gamma} 
-\left( 
-	\sqrt\gamma
-	\left[ \begin{matrix} 
-		-\beta^k &
-		-\alpha \gamma^{jk}
-		\\	
-
-		- \alpha \delta^k_i &
-		- \beta^k \delta^j_i
-	\end{matrix} \right]
-	\left[ \begin{matrix} 
-		\Pi \\
-		\Psi_j
-	\end{matrix} \right]
-\right)_{,k}
+\left[ \begin{matrix}  
+	\sqrt\gamma \Pi \\
+	\sqrt\gamma \Psi_j
+\end{matrix} \right]_{,k}
 = \left[ \begin{matrix}
 	K \Pi \alpha 
-	- {\beta^k}_{,k} \Pi
-	- {\Gamma^j}_{kj} \beta^k \Pi
+	- \beta^k {\Gamma^j}_{kj} \Pi
 	
-	- f \alpha 
+	+ \Psi^j \alpha_{,j}
+	- \alpha \Psi_i \Gamma^i 
+	- \alpha {\Gamma^j}_{kj} \Psi^k
 	
-	\\
-
-	- {\Gamma^j}_{ij} \alpha \Pi
+	- f \alpha \\
 	
+	\alpha_{,i} \Pi
+	- \alpha {\Gamma^j}_{ij} \Pi
 	+ \Psi_j {\beta^j}_{,i}
-	- {\beta^k}_{,k} \Psi_i
-	- {\Gamma^j}_{kj} \beta^k \Psi_i
+	- \beta^k {\Gamma^j}_{kj} \Psi_i
 \end{matrix} \right]$<br>
 <br>
 
-If you combine the ${\beta^k}_{,k} + {\Gamma^j}_{kj} \beta^k$ terms into $\nabla_k \beta^k$ terms then the source looks just as concise (6 unique terms) as the non-volume-weighted flux.
-However numerically this still means extra terms and more work.<br>
-<br>
-
+This just looks more complex.<br>
 How about if we weight the time derivatives as well, to see what would happen if we replaced the variables altogether with $\tilde{U} = \sqrt\gamma U$?<br>
 <br>
 
 $\frac{1}{\sqrt\gamma} \left[ \begin{matrix}
 	\sqrt\gamma \Pi_{,0} 
-	+ \sqrt\gamma_{,0} \Pi
-	- \sqrt\gamma_{,0} \Pi
+	+ (\sqrt\gamma)_{,0} \Pi
+	- (\sqrt\gamma)_{,0} \Pi
 	\\
 	
 	\sqrt\gamma \Psi_{i,0}
-	+ \sqrt\gamma_{,0} \Psi_i
-	- \sqrt\gamma_{,0} \Psi_i
+	+ (\sqrt\gamma)_{,0} \Psi_i
+	- (\sqrt\gamma)_{,0} \Psi_i
 \end{matrix} \right]
-+ 
-\frac{1}{\sqrt\gamma} 
-\left(
-	\left[ \begin{matrix} 
-		-\beta^k &
-		-\alpha \gamma^{jk}
-		\\	
++ \frac{1}{\sqrt\gamma}
+\left[ \begin{matrix}  
+	- \beta^k  & 
+	- \alpha \gamma^{jk} \\
 
-		- \alpha \delta^k_i &
-		- \beta^k \delta^j_i
-	\end{matrix} \right]
-	\left[ \begin{matrix} 
-		\sqrt\gamma \Pi \\
-		\sqrt\gamma \Psi_j
-	\end{matrix} \right]
-\right)_{,k}
+	- \alpha \delta^k_i & 
+	- \beta^k \delta^j_i
+\end{matrix} \right]
+\left[ \begin{matrix}  
+	\sqrt\gamma \Pi \\
+	\sqrt\gamma \Psi_j
+\end{matrix} \right]_{,k}
 = \left[ \begin{matrix}
 	K \Pi \alpha 
-	- {\beta^k}_{,k} \Pi
-	- {\Gamma^j}_{kj} \beta^k \Pi
+	- \beta^k {\Gamma^j}_{kj} \Pi
 	
-	- f \alpha 
+	+ \Psi^j \alpha_{,j}
+	- \alpha \Psi_i \Gamma^i 
+	- \alpha {\Gamma^j}_{kj} \Psi^k
 	
-	\\
-
-	- {\Gamma^j}_{ij} \alpha \Pi
+	- f \alpha \\
 	
+	\alpha_{,i} \Pi
+	- \alpha {\Gamma^j}_{ij} \Pi
 	+ \Psi_j {\beta^j}_{,i}
-	- {\beta^k}_{,k} \Psi_i
-	- {\Gamma^j}_{kj} \beta^k \Psi_i
+	- \beta^k {\Gamma^j}_{kj} \Psi_i
 \end{matrix} \right]$<br>
 <br>
 
@@ -651,42 +518,41 @@ $\left[ \begin{matrix}
 	(\sqrt\gamma \Psi_i)_{,0}
 \end{matrix} \right]
 
-+ \left( 
-	\left[ \begin{matrix} 
-		-\beta^k &
-		-\alpha \gamma^{jk}
-		\\	
++ \left[ \begin{matrix}  
+	- \beta^k  & 
+	- \alpha \gamma^{jk} \\
 
-		- \alpha \delta^k_i &
-		- \beta^k \delta^j_i
-	\end{matrix} \right]
-	\left[ \begin{matrix} 
-		\sqrt\gamma \Pi \\
-		\sqrt\gamma \Psi_j
-	\end{matrix} \right]
-\right)_{,k}
-= \sqrt\gamma \left[ \begin{matrix}
+	- \alpha \delta^k_i & 
+	- \beta^k \delta^j_i
+\end{matrix} \right]
+\left[ \begin{matrix}  
+	\sqrt\gamma \Pi \\
+	\sqrt\gamma \Psi_j
+\end{matrix} \right]_{,k}
+= 
+\sqrt\gamma
+\left[ \begin{matrix}
 	K \Pi \alpha 
-	+ \frac{\sqrt\gamma_{,0}}{\sqrt\gamma} \Pi
+	- \beta^k {\Gamma^j}_{kj} \Pi
+	+ \frac{(\sqrt\gamma)_{,0}}{\sqrt\gamma} \Pi
 	
-	- {\beta^k}_{,k} \Pi
-	- {\Gamma^j}_{kj} \beta^k \Pi
+	+ \Psi^j \alpha_{,j}
+	- \alpha \Psi_i \Gamma^i 
+	- \alpha {\Gamma^j}_{kj} \Psi^k
 	
-	- f \alpha 
+	- f \alpha \\
 	
-	\\
-
-	- {\Gamma^j}_{ij} \alpha \Pi
-	+ \frac{\sqrt\gamma_{,0}}{\sqrt\gamma} \Psi_i
+	\alpha_{,i} \Pi
+	- \alpha {\Gamma^j}_{ij} \Pi
 	
 	+ \Psi_j {\beta^j}_{,i}
-	- {\beta^k}_{,k} \Psi_i
-	- {\Gamma^j}_{kj} \beta^k \Psi_i
+	- \beta^k {\Gamma^j}_{kj} \Psi_i
+	+ \frac{(\sqrt\gamma)_{,0}}{\sqrt\gamma} \Psi_i
 \end{matrix} \right]$<br>
 <br>
 
 Evaluating our volume time derivative:<br>
-$\sqrt\gamma_{,0} = \frac{1}{2 \sqrt\gamma} \gamma_{,0}$<br>
+$(\sqrt\gamma)_{,0} = \frac{1}{2 \sqrt\gamma} \gamma_{,0}$<br>
 $= \frac{1}{2 \sqrt\gamma} \gamma \gamma^{ij} \gamma_{ij,0}$<br>
 $= -\sqrt\gamma \gamma^{ij} \alpha K_{ij}$<br>
 $= -\sqrt\gamma \alpha K$<br>
@@ -698,34 +564,34 @@ $\left[ \begin{matrix}
 	(\sqrt\gamma \Psi_i)_{,0}
 \end{matrix} \right]
 
-+ \left( 
-	\left[ \begin{matrix} 
-		-\beta^k &
-		-\alpha \gamma^{jk}
-		\\	
++ \left[ \begin{matrix}  
+	- \beta^k  & 
+	- \alpha \gamma^{jk} \\
 
-		- \alpha \delta^k_i &
-		- \beta^k \delta^j_i
-	\end{matrix} \right]
-	\left[ \begin{matrix} 
-		\sqrt\gamma \Pi \\
-		\sqrt\gamma \Psi_j
-	\end{matrix} \right]
-\right)_{,k}
-= \sqrt\gamma \left[ \begin{matrix}
-	- {\beta^k}_{,k} \Pi
-	- {\Gamma^j}_{kj} \beta^k \Pi
+	- \alpha \delta^k_i & 
+	- \beta^k \delta^j_i
+\end{matrix} \right]
+\left[ \begin{matrix}  
+	\sqrt\gamma \Pi \\
+	\sqrt\gamma \Psi_j
+\end{matrix} \right]_{,k}
+= 
+\sqrt\gamma
+\left[ \begin{matrix}
+	- \beta^k {\Gamma^j}_{kj} \Pi
 	
-	- f \alpha 
+	+ \Psi^j \alpha_{,j}
+	- \alpha \Psi_i \Gamma^i 
+	- \alpha {\Gamma^j}_{kj} \Psi^k
 	
-	\\
-
-	- {\Gamma^j}_{ij} \alpha \Pi
+	- f \alpha \\
 	
-	+ \Psi_j {\beta^j}_{,i}
-	- {\beta^k}_{,k} \Psi_i
-	- {\Gamma^j}_{kj} \beta^k \Psi_i
+	\alpha_{,i} \Pi
+	- \alpha {\Gamma^j}_{ij} \Pi
+	
 	- \alpha K \Psi_i
+	+ \Psi_j {\beta^j}_{,i}
+	- \beta^k {\Gamma^j}_{kj} \Psi_i
 \end{matrix} \right]$<br>
 <br>
 
@@ -735,38 +601,38 @@ $\left[ \begin{matrix}
 	\tilde{\Psi}_{i,0}
 \end{matrix} \right]
 
-+ \left( 
-	\left[ \begin{matrix} 
-		-\beta^k &
-		-\alpha \gamma^{jk}
-		\\	
++ \left[ \begin{matrix}  
+	- \beta^k  & 
+	- \alpha \gamma^{jk} \\
 
-		- \alpha \delta^k_i &
-		- \beta^k \delta^j_i
-	\end{matrix} \right]
-	\left[ \begin{matrix} 
-		\tilde{\Pi} \\
-		\tilde{\Psi}_j
-	\end{matrix} \right]
-\right)_{,k}
+	- \alpha \delta^k_i & 
+	- \beta^k \delta^j_i
+\end{matrix} \right]
+\left[ \begin{matrix}  
+	\tilde{\Pi} \\
+	\tilde{\Psi}_j
+\end{matrix} \right]_{,k}
 = \left[ \begin{matrix}
-	- {\beta^k}_{,k} \tilde{\Pi}
-	- {\Gamma^j}_{kj} \beta^k \tilde{\Pi}
+	- \beta^k {\Gamma^j}_{kj} \tilde{\Pi}
 	
-	- f \alpha \sqrt\gamma
+	+ \tilde{\Psi}^j \alpha_{,j}
+	- \alpha \tilde{\Psi}_i \Gamma^i 
+	- \alpha {\Gamma^j}_{kj} \tilde{\Psi}^k
 	
-	\\
-
-	- {\Gamma^j}_{ij} \alpha \tilde{\Pi}
+	- f \alpha \sqrt\gamma \\
 	
-	+ \tilde{\Psi}_j {\beta^j}_{,i}
-	- {\beta^k}_{,k} \tilde{\Psi}_i
-	- {\Gamma^j}_{kj} \beta^k \tilde{\Psi}_i
+	\alpha_{,i} \tilde{\Pi}
+	- \alpha {\Gamma^j}_{ij} \tilde{\Pi}
+	
 	- \alpha K \tilde{\Psi}_i
+	+ \tilde{\Psi}_j {\beta^j}_{,i}
+	- \beta^k {\Gamma^j}_{kj} \tilde{\Psi}_i
 \end{matrix} \right]$<br>
 <br>
 
-This still doesn't look much different.  Still the same number of source terms.  We did manage to shift the K source term from $\Pi$ to $\Psi$.<br>
+
+
+This still doesn't look much different.  We did manage to shift the K source term from $\Pi$ to $\Psi$.<br>
 <br>
 
 	</body>
