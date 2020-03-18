@@ -635,5 +635,216 @@ $\left[ \begin{matrix}
 This still doesn't look much different.  We did manage to shift the K source term from $\Pi$ to $\Psi$.<br>
 <br>
 
+<hr>
+<br>
+
+Back to our original representation, what if we want to use the contravariant vector $\Psi^i$ as a state variable.<br>
+<br>
+
+$\Psi^i = \gamma^{ij} \Psi_j$<br>
+${\Psi^i}_{,\mu} = (\gamma^{ij} \Psi_j)_{,\mu}$<br>
+${\Psi^i}_{,\mu} = {\gamma^{ij}}_{,\mu} \Psi_j + \gamma^{ij} \Psi_{j,\mu}$<br>
+${\Psi^i}_{,\mu} = -\gamma^{ij} \gamma_{jk,\mu} \Psi^k + \gamma^{ij} \Psi_{j,\mu}$<br>
+spacelike:<br>
+${\Psi^i}_{,m} = -\gamma^{ij} \gamma_{jk,m} \Psi^k + \gamma^{ij} \Psi_{j,m}$<br>
+${\Psi^i}_{,m} = -\gamma^{ij} (\Gamma_{jmk} + \Gamma_{kmj}) \Psi^k + \gamma^{ij} \Psi_{j,m}$<br>
+${\Psi^i}_{,m} = -{\Gamma^i}_{mk} \Psi^k - \Psi^k {\Gamma_{km}}^i + \gamma^{ij} \Psi_{j,m}$<br>
+so $\Psi_{j,k} = \gamma_{jm} {\Psi^m}_{,k} + \Gamma_{jkm} \Psi^m + \Psi^m \Gamma_{mkj}$<br>
+timelike:<br>
+${\Psi^i}_{,0} = -\gamma^{ij} \gamma_{jk,0} \Psi^k + \gamma^{ij} \Psi_{j,0}$<br>
+${\Psi^i}_{,0} = 2 \alpha {K^i}_j \Psi^j + \gamma^{ij} \Psi_{j,0}$<br>
+so $\Psi_{i,0} = \gamma_{ij} {\Psi^j}_{,0} - 2 \alpha K_{ij} \Psi^j$<br>
+<br>
+
+$\left[ \begin{matrix}
+	\Pi_{,0} \\
+	\Psi_{i,0}
+\end{matrix} \right]
+= \left[ \begin{matrix}  
+	\Pi_{,k} \beta^k
+	+ \alpha \Psi_{j,k} \gamma^{jk} 
+	
+	+ \Psi^j \alpha_{,j}
+	+ K \Pi \alpha 
+	- \alpha \Psi_i \Gamma^i 
+	- f \alpha \\
+	
+	\alpha \delta^k_i \Pi_{,k}
+	+ \beta^k \delta^j_i \Psi_{j,k}
+	
+	+ \Psi_j {\beta^j}_{,i}
+	+ \alpha_{,i} \Pi
+\end{matrix} \right]$<br>
+<br>
+
+...substitute our new derivatives:<br>
+<br>
+
+$\left[ \begin{matrix}
+	\Pi_{,0} \\
+	\gamma_{ij} {\Psi^j}_{,0} - 2 \alpha K_{ij} \Psi^j
+\end{matrix} \right]
+= \left[ \begin{matrix}  
+	\Pi_{,k} \beta^k
+	+ \alpha (\gamma_{jm} {\Psi^m}_{,k} + \Gamma_{jkm} \Psi^m + \Psi^m \Gamma_{mkj}) \gamma^{jk} 
+	
+	+ \Psi^j \alpha_{,j}
+	+ K \Pi \alpha 
+	- \alpha \Psi_i \Gamma^i 
+	- f \alpha \\
+	
+	\alpha \delta^k_i \Pi_{,k}
+	+ \beta^k \delta^j_i (\gamma_{jm} {\Psi^m}_{,k} + \Gamma_{jkm} \Psi^m + \Psi^m \Gamma_{mkj})
+	
+	+ \Psi_j {\beta^j}_{,i}
+	+ \alpha_{,i} \Pi
+\end{matrix} \right]$<br>
+<br>
+
+$\left[ \begin{matrix}
+	\Pi_{,0} \\
+	{\Psi^i}_{,0}
+\end{matrix} \right]
+= \left[ \begin{matrix}  
+	\Pi_{,k} \beta^k
+	+ \alpha {\Psi^k}_{,k}
+	
+	+ K \Pi \alpha 
+	+ \Psi^j \alpha_{,j}
+	+ \alpha {\Gamma^j}_{kj} \Psi^k
+	- f \alpha \\
+
+
+	\alpha \gamma^{ij} \Pi_{,j}
+	+ \beta^k {\Psi^i}_{,k} 
+	
+	+ \gamma^{ij} \alpha_{,i} \Pi
+	+ \gamma^{im} \gamma_{mj,k} \Psi^j \beta^k
+	+ \Psi_j {\beta^j}_{,m} \gamma^{im}
+	+ 2 \alpha {K^i}_j \Psi^j
+
+\end{matrix} \right]$<br>
+<br>
+
+$\left[ \begin{matrix}
+	\Pi \\
+	\Psi^i
+\end{matrix} \right]_{,0}
++ \left[ \begin{matrix}  
+	- \beta^k &
+	- \alpha \delta^k_j \\
+
+	- \alpha \gamma^{ik} &
+	- \beta^k \delta^i_j
+\end{matrix} \right]
+\left[ \begin{matrix}  
+	\Pi \\
+	\Psi^j
+\end{matrix} \right]_{,k} 
+= \left[ \begin{matrix}  
+	K \Pi \alpha 
+	+ \Psi^j \alpha_{,j}
+	+ \alpha {\Gamma^j}_{kj} \Psi^k
+	- f \alpha \\
+
+	\gamma^{ij} \alpha_{,i} \Pi
+	+ \gamma^{im} (
+		\Psi^n \gamma_{nm,k} \beta^k
+		+ \Psi^n \gamma_{nj} {\beta^j}_{,m} 
+	)
+	+ 2 \alpha {K^i}_j \Psi^j
+\end{matrix} \right]$<br>
+<br>
+
+As you can see, changing the state variables from covariant to contravariant only exchanges the delta and the metric terms in the flux.  Our new flux Jacobian is just a transpose of our old flux Jacobian.<br>
+<br>
+
+Now, what if we choose to use a locally orthonormal basis:<br>
+$e_I = {e^i}_I e_i = {e^i}_I \partial_i$<br>
+$\gamma_{ij} = {e_i}^I {e_j}^J \delta_{IJ}$<br>
+$\gamma^{ij} = {e^i}_I {e_j}^I = \delta^i_j$<br>
+Where the comma derivative is interchangeable with the application of the basis: $x_i = e_i(x)$ and $x_I = e_I(x) = {e^i}_I \partial_i (x)$<br>
+(Notice that I am not normalizing the time component, as the folks who work with ADM tetrads do ... but maybe I should ... ).<br> 
+<br>
+
+$\Psi^I = {e_i}^I \Psi_i$<br>
+spatial derivative:<br>
+${\Psi^I}_{,J} = {\Psi^I}_{,j} {e^j}_J$<br>
+${\Psi^I}_{,J} = (\Psi^i {e_i}^I)_{,j} {e^j}_J$<br>
+${\Psi^I}_{,J} = {e_i}^I {\Psi^i}_{,j} {e^j}_J + \Psi^i {{e_i}^I}_{,j} {e^j}_J$<br>
+so ${\Psi^i}_{,j} = {e^i}_I {\Psi^I}_{,J} {e_j}^J - \Psi^k {e^i}_I {{e_k}^I}_{,j}$<br>
+time derivative:<br>
+${\Psi^I}_{,0} = {{e_i}^I}_{,0} \Psi_i + {e_i}^I \Psi_{i,0}$<br>
+so $\Psi_{i,0} = {e^i}_I {\Psi^I}_{,0} - {e^i}_I {{e_k}^I}_{,0} \Psi_k$<br>
+<br>
+
+$\left[ \begin{matrix}
+	\Pi_{,0} \\
+
+	{\Psi^I}_{,0} 
+\end{matrix} \right]
+= \left[ \begin{matrix}  
+	\Pi_{,k} \beta^k
+	+ \alpha {e^k}_I {\Psi^I}_{,k}
+	
+	+ K \Pi \alpha 
+	+ \alpha_{,j} \Psi^j
+	- \alpha {e^k}_I {{e_m}^I}_{,k} \Psi^m
+	+ \alpha {\Gamma^j}_{kj} \Psi^k
+	- f \alpha \\
+
+
+	\alpha {e_i}^I \gamma^{ik} \Pi_{,k}
+	+ \beta^k {\Psi^I}_{,k}
+	
+	+ {e_j}^I \gamma^{ij} \alpha_{,i} \Pi
+	- \beta^k {{e_m}^I}_{,k} \Psi^m
+	+ {e_i}^I \gamma^{im} \gamma_{mj,k} \beta^k \Psi^j
+	+ {e_i}^I \gamma^{im} {\beta^j}_{,m} \Psi_j
+	+ {{e_k}^I}_{,0} \Psi_k
+	+ 2 \alpha {K^I}_J \Psi^J
+
+\end{matrix} \right]$<br>
+<br>
+
+A lot of those source terms can probably cancel if you convert the derivatives of ${e_i}^I$ into 3-connections.<br>
+Notice that I'm still keeping the derivative $e_k$ a coordinate derivative, and not converting it to the non-coordinate basis $e_K$.<br>
+<br>
+
+$\left[ \begin{matrix}
+	\Pi \\
+
+	\Psi^I
+\end{matrix} \right]_{,0} 
++ \left[ \begin{matrix}  
+	- \beta^k &
+	- \alpha {e^k}_J \\
+
+	- \alpha e^{kI} &
+	- \beta^k \delta^I_J
+\end{matrix} \right]
+\left[ \begin{matrix}  
+	\Pi \\
+
+	\Psi^J
+\end{matrix} \right]_{,k}
+
+= \left[ \begin{matrix}  	
+	K \Pi \alpha 
+	+ \alpha_{,j} \Psi^j
+	- \alpha {e^k}_I {{e_m}^I}_{,k} \Psi^m
+	+ \alpha {\Gamma^j}_{kj} \Psi^k
+	- f \alpha \\
+
+	e^{iI} \alpha_{,i} \Pi
+	- {e^{jI}}_{,k} \beta^k \Psi_j
+	+ e^{iI} {\beta^j}_{,i} \Psi_j
+	+ {{e_k}^I}_{,0} \Psi_k
+	+ 2 \alpha {K^I}_J \Psi^J
+\end{matrix} \right]$<br>
+<br>
+
+
+
 	</body>
 </html>
