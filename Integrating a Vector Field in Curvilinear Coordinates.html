@@ -133,26 +133,26 @@ $[e_\nu](y) = [e_\alpha](x)
 
 I should come up with some notation to denote the transform applied for dragging the basis from point x to point y.  How about:<br>
 <br>
-${[\parallel_{x_L^\mu}^{x_R^\mu}]^\alpha}_\nu
+${[\curvearrowright_{x_L^\mu}^{x_R^\mu}]^\alpha}_\nu
 = exp\left( \int_{x'^\mu = x_L^\mu}^{x'^\mu = x_R^\mu} [{\Gamma^\alpha}_{\mu\nu}](x'^\mu) dx'^\mu \right)$<br>
 <br>
 
-Mind you the result of $\parallel_a^b$ is a matrix, and the $\alpha$ and $\nu$ in this case are the matrix indexes.<br>
+Mind you the result of $\curvearrowright_a^b$ is a matrix, and the $\alpha$ and $\nu$ in this case are the matrix indexes.<br>
 <br>
 
 The above transformation from $e_\nu(x_L^\mu)$ to $e_\nu(y^\mu_R)$ would look like:<br>
-$e(x_R^\mu) = e(x_L^\mu) \cdot \parallel_{x_L^\mu}^{x_R^\mu}$<br>
+$e(x_R^\mu) = e(x_L^\mu) \cdot \curvearrowright_{x_L^\mu}^{x_R^\mu}$<br>
 <br>
 
 And the above transformation from $e_\nu(x)$ to $e_\nu(y)$, going component-by-component, would look like:<br>
 $e(y) = e(x) 
-	\cdot \parallel_{x^1 }^{ y^1} (x^1 ,..., x^n) 
+	\cdot \curvearrowright_{x^1 }^{ y^1} (x^1 ,..., x^n) 
 	\cdot ... 
-	\cdot \parallel_{x^k }^{ y^k} (y^1, ..., y^{k-1}, x^k, ..., x^n)
+	\cdot \curvearrowright_{x^k }^{ y^k} (y^1, ..., y^{k-1}, x^k, ..., x^n)
 	\cdot ... 
-	\cdot \parallel_{x^n }^{ y^n} (y^1, ..., y^{n-1}, x^n)$<br>
+	\cdot \curvearrowright_{x^n }^{ y^n} (y^1, ..., y^{n-1}, x^n)$<br>
 <br>
-That can just be written as $e(x) \underset{k=1}{\overset{n}{\Pi}} \parallel_{x^k }^{ y^k}$ if we don't mind hiding the chart coordinates, which seem to be an important detail.<br>
+That can just be written as $e(x) \underset{k=1}{\overset{n}{\Pi}} \curvearrowright_{x^k }^{ y^k}$ if we don't mind hiding the chart coordinates, which seem to be an important detail.<br>
 <br>
 
 Notice that order of application of the exp-integrals-of-connections is important.  If you were to swap orders then you would have to deal with the $[\nabla_\mu, \nabla_\mu] e_\alpha = e_\beta {R^\beta}_{\alpha\mu\nu}$ Riemann curvature tensor.  Think about exactly how later.<br>
@@ -166,11 +166,11 @@ $[e_\nu](y) = [e_\alpha](x) \cdot exp\left( \int_{\lambda = 0}^{\lambda = 1} [{\
 ...where $v = y - x$, but I still need to prove this.
 This would be especially useful in manifolds that do have curvature, like quaternions, where the exponential map of $e_1$ and $e_2$ are not commutative, and $exp(\theta n^i e_i)$ produces a rotation around axis $n^i$ by angle $\theta$.<br>
 Then again, thinking further, changing the chart coordinates in a linear fashion does not guarantee a geodesic.  In order to do that, you would (once again) need to make use of the connection.  A double integral of some function of the connection?  After all, the geodesic equation is a 2nd derivative of the position.  Think on this one more later.<br>
-The shorthand representation of our geodesic parallel transport could be something like: $e(y) = e(x) \cdot \parallel_x^y$<br>
+The shorthand representation of our geodesic parallel transport could be something like: $e(y) = e(x) \cdot \curvearrowright_x^y$<br>
 <br>
 
 The geodesic shorthand looks just like the shorthand around the edges of a hypercube representaiton above.  It looks like I need to specify a way to discern the path of the transport as well.<br>
-Maybe just write $\parallel_C$ and specify that C is a curve, and whether the curve is a geodesic or whether the curve is a piecewise edge traversal from one corner of a hypercube to the other (as I first stated).<br>
+Maybe just write $\curvearrowright_C$ and specify that C is a curve, and whether the curve is a geodesic or whether the curve is a piecewise edge traversal from one corner of a hypercube to the other (as I first stated).<br>
 <br>
 
 <hr>
@@ -299,28 +299,28 @@ How do we represent everything only in our curvilinear chart coordinates?<br>
 <br>
 
 Let's represent our $e(y)$ as a parallel transport of the basis from $e(x)$ to $e(y)$.<br>
-$e(y) = e(x) \cdot \parallel_{x }^{ y}$<br>
+$e(y) = e(x) \cdot \curvearrowright_{x }^{ y}$<br>
 Substitute to find:<br>
-$(e(x) \cdot \parallel_{x }^{ y})^{-1} e(x) v(x) = v'(y)$<br>
-$(\parallel_x^y)^{-1} e^{-1}(x) e(x) v(x) = v'(y)$<br>
-$\parallel_y^x \cdot v(x) = v'(y)$<br>
+$(e(x) \cdot \curvearrowright_{x }^{ y})^{-1} e(x) v(x) = v'(y)$<br>
+$(\curvearrowright_x^y)^{-1} e^{-1}(x) e(x) v(x) = v'(y)$<br>
+$\curvearrowright_y^x \cdot v(x) = v'(y)$<br>
 <br>
 
 Tada! Now we have a representation of the parallel transport that depends only on connections, not on the Cartesian basis.<br>
 <br>
 
-Notice that this depends on the identity: $(\parallel_x^y)^{-1} = \parallel_y^x$<br>
+Notice that this depends on the identity: $(\curvearrowright_x^y)^{-1} = \curvearrowright_y^x$<br>
 That can be proven quickly with:<br>
-$\parallel_y^x$<br>
+$\curvearrowright_y^x$<br>
 $= exp(\int_y^x \Gamma_v d\lambda)$<br>
 $= exp(-\int_x^y \Gamma_v d\lambda)$<br>
 $= exp(\int_x^y \Gamma_v d\lambda)^{-1}$<br>
-$= (\parallel_x^y)^{-1}$<br>
+$= (\curvearrowright_x^y)^{-1}$<br>
 <br>
 
 The interesting thing is that the resulting components after parallel transport from x to y is $v(x)$ left-multiplied with the transport from y to x.<br>
 This is the same as the inverse of the parallel-transport transform from x to y, and that itself will be left-multiplied with the original parallel-transport transform from x to y, and that left-multiplied with $e(x)$, in order to deduce that $v' = v$:<br>
-$e(x) \cdot \parallel_x^y \cdot (\parallel_x^y)^{-1} \cdot v(x) = e(x) \cdot \parallel_x^y \cdot v'(y)$<br>
+$e(x) \cdot \curvearrowright_x^y \cdot (\curvearrowright_x^y)^{-1} \cdot v(x) = e(x) \cdot \curvearrowright_x^y \cdot v'(y)$<br>
 $e(x) v(x) = e(y) v'(y)$<br>
 $v = v'$<br>
 <br>
@@ -414,7 +414,7 @@ $[\Gamma_\phi] = \left[\begin{matrix}
 And now for the exponentials of the integrals of the connections:<br>
 <br>
 
-$\parallel_{r_L }^{ r_R} = exp(\int_{r_L}^{r_R} [\Gamma_r] dr)$<br>
+$\curvearrowright_{r_L }^{ r_R} = exp(\int_{r_L}^{r_R} [\Gamma_r] dr)$<br>
 $= exp\left( \int_{r_L}^{r_R} \left[\begin{matrix}
 	0 & 0 \\
 	0 & \frac{1}{r}
@@ -443,7 +443,7 @@ $= \left[\begin{matrix}
 $= S(1, \frac{r_R}{r_L})$<br>
 <br>
 
-$\parallel_{\phi_L}^{\phi_R} = exp(\int_{\phi_L}^{\phi_R} [\Gamma_\phi] d\phi)$<br>
+$\curvearrowright_{\phi_L}^{\phi_R} = exp(\int_{\phi_L}^{\phi_R} [\Gamma_\phi] d\phi)$<br>
 $= exp\left(\int_{\phi_L}^{\phi_R} \left[\begin{matrix}
 	0 & -r \\
 	\frac{1}{r} & 0
@@ -514,23 +514,23 @@ $= S(1,\frac{1}{r}) R(\phi_R - \phi_L) S(1, r)$<br>
 <br>
 
 It just so happens that 
-$\parallel_{r_L}^{r_R} \cdot \parallel_{\phi_L}^{\phi_R} = \parallel_{\phi_L}^{\phi_R} \cdot \parallel_{r_L }^{ r_R}$.  
+$\curvearrowright_{r_L}^{r_R} \cdot \curvearrowright_{\phi_L}^{\phi_R} = \curvearrowright_{\phi_L}^{\phi_R} \cdot \curvearrowright_{r_L }^{ r_R}$.  
 Maybe because ${R^\alpha}_{\beta\mu\nu} = 0$, but that is still just speculation.<br>
 And the applying the parallel transport in different orderings gives us:<br> 
 <br>
 
-$\parallel_{r_L}^{r_R} \cdot \parallel_{\phi_L}^{\phi_R}$<br>
+$\curvearrowright_{r_L}^{r_R} \cdot \curvearrowright_{\phi_L}^{\phi_R}$<br>
 $= S(1, \frac{r_R}{r_L}) S(1,\frac{1}{r_R}) R(\phi_R - \phi_L) S(1, r_R)$<br>
 $= S(1,\frac{1}{r_L}) R(\phi_R - \phi_L) S(1, r_R)$<br>
 <br>
-$\parallel_{\phi_L}^{\phi_R} \cdot \parallel_{r_L}^{r_R}$<br>
+$\curvearrowright_{\phi_L}^{\phi_R} \cdot \curvearrowright_{r_L}^{r_R}$<br>
 $= S(1,\frac{1}{r_L}) R(\phi_R - \phi_L) S(1, r_L) S(1, \frac{r_R}{r_L})$<br>
 $= S(1,\frac{1}{r_L}) R(\phi_R - \phi_L) S(1, r_R)$<br>
 <br>
 
 So in both cases we end up with the general pararallel transport from coordinate chart domain point x to y as:<br>
 <br>
-$\parallel_{x }^{ y} = S(1, \frac{1}{x^r}) \cdot R(y^\phi - x^\phi) \cdot S(1, y^r)
+$\curvearrowright_{x }^{ y} = S(1, \frac{1}{x^r}) \cdot R(y^\phi - x^\phi) \cdot S(1, y^r)
 = \left[\begin{matrix}
 	cos(\phi_R - \phi_L) & -r_R sin(\phi_R - \phi_L) \\
 	\frac{1}{r_L} sin(\phi_R - \phi_L) & \frac{r_R}{r_L} cos(\phi_R - \phi_L)
