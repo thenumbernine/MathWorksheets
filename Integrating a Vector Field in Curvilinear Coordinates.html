@@ -146,13 +146,13 @@ $e(x_R^\mu) = e(x_L^\mu) \cdot \curvearrowright_{x_L^\mu}^{x_R^\mu}$<br>
 
 And the above transformation from $e_\nu(x)$ to $e_\nu(y)$, going component-by-component, would look like:<br>
 $e(y) = e(x) 
-	\cdot \curvearrowright_{x^1 }^{ y^1} (x^1 ,..., x^n) 
+	\cdot \curvearrowright_{x^1}^{y^1} (x^1 ,..., x^n) 
 	\cdot ... 
-	\cdot \curvearrowright_{x^k }^{ y^k} (y^1, ..., y^{k-1}, x^k, ..., x^n)
+	\cdot \curvearrowright_{x^k}^{y^k} (y^1, ..., y^{k-1}, x^k, ..., x^n)
 	\cdot ... 
-	\cdot \curvearrowright_{x^n }^{ y^n} (y^1, ..., y^{n-1}, x^n)$<br>
+	\cdot \curvearrowright_{x^n}^{y^n} (y^1, ..., y^{n-1}, x^n)$<br>
 <br>
-That can just be written as $e(x) \underset{k=1}{\overset{n}{\Pi}} \curvearrowright_{x^k }^{ y^k}$ if we don't mind hiding the chart coordinates, which seem to be an important detail.<br>
+That can just be written as $e(x) \underset{k=1}{\overset{n}{\Pi}} \curvearrowright_{x^k}^{y^k}$ if we don't mind hiding the chart coordinates, which seem to be an important detail.<br>
 <br>
 
 Notice that order of application of the exp-integrals-of-connections is important.  If you were to swap orders then you would have to deal with the $[\nabla_\mu, \nabla_\mu] e_\alpha = e_\beta {R^\beta}_{\alpha\mu\nu}$ Riemann curvature tensor.  Think about exactly how later.<br>
@@ -299,9 +299,9 @@ How do we represent everything only in our curvilinear chart coordinates?<br>
 <br>
 
 Let's represent our $e(y)$ as a parallel transport of the basis from $e(x)$ to $e(y)$.<br>
-$e(y) = e(x) \cdot \curvearrowright_{x }^{ y}$<br>
+$e(y) = e(x) \cdot \curvearrowright_x^y$<br>
 Substitute to find:<br>
-$(e(x) \cdot \curvearrowright_{x }^{ y})^{-1} e(x) v(x) = v'(y)$<br>
+$(e(x) \cdot \curvearrowright_x^y)^{-1} e(x) v(x) = v'(y)$<br>
 $(\curvearrowright_x^y)^{-1} e^{-1}(x) e(x) v(x) = v'(y)$<br>
 $\curvearrowright_y^x \cdot v(x) = v'(y)$<br>
 <br>
@@ -414,7 +414,7 @@ $[\Gamma_\phi] = \left[\begin{matrix}
 And now for the exponentials of the integrals of the connections:<br>
 <br>
 
-$\curvearrowright_{r_L }^{ r_R} = exp(\int_{r_L}^{r_R} [\Gamma_r] dr)$<br>
+$\curvearrowright_{r_L}^{r_R} = exp(\int_{r_L}^{r_R} [\Gamma_r] dr)$<br>
 $= exp\left( \int_{r_L}^{r_R} \left[\begin{matrix}
 	0 & 0 \\
 	0 & \frac{1}{r}
@@ -514,7 +514,7 @@ $= S(1,\frac{1}{r}) R(\phi_R - \phi_L) S(1, r)$<br>
 <br>
 
 It just so happens that 
-$\curvearrowright_{r_L}^{r_R} \cdot \curvearrowright_{\phi_L}^{\phi_R} = \curvearrowright_{\phi_L}^{\phi_R} \cdot \curvearrowright_{r_L }^{ r_R}$.  
+$\curvearrowright_{r_L}^{r_R} \cdot \curvearrowright_{\phi_L}^{\phi_R} = \curvearrowright_{\phi_L}^{\phi_R} \cdot \curvearrowright_{r_L}^{r_R}$.  
 Maybe because ${R^\alpha}_{\beta\mu\nu} = 0$, but that is still just speculation.<br>
 And the applying the parallel transport in different orderings gives us:<br> 
 <br>
@@ -528,13 +528,29 @@ $= S(1,\frac{1}{r_L}) R(\phi_R - \phi_L) S(1, r_L) S(1, \frac{r_R}{r_L})$<br>
 $= S(1,\frac{1}{r_L}) R(\phi_R - \phi_L) S(1, r_R)$<br>
 <br>
 
-So in both cases we end up with the general pararallel transport from coordinate chart domain point x to y as:<br>
+So in both cases we end up with the general pararallel transport from coordinate chart domain point $x_L$ to $x_R$ as:<br>
 <br>
-$\curvearrowright_{x }^{ y} = S(1, \frac{1}{x^r}) \cdot R(y^\phi - x^\phi) \cdot S(1, y^r)
+$\curvearrowright_{x_L}^{x_R} = S(1, \frac{1}{r_L}) \cdot R(\phi_R - \phi_L) \cdot S(1, r_R)
 = \left[\begin{matrix}
 	cos(\phi_R - \phi_L) & -r_R sin(\phi_R - \phi_L) \\
 	\frac{1}{r_L} sin(\phi_R - \phi_L) & \frac{r_R}{r_L} cos(\phi_R - \phi_L)
 \end{matrix}\right]$<br> 
+<br>
+
+What happens when we parallel transport our basis from $x_L$ to $x_R$?<br>
+<br>
+$e(x_L) \cdot \curvearrowright_{x_L}^{x^R} = 
+\left(
+	R(\phi_L) \cdot S(1, r_L) 
+\right) \cdot \left(
+	S(1, \frac{1}{r_L}) \cdot R(\phi_R - \phi_L) \cdot S(1, r_R)
+\right)$<br>
+$= R(\phi_L) \cdot R(\phi_R - \phi_L) \cdot S(1, r_R)$<br>
+And since our rotation axis are aligned, we can add our rotation angles together:<br>
+$= R(\phi_R) \cdot S(1, r_R)$<br>
+<br>
+
+Tada!  We started with $e(x_L)$, we right-applied our parallel-transport transformation, and we ended up at $e(x_R)$.<br>
 <br>
 
 TODO verify that this works with my general-case equation above, and not just per-coordinate separately.  It probably will but only because polar coordinates have no Riemann curvature.  The general case still isn't a geodesic case.<br>
