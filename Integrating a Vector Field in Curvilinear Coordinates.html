@@ -95,7 +95,7 @@ Notice that, because I picked my contravariant components to be distinct per eac
 If you want to multiply the connection matrix on the left hand side of the basis matrix then you must use distinct contravariant components per each column (contravariant indexes are represented as row vectors) and distinct covariant compoments per each row (covariant indexes are represented as column vectors).<br>
 <br>
 
-Since we are differentiating the cartesian components which are constant at all points, lets exchange the covariant derivative with a partial derivative:<br>
+Since we are differentiating the Cartesian components which are constant at all points, lets exchange the covariant derivative with a partial derivative:<br>
 $\frac{\partial}{\partial x^\mu} [{e_\nu}^I](x) = [{e_\alpha}^I](x) \cdot [{\Gamma^\alpha}_{\mu\nu}](x) $<br>
 <br>
 
@@ -164,21 +164,29 @@ Does this mean that, by the Bianchi identity of the Riemann curvature tensor, th
 <br>
 <br>
 
-Alright, what if you do want to just cut across the diagonal of the cube instead of following the edges around the outside?
+Alright, what if you do want to just cut across the diagonal of the coordinate space hypercube instead of following the edges around the outside?
 I'm guessing that would look like:<br>
 <br>
 $[e_\nu](y) = [e_\alpha](x) \cdot exp\left( \int_{\lambda = 0}^{\lambda = 1} [{\Gamma^\alpha}_{\mu\nu}](x + \lambda v) v^\mu d\lambda \right)$<br>
 <br>
-...where $v = y - x$, but I still need to prove this.
-This would be especially useful in manifolds that do have curvature, like quaternions, where the exponential map of $e_1$ and $e_2$ are not commutative, and $exp(\theta n^i e_i)$ produces a rotation around axis $n^i$ by angle $\theta$.<br>
-<br>
-Then again, thinking further, changing the chart coordinates in a linear fashion does not guarantee a geodesic.  In order to do that, you would (once again) need to make use of the connection.  A double integral of some function of the connection?  After all, the geodesic equation is a 2nd derivative of the position.  Think on this one more later.
-The shorthand representation of our geodesic parallel transport could be something like: $e(y) = e(x) \cdot \parallel_x^y$<br>
+...where $v = y - x$.  I'll call this the generalized linear case.
+This would be especially useful in manifolds that do have curvature (commutation?), like quaternions, 
+where the exponential map of $e_1$ produces $R_x$ a rotation around the x axis and the exponential of $e_2$ produces $R_y$ a rotation around the y axis, 
+and $exp(\theta n^i e_i)$ produces $R_n$ a rotation around axis $n^i$ by angle $\theta$.  
+The $R_x$ and $R_y$ transforms do not commute, and both are distinctly different from $R_n$.<br>
 <br>
 
-The notation for a geodesic looks just like the notation for transport around the edges of a hypercube representaiton above, even though these represent two different transformations.
+Mind you, changing the chart coordinates in a linear fashion like this does not produce a geodesic transport.
+In order to do that, you would (once again) need to make use of the connection.  A double integral of some function of the connection?  
+After all, the geodesic equation is a 2nd derivative of the position.  Think on this one more later.
+The shorthand representation of our generalized linear parallel transport could be something like: $e(y) = e(x) \cdot \parallel_x^y$<br>
+<br>
+
+The notation for the generalized linear parallel transport looks just like the notation for transport around the edges of a hypercube representaiton above, even though these represent two different transformations.
 It looks like I need to specify in the notation a way to discern the path of the transport as well.
-Maybe just write $\parallel_C$ and specify that C is a curve, and whether the curve is a geodesic or whether the curve is a piecewise edge traversal from one corner of a hypercube to the other (as I first stated).<br>
+Maybe just write $\parallel_C$ and specify that C is a curve, and whether the curve is a geodesic, or a line in coordinate chart space, or a piecewise edge traversal from one corner of a hypercube to the other (as I first stated).
+So there is your solution to the geodesic case: just calculate the curve, and then substitute that curve into the coordinate evaluating the connection.<br>
+<br>
 <br>
 
 <hr>
@@ -332,6 +340,58 @@ $e(x) \cdot \parallel_x^y \cdot (\parallel_x^y)^{-1} \cdot v(x) = e(x) \cdot \pa
 $e(x) v(x) = e(y) v'(y)$<br>
 $v = v'$<br>
 <br>
+<br>
+
+<hr>
+<br>
+
+Integrating a vector field in Cartesian components, vs integrating a vector field wrt a fixed frame:<br>
+<br>
+
+I hope you can already see that integrating a vector with curvilinear components will not produce the same as integrating a vector field with Cartesian components.
+Just do any of many quick examples to prove this.  Integrate the $e_r$ vector through a curve in polar coordinates and compare it with some Cartesian integral results.<br>
+<br>
+
+What do we do when we integrate a vector field?  We start with $\int v(x) dV$.  
+Then we break it down into Cartesian components $\int e_I(x) v^I(x) dV$.  
+Then we tell ourselves that the Cartesian basis is constant throughout the integral - and not dependent on any integrated variables - and therefore we can factor it out: 
+$\int e_I(x) v^I(x) dV = \int e_I v^I(x) dV = e_I \int v^I(x) dV$.
+And that is your typical vector field integral recipe.<br>
+<br>
+
+But what if we're dealing with a non-Cartesian coordinate basis?  We break down our vector field: $\int e_\mu(x) v^\mu(x) dV$.  
+But here the typical error performed is that the basis is factored out, as it is done in the Cartesian basis case.  
+But the basis is dependent on the coordinate, so you can't do that: $\int e_\mu(x) v^\mu(x) dV \ne e_\mu(x) \int v^\mu(x) dV$.
+This statement doesn't even make sense.  
+You just factored out one of your integrating variables in the parameter of the basis.  
+You can only do this if the basis doesn't depend on the integrating parameter, and while this is true for Cartesian, it isn't for polar or just about any other choice.<br>
+<br>
+
+So what's the remedy?
+For some reason everyone thinks the remedy is to multiply by the Jacobian.  Go ahead and try to do that and see how far it gets you.  No, what's the real remedy?
+Pick a fixed tangent space to evalute the integral in, and transport each vector inside the integral onto that tangent space.  Then the basis isn't dependent on the integral.
+(Will the integral result be skewed if the fixed basis is not an orthonormal basis, such as in polar picking a basis where $r \ne 1$?)
+<br>
+
+So using our equation above on transporting vector components we get:<br>
+<br>
+
+$\int e_\mu(x) v^\mu(x) dV$<br>
+$= \int e_\mu(x) {(\parallel_x^{x_0})^\mu}_\alpha {(\parallel_{x_0}^x)^\alpha}_\nu v^\nu(x) dV$<br>
+$= \int e_\alpha(x_0) {(\parallel_{x_0}^x)^\alpha}_\mu v^\mu(x) dV$<br>
+...and now the basis is independent of the integral, so we can factor it out.<br>
+$= e_\alpha(x_0) \int {(\parallel_{x_0}^x)^\alpha}_\mu v^\mu(x) dV$<br>
+<br>
+Tada! Now we have an equation for our integral that uses no Cartesian basis components whatsoever.<br>
+<br>
+So from there if we want we can convert the equation into our Cartesian basis and viola:<br>
+$= e_I \cdot {e_\alpha}^I(x_0) \int {(\parallel_{x_0}^x)^\alpha}_\mu v^\mu(x) dV$<br>
+Hopefully the example cases below agree with this, especially in the event that our basis isn't normalized, where the integrated fixed-basis vector components might be some factor of the integrated Cartesian-basis vector components.
+I guess in that case the ratio would still be constant (since it is dependent on $x_0$, which is independent of the integral), and since integration is linear then we should be fine.<br>
+<br>
+
+<br>
+
 
 <hr>
 <br>
@@ -385,6 +445,7 @@ $[{e_\mu}^I] = \left[\begin{matrix}
 <br>
 
 ...where $S(a,b) = \left[\begin{matrix} a & 0 \\ 0 & b \end{matrix}\right]$ is a scale matrix, and $R(\phi)$ is defined as whatever above is left, which happens to look like a rotation matrix.<br>
+<br>
 <br>
 
 Now for the connections:<br>
@@ -520,6 +581,7 @@ $= \left[\begin{matrix}
 \end{matrix}\right]$<br>
 $= S(1,\frac{1}{r}) R(\phi_R - \phi_L) S(1, r)$<br>
 <br>
+<br>
 
 It just so happens that 
 $\parallel_{r_L}^{r_R} \cdot \parallel_{\phi_L}^{\phi_R} = \parallel_{\phi_L}^{\phi_R} \cdot \parallel_{r_L}^{r_R}$.  
@@ -536,13 +598,14 @@ $= S(1,\frac{1}{r_L}) R(\phi_R - \phi_L) S(1, r_L) S(1, \frac{r_R}{r_L})$<br>
 $= S(1,\frac{1}{r_L}) R(\phi_R - \phi_L) S(1, r_R)$<br>
 <br>
 
-So in both cases we end up with the general pararallel transport from coordinate chart domain point $x_L$ to $x_R$ as:<br>
+So in both cases we end up with the general linear pararallel transport from coordinate chart domain point $x_L$ to $x_R$ as:<br>
 <br>
 $\parallel_{x_L}^{x_R} = S(1, \frac{1}{r_L}) \cdot R(\phi_R - \phi_L) \cdot S(1, r_R)
 = \left[\begin{matrix}
 	cos(\phi_R - \phi_L) & -r_R sin(\phi_R - \phi_L) \\
 	\frac{1}{r_L} sin(\phi_R - \phi_L) & \frac{r_R}{r_L} cos(\phi_R - \phi_L)
 \end{matrix}\right]$<br> 
+<br>
 <br>
 
 What happens when we parallel transport our basis from $x_L$ to $x_R$?<br>
@@ -561,13 +624,117 @@ $= R(\phi_R) \cdot S(1, r_R)$<br>
 Tada!  We started with $e(x_L)$, we right-applied our parallel-transport transformation, and we ended up at $e(x_R)$.<br>
 <br>
 
-TODO verify that this works with my general-case equation above, and not just per-coordinate separately.  It probably will but only because polar coordinates have no Riemann curvature.  The general case still isn't a geodesic case.<br>
+TODO verify that this works with my generalized linear case equation above, and not just per-coordinate separately.  
+It probably will but only because polar coordinates have no Riemann curvature.  
+Also, try it with the geodesic case.<br> 
 <br>
 
-TODO verify that the integral of (a vector field transported to a fixed basis), then aligned to Cartesian, is equal to the integral of a (vector field aligned to Cartesian).<br>
+Now do the same thing, except give it some vector components:<br>
+$e_\mu(x_R) v^\mu(x_R)$<br>
+$= e_\alpha (x_L) \cdot {(\parallel_{x_L}^{x_R})^\alpha}_\mu v^\mu(x_R)$<br>
+Substitute for polar:<br>
+$= e (x_L) \cdot ( S(1,\frac{1}{r_L}) R(\phi_R - \phi_L) S(1, r_R) ) v(x_R)$<br>
+$= e (x_L) v'(x_L)$<br>
+So $v'(x_L) = S(1,\frac{1}{r_L}) R(\phi_R - \phi_L) S(1, r_R) v(x_R)$<br>
+It seems a bit counter-intuitive that we start with $v^\mu(x_R)$ and we scale its $v^\phi(x_R)$ component up by $r_R$, but don't forget $v^\phi$ is paired with $e_\phi$, and $|e_\phi| = r_R$, so $|v^\phi| = \frac{1}{r_R}$, so what we are doing is removing that influence from the basis at point $x_R$ before we go on to move things to $x_L$.<br>
 <br>
 
-TODO look at what the value of parallel transporting on dx then dy is vs on dy then dx is.<br>
+Speaking of vector field, let's get a better description of what the curvilinear vector components are in terms of the Cartesian vector components:<br>
+$e_I v^I = e_\mu v^\mu$<br>
+$\left[\begin{matrix} e_x & e_y \end{matrix}\right] \left[\begin{matrix} v^x \\ v^y \end{matrix}\right]
+= \left[\begin{matrix} e_r & e_\phi \end{matrix}\right] \left[\begin{matrix} v^r \\ v^\phi \end{matrix}\right]$<br>
+$\left[\begin{matrix} e_x & e_y \end{matrix}\right] \left[\begin{matrix} v^x \\ v^y \end{matrix}\right]
+= \left[\begin{matrix} e_x & e_y \end{matrix}\right] \left[\begin{matrix} cos(\phi) & -r sin(\phi) \\ sin(\phi) & r cos(\phi) \end{matrix}\right] \left[\begin{matrix} v^r \\ v^\phi \end{matrix}\right]$<br>
+$\left[\begin{matrix} v^x \\ v^y \end{matrix}\right] = \left[\begin{matrix} cos(\phi) & -r sin(\phi) \\ sin(\phi) & r cos(\phi) \end{matrix}\right] \left[\begin{matrix} v^r \\ v^\phi \end{matrix}\right]$<br>
+$\left[\begin{matrix} cos(\phi) & sin(\phi) \\ -\frac{1}{r}sin(\phi) & \frac{1}{r} cos(\phi) \end{matrix}\right] \left[\begin{matrix} v^x \\ v^y \end{matrix}\right] = \left[\begin{matrix} v^r \\ v^\phi \end{matrix}\right]$<br>
+<br>
+
+Now for our vector field integral:<br>
+First in Cartesian:<br>
+$\int v(x) dV$<br>
+$= \int e_I v^I(x) dV$<br>
+$= \left[\begin{matrix} e_x & e_y \end{matrix}\right] 
+	\int \left[\begin{matrix} v^x(x) \\ v^y(x) \end{matrix}\right] dV$<br>
+$= \left[\begin{matrix} e_x & e_y \end{matrix}\right] 
+	\left[\begin{matrix} \int v^x(x) dV \\ \int v^y(x) dV \end{matrix}\right]$<br>
+<br>
+
+Next in a fixed reference basis:<br>
+$\int v(x) dV$<br>
+$= e_I {e_\alpha}^I(x_0) \int {(\parallel_{x_0}^x)^\alpha}_\mu v^\mu(x) dV$<br>
+$= \left[\begin{matrix}
+	e_x & e_y
+\end{matrix}\right]
+\left[\begin{matrix}
+	cos(\phi_0) & -r_0 sin(\phi_0) \\
+	sin(\phi_0) & r_0 cos(\phi_0)
+\end{matrix}\right]
+\int 
+\left[\begin{matrix}
+	cos(\phi - \phi_0) & -r sin(\phi - \phi_0) \\
+	\frac{1}{r_0} sin(\phi - \phi_0) & \frac{r}{r_0} cos(\phi - \phi_0)
+\end{matrix}\right]
+\left[\begin{matrix}
+	v^r(x) \\
+	v^\phi(x)
+\end{matrix}\right]
+dV$<br>
+$= \left[\begin{matrix}
+	e_x & e_y
+\end{matrix}\right]
+\left[\begin{matrix}
+	cos(\phi_0) & -r_0 sin(\phi_0) \\
+	sin(\phi_0) & r_0 cos(\phi_0)
+\end{matrix}\right]
+\int 
+\left[\begin{matrix}
+	v^r(x) cos(\phi - \phi_0) - v^\phi(x) r sin(\phi - \phi_0) \\
+	v^r(x) \frac{1}{r_0} sin(\phi - \phi_0) + v^\phi(x) \frac{r}{r_0} cos(\phi - \phi_0)
+\end{matrix}\right]
+r dr d\phi$<br>
+$= \left[\begin{matrix}
+	e_r & e_\phi
+\end{matrix}\right]|_{(x_0)}
+\int 
+\left[\begin{matrix}
+	r v^r(x) (cos(\phi) cos(\phi_0) - sin(\phi) sin(\phi_0))
+	- r^2 v^\phi(x) (sin(\phi) cos(\phi_0) - cos(\phi) sin(\phi_0)) \\
+	
+	\frac{r}{r_0} (
+		v^r(x) (sin(\phi) cos(\phi_0) - cos(\phi) sin(\phi_0)) 
+		+ r v^\phi(x) (cos(\phi) cos(\phi_0) - sin(\phi) sin(\phi_0))
+	)
+\end{matrix}\right]
+dr d\phi$<br>
+$= \left[\begin{matrix}
+	e_r & e_\phi
+\end{matrix}\right]|_{(x_0)}
+\left[\begin{matrix}
+	cos(\phi_0) \left(
+		 \int_\phi \left( cos(\phi) \int_r \left( r v^r(x) \right) dr \right) d\phi
+		- \int_\phi \left( sin(\phi) \int_r \left( r^2 v^\phi(x) \right) dr \right) d\phi
+	\right)
+	
+	+ sin(\phi_0) \left(
+		\int_\phi \left( cos(\phi) \int_r \left( r^2 v^\phi(x) \right) dr \right) d\phi
+		- \int_\phi \left( sin(\phi) \int_r \left( r v^r(x) \right) dr \right) d\phi
+	\right)
+	\\
+
+	\frac{1}{r_0} cos(\phi_0) \left(
+		\int_\phi \left( sin(\phi) \int_r \left( r v^r(x) \right) dr \right) d\phi
+		+ \int_\phi \left( cos(\phi) \int_r \left( r^2 v^\phi(x) \right) dr \right) d\phi
+	\right)
+	
+	- \frac{1}{r_0} sin(\phi_0) \left(
+		\int_\phi \left( cos(\phi) \int_r \left( r v^r(x) \right) dr \right) d\phi
+		+ \int_\phi \left( sin(\phi) \int_r \left( r^2 v^\phi(x) \right) dr \right) d\phi
+	\right)
+\end{matrix}\right]$<br>
+...and keep going...<br>
+<br>
+<br>
+
 
 	</body>
 </html>
