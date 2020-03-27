@@ -732,41 +732,32 @@ $= \left[\begin{matrix}
 \end{matrix}\right]|_{(x_0)}
 \int 
 \left[\begin{matrix}
-	r v^r(x) (cos(\phi) cos(\phi_0) - sin(\phi) sin(\phi_0))
-	- r^2 v^\phi(x) (sin(\phi) cos(\phi_0) - cos(\phi) sin(\phi_0)) \\
+	v^r(x) (cos(\phi) cos(\phi_0) - sin(\phi) sin(\phi_0))
+	- r v^\phi(x) (sin(\phi) cos(\phi_0) - cos(\phi) sin(\phi_0)) \\
 	
-	\frac{r}{r_0} (
+	\frac{1}{r_0} (
 		v^r(x) (sin(\phi) cos(\phi_0) - cos(\phi) sin(\phi_0)) 
 		+ r v^\phi(x) (cos(\phi) cos(\phi_0) - sin(\phi) sin(\phi_0))
 	)
 \end{matrix}\right]
-dr d\phi$<br>
+r dr d\phi$<br>
+At this point I'm going to cite once again that $|e_\phi| = r$ and therefore $|v^\phi| \alpha r$.  If we convert this to an orthonormal basis: $e_\phi \rightarrow e_{\hat\phi} = \frac{1}{r} e_\phi$, then we can do the same with our components: $v^{\hat\hat} = r v^\phi$.<br>
+Now substitute:<br>
 $= \left[\begin{matrix}
 	e_r & e_\phi
 \end{matrix}\right]|_{(x_0)}
+\int 
 \left[\begin{matrix}
-	cos(\phi_0) \left(
-		 \int_\phi \left( cos(\phi) \int_r \left( r v^r(x) \right) dr \right) d\phi
-		- \int_\phi \left( sin(\phi) \int_r \left( r^2 v^\phi(x) \right) dr \right) d\phi
-	\right)
+	v^r(x) (cos(\phi) cos(\phi_0) - sin(\phi) sin(\phi_0))
+	- v^{\hat\phi}(x) (sin(\phi) cos(\phi_0) - cos(\phi) sin(\phi_0)) \\
 	
-	+ sin(\phi_0) \left(
-		\int_\phi \left( cos(\phi) \int_r \left( r^2 v^\phi(x) \right) dr \right) d\phi
-		- \int_\phi \left( sin(\phi) \int_r \left( r v^r(x) \right) dr \right) d\phi
-	\right)
-	\\
-
-	\frac{1}{r_0} cos(\phi_0) \left(
-		\int_\phi \left( sin(\phi) \int_r \left( r v^r(x) \right) dr \right) d\phi
-		+ \int_\phi \left( cos(\phi) \int_r \left( r^2 v^\phi(x) \right) dr \right) d\phi
-	\right)
-	
-	- \frac{1}{r_0} sin(\phi_0) \left(
-		\int_\phi \left( cos(\phi) \int_r \left( r v^r(x) \right) dr \right) d\phi
-		+ \int_\phi \left( sin(\phi) \int_r \left( r^2 v^\phi(x) \right) dr \right) d\phi
-	\right)
-\end{matrix}\right]$<br>
-...and keep going...<br>
+	\frac{1}{r_0} (
+		v^r(x) (sin(\phi) cos(\phi_0) - cos(\phi) sin(\phi_0)) 
+		+ v^{\hat\phi}(x) (cos(\phi) cos(\phi_0) - sin(\phi) sin(\phi_0))
+	)
+\end{matrix}\right]
+r dr d\phi$<br>
+And at this point I'll just make another lazy argument, that our vector integral is just a rotated form of the Cartesian representation of the vector integral, so because an integral is a linear operator, then the (constant) rotation of the integral of the vector will be equal to the integral of the rotation of the vector.<br>
 <br>
 <br>
 
