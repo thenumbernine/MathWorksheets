@@ -379,6 +379,8 @@ $v = v'$<br>
 
 Integrating a vector field in Cartesian components, vs integrating a vector field wrt a fixed frame:<br>
 <br>
+TODO move everything else to a 'parallel projector' worksheet, probably in the 'Differential Geometry' folder, and then move this section (and the associated examples) to a 'integrating vector field in curvilinear coordinates' worksheet.<br>
+<br>
 
 I hope you can already see that integrating a vector with curvilinear components will not produce the same as integrating a vector field with Cartesian components.
 Just do any of many quick examples to prove this.  Integrate the $e_r$ vector through a curve in polar coordinates and compare it with some Cartesian integral results.<br>
@@ -414,9 +416,9 @@ $= \int e_\alpha(x_0) {P(x,x_0)^\alpha}_\mu v^\mu(x) dV$<br>
 ...and now the basis is independent of the integral, so we can factor it out.<br>
 $= e_\alpha(x_0) \int {P(x,x_0)^\alpha}_\mu v^\mu(x) dV$<br>
 <br>
-Tada! Now we have an equation for our integral that uses no Cartesian basis components whatsoever.<br>
+Tada! Now we have an equation for our integral whose components are with respect to a fixed tangent space $e_\alpha(x_0)$, and the equation doesn't use any background Cartesian basis components whatsoever.<br>
 <br>
-So from there if we want we can convert the equation into our Cartesian basis and viola:<br>
+So from there if we want we can convert the equation into our Cartesian basis:<br>
 $= e_I \cdot {e_\alpha}^I(x_0) \int {P(x,x_0)^\alpha}_\mu v^\mu(x) dV$<br>
 Hopefully the example cases below agree with this, especially in the event that our basis isn't normalized, where the integrated fixed-basis vector components might be some factor of the integrated Cartesian-basis vector components.
 I guess in that case the ratio would still be constant (since it is dependent on $x_0$, which is independent of the integral), and since integration is linear then we should be fine.<br>
