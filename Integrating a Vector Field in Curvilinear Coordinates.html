@@ -7,7 +7,15 @@
 	</head>
 	<body>
 
+<br>
+
+<h3>Correct Finite Volume Integration of a Tensor Field on a Manifold</h3>
+<br>
+
 by Christopher Moore<br>
+<br>
+
+A lot of my sources are coming from my differential geometry notes at <a href='https://thenumbernine.github.io/'>https://thenumbernine.github.io/</a>.<br>
 <br>
 
 Start with a manifold $\mathcal{M}$ with dimension n.<br>
@@ -39,7 +47,7 @@ and covariant components are distinct per each column (so covariant indexes are 
 <br>
 
 While we're here, let's define the dual basis / inverse transform $e^\mu$, such that $e_\mu e^\nu = \delta^\nu_\mu$.<br>
-And lets define its Cartesian background components $e^\mu = {e^\mu}_I e^I$ where $e^I = e_I$ since the Cartesian metric is identity.<br>
+And let's define its Cartesian background components $e^\mu = {e^\mu}_I e^I$ where $e^I = e_I$ since the Cartesian metric is identity.<br>
 <br>
 
 ${e^\mu}_I = \downarrow \mu \overset{\rightarrow I}{\left[\begin{matrix}
@@ -57,6 +65,7 @@ This is probably a bad idea, and I should probably use some other symbol to deno
 <br>
 
 I'm going to be using $[A_{\mu\nu}]$ to denote a matrix representation of a tensor.
+Why?  Because often times omitting indexes implies summation of symbols.  So to distinguish between $\Gamma_\mu = {\Gamma^\alpha}_{\mu\alpha} = \frac{1}{2} \partial_\mu ln \sqrt{|g|}$ and $\Gamma_\mu = $ a matrix of ${\Gamma^\alpha}_{\mu\beta}$ I will wrap my matrices in brackets: $[\Gamma_\mu]$.<br>
 Sometimes I'll still keep the summation indexes as a reminder of contra/co-variant representation of the tensor component quantities, 
 other times I will remove the summation indexes if the contra-/co-variance of the tensor should be deducable.
 If the brackets do remain around a tensor, even if it is in index notation, that is just to serve as a reminder (to me) that this is a matrix value.<br>
@@ -95,7 +104,7 @@ Notice that, because I picked my contravariant components to be distinct per eac
 If you want to multiply the connection matrix on the left hand side of the basis matrix then you must use distinct contravariant components per each column (contravariant indexes are represented as row vectors) and distinct covariant compoments per each row (covariant indexes are represented as column vectors).<br>
 <br>
 
-Since we are differentiating the Cartesian components which are constant at all points, lets exchange the covariant derivative with a partial derivative:<br>
+Since we are differentiating the Cartesian components which are constant at all points, let's exchange the covariant derivative with a partial derivative:<br>
 $\frac{\partial}{\partial x^\mu} [{e_\nu}^I](x) = [{e_\alpha}^I](x) \cdot [{\Gamma^\alpha}_{\mu\nu}](x) $<br>
 <br>
 
@@ -132,59 +141,87 @@ Maybe with some more notation abuse I could write that as:<br>
 $[e_\nu](y) = [e_\alpha](x) 
 	\cdot \underset{\mu=1}{\overset{n}{\Pi}} exp\left( \int_{z^\mu = x^\mu}^{z^\mu = y^\mu} [{\Gamma^\alpha}_{\mu \nu}](y^{1..\mu-1} | z^\mu | x^{\mu+1..n}) dz^\mu \right)$<br>
 <br>
+
+Let's spare ourselves from writing this term any more than one time.  Let's define the 'parallel propagator', a linear transform for propagating vector components from the tangent space at one component on a manifold to the tangent space at another point:<br>
+<br>
+${P_\mu(x_L^\mu, x_R^\mu)^\alpha}_\nu = exp\left( -\int_{x'^\mu = x_L^\mu}^{x'^\mu = x_R^\mu} [{\Gamma^\alpha}_{\mu\nu}](x'^\mu) dx'^\mu \right)$<br>
+<br>
+The subscript $\mu$ here is denoting that we are travelling along a curve along the coordinate line of $x^\mu$.
+Notice the minus sign in the exponent.  This means we will perform the inverse of this when we apply it to our ${e_\mu}^I(x)$ basis.  
+Keep this in mind, it'll make sense later when we get to vector components.<br>
 <br>
 
-I should come up with some notation to denote the transform applied for dragging the basis from point x to point y.  How about:<br>
-${[\parallel_{x_L^\mu}^{x_R^\mu}]^\alpha}_\nu
-= exp\left( \int_{x'^\mu = x_L^\mu}^{x'^\mu = x_R^\mu} [{\Gamma^\alpha}_{\mu\nu}](x'^\mu) dx'^\mu \right)$<br>
+Mind you the result of $P(a,b)$ is a matrix, and the $\alpha$ and $\nu$ in this case are the matrix indexes.<br>
+Since it is the exponent of the integral of a matrix of the connection coefficients, I'm willing to bet that its transpose is what we use to propagate one-forms in the same way that the connection matrix transpose is used in the covariant derivative of one-forms.<br>
+For more on the parallel propagator, check out chapter 3 of Carroll.<br>
 <br>
 
-Mind you the result of $\parallel_a^b$ is a matrix, and the $\alpha$ and $\nu$ in this case are the matrix indexes.<br>
+Notice that this depends on the identity: $P^{-1}(x,y) = P(y,x)$<br>
+That can be proven quickly with:<br>
+$P(y,x)$<br>
+$= exp(-\int_y^x [\Gamma_v] d\lambda)$<br>
+$= exp(\int_x^y [\Gamma_v] d\lambda)$<br>
+$= exp(-\int_x^y [\Gamma_v] d\lambda)^{-1}$<br>
+$= P^{-1}(x,y)$<br>
 <br>
 
-The above transformation from $e_\nu(x_L^\mu)$ to $e_\nu(y^\mu_R)$ would look like:<br>
-$e(x_R^\mu) = e(x_L^\mu) \cdot \parallel_{x_L^\mu}^{x_R^\mu}$<br>
+Now the above transformation from $e_\nu(x_L^\mu)$ to $e_\nu(y^\mu_R)$ would look like:<br>
+$e(x_R^\mu) = e(x_L^\mu) \cdot (P^{-1} (x_L^\mu, x_R^\mu)) = e(x_L^\mu) \cdot (P(x_R^\mu, x_L^\mu))$<br>
 <br>
 
-And the above transformation from $e_\nu(x)$ to $e_\nu(y)$, going component-by-component, would look like:<br>
+Now the above transformation from $e_\nu(x)$ to $e_\nu(y)$, going component-by-component along the corners of a hypercube, would look like:<br>
 $e(y) = e(x) 
-	\cdot \parallel_{x^1}^{y^1} (x^1 ,..., x^n) 
+	\cdot P_1^{-1}((x^1, x^2, ,..., x^n), (y^1, x^2, ,..., x^n))
 	\cdot ... 
-	\cdot \parallel_{x^k}^{y^k} (y^1, ..., y^{k-1}, x^k, ..., x^n)
+	\cdot P_k^{-1}((y^1, ..., y^{k-1}, x^k,, x^{k+1}, ..., x^n), (y^1, ..., y^{k-1}, y^k, x^{k+1}, ..., x^n))
 	\cdot ... 
-	\cdot \parallel_{x^n}^{y^n} (y^1, ..., y^{n-1}, x^n)$<br>
+	\cdot P_n^{-1}((y^1, ..., y^{n-1}, x^n), (y^1, ..., y^{n-1}, y^n))$<br>
+Where we have slowly replaced one component of our coordinate at a time until we arrived at the destination of the curve.<br>
 <br>
-That can just be written as $e(x) \underset{k=1}{\overset{n}{\Pi}} \parallel_{x^k}^{y^k}$ if we don't mind hiding the chart coordinates, which seem to be an important detail.<br>
+That can just be written as $e(x) \underset{k=1}{\overset{n}{\Pi}} P_k^{-1}(x^k, y^k)$ if we don't mind hiding the chart coordinates, which seem to be an important detail.<br>
 <br>
 <br>
 
-Notice that order of application of the exp-integrals-of-connections is important.  If you were to swap orders then you would have to deal with the $[\nabla_\mu, \nabla_\mu] e_\alpha = e_\beta {R^\beta}_{\alpha\mu\nu}$ Riemann curvature tensor.  Think about exactly how later.<br>
+Notice that order of application of the exp-integrals-of-connections is important.  If you were to swap orders then you would have to deal with the $[\nabla_\mu, \nabla_\mu] e_\alpha = e_\beta {R^\beta}_{\alpha\mu\nu}$ Riemann curvature tensor.  Think about exactly how later.  I saw in the referenced S.E. that the commutation of the infintesimal propagator in the $e_\mu$ and then $e_\nu$ direction produces the curvature, so that answers that.<br>
 <br>
-Does this mean that, by the Bianchi identity of the Riemann curvature tensor, that exchanging an index may produce a result whose difference with the original is proportional to the Riemann curvature tensor but cycling all indexes will result in the same integral?  I'll think about that later.<br>
+Does this mean that, by the Bianchi identity of the Riemann curvature tensor, that exchanging an index may produce a result whose difference with the original is proportional to the Riemann curvature tensor but cycling all indexes will result in the same integral?  I'll think about that later.  Look into the path ordering stuff of Carroll for more on this.<br>
 <br>
 <br>
 
 Alright, what if you do want to just cut across the diagonal of the coordinate space hypercube instead of following the edges around the outside?
 I'm guessing that would look like:<br>
 <br>
-$[e_\nu](y) = [e_\alpha](x) \cdot exp\left( \int_{\lambda = 0}^{\lambda = 1} [{\Gamma^\alpha}_{\mu\nu}](x + \lambda v) v^\mu d\lambda \right)$<br>
+$[e_\nu](y) = [e_\alpha](x) \cdot exp\left( -\int_{\lambda = 0}^{\lambda = 1} [{\Gamma^\alpha}_{\mu\nu}](x + \lambda v) v^\mu d\lambda \right)^{-1}$<br>
 <br>
 ...where $v = y - x$.  I'll call this the generalized linear case.
-This would be especially useful in manifolds that do have curvature (commutation?), like quaternions, 
-where the exponential map of $e_1$ produces $R_x$ a rotation around the x axis and the exponential of $e_2$ produces $R_y$ a rotation around the y axis, 
-and $exp(\theta n^i e_i)$ produces $R_n$ a rotation around axis $n^i$ by angle $\theta$.  
-The $R_x$ and $R_y$ transforms do not commute, and both are distinctly different from $R_n$.<br>
+If you want to propagate along one certain coordinate $\mu$ a distance of $l$, just set $v^\nu = l \cdot \delta^\nu_\mu$.<br>
+<br>
+
+This definition of the generalized linear parallel propagator would be especially useful in the 3D rotation group, where the parallel propagator along a line corresponds to a rotation about the axis of the vector between line coordinates.<br> 
+Propagating along the x coordinate then the y coordinate vs y-then-x will give you the commutation of rotating along the x-axis then y-axis vs y-axis then x-axis -- both represent different rotations, and both are different to rotating directly along the (1,1,0) axis.<br>
+<br>
+
+TODO just write out another example section for 3D rotation groups.<br>
+Check out : <a href='https://thenumbernine.github.io/symmath/tests/output/rotation%20group.html'>https://thenumbernine.github.io/symmath/tests/output/rotation%20group.html</a><br>
+metric: $g_{\alpha\beta} = \delta_{\alpha\beta}$<br>
+commutation coefficients: ${c_{\alpha\beta}}^\gamma = \epsilon_{\alpha\beta\gamma}$<br>
+connection coefficients: ${\Gamma^\alpha}_{\beta\gamma} = \frac{1}{2} \epsilon_{\alpha\beta\gamma}$<br>
+Riemann curvature = ${R^\alpha}_{\beta\gamma\delta} = \frac{1}{2} \delta^{\alpha\beta}_{\gamma\delta}$<br>
+Integral of connection = antisymmetric matrix.  Notice that the dual of the matrix is a vector whose magnitude serves as the rotation angle and whose axis serves as the rotation axis.<br>
+Parallel propagator = exponent of integral of connection = rotation matrix along axis by angle as stated above.<br>
+Commutation of parallel propagator = Levi-Civita permutation tensor again.<br>
 <br>
 
 Mind you, changing the chart coordinates in a linear fashion like this does not produce a geodesic transport.
 In order to do that, you would (once again) need to make use of the connection.  A double integral of some function of the connection?  
 After all, the geodesic equation is a 2nd derivative of the position.  Think on this one more later.
-The shorthand representation of our generalized linear parallel transport could be something like: $e(y) = e(x) \cdot \parallel_x^y$<br>
+The shorthand representation of our generalized linear parallel transport could be something like: $e(y) = e(x) P_v^{-1}(x,y)$<br>
 <br>
 
 The notation for the generalized linear parallel transport looks just like the notation for transport around the edges of a hypercube representaiton above, even though these represent two different transformations.
 It looks like I need to specify in the notation a way to discern the path of the transport as well.
-Maybe just write $\parallel_C$ and specify that C is a curve, and whether the curve is a geodesic, or a line in coordinate chart space, or a piecewise edge traversal from one corner of a hypercube to the other (as I first stated).
+Just write $P_C(s,t)$ and specify that C is a curve, and whether the curve is a geodesic, or a line in coordinate chart space, or a piecewise edge traversal from one corner of a hypercube to the other (as I first stated).
+I'm not sure whether s and t should be parameters of that curve (which wouldn't convey much information unless the curve was along a coordinate line), or end-points of the curve (which could translate to some degree with our definition of coordinate-line parallel propoagators, however we would be interchanging points with scalars).
 So there is your solution to the geodesic case: just calculate the curve, and then substitute that curve into the coordinate evaluating the connection.<br>
 <br>
 <br>
@@ -315,29 +352,24 @@ How do we represent everything only in our curvilinear chart coordinates?<br>
 <br>
 
 Let's represent our $e(y)$ as a parallel transport of the basis from $e(x)$ to $e(y)$.<br>
-$e(y) = e(x) \cdot \parallel_x^y$<br>
+$e(y) = e(x) \cdot P^{-1}(x,y)$<br>
 Substitute to find:<br>
-$(e(x) \cdot \parallel_x^y)^{-1} e(x) v(x) = v'(y)$<br>
-$(\parallel_x^y)^{-1} e^{-1}(x) e(x) v(x) = v'(y)$<br>
-$\parallel_y^x \cdot v(x) = v'(y)$<br>
+$(e(x) \cdot P^{-1}(x,y))^{-1} e(x) v(x) = v'(y)$<br>
+$P(x,y) e^{-1}(x) e(x) v(x) = v'(y)$<br>
+$P(x,y) \cdot v(x) = v'(y)$<br>
 <br>
 
-Tada! Now we have a representation of the parallel transport that depends only on connections, not on the Cartesian basis.<br>
-<br>
-
-Notice that this depends on the identity: $(\parallel_x^y)^{-1} = \parallel_y^x$<br>
-That can be proven quickly with:<br>
-$\parallel_y^x$<br>
-$= exp(\int_y^x \Gamma_v d\lambda)$<br>
-$= exp(-\int_x^y \Gamma_v d\lambda)$<br>
-$= exp(\int_x^y \Gamma_v d\lambda)^{-1}$<br>
-$= (\parallel_x^y)^{-1}$<br>
+Tada! Now we have a representation of the parallel transport that depends only on connections, not on the Cartesian basis.  
+I told you that putting that minus sign would make sense.  So our 'forward' definition of the parallel propagator will propagate vector components, while its 'inverse' definition propagates basis vectors.
+Just like how the 'forward' definition acts on contravariant indexes and the 'inverse' definition acts on covariant indexes ... and the basis vectors are denoted with covariant indexes.<br>
 <br>
 
 The interesting thing is that the resulting components after parallel transport from x to y is $v(x)$ left-multiplied with the transport from y to x.<br>
 This is the same as the inverse of the parallel-transport transform from x to y, and that itself will be left-multiplied with the original parallel-transport transform from x to y, and that left-multiplied with $e(x)$, in order to deduce that $v' = v$:<br>
-$e(x) \cdot \parallel_x^y \cdot (\parallel_x^y)^{-1} \cdot v(x) = e(x) \cdot \parallel_x^y \cdot v'(y)$<br>
-$e(x) v(x) = e(y) v'(y)$<br>
+$v = e(x) v(x)$<br> 
+$v = e(x) \cdot P^{-1}(x,y) \cdot P(x,y) \cdot v(x)$<br>
+$v = e(x) \cdot P^{-1}(x,y) \cdot v'(y)$<br>
+$v = e(y) v'(y)$<br>
 $v = v'$<br>
 <br>
 <br>
@@ -377,15 +409,15 @@ So using our equation above on transporting vector components we get:<br>
 <br>
 
 $\int e_\mu(x) v^\mu(x) dV$<br>
-$= \int e_\mu(x) {(\parallel_x^{x_0})^\mu}_\alpha {(\parallel_{x_0}^x)^\alpha}_\nu v^\nu(x) dV$<br>
-$= \int e_\alpha(x_0) {(\parallel_{x_0}^x)^\alpha}_\mu v^\mu(x) dV$<br>
+$= \int e_\mu(x) {P^{-1}(x,x_0)^\mu}_\alpha {P(x,x_0)^\alpha}_\nu v^\nu(x) dV$<br>
+$= \int e_\alpha(x_0) {P(x,x_0)^\alpha}_\mu v^\mu(x) dV$<br>
 ...and now the basis is independent of the integral, so we can factor it out.<br>
-$= e_\alpha(x_0) \int {(\parallel_{x_0}^x)^\alpha}_\mu v^\mu(x) dV$<br>
+$= e_\alpha(x_0) \int {P(x,x_0)^\alpha}_\mu v^\mu(x) dV$<br>
 <br>
 Tada! Now we have an equation for our integral that uses no Cartesian basis components whatsoever.<br>
 <br>
 So from there if we want we can convert the equation into our Cartesian basis and viola:<br>
-$= e_I \cdot {e_\alpha}^I(x_0) \int {(\parallel_{x_0}^x)^\alpha}_\mu v^\mu(x) dV$<br>
+$= e_I \cdot {e_\alpha}^I(x_0) \int {P(x,x_0)^\alpha}_\mu v^\mu(x) dV$<br>
 Hopefully the example cases below agree with this, especially in the event that our basis isn't normalized, where the integrated fixed-basis vector components might be some factor of the integrated Cartesian-basis vector components.
 I guess in that case the ratio would still be constant (since it is dependent on $x_0$, which is independent of the integral), and since integration is linear then we should be fine.<br>
 <br>
@@ -483,7 +515,7 @@ $[\Gamma_\phi] = \left[\begin{matrix}
 And now for the exponentials of the integrals of the connections:<br>
 <br>
 
-$\parallel_{r_L}^{r_R} = exp(\int_{r_L}^{r_R} [\Gamma_r] dr)$<br>
+$P^{-1}(r_L, r_R) = exp(\int_{r_L}^{r_R} [\Gamma_r] dr)$<br>
 $= exp\left( \int_{r_L}^{r_R} \left[\begin{matrix}
 	0 & 0 \\
 	0 & \frac{1}{r}
@@ -512,7 +544,7 @@ $= \left[\begin{matrix}
 $= S(1, \frac{r_R}{r_L})$<br>
 <br>
 
-$\parallel_{\phi_L}^{\phi_R} = exp(\int_{\phi_L}^{\phi_R} [\Gamma_\phi] d\phi)$<br>
+$P^{-1}(\phi_L, \phi_R) = exp(\int_{\phi_L}^{\phi_R} [\Gamma_\phi] d\phi)$<br>
 $= exp\left(\int_{\phi_L}^{\phi_R} \left[\begin{matrix}
 	0 & -r \\
 	\frac{1}{r} & 0
@@ -584,23 +616,23 @@ $= S(1,\frac{1}{r}) R(\phi_R - \phi_L) S(1, r)$<br>
 <br>
 
 It just so happens that 
-$\parallel_{r_L}^{r_R} \cdot \parallel_{\phi_L}^{\phi_R} = \parallel_{\phi_L}^{\phi_R} \cdot \parallel_{r_L}^{r_R}$.  
+$P^{-1}(r_L, r_R) \cdot P^{-1}(\phi_L, \phi_R) = P^{-1}(\phi_L, \phi_R) \cdot P^{-1}(r_L, r_R)$.  
 Maybe because ${R^\alpha}_{\beta\mu\nu} = 0$, but that is still just speculation.<br>
 And the applying the parallel transport in different orderings gives us:<br> 
 <br>
 
-$\parallel_{r_L}^{r_R} \cdot \parallel_{\phi_L}^{\phi_R}$<br>
+$P^{-1}(r_L, r_R) \cdot P^{-1}(\phi_L, \phi_R)$<br>
 $= S(1, \frac{r_R}{r_L}) S(1,\frac{1}{r_R}) R(\phi_R - \phi_L) S(1, r_R)$<br>
 $= S(1,\frac{1}{r_L}) R(\phi_R - \phi_L) S(1, r_R)$<br>
 <br>
-$\parallel_{\phi_L}^{\phi_R} \cdot \parallel_{r_L}^{r_R}$<br>
+$P^{-1}(\phi_L, \phi_R) \cdot P^{-1}(r_L, r_R)$<br>
 $= S(1,\frac{1}{r_L}) R(\phi_R - \phi_L) S(1, r_L) S(1, \frac{r_R}{r_L})$<br>
 $= S(1,\frac{1}{r_L}) R(\phi_R - \phi_L) S(1, r_R)$<br>
 <br>
 
 So in both cases we end up with the general linear pararallel transport from coordinate chart domain point $x_L$ to $x_R$ as:<br>
 <br>
-$\parallel_{x_L}^{x_R} = S(1, \frac{1}{r_L}) \cdot R(\phi_R - \phi_L) \cdot S(1, r_R)
+$P^{-1}(x_L, x_R) = S(1, \frac{1}{r_L}) \cdot R(\phi_R - \phi_L) \cdot S(1, r_R)
 = \left[\begin{matrix}
 	cos(\phi_R - \phi_L) & -r_R sin(\phi_R - \phi_L) \\
 	\frac{1}{r_L} sin(\phi_R - \phi_L) & \frac{r_R}{r_L} cos(\phi_R - \phi_L)
@@ -610,7 +642,7 @@ $\parallel_{x_L}^{x_R} = S(1, \frac{1}{r_L}) \cdot R(\phi_R - \phi_L) \cdot S(1,
 
 What happens when we parallel transport our basis from $x_L$ to $x_R$?<br>
 <br>
-$e(x_L) \cdot \parallel_{x_L}^{x^R} = 
+$e(x_L) \cdot P^{-1}(x_L, x_R) = 
 \left(
 	R(\phi_L) \cdot S(1, r_L) 
 \right) \cdot \left(
@@ -619,6 +651,7 @@ $e(x_L) \cdot \parallel_{x_L}^{x^R} =
 $= R(\phi_L) \cdot R(\phi_R - \phi_L) \cdot S(1, r_R)$<br>
 And since our rotation axis are aligned, we can add our rotation angles together:<br>
 $= R(\phi_R) \cdot S(1, r_R)$<br>
+$= e(x_R)$<br>
 <br>
 
 Tada!  We started with $e(x_L)$, we right-applied our parallel-transport transformation, and we ended up at $e(x_R)$.<br>
@@ -631,7 +664,7 @@ Also, try it with the geodesic case.<br>
 
 Now do the same thing, except give it some vector components:<br>
 $e_\mu(x_R) v^\mu(x_R)$<br>
-$= e_\alpha (x_L) \cdot {(\parallel_{x_L}^{x_R})^\alpha}_\mu v^\mu(x_R)$<br>
+$= e_\alpha (x_L) \cdot {P^{-1}(x_L, x_R)^\alpha}_\mu v^\mu(x_R)$<br>
 Substitute for polar:<br>
 $= e (x_L) \cdot ( S(1,\frac{1}{r_L}) R(\phi_R - \phi_L) S(1, r_R) ) v(x_R)$<br>
 $= e (x_L) v'(x_L)$<br>
@@ -661,7 +694,7 @@ $= \left[\begin{matrix} e_x & e_y \end{matrix}\right]
 
 Next in a fixed reference basis:<br>
 $\int v(x) dV$<br>
-$= e_I {e_\alpha}^I(x_0) \int {(\parallel_{x_0}^x)^\alpha}_\mu v^\mu(x) dV$<br>
+$= e_I {e_\alpha}^I(x_0) \int {P^{-1}(x_0, x)^\alpha}_\mu v^\mu(x) dV$<br>
 $= \left[\begin{matrix}
 	e_x & e_y
 \end{matrix}\right]
@@ -734,6 +767,18 @@ $= \left[\begin{matrix}
 ...and keep going...<br>
 <br>
 <br>
+
+<hr>
+<br>
+Sources:<br>
+<br>
+<a href='https://preposterousuniverse.com/wp-content/uploads/grnotes-three.pdf'>https://preposterousuniverse.com/wp-content/uploads/grnotes-three.pdf</a><br>
+<a href='https://math.stackexchange.com/questions/1971216/questions-regarding-parallel-propagators'>https://math.stackexchange.com/questions/1971216/questions-regarding-parallel-propagators</a><br>
+My Differential Geometry notes at <a href='https://thenumbernine.github.io/'>https://thenumbernine.github.io/</a>, which themselves are based on these sources: <a href='https://thenumbernine.github.io/math/Differential%20Geometry/sources.html'>https://thenumbernine.github.io/math/Differential%20Geometry/sources.html</a><br>
+<br>
+<br>
+
+
 
 
 	</body>
