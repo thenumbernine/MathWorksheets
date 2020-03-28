@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<title>wave equation in hyperbolic form</title>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+	</head>
+	<body>
+
+$□φ = f$<br>
+<br>
+
+Let $V = \sqrt{|g|}$<br>
+<br>
+
+$\frac{1}{V} (V g^{ij} φ_{,i})_{,j} = f$<br>
+<br>
+
+...as finite difference...<br>
+<br>
+
+$\frac{1}{V} D_j (V g^{ij} D_i φ) = f$<br>
+<br>
+
+expanding the inner finite difference term:<br>
+<br>
+
+$\frac{1}{V[t,x,y,z]} ($<br>
+$	D_j( V[t,x,y,z] ($<br>
+$		  \frac{1}{2 Δt} g^{tj}[t,x,y,z] (φ[t+1,x,y,z] - φ[t-1,x,y,z])$<br>
+$		+ \frac{1}{2 Δx} g^{xj}[t,x,y,z] (φ[t,x+1,y,z] - φ[t,x-1,y,z])$<br>
+$		+ \frac{1}{2 Δy} g^{yj}[t,x,y,z] (φ[t,x,y+1,z] - φ[t,x,y-1,z])$<br>
+$		+ \frac{1}{2 Δz} g^{zj}[t,x,y,z] (φ[t,x,y,z+1] - φ[t,x,y,z-1])$<br>
+$	))$<br>
+$) = f$<br>
+<br>
+
+expanding the outer finite difference terms:<br>
+<br>
+
+$\frac{1}{V[t,x,y,z]} ($<br>
+$	\frac{1}{2 Δt} ($<br>
+$		V[t+1,x,y,z] ($<br>
+$			  \frac{1}{2 Δt} g^{tt}[t+1,x,y,z] (φ[t+2,x,y,z] - φ[t,x,y,z])$<br>
+$			+ \frac{1}{2 Δx} g^{xt}[t+1,x,y,z] (φ[t+1,x+1,y,z] - φ[t+1,x-1,y,z])$<br>
+$			+ \frac{1}{2 Δy} g^{yt}[t+1,x,y,z] (φ[t+1,x,y+1,z] - φ[t+1,x,y-1,z])$<br>
+$			+ \frac{1}{2 Δz} g^{zt}[t+1,x,y,z] (φ[t+1,x,y,z+1] - φ[t+1,x,y,z-1])$<br>
+$		) - V[t-1,x,y,z] ($<br>
+$			  \frac{1}{2 Δt} g^{tt}[t-1,x,y,z] (φ[t,x,y,z] - φ[t-2,x,y,z])$<br>
+$			+ \frac{1}{2 Δx} g^{xt}[t-1,x,y,z] (φ[t-1,x+1,y,z] - φ[t-1,x-1,y,z])$<br>
+$			+ \frac{1}{2 Δy} g^{yt}[t-1,x,y,z] (φ[t-1,x,y+1,z] - φ[t-1,x,y-1,z])$<br>
+$			+ \frac{1}{2 Δz} g^{zt}[t-1,x,y,z] (φ[t-1,x,y,z+1] - φ[t-1,x,y,z-1])$<br>
+$		)$<br>
+$	)$<br>
+$	+ \frac{1}{2 Δx} ($<br>
+$		V[t,x+1,y,z] ($<br>
+$			  \frac{1}{2 Δt} g^{tx}[t,x+1,y,z] (φ[t+1,x+1,y,z] - φ[t-1,x+1,y,z])$<br>
+$			+ \frac{1}{2 Δx} g^{xx}[t,x+1,y,z] (φ[t,x+2,y,z] - φ[t,x,y,z])$<br>
+$			+ \frac{1}{2 Δy} g^{yx}[t,x+1,y,z] (φ[t,x+1,y+1,z] - φ[t,x+1,y-1,z])$<br>
+$			+ \frac{1}{2 Δz} g^{zx}[t,x+1,y,z] (φ[t,x+1,y,z+1] - φ[t,x+1,y,z-1])$<br>
+$		) - V[t,x-1,y,z] ($<br>
+$			  \frac{1}{2 Δt} g^{tx}[t,x-1,y,z] (φ[t+1,x-1,y,z] - φ[t-1,x-1,y,z])$<br>
+$			+ \frac{1}{2 Δx} g^{xx}[t,x-1,y,z] (φ[t,x,y,z] - φ[t,x-2,y,z])$<br>
+$			+ \frac{1}{2 Δy} g^{yx}[t,x-1,y,z] (φ[t,x-1,y+1,z] - φ[t,x-1,y-1,z])$<br>
+$			+ \frac{1}{2 Δz} g^{zx}[t,x-1,y,z] (φ[t,x-1,y,z+1] - φ[t,x-1,y,z-1])$<br>
+$		)$<br>
+$	)$<br>
+$	+ \frac{1}{2 Δy} ($<br>
+$		V[t,x,y+1,z] ($<br>
+$			  \frac{1}{2 Δt} g^{ty}[t,x,y+1,z] (φ[t+1,x,y+1,z] - φ[t-1,x,y+1,z])$<br>
+$			+ \frac{1}{2 Δx} g^{xy}[t,x,y+1,z] (φ[t,x+1,y+1,z] - φ[t,x-1,y+1,z])$<br>
+$			+ \frac{1}{2 Δy} g^{yy}[t,x,y+1,z] (φ[t,x,y+2,z] - φ[t,x,y,z])$<br>
+$			+ \frac{1}{2 Δz} g^{zy}[t,x,y+1,z] (φ[t,x,y+1,z+1] - φ[t,x,y+1,z-1])$<br>
+$		) - V[t,x,y-1,z] ($<br>
+$			  \frac{1}{2 Δt} g^{ty}[t,x,y-1,z] (φ[t+1,x,y-1,z] - φ[t-1,x,y-1,z])$<br>
+$			+ \frac{1}{2 Δx} g^{xy}[t,x,y-1,z] (φ[t,x+1,y-1,z] - φ[t,x-1,y-1,z])$<br>
+$			+ \frac{1}{2 Δy} g^{yy}[t,x,y-1,z] (φ[t,x,y,z] - φ[t,x,y-2,z])$<br>
+$			+ \frac{1}{2 Δz} g^{zy}[t,x,y-1,z] (φ[t,x,y-1,z+1] - φ[t,x,y-1,z-1])$<br>
+$		)$<br>
+$	)$<br>
+$	+ \frac{1}{2 Δz} ($<br>
+$		V[t,x,y,z+1] ($<br>
+$			  \frac{1}{2 Δt} g^{tz}[t,x,y,z+1] (φ[t+1,x,y,z+1] - φ[t-1,x,y,z+1])$<br>
+$			+ \frac{1}{2 Δx} g^{xz}[t,x,y,z+1] (φ[t,x+1,y,z+1] - φ[t,x-1,y,z+1])$<br>
+$			+ \frac{1}{2 Δy} g^{yz}[t,x,y,z+1] (φ[t,x,y+1,z+1] - φ[t,x,y-1,z+1])$<br>
+$			+ \frac{1}{2 Δz} g^{zz}[t,x,y,z+1] (φ[t,x,y,z+2] - φ[t,x,y,z])$<br>
+$		) - V[t,x,y,z-1] ($<br>
+$			  \frac{1}{2 Δt} g^{tz}[t,x,y,z-1] (φ[t+1,x,y,z-1] - φ[t-1,x,y,z-1])$<br>
+$			+ \frac{1}{2 Δx} g^{xz}[t,x,y,z-1] (φ[t,x+1,y,z-1] - φ[t,x-1,y,z-1])$<br>
+$			+ \frac{1}{2 Δy} g^{yz}[t,x,y,z-1] (φ[t,x,y+1,z-1] - φ[t,x,y-1,z-1])$<br>
+$			+ \frac{1}{2 Δz} g^{zz}[t,x,y,z-1] (φ[t,x,y,z] - φ[t,x,y,z-2])$<br>
+$		)$<br>
+$	)$<br>
+$) = f$<br>
+<br>
+
+solve for φ[t+2,x,y,z]<br>
+<br>
+
+$φ[t+2,x,y,z] $<br>
+$= φ[t,x,y,z]$<br>
+$- Δt \frac{1}{g^{tt}[t+1,x,y,z]} ($<br>
+$	  \frac{1}{Δx} g^{tx}[t+1,x,y,z] (φ[t+1,x+1,y,z] - φ[t+1,x-1,y,z])$<br>
+$	+ \frac{1}{Δy} g^{ty}[t+1,x,y,z] (φ[t+1,x,y+1,z] - φ[t+1,x,y-1,z])$<br>
+$	+ \frac{1}{Δz} g^{tz}[t+1,x,y,z] (φ[t+1,x,y,z+1] - φ[t+1,x,y,z-1])$<br>
+$	- \frac{V[t-1,x,y,z]}{V[t+1,x,y,z]} ($<br>
+$		  \frac{1}{Δt} g^{tt}[t-1,x,y,z] (φ[t,x,y,z] - φ[t-2,x,y,z])$<br>
+$		+ \frac{1}{Δx} g^{tx}[t-1,x,y,z] (φ[t-1,x+1,y,z] - φ[t-1,x-1,y,z])$<br>
+$		+ \frac{1}{Δy} g^{ty}[t-1,x,y,z] (φ[t-1,x,y+1,z] - φ[t-1,x,y-1,z])$<br>
+$		+ \frac{1}{Δz} g^{tz}[t-1,x,y,z] (φ[t-1,x,y,z+1] - φ[t-1,x,y,z-1])$<br>
+$	)$<br>
+$)	$<br>
+$- \frac{Δt^2}{V[t+1,x,y,z] g^{tt}[t+1,x,y,z]} ($<br>
+$	\frac{1}{Δx} ($<br>
+$		V[t,x+1,y,z] ($<br>
+$			  \frac{1}{Δt} g^{tx}[t,x+1,y,z] (φ[t+1,x+1,y,z] - φ[t-1,x+1,y,z])$<br>
+$			+ \frac{1}{Δx} g^{xx}[t,x+1,y,z] (φ[t,x+2,y,z] - φ[t,x,y,z])$<br>
+$			+ \frac{1}{Δy} g^{xy}[t,x+1,y,z] (φ[t,x+1,y+1,z] - φ[t,x+1,y-1,z])$<br>
+$			+ \frac{1}{Δz} g^{xz}[t,x+1,y,z] (φ[t,x+1,y,z+1] - φ[t,x+1,y,z-1])$<br>
+$		) - V[t,x-1,y,z] ($<br>
+$			  \frac{1}{Δt} g^{tx}[t,x-1,y,z] (φ[t+1,x-1,y,z] - φ[t-1,x-1,y,z])$<br>
+$			+ \frac{1}{Δx} g^{xx}[t,x-1,y,z] (φ[t,x,y,z] - φ[t,x-2,y,z])$<br>
+$			+ \frac{1}{Δy} g^{xy}[t,x-1,y,z] (φ[t,x-1,y+1,z] - φ[t,x-1,y-1,z])$<br>
+$			+ \frac{1}{Δz} g^{xz}[t,x-1,y,z] (φ[t,x-1,y,z+1] - φ[t,x-1,y,z-1])$<br>
+$		)$<br>
+$	)$<br>
+$	+ \frac{1}{Δy} ($<br>
+$		V[t,x,y+1,z] ($<br>
+$			  \frac{1}{Δt} g^{ty}[t,x,y+1,z] (φ[t+1,x,y+1,z] - φ[t-1,x,y+1,z])$<br>
+$			+ \frac{1}{Δx} g^{xy}[t,x,y+1,z] (φ[t,x+1,y+1,z] - φ[t,x-1,y+1,z])$<br>
+$			+ \frac{1}{Δy} g^{yy}[t,x,y+1,z] (φ[t,x,y+2,z] - φ[t,x,y,z])$<br>
+$			+ \frac{1}{Δz} g^{yz}[t,x,y+1,z] (φ[t,x,y+1,z+1] - φ[t,x,y+1,z-1])$<br>
+$		) - V[t,x,y-1,z] ($<br>
+$			  \frac{1}{Δt} g^{ty}[t,x,y-1,z] (φ[t+1,x,y-1,z] - φ[t-1,x,y-1,z])$<br>
+$			+ \frac{1}{Δx} g^{xy}[t,x,y-1,z] (φ[t,x+1,y-1,z] - φ[t,x-1,y-1,z])$<br>
+$			+ \frac{1}{Δy} g^{yy}[t,x,y-1,z] (φ[t,x,y,z] - φ[t,x,y-2,z])$<br>
+$			+ \frac{1}{Δz} g^{yz}[t,x,y-1,z] (φ[t,x,y-1,z+1] - φ[t,x,y-1,z-1])$<br>
+$		)$<br>
+$	)$<br>
+$	+ \frac{1}{Δz} ($<br>
+$		V[t,x,y,z+1] ($<br>
+$			  \frac{1}{Δt} g^{tz}[t,x,y,z+1] (φ[t+1,x,y,z+1] - φ[t-1,x,y,z+1])$<br>
+$			+ \frac{1}{Δx} g^{xz}[t,x,y,z+1] (φ[t,x+1,y,z+1] - φ[t,x-1,y,z+1])$<br>
+$			+ \frac{1}{Δy} g^{yz}[t,x,y,z+1] (φ[t,x,y+1,z+1] - φ[t,x,y-1,z+1])$<br>
+$			+ \frac{1}{Δz} g^{zz}[t,x,y,z+1] (φ[t,x,y,z+2] - φ[t,x,y,z])$<br>
+$		) - V[t,x,y,z-1] ($<br>
+$			  \frac{1}{Δt} g^{tz}[t,x,y,z-1] (φ[t+1,x,y,z-1] - φ[t-1,x,y,z-1])$<br>
+$			+ \frac{1}{Δx} g^{xz}[t,x,y,z-1] (φ[t,x+1,y,z-1] - φ[t,x-1,y,z-1])$<br>
+$			+ \frac{1}{Δy} g^{yz}[t,x,y,z-1] (φ[t,x,y+1,z-1] - φ[t,x,y-1,z-1])$<br>
+$			+ \frac{1}{Δz} g^{zz}[t,x,y,z-1] (φ[t,x,y,z] - φ[t,x,y,z-2])$<br>
+$		)$<br>
+$	)$<br>
+$	+ \frac{1}{V[t,x,y,z]} f$<br>
+$)$<br>
+<br>
+
+substitute 2012 Visser acoustic black hole metric:<br>
+$g^{tt} = -\frac{1}{c^2}$<br>
+$g^{ti} = -\frac{v^i}{c^2}$<br>
+$g^{ij} = \delta^{ij} - \frac{v^i v^j}{c^2}$<br>
+<br>
+
+$φ[t+2,x,y,z] $<br>
+$= φ[t,x,y,z]$<br>
+$+ Δt ($<br>
+$	\frac{1}{Δt} \frac{V[t-1,x,y,z]}{V[t+1,x,y,z]} (φ[t,x,y,z] - φ[t-2,x,y,z])$<br>
+$	+ \frac{1}{Δx} ($<br>
+$		  \beta^x[t+1,x,y,z] (φ[t+1,x+1,y,z] - φ[t+1,x-1,y,z])$<br>
+$		- \beta^x[t-1,x,y,z] (φ[t-1,x+1,y,z] - φ[t-1,x-1,y,z]) \frac{V[t-1,x,y,z]}{V[t+1,x,y,z]}$<br>
+$	)$<br>
+$	+ \frac{1}{Δy} ($<br>
+$		  \beta^y[t+1,x,y,z] (φ[t+1,x,y+1,z] - φ[t+1,x,y-1,z])$<br>
+$		- \beta^y[t-1,x,y,z] (φ[t-1,x,y+1,z] - φ[t-1,x,y-1,z]) \frac{V[t-1,x,y,z]}{V[t+1,x,y,z]}$<br>
+$	)$<br>
+$	+ \frac{1}{Δz} ($<br>
+$		\beta^z[t+1,x,y,z] (φ[t+1,x,y,z+1] - φ[t+1,x,y,z-1])$<br>
+$		- \beta^z[t-1,x,y,z] (φ[t-1,x,y,z+1] - φ[t-1,x,y,z-1]) \frac{V[t-1,x,y,z]}{V[t+1,x,y,z]}$<br>
+$	)$<br>
+$	+ \frac{Δt}{V[t+1,x,y,z]} (c[x,y,z])^2 ($<br>
+$		\frac{1}{Δx} ($<br>
+$			V[t,x+1,y,z] ($<br>
+$				  \frac{1}{Δt} ( \frac{\beta^x}{c^2} )[t,x+1,y,z] (φ[t+1,x+1,y,z] - φ[t-1,x+1,y,z])$<br>
+$				+ \frac{1}{Δx} g^{xx}[t,x+1,y,z] (φ[t,x+2,y,z] - φ[t,x,y,z])$<br>
+$				+ \frac{1}{Δy} g^{xy}[t,x+1,y,z] (φ[t,x+1,y+1,z] - φ[t,x+1,y-1,z])$<br>
+$				+ \frac{1}{Δz} g^{xz}[t,x+1,y,z] (φ[t,x+1,y,z+1] - φ[t,x+1,y,z-1])$<br>
+$			) - V[t,x-1,y,z] ($<br>
+$				  \frac{1}{Δt} ( \frac{\beta^x}{c^2} )[t,x-1,y,z] (φ[t+1,x-1,y,z] - φ[t-1,x-1,y,z])$<br>
+$				+ \frac{1}{Δx} g^{xx}[t,x-1,y,z] (φ[t,x,y,z] - φ[t,x-2,y,z])$<br>
+$				+ \frac{1}{Δy} g^{xy}[t,x-1,y,z] (φ[t,x-1,y+1,z] - φ[t,x-1,y-1,z])$<br>
+$				+ \frac{1}{Δz} g^{xz}[t,x-1,y,z] (φ[t,x-1,y,z+1] - φ[t,x-1,y,z-1])$<br>
+$			)$<br>
+$		)$<br>
+$		+ \frac{1}{Δy} ($<br>
+$			V[t,x,y+1,z] ($<br>
+$				  \frac{1}{Δt} ( \frac{\beta^y}{c^2} )[t,x,y+1,z] (φ[t+1,x,y+1,z] - φ[t-1,x,y+1,z])$<br>
+$				+ \frac{1}{Δx} g^{xy}[t,x,y+1,z] (φ[t,x+1,y+1,z] - φ[t,x-1,y+1,z])$<br>
+$				+ \frac{1}{Δy} g^{yy}[t,x,y+1,z] (φ[t,x,y+2,z] - φ[t,x,y,z])$<br>
+$				+ \frac{1}{Δz} g^{yz}[t,x,y+1,z] (φ[t,x,y+1,z+1] - φ[t,x,y+1,z-1])$<br>
+$			) - V[t,x,y-1,z] ($<br>
+$				  \frac{1}{Δt} ( \frac{\beta^y}{c^2} )[t,x,y-1,z] (φ[t+1,x,y-1,z] - φ[t-1,x,y-1,z])$<br>
+$				+ \frac{1}{Δx} g^{xy}[t,x,y-1,z] (φ[t,x+1,y-1,z] - φ[t,x-1,y-1,z])$<br>
+$				+ \frac{1}{Δy} g^{yy}[t,x,y-1,z] (φ[t,x,y,z] - φ[t,x,y-2,z])$<br>
+$				+ \frac{1}{Δz} g^{yz}[t,x,y-1,z] (φ[t,x,y-1,z+1] - φ[t,x,y-1,z-1])$<br>
+$			)$<br>
+$		)$<br>
+$		+ \frac{1}{Δz} ($<br>
+$			V[t,x,y,z+1] ($<br>
+$				  \frac{1}{Δt} ( \frac{\beta^z}{c^2} )[t,x,y,z+1] (φ[t+1,x,y,z+1] - φ[t-1,x,y,z+1])$<br>
+$				+ \frac{1}{Δx} g^{xz}[t,x,y,z+1] (φ[t,x+1,y,z+1] - φ[t,x-1,y,z+1])$<br>
+$				+ \frac{1}{Δy} g^{yz}[t,x,y,z+1] (φ[t,x,y+1,z+1] - φ[t,x,y-1,z+1])$<br>
+$				+ \frac{1}{Δz} g^{zz}[t,x,y,z+1] (φ[t,x,y,z+2] - φ[t,x,y,z])$<br>
+$			) - V[t,x,y,z-1] ($<br>
+$				  \frac{1}{Δt} ( \frac{\beta^z}{c^2} )[t,x,y,z-1] (φ[t+1,x,y,z-1] - φ[t-1,x,y,z-1])$<br>
+$				+ \frac{1}{Δx} g^{xz}[t,x,y,z-1] (φ[t,x+1,y,z-1] - φ[t,x-1,y,z-1])$<br>
+$				+ \frac{1}{Δy} g^{yz}[t,x,y,z-1] (φ[t,x,y+1,z-1] - φ[t,x,y-1,z-1])$<br>
+$				+ \frac{1}{Δz} g^{zz}[t,x,y,z-1] (φ[t,x,y,z] - φ[t,x,y,z-2])$<br>
+$			)$<br>
+$		)$<br>
+$		+ \frac{1}{V[t,x,y,z]} f$<br>
+$	)$<br>
+$)$<br>
+<br>
+
+	</body>
+</html>
