@@ -27,30 +27,47 @@ I hope you can already see that integrating a vector with curvilinear components
 Just do any of many quick examples to prove this.  Integrate the $e_r$ vector through a curve in polar coordinates and compare it with some Cartesian integral results.<br>
 <br>
 
-What do we do when we integrate a vector field?  We start with $\int v(x) dV$.  
-Then we break it down into Cartesian components $\int e_I(x) v^I(x) dV$.  
-Then we tell ourselves that the Cartesian basis is constant throughout the integral - and not dependent on any integrated variables - and therefore we can factor it out: 
-$\int e_I(x) v^I(x) dV = \int e_I v^I(x) dV = e_I \int v^I(x) dV$.
+What do we do when we integrate a vector field?  We start with:<br>
+<br>
+$\int v(x) dV$<br>
+<br>
+Then we break it down into Cartesian components:<br>
+<br>
+$\int e_I(x) v^I(x) dV$<br>
+<br>
+Then we tell ourselves that the Cartesian basis is constant throughout the integral - and not dependent on any integrated variables - and therefore we can factor it out:<br>
+<br>
+$\int e_I(x) v^I(x) dV = \int e_I v^I(x) dV = e_I \int v^I(x) dV$<br>
+<br>
 And that is your typical vector field integral recipe.<br>
 <br>
 
-But what if we're dealing with a non-Cartesian coordinate basis?  We break down our vector field: $\int e_\mu(x) v^\mu(x) dV$.  
-But here the typical error performed is that the basis is factored out, as it is done in the Cartesian basis case.  
-But the basis is dependent on the coordinate, so you can't do that: $\int e_\mu(x) v^\mu(x) dV \ne e_\mu(x) \int v^\mu(x) dV$.
+But what if we're dealing with a non-Cartesian coordinate basis?  We break down our vector field:<br>
+<br>
+$\int e_\mu(x) v^\mu(x) dV$<br>
+<br>
+But here the typical error performed is that the basis is factored out, as it is done in the Cartesian basis case.
+But the basis is dependent on the coordinate, so you can't do that:<br>
+<br>
+$\int e_\mu(x) v^\mu(x) dV \ne e_\mu(x) \int v^\mu(x) dV$<br>
+<br>
 This statement doesn't even make sense.  
 You just factored out one of your integrating variables in the parameter of the basis.  
-You can only do this if the basis doesn't depend on the integrating parameter, and while this is true for Cartesian, it isn't for polar or just about any other choice.<br>
-<br>
+You can only do this if the basis doesn't depend on the integrating parameter, and while this is true for Cartesian, it isn't for polar or just about any other choice.
+<br><br>
 
 So what's the remedy?
 For some reason everyone thinks the remedy is to multiply by the Jacobian.  Go ahead and try to do that and see how far it gets you.  No, what's the real remedy?
-Pick a fixed tangent space to evalute the integral in, and transport each vector inside the integral onto that tangent space.  Then the basis isn't dependent on the integral.
-(Will the integral result be skewed if the fixed basis is not an orthonormal basis, such as in polar picking a basis where $r \ne 1$?)
+The concept of integrating a tangent space across a volume doesn't intuitively make sense.  But the tangent space is dependent on the integral variable.  We have to remove this dependency somehow.
+We have to pick a fixed tangent space to evalute the vector integral in, then we will transport each vector inside the integral onto that tangent space.
+Once we do this, the basis will be no longer dependent on the integral.
+Will the integral result be skewed if the fixed basis is not an orthonormal basis, such as in polar picking a basis where $r \ne 1$?  Nah, because the fixed tangent space will be a function of a fixed coordinate, not the integrated coordinates.
 <br>
 
 So using our equation above on transporting vector components we get:<br>
 <br>
 
+$\int v(x) dV$<br>
 $\int e_\mu(x) v^\mu(x) dV$<br>
 $= \int e_\mu(x) {P^{-1}(x,x_0)^\mu}_\alpha {P(x,x_0)^\alpha}_\nu v^\nu(x) dV$<br>
 $= \int e_\alpha(x_0) {P(x,x_0)^\alpha}_\mu v^\mu(x) dV$<br>
@@ -60,11 +77,143 @@ $= e_\alpha(x_0) \int {P(x,x_0)^\alpha}_\mu v^\mu(x) dV$<br>
 Tada! Now we have an equation for our integral whose components are with respect to a fixed tangent space $e_\alpha(x_0)$, and the equation doesn't use any background Cartesian basis components whatsoever.<br>
 <br>
 So from there if we want we can convert the equation into our Cartesian basis:<br>
+<br>
 $= e_I \cdot {e_\alpha}^I(x_0) \int {P(x,x_0)^\alpha}_\mu v^\mu(x) dV$<br>
+<br>
 Hopefully the example cases below agree with this, especially in the event that our basis isn't normalized, where the integrated fixed-basis vector components might be some factor of the integrated Cartesian-basis vector components.
 I guess in that case the ratio would still be constant (since it is dependent on $x_0$, which is independent of the integral), and since integration is linear then we should be fine.<br>
 <br>
 <br>
+
+<hr>
+<br>
+
+Now so far I have been speaking about the integral abstractly, but let's look at specific details of the integral.
+<br>
+What did they teach you in vector calculus class?  Integrating a curve through a scalar field is equal to:<br>
+<br>
+$\int_C f(x(t)) |\frac{\partial x}{\partial t}| dt$<br>
+<br>
+Let $f : \mathcal{M} \rightarrow \mathbb{R}$ be our function mapping points on the manifold to real values.<br>
+$x \in \mathbb{R}^n$ is a tuple in our coordinate chart domain.<br>
+<br>
+Of course this can be made more aesthetic by reparameterizing the curve by its arclength: $x(s) := x(t(s))$ for $s(t) = \int_{t_L}^{t_R} |\frac{\partial x(t)}{\partial t}| dt$.<br>
+<br>
+If we arclength-parameterize it up front then the integral simplifies:<br>
+<br>
+$\int_C f(x(s)) ds$<br>
+<br>
+...or just shorthand...<br>
+<br>
+$\int_C f(x) ds$<br>
+<br>
+...though this ambiguously hides in notation whether our curve is parameterized by arclength or by some other arbitrary vector - we have to infer it is arclength by the name of the differential ds.
+I never did like how vector calculus uses the same function notation to denote evaluating a function with respect to a variable and to denote reparameterizing a function with respect to a variable - not from the very first time I learned the material.<br>
+<br>
+
+Why am I bringing up scalar fields now?  Because integrating our Cartesian-component vector is equivalent of integrating the scalar values of the Cartesian components separately, so long as that Cartesian tangent space isn't moving throughout the integral (and it is fixed, because it is our global background Cartesian tangent space).<br>
+<br>
+
+So now let's look at a vector field integrated over a curve:<br>
+<br>
+$\int_C v(x) ds$<br>
+<br>
+
+This can be evaluated if we just integrate every component with respect to the global Cartesian tangent space:<br>
+<br>
+
+$\int_C v(x) ds$<br>
+$= e_I \int_C v^I(x) ds$<br>
+$= \left[\begin{matrix}
+	e_\hat{1} & | & ... & | & e_\hat{n}
+\end{matrix}\right]
+ \int_C
+\left[\begin{matrix}
+	v^\hat{1}(x) \\ --- \\ \vdots \\ ---- \\ v^\hat{n}(x)
+\end{matrix}\right]
+|\frac{\partial x}{\partial t}|
+dt$<br>
+$= \left[\begin{matrix}
+	e_\hat{1} & | & ... & | & e_\hat{n}
+\end{matrix}\right]
+\left[\begin{matrix}
+	\int_C v^\hat{1}(x) |\frac{\partial x}{\partial t}| dt \\ 
+	--- \\ 
+	\vdots \\ 
+	---- \\ 
+	\int_C v^\hat{n}(x) |\frac{\partial x}{\partial t}| dt
+\end{matrix}\right]$<br>
+<br>
+
+Alright, looks good.  In terms of real world applications, if we want to integrate the force acted on a particle as it travels along a curve, this should be the equation that we go to for help.<br>
+<br>
+But what if we don't want to evaluate the vector components in Cartesian?  What if we want to keep them in polar or cylindrical or spherical coordinates?<br>
+<br>
+Then we just recall our useful 'paralell propagator' for help.<br>
+<br>
+$\int_C v(x) ds$<br>
+
+$= e_\alpha(x_0) \int_C {P(x, x_0)^\alpha}_\mu v^\mu(x) ds$<br>
+
+$= \left[\begin{matrix}
+	e_1(x_0) & | & ... & | & e_n(x_0)
+\end{matrix}\right]
+ \int_C
+\left[\begin{matrix}
+	{P(x, x_0)^1}_1 & ... & {P(x, x_0)^1}_n \\
+	\vdots & & \vdots \\
+	{P(x, x_0)^n}_1 & ... & {P(x, x_0)^n}_n \\
+\end{matrix}\right]
+\cdot
+\left[\begin{matrix}
+	v^1(x) \\ --- \\ \vdots \\ ---- \\ v^n(x)
+\end{matrix}\right]
+|\frac{\partial x}{\partial t}|
+dt$<br>
+
+$= \left[\begin{matrix}
+	e_1(x_0) & | & ... & | & e_n(x_0)
+\end{matrix}\right]
+ \int_C
+\left[\begin{matrix}
+	{P(x, x_0)^1}_\mu v^\mu(x) \\ 
+	--- \\ 
+	\vdots \\ 
+	---- \\ 
+	{P(x, x_0)^n}_\mu v^\mu(x)
+\end{matrix}\right]
+|\frac{\partial x}{\partial t}|
+dt$<br>
+<br>
+And now that we are evaluating our components in a tangent space that is not dependent on the integral, we can assert that the integral of the vector is the vector of the integral:<br>
+<br>
+$= \left[\begin{matrix}
+	e_1(x_0) & | & ... & | & e_n(x_0)
+\end{matrix}\right]
+
+\left[\begin{matrix}
+	\int_C {P(x, x_0)^1}_\mu v^\mu(x) |\frac{\partial x}{\partial t}| dt \\ 
+	--- \\ 
+	\vdots \\ 
+	---- \\ 
+	\int_C {P(x, x_0)^n}_\mu v^\mu(x) |\frac{\partial x}{\partial t}| dt
+\end{matrix}\right]
+$<br>
+<br>
+<br>
+
+<hr>
+<br>
+
+Alright, what happens when you want to raise the stakes, and integrate over a volume in the manifold coordinate space:<br>
+$\int_{u^1 = u^1_L}^{u^1 = u^1_R}
+\int_{u^2 = u^2_L}^{u^2 = u^2_R}
+...
+du^2
+du^2
+$<br>
+<br>
+
 
 <hr>
 <br>
@@ -111,7 +260,7 @@ $= \left[\begin{matrix}
 	v^r(x) cos(\phi - \phi_0) - v^\phi(x) r sin(\phi - \phi_0) \\
 	v^r(x) \frac{1}{r_0} sin(\phi - \phi_0) + v^\phi(x) \frac{r}{r_0} cos(\phi - \phi_0)
 \end{matrix}\right]
-r dr d\phi$<br>
+dV$<br>
 $= \left[\begin{matrix}
 	e_r & e_\phi
 \end{matrix}\right]|_{(x_0)}
@@ -125,7 +274,7 @@ $= \left[\begin{matrix}
 		+ r v^\phi(x) cos(\phi - \phi_0)
 	)
 \end{matrix}\right]
-r dr d\phi$<br>
+dV$<br>
 At this point I'm going to cite once again that $|e_\phi| = r$ and therefore $|v^\phi| \propto r$.  If we convert this to an orthonormal basis: $e_\phi \rightarrow e_{\hat\phi} = \frac{1}{r} e_\phi$, then we can do the same with our components: $v^{\hat\phi} = r v^\phi$.<br>
 Now substitute:<br>
 $= \left[\begin{matrix}
@@ -141,8 +290,25 @@ $= \left[\begin{matrix}
 		+ v^{\hat\phi}(x) cos(\phi - \phi_0)
 	)
 \end{matrix}\right]
-r dr d\phi$<br>
-Looks good enough, right?<br>
+dV$<br>
+$= \left[\begin{matrix}
+	e_r & e_\phi
+\end{matrix}\right]|_{(x_0)}
+\cdot S(1, \frac{1}{r_0}) \cdot R(-\phi_0)
+\int 
+\left[\begin{matrix}
+	v^r(x) cos(\phi) - v^{\hat\phi}(x) sin(\phi) \\
+	v^r(x) sin(\phi) + v^{\hat\phi}(x) cos(\phi)
+\end{matrix}\right]
+dV$<br>
+Remember our basis in Cartesian coordinates, representated as the matrix.  This conveniently cancels out the linear transforms that were just factored out:<br>
+$= \int 
+\left[\begin{matrix}
+	v^r(x) cos(\phi) - v^{\hat\phi}(x) sin(\phi) \\
+	v^r(x) sin(\phi) + v^{\hat\phi}(x) cos(\phi)
+\end{matrix}\right]
+dV$<br>
+And that looks just like our $v^I$ Cartesian coordinates aligned to the polar basis.<br>
 <br>
 <br>
 
