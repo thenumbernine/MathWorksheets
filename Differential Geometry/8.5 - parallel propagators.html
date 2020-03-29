@@ -192,17 +192,6 @@ This definition of the generalized linear parallel propagator would be especiall
 Propagating along the x coordinate then the y coordinate vs y-then-x will give you the commutation of rotating along the x-axis then y-axis vs y-axis then x-axis -- both represent different rotations, and both are different to rotating directly along the (1,1,0) axis.<br>
 <br>
 
-TODO just write out another example section for 3D rotation groups.<br>
-Check out : <a href='https://thenumbernine.github.io/symmath/tests/output/rotation%20group.html'>https://thenumbernine.github.io/symmath/tests/output/rotation%20group.html</a><br>
-metric: $g_{\alpha\beta} = \delta_{\alpha\beta}$<br>
-commutation coefficients: ${c_{\alpha\beta}}^\gamma = \epsilon_{\alpha\beta\gamma}$<br>
-connection coefficients: ${\Gamma^\alpha}_{\beta\gamma} = \frac{1}{2} \epsilon_{\alpha\beta\gamma}$<br>
-Riemann curvature = ${R^\alpha}_{\beta\gamma\delta} = \frac{1}{2} \delta^{\alpha\beta}_{\gamma\delta}$<br>
-Integral of connection = antisymmetric matrix.  Notice that the dual of the matrix is a vector whose magnitude serves as the rotation angle and whose axis serves as the rotation axis.<br>
-Parallel propagator = exponent of integral of connection = rotation matrix along axis by angle as stated above.<br>
-Commutation of parallel propagator = Levi-Civita permutation tensor again.<br>
-<br>
-
 Mind you, changing the chart coordinates in a linear fashion like this does not produce a geodesic transport.
 In order to do that, you would (once again) need to make use of the connection.  A double integral of some function of the connection?  
 After all, the geodesic equation is a 2nd derivative of the position.  Think on this one more later.
@@ -623,8 +612,130 @@ $\left[\begin{matrix} e_x & e_y \end{matrix}\right] \left[\begin{matrix} v^x \\ 
 $\left[\begin{matrix} v^x \\ v^y \end{matrix}\right] = \left[\begin{matrix} cos(\phi) & -r sin(\phi) \\ sin(\phi) & r cos(\phi) \end{matrix}\right] \left[\begin{matrix} v^r \\ v^\phi \end{matrix}\right]$<br>
 $\left[\begin{matrix} cos(\phi) & sin(\phi) \\ -\frac{1}{r}sin(\phi) & \frac{1}{r} cos(\phi) \end{matrix}\right] \left[\begin{matrix} v^x \\ v^y \end{matrix}\right] = \left[\begin{matrix} v^r \\ v^\phi \end{matrix}\right]$<br>
 <br>
+<br>
 
+<hr>
+<br>
+
+Example: 3D Rotation Group<br>
+<br>
+
+Look at <a href='https://thenumbernine.github.io/symmath/tests/output/rotation%20group.html'>https://thenumbernine.github.io/symmath/tests/output/rotation%20group.html</a> for some derivations using symmath.<br>
+<br>
+
+Start with your generators:<br>
+${[K_j]^i}_k = \epsilon_{ijk}$<br>
+<br>
+
+Define your rotation matrix as the exponential map of the generators:<br>
+${[R_j(t)]^i}_k = exp(t {[K_j]^i}_k)$<br>
+$\frac{\partial}{\partial t} R_j(t) = K_j \cdot R_j(t)$<br>
+Solve for the generator now:<br>
+$K_j = \frac{\partial}{\partial t} R_j(t) \cdot R_j^{-1}(t)$<br>
+then I should show how this becomes $K_j = \frac{\partial}{\partial t} R_j(0)$<br>
+<br>
+
+Now define our Euler angles rotation matrix:<br>
+$P = R_z(\psi) R_x(\theta) R_z(\phi)$<br>
+Define our basis:<br>
+$e_j(P) = \frac{\partial}{\partial x^j} P = \frac{\partial x^\hat{k}}{\partial x^j} \frac{\partial}{\partial x^\hat{k}} P = K_j \cdot P$<br>
+Where the $x^j$ corresponds to the Cartesian basis while the $\hat{x}^j$ corresponds to the Euler angle rotation.<br>
+<br>
+
+Commutation coefficients: ${c_{ij}}^k e_k = [e_i, e_j] = -\epsilon_{ijk} e_k$.<br>
+<br>
+
+Connection coefficients: ${\Gamma^\alpha}_{\beta\gamma} = \frac{1}{2} \epsilon_{\alpha\beta\gamma}$ is purely based on the commutation since the metric is constant.<br>
+<br>
+
+${\Gamma^i}_{xj} = [\frac{1}{2} \epsilon_{i x j}] = \downarrow i \overset{\rightarrow j}{\left[\begin{matrix}
+	0 & 0 & 0 \\
+	0 & 0 & -\frac{1}{2} \\
+	0 & \frac{1}{2} & 0
+\end{matrix}\right]}$<br>
+<br>
+
+${\Gamma^i}_{yj} = [\frac{1}{2} \epsilon_{i y j}] = \left[\begin{matrix}
+	0 & 0 & \frac{1}{2} \\
+	0 & 0 & 0 \\
+	-\frac{1}{2} & 0 & 0
+\end{matrix}\right]$<br>
+<br>
+
+${\Gamma^i}_{z j} = [\frac{1}{2} \epsilon_{i z j}] = \left[\begin{matrix}
+	0 & -\frac{1}{2} & 0 \\
+	\frac{1}{2} & 0 & 0 \\
+	0 & 0 & 0
+\end{matrix}\right]$<br>
+<br>
+
+Linear combination of the connection:<br>
+<br>
+
+$v^i \Gamma_i = \frac{1}{2} \left[\begin{matrix}
+	0 & -v^z & v^y \\
+	v^z & 0 & -v^x \\
+	-v^y & v^x & 0
+\end{matrix}\right]$<br>
+<br>
+
+Integral of connection:<br>
+<br>
+
+$\int_0^1 v^i \Gamma_i d\lambda = v^i \Gamma_i = \frac{1}{2} \left[\begin{matrix}
+	0 & -v^z & v^y \\
+	v^z & 0 & -v^x \\
+	-v^y & v^x & 0
+\end{matrix}\right]$<br>
+<br>
+
+Parallel propagator, based on the 'general linear' form / linear interpolation in chart coordinates:<br>
+<br>
+
+$P(x,y) = exp(-\int_{\lambda = 0}^{\lambda = 1} \Gamma_i v^i d\lambda)$<br>
+
+$P(x,y) = exp\left( \frac{1}{2} \left[\begin{matrix}
+	0 & v^z & -v^y \\
+	-v^z & 0 & v^x \\
+	v^y & -v^x & 0
+\end{matrix}\right] \right)$<br>
+<br>
+
+Let $|v| = \sqrt{(v^x)^2 + (v^y)^2 + (v^z)^2}$ and $\hat{v}^i = \frac{1}{|v|} v^i$<br>
+<br>
+
+$P(x,y) = exp\left( \frac{|v|}{2} \left[\begin{matrix}
+	0 & \hat{v}^z & -\hat{v}^y \\
+	-\hat{v}^z & 0 & \hat{v}^x \\
+	\hat{v}^y & -\hat{v}^x & 0
+\end{matrix}\right] \right)$<br>
+<br>
+
+$P(x,y) = R_\hat{v}(-\frac{|v|}{2})$<br>
+<br>
+
+Applied:<br>
+$v = e(x) v(x)$<br>
+$= e(x) P(y,x) P(x,y) v(x)$<br>
+$= e(x) R_\hat{v}(\frac{|v|}{2}) R_\hat{v}(-\frac{|v|}{2}) v(x)$<br>
+$= e(y) v'(y)$<br>
+<br>
+
+So $e(y) = e(x) R_\hat{v}(\frac{|v|}{2})$<br>
+And $v'(y) = R_\hat{v}(-\frac{|v|}{2}) v(x)$<br>
+<br>
+
+Conceptually, left-multiplying a transformation is applying the transformation relative to the global basis, and right-multiplying it is apply it relative to the local basis.<br>
+<br>
+
+Riemann curvature = ${R^i}_{jkl} = \frac{1}{2} \delta^{ij}_{kl}$<br>
+<br>
+
+Notice that the dual of the matrix is a vector whose magnitude serves as the rotation angle and whose axis serves as the rotation axis.<br>
+Parallel propagator = exponent of integral of connection = rotation matrix along axis by angle as stated above.<br>
+Commutation of parallel propagator = Levi-Civita permutation tensor again.<br>
+<br>
+<br>
 
 	</body>
 </html>
-
