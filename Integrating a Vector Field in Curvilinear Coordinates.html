@@ -418,7 +418,6 @@ dx^n ... dx^1 dt
 \int_{x^n_L}^{x^n_R}
 	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
 	{P(x,x_C)^{j_k}}_{m_k} \cdot
-
 	{S^{i_1 ... i_p}}_{j_1 ... j_q}(x)
 	J(x) 
 dx^n ... dx^1 dt
@@ -426,6 +425,39 @@ $<br>
 <br>
 
 From here on out, true to much differential geometry literature, I am going to omit our $\otimes_{k=1}^p e_{l_k}(x_C) \otimes_{k=1}^q e^{m_k}(x_C)$ basis.<br>
+<br>
+I'm also going to combine all those parallel-propagators with a giant outer product into one, using my generalized index notation at the end of the 'parallel propagators' worksheet.<br>
+<br>
+
+$
+\otimes_{k=1}^p e_{l_k}(x_C)
+\otimes_{k=1}^q e^{m_k}(x_C)
+
+\int_{t=t_L}^{t=t_R}
+\int_{x^1_L}^{x^1_R}
+...
+\int_{x^n_L}^{x^n_R}
+	P(x,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
+	\left( \frac{\partial}{\partial t} 
+		{u^{i_1 ... i_p}}_{j_1 .. j_q}(x) 
+		+ \nabla_k {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x) 
+	\right) 
+	J(x) 
+dx^n ... dx^1 dt
+\\
+= 
+\otimes_{k=1}^p e_{l_k}(x_C)
+\otimes_{k=1}^q e^{m_k}(x_C)
+
+\int_{t=t_L}^{t=t_R}
+\int_{x^1_L}^{x^1_R}
+...
+\int_{x^n_L}^{x^n_R}
+	P(x,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
+	{S^{i_1 ... i_p}}_{j_1 ... j_q}(x)
+	J(x) 
+dx^n ... dx^1 dt
+$<br>
 <br>
 
 I'm sure there's someone out there that has an opinion on whether the flux divergence index should go first or last, and I'm sure it has something to do with the one-form-meets-vector rule of matching first vector into the first form slot.  I'll think about this more later.
@@ -442,8 +474,7 @@ $
 \int_{x^1_L}^{x^1_R}
 ...
 \int_{x^n_L}^{x^n_R}
-	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-	{P(x,x_C)^{j_k}}_{m_k} \cdot
+	P(x,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 	\\
 	\left( \frac{\partial}{\partial t} 
 		{u^{i_1 ... i_p}}_{j_1 .. j_q}(x) 
@@ -460,8 +491,7 @@ dx^n ... dx^1 dt
 \int_{x^1_L}^{x^1_R}
 ...
 \int_{x^n_L}^{x^n_R}
-	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-	{P(x,x_C)^{j_k}}_{m_k} \cdot
+	P(x,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 	{S^{i_1 ... i_p}}_{j_1 ... j_q}(x) J(x) 
 dx^n ... dx^1 dt
 $<br>
@@ -528,8 +558,7 @@ $
 ...
 \int_{x^n_L}^{x^n_R}
 	J(x)
-	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-	{P(x,x_C)^{j_k}}_{m_k} \cdot
+	P(x,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 	\int_{t=t_L}^{t=t_R}
 	\left( \frac{\partial}{\partial t} 
 		{u^{i_1 ... i_p}}_{j_1 .. j_q}(x) 
@@ -542,8 +571,7 @@ dx^n ... dx^1
 ...
 \int_{x^n_L}^{x^n_R}
 \int_{t=t_L}^{t=t_R}
-	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-	{P(x,x_C)^{j_k}}_{m_k} \cdot
+	P(x,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 	\left( 
 		e_k ( {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x) ) 
 		+ {F^{m i_1 ... i_p}}_{j_1 ... j_q}(x) {\Gamma^k}_{km}(x)
@@ -558,8 +586,7 @@ dx^n ... dx^1 dt
 \int_{x^1_L}^{x^1_R}
 ...
 \int_{x^n_L}^{x^n_R}
-	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-	{P(x,x_C)^{j_k}}_{m_k} \cdot
+	P(x,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 	{S^{i_1 ... i_p}}_{j_1 ... j_q}(x) J(x) 
 dx^n ... dx^1 dt
 $<br>
@@ -569,8 +596,7 @@ $
 \int_{x^1_L}^{x^1_R}
 ...
 \int_{x^n_L}^{x^n_R}
-	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-	{P(x,x_C)^{j_k}}_{m_k} \cdot
+	P(x,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 	J(x)
 	\left( 
 		{u^{i_1 ... i_p}}_{j_1 .. j_q}(x, t_R)
@@ -583,8 +609,7 @@ dx^n ... dx^1
 ...
 \int_{x^n_L}^{x^n_R}
 \int_{t=t_L}^{t=t_R}
-	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-	{P(x,x_C)^{j_k}}_{m_k} \cdot
+	P(x,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 	\left( 
 		e_k ( {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x) )
 		+ {F^{m i_1 ... i_p}}_{j_1 ... j_q}(x) {\Gamma^k}_{km}(x)
@@ -599,8 +624,7 @@ dx^n ... dx^1 dt
 \int_{x^1_L}^{x^1_R}
 ...
 \int_{x^n_L}^{x^n_R}
-	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-	{P(x,x_C)^{j_k}}_{m_k} \cdot
+	P(x,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 	{S^{i_1 ... i_p}}_{j_1 ... j_q}(x) J(x) 
 dx^n ... dx^1 dt
 $<br>
@@ -613,8 +637,7 @@ $
 \int_{x^1_L}^{x^1_R}
 ...
 \int_{x^n_L}^{x^n_R}
-	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-	{P(x,x_C)^{j_k}}_{m_k} \cdot
+	P(x,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 	J(x)
 	\left( 
 		{u^{i_1 ... i_p}}_{j_1 .. j_q}(x, t_R)
@@ -627,8 +650,7 @@ dx^n ... dx^1
 \int_{x^1_L}^{x^1_R}
 ...
 \int_{x^n_L}^{x^n_R}
-	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-	{P(x,x_C)^{j_k}}_{m_k} \cdot
+	P(x,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 	\left(
 		e_k ( {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x) )
 		+ {F^{m i_1 ... i_p}}_{j_1 ... j_q}(x) {\Gamma^k}_{km}(x)
@@ -643,8 +665,7 @@ dx^n ... dx^1
 \int_{x^1_L}^{x^1_R}
 ...
 \int_{x^n_L}^{x^n_R}
-	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-	{P(x,x_C)^{j_k}}_{m_k} \cdot
+	P(x,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 	{S^{i_1 ... i_p}}_{j_1 ... j_q}(x) J(x) 
 dx^n ... dx^1 
 $<br>
@@ -672,8 +693,7 @@ $
 \int_{x^1_L}^{x^1_R}
 ...
 \int_{x^n_L}^{x^n_R}
-	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-	{P(x,x_C)^{j_k}}_{m_k} \cdot
+	P(x,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 	\left( 
 		e_k ( {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x) )
 		+ {F^{m i_1 ... i_p}}_{j_1 ... j_q}(x) {\Gamma^k}_{km}(x)
@@ -700,8 +720,7 @@ $\left(
 \int_{x^1_L}^{x^1_R}
 ...
 \int_{x^n_L}^{x^n_R}
-	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-	{P(x,x_C)^{j_k}}_{m_k} \cdot
+	P(x,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 	\left( 
 		\frac{1}{J(x)} \partial_\bar{k} ( J(x) {e_k}^\bar{k}(x) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x) )
 		+ \Sigma_{m=1}^p {F^{k i_1 ... m ... i_p}}_{j_1 ... j_q}(x) {\Gamma^{i_m}}_{k m}(x) 
@@ -726,8 +745,7 @@ $
 	\int_{x^1_L}^{x^1_R}
 	...
 	\int_{x^n_L}^{x^n_R}
-		{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-		{P(x,x_C)^{j_k}}_{m_k} \cdot
+		P(x,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 		\left( 
 			\partial_\bar{k} ( J(x) {e_k}^\bar{k}(x) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x) )
 			+ J(x) \left(
@@ -753,8 +771,7 @@ $
 		\int_{x^1_L}^{x^1_R}
 		...
 		\int_{x^n_L}^{x^n_R}
-			{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-			{P(x,x_C)^{j_k}}_{m_k} \cdot
+			P(x,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 			\partial_\bar{k} ( J(x) {e_k}^\bar{k}(x) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x) )
 		dx^n ... dx^1 
 
@@ -763,8 +780,7 @@ $
 		\int_{x^1_L}^{x^1_R}
 		...
 		\int_{x^n_L}^{x^n_R}
-			{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-			{P(x,x_C)^{j_k}}_{m_k} \cdot
+			P(x,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 			\left( 
 				J(x) \left(
 					\Sigma_{m=1}^p {F^{k i_1 ... m ... i_p}}_{j_1 ... j_q}(x) {\Gamma^{i_m}}_{k m}(x) 
@@ -794,8 +810,7 @@ $
 		\int_{x^n_L}^{x^n_R}
 			\partial_\bar{k} 
 			\left(
-				{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-				{P(x,x_C)^{j_k}}_{m_k} \cdot
+				P(x,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 				J(x) {e_k}^\bar{k}(x) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x)
 			\right)
 		dx^n ... dx^1 
@@ -807,8 +822,7 @@ $
 		\int_{x^n_L}^{x^n_R}
 			\partial_\bar{k} 
 			\left( 
-				{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-				{P(x,x_C)^{j_k}}_{m_k} \cdot
+				P(x,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 			\right)
 			J(x) {e_k}^\bar{k}(x) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x)
 		dx^n ... dx^1 
@@ -818,8 +832,7 @@ $
 		\int_{x^1_L}^{x^1_R}
 		...
 		\int_{x^n_L}^{x^n_R}
-			{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-			{P(x,x_C)^{j_k}}_{m_k} \cdot
+			P(x,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 			\left( 
 				J(x) \left(
 					\Sigma_{m=1}^p {F^{k i_1 ... m ... i_p}}_{j_1 ... j_q}(x) {\Gamma^{i_m}}_{k m}(x) 
@@ -847,12 +860,10 @@ $
 		\overset{-\{x^k\}}{...}
 		\int_{x^n_L}^{x^n_R}
 			\left(
-				{P(x^k_R,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-				{P(x^k_R,x_C)^{j_k}}_{m_k} \cdot
+				P(x^k_R,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 				J(x^k_R) {e_k}^\bar{k}(x^k_R) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x^k_R)
 				- 
-				{P(x^k_L,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-				{P(x^k_L,x_C)^{j_k}}_{m_k} \cdot
+				P(x^k_L,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 				J(x^k_L) {e_k}^\bar{k}(x^k_L) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x^k_L)
 			\right)
 		dx^n 
@@ -866,8 +877,7 @@ $
 		\int_{x^n_L}^{x^n_R}
 			\partial_\bar{k} 
 			\left( 
-				{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-				{P(x,x_C)^{j_k}}_{m_k} \cdot
+				P(x,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 			\right)
 			J(x) {e_k}^\bar{k}(x) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x)
 		dx^n ... dx^1 
@@ -878,8 +888,7 @@ $
 		...
 		\int_{x^n_L}^{x^n_R}
 			\left( 
-				{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-				{P(x,x_C)^{j_k}}_{m_k} \cdot
+				P(x,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 				J(x) \left(
 					\Sigma_{m=1}^p {F^{k i_1 ... m ... i_p}}_{j_1 ... j_q}(x) {\Gamma^{i_m}}_{k m}(x) 
 					- \Sigma_{m=1}^q {F^{k i_1 ... i_p}}_{j_1 ... m ... j_q}(x) {\Gamma^m}_{k j_m}(x) 
@@ -909,12 +918,10 @@ $
 		\overset{-\{x^k\}}{...}
 		dx^1 
 		\left(
-			{P(x^k_R,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-			{P(x^k_R,x_C)^{j_k}}_{m_k} \cdot
+			P(x^k_R,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 			J(x^k_R) {e_k}^\bar{k}(x^k_R) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x^k_R)
 			- 
-			{P(x^k_L,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-			{P(x^k_L,x_C)^{j_k}}_{m_k} \cdot
+			P(x^k_L,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 			J(x^k_L) {e_k}^\bar{k}(x^k_L) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x^k_L)
 		\right)
 
@@ -925,8 +932,7 @@ $
 		\int_{x^n_L}^{x^n_R}
 			\partial_\bar{k} 
 			\left( 
-				{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-				{P(x,x_C)^{j_k}}_{m_k} \cdot
+				P(x,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 			\right)
 			J(x) {e_k}^\bar{k}(x) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x)
 		dx^n ... dx^1 
@@ -937,8 +943,7 @@ $
 		...
 		\int_{x^n_L}^{x^n_R}
 			\left( 
-				{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-				{P(x,x_C)^{j_k}}_{m_k} \cdot
+				P(x,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 				J(x) \left(
 					\Sigma_{m=1}^p {F^{k i_1 ... m ... i_p}}_{j_1 ... j_q}(x) {\Gamma^{i_m}}_{k m}(x) 
 					- \Sigma_{m=1}^q {F^{k i_1 ... i_p}}_{j_1 ... m ... j_q}(x) {\Gamma^m}_{k j_m}(x) 
@@ -974,12 +979,10 @@ $
 	\left(
 		\mathcal{S}_k
 		\left(
-			{P(x^k_R,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-			{P(x^k_R,x_C)^{j_k}}_{m_k} \cdot
+			P(x^k_R,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 			J(x^k_R) {e_k}^\bar{k}(x^k_R) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x^k_R)
 			- 
-			{P(x^k_L,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-			{P(x^k_L,x_C)^{j_k}}_{m_k} \cdot
+			P(x^k_L,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 			J(x^k_L) {e_k}^\bar{k}(x^k_L) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x^k_L)
 		\right)
 
@@ -990,8 +993,7 @@ $
 		\int_{x^n_L}^{x^n_R}
 			\partial_\bar{k} 
 			\left( 
-				{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-				{P(x,x_C)^{j_k}}_{m_k} \cdot
+				P(x,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 			\right)
 			J(x) {e_k}^\bar{k}(x) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x)
 		dx^n ... dx^1 
@@ -1002,8 +1004,7 @@ $
 		...
 		\int_{x^n_L}^{x^n_R}
 			\left( 
-				{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
-				{P(x,x_C)^{j_k}}_{m_k} \cdot
+				P(x,x_C) {{}^{l_1 ... l_p}}_{m_1 ... m_q} {{}_{i_1 ... i_p}}^{j_1 ... j_q}
 				J(x) \left(
 					\Sigma_{m=1}^p {F^{k i_1 ... m ... i_p}}_{j_1 ... j_q}(x) {\Gamma^{i_m}}_{k m}(x) 
 					- \Sigma_{m=1}^q {F^{k i_1 ... i_p}}_{j_1 ... m ... j_q}(x) {\Gamma^m}_{k j_m}(x) 

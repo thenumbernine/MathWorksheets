@@ -66,7 +66,9 @@ If I ever drop all indexes from $[e_\mu]$, I will shorthand denote $e = [{e_\mu}
 <br>
 
 Arbitrary (p q) tensor:<br>
-$A = {A^{\mu_1 ... \mu_p}}_{\nu_1 ... \nu_q} \underset{k=1}{\overset{p}{\otimes}} e_{\mu_k} \underset{k=1}{\overset{q}{\otimes}} e^{\nu_k} $<br>
+$A = {A^{\mu_1 ... \mu_p}}_{\nu_1 ... \nu_q} 
+	\underset{k=1}{\overset{p}{\otimes}} e_{\mu_k} \underset{k=1}{\overset{q}{\otimes}} e^{\nu_k}
+$<br>
 Vector field:<br>
 $v = v^\mu e_\mu$<br>
 <br>
@@ -360,6 +362,57 @@ $v = v'$<br>
 <br>
 <br>
 
+<hr>
+<br>
+
+How about permuting a (p,q) tensor?<br>
+<br>
+
+$A(y)$<br>
+$= {A^{\mu_1 ... \mu_p}}_{\nu_1 ... \nu_q}(y)
+	\underset{k=1}{\overset{p}{\otimes}} e_{\mu_k}(y) \underset{k=1}{\overset{q}{\otimes}} e^{\nu_k}(y)
+$<br>
+$= {P(x,y)^{\mu_1}}_{\alpha_1} \cdot ... \cdot 
+{P(x,y)^{\mu_p}}_{\alpha_p} \cdot 
+{P(x,y)^{\beta_1}}_{\nu_1} \cdot ... \cdot
+{P(x,y)^{\beta_q}}_{\nu_q} \cdot 
+{A^{\alpha_1 ... \alpha_p}}_{\beta_1 ... \beta_q}(y)
+	\underset{k=1}{\overset{p}{\otimes}} e_{\mu_k}(x) \underset{k=1}{\overset{q}{\otimes}} e^{\nu_k}(x)
+$<br>
+<br>
+
+Let's make our notation a bit more concise.  I am going to generalize the propagator indexes:<br>
+<br>
+
+
+${P(x, y)^{\mu_1 ... \mu_m}}_{\alpha_1 ... \alpha_m}
+=
+P(x, y) 
+	{{}^{\mu_1}}_{\alpha_1} 
+	...
+P(x, y) 
+	{{}^{\mu_m}}_{\alpha_m} 
+$<br>
+<br>
+...where each k and k+m of the 2m indexes match up, so you can write out the destination indexes and then the source indexes next to the parallel propagator of the tensor you are propagating, just as on a single parallel propagator the destination index is first and then the source index is second.<br>
+<br>
+Maybe I could do one better and simply define it as a giant tensor operator, like the projection operator or the covariant derivative operator:<br>
+<br>
+$A(y)$<br>
+$= P(x, y, A(x))$<br>
+$= P(x, y, {A^{\alpha_1 ... \alpha_p}}_{\beta_1 ... \beta_q}(x)
+	\underset{k=1}{\overset{p}{\otimes}} e_{\alpha_k}(x) \underset{k=1}{\overset{q}{\otimes}} e^{\beta_k}(x)
+$<br>
+$= {P(x, y, A)^{\mu_1 ... \mu_p}}_{\nu_1 ... \nu_q} 
+	\underset{k=1}{\overset{p}{\otimes}} e_{\mu_k}(x) \underset{k=1}{\overset{q}{\otimes}} e^{\nu_k}(x)
+$<br>
+$= {P(x, y)^{\mu_1}}_{\alpha_1} \cdot ... \cdot {P(x, y)^{\mu_p}}_{\alpha_p}
+	\cdot {P(x, y)^{\beta_1}}_{\nu_1} \cdot ... \cdot {P(x, y)^{\beta_q}}_{\nu_q}
+	\cdot {A^{\alpha_1 ... \alpha_p}}_{\beta_1 ... \beta_q}(x)
+	\underset{k=1}{\overset{p}{\otimes}} e_{\mu_k}(x) \underset{k=1}{\overset{q}{\otimes}} e^{\nu_k}(x)
+$<br>
+<br>
+<br>
 
 <hr>
 <br>
