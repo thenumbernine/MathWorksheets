@@ -527,9 +527,9 @@ $
 ...
 \int_{x^n_L}^{x^n_R}
 	J(x)
-	\int_{t=t_L}^{t=t_R}
 	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
 	{P(x,x_C)^{j_k}}_{m_k} \cdot
+	\int_{t=t_L}^{t=t_R}
 	\left( \frac{\partial}{\partial t} 
 		{u^{i_1 ... i_p}}_{j_1 .. j_q}(x) 
 	\right) 
@@ -653,23 +653,26 @@ At this point we have two options: we can assume u is constant throughout the ce
 I suppose we have a third option of simply considering the cell value to be the integral of u throughout the cell without its volume, but then we would have to figure out how to split it apart from the volume form integral, which we can't easily write out a general case for - we would have to calculate that uniquely for each choice of grid.<br>
 <br>
 
-Let's go down the rabbithole of assuming u, S, and F are piecewise constant throughout their volume - so we can factor out the J.
+Let's go down the rabbithole of assuming u and S are piecewise constant throughout their volume - so we can factor out the J.
+We can't make this assumption for F though, we need to assume it is piecewise constant throughout the surface of flux that it represents.
+To boot, when we start to deal with the added connections for non-scalar integrated varibales, we will have to also deal with the cell-centered flux values.
 Let's also introduce the coordinate $x_C$ as the center of the cell, midway between $x_L$ and $x_R$.
-Let's also define our cell volume as $\mathcal{V}(x_C) = \int_V J(x) dV$.<br>
+Let's also define our cell volume as $\mathcal{V}(x_C) = \int_V J(x) dV$.
+Notice that, if we don't treat our cell as piecewise constant, then we have to consider our parallel propagator's influence - in addition to the volume element - on the state and the source terms.
 <br><br>
-
-TODO ok here's where things break.  We can't separate the volume because the propagator is not constant throughout the integral.  We can't include the propagator with the volume in its integral because the indexes of the propagator are dependent on the state variable.  But if the state was constant throughout the integral then we could technically factor that out ... but we can't divide out the result -- the volume element integral is now a tensor itself.<br>
-<br>
 
 $
 \left( 
-	{u^{i_1 ... i_p}}_{j_1 .. j_q}(x_C, t_R)
-	- {u^{i_1 ... i_p}}_{j_1 .. j_q}(x_C, t_L)
+	{u^{l_1 ... l_p}}_{m_1 .. m_q}(x_C, t_R)
+	- {u^{l_1 ... l_p}}_{m_1 .. m_q}(x_C, t_L)
 \right) \mathcal{V}(x_C)
+\\
 + \Delta t
 \int_{x^1_L}^{x^1_R}
 ...
 \int_{x^n_L}^{x^n_R}
+	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+	{P(x,x_C)^{j_k}}_{m_k} \cdot
 	\left( 
 		e_k ( {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x) )
 		+ {F^{m i_1 ... i_p}}_{j_1 ... j_q}(x) {\Gamma^k}_{km}(x)
@@ -678,22 +681,26 @@ $
 	\right) 
 	J(x) 
 dx^n ... dx^1 
+\\
 = 
 \Delta t
-\cdot {S^{i_1 ... i_p}}_{j_1 ... j_q}(x_C) \cdot \mathcal{V}(x_C) 
+\cdot {S^{l_1 ... l_p}}_{m_1 ... m_q}(x_C) \cdot \mathcal{V}(x_C) 
 $<br>
 <br>
 
 Now let's substitute our Voss-Weyl identity:<br>
 <br>
 $\left( 
-	{u^{i_1 ... i_p}}_{j_1 .. j_q}(x_C, t_R)
-	- {u^{i_1 ... i_p}}_{j_1 .. j_q}(x_C, t_L)
+	{u^{l_1 ... l_p}}_{m_1 .. m_q}(x_C, t_R)
+	- {u^{l_1 ... l_p}}_{m_1 .. m_q}(x_C, t_L)
 \right) \mathcal{V}(x_C)
+\\
 + \Delta t
 \int_{x^1_L}^{x^1_R}
 ...
 \int_{x^n_L}^{x^n_R}
+	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+	{P(x,x_C)^{j_k}}_{m_k} \cdot
 	\left( 
 		\frac{1}{J(x)} \partial_\bar{k} ( J(x) {e_k}^\bar{k}(x) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x) )
 		+ \Sigma_{m=1}^p {F^{k i_1 ... m ... i_p}}_{j_1 ... j_q}(x) {\Gamma^{i_m}}_{k m}(x) 
@@ -701,22 +708,25 @@ $\left(
 	\right) 
 	J(x) 
 dx^n ... dx^1 
+\\
 = 
 \Delta t
-\cdot {S^{i_1 ... i_p}}_{j_1 ... j_q}(x_C) \cdot \mathcal{V}(x_C) 
+\cdot {S^{l_1 ... l_p}}_{m_1 ... m_q}(x_C) \cdot \mathcal{V}(x_C) 
 $<br>
 <br>
 And now let's rearrange this to be with respect to $u(t_R)$ (and cancel those J's):<br>
 <br>
 $
-{u^{i_1 ... i_p}}_{j_1 .. j_q}(x_C, t_R)
-= {u^{i_1 ... i_p}}_{j_1 .. j_q}(x_C, t_L)
+{u^{l_1 ... l_p}}_{m_1 ... m_q}(x_C, t_R)
+= {u^{l_1 ... l_p}}_{m_1 ... m_q}(x_C, t_L)
 + \Delta t \left( 
 - \frac{1}{\mathcal{V}(x_C)}
 \left(
 	\int_{x^1_L}^{x^1_R}
 	...
 	\int_{x^n_L}^{x^n_R}
+		{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+		{P(x,x_C)^{j_k}}_{m_k} \cdot
 		\left( 
 			\partial_\bar{k} ( J(x) {e_k}^\bar{k}(x) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x) )
 			+ J(x) \left(
@@ -726,21 +736,23 @@ $
 		\right) 
 	dx^n ... dx^1 
 \right)
-+ {S^{i_1 ... i_p}}_{j_1 ... j_q}(x_C)
++ {S^{l_1 ... l_p}}_{m_1 ... m_q}(x_C)
 \right)$<br>
 <br>
 
 Now we can use the fundamental theorem of calculus:<br>
 <br>
 $
-{u^{i_1 ... i_p}}_{j_1 .. j_q}(x_C, t_R)
-= {u^{i_1 ... i_p}}_{j_1 .. j_q}(x_C, t_L)
+{u^{l_1 ... l_p}}_{m_1 ... m_q}(x_C, t_R)
+= {u^{l_1 ... l_p}}_{m_1 ... m_q}(x_C, t_L)
 + \Delta t \left( 
 	- \frac{1}{\mathcal{V}(x_C)}
 	\left(
 		\int_{x^1_L}^{x^1_R}
 		...
 		\int_{x^n_L}^{x^n_R}
+			{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+			{P(x,x_C)^{j_k}}_{m_k} \cdot
 			\partial_\bar{k} ( J(x) {e_k}^\bar{k}(x) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x) )
 		dx^n ... dx^1 
 
@@ -748,6 +760,8 @@ $
 		\int_{x^1_L}^{x^1_R}
 		...
 		\int_{x^n_L}^{x^n_R}
+			{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+			{P(x,x_C)^{j_k}}_{m_k} \cdot
 			\left( 
 				J(x) \left(
 					\Sigma_{m=1}^p {F^{k i_1 ... m ... i_p}}_{j_1 ... j_q}(x) {\Gamma^{i_m}}_{k m}(x) 
@@ -756,12 +770,16 @@ $
 			\right) 
 		dx^n ... dx^1 
 	\right)
-	+ {S^{i_1 ... i_p}}_{j_1 ... j_q}(x_C)
+	+ {S^{l_1 ... l_p}}_{m_1 ... m_q}(x_C)
 
 \right)$<br>
+TODO but I can't keep going - I can't apply the FTC with the parallel-propagator in the way.
+THIS IS A HUGE FLAW.
+But I'll pretend $\partial P \approx 0$:<br>
+<br>
 $
-{u^{i_1 ... i_p}}_{j_1 .. j_q}(x_C, t_R)
-= {u^{i_1 ... i_p}}_{j_1 .. j_q}(x_C, t_L)
+{u^{l_1 ... l_p}}_{m_1 ... m_q}(x_C, t_R)
+= {u^{l_1 ... l_p}}_{m_1 ... m_q}(x_C, t_L)
 + \Delta t \left( 
 	- \frac{1}{\mathcal{V}(x_C)}
 	\left(
@@ -769,8 +787,13 @@ $
 		\overset{-\{x^k\}}{...}
 		\int_{x^n_L}^{x^n_R}
 			\left(
-				J(x_R) {e_k}^\bar{k}(x_R) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x_R)
-				- J(x_L) {e_k}^\bar{k}(x_L) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x_L)
+				{P(x^k_R,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+				{P(x^k_R,x_C)^{j_k}}_{m_k} \cdot
+				J(x^k_R) {e_k}^\bar{k}(x^k_R) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x^k_R)
+				- 
+				{P(x^k_L,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+				{P(x^k_L,x_C)^{j_k}}_{m_k} \cdot
+				J(x^k_L) {e_k}^\bar{k}(x^k_L) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x^k_L)
 			\right)
 		dx^n 
 		\overset{-\{x^k\}}{...}
@@ -781,6 +804,8 @@ $
 		...
 		\int_{x^n_L}^{x^n_R}
 			\left( 
+				{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+				{P(x,x_C)^{j_k}}_{m_k} \cdot
 				J(x) \left(
 					\Sigma_{m=1}^p {F^{k i_1 ... m ... i_p}}_{j_1 ... j_q}(x) {\Gamma^{i_m}}_{k m}(x) 
 					- \Sigma_{m=1}^q {F^{k i_1 ... i_p}}_{j_1 ... m ... j_q}(x) {\Gamma^m}_{k j_m}(x) 
@@ -789,32 +814,120 @@ $
 		dx^n ... dx^1 
 	\right)
 
-	+ {S^{i_1 ... i_p}}_{j_1 ... j_q}(x_C)
+	+ {S^{l_1 ... l_p}}_{m_1 ... m_q}(x_C)
 \right)$<br>
 <br>
 
-Here I use that $x^k_R$ and $x^k_L$ shorthand like I mentioned in the parallel propagator worksheet - sometimes it means a scalar value, sometimes it means the point with the k'th term replaced with that value.<br>
-I haven't touched the connections yet, and that's because here we have the option of using a special-case trick for the (0,0)-degree scalar case.  Let's explore that detour:<br>
+Once the fundamental theorem of calculus is applied, and since the flux is constant throughout the surface (treat those $x^k_L$ and $x^k_R$'s as if we are only replacing the k'th term of a coordinate otherwise filled with $x_C$), we now have a definite value within the weighted flux at the left and right sides, and we can factor this out of the integral over the other components:<br>
 <br>
 
 $
-u(x_C, t_R)
-= u(x_C, t_L)
+{u^{l_1 ... l_p}}_{m_1 ... m_q}(x_C, t_R)
+= {u^{l_1 ... l_p}}_{m_1 ... m_q}(x_C, t_L)
 + \Delta t \left( 
 	- \frac{1}{\mathcal{V}(x_C)}
 	\left(
 		\int_{x^1_L}^{x^1_R}
 		\overset{-\{x^k\}}{...}
 		\int_{x^n_L}^{x^n_R}
-			\left(
-				J(x_R) {e_k}^\bar{k}(x_R) F^k(x_R)
-				- J(x_L) {e_k}^\bar{k}(x_L) F^k(x_L)
-			\right)
 		dx^n 
 		\overset{-\{x^k\}}{...}
 		dx^1 
+		\left(
+			{P(x^k_R,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+			{P(x^k_R,x_C)^{j_k}}_{m_k} \cdot
+			J(x^k_R) {e_k}^\bar{k}(x^k_R) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x^k_R)
+			- 
+			{P(x^k_L,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+			{P(x^k_L,x_C)^{j_k}}_{m_k} \cdot
+			J(x^k_L) {e_k}^\bar{k}(x^k_L) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x^k_L)
+		\right)
+
+		+ 
+		\int_{x^1_L}^{x^1_R}
+		...
+		\int_{x^n_L}^{x^n_R}
+			\left( 
+				{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+				{P(x,x_C)^{j_k}}_{m_k} \cdot
+				J(x) \left(
+					\Sigma_{m=1}^p {F^{k i_1 ... m ... i_p}}_{j_1 ... j_q}(x) {\Gamma^{i_m}}_{k m}(x) 
+					- \Sigma_{m=1}^q {F^{k i_1 ... i_p}}_{j_1 ... m ... j_q}(x) {\Gamma^m}_{k j_m}(x) 
+				\right)
+			\right) 
+		dx^n ... dx^1 
 	\right)
 
+	+ {S^{l_1 ... l_p}}_{m_1 ... m_q}(x_C)
+\right)$<br>
+<br>
+
+Now we can define a new geometric value for the size of our surface domain in coordinate space:<br>
+<br>
+$\mathcal{S}_k = 
+		\int_{x^1_L}^{x^1_R}
+		\overset{-\{x^k\}}{...}
+		\int_{x^n_L}^{x^n_R}
+		dx^n 
+		\overset{-\{x^k\}}{...}
+		dx^1 
+= \Pi_{j=1 \\ j \ne k}^n (x^j_R - x^j_L)
+= \Pi_{j=1 \\ j \ne k}^n (\Delta x^j)
+$<br>
+<br>
+
+$
+{u^{l_1 ... l_p}}_{m_1 ... m_q}(x_C, t_R)
+= {u^{l_1 ... l_p}}_{m_1 ... m_q}(x_C, t_L)
++ \Delta t \left( 
+	- \frac{1}{\mathcal{V}(x_C)}
+	\left(
+		\mathcal{S}_k
+		\left(
+			{P(x^k_R,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+			{P(x^k_R,x_C)^{j_k}}_{m_k} \cdot
+			J(x^k_R) {e_k}^\bar{k}(x^k_R) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x^k_R)
+			- 
+			{P(x^k_L,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+			{P(x^k_L,x_C)^{j_k}}_{m_k} \cdot
+			J(x^k_L) {e_k}^\bar{k}(x^k_L) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x^k_L)
+		\right)
+
+		+ 
+		\int_{x^1_L}^{x^1_R}
+		...
+		\int_{x^n_L}^{x^n_R}
+			\left( 
+				{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+				{P(x,x_C)^{j_k}}_{m_k} \cdot
+				J(x) \left(
+					\Sigma_{m=1}^p {F^{k i_1 ... m ... i_p}}_{j_1 ... j_q}(x) {\Gamma^{i_m}}_{k m}(x) 
+					- \Sigma_{m=1}^q {F^{k i_1 ... i_p}}_{j_1 ... m ... j_q}(x) {\Gamma^m}_{k j_m}(x) 
+				\right)
+			\right) 
+		dx^n ... dx^1 
+	\right)
+
+	+ {S^{l_1 ... l_p}}_{m_1 ... m_q}(x_C)
+\right)$<br>
+<br>
+
+
+
+Here I use that $x^k_R$ and $x^k_L$ shorthand like I mentioned in the parallel propagator worksheet - sometimes it means a scalar value, sometimes it means the point with the k'th term replaced with that value.<br>
+I haven't touched the connections yet, and that's because here we have the option of using a special-case trick for the (0,0)-degree scalar case.  Remember, no state indexes means no parallel propagators. 
+Let's explore that detour:<br>
+<br>
+
+$
+u(x_C, t_R)
+= u(x_C, t_L)
++ \Delta t \left( 
+	- \frac{\mathcal{S}_k}{\mathcal{V}(x_C)}
+	\left(
+		J(x^k_R) {e_k}^\bar{k}(x^k_R) F^k(x^k_R)
+		- J(x^k_L) {e_k}^\bar{k}(x^k_L) F^k(x^k_L)
+	\right)
 	+ {S^{i_1 ... i_p}}_{j_1 ... j_q}(x_C)
 \right)$<br>
 <br>
@@ -823,44 +936,6 @@ So finite volume integration can be implementned with volume weighting across yo
 Just like in 1987 Thompson "Lecture Series in Computational Fluid Dynamics" ... somewhere?  Section 4, equation 4.127 maybe?<br>
 <br>
 
-Alright, now back to our full (p,q) tensor, time to deal with those extra indexes.  And of course, like we mentioned earlier, our solution is going to use the parallel-propagator.
-We have to parallel-propagate our vectors to some point, so let's choose $x_C$ as our point of reference.<br>
-<br>
-<br>
-
-$
-{u^{i_1 ... i_p}}_{j_1 .. j_q}(x_C, t_R)
-= {u^{i_1 ... i_p}}_{j_1 .. j_q}(x_C, t_L)
-+ \Delta t \left( 
-	- \frac{1}{\mathcal{V}(x_C)}
-	\left(
-		\int_{x^1_L}^{x^1_R}
-		\overset{-\{x^k\}}{...}
-		\int_{x^n_L}^{x^n_R}
-			\left(
-				J(x_R) {e_k}^\bar{k}(x_R) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x_R)
-				- J(x_L) {e_k}^\bar{k}(x_L) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x_L)
-			\right)
-		dx^n 
-		\overset{-\{x^k\}}{...}
-		dx^1 
-
-		+ 
-		\int_{x^1_L}^{x^1_R}
-		...
-		\int_{x^n_L}^{x^n_R}
-			\left( 
-				J(x) \left(
-					\Sigma_{m=1}^p {F^{k i_1 ... m ... i_p}}_{j_1 ... j_q}(x) {\Gamma^{i_m}}_{k m}(x) 
-					- \Sigma_{m=1}^q {F^{k i_1 ... i_p}}_{j_1 ... m ... j_q}(x) {\Gamma^m}_{k j_m}(x) 
-				\right)
-			\right) 
-		dx^n ... dx^1 
-	\right)
-
-	+ {S^{i_1 ... i_p}}_{j_1 ... j_q}(x_C)
-\right)$<br>
-<br>
 
 
 <hr>
