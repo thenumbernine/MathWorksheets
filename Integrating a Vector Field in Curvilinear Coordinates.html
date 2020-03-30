@@ -20,8 +20,6 @@ A lot of my sources are coming from my differential geometry notes at <a href='h
 
 Integrating a vector field in Cartesian components, vs integrating a vector field wrt a fixed frame:<br>
 <br>
-TODO move everything else to a 'parallel projector' worksheet, probably in the 'Differential Geometry' folder, and then move this section (and the associated examples) to a 'integrating vector field in curvilinear coordinates' worksheet.<br>
-<br>
 
 I hope you can already see that integrating a vector with curvilinear components will not produce the same as integrating a vector field with Cartesian components.
 Just do any of many quick examples to prove this.  Integrate the $e_r$ vector through a curve in polar coordinates and compare it with some Cartesian integral results.<br>
@@ -357,14 +355,14 @@ dx^n ... dx^1 dt
 \int_{x^1_L}^{x^1_R}
 ...
 \int_{x^n_L}^{x^n_R}
-	{S^{i_1 ... i_p}}_{j_1 ... j_q}(x)
-	J(x) 
+	S(x) \cdot J(x) 
 dx^n ... dx^1 dt
 $<br>
 <br>
 
 Now, once again, if you are integrating a scalar - or if you are integrating the Cartesian components of your vector as if they are scalars - this is where you pat yourself on the back because you assume you are done.  Not so fast.  We're talking about integrating vectors here.
 Let's generalize things a bit further now.  What if we are dealing with a (p, q) tensor?  Let's add on some indexes:<br>
+<br>
 $
 \int_{t=t_L}^{t=t_R}
 \int_{x^1_L}^{x^1_R}
@@ -386,6 +384,50 @@ dx^n ... dx^1 dt
 dx^n ... dx^1 dt
 $<br>
 <br>
+
+But remember from our introduction, we can't just integrate these or our basis will be moving along with our coordinates.  So let's introduce our parallel propagator, and let's propagate to our cell center $x_C$.  
+Mind you, if you propagate to a point with our global Cartesian basis (or if you equivalently define a single point's basis to be global) then you can simply reproduce the equation of our integral using global Cartesian basis components.<br>
+<br>
+
+$
+\otimes_{k=1}^p e_{l_k}(x_C)
+\otimes_{k=1}^q e^{m_k}(x_C)
+
+\int_{t=t_L}^{t=t_R}
+\int_{x^1_L}^{x^1_R}
+...
+\int_{x^n_L}^{x^n_R}
+	
+	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+	{P(x,x_C)^{j_k}}_{m_k} \cdot
+
+	\left( \frac{\partial}{\partial t} 
+		{u^{i_1 ... i_p}}_{j_1 .. j_q}(x) 
+		+ \nabla_k {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x) 
+	\right) 
+	J(x) 
+dx^n ... dx^1 dt
+\\
+= 
+\otimes_{k=1}^p e_{l_k}(x_C)
+\otimes_{k=1}^q e^{m_k}(x_C)
+
+\int_{t=t_L}^{t=t_R}
+\int_{x^1_L}^{x^1_R}
+...
+\int_{x^n_L}^{x^n_R}
+	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+	{P(x,x_C)^{j_k}}_{m_k} \cdot
+
+	{S^{i_1 ... i_p}}_{j_1 ... j_q}(x)
+	J(x) 
+dx^n ... dx^1 dt
+$<br>
+<br>
+
+From here on out, true to much differential geometry literature, I am going to omit our $\otimes_{k=1}^p e_{l_k}(x_C) \otimes_{k=1}^q e^{m_k}(x_C)$ basis.<br>
+<br>
+
 I'm sure there's someone out there that has an opinion on whether the flux divergence index should go first or last, and I'm sure it has something to do with the one-form-meets-vector rule of matching first vector into the first form slot.  I'll think about this more later.
 Also, this is a good example of why the original Ricci index notation came up with the idea of index groups: $I = i_1 ... i_p$.  I have already made use of capital letters to denote my global Cartesian tangent space, so I have already broken with that convention (more in line with the tetrad / Einstein-Cartan folks' convention fwiw).<br>
 <br>
@@ -400,6 +442,8 @@ $
 \int_{x^1_L}^{x^1_R}
 ...
 \int_{x^n_L}^{x^n_R}
+	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+	{P(x,x_C)^{j_k}}_{m_k} \cdot
 	\left( \frac{\partial}{\partial t} 
 		{u^{i_1 ... i_p}}_{j_1 .. j_q}(x) 
 		+ e_k( {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x) )
@@ -409,11 +453,14 @@ $
 	\right) 
 	J(x) 
 dx^n ... dx^1 dt
+\\
 = 
 \int_{t=t_L}^{t=t_R}
 \int_{x^1_L}^{x^1_R}
 ...
 \int_{x^n_L}^{x^n_R}
+	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+	{P(x,x_C)^{j_k}}_{m_k} \cdot
 	{S^{i_1 ... i_p}}_{j_1 ... j_q}(x) J(x) 
 dx^n ... dx^1 dt
 $<br>
@@ -463,8 +510,11 @@ $\nabla_i F^i = e_i (F^i) + F^i \frac{1}{J} e_i (J) + F^k e_i({e_k}^\bar{k}) {e^
 $\nabla_i F^i = \frac{1}{J} e_i (J F^i) + F^k e_i({e_k}^\bar{k}) {e^i}_\bar{k}$<br>
 you can keep going further and stumble upon<br>
 $\nabla_i F^i = \frac{1}{J} \partial_\bar{i} (J {e_i}^\bar{i} F^\bar{i})$<br>
+which is just the coordinate basis representation, but with tensor components transformed from non-coordinate to coordinate basis.<br>
 <br>
 So we have some risks and rewards in choosing our basis.  If we choose a coordinate basis then we get the volume element easily, and no commutation arises.  If we choose a non-coordinate then we have to deal with commutation, but an orthonormal basis means the metric determinant gradient is zero.<br>
+<br>
+TODO move this stuff into the Differential Geometry worksheet section on metric-cancelling connections.<br>
 <br>
 
 The equation is starting to get unruly.  Time to start making assumptions and cancelling terms.<br>
@@ -478,16 +528,21 @@ $
 \int_{x^n_L}^{x^n_R}
 	J(x)
 	\int_{t=t_L}^{t=t_R}
+	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+	{P(x,x_C)^{j_k}}_{m_k} \cdot
 	\left( \frac{\partial}{\partial t} 
 		{u^{i_1 ... i_p}}_{j_1 .. j_q}(x) 
 	\right) 
 	dt
 dx^n ... dx^1 
+\\
 + 
 \int_{x^1_L}^{x^1_R}
 ...
 \int_{x^n_L}^{x^n_R}
 \int_{t=t_L}^{t=t_R}
+	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+	{P(x,x_C)^{j_k}}_{m_k} \cdot
 	\left( 
 		e_k ( {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x) ) 
 		+ {F^{m i_1 ... i_p}}_{j_1 ... j_q}(x) {\Gamma^k}_{km}(x)
@@ -496,30 +551,39 @@ dx^n ... dx^1
 	\right) 
 	J(x) 
 dx^n ... dx^1 dt
+\\
 = 
 \int_{t=t_L}^{t=t_R}
 \int_{x^1_L}^{x^1_R}
 ...
 \int_{x^n_L}^{x^n_R}
+	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+	{P(x,x_C)^{j_k}}_{m_k} \cdot
 	{S^{i_1 ... i_p}}_{j_1 ... j_q}(x) J(x) 
 dx^n ... dx^1 dt
 $<br>
+<br>
 
 $
 \int_{x^1_L}^{x^1_R}
 ...
 \int_{x^n_L}^{x^n_R}
+	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+	{P(x,x_C)^{j_k}}_{m_k} \cdot
 	J(x)
 	\left( 
 		{u^{i_1 ... i_p}}_{j_1 .. j_q}(x, t_R)
 		- {u^{i_1 ... i_p}}_{j_1 .. j_q}(x, t_L)
 	\right) 
 dx^n ... dx^1
+\\
 + 
 \int_{x^1_L}^{x^1_R}
 ...
 \int_{x^n_L}^{x^n_R}
 \int_{t=t_L}^{t=t_R}
+	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+	{P(x,x_C)^{j_k}}_{m_k} \cdot
 	\left( 
 		e_k ( {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x) )
 		+ {F^{m i_1 ... i_p}}_{j_1 ... j_q}(x) {\Gamma^k}_{km}(x)
@@ -528,34 +592,42 @@ dx^n ... dx^1
 	\right) 
 	J(x) 
 dx^n ... dx^1 dt
+\\
 = 
 \int_{t=t_L}^{t=t_R}
 \int_{x^1_L}^{x^1_R}
 ...
 \int_{x^n_L}^{x^n_R}
+	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+	{P(x,x_C)^{j_k}}_{m_k} \cdot
 	{S^{i_1 ... i_p}}_{j_1 ... j_q}(x) J(x) 
 dx^n ... dx^1 dt
 $<br>
 <br>
 
-I'll also assume the flux, source, and connections are all constant throughout the cell wrt time, for the duration of $(t_L, t_R)$, so we can factor out the $\int_{t_L}^{t_R} dt = \Delta t$:<br>
+I'll also assume the flux, source, and connections (and therefore propagators) are all constant throughout the cell wrt time, for the duration of $(t_L, t_R)$, so we can factor out the $\int_{t_L}^{t_R} dt = \Delta t$:<br>
 <br>
 
 $
 \int_{x^1_L}^{x^1_R}
 ...
 \int_{x^n_L}^{x^n_R}
+	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+	{P(x,x_C)^{j_k}}_{m_k} \cdot
 	J(x)
 	\left( 
 		{u^{i_1 ... i_p}}_{j_1 .. j_q}(x, t_R)
 		- {u^{i_1 ... i_p}}_{j_1 .. j_q}(x, t_L)
 	\right) 
 dx^n ... dx^1
+\\
 + 
 \Delta t
 \int_{x^1_L}^{x^1_R}
 ...
 \int_{x^n_L}^{x^n_R}
+	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+	{P(x,x_C)^{j_k}}_{m_k} \cdot
 	\left(
 		e_k ( {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x) )
 		+ {F^{m i_1 ... i_p}}_{j_1 ... j_q}(x) {\Gamma^k}_{km}(x)
@@ -564,30 +636,36 @@ dx^n ... dx^1
 	\right) 
 	J(x) 
 dx^n ... dx^1 
+\\
 = 
 \Delta t
 \int_{x^1_L}^{x^1_R}
 ...
 \int_{x^n_L}^{x^n_R}
+	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+	{P(x,x_C)^{j_k}}_{m_k} \cdot
 	{S^{i_1 ... i_p}}_{j_1 ... j_q}(x) J(x) 
 dx^n ... dx^1 
 $<br>
 <br>
 
 At this point we have two options: we can assume u is constant throughout the cell and factor it out to integrate the volume form, or we can assume the value at the cell is equal to the integral of the state value throughout the cell times its volume form.
-I suppose we have a third option of simply considering the cell value to be the integral of u throughout the cell, but then we would have to figure out how to split it apart from the volume form integral, which we can't easily write out a general case for - we would have to calculate that uniquely for each choice of grid.<br>
+I suppose we have a third option of simply considering the cell value to be the integral of u throughout the cell without its volume, but then we would have to figure out how to split it apart from the volume form integral, which we can't easily write out a general case for - we would have to calculate that uniquely for each choice of grid.<br>
 <br>
 
 Let's go down the rabbithole of assuming u, S, and F are piecewise constant throughout their volume - so we can factor out the J.
 Let's also introduce the coordinate $x_C$ as the center of the cell, midway between $x_L$ and $x_R$.
-Let's also define our cell volume as $\mathcal{V} = \int_V J(x) dV$.<br>
+Let's also define our cell volume as $\mathcal{V}(x_C) = \int_V J(x) dV$.<br>
 <br><br>
+
+TODO ok here's where things break.  We can't separate the volume because the propagator is not constant throughout the integral.  We can't include the propagator with the volume in its integral because the indexes of the propagator are dependent on the state variable.  But if the state was constant throughout the integral then we could technically factor that out ... but we can't divide out the result -- the volume element integral is now a tensor itself.<br>
+<br>
 
 $
 \left( 
 	{u^{i_1 ... i_p}}_{j_1 .. j_q}(x_C, t_R)
 	- {u^{i_1 ... i_p}}_{j_1 .. j_q}(x_C, t_L)
-\right) \mathcal{V}(x)
+\right) \mathcal{V}(x_C)
 + \Delta t
 \int_{x^1_L}^{x^1_R}
 ...
@@ -602,102 +680,188 @@ $
 dx^n ... dx^1 
 = 
 \Delta t
-\cdot {S^{i_1 ... i_p}}_{j_1 ... j_q}(x_C) \cdot \mathcal{V}(x) 
+\cdot {S^{i_1 ... i_p}}_{j_1 ... j_q}(x_C) \cdot \mathcal{V}(x_C) 
 $<br>
 <br>
 
-I haven't touched the connections yet, and that's because here we have the option of using a special-case trick for the (0,0)-degree scalar case.  Let's explore that detour:<br>
+Now let's substitute our Voss-Weyl identity:<br>
 <br>
-
-$
-\left( 
-	u(x_C, t_R)
-	- u(x_C, t_L)
-\right) \mathcal{V}(x)
+$\left( 
+	{u^{i_1 ... i_p}}_{j_1 .. j_q}(x_C, t_R)
+	- {u^{i_1 ... i_p}}_{j_1 .. j_q}(x_C, t_L)
+\right) \mathcal{V}(x_C)
 + \Delta t
 \int_{x^1_L}^{x^1_R}
 ...
 \int_{x^n_L}^{x^n_R}
 	\left( 
-		e_k ( F^k(x) )
-		+ F^m(x) {\Gamma^k}_{k m}(x) 
+		\frac{1}{J(x)} \partial_\bar{k} ( J(x) {e_k}^\bar{k}(x) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x) )
+		+ \Sigma_{m=1}^p {F^{k i_1 ... m ... i_p}}_{j_1 ... j_q}(x) {\Gamma^{i_m}}_{k m}(x) 
+		- \Sigma_{m=1}^q {F^{k i_1 ... i_p}}_{j_1 ... m ... j_q}(x) {\Gamma^m}_{k j_m}(x) 
 	\right) 
 	J(x) 
 dx^n ... dx^1 
 = 
 \Delta t
-\cdot S(x_C) \cdot \mathcal{V}(x) 
+\cdot {S^{i_1 ... i_p}}_{j_1 ... j_q}(x_C) \cdot \mathcal{V}(x_C) 
 $<br>
-
-If we use our Voss-Weyl identity:<br>
+<br>
+And now let's rearrange this to be with respect to $u(t_R)$ (and cancel those J's):<br>
 <br>
 $
-\left( 
-	u(x_C, t_R)
-	- u(x_C, t_L)
-\right) \mathcal{V}(x)
-+ \Delta t
-\int_{x^1_L}^{x^1_R}
-...
-\int_{x^n_L}^{x^n_R}
-	\frac{1}{J(x)} \partial_\bar{k} ( J(x) F^k(x) {e_k}^\bar{k}(x) )
-dx^n ... dx^1 
-= 
-\Delta t
-\cdot S(x_C) \cdot \mathcal{V}(x) 
-$<br>
-$
-\left( 
-	u(x_C, t_R)
-	- u(x_C, t_L)
-\right) \mathcal{V}(x)
-+ \Delta t
-\int_{x^1_L}^{x^1_R}
-...
-\int_{x^n_L}^{x^n_R}
-	\partial_k ( J(x) F^k(x) {e_k}^\bar{k}(x) )
-dx^n ... dx^1 
-= 
-\Delta t
-\cdot S(x_C) \cdot \mathcal{V}(x) 
-$<br>
-$
-\left( 
-	u(x_C, t_R)
-	- u(x_C, t_L)
-\right) \mathcal{V}(x)
-+ \Delta t
-\int_{x^1_L}^{x^1_R}
-\overset{-\{x^k\}}{...}
-\int_{x^n_L}^{x^n_R}
-	\left(
-		J(x^k_R) F^k(x^k_R) {e_k}^\bar{k}(x_R)
-		- J(x^k_L) F^k(x^k_L) {e_k}^\bar{k}(x_L)
-	\right)
-dx^n \overset{-\{x^k\}}{...} dx^1 
-= 
-\Delta t
-\cdot S(x_C) \cdot \mathcal{V}(x) 
-$<br>
-$u(x_C, t_R)
-= u(x_C, t_L)
-+ \Delta t \left(
-	- \frac{1}{\mathcal{V}(x)}
+{u^{i_1 ... i_p}}_{j_1 .. j_q}(x_C, t_R)
+= {u^{i_1 ... i_p}}_{j_1 .. j_q}(x_C, t_L)
++ \Delta t \left( 
+- \frac{1}{\mathcal{V}(x_C)}
+\left(
 	\int_{x^1_L}^{x^1_R}
-	\overset{-\{x^k\}}{...}
+	...
 	\int_{x^n_L}^{x^n_R}
-		\left(
-			J(x^k_R) F^k(x^k_R) {e_k}^\bar{k}(x_R)
-			- J(x^k_L) F^k(x^k_L) {e_k}^\bar{k}(x_L)
-		\right)
-	dx^n \overset{-\{x^k\}}{...} dx^1 
-	+ S(x_C)
+		\left( 
+			\partial_\bar{k} ( J(x) {e_k}^\bar{k}(x) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x) )
+			+ J(x) \left(
+				\Sigma_{m=1}^p {F^{k i_1 ... m ... i_p}}_{j_1 ... j_q}(x) {\Gamma^{i_m}}_{k m}(x) 
+				- \Sigma_{m=1}^q {F^{k i_1 ... i_p}}_{j_1 ... m ... j_q}(x) {\Gamma^m}_{k j_m}(x) 
+			\right)
+		\right) 
+	dx^n ... dx^1 
+\right)
++ {S^{i_1 ... i_p}}_{j_1 ... j_q}(x_C)
 \right)$<br>
 <br>
+
+Now we can use the fundamental theorem of calculus:<br>
+<br>
+$
+{u^{i_1 ... i_p}}_{j_1 .. j_q}(x_C, t_R)
+= {u^{i_1 ... i_p}}_{j_1 .. j_q}(x_C, t_L)
++ \Delta t \left( 
+	- \frac{1}{\mathcal{V}(x_C)}
+	\left(
+		\int_{x^1_L}^{x^1_R}
+		...
+		\int_{x^n_L}^{x^n_R}
+			\partial_\bar{k} ( J(x) {e_k}^\bar{k}(x) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x) )
+		dx^n ... dx^1 
+
+		+ 
+		\int_{x^1_L}^{x^1_R}
+		...
+		\int_{x^n_L}^{x^n_R}
+			\left( 
+				J(x) \left(
+					\Sigma_{m=1}^p {F^{k i_1 ... m ... i_p}}_{j_1 ... j_q}(x) {\Gamma^{i_m}}_{k m}(x) 
+					- \Sigma_{m=1}^q {F^{k i_1 ... i_p}}_{j_1 ... m ... j_q}(x) {\Gamma^m}_{k j_m}(x) 
+				\right)
+			\right) 
+		dx^n ... dx^1 
+	\right)
+	+ {S^{i_1 ... i_p}}_{j_1 ... j_q}(x_C)
+
+\right)$<br>
+$
+{u^{i_1 ... i_p}}_{j_1 .. j_q}(x_C, t_R)
+= {u^{i_1 ... i_p}}_{j_1 .. j_q}(x_C, t_L)
++ \Delta t \left( 
+	- \frac{1}{\mathcal{V}(x_C)}
+	\left(
+		\int_{x^1_L}^{x^1_R}
+		\overset{-\{x^k\}}{...}
+		\int_{x^n_L}^{x^n_R}
+			\left(
+				J(x_R) {e_k}^\bar{k}(x_R) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x_R)
+				- J(x_L) {e_k}^\bar{k}(x_L) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x_L)
+			\right)
+		dx^n 
+		\overset{-\{x^k\}}{...}
+		dx^1 
+
+		+ 
+		\int_{x^1_L}^{x^1_R}
+		...
+		\int_{x^n_L}^{x^n_R}
+			\left( 
+				J(x) \left(
+					\Sigma_{m=1}^p {F^{k i_1 ... m ... i_p}}_{j_1 ... j_q}(x) {\Gamma^{i_m}}_{k m}(x) 
+					- \Sigma_{m=1}^q {F^{k i_1 ... i_p}}_{j_1 ... m ... j_q}(x) {\Gamma^m}_{k j_m}(x) 
+				\right)
+			\right) 
+		dx^n ... dx^1 
+	\right)
+
+	+ {S^{i_1 ... i_p}}_{j_1 ... j_q}(x_C)
+\right)$<br>
+<br>
+
+Here I use that $x^k_R$ and $x^k_L$ shorthand like I mentioned in the parallel propagator worksheet - sometimes it means a scalar value, sometimes it means the point with the k'th term replaced with that value.<br>
+I haven't touched the connections yet, and that's because here we have the option of using a special-case trick for the (0,0)-degree scalar case.  Let's explore that detour:<br>
+<br>
+
+$
+u(x_C, t_R)
+= u(x_C, t_L)
++ \Delta t \left( 
+	- \frac{1}{\mathcal{V}(x_C)}
+	\left(
+		\int_{x^1_L}^{x^1_R}
+		\overset{-\{x^k\}}{...}
+		\int_{x^n_L}^{x^n_R}
+			\left(
+				J(x_R) {e_k}^\bar{k}(x_R) F^k(x_R)
+				- J(x_L) {e_k}^\bar{k}(x_L) F^k(x_L)
+			\right)
+		dx^n 
+		\overset{-\{x^k\}}{...}
+		dx^1 
+	\right)
+
+	+ {S^{i_1 ... i_p}}_{j_1 ... j_q}(x_C)
+\right)$<br>
+<br>
+
 So finite volume integration can be implementned with volume weighting across your cell sides (and transforming between your coordinate and non-coordinate basis).<br>
 Just like in 1987 Thompson "Lecture Series in Computational Fluid Dynamics" ... somewhere?  Section 4, equation 4.127 maybe?<br>
 <br>
+
+Alright, now back to our full (p,q) tensor, time to deal with those extra indexes.  And of course, like we mentioned earlier, our solution is going to use the parallel-propagator.
+We have to parallel-propagate our vectors to some point, so let's choose $x_C$ as our point of reference.<br>
 <br>
+<br>
+
+$
+{u^{i_1 ... i_p}}_{j_1 .. j_q}(x_C, t_R)
+= {u^{i_1 ... i_p}}_{j_1 .. j_q}(x_C, t_L)
++ \Delta t \left( 
+	- \frac{1}{\mathcal{V}(x_C)}
+	\left(
+		\int_{x^1_L}^{x^1_R}
+		\overset{-\{x^k\}}{...}
+		\int_{x^n_L}^{x^n_R}
+			\left(
+				J(x_R) {e_k}^\bar{k}(x_R) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x_R)
+				- J(x_L) {e_k}^\bar{k}(x_L) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x_L)
+			\right)
+		dx^n 
+		\overset{-\{x^k\}}{...}
+		dx^1 
+
+		+ 
+		\int_{x^1_L}^{x^1_R}
+		...
+		\int_{x^n_L}^{x^n_R}
+			\left( 
+				J(x) \left(
+					\Sigma_{m=1}^p {F^{k i_1 ... m ... i_p}}_{j_1 ... j_q}(x) {\Gamma^{i_m}}_{k m}(x) 
+					- \Sigma_{m=1}^q {F^{k i_1 ... i_p}}_{j_1 ... m ... j_q}(x) {\Gamma^m}_{k j_m}(x) 
+				\right)
+			\right) 
+		dx^n ... dx^1 
+	\right)
+
+	+ {S^{i_1 ... i_p}}_{j_1 ... j_q}(x_C)
+\right)$<br>
+<br>
+
 
 <hr>
 <br>
