@@ -444,6 +444,7 @@ $
 \int_{x^n_L}^{x^n_R}
 	{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
 	{P(x,x_C)^{j_k}}_{m_k} \cdot
+	\\
 	\left( \frac{\partial}{\partial t} 
 		{u^{i_1 ... i_p}}_{j_1 .. j_q}(x) 
 		+ e_k( {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x) )
@@ -719,9 +720,9 @@ And now let's rearrange this to be with respect to $u(t_R)$ (and cancel those J'
 $
 {u^{l_1 ... l_p}}_{m_1 ... m_q}(x_C, t_R)
 = {u^{l_1 ... l_p}}_{m_1 ... m_q}(x_C, t_L)
-+ \Delta t \left( 
-- \frac{1}{\mathcal{V}(x_C)}
-\left(
++ \Delta t \left(
+	\\
+	- \frac{1}{\mathcal{V}(x_C)}
 	\int_{x^1_L}^{x^1_R}
 	...
 	\int_{x^n_L}^{x^n_R}
@@ -735,8 +736,8 @@ $
 			\right)
 		\right) 
 	dx^n ... dx^1 
-\right)
-+ {S^{l_1 ... l_p}}_{m_1 ... m_q}(x_C)
+	\\
+	+ {S^{l_1 ... l_p}}_{m_1 ... m_q}(x_C)
 \right)$<br>
 <br>
 
@@ -746,6 +747,7 @@ $
 {u^{l_1 ... l_p}}_{m_1 ... m_q}(x_C, t_R)
 = {u^{l_1 ... l_p}}_{m_1 ... m_q}(x_C, t_L)
 + \Delta t \left( 
+	\\
 	- \frac{1}{\mathcal{V}(x_C)}
 	\left(
 		\int_{x^1_L}^{x^1_R}
@@ -756,6 +758,7 @@ $
 			\partial_\bar{k} ( J(x) {e_k}^\bar{k}(x) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x) )
 		dx^n ... dx^1 
 
+		\\
 		+ 
 		\int_{x^1_L}^{x^1_R}
 		...
@@ -770,8 +773,8 @@ $
 			\right) 
 		dx^n ... dx^1 
 	\right)
+	\\
 	+ {S^{l_1 ... l_p}}_{m_1 ... m_q}(x_C)
-
 \right)$<br>
 <br>
 
@@ -782,6 +785,7 @@ $
 {u^{l_1 ... l_p}}_{m_1 ... m_q}(x_C, t_R)
 = {u^{l_1 ... l_p}}_{m_1 ... m_q}(x_C, t_L)
 + \Delta t \left( 
+	\\
 	- \frac{1}{\mathcal{V}(x_C)}
 	\left(
 		
@@ -796,6 +800,7 @@ $
 			\right)
 		dx^n ... dx^1 
 
+		\\
 		- 
 		\int_{x^1_L}^{x^1_R}
 		...
@@ -808,6 +813,7 @@ $
 			J(x) {e_k}^\bar{k}(x) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x)
 		dx^n ... dx^1 
 
+		\\
 		+ 
 		\int_{x^1_L}^{x^1_R}
 		...
@@ -822,8 +828,8 @@ $
 			\right) 
 		dx^n ... dx^1 
 	\right)
+	\\
 	+ {S^{l_1 ... l_p}}_{m_1 ... m_q}(x_C)
-
 \right)$<br>
 <br>
 
@@ -834,6 +840,7 @@ $
 {u^{l_1 ... l_p}}_{m_1 ... m_q}(x_C, t_R)
 = {u^{l_1 ... l_p}}_{m_1 ... m_q}(x_C, t_L)
 + \Delta t \left( 
+	\\
 	- \frac{1}{\mathcal{V}(x_C)}
 	\left(
 		\int_{x^1_L}^{x^1_R}
@@ -852,6 +859,7 @@ $
 		\overset{-\{x^k\}}{...}
 		dx^1 
 		
+		\\
 		- 
 		\int_{x^1_L}^{x^1_R}
 		...
@@ -864,6 +872,7 @@ $
 			J(x) {e_k}^\bar{k}(x) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x)
 		dx^n ... dx^1 
 
+		\\
 		+ 
 		\int_{x^1_L}^{x^1_R}
 		...
@@ -878,7 +887,7 @@ $
 			\right) 
 		dx^n ... dx^1 
 	\right)
-
+	\\
 	+ {S^{l_1 ... l_p}}_{m_1 ... m_q}(x_C)
 \right)$<br>
 <br>
@@ -890,6 +899,7 @@ $
 {u^{l_1 ... l_p}}_{m_1 ... m_q}(x_C, t_R)
 = {u^{l_1 ... l_p}}_{m_1 ... m_q}(x_C, t_L)
 + \Delta t \left( 
+	\\
 	- \frac{1}{\mathcal{V}(x_C)}
 	\left(
 		\int_{x^1_L}^{x^1_R}
@@ -908,6 +918,7 @@ $
 			J(x^k_L) {e_k}^\bar{k}(x^k_L) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x^k_L)
 		\right)
 
+		\\
 		- 
 		\int_{x^1_L}^{x^1_R}
 		...
@@ -920,6 +931,7 @@ $
 			J(x) {e_k}^\bar{k}(x) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x)
 		dx^n ... dx^1 
 
+		\\
 		+ 
 		\int_{x^1_L}^{x^1_R}
 		...
@@ -934,7 +946,7 @@ $
 			\right) 
 		dx^n ... dx^1 
 	\right)
-
+	\\
 	+ {S^{l_1 ... l_p}}_{m_1 ... m_q}(x_C)
 \right)$<br>
 <br>
@@ -957,6 +969,7 @@ $
 {u^{l_1 ... l_p}}_{m_1 ... m_q}(x_C, t_R)
 = {u^{l_1 ... l_p}}_{m_1 ... m_q}(x_C, t_L)
 + \Delta t \left( 
+	\\
 	- \frac{1}{\mathcal{V}(x_C)}
 	\left(
 		\mathcal{S}_k
@@ -970,6 +983,7 @@ $
 			J(x^k_L) {e_k}^\bar{k}(x^k_L) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x^k_L)
 		\right)
 
+		\\
 		- 
 		\int_{x^1_L}^{x^1_R}
 		...
@@ -981,7 +995,8 @@ $
 			\right)
 			J(x) {e_k}^\bar{k}(x) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x)
 		dx^n ... dx^1 
-
+		
+		\\
 		+ 
 		\int_{x^1_L}^{x^1_R}
 		...
@@ -996,7 +1011,7 @@ $
 			\right) 
 		dx^n ... dx^1 
 	\right)
-
+	\\
 	+ {S^{l_1 ... l_p}}_{m_1 ... m_q}(x_C)
 \right)$<br>
 <br>
