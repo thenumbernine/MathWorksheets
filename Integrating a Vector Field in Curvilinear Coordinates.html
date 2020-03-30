@@ -773,10 +773,63 @@ $
 	+ {S^{l_1 ... l_p}}_{m_1 ... m_q}(x_C)
 
 \right)$<br>
-TODO but I can't keep going - I can't apply the FTC with the parallel-propagator in the way.
-THIS IS A HUGE FLAW.
-But I'll pretend $\partial P \approx 0$:<br>
 <br>
+
+Alright we can't make use of fundamental theorem of calculus with those propagators in the way.  Time to use the Leibniz integration rule.<br>
+<br>
+
+$
+{u^{l_1 ... l_p}}_{m_1 ... m_q}(x_C, t_R)
+= {u^{l_1 ... l_p}}_{m_1 ... m_q}(x_C, t_L)
++ \Delta t \left( 
+	- \frac{1}{\mathcal{V}(x_C)}
+	\left(
+		
+		\int_{x^1_L}^{x^1_R}
+		...
+		\int_{x^n_L}^{x^n_R}
+			\partial_\bar{k} 
+			\left(
+				{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+				{P(x,x_C)^{j_k}}_{m_k} \cdot
+				J(x) {e_k}^\bar{k}(x) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x)
+			\right)
+		dx^n ... dx^1 
+
+		- 
+		\int_{x^1_L}^{x^1_R}
+		...
+		\int_{x^n_L}^{x^n_R}
+			\partial_\bar{k} 
+			\left( 
+				{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+				{P(x,x_C)^{j_k}}_{m_k} \cdot
+			\right)
+			J(x) {e_k}^\bar{k}(x) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x)
+		dx^n ... dx^1 
+
+		+ 
+		\int_{x^1_L}^{x^1_R}
+		...
+		\int_{x^n_L}^{x^n_R}
+			{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+			{P(x,x_C)^{j_k}}_{m_k} \cdot
+			\left( 
+				J(x) \left(
+					\Sigma_{m=1}^p {F^{k i_1 ... m ... i_p}}_{j_1 ... j_q}(x) {\Gamma^{i_m}}_{k m}(x) 
+					- \Sigma_{m=1}^q {F^{k i_1 ... i_p}}_{j_1 ... m ... j_q}(x) {\Gamma^m}_{k j_m}(x) 
+				\right)
+			\right) 
+		dx^n ... dx^1 
+	\right)
+	+ {S^{l_1 ... l_p}}_{m_1 ... m_q}(x_C)
+
+\right)$<br>
+<br>
+
+NOW we can use the fundamental theorem of calculus.<br>
+<br>
+
 $
 {u^{l_1 ... l_p}}_{m_1 ... m_q}(x_C, t_R)
 = {u^{l_1 ... l_p}}_{m_1 ... m_q}(x_C, t_L)
@@ -798,6 +851,18 @@ $
 		dx^n 
 		\overset{-\{x^k\}}{...}
 		dx^1 
+		
+		- 
+		\int_{x^1_L}^{x^1_R}
+		...
+		\int_{x^n_L}^{x^n_R}
+			\partial_\bar{k} 
+			\left( 
+				{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+				{P(x,x_C)^{j_k}}_{m_k} \cdot
+			\right)
+			J(x) {e_k}^\bar{k}(x) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x)
+		dx^n ... dx^1 
 
 		+ 
 		\int_{x^1_L}^{x^1_R}
@@ -842,6 +907,18 @@ $
 			{P(x^k_L,x_C)^{j_k}}_{m_k} \cdot
 			J(x^k_L) {e_k}^\bar{k}(x^k_L) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x^k_L)
 		\right)
+
+		- 
+		\int_{x^1_L}^{x^1_R}
+		...
+		\int_{x^n_L}^{x^n_R}
+			\partial_\bar{k} 
+			\left( 
+				{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+				{P(x,x_C)^{j_k}}_{m_k} \cdot
+			\right)
+			J(x) {e_k}^\bar{k}(x) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x)
+		dx^n ... dx^1 
 
 		+ 
 		\int_{x^1_L}^{x^1_R}
@@ -893,6 +970,18 @@ $
 			J(x^k_L) {e_k}^\bar{k}(x^k_L) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x^k_L)
 		\right)
 
+		- 
+		\int_{x^1_L}^{x^1_R}
+		...
+		\int_{x^n_L}^{x^n_R}
+			\partial_\bar{k} 
+			\left( 
+				{P(x,x_C)^{l_k}}_{i_k} \cdot ... \cdot 
+				{P(x,x_C)^{j_k}}_{m_k} \cdot
+			\right)
+			J(x) {e_k}^\bar{k}(x) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x)
+		dx^n ... dx^1 
+
 		+ 
 		\int_{x^1_L}^{x^1_R}
 		...
@@ -911,8 +1000,6 @@ $
 	+ {S^{l_1 ... l_p}}_{m_1 ... m_q}(x_C)
 \right)$<br>
 <br>
-
-
 
 Here I use that $x^k_R$ and $x^k_L$ shorthand like I mentioned in the parallel propagator worksheet - sometimes it means a scalar value, sometimes it means the point with the k'th term replaced with that value.<br>
 I haven't touched the connections yet, and that's because here we have the option of using a special-case trick for the (0,0)-degree scalar case.  Remember, no state indexes means no parallel propagators. 
