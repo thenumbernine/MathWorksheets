@@ -56,7 +56,7 @@ This is probably a bad idea, and I should probably use some other symbol to deno
 <br>
 
 I'm going to be using $[A_{\mu\nu}]$ to denote a matrix representation of a tensor.
-Why?  Because often times omitting indexes implies summation of symbols.  So to distinguish between $\Gamma_\mu = {\Gamma^\alpha}_{\mu\alpha} = \frac{1}{2} \partial_\mu ln \sqrt{|g|}$ and $\Gamma_\mu = $ a matrix of ${\Gamma^\alpha}_{\mu\beta}$ I will wrap my matrices in brackets: $[\Gamma_\mu]$.<br>
+Why?  Because often times omitting indexes implies summation of symbols.  So to distinguish between $\Gamma_\mu = {\Gamma^\alpha}_{\mu\alpha} = \frac{1}{2} e_\mu (ln \sqrt{|g|})$ and $\Gamma_\mu = $ a matrix of ${\Gamma^\alpha}_{\mu\beta}$ I will wrap my matrices in brackets: $[\Gamma_\mu]$.<br>
 Sometimes I'll still keep the summation indexes as a reminder of contra/co-variant representation of the tensor component quantities, 
 other times I will remove the summation indexes if the contra-/co-variance of the tensor should be deducable.
 If the brackets do remain around a tensor, even if it is in index notation, that is just to serve as a reminder (to me) that this is a matrix value.<br>
@@ -73,6 +73,11 @@ $v = v^\mu e_\mu$<br>
 
 Connection and covariant derivative:<br>
 $\nabla_\mu e_\nu = {\Gamma^\alpha}_{\mu\nu} e_\alpha$<br>
+<br>
+Notice that, for the rest of this worksheet, I am going to require that the connection is a metric-cancelling Levi-Civita connection.
+This means it has no torsion.
+I am not assuming it is a coordinate basis though, so the connection may include partial metric terms and may include commutation terms.
+<br>
 <br>
 
 Written out per-component:<br>

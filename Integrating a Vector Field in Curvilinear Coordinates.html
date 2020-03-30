@@ -206,14 +206,498 @@ $<br>
 <br>
 
 Alright, what happens when you want to raise the stakes, and integrate over a volume in the manifold coordinate space:<br>
-$\int_{u^1 = u^1_L}^{u^1 = u^1_R}
-\int_{u^2 = u^2_L}^{u^2 = u^2_R}
+$\int_{x^1 = x^1_L}^{x^1 = x^1_R}
+\int_{x^2 = x^2_L}^{x^2 = x^2_R}
+v \cdot det|\frac{\partial (x^\hat{1}, x^\hat{2})}{\partial (x^1, x^2)}|
+dx^2
+dx^1
+$<br>
+<br>
+Of course I'm including the chart Jacobian determinant:<br>
+<br>
+$J = det|\frac{\partial (x^\hat{1}, x^\hat{2})}{\partial (x^1, x^2)}|$<br>
+<br>
+
+In the event that we are using a coordinate basis, we can also say $|J| = |{e_\mu}^I|$<br>
+<br>
+
+If you don't know what your chart is then you can still derive the Jacobian determinant from the metric associated with the coordinate basis.
+At this point I have to start making a distinction between those who work in a coordinate basis and those who work in a non-coordinate (typically orthonormal) basis.
+All of my previous indexing and tensors has been with regards to a linear transform of the coordinate basis, potentially handling any non-coordinate basis.
+Now I am going to introduce a specific definition of the respective coordinate basis metric and coordinate tensor components.<br>
+<br>
+$e_\bar\mu = \partial_\bar{\mu} u^I (x) = $ the coordinate basis, even if you are dealing with a non-coordinate orthonormal basis.
+If you are dealing with polar coordiantes in an coordinate basis then your basis would be 
+$e_\bar{r} = \partial_\bar{r} u^I = \left[\begin{matrix} cos(\phi) \\ sin(\phi) \end{matrix}\right], 
+e_\bar{\phi} = \partial_\bar{\phi} u^I = \left[\begin{matrix} -r sin(\phi) \\ r cos(\phi) \end{matrix}\right]$,
+while your orthonormal non-coordinate basis would be
+$e_r = \partial_r u^I = \left[\begin{matrix} cos(\phi) \\ sin(\phi) \end{matrix}\right] = \partial_r, 
+e_\phi = \partial_\phi u^I = \left[\begin{matrix} -sin(\phi) \\ cos(\phi) \end{matrix}\right] = \partial_\phi$.
+Equivalently in spherical, $e_r = \partial_\bar{r}, e_\theta = \frac{1}{r} \partial_\bar\theta, e_\phi = \frac{1}{r sin\theta} \partial_\bar\phi$.
+<br><br>
+
+Note that in my notation, since the coordinate basis is denoted with a bar, it means that partials only make sense to be written as $\partial_\bar\mu$.
+If you are dealing with a non-coordinate partial then you must re-transform it to non-coordinate components $e_\mu = {e_\mu}^\bar\mu \partial_\bar\mu$.
+Then notice that I have just gone from using two-point tensors (those with curvilinear component indexing $\alpha-\omega$ vs those a global Cartesian component indexing A-Z)
+to three-point tensor (including those with coordinate-basis curvilinear components $\bar\alpha-\bar\omega$.
+True to the previous definition of e, it will represent a transformation between coordinate spaces, where the 'to' index is first and the 'from' index is second, so ${e_\mu}^\bar\mu$
+denotes the transformation from your coordinate basis to your non-coordinate basis. 
+TODO wait that's not true, my standard before was always coord-first, noncoord-second, but that's not compatible with 3-point tensors.  So think through how well to-first from-second will work.
+TODO TODO then again, look at my Differential Geometry notes, I think they all might be written as to-first, from-second.
+<br>
+Also take note that I am making no assumptions on your non-coordinate basis throughout these notes.  Most people choose a non-coordinate basis to orthonormalize the basis, 
+and this brings with it the benefit that the metric is constant ($g_{\mu\nu} = \eta_{\mu\nu}$), and from there the partials are zero, raising and lowering are identical, and the connections are purely dependent on the commutation.
+This is a nice simplification to enjoy, but I am not making this assumption.  
+If you want to use a non-coordinate basis that is not constant - like a conformal rescaling ${e_\mu}^{\bar\mu} = \frac{1}{(g)^{1/n}} \partial_\bar\mu$ - then knock yourself out.
+<br>
+
+So now to define our coordinate metric using coordinate components:<br>
+$\bar{g}_{\bar{\mu}\bar{\nu}} = e_\bar\mu \cdot e_\bar\nu = \partial_\bar\mu \cdot \partial_\bar\nu = \partial_\bar\mu u^I(x) \cdot \partial_\bar\nu u^J(x) \eta_{IJ}$<br>
+<br>
+
+Let's go back to our arbitrary, non-coordinate metric.  What is its determinant in terms of its transform from a Cartesian basis?<br>
+$g_{\mu\nu} = {e_\mu}^I {e_\nu}^J \eta_{IJ}$<br>
+$det(g_{\mu\nu}) = det({e_\mu}^I {e_\nu}^J \eta_{IJ}) = det({e_\mu}^I)^2 \cdot det(\eta_{IJ})$<br>
+$g = e^2 \cdot \sigma$<br>
+$|g| = |e|^2$<br>
+Where $\sigma = det(\eta_{IJ})$ is the determinant of the metric signature: +1 for Riemannian, -1 for Lorentzian.<br>
+<br>
+(Should volume forms always be positive?  I know it's related to handedness of the wedge basis one-form that come with it.)<br>
+<br>
+
+Now what's the determinant of our coordinate metric?<br>
+$\bar{g}_{\bar{\mu}\bar{\nu}} = {e_\bar{\mu}}^I {e_\bar{\nu}}^J \eta_{IJ}$<br>
+$det (\bar{g}_{\bar{\mu}\bar{\nu}}) = det({e_\bar{\mu}}^I {e_\bar{\nu}}^J \eta_{IJ}) = det({e_\bar{\mu}}^I)^2 \cdot \sigma
+	= det(\frac{\partial (x^\hat{1}, x^\hat{2})}{\partial (x^1, x^2)})^2 \cdot \sigma
+$<br>
+That looks like our Jacobian-of-coordinate-chart definition - which happens to later be equal to the volume element in our integral:
+$\bar{g} = J^2 \cdot \sigma$<br>
+$|\bar{g}| = |J|^2$<br>
+<br>
+<br>
+
+So now we have the necessary definitions to write our vector field integral as:<br>
+$\int_{x^1 = x^1_L}^{x^1 = x^1_R}
+\int_{x^2 = x^2_L}^{x^2 = x^2_R}
+v(x) \cdot J(x)
+dx^2
+dx^1
+$<br>
+
+
+$= e_\mu(x_0) \int_{x^1 = x^1_L}^{x^1 = x^1_R}
+\int_{x^2 = x^2_L}^{x^2 = x^2_R}
+{P(x, x_0)^\alpha}_\nu v^\nu(x) |J(x)|
+dx^2
+dx^1
+$<br>
+<br>
+<br>
+
+<hr>
+<br>
+
+Finite volume hyperbolic conservation laws.<br>
+<br>
+
+2004 LeVeque "Finite Volume Methods for Hyperbolic Problems" doesn't seem to deal with curvilinear vector components very often.  I suppose they do in section 18.9, but only in the symmetric case, and only then showing how to scale terms by the volume element in order to get rid of the source term that otherwise emerges when switching from partial to covariant derivatives.
+In section 23 he talks about curvilinear grids, but doesn't seem to mention curvilinear vector components.  I barely see mention of a Jacobian in here, which even a scalar field needs.
+<br><br>
+
+2009 Trangenstein "Numeric Simulation of Hyperbolic Conservation Laws" does go through the gory detail of integrating the Euler ideal gas equations over a cell of a curvilinear grid - calculates correct source terms - but does not consider parallel transport.  So his $v^r$ in one cell won't necessarily match his $v^r$ in the next cell, and I don't think he discusses this subtlety (verify plz).
+<br><br>
+
+It looks like 2011 Bonnement et al "Finite Volume Method in Curvilinear Coordinates for Hyperbolic Conservation Laws" appraoches this.  They represent things as tensors, they include covariant derivatives.  
+But they fall short of approaching the concept of parallel propagators.
+They do approximate it as a linear transform, which means their method will work just fine in absence of Riemann curvature, if your covariant derivative commutes (and therefore your order of integration of coordinates across your surface commutes), and as long as you are using an orthonormal basis (I think they can handle non-orthonormal basis, since in polar coordinates the propagator's exp map of the 1/r connection terms just ended up being rescaling terms between the tangent basis vector magnitudes.  Here's a challenge:  find a zero-Riemann-curvature manifold that simply projecting from one basis to the next doesn't work.  I suspect anything with extrinsic curvature.  Yup, can't just reproject the normal component away -- that would lead to a constant diminishing of the surface, unless you renormalized the vectors manually ... in the end, a lot of hoops to jump through and still consider the accuracy of your method.).
+<br><br>
+
+Let's see if we can describe things in a more general form that works in all those cases: GL tangent-space basis, extrinsic curvature (connections normal to the surface), and Riemann curvature (commutation of covariant derivatives).
+<br><br>
+
+These are written in the form of:<br>
+<br>
+$\frac{\partial}{\partial t} u(x) + \frac{\partial}{\partial x^i} F^i(x) = S$<br>
+<br>
+That looks fine for a Cartesian manifold, but what if we are dealing with a curvilinear manifold?  Then our divergence needs extra terms, which can be factored into the derivative if we replace our partial derivative with a covariant derivative:<br>
+<br>
+$\frac{\partial}{\partial t} u(x) + \nabla_i F^i(x) = S$<br>
+<br>
+
+Of course this PDE notation is neglecting the fact that finite-volume integration is dealing with a volume, and therefore it must be integrated over a volume.  
+So let's include the notation for our volume integral.  
+
+Let's assume that volume is flat in the past and future timelike hypersurfaces, i.e., we are using a global time, 
+and every point at the starting time of our cell shares the same time, 
+and every point at the end time of our cell shares the same time.<br>
+<br>
+Side note: if we consider conservation over a region of spacetime $\nabla_\mu F^\mu$, and simply consider the state variable u to be the flux in the time direction (remember, $E = mc^2$) then we can start from an even-more-unified perspective. 
+Hold onto that thought and maybe later I'll rewrite things to deal with arbitrarily-shaped spacetime control volumes, so we can deal with moving grids, etc.<br>
+<br>
+Also take note that this example is only considering the covariant derivatives to be spatial.
+Our spacetime basis, connection, and chart all do not vary with regards to time.  Time is treated like a separate variable.
+We have constructed what is the equivalent of a spacetime manifold and chart where there is no connection in the time direction (extrinsic curvature), and where the time coordinate has no variation as you vary the spatial coordinate, so that the timelike hypersurface normal points directly along the time axis.
+<br>
+<br>
+
+$\int_{V \times \Delta t} \left( \frac{\partial}{\partial t} u(x) + \nabla_i F^i(x) \right) dV = \int_{V \times \Delta t} S dV$<br>
+<br>
+And that usually includes the Jacobian determinant.  Notice at this point we start mixing our non-coordinate tensor components with coordinate integral variables.  Pay close attention.  Don't cross the streams.<br>
+<br>
+$
+\int_{t=t_L}^{t=t_R}
+\int_{x^1_L}^{x^1_R}
 ...
-du^2
-du^2
+\int_{x^n_L}^{x^n_R}
+	\left( \frac{\partial}{\partial t} u(x) + \nabla_i F^i(x) \right) 
+	J(x) 
+dx^n ... dx^1 dt
+=
+\int_{t=t_L}^{t=t_R}
+\int_{x^1_L}^{x^1_R}
+...
+\int_{x^n_L}^{x^n_R}
+	{S^{i_1 ... i_p}}_{j_1 ... j_q}(x)
+	J(x) 
+dx^n ... dx^1 dt
 $<br>
 <br>
 
+Now, once again, if you are integrating a scalar - or if you are integrating the Cartesian components of your vector as if they are scalars - this is where you pat yourself on the back because you assume you are done.  Not so fast.  We're talking about integrating vectors here.
+Let's generalize things a bit further now.  What if we are dealing with a (p, q) tensor?  Let's add on some indexes:<br>
+$
+\int_{t=t_L}^{t=t_R}
+\int_{x^1_L}^{x^1_R}
+...
+\int_{x^n_L}^{x^n_R}
+	\left( \frac{\partial}{\partial t} 
+		{u^{i_1 ... i_p}}_{j_1 .. j_q}(x) 
+		+ \nabla_k {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x) 
+	\right) 
+	J(x) 
+dx^n ... dx^1 dt
+= 
+\int_{t=t_L}^{t=t_R}
+\int_{x^1_L}^{x^1_R}
+...
+\int_{x^n_L}^{x^n_R}
+	{S^{i_1 ... i_p}}_{j_1 ... j_q}(x)
+	J(x) 
+dx^n ... dx^1 dt
+$<br>
+<br>
+I'm sure there's someone out there that has an opinion on whether the flux divergence index should go first or last, and I'm sure it has something to do with the one-form-meets-vector rule of matching first vector into the first form slot.  I'll think about this more later.
+Also, this is a good example of why the original Ricci index notation came up with the idea of index groups: $I = i_1 ... i_p$.  I have already made use of capital letters to denote my global Cartesian tangent space, so I have already broken with that convention (more in line with the tetrad / Einstein-Cartan folks' convention fwiw).<br>
+<br>
+Now here a few people might be tempted to substitute the $\nabla_i F^i$ for $\frac{1}{J} e_i (J F^i)$.  This is absolutely correct, and this is called the Voss-Weyl equality, but it is only true for vector fluxes, and therefore for scalar conservation law equations.  As soon as we try to integrate a vector field, we need to use a bi-vector to represent the flux, and then our covariant derivative starts to add in extra terms that the Voss-Weyl form doesn't consider (I think, unless Wiki explained the Voss-Weyl equation incorrectly).<br>
+<br>
+If we do use the scalar u and vector F and do use the Voss-Weyl identity then you will notice that the Jacobian determinant cancells very conveniently.<br>
+<br>
+Let's see those connection terms:<br>
+<br>
+$
+\int_{t=t_L}^{t=t_R}
+\int_{x^1_L}^{x^1_R}
+...
+\int_{x^n_L}^{x^n_R}
+	\left( \frac{\partial}{\partial t} 
+		{u^{i_1 ... i_p}}_{j_1 .. j_q}(x) 
+		+ e_k( {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x) )
+		+ {F^{m i_1 ... i_p}}_{j_1 ... j_q}(x) {\Gamma^k}_{km}(x)
+		+ \Sigma_{m=1}^p {F^{k i_1 ... m ... i_p}}_{j_1 ... j_q}(x) {\Gamma^{i_m}}_{k m}(x) 
+		- \Sigma_{m=1}^q {F^{k i_1  ... i_p}}_{j_1 ... m ... j_q}(x) {\Gamma^m}_{k j_m}(x) 
+	\right) 
+	J(x) 
+dx^n ... dx^1 dt
+= 
+\int_{t=t_L}^{t=t_R}
+\int_{x^1_L}^{x^1_R}
+...
+\int_{x^n_L}^{x^n_R}
+	{S^{i_1 ... i_p}}_{j_1 ... j_q}(x) J(x) 
+dx^n ... dx^1 dt
+$<br>
+<br>
+Also notice at this point how I'm keeping the derivative index as the 2nd index of my connection coefficient - just as I did in the 'parallel propagators' worksheet.  
+This is no accident.  A few of you are tempted to swap it interchangeably with the 3rd index, as you can safely do when using the Levi-Civita connection in a coordinate basis, 
+however most Mechanical Engineers reading this are probably used to representing your vectors in a non-coordinate orthonormalized basis and therefore cannot enjoy the benefits of the Levi-Civita connection.  
+Notice that, by my choice of conventions, the parallel propagator and this covariant derivative equation will work fine with which ever you choose to use.<br>
+<br>
+
+Alright, back to that Voss-Weyl statement.  Let's explore that in more detail:<br>
+<br>
+
+$\nabla_i F^i = e_i (F^i) + F^k {\Gamma^i}_{ik}$<br>
+<br>
+I bet you would like to replace the trace of that with the metric determinant gradient, wouldn't you?  Well you can't.  Not yet.  Back to the symmetry of the 2nd and 3rd indexes.  The identity you're thinking of is this one:<br>
+<br>
+${\Gamma^i}_{ki} = e_k (ln \sqrt{|g|})$<br>
+<br>
+Also take note that, if you're dealing with a non-coordinate basis then that g isn't your friend.  It's the non-coordinate metric g, which chances are is chosen to be identity but I'm not making assumptions, so least of all we should assume it is the coordinate metric $\bar{g}$.<br>
+<br>
+So first we have to introduce some commutation:<br>
+<br>
+${\Gamma^i}_{ki} = e_k (ln \sqrt{|g|})$<br>
+${\Gamma^i}_{jk} = {\Gamma^i}_{kj} + {c_{jk}}^i$<br>
+so we get:<br>
+${\Gamma^i}_{ik} = {\Gamma^i}_{ki} + {c_{ik}}^i$<br>
+${\Gamma^i}_{ik} = e_k (ln \sqrt{|g|}) + {c_{ik}}^i$<br>
+<br>
+And in the presence of commutation we get this:<br>
+<br>
+$\nabla_i F^i = e_i (F^i) + F^k (e_k (ln \sqrt{|g|}) + {c_{ik}}^i)$<br>
+<br>
+Also note that, in the commutation realm, most often the basis is orthonormalized.  In that case your metric determinant $e_k(\sqrt{|g|})$ would become constant and its gradient would go away, and I assume the trace of the commutation would take on the role of the value that the gradient of the coordinate-based metric would give you.<br>
+<br>
+
+So if you want to take it one step further and write that covariant diverence using the coordinate metric, we can pull another trick out of our hat:<br>
+<br>
+${\Gamma^i}_{ki} = {e^i}_{\bar j} e_k({e_i}^{\bar j}) + e_k(log\sqrt{|\bar{g}|})$<br>
+${\Gamma^i}_{ik} = e_k(log\sqrt{|\bar{g}|}) + {e^i}_{\bar j} e_k({e_i}^{\bar j}) + {c_{ik}}^i$<br>
+$\nabla_i F^i = e_i (F^i) + F^k (e_k (ln \sqrt{|\bar{g}|}) + {e^i}_{\bar j} e_k({e_i}^{\bar j}) + {c_{ik}}^i)$<br>
+$\nabla_i F^i = e_i (F^i) + F^k (e_k (ln J) + e_i({e_k}^\bar{k}) {e^i}_\bar{k})$<br>
+<br>
+If you want to go from non-coordinate metric determinant gradient to coordinate metric determinant gradient (the volume element), then we can make use of this.<br>
+<br>
+$\nabla_i F^i = e_i (F^i) + F^i \frac{1}{J} e_i (J) + F^k e_i({e_k}^\bar{k}) {e^i}_\bar{k}$<br>
+$\nabla_i F^i = \frac{1}{J} e_i (J F^i) + F^k e_i({e_k}^\bar{k}) {e^i}_\bar{k}$<br>
+you can keep going further and stumble upon<br>
+$\nabla_i F^i = \frac{1}{J} \partial_\bar{i} (J {e_i}^\bar{i} F^\bar{i})$<br>
+<br>
+So we have some risks and rewards in choosing our basis.  If we choose a coordinate basis then we get the volume element easily, and no commutation arises.  If we choose a non-coordinate then we have to deal with commutation, but an orthonormal basis means the metric determinant gradient is zero.<br>
+<br>
+
+The equation is starting to get unruly.  Time to start making assumptions and cancelling terms.<br>
+<br>
+Next assumption is that we have a static unmoving grid.  This means that the time derivatives of the basis, Jacobian, etc are all zero.<br>
+<br>
+
+$
+\int_{x^1_L}^{x^1_R}
+...
+\int_{x^n_L}^{x^n_R}
+	J(x)
+	\int_{t=t_L}^{t=t_R}
+	\left( \frac{\partial}{\partial t} 
+		{u^{i_1 ... i_p}}_{j_1 .. j_q}(x) 
+	\right) 
+	dt
+dx^n ... dx^1 
++ 
+\int_{x^1_L}^{x^1_R}
+...
+\int_{x^n_L}^{x^n_R}
+\int_{t=t_L}^{t=t_R}
+	\left( 
+		e_k ( {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x) ) 
+		+ {F^{m i_1 ... i_p}}_{j_1 ... j_q}(x) {\Gamma^k}_{km}(x)
+		+ \Sigma_{m=1}^p {F^{k i_1 ... m ... i_p}}_{j_1 ... j_q}(x) {\Gamma^{i_m}}_{k m}(x) 
+		- \Sigma_{m=1}^q {F^{k i_1  ... i_p}}_{j_1 ... m ... j_q}(x) {\Gamma^m}_{k j_m}(x) 
+	\right) 
+	J(x) 
+dx^n ... dx^1 dt
+= 
+\int_{t=t_L}^{t=t_R}
+\int_{x^1_L}^{x^1_R}
+...
+\int_{x^n_L}^{x^n_R}
+	{S^{i_1 ... i_p}}_{j_1 ... j_q}(x) J(x) 
+dx^n ... dx^1 dt
+$<br>
+
+$
+\int_{x^1_L}^{x^1_R}
+...
+\int_{x^n_L}^{x^n_R}
+	J(x)
+	\left( 
+		{u^{i_1 ... i_p}}_{j_1 .. j_q}(x, t_R)
+		- {u^{i_1 ... i_p}}_{j_1 .. j_q}(x, t_L)
+	\right) 
+dx^n ... dx^1
++ 
+\int_{x^1_L}^{x^1_R}
+...
+\int_{x^n_L}^{x^n_R}
+\int_{t=t_L}^{t=t_R}
+	\left( 
+		e_k ( {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x) )
+		+ {F^{m i_1 ... i_p}}_{j_1 ... j_q}(x) {\Gamma^k}_{km}(x)
+		+ \Sigma_{m=1}^p {F^{k i_1 ... m ... i_p}}_{j_1 ... j_q}(x) {\Gamma^{i_m}}_{k m}(x) 
+		- \Sigma_{m=1}^q {F^{k i_1  ... i_p}}_{j_1 ... m ... j_q}(x) {\Gamma^m}_{k j_m}(x) 
+	\right) 
+	J(x) 
+dx^n ... dx^1 dt
+= 
+\int_{t=t_L}^{t=t_R}
+\int_{x^1_L}^{x^1_R}
+...
+\int_{x^n_L}^{x^n_R}
+	{S^{i_1 ... i_p}}_{j_1 ... j_q}(x) J(x) 
+dx^n ... dx^1 dt
+$<br>
+<br>
+
+I'll also assume the flux, source, and connections are all constant throughout the cell wrt time, for the duration of $(t_L, t_R)$, so we can factor out the $\int_{t_L}^{t_R} dt = \Delta t$:<br>
+<br>
+
+$
+\int_{x^1_L}^{x^1_R}
+...
+\int_{x^n_L}^{x^n_R}
+	J(x)
+	\left( 
+		{u^{i_1 ... i_p}}_{j_1 .. j_q}(x, t_R)
+		- {u^{i_1 ... i_p}}_{j_1 .. j_q}(x, t_L)
+	\right) 
+dx^n ... dx^1
++ 
+\Delta t
+\int_{x^1_L}^{x^1_R}
+...
+\int_{x^n_L}^{x^n_R}
+	\left(
+		e_k ( {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x) )
+		+ {F^{m i_1 ... i_p}}_{j_1 ... j_q}(x) {\Gamma^k}_{km}(x)
+		+ \Sigma_{m=1}^p {F^{k i_1 ... m ... i_p}}_{j_1 ... j_q}(x) {\Gamma^{i_m}}_{k m}(x) 
+		- \Sigma_{m=1}^q {F^{k i_1  ... i_p}}_{j_1 ... m ... j_q}(x) {\Gamma^m}_{k j_m}(x) 
+	\right) 
+	J(x) 
+dx^n ... dx^1 
+= 
+\Delta t
+\int_{x^1_L}^{x^1_R}
+...
+\int_{x^n_L}^{x^n_R}
+	{S^{i_1 ... i_p}}_{j_1 ... j_q}(x) J(x) 
+dx^n ... dx^1 
+$<br>
+<br>
+
+At this point we have two options: we can assume u is constant throughout the cell and factor it out to integrate the volume form, or we can assume the value at the cell is equal to the integral of the state value throughout the cell times its volume form.
+I suppose we have a third option of simply considering the cell value to be the integral of u throughout the cell, but then we would have to figure out how to split it apart from the volume form integral, which we can't easily write out a general case for - we would have to calculate that uniquely for each choice of grid.<br>
+<br>
+
+Let's go down the rabbithole of assuming u, S, and F are piecewise constant throughout their volume - so we can factor out the J.
+Let's also introduce the coordinate $x_C$ as the center of the cell, midway between $x_L$ and $x_R$.
+Let's also define our cell volume as $\mathcal{V} = \int_V J(x) dV$.<br>
+<br><br>
+
+$
+\left( 
+	{u^{i_1 ... i_p}}_{j_1 .. j_q}(x_C, t_R)
+	- {u^{i_1 ... i_p}}_{j_1 .. j_q}(x_C, t_L)
+\right) \mathcal{V}(x)
++ \Delta t
+\int_{x^1_L}^{x^1_R}
+...
+\int_{x^n_L}^{x^n_R}
+	\left( 
+		e_k ( {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x) )
+		+ {F^{m i_1 ... i_p}}_{j_1 ... j_q}(x) {\Gamma^k}_{km}(x)
+		+ \Sigma_{m=1}^p {F^{k i_1 ... m ... i_p}}_{j_1 ... j_q}(x) {\Gamma^{i_m}}_{k m}(x) 
+		- \Sigma_{m=1}^q {F^{k i_1 ... i_p}}_{j_1 ... m ... j_q}(x) {\Gamma^m}_{k j_m}(x) 
+	\right) 
+	J(x) 
+dx^n ... dx^1 
+= 
+\Delta t
+\cdot {S^{i_1 ... i_p}}_{j_1 ... j_q}(x_C) \cdot \mathcal{V}(x) 
+$<br>
+<br>
+
+I haven't touched the connections yet, and that's because here we have the option of using a special-case trick for the (0,0)-degree scalar case.  Let's explore that detour:<br>
+<br>
+
+$
+\left( 
+	u(x_C, t_R)
+	- u(x_C, t_L)
+\right) \mathcal{V}(x)
++ \Delta t
+\int_{x^1_L}^{x^1_R}
+...
+\int_{x^n_L}^{x^n_R}
+	\left( 
+		e_k ( F^k(x) )
+		+ F^m(x) {\Gamma^k}_{k m}(x) 
+	\right) 
+	J(x) 
+dx^n ... dx^1 
+= 
+\Delta t
+\cdot S(x_C) \cdot \mathcal{V}(x) 
+$<br>
+
+If we use our Voss-Weyl identity:<br>
+<br>
+$
+\left( 
+	u(x_C, t_R)
+	- u(x_C, t_L)
+\right) \mathcal{V}(x)
++ \Delta t
+\int_{x^1_L}^{x^1_R}
+...
+\int_{x^n_L}^{x^n_R}
+	\frac{1}{J(x)} \partial_\bar{k} ( J(x) F^k(x) {e_k}^\bar{k}(x) )
+dx^n ... dx^1 
+= 
+\Delta t
+\cdot S(x_C) \cdot \mathcal{V}(x) 
+$<br>
+$
+\left( 
+	u(x_C, t_R)
+	- u(x_C, t_L)
+\right) \mathcal{V}(x)
++ \Delta t
+\int_{x^1_L}^{x^1_R}
+...
+\int_{x^n_L}^{x^n_R}
+	\partial_k ( J(x) F^k(x) {e_k}^\bar{k}(x) )
+dx^n ... dx^1 
+= 
+\Delta t
+\cdot S(x_C) \cdot \mathcal{V}(x) 
+$<br>
+$
+\left( 
+	u(x_C, t_R)
+	- u(x_C, t_L)
+\right) \mathcal{V}(x)
++ \Delta t
+\int_{x^1_L}^{x^1_R}
+\overset{-\{x^k\}}{...}
+\int_{x^n_L}^{x^n_R}
+	\left(
+		J(x^k_R) F^k(x^k_R) {e_k}^\bar{k}(x_R)
+		- J(x^k_L) F^k(x^k_L) {e_k}^\bar{k}(x_L)
+	\right)
+dx^n \overset{-\{x^k\}}{...} dx^1 
+= 
+\Delta t
+\cdot S(x_C) \cdot \mathcal{V}(x) 
+$<br>
+$u(x_C, t_R)
+= u(x_C, t_L)
++ \Delta t \left(
+	- \frac{1}{\mathcal{V}(x)}
+	\int_{x^1_L}^{x^1_R}
+	\overset{-\{x^k\}}{...}
+	\int_{x^n_L}^{x^n_R}
+		\left(
+			J(x^k_R) F^k(x^k_R) {e_k}^\bar{k}(x_R)
+			- J(x^k_L) F^k(x^k_L) {e_k}^\bar{k}(x_L)
+		\right)
+	dx^n \overset{-\{x^k\}}{...} dx^1 
+	+ S(x_C)
+\right)$<br>
+<br>
+So finite volume integration can be implementned with volume weighting across your cell sides (and transforming between your coordinate and non-coordinate basis).<br>
+Just like in 1987 Thompson "Lecture Series in Computational Fluid Dynamics" ... somewhere?  Section 4, equation 4.127 maybe?<br>
+<br>
+<br>
 
 <hr>
 <br>

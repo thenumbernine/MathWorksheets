@@ -155,6 +155,15 @@ ${\hat\Gamma^a}_{bc} = {\bar{\Gamma}^a}_{bc} + {e^a}_\bar{a} e_b({e_c}^\bar{a})$
 Notice how this matches up with the covariant derivative definition: ${\Gamma^a}_{bc} = e^a (\nabla_b e_c)$<br>
 <br>
 
+If we want to transforms all this to the coordinate basis:<br>
+${e_a}^\bar{a} {e^b}_\bar{b} {e^c}_\bar{c} {\hat\Gamma^a}_{bc} =  
+	{\bar{\Gamma}^\bar{a}}_{\bar{b}\bar{c}} 
+	+ {e^c}_\bar{c} {e^b}_\bar{b} e_b ({e_c}^\bar{a}) $<br>
+${e_a}^\bar{a} {e^b}_\bar{b} {e^c}_\bar{c} {\hat\Gamma^a}_{bc} =  
+	{\bar{\Gamma}^\bar{a}}_{\bar{b}\bar{c}} 
+	+ {e^c}_\bar{c} \partial_\bar{b} ({e_c}^\bar{a}) $<br>
+<br>
+
 Let the contorsion tensor be the difference between an arbitrary connection and the Levi-Civita connection:<br>
 ${K^a}_{bc} = {\Gamma^a}_{bc} - {\hat\Gamma^a}_{bc}$<br>
 $= \frac{1}{2} ({{T_c}^a}_b + {{T_b}^a}_c + {T^a}_{bc})$<br>
@@ -173,18 +182,46 @@ ${K^u}_{au} = 0$<br>
 <br>
 
 Jacobi formula applied to metric tensor (more on worksheet #13):<br>
-$\partial_a g = g g^{uv} \partial_a g_{uv}$<br>
-$\frac{1}{2 g} \partial_a g = \frac{1}{2} g^{uv} \partial_a g_{uv}$<br>
-$\frac{1}{2} \partial_a ( log |g| ) = \frac{1}{2} g^{uv} \partial_a g_{uv}$<br>
-$\partial_a ( log \sqrt{|g|} ) = \frac{1}{2} g^{uv} \partial_a ( g_{uv} )$<br>
+$e_a (g) = g g^{uv} e_a (g_{uv})$<br>
+$\frac{1}{2 g} e_a (g) = \frac{1}{2} g^{uv} e_a (g_{uv})$<br>
+$\frac{1}{2} e_a ( log |g| ) = \frac{1}{2} g^{uv} e_a (g_{uv})$<br>
+$e_a ( log \sqrt{|g|} ) = \frac{1}{2} g^{uv} e_a ( g_{uv} )$<br>
 ...in a non-coordinate basis that is a linear map of a coordinate basis...<br>
 $e_a ( log \sqrt{|g|} ) = \frac{1}{2} g^{uv} e_a ( g_{uv} )$<br>
 <br>
 
-Trace of Levi-Civita connection:<br>
+Jacobi formula of a coordinate metric in a coordinate basis:<br>
+Remember, $g_{uv} = e_u \cdot e_v$ is a non-coordinate metric expressed in the non-coordinate basis and $\bar{g}_{\bar{u}\bar{v}} = \partial_\bar{u} \cdot \partial_\bar{v}$ is the coordinate metric expressed in the coordinate basis.<br>
+$\partial_\bar{a} ( log \sqrt{|\bar{g}|} ) = \frac{1}{2} \bar{g}^{\bar{u}\bar{v}} \partial_\bar{a} ( \bar{g}_{\bar{u}\bar{v}} )$<br>
+$\partial_\bar{a} ( log \sqrt{|\bar{g}|} ) = \frac{1}{2} g^{uv} {e_u}^\bar{u} {e_v}^\bar{v} \partial_\bar{a} ( g_{cd} {e^c}_\bar{u} {e^d}_\bar{v} )$<br>
+$\partial_\bar{a} ( log \sqrt{|\bar{g}|} ) = \frac{1}{2} g^{uv} {e_u}^\bar{u} {e_v}^\bar{v} ( 
+	\partial_\bar{a} (g_{cd}) {e^c}_\bar{u} {e^d}_\bar{v} 
+	+ g_{cd} \partial_\bar{a} ({e^c}_\bar{u}) {e^d}_\bar{v} 
+	+ g_{cd} {e^c}_\bar{u} \partial_\bar{a} ({e^d}_\bar{v})
+)$<br>
+$\partial_\bar{a} ( log \sqrt{|\bar{g}|} ) = \frac{1}{2} 
+	g^{uv} \partial_\bar{a} (g_{uv})  
+	+ {e_v}^\bar{u} \partial_\bar{a} ({e^v}_\bar{u}) 
+$<br>
+$\partial_\bar{a} ( log \sqrt{|\bar{g}|} ) = \frac{1}{2} 
+	g^{uv} \partial_\bar{a} (g_{uv})  
+	- {e^v}_\bar{u} \partial_\bar{a} ({e_v}^\bar{u}) 
+$<br>
+<br>
+
+Trace of Levi-Civita connection on 1 and 3:<br>
 ${\hat\Gamma^u}_{au} = \frac{1}{2} g^{uv} (e_u (g_{va}) + e_a (g_{vu}) - e_v (g_{au}) + c_{vau} + c_{vua} - c_{uav})$<br>
 ${\hat\Gamma^u}_{au} = \frac{1}{2} g^{uv} e_a (g_{uv})$<br>
 ${\hat\Gamma^u}_{au} = e_a ( log \sqrt{|g|} )$<br>
+<br>
+
+Trace of Levi-Civita connection on 1 and 2:<br>
+${\hat\Gamma^u}_{ua} = \frac{1}{2} g^{uv} (
+    e_a (g_{vu}) + e_u (g_{va}) - e_v (g_{ua})
+    + c_{vua} + c_{vau} - c_{auv}
+)$<br>
+$= \frac{1}{2} g^{uv} e_a (g_{vu}) - {c_{au}}^u$<br>
+$= e_a (log \sqrt{|g|}) + {c_{ua}}^u$<br>
 <br>
 
 Levi-Civita connection antisymmetry on 2nd and 3rd indexes:<br> 
@@ -198,13 +235,32 @@ In a holonomic basis this gives ${\hat\Gamma^a}_{[bc]} = 0$<br>
 Notice that ${\hat\Gamma^u}_{ua} = {\hat\Gamma^u}_{au} + {c_{ua}}^u$<br>
 Therefore ${\hat\Gamma^u}_{ua} = {\hat\Gamma^u}_{au} + {c_{ua}}^u$<br>
 ${\hat\Gamma^u}_{ua} = e_a ( log \sqrt{|g|} ) + {c_{ua}}^u$<br>
-(Verify that this is true by performing the trace on the Levi-Civita connection definition above.)<br>
+Which looks just like our trace of the Levi-Civita connection above.<br>
 <br>
 
 Trace of an arbitrary connection:<br>
 ${\Gamma^u}_{au} = {\hat\Gamma^u}_{au} + {K^u}_{au} = e_a ( log \sqrt{|g|} )$<br>
 ${\Gamma^u}_{ua} - {\Gamma^u}_{au} = {T^u}_{ua} + {c_{ua}}^u$<br>
 ${\Gamma^u}_{ua} = e_a ( log \sqrt{|g|} ) + {c_{ua}}^u + {T^u}_{ua}$<br>
+<br>
+
+Trace of the Levi-Civita connection of the coordinate basis (which will equal the volume gradient):<br>
+${\bar\Gamma^\bar{u}}_{\bar{a}\bar{u}} = \partial_\bar{a} ( log \sqrt{|\bar{g}|} )$<br>
+...transformed into non-coordinates...<br>
+${\bar\Gamma^u}_{au} = e_a ( log \sqrt{|\bar{g}|} )$<br>
+Difference of Levi-Civita connection of the coordinate basis vs the non-coordinate basis:<br>
+${\hat\Gamma^u}_{au} = {\bar\Gamma^u}_{au} + {e^u}_\bar{u} e_a({e_u}^\bar{u})$<br>
+${\bar\Gamma^u}_{au} = {\hat\Gamma^u}_{au} - {e^u}_\bar{u} e_a({e_u}^\bar{u})$<br>
+Trace of the Levi-Civita connection of the coordinate basis, in terms of the non-coordinate Levi-Civita connection:<br>
+${\bar\Gamma^u}_{au} = e_a ( log \sqrt{|\bar{g}|} )$<br>
+Equate:<br>
+${\hat\Gamma^u}_{au} - {e^u}_\bar{u} e_a({e_u}^\bar{u}) = e_a ( log \sqrt{|\bar{g}|} )$<br>
+... subsitute $- {e^u}_\bar{u} e_a ({e_u}^\bar{u}) = e_a ( log \sqrt{|\bar{g}|} ) - \frac{1}{2} g^{uv} e_a (g_{uv})$ ...<br>
+${\hat\Gamma^u}_{au} + e_a ( log \sqrt{|\bar{g}|} ) - \frac{1}{2} g^{uv} e_a (g_{uv}) = e_a ( log \sqrt{|\bar{g}|} )$<br>
+${\hat\Gamma^u}_{au} = \frac{1}{2} g^{uv} e_a (g_{uv})$<br>
+<br>
+
+TODO And compare it with the non-coordinate Levi-Civita connection trace.<br>
 <br>
 
 Levi-Civita change-of-basis:<br>
