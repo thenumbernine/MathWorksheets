@@ -26,7 +26,7 @@ ${e_\mu}^I = \downarrow I \overset{\rightarrow \mu}{\left[\begin{matrix}
 	\vdots & & \vdots \\
 	{e_1}^\hat{n} & ... & {e_n}^\hat{n}
 \end{matrix}\right]} = \overset{\rightarrow \mu}{\left[\begin{matrix}
-	e_1 & | & ... &  | & e_n
+	e_1 & | & ... & | & e_n
 \end{matrix}\right]} = \downarrow I \left[\begin{matrix}
 	e^\hat{1} \\ --- \\ \vdots \\ --- \\ e^\hat{n}
 \end{matrix}\right]
@@ -234,11 +234,11 @@ $v = v^\mu {e_\mu}^I e_I = v^I e_I$<br>
 
 In matrix form:<br>
 $v = \left[\begin{matrix}
-	e_\hat{1} & | & ... &  | & e_\hat{n}
+	e_\hat{1} & | & ... & | & e_\hat{n}
 \end{matrix}\right] \left[\begin{matrix}
 	v^\hat{1} \\ --- \\ \vdots \\ --- \\ v^\hat{n}
 \end{matrix}\right] = \left[\begin{matrix}
-	e_\hat{1} & | & ... &  | & e_\hat{n}
+	e_\hat{1} & | & ... & | & e_\hat{n}
 \end{matrix}\right] \left[\begin{matrix}
 	{e_1}^\hat{1} & ... & {e_n}^\hat{1} \\
 	\vdots & & \vdots \\
@@ -361,6 +361,39 @@ $v = e(y) v'(y)$<br>
 $v = v'$<br>
 <br>
 <br>
+
+<hr>
+<br>
+
+How about one-forms?<br>
+<br>
+
+Well usually one-form components are represented as row vectors, and the accompanying one-form dual basis can be seen as a right-multiply with a column-'vector':<br>
+<br>
+$w = w_\mu e^\mu$<br>
+<br>
+
+In matrix form:<br>
+$w = \left[\begin{matrix}
+	w_1 & | & ... & | & w_n
+\end{matrix}\right] \left[\begin{matrix}
+	e^1 \\ --- \\ \vdots \\ --- \\ e^n
+\end{matrix}\right]$<br>
+<br>
+
+So what is the propagator of our $e^\mu$ basis?  Well what is the PDE?<br>
+<br>
+$\nabla_\mu e^\alpha = -{\Gamma^\alpha}_{\mu\nu} e^\nu$<br>
+<br>
+
+I could maintain the contravariant-index-is-column-vector, covariant-index-is-row-vector standard and rewrite our linear dynamic system as a left multiplication on the basis (instead of a right) and come up with a parallel propagator matrix which is a left-multiply on the basis and a right-multiply on the one-form components...
+Maybe I will later. For now I will just say 'transpose it all', use the previous linear dynamic system we were using except with $e_\mu$'s taking the place of $e^\mu$'s.  You'll see that, to represent the covariant derivative of the one-form dual basis, you need to replace the matrix of connections with its negative, transpose.
+Then we integrate and exponent.  What does the negative inside the integral do?  It becomes an inverse on the outside of the exponent.  What does the transpose do?  Well in the orthonormal basis case that our connection is antisymmetric and its exponent is orthogonal, transpose gives us an inverse.
+In the orthonormal case those two modifications combine and cancel, and we see that the propagator of a one-form is the same as the propagator of a vector - which makes sense, since the orthonormal metric is the identity matrix, so the one-form component values equal the vector component values.
+But take note that, in the non-orthonormal case, you can't use the contravariant propagator to propagate the covariant indexes.  You must use its transpose inverse.<br>
+TODO spell this out in detail with matrices like above - and then TODO TODO incorporate it into the integration worksheet.<br>
+<br>
+
 
 <hr>
 <br>
