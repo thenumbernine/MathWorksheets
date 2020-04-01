@@ -785,6 +785,89 @@ $\left[\begin{matrix} e_x & e_y \end{matrix}\right] \left[\begin{matrix} v^x \\ 
 $\left[\begin{matrix} v^x \\ v^y \end{matrix}\right] = \left[\begin{matrix} cos(\phi) & -r sin(\phi) \\ sin(\phi) & r cos(\phi) \end{matrix}\right] \left[\begin{matrix} v^r \\ v^\phi \end{matrix}\right]$<br>
 $\left[\begin{matrix} cos(\phi) & sin(\phi) \\ -\frac{1}{r}sin(\phi) & \frac{1}{r} cos(\phi) \end{matrix}\right] \left[\begin{matrix} v^x \\ v^y \end{matrix}\right] = \left[\begin{matrix} v^r \\ v^\phi \end{matrix}\right]$<br>
 <br>
+So there we can see that the $|v^\phi|$ component has a scalar of $\frac{1}{r}$.<br>
+<br>
+
+I just did this section in terms of propagating the basis, but what about parallel-propagating the vector components?<br>
+<br>
+
+$P(x_L,x_R) = S(1, \frac{1}{r_R}) \cdot R(\phi_L - \phi_R) \cdot S(1, r_L) 
+= \left[\begin{matrix}
+	cos(\phi_L - \phi_R) & -r_L sin(\phi_L - \phi_R) \\
+	\frac{1}{r_R} sin(\phi_L - \phi_R) & \frac{r_L}{r_R} cos(\phi_L - \phi_R)
+\end{matrix}\right]
+= \left[\begin{matrix}
+	cos(\phi_R - \phi_L) & r_L sin(\phi_R - \phi_L) \\
+	-\frac{1}{r_R} sin(\phi_R - \phi_L) & \frac{r_L}{r_R} cos(\phi_R - \phi_L)
+\end{matrix}\right]
+$<br>
+<br>
+
+$v(x_R) = P(x_L, x_R) v(x_L)$<br>
+<br>
+
+$\left[\begin{matrix}
+	v^r (x_R) \\
+	v^\phi (x_R)
+\end{matrix}\right] = \left[\begin{matrix}
+	cos(\phi_R - \phi_L) & r_L sin(\phi_R - \phi_L) \\
+	-\frac{1}{r_R} sin(\phi_R - \phi_L) & \frac{r_L}{r_R} cos(\phi_R - \phi_L)
+\end{matrix}\right] \left[\begin{matrix}
+	v^r (x_L) \\
+	v^\phi (x_L)
+\end{matrix}\right]$<br>
+$\left[\begin{matrix}
+	v^r (x_R) \\
+	v^\phi (x_R)
+\end{matrix}\right]
+= \left[\begin{matrix}
+	cos(\phi_R - \phi_L) v^r(x_L) + r_L sin(\phi_R - \phi_L) v^\phi(x_L) \\
+	-\frac{1}{r_R} sin(\phi_R - \phi_L) v^r(x_L) + \frac{r_L}{r_R} cos(\phi_R - \phi_L) v^\phi(x_L)
+\end{matrix}\right]$<br>
+<br>
+So what is going on here?  The $|v^\phi(r_L)| = \frac{1}{r_L}$ factor is being removed, and a new $\frac{1}{r_R}$ factor is being introduced.  
+Also an inverse rotation is being applied to the vector components, because a forward-rotation of the vector basis is going to coincide with an inverse-rotation of the components.<br>
+<br>
+
+How about one-forms?  Here we use the inverse propagator.  If you represent your one-form components as a column vector with the propagator as a left-multiply then you must transpose it as well - but I'll ignore that and stick with my contravariant-column, covariant-rw standard.<br>
+<br>
+
+$w(x_R) = w(x_L) P^{-1}(x_L, x_R)$<br>
+<br>
+
+$\left[\begin{matrix}
+	w^r (x_R) & 
+	w^\phi (x_R)
+\end{matrix}\right] 
+= \left[\begin{matrix}
+	w^r (x_L) & 
+	w^\phi (x_L)
+\end{matrix}\right]
+\left[\begin{matrix}
+	cos(\phi_R - \phi_L) & -r_R sin(\phi_R - \phi_L) \\
+	\frac{1}{r_L} sin(\phi_R - \phi_L) & \frac{r_R}{r_L} cos(\phi_R - \phi_L)
+\end{matrix}\right]
+$<br>
+$\left[\begin{matrix}
+	w^r (x_R) & 
+	w^\phi (x_R)
+\end{matrix}\right] 
+= \left[\begin{matrix}
+	\left(
+		cos(\phi_R - \phi_L) w^r (x_L)
+		+ \frac{1}{r_L} sin(\phi_R - \phi_L) w^\phi (x_L) 
+	\right) &
+
+	\left(
+		-r_R sin(\phi_R - \phi_L) w^r (x_L)
+		+ \frac{r_R}{r_L} cos(\phi_R - \phi_L) w^\phi (x_L)
+	\right)
+\end{matrix}\right]
+$<br>
+<br>
+
+Looks similar to the vector transform.  We see that $|w_\phi| \propto r$ just as $|d\phi| \propto \frac{1}{r}$, so we are scaling out the old $r_L$ value and scaling in the new $r_R$ value.
+Otherwise the rotation of the components $\{w_r, w_\phi\}$ are equivalent to the rotation of the components $\{v^r, v^\phi\}$, courtesy of the one-form parallel propagator being the inverse-transpose of the vector parallel propagator.<br>
 <br>
 
 <hr>
