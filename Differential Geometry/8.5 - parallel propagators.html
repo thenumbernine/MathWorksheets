@@ -391,7 +391,82 @@ Maybe I will later. For now I will just say 'transpose it all', use the previous
 Then we integrate and exponent.  What does the negative inside the integral do?  It becomes an inverse on the outside of the exponent.  What does the transpose do?  Well in the orthonormal basis case that our connection is antisymmetric and its exponent is orthogonal, transpose gives us an inverse.
 In the orthonormal case those two modifications combine and cancel, and we see that the propagator of a one-form is the same as the propagator of a vector - which makes sense, since the orthonormal metric is the identity matrix, so the one-form component values equal the vector component values.
 But take note that, in the non-orthonormal case, you can't use the contravariant propagator to propagate the covariant indexes.  You must use its transpose inverse.<br>
-TODO spell this out in detail with matrices like above - and then TODO TODO incorporate it into the integration worksheet.<br>
+<br>
+
+Let's walk through this, step-by-step.<br>
+<br>
+
+Our covariant derivative of our one-form dual-basis:<br>
+<br>
+$\nabla_\mu e^\nu(x) = -{\Gamma^\nu}_{\mu\alpha}(x) e^\alpha(x)$<br>
+<br>
+
+Represented with respect to a fixed global Cartesian basis:<br>
+<br>
+
+$\nabla_\mu [{e^\nu}_I](x) = -[{\Gamma^\nu}_{\mu\alpha}](x) [{e^\alpha}_I](x)$<br>
+<br>
+
+Written out per-component using our contravariant-is-column, covariant-is-row convention:<br>
+<br>
+$\nabla_\mu \left[\begin{matrix}
+	{e^1}_\hat{1} & ... & {e^1}_\hat{n} \\
+	\vdots & & \vdots \\
+	{e^n}_\hat{1} & ... & {e^n}_\hat{n}
+\end{matrix}\right] = \left[\begin{matrix}
+	-{\Gamma^1}_{\mu 1} & ... & -{\Gamma^1}_{\mu n} \\
+	\vdots & & \vdots \\
+	-{\Gamma^n}_{\mu 1} & ... & -{\Gamma^n}_{\mu n}
+\end{matrix}\right] \left[\begin{matrix}
+	{e^1}_\hat{1} & ... & {e^1}_\hat{n} \\
+	\vdots & & \vdots \\
+	{e^n}_\hat{1} & ... & {e^n}_\hat{n}
+\end{matrix}\right]$<br>
+<br>
+
+Solve with an exponent:<br>
+<br>
+
+$\nabla_\mu [{e^\nu}_I](x^\mu_R) = exp( -\int_{x'^\mu=x^\mu_L}^{x'^\mu=x^\mu_R} [{\Gamma^\nu}_{\mu\alpha}](x') dx' ) [{e^\alpha}_I](x^\mu_L)$<br>
+<br>
+
+So our matrix is the same matrix as before, except it is negative'd.  Also instead of a right multiply it is a left multiply (so now everyone can stop biting their nails over this).
+In fact, overall, this looks a lot more like the definition of a parallel propagator, and the traditional left-multiply definition of a linear dynamic system.<br>
+<br>
+
+Notice that if we transpose everything then we match the previous equation for our vector basis, except that now the connection coefficients are negative'd - and therefore the exponent is inverted.<br>
+<br>
+
+So the parallel propagator of a one-form is the transpose-inverse of the parallel propagator of a vector.<br>
+<br>
+
+Then of course if you apply this to the one-form, like with the vectors, you must apply its inverse.<br>
+<br>
+$e^{-1}(y) = P(x,y) \cdot e^{-1}(x)$<br>
+<br>
+This is just the inverse of our definition for the propagation of the vector basis.<br>
+<br>
+Then we can assert our one-forms between different points $w = w'$ match:<br>
+$w = w'$<br>
+$w = w'(x) \cdot e^{-1}(x)$<br>
+$w = w'(x) \cdot P^{-1}(x,y) \cdot P(x,y) \cdot e^{-1}(x)$<br>
+$w = w'(x) \cdot P^{-1}(x,y) \cdot e^{-1}(y)$<br>
+$w = w'(y) \cdot e^{-1}(y)$<br>
+$w = w'$<br>
+<br>
+
+So here we see:<br>
+<br>
+$w(y) = w(x) \cdot P^{-1}(x,y)$<br>
+<br>
+which is the same as<br>
+<br>
+$w(y) = w(x) \cdot P(y,x)$<br>
+<br>
+So to parallel-propagate one forms, we right-multiply with the inverse of the propagator - just as when we propagated vectors we left-multiplied the forward parallel propagator.
+Of course if we want to view this as a left-multiply - so its form matches the parallel propagator of the vector - then we, once again, transpose our equation.<br>
+<br>
+$w^T(y) = P^{-T}(x,y) \cdot w^T(x)$<br>
 <br>
 
 
@@ -407,11 +482,14 @@ $= {A^{\mu_1 ... \mu_p}}_{\nu_1 ... \nu_q}(y)
 $<br>
 $= {P(x,y)^{\mu_1}}_{\alpha_1} \cdot ... \cdot 
 {P(x,y)^{\mu_p}}_{\alpha_p} \cdot 
-{P(x,y)^{\beta_1}}_{\nu_1} \cdot ... \cdot
-{P(x,y)^{\beta_q}}_{\nu_q} \cdot 
+{P(y,x)^{\beta_1}}_{\nu_1} \cdot ... \cdot
+{P(y,x)^{\beta_q}}_{\nu_q} \cdot 
 {A^{\alpha_1 ... \alpha_p}}_{\beta_1 ... \beta_q}(y)
 	\underset{k=1}{\overset{p}{\otimes}} e_{\mu_k}(x) \underset{k=1}{\overset{q}{\otimes}} e^{\nu_k}(x)
 $<br>
+<br>
+
+Take note that, true to the definition of one-form / covariant-index propagation, the x and y must be reversed since the parallel propagation matrix must be transposed.<br>
 <br>
 
 Let's make our notation a bit more concise.  I am going to generalize the propagator indexes:<br>
@@ -439,11 +517,15 @@ $<br>
 $= {P(x, y, A)^{\mu_1 ... \mu_p}}_{\nu_1 ... \nu_q} 
 	\underset{k=1}{\overset{p}{\otimes}} e_{\mu_k}(x) \underset{k=1}{\overset{q}{\otimes}} e^{\nu_k}(x)
 $<br>
-$= {P(x, y)^{\mu_1}}_{\alpha_1} \cdot ... \cdot {P(x, y)^{\mu_p}}_{\alpha_p}
-	\cdot {P(x, y)^{\beta_1}}_{\nu_1} \cdot ... \cdot {P(x, y)^{\beta_q}}_{\nu_q}
+$= {P(x, y)^{\mu_1}}_{\alpha_1} \cdot ... 
+	\cdot {P(x, y)^{\mu_p}}_{\alpha_p}
+	\cdot {P(y, x)^{\beta_1}}_{\nu_1} \cdot ... 
+	\cdot {P(y, x)^{\beta_q}}_{\nu_q}
 	\cdot {A^{\alpha_1 ... \alpha_p}}_{\beta_1 ... \beta_q}(x)
 	\underset{k=1}{\overset{p}{\otimes}} e_{\mu_k}(x) \underset{k=1}{\overset{q}{\otimes}} e^{\nu_k}(x)
 $<br>
+<br>
+Once again notice that the parallel propagated contravariant indexes are replaced with a multiply of $P(x,y)$, while the parallel propagated covariant indexes are propagated with $P(y,x)$<br>
 <br>
 <br>
 
