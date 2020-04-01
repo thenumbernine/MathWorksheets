@@ -592,24 +592,23 @@ ${\Gamma^\phi}_{r\phi} = {\Gamma^\phi}_{\phi r} = \frac{1}{r}$<br>
 <br>
 
 $[\Gamma_\mu] = \left[\begin{matrix}
-	{\Gamma^r}_{\mu r} & {\Gamma^\phi}_{\mu r} \\
-	{\Gamma^r}_{\mu\phi} & {\Gamma^\phi}_{\mu\phi}
+	{\Gamma^r}_{\mu r} & {\Gamma^r}_{\mu\phi} \\
+	{\Gamma^\phi}_{\mu r} & {\Gamma^\phi}_{\mu\phi}
 \end{matrix}\right]$<br>
 <br>
 
 $[\Gamma_r] = \left[\begin{matrix}
-	{\Gamma^r}_{r r} & {\Gamma^\phi}_{r r} \\
-	{\Gamma^r}_{r\phi} & {\Gamma^\phi}_{r\phi}
+	{\Gamma^r}_{r r} & {\Gamma^r}_{r\phi} \\
+	{\Gamma^\phi}_{r r} & {\Gamma^\phi}_{r\phi}
 \end{matrix}\right] = \left[\begin{matrix}
 	0 & 0 \\
 	0 & \frac{1}{r}
 \end{matrix}\right]$<br>
 <br>
 
-
 $[\Gamma_\phi] = \left[\begin{matrix}
-	{\Gamma^r}_{\phi r} & {\Gamma^\phi}_{\phi r} \\
-	{\Gamma^r}_{\phi\phi} & {\Gamma^\phi}_{\phi\phi}
+	{\Gamma^r}_{\phi r} & {\Gamma^r}_{\phi\phi} \\
+	{\Gamma^\phi}_{\phi r} & {\Gamma^\phi}_{\phi\phi}
 \end{matrix}\right] = \left[\begin{matrix}
 	0 & -r \\
 	\frac{1}{r} & 0
@@ -829,7 +828,7 @@ So what is going on here?  The $|v^\phi(r_L)| = \frac{1}{r_L}$ factor is being r
 Also an inverse rotation is being applied to the vector components, because a forward-rotation of the vector basis is going to coincide with an inverse-rotation of the components.<br>
 <br>
 
-How about one-forms?  Here we use the inverse propagator.  If you represent your one-form components as a column vector with the propagator as a left-multiply then you must transpose it as well - but I'll ignore that and stick with my contravariant-column, covariant-rw standard.<br>
+How about one-forms?  Here we use the inverse propagator.  If you represent your one-form components as a column vector with the propagator as a left-multiply then you must transpose it as well - but I'll ignore that and stick with my contravariant-column, covariant-row standard.<br>
 <br>
 
 $w(x_R) = w(x_L) P^{-1}(x_L, x_R)$<br>
@@ -873,6 +872,295 @@ Otherwise the rotation of the components $\{w_r, w_\phi\}$ are equivalent to the
 <hr>
 <br>
 
+Polar, anholonomic orthonormal:<br>
+<br>
+
+Now if we were going to do the same thing but with a normalized basis then all that really changes is the scale goes away.  Let's see how.<br>
+<br>
+
+$[\Gamma_r] = \left[\begin{matrix}
+	{\Gamma^r}_{r r} & {\Gamma^r}_{r\hat{\phi}} \\
+	{\Gamma^\hat{\phi}}_{r r} & {\Gamma^\hat{\phi}}_{r\hat{\phi}}
+\end{matrix}\right]
+= \left[\begin{matrix}
+	0 & 0 \\
+	0 & 0
+\end{matrix}\right]$<br>
+<br>
+$[\Gamma_\hat{\phi}] = \left[\begin{matrix}
+	{\Gamma^r}_{\hat{\phi} r} & {\Gamma^r}_{\hat{\phi}\hat{\phi}} \\
+	{\Gamma^\hat{\phi}}_{\hat{\phi} r} & {\Gamma^\hat{\phi}}_{\hat{\phi}\hat{\phi}}
+\end{matrix}\right] = \left[\begin{matrix}
+	0 & -\frac{1}{r} \\
+	\frac{1}{r} & 0
+\end{matrix}\right]$<br>
+<br>
+
+So our propagators become:<br>
+<br>
+$P_r(x,y) = exp(-\int_{r_L}^{r_R} 0 dr) = exp(-\int_{r_L}^{r_R} 
+\left[\begin{matrix}
+	0 & 0 \\ 0 & 0
+\end{matrix}\right] dr) = \left[\begin{matrix}
+	1 & 0 \\ 0 & 1
+\end{matrix}\right]$<br>
+<br>
+$P_\phi(x,y) = exp(-\int_{\phi_L}^{\phi_R} [\Gamma_\hat{\phi}] d\hat{\phi}) = exp(-\int_{\phi_L}^{\phi_R} 
+\left[\begin{matrix}
+	0 & -\frac{1}{r} \\
+	\frac{1}{r} & 0
+\end{matrix}\right] d\hat{\phi})$<br>
+<br>
+
+Alright now one interesting thing, the propagator acts as an integral along a coordinate, and so it is defined in terms of the coordinate basis.
+So we need to transform our integrated connection index from being relative to $e^\hat{\phi} = r e^\phi$,
+and likewise transform the covariant components $w_\hat{\phi} = \frac{1}{r} w_\phi$.<br>
+<br>
+
+$P_\phi(x,y) = exp(-\int_{\phi_L}^{\phi_R} [{e_\phi}^\hat{\phi}] [\Gamma_\hat{\phi}] d\phi) = exp(-\int_{\phi_L}^{\phi_R} 
+\left[\begin{matrix}
+	0 & -1 \\
+	1 & 0
+\end{matrix}\right] d\phi) = \left[\begin{matrix}
+	cos(\phi_L - \phi_R) & -sin(\phi_L - \phi_R) \\
+	sin(\phi_L - \phi_R) & cos(\phi_L - \phi_R)
+\end{matrix}\right] = R(\phi_L - \phi_R)$<br>
+<br>
+
+Next of course is the vector basis propagator:<br>
+<br>
+$P^{-1}_\phi(x,y) = exp(\int_{\phi_L}^{\phi_R} [\Gamma_\phi] d\phi) = R(\phi_R - \phi_L)$<br>
+<br>
+which looks exactly like we would expect a matrix rotating a vector basis by an angle would look like.<br>
+<br>
+
+<hr>
+<br>
+
+How about spherical coordinates:<br>
+<br>
+
+${\Gamma^\theta}_{r\theta} = \frac{1}{r}$<br>
+${\Gamma^\phi}_{r\phi} = \frac{1}{r}$<br>
+
+${\Gamma^r}_{\theta\theta} = -r$<br>
+${\Gamma^\theta}_{\theta r} = \frac{1}{r}$<br>
+${\Gamma^\phi}_{\theta\phi} = \frac{cos(\theta)}{sin(\theta)}$<br>
+
+${\Gamma^r}_{\phi\phi} = -r sin(\theta)^2$<br>
+${\Gamma^\theta}_{\phi\phi} = -sin(\theta) cos(\theta)$<br>
+${\Gamma^\phi}_{\phi r} = \frac{1}{r}$<br>
+${\Gamma^\phi}_{\phi\theta} = \frac{cos(\theta)}{sin(\theta)}$<br>
+<br>
+
+As matrices:<br>
+<br>
+
+$[\Gamma_r] = \left[\begin{matrix}
+	{\Gamma^r}_{r r} & {\Gamma^r}_{r \theta} & {\Gamma^r}_{r\phi} \\
+	{\Gamma^\theta}_{r r} & {\Gamma^\theta}_{r \theta} & {\Gamma^\theta}_{r\phi} \\
+	{\Gamma^\phi}_{r r} & {\Gamma^\phi}_{r \theta} & {\Gamma^\phi}_{r\phi}
+\end{matrix}\right] = \left[\begin{matrix}
+	0 & 0 & 0 \\
+	0 & \frac{1}{r} & 0 \\
+	0 & 0 & \frac{1}{r}
+\end{matrix}\right]$<br>
+<br>
+
+$[\Gamma_\theta] = \left[\begin{matrix}
+	{\Gamma^r}_{\theta r} & {\Gamma^r}_{\theta \theta} & {\Gamma^r}_{\theta\phi} \\
+	{\Gamma^\theta}_{\theta r} & {\Gamma^\theta}_{\theta \theta} & {\Gamma^\theta}_{\theta\phi} \\
+	{\Gamma^\phi}_{\theta r} & {\Gamma^\phi}_{\theta \theta} & {\Gamma^\phi}_{\theta\phi}
+\end{matrix}\right] = \left[\begin{matrix}
+	0 & -r & 0 \\
+	\frac{1}{r} & 0 & 0 \\
+	0 & 0 & \frac{cos(\theta)}{sin(\theta)}
+\end{matrix}\right]$<br>
+<br>
+
+$[\Gamma_\phi] = \left[\begin{matrix}
+	{\Gamma^r}_{\phi r} & {\Gamma^r}_{\phi \theta} & {\Gamma^r}_{\phi\phi} \\
+	{\Gamma^\theta}_{\phi r} & {\Gamma^\theta}_{\phi \theta} & {\Gamma^\theta}_{\phi\phi} \\
+	{\Gamma^\phi}_{\phi r} & {\Gamma^\phi}_{\phi \theta} & {\Gamma^\phi}_{\phi\phi}
+\end{matrix}\right] = \left[\begin{matrix}
+	0 & 0 & -r sin(\theta)^2 \\
+	0 & 0 & -sin(\theta) cos(\theta) \\
+	\frac{1}{r} & \frac{cos(\theta)}{sin(\theta)} & 0
+\end{matrix}\right]$<br>
+<br>
+
+$P^{-1}(r_L, r_R) = \left[\begin{matrix}
+	1 & 0 & 0 \\
+	0 & \frac{r_R}{r_L} & 0 \\
+	0 & 0 & \frac{r_R}{r_L}
+\end{matrix}\right]$<br>
+$P^{-1}(r_L, r_R) = S(1, \frac{r_R}{r_L}, \frac{r_R}{r_L})$<br>
+<br>
+<br>
+
+$P^{-1}(\theta_L, \theta_R) = exp\left(
+	\int_{\theta_L}^{\theta_R} 
+	\left[\begin{matrix}
+		0 & -r & 0 \\
+		\frac{1}{r} & 0 & 0 \\
+		0 & 0 & \frac{cos(\theta)}{sin(\theta)}	
+	\end{matrix}\right]
+	d\theta
+\right)$<br>
+$P^{-1}(\theta_L, \theta_R) = exp\left(
+	\left[\begin{matrix}
+		0 & -r (\theta_R - \theta_L) & 0 \\
+		\frac{1}{r} (\theta_R - \theta_L) & 0 & 0 \\
+		0 & 0 & log\left(\frac{|sin(\theta_R)|}{|sin(\theta_L)|}\right)
+	\end{matrix}\right]
+\right) $<br>
+$P^{-1}(\theta_L, \theta_R) = \left[\begin{matrix}
+	i r & -i r & 0 \\
+	1 & 1 & 0 \\
+	0 & 0 & 1
+\end{matrix}\right]
+exp\left( \left[\begin{matrix}
+	i (\theta_R - \theta_L) & 0 & 0 \\
+	0 & -i (\theta_R - \theta_L) & 0 \\
+	0 & 0 & log\left(\frac{sin(\theta_R)}{sin(\theta_L)}\right)
+\end{matrix}\right] \right)
+\left[\begin{matrix}
+	-\frac{i}{2 r} & \frac{1}{2} & 0 \\
+	\frac{i}{2 r} & \frac{1}{2} & 0 \\
+	0 & 0 & 1
+\end{matrix}\right]
+$<br>
+$P^{-1}(\theta_L, \theta_R) = \left[\begin{matrix}
+	i r & -i r & 0 \\
+	1 & 1 & 0 \\
+	0 & 0 & 1
+\end{matrix}\right]
+\left[\begin{matrix}
+	exp(i (\theta_R - \theta_L)) & 0 & 0 \\
+	0 & exp(-i (\theta_R - \theta_L)) & 0 \\
+	0 & 0 & \frac{sin(\theta_R)}{sin(\theta_L)}
+\end{matrix}\right]
+\left[\begin{matrix}
+	-\frac{i}{2 r} & \frac{1}{2} & 0 \\
+	\frac{i}{2 r} & \frac{1}{2} & 0 \\
+	0 & 0 & 1
+\end{matrix}\right]
+$<br>
+$P^{-1}(\theta_L, \theta_R) = \left[\begin{matrix}
+	cos(\theta_R - \theta_L) & -r sin(\theta_R - \theta_L) & 0 \\
+	\frac{1}{r} sin(\theta_R - \theta_L) & cos(\theta_R - \theta_L) & 0 \\
+	0 & 0 & \frac{sin(\theta_R)}{sin(\theta_L)}
+\end{matrix}\right]
+$<br>
+$P^{-1}(\theta_L, \theta_R) = S(1, \frac{1}{r}, \frac{1}{sin(\theta_L)}) 
+	\cdot R_z(\theta_R - \theta_L)
+	\cdot S(1, r, sin(\theta_R))
+$<br>
+<br>
+<br>
+
+$P^{-1}(\phi_L, \phi_R) = exp\left(\int_{\phi_L}^{\phi_R} 
+\left[\begin{matrix}
+	0 & 0 & -r sin(\theta)^2 \\
+	0 & 0 & -sin(\theta) cos(\theta) \\
+	\frac{1}{r} & \frac{cos(\theta)}{sin(\theta)} & 0
+\end{matrix}\right] d\phi
+\right)$<br>
+$P^{-1}(\phi_L, \phi_R) = exp\left(
+\left[\begin{matrix}
+	0 & 0 & -(\phi_R - \phi_L) r sin(\theta)^2 \\
+	0 & 0 & -(\phi_R - \phi_L) sin(\theta) cos(\theta) \\
+	\frac{1}{r} (\phi_R - \phi_L) & (\phi_R - \phi_L) \frac{cos(\theta)}{sin(\theta)} & 0
+\end{matrix}\right]
+\right)$<br>
+$P^{-1}(\phi_L, \phi_R) = \left[\begin{matrix}
+	-i r sin(\theta)^2 & i r sin(\theta)^2 -\frac{r cos(\theta)}{sin(\theta)} \\
+	-i sin(\theta) cos(\theta) & i sin(\theta) cos(\theta) & 1 \\
+	1 & 1 & 0
+\end{matrix}\right] 
+exp\left(
+\left[\begin{matrix}
+	-i (\phi_R - \phi_L) & 0 & 0 \\
+	0 & i (\phi_R - \phi_L) & 0 \\
+	0 & 0 & 0
+\end{matrix}\right]
+\right)
+\left[\begin{matrix}
+	\frac{i}{2 r} & \frac{i cos(\theta)}{2 r sin(\theta)} & \frac{1}{2} \\
+	\frac{-i}{2 r} & -\frac{i cos(\theta)}{2 r sin(\theta}) & \frac{1}{2} \\
+	-\frac{1}{r} cos(\theta) sin(\theta) & sin(\theta)^2 & 0
+\end{matrix}\right]
+$<br>
+$P^{-1}(\phi_L, \phi_R) = \left[\begin{matrix}
+	-i r sin(\theta)^2 & i r sin(\theta)^2 & -\frac{r cos(\theta)}{sin(\theta)} \\
+	-i sin(\theta) cos(\theta) & i sin(\theta) cos(\theta) & 1 \\
+	1 & 1 & 0
+\end{matrix}\right] 
+\left[\begin{matrix}
+	exp(-i (\phi_R - \phi_L)) & 0 & 0 \\
+	0 & exp(i (\phi_R - \phi_L)) & 0 \\
+	0 & 0 & exp(0)
+\end{matrix}\right]
+\left[\begin{matrix}
+	\frac{i}{2 r} & \frac{i cos(\theta)}{2 r sin(\theta)} & \frac{1}{2} \\
+	\frac{-i}{2 r} & -\frac{i cos(\theta)}{2 r sin(\theta}) & \frac{1}{2} \\
+	-\frac{1}{r} cos(\theta) sin(\theta) & sin(\theta)^2 & 0
+\end{matrix}\right]
+$<br>
+$P^{-1}(\phi_L, \phi_R) = \left[\begin{matrix}
+	cos(\theta)^2 + cos(\phi_R - \phi_L) sin(\theta)^2 &
+
+	-r cos(\theta) sin(\theta) (1 - cos(\phi_R - \phi_L)) &
+
+	-r sin(\theta)^2 sin(\phi_R - \phi_L) \\
+
+
+	-\frac{1}{r} cos(\theta) sin(\theta) (1 - cos(\phi_R - \phi_L)) &
+
+	cos(\phi_R - \phi_L) cos(\theta)^2 + sin(\theta)^2 &
+
+	-sin(\theta) cos(\theta) sin(\phi_R - \phi_L) \\
+
+
+	\frac{1}{r} sin(\phi_R - \phi_L) &
+
+	sin(\phi_R - \phi_L) \frac{cos(\theta)}{sin(\theta)} &
+
+	cos(\phi_R - \phi_L)
+\end{matrix}\right]$<br>
+$P^{-1}(\phi_L, \phi_R) = 
+	S(1, \frac{1}{r}, \frac{1}{r sin(\theta)}) 
+	\cdot R_z(-\theta)
+	\cdot R_x(\phi_R - \phi_L)
+	\cdot R_z(\theta)
+	\cdot S(1, r, r sin(\theta))
+$<br>
+
+<br>
+<br>
+
+
+<hr>
+<br>
+
+And how about a spherical anholonomic orthonormal basis?
+Once again, like polar, we are orthonormalizing our coordinates.
+Also like polar, we are starting with an orthogonal basis, so the only transformation that needs to be applied to our basis vectors (and subsequently our basis and one-form components) is rescaling.<br>
+<br>
+
+$	{\Gamma^\phi}_{\phi r}
+	= -{\Gamma^r}_{\phi\phi}
+	= {\Gamma^\theta}_{\theta r}
+	= -{\Gamma^r}_{\theta\theta}
+	= \frac{1}{r}$<br>
+${\Gamma^\phi}_{\phi\theta}
+	= -{\Gamma^\theta}_{\phi\phi} 
+	= \frac{cos(\theta)}{r sin(\theta)}$<br>
+<br>
+
+<hr>
+<br>
+
 Example: 3D Rotation Group<br>
 <br>
 
@@ -902,6 +1190,8 @@ Commutation coefficients: ${c_{ij}}^k e_k = [e_i, e_j] = -\epsilon_{ijk} e_k$.<b
 <br>
 
 Connection coefficients: ${\Gamma^\alpha}_{\beta\gamma} = \frac{1}{2} \epsilon_{\alpha\beta\gamma}$ is purely based on the commutation since the metric is constant.<br>
+<br>
+But what about transforming our non-coordinate basis indexes into a coordinate basis? The metric is identity, so transforming it from non-coordinate to coordinate means no change.<br>
 <br>
 
 ${\Gamma^i}_{xj} = [\frac{1}{2} \epsilon_{i x j}] = \downarrow i \overset{\rightarrow j}{\left[\begin{matrix}
