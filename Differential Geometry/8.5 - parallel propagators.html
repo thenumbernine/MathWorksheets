@@ -992,7 +992,7 @@ $[\Gamma_\phi] = \left[\begin{matrix}
 \end{matrix}\right]$<br>
 <br>
 
-$P^{-1}(r_L, r_R) = \left[\begin{matrix}
+$P^{-1}_r(r_L, r_R) = \left[\begin{matrix}
 	1 & 0 & 0 \\
 	0 & \frac{r_R}{r_L} & 0 \\
 	0 & 0 & \frac{r_R}{r_L}
@@ -1001,7 +1001,7 @@ $P^{-1}(r_L, r_R) = S(1, \frac{r_R}{r_L}, \frac{r_R}{r_L})$<br>
 <br>
 <br>
 
-$P^{-1}(\theta_L, \theta_R) = exp\left(
+$P^{-1}_\theta(\theta_L, \theta_R) = exp\left(
 	\int_{\theta_L}^{\theta_R} 
 	\left[\begin{matrix}
 		0 & -r & 0 \\
@@ -1010,14 +1010,14 @@ $P^{-1}(\theta_L, \theta_R) = exp\left(
 	\end{matrix}\right]
 	d\theta
 \right)$<br>
-$P^{-1}(\theta_L, \theta_R) = exp\left(
+$P^{-1}_\theta(\theta_L, \theta_R) = exp\left(
 	\left[\begin{matrix}
 		0 & -r (\theta_R - \theta_L) & 0 \\
 		\frac{1}{r} (\theta_R - \theta_L) & 0 & 0 \\
 		0 & 0 & log\left(\frac{|sin(\theta_R)|}{|sin(\theta_L)|}\right)
 	\end{matrix}\right]
 \right) $<br>
-$P^{-1}(\theta_L, \theta_R) = \left[\begin{matrix}
+$P^{-1}_\theta(\theta_L, \theta_R) = \left[\begin{matrix}
 	i r & -i r & 0 \\
 	1 & 1 & 0 \\
 	0 & 0 & 1
@@ -1033,7 +1033,7 @@ exp\left( \left[\begin{matrix}
 	0 & 0 & 1
 \end{matrix}\right]
 $<br>
-$P^{-1}(\theta_L, \theta_R) = \left[\begin{matrix}
+$P^{-1}_\theta(\theta_L, \theta_R) = \left[\begin{matrix}
 	i r & -i r & 0 \\
 	1 & 1 & 0 \\
 	0 & 0 & 1
@@ -1049,34 +1049,34 @@ $P^{-1}(\theta_L, \theta_R) = \left[\begin{matrix}
 	0 & 0 & 1
 \end{matrix}\right]
 $<br>
-$P^{-1}(\theta_L, \theta_R) = \left[\begin{matrix}
+$P^{-1}_\theta(\theta_L, \theta_R) = \left[\begin{matrix}
 	cos(\theta_R - \theta_L) & -r sin(\theta_R - \theta_L) & 0 \\
 	\frac{1}{r} sin(\theta_R - \theta_L) & cos(\theta_R - \theta_L) & 0 \\
 	0 & 0 & \frac{sin(\theta_R)}{sin(\theta_L)}
 \end{matrix}\right]
 $<br>
-$P^{-1}(\theta_L, \theta_R) = S(1, \frac{1}{r}, \frac{1}{sin(\theta_L)}) 
+$P^{-1}_\theta(\theta_L, \theta_R) = S(1, \frac{1}{r}, \frac{1}{sin(\theta_L)}) 
 	\cdot R_z(\theta_R - \theta_L)
 	\cdot S(1, r, sin(\theta_R))
 $<br>
 <br>
 <br>
 
-$P^{-1}(\phi_L, \phi_R) = exp\left(\int_{\phi_L}^{\phi_R} 
+$P^{-1}_\phi(\phi_L, \phi_R) = exp\left(\int_{\phi_L}^{\phi_R} 
 \left[\begin{matrix}
 	0 & 0 & -r sin(\theta)^2 \\
 	0 & 0 & -sin(\theta) cos(\theta) \\
 	\frac{1}{r} & \frac{cos(\theta)}{sin(\theta)} & 0
 \end{matrix}\right] d\phi
 \right)$<br>
-$P^{-1}(\phi_L, \phi_R) = exp\left(
+$P^{-1}_\phi(\phi_L, \phi_R) = exp\left(
 \left[\begin{matrix}
 	0 & 0 & -(\phi_R - \phi_L) r sin(\theta)^2 \\
 	0 & 0 & -(\phi_R - \phi_L) sin(\theta) cos(\theta) \\
 	\frac{1}{r} (\phi_R - \phi_L) & (\phi_R - \phi_L) \frac{cos(\theta)}{sin(\theta)} & 0
 \end{matrix}\right]
 \right)$<br>
-$P^{-1}(\phi_L, \phi_R) = \left[\begin{matrix}
+$P^{-1}_\phi(\phi_L, \phi_R) = \left[\begin{matrix}
 	-i r sin(\theta)^2 & i r sin(\theta)^2 -\frac{r cos(\theta)}{sin(\theta)} \\
 	-i sin(\theta) cos(\theta) & i sin(\theta) cos(\theta) & 1 \\
 	1 & 1 & 0
@@ -1094,7 +1094,7 @@ exp\left(
 	-\frac{1}{r} cos(\theta) sin(\theta) & sin(\theta)^2 & 0
 \end{matrix}\right]
 $<br>
-$P^{-1}(\phi_L, \phi_R) = \left[\begin{matrix}
+$P^{-1}_\phi(\phi_L, \phi_R) = \left[\begin{matrix}
 	-i r sin(\theta)^2 & i r sin(\theta)^2 & -\frac{r cos(\theta)}{sin(\theta)} \\
 	-i sin(\theta) cos(\theta) & i sin(\theta) cos(\theta) & 1 \\
 	1 & 1 & 0
@@ -1110,7 +1110,7 @@ $P^{-1}(\phi_L, \phi_R) = \left[\begin{matrix}
 	-\frac{1}{r} cos(\theta) sin(\theta) & sin(\theta)^2 & 0
 \end{matrix}\right]
 $<br>
-$P^{-1}(\phi_L, \phi_R) = \left[\begin{matrix}
+$P^{-1}_\phi(\phi_L, \phi_R) = \left[\begin{matrix}
 	cos(\theta)^2 + cos(\phi_R - \phi_L) sin(\theta)^2 &
 
 	-r cos(\theta) sin(\theta) (1 - cos(\phi_R - \phi_L)) &
@@ -1138,7 +1138,9 @@ $P^{-1}(\phi_L, \phi_R) =
 	\cdot R_z(\theta)
 	\cdot S(1, r, r sin(\theta))
 $<br>
+<br>
 
+And you should notice that $[P_\mu, P_\nu] = 0$.  This is because the Riemann curvature is zero.<br>
 <br>
 <br>
 
@@ -1183,11 +1185,45 @@ $[\Gamma_{\bar\theta}] = \left[\begin{matrix}
 <br>
 
 $[\Gamma_{\bar\phi}] = \left[\begin{matrix}
-	0 & 0 & 0 \\
-	0 & 0 & -1 \\
-	0 & 1 & 0
+	0 & 0 & -sin(\theta) \\
+	0 & 0 & -cos(\theta) \\
+	sin(\theta) & cos(\theta) & 0
 \end{matrix}\right]$<br>
 <br>
+<br>
+
+$P^{-1}_r(r_L, r_R) = I$<br>
+<br>
+
+$P^{-1}_\theta(\theta_L, \theta_R) = R_z(\theta_R - \theta_L)$<br>
+<br>
+
+$P^{-1}_\phi(\phi_R, \phi_L) = 
+	R_z(-\theta)
+	\cdot R_x(\phi_R - \phi_L)
+	\cdot R_z(\theta)
+$<br>
+<br>
+<br>
+
+$P_r(r_L, r_R) = I$<br>
+<br>
+
+$P_\theta(\theta_L, \theta_R) = R_z(\theta_L - \theta_R)$<br>
+<br>
+
+$P_\phi(\phi_R, \phi_L) = 
+	R_z(-\theta)
+	\cdot R_x(\phi_L - \phi_R)
+	\cdot R_z(\theta)
+$<br>
+<br>
+
+And you should notice that $[P_\mu, P_\nu] = 0$.  This is because the Riemann curvature is zero.<br>
+<br>
+<br>
+
+
 <hr>
 <br>
 
