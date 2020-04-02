@@ -760,22 +760,12 @@ $= e(x_R)$<br>
 Tada!  We started with $e(x_L)$, we right-applied our parallel-transport transformation, and we ended up at $e(x_R)$.<br>
 <br>
 
-TODO verify that this works with my generalized linear case equation above, and not just per-coordinate separately.  
-It probably will but only because polar coordinates have no Riemann curvature.  
-Also, try it with the geodesic case.<br> 
+TODO try it with the geodesic case.<br> 
 <br>
 
-Now do the same thing, except give it some vector components:<br>
-$e_\mu(x_R) v^\mu(x_R)$<br>
-$= e_\alpha (x_L) \cdot {P^{-1}(x_L, x_R)^\alpha}_\mu v^\mu(x_R)$<br>
-Substitute for polar:<br>
-$= e (x_L) \cdot ( S(1,\frac{1}{r_L}) R(\phi_R - \phi_L) S(1, r_R) ) v(x_R)$<br>
-$= e (x_L) v'(x_L)$<br>
-So $v'(x_L) = S(1,\frac{1}{r_L}) R(\phi_R - \phi_L) S(1, r_R) v(x_R)$<br>
-It seems a bit counter-intuitive that we start with $v^\mu(x_R)$ and we scale its $v^\phi(x_R)$ component up by $r_R$, but don't forget $v^\phi$ is paired with $e_\phi$, and $|e_\phi| = r_R$, so $|v^\phi| = \frac{1}{r_R}$, so what we are doing is removing that influence from the basis at point $x_R$ before we go on to move things to $x_L$.<br>
-<br>
-
-Speaking of vector field, let's get a better description of what the curvilinear vector components are in terms of the Cartesian vector components:<br>
+That was in the perspective of propagating the basis to the new point, but what about parallel-propagating the vector components to align with the new point?
+Now do the same thing, except give it some vector components.  
+Let's get a better description of what the curvilinear vector components are in terms of the Cartesian vector components:<br>
 $e_I v^I = e_\mu v^\mu$<br>
 $\left[\begin{matrix} e_x & e_y \end{matrix}\right] \left[\begin{matrix} v^x \\ v^y \end{matrix}\right]
 = \left[\begin{matrix} e_r & e_\phi \end{matrix}\right] \left[\begin{matrix} v^r \\ v^\phi \end{matrix}\right]$<br>
@@ -784,13 +774,26 @@ $\left[\begin{matrix} e_x & e_y \end{matrix}\right] \left[\begin{matrix} v^x \\ 
 $\left[\begin{matrix} v^x \\ v^y \end{matrix}\right] = \left[\begin{matrix} cos(\phi) & -r sin(\phi) \\ sin(\phi) & r cos(\phi) \end{matrix}\right] \left[\begin{matrix} v^r \\ v^\phi \end{matrix}\right]$<br>
 $\left[\begin{matrix} cos(\phi) & sin(\phi) \\ -\frac{1}{r}sin(\phi) & \frac{1}{r} cos(\phi) \end{matrix}\right] \left[\begin{matrix} v^x \\ v^y \end{matrix}\right] = \left[\begin{matrix} v^r \\ v^\phi \end{matrix}\right]$<br>
 <br>
-So there we can see that the $|v^\phi|$ component has a scalar of $\frac{1}{r}$.<br>
+So there we see that the $|v^\phi| \propto \frac{1}{r}$, probably due to the fact that it is paired with $e_\phi$, and $|e_\phi| \propto r$.<br>
 <br>
 
-I just did this section in terms of propagating the basis, but what about parallel-propagating the vector components?<br>
+Now to look at the parallel propagation of vector components:<br>
+<br>
+$e_\mu(x_L) v^\mu(x_L)$<br>
+$= e_\alpha (x_R) \cdot {P(x_L, x_R)^\alpha}_\mu v^\mu(x_L)$<br>
+$= e (x_R) \cdot ( S(1,\frac{1}{r_R}) R(\phi_L - \phi_R) S(1, r_L) ) v(x_L)$<br>
+$= e (x_R) v'(x_R)$<br>
+So $v'(x_R) = S(1,\frac{1}{r_R}) R(\phi_L - \phi_R) S(1, r_L) v(x_L)$<br>
 <br>
 
-$P(x_L,x_R) = S(1, \frac{1}{r_R}) \cdot R(\phi_L - \phi_R) \cdot S(1, r_L) 
+So what is going on here?  The $|v^\phi(r_L)| \propto \frac{1}{r_L}$ factor is being removed, and a new $\frac{1}{r_R}$ factor is being introduced.  
+Also an inverse rotation is being applied to the vector components, because a forward-rotation of the vector basis is going to coincide with an inverse-rotation of the components.<br>
+<br>
+
+What does the vector component parallel propagator look like?<br>
+<br>
+
+$P(x_L, x_R) = S(1, \frac{1}{r_R}) \cdot R(\phi_L - \phi_R) \cdot S(1, r_L) 
 = \left[\begin{matrix}
 	cos(\phi_L - \phi_R) & -r_L sin(\phi_L - \phi_R) \\
 	\frac{1}{r_R} sin(\phi_L - \phi_R) & \frac{r_L}{r_R} cos(\phi_L - \phi_R)
@@ -800,6 +803,9 @@ $P(x_L,x_R) = S(1, \frac{1}{r_R}) \cdot R(\phi_L - \phi_R) \cdot S(1, r_L)
 	-\frac{1}{r_R} sin(\phi_R - \phi_L) & \frac{r_L}{r_R} cos(\phi_R - \phi_L)
 \end{matrix}\right]
 $<br>
+<br>
+
+What does the propagated vector look like?<br>
 <br>
 
 $v(x_R) = P(x_L, x_R) v(x_L)$<br>
@@ -823,9 +829,6 @@ $\left[\begin{matrix}
 	cos(\phi_R - \phi_L) v^r(x_L) + r_L sin(\phi_R - \phi_L) v^\phi(x_L) \\
 	-\frac{1}{r_R} sin(\phi_R - \phi_L) v^r(x_L) + \frac{r_L}{r_R} cos(\phi_R - \phi_L) v^\phi(x_L)
 \end{matrix}\right]$<br>
-<br>
-So what is going on here?  The $|v^\phi(r_L)| = \frac{1}{r_L}$ factor is being removed, and a new $\frac{1}{r_R}$ factor is being introduced.  
-Also an inverse rotation is being applied to the vector components, because a forward-rotation of the vector basis is going to coincide with an inverse-rotation of the components.<br>
 <br>
 
 How about one-forms?  Here we use the inverse propagator.  If you represent your one-form components as a column vector with the propagator as a left-multiply then you must transpose it as well - but I'll ignore that and stick with my contravariant-column, covariant-row standard.<br>
@@ -1148,16 +1151,43 @@ Once again, like polar, we are orthonormalizing our coordinates.
 Also like polar, we are starting with an orthogonal basis, so the only transformation that needs to be applied to our basis vectors (and subsequently our basis and one-form components) is rescaling.<br>
 <br>
 
-$	{\Gamma^\phi}_{\phi r}
-	= -{\Gamma^r}_{\phi\phi}
-	= {\Gamma^\theta}_{\theta r}
-	= -{\Gamma^r}_{\theta\theta}
-	= \frac{1}{r}$<br>
+${\Gamma^\theta}_{\theta r}
+= -{\Gamma^r}_{\theta\theta}
+= \frac{1}{r}$<br>
+
+${\Gamma^\phi}_{\phi r}
+= -{\Gamma^r}_{\phi\phi}
+= \frac{1}{r}$<br>
+
 ${\Gamma^\phi}_{\phi\theta}
-	= -{\Gamma^\theta}_{\phi\phi} 
-	= \frac{cos(\theta)}{r sin(\theta)}$<br>
+= -{\Gamma^\theta}_{\phi\phi} 
+= \frac{cos(\theta)}{r sin(\theta)}$<br>
 <br>
 
+Converting it to a coordinate basis.<br>
+(TODO either use hats for non-coord here or bars for coord above).<br>
+<br>
+
+$[\Gamma_r] = \left[\begin{matrix}
+	0 & 0 & 0 \\
+	0 & 0 & 0 \\
+	0 & 0 & 0
+\end{matrix}\right]$<br>
+<br>
+
+$[\Gamma_{\bar\theta}] = \left[\begin{matrix}
+	0 & -1 & 0 \\
+	1 & 0 & 0 \\
+	0 & 0 & 0
+\end{matrix}\right]$<br>
+<br>
+
+$[\Gamma_{\bar\phi}] = \left[\begin{matrix}
+	0 & 0 & 0 \\
+	0 & 0 & -1 \\
+	0 & 1 & 0
+\end{matrix}\right]$<br>
+<br>
 <hr>
 <br>
 
