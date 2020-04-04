@@ -918,9 +918,6 @@ $
 		\int_{x^1_L}^{x^1_R}
 		\overset{-\{x^k\}}{...}
 		\int_{x^n_L}^{x^n_R}
-		dx^n 
-		\overset{-\{x^k\}}{...}
-		dx^1 
 		\left(
 			P(x^k_R,x_C) {{}^{l_1 ... l_p}}_{i_1 ... i_p} P(x_C,x^k_R) {{}^{j_1 ... j_q}}_{m_1 ... m_q}
 			J(x^k_R) {e_k}^\bar{k}(x^k_R) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x^k_R)
@@ -928,6 +925,9 @@ $
 			P(x^k_L,x_C) {{}^{l_1 ... l_p}}_{i_1 ... i_p} P(x_C,x^k_L) {{}^{j_1 ... j_q}}_{m_1 ... m_q}
 			J(x^k_L) {e_k}^\bar{k}(x^k_L) {F^{k i_1 ... i_p}}_{j_1 ... j_q}(x^k_L)
 		\right)
+		dx^n 
+		\overset{-\{x^k\}}{...}
+		dx^1 
 
 		\\
 		- 
@@ -960,6 +960,7 @@ $
 \right)$<br>
 <br>
 
+<!--
 Now we can define a new geometric value for the size of our surface domain in coordinate space:<br>
 <br>
 $\mathcal{S}_k = 
@@ -972,6 +973,8 @@ $\mathcal{S}_k =
 = \Pi_{j=1 \\ j \ne k}^n (x^j_R - x^j_L)
 = \Pi_{j=1 \\ j \ne k}^n (\Delta x^j)
 $<br>
+<br>
+TODO NO WE CAN'T because $P(x^k_R, x_C)$ only has the k'th element replaced.  The rest of them vary.<br>
 <br>
 
 $
@@ -1020,35 +1023,18 @@ $
 	+ {S^{l_1 ... l_p}}_{m_1 ... m_q}(x_C)
 \right)$<br>
 <br>
+-->
 
 Here I use that $x^k_R$ and $x^k_L$ shorthand like I mentioned in the parallel propagator worksheet - sometimes it means a scalar value, sometimes it means the point with the k'th term replaced with that value.<br>
-I haven't touched the connections yet, and that's because here we have the option of using a special-case trick for the (0,0)-degree scalar case.  Remember, no state indexes means no parallel propagators. 
-Let's explore that detour:<br>
 <br>
-
-$
-u(x_C, t_R)
-= u(x_C, t_L)
-+ \Delta t \left( 
-	- \frac{\mathcal{S}_k}{\mathcal{V}(x_C)}
-	\left(
-		J(x^k_R) {e_k}^\bar{k}(x^k_R) F^k(x^k_R)
-		- J(x^k_L) {e_k}^\bar{k}(x^k_L) F^k(x^k_L)
-	\right)
-	+ {S^{i_1 ... i_p}}_{j_1 ... j_q}(x_C)
-\right)$<br>
 <br>
-
-So finite volume integration can be implementned with volume weighting across your cell sides (and transforming between your coordinate and non-coordinate basis).<br>
-Just like in 1987 Thompson "Lecture Series in Computational Fluid Dynamics" ... somewhere?  Section 4, equation 4.127 maybe?<br>
-<br>
-
-
 
 <hr>
 <br>
 
 Now for a vector field integral in polar coordinates:<br>
+TODO maybe separate 'integrating vector fields' and 'finite volume conservation law' into separate worksheets?  Put this up next to 'integrating a vector field' stuff.
+<br>
 First in Cartesian:<br>
 $\int v(x) dV$<br>
 $= \int e_I v^I(x) dV$<br>

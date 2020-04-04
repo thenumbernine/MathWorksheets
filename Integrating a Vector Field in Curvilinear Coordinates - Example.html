@@ -1,0 +1,1136 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<title>Integrating a Vector Field in Curvilinear Coordinates - Example</title>
+	</head>
+	<body>
+
+<h3>Correct Finite Volume Integration of a Tensor Field on a Manifold - Example</h3>
+<br>
+
+by Christopher Moore<br>
+<br>
+
+Let's look at the (0,0)-degree scalar case.  Remember, no state indexes means no parallel propagators.<br>
+<br>
+
+<!--
+$
+u(x_C, t_R)
+= u(x_C, t_L)
++ \Delta t \left( 
+	- \frac{\mathcal{S}_k}{\mathcal{V}(x_C)}
+	\left(
+		J(x^k_R) {e_k}^\bar{k}(x^k_R) F^k(x^k_R)
+		- J(x^k_L) {e_k}^\bar{k}(x^k_L) F^k(x^k_L)
+	\right)
+	+ S(x_C)
+\right)$<br>
+<br>
+-->
+$
+u(x_C, t_R)
+= u(x_C, t_L)
++ \Delta t \left( 
+	- 
+
+	\Sigma_{k=1}^n 
+	\left(
+		\int_{x^1_L}^{x^1_R}
+		\overset{-\{x^k\}}{...}
+		\int_{x^n_L}^{x^n_R}
+		
+		\frac{1}{\mathcal{V}(x_C)}
+		\left(
+			J(x^k_R) {e_k}^\bar{k}(x^k_R) F^k(x^k_R)
+			- J(x^k_L) {e_k}^\bar{k}(x^k_L) F^k(x^k_L)
+		\right)
+			
+		dx^n 
+		\overset{-\{x^k\}}{...}
+		dx^1 
+	\right)
+
+	+ S(x_C)
+\right)$<br>
+<br>
+
+Notice the ${e_k}^{\bar{k}} F^k$ term.  Remember the ordinary letters are an arbitrary basis while the barred letters are a coordinate basis.  
+This tells us we should be calculating our flux with respect to a coordinate basis.  
+If you want to calculate the flux using your non-coordinate basis then you will have to re-transform it back to the coordinate basis.
+<br>
+For example, let's say you're using a polar grid.  If you want to use coordinate basis then you'll have to scale and unscale your $\phi$ component by r, but you can calculate your flux without any extra manipulation.  
+If you want to use an orthonormal basis then you no longer need to worry about coordinate scaling, but you have to be sure to rescale the $\phi$ flux by $\frac{1}{r}$ so that it is a component of the coordinate basis.
+If you want to calculate your flux in a global Cartesian basis then your ${e_k}^{\bar{k}}$ becomes the inverse of the polar coordinate basis coefficients in terms of the global Cartesian basis (a rotation and a scale of $\phi$ by $r$),
+and you will have to undo that - by calculating $F^\bar{k} = {e_k}^{\bar{k}} F^k$ which is a linear combination of the $F^x$ and $F^y$ terms.  
+You will need to calculate both the $F^x$ and $F^y$ flux at $r_L$ and $r_R$ and then linearly transform these into the $F^\bar{r}$ flux.<br> 
+<br>
+So finite volume integration can be implemented with volume weighting across your cell sides (and transforming between your coordinate and non-coordinate basis).<br>
+Just like in 1987 Thompson "Lecture Series in Computational Fluid Dynamics" ... somewhere?  Section 4, equation 4.127 maybe?<br>
+<br>
+
+Let's look at specific grids for the scalar case.  How about Cartesian for starters.  $J(x) = 1$ everywhere so $\mathcal{V}(x) = \Pi_{k=1}^n (x^k_R - x^k_L)$.  
+Our basis is a coordinate basis so ${e_k}^{\bar{k}} = \delta_k^{\bar{k}}$.<br>
+<br>
+Let $\Delta f = f_R - f_L$.<br>
+<br>
+$
+u(x_C, t_R)
+= u(x_C, t_L)
++ \Delta t \left( 
+	- 
+
+	\Sigma_{k=1}^n 
+	\left(
+		\frac{\Pi_{j=1\\j \ne k}^n (\Delta x^j)}{\Pi_{j=1}^n (\Delta x^j)}
+		\left(
+			F^k(x^k_R) 
+			- F^k(x^k_L)
+		\right)
+	\right)
+	
+	+ S(x_C)
+\right)$<br>
+<br>
+$
+u(x_C, t_R)
+= u(x_C, t_L)
++ \Delta t \left( 
+	- 
+
+	\Sigma_{k=1}^n 
+	\left(
+		\frac{1}{(\Delta x^k)}
+		\left(
+			F^k(x^k_R) 
+			- F^k(x^k_L)
+		\right)
+	\right)
+	
+	+ S(x_C)
+\right)$<br>
+<br>
+
+This looks like the typical finite volume equation.<br>
+<br>
+
+How about cylinder coordinate basis?<br>
+$e_r = \partial_r, e_\phi, e_z = \partial_\phi, g_{rr} = g_{zz} = 1, g_{\phi\phi} = r^2, J = r, 
+\mathcal{V} = \frac{1}{2} ( (r_R)^2 - (r_L)^2 ) (\phi_R - \phi_L) (z_R - z_L) = \frac{1}{2} \Delta (r^2) \Delta \phi \Delta z$.<br>
+<br>
+$
+u(x_C, t_R)
+= u(x_C, t_L)
++ \Delta t \left( 
+	
+	- \left(
+		\int_{\phi_L}^{\phi_R}
+		\int_{z_L}^{z_R}
+		
+		\frac{1}{\mathcal{V}(x_C)}
+		\left(
+			J(r_R, \phi, z) F^r(r_R, \phi, z)
+			- J(r_L, \phi, z) F^r(r_L, \phi, z)
+		\right)
+			
+		dz d\phi
+	\right)
+
+	- \left(
+		\int_{r_L}^{r_R}
+		\int_{z_L}^{z_R}
+		
+		\frac{1}{\mathcal{V}(x_C)}
+		\left(
+			J(r, \phi_R, z) F^\phi(r, \phi_R, z)
+			- J(r, \phi_L, z) F^\phi(r, \phi_L, z)
+		\right)
+		
+		dr dz
+	\right)
+
+	- \left(
+		\int_{r_L}^{r_R}
+		\int_{\phi_L}^{\phi_R}
+		
+		\frac{1}{\mathcal{V}(x_C)}
+		\left(
+			J(r, \phi, z_R) F^z(r, \phi, z_R)
+			- J(r, \phi, z_L) F^z(r, \phi, z_L)
+		\right)
+			
+		d\phi dr
+	\right)
+
+
+	+ S(x_C)
+\right)$<br>
+<br>
+
+<br>
+$
+u(x_C, t_R)
+= u(x_C, t_L)
++ \Delta t \left( 
+	
+	- \left(
+		\Delta \phi \Delta z
+		\frac{1}{\frac{1}{2} \Delta (r^2) \Delta \phi \Delta z}
+		\left(
+			r_R F^r(r_R)
+			- r_L F^r(r_L)
+		\right)
+	\right)
+
+	- \left(
+		\frac{1}{2} \Delta (r^2) \Delta z
+		\frac{1}{\frac{1}{2} \Delta (r^2) \Delta \phi \Delta z}
+		\left(
+			F^\phi(\phi_R)
+			- F^\phi(\phi_L)
+		\right)
+	\right)
+
+	- \left(
+		\Delta \phi \frac{1}{2} \Delta (r^2)
+		\frac{1}{\frac{1}{2} \Delta (r^2) \Delta \phi \Delta z}
+		\left(
+			F^z(z_R)
+			- F^z(z_L)
+		\right)
+	\right)
+
+	+ S(x_C)
+\right)$<br>
+<br>
+$
+u(x_C, t_R)
+= u(x_C, t_L)
++ \Delta t \left( 
+	- \frac{r_R F^r(r_R) - r_L F^r(r_L)}{\frac{1}{2} \Delta (r^2)}
+	- \frac{F^\phi(\phi_R) - F^\phi(\phi_L)}{\Delta \phi}
+	- \frac{F^z(z_R) - F^z(z_L)}{\Delta z}
+	+ S(x_C)
+\right)$<br>
+<br>
+
+Alright, how about the vector case?<br>
+<br>
+Now we have to use our connections:  ${\Gamma^r}_{\phi\phi} = -r, {\Gamma^\phi}_{\phi r} = {\Gamma^\phi}_{r \phi} = \frac{1}{r}$<br>
+...and our propagators: $P(x_L, x_R) = S(1, \frac{1}{r_R}) \cdot R_z(\phi_L - \phi_R) \cdot S(1, r_L)$<br>
+so $P_r(r_L, r_R) = S(1, \frac{r_L}{r_R})$<br>
+and $P_\phi(\phi_L, \phi_R) = S(1, \frac{1}{r}) \cdot R_z(\phi_L - \phi_R) \cdot S(1, r)$<br>
+and $P_z(z_L, z_R) = I$<br>
+<br>
+$
+u^l(x_C, t_R)
+= u^l(x_C, t_L)
++ \Delta t \left( 
+	\\
+	- \frac{1}{\mathcal{V}(x_C)}
+	\Sigma_{k=1}^n 
+	\left(
+		\int_{x^1_L}^{x^1_R}
+		\overset{-\{x^k\}}{...}
+		\int_{x^n_L}^{x^n_R}
+		\left(
+			{P^l}_i(x^k_R,x_C)
+			J(x^k_R) F^{ki}(x^k_R)
+			- 
+			{P^l}_i(x^k_L,x_C)
+			J(x^k_L) F^{ki}(x^k_L)
+		\right)
+		dx^n 
+		\overset{-\{x^k\}}{...}
+		dx^1 
+
+		\\
+		- 
+		\int_{x^1_L}^{x^1_R}
+		...
+		\int_{x^n_L}^{x^n_R}
+			\partial_\bar{k} 
+			\left( 
+				{P^l}_i(x,x_C)
+			\right)
+			J(x) F^{ki}(x)
+		dx^n ... dx^1 
+
+		\\
+		+ 
+		\int_{x^1_L}^{x^1_R}
+		...
+		\int_{x^n_L}^{x^n_R}
+			\left( 
+				{P^l}_i(x,x_C)
+				J(x) \left(
+					F^{km}(x) {\Gamma^i}_{km}(x) 
+				\right)
+			\right) 
+		dx^n ... dx^1 
+	\right)
+	\\
+	+ S^l(x_C)
+\right)$<br>
+<br>
+$
+u^l(x_C, t_R)
+= u^l(x_C, t_L)
++ \Delta t \left( 
+	\\
+	- \frac{1}{\frac{1}{2} \Delta (r^2) \Delta \phi \Delta z}
+	\left(
+		\int_{\phi_L}^{\phi_R}
+		\int_{z_L}^{z_R}
+		\left(
+			{P^l}_i(r_R,x_C)
+			r_R F^{ r i}(r_R)
+			- 
+			{P^l}_i(r_L,x_C)
+			r_L F^{ r i}(r_L)
+		\right)
+		d\phi dz
+
+		\\
+		- \int_{r_L}^{r_R}
+		\int_{\phi_L}^{\phi_R}
+		\int_{z_L}^{z_R}
+			\partial_\bar{ r } 
+			\left( 
+				{P^l}_i(x,x_C)
+			\right)
+			r F^{ r i}(x)
+		dz d\phi dr
+
+		\\
+		+ \int_{r_L}^{r_R}
+		\int_{\phi_L}^{\phi_R}
+		\int_{z_L}^{z_R}
+			\left( 
+				{P^l}_i(x,x_C)
+				r \left(
+					F^{ r m}(x) {\Gamma^i}_{ r m}(x) 
+				\right)
+			\right) 
+		dz d\phi dr
+	
+	
+		\\	
+		+ \int_{r_L}^{r_R}
+		\int_{z_L}^{z_R}
+		\left(
+			{P^l}_i(x^\phi _R,x_C)
+			r F^{\phi i}(x^\phi _R)
+			- 
+			{P^l}_i(x^\phi _L,x_C)
+			r F^{\phi i}(x^\phi _L)
+		\right)
+		dz dr
+
+		\\
+		- \int_{r_L}^{r_R}
+		\int_{\phi_L}^{\phi_R}
+		\int_{z_L}^{z_R}
+			\partial_\bar{\phi } 
+			\left( 
+				{P^l}_i(x,x_C)
+			\right)
+			r F^{\phi i}(x)
+		dz d\phi dr
+
+		\\
+		+ \int_{r_L}^{r_R}
+		\int_{\phi_L}^{\phi_R}
+		\int_{z_L}^{z_R}
+			\left( 
+				{P^l}_i(x,x_C)
+				r \left(
+					F^{\phi m}(x) {\Gamma^i}_{\phi m}(x) 
+				\right)
+			\right) 
+		dz d\phi dr
+
+
+		\\
+		+ \int_{r_L}^{r_R}
+		\int_{\phi_L}^{\phi_R}
+		\left(
+			{P^l}_i(x^ z _R,x_C)
+			r F^{ z i}(x^ z _R)
+			- 
+			{P^l}_i(x^ z _L,x_C)
+			r F^{ z i}(x^ z _L)
+		\right)
+		d\phi dr
+
+		\\
+		- \int_{r_L}^{r_R}
+		\int_{\phi_L}^{\phi_R}
+		\int_{z_L}^{z_R}
+			\partial_\bar{ z } 
+			\left( 
+				{P^l}_i(x,x_C)
+			\right)
+			r F^{ z i}(x)
+		dz d\phi dr
+
+		\\
+		+ \int_{r_L}^{r_R}
+		\int_{\phi_L}^{\phi_R}
+		\int_{z_L}^{z_R}
+			\left( 
+				{P^l}_i(x,x_C)
+				r \left(
+					F^{ z m}(x) {\Gamma^i}_{ z m}(x) 
+				\right)
+			\right) 
+		dz d\phi dr
+
+	\right)
+	\\
+	+ S^l(x_C)
+\right)$<br>
+<br>
+
+Alright, now time to switch to matrix notation.  Notice ${P^i}_j = \downarrow i \overset{\rightarrow j}{[{P^i}_j]}$ and $F^{ij} = \downarrow i \overset{\rightarrow j}{[F^{ij}]}$.
+Notice I had to break convention with my matrix representation of F, since it has two contravariant indexes, so one of them will have to be a row.  
+Notice however that most the uses of F are with one index fixed, so it would be used in context of a column vector regardless.<br>
+<br>
+$
+u^l(x_C, t_R)
+= u^l(x_C, t_L)
++ \Delta t \left( 
+	\\
+	- \frac{1}{\mathcal{V}(x_C)}
+	\Sigma_{k=1}^n 
+	\left(
+		\int_{x^1_L}^{x^1_R}
+		\overset{-\{x^k\}}{...}
+		\int_{x^n_L}^{x^n_R}
+		\left(
+			{P^l}_i(x^k_R,x_C)
+			J(x^k_R) F^{ki}(x^k_R)
+			- 
+			{P^l}_i(x^k_L,x_C)
+			J(x^k_L) F^{ki}(x^k_L)
+		\right)
+		dx^n 
+		\overset{-\{x^k\}}{...}
+		dx^1 
+
+		\\
+		- 
+		\int_{x^1_L}^{x^1_R}
+		...
+		\int_{x^n_L}^{x^n_R}
+			\partial_\bar{k} 
+			\left( 
+				{P^l}_i(x,x_C)
+			\right)
+			J(x) F^{ki}(x)
+		dx^n ... dx^1 
+
+		\\
+		+ 
+		\int_{x^1_L}^{x^1_R}
+		...
+		\int_{x^n_L}^{x^n_R}
+			\left( 
+				{P^l}_i(x,x_C)
+				J(x) \left(
+					F^{km}(x) {\Gamma^i}_{km}(x) 
+				\right)
+			\right) 
+		dx^n ... dx^1 
+	\right)
+	\\
+	+ S^l(x_C)
+\right)$<br>
+<br>
+$
+\left[\begin{matrix}
+	u^r \\ u^\phi \\ u^z
+\end{matrix}\right]_{(x_C, t_R)}
+= \left[\begin{matrix}
+	u^r \\ u^\phi \\ u^z
+\end{matrix}\right]_{(x_C, t_L)}
++ \Delta t \left( 
+	\\
+	- \frac{1}{\frac{1}{2} \Delta (r^2) \Delta \phi \Delta z}
+	\left(
+		\int_{\phi_L}^{\phi_R}
+		\int_{z_L}^{z_R}
+		\left(
+			S(1, \frac{1}{r_C}) 
+			R_z(\phi - \phi_C)
+			S(1, r_R)
+			r_R 
+			\left[\begin{matrix}
+				F^{rr} \\ F^{r\phi} \\ F^{rz}
+			\end{matrix}\right]_{(r_R)}
+			- 
+			S(1, \frac{1}{r_C}) 
+			R_z(\phi - \phi_C)
+			S(1, r_L)
+			r_L 
+			\left[\begin{matrix}
+				F^{rr} \\ F^{r\phi} \\ F^{rz}
+			\end{matrix}\right]_{(r_L)}
+		\right)
+		d\phi dz
+
+		\\
+		- \int_{r_L}^{r_R}
+		\int_{\phi_L}^{\phi_R}
+		\int_{z_L}^{z_R}
+			\partial_\bar{ r } 
+			\left( 
+				S(1, \frac{1}{r_C}) 
+				R_z(\phi - \phi_C)
+				S(1, r)
+			\right)
+			r 
+			\left[\begin{matrix}
+				F^{rr} \\ F^{r\phi} \\ F^{rz}
+			\end{matrix}\right]_{(x)}
+		dz d\phi dr
+
+		\\
+		+ \int_{r_L}^{r_R}
+		\int_{\phi_L}^{\phi_R}
+		\int_{z_L}^{z_R}
+			\left( 
+				S(1, \frac{1}{r_C}) 
+				R_z(\phi - \phi_C)
+				S(1, r)
+				r
+				\left[\begin{matrix}
+					0 \\
+					F^{r\phi} {\Gamma^\phi}_{r\phi} \\
+					0
+				\end{matrix}\right]_{(x)}
+			\right) 
+		dz d\phi dr
+	
+	
+		\\	
+		+ \int_{r_L}^{r_R}
+		\int_{z_L}^{z_R}
+		\left(
+			S(1, \frac{1}{r_C}) 
+			R_z(\phi_R - \phi_C)
+			S(1, r)
+			r 
+			\left[\begin{matrix}
+				F^{\phi r} \\ F^{\phi\phi} \\ F^{\phi z}
+			\end{matrix}\right]_{(\phi_R)}
+			- 
+			S(1, \frac{1}{r_C}) 
+			R_z(\phi_L - \phi_C)
+			S(1, r)
+			r 
+			\left[\begin{matrix}
+				F^{\phi r} \\ F^{\phi\phi} \\ F^{\phi z}
+			\end{matrix}\right]_{(\phi_L)}
+		\right)
+		dz dr
+
+		\\
+		- \int_{r_L}^{r_R}
+		\int_{\phi_L}^{\phi_R}
+		\int_{z_L}^{z_R}
+			\partial_\bar{\phi } 
+			\left( 
+				S(1, \frac{1}{r_C}) 
+				R_z(\phi - \phi_C)
+				S(1, r)
+			\right)
+			r 
+			\left[\begin{matrix}
+				F^{\phi r} \\ F^{\phi\phi} \\ F^{\phi z}
+			\end{matrix}\right]_{(x)}
+		dz d\phi dr
+
+		\\
+		+ \int_{r_L}^{r_R}
+		\int_{\phi_L}^{\phi_R}
+		\int_{z_L}^{z_R}
+			\left( 
+				S(1, \frac{1}{r_C}) 
+				R_z(\phi - \phi_C)
+				S(1, r)
+				r 
+				\left[\begin{matrix}
+					F^{\phi\phi} {\Gamma^r}_{\phi\phi} \\
+					F^{\phi r} {\Gamma^\phi}_{\phi r} \\
+					0
+				\end{matrix}\right]_{(x)}
+			\right) 
+		dz d\phi dr
+
+
+		\\
+		+ \int_{r_L}^{r_R}
+		\int_{\phi_L}^{\phi_R}
+		\left(
+			S(1, \frac{1}{r_C}) 
+			R_z(\phi - \phi_C)
+			S(1, r)
+			r 
+			\left[\begin{matrix}
+				F^{zr} \\ F^{z\phi} \\ F^{zz}
+			\end{matrix}\right]_{(z_R)}
+			- 
+			S(1, \frac{1}{r_C}) 
+			R_z(\phi - \phi_C)
+			S(1, r)
+			r 
+			\left[\begin{matrix}
+				F^{zr} \\ F^{z\phi} \\ F^{zz}
+			\end{matrix}\right]_{(z_L)}
+		\right)
+		d\phi dr
+	\right)
+	\\
+	+ \left[\begin{matrix}
+		S^r \\ S^\phi \\ S^z
+	\end{matrix}\right]_{(x_C)}
+\right)$<br>
+<br>
+
+Here I'm going to assume the fluxes integrated across the volume are constant and equal to the volume center, and therefore do not need to be propagated to the center of the volume.
+Likewise the fluxes integrated across the surface are constant and equal to the surface center.<br>
+<br>
+
+$
+\left[\begin{matrix}
+	u^r \\ u^\phi \\ u^z
+\end{matrix}\right]_{(x_C, t_R)}
+= \left[\begin{matrix}
+	u^r \\ u^\phi \\ u^z
+\end{matrix}\right]_{(x_C, t_L)}
++ \Delta t \left( 
+	\\
+	- \frac{1}{\frac{1}{2} \Delta (r^2) \Delta \phi \Delta z}
+	\left(
+		\int_{\phi_L}^{\phi_R}
+		\int_{z_L}^{z_R}
+		\left(
+			r_R 
+			\left[\begin{matrix}
+				cos(\phi - \phi_C) & -r_R sin(\phi - \phi_C) & 0 \\
+				\frac{1}{r_C} sin(\phi - \phi_C) & \frac{r_R}{r_C} cos(\phi - \phi_C) & 0 \\
+				0 & 0 & 1
+			\end{matrix}\right]
+			\left[\begin{matrix}
+				F^{rr} \\ F^{r\phi} \\ F^{rz}
+			\end{matrix}\right]_{(r_R)}
+			- 
+			r_L 
+			\left[\begin{matrix}
+				cos(\phi - \phi_C) & -r_L sin(\phi - \phi_C) & 0 \\
+				\frac{1}{r_C} sin(\phi - \phi_C) & \frac{r_L}{r_C} cos(\phi - \phi_C) & 0 \\
+				0 & 0 & 1
+			\end{matrix}\right]	
+			\left[\begin{matrix}
+				F^{rr} \\ F^{r\phi} \\ F^{rz}
+			\end{matrix}\right]_{(r_L)}
+		\right)
+		d\phi dz
+
+		\\
+		- \int_{r_L}^{r_R}
+		\int_{\phi_L}^{\phi_R}
+		\int_{z_L}^{z_R}
+			r 
+			\partial_\bar{ r } 
+			\left( 
+				\left[\begin{matrix}
+					cos(\phi - \phi_C) & -r sin(\phi - \phi_C) & 0 \\
+					\frac{1}{r_C} sin(\phi - \phi_C) & \frac{r}{r_C} cos(\phi - \phi_C) & 0 \\
+					0 & 0 & 1
+				\end{matrix}\right]
+			\right)
+			\left[\begin{matrix}
+				F^{rr} \\ F^{r\phi} \\ F^{rz}
+			\end{matrix}\right]_{(x)}
+		dz d\phi dr
+
+		\\
+		+ \int_{r_L}^{r_R}
+		\int_{\phi_L}^{\phi_R}
+		\int_{z_L}^{z_R}
+			\left( 
+				r
+				\left[\begin{matrix}
+					cos(\phi - \phi_C) & -r sin(\phi - \phi_C) & 0 \\
+					\frac{1}{r_C} sin(\phi - \phi_C) & \frac{r}{r_C} cos(\phi - \phi_C) & 0 \\
+					0 & 0 & 1
+				\end{matrix}\right]
+				\left[\begin{matrix}
+					0 \\
+					F^{r\phi} {\Gamma^\phi}_{r\phi} \\
+					0
+				\end{matrix}\right]_{(x)}
+			\right) 
+		dz d\phi dr
+	
+	
+		\\	
+		+ \int_{r_L}^{r_R}
+		\int_{z_L}^{z_R}
+		\left(
+			r 
+			\left[\begin{matrix}
+				cos(\phi_R - \phi_C) & -r sin(\phi_R - \phi_C) & 0 \\
+				\frac{1}{r_C} sin(\phi_R - \phi_C) & \frac{r}{r_C} cos(\phi_R - \phi_C) & 0 \\
+				0 & 0 & 1
+			\end{matrix}\right]
+			\left[\begin{matrix}
+				F^{\phi r} \\ F^{\phi\phi} \\ F^{\phi z}
+			\end{matrix}\right]_{(\phi_R)}
+			- 
+			r 
+			\left[\begin{matrix}
+				cos(\phi_L - \phi_C) & -r sin(\phi_L - \phi_C) & 0 \\
+				\frac{1}{r_C} sin(\phi_L - \phi_C) & \frac{r}{r_C} cos(\phi_L - \phi_C) & 0 \\
+				0 & 0 & 1
+			\end{matrix}\right]
+			\left[\begin{matrix}
+				F^{\phi r} \\ F^{\phi\phi} \\ F^{\phi z}
+			\end{matrix}\right]_{(\phi_L)}
+		\right)
+		dz dr
+
+		\\
+		- \int_{r_L}^{r_R}
+		\int_{\phi_L}^{\phi_R}
+		\int_{z_L}^{z_R}
+			r 
+			\partial_\bar{\phi } 
+			\left( 
+				\left[\begin{matrix}
+					cos(\phi - \phi_C) & -r sin(\phi - \phi_C) & 0 \\
+					\frac{1}{r_C} sin(\phi - \phi_C) & \frac{r}{r_C} cos(\phi - \phi_C) & 0 \\
+					0 & 0 & 1
+				\end{matrix}\right]
+			\right)
+			\left[\begin{matrix}
+				F^{\phi r} \\ F^{\phi\phi} \\ F^{\phi z}
+			\end{matrix}\right]_{(x)}
+		dz d\phi dr
+
+		\\
+		+ \int_{r_L}^{r_R}
+		\int_{\phi_L}^{\phi_R}
+		\int_{z_L}^{z_R}
+			\left( 
+				r 
+				\left[\begin{matrix}
+					cos(\phi - \phi_C) & -r sin(\phi - \phi_C) & 0 \\
+					\frac{1}{r_C} sin(\phi - \phi_C) & \frac{r}{r_C} cos(\phi - \phi_C) & 0 \\
+					0 & 0 & 1
+				\end{matrix}\right]
+				\left[\begin{matrix}
+					F^{\phi\phi} {\Gamma^r}_{\phi\phi} \\
+					F^{\phi r} {\Gamma^\phi}_{\phi r} \\
+					0
+				\end{matrix}\right]_{(x)}
+			\right) 
+		dz d\phi dr
+
+
+		\\
+		+ \int_{r_L}^{r_R}
+		\int_{\phi_L}^{\phi_R}
+		\left(
+			r 
+			\left[\begin{matrix}
+				cos(\phi - \phi_C) & -r sin(\phi - \phi_C) & 0 \\
+				\frac{1}{r_C} sin(\phi - \phi_C) & \frac{r}{r_C} cos(\phi - \phi_C) & 0 \\
+				0 & 0 & 1
+			\end{matrix}\right]
+			\left[\begin{matrix}
+				F^{zr} \\ F^{z\phi} \\ F^{zz}
+			\end{matrix}\right]_{(z_R)}
+			- 
+			r 
+			\left[\begin{matrix}
+				cos(\phi - \phi_C) & -r sin(\phi - \phi_C) & 0 \\
+				\frac{1}{r_C} sin(\phi - \phi_C) & \frac{r}{r_C} cos(\phi - \phi_C) & 0 \\
+				0 & 0 & 1
+			\end{matrix}\right]
+			\left[\begin{matrix}
+				F^{zr} \\ F^{z\phi} \\ F^{zz}
+			\end{matrix}\right]_{(z_L)}
+		\right)
+		d\phi dr
+	\right)
+	\\
+	+ \left[\begin{matrix}
+		S^r \\ S^\phi \\ S^z
+	\end{matrix}\right]_{(x_C)}
+\right)$<br>
+<br>
+
+$
+\left[\begin{matrix}
+	u^r \\ u^\phi \\ u^z
+\end{matrix}\right]_{(x_C, t_R)}
+= \left[\begin{matrix}
+	u^r \\ u^\phi \\ u^z
+\end{matrix}\right]_{(x_C, t_L)}
++ \Delta t \left( 
+	\\
+	- \frac{1}{\frac{1}{2} \Delta (r^2) \Delta \phi \Delta z}
+	\left(
+		\int_{\phi_L}^{\phi_R}
+		\left(
+			r_R 
+			\left[\begin{matrix}
+				cos(\phi - \phi_C) & -r_R sin(\phi - \phi_C) & 0 \\
+				\frac{1}{r_C} sin(\phi - \phi_C) & \frac{r_R}{r_C} cos(\phi - \phi_C) & 0 \\
+				0 & 0 & 1
+			\end{matrix}\right]
+			\left[\begin{matrix}
+				F^{rr} \\ F^{r\phi} \\ F^{rz}
+			\end{matrix}\right]_{(r_R)}
+			- 
+			r_L 
+			\left[\begin{matrix}
+				cos(\phi - \phi_C) & -r_L sin(\phi - \phi_C) & 0 \\
+				\frac{1}{r_C} sin(\phi - \phi_C) & \frac{r_L}{r_C} cos(\phi - \phi_C) & 0 \\
+				0 & 0 & 1
+			\end{matrix}\right]	
+			\left[\begin{matrix}
+				F^{rr} \\ F^{r\phi} \\ F^{rz}
+			\end{matrix}\right]_{(r_L)}
+		\right)
+		d\phi \Delta z
+
+		\\
+		- \int_{r_L}^{r_R}
+		\int_{\phi_L}^{\phi_R}
+			\left[\begin{matrix}
+				0 & -r sin(\phi - \phi_C) & 0 \\
+				0 & \frac{r}{r_C} cos(\phi - \phi_C) & 0 \\
+				0 & 0 & 0
+			\end{matrix}\right]
+			\left[\begin{matrix}
+				F^{rr} \\ F^{r\phi} \\ F^{rz}
+			\end{matrix}\right]_{(x)}
+		d\phi dr \Delta z
+
+		\\
+		+ \int_{r_L}^{r_R}
+		\int_{\phi_L}^{\phi_R}
+			\left[\begin{matrix}
+				cos(\phi - \phi_C) & -r sin(\phi - \phi_C) & 0 \\
+				\frac{1}{r_C} sin(\phi - \phi_C) & \frac{r}{r_C} cos(\phi - \phi_C) & 0 \\
+				0 & 0 & 1
+			\end{matrix}\right]
+			\left[\begin{matrix}
+				0 \\
+				F^{r\phi} \\
+				0
+			\end{matrix}\right]_{(x)}
+		d\phi dr \Delta z
+	
+	
+		\\	
+		+ \int_{r_L}^{r_R}
+		\left(
+			\left[\begin{matrix}
+				r cos(\phi_R - \phi_C) & -r^2 sin(\phi_R - \phi_C) & 0 \\
+				r \frac{1}{r_C} sin(\phi_R - \phi_C) & r^2 \frac{1}{r_C} cos(\phi_R - \phi_C) & 0 \\
+				0 & 0 & r
+			\end{matrix}\right]
+			\left[\begin{matrix}
+				F^{\phi r} \\ F^{\phi\phi} \\ F^{\phi z}
+			\end{matrix}\right]_{(\phi_R)}
+			- 
+			\left[\begin{matrix}
+				r cos(\phi_L - \phi_C) & -r^2 sin(\phi_L - \phi_C) & 0 \\
+				r \frac{1}{r_C} sin(\phi_L - \phi_C) & r^2 \frac{1}{r_C} cos(\phi_L - \phi_C) & 0 \\
+				0 & 0 & r
+			\end{matrix}\right]
+			\left[\begin{matrix}
+				F^{\phi r} \\ F^{\phi\phi} \\ F^{\phi z}
+			\end{matrix}\right]_{(\phi_L)}
+		\right)
+		dr \Delta z
+
+		\\
+		- \int_{r_L}^{r_R}
+		\int_{\phi_L}^{\phi_R}
+			\left[\begin{matrix}
+				-r sin(\phi - \phi_C) & -r^2 cos(\phi - \phi_C) & 0 \\
+				r \frac{1}{r_C} cos(\phi - \phi_C) & -r^2 \frac{1}{r_C} sin(\phi - \phi_C) & 0 \\
+				0 & 0 & 0
+			\end{matrix}\right]
+			\left[\begin{matrix}
+				F^{\phi r} \\ F^{\phi\phi} \\ F^{\phi z}
+			\end{matrix}\right]_{(x)}
+		d\phi dr \Delta z
+
+		\\
+		+ \int_{r_L}^{r_R}
+		\int_{\phi_L}^{\phi_R}
+			\left[\begin{matrix}
+				cos(\phi - \phi_C) & -r sin(\phi - \phi_C) & 0 \\
+				\frac{1}{r_C} sin(\phi - \phi_C) & \frac{r}{r_C} cos(\phi - \phi_C) & 0 \\
+				0 & 0 & 1
+			\end{matrix}\right]
+			\left[\begin{matrix}
+				-r^2 F^{\phi\phi} \\
+				F^{\phi r} \\
+				0
+			\end{matrix}\right]_{(x)}
+		d\phi dr \Delta z
+
+
+		\\
+		+ \int_{r_L}^{r_R}
+		\int_{\phi_L}^{\phi_R}
+		\left(
+			\left[\begin{matrix}
+				r cos(\phi - \phi_C) & -r^2 sin(\phi - \phi_C) & 0 \\
+				r \frac{1}{r_C} sin(\phi - \phi_C) & r^2 \frac{1}{r_C} cos(\phi - \phi_C) & 0 \\
+				0 & 0 & 1
+			\end{matrix}\right]
+			\left[\begin{matrix}
+				F^{zr} \\ F^{z\phi} \\ F^{zz}
+			\end{matrix}\right]_{(z_R)}
+			- 
+			\left[\begin{matrix}
+				r cos(\phi - \phi_C) & -r^2 sin(\phi - \phi_C) & 0 \\
+				r \frac{1}{r_C} sin(\phi - \phi_C) & r^2 \frac{1}{r_C} cos(\phi - \phi_C) & 0 \\
+				0 & 0 & 1
+			\end{matrix}\right]
+			\left[\begin{matrix}
+				F^{zr} \\ F^{z\phi} \\ F^{zz}
+			\end{matrix}\right]_{(z_L)}
+		\right)
+		d\phi dr
+	\right)
+	\\
+	+ \left[\begin{matrix}
+		S^r \\ S^\phi \\ S^z
+	\end{matrix}\right]_{(x_C)}
+\right)$<br>
+<br>
+
+$
+\left[\begin{matrix}
+	u^r \\ u^\phi \\ u^z
+\end{matrix}\right]_{(x_C, t_R)}
+= \left[\begin{matrix}
+	u^r \\ u^\phi \\ u^z
+\end{matrix}\right]_{(x_C, t_L)}
++ \Delta t \left( 
+	\\
+	- \frac{1}{\frac{1}{2} \Delta (r^2) \Delta \phi \Delta z}
+	\left(
+		\left(
+			r_R 
+			\left[\begin{matrix}
+				sin(\phi - \phi_C) & r_R cos(\phi - \phi_C) & 0 \\
+				-\frac{1}{r_C} cos(\phi - \phi_C) & \frac{r_R}{r_C} sin(\phi - \phi_C) & 0 \\
+				0 & 0 & \phi
+			\end{matrix}\right]|_{\phi_L}^{\phi_R}
+			\left[\begin{matrix}
+				F^{rr} \\ F^{r\phi} \\ F^{rz}
+			\end{matrix}\right]_{(r_R)}
+			- 
+			r_L 
+			\left[\begin{matrix}
+				sin(\phi - \phi_C) & r_L cos(\phi - \phi_C) & 0 \\
+				-\frac{1}{r_C} cos(\phi - \phi_C) & \frac{r_L}{r_C} sin(\phi - \phi_C) & 0 \\
+				0 & 0 & \phi
+			\end{matrix}\right]|_{\phi_L}^{\phi_R}	
+			\left[\begin{matrix}
+				F^{rr} \\ F^{r\phi} \\ F^{rz}
+			\end{matrix}\right]_{(r_L)}
+		\right)
+		\Delta z
+
+		\\
+		- \frac{1}{2} \Delta (r^2)
+		\left[\begin{matrix}
+			cos(\phi - \phi_C) F^{r\phi}(x) \\
+			\frac{1}{r_C} sin(\phi - \phi_C) F^{r\phi}(x) \\
+			0
+		\end{matrix}\right]|_{\phi_L}^{\phi_R}
+		\Delta z
+
+		\\
+		+ \left[\begin{matrix}
+			\Delta r sin(\phi - \phi_C) & \frac{1}{2} \Delta (r^2) cos(\phi - \phi_C) & 0 \\
+			-\Delta r \frac{1}{r_C} cos(\phi - \phi_C) & \frac{1}{2} \Delta (r^2) \frac{1}{r_C} sin(\phi - \phi_C) & 0 \\
+			0 & 0 & \Delta r \Delta \phi
+		\end{matrix}\right]|_{\phi_L}^{\phi_R}
+		\left[\begin{matrix}
+			0 \\
+			F^{r\phi} \\
+			0
+		\end{matrix}\right]_{(x)}
+		\Delta z
+		
+		\\	
+		+ \left(
+			\left[\begin{matrix}
+				\frac{1}{2} \Delta (r^2) cos(\phi_R - \phi_C) & -\frac{1}{3} \Delta (r^3)  sin(\phi_R - \phi_C) & 0 \\
+				\frac{1}{2} \Delta (r^2)  \frac{1}{r_C} sin(\phi_R - \phi_C) & \frac{1}{3} \Delta (r^3) \frac{1}{r_C} cos(\phi_R - \phi_C) & 0 \\
+				0 & 0 & \frac{1}{2} \Delta (r^2) 
+			\end{matrix}\right]
+			\left[\begin{matrix}
+				F^{\phi r} \\ F^{\phi\phi} \\ F^{\phi z}
+			\end{matrix}\right]_{(\phi_R)}
+			- 
+			\left[\begin{matrix}
+				\frac{1}{2} \Delta (r^2) cos(\phi_L - \phi_C) & -\frac{1}{3} \Delta (r^3)  sin(\phi_L - \phi_C) & 0 \\
+				\frac{1}{2} \Delta (r^2) \frac{1}{r_C} sin(\phi_L - \phi_C) & \frac{1}{3} \Delta (r^3) \frac{1}{r_C} cos(\phi_L - \phi_C) & 0 \\
+				0 & 0 & \frac{1}{2} \Delta (r^2) 
+			\end{matrix}\right]
+			\left[\begin{matrix}
+				F^{\phi r} \\ F^{\phi\phi} \\ F^{\phi z}
+			\end{matrix}\right]_{(\phi_L)}
+		\right)
+		\Delta z
+
+		\\
+		- \left[\begin{matrix}
+			\frac{1}{2} \Delta (r^2) cos(\phi - \phi_C) & -\frac{1}{3} \Delta (r^3) sin(\phi - \phi_C) & 0 \\
+			\frac{1}{2} \Delta (r^2) \frac{1}{r_C} sin(\phi - \phi_C) & \frac{1}{3} \Delta (r^3) \frac{1}{r_C} cos(\phi - \phi_C) & 0 \\
+			0 & 0 & 0
+		\end{matrix}\right]|_{\phi_L}^{\phi_R}
+		\left[\begin{matrix}
+			F^{\phi r} \\ F^{\phi\phi} \\ F^{\phi z}
+		\end{matrix}\right]_{(x)}
+		\Delta z
+
+		\\
+		+ \left[\begin{matrix}
+			\frac{1}{3} \Delta (r^3) sin(\phi - \phi_C) F^{\phi\phi}(x) + \frac{1}{2} \Delta (r^2) cos(\phi - \phi_C) F^{\phi r}(x) \\
+			-\frac{1}{3} \Delta (r^3) \frac{1}{r_C} cos(\phi - \phi_C) F^{\phi\phi}(x) + \frac{1}{2} \Delta (r^2) \frac{1}{r_C} sin(\phi - \phi_C) F^{\phi r}(x) \\
+			0
+		\end{matrix}\right]|_{\phi_L}^{\phi_R}
+		\Delta z
+
+
+		\\
+		+ \left(
+			\left[\begin{matrix}
+				\frac{1}{2} \Delta (r^2) sin(\phi - \phi_C) & \frac{1}{3} \Delta (r^3) cos(\phi - \phi_C) & 0 \\
+				-\frac{1}{2} \Delta (r^2) \frac{1}{r_C} cos(\phi - \phi_C) & \frac{1}{3} \Delta (r^3) \frac{1}{r_C} sin(\phi - \phi_C) & 0 \\
+				0 & 0 & \Delta r \Delta \phi
+			\end{matrix}\right]|_{\phi_L}^{\phi_R}
+			\left[\begin{matrix}
+				F^{zr} \\ F^{z\phi} \\ F^{zz}
+			\end{matrix}\right]_{(z_R)}
+			- 
+			\left[\begin{matrix}
+				\frac{1}{2} \Delta (r^2) sin(\phi - \phi_C) & \frac{1}{3} \Delta (r^3) cos(\phi - \phi_C) & 0 \\
+				-\frac{1}{2} \Delta (r^2) \frac{1}{r_C} cos(\phi - \phi_C) & \frac{1}{3} \Delta (r^3) \frac{1}{r_C} sin(\phi - \phi_C) & 0 \\
+				0 & 0 & \Delta r \Delta \phi
+			\end{matrix}\right]|_{\phi_L}^{\phi_R}
+			\left[\begin{matrix}
+				F^{zr} \\ F^{z\phi} \\ F^{zz}
+			\end{matrix}\right]_{(z_L)}
+		\right)
+	\right)
+	\\
+	+ \left[\begin{matrix}
+		S^r \\ S^\phi \\ S^z
+	\end{matrix}\right]_{(x_C)}
+\right)$<br>
+<br>
+
+$
+\left[\begin{matrix}
+	u^r \\ u^\phi \\ u^z
+\end{matrix}\right]_{(x_C, t_R)}
+= \left[\begin{matrix}
+	u^r \\ u^\phi \\ u^z
+\end{matrix}\right]_{(x_C, t_L)}
++ \Delta t \left( 
+	\\
+	-
+	\frac{1}{\frac{1}{2} \Delta (r^2) \Delta \phi}
+	\left[\begin{matrix}
+		(sin(\phi_R - \phi_C) - sin(\phi_L - \phi_C)) (r_R F^{rr}(r_R) - r_L F^{rr}(r_L))
+			+ (cos(\phi_R - \phi_C) - cos(\phi_L - \phi_C)) ((r_R)^2 F^{r\phi}(r_R) - (r_L)^2 F^{r\phi}(r_L)) \\
+		
+		-\frac{1}{r_C} (cos(\phi_R - \phi_C) - cos(\phi_L - \phi_C)) (r_R F^{rr}(r_R) - r_L F^{rr}(r_L))
+			+ \frac{1}{r_C} (sin(\phi_R - \phi_C) - sin(\phi_L - \phi_C)) ((r_R)^2 F^{r\phi}(r_R) - (r_L)^2 F^{r\phi}(r_L)) \\
+		
+		\Delta \phi (r_R F^{rz}(r_R) - r_L F^{rz}(r_L))
+	\end{matrix}\right]
+	
+	\\
+	+ 
+	\frac{1}{\Delta \phi}
+	\left[\begin{matrix}
+		cos(\phi_R - \phi_C) F^{r\phi}(\phi_R) - cos(\phi_L - \phi_C) F^{r\phi}(\phi_L) \\
+		\frac{1}{r_C} (sin(\phi_R - \phi_C) F^{r\phi}(\phi_R) - sin(\phi_L - \phi_C) F^{r\phi}(\phi_L)) \\
+		0
+	\end{matrix}\right]
+
+	\\
+	- 
+	\frac{1}{\Delta \phi}
+	\left[\begin{matrix}
+		(cos(\phi_R - \phi_C) - cos(\phi_L - \phi_C)) F^{r\phi}(x_C) \\
+		\frac{1}{r_C} (sin(\phi_R - \phi_C) - sin(\phi_L - \phi_C)) F^{r\phi}(x_C) \\
+		0
+	\end{matrix}\right]
+	
+	\\	
+	- 
+	\frac{1}{\Delta \phi}
+	\left[\begin{matrix}
+		cos(\phi_R - \phi_C) F^{\phi r}(\phi_R) - \frac{2}{3} \frac{\Delta (r^3)}{\Delta (r^2)} sin(\phi_R - \phi_C) F^{\phi\phi}(\phi_R) \\
+		\frac{1}{r_C} sin(\phi_R - \phi_C) F^{\phi r}(\phi_R) + \frac{2}{3} \frac{\Delta (r^3)}{\Delta (r^2)} \frac{1}{r_C} cos(\phi_R - \phi_C) F^{\phi\phi}(\phi_R) \\
+		F^{\phi z}(\phi_R)
+	\end{matrix}\right]
+	
+	\\
+	+ 
+	\frac{1}{\Delta \phi}
+	\left[\begin{matrix}
+		cos(\phi_L - \phi_C) F^{\phi r}(\phi_L) - \frac{2}{3} \frac{\Delta (r^3)}{\Delta (r^2)} sin(\phi_L - \phi_C) F^{\phi\phi}(\phi_L) \\
+		\frac{1}{r_C} sin(\phi_L - \phi_C) F^{\phi r}(\phi_L) + \frac{2}{3} \frac{\Delta (r^3)}{\Delta (r^2)} \frac{1}{r_C} cos(\phi_L - \phi_C) F^{\phi\phi}(\phi_L) \\
+		F^{\phi z}(\phi_L)
+	\end{matrix}\right]
+
+	\\
+	- 
+	\frac{4}{3} \frac{\Delta (r^3)}{\Delta (r^2) \Delta \phi}
+	\left[\begin{matrix}
+		(sin(\phi_R - \phi_C) - sin(\phi_L - \phi_C)) F^{\phi\phi}(x_C) \\
+		-\frac{1}{r_C} (cos(\phi_R - \phi_C) - cos(\phi_L - \phi_C)) F^{\phi\phi}(x_C) \\
+		0
+	\end{matrix}\right]
+
+	\\
+	- 
+	\frac{1}{\Delta \phi \Delta z}
+	\left[\begin{matrix}
+		(sin(\phi_R - \phi_C) - sin(\phi_L - \phi_C)) (F^{zr}(z_R) - F^{zr}(z_L)) + \frac{2}{3} \frac{\Delta (r^3)}{\Delta (r^2)} (cos(\phi_R - \phi_C) - cos(\phi_L - \phi_C)) (F^{z\phi}(z_R) - F^{z\phi}(z_L)) \\
+		-\frac{1}{r_C} (cos(\phi_R - \phi_C) - cos(\phi_L - \phi_C)) (F^{zr}(z_R) - F^{zr}(z_L)) + \frac{2}{3} \frac{\Delta (r^3)}{\Delta (r^2)} \frac{1}{r_C} (sin(\phi_R - \phi_C) - sin(\phi_L - \phi_C)) (F^{z\phi}(z_R) - F^{z\phi}(z_L)) \\
+		2 \frac{\Delta r}{\Delta (r^2)} \Delta \phi (F^{zz}(z_R) - F^{zz}(z_L))
+	\end{matrix}\right]
+	
+	\\
+	+ \left[\begin{matrix}
+		S^r \\ S^\phi \\ S^z
+	\end{matrix}\right]_{(x_C)}
+\right)$<br>
+<br>
+
+
+
+	</body>
+</html>
