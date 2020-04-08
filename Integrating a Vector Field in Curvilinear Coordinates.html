@@ -307,7 +307,10 @@ In section 23 he talks about curvilinear grids, but doesn't seem to mention curv
 
 It looks like 2011 Bonnement et al "Finite Volume Method in Curvilinear Coordinates for Hyperbolic Conservation Laws" appraoches this.  They represent things as tensors, they include covariant derivatives.  
 But they fall short of approaching the concept of parallel propagators.
-They do approximate it as a linear transform, which means their method will work just fine in absence of Riemann curvature, if your covariant derivative commutes (and therefore your order of integration of coordinates across your surface commutes), and as long as you are using an orthonormal basis (I think they can handle non-orthonormal basis, since in polar coordinates the propagator's exp map of the 1/r connection terms just ended up being rescaling terms between the tangent basis vector magnitudes.  Here's a challenge:  find a zero-Riemann-curvature manifold that simply projecting from one basis to the next doesn't work.  I suspect anything with extrinsic curvature.  Yup, can't just reproject the normal component away -- that would lead to a constant diminishing of the surface, unless you renormalized the vectors manually ... in the end, a lot of hoops to jump through and still consider the accuracy of your method.).
+They do approximate it as a linear transform, which means their method will work just fine in absence of Riemann curvature, if your covariant derivative commutes (and therefore your order of integration of coordinates across your surface commutes), and as long as you are using an orthonormal basis (I think they can handle non-orthonormal basis, since in polar coordinates the propagator's exp map of the 1/r connection terms just ended up being rescaling terms between the tangent basis vector magnitudes.  
+Here's a challenge:  find a zero-Riemann-curvature manifold that simply projecting from one basis to the next doesn't work.  
+I suspect anything with extrinsic curvature.  
+Yup, can't just reproject the normal component away -- that would lead to a constant diminishing of the surface, unless you renormalized the vectors manually ... in the end, a lot of hoops to jump through and still consider the accuracy of your method.).
 <br><br>
 
 Let's see if we can describe things in a more general form that works in all those cases: GL tangent-space basis, extrinsic curvature (connections normal to the surface), and Riemann curvature (commutation of covariant derivatives).
@@ -685,7 +688,10 @@ To boot, when we start to deal with the added connections for non-scalar integra
 Let's also introduce the coordinate $x_C$ as the center of the cell, midway between $x_L$ and $x_R$.
 Let's also define our cell volume as $\mathcal{V}(x_C) = \int_V J(x) dV$.
 Notice that, if we don't treat our cell as piecewise constant, then we have to consider our parallel propagator's influence - in addition to the volume element - on the state and the source terms.
-<br><br>
+<br>
+
+TODO or we can just define the cell state u and source S values as the integral across the region, divided by the cell volume.  I think this is the same math in the end.
+<br>
 
 $
 \left( 
