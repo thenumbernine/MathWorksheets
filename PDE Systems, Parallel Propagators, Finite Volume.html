@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<title>PDE Systems, Parallel Propagators, Finite Volume</title>
+	</head>
+	<body>
+
+Parallel propagator along a single coordinate:<br>
+${P_\mu(x_L^\mu, x_R^\mu)^\alpha}_\nu = exp\left( -\int_{x'^\mu = x_L^\mu}^{x'^\mu = x_R^\mu} \Gamma_\mu(x'^\mu) dx'^\mu \right)$<br>
+...where $\Gamma_\mu$ is a matrix with components ${\Gamma^\alpha}_{\mu\nu}$<br>
+<br>
+
+Parallel propagator linearly interpolated between coordinates:<br>
+$P_\mu(x,y) = exp\left( -\int_{\lambda = 0}^{\lambda = 1} \Gamma_\mu(x + \lambda v) v^\mu d\lambda \right)$<br>
+<br>
+
+Matrix exponential:<br>
+$exp(A) = exp(R \cdot \Lambda \cdot L) = R \cdot exp(\Lambda) \cdot L$<br>
+$R^{-1} \cdot exp(A) \cdot L^{-1} = exp(\Lambda)$<br>
+$\Lambda = log(R^{-1} \cdot exp(A) \cdot L^{-1})$<br>
+$A = R \cdot \Lambda \cdot L = R \cdot log(R^{-1} \cdot exp(A) \cdot L^{-1}) \cdot L$<br>
+$A = log(exp(A)) = log(exp(R \cdot \Lambda \cdot L)) = log(R \cdot exp(\Lambda) \cdot R)$<br>
+<br>
+TODO for $A = R_A \cdot \Lambda_A \cdot L_A$, prove $log(A) = R_A \cdot log(\Lambda_A) \cdot L_A$<br>
+Let $B = log(A)$, so $exp(B) = A$<br>
+and $B = R_B \cdot \Lambda_B \cdot L_B$<br>
+and (by argument of diagonalization of $exp(A_{ij}) = \delta_{ij} exp(A_{ij})$) we know that $R_B = R_A, L_B = L_A$<br>
+so $\Lambda_B = log(\Lambda_A)$<br>
+so $log(A) = R_A \cdot log(\Lambda_A) \cdot L_A$<br>
+where, for diagonal matrix, $(log(\Lambda_A))_{ij} = 0$ for $i \ne j$, or $log(A_{ij})$ for $i = j$.<br>
+<br>
+
+Flux<br> Jacobian Eigendecomposition:<br>
+$F^\alpha =$ flux.<br>
+${A^\alpha}_\mu = \frac{\partial F^\alpha}{\partial U^\mu} =$ flux Jacobian.<br>
+$A = R \cdot \Lambda \cdot L$<br>
+<br>
+
+Let $-\int \Gamma_\mu v^\mu d\lambda = -\int \Gamma(\lambda, v) d\lambda = A$ ... notice the first $\Gamma$ parameter is its dependent variable $\lambda$, while the second is the vector $v^\mu$ that the one-form $\Gamma$ is actiong upon.  Maybe it would be more proper math to write $\Gamma(\lambda)(v)$?<br>
+So $A = R \cdot \Lambda \cdot L = -\int \Gamma_\mu v^\mu d\lambda$<br>
+And $exp(-\int \Gamma_\mu v^\mu d\lambda) = R \cdot \Lambda \cdot L$<br>
+And $-\int \Gamma_\mu v^\mu d\lambda = R \cdot log(\Lambda) \cdot L$<br>
+<br>
+
+How about if we say $\nabla_{e_\mu} e_\nu = {\Gamma^\alpha}_{\mu\nu} e_\alpha$ is equivalent to $\partial_{U^\mu} F^\alpha$?<br>
+<br>
+
+How about if $-{\Gamma^\alpha}_{\mu\nu} v^\mu = {A^\alpha}_\nu$?<br>
+$\int -{\Gamma^\alpha}_{\mu\nu} v^\mu d\lambda = \int {A^\alpha}_\nu d\lambda$<br>
+<br>
+
+Then there's Dullemond, Wang's Hydrodynamics notes, eqn. 7.36: $F(U(x_R)) - F(U(x_L)) = \int_0^1 \frac{\partial}{\partial \lambda} F(U(\lambda)) d\lambda = (\int_0^1 \frac{\partial F}{\partial U} d\lambda) \cdot (U(x_R) - U(x_L))$<br>
+which is derived from $\partial_t U + \partial_{x^i} F^i = 0$<br>
+<br>
+
+Then there is Misner, Thorn, Wheeler "Gravitation" exercise 16.6 showing how $\partial_t U + \nabla_{x^i} F^i = 0$ is the same as $\nabla_\nu T^{\mu\nu} = 0$<br>
+where $\partial_t \rho + \nabla_{x^i} (\rho v^i) = 0$ becomes $\nabla_\mu T^{t\mu} = 0$<br>
+and $\partial_t (\rho v^j) + \nabla_{x^i} (\rho v^i v^j + g^{ij} P) = 0$ becomes $\nabla_\mu T^{j\mu} = 0$<br>
+<br>
+
+<br>
+<br>
+<br>
+	</body>
+</html>

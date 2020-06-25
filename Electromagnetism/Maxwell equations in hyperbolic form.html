@@ -7,8 +7,14 @@
 	</head>
 	<body>
 
+Coordinate basis:<br>
 $dx^\mu = (dx^0, dx^1, dx^2, dx^3) = (c dt, dx, dy, dz)$ has units $m$<br>
 $\partial_\mu = (\partial_0, \partial_1, \partial_2, \partial_3) = (\frac{1}{c} \partial_t, \partial_x, \partial_y, \partial_z)$ has units $\frac{1}{m}$<br>
+<br>
+
+Non-coordinate basis:<br>
+$e^\mu = {e^\mu}_{\bar{\mu}} dx^{\bar\mu}$<br>
+$e_\mu = {e_\mu}^{\bar{\mu}} \partial_{\bar\mu}$<br>
 <br>
 
 speed of light:	$c = 299792458 \cdot \frac{m}{s}$<br>
@@ -19,12 +25,11 @@ $\mu_0 =$ vacuum permeability, in units $[\frac{kg \cdot m}{C^2}]$<br>
 $\frac{1}{\sqrt{\epsilon_0 \mu_0}} = c$<br>
 <br>
 
-TODO to match with the 'relativistic magnetism in medium' worksheet, $E \rightarrow \mathcal{E}, B \rightarrow \mathcal{B}$<br>
 <br>
-$E_i$ = electric field, in units $[\frac{kg \cdot m}{C \cdot s^2}]$<br>
-$B_i$ = magnetic field, in units $[\frac{kg}{C \cdot s}]$<br>
-$D_i = \epsilon E_i =$ electric displacement field, in units $[\frac{C}{m^2}]$<br>
-$B_i = \mu H_i$, for $H_i =$ magnetizing field, in units $[\frac{C}{m \cdot s}]$<br>
+$E^i$ = electric field, in units $[\frac{kg \cdot m}{C \cdot s^2}]$<br>
+$B^i$ = magnetic field, in units $[\frac{kg}{C \cdot s}]$<br>
+$D^i = \epsilon E^i =$ electric displacement field, in units $[\frac{C}{m^2}]$<br>
+$B^i = \mu H^i$, for $H^i =$ magnetizing field, in units $[\frac{C}{m \cdot s}]$<br>
 <br>
 
 $\epsilon =$ permittivity, in units $[\frac{C^2 \cdot s^2}{kg \cdot m^3}]$<br>
@@ -36,31 +41,53 @@ Wedge product:<br>
 $a \wedge b = a \otimes b - b \otimes a$<br>
 <br>
 
-Exterior derivative:<br>
-$dT = dx^u \wedge \partial_u T$<br>
+Exterior derivative in a non-coordinate basis:<br>
+$dT = e^\mu \wedge e_\mu (T)$<br>
+$= (d {T^{\alpha_1 ... \alpha_p}}_{\beta_1 ... \beta_q} 
+	e_{\alpha_1} \otimes ... \otimes e_{\alpha_p} \otimes e^{\beta_1} \otimes ... \otimes e^{\beta_q})
+= e_\mu ({T^{\alpha_1 ... \alpha_p}}_{\beta_1 ... \beta_q})
+	\cdot e^\mu \wedge (
+		e_{\alpha_1} \otimes ... \otimes e_{\alpha_p} \otimes e^{\beta_1} \otimes ... \otimes e^{\beta_q}
+	)$<br>
+<br>
+So for $T = T_{a_1 ... a_p}$,<br>
+$(dT)_{a_0 a_1 ... a_p} = (p+1) \partial_{[a_0} T_{a_1 ... a_p]}$<br>
 <br>
 
 Electromagnetic four-potential:<br>
-$A = A_u dx^u = A_0 dx^0 + A_i dx^i$<br>
+$A = A_\mu e^\mu = A_0 e^0 + A_i e^i$<br>
+$A_\mu$ is in units of $\frac{kg \cdot m}{C \cdot s}$<br>
 $A_0 = \frac{1}{c} \phi$<br>
-$A_i$ is in units of $\frac{kg \cdot m}{C \cdot s}$<br>
+$A = \phi dt + A_i e^i$<br>
 $\phi$ is in units of $\frac{kg \cdot m^2}{C \cdot s^2}$<br>
-$A = \phi dt + A_i dx^i$<br>
 <br>
 
 Faraday tensor:<br>
-$F = dA = \partial_u (A_v) dx^u \wedge dx^v$<br>
-$F = F_{uv} dx^u \otimes dx^v = \frac{1}{2} F_{uv} dx^u \wedge dx^v$<br>
 $F_{uv}$ has units of $\frac{kg}{C \cdot s}$<br>
-$F_{uv} = \partial_u A_v - \partial_v A_u = 2 \partial_{[u} A_{v]}$<br>
+$F = F_{uv} e^u \otimes e^v = \frac{1}{2} F_{uv} e^u \wedge e^v$<br>
+$F = dA$<br>
+$= e^\mu \wedge e_\mu (A_\nu e^\nu)$<br>
+$= e_\mu (A_\nu) \cdot e^\mu \wedge e^\nu$<br>
+$= {e_\mu}^{\bar\mu} \partial_{\bar\mu} (A_\nu) \cdot e^\mu \wedge e^\nu$<br>
+$= 2 {e_{[\mu|}}^{\bar\mu} \partial_{\bar\mu} (A_{|\nu]}) \cdot e^\mu \otimes e^\nu$<br>
+$= (
+	{e_\mu}^{\bar\mu} \partial_{\bar\mu} (A_\nu)
+	- {e_\nu}^{\bar\nu} \partial_{\bar\nu} (A_\mu)
+)\cdot e^\mu \otimes e^\nu$<br>
+$F_{\mu\nu} = 
+	{e_\mu}^{\bar\mu} \partial_{\bar\mu} (A_\nu)
+	- {e_\nu}^{\bar\nu} \partial_{\bar\nu} (A_\mu)
+$<br>
 <br>
 
-$F = E_i \wedge dt + c \star (B_i \wedge dt)$<br>
-<br>
-
-(Notice in 'relativistic electromagnetism in medium' this is the original $E, B$ definition, not the $\mathcal{E}, \mathcal{B}$ definition):<br>
-Let $E^a = c F^{ab} n_b$ for the hypersurface normal $n^a$<br>
-Let $B^a = \frac{1}{2} \epsilon^{abcd} n_b F_{dc}$<br>
+From 2009 Alcubierre, Degollado, Salgado:<br>
+Let $F^{ab} = n^a E^b - n^b E^a + \epsilon^{abcd} n_c B_d$<br>
+So $E^a = F^{ab} n_b$ for the hypersurface normal $n^a$<br>
+So $B^a = -\frac{1}{2} \epsilon^{abcd} n_b F_{cd}$<br>
+So $(\star F)_{uv} = \frac{1}{2} F^{ab} \epsilon_{abuv} = \frac{1}{2} (n^a E^b - n^b E^a + \epsilon^{abcd} n_c B_d) \epsilon_{abuv}$<br>
+i.e. $(\star F)^{ab} = -n^a B^b + n^b B^a + \epsilon^{abcd} n_c E_d$<br>
+So $B^a = -(\star F)^{ab} n_b$<br>
+So $E^a = -\frac{1}{2} \epsilon^{abcd} n_b (\star F)_{cd}$<br>
 <br>
 
 From the 'relativistic electromagnetism metric in medium' worksheet:<br>
@@ -72,6 +99,158 @@ So $\epsilon_{0ijk} = \alpha \epsilon_{ijk}$<br>
 And ${\epsilon^0}_{ijk} = g^{0a} \epsilon_{aijk} = g^{00} \epsilon_{0ijk} + g^{0\Sigma} \epsilon_{\Sigma ijk}$, but since $ijk \in \Sigma$ we know $\epsilon_{\Sigma ijk} = 0$<br>
 So ${\epsilon^0}_{ijk} = -\frac{1}{\alpha^2} \epsilon_{0ijk} = -\frac{1}{\alpha} \epsilon_{ijk} = -\frac{1}{\alpha} \sqrt\gamma \bar\epsilon_{0ijk} = -\frac{1}{\alpha} \sqrt\gamma \bar\epsilon_{ijk}$<br>
 So ${\epsilon^{0i}}_{jk} = -\frac{1}{\alpha^2} \gamma^{im} \epsilon_{0mjk}$<br>
+<br>
+
+NOTICE if we are going to decompose things in ADM formalism, then we must ensure only a coordinate basis, as per the conditions of using ADM formalism.<br>
+<br>
+
+Write the Maxwell laws in macro form, using D instead of F.<br>
+$D_{ab} = \frac{1}{2} {Z_{ab}}^{cd} F_{cd}$<br>
+...where Z is antisymmetric between a and b, and between c and d, and symmatric between ab and cd, just like the Riemann tensor ... hmm ...<br>
+<br>
+
+$d^2 A = 0$<br>
+$A_{[a,bc]} = 0$ ... yes, partials, even in curved spacetime.  If you want to convert them to covariant derivatives then you have to add an extra $A_b {R^b}_d$ term.<br>
+$F_{[ab,c]} = 0$<br>
+$\star d^2 A = 0$<br>
+$\epsilon^{abcd} F_{[ab,c]} = 0$<br>
+$\epsilon^{abcd} F_{ab,c} = 0$<br>
+<br>
+
+In vacuum:<br>
+$\star d \star d A = J$<br>
+$\epsilon^{abcd} (\star F)_{[ab,c]} = J^a$<br>
+macroscopic:<br>
+$\star d \star Z(d A) = J$<br>
+$\epsilon^{abcd} (\star D)_{[ab,c]} = J^a$<br>
+$\epsilon^{abcd} (\frac{1}{2} D_{uv} \epsilon^{uvab})_{[ab,c]} = J^a$<br>
+<br>
+
+Formulate them as a first-order system wrt D and B and constraints wrt H and E.<br>
+For $\star d^2 A = 0$:<br>
+$\epsilon^{abcd} (n_a E_b - n_b E_a + \epsilon_{abuv} n^u B^v)_{,c} = 0$<br>
+$\epsilon^{abcd} (
+	n_{a,c} E_b 
+	+ n_a E_{b,c}
+	- n_{b,c} E_a 
+	- n_b E_{a,c}
+	+ (\sqrt{|g|})_{,c} \bar\epsilon_{abuv} n^u B^v
+	+ \epsilon_{abuv} {n^u}_{,c} B^v
+	+ \epsilon_{abuv} n^u {B^v}_{,c}
+) = 0$<br>
+$\epsilon^{abcd} (
+	n_{a,c} E_b 
+	+ n_a E_{b,c}
+	- n_{b,c} E_a 
+	- n_b E_{a,c}
+)
++ \epsilon^{abcd} \epsilon_{abuv} (
+	\frac{1}{\sqrt{|g|}} (\sqrt{|g|})_{,c} n^u B^v
+	+ {n^u}_{,c} B^v
+	+ n^u {B^v}_{,c}
+) = 0$<br>
+$\epsilon^{abcd} (
+	n_{a,c} E_b 
+	+ n_a E_{b,c}
+	- n_{b,c} E_a 
+	- n_b E_{a,c}
+)
+- 2 (\delta^c_u \delta^d_v - \delta^c_v \delta^d_u) (
+	{n^u}_{,c} B^v
+	+ n^u {B^v}_{,c}
+	+ \frac{1}{\sqrt{|g|}} (\sqrt{|g|})_{,c} n^u B^v
+) = 0$<br>
+$2 \epsilon^{abcd} (
+	n_{a,c} E_b 
+	+ n_a E_{b,c}
+)
+- 2 (
+	{n^c}_{,c} B^d
+	+ n^c {B^d}_{,c}
+	- {n^d}_{,c} B^c
+	- n^d {B^c}_{,c}
+	+ \frac{1}{\sqrt{|g|}} (\sqrt{|g|})_{,c} (
+		n^c B^d - n^d B^c
+	)	
+)  = 0$<br>
+<br>
+
+First look at normal component:<br>
+
+$n_d (
+	\epsilon^{abcd} (
+		n_{a,c} E_b 
+		+ n_a E_{b,c}
+	)
+	- {n^c}_{,c} B^d
+	- n^c {B^d}_{,c}
+	+ n^d {B^c}_{,c}
+	+ {n^d}_{,c} B^c
+	- \frac{1}{\sqrt{|g|}} (\sqrt{|g|})_{,c} (
+		n^c B^d - n^d B^c
+	)
+) = 0$<br>
+
+$\epsilon^{abcd} n_{a,c} E_b n_d 
+- {B^c}_{,c}
+- n_d {B^d}_{,c} n^c
++ n_d {n^d}_{,c} B^c
+- \frac{1}{\sqrt{|g|}} (\sqrt{|g|})_{,c} B^c
+= 0$<br>
+
+$n_{a,c} \epsilon^{abcd} E_b n_d 
+- {B^c}_{,c} + {}^4 {\Gamma^d}_{cd} B^c
+- n_d {B^d}_{,c} n^c
++ n_d {n^d}_{,c} B^c
+= 0$<br>
+
+Using $B^d n_d = 0$ therefore ${B^d}_{,c} n_d = -B^d n_{d,c}$<br>
+Using $n^d n_d = -1$ therefore ${n^d}_{,c} n_d = -n^d n_{d,c}$<br>
+
+$n_{a,b} (-n^a B^b + n^b B^a + \epsilon^{abcd} n_c E_d)
+- {B^c}_{,c} - {}^4 {\Gamma^d}_{cd} B^c
+= 0$<br>
+
+$n_{a,b} (\star F)^{ab}
+- {B^c}_{,c} - {}^4 {\Gamma^d}_{cd} B^c
+= 0$<br>
+
+Using $n_a (\star F)^{ab} = -B^b$, so $-{B^b}_{,b} = (n_a (\star F)^{ab})_{,b} = n_{a,b} (\star F)^{ab} + n_a {(\star F)^{ab}}_{,b}$<br>
+so $n_{a,b} (\star F)^{ab} = -{B^b}_{,b} - n_a {(\star F)^{ab}}_{,b}$<br>
+
+$- {B^c}_{,c} - n_a {(\star F)^{ab}}_{,b}
+- {B^c}_{,c} - {}^4 {\Gamma^d}_{cd} B^c
+= 0$<br>
+
+$-n_a {(\star F)^{ab}}_{,b}
+- 2 {B^c}_{,c}
+- {}^4 {\Gamma^d}_{cd} B^c
+= 0$<br>
+
+BLEH.
+<br>
+
+I'm just using the 2009 paper.<Br>
+$\nabla^\perp_a D^a = \frac{1}{\sqrt\gamma} (\sqrt\gamma D^i)_{,i} = \rho = J^a n_a$<br>
+$\nabla^\perp_a B^a = \frac{1}{\sqrt\gamma} (\sqrt\gamma B^i)_{,i} = 0$<br>
+${D^i}_{,t} - \mathcal{L}_\beta D^i = (\nabla^\perp \times \alpha B)^i + \alpha K D^i - \alpha (\perp J)^i$<br>
+${B^i}_{,t} - \mathcal{L}_\beta B^i = -(\nabla^\perp \times \alpha D)^i + \alpha K B^i$<br>
+<br>
+
+$(\sqrt\gamma D^i)_{,i} = \sqrt\gamma J^a n_a$<br>
+<br>
+$(\sqrt\gamma B^i)_{,i} = 0$<br>
+<br>
+
+Then find eigenvectors/eigenvalues.<br>
+<br>
+
+
+$F = dA = (\partial_\mu A_\nu - \partial_\nu A_\mu) \cdot dx^\mu \otimes dx^\nu$<br>
+$F_{\mu\nu} = 2 \partial_{[\mu} A_{\nu]}$<br>
+<br>
+
+for $D_{ab} = {T_{ab}}^{cd} F_{cd}$<br>
 <br>
 
 $F_{uv} = \downarrow u(i) \overset{\rightarrow v(j)}{ \left[\begin{matrix}
@@ -201,6 +380,12 @@ and $E = \epsilon^{-1}(D)$ is constrained by $\nabla \cdot D = \rho_{free}$ beca
 and ${F^a}_b = g^{ac} F_{cb}$ for $g^{ab}$ the inverse of the metric tensor of the manifold that this takes place on.<br>
 The metric itself $g_{ab}$ is derived from the mass (of the other particles?), $D^2 \omega $'s contracted trace reversal $= R_{uv} = 8 \pi T_{uv}$<br>
 <br>
+
+
+<br>${(\star F)^{\alpha\beta}}_{;\beta} - A_\beta {R^\beta}_\alpha = 0$<br>
+<br>${F^{\alpha\beta}}_{;\beta} - A_\beta {R^\beta}_\alpha = \mu_0 J^\alpha$<br>
+<br>
+
 
 <h3>Maxwell Equations of charge</h3>
 

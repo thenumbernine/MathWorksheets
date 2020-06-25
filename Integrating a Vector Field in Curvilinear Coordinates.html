@@ -547,7 +547,7 @@ If you want to go from non-coordinate metric determinant gradient to coordinate 
 $\nabla_i F^i = e_i (F^i) + F^i \frac{1}{J} e_i (J) + F^k e_i({e_k}^\bar{k}) {e^i}_\bar{k}$<br>
 $\nabla_i F^i = \frac{1}{J} e_i (J F^i) + F^k e_i({e_k}^\bar{k}) {e^i}_\bar{k}$<br>
 you can keep going further and stumble upon<br>
-$\nabla_i F^i = \frac{1}{J} \partial_\bar{i} (J {e_i}^\bar{i} F^\bar{i})$<br>
+$\nabla_i F^i = \frac{1}{J} \partial_\bar{i} (J {e_i}^\bar{i} F^i)$<br>
 which is just the coordinate basis representation, but with tensor components transformed from non-coordinate to coordinate basis.<br>
 <br>
 So we have some risks and rewards in choosing our basis.  If we choose a coordinate basis then we get the volume element easily, and no commutation arises.  If we choose a non-coordinate then we have to deal with commutation, but an orthonormal basis means the metric determinant gradient is zero.<br>
@@ -911,6 +911,8 @@ $
 \right)$<br>
 <br>
 
+Here I use that $x^k_R$ and $x^k_L$ shorthand like I mentioned in the parallel propagator worksheet - sometimes it means a scalar value, sometimes it means the point with the k'th term replaced with that value.<br>
+<br>
 Once the fundamental theorem of calculus is applied, and since the flux is constant throughout the surface (treat those $x^k_L$ and $x^k_R$'s as if we are only replacing the k'th term of a coordinate otherwise filled with $x_C$), we now have a definite value within the weighted flux at the left and right sides, and we can factor this out of the integral over the other components:<br>
 <br>
 
@@ -1031,7 +1033,8 @@ $
 <br>
 -->
 
-Here I use that $x^k_R$ and $x^k_L$ shorthand like I mentioned in the parallel propagator worksheet - sometimes it means a scalar value, sometimes it means the point with the k'th term replaced with that value.<br>
+
+
 <br>
 <br>
 

@@ -1,0 +1,1009 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<title>Euler Fluid Equation - Curved Geometry - Contravariant</title>
+	</head>
+	<body>
+
+Divergence Theorem:<br>
+<br>
+
+$\int_V \nabla \cdot F dV = \int_S n \cdot F dS$<br>
+<br>
+
+Stokes Theorem:<br>
+<br>
+
+$\int_V (\nabla \times F) dV = \int_S n \times F dS$<br>
+<br>
+Ok so what is n?  What is its magnitude?  What norm is used to measure it?<br>
+<br>
+
+<hr>
+<br>
+
+Example:<br>
+Spherical coordinates<br>
+
+$\left[\begin{matrix} 
+	x \\ y \\ z
+\end{matrix}\right]
+= \left[\begin{matrix}
+	r cos(\phi) sin(\theta) \\
+	r sin(\phi) sin(\theta) \\
+	r cos(\theta)
+\end{matrix}\right]$<br>
+<br>
+
+Inverse:<br>
+Let $r_{xy} = \sqrt{x^2 + y^2}$<br>
+$r = \sqrt{x^2 + y^2 + z^2} = \sqrt{(r_{xy})^2 + z^2}$<br>
+$\theta = tan^{-1}(\frac{r_{xy}}{z})$<br>
+$\phi = tan^{-1}(\frac{y}{x})$<br>
+$cos(\phi) = \frac{x}{r_{xy}}$<br>
+$sin(\phi) = \frac{y}{r_{xy}}$<br>
+$cos(\theta) = \frac{z}{r}$<br>
+$sin(\theta) = \frac{r_{xy}}{r}$<br>
+<br>
+$\partial_x r = \frac{x}{r}$<br>
+$\partial_y r = \frac{y}{r}$<br>
+$\partial_z r = \frac{z}{r}$<br>
+$\partial_x r_{xy} = \frac{x}{r_{xy}}$<br>
+$\partial_y r_{xy} = \frac{y}{r_{xy}}$<br>
+$\partial_z r_{xy} = 0$<br>
+
+$e_r = \partial_r = 
+\left[\begin{matrix}
+	e_x & e_y & e_z
+\end{matrix}\right]
+\left[\begin{matrix}
+	cos(\phi) sin(\theta) \\
+	sin(\phi) sin(\theta) \\
+	cos(\theta)
+\end{matrix}\right]$<br>
+<br>
+
+$e_\theta = \partial_\theta = 
+\left[\begin{matrix}
+	e_x & e_y & e_z
+\end{matrix}\right]
+\left[\begin{matrix}
+	r cos(\phi) cos(\theta) \\
+	r sin(\phi) cos(\theta) \\
+	-r sin(\theta)
+\end{matrix}\right]$<br>
+<br>
+
+$e_\phi = \partial_\phi =
+\left[\begin{matrix}
+	e_x & e_y & e_z
+\end{matrix}\right]
+\left[\begin{matrix}
+	-r sin(\theta) sin(\phi) \\
+	r sin(\theta) cos(\phi) \\
+	0
+\end{matrix}\right]$<br>
+<br>
+
+$e_{\hat{r}} = e_r = 
+\left[\begin{matrix}
+	e_x & e_y & e_z
+\end{matrix}\right]
+\left[\begin{matrix}
+	cos(\phi) sin(\theta) \\
+	sin(\phi) sin(\theta) \\
+	cos(\theta)
+\end{matrix}\right]$<br>
+<br>
+
+$e_{\hat{\theta}} = \frac{1}{r} e_\theta =
+\left[\begin{matrix}
+	e_x & e_y & e_z
+\end{matrix}\right]
+\left[\begin{matrix}
+	cos(\phi) cos(\theta) \\
+	sin(\phi) cos(\theta) \\
+	-sin(\theta)
+\end{matrix}\right]$<br>
+<br>
+
+$e_{\hat{\phi}} = \frac{1}{r sin(\theta)} e_\phi =
+\left[\begin{matrix}
+	e_x & e_y & e_z
+\end{matrix}\right]
+\left[\begin{matrix}
+	-sin(\phi) \\
+	cos(\phi) \\
+	0
+\end{matrix}\right]$<br>
+<br>
+
+$\left[\begin{matrix}
+	e_{\hat{r}} \\ e_{\hat{\theta}} \\ e_{\hat{\phi}}
+\end{matrix}\right]
+= \left[\begin{matrix}
+	cos(\phi) sin(\theta) &
+	sin(\phi) sin(\theta) &
+	cos(\theta) \\
+
+	cos(\phi) cos(\theta) &
+	sin(\phi) cos(\theta) &
+	-sin(\theta) \\
+
+	-sin(\phi) &
+	cos(\phi) &
+	0
+\end{matrix}\right]
+\left[\begin{matrix}
+	e_x \\ e_y \\ e_z
+\end{matrix}\right]$<br>
+<br>
+
+$\left[\begin{matrix}
+	e_x \\ e_y \\ e_z
+\end{matrix}\right]
+= \left[\begin{matrix}
+	cos(\phi) sin(\theta) &
+	sin(\phi) sin(\theta) &
+	cos(\theta) \\
+
+	cos(\phi) cos(\theta) &
+	sin(\phi) cos(\theta) &
+	-sin(\theta) \\
+
+	-sin(\phi) &
+	cos(\phi) &
+	0
+\end{matrix}\right]^{-1}
+\left[\begin{matrix}
+	e_{\hat{r}} \\ e_{\hat{\theta}} \\ e_{\hat{\phi}}
+\end{matrix}\right]
+
+= \left[\begin{matrix}
+	cos(φ) sin(θ) &
+	cos(φ) cos(θ) &
+	-sin(φ) \\
+
+	sin(φ) sin(θ) &
+	sin(φ) cos(θ) &
+	cos(φ) \\
+
+	cos(θ) &
+	-sin(θ) &
+	0
+\end{matrix}\right]
+\left[\begin{matrix}
+	e_{\hat{r}} \\ e_{\hat{\theta}} \\ e_{\hat{\phi}}
+\end{matrix}\right]
+$<br>
+<br>
+
+$e_x = 
+\left[\begin{matrix}
+	e_{\hat{r}} & e_{\hat{\theta}} & e_{\hat{\phi}}
+\end{matrix}\right]
+\left[\begin{matrix}
+	cos(φ) sin(θ) \\
+	cos(φ) cos(θ) \\
+	-sin(φ)
+\end{matrix}\right]$<br>
+<br>
+
+$e_y = \left[\begin{matrix}
+	e_{\hat{r}} & e_{\hat{\theta}} & e_{\hat{\phi}}
+\end{matrix}\right]
+\left[\begin{matrix}
+	sin(φ) sin(θ) \\
+	sin(φ) cos(θ) \\
+	cos(φ)
+\end{matrix}\right]$<br>
+<br>
+
+$e_z = \left[\begin{matrix}
+	e_{\hat{r}} & e_{\hat{\theta}} & e_{\hat{\phi}}
+\end{matrix}\right]
+\left[\begin{matrix}
+	cos(θ) \\
+	-sin(θ) \\
+	0
+\end{matrix}\right]$<br>
+<br>
+
+Integrating the divergence across the region $\{ r, \theta, \phi \} \in [\frac{1}{2}, 1] \times [0, \frac{\pi}{2}] \times [0, \frac{\pi}{2}]$.<br>
+<br>
+
+Where $F = e^{\hat{r}} = \hat{g}^{\hat{r}\hat{r}} e_{\hat{r}} = 1 \cdot \partial_r$<br>
+<br>
+
+$\int_V \nabla \cdot F dV$<br>
+<br>
+
+$\int_{r=\frac{1}{2}}^{r=1}
+	\int_{\theta=0}^{\theta=\frac{\pi}{2}}
+	\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+	\nabla \cdot F
+	\cdot V
+	d\phi
+	d\theta
+	dr
+$<br>
+<br>
+
+$\int_{r=\frac{1}{2}}^{r=1}
+	\int_{\theta=0}^{\theta=\frac{\pi}{2}}
+	\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+	(\frac{2}{r} + \partial_r 1)
+	\cdot r^2 sin(\theta)
+	d\phi
+	d\theta
+	dr
+$<br>
+<br>
+
+$\int_{r=\frac{1}{2}}^{r=1}
+	\int_{\theta=0}^{\theta=\frac{\pi}{2}}
+	\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+	2 r sin(\theta)
+	d\phi
+	d\theta
+	dr
+$<br>
+<br>
+
+$2
+\int_{r=\frac{1}{2}}^{r=1} r dr 
+\int_{\theta=0}^{\theta=\frac{\pi}{2}} sin(\theta) d\theta
+\int_{\phi=0}^{\phi=\frac{\pi}{2}} d\phi
+$<br>
+<br>
+
+$2
+(\frac{1}{2} r^2 |_{r=\frac{1}{2}}^{r=1}
+(cos(\theta) |_{\theta=0}^{\theta=\frac{\pi}{2}}
+1 |_{\phi=0}^{\phi=\frac{\pi}{2}}
+$<br>
+<br>
+
+$2 (\frac{1}{2} - \frac{1}{8}) (cos(\frac{\pi}{2}) - cos(0)) \frac{\pi}{2}$<br>
+<br>
+
+$-\frac{3 \pi}{8}$<br>
+<br>
+
+vs<br>
+<br>
+
+$\int_S n \cdot F dS$<br>
+<br>
+
+$
+\int_{\theta=0}^{\theta=\frac{\pi}{2}}
+\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+	e_{\hat{r}} \cdot F
+r^2 sin(\theta)
+d\phi
+d\theta
+|_{r=1}
+$<br>$
++ \int_{\theta=0}^{\theta=\frac{\pi}{2}}
+\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+	-e_{\hat{r}} \cdot F
+r^2 sin(\theta)
+d\phi
+d\theta
+|_{r=\frac{1}{2}}
+$<br>$
++ \int_{r=\frac{1}{2}}^{r=1}
+\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+	e_{\hat{\theta}} \cdot F
+r^2 sin(\theta)
+dr
+d\theta
+|_{\theta=\frac{\pi}{2}}
+$<br>$
++ \int_{r=\frac{1}{2}}^{r=1}
+\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+	-e_{\hat{\theta}} \cdot F
+r^2 sin(\theta)
+dr
+d\theta
+|_{\theta=0}
+$<br>$
++ \int_{r=\frac{1}{2}}^{r=1}
+\int_{\theta=\frac{\pi}{2}}^{\theta=0}
+	e_{\hat{\phi}} \cdot F
+r^2 sin(\theta)
+dr
+d\theta
+|_{\phi=\frac{\pi}{2}}
+$<br>$
++ \int_{r=\frac{1}{2}}^{r=1}
+\int_{\theta=\frac{\pi}{2}}^{\theta=0}
+	-e_{\hat{\phi}} \cdot F
+r^2 sin(\theta)
+dr
+d\theta
+|_{\phi=0}
+$<br>
+<br>
+
+$
+\int_{\theta=0}^{\theta=\frac{\pi}{2}}
+\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+e_{\hat{r}} \cdot e^{\hat{r}} r^2 sin(\theta)
+d\phi
+d\theta
+|_{r=1}
+
++ \int_{\theta=0}^{\theta=\frac{\pi}{2}}
+\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+-e_{\hat{r}} \cdot e^{\hat{r}} r^2 sin(\theta)
+d\phi
+d\theta
+|_{r=\frac{1}{2}}
+$<br>
+<br>
+
+$
+\int_{\theta=0}^{\theta=\frac{\pi}{2}}
+\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+sin(\theta)
+d\phi
+d\theta
+
+- \frac{1}{4}
+\int_{\theta=0}^{\theta=\frac{\pi}{2}}
+\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+sin(\theta)
+d\phi
+d\theta
+$<br>
+<br>
+
+$\frac{3}{4}
+\int_{\theta=0}^{\theta=\frac{\pi}{2}}
+sin(\theta)
+d\theta
+\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+d\phi
+$<br>
+<br>
+
+$\frac{3}{4}
+cos(\theta)|_{\theta=0}^{\theta=\frac{\pi}{2}}
+1|_{\phi=0}^{\phi=\frac{\pi}{2}}
+$<br>
+<br>
+
+$\frac{3}{4} \cdot -1 \cdot \frac{\pi}{2}$<br>
+<br>
+
+$\frac{-3 \pi}{8}$<br>
+<br>
+
+CHECK. That worked.  That was an easy one, since $e_{\hat{r}} = \partial_r$.  Let's try a non-coordinate basis now:<br>
+<br>
+
+Same but with $F = e^{\hat{\phi}} = \hat{g}^{\hat{\phi}\hat{\phi}} e_{\hat{\phi}} = 1 \cdot \frac{1}{r sin(\theta)} \partial_\phi$.<br>
+<br>
+
+$\int_V \nabla \cdot F dV$<br>
+<br>
+
+$= \int_{r=\frac{1}{2}}^{r=1}
+	\int_{\theta=0}^{\theta=\frac{\pi}{2}}
+	\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+	\nabla \cdot e^{\hat{\phi}}
+	\cdot r^2 sin(\theta)
+	d\phi
+	d\theta
+	dr
+$<br>
+<br>
+
+$= \int_{r=\frac{1}{2}}^{r=1}
+	\int_{\theta=0}^{\theta=\frac{\pi}{2}}
+	\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+	\frac{1}{r sin(\theta)} \partial_\phi 1
+	\cdot r^2 sin(\theta)
+	d\phi
+	d\theta
+	dr
+$<br>
+<br>
+
+$= \int_{r=\frac{1}{2}}^{r=1}
+	\int_{\theta=0}^{\theta=\frac{\pi}{2}}
+	\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+	0
+	d\phi
+	d\theta
+	dr
+$<br>
+<br>
+
+$= 0$<br>
+<br>
+
+$\int_S n \cdot F dS$<br>
+<br>
+
+$= \int_{r=\frac{1}{2}}^{r=1}
+\int_{\theta=\frac{\pi}{2}}^{\theta=0}
+	e_{\hat{\phi}} \cdot e^{\hat{\phi}}
+r^2 sin(\theta)
+dr
+d\theta
+|_{\phi=\frac{\pi}{2}}
+$<br>$
++ \int_{r=\frac{1}{2}}^{r=1}
+\int_{\theta=\frac{\pi}{2}}^{\theta=0}
+	-e_{\hat{\phi}} \cdot e^{\hat{\phi}}
+r^2 sin(\theta)
+dr
+d\theta
+|_{\phi=0}
+$<br>
+<br>
+
+$= (1 - 1)\int_{r=\frac{1}{2}}^{r=1}
+\int_{\theta=\frac{\pi}{2}}^{\theta=0}
+	e_{\hat{\phi}} \cdot e^{\hat{\phi}}
+r^2 sin(\theta)
+dr
+d\theta
+$<br>
+<br>
+
+$= 0$<br>
+<br>
+
+Still good, but zero is easy to duplicate, especially since the integral is axisymmetric, so there is an equal quantity going in as coming out.<br>
+<br>
+
+Let's try $F = e^{\hat{\theta}}$.
+Then you have a net amount in from the $\theta+$ surface and nothing coming out of the $\theta-$ surface (which is a single point at the $z+$ axis.<br>
+So $F = e^{\hat{\theta}} = F_{\hat{\theta}} e^{\hat{\theta}}$ for $F_{\hat{\theta}} = F^{\hat{\theta}} = 1$.<br>
+And $F = F^\theta e_\theta = F_\theta e^\theta$ for $F^\theta = \frac{1}{r}$ and $F_\theta = r$.<br>
+<br>
+
+$\int_V \nabla \cdot F dV$<br>
+<br>
+
+$= \int_{r=\frac{1}{2}}^{r=1}
+	\int_{\theta=0}^{\theta=\frac{\pi}{2}}
+	\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+	\nabla \cdot e^{\hat{\theta}}
+	\cdot r^2 sin(\theta)
+	d\phi
+	d\theta
+	dr
+$<br>
+<br>
+
+$= \int_{r=\frac{1}{2}}^{r=1}
+	\int_{\theta=0}^{\theta=\frac{\pi}{2}}
+	\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+	(\frac{cos(\theta)}{r sin(\theta)} + \frac{1}{r} \partial_\theta 1)
+	\cdot r^2 sin(\theta)
+	d\phi
+	d\theta
+	dr
+$<br>
+<br>
+
+$= \int_{r=\frac{1}{2}}^{r=1} r dr
+	\int_{\theta=0}^{\theta=\frac{\pi}{2}} cos(\theta) d\theta
+	\int_{\phi=0}^{\phi=\frac{\pi}{2}} d\phi
+$<br>
+<br>
+
+$= \frac{3}{4}
+	\cdot 1
+	\cdot \frac{\pi}{2}
+$<br>
+<br>
+
+$= \frac{3\pi}{8}$<br>
+<br>
+
+$\int_S n \cdot F dS$<br>
+<br>
+
+$= \int_{r=\frac{1}{2}}^{r=1}
+\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+	e_{\hat{\theta}} \cdot e^{\hat{\theta}}
+r^2 sin(\theta)
+dr
+d\phi
+|_{\theta=\frac{\pi}{2}}
+$<br>$
++ \int_{r=\frac{1}{2}}^{r=1}
+\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+	-e_{\hat{\theta}} \cdot e^{\hat{\theta}}
+r^2 sin(\theta)
+dr
+d\phi
+|_{\theta=0}
+$<br>
+<br>
+
+$= \int_{r=\frac{1}{2}}^{r=1}
+\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+r^2 sin(\theta)
+dr
+d\phi
+|_{\theta=\frac{\pi}{2}}
+$<br>$
+- \int_{r=\frac{1}{2}}^{r=1}
+\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+r^2 sin(\theta)
+dr
+d\phi
+|_{\theta=0}
+$<br>
+<br>
+
+$= \int_{r=\frac{1}{2}}^{r=1}
+\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+r^2 sin(\frac{\pi}{2})
+dr
+d\phi
+
+- \int_{r=\frac{1}{2}}^{r=1}
+\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+r^2 sin(0)
+dr
+d\phi
+$<br>
+<br>
+
+$= \int_{r=\frac{1}{2}}^{r=1} r^2 dr
+\int_{\phi=0}^{\phi=\frac{\pi}{2}} d\phi
+$<br>
+<br>
+
+$= (\frac{1}{3} r^3 |_{r=\frac{1}{2}}^{r=1}
+\cdot 1|_{\phi=0}^{\phi=\frac{\pi}{2}} 
+$<br>
+<br>
+
+$= (\frac{1}{3} - \frac{1}{24}) \frac{\pi}{2}$<br>
+<br>
+
+$= \frac{7 \pi}{48}$<br>
+<br>
+
+Alright, finally, something is different.<br>
+<br>
+
+Let's try performing the same surface integral but with a coordinate normal instead of a non-coordinate normal.<br>
+<br>
+
+$\int_S n \cdot F dS$<br>
+<br>
+
+$= \int_{r=\frac{1}{2}}^{r=1}
+\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+	(e_\theta \cdot e^{\hat{\theta}} = r e_{\hat{\theta}} \cdot e^{\hat{\theta}})
+r^2 sin(\theta)
+dr
+d\phi
+|_{\theta=\frac{\pi}{2}}
+$<br>$
++ \int_{r=\frac{1}{2}}^{r=1}
+\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+	-(e_\theta \cdot e^{\hat{\theta}} = r e_{\hat{\theta}} \cdot e^{\hat{\theta}})
+r^2 sin(\theta)
+dr
+d\phi
+|_{\theta=0}
+$<br>
+<br>
+
+$= \int_{r=\frac{1}{2}}^{r=1}
+\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+r^3 sin(\theta)
+dr
+d\phi
+|_{\theta=\frac{\pi}{2}}
+$<br>$
+- \int_{r=\frac{1}{2}}^{r=1}
+\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+r^3 sin(\theta)
+dr
+d\phi
+|_{\theta=0}
+$<br>
+<br>
+
+$= \int_{r=\frac{1}{2}}^{r=1}
+\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+r^3 
+dr
+d\phi
+$<br>
+<br>
+
+$= \int_{r=\frac{1}{2}}^{r=1} r^3 dr
+\int_{\phi=0}^{\phi=\frac{\pi}{2}} d\phi $<br>
+<br>
+
+$= (\frac{1}{4} r^4|_{r=\frac{1}{2}}^{r=1} 
+\cdot 1|_{\phi=0}^{\phi=\frac{\pi}{2}} d\phi $<br>
+<br>
+
+$= \frac{15}{16} \cdot \frac{\pi}{2} $<br>
+<br>
+
+$= \frac{15\pi}{32}$<br>
+<br>
+
+Still not good.  Try again but ... <br>
+<br>
+
+$\int_S n \cdot F dS$<br>
+<br>
+
+$= \int_{r=\frac{1}{2}}^{r=1}
+\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+	(e_\theta \cdot e^{\hat{\theta}} = \frac{1}{r})
+r^2 sin(\theta)
+dr
+d\phi
+|_{\theta=\frac{\pi}{2}}
+$<br>$
++ \int_{r=\frac{1}{2}}^{r=1}
+\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+	-(e_\theta \cdot e^{\hat{\theta}} = \frac{1}{r})
+r^2 sin(\theta)
+dr
+d\phi
+|_{\theta=0}
+$<br>
+<br>
+
+...but what kind of inner product is this?<br>
+(maybe I'm forgetting that $e_{\hat{\theta}} = \frac{1}{r} e_\theta$ means $F^{\hat{\theta}} = r F^\theta$ such that $e_{\hat{\theta}} F^{\hat{\theta}} = e_\theta F^\theta$.<br>
+<br>
+
+$= \int_{r=\frac{1}{2}}^{r=1}
+\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+	(e_\theta \cdot e_{\hat{\theta}} g^{\theta\theta} = r \frac{1}{r^2}?)
+r^2 sin(\theta)
+dr
+d\phi
+|_{\theta=\frac{\pi}{2}}
+$<br>$
++ \int_{r=\frac{1}{2}}^{r=1}
+\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+	-(e_\theta \cdot e_{\hat{\theta}} g^{\theta\theta} = r \frac{1}{r^2}?)
+r^2 sin(\theta)
+dr
+d\phi
+|_{\theta=0}
+$<br>
+<br>
+
+Ohh that's right, the normal has to be computed from the Levi-Civita permutation tensor, which is weighted by the (inverse for contravariant) metric determinant.<br>
+<br>
+
+$\int_S n \cdot F dS$<br>
+<br>
+
+$= \int_S F^i \epsilon_{ijk} dS^{jk}$<br>
+<br>
+
+$= \int_{r \times \phi} F^\theta \epsilon_{\theta \phi r} d\phi dr$<br>
+<br>
+
+$= \int_{r \times \phi} F^\theta \bar{\epsilon}_{\theta \phi r} r^2 sin(\theta) d\phi dr$<br>
+<br>
+
+$= \int_{r \times \phi} \frac{1}{r} \cdot r^2 sin(\theta) d\phi dr$<br>
+<br>
+
+$= \int_{r \times \phi} r sin(\theta) d\phi dr$<br>
+<br>
+
+...and now things look correct.<br>
+Mind you, I had to exchange everything into coordinate components.  If I was to switch to non-coordinate components, then what would I use for the volume form?<br>
+Well, the volume form is $d\phi \wedge dr$, so it should have a magnitude of $(|e_r| = 1) \cdot (|e_\phi| = r sin(\theta)$.<br>
+So another way to write this would be:<br>
+<br>
+
+$= \int_{r \times \phi} F^{\hat{\theta}} \epsilon_{\hat{\theta} \hat{\phi} \hat{r}} e^{\hat{\phi}} \wedge e^{\hat{r}}$<br>
+<br>
+
+$= \int_{r \times \phi} (F^{\hat{\theta}} = 1) \cdot (\epsilon_{\hat{\theta} \hat{\phi} \hat{r}} = {\bar{\epsilon}}_{\hat{\theta} \hat{\phi} \hat{r}} = 1) \cdot (r sin(\theta) d\phi) \wedge (dr)$<br>
+<br>
+
+...and once again, things look correct.<br>
+On to calculating the correct result:<br>
+<br>
+
+$= \int_{r=\frac{1}{2}}^{r=1}
+\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+r sin(\theta)
+dr
+d\phi
+|_{\theta=\frac{\pi}{2}}
+- \int_{r=\frac{1}{2}}^{r=1}
+\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+r sin(\theta)
+dr
+d\phi
+|_{\theta=0}
+$<br>
+<br>
+
+$= \int_{r=\frac{1}{2}}^{r=1} r dr
+\int_{\phi=0}^{\phi=\frac{\pi}{2}} d\phi
+$<br>
+<br>
+
+$= (\frac{1}{2} r^2|_{r=\frac{1}{2}}^{r=1}
+\int_{\phi=0}^{\phi=\frac{\pi}{2}} d\phi
+$<br>
+<br>
+
+$= \frac{3}{4} \cdot \frac{\pi}{2}$<br>
+<br>
+
+$= \frac{3 \pi}{8}$<br>
+<br>
+
+I'm going to verify the divergence with Cartesian components, since the equivalent Cartesian component surface integral is not matching this...<br>
+<br>
+
+$\int_V \nabla \cdot F dV$<br>
+<br>
+
+$= \int_{r=\frac{1}{2}}^{r=1}
+	\int_{\theta=0}^{\theta=\frac{\pi}{2}}
+	\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+	\nabla \cdot e^{\hat{\theta}}
+	\cdot r^2 sin(\theta)
+	d\phi
+	d\theta
+	dr
+$<br>
+<br>
+
+$= \int_{r=\frac{1}{2}}^{r=1}
+	\int_{\theta=0}^{\theta=\frac{\pi}{2}}
+	\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+	\left[\begin{matrix}
+		\partial_x &
+		\partial_y &
+		\partial_z
+	\end{matrix}\right]
+	\cdot \left(
+		\left[\begin{matrix}
+			cos(\phi) cos(\theta) \\
+			sin(\phi) cos(\theta) \\
+			-sin(\theta)
+		\end{matrix}\right]
+		=
+		\left[\begin{matrix}
+			\frac{x}{r_{xy}} \frac{z}{r} \\
+			\frac{y}{r_{xy}} \frac{z}{r} \\
+			-\frac{r_{xy}}{r}
+		\end{matrix}\right]
+	\right)
+	\cdot r^2 sin(\theta)
+	d\phi
+	d\theta
+	dr
+$<br>
+<br>
+
+$= \int_{r=\frac{1}{2}}^{r=1}
+	\int_{\theta=0}^{\theta=\frac{\pi}{2}}
+	\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+	\left[\begin{matrix}
+		\partial_x &
+		\partial_y &
+		\partial_z
+	\end{matrix}\right]
+	\cdot \left[\begin{matrix}
+		\frac{x}{r_{xy}} \frac{z}{r} \\
+		\frac{y}{r_{xy}} \frac{z}{r} \\
+		-\frac{r_{xy}}{r}
+	\end{matrix}\right]
+	\cdot r^2 sin(\theta)
+	d\phi
+	d\theta
+	dr
+$<br>
+<br>
+
+$= \int_{r=\frac{1}{2}}^{r=1}
+	\int_{\theta=0}^{\theta=\frac{\pi}{2}}
+	\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+	(	
+		\partial_x (\frac{x}{r_{xy}} \frac{z}{r}) 
+		+ \partial_y (\frac{y}{r_{xy}} \frac{z}{r})
+		- \partial_z (\frac{r_{xy}}{r})
+	)	
+	\cdot r^2 sin(\theta)
+	d\phi
+	d\theta
+	dr
+$<br>
+<br>
+
+$= \int_{r=\frac{1}{2}}^{r=1}
+	\int_{\theta=0}^{\theta=\frac{\pi}{2}}
+	\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+	(	
+		z (
+			\frac{1}{r_{xy}} \frac{1}{r}
+			- x \frac{1}{(r_{xy})^2} \frac{x}{r_{xy}} \frac{1}{r}
+			- x \frac{1}{r_{xy}} \frac{1}{r^2} \frac{x}{r}
+		) 
+		+ z (
+			\frac{1}{r_{xy}} \frac{1}{r}
+			- y \frac{1}{(r_{xy})^2} \frac{y}{r_{xy}} \frac{1}{r}
+			- y \frac{1}{r_{xy}} \frac{1}{r^2} \frac{y}{r}
+		)
+		+ r_{xy} \frac{1}{r^2} \frac{z}{r}
+	)	
+	\cdot r^2 sin(\theta)
+	d\phi
+	d\theta
+	dr
+$<br>
+<br>
+
+$= \int_{r=\frac{1}{2}}^{r=1}
+	\int_{\theta=0}^{\theta=\frac{\pi}{2}}
+	\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+	
+	(\frac{z}{r_{xy}}
+	= \frac{cos(\theta)}{sin(\theta)})
+	
+	\cdot r sin(\theta)
+	d\phi
+	d\theta
+	dr
+$<br>
+<br>
+
+$= \int_{r=\frac{1}{2}}^{r=1}
+	\int_{\theta=0}^{\theta=\frac{\pi}{2}}
+	\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+	r cos(\theta)
+	d\phi
+	d\theta
+	dr
+$<br>
+<br>
+
+$= \int_{r=\frac{1}{2}}^{r=1} r dr
+	\int_{\theta=0}^{\theta=\frac{\pi}{2}} cos(\theta) d\theta
+	\int_{\phi=0}^{\phi=\frac{\pi}{2}} d\phi
+$<br>
+<br>
+
+$= \frac{3}{4}
+	\cdot 1
+	\cdot \frac{\pi}{2}
+$<br>
+<br>
+
+$= \frac{3\pi}{8}$<br>
+<br>
+
+Sure enough, the Cartesian-component divergence integral agrees with the spherical-component divergence integral.<br>
+<br>
+
+<hr>
+<br>
+
+Oops I didn't need this:<br>
+<br>
+
+$\int_{r=\frac{1}{2}}^{r=1}
+	\int_{\theta=0}^{\theta=\frac{\pi}{2}}
+	\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+	e_{\hat{r}}
+	\cdot r^2 sin(\theta)
+	d\phi
+	d\theta
+	dr
+$<br>
+<br>
+
+$\int_{r=\frac{1}{2}}^{r=1}
+	\int_{\theta=0}^{\theta=\frac{\pi}{2}}
+	\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+	\left[\begin{matrix}
+		cos(\phi) sin(\theta) \\
+		sin(\phi) sin(\theta) \\
+		cos(\theta)
+	\end{matrix}\right]
+	\cdot r^2 sin(\theta)
+	d\phi
+	d\theta
+	dr
+$<br>
+<br>
+
+$\int_{r=\frac{1}{2}}^{r=1} r^2 dr
+\cdot
+	\left[\begin{matrix}
+		\int_{\theta=0}^{\theta=\frac{\pi}{2}}
+		sin(\theta)^2
+		d\theta
+		\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+		cos(\phi)
+		d\phi
+		\\
+		
+		\int_{\theta=0}^{\theta=\frac{\pi}{2}}
+		sin(\theta)^2
+		d\theta
+		\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+		sin(\phi)
+		d\phi
+		\\
+		
+		\int_{\theta=0}^{\theta=\frac{\pi}{2}}
+		cos(\theta) sin(\theta)
+		d\theta
+		\int_{\phi=0}^{\phi=\frac{\pi}{2}}
+		d\phi
+	\end{matrix}\right]
+$<br>
+<br>
+
+$(1^2 - (\frac{1}{2})^2)
+\cdot
+	\left[\begin{matrix}
+		(
+			\frac{1}{2} (\frac{\pi}{2} - sin(\frac{\pi}{2}) cos(\frac{\pi}{2}))
+			- 
+			\frac{1}{2} (-sin(0) cos(0))
+		)
+		(sin(\frac{\pi}{2}) - sin(0))
+		\\
+		
+		(
+			\frac{1}{2} (\frac{\pi}{2} - sin(\frac{\pi}{2}) cos(\frac{\pi}{2}))
+			- 
+			\frac{1}{2} (-sin(0) cos(0))
+		)
+		(sin(\frac{\pi}{2}) - sin(0))
+		\\
+		
+		(
+			\frac{1}{2} sin(\frac{\pi}{2})^2 - 
+			\frac{1}{2} sin(0)^2 
+		)
+		\frac{\pi}{2}
+	\end{matrix}\right]
+$<br>
+<br>
+
+$\frac{3}{4}
+\cdot
+	\left[\begin{matrix}
+		\frac{\pi}{4} \\
+		\frac{\pi}{4} \\
+		\frac{\pi}{4} 
+	\end{matrix}\right]
+$<br>
+<br>
+
+$\left[\begin{matrix}
+	\frac{3\pi}{16} \\
+	\frac{3\pi}{16} \\
+	\frac{3\pi}{16} 
+\end{matrix}\right]
+$<br>
+<br>
+	</body>
+</html>

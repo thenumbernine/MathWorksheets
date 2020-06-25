@@ -6,8 +6,116 @@
 		<script type='text/javascript' src='tryToFindMathJax.js'></script>
 	</head>
     <body>
+<br>
+From <a href="https://en.wikipedia.org/wiki/Shallow_water_equations#Conservative_form">https://en.wikipedia.org/wiki/Shallow_water_equations#Conservative_form</a><br>
+<br>
 
-Conservation Law:<br>
+System of Equations:<br>
+<br>
+
+In a coordinate basis:<br>
+<br>
+
+$\partial_t (h) + \nabla_j (h v^j) = 0$<br>
+$\partial_t (h v^i) + \nabla_j (h v^i v^j + \frac{1}{2} g h^2 g^{ij}) = 0$<br>
+<br>
+
+For an arbitrary normal, assuming $\frac{1}{|n|^2} n_k n^j = \delta^j_k$:<br>
+<br>
+
+For arbitrary (p,q) tensors:<br>
+(Notice, the math to this is going to work out very similar to the math for non-coordinate anholonomic basis finite-volume formalism:<br>
+<br>
+$\partial_t {U^{i_1 ... i_p}}_{j_1 ... j_q} + \nabla_k {F^{k i_1 ... i_p}}_{j_1 ... j_q} = {S^{i_1 ... i_p}}_{j_1 ... j_q}$<br>
+<br>
+$\partial_t {U^{i_1 ... i_p}}_{j_1 ... j_q} + \nabla_k (\delta^k_m {F^{m i_1 ... i_p}}_{j_1 ... j_q}) = {S^{i_1 ... i_p}}_{j_1 ... j_q}$<br>
+<br>
+$\partial_t {U^{i_1 ... i_p}}_{j_1 ... j_q} + \nabla_k (\frac{1}{|n|^2} n^k n_m {F^{m i_1 ... i_p}}_{j_1 ... j_q}) = {S^{i_1 ... i_p}}_{j_1 ... j_q}$<br>
+<br>
+$\partial_t {U^{i_1 ... i_p}}_{j_1 ... j_q} 
+	+ n^k \nabla_k (\frac{1}{|n|^2} n_m {F^{m i_1 ... i_p}}_{j_1 ... j_q}) 
+	+ \nabla_k n^k \cdot (\frac{1}{|n|^2} n_m {F^{m i_1 ... i_p}}_{j_1 ... j_q}) 
+	= {S^{i_1 ... i_p}}_{j_1 ... j_q}$<br>
+<br>
+$\partial_t {U^{i_1 ... i_p}}_{j_1 ... j_q} 
+	+ n^k \nabla_k (\frac{1}{|n|^2} n_m {F^{m i_1 ... i_p}}_{j_1 ... j_q}) 
+	= {S^{i_1 ... i_p}}_{j_1 ... j_q}
+	- (g^{km} \nabla_k n_m) \cdot (\frac{1}{|n|^2} n_m {F^{m i_1 ... i_p}}_{j_1 ... j_q}) 
+	$<br>
+<br>
+
+Now using $K_{ij} = \perp \nabla_i n_j$<br> 
+$ = (\delta_i^m + n_i n^m) (\delta_j^n + n_j n^n) \nabla_m n_n$<br>
+$ = \nabla_i n_j
+	+ n_j n^n \nabla_i n_n
+	+ n_i n^m \nabla_m n_j
+	+ n_i n^m n_j n^n \nabla_m n_n
+$<br>
+So $\nabla_i n_j
+= K_{ij} 
+	- n_j n^n \nabla_i n_n
+	- n_i n^m \nabla_m n_j
+	- n_i n^m n_j n^n \nabla_m n_n
+$<br> 
+And $\gamma^{ij} \nabla_i n_j = \gamma^{ij} K_{ij} = K$<br> 
+So $g^{ij} \nabla_i n_j = (\gamma^{ij} - n^i n^j) \nabla_i n_j = K - n^i n^j \nabla_i n_j$<br>
+<br>
+
+$\partial_t {U^{i_1 ... i_p}}_{j_1 ... j_q} 
+	+ n^k \nabla_k (\frac{1}{|n|^2} n_m {F^{m i_1 ... i_p}}_{j_1 ... j_q}) 
+	= {S^{i_1 ... i_p}}_{j_1 ... j_q}
+	- (K - n^m n^n \nabla_m n_n) (\frac{1}{|n|^2} n_m {F^{m i_1 ... i_p}}_{j_1 ... j_q}) 
+	$<br>
+<br>
+...for $K_{ij}$ the extrinsic curvature wrt the normal.  But aren't there some constraints that extrinsic curvature / ADM only works for a coordinate basis?
+Seems to defeat the purpse when I was trying to write the flux in terms of a non-coordinate normal vector.
+Might as well just use a specific index as the normal direction, and simplify the math incredibly.<br>
+<br>
+
+Another option is using the simplification $\nabla_k n^k = \partial_k n^k + {\Gamma^k}_{km} n^m$<br>
+$= \partial_k n^k + ({\Gamma^k}_{mk} - {c_{mk}}^k) n^m$<br>
+$= \partial_k n^k + (\frac{1}{\sqrt{|g|}} \partial_m ( \sqrt{|g|} ) - {c_{mk}}^k) n^m$<br>
+$= \frac{1}{\sqrt{|g|}} \partial_k (( \sqrt{|g|} ) n^k ) - {c_{mk}}^k n^m$<br>
+<br>
+
+Now for shallow water specifically:<br>
+<br>
+
+$\partial_t (h) 
+	+ \nabla_j (\frac{1}{|n|^2} h v^k n_k) n^j 
+	= -(\nabla_j n^j) (\frac{1}{|n|^2} h v^k n_k)$<br>
+$\partial_t (h v^i) 
+	+ \nabla_j (\frac{1}{|n|^2} h v^i v^k n_k n^j + \frac{1}{2} \frac{1}{|n|^2} g h^2 n^i) n^j 
+	= -(\nabla_j n^j) (\frac{1}{|n|^2} h v^i v^k n_k n^j + \frac{1}{2} \frac{1}{|n|^2} g h^2 n^i)$<br>
+<br>
+
+Notice how this compares with the normal definition given in the 'wave quation hyperbolic form' or 'Euler equations in contravariant form' worksheets.
+Those assume $n_k n^j = |n|^2 \delta^j_k$.  So this is similar except it assumes $|n| = 1$.  Notice that later in the flux eigensystem this constraint is no longer relaxed, so how about removing it here too?<br>
+<br>
+
+$\partial_t (h) + \nabla_j (h v^k n_k n^j) = 0$<br>
+$\partial_t (h v^i) + \nabla_j (h v^i v^k n_k n^j + \frac{1}{2} g h^2 n^i n^j) = 0$<br>
+<br>
+
+Assuming $\nabla_i n_j = 0$:<br>
+Notice, $K_{ij} = \perp \nabla_i n_j$ is the definition of extrinsic curvature.
+So once again this formulation is more strict than the 'wave equation hyperbolic form' and 'Euler fluid equation in contravariant form' worksheets.<br>
+Once thing that arbitrary manifold formulation in those two worksheets is that it only considers extrinsic curvature and normals in the direction of the time advection (courtesy of general relativity), but not extrinsic curvature in the spatial dimension as if the equations were solved on a curved surface.
+Of course, the extrinsic curvature here is spatial extrinsic curvature, and the extrinsic curvature in 'wave equation hyperbolic form' is the spatial-hypersurface extrinsic curvature.<br>
+<br>
+
+$\partial_t (h) +  \nabla_j (h v^k n_k) n^j = 0$<br>
+$\partial_t (h v^i) + \nabla_j (h v^i v^k n_k + \frac{1}{2} g h^2 n^i) n^j = 0$<br>
+<br>
+
+As a Conservation Law:<br>
+<br>
+
+$\partial_t U^I + \nabla_j F^I(n) n^j = 0$<br>
+<br>
+
+State and Primitive Variables:<br>
+<br>
 
 $U = \left[ \begin{matrix}
 	h \\

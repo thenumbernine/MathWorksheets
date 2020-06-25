@@ -103,18 +103,50 @@ If you want to multiply the connection matrix on the left hand side of the basis
 <br>
 
 Since we are differentiating the Cartesian components which are constant at all points, let's exchange the covariant derivative with a partial derivative:<br>
-$\frac{\partial}{\partial x^\mu} [{e_\nu}^I](x) = [{e_\alpha}^I](x) \cdot [{\Gamma^\alpha}_{\mu\nu}](x) $<br>
 <br>
 
-Abuse notation a bit:<br>
-$\int [{e^\alpha}_I](x) \cdot d [{e_\nu}^I](x) = \int_{x'^\mu = x_L^\mu}^{x'^\mu = x_R^\mu} [{\Gamma^\alpha}_{\mu\nu}](x') dx'$<br>
+$e_\mu \left( [{e_\nu}^I](x) \right) = [{e_\alpha}^I](x) \cdot [{\Gamma^\alpha}_{\mu\nu}](x) $<br>
+<br>
+
+Notice that in my formulation I am considering non-coordinate basis.  In a coordinate basis, $e_\mu = \partial_\mu$.
+If we are dealing with non-coordinate basis, then we have to consider the non-coordinate basis as a linear combination of the coordinate basis: $e_\mu = {e_\mu}^{\bar\mu} \partial_{\bar\mu}$.<br>
+<br>
+
+${e_\mu}^{\bar\mu}(x) \partial_{\bar\mu} \left( [{e_\nu}^I](x) \right) = [{e_\alpha}^I](x) \cdot [{\Gamma^\alpha}_{\mu\nu}](x) $<br>
+<br>
+
+$\partial_{\bar\mu} \left( [{e_\nu}^I](x) \right) = [{e_\alpha}^I](x) \cdot {e^\mu}_{\bar\mu}(x) \cdot [{\Gamma^\alpha}_{\mu\nu}](x) $<br>
+<br>
+
+Notice that the partial derivative is a linear combination of the non-coordinate basis: $\partial_{\bar\mu} = {e^\mu}_{\bar\mu} e_\mu$, 
+which is the inverse of $e_\mu = {e_\mu}^{\bar\mu} \partial_{\bar\mu}$.
+I'm going to hide the combination of these two inside of notation.<br>
+<br>
+
+Let ${\Gamma^\alpha}_{\bar{\mu}\nu} = {e^\mu}_{\bar\mu}(x) {\Gamma^\alpha}_{\mu\nu}$<br>
+<br>
+
+Then we find:<Br>
+<br>
+
+$\frac{\partial}{\partial x^{\bar\mu}} \left( [{e_\nu}^I](x) \right) = [{e_\alpha}^I](x) \cdot [{\Gamma^\alpha}_{\bar{\mu}\nu}](x) $<br>
+<br>
+
+Next we can attempt to solve the linear dynamic system.Abuse notation a bit:<br>
+<br>
+
+$\int [{e^\alpha}_I](x) \cdot d [{e_\nu}^I](x) = \int_{x'^{\bar{\mu}} = x_L^{\bar{\mu}}}^{x'^{\bar{\mu}} = x_R^{\bar{\mu}}} [{\Gamma^\alpha}_{\bar{\mu}\nu}](x') dx'$<br>
 <br>
 
 Integrate the linear dynamic system and hide the Cartesian basis index to find:<br>
-$[e_\nu](x^\mu_R) = [e_\alpha](x^\mu_L) \cdot exp\left( \int_{x'^\mu = x_L^\mu}^{x'^\mu = x_R^\mu} [{\Gamma^\alpha}_{\mu\nu}](x'^\mu) dx'^\mu \right)$<br>
+$[e_\nu](x^{\bar{\mu}}_R) = [e_\alpha](x^{\bar{\mu}}_L) \cdot exp\left( \int_{x'^{\bar{\mu}} = x_L^{\bar{\mu}}}^{x'^{\bar{\mu}} = x_R^{\bar{\mu}}} [{\Gamma^\alpha}_{\bar{\mu}\nu}](x'^{\bar{\mu}}) dx'^{\bar{\mu}} \right)$<br>
 <br>
 
-...where I make some liberal exchanges of when I want $x^\mu_L$ to indicate the scalar value of the left-bounds of the $\mu$ index of the x coordinate, and when I want it to mean the x coordinate with the $\mu$ component exchanged with the scalar value $x^\mu_L$.<br>
+...where I make some liberal exchanges of when I want $x^{\bar{\mu}}_L$ to indicate the scalar value of the left-bounds of the $\bar{\mu}$ index of the x coordinate, and when I want it to mean the x coordinate with the $\bar{\mu}$ component exchanged with the scalar value $x^{\bar{\mu}}_L$.<br>
+<br>
+
+TODO update the rest of this worksheet, and the 'integrating vector fields' worksheets, to take the non-coordinate definition into account.<br>
+Specifically, change the mu's of Gamma into bar-mu's.<br>
 <br>
 
 So that's how you transport a basis from one point $x^\mu_L$ to another point $x^\mu_R$ along a single changing coordinate $x^\mu$.<br>
@@ -151,7 +183,9 @@ Keep this in mind, it'll make sense later when we get to vector components.<br>
 
 Mind you the result of $P(a,b)$ is a matrix, and the $\alpha$ and $\nu$ in this case are the matrix indexes.<br>
 Since it is the exponent of the integral of a matrix of the connection coefficients, I'm willing to bet that its transpose is what we use to propagate one-forms in the same way that the connection matrix transpose is used in the covariant derivative of one-forms.<br>
-For more on the parallel propagator, check out chapter 3 of Carroll.<br>
+For more on the parallel propagator, check out chapter 3 of Carroll.
+Carroll's notes: <a href='https://preposterousuniverse.com/wp-content/uploads/grnotes-three.pdf'>https://preposterousuniverse.com/wp-content/uploads/grnotes-three.pdf</a>.<br>
+<br>
 <br>
 
 Notice that this depends on the identity: $P^{-1}(x,y) = P(y,x)$<br>
@@ -180,10 +214,97 @@ That can just be written as $e(x) \underset{k=1}{\overset{n}{\Pi}} P_k^{-1}(x^k,
 <br>
 <br>
 
-Notice that order of application of the exp-integrals-of-connections is important.  If you were to swap orders then you would have to deal with the $[\nabla_\mu, \nabla_\mu] e_\alpha = e_\beta {R^\beta}_{\alpha\mu\nu}$ Riemann curvature tensor.  Think about exactly how later.  I saw in the referenced S.E. that the commutation of the infintesimal propagator in the $e_\mu$ and then $e_\nu$ direction produces the curvature, so that answers that.<br>
+<hr>
 <br>
+
+Riemann curvature:<br>
+<br>
+Notice that order of application of the exp-integrals-of-connections is important.  
+If you were to swap orders then you would have to deal with the $[\nabla_\mu, \nabla_\mu] e_\alpha = e_\beta {R^\beta}_{\alpha\mu\nu}$ Riemann curvature tensor.
+Same works with exp-integrals and parallel propagators.
+<br>
+<br>
+If we were to apply our partial twice then we would end up with this:<br>
+<br>
+$\nabla_\mu \nabla_\nu [e_\rho] = \nabla_\mu ([e_\alpha] \cdot [{\Gamma^\alpha}_{\nu\rho}])$<br>
+$\nabla_\mu \nabla_\nu [e_\rho] = (\nabla_\mu [e_\alpha]) \cdot [{\Gamma^\alpha}_{\nu\rho}] + [e_\alpha] \cdot \nabla_\mu [{\Gamma^\alpha}_{\nu\rho}]$<br>
+$\nabla_\mu \nabla_\nu e_\rho = [e_\alpha] \cdot ([{\Gamma^\alpha}_{\mu\beta}] \cdot [{\Gamma^\beta}_{\nu\rho}] + \nabla_\mu [{\Gamma^\alpha}_{\nu\rho}])$<br>
+Notice because we're considering the covariant derivative on tensor objects rather than on components, the covariant derivative upon a component is just a covariant derivative on a scalar function, which is equal to a partial derivative.
+This always holds true, yet is often omitted from tensor notation when tensor basii are omitted as well.<br>
+$\nabla_\mu \nabla_\nu e_\rho = [e_\alpha] \cdot \left( [{\Gamma^\alpha}_{\mu\beta}] \cdot [{\Gamma^\beta}_{\nu\rho}] + e_\mu\left( [{\Gamma^\alpha}_{\nu\rho}] \right) \right)$<br>
+Notice here I'm using $e_\mu( \cdot )$ as a function.  This is making use of the typical $e_\mu = \partial_\mu$ definition, but is open to non-coordinate anholonomic definitions.<br>
+$[\nabla_\mu, \nabla_\nu] e_\rho = 2 e_\alpha \cdot \left( 
+	e_{[\mu}\left( {\Gamma^\alpha}_{\nu]\rho} \right) 
+	+ {\Gamma^\alpha}_{[\mu|\beta} \cdot {\Gamma^\beta}_{|\nu]\rho} 
+\right)$<br>
+<br>
+For non-coordinate basis we can add that one last term to equate our tensor to the Riemann curvature tensor:<br>
+<br>
+$\nabla_{({c_{\mu\nu}}^\beta e_\beta)} e_\rho =
+	\nabla_{[e_\mu, e_\nu]} e_\rho =
+	\nabla_{[\mu, \nu]} e_\rho =
+	- e_\alpha \cdot {\Gamma^\alpha}_{\beta\rho} {c_{[\mu\nu]}}^\beta$<br>
+<br>
+...and then we get this:<br>
+<br>
+$[\nabla_\mu, \nabla_\nu] - \nabla_{[\mu, \nu]} e_\rho = e_\alpha \cdot \left( 
+	2 e_{[\mu}\left( {\Gamma^\alpha}_{\nu]\rho} \right) 
+	+ 2 {\Gamma^\alpha}_{[\mu|\beta} \cdot {\Gamma^\beta}_{|\nu]\rho} 
+	- {\Gamma^\alpha}_{\beta\rho} {c_{[\mu\nu]}}^\beta
+\right)$<br>
+$[\nabla_\mu, \nabla_\nu] - \nabla_{[\mu, \nu]} e_\rho = e_\alpha {R^\alpha}_{\rho\mu\nu}$<br>
+<br>
+
+Let's go back to non-coordinate basis and answer what does this mean in terms of parallel propagation?<br>
+<br>
+
+$[\nabla_\mu, \nabla_\nu] [{e_\rho}^I](x) = [{e_\alpha}^I](x) \cdot [{R^\alpha}_{\rho\mu\nu}](x)$<br>
+$\frac{\partial}{\partial x^\mu} \left( \nabla_\nu [{e_\rho}^I](x) \right) 
+- \frac{\partial}{\partial x^\nu} \left( \nabla_\mu [{e_\rho}^I](x) \right) 
+	= [{e_\alpha}^I](x) \cdot [{R^\alpha}_{\rho\mu\nu}](x)$<br>
+$\int_{x^\mu_L}^{x^\mu_R} [{e^\alpha}_I](x) \cdot d \left( \nabla_\nu [{e_\rho}^I](x) \right)
+	= \int_{x^\mu_L}^{x^\mu_R} [{R^\alpha}_{\rho\mu\nu}](x) dx^\mu$<br>
+$\nabla_\nu [{e_\rho}^I](x^\mu_R) = [{e_\alpha}^I](x^\mu_L) \cdot exp(\int_{x^\mu_L}^{x^\mu_R} [{R^\alpha}_{\rho\mu\nu}](x) dx^\mu)$<br>
+$\frac{\partial}{\partial x^\nu} [{e_\rho}^I](x^\mu_R) = [{e_\alpha}^I](x^\mu_L) \cdot exp(\int_{x^\mu_L}^{x^\mu_R} [{R^\alpha}_{\rho\mu\nu}](x) dx^\mu)$<br>
+$\int_{x^\nu_L}^{x^\nu_R} [{e^\alpha}_I](x^\mu_L, x^\nu) \cdot d [{e_\rho}^I](x^\mu_R, x^\nu) 
+	= \int_{x^\nu_L}^{x^\nu_R} exp(\int_{x^\mu_L}^{x^\mu_R} [{R^\alpha}_{\rho\mu\nu}](x^\mu, x^\nu) dx^\mu) dx^\nu$<br>
+$[{e_\rho}^I](x \rightarrow x^\mu_R \rightarrow x^\nu_R) 
+- [{e_\rho}^I](x \rightarrow x^\mu_R \rightarrow x^\nu_R) 
+	= [{e_\alpha}^I](x^\mu_L, x^\nu_L) \cdot exp\left(
+		\int_{x^\nu_L}^{x^\nu_R} exp\left(
+			\int_{x^\mu_L}^{x^\mu_R} [{R^\alpha}_{\rho\mu\nu}](x^\mu, x^\nu) dx^\mu
+		\right) dx^\nu
+	\right)$<br>
+TODO FIXME this is not correct.<br>
+Somehow you should end up with something similar to ...<br>
+$e_\rho(x^\mu_R, x^\nu_R) \cdot {(P^{-1})^\sigma}_\rho(x^\mu_L, x^\mu_R) \cdot {(P^{-1})^\tau}_\sigma(x^\nu_L, x^\nu_R) 
+- e_\rho(x^\mu_R, x^\nu_R) \cdot {(P^{-1})^\sigma}_\rho(x^\nu_L, x^\nu_R) \cdot {(P^{-1})^\tau}_\sigma(x^\mu_L, x^\mu_R) 
+	= e_\alpha(x^\mu_L, x^\nu_L) \cdot exp \int exp \int {R^\alpha}_{\sigma\mu\nu}(x^\mu, x^\nu) dx^\nu dx^\mu$<br>
+...or similar.  I don't know.<br>
+<br>
+
+<br>
+
+Think about exactly how later.  
+I saw in the referenced S.E. that the commutation of the infintesimal propagator in the $e_\mu$ and then $e_\nu$ direction produces the curvature, so that answers that.<br>
+Actually it doesn't...<br>
+<ul>
+<li type='disc'><a href='https://en.wikipedia.org/wiki/Riemann_curvature_tensor#Formally'>https://en.wikipedia.org/wiki/Riemann_curvature_tensor#Formally</a></li>
+<li type='disc'><a href='https://math.stackexchange.com/questions/1971216/questions-regarding-parallel-propagators'>https://math.stackexchange.com/questions/1971216/questions-regarding-parallel-propagators</a></li>
+<li type='disc'><a href='https://math.stackexchange.com/questions/1337713/commutation-of-parallel-transport-with-covariant-derivative-and-riemann-curvat'>https://math.stackexchange.com/questions/1337713/commutation-of-parallel-transport-with-covariant-derivative-and-riemann-curvat</a></li>
+</ul><Br>
+It turns out all these sources mention the same equation, but none have it referenced.  Some S.E.'s even ask for references, but no one provides.<br>
+I'm betting they all came from something somewhere like the Wiki references, since they all seem to cite $P_\alpha^{-1} P_\beta^{-1} P_\alpha P_\beta v = R v$.
+One source defines as the zero limit of the propagator, the other defines it as the derivative wrt the parameter of the propagator integrals.
+They cite this instead of the same thing minus identity, which looks like $P_{[\alpha} P_{\beta]} v = R(\alpha, \beta) v$, what I am suspicious is true.<br>
+Actually wait, they are talking about a similar thing, but instead of commutation they are looking at commutation in terms of powers ... $(P_\alpha P_\beta) (P_\alpha P_\beta)^{-1} v = R(\alpha, \beta) v$.<br>
+<br>
+
 Does this mean that, by the Bianchi identity of the Riemann curvature tensor, that exchanging an index may produce a result whose difference with the original is proportional to the Riemann curvature tensor but cycling all indexes will result in the same integral?  I'll think about that later.  Look into the path ordering stuff of Carroll for more on this.<br>
 <br>
+<br>
+
+<hr>
 <br>
 
 Alright, what if you do want to just cut across the diagonal of the coordinate space hypercube instead of following the edges around the outside?
@@ -618,7 +739,7 @@ $[\Gamma_\phi] = \left[\begin{matrix}
 And now for the exponentials of the integrals of the connections:<br>
 <br>
 
-$P^{-1}(r_L, r_R) = exp(\int_{r_L}^{r_R} [\Gamma_r] dr)$<br>
+$P^{-1}_r(r_L, r_R) = exp(\int_{r_L}^{r_R} [\Gamma_r] dr)$<br>
 $= exp\left( \int_{r_L}^{r_R} \left[\begin{matrix}
 	0 & 0 \\
 	0 & \frac{1}{r}
@@ -646,8 +767,11 @@ $= \left[\begin{matrix}
 \end{matrix}\right]$<br>
 $= S(1, \frac{r_R}{r_L})$<br>
 <br>
+So inverting this to find the forward propagator gives us:<br>
+$P_r(r_L, r_R) = S(1, \frac{r_L}{r_R})$<br>
+<br>
 
-$P^{-1}(\phi_L, \phi_R) = exp(\int_{\phi_L}^{\phi_R} [\Gamma_\phi] d\phi)$<br>
+$P^{-1}_\phi(\phi_L, \phi_R) = exp(\int_{\phi_L}^{\phi_R} [\Gamma_\phi] d\phi)$<br>
 $= exp\left(\int_{\phi_L}^{\phi_R} \left[\begin{matrix}
 	0 & -r \\
 	\frac{1}{r} & 0
@@ -716,6 +840,9 @@ $= \left[\begin{matrix}
 \end{matrix}\right]$<br>
 $= S(1,\frac{1}{r}) R(\phi_R - \phi_L) S(1, r)$<br>
 <br>
+So inverting this to find the forward propagator gives us:<br>
+$P_\phi(\phi_L, \phi_R) = S(1,\frac{1}{r}) R(\phi_L - \phi_R) S(1, r)$<br>
+<br>
 <br>
 
 It just so happens that 
@@ -760,7 +887,7 @@ $= e(x_R)$<br>
 Tada!  We started with $e(x_L)$, we right-applied our parallel-transport transformation, and we ended up at $e(x_R)$.<br>
 <br>
 
-TODO try it with the geodesic case.<br> 
+TODO try it with the geodesic case ... but don't forget, unless the propagator has commutation then the geodesic path will be no different than any other path.<br> 
 <br>
 
 That was in the perspective of propagating the basis to the new point, but what about parallel-propagating the vector components to align with the new point?
@@ -997,7 +1124,13 @@ $P^{-1}_r(r_L, r_R) = \left[\begin{matrix}
 	0 & \frac{r_R}{r_L} & 0 \\
 	0 & 0 & \frac{r_R}{r_L}
 \end{matrix}\right]$<br>
-$P^{-1}(r_L, r_R) = S(1, \frac{r_R}{r_L}, \frac{r_R}{r_L})$<br>
+$P^{-1}_r(r_L, r_R) = S(1, \frac{r_R}{r_L}, \frac{r_R}{r_L})$<br>
+$P_r(r_L, r_R) = \left[\begin{matrix}
+	1 & 0 & 0 \\
+	0 & \frac{r_L}{r_R} & 0 \\
+	0 & 0 & \frac{r_L}{r_R}
+\end{matrix}\right]$<br>
+$P_r(r_L, r_R) = S(1, \frac{r_L}{r_R}, \frac{r_L}{r_R})$<br>
 <br>
 <br>
 
@@ -1055,10 +1188,23 @@ $P^{-1}_\theta(\theta_L, \theta_R) = \left[\begin{matrix}
 	0 & 0 & \frac{sin(\theta_R)}{sin(\theta_L)}
 \end{matrix}\right]
 $<br>
-$P^{-1}_\theta(\theta_L, \theta_R) = S(1, \frac{1}{r}, \frac{1}{sin(\theta_L)}) 
+$P^{-1}_\theta(\theta_L, \theta_R) = 
+	S(1, \frac{1}{r}, \frac{1}{sin(\theta_L)}) 
 	\cdot R_z(\theta_R - \theta_L)
 	\cdot S(1, r, sin(\theta_R))
 $<br>
+$P_\theta(\theta_L, \theta_R) = \left[\begin{matrix}
+	cos(\theta_R - \theta_L) & \frac{1}{r} sin(\theta_R - \theta_L) & 0 \\
+	-r sin(\theta_R - \theta_L) & cos(\theta_R - \theta_L) & 0 \\
+	0 & 0 & \frac{sin(\theta_L)}{sin(\theta_R)}
+\end{matrix}\right]
+$<br>
+$P_\theta(\theta_L, \theta_R) = 
+	S(1, \frac{1}{r}, \frac{1}{sin(\theta_L)}) 
+	\cdot R_z(\theta_L - \theta_R)
+	\cdot S(1, r, sin(\theta_R))
+$<br>
+
 <br>
 <br>
 
@@ -1223,6 +1369,85 @@ And you should notice that $[P_\mu, P_\nu] = 0$.  This is because the Riemann cu
 <br>
 <br>
 
+<hr>
+<br>
+
+Example: Sphere Surface, Coordinate Basis<br>
+<br>
+
+Here's where things detour a bit.  TODO fix them in the above math.<br>
+<br>
+
+Our coordinates are only $x = \{ \theta, \phi \}$.<br>
+<br>
+
+Our connections are:<br>
+<br>
+${\Gamma^\theta}_{\phi\phi} = -cos(\theta) sin(\theta)$<br>
+${\Gamma^\phi}_{\theta\phi} = {\Gamma^\phi}_{\phi\theta} = \frac{cos(\theta)}{sin(\theta)}$<br>
+<Br>
+
+As matrices:<br>
+<br>
+
+$[\Gamma_\theta] = \left[\begin{matrix}
+	0 & 0 \\
+
+	0 & \frac{cos(\theta)}{sin(\theta)}
+\end{matrix}\right]$<br>
+<br>
+
+$[\Gamma_\phi] = \left[\begin{matrix}
+	0 & -cos(\theta) sin(\theta) \\
+
+	\frac{cos(\theta)}{sin(\theta)} & 0
+\end{matrix}\right]$<br>
+<br>
+
+Propagators:<br>
+<br>
+
+$P_\theta(x,y) = \left[\begin{matrix}
+	0 & 0 \\
+	0 & \frac{|sin(\theta_L)|}{|sin(\theta_R)|}
+\end{matrix}\right]$<br>
+<br>
+
+$(P_\theta)^{-1}(x,y) = \left[\begin{matrix}
+	0 & 0 \\
+	0 & \frac{|sin(\theta_R)|}{|sin(\theta_L)|}
+\end{matrix}\right]$<br>
+<br>
+
+$P_\phi(x,y) = \left[\begin{matrix}
+	cos(cos(\theta) (\phi_R - \phi_L)) &
+	
+	-sin(\theta) sin(cos(\theta) (\phi_R - \phi_L)) \\
+
+	\frac{sin(cos(\theta) (\phi_R - \phi_L))}{sin(\theta)} &
+
+	cos(cos(\theta) (\phi_R - \phi_L))
+\end{matrix}\right]$<br>
+$(P_\phi)^{-1}(x,y) = \left[\begin{matrix}
+	cos(cos(\theta) (\phi_R - \phi_L)) &
+	
+	sin(\theta) sin(cos(\theta) (\phi_R - \phi_L)) \\
+
+	-\frac{sin(cos(\theta) (\phi_R - \phi_L))}{sin(\theta)} &
+
+	cos(cos(\theta) (\phi_R - \phi_L))
+\end{matrix}\right]$<br>
+
+???<br>
+Seems I might need extrinsic curvature.  Does this actually parallel-propagate?  I don't know, but I know if I just divide $P_\phi$ by $cos(\theta)$ then I arrive at the same parallel propagation as the full spherical corodinates has along the $\phi$ coordinate.<br>
+<br>
+
+In fact, if you change $\Gamma \rightarrow \frac{1}{cos(\theta)} \Gamma$ then you get something that looks more similar to the spherical propagator.
+Why does the $cos(\theta)$ get absorbed into the angle of rotation for this one?  Maybe because it isn't present in all terms that are used for the eigenvectors in the full sphere, but in this one it is? Idk.<br>
+<br>
+
+<br>
+<br>
 
 <hr>
 <br>
@@ -1348,6 +1573,7 @@ Parallel propagator = exponent of integral of connection = rotation matrix along
 Commutation of parallel propagator = Levi-Civita permutation tensor again.<br>
 <br>
 <br>
+
 
 	</body>
 </html>

@@ -66,6 +66,8 @@ Here's the CDN URLs:
 
 [Differential Geometry/sources](https://thenumbernine.github.io/math/Differential%20Geometry/sources.html)
 
+[Divergence Theorem in Spherical Coordinates](https://thenumbernine.github.io/math/Divergence%20Theorem%20in%20Spherical%20Coordinates.html)
+
 [EMHD Hyperbolic Conservation Laws](https://thenumbernine.github.io/math/EMHD%20Hyperbolic%20Conservation%20Laws.html)
 
 [EMHD Linear Stability Analysis](https://thenumbernine.github.io/math/EMHD%20Linear%20Stability%20Analysis.html)
@@ -191,6 +193,8 @@ Here's the CDN URLs:
 [Numerical Relativity/trace-free](https://thenumbernine.github.io/math/Numerical%20Relativity/trace%2dfree.html)
 
 [Numerical Relativity/z4](https://thenumbernine.github.io/math/Numerical%20Relativity/z4.html)
+
+[PDE Systems, Parallel Propagators, Finite Volume](https://thenumbernine.github.io/math/PDE%20Systems%2c%20Parallel%20Propagators%2c%20Finite%20Volume.html)
 
 [Quantum Computing](https://thenumbernine.github.io/math/Quantum%20Computing.html)
 

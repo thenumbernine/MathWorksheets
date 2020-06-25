@@ -244,19 +244,18 @@ $= 2 A_{\beta,\alpha\gamma} {\epsilon^{\gamma\alpha\beta}}_\sigma dx^\sigma$<br>
 $= 0$ by symmetry of second derivative of A and antisymmetry of the Levi-Civita connection.<br>
 <br>
 Similarly,<br>
-${(\star F)^{\alpha\beta}}_{;\beta}$<br>
-$= (\frac{1}{2} F_{\mu\nu} \epsilon^{\mu\nu\alpha\beta})_{;\beta}$<br>
-$= (A_{[\nu;\mu]} \epsilon^{\mu\nu\alpha\beta})_{;\beta}$<br>
-$= (A_{\nu;\mu} \epsilon^{\mu\nu\alpha\beta})_{;\beta}$ by the rule that $A_{[\mu,\nu]} = A_{[\mu;\nu]}$<br>
-$= A_{\nu;\mu;\beta} \epsilon^{\mu\nu\alpha\beta}$<br>
+${(\star F)^{\alpha\beta}}_{;\beta} \partial_\alpha$<br>
+$= (\frac{1}{2} F_{\mu\nu} \epsilon^{\mu\nu\alpha\beta})_{;\beta} \partial_\alpha$<br>
+$= (A_{[\nu;\mu]} \epsilon^{\mu\nu\alpha\beta})_{;\beta} \partial_\alpha$<br>
+$= (A_{\nu;\mu} \epsilon^{\mu\nu\alpha\beta})_{;\beta} \partial_\alpha$ by the rule that $A_{[\mu,\nu]} = A_{[\mu;\nu]}$<br>
+$= A_{\nu;\mu;\beta} \epsilon^{\mu\nu\alpha\beta} \partial_\alpha$<br>
 $= A_{\mu;\nu;\alpha} \epsilon^{\mu\nu\alpha\beta} g_{\beta\gamma} dx^\gamma$<br>
 $= A_{\mu;[\nu;\alpha]} \epsilon^{\mu\nu\alpha\beta} g_{\beta\gamma} dx^\gamma$ by antisymmetry of the Levi-Civita tensor<br>
 $= \frac{1}{2} {{R_\mu}^\rho}_{\nu\alpha} A_\rho \epsilon^{\mu\nu\alpha\beta} g_{\beta\gamma} dx^\gamma$<br>
 $= -\frac{1}{2} A_\rho {R^\rho}_{\mu\nu\alpha} \epsilon^{\mu\nu\alpha\beta} g_{\beta\gamma} dx^\gamma$<br>
-$= A_\rho {R^\rho}_\alpha g^{\alpha\beta} g_{\beta\gamma} dx^\gamma$ TODO explain this better<br>
-$= A_\rho {R^\rho}_\alpha dx^\alpha$<br>
+$= 0$ by the first Bianchi identity (assuming no torsion).<br>
 Therefore...<br>
-$({(\star F)_{\alpha\beta}}^{;\beta} -  A_\beta {R^\beta}_\alpha) dx^\alpha = 0$<br>
+${(\star F)_{\alpha\beta}}^{;\beta} = 0$<br>
 ...is similar in its statement that $d F = d^2 A = 0$, yet this uses covariant derivatives instead of partial derivatives.<br>
 <br>
 
