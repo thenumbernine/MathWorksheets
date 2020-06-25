@@ -3,9 +3,46 @@
 	<head>
         <meta charset='utf-8'>
 		<script type='text/javascript' src='tryToFindMathJax.js'></script>
-		<title>Euler Fluid Equation - Curved Geometry - Contravariant</title>
+		<title>Divergence Theorem in Curvilinear Coordinates</title>
 	</head>
 	<body>
+
+Alright here's the result.  Maybe it should go in my 'Differential Geometry' folder:<br>
+<br>
+
+
+$\int_\Omega \nabla \cdot F dV$<br>
+$= \int_\Omega \nabla_i F^i (\star 1)$<br>
+This is equal to the wedge of all differential forms times the volume of a differential, calculated as the determinant of the change of basis from Cartesian to the curvilinear coordinates:<br>
+$= \int_\Omega \nabla_i F^i V dx^1 dx^2 ... dx^n$<br>
+The volume of the differential / determinant of the change of basis from Cartesian to curvilinear is also equal to the square root of the determinant of the coordinate metric tensor:<br>
+$= \int_\Omega \nabla_i F^i \sqrt{|g|} dx^1 dx^2 ... dx^n$<br>
+This is equal to the divergence of the orthonormal component vector using an associated orthonormal non-coordinate (antisymmetric) Levi-Civita covariant derivative:<br>
+$= \int_\Omega \nabla_{\hat{i}} F^{\hat{i}} V dx^1 dx^2 \wedge ... \wedge dx^n$<br>
+by the Divergence theorem this is equal to:<br>
+$= \int_{\partial\Omega} F^{i_1} \epsilon_{i_1 ... i_n} dx^{i_2} \wedge ... \wedge dx^{i_n}$<br>
+Where $\epsilon_{i_1 ... i_n}$ is the coordinate-component Levi-Civita permutation tensor, which is weighted by the volume of the differential.<br>
+This is equal to the $\pm 1$ permutation (which I will call $\bar{\epsilon}_{i_1 ... i_n}$) times the volume of the differential:<br>
+$= \int_{\partial\Omega} F^{i_1} V {\bar{\epsilon}}_{i_1 ... i_n} dx^{i_2} \wedge ... \wedge dx^{i_n}$.<br>
+$= \int_{\partial\Omega} F^{i_1} \sqrt{|g|} {\bar{\epsilon}}_{i_1 ... i_n} dx^{i_2} \wedge ... \wedge dx^{i_n}$.<br>
+This can be reproduced in an orthonormal non-coordinate system, replacing the coordinate-component Levi-Civita permutation with an orthonormal-basis non-coordinate-component Levi-Civita permutation tensor (weighted by the determinant of the orthonormal non-coordinate metric, which is identity, which has determinant of 1).<br>
+$= \int_{\partial\Omega} F^{\hat{i}_1} \epsilon_{\hat{i}_1 ... \hat{i}_n} e^{\hat{i}_2} \wedge ... \wedge e^{\hat{i}_n}$.<br>
+$= \int_{\partial\Omega} F^{\hat{i}_1} \sqrt{|\hat{g}|} \bar{\epsilon}_{\hat{i}_1 ... \hat{i}_n} e^{\hat{i}_2} \wedge ... \wedge e^{\hat{i}_n}$.<br>
+$= \int_{\partial\Omega} F^{\hat{i}_1} \bar{\epsilon}_{\hat{i}_1 ... \hat{i}_n} e^{\hat{i}_2} \wedge ... \wedge e^{\hat{i}_n}$.<br>
+Now we can replace the orthonormal non-coordinate differential form basis with its respective coordinate basis.<br>
+$= \int_{\partial\Omega} F^{\hat{i}_1} \bar{\epsilon}_{\hat{i}_1 ... \hat{i}_n} \cdot |e_{i_2}|  ... |e_{i_n}| \cdot dx^{i_2} \wedge ... \wedge dx^{i_n}$.<br>
+And last, to recover the original coordinate-component formalism, we can replace the vector index non-coordinate component with a coordinate component:<br>
+$= \int_{\partial\Omega} |e_{i_1}| F^{i_1} \bar{\epsilon}_{\hat{i}_1 ... \hat{i}_n} \cdot |e_{i_2}|  ... |e_{i_n}| \cdot dx^{i_2} \wedge ... \wedge dx^{i_n}$.<br>
+$= \int_{\partial\Omega} F^{i_1} \bar{\epsilon}_{\hat{i}_1 ... \hat{i}_n} \cdot |e_{i_1}|  ... |e_{i_n}| \cdot dx^{i_2} \wedge ... \wedge dx^{i_n}$.<br>
+Now we can assert that $|e_1| \cdot ... \cdot |e_n| = V$.  And of course the $\pm 1$ permutation is independent of coordinate basis.<br>
+$= \int_{\partial\Omega} F^{i_1} \bar{\epsilon}_{i_1 ... i_n} V dx^{i_2} \wedge ... \wedge dx^{i_n}$.<br>
+<br>
+
+<hr>
+<br>
+
+And here's where it came from:<br>
+<br>
 
 Divergence Theorem:<br>
 <br>
