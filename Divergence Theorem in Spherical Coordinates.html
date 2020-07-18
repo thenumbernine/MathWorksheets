@@ -41,6 +41,106 @@ $= \int_{\partial\Omega} F^{i_1} \bar{\epsilon}_{i_1 ... i_n} V dx^{i_2} \wedge 
 <hr>
 <br>
 
+Application to finite volume:<br>
+Recap on Stokes theorem of tensors in index notation:<br>
+<br>
+
+$\int_\Omega {F^i}_{;i} dV$<br>
+$\int_\Omega {F^i}_{;i} V dx^1 dx^2 dx^3$<br>
+$= \int_{\partial \Omega} F^i \epsilon_{ijk} dx^j dx^k$ for j,k fixed.<br>
+$= \int_{\partial \Omega} F^i \bar{\epsilon}_{ijk} V dx^j dx^k$<br>
+$= \int_{\partial \Omega} F^\hat{i} {e^i}_\hat{i} \bar{\epsilon}_{ijk} V dx^j dx^k$<br>
+<br>
+
+Finite volume update:<br>
+$\int_{t \times \Sigma} {T^{\mu\nu}}_{;\nu} dt dx^1 dx^2 dx^3 = 0$<br>
+TODO start from curved spacetime.<br>
+Until then...<br>
+
+$\int_t \int_\Omega \partial_t (e_{\hat{i}}(x) \textbf{U}^{\hat{i}}(x)) dV dt 
+	+ \int_t \int_\Omega e_{\hat{i}}(x) \nabla \cdot \textbf{F}^{\hat{i}}(x) dV dt 
+	= \int_t \int_\Omega e_{\hat{i}}(x) \textbf{S}^{\hat{i}}(x) dV dt$<br>
+
+$\int_t \int_\Omega \partial_t (e_{\hat{i}}(x_0) {P^\hat{i}}_{\hat{j}}(x,x_0) \textbf{U}^{\hat{j}}(x)) dV dt 
+	+ \int_t \int_\Omega e_{\hat{i}}(x_0) {P^\hat{i}}_{\hat{j}}(x,x_0) \nabla \cdot \textbf{F}^{\hat{j}}(x) dV dt 
+	= \int_t \int_\Omega e_{\hat{i}}(x) \textbf{S}^{\hat{i}}(x) dV dt$<br>
+
+Assume $\partial_t e_{\hat{i}}(x_0) = 0$<br>
+$e_{\hat{i}}(x_0) \int_t \int_\Omega \partial_t {P^\hat{i}}_{\hat{j}}(x,x_0) \textbf{U}^{\hat{j}}(x) dV dt 
+	+ e_{\hat{i}}(x_0) \int_t \int_\Omega {P^\hat{i}}_{\hat{j}}(x,x_0) \nabla \cdot \textbf{F}^{\hat{j}}(x) dV dt 
+	= e_{\hat{i}}(x_0) \int_t \int_\Omega {P^{\hat{i}}}_{\hat{j}}(x,x_0) \textbf{S}^{\hat{j}}(x) dV dt$<br>
+
+Let $e_{\hat{i}}(x_0) U^{\hat{i}}(x_0) 
+	= e_{\hat{i}}(x_0) \frac{1}{|\Omega|} \int_\Omega {P^{\hat{i}}}_{\hat{j}}(x, x_0) \textbf{U}^{\hat{j}}(x) (dV = V dx^1 dx^2 dx^3)$<br>
+
+Let $e_{\hat{i}}(x_0) S^{\hat{i}}(x_0) 
+	= e_{\hat{i}}(x_0) \frac{1}{\Delta t |\Omega|} \int_t \int_\Omega {P^{\hat{i}}}_{\hat{j}}(x, x_0) \textbf{S}^{\hat{j}}(x) dV dt$<br>
+
+$e_{\hat{i}}(x_0) |\Omega| \left( U^{\hat{i}}(t+\Delta t, x_0) - e_{\hat{i}}(x_0) U^{\hat{i}}(t, x_0) \right)
+	+ e_{\hat{i}}(x_0) \Delta t \int_\Omega {P^{\hat{i}}}_{\hat{j}}(x, x_0) {\textbf{F}^{\hat{j}\hat{k}}}_{;\hat{k}}(x) dV 
+	= \Delta t |\Omega| e_{\hat{i}}(x_0) S^{\hat{i}}(x_0)$<br>
+
+Using the divergence theorem:<br>
+
+$e_{\hat{i}}(x_0) U^{\hat{i}}(t+\Delta t, x_0) 
+	= e_{\hat{i}}(x_0) U^{\hat{i}}(t, x_0) 
+	+ \Delta t \left( 
+		- e_{\hat{i}}(x_0) \frac{1}{|\Omega|} \Sigma_I \int_{\partial\Omega_I} {P^{\hat{i}}}_{\hat{j}}(x, x_0) \textbf{F}^{\hat{j}\hat{k}}(x) \epsilon_{{\hat{k}}lm} dx^l dx^m 
+		+ e_{\hat{i}}(x_0) S^{\hat{i}}(x_0)
+	\right)
+	$ for fixed l,m<br>
+
+$e_{\hat{i}}(x_0) U^{\hat{i}}(t+\Delta t) 
+	= e_{\hat{i}}(x_0) U^{\hat{i}}(t) 
+	+ \Delta t \left(
+		- e_{\hat{i}}(x_0) \frac{1}{|\Omega|} \Sigma_I 
+		\left(
+			{P^\hat{i}}_{\hat{m}}(x_I,x_0) \int_{\partial\Omega_I} {P^\hat{m}}_{\hat{j}}(x,x_I) \textbf{F}^{\hat{j}\hat{k}}(x) {e^k}_{\hat{k}}(x) (\epsilon_{klm}(x) = V(x) \bar\epsilon_{klm}) dx^l dx^m
+		\right) 
+		+ e_{\hat{i}}(x_0) S^{\hat{i}}(x_0)
+	\right)
+$<br>
+
+Let $e_{\hat{i}}(x_I) F^{\hat{i}}(x_I) 
+	= e_{\hat{i}}(x_I) \frac{1}{|\partial\Omega_I|} \int_{\partial\Omega_I} {P^\hat{i}}_{\hat{j}}(x,x_I) \textbf{F}^{\hat{j}\hat{k}}(x) {e^k}_{\hat{k}}(x) V(x) \bar\epsilon_{klm} dx^l dx^m$<br>
+
+Let $n_{\hat{i}} dS = {e^i}_{\hat{i}}(x) V(x) \bar\epsilon_{ijk} dx^j dx^k$ such that $|dS| = |{e^i}_{\hat{i}}(x) V(x)|$ and $n_{\hat{i}}$ is $\pm 1$ orthogonal to $dx^j dx^k$. (the normal should be Cartesian-norm normalized in is lower form?)<br>
+
+Let $e_{\hat{i}}(x_I) F^{\hat{i}}(x_I) 
+	= e_{\hat{i}}(x_I) \frac{1}{|\partial\Omega_I|} \int_{\partial\Omega_I} {P^\hat{i}}_{\hat{j}}(x,x_I) \textbf{F}^{\hat{j}\hat{k}}(x) n_{\hat{k}} dS$<br>
+
+$e_{\hat{i}}(x_0) U^{\hat{i}}(t+\Delta t) 
+	= e_{\hat{i}}(x_0) U^{\hat{i}}(t) 
+	+ \Delta t e_{\hat{i}}(x_0) \left(
+		- \frac{1}{|\Omega|} \Sigma_I 
+		\left(
+			|\partial\Omega_I| {P^\hat{i}}_{\hat{j}}(x_I,x_0) F^{\hat{j}}(x_I)
+		\right) 
+		+ S^{\hat{i}}(x_0)
+	\right)
+$<br>
+
+$U^{\hat{i}}(t+\Delta t) 
+	= U^{\hat{i}}(t) 
+	+ \Delta t \left(
+		- \frac{1}{|\Omega|} \Sigma_I \left(
+			|\partial\Omega_I| {P^\hat{i}}_{\hat{j}}(x_I,x_0) F^{\hat{j}}(x_I)
+		\right) 
+		+ S^{\hat{i}}(x_0)
+	\right)
+$<br>
+<br>
+
+So in spherical coordintes a curvilinear component vector divergence can be exchanged, via Divergence theorem, with the dot of a normal with the vector.<br>
+But what about all those extra connection coefficient terms?  It seems like our example of $F = e^\hat{\theta}$ absorbed some of these terms: that $\nabla \cdot F$ does include connections but Divergence transforms it into $n \cdot F$ which does not.<br>
+So my new challenges:<br>
+1) Verify Stokes' theorem one more time for a vector, using something more complex.<br>
+2) Verify Stokes' theorem for a (2 0) tensor.  Make sure there are no connections.<br>
+<br>
+
+<hr>
+<br>
+
 And here's where it came from:<br>
 <br>
 
@@ -257,7 +357,7 @@ Where $F = e^{\hat{r}} = \hat{g}^{\hat{r}\hat{r}} e_{\hat{r}} = 1 \cdot \partial
 $\int_V \nabla \cdot F dV$<br>
 <br>
 
-$\int_{r=\frac{1}{2}}^{r=1}
+$= \int_{r=\frac{1}{2}}^{r=1}
 	\int_{\theta=0}^{\theta=\frac{\pi}{2}}
 	\int_{\phi=0}^{\phi=\frac{\pi}{2}}
 	\nabla \cdot F
@@ -268,7 +368,7 @@ $\int_{r=\frac{1}{2}}^{r=1}
 $<br>
 <br>
 
-$\int_{r=\frac{1}{2}}^{r=1}
+$= \int_{r=\frac{1}{2}}^{r=1}
 	\int_{\theta=0}^{\theta=\frac{\pi}{2}}
 	\int_{\phi=0}^{\phi=\frac{\pi}{2}}
 	(\frac{2}{r} + \partial_r 1)
@@ -279,7 +379,7 @@ $\int_{r=\frac{1}{2}}^{r=1}
 $<br>
 <br>
 
-$\int_{r=\frac{1}{2}}^{r=1}
+$= \int_{r=\frac{1}{2}}^{r=1}
 	\int_{\theta=0}^{\theta=\frac{\pi}{2}}
 	\int_{\phi=0}^{\phi=\frac{\pi}{2}}
 	2 r sin(\theta)
@@ -289,24 +389,24 @@ $\int_{r=\frac{1}{2}}^{r=1}
 $<br>
 <br>
 
-$2
+$= 2
 \int_{r=\frac{1}{2}}^{r=1} r dr 
 \int_{\theta=0}^{\theta=\frac{\pi}{2}} sin(\theta) d\theta
 \int_{\phi=0}^{\phi=\frac{\pi}{2}} d\phi
 $<br>
 <br>
 
-$2
+$= 2
 (\frac{1}{2} r^2 |_{r=\frac{1}{2}}^{r=1}
 (cos(\theta) |_{\theta=0}^{\theta=\frac{\pi}{2}}
 1 |_{\phi=0}^{\phi=\frac{\pi}{2}}
 $<br>
 <br>
 
-$2 (\frac{1}{2} - \frac{1}{8}) (cos(\frac{\pi}{2}) - cos(0)) \frac{\pi}{2}$<br>
+$= 2 (\frac{1}{2} - \frac{1}{8}) (cos(\frac{\pi}{2}) - cos(0)) \frac{\pi}{2}$<br>
 <br>
 
-$-\frac{3 \pi}{8}$<br>
+$= -\frac{3 \pi}{8}$<br>
 <br>
 
 vs<br>
@@ -315,8 +415,7 @@ vs<br>
 $\int_S n \cdot F dS$<br>
 <br>
 
-$
-\int_{\theta=0}^{\theta=\frac{\pi}{2}}
+$= \int_{\theta=0}^{\theta=\frac{\pi}{2}}
 \int_{\phi=0}^{\phi=\frac{\pi}{2}}
 	e_{\hat{r}} \cdot F
 r^2 sin(\theta)
@@ -366,8 +465,7 @@ d\theta
 $<br>
 <br>
 
-$
-\int_{\theta=0}^{\theta=\frac{\pi}{2}}
+$= \int_{\theta=0}^{\theta=\frac{\pi}{2}}
 \int_{\phi=0}^{\phi=\frac{\pi}{2}}
 e_{\hat{r}} \cdot e^{\hat{r}} r^2 sin(\theta)
 d\phi
@@ -383,8 +481,7 @@ d\theta
 $<br>
 <br>
 
-$
-\int_{\theta=0}^{\theta=\frac{\pi}{2}}
+$= \int_{\theta=0}^{\theta=\frac{\pi}{2}}
 \int_{\phi=0}^{\phi=\frac{\pi}{2}}
 sin(\theta)
 d\phi
@@ -399,7 +496,7 @@ d\theta
 $<br>
 <br>
 
-$\frac{3}{4}
+$= \frac{3}{4}
 \int_{\theta=0}^{\theta=\frac{\pi}{2}}
 sin(\theta)
 d\theta
@@ -408,16 +505,16 @@ d\phi
 $<br>
 <br>
 
-$\frac{3}{4}
+$= \frac{3}{4}
 cos(\theta)|_{\theta=0}^{\theta=\frac{\pi}{2}}
 1|_{\phi=0}^{\phi=\frac{\pi}{2}}
 $<br>
 <br>
 
-$\frac{3}{4} \cdot -1 \cdot \frac{\pi}{2}$<br>
+$= \frac{3}{4} \cdot -1 \cdot \frac{\pi}{2}$<br>
 <br>
 
-$\frac{-3 \pi}{8}$<br>
+$= \frac{-3 \pi}{8}$<br>
 <br>
 
 CHECK. That worked.  That was an easy one, since $e_{\hat{r}} = \partial_r$.  Let's try a non-coordinate basis now:<br>
@@ -537,13 +634,13 @@ $= \int_{r=\frac{1}{2}}^{r=1} r dr
 $<br>
 <br>
 
-$= \frac{3}{4}
+$= \frac{3}{8}
 	\cdot 1
 	\cdot \frac{\pi}{2}
 $<br>
 <br>
 
-$= \frac{3\pi}{8}$<br>
+$= \frac{3\pi}{16}$<br>
 <br>
 
 $\int_S n \cdot F dS$<br>
@@ -672,10 +769,10 @@ $= (\frac{1}{4} r^4|_{r=\frac{1}{2}}^{r=1}
 \cdot 1|_{\phi=0}^{\phi=\frac{\pi}{2}} d\phi $<br>
 <br>
 
-$= \frac{15}{16} \cdot \frac{\pi}{2} $<br>
+$= \frac{15}{64} \cdot \frac{\pi}{2} $<br>
 <br>
 
-$= \frac{15\pi}{32}$<br>
+$= \frac{15\pi}{128}$<br>
 <br>
 
 Still not good.  Try again but ... <br>
@@ -786,10 +883,10 @@ $= (\frac{1}{2} r^2|_{r=\frac{1}{2}}^{r=1}
 $<br>
 <br>
 
-$= \frac{3}{4} \cdot \frac{\pi}{2}$<br>
+$= \frac{3}{8} \cdot 1 \cdot \frac{\pi}{2}$<br>
 <br>
 
-$= \frac{3 \pi}{8}$<br>
+$= \frac{3 \pi}{16}$<br>
 <br>
 
 I'm going to verify the divergence with Cartesian components, since the equivalent Cartesian component surface integral is not matching this...<br>
@@ -925,13 +1022,13 @@ $= \int_{r=\frac{1}{2}}^{r=1} r dr
 $<br>
 <br>
 
-$= \frac{3}{4}
+$= \frac{3}{8}
 	\cdot 1
 	\cdot \frac{\pi}{2}
 $<br>
 <br>
 
-$= \frac{3\pi}{8}$<br>
+$= \frac{3\pi}{16}$<br>
 <br>
 
 Sure enough, the Cartesian-component divergence integral agrees with the spherical-component divergence integral.<br>
@@ -1042,5 +1139,16 @@ $\left[\begin{matrix}
 \end{matrix}\right]
 $<br>
 <br>
+	
+<hr>
+<br>
+
+Alright, trying for a more complex function, something that can include the connections.<br>
+(This means make sure you have components in all directions, especially the r and $\theta$ directions for the sake of connections,
+and make sure it differentiates in each of the directions.)<br>
+<br>
+
+
+
 	</body>
 </html>

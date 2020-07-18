@@ -45,7 +45,8 @@ $\Gamma_{abc} = \frac{1}{2} (
 <br>
 
 
-Notice that $\nabla$ can be defined to have any ${\Gamma^a}_{bc}$, however there is only one ${\hat\Gamma^a}_{bc}$ such that the torsion is zero, and that is the Levi-Civita connection.<br>
+Notice that $\nabla$ can be defined to have any ${\Gamma^a}_{bc}$, however there is only one ${\hat\Gamma^a}_{bc}$ such that the torsion is zero, and that is the Levi-Civita connection.
+Let $\hat{\nabla}$ be the covariant derivative associated with the zero-torsion connection $\hat{\Gamma}$.<br>
 $\hat\Gamma_{abc} = \frac{1}{2} ( 
 	e_c (g_{ab}) + e_b (g_{ac}) - e_a (g_{bc})
 	+ c_{abc} + c_{acb} - c_{cba}
@@ -568,6 +569,47 @@ This matches the change-of-basis of metric-cancelling connection, which we can n
 $\frac{\partial^2 x^{a'}}{\partial \tau^2} + {\Gamma^{a'}}_{b'c'} \frac{\partial x^{b'}}{\partial \tau} \frac{\partial x^{c'}}{\partial \tau} = 0$<br>
 <br>
 <br>
+
+<hr>
+<br>
+
+Holonomic Levi-Civita connection as the sum of two other connections, derived from their metrics:<br>
+<br>
+
+$g_{ab} = g'_{ab} + g''_{ab}$<br>
+$g_{ab,c} = g'_{ab,c} + g''_{ab,c}$<br>
+<br>
+
+$\Gamma_{abc}$<br>
+$= \frac{1}{2} (g_{ab,c} + g_{ac,b} - g_{bc,a})$<br>
+$= \frac{1}{2} (g'_{ab,c} + g'_{ac,b} - g'_{bc,a}) + \frac{1}{2} (g''_{ab,c} + g''_{ac,b} - g''_{bc,a})$<br>
+$= \Gamma'_{abc} + \Gamma''_{abc}$<br>
+<br>
+
+${\Gamma^a}_{bc}$<br>
+$= g^{ad} \Gamma_{dbc}$<br>
+$= (\Gamma'_{dbc} + \Gamma''_{dbc}) (g'^{ad} - (g'^{ae} g''_{ef} g'^{fd}) \cdot \frac{1}{1 + r})$<br>
+$= \Gamma'_{dbc} g'^{ad} - (\Gamma'_{dbc} g'^{ae} g''_{ef} g'^{fd}) \cdot \frac{1}{1 + r}
+	+ \Gamma''_{dbc} g'^{ad} - \Gamma''_{dbc} (g'^{ae} g''_{ef} g'^{fd}) \cdot \frac{1}{1 + r}$<br>
+$= {\Gamma'^a}_{bc}
+	+ g'^{ad} \Gamma''_{dbc} 
+	- g'^{ae} g''_{ef} {\Gamma'^f}_{bc} \cdot \frac{1}{1 + r}
+	- g'^{ae} g''_{ef} g'^{fd} \Gamma''_{dbc} \cdot \frac{1}{1 + r}$<br>
+$= {\Gamma'^a}_{bc}
+	+ g'^{ad} g''_{de} g''^{ef} \Gamma''_{fbc} 
+	- g'^{ae} g''_{ef} {\Gamma'^f}_{bc} \cdot \frac{1}{1 + r}
+	- g'^{ae} g''_{ef} g'^{fd} g''_{dg} g''^{gh} \Gamma''_{hbc} \cdot \frac{1}{1 + r}$<br>
+$= {\Gamma'^a}_{bc}
+	+ g'^{ad} g''_{de} {\Gamma''^e}_{bc} 
+	- g'^{ae} g''_{ef} {\Gamma'^f}_{bc} \cdot \frac{1}{1 + r}
+	- g'^{ae} g''_{ef} g'^{fd} g''_{dg} {\Gamma''^g}_{bc} \cdot \frac{1}{1 + r}$<br>
+$= {\Gamma'^a}_{bc}
+	+ {r^a}_d {\Gamma''^d}_{bc} 
+	- \frac{1}{1 + r} {r^a}_d {\Gamma'^d}_{bc}
+	- \frac{1}{1 + r} {r^a}_d {r^d}_e {\Gamma''^e}_{bc}$<br>
+<br>
+<br>
+
 
 <a href='.'>Back</a><br><br>
 	</body>

@@ -10,30 +10,54 @@
 From 2012 Petrova, "Finite Volume Methods- Powerful Means of Engineering Design"<br>
 <br>
 
-$\bar\phi = \frac{1}{\Delta t} \int_{t_0}^{t_0 + \Delta t} \phi dt = $ Reynolds averaging over time.<br>
-$\tilde \phi = \frac{1}{\bar\rho} \frac{1}{\Delta t} \int_{t_0}^{t_0 + \Delta t} (\rho \phi) dt = $ Favre averaging.<br>
+$\bar\phi = \frac{1}{\Delta t} \int_{t_0}^{t_0 + \Delta t} \phi dt = $ 
+Reynolds averaging over time.<br>
+<br>
+
+$\tilde \phi = \frac{1}{\bar{\rho}} \frac{1}{\Delta t} \int_{t_0}^{t_0 + \Delta t} (\rho \phi) dt = $ 
+Favre averaging.<br>
+<br>
+
+Notice this means $\tilde{\phi} = \frac{ \overline{\rho \phi} }{ \bar{\phi} }$
+and $\bar{\rho} \tilde{\phi} = \overline{\rho \phi}$.<br>
+<br>
+
+Does this mean that $\frac{\partial \tilde \phi}{\partial \bar \rho} = -\frac{1}{\bar{\rho}} \tilde \phi$, or should we pretend these are different variables altogether?
+It does if I use $\overline{\rho \phi}$ instead of $\tilde{\phi}$ as primitive variables.   I'm going to just say they are different variables.<br>
+Also, how does that $\rho$ inside the integral affect $\frac{\partial \tilde \phi}{\partial \bar \rho}$?<br>
 <br>
 
 conserved quantities:<br>
-$U^I = \left[\matrix{
-	\bar\rho \\
-	\bar\rho \tilde v^i \\
-	\bar\rho \tilde e_{total} \\
-	\bar\rho k \\
-	\bar\rho \omega
-}\right]$<br>
+$U^I = \left[\begin{matrix}
+	\bar{\rho} \\
+	\bar{\rho} \tilde{v}^i \\
+	\bar{\rho} \tilde e_{total} \\
+	\bar{\rho} k \\
+	\bar{\rho} \omega
+\end{matrix}\right] = \left[\begin{matrix}
+	\bar{\rho} \\
+	\overline{\rho v^i} \\
+	\overline{\rho e_{total}} \\
+	\bar{\rho} k \\
+	\bar{\rho} \omega
+\end{matrix}\right]$<br>
 <br>
 
 primitive variables:<br>
-$W = \left[\matrix{
-	\bar\rho \\
-	\tilde v^i \\
+$W = \left[\begin{matrix}
+	\bar{\rho} \\
+	\tilde{v}^i \\
 	P^* \\
 	k \\
 	\omega
-}\right]$<br>
-$\bar\rho = $ Reynolds averaged density.<br>
-$\tilde v^i = $ Favre averaged velocity.<br>
+\end{matrix}\right]$<br>
+<br>
+If the derivative of the Favre-average wrt the Reynolds-averaged density is non-zero, then perhaps the Favre-averaged variable shouldn't be the primitive variable?<br>
+Maybe it is safest to simply not consider primitive variables?  But then won't the eigensystem be complicated to compute, without using the acoustic matrix?<br>
+<br>
+
+$\bar{\rho} = $ Reynolds averaged density.<br>
+$\tilde{v}^i = $ Favre averaged velocity.<br>
 $\tilde e_{total} = $ specific total energy.<br>
 $P^* = $ static pressure (?).<br>
 $k =$ turbulent kinetic energy.<br>
@@ -41,76 +65,313 @@ $\omega =$ specific turbulent dissipation rate.<br>
 <br>
 
 converting between variables:<br>
-$\tilde e_{total} = \tilde e_{int} + \frac{1}{2} \tilde v^2 + k$<br>
+$\tilde e_{total} = \tilde e_{int} + \frac{1}{2} \tilde{v}^2 + k$<br>
 $\tilde e_{int} = C_v \tilde T$<br>
-$\tilde e_{total} = C_v \tilde T + \frac{1}{2} \tilde v^2 + k$<br>
+$\tilde e_{total} = C_v \tilde T + \frac{1}{2} \tilde{v}^2 + k$<br>
 $\tilde T = \frac{1}{C_v} \tilde e_{int}$<br>
 $\bar P = \bar \rho R \tilde T$<br>
-$\tilde e_{total} = \frac{C_v}{\bar \rho R} \bar P + \frac{1}{2} \tilde v^2 + k$<br>
+$\tilde e_{total} = \frac{C_v}{\bar \rho R} \bar P + \frac{1}{2} \tilde{v}^2 + k$<br>
 <br>
 $P^* = \bar P + \frac{2}{3} \bar \rho k$<br>
 $P^* = \bar \rho R \tilde T + \frac{2}{3} \bar \rho k$<br>
 $P^* = \frac{R}{C_v} \bar \rho \tilde e_{int} + \frac{2}{3} \bar \rho k$<br>
-$P^* = \frac{R}{C_v} (\bar \rho \tilde e_{total} - \frac{1}{2} \bar\rho \tilde v^2 - \bar\rho k) + \frac{2}{3} \bar \rho k$<br>
+$P^* = \frac{R}{C_v} (\bar \rho \tilde e_{total} - \frac{1}{2} \bar{\rho} \tilde{v}^2 - \bar{\rho} k) + \frac{2}{3} \bar \rho k$<br>
 $\bar P = P^* - \frac{2}{3} \bar \rho k$<br>
-$\tilde e_{total} = \frac{C_v}{\bar \rho R} (P^* - \frac{2}{3} \bar \rho k) + \frac{1}{2} \tilde v^2 + k$<br>
-$\tilde e_{total} = \frac{1}{2} \tilde v^2 + \frac{C_v}{\bar \rho R} P^* + (1 - \frac{2 C_v}{3 R}) k$<br>
+$\tilde e_{total} = \frac{C_v}{\bar \rho R} (P^* - \frac{2}{3} \bar \rho k) + \frac{1}{2} \tilde{v}^2 + k$<br>
+$\tilde e_{total} = \frac{1}{2} \tilde{v}^2 + \frac{C_v}{\bar \rho R} P^* + (1 - \frac{2 C_v}{3 R}) k$<br>
 <br>
 
-$U^I = \left[\matrix{
-	\bar\rho \\
-	\bar\rho \tilde v^i \\
-	\bar\rho \tilde e_{total} \\
-	\bar\rho k \\
-	\bar\rho \omega
-}\right] = \left[\matrix{
-	\bar\rho \\
-	\bar\rho \tilde v^i \\
+Conserved Quantities wrt Primitive Variables:<br>
+<br>
+
+$U^I = \left[\begin{matrix}
+	\bar{\rho} \\
+	\bar{\rho} \tilde{v}^i \\
+	\bar{\rho} \tilde e_{total} \\
+	\bar{\rho} k \\
+	\bar{\rho} \omega
+\end{matrix}\right] = \left[\begin{matrix}
+	\bar{\rho} \\
+	\bar{\rho} \tilde{v}^i \\
 	\frac{C_v}{R} P^* 
 		+ (1 - \frac{2}{3} \frac{C_v}{R}) \bar \rho k 
-		+ \frac{1}{2} \bar\rho \tilde v^2 
+		+ \frac{1}{2} \bar{\rho} \tilde{v}^2 
 	\\
-	\bar\rho k \\
-	\bar\rho \omega
-}\right]$<br>
+	\bar{\rho} k \\
+	\bar{\rho} \omega
+\end{matrix}\right]$<br>
 <br>
 
-$\frac{\partial U^I}{\partial W^J} = \left[\matrix{
+$\frac{\partial U^I}{\partial W^J} = \left[\begin{matrix}
 	1 & 0 & 0 & 0 & 0 \\
-	\tilde v^i & \bar \rho \delta^i_j & 0 & 0 & 0 \\
-	\frac{1}{2} \tilde v^2 + (1 - \frac{2 C_v}{3 R}) k &
-		\bar \rho \tilde v_j &
+	\tilde{v}^i & \bar \rho \delta^i_j & 0 & 0 & 0 \\
+	\frac{1}{2} \tilde{v}^2 + (1 - \frac{2 C_v}{3 R}) k &
+		\bar \rho \tilde{v}_j &
 		\frac{C_v}{R} &
 		(1 - \frac{2 C_v}{3 R}) \bar \rho &
 		0
 	\\
 	k & 0 & 0 & \bar \rho & 0 \\
 	\omega & 0 & 0 & 0 & \bar \rho
-}\right]$<br>
+\end{matrix}\right]$<br>
 <br>
 
-$\frac{\partial W^I}{\partial U^J} = \left[\matrix{
+$\frac{\partial W^I}{\partial U^J} = 
+\downarrow I 
+\overset{\rightarrow J}{
+\left[\begin{matrix}
 	1 & 0 & 0 & 0 & 0 \\
-	-\frac{1}{\bar\rho} \tilde v^i & \frac{1}{\bar\rho} \delta^i_j & 0 & 0 & 0 \\
+	-\frac{1}{\bar{\rho}} \tilde{v}^i & \frac{1}{\bar{\rho}} \delta^i_j & 0 & 0 & 0 \\
 	
-	\frac{R}{2 C_v} v^2 & 
-	- \frac{R}{C_v} \tilde v_j & 
+	\frac{R}{2 C_v} \tilde{v}^2 & 
+	- \frac{R}{C_v} \tilde{v}_j & 
 	\frac{R}{C_v} & 
 	\frac{2}{3} - \frac{R}{C_v} & 
 	0 \\
 	
-	-\frac{1}{\bar\rho} k & 0 & 0 & \frac{1}{\bar\rho} & 0 \\
-	-\frac{1}{\bar\rho} \omega  & 0 & 0 & 0 & \frac{1}{\bar\rho}
-}\right]$<br>
+	-\frac{1}{\bar{\rho}} k & 0 & 0 & \frac{1}{\bar{\rho}} & 0 \\
+	-\frac{1}{\bar{\rho}} \omega  & 0 & 0 & 0 & \frac{1}{\bar{\rho}}
+\end{matrix}\right]
+}$<br>
 <br>
 
-$F^{Ij} = \left[\matrix{
-	\bar\rho \tilde v^j \\
-	\bar\rho \tilde v^i \tilde v^j + P^* \delta^{ij} \\
-	\tilde v^j (\bar\rho \tilde e_{total} + P^*) \\
-	\bar\rho \tilde v^j k \\
-	\bar\rho \tilde v^j \omega
-}\right]$<br>
+Flux:<br>
+<br>
+
+$F^I = 
+\downarrow I
+\left[\begin{matrix}
+	\bar{\rho} \tilde{v}^k n_k \\
+	\bar{\rho} \tilde{v}^i \tilde{v}^k n_k + P^* n^i \\
+	\tilde{v}^k n_k (\bar{\rho} \tilde e_{total} + P^*) \\
+	\bar{\rho} \tilde{v}^k n_k k \\
+	\bar{\rho} \tilde{v}^k n_k \omega
+\end{matrix}\right]
+$<br>
+<br>
+
+$F^I = 
+\downarrow I
+\left[\begin{matrix}
+	\bar{\rho} \tilde{v}^k n_k \\
+	\bar{\rho} \tilde{v}^i \tilde{v}^k n_k + P^* n^i \\
+	\tilde{v}^k n_k (\bar{\rho} (
+		\frac{1}{2} \tilde{v}^2 + \frac{C_v}{\bar \rho R} P^* + (1 - \frac{2 C_v}{3 R}) k
+	) + P^*) \\
+	\bar{\rho} \tilde{v}^k n_k k \\
+	\bar{\rho} \tilde{v}^k n_k \omega
+\end{matrix}\right]
+$<br>
+<br>
+
+$F^I = 
+\downarrow I
+\left[\begin{matrix}
+	\bar{\rho} \tilde{v}^k n_k \\
+	
+	\bar{\rho} \tilde{v}^i \tilde{v}^k n_k + P^* n^i \\
+	
+	\frac{1}{2} \bar{\rho} \tilde{v}^2 \tilde{v}^k n_k
+	+ \frac{C_v}{R} \tilde{v}^k n_k P^* 
+	+ (1 - \frac{2 C_v}{3 R}) \bar{\rho} \tilde{v}^k n_k k
+	+ P^*
+	\\
+	
+	\bar{\rho} \tilde{v}^k n_k k \\
+	
+	\bar{\rho} \tilde{v}^k n_k \omega
+\end{matrix}\right]
+$<br>
+<br>
+
+Flux derivative with respect to primitive variables:<br>
+<br>
+
+$\frac{\partial F^I}{\partial W^J} = 
+\downarrow I
+\overset{\rightarrow J}{
+\left[\begin{matrix}
+	\tilde{v}^k n_k & 
+	\bar{\rho} n_j &
+	0 &
+	0 &
+	0 \\
+
+	\tilde{v}^i \tilde{v}^k n_k &
+	\bar{\rho} (
+		\delta^i_j \tilde{v}^k n_k
+		+ \tilde{v}^i n_j
+	) &
+	n^i &
+	0 &
+	0 \\
+
+	\frac{1}{2} \tilde{v}^2 \tilde{v}^k n_k + (1 - \frac{2 C_v}{R}) \tilde{v}^k n_k k &
+	
+	\bar{\rho} ( 
+		\tilde{v}_j \tilde{v}^k n_k 
+		+ \frac{1}{2} \tilde{v}^2 n_j
+	) 
+	+ \frac{C_v}{R} P^* n_j
+	+ (1 - \frac{2 C_v}{3 R}) \bar{\rho} n_j k &
+	
+	\frac{C_v}{R} \tilde{v}^k n_k  &
+	
+	-\frac{2 C_v}{3 R} \bar{\rho} \tilde{v}^k n_k &
+	
+	0 \\
+	
+	\tilde{v}^k n_k k &
+	\bar{\rho} n_j k &
+	0 &
+	\bar{\rho} \tilde{v}^k n_k &
+	0 \\
+	
+	\tilde{v}^k n_k \omega &
+	\bar{\rho} n_j \omega &
+	0 &
+	0 & \bar{\rho} \tilde{v}^k n_k
+\end{matrix}\right]
+}$<br>
+<br>
+
+Acoustic matrix:<br>
+<br>
+
+${A^I}_J + \delta^I_J = \frac{\partial W^I}{\partial U^K} \cdot \frac{\partial F^K}{\partial W^J}$<br>
+<br>
+
+${A^I}_J + \delta^I_J = 
+
+\downarrow I 
+\overset{\rightarrow K}{
+\left[\begin{matrix}
+	1 & 0 & 0 & 0 & 0 \\
+	
+	-\frac{1}{\bar{\rho}} \tilde{v}^i & \frac{1}{\bar{\rho}} \delta^i_k & 0 & 0 & 0 \\
+	
+	\frac{R}{2 C_v} \tilde{v}^2 & 
+	- \frac{R}{C_v} \tilde{v}_k & 
+	\frac{R}{C_v} & 
+	\frac{2}{3} - \frac{R}{C_v} & 
+	0 \\
+	
+	-\frac{1}{\bar{\rho}} k & 0 & 0 & \frac{1}{\bar{\rho}} & 0 \\
+	-\frac{1}{\bar{\rho}} \omega  & 0 & 0 & 0 & \frac{1}{\bar{\rho}}
+\end{matrix}\right]
+}
+
+\cdot
+
+\downarrow K
+\overset{\rightarrow J}{
+\left[\begin{matrix}
+	
+	\tilde{v}^l n_l & 
+	\bar{\rho} n_j &
+	0 &
+	0 &
+	0 \\
+
+	\tilde{v}^k \tilde{v}^l n_l &
+	\bar{\rho} (
+		\delta^k_j \tilde{v}^l n_l
+		+ \tilde{v}^k n_j
+	) &
+	n^k &
+	0 &
+	0 \\
+
+	\frac{1}{2} \tilde{v}^2 \tilde{v}^l n_l + (1 - \frac{2 C_v}{R}) \tilde{v}^l n_l k &
+	
+	\bar{\rho} ( 
+		\tilde{v}_j \tilde{v}^l n_l 
+		+ \frac{1}{2} \tilde{v}^2 n_j
+	) 
+	+ \frac{C_v}{R} P^* n_j
+	+ (1 - \frac{2 C_v}{3 R}) \bar{\rho} n_j k &
+	
+	\frac{C_v}{R} \tilde{v}^l n_l + 1 &
+	
+	(1 - \frac{2 C_v}{3 R}) \bar{\rho} \tilde{v}^l n_l &
+	
+	0 \\
+	
+	\tilde{v}^l n_l k &
+	\bar{\rho} n_j k &
+	0 &
+	\bar{\rho} \tilde{v}^l n_l &
+	0 \\
+	
+	\tilde{v}^l n_l \omega &
+	\bar{\rho} n_j \omega &
+	0 &
+	0 & \bar{\rho} \tilde{v}^l n_l
+\end{matrix}\right]
+}
+$<br>
+<br>
+
+${A^I}_J + \delta^I_J = 
+\downarrow I 
+\overset{\rightarrow J}{
+\left[\begin{matrix}
+
+
+	\tilde{v}^l n_l & 
+	
+	\bar{\rho} n_j &
+	
+	0 &
+	
+	0 &
+	
+	0 \\
+
+
+
+	0 &
+	
+	\delta^i_j \tilde{v}^l n_l &
+	
+	\frac{1}{\bar{\rho}} n^i &
+	
+	0 &
+	
+	0 \\
+
+
+	\frac{1}{6} \tilde{v}^l n_l k & 
+
+	P^* n_j &
+
+	\frac{R}{C_v} (1 - \tilde{v}_k n^k)
+	+ \tilde{v}^k n_k &
+
+	0 &
+
+	0 \\
+
+\end{matrix}\right]
+}$<br>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Flux derivative with respect to direction:<br>
 <br>
 
 ${F^{Ij}}_{,j} = \left[\matrix{

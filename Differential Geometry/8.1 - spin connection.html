@@ -16,13 +16,16 @@ Notice that $(e')_I = {\Lambda^J}_I e_J$ retains all properties for Lorentz tran
 so $e_I$ is gauge invariant wrt ${\Lambda^J}_I$<br>
 <br>
 
+Let $(\hat{\nabla}_\eta)_I$ be defined as the covariant derivative associated with the metric $\eta_{IJ}$ and also with connections possessing zero torsion.<br>
+Let ${(\hat{\Gamma}_\eta)^I}_{JK}$ be the zero-torsion Levi-Civita connection associated with the covariant derivative $(\hat{\nabla}_\eta)_I$, defined by $(\hat\nabla_\eta)_I e_J = {(\hat\Gamma_\eta)^K}_{IJ} e_K$<br>
+<br><br>
+
 The Levi-Civita connection with a constant metric (such as our diagonalized $e_I = {e^a}_I e_a)$:<br>
 $(\hat\Gamma_\eta)_{IJK} = \frac{1}{2} ( 
 	e_K (\eta_{IJ}) + e_J (\eta_{IK}) - e_I (\eta_{JK})
 	+ (c_\eta)_{IJK} + (c_\eta)_{IKJ} - (c_\eta)_{KJI}
 )$<br>
 $= \frac{1}{2} (  (c_\eta)_{IJK} + (c_\eta)_{IKJ} - (c_\eta)_{KJI} )$<br>
-Notice the $\hat\Gamma_\eta$ is defined by $\hat\nabla^\eta_I e_J = {(\hat\Gamma_\eta)^K}_{IJ} e_K$<br>
 This connection is called the spin-connection.<br>
 <br>
 
@@ -85,13 +88,17 @@ What happens when you calculate the coordinate-basis Levi-Civita covariant deriv
 $\hat\nabla_a e_J = \hat\nabla_a ({e^u}_J e_u)$<br>
 $ = \hat\nabla_a({e^u}_J) e_u + {e^u}_J \hat\nabla_a e_u$<br>
 $ = (e_a({e^c}_J) + {e^u}_J {\hat\Gamma^c}_{au}) e_c$<br>
+<br>
+
 And what happens when you convert that back to the normalized coordinates?<br>
 $\hat\nabla_I e_J = \hat\nabla_{e_I} e_J = \hat\nabla_{{e^a}_I e_a} e_J = {e^a}_I \hat\nabla_{e_a} e_J$<br>
 $ = {e^a}_I \hat\nabla_a e_J$<br>
 $ = {e^a}_I (e_a({e^c}_J) + {e^u}_J {\hat\Gamma^c}_{au}) e_c$<br>
 $ = (e_I({e^c}_J) + {\hat\Gamma^c}_{IJ}) e_c$<br>
 $ = (e_I({e^c}_J) {e_c}^K + {\hat\Gamma^K}_{IJ}) e_K$<br>
-is $\hat\nabla_I e_J = \hat\nabla^\eta_I e_J$?<br>
+<br>
+
+Is $\hat\nabla_I e_J = (\hat\nabla_\eta)_I e_J$?<br>
 $ = (e_I({e^c}_J) {e_c}^K + \frac{1}{2} {e_a}^K g^{au} (e_c(g_{ub}) + e_b(g_{uc}) - e_u(g_{bc})) {e^b}_I {e^c}_J) e_K$<br>
 $ = (e_I({e^c}_J) {e_c}^K 
 	+ \frac{1}{2} e^{uK} {e^b}_I {e^c}_J e_c({e_u}^M e_{bM}) 
