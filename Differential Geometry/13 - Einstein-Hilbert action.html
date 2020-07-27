@@ -11,7 +11,7 @@
 <br>
 
 Einstein: $ {G^{ab}}_{cd} = {(\ast R\ast)^{ab}}_{cd} = {\epsilon^{ab}}_{uv} {R^{uv}}_{rs} {\epsilon^{rs}}_{cd} $<br>
-Einstein: $ G_{ab} = R_{ab} - {1\over 2} R g_{ab} = {G^{ua}}_{ub} $<br>
+Einstein: $ G_{ab} = R_{ab} - \frac{1}{2} R g_{ab} = {G^{ua}}_{ub} $<br>
 <br>
 
 Jacobi's formula:<br>
@@ -21,22 +21,22 @@ $=-\epsilon^{0123} \epsilon_{abcd} {A^a}_0 {A^b}_1 {A^c}_2 {A^d}_3$<br>
 &nbsp;&nbsp;&nbsp;Summing over all even permutations of $uvrs$ (such that $-\epsilon^{uvrs}=1$) means every time the $uvrs$ indexes are permuted an even number of times, so must the associated $a$'s be rearranged to match the original ${A^a}_0 {A^b}_1 {A^c}_2 {A^d}_3$.  For this to happen the $abcd$ indexes must be permuted an even number of times to match the original expression.  Because $abcd$ incides have been permuted an even number of times, the $\epsilon_{abcd}$ doesn't change its sign.<br>
 &nbsp;&nbsp;&nbsp;Likewise when summing the odd permutations of $uvrs$, $-\epsilon^{uvrs}=-1$, the $A$'s need to be rearranged to match the original expression, the $abcd$ indexes have to be permuted an odd number of times, and $\epsilon_{abcd}$ changes its sign as well to $-1$, so the term is each equal to the original expression.<br>
 &nbsp;&nbsp;&nbsp;The total number of expressions summed is $\frac{1}{3!}$.<br>
-$=-{1\over{3!}}\epsilon^{uvrs} \epsilon_{abcd} {A^a}_u {A^b}_v {A^c}_r {A^d}_s$<br>
-$=-{1\over{4!}}\epsilon^{uvrse} \epsilon_{abcde} {A^a}_u {A^b}_v {A^c}_r {A^d}_s$<br>
-$det(A)={1\over{4!}} \delta^{uvrs}_{abcd} {A^a}_u {A^b}_v {A^c}_r {A^d}_s$<br>
-$4=\delta^a_a={A^a}_u{(A^{-1})^u}_a=({A^a}_u )({1\over{3!}} \delta^{uvrs}_{abcd} {A^b}_v {A^c}_r {A^d}_s / det(A))$<br>
-Therefore ${(A^{-1})^u}_a={1\over{3!}} \delta^{uvrs}_{abcd} {A^b}_v {A^c}_r {A^d}_s / det(A)$<br>
-${(A^{-1})^u}_a det(A)={1\over{3!}} \delta^{uvrs}_{abcd} {A^b}_v {A^c}_r {A^d}_s$<br>
+$=-\frac{1}{3!}\epsilon^{uvrs} \epsilon_{abcd} {A^a}_u {A^b}_v {A^c}_r {A^d}_s$<br>
+$=-\frac{1}{4!}\epsilon^{uvrse} \epsilon_{abcde} {A^a}_u {A^b}_v {A^c}_r {A^d}_s$<br>
+$det(A)=\frac{1}{4!} \delta^{uvrs}_{abcd} {A^a}_u {A^b}_v {A^c}_r {A^d}_s$<br>
+$4=\delta^a_a={A^a}_u{(A^{-1})^u}_a=({A^a}_u )(\frac{1}{3!} \delta^{uvrs}_{abcd} {A^b}_v {A^c}_r {A^d}_s / det(A))$<br>
+Therefore ${(A^{-1})^u}_a=\frac{1}{3!} \delta^{uvrs}_{abcd} {A^b}_v {A^c}_r {A^d}_s / det(A)$<br>
+${(A^{-1})^u}_a det(A)=\frac{1}{3!} \delta^{uvrs}_{abcd} {A^b}_v {A^c}_r {A^d}_s$<br>
 <br>
-${\delta\over{\delta{A^e}_f}}det(A)={1\over{4!}} \delta^{uvrs}_{abcd} {\delta\over{\delta{A^e}_f}}({A^a}_u {A^b}_v {A^c}_r {A^d}_s)$<br>
-$={1\over{4!}} \delta^{uvrs}_{abcd} {\delta\over{\delta{A^e}_f}}({A^a}_u {A^b}_v {A^c}_r {A^d}_s)$<br>
-$={1\over{4!}} \delta^{uvrs}_{abcd}({\delta\over{\delta{A^e}_f}}{A^a}_u {A^b}_v {A^c}_r {A^d}_s + {A^a}_u {\delta\over{\delta{A^e}_f}}{A^b}_v {A^c}_r {A^d}_s + {A^a}_u {A^b}_v {\delta\over{\delta{A^e}_f}}{A^c}_r {A^d}_s + {A^a}_u {A^b}_v {A^c}_r {\delta\over{\delta{A^e}_f}}{A^d}_s)$<br>
-$={1\over{4!}} \delta^{uvrs}_{abcd}(\delta^a_e \delta^e_u {A^b}_v {A^c}_r {A^d}_s + {A^a}_u \delta^b_e \delta^e_v {A^c}_r {A^d}_s + {A^a}_u {A^b}_v \delta^c_e \delta^e_r {A^d}_s + {A^a}_u {A^b}_v {A^c}_r \delta^d_e \delta^e_s)$<br>
-$={1\over{4!}} \delta^{uvrs}_{abcd}\delta^a_e \delta^e_u ({A^b}_v {A^c}_r {A^d}_s + {A^b}_v {A^c}_r {A^d}_s + {A^b}_v {A^c}_r {A^d}_s + {A^b}_v {A^c}_r {A^d}_s)$<br>
-$={1\over{3!}} \delta^{fvrs}_{ebcd} {A^b}_v {A^c}_r {A^d}_s$<br>
-${\delta\over{\delta{A^e}_f}}det(A)={(A^{-1})^f}_e det(A)$ ...aka... ${\delta\over{\delta A}}det(A)=A^{-T}det(A) =adj(A^T)$<br>
-$({\delta\over{\delta{A^e}_f}}det(A))/det(A)={(A^{-1})^f}_e$<br>
-${\delta\over{\delta{A^e}_f}}ln|det(A)|={(A^{-1})^f}_e$<br>
+$\frac{\delta}{\delta{A^e}_f} det(A)=\frac{1}{4!} \delta^{uvrs}_{abcd} \frac{\delta}{\delta{A^e}_f} ({A^a}_u {A^b}_v {A^c}_r {A^d}_s)$<br>
+$=\frac{1}{4!} \delta^{uvrs}_{abcd} \frac{\delta}{\delta{A^e}_f} ({A^a}_u {A^b}_v {A^c}_r {A^d}_s)$<br>
+$=\frac{1}{4!} \delta^{uvrs}_{abcd}(\frac{\delta}{\delta{A^e}_f} {A^a}_u {A^b}_v {A^c}_r {A^d}_s + {A^a}_u \frac{\delta}{\delta{A^e}_f} {A^b}_v {A^c}_r {A^d}_s + {A^a}_u {A^b}_v \frac{\delta}{\delta{A^e}_f} {A^c}_r {A^d}_s + {A^a}_u {A^b}_v {A^c}_r \frac{\delta}{\delta{A^e}_f} {A^d}_s)$<br>
+$=\frac{1}{4!} \delta^{uvrs}_{abcd}(\delta^a_e \delta^e_u {A^b}_v {A^c}_r {A^d}_s + {A^a}_u \delta^b_e \delta^e_v {A^c}_r {A^d}_s + {A^a}_u {A^b}_v \delta^c_e \delta^e_r {A^d}_s + {A^a}_u {A^b}_v {A^c}_r \delta^d_e \delta^e_s)$<br>
+$=\frac{1}{4!} \delta^{uvrs}_{abcd}\delta^a_e \delta^e_u ({A^b}_v {A^c}_r {A^d}_s + {A^b}_v {A^c}_r {A^d}_s + {A^b}_v {A^c}_r {A^d}_s + {A^b}_v {A^c}_r {A^d}_s)$<br>
+$=\frac{1}{3!} \delta^{fvrs}_{ebcd} {A^b}_v {A^c}_r {A^d}_s$<br>
+$\frac{\delta}{\delta{A^e}_f} det(A)={(A^{-1})^f}_e det(A)$ ...aka... $\frac{\delta}{\delta A} det(A)=A^{-T}det(A) =adj(A^T)$<br>
+$(\frac{\delta}{\delta{A^e}_f} det(A))/det(A)={(A^{-1})^f}_e$<br>
+$\frac{\delta}{\delta{A^e}_f} ln|det(A)|={(A^{-1})^f}_e$<br>
 $\delta ln|det(A)|={(A^{-1})^f}_e \delta{A^e}_f$ ...aka... $\delta ln|det(A)| = tr(A^{-1} dA)$<br>
 <br>
 
@@ -132,27 +132,28 @@ $ S_{vacuum} = \int \sqrt{-g} R dx^4 $<br>
 $ \delta S_{vacuum} = \delta \int \sqrt{-g} R dx^4 $<br>
 $ = \int \delta (\sqrt{-g} R) dx^4 $<br>
 $ = \int ( \delta \sqrt{-g} R + \sqrt{-g} \delta R ) dx^4 $<br>
-$ = \int ( {1\over 2} {1\over\sqrt{-g}} \delta (-g) R + \sqrt{-g} \delta (R_{ab} g^{ab}) ) dx^4 $<br>
-$ = \int ( {1\over{2g}} \sqrt{-g} \delta g R + \sqrt{-g} (R_{ab} \delta g^{ab} + \delta R_{ab} g^{ab})) dx^4 $<br>
-$ = \int \sqrt{-g} ( {1\over{2g}} \delta g R + R_{ab} \delta g^{ab} + g^{ab} \delta R_{ab} ) dx^4 $<br>
-$ = \int \sqrt{-g} ( -{1\over{2g}} g g^{ab} + R \delta g^{ab} + g^{ab} \delta R_{ab}) dx^4 $<br>
-$ = \int \sqrt{-g} ( \delta g^{ab} (R_{ab} - {1\over 2} R g_{ab}) + g^{ab} \delta R_{ab} ) dx^4 $<br>
+$ = \int ( \frac{1}{2} \frac{1}{\sqrt{-g}} \delta (-g) R + \sqrt{-g} \delta (R_{ab} g^{ab}) ) dx^4 $<br>
+$ = \int ( \frac{1}{2g} \sqrt{-g} \delta g R + \sqrt{-g} (R_{ab} \delta g^{ab} + \delta R_{ab} g^{ab})) dx^4 $<br>
+$ = \int \sqrt{-g} ( \frac{1}{2g} \delta g R + R_{ab} \delta g^{ab} + g^{ab} \delta R_{ab} ) dx^4 $<br>
+$ = \int \sqrt{-g} ( -\frac{1}{2g} g g^{ab} + R \delta g^{ab} + g^{ab} \delta R_{ab}) dx^4 $<br>
+$ = \int \sqrt{-g} ( \delta g^{ab} (R_{ab} - \frac{1}{2} R g_{ab}) + g^{ab} \delta R_{ab} ) dx^4 $<br>
 $ = \int \sqrt{-g} ( \delta g^{ab} G_{ab} + g^{ab} \delta R_{ab} ) dx^4 $<br>
 $ = \int \sqrt{-g} ( \delta g^{ab} G_{ab} + g^{ab} (\nabla_u \delta {\Gamma^u}_{ab} - \nabla_b \delta {\Gamma^u}_{au}) ) dx^4 $<br>
 $ \delta S_{vacuum} = \int \sqrt{-g} ( \delta g^{ab} G_{ab} ) dx^4 $<br>
 <br>
 $ S_{matter} = -16 \pi \int \sqrt{-g} \mathcal{L}_{matter} dx^4 $<br>
 $ \delta S_{matter} = -16 \pi \int \delta (\sqrt{-g} \mathcal{L}_{matter}) dx^4 $<br>
-$ = -16 \pi \int ( {1\over 2} {1\over\sqrt{-g}} \delta(-g) \mathcal{L}_{matter} + \sqrt{-g} \delta \mathcal{L}_{matter} ) dx^4 $<br>
+$ = -16 \pi \int ( \frac{1}{2} \frac{1}{\sqrt{-g}} \delta(-g) \mathcal{L}_{matter} + \sqrt{-g} \delta \mathcal{L}_{matter} ) dx^4 $<br>
 $ = -8 \pi \int \sqrt{-g} ( 2 \delta \mathcal{L}_{matter} - \delta g^{ab} \mathcal{L}_{matter} ) dx^4 $<br>
-Let $ T_{ab} = 2 {\delta\over{\delta g^{ab}}} \mathcal{L}_{matter} - \mathcal{L}_{matter} $<br>
+Let $ T_{ab} = 2 \frac{\delta}{\delta g^{ab}} \mathcal{L}_{matter} - \mathcal{L}_{matter} $<br>
 $ \delta S_{matter} = -8 \pi \int \sqrt{-g} T_{ab} \delta g^{ab} dx^4 $<br>
 <br>
-$ S = S_{vacuum} + S_{matter} $<br>
-$ 0 = \delta S = \int \sqrt{-g} \delta g^{ab} ( G_{ab} - 8 \pi T_{ab} ) dx^4 $<br>
+$ S_{EH} = S_{vacuum} + S_{matter} $<br>
+$ 0 = \delta S_{EH} = \int \sqrt{-g} \delta g^{ab} ( G_{ab} - 8 \pi T_{ab} ) dx^4 $<br>
 $ 0 = G_{ab} - 8 \pi T_{ab} $<br>
 Einstein Field Equation:<br>
 $ G_{ab} = 8 \pi T_{ab} $<br>
+TODO consider boundary terms as well?<br>
 
 <br>
 <a href='index.html'>Back</a><br>

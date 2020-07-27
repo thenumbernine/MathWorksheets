@@ -18,26 +18,31 @@ TODO:<br>
 How is $\omega_{aIJ}$ any different from previous $\omega_{ab}$ or $\Gamma_{abc}$?<br>
 Is it related to any connection, or to the Levi-Civita specifically?<br>
 Seems this is still torsion-free, which means it must be a(nti)symmetric and based (purely) on the commutations, especially if the metric is diagonalized.<br>
+(Actually I've seen some supergravity stuff that is not torsion-free.)<br>
 <br>
 
-introduce new connection ${{\omega_a}^I}_J$ that acts on Lorentz indexes for the affine covariant derivative:<br>
+Introduce new connection ${{\omega_a}^I}_J$ that acts on Lorentz indexes for the affine covariant derivative:<br>
 $ \nabla_a V^I = \partial_a V^I + {{\omega_a}^I}_J V^J $<br>
 $ \nabla_a V_I = \partial_a V_I - {{\omega_a}^J}_I V_J $<br>
 $ = \partial_a V_I + {\omega_{aI}}^J V_J $<br>
+(TODO: why doesn't this "act on" coordinate indexes?  I'm betting because $\nabla e = 0$, therefore $\nabla (V e) = (\nabla V) e$.)<br>
 <br>
+
+
 Define ${{\omega_a}^I}_J$ such that the affine covariant derivative cancels the tetrad (as well as metric):<br>
 $ \nabla_a {e_b}^I = 0 = \partial_a {e_b}^I - {\Gamma^d}_{ba} {e_d}^I + {{\omega_a}^I}_J {e_b}^J $<br>
 $ 0 = \partial_a {e_b}^I - {\Gamma^I}_{ba} + {{\omega_a}^I}_b $<br>
 $ {{\omega_a}^I}_b = {\Gamma^I}_{ba} - \partial_a {e_b}^I $<br>
 <br>
 
-Require that ${{\omega_a}^I}_J$ annihilates the Minkowski metric:<br>
-$ 0 = \nabla_a \eta_{I J} = \partial_a \eta_{I J} - {{\omega_a}^K}_I \eta_{KJ} - {{\omega_a}^K}_J \eta_{IK} $<br>
-$ 0 = 0 - \omega_{aJI} - \omega_{aIJ} $<br>
-$ \omega_{aIJ} = -\omega_{aJI} $<br>
+Require that ${{\omega_a}^I}_J$ cancels the Minkowski metric:<br>
+$0 = \nabla_a \eta_{I J} = \partial_a \eta_{I J} - {{\omega_a}^K}_I \eta_{KJ} - {{\omega_a}^K}_J \eta_{IK} $<br>
+$0 = 0 - \omega_{aJI} - \omega_{aIJ} $<br>
+$\omega_{aIJ} = -\omega_{aJI} $<br>
+(TODO wouldn't any partial derivative always cancel the Minkowski metric?  Well, what about the basis vector?  $\eta = \eta_{IJ} e^I \otimes e^J$)<br>
 <br>
 
-curvature on Lorentz indexes now incorporating spin connections:<br>
+Curvature around coordinates of a tensor with Lorentz components now incorporates the spin connections:<br>
 $ {{\hat R_{ab}}^I}_J V^J = \nabla_a \nabla_b V^I - \nabla_b \nabla_a V^I $<br>
 $ = \nabla_a (\partial_b V^I + {{\omega_b}^I}_J V^J) - \nabla_b (\partial_a V^I + {{\omega_a}^I}_J V^J) $<br>
 $ = \partial_a (\partial_b V^I + {{\omega_b}^I}_J V^J)
