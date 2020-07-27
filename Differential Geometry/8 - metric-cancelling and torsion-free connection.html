@@ -264,6 +264,9 @@ ${\hat\Gamma^u}_{au} = \frac{1}{2} g^{uv} e_a (g_{uv})$<br>
 TODO And compare it with the non-coordinate Levi-Civita connection trace.<br>
 <br>
 
+<hr>
+<br>
+
 Levi-Civita change-of-basis:<br>
 $e_c (g_{ab}) = \frac{\partial}{\partial x^c} ( g_{ab} )$<br>
 $e_{c'} (g'_{a'b'}) = \frac{\partial}{\partial x^{c'}} ( g'_{a'b'} )$<br>
@@ -609,8 +612,91 @@ $= {\Gamma'^a}_{bc}
 	- \frac{1}{1 + r} {r^a}_d {\Gamma'^d}_{bc}
 	- \frac{1}{1 + r} {r^a}_d {r^d}_e {\Gamma''^e}_{bc}$<br>
 <br>
+
+<hr>
 <br>
 
+Tensor density.<br>
+
+<br>
+Assuming $\nabla$ is a metric-cancelling covariant derivative, calculate the covariant derivative of the scalar of the metric determinant:<br>
+$\nabla_a g$<br>
+$= \nabla_a \left( \bar{\epsilon}^{u_1 ... u_n} \underset{i=1}{\overset{n}{\Pi}} g_{i u_i} \right)$<br>
+$= \bar{\epsilon}^{u_1 ... u_n} \nabla_a \left( \underset{i=1}{\overset{n}{\Pi}} g_{i u_i} \right)$<br>
+$= \bar{\epsilon}^{u_1 ... u_n} \underset{i=1}{\overset{n}{\Sigma}} \left( \nabla_a g_{i u_i} \cdot \underset{j=1, j \ne i}{\overset{n}{\Pi}} g_{j u_j} \right)$<br>
+Using $\nabla_a g_{uv} = 0$:<br>
+$= \bar{\epsilon}^{u_1 ... u_n} \underset{i=1}{\overset{n}{\Sigma}} \left( 0 \cdot \underset{j=1, j \ne i}{\overset{n}{\Pi}} g_{j u_j} \right)$<br>
+$= \bar{\epsilon}^{u_1 ... u_n} \underset{i=1}{\overset{n}{\Sigma}} 0$<br>
+$= 0$<br>
+<br>
+Now we see that the covariant derivative of every scalar is not necessarily equal to the partial derivative of that scalar.<br>
+<br>
+
+Raising it to a power:<br>
+$\nabla_a (g)^m$<br>
+$= m (g)^{m-1} \cdot \nabla_a g$<br>
+$= m (g)^{m-1} \cdot 0$<br>
+$= 0$<br>
+<br>
+
+Equating this to the original "covariant derivative equals partial derivative plus connection" rule:<br>
+${\Gamma^u}_{au} = e_a (log(\sqrt{|g|})) = e_a( \frac{1}{2} log(|g|) ) = \frac{1}{2|g|} e_a(|g|) = \frac{1}{2g} e_a(g)$<br>
+So $2 g {\Gamma^u}_{au} = e_a(g)$<br>
+$0 = \nabla_a g = e_a ( g ) - e_a ( g ) = e_a(g) - 2 g {\Gamma^u}_{au}$<br>
+<br>
+
+Same but for metric determinant raised to a power:<br>
+$0 = \nabla_a (g)^m$<br>
+$= e_a((g)^m) - e_a((g)^m)$<br>
+$= e_a((g)^m) - m (g)^{m-1} e_a(g)$<br>
+$= e_a((g)^m) - m (g)^{m-1} \cdot 2 g {\Gamma^u}_{au}$<br>
+$= e_a((g)^m) - 2 m (g)^m {\Gamma^u}_{au}$<br>
+<br>
+
+Using the metric determinant square-root:<br> 
+$\nabla_a (\sqrt{|g|})^m = e_a((\sqrt{|g|})^m) - m (\sqrt{|g|})^m {\Gamma^u}_{au}$<br>
+From here on we will refer to any scalar function mapping from our manifold to a real value, if it is scaled by $(\sqrt{|g|})^m$, then it will be "of weight $m$".<br> 
+<br>
+
+Combining this with the original (p, q) tensor definition of covariant derivatives:<br>
+Let $\mathscr{T} 
+	= {\mathscr{T}^{a_1 ... a_p}}_{b_1 ... b_q} \underset{i=1}{\overset{p}{\otimes}} e_{a_i} \underset{i=1}{\overset{q}{\otimes}} e^{b_i}
+	= (\sqrt{|g|})^m {T^{a_1 ... a_p}}_{b_1 ... b_q} \underset{i=1}{\overset{p}{\otimes}} e_{a_i} \underset{i=1}{\overset{q}{\otimes}} e^{b_i}
+$ be a weight-m (p, q) tensor.<br>
+<br>
+Then $\nabla \mathscr{T} = e^u \otimes \nabla_u ((\sqrt{|g|})^m {T^{a_1 ... a_p}}_{b_1 ... b_q} \underset{i=1}{\overset{p}{\otimes}} e_{a_i} \underset{i=1}{\overset{q}{\otimes}} e^{b_i})$<br>
+$= e^u \otimes \nabla_u ( (\sqrt{|g|})^m ) {T^{a_1 ... a_p}}_{b_1 ... b_q} \underset{i=1}{\overset{p}{\otimes}} e_{a_i} \underset{i=1}{\overset{q}{\otimes}} e^{b_i}
+	+ e^u \otimes (\sqrt{|g|})^m  \nabla_u ( {T^{a_1 ... a_p}}_{b_1 ... b_q} \underset{i=1}{\overset{p}{\otimes}} e_{a_i} \underset{i=1}{\overset{q}{\otimes}} e^{b_i} )
+$<br>
+$= \left(
+	(e_u ( (\sqrt{|g|})^m ) - m (\sqrt{|g|})^m {\Gamma^v}_{uv} ) {T^{a_1 ... a_p}}_{b_1 ... b_q}
+	+ (\sqrt{|g|})^m  ( 
+		e_u ( {T^{a_1 ... a_p}}_{b_1 ... b_q} )
+		+ {\Gamma^{a_i}}_{u v} {T^{a_1 ... a_{i-1} v a_{i+1}  ... a_p}}_{b_1 ... b_q} 
+		- {\Gamma^v}_{u b_i} {T^{a_1 ... a_p}}_{b_1 ... b_{i-1} v b_{i+1} ... b_q}
+	)
+\right) e^u \otimes \underset{i=1}{\overset{p}{\otimes}} e_{a_i} \underset{i=1}{\overset{q}{\otimes}} e^{b_i} 
+$<br>
+$= \left(
+	e_u ( (\sqrt{|g|})^m {T^{a_1 ... a_p}}_{b_1 ... b_q} )
+	- m (\sqrt{|g|})^m {\Gamma^v}_{uv} {T^{a_1 ... a_p}}_{b_1 ... b_q}
+	+ (\sqrt{|g|})^m (
+		+ {\Gamma^{a_i}}_{u v} {T^{a_1 ... a_{i-1} v a_{i+1}  ... a_p}}_{b_1 ... b_q} 
+		- {\Gamma^v}_{u b_i} {T^{a_1 ... a_p}}_{b_1 ... b_{i-1} v b_{i+1} ... b_q}
+	)
+\right) e^u \otimes \underset{i=1}{\overset{p}{\otimes}} e_{a_i} \underset{i=1}{\overset{q}{\otimes}} e^{b_i} 
+$<br>
+$= \left(
+	e_u ( {\mathscr{T}^{a_1 ... a_p}}_{b_1 ... b_q} )
+	+ {\Gamma^{a_i}}_{u v} {\mathscr{T}^{a_1 ... a_{i-1} v a_{i+1}  ... a_p}}_{b_1 ... b_q} 
+	- {\Gamma^v}_{u b_i} {\mathscr{T}^{a_1 ... a_p}}_{b_1 ... b_{i-1} v b_{i+1} ... b_q}
+	- m {\Gamma^v}_{uv} {\mathscr{T}^{a_1 ... a_p}}_{b_1 ... b_q}
+\right) e^u \otimes \underset{i=1}{\overset{p}{\otimes}} e_{a_i} \underset{i=1}{\overset{q}{\otimes}} e^{b_i} 
+$<br>
+<br>
+
+<br>
+<br>
 
 <a href='.'>Back</a><br><br>
 	</body>
