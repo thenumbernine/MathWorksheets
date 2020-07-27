@@ -659,12 +659,16 @@ From here on we will refer to any scalar function mapping from our manifold to a
 <br>
 
 Combining this with the original (p, q) tensor definition of covariant derivatives:<br>
+Let $T = {T^{a_1 ... a_p}}_{b_1 ... b_q} \underset{i=1}{\overset{p}{\otimes}} e_{a_i} \underset{i=1}{\overset{q}{\otimes}} e^{b_i}$ be a (p, q) tensor.<br>
 Let $\mathscr{T} 
+	= (\sqrt{|g|})^m T
 	= {\mathscr{T}^{a_1 ... a_p}}_{b_1 ... b_q} \underset{i=1}{\overset{p}{\otimes}} e_{a_i} \underset{i=1}{\overset{q}{\otimes}} e^{b_i}
 	= (\sqrt{|g|})^m {T^{a_1 ... a_p}}_{b_1 ... b_q} \underset{i=1}{\overset{p}{\otimes}} e_{a_i} \underset{i=1}{\overset{q}{\otimes}} e^{b_i}
 $ be a weight-m (p, q) tensor.<br>
 <br>
-Then $\nabla \mathscr{T} = e^u \otimes \nabla_u ((\sqrt{|g|})^m {T^{a_1 ... a_p}}_{b_1 ... b_q} \underset{i=1}{\overset{p}{\otimes}} e_{a_i} \underset{i=1}{\overset{q}{\otimes}} e^{b_i})$<br>
+
+The covariant derivative of $\mathscr{T}$ is defined as:<br>
+$\nabla \mathscr{T} = e^u \otimes \nabla_u ((\sqrt{|g|})^m {T^{a_1 ... a_p}}_{b_1 ... b_q} \underset{i=1}{\overset{p}{\otimes}} e_{a_i} \underset{i=1}{\overset{q}{\otimes}} e^{b_i})$<br>
 $= e^u \otimes \nabla_u ( (\sqrt{|g|})^m ) {T^{a_1 ... a_p}}_{b_1 ... b_q} \underset{i=1}{\overset{p}{\otimes}} e_{a_i} \underset{i=1}{\overset{q}{\otimes}} e^{b_i}
 	+ e^u \otimes (\sqrt{|g|})^m  \nabla_u ( {T^{a_1 ... a_p}}_{b_1 ... b_q} \underset{i=1}{\overset{p}{\otimes}} e_{a_i} \underset{i=1}{\overset{q}{\otimes}} e^{b_i} )
 $<br>
@@ -694,6 +698,23 @@ $= \left(
 \right) e^u \otimes \underset{i=1}{\overset{p}{\otimes}} e_{a_i} \underset{i=1}{\overset{q}{\otimes}} e^{b_i} 
 $<br>
 <br>
+And now we have the up-add/down-subtract definition for the metric-cancelling covariant derivative of a tensor density of weight $m$.<br>
+Keep twisting the knobs and we get...<Br>
+$= \left(
+	e_u( \sqrt{|g|}^m {T^{a_1 ... a_p}}_{b_1 ... b_q})
+	+ \sqrt{|g|}^m {\Gamma^{a_i}}_{u v} {T^{a_1 ... a_{i-1} v a_{i+1}  ... a_p}}_{b_1 ... b_q} 
+	- \sqrt{|g|}^m {\Gamma^v}_{u b_i} {T^{a_1 ... a_p}}_{b_1 ... b_{i-1} v b_{i+1} ... b_q}
+	- e_u(\sqrt{|g|}^m) {T^{a_1 ... a_p}}_{b_1 ... b_q}
+\right) e^u \otimes \underset{i=1}{\overset{p}{\otimes}} e_{a_i} \underset{i=1}{\overset{q}{\otimes}} e^{b_i} 
+$<br>
+$= \sqrt{|g|}^m \left(
+	e_u({T^{a_1 ... a_p}}_{b_1 ... b_q})
+	+ {\Gamma^{a_i}}_{u v} {T^{a_1 ... a_{i-1} v a_{i+1}  ... a_p}}_{b_1 ... b_q} 
+	- {\Gamma^v}_{u b_i} {T^{a_1 ... a_p}}_{b_1 ... b_{i-1} v b_{i+1} ... b_q}
+\right) e^u \otimes \underset{i=1}{\overset{p}{\otimes}} e_{a_i} \underset{i=1}{\overset{q}{\otimes}} e^{b_i} 
+$<br>
+$= \sqrt{|g|}^m \nabla T$<br>
+And this is where I could have ended up much earlier if I had just used the chain rule without expanding the basis vectors/one-forms of the unweighted tensor's definition.<br>
 
 <br>
 <br>
