@@ -78,19 +78,20 @@ $ \frac{\partial}{\partial \dot{\gamma}_{ij}} K_{kl} = -\frac{1}{2\alpha} \delta
 <br>
 
 conjugate momentum:<br>
-$ \pi_{ij} = {{\partial \mathcal{L}}\over{\partial \dot{\gamma}^{ij}}} $<br>
+$ \pi_{ij} = \frac{\partial \mathcal{L}}{\partial \dot{\gamma}^{ij}} $<br>
 $ = \frac{\partial}{\partial \dot{\gamma}^{ij}} (\alpha \sqrt{\gamma} (R^{\perp} + K_{kl} K^{kl} - K^2)) $<br>
 $ = \frac{\partial}{\partial \dot{\gamma}^{ij}} \alpha \sqrt{\gamma} (R^{\perp} + \gamma_{km} \gamma_{ln} K^{kl} K^{mn} - K^{kl} \gamma_{kl} K^{mn} \gamma_{mn}) $<br>
-$ \pi_{ij} = \alpha \sqrt{\gamma} ({\delta\over{\delta\dot{\gamma}^{ij}}} (\gamma_{km} \gamma_{ln} K^{kl} K^{mn}) - {\delta\over{\delta\dot{\gamma}^{ij}}} (K^{kl} \gamma_{kl} K^{mn} \gamma_{mn})) $<br>
-$ \pi_{ij} = \alpha \sqrt{\gamma} (\gamma_{km} \gamma_{ln} {\delta\over{\delta\dot{\gamma}^{ij}}} (K^{kl} K^{mn}) - \gamma_{kl} \gamma_{mn} {\delta\over{\delta\dot{\gamma}^{ij}}} (K^{kl} K^{mn})) $<br>
-$ \pi_{ij} = \alpha \sqrt{\gamma} (\gamma_{km} \gamma_{ln} - \gamma_{kl} \gamma_{mn}) {\delta\over{\delta\dot{\gamma}^{ij}}} (K^{kl} K^{mn}) $<br>
-$ \pi_{ij} = \alpha \sqrt{\gamma} (\gamma_{km} \gamma_{ln} - \gamma_{kl} \gamma_{mn}) (K^{kl} {\delta\over{\delta\dot{\gamma}^{ij}}} K^{mn} + K^{mn} {\delta\over{\delta\dot{\gamma}^{ij}}} K^{kl}) $<br>
+$ \pi_{ij} = \alpha \sqrt{\gamma} (\frac{\delta}{\delta\dot{\gamma}^{ij}} (\gamma_{km} \gamma_{ln} K^{kl} K^{mn}) - \frac{\delta}{\delta\dot{\gamma}^{ij}} (K^{kl} \gamma_{kl} K^{mn} \gamma_{mn})) $<br>
+$ \pi_{ij} = \alpha \sqrt{\gamma} (\gamma_{km} \gamma_{ln} \frac{\delta}{\delta\dot{\gamma}^{ij}} (K^{kl} K^{mn}) - \gamma_{kl} \gamma_{mn} \frac{\delta}{\delta\dot{\gamma}^{ij}} (K^{kl} K^{mn})) $<br>
+$ \pi_{ij} = \alpha \sqrt{\gamma} (\gamma_{km} \gamma_{ln} - \gamma_{kl} \gamma_{mn}) \frac{\delta}{\delta\dot{\gamma}^{ij}} (K^{kl} K^{mn}) $<br>
+$ \pi_{ij} = \alpha \sqrt{\gamma} (\gamma_{km} \gamma_{ln} - \gamma_{kl} \gamma_{mn}) (K^{kl} \frac{\delta}{\delta\dot{\gamma}^{ij}} K^{mn} + K^{mn} \frac{\delta}{\delta\dot{\gamma}^{ij}} K^{kl}) $<br>
 $ \pi_{ij} = -\alpha \sqrt{\gamma} (\gamma_{km} \gamma_{ln} - \gamma_{kl} \gamma_{mn}) (\frac{1}{2\alpha} K^{kl} \delta^m_i \delta^n_j + \frac{1}{2\alpha} K^{mn} \delta^k_i \delta^l_j) $<br>
 $ \pi_{ij} = -\alpha \frac{1}{2\alpha} \sqrt{\gamma} ((\gamma_{km} \gamma_{ln} - \gamma_{kl} \gamma_{mn}) K^{kl} \delta^m_i \delta^n_j + (\gamma_{km} \gamma_{ln} - \gamma_{kl} \gamma_{mn}) K^{mn} \delta^k_i \delta^l_j) $<br>
 $ \pi_{ij} = -\frac{1}{2} \sqrt{\gamma} ((\gamma_{km} \gamma_{ln} K^{kl} \delta^m_i \delta^n_j - \gamma_{kl} \gamma_{mn} K^{kl} \delta^m_i \delta^n_j) + (\gamma_{km} \gamma_{ln} K^{mn} \delta^k_i \delta^l_j - \gamma_{kl} \gamma_{mn} K^{mn} \delta^k_i \delta^l_j)) $<br>
 $ \pi_{ij} = -\frac{1}{2} \sqrt{\gamma} (K_{ij} - \gamma_{ij} K + K_{ij} - \gamma_{ij} K) $<br>
 $ \pi_{ij} = -\sqrt{\gamma} (K_{ij} - \gamma_{ij} K) $<br>
 $ \pi^{ij} = -\sqrt{\gamma} (K^{ij} - \gamma^{ij} K) $<br>
+Notice that $\pi^{ij}$ is a tensor density with weight 1.<br>
 <br>
 
 Extrinsic curvature in terms of conjugate momentum:<br>
@@ -135,11 +136,15 @@ using integration by parts: $ 2 \pi^{ij} \nabla^\perp_j \beta_i = -2 \beta_i \na
 (TODO prove that integration-by-parts works with the spatial projected covariant derivative)<br>
 $ = \alpha (-\sqrt{\gamma} R^{\perp} + \frac{1}{\sqrt{\gamma}} (\pi_{ij} \pi^{ij} - \frac{1}{2} \pi^2)) - 2 \beta^i \gamma_{ij} \nabla^\perp_k \pi^{jk} $<br>
 <br>
+
 Constraints:<br>
 Let $ \mathcal{H} = -\sqrt\gamma R^\perp + \frac{1}{\sqrt{\gamma}} (\pi_{ij} \pi^{ij} - \frac{1}{2}\pi^2) $<br>
 Let $ \mathcal{M}^i = 2 \nabla^\perp_j \pi^{ij} $<br>
 $ \mathscr{H} = \alpha \mathcal{H} - \beta_i \mathcal{M}^i $<br>
+(I'm using Alcubierre's symbols from the numerical relativity community.  In the LQG world this usually looks like $H = C N + C^i N_i$.)<br>
+Assume $\mathcal{H} = 0, \mathcal{M}^i = 0$.<br>
 <br>
+
 Let $ \textbf{H} = \int \mathscr{H} dx^3 $<br>
 $ S = \int \textbf{H} dt $<br>
 <br>
@@ -156,13 +161,34 @@ $ = -\gamma_{ij} \mathcal{L}_\vec\beta \pi^{ij} $<br>
 so $ \frac{\partial}{\partial \gamma_{ij}} ( \beta_k \mathcal{M}^k ) = -\mathcal{L}_\vec\beta \pi^{ij} $<br>
 and $ \frac{\partial}{\partial \pi^{ij}} ( \beta_k \mathcal{M}^k ) = \mathcal{L}_\vec\beta \gamma_{ij} $<br>
 <br>
-Let $ \{f,g\} $ represent the Poisson bracket of $f$ and $g$:<br>
-$ \{f,g\} = {{\partial f}\over{\partial \gamma_{ij}}} {{\partial g }\over{\partial \pi^{ij}}} - {{\partial f}\over{\partial \pi^{ij}}} {{\partial g}\over{\partial \gamma_{ij}}} $<br>
+
+Let $ \{f,g\} $ represent the Poisson bracket of $f$ and $g$, defined as:<br>
+$ \{f,g\} = \frac{\partial f}{\partial \gamma_{ij}} \frac{\partial g }{\partial \pi^{ij}} - \frac{\partial f}{\partial \pi^{ij}} \frac{\partial g}{\partial \gamma_{ij}} $<br>
 <br>
+
+There is also the option to define an extended phase space: $\{\gamma_{ij}, \beta_i, \alpha\}$ and $\{\pi^{ij}, p^i, p\}$. (think of some letters for those).<br>
+The Poisson bracket can then be defined as:<br>
+$\{f, g\} =
+	\frac{\partial f}{\partial \gamma_{ij}} \frac{\partial g}{\partial \pi^{ij}} 
+	- \frac{\partial f}{\partial \pi^{ij}} \frac{\partial g}{\partial \gamma_{ij}}
+	
+	+ \frac{\partial f}{\partial \beta_i} \frac{\partial g}{\partial p^i}
+	- \frac{\partial f}{\partial p^i} \frac{\partial g}{\partial \beta_i}
+	
+	+ \frac{\partial f}{\partial \alpha} \frac{\partial g}{\partial p}
+	- \frac{\partial f}{\partial p} \frac{\partial g}{\partial \alpha}
+$.<br>
+Then choose the phase space hypersurface/subset such that $p = 0, p^i = 0$.  I guess you could pick any values for $p$ and $p^i$ so long as they are constant, such that $\frac{\partial}{\partial p} = 0$ and $\frac{\partial}{\partial p^i} = 0$.
+This causes your Poisson bracket value to reduce to the original definition of
+$\{f, g\} =\frac{\partial f}{\partial \gamma_{ij}} \frac{\partial g}{\partial \pi^{ij}} 
+	- \frac{\partial f}{\partial \pi^{ij}} \frac{\partial g}{\partial \gamma_{ij}}
+$. (This doesn't sit right.  If a coordinate variable remains constaint, this does not imply that the derivative of another variable wrt that coordinate variable will be constant.)<br>
+<br>
+
 Poisson bracket of momentum constraint and arbitrary function:<br>
 $ \{f(\pi, \gamma), \beta_k \mathcal{M}^k\} $<br>
-$ = {{\partial f}\over{\partial \gamma_{ij}}} \frac{\partial}{\partial \pi^{ij}} (\beta_k \mathcal{M}^k) - {{\partial f}\over{\partial \pi^{ij}}} \frac{\partial}{\partial \gamma_{ij}} (\beta_k \mathcal{M}^k) $<br>
-$ = {{\partial f}\over{\partial \gamma_{ij}}} \mathcal{L}_\vec\beta \gamma_{ij} + {{\partial f}\over{\partial \pi^{ij}}} \mathcal{L}_\vec\beta \pi^{ij} $<br>
+$ = \frac{\partial f}{\partial \gamma_{ij}} \frac{\partial}{\partial \pi^{ij}} (\beta_k \mathcal{M}^k) - \frac{\partial f}{\partial \pi^{ij}} \frac{\partial}{\partial \gamma_{ij}} (\beta_k \mathcal{M}^k) $<br>
+$ = \frac{\partial f}{\partial \gamma_{ij}} \mathcal{L}_\vec\beta \gamma_{ij} + \frac{\partial f}{\partial \pi^{ij}} \mathcal{L}_\vec\beta \pi^{ij} $<br>
 $ = \mathcal{L}_\vec{\beta} f $<br>
 <br>
 
@@ -185,9 +211,8 @@ $ =
 	- \frac{1}{2} \sqrt\gamma R^\perp \gamma^{ij} 
 	- \sqrt\gamma \frac{\partial}{\partial \gamma_{ij}} (R^\perp)
 	- \frac{1}{2} \frac{1}{\sqrt{\gamma}} \gamma^{ij} ( \pi_{kl} \pi^{kl} - \frac{1}{2} \pi^2)
-	+ \frac{2}{\sqrt{\gamma}} ( {\pi^i}_k \pi^{kj} - \frac{1}{2} \pi \pi^{ij}
-) $<br>
-
+	+ \frac{2}{\sqrt{\gamma}} ( {\pi^i}_k \pi^{kj} - \frac{1}{2} \pi \pi^{ij})
+$<br>
 <br>
 
 $ \frac{\partial}{\partial \pi^{ij}} \mathcal{H} $<br>
@@ -202,7 +227,25 @@ $ = \frac{1}{\sqrt{\gamma}} (
 ) $<br>
 $ = \frac{2}{\sqrt{\gamma}} ( \pi_{ij} - \frac{1}{2} \gamma_{ij} \pi ) $<br>
 <br>
+
+Derivatives of the Hamiltonian:<br>
+$\frac{\partial}{\partial \gamma_{ij}} \mathscr{H} = \frac{\partial}{\partial \gamma_{ij}} (\alpha \mathcal{H} + \beta_i \mathcal{M}^i)$<br>
+$= \alpha \frac{\partial}{\partial \gamma_{ij}} \mathcal{H}$<br>
+$= \alpha (
+	- \frac{1}{2} \sqrt\gamma R^\perp \gamma^{ij} 
+	- \sqrt\gamma \frac{\partial}{\partial \gamma_{ij}} (R^\perp)
+	- \frac{1}{2} \frac{1}{\sqrt{\gamma}} \gamma^{ij} ( \pi_{kl} \pi^{kl} - \frac{1}{2} \pi^2)
+	+ \frac{2}{\sqrt{\gamma}} ( {\pi^i}_k \pi^{kj} - \frac{1}{2} \pi \pi^{ij})
+)$<br>
+<br>
+
+$\frac{\partial}{\partial \pi^{ij}} \mathscr{H} = \frac{\partial}{\partial \pi^{ij}} (\alpha \mathcal{H} + \beta_i \mathcal{M}^i)$<br>
+$= \alpha \frac{\partial}{\partial \pi^{ij}} \mathcal{H} + \beta_i \frac{\partial}{\partial \pi^{ij}} \mathcal{M}^i$<br>
+...<br>
+<br>
+
 Lie bracket of momentum constraint and momentum constraint:<br>
+(TODO was this $\mathcal{H}$ the Hamiltonian constraint scalar, coupled with $\alpha$, or was it $\mathscr{H}$ the Hamiltonian?).<Br>
 $ \{ \beta_k \mathcal{M}^k, b_k \mathcal{M}^k \} $<br>
 $ = \frac{\partial}{\partial \gamma_{ij}} (\beta_k \mathcal{M}^k ) \frac{\partial}{\partial \pi^{ij}} (b_l \mathcal{M}^l) - \frac{\partial}{\partial \pi^{ij}} ( \beta_k \mathcal{M}^k ) \frac{\partial}{\partial \gamma_{ij}} ( b_l \mathcal{M}^l ) $<br>
 $ = -\mathcal{L}_\vec\beta \pi^{ij} \frac{\partial}{\partial \pi^{ij}} (b_l \mathcal{M}^l) - \mathcal{L}_\vec\beta \gamma_{ij} \frac{\partial}{\partial \gamma^{ij}} ( b_l \mathcal{M}^l ) $<br>
@@ -211,7 +254,9 @@ $ = [b_k \mathcal{M}^k, \vec\beta] $<br>
 TODO show this is equal to $ = [\vec{b}, \vec\beta]_k \mathcal{M}^k $<br>
 (i.e. show that $\mathcal{L}_\vec\beta M^k = -2 \mathcal{L}_\vec\beta \nabla^\perp_j \pi^{jk} = 0$)<br>
 <br>
+
 Lie bracket of momentum constraint and Hamiltonian constraint:<br>
+(TODO was this $\mathcal{H}$ the Hamiltonian constraint scalar, coupled with $\alpha$, or was it $\mathscr{H}$ the Hamiltonian?).<Br>
 $ \{ \beta_k \mathcal{M}^k, \alpha \mathcal{H} \} $<br>
 $ = \frac{\partial}{\partial \gamma_{ij}} (\beta_k \mathcal{M}^k ) \frac{\partial}{\partial \pi^{ij}} (\alpha \mathcal{H}) - \frac{\partial}{\partial \pi^{ij}} ( \beta_k \mathcal{M}^k ) \frac{\partial}{\partial \gamma_{ij}} ( \alpha \mathcal{H} ) $<br>
 $ = -\mathcal{L}_\vec\beta \pi^{ij} \frac{\partial}{\partial \pi^{ij}} (\alpha \mathcal{H}) - \mathcal{L}_\vec\beta \gamma_{ij} \frac{\partial}{\partial \gamma^{ij}} ( \alpha \mathcal{H} ) $<br>
@@ -219,7 +264,9 @@ $ = -\mathcal{L}_\vec\beta (\alpha \mathcal{H}) $<br>
 TODO show this is equal to $-\mathcal{H} \mathcal{L}_\vec\beta \alpha $<br>
 i.e. show $\mathcal{L}_\vec\beta \mathcal{H} = \mathcal{L}_\vec\beta (-\sqrt\gamma R^\perp + \frac{1}{\sqrt{\gamma}} (\pi_{ij} \pi^{ij} - \frac{1}{2} \pi^2)) = 0$<br>
 <br>
+
 Lie bracket of Hamiltonian constraint and Hamiltonian constraint:<br>
+(TODO was this $\mathcal{H}$ the Hamiltonian constraint scalar, coupled with $\alpha$, or was it $\mathscr{H}$ the Hamiltonian?).<Br>
 $ \{ \alpha \mathcal{H}, a \mathcal{H} \} $<br>
 $ =
 	\frac{\partial}{\partial \gamma_{ij}} (\alpha \mathcal{H})
@@ -236,9 +283,18 @@ $ =
 	\frac{\partial}{\partial \pi^{ij}} (\alpha \mathcal{H})
 $<br>
 TODO show this is equal to $(\alpha \partial^k a - a \partial^k \alpha) \mathcal{M}_k $<br>
+<br>
+
+TODO:<br>
+$\dot{f} =? \frac{d}{dt} f = \{f, \mathscr{H}\}$, and how does this relate to the Lie derivative, and to the total derivative definition $\frac{d}{dt} = \frac{\partial}{\partial t} - \mathcal{L}_{\vec{\beta}}$ and the Lie deriative statements above?<br>
+implied by $\mathcal{H} = \mathcal{M}^i = 0$:<br>
+$\dot{\mathcal{H}} = \{ \mathcal{H}, \mathscr{H} \} = 0$<br>
+$\dot{\mathcal{M}}^i = \{ \mathcal{M}^i, \mathscr{H} \} = 0$<br>
+<br>
 
 <br>
-<a href='index.html'>Back</a><br>
+<br>
+<a href='.'>Back</a><br>
 	
 	</body>
 </html>
