@@ -1,0 +1,1937 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<title>Numerical Relativity - Z4</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+	</head>
+    <body>
+
+Start with the z4.html worksheet.<br>
+Remap $S_{ij} \rightarrow \frac{1}{8 \pi} S_{ij}$ so we match all the other formalisms' conventions on here.<br>
+Rename $\tau \rightarrow \rho$ so naming conventions can match Alcubierre and Baumgarte &amp; Shapiro.<br>
+Replace the first-order variable of $d_{ijk}$ with the first-order variable ${\Gamma^i}_{jk}$<br>
+Replace ${\Gamma^i}_{jk}$ with ${\Delta^i}_{jk} = {\Gamma^i}_{jk} - {\hat{\Gamma}^i}_{jk}$ for grid metric ${\hat{\Gamma}^i}_{jk}$ and use this as an evolution variable.<br>
+Reindex ${b_i}^j \rightarrow {b^i}_j$ to be consistent with comma-derivative order (rather than prefix operator order).<br>
+Then make sure to include hyperbolic gamma driver shift (which means adding a new state vector, $B^i$) in the final flux matrix,
+and separate out the acoustic matrix from it before computing the eigensystem.<br>
+...<br>
+Ok, after giving it a go, it seems I can't rewrite the ${\Gamma^i}_{jk,t}$ as a Lie derivative so easily, because I can't easily exchange the ${\Gamma^i}_{jl,k} \beta^l$ into a ${\Gamma^i}_{jk,l} \beta^l$...<br>
+... maybe there is some identity I can use ... nope, not a pretty one, but a very ugly one.<br>
+...<br>
+Come to think of it, where is $\Delta_{ijk}$ even used in BSSN?  Other than the contraction of ${B^i}_{,t}$, everywhere else it appears seems to be next to the ${\hat{\Gamma}}_{ijk}$ which cancel it and return it to the original $\Gamma_{ijk}$...<br>
+...<br>
+So this all represents Z4 with (a) hyperbolic gamma driver shift added and (b) $d_{ijk}$ replaced with $\Gamma_{ijk}$.<br>
+How about trying Z4 just with hyperbolic gamma driver, but don't screw up $d_{ijk}$?  Then, last, move as many source terms into the flux Jacobian.<br>
+<br>
+
+For Killing vector $Z_u$ we have $\nabla_u Z_v + \nabla_v Z_u = 0$<br>
+add this onto the EFE:<Br>
+${}^4 R_{ab} + \nabla_a Z_b + \nabla_b Z_a = 8 \pi (T_{ab} - \frac{1}{2} T g_{ab})$<br>
+<br>
+
+Z4-specific variables:<br>
+$\Theta = Z^a n_a$<br>
+<br>
+
+stress-energy variables:<br>
+$\rho = T^{ab} n_a n_b$<br>
+$S_i = {T^a}_i n_a$<br>
+$S_{ij} = T_{ij}$<br>
+<br>
+
+for notation's sake:<br>
+$R, R_{ij}, {\Gamma^i}_{jk}$ refer to the hypersurface Gaussian and Ricci curvature, and the hypersurface connection.<br>
+<br>
+
+hyperbolic variables (as usual):<br>
+$a_i = (ln (\alpha))_{,i} = \alpha_{,i} / \alpha$<br>
+${b^i}_j = {\beta^i}_{,j}$<br>
+${\Delta^i}_{jk} = \frac{1}{2} \gamma^{im} (\gamma_{mj,k} + \gamma_{mk,j} - \gamma_{jk,m}) - {\hat{\Gamma}^i}_{jk} = {\Gamma^i}_{jk} - {\hat{\Gamma}^i}_{jk}$<br>
+<br>
+
+aux vars:<br>
+${\Gamma^i}_{jk} = \frac{1}{2} \gamma^{im} (\gamma_{mj,k} + \gamma_{mk,j} - \gamma_{jk,m})$<br>
+$\Gamma^i = {\Gamma^i}_{jk} \gamma^{jk}$<br>
+$\Delta^i = {\Delta^i}_{jk} \gamma^{jk}$<br>
+Now usually in BSSN one of the last two are also evolution variables - for the sake of imposing extra vector of constraints - but with Z4 we now have the Z vector which does that job (right?) so I don't have to use these as state variables (right?).<br>
+<br>
+
+parameters:<br>
+$m = $ damping of $\alpha$<br>
+<br>
+
+
+<h3>Z4</h3>
+$\frac{d}{dt} \alpha = -\alpha^2 Q$<br>
+$\frac{d}{dt} \beta^i = -\alpha Q^i$<br>
+$\frac{d}{dt} \gamma_{ij} = -2 \alpha K_{ij}$<br>
+$\frac{d}{dt} K_{ij} = -\nabla_i \alpha_{,j} + \alpha (R_{ij} + \nabla_i Z_j + \nabla_j Z_i - 2 K_{ik} {K^k}_j + (K - 2 \Theta) K_{ij} - 8 \pi (S_{ij} - \frac{1}{2} (S - \rho) \gamma_{ij} ))$<br>
+$\frac{d}{dt} \Theta = \frac{1}{2} \alpha (R + 2 \nabla_k Z^k + (K - 2 \Theta) K - K_{ij} K^{ij} - 16 \pi \rho) - Z^k \alpha_{,k}$<br>
+$\frac{d}{dt} Z_i = \alpha (\nabla_j ({K_i}^j - \delta_i^j K) + \Theta_{,i} - 2 {K_i}^j Z_j - 8 \pi S_i) - \Theta \alpha_{,i}$<br>
+<br>
+
+Using Bona-Masso slicing condition:<br>
+$Q = f (K - m \Theta)$ for $f = f(\alpha)$<br>
+$\frac{d}{dt} \alpha = -f \alpha^2 (K - m \Theta)$<br>
+<br>
+
+Using hyperbolic gamma driver shift:<br>
+${\beta^i}_{,t} = B^i$<br>
+so $Q^i = -\frac{1}{\alpha} B^i$<br>
+${B^i}_{,t} = k {\Delta^i}_{,t} - \eta B^i$<br>
+...where it looks like $\eta$ is the damping, and $k$ is typically $\frac{3}{4}$ in BSSN, where it is also scaled by the inverse of the conformal factor as well.<br>
+TODO solve ${\Gamma^i}_{,t}$ to find out what this is.<br>
+<br>
+
+moving the Lie derivatives to one side, to isolate the $\partial_t$:<br>
+$\alpha_{,t} = \alpha_{,i} \beta^i - f \alpha^2 (K - m \Theta)$<br>
+${\beta^i}_{,t} = B^i$<br>
+${B^i}_{,t} = k {\Delta^i}_{,t} - \eta B^i$<br>
+$\gamma_{ij,t} = \gamma_{ij,k} \beta^k + \gamma_{kj} {\beta^k}_{,i} + \gamma_{ik} {\beta^k}_{,j} - 2 \alpha K_{ij}$<br>
+$K_{ij,t} = K_{ij,k} \beta^k + K_{kj} {\beta^k}_{,i} + K_{ik} {\beta^k}_{,j} - \nabla_i \alpha_{,j} + \alpha (R_{ij} + \nabla_i Z_j + \nabla_j Z_i - 2 K_{ik} {K^k}_j + (K - 2 \Theta) K_{ij} - 8 \pi (S_{ij} - \frac{1}{2} (S - \rho) \gamma_{ij} ))$<br>
+$\Theta_{,t} = \Theta_{,i} \beta^i + \frac{1}{2} \alpha (R + 2 \nabla_k Z^k + (K - 2 \Theta) K - K_{ij} K^{ij} - 16 \pi \rho) - Z^k \alpha_{,k}$<br>
+$Z_{i,t} = Z_{i,j} \beta^j + Z_j {\beta^j}_{,i} + \alpha (\nabla_j ({K_i}^j - \delta_i^j K) + \Theta_{,i} - 2 {K_i}^j Z_j - 8 \pi S_i) - \Theta \alpha_{,i}$<br>
+<br>
+	
+expanding all covariant derivatives in terms of connections:<br>
+$\alpha_{,t} = \alpha_{,i} \beta^i - f \alpha^2 (K - m \Theta)$<br>
+${\beta^i}_{,t} = B^i$<br>
+${B^i}_{,t} = k {\Delta^i}_{,t} - \eta B^i$<br>
+$\gamma_{ij,t} = \gamma_{ij,k} \beta^k + \gamma_{kj} {\beta^k}_{,i} + \gamma_{ik} {\beta^k}_{,j} - 2 \alpha K_{ij}$<br>
+$K_{ij,t} = K_{ij,k} \beta^k + K_{kj} {\beta^k}_{,i} + K_{ik} {\beta^k}_{,j} - \alpha_{,ij} + {\Gamma^k}_{ij} \alpha_{,k} + \alpha (R_{ij} + Z_{j,i} + Z_{i,j} - 2 {\Gamma^k}_{ij} Z_k - 2 K_{ik} {K^k}_j + (K - 2 \Theta) K_{ij} - 8 \pi (S_{ij} - \frac{1}{2} (S - \rho) \gamma_{ij} ))$<br>
+$\Theta_{,t} = \Theta_{,i} \beta^i + \frac{1}{2} \alpha (R + 2 ({Z^k}_{,k} + {\Gamma^k}_{jk} Z^j) + (K - 2 \Theta) K - K_{ij} K^{ij} - 16 \pi \rho) - Z^k \alpha_{,k}$<br>
+<br>
+$Z_{i,t} = Z_{i,j} \beta^j + Z_j {\beta^j}_{,i} + \alpha ((\gamma^{jk} (K_{ik,j} - {\Gamma^m}_{ij} K_{mk} - {\Gamma^m}_{kj} K_{im}) - K_{,i}) + \Theta_{,i} - 2 {K_i}^j Z_j - 8 \pi S_i) - \Theta \alpha_{,i}$<br>
+$Z_{i,t} = Z_{i,j} \beta^j + Z_j {\beta^j}_{,i} + \alpha ((\gamma^{jk} K_{ij,k} - {\Gamma^m}_{ij} \gamma^{jk} K_{km} - \Gamma^l K_{il} - K_{,i}) + \Theta_{,i} - 2 K_{ij} Z^j - 8 \pi S_i) - \Theta \alpha_{,i}$<br>
+<br>
+
+$\alpha_{,ij}$ in terms of hyperbolic state variable $a_i$:<br>
+$\alpha_{,i} = \alpha a_i$<br>
+$\alpha_{,(ij)} = (\alpha a_{(i})_{,j)}$<br>
+$\alpha_{,(ij)} = \alpha_{,(i} a_{j)} + \alpha a_{(i,j)}$<br>
+$\alpha_{,(ij)} = \alpha a_{(i} a_{j)} + \alpha a_{(i,j)}$<br>
+<br>
+
+inserting hyperbolic first-order variables:<br>
+expanding all covariant derivatives in terms of connections:<br>
+$\alpha_{,t} = 
+	\alpha a_i \beta^i 
+	- f \alpha^2 K 
+	+ f \alpha^2 m \Theta
+$<br>
+
+${\beta^i}_{,t} = B^i
+$<br>
+
+${B^i}_{,t} = 
+	k {\Delta^i}_{,t} 
+	- \eta B^i
+$<br>
+
+$\gamma_{ij,t} = 
+	2 \Gamma_{(ij)k} \beta^k 
+	+ 2 b_{(ij)} 
+	- 2 \alpha K_{ij}
+$<br>
+
+$K_{ij,t} = 
+	K_{ij,k} \beta^k 
+	+ K_{kj} {b^k}_i 
+	+ K_{ik} {b^k}_j 
+	- \alpha a_{(i} a_{j)} 
+	- \alpha a_{(i,j)} 
+	+ \alpha {\Gamma^k}_{ij} a_k 
+	+ \alpha (
+		R_{ij} 
+		+ Z_{j,i} 
+		+ Z_{i,j} 
+		- 2 {\Gamma^k}_{ij} Z_k 
+		- 2 K_{ik} {K^k}_j 
+		+ (K - 2 \Theta) K_{ij} 
+		+ 4 \pi  (S - \rho) \gamma_{ij}
+		- 8 \pi S_{ij} 
+	)
+$<br>
+
+$\Theta_{,t} =
+	\Theta_{,i} \beta^i 
+	+ \frac{1}{2} \alpha (
+		R 
+		+ 2 (
+			{Z^k}_{,k} 
+			+ {\Gamma^k}_{jk} Z^j
+		) 
+		+ (K - 2 \Theta) K 
+		- K_{ij} K^{ij} 
+		- 16 \pi \rho
+		- 2 Z^k a_k
+	) 
+$<br>
+
+$Z_{i,t} = 
+	Z_{i,j} \beta^j 
+	+ Z_j {b^j}_i 
+	+ \alpha (
+		- {\Gamma^{kj}}_j K_{ik} 
+		+ \Gamma_{jki} K^{jk} 
+		
+		+ \gamma^{jk} K_{ki,j} 
+		- \gamma^{jk} K_{kj,i}
+		
+		+ \Theta_{,i} 
+		- 2 K_{ij} Z^j 
+		- 8 \pi S_i
+	) 
+	- \alpha \Theta a_i
+$<br>
+<br>
+
+hyperbolic lapse variable time derivatives in terms of flux:<br>
+$a_{k,t} = (ln \alpha)_{,kt}$<br>
+$= a_{i,k} \beta^i 
+	- f \alpha \gamma^{ij} K_{ij,k} 
+	+ f \alpha m \Theta_{,k} 
+	+ a_i {b^i}_k
+	- \alpha a_k (f' \alpha + f) (K - m \Theta) 
+	+ 2 f \alpha \Gamma_{ijk} K^{ij}$<br>
+<br>
+
+hyperbolic shift variable time derivatives in terms of flux:<br>
+${b^i}_{j,t} = {\beta^i}_{,jt} = {\beta^i}_{,tj}$<br>
+$ = {B^i}_{,j}$<br>
+<br>
+
+Ricci curvature in terms of connection:<br>
+${R^i}_{jkl} = {\Gamma^i}_{jl,k} - {\Gamma^i}_{jk,l} + {\Gamma^i}_{mk} {\Gamma^m}_{jl} - {\Gamma^i}_{ml} {\Gamma^m}_{jk}$<br>
+$R_{jl} = {R^k}_{jkl} = {\Gamma^k}_{jl,k} - {\Gamma^k}_{jk,l} + {\Gamma^k}_{mk} {\Gamma^m}_{jl} - {\Gamma^k}_{ml} {\Gamma^m}_{jk}$<br>
+$R = \gamma^{jl} R_{jl} = \gamma^{jl} {\Gamma^k}_{jl,k} - \gamma^{jl} {\Gamma^k}_{jk,l} + {\Gamma^k}_{mk} \Gamma^m - {\Gamma^k}_{ml} \gamma^{jl} {\Gamma^m}_{jk}$<br>
+<br>
+
+Time evolution of connection, lower:<br>
+$\Gamma_{ijk,t} = 
+	\frac{1}{2} (
+		\gamma_{ij,kt}
+		+ \gamma_{ik,jt}
+		- \gamma_{jk,it}
+	)
+$<br>
+$\Gamma_{ijk,t} = 
+	\frac{1}{2} (
+		(
+			2 \Gamma_{(ij)l} \beta^l
+			+ 2 b_{(ij)} 
+			- 2 \alpha K_{ij}
+		)_{,k}
+		+ (
+			2 \Gamma_{(ik)l} \beta^l
+			+ 2 b_{(ik)} 
+			- 2 \alpha K_{ik}
+		)_{,j}
+		- (
+			2 \Gamma_{(jk)l} \beta^l
+			+ 2 b_{(jk)} 
+			- 2 \alpha K_{jk}
+		)_{,i}
+	)
+$<br>
+$\Gamma_{ijk,t} = 
+	\Gamma_{(ij)l,k} \beta^l
+	+ \Gamma_{(ij)l} {\beta^l}_{,k}
+	+ b_{(ij),k} 
+	- \alpha_{,k} K_{ij}
+	- \alpha K_{ij,k}
+	
+	+ \Gamma_{(ik)l,j} \beta^l
+	+ \Gamma_{(ik)l} {\beta^l}_{,j}
+	+ b_{(ik),j} 
+	- \alpha_{,j} K_{ik}
+	- \alpha K_{ik,j}
+	
+	- \Gamma_{(jk)l,i} \beta^l
+	- \Gamma_{(jk)l} {\beta^l}_{,i}
+	- b_{(jk),i} 
+	+ \alpha_{,i} K_{jk}
+	+ \alpha K_{jk,i}
+$<br>
+$\Gamma_{ijk,t} = 
+	\Gamma_{(ij)l,k} \beta^l
+	+ \Gamma_{(ik)l,j} \beta^l
+	- \Gamma_{(jk)l,i} \beta^l
+	
+	+ \Gamma_{(ij)l} {b^l}_k
+	+ \Gamma_{(ik)l} {b^l}_j
+	- \Gamma_{(jk)l} {b^l}_i
+	
+	+ b_{(ij),k} 
+	+ b_{(ik),j} 
+	- b_{(jk),i} 
+	
+	- \alpha K_{ij} a_k
+	- \alpha K_{ik} a_j
+	+ \alpha K_{jk} a_i
+	
+	- \alpha K_{ij,k}
+	- \alpha K_{ik,j}
+	+ \alpha K_{jk,i}
+$<br>
+<br>
+
+${\Gamma^i}_{jk,t} = (\gamma^{im} \Gamma_{mjk})_{,t}$<br>
+${\Gamma^i}_{jk,t} = 
+	- \gamma^{in} \gamma_{nm,t} {\Gamma^m}_{jk}
+	+ \gamma^{im} \Gamma_{mjk,t}
+$<br>
+${\Gamma^i}_{jk,t} = 
+	- \gamma^{in} {\Gamma^m}_{jk} (
+		2 \Gamma_{(mn)l} \beta^l
+		+ 2 b_{(mn)} 
+		- 2 \alpha K_{mn}
+	)
+	+ \gamma^{im} (
+		\Gamma_{(mj)l,k} \beta^l
+		+ \Gamma_{(mk)l,j} \beta^l
+		- \Gamma_{(jk)l,m} \beta^l
+		
+		+ \Gamma_{(mj)l} {b^l}_k
+		+ \Gamma_{(mk)l} {b^l}_j
+		- \Gamma_{(jk)l} {b^l}_m
+		
+		+ b_{(mj),k} 
+		+ b_{(mk),j} 
+		- b_{(jk),m} 
+		
+		- \alpha K_{mj} a_k
+		- \alpha K_{mk} a_j
+		+ \alpha K_{jk} a_m
+		
+		- \alpha K_{mj,k}
+		- \alpha K_{mk,j}
+		+ \alpha K_{jk,m}
+	)
+$<br>
+${\Gamma^i}_{jk,t} = 
+	- \gamma^{in} {\Gamma^m}_{jk} (
+		2 \Gamma_{(mn)l} \beta^l
+		+ 2 b_{(mn)} 
+		- 2 \alpha K_{mn}
+	)
+	+ \gamma^{im} (
+		\Gamma_{(mj)l,k} \beta^l
+		+ \Gamma_{(mk)l,j} \beta^l
+		- \Gamma_{(jk)l,m} \beta^l
+		
+		+ \Gamma_{(mj)l} {b^l}_k
+		+ \Gamma_{(mk)l} {b^l}_j
+		- \Gamma_{(jk)l} {b^l}_m
+		
+		+ b_{(mj),k} 
+		+ b_{(mk),j} 
+		- b_{(jk),m} 
+		
+		- \alpha K_{mj} a_k
+		- \alpha K_{mk} a_j
+		+ \alpha K_{jk} a_m
+		
+		- \alpha K_{mj,k}
+		- \alpha K_{mk,j}
+		+ \alpha K_{jk,m}
+	)
+$<br>
+${\Gamma^i}_{jk,t} = 
+	- {\Gamma^m}_{jk} (
+		+ {\Gamma_{ml}}^i \beta^l
+		+ {\Gamma^i}_{ml} \beta^l
+		+ {b_m}^i 
+		+ {b^i}_m
+		- 2 \alpha {K^i}_m
+	)
+	+ \frac{1}{2} (
+		+ \Gamma_{mjl,k} \beta^l \gamma^{im}
+		+ \Gamma_{jml,k} \beta^l \gamma^{im}
+		
+		+ \Gamma_{mkl,j} \beta^l \gamma^{im}
+		+ \Gamma_{kml,j} \beta^l \gamma^{im}
+		
+		- \Gamma_{jkl,m} \beta^l \gamma^{im}
+		- \Gamma_{kjl,m} \beta^l \gamma^{im}
+		
+		+ \Gamma_{mjl} {b^l}_k \gamma^{im}
+		+ \Gamma_{jml} {b^l}_k \gamma^{im}
+		
+		+ \Gamma_{mkl} {b^l}_j \gamma^{im}
+		+ \Gamma_{kml} {b^l}_j \gamma^{im}
+		
+		- \Gamma_{jkl} {b^l}_m \gamma^{im}
+		- \Gamma_{kjl} {b^l}_m \gamma^{im}
+		
+		+ b_{mj,k}  \gamma^{im}
+		+ b_{jm,k}  \gamma^{im}
+		
+		+ b_{mk,j}  \gamma^{im}
+		+ b_{km,j}  \gamma^{im}
+		
+		- b_{jk,m}  \gamma^{im}
+		- b_{kj,m}  \gamma^{im}
+	)
+
+	- \alpha K_{mj} a_k \gamma^{im}
+	- \alpha K_{mk} a_j \gamma^{im}
+	+ \alpha K_{jk} a_m \gamma^{im}
+	
+	- \alpha K_{mj,k} \gamma^{im}
+	- \alpha K_{mk,j} \gamma^{im}
+	+ \alpha K_{jk,m} \gamma^{im}
+$<br>
+${\Gamma^i}_{jk,t} = 
+	- {\Gamma_{ml}}^i {\Gamma^m}_{jk} \beta^l
+	- {\Gamma^i}_{ml} {\Gamma^m}_{jk} \beta^l
+	- {\Gamma^m}_{jk} {b_m}^i 
+	- {\Gamma^m}_{jk} {b^i}_m
+	+ 2 \alpha {K^i}_m {\Gamma^m}_{jk}
+	+ \frac{1}{2} (
+		+ \Gamma_{mjl,k} \beta^l \gamma^{im}
+		+ \Gamma_{jml,k} \beta^l \gamma^{im}
+		
+		+ \Gamma_{mkl,j} \beta^l \gamma^{im}
+		+ \Gamma_{kml,j} \beta^l \gamma^{im}
+		
+		- \Gamma_{jkl,m} \beta^l \gamma^{im}
+		- \Gamma_{kjl,m} \beta^l \gamma^{im}
+		
+		+ {\Gamma^i}_{jl} {b^l}_k
+		+ {\Gamma^i}_{kl} {b^l}_j
+		
+		+ {\Gamma_{jl}}^i {b^l}_k
+		+ {\Gamma_{kl}}^i {b^l}_j
+		
+		- \Gamma_{jkl} b^{li}
+		- \Gamma_{kjl} b^{li}
+		
+		+ b_{mj,k} \gamma^{im}
+		+ b_{jm,k} \gamma^{im}
+		
+		+ b_{mk,j} \gamma^{im}
+		+ b_{km,j} \gamma^{im}
+		
+		- b_{jk,m} \gamma^{im}
+		- b_{kj,m} \gamma^{im}
+	)
+
+	- \alpha K_{mj} a_k \gamma^{im}
+	- \alpha K_{mk} a_j \gamma^{im}
+	+ \alpha K_{jk} a_m \gamma^{im}
+	
+	- \alpha K_{mj,k} \gamma^{im}
+	- \alpha K_{mk,j} \gamma^{im}
+	+ \alpha K_{jk,m} \gamma^{im}
+$<br>
+${\Gamma^i}_{jk,t} = 
+	- {\Gamma_{ml}}^i {\Gamma^m}_{jk} \beta^l
+	- {\Gamma^i}_{ml} {\Gamma^m}_{jk} \beta^l
+	- {\Gamma^m}_{jk} {b_m}^i 
+	- {\Gamma^m}_{jk} {b^i}_m
+	+ \frac{1}{2} (
+		+ (\gamma_{nm} {\Gamma^n}_{jl})_{,k} \beta^l \gamma^{im}
+		+ (\gamma_{nj} {\Gamma^n}_{ml})_{,k} \beta^l \gamma^{im}
+		
+		+ (\gamma_{nm} {\Gamma^n}_{kl})_{,j} \beta^l \gamma^{im}
+		+ (\gamma_{nk} {\Gamma^n}_{ml})_{,j} \beta^l \gamma^{im}
+		
+		- (\gamma_{nj} {\Gamma^n}_{kl})_{,m} \beta^l \gamma^{im}
+		- (\gamma_{nk} {\Gamma^n}_{jl})_{,m} \beta^l \gamma^{im}
+		
+		+ {\Gamma^i}_{jl} {b^l}_k
+		+ {\Gamma^i}_{kl} {b^l}_j
+		
+		+ {\Gamma_{jl}}^i {b^l}_k
+		+ {\Gamma_{kl}}^i {b^l}_j
+		
+		- \Gamma_{jkl} b^{li}
+		- \Gamma_{kjl} b^{li}
+		
+		+ (\gamma_{nm} {b^n}_j)_{,k} \gamma^{im}
+		+ (\gamma_{nj} {b^n}_m)_{,k} \gamma^{im}
+		
+		+ (\gamma_{nm} {b^n}_k)_{,j} \gamma^{im}
+		+ (\gamma_{nk} {b^n}_m)_{,j} \gamma^{im}
+		
+		- (\gamma_{nj} {b^n}_k)_{,m} \gamma^{im}
+		- (\gamma_{nk} {b^n}_j)_{,m} \gamma^{im}
+	)
+	
+	+ 2 \alpha {K^i}_m {\Gamma^m}_{jk}
+
+	- \alpha K_{mj} a_k \gamma^{im}
+	- \alpha K_{mk} a_j \gamma^{im}
+	+ \alpha K_{jk} a_m \gamma^{im}
+	
+	- \alpha K_{mj,k} \gamma^{im}
+	- \alpha K_{mk,j} \gamma^{im}
+	+ \alpha K_{jk,m} \gamma^{im}
+$<br>
+${\Gamma^i}_{jk,t} = 
+	- {\Gamma_{ml}}^i {\Gamma^m}_{jk} \beta^l
+	- {\Gamma^i}_{ml} {\Gamma^m}_{jk} \beta^l
+	- {\Gamma^m}_{jk} {b_m}^i 
+	- {\Gamma^m}_{jk} {b^i}_m
+	+ \frac{1}{2} (
+		+ (\Gamma_{mkn} + \Gamma_{nkm}) {\Gamma^n}_{jl} \beta^l \gamma^{im} 
+		+ (\Gamma_{jkn} + \Gamma_{nkj}) {\Gamma^n}_{ml} \beta^l \gamma^{im} 
+		
+		+ (\Gamma_{mjn} + \Gamma_{njm}) {\Gamma^n}_{kl} \beta^l \gamma^{im} 
+		+ (\Gamma_{kjn} + \Gamma_{njk}) {\Gamma^n}_{ml} \beta^l \gamma^{im} 
+		
+		- (\Gamma_{jmn} + \Gamma_{nmj}) {\Gamma^n}_{kl} \beta^l \gamma^{im} 
+		- (\Gamma_{kmn} + \Gamma_{nmk}) {\Gamma^n}_{jl} \beta^l \gamma^{im} 
+		
+		+ \gamma_{nm} {\Gamma^n}_{jl,k} \beta^l \gamma^{im}
+		+ \gamma_{nj} {\Gamma^n}_{ml,k} \beta^l \gamma^{im}
+		
+		+ \gamma_{nm} {\Gamma^n}_{kl,j} \beta^l \gamma^{im}
+		+ \gamma_{nk} {\Gamma^n}_{ml,j} \beta^l \gamma^{im}
+		
+		- \gamma_{nj} {\Gamma^n}_{kl,m} \beta^l \gamma^{im}
+		- \gamma_{nk} {\Gamma^n}_{jl,m} \beta^l \gamma^{im}
+		
+		+ {\Gamma^i}_{jl} {b^l}_k
+		+ {\Gamma^i}_{kl} {b^l}_j
+		
+		+ {\Gamma_{jl}}^i {b^l}_k
+		+ {\Gamma_{kl}}^i {b^l}_j
+		
+		- \Gamma_{jkl} b^{li}
+		- \Gamma_{kjl} b^{li}
+		
+		+ (\Gamma_{mkn} + \Gamma_{nkm}) {b^n}_j \gamma^{im}
+		+ (\Gamma_{jkn} + \Gamma_{nkj}) {b^n}_m \gamma^{im}
+		
+		+ (\Gamma_{mjn} + \Gamma_{njm}) {b^n}_k \gamma^{im}
+		+ (\Gamma_{kjn} + \Gamma_{njk}) {b^n}_m \gamma^{im}
+		
+		- (\Gamma_{jmn} + \Gamma_{nmj}) {b^n}_k \gamma^{im}
+		- (\Gamma_{kmn} + \Gamma_{nmk}) {b^n}_j \gamma^{im}
+	
+		+ \gamma_{nm} {b^n}_{j,k} \gamma^{im}
+		+ \gamma_{nj} {b^n}_{m,k} \gamma^{im}
+		   								  
+		+ \gamma_{nm} {b^n}_{k,j} \gamma^{im}
+		+ \gamma_{nk} {b^n}_{m,j} \gamma^{im}
+		   								  
+		- \gamma_{nj} {b^n}_{k,m} \gamma^{im}
+		- \gamma_{nk} {b^n}_{j,m} \gamma^{im}
+	)
+	
+	+ 2 \alpha {K^i}_m {\Gamma^m}_{jk}
+
+	- \alpha K_{mj} a_k \gamma^{im}
+	- \alpha K_{mk} a_j \gamma^{im}
+	+ \alpha K_{jk} a_m \gamma^{im}
+	
+	- \alpha K_{mj,k} \gamma^{im}
+	- \alpha K_{mk,j} \gamma^{im}
+	+ \alpha K_{jk,m} \gamma^{im}
+$<br>
+${\Gamma^i}_{jk,t} = 
+	- {\Gamma_{ml}}^i {\Gamma^m}_{jk} \beta^l
+	- {\Gamma^i}_{ml} {\Gamma^m}_{jk} \beta^l
+	- {\Gamma^m}_{jk} {b_m}^i 
+	- {\Gamma^m}_{jk} {b^i}_m
+	
+	+ {\Gamma^i}_{l(j,k)} \beta^l
+	+ {\Gamma^i}_{n(j} {\Gamma^n}_{k)l} \beta^l
+	+ \Gamma_{(jk)n} {\Gamma^n}_{lm} \beta^l \gamma^{im} 
+	- \Gamma_{(j|nm} {\Gamma^n}_{k)l} \beta^l \gamma^{im} 
+	+ \Gamma_{nm(j} {\Gamma^n}_{k)l} \beta^l \gamma^{im}
+	+ \Gamma_{n(jk)} {\Gamma^n}_{lm} \beta^l \gamma^{im}
+	- {\Gamma_{n(j}}^i {\Gamma^n}_{k)l} \beta^l
+	+ {\Gamma^n}_{lm,(j} \gamma_{k)n} \beta^l \gamma^{im}
+	- {\Gamma^n}_{l(j|,m} \beta^l \gamma_{|k)n} \gamma^{im}
+	
+	+ {\Gamma^i}_{jl} {b^l}_k
+	+ {\Gamma^i}_{kl} {b^l}_j
+	+ \Gamma_{n(jk)} b^{ni}
+	
+	+ {b^i}_{(j,k)}
+	+ {b^n}_{m,(j} \gamma_{k)n} \gamma^{im}
+	- {b^n}_{(j|,m} \gamma_{k)n} \gamma^{im}
+	
+	+ 2 \alpha {K^i}_m {\Gamma^m}_{jk}
+
+	- \alpha K_{mj} a_k \gamma^{im}
+	- \alpha K_{mk} a_j \gamma^{im}
+	+ \alpha K_{jk} a_m \gamma^{im}
+	
+	- \alpha K_{mj,k} \gamma^{im}
+	- \alpha K_{mk,j} \gamma^{im}
+	+ \alpha K_{jk,m} \gamma^{im}
+$<br>
+<br>
+
+Time evolution of connection trace:<br>
+${\Gamma^i}_{,t} = ({\Gamma^i}_{jk} \gamma^{jk})_{,t}$<br>
+${\Gamma^i}_{,t} = {\Gamma^i}_{jk,t} \gamma^{jk} + {\Gamma^i}_{jk} {\gamma^{jk}}_{,t}$<br>
+${\Gamma^i}_{,t} = {\Gamma^i}_{jk,t} \gamma^{jk} - \Gamma^{ijk} \gamma_{jk,t}$<br>
+${\Gamma^i}_{,t} = {\Gamma^i}_{jk,t} \gamma^{jk} - \Gamma^{ijk} (
+	2 \Gamma_{(jk)l} \beta^l
+	+ 2 b_{(jk)} 
+	- 2 \alpha K_{jk}
+)$<br>
+${\Gamma^i}_{,t} = 
+	{\Gamma^i}_{jk,t} \gamma^{jk} 
+	- 2 \Gamma^{ijk} (
+		\Gamma_{jkl} \beta^l
+		+ b_{jk} 
+		- \alpha K_{jk}
+	)
+$<br>
+${\Gamma^i}_{,t} = 
+	(\gamma^{im} \Gamma_{mjk})_{,t} \gamma^{jk} 
+	- 2 \Gamma^{ijk} (
+		\Gamma_{jkl} \beta^l
+		+ b_{jk} 
+		- \alpha K_{jk}
+	)
+$<br>
+${\Gamma^i}_{,t} = 
+	(
+		\gamma^{im} \Gamma_{mjk,t}
+		- \gamma^{in} \gamma_{nm,t} \gamma^{mp} \Gamma_{pjk}
+	) \gamma^{jk} 
+	- 2 \Gamma^{ijk} (
+		\Gamma_{jkl} \beta^l
+		+ b_{jk} 
+		- \alpha K_{jk}
+	)
+$<br>
+${\Gamma^i}_{,t} = 
+	(
+		\gamma^{im} \Gamma_{mjk,t}
+		- \gamma^{in} {\Gamma^m}_{jk} (
+			2 \Gamma_{(mn)p} \beta^p
+			+ 2 b_{(mn)} 
+			- 2 \alpha K_{mn}
+		)
+	) \gamma^{jk} 
+	- 2 \Gamma^{ijk} (
+		\Gamma_{jkl} \beta^l
+		+ b_{jk} 
+		- \alpha K_{jk}
+	)
+$<br>
+${\Gamma^i}_{,t} = 
+	 \gamma^{im} \gamma^{jk} \Gamma_{mjk,t}
+	- 2 \Gamma_j \delta^i_k (
+		{\Gamma^{(jk)}}_l \beta^l
+		+ b^{(jk)} 
+		- \alpha K^{jk}
+	)
+	- 2 {\Gamma^i}_{jk} (
+		{\Gamma^{(jk)}}_l \beta^l
+		+ b^{(jk)} 
+		- \alpha K^{jk}
+	)
+$<br>
+${\Gamma^i}_{,t} = 
+	- 2 (\Gamma_j \delta^i_k + {\Gamma^i}_{jk}) (
+		{\Gamma^{(jk)}}_l \beta^l
+		+ b^{(jk)} 
+		- \alpha K^{jk}
+	)
+	+ \gamma^{im} \gamma^{jk} (
+		\Gamma_{(mj)l,k} \beta^l
+		+ \Gamma_{(mk)l,j} \beta^l
+		- \Gamma_{(jk)l,m} \beta^l
+		
+		+ \Gamma_{(mj)l} {b^l}_k
+		+ \Gamma_{(mk)l} {b^l}_j
+		- \Gamma_{(jk)l} {b^l}_m
+		
+		+ b_{(mj),k} 
+		+ b_{(mk),j} 
+		- b_{(jk),m} 
+		
+		- \alpha K_{mj} a_k
+		- \alpha K_{mk} a_j
+		+ \alpha K_{jk} a_m
+		
+		- \alpha K_{mj,k}
+		- \alpha K_{mk,j}
+		+ \alpha K_{jk,m} 
+	)
+$<br>
+${\Gamma^i}_{,t} = 
+	- 2 (\Gamma_j \delta^i_k + {\Gamma^i}_{jk}) (
+		{\Gamma^{(jk)}}_l \beta^l
+		+ b^{(jk)} 
+		- \alpha K^{jk}
+	)
+
+	+ (\gamma_{mn} {\Gamma^n}_{jl})_{,k} \beta^l \gamma^{im} \gamma^{jk}
+	+ (\gamma_{jn} {\Gamma^n}_{ml})_{,k} \beta^l \gamma^{im} \gamma^{jk}
+	- (\gamma_{jn} {\Gamma^n}_{kl})_{,m} \beta^l \gamma^{im} \gamma^{jk}
+
+	+ {\Gamma^i}_{jk} {b^j}_l \gamma^{lk}
+	+ {\Gamma^k}_{lm} {b^l}_k \gamma^{im}
+	- {\Gamma^j}_{jk} {b^k}_l \gamma^{li}
+
+	+ (\gamma_{n(m} {b^n}_{j)})_{,k} \gamma^{im} \gamma^{jk}
+	+ (\gamma_{n(m} {b^n}_{k)})_{,j} \gamma^{im} \gamma^{jk}
+	- (\gamma_{n(j} {b^n}_{k)})_{,m} \gamma^{im} \gamma^{jk}
+	
+	+ \alpha a^i K
+	- 2 \alpha K^{ij} a_j
+	
+	- \alpha K_{mj,k} \gamma^{im} \gamma^{jk}
+	- \alpha K_{mk,j} \gamma^{im} \gamma^{jk}
+	+ \alpha K_{jk,m} \gamma^{im} \gamma^{jk}
+$<br>
+${\Gamma^i}_{,t} = 
+	- 2 (\Gamma_j \delta^i_k + {\Gamma^i}_{jk}) (
+		{\Gamma^{(jk)}}_l \beta^l
+		+ b^{(jk)} 
+		- \alpha K^{jk}
+	)
+
+	+ \gamma_{mn} {\Gamma^n}_{jl,k} \beta^l \gamma^{im} \gamma^{jk}
+	+ \gamma_{jn} {\Gamma^n}_{ml,k} \beta^l \gamma^{im} \gamma^{jk}
+	- \gamma_{jn} {\Gamma^n}_{kl,m} \beta^l \gamma^{im} \gamma^{jk}
+	+ (\Gamma_{mkn} + \Gamma_{nkm}) {\Gamma^n}_{jl} \beta^l \gamma^{im} \gamma^{jk} 
+	+ (\Gamma_{jkn} + \Gamma_{nkj}) {\Gamma^n}_{ml} \beta^l \gamma^{im} \gamma^{jk} 
+	- (\Gamma_{jmn} + \Gamma_{nmj}) {\Gamma^n}_{kl} \beta^l \gamma^{im} \gamma^{jk} 
+
+	+ {\Gamma^i}_{jk} {b^j}_l \gamma^{lk}
+	+ {\Gamma^k}_{lm} {b^l}_k \gamma^{im}
+	- {\Gamma^j}_{jk} {b^k}_l \gamma^{li}
+
+	+ \gamma_{n(m|,k} {b^n}_{|j)} \gamma^{im} \gamma^{jk} 
+	+ \gamma_{n(m|,j} {b^n}_{|k)} \gamma^{im} \gamma^{jk} 
+	- \gamma_{n(j|,m} {b^n}_{|k)} \gamma^{im} \gamma^{jk} 
+	+ \gamma_{n(m} {b^n}_{j),k} \gamma^{im} \gamma^{jk}
+	+ \gamma_{n(m} {b^n}_{k),j} \gamma^{im} \gamma^{jk}
+	- \gamma_{n(j} {b^n}_{k),m} \gamma^{im} \gamma^{jk}
+	
+	+ \alpha a^i K
+	- 2 \alpha K^{ij} a_j
+	
+	- \alpha K_{mj,k} \gamma^{im} \gamma^{jk}
+	- \alpha K_{mk,j} \gamma^{im} \gamma^{jk}
+	+ \alpha K_{jk,m} \gamma^{im} \gamma^{jk}
+$<br>
+${\Gamma^i}_{,t} = 
+	- 2 (\Gamma_j \delta^i_k + {\Gamma^i}_{jk}) (
+		{\Gamma^{(jk)}}_l \beta^l
+		+ b^{(jk)} 
+		- \alpha K^{jk}
+	)
+
+	+ \gamma_{mn} {\Gamma^n}_{jl,k} \beta^l \gamma^{im} \gamma^{jk}
+	+ \gamma_{jn} {\Gamma^n}_{ml,k} \beta^l \gamma^{im} \gamma^{jk}
+	- \gamma_{jn} {\Gamma^n}_{kl,m} \beta^l \gamma^{im} \gamma^{jk}
+	
+	+ {\Gamma^i}_{kn} {\Gamma^{nk}}_l \beta^l
+	+ {\Gamma^k}_{kn} {\Gamma^{ni}}_l \beta^l
+	- {\Gamma^{ki}}_n {\Gamma^n}_{kl} \beta^l
+	+ {\Gamma_n}^{ik} {\Gamma^n}_{kl} \beta^l
+	+ {\Gamma_{nk}}^k {\Gamma^{ni}}_l \beta^l
+	- {\Gamma_{nk}}^i {\Gamma^{nk}}_l \beta^l
+
+	+ {\Gamma^i}_{jk} {b^j}_l \gamma^{lk}
+	+ {\Gamma^k}_{lm} {b^l}_k \gamma^{im}
+	- {\Gamma^j}_{jk} {b^k}_l \gamma^{li}
+
+	+ \frac{1}{2} (
+		+ \gamma_{nm,k} {b^n}_j \gamma^{im} \gamma^{jk} 
+		+ \gamma_{nj,k} {b^n}_m \gamma^{im} \gamma^{jk} 
+		
+		+ \gamma_{nm,j} {b^n}_k \gamma^{im} \gamma^{jk} 
+		+ \gamma_{nk,j} {b^n}_m \gamma^{im} \gamma^{jk} 
+		
+		- \gamma_{nj,m} {b^n}_k \gamma^{im} \gamma^{jk} 
+		- \gamma_{nk,m} {b^n}_j \gamma^{im} \gamma^{jk} 
+		
+		+ \gamma_{nm} {b^n}_{j,k} \gamma^{im} \gamma^{jk}
+		+ \gamma_{nj} {b^n}_{m,k} \gamma^{im} \gamma^{jk}
+		
+		+ \gamma_{nm} {b^n}_{k,j} \gamma^{im} \gamma^{jk}
+		+ \gamma_{nk} {b^n}_{m,j} \gamma^{im} \gamma^{jk}
+		
+		- \gamma_{nj} {b^n}_{k,m} \gamma^{im} \gamma^{jk}
+		- \gamma_{nk} {b^n}_{j,m} \gamma^{im} \gamma^{jk}
+	)
+
+	+ \alpha a^i K
+	- 2 \alpha K^{ij} a_j
+	
+	- \alpha K_{mj,k} \gamma^{im} \gamma^{jk}
+	- \alpha K_{mk,j} \gamma^{im} \gamma^{jk}
+	+ \alpha K_{jk,m} \gamma^{im} \gamma^{jk}
+$<br>
+${\Gamma^i}_{,t} = 
+	+ {\Gamma^i}_{lj,k} \gamma^{jk} \beta^l
+	+ {\Gamma^k}_{ml,k} \gamma^{im} \beta^l
+	- {\Gamma^k}_{lk,m} \gamma^{im} \beta^l
+	
+	- {\Gamma^i}_{jl} \Gamma^j \beta^l
+	- {\Gamma^i}_{jk} {\Gamma^{jk}}_l \beta^l
+	+ {\Gamma^k}_{kn} {\Gamma^{ni}}_l \beta^l
+	- {\Gamma^{ki}}_n {\Gamma^n}_{kl} \beta^l
+	+ {\Gamma_n}^{ik} {\Gamma^n}_{kl} \beta^l
+	- {\Gamma_{nk}}^i {\Gamma^{nk}}_l \beta^l
+
+	+ \frac{1}{2} {\Gamma_{jk}}^i b^{jk}
+	- \Gamma^j {b^i}_j
+
+	+ {b^i}_{j,k} \gamma^{jk}
+	+ {b^j}_{k,j} \gamma^{ik}
+	- {b^j}_{j,k} \gamma^{ik}
+	
+	+ \alpha a^i K
+	- 2 \alpha K^{ij} a_j
+	
+	+ 2 \alpha \Gamma_j K^{ij}
+	+ 2 \alpha {\Gamma^i}_{jk} K^{jk}
+	
+	- \alpha K_{mj,k} \gamma^{im} \gamma^{jk}
+	- \alpha K_{mk,j} \gamma^{im} \gamma^{jk}
+	+ \alpha K_{jk,m} \gamma^{im} \gamma^{jk}
+$<br>
+...and that's basically ${B^i}_{,t}$.<br>
+<br>
+
+Any spatial derivative identities I can use with ${\Gamma^i}_{jk}$?<br>
+$\Gamma_{ijk,l} = \frac{1}{2} (\gamma_{ij,k} + \gamma_{ik,j} - \gamma_{jk,i})_{,l}$<br>
+$\Gamma_{ijk,l} = \frac{1}{2} (\gamma_{ij,kl} + \gamma_{ik,jl} - \gamma_{jk,il})$<br>
+$\Gamma_{ijk,l} = \frac{1}{2} (\gamma_{ij,lk} + \gamma_{ik,lj} - \gamma_{jk,li})$<br>
+$\Gamma_{ijk,l} = \Gamma_{(ij)l,k} + \Gamma_{(ik)l,j} - \Gamma_{(jk)l,i}$<br>
+$\Gamma_{ijk,l} = \frac{1}{2} (
+	\Gamma_{ijl,k} 
+	+ \Gamma_{jil,k} 
+	+ \Gamma_{ikl,j} 
+	+ \Gamma_{kil,j} 
+	- \Gamma_{jkl,i}
+	- \Gamma_{kjl,i}
+)$<br>
+<br>
+
+${\Gamma^i}_{jk,l} = (\gamma^{im} \Gamma_{mjk})_{,l}$<br>
+${\Gamma^i}_{jk,l} = {\gamma^{im}}_{,l} \Gamma_{mjk} + \gamma^{im} \Gamma_{mjk,l}$<br>
+${\Gamma^i}_{jk,l} = -\gamma^{in} \gamma_{nm,l} {\Gamma^m}_{jk} + \gamma^{im} \Gamma_{mjk,l}$<br>
+${\Gamma^i}_{jk,l} = 
+	-{\Gamma^i}_{ml} {\Gamma^m}_{jk} 
+	-{\Gamma_{ml}}^i {\Gamma^m}_{jk} 
+	+ \frac{1}{2} \gamma^{im} (
+		\Gamma_{ijl,k} 
+		+ \Gamma_{jil,k} 
+		+ \Gamma_{ikl,j} 
+		+ \Gamma_{kil,j} 
+		- \Gamma_{jkl,i}
+		- \Gamma_{kjl,i}
+	)
+$<br>
+${\Gamma^i}_{jk,l} = 
+	-{\Gamma^i}_{ml} {\Gamma^m}_{jk} 
+	-{\Gamma_{ml}}^i {\Gamma^m}_{jk} 
+	+ \frac{1}{2} \gamma^{im} (
+		\Gamma_{mjl,k} 
+		+ \Gamma_{jml,k} 
+		+ \Gamma_{mkl,j} 
+		+ \Gamma_{kml,j} 
+		- \Gamma_{jkl,m}
+		- \Gamma_{kjl,m}
+	)
+$<br>
+<br>
+so there is ... but it looks ugly.  I think it's easier to just write everything in terms of $d_{ijk} = \frac{1}{2} \gamma_{ij,k}$ rather than ${\Gamma^i}_{jk}$...<br>
+<br>
+
+combine all terms:
+$\left[ \begin{matrix}
+	\alpha \\
+	a_i \\
+	\beta^k \\
+	{b^k}_i \\
+	B^k \\
+	\gamma_{ij} \\
+	{\Gamma^k}_{ij} \\
+	K_{ij} \\
+	\Theta \\
+	Z_i
+\end{matrix} \right]_{,t}
+= \left[ \begin{matrix}
+	\alpha a_i \beta^i 
+	- f \alpha^2 K 
+	+ f \alpha^2 m \Theta
+	\\
+	
+	a_{(k,i)} \beta^k
+	- f \alpha \gamma^{pq} K_{pq,s} 
+	+ f \alpha m \Theta_{,i} 
+	+ a_k {b^k}_i
+	- \alpha a_i (f' \alpha + f) (K - m \Theta) 
+	+ 2 f \alpha \Gamma_{pqi} K^{pq}
+	\\
+	
+	B^k
+	\\
+	
+	{B^k}_{,i}
+	\\
+	
+	- \eta B^k
+	+ k (
+		  {\Gamma^k}_{lj,r} \gamma^{jr} \beta^l
+		+ {\Gamma^r}_{ml,r} \gamma^{km} \beta^l
+		- {\Gamma^r}_{lr,m} \gamma^{km} \beta^l
+		
+		- {\Gamma^k}_{jl} \Gamma^j \beta^l
+		- {\Gamma^k}_{jr} {\Gamma^{jr}}_l \beta^l
+		+ {\Gamma^r}_{rn} {\Gamma^{nk}}_l \beta^l
+		- {\Gamma^{rk}}_n {\Gamma^n}_{rl} \beta^l
+		+ {\Gamma_n}^{kr} {\Gamma^n}_{rl} \beta^l
+		- {\Gamma_{nr}}^k {\Gamma^{nr}}_l \beta^l
+
+		+ \frac{1}{2} {\Gamma_{jr}}^k b^{jr}
+		- \Gamma^j {b^k}_j
+
+		+ {b^k}_{j,r} \gamma^{jr}
+		+ {b^j}_{r,j} \gamma^{kr}
+		- {b^j}_{j,r} \gamma^{kr}
+		
+		+ \alpha a^k K
+		- 2 \alpha K^{kj} a_j
+		
+		+ 2 \alpha \Gamma_j K^{kj}
+		+ 2 \alpha {\Gamma^k}_{jr} K^{jr}
+		
+		- \alpha K_{mj,r} \gamma^{km} \gamma^{jr}
+		- \alpha K_{mr,j} \gamma^{km} \gamma^{jr}
+		+ \alpha K_{jr,m} \gamma^{km} \gamma^{jr}
+	)
+	\\
+
+	2 \Gamma_{(ij)r} \beta^r
+	+ 2 b_{(ij)} 
+	- 2 \alpha K_{ij}
+	\\
+
+	- {\Gamma_{ml}}^k {\Gamma^m}_{ij} \beta^l
+	- {\Gamma^k}_{ml} {\Gamma^m}_{ij} \beta^l
+	- {\Gamma^m}_{ij} {b_m}^k 
+	- {\Gamma^m}_{ij} {b^k}_m
+	
+	+ {\Gamma^k}_{l(i,j)} \beta^l
+	+ {\Gamma^k}_{n(i} {\Gamma^n}_{j)l} \beta^l
+	+ \Gamma_{(ij)n} {\Gamma^n}_{lm} \beta^l \gamma^{km} 
+	- \Gamma_{(i|nm} {\Gamma^n}_{j)l} \beta^l \gamma^{km} 
+	+ \Gamma_{nm(i} {\Gamma^n}_{j)l} \beta^l \gamma^{km}
+	+ \Gamma_{n(ij)} {\Gamma^n}_{lm} \beta^l \gamma^{km}
+	- {\Gamma_{n(i}}^k {\Gamma^n}_{j)l} \beta^l
+	+ {\Gamma^n}_{lm,(i} \gamma_{j)n} \beta^l \gamma^{km}
+	- {\Gamma^n}_{l(i|,m} \beta^l \gamma_{|j)n} \gamma^{km}
+	
+	+ {\Gamma^k}_{il} {b^l}_j
+	+ {\Gamma^k}_{jl} {b^l}_i
+	+ \Gamma_{n(ij)} b^{nk}
+	
+	+ {b^k}_{(i,j)}
+	+ {b^n}_{m,(i} \gamma_{j)n} \gamma^{km}
+	- {b^n}_{(i|,m} \gamma_{j)n} \gamma^{km}
+	
+	+ 2 \alpha {K^k}_m {\Gamma^m}_{ij}
+
+	- \alpha K_{mi} a_j \gamma^{km}
+	- \alpha K_{mj} a_i \gamma^{km}
+	+ \alpha K_{ij} a_m \gamma^{km}
+	
+	- \alpha K_{mi,j} \gamma^{km}
+	- \alpha K_{mj,i} \gamma^{km}
+	+ \alpha K_{ij,m} \gamma^{km}
+	\\
+
+	K_{ij,r} \beta^r 
+	+ K_{rj} {b^r}_i 
+	+ K_{ir} {b^r}_j 
+	- \alpha a_{(i} a_{j)} 
+	- \alpha a_{(i,j)} 
+	+ \alpha {\Gamma^r}_{ij} a_r 
+	+ \alpha (
+		R_{ij} 
+		+ Z_{j,i} 
+		+ Z_{i,j} 
+		- 2 {\Gamma^r}_{ij} Z_r 
+		- 2 K_{ir} {K^r}_j 
+		+ (K - 2 \Theta) K_{ij} 
+		+ 4 \pi  (S - \rho) \gamma_{ij}
+		- 8 \pi S_{ij} 
+	)
+	\\
+	
+	\Theta_{,i} \beta^i 
+	+ \frac{1}{2} \alpha (
+		R 
+		+ 2 (
+			{Z^k}_{,k} 
+			+ {\Gamma^k}_{jk} Z^j
+		) 
+		+ (K - 2 \Theta) K 
+		- K_{ij} K^{ij} 
+		- 16 \pi \rho
+		- 2 Z^k a_k
+	)
+	\\
+
+	Z_{i,j} \beta^j 
+	+ Z_j {b^j}_i 
+	+ \alpha (
+		- {\Gamma^{kj}}_j K_{ik} 
+		+ \Gamma_{jki} K^{jk} 
+		
+		+ \gamma^{jk} K_{ki,j} 
+		- \gamma^{jk} K_{kj,i}
+		
+		+ \Theta_{,i} 
+		- 2 K_{ij} Z^j 
+		- 8 \pi S_i
+	) 
+	- \alpha \Theta a_i
+\end{matrix} \right]
+$<br>
+<br>
+
+
+
+separate out partial derivatives:<br>
+$\left[ \begin{matrix}
+	\alpha \\
+	\beta^k \\
+	\gamma_{ij} \\
+	a_i \\
+	B^k \\
+	{b^k}_i \\
+	{\Gamma^k}_{ij} \\
+	K_{ij} \\
+	\Theta \\
+	Z_i
+\end{matrix} \right]_{,t}
++ \left[ \begin{matrix}
+	0
+	\\
+	
+	0
+	\\
+	
+	0
+	\\
+
+	- a_{(k,i)} \beta^k
+	+ f \alpha \gamma^{pq} K_{pq,s} 
+	- f \alpha m \Theta_{,i} 
+	\\
+
+	k (
+		- {\Gamma^k}_{lj,r} \gamma^{jr} \beta^l
+		- {\Gamma^r}_{ml,r} \gamma^{km} \beta^l
+		+ {\Gamma^r}_{lr,m} \gamma^{km} \beta^l
+		
+		- {b^k}_{j,r} \gamma^{jr}
+		- {b^j}_{r,j} \gamma^{kr}
+		+ {b^j}_{j,r} \gamma^{kr}
+		
+		+ \alpha K_{mj,r} \gamma^{km} \gamma^{jr}
+		+ \alpha K_{mr,j} \gamma^{km} \gamma^{jr}
+		- \alpha K_{jr,m} \gamma^{km} \gamma^{jr}
+	)
+	\\
+	
+	-{B^k}_{,i}
+	\\
+
+	- {\Gamma^k}_{l(i,j)} \beta^l
+	- {\Gamma^n}_{lm,(i} \gamma_{j)n} \beta^l \gamma^{km}
+	+ {\Gamma^n}_{l(i|,m} \beta^l \gamma_{|j)n} \gamma^{km}
+	
+	- {b^k}_{(i,j)}
+	- {b^n}_{m,(i} \gamma_{j)n} \gamma^{km}
+	+ {b^n}_{(i|,m} \gamma_{j)n} \gamma^{km}
+	
+	+ \alpha K_{mi,j} \gamma^{km}
+	+ \alpha K_{mj,i} \gamma^{km}
+	- \alpha K_{ij,m} \gamma^{km}
+	\\
+
+	- K_{ij,r} \beta^r 
+	+ \alpha a_{(i,j)} 
+	- \alpha (
+		Z_{j,i} 
+		+ Z_{i,j} 
+		+ {\Gamma^k}_{ij,k} 
+		- {\Gamma^k}_{ik,j} 
+	)
+	\\
+
+	- \Theta_{,i} \beta^i 
+	- \alpha \gamma^{kl} Z_{l,k}
+	- \frac{1}{2} \alpha (
+		\gamma^{jl} {\Gamma^k}_{jl,k} 
+		- \gamma^{jl} {\Gamma^k}_{jk,l} 
+	)
+	\\
+	
+	- Z_{i,j} \beta^j 
+	- \alpha (
+		\gamma^{jk} K_{ki,j} 
+		- \gamma^{jk} K_{kj,i}
+		
+		+ \Theta_{,i} 
+	)
+
+\end{matrix} \right]
+
+= \left[ \begin{matrix}
+	\alpha a_i \beta^i 
+	- f \alpha^2 K 
+	+ f \alpha^2 m \Theta
+	\\
+	
+	B^k
+	\\
+
+	2 \Gamma_{(ij)r} \beta^r
+	+ 2 b_{(ij)} 
+	- 2 \alpha K_{ij}
+	\\
+
+	a_k {b^k}_i
+	- \alpha a_i (f' \alpha + f) (K - m \Theta) 
+	+ 2 f \alpha \Gamma_{pqi} K^{pq}
+	\\
+		
+	- \eta B^k
+	+ k (
+		- {\Gamma^k}_{jl} \Gamma^j \beta^l
+		- {\Gamma^k}_{jr} {\Gamma^{jr}}_l \beta^l
+		+ {\Gamma^r}_{rn} {\Gamma^{nk}}_l \beta^l
+		- {\Gamma^{rk}}_n {\Gamma^n}_{rl} \beta^l
+		+ {\Gamma_n}^{kr} {\Gamma^n}_{rl} \beta^l
+		- {\Gamma_{nr}}^k {\Gamma^{nr}}_l \beta^l
+
+		+ \frac{1}{2} {\Gamma_{jr}}^k b^{jr}
+		- \Gamma^j {b^k}_j
+	
+		+ \alpha a^k K
+		- 2 \alpha K^{kj} a_j
+		
+		+ 2 \alpha \Gamma_j K^{kj}
+		+ 2 \alpha {\Gamma^k}_{jr} K^{jr}
+	)
+	\\
+
+	0
+	\\
+
+	- {\Gamma_{ml}}^k {\Gamma^m}_{ij} \beta^l
+	- {\Gamma^k}_{ml} {\Gamma^m}_{ij} \beta^l
+	- {\Gamma^m}_{ij} {b_m}^k 
+	- {\Gamma^m}_{ij} {b^k}_m
+	
+	+ {\Gamma^k}_{n(i} {\Gamma^n}_{j)l} \beta^l
+	+ \Gamma_{(ij)n} {\Gamma^n}_{lm} \beta^l \gamma^{km} 
+	- \Gamma_{(i|nm} {\Gamma^n}_{j)l} \beta^l \gamma^{km} 
+	+ \Gamma_{nm(i} {\Gamma^n}_{j)l} \beta^l \gamma^{km}
+	+ \Gamma_{n(ij)} {\Gamma^n}_{lm} \beta^l \gamma^{km}
+	- {\Gamma_{n(i}}^k {\Gamma^n}_{j)l} \beta^l
+	
+	+ {\Gamma^k}_{il} {b^l}_j
+	+ {\Gamma^k}_{jl} {b^l}_i
+	+ \Gamma_{n(ij)} b^{nk}
+	
+	+ 2 \alpha {K^k}_m {\Gamma^m}_{ij}
+
+	- \alpha K_{mi} a_j \gamma^{km}
+	- \alpha K_{mj} a_i \gamma^{km}
+	+ \alpha K_{ij} a_m \gamma^{km}
+	
+	\\
+
+	  K_{rj} {b^r}_i 
+	+ K_{ir} {b^r}_j 
+	- \alpha a_{(i} a_{j)} 
+	+ \alpha {\Gamma^r}_{ij} a_r 
+	+ \alpha (
+		{\Gamma^k}_{mk} {\Gamma^m}_{ij} 
+		- {\Gamma^k}_{mj} {\Gamma^m}_{ik}
+
+		- 2 {\Gamma^r}_{ij} Z_r 
+		- 2 K_{ir} {K^r}_j 
+		+ (K - 2 \Theta) K_{ij} 
+		+ 4 \pi  (S - \rho) \gamma_{ij}
+		- 8 \pi S_{ij} 
+	)
+	\\
+	
+	\frac{1}{2} \alpha (
+		{\Gamma^k}_{km} \Gamma^m 
+		- \Gamma^{kjm} \Gamma_{mjk}
+	
+		- 2 Z_l \Gamma^l
+		+ (K - 2 \Theta) K 
+		- K_{ij} K^{ij} 
+		- 16 \pi \rho
+		- 2 Z^k a_k
+	)
+	\\
+
+	Z_j {b^j}_i 
+	+ \alpha (
+		- {\Gamma^{kj}}_j K_{ik} 
+		+ \Gamma_{jki} K^{jk} 
+		
+		- 2 K_{ij} Z^j 
+		- 8 \pi S_i
+	) 
+	- \alpha \Theta a_i
+\end{matrix} \right]
+$<br>
+<br>
+
+factor out linear system:<br>
+$\left[ \begin{matrix}
+	\alpha \\
+	\beta^k \\
+	\gamma_{ij} \\
+	a_i \\
+	B^k \\
+	{\Gamma^k}_{ij} \\
+	K_{ij} \\
+	\Theta \\
+	Z_i \\
+	{b^k}_i
+\end{matrix} \right]_{,t}
++ \left[ \begin{matrix}
+
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 &
+	\\
+	
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 &
+	\\
+	
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 &
+	\\
+
+	0 & 
+	0 & 
+	0 & 
+	-\frac{1}{2} (
+		\delta_i^s \beta^p
+		+ \delta_i^p \beta^s
+	) &
+	0 &
+	0 &
+	f \alpha \delta_i^s \gamma^{pq} &
+	- f \alpha m \delta_i^s &
+	0 &
+	0
+	\\
+
+	0 & 0 & 0 & 0 & 0 &
+
+	- k \delta^k_r \gamma^{qs} \beta^p
+	- k \delta^s_r \gamma^{pk} \beta^q
+	+ k \delta^q_r \gamma^{sk} \beta^p
+	&
+
+	2 k \alpha \gamma^{kp} \gamma^{qs}
+	- k \alpha \gamma^{ks} \gamma^{pq}
+	&
+
+	0 & 
+	0 & 
+	
+	- k \delta^k_r \gamma^{ps}
+	- k \delta^s_r \gamma^{kp}
+	+ k \delta^p_r \gamma^{ks}
+	&
+
+	\\
+	
+	0 & 0 & 0 & 0 & 0 & 
+	- \frac{1}{2} \beta^p \delta^k_r \delta^q_i \delta^s_j
+	- \frac{1}{2} \beta^p \delta^k_r \delta^q_j \delta^s_i
+	- \frac{1}{2} \beta^p \gamma_{jr} \gamma^{kq} \delta^s_i
+	- \frac{1}{2} \beta^p \gamma_{ir} \gamma^{kq} \delta^s_j
+	+ \frac{1}{2} \beta^p \gamma_{jr} \gamma^{ks} \delta^q_i
+	+ \frac{1}{2} \beta^p \gamma_{ir} \gamma^{ks} \delta^q_j
+	&
+	
+	\alpha \gamma^{kp} \delta^q_i \delta^s_j
+	+ \alpha \gamma^{kp} \delta^q_j \delta^s_i
+	- \alpha \gamma^{ks} \delta^p_i \delta^q_j
+	&
+
+	0 & 0 & 
+	
+	- \frac{1}{2} \delta^k_r \delta_i^p \delta_j^s
+	- \frac{1}{2} \delta^k_r \delta_j^p \delta_i^s
+	- \frac{1}{2} \gamma_{jr} \gamma^{kp} \delta^s_i
+	- \frac{1}{2} \gamma_{ir} \gamma^{kp} \delta^s_j
+	+ \frac{1}{2} \gamma_{jr} \gamma^{ks} \delta^p_i
+	+ \frac{1}{2} \gamma_{ir} \gamma^{ks} \delta^p_j
+	\\
+
+	0 & 0 & 0 &
+	\frac{1}{2} \alpha (\delta^s_i \delta^p_j + \delta^s_j \delta^p_i) &
+	
+	0 &
+
+	\alpha \delta^q_r \delta^p_i \delta^s_j
+	- \alpha \delta^s_r \delta^p_i \delta^q_j
+	&
+
+	- \beta^s \delta^p_i \delta^q_j
+	&
+
+	0 &
+	
+	- \alpha (\delta^p_i \delta^s_j + \delta^p_j \delta^s_i)
+	&
+
+	0
+	\\
+
+	0 & 0 & 0 & 0 & 0 & 
+	
+	- \frac{1}{2} \alpha (
+		\gamma^{pq} \delta_r^s
+		- \gamma^{ps} \delta^q_r
+	)
+	&
+
+	0 & 
+	
+	- \beta^s
+	&
+	
+	- \alpha \gamma^{ps}
+	&
+	
+	0 \\
+	
+	0 & 0 & 0 & 0 & 0 & 0 & 
+	
+	\alpha (\gamma^{pq} \delta^s_i - \gamma^{ps} \delta^q_i)
+	&
+
+	- \alpha \delta^s_i 
+	&
+
+	- \delta^p_i \beta^s 
+	&
+
+	0 \\
+	
+	0 & 0 & 0 & 0 & -\delta^s_i \delta^k_r & 0 & 0 & 0 & 0 & 0
+
+\end{matrix} \right]
+\left[ \begin{matrix}
+	\alpha \\
+	\beta^r \\
+	\gamma_{pq} \\
+	a_p \\
+	B^r \\
+	{\Gamma^r}_{pq} \\
+	K_{pq} \\
+	\Theta \\
+	Z_p \\
+	{b^r}_p
+\end{matrix} \right]_{,s}
+
+= \left[ \begin{matrix}
+	\alpha a_i \beta^i 
+	- f \alpha^2 K 
+	+ f \alpha^2 m \Theta
+	\\
+	
+	B^k
+	\\
+
+	2 \Gamma_{(ij)r} \beta^r
+	+ 2 b_{(ij)} 
+	- 2 \alpha K_{ij}
+	\\
+
+	+ a_k {b^k}_i
+	- \alpha a_i (f' \alpha + f) (K - m \Theta) 
+	+ 2 f \alpha \Gamma_{pqi} K^{pq}
+	\\
+	
+	- \eta B^k
+	+ k (
+		- {\Gamma^k}_{jl} \Gamma^j \beta^l
+		- {\Gamma^k}_{jr} {\Gamma^{jr}}_l \beta^l
+		+ {\Gamma^r}_{rn} {\Gamma^{nk}}_l \beta^l
+		- {\Gamma^{rk}}_n {\Gamma^n}_{rl} \beta^l
+		+ {\Gamma_n}^{kr} {\Gamma^n}_{rl} \beta^l
+		- {\Gamma_{nr}}^k {\Gamma^{nr}}_l \beta^l
+
+		+ \frac{1}{2} {\Gamma_{jr}}^k b^{jr}
+		- \Gamma^j {b^k}_j
+	
+		+ \alpha a^k K
+		- 2 \alpha K^{kj} a_j
+		
+		+ 2 \alpha \Gamma_j K^{kj}
+		+ 2 \alpha {\Gamma^k}_{jr} K^{jr}
+	)
+	\\
+
+	- {\Gamma_{ml}}^k {\Gamma^m}_{ij} \beta^l
+	- {\Gamma^k}_{ml} {\Gamma^m}_{ij} \beta^l
+	- {\Gamma^m}_{ij} {b_m}^k 
+	- {\Gamma^m}_{ij} {b^k}_m
+	
+	+ {\Gamma^k}_{n(i} {\Gamma^n}_{j)l} \beta^l
+	+ \Gamma_{(ij)n} {\Gamma^n}_{lm} \beta^l \gamma^{km} 
+	- \Gamma_{(i|nm} {\Gamma^n}_{j)l} \beta^l \gamma^{km} 
+	+ \Gamma_{nm(i} {\Gamma^n}_{j)l} \beta^l \gamma^{km}
+	+ \Gamma_{n(ij)} {\Gamma^n}_{lm} \beta^l \gamma^{km}
+	- {\Gamma_{n(i}}^k {\Gamma^n}_{j)l} \beta^l
+	
+	+ {\Gamma^k}_{il} {b^l}_j
+	+ {\Gamma^k}_{jl} {b^l}_i
+	+ \Gamma_{n(ij)} b^{nk}
+	
+	+ 2 \alpha {K^k}_m {\Gamma^m}_{ij}
+
+	- \alpha K_{mi} a_j \gamma^{km}
+	- \alpha K_{mj} a_i \gamma^{km}
+	+ \alpha K_{ij} a_m \gamma^{km}
+	
+	\\
+
+	  K_{rj} {b^r}_i 
+	+ K_{ir} {b^r}_j 
+	- \alpha a_{(i} a_{j)} 
+	+ \alpha {\Gamma^r}_{ij} a_r 
+	+ \alpha (
+		{\Gamma^k}_{mk} {\Gamma^m}_{ij} 
+		- {\Gamma^k}_{mj} {\Gamma^m}_{ik}
+
+		- 2 {\Gamma^r}_{ij} Z_r 
+		- 2 K_{ir} {K^r}_j 
+		+ (K - 2 \Theta) K_{ij} 
+		+ 4 \pi  (S - \rho) \gamma_{ij}
+		- 8 \pi S_{ij} 
+	)
+	\\
+	
+	\frac{1}{2} \alpha (
+		{\Gamma^k}_{km} \Gamma^m 
+		- \Gamma^{kjm} \Gamma_{mjk}
+	
+		- 2 Z_l \Gamma^l
+		+ (K - 2 \Theta) K 
+		- K_{ij} K^{ij} 
+		- 16 \pi \rho
+		- 2 Z^k a_k
+	)
+	\\
+
+	Z_j {b^j}_i 
+	+ \alpha (
+		- {\Gamma^{kj}}_j K_{ik} 
+		+ \Gamma_{jki} K^{jk} 
+		
+		- 2 K_{ij} Z^j 
+		- 8 \pi S_i
+	) 
+	- \alpha \Theta a_i
+	\\
+	
+	0
+\end{matrix} \right]
+$<br>
+<br>
+
+get rid of the purely-source gauge terms: $\alpha, \beta^k, \gamma_{ij}$.
+favor the $\beta^s$ diagonal:<br>
+$\left[ \begin{matrix}
+	a_i \\
+	B^k \\
+	{\Gamma^k}_{ij} \\
+	K_{ij} \\
+	\Theta \\
+	Z_i \\
+	{b^k}_i
+\end{matrix} \right]_{,t}
++ \left[ \begin{matrix}
+	-\delta_i^p \beta^s &
+	0 &
+	0 &
+	f \alpha \delta_i^s \gamma^{pq} &
+	- f \alpha m \delta_i^s &
+	0 &
+	0
+	\\
+
+	0 & 0 &
+
+	- k \delta^k_r \gamma^{qs} \beta^p
+	- k \delta^s_r \gamma^{pk} \beta^q
+	+ k \delta^q_r \gamma^{sk} \beta^p
+	&
+
+	2 k \alpha \gamma^{kp} \gamma^{qs}
+	- k \alpha \gamma^{ks} \gamma^{pq}
+	&
+
+	0 & 
+	0 & 
+	
+	- k \delta^k_r \gamma^{ps}
+	- k \delta^s_r \gamma^{kp}
+	+ k \delta^p_r \gamma^{ks}
+	&
+
+	\\
+	
+	0 & 0 & 
+	- \frac{1}{2} \beta^p \delta^k_r \delta^q_i \delta^s_j
+	- \frac{1}{2} \beta^p \delta^k_r \delta^q_j \delta^s_i
+	- \frac{1}{2} \beta^p \gamma_{jr} \gamma^{kq} \delta^s_i
+	- \frac{1}{2} \beta^p \gamma_{ir} \gamma^{kq} \delta^s_j
+	+ \frac{1}{2} \beta^p \gamma_{jr} \gamma^{ks} \delta^q_i
+	+ \frac{1}{2} \beta^p \gamma_{ir} \gamma^{ks} \delta^q_j
+	&
+	
+	\alpha \gamma^{kp} \delta^q_i \delta^s_j
+	+ \alpha \gamma^{kp} \delta^q_j \delta^s_i
+	- \alpha \gamma^{ks} \delta^p_i \delta^q_j
+	&
+
+	0 & 0 & 
+	
+	- \frac{1}{2} \delta^k_r \delta_i^p \delta_j^s
+	- \frac{1}{2} \delta^k_r \delta_j^p \delta_i^s
+	- \frac{1}{2} \gamma_{jr} \gamma^{kp} \delta^s_i
+	- \frac{1}{2} \gamma_{ir} \gamma^{kp} \delta^s_j
+	+ \frac{1}{2} \gamma_{jr} \gamma^{ks} \delta^p_i
+	+ \frac{1}{2} \gamma_{ir} \gamma^{ks} \delta^p_j
+	\\
+
+	\frac{1}{2} \alpha (\delta^s_i \delta^p_j + \delta^s_j \delta^p_i) &
+	
+	0 &
+
+	\alpha \delta^q_r \delta^p_i \delta^s_j
+	- \alpha \delta^s_r \delta^p_i \delta^q_j
+	&
+
+	- \beta^s \delta^p_i \delta^q_j
+	&
+
+	0 &
+	
+	- \alpha (\delta^p_i \delta^s_j + \delta^p_j \delta^s_i)
+	&
+
+	0
+	\\
+
+	0 & 0 & 
+	
+	- \frac{1}{2} \alpha (
+		\gamma^{pq} \delta_r^s
+		- \gamma^{ps} \delta^q_r
+	)
+	&
+
+	0 & 
+	
+	- \beta^s
+	&
+	
+	- \alpha \gamma^{ps}
+	&
+	
+	0 \\
+	
+	0 & 0 & 0 & 
+	
+	\alpha (\gamma^{pq} \delta^s_i - \gamma^{ps} \delta^q_i)
+	&
+
+	- \alpha \delta^s_i 
+	&
+
+	- \delta^p_i \beta^s 
+	&
+
+	0 \\
+	
+	0 & -\delta^s_i \delta^k_r & 0 & 0 & 0 & 0 & 0
+
+\end{matrix} \right]
+\left[ \begin{matrix}
+	a_p \\
+	B^r \\
+	{\Gamma^r}_{pq} \\
+	K_{pq} \\
+	\Theta \\
+	Z_p \\
+	{b^r}_p
+\end{matrix} \right]_{,s}
+
+= \left[ \begin{matrix}
+	a_k {b^k}_i
+	- \alpha a_i (f' \alpha + f) (K - m \Theta) 
+	+ 2 f \alpha \Gamma_{pqi} K^{pq}
+	\\
+	
+	- \eta B^k
+	+ k (
+		- {\Gamma^k}_{jl} \Gamma^j \beta^l
+		- {\Gamma^k}_{jr} {\Gamma^{jr}}_l \beta^l
+		+ {\Gamma^r}_{rn} {\Gamma^{nk}}_l \beta^l
+		- {\Gamma^{rk}}_n {\Gamma^n}_{rl} \beta^l
+		+ {\Gamma_n}^{kr} {\Gamma^n}_{rl} \beta^l
+		- {\Gamma_{nr}}^k {\Gamma^{nr}}_l \beta^l
+
+		+ \frac{1}{2} {\Gamma_{jr}}^k b^{jr}
+		- \Gamma^j {b^k}_j
+	
+		+ \alpha a^k K
+		- 2 \alpha K^{kj} a_j
+		
+		+ 2 \alpha \Gamma_j K^{kj}
+		+ 2 \alpha {\Gamma^k}_{jr} K^{jr}
+	)
+	\\
+
+	- {\Gamma_{ml}}^k {\Gamma^m}_{ij} \beta^l
+	- {\Gamma^k}_{ml} {\Gamma^m}_{ij} \beta^l
+	- {\Gamma^m}_{ij} {b_m}^k 
+	- {\Gamma^m}_{ij} {b^k}_m
+	
+	+ {\Gamma^k}_{n(i} {\Gamma^n}_{j)l} \beta^l
+	+ \Gamma_{(ij)n} {\Gamma^n}_{lm} \beta^l \gamma^{km} 
+	- \Gamma_{(i|nm} {\Gamma^n}_{j)l} \beta^l \gamma^{km} 
+	+ \Gamma_{nm(i} {\Gamma^n}_{j)l} \beta^l \gamma^{km}
+	+ \Gamma_{n(ij)} {\Gamma^n}_{lm} \beta^l \gamma^{km}
+	- {\Gamma_{n(i}}^k {\Gamma^n}_{j)l} \beta^l
+	
+	+ {\Gamma^k}_{il} {b^l}_j
+	+ {\Gamma^k}_{jl} {b^l}_i
+	+ \Gamma_{n(ij)} b^{nk}
+	
+	+ 2 \alpha {K^k}_m {\Gamma^m}_{ij}
+
+	- \alpha K_{mi} a_j \gamma^{km}
+	- \alpha K_{mj} a_i \gamma^{km}
+	+ \alpha K_{ij} a_m \gamma^{km}
+	
+	\\
+
+	  K_{rj} {b^r}_i 
+	+ K_{ir} {b^r}_j 
+	- \alpha a_{(i} a_{j)} 
+	+ \alpha {\Gamma^r}_{ij} a_r 
+	+ \alpha (
+		{\Gamma^k}_{mk} {\Gamma^m}_{ij} 
+		- {\Gamma^k}_{mj} {\Gamma^m}_{ik}
+
+		- 2 {\Gamma^r}_{ij} Z_r 
+		- 2 K_{ir} {K^r}_j 
+		+ (K - 2 \Theta) K_{ij} 
+		+ 4 \pi  (S - \rho) \gamma_{ij}
+		- 8 \pi S_{ij} 
+	)
+	\\
+	
+	\frac{1}{2} \alpha (
+		{\Gamma^k}_{km} \Gamma^m 
+		- \Gamma^{kjm} \Gamma_{mjk}
+	
+		- 2 Z_l \Gamma^l
+		+ (K - 2 \Theta) K 
+		- K_{ij} K^{ij} 
+		- 16 \pi \rho
+		- 2 Z^k a_k
+	)
+	\\
+
+	Z_j {b^j}_i 
+	+ \alpha (
+		- {\Gamma^{kj}}_j K_{ik} 
+		+ \Gamma_{jki} K^{jk} 
+		
+		- 2 K_{ij} Z^j 
+		- 8 \pi S_i
+	) 
+	- \alpha \Theta a_i
+	\\
+	
+	0
+\end{matrix} \right]
+$<br>
+<br>
+
+back to the linear system, cast everything as a partial derivative, so there is no source:<br>
+$\left[ \begin{matrix}
+	\alpha \\
+	\beta^k \\
+	\gamma_{ij} \\
+	a_i \\
+	B^k \\
+	{\Gamma^k}_{ij} \\
+	K_{ij} \\
+	\Theta \\
+	Z_i \\
+	{b^k}_i
+\end{matrix} \right]_{,t}
++ \left[ \begin{matrix}
+	-\beta^s & 
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 &
+	\\
+	
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 &
+	\\
+	
+	0 & 
+	
+	-\gamma_{ir} \delta^s_j
+	-\gamma_{jr} \delta^s_i
+	& 
+	
+	-(\delta^p_i \delta^q_j + \delta^p_j \delta^q_i) \beta^s & 
+	
+	0 & 0 & 0 & 0 & 0 & 0 & 0 &
+	\\
+
+	\delta^s_i (f' \alpha + f) (K - m \Theta) & 
+	-a_r \delta^s_i & 
+	- f \alpha K^{pq} \delta^s_i & 
+	-\delta_i^p \beta^s &
+	0 &
+	0 &
+	f \alpha \delta_i^s \gamma^{pq} &
+	- f \alpha m \delta_i^s &
+	0 &
+	0
+	\\
+
+	0 & 0 & 0 & 0 & 0 &
+
+	- k \delta^k_r \gamma^{qs} \beta^p
+	- k \delta^s_r \gamma^{pk} \beta^q
+	+ k \delta^q_r \gamma^{sk} \beta^p
+	&
+
+	2 k \alpha \gamma^{kp} \gamma^{qs}
+	- k \alpha \gamma^{ks} \gamma^{pq}
+	&
+
+	0 & 
+	0 & 
+	
+	- k \delta^k_r \gamma^{ps}
+	- k \delta^s_r \gamma^{kp}
+	+ k \delta^p_r \gamma^{ks}
+	&
+
+	\\
+	
+	0 & 0 & 0 & 0 & 0 & 
+	- \frac{1}{2} \beta^p \delta^k_r \delta^q_i \delta^s_j
+	- \frac{1}{2} \beta^p \delta^k_r \delta^q_j \delta^s_i
+	- \frac{1}{2} \beta^p \gamma_{jr} \gamma^{kq} \delta^s_i
+	- \frac{1}{2} \beta^p \gamma_{ir} \gamma^{kq} \delta^s_j
+	+ \frac{1}{2} \beta^p \gamma_{jr} \gamma^{ks} \delta^q_i
+	+ \frac{1}{2} \beta^p \gamma_{ir} \gamma^{ks} \delta^q_j
+	&
+	
+	\alpha \gamma^{kp} \delta^q_i \delta^s_j
+	+ \alpha \gamma^{kp} \delta^q_j \delta^s_i
+	- \alpha \gamma^{ks} \delta^p_i \delta^q_j
+	&
+
+	0 & 0 & 
+	
+	- \frac{1}{2} \delta^k_r \delta_i^p \delta_j^s
+	- \frac{1}{2} \delta^k_r \delta_j^p \delta_i^s
+	- \frac{1}{2} \gamma_{jr} \gamma^{kp} \delta^s_i
+	- \frac{1}{2} \gamma_{ir} \gamma^{kp} \delta^s_j
+	+ \frac{1}{2} \gamma_{jr} \gamma^{ks} \delta^p_i
+	+ \frac{1}{2} \gamma_{ir} \gamma^{ks} \delta^p_j
+	\\
+
+	0 & 0 & 0 &
+	\frac{1}{2} \alpha (\delta^s_i \delta^p_j + \delta^s_j \delta^p_i) &
+	
+	0 &
+
+	\alpha \delta^q_r \delta^p_i \delta^s_j
+	- \alpha \delta^s_r \delta^p_i \delta^q_j
+	&
+
+	- \beta^s \delta^p_i \delta^q_j
+	&
+
+	0 &
+	
+	- \alpha (\delta^p_i \delta^s_j + \delta^p_j \delta^s_i)
+	&
+
+	0
+	\\
+
+	0 & 0 & 0 & 0 & 0 & 
+	
+	- \frac{1}{2} \alpha (
+		\gamma^{pq} \delta_r^s
+		- \gamma^{ps} \delta^q_r
+	)
+	&
+
+	0 & 
+	
+	- \beta^s
+	&
+	
+	- \alpha \gamma^{ps}
+	&
+	
+	0 \\
+	
+	0 & 0 & 0 & 0 & 0 & 0 & 
+	
+	\alpha (\gamma^{pq} \delta^s_i - \gamma^{ps} \delta^q_i)
+	&
+
+	- \alpha \delta^s_i 
+	&
+
+	- \delta^p_i \beta^s 
+	&
+
+	0 \\
+	
+	0 & 0 & 0 & 0 & -\delta^s_i \delta^k_r & 0 & 0 & 0 & 0 & 0
+
+\end{matrix} \right]
+\left[ \begin{matrix}
+	\alpha \\
+	\beta^r \\
+	\gamma_{pq} \\
+	a_p \\
+	B^r \\
+	{\Gamma^r}_{pq} \\
+	K_{pq} \\
+	\Theta \\
+	Z_p \\
+	{b^r}_p
+\end{matrix} \right]_{,s}
+
+= \left[ \begin{matrix}
+	- f \alpha^2 (K - m \Theta)
+	\\
+	
+	B^k
+	\\
+
+	- 2 \alpha K_{ij}
+	\\
+
+	0 \\
+	
+	- \eta B^k
+	+ k (
+		- {\Gamma^k}_{jl} \Gamma^j \beta^l
+		- {\Gamma^k}_{jr} {\Gamma^{jr}}_l \beta^l
+		+ {\Gamma^r}_{rn} {\Gamma^{nk}}_l \beta^l
+		- {\Gamma^{rk}}_n {\Gamma^n}_{rl} \beta^l
+		+ {\Gamma_n}^{kr} {\Gamma^n}_{rl} \beta^l
+		- {\Gamma_{nr}}^k {\Gamma^{nr}}_l \beta^l
+
+		+ \frac{1}{2} {\Gamma_{jr}}^k b^{jr}
+		- \Gamma^j {b^k}_j
+	
+		+ \alpha a^k K
+		- 2 \alpha K^{kj} a_j
+		
+		+ 2 \alpha \Gamma_j K^{kj}
+		+ 2 \alpha {\Gamma^k}_{jr} K^{jr}
+	)
+	\\
+
+	- {\Gamma_{ml}}^k {\Gamma^m}_{ij} \beta^l
+	- {\Gamma^k}_{ml} {\Gamma^m}_{ij} \beta^l
+	- {\Gamma^m}_{ij} {b_m}^k 
+	- {\Gamma^m}_{ij} {b^k}_m
+	
+	+ {\Gamma^k}_{n(i} {\Gamma^n}_{j)l} \beta^l
+	+ \Gamma_{(ij)n} {\Gamma^n}_{lm} \beta^l \gamma^{km} 
+	- \Gamma_{(i|nm} {\Gamma^n}_{j)l} \beta^l \gamma^{km} 
+	+ \Gamma_{nm(i} {\Gamma^n}_{j)l} \beta^l \gamma^{km}
+	+ \Gamma_{n(ij)} {\Gamma^n}_{lm} \beta^l \gamma^{km}
+	- {\Gamma_{n(i}}^k {\Gamma^n}_{j)l} \beta^l
+	
+	+ {\Gamma^k}_{il} {b^l}_j
+	+ {\Gamma^k}_{jl} {b^l}_i
+	+ \Gamma_{n(ij)} b^{nk}
+	
+	+ 2 \alpha {K^k}_m {\Gamma^m}_{ij}
+
+	- \alpha K_{mi} a_j \gamma^{km}
+	- \alpha K_{mj} a_i \gamma^{km}
+	+ \alpha K_{ij} a_m \gamma^{km}
+	
+	\\
+
+	  K_{rj} {b^r}_i 
+	+ K_{ir} {b^r}_j 
+	- \alpha a_{(i} a_{j)} 
+	+ \alpha {\Gamma^r}_{ij} a_r 
+	+ \alpha (
+		{\Gamma^k}_{mk} {\Gamma^m}_{ij} 
+		- {\Gamma^k}_{mj} {\Gamma^m}_{ik}
+
+		- 2 {\Gamma^r}_{ij} Z_r 
+		- 2 K_{ir} {K^r}_j 
+		+ (K - 2 \Theta) K_{ij} 
+		+ 4 \pi  (S - \rho) \gamma_{ij}
+		- 8 \pi S_{ij} 
+	)
+	\\
+	
+	\frac{1}{2} \alpha (
+		{\Gamma^k}_{km} \Gamma^m 
+		- \Gamma^{kjm} \Gamma_{mjk}
+	
+		- 2 Z_l \Gamma^l
+		+ (K - 2 \Theta) K 
+		- K_{ij} K^{ij} 
+		- 16 \pi \rho
+		- 2 Z^k a_k
+	)
+	\\
+
+	Z_j {b^j}_i 
+	+ \alpha (
+		- {\Gamma^{kj}}_j K_{ik} 
+		+ \Gamma_{jki} K^{jk} 
+		
+		- 2 K_{ij} Z^j 
+		- 8 \pi S_i
+	) 
+	- \alpha \Theta a_i
+	\\
+	
+	0
+\end{matrix} \right]
+$<br>
+<br>
+<br>
+
+	</body>
+</html>

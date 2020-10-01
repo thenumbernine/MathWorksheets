@@ -72,8 +72,6 @@ Here's the CDN URLs:
 
 [EMHD Linear Stability Analysis](https://thenumbernine.github.io/math/EMHD%20Linear%20Stability%20Analysis.html)
 
-[Einstein-Cartan-Sciama-Kibble](https://thenumbernine.github.io/math/Einstein%2dCartan%2dSciama%2dKibble.html)
-
 [Einstein-Maxwell Hyperbolic Conservation Laws](https://thenumbernine.github.io/math/Einstein%2dMaxwell%20Hyperbolic%20Conservation%20Laws.html)
 
 [Electromagnetism/0 - intro](https://thenumbernine.github.io/math/Electromagnetism/0%20%2d%20intro.html)
@@ -191,6 +189,8 @@ Here's the CDN URLs:
 [Numerical Relativity/equal up to principal part](https://thenumbernine.github.io/math/Numerical%20Relativity/equal%20up%20to%20principal%20part.html)
 
 [Numerical Relativity/trace-free](https://thenumbernine.github.io/math/Numerical%20Relativity/trace%2dfree.html)
+
+[Numerical Relativity/z4-with-my-changes](https://thenumbernine.github.io/math/Numerical%20Relativity/z4%2dwith%2dmy%2dchanges.html)
 
 [Numerical Relativity/z4](https://thenumbernine.github.io/math/Numerical%20Relativity/z4.html)
 

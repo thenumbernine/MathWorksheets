@@ -303,9 +303,9 @@ $\left[\matrix{
 	\alpha \\ \beta^i \\ \gamma_{ij} \\ a_k \\ d_{kij} \\ K_{ij} 
 }\right]_{,t}
 + \left[\matrix{
+	-\beta^r & 0 & 0 & 0 & 0 & 0 \\
 	0 & 0 & 0 & 0 & 0 & 0 \\
-	0 & 0 & 0 & 0 & 0 & 0 \\
-	0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & -(\delta_i^p \delta_j^q + \delta_i^q \delta_j^p) \beta^r & 0 & 0 & 0 \\
 	-\alpha^2 K (f - f' \alpha) \delta^r_k &
 		-a_m \delta^r_k & 
 		\alpha f K^{pq} \delta^r_k &
@@ -335,7 +335,7 @@ $\left[\matrix{
 = \left[\matrix{
 	-\alpha^2 f K \\
 	0 \\
-	-2 \alpha K_{ij} \\
+	-2 \alpha K_{ij} + \gamma_{kj} {\beta^k}_{,i} + \gamma_{ki} {\beta^k}_{,j} \\
 	0 \\
 	\gamma_{l(i} {\beta^l}_{,j)k} \\
 	\alpha (2 {d_{(ij)}}^k - {d^k}_{(ij)}) (a_k + V_k - {d^l}_{lk})
