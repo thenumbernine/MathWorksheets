@@ -300,26 +300,24 @@ ${U^i}_{,t} + {J^{ir}}_m {U^m}_{,r} = S^i$, for ${J^{ir}}_m = \frac{\partial F^{
 
 matrix form, favoring flux terms:<br>
 $\left[\matrix{
-	\alpha \\ \beta^i \\ \gamma_{ij} \\ a_k \\ d_{kij} \\ K_{ij} 
+	\alpha \\ \gamma_{ij} \\ a_k \\ d_{kij} \\ K_{ij} \\ \beta^i
 }\right]_{,t}
 + \left[\matrix{
 	-\beta^r & 0 & 0 & 0 & 0 & 0 \\
-	0 & 0 & 0 & 0 & 0 & 0 \\
-	0 & 0 & -(\delta_i^p \delta_j^q + \delta_i^q \delta_j^p) \beta^r & 0 & 0 & 0 \\
+	0 & -(\delta_i^p \delta_j^q + \delta_i^q \delta_j^p) \beta^r & 0 & 0 & 0 & 0 \\
 	-\alpha^2 K (f - f' \alpha) \delta^r_k &
-		-a_m \delta^r_k & 
 		\alpha f K^{pq} \delta^r_k &
 		-\delta^m_k \beta^r & 
 		0 & 
-		\alpha f \gamma^{pq} \delta^r_k \\
+		\alpha f \gamma^{pq} \delta^r_k &
+		-a_m \delta^r_k \\
 	\alpha^2 K_{ij} \delta^r_k & 
-		-d_{mij} \delta^r_k - 2 d_{km(i} \delta^r_{j)} & 
 		0 & 
 		0 & 
 		-\delta^m_k \delta^p_i \delta^q_j \beta^r & 
-		\alpha \delta^p_i \delta^q_j \delta^r_k \\
+		\alpha \delta^p_i \delta^q_j \delta^r_k &
+		-d_{mij} \delta^r_k - 2 d_{km(i} \delta^r_{j)} \\
 	\alpha^2 a_{(i} \delta^r_{j)} &
-		-2 K_{m(i} \delta^r_{j)} & 
 		\frac{1}{2} \alpha {d_{(i}}^{pq} \delta^r_{j)} &
 		\alpha \delta^m_{(i} \delta^r_{j)} &  
 		\alpha (
@@ -327,14 +325,15 @@ $\left[\matrix{
 			+ \gamma^{mr} \delta^{(p}_{(i} \delta^{q)}_{j)}
 			- 2 \gamma^{r(p} \delta^{q)}_{(i} \delta^m_{j)}
 		) &
-		-\delta^p_i \delta^q_j \beta^r
+		-\delta^p_i \delta^q_j \beta^r &
+		-2 K_{m(i} \delta^r_{j)} \\
+	0 & 0 & 0 & 0 & 0 & 0
 }\right]
 \left[\matrix{
-	\alpha \\ \beta^m \\ \gamma_{pq} \\ a_m \\ d_{mpq} \\ K_{pq} 
+	\alpha \\ \gamma_{pq} \\ a_m \\ d_{mpq} \\ K_{pq} \\ \beta^m
 }\right]_{,r}
 = \left[\matrix{
 	-\alpha^2 f K \\
-	0 \\
 	-2 \alpha K_{ij} + \gamma_{kj} {\beta^k}_{,i} + \gamma_{ki} {\beta^k}_{,j} \\
 	0 \\
 	\gamma_{l(i} {\beta^l}_{,j)k} \\
@@ -342,7 +341,8 @@ $\left[\matrix{
 		+ 2 \alpha ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
 		+ \alpha K K_{(ij)} 
 		- 2 \alpha K_{(i|k} {K^k}_{j)}
-		+ 4 \pi \alpha (\gamma_{ij} (S - \rho) - 2 S_{ij})
+		+ 4 \pi \alpha (\gamma_{ij} (S - \rho) - 2 S_{ij}) \\
+	0
 }\right]$<br>
 <br>
 

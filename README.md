@@ -190,7 +190,9 @@ Here's the CDN URLs:
 
 [Numerical Relativity/trace-free](https://thenumbernine.github.io/math/Numerical%20Relativity/trace%2dfree.html)
 
-[Numerical Relativity/z4-with-my-changes](https://thenumbernine.github.io/math/Numerical%20Relativity/z4%2dwith%2dmy%2dchanges.html)
+[Numerical Relativity/z4-with-conns](https://thenumbernine.github.io/math/Numerical%20Relativity/z4%2dwith%2dconns.html)
+
+[Numerical Relativity/z4-with-hyperbolic-gamma-driver](https://thenumbernine.github.io/math/Numerical%20Relativity/z4%2dwith%2dhyperbolic%2dgamma%2ddriver.html)
 
 [Numerical Relativity/z4](https://thenumbernine.github.io/math/Numerical%20Relativity/z4.html)
 
