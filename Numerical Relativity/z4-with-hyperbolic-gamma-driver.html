@@ -7,24 +7,44 @@
 	</head>
     <body>
 
-(This uses the ${\beta^i}_{,j} = {b_j}^i$ convention which I can't stand.  TODO change it, here and in z4.html.)<br>
+$\alpha_{,t} = 
+	\alpha a_i \beta^i 
+	- f \alpha^2 (K - m \Theta)
+$<br>
 <br>
 
-$\alpha_{,t} = \alpha a_i \beta^i - f \alpha^2 (K - m \Theta)$<br>
+$\gamma_{ij,t} = 
+	2 d_{kij} \beta^k 
+	+ \gamma_{ki} {b^k}_j 
+	+ \gamma_{kj} {b^k}_i
+	- 2 \alpha K_{ij}
+$<br>
 <br>
 
-$\gamma_{ij,t} = 2 d_{kij} \beta^k + b_{ij} + b_{ji} - 2 \alpha K_{ij}$<br>
+$a_{k,t} = 
+	a_{i,k} \beta^i 
+	- f \alpha \gamma^{jl} K_{jl,k} 
+	+ f \alpha m \Theta_{,k} 
+	+ a_i {b^i}_k
+	- \alpha a_k (f' \alpha + f) (K - m \Theta) 
+	+ 2 f \alpha {d_k}^{jl} K_{jl}
+$<br>
 <br>
 
-$a_{k,t} = a_{i,k} \beta^i - f \alpha \gamma^{jl} K_{jl,k} + f \alpha m \Theta_{,k} + a_i {b_k}^i - \alpha a_k (f' \alpha + f) (K - m \Theta) + 2 f \alpha {d_k}^{jl} K_{jl}$<br>
-<br>
-
-$d_{kij,t} = d_{lij,k} \beta^l + \frac{1}{2} b_{ij,k} + \frac{1}{2} b_{ji,k} - \alpha K_{ij,k} + d_{lij} {b_k}^l - \alpha a_k K_{ij}$<br>
+$d_{kij,t} = d_{lij,k} \beta^l 
+	+ \frac{1}{2} \gamma_{li} {b^l}_{j,k}
+	+ \frac{1}{2} \gamma_{lj} {b^l}_{i,k}
+	- \alpha K_{ij,k} 
+	+ d_{lij} {b^l}_k 
+	+ d_{kli} {b^l}_j 
+	+ d_{klj} {b^l}_i
+	- \alpha a_k K_{ij}
+$<br>
 <br>
 
 $K_{ij,t} =
 	\beta^k K_{(ij),k}  
-	+ 2 K_{k(i} {b_j}^k
+	+ 2 K_{k(i} {b^k}_j
 	
 	- \alpha \delta^m_{(i} \delta^r_{j)} a_{m,r} 
 	+ \alpha (
@@ -75,7 +95,7 @@ $Z_{k,t} =
 	
 	- 2 \alpha K_{ki} e^i
 	+ 2 \alpha K_{ij} {d_k}^{ij}
-	+ Z_j {b_k}^j
+	+ Z_j {b^j}_k
 	- \alpha {\Gamma^i}_{kj} {K_i}^j 
 	+ \alpha {\Gamma^j}_{ij} {K_k}^i 
 	- 2 \alpha {K_k}^j Z_j 
@@ -86,7 +106,7 @@ $<br>
 
 ${\beta^i}_{,t} = B^i$<br>
 ${B^i}_{,t} = ...$<br>
-${{b_j}^i}_{,t} = {B^i}_{j,t} = ...$<br>
+${b^i}_{j,t} = {B^i}_{j,t} = ...$<br>
 <br>
 
 $\left[\matrix{
@@ -98,7 +118,7 @@ $\left[\matrix{
 	\Theta \\
 	Z_k \\
 	\beta^l \\
-	{b_k}^l \\
+	{b^l}_k \\
 	B^l
 }\right]_{,t}
 + \left[\matrix{
@@ -123,7 +143,7 @@ $\left[\matrix{
 		0 & 
 		0 &
 		0 & 
-		-\delta^{(p}_i \delta^{q)}_j \delta^r_k &
+		-\gamma_{n(i} \delta^m_{j)} \delta^r_k &
 		0 \\
 
 	0 & 0 & 
@@ -173,7 +193,7 @@ $\left[\matrix{
 		\alpha \frac{\partial Q^l}{\partial \Theta} &
 		\alpha \frac{\partial Q^l}{\partial Z_m} &
 		0 &
-		\alpha \frac{\partial Q^l}{\partial {b_m}^n} &
+		\alpha \frac{\partial Q^l}{\partial {b^n}_m} &
 		0 \\
 
 	... & ... & ... & ... & ... & ... & ... & ... & ... & ... \\
@@ -189,29 +209,28 @@ $\left[\matrix{
 	\Theta \\
 	Z_m \\
 	\beta^n \\
-	{b_m}^n \\
+	{b^n}_m \\
 	B^n
 }\right]_{,r}
 = \left[\matrix{
  	\alpha a_i \beta^i - f \alpha^2 (K - m \Theta) \\
 
-	2 d_{kij} \beta^k + b_{ij} + b_{ji} - 2 \alpha K_{ij} \\
+	2 d_{kij} \beta^k 
+		+ \gamma_{ki} {b^k}_j 
+		+ \gamma_{kj} {b^k}_i
+		- 2 \alpha K_{ij} \\
 
-	a_i {b_k}^i
+	a_i {b^i}_k
 		+ 2 f \alpha K_{ij} {d_k}^{ij}
 		- a_k \alpha (f' \alpha + f) (K - m \Theta) \\
 
-	d_{lij} {b_k}^l
-		+ d_{kli} {b_j}^l
-		+ d_{klj} {b_i}^l
-		
-		+ \frac{1}{2} \gamma_{li} {{b_j}^l}_{,k}
-		+ \frac{1}{2} \gamma_{lj} {{b_i}^l}_{,k}
-		
+	d_{lij} {b^l}_k 
+	+ d_{kli} {b^l}_j 
+	+ d_{klj} {b^l}_i
 		- \alpha a_k K_{ij} \\
 
-	K_{kj} {b_i}^k
-		+ K_{ik} {b_j}^k
+	K_{kj} {b^k}_i
+		+ K_{ik} {b^k}_j
 		- \alpha a_i a_j
 		+ ({d_{ij}}^k + {d_{ji}}^k - {d^k}_{ij}) \alpha a_k
 		+ \alpha d_{ijl} ({d^{lk}}_k - 2 {d_k}^{kl})
@@ -236,7 +255,7 @@ $\left[\matrix{
 		- 8 \pi \alpha \rho
 		- \alpha Z^k a_k \\
 
-	Z_j {b_k}^j
+	Z_j {b^j}_k
 		- 2 \alpha K_{ki} e^i
 		+ 2 \alpha K_{ji} {d_k}^{ij}
 		- \alpha {\Gamma^i}_{kj} {K_i}^j 
@@ -252,7 +271,6 @@ $\left[\matrix{
 	...
 
 }\right]$<br>
-There's an obvious error in the flux entry for the $d_{kij,t} + ... entry * {b_m}^n$<br>
 <br>
 
 favoring flux terms:<br>
@@ -265,7 +283,7 @@ $\left[\matrix{
 	\Theta \\
 	Z_k \\
 	\beta^l \\
-	{b_k}^l \\
+	{b^l}_k \\
 	B^l
 }\right]_{,t}
 + \left[\matrix{	
@@ -369,7 +387,7 @@ $\left[\matrix{
 		\alpha \frac{\partial Q^l}{\partial \Theta} &
 		\alpha \frac{\partial Q^l}{\partial Z_m} &
 		0 &
-		\alpha \frac{\partial Q^l}{\partial {b_m}^n} &
+		\alpha \frac{\partial Q^l}{\partial {b^n}_m} &
 		0 \\
 
 	... & ... & ... & ... & ... & ... & ... & ... & ... & ... \\
@@ -385,7 +403,7 @@ $\left[\matrix{
 	\Theta \\
 	Z_m \\
 	\beta^n \\
-	{b_m}^n \\
+	{b^n}_m \\
 	B^n
 }\right]_{,r}
 = \left[\matrix{
@@ -419,7 +437,7 @@ $\left[\matrix{
 		- 8 \pi \alpha \rho
 		- \alpha Z^k a_k \\
 
-	Z_j {b_k}^j
+	Z_j {b^j}_k
 		- 2 \alpha K_{ki} e^i
 		+ 2 \alpha K_{ji} {d_k}^{ij}
 		- \alpha {\Gamma^i}_{kj} {K_i}^j 

@@ -74,7 +74,7 @@ with hyperbolic vars substituted for partials:<br>
 $\alpha_{,t} = \alpha a_i \beta^i - f \alpha^2 (K - m \Theta)$<br>
 <br>
 
-$\gamma_{ij,t} = 2 d_{kij} \beta^k + b_{ij} + b_{ji} - 2 \alpha K_{ij}$<br>
+$\gamma_{ij,t} = 2 d_{kij} \beta^k + \gamma_{ki} {b^k}_j + \gamma_{kj} {b^k}_i - 2 \alpha K_{ij}$<br>
 <br>
 
 hyperbolic variable time derivatives in terms of flux:<br>
@@ -100,12 +100,28 @@ TODO rewrite in terms of spatial derivatives of state variables.<br>
 
 $d_{kij,t} = (\frac{1}{2} \gamma_{ij,k})_{,t}$<br>
 $= (\frac{1}{2} \gamma_{ij,t})_{,k}$<br>
-$= (d_{lij} \beta^l + \frac{1}{2} b_{ij} + \frac{1}{2} b_{ji} - \alpha K_{ij})_{,k}$<br>
+$= (d_{lij} \beta^l + \frac{1}{2} \gamma_{li} {b^l}_j + \frac{1}{2} \gamma_{lj} {b^l}_i - \alpha K_{ij})_{,k}$<br>
 shift-less:<br>
 $= (-\alpha K_{ij})_{,k}$<br>
 expanded:<br>
-$= d_{lij,k} \beta^l + d_{lij} {\beta^l}_{,k} + \frac{1}{2} b_{ij,k} + \frac{1}{2} b_{ji,k} - \alpha_{,k} K_{ij} - \alpha K_{ij,k}$<br>
-$= d_{lij,k} \beta^l + \frac{1}{2} b_{ij,k} + \frac{1}{2} b_{ji,k} - \alpha K_{ij,k} + d_{lij} {b^l}_k - \alpha a_k K_{ij}$<br>
+$= d_{lij,k} \beta^l 
+	+ d_{lij} {\beta^l}_{,k} 
+	+ \frac{1}{2} \gamma_{li,k} {b^l}_j 
+	+ \frac{1}{2} \gamma_{li} {b^l}_{j,k}
+	+ \frac{1}{2} \gamma_{lj,k} {b^l}_i
+	+ \frac{1}{2} \gamma_{lj} {b^l}_{i,k}
+	- \alpha_{,k} K_{ij} 
+	- \alpha K_{ij,k}
+$<br>
+$= d_{lij,k} \beta^l 
+	+ \frac{1}{2} \gamma_{li} {b^l}_{j,k}
+	+ \frac{1}{2} \gamma_{lj} {b^l}_{i,k}
+	- \alpha K_{ij,k} 
+	+ d_{lij} {b^l}_k 
+	+ d_{kli} {b^l}_j 
+	+ d_{klj} {b^l}_i
+	- \alpha a_k K_{ij}
+$<br>
 shift-less expanded:<br>
 $= -\alpha K_{ij,k} - \alpha a_k K_{ij}$<br>
 <br>
@@ -258,7 +274,8 @@ $\left[\matrix{
 		\alpha \delta^p_i \delta^q_j \delta^r_k &
 		0 & 
 		0 &
-		-\delta^{(p}_i \delta^{q)}_j \delta^r_k \\
+		-\gamma_{n(i} \delta^m_{j)} \delta^r_k
+		\\
 
 	\alpha \delta^{(m}_i \delta^{r)}_j &
 		- \alpha (
@@ -307,13 +324,9 @@ $\left[\matrix{
 		+ 2 f \alpha K_{ij} {d_k}^{ij}
 		- a_k \alpha (f' \alpha + f) (K - m \Theta) \\
 	
-	d_{lij} {b^l}_k
-		+ d_{kli} {b^l}_j
-		+ d_{klj} {b^l}_i
-		
-		+ \frac{1}{2} \gamma_{li} {b^l}_{j,k}
-		+ \frac{1}{2} \gamma_{lj} {b^l}_{i,k}
-		
+	d_{lij} {b^l}_k 
+	+ d_{kli} {b^l}_j 
+	+ d_{klj} {b^l}_i
 		- \alpha a_k K_{ij} \\
 
 	K_{kj} {b^k}_i
