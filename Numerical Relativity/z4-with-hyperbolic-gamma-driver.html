@@ -105,8 +105,12 @@ $<br>
 <br>
 
 ${\beta^i}_{,t} = B^i$<br>
+<br>
+
 ${B^i}_{,t} = ...$<br>
-${b^i}_{j,t} = {B^i}_{j,t} = ...$<br>
+<br>
+
+${b^i}_{j,t} = {\beta^i}_{,jt} = {B^i}_{,j}$<br>
 <br>
 
 $\left[\matrix{
@@ -196,7 +200,7 @@ $\left[\matrix{
 		\alpha \frac{\partial Q^l}{\partial {b^n}_m} &
 		0 \\
 
-	... & ... & ... & ... & ... & ... & ... & ... & ... & ... \\
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & -\delta^l_n \delta^r_k \\
 
 	... & ... & ... & ... & ... & ... & ... & ... & ... & ...
 }\right]
@@ -262,11 +266,11 @@ $\left[\matrix{
 		+ \alpha {\Gamma^j}_{ij} {K_k}^i 
 		- 2 \alpha {K_k}^j Z_j 
 		- 8 \pi \alpha S_k
-		- \alpha \Theta a_k
+		- \alpha \Theta a_k \\
 
 	-\alpha Q^l \\
 
-	... \\
+	0 \\
 
 	...
 
@@ -313,72 +317,104 @@ $\left[\matrix{
 
 
 	K_{ij} \delta^r_k &
-	0 & 
+	- \frac{1}{4} (
+		{b^r}_k \delta_i^p \delta_j^q
+		+ {b^p}_j \delta_i^q \delta_k^r
+		+ {b^p}_i \delta_j^q \delta_k^r
+	) & 
 	0 &
 	- \delta^m_k \delta^p_i \delta^q_j \beta^r &
 	\alpha \delta^p_i \delta^q_j \delta^r_k &
 	0 & 
 	0 &
-	- d_{nij} \delta^r_k
-	- d_{kni} \delta^r_j
-	- d_{knj} \delta^r_i & 
+	- \frac{1}{2} (
+		d_{nij} \delta^r_k
+		+ d_{kni} \delta^r_j
+		+ d_{knj} \delta^r_i 
+	) & 
 	- \gamma_{n(i} \delta_{j)}^m \delta^r_k &
 	0 \\
 
 
-	\delta_{(i}^r a_{j)} - {d_{ij}}^r - {d_{ji}}^r + {d^r}_{ij} & 
-	0 & 
+	\delta_{(i}^r a_{j)} 
+	- {d_{(ij)}}^r
+	+ \frac{1}{2} {d^r}_{ij} & 
+	- \frac{1}{2} \alpha (
+		a^q \delta_{(i}^p \delta_{j)}^r
+		- a^r \delta_i^p \delta_j^q 
+	) &
 	\alpha \delta^{(m}_i \delta^{r)}_j &
-		
-
-		- \alpha (
-			\gamma^{pr} \delta_i^m \delta_j^q
-			- \gamma^{pq} \delta_i^m \delta_j^r
-			- \gamma^{mr} \delta_i^p \delta_j^q
-			+ \gamma^{qr} \delta_j^m \delta_i^p
-			+ \delta_i^m \delta_j^p ({d^{qn}}_n - 2 {d_n}^{nq})
-			+ \delta_i^p \delta_j^m ({d^{qn}}_n - 2 {d_n}^{nq})
-			- \delta_i^p \delta_j^q ({d^{mn}}_n - 2 {d_n}^{nm})
-			+ 2 \delta_i^p {d^{mq}}_j 
-			- 2 \delta_i^p {d^{qm}}_j
-			+ \delta_i^m {d_j}^{pq}
-			- 2 \delta_i^m \delta_j^p Z^q
-			- 2 \delta_j^m \delta_i^p Z^q
-			+ 2 \delta_i^p \delta_j^q Z^m
-		) &
-		- \beta^r \delta^p_i \delta^q_j &
-		0 &
-		-2 \alpha \delta^m_{(i} \delta^r_{j)} &
-		- K_{nj} \delta^r_i
-		- K_{ni} \delta^r_j  & 
-		0 & 
-		0 \\
-
-
-	0 & 0 & 
+	- \alpha (
+		\gamma^{pr} \delta_i^m \delta_j^q
+		- \gamma^{pq} \delta_i^m \delta_j^r
+		- \gamma^{mr} \delta_i^p \delta_j^q
+		+ \gamma^{qr} \delta_j^m \delta_i^p
+		+ \delta_i^m \delta_j^p ({d^{qn}}_n - 2 {d_n}^{nq})
+		+ \delta_i^p \delta_j^m ({d^{qn}}_n - 2 {d_n}^{nq})
+		- \delta_i^p \delta_j^q ({d^{mn}}_n - 2 {d_n}^{nm})
+		+ 2 \delta_i^p {d^{mq}}_j 
+		- 2 \delta_i^p {d^{qm}}_j
+		+ \delta_i^m {d_j}^{pq}
+		- 2 \delta_i^m \delta_j^p Z^q
+		- 2 \delta_j^m \delta_i^p Z^q
+		+ 2 \delta_i^p \delta_j^q Z^m
+	) &
+	- \beta^r \delta^p_i \delta^q_j &
 	0 &
-		- \frac{1}{2} \alpha (
-			\gamma^{pr} \delta_i^m \delta_j^q
-			- \gamma^{pq} \delta_i^m \delta_j^r
-			- \gamma^{mr} \delta_i^p \delta_j^q
-			+ \gamma^{qr} \delta_j^m \delta_i^p
-		) &
-		0 &
-		- \beta^r &
-		- \alpha \delta^m_r &
-		0 & 
-		0 & 
-		0 \\
+	-2 \alpha \delta^m_{(i} \delta^r_{j)} &
+	- K_{nj} \delta^r_i
+	- K_{ni} \delta^r_j  & 
+	0 & 
+	0 \\
 
-	0 & 0 & 
+
+	Z^r &
+	\alpha (
+		- \frac{1}{2} Z^r \gamma^{pq}
+		
+		+ \frac{1}{8} d^r \delta^p_i \delta^q_j 
+		+ \frac{1}{8} {d^r}_{ij} \gamma^{pq} 
+		+ \frac{1}{2} {d_{(ij)}}^q \gamma^{pr}
+		+ \frac{1}{2} e^q \delta^p_{(i} \delta^r_{j)}
+		+ \frac{1}{4} {d^{pr}}_i \delta_j^q
+		+ \frac{1}{4} {d^{qr}}_j \delta_i^p
+		
+		- \frac{1}{4} d^q \delta^p_{(i} \delta^r_{j)}
+		- \frac{1}{4} {d_{(ij)}}^r \gamma^{pq} 
+		- \frac{1}{4} {d_{(i}}^{pq} \delta^r_{j)}
+		- \frac{1}{4} {d^q}_{ij} \gamma^{pr}
+		- \frac{1}{4} e^r \delta^p_i \delta^q_j
+		- \frac{1}{4} {d^{rp}}_i \delta_j^q
+		- \frac{1}{4} {d^{rq}}_j \delta_i^p
+	) &
+	0 &
+	\frac{1}{2} \alpha (
+		+ \gamma^{pq} \delta_i^m \delta_j^r
+		- \gamma^{pr} \delta_j^q \delta_i^m
+		- \gamma^{qr} \delta_i^p \delta_j^m
+		+ \gamma^{mr} \delta_i^p \delta_j^q
+	) &
+	0 &
+	- \beta^r &
+	- \alpha \delta^m_r &
+	0 & 
+	0 & 
+	0 \\
+
+
+	\delta^r_k \Theta & 
+	- \frac{1}{2} \alpha K^{pq} \delta^r_k
+	- \frac{1}{2} \alpha {K_k}^r \gamma^{pq} 
+	+ \alpha {K_k}^q \gamma^{pr} & 
 	0 &
 		0 &
 		- \alpha (\gamma^{qr} \delta^p_k - \gamma^{qp} \delta^r_k) &
 		- \alpha \delta^r_k &
 		- \beta^r \delta^m_k &
-		0 & 
+		-Z_n \delta^r_m & 
 		0 &
 		0 \\
+
 
 	0 & 0 & 
 	\alpha \frac{\partial Q^l}{\partial a_m} &
@@ -390,7 +426,7 @@ $\left[\matrix{
 		\alpha \frac{\partial Q^l}{\partial {b^n}_m} &
 		0 \\
 
-	... & ... & ... & ... & ... & ... & ... & ... & ... & ... \\
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & -\delta^l_n \delta^r_k \\
 
 	... & ... & ... & ... & ... & ... & ... & ... & ... & ...
 }\right]
@@ -426,34 +462,25 @@ $\left[\matrix{
 	+ 4 \pi \alpha (S - \rho) \gamma_{ij} \\
 
 
-	\alpha Z_j d^j
-		+ \frac{1}{2} \alpha d_{ijl} (d^l - 2 e^l)
-		+ \frac{1}{2} \alpha d_{jil} (d^l - 2 e^l)
-		- \frac{1}{2} \alpha d_{lij} (d^l - 2 e^l)
-		+ \alpha ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
-		+ \frac{1}{2} \alpha d_{ikl} {d_j}^{kl}
-		+ \frac{1}{2} \alpha (K - 2 \Theta) K 
-		- \frac{1}{2} \alpha K_{ij} K^{ij} 
-		- 8 \pi \alpha \rho
-		- \alpha Z^k a_k \\
+	+ \frac{1}{2} \alpha (K - 2 \Theta) K 
+	- \frac{1}{2} \alpha K_{ij} K^{ij} 
+	- 8 \pi \alpha \rho
+	 \\
 
-	Z_j {b^j}_k
-		- 2 \alpha K_{ki} e^i
-		+ 2 \alpha K_{ji} {d_k}^{ij}
-		- \alpha {\Gamma^i}_{kj} {K_i}^j 
-		+ \alpha {\Gamma^j}_{ij} {K_k}^i 
-		- 2 \alpha {K_k}^j Z_j 
-		- 8 \pi \alpha S_k
-		- \alpha \Theta a_k
+
+	- 2 \alpha K_{kj} Z^j 
+	- 8 \pi \alpha S_k \\
+
 
 	-\alpha Q^l \\
 
-	... \\
+
+	0 \\
+
 
 	...
 
 }\right]$<br>
-TODO double check $d_{ijk,t}$ terms .... double check everything in fact ...<br>
 <br>
 
 
