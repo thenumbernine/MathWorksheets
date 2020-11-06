@@ -1,0 +1,309 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<title>Einstein Equations, Weak Field, De-Donder Gauge</title>
+		<script type="text/javascript" src='tryToFindMathJax.js'></script>
+	</head>
+    <body>
+
+metric tensor:<br>
+$g_{ab}$<br>
+<br>
+
+metric as background metric plus perturbation:<br>
+$g_{ab} = \hat{g}_{ab} + h_{ab}$<br>
+<br>
+
+metric partial:<br>
+$g_{ab,c} = \hat{g}_{ab,c} + h_{ab,c}$<br>
+<br>
+
+Levi-Civita connection of the background metric:<br>
+$\hat{\Gamma}_{abc} = \frac{1}{2} (\hat{g}_{ab,c} + \hat{g}_{ac,b} - \hat{g}_{bc,a})$<br>
+
+Levi-Civita connection of the metric:<br>
+$\Gamma_{abc} = \frac{1}{2} (\hat{g}_{ab,c} + \hat{g}_{ac,b} - \hat{g}_{bc,a} + h_{ab,c} + h_{ac,b} - h_{bc,a})$<br>
+$\Gamma_{abc} = \hat{\Gamma}_{abc} + \frac{1}{2} (h_{ab,c} + h_{ac,b} - h_{bc,a})$<br>
+Let $\Delta_{abc} = \frac{1}{2} (h_{ab,c} + h_{ac,b} - h_{bc,a})$<br>
+$\Gamma_{abc} = \hat{\Gamma}_{abc} + \Delta_{abc}$<br>
+<br>
+
+metric inverse (using <a href="http://www.jstor.org/stable/2690437">http://www.jstor.org/stable/2690437</a>):<br>
+$g^{ab} = \hat{g}^{ab} - \frac{1}{g + 1} \hat{g}^{ac} h_{cd} \hat{g}^{db}$<br>
+<br>
+
+weak field limit, assuming $\hat{g}_{ab} >> h_{ab}$, therefore $\hat{g}_{ab} - h_{ab} \approx \hat{g}_{ab}$:<br>
+$g^{ab} \approx \hat{g}^{ab}$<br>
+<br>
+
+${\Gamma^a}_{bc} = \hat{g}^{ad} \hat{\Gamma}_{dbc} + \hat{g}^{ad} \Delta_{dbc} = {\hat{\Gamma}^a}_{bc} + {\Delta^a}_{bc}$<br>
+<br>
+
+${\Gamma^a}_{bc,d} = {\hat{\Gamma}^a}_{bc,d} + {\Delta^a}_{bc,d}$<br>
+$= {\hat{\Gamma}^a}_{bc,d} + (\hat{g}^{ae} \Delta_{ebc})_{,d}$<br>
+$= {\hat{\Gamma}^a}_{bc,d} 
+	+ {\hat{g}^{ae}}_{,d} \Delta_{ebc}
+	+ \hat{g}^{ae} \Delta_{ebc,d}
+$<br>
+$= {\hat{\Gamma}^a}_{bc,d} 
+	- \hat{g}^{af} \hat{g}_{fg,d} \hat{g}^{ge} \Delta_{ebc}
+	+ \frac{1}{2} \hat{g}^{ae} (h_{eb,c} + h_{ec,b} - h_{bc,e})_{,d}
+$<br>
+$= {\hat{\Gamma}^a}_{bc,d} 
+	- 2 \hat{g}^{af} \hat{\Gamma}_{(fg)d} \hat{g}^{ge} \Delta_{ebc}
+	+ \frac{1}{2} \hat{g}^{ae} (h_{eb,cd} + h_{ec,bd} - h_{bc,ed})
+$<br>
+$= {\hat{\Gamma}^a}_{bc,d} 
+	- 2 {\hat{\Gamma}^{(ae)}}_d \Delta_{ebc}
+	+ \frac{1}{2} \hat{g}^{ae} (h_{eb,cd} + h_{ec,bd} - h_{bc,ed})
+$<br>
+<br>
+
+${\Gamma^a}_{bd,c} - {\Gamma^a}_{bc,d} = 
+	  {\hat{\Gamma}^a}_{bd,c} 
+	- \hat{g}^{af} \hat{g}_{fg,c} \hat{g}^{ge} \Delta_{ebd}
+	+ \frac{1}{2} \hat{g}^{ae} (h_{eb,dc} + h_{ed,bc} - h_{bd,ec})
+
+	- {\hat{\Gamma}^a}_{bc,d} 
+	+ \hat{g}^{af} \hat{g}_{fg,d} \hat{g}^{ge} \Delta_{ebc}
+	- \frac{1}{2} \hat{g}^{ae} (h_{eb,cd} + h_{ec,bd} - h_{bc,ed})
+$<br>
+$= 
+	  {\hat{\Gamma}^a}_{bd,c} 
+	- {\hat{\Gamma}^a}_{bc,d} 
+	
+	+ \hat{g}^{af} \hat{g}^{ge} (
+		  \hat{g}_{fg,d} \Delta_{ebc}
+		- \hat{g}_{fg,c} \Delta_{ebd}
+	)
+
+	+ \frac{1}{2} \hat{g}^{ae} (
+		  h_{ed,bc} 
+		- h_{bd,ec}
+		- h_{ec,bd} 
+		+ h_{bc,ed}
+	)
+$<br>
+Notice that, if you are using a cartesian background metric, then the first and second terms disappear.<br>
+<br>
+
+${\Gamma^a}_{ec} {\Gamma^e}_{bd} = ({\hat{\Gamma}^a}_{ec} + {\Delta^a}_{ec}) ({\hat{\Gamma}^e}_{bd} + {\Delta^e}_{bd})$<br>
+$= {\hat{\Gamma}^a}_{ec} {\hat{\Gamma}^e}_{bd} + {\Delta^a}_{ec} {\hat{\Gamma}^e}_{bd} + {\hat{\Gamma}^a}_{ec} {\Delta^e}_{bd} + {\Delta^a}_{ec} {\Delta^e}_{bd}$<br>
+Weak field limit, assume $(\partial h_{ab})^2 \approx 0$, therefore $(\Delta_{abc})^2 \approx 0$:<br>
+${\Gamma^a}_{ec} {\Gamma^e}_{bd} = {\hat{\Gamma}^a}_{ec} {\hat{\Gamma}^e}_{bd} + {\Delta^a}_{ec} {\hat{\Gamma}^e}_{bd} + {\hat{\Gamma}^a}_{ec} {\Delta^e}_{bd}$<br>
+Notice that, if you are using a cartesian background metric, then the remaining terms disappear.<br>
+<br>
+
+${R^a}_{bcd} = {\Gamma^a}_{bd,c} - {\Gamma^a}_{bc,d} + {\Gamma^a}_{ec} {\Gamma^e}_{bd} - {\Gamma^a}_{ed} {\Gamma^e}_{bc}$<br>
+$= 
+	  {\hat{\Gamma}^a}_{bd,c} 
+	- {\hat{\Gamma}^a}_{bc,d} 
+	
+	+ \hat{g}^{af} \hat{g}^{ge} (
+		  \hat{g}_{fg,d} \Delta_{ebc}
+		- \hat{g}_{fg,c} \Delta_{ebd}
+	)
+
+	+ \frac{1}{2} \hat{g}^{ae} (
+		  h_{ed,bc} 
+		- h_{bd,ec}
+		- h_{ec,bd} 
+		+ h_{bc,ed}
+	)
+
+	+ {\hat{\Gamma}^a}_{ec} {\hat{\Gamma}^e}_{bd} 
+	+ {\Delta^a}_{ec} {\hat{\Gamma}^e}_{bd} 
+	+ {\hat{\Gamma}^a}_{ec} {\Delta^e}_{bd}
+	
+	- {\hat{\Gamma}^a}_{ed} {\hat{\Gamma}^e}_{bc} 
+	- {\Delta^a}_{ed} {\hat{\Gamma}^e}_{bc} 
+	- {\hat{\Gamma}^a}_{ed} {\Delta^e}_{bc}
+$<br>
+... write out $\hat{g}_{ab,c}$ in terms of $\hat{\Gamma}_{abc}$ ...<br>
+$= 
+	  {\hat{\Gamma}^a}_{bd,c} 
+	- {\hat{\Gamma}^a}_{bc,d} 
+	
+	+ \hat{g}^{af} \hat{g}^{ge} (
+		(\hat{\Gamma}_{fgd} + \hat{\Gamma}_{gfd}) \Delta_{ebc}
+		- (\hat{\Gamma}_{fgc} + \hat{\Gamma}_{gfc}) \Delta_{ebd}
+	)
+
+	+ \frac{1}{2} \hat{g}^{ae} (
+		  h_{ed,bc} 
+		- h_{bd,ec}
+		- h_{ec,bd} 
+		+ h_{bc,ed}
+	)
+
+	+ {\hat{\Gamma}^a}_{ec} {\hat{\Gamma}^e}_{bd} 
+	+ {\Delta^a}_{ec} {\hat{\Gamma}^e}_{bd} 
+	+ {\hat{\Gamma}^a}_{ec} {\Delta^e}_{bd}
+	
+	- {\hat{\Gamma}^a}_{ed} {\hat{\Gamma}^e}_{bc} 
+	- {\Delta^a}_{ed} {\hat{\Gamma}^e}_{bc} 
+	- {\hat{\Gamma}^a}_{ed} {\Delta^e}_{bc}
+$<br>
+...try to cancel some $\hat{\Gamma}_{abc} \Delta_{def}$ terms...<br>
+$= 
+	  {\hat{\Gamma}^a}_{bd,c} 
+	- {\hat{\Gamma}^a}_{bc,d} 
+	
+	+ {\hat{\Gamma}^a}_{ed} {\Delta^e}_{bc}
+	- {\hat{\Gamma}^a}_{ec} {\Delta^e}_{bd} 
+	
+	+ {\hat{\Gamma}^{ea}}_d \Delta_{ebc}
+	- {\hat{\Gamma}^{ea}}_c \Delta_{ebd}
+
+	+ \frac{1}{2} \hat{g}^{ae} (
+		  h_{ed,bc} 
+		- h_{bd,ec}
+		- h_{ec,bd} 
+		+ h_{bc,ed}
+	)
+
+	+ {\hat{\Gamma}^a}_{ec} {\hat{\Gamma}^e}_{bd}
+	+ {\Delta^a}_{ec} {\hat{\Gamma}^e}_{bd}
+	+ {\hat{\Gamma}^a}_{ec} {\Delta^e}_{bd}
+	
+	- {\hat{\Gamma}^a}_{ed} {\hat{\Gamma}^e}_{bc}
+	- {\Delta^a}_{ed} {\hat{\Gamma}^e}_{bc}
+	- {\hat{\Gamma}^a}_{ed} {\Delta^e}_{bc}
+$<br>
+...move those originally-$\partial \hat{g}_{ab}$ terms to the end, and cancel...<br>
+$= 
+	  {\hat{\Gamma}^a}_{bd,c} 
+	- {\hat{\Gamma}^a}_{bc,d} 
+	
+	+ \frac{1}{2} \hat{g}^{ae} (
+		  h_{ed,bc} 
+		- h_{bd,ec}
+		- h_{ec,bd} 
+		+ h_{bc,ed}
+	)
+
+	+ {\hat{\Gamma}^a}_{ec} {\hat{\Gamma}^e}_{bd}
+	- {\hat{\Gamma}^a}_{ed} {\hat{\Gamma}^e}_{bc}
+	
+	+ {\Delta^a}_{ec} {\hat{\Gamma}^e}_{bd}
+	- {\Delta^a}_{ed} {\hat{\Gamma}^e}_{bc}
+	
+	+ {\hat{\Gamma}^{ea}}_d \Delta_{ebc}
+	- {\hat{\Gamma}^{ea}}_c \Delta_{ebd}
+$<br>
+
+Let ${\hat{R}^a}_{bcd} = {\hat{\Gamma}^a}_{bd,c} - {\hat{\Gamma}^a}_{bc,d} + {\hat{\Gamma}^a}_{ec} {\hat{\Gamma}^e}_{bd} - {\hat{\Gamma}^a}_{ed} {\hat{\Gamma}^e}_{bc}$<br>
+Substitute to find:<br>
+${R^a}_{bcd} = {\hat{R}^a}_{bcd}
+	
+	+ \frac{1}{2} \hat{g}^{ae} (
+		  h_{ed,bc} 
+		- h_{bd,ec}
+		- h_{ec,bd} 
+		+ h_{bc,ed}
+	)
+	
+	+ {\Delta^a}_{ec} {\hat{\Gamma}^e}_{bd}
+	- {\Delta^a}_{ed} {\hat{\Gamma}^e}_{bc}
+	
+	+ {\hat{\Gamma}^{ea}}_d \Delta_{ebc}
+	- {\hat{\Gamma}^{ea}}_c \Delta_{ebd}
+$<br>
+<br>
+
+Ricci curvature:<br>
+$R_{ab} = {R^c}_{acb}$<br>
+$= {\hat{R}^c}_{acb}
+	
+	+ \frac{1}{2} \hat{g}^{ce} (
+		  h_{eb,ac} 
+		- h_{ab,ec}
+		- h_{ec,ab} 
+		+ h_{ac,eb}
+	)
+	
+	+ {\Delta^c}_{ec} {\hat{\Gamma}^e}_{ab}
+	- {\Delta^c}_{eb} {\hat{\Gamma}^e}_{ac}
+	
+	+ {\hat{\Gamma}^{ec}}_b \Delta_{eac}
+	- {\hat{\Gamma}^{ec}}_c \Delta_{eab}
+$<br>
+Let ${\hat{R}^c}_{acb} = \hat{R}_{ab}$<br>
+$R_{ab} = \hat{R}_{ab}
+	
+	+ \frac{1}{2} \hat{g}^{ce} (
+		  h_{ac,eb}
+		- h_{ab,ec}
+		- h_{ec,ab} 
+		+ h_{eb,ac} 
+	)
+	
+	+ {\Delta^c}_{ec} {\hat{\Gamma}^e}_{ab}
+	- {\Delta^c}_{eb} {\hat{\Gamma}^e}_{ac}
+	
+	+ {\hat{\Gamma}^{ec}}_b \Delta_{eac}
+	- {\hat{\Gamma}^{ec}}_c \Delta_{eab}
+$<br>
+<br>
+
+$R = \hat{g}^{ab} R_{ab}$<br>
+$= \hat{R}
+	
+	+ \frac{1}{2} \hat{g}^{ab} \hat{g}^{ce} (
+		  h_{ac,eb}
+		- h_{ab,ec}
+		- h_{ec,ab} 
+		+ h_{eb,ac} 
+	)
+	
+	+ {\Delta^c}_{ce} {\hat{\Gamma}^{ea}}_a
+	- {\hat{\Gamma}^{ec}}_c {\Delta_{ea}}^a
+	
+	- \hat{\Gamma}^{eca} \Delta_{cae}
+	+ \hat{\Gamma}^{eca} \Delta_{eac}
+$<br>
+$= \hat{R}
+	
+	+ \hat{g}^{ab} \hat{g}^{cd} (
+		  h_{ac,bd}
+		- h_{ab,cd}
+	)
+	
+	+ {\hat{\Gamma}^{da}}_a {\Delta^c}_{cd}
+	- {\hat{\Gamma}^{dc}}_c {\Delta_{da}}^a
+	
+	- \hat{\Gamma}^{dca} \Delta_{cad}
+	+ \hat{\Gamma}^{dca} \Delta_{dac}
+$<br>
+<br>
+
+Harmonic coordinate condition:<br>
+$\Gamma^a = 0$<br>
+${\Gamma^a}_{bc} g^{bc} = 0$<br>
+$\frac{1}{2} (g_{db,c} + g_{dc,b} - g_{bc,d}) g^{ad} g^{bc} = 0$<br>
+$(2 g_{db,c} - g_{bc,d}) g^{ad} g^{bc} = 0$<br>
+$2 g_{ab,c} g^{bc} = g_{bc,a} g^{bc}$<br>
+using weak field approximation, $g^{ab} \approx \hat{g}^{ab}:$<br>
+$2 g_{ab,c} \hat{g}^{bc} = g_{bc,a} \hat{g}^{bc}$<br>
+$2 (\hat{g}_{ab,c} + h_{ab,c}) \hat{g}^{bc} = (\hat{g}_{bc,a} + h_{bc,a}) \hat{g}^{bc}$<br>
+<br>
+
+using harmonic coordinate condition:<br>
+$R = \hat{R}
+	
+	+ \hat{g}^{ab} \hat{g}^{cd} (
+		  h_{ac,bd}
+		- h_{ab,cd}
+	)
+	
+	+ {\hat{\Gamma}^{da}}_a {\Delta^c}_{cd}
+	- {\hat{\Gamma}^{dc}}_c {\Delta_{da}}^a
+	
+	- \hat{\Gamma}^{dca} \Delta_{cad}
+	+ \hat{\Gamma}^{dca} \Delta_{dac}
+$<br>
+
+
+	</body>
+</html>

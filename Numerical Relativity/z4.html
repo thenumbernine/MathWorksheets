@@ -7,9 +7,10 @@
 	</head>
     <body>
 
-This one is going by 2005 Bona, Ledvinka, Palenzuela-Luque, Zacek, "Constraint-preserving boundary conditions in the Z4 Numerical Relativity formalism"<br>
-or maybe better 2004 Bona, Palenzuela "Dynamical shift conditions for the Z4 and BSSN formalisms"
-or maybe even better 2005 Bona, Luher, Palenzuela-Luque "Geometrically motivated hyperbolic coordinate condions for numerical relativity- Analysis, issues and implementation"<br>
+This one is going by 2005 Bona, Ledvinka, Palenzuela-Luque, Zacek, "Constraint-preserving boundary conditions in the Z4 Numerical Relativity formalism".<br>
+or maybe better 2004 Bona, Palenzuela "Dynamical shift conditions for the Z4 and BSSN formalisms".<br>
+or maybe even better 2005 Bona, Luher, Palenzuela-Luque "Geometrically motivated hyperbolic coordinate condions for numerical relativity- Analysis, issues and implementation".<br>
+or maybe even better 2009 Alic, Bona, Bona-Casas "Towards a Gauge-Polyvariant Numerical Relativity Code".<br>
 <br>
 
 Start with the EFE:<br>
@@ -369,7 +370,7 @@ $\left[\matrix{
 }\right]$<br>
 <br>
 
-One possible shift condition (2005 Bona, Lehner, Palenzuela-Luque, eqn 10):<br>
+One possible shift condition, from 2005 Bona, Lehner, Palenzuela-Luque, eqn 10:<br>
 $Q^i = -\frac{1}{\alpha} \beta^k {\beta^i}_{,k} - \alpha \gamma^{ki} ( {\gamma_{jk}}^{,j} - (ln \sqrt\gamma)_{,k} - (ln \alpha)_{,k})$<br>
 $\frac{d}{dt} \beta^i = \beta^k {\beta^i}_{,k} + \alpha^2 \gamma^{ki} ({\gamma_{jk}}^{,j} - (ln \sqrt\gamma)_{,k} - (ln \alpha)_{,k})$<br>
 ${\beta^i}_{,t} = \beta^k {b^i}_k + \alpha^2 \gamma^{ki} (2 \gamma^{jl} d_{ljk} - \frac{1}{2 \gamma} \gamma_{,k} - a_k)$<br>
@@ -383,6 +384,11 @@ $ = {\beta^k}_{,j} {b^i}_k + \beta^k {b^i}_{k,j} + 2 \alpha \alpha_{,j} (2 e^i -
 $ = {\beta^k}_{,j} {b^i}_k + \beta^k {b^i}_{k,j} + 2 \alpha^2 a_j (2 e^i - d^i - a^i) + \alpha^2 (2 {e^i}_{,j} - {d^i}_{,j} - {a^i}_{,j})$<br>
 <br>
 
+Also, 2009 Alic, Bona, Bona-Casas, eqn 36:<br>
+I think this is the same as above.<br>
+$(\frac{\sqrt{\gamma}}{\alpha} \beta^i)_{,t} - (\frac{\sqrt{\gamma}}{\alpha} \beta^k \beta^i)_{,k} + (\alpha \sqrt{\gamma} \gamma^{ik})_{,k} = 0$<br>
+<br>
+
 Another, hyperbolic gamma driver (2008 Alcubierre, 4.3.33 &amp; 34):<br>
 <br>
 
@@ -390,7 +396,10 @@ ${\beta^i}_{,t} = B^i + \beta^j {\beta^i}_{,j}$<br>
 ${\beta^i}_{,t} = B^i + \beta^j {b^i}_j$<br>
 <br>
 
-${B^i}_{,t} = \alpha^2 \zeta (\partial_t - \beta^k \partial_k) \tilde{\Gamma}^i - \eta B^i + \beta^j {B^i}_{,j}$<br>
+${B^i}_{,t} = \alpha^2 \zeta (
+	\partial_t - \beta^k \partial_k
+) \tilde{\Gamma}^i - \eta B^i + \beta^j {B^i}_{,j}$<br>
+
 ${B^i}_{,t} = 
 	\alpha^2 \zeta (\partial_t - \beta^l \partial_l) (
 		\gamma^{1/3} {\Gamma^i}_{jk} \gamma^{jk} 
@@ -468,6 +477,73 @@ ${B^i}_{,t} =
 		- \frac{2}{3}  \gamma^{im} \gamma^{jn} \gamma^{pq} \gamma_{pq,j} \gamma_{mn,l} \beta^l
 		+              \gamma^{im} \gamma^{np} \gamma^{jq} \gamma_{pq,j} \gamma_{mn,l} \beta^l
 		
+		+ \frac{1}{3}  \gamma^{ij} \gamma^{mn} \gamma_{mn,jl} \beta^l
+		-              \gamma^{in} \gamma^{jk} \gamma_{nj,kl} \beta^l
+		+ \frac{1}{6}  \gamma^{ij} \gamma^{mn} \gamma_{mn,jt}
+	) 
+	- \eta B^i 
+	+ \beta^j {B^i}_{,j}
+$<br>
+${B^i}_{,t} = 
+	\alpha^2 \zeta \gamma^{1/3} (
+		+ {\Gamma^i}_{jk,t} \gamma^{jk} 
+		- \Gamma^{ijk} \gamma_{jk,t}
+		
+		+ \frac{1}{3}  \gamma^{im} \gamma^{jq} \gamma^{pn} d_{jpq} (2 d_{rmn} \beta^r + \gamma_{rm} {b^r}_n + \gamma_{rn} {b^r}_m - 2 \alpha K_{mn})
+		- \frac{1}{3}  \gamma^{im} \gamma^{jn} \gamma^{pq} d_{jpq} (2 d_{rmn} \beta^r + \gamma_{rm} {b^r}_n + \gamma_{rn} {b^r}_m - 2 \alpha K_{mn})
+		- \frac{1}{18} \gamma^{ij} \gamma^{pq} \gamma^{mn} d_{jpq} (2 d_{rmn} \beta^r + \gamma_{rm} {b^r}_n + \gamma_{rn} {b^r}_m - 2 \alpha K_{mn})
+		- \frac{1}{3}  \gamma^{ij} \gamma^{pm} \gamma^{qn} d_{jpq} (2 d_{rmn} \beta^r + \gamma_{rm} {b^r}_n + \gamma_{rn} {b^r}_m - 2 \alpha K_{mn})
+		              
+		+ \frac{1}{9}  \gamma^{ij} \gamma^{pq} \gamma^{mn} d_{jpq} d_{lmn} \beta^l
+		- \frac{2}{3}  \gamma^{ij} \gamma^{mp} \gamma^{nq} d_{jpq} d_{lmn} \beta^l
+		+              \gamma^{ip} \gamma^{mq} \gamma^{jn} d_{jpq} d_{lmn} \beta^l
+		+              \gamma^{ip} \gamma^{mj} \gamma^{nq} d_{jpq} d_{lmn} \beta^l
+		- \frac{2}{3}  \gamma^{ip} \gamma^{jq} \gamma^{mn} d_{jpq} d_{lmn} \beta^l
+		+ \frac{1}{3}  \gamma^{ij} \gamma^{mn} \gamma^{pq} d_{jpq} d_{lmn} \beta^l
+		- \frac{4}{3}  \gamma^{im} \gamma^{jn} \gamma^{pq} d_{jpq} d_{lmn} \beta^l
+		+              \gamma^{im} \gamma^{np} \gamma^{jq} d_{jpq} d_{lmn} \beta^l
+		              
+		+ \frac{1}{3}  \gamma^{ij} \gamma^{mn} \gamma_{mn,jl} \beta^l
+		-              \gamma^{in} \gamma^{jk} \gamma_{nj,kl} \beta^l
+		+ \frac{1}{6}  \gamma^{ij} \gamma^{mn} \gamma_{mn,jt}
+	) 
+	- \eta B^i 
+	+ \beta^j {B^i}_{,j}
+$<br>
+${B^i}_{,t} = 
+	\alpha^2 \zeta \gamma^{1/3} (
+		+ {\Gamma^i}_{jk,t} \gamma^{jk} 
+		- \Gamma^{ijk} \gamma_{jk,t}
+		
+		+ \frac{1}{3}  \gamma^{im} \gamma^{jq} \gamma^{pn} d_{jpq} 2 d_{rmn} \beta^r
+		- \frac{1}{3}  \gamma^{im} \gamma^{jn} \gamma^{pq} d_{jpq} 2 d_{rmn} \beta^r
+		- \frac{1}{18} \gamma^{ij} \gamma^{pq} \gamma^{mn} d_{jpq} 2 d_{rmn} \beta^r
+		- \frac{1}{3}  \gamma^{ij} \gamma^{pm} \gamma^{qn} d_{jpq} 2 d_{rmn} \beta^r
+		 
+	
+		- \frac{1}{3}  \gamma^{im} \gamma^{jq} \gamma^{pn} d_{jpq} 2 \alpha K_{mn}
+		+ \frac{1}{3}  \gamma^{im} \gamma^{jn} \gamma^{pq} d_{jpq} 2 \alpha K_{mn}
+		+ \frac{1}{18} \gamma^{ij} \gamma^{pq} \gamma^{mn} d_{jpq} 2 \alpha K_{mn}
+		+ \frac{1}{3}  \gamma^{ij} \gamma^{pm} \gamma^{qn} d_{jpq} 2 \alpha K_{mn}
+
+		+ \frac{1}{3}  \gamma^{im} \gamma^{jq} \gamma^{pn} d_{jpq} \gamma_{rm} {b^r}_n
+		- \frac{1}{3}  \gamma^{im} \gamma^{jn} \gamma^{pq} d_{jpq} \gamma_{rm} {b^r}_n
+		- \frac{1}{18} \gamma^{ij} \gamma^{pq} \gamma^{mn} d_{jpq} \gamma_{rm} {b^r}_n
+		- \frac{1}{3}  \gamma^{ij} \gamma^{pm} \gamma^{qn} d_{jpq} \gamma_{rm} {b^r}_n
+		+ \frac{1}{3}  \gamma^{im} \gamma^{jq} \gamma^{pn} d_{jpq} \gamma_{rn} {b^r}_m
+		- \frac{1}{3}  \gamma^{im} \gamma^{jn} \gamma^{pq} d_{jpq} \gamma_{rn} {b^r}_m
+		- \frac{1}{18} \gamma^{ij} \gamma^{pq} \gamma^{mn} d_{jpq} \gamma_{rn} {b^r}_m
+		- \frac{1}{3}  \gamma^{ij} \gamma^{pm} \gamma^{qn} d_{jpq} \gamma_{rn} {b^r}_m
+	
+		+ \frac{1}{9}  \gamma^{ij} \gamma^{pq} \gamma^{mn} d_{jpq} d_{lmn} \beta^l
+		- \frac{2}{3}  \gamma^{ij} \gamma^{mp} \gamma^{nq} d_{jpq} d_{lmn} \beta^l
+		+              \gamma^{ip} \gamma^{mq} \gamma^{jn} d_{jpq} d_{lmn} \beta^l
+		+              \gamma^{ip} \gamma^{mj} \gamma^{nq} d_{jpq} d_{lmn} \beta^l
+		- \frac{2}{3}  \gamma^{ip} \gamma^{jq} \gamma^{mn} d_{jpq} d_{lmn} \beta^l
+		+ \frac{1}{3}  \gamma^{ij} \gamma^{mn} \gamma^{pq} d_{jpq} d_{lmn} \beta^l
+		- \frac{4}{3}  \gamma^{im} \gamma^{jn} \gamma^{pq} d_{jpq} d_{lmn} \beta^l
+		+              \gamma^{im} \gamma^{np} \gamma^{jq} d_{jpq} d_{lmn} \beta^l
+		              
 		+ \frac{1}{3}  \gamma^{ij} \gamma^{mn} \gamma_{mn,jl} \beta^l
 		-              \gamma^{in} \gamma^{jk} \gamma_{nj,kl} \beta^l
 		+ \frac{1}{6}  \gamma^{ij} \gamma^{mn} \gamma_{mn,jt}
