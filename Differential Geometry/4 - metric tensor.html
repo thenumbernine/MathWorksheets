@@ -8,28 +8,36 @@
     <body>
 <a href='.'>Back</a><br><br>
 
-This is a mix of metric, diagonalized metrics, and vielbeins.  I'm still working on sorting it out.<br>
-<br>
-
-TODO curve along manifold<br>
-manifold charts: u_i(x_j)<br>
-curve along manifold: r_k(u_i)<br>
-arclength, then curve length, and pick out the metric<br>
-Starting with curves and Frenet frames might be good as well<br>
-<br>
 
 metric:<br>
-$g = e \cdot e$<br>
-$g_{ab} = e_a \cdot e_b$<br>
+$\textbf{g} = \textbf{e} \cdot \textbf{e}$<br>
+$\textbf{g} = (e^a \otimes e_a) \cdot (e^b \otimes e_b)$<br>
+$\textbf{g} = (e^a \otimes e^b) (e_a \cdot e_b)$<br>
+$\textbf{g} = g_{ab} \cdot e^a \otimes e^b$<br>
+Therefore $g_{ab} = e_a \cdot e_b$<br>
 <br>
 
-metric inverse: $ [g^{ab}] = [g_{ab}]^{-1} $ such that $ g^{ac} g_{cb} = \delta^a_b $<br>
+expanding our non-coordinate basis in terms of a coordinate basis:<br>
+$g_{ab} = {e_a}^\tilde{a} {e_b}^\tilde{b} \partial_\tilde{a} \cdot \partial_\tilde{b}$<br>
+<br>
+
+Let our coordinate basis metric be defined in the same way:<br>
+$\tilde{g}_{\tilde{a}\tilde{b}} = \partial_\tilde{a} \cdot \partial_\tilde{b}$<br>
+<br>
+
+So $g_{ab} = {e_a}^\tilde{a} {e_b}^\tilde{b} \tilde{g}_{\tilde{a}\tilde{b}}$<br>
+and ${e^a}_\tilde{a} {e^b}_\tilde{b} g_{ab} = \tilde{g}_{\tilde{a}\tilde{b}}$<br>
+<br>
+
+Metric inverse:<br>
+Define $g^{ab}$ such that $ g^{ac} g_{cb} = \delta^a_b$<br>
+This means, if the coefficients are written as a matrix $[g_{ab}]$, then the coefficients of $[g^{ab}]$ would be the elements of that matrix' inverse.<br>
 <br>
 
 Raising / lowering indexes:<br>
-$v^a = g^{ab} v_b$<br>
-$v_a = g_{ab} v^b$<br>
-$v = v^a e_a = v_b g^{bc} g_{ca} e^a = v_b \delta^b_a e^a = v_a e^a$<br>
+Contravariant form is defined as: $v^a = g^{ab} v_b$<br>
+Covariant form is defined as: $v_a = g_{ab} v^b$<br>
+Notice the equivalence: $v = v^a e_a = v_b g^{bc} g_{ca} e^a = v_b \delta^b_a e^a = v_a e^a$<br>
 <br>
 
 Chaning component of coordinate basis:<br>
@@ -40,15 +48,26 @@ Therefore $(v')^b \frac{\partial x^a}{\partial y^b} = v^a$<br>
 <br>
 
 Changing component representation of non-coordinate basis:<br>
-$v^\bar{a} = {e_a}^\bar{a} v^a$<br>
-$v_\bar{a} = {e^a}_\bar{a} v_a$<br>
+$v^\tilde{a} = {e_a}^\tilde{a} v^a$<br>
+$v_\tilde{a} = {e^a}_\tilde{a} v_a$<br>
 <br>
 
 Metric coordinate invariance:<br>
+For coordinate metric $g_{ab}$:<br>
 Let $g' = {g'}_{a'b'} dx^{a'} \cdot dx^{b'}$<br> 
 $ = {g'}_{a'b'} \frac{\partial x^a}{\partial x^{a'}} dx^a \cdot \frac{\partial x^b}{\partial x^{b'}} dx^b$<br>
 $ = {g'}_{ab} dx^a \cdot dx^b$ by transforming the indexes of ${g'}_{a'b'}$<br>
 Therefore $g$ = $g'$ regardless of change-of-coordinates.<br>
+<br>
+
+Metric determinant:<br>
+$det([\tilde{g}_{\tilde{a}\tilde{b}}]) = det( [{e^a}_\tilde{a} g_{ab} {e^b}_\tilde{b}] )$<br>
+$det([\tilde{g}_{\tilde{a}\tilde{b}}]) = det( [{e^a}_\tilde{a}] )^2 det([g_{ab}])$<br>
+$\tilde{g} = e^2 g$<br>
+$e = \sqrt{\frac{\tilde{g}}{g}}$<br>
+<br>
+
+<hr>
 <br>
 
 All metrics can be diagonalized into a signature metric.<br>
@@ -63,36 +82,6 @@ Any $e_a$ coordinate basis can be transformed into an $e_I = {e^a}_I e_a$ non-co
 In fact, if the metric is eigen-decomposed, then any number of $Q$ exist such that $Q V Q^{-1} = G$.<br>
 This means that, while the $IJK$ have a Minkowski signature, they may not necessarily be holonomic ... and therefore will have structure constants ... <br>
 Structure constants imply asymmetric connection on the 2nd and 3rd indexes, and a constant (Minkowski) metric as well implies antisymmetric on the 2nd and 3rd indexes.<br>
-<br>
-
-
-Metric determinant:<br>
-$det([g_{ab}]) = det( [{e_a}^I \eta_{IJ} {e_b}^J] )$<br>
-$det([g_{ab}]) = det( [{e_a}^I] )^2 det([\eta_{IJ}])$<br>
-$g = e^2 \sigma$<br>
-$e = \sqrt{|g|}$<br>
-<br>
-
-$e^I = {e_u}^I dx^u$<br>
-$e_I = {e^u}_I \partial_u$<br>
-$e = det([{e_u}^I]) &gt; 0$<br>
-<br>
-
-Basis linear combination components:<br>
-$[ {e_u}^I ] \in GL(n, \mathbb{R})$<br>
-<br>
-
-Inverse components:<br>
-$[ {e^u}_I ] = [ {e_u}^I ]^{-1}$<br>
-<br>
-
-Linear combination orthogonality:<br>
-$e^I (e_J)$
-$= {e_u}^I dx^u ({e^v}_J \partial_v)$<br>
-$= {e_u}^I {e^v}_J dx^u (\partial_v)$<br>
-$= {e_u}^I {e^v}_J \delta^u_v$<br>
-$= {e_u}^I {e^u}_J$<br>
-$= \delta^I_J$<br>
 <br>
 
 <hr>

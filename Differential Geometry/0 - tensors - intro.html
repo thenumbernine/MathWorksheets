@@ -25,13 +25,43 @@ Let $e_a = e_a(\frac{\partial}{\partial x^u})$ be a vector basis that spans $T_p
 $e_a : M \rightarrow V$ form a vector space.<br>
 <br>
 
+$e_a = {e_a}^\tilde{a} \partial_\tilde{a}$<br>
+For ${e_a}^\tilde{a}$ the coefficients of the linear transform from $\partial_\tilde{a}$ to $e_a$.<br>
+<br>
+
 Let ${e^a} = e^a(dx^u) = $ span $T_p^*(M)$ be the one-form basis dual to $e_a$.<br>
 $e^a : V \rightarrow \mathbb{R}, e^a$ linear<br>
 such that $e^a(e_b) = \delta^a_b$<br>
 <br>
 
+$e^a = {e^a}_\tilde{a} dx^\tilde{a}$<br>
+For ${e^a}_\tilde{a}$ the coefficients of the linear transform from $dx^\tilde{a}$ to $e^a$.<br>
+<br>
+
+Basis linear combination components:<br>
+$[ {e^a}_\tilde{a} ] \in GL(n, \mathbb{R})$<br>
+<br>
+
+Inverse components:<br>
+$[ {e_a}^\tilde{a} ] = [ {e^a}_\tilde{a} ]^{-1}$<br>
+<br>
+
 If $e_a = \partial_a$ and $e^a = dx^a$ then we have $e^a(e_b) = dx^a (\frac{d}{dx^b}) = \frac{dx^a}{dx^b} = \delta^a_b$.  The basis is called a coordinate basis / the basis is holonomic.<br>
 <br>
+
+non-coordinate linear combination basis orthogonality:<br>
+$e^a (e_b)$
+$= {e^a}_\tilde{a} dx^\tilde{a} ({e_b}^\tilde{b} \partial_\tilde{b})$<br>
+$= {e^a}_\tilde{a} {e_b}^\tilde{b} dx^\tilde{a} (\partial_\tilde{b})$<br>
+$= {e^a}_\tilde{a} {e_b}^\tilde{b} \delta^\tilde{a}_\tilde{b}$<br>
+$= {e^a}_\tilde{a} {e_b}^\tilde{a}$<br>
+$= \delta^a_b$<br>
+<br>
+
+determinant: $e = det([{e^a}_\tilde{a}])$,
+and for simplicity I will assume $e &gt; 0$<br>
+<br>
+
 
 Tensors are objects invariant to change of basis.<br>
 Tensors exist within (p,q) tanganet and dual-tangent spaces:<br>

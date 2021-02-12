@@ -13,11 +13,20 @@ From <a href="https://en.wikipedia.org/wiki/Shallow_water_equations#Conservative
 System of Equations:<br>
 <br>
 
+$h = \eta + d =$ wave height, in $[m]$.<br>
+$d = $ resting height, in $[m]$.<br>
+$\eta = $ displacement from resting height, in $[m]$.<br>
+$v^i = $ fluid velocity in $[\frac{m}{s}]$.<br>
+$g = $ acceleration due to gravity in $[\frac{m}{s^2}]$.<br>
+$g_{ij} = $ coordinate metric tensor, in units $[1]$.<br>
+$\nabla_i =$ metric-cancelling covariant derivative with Levi-Civita connection.<br>
+<br>
+
 In a coordinate basis:<br>
 <br>
 
 $\partial_t (h) + \nabla_j (h v^j) = 0$<br>
-$\partial_t (h v^i) + \nabla_j (h v^i v^j + \frac{1}{2} g h^2 g^{ij}) = 0$<br>
+$\partial_t (h v^i) + \nabla_j (h v^i v^j + \frac{1}{2} g h^2 g^{ij}) = g h \nabla^i d$<br>
 <br>
 
 For an arbitrary normal, assuming $\frac{1}{|n|^2} n_k n^j = \delta^j_k$:<br>
@@ -25,6 +34,7 @@ For an arbitrary normal, assuming $\frac{1}{|n|^2} n_k n^j = \delta^j_k$:<br>
 
 For arbitrary (p,q) tensors:<br>
 (Notice, the math to this is going to work out very similar to the math for non-coordinate anholonomic basis finite-volume formalism:<br>
+(TODO this should be redone with integrals around each side.)<br>
 <br>
 $\partial_t {U^{i_1 ... i_p}}_{j_1 ... j_q} + \nabla_k {F^{k i_1 ... i_p}}_{j_1 ... j_q} = {S^{i_1 ... i_p}}_{j_1 ... j_q}$<br>
 <br>
@@ -86,7 +96,7 @@ $\partial_t (h)
 	= -(\nabla_j n^j) (\frac{1}{|n|^2} h v^k n_k)$<br>
 $\partial_t (h v^i) 
 	+ \nabla_j (\frac{1}{|n|^2} h v^i v^k n_k n^j + \frac{1}{2} \frac{1}{|n|^2} g h^2 n^i) n^j 
-	= -(\nabla_j n^j) (\frac{1}{|n|^2} h v^i v^k n_k n^j + \frac{1}{2} \frac{1}{|n|^2} g h^2 n^i)$<br>
+	= g h \nabla^i d - (\nabla_j n^j) (\frac{1}{|n|^2} h v^i v^k n_k n^j + \frac{1}{2} \frac{1}{|n|^2} g h^2 n^i)$<br>
 <br>
 
 Notice how this compares with the normal definition given in the 'wave quation hyperbolic form' or 'Euler equations in contravariant form' worksheets.
@@ -94,7 +104,7 @@ Those assume $n_k n^j = |n|^2 \delta^j_k$.  So this is similar except it assumes
 <br>
 
 $\partial_t (h) + \nabla_j (h v^k n_k n^j) = 0$<br>
-$\partial_t (h v^i) + \nabla_j (h v^i v^k n_k n^j + \frac{1}{2} g h^2 n^i n^j) = 0$<br>
+$\partial_t (h v^i) + \nabla_j (h v^i v^k n_k n^j + \frac{1}{2} g h^2 n^i n^j) = g h \nabla^i d$<br>
 <br>
 
 Assuming $\nabla_i n_j = 0$:<br>
@@ -105,13 +115,110 @@ Of course, the extrinsic curvature here is spatial extrinsic curvature, and the 
 <br>
 
 $\partial_t (h) +  \nabla_j (h v^k n_k) n^j = 0$<br>
-$\partial_t (h v^i) + \nabla_j (h v^i v^k n_k + \frac{1}{2} g h^2 n^i) n^j = 0$<br>
+$\partial_t (h v^i) + \nabla_j (h v^i v^k n_k + \frac{1}{2} g h^2 n^i) n^j = g h \nabla^i d$<br>
 <br>
 
-As a Conservation Law:<br>
+For my entertainment, let's expand those connections:<br>
 <br>
 
-$\partial_t U^I + \nabla_j F^I(n) n^j = 0$<br>
+$\partial_t (h) + n^j \partial_j (h v^k n_k) = 0$<br>
+$\partial_t (h v^i) + n^j (\partial_j (h v^i v^k n_k + \frac{1}{2} g h^2 n^i) + {\Gamma^i}_{jm} (h v^m v^k n_k + \frac{1}{2} g h^2 n^m)) = g h g^{ij} \partial_j d$<br>
+Then we can do something about summing across all normals, and making $n^j n_k \approx \delta^j_k$, and then the connection trace becomes the volume element ...<br>
+<br>
+
+What if I just assumed coordinate-aligned normals?<br>
+<br>
+
+$\partial_t (h) + \nabla_j (h v^j) = 0$<br>
+$\partial_t (h v^i) + \nabla_j (h v^i v^j + \frac{1}{2} g h^2 g^{ij}) = g h g^{ij} \partial_j d$<br>
+<br>
+
+And expand connections, using Voss-Weyl identity when possible:<br>
+TODO distinguish between derivatives and non-coordinate basis operators.<br>
+<br>
+
+$\partial_t (h) + \partial_j (h v^j) + {\Gamma^j}_{jk} (h v^k) = 0$<br>
+$\partial_t (h v^i) 
+	+ \partial_j (h v^i v^j + \frac{1}{2} g h^2 g^{ij}) 
+	+ {\Gamma^i}_{jm} (h v^m v^j + \frac{1}{2} g h^2 g^{mj})
+	+ {\Gamma^j}_{jm} (h v^i v^m + \frac{1}{2} g h^2 g^{im})
+	= g h g^{ij} \partial_j d$<br>
+<br>
+
+apply Voss-Weyl, using $V = \sqrt{det(g_{ij})}$ as the volume element, and move the remaining connection to the right hand side:<br>
+<br>
+
+$\partial_t (h) + \frac{1}{V} \partial_j (V h v^j) = 0$<br>
+$\partial_t (h v^i) 
+	+ \frac{1}{V} \partial_j (V (h v^i v^j + \frac{1}{2} g h^2 g^{ij})) 
+= 
+	- {\Gamma^i}_{jm} (h v^m v^j + \frac{1}{2} g h^2 g^{mj})
+	+ g h g^{ij} \partial_j d$<br>
+<br>
+
+Don't forget to integrate, if you plan to apply this to a finite-volume scheme:<br>
+<br>
+
+$\int \left( \partial_t (h) + \frac{1}{V} \partial_j (V h v^j) \right) dt dx^3 = 0$<br>
+$\int \left( 
+	\partial_t (h v^i) 
+	+ \frac{1}{V} \partial_j (V (h v^i v^j + \frac{1}{2} g h^2 g^{ij})) 
+\right) dt dx^3
+= 
+\int \left( 
+	- {\Gamma^i}_{jm} (h v^m v^j + \frac{1}{2} g h^2 g^{mj})
+	+ g h g^{ij} \partial_j d
+\right) dt dx^3
+$<br>
+<br>
+
+Substitute our $x^i \in \{\theta, \phi\}$:<br>
+<br>
+
+$\int \left( \partial_t (h) + \frac{1}{V} (\partial_\theta (V h v^\theta) + \partial_\phi (V h v^\phi)) \right) dt d\theta d\phi = 0$<br>
+$\int \left( 
+	\partial_t (h v^\theta) 
+	+ \frac{1}{V} \partial_\theta (V (h v^\theta v^\theta + \frac{1}{2} g h^2 g^{\theta \theta})) 
+	+ \frac{1}{V} \partial_\phi (V (h v^\theta v^\phi + \frac{1}{2} g h^2 g^{\theta \phi})) 
+\right) dt dx^3
+= 
+\int \left( 
+	- {\Gamma^\theta}_{\theta \theta} (h v^\theta v^\theta + \frac{1}{2} g h^2 g^{\theta\theta})
+	- {\Gamma^\theta}_{\theta \phi} (h v^\phi v^\theta + \frac{1}{2} g h^2 g^{\phi\theta})
+	- {\Gamma^\theta}_{\phi \theta} (h v^\theta v^\phi + \frac{1}{2} g h^2 g^{\theta \phi})
+	- {\Gamma^\theta}_{\phi \phi} (h v^\phi v^\phi + \frac{1}{2} g h^2 g^{\phi \phi})
+	+ g h g^{\theta \theta} \partial_\theta d
+	+ g h g^{\theta \phi} \partial_\phi d
+\right) dt dx^3
+$<br>
+$\int \left( 
+	\partial_t (h v^\phi) 
+	+ \frac{1}{V} \partial_\theta (V (h v^\phi v^\theta + \frac{1}{2} g h^2 g^{\phi \theta})) 
+	+ \frac{1}{V} \partial_\phi (V (h v^\phi v^\phi + \frac{1}{2} g h^2 g^{\phi \phi})) 
+\right) dt dx^3
+= 
+\int \left( 
+	- {\Gamma^\phi}_{\theta \theta} (h v^\theta v^\theta + \frac{1}{2} g h^2 g^{\theta\theta})
+	- {\Gamma^\phi}_{\theta \phi} (h v^\phi v^\theta + \frac{1}{2} g h^2 g^{\phi\theta})
+	- {\Gamma^\phi}_{\phi \theta} (h v^\theta v^\phi + \frac{1}{2} g h^2 g^{\theta \phi})
+	- {\Gamma^\phi}_{\phi \phi} (h v^\phi v^\phi + \frac{1}{2} g h^2 g^{\phi \phi})
+	+ g h g^{\phi \theta} \partial_\theta d
+	+ g h g^{\phi \phi} \partial_\phi d
+\right) dt dx^3
+$<br>
+<br>
+
+Substitute our metric and connection values:<br>
+TODO use Earth model, and switch out $\theta, \phi$ with lat/lon.<br>
+<br>
+
+<hr>
+<br>
+
+As a balance law:<br>
+<br>
+
+$\partial_t U^I + \nabla_j F^I(n) n^j = S^I$<br>
 <br>
 
 State and Primitive Variables:<br>

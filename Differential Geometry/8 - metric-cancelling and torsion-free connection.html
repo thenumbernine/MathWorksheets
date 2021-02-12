@@ -57,7 +57,7 @@ which is also known as the "Christoffel symbol of the 1st kind"<br>
 Misner Thorne Wheeler "Gravitation" list this as $\hat\Gamma_{abc} = \frac{1}{2} ( 
 	e_c (g_{ab}) + e_b (g_{ac}) - e_a (g_{bc})
 	+ c_{abc} + c_{acb} - c_{bca})$, 
-so notice the last commutation coefficient is negative'd.  This coincides with its reversed definition of $\nabla_b e_c {\Gamma^a}_{cb} e_a$, which would make sense.  If you reverse b and c then the one term that is negative'd is the last commutation term.
+so notice the last commutation coefficient is negative'd.  This coincides with its reversed definition of $\nabla_b e_c = {\Gamma^a}_{cb} e_a$, which would make sense.  If you reverse b and c then the one term that is negative'd is the last commutation term.
 However, in contrast, Wikipedia <a href='https://en.wikipedia.org/wiki/Christoffel_symbols#Connection_coefficients_in_a_nonholonomic_basis'>here</a> holds my un-reversed definition of ${\Gamma^a}_{bc}$ but still lists the same anholonomic definition.  Maybe the authors of the different sections of the page used different conventions?<br>
 <br>
 
@@ -214,6 +214,8 @@ Trace of Levi-Civita connection on 1 and 3:<br>
 ${\hat\Gamma^u}_{au} = \frac{1}{2} g^{uv} (e_u (g_{va}) + e_a (g_{vu}) - e_v (g_{au}) + c_{vau} + c_{vua} - c_{uav})$<br>
 ${\hat\Gamma^u}_{au} = \frac{1}{2} g^{uv} e_a (g_{uv})$<br>
 ${\hat\Gamma^u}_{au} = e_a ( log \sqrt{|g|} )$<br>
+Mind you, even in non-coordinate orthonormal frames where $g = $ constant, $log(\sqrt{|g|}) = $ constant, and $e(log(\sqrt{|g|})) = 0$, this identity holds.<br>
+I mean, the trace of the connection isn't necessarily the volume element.  Sometimes it is just zero.<br>
 <br>
 
 Trace of Levi-Civita connection on 1 and 2:<br>
@@ -223,6 +225,71 @@ ${\hat\Gamma^u}_{ua} = \frac{1}{2} g^{uv} (
 )$<br>
 $= \frac{1}{2} g^{uv} e_a (g_{vu}) - {c_{au}}^u$<br>
 $= e_a (log \sqrt{|g|}) + {c_{ua}}^u$<br>
+Now this is the connection that a covariant divergence would use: 
+	$\nabla \cdot v 
+	= e^b \nabla_b (v^a e_a) 
+	= e_b (v^a) e^b(e_a) + e^b (\nabla_b e_a) v^a 
+	= e_a (v^a) + {\Gamma^b}_{ba} v^a
+	= e_a (v^a) + v^a e_a (log\sqrt{|g|}) + v^a {c_{ba}}^b
+$.<br>
+Now, separately, we have the Voss-Weyl identity which says $\nabla_a (v^a) = \frac{1}{\sqrt{|\bar{g}|}} e_a (\sqrt{|\bar{g}|} v^a ) = e_a (v^a) + v^a \frac{1}{\sqrt{|\bar{g}|}} e_a(\sqrt{|\bar{g}|}) = e_a (v^a) + v^a \frac{1}{2 |\bar{g}|} e_a( \bar{g} )$.<br>
+TODO prove that whatever the $e_a (log\sqrt{|g|})$ loses as $g$ departs from $\bar{g}$ is made up for in the ${c_{ua}}^u$ to account for the volume element, which is the holonomic metric $\bar{g}_{\bar{uv}} = \partial_\bar{u} \cdot \partial_\bar{v}$.<br>
+i.e. prove that:<br>
+$
+	e_a (log\sqrt{|g|}) + {c_{ba}}^b
+	= e_a (log\sqrt{|\bar{g}|})
+$<br>
+Now we use $\bar{g}_\bar{ab} = {e^a}_\bar{a} {e^b}_\bar{b} g_{ab}$.<br>
+Therefore $det(\bar{g}_\bar{ab}) = det({e^a}_\bar{a})^2 \cdot det(g_{ab})$<br>
+Or shorthand names: $\bar{g} = e^2 \cdot g$.<br>
+$
+	e_a (log\sqrt{g}) + {c_{ba}}^b
+	= e_a (log\sqrt{|e^2 g|})
+$<br>
+$
+	\frac{1}{2} e_a (log(|g|)) 
+	- {e_a}^\bar{b} e_b ({e^b}_\bar{b})
+	+ \frac{1}{e} e_a (e)
+	= \frac{1}{2} e_a (log(|e^2 g|))
+$<br>
+$
+	\frac{1}{2} \frac{1}{|g|} e_a (|g|) 
+	- {e_a}^\bar{b} e_b ({e^b}_\bar{b})
+	+ \frac{1}{e} e_a (e)
+	= \frac{1}{2} \frac{1}{|e^2 g|} e_a (|e^2 g|)
+$<br>
+...assuming $e = |e|, g = |g|$ ... (mind you I think I already made that assumption in the rhs, which is from worksheet #2)<br>
+$
+\frac{1}{2} \frac{1}{g} e_a (g) 
+	- {e_a}^\bar{b} e_b ({e^b}_\bar{b})
+	+ \frac{1}{e} e_a (e)
+= \frac{1}{2} \frac{1}{e^2 g} (
+	2 e_a (e) g
+	+ e^2 e_a (g)
+)$<br>
+$
+\frac{1}{2} \frac{1}{g} e_a (g) 
+	- {e_a}^\bar{b} e_b ({e^b}_\bar{b})
+	+ \frac{1}{e} e_a (e)
+= 
+	\frac{1}{e^2} e_a (e)
+	+ \frac{1}{2} \frac{1}{g} e_a (g)
+$<br>
+$
+	- {e_a}^\bar{b} e_b ({e^b}_\bar{b})
+	+ \frac{1}{e} e_a (e)
+= 
+	\frac{1}{e^2} e_a (e)
+$<br>
+$ \frac{1}{e^2} (
+	e^2 e_b ({e_a}^\bar{b}) {e^b}_\bar{b}
+	+ e e_a (e)
+)
+= \frac{1}{e^2} e_a (e)
+$<br>
+makes sense if 
+$e^2 e_b ({e_a}^\bar{b}) {e^b}_\bar{b} = (1 - e) e_a (e)$... hmm ... something is wrong.<br>
+TODO replace all these bars, kid, with some other notation, since bar (even on indexes) is used to denote conjugation.<br>
 <br>
 
 Levi-Civita connection antisymmetry on 2nd and 3rd indexes:<br> 
