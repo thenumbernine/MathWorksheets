@@ -71,11 +71,11 @@ $ \hat\Gamma_{abc} = \frac{1}{2} (
 <br>
 
 Levi-Civita connection in a non-coordinate basis:<br>
-If $e_a = {e_a}^{\bar{a}} \partial_\bar{a}$ and $e^a = {e^a}_{\bar{a}} dx^\bar{a}$ are linear combinations of a coordinate basis $\partial_\bar{a}$ and dual $dx^\bar{a}$ then we can calculate the following:<br>
-Using the identities that $\delta^a_b = {e^a}_\bar{u} {e_b}^\bar{u}$ and $\delta^\bar{a}_\bar{b} = {e_u}^\bar{a} {e^u}_\bar{b}$<br>
-Let $\bar{g}_{\bar{a}\bar{b}} = \partial_\bar{a} \cdot \partial_\bar{b}$<br>
-Let $g_{ab} = e_a \cdot e_b = {e_a}^\bar{a} \partial_\bar{a} \cdot {e_b}^\bar{b} \partial_\bar{b} = {e_a}^\bar{a} \cdot {e_b}^\bar{b} \bar{g}_{\bar{a}\bar{b}}$.<br>
-Let ${c_{ab}}^c e_c = [e_a, e_b]$, so (from the 'structure constants' worksheet on structure constants of a linear transform of a coordinate basis) ${c_{ab}}^c = 2 e_{[a} ({e_{b]}}^\bar{c}) {e^c}_\bar{c}$<br>
+If $e_a = {e_a}^{\tilde{a}} \partial_\tilde{a}$ and $e^a = {e^a}_{\tilde{a}} dx^\tilde{a}$ are linear combinations of a coordinate basis $\partial_\tilde{a}$ and dual $dx^\tilde{a}$ then we can calculate the following:<br>
+Using the identities that $\delta^a_b = {e^a}_\tilde{u} {e_b}^\tilde{u}$ and $\delta^\tilde{a}_\tilde{b} = {e_u}^\tilde{a} {e^u}_\tilde{b}$<br>
+Let $\tilde{g}_{\tilde{a}\tilde{b}} = \partial_\tilde{a} \cdot \partial_\tilde{b}$<br>
+Let $g_{ab} = e_a \cdot e_b = {e_a}^\tilde{a} \partial_\tilde{a} \cdot {e_b}^\tilde{b} \partial_\tilde{b} = {e_a}^\tilde{a} \cdot {e_b}^\tilde{b} \tilde{g}_{\tilde{a}\tilde{b}}$.<br>
+Let ${c_{ab}}^c e_c = [e_a, e_b]$, so (from the 'structure constants' worksheet on structure constants of a linear transform of a coordinate basis) ${c_{ab}}^c = 2 e_{[a} ({e_{b]}}^\tilde{c}) {e^c}_\tilde{c}$<br>
 $\hat\Gamma_{abc} = \frac{1}{2} (
 	e_c (g_{ab})
 	+ e_b (g_{ac})
@@ -85,84 +85,84 @@ $\hat\Gamma_{abc} = \frac{1}{2} (
 	- c_{cba}
 )$<br>
 $= \frac{1}{2} (
-	e_c ({e_a}^\bar{a} {e_b}^\bar{b} \bar{g}_{\bar{a}\bar{b}})
-	+ e_b ({e_a}^\bar{a} {e_c}^\bar{c} \bar{g}_{\bar{a}\bar{c}})
-	- e_a ({e_b}^\bar{b} {e_c}^\bar{c} \bar{g}_{\bar{b}\bar{c}})
+	e_c ({e_a}^\tilde{a} {e_b}^\tilde{b} \tilde{g}_{\tilde{a}\tilde{b}})
+	+ e_b ({e_a}^\tilde{a} {e_c}^\tilde{c} \tilde{g}_{\tilde{a}\tilde{c}})
+	- e_a ({e_b}^\tilde{b} {e_c}^\tilde{c} \tilde{g}_{\tilde{b}\tilde{c}})
 	
-	+ 2 e_{[a} ({e_{c]}}^\bar{d}) {e^d}_\bar{d} g_{db}
-	+ 2 e_{[a} ({e_{b]}}^\bar{d}) {e^d}_\bar{d} g_{dc}
-	- 2 e_{[c} ({e_{b]}}^\bar{d}) {e^d}_\bar{d} g_{da}
+	+ 2 e_{[a} ({e_{c]}}^\tilde{d}) {e^d}_\tilde{d} g_{db}
+	+ 2 e_{[a} ({e_{b]}}^\tilde{d}) {e^d}_\tilde{d} g_{dc}
+	- 2 e_{[c} ({e_{b]}}^\tilde{d}) {e^d}_\tilde{d} g_{da}
 )$<br>
 $= \frac{1}{2} (
-	  e_c ({e_a}^\bar{a}) {e_b}^\bar{b} \bar{g}_{\bar{a}\bar{b}}
-	+ {e_a}^\bar{a} e_c ({e_b}^\bar{b}) \bar{g}_{\bar{a}\bar{b}}
-	+ {e_a}^\bar{a} {e_b}^\bar{b} e_c (\bar{g}_{\bar{a}\bar{b}})
+	  e_c ({e_a}^\tilde{a}) {e_b}^\tilde{b} \tilde{g}_{\tilde{a}\tilde{b}}
+	+ {e_a}^\tilde{a} e_c ({e_b}^\tilde{b}) \tilde{g}_{\tilde{a}\tilde{b}}
+	+ {e_a}^\tilde{a} {e_b}^\tilde{b} e_c (\tilde{g}_{\tilde{a}\tilde{b}})
 	
-	+ e_b ({e_a}^\bar{a}) {e_c}^\bar{c} \bar{g}_{\bar{a}\bar{c}}
-	+ {e_a}^\bar{a} e_b ({e_c}^\bar{c}) \bar{g}_{\bar{a}\bar{c}}
-	+ {e_a}^\bar{a} {e_c}^\bar{c} e_b (\bar{g}_{\bar{a}\bar{c}})
+	+ e_b ({e_a}^\tilde{a}) {e_c}^\tilde{c} \tilde{g}_{\tilde{a}\tilde{c}}
+	+ {e_a}^\tilde{a} e_b ({e_c}^\tilde{c}) \tilde{g}_{\tilde{a}\tilde{c}}
+	+ {e_a}^\tilde{a} {e_c}^\tilde{c} e_b (\tilde{g}_{\tilde{a}\tilde{c}})
 	
-	- e_a ({e_b}^\bar{b}) {e_c}^\bar{c} \bar{g}_{\bar{b}\bar{c}}
-	- {e_b}^\bar{b} e_a ({e_c}^\bar{c}) \bar{g}_{\bar{b}\bar{c}}
-	- {e_b}^\bar{b} {e_c}^\bar{c} e_a (\bar{g}_{\bar{b}\bar{c}})
+	- e_a ({e_b}^\tilde{b}) {e_c}^\tilde{c} \tilde{g}_{\tilde{b}\tilde{c}}
+	- {e_b}^\tilde{b} e_a ({e_c}^\tilde{c}) \tilde{g}_{\tilde{b}\tilde{c}}
+	- {e_b}^\tilde{b} {e_c}^\tilde{c} e_a (\tilde{g}_{\tilde{b}\tilde{c}})
 	
-	+ e_a ({e_c}^\bar{d}) e_{b\bar{d}}
-	- e_c ({e_a}^\bar{d}) e_{b\bar{d}}
+	+ e_a ({e_c}^\tilde{d}) e_{b\tilde{d}}
+	- e_c ({e_a}^\tilde{d}) e_{b\tilde{d}}
 	
-	+ e_a ({e_b}^\bar{d}) e_{c\bar{d}}
-	- e_b ({e_a}^\bar{d}) e_{c\bar{d}}
+	+ e_a ({e_b}^\tilde{d}) e_{c\tilde{d}}
+	- e_b ({e_a}^\tilde{d}) e_{c\tilde{d}}
 	
-	- e_c ({e_b}^\bar{d}) e_{a\bar{d}}
-	+ e_b ({e_c}^\bar{d}) e_{a\bar{d}}
+	- e_c ({e_b}^\tilde{d}) e_{a\tilde{d}}
+	+ e_b ({e_c}^\tilde{d}) e_{a\tilde{d}}
 )$<br>
 $= \frac{1}{2} (
-	  e_c ({e_a}^\bar{a}) e_{b\bar{a}}
-	+ e_c ({e_b}^\bar{b}) e_{a\bar{b}}
-	+ {e_a}^\bar{a} {e_b}^\bar{b} e_c (\bar{g}_{\bar{a}\bar{b}})
+	  e_c ({e_a}^\tilde{a}) e_{b\tilde{a}}
+	+ e_c ({e_b}^\tilde{b}) e_{a\tilde{b}}
+	+ {e_a}^\tilde{a} {e_b}^\tilde{b} e_c (\tilde{g}_{\tilde{a}\tilde{b}})
 	
-	+ e_b ({e_a}^\bar{a}) e_{c\bar{a}}
-	+ e_b ({e_c}^\bar{c}) e_{a\bar{c}}
-	+ {e_a}^\bar{a} {e_c}^\bar{c} e_b (\bar{g}_{\bar{a}\bar{c}})
+	+ e_b ({e_a}^\tilde{a}) e_{c\tilde{a}}
+	+ e_b ({e_c}^\tilde{c}) e_{a\tilde{c}}
+	+ {e_a}^\tilde{a} {e_c}^\tilde{c} e_b (\tilde{g}_{\tilde{a}\tilde{c}})
 	
-	- e_a ({e_b}^\bar{b}) e_{c\bar{b}}
-	- e_a ({e_c}^\bar{c}) e_{b\bar{c}}
-	- {e_b}^\bar{b} {e_c}^\bar{c} e_a (\bar{g}_{\bar{b}\bar{c}})
+	- e_a ({e_b}^\tilde{b}) e_{c\tilde{b}}
+	- e_a ({e_c}^\tilde{c}) e_{b\tilde{c}}
+	- {e_b}^\tilde{b} {e_c}^\tilde{c} e_a (\tilde{g}_{\tilde{b}\tilde{c}})
 	
-	+ e_a ({e_c}^\bar{d}) e_{b\bar{d}}
-	- e_c ({e_a}^\bar{d}) e_{b\bar{d}}
+	+ e_a ({e_c}^\tilde{d}) e_{b\tilde{d}}
+	- e_c ({e_a}^\tilde{d}) e_{b\tilde{d}}
 	
-	+ e_a ({e_b}^\bar{d}) e_{c\bar{d}}
-	- e_b ({e_a}^\bar{d}) e_{c\bar{d}}
+	+ e_a ({e_b}^\tilde{d}) e_{c\tilde{d}}
+	- e_b ({e_a}^\tilde{d}) e_{c\tilde{d}}
 	
-	- e_c ({e_b}^\bar{d}) e_{a\bar{d}}
-	+ e_b ({e_c}^\bar{d}) e_{a\bar{d}}
+	- e_c ({e_b}^\tilde{d}) e_{a\tilde{d}}
+	+ e_b ({e_c}^\tilde{d}) e_{a\tilde{d}}
 )$<br>
 $= \frac{1}{2} (
-	  {e_a}^\bar{a} {e_b}^\bar{b} {e_c}^\bar{c} \partial_\bar{c} (\bar{g}_{\bar{a}\bar{b}})
-	+ {e_a}^\bar{a} {e_c}^\bar{c} {e_b}^\bar{b} \partial_\bar{b} (\bar{g}_{\bar{a}\bar{c}})
-	- {e_b}^\bar{b} {e_c}^\bar{c} {e_a}^\bar{a} \partial_\bar{a} (\bar{g}_{\bar{b}\bar{c}})
+	  {e_a}^\tilde{a} {e_b}^\tilde{b} {e_c}^\tilde{c} \partial_\tilde{c} (\tilde{g}_{\tilde{a}\tilde{b}})
+	+ {e_a}^\tilde{a} {e_c}^\tilde{c} {e_b}^\tilde{b} \partial_\tilde{b} (\tilde{g}_{\tilde{a}\tilde{c}})
+	- {e_b}^\tilde{b} {e_c}^\tilde{c} {e_a}^\tilde{a} \partial_\tilde{a} (\tilde{g}_{\tilde{b}\tilde{c}})
 )	
-	+ e_b ({e_c}^\bar{c}) e_{a\bar{c}}
+	+ e_b ({e_c}^\tilde{c}) e_{a\tilde{c}}
 $<br>
-$\hat\Gamma_{abc} = {e_a}^\bar{a} {e_b}^\bar{b} {e_c}^\bar{c} \bar{\Gamma}_{\bar{a}\bar{b}\bar{c}} + e_{a\bar{a}} e_b ({e_c}^\bar{a})$<br>
-${\hat\Gamma^a}_{bc} = {e^a}_\bar{a} {e_b}^\bar{b} {e_c}^\bar{c} {\bar{\Gamma}^\bar{a}}_{\bar{b}\bar{c}} + {e^a}_\bar{a} e_b ({e_c}^\bar{a})$<br>
-...where ${\bar{\Gamma}^\bar{a}}_{\bar{b}\bar{c}}$ is the Levi-Civita connection associated with the coordinate basis $\partial_\bar{a}$.<br>
+$\hat\Gamma_{abc} = {e_a}^\tilde{a} {e_b}^\tilde{b} {e_c}^\tilde{c} \tilde{\Gamma}_{\tilde{a}\tilde{b}\tilde{c}} + e_{a\tilde{a}} e_b ({e_c}^\tilde{a})$<br>
+${\hat\Gamma^a}_{bc} = {e^a}_\tilde{a} {e_b}^\tilde{b} {e_c}^\tilde{c} {\tilde{\Gamma}^\tilde{a}}_{\tilde{b}\tilde{c}} + {e^a}_\tilde{a} e_b ({e_c}^\tilde{a})$<br>
+...where ${\tilde{\Gamma}^\tilde{a}}_{\tilde{b}\tilde{c}}$ is the Levi-Civita connection associated with the coordinate basis $\partial_\tilde{a}$.<br>
 <br>
 
-If we use the bars on the indexes of tensors to denote transformation by the ${e_a}^\bar{a}$ basis as well,
-then we can represent the transformed coordinate basis Levi-Civita connections as then we can represent this as ${\bar{\Gamma}^a}_{bc} = {e^a}_\bar{a} {e_b}^\bar{b} {e_c}^\bar{c} {\bar{\Gamma}^\bar{a}}_{\bar{b}\bar{c}}$,<br>
+If we use the bars on the indexes of tensors to denote transformation by the ${e_a}^\tilde{a}$ basis as well,
+then we can represent the transformed coordinate basis Levi-Civita connections as then we can represent this as ${\tilde{\Gamma}^a}_{bc} = {e^a}_\tilde{a} {e_b}^\tilde{b} {e_c}^\tilde{c} {\tilde{\Gamma}^\tilde{a}}_{\tilde{b}\tilde{c}}$,<br>
 and the identity becomes:<br>
-${\hat\Gamma^a}_{bc} = {\bar{\Gamma}^a}_{bc} + {e^a}_\bar{a} e_b({e_c}^\bar{a})$<br>
+${\hat\Gamma^a}_{bc} = {\tilde{\Gamma}^a}_{bc} + {e^a}_\tilde{a} e_b({e_c}^\tilde{a})$<br>
 Notice how this matches up with the covariant derivative definition: ${\Gamma^a}_{bc} = e^a (\nabla_b e_c)$<br>
 <br>
 
 If we want to transforms all this to the coordinate basis:<br>
-${e_a}^\bar{a} {e^b}_\bar{b} {e^c}_\bar{c} {\hat\Gamma^a}_{bc} =  
-	{\bar{\Gamma}^\bar{a}}_{\bar{b}\bar{c}} 
-	+ {e^c}_\bar{c} {e^b}_\bar{b} e_b ({e_c}^\bar{a}) $<br>
-${e_a}^\bar{a} {e^b}_\bar{b} {e^c}_\bar{c} {\hat\Gamma^a}_{bc} =  
-	{\bar{\Gamma}^\bar{a}}_{\bar{b}\bar{c}} 
-	+ {e^c}_\bar{c} \partial_\bar{b} ({e_c}^\bar{a}) $<br>
+${e_a}^\tilde{a} {e^b}_\tilde{b} {e^c}_\tilde{c} {\hat\Gamma^a}_{bc} =  
+	{\tilde{\Gamma}^\tilde{a}}_{\tilde{b}\tilde{c}} 
+	+ {e^c}_\tilde{c} {e^b}_\tilde{b} e_b ({e_c}^\tilde{a}) $<br>
+${e_a}^\tilde{a} {e^b}_\tilde{b} {e^c}_\tilde{c} {\hat\Gamma^a}_{bc} =  
+	{\tilde{\Gamma}^\tilde{a}}_{\tilde{b}\tilde{c}} 
+	+ {e^c}_\tilde{c} \partial_\tilde{b} ({e_c}^\tilde{a}) $<br>
 <br>
 
 Let the contorsion tensor be the difference between an arbitrary connection and the Levi-Civita connection:<br>
@@ -192,21 +192,21 @@ $e_a ( log \sqrt{|g|} ) = \frac{1}{2} g^{uv} e_a ( g_{uv} )$<br>
 <br>
 
 Jacobi formula of a coordinate metric in a coordinate basis:<br>
-Remember, $g_{uv} = e_u \cdot e_v$ is a non-coordinate metric expressed in the non-coordinate basis and $\bar{g}_{\bar{u}\bar{v}} = \partial_\bar{u} \cdot \partial_\bar{v}$ is the coordinate metric expressed in the coordinate basis.<br>
-$\partial_\bar{a} ( log \sqrt{|\bar{g}|} ) = \frac{1}{2} \bar{g}^{\bar{u}\bar{v}} \partial_\bar{a} ( \bar{g}_{\bar{u}\bar{v}} )$<br>
-$\partial_\bar{a} ( log \sqrt{|\bar{g}|} ) = \frac{1}{2} g^{uv} {e_u}^\bar{u} {e_v}^\bar{v} \partial_\bar{a} ( g_{cd} {e^c}_\bar{u} {e^d}_\bar{v} )$<br>
-$\partial_\bar{a} ( log \sqrt{|\bar{g}|} ) = \frac{1}{2} g^{uv} {e_u}^\bar{u} {e_v}^\bar{v} ( 
-	\partial_\bar{a} (g_{cd}) {e^c}_\bar{u} {e^d}_\bar{v} 
-	+ g_{cd} \partial_\bar{a} ({e^c}_\bar{u}) {e^d}_\bar{v} 
-	+ g_{cd} {e^c}_\bar{u} \partial_\bar{a} ({e^d}_\bar{v})
+Remember, $g_{uv} = e_u \cdot e_v$ is a non-coordinate metric expressed in the non-coordinate basis and $\tilde{g}_{\tilde{u}\tilde{v}} = \partial_\tilde{u} \cdot \partial_\tilde{v}$ is the coordinate metric expressed in the coordinate basis.<br>
+$\partial_\tilde{a} ( log \sqrt{|\tilde{g}|} ) = \frac{1}{2} \tilde{g}^{\tilde{u}\tilde{v}} \partial_\tilde{a} ( \tilde{g}_{\tilde{u}\tilde{v}} )$<br>
+$\partial_\tilde{a} ( log \sqrt{|\tilde{g}|} ) = \frac{1}{2} g^{uv} {e_u}^\tilde{u} {e_v}^\tilde{v} \partial_\tilde{a} ( g_{cd} {e^c}_\tilde{u} {e^d}_\tilde{v} )$<br>
+$\partial_\tilde{a} ( log \sqrt{|\tilde{g}|} ) = \frac{1}{2} g^{uv} {e_u}^\tilde{u} {e_v}^\tilde{v} ( 
+	\partial_\tilde{a} (g_{cd}) {e^c}_\tilde{u} {e^d}_\tilde{v} 
+	+ g_{cd} \partial_\tilde{a} ({e^c}_\tilde{u}) {e^d}_\tilde{v} 
+	+ g_{cd} {e^c}_\tilde{u} \partial_\tilde{a} ({e^d}_\tilde{v})
 )$<br>
-$\partial_\bar{a} ( log \sqrt{|\bar{g}|} ) = \frac{1}{2} 
-	g^{uv} \partial_\bar{a} (g_{uv})  
-	+ {e_v}^\bar{u} \partial_\bar{a} ({e^v}_\bar{u}) 
+$\partial_\tilde{a} ( log \sqrt{|\tilde{g}|} ) = \frac{1}{2} 
+	g^{uv} \partial_\tilde{a} (g_{uv})  
+	+ {e_v}^\tilde{u} \partial_\tilde{a} ({e^v}_\tilde{u}) 
 $<br>
-$\partial_\bar{a} ( log \sqrt{|\bar{g}|} ) = \frac{1}{2} 
-	g^{uv} \partial_\bar{a} (g_{uv})  
-	- {e^v}_\bar{u} \partial_\bar{a} ({e_v}^\bar{u}) 
+$\partial_\tilde{a} ( log \sqrt{|\tilde{g}|} ) = \frac{1}{2} 
+	g^{uv} \partial_\tilde{a} (g_{uv})  
+	- {e^v}_\tilde{u} \partial_\tilde{a} ({e_v}^\tilde{u}) 
 $<br>
 <br>
 
@@ -232,36 +232,36 @@ Now this is the connection that a covariant divergence would use:
 	= e_a (v^a) + {\Gamma^b}_{ba} v^a
 	= e_a (v^a) + v^a e_a (log\sqrt{|g|}) + v^a {c_{ba}}^b
 $.<br>
-Now, separately, we have the Voss-Weyl identity which says $\nabla_a (v^a) = \frac{1}{\sqrt{|\bar{g}|}} e_a (\sqrt{|\bar{g}|} v^a ) = e_a (v^a) + v^a \frac{1}{\sqrt{|\bar{g}|}} e_a(\sqrt{|\bar{g}|}) = e_a (v^a) + v^a \frac{1}{2 |\bar{g}|} e_a( \bar{g} )$.<br>
-TODO prove that whatever the $e_a (log\sqrt{|g|})$ loses as $g$ departs from $\bar{g}$ is made up for in the ${c_{ua}}^u$ to account for the volume element, which is the holonomic metric $\bar{g}_{\bar{uv}} = \partial_\bar{u} \cdot \partial_\bar{v}$.<br>
+Now, separately, we have the Voss-Weyl identity which says $\nabla_a (v^a) = \frac{1}{\sqrt{|\tilde{g}|}} e_a (\sqrt{|\tilde{g}|} v^a ) = e_a (v^a) + v^a \frac{1}{\sqrt{|\tilde{g}|}} e_a(\sqrt{|\tilde{g}|}) = e_a (v^a) + v^a \frac{1}{2 |\tilde{g}|} e_a( \tilde{g} )$.<br>
+TODO prove that whatever the $e_a (log\sqrt{|g|})$ loses as $g$ departs from $\tilde{g}$ is made up for in the ${c_{ua}}^u$ to account for the volume element, which is the holonomic metric $\tilde{g}_{\tilde{u}\tilde{v}} = \partial_\tilde{u} \cdot \partial_\tilde{v}$.<br>
 i.e. prove that:<br>
 $
 	e_a (log\sqrt{|g|}) + {c_{ba}}^b
-	= e_a (log\sqrt{|\bar{g}|})
+	= e_a (log\sqrt{|\tilde{g}|})
 $<br>
-Now we use $\bar{g}_\bar{ab} = {e^a}_\bar{a} {e^b}_\bar{b} g_{ab}$.<br>
-Therefore $det(\bar{g}_\bar{ab}) = det({e^a}_\bar{a})^2 \cdot det(g_{ab})$<br>
-Or shorthand names: $\bar{g} = e^2 \cdot g$.<br>
+Now we use $\tilde{g}_{\tilde{a}\tilde{b}} = {e^a}_\tilde{a} {e^b}_\tilde{b} g_{ab}$.<br>
+Therefore $det(\tilde{g}_{\tilde{a}\tilde{b}}) = det({e^a}_\tilde{a})^2 \cdot det(g_{ab})$<br>
+Or shorthand names: $\tilde{g} = e^2 \cdot g$.<br>
 $
 	e_a (log\sqrt{g}) + {c_{ba}}^b
 	= e_a (log\sqrt{|e^2 g|})
 $<br>
 $
 	\frac{1}{2} e_a (log(|g|)) 
-	- {e_a}^\bar{b} e_b ({e^b}_\bar{b})
+	- {e_a}^\tilde{b} e_b ({e^b}_\tilde{b})
 	+ \frac{1}{e} e_a (e)
 	= \frac{1}{2} e_a (log(|e^2 g|))
 $<br>
 $
 	\frac{1}{2} \frac{1}{|g|} e_a (|g|) 
-	- {e_a}^\bar{b} e_b ({e^b}_\bar{b})
+	- {e_a}^\tilde{b} e_b ({e^b}_\tilde{b})
 	+ \frac{1}{e} e_a (e)
 	= \frac{1}{2} \frac{1}{|e^2 g|} e_a (|e^2 g|)
 $<br>
 ...assuming $e = |e|, g = |g|$ ... (mind you I think I already made that assumption in the rhs, which is from worksheet #2)<br>
 $
 \frac{1}{2} \frac{1}{g} e_a (g) 
-	- {e_a}^\bar{b} e_b ({e^b}_\bar{b})
+	- {e_a}^\tilde{b} e_b ({e^b}_\tilde{b})
 	+ \frac{1}{e} e_a (e)
 = \frac{1}{2} \frac{1}{e^2 g} (
 	2 e_a (e) g
@@ -269,26 +269,26 @@ $
 )$<br>
 $
 \frac{1}{2} \frac{1}{g} e_a (g) 
-	- {e_a}^\bar{b} e_b ({e^b}_\bar{b})
+	- {e_a}^\tilde{b} e_b ({e^b}_\tilde{b})
 	+ \frac{1}{e} e_a (e)
 = 
 	\frac{1}{e^2} e_a (e)
 	+ \frac{1}{2} \frac{1}{g} e_a (g)
 $<br>
 $
-	- {e_a}^\bar{b} e_b ({e^b}_\bar{b})
+	- {e_a}^\tilde{b} e_b ({e^b}_\tilde{b})
 	+ \frac{1}{e} e_a (e)
 = 
 	\frac{1}{e^2} e_a (e)
 $<br>
 $ \frac{1}{e^2} (
-	e^2 e_b ({e_a}^\bar{b}) {e^b}_\bar{b}
+	e^2 e_b ({e_a}^\tilde{b}) {e^b}_\tilde{b}
 	+ e e_a (e)
 )
 = \frac{1}{e^2} e_a (e)
 $<br>
 makes sense if 
-$e^2 e_b ({e_a}^\bar{b}) {e^b}_\bar{b} = (1 - e) e_a (e)$... hmm ... something is wrong.<br>
+$e^2 e_b ({e_a}^\tilde{b}) {e^b}_\tilde{b} = (1 - e) e_a (e)$... hmm ... something is wrong.<br>
 TODO replace all these bars, kid, with some other notation, since bar (even on indexes) is used to denote conjugation.<br>
 <br>
 
@@ -313,18 +313,18 @@ ${\Gamma^u}_{ua} = e_a ( log \sqrt{|g|} ) + {c_{ua}}^u + {T^u}_{ua}$<br>
 <br>
 
 Trace of the Levi-Civita connection of the coordinate basis (which will equal the volume gradient):<br>
-${\bar\Gamma^\bar{u}}_{\bar{a}\bar{u}} = \partial_\bar{a} ( log \sqrt{|\bar{g}|} )$<br>
+${\tilde\Gamma^\tilde{u}}_{\tilde{a}\tilde{u}} = \partial_\tilde{a} ( log \sqrt{|\tilde{g}|} )$<br>
 ...transformed into non-coordinates...<br>
-${\bar\Gamma^u}_{au} = e_a ( log \sqrt{|\bar{g}|} )$<br>
+${\tilde\Gamma^u}_{au} = e_a ( log \sqrt{|\tilde{g}|} )$<br>
 Difference of Levi-Civita connection of the coordinate basis vs the non-coordinate basis:<br>
-${\hat\Gamma^u}_{au} = {\bar\Gamma^u}_{au} + {e^u}_\bar{u} e_a({e_u}^\bar{u})$<br>
-${\bar\Gamma^u}_{au} = {\hat\Gamma^u}_{au} - {e^u}_\bar{u} e_a({e_u}^\bar{u})$<br>
+${\hat\Gamma^u}_{au} = {\tilde\Gamma^u}_{au} + {e^u}_\tilde{u} e_a({e_u}^\tilde{u})$<br>
+${\tilde\Gamma^u}_{au} = {\hat\Gamma^u}_{au} - {e^u}_\tilde{u} e_a({e_u}^\tilde{u})$<br>
 Trace of the Levi-Civita connection of the coordinate basis, in terms of the non-coordinate Levi-Civita connection:<br>
-${\bar\Gamma^u}_{au} = e_a ( log \sqrt{|\bar{g}|} )$<br>
+${\tilde\Gamma^u}_{au} = e_a ( log \sqrt{|\tilde{g}|} )$<br>
 Equate:<br>
-${\hat\Gamma^u}_{au} - {e^u}_\bar{u} e_a({e_u}^\bar{u}) = e_a ( log \sqrt{|\bar{g}|} )$<br>
-... subsitute $- {e^u}_\bar{u} e_a ({e_u}^\bar{u}) = e_a ( log \sqrt{|\bar{g}|} ) - \frac{1}{2} g^{uv} e_a (g_{uv})$ ...<br>
-${\hat\Gamma^u}_{au} + e_a ( log \sqrt{|\bar{g}|} ) - \frac{1}{2} g^{uv} e_a (g_{uv}) = e_a ( log \sqrt{|\bar{g}|} )$<br>
+${\hat\Gamma^u}_{au} - {e^u}_\tilde{u} e_a({e_u}^\tilde{u}) = e_a ( log \sqrt{|\tilde{g}|} )$<br>
+... subsitute $- {e^u}_\tilde{u} e_a ({e_u}^\tilde{u}) = e_a ( log \sqrt{|\tilde{g}|} ) - \frac{1}{2} g^{uv} e_a (g_{uv})$ ...<br>
+${\hat\Gamma^u}_{au} + e_a ( log \sqrt{|\tilde{g}|} ) - \frac{1}{2} g^{uv} e_a (g_{uv}) = e_a ( log \sqrt{|\tilde{g}|} )$<br>
 ${\hat\Gamma^u}_{au} = \frac{1}{2} g^{uv} e_a (g_{uv})$<br>
 <br>
 
@@ -688,12 +688,12 @@ Tensor density.<br>
 <br>
 Assuming $\nabla$ is a metric-cancelling covariant derivative, calculate the covariant derivative of the scalar of the metric determinant:<br>
 $\nabla_a g$<br>
-$= \nabla_a \left( \bar{\epsilon}^{u_1 ... u_n} \underset{i=1}{\overset{n}{\Pi}} g_{i u_i} \right)$<br>
-$= \bar{\epsilon}^{u_1 ... u_n} \nabla_a \left( \underset{i=1}{\overset{n}{\Pi}} g_{i u_i} \right)$<br>
-$= \bar{\epsilon}^{u_1 ... u_n} \underset{i=1}{\overset{n}{\Sigma}} \left( \nabla_a g_{i u_i} \cdot \underset{j=1, j \ne i}{\overset{n}{\Pi}} g_{j u_j} \right)$<br>
+$= \nabla_a \left( \tilde{\epsilon}^{u_1 ... u_n} \underset{i=1}{\overset{n}{\Pi}} g_{i u_i} \right)$<br>
+$= \tilde{\epsilon}^{u_1 ... u_n} \nabla_a \left( \underset{i=1}{\overset{n}{\Pi}} g_{i u_i} \right)$<br>
+$= \tilde{\epsilon}^{u_1 ... u_n} \underset{i=1}{\overset{n}{\Sigma}} \left( \nabla_a g_{i u_i} \cdot \underset{j=1, j \ne i}{\overset{n}{\Pi}} g_{j u_j} \right)$<br>
 Using $\nabla_a g_{uv} = 0$:<br>
-$= \bar{\epsilon}^{u_1 ... u_n} \underset{i=1}{\overset{n}{\Sigma}} \left( 0 \cdot \underset{j=1, j \ne i}{\overset{n}{\Pi}} g_{j u_j} \right)$<br>
-$= \bar{\epsilon}^{u_1 ... u_n} \underset{i=1}{\overset{n}{\Sigma}} 0$<br>
+$= \tilde{\epsilon}^{u_1 ... u_n} \underset{i=1}{\overset{n}{\Sigma}} \left( 0 \cdot \underset{j=1, j \ne i}{\overset{n}{\Pi}} g_{j u_j} \right)$<br>
+$= \tilde{\epsilon}^{u_1 ... u_n} \underset{i=1}{\overset{n}{\Sigma}} 0$<br>
 $= 0$<br>
 <br>
 Now we see that the covariant derivative of every scalar is not necessarily equal to the partial derivative of that scalar.<br>

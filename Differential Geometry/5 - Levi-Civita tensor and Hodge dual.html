@@ -8,11 +8,30 @@
     <body>
 <a href='.'>Back</a><br><br>
 
-Levi-Civita tensor applied to a Minkowski metric:<br>
+Let's first define Levi-Civita tensor with regards to a Minkowski metric, one with determinant $\sigma = \pm 1$:<br>
 $\epsilon_{I_1 \dots I_n} = 1$ for even permutations of $I_1 \dots I_n$, -1 for odd permutations, and 0 otherwise.<br>
-$\epsilon^{I_1 \dots I_n} = \eta^{I_1 J_1} \dots \eta^{I_n J_n} \epsilon_{J_1 \dots J_n} = \sigma \epsilon_{I_1 \dots I_n}$<br>
-$\epsilon_{a_1 \dots a_n} = {e_{a_1}}^1 \dots {e_{a_n}}^n \epsilon_{1 \dots n}$, which is the definition of $det([{e_a}^I]) = e$.<br>
-Therefore $ \epsilon_{a_1 \dots a_n} = e = \sqrt{|g|}$ for even permutations, $-e = -\sqrt{|g|}$ for odd permutations, and 0 otherwise.<br>
+$\epsilon^{I_1 \dots I_n} = \eta^{I_1 J_1} \dots \eta^{I_n J_n} \epsilon_{J_1 \dots J_n} = \sigma \epsilon_{I_1 \dots I_n}$.<br>
+$\epsilon_{a_1 \dots a_n} = {e_{a_1}}^1 \dots {e_{a_n}}^n \epsilon_{1 \dots n}$, which is the definition of $det([{e_a}^I])$, which is the linear transform from the Minkowski-metric basis to the new basis.<br>
+Alright, to properly define values and determinants, I need to distinguish linear transforms between the coordinate basis $\partial_a$, the non-coordinate basis $e_a$, and the Minkowski basis $e_I$.<br>
+<br>
+So before we had:<br>
+$\tilde{g}_{\tilde{a}\tilde{b}} = {e^a}_\tilde{a} {e^b}_\tilde{b} g_{ab}$.<br>
+with determinant:<br>
+$\tilde{g} = e^2 g$<br>
+Now we are saying $g_{ab} = {e_a}^I {e_b}^J \eta_{IJ}$.<br>
+with determinant:<br>
+$g = (e')^2 \sigma$, for $e' = det([{e_a}^I])$.<br>
+So combine to find: $\tilde{g}_{\tilde{a}\tilde{b}} = {e^a}_\tilde{a} {e^b}_\tilde{b} {e_a}^I {e_b}^J \eta_{IJ}$.<br>
+and determinant:<br> 
+$\tilde{g} = e^2 (e')^2 \sigma$<br>
+Solve for $e'$ to find:<br>
+$e' = \frac{\sqrt{\tilde{g}}}{e} = \sqrt{g}$<br>
+<br>
+So the determinant of the transform from the Minkowski metric to the non-coordinate basis is $det([{e_a}^I]) = \sqrt{g}$.<br>
+Therefore $ \epsilon_{a_1 \dots a_n} = e' = \sqrt{|g|}$ for even permutations, $-e' = -\sqrt{|g|}$ for odd permutations, and 0 otherwise.<br>
+<br>
+
+TODO double check signs on all of these, and where $\sigma$ might need to be inserted.<br>
 <br>
 
 $\epsilon^{a_1 \dots a_n} = \sigma (g^{a_1 b_1}) \cdot \dots \cdot (g^{a_n b_n}) \epsilon_{b_1 \dots b_n}$<br>
