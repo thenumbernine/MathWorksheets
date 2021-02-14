@@ -51,7 +51,7 @@ $\hat\Gamma_{abc} = \frac{1}{2} (
 	e_c (g_{ab}) + e_b (g_{ac}) - e_a (g_{bc})
 	+ c_{abc} + c_{acb} - c_{cba}
 )$<br>
-which is also known as the "Christoffel symbol of the 1st kind"<br>
+This is also known as the "Christoffel symbol of the 1st kind".<br>
 <br>
 
 Misner Thorne Wheeler "Gravitation" list this as $\hat\Gamma_{abc} = \frac{1}{2} ( 
@@ -149,6 +149,12 @@ ${\hat\Gamma^a}_{bc} = {e^a}_\tilde{a} {e_b}^\tilde{b} {e_c}^\tilde{c} {\tilde{\
 ...where ${\tilde{\Gamma}^\tilde{a}}_{\tilde{b}\tilde{c}}$ is the Levi-Civita connection associated with the coordinate basis $\partial_\tilde{a}$.<br>
 <br>
 
+From there, of course,<br>
+${\hat\Gamma^a}_{[bc]} = {e^a}_\tilde{a} {e_b}^\tilde{b} {e_c}^\tilde{c} {\tilde{\Gamma}^\tilde{a}}_{[\tilde{b}\tilde{c}]} + {e^a}_\tilde{a} e_{[b} ({e_{c]}}^\tilde{a})$<br>
+and ${\tilde{\Gamma}^\tilde{a}}_{[\tilde{b}\tilde{c}]} = 0$<br>
+so ${\hat\Gamma^a}_{[bc]} = {e^a}_\tilde{a} e_{[b} ({e_{c]}}^\tilde{a}) = \frac{1}{2} {c_{bc}}^a$<br>
+<br>
+
 If we use the bars on the indexes of tensors to denote transformation by the ${e_a}^\tilde{a}$ basis as well,
 then we can represent the transformed coordinate basis Levi-Civita connections as then we can represent this as ${\tilde{\Gamma}^a}_{bc} = {e^a}_\tilde{a} {e_b}^\tilde{b} {e_c}^\tilde{c} {\tilde{\Gamma}^\tilde{a}}_{\tilde{b}\tilde{c}}$,<br>
 and the identity becomes:<br>
@@ -168,6 +174,9 @@ ${e_a}^\tilde{a} {e^b}_\tilde{b} {e^c}_\tilde{c} {\hat\Gamma^a}_{bc} =
 Let the contorsion tensor be the difference between an arbitrary connection and the Levi-Civita connection:<br>
 ${K^a}_{bc} = {\Gamma^a}_{bc} - {\hat\Gamma^a}_{bc}$<br>
 $= \frac{1}{2} ({{T_c}^a}_b + {{T_b}^a}_c + {T^a}_{bc})$<br>
+<br>
+
+This shows that any connection can be uniquely defined by its contorsion, which is defined by its torsion.<br>
 <br>
 
 Antisymmetry of contorsion tensor:<br>
@@ -210,6 +219,34 @@ $\partial_\tilde{a} ( log \sqrt{|\tilde{g}|} ) = \frac{1}{2}
 $<br>
 <br>
 
+Going further:<br>
+$\partial_\tilde{a} ( log \sqrt{|\tilde{g}|} ) = 
+	\frac{1}{2} g^{uv} \partial_\tilde{a} (g_{uv})  
+	+ {e_v}^\tilde{u} \partial_\tilde{a} ({e^v}_\tilde{u}) 
+$<br>
+$\partial_\tilde{a} ( log \sqrt{|\tilde{g}|} ) = 
+	\frac{1}{2 g} \partial_\tilde{a} g 
+	+ \frac{1}{e} \partial_\tilde{a} e
+$<br>
+$\partial_\tilde{a} ( log \sqrt{|\tilde{g}|} ) = 
+	\frac{1}{2} \partial_\tilde{a} (log(\sqrt{|g|}))
+	+ \partial_\tilde{a} (log(e))
+$<br>
+transform both sides:<br>
+${e_a}^\tilde{a} \partial_\tilde{a} ( log \sqrt{|\tilde{g}|} ) = 
+	{e_a}^\tilde{a} \partial_\tilde{a} (log(\sqrt{|g|}))
+	+ {e_a}^\tilde{a} \partial_\tilde{a} (log(e))
+$<br>
+$e_a ( log \sqrt{|\tilde{g}|} ) = 
+	e_a (log(\sqrt{|g|}))
+	+ e_a (log(e))
+$<br>
+$e_a ( log \sqrt{|\tilde{g}|} ) = 
+	{\Gamma^b}_{ba}
+	+ e_a (log(e))
+$<br>
+<br>
+
 Trace of Levi-Civita connection on 1 and 3:<br>
 ${\hat\Gamma^u}_{au} = \frac{1}{2} g^{uv} (e_u (g_{va}) + e_a (g_{vu}) - e_v (g_{au}) + c_{vau} + c_{vua} - c_{uav})$<br>
 ${\hat\Gamma^u}_{au} = \frac{1}{2} g^{uv} e_a (g_{uv})$<br>
@@ -225,71 +262,31 @@ ${\hat\Gamma^u}_{ua} = \frac{1}{2} g^{uv} (
 )$<br>
 $= \frac{1}{2} g^{uv} e_a (g_{vu}) - {c_{au}}^u$<br>
 $= e_a (log \sqrt{|g|}) + {c_{ua}}^u$<br>
-Now this is the connection that a covariant divergence would use: 
-	$\nabla \cdot v 
-	= e^b \nabla_b (v^a e_a) 
-	= e_b (v^a) e^b(e_a) + e^b (\nabla_b e_a) v^a 
-	= e_a (v^a) + {\Gamma^b}_{ba} v^a
-	= e_a (v^a) + v^a e_a (log\sqrt{|g|}) + v^a {c_{ba}}^b
-$.<br>
-Now, separately, we have the Voss-Weyl identity which says $\nabla_a (v^a) = \frac{1}{\sqrt{|\tilde{g}|}} e_a (\sqrt{|\tilde{g}|} v^a ) = e_a (v^a) + v^a \frac{1}{\sqrt{|\tilde{g}|}} e_a(\sqrt{|\tilde{g}|}) = e_a (v^a) + v^a \frac{1}{2 |\tilde{g}|} e_a( \tilde{g} )$.<br>
-TODO prove that whatever the $e_a (log\sqrt{|g|})$ loses as $g$ departs from $\tilde{g}$ is made up for in the ${c_{ua}}^u$ to account for the volume element, which is the holonomic metric $\tilde{g}_{\tilde{u}\tilde{v}} = \partial_\tilde{u} \cdot \partial_\tilde{v}$.<br>
-i.e. prove that:<br>
-$
-	e_a (log\sqrt{|g|}) + {c_{ba}}^b
-	= e_a (log\sqrt{|\tilde{g}|})
-$<br>
-Now we use $\tilde{g}_{\tilde{a}\tilde{b}} = {e^a}_\tilde{a} {e^b}_\tilde{b} g_{ab}$.<br>
-Therefore $det(\tilde{g}_{\tilde{a}\tilde{b}}) = det({e^a}_\tilde{a})^2 \cdot det(g_{ab})$<br>
-Or shorthand names: $\tilde{g} = e^2 \cdot g$.<br>
-$
-	e_a (log\sqrt{g}) + {c_{ba}}^b
-	= e_a (log\sqrt{|e^2 g|})
-$<br>
-$
-	\frac{1}{2} e_a (log(|g|)) 
-	- {e_a}^\tilde{b} e_b ({e^b}_\tilde{b})
-	+ \frac{1}{e} e_a (e)
-	= \frac{1}{2} e_a (log(|e^2 g|))
-$<br>
-$
-	\frac{1}{2} \frac{1}{|g|} e_a (|g|) 
-	- {e_a}^\tilde{b} e_b ({e^b}_\tilde{b})
-	+ \frac{1}{e} e_a (e)
-	= \frac{1}{2} \frac{1}{|e^2 g|} e_a (|e^2 g|)
-$<br>
-...assuming $e = |e|, g = |g|$ ... (mind you I think I already made that assumption in the rhs, which is from worksheet #2)<br>
-$
-\frac{1}{2} \frac{1}{g} e_a (g) 
-	- {e_a}^\tilde{b} e_b ({e^b}_\tilde{b})
-	+ \frac{1}{e} e_a (e)
-= \frac{1}{2} \frac{1}{e^2 g} (
-	2 e_a (e) g
-	+ e^2 e_a (g)
-)$<br>
-$
-\frac{1}{2} \frac{1}{g} e_a (g) 
-	- {e_a}^\tilde{b} e_b ({e^b}_\tilde{b})
-	+ \frac{1}{e} e_a (e)
-= 
-	\frac{1}{e^2} e_a (e)
-	+ \frac{1}{2} \frac{1}{g} e_a (g)
-$<br>
-$
-	- {e_a}^\tilde{b} e_b ({e^b}_\tilde{b})
-	+ \frac{1}{e} e_a (e)
-= 
-	\frac{1}{e^2} e_a (e)
-$<br>
-$ \frac{1}{e^2} (
-	e^2 e_b ({e_a}^\tilde{b}) {e^b}_\tilde{b}
-	+ e e_a (e)
-)
-= \frac{1}{e^2} e_a (e)
-$<br>
-makes sense if 
-$e^2 e_b ({e_a}^\tilde{b}) {e^b}_\tilde{b} = (1 - e) e_a (e)$... hmm ... something is wrong.<br>
-TODO replace all these bars, kid, with some other notation, since bar (even on indexes) is used to denote conjugation.<br>
+<br>
+
+using ${\hat\Gamma^a}_{bc} = {e^a}_\tilde{a} {e_b}^\tilde{b} {e_c}^\tilde{c} {\tilde{\Gamma}^\tilde{a}}_{\tilde{b}\tilde{c}} + {e^a}_\tilde{a} e_b ({e_c}^\tilde{a})$<br>
+and using ${\tilde{\Gamma}^\tilde{u}}_{\tilde{a}\tilde{u}} = \frac{1}{\sqrt{|\tilde{g}|}} \partial_\tilde{a} (\sqrt{|\tilde{g}|})$<br>
+therefore <br>
+${\hat\Gamma^u}_{au}$<br>
+$= {e_a}^\tilde{a} {\tilde{\Gamma}^\tilde{u}}_{\tilde{a}\tilde{u}} + {e^u}_\tilde{u} e_a ({e_u}^\tilde{u})$<br>
+$= \frac{1}{\sqrt{|\tilde{g}|}} {e_a}^\tilde{a} \partial_\tilde{a} (\sqrt{|\tilde{g}|}) - \frac{1}{e} e_a (e)$<br>
+$= \frac{1}{\sqrt{|\tilde{g}|}} e_a (\sqrt{|\tilde{g}|}) - \frac{1}{e} e_a (e)$<br>
+<br>
+
+Now this is the connection that a covariant divergence would use:<br>
+$\hat\nabla \cdot v$<br>
+$= e^b \hat\nabla_b (v^a e_a)$<br> 
+$= e_b (v^a) e^b(e_a) + e^b (\nabla_b e_a) v^a$<br>
+$= e_a (v^a) + {\hat{\Gamma}^b}_{ba} v^a$<br>
+$= e_a (v^a) + v^b {\hat{\Gamma}^a}_{ab}$<br>
+using ${\hat{\Gamma}^a}_{ab} = e_b (log(\sqrt{|\tilde{g}|})) + {e^a}_\tilde{b} e_b ({e_a}^\tilde{b}) + {c_{ab}}^b$<br>
+$= e_a (v^a) + v^b (e_b (log(\sqrt{|\tilde{g}|})) + {e^a}_\tilde{b} e_b ( {e_a}^\tilde{b} ) + {c_{ab}}^a)$<br>
+$= e_a (v^a) + v^b (e_b (log(\sqrt{|\tilde{g}|})) + e_a ( {e_b}^\tilde{b} ) {e^a}_\tilde{b} )$<br>
+$= e_a (v^a) + v^a \frac{1}{\sqrt{|\tilde{g}|}} e_a( \sqrt{|\tilde{g}|} ) + v^b e_a ( {e_b}^\tilde{b} ) {e^a}_\tilde{b}$<br>
+$= \frac{1}{\sqrt{|\tilde{g}|}} e_a (\sqrt{|\tilde{g}|} v^a) + v^b e_a ({e_b}^\tilde{b}) {e^a}_\tilde{b}$<br>
+$= \frac{1}{\sqrt{|\tilde{g}|}} \partial_\tilde{a} (\sqrt{|\tilde{g}|} {e_a}^\tilde{a} v^a)$<br>
+$= \frac{1}{\sqrt{|\tilde{g}|}} {e^b}_\tilde{a} e_b (\sqrt{|\tilde{g}|} {e_a}^\tilde{a} v^a)$<br>
+This is the Voss-Weyl identity.<br>
 <br>
 
 Levi-Civita connection antisymmetry on 2nd and 3rd indexes:<br> 
