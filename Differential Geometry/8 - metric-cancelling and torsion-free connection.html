@@ -151,7 +151,7 @@ ${\hat\Gamma^a}_{bc} = {e^a}_\tilde{a} {e_b}^\tilde{b} {e_c}^\tilde{c} {\tilde{\
 
 From there, of course,<br>
 ${\hat\Gamma^a}_{[bc]} = {e^a}_\tilde{a} {e_b}^\tilde{b} {e_c}^\tilde{c} {\tilde{\Gamma}^\tilde{a}}_{[\tilde{b}\tilde{c}]} + {e^a}_\tilde{a} e_{[b} ({e_{c]}}^\tilde{a})$<br>
-and ${\tilde{\Gamma}^\tilde{a}}_{[\tilde{b}\tilde{c}]} = 0$<br>
+and a coordinate basis has no commutation, so ${\tilde{\Gamma}^\tilde{a}}_{[\tilde{b}\tilde{c}]} = 0$<br>
 so ${\hat\Gamma^a}_{[bc]} = {e^a}_\tilde{a} e_{[b} ({e_{c]}}^\tilde{a}) = \frac{1}{2} {c_{bc}}^a$<br>
 <br>
 
@@ -242,7 +242,7 @@ $e_a ( log \sqrt{|\tilde{g}|} ) =
 	+ e_a (log(e))
 $<br>
 $e_a ( log \sqrt{|\tilde{g}|} ) = 
-	{\Gamma^b}_{ba}
+	{\hat{\Gamma}^b}_{ab}
 	+ e_a (log(e))
 $<br>
 <br>
@@ -267,10 +267,25 @@ $= e_a (log \sqrt{|g|}) + {c_{ua}}^u$<br>
 using ${\hat\Gamma^a}_{bc} = {e^a}_\tilde{a} {e_b}^\tilde{b} {e_c}^\tilde{c} {\tilde{\Gamma}^\tilde{a}}_{\tilde{b}\tilde{c}} + {e^a}_\tilde{a} e_b ({e_c}^\tilde{a})$<br>
 and using ${\tilde{\Gamma}^\tilde{u}}_{\tilde{a}\tilde{u}} = \frac{1}{\sqrt{|\tilde{g}|}} \partial_\tilde{a} (\sqrt{|\tilde{g}|})$<br>
 therefore <br>
-${\hat\Gamma^u}_{au}$<br>
-$= {e_a}^\tilde{a} {\tilde{\Gamma}^\tilde{u}}_{\tilde{a}\tilde{u}} + {e^u}_\tilde{u} e_a ({e_u}^\tilde{u})$<br>
-$= \frac{1}{\sqrt{|\tilde{g}|}} {e_a}^\tilde{a} \partial_\tilde{a} (\sqrt{|\tilde{g}|}) - \frac{1}{e} e_a (e)$<br>
-$= \frac{1}{\sqrt{|\tilde{g}|}} e_a (\sqrt{|\tilde{g}|}) - \frac{1}{e} e_a (e)$<br>
+${\hat\Gamma^u}_{au} = {e_a}^\tilde{a} {\tilde{\Gamma}^\tilde{u}}_{\tilde{a}\tilde{u}} + {e^u}_\tilde{u} e_a ({e_u}^\tilde{u})$<br>
+$\frac{1}{\sqrt{|g|}} e_a (\sqrt{|g|}) = {e_a}^\tilde{a} {\tilde{\Gamma}^\tilde{u}}_{\tilde{a}\tilde{u}} - e_a ({e^u}_\tilde{u}) {e_u}^\tilde{u}$<br>
+$\frac{1}{\sqrt{|g|}} e_a (\sqrt{|g|}) = \frac{1}{\sqrt{|\tilde{g}|}} {e_a}^\tilde{a} \partial_\tilde{a} (\sqrt{|\tilde{g}|}) - \frac{1}{e} e_a (e)$<br>
+$\frac{1}{\sqrt{|g|}} e_a (\sqrt{|g|}) = \frac{1}{\sqrt{|\tilde{g}|}} e_a (\sqrt{|\tilde{g}|}) - \frac{1}{e} e_a (e)$<br>
+...and keep going to find...<br>
+$\frac{1}{\sqrt{|g|}} e_a(\sqrt{|g|}) = \frac{1}{e \sqrt{|g|}} e_a (e \sqrt{|g|}) - \frac{1}{e} e_a (e)$<br>
+$\frac{1}{\sqrt{|g|}} e_a(\sqrt{|g|}) = \frac{1}{e \sqrt{|g|}} e e_a (\sqrt{|g|}) + \frac{1}{e \sqrt{|g|}} \sqrt{|g|} e_a (e) - \frac{1}{e} e_a (e)$<br>
+$\frac{1}{\sqrt{|g|}} e_a(\sqrt{|g|}) = \frac{1}{\sqrt{g}} e_a (\sqrt{|g|}) + \frac{1}{e} e_a (e) - \frac{1}{e} e_a (e)$<br>
+$\frac{1}{\sqrt{|g|}} e_a(\sqrt{|g|}) = \frac{1}{\sqrt{g}} e_a (\sqrt{|g|})$<br>
+<br>
+
+What about ${\hat\Gamma^u}_{ua} = {e_a}^\tilde{a} {\tilde{\Gamma}^\tilde{u}}_{\tilde{u}\tilde{a}} + {e^u}_\tilde{u} e_u ({e_a}^\tilde{u})$<br>
+And ${\tilde{\Gamma}^\tilde{u}}_{\tilde{u}\tilde{a}}$ is symmetric and therefore equal to ${\tilde{\Gamma}^\tilde{u}}_{\tilde{a}\tilde{u}}$, which is equal to $\partial_\tilde{a} (log \sqrt{|\tilde{g}|})$<br>
+${\hat\Gamma^u}_{ua} = {e_a}^\tilde{a} \partial_\tilde{a} (log \sqrt{|\tilde{g}|}) + {e^u}_\tilde{u} e_u ({e_a}^\tilde{u})$<br>
+${\hat\Gamma^u}_{ua} = e_a (log \sqrt{|\tilde{g}|}) + {e^u}_\tilde{u} e_u ({e_a}^\tilde{u})$<br>
+<br>
+
+Equate the two definitions of ${\hat\Gamma^u}_{ua}$ to find:<br>
+$e_a (log \sqrt{|g|}) + {c_{ua}}^u = e_a (log \sqrt{|\tilde{g}|}) + {e^u}_\tilde{u} e_u ({e_a}^\tilde{u})$<br>
 <br>
 
 Now this is the connection that a covariant divergence would use:<br>
@@ -279,8 +294,6 @@ $= e^b \hat\nabla_b (v^a e_a)$<br>
 $= e_b (v^a) e^b(e_a) + e^b (\nabla_b e_a) v^a$<br>
 $= e_a (v^a) + {\hat{\Gamma}^b}_{ba} v^a$<br>
 $= e_a (v^a) + v^b {\hat{\Gamma}^a}_{ab}$<br>
-using ${\hat{\Gamma}^a}_{ab} = e_b (log(\sqrt{|\tilde{g}|})) + {e^a}_\tilde{b} e_b ({e_a}^\tilde{b}) + {c_{ab}}^b$<br>
-$= e_a (v^a) + v^b (e_b (log(\sqrt{|\tilde{g}|})) + {e^a}_\tilde{b} e_b ( {e_a}^\tilde{b} ) + {c_{ab}}^a)$<br>
 $= e_a (v^a) + v^b (e_b (log(\sqrt{|\tilde{g}|})) + e_a ( {e_b}^\tilde{b} ) {e^a}_\tilde{b} )$<br>
 $= e_a (v^a) + v^a \frac{1}{\sqrt{|\tilde{g}|}} e_a( \sqrt{|\tilde{g}|} ) + v^b e_a ( {e_b}^\tilde{b} ) {e^a}_\tilde{b}$<br>
 $= \frac{1}{\sqrt{|\tilde{g}|}} e_a (\sqrt{|\tilde{g}|} v^a) + v^b e_a ({e_b}^\tilde{b}) {e^a}_\tilde{b}$<br>
@@ -323,9 +336,6 @@ ${\hat\Gamma^u}_{au} - {e^u}_\tilde{u} e_a({e_u}^\tilde{u}) = e_a ( log \sqrt{|\
 ... subsitute $- {e^u}_\tilde{u} e_a ({e_u}^\tilde{u}) = e_a ( log \sqrt{|\tilde{g}|} ) - \frac{1}{2} g^{uv} e_a (g_{uv})$ ...<br>
 ${\hat\Gamma^u}_{au} + e_a ( log \sqrt{|\tilde{g}|} ) - \frac{1}{2} g^{uv} e_a (g_{uv}) = e_a ( log \sqrt{|\tilde{g}|} )$<br>
 ${\hat\Gamma^u}_{au} = \frac{1}{2} g^{uv} e_a (g_{uv})$<br>
-<br>
-
-TODO And compare it with the non-coordinate Levi-Civita connection trace.<br>
 <br>
 
 <hr>

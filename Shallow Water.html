@@ -18,11 +18,9 @@ $d = $ resting height, in $[m]$.<br>
 $\eta = $ displacement from resting height, in $[m]$.<br>
 $v^i = $ fluid velocity in $[\frac{m}{s}]$.<br>
 $g = $ acceleration due to gravity in $[\frac{m}{s^2}]$.<br>
-$g_{ij} = $ coordinate metric tensor, in units $[1]$.<br>
+$g_{ij} = $ metric tensor, in units $[1]$.<br>
 $\nabla_i =$ metric-cancelling covariant derivative with Levi-Civita connection.<br>
-<br>
-
-In a coordinate basis:<br>
+$\tilde{g}_{\tilde{i}\tilde{j}} =$ coordinate metric and coordinate indexes.<br>
 <br>
 
 $\partial_t (h) + \nabla_j (h v^j) = 0$<br>
@@ -137,40 +135,72 @@ And expand connections, using Voss-Weyl identity when possible:<br>
 TODO distinguish between derivatives and non-coordinate basis operators.<br>
 <br>
 
-$\partial_t (h) + \partial_j (h v^j) + {\Gamma^j}_{jk} (h v^k) = 0$<br>
+$\partial_t (h) + e_j (h v^j) + {\Gamma^j}_{jk} (h v^k) = 0$<br>
 $\partial_t (h v^i) 
-	+ \partial_j (h v^i v^j + \frac{1}{2} g h^2 g^{ij}) 
+	+ e_j (h v^i v^j + \frac{1}{2} g h^2 g^{ij}) 
 	+ {\Gamma^i}_{jm} (h v^m v^j + \frac{1}{2} g h^2 g^{mj})
 	+ {\Gamma^j}_{jm} (h v^i v^m + \frac{1}{2} g h^2 g^{im})
-	= g h g^{ij} \partial_j d$<br>
+	= g h g^{ij} e_j (d)$<br>
 <br>
 
 apply Voss-Weyl, using $V = \sqrt{det(g_{ij})}$ as the volume element, and move the remaining connection to the right hand side:<br>
 <br>
 
-$\partial_t (h) + \frac{1}{V} \partial_j (V h v^j) = 0$<br>
+$\partial_t (h) + \frac{1}{V} \partial_\tilde{j} (V {e_j}^\tilde{j} h v^j) = 0$<br>
 $\partial_t (h v^i) 
-	+ \frac{1}{V} \partial_j (V (h v^i v^j + \frac{1}{2} g h^2 g^{ij})) 
+	+ \frac{1}{V} \partial_\tilde{j} (V {e_j}^\tilde{j} (h v^i v^j + \frac{1}{2} g h^2 g^{ij})) 
 = 
 	- {\Gamma^i}_{jm} (h v^m v^j + \frac{1}{2} g h^2 g^{mj})
-	+ g h g^{ij} \partial_j d$<br>
+	+ g h g^{ij} {e_j}^\tilde{j} \partial_\tilde{j} d$<br>
 <br>
 
 Don't forget to integrate, if you plan to apply this to a finite-volume scheme:<br>
 <br>
 
-$\int \left( \partial_t (h) + \frac{1}{V} \partial_j (V h v^j) \right) dt dx^3 = 0$<br>
+$\int \left( \partial_t (h) + \frac{1}{V} \partial_\tilde{j} (V {e_j}^\tilde{j} h v^j) \right) dt dx^3 = 0$<br>
 $\int \left( 
 	\partial_t (h v^i) 
-	+ \frac{1}{V} \partial_j (V (h v^i v^j + \frac{1}{2} g h^2 g^{ij})) 
+	+ \frac{1}{V} \partial_\tilde{j} (V {e_j}^\tilde{j} (h v^i v^j + \frac{1}{2} g h^2 g^{ij})) 
 \right) dt dx^3
 = 
 \int \left( 
 	- {\Gamma^i}_{jm} (h v^m v^j + \frac{1}{2} g h^2 g^{mj})
 	+ g h g^{ij} \partial_j d
-\right) dt dx^3
+\right) V dt dx^3
 $<br>
 <br>
+
+Apply integrals:<br>
+Let $\mathcal{V} = \int dV = \int V dx^3$<br>
+<br>
+
+$\mathcal{V} \cdot (h(t + \Delta t) - h(t)) + \Delta t \int \left( \partial_\tilde{j} (V {e_j}^\tilde{j} h v^j) \right) dx^3 = 0$<br>
+$
+\mathcal{V} \cdot (
+	(h v^i)(t + \Delta t) 
+	- (h v^i)(t)
+)
+	+ \Delta t \int \left( \partial_\tilde{j} (V {e_j}^\tilde{j} (h v^i v^j + \frac{1}{2} g h^2 g^{ij})) \right) dx^3
+= 
+\int \left( 
+	- {\Gamma^i}_{jm} (h v^m v^j + \frac{1}{2} g h^2 g^{mj})
+	+ g h g^{ij} \partial_j d
+\right) V dt dx^3
+$<br>
+<br>
+<br>
+$h(t + \Delta t) = h(t) - \frac{\Delta t}{\mathcal{V}} \int \left( \partial_\tilde{j} (V {e_j}^\tilde{j} h v^j) \right) dx^3$<br>
+$(h v^i)(t + \Delta t) 
+	= (h v^i)(t)
+	- \frac{\Delta t}{\mathcal{V}} \int \left( \partial_\tilde{j} (V {e_j}^\tilde{j} (h v^i v^j + \frac{1}{2} g h^2 g^{ij})) \right) dx^3
+	+ \Delta t \int \left( 
+		\underbrace{- {\Gamma^i}_{jm} (h v^m v^j + \frac{1}{2} g h^2 g^{mj})}_{connection}
+		+ \underbrace{g h g^{ij} \partial_j d}_{source}
+	\right) V dx^3
+$<br>
+<br>
+
+
 
 Substitute our $x^i \in \{\theta, \phi\}$:<br>
 <br>
