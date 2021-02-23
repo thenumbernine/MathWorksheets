@@ -165,7 +165,7 @@ $\int \left(
 = 
 \int \left( 
 	- {\Gamma^i}_{jm} (h v^m v^j + \frac{1}{2} g h^2 g^{mj})
-	+ g h g^{ij} \partial_j d
+	+ g h g^{ij} {e_j}^\tilde{j} \partial_\tilde{j} d
 \right) V dt dx^3
 $<br>
 <br>
@@ -184,7 +184,7 @@ $
 = 
 \int \left( 
 	- {\Gamma^i}_{jm} (h v^m v^j + \frac{1}{2} g h^2 g^{mj})
-	+ g h g^{ij} \partial_j d
+	+ g h g^{ij} {e_j}^\tilde{j} \partial_\tilde{j} d
 \right) V dt dx^3
 $<br>
 <br>
@@ -195,50 +195,15 @@ $(h v^i)(t + \Delta t)
 	- \frac{\Delta t}{\mathcal{V}} \int \left( \partial_\tilde{j} (V {e_j}^\tilde{j} (h v^i v^j + \frac{1}{2} g h^2 g^{ij})) \right) dx^3
 	+ \Delta t \int \left( 
 		\underbrace{- {\Gamma^i}_{jm} (h v^m v^j + \frac{1}{2} g h^2 g^{mj})}_{connection}
-		+ \underbrace{g h g^{ij} \partial_j d}_{source}
+		+ \underbrace{g h g^{ij} {e_j}^\tilde{j} \partial_\tilde{j} d}_{source}
 	\right) V dx^3
 $<br>
 <br>
 
 
 
-Substitute our $x^i \in \{\theta, \phi\}$:<br>
-<br>
-
-$\int \left( \partial_t (h) + \frac{1}{V} (\partial_\theta (V h v^\theta) + \partial_\phi (V h v^\phi)) \right) dt d\theta d\phi = 0$<br>
-$\int \left( 
-	\partial_t (h v^\theta) 
-	+ \frac{1}{V} \partial_\theta (V (h v^\theta v^\theta + \frac{1}{2} g h^2 g^{\theta \theta})) 
-	+ \frac{1}{V} \partial_\phi (V (h v^\theta v^\phi + \frac{1}{2} g h^2 g^{\theta \phi})) 
-\right) dt dx^3
-= 
-\int \left( 
-	- {\Gamma^\theta}_{\theta \theta} (h v^\theta v^\theta + \frac{1}{2} g h^2 g^{\theta\theta})
-	- {\Gamma^\theta}_{\theta \phi} (h v^\phi v^\theta + \frac{1}{2} g h^2 g^{\phi\theta})
-	- {\Gamma^\theta}_{\phi \theta} (h v^\theta v^\phi + \frac{1}{2} g h^2 g^{\theta \phi})
-	- {\Gamma^\theta}_{\phi \phi} (h v^\phi v^\phi + \frac{1}{2} g h^2 g^{\phi \phi})
-	+ g h g^{\theta \theta} \partial_\theta d
-	+ g h g^{\theta \phi} \partial_\phi d
-\right) dt dx^3
-$<br>
-$\int \left( 
-	\partial_t (h v^\phi) 
-	+ \frac{1}{V} \partial_\theta (V (h v^\phi v^\theta + \frac{1}{2} g h^2 g^{\phi \theta})) 
-	+ \frac{1}{V} \partial_\phi (V (h v^\phi v^\phi + \frac{1}{2} g h^2 g^{\phi \phi})) 
-\right) dt dx^3
-= 
-\int \left( 
-	- {\Gamma^\phi}_{\theta \theta} (h v^\theta v^\theta + \frac{1}{2} g h^2 g^{\theta\theta})
-	- {\Gamma^\phi}_{\theta \phi} (h v^\phi v^\theta + \frac{1}{2} g h^2 g^{\phi\theta})
-	- {\Gamma^\phi}_{\phi \theta} (h v^\theta v^\phi + \frac{1}{2} g h^2 g^{\theta \phi})
-	- {\Gamma^\phi}_{\phi \phi} (h v^\phi v^\phi + \frac{1}{2} g h^2 g^{\phi \phi})
-	+ g h g^{\phi \theta} \partial_\theta d
-	+ g h g^{\phi \phi} \partial_\phi d
-\right) dt dx^3
-$<br>
-<br>
-
-Substitute our metric and connection values:<br>
+TODO next Substitute our $x^i \in \{\theta, \phi\}$:<br>
+TODO Substitute our metric and connection values:<br>
 TODO use Earth model, and switch out $\theta, \phi$ with lat/lon.<br>
 <br>
 
