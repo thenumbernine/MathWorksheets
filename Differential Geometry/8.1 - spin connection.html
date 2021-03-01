@@ -16,10 +16,14 @@ Notice that $(e')_I = {\Lambda^J}_I e_J$ retains all properties for Lorentz tran
 so $e_I$ is gauge invariant wrt ${\Lambda^J}_I$<br>
 <br>
 
-Let $(\hat{\nabla}_\eta)_I$ be defined as the covariant derivative associated with the metric $\eta_{IJ}$ with connection possessing zero torsion.<br>
+Let $(\hat{\nabla}_\eta)_I$ be defined as the covariant derivative associated with the metric $\eta_{IJ}$ with connection possessing zero torsion, so it's the unique Levi-Civita connection of a diagonalized, (probably) non-coordinate basis.<br>
+<br>
+
 Let ${(\hat{\Gamma}_\eta)^I}_{JK}$ be the zero-torsion Levi-Civita connection associated with the covariant derivative $(\hat{\nabla}_\eta)_I$.<br>
+<br>
+
 ${(\hat{\Gamma}_\eta)^I}_{JK}$ is defined by $(\hat\nabla_\eta)_I e_J = {(\hat{\Gamma}_\eta)^K}_{IJ} e_K$.<br>
-<br><br>
+<br>
 
 The Levi-Civita connection with a constant metric (such as our diagonalized $e_I = {e^a}_I e_a)$:<br>
 $(\hat{\Gamma}_\eta)_{IJK} = \frac{1}{2} ( 
@@ -75,6 +79,11 @@ $= \frac{1}{2} (
 $ = \frac{1}{2} (e_c (g_{ab}) + e_b(g_{ac}) - e_c(g_{ab}))$<br>
 $ = \hat{\Gamma}_{abc}$<br>
 Yup, looks like $\hat{\Gamma}_{abc} = (\hat{\Gamma}_\eta)_{abc}$<br>
+<br>
+
+This can also be seen in my relation between Levi-Civita of a coordinate basis and Levi-Civita of an arbitrary non-coordinate basis:<br>
+${\hat\Gamma^a}_{bc} = {e^a}_\tilde{a} {e_b}^\tilde{b} {e_c}^\tilde{c} {\tilde{\Gamma}^\tilde{a}}_{\tilde{b}\tilde{c}} + {e^a}_\tilde{a} e_b ({e_c}^\tilde{a})$<br>
+But that would imply 'no', right? Only 'yes' when the linear transform from coordinate to non-coordinate was constant.  TODO double check and fixme plz?<br>
 <br>
 
 Notice that: $\partial_c (g_{ab}) + \partial_b(g_{ac}) - \partial_c(g_{ab}) =  (c_\eta)_{abc} + (c_\eta)_{acb} - (c_\eta)_{cba}$<br>
@@ -154,6 +163,9 @@ $= \frac{1}{2} (
 	+ (T_\eta)_{KIJ} + (T_\eta)_{JIK} - (T_\eta)_{IKJ}
 )$<br>
 $T_\eta$ is the torsion associated with the $\nabla_\eta$ operator.<br>
+<br>
+
+TODO symmetry or antisymmetry of a connection of a diagonalized metric with torsion?<br>
 <br>
 
 <a href='.'>Back</a><br><br>

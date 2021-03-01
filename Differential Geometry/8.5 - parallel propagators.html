@@ -1377,7 +1377,7 @@ And you should notice that $[P_\mu, P_\nu] = 0$.  This is because the Riemann cu
 Example: Sphere Surface, Coordinate Basis<br>
 <br>
 
-Here's where things detour a bit.  TODO fix them in the above math.<br>
+Here's where things detour a bit.  TODO change the above math to mention the need for extrinsic curvature as well.  Long story short: just don't use a manifold with extrinsic curvature.  Instead use the whole manifold, including the extrinsic curvature.<br>
 <br>
 
 Our coordinates are only $x = \{ \theta, \phi \}$.<br>
@@ -1392,14 +1392,24 @@ ${\Gamma^\phi}_{\theta\phi} = {\Gamma^\phi}_{\phi\theta} = \frac{cos(\theta)}{si
 As matrices:<br>
 <br>
 
-$[\Gamma_\theta] = \left[\begin{matrix}
+$[\Gamma_\theta] 
+ = \left[\begin{matrix}
+	{\Gamma^\theta}_{\theta \theta} & {\Gamma^\theta}_{\theta\phi} \\
+	{\Gamma^\phi}_{\theta \theta} & {\Gamma^\phi}_{\theta\phi}
+\end{matrix}\right]
+= \left[\begin{matrix}
 	0 & 0 \\
 
 	0 & \frac{cos(\theta)}{sin(\theta)}
 \end{matrix}\right]$<br>
 <br>
 
-$[\Gamma_\phi] = \left[\begin{matrix}
+$[\Gamma_\phi] 
+= \left[\begin{matrix}
+	{\Gamma^\theta}_{\phi \theta} & {\Gamma^\theta}_{\phi\phi} \\
+	{\Gamma^\phi}_{\phi \theta} & {\Gamma^\phi}_{\phi\phi}
+\end{matrix}\right]
+= \left[\begin{matrix}
 	0 & -cos(\theta) sin(\theta) \\
 
 	\frac{cos(\theta)}{sin(\theta)} & 0
@@ -1488,6 +1498,40 @@ $K_{ab} = \left[
 
 This also fits well with the identity of normal-space connection coefficients:<br>
 ${(\Gamma^\perp)^i}_{jk} = n^i K_{jk}$<br>
+<br>
+
+$[\Gamma_\theta] 
+= \left[\begin{matrix}
+	{\Gamma^r}_{\theta \theta} & {\Gamma^r}_{\theta\phi} \\
+	{\Gamma^\theta}_{\theta \theta} & {\Gamma^\theta}_{\theta\phi} \\
+	{\Gamma^\phi}_{\theta \theta} & {\Gamma^\phi}_{\theta\phi}
+\end{matrix}\right]
+= \left[\begin{matrix}
+	-r & 0 \\
+	0 & 0 \\
+	0 & \frac{cos(\theta)}{sin(\theta)}
+\end{matrix}\right]$<br>
+<br>
+
+$[\Gamma_\phi] 
+= \left[\begin{matrix}
+	{\Gamma^r}_{\phi \theta} & {\Gamma^r}_{\phi\phi} \\
+	{\Gamma^\theta}_{\phi \theta} & {\Gamma^\theta}_{\phi\phi} \\
+	{\Gamma^\phi}_{\phi \theta} & {\Gamma^\phi}_{\phi\phi}
+\end{matrix}\right]
+= \left[\begin{matrix}
+	0 & -r sin(\theta)^2 \\
+	0 & -sin(\theta) cos(\theta) \\
+	\frac{cos(\theta)}{sin(\theta)} & 0
+\end{matrix}\right]$<br>
+<br>
+
+
+
+This accounts for ${\Gamma^r}_{ab} = n^r K_{ab} = K_{ab}$, but what about ${\Gamma^a}_{rb}$ or ${\Gamma^a}_{br}$?<br>
+<br>
+
+TODO just that.<br>
 <br>
 
 The connections of the manifold with its perpendicular space was already given above, and it was already shown that it worked in full sphere coordinates.<br>
