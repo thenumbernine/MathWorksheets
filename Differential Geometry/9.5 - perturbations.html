@@ -1,0 +1,300 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<title>Differential Geometry - Perturbations</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+	</head>
+    <body>
+<a href='.'>Back</a><br><br>
+
+I'm sure everyone is expecting to see $g_{ab} = \eta_{ab} + h_{ab}$.<br>
+Can you tell me why this is a bad idea, unless you are working in Cartesian coordinates? And chances are none of you are working in Cartesian coordinates.<br>
+<br>
+
+If you want to see a collection of my complaints on what's wrong with this in arbitrary background metrics, check out my generated notebook <a href="https://thenumbernine.github.io/symmath/tests/output/sum%20of%20two%20metrics.html">here</a>.
+<br>
+
+But here instead I'm just going to work out a different kind of perturbation.  One where the basis is perturbed, not the metric.  And, like GR, hopefully we'll end up with some math that is independent of the backgroundn basis, even though that does not negate such a basis' existence.<br>
+<br>
+
+Ok here's our background metric definition wrt a background basis: $\hat{g}_{ab} \hat{e}^a \otimes \hat{e}^b = (\hat{e}_a \cdot \hat{e}_b) \hat{e}^a \otimes \hat{e}^b $<br>
+<br>
+
+Now we perturb that basis by a transform that is just ${\epsilon_a}^u$ away from identity, where $|{\epsilon_a}^u| &lt;&lt; 1$:<br>
+<br>
+
+Let $e^a = (\delta^a_u + {\epsilon_u}^a) \hat{e}^u$<br>
+So $e_a = (\delta^u_a - {\epsilon_a}^u) \hat{e}_u$<br>
+And $e^a ( e_b ) = (\delta^a_u + {\epsilon_u}^a) \hat{e}^u (
+	(\delta^v_b - {\epsilon_b}^v) \hat{e}_v
+)$<br>
+$= (\delta^a_u + {\epsilon_u}^a) (\delta^v_b - {\epsilon_b}^v) \hat{e}^u (\hat{e}_v)$<br>
+$= (\delta^a_u + {\epsilon_u}^a) (\delta^v_b - {\epsilon_b}^v) \delta^u_v$<br>
+$= \delta^a_u \delta^v_b \delta^u_v - \delta^a_u {\epsilon_b}^v \delta^u_v + {\epsilon_u}^a \delta^v_b \delta^u_v - {\epsilon_u}^a {\epsilon_b}^v \delta^u_v$<br>
+$= \delta^a_b - {\epsilon_b}^a + {\epsilon_b}^a - {\epsilon_u}^a {\epsilon_b}^u$<br>
+$= \delta^a_b - {(\epsilon^2)_b}^a$<br>
+...Let $|{\epsilon_a}^u|^2 \approx 0$...<br>
+$e^a (e_b) = \delta^a_b$<br>
+<br>
+
+Now I'm going to set the metric and the perturbed metric to exactly the same.  Not sure why.  Later I can change my mind and say equal in magnitude within $|{\epsilon_a}^u|^2$ error, right?<br>
+<br>
+
+$g_{ab} e^a \otimes e^b = \hat{g}_{ab} \hat{e}^a \otimes \hat{e}^b$<br>
+<br>
+
+$g_{ab} e^a \otimes e^b = \hat{g}_{uv} (\delta^u_a + {\epsilon_a}^u) (\delta^v_b + {\epsilon_b}^v) (e^a \otimes e^b)$<br>
+$g_{ab} = \hat{g}_{uv} (\delta^u_a \delta^v_b + {\epsilon_a}^u \delta^v_b + \delta^u_a {\epsilon_b}^v + {\epsilon_a}^u {\epsilon_b}^v)$<br>
+$g_{ab} = \hat{g}_{ab} + \hat{g}_{ub} {\epsilon_a}^u + \hat{g}_{av} {\epsilon_b}^v + \hat{g}_{uv} {\epsilon_a}^u {\epsilon_b}^v$<br>
+$g_{ab} = \hat{g}_{ab} + 2 \hat{g}_{u(a} {\epsilon_{b)}}^u + \hat{g}_{uv} {\epsilon_a}^u {\epsilon_b}^v$<br>
+$|g_{ab}| \ge |\hat{g}_{ab}| + 2 |\hat{g}_{u(a}| |{\epsilon_{b)}}^u| + |\hat{g}_{uv}| |{\epsilon_a}^u| |{\epsilon_b}^v|$<br>
+$|g_{ab}| \ge |\hat{g}_{ab}| (1 + 2 |{\epsilon_a}^u| + |{\epsilon_a}^u|^2)$<br>
+<br>
+
+Mind you, typical perturbations are of the form $g_{ab} = \hat{g}_{ab} + h_{ab} = \hat{g}_{uv} (\delta^u_a \delta^v_b + {\epsilon_a}^u {\epsilon_b}^v)$, so it is focusing on the quadratic term and ignoring the linear term.<br>
+<br>
+
+Calculating the derivative, and we see already the math is getting ugly.<br>
+<br>
+
+$g_{ab,c} = \hat{g}_{uv,c} (\delta^u_a + {\epsilon_a}^u) (\delta^v_b + {\epsilon_b}^v)
+	+ \hat{g}_{uv} (\delta^u_a + {\epsilon_a}^u) (\delta^v_b + {\epsilon_b}^v)_{,c}
+$<br>
+
+
+$g_{ab,c} = \hat{g}_{ab,c} + 2 (\hat{g}_{u(a} {\epsilon_{b)}}^u)_{,c} + (\hat{g}_{uv} {\epsilon_a}^u {\epsilon_b}^v)_{,c}$<br>
+
+$g_{ab,c} = \hat{g}_{ab,c} 
+	
+	+ 2 \hat{g}_{u(a|,c} {\epsilon_{b)}}^u 
+	+ 2 \hat{g}_{u(a} {{\epsilon_{b)}}^u}_{,c}
+	
+	+ \hat{g}_{uv,c} {\epsilon_a}^u {\epsilon_b}^v
+	+ \hat{g}_{uv} {{\epsilon_a}^u}_{,c} {\epsilon_b}^v
+	+ \hat{g}_{uv} {\epsilon_a}^u {{\epsilon_b}^v}_{,c}
+$<br>
+
+$e_c (g_{ab}) = e_c(\hat{g}_{ab})
+	
+	+ 2 e_c(\hat{g}_{u(a}) {\epsilon_{b)}}^u 
+	+ 2 \hat{g}_{u(a|} e_c( {\epsilon_{|b)}}^u )
+	
+	+ e_c (\hat{g}_{uv}) {\epsilon_a}^u {\epsilon_b}^v
+	+ 2 \hat{g}_{uv} e_c( {\epsilon_{(a}}^u ) {\epsilon_{b)}}^v
+$<br>
+<br>
+
+Commutation of the background metric:<br>
+<br>
+
+$[\hat{e}_a, \hat{e}_b] = 2 \hat{e}_{[a} ( \hat{e}_{b]} ) = {\hat{c}_{ab}}^c \hat{e}_c$<br>
+<br>
+
+Commutation of the perturbed metric:<br>
+<br>
+
+$[e_a, e_b] (\phi) = [(\delta^u_a - {\epsilon_a}^u) \hat{e}_u, (\delta^v_b - {\epsilon_b}^v) \hat{e}_v] (\phi)$<br>
+$= (\delta^u_a - {\epsilon_a}^u) \hat{e}_u  ((\delta^v_b - {\epsilon_b}^v) \hat{e}_v (\phi))
+	- (\delta^v_b - {\epsilon_b}^v) \hat{e}_v ((\delta^u_a - {\epsilon_a}^u) \hat{e}_u (\phi))
+$<br>
+$= (\delta^u_a - {\epsilon_a}^u) (
+		\hat{e}_u (\delta^v_b - {\epsilon_b}^v) \hat{e}_v (\phi)
+		+ (\delta^v_b - {\epsilon_b}^v) \hat{e}_u (\hat{e}_v (\phi))
+	)
+	
+	- (\delta^v_b - {\epsilon_b}^v) (
+		\hat{e}_v (\delta^u_a - {\epsilon_a}^u) \hat{e}_u (\phi)
+		+ (\delta^u_a - {\epsilon_a}^u) \hat{e}_v (\hat{e}_u (\phi))
+	)
+$<br>
+$= (
+		\delta^u_a (
+			\delta^v_b \hat{e}_u (\hat{e}_v (\phi)) 
+			- {\epsilon_b}^v \hat{e}_u (\hat{e}_v (\phi))
+			- \hat{e}_u ({\epsilon_b}^v) \hat{e}_v (\phi)
+		)
+		- {\epsilon_a}^u (
+			\delta^v_b \hat{e}_u (\hat{e}_v (\phi)) 
+			- {\epsilon_b}^v \hat{e}_u (\hat{e}_v (\phi))
+			- \hat{e}_u ({\epsilon_b}^v) \hat{e}_v (\phi)
+		)
+	) 
+	
+	- (
+		\delta^v_b (
+			\delta^u_a \hat{e}_v (\hat{e}_u (\phi)) 
+			- {\epsilon_a}^u \hat{e}_v (\hat{e}_u (\phi))
+			- \hat{e}_v ({\epsilon_a}^u) \hat{e}_u (\phi)
+		)
+		- {\epsilon_b}^v (
+			\delta^u_a \hat{e}_v (\hat{e}_u (\phi)) 
+			- {\epsilon_a}^u \hat{e}_v (\hat{e}_u (\phi))
+			- \hat{e}_v ({\epsilon_a}^u) \hat{e}_u (\phi)
+		)
+	) 
+$<br>
+$= 
+	  \delta^u_a \delta^v_b \hat{e}_u (\hat{e}_v (\phi)) 
+	- \delta^u_a {\epsilon_b}^v \hat{e}_u (\hat{e}_v (\phi))
+	- \delta^u_a \hat{e}_u ({\epsilon_b}^v) \hat{e}_v (\phi)
+	- {\epsilon_a}^u \delta^v_b \hat{e}_u (\hat{e}_v (\phi)) 
+	+ {\epsilon_a}^u {\epsilon_b}^v \hat{e}_u (\hat{e}_v (\phi))
+	+ {\epsilon_a}^u \hat{e}_u ({\epsilon_b}^v) \hat{e}_v (\phi)
+
+	- \delta^v_b \delta^u_a \hat{e}_v (\hat{e}_u (\phi)) 
+	+ \delta^v_b {\epsilon_a}^u \hat{e}_v (\hat{e}_u (\phi))
+	+ \delta^v_b \hat{e}_v ({\epsilon_a}^u) \hat{e}_u (\phi)
+	+ {\epsilon_b}^v \delta^u_a \hat{e}_v (\hat{e}_u (\phi)) 
+	- {\epsilon_b}^v {\epsilon_a}^u \hat{e}_v (\hat{e}_u (\phi))
+	- {\epsilon_b}^v \hat{e}_v ({\epsilon_a}^u) \hat{e}_u (\phi)
+$<br>
+$=	(
+		  {\hat{c}_{ab}}^c
+		
+		+ {\epsilon_a}^u {\hat{c}_{bu}}^c
+		
+		- {\epsilon_b}^u {\hat{c}_{au}}^c
+		
+		- \hat{e}_a ({\epsilon_b}^c)
+		+ \hat{e}_b ({\epsilon_a}^c)
+		
+		+ {\epsilon_a}^u {\epsilon_b}^v {\hat{c}_{uv}}^c
+		
+		+ {\epsilon_a}^u \hat{e}_u ({\epsilon_b}^c)
+		- {\epsilon_b}^u \hat{e}_u ({\epsilon_a}^c)
+	) \hat{e}_c (\phi)
+$<br>
+Substitute $\hat{e}_c = (\delta_c^d + {\epsilon_c}^d) e_d$:<br>
+$= (
+	  {\hat{c}_{ab}}^c
+	
+	+ {\epsilon_a}^u {\hat{c}_{bu}}^c
+	
+	- {\epsilon_b}^u {\hat{c}_{au}}^c
+	
+	- \hat{e}_a ({\epsilon_b}^c)
+	+ \hat{e}_b ({\epsilon_a}^c)
+	
+	+ {\epsilon_a}^u {\epsilon_b}^v {\hat{c}_{uv}}^c
+	
+	+ {\epsilon_a}^u \hat{e}_u ({\epsilon_b}^c)
+	- {\epsilon_b}^u \hat{e}_u ({\epsilon_a}^c)
+) (\delta_c^d + {\epsilon_c}^d) e_d (\phi)
+$<br>
+$= (
+	  {\hat{c}_{ab}}^d
+	
+	+ {\epsilon_a}^u {\hat{c}_{bu}}^d
+	
+	- {\epsilon_b}^u {\hat{c}_{au}}^d
+	
+	- \hat{e}_a ({\epsilon_b}^d)
+	+ \hat{e}_b ({\epsilon_a}^d)
+	
+	+ {\epsilon_a}^u {\epsilon_b}^v {\hat{c}_{uv}}^d
+	
+	+ {\epsilon_a}^u \hat{e}_u ({\epsilon_b}^d)
+	- {\epsilon_b}^u \hat{e}_u ({\epsilon_a}^d)
+
+
+	+ {\hat{c}_{ab}}^c {\epsilon_c}^d
+	
+	+ {\epsilon_a}^u {\hat{c}_{bu}}^c {\epsilon_c}^d
+	
+	- {\epsilon_b}^u {\hat{c}_{au}}^c {\epsilon_c}^d
+	
+	- \hat{e}_a ({\epsilon_b}^c) {\epsilon_c}^d
+	+ \hat{e}_b ({\epsilon_a}^c) {\epsilon_c}^d
+	
+	+ {\epsilon_a}^u {\epsilon_b}^v {\hat{c}_{uv}}^c {\epsilon_c}^d
+	
+	+ {\epsilon_a}^u \hat{e}_u ({\epsilon_b}^c) {\epsilon_c}^d
+	- {\epsilon_b}^u \hat{e}_u ({\epsilon_a}^c) {\epsilon_c}^d
+
+) e_d (\phi)
+$<br>
+Now use $|{\epsilon_a}^b|^2 = 0$:<br>
+$= (
+	  {\hat{c}_{ab}}^d
+	
+	+ {\epsilon_a}^u {\hat{c}_{bu}}^d
+	
+	- {\epsilon_b}^u {\hat{c}_{au}}^d
+	
+	- \hat{e}_a ({\epsilon_b}^d)
+	+ \hat{e}_b ({\epsilon_a}^d)
+	
+	+ {\epsilon_a}^u \hat{e}_u ({\epsilon_b}^d)
+	- {\epsilon_b}^u \hat{e}_u ({\epsilon_a}^d)
+
+	+ {\hat{c}_{ab}}^c {\epsilon_c}^d
+	
+	- \hat{e}_a ({\epsilon_b}^c) {\epsilon_c}^d
+	+ \hat{e}_b ({\epsilon_a}^c) {\epsilon_c}^d
+) e_d (\phi)
+$<br>
+And, once again, I'm making no assumptions about $|e_c ({\epsilon_a}^u)|$.<br>
+<br>
+
+So ${c_{ab}}^c = 
+	  {\hat{c}_{ab}}^c
+	
+	+ {\epsilon_a}^u {\hat{c}_{bu}}^c
+	
+	- {\epsilon_b}^u {\hat{c}_{au}}^c
+
+	+ {\hat{c}_{ab}}^c {\epsilon_c}^d
+
+
+	- \hat{e}_a ({\epsilon_b}^c)
+	+ \hat{e}_b ({\epsilon_a}^c)
+	
+	+ {\epsilon_a}^u \hat{e}_u ({\epsilon_b}^d)
+	- {\epsilon_b}^u \hat{e}_u ({\epsilon_a}^d)
+	
+	- \hat{e}_a ({\epsilon_b}^c) {\epsilon_c}^d
+	+ \hat{e}_b ({\epsilon_a}^c) {\epsilon_c}^d
+$<br>
+${c_{ab}}^c = 
+	(\delta_a^u - {\epsilon_a}^u) (\delta_b^v - {\epsilon_b}^v) (\delta_w^c + {\epsilon_w}^c) {\hat{c}_{uv}}^w
+	
+	- (\delta_a^u - {\epsilon_a}^u) \hat{e}_u ({\epsilon_b}^w) (\delta_w^d + {\epsilon_w}^d)
+	+ (\delta_b^u - {\epsilon_b}^u) \hat{e}_u ({\epsilon_a}^w) (\delta_w^d + {\epsilon_w}^d)
+$<br>
+${c_{ab}}^c = 
+	(\delta_a^u - {\epsilon_a}^u) (\delta_b^v - {\epsilon_b}^v) (\delta_w^c + {\epsilon_w}^c) {\hat{c}_{uv}}^w
+	
+	- 2 (\delta_{[a}^u - {\epsilon_{[a}}^u) \hat{e}_u ({\epsilon_{b]}}^w) (\delta_w^d + {\epsilon_w}^d)
+$<br>
+<br>
+
+So this is almost turning into a rule of transform-upper-with-$(\delta_u^a + {\epsilon_u}^a)$, transform-lower-with-$(\delta_u^a - {\epsilon_u}^a)$... but that was the opposite rule for our metric transformation... hmm...<br>
+<br>
+
+Levi-Civita torsion-free connection, lower:<br>
+<br>
+
+$\Gamma_{abc} = \frac{1}{2} (
+	  e_c(g_{ab})
+	+ e_b(g_{ac})
+	- e_a(g_{bc})
+	+ c_{abc}
+	+ c_{acb}
+	- c_{cba}
+)$<br>
+$\Gamma_{abc} = \frac{1}{2} (
+	  e_c(g_{ab})
+	+ e_b(g_{ac})
+	- e_a(g_{bc})
+	+ c_{abc}
+	+ c_{acb}
+	- c_{cba}
+)$<br>
+<br>
+
+
+
+<a href='.'>Back</a><br><br>
+	</body>
+</html>

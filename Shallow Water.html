@@ -13,9 +13,11 @@ From <a href="https://en.wikipedia.org/wiki/Shallow_water_equations#Conservative
 System of Equations:<br>
 <br>
 
-$h = \eta + d =$ wave height, in $[m]$.<br>
-$d = $ resting height, in $[m]$.<br>
-$\eta = $ displacement from resting height, in $[m]$.<br>
+$h = $ height above sea floor, in $[m]$.<br>
+$D = $ resting height above minimum, in $[m]$.<br>
+$B = $ bathymetry = distance from minimum to seafloor, in $[m]$.<br>
+$H = D - B = $ distance from sea floor to resting height, in $[m]$.<br>
+
 $v^i = $ fluid velocity in $[\frac{m}{s}]$.<br>
 $g = $ acceleration due to gravity in $[\frac{m}{s^2}]$.<br>
 $g_{ij} = $ metric tensor, in units $[1]$.<br>
@@ -24,63 +26,63 @@ $\tilde{g}_{\tilde{i}\tilde{j}} =$ coordinate metric and coordinate indexes.<br>
 <br>
 
 $\partial_t (h) + \nabla_j (h v^j) = 0$<br>
-$\partial_t (h v^i) + \nabla_j (h v^i v^j + \frac{1}{2} g h^2 g^{ij}) = g h \nabla^i d$<br>
+$\partial_t (h v^i) + \nabla_j (h v^i v^j + \frac{1}{2} g h^2 g^{ij}) = g h \nabla^i H$<br>
+<br>
+
+How about primitive variables:<br>
+<br>
+
+$\partial_t (h) + \nabla_j (h v^j) = 0$<br>
+$\partial_t (h) = -\nabla_j (h v^j)$<br>
+$\partial_t (h) = -v^j \nabla_j (h) - h \nabla_j (v^j)$<br>
+<br>
+
+$\partial_t (h v^i) 
+	+ \nabla_j (
+		h v^i v^j 
+		+ \frac{1}{2} g h^2 g^{ij}
+	) 
+	= g h \nabla^i H
+$<br>
+$
+	v^i \partial_t (h)
+	+ h \partial_t (v^i) 
+	+ \nabla_j (
+		h v^i v^j 
+	)
+	+ g h \nabla^i (h) 
+	= g h \nabla^i (H)
+$<br>
+$
+	h \partial_t (v^i) 
+	- v^i \nabla_j (h v^j)
+	
+	+ h v^j \nabla_j (v^i)
+	+ v^i \nabla_j (h v^j)
+	
+	+ g h \nabla^i (h) 
+	= g h \nabla^i (H)
+$<br>
+$
+	\partial_t (v^i) 
+	+ v^j \nabla_j (v^i)
+	+ g \nabla^i (h - H) 
+	= 0
+$<br>
+<br>
+
+$\partial_t (h) + \nabla_j (h v^j) = 0$<br>
+$\partial_t (h v^i) + \nabla_j (h v^i v^j + \frac{1}{2} g h^2 g^{ij}) - g g^{ij} h \nabla_j H = 0$<br>
+$\partial_t (h v^i) + \nabla_j (h v^i v^j + \frac{1}{2} g h^2 g^{ij} - g g^{ij} h H) + g g^{ij} H \nabla_j h = 0$<br>
+<br>
+
+<hr>
 <br>
 
 For an arbitrary normal, assuming $\frac{1}{|n|^2} n_k n^j = \delta^j_k$:<br>
 <br>
 
-For arbitrary (p,q) tensors:<br>
-(Notice, the math to this is going to work out very similar to the math for non-coordinate anholonomic basis finite-volume formalism:<br>
-(TODO this should be redone with integrals around each side.)<br>
-<br>
-$\partial_t {U^{i_1 ... i_p}}_{j_1 ... j_q} + \nabla_k {F^{k i_1 ... i_p}}_{j_1 ... j_q} = {S^{i_1 ... i_p}}_{j_1 ... j_q}$<br>
-<br>
-$\partial_t {U^{i_1 ... i_p}}_{j_1 ... j_q} + \nabla_k (\delta^k_m {F^{m i_1 ... i_p}}_{j_1 ... j_q}) = {S^{i_1 ... i_p}}_{j_1 ... j_q}$<br>
-<br>
-$\partial_t {U^{i_1 ... i_p}}_{j_1 ... j_q} + \nabla_k (\frac{1}{|n|^2} n^k n_m {F^{m i_1 ... i_p}}_{j_1 ... j_q}) = {S^{i_1 ... i_p}}_{j_1 ... j_q}$<br>
-<br>
-$\partial_t {U^{i_1 ... i_p}}_{j_1 ... j_q} 
-	+ n^k \nabla_k (\frac{1}{|n|^2} n_m {F^{m i_1 ... i_p}}_{j_1 ... j_q}) 
-	+ \nabla_k n^k \cdot (\frac{1}{|n|^2} n_m {F^{m i_1 ... i_p}}_{j_1 ... j_q}) 
-	= {S^{i_1 ... i_p}}_{j_1 ... j_q}$<br>
-<br>
-$\partial_t {U^{i_1 ... i_p}}_{j_1 ... j_q} 
-	+ n^k \nabla_k (\frac{1}{|n|^2} n_m {F^{m i_1 ... i_p}}_{j_1 ... j_q}) 
-	= {S^{i_1 ... i_p}}_{j_1 ... j_q}
-	- (g^{km} \nabla_k n_m) \cdot (\frac{1}{|n|^2} n_m {F^{m i_1 ... i_p}}_{j_1 ... j_q}) 
-	$<br>
-<br>
-
-Now using $K_{ij} = \perp \nabla_i n_j$<br> 
-$ = (\delta_i^m + n_i n^m) (\delta_j^n + n_j n^n) \nabla_m n_n$<br>
-$ = \nabla_i n_j
-	+ n_j n^n \nabla_i n_n
-	+ n_i n^m \nabla_m n_j
-	+ n_i n^m n_j n^n \nabla_m n_n
-$<br>
-So $\nabla_i n_j
-= K_{ij} 
-	- n_j n^n \nabla_i n_n
-	- n_i n^m \nabla_m n_j
-	- n_i n^m n_j n^n \nabla_m n_n
-$<br> 
-And $\gamma^{ij} \nabla_i n_j = \gamma^{ij} K_{ij} = K$<br> 
-So $g^{ij} \nabla_i n_j = (\gamma^{ij} - n^i n^j) \nabla_i n_j = K - n^i n^j \nabla_i n_j$<br>
-<br>
-
-$\partial_t {U^{i_1 ... i_p}}_{j_1 ... j_q} 
-	+ n^k \nabla_k (\frac{1}{|n|^2} n_m {F^{m i_1 ... i_p}}_{j_1 ... j_q}) 
-	= {S^{i_1 ... i_p}}_{j_1 ... j_q}
-	- (K - n^m n^n \nabla_m n_n) (\frac{1}{|n|^2} n_m {F^{m i_1 ... i_p}}_{j_1 ... j_q}) 
-	$<br>
-<br>
-...for $K_{ij}$ the extrinsic curvature wrt the normal.  But aren't there some constraints that extrinsic curvature / ADM only works for a coordinate basis?
-Seems to defeat the purpse when I was trying to write the flux in terms of a non-coordinate normal vector.
-Might as well just use a specific index as the normal direction, and simplify the math incredibly.<br>
-<br>
-
-Another option is using the simplification $\nabla_k n^k = \partial_k n^k + {\Gamma^k}_{km} n^m$<br>
+One option is using the simplification $\nabla_k n^k = \partial_k n^k + {\Gamma^k}_{km} n^m$<br>
 $= \partial_k n^k + ({\Gamma^k}_{mk} - {c_{mk}}^k) n^m$<br>
 $= \partial_k n^k + (\frac{1}{\sqrt{|g|}} \partial_m ( \sqrt{|g|} ) - {c_{mk}}^k) n^m$<br>
 $= \frac{1}{\sqrt{|g|}} \partial_k (( \sqrt{|g|} ) n^k ) - {c_{mk}}^k n^m$<br>
