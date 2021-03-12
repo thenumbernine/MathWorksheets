@@ -46,31 +46,37 @@ So if you want some kind of bound to $O(error)$, just use $|{\epsilon_a}^u|^2$.<
 <br>
 
 $g_{ab} e^a \otimes e^b = \hat{g}_{ab} \hat{e}^a \otimes \hat{e}^b$<br>
-<br>
-
 $g_{ab} e^a \otimes e^b = \hat{g}_{uv} (\delta^u_a - {\epsilon_a}^u) (\delta^v_b - {\epsilon_b}^v) (e^a \otimes e^b)$<br>
 $g_{ab} = \hat{g}_{uv} (\delta^u_a \delta^v_b - {\epsilon_a}^u \delta^v_b - \delta^u_a {\epsilon_b}^v + {\epsilon_a}^u {\epsilon_b}^v)$<br>
 $g_{ab} = \hat{g}_{ab} - \hat{g}_{ub} {\epsilon_a}^u - \hat{g}_{av} {\epsilon_b}^v + \hat{g}_{uv} {\epsilon_a}^u {\epsilon_b}^v$<br>
 $g_{ab} = \hat{g}_{ab} - 2 \hat{g}_{u(a} {\epsilon_{b)}}^u + \hat{g}_{uv} {\epsilon_a}^u {\epsilon_b}^v$<br>
 $|g_{ab}| \ge |\hat{g}_{ab}| + 2 |\hat{g}_{u(a}| |{\epsilon_{b)}}^u| + |\hat{g}_{uv}| |{\epsilon_a}^u| |{\epsilon_b}^v|$<br>
 $|g_{ab}| \ge |\hat{g}_{ab}| (1 + 2 |{\epsilon_a}^u| + |{\epsilon_a}^u|^2)$<br>
-<br>
 
 Mind you, typical perturbations are of the form $g_{ab} = \hat{g}_{ab} + h_{ab} = \hat{g}_{uv} (\delta^u_a \delta^v_b + {\epsilon_a}^u {\epsilon_b}^v)$, so it is focusing on the quadratic term and ignoring the linear term.<br>
-<br>
 
 Alright, now once again, but with $|\epsilon|^2 \approx 0$:<br>
 $g_{ab} = \hat{g}_{ab} - 2 \hat{g}_{u(a} {\epsilon_{b)}}^u$<br>
-
-Calculating the derivative, and we see already the math is getting ugly.<br>
 <br>
 
+Going the other way:<br>
+In case you need to calculate a value raised or lowered by the background metric, in terms of the perturbed metric.<br>
+$\hat{g}_{ab} \hat{e}^a \otimes \hat{e}^b = g_{ab} e^a \otimes e^b$<br>
+$\hat{g}_{ab} \hat{e}^a \otimes \hat{e}^b = g_{uv} (\delta^u_a + {\epsilon_a}^u) (\delta^v_b + {\epsilon_b}^v) \hat{e}^a \otimes \hat{e}^b$<br>
+$\hat{g}_{ab} = g_{uv} (\delta^u_a + {\epsilon_a}^u) (\delta^v_b + {\epsilon_b}^v)$<br>
+Using $|\epsilon|^2 \approx 0$<br>
+$\hat{g}_{ab} = g_{ab} + g_{ub} {\epsilon_a}^u + g_{av} {\epsilon_b}^v$<br>
+$\hat{g}_{ab} = g_{ab} + 2 g_{u(a} {\epsilon_{b)}}^u$<br>
+<br>
+
+Calculating the derivative, and we see already the math is getting ugly.<br>
+
+$e_c (g_{ab}) = e_c (\hat{g}_{uv} (\delta^u_a - {\epsilon_a}^u) (\delta^v_b - {\epsilon_b}^v))$<br>
 $e_c (g_{ab}) = e_c (\hat{g}_{uv}) (\delta^u_a - {\epsilon_a}^u) (\delta^v_b - {\epsilon_b}^v)
 	+ \hat{g}_{uv} e_c( (\delta^u_a + {\epsilon_a}^u) (\delta^v_b + {\epsilon_b}^v) )
 $<br>
 
-
-$e_c (g_{ab}) = e_c (\hat{g}_{ab}) + 2 (\hat{g}_{u(a|} e_c ({\epsilon_{|b)}}^u)) + e_c (\hat{g}_{uv} {\epsilon_a}^u {\epsilon_b}^v)$<br>
+$e_c (g_{ab}) = e_c (\hat{g}_{ab}) - 2 (\hat{g}_{u(a|} e_c ({\epsilon_{|b)}}^u)) + e_c (\hat{g}_{uv} {\epsilon_a}^u {\epsilon_b}^v)$<br>
 
 $e_c (g_{ab}) = e_c (\hat{g}_{ab})
 	
@@ -92,22 +98,27 @@ $e_c (g_{ab}) = e_c(\hat{g}_{ab})
 $<br>
 Get rid of $|\epsilon|^2$ terms.  Notice, no assumptions on $\partial(|\epsilon|)$ or $\partial(|\epsilon|^2)$:<br>
 $e_c (g_{ab}) = e_c(\hat{g}_{ab})
-	
 	- 2 e_c(\hat{g}_{u(a}) {\epsilon_{b)}}^u 
 	- 2 \hat{g}_{u(a|} e_c( {\epsilon_{|b)}}^u )
 	+ 2 \hat{g}_{uv} e_c( {\epsilon_{(a}}^u ) {\epsilon_{b)}}^v
 $<br>
+But should I assume $\partial(|\epsilon|^2) \approx \partial(0) = 0$? In that case so would $|\epsilon| \partial(|\epsilon|) \approx 0$ as well.<br>
+I think I have to enforce this rule, for consistency with the fact that I am already equating $g_{ab} = (\delta_a^u - {\epsilon_a}^u) (\delta_b^v - {\epsilon_b^v}) \hat{g}_{uv} = \hat{g}_{ab} - 2 \hat{g}_{u(a} {\epsilon_{b)}}^u$, so I am already pretending like the $|\epsilon|^2$ term within $g_{ab}$ is neglegible.<br>
+$e_c (g_{ab}) = e_c(\hat{g}_{ab})
+	- 2 e_c(\hat{g}_{u(a}) {\epsilon_{b)}}^u 
+	- 2 \hat{g}_{u(a|} e_c( {\epsilon_{|b)}}^u )
+$<br>
+$e_c (g_{ab}) = e_c(
+	\hat{g}_{ab}
+	- 2 \hat{g}_{u(a} {\epsilon_{b)}}^u 
+)$<br>
 <br>
 
 Commutation of the background metric:<br>
-<br>
-
 $[\hat{e}_a, \hat{e}_b] = 2 \hat{e}_{[a} ( \hat{e}_{b]} ) = {\hat{c}_{ab}}^c \hat{e}_c$<br>
 <br>
 
 Commutation of the perturbed metric:<br>
-<br>
-
 $[e_a, e_b] (\phi) = [(\delta^u_a - {\epsilon_a}^u) \hat{e}_u, (\delta^v_b - {\epsilon_b}^v) \hat{e}_v] (\phi)$<br>
 $= (\delta^u_a - {\epsilon_a}^u) \hat{e}_u  ((\delta^v_b - {\epsilon_b}^v) \hat{e}_v (\phi))
 	- (\delta^v_b - {\epsilon_b}^v) \hat{e}_v ((\delta^u_a - {\epsilon_a}^u) \hat{e}_u (\phi))
@@ -279,15 +290,55 @@ ${c_{ab}}^c =
 	
 	- 2 (\delta_{[a}^u - {\epsilon_{[a}}^u) \hat{e}_u ({\epsilon_{b]}}^w) (\delta_w^c + {\epsilon_w}^c)
 $<br>
+${c_{ab}}^c = 
+	(\delta_a^u - {\epsilon_a}^u) (\delta_b^v - {\epsilon_b}^v) (\delta_w^c + {\epsilon_w}^c) {\hat{c}_{uv}}^w
+	
+	- 2 e_{[a} ({\epsilon_{b]}}^w) (\delta_w^c + {\epsilon_w}^c)
+$<br>
 <br>
 
 So this is almost turning into a rule of transform-lower-with-$(\delta_u^a - {\epsilon_u}^a)$, transform-upper-with-$(\delta_u^a + {\epsilon_u}^a)$.<br>
 And, once again, I'm making no assumptions about $|e_c ({\epsilon_a}^u)|$.<br>
-But if I did, let's assume $|{\epsilon_a}^u| |e_c ({\epsilon_a}^u)| \rightarrow 0$, then we would completely recover the lower-with-$(I-\epsilon)$, upper-with-$(I+\epsilon)$ rule:<br>
-${c_{ab}}^c = (\delta_a^u - {\epsilon_a}^u) (\delta_b^v - {\epsilon_b}^v) (\delta_w^c + {\epsilon_w}^c) {\hat{c}_{uv}}^w$<br>
+But if I did, let's assume $|{\epsilon_a}^u| |e_c ({\epsilon_a}^u)| \rightarrow 0$, then we would almost fully recover the lower-with-$(I-\epsilon)$, upper-with-$(I+\epsilon)$ rule:<br>
+${c_{ab}}^c = (\delta_a^u - {\epsilon_a}^u) (\delta_b^v - {\epsilon_b}^v) (\delta_w^c + {\epsilon_w}^c) {\hat{c}_{uv}}^w - 2 e_{[a} ({\epsilon_{b]}}^c)$<br>
+${c_{ab}}^c = 
+	{\hat{c}_{ab}}^c 
+	- {\epsilon_a}^u {\hat{c}_{ub}}^c 
+	- {\epsilon_b}^u {\hat{c}_{au}}^c
+	+ {\epsilon_u}^c {\hat{c}_{ab}}^u
+	- 2 e_{[a} ({\epsilon_{b]}}^c)
+$<br>
+${c_{ab}}^c = 
+	{\hat{c}_{ab}}^c 
+	+ 2 {\epsilon_{[a}}^u {\hat{c}_{b]u}}^c 
+	+ {\epsilon_u}^c {\hat{c}_{ab}}^u
+	- 2 e_{[a} ({\epsilon_{b]}}^c)
+$<br>
 <br>
 
-Levi-Civita torsion-free connection, lower:<br>
+So $c_{abc} = {c_{ab}}^e g_{ec}$<br>
+$= 	  {\hat{c}_{ab}}^e g_{ec}
+	+ 2 {\epsilon_{[a}}^u {\hat{c}_{b]u}}^e  g_{ec}
+	+ {\hat{c}_{ab}}^u {\epsilon_u}^e g_{ec}
+	- 2 e_{[a} ({\epsilon_{b]}}^e) g_{ec}
+$<br>
+$= 	  {\hat{c}_{ab}}^e (\hat{g}_{ec} - 2 \hat{g}_{u(e} {\epsilon_{c)}}^u)
+	+ 2 {\epsilon_{[a}}^u {\hat{c}_{b]u}}^e (\hat{g}_{ec} - 2 \hat{g}_{u(e} {\epsilon_{c)}}^u)
+	+ {\hat{c}_{ab}}^u {\epsilon_u}^e (\hat{g}_{ec} - 2 \hat{g}_{v(e} {\epsilon_{c)}}^v)
+	- 2 e_{[a} ({\epsilon_{b]}}^e) g_{ec}
+$<br>
+$= 	  \hat{c}_{abc} 
+	
+	- {\epsilon_a}^u \hat{c}_{ubc}
+	- {\epsilon_b}^u \hat{c}_{auc}
+	- {\epsilon_c}^u \hat{c}_{abu}
+	
+	- 2 e_{[a} ({\epsilon_{b]}}^e) g_{ec}
+$<br>
+
+<br>
+
+Levi-Civita torsion-free connection, lowered indexes:<br>
 <br>
 
 $\Gamma_{abc} = \frac{1}{2} (
@@ -298,17 +349,143 @@ $\Gamma_{abc} = \frac{1}{2} (
 	+ c_{acb}
 	- c_{cba}
 )$<br>
+Using $e_c (g_{ab}) = e_c(\hat{g}_{ab})
+	- 2 e_c(\hat{g}_{u(a}) {\epsilon_{b)}}^u 
+	- 2 \hat{g}_{u(a|} e_c( {\epsilon_{|b)}}^u )
+$<br>
+Using $c_{abc} = 
+	  \hat{c}_{abc} 
+	- {\epsilon_a}^u \hat{c}_{ubc}
+	- {\epsilon_b}^u \hat{c}_{auc}
+	- {\epsilon_c}^u \hat{c}_{abu}
+	- 2 e_{[a} ({\epsilon_{b]}}^e) g_{ec}
+$<br>
 $\Gamma_{abc} = \frac{1}{2} (
-	  e_c(g_{ab})
-	+ e_b(g_{ac})
-	- e_a(g_{bc})
-	+ c_{abc}
-	+ c_{acb}
-	- c_{cba}
+	  e_c(\hat{g}_{ab})
+	- 2 e_c(\hat{g}_{u(a}) {\epsilon_{b)}}^u 
+	- 2 \hat{g}_{u(a|} e_c( {\epsilon_{|b)}}^u )
+
+	+ e_b(\hat{g}_{ac})
+	- 2 e_b(\hat{g}_{u(a}) {\epsilon_{c)}}^u 
+	- 2 \hat{g}_{u(a|} e_b( {\epsilon_{|c)}}^u )
+	
+	- e_a(\hat{g}_{bc})
+	+ 2 e_a(\hat{g}_{u(b}) {\epsilon_{c)}}^u 
+	+ 2 \hat{g}_{u(b|} e_a( {\epsilon_{|c)}}^u )
+
+	+ \hat{c}_{abc} 
+	- {\epsilon_a}^u \hat{c}_{ubc}
+	- {\epsilon_b}^u \hat{c}_{auc}
+	- {\epsilon_c}^u \hat{c}_{abu}
+	- 2 e_{[a} ({\epsilon_{b]}}^e) g_{ec}
+
+	+ \hat{c}_{acb} 
+	- {\epsilon_a}^u \hat{c}_{ucb}
+	- {\epsilon_c}^u \hat{c}_{aub}
+	- {\epsilon_b}^u \hat{c}_{acu}
+	- 2 e_{[a} ({\epsilon_{c]}}^e) g_{eb}
+	
+	- \hat{c}_{cba} 
+	+ {\epsilon_c}^u \hat{c}_{uba}
+	+ {\epsilon_b}^u \hat{c}_{cua}
+	+ {\epsilon_a}^u \hat{c}_{cbu}
+	+ 2 e_{[c} ({\epsilon_{b]}}^e) g_{ea}
 )$<br>
+$\Gamma_{abc} = \frac{1}{2} (
+	  e_c(\hat{g}_{ab})
+	
+	- e_c(\hat{g}_{ua}) {\epsilon_b}^u 
+	- e_c(\hat{g}_{ub}) {\epsilon_a}^u 
+	
+	- g_{ua} e_c( {\epsilon_b}^u )
+	- g_{ub} e_c( {\epsilon_a}^u )
+
+
+	+ e_b(\hat{g}_{ac})
+	
+	- e_b(\hat{g}_{ua}) {\epsilon_c}^u 
+	- e_b(\hat{g}_{uc}) {\epsilon_a}^u 
+	
+	- g_{ua} e_b( {\epsilon_c}^u )
+	- g_{uc} e_b( {\epsilon_a}^u )
+
+
+	- e_a(\hat{g}_{bc})
+	
+	+ e_a(\hat{g}_{ub}) {\epsilon_c}^u 
+	+ e_a(\hat{g}_{uc}) {\epsilon_b}^u 
+	
+	+ g_{ub} e_a( {\epsilon_c}^u )
+	+ g_{uc} e_a( {\epsilon_b}^u )
+
+
+	+ \hat{c}_{abc} 
+	- {\epsilon_a}^u \hat{c}_{ubc}
+	- {\epsilon_b}^u \hat{c}_{auc}
+	- {\epsilon_c}^u \hat{c}_{abu}
+	- 2 e_{[a} ({\epsilon_{b]}}^e) g_{ec}
+
+	+ \hat{c}_{acb} 
+	- {\epsilon_a}^u \hat{c}_{ucb}
+	- {\epsilon_c}^u \hat{c}_{aub}
+	- {\epsilon_b}^u \hat{c}_{acu}
+	- 2 e_{[a} ({\epsilon_{c]}}^e) g_{eb}
+	
+	- \hat{c}_{cba} 
+	+ {\epsilon_c}^u \hat{c}_{uba}
+	+ {\epsilon_b}^u \hat{c}_{cua}
+	+ {\epsilon_a}^u \hat{c}_{cbu}
+	+ 2 e_{[c} ({\epsilon_{b]}}^e) g_{ea}
+)$<br>
+$\Gamma_{abc} = 
+	\hat{\Gamma}_{abc}
+	
+	- g_{ua} e_b({\epsilon_c}^u)
+
++ \frac{1}{2} (
+
+	- {\epsilon_c}^u e_u(\hat{g}_{ab})
+	- {\epsilon_b}^u e_c(\hat{g}_{ua}) 
+	- {\epsilon_a}^u e_c(\hat{g}_{ub}) 
+	
+	- {\epsilon_b}^u e_u(\hat{g}_{ac})
+	- {\epsilon_c}^u e_b(\hat{g}_{ua}) 
+	- {\epsilon_a}^u e_b(\hat{g}_{uc}) 
+	
+	+ {\epsilon_a}^u e_u(\hat{g}_{bc})
+	+ {\epsilon_c}^u e_a(\hat{g}_{ub}) 
+	+ {\epsilon_b}^u e_a(\hat{g}_{uc}) 
+
+	- {\epsilon_a}^u \hat{c}_{ubc}
+	- {\epsilon_b}^u \hat{c}_{auc}
+	- {\epsilon_c}^u \hat{c}_{abu}
+	
+	- {\epsilon_a}^u \hat{c}_{ucb}
+	- {\epsilon_c}^u \hat{c}_{aub}
+	- {\epsilon_b}^u \hat{c}_{acu}
+	
+	+ {\epsilon_c}^u \hat{c}_{uba}
+	+ {\epsilon_b}^u \hat{c}_{cua}
+	+ {\epsilon_a}^u \hat{c}_{cbu}
+)$<br>
+Which is equal to ...<br>
+$\Gamma_{abc} = 
+	\hat{\Gamma}_{abc}
+	
+	- g_{ua} e_b({\epsilon_c}^u)
+
++ $ ... all composed (pseudo-)tensors with their indexes modified by our transform-lower-by-$(-\epsilon)$, transform-upper-by-$(+\epsilon)$ rule.<br>
+So it looks like the only extra term is the $- g_{ua} e_b({\epsilon_c}^u)$.<br>
 <br>
 
+This is very similar to the extra term in the difference between the Levi-Civita connection in a coordinate basis, transformed to a non-coordinate, and the Levi-Civita connection in a non-coordinate basis.<br>
+${\hat\Gamma^a}_{bc} = {e^a}_\tilde{a} {e_b}^\tilde{b} {e_c}^\tilde{c} {\tilde{\Gamma}^\tilde{a}}_{\tilde{b}\tilde{c}} + {e^a}_\tilde{a} e_b ({e_c}^\tilde{a})$<br>
+<br>
+<br>
 
+Levi-Civita torsion-free connection:<br>
+${\Gamma^a}_{bc} = g^{ae} \Gamma_{ebc}$<br>
+<br>
 
 <a href='.'>Back</a><br><br>
 	</body>
