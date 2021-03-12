@@ -298,8 +298,9 @@ $<br>
 <br>
 
 So this is almost turning into a rule of transform-lower-with-$(\delta_u^a - {\epsilon_u}^a)$, transform-upper-with-$(\delta_u^a + {\epsilon_u}^a)$.<br>
+This rule, combined with $|\epsilon|^2 \approx 0$, gives you a rule similar to covariant derivatives, where the result is the original tensor, then add each of its upper indexes transformed by $(+\epsilon)$, then subtract each of its lower indexes transformed by $(-\epsilon)$.<br>
 And, once again, I'm making no assumptions about $|e_c ({\epsilon_a}^u)|$.<br>
-But if I did, let's assume $|{\epsilon_a}^u| |e_c ({\epsilon_a}^u)| \rightarrow 0$, then we would almost fully recover the lower-with-$(I-\epsilon)$, upper-with-$(I+\epsilon)$ rule:<br>
+But if I did, let's assume $|{\epsilon_a}^u| |e_c ({\epsilon_a}^u)| \rightarrow 0$, then we would almost fully recover the upper-with-$(+\epsilon)$, lower-with-$(-\epsilon)$ rule:<br>
 ${c_{ab}}^c = (\delta_a^u - {\epsilon_a}^u) (\delta_b^v - {\epsilon_b}^v) (\delta_w^c + {\epsilon_w}^c) {\hat{c}_{uv}}^w - 2 e_{[a} ({\epsilon_{b]}}^c)$<br>
 ${c_{ab}}^c = 
 	{\hat{c}_{ab}}^c 
@@ -474,7 +475,7 @@ $\Gamma_{abc} =
 	
 	- g_{ua} e_b({\epsilon_c}^u)
 
-+ $ ... all composed (pseudo-)tensors with their indexes modified by our transform-lower-by-$(-\epsilon)$, transform-upper-by-$(+\epsilon)$ rule.<br>
++ $ ... all composed (pseudo-)tensors with their indexes modified by our upper-with-$(+\epsilon)$, lower-with-$(-\epsilon)$ rule.<br>
 So it looks like the only extra term is the $- g_{ua} e_b({\epsilon_c}^u)$.<br>
 <br>
 
