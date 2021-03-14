@@ -29,7 +29,7 @@ And $e_a = (\delta^u_a - {\epsilon_a}^u) \hat{e}_u$, so $\hat{e}_a = (\delta^u_a
 <br>
 
 From there we get orthogonality up to quadratic term:<br>
-$e^a ( e_b ) = (\delta^a_u + {\epsilon_u}^a) \hat{e}^u (
+$e^a ( e_b) = (\delta^a_u + {\epsilon_u}^a) \hat{e}^u (
 	(\delta^v_b - {\epsilon_b}^v) \hat{e}_v
 )$<br>
 $= (\delta^a_u + {\epsilon_u}^a) (\delta^v_b - {\epsilon_b}^v) \hat{e}^u (\hat{e}_v)$<br>
@@ -61,30 +61,6 @@ $g_{ab} = \hat{g}_{ab}
 $<br>
 <br>
 
-So let's make a new operator that accepts a tensor in the original basis and produces the tensor in the permuted basis:<br>
-$E({T^{a_1...a_p}}_{b_1...b_q}) = 
-	{T^{u_1...u_p}}_{v_1...v_q} 
-	\cdot
-	(\delta_{u_1}^{a_1} + {\epsilon_{u_1}}^{a_1})
-	\cdot 
-	...
-	\cdot 
-	(\delta_{u_p}^{a_p} + {\epsilon_{u_p}}^{a_p})
-	\cdot 
-	(\delta_{b_1}^{v_1} - {\epsilon_{b_1}}^{v_1})
-	\cdot 
-	...
-	\cdot 
-	(\delta_{b_q}^{v_q} - {\epsilon_{b_q}}^{v_q})
-$<br>
-$E({T^{a_1...a_p}}_{b_1...b_q}) = 
-	{T^{a_1...a_p}}_{b_1...b_q}
-	+ {\epsilon_u}^{a_i} {T^{a_1 ... a_{i-1} u a_{i+1} ... a_p}}_{b_1 ... b_q} 
-	- {\epsilon_{b_i}}^u {T^{a_1 ... a_p}}_{b_1 ... b_{i-1} u b_{i+1} ... b_q}
-$<br>
-<br>
-
-
 Going the other way:<br>
 In case you need to calculate a value raised or lowered by the background metric, in terms of the perturbed metric.<br>
 $\hat{g}_{ab} \hat{e}^a \otimes \hat{e}^b = g_{ab} e^a \otimes e^b$<br>
@@ -102,21 +78,44 @@ $<br>
 <br>
 
 In terms of products:<br>
-<br>
 
 $g_{ab} = \hat{g}_{uv} (\delta_a^u - {\epsilon_a}^u) (\delta_b^v - {\epsilon_b}^v)$<br>
 $g^{ab} = \hat{g}^{uv} (\delta_u^a + {\epsilon_u}^a) (\delta_v^b + {\epsilon_v}^b)$<br>
-<br>
 
 $\hat{g}_{ab} = g_{uv} (\delta_a^u + {\epsilon_a}^u) (\delta_b^v + {\epsilon_b}^v)$<br>
 $\hat{g}^{ab} = g^{uv} (\delta_u^a - {\epsilon_u}^a) (\delta_v^b - {\epsilon_v}^b)$<br>
 <br>
 
+So let's make a new operator that accepts a tensor in the original basis and produces the tensor in the permuted basis:<br>
+$E({T^{a_1...a_p}}_{b_1...b_q}) = 
+	{T^{u_1...u_p}}_{v_1...v_q} 
+	\cdot
+	(\delta_{u_1}^{a_1} + {\epsilon_{u_1}}^{a_1})
+	\cdot 
+	...
+	\cdot 
+	(\delta_{u_p}^{a_p} + {\epsilon_{u_p}}^{a_p})
+	\cdot 
+	(\delta_{b_1}^{v_1} - {\epsilon_{b_1}}^{v_1})
+	\cdot 
+	...
+	\cdot 
+	(\delta_{b_q}^{v_q} - {\epsilon_{b_q}}^{v_q})
+$<br>
+And if you expand all those deltas, and remove the $|\epsilon|^2$'s, you get:<br>
+$E({T^{a_1...a_p}}_{b_1...b_q}) = 
+	{T^{a_1...a_p}}_{b_1...b_q}
+	+ {\epsilon_u}^{a_i} {T^{a_1 ... a_{i-1} u a_{i+1} ... a_p}}_{b_1 ... b_q} 
+	- {\epsilon_{b_i}}^u {T^{a_1 ... a_p}}_{b_1 ... b_{i-1} u b_{i+1} ... b_q}
+$<br>
+<br>
+
+
 Calculating the derivative, and we see already the math is getting ugly.<br>
 
 $e_c(g_{ab}) = e_c(\hat{g}_{uv} (\delta^u_a - {\epsilon_a}^u) (\delta^v_b - {\epsilon_b}^v))$<br>
 $e_c(g_{ab}) = e_c(\hat{g}_{uv}) (\delta^u_a - {\epsilon_a}^u) (\delta^v_b - {\epsilon_b}^v)
-	+ \hat{g}_{uv} e_c( (\delta^u_a + {\epsilon_a}^u) (\delta^v_b + {\epsilon_b}^v) )
+	+ \hat{g}_{uv} e_c((\delta^u_a + {\epsilon_a}^u) (\delta^v_b + {\epsilon_b}^v) )
 $<br>
 
 $e_c(g_{ab}) = e_c(\hat{g}_{ab}) - 2 (\hat{g}_{u(a|} e_c({\epsilon_{|b)}}^u)) + e_c(\hat{g}_{uv} {\epsilon_a}^u {\epsilon_b}^v)$<br>
@@ -134,24 +133,24 @@ $<br>
 $e_c(g_{ab}) = e_c(\hat{g}_{ab})
 	
 	- 2 e_c(\hat{g}_{u(a}) {\epsilon_{b)}}^u 
-	- 2 \hat{g}_{u(a|} e_c( {\epsilon_{|b)}}^u )
+	- 2 \hat{g}_{u(a|} e_c({\epsilon_{|b)}}^u )
 	
-	+ e_c (\hat{g}_{uv}) {\epsilon_a}^u {\epsilon_b}^v
-	+ 2 \hat{g}_{uv} e_c( {\epsilon_{(a}}^u ) {\epsilon_{b)}}^v
+	+ e_c(\hat{g}_{uv}) {\epsilon_a}^u {\epsilon_b}^v
+	+ 2 \hat{g}_{uv} e_c({\epsilon_{(a}}^u) {\epsilon_{b)}}^v
 $<br>
 Get rid of $|\epsilon|^2$ terms.  Notice, no assumptions on $\partial(|\epsilon|)$ or $\partial(|\epsilon|^2)$:<br>
-$e_c (g_{ab}) = e_c(\hat{g}_{ab})
+$e_c(g_{ab}) = e_c(\hat{g}_{ab})
 	- 2 e_c(\hat{g}_{u(a}) {\epsilon_{b)}}^u 
-	- 2 \hat{g}_{u(a|} e_c( {\epsilon_{|b)}}^u )
-	+ 2 \hat{g}_{uv} e_c( {\epsilon_{(a}}^u ) {\epsilon_{b)}}^v
+	- 2 \hat{g}_{u(a|} e_c({\epsilon_{|b)}}^u )
+	+ 2 \hat{g}_{uv} e_c({\epsilon_{(a}}^u) {\epsilon_{b)}}^v
 $<br>
 But should I assume $\partial(|\epsilon|^2) \approx \partial(0) = 0$? In that case so would $|\epsilon| \partial(|\epsilon|) \approx 0$ as well.<br>
 I think I have to enforce this rule, for consistency with the fact that I am already equating $g_{ab} = (\delta_a^u - {\epsilon_a}^u) (\delta_b^v - {\epsilon_b^v}) \hat{g}_{uv} = \hat{g}_{ab} - 2 \hat{g}_{u(a} {\epsilon_{b)}}^u$, so I am already pretending like the $|\epsilon|^2$ term within $g_{ab}$ is neglegible.<br>
-$e_c (g_{ab}) = e_c(\hat{g}_{ab})
+$e_c(g_{ab}) = e_c(\hat{g}_{ab})
 	- {\epsilon_b}^u e_c(\hat{g}_{ua})
 	- {\epsilon_a}^u e_c(\hat{g}_{ub})
-	- e_c ( {\epsilon_a}^u ) \hat{g}_{ub}
-	- e_c ( {\epsilon_b}^u ) \hat{g}_{au}
+	- e_c({\epsilon_a}^u) \hat{g}_{ub}
+	- e_c({\epsilon_b}^u) \hat{g}_{au}
 $<br>
 <br>
 
@@ -162,21 +161,21 @@ So if you are doing a partial derivative of an epsilon then you can interchange 
 <br>
 
 In terms of $\hat{e}_a$:<br>
-$e_c (g_{ab}) = (\delta_c^v - {\epsilon_c}^v) \hat{e}_v(\hat{g}_{ab})
+$e_c(g_{ab}) = (\delta_c^v - {\epsilon_c}^v) \hat{e}_v(\hat{g}_{ab})
 	- {\epsilon_b}^u (\delta_c^v - {\epsilon_c}^v) \hat{e}_v(\hat{g}_{ua})
 	- {\epsilon_a}^u (\delta_c^v - {\epsilon_c}^v) \hat{e}_v(\hat{g}_{ub})
 	+ (\delta_c^w - {\epsilon_c}^w) (
-		- e_w ( {\epsilon_a}^u ) \hat{g}_{ub}
-		- e_w ( {\epsilon_b}^u ) \hat{g}_{au}
+		- e_w({\epsilon_a}^u) \hat{g}_{ub}
+		- e_w({\epsilon_b}^u) \hat{g}_{au}
 	)
 $<br>
-$e_c (g_{ab}) = 
+$e_c(g_{ab}) = 
 	  \hat{e}_c(\hat{g}_{ab})
 	- {\epsilon_c}^v \hat{e}_v(\hat{g}_{ab})
 	- {\epsilon_b}^u \hat{e}_c(\hat{g}_{ua})
 	- {\epsilon_a}^u \hat{e}_c(\hat{g}_{ub})
-	- \hat{e}_c( {\epsilon_a}^u ) \hat{g}_{ub}
-	- \hat{e}_c( {\epsilon_b}^u ) \hat{g}_{au}
+	- \hat{e}_c( {\epsilon_a}^u) \hat{g}_{ub}
+	- \hat{e}_c( {\epsilon_b}^u) \hat{g}_{au}
 $<br>
 In terms of products and transformations, re-inserting several $|\epsilon|^2 \approx 0$:<br>
 $e_c(g_{ab}) = 
@@ -184,8 +183,8 @@ $e_c(g_{ab}) =
 	(\delta^u_a - {\epsilon_a}^u)
 	(\delta^v_b - {\epsilon_b}^v)
 	(\delta^w_c - {\epsilon_c}^w)
-	- \hat{e}_c( {\epsilon_a}^u ) \hat{g}_{ub}
-	- \hat{e}_c( {\epsilon_b}^u ) \hat{g}_{au}
+	- \hat{e}_c( {\epsilon_a}^u) \hat{g}_{ub}
+	- \hat{e}_c( {\epsilon_b}^u) \hat{g}_{au}
 $<br>
 <br>
 
@@ -196,7 +195,7 @@ $E(e({T^{a_1 ... a_p}}_{b_1 ... b_1}))
 <br>
 
 Commutation of the background metric:<br>
-$[\hat{e}_a, \hat{e}_b] = 2 \hat{e}_{[a} ( \hat{e}_{b]} ) = {\hat{c}_{ab}}^c \hat{e}_c$<br>
+$[\hat{e}_a, \hat{e}_b] = 2 \hat{e}_{[a} ( \hat{e}_{b]}) = {\hat{c}_{ab}}^c \hat{e}_c$<br>
 <br>
 
 Commutation of the perturbed metric:<br>
@@ -286,7 +285,7 @@ $= (
 	
 	+ {\epsilon_a}^u \hat{e}_u ({\epsilon_b}^c)
 	- {\epsilon_b}^u \hat{e}_u ({\epsilon_a}^c)
-) (\delta_c^d + {\epsilon_c}^d) e_d (\phi)
+) (\delta_c^d + {\epsilon_c}^d) e_d(\phi)
 $<br>
 $= (
 	  {\hat{c}_{ab}}^d
@@ -318,7 +317,7 @@ $= (
 	+ {\epsilon_a}^u \hat{e}_u ({\epsilon_b}^c) {\epsilon_c}^d
 	- {\epsilon_b}^u \hat{e}_u ({\epsilon_a}^c) {\epsilon_c}^d
 
-) e_d (\phi)
+) e_d(\phi)
 $<br>
 Now use $|{\epsilon_a}^b|^2 = 0$:<br>
 $= (
@@ -338,7 +337,7 @@ $= (
 	
 	- \hat{e}_a ({\epsilon_b}^c) {\epsilon_c}^d
 	+ \hat{e}_b ({\epsilon_a}^c) {\epsilon_c}^d
-) e_d (\phi)
+) e_d(\phi)
 $<br>
 
 So ${c_{ab}}^c = 
@@ -380,8 +379,8 @@ $<br>
 
 So this is almost turning into a rule of transform-lower-with-$(\delta_u^a - {\epsilon_u}^a)$, transform-upper-with-$(\delta_u^a + {\epsilon_u}^a)$.<br>
 This rule, combined with $|\epsilon|^2 \approx 0$, gives you a rule similar to covariant derivatives, where the result is the original tensor, then add each of its upper indexes transformed by $(+\epsilon)$, then subtract each of its lower indexes transformed by $(-\epsilon)$.<br>
-And, once again, I'm making no assumptions about $|e_c ({\epsilon_a}^u)|$.<br>
-But if I did, let's assume $|{\epsilon_a}^u| |e_c ({\epsilon_a}^u)| \rightarrow 0$, then we would almost fully recover the upper-with-$(+\epsilon)$, lower-with-$(-\epsilon)$ rule:<br>
+And, once again, I'm making no assumptions about $|e_c({\epsilon_a}^u)|$.<br>
+But if I did, let's assume $|{\epsilon_a}^u| |e_c({\epsilon_a}^u)| \rightarrow 0$, then we would almost fully recover the upper-with-$(+\epsilon)$, lower-with-$(-\epsilon)$ rule:<br>
 ${c_{ab}}^c = (\delta_a^u - {\epsilon_a}^u) (\delta_b^v - {\epsilon_b}^v) (\delta_w^c + {\epsilon_w}^c) {\hat{c}_{uv}}^w - 2 e_{[a} ({\epsilon_{b]}}^c)$<br>
 ${c_{ab}}^c = 
 	{\hat{c}_{ab}}^c 
@@ -442,7 +441,12 @@ ${\hat{c}_{ab}}^c
 $<br>
 <br>
 
-So $c_{abc} = {c_{ab}}^e g_{ec}$<br>
+This looks very similar to our basis as a linear transform of a coordinate basis:<br>
+${c_{ab}}^c = 2 e_{[a} ({e_{b]}}^\bar{c}) {e^c}_\bar{c}$<br>
+<br>
+
+Now for $c_{abc}$:<br>
+$c_{abc} = {c_{ab}}^e g_{ec}$<br>
 $= 	  {\hat{c}_{ab}}^e g_{ec}
 	+ 2 {\epsilon_{[a}}^u {\hat{c}_{b]u}}^e  g_{ec}
 	+ {\hat{c}_{ab}}^u {\epsilon_u}^e g_{ec}
@@ -483,6 +487,22 @@ $c_{abc} = \hat{c}_{uvw}
 	- 2 \hat{e}_{[a} ({\epsilon_{b]}}^u) \hat{g}_{uc} 
 $<br>
 <br>
+And of course since is next to an $\hat{e}(|\epsilon|)$, we can interchange the metric and the basis derivative operators:<br>
+$c_{abc} =
+	  \hat{c}_{abc} 
+	- {\epsilon_a}^u \hat{c}_{ubc}
+	- {\epsilon_b}^u \hat{c}_{auc}
+	- {\epsilon_c}^u \hat{c}_{abu}
+	- 2 e_{[a} ({\epsilon_{b]}}^u) g_{uc} 
+$<br>
+$c_{abc} = \hat{c}_{uvw} 
+	(\delta^u_a - {\epsilon_a}^u)
+	(\delta^v_b - {\epsilon_b}^v)
+	(\delta^w_c - {\epsilon_c}^w)
+	- 2 e_{[a} ({\epsilon_{b]}}^u) g_{uc} 
+$<br>
+<br>
+
 
 Levi-Civita torsion-free connection, lowered indexes:<br>
 <br>
@@ -500,7 +520,7 @@ Using $e_c(g_{ab}) =
 	(\delta^u_a - {\epsilon_a}^u)
 	(\delta^v_b - {\epsilon_b}^v)
 	(\delta^w_c - {\epsilon_c}^w)
-	- 2 \hat{e}_c( {\epsilon_{(a}}^u ) \hat{g}_{b)u}
+	- 2 \hat{e}_c( {\epsilon_{(a}}^u) \hat{g}_{b)u}
 $<br>
 Using $c_{abc} = 
 	\hat{c}_{uvw} 
@@ -515,19 +535,19 @@ $\Gamma_{abc} = \frac{1}{2} ($<br>
 	(\delta^u_a - {\epsilon_a}^u)
 	(\delta^v_b - {\epsilon_b}^v)
 	(\delta^w_c - {\epsilon_c}^w)
-	- 2 \hat{e}_c( {\epsilon_{(a}}^u ) \hat{g}_{b)u}
+	- 2 \hat{e}_c( {\epsilon_{(a}}^u) \hat{g}_{b)u}
 $<br>
 &nbsp;&nbsp;&nbsp;&nbsp;$	+ \hat{e}_v(\hat{g}_{uw}) 
 	(\delta^u_a - {\epsilon_a}^u)
 	(\delta^v_b - {\epsilon_b}^v)
 	(\delta^w_c - {\epsilon_c}^w)
-	- 2 \hat{e}_b( {\epsilon_{(a}}^u ) \hat{g}_{c)u}
+	- 2 \hat{e}_b( {\epsilon_{(a}}^u) \hat{g}_{c)u}
 $<br>
 &nbsp;&nbsp;&nbsp;&nbsp;$	- \hat{e}_u(\hat{g}_{vw}) 
 	(\delta^u_a - {\epsilon_a}^u)
 	(\delta^v_b - {\epsilon_b}^v)
 	(\delta^w_c - {\epsilon_c}^w)
-	+ 2 \hat{e}_a( {\epsilon_{(b}}^u ) \hat{g}_{c)u}
+	+ 2 \hat{e}_a( {\epsilon_{(b}}^u) \hat{g}_{c)u}
 $<br>
 &nbsp;&nbsp;&nbsp;&nbsp;$	+ \hat{c}_{uvw} 
 	(\delta^u_a - {\epsilon_a}^u)
@@ -594,7 +614,7 @@ $\Gamma_{abc} =
 	(\delta^v_b - {\epsilon_b}^v)
 	(\delta^w_c - {\epsilon_c}^w)
 	
-	- e_b ({\epsilon_c}^u) g_{au}
+	- e_b({\epsilon_c}^u) g_{au}
 $<br>
 <br>
 
@@ -607,7 +627,7 @@ ${\Gamma^a}_{bc} =
 		(\delta^v_b - {\epsilon_b}^v)
 		(\delta^w_c - {\epsilon_c}^w)
 		
-		- e_b ({\epsilon_c}^u) g_{eu}
+		- e_b({\epsilon_c}^u) g_{eu}
 	)
 $<br>
 ${\Gamma^a}_{bc} = 
@@ -617,7 +637,7 @@ ${\Gamma^a}_{bc} =
 	(\delta^v_b - {\epsilon_b}^v)
 	(\delta^w_c - {\epsilon_c}^w)
 	
-	- g^{ae} e_b ({\epsilon_c}^u) g_{eu}
+	- g^{ae} e_b({\epsilon_c}^u) g_{eu}
 $<br>
 ${\Gamma^a}_{bc} = 
 	\hat{g}^{rs} (\delta^a_r + {\epsilon_r}^a) (\delta^e_s + {\epsilon_s}^e)
@@ -625,7 +645,7 @@ ${\Gamma^a}_{bc} =
 	(\delta^u_e - {\epsilon_e}^u)
 	(\delta^v_b - {\epsilon_b}^v)
 	(\delta^w_c - {\epsilon_c}^w)
-	- e_b ({\epsilon_c}^a)
+	- e_b({\epsilon_c}^a)
 $<br>
 ${\Gamma^a}_{bc} = 
 	(\delta^a_r + {\epsilon_r}^a) 
@@ -633,106 +653,106 @@ ${\Gamma^a}_{bc} =
 	\hat{\Gamma}_{uvw}
 	(\delta^v_b - {\epsilon_b}^v)
 	(\delta^w_c - {\epsilon_c}^w)
-	- e_b ({\epsilon_c}^a)
+	- e_b({\epsilon_c}^a)
 $<br>
 ${\Gamma^a}_{bc} = 
-	\hat{\Gamma^u}_{vw}
+	{\hat{\Gamma}^u}_{vw}
 	(\delta^a_u + {\epsilon_u}^a) 
 	(\delta^v_b - {\epsilon_b}^v)
 	(\delta^w_c - {\epsilon_c}^w)
-	- e_b ({\epsilon_c}^a)
+	- e_b({\epsilon_c}^a)
 $<br>
 And as a sum of epsilon transforms:<br>
 ${\Gamma^a}_{bc} = 
-	\hat{\Gamma^a}_{bc}
-	+ {\epsilon_u}^a \hat{\Gamma^u}_{bc}
-	- {\epsilon_b}^u \hat{\Gamma^a}_{uc}
-	- {\epsilon_c}^u \hat{\Gamma^a}_{bu}
-	- e_b ({\epsilon_c}^a)
+	{\hat{\Gamma}^a}_{bc}
+	+ {\epsilon_u}^a {\hat{\Gamma}^u}_{bc}
+	- {\epsilon_b}^u {\hat{\Gamma}^a}_{uc}
+	- {\epsilon_c}^u {\hat{\Gamma}^a}_{bu}
+	- e_b({\epsilon_c}^a)
 $<br>
 <br>
 
 So it looks like the only extra term is the $-e_b({\epsilon_c}^a)$.<br>
 This is very similar to the extra term in the difference between the Levi-Civita connection in a coordinate basis, transformed to a non-coordinate, and the Levi-Civita connection in a non-coordinate basis.<br>
-From the worksheet <a href="https://thenumbernine.github.io/math/Differential%20Geometry/8%20-%20metric-cancelling%20and%20torsion-free%20connection.html">here</a>: ${\hat\Gamma^a}_{bc} = {e^a}_\tilde{a} {e_b}^\tilde{b} {e_c}^\tilde{c} {\tilde{\Gamma}^\tilde{a}}_{\tilde{b}\tilde{c}} + {e^a}_\tilde{a} e_b ({e_c}^\tilde{a})$<br>
+From the worksheet <a href="https://thenumbernine.github.io/math/Differential%20Geometry/8%20-%20metric-cancelling%20and%20torsion-free%20connection.html">here</a>: ${\hat\Gamma^a}_{bc} = {e^a}_\tilde{a} {e_b}^\tilde{b} {e_c}^\tilde{c} {\tilde{\Gamma}^\tilde{a}}_{\tilde{b}\tilde{c}} + {e^a}_\tilde{a} e_b({e_c}^\tilde{a})$<br>
 <br>
 
 Now for connection squared:<br>
 ${\Gamma^a}_{be} {\Gamma^e}_{cd}
 = (
-	\hat{\Gamma^p}_{qr}
+	{\hat{\Gamma}^p}_{qr}
 	(\delta_p^a + {\epsilon_p}^a) 
 	(\delta_b^q - {\epsilon_b}^q)
 	(\delta_e^r - {\epsilon_e}^r)
-	- e_b ({\epsilon_e}^a)
+	- e_b({\epsilon_e}^a)
 ) (
-	\hat{\Gamma^u}_{vw}
+	{\hat{\Gamma}^u}_{vw}
 	(\delta_u^e + {\epsilon_u}^e) 
 	(\delta_c^v - {\epsilon_c}^v)
 	(\delta_d^w - {\epsilon_d}^w)
-	- e_c ({\epsilon_d}^e)
+	- e_c({\epsilon_d}^e)
 )$<br>
 ${\Gamma^a}_{be} {\Gamma^e}_{cd}
 = 
-	\hat{\Gamma^p}_{qu}
-	\hat{\Gamma^u}_{vw}
+	{\hat{\Gamma}^p}_{qu}
+	{\hat{\Gamma}^u}_{vw}
 	(\delta_p^a + {\epsilon_p}^a) 
 	(\delta_b^q - {\epsilon_b}^q)
 	(\delta_c^v - {\epsilon_c}^v)
 	(\delta_d^w - {\epsilon_d}^w)
 	
-	- \hat{\Gamma^u}_{vw}
+	- {\hat{\Gamma}^u}_{vw}
 	(\delta_u^e + {\epsilon_u}^e) 
 	(\delta_c^v - {\epsilon_c}^v)
 	(\delta_d^w - {\epsilon_d}^w)
-	e_b ({\epsilon_e}^a)
+	e_b({\epsilon_e}^a)
 
-	- \hat{\Gamma^p}_{qr}
+	- {\hat{\Gamma}^p}_{qr}
 	(\delta_p^a + {\epsilon_p}^a) 
 	(\delta_b^q - {\epsilon_b}^q)
 	(\delta_e^r - {\epsilon_e}^r)
-	e_c ({\epsilon_d}^e)
+	e_c({\epsilon_d}^e)
 
-	+ e_b ({\epsilon_e}^a)
-	e_c ({\epsilon_d}^e)
+	+ e_b({\epsilon_e}^a)
+	e_c({\epsilon_d}^e)
 $<br>
 ${\Gamma^a}_{be} {\Gamma^e}_{cd}
-= 	\hat{\Gamma^p}_{qu}
-	\hat{\Gamma^u}_{vw}
+= 	{\hat{\Gamma}^p}_{qu}
+	{\hat{\Gamma}^u}_{vw}
 	(\delta_p^a + {\epsilon_p}^a) 
 	(\delta_b^q - {\epsilon_b}^q)
 	(\delta_c^v - {\epsilon_c}^v)
 	(\delta_d^w - {\epsilon_d}^w)
 	
-	- \hat{\Gamma^e}_{cd} e_b ({\epsilon_e}^a)
-	- \hat{\Gamma^a}_{be} e_c ({\epsilon_d}^e)
-	+ e_b ({\epsilon_e}^a) e_c ({\epsilon_d}^e)
+	- {\hat{\Gamma}^e}_{cd} e_b({\epsilon_e}^a)
+	- {\hat{\Gamma}^a}_{be} e_c({\epsilon_d}^e)
+	+ e_b({\epsilon_e}^a) e_c({\epsilon_d}^e)
 $<br>
 <br>
 
 Antisymmetric portion:<br>
 ${\Gamma^a}_{[c|e} {\Gamma^e}_{|d]b}
-= 	\hat{\Gamma^p}_{qu}
-	\hat{\Gamma^u}_{vw}
+= 	{\hat{\Gamma}^p}_{qu}
+	{\hat{\Gamma}^u}_{vw}
 	(\delta_p^a + {\epsilon_p}^a) 
 	(\delta_{[c|}^q - {\epsilon_{[c|}}^q)
 	(\delta_{|d]}^v - {\epsilon_{|d]}}^v)
 	(\delta_b^w - {\epsilon_b}^w)
 	
-	- e_{[c|} ({\epsilon_e}^a) \hat{\Gamma^e}_{|d]b}
-	- \hat{\Gamma^a}_{[c|e} e_{|d]} ({\epsilon_b}^e)
+	- e_{[c|} ({\epsilon_e}^a) {\hat{\Gamma}^e}_{|d]b}
+	- {\hat{\Gamma}^a}_{[c|e} e_{|d]} ({\epsilon_b}^e)
 	+ e_{[c|} ({\epsilon_e}^a) e_{|d]} ({\epsilon_b}^e)
 $<br>
 ${\Gamma^a}_{[c|e} {\Gamma^e}_{|d]b}
-= 	\hat{\Gamma^p}_{[q|u}
-	\hat{\Gamma^u}_{|v]w}
+= 	{\hat{\Gamma}^p}_{[q|u}
+	{\hat{\Gamma}^u}_{|v]w}
 	(\delta_p^a + {\epsilon_p}^a) 
 	(\delta_c^q - {\epsilon_c}^q)
 	(\delta_d^v - {\epsilon_d}^v)
 	(\delta_b^w - {\epsilon_b}^w)
 	
-	- e_{[c|} ({\epsilon_e}^a) \hat{\Gamma^e}_{|d]b}
-	- \hat{\Gamma^a}_{[c|e} e_{|d]} ({\epsilon_b}^e)
+	- e_{[c|} ({\epsilon_e}^a) {\hat{\Gamma}^e}_{|d]b}
+	- {\hat{\Gamma}^a}_{[c|e} e_{|d]} ({\epsilon_b}^e)
 	+ e_{[c|} ({\epsilon_e}^a) e_{|d]} ({\epsilon_b}^e)
 $<br>
 <br>
@@ -742,63 +762,63 @@ Ok, on to $e_d({\Gamma^a}_{bc})$:<br>
 
 $e_d({\Gamma^a}_{bc}) =
 	e_d(
-		\hat{\Gamma^a}_{bc}
-		+ {\epsilon_u}^a \hat{\Gamma^u}_{bc}
-		- {\epsilon_b}^u \hat{\Gamma^a}_{uc}
-		- {\epsilon_c}^u \hat{\Gamma^a}_{bu}
-		- e_b ({\epsilon_c}^a)
+		{\hat{\Gamma}^a}_{bc}
+		+ {\epsilon_u}^a {\hat{\Gamma}^u}_{bc}
+		- {\epsilon_b}^u {\hat{\Gamma}^a}_{uc}
+		- {\epsilon_c}^u {\hat{\Gamma}^a}_{bu}
+		- e_b({\epsilon_c}^a)
 	)
 $<br>
 $e_d({\Gamma^a}_{bc}) = 
-	e_d(\hat{\Gamma^a}_{bc})
-	+ e_d({\epsilon_u}^a \hat{\Gamma^u}_{bc})
-	- e_d({\epsilon_b}^u \hat{\Gamma^a}_{uc})
-	- e_d({\epsilon_c}^u \hat{\Gamma^a}_{bu})
-	- e_d(e_b ({\epsilon_c}^a))
+	e_d({\hat{\Gamma}^a}_{bc})
+	+ e_d({\epsilon_u}^a {\hat{\Gamma}^u}_{bc})
+	- e_d({\epsilon_b}^u {\hat{\Gamma}^a}_{uc})
+	- e_d({\epsilon_c}^u {\hat{\Gamma}^a}_{bu})
+	- e_d(e_b({\epsilon_c}^a))
 $<br>
 $e_d({\Gamma^a}_{bc}) = 
-	e_d(\hat{\Gamma^a}_{bc})
-	+ {\epsilon_u}^a e_d(\hat{\Gamma^u}_{bc})
-	- {\epsilon_b}^u e_d(\hat{\Gamma^a}_{uc})
-	- {\epsilon_c}^u e_d(\hat{\Gamma^a}_{bu})
+	e_d({\hat{\Gamma}^a}_{bc})
+	+ {\epsilon_u}^a e_d({\hat{\Gamma}^u}_{bc})
+	- {\epsilon_b}^u e_d({\hat{\Gamma}^a}_{uc})
+	- {\epsilon_c}^u e_d({\hat{\Gamma}^a}_{bu})
 
-	+ e_d({\epsilon_u}^a) \hat{\Gamma^u}_{bc}
-	- e_d({\epsilon_b}^u) \hat{\Gamma^a}_{uc}
-	- e_d({\epsilon_c}^u) \hat{\Gamma^a}_{bu}
+	+ e_d({\epsilon_u}^a) {\hat{\Gamma}^u}_{bc}
+	- e_d({\epsilon_b}^u) {\hat{\Gamma}^a}_{uc}
+	- e_d({\epsilon_c}^u) {\hat{\Gamma}^a}_{bu}
 	
-	- e_d(e_b ({\epsilon_c}^a))
+	- e_d(e_b({\epsilon_c}^a))
 $<br>
 With respect to the original basis:<br>
 $e_d({\Gamma^a}_{bc}) = 
-	\hat{e}_d(\hat{\Gamma^a}_{bc})
-	+ {\epsilon_u}^a \hat{e}_d(\hat{\Gamma^u}_{bc})
-	- {\epsilon_b}^u \hat{e}_d(\hat{\Gamma^a}_{uc})
-	- {\epsilon_c}^u \hat{e}_d(\hat{\Gamma^a}_{bu})
-	- {\epsilon_d}^u \hat{e}_u(\hat{\Gamma^a}_{bc})
+	\hat{e}_d({\hat{\Gamma}^a}_{bc})
+	+ {\epsilon_u}^a \hat{e}_d({\hat{\Gamma}^u}_{bc})
+	- {\epsilon_b}^u \hat{e}_d({\hat{\Gamma}^a}_{uc})
+	- {\epsilon_c}^u \hat{e}_d({\hat{\Gamma}^a}_{bu})
+	- {\epsilon_d}^u \hat{e}_u({\hat{\Gamma}^a}_{bc})
 
-	+ \hat{e}_d({\epsilon_u}^a) \hat{\Gamma^u}_{bc}
-	- \hat{e}_d({\epsilon_b}^u) \hat{\Gamma^a}_{uc}
-	- \hat{e}_d({\epsilon_c}^u) \hat{\Gamma^a}_{bu}
+	+ \hat{e}_d({\epsilon_u}^a) {\hat{\Gamma}^u}_{bc}
+	- \hat{e}_d({\epsilon_b}^u) {\hat{\Gamma}^a}_{uc}
+	- \hat{e}_d({\epsilon_c}^u) {\hat{\Gamma}^a}_{bu}
 	
 	- (\delta_d^u - {\epsilon_d}^u) \hat{e}_u( (\delta_b^v - {\epsilon_b}^v) \hat{e}_v ({\epsilon_c}^a))
 $<br>
 $e_d({\Gamma^a}_{bc}) = 
-	\hat{e}_d(\hat{\Gamma^a}_{bc})
-	+ {\epsilon_u}^a \hat{e}_d(\hat{\Gamma^u}_{bc})
-	- {\epsilon_b}^u \hat{e}_d(\hat{\Gamma^a}_{uc})
-	- {\epsilon_c}^u \hat{e}_d(\hat{\Gamma^a}_{bu})
-	- {\epsilon_d}^u \hat{e}_u(\hat{\Gamma^a}_{bc})
+	\hat{e}_d({\hat{\Gamma}^a}_{bc})
+	+ {\epsilon_u}^a \hat{e}_d({\hat{\Gamma}^u}_{bc})
+	- {\epsilon_b}^u \hat{e}_d({\hat{\Gamma}^a}_{uc})
+	- {\epsilon_c}^u \hat{e}_d({\hat{\Gamma}^a}_{bu})
+	- {\epsilon_d}^u \hat{e}_u({\hat{\Gamma}^a}_{bc})
 
-	+ \hat{e}_d({\epsilon_u}^a) \hat{\Gamma^u}_{bc}
-	- \hat{e}_d({\epsilon_b}^u) \hat{\Gamma^a}_{uc}
-	- \hat{e}_d({\epsilon_c}^u) \hat{\Gamma^a}_{bu}
+	+ \hat{e}_d({\epsilon_u}^a) {\hat{\Gamma}^u}_{bc}
+	- \hat{e}_d({\epsilon_b}^u) {\hat{\Gamma}^a}_{uc}
+	- \hat{e}_d({\epsilon_c}^u) {\hat{\Gamma}^a}_{bu}
 	
 	- \hat{e}_d( \hat{e}_b ({\epsilon_c}^a))
 	+ {\epsilon_d}^u \hat{e}_u( \hat{e}_b ({\epsilon_c}^a))
 $<br>
 <br>
 
-Seems if I can argue that ${\epsilon_a}^u e_v( {\epsilon_u}^b ) \approx 0$ then why not 
+Seems if I can argue that ${\epsilon_a}^u e_v({\epsilon_u}^b) \approx 0$ then why not 
 ${\epsilon_d}^u \hat{e}_u( \hat{e}_b ({\epsilon_c}^a)) \approx 0$?<br>
 Let's see:<br>
 $e(|\epsilon|^2) = |\epsilon| e(|\epsilon|)$<br>
@@ -807,15 +827,15 @@ So $e(|\epsilon|)^2 = -|\epsilon| e^2(|\epsilon|)$<br>
 <br>
 
 $e_d({\Gamma^a}_{bc}) = 
-	\hat{e}_d(\hat{\Gamma^a}_{bc})
-	+ {\epsilon_u}^a \hat{e}_d(\hat{\Gamma^u}_{bc})
-	- {\epsilon_b}^u \hat{e}_d(\hat{\Gamma^a}_{uc})
-	- {\epsilon_c}^u \hat{e}_d(\hat{\Gamma^a}_{bu})
-	- {\epsilon_d}^u \hat{e}_u(\hat{\Gamma^a}_{bc})
+	\hat{e}_d({\hat{\Gamma}^a}_{bc})
+	+ {\epsilon_u}^a \hat{e}_d({\hat{\Gamma}^u}_{bc})
+	- {\epsilon_b}^u \hat{e}_d({\hat{\Gamma}^a}_{uc})
+	- {\epsilon_c}^u \hat{e}_d({\hat{\Gamma}^a}_{bu})
+	- {\epsilon_d}^u \hat{e}_u({\hat{\Gamma}^a}_{bc})
 
-	+ \hat{e}_d({\epsilon_u}^a) \hat{\Gamma^u}_{bc}
-	- \hat{e}_d({\epsilon_b}^u) \hat{\Gamma^a}_{uc}
-	- \hat{e}_d({\epsilon_c}^u) \hat{\Gamma^a}_{bu}
+	+ \hat{e}_d({\epsilon_u}^a) {\hat{\Gamma}^u}_{bc}
+	- \hat{e}_d({\epsilon_b}^u) {\hat{\Gamma}^a}_{uc}
+	- \hat{e}_d({\epsilon_c}^u) {\hat{\Gamma}^a}_{bu}
 	
 	- \hat{e}_d( \hat{e}_b ({\epsilon_c}^a))
 	+ {\epsilon_d}^u \hat{e}_u( \hat{e}_b ({\epsilon_c}^a))
@@ -824,15 +844,15 @@ $<br>
 
 Now as a product of epsilons:<br>
 $e_d({\Gamma^a}_{bc}) = 
-	\hat{e}_s(\hat{\Gamma^p}_{qr})
+	\hat{e}_s({\hat{\Gamma}^p}_{qr})
 	(\delta_p^a + {\epsilon_p}^a)
 	(\delta_b^q - {\epsilon_b}^q)
 	(\delta_c^r - {\epsilon_c}^r)
 	(\delta_d^s - {\epsilon_d}^s)
 
-	+ \hat{e}_d({\epsilon_u}^a) \hat{\Gamma^u}_{bc}
-	- \hat{e}_d({\epsilon_b}^u) \hat{\Gamma^a}_{uc}
-	- \hat{e}_d({\epsilon_c}^u) \hat{\Gamma^a}_{bu}
+	+ \hat{e}_d({\epsilon_u}^a) {\hat{\Gamma}^u}_{bc}
+	- \hat{e}_d({\epsilon_b}^u) {\hat{\Gamma}^a}_{uc}
+	- \hat{e}_d({\epsilon_c}^u) {\hat{\Gamma}^a}_{bu}
 	
 	- \hat{e}_d( \hat{e}_b ({\epsilon_c}^a))
 	+ {\epsilon_d}^u \hat{e}_u( \hat{e}_b ({\epsilon_c}^a))
@@ -841,29 +861,29 @@ $<br>
 
 Now the antisymmetric portion:<br>
 $e_{[c}({\Gamma^a}_{d]b}) = 
-	\hat{e}_{[r|}(\hat{\Gamma^p}_{|s]q})
+	\hat{e}_{[r|}({\hat{\Gamma}^p}_{|s]q})
 	(\delta_p^a + {\epsilon_p}^a)
 	(\delta_b^q - {\epsilon_b}^q)
 	(\delta_c^r - {\epsilon_c}^r)
 	(\delta_d^s - {\epsilon_d}^s)
 
-	+ \hat{e}_{[c|}({\epsilon_u}^a) \hat{\Gamma^u}_{|d]b}
-	- \hat{e}_{[c|}({\epsilon_{|d]}}^u) \hat{\Gamma^a}_{ub}
-	- \hat{e}_{[c|}({\epsilon_b}^u) \hat{\Gamma^a}_{|d]u}
+	+ \hat{e}_{[c|}({\epsilon_u}^a) {\hat{\Gamma}^u}_{|d]b}
+	- \hat{e}_{[c|}({\epsilon_{|d]}}^u) {\hat{\Gamma}^a}_{ub}
+	- \hat{e}_{[c|}({\epsilon_b}^u) {\hat{\Gamma}^a}_{|d]u}
 	
 	- \hat{e}_{[c}(\hat{e}_{d]} ({\epsilon_b}^a))
 	+ {\epsilon_{[c|}}^u \hat{e}_u( \hat{e}_{|d]} ({\epsilon_b}^a))
 $<br>
 $e_{[c}({\Gamma^a}_{d]b}) = 
-	\hat{e}_{[r|}(\hat{\Gamma^p}_{|s]q})
+	\hat{e}_{[r|}({\hat{\Gamma}^p}_{|s]q})
 	(\delta_p^a + {\epsilon_p}^a)
 	(\delta_b^q - {\epsilon_b}^q)
 	(\delta_c^r - {\epsilon_c}^r)
 	(\delta_d^s - {\epsilon_d}^s)
 
-	+ \hat{e}_{[c|}({\epsilon_u}^a) \hat{\Gamma^u}_{|d]b}
-	- \hat{e}_{[c|}({\epsilon_{|d]}}^u) \hat{\Gamma^a}_{ub}
-	- \hat{e}_{[c|}({\epsilon_b}^u) \hat{\Gamma^a}_{|d]u}
+	+ \hat{e}_{[c|}({\epsilon_u}^a) {\hat{\Gamma}^u}_{|d]b}
+	- \hat{e}_{[c|}({\epsilon_{|d]}}^u) {\hat{\Gamma}^a}_{ub}
+	- \hat{e}_{[c|}({\epsilon_b}^u) {\hat{\Gamma}^a}_{|d]u}
 	
 	- \frac{1}{2} {\hat{c}_{cd}}^u \hat{e}_u ({\epsilon_b}^a))
 	
@@ -871,6 +891,7 @@ $e_{[c}({\Gamma^a}_{d]b}) =
 $<br>
 <br>
 
+Riemann curvature tensor:<br>
 ${R^a}_{bcd} = 
 	  2 e_{[c}({\Gamma^a}_{d]b}) 
 	+ 2 {\Gamma^a}_{[c|e} {\Gamma^e}_{|d]b}
@@ -878,38 +899,38 @@ ${R^a}_{bcd} =
 $<br>
 ${R^a}_{bcd} = 
 	  2 (
-		\hat{e}_{[r|}(\hat{\Gamma^p}_{|s]q})
+		\hat{e}_{[r|}({\hat{\Gamma}^p}_{|s]q})
 		(\delta_p^a + {\epsilon_p}^a)
 		(\delta_b^q - {\epsilon_b}^q)
 		(\delta_c^r - {\epsilon_c}^r)
 		(\delta_d^s - {\epsilon_d}^s)
 
-		+ \hat{e}_{[c|}({\epsilon_u}^a) \hat{\Gamma^u}_{|d]b}
-		- \hat{e}_{[c|}({\epsilon_{|d]}}^u) \hat{\Gamma^a}_{ub}
-		- \hat{e}_{[c|}({\epsilon_b}^u) \hat{\Gamma^a}_{|d]u}
+		+ \hat{e}_{[c|}({\epsilon_u}^a) {\hat{\Gamma}^u}_{|d]b}
+		- \hat{e}_{[c|}({\epsilon_{|d]}}^u) {\hat{\Gamma}^a}_{ub}
+		- \hat{e}_{[c|}({\epsilon_b}^u) {\hat{\Gamma}^a}_{|d]u}
 		
 		- \frac{1}{2} {\hat{c}_{cd}}^u \hat{e}_u ({\epsilon_b}^a))
 	
 		+ {\epsilon_{[c|}}^u \hat{e}_u( \hat{e}_{|d]} ({\epsilon_b}^a))
 	)
 	+ 2 (
-		\hat{\Gamma^p}_{[q|u}
-		\hat{\Gamma^u}_{|v]w}
+		{\hat{\Gamma}^p}_{[q|u}
+		{\hat{\Gamma}^u}_{|v]w}
 		(\delta_p^a + {\epsilon_p}^a) 
 		(\delta_c^q - {\epsilon_c}^q)
 		(\delta_d^v - {\epsilon_d}^v)
 		(\delta_b^w - {\epsilon_b}^w)
 		
-		- e_{[c|} ({\epsilon_e}^a) \hat{\Gamma^e}_{|d]b}
-		- \hat{\Gamma^a}_{[c|e} e_{|d]} ({\epsilon_b}^e)
+		- e_{[c|} ({\epsilon_e}^a) {\hat{\Gamma}^e}_{|d]b}
+		- {\hat{\Gamma}^a}_{[c|e} e_{|d]} ({\epsilon_b}^e)
 		+ e_{[c|} ({\epsilon_e}^a) e_{|d]} ({\epsilon_b}^e)
 	)
 	- (
-		\hat{\Gamma^p}_{qr}
+		{\hat{\Gamma}^p}_{qr}
 		(\delta_p^a + {\epsilon_p}^a) 
 		(\delta_u^q - {\epsilon_u}^q)
 		(\delta_b^r - {\epsilon_b}^r)
-		- e_u ({\epsilon_b}^a)
+		- e_u({\epsilon_b}^a)
 	)
 	(
 		{\hat{c}_{sv}}^w
@@ -934,8 +955,8 @@ ${R^a}_{bcd} =
 	+ e_d({\epsilon_b}^u) e_c({\epsilon_u}^a)
 	- e_c({\epsilon_b}^u) e_d({\epsilon_u}^a)
 	
-	+ {\epsilon_c}^u e_u( e_d({\epsilon_b}^a))
-	- {\epsilon_d}^u e_u( e_c({\epsilon_b}^a))
+	+ {\epsilon_c}^u e_u(e_d({\epsilon_b}^a))
+	- {\epsilon_d}^u e_u(e_c({\epsilon_b}^a))
 $<br>
 ${R^a}_{bcd} = 
 	(
@@ -974,7 +995,7 @@ $
 $<br>
 <br>
 
-Ricci tensor:<br>
+Ricci curvature tensor:<br>
 $R_{bd} = {R^a}_{bad}$<br>
 $R_{ab} = 
 	{\hat{R}^v}_{pvq}
@@ -1014,7 +1035,7 @@ $R_{ab} =
 $<br>
 <br>
 
-Gaussian tensor:<br>
+Gaussian scalar curvature:<br>
 $R = g^{ab} R_{ab}$<br>
 $R = 
 \hat{g}^{mn} 
@@ -1127,15 +1148,29 @@ $G_{ab} =
 	- \hat{e}_b({\epsilon_a}^u) \hat{e}_v({\epsilon_u}^v)	
 $<br>
 <br>
-So sure enough, the Einstein tensor does a trace-reversal on the extra components added to the Ricci tensor (as it should).<br>
+So sure enough, the Einstein tensor is just a trace-reversal on the extra components added to the Ricci tensor (as it should).<br>
 <br>
 
-Now if we assume a background metric is Cartesian then we get:<br>
+Now if we assume a background metric with constant coefficients then we get:<br>
 $G_{ab} = 
 	  \hat{e}_u({\epsilon_a}^v) \hat{e}_v({\epsilon_b}^u)
 	- {\epsilon_v}^u \hat{e}_u(\hat{e}_b({\epsilon_a}^v))
 	+ {\epsilon_b}^u \hat{e}_u( \hat{e}_v({\epsilon_a}^v))
 	- \hat{e}_b({\epsilon_a}^u) \hat{e}_v({\epsilon_u}^v)	
+$<br>
+And if we assume a coordinate basis:<br>
+$G_{ab} = 
+	  \partial_u({\epsilon_a}^v) \partial_v({\epsilon_b}^u)
+	- {\epsilon_v}^u \partial_u(\partial_b({\epsilon_a}^v))
+	+ {\epsilon_b}^u \partial_u( \partial_v({\epsilon_a}^v))
+	- \partial_b({\epsilon_a}^u) \partial_v({\epsilon_u}^v)	
+$<br>
+$G_{ab} = 
+	  \partial_u({\epsilon_a}^v) \partial_v({\epsilon_b}^u)
+	- \partial_b({\epsilon_a}^u) \partial_v({\epsilon_u}^v)	
+	
+	- {\epsilon_v}^u \partial_u(\partial_b({\epsilon_a}^v))
+	+ {\epsilon_b}^u \partial_u(\partial_v({\epsilon_a}^v))
 $<br>
 <br>
 
@@ -1151,6 +1186,100 @@ $8 \pi T_{ab} =
 	+ {\epsilon_b}^u \hat{e}_u( \hat{e}_v({\epsilon_a}^v))
 	- \hat{e}_b({\epsilon_a}^u) \hat{e}_v({\epsilon_u}^v)	
 $<br>
+<br>
+
+<hr>
+<br>
+Side bar: In such an event that that the original basis is a coordinate system, and ${\hat{c}_{ab}}^c = 0$, how would the rest of this look?
+<br>
+
+Our relations between $g_{ab}$ and $\hat{g}_{ab}$ wouldn't change.<br>
+<br>
+
+Our partial of our metric would be unchanged:<br>
+$e_c(g_{ab}) = 
+	  e_c(\hat{g}_{ab})
+	- {\epsilon_b}^u e_c(\hat{g}_{ua})
+	- {\epsilon_a}^u e_c(\hat{g}_{ub})
+	- e_c({\epsilon_a}^u) \hat{g}_{ub}
+	- e_c({\epsilon_b}^u) \hat{g}_{au}
+$<br>
+<br>
+
+Our commutation would be simplified a bit. $\hat{c}_{abc} = 0$ would imply:<br>
+${c_{ab}}^c = - 2 e_{[a} ({\epsilon_{b]}}^c)$<br>
+<br>
+
+<hr>
+<br>
+Now for de-Donder gauge:<br>
+${\Gamma^a}_{bc} g^{bc} = 0$<br>
+$
+	\frac{1}{2} g^{bc} (
+		  e_c(g_{ab}) 
+		+ e_b(g_{ac}) 
+		- e_a(g_{bc}) 
+		+ c_{abc} 
+		+ c_{acb} 
+		- c_{cba} 
+	)
+	= 0
+$<br>
+$
+	  2 e_b(g_{ac}) g^{bc}
+	- e_a(g_{bc}) g^{bc}
+	+ 2 {c_{ab}}^b
+	= 0
+$<br>
+<br>
+
+In terms of the background basis:<br>
+$
+	
+	\hat{g}^{bc} 
+	(\delta_b^v - {\epsilon_b}^v)
+	(\delta_c^w - {\epsilon_c}^w)
+	(
+		2 
+		(
+			\hat{e}_v(\hat{g}_{uw}) 
+			- \hat{e}_v( {\epsilon_u}^e) \hat{g}_{ew}
+			- \hat{e}_v( {\epsilon_w}^e) \hat{g}_{eu}
+		)
+		
+		- 
+		(
+			\hat{e}_u(\hat{g}_{vw}) 
+			- \hat{e}_u( {\epsilon_v}^e) \hat{g}_{ew}
+			- \hat{e}_u( {\epsilon_w}^e) \hat{g}_{ev}
+		)
+	)
+
+	+ 2 (
+		{\hat{c}_{uv}}^v
+		- 2 e_{[u} ({\epsilon_{v]}}^v)
+	)
+	= 0
+$<br>
+<br>
+
+
+I'm sure you're used to seeing the first two terms, which gives you $2 e_b(g_{ac}) g^{bc} = e_a(g_{bc}) g^{bc}$.<br>
+The last one is for the anholonomic basis, which nobody wants to consider, maybe because "Harmonic coordinate condition" is a coordinate condition, which implies the use of a coordinate system, which implies zero commutation.<br>
+So looking back on our section on choosing a coordinate basis, we would still be left with a commutation in the perturbed basis:<br>
+<br>
+
+$
+	  2 e_b(g_{ac}) g^{bc}
+	- e_a(g_{bc}) g^{bc}
+	- 4 \hat{e}_{[a} ({\epsilon_{b]}}^b)
+	= 0
+$<br>
+<br>
+
+So we find that one new term is introduced into the typical de-Donder gauge, and that is the derivative of the trace of the perturbation epsilon.<br>
+<br>
+
 
 <a href='.'>Back</a><br><br>
 	</body>
