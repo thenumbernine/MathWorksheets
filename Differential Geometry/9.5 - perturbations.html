@@ -115,6 +115,24 @@ $E({T^{a_1...a_p}}_{b_1...b_q}) =
 $<br>
 <br>
 
+Raising and lowering ${\epsilon_a}^u$:<br>
+$\epsilon_{ab}$<br>
+$= {\epsilon_a}^u g_{ub}$<br>
+$= {\epsilon_a}^u \hat{g}_{pq} (\delta_a^p - {\epsilon_a}^p) (\delta_u^q - {\epsilon_u}^q)$<br>
+$= {\epsilon_a}^u (
+	\hat{g}_{au}
+	- \hat{g}_{pu} {\epsilon_a}^p
+	- \hat{g}_{aq} {\epsilon_u}^q
+	+ \hat{g}_{pq} {\epsilon_a}^p {\epsilon_u}^q
+)$<br>
+remove $|\epsilon|^2$...<br>
+$= {\epsilon_a}^u \hat{g}_{au}$<br>
+<br>
+
+So what does this mean?<br>
+${\epsilon_a}^u$, or any product of it, or $e_b({\epsilon_a}^u)$, or any product of it, can be raised or lowered by either $g_{uv}$ or $\hat{g}_{uv}$.<br>
+<br>
+
 <hr>
 <br>
 
@@ -1908,119 +1926,69 @@ Considering 1+1 dimensions:<br>
 
 $8 \pi \hat{T}_{ab} - \hat{G}_{ab} = 
 	
-	  \hat{g}^{tt} \hat{g}^{tt} \hat{e}_b(\epsilon_{tt}) \hat{e}_t(\epsilon_{ta})
+	+ \hat{g}^{tt} \hat{g}^{tt} \hat{e}_t(\epsilon_{ta}) \hat{e}_b(\epsilon_{tt})
 	- \hat{g}^{tt} \hat{g}^{tt} \hat{e}_t(\epsilon_{tt}) \hat{e}_b(\epsilon_{ta})
-	+ \hat{g}^{tt} \hat{g}^{tx} \hat{e}_b(\epsilon_{tt}) \hat{e}_x(\epsilon_{ta})
+	+ \hat{g}^{tt} \hat{g}^{tx} \hat{e}_t(\epsilon_{xa}) \hat{e}_b(\epsilon_{tt})
+	- \hat{g}^{tt} \hat{g}^{tx} \hat{e}_t(\epsilon_{tt}) \hat{e}_b(\epsilon_{xa})
+	+ \hat{g}^{tt} \hat{g}^{tx} \hat{e}_t(\epsilon_{ta}) \hat{e}_b(\epsilon_{tx})
+	- \hat{g}^{tt} \hat{g}^{tx} \hat{e}_t(\epsilon_{tx}) \hat{e}_b(\epsilon_{ta})
+	+ \hat{g}^{tt} \hat{g}^{tx} \hat{e}_t(\epsilon_{ta}) \hat{e}_b(\epsilon_{tx})
+	- \hat{g}^{tt} \hat{g}^{tx} \hat{e}_t(\epsilon_{tx}) \hat{e}_b(\epsilon_{ta})
+	+ \hat{g}^{tt} \hat{g}^{xx} \hat{e}_t(\epsilon_{xa}) \hat{e}_b(\epsilon_{tx})
+	- \hat{g}^{tt} \hat{g}^{xx} \hat{e}_t(\epsilon_{tx}) \hat{e}_b(\epsilon_{xa})
+	
+	+ \hat{g}^{tx} \hat{g}^{tx} \hat{e}_t(\epsilon_{xa}) \hat{e}_b(\epsilon_{tx})
+	- \hat{g}^{tx} \hat{g}^{tx} \hat{e}_t(\epsilon_{tx}) \hat{e}_b(\epsilon_{xa})
+	+ \hat{g}^{tx} \hat{g}^{tx} \hat{e}_t(\epsilon_{ta}) \hat{e}_b(\epsilon_{xx})
+	- \hat{g}^{tx} \hat{g}^{tx} \hat{e}_t(\epsilon_{xx}) \hat{e}_b(\epsilon_{ta})
+	+ \hat{g}^{xx} \hat{g}^{tx} \hat{e}_t(\epsilon_{xa}) \hat{e}_b(\epsilon_{xx})
+	- \hat{g}^{xx} \hat{g}^{tx} \hat{e}_t(\epsilon_{xx}) \hat{e}_b(\epsilon_{xa})
+
+
+	+ \hat{g}^{tt} \hat{g}^{tx} \hat{e}_x(\epsilon_{ta}) \hat{e}_b(\epsilon_{tt})
 	- \hat{g}^{tt} \hat{g}^{tx} \hat{e}_x(\epsilon_{tt}) \hat{e}_b(\epsilon_{ta})
-	+ \hat{g}^{tt} \hat{g}^{xt} \hat{e}_b(\epsilon_{xt}) \hat{e}_t(\epsilon_{ta})
-	- \hat{g}^{tt} \hat{g}^{xt} \hat{e}_t(\epsilon_{xt}) \hat{e}_b(\epsilon_{ta})
-	+ \hat{g}^{tt} \hat{g}^{xx} \hat{e}_b(\epsilon_{xt}) \hat{e}_x(\epsilon_{ta})
-	- \hat{g}^{tt} \hat{g}^{xx} \hat{e}_x(\epsilon_{xt}) \hat{e}_b(\epsilon_{ta})
-
-	+ \hat{g}^{tx} \hat{g}^{tt} \hat{e}_b(\epsilon_{tt}) \hat{e}_t(\epsilon_{xa})
-	- \hat{g}^{tx} \hat{g}^{tt} \hat{e}_t(\epsilon_{tt}) \hat{e}_b(\epsilon_{xa})
-	+ \hat{g}^{tx} \hat{g}^{tx} \hat{e}_b(\epsilon_{tt}) \hat{e}_x(\epsilon_{xa})
+	+ \hat{g}^{tt} \hat{g}^{xx} \hat{e}_x(\epsilon_{ta}) \hat{e}_b(\epsilon_{tx})
+	- \hat{g}^{tt} \hat{g}^{xx} \hat{e}_x(\epsilon_{tx}) \hat{e}_b(\epsilon_{ta})
+	+ \hat{g}^{tx} \hat{g}^{tx} \hat{e}_x(\epsilon_{xa}) \hat{e}_b(\epsilon_{tt})
 	- \hat{g}^{tx} \hat{g}^{tx} \hat{e}_x(\epsilon_{tt}) \hat{e}_b(\epsilon_{xa})
-	+ \hat{g}^{tx} \hat{g}^{xt} \hat{e}_b(\epsilon_{xt}) \hat{e}_t(\epsilon_{xa})
-	- \hat{g}^{tx} \hat{g}^{xt} \hat{e}_t(\epsilon_{xt}) \hat{e}_b(\epsilon_{xa})
-	+ \hat{g}^{tx} \hat{g}^{xx} \hat{e}_b(\epsilon_{xt}) \hat{e}_x(\epsilon_{xa})
-	- \hat{g}^{tx} \hat{g}^{xx} \hat{e}_x(\epsilon_{xt}) \hat{e}_b(\epsilon_{xa})
-
-	+ \hat{g}^{xt} \hat{g}^{tt} \hat{e}_b(\epsilon_{tx}) \hat{e}_t(\epsilon_{ta})
-	- \hat{g}^{xt} \hat{g}^{tt} \hat{e}_t(\epsilon_{tx}) \hat{e}_b(\epsilon_{ta})
-	+ \hat{g}^{xt} \hat{g}^{tx} \hat{e}_b(\epsilon_{tx}) \hat{e}_x(\epsilon_{ta})
-	- \hat{g}^{xt} \hat{g}^{tx} \hat{e}_x(\epsilon_{tx}) \hat{e}_b(\epsilon_{ta})
-	+ \hat{g}^{xt} \hat{g}^{xt} \hat{e}_b(\epsilon_{xx}) \hat{e}_t(\epsilon_{ta})
-	- \hat{g}^{xt} \hat{g}^{xt} \hat{e}_t(\epsilon_{xx}) \hat{e}_b(\epsilon_{ta})
-	+ \hat{g}^{xt} \hat{g}^{xx} \hat{e}_b(\epsilon_{xx}) \hat{e}_x(\epsilon_{ta})
-	- \hat{g}^{xt} \hat{g}^{xx} \hat{e}_x(\epsilon_{xx}) \hat{e}_b(\epsilon_{ta})
-
-	+ \hat{g}^{xx} \hat{g}^{tt} \hat{e}_b(\epsilon_{tx}) \hat{e}_t(\epsilon_{xa})
-	- \hat{g}^{xx} \hat{g}^{tt} \hat{e}_t(\epsilon_{tx}) \hat{e}_b(\epsilon_{xa})
-	+ \hat{g}^{xx} \hat{g}^{tx} \hat{e}_b(\epsilon_{tx}) \hat{e}_x(\epsilon_{xa})
+	
+	+ \hat{g}^{tx} \hat{g}^{xx} \hat{e}_x(\epsilon_{xa}) \hat{e}_b(\epsilon_{tx})
+	- \hat{g}^{tx} \hat{g}^{xx} \hat{e}_x(\epsilon_{tx}) \hat{e}_b(\epsilon_{xa})
+	+ \hat{g}^{tx} \hat{g}^{tx} \hat{e}_x(\epsilon_{ta}) \hat{e}_b(\epsilon_{tx})
+	- \hat{g}^{tx} \hat{g}^{tx} \hat{e}_x(\epsilon_{tx}) \hat{e}_b(\epsilon_{ta})
+	+ \hat{g}^{tx} \hat{g}^{xx} \hat{e}_x(\epsilon_{ta}) \hat{e}_b(\epsilon_{xx})
+	- \hat{g}^{tx} \hat{g}^{xx} \hat{e}_x(\epsilon_{xx}) \hat{e}_b(\epsilon_{ta})
+	+ \hat{g}^{xx} \hat{g}^{tx} \hat{e}_x(\epsilon_{xa}) \hat{e}_b(\epsilon_{tx})
 	- \hat{g}^{xx} \hat{g}^{tx} \hat{e}_x(\epsilon_{tx}) \hat{e}_b(\epsilon_{xa})
-	+ \hat{g}^{xx} \hat{g}^{xt} \hat{e}_b(\epsilon_{xx}) \hat{e}_t(\epsilon_{xa})
-	- \hat{g}^{xx} \hat{g}^{xt} \hat{e}_t(\epsilon_{xx}) \hat{e}_b(\epsilon_{xa})
-	+ \hat{g}^{xx} \hat{g}^{xx} \hat{e}_b(\epsilon_{xx}) \hat{e}_x(\epsilon_{xa})
+	+ \hat{g}^{xx} \hat{g}^{xx} \hat{e}_x(\epsilon_{xa}) \hat{e}_b(\epsilon_{xx})
 	- \hat{g}^{xx} \hat{g}^{xx} \hat{e}_x(\epsilon_{xx}) \hat{e}_b(\epsilon_{xa})
 
 $<br>
 <br>
 
 $8 \pi \hat{T}_{tt} - \hat{G}_{tt} = 
-	
-	  \hat{g}^{tt} \hat{g}^{xx} (
-		  \hat{e}_t(\epsilon_{tx}) \hat{e}_x(\epsilon_{tt})
-		- \hat{e}_t(\epsilon_{tt}) \hat{e}_x(\epsilon_{tx})
-	)
-
-	+ \hat{g}^{tx} \hat{g}^{xx} (
-		  \hat{e}_t(\epsilon_{xx}) \hat{e}_x(\epsilon_{tt})
-		- \hat{e}_t(\epsilon_{tt}) \hat{e}_x(\epsilon_{xx})
-	)
-
-	+ \hat{g}^{xx} \hat{g}^{xx} (
-		  \hat{e}_t(\epsilon_{xx}) \hat{e}_x(\epsilon_{tx})
-		- \hat{e}_t(\epsilon_{tx}) \hat{e}_x(\epsilon_{xx})
-	)
+	- \hat{g}^{tt} \hat{g}^{xx} (\hat{e}_t(\epsilon_{tt}) \hat{e}_x(\epsilon_{tx}) - \hat{e}_t(\epsilon_{tx}) \hat{e}_x(\epsilon_{tt}))
+	- \hat{g}^{tx} \hat{g}^{xx} (\hat{e}_t(\epsilon_{tt}) \hat{e}_x(\epsilon_{xx}) - \hat{e}_t(\epsilon_{xx}) \hat{e}_x(\epsilon_{tt}))
+	- \hat{g}^{xx} \hat{g}^{xx} (\hat{e}_t(\epsilon_{tx}) \hat{e}_x(\epsilon_{xx}) - \hat{e}_t(\epsilon_{xx}) \hat{e}_x(\epsilon_{tx}))
 $<br>
-<br>
-
 $8 \pi \hat{T}_{tx} - \hat{G}_{tx} = 
-	  \hat{g}^{tt} \hat{g}^{tx} (
-		  \hat{e}_t(\epsilon_{tt}) \hat{e}_x(\epsilon_{tx})
-		- \hat{e}_t(\epsilon_{tx}) \hat{e}_x(\epsilon_{tt})
-	)
-
-	+ \hat{g}^{tx} \hat{g}^{tx} (
-		  \hat{e}_t(\epsilon_{tt}) \hat{e}_x(\epsilon_{xx})
-		- \hat{e}_t(\epsilon_{xx}) \hat{e}_x(\epsilon_{tt})
-	)
-
-	+ \hat{g}^{tx} \hat{g}^{xx} (
-		  \hat{e}_t(\epsilon_{tx}) \hat{e}_x(\epsilon_{xx})
-		- \hat{e}_t(\epsilon_{xx}) \hat{e}_x(\epsilon_{tx})
-	)
+	  \hat{g}^{tt} \hat{g}^{tx} (\hat{e}_t(\epsilon_{tt}) \hat{e}_x(\epsilon_{tx}) - \hat{e}_t(\epsilon_{tx}) \hat{e}_x(\epsilon_{tt}))
+	+ \hat{g}^{tx} \hat{g}^{tx} (\hat{e}_t(\epsilon_{tt}) \hat{e}_x(\epsilon_{xx}) - \hat{e}_t(\epsilon_{xx}) \hat{e}_x(\epsilon_{tt}))
+	+ \hat{g}^{tx} \hat{g}^{xx} (\hat{e}_t(\epsilon_{tx}) \hat{e}_x(\epsilon_{xx}) - \hat{e}_t(\epsilon_{xx}) \hat{e}_x(\epsilon_{tx}))
 $<br>
-<br>
-
 $8 \pi \hat{T}_{xt} - \hat{G}_{xt} = 
-	  \hat{g}^{tt} \hat{g}^{tx} (
-	  	  \hat{e}_t(\epsilon_{tt}) \hat{e}_x(\epsilon_{tx})
-		- \hat{e}_t(\epsilon_{tx}) \hat{e}_x(\epsilon_{tt})
-	)
-
-	+ \hat{g}^{tx} \hat{g}^{tx} (
-		  \hat{e}_t(\epsilon_{tt}) \hat{e}_x(\epsilon_{xx})
-		- \hat{e}_t(\epsilon_{xx}) \hat{e}_x(\epsilon_{tt})
-	)
-
-	+ \hat{g}^{tx} \hat{g}^{xx} (
-		  \hat{e}_t(\epsilon_{tx}) \hat{e}_x(\epsilon_{xx})
-		- \hat{e}_t(\epsilon_{xx}) \hat{e}_x(\epsilon_{tx})
-	)
+	  \hat{g}^{tt} \hat{g}^{tx} (\hat{e}_t(\epsilon_{tt}) \hat{e}_x(\epsilon_{tx}) - \hat{e}_t(\epsilon_{tx}) \hat{e}_x(\epsilon_{tt}))
+	+ \hat{g}^{tx} \hat{g}^{tx} (\hat{e}_t(\epsilon_{tt}) \hat{e}_x(\epsilon_{xx}) - \hat{e}_t(\epsilon_{xx}) \hat{e}_x(\epsilon_{tt}))
+	+ \hat{g}^{tx} \hat{g}^{xx} (\hat{e}_t(\epsilon_{tx}) \hat{e}_x(\epsilon_{xx}) - \hat{e}_t(\epsilon_{xx}) \hat{e}_x(\epsilon_{tx}))
 $<br>
-<br>
-
 $8 \pi \hat{T}_{xx} - \hat{G}_{xx} = 
-	  \hat{g}^{tt} \hat{g}^{tt} (
-	  	  \hat{e}_t(\epsilon_{tx}) \hat{e}_x(\epsilon_{tt})
-		- \hat{e}_t(\epsilon_{tt}) \hat{e}_x(\epsilon_{tx})
-	)
-
-	+ \hat{g}^{tt} \hat{g}^{tx} (
-		  \hat{e}_t(\epsilon_{xx}) \hat{e}_x(\epsilon_{tt})
-		- \hat{e}_t(\epsilon_{tt}) \hat{e}_x(\epsilon_{xx})
-	)
-
-	+ \hat{g}^{tt} \hat{g}^{xx} (
-		  \hat{e}_t(\epsilon_{xx}) \hat{e}_x(\epsilon_{tx})
-		- \hat{e}_t(\epsilon_{tx}) \hat{e}_x(\epsilon_{xx})
-	)
+	- \hat{g}^{tt} \hat{g}^{tt} (\hat{e}_t(\epsilon_{tt}) \hat{e}_x(\epsilon_{tx}) - \hat{e}_t(\epsilon_{tx}) \hat{e}_x(\epsilon_{tt}))
+	- \hat{g}^{tt} \hat{g}^{tx} (\hat{e}_t(\epsilon_{tt}) \hat{e}_x(\epsilon_{xx}) - \hat{e}_t(\epsilon_{xx}) \hat{e}_x(\epsilon_{tt}))
+	- \hat{g}^{tt} \hat{g}^{xx} (\hat{e}_t(\epsilon_{tx}) \hat{e}_x(\epsilon_{xx}) - \hat{e}_t(\epsilon_{xx}) \hat{e}_x(\epsilon_{tx}))
 $<br>
 <br>
 
-
+So the Einstein Field Equations constraints for 1+1 dimensions appear to be symmetric, even though in general for Einstein-Cartan they do not necessarily have to be.<br>
 <br>
 
 Considering $\hat{e}_t$ as a distinct coordinate basis:<br>
