@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<title>Numerical Relativity - Z4 With Hyperbolic Gamma Driver</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+	</head>
+    <body>
+
+Building off that last one, what if I were to rewrite the metric, partial, and connection variables 
+in terms of differences with some background metric?  Like how Baumgarte did wtih BSSN shortly after his 2010 book was published?<br>
+<br>
+
+$\hat{\gamma}_{ij} = $ background metric..<br>
+$\Delta \gamma_{ij} = $ deviation of metric from the background metric..<br>
+$\gamma_{ij} = \Delta \gamma_{ij} + \hat{\gamma}_{ij} = $ metric..<br>
+<br>
+
+$\hat{\gamma}^{ij} = $ background metric inverse, such that $\hat{\gamma}_{ik} \hat{\gamma}^{kj} = \delta_i^j$.<br>
+$\gamma^{ij} = $ metric inverse, such that $\gamma_{ik} \gamma^{kj} = \delta_i^j$.<br>
+see <a href="../Differential Geometry/4 - metric tensor.html">here</a> at the bottom:<br>
+Let ${r^a}_b = \hat{\gamma}^{ac} \cdot \Delta \gamma_{cb}$.<br>
+Let $r = \hat{\gamma}^{uv} \cdot \Delta \gamma_{uv} = {r^a}_a$.<br>
+$\gamma^{ab} = \hat{\gamma}^{ab} - (\hat{\gamma}^{ac} \cdot \Delta \gamma_{cd} \cdot \hat{\gamma}^{db}) \cdot \frac{1}{1 + r}$<br>
+
+<br>
+
+$\hat{d}_{kij} = \frac{1}{2} \hat{\gamma}_{ij,k} = $ partial derivative of background metric..<br>
+$\Delta d_{kij} = \frac{1}{2} \Delta \gamma_{ij,k} = $ partial derivative of deviation of metric from background metric..<br>
+$d_{kij} = \Delta d_{kij} + \hat{d}_{kij} = $ partial of metric.<br>
+<br>
+
+lower Levi-Civita zero-torsion connection associated with the background metric:<br>
+$\hat{\Gamma}_{ijk} = \frac{1}{2} ( \gamma_{ij,k} + \gamma_{ik,j} - \gamma_{jk,i} )$<br>
+$\hat{\Gamma}_{ijk} = d_{kij} + d_{jik} - d_{ijk}$<br> 
+$\hat{\Gamma}_{ijk} = 
+	\Delta d_{kij} + \Delta d_{jik} - \Delta d_{ijk}
+	+ \hat{d}_{kij} + \hat{d}_{jik} - \hat{d}_{ijk}
+$<br> 
+<br>
+
+Now when it comes to the connection, I could define the deviation wrt the lower or wrt the upper...<br>
+I will try deviating wrt the upper, and lowering with the metric itself (and not the background), 
+though I suspect the math will get ugly quick.<br>
+If this were weak field perturbation with respect to an arbitrary background then I should be raising/lowering by the background metric instead of the perturbed metric.<br>
+<br>
+
+upper Levi-Civita connection associated with the background metric:<br> 
+${\hat{\Gamma}^i}_{jk} = \hat{\gamma}^{il} \hat{\Gamma}_{ljk}$<br>
+<br>
+
+upper Levi-Civita connection associated with the metric:<br>
+${\Gamma^i}_{jk} = \gamma^{il} \Gamma_{ljk}$<br>
+${\Gamma^i}_{jk} = \frac{1}{2} \gamma^{il} ( 
+	\gamma_{lj,k} + \gamma_{lk,j} - \gamma_{jk,l} 
+)$<br>
+${\Gamma^i}_{jk} = \gamma^{il} (d_{klj} + d_{jlk} - d_{ljk} )$<br>
+${\Gamma^i}_{jk} = {d_{kj}}^i + {d_{jk}}^i - {d^i}_{jk}$<br>
+${\Gamma^i}_{jk} = \gamma^{il} (
+	\Delta d_{klj} + \Delta d_{jlk} - \Delta d_{ljk} 
+	+ \hat{d}_{klj} + \hat{d}_{jlk} - \hat{d}_{ljk} 
+)$<br>
+${\Gamma^i}_{jk} = \Delta {\Gamma^i}_{jk} + {\hat{\Gamma}^i}_{jk}$<br>
+Notice here that the upper deviation is the deviation of the upper connections.<br>
+<br>
+
+lower deviation is the lowered upper deviation, <b>not</b> the deviation of the lower connection.  And it is lowered by the metric, <b>not</b> the background metric:<br>
+$\Delta \Gamma_{ijk} = \gamma_{il} \Delta {\Gamma^l}_{jk}$<br>
+<br>
+
+lower Levi-Civita connection associated with the metric:<br>
+$\Gamma_{ijk} = \gamma_{il} {\Gamma^l}_{jk}$<br>
+$= \gamma_{il} (
+	\Delta {\Gamma^i}_{jk} + {\hat{\Gamma}^i}_{jk}
+) $<br>
+$= (\Delta \gamma_{il} + \hat{\gamma}_{il}) (
+	\Delta {\Gamma^i}_{jk} + {\hat{\Gamma}^i}_{jk}
+)$<br>
+<br>
+
+...<br>
+Then again, it's such a mess, let's just not worry about defining the upper connection deviation.<br> 
+Lets just define things in terms of the metric deviation and partial metric deviation.<br>
+<br>
+
+	</body>
+</html>
