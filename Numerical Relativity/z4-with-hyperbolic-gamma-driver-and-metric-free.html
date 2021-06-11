@@ -11,42 +11,55 @@ Building off that last one, what if I were to rewrite the metric, partial, and c
 in terms of differences with some background metric?  Like how Baumgarte did wtih BSSN shortly after his 2010 book was published?<br>
 <br>
 
-$\hat{\gamma}_{ij} = $ background metric..<br>
-$\Delta \gamma_{ij} = $ deviation of metric from the background metric..<br>
-$\gamma_{ij} = \Delta \gamma_{ij} + \hat{\gamma}_{ij} = $ metric..<br>
+$ 
+	\def \devgamma {{ \overset{{}_\Delta}{\gamma} }} 
+	\def \devd {{ \overset{{}_\Delta}{d} }}
+	\def \devGamma {{ \overset{{}_\Delta}{\Gamma} }}
+
+	\def \hatgamma {{ \hat{\gamma} }}
+	\def \hatGamma {{ \hat{\Gamma} }}
+$
+
+$\hatgamma_{ij} = $ background metric..<br>
+$\devgamma_{ij} = $ deviation of metric from the background metric..<br>
+$\gamma_{ij} = \devgamma_{ij} + \hatgamma_{ij} = $ metric..<br>
 <br>
 
-$\hat{\gamma}^{ij} = $ background metric inverse, such that $\hat{\gamma}_{ik} \hat{\gamma}^{kj} = \delta_i^j$.<br>
+$\hatgamma^{ij} = $ background metric inverse, such that $\hatgamma_{ik} \hatgamma^{kj} = \delta_i^j$.<br>
 $\gamma^{ij} = $ metric inverse, such that $\gamma_{ik} \gamma^{kj} = \delta_i^j$.<br>
 see <a href="../Differential Geometry/4 - metric tensor.html">here</a> at the bottom:<br>
-Let ${r^a}_b = \hat{\gamma}^{ac} \cdot \Delta \gamma_{cb}$.<br>
-Let $r = \hat{\gamma}^{uv} \cdot \Delta \gamma_{uv} = {r^a}_a$.<br>
-$\gamma^{ab} = \hat{\gamma}^{ab} - (\hat{\gamma}^{ac} \cdot \Delta \gamma_{cd} \cdot \hat{\gamma}^{db}) \cdot \frac{1}{1 + r}$<br>
+Let ${r^a}_b = \hatgamma^{ac} \devgamma_{cb}$.<br>
+Let $r = \hatgamma^{uv} \devgamma_{uv} = {r^a}_a$.<br>
+$\gamma^{ab} = \hatgamma^{ab} - (\hatgamma^{ac} \devgamma_{cd} \hatgamma^{db}) \frac{1}{1 + r}$<br>
 
 <br>
 
-$\hat{d}_{kij} = \frac{1}{2} \hat{\gamma}_{ij,k} = $ partial derivative of background metric..<br>
-$\Delta d_{kij} = \frac{1}{2} \Delta \gamma_{ij,k} = $ partial derivative of deviation of metric from background metric..<br>
-$d_{kij} = \Delta d_{kij} + \hat{d}_{kij} = $ partial of metric.<br>
+$\hat{d}_{kij} = \frac{1}{2} \hatgamma_{ij,k} = $ partial derivative of background metric..<br>
+$\devd_{kij} = \frac{1}{2} \devgamma_{ij,k} = $ partial derivative of deviation of metric from background metric..<br>
+$d_{kij} = \devd_{kij} + \hat{d}_{kij} = $ partial of metric.<br>
 <br>
 
 lower Levi-Civita zero-torsion connection associated with the background metric:<br>
-$\hat{\Gamma}_{ijk} = \frac{1}{2} ( \gamma_{ij,k} + \gamma_{ik,j} - \gamma_{jk,i} )$<br>
-$\hat{\Gamma}_{ijk} = d_{kij} + d_{jik} - d_{ijk}$<br> 
-$\hat{\Gamma}_{ijk} = 
-	\Delta d_{kij} + \Delta d_{jik} - \Delta d_{ijk}
-	+ \hat{d}_{kij} + \hat{d}_{jik} - \hat{d}_{ijk}
-$<br> 
+$\hatGamma_{ijk} = \frac{1}{2} ( \gamma_{ij,k} + \gamma_{ik,j} - \gamma_{jk,i} )$<br>
+$\hatGamma_{ijk} = \hat{d}_{kij} + \hat{d}_{jik} - \hat{d}_{ijk}$<br> 
 <br>
 
-Now when it comes to the connection, I could define the deviation wrt the lower or wrt the upper...<br>
-I will try deviating wrt the upper, and lowering with the metric itself (and not the background), 
-though I suspect the math will get ugly quick.<br>
-If this were weak field perturbation with respect to an arbitrary background then I should be raising/lowering by the background metric instead of the perturbed metric.<br>
+lower Levi-Civita zero-torsion connection associated with the metric:<br>
+$\Gamma_{ijk} = d_{kij} + d_{jik} - d_{ijk}$<br> 
+$\Gamma_{ijk} = 
+	\devd_{kij} + \devd_{jik} - \devd_{ijk}
+	+ \hat{d}_{kij} + \hat{d}_{jik} - \hat{d}_{ijk}
+$<br> 
+$\Gamma_{ijk} = \devGamma_{ijk} + \hatGamma_{ijk}$<br>
+<br>
+
+lower Levi-Civita zero-torsion connection deviation from the background metric:<br>
+$\devGamma_{ijk} = \devd_{kij} + \devd_{jik} - \devd_{ijk}$<br>
 <br>
 
 upper Levi-Civita connection associated with the background metric:<br> 
-${\hat{\Gamma}^i}_{jk} = \hat{\gamma}^{il} \hat{\Gamma}_{ljk}$<br>
+${\hatGamma^i}_{jk} = \hatgamma^{il} \hatGamma_{ljk}$<br>
+Notice that this pseudo-tensor raises/lowers wrt the background metric, not the metric metric. Hopefully it's the only case.<br>
 <br>
 
 upper Levi-Civita connection associated with the metric:<br>
@@ -55,33 +68,418 @@ ${\Gamma^i}_{jk} = \frac{1}{2} \gamma^{il} (
 	\gamma_{lj,k} + \gamma_{lk,j} - \gamma_{jk,l} 
 )$<br>
 ${\Gamma^i}_{jk} = \gamma^{il} (d_{klj} + d_{jlk} - d_{ljk} )$<br>
-${\Gamma^i}_{jk} = {d_{kj}}^i + {d_{jk}}^i - {d^i}_{jk}$<br>
+${\Gamma^i}_{jk} = {d_{jk}}^i + {d_{kj}}^i - {d^i}_{jk}$<br>
 ${\Gamma^i}_{jk} = \gamma^{il} (
-	\Delta d_{klj} + \Delta d_{jlk} - \Delta d_{ljk} 
+	\devd_{klj} + \devd_{jlk} - \devd_{ljk} 
 	+ \hat{d}_{klj} + \hat{d}_{jlk} - \hat{d}_{ljk} 
 )$<br>
-${\Gamma^i}_{jk} = \Delta {\Gamma^i}_{jk} + {\hat{\Gamma}^i}_{jk}$<br>
-Notice here that the upper deviation is the deviation of the upper connections.<br>
+${\Gamma^i}_{jk} = \gamma^{il} (\devGamma_{ljk} + \hatGamma_{ljk})$<br>
+${\Gamma^i}_{jk} = {d_{kj}}^i + {d_{jk}}^i - {d^i}_{jk}$<br>
 <br>
 
-lower deviation is the lowered upper deviation, <b>not</b> the deviation of the lower connection.  And it is lowered by the metric, <b>not</b> the background metric:<br>
-$\Delta \Gamma_{ijk} = \gamma_{il} \Delta {\Gamma^l}_{jk}$<br>
+$\Gamma^i = {\Gamma^{ij}}_j = 2 {d_j}^{ji} - {d^{ij}}_j$<br>
 <br>
 
-lower Levi-Civita connection associated with the metric:<br>
-$\Gamma_{ijk} = \gamma_{il} {\Gamma^l}_{jk}$<br>
-$= \gamma_{il} (
-	\Delta {\Gamma^i}_{jk} + {\hat{\Gamma}^i}_{jk}
-) $<br>
-$= (\Delta \gamma_{il} + \hat{\gamma}_{il}) (
-	\Delta {\Gamma^i}_{jk} + {\hat{\Gamma}^i}_{jk}
-)$<br>
+Now, should ${\devGamma^i}_{jk}$ be the difference of upper connections, or should it be the raised difference of lower connections?<br>
+And if it is the raised difference of lower connections then what metric raises and lowers it?<br>
+I'll just say it is the difference of upper connections.<br>
+${\Gamma^i}_{jk} = {\devGamma^i}_{jk} + {\hatGamma^i}_{jk}$<br>
+So remember, don't try to use metric transforms to go between $\devGamma_{ijk}$ and ${\devGamma^i}_{jk}$.<br>
 <br>
 
-...<br>
-Then again, it's such a mess, let's just not worry about defining the upper connection deviation.<br> 
-Lets just define things in terms of the metric deviation and partial metric deviation.<br>
+
+Alright, now Z4 but using hats and deltas instead of metrics.<br>
+At least in the partials / flux terms. Don't mind the source terms.<br>
 <br>
+
+$\alpha_{,t}$:<br>
+<br>
+
+favoring source:<br>
+$\alpha_{,t} 
+	= 
+	  \alpha a_i \beta^i 
+	- f \alpha^2 (K - m \Theta)
+$<br>
+<br>
+
+favoring flux:<br>
+$\alpha_{,t} 
+	- \beta^r \alpha_{,r}
+	= 
+	- f \alpha^2 (K - m \Theta)
+$<br>
+<br>
+
+$\gamma_{ij,t}$:<br>
+<br>
+
+favoring source:<br>
+$\gamma_{ij,t} 
+	= 
+	  2 d_{kij} \beta^k 
+	+ \gamma_{ki} {b^k}_j 
+	+ \gamma_{kj} {b^k}_i
+	- 2 \alpha K_{ij}
+$<br>
+<br>
+
+favoring flux:<br>
+$\gamma_{ij,t} 
+	- \delta^p_i \delta^q_j \beta^r \gamma_{pq,r}
+	- (
+		  \gamma_{ni} \delta^r_j 
+		+ \gamma_{nj} \delta^r_i 
+	) {\beta^n}_{,r}
+	= 
+	- 2 \alpha K_{ij}
+$<br>
+<br>
+
+$\devgamma_{ij,t}$:<br>
+<br>
+
+favoring source:<br>
+$\devgamma_{ij,t}
+	=
+	- \hatgamma_{ij,t}
+	+ 2 d_{kij} \beta^k 
+	+ \gamma_{ki} {b^k}_j 
+	+ \gamma_{kj} {b^k}_i
+	- 2 \alpha K_{ij}
+$<br>
+<br>
+
+favoring flux:<br>
+$\devgamma_{ij,t} 
+	- \beta^r \delta^p_i \delta^q_j \devgamma_{pq,r}
+	- (
+		  \gamma_{ni} \delta^r_j 
+		+ \gamma_{nj} \delta^r_i 
+	) {\beta^n}_{,r}
+	= 
+	- \hatgamma_{ij,t}
+	+ \beta^k \hatgamma_{ij,k}
+	- 2 \alpha K_{ij}
+$<br>
+<br>
+
+
+$a_{k,t}$:<br>
+<br>
+
+favoring source:<br>
+$a_{k,t} 
+	- \beta^r \delta^m_k a_{m,r}
+	+ f \alpha \gamma^{pq} \delta^r_k K_{pq,r} 
+	- f \alpha m \delta^r_k \Theta_{,r}
+	= 
+	+ a_i {b^i}_k
+	- \alpha a_k (f' \alpha + f) (K - m \Theta) 
+	+ 2 f \alpha {d_k}^{jl} K_{jl}
+$<br>
+<br>
+
+favoring flux:<br>
+$a_{k,t} 
+	+ (
+		- \frac{1}{2 \alpha} {b^r}_k
+		+ (f' \alpha + f) (K - m \Theta) \delta^r_k 
+	) \alpha_{,r}
+	- f \alpha K^{pq} \delta^r_k \devgamma_{pq,r}
+	- \beta^r \delta^m_k a_{m,r}
+	+ f \alpha \gamma^{pq} \delta^r_k K_{pq,r} 
+	- f \alpha m \delta^r_k \Theta_{,r} 
+	- \frac{1}{2} a_n \delta^r_k {\beta^n}_{,r}
+	= 
+	+ f \alpha K^{pq} \hatgamma_{pq,k}
+$<br>
+<br>
+
+
+$d_{kij,t}$:<br>
+<br>
+
+favoring source;<br>
+$d_{kij,t} 
+	- \beta^r \delta^m_k \delta^p_i \delta^q_j \devd_{mpq,r}
+	+ \alpha \delta^p_i \delta^q_j \delta^r_k K_{pq,r} 
+	
+	- \frac{1}{2} \delta^r_k (
+		  \gamma_{ni} \delta^m_j
+		+ \gamma_{nj} \delta^m_i
+	) {b^n}_{m,r}
+	
+	= 
+	+ \hat{d}_{lij,k} \beta^l 
+	+ d_{lij} {b^l}_k 
+	+ d_{kli} {b^l}_j 
+	+ d_{klj} {b^l}_i
+	- \alpha a_k K_{ij}
+$<br>
+<br>
+
+favoring flux:<br>
+$d_{kij,t} 
+	+ K_{ij} \delta^r_k \alpha_{,r}
+	
+	- \frac{1}{4} (
+		  {b^r}_k \delta^p_i \delta^q_j 
+		+ {b^q}_j \delta^p_i \delta^r_k 
+		+ {b^p}_i \delta^q_j \delta^r_k 
+	) \devgamma_{pq,r}
+	
+	- \beta^r \delta^m_k \delta^p_i \delta^q_j \devd_{mpq,r}
+	
+	+ \alpha \delta^p_i \delta^q_j \delta^r_k K_{pq,r} 
+	
+	- \frac{1}{2} (
+		  d_{nij} \delta^r_k
+		+ d_{knj} \delta^r_i
+		+ d_{kin} \delta^r_j 
+	) {\beta^n}_{,r}
+	
+	- \frac{1}{2} \delta^r_k (
+		  \gamma_{ni} \delta^m_j
+		+ \gamma_{nj} \delta^m_i
+	) {b^n}_{m,r}
+
+	= 
+	
+	  \hat{d}_{lij,k} \beta^l 
+	
+	+ \frac{1}{4} \hatgamma_{ij,l} {b^l}_k 
+	+ \frac{1}{4} \hatgamma_{li,k} {b^l}_j 
+	+ \frac{1}{4} \hatgamma_{lj,k} {b^l}_i
+	
+$<br>
+<br>
+
+
+$\devd_{kij,t}$:<br>
+<br>
+
+favoring source;<br>
+$\devd_{kij,t} 
+	
+	- \beta^r \delta^m_k \delta^p_i \delta^q_j \devd_{mpq,r}
+	
+	+ \alpha \delta^p_i \delta^q_j \delta^r_k K_{pq,r} 
+	
+	- \frac{1}{2} (
+		  \gamma_{in} \delta^m_j \delta^r_k
+		+ \gamma_{nj} \delta^m_i \delta^r_k
+	) {b^n}_{m,k}
+	
+	= 
+	
+	- \hat{d}_{kij,t}
+	+ \hat{d}_{lij,k} \beta^l 
+	+ d_{lij} {b^l}_k 
+	+ d_{kli} {b^l}_j 
+	+ d_{klj} {b^l}_i
+	- \alpha a_k K_{ij}
+	
+$<br>
+<br>
+
+favoring flux:<br>
+$\devd_{kij,t}
+	
+	+ K_{ij} \delta^r_k \alpha_{,r}
+	
+	- \frac{1}{4} (
+		  {b^r}_k \delta^p_i \delta^q_j
+		+ {b^q}_j \delta^p_i \delta^r_k
+		+ {b^p}_i \delta^q_j \delta^r_k
+	) \devgamma_{pq,r} 
+	
+	- \beta^r \delta^m_k \delta^p_i \delta^q_j \devd_{mpq,r}
+	
+	+ \alpha \delta^p_i \delta^q_j \delta^r_k K_{pq,r} 
+	
+	- \frac{1}{2} (
+		  d_{nij} \delta^r_k
+		+ d_{knj} \delta^r_i
+		+ d_{kin} \delta^r_j 
+	) {\beta^n}_{,r}
+	
+	- \frac{1}{2} \delta^r_k (
+		  \gamma_{in} \delta^m_j
+		+ \gamma_{nj} \delta^m_i 
+	) {b^n}_{m,r}
+	
+	= 
+	
+	- \hat{d}_{kij,t}
+	
+	+ \hat{d}_{lij,k} \beta^l 
+	
+	+ \frac{1}{4} \hatgamma_{ij,l} {b^l}_k 
+	+ \frac{1}{4} \hatgamma_{li,k} {b^l}_j 
+	+ \frac{1}{4} \hatgamma_{lj,k} {b^l}_i
+	
+$<br>
+<br>
+
+$K_{ij,t}$:<br>
+<br>
+
+favoring source:<br>
+$K_{ij,t} 
+	
+	+ \alpha \delta^m_{(i} \delta^r_{j)} a_{m,r} 
+	
+	- \alpha (
+		  2 \gamma^{pr} \delta^m_{(i} \delta^q_{j)}
+		- \gamma^{pq} \delta^m_{(i} \delta^r_{j)}
+		- \gamma^{mr} \delta^p_{(i} \delta^q_{j)}
+	) \devd_{mpq,r}
+	
+	- \beta^r \delta^p_{(i} \delta^q_{j)} K_{pq,r}
+
+	- \alpha (
+		  \delta^m_i \delta^r_j 
+		+ \delta^m_j \delta^r_i
+	) Z_{m,r}
+
+	=
+
+	  \alpha (
+		  2 \gamma^{pr} \delta^m_{(i} \delta^q_{j)}
+		- \gamma^{pq} \delta^m_{(i} \delta^r_{j)}
+		- \gamma^{mr} \delta^p_{(i} \delta^q_{j)}
+	) \hat{d}_{mpq,r}
+	
+	+ 2 K_{k(i} {b^k}_{j)}
+	
+	+ \alpha (
+		- a_{(i} a_{j)}
+		+ (2 {d_{(ij)}}^k - {d^k}_{(ij)}) (a_k + d_k - 2 e_k - Z_k)
+		+ 2 ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
+		+ {d_{(i}}^{kl} d_{j)kl} 
+		+ K K_{(ij)} 
+		- 2 K_{(i|k} {K^k}_{j)}
+	)
+	
+	- \alpha ({\Gamma^k}_{ij} Z_k + 2 \Theta K_{ij})
+	
+	+ 4 \pi \alpha (\gamma_{ij} (S - \rho) - 2 S_{ij})
+$<br>
+<br>
+
+favoring flux:<br>
+$K_{ij,t} 
+
+	+ \frac{1}{2} (
+		  a_i \delta^r_j
+		+ a_j \delta^r_i
+		- {\Gamma^r}_{ij}
+	) \alpha_{,r}
+	
+	+ \alpha Z_k (
+		  \gamma^{kp} \delta^q_j \delta^r_i
+		+ \gamma^{kq} \delta^p_i \delta^r_j
+		- \gamma^{kr} \delta^p_i \delta^q_j
+	) \devgamma_{pq,r}
+
+	- \frac{1}{2} \alpha (
+		
+		+ \frac{1}{2} {d_i}^{pq} \delta^r_j
+		+ \frac{1}{2} {d_j}^{pq} \delta^r_i 
+		
+		+ {d^{rq}}_j \delta^p_i 
+		- {d^{qr}}_j \delta^p_i 
+		
+		+ {d^{rp}}_i \delta^q_j
+		- {d^{pr}}_i \delta^q_j
+	
+		- \frac{1}{2} (
+			  {\Gamma^p}_{ij} \gamma^{qr}
+			+ {\Gamma^q}_{ij} \gamma^{pr}
+			- {\Gamma^r}_{ij} \gamma^{pq}
+		)
+	
+		+ \frac{1}{2} (
+			  \delta^p_m \delta^q_j \delta^r_i
+			+ \delta^p_i \delta^q_m \delta^r_j
+			- \delta^p_i \delta^q_j \delta^r_m
+		) (
+			  a^m
+			+ d^m
+			- 2 e^m
+			+ 2 Z^m
+		)
+	) (\delgamma_{pq,r} + \hatgamma_{pq,r})
+
+	+ \alpha \delta^m_{(i} \delta^r_{j)} a_{m,r} 
+	
+	- \alpha (
+		  2 \gamma^{pr} \delta^m_{(i} \delta^q_{j)}
+		- \gamma^{pq} \delta^m_{(i} \delta^r_{j)}
+		- \gamma^{mr} \delta^p_{(i} \delta^q_{j)}
+	) \devd_{mpq,r}
+
+	- \beta^r \delta^p_{(i} \delta^q_{j)} K_{pq,r}
+	
+	- \alpha (
+		  \delta^m_i \delta^r_j 
+		+ \delta^m_j \delta^r_i
+	) Z_{m,r}
+
+	- (
+		  K_{ni} \delta^r_j
+		+ K_{nj} \delta^r_i
+	) {\beta^n}_{,r}
+	
+	=
+
+	+ \alpha (
+		2 \gamma^{pr} \delta^m_{(i} \delta^q_{j)}
+		- \gamma^{pq} \delta^m_{(i} \delta^r_{j)}
+		- \gamma^{mr} \delta^p_{(i} \delta^q_{j)}
+	) \hat{d}_{mpq,r}
+
+	- \alpha Z^k \hatGamma_{kij}
+
+	+ \alpha (
+		+ K K_{(ij)} 
+		
+		- 2 K_{(i|k} {K^k}_{j)}
+	)
+
+	- 2 \alpha \Theta K_{ij}
+	
+	+ 4 \pi \alpha (\gamma_{ij} (S - \rho) - 2 S_{ij})
+$<br>
+<br>
+
+$\Theta_{,t}$:<br>
+<br>
+
+favoring source:<br>
+$\Theta_{,t} 
+	- \Theta_{,r} \beta^r
+	- \frac{1}{2} \alpha \gamma^{kl} (d_{ilj,k} - d_{ikl,j} - d_{kij,l} + d_{jik,l})
+	- \alpha \gamma^{kl} Z_{l,k}
+	= 
+	
+	- 2 \alpha e^l Z_l
+	+ \frac{1}{2} \alpha (d_{ijl} + d_{jil} - d_{lij}) (d^l - 2 e^l)
+	+ \alpha ({d^{kl}}_j - {d^{lk}}_j) d_{kil}
+	+ \frac{1}{2} \alpha d_{ikl} {d_j}^{kl}
+	+ \frac{1}{2} \alpha (K - 2 \Theta) K 
+	- \frac{1}{2} \alpha K_{ij} K^{ij} 
+	+ \alpha Z_j d^j
+	- \alpha Z^k a_k
+	- 8 \pi \alpha \rho
+$<br>
+<br>
+
+favoring flux:<br>
+<br>
+
+
 
 	</body>
 </html>
