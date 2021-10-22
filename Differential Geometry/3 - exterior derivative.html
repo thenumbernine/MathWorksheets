@@ -75,7 +75,7 @@ Let $c^u = {c_{ab}}^u e^a \otimes e^b = \frac{1}{2} {c_{ab}}^u e^a \wedge e^b$<b
 <br>
 
 structure constant definition using wedge product:<br>
-$\frac{1}{2} c^c e_c (\phi)$<br>
+$c^c e_c (\phi)$<br>
 $= {c_{ab}}^c e_c (\phi) e^a \otimes e^b$<br>
 $= ( e_a (e_b (\phi)) - e_b (e_a(\phi)) ) e^a \otimes e^b$<br>
 $= e_a (e_b (\phi)) (e^a \otimes e^b - e^b \otimes e^a)$<br>
@@ -110,13 +110,6 @@ $	= \partial_a w_b {dx}^a \wedge {dx}^b$<br>
 $	= (\partial_a w_b - \partial_b w_a) {dx}^{|a} \wedge {dx}^{b|}$<br>
 <br>
 
-Exterior derivative of a p-form:<br>
-$d w = d (w_{i_1 ... i_p} e^{i_1} \wedge ... \wedge e^{i_p})$<br>
-$= d (w_{i_1 ... i_p}) \wedge e^{i_1} \wedge ... \wedge e^{i_p}
-	+ (-1)^{j-1} w_{i_1 ... i_p} e^{i_1} \wedge ... \wedge d(e^{i_j}) \wedge ... \wedge e^{i_p}
-$<br>
-<br>
-
 $d T = (d T)_{i_1 ... i_{p+1}} e^{i_1} \otimes ... \otimes e^{i_{p+1}}$<br>
 $= e_{j_1} (T_{j_2 ... j_{p+1}}) \delta^{j_1 ... j_{p+1}}_{i_1 ... i_{p+1}} e^{i_1} \otimes ... \otimes e^{i_{p+1}}$<br>
 $= (p+1)! \cdot e_{[i_1} ( T_{i_2 ... i_{p+1}]} ) e^{i_1} \otimes ... \otimes e^{i_{p+1}}$<br>
@@ -127,29 +120,33 @@ TODO again ... $e_a (T) = e_a (T_{i_1 ... i_p} e^1 \otimes ... \otimes e^p)$ ...
 Is it always true that $e_i (e^j) = 0$, so $e_i (T) = e_i (T_I e^I) = e_i (T_I) e^I$ ?  While $e^j (e_i) = \delta^j_i$.<br>
 <br>
 
-...in a coordinate basis, where $e^\bar{a} = dx^\bar{a}$ and $d(dx^\bar{a}) = 0$:<br>
-$= \partial_j (w_{i_1 ... i_p}) dx^j \wedge dx^{i_1} \wedge ... \wedge dx^{i_p}$<br>
-$= \partial_j (w_{i_1 ... i_p}) \cdot p! \cdot dx^{[j} \otimes dx^{i_1} \otimes ... \otimes dx^{i_p]}$<br>
-<br>
-
 Exterior derivative of a non-coordinate basis one-form:<br>
 (Treating the one-form basis as a linear combination of a coordinate basis)<br>
-$d e^u = d ({e^u}_\bar{b} dx^\bar{b})$<br>
-$= d ({e^u}_\bar{b}) \wedge dx^\bar{b} + {e^u}_\bar{b} d(dx^\bar{b})$<br>
-$= \partial_\bar{a} ({e^u}_\bar{b}) dx^\bar{a} \wedge dx^\bar{b}$<br>
-$= \partial_\bar{a} ({e^u}_\bar{b}) dx^\bar{a} \wedge dx^\bar{b}$<br>
-$= e_a ({e^u}_\bar{b}) {e_b}^\bar{b} e^a \wedge e^b$<br>
-$= e_a ({e^u}_\bar{b}) {e_b}^\bar{b} (e^a \otimes e^b - e^b \otimes e^a)$<br>
-$= (e_a ({e^u}_\bar{b}) {e_b}^\bar{b}
-	- e_b ({e^u}_\bar{b}) {e_a}^\bar{b}
+$d e^u = d ({e^u}_\tilde{b} dx^\tilde{b})$<br>
+$= d ({e^u}_\tilde{b}) \wedge dx^\tilde{b} + {e^u}_\tilde{b} d(dx^\tilde{b})$<br>
+$= \partial_\tilde{a} ({e^u}_\tilde{b}) dx^\tilde{a} \wedge dx^\tilde{b}$<br>
+$= \partial_\tilde{a} ({e^u}_\tilde{b}) dx^\tilde{a} \wedge dx^\tilde{b}$<br>
+$= e_a ({e^u}_\tilde{b}) {e_b}^\tilde{b} e^a \wedge e^b$<br>
+$= e_a ({e^u}_\tilde{b}) {e_b}^\tilde{b} (e^a \otimes e^b - e^b \otimes e^a)$<br>
+$= (e_a ({e^u}_\tilde{b}) {e_b}^\tilde{b}
+	- e_b ({e^u}_\tilde{b}) {e_a}^\tilde{b}
 ) e^a \otimes e^b$<br>
-$= -(e_a ({e_b}^\bar{b}) - e_b ({e_a}^\bar{b})) {e^v}_\bar{b} e^a \otimes e^b$<br>
+$= -(e_a ({e_b}^\tilde{b}) - e_b ({e_a}^\tilde{b})) {e^v}_\tilde{b} e^a \otimes e^b$<br>
 $= -{c_{ab}}^u e^a \otimes e^b$<br>
 $= -\frac{1}{2}{c_{ab}}^u e^a \wedge e^b$<br>
-which looks like the Maurer-Cartan equation.<br>
+$= -c^u$<br>
+$d e^u + c^u = 0$<br>
 <br>
 
-Exterior derivative of a p-form in a non-coordinate basis:<br>
+Exterior derivative of a p-form:<br>
+$d w = d (w_{i_1 ... i_p} e^{i_1} \wedge ... \wedge e^{i_p})$<br>
+$= d (w_{i_1 ... i_p}) \wedge e^{i_1} \wedge ... \wedge e^{i_p}
+	+ (-1)^{j-1} w_{i_1 ... i_p} e^{i_1} \wedge ... \wedge d(e^{i_j}) \wedge ... \wedge e^{i_p}
+$<br>
+...in a coordinate basis, where $e^\tilde{a} = dx^\tilde{a}$ and $d(dx^\tilde{a}) = 0$:<br>
+$= \partial_j (w_{i_1 ... i_p}) dx^j \wedge dx^{i_1} \wedge ... \wedge dx^{i_p}$<br>
+$= \partial_j (w_{i_1 ... i_p}) \cdot p! \cdot dx^{[j} \otimes dx^{i_1} \otimes ... \otimes dx^{i_p]}$<br>
+...in a non-coordinate basis:<br>
 $dw = e_k (w_{i_1 ... i_p}) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p} + (-1)^{j-1} w_{i_1 ... i_p} e^{i_1} \wedge ... \wedge d(e^{i_j}) \wedge ... \wedge e^{i_p}$<br>
 $ =  e_k (w_{i_1 ... i_p}) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p}
 	+ (-1)^{j-1} w_{i_1 ... i_p} e^{i_1} \wedge ... \wedge (-\frac{1}{2} {c_{ab}}^{i_j} e^a \wedge e^b) \wedge ... \wedge e^{i_p}
@@ -164,8 +161,21 @@ $ =  (
 $<br>
 <br>
 
-<!-- TODO when to use omegas and when to use dx's, and a better explination of why which is chosen? -->
-exterior derivative of wedge product of p-form $a$ and q-form $b$:<br>
+Exterior derivative of a wedge of basis forms:<br>
+$d (e^{i_1} \wedge ... \wedge e^{i_p})$<br>
+$= (-1)^{j-1} e^{i_1} \wedge ... \wedge d(e^{i_j}) \wedge ... \wedge e^{i_p} $<br>
+$= (-1)^{j-1} e^{i_1} \wedge ... \wedge e^{i_{j-1}} \wedge c^{i_j} \wedge e^{i_{j+1}} \wedge ... \wedge e^{i_p}$<br>
+$= (-1)^{j-1} e^{i_1} \wedge ... \wedge e^{i_{j-1}} \wedge (-\frac{1}{2} {c_{ab}}^{i_j} e^a \wedge e^b) \wedge e^{i_{j+1}} \wedge ... \wedge e^{i_p}$<br>
+$= -\frac{1}{2} {c_{ab}}^{i_j} (-1)^{j-1} e^{i_1} \wedge ... \wedge e^{i_{j-1}} \wedge e^a \wedge e^b \wedge e^{i_{j+1}} \wedge ... \wedge e^{i_p}$<br>
+$= \frac{1}{2} {c_{ab}}^{i_j} (-1)^j e^{i_1} \wedge ... \wedge e^{i_{j-1}} \wedge e^a \wedge e^b \wedge e^{i_{j+1}} \wedge ... \wedge e^{i_p}$<br>
+$= \frac{1}{2} {c_{ab}}^{i_j} (-1)^{2j-1} e^a \wedge e^{i_1} \wedge ... \wedge e^{i_{j-1}} \wedge e^b \wedge e^{i_{j+1}} \wedge ... \wedge e^{i_p}$<br>
+$= \frac{1}{2} {c_{ab}}^{i_j} (-1)^{3j-2} e^a \wedge e^b \wedge e^{i_1} \wedge ... \wedge e^{i_{j-1}} \wedge e^{i_{j+1}} \wedge ... \wedge e^{i_p}$<br>
+$= \frac{1}{2} {c_{ab}}^{i_j} (-1)^j e^a \wedge e^b \wedge e^{i_1} \wedge ... \wedge e^{i_{j-1}} \wedge e^{i_{j+1}} \wedge ... \wedge e^{i_p}$<br>
+$= -\frac{1}{2} {c_{ab}}^{i_j} (-1)^{j-1} e^a \wedge e^b \wedge e^{i_1} \wedge ... \wedge e^{i_{j-1}} \wedge e^{i_{j+1}} \wedge ... \wedge e^{i_p}$<br>
+$= (-1)^{j-1} c^{i_j} \wedge e^{i_1} \wedge ... \wedge e^{i_{j-1}} \wedge e^{i_{j+1}} \wedge ... \wedge e^{i_p}$<br>
+<br>
+
+Exterior derivative of wedge product of p-form $a$ and q-form $b$:<br>
 $d( a \wedge b ) $<br>
 $ = d ( a_{i_1... i_p} e^{i_1} \wedge ... \wedge e^{i_p} \wedge b_{j_1 ... j_q} e^{j_1} \wedge ... \wedge e^{j_q})$<br>
 $ = d ( a_{i_1... i_p} b_{j_1 ... j_q} e^{i_1} \wedge ... \wedge e^{i_p} \wedge e^{j_1} \wedge ... \wedge e^{j_q})$<br>
@@ -207,18 +217,60 @@ $ = (e_k(a_{i_1... i_p})
 $= da \wedge b + (-1)^p a \wedge db$<br>
 <br>
 
-exterior derivative of inner product: <br>
+Exterior derivative of inner product: <br>
 $ d(u \cdot v) = du \cdot v + u \cdot dv$<br>
 <br>
 
-second exterior derivative:<br>
+Second exterior derivative:<br>
 $d^2(w) = d(
 	(
 		e_k (w_{i_1 ... i_p})
 		- \frac{1}{2} {c_{k i_j}}^b w_{i_1 ... i_{j-1} b i_{j+1} ... i_p}
 	) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p}
+)$<br>
+$= 
+	d (
+		e_k (w_{i_1 ... i_p})
+		- \frac{1}{2} {c_{k i_j}}^b w_{i_1 ... i_{j-1} b i_{j+1} ... i_p}
+	) \wedge e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p}
+	+ (
+		e_k (w_{i_1 ... i_p})
+		- \frac{1}{2} {c_{k i_j}}^b w_{i_1 ... i_{j-1} b i_{j+1} ... i_p}
+	) d(e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p})
 $<br>
-TODO finishme<br>
+$= 
+	e_l (
+		e_k (w_{i_1 ... i_p})
+		- \frac{1}{2} {c_{k i_j}}^b w_{i_1 ... i_{j-1} b i_{j+1} ... i_p}
+	) e^l \wedge e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p}
+	+ (
+		e_k (w_{i_1 ... i_p})
+		- \frac{1}{2} {c_{k i_j}}^b w_{i_1 ... i_{j-1} b i_{j+1} ... i_p}
+	) d(e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p})
+$<br>
+$= 
+	(
+		e_l (e_k (w_{i_1 ... i_p}))
+		- \frac{1}{2} 
+			e_l ({c_{k i_j}}^b)
+			w_{i_1 ... i_{j-1} b i_{j+1} ... i_p}
+		- \frac{1}{2} 
+			{c_{k i_j}}^b
+			e_l (w_{i_1 ... i_{j-1} b i_{j+1} ... i_p})
+	) e^l \wedge e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p}
+	+ (
+		e_k (w_{i_1 ... i_p})
+		- \frac{1}{2} {c_{k i_j}}^b w_{i_1 ... i_{j-1} b i_{j+1} ... i_p}
+	) 
+	(
+		-\frac{1}{2} {c_{mn}}^k e^m \wedge e^n \wedge e^{i_1} \wedge ... \wedge e^{i_p}
+		- e^k \wedge d (e^{i_1} \wedge ... \wedge e^{i_p})
+	)
+
+$<br>
+TODO finishme.<br>
+I bet you end up with $e_i (e_j(...)) - {c_{ij}}^k ...$, the first turns to c's, and somehow they all cancel out.<br>
+Also maybe $e(c)$ goes away because it is really just $e_a([e_b,e_c]) e^a \wedge e^b \wedge e^c = (e_a(e_b(e_c)) - e_a(e_c(e_b))) e^a \wedge e^b \wedge e^c$ so we have symmetric and antisymmetric summed which should cancel.<br>
 <br>
 
 second exterior derivative of a p-form in a coordinate basis:<br>

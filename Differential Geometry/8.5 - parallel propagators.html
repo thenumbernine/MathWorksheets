@@ -1372,10 +1372,12 @@ And you should notice that $[P_\mu, P_\nu] = 0$.  This is because the Riemann cu
 <hr>
 <br>
 
+
+
 Example: Sphere Surface, Coordinate Basis<br>
 <br>
 
-Here's where things detour a bit.  TODO fix them in the above math.<br>
+Here's where things detour a bit.  TODO change the above math to mention the need for extrinsic curvature as well.  Long story short: just don't use a manifold with extrinsic curvature.  Instead use the whole manifold, including the extrinsic curvature.<br>
 <br>
 
 Our coordinates are only $x = \{ \theta, \phi \}$.<br>
@@ -1390,14 +1392,24 @@ ${\Gamma^\phi}_{\theta\phi} = {\Gamma^\phi}_{\phi\theta} = \frac{cos(\theta)}{si
 As matrices:<br>
 <br>
 
-$[\Gamma_\theta] = \left[\begin{matrix}
+$[\Gamma_\theta] 
+ = \left[\begin{matrix}
+	{\Gamma^\theta}_{\theta \theta} & {\Gamma^\theta}_{\theta\phi} \\
+	{\Gamma^\phi}_{\theta \theta} & {\Gamma^\phi}_{\theta\phi}
+\end{matrix}\right]
+= \left[\begin{matrix}
 	0 & 0 \\
 
 	0 & \frac{cos(\theta)}{sin(\theta)}
 \end{matrix}\right]$<br>
 <br>
 
-$[\Gamma_\phi] = \left[\begin{matrix}
+$[\Gamma_\phi] 
+= \left[\begin{matrix}
+	{\Gamma^\theta}_{\phi \theta} & {\Gamma^\theta}_{\phi\phi} \\
+	{\Gamma^\phi}_{\phi \theta} & {\Gamma^\phi}_{\phi\phi}
+\end{matrix}\right]
+= \left[\begin{matrix}
 	0 & -cos(\theta) sin(\theta) \\
 
 	\frac{cos(\theta)}{sin(\theta)} & 0
@@ -1437,14 +1449,110 @@ $(P_\phi)^{-1}(x,y) = \left[\begin{matrix}
 
 	cos(cos(\theta) (\phi_R - \phi_L))
 \end{matrix}\right]$<br>
+<br>
 
-???<br>
 Seems I might need extrinsic curvature.  Does this actually parallel-propagate?  I don't know, but I know if I just divide $P_\phi$ by $cos(\theta)$ then I arrive at the same parallel propagation as the full spherical corodinates has along the $\phi$ coordinate.<br>
 <br>
 
 In fact, if you change $\Gamma \rightarrow \frac{1}{cos(\theta)} \Gamma$ then you get something that looks more similar to the spherical propagator.
-Why does the $cos(\theta)$ get absorbed into the angle of rotation for this one?  Maybe because it isn't present in all terms that are used for the eigenvectors in the full sphere, but in this one it is? Idk.<br>
+Why does the $cos(\theta)$ get absorbed into the angle of rotation for this one?  Maybe because it isn't present in all terms that are used for the eigenvectors in the full sphere, but in this one it is?<br>
 <br>
+
+
+Let's look at how things play out if we include extrinsic curvature.<br>
+Let's define our matrix notation basis to be $\{\partial_r, \partial_\theta, \partial_\phi\}$.<br>
+First let's derive the normal.<br>
+<br>
+
+$n_a = \nabla_a r = \left[ \begin{matrix} 1 & 0 & 0 \end{matrix} \right]$<br>
+<br>
+
+$n^a = g^{ab} n_b = \left[ \begin{matrix}
+	1 \\ 0 \\ 0
+\end{matrix} \right]$<br>
+<br>
+
+$K_{ab} = -\perp \nabla_a n_b$<br>
+$K_{ab} = -\perp (e_a (n_b) - {\Gamma^c}_{ab} n_c)$<br>
+Remember $n_a$ is constant, so we get:<br>
+$K_{ab} = \perp {\Gamma^c}_{ab} n_c$<br>
+And remember $n_r = 1, n_a = 0$ otherwise.<br>
+$K_{ab} = \perp {\Gamma^r}_{ab}$<br>
+$K_{ab} = \left[
+\begin{matrix}
+	0 & 0 & 0 \\
+	0 & -r & 0 \\
+	0 & 0 & -r sin(\theta)^2
+\end{matrix}
+\right]$<br>
+<br>
+
+Now since $K_{ab}$ is a projected tensor, therefore is in the tangent space of the submanifold, we know the $K_{r \mu}$ and $K_{\mu r}$ components are zero for $\mu \in \{ r, \theta, \phi\}$, so we can just omit them:<br>
+$K_{ab} = \left[
+\begin{matrix}
+	-r & 0 \\
+	0 & -r sin(\theta)^2
+\end{matrix}
+\right]$<br>
+<br>
+
+This also fits well with the identity of normal-space connection coefficients:<br>
+${(\Gamma^\perp)^i}_{jk} = n^i K_{jk}$<br>
+<br>
+
+$[\Gamma_\theta] 
+= \left[\begin{matrix}
+	{\Gamma^r}_{\theta \theta} & {\Gamma^r}_{\theta\phi} \\
+	{\Gamma^\theta}_{\theta \theta} & {\Gamma^\theta}_{\theta\phi} \\
+	{\Gamma^\phi}_{\theta \theta} & {\Gamma^\phi}_{\theta\phi}
+\end{matrix}\right]
+= \left[\begin{matrix}
+	-r & 0 \\
+	0 & 0 \\
+	0 & \frac{cos(\theta)}{sin(\theta)}
+\end{matrix}\right]$<br>
+<br>
+
+$[\Gamma_\phi] 
+= \left[\begin{matrix}
+	{\Gamma^r}_{\phi \theta} & {\Gamma^r}_{\phi\phi} \\
+	{\Gamma^\theta}_{\phi \theta} & {\Gamma^\theta}_{\phi\phi} \\
+	{\Gamma^\phi}_{\phi \theta} & {\Gamma^\phi}_{\phi\phi}
+\end{matrix}\right]
+= \left[\begin{matrix}
+	0 & -r sin(\theta)^2 \\
+	0 & -sin(\theta) cos(\theta) \\
+	\frac{cos(\theta)}{sin(\theta)} & 0
+\end{matrix}\right]$<br>
+<br>
+
+
+
+This accounts for ${\Gamma^r}_{ab} = n^r K_{ab} = K_{ab}$, but what about ${\Gamma^a}_{rb}$ or ${\Gamma^a}_{br}$?<br>
+<br>
+
+TODO just that.<br>
+<br>
+
+The connections of the manifold with its perpendicular space was already given above, and it was already shown that it worked in full sphere coordinates.<br>
+<br>
+
+$[\Gamma_\theta] = \left[\begin{matrix}
+	0 & -r & 0 \\
+	\frac{1}{r} & 0 & 0 \\
+	0 & 0 & \frac{cos(\theta)}{sin(\theta)}
+\end{matrix}\right]$<br>
+<br>
+
+$[\Gamma_\phi] = \left[\begin{matrix}
+	0 & 0 & -r sin(\theta)^2 \\
+	0 & 0 & -sin(\theta) cos(\theta) \\
+	\frac{1}{r} & \frac{cos(\theta)}{sin(\theta)} & 0
+\end{matrix}\right]$<br>
+<br>
+
+
+
 
 <br>
 <br>

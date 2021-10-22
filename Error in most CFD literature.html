@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<title>Error in most CFD literature</title>
+		<script type="text/javascript" src='tryToFindMathJax.js'></script>
+	</head>
+    <body>
+
+By Christopher Moore.<br>
+<br>
+
+<i>Edit</i> Nevermind, this is merely the Homogeneity Property of the Euler fluid equations, described in Toro proposition 3.4.<br>
+Something to look out for when applying FVS schemes to other sets of equations.<br>
+<br>
+
+It seems there is an error that is common in most Godunov-based finite-volume CFD literature.<br>
+<br>
+
+Let $U$ be the vector of conserved quantities, $F$ be the flux vector, and $\frac{\partial F}{\partial U}$ be the flux jacobian, and $n$ be the normal of the surface associated with the flux.<br>
+<br>
+
+The incorrect assumption found all too often in CFD literature is that $\frac{\partial F}{\partial U} \cdot U = F$.<br>
+<br>
+
+The correct equation should instead be $\frac{\partial F}{\partial U} \cdot dU = dF$.<br>
+<br>
+
+The distinction between the two equations is that the differential of U (linearly approximated as the difference of U) multiplied by the flux jacobian will produce the differential of F (linearly approximated as the difference of F).<br>
+<br>
+
+This incorrect assumption could creep by undetected in literature if the cases where the incorrect equation is used is only used in the context of differences of fluxes.<br>
+<br>
+
+This incorrect assumption could also sneak in undetected if the flux itself is linear with respect to the conserved quantities.
+$F = A \cdot U$, it will act as 
+$\frac{\partial F}{\partial U} =$ $\frac{\partial}{\partial U} (A \cdot U) = A$ such that $\frac{\partial F}{\partial U} = A \cdot U = F$.
+This is analogous to the statement that $\frac{\partial}{\partial x} (c x) = c$ such that $\frac{\partial}{\partial x} (c x) \cdot x = c \cdot x$.
+It does not hold in the general case.<br>
+<br>
+
+In the specific case of the Euler fluid equations it also happens to be correct.<br>
+<br>
+
+$U^I = \left[\begin{matrix}
+	\rho \\
+	\rho v \\
+	\frac{P}{\gamma - 1} + \frac{1}{2} \rho v^2
+\end{matrix}\right]$<br>
+<br>
+
+$F^I = \left[\begin{matrix}
+	(n \cdot v) \rho \\
+	(n \cdot v) \rho v + P n \\
+	(n \cdot v) (\frac{\gamma}{\gamma - 1} P + \frac{1}{2} \rho v^2)
+\end{matrix}\right]$<br>
+<br>
+
+$\frac{\partial F^I}{\partial U^J} = \left[\begin{matrix}
+	0 &  n^T &  0 \\
+	
+	\frac{1}{2} (\gamma-1) n v^2 - v (n \cdot v) &
+	(n \cdot v) I + v n^T - (\gamma-1) n v^T &
+	(\gamma-1) n \\
+	
+	(n \cdot v) (\frac{1}{2} (\gamma-2) v^2 - \frac{\gamma}{\gamma-1} \frac{1}{\rho} P) &
+	(\frac{\gamma}{\gamma-1} \frac{1}{\rho} P + \frac{1}{2} v^2) n^T - (\gamma-1) (n \cdot v) v^T &
+	\gamma (n \cdot v)
+\end{matrix}\right]$<br>
+<br>
+
+$\frac{\partial F^I}{\partial U^J} \cdot U = \left[\begin{matrix}
+	(n \cdot v) \rho \\
+	(n \cdot v) \rho v + P n \\
+	(n \cdot v) (\frac{\gamma}{\gamma - 1} P + \frac{1}{2} \rho v^2)
+\end{matrix}\right]$<br>
+<br>
+
+However there are counter-examples, such as the shallow-water equations:<br>
+<br>
+
+$U = \left[\begin{matrix}
+	h \\
+	h v
+\end{matrix}\right]$<br>
+<br>
+
+$F^I = \left[\begin{matrix}
+	(n \cdot v) h \\
+	\frac{1}{2} g h^2 n + h (n \cdot v) v
+\end{matrix}\right]$<br>
+<br>
+
+${\frac{\partial { F}^I}{\partial { U}^J}} 
+= \left[\begin{matrix}  
+	0 &  n^T \\
+	
+	g h n - (n \cdot v) v &
+	v n^T + (n \cdot v) I
+\end{matrix}\right]$<br>
+<br>
+
+$\frac{\partial F^I}{\partial U^J} \cdot U = \left[\begin{matrix}
+	(n \cdot v) h \\
+	g h^2 n + h (n \cdot v) v
+\end{matrix}\right]$<br>
+<br>
+
+As you can see, the flux is no longer equal to the jacobian times the state, specifically because the derivative of the quadratic $h$ variable removes the $\frac{1}{2}$ constant, which is present in the flux but not in $\frac{\partial F}{\partial U} \cdot U$.<br>
+<br>
+
+<br>
+
+Ok now for citing the literature that makes this mistake.<br>
+<br>
+
+Dullemond's notes: <a href="https://www.ita.uni-heidelberg.de/~dullemond/lectures/num_fluid_2009/Chapter_6.pdf">https://www.ita.uni-heidelberg.de/~dullemond/lectures/num_fluid_2009/Chapter_6.pdf</a><br>
+I am a big fan of these notes, and I recommmend them to anyone who wants to learn CFD.<br>
+However the erroneous statement comes in at 6.53, which says the flux (in eigenvector space) is equal to lambda times the state (in eigenvector space).<br>
+With that, I will say the resulting equations of the Ch.6 math is correct, however the derivation contains this flaw, and an explanation that includes the faulty assumption that $\frac{\partial F}{\partial U} \cdot U = F$.  I should clarify, this assumption is a correct equality for the Euler fluid equations, so the assumption will become correct in the next chapter where the application is to the Euler fluid equations, but the general derivation of the Roe scheme states this incorrect assumption.<br>
+I believe the result is correct because the final equation of the flux states that the flux is equal to the flux average...<br>
+<br>
+
+	</body>
+</html>
