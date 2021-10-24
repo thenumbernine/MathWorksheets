@@ -54,6 +54,16 @@ ${R^c}_{dab} =
 	+ 2 {\Gamma^c}_{[a|u} {\Gamma^u}_{b]d} 
 	- {\Gamma^c}_{ud} {c_{ab}}^u
 $<br>
+${R^c}_{dab} = 
+	e_a ({\Gamma^c}_{bd}) 
+	- e_b ({\Gamma^c}_{ad}) 
+	
+	+ {\Gamma^c}_{au} {\Gamma^u}_{bd} 
+	- {\Gamma^c}_{bu} {\Gamma^u}_{ad} 
+	
+	- {\Gamma^c}_{ud} {c_{ab}}^u
+$<br>
+
 <br>
 
 Easy to see from this that ${R^a}_{bcd} = {R^a}_{b[cd]}$<br>
@@ -80,144 +90,521 @@ Does this necessarily imply that $h^{ab} R_{abcd} = 0$ for any symmetric $h^{ab}
 (That is what is necessary to prove that $R_{abcd} = R_{[ab]cd}$)<Br>
 <br>
 
-Covariant derivative of a (p,q) form:<br>
-$\nabla_{[x,y]} z = [x,y]^u \nabla_u ({z^{a_1 ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q})$<br>
-$= (x^a e_a(y^u) - y^a e_a(x^u) + x^a y^b {c_{ab}}^u)  ( e_u ({z^{a_1 ... a_p}}_{b_1 ... b_q}) + {\Gamma^{a_i}}_{uc} {z^{a_1 ... c ... a_p}}_{b_1 ... b_q} - {\Gamma^c}_{u b_j} {z^{a_1 ... a_p}}_{b_1 ... c ... b_q} ) e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}$<br>
-<br>
-
-Second covariant derivative of (p,q) form:<br>
-$\nabla_x \nabla_y z = x^u \nabla_u (y^v \nabla_v ({z^{a_1 ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}))$<br>
-$= x^u \nabla_u (y^v
-	(
-		e_v ({z^{a_1 ... a_p}}_{b_1 ... b_q})
-		+ {\Gamma^{a_i}}_{vc} {z^{a_1 ... c ... a_p}}_{b_1 ... b_q}
-		- {\Gamma^c}_{v b_j} {z^{a_1 ... a_p}}_{b_1 ... b_j ... b_q}
-	)
-	e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
+Covariant derivative of (p,q) tensor (TODO put this in covariant derivative)<br>
+$\nabla_u (z) = \nabla_u ({z^A}_B {e_A}^B)$<br>
+$= e_u({z^A}_B) {e_A}^B + {z^A}_B \nabla_u ({e_A}^B)$<br>
+$= e_u({z^A}_B) {e_A}^B + {z^A}_B (
+	\underset{a_i \leftrightarrow c}{{e_A}^B} {\Gamma^c}_{u a_i} 
+	- \underset{b_j \leftrightarrow c}{{e_A}^B} {\Gamma^{b_j}}_{u c}
 )$<br>
-$= x^u ( 
-	e_u (y^v)
-	(
-		e_v ({z^{a_1 ... a_p}}_{b_1 ... b_q})
-		+ {\Gamma^{a_i}}_{vc} {z^{a_1 ... c ... a_p}}_{b_1 ... b_q}
-		- {\Gamma^c}_{v b_j} {z^{a_1 ... a_p}}_{b_1 ... b_j ... b_q}
-	)
-	e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
-
-	$ $+
-
-	y^v
-	\nabla_u (
-		(
-			e_v ({z^{a_1 ... a_p}}_{b_1 ... b_q})
-			+ {\Gamma^{a_i}}_{vc} {z^{a_1 ... c ... a_p}}_{b_1 ... b_q}
-			- {\Gamma^c}_{v b_j} {z^{a_1 ... a_p}}_{b_1 ... b_j ... b_q}
-		)
-		e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
-	)
-
-)$<br>
-$= x^u ( 
-	e_u (y^v)
-	(
-		e_v ({z^{a_1 ... a_p}}_{b_1 ... b_q})
-		+ {\Gamma^{a_i}}_{vc} {z^{a_1 ... c ... a_p}}_{b_1 ... b_q}
-		- {\Gamma^c}_{v b_j} {z^{a_1 ... a_p}}_{b_1 ... b_j ... b_q}
-	)
-	e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
-
-	$ $+
-
-	y^v
-	(
-		(
-			e_u (e_v ({z^{a_1 ... a_p}}_{b_1 ... b_q}))
-			+ e_u ({\Gamma^{a_i}}_{vc} {z^{a_1 ... c ... a_p}}_{b_1 ... b_q})
-			- e_u ({\Gamma^c}_{v b_j} {z^{a_1 ... a_p}}_{b_1 ... b_j ... b_q})
-		)
-		e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
-	$ $	+ 
-		(
-			e_v ({z^{a_1 ... a_p}}_{b_1 ... b_q})
-			+ {\Gamma^{a_i}}_{vc} {z^{a_1 ... c ... a_p}}_{b_1 ... b_q}
-			- {\Gamma^c}_{v b_j} {z^{a_1 ... a_p}}_{b_1 ... b_j ... b_q}
-		)(
-			e_{a_1} \otimes ... \otimes \nabla_u e_{a_k} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
-			+ e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes \nabla_u e^{b_l} \otimes ... \otimes e^{b_q}
-		)
-	)
-
-)$<br>
-$= x^u ( 
-	e_u (y^v)
-	(
-		e_v ({z^{a_1 ... a_p}}_{b_1 ... b_q})
-		+ {\Gamma^{a_i}}_{vc} {z^{a_1 ... c ... a_p}}_{b_1 ... b_q}
-		- {\Gamma^c}_{v b_j} {z^{a_1 ... a_p}}_{b_1 ... c ... b_q}
-	)
-	e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
-
-	$ $+
-
-	y^v
-	(
-		(
-			e_u (e_v ({z^{a_1 ... a_p}}_{b_1 ... b_q}))
-			+ e_u ({\Gamma^{a_i}}_{vc} {z^{a_1 ... c ... a_p}}_{b_1 ... b_q})
-			- e_u ({\Gamma^c}_{v b_j} {z^{a_1 ... a_p}}_{b_1 ... c ... b_q})
-		)
-		e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
-	$ $	+ 
-		(
-			e_v ({z^{a_1 ... a_p}}_{b_1 ... b_q})
-			+ {\Gamma^{a_i}}_{vc} {z^{a_1 ... c ... a_p}}_{b_1 ... b_q}
-			- {\Gamma^c}_{v b_j} {z^{a_1 ... a_p}}_{b_1 ... c ... b_q}
-		)(
-			{\Gamma^d}_{u a_k} e_{a_1} \otimes ... \otimes e_d \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
-			- {\Gamma^{b_l}}_{u d} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^d \otimes ... \otimes e^{b_q}
-		)
-	)
-
-)$<br>
-$= x^u ( 
-	e_u (y^v)
-	(
-		e_v ({z^{a_1 ... a_p}}_{b_1 ... b_q})
-		+ {\Gamma^{a_i}}_{vc} {z^{a_1 ... c ... a_p}}_{b_1 ... b_q}
-		- {\Gamma^c}_{v b_j} {z^{a_1 ... a_p}}_{b_1 ... c ... b_q}
-	)
-	e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
-
-	$ $+
-
-	y^v
-	(
-		(
-			e_u (e_v ({z^{a_1 ... a_p}}_{b_1 ... b_q}))
-			+ e_u ({\Gamma^{a_i}}_{vc} {z^{a_1 ... c ... a_p}}_{b_1 ... b_q})
-			- e_u ({\Gamma^c}_{v b_j} {z^{a_1 ... a_p}}_{b_1 ... c ... b_q})
-		)
-		e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
-	$ $	+ 
-		(
-			e_v ({z^{a_1 ... a_p}}_{b_1 ... b_q})
-			+ {\Gamma^{a_i}}_{vc} {z^{a_1 ... c ... a_p}}_{b_1 ... b_q}
-			- {\Gamma^c}_{v b_j} {z^{a_1 ... a_p}}_{b_1 ... c ... b_q}
-		)(
-			{\Gamma^d}_{u a_k} e_{a_1} \otimes ... \otimes e_d \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
-			- {\Gamma^{b_l}}_{u d} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^d \otimes ... \otimes e^{b_q}
-		)
-	)
-
-)$<br>
-TODO FINISHME... it's going to be another "add-contravariant/subtract-covariant indexes" rules.  Will torsion show up as well, or will it only be of the Riemann curvature tensor?<br>
+$= \left(
+	e_u({z^A}_B)
+	+ \underset{a_i \leftrightarrow c}{{z^A}_B} {\Gamma^{a_i}}_{uc} 
+	- \underset{b_j \leftrightarrow c}{{z^A}_B} {\Gamma^c}_{u b_j}
+\right) {e_A}^B$<br>
 <br>
 
 Riemann curvature of (p,q) tensor:<br>
 $R(x,y) z = \nabla_x \nabla_y z - \nabla_y \nabla_x z - \nabla_{[x,y]} z$<br>
-$= \nabla_x \nabla_y z - \nabla_y \nabla_x z - \nabla_{[x,y]} z$<br>
-TODO FINISHME...<br>
+$= x^a \nabla_a (y^u \nabla_u (z)) - y^a \nabla_a (x^u \nabla_u (z)) - (x^a e_a (y^u) - y^a e_a (x^u) + x^a y^b {c_{ab}}^u) \nabla_u (z)$<br>
+$= x^a e_a (y^u) \nabla_u (z) 
+	+ x^a y^u \nabla_a (\nabla_u (z)) 
+	- y^a e_a (x^u) \nabla_u (z) 
+	- y^a x^u \nabla_a (\nabla_u(z)) 
+	- (x^a e_a (y^u) - y^a e_a (x^u) + x^a y^b {c_{ab}}^u) \nabla_u (z)$<br>
+$= x^a y^u \nabla_a (\nabla_u (z))
+	- y^a x^u \nabla_a (\nabla_u(z))
+	- x^a y^b {c_{ab}}^u \nabla_u (z)$<br>
+$= (x^u y^v - y^u x^v) (\nabla_u (\nabla_v (z)) - \frac{1}{2} {c_{uv}}^r \nabla_r (z))$<br>
+$= \left( x^u y^v - y^u x^v \right) \left(
+	\nabla_u \left(
+		\left(
+			e_v \left( {z^A}_B \right)
+			+ \underset{a_i \leftrightarrow c}{{z^A}_B} {\Gamma^{a_i}}_{vc} 
+			- \underset{b_j \leftrightarrow c}{{z^A}_B} {\Gamma^c}_{v b_j}
+		\right) {e_A}^B
+	\right)
+
+	- \frac{1}{2} {c_{uv}}^r \left(
+		e_r \left( {z^A}_B \right)
+		+ \underset{a_i \leftrightarrow c}{{z^A}_B} {\Gamma^{a_i}}_{rc} 
+		- \underset{b_j \leftrightarrow c}{{z^A}_B} {\Gamma^c}_{r b_j}
+	\right) {e_A}^B
+\right)$<br>
+$= \left( x^u y^v - y^u x^v \right) \left(
+	\left(
+		e_u \left(
+			e_v \left( {z^A}_B \right)
+			
+			+ \underset{a_i \leftrightarrow c}{{z^A}_B} {\Gamma^{a_i}}_{vc} 
+			
+			- \underset{b_j \leftrightarrow c}{{z^A}_B} {\Gamma^c}_{v b_j}
+		\right) 
+		
+		- \frac{1}{2} {c_{uv}}^r \left(
+			e_r \left( {z^A}_B \right)
+			+ \underset{a_i \leftrightarrow c}{{z^A}_B} {\Gamma^{a_i}}_{rc} 
+			- \underset{b_j \leftrightarrow c}{{z^A}_B} {\Gamma^c}_{r b_j}
+		\right)
+	\right) 
+	{e_A}^B
+
+	+ \left(
+		e_v \left( {z^A}_B \right)
+		
+		+ \underset{a_i \leftrightarrow c}{{z^A}_B} {\Gamma^{a_i}}_{vc} 
+		
+		- \underset{b_j \leftrightarrow c}{{z^A}_B} {\Gamma^c}_{v b_j}
+	\right) 
+	\nabla_u ({e_A}^B)
+
+\right)$<br>
+$= \left( x^u y^v - y^u x^v \right) \left(
+	\left(
+		e_u \left(
+			e_v \left( {z^A}_B \right)
+		\right)
+
+		+ \underset{a_i \leftrightarrow c}{ e_u \left( {z^A}_B \right) }
+		{\Gamma^{a_i}}_{vc}
+
+		+ \underset{a_i \leftrightarrow c}{{z^A}_B} 
+		e_u \left( {\Gamma^{a_i}}_{vc} \right) 
+			
+		- \underset{b_j \leftrightarrow c}{ e_u \left( {z^A}_B \right) }
+		{\Gamma^c}_{v b_j}
+		
+		- \underset{b_j \leftrightarrow c}{{z^A}_B} 
+		e_u \left( {\Gamma^c}_{v b_j} \right) 
+		
+		- \frac{1}{2} {c_{uv}}^r \left(
+			e_r \left( {z^A}_B \right)
+			+ \underset{a_i \leftrightarrow c}{{z^A}_B} {\Gamma^{a_i}}_{rc} 
+			- \underset{b_j \leftrightarrow c}{{z^A}_B} {\Gamma^c}_{r b_j}
+		\right)
+	\right) 
+	{e_A}^B
+
+	+ \left(
+		e_v \left( {z^A}_B \right)
+		
+		+ \underset{a_i \leftrightarrow c}{{z^A}_B} {\Gamma^{a_i}}_{vc} 
+		
+		- \underset{b_j \leftrightarrow c}{{z^A}_B} {\Gamma^c}_{v b_j}
+	\right) \left(
+		\underset{a_k \leftrightarrow d}{{e_A}^B} {\Gamma^d}_{u a_k} 
+		- \underset{b_l \leftrightarrow d}{{e_A}^B} {\Gamma^{b_l}}_{u d}
+	\right)
+\right)$<br>
+
+Using $\frac{1}{2} (x^u y^v - y^u x_v) {c_{uv}}^r e_r (s) = x^u y^v {c_{uv}}^r e_r (s) = x^u y^v (e_u (e_v ( s )) - e_v (e_u( s))) = (x^u y^v - x^v y^u) e_u ( e_v ( s ))$<br>
+
+$= \left( x^u y^v - y^u x^v \right) \left(
+	\left(
+		\frac{1}{2} {c_{uv}}^r e_r ( {z^A}_B )
+
+		+ \underset{a_i \leftrightarrow c}{ e_u \left( {z^A}_B \right) }
+		{\Gamma^{a_i}}_{vc}
+
+		+ \underset{a_i \leftrightarrow c}{{z^A}_B} 
+		e_u \left( {\Gamma^{a_i}}_{vc} \right) 
+			
+		- \underset{b_j \leftrightarrow c}{ e_u \left( {z^A}_B \right) }
+		{\Gamma^c}_{v b_j}
+		
+		- \underset{b_j \leftrightarrow c}{{z^A}_B} 
+		e_u \left( {\Gamma^c}_{v b_j} \right) 
+		
+		- \frac{1}{2} {c_{uv}}^r \left(
+			e_r \left( {z^A}_B \right)
+			+ \underset{a_i \leftrightarrow c}{{z^A}_B} {\Gamma^{a_i}}_{rc} 
+			- \underset{b_j \leftrightarrow c}{{z^A}_B} {\Gamma^c}_{r b_j}
+		\right)
+	\right) 
+	{e_A}^B
+
+	+ \left(
+		e_v \left( {z^A}_B \right)
+		
+		+ \underset{a_i \leftrightarrow c}{{z^A}_B} {\Gamma^{a_i}}_{vc} 
+		
+		- \underset{b_j \leftrightarrow c}{{z^A}_B} {\Gamma^c}_{v b_j}
+	\right) \left(
+		\underset{a_k \leftrightarrow d}{{e_A}^B} {\Gamma^d}_{u a_k} 
+		- \underset{b_l \leftrightarrow d}{{e_A}^B} {\Gamma^{b_l}}_{u d}
+	\right)
+\right)$<br>
+$= \left( x^u y^v - y^u x^v \right) \left(
+	\left(
+		\underset{a_i \leftrightarrow c}{ e_u \left( {z^A}_B \right) }
+		{\Gamma^{a_i}}_{vc}
+
+		+ \underset{a_i \leftrightarrow c}{{z^A}_B} 
+		e_u \left( {\Gamma^{a_i}}_{vc} \right) 
+			
+		- \underset{b_j \leftrightarrow c}{ e_u \left( {z^A}_B \right) }
+		{\Gamma^c}_{v b_j}
+		
+		- \underset{b_j \leftrightarrow c}{{z^A}_B} 
+		e_u \left( {\Gamma^c}_{v b_j} \right) 
+		
+		- \frac{1}{2} {c_{uv}}^r \left(
+			\underset{a_i \leftrightarrow c}{{z^A}_B} {\Gamma^{a_i}}_{rc} 
+			- \underset{b_j \leftrightarrow c}{{z^A}_B} {\Gamma^c}_{r b_j}
+		\right)
+	\right) 
+	{e_A}^B
+
+	+ \left(
+		e_v \left( {z^A}_B \right)
+		
+		+ \underset{a_i \leftrightarrow c}{{z^A}_B} {\Gamma^{a_i}}_{vc} 
+		
+		- \underset{b_j \leftrightarrow c}{{z^A}_B} {\Gamma^c}_{v b_j}
+	\right) \left(
+		\underset{a_k \leftrightarrow d}{{e_A}^B} {\Gamma^d}_{u a_k} 
+		- \underset{b_l \leftrightarrow d}{{e_A}^B} {\Gamma^{b_l}}_{u d}
+	\right)
+\right)$<br>
+...<br>
+sidebar:<br>
+
+$ \left( x^u y^v - y^u x^v \right) 
+\left(
+	e_v \left( {z^A}_B \right)
+	
+	+ \underset{a_i \leftrightarrow c}{{z^A}_B} {\Gamma^{a_i}}_{vc} 
+	
+	- \underset{b_j \leftrightarrow c}{{z^A}_B} {\Gamma^c}_{v b_j}
+\right) \left(
+	\underset{a_k \leftrightarrow d}{{e_A}^B} {\Gamma^d}_{u a_k} 
+	- \underset{b_l \leftrightarrow d}{{e_A}^B} {\Gamma^{b_l}}_{u d}
+\right)$<br>
+$= 
+\left( x^u y^v - y^u x^v \right) 
+\left(
+	e_v \left( {z^A}_B \right)
+	\left(
+		\underset{a_k \leftrightarrow d}{{e_A}^B} {\Gamma^d}_{u a_k} 
+		- \underset{b_l \leftrightarrow d}{{e_A}^B} {\Gamma^{b_l}}_{u d}
+	\right)
+	
+	+ \underset{a_i \leftrightarrow c}{{z^A}_B} {\Gamma^{a_i}}_{vc} 
+	\left(
+		\underset{a_k \leftrightarrow d}{{e_A}^B} {\Gamma^d}_{u a_k} 
+		- \underset{b_l \leftrightarrow d}{{e_A}^B} {\Gamma^{b_l}}_{u d}
+	\right)
+	
+	- \underset{b_j \leftrightarrow c}{{z^A}_B} {\Gamma^c}_{v b_j}
+	\left(
+		\underset{a_k \leftrightarrow d}{{e_A}^B} {\Gamma^d}_{u a_k} 
+		- \underset{b_l \leftrightarrow d}{{e_A}^B} {\Gamma^{b_l}}_{u d}
+	\right)
+\right) $<br>
+$= 
+\left( x^u y^v - y^u x^v \right) 
+\left(
+	e_v \left( {z^A}_B \right)
+	\underset{a_k \leftrightarrow d}{{e_A}^B} {\Gamma^d}_{u a_k} 
+	
+	- e_v \left( {z^A}_B \right)
+	\underset{b_l \leftrightarrow d}{{e_A}^B} {\Gamma^{b_l}}_{u d}
+	
+	+ \underset{a_i \leftrightarrow c}{{z^A}_B} {\Gamma^{a_i}}_{vc} 
+	\underset{a_k \leftrightarrow d}{{e_A}^B} {\Gamma^d}_{u a_k} 
+	
+	- \underset{a_i \leftrightarrow c}{{z^A}_B} {\Gamma^{a_i}}_{vc} 
+	\underset{b_l \leftrightarrow d}{{e_A}^B} {\Gamma^{b_l}}_{u d}
+	
+	- \underset{b_j \leftrightarrow c}{{z^A}_B} {\Gamma^c}_{v b_j}
+	\underset{a_k \leftrightarrow d}{{e_A}^B} {\Gamma^d}_{u a_k} 
+	
+	+ \underset{b_j \leftrightarrow c}{{z^A}_B} {\Gamma^c}_{v b_j}
+	\underset{b_l \leftrightarrow d}{{e_A}^B} {\Gamma^{b_l}}_{u d}
+\right)
+$<br>
+$= 
+\left( x^u y^v - y^u x^v \right) 
+\left(
+	\underset{a_k \leftrightarrow d}{e_v \left( {z^A}_B \right)}
+	{\Gamma^{a_k}}_{u d}
+	
+	- 
+	\underset{b_l \leftrightarrow d}{e_v \left( {z^A}_B \right)}
+	{\Gamma^d}_{u b_l}
+	
+	+ 
+	\underset{a_k \leftrightarrow d}{
+		\underset{a_i \leftrightarrow c}{
+			{z^A}_B
+		}
+	}
+	{\Gamma^{a_i}}_{vc}
+	{\Gamma^{a_k}}_{u d}
+	
+	- 
+	\underset{b_l \leftrightarrow d}{
+		\underset{a_i \leftrightarrow c}{
+			{z^A}_B
+		}
+	}
+	{\Gamma^{a_i}}_{vc}
+	{\Gamma^d}_{u b_l}
+	
+	- 
+	\underset{a_k \leftrightarrow d}{
+		\underset{b_j \leftrightarrow c}{
+			{z^A}_B
+		}
+	}
+	{\Gamma^c}_{v b_j}
+	{\Gamma^{a_k}}_{u d}
+	
+	+ 
+	\underset{b_l \leftrightarrow d}{
+		\underset{b_j \leftrightarrow c}{
+			{z^A}_B
+		}
+	}
+	{\Gamma^c}_{v b_j}
+	{\Gamma^d}_{u b_l}
+\right)
+{e_A}^B
+$<br>
+cancel symmetric times antisymmetric sums...<br>
+$= 
+\left( x^u y^v - y^u x^v \right) 
+\left(
+	\underset{a_k \leftrightarrow d}{e_v \left( {z^A}_B \right)}
+	{\Gamma^{a_k}}_{u d}
+	
+	- \underset{b_l \leftrightarrow d}{e_v \left( {z^A}_B \right)}
+	{\Gamma^d}_{u b_l}
+	
+	- \underset{b_l \leftrightarrow d}{
+		\underset{a_i \leftrightarrow c}{
+			{z^A}_B
+		}
+	}
+	{\Gamma^{a_i}}_{vc}
+	{\Gamma^d}_{u b_l}
+	
+	- \underset{b_j \leftrightarrow c}{
+		\underset{a_k \leftrightarrow d}{
+			{z^A}_B
+		}
+	}
+	{\Gamma^c}_{v b_j}
+	{\Gamma^{a_k}}_{u d}
+\right)
+{e_A}^B
+$<br>
+...<br>
+
+$= \left( x^u y^v - y^u x^v \right) 
+\left(
+	\underset{a_i \leftrightarrow c}{ e_u \left( {z^A}_B \right) }
+	{\Gamma^{a_i}}_{vc}
+
+	+ \underset{a_i \leftrightarrow c}{{z^A}_B} 
+	e_u \left( {\Gamma^{a_i}}_{vc} \right) 
+		
+	- \underset{b_j \leftrightarrow c}{ e_u \left( {z^A}_B \right) }
+	{\Gamma^c}_{v b_j}
+	
+	- \underset{b_j \leftrightarrow c}{{z^A}_B} 
+	e_u \left( {\Gamma^c}_{v b_j} \right) 
+	
+	- \frac{1}{2} {c_{uv}}^r \left(
+		\underset{a_i \leftrightarrow c}{{z^A}_B} {\Gamma^{a_i}}_{rc} 
+		- \underset{b_j \leftrightarrow c}{{z^A}_B} {\Gamma^c}_{r b_j}
+	\right)
+
+	+ \underset{a_k \leftrightarrow d}{e_v \left( {z^A}_B \right)}
+	{\Gamma^{a_k}}_{u d}
+	
+	- \underset{b_l \leftrightarrow d}{e_v \left( {z^A}_B \right)}
+	{\Gamma^d}_{u b_l}
+	
+	- \underset{b_l \leftrightarrow d}{
+		\underset{a_i \leftrightarrow c}{
+			{z^A}_B
+		}
+	}
+	{\Gamma^{a_i}}_{vc}
+	{\Gamma^d}_{u b_l}
+	
+	- \underset{b_j \leftrightarrow c}{
+		\underset{a_k \leftrightarrow d}{
+			{z^A}_B
+		}
+	}
+	{\Gamma^c}_{v b_j}
+	{\Gamma^{a_k}}_{u d}
+
+\right) 
+{e_A}^B
+$<br>
+
+using $
+\left( x^u y^v - y^u x^v \right) 
+\left(
+	\underset{a_i \leftrightarrow c}{
+		e_u \left( {z^A}_B \right)
+	}
+	{\Gamma^{a_i}}_{vc}
+	
+	+ \underset{a_i \leftrightarrow c}{
+		e_v \left( {z^A}_B \right)
+	}
+	{\Gamma^{a_i}}_{u c}
+\right) = 0	
+$
+and
+$
+\left( x^u y^v - y^u x^v \right) 
+\left(
+	\underset{b_j \leftrightarrow c}{
+		e_u \left( {z^A}_B \right)
+	}
+	{\Gamma^c}_{v b_j}
+
+	+ \underset{b_j \leftrightarrow c}{
+		e_v \left( {z^A}_B \right)
+	}
+	{\Gamma^c}_{u b_j}
+\right) = 0	
+$, since both are antisymmetric times symmetric
 <br>
+$= \left( x^u y^v - y^u x^v \right) 
+\left(
+	\underset{a_i \leftrightarrow c}{{z^A}_B} 
+	e_u \left( {\Gamma^{a_i}}_{vc} \right) 
+
+	- \underset{b_j \leftrightarrow c}{{z^A}_B} 
+	e_u \left( {\Gamma^c}_{v b_j} \right) 
+
+	- \underset{b_l \leftrightarrow d}{
+		\underset{a_i \leftrightarrow c}{
+			{z^A}_B
+		}
+	}
+	{\Gamma^{a_i}}_{vc}
+	{\Gamma^d}_{u b_l}
+	
+	- \underset{b_j \leftrightarrow c}{
+		\underset{a_k \leftrightarrow d}{
+			{z^A}_B
+		}
+	}
+	{\Gamma^c}_{v b_j}
+	{\Gamma^{a_k}}_{u d}
+
+	- \frac{1}{2} {c_{uv}}^r \left(
+		\underset{a_i \leftrightarrow c}{{z^A}_B} {\Gamma^{a_i}}_{rc} 
+		- \underset{b_j \leftrightarrow c}{{z^A}_B} {\Gamma^c}_{r b_j}
+	\right)
+\right) 
+{e_A}^B
+$<br>
+$= 2 x^{[u} y^{v]} 
+\left(
+	\underset{a_i \leftrightarrow c}{{z^A}_B} 
+	e_u \left( {\Gamma^{a_i}}_{vc} \right) 
+
+	- \underset{b_j \leftrightarrow c}{{z^A}_B} 
+	e_u \left( {\Gamma^c}_{v b_j} \right) 
+
+	- \underset{b_l \leftrightarrow d}{
+		\underset{a_i \leftrightarrow c}{
+			{z^A}_B
+		}
+	}
+	{\Gamma^{a_i}}_{vc}
+	{\Gamma^d}_{u b_l}
+	
+	- \underset{b_j \leftrightarrow c}{
+		\underset{a_k \leftrightarrow d}{
+			{z^A}_B
+		}
+	}
+	{\Gamma^c}_{v b_j}
+	{\Gamma^{a_k}}_{u d}
+
+	- \frac{1}{2} {c_{uv}}^r \left(
+		\underset{a_i \leftrightarrow c}{{z^A}_B} {\Gamma^{a_i}}_{rc} 
+		- \underset{b_j \leftrightarrow c}{{z^A}_B} {\Gamma^c}_{r b_j}
+	\right)
+\right) 
+{e_A}^B
+$<br>
+$= x^u y^v
+\left(
+	\underset{a_i \leftrightarrow c}{{z^A}_B} 
+	\left(
+		2 e_{[u} \left( {\Gamma^{a_i}}_{v]c} \right) 
+		
+		- {\Gamma^{a_i}}_{rc} 
+		{c_{uv}}^r 
+	\right)
+
+	- 
+	\underset{b_j \leftrightarrow c}{{z^A}_B} 
+	\left(
+		2 
+		e_{[u} \left( {\Gamma^c}_{v] b_j} \right) 
+		
+		- 
+		{\Gamma^c}_{r b_j}
+		{c_{uv}}^r 
+	\right)
+
+	+ 2 \underset{b_l \leftrightarrow d}{
+		\underset{a_i \leftrightarrow c}{
+			{z^A}_B
+		}
+	}
+	{\Gamma^{a_i}}_{[u| c}
+	{\Gamma^d}_{v] b_l}
+	
+	- 2 \underset{b_j \leftrightarrow c}{
+		\underset{a_k \leftrightarrow d}{
+			{z^A}_B
+		}
+	}
+	{\Gamma^{a_k}}_{[u| d}
+	{\Gamma^c}_{v] b_j}
+
+\right) 
+{e_A}^B
+$<br>
+...<br>
+The goal should look like:<br>
+$= x^u y^v 
+\left( 
+	\underset{a_i \leftrightarrow c}{ {z^A}_B } 
+	\left(
+		2 e_{[u} ({\Gamma^{a_i}}_{v] c}) 
+		+ 2 {\Gamma^{a_i}}_{[u|r} {\Gamma^r}_{v] c} 
+		- {\Gamma^{a_i}}_{r c} {c_{uv}}^r
+	\right)
+
+	- \underset{b_j \leftrightarrow c}{ {z^A}_B } 
+	\left(
+		2 e_{[u} ({\Gamma^c}_{v]b_j}) 
+		+ 2 {\Gamma^c}_{[u|r} {\Gamma^r}_{v]b_j} 
+		- {\Gamma^c}_{r b_j} {c_{uv}}^r
+	\right)
+\right) {e_A}^B$<br>
+
+$= x^u y^v 
+\left( 
+	\underset{a_i \leftrightarrow c}{ {z^A}_B } {R^{a_i}}_{c uv}
+	- \underset{b_j \leftrightarrow c}{ {z^A}_B } {R^c}_{b_j uv}
+\right) {e_A}^B$<br>
+<br>
+<br>
+
 
 Asymmetry of covariant derivative of scalars:<br>
 $[\nabla_a, \nabla_b] \phi = \nabla_a \nabla_b \phi - \nabla_b \nabla_a \phi$<br>

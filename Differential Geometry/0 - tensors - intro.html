@@ -76,6 +76,18 @@ rank-2 covariant tensors: $w = w_{ab} e^a \otimes e^b : V \otimes V \rightarrow 
 rank-p covariant tensors: $w = w_{a_1 ... a_p} e^{a_1} \otimes ... \otimes e^{a_p} : \underbrace{V \otimes ... \otimes V}_{\times p} \rightarrow \mathbb{R}$<br>
 <br>
 
+Older texts use capital letters to denote groups of indexes:<br>
+However some other texts use capital letters to denote non-coordinate diagonalized basis, so the use of capital indexes will be context-dependent.<br>
+rank-p contravariant tensors: $v = v^A e_A$<br>
+rank-q covariant tensor: $w = w_A e^A$<br>
+rank-(p,q) tensor: $x = {x^A}_B {e_A}^B$<br>
+Notice I am shorthanding 
+	$e_A = \overset{p}{\underset{i=1}{\otimes}} e_{a_i}$,
+	$e^A = \overset{q}{\underset{i=1}{\otimes}} e^{a_i}$,
+	${e_A}^B = \overset{p}{\underset{i=1}{\otimes}} e_{a_i} \overset{q}{\underset{i=1}{\otimes}} e^{b_i}$
+<br>
+<br>
+
 Change of basis of a (p,q) tensor from non-coordinate basis $e_a$ to coordinate basis $e_\bar{a}$:<br>
 Assuming the non-coordinate basis is a linear combination of another coordinate basis: $e_a = {e_a}^\bar{a} e_\bar{a}$<br>
 ${x^{a_1 ... a_p}}_{b_1 ... b_1} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}$<br>
@@ -86,7 +98,9 @@ $= {e_{a_1}}^\bar{a_1} \cdot ... \cdot {e_{a_p}}^\bar{a_p}
 	\cdot {e^{b_1}}_\bar{b_1} \cdot ... \cdot {e^{b_q}}_\bar{b_q}
 	\cdot {x^{a_1 ... a_p}}_{b_1 ... b_1} e_{\bar{a}_1} \otimes ... \otimes e_{\bar{a}_p} \otimes e^{\bar{b}_1} \otimes ... \otimes e^{\bar{b}_q}$<br>
 $= {x^{\bar{a}_1 ... \bar{a}_p}}_{\bar{b}_1 ... \bar{b}_1} e_{\bar{a}_1} \otimes ... \otimes e_{\bar{a}_p} \otimes e^{\bar{b}_1} \otimes ... \otimes e^{\bar{b}_q}$<br>
+In multi-index notation: ${x^A}_B {e_A}^B = {x^\bar{A}}_\bar{B} {e_\bar{A}}^\bar{B}$<br>
 <br>
+
 
 One-form applied to a vector:<br>
 For one-form $w \in V^*$ and vector $v \in V$<br>
@@ -111,12 +125,15 @@ $\delta^a_b = \overset{a\downarrow b\rightarrow}{\left[\matrix{1&0&\dots&0 \\ 0&
 <br>
 
 Kronecher delta extension:<br>
-$\delta^{a_1 \dots a_p}_{b_1 \dots b_p} = p! \delta^{a_1}_{[b_1} \cdot \dots \cdot \delta^{a_p}_{b_p]}$<br>
+$\delta^{a_1 \dots a_p}_{b_1 \dots b_p} = p! \delta^{a_1}_{[b_1} \cdot ... \cdot \delta^{a_p}_{b_p]}$<br>
 $ = 0 $ if any indexes are duplicated<br>
 $ = +1 $ if $a_1 ... a_p$ is a positive permutation of $b_1 ... b_p$<br>
 $ = -1 $ if $a_1 ... a_p$ is a negative permutation of $b_1 ... b_p$<br>
 $ = 0 $ otherwise<br>
+In multi-index notation: $= \delta^A_B = p! \delta^{[A]}_B$<br>
 <br>
+
+
 
 <a href='.'>Back</a><br><br>
 	</body>
