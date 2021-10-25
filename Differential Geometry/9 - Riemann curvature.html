@@ -116,7 +116,7 @@ $= x^a y^u \nabla_a (\nabla_u (z))
 	- y^a x^u \nabla_a (\nabla_u(z))
 	- x^a y^b {c_{ab}}^u \nabla_u (z)$<br>
 $= (x^u y^v - y^u x^v) (\nabla_u (\nabla_v (z)) - \frac{1}{2} {c_{uv}}^r \nabla_r (z))$<br>
-$= \left( x^u y^v - y^u x^v \right) \left(
+$= 2 x^{[u} y^{v]} \left(
 	\nabla_u \left(
 		\left(
 			e_v \left( {z^A}_B \right)
@@ -131,7 +131,7 @@ $= \left( x^u y^v - y^u x^v \right) \left(
 		- \underset{b_j \leftrightarrow c}{{z^A}_B} {\Gamma^c}_{r b_j}
 	\right) {e_A}^B
 \right)$<br>
-$= \left( x^u y^v - y^u x^v \right) \left(
+$= 2 x^{[u} y^{v]} \left(
 	\left(
 		e_u \left(
 			e_v \left( {z^A}_B \right)
@@ -159,7 +159,7 @@ $= \left( x^u y^v - y^u x^v \right) \left(
 	\nabla_u ({e_A}^B)
 
 \right)$<br>
-$= \left( x^u y^v - y^u x^v \right) \left(
+$= 2 x^{[u} y^{v]} \left(
 	\left(
 		e_u \left(
 			e_v \left( {z^A}_B \right)
@@ -197,9 +197,9 @@ $= \left( x^u y^v - y^u x^v \right) \left(
 	\right)
 \right)$<br>
 
-Using $\frac{1}{2} (x^u y^v - y^u x_v) {c_{uv}}^r e_r (s) = x^u y^v {c_{uv}}^r e_r (s) = x^u y^v (e_u (e_v ( s )) - e_v (e_u( s))) = (x^u y^v - x^v y^u) e_u ( e_v ( s ))$<br>
+Using $x^{[u} y^{v]} {c_{uv}}^r e_r (s) = x^u y^v {c_{[uv]}}^r e_r = x^u y^v {c_{uv}}^r e_r (s) = x^u y^v (e_u (e_v ( s )) - e_v (e_u( s))) = (x^u y^v - x^v y^u) e_u ( e_v ( s ))$<br>
 
-$= \left( x^u y^v - y^u x^v \right) \left(
+$= 2 x^{[u} y^{v]} \left(
 	\left(
 		\frac{1}{2} {c_{uv}}^r e_r ( {z^A}_B )
 
@@ -234,7 +234,7 @@ $= \left( x^u y^v - y^u x^v \right) \left(
 		- \underset{b_l \leftrightarrow d}{{e_A}^B} {\Gamma^{b_l}}_{u d}
 	\right)
 \right)$<br>
-$= \left( x^u y^v - y^u x^v \right) \left(
+$= 2 x^{[u} y^{v]} \left(
 	\left(
 		\underset{a_i \leftrightarrow c}{ e_u \left( {z^A}_B \right) }
 		{\Gamma^{a_i}}_{vc}
@@ -266,10 +266,12 @@ $= \left( x^u y^v - y^u x^v \right) \left(
 		- \underset{b_l \leftrightarrow d}{{e_A}^B} {\Gamma^{b_l}}_{u d}
 	\right)
 \right)$<br>
+
+
 ...<br>
 sidebar:<br>
 
-$ \left( x^u y^v - y^u x^v \right) 
+$x^{[u} y^{v]} 
 \left(
 	e_v \left( {z^A}_B \right)
 	
@@ -280,8 +282,7 @@ $ \left( x^u y^v - y^u x^v \right)
 	\underset{a_k \leftrightarrow d}{{e_A}^B} {\Gamma^d}_{u a_k} 
 	- \underset{b_l \leftrightarrow d}{{e_A}^B} {\Gamma^{b_l}}_{u d}
 \right)$<br>
-$= 
-\left( x^u y^v - y^u x^v \right) 
+$= x^{[u} y^{v]} 
 \left(
 	e_v \left( {z^A}_B \right)
 	\left(
@@ -301,8 +302,7 @@ $=
 		- \underset{b_l \leftrightarrow d}{{e_A}^B} {\Gamma^{b_l}}_{u d}
 	\right)
 \right) $<br>
-$= 
-\left( x^u y^v - y^u x^v \right) 
+$= x^{[u} y^{v]} 
 \left(
 	e_v \left( {z^A}_B \right)
 	\underset{a_k \leftrightarrow d}{{e_A}^B} {\Gamma^d}_{u a_k} 
@@ -323,8 +323,7 @@ $=
 	\underset{b_l \leftrightarrow d}{{e_A}^B} {\Gamma^{b_l}}_{u d}
 \right)
 $<br>
-$= 
-\left( x^u y^v - y^u x^v \right) 
+$= x^{[u} y^{v]} 
 \left(
 	\underset{a_k \leftrightarrow d}{e_v \left( {z^A}_B \right)}
 	{\Gamma^{a_k}}_{u d}
@@ -372,8 +371,7 @@ $=
 {e_A}^B
 $<br>
 cancel symmetric times antisymmetric sums...<br>
-$= 
-\left( x^u y^v - y^u x^v \right) 
+$= 2 x^{[u} y^{v]} 
 \left(
 	\underset{a_k \leftrightarrow d}{e_v \left( {z^A}_B \right)}
 	{\Gamma^{a_k}}_{u d}
@@ -401,7 +399,7 @@ $=
 $<br>
 ...<br>
 
-$= \left( x^u y^v - y^u x^v \right) 
+$= 2 x^{[u} y^{v]} 
 \left(
 	\underset{a_i \leftrightarrow c}{ e_u \left( {z^A}_B \right) }
 	{\Gamma^{a_i}}_{vc}
@@ -446,8 +444,8 @@ $= \left( x^u y^v - y^u x^v \right)
 {e_A}^B
 $<br>
 
-using $
-\left( x^u y^v - y^u x^v \right) 
+using 
+$2 x^{[u} y^{v]} 
 \left(
 	\underset{a_i \leftrightarrow c}{
 		e_u \left( {z^A}_B \right)
@@ -458,11 +456,9 @@ using $
 		e_v \left( {z^A}_B \right)
 	}
 	{\Gamma^{a_i}}_{u c}
-\right) = 0	
-$
+\right) = 0$
 and
-$
-\left( x^u y^v - y^u x^v \right) 
+$2 x^{[u} y^{v]} 
 \left(
 	\underset{b_j \leftrightarrow c}{
 		e_u \left( {z^A}_B \right)
@@ -473,10 +469,10 @@ $
 		e_v \left( {z^A}_B \right)
 	}
 	{\Gamma^c}_{u b_j}
-\right) = 0	
-$, since both are antisymmetric times symmetric
+\right) = 0	$, 
+since both are antisymmetric times symmetric
 <br>
-$= \left( x^u y^v - y^u x^v \right) 
+$= 2 x^{[u} y^{v]} 
 \left(
 	\underset{a_i \leftrightarrow c}{{z^A}_B} 
 	e_u \left( {\Gamma^{a_i}}_{vc} \right) 
@@ -667,8 +663,6 @@ $=  {R^c}_{dab} v^d
 $<br>
 <br>
 
-TODO show that $R_{abcd} = R_{cdab}$, or at least for coordinate basis.<br>
-<br>
 <br>
 
 <a href='.'>Back</a><br><br>
