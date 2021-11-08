@@ -69,6 +69,11 @@ Arbitrary (p q) tensor:<br>
 $A = {A^{\mu_1 ... \mu_p}}_{\nu_1 ... \nu_q} 
 	\underset{k=1}{\overset{p}{\otimes}} e_{\mu_k} \underset{k=1}{\overset{q}{\otimes}} e^{\nu_k}
 $<br>
+In multi-index notation: $A = {A^\vec{M}}_\vec{N} {e_\vec{M}}^\vec{N}$.  
+For now I will use vector arrows to distinguish multi-index capital letters from locally-Cartesian(/Minkowski) indexes associated with the basis $e_I$.
+Maybe later I'll change on or the other?<br>
+<br>
+
 Vector field:<br>
 $v = v^\mu e_\mu$<br>
 <br>
@@ -332,6 +337,30 @@ Just write $P_C(s,t)$ and specify that C is a curve, and whether the curve is a 
 I'm not sure whether s and t should be parameters of that curve (which wouldn't convey much information unless the curve was along a coordinate line), or end-points of the curve (which could translate to some degree with our definition of coordinate-line parallel propoagators, however we would be interchanging points with scalars).
 So there is your solution to the geodesic case: just calculate the curve, and then substitute that curve into the coordinate evaluating the connection.<br>
 <br>
+
+Generalizing the curve definition of parallel propagators further, we can write them as:<br>
+<br>
+$e(y) = e(x) P_C^{-1} (x,y)$<br>
+<br>
+for, our parallel propagation along a curve defined as:<br>
+<br>
+${P_C(x,y)^\alpha}_\nu = exp\left( -\int_{\lambda = 0}^{\lambda = 1} [{\Gamma^\alpha}_{\mu\nu}](\vec{C}(\lambda)) \dot{C}^\mu(\lambda) d\lambda \right)$<br>
+<br>
+From here we can do a trick with the definition of connection coefficients.  Let ${\underrightarrow{\omega}^\alpha}_\nu = {\Gamma^\alpha}_{\mu\nu} e^\mu$ define our connection one-forms.  And since one-forms are functions that map vectors to reals, we can rewrite our definition to look like:<br>
+<br>
+${P_C(x,y)^\alpha}_\nu = exp\left( -\int_{\lambda = 0}^{\lambda = 1} {\underrightarrow{\omega}^\alpha}_{\nu} (\vec{C}(\lambda)) (\dot{\vec{C}}(\lambda)) d\lambda \right)$<br>
+<br>
+Now to dispel ambiguities of this representation: 
+The indexes $\alpha, \nu$ do not factor out of the integral -- instead this is a matrix integral.
+The first set of parenthesis after the one-form ${\underrightarrow{\omega}^\alpha}_\nu$ denotes where to evaluate the one-form at.  I guess I could use ${\omega^\alpha}_\nu|_{\vec{C}(\lambda)}$ or even more ambiguous just $\omega|_\lambda$.
+The second set of parenthesis is the vector argument of the one-form function ${\underrightarrow{\omega}^\alpha}_\nu$.<br>
+<br>
+I could make this look worse (or better depending on your opinion) to write it as:<br>
+<br>
+$P_C(x,y) = exp\left( -\int_{\lambda = 0}^{\lambda = 1} \underrightarrow{\omega}|_{\vec{C}(\lambda)} (\dot{\vec{C}}(\lambda)) d\lambda \right)$<br>
+$P_C(x,y) = exp\left( -\int_{\lambda = 0}^{\lambda = 1} \omega|_C (dC) \right)$<br>
+$P = exp\left( -\int \omega (dC) \right)$<br>
+etc...<br>
 <br>
 
 <hr>
