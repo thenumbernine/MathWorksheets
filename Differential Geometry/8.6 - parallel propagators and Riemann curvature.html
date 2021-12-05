@@ -206,27 +206,27 @@ $\mathbf{P}_\theta(\theta_L, \theta_R) = exp \left(
 $\mathbf{P}_\theta(\theta_L, \theta_R) = exp \left(
 	\left[\begin{matrix}
 		0 & 0 \\
-		0 & -log|sin(\theta)|
+		0 & -log(sin(\theta))
 	\end{matrix}\right]_{\theta_L}^{\theta_R} 
 \right)$<br>
 $\mathbf{P}_\theta(\theta_L, \theta_R) = exp 
 	\left[\begin{matrix}
 		0 & 0 \\
-		0 & log|sin(\theta_L)| - log|sin(\theta_R)|
+		0 & log(sin(\theta_L)) - log(sin(\theta_R))
 	\end{matrix}\right]
 $<br>
 $\mathbf{P}_\theta(\theta_L, \theta_R) = exp 
 	\left[\begin{matrix}
 		0 & 0 \\
-		0 & log \left( \frac{ |sin(\theta_L)| }{ |sin(\theta_R)| } \right)
+		0 & log \left( \frac{ sin(\theta_L) }{ sin(\theta_R) } \right)
 	\end{matrix}\right]
 $<br>
 $\mathbf{P}_\theta(\theta_L, \theta_R) = \left[\begin{matrix}
 	1 & 0 \\
-	0 & \frac{ |sin(\theta_L)| }{ |sin(\theta_R)| }
+	0 & \frac{ sin(\theta_L) }{ sin(\theta_R) }
 \end{matrix}\right]
 $<br>
-$\mathbf{P}_\theta(\theta_L, \theta_R) = \mathbf{S}(1, \frac{|sin(\theta_L)|}{|sin(\theta_R)|})$<br>
+$\mathbf{P}_\theta(\theta_L, \theta_R) = \mathbf{S}(1, \frac{sin(\theta_L)}{sin(\theta_R)})$<br>
 <br>
 
 $\mathbf{P}_\phi(\phi_L, \phi_R) = exp \left( -\int_{\phi_L}^{\phi_R} \mathbf{\Gamma}_\phi d\phi \right)$<br>
@@ -258,7 +258,7 @@ $\mathbf{P}_\phi(\phi_L, \phi_R) =
 		1 & 0 \\
 		0 & \frac{1}{sin(\theta)}
 	\end{matrix}\right] 
-	R_z \left(
+	\mathbf{R}_z \left(
 		cos(\theta) (\phi_L - \phi_R)
 	\right)
 	\left[\begin{matrix}
@@ -268,7 +268,7 @@ $\mathbf{P}_\phi(\phi_L, \phi_R) =
 $<br>
 $\mathbf{P}_\phi(\phi_L, \phi_R) =
 	\mathbf{S}(1, \frac{1}{sin(\theta)})
-	\cdot R_z \left( cos(\theta) (\phi_L - \phi_R) \right)
+	\cdot \mathbf{R}_z \left( cos(\theta) (\phi_L - \phi_R) \right)
 	\cdot \mathbf{S}(1, sin(\theta))
 $<br>
 <br>
@@ -294,7 +294,23 @@ $\mathbf{R}_{\theta\phi}
 	-1 & 0
 \end{matrix} \right]
 $<br>
+
+$\mathbf{R}_{\phi\theta}
+= [{R^\mu}_{\nu\phi\theta}]
+= 
+\mu \downarrow
+\overset{\nu \rightarrow}{
+\left[ \begin{matrix}
+	{R^\theta}_{\theta\phi\theta} & {R^\theta}_{\phi\phi\theta} \\
+	{R^\phi}_{\theta\phi\theta} & {R^\phi}_{\phi\phi\theta}
+\end{matrix} \right]
+}
+= \left[ \begin{matrix}
+	0 & -sin(\theta)^2 \\
+	1 & 0
+\end{matrix} \right]$<br>
 <br>
+
 
 Riemann curvature, $\sharp\sharp\flat\flat$:<br>
 ${R^{\theta\phi}}_{\theta\phi}
@@ -314,7 +330,13 @@ $R_{\theta\phi\theta\phi}
 So now that we have the Riemann curvature, how does it relate to parallel propagator commutation of +, or commutation of *?<br>
 <br>
 
+(Also, let 
+$\theta_L \rightarrow \theta, \theta_R \rightarrow \theta + \Delta \theta, 
+\phi_L \rightarrow \phi, \phi_R \rightarrow \phi + \Delta \phi$)<br>
+<br>
+
 With + ...<br>
+<br>
 
 $[\mathbf{P}_\theta, \mathbf{P}_\phi]_{+}$<br>
 $= 
@@ -325,44 +347,105 @@ $=
 	\mathbf{P}_\theta( (\theta_L, \phi_L), (\theta_R, \phi_L) )
 $<br>
 $= 
-	\mathbf{S}(1, \frac{|sin(\theta_L)|}{|sin(\theta_R)|})
+	\mathbf{S}(1, \frac{sin(\theta_L)}{sin(\theta_R)})
 	\cdot \mathbf{S}(1, \frac{1}{sin(\theta_L)})
-	\cdot R_z \left( cos(\theta_L) (\phi_L - \phi_R) \right)
+	\cdot \mathbf{R}_z \left( cos(\theta_L) (\phi_L - \phi_R) \right)
 	\cdot \mathbf{S}(1, sin(\theta_L))
 	- 
 	\mathbf{S}(1, \frac{1}{sin(\theta_R)})
-	\cdot R_z \left( cos(\theta_R) (\phi_L - \phi_R) \right)
+	\cdot \mathbf{R}_z \left( cos(\theta_R) (\phi_L - \phi_R) \right)
 	\cdot \mathbf{S}(1, sin(\theta_R))
-	\cdot \mathbf{S}(1, \frac{|sin(\theta_L)|}{|sin(\theta_R)|})
+	\cdot \mathbf{S}(1, \frac{sin(\theta_L)}{sin(\theta_R)})
 $<br>
 $= 
 	\mathbf{S}(1, \frac{1}{sin(\theta_R)})
-	\cdot R_z \left( cos(\theta_L) (\phi_L - \phi_R) \right)
+	\cdot \mathbf{R}_z \left( cos(\theta_L) (\phi_L - \phi_R) \right)
 	\cdot \mathbf{S}(1, sin(\theta_L))
 	- 
 	\mathbf{S}(1, \frac{1}{sin(\theta_R)})
-	\cdot R_z \left( cos(\theta_R) (\phi_L - \phi_R) \right)
+	\cdot \mathbf{R}_z \left( cos(\theta_R) (\phi_L - \phi_R) \right)
 	\cdot \mathbf{S}(1, sin(\theta_L))
 $<br>
 $= 
 	\mathbf{S}(1, \frac{1}{sin(\theta_R)})
 	\cdot \left(
-		R_z \left( cos(\theta_L) (\phi_L - \phi_R) \right)
-		- R_z \left( cos(\theta_R) (\phi_L - \phi_R) \right)
+		\mathbf{R}_z \left( cos(\theta_L) (\phi_L - \phi_R) \right)
+		- \mathbf{R}_z \left( cos(\theta_R) (\phi_L - \phi_R) \right)
 	\right)
 	\cdot \mathbf{S}(1, sin(\theta_L))
 $<br>
 $= 
 	\mathbf{S}(1, \frac{1}{sin(\theta + \Delta \theta)})
 	\cdot \left(
-		R_z \left( \Delta \phi \cdot cos(\theta + \Delta \theta) \right)
-		- R_z \left( \Delta \phi \cdot cos(\theta) \right)
+		\mathbf{R}_z \left( \Delta \phi \cdot cos(\theta + \Delta \theta) \right)
+		- \mathbf{R}_z \left( \Delta \phi \cdot cos(\theta) \right)
 	\right)
 	\cdot \mathbf{S}(1, sin(\theta))
 $<br>
+$= \left[ \begin{matrix}
+	cos(\Delta \phi \cdot cos(\theta + \Delta \theta)) - cos(\Delta \phi \cdot cos(\theta)) &
+	-sin(\theta) \left( sin(\Delta \phi \cdot cos(\theta + \Delta \theta)) - sin(\Delta \phi \cdot cos(\theta)) \right) \\
+	
+	\frac{1}{sin(\theta + \Delta \theta)} \left( sin(\Delta \phi \cdot cos(\theta + \Delta \theta)) - sin(\Delta \phi \cdot cos(\theta)) \right) &
+	\frac{sin(\theta)}{sin(\theta + \Delta \theta)} \left( cos(\Delta \phi \cdot cos(\theta + \Delta \theta)) - cos(\Delta \phi \cdot cos(\theta)) \right)
+\end{matrix} \right]$<br>
 <br>
 
+The limit is:<br>
+<br>
+
+$\underset{\Delta \theta \rightarrow 0, \Delta \phi \rightarrow 0}{lim} \frac{1}{\Delta \theta \Delta \phi} [\mathbf{P}_\theta, \mathbf{P}_\phi]$<br>
+$= \underset{\Delta \theta \rightarrow 0, \Delta \phi \rightarrow 0}{lim} \frac{1}{\Delta \theta \Delta \phi} 
+	\left[ \begin{matrix}
+		cos(\Delta \phi \cdot cos(\theta + \Delta \theta)) - cos(\Delta \phi \cdot cos(\theta)) &
+		-sin(\theta) \left( sin(\Delta \phi \cdot cos(\theta + \Delta \theta)) - sin(\Delta \phi \cdot cos(\theta)) \right) \\
+		
+		\frac{1}{sin(\theta + \Delta \theta)} \left( sin(\Delta \phi \cdot cos(\theta + \Delta \theta)) - sin(\Delta \phi \cdot cos(\theta)) \right) &
+		\frac{sin(\theta)}{sin(\theta + \Delta \theta)} \left( cos(\Delta \phi \cdot cos(\theta + \Delta \theta)) - cos(\Delta \phi \cdot cos(\theta)) \right)
+	\end{matrix} \right]
+$<br>
+Using $\underset{\Delta \phi \rightarrow 0}{lim} cos(\Delta \phi) = 1$ and $\underset{\Delta \phi \rightarrow 0}{lim} sin(\Delta \phi) = \Delta \phi$:<br>
+$= \underset{\Delta \theta \rightarrow 0, \Delta \phi \rightarrow 0}{lim} \frac{1}{\Delta \theta \Delta \phi} 
+	\left[ \begin{matrix}
+		1 - 1 &
+		-sin(\theta) \left( \Delta \phi \cdot cos(\theta + \Delta \theta) - \Delta \phi \cdot cos(\theta)) \right) \\
+		
+		\frac{1}{sin(\theta + \Delta \theta)} \left( \Delta \phi \cdot cos(\theta + \Delta \theta) - \Delta \phi \cdot cos(\theta) \right) &
+		\frac{sin(\theta)}{sin(\theta + \Delta \theta)} \left( 1 - 1 \right)
+	\end{matrix} \right]
+$<br>
+$= \underset{\Delta \theta \rightarrow 0}{lim} \frac{1}{\Delta \theta} 
+	\left[ \begin{matrix}
+		0 &
+		-sin(\theta) \left( cos(\theta + \Delta \theta) - cos(\theta)) \right) \\
+		
+		\frac{1}{sin(\theta + \Delta \theta)} \left( cos(\theta + \Delta \theta) - cos(\theta) \right) &
+		0
+	\end{matrix} \right]
+$<br>
+Using $\underset{\Delta \theta \rightarrow 0}{lim} \left( \frac{f(\theta + \Delta \theta) - f(\theta)}{\Delta \theta} \right) = \frac{\partial}{\partial \theta} f(\theta)$<br>
+$= \left[ \begin{matrix}
+		0 &
+		-sin(\theta) \frac{\partial}{\partial \theta} cos(\theta) \\
+		
+		\frac{1}{sin(\theta)} \frac{\partial}{\partial \theta} cos(\theta) &
+		0
+	\end{matrix} \right]
+$<br>
+$= \left[ \begin{matrix}
+		0 & sin(\theta)^2 \\
+		-1 & 0
+	\end{matrix} \right]
+$<br>
+$= \mathbf{R}_{\theta\phi}(\theta, \phi)$<br>
+<br>
+
+Nice, this works, even though the commutator definition of the Riemann curvature listed in Wikipedia and StackExchange say to use the $[\cdot, \cdot]_*$ method.  What is its result? ...<br>
+<br>
+
+
 With * ...<br>
+<br>
 
 $[\mathbf{P}_\theta, \mathbf{P}_\phi]_{*}$<br>
 $= 
@@ -379,31 +462,176 @@ $=
 	\cdot \mathbf{P}_\phi( (\theta_L, \phi_L), (\theta_L, \phi_R) )
 $<br>
 $= 
-	\mathbf{S}(1, \frac{|sin(\theta_R)|}{|sin(\theta_L)|})
+	\mathbf{S}(1, \frac{sin(\theta_R)}{sin(\theta_L)})
 	\cdot \mathbf{S}(1, \frac{1}{sin(\theta_R)})
-	\cdot R_z \left( cos(\theta_R) (\phi_R - \phi_L) \right)
+	\cdot \mathbf{R}_z \left( cos(\theta_R) (\phi_R - \phi_L) \right)
 	\cdot \mathbf{S}(1, sin(\theta_R))
-	\cdot \mathbf{S}(1, \frac{|sin(\theta_L)|}{|sin(\theta_R)|})
+	\cdot \mathbf{S}(1, \frac{sin(\theta_L)}{sin(\theta_R)})
 	\cdot \mathbf{S}(1, \frac{1}{sin(\theta_L)})
-	\cdot R_z \left( cos(\theta_L) (\phi_L - \phi_R) \right)
+	\cdot \mathbf{R}_z \left( cos(\theta_L) (\phi_L - \phi_R) \right)
 	\cdot \mathbf{S}(1, sin(\theta_L))
 $<br>
 $= 
 	\mathbf{S}(1, \frac{1}{sin(\theta_L)})
-	\cdot R_z \left( 
+	\cdot \mathbf{R}_z \left( 
 		(cos(\theta_R) - cos(\theta_L)) (\phi_R - \phi_L)
 	\right)
 	\cdot \mathbf{S}(1, sin(\theta_L))
 $<br>
 $= 
 	\mathbf{S}(1, \frac{1}{sin(\theta)})
-	\cdot R_z \left( 
+	\cdot \mathbf{R}_z \left( 
 		\Delta \phi (cos(\theta + \Delta \theta) - cos(\theta))
 	\right)
 	\cdot \mathbf{S}(1, sin(\theta))
 $<br>
+$= 
+	\left[ \begin{matrix}
+		1 & 0 \\
+		0 & \frac{1}{sin(\theta)}
+	\end{matrix} \right]
+	
+	\cdot \left[ \begin{matrix}
+		cos \left( \Delta \phi (cos(\theta + \Delta \theta) - cos(\theta)) \right) &
+		-sin \left( \Delta \phi (cos(\theta + \Delta \theta) - cos(\theta)) \right) \\
+		sin \left( \Delta \phi (cos(\theta + \Delta \theta) - cos(\theta)) \right) &
+		cos \left( \Delta \phi (cos(\theta + \Delta \theta) - cos(\theta)) \right)
+	\end{matrix} \right]
+	
+	\cdot \left[ \begin{matrix}
+		1 & 0 \\
+		0 & sin(\theta)
+	\end{matrix} \right]
+$<br>
+$= 
+	\left[ \begin{matrix}
+		cos \left( \Delta \phi (cos(\theta + \Delta \theta) - cos(\theta)) \right) &
+		-sin(\theta) sin \left( \Delta \phi (cos(\theta + \Delta \theta) - cos(\theta)) \right) \\
+		\frac{1}{sin(\theta)} sin \left( \Delta \phi (cos(\theta + \Delta \theta) - cos(\theta)) \right) &
+		cos \left( \Delta \phi (cos(\theta + \Delta \theta) - cos(\theta)) \right)
+	\end{matrix} \right]
+$<br>
 <br>
 
+The limit is:<br> 
+$\underset{\Delta \theta \rightarrow 0, \Delta \phi \rightarrow 0}{lim} \frac{1}{\Delta \theta \Delta \phi} [\mathbf{P}_\theta, \mathbf{P}_\phi]$<br>
+$= \underset{\Delta \theta \rightarrow 0, \Delta \phi \rightarrow 0}{lim} \frac{1}{\Delta \theta \Delta \phi}
+	\mathbf{S}(1, \frac{1}{sin(\theta)})
+	\cdot \mathbf{R}_z \left( 
+		\Delta \phi (cos(\theta + \Delta \theta) - cos(\theta))
+	\right)
+	\cdot \mathbf{S}(1, sin(\theta))
+$<br>
+TODO what is $\underset{\theta \rightarrow 0}{lim} \mathbf{R}_z(\theta)$?  What about the diagonal 1 values from lim cos?  Should I be commuting minus instead, in order to remove them?<br>
+Technically ... I'm starting to think this is wrong. The rotation limit will have 1's in the diagonal, so we cannot do this.  Does that mean $[\cdot, \cdot]_+$ is the correct commutator?  That is not what Wikipedia and StackExchange say ...<br>
+$= 
+	\underset{\Delta \theta \rightarrow 0, \Delta \phi \rightarrow 0}{lim} \frac{1}{\Delta \theta \Delta \phi}
+	
+	\left[ \begin{matrix}
+		1 & 0 \\
+		0 & \frac{1}{sin(\theta)}
+	\end{matrix} \right]
+	
+	\cdot 
+	\Delta \phi 
+	\left( 
+		cos(\theta + \Delta \theta) - cos(\theta) 
+	\right)
+	\left[ \begin{matrix}
+		0 & -1 \\
+		1 & 0
+	\end{matrix} \right]
+	
+	\cdot \left[ \begin{matrix}
+		1 & 0 \\
+		0 & sin(\theta)
+	\end{matrix} \right]
+$<br>
+$= 
+	\underset{\Delta \phi \rightarrow 0}{lim} \frac{1}{\Delta \phi}
+	
+	\left[ \begin{matrix}
+		1 & 0 \\
+		0 & \frac{1}{sin(\theta)}
+	\end{matrix} \right]
+	
+	\cdot 
+	\Delta \phi 
+	
+	\left( 
+		\underset{\Delta \theta \rightarrow 0}{lim}
+		\frac{cos(\theta + \Delta \theta) - cos(\theta)}{\Delta \theta}
+	\right)
+
+	\left[ \begin{matrix}
+		0 & -1 \\
+		1 & 0
+	\end{matrix} \right]
+	
+	\cdot \left[ \begin{matrix}
+		1 & 0 \\
+		0 & sin(\theta)
+	\end{matrix} \right]
+$<br>
+$= 
+	\underset{\Delta \phi \rightarrow 0}{lim} \frac{1}{\Delta \phi}
+	
+	\left[ \begin{matrix}
+		1 & 0 \\
+		0 & \frac{1}{sin(\theta)}
+	\end{matrix} \right]
+	
+	\cdot \Delta \phi 
+	\cdot \frac{\partial}{\partial \theta}cos(\theta) 
+	\left[ \begin{matrix}
+		0 & -1 \\
+		1 & 0
+	\end{matrix} \right]
+	
+	\cdot \left[ \begin{matrix}
+		1 & 0 \\
+		0 & sin(\theta)
+	\end{matrix} \right]
+$<br>
+$= 
+	\underset{\Delta \phi \rightarrow 0}{lim} \frac{1}{\Delta \phi}
+	
+	\left[ \begin{matrix}
+		1 & 0 \\
+		0 & \frac{1}{sin(\theta)}
+	\end{matrix} \right]
+	
+	\cdot \Delta \phi 
+	\cdot -sin(\theta) 
+	\left[ \begin{matrix}
+		0 & -1 \\
+		1 & 0
+	\end{matrix} \right]
+	
+	\cdot \left[ \begin{matrix}
+		1 & 0 \\
+		0 & sin(\theta)
+	\end{matrix} \right]
+$<br>
+$= 
+	\underset{\Delta \phi \rightarrow 0}{lim} 
+	
+	sin(\theta)
+	\left[ \begin{matrix}
+		0 & sin(\theta) \\
+		-\frac{1}{sin(\theta)} & 0
+	\end{matrix} \right]
+$<br>
+$= 
+	\left[ \begin{matrix}
+		0 & sin(\theta)^2 \\
+		-1 & 0
+	\end{matrix} \right]
+$<br>
+$= \mathbf{R}_{\theta\phi}(\theta, \phi)$<br>
+<br>
+
+<!--
 How about considering the magnitudes of $d\theta$ and $d\phi$?<br>
 $|e_\theta| = r$<br>
 $|e_\phi| = r sin(\theta)$<br>
@@ -412,41 +640,84 @@ $|d\phi| = |e^\phi| = \frac{1}{|e_\phi|} = \frac{1}{r sin(\theta)}$<br>
 So $|d\theta d\phi| = \frac{1}{r^2 sin(\theta)}$<br>
 <br>
 
-So if we are to arclength-parameterize the parallel propagators, $\hat{\theta} = \frac{\theta}{r}$ and $\hat{\phi} = \frac{\phi}{r sin(\theta)}$...<br>
+So if we are to arclength-parameterize the parallel propagators:<br>
+$\hat{\theta} = \frac{\theta}{r}$ and $\hat{\phi} = \frac{\phi}{r sin(\theta)}$<br>
+$\theta = r \hat{\theta}$ and $\phi = r sin(r \hat{\theta}) \hat{\phi}$<br>
 <br>
 
 Then...<br>
 $[\mathbf{P}_\theta, \mathbf{P}_\phi]_{*} = 
 	\mathbf{S}(1, \frac{1}{sin(\theta)})
-	\cdot R_z \left( 
+	\cdot \mathbf{R}_z \left( 
 		\Delta \phi (cos(\theta + \Delta \theta) - cos(\theta))
 	\right)
 	\cdot \mathbf{S}(1, sin(\theta))
 $<br>
-<br>
-
-Then if we look at 
-$\underset{\Delta \theta \rightarrow 0, \Delta \phi \rightarrow 0}{lim} \frac{1}{\Delta \theta \Delta \phi} [\mathbf{P}_\theta, \mathbf{P}_\phi]$...<br>
-$= \underset{\Delta \theta \rightarrow 0, \Delta \phi \rightarrow 0}{lim} \frac{1}{\Delta \theta \Delta \phi}
-	\mathbf{S}(1, \frac{1}{sin(\theta)})
-	\cdot R_z \left( 
-		\Delta \phi (cos(\theta + \Delta \theta) - cos(\theta))
-	\right)
-	\cdot \mathbf{S}(1, sin(\theta))
+$= 
+	\left[ \begin{matrix}
+		cos \left( \Delta \phi (cos(\theta + \Delta \theta) - cos(\theta)) \right) &
+		-sin(\theta) sin \left( \Delta \phi (cos(\theta + \Delta \theta) - cos(\theta)) \right) \\
+		\frac{1}{sin(\theta)} sin \left( \Delta \phi (cos(\theta + \Delta \theta) - cos(\theta)) \right) &
+		cos \left( \Delta \phi (cos(\theta + \Delta \theta) - cos(\theta)) \right)
+	\end{matrix} \right]
 $<br>
 <br>
-
-Ricci curvature, $\sharp\flat$<br>
-${R^\theta}_\theta = {R^\phi}_\phi = \frac{1}{r^2}$<br>
-<br>
+-->
 
 Ricci curvature, $\flat\flat$<br>
 $R_{\theta\theta} = 1$<br>
 $R_{\phi\phi} = sin(\theta)^2$<br>
 <br>
 
+Ricci curvature, $\sharp\flat$<br>
+${R^\theta}_\theta = {R^\phi}_\phi = \frac{1}{r^2}$<br>
+<br>
+
+Can we use Ricci curvature to find propagator commutation?<br>
+<br>
+
+$\mathbf{R} 
+= \left[ \begin{matrix}
+	R_{\theta\theta} & R_{\theta\phi} \\
+	R_{\phi\theta} & R_{\phi\phi}
+\end{matrix} \right]
+= \left[ \begin{matrix}
+	{R^\theta}_{\theta\theta\theta} + {R^\phi}_{\theta\phi\theta} &
+	{R^\theta}_{\theta\theta\phi} + {R^\phi}_{\theta\phi\phi} \\
+	
+	{R^\theta}_{\phi\theta\theta} + {R^\phi}_{\phi\phi\theta} & 
+	{R^\theta}_{\phi\theta\phi} + {R^\phi}_{\phi\phi\phi}
+\end{matrix} \right]
+= \left[ \begin{matrix}
+	{R^\phi}_{\theta\phi\theta} &
+	{R^\theta}_{\theta\theta\phi} \\
+	
+	{R^\phi}_{\phi\phi\theta} & 
+	{R^\theta}_{\phi\theta\phi}
+\end{matrix} \right]
+= \left[ \begin{matrix}
+	1 & 0 \\
+	0 & sin(\theta)^2
+\end{matrix} \right]
+$<br>
+<br>
+
+So for two dimensions it is easy to reverse infer the Riemann curvature from the Ricci curvature.<br>
+<br>
+
+Another interesting fact about this manifold:<br>
+$\mathbf{R} = \frac{1}{r^2} \mathbf{g}$<br>
+<br>
+
 Gaussian curvature:<br>
 $R = \frac{2}{{r}^{2}}$
+<br>
+
+Which just happens to mean ...<br>
+$\mathbf{R} = \frac{1}{2} R \mathbf{g}$<br>
+$\mathbf{R} - \frac{1}{2} R \mathbf{g} = 0$<br>
+...which means, in 2D where n=2, the trace-free version of the Ricci-tensor, $R_{\mu\nu} - \frac{1}{n} R g_{\mu\nu}$, is zero.<br>
+...which makes sense, that the trace-free version would be zero, since the Ricci tensor is purely trace.<br>
 <br>
 
 	</body>
