@@ -192,8 +192,14 @@ $=
 	+ {\hat{\Gamma}^{ea}}_d \Delta_{ebc}
 	- {\hat{\Gamma}^{ea}}_c \Delta_{ebd}
 $<br>
+<br>
 
-Let ${\hat{R}^a}_{bcd} = {\hat{\Gamma}^a}_{bd,c} - {\hat{\Gamma}^a}_{bc,d} + {\hat{\Gamma}^a}_{ec} {\hat{\Gamma}^e}_{bd} - {\hat{\Gamma}^a}_{ed} {\hat{\Gamma}^e}_{bc}$<br>
+Let ${\hat{R}^a}_{bcd} = 
+	  {\hat{\Gamma}^a}_{bd,c} 
+	- {\hat{\Gamma}^a}_{bc,d} 
+	+ {\hat{\Gamma}^a}_{ec} {\hat{\Gamma}^e}_{bd} 
+	- {\hat{\Gamma}^a}_{ed} {\hat{\Gamma}^e}_{bc}
+$<br>
 Substitute to find:<br>
 ${R^a}_{bcd} = {\hat{R}^a}_{bcd}
 	
@@ -289,21 +295,162 @@ $2 g_{ab,c} \hat{g}^{bc} = g_{bc,a} \hat{g}^{bc}$<br>
 $2 (\hat{g}_{ab,c} + h_{ab,c}) \hat{g}^{bc} = (\hat{g}_{bc,a} + h_{bc,a}) \hat{g}^{bc}$<br>
 <br>
 
-using harmonic coordinate condition:<br>
-$R = \hat{R}
-	
-	+ \hat{g}^{ab} \hat{g}^{cd} (
-		  h_{ac,bd}
-		- h_{ab,cd}
+Harmonic gauge condition, weak field approximation, second derivative relation:<br>
+$2 (\hat{g}_{ab,cd} + h_{ab,cd}) \hat{g}^{bc} 
+	+ 2 (\hat{g}_{ab,c} + h_{ab,c}) {\hat{g}^{bc}}_{,d}
+	= (\hat{g}_{bc,ad} + h_{bc,ad}) \hat{g}^{bc}
+	+ (\hat{g}_{bc,a} + h_{bc,a}) {\hat{g}^{bc}}_{,d}
+$<br>
+$h_{ab,cd} \hat{g}^{bc}
+	= \frac{1}{2} (\hat{g}_{bc,ad} + h_{bc,ad}) \hat{g}^{bc}
+	+ \frac{1}{2} (\hat{g}_{bc,a} + h_{bc,a}) {\hat{g}^{bc}}_{,d}
+	- \hat{g}_{ab,cd} \hat{g}^{bc}
+	- (\hat{g}_{ab,c} + h_{ab,c}) {\hat{g}^{bc}}_{,d}
+$<br>
+$h_{ab,cd} \hat{g}^{bc}
+	= \frac{1}{2} (\hat{g}_{bc,ad} + h_{bc,ad}) \hat{g}^{bc}
+	- \hat{g}_{ab,cd} \hat{g}^{bc}
+	- \frac{1}{2} (\hat{g}_{bc,a} + h_{bc,a}) \hat{g}^{be} \hat{g}_{ef,d} \hat{g}^{fc}
+	+ (\hat{g}_{ab,c} + h_{ab,c}) \hat{g}^{be} \hat{g}_{ef,d} \hat{g}^{fc}
+$<br>
+$h_{ab,cd} \hat{g}^{bc}
+	= \frac{1}{2} (\hat{g}_{bc,ad} + h_{bc,ad}) \hat{g}^{bc}
+	- \hat{g}_{ab,cd} \hat{g}^{bc}
+	+ (
+		\hat{g}_{ab,c}
+		- \frac{1}{2} \hat{g}_{bc,a}
+	) \hat{g}^{be} \hat{g}_{ef,d} \hat{g}^{fc}
+	+ (
+		h_{ab,c}
+		- \frac{1}{2} h_{bc,a}
+	) \hat{g}^{be} \hat{g}_{ef,d} \hat{g}^{fc}
+$<br>
+<br>
+
+Harmonic gauge condition if the background metric is cartesian then we get:<br>
+$2 h_{ab,c} \eta^{bc} = h_{bc,a} \eta^{bc}$<br>
+$2 {h_{ab}}^{,b} = {h^b}_{b,a}$<br>
+<br>
+
+using expanded ${\hat{\Gamma}^a}_{bc}$ terms:<br>
+$R_{ab} = 
+	  \frac{1}{2} \hat{g}^{ce} (
+		  \hat{g}_{eb,ac}
+		- \hat{g}_{ab,ec}
+		- \hat{g}_{ec,ab}
+		+ \hat{g}_{ac,eb}
+		
+		+ h_{ac,eb}
+		- h_{ab,ec}
+		- h_{ec,ab} 
+		+ h_{eb,ac} 
 	)
 	
-	+ {\hat{\Gamma}^{da}}_a {\Delta^c}_{cd}
-	- {\hat{\Gamma}^{dc}}_c {\Delta_{da}}^a
-	
-	- \hat{\Gamma}^{dca} \Delta_{cad}
-	+ \hat{\Gamma}^{dca} \Delta_{dac}
-$<br>
+	- {\hat{\Gamma}_{ec}}^c {\hat{\Gamma}^e}_{ab}
+	+ {\hat{\Gamma}_{eb}}^c {\hat{\Gamma}^e}_{ac}
 
+	+ {\Delta^c}_{ce} {\hat{\Gamma}^e}_{ab}
+	- {\Delta^c}_{be} {\hat{\Gamma}^e}_{ac}
+	
+	- {\hat{\Gamma}_{ec}}^c {\Delta^e}_{ab}
+	+ {\hat{\Gamma}_{eb}}^c {\Delta^e}_{ac}
+$<br>
+using harmonic coordinate condition:<br>
+$R_{ab} = 
+	- \frac{1}{2} \hat{g}^{cd} g_{ab,cd}
+	
+	- {\hat{\Gamma}_{ec}}^c {\hat{\Gamma}^e}_{ab}
+	+ {\hat{\Gamma}_{eb}}^c {\hat{\Gamma}^e}_{ac}
+
+	+ {\Delta^c}_{ce} {\hat{\Gamma}^e}_{ab}
+	- {\Delta^c}_{be} {\hat{\Gamma}^e}_{ac}
+	
+	- {\hat{\Gamma}_{ec}}^c {\Delta^e}_{ab}
+	+ {\hat{\Gamma}_{eb}}^c {\Delta^e}_{ac}
+$<br>
+<br>
+
+... but I should be looking for...<br> 
+$h_{ab;cd} g^{cd} \approx g^{cd} \nabla_d (h_{ab,c} - {\Gamma^e}_{ac} h_{eb} - {\Gamma^e}_{bc} h_{ae})$<br>
+$= g^{cd} (
+	
+	h_{ab,cd}
+	
+	- {\Gamma^e}_{ac,d} h_{eb}
+	- {\Gamma^e}_{bc,d} h_{ae}
+	
+	- {\Gamma^e}_{ac} h_{eb,d}
+	- {\Gamma^e}_{bc} h_{ae,d}
+
+	- {\Gamma^f}_{ad} (h_{fb,c} - {\Gamma^e}_{fc} h_{eb} - {\Gamma^e}_{bc} h_{fe})
+
+	- {\Gamma^f}_{bd} (h_{af,c} - {\Gamma^e}_{ac} h_{ef} - {\Gamma^e}_{fc} h_{ae})
+
+	- {\Gamma^f}_{cd} (h_{ab,f} - {\Gamma^e}_{af} h_{eb} - {\Gamma^e}_{bf} h_{ae})
+)$<br>
+$= g^{cd} (
+	h_{ab,cd}
+	
+	- {\Gamma^e}_{cd} h_{ab,e}
+	
+	- {\Gamma^e}_{bd} h_{ae,c}
+	- {\Gamma^e}_{bc} h_{ae,d}
+	
+	- {\Gamma^e}_{ad} h_{be,c}
+	- {\Gamma^e}_{ac} h_{be,d}
+	
+	- {\Gamma^e}_{bc,d} h_{ae}
+	- {\Gamma^e}_{ac,d} h_{be}
+	
+	+ {\Gamma^f}_{bd} {\Gamma^e}_{cf} h_{ae}
+	+ {\Gamma^f}_{cd} {\Gamma^e}_{bf} h_{ae}
+	
+	+ {\Gamma^f}_{ad} {\Gamma^e}_{cf} h_{be}
+	+ {\Gamma^f}_{cd} {\Gamma^e}_{af} h_{be}
+
+	+ {\Gamma^f}_{ad} {\Gamma^e}_{bc} h_{ef}
+	+ {\Gamma^f}_{bd} {\Gamma^e}_{ac} h_{ef}
+)$<br>
+$\approx 
+	\hat{g}^{cd} h_{ab,cd}
+	
+	- 2 {\Gamma^{cd}}_b h_{ac,d}
+	- 2 {\Gamma^{cd}}_a h_{bc,d}
+	- {\Gamma^{cd}}_d h_{ab,c}
+	
+	+ {\Gamma^e}_{cf} {\Gamma^{fc}}_b h_{ae}
+	+ {\Gamma^{fc}}_c {\Gamma^e}_{bf} h_{ae}
+	- \hat{g}^{cd} {\Gamma^e}_{bc,d} h_{ae}
+	
+	+ {\Gamma^e}_{cf} {\Gamma^{fc}}_a h_{be}
+	+ {\Gamma^{fc}}_c {\Gamma^e}_{fa} h_{be}
+	- \hat{g}^{cd} {\Gamma^e}_{ac,d} h_{be}
+
+	+ 2 {\Gamma^{fc}}_a {\Gamma^e}_{cb} h_{ef}
+$<br>
+<br>
+
+$R = g^{ab} R_{ab} \approx \hat{g}^{ab} R_{ab}$<br>
+$= 
+	\hat{g}^{ab} \hat{g}^{cd} h_{ab,cd}
+	
+	- 4 \Gamma^{bac} h_{ab,c}
+	- {\Gamma^{cd}}_d \hat{g}^{ab} h_{ab,c}
+	
+	+ 2 {\Gamma^e}_{ca} \Gamma^{acf} h_{ef}
+	+ 2 {\Gamma^e}_{ca} \Gamma^{fca} h_{ef}
+	
+	+ 2 {\Gamma^{ac}}_c {\Gamma^{ef}}_a h_{ef}
+	
+	- 2 \hat{g}^{cd} {\Gamma^e}_{ac,d} {h^a}_e
+$<br>
+<br>
+
+hmm...<br>
+if $g^{ab} \approx \hat{g}^{ab}$ then ${g^{ab}}_{,c} \approx {\hat{g}^{ab}}_{,c}$<br>
+then $-g^{ae} g_{ef,c} g^{fb} \approx -\hat{g}^{ae} \hat{g}_{ef,c} \hat{g}^{fb}$<br>
+then $-g^{ae} (\Gamma_{efc} + \Gamma_{fec}) g^{fb} \approx -\hat{g}^{ae} (\hat{\Gamma}_{efc} + \hat{\Gamma}_{fec}) \hat{g}^{fb}$<br>
+<br>
 
 	</body>
 </html>
