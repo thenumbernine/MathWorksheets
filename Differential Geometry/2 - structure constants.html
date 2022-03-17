@@ -53,6 +53,9 @@ Therefore ${c_{ab}}^c = (
 	$<br>
 <br>
 
+<hr>
+<br>
+
 Lie derivative of a vector / Lie bracket of two vectors:<br>
 $\mathcal{L}_x y = [x, y] = x y - y x = x (y^c e_c) - y (x^c e_c)$<br>
 Note that vectors are not linear wrt scalar(function) multiplication like one-forms are (are one-forms?)<br>
@@ -82,11 +85,39 @@ $ = s [x, y] - y(s) x$<br>
 TODO explain Lie derivative general definition:<br>
 $ \mathcal{L}_\vec{a} {T^a}_b = a^c e_c( {T^a}_b ) - {T^c}_b e_c(a^b) + {T^a}_c e_b( a^c ) $<br>
 <br>
+
 TODO explain Lie derivative product rule / chain rule:<br>
 $ \mathcal{L}_\vec{a} (uv) = (\mathcal{L}_\vec{a} u) v + u (\mathcal{L}_\vec{a} v) $<br>
 <br>
 
+<hr>
+<br>
 
+Trace of 1st and 3rd in a linear non-coordinate basis:<br>
+${c_{ab}}^a$<br>
+$= 2 e_{[a} ({e_{b]}}^\bar{a}) {e^a}_\bar{a}$<br>
+$= (
+	e_a ({e_b}^\bar{a}) 
+	- e_b ({e_a}^\bar{a})
+) {e^a}_\bar{a}$<br>
+$= 
+	e_a ({e_b}^\bar{a})  {e^a}_\bar{a}
+	- e_b ({e_a}^\bar{a}) {e^a}_\bar{a}
+$<br>
+$= 
+	- {e_b}^\bar{a} e_a ({e^a}_\bar{a})
+	+ {e_a}^\bar{a} e_b ({e^a}_\bar{a})
+$<br>
+Note that $\delta^a_b = {e_b}^\bar{a} {e^a}_\bar{a}$ and $n = \delta^a_a = {e_a}^\bar{a} {e^a}_\bar{a}$.<br>
+Using Jacobi identity (TODO define that one much earlier than worksheet #13 ... would fit well after worksheet #5 on Levi-Civita permutation tensor):<br>
+$= 
+	- {e_b}^\bar{a} e_a ({e^a}_\bar{a})
+	+ \frac{1}{e} e_b (e)
+$<br>
+TODO maybe not just use $g = det(g_{ab})$ and $e = det({e^a}_\bar{a})$?<br>
+<br>
+
+<br>
 
 <a href='.'>Back</a><br><br>
 	</body>

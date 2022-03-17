@@ -1,0 +1,724 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<script type='text/javascript' src='../tryToFindMathJax.js'></script>
+		<title>Parallel Propagators and Riemann Curvature</title>
+	</head>
+	<body>
+
+<br>
+
+
+Riemann curvature:<br>
+<br>
+Notice that order of application of the exp-integrals-of-connections is important.  
+If you were to swap orders then you would have to deal with the $[\nabla_\mu, \nabla_\mu] e_\alpha = e_\beta {R^\beta}_{\alpha\mu\nu}$ Riemann curvature tensor.
+Same works with exp-integrals and parallel propagators.
+<br>
+<br>
+If we were to apply our partial twice then we would end up with this:<br>
+<br>
+$\nabla_\mu \nabla_\nu e_\rho = \nabla_\mu (e_\alpha \cdot {\Gamma^\alpha}_{\nu\rho})$<br>
+$\nabla_\mu \nabla_\nu e_\rho = (\nabla_\mu e_\alpha) \cdot {\Gamma^\alpha}_{\nu\rho} + e_\alpha \cdot \nabla_\mu {\Gamma^\alpha}_{\nu\rho}$<br>
+$\nabla_\mu \nabla_\nu e_\rho = e_\alpha \cdot ({\Gamma^\alpha}_{\mu\beta} \cdot {\Gamma^\beta}_{\nu\rho} + \nabla_\mu {\Gamma^\alpha}_{\nu\rho})$<br>
+Notice because we're considering the covariant derivative on tensor objects rather than on components, the covariant derivative upon a component is just a covariant derivative on a scalar function, which is equal to a partial derivative.
+This always holds true, yet is often omitted from tensor notation when tensor basii are omitted as well.<br>
+$\nabla_\mu \nabla_\nu e_\rho = e_\alpha \cdot \left( {\Gamma^\alpha}_{\mu\beta} \cdot {\Gamma^\beta}_{\nu\rho} + e_\mu\left( {\Gamma^\alpha}_{\nu\rho} \right) \right)$<br>
+Notice here I'm using $e_\mu( \cdot )$ as a function.  This is making use of the typical $e_\mu = \partial_\mu$ definition, but is open to non-coordinate anholonomic definitions.<br>
+$[\nabla_\mu, \nabla_\nu] e_\rho = 2 e_\alpha \cdot \left( 
+	e_{[\mu}\left( {\Gamma^\alpha}_{\nu]\rho} \right) 
+	+ {\Gamma^\alpha}_{[\mu|\beta} \cdot {\Gamma^\beta}_{|\nu]\rho} 
+\right)$<br>
+<br>
+For non-coordinate basis we can add that one last term to equate our tensor to the Riemann curvature tensor:<br>
+<br>
+$\nabla_{({c_{\mu\nu}}^\beta e_\beta)} e_\rho =
+	\nabla_{[e_\mu, e_\nu]} e_\rho =
+	\nabla_{[\mu, \nu]} e_\rho =
+	- e_\alpha \cdot {\Gamma^\alpha}_{\beta\rho} {c_{[\mu\nu]}}^\beta$<br>
+<br>
+...and then we get this:<br>
+<br>
+$[\nabla_\mu, \nabla_\nu] - \nabla_{[\mu, \nu]} e_\rho = e_\alpha \cdot \left( 
+	2 e_{[\mu}\left( {\Gamma^\alpha}_{\nu]\rho} \right) 
+	+ 2 {\Gamma^\alpha}_{[\mu|\beta} \cdot {\Gamma^\beta}_{|\nu]\rho} 
+	- {\Gamma^\alpha}_{\beta\rho} {c_{[\mu\nu]}}^\beta
+\right)$<br>
+$[\nabla_\mu, \nabla_\nu] - \nabla_{[\mu, \nu]} e_\rho = e_\alpha {R^\alpha}_{\rho\mu\nu}$<br>
+<br>
+
+Let's go back to non-coordinate basis and answer what does this mean in terms of parallel propagation?<br>
+<br>
+
+$[\nabla_\mu, \nabla_\nu] {e_\rho}^I(\mathbf{x}) = {e_\alpha}^I(\mathbf{x}) \cdot {R^\alpha}_{\rho\mu\nu}(\mathbf{x})$<br>
+$\frac{\partial}{\partial x^\mu} \left( \nabla_\nu {e_\rho}^I(\mathbf{x}) \right) 
+- \frac{\partial}{\partial x^\nu} \left( \nabla_\mu {e_\rho}^I(\mathbf{x}) \right) 
+	= {e_\alpha}^I(\mathbf{x}) \cdot {R^\alpha}_{\rho\mu\nu}(\mathbf{x})$<br>
+$\int_{x^\mu_L}^{x^\mu_R} {e^\alpha}_I(\mathbf{x}) \cdot d \left( \nabla_\nu {e_\rho}^I(\mathbf{x}) \right)
+	= \int_{x^\mu_L}^{x^\mu_R} {R^\alpha}_{\rho\mu\nu}(\mathbf{x}) \mathbf{dx}^\mu$<br>
+$\nabla_\nu {e_\rho}^I(\mathbf{x}^\mu_R) = {e_\alpha}^I(\mathbf{x}^\mu_L) \cdot exp(\int_{x^\mu_L}^{x^\mu_R} {R^\alpha}_{\rho\mu\nu}(\mathbf{x}) \mathbf{dx}^\mu)$<br>
+$\frac{\partial}{\partial x^\nu} {e_\rho}^I(\mathbf{x}^\mu_R) = {e_\alpha}^I(\mathbf{x}^\mu_L) \cdot exp(\int_{x^\mu_L}^{x^\mu_R} {R^\alpha}_{\rho\mu\nu}(\mathbf{x}) \mathbf{dx}^\mu)$<br>
+$\int_{x^\nu_L}^{x^\nu_R} {e^\alpha}_I(\mathbf{x}^\mu_L, \mathbf{x}^\nu) \cdot d {e_\rho}^I(\mathbf{x}^\mu_R, \mathbf{x}^\nu) 
+	= \int_{x^\nu_L}^{x^\nu_R} exp(\int_{x^\mu_L}^{x^\mu_R} {R^\alpha}_{\rho\mu\nu}(\mathbf{x}^\mu, \mathbf{x}^\nu) \mathbf{dx}^\mu) \mathbf{dx}^\nu$<br>
+${e_\rho}^I(\mathbf{x} \rightarrow \mathbf{x}^\mu_R \rightarrow \mathbf{x}^\nu_R) 
+- {e_\rho}^I(\mathbf{x} \rightarrow \mathbf{x}^\mu_R \rightarrow \mathbf{x}^\nu_R) 
+	= {e_\alpha}^I(\mathbf{x}^\mu_L, \mathbf{x}^\nu_L) \cdot exp\left(
+		\int_{x^\nu_L}^{x^\nu_R} exp\left(
+			\int_{x^\mu_L}^{x^\mu_R} {R^\alpha}_{\rho\mu\nu}(\mathbf{x}^\mu, \mathbf{x}^\nu) \mathbf{dx}^\mu
+		\right) \mathbf{dx}^\nu
+	\right)$<br>
+TODO FIXME this is not correct.<br>
+Somehow you should end up with something similar to ...<br>
+$e_\rho(\mathbf{x}^\mu_R, \mathbf{x}^\nu_R) \cdot {(P^{-1})^\sigma}_\rho(\mathbf{x}^\mu_L, \mathbf{x}^\mu_R) \cdot {(P^{-1})^\tau}_\sigma(\mathbf{x}^\nu_L, \mathbf{x}^\nu_R) 
+- e_\rho(\mathbf{x}^\mu_R, \mathbf{x}^\nu_R) \cdot {(P^{-1})^\sigma}_\rho(\mathbf{x}^\nu_L, \mathbf{x}^\nu_R) \cdot {(P^{-1})^\tau}_\sigma(\mathbf{x}^\mu_L, \mathbf{x}^\mu_R) 
+	= e_\alpha(\mathbf{x}^\mu_L, \mathbf{x}^\nu_L) \cdot exp \int exp \int {R^\alpha}_{\sigma\mu\nu}(\mathbf{x}^\mu, \mathbf{x}^\nu) \mathbf{dx}^\nu \mathbf{dx}^\mu$<br>
+...or similar.  I don't know.<br>
+<br>
+
+<br>
+
+Think about exactly how later.  
+I saw in the referenced S.E. that the commutation of the infintesimal propagator in the $e_\mu$ and then $e_\nu$ direction produces the curvature, so that answers that.<br>
+Actually it doesn't...<br>
+<ul>
+<li type='disc'><a href='https://en.wikipedia.org/wiki/Riemann_curvature_tensor#Formally'>https://en.wikipedia.org/wiki/Riemann_curvature_tensor#Formally</a></li>
+<li type='disc'><a href='https://math.stackexchange.com/questions/1971216/questions-regarding-parallel-propagators'>https://math.stackexchange.com/questions/1971216/questions-regarding-parallel-propagators</a></li>
+<li type='disc'><a href='https://math.stackexchange.com/questions/1337713/commutation-of-parallel-transport-with-covariant-derivative-and-riemann-curvat'>https://math.stackexchange.com/questions/1337713/commutation-of-parallel-transport-with-covariant-derivative-and-riemann-curvat</a></li>
+</ul><Br>
+It turns out all these sources mention the same equation, but none have it referenced.  Some S.E.'s even ask for references, but no one provides.<br>
+I'm betting they all came from something somewhere like the Wiki references, since they all seem to cite $\mathbf{P}_\alpha^{-1} \mathbf{P}_\beta^{-1} \mathbf{P}_\alpha \mathbf{P}_\beta \mathbf{v} = \mathbf{R} \mathbf{v}$.
+One source defines as the zero limit of the propagator, the other defines it as the derivative wrt the parameter of the propagator integrals.
+They cite this instead of the same thing minus identity, which looks like $\mathbf{P}_{[\alpha} \mathbf{P}_{\beta]} \mathbf{v} = \mathbf{R}(\alpha, \beta) \mathbf{v}$, what I am suspicious is true.<br>
+Actually wait, they are talking about a similar thing, but instead of commutation they are looking at commutation in terms of powers ... $(\mathbf{P}_\alpha \mathbf{P}_\beta) (\mathbf{P}_\alpha \mathbf{P}_\beta)^{-1} \mathbf{v} = \mathbf{R}(\alpha, \beta) \mathbf{v}$.<br>
+<br>
+
+Does this mean that, by the Bianchi identity of the Riemann curvature tensor, that exchanging an index may produce a result whose difference with the original is proportional to the Riemann curvature tensor but cycling all indexes will result in the same integral?  I'll think about that later.  Look into the path ordering stuff of Carroll for more on this.<br>
+<br>
+<br>
+
+<hr>
+<br>
+
+So in the <a href="8.5 - parallel propagators.html">"parallel propagators"</a> worksheet I went over how to reconstruct the basis provided that you know the connection at each chart location.
+And in my <a href="https://thenumbernine.github.io/surface-from-connection-lua/docs/README.html">surface-from-connection</a> project I show how important the initial condition of the basis and the connection are.
+Assuming our initial conditions are good, and we know how to propagate our basis, the next question is how do we propagate our connection?<br>
+<br>
+
+Lets take a simplest case study: Sphere Surface:<br>
+<br>
+
+coordinates: $x = \{ \theta, \phi \}$.<br>
+<br>
+
+chart:<br>
+
+$u^I = 
+I \downarrow
+\left[ \begin{matrix}
+	r sin(\theta) cos(\phi) \\
+	r sin(\theta) sin(\phi) \\
+	r cos(\theta)
+\end{matrix} \right]$<br>
+<br>
+
+basis:<br>
+${e_\mu}^I = 
+
+I \downarrow
+\overset{\mu \rightarrow}{
+\left[ \begin{matrix}
+	r cos(\theta) cos(\phi) & -r sin(\theta) sin(\phi) \\
+	r cos(\theta) sin(\phi) & r sin(\theta) cos(\phi) \\
+	-r sin(\theta) & 0
+\end{matrix} \right]
+}$<br>
+<br>
+
+metric:<br>
+<br>
+
+$\textbf{g} 
+= \left[ \begin{matrix}
+	g_{\theta\theta} & g_{\theta\phi} \\
+	g_{\phi\theta} & g_{\phi\phi}
+\end{matrix} \right]
+= \left[ \begin{matrix}
+	r^2 & 0 \\
+	0 & r^2 sin(\theta)^2
+\end{matrix} \right]
+$<br>
+<br>
+
+metric inverse:<br>
+<br>
+
+$\textbf{g}^{-1} 
+= \left[ \begin{matrix}
+	g^{\theta\theta} & g^{\theta\phi} \\
+	g^{\phi\theta} & g^{\phi\phi}
+\end{matrix} \right]
+= \left[ \begin{matrix}
+	\frac{1}{r^2} & 0 \\
+	0 & \frac{1}{r^2 sin(\theta)^2}
+\end{matrix} \right]
+$<br>
+<br>
+
+connections:<br>
+<br>
+
+$\mathbf{\Gamma}_\theta
+ = \left[\begin{matrix}
+	{\Gamma^\theta}_{\theta \theta} & {\Gamma^\theta}_{\theta\phi} \\
+	{\Gamma^\phi}_{\theta \theta} & {\Gamma^\phi}_{\theta\phi}
+\end{matrix}\right]
+= \left[\begin{matrix}
+	0 & 0 \\
+	0 & \frac{cos(\theta)}{sin(\theta)}
+\end{matrix}\right]$<br>
+<br>
+
+$\mathbf{\Gamma}_\phi
+= \left[\begin{matrix}
+	{\Gamma^\theta}_{\phi \theta} & {\Gamma^\theta}_{\phi\phi} \\
+	{\Gamma^\phi}_{\phi \theta} & {\Gamma^\phi}_{\phi\phi}
+\end{matrix}\right]
+= \left[\begin{matrix}
+	0 & -cos(\theta) sin(\theta) \\
+
+	\frac{cos(\theta)}{sin(\theta)} & 0
+\end{matrix}\right]$<br>
+<br>
+
+Parallel Propagators:<br>
+<br>
+
+$\mathbf{P}_\theta(\theta_L, \theta_R) = exp \left( -\int_{\theta_L}^{\theta_R} \mathbf{\Gamma}_\theta d\theta \right)$<br>
+$\mathbf{P}_\theta(\theta_L, \theta_R) = exp \left( 
+	\int_{\theta_L}^{\theta_R}
+		\left[\begin{matrix}
+			0 & 0 \\
+			0 & -\frac{cos(\theta)}{sin(\theta)}
+		\end{matrix}\right]
+	d\theta 
+\right)$<br>
+$\mathbf{P}_\theta(\theta_L, \theta_R) = exp \left(
+	\left[\begin{matrix}
+		0 & 0 \\
+		0 & -log(sin(\theta))
+	\end{matrix}\right]_{\theta_L}^{\theta_R} 
+\right)$<br>
+$\mathbf{P}_\theta(\theta_L, \theta_R) = exp 
+	\left[\begin{matrix}
+		0 & 0 \\
+		0 & log(sin(\theta_L)) - log(sin(\theta_R))
+	\end{matrix}\right]
+$<br>
+$\mathbf{P}_\theta(\theta_L, \theta_R) = exp 
+	\left[\begin{matrix}
+		0 & 0 \\
+		0 & log \left( \frac{ sin(\theta_L) }{ sin(\theta_R) } \right)
+	\end{matrix}\right]
+$<br>
+$\mathbf{P}_\theta(\theta_L, \theta_R) = \left[\begin{matrix}
+	1 & 0 \\
+	0 & \frac{ sin(\theta_L) }{ sin(\theta_R) }
+\end{matrix}\right]
+$<br>
+$\mathbf{P}_\theta(\theta_L, \theta_R) = \mathbf{S}(1, \frac{sin(\theta_L)}{sin(\theta_R)})$<br>
+<br>
+
+$\mathbf{P}_\phi(\phi_L, \phi_R) = exp \left( -\int_{\phi_L}^{\phi_R} \mathbf{\Gamma}_\phi d\phi \right)$<br>
+$\mathbf{P}_\phi(\phi_L, \phi_R) = exp \left( 
+	-\int_{\phi_L}^{\phi_R} 
+		\left[\begin{matrix}
+			0 & -cos(\theta) sin(\theta) \\
+			\frac{cos(\theta)}{sin(\theta)} & 0
+		\end{matrix}\right]
+	d\phi
+\right)$<br>
+$\mathbf{P}_\phi(\phi_L, \phi_R) = exp \left( 
+	cos(\theta) (\phi_L - \phi_R)
+	\left[\begin{matrix}
+		1 & 0 \\
+		0 & \frac{1}{sin(\theta)}
+	\end{matrix}\right] 
+	\left[\begin{matrix}
+		0 & -1 \\
+		1 & 0
+	\end{matrix}\right] 
+	\left[\begin{matrix}
+		1 & 0 \\
+		0 & sin(\theta)
+	\end{matrix}\right] 
+\right)$<br>
+$\mathbf{P}_\phi(\phi_L, \phi_R) = 
+	\left[\begin{matrix}
+		1 & 0 \\
+		0 & \frac{1}{sin(\theta)}
+	\end{matrix}\right] 
+	\mathbf{R}_z \left(
+		cos(\theta) (\phi_L - \phi_R)
+	\right)
+	\left[\begin{matrix}
+		1 & 0 \\
+		0 & sin(\theta)
+	\end{matrix}\right] 
+$<br>
+$\mathbf{P}_\phi(\phi_L, \phi_R) =
+	\mathbf{S}(1, \frac{1}{sin(\theta)})
+	\cdot \mathbf{R}_z \left( cos(\theta) (\phi_L - \phi_R) \right)
+	\cdot \mathbf{S}(1, sin(\theta))
+$<br>
+<br>
+
+Riemann curvature, $\sharp\flat\flat\flat$:<br>
+${R^\theta}_{\phi\theta\phi} = -{R^\theta}_{\phi\phi\theta} = sin(\theta)^2$<br>
+${R^\phi}_{\theta\phi\theta} = -{R^\phi}_{\theta\theta\phi} = 1$<br>
+<br>
+
+Riemann curvature, as a matrix:<br>
+$\mathbf{R}_{\theta\phi} 
+= [{R^\mu}_{\nu\theta\phi}] 
+= 
+\mu \downarrow
+\overset{\nu \rightarrow}{
+\left[ \begin{matrix}
+	{R^\theta}_{\theta\theta\phi} & {R^\theta}_{\phi\theta\phi} \\
+	{R^\phi}_{\theta\theta\phi} & {R^\phi}_{\phi\theta\phi}
+\end{matrix} \right]
+}
+= \left[ \begin{matrix}
+	0 & sin(\theta)^2 \\
+	-1 & 0
+\end{matrix} \right]
+$<br>
+
+$\mathbf{R}_{\phi\theta}
+= [{R^\mu}_{\nu\phi\theta}]
+= 
+\mu \downarrow
+\overset{\nu \rightarrow}{
+\left[ \begin{matrix}
+	{R^\theta}_{\theta\phi\theta} & {R^\theta}_{\phi\phi\theta} \\
+	{R^\phi}_{\theta\phi\theta} & {R^\phi}_{\phi\phi\theta}
+\end{matrix} \right]
+}
+= \left[ \begin{matrix}
+	0 & -sin(\theta)^2 \\
+	1 & 0
+\end{matrix} \right]$<br>
+<br>
+
+
+Riemann curvature, $\sharp\sharp\flat\flat$:<br>
+${R^{\theta\phi}}_{\theta\phi}
+= {R^{\phi\theta}}_{\phi\theta}
+= -{R^{\theta\phi}}_{\phi\theta}
+= -{R^{\phi\theta}}_{\theta\phi} = \frac{1}{r^2}$<br>
+<br>
+
+Riemann curvature, $\flat\flat\flat\flat$ (2D invariant):<br>
+$R_{\theta\phi\theta\phi}
+= R_{\phi\theta\phi\theta}
+= -R_{\theta\phi\phi\theta}
+= -R_{\phi\theta\theta\phi}
+= r^2 sin(\theta)^2$<br>
+<br>
+
+So now that we have the Riemann curvature, how does it relate to parallel propagator commutation of +, or commutation of *?<br>
+<br>
+
+(Also, let 
+$\theta_L \rightarrow \theta, \theta_R \rightarrow \theta + \Delta \theta, 
+\phi_L \rightarrow \phi, \phi_R \rightarrow \phi + \Delta \phi$)<br>
+<br>
+
+With + ...<br>
+<br>
+
+$[\mathbf{P}_\theta, \mathbf{P}_\phi]_{+}$<br>
+$= 
+	\mathbf{P}_\theta(  (\theta_L, \phi_R), (\theta_R, \phi_R) )
+	\mathbf{P}_\phi( (\theta_L, \phi_L), (\theta_L, \phi_R) )
+	- 
+	\mathbf{P}_\phi( (\theta_R, \phi_L), (\theta_R, \phi_R) )
+	\mathbf{P}_\theta( (\theta_L, \phi_L), (\theta_R, \phi_L) )
+$<br>
+$= 
+	\mathbf{S}(1, \frac{sin(\theta_L)}{sin(\theta_R)})
+	\cdot \mathbf{S}(1, \frac{1}{sin(\theta_L)})
+	\cdot \mathbf{R}_z \left( cos(\theta_L) (\phi_L - \phi_R) \right)
+	\cdot \mathbf{S}(1, sin(\theta_L))
+	- 
+	\mathbf{S}(1, \frac{1}{sin(\theta_R)})
+	\cdot \mathbf{R}_z \left( cos(\theta_R) (\phi_L - \phi_R) \right)
+	\cdot \mathbf{S}(1, sin(\theta_R))
+	\cdot \mathbf{S}(1, \frac{sin(\theta_L)}{sin(\theta_R)})
+$<br>
+$= 
+	\mathbf{S}(1, \frac{1}{sin(\theta_R)})
+	\cdot \mathbf{R}_z \left( cos(\theta_L) (\phi_L - \phi_R) \right)
+	\cdot \mathbf{S}(1, sin(\theta_L))
+	- 
+	\mathbf{S}(1, \frac{1}{sin(\theta_R)})
+	\cdot \mathbf{R}_z \left( cos(\theta_R) (\phi_L - \phi_R) \right)
+	\cdot \mathbf{S}(1, sin(\theta_L))
+$<br>
+$= 
+	\mathbf{S}(1, \frac{1}{sin(\theta_R)})
+	\cdot \left(
+		\mathbf{R}_z \left( cos(\theta_L) (\phi_L - \phi_R) \right)
+		- \mathbf{R}_z \left( cos(\theta_R) (\phi_L - \phi_R) \right)
+	\right)
+	\cdot \mathbf{S}(1, sin(\theta_L))
+$<br>
+$= 
+	\mathbf{S}(1, \frac{1}{sin(\theta + \Delta \theta)})
+	\cdot \left(
+		\mathbf{R}_z \left( \Delta \phi \cdot cos(\theta + \Delta \theta) \right)
+		- \mathbf{R}_z \left( \Delta \phi \cdot cos(\theta) \right)
+	\right)
+	\cdot \mathbf{S}(1, sin(\theta))
+$<br>
+$= \left[ \begin{matrix}
+	cos(\Delta \phi \cdot cos(\theta + \Delta \theta)) - cos(\Delta \phi \cdot cos(\theta)) &
+	-sin(\theta) \left( sin(\Delta \phi \cdot cos(\theta + \Delta \theta)) - sin(\Delta \phi \cdot cos(\theta)) \right) \\
+	
+	\frac{1}{sin(\theta + \Delta \theta)} \left( sin(\Delta \phi \cdot cos(\theta + \Delta \theta)) - sin(\Delta \phi \cdot cos(\theta)) \right) &
+	\frac{sin(\theta)}{sin(\theta + \Delta \theta)} \left( cos(\Delta \phi \cdot cos(\theta + \Delta \theta)) - cos(\Delta \phi \cdot cos(\theta)) \right)
+\end{matrix} \right]$<br>
+<br>
+
+The limit is:<br>
+<br>
+
+$\underset{\Delta \theta \rightarrow 0, \Delta \phi \rightarrow 0}{lim} \frac{1}{\Delta \theta \Delta \phi} [\mathbf{P}_\theta, \mathbf{P}_\phi]$<br>
+$= \underset{\Delta \theta \rightarrow 0, \Delta \phi \rightarrow 0}{lim} \frac{1}{\Delta \theta \Delta \phi} 
+	\left[ \begin{matrix}
+		cos(\Delta \phi \cdot cos(\theta + \Delta \theta)) - cos(\Delta \phi \cdot cos(\theta)) &
+		-sin(\theta) \left( sin(\Delta \phi \cdot cos(\theta + \Delta \theta)) - sin(\Delta \phi \cdot cos(\theta)) \right) \\
+		
+		\frac{1}{sin(\theta + \Delta \theta)} \left( sin(\Delta \phi \cdot cos(\theta + \Delta \theta)) - sin(\Delta \phi \cdot cos(\theta)) \right) &
+		\frac{sin(\theta)}{sin(\theta + \Delta \theta)} \left( cos(\Delta \phi \cdot cos(\theta + \Delta \theta)) - cos(\Delta \phi \cdot cos(\theta)) \right)
+	\end{matrix} \right]
+$<br>
+Using $\underset{\Delta \phi \rightarrow 0}{lim} cos(\Delta \phi) = 1$ and $\underset{\Delta \phi \rightarrow 0}{lim} sin(\Delta \phi) = \Delta \phi$:<br>
+$= \underset{\Delta \theta \rightarrow 0, \Delta \phi \rightarrow 0}{lim} \frac{1}{\Delta \theta \Delta \phi} 
+	\left[ \begin{matrix}
+		1 - 1 &
+		-sin(\theta) \left( \Delta \phi \cdot cos(\theta + \Delta \theta) - \Delta \phi \cdot cos(\theta)) \right) \\
+		
+		\frac{1}{sin(\theta + \Delta \theta)} \left( \Delta \phi \cdot cos(\theta + \Delta \theta) - \Delta \phi \cdot cos(\theta) \right) &
+		\frac{sin(\theta)}{sin(\theta + \Delta \theta)} \left( 1 - 1 \right)
+	\end{matrix} \right]
+$<br>
+$= \underset{\Delta \theta \rightarrow 0}{lim} \frac{1}{\Delta \theta} 
+	\left[ \begin{matrix}
+		0 &
+		-sin(\theta) \left( cos(\theta + \Delta \theta) - cos(\theta)) \right) \\
+		
+		\frac{1}{sin(\theta + \Delta \theta)} \left( cos(\theta + \Delta \theta) - cos(\theta) \right) &
+		0
+	\end{matrix} \right]
+$<br>
+Using $\underset{\Delta \theta \rightarrow 0}{lim} \left( \frac{f(\theta + \Delta \theta) - f(\theta)}{\Delta \theta} \right) = \frac{\partial}{\partial \theta} f(\theta)$<br>
+$= \left[ \begin{matrix}
+		0 &
+		-sin(\theta) \frac{\partial}{\partial \theta} cos(\theta) \\
+		
+		\frac{1}{sin(\theta)} \frac{\partial}{\partial \theta} cos(\theta) &
+		0
+	\end{matrix} \right]
+$<br>
+$= \left[ \begin{matrix}
+		0 & sin(\theta)^2 \\
+		-1 & 0
+	\end{matrix} \right]
+$<br>
+$= \mathbf{R}_{\theta\phi}(\theta, \phi)$<br>
+<br>
+
+Nice, this works, even though the commutator definition of the Riemann curvature listed in Wikipedia and StackExchange say to use the $[\cdot, \cdot]_*$ method.  What is its result? ...<br>
+<br>
+
+
+With * ...<br>
+<br>
+
+$[\mathbf{P}_\theta, \mathbf{P}_\phi]_{*}$<br>
+$= 
+	\mathbf{P}_\theta^{-1}( (\theta_L, \phi_L), (\theta_R, \phi_L) )
+	\cdot \mathbf{P}_\phi^{-1}( (\theta_R, \phi_L), (\theta_R, \phi_R) )
+	\cdot \mathbf{P}_\theta( (\theta_L, \phi_R), (\theta_R, \phi_R) )
+	\cdot \mathbf{P}_\phi( (\theta_L, \phi_L), (\theta_L, \phi_R) )
+$<br>
+Alright, semantics $P^{-1}(a,b) = P(b,a)$...<br>
+$= 
+	\mathbf{P}_\theta( (\theta_R, \phi_L), (\theta_L, \phi_L) )
+	\cdot \mathbf{P}_\phi( (\theta_R, \phi_R), (\theta_R, \phi_L) )
+	\cdot \mathbf{P}_\theta( (\theta_L, \phi_R), (\theta_R, \phi_R) )
+	\cdot \mathbf{P}_\phi( (\theta_L, \phi_L), (\theta_L, \phi_R) )
+$<br>
+$= 
+	\mathbf{S}(1, \frac{sin(\theta_R)}{sin(\theta_L)})
+	\cdot \mathbf{S}(1, \frac{1}{sin(\theta_R)})
+	\cdot \mathbf{R}_z \left( cos(\theta_R) (\phi_R - \phi_L) \right)
+	\cdot \mathbf{S}(1, sin(\theta_R))
+	\cdot \mathbf{S}(1, \frac{sin(\theta_L)}{sin(\theta_R)})
+	\cdot \mathbf{S}(1, \frac{1}{sin(\theta_L)})
+	\cdot \mathbf{R}_z \left( cos(\theta_L) (\phi_L - \phi_R) \right)
+	\cdot \mathbf{S}(1, sin(\theta_L))
+$<br>
+$= 
+	\mathbf{S}(1, \frac{1}{sin(\theta_L)})
+	\cdot \mathbf{R}_z \left( 
+		(cos(\theta_R) - cos(\theta_L)) (\phi_R - \phi_L)
+	\right)
+	\cdot \mathbf{S}(1, sin(\theta_L))
+$<br>
+$= 
+	\mathbf{S}(1, \frac{1}{sin(\theta)})
+	\cdot \mathbf{R}_z \left( 
+		\Delta \phi (cos(\theta + \Delta \theta) - cos(\theta))
+	\right)
+	\cdot \mathbf{S}(1, sin(\theta))
+$<br>
+$= 
+	\left[ \begin{matrix}
+		1 & 0 \\
+		0 & \frac{1}{sin(\theta)}
+	\end{matrix} \right]
+	
+	\cdot \left[ \begin{matrix}
+		cos \left( \Delta \phi (cos(\theta + \Delta \theta) - cos(\theta)) \right) &
+		-sin \left( \Delta \phi (cos(\theta + \Delta \theta) - cos(\theta)) \right) \\
+		sin \left( \Delta \phi (cos(\theta + \Delta \theta) - cos(\theta)) \right) &
+		cos \left( \Delta \phi (cos(\theta + \Delta \theta) - cos(\theta)) \right)
+	\end{matrix} \right]
+	
+	\cdot \left[ \begin{matrix}
+		1 & 0 \\
+		0 & sin(\theta)
+	\end{matrix} \right]
+$<br>
+$= 
+	\left[ \begin{matrix}
+		cos \left( \Delta \phi (cos(\theta + \Delta \theta) - cos(\theta)) \right) &
+		-sin(\theta) sin \left( \Delta \phi (cos(\theta + \Delta \theta) - cos(\theta)) \right) \\
+		\frac{1}{sin(\theta)} sin \left( \Delta \phi (cos(\theta + \Delta \theta) - cos(\theta)) \right) &
+		cos \left( \Delta \phi (cos(\theta + \Delta \theta) - cos(\theta)) \right)
+	\end{matrix} \right]
+$<br>
+<br>
+
+The limit is:<br> 
+$\underset{\Delta \theta \rightarrow 0, \Delta \phi \rightarrow 0}{lim} \frac{1}{\Delta \theta \Delta \phi} [\mathbf{P}_\theta, \mathbf{P}_\phi]$<br>
+$= \underset{\Delta \theta \rightarrow 0, \Delta \phi \rightarrow 0}{lim} \frac{1}{\Delta \theta \Delta \phi}
+	\mathbf{S}(1, \frac{1}{sin(\theta)})
+	\cdot \mathbf{R}_z \left( 
+		\Delta \phi (cos(\theta + \Delta \theta) - cos(\theta))
+	\right)
+	\cdot \mathbf{S}(1, sin(\theta))
+$<br>
+TODO what is $\underset{\theta \rightarrow 0}{lim} \mathbf{R}_z(\theta)$?  What about the diagonal 1 values from lim cos?  Should I be commuting minus instead, in order to remove them?<br>
+Technically ... I'm starting to think this is wrong. The rotation limit will have 1's in the diagonal, so we cannot do this.  Does that mean $[\cdot, \cdot]_+$ is the correct commutator?  That is not what Wikipedia and StackExchange say ...<br>
+$= 
+	\underset{\Delta \theta \rightarrow 0, \Delta \phi \rightarrow 0}{lim} \frac{1}{\Delta \theta \Delta \phi}
+	
+	\left[ \begin{matrix}
+		1 & 0 \\
+		0 & \frac{1}{sin(\theta)}
+	\end{matrix} \right]
+	
+	\cdot 
+	\Delta \phi 
+	\left( 
+		cos(\theta + \Delta \theta) - cos(\theta) 
+	\right)
+	\left[ \begin{matrix}
+		0 & -1 \\
+		1 & 0
+	\end{matrix} \right]
+	
+	\cdot \left[ \begin{matrix}
+		1 & 0 \\
+		0 & sin(\theta)
+	\end{matrix} \right]
+$<br>
+$= 
+	\underset{\Delta \phi \rightarrow 0}{lim} \frac{1}{\Delta \phi}
+	
+	\left[ \begin{matrix}
+		1 & 0 \\
+		0 & \frac{1}{sin(\theta)}
+	\end{matrix} \right]
+	
+	\cdot 
+	\Delta \phi 
+	
+	\left( 
+		\underset{\Delta \theta \rightarrow 0}{lim}
+		\frac{cos(\theta + \Delta \theta) - cos(\theta)}{\Delta \theta}
+	\right)
+
+	\left[ \begin{matrix}
+		0 & -1 \\
+		1 & 0
+	\end{matrix} \right]
+	
+	\cdot \left[ \begin{matrix}
+		1 & 0 \\
+		0 & sin(\theta)
+	\end{matrix} \right]
+$<br>
+$= 
+	\underset{\Delta \phi \rightarrow 0}{lim} \frac{1}{\Delta \phi}
+	
+	\left[ \begin{matrix}
+		1 & 0 \\
+		0 & \frac{1}{sin(\theta)}
+	\end{matrix} \right]
+	
+	\cdot \Delta \phi 
+	\cdot \frac{\partial}{\partial \theta}cos(\theta) 
+	\left[ \begin{matrix}
+		0 & -1 \\
+		1 & 0
+	\end{matrix} \right]
+	
+	\cdot \left[ \begin{matrix}
+		1 & 0 \\
+		0 & sin(\theta)
+	\end{matrix} \right]
+$<br>
+$= 
+	\underset{\Delta \phi \rightarrow 0}{lim} \frac{1}{\Delta \phi}
+	
+	\left[ \begin{matrix}
+		1 & 0 \\
+		0 & \frac{1}{sin(\theta)}
+	\end{matrix} \right]
+	
+	\cdot \Delta \phi 
+	\cdot -sin(\theta) 
+	\left[ \begin{matrix}
+		0 & -1 \\
+		1 & 0
+	\end{matrix} \right]
+	
+	\cdot \left[ \begin{matrix}
+		1 & 0 \\
+		0 & sin(\theta)
+	\end{matrix} \right]
+$<br>
+$= 
+	\underset{\Delta \phi \rightarrow 0}{lim} 
+	
+	sin(\theta)
+	\left[ \begin{matrix}
+		0 & sin(\theta) \\
+		-\frac{1}{sin(\theta)} & 0
+	\end{matrix} \right]
+$<br>
+$= 
+	\left[ \begin{matrix}
+		0 & sin(\theta)^2 \\
+		-1 & 0
+	\end{matrix} \right]
+$<br>
+$= \mathbf{R}_{\theta\phi}(\theta, \phi)$<br>
+<br>
+
+<!--
+How about considering the magnitudes of $d\theta$ and $d\phi$?<br>
+$|e_\theta| = r$<br>
+$|e_\phi| = r sin(\theta)$<br>
+$|d\theta| = |e^\theta| = \frac{1}{|e_\theta|} = \frac{1}{r}$<br>
+$|d\phi| = |e^\phi| = \frac{1}{|e_\phi|} = \frac{1}{r sin(\theta)}$<br>
+So $|d\theta d\phi| = \frac{1}{r^2 sin(\theta)}$<br>
+<br>
+
+So if we are to arclength-parameterize the parallel propagators:<br>
+$\hat{\theta} = \frac{\theta}{r}$ and $\hat{\phi} = \frac{\phi}{r sin(\theta)}$<br>
+$\theta = r \hat{\theta}$ and $\phi = r sin(r \hat{\theta}) \hat{\phi}$<br>
+<br>
+
+Then...<br>
+$[\mathbf{P}_\theta, \mathbf{P}_\phi]_{*} = 
+	\mathbf{S}(1, \frac{1}{sin(\theta)})
+	\cdot \mathbf{R}_z \left( 
+		\Delta \phi (cos(\theta + \Delta \theta) - cos(\theta))
+	\right)
+	\cdot \mathbf{S}(1, sin(\theta))
+$<br>
+$= 
+	\left[ \begin{matrix}
+		cos \left( \Delta \phi (cos(\theta + \Delta \theta) - cos(\theta)) \right) &
+		-sin(\theta) sin \left( \Delta \phi (cos(\theta + \Delta \theta) - cos(\theta)) \right) \\
+		\frac{1}{sin(\theta)} sin \left( \Delta \phi (cos(\theta + \Delta \theta) - cos(\theta)) \right) &
+		cos \left( \Delta \phi (cos(\theta + \Delta \theta) - cos(\theta)) \right)
+	\end{matrix} \right]
+$<br>
+<br>
+-->
+
+Ricci curvature, $\flat\flat$<br>
+$R_{\theta\theta} = 1$<br>
+$R_{\phi\phi} = sin(\theta)^2$<br>
+<br>
+
+Ricci curvature, $\sharp\flat$<br>
+${R^\theta}_\theta = {R^\phi}_\phi = \frac{1}{r^2}$<br>
+<br>
+
+Can we use Ricci curvature to find propagator commutation?<br>
+<br>
+
+$\mathbf{R} 
+= \left[ \begin{matrix}
+	R_{\theta\theta} & R_{\theta\phi} \\
+	R_{\phi\theta} & R_{\phi\phi}
+\end{matrix} \right]
+= \left[ \begin{matrix}
+	{R^\theta}_{\theta\theta\theta} + {R^\phi}_{\theta\phi\theta} &
+	{R^\theta}_{\theta\theta\phi} + {R^\phi}_{\theta\phi\phi} \\
+	
+	{R^\theta}_{\phi\theta\theta} + {R^\phi}_{\phi\phi\theta} & 
+	{R^\theta}_{\phi\theta\phi} + {R^\phi}_{\phi\phi\phi}
+\end{matrix} \right]
+= \left[ \begin{matrix}
+	{R^\phi}_{\theta\phi\theta} &
+	{R^\theta}_{\theta\theta\phi} \\
+	
+	{R^\phi}_{\phi\phi\theta} & 
+	{R^\theta}_{\phi\theta\phi}
+\end{matrix} \right]
+= \left[ \begin{matrix}
+	1 & 0 \\
+	0 & sin(\theta)^2
+\end{matrix} \right]
+$<br>
+<br>
+
+So for two dimensions it is easy to reverse infer the Riemann curvature from the Ricci curvature.<br>
+<br>
+
+Another interesting fact about this manifold:<br>
+$\mathbf{R} = \frac{1}{r^2} \mathbf{g}$<br>
+<br>
+
+Gaussian curvature:<br>
+$R = \frac{2}{{r}^{2}}$
+<br>
+
+Which just happens to mean ...<br>
+$\mathbf{R} = \frac{1}{2} R \mathbf{g}$<br>
+$\mathbf{R} - \frac{1}{2} R \mathbf{g} = 0$<br>
+...which means, in 2D where n=2, the trace-free version of the Ricci-tensor, $R_{\mu\nu} - \frac{1}{n} R g_{\mu\nu}$, is zero.<br>
+...which makes sense, that the trace-free version would be zero, since the Ricci tensor is purely trace.<br>
+<br>
+
+	</body>
+</html>

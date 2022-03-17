@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<title>Quaternions</title>
+		<script type="text/javascript" src='tryToFindMathJax.js'></script>
+	</head>
+    <body>
+
+This isn't comprehensive, this is just some thought I had about quaternion commutativity.<br>
+<br>
+
+$q = q^u e_u$, for $e_u \in \{ e_0, e_1, e_2, e_3 \}$<br>
+also depicted $e_u \in \{ 1, i, j, k \}$<br>
+also as $q = (w, v) = (w, x, y, z)$, where $v \in \mathbb{R}^3$, $w \in \mathbb{R}$.<br>
+<br>
+
+$e_u$ holds the following product rules:<br>
+$ij=k=-ji, jk=i=-kj, ki=j=-ik$<br>
+$i^2 = j^2 = k^2 = -1$<br>
+<br>
+
+Notice I will be using vector inner product $a \cdot b = a_x b_x + a_y b_y + a_z b_z$ and cross product $a \times b = (a_y b_z - a_z b_y, a_z b_x - a_x b_z, a_x b_y - a_y b_x)$<br>
+<br>
+
+addition: $q_1 + q_2 = (w_1 + w_2, v_1 + v_2)$<br>
+scaling by reals: $s q = (s w, s v)$<br>
+negation: $-q = (-w, -v)$<br>
+<br>
+
+multiplication:<br>
+$q_1 q_2 = (w_1 + x_1 i + y_1 j + z_1 k) \cdot (w_2 + x_2 i + y_2 j + z_2 k)$<br>
+$= 
+	  w_1 w_2 
+	- x_1 x_2
+	- y_1 y_2
+	- z_1 z_2
+	+ (x_1 w_2 + w_1 x_2 + y_1 z_2 - z_1 y_2) i
+	+ (y_1 w_2 + w_1 y_2 + z_1 x_2 - x_1 z_2) j
+	+ (z_1 w_2 + w_1 z_2 + x_1 y_2 - y_1 x_2) k
+$<br>
+<br>
+
+multiplication, in vector form:<br>
+$q_1 q_2 = (w_1 w_2 - v_1 \cdot v_2, w_1 v_2 + w_2 v_1 + v_1 \times v_2)$<br>
+<br>
+	
+conjugation: $\bar{q} = (w, -v)$<br>
+inner product: $q_1 \cdot q_2 = q_1 \bar{q}_2 = w_1 w_2 + v_1 \cdot v_2$<br>
+norm: $|q|^2 = q \cdot q = w^2 + x^2 + y^2 + z^2$<br>
+inverse: $q^{-1} = \bar{q} / |q|^2$<br>
+<br>
+
+
+Commutation:<br>
+$[q_1, q_2] = q_1 q_2 - q_2 q_1$<br>
+$= (w_1 w_2 - v_1 \cdot v_2, w_1 v_2 + w_2 v_1 + v_1 \times v_2) - (w_2 w_1 - v_2 \cdot v_1, w_2 v_1 + w_1 v_2 + v_2 \times v_1)$<br>
+$= (
+	  w_1 w_2 - v_1 \cdot v_2
+	- w_2 w_1 + v_2 \cdot v_1, 
+	,
+	
+	  w_1 v_2 + w_2 v_1 + v_1 \times v_2
+	- w_2 v_1 - w_1 v_2 - v_2 \times v_1
+)$<br>
+$= (0, 2 v_1 \times v_2)$<br>
+<br>
+
+Because the commutation is not zero, we know that $q_1 q_2 \ne q_2 q_1$<br>
+<br>
+
+But if you want to convert a rotation into the frame of another rotation, you can use the trick $q'_2 = (q_1)^{-1} q_2 (q_1)$ such that: $q_1 ((q_1)^{-1} q_2 (q_1)) = q_2 q_1$<br>
+<br>
+
+exponent: $exp(q) = exp(w) (cos|v|, \frac{v}{|v|} sin|v|)$<br>
+logarithm: $log(q) = (log|q|, \frac{v}{|v|} acos(\frac{w}{|q|}))$<br>
+<br>
+
+Alright so how well does commutativity line up with the exponential map?<br>
+Let's assume $q = (cos(\theta), sin(\theta) n)$, for $\theta \ge 0$ and $|n| = 1$<br>
+From this we see $|q| = 1$<br>
+<br>
+
+$log(q_1) + log(q_2) = 
+	  (log|q_1|, \frac{v_1}{|v_1|} acos(\frac{w_1}{|q_1|}))
+	+ (log|q_2|, \frac{v_2}{|v_2|} acos(\frac{w_2}{|q_2|}))
+$<br>
+$= 
+	(
+		0, 
+
+		  n_1 acos(cos(\theta_1))
+		+ n_2 acos(cos(\theta_2))
+	)
+$<br>
+$= (0, n_1 \theta_1 + n_2 \theta_2)$<br>
+<br>
+
+Disclaimer that this only holds true for $\theta$ in the domain of $acos$.<br>
+<br>
+
+$log(q_1 q_2) = log( (w_1 w_2 - v_1 \cdot v_2, w_1 v_2 + w_2 v_1 + v_1 \times v_2) )$<br>
+$= log( (
+	cos(\theta_1 ) cos(\theta_2) - sin(\theta_1) sin(\theta_2) n_1 \cdot n_2, 
+	  cos(\theta_1) sin(\theta_2) n_2 
+	+ cos(\theta_2) sin(\theta_1) n_1 
+	+ sin(\theta_1) sin(\theta_2) n_1 \times n_2
+) )$<br>
+$= (
+	0,
+
+	(
+		  cos(\theta_1) sin(\theta_2) n_2 
+		+ cos(\theta_2) sin(\theta_1) n_1 
+		+ sin(\theta_1) sin(\theta_2) n_1 \times n_2
+	) acos (
+		cos(\theta_1) cos(\theta_2) - sin(\theta_1) sin(\theta_2) n_1 \cdot n_2
+	)
+)$<br>
+<br>
+	
+Maybe the other way?<br>
+$exp((0,\theta_1 n_1) + (0, \theta_2 n_2))$ vs $exp((0, \theta_1 n_1)) exp((0, \theta_2 n_2))$<br>
+<br>
+exponent: $exp(q) = exp(w) (cos|v|, \frac{v}{|v|} sin|v|)$<br>
+$exp((0, \theta_1 n_1) + (0, \theta_2 n_2))$<br>
+$= (
+	cos|\theta_1 n_1 + \theta_2 n_2|,
+
+	\frac{\theta_1 n_1 + \theta_2 n_2}{|\theta_1 n_1 + \theta_2 n_2|}
+	sin|\theta_1 n_1 + \theta_2 n_2|
+)$<br>
+<br>
+
+$exp((0, \theta_1 n_1)) exp((0, \theta_2 n_2))$<br>
+$= 
+	(cos|\theta_1 n_1|, \frac{n_1}{|n_1|} sin|\theta_1 n_1|)
+	(cos|\theta_2 n_2|, \frac{n_2}{|n_2|} sin|\theta_2 n_2|)
+$<br>
+$= 
+	(cos(\theta_1), n_1 sin(\theta_1))
+	(cos(\theta_2), n_2 sin(\theta_2))
+$<br>
+$= (
+	cos(\theta_1) cos(\theta_2) - sin(\theta_1) sin(\theta_2) n_1 \cdot n_2,
+	cos(\theta_1) sin(\theta_2) n_2
+	+ cos(\theta_2) sin(\theta_1) n_1
+	+ sin(\theta_1) sin(\theta_2) n_1 \times n_2
+)$<br>
+<br>
+	</body>
+</html>

@@ -44,16 +44,48 @@ And $exp(-\int \Gamma_\mu v^\mu d\lambda) = R \cdot \Lambda \cdot L$<br>
 And $-\int \Gamma_\mu v^\mu d\lambda = R \cdot log(\Lambda) \cdot L$<br>
 <br>
 
-How about if we say $\nabla_{e_\mu} e_\nu = {\Gamma^\alpha}_{\mu\nu} e_\alpha$ is equivalent to $\partial_{U^\mu} F^\alpha$?<br>
+How about if we say $\nabla_{e_\mu} e_\nu = {\Gamma^\alpha}_{\mu\nu} e_\alpha$ is equivalent to $\frac{\partial F^\alpha}{\partial U^\mu}$?<br>
 <br>
 
-How about if $-{\Gamma^\alpha}_{\mu\nu} v^\mu = {A^\alpha}_\nu$?<br>
+How about if $-{\Gamma^\alpha}_{\mu\nu} \hat{x}^\mu = {A^\alpha}_\nu$?<br>
 $\int -{\Gamma^\alpha}_{\mu\nu} v^\mu d\lambda = \int {A^\alpha}_\nu d\lambda$<br>
 <br>
 
-Then there's Dullemond, Wang's Hydrodynamics notes, eqn. 7.36: $F(U(x_R)) - F(U(x_L)) = \int_0^1 \frac{\partial}{\partial \lambda} F(U(\lambda)) d\lambda = (\int_0^1 \frac{\partial F}{\partial U} d\lambda) \cdot (U(x_R) - U(x_L))$<br>
-which is derived from $\partial_t U + \partial_{x^i} F^i = 0$<br>
+Then there's Dullemond, Wang's Hydrodynamics notes:<br>
+Start with $\partial_t U + \partial_{x^i} F^i = 0$<br>
+(In arbitrary curvilinear coordiantes $\partial_t U + \nabla_i F^i = 0$)<br>
+eqn. 7.36:<br>
+$F(U(x_R)) - F(U(x_L)) = \int_0^1 \frac{\partial}{\partial \lambda} F(U(\lambda)) d\lambda$<br>
+$= (\int_0^1 \frac{\partial F}{\partial U} d\lambda) \cdot (U(x_R) - U(x_L))$<br>
+$= \int_0^1 (R \cdot \Lambda \cdot L) d\lambda \cdot (U(x_R) - U(x_L))$<br>
+...<br>
+$= \int_0^1 (R \cdot exp(log(\Lambda)) \cdot L) d\lambda \cdot (U(x_R) - U(x_L))$<br>
+...<br>
+$exp\left( F(U(x_R)) - F(U(x_L)) \right) = exp\left( \left( \int_0^1 \frac{\partial F}{\partial U} d\lambda \right) \cdot (U(x_R) - U(x_L)) \right)$ ... or does that go outside the exp?<br>
+$= exp\left( \int_0^1 \frac{\partial F}{\partial U} d\lambda \right) (U(x_R) - U(x_L))$<br>
+$= exp\left( \int_0^1 R \cdot \Lambda \cdot L d\lambda \right) (U(x_R) - U(x_L))$<br>
+$exp(F(U(x_R))) \cdot exp(-F(U(x_L))) 
+	= exp\left( \int_0^1 R \cdot \Lambda \cdot L d\lambda \right) (U(x_R) - U(x_L))$<br>
+so the flux $F$ is the log of the connection $\Gamma_x$ that is parallel-propagated along the x-coordiante.<br>
 <br>
+
+Parallel propagator:<br>
+$e(x_R) = e(x_L) \cdot P^{-1} (x_L, x_R)$<br>
+$= e(x_L) \cdot exp(-\int_0^1 \Gamma_v d\lambda)$<br>
+$e(x_L)^{-1} e(x_R) = exp(-\int_0^1 \Gamma_v d\lambda)$<br>
+$exp(log(e(x_L)^{-1} e(x_R))) = exp(-\int_0^1 \Gamma_v d\lambda)$<br>
+$exp(log(e(x_R)) - log(e(x_L))) = exp(-\int_0^1 \Gamma_v d\lambda)$<br>
+$log(e(x_R)) - log(e(x_L)) = \int_0^1 -\Gamma_v d\lambda$<br>
+...substitute...<br>
+$F(U(x_R)) \leftrightarrow log(e(x_R))$<br>
+$F(U(x_L)) \leftrightarrow log(e(x_L))$<br>
+$\frac{\partial F}{\partial U} \cdot (U(x_R) - U(x_L)) \leftrightarrow -\Gamma_v$<br>
+...to get...<br>
+$F(U(x_R)) - F(U(x_L)) = \int_0^1 \frac{\partial F}{\partial U} (U(x_R) - U(x_L)) d\lambda$<br>
+$F(U(x_R)) - F(U(x_L)) = \int_0^1 \frac{\partial F}{\partial U} \frac{\partial U}{\partial \lambda} d\lambda$<br>
+$F(U(x_R)) - F(U(x_L)) = \int_0^1 \frac{\partial F}{\partial \lambda} d\lambda$<br>
+<br>
+
 
 Then there is Misner, Thorn, Wheeler "Gravitation" exercise 16.6 showing how $\partial_t U + \nabla_{x^i} F^i = 0$ is the same as $\nabla_\nu T^{\mu\nu} = 0$<br>
 where $\partial_t \rho + \nabla_{x^i} (\rho v^i) = 0$ becomes $\nabla_\mu T^{t\mu} = 0$<br>

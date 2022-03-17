@@ -1,0 +1,512 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<title>how transforming pde state variables affects wavespeeds</title>
+	</head>
+	<body>
+
+hyperbolic PDEs:<br>
+<br>
+
+$U_{,t} + F_{,x} = S$<br>
+<br>
+
+eigen-decompose:<br>
+<br>
+
+chain rule:<br>
+<br>
+
+$U_{,t} + \frac{\partial F}{\partial U} U_{,x} = S$<br>
+<br>
+
+eigen-decompose the flux derivative:<br>
+<br>
+
+$U_{,t} + R \Lambda L U_{,x} = S$<br>
+<br>
+
+has wavespeeds $\lambda_i$ for $\Lambda_{ij} = \delta_{ij} \lambda_i$<br>
+<br>
+
+Simplest case: 1D system:<br>
+<br>
+
+$u_{,t} + a u_{,x} = 0$<br>
+<br>
+
+has a single wavespeed of $a$.<br>
+<br>
+
+<hr>
+<br>
+
+now comes the wave equation:<br>
+<br>
+
+$u_{,tt} - a^2 u_{,xx} = f$<br>
+<br>
+
+recast as a 1st order PDE:<br>
+<br>
+
+$\Pi = u_{,t}$<br>
+$\Psi = u_{,x}$<br>
+<br>
+
+$\left[\begin{matrix}
+	\Pi \\ \Psi
+\end{matrix}\right]_{,t}
++ 
+\left[\begin{matrix}
+	0 & -a^2 \\
+	-1 & 0
+\end{matrix}\right]
+\left[\begin{matrix}
+	\Pi \\ \Psi
+\end{matrix}\right]_{,x}
+= 
+\left[\begin{matrix}
+	f \\ 0
+\end{matrix}\right]$<br>
+<br>
+
+has eigensystem:<br>
+<br>
+
+$\left[\begin{matrix}
+	\Pi \\ \Psi
+\end{matrix}\right]_{,t}
++ 
+
+\left[\begin{matrix}
+	-a & a \\
+	1 & 1
+\end{matrix}\right]
+\left[\begin{matrix}
+	a & 0 \\
+	0 & -a
+\end{matrix}\right]
+\left[\begin{matrix}
+	-\frac{1}{2a} & \frac{1}{2} \\
+	\frac{1}{2a} & \frac{1}{2}
+\end{matrix}\right]
+
+\left[\begin{matrix}
+	\Pi \\ \Psi
+\end{matrix}\right]_{,x}
+= 
+\left[\begin{matrix}
+	f \\ 0
+\end{matrix}\right]$<br>
+<br>
+
+what about all 2x2 eigensystem classifications?<br>
+maybe later.<br>
+<br>
+
+<hr>
+<br>
+
+how about specific to our problem at hand?<br>
+where we have to convert 1st derivatives to state variables in order to make our system hyperbolic:<br>
+<br>
+
+$u_{,t} + a u_{,x} = s$<br>
+$u_{,xt} + a_{,x} u_{,x} + a u_{,xx} = s_{,x}$<br>
+<br>
+
+$u_{,t} + a u_{,x} = s$<br>
+$u_{,xt} + a u_{,xx} = s_{,x} - a_{,x} u_{,x}$<br>
+<br>
+
+$\left[\begin{matrix}
+	u \\ u_{,x}
+\end{matrix}\right]_{,t}
++ 
+\left[\begin{matrix}
+	a & 0 \\
+	0 & a
+\end{matrix}\right]
+\left[\begin{matrix}
+	u \\ u_{,x}
+\end{matrix}\right]_{,x}
+= 
+\left[\begin{matrix}
+	s \\ s_{,x} - a_{,x} u_{,x}
+\end{matrix}\right]$<br>
+<br>
+
+has eigensystem<br>
+<br>
+
+$\left[\begin{matrix}
+	u \\ u_{,x}
+\end{matrix}\right]_{,t}
++ 
+
+\left[\begin{matrix}
+	1 & 0 \\
+	0 & 1
+\end{matrix}\right]
+\left[\begin{matrix}
+	a & 0 \\
+	0 & a
+\end{matrix}\right]
+\left[\begin{matrix}
+	1 & 0 \\
+	0 & 1
+\end{matrix}\right]
+
+\left[\begin{matrix}
+	u \\ u_{,x}
+\end{matrix}\right]_{,x}
+= 
+\left[\begin{matrix}
+	s \\ s_{,x} - a_{,x} u_{,x}
+\end{matrix}\right]$<br>
+<br>
+
+and here we have wavespeeds of $\{ a \}$ mult. 2.<br>
+<br>
+
+or since we can treat the $u_{,x}$ as a state variable, it doesn't need to be in $u$'s flux:<br>
+
+$\left[\begin{matrix}
+	u \\ u_{,x}
+\end{matrix}\right]_{,t}
++ 
+\left[\begin{matrix}
+	0 & 0 \\
+	0 & a
+\end{matrix}\right]
+\left[\begin{matrix}
+	u \\ u_{,x}
+\end{matrix}\right]_{,x}
+= 
+\left[\begin{matrix}
+	s - a u_{,x} \\ 
+	s_{,x} - a_{,x} u_{,x}
+\end{matrix}\right]$<br>
+<br>
+
+has eigensystem<br>
+<br>
+
+$\left[\begin{matrix}
+	u \\ u_{,x}
+\end{matrix}\right]_{,t}
++ 
+
+\left[\begin{matrix}
+	1 & 0 \\
+	0 & 1
+\end{matrix}\right]
+\left[\begin{matrix}
+	0 & 0 \\
+	0 & a
+\end{matrix}\right]
+\left[\begin{matrix}
+	1 & 0 \\
+	0 & 1
+\end{matrix}\right]
+
+\left[\begin{matrix}
+	u \\ u_{,x}
+\end{matrix}\right]_{,x}
+= 
+\left[\begin{matrix}
+	s \\ s_{,x} - a_{,x} u_{,x}
+\end{matrix}\right]$<br>
+<br>
+
+
+so instead we have wavespeeds of $\{ 0, a \}$.<br>
+<br>
+
+but what if we throw in a 3rd variable dependent on the 1st two?  How to rescale it, by $u$ perhaps, and when to convert the rescaling derivative to a state variable or not?<br>
+ok before considering 1st derivs as state vars, just look at a scalar system with new var included:<br> 
+<br>
+
+$u_{,t} + a_{11} u_{,x} = s_1$<br>
+$v_{,t} + a_{21} u_{,x} + a_{22} v_{,x} = s_2$<br>
+<br>
+
+$\left[\begin{matrix}
+	u \\ 
+	v
+\end{matrix}\right]_{,t}
++ 
+\left[\begin{matrix}
+	a & 0 \\
+	c & d
+\end{matrix}\right]
+\left[\begin{matrix}
+	u \\ v
+\end{matrix}\right]_{,x}
+= 
+\left[\begin{matrix}
+	s_1 \\ 
+	s_2
+\end{matrix}\right]$<br>
+<br>
+
+I almost want to make $u_{,t}$ flux depend on $v_{,x}$ so that my matrix will be a full 2x2, and this problem can turn into a problem of classifying all 2x2 eigensystem behaviors.<br>
+but without $a_{12}$:<br>
+<br>
+
+eigensystem<br>
+<br>
+
+$\left[\begin{matrix}
+	u \\ v
+\end{matrix}\right]_{,t}
++ 
+
+\left[\begin{matrix}
+	\frac{a - d}{c} & 0 \\
+	1 & 1
+\end{matrix}\right]
+\left[\begin{matrix}
+	a & 0 \\
+	0 & d
+\end{matrix}\right]
+\left[\begin{matrix}
+	\frac{c}{a - d} & 0 \\
+	\frac{c}{d - a} & 1
+\end{matrix}\right]
+
+\left[\begin{matrix}
+	u \\ v
+\end{matrix}\right]_{,x}
+= 
+\left[\begin{matrix}
+	s_1 \\ s_2
+\end{matrix}\right]$<br>
+<br>
+
+So, as long as our new variable doesn't play into the original variable's system, the wavespeeds are determined solely by the diagonals of the flux jacobian.<br>
+I guess that means we can adjust the wavespeed to our heart's content -- so long as $A_{22}$ is a constant.<br>
+What if it is a function of $u$?<br>
+<br>
+
+let $v = v(f)$<br>
+<br>
+
+$u_{,t} + a_{11} u_{,x} = s_1$<br>
+$v_{,t} + a_{21} u_{,x} + a_{22} v_{,x} = s_2$<br>
+$\frac{\partial v}{\partial f} f_{,t} + a_{21} u_{,x} + a_{22} \frac{\partial v}{\partial f} f_{,x} = s_2$<br>
+$f_{,t} + a_{21} (\frac{\partial v}{\partial f})^{-1} u_{,x} + a_{22} f_{,x} = s_2 (\frac{\partial v}{\partial f})^{-1}$<br>
+<br>
+
+So this is interesting, looks like after transforming $v$ into $v(f)$, the wavespeeds don't change, but only in absence of a $A_{12}$ term.<br> 
+<br>
+
+if $u_{,t}$ does depend on $v_{,x}$ then does this change wavespeeds?<br>
+<br>
+
+$u_{,t} + a_{11} u_{,x} + a_{12} v_{,x} = s_1$<br>
+$v_{,t} + a_{21} u_{,x} + a_{22} v_{,x} = s_2$<br>
+<br>
+
+let $A = R \Lambda L$ with $\Lambda = diag( \lambda_1, \lambda_2 )$<br>
+<br>
+
+Let $v = v(f)$<br>
+$u_{,t} + a_{11} u_{,x} + a_{12} \frac{\partial v}{\partial f} f_{,x} = s_1$<br>
+$\frac{\partial v}{\partial f} f_{,t} + a_{21} u_{,x} + a_{22} \frac{\partial v}{\partial f} f_{,x} = s_2$<br>
+$f_{,t} + a_{21} (\frac{\partial v}{\partial f})^{-1} u_{,x} + a_{22} f_{,x} = s_2 (\frac{\partial v}{\partial f})^{-1}$<br>
+<br>
+
+$\left[\begin{matrix}
+	u \\ 
+	f
+\end{matrix}\right]_{,t}
++ 
+\left[\begin{matrix}
+	a_{11} & a_{12} \frac{\partial v}{\partial f} \\
+	a_{21} (\frac{\partial v}{\partial f})^{-1} & a_{22}
+\end{matrix}\right]
+\left[\begin{matrix}
+	u \\ v
+\end{matrix}\right]_{,x}
+= 
+\left[\begin{matrix}
+	s_1 \\ 
+	s_2 (\frac{\partial v}{\partial f})^{-1}
+\end{matrix}\right]$<br>
+<br>
+
+So the determinant is going to still be $det(A)$, the char poly is still going to be the same, and the wavespeed is still going to be the same.<br>
+<br>
+
+How about with 1st derivative state variables?<br>
+<br>
+
+$u_{,t} + a_{11} u_{,x} = s_1$<br>
+$u_{x,t} + a_{11,x} u_{,x} + a_{11} u_{,xx} = s_{1,x}$<br>
+$v_{,t} + a_{21} u_{,x} + a_{22} v_{,x} = s_2$<br>
+<br>
+
+so now we have a situation where we can put some variables in arbitrary places, as derivs or as state vars:<br>
+<br>
+
+favoring flux:<br>
+$\left[\begin{matrix}
+	u \\ 
+	u_{,x} \\
+	v
+\end{matrix}\right]_{,t}
++ 
+\left[\begin{matrix}
+	a_{11} & 0 & 0 \\
+	a_{11,x} & a_{11} & 0 \\
+	a_{21} & 0 & a_{22}
+\end{matrix}\right]
+\left[\begin{matrix}
+	u \\ u_{,x} \\ v
+\end{matrix}\right]_{,x}
+= 
+\left[\begin{matrix}
+	s_1 \\ 
+	s_{1,x} \\
+	s_2
+\end{matrix}\right]$<br>
+<br>
+
+favoring source:<br>
+$\left[\begin{matrix}
+	u \\ 
+	u_{,x} \\
+	v
+\end{matrix}\right]_{,t}
++ 
+\left[\begin{matrix}
+	a_{11} & 0 & 0 \\
+	0 & a_{11} & 0 \\
+	0 & 0 & a_{22}
+\end{matrix}\right]
+\left[\begin{matrix}
+	u \\ 
+	u_{,x} \\ 
+	v
+\end{matrix}\right]_{,x}
+= 
+\left[\begin{matrix}
+	s_1 \\ 
+	s_{1,x} - a_{11,x} u_{,x} \\
+	s_2 - a_{21} u_{,x}
+\end{matrix}\right]$<br>
+<br>
+
+both with eigenvalues of $\{a_{11} \times 2, a_{22} \}$<br>
+<br>
+
+what about a remapping of v that includes u?  like $v \rightarrow u v$ ?<br>
+<br>
+
+$u_{,t} + a_{11} u_{,x} = s_1$<br>
+$v_{,t} + a_{21} u_{,x} + a_{22} v_{,x} = s_2$<br>
+<br>
+
+$u_{,t} = -a_{11} u_{,x} + s_1$<br>
+$v_{,t} = -a_{21} u_{,x} - a_{22} v_{,x}+  s_2$<br>
+<br>
+
+$(uv)_{,x} = u_{,x} v + u v_{,x}$<br>
+$(uv)_{,x} - u_{,x} v = u v_{,x}$<br>
+$v_{,x} = \frac{1}{u} ((uv)_{,x} - u_{,x} v)$<br>
+<br>
+
+$(uv)_{,t} = u_{,t} v + u v_{,t}$<br>
+$(uv)_{,t} = (
+		-a_{11} u_{,x} + s_1
+	) v
+	+ u (
+		-a_{21} u_{,x} - a_{22} v_{,x} + s_2
+	)
+$<br>
+$(uv)_{,t} = 
+	- (a_{11} v + a_{21} u) u_{,x}
+	- a_{22} u v_{,x} 
+	+ s_1 v + s_2 u
+$<br>
+$(uv)_{,t} = 
+	- (a_{11} v + a_{21} u) u_{,x}
+	- a_{22} u \frac{1}{u} ((uv)_{,x} - u_{,x} v)
+	+ s_1 v + s_2 u
+$<br>
+$(uv)_{,t} = 
+	- (a_{11} v + a_{21} u) u_{,x}
+	- a_{22} (uv)_{,x} 
+	+ a_{22}  u_{,x} v
+	+ s_1 v + s_2 u
+$<br>
+$(uv)_{,t} = 
+	- (
+		(a_{11} - a_{22}) v
+		+ a_{21} u
+	) u_{,x}
+	- a_{22} (uv)_{,x} 
+	+ s_1 v + s_2 u
+$<br>
+<br>
+
+So our new linear PDE system looks like:<br>
+<br>
+
+$\left[\begin{matrix}
+	u \\ 
+	uv
+\end{matrix}\right]_{,t}
++ 
+\left[\begin{matrix}
+	a_{11} & 0 \\	
+
+	- (
+		(a_{11} - a_{22}) v
+		+ a_{21} u
+	) &
+	- a_{22}
+
+\end{matrix}\right]
+\left[\begin{matrix}
+	u \\ uv
+\end{matrix}\right]_{,x}
+= 
+\left[\begin{matrix}
+	s_1 \\ 
+	s_2 u + s_1 v
+\end{matrix}\right]$<br>
+<br>
+
+I wonder if there's a 1-1 between state variable changes and row operations?<br>
+<br>
+
+how about a generic linear system change-of-variables?<br>
+<br>
+
+$\frac{\partial u^i}{\partial t} + {a^i}_j \frac{\partial u^j}{\partial x} = s^i$<br>
+$\frac{\partial u^i}{\partial t} = -{a^i}_j \frac{\partial u^j}{\partial x} + s^i$<br>
+<br>
+
+$v^i = v(u)$<br>
+<br>
+
+$\frac{\partial v^i}{\partial x} = \frac{\partial v^i}{\partial u^j} \frac{\partial u^j}{\partial x}$<br>
+$\frac{\partial u^i}{\partial v^j} \frac{\partial v^j}{\partial x} = \frac{\partial u^i}{\partial x}$<br>
+$\frac{\partial v^i}{\partial t} = \frac{\partial v^i}{\partial u^j} \frac{\partial u^j}{\partial t}$<br>
+$\frac{\partial v^i}{\partial t} = \frac{\partial v^i}{\partial u^j} (-{a^j}_k \frac{\partial u^k}{\partial x} + s^j)$<br>
+$\frac{\partial v^i}{\partial t} = -\frac{\partial v^i}{\partial u^j} {a^j}_k \frac{\partial u^k}{\partial x} + \frac{\partial v^i}{\partial u^j} s^j$<br>
+$\frac{\partial v^i}{\partial t} = -\frac{\partial v^i}{\partial u^j} {a^j}_k \frac{\partial u^k}{\partial v^l} \frac{\partial v^l}{\partial x} + \frac{\partial v^i}{\partial u^j} s^j$<br>
+$\frac{\partial v^i}{\partial t} + \frac{\partial v^i}{\partial u^j} {a^j}_k \frac{\partial u^k}{\partial v^l} \frac{\partial v^l}{\partial x} = \frac{\partial v^i}{\partial u^j} s^j$<br>
+<br>
+
+So if $A = R \Lambda L$, and if $\frac{\partial U}{\partial V} = (\frac{\partial V}{\partial U})^{-1}$, then the change-of-variables from $\frac{\partial u^i}{\partial t}$ to $\frac{\partial v^i}{\partial t}$
+can be seen as a left-transform of the right-eigenvectors of $A$ by $\frac{\partial V}{\partial U}$, but the eigenvalues are preserved.<br>
+<br>
+
+	</body>
+</html>

@@ -20,7 +20,7 @@ $\vec{r} = \{ r_i(t), 1 \le i \le n \}$<br>
 Velocity: $\vec{v} = \frac{\partial \vec{r}}{\partial t}$<br>
 <br>
 
-Speed: $\sigma = |\vec{v}| = \sqrt{\Sigma_j (\frac{\partial r_j}{\partial t})^2 }$<br>
+Speed: $\sigma = |\vec{v}| = \sqrt{ \underset{j}{\Sigma} \left( \frac{\partial r_j}{\partial t} \right)^2 }$<br>
 $\sigma \ge 0$<br>
 $\frac{\partial \sigma}{\partial t} = \frac{1}{2 \sigma}$<br>
 <br>
@@ -133,6 +133,70 @@ $\frac{\partial}{\partial s} \left[ \begin{matrix}
 \end{matrix} \right] \left[ \begin{matrix}
 	\vec{T} \\ \vec{N} \\ \vec{B}
 \end{matrix} \right]$<br>
+<br>
+
+Arclength generalized by coordinate system / line element:<br>
+
+Start in our Cartesian basis:<br>
+$\frac{\partial s}{\partial t} = \sqrt{ \underset{i}{\Sigma} \left( \frac{\partial r^i}{\partial t} \right)^2 }$<br>
+
+Apply a change-of-basis:<br>
+Let $r^i = {e^i}_j x^j$<br>
+$\frac{\partial s}{\partial t} = \sqrt{ \underset{i}{\Sigma} \left( \frac{\partial}{\partial t}( \underset{j}{\Sigma} {e^i}_j x^j ) \right)^2 }$<br>
+Assuming the parameterization is independent of the change-of-basis:<br>
+$\frac{\partial s}{\partial t} = \sqrt{ \underset{i}{\Sigma} \left( \underset{j}{\Sigma} {e^i}_j \frac{\partial x^j}{\partial t} \right)^2 }$<br>
+$\frac{\partial s}{\partial t} = \sqrt{ 
+	\underset{i}{\Sigma} \left( 
+		\frac{\partial x^i}{\partial t} 
+		\underset{k}{\Sigma} \left( 
+			{e^k}_i 
+			\underset{j}{\Sigma} \left( 
+				{e^k}_j 
+				\frac{\partial x^j}{\partial t} 
+			\right)
+		\right)
+	\right)
+}$<br>
+$\frac{\partial s}{\partial t} = \sqrt{ 
+	\underset{i,j,k}{\Sigma} \left( 
+		{e^k}_i 
+		{e^k}_j 
+		\frac{\partial x^i}{\partial t} 
+		\frac{\partial x^j}{\partial t} 
+	\right)
+}$<br>
+Let $g_{ij} = \underset{k}{\Sigma} {e^k}_i {e^k}_j$:<br>
+$\frac{\partial s}{\partial t} = \sqrt{ 
+	\underset{i,j}{\Sigma} \left( 
+		g_{ij}
+		\frac{\partial x^i}{\partial t} 
+		\frac{\partial x^j}{\partial t} 
+	\right)
+}$<br>
+<br>
+
+As matrices:<br>
+$\frac{\partial s}{\partial t} = \sqrt{ | \vec{r} |^2 }$<br>
+$\frac{\partial s}{\partial t} = \sqrt{ \textbf{r}^T \textbf{r}  }$<br>
+$\frac{\partial s}{\partial t} = \sqrt{ (\textbf{E} \textbf{x})^T \textbf{E} \textbf{x}  }$<br>
+$\frac{\partial s}{\partial t} = \sqrt{ \textbf{x}^T \textbf{E}^T \textbf{E} \textbf{x}  }$<br>
+Let $\textbf{G} = (g_{ij})$ be defined as $\textbf{G} = \textbf{E}^T \textbf{E}$, so  $g_{ij} = \vec{e}_i \cdot \vec{e}_j$, for $\vec{e}_i$ the i'th column vector of $\textbf{E}$.<br>
+Now we are looking at a norm weighted by the metric:<br>
+$\frac{\partial s}{\partial t} = \sqrt{ \textbf{x}^T \textbf{G} \textbf{x} }$<br>
+<br>
+
+A concise way of writing this is:<br>
+$ds = \sqrt{ 
+	\underset{i,j}{\Sigma} \left( 
+		g_{ij}
+		\frac{\partial x^i}{\partial t} 
+		\frac{\partial x^j}{\partial t} 
+	\right)
+} dt$<br>
+
+$ds^2 = g_{ij} \frac{\partial x^i}{\partial t} \frac{\partial x^j}{\partial t} dt^2$<br>
+$ds^2 = g_{ij} dx^i dx^j$<br>
+<br>
 <br>
 
 <a href='.'>Back</a><br><br>

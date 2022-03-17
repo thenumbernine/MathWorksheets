@@ -64,6 +64,8 @@ Here's the CDN URLs:
 
 [Differential Geometry/9 - Riemann curvature](https://thenumbernine.github.io/math/Differential%20Geometry/9%20%2d%20Riemann%20curvature.html)
 
+[Differential Geometry/9.5 - perturbations](https://thenumbernine.github.io/math/Differential%20Geometry/9.5%20%2d%20perturbations.html)
+
 [Differential Geometry/sources](https://thenumbernine.github.io/math/Differential%20Geometry/sources.html)
 
 [Divergence Theorem in Spherical Coordinates](https://thenumbernine.github.io/math/Divergence%20Theorem%20in%20Spherical%20Coordinates.html)
@@ -71,6 +73,8 @@ Here's the CDN URLs:
 [EMHD Hyperbolic Conservation Laws](https://thenumbernine.github.io/math/EMHD%20Hyperbolic%20Conservation%20Laws.html)
 
 [EMHD Linear Stability Analysis](https://thenumbernine.github.io/math/EMHD%20Linear%20Stability%20Analysis.html)
+
+[Einstein Equations, Weak Field, De-Donder Gauge](https://thenumbernine.github.io/math/Einstein%20Equations%2c%20Weak%20Field%2c%20De%2dDonder%20Gauge.html)
 
 [Einstein-Maxwell Hyperbolic Conservation Laws](https://thenumbernine.github.io/math/Einstein%2dMaxwell%20Hyperbolic%20Conservation%20Laws.html)
 
@@ -101,6 +105,8 @@ Here's the CDN URLs:
 [Electromagnetism/Relativistic Electromagnetism metric](https://thenumbernine.github.io/math/Electromagnetism/Relativistic%20Electromagnetism%20metric.html)
 
 [Equations of Structure - Schwarzschild](https://thenumbernine.github.io/math/Equations%20of%20Structure%20%2d%20Schwarzschild.html)
+
+[Error in most CFD literature](https://thenumbernine.github.io/math/Error%20in%20most%20CFD%20literature.html)
 
 [Euler Fluid Equations - Curved Geometry - Contravariant](https://thenumbernine.github.io/math/Euler%20Fluid%20Equations%20%2d%20Curved%20Geometry%20%2d%20Contravariant.html)
 
@@ -199,6 +205,8 @@ Here's the CDN URLs:
 [PDE Systems, Parallel Propagators, Finite Volume](https://thenumbernine.github.io/math/PDE%20Systems%2c%20Parallel%20Propagators%2c%20Finite%20Volume.html)
 
 [Quantum Computing](https://thenumbernine.github.io/math/Quantum%20Computing.html)
+
+[Quaternions](https://thenumbernine.github.io/math/Quaternions.html)
 
 [SRHD](https://thenumbernine.github.io/math/SRHD.html)
 
