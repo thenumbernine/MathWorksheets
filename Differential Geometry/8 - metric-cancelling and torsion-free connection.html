@@ -795,62 +795,6 @@ $= \sqrt{|g|}^m \nabla T$<br>
 And this is where I could have ended up much earlier if I had just used the chain rule without expanding the basis vectors/one-forms of the unweighted tensor's definition.<br>
 
 <br>
-<hr>
-<br>
-
-What if the metric is locally-Minkowski?<br>
-This implies more often than not that the basis will be non-coordinate.<br>
-TODO maybe this belongs in the 'spin connection' worksheet?<br>
-What does the Levi-Civita connection look like?<br>
-<br>
-
-Since the components of $g_{ab} = \eta_{ab}$ are constant, we know $e_c( g_{ab}) = 0$:<br>
-So we are left with:<br>
-$\hat\Gamma_{abc} = \frac{1}{2} ( c_{abc} + c_{acb} - c_{cba} )$<br>
-<br>
-
-We also know now that 
-$\hat{\Gamma}_{(a|b|c)} = \frac{1}{2} e_b (g_{ac}) = 0$<br>
-<br>
-
-Therefore $\hat{\Gamma}_{abc}$ is antisymmetric on its 1st and 3rd indexes:
-$\hat{\Gamma}_{[a|b|c]} = \hat{\Gamma}_{abc}$<br>
-<br>
-
-Verify:<br>
-$\hat{\Gamma}_{[a|b|c]} = \frac{1}{4} (
-	( c_{abc} + c_{acb} - c_{cba} )
-	- ( c_{cba} + c_{cab} - c_{abc} )
-)$<br>
-$\hat{\Gamma}_{[a|b|c]} = \frac{1}{4} ( 
-	  c_{abc} 
-	+ c_{acb} 
-	- c_{cba} 
-	- c_{cba} 
-	- c_{cab} 
-	+ c_{abc}
-)$<br>
-$\hat{\Gamma}_{[a|b|c]} = \frac{1}{4} ( 
-	2 c_{abc} 
-	+ 2 c_{acb} 
-	- 2 c_{cba} 
-)$<br>
-$\hat{\Gamma}_{[a|b|c]} = \frac{1}{2} ( 
-	c_{abc} 
-	+ c_{acb} 
-	- c_{cba} 
-)$<br>
-$ = \hat{\Gamma}_{abc}$<br>
-Correct.<br>
-<br>
-
-Also since $g_{ab} = \eta_{ab} = \eta^{ab} = g^{ab}$, we know ${\hat{\Gamma}^a}_{bc} = \hat{\Gamma}_{abc}$<br>
-<br>
-
-So for metrics with constant coefficients, we know: ${\hat{\Gamma}^a}_{bc} = -{\hat{\Gamma}^c}_{ba}$<br>
-<br>
-
-<br>
 
 <a href='.'>Back</a><br><br>
 	</body>

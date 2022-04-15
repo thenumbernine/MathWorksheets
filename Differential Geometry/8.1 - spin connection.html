@@ -79,12 +79,96 @@ $= \frac{1}{2} (
 $ = \frac{1}{2} (e_c (g_{ab}) + e_b(g_{ac}) - e_c(g_{ab}))$<br>
 $ = \hat{\Gamma}_{abc}$<br>
 Yup, looks like $\hat{\Gamma}_{abc} = (\hat{\Gamma}_\eta)_{abc}$<br>
+(TODO is this compatible with the change-of-basis rule of connections?  Or does the change-of-basis rule even apply to anholonomic basis Levi-Civita connections?)<br>
 <br>
 
 This can also be seen in my relation between Levi-Civita of a coordinate basis and Levi-Civita of an arbitrary non-coordinate basis:<br>
 ${\hat\Gamma^a}_{bc} = {e^a}_\tilde{a} {e_b}^\tilde{b} {e_c}^\tilde{c} {\tilde{\Gamma}^\tilde{a}}_{\tilde{b}\tilde{c}} + {e^a}_\tilde{a} e_b ({e_c}^\tilde{a})$<br>
 But that would imply 'no', right? Only 'yes' when the linear transform from coordinate to non-coordinate was constant.  TODO double check and fixme plz?<br>
 <br>
+
+<div style="padding-left:20px">
+	Levi-Civita connection in a non-coordinate basis:<br>
+	If $e_a = {e_a}^{\tilde{a}} \partial_\tilde{a}$ and $e^a = {e^a}_{\tilde{a}} dx^\tilde{a}$ are linear combinations of a coordinate basis $\partial_\tilde{a}$ and dual $dx^\tilde{a}$ then we can calculate the following:<br>
+	Using the identities that $\delta^a_b = {e^a}_\tilde{u} {e_b}^\tilde{u}$ and $\delta^\tilde{a}_\tilde{b} = {e_u}^\tilde{a} {e^u}_\tilde{b}$<br>
+	Let $\tilde{g}_{\tilde{a}\tilde{b}} = \partial_\tilde{a} \cdot \partial_\tilde{b}$<br>
+	Let $g_{ab} = e_a \cdot e_b = {e_a}^\tilde{a} \partial_\tilde{a} \cdot {e_b}^\tilde{b} \partial_\tilde{b} = {e_a}^\tilde{a} \cdot {e_b}^\tilde{b} \tilde{g}_{\tilde{a}\tilde{b}}$.<br>
+	Let ${c_{ab}}^c e_c = [e_a, e_b]$, so (from the 'structure constants' worksheet on structure constants of a linear transform of a coordinate basis) ${c_{ab}}^c = 2 e_{[a} ({e_{b]}}^\tilde{c}) {e^c}_\tilde{c}$<br>
+	$\hat\Gamma_{abc} = \frac{1}{2} (
+		e_c (g_{ab})
+		+ e_b (g_{ac})
+		- e_a (g_{bc})
+		+ c_{acb}
+		+ c_{abc}
+		- c_{cba}
+	)$<br>
+	$= \frac{1}{2} (
+		e_c ({e_a}^\tilde{a} {e_b}^\tilde{b} \tilde{g}_{\tilde{a}\tilde{b}})
+		+ e_b ({e_a}^\tilde{a} {e_c}^\tilde{c} \tilde{g}_{\tilde{a}\tilde{c}})
+		- e_a ({e_b}^\tilde{b} {e_c}^\tilde{c} \tilde{g}_{\tilde{b}\tilde{c}})
+		
+		+ 2 e_{[a} ({e_{c]}}^\tilde{d}) {e^d}_\tilde{d} g_{db}
+		+ 2 e_{[a} ({e_{b]}}^\tilde{d}) {e^d}_\tilde{d} g_{dc}
+		- 2 e_{[c} ({e_{b]}}^\tilde{d}) {e^d}_\tilde{d} g_{da}
+	)$<br>
+	$= \frac{1}{2} (
+		  e_c ({e_a}^\tilde{a}) {e_b}^\tilde{b} \tilde{g}_{\tilde{a}\tilde{b}}
+		+ {e_a}^\tilde{a} e_c ({e_b}^\tilde{b}) \tilde{g}_{\tilde{a}\tilde{b}}
+		+ {e_a}^\tilde{a} {e_b}^\tilde{b} e_c (\tilde{g}_{\tilde{a}\tilde{b}})
+		
+		+ e_b ({e_a}^\tilde{a}) {e_c}^\tilde{c} \tilde{g}_{\tilde{a}\tilde{c}}
+		+ {e_a}^\tilde{a} e_b ({e_c}^\tilde{c}) \tilde{g}_{\tilde{a}\tilde{c}}
+		+ {e_a}^\tilde{a} {e_c}^\tilde{c} e_b (\tilde{g}_{\tilde{a}\tilde{c}})
+		
+		- e_a ({e_b}^\tilde{b}) {e_c}^\tilde{c} \tilde{g}_{\tilde{b}\tilde{c}}
+		- {e_b}^\tilde{b} e_a ({e_c}^\tilde{c}) \tilde{g}_{\tilde{b}\tilde{c}}
+		- {e_b}^\tilde{b} {e_c}^\tilde{c} e_a (\tilde{g}_{\tilde{b}\tilde{c}})
+		
+		+ e_a ({e_c}^\tilde{d}) e_{b\tilde{d}}
+		- e_c ({e_a}^\tilde{d}) e_{b\tilde{d}}
+		
+		+ e_a ({e_b}^\tilde{d}) e_{c\tilde{d}}
+		- e_b ({e_a}^\tilde{d}) e_{c\tilde{d}}
+		
+		- e_c ({e_b}^\tilde{d}) e_{a\tilde{d}}
+		+ e_b ({e_c}^\tilde{d}) e_{a\tilde{d}}
+	)$<br>
+	$= \frac{1}{2} (
+		  e_c ({e_a}^\tilde{a}) e_{b\tilde{a}}
+		+ e_c ({e_b}^\tilde{b}) e_{a\tilde{b}}
+		+ {e_a}^\tilde{a} {e_b}^\tilde{b} e_c (\tilde{g}_{\tilde{a}\tilde{b}})
+		
+		+ e_b ({e_a}^\tilde{a}) e_{c\tilde{a}}
+		+ e_b ({e_c}^\tilde{c}) e_{a\tilde{c}}
+		+ {e_a}^\tilde{a} {e_c}^\tilde{c} e_b (\tilde{g}_{\tilde{a}\tilde{c}})
+		
+		- e_a ({e_b}^\tilde{b}) e_{c\tilde{b}}
+		- e_a ({e_c}^\tilde{c}) e_{b\tilde{c}}
+		- {e_b}^\tilde{b} {e_c}^\tilde{c} e_a (\tilde{g}_{\tilde{b}\tilde{c}})
+		
+		+ e_a ({e_c}^\tilde{d}) e_{b\tilde{d}}
+		- e_c ({e_a}^\tilde{d}) e_{b\tilde{d}}
+		
+		+ e_a ({e_b}^\tilde{d}) e_{c\tilde{d}}
+		- e_b ({e_a}^\tilde{d}) e_{c\tilde{d}}
+		
+		- e_c ({e_b}^\tilde{d}) e_{a\tilde{d}}
+		+ e_b ({e_c}^\tilde{d}) e_{a\tilde{d}}
+	)$<br>
+	$= \frac{1}{2} (
+		  {e_a}^\tilde{a} {e_b}^\tilde{b} {e_c}^\tilde{c} \partial_\tilde{c} (\tilde{g}_{\tilde{a}\tilde{b}})
+		+ {e_a}^\tilde{a} {e_c}^\tilde{c} {e_b}^\tilde{b} \partial_\tilde{b} (\tilde{g}_{\tilde{a}\tilde{c}})
+		- {e_b}^\tilde{b} {e_c}^\tilde{c} {e_a}^\tilde{a} \partial_\tilde{a} (\tilde{g}_{\tilde{b}\tilde{c}})
+	)	
+		+ e_b ({e_c}^\tilde{c}) e_{a\tilde{c}}
+	$<br>
+	$\hat\Gamma_{abc} = {e_a}^\tilde{a} {e_b}^\tilde{b} {e_c}^\tilde{c} \tilde{\Gamma}_{\tilde{a}\tilde{b}\tilde{c}} + e_{a\tilde{a}} e_b ({e_c}^\tilde{a})$<br>
+	${\hat\Gamma^a}_{bc} = {e^a}_\tilde{a} {e_b}^\tilde{b} {e_c}^\tilde{c} {\tilde{\Gamma}^\tilde{a}}_{\tilde{b}\tilde{c}} + {e^a}_\tilde{a} e_b ({e_c}^\tilde{a})$<br>
+	...where ${\tilde{\Gamma}^\tilde{a}}_{\tilde{b}\tilde{c}}$ is the Levi-Civita connection associated with the coordinate basis $\partial_\tilde{a}$.<br>
+	<br>
+
+
+</div>
 
 Notice that: $\partial_c (g_{ab}) + \partial_b(g_{ac}) - \partial_c(g_{ab}) =  (c_\eta)_{abc} + (c_\eta)_{acb} - (c_\eta)_{cba}$<br>
 <br>
@@ -166,6 +250,79 @@ $T_\eta$ is the torsion associated with the $\nabla_\eta$ operator.<br>
 <br>
 
 TODO symmetry or antisymmetry of a connection of a diagonalized metric with torsion?<br>
+
+<br>
+<hr>
+<br>
+
+(Now I go back to the typical convention in these notes, lowercase latin for non-coordinate (in this case locally-Minkowski) basis and tilde lowercase latin for coordinate basis).<br>
+What if the metric is locally-Minkowski?<br>
+This implies more often than not that the basis will be non-coordinate.<br>
+TODO maybe this belongs in the 'spin connection' worksheet?<br>
+What does the Levi-Civita connection look like?<br>
+<br>
+
+Since the components of $g_{ab} = \eta_{ab}$ are constant, we know $e_c( g_{ab}) = 0$:<br>
+So we are left with:<br>
+$\hat\Gamma_{abc} = \frac{1}{2} ( c_{abc} + c_{acb} - c_{cba} )$<br>
+<br>
+
+We also know now that 
+$\hat{\Gamma}_{(a|b|c)} = \frac{1}{2} e_b (g_{ac}) = 0$<br>
+<br>
+
+Therefore $\hat{\Gamma}_{abc}$ is antisymmetric on its 1st and 3rd indexes:
+$\hat{\Gamma}_{[a|b|c]} = \hat{\Gamma}_{abc}$<br>
+<br>
+
+Verify:<br>
+$\hat{\Gamma}_{[a|b|c]} = \frac{1}{4} (
+	( c_{abc} + c_{acb} - c_{cba} )
+	- ( c_{cba} + c_{cab} - c_{abc} )
+)$<br>
+$\hat{\Gamma}_{[a|b|c]} = \frac{1}{4} ( 
+	  c_{abc} 
+	+ c_{acb} 
+	- c_{cba} 
+	- c_{cba} 
+	- c_{cab} 
+	+ c_{abc}
+)$<br>
+$\hat{\Gamma}_{[a|b|c]} = \frac{1}{4} ( 
+	2 c_{abc} 
+	+ 2 c_{acb} 
+	- 2 c_{cba} 
+)$<br>
+$\hat{\Gamma}_{[a|b|c]} = \frac{1}{2} ( 
+	c_{abc} 
+	+ c_{acb} 
+	- c_{cba} 
+)$<br>
+$ = \hat{\Gamma}_{abc}$<br>
+Correct.<br>
+<br>
+
+Also since $g_{ab} = \eta_{ab} = \eta^{ab} = g^{ab}$, we know ${\hat{\Gamma}^a}_{bc} = \hat{\Gamma}_{abc}$ (for spatial basis at least, so long as it is a +++ signature, right?)<br>
+So for metrics with constant coefficients (TODO double check if this is the condition?), we know: ${\hat{\Gamma}^a}_{bc} = -{\hat{\Gamma}^c}_{ba}$<br>
+<br>
+
+Thanks to the antisymmetry of the 1st and 3rd indexes of the Levi-Civita connection of a locally-Minkowski non-coordinate basis,
+for 3D specifically we can look at the dual of the basis:<br>
+${\Gamma^d}_b = \frac{1}{2} \epsilon^{acd} {\hat{\Gamma}}_{abc}$<br>
+Often this is depictied with the remaining non-spin index in coordinate basis, and the other two converted to the Minkowski basis:<br>
+${\Gamma^d}_{\tilde{b}} = \frac{1}{2} \epsilon^{acd} {\hat{\Gamma}}_{abc} {e^b}_{\tilde{b}}$<br>
+and because of property of duals and of our 3D antisymmetric indexes:<br>
+${\Gamma^d}_b \epsilon_{acd}$<br>
+$= \frac{1}{2} \epsilon^{efd} {\hat{\Gamma}}_{ebf} \epsilon_{acd}$<br>
+using $\epsilon^{abe} \epsilon_{cde} = \delta^{ab}_{cd}$ with + signature:<br>
+$= \frac{1}{2} {\hat{\Gamma}}_{ebf} \delta^{ef}_{ac}$<br>
+$= \frac{1}{2} {\hat{\Gamma}}_{ebf} \cdot 2 \delta^e_{[a} \delta^f_{c]}$<br>
+$= {\hat{\Gamma}}_{ebf} \cdot \delta^e_{[a} \delta^f_{c]}$<br>
+$= {\hat{\Gamma}}_{[a|b|c]}$<br>
+$= {\hat{\Gamma}}_{abc}$<br>
+<br>
+So for 3D the Levi-Civita connection of a locally-Minkowski basis can be associated with an axis per-dimension.<br>
+(TODO you should be able to do this with torsion as well and relax the Levi-Civita constraint, and only constrain it to locally-Minkowski (or even only constant-component) metrics)<br>
 <br>
 
 <a href='.'>Back</a><br><br>
