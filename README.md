@@ -62,7 +62,11 @@ Here's the CDN URLs:
 
 [Differential Geometry/8.5 - parallel propagators](https://thenumbernine.github.io/math/Differential%20Geometry/8.5%20%2d%20parallel%20propagators.html)
 
+[Differential Geometry/8.6 - parallel propagators and Riemann curvature](https://thenumbernine.github.io/math/Differential%20Geometry/8.6%20%2d%20parallel%20propagators%20and%20Riemann%20curvature.html)
+
 [Differential Geometry/9 - Riemann curvature](https://thenumbernine.github.io/math/Differential%20Geometry/9%20%2d%20Riemann%20curvature.html)
+
+[Differential Geometry/9.3 - conformal connection](https://thenumbernine.github.io/math/Differential%20Geometry/9.3%20%2d%20conformal%20connection.html)
 
 [Differential Geometry/9.5 - perturbations](https://thenumbernine.github.io/math/Differential%20Geometry/9.5%20%2d%20perturbations.html)
 
@@ -197,6 +201,8 @@ Here's the CDN URLs:
 [Numerical Relativity/trace-free](https://thenumbernine.github.io/math/Numerical%20Relativity/trace%2dfree.html)
 
 [Numerical Relativity/z4-with-conns](https://thenumbernine.github.io/math/Numerical%20Relativity/z4%2dwith%2dconns.html)
+
+[Numerical Relativity/z4-with-hyperbolic-gamma-driver-and-metric-free](https://thenumbernine.github.io/math/Numerical%20Relativity/z4%2dwith%2dhyperbolic%2dgamma%2ddriver%2dand%2dmetric%2dfree.html)
 
 [Numerical Relativity/z4-with-hyperbolic-gamma-driver](https://thenumbernine.github.io/math/Numerical%20Relativity/z4%2dwith%2dhyperbolic%2dgamma%2ddriver.html)
 
