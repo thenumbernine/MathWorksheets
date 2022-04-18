@@ -168,6 +168,86 @@ But that would imply 'no', right? Only 'yes' when the linear transform from coor
 	<br>
 
 
+	... now lets substitute these identities with $g_{ab} = \eta_{ab}$ and $c_{abc} = (c_\eta)_{abc}$<br>
+	<br>
+	$\hat\Gamma_{abc} = \frac{1}{2} (
+		(c_\eta)_{acb}
+		+ (c_\eta)_{abc}
+		- (c_\eta)_{cba}
+	)$<br>
+	$= \frac{1}{2} (
+		e_c (\eta_{ab})
+		+ e_b (\eta_{ac})
+		- e_a (\eta_{bc})
+		+ (c_\eta)_{acb}
+		+ (c_\eta)_{abc}
+		- (c_\eta)_{cba}
+	)$<br>
+	$= \frac{1}{2} (
+		e_c ({e_a}^\tilde{a} {e_b}^\tilde{b} \tilde{g}_{\tilde{a}\tilde{b}})
+		+ e_b ({e_a}^\tilde{a} {e_c}^\tilde{c} \tilde{g}_{\tilde{a}\tilde{c}})
+		- e_a ({e_b}^\tilde{b} {e_c}^\tilde{c} \tilde{g}_{\tilde{b}\tilde{c}})
+		
+		+ 2 e_{[a} ({e_{c]}}^\tilde{d}) {e^d}_\tilde{d} \eta_{db}
+		+ 2 e_{[a} ({e_{b]}}^\tilde{d}) {e^d}_\tilde{d} \eta_{dc}
+		- 2 e_{[c} ({e_{b]}}^\tilde{d}) {e^d}_\tilde{d} \eta_{da}
+	)$<br>
+	$= \frac{1}{2} (
+		  e_c ({e_a}^\tilde{a}) {e_b}^\tilde{b} \tilde{g}_{\tilde{a}\tilde{b}}
+		+ {e_a}^\tilde{a} e_c ({e_b}^\tilde{b}) \tilde{g}_{\tilde{a}\tilde{b}}
+		+ {e_a}^\tilde{a} {e_b}^\tilde{b} e_c (\tilde{g}_{\tilde{a}\tilde{b}})
+		
+		+ e_b ({e_a}^\tilde{a}) {e_c}^\tilde{c} \tilde{g}_{\tilde{a}\tilde{c}}
+		+ {e_a}^\tilde{a} e_b ({e_c}^\tilde{c}) \tilde{g}_{\tilde{a}\tilde{c}}
+		+ {e_a}^\tilde{a} {e_c}^\tilde{c} e_b (\tilde{g}_{\tilde{a}\tilde{c}})
+		
+		- e_a ({e_b}^\tilde{b}) {e_c}^\tilde{c} \tilde{g}_{\tilde{b}\tilde{c}}
+		- {e_b}^\tilde{b} e_a ({e_c}^\tilde{c}) \tilde{g}_{\tilde{b}\tilde{c}}
+		- {e_b}^\tilde{b} {e_c}^\tilde{c} e_a (\tilde{g}_{\tilde{b}\tilde{c}})
+		
+		+ e_a ({e_c}^\tilde{d}) e_{b\tilde{d}}
+		- e_c ({e_a}^\tilde{d}) e_{b\tilde{d}}
+		
+		+ e_a ({e_b}^\tilde{d}) e_{c\tilde{d}}
+		- e_b ({e_a}^\tilde{d}) e_{c\tilde{d}}
+		
+		- e_c ({e_b}^\tilde{d}) e_{a\tilde{d}}
+		+ e_b ({e_c}^\tilde{d}) e_{a\tilde{d}}
+	)$<br>
+	$= \frac{1}{2} (
+		  e_c ({e_a}^\tilde{a}) e_{b\tilde{a}}
+		+ e_c ({e_b}^\tilde{b}) e_{a\tilde{b}}
+		+ {e_a}^\tilde{a} {e_b}^\tilde{b} e_c (\tilde{g}_{\tilde{a}\tilde{b}})
+		
+		+ e_b ({e_a}^\tilde{a}) e_{c\tilde{a}}
+		+ e_b ({e_c}^\tilde{c}) e_{a\tilde{c}}
+		+ {e_a}^\tilde{a} {e_c}^\tilde{c} e_b (\tilde{g}_{\tilde{a}\tilde{c}})
+		
+		- e_a ({e_b}^\tilde{b}) e_{c\tilde{b}}
+		- e_a ({e_c}^\tilde{c}) e_{b\tilde{c}}
+		- {e_b}^\tilde{b} {e_c}^\tilde{c} e_a (\tilde{g}_{\tilde{b}\tilde{c}})
+		
+		+ e_a ({e_c}^\tilde{d}) e_{b\tilde{d}}
+		- e_c ({e_a}^\tilde{d}) e_{b\tilde{d}}
+		
+		+ e_a ({e_b}^\tilde{d}) e_{c\tilde{d}}
+		- e_b ({e_a}^\tilde{d}) e_{c\tilde{d}}
+		
+		- e_c ({e_b}^\tilde{d}) e_{a\tilde{d}}
+		+ e_b ({e_c}^\tilde{d}) e_{a\tilde{d}}
+	)$<br>
+	$= \frac{1}{2} (
+		  {e_a}^\tilde{a} {e_b}^\tilde{b} {e_c}^\tilde{c} \partial_\tilde{c} (\tilde{g}_{\tilde{a}\tilde{b}})
+		+ {e_a}^\tilde{a} {e_c}^\tilde{c} {e_b}^\tilde{b} \partial_\tilde{b} (\tilde{g}_{\tilde{a}\tilde{c}})
+		- {e_b}^\tilde{b} {e_c}^\tilde{c} {e_a}^\tilde{a} \partial_\tilde{a} (\tilde{g}_{\tilde{b}\tilde{c}})
+	)	
+		+ e_b ({e_c}^\tilde{c}) e_{a\tilde{c}}
+	$<br>
+	$\hat\Gamma_{abc} = {e_a}^\tilde{a} {e_b}^\tilde{b} {e_c}^\tilde{c} \tilde{\Gamma}_{\tilde{a}\tilde{b}\tilde{c}} + e_{a\tilde{a}} e_b ({e_c}^\tilde{a})$<br>
+	${\hat\Gamma^a}_{bc} = {e^a}_\tilde{a} {e_b}^\tilde{b} {e_c}^\tilde{c} {\tilde{\Gamma}^\tilde{a}}_{\tilde{b}\tilde{c}} + {e^a}_\tilde{a} e_b ({e_c}^\tilde{a})$<br>
+	<br>
+	<br>
+
 </div>
 
 Notice that: $\partial_c (g_{ab}) + \partial_b(g_{ac}) - \partial_c(g_{ab}) =  (c_\eta)_{abc} + (c_\eta)_{acb} - (c_\eta)_{cba}$<br>

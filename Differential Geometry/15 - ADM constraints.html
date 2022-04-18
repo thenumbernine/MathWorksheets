@@ -122,7 +122,7 @@ $ = \frac{1}{\gamma} ( \frac{1}{4} \pi^2 - \pi_{ij} \pi^{ij} + \frac{1}{2} \pi^2
 $ = \frac{1}{\gamma} (\frac{1}{2} \pi^2 - \pi_{ij} \pi^{ij}) $<br>
 <br>
 
-Hamiltonian:
+Hamiltonian density:<br>
 $ \mathscr{H} = \pi^{ij} \dot{\gamma}_{ij} - \mathcal{L} $<br>
 $ = -\alpha \sqrt{\gamma} (R^{\perp} + K_{ij} K^{ij} - K^2) - \sqrt{\gamma} (K^{ij} - \gamma^{ij} K) (-2 \alpha K_{ij} + 2 \nabla^\perp_{(i} \beta_{j)}) $<br>
 $ = -\alpha \sqrt{\gamma} (R^{\perp} + K_{ij} K^{ij} - K^2) + 2 \alpha \sqrt{\gamma} (K^{ij} - \gamma^{ij} K) K_{ij} - 2 \sqrt{\gamma} (K^{ij} - \gamma^{ij} K) \nabla^\perp_{(i} \beta_{j)} $<br>
@@ -137,12 +137,23 @@ using integration by parts: $ 2 \pi^{ij} \nabla^\perp_j \beta_i = -2 \beta_i \na
 $ = \alpha (-\sqrt{\gamma} R^{\perp} + \frac{1}{\sqrt{\gamma}} (\pi_{ij} \pi^{ij} - \frac{1}{2} \pi^2)) - 2 \beta^i \gamma_{ij} \nabla^\perp_k \pi^{jk} $<br>
 <br>
 
+Somewhere in the middle of this we had:<br>
+$\mathscr{H} = -\sqrt{\gamma} (\alpha (R^{\perp} - K_{ij} K^{ij} + K^2) - 2 \pi^{ij} \frac{1}{\sqrt{\gamma}} \nabla^\perp_{(i} \beta_{j)} ) $<br>
+...TODO should look like $\mathscr{H} = -2 \sqrt{\gamma} ( \alpha \mathcal{H} + \beta_i \mathcal{M}^i )$<br>
+...TODO that means defining earlier ... $\mathcal{H} = R^{\perp} - K_{ij} K^{ij} + K^2$ ... but next we define it as the densitized curvature ... which is it?<br>
+<br>
+
 Constraints:<br>
-Let $ \mathcal{H} = -\sqrt\gamma R^\perp + \frac{1}{\sqrt{\gamma}} (\pi_{ij} \pi^{ij} - \frac{1}{2}\pi^2) $<br>
+Let $\mathcal{H} = -\sqrt\gamma R^\perp + \frac{1}{\sqrt{\gamma}} (\pi_{ij} \pi^{ij} - \frac{1}{2}\pi^2) $<br>
+So $\mathcal{H} = -\sqrt\gamma (R^\perp + K^2 - {K^i}_j {K^j}_i) $<br>
+So $\mathcal{H} = -\sqrt\gamma (R^\perp + \epsilon_{ijm} \epsilon^{klm} {K^i}_k {K^j}_l) $<br>
+<br>
+
 Let $ \mathcal{M}^i = 2 \nabla^\perp_j \pi^{ij} $<br>
 $ \mathscr{H} = \alpha \mathcal{H} - \beta_i \mathcal{M}^i $<br>
 (I'm using Alcubierre's symbols from the numerical relativity community.  In the LQG world this usually looks like $H = C N + C^i N_i$.)<br>
 Assume $\mathcal{H} = 0, \mathcal{M}^i = 0$.<br>
+(TODO Alcubierre's book, eqn 2.7.11, defines Hamiltonian as non-densitized and puts the density into this equation. Maybe I should too?  Where did I get the densitized version from anyways?)
 <br>
 
 Let $ \textbf{H} = \int \mathscr{H} dx^3 $<br>
