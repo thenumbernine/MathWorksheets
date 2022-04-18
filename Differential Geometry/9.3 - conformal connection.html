@@ -1,0 +1,377 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<title>Differential Geometry</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+	</head>
+    <body>
+<a href='.'>Back</a><br><br>
+
+Conformal metric:<br>
+<br>
+
+Let $\chi = (\frac{\bar{g}}{g})^{\frac{1}{n}}$ be the conformal factor.<br>
+For $g = det(g_{ab})$ and $\bar{g}$ some arbitrary value for the conformal metric determinant... often 1 or some background metric determinant $det(\hat{g}_{ab})$.<br>
+<br>
+
+Let:<br>
+$\bar{g}_{\bar{a}\bar{b}} = \chi \delta_\bar{a}^a \delta_\bar{b}^b g_{ab}$<br>
+$\bar{g}^{\bar{a}\bar{b}} = \frac{1}{\chi} \delta_a^\bar{a} \delta_b^\bar{b} g^{ab}$<br>
+<br>
+
+So:<br>
+$g_{ab} = \frac{1}{\chi} \delta_a^\bar{a} \delta_b^\bar{b} \bar{g}_{\bar{a}\bar{b}}$<br>
+$g^{ab} = \chi \delta^a_\bar{a} \delta^b_\bar{b} \bar{g}^{\bar{a}\bar{b}}$<br>
+<br>
+
+Determinant:<br>
+$det(\bar{g}_{\bar{a}{b}}) = det(\chi g_{ab})$<br>
+$= \chi^n det(g_{ab})$<br>
+$= \left( (\frac{\bar{g}}{g})^{\frac{1}{n}} \right)^n g$<br>
+$= \frac{\bar{g}}{g} \cdot g$<br>
+$= \bar{g}$<br>
+<br>
+
+Let $\bar{e}_\bar{a} = {\bar{e}_\bar{a}}^a e_a$ be the transform from the original basis to the conformal basis.<br>
+<br>
+
+Let $W = \sqrt{\chi} = (\frac{\bar{g}}{g})^{\frac{1}{2n}}$, this is going to show up a lot.<br>
+So $\bar{g}_{\bar{a}\bar{b}} = W^2 \delta^a_\bar{a} \delta^b_\bar{b} g_{ab}$<br>
+And $g_{ab} = \frac{1}{W^2} \delta^\bar{a}_a \delta^\bar{b}_b \bar{g}_{\bar{a}\bar{b}}$<br>
+<br>
+
+One choice of basis transformation for reproducing our conformal metric is:<br>
+${\bar{e}_\bar{a}}^a = W \delta_\bar{a}^a$.<br>
+Such that: $\bar{e}_\bar{a} = {\bar{e}_\bar{a}}^a e_a = W \delta_\bar{a}^a e_a$.<br>
+And: $e_a = \frac{1}{W} \delta_a^\bar{a} \bar{e}_\bar{a}$.<br>
+<br>
+
+Define an inverse tetrad $\bar{e}^\bar{a} = {\bar{e}^\bar{a}}_a e^a = \frac{1}{W} \delta^\bar{a}_a$.<br>
+Such that $\bar{e}^\bar{a} ( \bar{e}_\bar{b} )$<br>
+$= \frac{1}{W} \delta^\bar{a}_a e^a ( W \delta_\bar{b}^b e_b )$<br>
+$= \frac{W}{W} \delta^\bar{a}_a \delta_\bar{b}^b e^a ( e_b )$<br>
+$= \delta^\bar{a}_a \delta_\bar{b}^b \delta^a_b$<br>
+$= \delta^\bar{a}_\bar{b}$<br>
+<br>
+
+So $\bar{g}_{\bar{a}{b}} = \bar{e}_\bar{a} \cdot \bar{e}_\bar{b}$<br>
+$= {\bar{e}_\bar{a}}^a e_a \cdot {\bar{e}_\bar{b}}^b e_b$<br>
+$= {\bar{e}_\bar{a}}^a {\bar{e}_\bar{b}}^b e_a \cdot e_b$<br>
+$= {\bar{e}_\bar{a}}^a {\bar{e}_\bar{b}}^b g_{ab}$<br>
+$= W^2 \delta_\bar{a}^a \delta_\bar{b}^b g_{ab}$<br>
+$= \bar{g}_{\bar{a}\bar{b}}$<br>
+<br>
+
+structure constants, ${\bar{c}_{\bar{a}\bar{b}}}^\bar{c} \bar{e}_\bar{c}$<br>
+$\left[ \bar{e}_\bar{a}, \bar{e}_\bar{b} \right] (\phi)$<br>
+$= \bar{e}_\bar{a} (\bar{e}_\bar{b} (\phi)) - \bar{e}_\bar{b} (\bar{e}_\bar{a} (\phi))$<br>
+$= W \delta_\bar{a}^a e_a (W \delta_\bar{b}^b e_b (\phi)) - W \delta_\bar{b}^b e_b (W \delta_\bar{a}^a e_a (\phi))$<br>
+$= W \delta_\bar{a}^a \delta_\bar{b}^b (
+	e_a (W e_b (\phi)) - e_b (W e_a (\phi))
+)$<br>
+$= W \delta_\bar{a}^a \delta_\bar{b}^b (
+	e_a (W) e_b (\phi)
+	- e_b (W) e_a (\phi)
+	+ W e_a (e_b (\phi)) 
+	- W e_b (e_a (\phi))
+)$<br>
+$= W \delta_\bar{a}^a \delta_\bar{b}^b (
+	e_a (W) e_b (\phi)
+	- e_b (W) e_a (\phi)
+	+ W {c_{ab}}^c e_c (\phi)
+)$<br>
+$= 
+	W \delta_\bar{a}^a \delta_\bar{b}^b e_a (W) e_b (\phi)
+	- W \delta_\bar{a}^a \delta_\bar{b}^b e_b (W) e_a (\phi)
+	+ W^2 \delta_\bar{a}^a \delta_\bar{b}^b {c_{ab}}^c e_c (\phi)
+$<br>
+$= 
+	\frac{1}{W} \bar{e}_\bar{a} (W) \delta^\bar{c}_\bar{b} \bar{e}_\bar{c} (\phi)
+	- \frac{1}{W} \bar{e}_\bar{b} (W) \delta^\bar{c}_\bar{a} \bar{e}_\bar{c} (\phi)
+	+ W \delta_\bar{a}^a \delta_\bar{b}^b \delta_c^\bar{c} {c_{ab}}^c \bar{e}_\bar{c} (\phi)
+$<br>
+$= \left(
+	\frac{1}{W} \bar{e}_\bar{a} (W) \delta^\bar{c}_\bar{b}
+	- \frac{1}{W} \bar{e}_\bar{b} (W) \delta^\bar{c}_\bar{a}
+	+ W \delta_\bar{a}^a \delta_\bar{b}^b \delta_c^\bar{c} {c_{ab}}^c
+\right) \bar{e}_\bar{c} (\phi) $<br>
+$= {\bar{c}_{\bar{a}\bar{b}}}^\bar{c} \bar{e}_\bar{c} (\phi)$<br>
+<br>
+
+Therefore the commutation/structure constants of the conformal basis is equal to:<br>
+
+${\bar{c}_{\bar{a}\bar{b}}}^\bar{c} = 
+	\frac{1}{W} \bar{e}_\bar{a} (W) \delta^\bar{c}_\bar{b}
+	- \frac{1}{W} \bar{e}_\bar{b} (W) \delta^\bar{c}_\bar{a}
+	+ W \delta_\bar{a}^a \delta_\bar{b}^b \delta_c^\bar{c} {c_{ab}}^c
+$<br>
+For some background metric commutation ${c_{ab}}^c$<br>
+<br>
+
+$\bar{c}_{\bar{a}\bar{b}\bar{c}} = \bar{g}_{\bar{d}\bar{c}} \left(
+	\frac{1}{W} \bar{e}_\bar{a} (W) \delta^\bar{d}_\bar{b}
+	- \frac{1}{W} \bar{e}_\bar{b} (W) \delta^\bar{d}_\bar{a}
+	+ W \delta_\bar{a}^a \delta_\bar{b}^b \delta_d^\bar{d} {c_{ab}}^d
+\right)$<br>
+$= 
+	\frac{1}{W} \bar{e}_\bar{a} (W) \bar{g}_{\bar{b}\bar{c}}
+	- \frac{1}{W} \bar{e}_\bar{b} (W) \bar{g}_{\bar{a}\bar{c}}
+	+ W \delta_\bar{a}^a \delta_\bar{b}^b {c_{ab}}^d \delta_d^\bar{d} \delta^\bar{e}_c \delta^c_\bar{c} \bar{g}_{\bar{d}\bar{e}}
+$<br>
+$= 
+	\frac{1}{W} \bar{e}_\bar{a} (W) \bar{g}_{\bar{b}\bar{c}}
+	- \frac{1}{W} \bar{e}_\bar{b} (W) \bar{g}_{\bar{a}\bar{c}}
+	+ W^3 \delta_\bar{a}^a \delta_\bar{b}^b {c_{ab}}^d g_{cd} \delta^c_\bar{c}
+$<br>
+$= 
+	\frac{1}{W} \bar{e}_\bar{a} (W) \bar{g}_{\bar{b}\bar{c}}
+	- \frac{1}{W} \bar{e}_\bar{b} (W) \bar{g}_{\bar{a}\bar{c}}
+	+ W^3 \delta_\bar{a}^a \delta_\bar{b}^b \delta_\bar{c}^c c_{abc}
+$<br>
+<br>
+
+Levi-Civita metric-cancelling, torsion-free geodesic connection of the conformal basis:<br>
+$\bar{\hat{\Gamma}}_{\bar{a}\bar{b}\bar{c}} = \frac{1}{2} ( 
+	\bar{e}_\bar{c} (\bar{g}_{\bar{a}\bar{b}}) 
+	+ \bar{e}_\bar{b} (\bar{g}_{\bar{a}\bar{c}}) 
+	- \bar{e}_\bar{a} (\bar{g}_{\bar{b}\bar{c}})
+	+ \bar{c}_{\bar{a}\bar{b}\bar{c}} 
+	+ \bar{c}_{\bar{a}\bar{c}\bar{b}} 
+	- \bar{c}_{\bar{c}\bar{b}\bar{a}}
+)$<br>
+$= \frac{1}{2} \left(
+	W \delta_\bar{c}^c e_c (W^2 \delta_\bar{a}^a \delta_\bar{b}^b g_{ab}) 
+	+ W \delta_\bar{b}^b e_b (W^2 \delta_\bar{a}^a \delta_\bar{c}^c g_{ac}) 
+	- W \delta_\bar{a}^a e_a (W^2 \delta_\bar{b}^b \delta_\bar{c}^c g_{bc})
+
+	+ \frac{1}{W} \bar{e}_\bar{a} (W) \bar{g}_{\bar{b}\bar{c}}
+	- \frac{1}{W} \bar{e}_\bar{b} (W) \bar{g}_{\bar{a}\bar{c}}
+	+ W^3 \delta_\bar{a}^a \delta_\bar{b}^b \delta_\bar{c}^c c_{abc}
+	
+	+ \frac{1}{W} \bar{e}_\bar{a} (W) \bar{g}_{\bar{c}\bar{b}}
+	- \frac{1}{W} \bar{e}_\bar{c} (W) \bar{g}_{\bar{a}\bar{b}}
+	+ W^3 \delta_\bar{a}^a \delta_\bar{c}^c \delta_\bar{b}^b c_{acb}
+
+	- \frac{1}{W} \bar{e}_\bar{c} (W) \bar{g}_{\bar{b}\bar{a}}
+	+ \frac{1}{W} \bar{e}_\bar{b} (W) \bar{g}_{\bar{c}\bar{a}}
+	- W^3 \delta_\bar{c}^c \delta_\bar{b}^b \delta_\bar{a}^a c_{cba}
+\right)$<br>
+$= \frac{1}{2} \left(
+	  W \delta_\bar{a}^a \delta_\bar{b}^b \delta_\bar{c}^c e_c(W^2) g_{ab}
+	+ W \delta_\bar{a}^a \delta_\bar{b}^b \delta_\bar{c}^c e_b(W^2) g_{ac}
+	- W \delta_\bar{a}^a \delta_\bar{b}^b \delta_\bar{c}^c e_a(W^2) g_{bc}
+  
+	+ W^3 \delta_\bar{a}^a \delta_\bar{b}^b \delta_\bar{c}^c e_c(g_{ab}) 
+	+ W^3 \delta_\bar{a}^a \delta_\bar{b}^b \delta_\bar{c}^c e_b(g_{ac}) 
+	- W^3 \delta_\bar{a}^a \delta_\bar{b}^b \delta_\bar{c}^c e_a(g_{bc})
+
+	
+	+ W^2 \delta_\bar{a}^a \delta_\bar{b}^b \delta_\bar{c}^c e_a(W) g_{bc}
+	- W^2 \delta_\bar{a}^a \delta_\bar{b}^b \delta_\bar{c}^c e_b(W) g_{ac}
+	
+	+ W^2 \delta_\bar{a}^a \delta_\bar{b}^b \delta_\bar{c}^c e_a(W) g_{cb}
+	- W^2 \delta_\bar{a}^a \delta_\bar{b}^b \delta_\bar{c}^c e_c(W) g_{ab}
+
+	- W^2 \delta_\bar{a}^a \delta_\bar{b}^b \delta_\bar{c}^c e_c(W) g_{ba}
+	+ W^2 \delta_\bar{a}^a \delta_\bar{b}^b \delta_\bar{c}^c e_b(W) g_{ca}
+
+
+	+ W^3 \delta_\bar{a}^a \delta_\bar{b}^b \delta_\bar{c}^c c_{abc}
+	+ W^3 \delta_\bar{a}^a \delta_\bar{b}^b \delta_\bar{c}^c c_{acb}
+	- W^3 \delta_\bar{a}^a \delta_\bar{b}^b \delta_\bar{c}^c c_{cba}
+\right)$<br>
+$= \frac{1}{2} W \delta_\bar{a}^a \delta_\bar{b}^b \delta_\bar{c}^c \left(
+	  W e_a(W) g_{bc}
+	- W e_b(W) g_{ac}
+	
+	+ W e_a(W) g_{cb}
+	- W e_c(W) g_{ab}
+
+	- W e_c(W) g_{ba}
+	+ W e_b(W) g_{ca}
+
+	+ 2 W e_c(W) g_{ab} 
+	+ 2 W e_b(W) g_{ac} 
+	- 2 W e_a(W) g_{bc}
+
+	+ W^2 \left(
+		e_c(g_{ab}) + e_b(g_{ac}) - e_a(g_{bc}) + c_{abc} + c_{acb} - c_{cba}
+	\right)
+\right)$<br>
+$= W^2 \delta_\bar{a}^a \delta_\bar{b}^b \delta_\bar{c}^c \left(
+	e_b(W) g_{ac} 
+
+	+ W \hat{\Gamma}_{abc}
+\right)$<br>
+<br>
+
+${\bar{\hat{\Gamma}}^\bar{a}}_{\bar{b}\bar{c}} = \bar{g}^{\bar{a}\bar{d}} \bar{\hat{\Gamma}}_{\bar{d}\bar{b}\bar{c}}$<br>
+$= \bar{g}^{\bar{a}\bar{d}} 
+	W^2 \delta_\bar{d}^d \delta_\bar{b}^b \delta_\bar{c}^c \left(
+		e_b(W) g_{dc} 
+		+ W \hat{\Gamma}_{dbc}
+	\right)
+$<br>
+$= 
+	  W^2 \bar{g}^{\bar{a}\bar{d}} \delta_\bar{d}^d \delta_\bar{b}^b \delta_\bar{c}^c e_b(W) g_{dc} 
+	+ W^3 \bar{g}^{\bar{a}\bar{d}} \delta_\bar{d}^d \delta_\bar{b}^b \delta_\bar{c}^c  \hat{\Gamma}_{dbc}
+$<br>
+$= 
+	  W^2 \delta^\bar{a}_a \delta^a_\bar{e} \bar{g}^{\bar{e}\bar{d}} \delta_\bar{d}^d \delta_\bar{b}^b \delta_\bar{c}^c e_b(W) g_{dc} 
+	+ W^3 \delta^\bar{a}_a \delta^a_\bar{e} \bar{g}^{\bar{e}\bar{d}} \delta_\bar{d}^d \delta_\bar{b}^b \delta_\bar{c}^c  \hat{\Gamma}_{dbc}
+$<br>
+$= 
+	  W^2 \delta^\bar{a}_a g^{ad} \delta_\bar{b}^b \delta_\bar{c}^c e_b(W) g_{dc} 
+	+ W^3 \delta^\bar{a}_a g^{ad} \delta_\bar{b}^b \delta_\bar{c}^c  \hat{\Gamma}_{dbc}
+$<br>
+$= 
+	  \delta^\bar{a}_a \delta_\bar{b}^b \delta_\bar{c}^c \delta^a_c e_b(W) 
+	+ W \delta^\bar{a}_a \delta_\bar{b}^b \delta_\bar{c}^c {\hat{\Gamma}^a}_{bc}
+$<br>
+$= 
+	  \delta^\bar{a}_\bar{c} \delta_\bar{b}^b e_b(W) 
+	+ W \delta^\bar{a}_a \delta_\bar{b}^b \delta_\bar{c}^c {\hat{\Gamma}^a}_{bc}
+$<br>
+$= 
+	  \frac{1}{W} \delta^\bar{a}_\bar{c} \bar{e}_\bar{b}(W) 
+	+ W \delta^\bar{a}_a \delta_\bar{b}^b \delta_\bar{c}^c {\hat{\Gamma}^a}_{bc}
+$<br>
+<br>
+
+Notice that the difference is the gradient of the square-root of the conformal factor: $e^a (\nabla_b e_c) = {\Gamma^a}_{bc}$.<br>
+If we are dealing with a coordinate basis, and the conformal metric is fixed at 1, then this is the gradient of the volume element.<br>
+<br>
+
+Notice that, if you're a BSSN numerical relativity fan, this is a bit different from the "conformal connection" that is defined in their literature,
+which is simply done by replacing the $g_{ab}$ with $\bar{g}_{\bar{a}\bar{b}}$ in the definition of the Levi-Civita torsion-free connection of the coordinate metric, 
+with no consideration of what the conformal transform has possibly done to the underlying basis, and therefore to the commutation.<br>
+<br>
+
+Now for some traces of the Levi-Civita torsion-free connection of the conformal metric:<br>
+<br>
+
+${\bar{\hat{\Gamma}}}^\bar{a} = {\bar{\hat{\Gamma}}^\bar{a}}_{\bar{b}\bar{c}} \bar{g}^{\bar{b}\bar{c}}$<br>
+$= \left(
+	  \delta^\bar{a}_\bar{c} \delta_\bar{b}^b e_b(W) 
+	+ W \delta^\bar{a}_a \delta_\bar{b}^b \delta_\bar{c}^c {\hat{\Gamma}^a}_{bc}
+\right)
+\cdot \frac{1}{W^2} \delta^\bar{b}_e \delta^\bar{c}_f g^{ef}$<br>
+$= 
+	  \frac{1}{W^2} \delta^\bar{a}_a g^{ab} e_b(W)
+	+ \frac{1}{W} \delta^\bar{a}_a \hat{\Gamma}^a
+$<br>
+<br>
+<br>
+
+${\bar{\hat{\Gamma}}^\bar{a}}_{\bar{b}\bar{a}} = 
+	  \delta^\bar{a}_\bar{a} \delta_\bar{b}^b e_b(W) 
+	+ W \delta^\bar{a}_a \delta_\bar{b}^b \delta_\bar{a}^c {\hat{\Gamma}^a}_{bc}
+$<br>
+${\bar{\hat{\Gamma}}^\bar{a}}_{\bar{b}\bar{a}} = \delta_\bar{b}^b \left(
+	  n e_b(W) 
+	+ W {\hat{\Gamma}^a}_{ba}
+\right)$<br>
+${\bar{\hat{\Gamma}}^\bar{a}}_{\bar{b}\bar{a}} = \delta_\bar{b}^b \left(
+	  n e_b(W) 
+	+ W e_b(log\sqrt{|g|})
+\right)$<br>
+${\bar{\hat{\Gamma}}^\bar{a}}_{\bar{b}\bar{a}} = \delta_\bar{b}^b \left(
+	  n e_b(W) 
+	+ \frac{W}{2 |g|} e_b(|g|)
+\right)$<br>
+<br>
+
+Riemann curvature:<br>
+${\bar{R}^\bar{a}}_{\bar{b}\bar{c}\bar{d}} = 
+	\bar{e}_\bar{c} ({\bar{\hat{\Gamma}}^\bar{a}}_{\bar{d}\bar{b}}) 
+	- \bar{e}_\bar{d} ({\bar{\hat{\Gamma}}^\bar{a}}_{\bar{c}\bar{b}}) 
+	
+	+ {\bar{\hat{\Gamma}}^\bar{a}}_{\bar{c}\bar{u}} {\bar{\hat{\Gamma}}^\bar{u}}_{\bar{d}\bar{b}} 
+	- {\bar{\hat{\Gamma}}^\bar{a}}_{\bar{d}\bar{u}} {\bar{\hat{\Gamma}}^\bar{u}}_{\bar{c}\bar{b}} 
+	
+	- {\bar{\hat{\Gamma}}^\bar{a}}_{\bar{u}\bar{b}} {\bar{c}_{\bar{c}\bar{d}}}^\bar{u}
+$<br>
+$= 
+	\bar{e}_\bar{c} (
+		  \delta^\bar{a}_\bar{b} \delta_\bar{d}^d e_d(W) 
+		+ W \delta^\bar{a}_a \delta_\bar{d}^d \delta_\bar{b}^b {\hat{\Gamma}^a}_{db}
+	)
+	- \bar{e}_\bar{d} (
+		  \delta^\bar{a}_\bar{b} \delta_\bar{c}^c e_c(W) 
+		+ W \delta^\bar{a}_a \delta_\bar{c}^c \delta_\bar{b}^b {\hat{\Gamma}^a}_{cb}
+	)
+	
+	+ (
+		  \delta^\bar{a}_\bar{u} \delta_\bar{c}^c e_c(W) 
+		+ W \delta^\bar{a}_a \delta_\bar{c}^c \delta_\bar{u}^u {\hat{\Gamma}^a}_{cu}
+	) (
+		  \delta^\bar{u}_\bar{b} \delta_\bar{d}^d e_d(W) 
+		+ W \delta^\bar{u}_v \delta_\bar{d}^d \delta_\bar{b}^b {\hat{\Gamma}^v}_{db}
+	)
+	- (
+		  \delta^\bar{a}_\bar{u} \delta_\bar{d}^d e_d(W) 
+		+ W \delta^\bar{a}_a \delta_\bar{d}^d \delta_\bar{u}^u {\hat{\Gamma}^a}_{du}
+	) (
+		  \delta^\bar{u}_\bar{b} \delta_\bar{c}^c e_c(W) 
+		+ W \delta^\bar{u}_v \delta_\bar{c}^c \delta_\bar{b}^b {\hat{\Gamma}^v}_{cb}
+	)
+	- (
+		  \delta^\bar{a}_\bar{b} \delta_\bar{u}^u e_u(W) 
+		+ W \delta^\bar{a}_a \delta_\bar{u}^u \delta_\bar{b}^b {\hat{\Gamma}^a}_{ub}
+	) (
+		\frac{1}{W} \bar{e}_\bar{c} (W) \delta^\bar{u}_\bar{d}
+		- \frac{1}{W} \bar{e}_\bar{d} (W) \delta^\bar{u}_\bar{c}
+		+ W \delta_\bar{c}^c \delta_\bar{d}^d \delta_v^\bar{u} {c_{cd}}^v
+	)
+$<br>
+$= 
+	  W   \delta^\bar{a}_a \delta_\bar{b}^b \delta_\bar{c}^c \delta_\bar{d}^d \delta^a_b e_c(e_d(W))
+	- W   \delta^\bar{a}_a \delta_\bar{b}^b \delta_\bar{c}^c \delta_\bar{d}^d \delta^a_b e_d(e_c(W))
+	+ W   \delta^\bar{a}_a \delta_\bar{b}^b \delta_\bar{c}^c \delta_\bar{d}^d e_c(W {\hat{\Gamma}^a}_{db})
+	- W   \delta^\bar{a}_a \delta_\bar{b}^b \delta_\bar{c}^c \delta_\bar{d}^d e_d(W {\hat{\Gamma}^a}_{cb})
+	
+	+     \delta^\bar{a}_a \delta_\bar{b}^b \delta_\bar{c}^c \delta_\bar{d}^d \delta^a_b e_c(W) e_d(W) 
+	+ W   \delta^\bar{a}_a \delta_\bar{b}^b \delta_\bar{c}^c \delta_\bar{d}^d e_c(W) {\hat{\Gamma}^a}_{db}
+	+ W   \delta^\bar{a}_a \delta_\bar{b}^b \delta_\bar{c}^c \delta_\bar{d}^d {\hat{\Gamma}^a}_{cb} e_d(W) 
+	+ W^2 \delta^\bar{a}_a \delta_\bar{b}^b \delta_\bar{c}^c \delta_\bar{d}^d {\hat{\Gamma}^a}_{cu} {\hat{\Gamma}^u}_{db}
+	
+	-     \delta^\bar{a}_a \delta^b_\bar{b} \delta_\bar{c}^c \delta_\bar{d}^d \delta^a_b e_c(W) e_d(W)
+	- W   \delta^\bar{a}_a \delta^b_\bar{b} \delta_\bar{c}^c \delta_\bar{d}^d e_d(W) {\hat{\Gamma}^a}_{cb}
+	- W   \delta^\bar{a}_a \delta^b_\bar{b} \delta_\bar{c}^c \delta_\bar{d}^d {\hat{\Gamma}^a}_{db} e_c(W) 
+	- W^2 \delta^\bar{a}_a \delta^b_\bar{b} \delta_\bar{c}^c \delta_\bar{d}^d {\hat{\Gamma}^a}_{du} {\hat{\Gamma}^u}_{cb}
+	
+	-     \delta^\bar{a}_a \delta^b_\bar{b} \delta_\bar{c}^c \delta_\bar{d}^d \delta^a_b e_d(W) e_c(W)
+	+     \delta^\bar{a}_a \delta^b_\bar{b} \delta_\bar{c}^c \delta_\bar{d}^d \delta^a_b e_c(W) e_d(W)
+	- W   \delta^\bar{a}_a \delta^b_\bar{b} \delta_\bar{c}^c \delta_\bar{d}^d \delta^a_b e_u(W) {c_{cd}}^u
+	- W   \delta^\bar{a}_a \delta_\bar{b}^b \delta_\bar{c}^c \delta_\bar{d}^d {\hat{\Gamma}^a}_{db} e_c(W)
+	+ W   \delta^\bar{a}_a \delta_\bar{b}^b \delta_\bar{c}^c \delta_\bar{d}^d {\hat{\Gamma}^a}_{cb} e_d(W)
+	- W^2 \delta^\bar{a}_a \delta_\bar{b}^b \delta_\bar{c}^c \delta_\bar{d}^d {\hat{\Gamma}^a}_{ub} {c_{cd}}^u
+$<br>
+$= \delta^\bar{a}_a \delta_\bar{b}^b \delta_\bar{c}^c \delta_\bar{d}^d \left(
+	W \delta^a_b \left( e_c(e_d(W)) - e_d(e_c(W)) - e_u(W) {c_{cd}}^u \right)
+
+	+ W^2 \left(
+		+ e_c({\hat{\Gamma}^a}_{db})
+		- e_d({\hat{\Gamma}^a}_{cb})
+		+ {\hat{\Gamma}^a}_{cu} {\hat{\Gamma}^u}_{db}
+		- {\hat{\Gamma}^a}_{du} {\hat{\Gamma}^u}_{cb}
+		- {\hat{\Gamma}^a}_{ub} {c_{cd}}^u
+	\right)
+\right)$<br>
+$= W^2 \delta^\bar{a}_a \delta_\bar{b}^b \delta_\bar{c}^c \delta_\bar{d}^d \left(
+	  e_c({\hat{\Gamma}^a}_{db})
+	- e_d({\hat{\Gamma}^a}_{cb})
+	+ {\hat{\Gamma}^a}_{cu} {\hat{\Gamma}^u}_{db}
+	- {\hat{\Gamma}^a}_{du} {\hat{\Gamma}^u}_{cb}
+	- {\hat{\Gamma}^a}_{ub} {c_{cd}}^u
+\right)$<br>
+$= W^2 \delta^\bar{a}_a \delta_\bar{b}^b \delta_\bar{c}^c \delta_\bar{d}^d {R^a}_{bcd}$<br>
+Well that looks a hell of a lot simpler than the Riemann definition that you find in the numerical relativity textbooks.
+And it is so proportional to the original metric's Riemann curvature. Almost as if there is something invariant about curvature?  Nah.<br>
+
+<br>
+
+<a href='.'>Back</a><br><br>
+	</body>
+</html>
