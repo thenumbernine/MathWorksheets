@@ -130,6 +130,66 @@ $= (e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u) e^a \wedge e
 $= (2 e_{[a} ({\Gamma^c}_{b]d}) - {\Gamma^c}_{ud} {c_{ab}}^u) e^a \otimes e^b$<br>
 <br>
 
+Second exterior derivative of connection one-forms:<br>
+$d^2 {\omega^c}_d = d (d {\omega^c}_d )$<br>
+$= d( (e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u) e^a \wedge e^b )$<br>
+$= e_e (e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u) e^e \wedge e^a \wedge e^b 
+	+ (e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u) (de^a \wedge e^b - e^a \wedge de^b)$<br>
+$= 	
+	e_e (e_a ({\Gamma^c}_{bd})) e^e \wedge e^a \wedge e^b 
+	- \frac{1}{2} e_e( {\Gamma^c}_{ud} {c_{ab}}^u) e^e \wedge e^a \wedge e^b 
+	
+	+ (
+		e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u
+	) \cdot (-\frac{1}{2} {c_{pq}}^a e^p \wedge e^q) \wedge e^b
+	
+	- (
+		e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u
+	) e^a \wedge (-\frac{1}{2} {c_{pq}}^b e^p \wedge e^q)
+$<br>
+$= 	
+	(
+		\frac{1}{2} e_f ({\Gamma^c}_{bd}) {c_{ea}}^f
+		
+		- \frac{1}{2} e_e( {\Gamma^c}_{ud}) {c_{ab}}^u
+		- \frac{1}{2} e_e( {c_{ab}}^u) {\Gamma^c}_{ud}
+	) e^e \wedge e^a \wedge e^b 
+
+	- \frac{1}{2} {c_{pq}}^a (
+		e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u
+	) e^p \wedge e^q \wedge e^b
+	
+	+ \frac{1}{2} {c_{pq}}^b (
+		e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u
+	) e^a \wedge e^p \wedge e^q
+$<br>
+$= 	(	
+	\frac{1}{2} e_u ({\Gamma^c}_{rd}) {c_{pq}}^u
+	- \frac{1}{2} e_p( {\Gamma^c}_{ud}) {c_{qr}}^u
+	- \frac{1}{2} e_p( {c_{qr}}^u) {\Gamma^c}_{ud}
+
+	- \frac{1}{2} e_a ({\Gamma^c}_{rd}){c_{pq}}^a 
+	+ \frac{1}{2} e_p ({\Gamma^c}_{bd}){c_{qr}}^b  
+	
+	- \frac{1}{4} {c_{qr}}^b {\Gamma^c}_{ud} {c_{pb}}^u
+	+ \frac{1}{4} {c_{pq}}^a {\Gamma^c}_{ud} {c_{ar}}^u
+) e^p \wedge e^q \wedge e^r
+$<br>
+$= 	
+	(
+		- \frac{1}{2} e_p( {c_{qr}}^u)
+		+ \frac{1}{2} {c_{pq}}^v {c_{vr}}^u
+	) {\Gamma^c}_{ud}  e^p \wedge e^q \wedge e^r
+$<br>
+<br>
+
+Exterior covariant derivative:<br>
+Let $D = d + \omega$<br>
+...implicit wedge with p-forms...<br>
+...implicit composition with vectors...<br>
+...implicit sum when $\omega$ spans a basis...<br>
+<br>
+
 
 
 <a href='.'>Back</a><br><br>

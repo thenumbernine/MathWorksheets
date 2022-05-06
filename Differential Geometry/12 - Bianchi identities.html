@@ -9,24 +9,6 @@
 <a href='.'>Back</a><br><br>
 
 
-Curvature two-form:<br>
-${\Omega^c}_d = {R^c}_{dab} e^a \otimes e^b$<br>
-$= (
-	2 e_{[a} ({\Gamma^c}_{b]d}) 
-	+ 2 {\Gamma^c}_{[a|u} {\Gamma^u}_{b]d} 
-	- {\Gamma^c}_{ud} {c_{ab}}^u
-) e^a \otimes e^b$<br>
-$= (
-	e_{[a} ({\Gamma^c}_{b]d}) 
-	- \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u
-	+ {\Gamma^c}_{[a|u} {\Gamma^u}_{b]d} 
-) e^a \wedge e^b$<br>
-$ = d {\omega^c}_d + {\omega^c}_u \wedge {\omega^u}_d$<br>
-<br>
-
-Since $e^a \wedge e^b$ is antisymmetric, we know ${R^c}_{dab} = {R^c}_{d[ab]}$.<br>
-<br>
-
 second exterior derivative of a vector basis:<Br>
 $d e^a = \Theta^a - {\omega^a}_b \wedge e^b$<br>
 so $d^2 e^a = d \Theta^a - d( {\omega^a}_b \wedge e^b )$<br>
@@ -36,6 +18,10 @@ $= d \Theta^a + {\omega^a}_b \wedge \Theta^b - {\Omega^a}_c \wedge e^c$<br>
 if $d^2 e^a = 0$ then we get<br>
 $d \Theta^a + {\omega^a}_b \wedge \Theta^b = {\Omega^a}_b \wedge e^b$<br>
 This is the first Bianchi identity.<br>
+<br>
+
+Exterior covariant derivative of torsion two-form (Bianchi's first identity using an exterior covariant derivative):<br>
+$D \Theta^a = {\Omega^a}_b \wedge e^b$<br>
 <br>
 
 First Bianchi identity, expanding terms:<br>
@@ -89,88 +75,12 @@ ${R^a}_{bcd} e^b \wedge e^c \wedge e^d = 0$<br>
 ${R^a}_{[bcd]} = 0$<br>
 <br>
 
-Exterior covariant derivative:<br>
-Let $D = d + \omega$<br>
-...implicit wedge with p-forms...<br>
-...implicit composition with vectors...<br>
-...implicit sum when $\omega$ spans a basis...<br>
-<br>
-
-Exterior covariant derivative of basis one-forms:<br>
-$D e^a = d e^a + {\omega^a}_b \wedge e^b$<br>
-$D e^a = \Theta^a$<br>
-<br>
-$D e = D (\tilde{e}_a \otimes e^a)$<br>
-$= (D \tilde{e}_a) \otimes e^a + \tilde{e}_a \otimes (D e^a)$<br>
-...<br>
-$= \tilde{e}_a \otimes (d e^a + {\omega^a}_b \wedge e^b)$<br>
-$= \tilde{e}_a \otimes (-\frac{1}{2} {c_{ub}}^a e^u \wedge e^b + {\Gamma^a}_{ub} e^u \wedge e^b)$<br>
-$= \tilde{e}_a \otimes ((-\frac{1}{2} {c_{ub}}^a + {\Gamma^a}_{ub}) e^u \wedge e^b)$<br>
-<br>
-
-Exterior covariant derivative of torsion two-form (Bianchi's first identity using an exterior covariant derivative):<br>
-$D \Theta^a = {\Omega^a}_b \wedge e^b$<br>
-<br>
-
 
 Notice: the exterior covariant derivative of the connection is not the curvature:<br>
 $D {\omega^a}_b = d {\omega^a}_b + {\omega^a}_c \wedge {\omega^c}_b  - {\omega^c}_b \wedge {\omega^a}_c$<br> 
 $= d {\omega^a}_b + {\omega^a}_c \wedge {\omega^c}_b  + {\omega^a}_c \wedge {\omega^c}_b$<br> 
 $= d {\omega^a}_b + 2 {\omega^a}_c \wedge {\omega^c}_b$<br> 
 $= {\Omega^a}_b + {\omega^a}_c \wedge {\omega^c}_b$<br>
-<br>
-
-second exterior derivative of connection one-forms:<br>
-$d^2 {\omega^c}_d = d (d {\omega^c}_d )$<br>
-$= d( (e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u) e^a \wedge e^b )$<br>
-$= e_e (e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u) e^e \wedge e^a \wedge e^b 
-	+ (e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u) (de^a \wedge e^b - e^a \wedge de^b)$<br>
-$= 	
-	e_e (e_a ({\Gamma^c}_{bd})) e^e \wedge e^a \wedge e^b 
-	- \frac{1}{2} e_e( {\Gamma^c}_{ud} {c_{ab}}^u) e^e \wedge e^a \wedge e^b 
-	
-	+ (
-		e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u
-	) \cdot (-\frac{1}{2} {c_{pq}}^a e^p \wedge e^q) \wedge e^b
-	
-	- (
-		e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u
-	) e^a \wedge (-\frac{1}{2} {c_{pq}}^b e^p \wedge e^q)
-$<br>
-$= 	
-	(
-		\frac{1}{2} e_f ({\Gamma^c}_{bd}) {c_{ea}}^f
-		
-		- \frac{1}{2} e_e( {\Gamma^c}_{ud}) {c_{ab}}^u
-		- \frac{1}{2} e_e( {c_{ab}}^u) {\Gamma^c}_{ud}
-	) e^e \wedge e^a \wedge e^b 
-
-	- \frac{1}{2} {c_{pq}}^a (
-		e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u
-	) e^p \wedge e^q \wedge e^b
-	
-	+ \frac{1}{2} {c_{pq}}^b (
-		e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u
-	) e^a \wedge e^p \wedge e^q
-$<br>
-$= 	(	
-	\frac{1}{2} e_u ({\Gamma^c}_{rd}) {c_{pq}}^u
-	- \frac{1}{2} e_p( {\Gamma^c}_{ud}) {c_{qr}}^u
-	- \frac{1}{2} e_p( {c_{qr}}^u) {\Gamma^c}_{ud}
-
-	- \frac{1}{2} e_a ({\Gamma^c}_{rd}){c_{pq}}^a 
-	+ \frac{1}{2} e_p ({\Gamma^c}_{bd}){c_{qr}}^b  
-	
-	- \frac{1}{4} {c_{qr}}^b {\Gamma^c}_{ud} {c_{pb}}^u
-	+ \frac{1}{4} {c_{pq}}^a {\Gamma^c}_{ud} {c_{ar}}^u
-) e^p \wedge e^q \wedge e^r
-$<br>
-$= 	
-	(
-		- \frac{1}{2} e_p( {c_{qr}}^u)
-		+ \frac{1}{2} {c_{pq}}^v {c_{vr}}^u
-	) {\Gamma^c}_{ud}  e^p \wedge e^q \wedge e^r
-$<br>
 <br>
 
 ${\Omega^a}_c \wedge {\omega^c}_b = (d {\omega^a}_c + {\omega^a}_d \wedge {\omega^d}_c) \wedge {\omega^c}_b$<br>

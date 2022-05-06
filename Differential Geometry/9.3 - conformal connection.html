@@ -131,15 +131,15 @@ $=
 $<br>
 <br>
 
-Levi-Civita metric-cancelling, torsion-free geodesic connection of the conformal basis:<br>
-$\bar{\hat{\Gamma}}_{\bar{a}\bar{b}\bar{c}} = \frac{1}{2} ( 
+Metric-cancelling geodesic connection of the conformal basis:<br>
+$\bar{\Gamma}_{\bar{a}\bar{b}\bar{c}} = \frac{1}{2} ( 
 	\bar{e}_\bar{c} (\bar{g}_{\bar{a}\bar{b}}) 
 	+ \bar{e}_\bar{b} (\bar{g}_{\bar{a}\bar{c}}) 
 	- \bar{e}_\bar{a} (\bar{g}_{\bar{b}\bar{c}})
 	+ \bar{c}_{\bar{a}\bar{b}\bar{c}} 
 	+ \bar{c}_{\bar{a}\bar{c}\bar{b}} 
 	- \bar{c}_{\bar{c}\bar{b}\bar{a}}
-)$<br>
+) + \bar{K}_{\bar{a}\bar{b}\bar{c}}$<br>
 $= \frac{1}{2} \left(
 	W \delta_\bar{c}^c e_c (W^2 \delta_\bar{a}^a \delta_\bar{b}^b g_{ab}) 
 	+ W \delta_\bar{b}^b e_b (W^2 \delta_\bar{a}^a \delta_\bar{c}^c g_{ac}) 
@@ -156,7 +156,7 @@ $= \frac{1}{2} \left(
 	- \frac{1}{W} \bar{e}_\bar{c} (W) \bar{g}_{\bar{b}\bar{a}}
 	+ \frac{1}{W} \bar{e}_\bar{b} (W) \bar{g}_{\bar{c}\bar{a}}
 	- W^3 \delta_\bar{c}^c \delta_\bar{b}^b \delta_\bar{a}^a c_{cba}
-\right)$<br>
+\right) + \bar{K}_{\bar{a}\bar{b}\bar{c}}$<br>
 $= \frac{1}{2} \left(
 	  W \delta_\bar{a}^a \delta_\bar{b}^b \delta_\bar{c}^c e_c(W^2) g_{ab}
 	+ W \delta_\bar{a}^a \delta_\bar{b}^b \delta_\bar{c}^c e_b(W^2) g_{ac}
@@ -180,7 +180,7 @@ $= \frac{1}{2} \left(
 	+ W^3 \delta_\bar{a}^a \delta_\bar{b}^b \delta_\bar{c}^c c_{abc}
 	+ W^3 \delta_\bar{a}^a \delta_\bar{b}^b \delta_\bar{c}^c c_{acb}
 	- W^3 \delta_\bar{a}^a \delta_\bar{b}^b \delta_\bar{c}^c c_{cba}
-\right)$<br>
+\right) + \bar{K}_{\bar{a}\bar{b}\bar{c}}$<br>
 $= \frac{1}{2} W \delta_\bar{a}^a \delta_\bar{b}^b \delta_\bar{c}^c \left(
 	  W e_a(W) g_{bc}
 	- W e_b(W) g_{ac}
@@ -198,45 +198,64 @@ $= \frac{1}{2} W \delta_\bar{a}^a \delta_\bar{b}^b \delta_\bar{c}^c \left(
 	+ W^2 \left(
 		e_c(g_{ab}) + e_b(g_{ac}) - e_a(g_{bc}) + c_{abc} + c_{acb} - c_{cba}
 	\right)
-\right)$<br>
+\right) + \bar{K}_{\bar{a}\bar{b}\bar{c}}$<br>
 $= W^2 \delta_\bar{a}^a \delta_\bar{b}^b \delta_\bar{c}^c \left(
 	e_b(W) g_{ac} 
 
 	+ W \hat{\Gamma}_{abc}
-\right)$<br>
+\right) + \bar{K}_{\bar{a}\bar{b}\bar{c}}$<br>
 <br>
 
-${\bar{\hat{\Gamma}}^\bar{a}}_{\bar{b}\bar{c}} = \bar{g}^{\bar{a}\bar{d}} \bar{\hat{\Gamma}}_{\bar{d}\bar{b}\bar{c}}$<br>
+${\bar{\Gamma}^\bar{a}}_{\bar{b}\bar{c}} = \bar{g}^{\bar{a}\bar{d}} \bar{\Gamma}_{\bar{d}\bar{b}\bar{c}}$<br>
 $= \bar{g}^{\bar{a}\bar{d}} 
-	W^2 \delta_\bar{d}^d \delta_\bar{b}^b \delta_\bar{c}^c \left(
-		e_b(W) g_{dc} 
-		+ W \hat{\Gamma}_{dbc}
+	\left(
+		W^2 \delta_\bar{d}^d \delta_\bar{b}^b \delta_\bar{c}^c 
+		\left(
+			e_b(W) g_{dc} 
+			+ W \hat{\Gamma}_{dbc}
+		\right)
+		+ \bar{K}_{\bar{d}\bar{b}\bar{c}}
 	\right)
 $<br>
 $= 
 	  W^2 \bar{g}^{\bar{a}\bar{d}} \delta_\bar{d}^d \delta_\bar{b}^b \delta_\bar{c}^c e_b(W) g_{dc} 
 	+ W^3 \bar{g}^{\bar{a}\bar{d}} \delta_\bar{d}^d \delta_\bar{b}^b \delta_\bar{c}^c  \hat{\Gamma}_{dbc}
+	+ \bar{g}^{\bar{a}\bar{d}} \bar{K}_{\bar{d}\bar{b}\bar{c}}
 $<br>
 $= 
 	  W^2 \delta^\bar{a}_a \delta^a_\bar{e} \bar{g}^{\bar{e}\bar{d}} \delta_\bar{d}^d \delta_\bar{b}^b \delta_\bar{c}^c e_b(W) g_{dc} 
 	+ W^3 \delta^\bar{a}_a \delta^a_\bar{e} \bar{g}^{\bar{e}\bar{d}} \delta_\bar{d}^d \delta_\bar{b}^b \delta_\bar{c}^c  \hat{\Gamma}_{dbc}
+	+ {\bar{K}^\bar{a}}_{\bar{b}\bar{c}}
 $<br>
 $= 
 	  W^2 \delta^\bar{a}_a g^{ad} \delta_\bar{b}^b \delta_\bar{c}^c e_b(W) g_{dc} 
 	+ W^3 \delta^\bar{a}_a g^{ad} \delta_\bar{b}^b \delta_\bar{c}^c  \hat{\Gamma}_{dbc}
+	+ {\bar{K}^\bar{a}}_{\bar{b}\bar{c}}
 $<br>
 $= 
 	  \delta^\bar{a}_a \delta_\bar{b}^b \delta_\bar{c}^c \delta^a_c e_b(W) 
 	+ W \delta^\bar{a}_a \delta_\bar{b}^b \delta_\bar{c}^c {\hat{\Gamma}^a}_{bc}
+	+ {\bar{K}^\bar{a}}_{\bar{b}\bar{c}}
 $<br>
 $= 
 	  \delta^\bar{a}_\bar{c} \delta_\bar{b}^b e_b(W) 
 	+ W \delta^\bar{a}_a \delta_\bar{b}^b \delta_\bar{c}^c {\hat{\Gamma}^a}_{bc}
+	+ {\bar{K}^\bar{a}}_{\bar{b}\bar{c}}
 $<br>
 $= 
 	  \frac{1}{W} \delta^\bar{a}_\bar{c} \bar{e}_\bar{b}(W) 
 	+ W \delta^\bar{a}_a \delta_\bar{b}^b \delta_\bar{c}^c {\hat{\Gamma}^a}_{bc}
+	+ {\bar{K}^\bar{a}}_{\bar{b}\bar{c}}
 $<br>
+<br>
+(TODO you are HERE in adding contorsion to the connection)<br>
+<br>
+Also how should I define the torsion of the conformally-rescaled connection vs the torsion of the base connection?
+If the two are equal then maybe the contorsion will cancel.
+Otherwise I think we will keep propagating a tensor for the difference-of-contorsions between the connection of the base metric and the connection of the conformal metric.
+Until I straighten this out:<br>
+Let ${\bar{\hat{\Gamma}}^\bar{a}}_{\bar{b}\bar{c}} = {\bar{\Gamma}^\bar{a}}_{\bar{b}\bar{c}} - {\bar{K}^\bar{a}}_{\bar{b}\bar{c}}$<br>
+<br>
 <br>
 
 Notice that the difference is the gradient of the square-root of the conformal factor: $e^a (\nabla_b e_c) = {\Gamma^a}_{bc}$.<br>
@@ -352,7 +371,7 @@ $= \delta^\bar{a}_a \delta_\bar{b}^b \delta_\bar{c}^c \delta_\bar{d}^d \left(
 	W \delta^a_b \left( e_c(e_d(W)) - e_d(e_c(W)) - e_u(W) {c_{cd}}^u \right)
 
 	+ W^2 \left(
-		+ e_c({\hat{\Gamma}^a}_{db})
+		  e_c({\hat{\Gamma}^a}_{db})
 		- e_d({\hat{\Gamma}^a}_{cb})
 		+ {\hat{\Gamma}^a}_{cu} {\hat{\Gamma}^u}_{db}
 		- {\hat{\Gamma}^a}_{du} {\hat{\Gamma}^u}_{cb}
@@ -368,7 +387,7 @@ $= W^2 \delta^\bar{a}_a \delta_\bar{b}^b \delta_\bar{c}^c \delta_\bar{d}^d \left
 \right)$<br>
 $= W^2 \delta^\bar{a}_a \delta_\bar{b}^b \delta_\bar{c}^c \delta_\bar{d}^d {R^a}_{bcd}$<br>
 Well that looks a hell of a lot simpler than the Riemann definition that you find in the numerical relativity textbooks.
-And it is so proportional to the original metric's Riemann curvature. Almost as if there is something invariant about curvature?  Nah.<br>
+And it is proportional to the original metric's Riemann curvature. Almost as if there is something invariant about curvature?  Nah.<br>
 <br>
 
 From there, the easy conclusion:<br>

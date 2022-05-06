@@ -60,7 +60,7 @@ e^{a_1} \otimes ... \otimes e^{a_p} ( e_{b_1}, ... , e_{b_p} )
 = \overset{p}{\underset{i=1}{\Pi}} \delta^{a_i}_{b_i}
 $<br>
 In multi-index notation:<br>
-$e^A( e_B) = \overset{p}{\underset{i=1}{\Pi}} \delta^{a_i}_{b_i}$<br>
+$e^A(e_B) = \overset{p}{\underset{i=1}{\Pi}} \delta^{a_i}_{b_i}$<br>
 <br>
 
 Wedge product:<br>
@@ -87,6 +87,27 @@ $T_{;a} = \nabla_{e_a} T = \nabla_a T$<br>
 
 Comma / semicolon derivatives aren't used so often anymore, probably because it adds the new index to the right hand side, whereas derivative symbols add the new index to the left hand side 
 ... and derivatives like the exterior derivative add the new $e^a \wedge$ to the left hand side as well ... maybe for consistency or for other reasons, $\nabla$ applies $e_a \otimes$ to the left hand side as well.<br>
+<br>
+
+The idea of partial-application of forms is a useful one.<br>
+The rule is usually apply the left-most vectors to the left-most forms:<br>
+p-form applies to a q-vector, when p &gt; q:<br>
+$
+e^{a_1} \otimes ... \otimes e^{a_p} ( e_{b_1} \otimes ... \otimes e_{b_q} )
+= e^{a_1} \otimes ... \otimes e^{a_p} ( e_{b_1}, ... , e_{b_q} )
+= e^{a_1} \otimes ... \otimes e^{a_q} \otimes e^{a_{q+1}} \otimes ... \otimes e^{a_p} ( e_{b_1}, ... , e_{b_q} )
+= e^{a_{q+1}} \otimes ... \otimes e^{a_p} \cdot \overset{q}{\underset{i=1}{\Pi}} \delta^{a_i}_{b_i}
+$<br>
+p-form applies to a q-form when p &lt; q:<br>
+$
+e^{a_1} \otimes ... \otimes e^{a_p} ( e_{b_1} \otimes ... \otimes e_{b_q} )
+= e^{a_1} \otimes ... \otimes e^{a_p} ( e_{b_1}, ... , e_{b_q} )
+= e^{a_1} \otimes ... \otimes e^{a_p} ( e_{b_1}, ... , e_{b_p}, e_{b_{p+1}}, ..., e_{b_q} )
+= e_{b_{p+1}} \otimes ... \otimes e_{b_q} \cdot \overset{p}{\underset{i=1}{\Pi}} \delta^{a_i}_{b_i}
+$<br>
+In multi-index notation, I'm not sure how to represent unions of sets of indexes.  Should I use $\oplus$ to be like the tangent-space notation?  Should I use $\cup$ since it is a union of sets of indexes?<br>
+$e^{A \oplus C}(e_B) = \overset{q}{\underset{i=1}{\Pi}} \delta^{a_i}_{b_i} \cdot e^C$<br>
+$e^A(e_{B \oplus C}) = \overset{p}{\underset{i=1}{\Pi}} \delta^{a_i}_{b_i} \cdot e_B$<br>
 <br>
 
 <a href='.'>Back</a><br><br>

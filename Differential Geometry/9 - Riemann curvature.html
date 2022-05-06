@@ -601,16 +601,6 @@ $= x^u y^v
 <br>
 
 
-Asymmetry of covariant derivative of scalars:<br>
-$[\nabla_a, \nabla_b] \phi = \nabla_a \nabla_b \phi - \nabla_b \nabla_a \phi$<br>
-$= \nabla_a (e_b \phi) - \nabla_b (e_a \phi)$<br>
-$= e_a e_b \phi - {\Gamma^c}_{ab} e_c \phi - e_b e_a \phi + {\Gamma^c}_{ba} e_c \phi$<br>
-$= {c_{ab}}^c e_c \phi + ({\Gamma^c}_{ba} - {\Gamma^c}_{ab})  e_c \phi$<br>
-$= ({\Gamma^c}_{ba} - {\Gamma^c}_{ab} + {c_{ab}}^c) e_c \phi$<br>
-$= {T^c}_{ba} e_c \phi$<br>
-I suppose this is intuitive based on the torsion's definition, which is based on operators who themselves only make sense when applied to scalars.<br>
-<br>
-
 Asymmetry of covariant derivatives on a vector:<br>
 $[\nabla_a, \nabla_b] v^c = 2 \nabla_{[a} \nabla_{b]} v^c$<br>
 $= 2 \nabla_{[a} ( e_{[b} ( v^c ) + {\Gamma^c}_{b]d} v^d )$<br>
@@ -665,6 +655,24 @@ $<br>
 TODO compare the Riemann curvature based on a non-Levi-Civita connection (with torsion) with a Riemann curvature of the Levi-Civita connection.<br>
 <br>
 
+Riemann curvature two-form:<br>
+${\Omega^c}_d = {R^c}_{dab} e^a \otimes e^b$<br>
+$= \frac{1}{2} {R^c}_{dab} e^a \wedge e^b$<br>
+$= (
+	2 e_{[a} ({\Gamma^c}_{b]d}) 
+	+ 2 {\Gamma^c}_{[a|u} {\Gamma^u}_{b]d} 
+	- {\Gamma^c}_{ud} {c_{ab}}^u
+) e^a \otimes e^b$<br>
+$= (
+	e_{[a} ({\Gamma^c}_{b]d}) 
+	- \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u
+	+ {\Gamma^c}_{[a|u} {\Gamma^u}_{b]d} 
+) e^a \wedge e^b$<br>
+$ = d {\omega^c}_d + {\omega^c}_u \wedge {\omega^u}_d$<br>
+<br>
+
+Since $e^a \wedge e^b$ is antisymmetric, we know ${R^c}_{dab} = {R^c}_{d[ab]}$.<br>
+<br>
 <br>
 
 <a href='.'>Back</a><br><br>
