@@ -10,8 +10,35 @@
 <a href='index.html'>Back</a><br>
 <br>
 
-Einstein: $ {G^{ab}}_{cd} = {(\ast R\ast)^{ab}}_{cd} = {\epsilon^{ab}}_{uv} {R^{uv}}_{rs} {\epsilon^{rs}}_{cd} $<br>
-Einstein: $ G_{ab} = R_{ab} - \frac{1}{2} R g_{ab} = {G^{ua}}_{ub} $<br>
+Einstein tensor 4-degree as double-dual of Riemann curvature tensor:<br>
+$ {G^{ab}}_{cd} = {(\ast R\ast)^{ab}}_{cd} = {\epsilon^{ab}}_{uv} {R^{uv}}_{rs} {\epsilon^{rs}}_{cd} $<br>
+<br>
+
+Einstein tensor 2-degree as trace-reversal of Ricci curvature:<br>
+$ G_{ab} = R_{ab} - \frac{1}{2} R g_{ab}$<br>
+<br>
+
+Einstein tensor 2-degree as contraction of Einstein tensor 4-degree:<br>
+$G_{ab} = {G^{ua}}_{ub} $<br>
+<br>
+
+Einstein tensor from exterior algebra:<br>
+$G_a = G_{ab} e^b$<br>
+$= R_{ab} e^b - \frac{1}{2} R g_{ab} e^b$<br>
+$= R_a - \frac{1}{2} e_a R$<br>
+$= R_a - \frac{1}{2} e_a (R_u \cdot e^u)$<br>
+Using inner product $\cdot$ (should I use $\langle, \rangle$ to denote inner product?):<br>
+$= R_u \cdot (\delta^u_a - \frac{1}{2} e^u \otimes e_a)$<br>
+Using Hodge dual:<br>
+$= R_a - \frac{1}{2} \sigma \star (R_u \wedge \star e^u) e_a$<br>
+... and that last $e_a$ outside the Hodge dual star is what keeps me from factoring any further ... <br>
+<br>
+
+Using the contravariant-indexed Ricci one-form:<br>
+$G^a = R^a - \frac{1}{2} e^a R^b(e_b)$<br>
+$= \delta^a_b R^b - \frac{1}{2} e^a R^b(e_b)$<br>
+$= e^a(e_b) R^b - \frac{1}{2} e^a R^b(e_b)$<br>
+$= \frac{1}{2} e^a(e_b) R^b + \frac{1}{2} e^a(e_b) R^b - \frac{1}{2} e^a R^b(e_b)$<br>
 <br>
 
 Jacobi's formula:<br>
