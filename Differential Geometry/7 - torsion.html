@@ -60,6 +60,28 @@ $= \tilde{e}_a \otimes (-\frac{1}{2} {c_{ub}}^a e^u \wedge e^b + {\Gamma^a}_{ub}
 $= \tilde{e}_a \otimes ((-\frac{1}{2} {c_{ub}}^a + {\Gamma^a}_{ub}) e^u \wedge e^b)$<br>
 <br>
 
+exterior derivative of a 1-1 form:<br>
+$d (e_a \wedge e^b)$<br>
+$= d e_a \wedge e^b + e_a \wedge d e^b$<br>
+$= {\omega^v}_a \wedge e_v \wedge e^b + e_a \wedge (-{\omega^b}_v \wedge e^v + \Theta^b)$<br>
+$= e_u \wedge {\omega^u}_a \wedge e^b + \delta^u_a e_u \wedge (-{\omega^b}_v \wedge e^v + \Theta^b)$<br>
+$= e_u \wedge ({\omega^u}_a \wedge e^b - \delta^u_a {\omega^b}_v \wedge e^v + \delta^u_a \Theta^b)$<br>
+$= e_u \wedge (
+	{\omega^c}_v \wedge e^d (
+		\delta^u_c \delta^v_a \delta^b_d 
+		- \delta^u_a \delta^v_d \delta^b_c
+	)
+	+ \delta^u_a \Theta^b
+)$<br>
+<br>
+
+exterior derivative of a 1-1 basis element:<br>
+$d (e_u \wedge e^u)$<br>
+$= d e_u \wedge e^u + e_u \wedge d e^u$<br>
+$= {\omega^v}_u \wedge e_v \wedge e^u + e_u \wedge (-{\omega^u}_v \wedge e^v + \Theta^u)$<br>
+$= {\omega^u}_v \wedge e_u \wedge e^v - {\omega^u}_v \wedge e_u \wedge e^v + e_u \wedge \Theta^u$<br>
+$= e_u \wedge \Theta^u$<br>
+<br>
 
 <!-- 
 oops, my calcs don't match up with this: 

@@ -86,7 +86,7 @@ $= 	{c_{ab}}^v (e_v ( log \sqrt{|g|} ) - e_v ( log \sqrt{|g|}))$<br>
 $= 0$<br>
 Therefore $g^{ab} R_{abcd} = 0$<br>
 Does this necessarily imply that $h^{ab} R_{abcd} = 0$ for any symmetric $h^{ab}$?<br>
-(That is what is necessary to prove that $R_{abcd} = R_{[ab]cd}$)<Br>
+(That is what is necessary to prove that $R_{abcd} = R_{[ab]cd}$)<br>
 <br>
 
 Covariant derivative of (p,q) tensor (TODO put this in covariant derivative)<br>
@@ -673,6 +673,52 @@ $ = d {\omega^c}_d + {\omega^c}_u \wedge {\omega^u}_d$<br>
 
 Since $e^a \wedge e^b$ is antisymmetric, we know ${R^c}_{dab} = {R^c}_{d[ab]}$.<br>
 <br>
+
+Second exterior derivative of a basis vector:<br>
+$d e_u = e_v \wedge {\omega^v}_u$<br>
+$d^2 e_u = d e_v \wedge {\omega^v}_u + e_v \wedge d {\omega^v}_u$<br>
+$d^2 e_u = e_a \wedge {\omega^a}_v \wedge {\omega^v}_u + e_v \wedge d {\omega^v}_u$<br>
+$d^2 e_u = e_a \wedge (d {\omega^a}_u + {\omega^a}_v \wedge {\omega^v}_u)$<br>
+$d^2 e_u = e_a \wedge {\Omega^a}_u$<br>
+<br>
+
+So can I say?...<br>
+$e^v(d^2 e_u) = e^v(e_a \wedge {\Omega^a}_u)$<br>
+...partial application...<br>
+$= \delta^v_a \wedge {\Omega^a}_u$<br>
+$= {\Omega^v}_u$<br>
+<br>
+
+Or is it better notation to say?...<br>
+$d^2 e_v (e_a \otimes e_b) = e_u \wedge {\Omega^u}_v (e_a \otimes e_b)$<br>
+$= e_u \wedge {R^u}_{vcd} (e^c \otimes e^d) (e_a \otimes e_b)$<br>
+$= e_u \wedge {R^u}_{vab}$<br>
+Mind you since that $e_u$ is a vector and the ${R^u}_{vab}$ is a 0-form, is the $\wedge$ inter-operable with a $\otimes$?<br>
+<br>
+
+Second exterior derivative of a vector:<br>
+$v = e_u \wedge v^u$<br>
+notice that, between a vector $e_u$ and a 0-form $v^u$, $e_u \wedge v^u = v^u e_u$<br>
+$d v = d e_u \wedge v^u + e_u \wedge d v^u$<br>
+using $d e_u = e_v \wedge {\omega^v}_u$...<br>
+$d v = e_a \wedge {\omega^a}_u \wedge v^u + e_a \wedge d v^a$<br>
+$d v = e_a \wedge (d v^a + {\omega^a}_u \wedge v^u)$<br>
+$d v = e_a \wedge Dv^a$<br>
+$d^2 v = d e_a \wedge (d v^a + {\omega^a}_v \wedge v^v) + e_u \wedge (d^2 v^u + d ({\omega^u}_v \wedge v^v))$<br>
+using $d(a \wedge b) = da \wedge b + (-1)^p a \wedge db$, and that ${\omega^a}_b$ is a 1-form...<br>
+$d^2 v = d e_a \wedge (d v^a + {\omega^a}_v \wedge v^v) + e_u \wedge (d^2 v^u + d {\omega^u}_v \wedge v^v - {\omega^u}_v \wedge d v^v)$<br>
+$d^2 v = e_u \wedge {\omega^u}_a \wedge (d v^a + {\omega^a}_v \wedge v^v) + e_u \wedge (d^2 v^u + d {\omega^u}_v \wedge v^v - {\omega^u}_v \wedge d v^v)$<br>
+$d^2 v = e_u \wedge (
+	{\omega^u}_a \wedge d v^a 
+	+ {\omega^u}_a \wedge {\omega^a}_v \wedge v^v 
+	+ d^2 v^u 
+	+ d {\omega^u}_v \wedge v^v 
+	- {\omega^u}_v \wedge d v^v
+)$<br>
+...using $d^2 v^u = 0$ since $v^u$ is a scalar i.e. a 0-form...<br>
+$d^2 v = e_u \wedge (d {\omega^u}_v + {\omega^u}_a \wedge {\omega^a}_v) \wedge v^v$<br>
+...using ${\Omega^u}_v = d {\omega^u}_v + {\omega^u}_a \wedge {\omega^a}_v$...<br>
+$d^2 v = e_u \wedge {\Omega^u}_v \wedge v^v$<br>
 <br>
 
 <a href='.'>Back</a><br><br>

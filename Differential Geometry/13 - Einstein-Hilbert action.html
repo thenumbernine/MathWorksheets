@@ -38,6 +38,14 @@ $ = \frac{1}{16} e_a \wedge e_b \wedge {\epsilon^{ab}}_{uv} {R^{uv}}_{rs} {\epsi
 $= e_a \otimes e_b \otimes \star (\Omega \ast)^{ab}$<br>
 <br>
 
+$(\star \Omega \ast)^{ua} (e_u)$<br>
+$= \frac{1}{2} {\epsilon^{ua}}_{vb} (\star \Omega^{vb}) (e_u)$<br>
+$= ({G^{ua}}_{vb} e^v \otimes e^b) (e_u)$<br>
+$= {G^{ua}}_{vb} e^b \delta^v_u$<br>
+$= {G^{ua}}_{ub} e^b$<br>
+$= {G^a}_b e^b$<br>
+<br>
+
 Einstein tensor 2-degree as contraction of Einstein tensor 4-degree:<br>
 ${G_b}^a = {G^{ua}}_{ub}$<br>
 $= \frac{1}{4} {\epsilon^{ua}}_{cd} {R^{cd}}_{ef} {\epsilon^{ef}}_{ub}$<br>
@@ -66,13 +74,42 @@ $=  {R_b}^a - \frac{1}{2} \delta^a_b R$<br>
 It looks like the symmetry of $G_{ab}$ can be inferred from the two $\epsilon^{acdu} \epsilon_{efbu}$'s , regardless of any symmetry of $R_{abcd}$, since those turn into the $\delta^{acd}_{efb}$, which can be rearranged.<br>
 <br>
 
-$\frac{1}{2} {\epsilon^{ua}}_{vb} (\star \Omega^{vb}) (e_u)$<br>
-$= ({G^{ua}}_{vb} e^v \otimes e^b) (e_u)$<br>
-$= {G^{ua}}_{vb} e^b \delta^v_u$<br>
-$= {G^{ua}}_{ub} e^b$<br>
-$= {G^a}_b e^b$<br>
+Using $d^2 e_b = e_a \wedge {\Omega^a}_b$...<br>
+...so $g^{bc} d^2 e_c = e_a \wedge \Omega^{ab}$...<br>
+...so $e^a ( g^{bc} d^2 e_c ) = \Omega^{ab}$ ... (right? can I do this? probably not with that Hodge dual outside the expression ...)<br>
+${G^a}_b e^b = \frac{1}{2} {\epsilon^{ua}}_{vb} (\star e^v (g^{bc} d^2 e_c)) (e_u)$<br>
+...maybe I can define it this way ... <br>
+$(\star d^2 e_v) ( e_a \otimes e_b ) = \frac{1}{2} e_u \wedge {R^u}_{vcd} {\epsilon^{cd}}_{ab}$<br>
+...but somehow I need to apply a Levi-Civita permutation tensor between those u-indexes...<br>
 <br>
 
+Also ...<Br>
+$(d^2 e_v) (e_a \otimes e_b) = e_u \wedge {R^u}_{vab}$<br>
+$(d^2 e_v) (e_a) = e_u \wedge {R^u}_{vab} \wedge e^b$<br>
+$-g^{va} (d^2 e_v) (e_a) 
+	= -g^{va} e_u \wedge {R^u}_{vab} \wedge e^b
+	= g^{va} e_u \wedge {{R_v}^u}_{ab} \wedge e^b
+	= e_u \wedge {R^u}_b \wedge e^b
+	= e_u \wedge R^u
+$<br>
+<br>
+
+Jury is still out on partial application of one-forms to vectors-wedge-one-forms:<br>
+$e^a ( e_b \wedge e^c ) = \delta^a_b e^c$<br>
+But if I did want to use it ...<br>
+$e^a(d^2 e_b) = e^a(e_c \wedge {\Omega^c}_b) = {\Omega^a}_b$<br>
+$g^{cb} e^a(d^2 e_c) = \Omega^{ab}$<br>
+$g^{cb} e^a(d^2 e_c) (e_u \otimes e_v) = {R^{ab}}_{uv}$<br>
+$g^{cb} (\star e^a(d^2 e_c)) (e_u \otimes e_v) = \frac{1}{2} {R^{ab}}_{cd} {\epsilon^{cd}}_{uv}$<br>
+$\frac{1}{2} {\epsilon^{pq}}_{ab} g^{cb} (\star e^a(d^2 e_c)) (e_u \otimes e_v) 
+	= \frac{1}{4} {\epsilon^{pq}}_{ab} {R^{ab}}_{cd} {\epsilon^{cd}}_{uv} 
+	= {G^{pq}}_{uv}$<br>
+So...<br>
+$\frac{1}{2} {\epsilon^{ua}}_{ef} g^{cf} (\star e^e(d^2 e_c)) (e_u \otimes e_b) 
+	= \frac{1}{4} {\epsilon^{ua}}_{ef} {R^{ef}}_{cd} {\epsilon^{cd}}_{ub} = {G^{ua}}_{ub} = {G^a}_b$<br>
+$\frac{1}{2} {\epsilon^{ua}}_{ef} g^{cf} (\star e^e(d^2 e_c)) (e_u) 
+	= {G^a}_b e^b$<br>
+<br>
 
 Einstein tensor from exterior algebra:<br>
 $G_a = G_{ab} e^b$<br>
@@ -241,6 +278,8 @@ TODO consider boundary terms as well?<br>
 As one-forms:<br>
 ${G^a}_b e^b = 8 \pi {T^a}_b e^b$<br>
 $G^a = 8 \pi T^a$<br>
+<br>
+$\frac{1}{2} {\epsilon^{ua}}_{ef} g^{cf} (\star e^e(d^2 e_c)) (e_u) = 8 \pi {T^a}_b e^b$<br>
 <br>
 
 <br>
