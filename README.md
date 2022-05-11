@@ -28,7 +28,11 @@ Here's the CDN URLs:
 
 [Differential Geometry/12 - Bianchi identities](https://thenumbernine.github.io/math/Differential%20Geometry/12%20%2d%20Bianchi%20identities.html)
 
+[Differential Geometry/12.5 - Einstein tensor](https://thenumbernine.github.io/math/Differential%20Geometry/12.5%20%2d%20Einstein%20tensor.html)
+
 [Differential Geometry/13 - Einstein-Hilbert action](https://thenumbernine.github.io/math/Differential%20Geometry/13%20%2d%20Einstein%2dHilbert%20action.html)
+
+[Differential Geometry/13.5 - normal projections](https://thenumbernine.github.io/math/Differential%20Geometry/13.5%20%2d%20normal%20projections.html)
 
 [Differential Geometry/14 - ADM formalism](https://thenumbernine.github.io/math/Differential%20Geometry/14%20%2d%20ADM%20formalism.html)
 
@@ -124,6 +128,8 @@ Here's the CDN URLs:
 
 [Finite Volume Methods](https://thenumbernine.github.io/math/Finite%20Volume%20Methods.html)
 
+[GEM force on a rotating object](https://thenumbernine.github.io/math/GEM%20force%20on%20a%20rotating%20object.html)
+
 [GR EM Metrics/complex metric of EM potential](https://thenumbernine.github.io/math/GR%20EM%20Metrics/complex%20metric%20of%20EM%20potential.html)
 
 [GR EM Metrics/complex metric of g + F](https://thenumbernine.github.io/math/GR%20EM%20Metrics/complex%20metric%20of%20g%20%2b%20F.html)
@@ -185,6 +191,8 @@ Here's the CDN URLs:
 [Numerical Relativity/3.1.1 adm with V - eigenfields](https://thenumbernine.github.io/math/Numerical%20Relativity/3.1.1%20adm%20with%20V%20%2d%20eigenfields.html)
 
 [Numerical Relativity/3.2 adm with Gamma](https://thenumbernine.github.io/math/Numerical%20Relativity/3.2%20adm%20with%20Gamma.html)
+
+[Numerical Relativity/Z4 From Killing Vectors](https://thenumbernine.github.io/math/Numerical%20Relativity/Z4%20From%20Killing%20Vectors.html)
 
 [Numerical Relativity/adm from efe](https://thenumbernine.github.io/math/Numerical%20Relativity/adm%20from%20efe.html)
 
@@ -251,6 +259,8 @@ Here's the CDN URLs:
 [conformal Levi-Civita geodesic](https://thenumbernine.github.io/math/conformal%20Levi%2dCivita%20geodesic.html)
 
 [heat to wave](https://thenumbernine.github.io/math/heat%20to%20wave.html)
+
+[how transforming pde state variables affects wavespeeds](https://thenumbernine.github.io/math/how%20transforming%20pde%20state%20variables%20affects%20wavespeeds.html)
 
 [hyperbolic rotations](https://thenumbernine.github.io/math/hyperbolic%20rotations.html)
 
