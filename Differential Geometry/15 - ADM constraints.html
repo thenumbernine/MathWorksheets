@@ -1,11 +1,11 @@
 <!doctype html>
 <html>
 	<head>
-        <meta charset='utf-8'>
+		<meta charset='utf-8'>
 		<title>ADM constraints</title>
 		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
 	</head>
-    <body>
+	<body>
 
 <a href='index.html'>Back</a><br>
 <br>
@@ -28,12 +28,12 @@ $n^a n^b R_{ab}$<br>
 $=n^a n^b {R^c}_{acb}$<br>
 $=n^b (\nabla_c \nabla_b n^c - \nabla_b \nabla_c n^c)$<br>
 $=n^b \nabla_c \nabla_b n^c - n^b \nabla_b \nabla_c n^c$<br>
-$=\nabla_c (n^b  \nabla_b n^c) - (\nabla_c n^b)(\nabla_b n^c) - \nabla_b(n^b \nabla_c n^c) + (\nabla_b n^b) (\nabla_c n^c)$<br>
-$=\nabla_c (n^b  \nabla_b n^c) - (-{K_c}^b + n_c a^b)(-{K_b}^c + n_b a^c) - \nabla_b(n^b \nabla_c n^c) + (-{K_b}^b + n_b a^b) (-{K_c}^c + n_c a^c)$<br>
-$=\nabla_c (n^b  \nabla_b n^c) - ({K_c}^b {K_b}^c - n_c a^b {K_b}^c - n_b a^c {K_c}^b + n_b n_c a^b a^c) - \nabla_b(n^b \nabla_c n^c) + K^2$<br>
-$=\nabla_c (n^b  \nabla_b n^c) - \nabla_b(n^b \nabla_c n^c) - K_{ab} K^{ab} + K^2$<br>
-$=\nabla_c (n^b  \nabla_b n^c) - \nabla_c(n^c \nabla_b n^b) - K_{ab} K^{ab} + K^2$<br>
-$n^a n^b R_{ab}=K^2 - K_{ab} K^{ab} + \nabla_c (n^b  \nabla_b n^c - n^c \nabla_b n^b)$<br>
+$=\nabla_c (n^b \nabla_b n^c) - (\nabla_c n^b)(\nabla_b n^c) - \nabla_b(n^b \nabla_c n^c) + (\nabla_b n^b) (\nabla_c n^c)$<br>
+$=\nabla_c (n^b \nabla_b n^c) - (-{K_c}^b + n_c a^b)(-{K_b}^c + n_b a^c) - \nabla_b(n^b \nabla_c n^c) + (-{K_b}^b + n_b a^b) (-{K_c}^c + n_c a^c)$<br>
+$=\nabla_c (n^b \nabla_b n^c) - ({K_c}^b {K_b}^c - n_c a^b {K_b}^c - n_b a^c {K_c}^b + n_b n_c a^b a^c) - \nabla_b(n^b \nabla_c n^c) + K^2$<br>
+$=\nabla_c (n^b \nabla_b n^c) - \nabla_b(n^b \nabla_c n^c) - K_{ab} K^{ab} + K^2$<br>
+$=\nabla_c (n^b \nabla_b n^c) - \nabla_c(n^c \nabla_b n^b) - K_{ab} K^{ab} + K^2$<br>
+$n^a n^b R_{ab}=K^2 - K_{ab} K^{ab} + \nabla_c (n^b \nabla_b n^c - n^c \nabla_b n^b)$<br>
 
 <br>
 contracting Gauss' equation:<br>
@@ -47,13 +47,13 @@ $R^\perp+K^2-K_{ab}K^{ab}=R + 2n^a n^b R_{ab}$<br>
 ...solve for R...<br>
 $R =R^\perp-K_{ab}K^{ab}+K^2-2n^a n^b R_{ab}$<br>
 ...substitute contracted Ricci tensor...<br>
-$R=R^\perp-K_{ab}K^{ab}+K^2-2(K^2 - K_{ab} K^{ab} + \nabla_c (n^b  \nabla_b n^c - n^c \nabla_b n^b))$<br>
-$R=R^\perp-K_{ab}K^{ab}+K^2-2K^2 + 2K_{ab} K^{ab} - 2\nabla_c (n^b  \nabla_b n^c - n^c \nabla_b n^b)$<br>
-$R=R^\perp+K_{ab}K^{ab}-K^2 - 2\nabla_c (n^b  \nabla_b n^c - n^c \nabla_b n^b)$<br>
-Looks like now we disregard the $2\nabla_c (n^b  \nabla_b n^c - n^c \nabla_b n^b)$<br>
+$R=R^\perp-K_{ab}K^{ab}+K^2-2(K^2 - K_{ab} K^{ab} + \nabla_c (n^b \nabla_b n^c - n^c \nabla_b n^b))$<br>
+$R=R^\perp-K_{ab}K^{ab}+K^2-2K^2 + 2K_{ab} K^{ab} - 2\nabla_c (n^b \nabla_b n^c - n^c \nabla_b n^b)$<br>
+$R=R^\perp+K_{ab}K^{ab}-K^2 - 2\nabla_c (n^b \nabla_b n^c - n^c \nabla_b n^b)$<br>
+Looks like now we disregard the $2\nabla_c (n^b \nabla_b n^c - n^c \nabla_b n^b)$<br>
 because it can be converted to a total integral via divergence theorem.<br>
 but this is only the case if we are integrating over a volume, i.e. true for $\int L dx^4$ and therefore $\int R dx^4$<br>
-So how can it still be true for $\mathcal{L} = \int \sqrt{-g} R dx^4$?  Does $\int \nabla_c \sqrt{-g} dx^4$ disappear as well?<br>
+So how can it still be true for $\mathcal{L} = \int \sqrt{-g} R dx^4$? Does $\int \nabla_c \sqrt{-g} dx^4$ disappear as well?<br>
 $R=R^\perp+K_{ab}K^{ab}-K^2$<br>
 <br>
 
@@ -180,7 +180,7 @@ $ \{f,g\} = \frac{\partial f}{\partial \gamma_{ij}} \frac{\partial g }{\partial 
 There is also the option to define an extended phase space: $\{\gamma_{ij}, \beta_i, \alpha\}$ and $\{\pi^{ij}, p^i, p\}$. (think of some letters for those).<br>
 The Poisson bracket can then be defined as:<br>
 $\{f, g\} =
-	\frac{\partial f}{\partial \gamma_{ij}} \frac{\partial g}{\partial \pi^{ij}} 
+	\frac{\partial f}{\partial \gamma_{ij}} \frac{\partial g}{\partial \pi^{ij}}
 	- \frac{\partial f}{\partial \pi^{ij}} \frac{\partial g}{\partial \gamma_{ij}}
 	
 	+ \frac{\partial f}{\partial \beta_i} \frac{\partial g}{\partial p^i}
@@ -191,7 +191,7 @@ $\{f, g\} =
 $.<br>
 Then choose the phase space hypersurface/subset such that $p = 0, p^i = 0$.  I guess you could pick any values for $p$ and $p^i$ so long as they are constant, such that $\frac{\partial}{\partial p} = 0$ and $\frac{\partial}{\partial p^i} = 0$.
 This causes your Poisson bracket value to reduce to the original definition of
-$\{f, g\} =\frac{\partial f}{\partial \gamma_{ij}} \frac{\partial g}{\partial \pi^{ij}} 
+$\{f, g\} =\frac{\partial f}{\partial \gamma_{ij}} \frac{\partial g}{\partial \pi^{ij}}
 	- \frac{\partial f}{\partial \pi^{ij}} \frac{\partial g}{\partial \gamma_{ij}}
 $. (This doesn't sit right.  If a coordinate variable remains constaint, this does not imply that the derivative of another variable wrt that coordinate variable will be constant.)<br>
 <br>
@@ -206,20 +206,20 @@ $ = \mathcal{L}_\vec{\beta} f $<br>
 Derivatives of Hamiltonian constraint:<br>
 $ \frac{\partial}{\partial \gamma_{ij}} \mathcal{H} $<br>
 $ = \frac{\partial}{\partial \gamma_{ij}} (-\sqrt\gamma R^\perp + \frac{1}{\sqrt{\gamma}} (\gamma_{km} \gamma_{ln} \pi^{kl} \pi^{mn} - \frac{1}{2} \gamma_{kl} \gamma_{mn} \pi^{kl} \pi^{mn})) $<br>
-$ =  -(
+$ = -(
 		\frac{1}{2} \frac{1}{\sqrt{\gamma}} R^\perp \frac{\partial}{\partial \gamma_{ij}} (\gamma)
 		+ \sqrt\gamma \frac{\partial}{\partial \gamma_{ij}} (R^\perp)
 	)
 	-\frac{1}{2} \frac{1}{\gamma^{3/2}} \frac{\partial}{\partial \gamma_{ij}} (\gamma) (\gamma_{km} \gamma_{ln} \pi^{kl} \pi^{mn} - \frac{1}{2} \gamma_{kl} \gamma_{mn} \pi^{kl} \pi^{mn})
 	+ \frac{2}{\sqrt\gamma} ( {\pi^i}_k \pi^{kj} - \frac{1}{2} \pi \pi^{ij}
 ) $<br>
-$ = - \frac{1}{2} \frac{1}{\sqrt{\gamma}} R^\perp \gamma \gamma^{ij} 
+$ = - \frac{1}{2} \frac{1}{\sqrt{\gamma}} R^\perp \gamma \gamma^{ij}
 	- \sqrt\gamma \frac{\partial}{\partial \gamma_{ij}} (R^\perp)
 	- \frac{1}{2} \frac{1}{\gamma^{3/2}} \gamma \gamma^{ij} ( \pi_{kl} \pi^{kl} - \frac{1}{2} \pi^2)
 	+ \frac{2}{\sqrt\gamma} ( {\pi^i}_k \pi^{kj} - \frac{1}{2} \pi \pi^{ij}
 ) $<br>
-$ = 
-	- \frac{1}{2} \sqrt\gamma R^\perp \gamma^{ij} 
+$ =
+	- \frac{1}{2} \sqrt\gamma R^\perp \gamma^{ij}
 	- \sqrt\gamma \frac{\partial}{\partial \gamma_{ij}} (R^\perp)
 	- \frac{1}{2} \frac{1}{\sqrt{\gamma}} \gamma^{ij} ( \pi_{kl} \pi^{kl} - \frac{1}{2} \pi^2)
 	+ \frac{2}{\sqrt{\gamma}} ( {\pi^i}_k \pi^{kj} - \frac{1}{2} \pi \pi^{ij})
@@ -243,7 +243,7 @@ Derivatives of the Hamiltonian:<br>
 $\frac{\partial}{\partial \gamma_{ij}} \mathscr{H} = \frac{\partial}{\partial \gamma_{ij}} (\alpha \mathcal{H} + \beta_i \mathcal{M}^i)$<br>
 $= \alpha \frac{\partial}{\partial \gamma_{ij}} \mathcal{H}$<br>
 $= \alpha (
-	- \frac{1}{2} \sqrt\gamma R^\perp \gamma^{ij} 
+	- \frac{1}{2} \sqrt\gamma R^\perp \gamma^{ij}
 	- \sqrt\gamma \frac{\partial}{\partial \gamma_{ij}} (R^\perp)
 	- \frac{1}{2} \frac{1}{\sqrt{\gamma}} \gamma^{ij} ( \pi_{kl} \pi^{kl} - \frac{1}{2} \pi^2)
 	+ \frac{2}{\sqrt{\gamma}} ( {\pi^i}_k \pi^{kj} - \frac{1}{2} \pi \pi^{ij})
@@ -282,14 +282,14 @@ $ \{ \alpha \mathcal{H}, a \mathcal{H} \} $<br>
 $ =
 	\frac{\partial}{\partial \gamma_{ij}} (\alpha \mathcal{H})
 	\frac{\partial}{\partial \pi^{ij}} (a \mathcal{H})
-	-  
+	-
 	\frac{\partial}{\partial \gamma_{ij}} (a \mathcal{H})
 	\frac{\partial}{\partial \pi^{ij}} (\alpha \mathcal{H})
 $<br>
 $ =
 	\frac{\partial}{\partial \gamma_{ij}} (\alpha \mathcal{H})
 	\frac{\partial}{\partial \pi^{ij}} (a \mathcal{H})
-	-  
+	-
 	\frac{\partial}{\partial \gamma_{ij}} (a \mathcal{H})
 	\frac{\partial}{\partial \pi^{ij}} (\alpha \mathcal{H})
 $<br>

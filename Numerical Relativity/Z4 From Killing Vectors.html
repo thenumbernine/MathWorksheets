@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<script type='text/javascript' src='../tryToFindMathJax.js'></script>
+		<title>Z4 From Killing Vectors</title>
+	</head>
+	<body>
+
+<hr>
+<b>Killing Vectors</b><br>
+<br>
+
+Let $Z_K$ = a Killing vector of a (coordinate?) basis metric.<br>
+$Z_K = \frac{\partial}{\partial x^K}$<br>
+<br>
+
+So $Z^u = \delta^U_K$<br>
+<br>
+
+Let<br>
+$\nabla_v Z_u = g_{ua} \nabla_v Z^a = g_{ua} (e_v(Z^a) + {\Gamma^a}_{vb} Z^b)
+= g_{ua} e_v(Z^a) + g_{ua} {\Gamma^a}_{vb} Z^b
+= g_{ua} {\Gamma^a}_{vb} \delta^b_K
+= \Gamma_{uvK}
+= \frac{1}{2} (e_K(g_{uv}) + e_v(g_{uK}) - e_u(g_{Kv}))
+$<bR>
+TODO explain this part:<br>
+$= \frac{1}{2} (e_v(g_{uK}) - e_u(g_{Kv}))$<br>
+<br>
+
+Killing vectors are eigenvectors to the equation:<br>
+$\square Z^u = \lambda Z^u$<br>
+$\nabla_v \nabla^v Z^u + {R^u}_v Z^v = \lambda Z^u$<br>
+...for $\lambda = 0$<br>
+<br>
+
+<hr>
+<b>Useful hypersurface projection equations:</b><br>
+(From my "Differential Geometry" notes, esp the projection and ADM worksheets.)<br>
+<br>
+
+Let $n_u$ = the hypersurface normal such that $n_u n^u = -1$<br>
+Let $\gamma_{ab} = g_{ab} + n_a n_b$ = the hypersurface projection transform and the hypersurface metric tensor<br>
+Let $a_u = n^v \nabla_v n_u$<br>
+Notice $n^u a_u = 0$<br>
+Notice $\gamma_{uv} a^v = a_u$<br>
+Notice $\gamma_{uv} n^v = 0$<br>
+So $a_u$ is spatial (within the hypersurface), $n_u$ is perpendicular to the hypersurface.<br>
+Let $K_{uv} = -{\gamma_u}^a {\gamma_v}^b \nabla_b n_a$<br>
+So $K_{uv} = -\nabla_u n_v - n_u a_v$<br>
+So $\nabla_v n_u = -K_{vu} - n_v a_u$<br>
+So $K_{uv} n^v = 0$ and $n^u K_{uv} = 0$ simply by virtue of the definition being a projection.<br>
+And? $K_{uv} = K_{vu}$?  This is true if we are using a coordinate basis (which I think I read is a requirement for the ADM decomposition and extrinsic curvature definition.<br>
+<br>
+
+Normal projection of covariant derivative of spatial vector:<br>
+$n^b n_a \nabla_b v^a = n^b \nabla_b (n_a v^a) - n^b v^a \nabla_b n_a$<br>
+...using $n_a v^a = 0$ and $n^b \nabla_b n_a = a_a$...<br>
+$= -v^a a_a$<br>
+Notice that $a_a$ is a spatial vector as well, so the result is a product of spatial vectors.<br>
+<br>
+
+
+Vector divergence:
+$\nabla_a v^a
+= 	\nabla^\perp_u (v^\perp)^u
+	- a_u (v^\perp)^u
+	+ n^v \partial_v v^\parallel
+	+ K v^\parallel
+$<br>
+
+<hr>
+<b>Z4 Killing Vector decomposition and projections:</b><br>
+<br>
+
+Let $Z_u$ be our Killing vector<br>
+Let $Z^\perp_u = {\gamma_u}^a Z_a$ be the spatial projection of our Killing vector.<br>
+Let $Z^\parallel = \Theta = n^u Z_u$<br>
+<br>
+
+<hr>
+<b>Different Literature Z4 Formalisms:</b><br>
+<br>
+
+2008 Alcubierre "Introduction to 3+1 Numerical Relativity" eqn 5.8.7:<br>
+2009 Bona et al "Elements of Numerical Relativity" eqn 3.69:<br>
+$R_{uv} + 2 \nabla_{(u} Z_{v)} = 8 \pi (T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab})$<br>
+<br>
+
+2011 Cao, Hilditch, eqn 1:<br>
+$G_{uv} + 2 \nabla_{(u} Z_{v)} - g_{uv} \nabla_a Z^a - \kappa_1 (2 n_{(u} Z_{v)} + \kappa_2 g_{uv} n_a Z^a) = 8 \pi T_{uv}$<br>
+<br>
+
+2012 Alic et al, eqn 2:<br>
+$R_{uv} + 2 \nabla_{(u} Z_{v)} + \kappa_1 (2 n_{(u} Z_{v)} - (1 + \kappa_2) g_{uv} n_a Z^a) = 8 \pi (T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab})$<br>
+$\kappa_1 &gt; 0, \kappa_2 &gt; -1$<br>
+<br>
+
+What will I go with?<br>
+$R_{uv} + 2 \nabla_{(u} Z_{v)} - g_{uv} \nabla_a Z^a - \kappa_1 (2 n_{(u} Z_{v)} + \kappa_2 g_{uv} n_a Z^a) = 8 \pi (T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab})$<br>
+$\kappa_1 &gt; 0, \kappa_2 &gt; 0$<br>
+<br>
+
+<hr>
+<b>Change to the Einstein Field Equations / Derivation of Constraints and Evolution Equations:</b><br>
+This whole worksheet either goes in my "Numerical Relativity" folder or in my "Differential Geometry" folder after the ADM stuff.
+In fact, all my "Numerical Relativity" folder goes after the ADM stuff of the "Differential Geometry" folder.
+In fact, I still don't have a good worksheet going from my "Differential Geometry/14 - ADM constraints" to the I.V.P.'s of my "Numerical Relativity" worksheets.
+So I should be doing that first, then inserting the $Z_u$'s into it to produce this worksheet.
+<br>
+<br>
+
+$R_{uv} + 2 \nabla_{(u} Z_{v)} - g_{uv} \nabla_a Z^a - \kappa_1 (2 n_{(u} Z_{v)} + \kappa_2 g_{uv} n_a Z^a) = 8 \pi (T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab})$<br>
+$R_{uv} + 2 \nabla_{(u} Z_{v)} - g_{uv} g^{ab} \nabla_a Z_b - \kappa_1 (2 n_{(u} Z_{v)} + \kappa_2 g_{uv} \Theta) = 8 \pi (T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab})$<br>
+<br>
+
+Let $\rho = n^u n^v T_{uv}$ = the stress-energy density<br>
+Let $j_a = -n^u T_{uv} {\gamma^v}_a$ = the stress-energy spatial current<br>
+Let $S_{ab} = T_{uv} {\gamma^u}_a {\gamma^v}_b$ = the spatial stress tensor<br>
+Let $S = T_{uv} \gamma^{uv} = {S^a}_a$ = the spatial stress tensor trace<br>
+So $T_{uv} g^{uv} = T_{uv} (\gamma^{uv} - n^u n^v) = S - \rho$<br>
+<br>
+
+$R_{uv} + 2 \nabla_{(u} Z_{v)} - g_{uv} \nabla_a Z^a - \kappa_1 (2 n_{(u} Z_{v)} + \kappa_2 g_{uv} \Theta) = 8 \pi (T_{uv} - \frac{1}{2} g_{uv} (S - \rho))$<br>
+<br>
+
+Contract normals:<br>
+$
+	n^u n^v R_{uv} 
+	+ 2 n^u n^v \nabla_{(u} Z_{v)} 
+	- n^u n^v g_{uv} \nabla_a Z^a
+	- 2 \kappa_1 n^u n^v n_{(u} Z_{v)}
+	- \kappa_1 \kappa_2 n^u n^v g_{uv} \Theta
+	= 8 \pi n^u n^v T_{uv} - 4 \pi n^u n^v g_{uv} (S - \rho)
+$<br>
+Using $R_{uv} n^u n^v = K^2 - K_{uv} K^{uv}$ (In my "Differential Geometry/14 - ADM constraints" worksheet)<br>
+$
+	K^2 - K_{uv} K^{uv}
+	+ 2 n^u n^v \nabla_{(u} Z_{v)} 
+	- n^u n^v g_{uv} \nabla_a Z^a
+	- 2 \kappa_1 n^u n^v n_{(u} Z_{v)}
+	- \kappa_1 \kappa_2 n^u n^v g_{uv} \Theta
+	= 8 \pi n^u n^v T_{uv} - 4 \pi n^u n^v g_{uv} (S - \rho)
+$<br>
+
+	</body>
+</html>

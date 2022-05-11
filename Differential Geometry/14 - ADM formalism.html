@@ -6,7 +6,6 @@
 		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
 	</head>
     <body>
-
 <a href='index.html'>Back</a><br>
 <br>
 
@@ -24,6 +23,22 @@ Unlike the NR crowd, I did change the spacetime indexes from Latin back to Greek
 <br>
 
 ADM metric:<br>
+<br>
+
+Previously we showed:<br>
+$g^{tt} = -\frac{1}{\alpha^2}$ for normal coordinate t.<br>
+$g_{ij} = \gamma_{ij}$ for spatial coordinates ij.<br>
+<br>
+
+Next let $\beta_i = g_{ti}$<br>
+<br>
+
+Define our metric and inverse in terms of lapse $\alpha$, shift $\beta^i$, and spatial hypersurface subset metric $\gamma_{ij}$ as:<br>
+<br>
+
+For this worksheet I'm putting the hypersurface normal dimension first instead of last, because I'm using the txyz ordering of coordinates.<br>
+<br>
+
 $[g_{uv}] = \overset{u(a)\downarrow v(b)\rightarrow}{\left[ \matrix{-\alpha^2 + \beta_c \beta^c & \beta_b \\ \beta_a & \gamma_{ab}} \right]}$<br>
 $[g^{uv}] = \overset{u(a)\downarrow v(b)\rightarrow}{\left[ \matrix{-1/\alpha^2 & \beta^b / \alpha^2 \\ \beta^a / \alpha^2 & \gamma^{ab} - \beta^a \beta^b / \alpha^2} \right]}$<br>
 where $ \beta_b = \gamma_{ab} \beta^a = \gamma_{u b} \beta^u = g_{u b} \beta^b $ courtesy of the fact that $ g_{ab} = \gamma_{ab} $ and $ \beta^t = 0 $.<br>
@@ -59,9 +74,6 @@ $ t^u = \alpha n^u + \beta^u
 $ t_u = g_{uv} t^v = \overset{u(b)\rightarrow}{\left[ \matrix{-\alpha^2 + \beta_c \beta^c & \beta_b} \right]} $<br>
 <br>
 
-spatial metric / projection tensor:<br>
-$ \gamma_{uv} = g_{uv} + n_u n_v $<br>
-<br>
 spatial metric components using in ADM metric:<br>
 ${\gamma_u}^v = \delta^v_u + n_u n^v$<br>
 $ = \overset{u(a)\downarrow v(b)\rightarrow}{\left[ \matrix{ 1 & 0 \\ 0 & \delta_a^b } \right]}
@@ -97,55 +109,6 @@ All that is maintained is a collection of properties of the variables used to co
 $ \gamma_{uv} = g_{uv} + n_u n_v $<br>
 $ t^u = \alpha n^u + \beta^u $<br>
 $ n_u n^u = -1 $<br>
-<br>
-
-spatial metric identity:<br>
-${\gamma_u}^a {\gamma_a}^v$<br>
-$=(\delta_u^a + n_u n^a)(\delta_a^v + n_a n^v)$<br>
-$=\delta_u^v + n_u n^v + n_u n^v + n_u n^a n_a n^v$<br>
-$=\delta_u^v + 2 n_u n^v - n_u n^v$<br>
-$=\delta_u^v + n_u n^v$<br>
-$={\gamma_u}^v$<br>
-<br>
-
-unit normal is orthogonal to rotation:<br>
-$0 = \nabla_v (-1) = \nabla_v (n^u n_u) = n_u \nabla_v n^u + n^u \nabla_v n_u = 2 n^u \nabla_v n_u$<br>
-$n^u \nabla_v n_u = 0$<br>
-<br>
-
-acceleration:<br>
-$a_u = n^v \nabla_v n_u$<br>
-<br>
-
-acceleration is orthogonal to normal:<br>
-$n^u a_u = n^u n^v \nabla_v n_u = n^v (n^u \nabla_v n_u) = n^v \cdot 0 = 0$<br>
-${\gamma_u}^v a_v = \delta_u^v a_v + n_u n^v a_v = a^v$<br>
-<br>
-
-projection is orthogonal to normal:<br>
-$\gamma_{uv} n^v$<br>
-$=g_{uv} n^v + n_u n_v n^v$<br>
-$=n_u - n_u$<br>
-$\gamma_{uv} n^v=0$<br>
-<br>
-
-projection operation:<br>
-$\perp {T^{a_1 ... a_p}}_{b_1 ... b_q} = {\gamma^{a_1}}_{c_a} \cdot ... \cdot {\gamma^{a_p}}_{c_p} \cdot {\gamma^{d_1}}_{b_1} \cdot ... \cdot {\gamma^{d_q}}_{b_q} \cdot {T^{c_1 ... c_p}}_{d_1 ... d_q}$<br>
-<br>
-
-spatial covariant derivative:<br>
-scalar: $\nabla^\perp_u f = \perp \nabla_u f = {\gamma_u}^v \nabla_v f$<br>
-tensor: $\nabla^\perp_u {T^v}_a = \perp \nabla_u {T^v}_a = {\gamma_u}^b {\gamma_c}^v {\gamma_a}^d \nabla_b {T^c}_d$<br>
-<br>
-
-proof $\nabla^\perp_a$ is a metric-cancelling covariant derivative of $\gamma_{ab}$:<br>
-$\nabla^\perp_a \gamma_{bc}$<br>
-$={\gamma_a}^e {\gamma_b}^g {\gamma_c}^f \nabla_e \gamma_{gf}$<br>
-$={\gamma_a}^e {\gamma_b}^g {\gamma_c}^f \nabla_e (n_g n_f)$<br>
-$={\gamma_a}^e {\gamma_b}^g {\gamma_c}^f (n_f \nabla_e n_g + n_g \nabla_e n_f)$<br>
-$={\gamma_a}^e {\gamma_b}^g ({\gamma_c}^f n_f) \nabla_e n_g + {\gamma_a}^e {\gamma_c}^f ({\gamma_b}^g n_g) \nabla_e n_f$<br>
-$={\gamma_a}^e {\gamma_b}^g \cdot 0 \cdot \nabla_e n_g + {\gamma_a}^e {\gamma_c}^f \cdot 0 \cdot \nabla_e n_f$<br>
-$\nabla^\perp_a \gamma_{bc}=0$<br>
 <br>
 
 spatial metric Levi-Civita connection:<br>
@@ -219,15 +182,6 @@ ${(R^\perp)^c}_{dba} v_c = 2 \nabla^\perp_{[a} \nabla^\perp_{b]} v_d + {(T^\perp
 From here on, $\nabla$ will only refer to the Levi-Civita connection.<br>
 <br>
 
-Extrinsic curvature:<br>
-(some sources intentionally symmetrize $K_{ab} = -\nabla^\perp_{(a} n_{b)}$)<br>
-$K_{ab} = -\nabla^\perp_a n_b$<br>
-$= -{\gamma_a}^c {\gamma_b}^d \nabla_c n_d$<br>
-$= -(\delta_a^c + n_a n^c)(\delta_b^d + n_b n^d) \nabla_c n_d$<br>
-$= -\nabla_a n_b - n_a n^c \nabla_c n_b - n_b n^d \nabla_a n_d - n_a n_b n^c n^d \nabla_c n_d$<br>
-$= -\nabla_a n_b - n_a a_b$<br>
-<br>
-
 extrinsic curvature components, in ADM metric:<br>
 $ K_{ab} = -{\gamma_a}^c \nabla_c n_d {\gamma_b}^d $<br>
 $ [K_{ab}] = 
@@ -249,202 +203,6 @@ $K_{[ij]} = -\alpha {\Gamma^t}_{[ij]} = - \frac{1}{2} \alpha {{c}_{ij}}^t$<br>
 For (Levi-Civita) commutation ${{c}_{ab}}^c$<br>
 So $K_{[ij]} = 0$<br>
 And $K_{ij} = K_{(ij)}$<br>
-<br>
-
-extrinsic curvature is orthogonal to normal:<br>
-$K_{ab} n^b$<br>
-$= -n^b {\gamma_a}^c {\gamma_b}^d \nabla_c n_d$<br>
-$= -(n^b {\gamma_b}^d) {\gamma_a}^c \nabla_c n_d$<br>
-$=0 \cdot {\gamma_a}^c \nabla_c n_d$<br>
-$K_{ab} n^b = 0$<br>
-<br>
-
-spatial covariant derivative of spatial vector:<br>
-$ \nabla^\perp_a v^b $<br>
-$ = {\gamma_a}^p {\gamma_q}^b \nabla_p v^q $<br>
-$ = {\gamma_a}^p (\delta_q^b + n_q n^b) \nabla_p v^q $<br>
-$ = {\gamma_a}^p \nabla_p v^b + {\gamma_a}^p n^b n_q \nabla_p v^q $<br>
-Now $ 0 = n_q v^q = \nabla_p (n_q v^q) = v^q \nabla_p n_q + n_q \nabla_p v^q $,  so $ n_q \nabla_p v^q = -v^q \nabla_p n_q $.<br>
-$ = {\gamma_a}^p \nabla_p v^b - {\gamma_a}^p n^b v^q \nabla_p n_q $<br>
-using spatial identity: $ v^q = {\gamma_e}^q v^e $<br>
-$ = {\gamma_a}^p \nabla_p v^b - n^b v^e {\gamma_a}^p {\gamma_e}^q \nabla_p n_q $<br>
-using $ K_{ab} = -\nabla^\perp_a n_b $<br>
-$ = {\gamma_a}^p \nabla_p v^b + n^b v^e K_{ae}$<br>
-<br>
-
-covariant derivative in terms of spatial covariant, extrinsic curvature, and normal:<br>
-$ \nabla^\perp_a v^b = (\delta_a^p + n_a n^p) \nabla_p v^b + n^b v^e K_{ae} $<br>
-$ \nabla_a v^b = \nabla^\perp_a v^b - n_a n^p \nabla_p v^b - n^b v^e K_{ae} $<br>
-<br>
-
-$ \nabla^\perp_a v^b = {\gamma_a}^p \nabla_p v^b + n^b v^e K_{ae}$<br>
-$ -n_b (\nabla^\perp_a v^b) = -n_b ({\gamma_a}^p \nabla_p v^b + n^b v^e K_{ae})$<br>
-$ 0 = -n_b {\gamma_a}^p \nabla_p v^b - n_b n^b v^e K_{ae}$<br>
-$ K_{ae} v^e = n_b {\gamma_a}^p \nabla_p v^b$<br>
-<br>
-
-<!-- TODO can you simplify this using the spatial covariant derivative of spatial vector simplification? -->
-$\nabla^\perp_a \nabla^\perp_b v^c$<br>
-$= \nabla^\perp_a ({\gamma_b}^d {\gamma_e}^c \nabla_d v^e)$<br>
-$= {\gamma_a}^p {\gamma_b}^q {\gamma_r}^c \nabla_p ({\gamma_q}^d {\gamma_e}^r \nabla_d v^e)$<br>
-$= {\gamma_a}^p {\gamma_b}^q {\gamma_r}^c ({\gamma_e}^r \nabla_p {\gamma_q}^d \nabla_d v^e <br>
-	+ {\gamma_q}^d \nabla_p {\gamma_e}^r \nabla_d v^e <br>
-	+ {\gamma_q}^d {\gamma_e}^r \nabla_p \nabla_d v^e)$<br>
-$= {\gamma_a}^p {\gamma_b}^q {\gamma_r}^c {\gamma_e}^r \nabla_p {\gamma_q}^d \nabla_d v^e <br>
-	+ {\gamma_a}^p {\gamma_b}^q {\gamma_r}^c {\gamma_q}^d \nabla_p {\gamma_e}^r \nabla_d v^e <br>
-	+ {\gamma_a}^p {\gamma_b}^q {\gamma_r}^c {\gamma_q}^d {\gamma_e}^r \nabla_p \nabla_d v^e$<br>
-$= {\gamma_a}^p {\gamma_b}^q {\gamma_r}^c (\nabla_p {\gamma_q}^d \nabla_d v^r + \nabla_p {\gamma_e}^r \nabla_q v^e + \nabla_p \nabla_q v^r)$<br>
-$= {\gamma_a}^p {\gamma_b}^q {\gamma_r}^c \nabla_p \nabla_q v^r <br>
-	+ {\gamma_a}^p {\gamma_b}^q {\gamma_r}^c \nabla_p (n_q n^d) \nabla_d v^r <br>
-	+ {\gamma_a}^p {\gamma_b}^q {\gamma_r}^c \nabla_p (n_e n^r) \nabla_q v^e$<br>
-$= {\gamma_a}^p {\gamma_b}^q {\gamma_r}^c \nabla_p \nabla_q v^r <br>
-	+ {\gamma_a}^p {\gamma_b}^q {\gamma_r}^c (n^d \nabla_p n_q + n_q \nabla_p n^d) \nabla_d v^r <br>
-	+ {\gamma_a}^p {\gamma_b}^q {\gamma_r}^c (n^r \nabla_p n_e + n_e \nabla_p n^r) \nabla_q v^e$<br>
-$= {\gamma_a}^p {\gamma_b}^q {\gamma_r}^c \nabla_p \nabla_q v^r <br>
-	+ {\gamma_a}^p {\gamma_b}^q {\gamma_r}^c n^d \nabla_p n_q \nabla_d v^r <br>
-	+ {\gamma_a}^p {\gamma_b}^q {\gamma_r}^c n_e \nabla_p n^r \nabla_q v^e$<br>
-$= {\gamma_a}^p {\gamma_b}^q {\gamma_r}^c \nabla_p \nabla_q v^r <br>
-	+ {\gamma_r}^c ({\gamma_a}^p {\gamma_b}^q \nabla_p n_q) n^d \nabla_d v^r <br>
-	+ {\gamma_b}^q ({\gamma_a}^p {\gamma_r}^c \nabla_p n^r) n_e \nabla_q v^e$<br>
-$= {\gamma_a}^p {\gamma_b}^q {\gamma_r}^c \nabla_p \nabla_q v^r <br>
-	- K_{ab} {\gamma_r}^c n^p \nabla_p v^r <br>
-	+ {\gamma_b}^q g^{cs} ({\gamma_a}^p {\gamma_s}^r \nabla_p n_r) n_e \nabla_q v^e$<br>
-$= {\gamma_a}^p {\gamma_b}^q {\gamma_r}^c \nabla_p \nabla_q v^r <br>
-	- K_{ab} {\gamma_r}^c n^p \nabla_p v^r <br>
-	- {K_a}^c n_e {\gamma_b}^q \nabla_q v^e$<br>
-$\nabla^\perp_a \nabla^\perp_b v^c = {\gamma_a}^p {\gamma_b}^q {\gamma_r}^c \nabla_p \nabla_q v^r <br>
-	- K_{ab} {\gamma_r}^c n^p \nabla_p v^r <br>
-	- {K_a}^c K_{bp} v^p$<br>
-<br>
-
-Riemann metric tensor<br>
-$R_{abcd}$<br>
-add identity to prepare for substitution with projection matrix<br>
-$=g^p_a g^q_b g^r_c g^s_d R_{pqrs}$<br>
-...and substitute...<br>
-$=({\gamma_a}^p-n^p n_a) ({\gamma_b}^q - n^q n_b) ({\gamma_c}^r - n^r n_c) ({\gamma_d}^s-n^s n_d) R_{pqrs}$<br>
-$= (<br>
-{\gamma_a}^p {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s<br>
-- n^p n_a {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s<br>
-- {\gamma_a}^p n^q n_b {\gamma_c}^r {\gamma_d}^s<br>
-- {\gamma_a}^p {\gamma_b}^q n^r n_c {\gamma_d}^s<br>
-- {\gamma_a}^p {\gamma_b}^q {\gamma_c}^r n^s n_d<br>
-+ n^p n_a n^q n_b {\gamma_c}^r {\gamma_d}^s<br>
-+ n^p n_a {\gamma_b}^q n^r n_c {\gamma_d}^s<br>
-+ n^p n_a {\gamma_b}^q {\gamma_c}^r n^s n_d<br>
-+ {\gamma_a}^p n^q n_b n^r n_c {\gamma_d}^s<br>
-+ {\gamma_a}^p n^q n_b {\gamma_c}^r n^s n_d<br>
-+ {\gamma_a}^p {\gamma_b}^q n^r n_c n^s n_d<br>
-- n^p n_a n^q n_b n^r n_c {\gamma_d}^s<br>
-- n^p n_a n^q n_b {\gamma_c}^r n^s n_d<br>
-- n^p n_a {\gamma_b}^q n^r n_c n^s n_d<br>
-- {\gamma_a}^p n^q n_b n^r n_c n^s n_d<br>
-+ n^p n_a n^q n_b n^r n_c n^s n_d ) R_{pqrs}$<br>
-remove contraction of antisymmetric indices...<br>
-$= (<br>
-{\gamma_a}^p {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s<br>
-- n^p n_a {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s<br>
-- {\gamma_a}^p n^q n_b {\gamma_c}^r {\gamma_d}^s<br>
-- {\gamma_a}^p {\gamma_b}^q n^r n_c {\gamma_d}^s<br>
-- {\gamma_a}^p {\gamma_b}^q {\gamma_c}^r n^s n_d<br>
-+ n^p n_a {\gamma_b}^q n^r n_c {\gamma_d}^s<br>
-+ n^p n_a {\gamma_b}^q {\gamma_c}^r n^s n_d<br>
-+ {\gamma_a}^p n^q n_b n^r n_c {\gamma_d}^s<br>
-+ {\gamma_a}^p n^q n_b {\gamma_c}^r n^s n_d) R_{pqrs}$<br>
-distribute ...<br>
-$= ({\gamma_a}^p {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s<br>
-- n^p n_a {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s<br>
-- {\gamma_a}^p n^q n_b {\gamma_c}^r {\gamma_d}^s<br>
-- {\gamma_a}^p {\gamma_b}^q n^r n_c {\gamma_d}^s<br>
-- {\gamma_a}^p {\gamma_b}^q {\gamma_c}^r n^s n_d<br>
-+ n^p n_a {\gamma_b}^q n^r n_c {\gamma_d}^s<br>
-+ n^p n_a {\gamma_b}^q {\gamma_c}^r n^s n_d<br>
-+ {\gamma_a}^p n^q n_b n^r n_c {\gamma_d}^s<br>
-+ {\gamma_a}^p n^q n_b {\gamma_c}^r n^s n_d) R_{pqrs}$<br>
-move $n$'s to the end...<br>
-$= ({\gamma_a}^p {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s<br>
-- {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s n^p n_a<br>
-- {\gamma_a}^p {\gamma_c}^r {\gamma_d}^s n^q n_b<br>
-- {\gamma_a}^p {\gamma_b}^q {\gamma_d}^s n^r n_c<br>
-- {\gamma_a}^p {\gamma_b}^q {\gamma_c}^r n^s n_d<br>
-+ {\gamma_b}^q {\gamma_d}^s n^p n_a n^r n_c<br>
-+ {\gamma_b}^q {\gamma_c}^r n^p n_a n^s n_d<br>
-+ {\gamma_a}^p {\gamma_d}^s n^q n_b n^r n_c<br>
-+ {\gamma_a}^p {\gamma_c}^r n^q n_b n^s n_d) R_{pqrs}$<br>
-use antisymmetry to switch indices, and combine ...<br>
-$R_{abcd} = ({\gamma_a}^p {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s<br>
-- 2 {\gamma_a}^p {\gamma_b}^q {\gamma_{[c}}^r n_{d]} n^s<br>
-- 2 {\gamma_c}^p {\gamma_d}^q {\gamma_{[a}}^r n_{b]} n^s<br>
-+ 2 {\gamma_a}^p {\gamma_{[c}}^r n_{d]} n_b n^q n^s<br>
-- 2 {\gamma_b}^p {\gamma_{[c}}^r n_{d]} n_a n^q n^s) R_{pqrs}$<br>
-<br>
-
-
-Riemann tensor of spatial covariant derivative:<br>
-${(R^\perp)^c}_{dab} v^d$<br>
-$= \nabla^\perp_a \nabla^\perp_b v^c 
-	- \nabla^\perp_b \nabla^\perp_a v^c
-$<br>
-$= {\gamma_a}^p {\gamma_b}^q {\gamma_r}^c \nabla_p \nabla_q v^r
-	- K_{ab} {\gamma_r}^c n^p \nabla_p v^r
-	- {K_a}^c K_{bp} v^p
-	- {\gamma_b}^p {\gamma_a}^q {\gamma_r}^c \nabla_p \nabla_q v^r
-	+ K_{ba} {\gamma_r}^c n^p \nabla_p v^r
-	+ {K_b}^c K_{ap} v^p
-$<br>
-$= 2 {\gamma_a}^p {\gamma_b}^q {\gamma_r}^c \nabla_{[p} \nabla_{q]} v^r 
-	- 2 K_{[ab]} {\gamma_r}^c n^p \nabla_p v^r
-	- 2 {K_{[a}}^c K_{b]p} v^p
-$<br>
-$= {\gamma_a}^p {\gamma_b}^q {\gamma_r}^c {R^r}_{dpq} v^d
-	- {K_a}^c K_{bd} v^d + {K_b}^c K_{ad} v^d
-	- 2 K_{[ab]} {\gamma_r}^c n^p \nabla_p v^r
-$<br>
-${(R^\perp)^c}_{dab} v^d = 
-	{\gamma_a}^p {\gamma_b}^q {\gamma_r}^c {R^r}_{dpq} v^d 
-	- {K_a}^c K_{bd} v^d 
-	+ {K_b}^c K_{ad} v^d
-	- 2 K_{[ab]} {\gamma_r}^c n^p \nabla_p v^r
-$<br>
-...if $v^d$ is spatial...<br>
-${(R^\perp)^c}_{dab} v^d = 
-	{\gamma_a}^p {\gamma_b}^q {\gamma_r}^c {\gamma_d}^s {R^r}_{spq} v^d
-	- {K_a}^c K_{bd} v^d 
-	+ {K_b}^c K_{ad} v^d
-	- 2 K_{[ab]} {\gamma_r}^c n^p \nabla_p v^r
-$<br>
-...if $K_{[ab]} = 0$...  But this is only true for projected-commutation-free basii (prove me)...<br>
-${(R^\perp)^c}_{dab} v^d = 
-	({\gamma_a}^p {\gamma_b}^q {\gamma_r}^c {\gamma_d}^s {R^r}_{spq} 
-	- {K_a}^c K_{bd} 
-	+ {K_b}^c K_{ad}) v^d
-$<br>
-Gauss' equation:<br>
-${R^\perp}_{abcd} + K_{ac} K_{bd} - K_{ad} K_{bc} = {\gamma_a}^p {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s R_{pqrs}$<br>
-<br>
-
-spatial Riemann is orthogonal to normal:<br>
-${R^\perp}_{abcd} n^d$<br>
-$={\gamma_a}^p {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s R_{pqrs} n^d - K_{ac} K_{bd} n^d + K_{ad} K_{bc} n^d$<br>
-$={\gamma_a}^p {\gamma_b}^q {\gamma_c}^r (n^d {\gamma_d}^s) R_{pqrs} - K_{ac} (K_{bd} n^d) + (K_{ad} n^d) K_{bc}$<br>
-$={\gamma_a}^p {\gamma_b}^q {\gamma_c}^r \cdot 0 \cdot R_{pqrs} - K_{ac} \cdot 0 + 0 \cdot K_{bc}$<br>
-${R^\perp}_{abcd} n^d = 0$<br>
-<br>
-
-spatial covariant derivative of extrinsic curvature:<br>
-$\nabla^\perp_a K_{bc}$<br>
-$=-{\gamma_a}^p {\gamma_b}^q {\gamma_c}^r \nabla_p K_{qr}$<br>
-$=-{\gamma_a}^p {\gamma_b}^q {\gamma_c}^r \nabla_p (\nabla_q n_r + n_q a_r)$<br>
-$=-{\gamma_a}^p {\gamma_b}^q {\gamma_c}^r (\nabla_p \nabla_q n_r + \nabla_p n_q a_r + n_q \nabla_p a_r)$<br>
-$=-{\gamma_a}^p {\gamma_b}^q {\gamma_c}^r (\nabla_p \nabla_q n_r + \nabla_p n_q a_r)$<br>
-$=-{\gamma_a}^p {\gamma_b}^q {\gamma_c}^r (\nabla_p \nabla_q n_r + (\nabla_p n_q + n_p a_q) a_r)$<br>
-$=-{\gamma_a}^p {\gamma_b}^q {\gamma_c}^r (\nabla_p \nabla_q n_r + K_{pq} a_r)$<br>
-$=-{\gamma_a}^p {\gamma_b}^q {\gamma_c}^r \nabla_p \nabla_q n_r + {\gamma_a}^p {\gamma_b}^q {\gamma_c}^r K_{pq} a_r$<br>
-$\nabla^\perp_a K_{bc}=-{\gamma_a}^p {\gamma_b}^q {\gamma_c}^r \nabla_p \nabla_q n_r + a_c K_{ab}$<br>
-therefore<br>
-$\nabla^\perp_{[a} K_{b]c} = -{\gamma_a}^p {\gamma_b}^q {\gamma_c}^r \nabla_{[p} \nabla_{q]} n_r$<br>
-Codazzi equation:<br>
-$\nabla^\perp_b K_{ac} - \nabla^\perp_b K_{bc} = {\gamma_a}^p {\gamma_b}^q {\gamma_c}^r n^s R_{pqrs}$<br>
 <br>
 
 Lie derivative along hypersurface normal of spatial metric:<br>
@@ -498,6 +256,5 @@ $ \dot{\gamma}_{ij} = -2\alpha K_{ij} + 2 \nabla^\perp_{(i} \beta_{j)} $<br>
 
 <br>
 <a href='index.html'>Back</a><br>
-	
 	</body>
 </html>
