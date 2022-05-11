@@ -331,25 +331,26 @@ $=
 $<br>
 $= 
 	{\gamma_u}^a (v^\perp)_b (n^b \nabla_a n_v + n_v \nabla_a n^b) 
-	+ \nabla^\perp_a (v^\perp)_b
+	+ \nabla^\perp_u (v^\perp)_v
 	- v^\parallel K_{vu}
 	+ n_v \nabla^\perp_u v^\parallel
 $<br>
 $= 
 	{\gamma_u}^a (v^\perp)_b n^b (-K_{va} - n_a a_v) 
 	+ {\gamma_u}^a (v^\perp)^b n_v (-K_{ba} - n_a a_b)
-	+ \nabla^\perp_a (v^\perp)_b
+	+ \nabla^\perp_u (v^\perp)_v
 	- v^\parallel K_{vu}
 	+ n_v \nabla^\perp_u v^\parallel
 $<br>
 ...using $(v^\perp)_b n^b = 0$ and ${\gamma_u}^a n_a = 0$...<Br>
-$= \nabla^\perp_a (v^\perp)_b - K_{bu} (v^\perp)^b n_v
-	- v^\parallel K_{vu}
+$= \nabla^\perp_u (v^\perp)_v - {K_u}^a (v^\perp)_a n_v
 	+ n_v \nabla^\perp_u v^\parallel
+	- v^\parallel K_{uv}
 $<br><br>
 
-... for a spatial vector:<br>
-${\gamma_u}^a \nabla_a (v^\perp)_v = \nabla^\perp_a (v^\perp)_b - K_{bu} (v^\perp)^b n_v$<br>
+... for a spatial vector, set $v^\parallel = 0$:<br>
+${\gamma_u}^a \nabla_a (v^\perp)_v 
+	= \nabla^\perp_u (v^\perp)_v - {K_u}^a (v^\perp)_a n_v$<br>
 <br>
 
 Projection and normal components of covariant derivative of vector:<br>
@@ -373,11 +374,15 @@ $=
 	- n_u \nabla^\perp_v v^\parallel
 	+ n_v n_u n^a e_a(v^\parallel)
 $<br>
-Using ${\gamma_u}^a \nabla_a v_v= \nabla^\perp_a (v^\perp)_b - K_{bu} (v^\perp)^b n_v
-	- v^\parallel K_{vu}
-	+ n_v \nabla^\perp_u v^\parallel
-$...<br>
-TODO and then TODO show the two things below are equal.<br>
+Using ${\gamma_v}^a \nabla_a (v^\perp)_u = \nabla^\perp_v (v^\perp)_u - {K_v}^a (v^\perp)_a n_u$...<br>
+$= 
+	  \nabla^\perp_v (v^\perp)_u 
+	- {K_v}^a (v^\perp)_a n_u
+	- n_v n^a \nabla_a v^\perp_u 
+	+ v^\parallel (K_{uv} + n_v a_u)
+	- n_u \nabla^\perp_v v^\parallel
+	+ n_v n_u n^a e_a(v^\parallel)
+$<br>
 <br>
 
 Contract both with normal:<br>
@@ -396,19 +401,8 @@ $= n^v {\gamma_a}^u \nabla_v v^\perp_u
 	- n^v {\gamma_a}^u v^\parallel \nabla_v n_u 
 	- n^v {\gamma_a}^u n_u \nabla_v v^\parallel
 $<br>
-$= {\gamma_a}^u n^v \nabla_v v^\perp_u 
-	- {\gamma_a}^u v^\parallel a_u 
-$<br>
-...using $n^a v^\perp_a = 0$ therefore $\nabla_u (n^a v^\perp_a) = 0$...<br>
-$= -{\gamma_a}^u v^\perp_u \nabla_v n^v 
-	- v^\parallel a_a 
-$<br>
-$= -v^\perp_a \nabla_v n^v - v^\parallel a_a$<br>
-$= -v^\perp_a g^{uv} \nabla_v n_u - v^\parallel a_a$<br>
-...using $K_{uv} = -\nabla_u n_v - n_u a_v$...<br>
-$= v^\perp_a g^{uv} (n_v a_u + K_{vu}) - v^\parallel a_a$<br>
-...using $n^u a_u = 0$...<br>
-$= v^\perp_a K - v^\parallel a_a$<br>
+$= {\gamma_a}^u n^v \nabla_v v^\perp_u - {\gamma_a}^u v^\parallel a_u$<br>
+$= {\gamma_a}^u n^v \nabla_v v^\perp_u - v^\parallel a_a$<br>
 <br>
 
 Contract right with normal, project left:<br>
@@ -467,13 +461,13 @@ $<br>
 $ =
 	({\gamma_u}^a {\gamma_v}^b \nabla_b v_a = \nabla^\perp_v v^\perp_u + K_{vu} v^\parallel)
 	- n_u (n^a {\gamma_v}^b \nabla_b v_a = K_{va} (v^\perp)^a + {\gamma_v}^a \partial_a (v^\parallel))
-	- n_v ({\gamma_u}^a n^b \nabla_b v_a = v^\perp_u K - v^\parallel a_u)
+	- n_v ({\gamma_u}^a n^b \nabla_b v_a = {\gamma_u}^a n^b \nabla_b v^\perp_a - v^\parallel a_u)
 	+ n_u n_v (n^a n^b \nabla_b v_a = -v^\perp_a a^a + n^a \partial_a v^\parallel)
 $<br>
 $ =
 	\nabla^\perp_v v^\perp_u + K_{vu} v^\parallel
 	- n_u (K_{va} (v^\perp)^a + {\gamma_v}^a \partial_a (v^\parallel))
-	- n_v (v^\perp_u K - v^\parallel a_u)
+	- n_v ({\gamma_u}^a n^b \nabla_b v^\perp_a - v^\parallel a_u)
 	+ n_u n_v (-v^\perp_a a^a + n^a \partial_a v^\parallel)
 $<br>
 $=
@@ -481,7 +475,7 @@ $=
 	+ K_{vu} v^\parallel
 	- n_u K_{va} (v^\perp)^a 
 	- n_u {\gamma_v}^a \partial_a (v^\parallel)
-	- n_v v^\perp_u K 
+	- n_v {\gamma_u}^a n^b \nabla_b v^\perp_a
 	+ n_v v^\parallel a_u
 	- n_u n_v v^\perp_a a^a 
 	+ n_u n_v n^a \partial_a v^\parallel
@@ -489,7 +483,7 @@ $<br>
 $=
 	  \nabla^\perp_v v^\perp_u 
 	- n_u K_{va} (v^\perp)^a 
-	- n_v v^\perp_u K 
+	- n_v {\gamma_u}^a n^b \nabla_b v^\perp_a
 	- n_u n_v v^\perp_a a^a 
 	+ v^\parallel (K_{vu} + n_v a_u)
 	- n_u \nabla^\perp_v v^\parallel
@@ -497,7 +491,8 @@ $=
 $<br>
 ...should equal...<br>
 $= 
-	  {\gamma_v}^a \nabla_a v^\perp_u 
+	  \nabla^\perp_v (v^\perp)_u 
+	- n_u {K_v}^a (v^\perp)_a
 	- n_v n^a \nabla_a v^\perp_u 
 	+ v^\parallel (K_{uv} + n_v a_u)
 	- n_u \nabla^\perp_v v^\parallel
@@ -515,18 +510,18 @@ $=
 $<br>
 $= 
 	\gamma^{ab} (\nabla^\perp_b v^\perp_a + K_{ba} v^\parallel)
-	-v^\perp_u a^u + n^v \partial_v v^\parallel
+	+ v^\perp_u a^u - n^v \partial_v v^\parallel
 $<br>
 $= 
 	\gamma^{ab} \nabla^\perp_b v^\perp_a 
 	+ \gamma^{ab} K_{ba} v^\parallel
-	- v^\perp_u a^u 
-	+ n^v \partial_v v^\parallel
+	+ v^\perp_u a^u 
+	- n^v \partial_v v^\parallel
 $<br>
 $= 
 	\nabla^\perp_a (v^\perp)^a
-	- a_a (v^\perp)^a
-	+ n^a \partial_a v^\parallel
+	+ a_a (v^\perp)^a
+	- n^a \partial_a v^\parallel
 	+ K v^\parallel
 $<br>
 <br>
