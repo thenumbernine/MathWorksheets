@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<title>Einstein tensor</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+	</head>
+    <body>
+<a href='index.html'>Back</a><br>
+<br>
+
+Einstein tensor 2-degree as trace-reversal of Ricci curvature:<br>
+$ G_{ab} = R_{ab} - \frac{1}{2} R g_{ab}$<br>
+<br>
+
+Riemann curvature 2-form dual:<br>
+$\Omega^{ab} = {R^{ab}}_{cd} e^c \otimes e^d = \frac{1}{2} {R^{ab}}_{cd} e^c \wedge e^d$<br>
+$\star \Omega^{ab} = \frac{1}{2} {R^{ab}}_{cd} {\epsilon^{cd}}_{ef} e^e \otimes e^f$<br>
+$\star \Omega^{ab} = \frac{1}{4} {R^{ab}}_{cd} {\epsilon^{cd}}_{ef} e^e \wedge e^f$<br>
+<br>
+
+Einstein tensor 4-degree as double-dual of Riemann curvature tensor:<br>
+$ {G^{ab}}_{cd} = {(\star R \ast)^{ab}}_{cd}$<br>
+$= \frac{1}{2} {\epsilon^{ab}}_{uv} (\star R)^{uv}$<br>
+$= \frac{1}{4} {\epsilon^{ab}}_{uv} {R^{uv}}_{rs} {\epsilon^{rs}}_{cd} $<br>
+<br>
+
+Einstein tensor 4-degree as dual of Riemann curvature 2-form:<br>
+$e_a \otimes e_b \otimes {G^{ab}}_{cd} e^c \otimes e^d$<br>
+$= \frac{1}{4} e_a \otimes e_b \otimes {\epsilon^{ab}}_{uv} {R^{uv}}_{rs} {\epsilon^{rs}}_{cd} e^c \otimes e^d $<br>
+$= \frac{1}{8} e_a \otimes e_b \otimes {\epsilon^{ab}}_{uv} {R^{uv}}_{rs} {\epsilon^{rs}}_{cd} e^c \wedge e^d $<br>
+$= \frac{1}{2} e_a \otimes e_b \otimes {\epsilon^{ab}}_{uv} \star \Omega^{uv}$<br>
+... in the event you want to abuse the wedge product and apply it to vectors:<br>
+$ = \frac{1}{4} e_a \wedge e_b \wedge {\epsilon^{ab}}_{uv} \star \Omega^{uv}$<br>
+$ = \frac{1}{16} e_a \wedge e_b \wedge {\epsilon^{ab}}_{uv} {R^{uv}}_{rs} {\epsilon^{rs}}_{cd} e^c \wedge e^d $<br>
+... if you want to use the new $\ast$ vector-dual operator:<br>
+$= e_a \otimes e_b \otimes \star (\Omega \ast)^{ab}$<br>
+<br>
+
+$(\star \Omega \ast)^{ua} (e_u)$<br>
+$= \frac{1}{2} {\epsilon^{ua}}_{vb} (\star \Omega^{vb}) (e_u)$<br>
+$= ({G^{ua}}_{vb} e^v \otimes e^b) (e_u)$<br>
+$= {G^{ua}}_{vb} e^b \delta^v_u$<br>
+$= {G^{ua}}_{ub} e^b$<br>
+$= {G^a}_b e^b$<br>
+<br>
+
+Einstein tensor 2-degree as contraction of Einstein tensor 4-degree:<br>
+${G_b}^a = {G^{ua}}_{ub}$<br>
+$= \frac{1}{4} {\epsilon^{ua}}_{cd} {R^{cd}}_{ef} {\epsilon^{ef}}_{ub}$<br>
+$= \frac{1}{4} \epsilon^{uacd} {R_{cd}}^{ef} \epsilon_{efub}$<br>
+$= \frac{1}{4} \epsilon^{acdu} \epsilon_{efbu} {R_{cd}}^{ef}$<br>
+$= -\frac{1}{4} \delta^{acd}_{efb} {R_{cd}}^{ef}$<br>
+$= -\frac{6!}{4} \delta^a_{[e} \delta^c_f \delta^d_{b]} {R_{cd}}^{ef}$<br>
+$= -\frac{1}{4} (
+	  \delta^a_e \delta^c_f \delta^d_b
+	+ \delta^a_b \delta^c_e \delta^d_f
+	+ \delta^a_f \delta^c_b \delta^d_e
+	- \delta^a_b \delta^c_f \delta^d_e
+	- \delta^a_f \delta^c_e \delta^d_b
+	- \delta^a_e \delta^c_b \delta^d_f
+) {R_{cd}}^{ef}$<br>
+$= \frac{1}{4} (
+	- {R_{cb}}^{ac}
+	- \delta^a_b {R_{cd}}^{cd}
+	- {R_{bd}}^{da}
+	+ \delta^a_b {R_{cd}}^{dc}
+	+ {R_{cb}}^{ca}
+	+ {R_{bd}}^{ad}
+)$<br>
+$=  {R_{cb}}^{ca} - \frac{1}{2} \delta^a_b {R_{cd}}^{cd}$<br>
+$=  {R_b}^a - \frac{1}{2} \delta^a_b R$<br>
+It looks like the symmetry of $G_{ab}$ can be inferred from the two $\epsilon^{acdu} \epsilon_{efbu}$'s , regardless of any symmetry of $R_{abcd}$, since those turn into the $\delta^{acd}_{efb}$, which can be rearranged.<br>
+<br>
+
+Using $d^2 e_b = e_a \wedge {\Omega^a}_b$...<br>
+...so $g^{bc} d^2 e_c = e_a \wedge \Omega^{ab}$...<br>
+...so $e^a ( g^{bc} d^2 e_c ) = \Omega^{ab}$ ... (right? can I do this? probably not with that Hodge dual outside the expression ...)<br>
+${G^a}_b e^b = \frac{1}{2} {\epsilon^{ua}}_{vb} (\star e^v (g^{bc} d^2 e_c)) (e_u)$<br>
+...maybe I can define it this way ... <br>
+$(\star d^2 e_v) ( e_a \otimes e_b ) = \frac{1}{2} e_u \wedge {R^u}_{vcd} {\epsilon^{cd}}_{ab}$<br>
+...but somehow I need to apply a Levi-Civita permutation tensor between those u-indexes...<br>
+<br>
+
+Also ...<Br>
+$(d^2 e_v) (e_a \otimes e_b) = e_u \wedge {R^u}_{vab}$<br>
+$(d^2 e_v) (e_a) = e_u \wedge {R^u}_{vab} \wedge e^b$<br>
+$-g^{va} (d^2 e_v) (e_a) 
+	= -g^{va} e_u \wedge {R^u}_{vab} \wedge e^b
+	= g^{va} e_u \wedge {{R_v}^u}_{ab} \wedge e^b
+	= e_u \wedge {R^u}_b \wedge e^b
+	= e_u \wedge R^u
+$<br>
+<br>
+
+Jury is still out on partial application of one-forms to vectors-wedge-one-forms:<br>
+$e^a ( e_b \wedge e^c ) = \delta^a_b e^c$<br>
+But if I did want to use it ...<br>
+$e^a(d^2 e_b) = e^a(e_c \wedge {\Omega^c}_b) = {\Omega^a}_b$<br>
+$g^{cb} e^a(d^2 e_c) = \Omega^{ab}$<br>
+$g^{cb} e^a(d^2 e_c) (e_u \otimes e_v) = {R^{ab}}_{uv}$<br>
+$g^{cb} (\star e^a(d^2 e_c)) (e_u \otimes e_v) = \frac{1}{2} {R^{ab}}_{cd} {\epsilon^{cd}}_{uv}$<br>
+$\frac{1}{2} {\epsilon^{pq}}_{ab} g^{cb} (\star e^a(d^2 e_c)) (e_u \otimes e_v) 
+	= \frac{1}{4} {\epsilon^{pq}}_{ab} {R^{ab}}_{cd} {\epsilon^{cd}}_{uv} 
+	= {G^{pq}}_{uv}$<br>
+So...<br>
+$\frac{1}{2} {\epsilon^{ua}}_{ef} g^{cf} (\star e^e(d^2 e_c)) (e_u \otimes e_b) 
+	= \frac{1}{4} {\epsilon^{ua}}_{ef} {R^{ef}}_{cd} {\epsilon^{cd}}_{ub} = {G^{ua}}_{ub} = {G^a}_b$<br>
+$\frac{1}{2} {\epsilon^{ua}}_{ef} g^{cf} (\star e^e(d^2 e_c)) (e_u) 
+	= {G^a}_b e^b$<br>
+$-\frac{1}{2} {\epsilon^{uac}}_e (\star e^e(d^2 e_c)) (e_u) 
+	= {G^a}_b e^b$<br>
+<br>
+
+Einstein tensor from exterior algebra:<br>
+$G_a = G_{ab} e^b$<br>
+$= R_{ab} e^b - \frac{1}{2} R g_{ab} e^b$<br>
+$= R_a - \frac{1}{2} e_a R$<br>
+$= R_a - \frac{1}{2} e_a (R_u \cdot e^u)$<br>
+Using inner product $\cdot$ (should I use $\langle, \rangle$ to denote inner product?):<br>
+$= R_u \cdot (\delta^u_a - \frac{1}{2} e^u \otimes e_a)$<br>
+Using Hodge dual:<br>
+$= R_a - \frac{1}{2} \sigma \star (R_u \wedge \star e^u) e_a$<br>
+... and that last $e_a$ outside the Hodge dual star is what keeps me from factoring any further ... <br>
+<br>
+
+Using the contravariant-indexed Ricci one-form:<br>
+$G^a = R^a - \frac{1}{2} e^a R^b(e_b)$<br>
+$= \delta^a_b R^b - \frac{1}{2} e^a R^b(e_b)$<br>
+$= e^a(e_b) R^b - \frac{1}{2} e^a R^b(e_b)$<br>
+$= \frac{1}{2} e^a(e_b) R^b + \frac{1}{2} e^a(e_b) R^b - \frac{1}{2} e^a R^b(e_b)$<br>
+<br>
+
+
+
+<br>
+<a href='index.html'>Back</a><br>
+	</body>
+</html>
