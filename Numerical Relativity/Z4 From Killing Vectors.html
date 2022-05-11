@@ -64,11 +64,12 @@ Notice that $a_a$ is a spatial vector as well, so the result is a product of spa
 
 Vector divergence:
 $\nabla_a v^a
-= 	\nabla^\perp_u (v^\perp)^u
-	- a_u (v^\perp)^u
-	+ n^v \partial_v v^\parallel
+= 	\nabla^\perp_a (v^\perp)^a
+	- a_a (v^\perp)^a
+	+ n^a \partial_a v^\parallel
 	+ K v^\parallel
 $<br>
+<br>
 
 <hr>
 <b>Z4 Killing Vector decomposition and projections:</b><br>
@@ -112,7 +113,21 @@ So I should be doing that first, then inserting the $Z_u$'s into it to produce t
 <br>
 
 $R_{uv} + 2 \nabla_{(u} Z_{v)} - g_{uv} \nabla_a Z^a - \kappa_1 (2 n_{(u} Z_{v)} + \kappa_2 g_{uv} n_a Z^a) = 8 \pi (T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab})$<br>
-$R_{uv} + 2 \nabla_{(u} Z_{v)} - g_{uv} g^{ab} \nabla_a Z_b - \kappa_1 (2 n_{(u} Z_{v)} + \kappa_2 g_{uv} \Theta) = 8 \pi (T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab})$<br>
+$R_{uv} + 2 \nabla_{(u} Z_{v)} - g_{uv} (
+ 	\nabla^\perp_a (Z^\perp)^a
+	- a_a (Z^\perp)^a
+	+ n^a \partial_a \Theta
+	+ K \Theta
+) - \kappa_1 (2 n_{(u} Z_{v)} + \kappa_2 g_{uv} \Theta) = 8 \pi (T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab})$<br>
+<br>
+
+Using: $\nabla_v Z_u = 
+	  {\gamma_v}^a \nabla_a Z^\perp_u 
+	- n_v n^a \nabla_a Z^\perp_u 
+	+ \Theta (K_{uv} + n_v a_u)
+	- n_u \nabla^\perp_v \Theta
+	+ n_v n_u n^a e_a(\Theta)
+$<br>
 <br>
 
 Let $\rho = n^u n^v T_{uv}$ = the stress-energy density<br>

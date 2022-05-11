@@ -1,11 +1,11 @@
 <!doctype html>
 <html>
 	<head>
-        <meta charset='utf-8'>
+		<meta charset='utf-8'>
 		<title>normal projections</title>
 		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
 	</head>
-    <body>
+	<body>
 <a href='index.html'>Back</a><br>
 <br>
 
@@ -114,7 +114,7 @@ $ \nabla^\perp_a v^b $<br>
 $ = {\gamma_a}^p {\gamma_q}^b \nabla_p v^q $<br>
 $ = {\gamma_a}^p (\delta_q^b + n_q n^b) \nabla_p v^q $<br>
 $ = {\gamma_a}^p \nabla_p v^b + {\gamma_a}^p n^b n_q \nabla_p v^q $<br>
-Now $ 0 = n_q v^q = \nabla_p (n_q v^q) = v^q \nabla_p n_q + n_q \nabla_p v^q $,  so $ n_q \nabla_p v^q = -v^q \nabla_p n_q $.<br>
+Now $ 0 = n_q v^q = \nabla_p (n_q v^q) = v^q \nabla_p n_q + n_q \nabla_p v^q $, so $ n_q \nabla_p v^q = -v^q \nabla_p n_q $.<br>
 $ = {\gamma_a}^p \nabla_p v^b - {\gamma_a}^p n^b v^q \nabla_p n_q $<br>
 using spatial identity: $ v^q = {\gamma_e}^q v^e $<br>
 $ = {\gamma_a}^p \nabla_p v^b - n^b v^e {\gamma_a}^p {\gamma_e}^q \nabla_p n_q $<br>
@@ -263,7 +263,7 @@ ${(R^\perp)^c}_{dab} v^d =
 	+ {K_b}^c K_{ad} v^d
 	- 2 K_{[ab]} {\gamma_r}^c n^p \nabla_p v^r
 $<br>
-...if $K_{[ab]} = 0$...  But this is only true for projected-commutation-free basii (prove me)...<br>
+...if $K_{[ab]} = 0$... But this is only true for projected-commutation-free basii (prove me)...<br>
 ${(R^\perp)^c}_{dab} v^d = 
 	({\gamma_a}^p {\gamma_b}^q {\gamma_r}^c {\gamma_d}^s {R^r}_{spq} 
 	- {K_a}^c K_{bd} 
@@ -304,9 +304,80 @@ Let vector $v_a$ have spatial components $v^\perp_a = {\gamma_a}^u v_u$ and norm
 So $v_u = \delta^v_u v_v = ({\gamma_u}^v - n_u n^v) v_v = v^\perp_u - n_u v^\parallel$<br>
 <br>
 
+Covariant derivative of vector in projection and normal components:<br>
 $\nabla_v v_u$<br>
 $= \nabla_v (v^\perp_u - n_u v^\parallel)$<br>
 $= \nabla_v v^\perp_u - v^\parallel \nabla_v n_u - n_u \nabla_v v^\parallel$<br>
+<br>
+
+Projection of covariant derivative vs covariant derivative of projection:<br>
+${\gamma_u}^a \nabla_a v_v$<br>
+$= {\gamma_u}^a \nabla_a ((v^\perp)_v + n_v v^\parallel)$<br>
+$= {\gamma_u}^a \nabla_a ({\gamma_v}^b (v^\perp)_b + n_v v^\parallel)$<br>
+$= 
+	{\gamma_u}^a (
+		(v^\perp)_b \nabla_a {\gamma_v}^b 
+		+ {\gamma_v}^b \nabla_a (v^\perp)_b
+		
+		+ v^\parallel \nabla_a n_v
+		+ n_v \nabla_a v^\parallel
+	)
+$<br>
+$= 
+	{\gamma_u}^a (v^\perp)_b \nabla_a (\delta_v^b + n_v n^b) 
+	+ {\gamma_u}^a {\gamma_v}^b \nabla_a (v^\perp)_b
+	+ {\gamma_u}^a v^\parallel (-K_{va} - n_a a_v)
+	+ {\gamma_u}^a n_v \nabla_a v^\parallel
+$<br>
+$= 
+	{\gamma_u}^a (v^\perp)_b (n^b \nabla_a n_v + n_v \nabla_a n^b) 
+	+ \nabla^\perp_a (v^\perp)_b
+	- v^\parallel K_{vu}
+	+ n_v \nabla^\perp_u v^\parallel
+$<br>
+$= 
+	{\gamma_u}^a (v^\perp)_b n^b (-K_{va} - n_a a_v) 
+	+ {\gamma_u}^a (v^\perp)^b n_v (-K_{ba} - n_a a_b)
+	+ \nabla^\perp_a (v^\perp)_b
+	- v^\parallel K_{vu}
+	+ n_v \nabla^\perp_u v^\parallel
+$<br>
+...using $(v^\perp)_b n^b = 0$ and ${\gamma_u}^a n_a = 0$...<Br>
+$= \nabla^\perp_a (v^\perp)_b - K_{bu} (v^\perp)^b n_v
+	- v^\parallel K_{vu}
+	+ n_v \nabla^\perp_u v^\parallel
+$<br><br>
+
+... for a spatial vector:<br>
+${\gamma_u}^a \nabla_a (v^\perp)_v = \nabla^\perp_a (v^\perp)_b - K_{bu} (v^\perp)^b n_v$<br>
+<br>
+
+Projection and normal components of covariant derivative of vector:<br>
+$\nabla_v v_u$<br>
+$= \delta_v^a \nabla_a (v_u)$<br>
+$= ({\gamma_v}^a - n_v n^a) (
+	\nabla_a v^\perp_u - v^\parallel \nabla_a n_u - n_u \nabla_a v^\parallel
+)$<br>
+$= 
+	  {\gamma_v}^a \nabla_a v^\perp_u 
+	- v^\parallel {\gamma_v}^a \nabla_a n_u 
+	- n_u {\gamma_v}^a \nabla_a v^\parallel
+	- n_v n^a \nabla_a v^\perp_u 
+	+ n_v v^\parallel n^a\nabla_a n_u 
+	+ n_v n_u n^a\nabla_a v^\parallel
+$<br>
+$= 
+	  {\gamma_v}^a \nabla_a v^\perp_u 
+	- n_v n^a \nabla_a v^\perp_u 
+	+ v^\parallel (K_{uv} + n_v a_u)
+	- n_u \nabla^\perp_v v^\parallel
+	+ n_v n_u n^a e_a(v^\parallel)
+$<br>
+Using ${\gamma_u}^a \nabla_a v_v= \nabla^\perp_a (v^\perp)_b - K_{bu} (v^\perp)^b n_v
+	- v^\parallel K_{vu}
+	+ n_v \nabla^\perp_u v^\parallel
+$...<br>
+TODO and then TODO show the two things below are equal.<br>
 <br>
 
 Contract both with normal:<br>
@@ -319,7 +390,8 @@ $= -v^\perp_u a^u + n^v \partial_v v^\parallel$<br>
 <br>
 
 Contract left with normal, project right:<br>
-$n^v {\gamma_a}^u (\nabla_v v^\perp_u - v^\parallel \nabla_v n_u - n_u \nabla_v v^\parallel)$<br>
+$n^v {\gamma_a}^u \nabla_v v_u$<br>
+$= n^v {\gamma_a}^u (\nabla_v v^\perp_u - v^\parallel \nabla_v n_u - n_u \nabla_v v^\parallel)$<br>
 $= n^v {\gamma_a}^u \nabla_v v^\perp_u 
 	- n^v {\gamma_a}^u v^\parallel \nabla_v n_u 
 	- n^v {\gamma_a}^u n_u \nabla_v v^\parallel
@@ -340,7 +412,8 @@ $= v^\perp_a K - v^\parallel a_a$<br>
 <br>
 
 Contract right with normal, project left:<br>
-${\gamma_a}^v n^u (\nabla_v v^\perp_u - v^\parallel \nabla_v n_u - n_u \nabla_v v^\parallel)$<br>
+${\gamma_a}^v n^u \nabla_v v_u$<br>
+$= {\gamma_a}^v n^u (\nabla_v v^\perp_u - v^\parallel \nabla_v n_u - n_u \nabla_v v^\parallel)$<br>
 $= {\gamma_a}^v n^u \nabla_v v^\perp_u 
 	- {\gamma_a}^v n^u v^\parallel \nabla_v n_u 
 	- {\gamma_a}^v n^u n_u \nabla_v v^\parallel
@@ -381,7 +454,55 @@ $<br>
 $= \nabla^\perp_b v^\perp_a + K_{ba} v^\parallel$<br>
 <br>
 
-TODO put them all together to verify it reconstructs the original.<br>
+Put them all together to verify it reconstructs the original.<br>
+$\nabla_v v_u$<br>
+$= \delta_u^a \delta_v^b \nabla_b v_a$<br>
+$= ({\gamma_u}^a - n_u n^a) ({\gamma_v}^b - n_v n^b) \nabla_b v_a$<br>
+$= 
+	{\gamma_u}^a {\gamma_v}^b \nabla_b v_a
+	- n_u n^a {\gamma_v}^b \nabla_b v_a
+	- n_v {\gamma_u}^a n^b \nabla_b v_a
+	+ n_u n_v n^a n^b \nabla_b v_a
+$<br>
+$ =
+	({\gamma_u}^a {\gamma_v}^b \nabla_b v_a = \nabla^\perp_v v^\perp_u + K_{vu} v^\parallel)
+	- n_u (n^a {\gamma_v}^b \nabla_b v_a = K_{va} (v^\perp)^a + {\gamma_v}^a \partial_a (v^\parallel))
+	- n_v ({\gamma_u}^a n^b \nabla_b v_a = v^\perp_u K - v^\parallel a_u)
+	+ n_u n_v (n^a n^b \nabla_b v_a = -v^\perp_a a^a + n^a \partial_a v^\parallel)
+$<br>
+$ =
+	\nabla^\perp_v v^\perp_u + K_{vu} v^\parallel
+	- n_u (K_{va} (v^\perp)^a + {\gamma_v}^a \partial_a (v^\parallel))
+	- n_v (v^\perp_u K - v^\parallel a_u)
+	+ n_u n_v (-v^\perp_a a^a + n^a \partial_a v^\parallel)
+$<br>
+$=
+	  \nabla^\perp_v v^\perp_u 
+	+ K_{vu} v^\parallel
+	- n_u K_{va} (v^\perp)^a 
+	- n_u {\gamma_v}^a \partial_a (v^\parallel)
+	- n_v v^\perp_u K 
+	+ n_v v^\parallel a_u
+	- n_u n_v v^\perp_a a^a 
+	+ n_u n_v n^a \partial_a v^\parallel
+$<br>
+$=
+	  \nabla^\perp_v v^\perp_u 
+	- n_u K_{va} (v^\perp)^a 
+	- n_v v^\perp_u K 
+	- n_u n_v v^\perp_a a^a 
+	+ v^\parallel (K_{vu} + n_v a_u)
+	- n_u \nabla^\perp_v v^\parallel
+	+ n_v n_u n^a e_a( v^\parallel )
+$<br>
+...should equal...<br>
+$= 
+	  {\gamma_v}^a \nabla_a v^\perp_u 
+	- n_v n^a \nabla_a v^\perp_u 
+	+ v^\parallel (K_{uv} + n_v a_u)
+	- n_u \nabla^\perp_v v^\parallel
+	+ n_v n_u n^a e_a(v^\parallel)
+$<br>
 <br>
 
 Vector divergence in projection decomposition:<br>
@@ -403,9 +524,9 @@ $=
 	+ n^v \partial_v v^\parallel
 $<br>
 $= 
-	\nabla^\perp_u (v^\perp)^u
-	- a_u (v^\perp)^u
-	+ n^v \partial_v v^\parallel
+	\nabla^\perp_a (v^\perp)^a
+	- a_a (v^\perp)^a
+	+ n^a \partial_a v^\parallel
 	+ K v^\parallel
 $<br>
 <br>
