@@ -14,6 +14,12 @@ This is going to be the 1D-normal case.<br>
 TODO move this back before the Einstein-Hilbert action part ... but keep it after the curvature part?<br>
 <br>
 
+TODO shoudn't the operator that projects parallel to the hypersurface be the parallel symbol $\parallel$ and not  the perpendicular symbol $\perp$ ?
+Shouldn't the component that is perpendicular to the hypersurface by the perpendicular symbol $\perp$ ?<br>
+This means all the mainstream numerical relativity literature symbols of $\perp$ and $\parallel$ are mixed up.
+It also means I have to swap them in both this worksheet and in all subsequent worksheets.<br>
+<br>
+
 For this worksheet, $\nabla$ and ${\Gamma^a}_{bc}$ will refer to the Levi-Civita connection.<br>
 <br>
 
@@ -483,6 +489,64 @@ $=
 	- n^a \nabla_a v^\parallel
 	+ K v^\parallel
 $<br>
+<br>
+
+<hr>
+<br>
+
+Projection vs covariant derivative of a (p q) tensor:<br>
+$\nabla_u {T^A}_B$<br>
+$= \nabla_u (
+	\overset{p}{\underset{i=1}{\Pi}} \delta_{c_i}^{a_i}
+	\cdot
+	\overset{q}{\underset{i=1}{\Pi}} \delta_{b_i}^{d_i}
+	\cdot
+	{T^C}_D
+)$<br>
+$= \nabla_u (
+	\overset{p}{\underset{i=1}{\Pi}} ({\gamma_{c_i}}^{a_i} - n_{c_i} n^{a_i})
+	\cdot
+	\overset{q}{\underset{i=1}{\Pi}} ({\gamma_{b_i}}^{d_i} - n_{b_i} n^{d_i})
+	\cdot
+	{T^C}_D
+)$<br>
+$= \nabla_u \left(
+	\left(
+		\overset{p}{\underset{i=1}{\Pi}} {\gamma_{c_i}}^{a_i}
+			\cdot \overset{q}{\underset{i=1}{\Pi}} {\gamma_{b_i}}^{d_i}
+		- n_{c_k} n^{a_k}
+			\cdot \overset{p}{\underset{i \ne k}{\underset{i=1}{\Pi}}} {\gamma_{c_i}}^{a_i}
+			\cdot \overset{q}{\underset{i=1}{\Pi}} {\gamma_{b_i}}^{d_i}
+		- n_{b_k} n^{d_k}
+			\cdot \overset{p}{\underset{i=1}{\Pi}} {\gamma_{c_i}}^{a_i}
+			\cdot \overset{q}{\underset{i \ne k}{\underset{i=1}{\Pi}}} {\gamma_{b_i}}^{d_i}
+		+ ...
+		+ (-1)^{p+q} 
+			\overset{p}{\underset{i=1}{\Pi}} n_{c_i} n^{a_i}
+			\cdot \overset{q}{\underset{i=1}{\Pi}} n_{b_i} n^{d_i}
+	\right)	
+	\cdot {T^C}_D
+\right)$<br>
+$= \nabla_u \left(
+	\perp {T^A}_B
+	+ \left(
+		- n_{c_k} n^{a_k}
+			\cdot \overset{p}{\underset{i \ne k}{\underset{i=1}{\Pi}}} {\gamma_{c_i}}^{a_i}
+			\cdot \overset{q}{\underset{i=1}{\Pi}} {\gamma_{b_i}}^{d_i}
+		- n_{b_k} n^{d_k}
+			\cdot \overset{p}{\underset{i=1}{\Pi}} {\gamma_{c_i}}^{a_i}
+			\cdot \overset{q}{\underset{i \ne k}{\underset{i=1}{\Pi}}} {\gamma_{b_i}}^{d_i}
+		+ ...
+		+ (-1)^{p+q} 
+			\overset{p}{\underset{i=1}{\Pi}} n_{c_i} n^{a_i}
+			\cdot \overset{q}{\underset{i=1}{\Pi}} n_{b_i} n^{d_i}
+	\right)	
+	\cdot {T^C}_D
+\right)$<br>
+...next distribute that covariant derivative...<br>
+...next replace the individual $\nabla_a n_b = -K_{ab} - n_a a_b$...<br>
+...next do the same delta-to-gamma-plus-n's trick on the outside...<br>
+... and finally you will have a general (p q) relation between a tensor's covariant derivative, its projection's projected covariant derivative, and a bunch of normal and acceleration and extrinsic curvature vectors.<br>
 <br>
 
 <hr>

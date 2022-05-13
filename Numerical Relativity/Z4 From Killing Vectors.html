@@ -66,7 +66,7 @@ Vector divergence:
 $\nabla_a v^a
 = 	\nabla^\perp_a (v^\perp)^a
 	- a_a (v^\perp)^a
-	+ n^a \partial_a v^\parallel
+	+ n^a \nabla_a v^\parallel
 	+ K v^\parallel
 $<br>
 <br>
@@ -113,20 +113,87 @@ So I should be doing that first, then inserting the $Z_u$'s into it to produce t
 <br>
 
 $R_{uv} + 2 \nabla_{(u} Z_{v)} - g_{uv} \nabla_a Z^a - \kappa_1 (2 n_{(u} Z_{v)} + \kappa_2 g_{uv} n_a Z^a) = 8 \pi (T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab})$<br>
-$R_{uv} + 2 \nabla_{(u} Z_{v)} - g_{uv} (
- 	\nabla^\perp_a (Z^\perp)^a
-	+ a_a (Z^\perp)^a
-	- n^a \partial_a \Theta
-	+ K \Theta
-) - \kappa_1 (2 n_{(u} Z_{v)} + \kappa_2 g_{uv} \Theta) = 8 \pi (T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab})$<br>
-<br>
-
-Using: $\nabla_v Z_u = 
-	  {\gamma_v}^a \nabla_a Z^\perp_u 
-	- n_v n^a \nabla_a Z^\perp_u 
-	+ \Theta (K_{uv} + n_v a_u)
-	- n_u \nabla^\perp_v \Theta
-	+ n_v n_u n^a e_a(\Theta)
+Using $v_u = (v^\perp)_u - n_u v^\parallel$<br>
+Using $\nabla_a v^a = 
+	\nabla^\perp_a (v^\perp)_a
+	+ a_a (v^\perp)^a
+	- n^a \nabla_a v^\parallel
+	+ K v^\parallel
+$<br>
+Using $\nabla_u v_v = 
+	\nabla^\perp_u (v^\perp)_v
+	- n_u n^a \nabla_a (v^\perp)_v
+	- K_{ua} (v^\perp)^a n_v
+	+ (K_{uv} + n_u a_v) v^\parallel
+	- n_v \nabla^\perp_u v^\parallel
+	+ n_u n_v n^a \nabla_a v^\parallel
+$<br>
+$R_{uv} 
+	+ 2 (
+		\nabla^\perp_{(u} (Z^\perp)_{v)}
+		- n^a \nabla_a (Z^\perp)_{(v} n_{u)}
+		- (Z^\perp)^a K_{a(u} n_{v)}
+		+ (K_{(uv)} + n_{(u} a_{v)}) \Theta
+		- n_{(v} \nabla^\perp_{u)} \Theta
+		+ n_{(u} n_{v)} n^a \nabla_a \Theta
+	)
+	- g_{uv} (
+		\nabla^\perp_a (Z^\perp)^a
+		+ a_a (Z^\perp)^a
+		- n^a \nabla_a \Theta
+		+ K \Theta
+	) 
+	- \kappa_1 (
+		2 n_{(u} (
+			(Z^\perp)_{v)} - n_{v)} \Theta
+		)
+		+ \kappa_2 g_{uv} \Theta
+	)
+	= 8 \pi (T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab})
+$<br>
+$R_{uv} 
+	+ 2 (
+		\nabla^\perp_{(u} (Z^\perp)_{v)}
+		- n^a \nabla_a (Z^\perp)_{(v} n_{u)}
+		- (Z^\perp)^a K_{a(u} n_{v)}
+		+ K_{uv} \Theta
+		+ n_{(u} a_{v)} \Theta
+		- n_{(v} \nabla^\perp_{u)} \Theta
+		+ n_u n_v n^a \nabla_a \Theta
+	)
+	- (\gamma_{uv} - n_u n_v) (
+		\nabla^\perp_a (Z^\perp)^a
+		+ a_a (Z^\perp)^a
+		- n^a \nabla_a \Theta
+		+ K \Theta
+	) 
+	- \kappa_1 (
+		+ 2 n_{(u} (Z^\perp)_{v)} 
+		- 2 n_u n_v \Theta
+		+ \kappa_2 (\gamma_{uv} - n_u n_v) \Theta
+	)
+	= 8 \pi (T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab})
+$<br>
+$	R_{uv} 
+	- \gamma_{uv} \nabla^\perp_a (Z^\perp)^a
+	- \gamma_{uv} a_a (Z^\perp)^a
+	+ 2 \nabla^\perp_{(u} (Z^\perp)_{v)}
+	+ n_u n_v \nabla^\perp_a (Z^\perp)^a
+	- 2 n^a \nabla_a (Z^\perp)_{(v} n_{u)}
+	- 2 (Z^\perp)^a K_{a(u} n_{v)}
+	+ n_u n_v a_a (Z^\perp)^a
+	
+	+ \gamma_{uv} n^a \nabla_a \Theta
+	+ 2 K_{uv} \Theta
+	+ 2 n_{(u} a_{v)} \Theta
+	- 2 n_{(v} \nabla^\perp_{u)} \Theta
+	+ n_u n_v n^a \nabla_a \Theta
+	- \gamma_{uv} (K - \kappa_1 \kappa_2) \Theta
+	+ n_u n_v (K + \kappa_1 (\kappa_2 + 2)) \Theta
+	
+	- 2 \kappa_1 n_{(u} (Z^\perp)_{v)} 
+	= 
+	8 \pi (T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab})
 $<br>
 <br>
 
@@ -137,27 +204,92 @@ Let $S = T_{uv} \gamma^{uv} = {S^a}_a$ = the spatial stress tensor trace<br>
 So $T_{uv} g^{uv} = T_{uv} (\gamma^{uv} - n^u n^v) = S - \rho$<br>
 <br>
 
-$R_{uv} + 2 \nabla_{(u} Z_{v)} - g_{uv} \nabla_a Z^a - \kappa_1 (2 n_{(u} Z_{v)} + \kappa_2 g_{uv} \Theta) = 8 \pi (T_{uv} - \frac{1}{2} g_{uv} (S - \rho))$<br>
+$
+	R_{uv} 
+	- \gamma_{uv} \nabla^\perp_a (Z^\perp)^a
+	- \gamma_{uv} a_a (Z^\perp)^a
+	+ 2 \nabla^\perp_{(u} (Z^\perp)_{v)}
+	+ n_u n_v \nabla^\perp_a (Z^\perp)^a
+	- 2 n^a \nabla_a (Z^\perp)_{(v} n_{u)}
+	- 2 (Z^\perp)^a K_{a(u} n_{v)}
+	+ n_u n_v a_a (Z^\perp)^a
+	
+	+ \gamma_{uv} n^a \nabla_a \Theta
+	+ 2 K_{uv} \Theta
+	+ 2 n_{(u} a_{v)} \Theta
+	- 2 n_{(v} \nabla^\perp_{u)} \Theta
+	+ n_u n_v n^a \nabla_a \Theta
+	- \gamma_{uv} (K - \kappa_1 \kappa_2) \Theta
+	+ n_u n_v (K + \kappa_1 (\kappa_2 + 2)) \Theta
+	
+	- 2 \kappa_1 n_{(u} (Z^\perp)_{v)} 
+
+	= 
+	8 \pi (T_{uv} - \frac{1}{2} g_{uv} (S - \rho))
+$<br>
 <br>
 
 Contract normals:<br>
 $
 	n^u n^v R_{uv} 
-	+ 2 n^u n^v \nabla_{(u} Z_{v)} 
-	- n^u n^v g_{uv} \nabla_a Z^a
-	- 2 \kappa_1 n^u n^v n_{(u} Z_{v)}
-	- \kappa_1 \kappa_2 n^u n^v g_{uv} \Theta
-	= 8 \pi n^u n^v T_{uv} - 4 \pi n^u n^v g_{uv} (S - \rho)
+	- n^u n^v \gamma_{uv} \nabla^\perp_a (Z^\perp)^a
+	- n^u n^v \gamma_{uv} a_a (Z^\perp)^a
+	+ 2 n^u n^v \nabla^\perp_{(u} (Z^\perp)_{v)}
+	+ n^u n^v n_u n_v \nabla^\perp_a (Z^\perp)^a
+	- 2 n^u n^v n^a \nabla_a (Z^\perp)_{(v} n_{u)}
+	- 2 n^u n^v (Z^\perp)^a K_{a(u} n_{v)}
+	+ n^u n^v n_u n_v a_a (Z^\perp)^a
+	
+	+ n^u n^v \gamma_{uv} n^a \nabla_a \Theta
+	+ 2 n^u n^v K_{uv} \Theta
+	+ 2 n^u n^v n_{(u} a_{v)} \Theta
+	- 2 n^u n^v n_{(v} \nabla^\perp_{u)} \Theta
+	+ n^u n^v n_u n_v n^a \nabla_a \Theta
+	- n^u n^v \gamma_{uv} (K - \kappa_1 \kappa_2) \Theta
+	+ n^u n^v n_u n_v (K + \kappa_1 (\kappa_2 + 2)) \Theta
+	
+	- 2 n^u n^v \kappa_1 n_{(u} (Z^\perp)_{v)} 
+
+	= 
+	8 \pi n^u n^v T_{uv} - 4 \pi n^u n^v g_{uv} (S - \rho)
+$<br>
+$
+	n^u n^v R_{uv} 
+	+ \nabla^\perp_a (Z^\perp)^a
+	+ 2 n^a n^v \nabla_a (Z^\perp)_v
+	+ a_a (Z^\perp)^a
+	
+	+ n^a \nabla_a \Theta
+	+ (K + \kappa_1 (\kappa_2 + 2)) \Theta
+
+	= 
+	8 \pi \rho + 4 \pi (S - \rho)
+$<br>
+$
+	n^u n^v R_{uv} 
+	+ \nabla^\perp_a (Z^\perp)^a
+	- a_a (Z^\perp)_a
+	
+	+ n^a \nabla_a \Theta
+	+ (K + \kappa_1 (\kappa_2 + 2)) \Theta
+
+	= 
+	4 \pi (S + \rho)
 $<br>
 Using $R_{uv} n^u n^v = K^2 - K_{uv} K^{uv}$ (In my "Differential Geometry/14 - ADM constraints" worksheet)<br>
 $
-	K^2 - K_{uv} K^{uv}
-	+ 2 n^u n^v \nabla_{(u} Z_{v)} 
-	- n^u n^v g_{uv} \nabla_a Z^a
-	- 2 \kappa_1 n^u n^v n_{(u} Z_{v)}
-	- \kappa_1 \kappa_2 n^u n^v g_{uv} \Theta
-	= 8 \pi n^u n^v T_{uv} - 4 \pi n^u n^v g_{uv} (S - \rho)
+	K^2 
+	- K_{uv} K^{uv}
+	+ \nabla^\perp_a (Z^\perp)^a
+	- a_a (Z^\perp)_a
+	
+	+ n^a \nabla_a \Theta
+	+ (K + \kappa_1 (\kappa_2 + 2)) \Theta
+
+	= 
+	4 \pi (S + \rho)
 $<br>
+<br>
 
 	</body>
 </html>

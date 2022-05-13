@@ -30,9 +30,11 @@ Here's the CDN URLs:
 
 [Differential Geometry/12.5 - Einstein tensor](https://thenumbernine.github.io/math/Differential%20Geometry/12.5%20%2d%20Einstein%20tensor.html)
 
-[Differential Geometry/13 - Einstein-Hilbert action](https://thenumbernine.github.io/math/Differential%20Geometry/13%20%2d%20Einstein%2dHilbert%20action.html)
+[Differential Geometry/12.7 - perpendicular spaces](https://thenumbernine.github.io/math/Differential%20Geometry/12.7%20%2d%20perpendicular%20spaces.html)
 
-[Differential Geometry/13.5 - normal projections](https://thenumbernine.github.io/math/Differential%20Geometry/13.5%20%2d%20normal%20projections.html)
+[Differential Geometry/12.8 - normal projections](https://thenumbernine.github.io/math/Differential%20Geometry/12.8%20%2d%20normal%20projections.html)
+
+[Differential Geometry/13 - Einstein-Hilbert action](https://thenumbernine.github.io/math/Differential%20Geometry/13%20%2d%20Einstein%2dHilbert%20action.html)
 
 [Differential Geometry/14 - ADM formalism](https://thenumbernine.github.io/math/Differential%20Geometry/14%20%2d%20ADM%20formalism.html)
 

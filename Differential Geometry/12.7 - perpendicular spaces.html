@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<title>perpendicular spaces</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+	</head>
+	<body>
+<a href='index.html'>Back</a><br>
+<br>
+
+Let $\mathcal{M}$ be our manifold of dimension n<br>
+Lets separate it into a hypersurface/submanifold $\Sigma$ of dimension m.<br>
+Let $e_i, i \in \{1, ..., m\}$ be our basis elements of the submanifold.<br>
+Let $e_i, i \in \{m+1, ..., n\}$ be our basis elements of the orthogonal space.<br>
+Lets use a coordinate basis so $e_i = \partial_i$ and $[e_i, e_j] = 0$.<br>
+<br>
+
+Let $\eta(x) = \delta_{ij} \cdot \sigma_i = diag(\sigma_1 ... \sigma_n)$ be the diagonalization of the metric of the manifold at some coordinate $x = \{ x^1 ... x^n \}$, for $\sigma_i \in \pm1$.<br>
+So $\eta = \eta_{ij} e^i \otimes e^j = \sigma_i \cdot \delta_{ij} e^i \otimes e^j$<br>
+
+$\eta = i \downarrow \overset{j \rightarrow}{
+\left[ \begin{matrix} 
+	\sigma_1 	& 			& 0 		\\
+				& \ddots 	& 			\\
+	0 			& 			& \sigma_n
+\end{matrix} \right]
+}$<br>
+<br>
+
+Let $\eta^\parallel = diag(\sigma_1 ... \sigma_m, \underset{\times (n-m)}{\underbrace{0 ... 0}})$ be the diagonalization of the metric of the submanifold at some point $x^a$.<br>
+So $\eta^\parallel = (\eta^\parallel)_{ij} e^i \otimes e^j$ and $(\eta^\parallel)_{ij} = 0$ for i or j $\in \{ m+1 ... n\}$, or otherwise $= \eta_{ij}$.<br>
+
+$\eta^\parallel = i \downarrow \overset{j \rightarrow}{
+\left[ \begin{array}{ccc|cc}
+	\sigma_1 	& 			& 0 		& 0 &			& 0 	\\
+				& \ddots 	& 			& 	& \ddots 	&		\\
+	0 			& 			& \sigma_m	& 0 & 	 	 	& 0 	\\
+	\hline                                         
+	0 			& 			& 0 		& 0 & 	 	 	& 0 	\\
+				& \ddots	& 			& 	& \ddots 	&		\\
+	0 			& 			& 0 		& 0 & 			& 0
+\end{array} \right]
+}$<br>
+<br>
+
+Let $\eta^\perp = diag(\underset{\times m}{\underbrace{0 ... 0}}, \sigma_{m+1} ... \sigma_n)$ be the diagonalization of the metric of the space perpendicular to the submanifold at point $x^a$.<br>
+So $\eta^\perp = (\eta^\perp)_{ij} e^i \otimes e^j$ and $(\eta^\perp)_{ij} = 0$ for i or j $\in \{1 ... m\}$ or otherwise $= \eta_{ij}$.<br>
+
+$\eta^\perp = i \downarrow \overset{j \rightarrow}{
+\left[ \begin{array}{ccc|cc}
+	0 			& 			& 0 		& 0 &			& 0 	\\
+				& \ddots 	& 			& 	& \ddots 	&		\\
+	0 			& 			& 0			& 0 & 	 	 	& 0 	\\
+	\hline                                         
+	0 			& 			& 0 		& \sigma_{m+1} & 	 	 	& 0 	\\
+				& \ddots	& 			& 	& \ddots 	&		\\
+	0 			& 			& 0 		& 0 & 			& \sigma_n
+\end{array} \right]
+}$<br>
+<br>
+
+So $\eta = \eta^\parallel + \eta^\perp$<br>
+<br>
+
+
+
+Let 
+$
+	\Sigma 
+	= e^1 \wedge ... \wedge e^m 
+	= m! e^{[1} \otimes ... \otimes e^{m]}
+	= \delta^{1 ... m}_{i_1 ... i_m} e^{i_1} \otimes ... \otimes e^{i_m}
+$ be the basis of the submanifold.<br>
+So that in component form, $\Sigma = \Sigma_{i_1 ... i_m} e^{i_1} \otimes ... \otimes e^{i_m}$
+for $\Sigma_{i_1 ... i_m} = \delta^{1 ... m}_{i_1 ... i_m} = m! \delta^1_{[i_1} \cdot ... \cdot \delta^m_{i_m]}$<br>
+<br>
+
+So $
+	\Sigma(e_j) 
+	= \delta^{1 ... m}_{i_1 ... i_m} (e^{i_1} \otimes ... \otimes e^{i_m}) (e_j)
+	= \delta^{1 ... m}_{i_1 ... i_m} e^{i_1}(e_j) e^{i_2} \otimes ... \otimes e^{i_m}
+	= \delta^{1 ... m}_{i_1 ... i_m} \delta^{i_1}_j e^{i_2} \otimes ... \otimes e^{i_m}
+	= \delta^{1 2 ... m}_{j i_2 ... i_m} e^{i_2} \otimes ... \otimes e^{i_m}
+$<br>
+So $\Sigma(e_j) = 0$ for $j \in \{ m+1 ... n \}$, 
+and $\Sigma(e_j) = \pm 1$ for $j \in  \{ 1 ... m \}$.<br>
+TODO better explanation.<br>
+<br>
+
+Let $
+	N 
+	= \star \Sigma 
+	= *(e^1 \wedge ... \wedge e^m) 
+	= e^{m+1} \wedge ... \wedge e^n 
+	= m! e^{[m+1} \otimes ... \otimes e^{n]}
+$ be the basis of the perpendicular space.<br>
+So $
+	N_{i_{m+1} ... i_n} 
+	= \frac{1}{m!} \Sigma_{i_1 ... i_m} {\epsilon^{i_1 ... i_m}}_{i_{m+1} ... i_n}
+	= \frac{1}{m!} \delta^{1 ... m}_{i_1 ... i_m} {\epsilon^{i_1 ... i_m}}_{i_{m+1} ... i_n}
+	= {\epsilon^{1 ... m}}_{i_{m+1} ... i_n}
+	= g^{1 i_1} \cdot ... \cdot g^{m i_m} \cdot \epsilon_{i_1 ... i_m i_{m+1} ... i_n}
+	= g^{1 i_1} \cdot ... \cdot g^{m i_m} \cdot \epsilon_{i_1 ... i_n}
+$<br>
+
+<!-- 
+Let $N^\sharp = g^{1 i_1} \cdot ... g^{m i_m} \epsilon_{i_1 ... i_n}$<Br>
+So that $(N^\flat)^{i_{m+1} ... i_n} = \epsilon_{1_1 ... i_n}$<br>
+<br>
+-->
+
+$N(e_j)$ for $j \in \{1...n\}$<br>
+$= \epsilon_{1 ... m i_{m+1} ... i_n} (e^{i_{m+1}} \otimes ... \otimes e^{i_n}) (e_j)$<br>
+$= \epsilon_{1 ... m i_{m+1} ... i_n} e^{i_{m+2}} \otimes ... \otimes e^{i_n} \delta^{i_{m+1}}_j$<br>
+$= \epsilon_{1 ... m j i_{m+2} ... i_n} e^{i_{m+2}} \otimes ... \otimes e^{i_n}$<br>
+$= 0$ if $j \in \{ 1 ... m \}$ since our permutation tensor $\epsilon_I$ will get repeated-index.<br>
+$= \pm \sqrt{|g|}$ if $j \in \{ m+1 ... n \}$ since we don't have repeated roots.<Br>
+<br>
+
+Let $n^i 
+	= -(\alpha_i) \nabla (x^i) 
+	= -(\alpha_i) e^u \nabla_u (x^i) 
+	= -(\alpha_i) e^u \delta_u^i 
+	= -(\alpha_i) e^i$<br>
+Normalize it so $\sigma_i = (\alpha_i)^2 n^i \cdot n^i = (\alpha_i)^2 g^{ii}$<br>
+<br>
+TODO what about non-orthogonal normal vectors? How to define inner products of them?<br>
+<br>
+
+Define the i'th normal $n^i$ as the inverse of the non-coordinate transform to diagonalize the metric but only for the $i \in \{m+1 ... n\}$ indexes:<br>
+$n^i = {n^i}_u = {e^i}_u$, so $n \eta^\perp n = {n^i}_u (\eta^\perp)_{ij} {n^j}_v e^u \otimes e^v = g_{uv} e^u \otimes e^v$<br>
+<br>
+
+TODO resolve these separate definitions of $n^i$.  I think using $(n^i)_u = {e^i}_u$ is the best way, and should be easy to fix the perpendicular definition if you use the permutation tensor of the Minkowski metric to define it.<br>
+TODO TODO then again ... the ADM definition of $(n^i)_u = -(\alpha_i) \delta^i_u e^u$ ... <br>
+Even though the projection definition does look similar to diagonalization, diagonalization is not required to do projection.<br>
+<br>
+
+I think this definition of $n^i = (n^i)_u e^u = {e^i}_u e^u$ should work with the definition of $N = \star \Sigma$ as well.<br>
+Then $\gamma \ne g + N \otimes N$ can be used as well..<br>
+<br>
+
+OK OK so there's multiple ways to define $(n^i)_u$ ... one being $-(\alpha_i) \delta^i_u$ another being ${e^i}_u$, and probably many ways between 
+(especially since technically those two are the same, and $-(\alpha_i) \delta^i_u$ is just one possible diagonalization choice.<br>
+<br>
+
+Let $
+	\gamma 
+	= \gamma_{uv} e^u \otimes e^v 
+	= g - n \eta^\perp n
+	= g - (\eta^\perp)_{ij} n^i \otimes n^j
+	= (g_{uv} - (\eta^\perp)_{ij} {n^i}_u {n^j}_v)(e^u \otimes e^v)
+$ be the projection operator<br>
+<br>
+
+So for $k \in \{1 ... m\}$:<br>
+$\gamma(e_k)$<br>
+$= (g_{uv} - (\eta^\perp)_{ij} {n^i}_u {n^j}_v)(e^u \otimes e^v) (e_k)$<br>
+$= (g_{uv} - (\eta^\perp)_{ij} {e^i}_u {e^j}_v) \delta^u_k e^v$<br>
+$= (g_{uv} - (\eta^\perp)_{ij} {e^i}_k {e^j}_v) e^v$<br>
+Since $k \in \{1 ... m\}, (\eta^\perp)_{kv} = 0$<br>
+$= g_{kv} e^v$<br>
+$= e_k$<br>
+<br>
+
+And for $i \in \{m+1 ... n \}$:<br>
+$\gamma(e_k)$<br>
+$= (g - n \eta^\perp n) (e_k)$<br>
+$= (g_{kv} - (\eta^\perp)_{ij} {e^i}_k {e^j}_v) e^v$<br>
+Since $k \in \{1 ... m\}, (\eta^\perp)_{kv} = \eta_{kv}$<br>
+$= (g_{kv} - g_{kv}) e^v$<br>
+$= 0$<br>
+<br>
+
+<br>
+<a href='index.html'>Back</a><br>
+	</body>
+</html>
