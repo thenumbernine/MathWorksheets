@@ -399,7 +399,7 @@ How to simplify the rest further ... <br>
 This reminds me, what is $tr [\nabla, \nabla] (z)$ for some arbitrary degree z?<br>
 <br>
 
-Ricci curvature one-form:<br>
+Ricci curvature one-form as partial-application:<br>
 ${\Omega^c}_a (e_c)$<br>
 $= (\frac{1}{2} {R^c}_{aub} e^u \wedge e^b) (e_c)$<br>
 $= ({R^c}_{aub} e^u \otimes e^b) (e_c)$ <br>
@@ -409,11 +409,20 @@ $= {R^u}_{aub} e^b$ <br>
 $= R_{ab} e^b$ <br>
 <br>
 
-Let $R_a = R_{ab} e^b$<br>
-So $R_a = {\Omega^b}_a (e_b) = R_{ab} e^b$<bR>
+Ricci curvature one-form as interior product:<br>
+$2 e_c \lrcorner {\Omega^c}_a$<br>
+$2 e_c \lrcorner {R^c}_{auv} e^u \otimes e^v$<br>
+${R^c}_{auv} \delta_c^u e^v$<br>
+${R^u}_{auv} e^v$<br>
+$R_{av} e^v$<br>
+(Once again, the 2 on the left goes away if I redefine interior product to be normalized by $\frac{1}{k!}$)<br>
 <br>
 
-Notice that even though $R_a$ is indexed covariant, it is still not considered a 1-form.  This is only for summation conventions.<br>
+Let $R_a = R_{ab} e^b$<br>
+So $R_a = {\Omega^b}_a (e_b) = 2 e_b \lrcorner {\Omega^b}_a$<bR>
+<br>
+
+Notice that even though $R_a$ is indexed covariant, it is still not considered a 1-form.  This is only for summation convention.<br>
 So maybe it is more convenient to denote it in contravariant form:<br>
 Let $R^a 
 	= g^{ab} R_b 
@@ -421,6 +430,7 @@ Let $R^a
 	= \Omega^{ca} (e_c)
 	= g^{ab} R_{bc} e^c 
 	= {R^a}_b e^b$<br>
+In fact, maybe it would be better to define the curvature 2-form as both contravariant indexed?<br>
 <br>
 
 

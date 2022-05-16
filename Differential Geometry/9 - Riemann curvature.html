@@ -696,9 +696,35 @@ $= e_u \wedge {R^u}_{vab}$<br>
 Mind you since that $e_u$ is a vector and the ${R^u}_{vab}$ is a 0-form, is the $\wedge$ inter-operable with a $\otimes$?<br>
 <br>
 
+Or is it better to say (in the 2-form basis)?:<br>
+$2 e_v \lrcorner e_u \lrcorner {\Omega^a}_{b}$<br>
+$= 2 e_v \lrcorner e_u \lrcorner \frac{1}{2} {R^a}_{bcd} e^c \wedge e^d$<br>
+$= e_v \lrcorner {R^a}_{bcd} \delta^c_u e^d$<br>
+$= {R^a}_{bcd} \delta^c_u \delta^d_v$<br>
+$= {R^a}_{buv}$<br>
+<br>
+
+Or, 1-form basis:<br>
+$2 e_v \lrcorner e_u \lrcorner {\Omega^a}_{b}$<br>
+$= 2 e_v \lrcorner e_u \lrcorner {R^a}_{bcd} e^c \otimes e^d$<br>
+$= e_v \lrcorner {R^a}_{bcd} \delta^c_u e^d$<br>
+$= {R^a}_{bcd} \delta^c_u \delta^d_v$<br>
+$= {R^a}_{buv}$<br>
+<br>
+
+(TODO these 2's on the left side would go away if I would just define interior product as $x \lrcorner a = \frac{1}{k!} a(x)$ for k-form a<br>
+<br>
+
+How about equivalently, can interior product be used for k-vectors?:<br>
+$(e_u \otimes e_v) \lrcorner {\Omega^a}_b$<br>
+$= (e_u \otimes e_v) \lrcorner {R^a}_{bcd} e^c \otimes e^d$<br>
+$= {R^a}_{bcd} \delta^c_u \delta^d_v$<br>
+$= {R^a}_{buv}$<br>
+<br>
+
 Second exterior derivative of a vector:<br>
+$v = v^u e_u$<br>
 $v = e_u \wedge v^u$<br>
-notice that, between a vector $e_u$ and a 0-form $v^u$, $e_u \wedge v^u = v^u e_u$<br>
 $d v = d e_u \wedge v^u + e_u \wedge d v^u$<br>
 using $d e_u = e_v \wedge {\omega^v}_u$...<br>
 $d v = e_a \wedge {\omega^a}_u \wedge v^u + e_a \wedge d v^a$<br>

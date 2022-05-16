@@ -35,6 +35,16 @@ $ = (-1)^{pq} (b_{v_1 ... v_q} e^{v_1} \wedge ... \wedge e^{v_q}) \wedge (a_{u_1
 $ = (-1)^{pq} b \wedge a $<br>
 <br>
 
+Treat our vector basis $e_a$ as vector-valued 0-forms.<br>
+Then for scalar $\phi$ we have $e_a \wedge \phi = \phi \wedge e^a$<br>
+Therefore our component representation of our vectors $v = v^a e_a$ can also be represented using wedge products:<br>
+$v = v^a \wedge e_a = e_a \wedge v^a$<br>
+<br>
+
+For one-forms, our basis is a 1-form $e^a$ and our components $w_a$ are 0-forms, so this still works:<br> 
+$w = w_a e^a = w_a \wedge e^a = e^a \wedge w_a$<br>
+<br>
+
 Wedge products and forms in terms of index notation<br>
 For p-form A:<br>
 $\frac{1}{p!} A_{a_1 ... a_p} \delta^{a_1 ... a_p b_1 ... b_p}_{c_1 ... c_p c_{p+1} ... c_{p+q}}$
@@ -49,7 +59,7 @@ $(a \wedge b)_{d_1 ... d_{p+q}}
 = \delta^{u_1 ... u_p v_1 ... v_q}_{d_1 ... d_p d_{p+1} ... d_{p+q}} 
 	a_{|u_1 ... u_p|} b_{|v_1 ... v_q|}$
 <br>
-For rank-p vector U and rank-q vector V:<br>
+For (p 0) tensor U and (q 0) tensor V:<br>
 $(U \wedge V)^{d_1 ... d_{p+q}} 
 = \delta^{d_1 ... d_p d_{p+1} ... d_{p+q}}_{u_1 ... u_p v_1 ... v_q}
 	U^{|u_1 ... u_p|} V^{|v_1 ... v_q|}$
