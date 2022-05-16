@@ -8,48 +8,224 @@
     <body>
 <a href='.'>Back</a><br><br>
 
-$M =$ manifold.<br>
-$n =$ dimension of manifold.<br>
-$p \in M$ = point on manifold.<br>
-$T_p(M)$ = tangent space on $M$ at point $p$.<br>
-$T_p^*(M)$ = dual tangent space on $M$ at point $p$.<br>
+<b>Manifolds</b><br>
 <br>
 
-Let $\frac{\partial}{\partial x^a}$ be a derivative operator, and a vector basis on the tangent space of the manifold.<br>
-k-forms are functions mapping $\underbrace{T_p \otimes \dots \otimes T_p}_{\times k} \rightarrow \mathbb{R}$.<br>
-Let $dx^a$ be the one-form basis dual to $\frac{\partial}{\partial x^a}$ basis<br>
-such that $dx^a(\frac{\partial}{\partial x^b}) = \delta^a_b$<br>
+Let $\mathcal{M}$ be our manifold.<br>
+Let $n$ be the dimension of manifold $\mathcal{M}$.<br>
+Let $p \in \mathcal{M}$ be a point on manifold.<br>
+Let $V = T_p(\mathcal{M})$ be the tangent space on $\mathcal{M}$ at point $p$.<br>
+Let $V^* = T_p^*(\mathcal{M})$ be the dual tangent space on $\mathcal{M}$ at point $p$.<br>
 <br>
 
-Let $e_a = e_a(\frac{\partial}{\partial x^u})$ be a vector basis that spans $T_p(M)$.<br>
-$e_a : M \rightarrow V$ form a vector space.<br>
+<hr>
+<b>Charts</b><br>
 <br>
 
-$e_a = {e_a}^\tilde{a} \partial_\tilde{a}$<br>
-For ${e_a}^\tilde{a}$ the coefficients of the linear transform from $\partial_\tilde{a}$ to $e_a$.<br>
+TODO these are associated with charts, right?
+Should subsequent tensors be functions of points, or should they be functions of coordinates on charts (which themselves, by the chart, map to points?).<br>
+Since tensors are linear functions of the basis, and since the basis is in some way a function of the coordinate basis, and since the coordinate basis depends on the coordinates i.e. depends on the chart.<br>
 <br>
 
-Let ${e^a} = e^a(dx^u) = $ span $T_p^*(M)$ be the one-form basis dual to $e_a$.<br>
-$e^a : V \rightarrow \mathbb{R}, e^a$ linear<br>
+TODO charts ... atlases ... the domain and range functions can have different dimensions ...
+and if they have different dimensions then we implicitly get horizontal and vertical tangent spaces ...
+but I don't talk about tangent spaces for a while ...<br>
+<br>
+
+For now lets only consider charts of equal domain and range dimension:<br>
+A manifold is represented by an atlas, which is a collection of charts.<br>
+Define a chart of the atlas, 
+$\mathbf{u} : U \rightarrow \mathcal{M}, U \subseteq \mathbb{R}^n, \mathcal{M} \subseteq \mathbb{R}^n$<br>
+$\mathbf{u}(\mathbf{x}) 
+	= \mathbf{u}(x^1, ..., x^n) 
+	= \{u^1 (x^1, ..., x^n), ..., u^n(x^1, ..., x^n) \}
+$<br>
+For $\mathbf{x} = ( x^1, ..., x^n )$ a point in the domain of our chart.<br>
+Is this right?  Can I say the manifold $\mathcal{M}$ is a subset of the $\mathbb{R}^n$ Cartesian space? Or is the collection-of-points of the manifold the subset of $\mathbb{R}^n$ Cartesian space?<br>
+<br>
+
+Is the definition of a coordinate an input variable of a chart?  Can I say this?<br>
+<br>
+
+<hr>
+<b>Coordinate Basis</b><br>
+<br>
+
+Let $\partial_a$ be the derivative operator of a chart coordinate applied to the chart,
+such that applying it to the chart $\mathbf{u}(x^1, ..., x^n)$ produces the coordinate vector basis:<Br>
+$\partial_a 
+= \partial_a \mathbf{u}(\mathbf{x})
+= \frac{\partial}{\partial x^a} \mathbf{u}(\mathbf{x})
+= \frac{\partial}{\partial x^a} \mathbf{u}(x^1, ..., x^n) 
+= \left[ \begin{matrix}
+	\frac{\partial u^1}{\partial x^a} &
+	\cdots &
+	\frac{\partial u^n}{\partial x^a}
+\end{matrix} \right]^T$.<br>
+Notice that the vector produced from $\partial_a$ is a vector on the tangent space of the manifold $V$.<br>
+<br>
+
+Is $\partial_a$ a vector?  Or is its application to the chart a vector?  Or are the two synonymous?<br>
+Is it safe to say $\partial_a = \frac{\partial}{\partial x^a}$?  
+Or is the difference that the $\partial_a$ implicitly has the chart $\mathbf{u}$ applied to its left?  
+Or are the two synonymous and this is the same sort of implicit math as to why indexed tensors usually leave off the basis elements?<br>
+Such that every time we write a vector 
+$\vec{v} = v^a \partial_a = \overset{n}{\underset{a=1}{\Sigma}} v^a \partial_a$ 
+we are implying $\vec{v} = \overset{n}{\underset{a=1}{\Sigma}} v^a \partial_a (\mathbf{u}(\mathbf{x}))$?
+<br>
+<br>
+
+Also notice that for now I'm enforcing that the chart domain and range is the same dimension.
+If we are dealing with a chart whose range is higher dimension than domain then we also now have the problem
+of defining a tangent space basis with more vectors than we have derivative operators.
+So long as the two dimensions are equal, we can define a tangent space basis from the coordinate vector operators.
+Provided they are not degenerate / provided they are linearly independent.
+<br>
+<br>
+
+TODO put this later, after defining what I'm using?<br> 
+For convenience, define $\partial = \overset{n}{\underset{a=1}{\otimes}} e^a \partial_a$.<br>
+<br>
+
+<hr>
+<b>Non-Coordinate Basis</b><br>
+<br>
+
+Let $e_a \in \{ e_1 ... e_n \}$ be a vector basis.<br>
+Let $\{ e_a \} = span(V)$.<br>
+<br>
+
+How should they be defined?<br>
+As functions of points on the manifold: $e_a = e_a(x)$<br>
+Or as functions of chart coordinates:<br>
+$e_a = e_a \left(
+	x^1, ..., x^n,
+	\frac{\partial}{\partial x^1}, ..., \frac{\partial}{\partial x^n}
+\right)$ 
+	be a vector basis that spans $V$.<br>
+$e_a : U \times V \rightarrow V$ form a basis of the tangent vector space, where U was our chart domain containing elements $( x^1, ..., x^n)$.<br>
+<br>
+
+Another thing to consider, the function of $e_a$ wrt $x^i$ is arbitrary,
+however the function of $e_a$ wrt $\partial_a$ should be linear, i.e. subject to $e_a( \alpha \partial_i + \beta \partial_j) = \alpha e_a (\partial_i) + \beta e_a (\partial_j)$.<br>
+<br>
+
+How about defining the $\vec{v}$ vs $\underrightarrow{w}$?<br>
+$e_a = e_a(\vec{x}, \underrightarrow{\vec{\partial}})$<br>
+for $\underrightarrow{\vec{\partial}} = \{ \vec{\partial}_a \}$<br>
+... though while you call $\vec{\partial}_a$ a vector and an element in the set-of-vectors $\{ \vec{\partial}_a \}$,
+	it might not be correct to use the $\underrightarrow{\vec{\partial}}$
+	especially if you reserve the $\underrightarrow{w}$ for one-forms.<br>
+<br>
+
+Or specifying that my bold symbols represent sets-of-things, i.e. matrices?<br>
+$e_a = e_a(\mathbf{x}, \mathbf{\partial})$<br>
+Notice that the bold version of $\partial$ doesn't look any different.<br>
+<br>
+
+Define our linear transform from the coordinate basis $\partial_\tilde{a}$ to the non-coordinate basis $e_a$ as:<br>
+$e_a = {e_a}^\tilde{a} \partial_\tilde{a}$.<br>
+I am accenting the indexes as $\tilde{a}$ just to help distinguish which indexes are associated with a coordinate basis and which are associated with a non-coordinate basis.<br>
+<br>
+
+So the matrix $E$ formed by the elements $\{ {e_a}^\tilde{a} \}$ are a member of $GL(n, \mathbb{R})$,<br>
+where $GL(n, \mathbb{R})$ is the general linear group of linear transformations,<br>
+such that for $\mathbf{M} \in GL(n, \mathbb{R}), \mathbf{M} : \mathbb{R}^n \rightarrow \mathbb{R}^n$.<br>
+<br>
+
+By the way, is a matrix a collection of coefficients, 
+or is it a function mapping vectors/other matrices by linear transformation of its collection of coefficients,
+or is it both?<br>
+I think it is the function / linear transformation, and the coefficients are what parameterize the matrix.<br>
+So a matrix is just a tensor without the associated basis -- a matrix has an implied Cartesian basis.<br>
+<br>
+
+<hr>
+<b>Differential-Form Coordinate Dual-Basis</b><br>
+<br>
+
+Let $w \in V^* \otimes ... \otimes V^*$ be a k-form.<br> 
+Let w as a function mapping k input elements in the vector space $V$ to the reals:<br>
+i.e. $w : \underbrace{V \otimes \dots \otimes V}_{\times k} \rightarrow \mathbb{R}$.<br>
+Let $dx^a$ be the one-form basis dual to $\frac{\partial}{\partial x^a}$ basis,<br>
+defined as 
+$dx^a \in \{ dx^1 ... dx^n \}$,
+$dx^a : V \rightarrow \mathbb{R}$, 
+$dx^a \left( \frac{\partial}{\partial x^b} \right) = \delta^a_b$<br>
+<br>
+
+Notice this is very similar to the partial derivative of coordinate variable definition:<br>
+$dx^a \left( \frac{\partial}{\partial x^b} \right) = \frac{\partial}{\partial x^b} (x^a) = \delta^a_b$<br>
+<br>
+
+Then we have fundamental theorem of calculus:<br>
+$\int_{x_L}^{x_R} dx = x_R - x_L$<br>
+<br>
+If we let $x_L = 0$ then we can define $x = \int_{x_L}^x dx$,<br>
+Then we can say:<br>
+$\int_{x^b_L}^{x^b} \frac{\partial}{\partial x^a} dx^b 
+	= \frac{\partial}{\partial x^a} \int_{x^b_L}^{x^b} dx^b 
+	= \frac{\partial}{\partial x^a} x^b
+	= \partial_a x^b
+	= \delta^a_b$<br>
+<br>
+
+Then there's the Dirac-delta vs Kronecher-delta:<br>
+$y = \int \delta(x,y) dx$,
+so $x^a = \int \delta(x^a, x^b) dx^b = \delta^a_b x^b$,<br>
+so $\delta^a_b = \int \delta(x^a, x^b) dx^b$.<br>
+<br>
+
+Let $V^*$ be the space spanned by the one-form basis.<br>
+Or should I instead say that the one-form basis is defined as spanning $V^*$?<br>
+<br>
+
+<hr>
+<b>One-Form Dual-Basis</b><br>
+<br>
+
+Let $e^a \in \{ e^1, ..., e^n \}$, $e^a \in V^*$ be an element of the dual-basis of one-forms.<br>
+Let that dual-basis span the dual-tangent-space: $\{ e^a \} = span(V^*)$<br>
+Let $e^a = e^a(x^1, ..., x^n, dx^1, ..., dx^n)$.<br>
+$e^a : U \times V^* \rightarrow V^*$<br>
+$e^a$ is linear with regards to $dx^a$, such that $e^a (\alpha dx^i + \beta dx^j) = \alpha e^a (dx^i) + \beta e^a (dx^j)$.<br>
 such that $e^a(e_b) = \delta^a_b$<br>
 <br>
 
-$e^a = {e^a}_\tilde{a} dx^\tilde{a}$<br>
+How do we specify that $e^a$ varies with point on manifold, is a linear combination of the one-form basis, 
+and that it (like the one-form basis) maps vectors to reals? Ex:<br>
+$e^a : U \times V^* \rightarrow V^*$,<br>
+$V^* : V \rightarrow \mathbb{R}$,<br>
+Therefore $e^a : U \times V^* \times V \rightarrow \mathbb{R}$<br>
+$e^a(x^1, ..., x^n, dx^1, ..., dx^n, \partial_1, ..., \partial_n) \in \mathbb{R}$<br>
+$e^a(x^1, ..., x^n, dx^1, ..., dx^n) : V \rightarrow \mathbb{R}$<br>
+$e^a(x^1, ..., x^n, dx^1, ..., dx^n)(e_b) \in \mathbb{R}$<br>
+<br>
+
+From here on out the manifold point (or chart coordinate?) of $e^a$ and the linear dependence on the one-form coordinate basis parameters will be hidden.<br>
+So $e^a(x^1, ..., x^n, dx^1, ..., dx^n)$ will simply be written $e^a$<br>
+<br>
+
+Let $e^a = {e^a}_\tilde{a} dx^\tilde{a}$<br>
 For ${e^a}_\tilde{a}$ the coefficients of the linear transform from $dx^\tilde{a}$ to $e^a$.<br>
 <br>
 
-Basis linear combination components:<br>
-$[ {e^a}_\tilde{a} ] \in GL(n, \mathbb{R})$<br>
+The matrix $[ {e^a}_\tilde{a} ]$ is an element of the group: $[ {e^a}_\tilde{a} ] \in GL(n, \mathbb{R})$<br>
 <br>
 
 Inverse components:<br>
 $[ {e_a}^\tilde{a} ] = [ {e^a}_\tilde{a} ]^{-1}$<br>
+Such that ${e_a}^\tilde{a} {e^b}_\tilde{a} = \delta_a^b$<br>
+And ${e_a}^\tilde{a} {e^a}_\tilde{b} = \delta^\tilde{a}_\tilde{b}$<br>
 <br>
 
-If $e_a = \partial_a$ and $e^a = dx^a$ then we have $e^a(e_b) = dx^a (\frac{d}{dx^b}) = \frac{dx^a}{dx^b} = \delta^a_b$.  The basis is called a coordinate basis / the basis is holonomic.<br>
+If $e_a = \partial_a$ (such that ${e_a}^\tilde{a} = \delta_a^\tilde{a}$)
+and $e^a = dx^a$ (such that ${e^a}_\tilde{a} = \delta^a_\tilde{a}$)
+then we have $e^a(e_b) = dx^a (\frac{d}{dx^b}) = \frac{dx^a}{dx^b} = \delta^a_b$.  
+The basis $\{e_a\}$ is called a coordinate basis, aka a holonomic basis.<br>
 <br>
 
-non-coordinate linear combination basis orthogonality:<br>
+Proving non-coordinate linear combination basis orthogonality:<br>
 $e^a (e_b)$
 $= {e^a}_\tilde{a} dx^\tilde{a} ({e_b}^\tilde{b} \partial_\tilde{b})$<br>
 $= {e^a}_\tilde{a} {e_b}^\tilde{b} dx^\tilde{a} (\partial_\tilde{b})$<br>
@@ -58,22 +234,31 @@ $= {e^a}_\tilde{a} {e_b}^\tilde{a}$<br>
 $= \delta^a_b$<br>
 <br>
 
-determinant: $e = det([{e^a}_\tilde{a}])$,
-and for simplicity I will assume $e &gt; 0$<br>
+Basis linear transform determinant:<br>
+Let $e = det([{e^a}_\tilde{a}])$.<br>
+Let's associate $e &gt; 0$ with right-handed basis and $e &lt; 0$ with left-handed basis. (Can I do that?  Or does handed-ness have to be a convention independent of the basis element ordering, in which case it would be proportional to the ordering, right?)<br>
+For simplicity I will assume $e &gt; 0$ ... but should I?<br>
 <br>
 
+Notice that, by linear independence, $e = 0$ implies that $\{ e_a \}$ does not span V,
+and $e \ne 0$ implies that $\{ e_a \}$ spans V.<br>
+<br>
+
+<hr>
+<b>Tensor</b><br>
+<br>
 
 Tensors are objects invariant to change of basis.<br>
 Tensors exist within (p,q) tanganet and dual-tangent spaces:<br>
 $x = {x^{a_1 ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}$<br>
 Examples of tensors:<br>
-scalars: $\phi : M \rightarrow \mathbb{R}$<br>
-rank-1 contravariant tensors (vectors): $v = v^a e_a$<br>
-rank-2 contravariant tensors: $v = v^{ab} e_a \otimes e_b$<br>
-rank-p contravariant tensors: $v = v^{a_1 ... a_p} e_{a_1} \otimes ... \otimes e_{a_p}$<br>
-rank-1 covariant tensors (one-form): $w = w_a e^a : V \rightarrow \mathbb{R}$<br>
-rank-2 covariant tensors: $w = w_{ab} e^a \otimes e^b : V \otimes V \rightarrow \mathbb{R}$<br>
-rank-p covariant tensors: $w = w_{a_1 ... a_p} e^{a_1} \otimes ... \otimes e^{a_p} : \underbrace{V \otimes ... \otimes V}_{\times p} \rightarrow \mathbb{R}$<br>
+scalars: $\phi : U \rightarrow \mathbb{R}$ (TODO is the chart coordinates the input, or is the manifold points?  If the chart-domain then I suppose I should introduce a chart-inverse?)<br>
+rank-1 contravariant tensors (vectors): $v = v^a e_a$, $v \in V$<br>
+rank-2 contravariant tensors: $v = v^{ab} e_a \otimes e_b$, $v \in V \otimes V$<br>
+rank-p contravariant tensors: $v = v^{a_1 ... a_p} e_{a_1} \otimes ... \otimes e_{a_p}$, $v \in \underbrace{V \otimes ... \otimes V}_{\times p}$<br>
+rank-1 covariant tensors (one-form): $w = w_a e^a$, $w \in V*$, $w \in V^*$, $w : V \rightarrow \mathbb{R}$<br>
+rank-2 covariant tensors: $w = w_{ab} e^a \otimes e^b$, $w \in V^* \otimes V^*$, $w : V \otimes V \rightarrow \mathbb{R}$<br>
+rank-p covariant tensors: $w = w_{a_1 ... a_p} e^{a_1} \otimes ... \otimes e^{a_p}$, $w \in \underbrace{V^* \otimes ... \otimes V^*}_{\times p}$, $w : \underbrace{V \otimes ... \otimes V}_{\times p} \rightarrow \mathbb{R}$<br>
 <br>
 
 Using multi-index notation:<br>
@@ -110,8 +295,8 @@ In multi-index notation: ${x^A}_B {e_A}^B = {x^\bar{A}}_\bar{B} {e_\bar{A}}^\bar
 One-form applied to a vector:<br>
 For one-form $w \in V^*$ and vector $v \in V$<br>
 $w(v) = w (v^b e_b)$ by expanding $v$.<br>
-$= w v^b (e_b)$ by linearity of one-form functions.<br>
-$= v^b w_a e^a (e_b)$ by expanding $w$.<br>
+$= v^b w(e_b)$ by linearity of one-form functions.<br>
+$= v^b w_a e^a (e_b)$ by expanding $w$ to its linear coefficients of the one-form basis.<br>
 $= v^b w_a \delta^a_b$ by orthogonality of $e^a(e_b)$.<br>
 $= v^a w_a$<br>
 <br>
@@ -121,7 +306,12 @@ outer product of vectors: $ x \otimes y = x^a e_a \otimes y^b e_b = x^a y^b e_a 
 outer product of one-forms: $ x \otimes y = x_a e^a \otimes y_b e^b = x_a y_b e^a \otimes e^b $<br>
 <br>
 
-Inner product: maps vectors and vectors to reals<br>
+Inner product: maps vectors and vectors to reals.<br>
+$\langle a, b \rangle$<br> 
+$= \langle a^u e_u, b^v e_v \rangle$<br> 
+$= a^u b^v \langle e_u, e_v \rangle$<br> 
+$= a^u b^v g_{uv}$ for $g_{uv} = \langle e_u, e_v \rangle$<br> 
+This depends on the definition of the metric tensor, and more on that later.<br>
 <br>
 
 Kronecher delta:<br>

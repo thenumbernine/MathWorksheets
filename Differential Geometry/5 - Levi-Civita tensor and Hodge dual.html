@@ -8,12 +8,29 @@
     <body>
 <a href='.'>Back</a><br><br>
 
-Let's first define Levi-Civita tensor with regards to a Minkowski metric, one with determinant $\sigma = \pm 1$:<br>
-$\epsilon_{I_1 \dots I_n} = 1$ for even permutations of $I_1 \dots I_n$, -1 for odd permutations, and 0 otherwise.<br>
-$\epsilon^{I_1 \dots I_n} = \eta^{I_1 J_1} \dots \eta^{I_n J_n} \epsilon_{J_1 \dots J_n} = \sigma \epsilon_{I_1 \dots I_n}$.<br>
-$\epsilon_{a_1 \dots a_n} = {e_{a_1}}^1 \dots {e_{a_n}}^n \epsilon_{1 \dots n}$, which is the definition of $det([{e_a}^I])$, which is the linear transform from the Minkowski-metric basis to the new basis.<br>
-Alright, to properly define values and determinants, I need to distinguish linear transforms between the coordinate basis $\partial_a$, the non-coordinate basis $e_a$, and the Minkowski basis $e_I$.<br>
+TODO don't use capitol letters even if the quantum gravity folks do, because the old differential geometry folks reserved this for groups-of-indexes, which the new physicists have forgotten, and which I'm using.<br>
+So rename all the IJK's to ijk's.<br>
 <br>
+
+Start with a locally-Minkowski basis with metric $\eta_{IJ} = \delta_{IJ} \cdot \sigma_I$ for $\sigma_I = \pm 1$.<br>
+Let its signature be $\sigma = \overset{n}{\underset{I=1}{\Pi}} \sigma_I = det[\eta_{IJ}]$ for $\sigma = \pm 1$<br>
+<br>
+
+Let the Levi-Civita permutation tensor in the basis of the Minkowski metric be:<br>
+$\epsilon_{I_1 \dots I_n} = 1$ for even permutations of $I_1 \dots I_n$, -1 for odd permutations, and 0 otherwise.<br>
+<br>
+
+Then the contravariant-index representation is:<br>
+$\epsilon^{I_1 \dots I_n} = \eta^{I_1 J_1} \dots \eta^{I_n J_n} \epsilon_{J_1 \dots J_n} = \sigma \epsilon_{I_1 \dots I_n}$.<br>
+<br>
+
+Then the same tensor in our coordinate basis is:<br>
+$\epsilon_{a_1 \dots a_n} = {e_{a_1}}^1 \dots {e_{a_n}}^n \epsilon_{1 \dots n}$, which is the definition of $det([{e_a}^I])$, which is the linear transform from the Minkowski-metric basis to the new basis.<br>
+<br>
+
+TODO Alright, to properly define values and determinants, I need to distinguish linear transforms between the coordinate basis $\partial_a$, the non-coordinate basis $e_a$, and the Minkowski basis $e_I$.<br>
+<br>
+
 So before we had:<br>
 $\tilde{g}_{\tilde{a}\tilde{b}} = {e^a}_\tilde{a} {e^b}_\tilde{b} g_{ab}$.<br>
 with determinant:<br>

@@ -28,10 +28,10 @@ $\eta = i \downarrow \overset{j \rightarrow}{
 }$<br>
 <br>
 
-Let $\eta^\parallel = diag(\sigma_1 ... \sigma_m, \underset{\times (n-m)}{\underbrace{0 ... 0}})$ be the diagonalization of the metric of the submanifold at some point $x^a$.<br>
-So $\eta^\parallel = (\eta^\parallel)_{ij} e^i \otimes e^j$ and $(\eta^\parallel)_{ij} = 0$ for i or j $\in \{ m+1 ... n\}$, or otherwise $= \eta_{ij}$.<br>
+Let $\eta^\perp = diag(\sigma_1 ... \sigma_m, \underset{\times (n-m)}{\underbrace{0 ... 0}})$ be the diagonalization of the metric of the submanifold at some point $x^a$.<br>
+So $\eta^\perp = (\eta^\perp)_{ij} e^i \otimes e^j$ and $(\eta^\perp)_{ij} = 0$ for i or j $\in \{ m+1 ... n\}$, or otherwise $= \eta_{ij}$.<br>
 
-$\eta^\parallel = i \downarrow \overset{j \rightarrow}{
+$\eta^\perp = i \downarrow \overset{j \rightarrow}{
 \left[ \begin{array}{ccc|cc}
 	\sigma_1 	& 			& 0 		& 0 &			& 0 	\\
 				& \ddots 	& 			& 	& \ddots 	&		\\
@@ -44,10 +44,10 @@ $\eta^\parallel = i \downarrow \overset{j \rightarrow}{
 }$<br>
 <br>
 
-Let $\eta^\perp = diag(\underset{\times m}{\underbrace{0 ... 0}}, \sigma_{m+1} ... \sigma_n)$ be the diagonalization of the metric of the space perpendicular to the submanifold at point $x^a$.<br>
-So $\eta^\perp = (\eta^\perp)_{ij} e^i \otimes e^j$ and $(\eta^\perp)_{ij} = 0$ for i or j $\in \{1 ... m\}$ or otherwise $= \eta_{ij}$.<br>
+Let $\eta^\top = diag(\underset{\times m}{\underbrace{0 ... 0}}, \sigma_{m+1} ... \sigma_n)$ be the diagonalization of the metric of the space perpendicular to the submanifold at point $x^a$.<br>
+So $\eta^\top = (\eta^\top)_{ij} e^i \otimes e^j$ and $(\eta^\top)_{ij} = 0$ for i or j $\in \{1 ... m\}$ or otherwise $= \eta_{ij}$.<br>
 
-$\eta^\perp = i \downarrow \overset{j \rightarrow}{
+$\eta^\top = i \downarrow \overset{j \rightarrow}{
 \left[ \begin{array}{ccc|cc}
 	0 			& 			& 0 		& 0 &			& 0 	\\
 				& \ddots 	& 			& 	& \ddots 	&		\\
@@ -60,7 +60,7 @@ $\eta^\perp = i \downarrow \overset{j \rightarrow}{
 }$<br>
 <br>
 
-So $\eta = \eta^\parallel + \eta^\perp$<br>
+So $\eta = \eta^\perp + \eta^\top$<br>
 <br>
 
 
@@ -119,22 +119,56 @@ $= \pm \sqrt{|g|}$ if $j \in \{ m+1 ... n \}$ since we don't have repeated roots
 <br>
 
 Let $n^i$ be the the i'th normal form.<br>
-Define $n^i = (n^i)_u e^u = {e^i}_u e^u$, for linear diagonalization of the metric ${e^i}_u$ such that ${e^i}_u {e^j}_v (\eta^\perp)_{ij} = g_{uv}$<br>
 Define the i'th normal $n^i$ as the inverse of the non-coordinate transform to diagonalize the metric but only for the $i \in \{m+1 ... n\}$ indexes:<br>
-$n^i = {n^i}_u = {e^i}_u$, so $n \eta^\perp n = {n^i}_u (\eta^\perp)_{ij} {n^j}_v e^u \otimes e^v = g_{uv} e^u \otimes e^v$<br>
+$n^i = (n^i)_u e^u = {e^i}_u e^u$,<br>
+
+Notice that, for diagonalization:<br>
+$g_{uv}$<br>
+$= e_u \cdot e_v$<br>
+$= {e^i}_u {e^j}_v \eta_{ij}$<br>
+$= {e^i}_u {e^j}_v (\eta^\perp_{ij} + \eta^\top_{ij})$<br>
+$= 
+	{e^i}_u {e^j}_v \eta^\perp_{ij}
+	+ \frac{1}{\alpha_i} (n^i)_u \frac{1}{\alpha_j} (n^j)_v \eta^\top_{ij} 
+$<br>
+$= \underset{{i,j \in [m+1,n]}}{\Sigma} \frac{1}{\alpha_i} (n^i)_u \frac{1}{\alpha_j} (n^j)_v \eta^\top_{ij} 
+	+ \underset{{i,j \in [1,m]}}{\Sigma} {e^i}_u {e^j}_v \eta^\perp_{ij}
+$<br>
+So you still need influence from the submanifold basis.<br>
+
+<br>
+In contrast:<br>
+$(\eta^\top)^{ij}$<br>
+$= {e^i}_u {e^j}_v g^{uv}$<br>
+$= \frac{1}{\alpha_i} \frac{1}{\alpha_j} (n^i)_u (n^j)_v g^{uv}$<br>
+TODO is this true?:<br>
+for linear diagonalization of the metric ${e^i}_u$ such that ${e^i}_u {e^j}_v (\eta^\top)_{ij} = g_{uv}$<br>
+so $n \eta^\top n = {n^i}_u (\eta^\top)_{ij} {n^j}_v e^u \otimes e^v = g_{uv} e^u \otimes e^v$<br>
 <br>
 
-There are multiple ways to define $(n^i)_u$.<br>
-Choose the specific diagonalization: $n^i 
+There are multiple ways to define an inverse diagonalization ${e^i}_u = (n^i)_u$.<br>
+Choose the specific diagonalization: 
+$	n^i 
 	= -(\alpha_i) \nabla (x^i) 
 	= -(\alpha_i) e^u \nabla_u (x^i) 
 	= -(\alpha_i) e^u \delta_u^i 
-	= -(\alpha_i) e^i$<br>
+	= -(\alpha_i) e^i
+$<br>
 Normalize it so $\sigma_i = (\alpha_i)^2 n^i \cdot n^i = (\alpha_i)^2 g^{ii}$<br>
 Notice that $\alpha_i$ is a scalar, not tensoral, and the i index isn't paired with a basis element.<br>
 <br>
 
-The lower form of normal $n^i$ is: $(n^i)^u = g^{uv} (n^i)_v = -g^{uv} (\alpha_i) \delta^i_v = -g^{ui} (\alpha_i)$<br>
+The vector form of normal $n^i$ is: 
+$
+	n^i
+	= (n^i)_u e^u
+	= (n^i)^u e_u
+	= g^{uv} (n^i)_v e_u 
+	= -g^{uv} (\alpha_i) \delta^i_v e_u 
+	= -g^{ui} (\alpha_i) e_u
+$<br>
+So $(n^i)^u = -g^{ui} (\alpha_i)$<br>
+Let $(\beta^i)^u = g^{ui} (\alpha_i)$ be the i'th shift vector.<br>
 <br>
 
 I think this definition of $n^i = (n^i)_u e^u = {e^i}_u e^u$ should work with the definition of $N = \star \Sigma$ as well.<br>
@@ -144,28 +178,28 @@ Then $\gamma \ne g + N \otimes N$ can be used as well..<br>
 Let $
 	\gamma 
 	= \gamma_{uv} e^u \otimes e^v 
-	= g - n \eta^\perp n
-	= g - (\eta^\perp)_{ij} n^i \otimes n^j
-	= (g_{uv} - (\eta^\perp)_{ij} {n^i}_u {n^j}_v)(e^u \otimes e^v)
+	= g - n \eta^\top n
+	= g - (\eta^\top)_{ij} n^i \otimes n^j
+	= (g_{uv} - (\eta^\top)_{ij} {n^i}_u {n^j}_v)(e^u \otimes e^v)
 $ be the projection operator<br>
 <br>
 
 So for $k \in \{1 ... m\}$:<br>
 $\gamma(e_k)$<br>
-$= (g_{uv} - (\eta^\perp)_{ij} {n^i}_u {n^j}_v)(e^u \otimes e^v) (e_k)$<br>
-$= (g_{uv} - (\eta^\perp)_{ij} {e^i}_u {e^j}_v) \delta^u_k e^v$<br>
-$= (g_{uv} - (\eta^\perp)_{ij} (\alpha_i) (\alpha_j) \delta^i_u \delta^j_v) \delta^u_k e^v$<br>
-$= (g_{kv} - (\eta^\perp)_{kv} (\alpha_k) (\alpha_v)) e^v$<br>
-Since $k \in \{1 ... m\}, (\eta^\perp)_{kv} = 0$<br>
+$= (g_{uv} - (\eta^\top)_{ij} {n^i}_u {n^j}_v)(e^u \otimes e^v) (e_k)$<br>
+$= (g_{uv} - (\eta^\top)_{ij} {e^i}_u {e^j}_v) \delta^u_k e^v$<br>
+$= (g_{uv} - (\eta^\top)_{ij} (\alpha_i) (\alpha_j) \delta^i_u \delta^j_v) \delta^u_k e^v$<br>
+$= (g_{kv} - (\eta^\top)_{kv} (\alpha_k) (\alpha_v)) e^v$<br>
+Since $k \in \{1 ... m\}, (\eta^\top)_{kv} = 0$<br>
 $= g_{kv} e^v$<br>
 $= e_k$<br>
 <br>
 
 And for $i \in \{m+1 ... n \}$:<br>
 $\gamma(e_k)$<br>
-$= (g - n \eta^\perp n) (e_k)$<br>
-$= (g_{kv} - (\eta^\perp)_{kv} (\alpha_k) (\alpha_v)) e^v$<br>
-Since $k \in \{1 ... m\}, (\eta^\perp)_{kv} = \eta_{kv} = \delta_{kv} \sigma_k$<br>
+$= (g - n \eta^\top n) (e_k)$<br>
+$= (g_{kv} - (\eta^\top)_{kv} (\alpha_k) (\alpha_v)) e^v$<br>
+Since $k \in \{1 ... m\}, (\eta^\top)_{kv} = \eta_{kv} = \delta_{kv} \sigma_k$<br>
 $= (g_{kv} - \delta_{kv} \sigma_k (\alpha_k) (\alpha_v)) e^v$<br>
 TODO prove this is equal ... seems like I'll have to use raised $(n^i)^u = -g^{iu} (\alpha_i)$ somehow.<br>
 $= 0$<br>

@@ -14,9 +14,9 @@ This is going to be the 1D-normal case.<br>
 TODO move this back before the Einstein-Hilbert action part ... but keep it after the curvature part?<br>
 <br>
 
-TODO shoudn't the operator that projects parallel to the hypersurface be the parallel symbol $\parallel$ and not  the perpendicular symbol $\perp$ ?
+TODO shoudn't the operator that projects parallel to the hypersurface be the parallel symbol $\top$ and not  the perpendicular symbol $\perp$ ?
 Shouldn't the component that is perpendicular to the hypersurface by the perpendicular symbol $\perp$ ?<br>
-This means all the mainstream numerical relativity literature symbols of $\perp$ and $\parallel$ are mixed up.
+This means all the mainstream numerical relativity literature symbols of $\perp$ and $\top$ are mixed up.
 It also means I have to swap them in both this worksheet and in all subsequent worksheets.<br>
 <br>
 
@@ -124,70 +124,70 @@ $n^b K_{ab} = -n^b {\gamma_a}^c {\gamma_b}^d \nabla_c n_d = 0$ since $n^b {\gamm
 Decomposing a vector into its projection and normal components:<br>
 <br>
 
-Let vector $v_a$ have spatial components $(v^\perp)_a = {\gamma_a}^u v_u$ and normal component $v^\parallel = n^a v_a$<br>
-So $v_u = \delta^a_u v_a = ({\gamma_u}^a - n_u n^a) v_a = (v^\perp)_u - n_u v^\parallel$<br>
+Let vector $v_a$ have spatial components $(v^\perp)_a = {\gamma_a}^u v_u$ and normal component $v^\top = n^a v_a$<br>
+So $v_u = \delta^a_u v_a = ({\gamma_u}^a - n_u n^a) v_a = (v^\perp)_u - n_u v^\top$<br>
 <br>
 
 Covariant derivative of vector in projection and normal components:<br>
 $\nabla_u v_v$<br>
-$= \nabla_u ((v^\perp)_v - n_v v^\parallel)$<br>
-$= \nabla_u (v^\perp)_v - v^\parallel \nabla_u n_v - n_v \nabla_u v^\parallel$<br>
-$= \nabla_u (v^\perp)_v + v^\parallel (K_{uv} + n_u a_v) - n_v \nabla_u v^\parallel$<br>
-$= \nabla_u (v^\perp)_v + v^\parallel K_{uv} + v^\parallel n_u a_v - n_v \nabla_u v^\parallel$<br>
+$= \nabla_u ((v^\perp)_v - n_v v^\top)$<br>
+$= \nabla_u (v^\perp)_v - v^\top \nabla_u n_v - n_v \nabla_u v^\top$<br>
+$= \nabla_u (v^\perp)_v + v^\top (K_{uv} + n_u a_v) - n_v \nabla_u v^\top$<br>
+$= \nabla_u (v^\perp)_v + v^\top K_{uv} + v^\top n_u a_v - n_v \nabla_u v^\top$<br>
 <br>
 
 Vector covariant derivative, projection of covariant derivative index:<br>
 ${\gamma_u}^a \nabla_a v_v$<br>
-$= {\gamma_u}^a (\nabla_a (v^\perp)_v + v^\parallel K_{av} + v^\parallel n_a a_v - n_v \nabla_a v^\parallel)$<br>
+$= {\gamma_u}^a (\nabla_a (v^\perp)_v + v^\top K_{av} + v^\top n_a a_v - n_v \nabla_a v^\top)$<br>
 $=
 	{\gamma_u}^a \nabla_a (v^\perp)_v
-	+ v^\parallel K_{uv}
-	- n_v {\gamma_u}^a \nabla_a v^\parallel
+	+ v^\top K_{uv}
+	- n_v {\gamma_u}^a \nabla_a v^\top
 $<br>
 $=
 	{\gamma_u}^a \nabla_a (v^\perp)_v
-	+ v^\parallel K_{uv}
-	- n_v \nabla^\perp_u v^\parallel
+	+ v^\top K_{uv}
+	- n_v \nabla^\perp_u v^\top
 $<br>
 $=
 	{\gamma_u}^a \delta_v^b \nabla_a (v^\perp)_b
-	+ v^\parallel K_{uv}
-	- n_v \nabla^\perp_u v^\parallel
+	+ v^\top K_{uv}
+	- n_v \nabla^\perp_u v^\top
 $<br>
 $=
 	{\gamma_u}^a ({\gamma_v}^b - n_v n^b) \nabla_a (v^\perp)_b
-	+ v^\parallel K_{uv}
-	- n_v \nabla^\perp_u v^\parallel
+	+ v^\top K_{uv}
+	- n_v \nabla^\perp_u v^\top
 $<br>
 $=
 	{\gamma_u}^a {\gamma_v}^b \nabla_a (v^\perp)_b
 	- {\gamma_u}^a n_v n^b \nabla_a (v^\perp)_b
-	+ v^\parallel K_{uv}
-	- n_v \nabla^\perp_u v^\parallel
+	+ v^\top K_{uv}
+	- n_v \nabla^\perp_u v^\top
 $<br>
 ...using $\nabla_a (n^b (v^\perp)_b) = 0$ therefore $n^b \nabla_a (v^\perp)_b = -(v^\perp)_b \nabla_a n^b$...<br>
 $=
 	\nabla^\perp_u (v^\perp)_v
 	+ {\gamma_u}^a n_v (v^\perp)^b \nabla_a n_b
-	+ v^\parallel K_{uv}
-	- n_v \nabla^\perp_u v^\parallel
+	+ v^\top K_{uv}
+	- n_v \nabla^\perp_u v^\top
 $<br>
 $=
 	\nabla^\perp_u (v^\perp)_v
 	+ {\gamma_u}^a n_v (v^\perp)^b (-K_{ab} - n_a a_b)
-	+ v^\parallel K_{uv}
-	- n_v \nabla^\perp_u v^\parallel
+	+ v^\top K_{uv}
+	- n_v \nabla^\perp_u v^\top
 $<br>
 ...using ${\gamma_u}^a n_a = 0$...<br>
 $=
 	\nabla^\perp_u (v^\perp)_v
 	- K_{ua} (v^\perp)^a n_v
-	- n_v \nabla^\perp_u v^\parallel
-	+ K_{uv} v^\parallel
+	- n_v \nabla^\perp_u v^\top
+	+ K_{uv} v^\top
 $<br>
 <br>
 
-... for a spatial vector, set $v^\parallel = 0$:<br>
+... for a spatial vector, set $v^\top = 0$:<br>
 ${\gamma_u}^a \nabla_a (v^\perp)_v
 =	\nabla^\perp_u (v^\perp)_v - K_{ua} (v^\perp)^a n_v$<br>
 <br>
@@ -196,20 +196,20 @@ Normal contraction vs covariant derivative of projection:<br>
 $n^a \nabla_a v_v$<br>
 $= n^a (
 	\nabla_a (v^\perp)_v
-	+ v^\parallel K_{av}
-	+ v^\parallel n_a a_v
-	- n_v \nabla_a v^\parallel
+	+ v^\top K_{av}
+	+ v^\top n_a a_v
+	- n_v \nabla_a v^\top
 )$<br>
 $=
 	n^a \nabla_a (v^\perp)_v
-	+ v^\parallel n^a K_{av}
-	+ v^\parallel n^a n_a a_v
-	- n_v n^a \nabla_a v^\parallel
+	+ v^\top n^a K_{av}
+	+ v^\top n^a n_a a_v
+	- n_v n^a \nabla_a v^\top
 $<br>
 $=
 	n^a \nabla_a (v^\perp)_v
-	- v^\parallel a_v
-	- n_v n^a \nabla_a v^\parallel
+	- v^\top a_v
+	- n_v n^a \nabla_a v^\top
 $<br>
 <br>
 
@@ -225,31 +225,31 @@ $=
 	(
 		\nabla^\perp_u (v^\perp)_v
 		- K_{ub} (v^\perp)^b n_v
-		- n_v \nabla^\perp_u v^\parallel
-		+ K_{uv} v^\parallel
+		- n_v \nabla^\perp_u v^\top
+		+ K_{uv} v^\top
 	)
 	- n_u (
 		n^a \nabla_a (v^\perp)_v
-		- v^\parallel a_v
-		- n_v n^a \nabla_a v^\parallel
+		- v^\top a_v
+		- n_v n^a \nabla_a v^\top
 	)
 $<br>
 $=
 	\nabla^\perp_u (v^\perp)_v
 	- K_{ub} (v^\perp)^b n_v
-	- n_v \nabla^\perp_u v^\parallel
-	+ K_{uv} v^\parallel
+	- n_v \nabla^\perp_u v^\top
+	+ K_{uv} v^\top
 	- n_u n^a \nabla_a (v^\perp)_v
-	+ n_u v^\parallel a_v
-	+ n_u n_v n^a \nabla_a v^\parallel
+	+ n_u v^\top a_v
+	+ n_u n_v n^a \nabla_a v^\top
 $<br>
 $=
 	\nabla^\perp_u (v^\perp)_v
 	- n_u n^a \nabla_a (v^\perp)_v
 	- K_{ua} (v^\perp)^a n_v
-	+ (K_{uv} + n_u a_v) v^\parallel
-	- n_v \nabla^\perp_u v^\parallel
-	+ n_u n_v n^a \nabla_a v^\parallel
+	+ (K_{uv} + n_u a_v) v^\top
+	- n_v \nabla^\perp_u v^\top
+	+ n_u n_v n^a \nabla_a v^\top
 $<br>
 <br>
 
@@ -257,34 +257,34 @@ Vector covariant derivative, contract both indexes with normal:<br>
 $n^a n^b \nabla_a v_b$<br>
 $= n^b (
 	n^a \nabla_a (v^\perp)_b
-	- v^\parallel a_b
-	- n_b n^a \nabla_a v^\parallel
+	- v^\top a_b
+	- n_b n^a \nabla_a v^\top
 )$<br>
 $=
 	n^a n^b \nabla_a (v^\perp)_b
-	- v^\parallel n^b a_b
-	- n^b n_b n^a \nabla_a v^\parallel
+	- v^\top n^b a_b
+	- n^b n_b n^a \nabla_a v^\top
 $<br>
 $=
 	n^b n^a \nabla_a (v^\perp)_b
-	+ n^a \nabla_a v^\parallel
+	+ n^a \nabla_a v^\top
 $<br>
 $=
 	-n^a (v^\perp)^b \nabla_a n_b
-	+ n^a \nabla_a v^\parallel
+	+ n^a \nabla_a v^\top
 $<br>
 $=
 	-n^a (v^\perp)^b (-K_{ab} - n_a a_b)
-	+ n^a \nabla_a v^\parallel
+	+ n^a \nabla_a v^\top
 $<br>
 $=
 	n^a (v^\perp)^b K_{ab}
 	+ n^a (v^\perp)^b n_a a_b
-	+ n^a \nabla_a v^\parallel
+	+ n^a \nabla_a v^\top
 $<br>
 $=
 	-(v^\perp)^a a_a
-	+ n^a \nabla_a v^\parallel
+	+ n^a \nabla_a v^\top
 $<br>
 <br>
 
@@ -295,41 +295,41 @@ $= (\delta_v^b + n_v n^b) (
 	\nabla^\perp_u (v^\perp)_b
 	- n_u n^a \nabla_a (v^\perp)_b
 	- K_{ua} (v^\perp)^a n_b
-	+ (K_{ub} + n_u a_b) v^\parallel
-	- n_b \nabla^\perp_u v^\parallel
-	+ n_u n_b n^a \nabla_a v^\parallel
+	+ (K_{ub} + n_u a_b) v^\top
+	- n_b \nabla^\perp_u v^\top
+	+ n_u n_b n^a \nabla_a v^\top
 )$<br>
 $=
 	\delta_v^b \nabla^\perp_u (v^\perp)_b
 	- \delta_v^b n_u n^a \nabla_a (v^\perp)_b
 	- \delta_v^b K_{ua} (v^\perp)^a n_b
-	+ \delta_v^b (K_{ub} + n_u a_b) v^\parallel
-	- \delta_v^b n_b \nabla^\perp_u v^\parallel
-	+ \delta_v^b n_u n_b n^a \nabla_a v^\parallel
+	+ \delta_v^b (K_{ub} + n_u a_b) v^\top
+	- \delta_v^b n_b \nabla^\perp_u v^\top
+	+ \delta_v^b n_u n_b n^a \nabla_a v^\top
 	+ n_v n^b \nabla^\perp_u (v^\perp)_b
 	- n_v n^b n_u n^a \nabla_a (v^\perp)_b
 	- n_v n^b K_{ua} (v^\perp)^a n_b
-	+ n_v n^b (K_{ub} + n_u a_b) v^\parallel
-	- n_v n^b n_b \nabla^\perp_u v^\parallel
-	+ n_v n^b n_u n_b n^a \nabla_a v^\parallel
+	+ n_v n^b (K_{ub} + n_u a_b) v^\top
+	- n_v n^b n_b \nabla^\perp_u v^\top
+	+ n_v n^b n_u n_b n^a \nabla_a v^\top
 $<br>
 $=
 	\nabla^\perp_u (v^\perp)_v
 	- n_u n^a \nabla_a (v^\perp)_v
 	- n_v n_u n^a n^b \nabla_a (v^\perp)_b
-	+ (K_{uv} + n_u a_v) v^\parallel
+	+ (K_{uv} + n_u a_v) v^\top
 $<br>
 $=
 	\nabla^\perp_u (v^\perp)_v
 	- n_u n^a \nabla_a (v^\perp)_v
 	- n_v n_u n^a (v^\perp)^b (K_{ab} + n_a a_b)
-	+ (K_{uv} + n_u a_v) v^\parallel
+	+ (K_{uv} + n_u a_v) v^\top
 $<br>
 $=
 	\nabla^\perp_u (v^\perp)_v
 	- n_u n^a \nabla_a (v^\perp)_v
 	+ n_u n_v (v^\perp)^a a_a
-	+ (K_{uv} + n_u a_v) v^\parallel
+	+ (K_{uv} + n_u a_v) v^\top
 $<br>
 <br>
 
@@ -339,18 +339,18 @@ $= n^a (
 	\nabla^\perp_a (v^\perp)_v
 	- n_a n^b \nabla_b (v^\perp)_v
 	+ n_a n_v (v^\perp)^b a_b
-	+ (K_{av} + n_a a_v) v^\parallel
+	+ (K_{av} + n_a a_v) v^\top
 )$<br>
 $=
 	n^a \nabla^\perp_a (v^\perp)_v
 	- n^a n_a n^b \nabla_b (v^\perp)_v
 	+ n^a n_a n_v (v^\perp)^b a_b
-	+ n^a (K_{av} + n_a a_v) v^\parallel
+	+ n^a (K_{av} + n_a a_v) v^\top
 $<br>
 $=
 	n^a \nabla_a (v^\perp)_v
 	- n_v (v^\perp)^a a_a
-	- a_v v^\parallel
+	- a_v v^\top
 $<br>
 <br>
 
@@ -359,18 +359,18 @@ $n^b {\gamma_u}^a \nabla_a v_b$<br>
 $= n^b (
 	\nabla^\perp_u (v^\perp)_b
 	- K_{ua} (v^\perp)^a n_b
-	- n_b \nabla^\perp_u v^\parallel
-	+ K_{ub} v^\parallel
+	- n_b \nabla^\perp_u v^\top
+	+ K_{ub} v^\top
 )$<br>
 $=
 	n^b \nabla^\perp_u (v^\perp)_b
 	- n^b K_{ua} (v^\perp)^a n_b
-	- n^b n_b \nabla^\perp_u v^\parallel
-	+ n^b K_{ub} v^\parallel
+	- n^b n_b \nabla^\perp_u v^\top
+	+ n^b K_{ub} v^\top
 $<br>
 $=
 	K_{ua} (v^\perp)^a
-	+ \nabla^\perp_u v^\parallel
+	+ \nabla^\perp_u v^\top
 $<br>
 <br>
 
@@ -380,17 +380,17 @@ $= {\gamma_u}^a (
 	\nabla^\perp_a (v^\perp)_v
 	- n_a n^b \nabla_b (v^\perp)_v
 	+ n_a n_v (v^\perp)^b a_b
-	+ (K_{av} + n_a a_v) v^\parallel
+	+ (K_{av} + n_a a_v) v^\top
 )$<br>
 $=
 	{\gamma_u}^a \nabla^\perp_a (v^\perp)_v
 	- {\gamma_u}^a n_a n^b \nabla_b (v^\perp)_v
 	+ {\gamma_u}^a n_a n_v (v^\perp)^b a_b
-	+ {\gamma_u}^a (K_{av} + n_a a_v) v^\parallel
+	+ {\gamma_u}^a (K_{av} + n_a a_v) v^\top
 $<br>
 $=
 	\nabla^\perp_u (v^\perp)_v
-	+ K_{uv} v^\parallel
+	+ K_{uv} v^\top
 $<br>
 <br>
 
@@ -408,38 +408,38 @@ $<br>
 $=
 	(
 		\nabla^\perp_u (v^\perp)_v
-		+ K_{uv} v^\parallel
+		+ K_{uv} v^\top
 	)
 	- n_u (
 		n^a \nabla_a (v^\perp)_v
 		- n_v (v^\perp)^a a_a
-		- a_v v^\parallel
+		- a_v v^\top
 	)
 	- n_v (
 		K_{ua} (v^\perp)^a
-		+ \nabla^\perp_u v^\parallel
+		+ \nabla^\perp_u v^\top
 	)
 	+ n_u n_v (
 		-(v^\perp)^a a_a
-		+ n^a \nabla_a v^\parallel
+		+ n^a \nabla_a v^\top
 	)
 $<br>
 $=
 	\nabla^\perp_u (v^\perp)_v
 	- n_u n^a \nabla_a (v^\perp)_v
 	- K_{ua} (v^\perp)^a n_v
-	+ (K_{uv} + n_u a_v) v^\parallel
-	- n_v \nabla^\perp_u v^\parallel
-	+ n_u n_v n^a \nabla_a v^\parallel
+	+ (K_{uv} + n_u a_v) v^\top
+	- n_v \nabla^\perp_u v^\top
+	+ n_u n_v n^a \nabla_a v^\top
 $<br>
 ...should equal our previous definition of the covariant derivative in projected terms:<br>
 $= 
 	\nabla^\perp_u (v^\perp)_v
 	- n_u n^a \nabla_a (v^\perp)_v
 	- K_{ua} (v^\perp)^a n_v
-	+ (K_{uv} + n_u a_v) v^\parallel
-	- n_v \nabla^\perp_u v^\parallel
-	+ n_u n_v n^a \nabla_a v^\parallel
+	+ (K_{uv} + n_u a_v) v^\top
+	- n_v \nabla^\perp_u v^\top
+	+ n_u n_v n^a \nabla_a v^\top
 $<br>
 <br>
 
@@ -451,43 +451,43 @@ $= (\gamma^{ab} - n^a n^b) (
 	\nabla^\perp_a (v^\perp)_b
 	- n_a n^c \nabla_c (v^\perp)_b
 	- K_{ac} (v^\perp)^c n_b
-	+ (K_{ab} + n_a a_b) v^\parallel
-	- \nabla^\perp_a v^\parallel n_b
-	+ n_a n_b n^c \nabla_c v^\parallel
+	+ (K_{ab} + n_a a_b) v^\top
+	- \nabla^\perp_a v^\top n_b
+	+ n_a n_b n^c \nabla_c v^\top
 )$<br>
 $=
 	\gamma^{ab} \nabla^\perp_a (v^\perp)_b
 	- \gamma^{ab} n_a n^c \nabla_c (v^\perp)_b
 	- \gamma^{ab} K_{ac} (v^\perp)^c n_b
-	+ \gamma^{ab} K_{ab} v^\parallel
-	+ \gamma^{ab} n_a a_b v^\parallel
-	- \gamma^{ab} \nabla^\perp_a v^\parallel n_b
-	+ \gamma^{ab} n_a n_b n^c \nabla_c v^\parallel
+	+ \gamma^{ab} K_{ab} v^\top
+	+ \gamma^{ab} n_a a_b v^\top
+	- \gamma^{ab} \nabla^\perp_a v^\top n_b
+	+ \gamma^{ab} n_a n_b n^c \nabla_c v^\top
 	- n^a n^b \nabla^\perp_a (v^\perp)_b
 	+ n^a n^b n_a n^c \nabla_c (v^\perp)_b
 	+ n^a n^b K_{ac} (v^\perp)^c n_b
-	- n^a n^b K_{ab} v^\parallel
-	- n^a n^b n_a a_b v^\parallel
-	+ n^a n^b \nabla^\perp_a v^\parallel n_b
-	- n^a n^b n_a n_b n^c \nabla_c v^\parallel
+	- n^a n^b K_{ab} v^\top
+	- n^a n^b n_a a_b v^\top
+	+ n^a n^b \nabla^\perp_a v^\top n_b
+	- n^a n^b n_a n_b n^c \nabla_c v^\top
 $<br>
 $=
 	\nabla^\perp_a (v^\perp)_a
-	+ K v^\parallel
+	+ K v^\top
 	- n^c n^b \nabla_c (v^\perp)_b
-	- n^a \nabla_a v^\parallel
+	- n^a \nabla_a v^\top
 $<br>
 $=
 	\nabla^\perp_a (v^\perp)_a
-	+ K v^\parallel
+	+ K v^\top
 	+ n^c (v^\perp)^b (-K_{cb} - n_c a_b)
-	- n^a \nabla_a v^\parallel
+	- n^a \nabla_a v^\top
 $<br>
 $=
 	\nabla^\perp_a (v^\perp)_a
 	+ a_a (v^\perp)^a
-	- n^a \nabla_a v^\parallel
-	+ K v^\parallel
+	- n^a \nabla_a v^\top
+	+ K v^\top
 $<br>
 <br>
 
