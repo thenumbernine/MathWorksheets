@@ -8,17 +8,68 @@
     <body>
 <a href='.'>Back</a><br><br>
 
-Wedge product of two one-form basis elements:<br>
-$e_a \wedge e_b = e_a \otimes e_b - e_b \otimes e_a$<br>
+<br>
+<hr>
+<b>Wedge Product of Coordinate Basis One-Forms:</b><br>
 <br>
 
-Wedge product linearity, for scalar $\alpha$:<br>
-$(\alpha e_a + e_b) \wedge e_c = \alpha (e_a \wedge e_c) + e_b \wedge e_c$<br>
+Wedge product of two one-form coordinate basis elements:<br>
+$dx^a \wedge dx^b = -dx^b \wedge dx^a$<br>
 <br>
 
-Wedge product identities:<br>
-$a \wedge b = -b \wedge a$<br>
+Wedge product of the identical one-form coordinate basis element:<br>
+$dx^a \wedge dx^a = -dx^a \wedge dx^a$<br>
+Therefore $dx^a \wedge dx^a = 0$<br>
+<br>
+
+Wedge product linearity:<br>
+$(\alpha dx^a + dx^b) \wedge dx^c = \alpha (dx^a \wedge dx^c) + dx^b \wedge dx^c$<br>
+<br>
+
+Wedge product in terms of outer products:<br>
+$dx^a \wedge dx^b = dx^a \otimes dx^b - dx^b \otimes dx^a$<br>
+<br>
+
+TODO show this implies:<br>
+$dx^{i_1} \wedge ... \wedge dx^{i_k} = k! dx^{[i_1} \otimes ... \otimes dx^{i_k]}$<br>
+<br>
+
+<hr>
+<b>Wedge Product of Non-Coordinate Forms:</b><br>
+<br>
+
+Wedge product antisymmetry on any one-form:<br>
+$a \wedge b$<br>
+$= \overset{n}{\underset{i=1}{\Sigma}} (a_i dx^i) \wedge \overset{n}{\underset{j=1}{\Sigma}} (b_j dx^j)$<br>
+by wedge product linearity:<br>
+$= \overset{n}{\underset{i=1}{\Sigma}} \overset{n}{\underset{j=1}{\Sigma}} ((a_i dx^i) \wedge (b_j dx^j))$<br>
+$= \overset{n}{\underset{i=1}{\Sigma}} \overset{n}{\underset{j=1}{\Sigma}} (a_i b_j (dx^i \wedge dx^j))$<br>
+$= -\overset{n}{\underset{i=1}{\Sigma}} \overset{n}{\underset{j=1}{\Sigma}} (a_i b_j (dx^j \wedge dx^i))$<br>
+$= -\overset{n}{\underset{i=1}{\Sigma}} \overset{n}{\underset{j=1}{\Sigma}} ((b_j dx^j) \wedge (a_i dx^i))$<br>
+$= -b \wedge a$<br>
+<br>
+
+Wedge product of two identical one-forms:<br>
+$a \wedge a$<br>
+$= \overset{n}{\underset{i=1}{\Sigma}} (a_i dx^i) \wedge \overset{n}{\underset{j=1}{\Sigma}} (a_j dx^j)$<br>
+$= \overset{n}{\underset{i=1}{\Sigma}} \overset{n}{\underset{j=1}{\Sigma}} ((a_i dx^i) \wedge (a_j dx^j))$<br>
+$= \overset{n}{\underset{i=1}{\Sigma}} \overset{n}{\underset{j=1}{\Sigma}} (a_i a_j (dx^i \wedge dx^j))$<br>
+Notice that, for $i=j, dx^i \wedge dx^i = 0$, and for $i \ne j, dx^i \wedge dx^j = -dx^j \wedge dx^i$ are both summed, with identical coefficients $a_i a_j$,<br>
+Therefore we get:<Br>
 $a \wedge a = 0$<br>
+<br>
+
+Wedge product in terms of outer products:<br>
+$e^a \wedge e^b$<br>
+$= {e^a}_i dx^i \wedge {e^b}_j dx^j$<br>
+$= {e^a}_i {e^b}_j dx^i \wedge dx^j$<br>
+$= {e^a}_i {e^b}_j (dx^i \otimes dx^j - dx^j \otimes dx^i)$<br>
+$= ({e^a}_i dx^i \otimes {e^b}_j dx^j - {e^b}_j dx^j \otimes {e^a}_i dx^i)$<br>
+$= e^a \otimes e^b - e^b \otimes e^a$<br>
+<br>
+
+TODO prove: Wedge product linearity, for scalar $\alpha$:<br>
+$(\alpha e^a + e^b) \wedge e^c = \alpha (e^a \wedge e^c) + e^b \wedge e^c$<br>
 <br>
 
 Wedge product antisymmetry for p-form $a$ and q-form $b$:<br>
@@ -35,14 +86,26 @@ $ = (-1)^{pq} (b_{v_1 ... v_q} e^{v_1} \wedge ... \wedge e^{v_q}) \wedge (a_{u_1
 $ = (-1)^{pq} b \wedge a $<br>
 <br>
 
+Notice that by this rule, for 0-form scalar a and 1-form w, this means:<br>
+$a w = a \wedge w = w \wedge a = w a$<br>
+This means the wedge product of scalars and k-forms can act interoperable with scalar multiplication of k-forms.<br>
+<br>
+
+For one-forms, our basis is a 1-form $e^a$ and our scalar components $w_a$ are 0-forms, so this still works:<br> 
+$w = w_a e^a = w_a \wedge e^a = e^a \wedge w_a$<br>
+<br>
+
 Treat our vector basis $e_a$ as vector-valued 0-forms.<br>
 Then for scalar $\phi$ we have $e_a \wedge \phi = \phi \wedge e^a$<br>
-Therefore our component representation of our vectors $v = v^a e_a$ can also be represented using wedge products:<br>
+Therefore our scalar component representation of our vectors $v = v^a e_a$ can also be represented using wedge products:<br>
 $v = v^a \wedge e_a = e_a \wedge v^a$<br>
 <br>
 
-For one-forms, our basis is a 1-form $e^a$ and our components $w_a$ are 0-forms, so this still works:<br> 
-$w = w_a e^a = w_a \wedge e^a = e^a \wedge w_a$<br>
+Also notice that, if our vectors are considered vector-valued 0-forms, we get:<br>
+$e_a \wedge e_b = e_b \wedge e_a$<br>
+It seems that the wedge product is symmetric when used on vectors.<br>
+This would mean the $\otimes$ definition of wedge products, $e^{i_1} \wedge ... \wedge e^{i_k} = k! e^{[i_1} \otimes ... \otimes e^{i_k]}$ is only be true when applied to one-forms.<br>
+For vectors would it be $e_a \wedge e_b = e_a \otimes e_b$?<br>
 <br>
 
 Wedge products and forms in terms of index notation<br>
@@ -92,7 +155,9 @@ $= e_a (e_b (\phi)) (e^a \otimes e^b - e^b \otimes e^a)$<br>
 $= e_a (e_b (\phi)) e^a \wedge e^b$<br>
 <br>
 
-
+<hr>
+<b>Exterior derivative</b><br>
+<br>
 
 Exterior derivative: $d = e^a \wedge e_a(...)$<br>
 $d ( {T^{a_1 ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q} )$<br>
@@ -105,11 +170,6 @@ For coordinate basis: $d(dx^a) = 0$<br>
 
 Exterior derivative of a scalar:<br>
 $d (\phi) = e_a (\phi) e^a$<br>
-<br>
-
-Exterior and covariant derivative for 2-forms:<br>
-TODO explain this more<br>
-$dF = \nabla \cdot\star F$, $d$ $\star{F} = \nabla \cdot F$<br>
 <br>
 
 Exterior derivative of one-form in a coordinate basis:<br>
@@ -155,7 +215,7 @@ $= d (w_{i_1 ... i_p}) \wedge e^{i_1} \wedge ... \wedge e^{i_p}
 $<br>
 ...in a coordinate basis, where $e^\tilde{a} = dx^\tilde{a}$ and $d(dx^\tilde{a}) = 0$:<br>
 $= \partial_j (w_{i_1 ... i_p}) dx^j \wedge dx^{i_1} \wedge ... \wedge dx^{i_p}$<br>
-$= \partial_j (w_{i_1 ... i_p}) \cdot p! \cdot dx^{[j} \otimes dx^{i_1} \otimes ... \otimes dx^{i_p]}$<br>
+$= \partial_j (w_{i_1 ... i_p}) \cdot (p+1)! \cdot dx^{[j} \otimes dx^{i_1} \otimes ... \otimes dx^{i_p]}$<br>
 ...in a non-coordinate basis:<br>
 $dw = e_k (w_{i_1 ... i_p}) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p} + (-1)^{j-1} w_{i_1 ... i_p} e^{i_1} \wedge ... \wedge d(e^{i_j}) \wedge ... \wedge e^{i_p}$<br>
 $ =  e_k (w_{i_1 ... i_p}) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p}
@@ -228,10 +288,24 @@ $= da \wedge b + (-1)^p a \wedge db$<br>
 <br>
 
 Exterior derivative of inner product: <br>
+TODO under what context is this defined?  Two vectors, i.e. vector-valued 0-forms?  Or as two one-forms, therefore using the hodge dual definition of inner product?<br>
+What exactly is an inner product, and should I define inner- as between vectors ... vs interior- as between forms and vectors, ... vs what (inner again?) between two forms?<br>
 $ d(u \cdot v) = du \cdot v + u \cdot dv$<br>
 <br>
 
-Second exterior derivative:<br>
+<hr>
+<b>Second exterior derivative:</b><br>
+<br>
+
+second exterior derivative of a p-form in a coordinate basis:<br>
+$ {d}({dw}) = {dd} ({w}_{a_1 ... a_p} {dx}^{a_1} \wedge ... \wedge {dx}^{a_p})$<br>
+$= {d} \partial_b ({w}_{a_1 ... a_p}) {dx}^b \wedge {dx}^{a_1} \wedge ... \wedge {dx}^{a_p}$<br>
+$= \partial_c \partial_b ({w}_{a_1 ... a_p}) {dx}^c \wedge {dx}^b \wedge {dx}^{a_1} \wedge ... \wedge {dx}^{a_p}$<br>
+Now we have the sum over the symmetric $\partial_c \partial_b$ and the antisymmetric ${dx}^b \wedge {dx}^c$, so our sum is zero.<br>
+${ddw} = 0$<br>
+<br>
+
+Second exterior derivative on a non-coordinate basis:<br>
 $d^2(w) = d(
 	(
 		e_k (w_{i_1 ... i_p})
@@ -281,14 +355,6 @@ $<br>
 TODO finishme.<br>
 I bet you end up with $e_i (e_j(...)) - {c_{ij}}^k ...$, the first turns to c's, and somehow they all cancel out.<br>
 Also maybe $e(c)$ goes away because it is really just $e_a([e_b,e_c]) e^a \wedge e^b \wedge e^c = (e_a(e_b(e_c)) - e_a(e_c(e_b))) e^a \wedge e^b \wedge e^c$ so we have symmetric and antisymmetric summed which should cancel.<br>
-<br>
-
-second exterior derivative of a p-form in a coordinate basis:<br>
-$ {d}({dw}) = {dd} ({w}_{a_1 ... a_p} {dx}^{a_1} \wedge ... \wedge {dx}^{a_p})$<br>
-$= {d} \partial_b ({w}_{a_1 ... a_p}) {dx}^b \wedge {dx}^{a_1} \wedge ... \wedge {dx}^{a_p}$<br>
-$= \partial_c \partial_b ({w}_{a_1 ... a_p}) {dx}^c \wedge {dx}^b \wedge {dx}^{a_1} \wedge ... \wedge {dx}^{a_p}$<br>
-Now we have the sum over the symmetric $\partial_c \partial_b$ and the antisymmetric ${dx}^b \wedge {dx}^c$, so our sum is zero.<br>
-${ddw} = 0$<br>
 <br>
 
 <a href='.'>Back</a><br><br>
