@@ -63,7 +63,7 @@ In multi-index notation:<br>
 $e^A(e_B) = \overset{p}{\underset{i=1}{\Pi}} \delta^{a_i}_{b_i}$<br>
 <br>
 
-Wedge product:<br>
+Wedge product defined for one-form basis (more on wedge product later):<br>
 $e^{a_1} \wedge ... \wedge e^{a_p} = p! e^{[a_1} \otimes ... \otimes e^{a_p]}$<br>
 <br>
 
@@ -113,30 +113,38 @@ $e^A(e_{B \oplus C}) = e^A(e_B) \cdot e_C = \overset{p}{\underset{i=1}{\Pi}} \de
 
 Partial-application of one-form functions with vector inputs is a generalization of the interior product:<br>
 $x \lrcorner a = a(x)$ for and vector x and k-form a.<br>
-$= a_{i_1 ... i_k} e^{i_1} \wedge ... \wedge e^{i_k} (x^j e_j)$<br>
-$= k! x^j a_{i_1 ... i_k} e^{[i_1} \otimes ... \otimes e^{i_k]} (e_j)$<br>
-$= k! x^j a_{[i_1 ... i_k]} e^{i_1} \otimes ... \otimes e^{i_k} (e_j)$<br>
-$= k! x^j a_{[i_1 ... i_k]} e^{i_1}(e_j) \cdot e^{i_2} \otimes ... \otimes e^{i_k}$<br>
-$= k! x^j a_{[i_1 ... i_k]} \delta^{i_1}_j e^{i_2} \otimes ... \otimes e^{i_k}$<br>
-$= k! x^{i_1} a_{[i_1 ... i_k]} e^{i_2} \otimes ... \otimes e^{i_k}$<br>
-$= k x^{i_1} a_{[i_1 ... i_k]} e^{i_2} \wedge ... \wedge e^{i_k}$<br>
+$= \frac{1}{k!} a_{i_1 ... i_k} e^{i_1} \wedge ... \wedge e^{i_k} (x^j e_j)$<br>
+$= x^j a_{i_1 ... i_k} e^{[i_1} \otimes ... \otimes e^{i_k]} (e_j)$<br>
+$= x^j a_{[i_1 ... i_k]} e^{i_1} \otimes ... \otimes e^{i_k} (e_j)$<br>
+$= x^j a_{[i_1 ... i_k]} e^{i_1}(e_j) \cdot e^{i_2} \otimes ... \otimes e^{i_k}$<br>
+$= x^j a_{[i_1 ... i_k]} \delta^{i_1}_j e^{i_2} \otimes ... \otimes e^{i_k}$<br>
+$= x^{i_1} a_{[i_1 ... i_k]} e^{i_2} \otimes ... \otimes e^{i_k}$<br>
+$= \frac{1}{(k-1)!} x^{i_1} a_{[i_1 ... i_k]} e^{i_2} \wedge ... \wedge e^{i_k}$<br>
 $= x^{i_1} a_{i_1 [i_2 ... i_k]} e^{i_2} \wedge ... \wedge e^{i_k}$<br>
+TODO explain better where the $\frac{1}{(k-1)!}$ goes.<br>
 <br>
 
 Ok so I might just use the interior product for partial application everywhere rather than require it to only operate on totally-antisymmetric k-forms.<br>
-Notice that, for the k-form use of interior product represented as a (0 k) tensor, we have an extra k! term:<br>
-$x \lrcorner a = a(x) = k! x^{i_1} a_{[i_1 ... i_k]} e^{i_2} \otimes ... \otimes e^{i_k}$<br>
+$x \lrcorner a = a(x) = x^{i_1} a_{[i_1 ... i_k]} e^{i_2} \otimes ... \otimes e^{i_k}$<br>
 ... due to the fact that $e^{\wedge I} = k! e^{[I]}$<br>
+Now if $a = a_{i_1 ... i_k} e^{i_1} $ were a k-form, i.e. a totally-antisymmetric (0 k) tensor, then we would have equally:<br>
+$x \lrcorner a = a(x) = x^{i_1} a_{i_1 ... i_k} e^{i_2} \otimes ... \otimes e^{i_k}$<br>
 So lets just generalize the interior product to be, the partial-application operator for vectors x on (0 k) tensors:<br>
-$x \lrcorner a = a(x) = k! x^{i_1} a_{i_1 ... i_k} e^{i_2} \otimes ... \otimes e^{i_k}$<br>
+$x \lrcorner a = a(x) = x^{i_1} a_{i_1 ... i_k} e^{i_2} \otimes ... \otimes e^{i_k}$<br>
 Then the old k-form-specific definition still sticks.<br>
-Hmm, I am half tempted to weight my interior products as $\frac{1}{k!}$ to make it on par with the totally-antisymmetric index operator.<br> 
 <br>
 
 So for k-form w and vectors $x_i \in \{x_1 ...x_k\}$, $(x_1 \lrcorner w)(x_2, ..., x_k) = w(x_1, x_2, ..., x_k)$<br>
 Also for vectors x and y and k-form w:<Br>
 $x \lrcorner y \lrcorner w = -y \lrcorner x \lrcorner w$<br>
 $x \lrcorner x \lrcorner w = 0$ by antisymmetry of k-form indexes.<br>
+<br>
+
+TODO how about k-vectors on k-forms?<br>
+$(x \otimes y) \lrcorner w = y \lrcorner x \lrcorner w$<br>
+Also, if the wedge product of vectors (i.e. vector-valued 0-forms) is symmetric, this is the same as(?):<br>
+$(x \otimes y) \lrcorner w = (x \wedge y) \lrcorner w = y \lrcorner x \lrcorner w$<br>
+I guess that depends, if it is symmetric, how to define $\wedge$ wrt $\otimes$ for vectors?  Same weight as for forms? k!?<br>
 <br>
 
 <a href='.'>Back</a><br><br>

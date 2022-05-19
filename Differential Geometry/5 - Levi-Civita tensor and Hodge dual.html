@@ -8,47 +8,49 @@
     <body>
 <a href='.'>Back</a><br><br>
 
-TODO don't use capitol letters even if the quantum gravity folks do, because the old differential geometry folks reserved this for groups-of-indexes, which the new physicists have forgotten, and which I'm using.<br>
-So rename all the IJK's to ijk's.<br>
+Start with a locally-Minkowski basis with metric $(g')_{ij} = \eta_{ij}$.<br>
+Reminder that the Minkowski metric is defined as $\eta_{ij} = \delta_{ij} \cdot \sigma_i$ for $\sigma_i = \pm 1$.<br>
+Let its signature be $\sigma = \overset{n}{\underset{i=1}{\Pi}} \sigma_i = det[\eta_{ij}] = \pm 1$.<br>
 <br>
 
-Start with a locally-Minkowski basis with metric $\eta_{IJ} = \delta_{IJ} \cdot \sigma_I$ for $\sigma_I = \pm 1$.<br>
-Let its signature be $\sigma = \overset{n}{\underset{I=1}{\Pi}} \sigma_I = det[\eta_{IJ}]$ for $\sigma = \pm 1$<br>
+Let's give it a transform from our choice of (not necessarily coordinate) bais:<br>
+$g_{ab} = {(e')_a}^i {(e')_b}^j (g')_{ij} = {(e')_a}^i {(e')_b}^j \eta_{ij}$<br>
 <br>
 
-Let the Levi-Civita permutation tensor in the basis of the Minkowski metric be:<br>
-$\epsilon_{I_1 \dots I_n} = 1$ for even permutations of $I_1 \dots I_n$, -1 for odd permutations, and 0 otherwise.<br>
+Let's define 
+the Levi-Civita permutation tensor to be
+a tensor in the basis of the Minkowski metric:<br>
+$(\epsilon')_{i_1 \dots i_n} = 1$ for even permutations of $i_1 \dots i_n$, -1 for odd permutations, and 0 otherwise.<br>
 <br>
 
-Then the contravariant-index representation is:<br>
-$\epsilon^{I_1 \dots I_n} = \eta^{I_1 J_1} \dots \eta^{I_n J_n} \epsilon_{J_1 \dots J_n} = \sigma \epsilon_{I_1 \dots I_n}$.<br>
+The contravariant-form representation of this tensor is:<br>
+$(\epsilon')^{i_1 \dots i_n} 
+	= \eta^{i_1 j_1} \dots \eta^{i_n j_n} (\epsilon')_{j_1 \dots j_n} 
+	= det([\eta^{ij}]) (\epsilon')_{i_1 \dots i_j}
+	= \sigma^{-1} (\epsilon')_{i_1 \dots i_n}
+	= \sigma (\epsilon')_{i_1 \dots i_n}
+$.<br>
 <br>
 
-Then the same tensor in our coordinate basis is:<br>
-$\epsilon_{a_1 \dots a_n} = {e_{a_1}}^1 \dots {e_{a_n}}^n \epsilon_{1 \dots n}$, which is the definition of $det([{e_a}^I])$, which is the linear transform from the Minkowski-metric basis to the new basis.<br>
-<br>
-
-TODO Alright, to properly define values and determinants, I need to distinguish linear transforms between the coordinate basis $\partial_a$, the non-coordinate basis $e_a$, and the Minkowski basis $e_I$.<br>
+Then the same tensor in our (not necessarily coordinate) basis is:<br>
+$\epsilon_{a_1 \dots a_n} = {(e')_{a_1}}^1 \dots {(e')_{a_n}}^n (\epsilon')_{1 \dots n}$, which is the definition of $det([{(e')_a}^i])$, which is the linear transform from the Minkowski-metric basis to the new basis.<br>
 <br>
 
 So before we had:<br>
 $\tilde{g}_{\tilde{a}\tilde{b}} = {e^a}_\tilde{a} {e^b}_\tilde{b} g_{ab}$.<br>
 with determinant:<br>
 $\tilde{g} = e^2 g$<br>
-Now we are saying $g_{ab} = {e_a}^I {e_b}^J \eta_{IJ}$.<br>
+Now we are saying $g_{ab} = {(e')_a}^i {(e')_b}^j \eta_{ij}$.<br>
 with determinant:<br>
-$g = (e')^2 \sigma$, for $e' = det([{e_a}^I])$.<br>
-So combine to find: $\tilde{g}_{\tilde{a}\tilde{b}} = {e^a}_\tilde{a} {e^b}_\tilde{b} {e_a}^I {e_b}^J \eta_{IJ}$.<br>
+$g = (e')^2 \sigma$, for $e' = det([{(e')_a}^i])$.<br>
+So combine to find: $\tilde{g}_{\tilde{a}\tilde{b}} = {e^a}_\tilde{a} {e^b}_\tilde{b} {(e')_a}^i {(e')_b}^j \eta_{ij}$.<br>
 and determinant:<br> 
 $\tilde{g} = e^2 (e')^2 \sigma$<br>
 Solve for $e'$ to find:<br>
 $e' = \frac{\sqrt{\tilde{g}}}{e} = \sqrt{g}$<br>
 <br>
-So the determinant of the transform from the Minkowski metric to the non-coordinate basis is $det([{e_a}^I]) = \sqrt{g}$.<br>
+So the determinant of the transform from the Minkowski metric to the non-coordinate basis is $det([{(e')_a}^i]) = \sqrt{g}$.<br>
 Therefore $ \epsilon_{a_1 \dots a_n} = e' = \sqrt{|g|}$ for even permutations, $-e' = -\sqrt{|g|}$ for odd permutations, and 0 otherwise.<br>
-<br>
-
-TODO double check signs on all of these, and where $\sigma$ might need to be inserted.<br>
 <br>
 
 $\epsilon^{a_1 \dots a_n} = \sigma (g^{a_1 b_1}) \cdot \dots \cdot (g^{a_n b_n}) \epsilon_{b_1 \dots b_n}$<br>
@@ -75,15 +77,52 @@ $3! \delta^I_J = 2! \delta^{IJ}_{MJ} = \delta^{IJK}_{MJK} = \delta^{IJKL}_{MJKL}
 $4! = 3! \delta^I_I = 2! \delta^{IJ}_{IJ} = \delta^{IJK}_{IJK} = \delta^{IJKL}_{IJKL} = -\epsilon^{IJKL} \epsilon_{IJKL}$<br>
 <br>
 
-Hodge Dual of a tensor:<br>
-Define the Hodge dual on a k-degree tensor in n dimensions as:<br>
-For $T = T_{i_1 ... i_k} dx^1 \otimes ... \otimes dx^k$,<br>
-let $\star T = \star (T_{i_1 ... i_k} dx^1 \otimes ... \otimes dx^k)$<br>
-$= \frac{1}{k!} T_{i_1 ... i_k} {\epsilon^{i_1 ... i_k}}_{i_{k+1} ... i_n} dx^{i_{k+1}} \otimes ... \otimes dx^{i_n}$<br>
-$= \frac{1}{n!} T_{i_1 ... i_k} {\epsilon^{i_1 ... i_k}}_{i_{k+1} ... i_n} dx^{i_{k+1}} \wedge ... \wedge dx^{i_n}$<br>
-$= \frac{1}{n!} T_{j_1 ... j_k} (g^{i_1 j_1} \cdot ... \cdot g^{i_k j_k}) \epsilon_{i_1 ... i_k i_{k+1} ... i_n} dx^{i_{k+1}} \wedge ... \wedge dx^{i_n}$<br>
-$= (\star T)_{i_{k+1} ... i_n} dx^{i_{k+1}} \otimes ... \otimes dx^{i_n}$<br>
+Hodge dual definition:<br>
+$\star (e^1 \wedge ... \wedge e^k) = e^{k+1} \wedge ... \wedge e^n$<br>
+such that<br>
+$\star (e^1 \wedge ... \wedge e^k) \wedge (e^1 \wedge ... \wedge e^k) = e^1 \wedge ... \wedge e^n$<br>
+<br>
+
+Therefore<br>
+$\star (e^1 \wedge ... \wedge e^k)$<br>
+$= \epsilon_{1 ... k k+1 ... n} e^{k+1} \wedge ... \wedge e^n$<br>
+$= \frac{1}{(n-k)!} \epsilon_{1 ... k i_{k+1} ... i_n} e^{i_{k+1}} \wedge ... \wedge e^{i_n}$<br>
+<br>
+
+Therefore<br>
+$\star (e^{i_1} \wedge ... \wedge e^{i_k})$<br>
+$= \frac{1}{(n-k)!} \epsilon_{i_1 ... i_k i_{k+1} ... i_n} e^{i_{k+1}} \wedge ... \wedge e^{i_n}$<br>
+<br>
+
+Hodge dual of a k-form:<br>
+Define the Hodge dual on a k-form in n dimensions as:<br>
+Let $\star T = \star (T_{i_1 ... i_k} e^{i_1} \otimes ... \otimes e^{i_k})$<br>
+substitute the definition of wedge product basis for a (0 k) tensor:<br>
+$= \star ( \frac{1}{k!} T_{i_1 ... i_k} e^{i_1} \wedge ... \wedge e^{i_k})$<br>
+factor out the scalars and apply the Hodge dual to the wedge products only:<br>
+$= \frac{1}{k!} T_{i_1 ... i_k} \star ( e^{i_1} \wedge ... \wedge e^{i_k})$<br>
+insert in a factor of $\frac{1}{(n-k)!}$ since that's how many repeated elements we have due to the Levi-Civita permutation tensor:<br>
+$= \frac{1}{k!} \cdot \frac{1}{(n-k)!} T_{i_1 ... i_k} {\epsilon^{i_1 ... i_k}}_{i_{k+1} ... i_n} e^{i_{k+1}} \wedge ... \wedge e^{i_n}$<br>
+convert from wedge products to antisymmetric outer products, insert a $(n-k)!$ term to account fo the number of antisymmetric products.<br>
+$= (n-k)! \cdot \frac{1}{k!} \cdot \frac{1}{(n-k)!} T_{i_1 ... i_k} {\epsilon^{i_1 ... i_k}}_{i_{k+1} ... i_n} e^{[i_{k+1}} \otimes ... \otimes e^{i_n]}$<br>
+factor out factorials, take the coefficient of the outer products of the form basis to be our componets of $(\star T)_{i_{k+1} ... i_n}$:<br>
+$= (\star T)_{i_{k+1} ... i_n} e^{i_{k+1}} \otimes ... \otimes e^{i_n}$<br>
 so for $T_{i_1 ... i_n}$ we have  $(\star T)_{i_{k+1} ... i_n} = \frac{1}{k!} T_{i_1 ... i_k} {\epsilon^{i_1 ... i_k}}_{i_{k+1} ... i_n}$<br>
+<br>
+
+Hodge dual of a (0 k) tensor:<br>
+Lets generalize the Hodge dual definition to apply to any (0 k) tensor, to map to the forms by taking the antisymmetric component of the tensor:<br>
+$T = T_I e^I = T_{i_1 ... i_k} e^{i_1} \otimes ... \otimes e^{i_k}$<br>
+The antisymmetric part of it is equal to:<br>
+$T_{[I]} e^I = T_{[I]} e^{[I]} = \frac{1}{k!} T_{[I]} e^{\wedge I}$<br>
+$= \frac{1}{k!} T_{[i_1 ... i_k]} e^{i_1} \wedge ... \wedge e^{i_k}$<br>
+so ...<br>
+TODO should be ...<br>
+$(\star T)_{i_{k+1} ... i_n} e^{i_{k+1}} \wedge ... \wedge e^{i_n} = \frac{1}{k!} T_{i_1 ... i_k} {\epsilon^{i_1 ... i_k}}_{i_{k+1} ... i_n} e^{i_{k+1}} \wedge ... \wedge e^{i_n}$<br>
+$(\star T)_{i_{k+1} ... i_n} e^{i_{[k+1}} \otimes ... \otimes e^{i_n]} = \frac{1}{k!} T_{i_1 ... i_k} {\epsilon^{i_1 ... i_k}}_{i_{k+1} ... i_n} e^{i_{[k+1}} \otimes ... \otimes e^{i_n]}$<br>
+so for antisymetric $(\star T)_{i_{k+1} ... i_n}$ we find:<br>
+$(\star T)_{i_{k+1} ... i_n} e^{i_{k+1}} \otimes ... \otimes e^{i_n} = \frac{1}{k!} T_{i_1 ... i_k} {\epsilon^{i_1 ... i_k}}_{i_{k+1} ... i_n} e^{i_{k+1}} \otimes ... \otimes e^{i_n}$<br>
+so $(\star T)_{i_{k+1} ... i_n} = \frac{1}{k!} T_{i_1 ... i_k} {\epsilon^{i_1 ... i_k}}_{i_{k+1} ... i_n}$<br>
 <br>
 
 specific instances for 4D Lorentzian space:<br>
@@ -134,6 +173,19 @@ $= \sigma^2 \underset{A}{\Sigma} (a_A b_A)$<br>
 $= \underset{A}{\Sigma} (a_A b_A)$<br>
 <br>
 
+TODO Exterior basis elements<br>
+$\eta = \star 1$<br>
+$\eta = \frac{1}{n!} \epsilon_{i_1 ... i_n} e^{i_1} \wedge ... \wedge e^{i_n}$<br>
+Courtesy of the $\sqrt{|g|}$ weighting of $\epsilon_{i_1 ... i_n}$ and of there being $n!$ number of ways that the Levi-Civita and the wedge permutations are summed, this is equal to...<br>
+$\eta = \sqrt{|g|} e^1 \wedge ... \wedge e^n$<br>
+It is also equal to:
+$\eta = \epsilon_{i_1 ... i_n} e^{[i_1} \otimes ... \otimes e^{i_n]}$<br>
+$\eta_{i_1} = e_{i_1} \lrcorner \eta$<br>
+$\eta_{i_1 ... i_n} = (e_{i_1} \otimes ... \otimes e_{i_n}) \lrcorner \eta$<br>
+<br>
+
+TODO is it true that $\eta_i = \star e^i$?  Not exactly ...?<br>
+<br>
 
 <a href='.'>Back</a><br><br>
 	</body>

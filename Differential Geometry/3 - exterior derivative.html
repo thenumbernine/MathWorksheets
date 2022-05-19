@@ -30,8 +30,22 @@ Wedge product in terms of outer products:<br>
 $dx^a \wedge dx^b = dx^a \otimes dx^b - dx^b \otimes dx^a$<br>
 <br>
 
-TODO show this implies:<br>
+Generalize the definition of k wedge products to be:<br>
 $dx^{i_1} \wedge ... \wedge dx^{i_k} = k! dx^{[i_1} \otimes ... \otimes dx^{i_k]}$<br>
+Then we can see the degenerate k=2 case.
+Also we see associativity.<br>
+<br>
+
+<a href='https://math.stackexchange.com/questions/908969/symmetric-and-wedge-product-in-algebra-and-differential-geometry'>this discussion</a> makes me tempted to define my wedge product as 
+$dx^{i_1} \wedge ... \wedge dx^{i_k} = dx^{[i_1} \otimes ... \otimes dx^{i_k]}$,
+to make it similar to the antisymmetric index notation, and to keep the weight of $\wedge$ and $\otimes$ equal.<br>
+<br>
+
+Therefore a (0 k) antisymmetric tensor in a coordinate basis has components:<br>
+$A = A_{i_1 ... i_k} dx^{i_1} \otimes ... \otimes dx^{i_k}$<br>
+$= A_{[i_1 ... i_k]} dx^{i_1} \otimes ... \otimes dx^{i_k}$<br>
+$= A_{i_1 ... i_k} dx^{[i_1} \otimes ... \otimes dx^{i_k]}$<br>
+$= \frac{1}{k!} A_{i_1 ... i_k} dx^{i_1} \wedge ... \wedge dx^{i_k}$<br>
 <br>
 
 <hr>
@@ -105,7 +119,9 @@ Also notice that, if our vectors are considered vector-valued 0-forms, we get:<b
 $e_a \wedge e_b = e_b \wedge e_a$<br>
 It seems that the wedge product is symmetric when used on vectors.<br>
 This would mean the $\otimes$ definition of wedge products, $e^{i_1} \wedge ... \wedge e^{i_k} = k! e^{[i_1} \otimes ... \otimes e^{i_k]}$ is only be true when applied to one-forms.<br>
-For vectors would it be $e_a \wedge e_b = e_a \otimes e_b$?<br>
+For vectors would it be $e_a \wedge e_b = e_a \otimes e_b$?  Well, no, since $\otimes$ isn't symmetric.<br>
+Maybe $e_a \wedge e_b = e_{(a} \otimes e_{b)}$.<br>
+Or, to keep weighting consistent with the $\wedge$-vs-$\otimes$, should it be $e_a \wedge e_b = 2! e_{(a} \otimes e_{b)} = e_a \otimes e_b + e_b \otimes e_a$?<br>
 <br>
 
 Wedge products and forms in terms of index notation<br>
