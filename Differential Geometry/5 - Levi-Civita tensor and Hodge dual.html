@@ -58,7 +58,7 @@ $= \frac{1}{\sqrt{|g|}} \epsilon_{a_1 \dots a_n}$<br>
 <br>
 
 Levi-Civita tensor for 4D Lorentzian signature with a diagonalized metric:<br>
-$\epsilon^{IJKL} = -\epsilon_{IJKL}$<br>
+$\epsilon^{ijkl} = -\epsilon_{ijkl}$<br>
 the timelike (zero) index goes first, so $\epsilon_{0123} = 1$<br>
 <br>
 
@@ -68,19 +68,19 @@ $\epsilon^{txyz} = -(-g)^{-\frac{1}{2}}$<br>
 <br>
 
 Kronecher delta extension:<br>
-$\delta^{I_1 \dots I_n}_{J_1 \dots J_n} = n! \delta^{I_1}_{[J_1} \cdot \dots \cdot \delta^{I_n}_{J_n]} = \sigma \epsilon^{I_1 \dots I_n} \epsilon_{J_1 \dots J_n}$<br>
-specific instances for 4D Lorentzian space:<br>
-$\delta^{IJKL}_{MNPQ} = -\epsilon^{IJKL} \epsilon_{MNPQ}$<br>
-$\delta^{IJK}_{MNP} = \delta^{IJKL}_{MNPL} = -\epsilon^{IJKL} \epsilon_{MNPL}$<br>
-$2! \delta^{IJ}_{MN} = \delta^{IJK}_{MNK} = \delta^{IJKL}_{MNKL} = -\epsilon^{IJKL} \epsilon_{MNKL}$<br>
-$3! \delta^I_J = 2! \delta^{IJ}_{MJ} = \delta^{IJK}_{MJK} = \delta^{IJKL}_{MJKL} = -\epsilon^{IJKL} \epsilon_{MJKL}$<br>
-$4! = 3! \delta^I_I = 2! \delta^{IJ}_{IJ} = \delta^{IJK}_{IJK} = \delta^{IJKL}_{IJKL} = -\epsilon^{IJKL} \epsilon_{IJKL}$<br>
+$\delta^{i_1 \dots i_n}_{j_1 \dots j_n} = n! \delta^{i_1}_{[j_1} \cdot \dots \cdot \delta^{i_n}_{j_n]} = \sigma \epsilon^{i_1 \dots i_n} \epsilon_{j_1 \dots j_n}$<br>
+specific instances for 4D lorentzian space:<br>
+$\delta^{ijkl}_{mnpq} = -\epsilon^{ijkl} \epsilon_{mnpq}$<br>
+$\delta^{ijk}_{mnp} = \delta^{ijkl}_{mnpl} = -\epsilon^{ijkl} \epsilon_{mnpl}$<br>
+$2! \delta^{ij}_{mn} = \delta^{ijk}_{mnk} = \delta^{ijkl}_{mnkl} = -\epsilon^{ijkl} \epsilon_{mnkl}$<br>
+$3! \delta^i_j = 2! \delta^{ij}_{mj} = \delta^{ijk}_{mjk} = \delta^{ijkl}_{mjkl} = -\epsilon^{ijkl} \epsilon_{mjkl}$<br>
+$4! = 3! \delta^i_i = 2! \delta^{ij}_{ij} = \delta^{ijk}_{ijk} = \delta^{ijkl}_{ijkl} = -\epsilon^{ijkl} \epsilon_{ijkl}$<br>
 <br>
 
 Hodge dual definition:<br>
 $\star (e^1 \wedge ... \wedge e^k) = e^{k+1} \wedge ... \wedge e^n$<br>
 such that<br>
-$\star (e^1 \wedge ... \wedge e^k) \wedge (e^1 \wedge ... \wedge e^k) = e^1 \wedge ... \wedge e^n$<br>
+$(e^1 \wedge ... \wedge e^k) \wedge \star (e^1 \wedge ... \wedge e^k) = e^1 \wedge ... \wedge e^n$<br>
 <br>
 
 Therefore<br>
@@ -173,18 +173,47 @@ $= \sigma^2 \underset{A}{\Sigma} (a_A b_A)$<br>
 $= \underset{A}{\Sigma} (a_A b_A)$<br>
 <br>
 
-TODO Exterior basis elements<br>
+Exterior basis elements<br>
+Here's our volume form, a n-form for n-dimensions:<br>
 $\eta = \star 1$<br>
+By definition of the Hodge star above:<br>
 $\eta = \frac{1}{n!} \epsilon_{i_1 ... i_n} e^{i_1} \wedge ... \wedge e^{i_n}$<br>
 Courtesy of the $\sqrt{|g|}$ weighting of $\epsilon_{i_1 ... i_n}$ and of there being $n!$ number of ways that the Levi-Civita and the wedge permutations are summed, this is equal to...<br>
 $\eta = \sqrt{|g|} e^1 \wedge ... \wedge e^n$<br>
-It is also equal to:
+We can also instead use the definition $e^{\wedge I} = k! e^{[I]}$ to find:<br>
 $\eta = \epsilon_{i_1 ... i_n} e^{[i_1} \otimes ... \otimes e^{i_n]}$<br>
-$\eta_{i_1} = e_{i_1} \lrcorner \eta$<br>
-$\eta_{i_1 ... i_n} = (e_{i_1} \otimes ... \otimes e_{i_n}) \lrcorner \eta$<br>
+$\eta = \epsilon_{[i_1 ... i_n]} e^{i_1} \otimes ... \otimes e^{i_n}$<br>
+$\eta = \epsilon_{i_1 ... i_n} e^{i_1} \otimes ... \otimes e^{i_n}$<br>
 <br>
 
-TODO is it true that $\eta_i = \star e^i$?  Not exactly ...?<br>
+Notice that $\eta$ is a n-form, so its components are:<br>
+$\eta = (\eta)_{i_1 ... i_n} e^{i_1} \otimes ... \otimes e^{i_n}$<br>
+So $(\eta)_{i_1 ... i_n} = \epsilon_{i_1 ... i_n}$<br>
+<br>
+
+Next comes our volume (n-1)-forms:<br>
+$\eta_{i_1} = e_{i_1} \lrcorner \eta$<br>
+$= \epsilon_{j_1 ... j_n} (e^{j_1} \otimes ... \otimes e^{j_n}) (e_{i_1})$<br>
+$= \epsilon_{j_1 ... j_n} e^{j_1} (e_{j_1}) \cdot e^{j_2} \otimes ... \otimes e^{j_n}$<br>
+$= \epsilon_{j_1 ... j_n} \delta^{j_1}_{i_1} \cdot e^{j_2} \otimes ... \otimes e^{j_n}$<br>
+$= \epsilon_{i_1 j_2 ... j_n} e^{j_2} \otimes ... \otimes e^{j_n}$<br>
+$= \epsilon_{i_1 j_2 ... j_n} e^{[j_2} \otimes ... \otimes e^{j_n]}$<br>
+$= \frac{1}{(n-1)!} \epsilon_{i_1 j_2 ... j_n} e^{j_2} \wedge ... \wedge e^{j_n}$<br>
+So $\eta_i$ is a (n-1)-form that spans all except the i'th dimension.<br>
+<br>
+
+So keep going, to define our (n-k)-forms:<br>
+$\eta_I = e_I \lrcorner \eta$<br>
+$\eta_{i_1 ... i_k} = (e_{i_1} \otimes ... \otimes e_{i_k}) \lrcorner \eta$<br>
+$= \epsilon_{i_1 ... i_k j_{k+1} ... j_n} e^{j_{k+1}} \otimes ... \otimes e^{j_n}$<br>
+$= \epsilon_{i_1 ... i_k j_{k+1} ... j_n} e^{[j_{k+1}} \otimes ... \otimes e^{j_n]}$<br>
+$= \frac{1}{(n-k)!} \epsilon_{i_1 ... i_k j_{k+1} ... j_n} e^{j_{k+1}} \wedge ... \wedge e^{j_n}$<br>
+So $\eta_I$ is the (n-k)-form that spans all except the $i_1 ... i_k$ dimensions.<br>
+<br>
+
+Until we get to our 1-form:<br>
+$\eta_{i_1 ... i_n} = (e_{i_1} \otimes ... \otimes e_{i_n}) \lrcorner \eta$<br>
+$\eta_{i_1 ... i_n} = \epsilon_{i_1 ... i_n}$<br>
 <br>
 
 <a href='.'>Back</a><br><br>
