@@ -38,7 +38,14 @@ This means, if the coefficients are written as a matrix $[g_{ab}]$, then the coe
 Raising / lowering indexes:<br>
 Contravariant form is defined as: $v^a = g^{ab} v_b$<br>
 Covariant form is defined as: $v_a = g_{ab} v^b$<br>
+<br>
+
 Notice the equivalence: $v = v^a e_a = v_b g^{bc} g_{ca} e^a = v_b \delta^b_a e^a = v_a e^a$<br>
+However notice that $e^a$ is a vector, while $e_a$ is a one-form, which is a function $V \rightarrow \mathbb{R}$.<br>
+Let $v^\sharp$ denote when to represent v as $v^a e_a$.<br>
+Let $v^\flat$ denote when to represent v as $v_a e^a$.<br>
+True for multiple indexes too?<br>
+So for $T = {T^I}_J {e_I}^J$, $T^\sharp = T^{IJ} e_{IJ}$, and $T^\flat = T_{IJ} e^{IJ}$<br>
 <br>
 
 Chaning component of coordinate basis:<br>
@@ -72,20 +79,21 @@ $e = \sqrt{\frac{\tilde{g}}{g}}$<br>
 <br>
 
 All metrics can be diagonalized into a signature metric.<br>
-Let $\eta_{IJ} = diag(signature)$, where $signature$ is the metric signature.<br>
-Let $\sigma$ be the product of all signatures.<br>
-Euclidian signature: 1, 1, 1; $\sigma = 1$<br>
-Lorentzian signature for particle physicists: +1, -1, -1, 1; $\sigma = -1$<br>
-Lorentzian signature for cosmologists: -1, +1, +1, +1; $\sigma = -1$<br>
+Let $\eta_{ij} = diag(\sigma_i) = \delta_{ij} \cdot \sigma_i$, where $\sigma_i = \pm 1$.<br>
+Let its signature be $\sigma = \overset{n}{\underset{i=1}{\Pi}} \sigma_i = det[\eta_{ij}] = \pm 1$.<br>
+Euclidian diagonalization: $\sigma_i = \{1, 1, 1\}; \sigma = 1$<br>
+Lorentzian signature for particle physicists: $\sigma = \{+1, -1, -1, 1\}; \sigma = -1$<br>
+Lorentzian signature for cosmologists: $\sigma = \{-1, +1, +1, +1\}; \sigma = -1$<br>
 <br>
 
-Any $e_a$ coordinate basis can be transformed into an $e_I = {e^a}_I e_a$ non-coordinate basis, such that $e_I \cdot e_J = \eta_{IJ}$, where $IJK$ is associated with the diagonalized metric coordinates.<br>
+Any $e_a$ coordinate basis can be transformed into an $(e')_i = {(e')^a}_i e_a$ non-coordinate basis, 
+such that $(e')_i \cdot (e')_j = \eta_{ij}$.<br>
 In fact, if the metric is eigen-decomposed, then any number of $Q$ exist such that $Q V Q^{-1} = G$.<br>
-This means that, while the $IJK$ have a Minkowski signature, they may not necessarily be holonomic ... and therefore will have structure constants ... <br>
+This means that, while the basis $(e')_i$ has a Minkowski signature, they may not necessarily be holonomic ... and therefore will have structure constants ... <br>
 Structure constants imply asymmetric connection on the 2nd and 3rd indexes, and a constant (Minkowski) metric as well implies antisymmetric on the 2nd and 3rd indexes.<br>
 <br>
 
-How about uniqueness?  For a specific $\eta_{IJ}$ diagonalization, there should be a unique ${e^a}_I$ transformation from the coordinate basis $\partial_a$ to the non-coordinate $e_I = {e^a}_I \partial_a$.<br>
+How about uniqueness?  For a specific $\eta_{ij}$ diagonalization, there should be a unique ${(e')^a}_i$ transformation from the coordinate basis $\partial_a$ to the non-coordinate $(e')_i = {(e')e^a}_i \partial_a$.<br>
 <br>
 
 <hr>

@@ -89,62 +89,51 @@ Comma / semicolon derivatives aren't used so often anymore, probably because it 
 ... and derivatives like the exterior derivative add the new $e^a \wedge$ to the left hand side as well ... maybe for consistency or for other reasons, $\nabla$ applies $e_a \otimes$ to the left hand side as well.<br>
 <br>
 
-The idea of partial-application of forms is a useful one.<br>
-The rule is usually apply the left-most vectors to the left-most forms:<br>
+left interior product partial-application of forms:<br>
 p-form applies to a q-vector, when p &gt; q:<br>
 $
-e^{a_1} \otimes ... \otimes e^{a_p} ( e_{b_1} \otimes ... \otimes e_{b_q} )
+e_B \lrcorner e^A
+= (e_{b_1} \otimes ... \otimes e_{b_q}) \lrcorner (e^{a_1} \otimes ... \otimes e^{a_p})
+= e^{a_1} \otimes ... \otimes e^{a_p} ( e_{b_1} \otimes ... \otimes e_{b_q} )
 = e^{a_1} \otimes ... \otimes e^{a_p} ( e_{b_1}, ... , e_{b_q} )
 = e^{a_1} \otimes ... \otimes e^{a_q} \otimes e^{a_{q+1}} \otimes ... \otimes e^{a_p} ( e_{b_1}, ... , e_{b_q} )
 = e^{a_{q+1}} \otimes ... \otimes e^{a_p} \cdot \overset{q}{\underset{i=1}{\Pi}} \delta^{a_i}_{b_i}
 $<br>
 p-form applies to a q-form when p &lt; q:<br>
 $
-e^{a_1} \otimes ... \otimes e^{a_p} ( e_{b_1} \otimes ... \otimes e_{b_q} )
+e_B \lrcorner e^A
+= (e_{b_1} \otimes ... \otimes e_{b_q}) \lrcorner (e^{a_1} \otimes ... \otimes e^{a_p})
+= e^{a_1} \otimes ... \otimes e^{a_p} ( e_{b_1} \otimes ... \otimes e_{b_q} )
 = e^{a_1} \otimes ... \otimes e^{a_p} ( e_{b_1}, ... , e_{b_q} )
 = e^{a_1} \otimes ... \otimes e^{a_p} ( e_{b_1}, ... , e_{b_p}, e_{b_{p+1}}, ..., e_{b_q} )
 = e_{b_{p+1}} \otimes ... \otimes e_{b_q} \cdot \overset{p}{\underset{i=1}{\Pi}} \delta^{a_i}_{b_i}
 $<br>
 
-In multi-index notation, I'm not sure how to represent unions of sets of indexes.  Should I use $\oplus$ to be like the tangent-space notation?  Should I use $\cup$ since it is a union of sets of indexes?<br>
-$e^{A \oplus C}(e_B) = e^A(e_B) \cdot e^C = \overset{q}{\underset{i=1}{\Pi}} \delta^{a_i}_{b_i} \cdot e^C$<br>
-$e^A(e_{B \oplus C}) = e^A(e_B) \cdot e_C = \overset{p}{\underset{i=1}{\Pi}} \delta^{a_i}_{b_i} \cdot e_C$<br>
+In multi-index notation, I'm not sure how to represent unions of sets of indexes.<br>
+$e_B \lrcorner e^{A C} = e^{A C}(e_B) = e^A(e_B) \cdot e^C = \overset{q}{\underset{i=1}{\Pi}} \delta^{a_i}_{b_i} \cdot e^C$<br>
+$e_{B C} \lrcorner e^A = e^A(e_{B C}) = e^A(e_B) \cdot e_C = \overset{p}{\underset{i=1}{\Pi}} \delta^{a_i}_{b_i} \cdot e_C$<br>
 <br>
 
-Partial-application of one-form functions with vector inputs is a generalization of the interior product:<br>
-$x \lrcorner a = a(x)$ for and vector x and k-form a.<br>
-$= \frac{1}{k!} a_{i_1 ... i_k} e^{i_1} \wedge ... \wedge e^{i_k} (x^j e_j)$<br>
-$= x^j a_{i_1 ... i_k} e^{[i_1} \otimes ... \otimes e^{i_k]} (e_j)$<br>
-$= x^j a_{[i_1 ... i_k]} e^{i_1} \otimes ... \otimes e^{i_k} (e_j)$<br>
-$= x^j a_{[i_1 ... i_k]} e^{i_1}(e_j) \cdot e^{i_2} \otimes ... \otimes e^{i_k}$<br>
-$= x^j a_{[i_1 ... i_k]} \delta^{i_1}_j e^{i_2} \otimes ... \otimes e^{i_k}$<br>
-$= x^{i_1} a_{[i_1 ... i_k]} e^{i_2} \otimes ... \otimes e^{i_k}$<br>
-$= \frac{1}{(k-1)!} x^{i_1} a_{[i_1 ... i_k]} e^{i_2} \wedge ... \wedge e^{i_k}$<br>
-$= x^{i_1} a_{i_1 [i_2 ... i_k]} e^{i_2} \wedge ... \wedge e^{i_k}$<br>
-TODO explain better where the $\frac{1}{(k-1)!}$ goes.<br>
+Interior product of a vector with a (0 k) tensor:<br>
+$x \lrcorner a$<br>
+$= a_{i_1 ... i_k} (e^{i_1} \otimes ... \otimes e^{i_k}) (x^j e_j)$<br>
+$= a_{i_1 ... i_k} e^{i_1} (x^j e_j) \cdot e^{i_2} \otimes ... \otimes e^{i_k})$<br>
+$= a_{i_1 ... i_k} x^j \delta^{i_1}_j \cdot e^{i_2} \otimes ... \otimes e^{i_k})$<br>
+$= x^{i_1} a_{i_1 ... i_k} e^{i_2} \otimes ... \otimes e^{i_k}$<br>
 <br>
 
-Ok so I might just use the interior product for partial application everywhere rather than require it to only operate on totally-antisymmetric k-forms.<br>
-$x \lrcorner a = a(x) = x^{i_1} a_{[i_1 ... i_k]} e^{i_2} \otimes ... \otimes e^{i_k}$<br>
-... due to the fact that $e^{\wedge I} = k! e^{[I]}$<br>
-Now if $a = a_{i_1 ... i_k} e^{i_1} $ were a k-form, i.e. a totally-antisymmetric (0 k) tensor, then we would have equally:<br>
-$x \lrcorner a = a(x) = x^{i_1} a_{i_1 ... i_k} e^{i_2} \otimes ... \otimes e^{i_k}$<br>
-So lets just generalize the interior product to be, the partial-application operator for vectors x on (0 k) tensors:<br>
-$x \lrcorner a = a(x) = x^{i_1} a_{i_1 ... i_k} e^{i_2} \otimes ... \otimes e^{i_k}$<br>
-Then the old k-form-specific definition still sticks.<br>
-<br>
-
-So for k-form w and vectors $x_i \in \{x_1 ...x_k\}$, $(x_1 \lrcorner w)(x_2, ..., x_k) = w(x_1, x_2, ..., x_k)$<br>
-Also for vectors x and y and k-form w:<Br>
-$x \lrcorner y \lrcorner w = -y \lrcorner x \lrcorner w$<br>
-$x \lrcorner x \lrcorner w = 0$ by antisymmetry of k-form indexes.<br>
-<br>
-
-TODO how about k-vectors on k-forms?<br>
+how about outer of vectors on (0 k)-tensor?<br>
 $(x \otimes y) \lrcorner w = y \lrcorner x \lrcorner w$<br>
-Also, if the wedge product of vectors (i.e. vector-valued 0-forms) is symmetric, this is the same as(?):<br>
-$(x \otimes y) \lrcorner w = (x \wedge y) \lrcorner w = y \lrcorner x \lrcorner w$<br>
-I guess that depends, if it is symmetric, how to define $\wedge$ wrt $\otimes$ for vectors?  Same weight as for forms? k!?<br>
+<br>
+
+how about (p 0) tensor on (0 q) tensor, for p &le; q:<br>
+$x \lrcorner a$<br>
+$= x^{i_1 ... i_p} a_{i_1 ... i_p i_{p+1} ... i_q} e^{i_{p+1}} \otimes ... \otimes e^{i_q}$<br>
+<br>
+
+Right interior product (not sure what the symbol is):<br>
+$e_B \llcorner e^{C A} = e^{C A}(..., e_B) = e^C \cdot e^A(e_B) = \overset{q}{\underset{i=1}{\Pi}} \delta^{a_i}_{b_i} \cdot e^C$<br>
+$e^{C B} \llcorner e^A = e^A(..., e_{C B}) = e_C \cdot e^A(e_B) = \overset{p}{\underset{i=1}{\Pi}} \delta^{a_i}_{b_i} \cdot e_C$<br>
 <br>
 
 <a href='.'>Back</a><br><br>

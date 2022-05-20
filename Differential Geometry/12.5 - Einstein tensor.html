@@ -13,9 +13,6 @@ Einstein tensor 2-degree as trace-reversal of Ricci curvature:<br>
 $ G_{ab} = R_{ab} - \frac{1}{2} R g_{ab}$<br>
 <br>
 
-TODO define this using the k-form basis $\eta_{i_1 ... i_k}$ and interior product.<br>
-<br>
-
 Riemann curvature 2-form dual:<br>
 $\Omega^{ab} = {R^{ab}}_{cd} e^c \otimes e^d = \frac{1}{2} {R^{ab}}_{cd} e^c \wedge e^d$<br>
 $\star \Omega^{ab} = \frac{1}{2} {R^{ab}}_{cd} {\epsilon^{cd}}_{ef} e^e \otimes e^f$<br>
@@ -26,6 +23,51 @@ Einstein tensor 4-degree as double-dual of Riemann curvature tensor:<br>
 $ {G^{ab}}_{cd} = {(\star R \ast)^{ab}}_{cd}$<br>
 $= \frac{1}{2} {\epsilon^{ab}}_{uv} (\star R)^{uv}$<br>
 $= \frac{1}{4} {\epsilon^{ab}}_{uv} {R^{uv}}_{rs} {\epsilon^{rs}}_{cd} $<br>
+<br>
+
+Einstein tensors and the basis k-forms:<br>
+<br>
+
+$\Omega^{ab} \wedge \eta_{ab}$<br>
+$= \frac{1}{2} {R^{ab}}_{cd} e^c \wedge e^d \wedge \frac{1}{2} \epsilon_{abuv} e^u \wedge e^v$<br>
+$= \frac{1}{4} \epsilon_{uvab} {R^{ab}}_{cd} e^u \wedge e^v \wedge e^c \wedge e^d$<br>
+<br>
+
+$\star \Omega^{ab} \wedge \eta_{ab}$<br>
+$= \frac{1}{4} {R^{ab}}_{cd} {\epsilon^{cd}}_{ef} e^e \wedge e^f \wedge \frac{1}{2} \epsilon_{abuv} e^u \wedge e^v$<br>
+$= \frac{1}{8} \epsilon_{uvab} {R^{ab}}_{cd} {\epsilon^{cd}}_{ef} e^u \wedge e^v \wedge e^e \wedge e^f$<br>
+$= \frac{1}{2} G_{uvef} e^u \wedge e^v \wedge e^e \wedge e^f$<br>
+$= 0$ because of $G_{uvef} = G_{efuv}$<br>
+<br>
+
+$\frac{1}{2} \eta_{ab} \otimes \star \Omega^{ab}$<br>
+$= \frac{1}{2} \epsilon_{abuv} e^u \otimes e_v \otimes \frac{1}{2} {R^{ab}}_{ef} {\epsilon^{ef}}_{cd} e^c \otimes e^d$<br>
+$= \frac{1}{4} \epsilon_{uvab} {R^{ab}}_{ef} {\epsilon^{ef}}_{cd} e^u \otimes e_v \otimes e^c \otimes e^d$<br>
+$= G_{uvcd} e^u \otimes e_v \otimes e^c \otimes e^d$<br>
+<br>
+
+$\frac{1}{2} \eta_{abc} \wedge \Omega^{bc}$<br>
+$= \frac{1}{2} \epsilon_{abcd} e^d \wedge \frac{1}{2} {R^{bc}}_{uv} e^u \wedge e^v$<br>
+$= \frac{1}{4} \epsilon_{adbc} {R^{bc}}_{uv} e^d \wedge e^u \wedge e^v$<br>
+...using symmetry of $R_{abcd} = R_{cdab}$...<br>
+$= \frac{1}{4} {R_{uv}}^{bc} \epsilon_{bcad} e^u \wedge e^v \wedge e^d$<br>
+$= \frac{1}{4} {R_{uv}}^{bc} \epsilon_{bcad} {\epsilon^{uvd}}_e \star e^e$ ... sign?<br>
+$= \frac{1}{4} {\epsilon^d}_{euv} {R^{uv}}_{bc} {\epsilon^{bc}}_{ad} \star e^e$<br>
+$= {G^d}_{ead} \star e^e$<br>
+$= {G^d}_{eda} \star e^e$<br>
+$= G_{ea} \star e^e$<br>
+... by symmetry?<br>
+$= G_{ab} \star e^b$<br>
+so $\star (\eta_{abc} \wedge \Omega^{bc}) = G_{ab} e^b$ ... maybe with a factor or something?<br>
+<br>
+
+$\eta_{abc} \wedge \star \Omega^{bc}$<br>
+$= \epsilon_{abcd} e^d \wedge \frac{1}{4} {R^{bc}}_{ef} {\epsilon^{ef}}_{uv} e^u \wedge e^v$<br>
+$= \frac{1}{4} \epsilon_{adbc} {R^{bc}}_{ef} {\epsilon^{ef}}_{uv} e^d \wedge e^u \wedge e^v$<br>
+$= G_{aduv} e^d \wedge e^u \wedge e^v$<br>
+$= G_{a[duv]} e^d \wedge e^u \wedge e^v$<br>
+$= G_{a[[du]v]} e^d \wedge e^u \wedge e^v$<br>
+$= 0$ or something by symmetry or something right?<br>
 <br>
 
 Einstein tensor 4-degree as dual of Riemann curvature 2-form:<br>
@@ -96,13 +138,13 @@ $-g^{va} (d^2 e_v) (e_a)
 $<br>
 <br>
 
-Jury is still out on partial application of one-forms to vectors-wedge-one-forms:<br>
-$e^a ( e_b \wedge e^c ) = \delta^a_b e^c$<br>
+Jury is still out on interior product of one-forms to vectors-wedge-one-forms:<br>
+$(e_b \wedge e^c) \lrcorner e^a = e^a ( e_b \wedge e^c ) = \delta^a_b e^c$ ... right?<br>
 But if I did want to use it ...<br>
 $e^a(d^2 e_b) = e^a(e_c \wedge {\Omega^c}_b) = {\Omega^a}_b$<br>
 $g^{cb} e^a(d^2 e_c) = \Omega^{ab}$<br>
-$g^{cb} e^a(d^2 e_c) (e_u \otimes e_v) = {R^{ab}}_{uv}$<br>
-$g^{cb} (\star e^a(d^2 e_c)) (e_u \otimes e_v) = \frac{1}{2} {R^{ab}}_{cd} {\epsilon^{cd}}_{uv}$<br>
+$(e_u \otimes e_v) \lrcorner g^{cb} e^a (d^2 e_c) = g^{cb} e^a(d^2 e_c) (e_u \otimes e_v) = {R^{ab}}_{uv}$<br>
+$(e_u \otimes e_v) \lrcorner g^{cb} (\star e^a (d^2 e_c)) = g^{cb} (\star e^a(d^2 e_c)) (e_u \otimes e_v) = \frac{1}{2} {R^{ab}}_{cd} {\epsilon^{cd}}_{uv}$<br>
 $\frac{1}{2} {\epsilon^{pq}}_{ab} g^{cb} (\star e^a(d^2 e_c)) (e_u \otimes e_v) 
 	= \frac{1}{4} {\epsilon^{pq}}_{ab} {R^{ab}}_{cd} {\epsilon^{cd}}_{uv} 
 	= {G^{pq}}_{uv}$<br>
@@ -111,8 +153,10 @@ $\frac{1}{2} {\epsilon^{ua}}_{ef} g^{cf} (\star e^e(d^2 e_c)) (e_u \otimes e_b)
 	= \frac{1}{4} {\epsilon^{ua}}_{ef} {R^{ef}}_{cd} {\epsilon^{cd}}_{ub} = {G^{ua}}_{ub} = {G^a}_b$<br>
 $\frac{1}{2} {\epsilon^{ua}}_{ef} g^{cf} (\star e^e(d^2 e_c)) (e_u) 
 	= {G^a}_b e^b$<br>
-$-\frac{1}{2} {\epsilon^{uac}}_e (\star e^e(d^2 e_c)) (e_u) 
-	= {G^a}_b e^b$<br>
+$-\frac{1}{2} {\epsilon^{uac}}_e (\star e^e(d^2 e_c)) (e_u) = {G^a}_b e^b$<br>
+$-\frac{1}{2} {\epsilon^{uac}}_e e_u \lrcorner (\star e^e(d^2 e_c)) = {G^a}_b e^b$<br>
+$g^{cf} \frac{1}{2} {\epsilon_{afe}}^u e_u \lrcorner (\star e^e(d^2 e_c)) = G_{ab} e^b$<br>
+$g^{cf} \frac{1}{2} (\eta_{afe})^\sharp \lrcorner (\star e^e(d^2 e_c)) = G_{ab} e^b$<br>
 <br>
 
 Einstein tensor from exterior algebra:<br>
@@ -127,16 +171,6 @@ $= R_a - \frac{1}{2} \sigma \star (R_u \wedge \star e^u) e_a$<br>
 ... and that last $e_a$ outside the Hodge dual star is what keeps me from factoring any further ... <br>
 <br>
 
-Using the contravariant-indexed Ricci one-form:<br>
-$G^a = R^a - \frac{1}{2} e^a R^b(e_b)$<br>
-$= \delta^a_b R^b - \frac{1}{2} e^a R^b(e_b)$<br>
-$= e^a(e_b) R^b - \frac{1}{2} e^a R^b(e_b)$<br>
-$= \frac{1}{2} e^a(e_b) R^b + \frac{1}{2} e^a(e_b) R^b - \frac{1}{2} e^a R^b(e_b)$<br>
-<br>
-
-
-
-<br>
 <a href='index.html'>Back</a><br>
 	</body>
 </html>

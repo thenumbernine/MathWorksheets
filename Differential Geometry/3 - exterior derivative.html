@@ -41,36 +41,8 @@ $dx^{i_1} \wedge ... \wedge dx^{i_k} = dx^{[i_1} \otimes ... \otimes dx^{i_k]}$,
 to make it similar to the antisymmetric index notation, and to keep the weight of $\wedge$ and $\otimes$ equal.<br>
 <br>
 
-Therefore a (0 k) antisymmetric tensor in a coordinate basis has components:<br>
-$A = A_{i_1 ... i_k} dx^{i_1} \otimes ... \otimes dx^{i_k}$<br>
-$= A_{[i_1 ... i_k]} dx^{i_1} \otimes ... \otimes dx^{i_k}$<br>
-$= A_{i_1 ... i_k} dx^{[i_1} \otimes ... \otimes dx^{i_k]}$<br>
-$= \frac{1}{k!} A_{i_1 ... i_k} dx^{i_1} \wedge ... \wedge dx^{i_k}$<br>
-<br>
-
 <hr>
 <b>Wedge Product of Non-Coordinate Forms:</b><br>
-<br>
-
-Wedge product antisymmetry on any one-form:<br>
-$a \wedge b$<br>
-$= \overset{n}{\underset{i=1}{\Sigma}} (a_i dx^i) \wedge \overset{n}{\underset{j=1}{\Sigma}} (b_j dx^j)$<br>
-by wedge product linearity:<br>
-$= \overset{n}{\underset{i=1}{\Sigma}} \overset{n}{\underset{j=1}{\Sigma}} ((a_i dx^i) \wedge (b_j dx^j))$<br>
-$= \overset{n}{\underset{i=1}{\Sigma}} \overset{n}{\underset{j=1}{\Sigma}} (a_i b_j (dx^i \wedge dx^j))$<br>
-$= -\overset{n}{\underset{i=1}{\Sigma}} \overset{n}{\underset{j=1}{\Sigma}} (a_i b_j (dx^j \wedge dx^i))$<br>
-$= -\overset{n}{\underset{i=1}{\Sigma}} \overset{n}{\underset{j=1}{\Sigma}} ((b_j dx^j) \wedge (a_i dx^i))$<br>
-$= -b \wedge a$<br>
-<br>
-
-Wedge product of two identical one-forms:<br>
-$a \wedge a$<br>
-$= \overset{n}{\underset{i=1}{\Sigma}} (a_i dx^i) \wedge \overset{n}{\underset{j=1}{\Sigma}} (a_j dx^j)$<br>
-$= \overset{n}{\underset{i=1}{\Sigma}} \overset{n}{\underset{j=1}{\Sigma}} ((a_i dx^i) \wedge (a_j dx^j))$<br>
-$= \overset{n}{\underset{i=1}{\Sigma}} \overset{n}{\underset{j=1}{\Sigma}} (a_i a_j (dx^i \wedge dx^j))$<br>
-Notice that, for $i=j, dx^i \wedge dx^i = 0$, and for $i \ne j, dx^i \wedge dx^j = -dx^j \wedge dx^i$ are both summed, with identical coefficients $a_i a_j$,<br>
-Therefore we get:<Br>
-$a \wedge a = 0$<br>
 <br>
 
 Wedge product in terms of outer products:<br>
@@ -80,6 +52,27 @@ $= {e^a}_i {e^b}_j dx^i \wedge dx^j$<br>
 $= {e^a}_i {e^b}_j (dx^i \otimes dx^j - dx^j \otimes dx^i)$<br>
 $= ({e^a}_i dx^i \otimes {e^b}_j dx^j - {e^b}_j dx^j \otimes {e^a}_i dx^i)$<br>
 $= e^a \otimes e^b - e^b \otimes e^a$<br>
+<br>
+
+Wedge product antisymmetry on any one-form:<br>
+$a \wedge b$<br>
+$= \overset{n}{\underset{i=1}{\Sigma}} (a_i e^i) \wedge \overset{n}{\underset{j=1}{\Sigma}} (b_j e^j)$<br>
+by wedge product linearity:<br>
+$= \overset{n}{\underset{i=1}{\Sigma}} \overset{n}{\underset{j=1}{\Sigma}} ((a_i e^i) \wedge (b_j e^j))$<br>
+$= \overset{n}{\underset{i=1}{\Sigma}} \overset{n}{\underset{j=1}{\Sigma}} (a_i b_j (e^i \wedge e^j))$<br>
+$= -\overset{n}{\underset{i=1}{\Sigma}} \overset{n}{\underset{j=1}{\Sigma}} (a_i b_j (e^j \wedge e^i))$<br>
+$= -\overset{n}{\underset{i=1}{\Sigma}} \overset{n}{\underset{j=1}{\Sigma}} ((b_j e^j) \wedge (a_i e^i))$<br>
+$= -b \wedge a$<br>
+<br>
+
+Wedge product of two identical one-forms:<br>
+$a \wedge a$<br>
+$= \overset{n}{\underset{i=1}{\Sigma}} (a_i e^i) \wedge \overset{n}{\underset{j=1}{\Sigma}} (a_j e^j)$<br>
+$= \overset{n}{\underset{i=1}{\Sigma}} \overset{n}{\underset{j=1}{\Sigma}} ((a_i e^i) \wedge (a_j e^j))$<br>
+$= \overset{n}{\underset{i=1}{\Sigma}} \overset{n}{\underset{j=1}{\Sigma}} (a_i a_j (e^i \wedge e^j))$<br>
+Notice that, for $i=j, e^i \wedge e^i = 0$, and for $i \ne j, e^i \wedge e^j = -e^j \wedge e^i$ are both summed, with identical coefficients $a_i a_j$,<br>
+Therefore we get:<Br>
+$a \wedge a = 0$<br>
 <br>
 
 TODO prove: Wedge product linearity, for scalar $\alpha$:<br>
@@ -170,6 +163,45 @@ $= ( e_a (e_b (\phi)) - e_b (e_a(\phi)) ) e^a \otimes e^b$<br>
 $= e_a (e_b (\phi)) (e^a \otimes e^b - e^b \otimes e^a)$<br>
 $= e_a (e_b (\phi)) e^a \wedge e^b$<br>
 <br>
+
+A (0 k) antisymmetric tensor in a coordinate basis has components:<br>
+$a = a_{i_1 ... i_k} e^{i_1} \otimes ... \otimes e^{i_k}$<br>
+$= a_{[i_1 ... i_k]} e^{i_1} \otimes ... \otimes e^{i_k}$<br>
+$= a_{i_1 ... i_k} e^{[i_1} \otimes ... \otimes e^{i_k]}$<br>
+$= \frac{1}{k!} a_{i_1 ... i_k} e^{i_1} \wedge ... \wedge e^{i_k}$<br>
+$= \frac{1}{k!} a_I e^{\wedge I}$<br>
+<br>
+
+For a (0 k) antisymmetric tensor, this $\frac{1}{k!}$ isn't needed if you only sum the increasing indexes, since this excludes all duplicate sums with the antisymmetric basis:<br>
+$a = a_{i_1 ... i_k} e^{i_1} \otimes ... \otimes e^{i_k}$<br>
+$= \underset{i_1 &lt; i_2 &lt; ... &lt; i_k}{\Sigma} a_{i_1 ... i_k} e^{i_1} \wedge ... \wedge e^{i_k}$<br>
+$= a_{|i_1 ... i_k|} e^{i_1} \wedge ... \wedge e^{i_k}$<br>
+$= a_{|I|} e^{\wedge I}$<br>
+<br>
+
+Notice that, despite the $\frac{1}{k!}$ in front of it, the application of a form to a vector is still the same:<br>
+TODO does this influence the definition of the interior product?<br>
+$x \lrcorner a = x \lrcorner \frac{1}{k!} a_{i_1 ... i_k} (e^{i_1} \wedge ... \wedge e^{i_k})$<br>
+$= a_{i_1 ... i_k} x \lrcorner (e^{[i_1} \otimes ... \otimes e^{i_k]})$<br>
+$= a_{[i_1 ... i_k]} x \lrcorner (e^{i_1} \otimes ... \otimes e^{i_k})$<br>
+$= x^{i_1} a_{[i_1 ... i_k]} e^{i_2} \otimes ... \otimes e^{i_k}$<br>
+$= x^{i_1} a_{i_1 [i_2 ... i_k]} e^{i_2} \otimes ... \otimes e^{i_k}$<br>
+$= x^{i_1} a_{i_1 ... i_k} e^{[i_2} \otimes ... \otimes e^{i_k]}$<br>
+$= \frac{1}{(k-1)!} x^{i_1} a_{i_1 ... i_k} e^{[i_2} \wedge ... \wedge e^{i_k]}$<br>
+<br>
+
+Notice that thanks to this $k!$ we get the definition of a p-form and a q-form wedged together as:<br>
+$a \wedge b$<br>
+$= \frac{1}{p!} a_{i_1 ... i_p} e^{i_1} \wedge ... \wedge e^{i_p} \wedge \frac{1}{q!} b_{j_1 ... j_q} e^{j_1} \wedge ... \wedge e^{j_q}$<br>
+$= a_{i_1 ... i_p} e^{[i_1} \otimes ... \otimes e^{i_p]} \otimes b_{j_1 ... j_q} e^{[j_1} \otimes ... \otimes e^{j_q]}$<br>
+$= a_{[i_1 ... i_p]} e^{i_1} \otimes ... \otimes e^{i_p} \otimes b_{[j_1 ... j_q]} e^{j_1} \otimes ... \otimes e^{j_q}$<br>
+$= a_{[i_1 ... i_p]} b_{[j_1 ... j_q]} e^{i_1} \otimes ... \otimes e^{i_p} \otimes e^{j_1} \otimes ... \otimes e^{j_q}$<br>
+$= a_{[i_1 ... i_p} b_{j_1 ... j_q]} e^{i_1} \otimes ... \otimes e^{i_p} \otimes e^{j_1} \otimes ... \otimes e^{j_q}$<br>
+$= a_{i_1 ... i_p} b_{j_1 ... j_q} e^{[i_1} \otimes ... \otimes e^{i_p} \otimes e^{j_1} \otimes ... \otimes e^{j_q]}$<br>
+$= \frac{1}{(p+q)!} a_{i_1 ... i_p} b_{j_1 ... j_q} e^{i_1} \wedge ... \wedge e^{i_p} \wedge e^{j_1} \wedge ... \wedge e^{j_q}$<br>
+TODO check terms here.<br>
+<br>
+
 
 <hr>
 <b>Exterior derivative</b><br>
@@ -371,6 +403,36 @@ $<br>
 TODO finishme.<br>
 I bet you end up with $e_i (e_j(...)) - {c_{ij}}^k ...$, the first turns to c's, and somehow they all cancel out.<br>
 Also maybe $e(c)$ goes away because it is really just $e_a([e_b,e_c]) e^a \wedge e^b \wedge e^c = (e_a(e_b(e_c)) - e_a(e_c(e_b))) e^a \wedge e^b \wedge e^c$ so we have symmetric and antisymmetric summed which should cancel.<br>
+<br>
+
+Partial-application of k-form is a generalization of the interior product:<br>
+$x \lrcorner a = a(x)$ for and vector x and k-form a.<br>
+$= x \lrcorner \frac{1}{k!} a_{i_1 ... i_k} e^{i_1} \wedge ... \wedge e^{i_k}$<br>
+$= x \lrcorner a_{i_1 ... i_k} e^{[i_1} \otimes ... \otimes e^{i_k]}$<br>
+$= x \lrcorner a_{[i_1 ... i_k]} e^{i_1} \otimes ... \otimes e^{i_k}$<br>
+$= x^{i_1} a_{[i_1 i_2 ... i_k]} e^{i_2} \otimes ... \otimes e^{i_k}$<br>
+$= x^{i_1} a_{i_1 [i_2 ... i_k]} e^{i_2} \otimes ... \otimes e^{i_k}$<br>
+since a is a k-form, a's indexes are antisymmetric:<br>
+$= x^{i_1} a_{i_1 [i_2 ... i_k]} e^{i_2} \otimes ... \otimes e^{i_k}$<br>
+$= x^{i_1} a_{i_1 i_2 ... i_k} e^{[i_2} \otimes ... \otimes e^{i_k]}$<br>
+use the identity of outer product to wedge product:<br>
+$= \frac{1}{(k-1)!} x^{i_1} a_{i_1 i_2 ... i_k} e^{i_2} \wedge ... \wedge e^{i_k}$<br>
+Mind you these $\frac{1}{k!}$ products are scaled out in the application of the k-form to a vector thanks to the wedge product definition with regards to the outer product.<br>
+<br>
+
+So for k-form w and vectors $x_i \in \{x_1 ...x_k\}$, $(x_1 \lrcorner w)(x_2, ..., x_k) = w(x_1, x_2, ..., x_k)$<br>
+Also for vectors x and y and k-form w:<Br>
+$x \lrcorner y \lrcorner w = -y \lrcorner x \lrcorner w$<br>
+$x \lrcorner x \lrcorner w = 0$ by antisymmetry of k-form indexes.<br>
+<br>
+
+TODO, for vector x, p-form b, and q-form c:<br>
+$x \lrcorner (b \wedge c) = (x \lrcorner b) \wedge c + (-1)^p b \wedge (x \lrcorner c)$<br>
+<br>
+
+Also, if the wedge product of vectors (i.e. vector-valued 0-forms) is symmetric, this is the same as(?):<br>
+$(x \otimes y) \lrcorner w = (x \wedge y) \lrcorner w = y \lrcorner x \lrcorner w$<br>
+I guess that depends, if it is symmetric, how to define $\wedge$ wrt $\otimes$ for vectors?  Same weight as for forms? k!?<br>
 <br>
 
 <a href='.'>Back</a><br><br>
