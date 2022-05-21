@@ -71,25 +71,42 @@ $= \overset{n}{\underset{i=1}{\Sigma}} (a_i e^i) \wedge \overset{n}{\underset{j=
 $= \overset{n}{\underset{i=1}{\Sigma}} \overset{n}{\underset{j=1}{\Sigma}} ((a_i e^i) \wedge (a_j e^j))$<br>
 $= \overset{n}{\underset{i=1}{\Sigma}} \overset{n}{\underset{j=1}{\Sigma}} (a_i a_j (e^i \wedge e^j))$<br>
 Notice that, for $i=j, e^i \wedge e^i = 0$, and for $i \ne j, e^i \wedge e^j = -e^j \wedge e^i$ are both summed, with identical coefficients $a_i a_j$,<br>
-Therefore we get:<Br>
+Therefore we get:<br>
 $a \wedge a = 0$<br>
 <br>
 
-TODO prove: Wedge product linearity, for scalar $\alpha$:<br>
+TODO prove: Wedge product linearity, for scalar $\alpha$, for non-coordinate basis, based on the coordinate basis.:<br>
 $(\alpha e^a + e^b) \wedge e^c = \alpha (e^a \wedge e^c) + e^b \wedge e^c$<br>
 <br>
 
-Wedge product antisymmetry for p-form $a$ and q-form $b$:<br>
+A k-form, i.e. a (0 k) antisymmetric tensor has components:<br>
+$a = a_{i_1 ... i_k} e^{i_1} \otimes ... \otimes e^{i_k}$<br>
+$= a_{[i_1 ... i_k]} e^{i_1} \otimes ... \otimes e^{i_k}$<br>
+$= a_{i_1 ... i_k} e^{[i_1} \otimes ... \otimes e^{i_k]}$<br>
+$= \frac{1}{k!} a_{i_1 ... i_k} e^{i_1} \wedge ... \wedge e^{i_k}$<br>
+$= \frac{1}{k!} a_I e^{\wedge I}$<br>
+<br>
+
+For a k-form, i.e. a (0 k) antisymmetric tensor, this $\frac{1}{k!}$ isn't needed if you only sum the increasing indexes, since this excludes all duplicate sums with the antisymmetric basis:<br>
+$a = a_{i_1 ... i_k} e^{i_1} \otimes ... \otimes e^{i_k}$<br>
+$= \underset{i_1 &lt; i_2 &lt; ... &lt; i_k}{\Sigma} a_{i_1 ... i_k} e^{i_1} \wedge ... \wedge e^{i_k}$<br>
+$= a_{|i_1 ... i_k|} e^{i_1} \wedge ... \wedge e^{i_k}$<br>
+$= a_{|I|} e^{\wedge I}$<br>
+<br>
+
+Wedge product antisymmetry for p-form (i.e. (0 p) antisymmetric tensor) a and q-form (i.e. (0 q) antisymmetric tensor) b:<br>
 $ a \wedge b $<br>
-$ = (a_{u_1 ... u_p} e^{u_1} \wedge ... \wedge e^{u_p}) \wedge (b_{v_1 ... v_q} e^{v_1} \wedge ... \wedge e^{v_q}) $<br>
+$ = (\frac{1}{p!} a_{u_1 ... u_p} e^{u_1} \wedge ... \wedge e^{u_p}) 
+	\wedge (\frac{1}{q!} b_{v_1 ... v_q} e^{v_1} \wedge ... \wedge e^{v_q}) $<br>
 if any of $ u_1 ... u_p, v_q ... v_q $ are not unique then the result is zero (courtesy of $ e^u \wedge e^u = 0 $ ).<br>
 Otherwise:<br>
-$ = a_{u_1 ... u_p} b_{v_1 ... v_q} (e^{u_1} \wedge ... \wedge e^{u_p}) \wedge (e^{v_1} \wedge ... \wedge e^{v_q}) $<br>
+$ = \frac{1}{p!q!} a_{u_1 ... u_p} b_{v_1 ... v_q} (e^{u_1} \wedge ... \wedge e^{u_p}) \wedge (e^{v_1} \wedge ... \wedge e^{v_q}) $<br>
 Rotate the first $ e^{v_1} $ to the far left side using $ e^u \wedge e^v = -e^v \wedge e^u $.  Doing so requires $p$ applications of the rule.<br>
-$ = (-1)^p a_{u_1 ... u_p} b_{v_1 ... v_q} e^{v_1} \wedge (e^{u_1} \wedge ... \wedge e^{u_p}) \wedge e^{v_2} \wedge ... \wedge e^{v_q} $<br>
+$ = (-1)^p \frac{1}{p!q!} a_{u_1 ... u_p} b_{v_1 ... v_q} e^{v_1} \wedge (e^{u_1} \wedge ... \wedge e^{u_p}) \wedge e^{v_2} \wedge ... \wedge e^{v_q} $<br>
 Continue to do the same for the rest of the $e^{v_k}$'s, doung so a number of $q$ times:<br>
-$ = (-1)^{pq} a_{u_1 ... u_p} b_{v_1 ... v_q} (e^{v_1} \wedge ... \wedge e^{v_q}) \wedge (e^{u_1} \wedge ... \wedge e^{u_p}) $<br>
-$ = (-1)^{pq} (b_{v_1 ... v_q} e^{v_1} \wedge ... \wedge e^{v_q}) \wedge (a_{u_1 ... u_p} e^{u_1} \wedge ... \wedge e^{u_p}) $<br>
+$ = (-1)^{pq} \frac{1}{p!q!} a_{u_1 ... u_p} b_{v_1 ... v_q} (e^{v_1} \wedge ... \wedge e^{v_q}) \wedge (e^{u_1} \wedge ... \wedge e^{u_p}) $<br>
+$ = (-1)^{pq} (\frac{1}{q!} b_{v_1 ... v_q} e^{v_1} \wedge ... \wedge e^{v_q}) 
+	\wedge (\frac{1}{p!} a_{u_1 ... u_p} e^{u_1} \wedge ... \wedge e^{u_p}) $<br>
 $ = (-1)^{pq} b \wedge a $<br>
 <br>
 
@@ -98,8 +115,12 @@ $a w = a \wedge w = w \wedge a = w a$<br>
 This means the wedge product of scalars and k-forms can act interoperable with scalar multiplication of k-forms.<br>
 <br>
 
-For one-forms, our basis is a 1-form $e^a$ and our scalar components $w_a$ are 0-forms, so this still works:<br> 
+For one-forms, our basis is a 1-form $e^a$ and our scalar components $w_a$ are 0-forms, so this works for scalar multiplication too:<br> 
 $w = w_a e^a = w_a \wedge e^a = e^a \wedge w_a$<br>
+<br>
+
+<hr>
+<b>wedge product and vector-valued forms:</b><br>
 <br>
 
 Treat our vector basis $e_a$ as vector-valued 0-forms.<br>
@@ -108,34 +129,71 @@ Therefore our scalar component representation of our vectors $v = v^a e_a$ can a
 $v = v^a \wedge e_a = e_a \wedge v^a$<br>
 <br>
 
-Also notice that, if our vectors are considered vector-valued 0-forms, we get:<br>
-$e_a \wedge e_b = e_b \wedge e_a$<br>
-It seems that the wedge product is symmetric when used on vectors.<br>
-This would mean the $\otimes$ definition of wedge products, $e^{i_1} \wedge ... \wedge e^{i_k} = k! e^{[i_1} \otimes ... \otimes e^{i_k]}$ is only be true when applied to one-forms.<br>
-For vectors would it be $e_a \wedge e_b = e_a \otimes e_b$?  Well, no, since $\otimes$ isn't symmetric.<br>
-Maybe $e_a \wedge e_b = e_{(a} \otimes e_{b)}$.<br>
-Or, to keep weighting consistent with the $\wedge$-vs-$\otimes$, should it be $e_a \wedge e_b = 2! e_{(a} \otimes e_{b)} = e_a \otimes e_b + e_b \otimes e_a$?<br>
+For summing p distinct antisymmetric indexes:<br>
+$A_{|a_1 ... a_p|} \delta^{|a_1 ... a_p| b_1 ... b_q}_{c_1 ... ... c_{p+q}}$<br>
+$= \frac{1}{p!} A_{a_1 ... a_p} \delta^{a_1 ... a_p b_1 ... b_q}_{c_1 ... c_p c_{p+1} ... c_{p+q}}$<br>
 <br>
 
-Wedge products and forms in terms of index notation<br>
-For p-form A:<br>
-$\frac{1}{p!} A_{a_1 ... a_p} \delta^{a_1 ... a_p b_1 ... b_p}_{c_1 ... c_p c_{p+1} ... c_{p+q}}$
-$= \underset{a_1 &lt; a_2 &lt; ... &lt; a_p}{\Sigma} A_{a_1 ... a_p} \delta^{a_1 ... a_p b_1 ... b_p}_{c_1 ... ... c_{p+q}}$
-$=A_{|a_1 ... a_p|} \delta^{a_1 ... a_p b_1 ... b_p}_{c_1 ...... c_{p+q}}$
+Wedge product of p-form i.e. (0 p) antisymmetric tensor a, and q-form i.e. (0 q) antisymmetric tensor b:<br>
+(TODO change this to work for all (0 p) tensors, antisymmetric or not.)<br>
+(Btw also define somewhere the mapping from (0 p) tensor space to p-form wedge product space.)<br>
+(TODO also, is it always true that $a_{|i_1 ... i_p|} = a_{|[i_1 ... i_p]|}$?)<br>
+(TODO also, what about $a_{[i_1 ... i_p]} b_{[j_1 ... j_q]}$ vs $a_{[i_1 ... i_p} b_{j_1 ... j_q]}$?  Though this isn't as important because it is always paired with a wedge basis or a generalized Kronecher delta, which is always antisymmetric across all the product indexes anyways.)<br>
+$a \wedge b$<br>
+$= (a_{i_1 ... i_p} e^{i_1} \otimes ... \otimes e^{i_p})
+	\wedge (b_{j_1 ... j_q} e^{j_1} \otimes ... \otimes e^{j_q})$<br>
+$= \frac{1}{p!} a_{i_1 ... i_p} e^{i_1} \wedge ... \wedge e^{i_p} 
+	\wedge \frac{1}{q!} b_{j_1 ... j_q} e^{j_1} \wedge ... \wedge e^{j_q}$<br>
+$= a_{|i_1 ... i_p|} e^{|i_1} \wedge ... \wedge e^{i_p|}
+	\wedge b_{|j_1 ... j_q|} e^{|j_1} \wedge ... \wedge e^{j_q|}$<br>
+$= \frac{1}{p!q!} a_{i_1 ... i_p} b_{j_1 ... j_q} e^{i_1} \wedge ... \wedge e^{i_p} \wedge e^{j_1} \wedge ... \wedge e^{j_q}$<br>
+$= \frac{(p+q)!}{p!q!} a_{|i_1 ... i_p} b_{j_1 ... j_q|} e^{|i_1} \wedge ... \wedge e^{i_p} \wedge e^{j_1} \wedge ... \wedge e^{j_q|}$<br>
+$= \frac{(p+q)!}{p!q!} a_{i_1 ... i_p} b_{j_1 ... j_q} e^{[i_1} \otimes ... \otimes e^{i_p} \otimes e^{j_1} \otimes ... \otimes e^{j_q]}$<br>
+$= \frac{(p+q)!}{p!q!} a_{[i_1 ... i_p} b_{j_1 ... j_q]} e^{i_1} \otimes ... \otimes e^{i_p} \otimes e^{j_1} \otimes ... \otimes e^{j_q}$<br>
 <br>
-$\delta^{a_1 ... a_p b_1 ... b_q}_{c_1 ... ... c_{p+q}} \delta^{u_1 ... u_q}_{|b_1 ... b_q|}
-= \delta^{a_1 ... a_p u_1 ... u_q}_{c_1 ... ... c_{p+q}}$
+
+Can also be thought of as:<br>
+$= 
+	a_{|i_1 ... i_p|} b_{|j_1 ... j_q|}
+	\delta^{|i_1 ... i_p| |j_1 ... j_q|}_{k_1 ... k_p k_{p+1} ... k_{p+q}} 
+	 e^{k_1} \otimes ... \otimes e^{k_{p+q}}
+$<br>
+$= 
+	\frac{1}{p!q!} a_{i_1 ... i_p} b_{j_1 ... j_q}
+	\delta^{i_1 ... i_p j_1 ... j_q}_{k_1 ... k_p k_{p+1} ... k_{p+q}} 
+	 e^{k_1} \otimes ... \otimes e^{k_{p+q}}
+$<br>
+$= 
+	\frac{(p+q)!}{p!q!} a_{[i_1 ... i_p} b_{j_1 ... j_q]}
+	 e^{i_1} \otimes ... \otimes e^{i_p} \otimes e^{j_1} \otimes ... \otimes e^{j_q}
+$<br>
 <br>
-For p-form a, q-form b:<br>
-$(a \wedge b)_{d_1 ... d_{p+q}} 
-= \delta^{u_1 ... u_p v_1 ... v_q}_{d_1 ... d_p d_{p+1} ... d_{p+q}} 
-	a_{|u_1 ... u_p|} b_{|v_1 ... v_q|}$
+
+For (p 0) tensor u and (q 0) tensor v:<br>
+$u \wedge v$<br>
+$= 
+	u^{|i_1 ... i_p|} v^{|j_1 ... j_q|}
+	\delta^{k_1 ... k_p k_{p+1} ... k_{p+q}}_{|i_1 ... i_p| |j_1 ... j_q|}
+	e_{k_1} \otimes ... \otimes e_{k_{p+q}}
+$<br>
+$= 
+	\frac{1}{p!q!} u^{i_1 ... i_p} v^{j_1 ... j_q}
+	\delta^{k_1 ... k_p k_{p+1} ... k_{p+q}}_{i_1 ... i_p j_1 ... j_q}
+	e_{k_1} \otimes ... \otimes e_{k_{p+q}}
+$<br>
+$= 
+	\frac{(p+q)!}{p!q!} u^{[i_1 ... i_p} v^{j_1 ... j_q]}
+	e_{i_1} \otimes ... e_{i_p} \otimes e_{j_1} \otimes ... \otimes e_{j_q}
+$<br>
 <br>
-For (p 0) tensor U and (q 0) tensor V:<br>
-$(U \wedge V)^{d_1 ... d_{p+q}} 
-= \delta^{d_1 ... d_p d_{p+1} ... d_{p+q}}_{u_1 ... u_p v_1 ... v_q}
-	U^{|u_1 ... u_p|} V^{|v_1 ... v_q|}$
+
+So for (p 0) tensor wedge (q 0) vector:<br>
+$a \wedge b = (-1)^{pq} b \wedge a$<br>
+So TODO verify:<br>
+(p q) tensor a and (r s) tensor b:<br>
+$a \wedge b = (-1)^{(p+q)(r+s)} b \wedge a$<br>
 <br>
+
 For p-form a, q-form b, r-form c:<br>
 $[( a \wedge b ) \wedge {c} ]_{a_1 ... a_{p+q+r}}$
 $= \delta^{d_1 ... d_p u_1 ... u_q v_1 ... v_r}_{e_1 ... ... ... e_{p+q+r}}
@@ -144,12 +202,30 @@ $= \delta^{d_1 ... d_p u_1 ... u_q v_1 ... v_r}_{e_1 ... ... ... e_{p+q+r}}
 	c_{|v_1 ... v_r|}$
 $= [a \wedge (b \wedge {c})]_{e_1 ... e_{p+q+r}}$
 <br>
+
 For vector $u_i$:<br>
 $(u_1 \wedge ... \wedge u_p)^{a_1 ... a_p}$
 $= \delta^{a_1 ... a_p}_{u_1 ... u_p} (u_1)^{u_1} ... (u_p)^{u_p}$
 $= p! {u_1}^{[a_1} ... {u_p}^{a_p]}$
 $= \delta^{a_1 ... a_p}_{1 ... p} det({u_u}^d)$<br>
 <br>
+
+<hr>
+<b>interior product</b><br>
+<br>
+
+Notice that, despite the $\frac{1}{k!}$ in front of it, the application of a form to a vector is still the same:<br>
+$x \lrcorner a = x \lrcorner \frac{1}{k!} a_{i_1 ... i_k} (e^{i_1} \wedge ... \wedge e^{i_k})$<br>
+$= a_{i_1 ... i_k} x \lrcorner (e^{[i_1} \otimes ... \otimes e^{i_k]})$<br>
+$= a_{[i_1 ... i_k]} x \lrcorner (e^{i_1} \otimes ... \otimes e^{i_k})$<br>
+$= x^{i_1} a_{[i_1 ... i_k]} e^{i_2} \otimes ... \otimes e^{i_k}$<br>
+$= x^{i_1} a_{i_1 [i_2 ... i_k]} e^{i_2} \otimes ... \otimes e^{i_k}$<br>
+$= x^{i_1} a_{i_1 ... i_k} e^{[i_2} \otimes ... \otimes e^{i_k]}$<br>
+$= \frac{1}{(k-1)!} x^{i_1} a_{i_1 ... i_k} e^{i_2} \wedge ... \wedge e^{i_k}$<br>
+<br>
+
+<hr>
+<b>structure constants</b><br>
 <br>
 
 Structure constant two-form:<br>
@@ -162,44 +238,6 @@ $= {c_{ab}}^c e_c (\phi) e^a \otimes e^b$<br>
 $= ( e_a (e_b (\phi)) - e_b (e_a(\phi)) ) e^a \otimes e^b$<br>
 $= e_a (e_b (\phi)) (e^a \otimes e^b - e^b \otimes e^a)$<br>
 $= e_a (e_b (\phi)) e^a \wedge e^b$<br>
-<br>
-
-A (0 k) antisymmetric tensor in a coordinate basis has components:<br>
-$a = a_{i_1 ... i_k} e^{i_1} \otimes ... \otimes e^{i_k}$<br>
-$= a_{[i_1 ... i_k]} e^{i_1} \otimes ... \otimes e^{i_k}$<br>
-$= a_{i_1 ... i_k} e^{[i_1} \otimes ... \otimes e^{i_k]}$<br>
-$= \frac{1}{k!} a_{i_1 ... i_k} e^{i_1} \wedge ... \wedge e^{i_k}$<br>
-$= \frac{1}{k!} a_I e^{\wedge I}$<br>
-<br>
-
-For a (0 k) antisymmetric tensor, this $\frac{1}{k!}$ isn't needed if you only sum the increasing indexes, since this excludes all duplicate sums with the antisymmetric basis:<br>
-$a = a_{i_1 ... i_k} e^{i_1} \otimes ... \otimes e^{i_k}$<br>
-$= \underset{i_1 &lt; i_2 &lt; ... &lt; i_k}{\Sigma} a_{i_1 ... i_k} e^{i_1} \wedge ... \wedge e^{i_k}$<br>
-$= a_{|i_1 ... i_k|} e^{i_1} \wedge ... \wedge e^{i_k}$<br>
-$= a_{|I|} e^{\wedge I}$<br>
-<br>
-
-Notice that, despite the $\frac{1}{k!}$ in front of it, the application of a form to a vector is still the same:<br>
-TODO does this influence the definition of the interior product?<br>
-$x \lrcorner a = x \lrcorner \frac{1}{k!} a_{i_1 ... i_k} (e^{i_1} \wedge ... \wedge e^{i_k})$<br>
-$= a_{i_1 ... i_k} x \lrcorner (e^{[i_1} \otimes ... \otimes e^{i_k]})$<br>
-$= a_{[i_1 ... i_k]} x \lrcorner (e^{i_1} \otimes ... \otimes e^{i_k})$<br>
-$= x^{i_1} a_{[i_1 ... i_k]} e^{i_2} \otimes ... \otimes e^{i_k}$<br>
-$= x^{i_1} a_{i_1 [i_2 ... i_k]} e^{i_2} \otimes ... \otimes e^{i_k}$<br>
-$= x^{i_1} a_{i_1 ... i_k} e^{[i_2} \otimes ... \otimes e^{i_k]}$<br>
-$= \frac{1}{(k-1)!} x^{i_1} a_{i_1 ... i_k} e^{[i_2} \wedge ... \wedge e^{i_k]}$<br>
-<br>
-
-Notice that thanks to this $k!$ we get the definition of a p-form and a q-form wedged together as:<br>
-$a \wedge b$<br>
-$= \frac{1}{p!} a_{i_1 ... i_p} e^{i_1} \wedge ... \wedge e^{i_p} \wedge \frac{1}{q!} b_{j_1 ... j_q} e^{j_1} \wedge ... \wedge e^{j_q}$<br>
-$= a_{i_1 ... i_p} e^{[i_1} \otimes ... \otimes e^{i_p]} \otimes b_{j_1 ... j_q} e^{[j_1} \otimes ... \otimes e^{j_q]}$<br>
-$= a_{[i_1 ... i_p]} e^{i_1} \otimes ... \otimes e^{i_p} \otimes b_{[j_1 ... j_q]} e^{j_1} \otimes ... \otimes e^{j_q}$<br>
-$= a_{[i_1 ... i_p]} b_{[j_1 ... j_q]} e^{i_1} \otimes ... \otimes e^{i_p} \otimes e^{j_1} \otimes ... \otimes e^{j_q}$<br>
-$= a_{[i_1 ... i_p} b_{j_1 ... j_q]} e^{i_1} \otimes ... \otimes e^{i_p} \otimes e^{j_1} \otimes ... \otimes e^{j_q}$<br>
-$= a_{i_1 ... i_p} b_{j_1 ... j_q} e^{[i_1} \otimes ... \otimes e^{i_p} \otimes e^{j_1} \otimes ... \otimes e^{j_q]}$<br>
-$= \frac{1}{(p+q)!} a_{i_1 ... i_p} b_{j_1 ... j_q} e^{i_1} \wedge ... \wedge e^{i_p} \wedge e^{j_1} \wedge ... \wedge e^{j_q}$<br>
-TODO check terms here.<br>
 <br>
 
 
@@ -235,7 +273,6 @@ $= e_{i_1} ( T_{i_2 ... i_{p+1}} ) e^{i_1} \wedge ... \wedge e^{i_{p+1}}$<br>
 $= e^{i_1} \wedge e_{i_1} ( T_{i_2 ... i_{p+1}} ) e^{i_2} \wedge ... \wedge e^{i_{p+1}})$<br>
 $= e^a \wedge e_a (T)$<br>
 TODO again ... $e_a (T) = e_a (T_{i_1 ... i_p} e^1 \otimes ... \otimes e^p)$ ... $ = e_a (T_{i_1 ... i_p}) e^1 \otimes ... \otimes e^p$.<br>
-Is it always true that $e_i (e^j) = 0$, so $e_i (T) = e_i (T_I e^I) = e_i (T_I) e^I$ ?  While $e^j (e_i) = \delta^j_i$.<br>
 <br>
 
 Exterior derivative of a non-coordinate basis one-form:<br>
@@ -257,22 +294,22 @@ $d e^u + c^u = 0$<br>
 <br>
 
 Exterior derivative of a p-form:<br>
-$d w = d (w_{i_1 ... i_p} e^{i_1} \wedge ... \wedge e^{i_p})$<br>
-$= d (w_{i_1 ... i_p}) \wedge e^{i_1} \wedge ... \wedge e^{i_p}
-	+ (-1)^{j-1} w_{i_1 ... i_p} e^{i_1} \wedge ... \wedge d(e^{i_j}) \wedge ... \wedge e^{i_p}
+$d w = d (\frac{1}{p!} w_{i_1 ... i_p} e^{i_1} \wedge ... \wedge e^{i_p})$<br>
+$= \frac{1}{p!} d (w_{i_1 ... i_p}) \wedge e^{i_1} \wedge ... \wedge e^{i_p}
+	+ (-1)^{j-1} \frac{1}{p!} w_{i_1 ... i_p} e^{i_1} \wedge ... \wedge d(e^{i_j}) \wedge ... \wedge e^{i_p}
 $<br>
 ...in a coordinate basis, where $e^\tilde{a} = dx^\tilde{a}$ and $d(dx^\tilde{a}) = 0$:<br>
-$= \partial_j (w_{i_1 ... i_p}) dx^j \wedge dx^{i_1} \wedge ... \wedge dx^{i_p}$<br>
-$= \partial_j (w_{i_1 ... i_p}) \cdot (p+1)! \cdot dx^{[j} \otimes dx^{i_1} \otimes ... \otimes dx^{i_p]}$<br>
+$= \frac{1}{p!} \partial_j (w_{i_1 ... i_p}) dx^j \wedge dx^{i_1} \wedge ... \wedge dx^{i_p}$<br>
+$= \frac{(p+1)!}{p!} \partial_j (w_{i_1 ... i_p}) dx^{[j} \otimes dx^{i_1} \otimes ... \otimes dx^{i_p]}$<br>
 ...in a non-coordinate basis:<br>
-$dw = e_k (w_{i_1 ... i_p}) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p} + (-1)^{j-1} w_{i_1 ... i_p} e^{i_1} \wedge ... \wedge d(e^{i_j}) \wedge ... \wedge e^{i_p}$<br>
-$ =  e_k (w_{i_1 ... i_p}) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p}
-	+ (-1)^{j-1} w_{i_1 ... i_p} e^{i_1} \wedge ... \wedge (-\frac{1}{2} {c_{ab}}^{i_j} e^a \wedge e^b) \wedge ... \wedge e^{i_p}
+$dw = e_k (\frac{1}{p!} w_{i_1 ... i_p}) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p} + (-1)^{j-1} w_{i_1 ... i_p} e^{i_1} \wedge ... \wedge d(e^{i_j}) \wedge ... \wedge e^{i_p}$<br>
+$ =  \frac{1}{p!} e_k (w_{i_1 ... i_p}) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p}
+	+ (-1)^{j-1} \frac{1}{p!} w_{i_1 ... i_p} e^{i_1} \wedge ... \wedge (-\frac{1}{2} {c_{ab}}^{i_j} e^a \wedge e^b) \wedge ... \wedge e^{i_p}
 $<br>
-$ =  e_k (w_{i_1 ... i_p}) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p}
-	- \frac{1}{2} {c_{ab}}^{i_j} w_{i_1 ... i_p} e^a \wedge e^{i_1} \wedge ... \wedge e^b \wedge ... \wedge e^{i_p}
+$ =  \frac{1}{p!} e_k (w_{i_1 ... i_p}) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p}
+	- \frac{1}{2} \frac{1}{p!} {c_{ab}}^{i_j} w_{i_1 ... i_p} e^a \wedge e^{i_1} \wedge ... \wedge e^b \wedge ... \wedge e^{i_p}
 $<br>
-$ =  (
+$ =  \frac{1}{p!} (
 		e_k (w_{i_1 ... i_p})
 		- \frac{1}{2} {c_{k i_j}}^b w_{i_1 ... i_{j-1} b i_{j+1} ... i_p}
 	) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p}
@@ -357,27 +394,27 @@ Second exterior derivative on a non-coordinate basis:<br>
 $d^2(w) = d(
 	(
 		e_k (w_{i_1 ... i_p})
-		- \frac{1}{2} {c_{k i_j}}^b w_{i_1 ... i_{j-1} b i_{j+1} ... i_p}
+		- \frac{1}{2} {c_{k i_j}}^b w_{i_1 ... i_{j-1} \ b \ i_{j+1} ... i_p}
 	) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p}
 )$<br>
 $= 
 	d (
 		e_k (w_{i_1 ... i_p})
-		- \frac{1}{2} {c_{k i_j}}^b w_{i_1 ... i_{j-1} b i_{j+1} ... i_p}
+		- \frac{1}{2} {c_{k i_j}}^b w_{i_1 ... i_{j-1} \ b \ i_{j+1} ... i_p}
 	) \wedge e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p}
 	+ (
 		e_k (w_{i_1 ... i_p})
-		- \frac{1}{2} {c_{k i_j}}^b w_{i_1 ... i_{j-1} b i_{j+1} ... i_p}
+		- \frac{1}{2} {c_{k i_j}}^b w_{i_1 ... i_{j-1} \ b \ i_{j+1} ... i_p}
 	) d(e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p})
 $<br>
 $= 
 	e_l (
 		e_k (w_{i_1 ... i_p})
-		- \frac{1}{2} {c_{k i_j}}^b w_{i_1 ... i_{j-1} b i_{j+1} ... i_p}
+		- \frac{1}{2} {c_{k i_j}}^b w_{i_1 ... i_{j-1} \ b \ i_{j+1} ... i_p}
 	) e^l \wedge e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p}
 	+ (
 		e_k (w_{i_1 ... i_p})
-		- \frac{1}{2} {c_{k i_j}}^b w_{i_1 ... i_{j-1} b i_{j+1} ... i_p}
+		- \frac{1}{2} {c_{k i_j}}^b w_{i_1 ... i_{j-1} \ b \ i_{j+1} ... i_p}
 	) d(e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p})
 $<br>
 $= 
@@ -385,14 +422,14 @@ $=
 		e_l (e_k (w_{i_1 ... i_p}))
 		- \frac{1}{2} 
 			e_l ({c_{k i_j}}^b)
-			w_{i_1 ... i_{j-1} b i_{j+1} ... i_p}
+			w_{i_1 ... i_{j-1} \ b \ i_{j+1} ... i_p}
 		- \frac{1}{2} 
 			{c_{k i_j}}^b
-			e_l (w_{i_1 ... i_{j-1} b i_{j+1} ... i_p})
+			e_l (w_{i_1 ... i_{j-1} \ b \ i_{j+1} ... i_p})
 	) e^l \wedge e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p}
 	+ (
 		e_k (w_{i_1 ... i_p})
-		- \frac{1}{2} {c_{k i_j}}^b w_{i_1 ... i_{j-1} b i_{j+1} ... i_p}
+		- \frac{1}{2} {c_{k i_j}}^b w_{i_1 ... i_{j-1} \ b \ i_{j+1} ... i_p}
 	) 
 	(
 		-\frac{1}{2} {c_{mn}}^k e^m \wedge e^n \wedge e^{i_1} \wedge ... \wedge e^{i_p}
@@ -421,7 +458,7 @@ Mind you these $\frac{1}{k!}$ products are scaled out in the application of the 
 <br>
 
 So for k-form w and vectors $x_i \in \{x_1 ...x_k\}$, $(x_1 \lrcorner w)(x_2, ..., x_k) = w(x_1, x_2, ..., x_k)$<br>
-Also for vectors x and y and k-form w:<Br>
+Also for vectors x and y and k-form w:<br>
 $x \lrcorner y \lrcorner w = -y \lrcorner x \lrcorner w$<br>
 $x \lrcorner x \lrcorner w = 0$ by antisymmetry of k-form indexes.<br>
 <br>
@@ -430,9 +467,9 @@ TODO, for vector x, p-form b, and q-form c:<br>
 $x \lrcorner (b \wedge c) = (x \lrcorner b) \wedge c + (-1)^p b \wedge (x \lrcorner c)$<br>
 <br>
 
-Also, if the wedge product of vectors (i.e. vector-valued 0-forms) is symmetric, this is the same as(?):<br>
-$(x \otimes y) \lrcorner w = (x \wedge y) \lrcorner w = y \lrcorner x \lrcorner w$<br>
-I guess that depends, if it is symmetric, how to define $\wedge$ wrt $\otimes$ for vectors?  Same weight as for forms? k!?<br>
+TODO what about:<br>
+$(x \wedge y) \lrcorner w$<br>
+<br>
 <br>
 
 <a href='.'>Back</a><br><br>

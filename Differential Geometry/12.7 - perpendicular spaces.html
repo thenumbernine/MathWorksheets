@@ -108,7 +108,7 @@ for $N_{i_{m+1} ... i_n} = \sqrt{|g|} (n-m)! \delta^{m+1}_{i_{m+1}} \cdot ... \c
 $N_{i_{m+1} ... i_n} = \epsilon_{1 ... m \ i_{m+1} ... i_n}$<br>
 <br>
 
-$N(e_j)$ for $j \in \{1...n\}$<br>
+So $e_j \lrcorner N$<br>
 $= \epsilon_{1 ... m \ i_{m+1} ... i_n} (e^{i_{m+1}} \otimes ... \otimes e^{i_n}) (e_j)$<br>
 $= \epsilon_{1 ... m \ i_{m+1} ... i_n} e^{i_{m+2}} \otimes ... \otimes e^{i_n} \delta^{i_{m+1}}_j$<br>
 $= \epsilon_{1 ... m \ j \ i_{m+2} ... i_n} e^{i_{m+2}} \otimes ... \otimes e^{i_n}$<br>
@@ -166,7 +166,10 @@ $
 	= -g^{ui} (\alpha_i) e_u
 $<br>
 So $(n^i)^u = -g^{ui} (\alpha_i)$<br>
-Let $(\beta^i)^u = g^{ui} (\alpha_i)$ be the i'th shift vector.<br>
+Let $(\beta_i)^u = g^{ui} (\alpha_i)$ be the i'th shift vector.<br>
+<br>
+
+TODO the i'th $\beta_i$ will have to be raised/lowered by by the submatrix of $\eta - \overset{i-1}{\underset{j=m+1}{\Sigma}} n_j \eta n_j$<br>
 <br>
 
 I think this definition of $n^i = (n^i)_u e^u = {e^i}_u e^u$ should work with the definition of $N = \star \Sigma$ as well.<br>
@@ -193,7 +196,7 @@ $= g_{kv} e^v$<br>
 $= e_k$<br>
 <br>
 
-And for $i \in \{m+1 ... n \}$:<br>
+And for $k \in \{m+1 ... n \}$:<br>
 $\gamma(e_k)$<br>
 $= (g - n \eta^\top n) (e_k)$<br>
 $= (g_{kv} - (\eta^\top)_{kv} (\alpha_k) (\alpha_v)) e^v$<br>
@@ -202,6 +205,23 @@ $= (g_{kv} - \delta_{kv} \sigma_k (\alpha_k) (\alpha_v)) e^v$<br>
 TODO prove this is equal ... seems like I'll have to use raised $(n^i)^u = -g^{iu} (\alpha_i)$ somehow.<br>
 $= 0$<br>
 <br>
+
+$\gamma_{ab} = a \downarrow \overset{b \rightarrow}{
+\left[ \begin{array}{ccc|c|c}
+	\gamma_{11}		& \cdots	& \gamma_{im}		& (\beta_{m+1})_1									& \cdots	& (\beta_n)_1 						\\
+	\vdots			& \ddots 	& \vdots			& \vdots											& \ddots 	& \vdots							\\
+	\gamma_{m1}		& \cdots	& \gamma_{mm}		& (\beta_{m+1})_m									& \cdots	& (\beta_n)_m 						\\
+	\hline
+	(\beta_{m+1})_1 & \cdots	& (\beta_{m+1})_m	& (\beta_{m+1})_{m+1} = -\frac{1}{(\alpha_{m+1})^2}	& \cdots	& (\beta_{m+1})_n = (\beta_n)_{m+1}	\\
+	\hline	
+					& \ddots	& 					& \vdots											& \ddots 	& \vdots							\\
+	\hline
+	(\beta_n)_1		& \cdots 	& (\beta_n)_m 		& (\beta_{m+1})_n = (\beta_n)_{m+1} 				& 			& (\beta_n)_n = -\frac{1}{(\alpha_n)^2}
+\end{array} \right]
+}$<br>
+<br>
+
+
 
 <br>
 <a href='index.html'>Back</a><br>
