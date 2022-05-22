@@ -10,116 +10,12 @@
 <br>
 
 
-Lie derivative:<br>
-TODO put the Lie derivative stuff after wedge product stuff.<Br>
-But Lie bracket stuff before structure constants, which go before exterior derivative.<br>
-<br>
-
-Lie derivative of scalar / (0 0) tensor in a coordinate basis:<br>
-$\mathcal{L}_x \phi = x \lrcorner d\phi$<br>
-$= x \lrcorner \partial_a (\phi) dx^a$<br>
-$= \partial_a (\phi) dx^a (x)$<br>
-$= \partial_a (\phi) dx^a (x^b \partial_b)$<br>
-$= x^b \partial_a(\phi) dx^a(\partial_b)$<br>
-$= x^b \partial_a(\phi) \delta^a_b$<br>
-$= x^a \partial_a(\phi)$<br>
-<br>
-
-Lie derivative of a scalar / (0 0) tensor in a non-coordinate basis?<br>
-$\mathcal{L}_x \phi = x \lrcorner d\phi$<br>
-$= x \lrcorner e_a(\phi) e^a$<br>
-$= e_a(\phi) e^a(x)$<br>
-$= e_a(\phi) e^a(x^b e_b)$<br>
-$= x^b e_a(\phi) e^a(e_b)$<br>
-$= x^b e_a(\phi) \delta^a_b$<br>
-$= x^a e_a(\phi)$<br>
-<br>
-
-Lie derivative of p-form (Cartan homotopy formula):<br>
-$\mathcal{L}_x w = x \lrcorner dw + d(x \lrcorner w)$<br>
-<br>
-
-Lie derivative of a 1-form coordinate dual-basis element:<br>
-$\mathcal{L}_x dx^i = x \lrcorner d^2 x^i + d(x \lrcorner dx^i)$<br>
-using $d^2x^i = 0$<br>
-$= d(dx^i (x^a \partial_a))$<br>
-$= d(x^a dx^i(\partial_a))$<br>
-$= d(x^a \delta^i_a)$<br>
-$= d(x^i)$<br>
-$= \partial_a(x^i) dx^a$<br>
-<br>
-
-Linearity of Lie derivative and a 1-form coordinate dual-basis element:<br>
-$\mathcal{L}_x (e^i)$<br>
-$= \mathcal{L}_x ({e^i}_a dx^a)$<br>
-$= \mathcal{L}_x ({e^i}_a) dx^a + {e^i}_a \mathcal{L}_x (dx^a)$<br>
-$= x^b \partial_b( {e^i}_a ) dx^a + {e^i}_a \partial_b(x^a) dx^b$<br>
-$= (x^a \partial_a( {e^i}_b ) + {e^i}_a \partial_b(x^a) ) dx^b$<br>
-$= (x^a \partial_a( {e^i}_b ) + {e^i}_a \partial_b(x^a) ) \delta^b_c dx^c$<br>
-$= (x^a \partial_a( {e^i}_b ) + {e^i}_a \partial_b(x^a) ) {e_j}^b {e^j}_d dx^d$<br>
-$= (x^a \partial_a( {e^i}_b ) {e_j}^b + {e^i}_a {e_j}^b \partial_b(x^a) ) e^j$<br>
-$= (x^k e_k( {e^i}_b ) {e_j}^b + {e^i}_a e_j(x^a) ) e^j$<br>
-...<br>
-would be nice if this was equal to:<br>
-$= e_j(x^i) e^j$<br>
-<br>
-try again, using the k-form definition (is that definition only for forms that are wedges of basis elements?):<br>
-$\mathcal{L}_x e^i = x \lrcorner d e^i + d(x \lrcorner e^i)$<br>
-$= x \lrcorner (-{\omega^i}_j \wedge e^j + \Theta^i ) + d(x^i)$<br>
-$= x \lrcorner (-2 {\Gamma^i}_{[kj]} e^k \otimes e^j + T^i_{[kj]} e^k \otimes e^j ) + e_j(x^i) e^j$<br>
-$= x \lrcorner (-{\omega^i}_j e^j + \Theta^i ) + d(x^i)$<br>
-$= -{\Gamma^i}_{[kj]} x^k e^j + T^i_{[kj]} x^k e^j + e_j(x^i) e^j$<br>
-...<br>
-$= x \lrcorner (-{c_{[kj]}}^i e^k \otimes e^j ) + e_j(x^i) e^j$<br>
-$= {c_{jk}}^i e^j x^k + e_j(x^i) e^j$<br>
-$= e^i(e_j (x) - x(e_j)) + e_j(x^i) e^j$ ... ?<br>
-...hmm, another extra term...<br>
-<br>
-
-Would also be nice if $\mathcal{L}_x (e_i) = -e_i(x^a) e_a$<br>
-<br>
-
-But what if they're not?
-Especially if you consider $e_i = {e_i}^a \partial_a$ as a half-weight tensor density, in which case the Lie derivative (p q) tensor density definition has an added term which I haven't included yet.<br>
-<br>
-
-Lie derivative of outer products:<br>
-$\mathcal{L}_x (a \otimes b) = (\mathcal{L}_x a) \otimes b + a \otimes (\mathcal{L}_x b)$<br>
-<br>
-
-Lie derivative of a (p q) tensor:<br>
-$\mathcal{L}_x T$<br>
-$= \mathcal{L}_x ({T^{i_1 ... i_p}}_{j_1 ... j_q} e_{i_1} \otimes ... \otimes e_{i_p} \otimes e^{j_1} \otimes ... \otimes e^{j_q})$<br>
-$= \mathcal{L}_x ({T^I}_J) {e^I}_J
-	+ {T^I}_J \mathcal{L}_x (e^I) \otimes e_J 
-	+ {T^I}_J e^I \otimes \mathcal{L}_x (e_J)
-$<br>
-$= \mathcal{L}_x ({T^I}_J) {e^I}_J
-	+ {T^I}_J (e^{i_1} \otimes ... \otimes \mathcal{L}_x (e^{i_k}) \otimes ... \otimes e^{i_p}) \otimes e_J 
-	+ {T^I}_J e^I \otimes (e_{j_1} \otimes ... \otimes \mathcal{L}_x (e_{j_k}) \otimes ... \otimes e_{j_q})
-$<br>
-...<br>
-$= (x^a e_a ({T^I}_J) - e_a(x^{i_k}) \underset{i_k \leftrightarrow a}{{T^I}_J} + e_{j_k}(x^a) \underset{j_k \leftrightarrow a}{{T^I}_J}) {e^I}_J$<br>
-<br>
-
-TODO verify:<br>
-Either only true for p &gt; 0, or if you want it to be a generalization of the scalar case then you have to define $d(x \lrcorner \phi) = 0$<br>
-Same as $[\mathcal{L}_x, d] = 0$?<br>
-<br>
-
-TODO show for vectors $[x,y] \lrcorner w = [\mathcal{L}_x, y \lrcorner] (w)$<br>
-<br>
-
-TODO show $d \mathcal{L}_x (w) = \mathcal{L}_x (dw)$<br>
-<br>
-
-TODO show $\mathcal{L}_{\phi x} w = \phi \mathcal{L}_x w + d\phi \wedge (x \lrcorner w)$<br>
-<br>
-
 <hr>
+<b>Lie bracket</b><br>
 <br>
 
-Lie derivative of a vector / Lie bracket of two vectors:<br>
+
+Lie bracket of two vectors:<br>
 $\mathcal{L}_x y = [x, y] = x y - y x = x (y^c e_c) - y (x^c e_c)$<br>
 Note that vectors are not linear wrt scalar(function) multiplication like one-forms are (are one-forms?)<br>
 $= x^a e_a (y^c e_c) - y^a e_a (x^c e_c)$<br>
@@ -127,12 +23,6 @@ $= x^a e_a (y^c) e_c + x^a y^c e_a e_c - y^a e_a (x^c) e_c - y^a x^c e_a e_c$<br
 $= (x^a e_a (y^c) - y^a e_a (x^c)) e_c + x^a y^b (e_a e_b - e_b e_a)$<br>
 $= (x^a e_a (y^c) - y^a e_a (x^c)) e_c + x^a y^b {c_{ab}}^c e_c$<br>
 $= (x^a e_a(y^c) - y^a e_a(x^c) + x^a y^b {c_{ab}}^c) e_c$<br>
-<br>
-
-Somewhere it's defined the Lie derivative of a scalar function:<br>
-$\mathcal{L}_x \phi = e (\phi) = e^a e_a (\phi)$<br>
-Is this the same as the Lie bracket of a scalar?  Because expanding $[x, \phi]$ makes no sense ...<br>
-$[x, \phi] = x \phi - \phi x = x^a e_a \phi - \phi x^a e_a = x^a \phi_{,a} - \phi x$ ... is a scalar minus a vector.<br>
 <br>
 
 Is the Lie bracket linear? 
@@ -145,15 +35,11 @@ $ = s [x, y] - y(s) x$<br>
 ...I think I got my Lie derivative / bracket definition backwards, maybe $\mathcal{L}_x y = [y, x]$?<br>
 <br>
 
-TODO explain Lie derivative product rule / chain rule:<br>
-$ \mathcal{L}_\vec{a} (uv) = (\mathcal{L}_\vec{a} u) v + u (\mathcal{L}_\vec{a} v) $<br>
+TODO name this one "structure coefficients" instead, since "structure constants" usually aren't constant.<br>
 <br>
-
 
 <hr>
-<br>
-
-TODO name this one "structure coefficients" instead, since "structure constants" usually aren't constant.<br>
+<b>Structure constants / commutation coefficients</b><br>
 <br>
 
 Structure constants / commutation coefficients:<br>
@@ -226,6 +112,25 @@ TODO maybe not just use $g = det(g_{ab})$ and $e = det({e^a}_\bar{a})$?<br>
 <br>
 
 <br>
+
+<hr>
+<b>structure constants and wedge product</b><br>
+<br>
+
+Structure constant two-form:<br>
+Let $c^u = {c_{ab}}^u e^a \otimes e^b = \frac{1}{2} {c_{ab}}^u e^a \wedge e^b$<br>
+<br>
+
+structure constant definition using wedge product:<br>
+$c^c e_c (\phi)$<br>
+$= {c_{ab}}^c e_c (\phi) e^a \otimes e^b$<br>
+$= ( e_a (e_b (\phi)) - e_b (e_a(\phi)) ) e^a \otimes e^b$<br>
+$= e_a (e_b (\phi)) (e^a \otimes e^b - e^b \otimes e^a)$<br>
+$= e_a (e_b (\phi)) e^a \wedge e^b$<br>
+<br>
+
+
+
 
 <a href='.'>Back</a><br><br>
 	</body>
