@@ -22,6 +22,8 @@ Here's the CDN URLs:
 
 [Differential Geometry/1 - index notation](https://thenumbernine.github.io/math/Differential%20Geometry/1%20%2d%20index%20notation.html)
 
+[Differential Geometry/1.5 - wedge product](https://thenumbernine.github.io/math/Differential%20Geometry/1.5%20%2d%20wedge%20product.html)
+
 [Differential Geometry/10 - Ricci curvature](https://thenumbernine.github.io/math/Differential%20Geometry/10%20%2d%20Ricci%20curvature.html)
 
 [Differential Geometry/11 - Gaussian curvature](https://thenumbernine.github.io/math/Differential%20Geometry/11%20%2d%20Gaussian%20curvature.html)
@@ -53,6 +55,8 @@ Here's the CDN URLs:
 [Differential Geometry/2 - structure constants](https://thenumbernine.github.io/math/Differential%20Geometry/2%20%2d%20structure%20constants.html)
 
 [Differential Geometry/3 - exterior derivative](https://thenumbernine.github.io/math/Differential%20Geometry/3%20%2d%20exterior%20derivative.html)
+
+[Differential Geometry/3.5 - Lie derivative](https://thenumbernine.github.io/math/Differential%20Geometry/3.5%20%2d%20Lie%20derivative.html)
 
 [Differential Geometry/4 - metric tensor](https://thenumbernine.github.io/math/Differential%20Geometry/4%20%2d%20metric%20tensor.html)
 
