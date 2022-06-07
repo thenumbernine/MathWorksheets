@@ -11,6 +11,9 @@
 <b>Killing Vectors</b><br>
 <br>
 
+From Misner Thorne &amp; Wheeler "Gravitation" part on Killing vectors.<br>
+<br>
+
 Let $Z_K$ = a Killing vector of a (coordinate?) basis metric.<br>
 $Z_K = \frac{\partial}{\partial x^K}$<br>
 <br>
@@ -61,13 +64,21 @@ $= -v^a a_a$<br>
 Notice that $a_a$ is a spatial vector as well, so the result is a product of spatial vectors.<br>
 <br>
 
+How about $-\nabla^\perp_b n^a$?<br>
+$= -\perp \nabla_b n^a$<br>
+$= -\perp \nabla_b (g^{ac} n_c)$<br>
+$= -\perp (g^{ac} \nabla_b n_c)$<br>
+$= -{\gamma_u}^a {\gamma_b}^v (g^{uc} \nabla_v n_c)$<br>
+$= -\gamma^{ca} {\gamma_b}^v \nabla_v n_c$<br>
+$= {K^a}_b$<br>
+<br>
 
 Vector divergence:
 $\nabla_a v^a
 = 	\nabla^\perp_a (v^\perp)^a
 	- a_a (v^\perp)^a
-	+ n^a \nabla_a v^\parallel
-	+ K v^\parallel
+	+ n^a \nabla_a v^\top
+	+ K v^\top
 $<br>
 <br>
 
@@ -77,7 +88,7 @@ $<br>
 
 Let $Z_u$ be our Killing vector<br>
 Let $Z^\perp_u = {\gamma_u}^a Z_a$ be the spatial projection of our Killing vector.<br>
-Let $Z^\parallel = \Theta = n^u Z_u$<br>
+Let $Z^\top = \Theta = n^u Z_u$<br>
 <br>
 
 <hr>
@@ -113,20 +124,20 @@ So I should be doing that first, then inserting the $Z_u$'s into it to produce t
 <br>
 
 $R_{uv} + 2 \nabla_{(u} Z_{v)} - g_{uv} \nabla_a Z^a - \kappa_1 (2 n_{(u} Z_{v)} + \kappa_2 g_{uv} n_a Z^a) = 8 \pi (T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab})$<br>
-Using $v_u = (v^\perp)_u - n_u v^\parallel$<br>
+Using $v_u = (v^\perp)_u - n_u v^\top$<br>
 Using $\nabla_a v^a = 
 	\nabla^\perp_a (v^\perp)_a
 	+ a_a (v^\perp)^a
-	- n^a \nabla_a v^\parallel
-	+ K v^\parallel
+	- n^a \nabla_a v^\top
+	+ K v^\top
 $<br>
 Using $\nabla_u v_v = 
 	\nabla^\perp_u (v^\perp)_v
 	- n_u n^a \nabla_a (v^\perp)_v
 	- K_{ua} (v^\perp)^a n_v
-	+ (K_{uv} + n_u a_v) v^\parallel
-	- n_v \nabla^\perp_u v^\parallel
-	+ n_u n_v n^a \nabla_a v^\parallel
+	+ (K_{uv} + n_u a_v) v^\top
+	- n_v \nabla^\perp_u v^\top
+	+ n_u n_v n^a \nabla_a v^\top
 $<br>
 $R_{uv} 
 	+ 2 (
@@ -204,6 +215,56 @@ Let $S = T_{uv} \gamma^{uv} = {S^a}_a$ = the spatial stress tensor trace<br>
 So $T_{uv} g^{uv} = T_{uv} (\gamma^{uv} - n^u n^v) = S - \rho$<br>
 <br>
 
+$\perp j_a = {\gamma_a}^b j_b$<br>
+$= -{\gamma_a}^b n^u T_{uv} {\gamma^v}_b$<br>
+$= -n^u T_{uv} {\gamma^v}_a$<br>
+$= j_a$<br>
+so $j_a$ is spatial<br>
+<br>
+
+$j_a n^a = -n^u T_{uv} {\gamma^v}_a n^a = 0$ so $j_a$ is spatial<br>
+<br>
+
+So $T_{uv} = \delta_u^a \delta_v^b T_{ab}$<br>
+$= ({\gamma_u}^a - n_u n^a) ({\gamma_v}^b - n_v n^b) T_{ab}$<br>
+$= ({\gamma_u}^a {\gamma_v}^b - {\gamma_u}^a n_v n^b - n_u n^a {\gamma_v}^b + n_u n^a n_v n^b) T_{ab}$<br>
+$= 
+	{\gamma_u}^a {\gamma_v}^b T_{ab}
+	- {\gamma_u}^a n_v n^b T_{ab}
+	- n_u n^a {\gamma_v}^b T_{ab}
+	+ n_u n^a n_v n^b T_{ab}
+$<br>
+$= S_{uv} + n_v j_u + n_u j_v + n_u n_v \rho$<br>
+<br>
+
+So $T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab}$<br>
+$= S_{uv} + n_v j_u + n_u j_v + n_u n_v \rho 
+	- \frac{1}{2} (\gamma_{uv} - n_u n_v) (S_{ab} + n_b j_a + n_a j_b + n_a n_b \rho) (\gamma^{ab} - n^a n^b)
+$<br>
+$= 	  S_{uv} 
+	+ n_v j_u 
+	+ n_u j_v 
+	+ n_u n_v \rho 
+	- \frac{1}{2} (\gamma_{uv} - n_u n_v) (
+		S_{ab} \gamma^{ab} 
+		- S_{ab} n^a n^b
+		+ n_b j_a \gamma^{ab} 
+		- n_b j_a  n^a n^b
+		+ n_a j_b \gamma^{ab} 
+		- n_a j_b  n^a n^b
+		+ n_a n_b \rho \gamma^{ab}
+		- n_a n_b \rho  n^a n^b
+	)
+$<br>
+$= 	  S_{uv} 
+	- \frac{1}{2} \gamma_{uv} (S - \rho)
+	+ n_v j_u 
+	+ n_u j_v 
+	+ n_u n_v \rho 
+	+ \frac{1}{2} n_u n_v (S - \rho)
+$<br>
+<br>
+
 $
 	R_{uv} 
 	- \gamma_{uv} \nabla^\perp_a (Z^\perp)^a
@@ -227,6 +288,37 @@ $
 	= 
 	8 \pi (T_{uv} - \frac{1}{2} g_{uv} (S - \rho))
 $<br>
+$
+	R_{uv} 
+	- \gamma_{uv} \nabla^\perp_a (Z^\perp)^a
+	- \gamma_{uv} a_a (Z^\perp)^a
+	+ 2 \nabla^\perp_{(u} (Z^\perp)_{v)}
+	+ n_u n_v \nabla^\perp_a (Z^\perp)^a
+	- 2 n^a \nabla_a (Z^\perp)_{(v} n_{u)}
+	- 2 (Z^\perp)^a K_{a(u} n_{v)}
+	+ n_u n_v a_a (Z^\perp)^a
+	
+	+ \gamma_{uv} n^a \nabla_a \Theta
+	+ 2 K_{uv} \Theta
+	+ 2 n_{(u} a_{v)} \Theta
+	- 2 n_{(v} \nabla^\perp_{u)} \Theta
+	+ n_u n_v n^a \nabla_a \Theta
+	- \gamma_{uv} (K - \kappa_1 \kappa_2) \Theta
+	+ n_u n_v (K + \kappa_1 (\kappa_2 + 2)) \Theta
+	
+	- 2 \kappa_1 n_{(u} (Z^\perp)_{v)} 
+
+	= 
+	8 \pi (
+		 S_{uv} 
+		 + n_v j_u 
+		 + n_u j_v 
+		 + n_u n_v \rho
+		- \frac{1}{2} g_{uv} (S - \rho))
+$<br>
+<br>
+
+<hr>
 <br>
 
 Contract normals:<br>
@@ -268,7 +360,7 @@ $<br>
 $
 	n^u n^v R_{uv} 
 	+ \nabla^\perp_a (Z^\perp)^a
-	- a_a (Z^\perp)_a
+	- a_a (Z^\perp)^a
 	
 	+ n^a \nabla_a \Theta
 	+ (K + \kappa_1 (\kappa_2 + 2)) \Theta
@@ -281,7 +373,7 @@ $
 	K^2 
 	- K_{uv} K^{uv}
 	+ \nabla^\perp_a (Z^\perp)^a
-	- a_a (Z^\perp)_a
+	- a_a (Z^\perp)^a
 	
 	+ n^a \nabla_a \Theta
 	+ (K + \kappa_1 (\kappa_2 + 2)) \Theta
@@ -290,6 +382,146 @@ $
 	4 \pi (S + \rho)
 $<br>
 <br>
+
+...TODO... I should be trace-reversing the left-hand-side maybe?<br>
+Because otherwise how do I recover the non-Z4 Hamiltonian constraint:
+$R^\perp + K^2 - K_{ab} K^{ab} = 16 \pi \rho$
+<br>
+
+
+<hr>
+<br>
+
+Contract and project:<br>
+$
+	n^u {\gamma_v}^b R_{ub} 
+	- n^u {\gamma_v}^b \gamma_{ub} \nabla^\perp_a (Z^\perp)^a
+	- n^u {\gamma_v}^b \gamma_{ub} a_a (Z^\perp)^a
+	+ 2 n^u {\gamma_v}^b \nabla^\perp_{(u} (Z^\perp)_{b)}
+	+ n^u {\gamma_v}^b n_u n_b \nabla^\perp_a (Z^\perp)^a
+	- 2 n^u {\gamma_v}^b n^a \nabla_a (Z^\perp)_{(b} n_{u)}
+	- 2 n^u {\gamma_v}^b (Z^\perp)^a K_{a(u} n_{b)}
+	+ n^u {\gamma_v}^b n_u n_b a_a (Z^\perp)^a
+	
+	+ n^u {\gamma_v}^b \gamma_{ub} n^a \nabla_a \Theta
+	+ 2 n^u {\gamma_v}^b K_{ub} \Theta
+	+ 2 n^u {\gamma_v}^b n_{(u} a_{b)} \Theta
+	- 2 n^u {\gamma_v}^b n_{(b} \nabla^\perp_{u)} \Theta
+	+ n^u {\gamma_v}^b n_u n_b n^a \nabla_a \Theta
+	- n^u {\gamma_v}^b \gamma_{ub} (K - \kappa_1 \kappa_2) \Theta
+	+ n^u {\gamma_v}^b n_u n_b (K + \kappa_1 (\kappa_2 + 2)) \Theta
+	
+	- 2 n^u {\gamma_v}^b \kappa_1 n_{(u} (Z^\perp)_{b)} 
+
+	= 
+	8 \pi n^u {\gamma_v}^b (T_{ub} - \frac{1}{2} g_{ub} (S - \rho))
+$<br>
+$
+	n^u {\gamma_v}^b R_{ub} 
+	+ n^u \nabla^\perp_v (Z^\perp)_u
+	+ {\gamma_v}^b n^a \nabla_a (Z^\perp)_b
+	+ (Z^\perp)^a K_{av}
+	- a_v \Theta
+	+ \nabla^\perp_v \Theta
+	+ \kappa_1 (Z^\perp)_v
+	= -8 \pi j_v
+$<br>
+using $n^u (Z^\perp)_u = 0$, so $n^u \nabla^\perp_v (Z^\perp)_u = -(Z^\perp)_u \nabla^\perp_v n^u$<br>
+using $\nabla^\perp_v n^u = -{K^u}_v$<br>
+so $n^u \nabla^\perp_v (Z^\perp)_u = (Z^\perp)_u {K^u}_v$<br>
+using $n^a {\gamma_v}^b \nabla_a (Z^\perp)_b = n^a \nabla_a (Z^\perp)_v - n_v (Z^\perp)^a a_a$<br>
+$
+	n^u {\gamma_v}^b R_{ub} 
+
+	+ n^a \nabla_a (Z^\perp)_v 
+	- n_v (Z^\perp)^a a_a
+
+	+ 2 (Z^\perp)^u K_{uv}
+	- a_v \Theta
+	+ \nabla^\perp_v \Theta
+	+ \kappa_1 (Z^\perp)_v
+	= -8 \pi j_v
+$<br>
+Using $n^u {\gamma_v}^b R_{ub} = \nabla^\perp_v K - \nabla^\perp_a {K_v}^a$ from my "normal projections" worksheet...<br>
+$
+	\nabla^\perp_v K 
+	- \nabla^\perp_a {K_v}^a
+
+	+ n^a \nabla_a (Z^\perp)_v 
+	- n_v (Z^\perp)^a a_a
+
+	+ 2 (Z^\perp)^u K_{uv}
+	- a_v \Theta
+	+ \nabla^\perp_v \Theta
+	+ \kappa_1 (Z^\perp)_v
+	= -8 \pi j_v
+$<br>
+<br>
+
+TODO compare to non-Z4:<br>
+$\nabla^\perp_b {K_a}^b - \nabla^\perp_a K = 8 \pi j_a$<br>
+<br>
+Though this looks pretty much like it, if you just remove all the $Z^\perp_u$'s and $\Theta$'s<br>
+<br>
+
+
+<hr>
+<br>
+
+Project both:<br>
+<br>
+
+$
+	{\gamma_u}^c {\gamma_v}^d R_{cd} 
+	- {\gamma_u}^c {\gamma_v}^d \gamma_{cd} \nabla^\perp_a (Z^\perp)^a
+	- {\gamma_u}^c {\gamma_v}^d \gamma_{cd} a_a (Z^\perp)^a
+	+ 2 {\gamma_u}^c {\gamma_v}^d \nabla^\perp_{(c} (Z^\perp)_{d)}
+	+ {\gamma_u}^c {\gamma_v}^d n_c n_d \nabla^\perp_a (Z^\perp)^a
+	- 2 {\gamma_u}^c {\gamma_v}^d n^a \nabla_a (Z^\perp)_{(d} n_{c)}
+	- 2 {\gamma_u}^c {\gamma_v}^d (Z^\perp)^a K_{a(c} n_{d)}
+	+ {\gamma_u}^c {\gamma_v}^d n_c n_d a_a (Z^\perp)^a
+	
+	+ {\gamma_u}^c {\gamma_v}^d \gamma_{cd} n^a \nabla_a \Theta
+	+ 2 {\gamma_u}^c {\gamma_v}^d K_{cd} \Theta
+	+ 2 {\gamma_u}^c {\gamma_v}^d n_{(c} a_{d)} \Theta
+	- 2 {\gamma_u}^c {\gamma_v}^d n_{(d} \nabla^\perp_{c)} \Theta
+	+ {\gamma_u}^c {\gamma_v}^d n_c n_d n^a \nabla_a \Theta
+	- {\gamma_u}^c {\gamma_v}^d \gamma_{cd} (K - \kappa_1 \kappa_2) \Theta
+	+ {\gamma_u}^c {\gamma_v}^d n_c n_d (K + \kappa_1 (\kappa_2 + 2)) \Theta
+	
+	- 2 {\gamma_u}^c {\gamma_v}^d \kappa_1 n_{(c} (Z^\perp)_{d)} 
+
+	= 
+	8 \pi {\gamma_u}^c {\gamma_v}^d (
+		 S_{cd} 
+		 + n_d j_c 
+		 + n_c j_d 
+		 + n_c n_d \rho
+		- \frac{1}{2} g_{cd} (S - \rho))
+$<br>
+$
+	{\gamma_u}^c {\gamma_v}^d R_{cd} 
+
+	{R^\perp}_{uv} + K K_{uv} - {K_u}^a K_{av}
+	- {\gamma_u}^a {\gamma_v}^b n^c n^d R_{acbd}
+
+	- \gamma_{uv} \nabla^\perp_a (Z^\perp)^a
+	- \gamma_{uv} a_a (Z^\perp)^a
+	
+	+ {\gamma_v}^c \nabla^\perp_u (Z^\perp)_c
+	+ {\gamma_u}^c \nabla^\perp_v (Z^\perp)_c
+	
+	- 2 {\gamma_u}^c {\gamma_v}^d n^a \nabla_a (Z^\perp)_{(d} n_{c)}
+	- 2 {\gamma_u}^c {\gamma_v}^d (Z^\perp)^a K_{a(c} n_{d)}
+	
+	+ \gamma_{uv} n^a \nabla_a \Theta
+	+ 2 K_{uv} \Theta
+	
+	- \gamma_{uv} (K - \kappa_1 \kappa_2) \Theta
+
+	= 
+	8 \pi (S_{uv} - \frac{1}{2} g_{uv} (S - \rho))
+$<br>
 
 	</body>
 </html>

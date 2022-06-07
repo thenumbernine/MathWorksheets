@@ -716,6 +716,78 @@ Codazzi equation:<br>
 $\nabla^\perp_b K_{ac} - \nabla^\perp_b K_{bc} = {\gamma_a}^p {\gamma_b}^q {\gamma_c}^r n^s R_{pqrs}$<br>
 <br>
 
+${\gamma_a}^u n^v G_{uv}$<br>
+$= {\gamma_a}^u n^v (R_{uv} - \frac{1}{2} g_{uv} R)$<br>
+$= {\gamma_a}^u n^v R_{uv} - \frac{1}{2} {\gamma_a}^u n^v g_{uv} R$<br>
+$= {\gamma_a}^u n^v R_{uv} - \frac{1}{2} {\gamma_a}^u n_u R$<br>
+$= {\gamma_a}^u n^v R_{uv}$<br>
+$= {\gamma_a}^q g^{pr} n^s R_{pqrs}$<br>
+<br>
+
+start with Codazzi equation:<br>
+$	  \nabla^\perp_b K_{ac} 
+	- \nabla^\perp_b K_{bc} 
+	= {\gamma_a}^p {\gamma_c}^r {\gamma_b}^q n^s R_{pqrs}
+$<br>
+multiply by $\gamma^{ac}$:<br>
+$	  \gamma^{ac} \nabla^\perp_b K_{ac} 
+	- \gamma^{ac} \nabla^\perp_b K_{bc} 
+	= \gamma^{ac} {\gamma_a}^p {\gamma_c}^r {\gamma_b}^q n^s R_{pqrs}
+$<br>
+$	  \gamma^{ac} \nabla^\perp_b K_{ac} 
+	- \gamma^{ac} \nabla^\perp_b K_{bc} 
+	= \gamma^{pr} {\gamma_b}^q n^s R_{pqrs}
+	= g^{pr} {\gamma_b}^q n^s R_{pqrs} + n^p n^r n^s {\gamma_b}^q R_{pqrs}
+$<br>
+... using $R_{pqrs} n^r n^s = 0$ by antisymmetry of $R_{pqrs}$ and symmetry of $n^r n^s$:<br>
+... and using $\gamma_{ab} \nabla^\perp_c = \nabla^\perp_c \gamma_{ab}$<br>
+$	  \nabla^\perp_b (\gamma^{ac} K_{ac})
+	- \nabla^\perp_b (K_{bc} \gamma^{ac})
+	= g^{pr} {\gamma_b}^q n^s R_{pqrs}
+$<br>
+...using $g^{pr} {\gamma_b}^q n^s R_{pqrs} = {\gamma_a}^u n^v G_{uv}$<br>
+$ {\gamma_a}^u n^v G_{uv} = \nabla^\perp_b K - \nabla^\perp_b {K_b}^a$<br>
+(2008 Alcubierre eqn 2.4.8)<br>
+<br>
+
+Therefore (only because in my "Numerical Relativity/Z4 From Killing Vectors" worksheet I decided to trace-reverse the stress-energy instead of the Ricci curvature)...<br>
+${\gamma_a}^u n^v (R_{uv} - \frac{1}{2} g_{uv} R) = \nabla^\perp_a K - \nabla^\perp_b {K_a}^b$<br>
+${\gamma_a}^u n^v R_{uv} - \frac{1}{2} {\gamma_a}^u n_u R = \nabla^\perp_a K - \nabla^\perp_b {K_a}^b$<br>
+${\gamma_a}^u n^v R_{uv} = \nabla^\perp_a K - \nabla^\perp_b {K_a}^b$<br>
+...and the trace-reversal part cancels anyways.<br>
+<br>
+
+${\gamma_a}^u {\gamma_b}^v G_{uv}$<br>
+$= {\gamma_a}^u {\gamma_b}^v (R_{uv} - \frac{1}{2} g_{uv} R)$<br>
+$= {\gamma_a}^u {\gamma_b}^v R_{uv} - \frac{1}{2} {\gamma_a}^u {\gamma_b}^v g_{uv} R$<br>
+$= {\gamma_a}^u {\gamma_b}^v R_{uv} - \frac{1}{2} \gamma_{ab} R$<br>
+<br>
+
+${\gamma_a}^u {\gamma_b}^v R_{uv}$<br>
+$= {\gamma_a}^u {\gamma_b}^v g^{cd} R_{ucvd}$<br>
+$= {\gamma_a}^u {\gamma_b}^v (\gamma^{cd} - n^c n^d) R_{ucvd}$<br>
+$= {\gamma_a}^u {\gamma_b}^v \gamma^{cd} R_{ucvd} 
+	- {\gamma_a}^u {\gamma_b}^v n^c n^d R_{ucvd}
+$<br>
+using ${R^\perp}_{abcd} + K_{ac} K_{bd} - K_{ad} K_{bc} = {\gamma_a}^p {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s R_{pqrs}$<br>
+so $\gamma^{bd} {R^\perp}_{abcd} + \gamma^{bd} K_{ac} K_{bd} - \gamma^{bd} K_{ad} K_{bc} = {\gamma_a}^p {\gamma_c}^r \gamma^{bd} {\gamma_b}^q {\gamma_d}^s R_{pqrs}$<br>
+so ${R^\perp}_{ac} + K K_{ac} - {K_a}^b K_{bc} = {\gamma_a}^p {\gamma_c}^r \gamma^{qs} R_{pqrs}$<br>
+$= 
+	{R^\perp}_{ab} + K K_{ab} - {K_a}^c K_{cb}
+	- {\gamma_a}^u {\gamma_b}^v n^c n^d R_{ucvd}
+$<br>
+... using ${\gamma_a}^b = \delta_a^b + n_a n^b$<br>
+$= 
+	{R^\perp}_{ab} + K K_{ab} - {K_a}^c K_{cb}
+	- (\delta_a^u + n_a n^u) (\delta_b^v + n_b n^v) n^c n^d R_{ucvd}
+$<br>
+... using $n^a n^b R_{abcd} = 0$<br>
+$= 
+	{R^\perp}_{ab} + K K_{ab} - {K_a}^c K_{cb}
+	- n^c n^d R_{acbd}
+$<br>
+<br>
+
 <a href='index.html'>Back</a><br>
 	</body>
 </html>
