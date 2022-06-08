@@ -592,60 +592,39 @@ add identity to prepare for substitution with projection matrix<br>
 $=g^p_a g^q_b g^r_c g^s_d R_{pqrs}$<br>
 ...and substitute...<br>
 $=({\gamma_a}^p-n^p n_a) ({\gamma_b}^q - n^q n_b) ({\gamma_c}^r - n^r n_c) ({\gamma_d}^s-n^s n_d) R_{pqrs}$<br>
-$= (<br>
-{\gamma_a}^p {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s<br>
-- n^p n_a {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s<br>
-- {\gamma_a}^p n^q n_b {\gamma_c}^r {\gamma_d}^s<br>
-- {\gamma_a}^p {\gamma_b}^q n^r n_c {\gamma_d}^s<br>
-- {\gamma_a}^p {\gamma_b}^q {\gamma_c}^r n^s n_d<br>
-+ n^p n_a n^q n_b {\gamma_c}^r {\gamma_d}^s<br>
-+ n^p n_a {\gamma_b}^q n^r n_c {\gamma_d}^s<br>
-+ n^p n_a {\gamma_b}^q {\gamma_c}^r n^s n_d<br>
-+ {\gamma_a}^p n^q n_b n^r n_c {\gamma_d}^s<br>
-+ {\gamma_a}^p n^q n_b {\gamma_c}^r n^s n_d<br>
-+ {\gamma_a}^p {\gamma_b}^q n^r n_c n^s n_d<br>
-- n^p n_a n^q n_b n^r n_c {\gamma_d}^s<br>
-- n^p n_a n^q n_b {\gamma_c}^r n^s n_d<br>
-- n^p n_a {\gamma_b}^q n^r n_c n^s n_d<br>
-- {\gamma_a}^p n^q n_b n^r n_c n^s n_d<br>
-+ n^p n_a n^q n_b n^r n_c n^s n_d ) R_{pqrs}$<br>
+$= (
+	{\gamma_a}^p {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s
+	- n^p n_a {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s
+	- {\gamma_a}^p n^q n_b {\gamma_c}^r {\gamma_d}^s
+	- {\gamma_a}^p {\gamma_b}^q n^r n_c {\gamma_d}^s
+	- {\gamma_a}^p {\gamma_b}^q {\gamma_c}^r n^s n_d
+	+ n^p n_a n^q n_b {\gamma_c}^r {\gamma_d}^s
+	+ n^p n_a {\gamma_b}^q n^r n_c {\gamma_d}^s
+	+ n^p n_a {\gamma_b}^q {\gamma_c}^r n^s n_d
+	+ {\gamma_a}^p n^q n_b n^r n_c {\gamma_d}^s
+	+ {\gamma_a}^p n^q n_b {\gamma_c}^r n^s n_d
+	+ {\gamma_a}^p {\gamma_b}^q n^r n_c n^s n_d
+	- n^p n_a n^q n_b n^r n_c {\gamma_d}^s
+	- n^p n_a n^q n_b {\gamma_c}^r n^s n_d
+	- n^p n_a {\gamma_b}^q n^r n_c n^s n_d
+	- {\gamma_a}^p n^q n_b n^r n_c n^s n_d
+	+ n^p n_a n^q n_b n^r n_c n^s n_d ) R_{pqrs}$<br>
 remove contraction of antisymmetric indices...<br>
-$= (<br>
-{\gamma_a}^p {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s<br>
-- n^p n_a {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s<br>
-- {\gamma_a}^p n^q n_b {\gamma_c}^r {\gamma_d}^s<br>
-- {\gamma_a}^p {\gamma_b}^q n^r n_c {\gamma_d}^s<br>
-- {\gamma_a}^p {\gamma_b}^q {\gamma_c}^r n^s n_d<br>
-+ n^p n_a {\gamma_b}^q n^r n_c {\gamma_d}^s<br>
-+ n^p n_a {\gamma_b}^q {\gamma_c}^r n^s n_d<br>
-+ {\gamma_a}^p n^q n_b n^r n_c {\gamma_d}^s<br>
-+ {\gamma_a}^p n^q n_b {\gamma_c}^r n^s n_d) R_{pqrs}$<br>
-distribute ...<br>
-$= ({\gamma_a}^p {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s<br>
-- n^p n_a {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s<br>
-- {\gamma_a}^p n^q n_b {\gamma_c}^r {\gamma_d}^s<br>
-- {\gamma_a}^p {\gamma_b}^q n^r n_c {\gamma_d}^s<br>
-- {\gamma_a}^p {\gamma_b}^q {\gamma_c}^r n^s n_d<br>
-+ n^p n_a {\gamma_b}^q n^r n_c {\gamma_d}^s<br>
-+ n^p n_a {\gamma_b}^q {\gamma_c}^r n^s n_d<br>
-+ {\gamma_a}^p n^q n_b n^r n_c {\gamma_d}^s<br>
-+ {\gamma_a}^p n^q n_b {\gamma_c}^r n^s n_d) R_{pqrs}$<br>
-move $n$'s to the end...<br>
-$= ({\gamma_a}^p {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s<br>
-- {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s n^p n_a<br>
-- {\gamma_a}^p {\gamma_c}^r {\gamma_d}^s n^q n_b<br>
-- {\gamma_a}^p {\gamma_b}^q {\gamma_d}^s n^r n_c<br>
-- {\gamma_a}^p {\gamma_b}^q {\gamma_c}^r n^s n_d<br>
-+ {\gamma_b}^q {\gamma_d}^s n^p n_a n^r n_c<br>
-+ {\gamma_b}^q {\gamma_c}^r n^p n_a n^s n_d<br>
-+ {\gamma_a}^p {\gamma_d}^s n^q n_b n^r n_c<br>
-+ {\gamma_a}^p {\gamma_c}^r n^q n_b n^s n_d) R_{pqrs}$<br>
+$= ({\gamma_a}^p {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s
+	- {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s n^p n_a
+	- {\gamma_a}^p {\gamma_c}^r {\gamma_d}^s n^q n_b
+	- {\gamma_a}^p {\gamma_b}^q {\gamma_d}^s n^r n_c
+	- {\gamma_a}^p {\gamma_b}^q {\gamma_c}^r n^s n_d
+	+ {\gamma_b}^q {\gamma_d}^s n^p n_a n^r n_c
+	+ {\gamma_b}^q {\gamma_c}^r n^p n_a n^s n_d
+	+ {\gamma_a}^p {\gamma_d}^s n^q n_b n^r n_c
+	+ {\gamma_a}^p {\gamma_c}^r n^q n_b n^s n_d) R_{pqrs}$<br>
 use antisymmetry to switch indices, and combine ...<br>
-$R_{abcd} = ({\gamma_a}^p {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s<br>
-- 2 {\gamma_a}^p {\gamma_b}^q {\gamma_{[c}}^r n_{d]} n^s<br>
-- 2 {\gamma_c}^p {\gamma_d}^q {\gamma_{[a}}^r n_{b]} n^s<br>
-+ 2 {\gamma_a}^p {\gamma_{[c}}^r n_{d]} n_b n^q n^s<br>
-- 2 {\gamma_b}^p {\gamma_{[c}}^r n_{d]} n_a n^q n^s) R_{pqrs}$<br>
+$R_{abcd} = ({\gamma_a}^p {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s
+	- 2 {\gamma_a}^p {\gamma_b}^q {\gamma_{[c}}^r n_{d]} n^s
+	- 2 {\gamma_c}^p {\gamma_d}^q {\gamma_{[a}}^r n_{b]} n^s
+	+ 2 {\gamma_a}^p {\gamma_{[c}}^r n_{d]} n_b n^q n^s
+	- 2 {\gamma_b}^p {\gamma_{[c}}^r n_{d]} n_a n^q n^s) R_{pqrs}$ ... (2010 Baumgarte &amp; Shapiro, eqn 2.61)<br>
 <br>
 
 
@@ -688,8 +667,45 @@ ${(R^\perp)^c}_{dab} v^d =
 	- {K_a}^c K_{bd}
 	+ {K_b}^c K_{ad}) v^d
 $<br>
-Gauss' equation:<br>
 ${R^\perp}_{abcd} + K_{ac} K_{bd} - K_{ad} K_{bc} = {\gamma_a}^p {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s R_{pqrs}$<br>
+Gauss' equation.  (2008 Alcubierre, eqn 2.41; 2010 Baumgarte &amp; Shapiro, eqn 2.68)<br>
+<br>
+
+Gauss' equation, contracting once with the spatial metric:<br>
+$	\gamma^{ac} (
+		{R^\perp}_{abcd} 
+		+ K_{ac} K_{bd} 
+		- K_{ad} K_{bc}
+	) = \gamma^{ac} {\gamma_a}^p {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s R_{pqrs}
+$<br>
+$	\gamma^{ac} {R^\perp}_{abcd} 
+	+ \gamma^{ac} K_{ac} K_{bd} 
+	- \gamma^{ac} K_{ad} K_{bc}
+	= \gamma^{pr} {\gamma_b}^q {\gamma_d}^s R_{pqrs}
+$<br>
+$	{R^\perp}_{bd} 
+	+ K K_{bd} 
+	- K_{bc} {K^c}_d
+	= \gamma^{pr} {\gamma_b}^q {\gamma_d}^s R_{pqrs}
+$ (Baumgarte &amp; Shapiro 2010, eqn. 2.84)<br>
+<br>
+
+Gauss' equation contracting twice with the spatial metric:<br>
+$	\gamma^{bd} ({R^\perp}_{bd} 
+		+ K K_{bd} 
+		- K_{bc} {K^c}_d
+	) = \gamma^{bd} \gamma^{pr} {\gamma_b}^q {\gamma_d}^s R_{pqrs}
+$<br>
+$	\gamma^{bd} {R^\perp}_{bd} 
+		+ \gamma^{bd} K K_{bd} 
+		- \gamma^{bd} K_{bc} {K^c}_d
+	=  \gamma^{pr} \gamma^{qs} R_{pqrs}
+$<br>
+$	R^\perp
+		+ K^2
+		- K_{ab} K^{ab}
+	=  \gamma^{pr} \gamma^{qs} R_{pqrs}
+$ (2008 Alcubierre, eqn 2.4.4, 2010 Baumgarte &amp; Shapiro, eqn 2.85)<br>
 <br>
 
 spatial Riemann is orthogonal to normal:<br>
@@ -716,12 +732,55 @@ Codazzi equation:<br>
 $\nabla^\perp_b K_{ac} - \nabla^\perp_b K_{bc} = {\gamma_a}^p {\gamma_b}^q {\gamma_c}^r n^s R_{pqrs}$<br>
 <br>
 
+Decomposition of the Einstein curvature tensor:<br>
+<br>
+
 ${\gamma_a}^u n^v G_{uv}$<br>
 $= {\gamma_a}^u n^v (R_{uv} - \frac{1}{2} g_{uv} R)$<br>
 $= {\gamma_a}^u n^v R_{uv} - \frac{1}{2} {\gamma_a}^u n^v g_{uv} R$<br>
 $= {\gamma_a}^u n^v R_{uv} - \frac{1}{2} {\gamma_a}^u n_u R$<br>
-$= {\gamma_a}^u n^v R_{uv}$<br>
+$= {\gamma_a}^u n^v R_{uv}$ (2008 Alcubierre, eqn 2.4.7)<br>
 $= {\gamma_a}^q g^{pr} n^s R_{pqrs}$<br>
+<br>
+
+${\gamma_a}^u {\gamma_b}^v G_{uv}$<br>
+$= {\gamma_a}^u {\gamma_b}^v (R_{uv} - \frac{1}{2} g_{uv} R)$<br>
+$= {\gamma_a}^u {\gamma_b}^v R_{uv} - \frac{1}{2} {\gamma_a}^u {\gamma_b}^v g_{uv} R$<br>
+$= {\gamma_a}^u {\gamma_b}^v R_{uv} - \frac{1}{2} \gamma_{ab} R$<br>
+$= g^{pr} ({\gamma_a}^q {\gamma_b}^s - \frac{1}{2} \gamma_{ab} g^{qs}) R_{pqrs}$<br>
+<br>
+
+$n^u n^v G_{uv}$<br>
+$= n^u n^v (R_{uv} - \frac{1}{2} R g_{uv})$<br>
+$= n^u n^v R_{uv} - \frac{1}{2} R n^u n_u$<br>
+$= n^u n^v R_{uv} + \frac{1}{2} R$<br>
+$= n^u n^v R_{uv} + \frac{1}{2} g^{uv} R_{uv}$<br>
+$= \frac{1}{2} (\gamma^{uv} + n^u n^v) R_{uv}$ ... this says the trace-reversal of the Ricci, i.e. the Einstein tensor, is the Ricci contracted with the trace-reversal of the projection.<br>
+$= \frac{1}{2} R + R_{uv} n^u n^v$<br>
+Therefore:<br>
+$n^u n^v G_{uv} = n^u n^v R_{uv} + \frac{1}{2} R$ (2008 Alcubierre, eqn. 2.7.2)<br>
+<br>
+
+Keep going:<br>
+$n^u n^v G_{uv} = \frac{1}{2} (g^{pr} g^{qs} R_{pqrs} + g^{pr} n^q n^s R_{pqrs} + n^p n^r g^{qs} R_{pqrs})$<br>
+...using $R_{abcd} n^c n^d = 0$<br>
+$= \frac{1}{2} (g^{pr} g^{qs} R_{pqrs} + g^{pr} n^q n^s R_{pqrs} + n^p n^r g^{qs} R_{pqrs} + n^p n^r n^q n^s R_{pqrs})$<br>
+...un-distribute...<br>
+$= \frac{1}{2} (g^{pr} + n^p n^r) (g^{qs} + n^q n^s) R_{pqrs}$<br>
+...use definition of projection...<br>
+$= \frac{1}{2} \gamma^{pr} \gamma^{qs} R_{pqrs}$<br>
+Therefore:<br>
+$n^u n^v G_{uv} = \frac{1}{2} \gamma^{pr} \gamma^{qs} R_{pqrs}$ (2008 Alcubierre, eqn 2.4.3)<br>
+Also:<br>
+$\gamma^{pr} \gamma^{qs} R_{pqrs} = R + 2 R_{uv} n^u n^v$ (2010 Baumgarte &amp; Shapiro, eqn. 2.86)<br>
+<br>
+
+Using 
+$\gamma^{pr} \gamma^{qs} R_{pqrs} = R^\perp + K^2 - K^{ab} K_{ab}$<br>
+and
+$n^u n^v G_{uv} = \frac{1}{2} \gamma^{pr} \gamma^{qs} R_{pqrs}$<br>
+we get:
+$2 n^u n^v G_{uv} = R^\perp + K^2 - K^{ab} K_{ab}$ (2008 Alcubierre, eqn 2.4.5)<br>
 <br>
 
 start with Codazzi equation:<br>
@@ -746,21 +805,14 @@ $	  \nabla^\perp_b (\gamma^{ac} K_{ac})
 	= g^{pr} {\gamma_b}^q n^s R_{pqrs}
 $<br>
 ...using $g^{pr} {\gamma_b}^q n^s R_{pqrs} = {\gamma_a}^u n^v G_{uv}$<br>
-$ {\gamma_a}^u n^v G_{uv} = \nabla^\perp_b K - \nabla^\perp_b {K_b}^a$<br>
-(2008 Alcubierre eqn 2.4.8)<br>
+$ {\gamma_a}^u n^v G_{uv} = \nabla^\perp_b K - \nabla^\perp_b {K_b}^a$ (2008 Alcubierre eqn 2.4.8)<br>
 <br>
 
-Therefore (only because in my "Numerical Relativity/Z4 From Killing Vectors" worksheet I decided to trace-reverse the stress-energy instead of the Ricci curvature)...<br>
+Therefore...<br>
 ${\gamma_a}^u n^v (R_{uv} - \frac{1}{2} g_{uv} R) = \nabla^\perp_a K - \nabla^\perp_b {K_a}^b$<br>
 ${\gamma_a}^u n^v R_{uv} - \frac{1}{2} {\gamma_a}^u n_u R = \nabla^\perp_a K - \nabla^\perp_b {K_a}^b$<br>
 ${\gamma_a}^u n^v R_{uv} = \nabla^\perp_a K - \nabla^\perp_b {K_a}^b$<br>
 ...and the trace-reversal part cancels anyways.<br>
-<br>
-
-${\gamma_a}^u {\gamma_b}^v G_{uv}$<br>
-$= {\gamma_a}^u {\gamma_b}^v (R_{uv} - \frac{1}{2} g_{uv} R)$<br>
-$= {\gamma_a}^u {\gamma_b}^v R_{uv} - \frac{1}{2} {\gamma_a}^u {\gamma_b}^v g_{uv} R$<br>
-$= {\gamma_a}^u {\gamma_b}^v R_{uv} - \frac{1}{2} \gamma_{ab} R$<br>
 <br>
 
 ${\gamma_a}^u {\gamma_b}^v R_{uv}$<br>
@@ -786,6 +838,18 @@ $=
 	{R^\perp}_{ab} + K K_{ab} - {K_a}^c K_{cb}
 	- n^c n^d R_{acbd}
 $<br>
+<br>
+
+contracting Gauss' equation:<br>
+$R^\perp_{abcd} + K_{ac} K_{bd} - K_{ad} K_{bc} = {\gamma_a}^p {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s R_{pqrs}$<br>
+$g^{ac} (R^\perp_{abcd} + K_{ac} K_{bd} - K_{ad} K_{bc}) = g^{ac} {\gamma_a}^p {\gamma_b}^q {\gamma_c}^r {\gamma_d}^s R_{pqrs}$<br>
+${R^{\perp a}}_{bad} + K K_{bd} - {K^a}_d K_{ba} = \gamma^{pr} {\gamma_b}^q {\gamma_d}^s R_{pqrs}$<br>
+$g^{bd}({R^\perp}_{bd} + K K_{bd} - {K^a}_d K_{ba}) = g^{bd} \gamma^{pr} {\gamma_b}^q {\gamma_d}^s R_{pqrs}$<br>
+${R^\perp} + K^2 - K^{ab} K_{ab} = \gamma^{pr} \gamma^{qs} R_{pqrs}$<br>
+...substitute projected Riemann...<br>
+$R^\perp+K^2-K_{ab}K^{ab}=R + 2n^a n^b R_{ab}$<br>
+...solve for R...<br>
+$R = R^\perp - K_{ab} K^{ab} + K^2 - 2 n^a n^b R_{ab}$<br>
 <br>
 
 <a href='index.html'>Back</a><br>
