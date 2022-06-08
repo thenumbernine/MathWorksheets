@@ -10,10 +10,49 @@
 <a href='index.html'>Back</a><br>
 <br>
 
-$G_{uv} = 8 \pi T_{uv}$<br>
-$n^u n^v G_{uv} = 8 \pi n^u n^v T_{uv} = 8 \pi \rho$<br>
-$n^u n^v G_{uv} = 8 \pi \rho$<br>
+Stress-energy projected components:<br>
+Let $\rho = n^u n^v T_{uv}$ = the stress-energy density<br>
+Let $j_a = -n^u T_{uv} {\gamma_a}^v$ = the stress-energy spatial current<br>
+Let $S_{ab} = T_{uv} {\gamma_a}^u {\gamma_b}^v$ = the spatial stress tensor<br>
+Let $S = T_{uv} \gamma^{uv} = {S^a}_a$ = the spatial stress tensor trace<br>
+So $T_{uv} g^{uv} = T_{uv} (\gamma^{uv} - n^u n^v) = S - \rho$<br>
 <br>
+
+Einstein Field Equations in projected components:<br>
+<br>
+
+Einstein Field Equations, contracting both indexes with the normal vector:<br>
+$n^u n^v G_{uv} = 8 \pi n^u n^v T_{uv}$<br>
+$n^u n^v G_{uv} = 8 \pi \rho$<br>
+using $2 n^u n^v G_{uv} = R^\perp + K^2 - K^{ab} K_{ab}$:<br>
+$R^\perp + K^2 - K^{ab} K_{ab} = 16 \pi \rho$ (2010 Baumgarte &amp; Shapiro, eqn. 2.125)<br>
+$R^\perp + K^2 - K^{ab} K_{ab} - 16 \pi \rho = 0$<br>
+Hamiltonian constraint: Let...<br>
+$\mathcal{H} = n^u n^v G_{uv} - 8 \pi \rho$ (2008 Alcubierre, eqn. 2.5.10)<br>
+$\mathcal{H} = \frac{1}{2} (R^\perp + K^2 - K^{ab} K_{ab}) - 8 \pi \rho$ (2008 Alcubierre, eqn. 2.5.9)<br>
+Now when the Einstein Field Equations are satisfied, we will have $\mathcal{H} = 0$<br>
+<br>
+
+Einstein Field Equations, contracting one index with normal and projecting the other:<br>
+$-n^u {\gamma_a}^v G_{uv} = -n^u {\gamma_a}^v 8 \pi T_{uv}$<br>
+using $j_a = -n^u {\gamma_a}^v T_{uv}$<br>
+$-n^u {\gamma_a}^v G_{uv} = 8 \pi j_a$<br>
+using ${\gamma_a}^u n^v G_{uv} = \nabla^\perp_a K - \nabla^\perp_b {K_a}^b$<br>
+$\nabla^\perp_b {K_a}^b - \nabla^\perp_a K = 8 \pi j_a$<br>
+$\nabla^\perp_b {K_a}^b - \nabla^\perp_a K - 8 \pi j_a = 0$<br>
+Momentum constraint: Let...<br>
+$\mathcal{M}_a = -n^u {\gamma_a}^v G_{uv} - 8 \pi j_a$ (2008 Alcubierre, eqn. 2.5.11)<br>
+$\mathcal{M}_a = \nabla^\perp_b {K_a}^b - \nabla^\perp_a K - 8 \pi j_a$<br>
+Now when the Einstein Field Equations are satisfied, we will have $\mathcal{M}_a = 0$<br>
+<br>
+
+Einstein Field Equations, projecting both indexes.<br>
+${\gamma_a}^u {\gamma_b}^v G_{uv} = 8 \pi {\gamma_a}^u {\gamma_b}^v T_{uv}$<br>
+using $S_{ab} = T_{uv} {\gamma_a}^u {\gamma_b}^v$:<br>
+${\gamma_a}^u {\gamma_b}^v G_{uv} = 8 \pi S_{uv}$<br>
+... this one is mentioned in 2008 Alcubierre, eqn. 2.5.12, but no mention of which values for $\perp G_{uv}$ are used ... is it the R definition?  is it the K definition?<br>
+<br>
+
 
 Ricci tensor contracted with normal:<br>
 $n^a n^b R_{ab}$<br>
@@ -50,7 +89,7 @@ $=\sqrt{-g}R$<br>
 $=\alpha\sqrt{\gamma}R$<br>
 ...substitute Gauss-Codazzi equations...<br>
 $=\alpha\sqrt{\gamma}(R^\perp + K_{ab} K^{ab} - K^2$<br>
-$\mathcal{L}=\alpha\sqrt{\gamma}(R^\perp+K_{ij} K^{ij} - K^2)$<br>
+$\mathcal{L}=\alpha\sqrt{\gamma}(R^\perp+K_{ij} K^{ij} - K^2)$ (2008 Alcubierre, eqn. 2.7.6)<br>
 <br>
 Vacuum Action:<br>
 $ S = \int \sqrt{-g} R dx^4 $<br>
@@ -74,7 +113,7 @@ $ \pi_{ij} = -\alpha \frac{1}{2\alpha} \sqrt{\gamma} ((\gamma_{km} \gamma_{ln} -
 $ \pi_{ij} = -\frac{1}{2} \sqrt{\gamma} ((\gamma_{km} \gamma_{ln} K^{kl} \delta^m_i \delta^n_j - \gamma_{kl} \gamma_{mn} K^{kl} \delta^m_i \delta^n_j) + (\gamma_{km} \gamma_{ln} K^{mn} \delta^k_i \delta^l_j - \gamma_{kl} \gamma_{mn} K^{mn} \delta^k_i \delta^l_j)) $<br>
 $ \pi_{ij} = -\frac{1}{2} \sqrt{\gamma} (K_{ij} - \gamma_{ij} K + K_{ij} - \gamma_{ij} K) $<br>
 $ \pi_{ij} = -\sqrt{\gamma} (K_{ij} - \gamma_{ij} K) $<br>
-$ \pi^{ij} = -\sqrt{\gamma} (K^{ij} - \gamma^{ij} K) $<br>
+$ \pi^{ij} = -\sqrt{\gamma} (K^{ij} - \gamma^{ij} K) $ (2008 Alcubierre, eqn. 2.7.8)<br>
 Notice that $\pi^{ij}$ is a tensor density with weight 1.<br>
 <br>
 
@@ -89,7 +128,7 @@ substitute into equation of conjugate momentum in terms of extrinsic curvature:<
 $ \pi^{ij} = -\sqrt{\gamma} (K^{ij} - \gamma^{ij} K) $<br>
 $ \pi^{ij} = -\sqrt{\gamma} K^{ij} + \sqrt\gamma \gamma^{ij} \pi / (2 \sqrt\gamma) $<br>
 $ \pi^{ij} = -\sqrt{\gamma} K^{ij} + \frac{1}{2} \gamma^{ij} \pi $<br>
-$ K^{ij} = -\frac{1}{\sqrt{\gamma}} (\pi^{ij} - \frac{1}{2} \gamma^{ij} \pi) $<br>
+$ K^{ij} = -\frac{1}{\sqrt{\gamma}} (\pi^{ij} - \frac{1}{2} \gamma^{ij} \pi) $ (2008 Alcubierre, eqn. 2.7.9)<br>
 <br>
 
 Extrinsic cuvrature derivative in terms of conjugate momentum:<br>
