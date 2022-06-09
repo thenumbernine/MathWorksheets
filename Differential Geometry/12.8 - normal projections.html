@@ -9,11 +9,6 @@
 <a href='index.html'>Back</a><br>
 <br>
 
-TODO make a preceding chapter on general horizontal and vertical connections and extrinsic curvature.<br>
-This is going to be the 1D-normal case.<br>
-TODO move this back before the Einstein-Hilbert action part ... but keep it after the curvature part?<br>
-<br>
-
 TODO shoudn't the operator that projects parallel to the hypersurface be the symbol $\top$, or even better, the parallel symbol $\parallel$, and not the perpendicular symbol $\perp$ ?
 Shouldn't the component that is perpendicular to the hypersurface by the perpendicular symbol $\perp$ ?<br>
 This means all the mainstream numerical relativity literature symbols of $\perp$ and $\top$ are mixed up.
@@ -115,7 +110,14 @@ $n^a K_{ab} = -n^a {\gamma_a}^c {\gamma_b}^d \nabla_c n_d = 0$ since $n^a {\gamm
 $n^b K_{ab} = -n^b {\gamma_a}^c {\gamma_b}^d \nabla_c n_d = 0$ since $n^b {\gamma_b}^d = 0$<br>
 <br>
 
-
+What is the spatial covariant derivative of the spacetime metric?<br>
+$\nabla^\perp_a g_{uv}$<br>
+$= \nabla^\perp_a (\gamma_{uv} - n_u n_v)$<br>
+$= \nabla^\perp_a \gamma_{uv} - \nabla^\perp_a n_u n_v - n_u \nabla^\perp_a n_v$<br>
+using $\nabla^\perp_a \gamma_{uv} = 0$<br>
+$= -n_{(v \nabla^\perp_a n_u - n_u \nabla^\perp_a n_v$<br>
+$= n_v K_{au} + n_u K_{av}$<br>
+<br>
 
 <hr>
 <br>
@@ -472,19 +474,19 @@ $=
 	+ n^a n^b n_a n_b n^c \nabla_c v^\top
 $<br>
 $=
-	\nabla^\perp_a (v^\perp)_a
+	\nabla^\perp_a (v^\perp)^a
 	- K v^\top
 	- n^c n^b \nabla_c (v^\perp)_b
 	+ n^a \nabla_a v^\top
 $<br>
 $=
-	\nabla^\perp_a (v^\perp)_a
+	\nabla^\perp_a (v^\perp)^a
 	- K v^\top
 	+ n^c (v^\perp)^b (-K_{cb} - n_c a_b)
 	+ n^a \nabla_a v^\top
 $<br>
 $=
-	\nabla^\perp_a (v^\perp)_a
+	\nabla^\perp_a (v^\perp)^a
 	+ a_a (v^\perp)^a
 	+ n^a \nabla_a v^\top
 	- K v^\top
