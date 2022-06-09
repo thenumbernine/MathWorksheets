@@ -77,8 +77,8 @@ Vector divergence:
 $\nabla_a v^a
 = 	\nabla^\perp_a (v^\perp)^a
 	- a_a (v^\perp)^a
-	+ n^a \nabla_a v^\top
-	+ K v^\top
+	- n^a \nabla_a v^\top
+	- K v^\top
 $<br>
 <br>
 
@@ -88,28 +88,205 @@ $<br>
 
 Let $Z_u$ be our Killing vector<br>
 Let $Z^\perp_u = {\gamma_u}^a Z_a$ be the spatial projection of our Killing vector.<br>
-Let $Z^\top = \Theta = n^u Z_u$<br>
+Let $Z^\top = \Theta = -n_u Z^u$<br>
 <br>
 
 <hr>
 <b>Different Literature Z4 Formalisms:</b><br>
 <br>
 
-2008 Alcubierre "Introduction to 3+1 Numerical Relativity" eqn 5.8.7:<br>
-2009 Bona et al "Elements of Numerical Relativity" eqn 3.69:<br>
-$R_{uv} + 2 \nabla_{(u} Z_{v)} = 8 \pi (T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab})$<br>
+2003 Bona, Ledvinka, Palenzuela, Zacek, eqn. 11:<br>
+$R_{uv} + 2 \nabla_{(u} Z_{v)} = 8 \pi (T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab})$ (eqn 11)<br>
+$\Theta = n_u Z^u = \alpha Z^0$ (eqn 13)<br>
+$n_u = [\alpha, 0]$ (implied from eqn 13?) = past-pointing normal.<br>
+<br>
+
+2005 Gundlach et al:<br>
+$R_{uv} + 2 \nabla_{(u} Z_{v)} - \kappa_1 (2 n_{(u} Z_{v)} - (1 + \kappa_2) g_{uv} n_a Z^a) = 8 \pi T_{uv}$ (eqn 2)<br>
+$G_{uv} + 2 \nabla_{(u} Z_{v)} - g_{uv} \nabla_a Z^a - \kappa_1 (2 n_{(u} Z_{v)} + \kappa_2 g_{uv} n_a Z^a) = 8 \pi (T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab})$ (eqn 3)<br>
+$\kappa_1 \ge 0$ (after eqn. 3)<br>
+$\Theta = -n_a Z^a = \alpha Z^0$ (after eqn. 4)<br>
+$n_u = [-\alpha, 0]$ (implied from what's after eqn. 4) = future-pointing normal.<br>
+"(Note that $n^a$ as defined in [7] is past-pointing, while ours is future-pointing, so that the two definitions of $\Theta$ are the same.)", where [7] is 2003 Bona et al.<br>
+... which is "past-pointing" and which is "future-pointing"? $\nabla_u t$ vs. $-\nabla_u t$?  Other sources say $n_u = [-\alpha, 0]$ is future-pointing, which makes sense with what I see.<br>
+<br>
+
+2008 Alcubierre "Introduction to 3+1 Numerical Relativity":<br>
+$R_{uv} + 2 \nabla_{(u} Z_{v)} = 8 \pi (T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab})$ (eqn 5.8.7)<br>
+$n_u = [-\alpha, 0]$ (eqn. 2.2.8) = future-pointing.<br>
+$j^i = -\gamma^{iu} n^v T_{uv}$ (eqn 2.4.12) = spatial momentum, sign consistent with future-pointing normal.<br>
+Z4 section of the hyperbolic formalism chapter:<br>
+$\Theta = n_u Z^u = \alpha Z^0$ (eqn. 5.8.15)<br>
+Ok how do I resolve these two definitions of $n_u$?
+Did Alcubierre just copy 5.8.15 from earlier Z4 papers by Bona et al, therefore using a different convention of $n_u$ than his own? 
+Is he implying that $Z^u$ contians a negative $Z^0$, so $n_u Z^u = (-\alpha) \cdot (-Z^0) + 0 \cdot 0 ... = \alpha Z^0$?
+I think the equation was just copied from the Z4 papers without thought of how the convention was different from the rest of the book.<br>
+<br>
+
+2009 Bona et al "Elements of Numerical Relativity":<br>
+$R_{uv} + 2 \nabla_{(u} Z_{v)} = 8 \pi (T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab})$ (eqn 3.69)<br>
+$G_{uv} + 2 \nabla_{(u} Z_{v)} - g_{uv} \nabla_a Z^a + \kappa_1 (2 n_{(u} Z_{v)} + \kappa_2 g_{uv} n_a Z^a) = 8 \pi T_{uv}$ (eqn. 3.79) ... this equation is citing 2005 Gundlach, though the $\kappa_1$ sign is flipped, maybe due to the normal sign being flipped as well?<br>
+$\kappa_1 &gt; 0; \kappa_2 &gt; -1$<br>
+$n_u = [\alpha, 0]$ (eqn 2.26) = past-pointing.<br>
+$S_i = n_u {T^u}_i$ (eqn 2.36) = spatial momentum, sign consistent with past-pointing normal.<br>
+$\Theta = n_u Z^u = \alpha Z^0$ (eqn 3.84)<br>
+<br>
+
+2010 Baumgarte &amp; Shapiro "Numerical Relativity: Solving Einstein's Equations on the Computer"<br>
+$n_u = [-\alpha, 0]$ (eqn. 2.117)<br>
 <br>
 
 2011 Cao, Hilditch, eqn 1:<br>
 $G_{uv} + 2 \nabla_{(u} Z_{v)} - g_{uv} \nabla_a Z^a - \kappa_1 (2 n_{(u} Z_{v)} + \kappa_2 g_{uv} n_a Z^a) = 8 \pi T_{uv}$<br>
+$\Theta = -n_a Z^a$ (after eqn. 1)<br>
+... but is $n_a = [-\alpha, 0]$ or $n_a = [\alpha, 0]$?  By $\Theta$'s definition I'm guessing it is future-pointing, $n_a = [-\alpha, 0]$.<br>
+Cites 2005 Gundlach et al as its source.<br>
 <br>
 
 2012 Alic et al, eqn 2:<br>
 $R_{uv} + 2 \nabla_{(u} Z_{v)} + \kappa_1 (2 n_{(u} Z_{v)} - (1 + \kappa_2) g_{uv} n_a Z^a) = 8 \pi (T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab})$<br>
 $\kappa_1 &gt; 0, \kappa_2 &gt; -1$<br>
+$\Theta = n_a Z^a = \alpha Z^0$ (after eqn. 9)<br>
+$n_u = [\alpha, 0]$ (implied from what's after eqn. 9) = past-pointing normal.<br>
+$S_i = n_u {T^u}_i$ (after eqn. 9) = spatial momentum.  Consistent sign with past-pointing normal.<br>
+Cites 2005 Gundlach et al as its source.<br>
+The trace-reversal of 2011 Cao matches this except that the $\kappa_1$ sign is flipped.<br>
+<br>
+
+For the sake of comparison with the Hamiltonian constraint, I should derive things based on $n^u n^v G_{uv}$ ...<br>
+But the difference between 2011 Cao et al and 2012 Alic et al is whether the you're using the original lhs or rhs of the EFE and performing a trace-reversal from that after adding in the Killing vectors.<br>
+With that said, let's compare the TR of 2011 Cao et al with 2012 Alic et al and vice versa.<br>
+<br>
+
+Trace of 2011 Cao et al:<br>
+$g^{uv} (G_{uv} + 2 \nabla_{(u} Z_{v)} - g_{uv} \nabla_a Z^a - \kappa_1 (2 n_{(u} Z_{v)} + \kappa_2 g_{uv} n_a Z^a)) = 8 \pi g^{uv} T_{uv}$<br>
+$
+	g^{uv} (R_{uv} - \frac{1}{2} g_{uv} R)
+	+ 2 g^{uv} \nabla_u Z_v 
+	- g^{uv} g_{uv} \nabla_a Z^a 
+	- \kappa_1 (2 g^{uv} n_u Z_v + \kappa_2 g^{uv} g_{uv} n_a Z^a)
+ = 8 \pi T$<br>
+$
+	- R
+	- 2 \nabla_a Z^a 
+	- 2 \kappa_1 (1 + 2 \kappa_2) n_a Z^a
+ = 8 \pi T$<br>
+<br>
+
+Double-check:<br>
+$g^{uv} (
+	G_{uv} 
+	+ 2 \nabla_{(u} Z_{v)} 
+	- g_{uv} \nabla_a Z^a 
+	- \kappa_1 (
+		2 n_{(u} Z_{v)} 
+		+ \kappa_2 g_{uv} n_a Z^a
+	)
+) = 8 \pi g^{uv} T_{uv}$<br>
+$(
+	g^{uv} (R_{uv} - \frac{1}{2} g_{uv} R)
+	+ 2 g^{uv} \nabla_{(u} Z_{v)} 
+	- g^{uv} g_{uv} \nabla_a Z^a 
+	- \kappa_1 (
+		2 g^{uv} n_{(u} Z_{v)} 
+		+ \kappa_2 g^{uv} g_{uv} n_a Z^a
+	)
+) = 8 \pi T$<br>
+$
+	- R
+	- 2 \nabla_a Z^a 
+	- 2 \kappa_1 (1 + 2 \kappa_2) n_a Z^a
+ = 8 \pi T$<br>
+<br>
+
+
+Trace-reversal of 2011 Cao et al:<br>
+$G_{uv} + 2 \nabla_{(u} Z_{v)} - g_{uv} \nabla_a Z^a - \kappa_1 (2 n_{(u} Z_{v)} + \kappa_2 g_{uv} n_a Z^a) 
+	- \frac{1}{2} g_{uv} (
+		- R
+		- 2 \nabla_a Z^a 
+		- 2 \kappa_1 (1 + 2 \kappa_2) \Theta
+	)
+	= 
+	8 \pi T_{uv}
+	- \frac{1}{2} g_{uv} (
+		8 \pi T
+	)
+$<br>
+$R_{uv} 
+	+ 2 \nabla_{(u} Z_{v)} 
+	- \kappa_1 (
+		2 n_{(u} Z_{v)} 
+		- (1 + \kappa_2) g_{uv} \Theta
+	)
+	= 
+	8 \pi (
+		T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab}
+	)
+$<br>
+<br>
+
+Double-check:<br>
+$
+	G_{uv} + 2 \nabla_{(u} Z_{v)} - g_{uv} \nabla_a Z^a - \kappa_1 (2 n_{(u} Z_{v)} + \kappa_2 g_{uv} n_a Z^a)
+	- \frac{1}{2} g_{uv} (
+		- R
+		- 2 \nabla_a Z^a 
+		- 2 \kappa_1 (1 + 2 \kappa_2) n_a Z^a
+	)
+	=
+	8 \pi T_{uv}
+	- \frac{1}{2} g_{uv} (
+		8 \pi T_{ab} g^{ab}
+	)
+$<br>
+$
+	R_{uv} 
+	- \frac{1}{2} g_{uv} R
+	+ \frac{1}{2} g_{uv} R
+	
+	+ 2 \nabla_{(u} Z_{v)} 
+	
+	- g_{uv} \nabla_a Z^a 
+	+ g_{uv} \nabla_a Z^a 
+	
+	- 2 \kappa_1 n_{(u} Z_{v)} 
+	
+	+ g_{uv} \kappa_1 n_a Z^a 
+	
+	-   g_{uv} \kappa_1 \kappa_2 n_a Z^a
+	+ 2 g_{uv} \kappa_1 \kappa_2 n_a Z^a
+	
+	=
+	8 \pi (
+		T_{uv}
+		- \frac{1}{2} g_{uv} T_{ab} g^{ab}
+	)
+$<br>
+$
+	R_{uv} 
+	+ 2 \nabla_{(u} Z_{v)} 
+	- \kappa_1 (
+		2 n_{(u} Z_{v)} 
+		- (1 + \kappa_2) g_{uv} n_a Z^a
+	)	
+	=
+	8 \pi (
+		T_{uv}
+		- \frac{1}{2} g_{uv} T_{ab} g^{ab}
+	)
+$<br>
+<br>
+
+So there's a single sign error between trace-reversal of 2011 Cao et al and 2012 Alic et al ... maybe I made a transcription mistake?<br>
+If I didn't make a sign error then the two are equal subject to $\kappa_1 \leftrightarrow -\kappa_1$.<br>
+The 2011 Cao paper defines $\Theta = -n^a Z^\perp_a$, unlike 2012 Alic and unlike Bona et al.<br>
+2012 Alic defines $\kappa_1 &gt; 0.<br>
 <br>
 
 What will I go with?<br>
+...<br>
+my first go (TODO don't do this, instead center around $G_{uv}$).<br>
 $R_{uv} + 2 \nabla_{(u} Z_{v)} - g_{uv} \nabla_a Z^a - \kappa_1 (2 n_{(u} Z_{v)} + \kappa_2 g_{uv} n_a Z^a) = 8 \pi (T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab})$<br>
 $\kappa_1 &gt; 0, \kappa_2 &gt; 0$<br>
 <br>
@@ -124,20 +301,20 @@ So I should be doing that first, then inserting the $Z_u$'s into it to produce t
 <br>
 
 $R_{uv} + 2 \nabla_{(u} Z_{v)} - g_{uv} \nabla_a Z^a - \kappa_1 (2 n_{(u} Z_{v)} + \kappa_2 g_{uv} n_a Z^a) = 8 \pi (T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab})$<br>
-Using $v_u = (v^\perp)_u - n_u v^\top$<br>
+Using $v_u = (v^\perp)_u + n_u v^\top$<br>
 Using $\nabla_a v^a = 
 	\nabla^\perp_a (v^\perp)_a
 	+ a_a (v^\perp)^a
-	- n^a \nabla_a v^\top
-	+ K v^\top
+	+ n^a \nabla_a v^\top
+	- K v^\top
 $<br>
 Using $\nabla_u v_v = 
 	\nabla^\perp_u (v^\perp)_v
 	- n_u n^a \nabla_a (v^\perp)_v
 	- K_{ua} (v^\perp)^a n_v
-	+ (K_{uv} + n_u a_v) v^\top
-	- n_v \nabla^\perp_u v^\top
-	+ n_u n_v n^a \nabla_a v^\top
+	- (K_{uv} + n_u a_v) v^\top
+	+ n_v \nabla^\perp_u v^\top
+	- n_u n_v n^a \nabla_a v^\top
 $<br>
 $R_{uv} 
 	+ 2 (
@@ -205,63 +382,6 @@ $	R_{uv}
 	- 2 \kappa_1 n_{(u} (Z^\perp)_{v)} 
 	= 
 	8 \pi (T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab})
-$<br>
-<br>
-
-Let $\rho = n^u n^v T_{uv}$ = the stress-energy density<br>
-Let $j_a = -n^u T_{uv} {\gamma^v}_a$ = the stress-energy spatial current<br>
-Let $S_{ab} = T_{uv} {\gamma^u}_a {\gamma^v}_b$ = the spatial stress tensor<br>
-Let $S = T_{uv} \gamma^{uv} = {S^a}_a$ = the spatial stress tensor trace<br>
-So $T_{uv} g^{uv} = T_{uv} (\gamma^{uv} - n^u n^v) = S - \rho$<br>
-<br>
-
-$\perp j_a = {\gamma_a}^b j_b$<br>
-$= -{\gamma_a}^b n^u T_{uv} {\gamma^v}_b$<br>
-$= -n^u T_{uv} {\gamma^v}_a$<br>
-$= j_a$<br>
-so $j_a$ is spatial<br>
-<br>
-
-$j_a n^a = -n^u T_{uv} {\gamma^v}_a n^a = 0$ so $j_a$ is spatial<br>
-<br>
-
-So $T_{uv} = \delta_u^a \delta_v^b T_{ab}$<br>
-$= ({\gamma_u}^a - n_u n^a) ({\gamma_v}^b - n_v n^b) T_{ab}$<br>
-$= ({\gamma_u}^a {\gamma_v}^b - {\gamma_u}^a n_v n^b - n_u n^a {\gamma_v}^b + n_u n^a n_v n^b) T_{ab}$<br>
-$= 
-	{\gamma_u}^a {\gamma_v}^b T_{ab}
-	- {\gamma_u}^a n_v n^b T_{ab}
-	- n_u n^a {\gamma_v}^b T_{ab}
-	+ n_u n^a n_v n^b T_{ab}
-$<br>
-$= S_{uv} + n_v j_u + n_u j_v + n_u n_v \rho$<br>
-<br>
-
-So $T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab}$<br>
-$= S_{uv} + n_v j_u + n_u j_v + n_u n_v \rho 
-	- \frac{1}{2} (\gamma_{uv} - n_u n_v) (S_{ab} + n_b j_a + n_a j_b + n_a n_b \rho) (\gamma^{ab} - n^a n^b)
-$<br>
-$= 	  S_{uv} 
-	+ n_v j_u 
-	+ n_u j_v 
-	+ n_u n_v \rho 
-	- \frac{1}{2} (\gamma_{uv} - n_u n_v) (
-		S_{ab} \gamma^{ab} 
-		- S_{ab} n^a n^b
-		+ n_b j_a \gamma^{ab} 
-		- n_b j_a  n^a n^b
-		+ n_a j_b \gamma^{ab} 
-		- n_a j_b  n^a n^b
-		+ n_a n_b \rho \gamma^{ab}
-		- n_a n_b \rho  n^a n^b
-	)
-$<br>
-$= 	  S_{uv} 
-	- \frac{1}{2} \gamma_{uv} (S - \rho)
-	+ n_v j_u 
-	+ n_u j_v 
-	+ n_u n_v \rho 
-	+ \frac{1}{2} n_u n_v (S - \rho)
 $<br>
 <br>
 
