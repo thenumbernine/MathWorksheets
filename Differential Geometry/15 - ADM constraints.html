@@ -66,6 +66,18 @@ $= 	  S_{uv}
 	+ n_u n_v \rho 
 	+ \frac{1}{2} n_u n_v (S - \rho)
 $<br>
+$= 	  S_{uv} 
+	+ n_v j_u 
+	+ n_u j_v 
+	+ n_u n_v \rho 
+	- \frac{1}{2} (\gamma_{uv} - n_u n_v) (S - \rho)
+$<br>
+$= 	  S_{uv} 
+	+ n_v j_u 
+	+ n_u j_v 
+	+ n_u n_v \rho 
+	- \frac{1}{2} g_{uv} (S - \rho)
+$<br>
 <br>
 
 <hr>
@@ -110,6 +122,30 @@ $\mathcal{E}_{ab} = {\gamma_a}^u {\gamma_b}^v G_{uv} - 8 \pi S_{uv}$ (2008 Alcub
 When the Einstein Field Equations are satisfied, we will have $\mathcal{E}_{ab} = 0$<br>
 <br>
 
+starting with (from the "normal projections" worksheet):<br>
+$	{R^\perp}_{bd} 
+	+ K K_{bd} 
+	- K_{bc} {K^c}_d
+	= 
+	{\gamma_b}^q {\gamma_d}^s R_{qs} 
+	+ n^p n^r {\gamma_b}^q {\gamma_d}^s R_{pqrs}
+$<br>
+Substitute the trace-reversed Einstein field equations, $R_{ab} = 8 \pi (T_{ab} - \frac{1}{2} g_{ab} T)$<br>
+$	
+	 n^p n^r {\gamma_b}^q {\gamma_d}^s R_{pqrs}
+	=
+	 {R^\perp}_{bd} 
+	+ K K_{bd} 
+	- K_{bc} {K^c}_d
+	- {\gamma_b}^q {\gamma_d}^s 8 \pi (T_{qs} - \frac{1}{2} g_{qs} T)
+$ (2010 Baumgarte &amp; Shapiro, 2.103)<br>
+... and this route is the one that turns into the time-derivative of the extrinsic curvature ...<br>
+... but how do we come up with the $\mathcal{E}_{ab}$ constraints from only projected, non-time-derivative terms?<br>
+<br>
+TODO looks like I haven't got to $\frac{d}{dt} K_{ij}$ just yet...<br>
+So maybe move this down below and derive that.<br>
+<br>
+
 <hr>
 <br>
 
@@ -136,8 +172,45 @@ Looks like now we disregard the $2\nabla_c (n^b \nabla_b n^c - n^c \nabla_b n^b)
 because it can be converted to a total integral via divergence theorem.<br>
 but this is only the case if we are integrating over a volume, i.e. true for $\int L dx^4$ and therefore $\int R dx^4$<br>
 So how can it still be true for $\mathcal{L} = \int \sqrt{-g} R dx^4$? Does $\int \nabla_c \sqrt{-g} dx^4$ disappear as well?<br>
-$R=R^\perp+K_{ab}K^{ab}-K^2$<br>
+$R = R^\perp + K_{ab} K^{ab} - K^2$<br>
 <br>
+
+Back from our "normal projection" worksheet, start with our projected Einstein curvature:<br>
+$	{\gamma_a}^u {\gamma_b}^v G_{uv}
+	= 
+	{R^\perp}_{ab} 
+	+ K K_{ab} 
+	- K_{ac} {K^c}_b
+	- \frac{1}{2} \gamma_{ab} R
+	- n^p n^r {\gamma_a}^q {\gamma_b}^s R_{pqrs}
+$<br>
+Substitute $R = R^\perp + K_{ab} K^{ab} - K^2$<br>
+$	{\gamma_a}^u {\gamma_b}^v G_{uv}
+	= 
+	{R^\perp}_{ab} 
+	+ K K_{ab} 
+	- K_{ac} {K^c}_b
+	- \frac{1}{2} \gamma_{ab} (
+		R^\perp + K_{ab} K^{ab} - K^2
+	)
+	- n^p n^r {\gamma_a}^q {\gamma_b}^s R_{pqrs}
+$<br>
+$	{\gamma_a}^u {\gamma_b}^v G_{uv}
+	= 
+	{R^\perp}_{ab} 
+	- \frac{1}{2} \gamma_{ab} R^\perp 
+	
+	+ \frac{1}{2} \gamma_{ab} K^2
+	+ K K_{ab} 
+	- \frac{1}{2} \gamma_{ab} K_{ab} K^{ab} 
+	- K_{ac} {K^c}_b
+	
+	- n^p n^r {\gamma_a}^q {\gamma_b}^s R_{pqrs}
+$<br>
+... how to get rid of that last $ n^p n^r {\gamma_a}^q {\gamma_b}^s R_{pqrs}$ ?<br>
+Maybe you can't.  As 2008 Alcubierre after eqn. 2.5.12 says, the $\mathcal{E}_{ab} = 0$ turn into the ADM equations.<br>
+<br>
+
 
 Lagrangian is equal to scalar curvature:<br>
 $L=R$<br>

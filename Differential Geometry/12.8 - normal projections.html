@@ -115,7 +115,7 @@ $\nabla^\perp_a g_{uv}$<br>
 $= \nabla^\perp_a (\gamma_{uv} - n_u n_v)$<br>
 $= \nabla^\perp_a \gamma_{uv} - \nabla^\perp_a n_u n_v - n_u \nabla^\perp_a n_v$<br>
 using $\nabla^\perp_a \gamma_{uv} = 0$<br>
-$= -n_{(v \nabla^\perp_a n_u - n_u \nabla^\perp_a n_v$<br>
+$= -n_v \nabla^\perp_a n_u - n_u \nabla^\perp_a n_v$<br>
 $= n_v K_{au} + n_u K_{av}$<br>
 <br>
 
@@ -840,6 +840,10 @@ $=
 	{R^\perp}_{ab} + K K_{ab} - {K_a}^c K_{cb}
 	- n^c n^d R_{acbd}
 $<br>
+$= 
+	{R^\perp}_{ab} + K K_{ab} - {K_a}^c K_{cb}
+	- {\gamma_a}^p {\gamma_b}^r n^q n^s R_{pqrs}
+$<br>
 <br>
 
 contracting Gauss' equation:<br>
@@ -852,6 +856,137 @@ ${R^\perp} + K^2 - K^{ab} K_{ab} = \gamma^{pr} \gamma^{qs} R_{pqrs}$<br>
 $R^\perp+K^2-K_{ab}K^{ab}=R + 2n^a n^b R_{ab}$<br>
 ...solve for R...<br>
 $R = R^\perp - K_{ab} K^{ab} + K^2 - 2 n^a n^b R_{ab}$<br>
+<br>
+
+Back to the once-contracted Codazzi equations:<br>
+$	{R^\perp}_{bd} 
+	+ K K_{bd} 
+	- K_{bc} {K^c}_d
+	= \gamma^{pr} {\gamma_b}^q {\gamma_d}^s R_{pqrs}
+$<br>
+now use $\gamma^{pr} = g^{pr} + n^p n^r$<br>
+$	{R^\perp}_{bd} 
+	+ K K_{bd} 
+	- K_{bc} {K^c}_d
+	= (g^{pr} + n^p n^r) {\gamma_b}^q {\gamma_d}^s R_{pqrs}
+$<br>
+$	{R^\perp}_{bd} 
+	+ K K_{bd} 
+	- K_{bc} {K^c}_d
+	= 
+	g^{pr} {\gamma_b}^q {\gamma_d}^s R_{pqrs} 
+	+ n^p n^r {\gamma_b}^q {\gamma_d}^s R_{pqrs}
+$<br>
+using $g^{pr} R_{pqrs} = R_{qs}$<br>
+$	{R^\perp}_{bd} 
+	+ K K_{bd} 
+	- K_{bc} {K^c}_d
+	= 
+	{\gamma_b}^q {\gamma_d}^s R_{qs} 
+	+ n^p n^r {\gamma_b}^q {\gamma_d}^s R_{pqrs}
+$<br>
+using $R_{ab} = G_{ab} + \frac{1}{2} g_{ab} R$<br>
+Another route is to use the trace-reversed EFE here: $R_{ab} = 8 \pi (T_{ab} - \frac{1}{2} g_{ab} T)$, which lets you arrive at 2010 Baumgarte &amp; Shapiro, eqn. 2.103.  Maybe I'll do that later in the "ADM Constraints" worksheet where I introduce the EFE and the projected stress-energy tensor to these normal projected equations.<br>
+$	{R^\perp}_{bd} 
+	+ K K_{bd} 
+	- K_{bc} {K^c}_d
+	= 
+	{\gamma_b}^q {\gamma_d}^s (G_{qs} + \frac{1}{2} g_{qs} R)
+	+ n^p n^r {\gamma_b}^q {\gamma_d}^s R_{pqrs}
+$<br>
+$	{\gamma_b}^q {\gamma_d}^s G_{qs} 
+	= 
+	{R^\perp}_{bd} 
+	+ K K_{bd} 
+	- K_{bc} {K^c}_d
+	- \frac{1}{2} \gamma_{bd} R
+	- n^p n^r {\gamma_b}^q {\gamma_d}^s R_{pqrs}
+$<br>
+... using our previous definition of projected Einstein curvature:
+	${\gamma_a}^u {\gamma_b}^v G_{uv} = {\gamma_a}^u {\gamma_b}^v R_{uv} - \frac{1}{2} \gamma_{ab} R$
+<br>
+$	
+	{\gamma_b}^u {\gamma_d}^v R_{uv} 
+	- \frac{1}{2} \gamma_{bd} R
+	= 
+	{R^\perp}_{bd} 
+	+ K K_{bd} 
+	- K_{bc} {K^c}_d
+	- \frac{1}{2} \gamma_{bd} R
+	- n^p n^r {\gamma_b}^q {\gamma_d}^s R_{pqrs}
+$<br>
+$	
+	{\gamma_b}^u {\gamma_d}^v R_{uv} 
+	= 
+	{R^\perp}_{bd} 
+	+ K K_{bd} 
+	- K_{bc} {K^c}_d
+	- n^p n^r {\gamma_b}^q {\gamma_d}^s R_{pqrs}
+$<br>
+... and we're back at our definition of projected Ricci curvature.<br>
+<br>
+
+Start again with:<br>
+$	{\gamma_a}^u {\gamma_b}^v G_{uv} 
+	= 
+	{R^\perp}_{ab} 
+	+ K K_{ab} 
+	- K_{ac} {K^c}_b
+	- \frac{1}{2} \gamma_{ab} R
+	- n^p n^r {\gamma_a}^q {\gamma_b}^s R_{pqrs}
+$<br>
+Substitute: $R = R^\perp - K_{ab} K^{ab} + K^2 - 2 n^a n^b R_{ab}$<br>
+$	{\gamma_a}^u {\gamma_b}^v G_{uv} 
+	= 
+	{R^\perp}_{ab} 
+	+ K K_{ab} 
+	- K_{ac} {K^c}_b
+	- \frac{1}{2} \gamma_{ab} (
+		R^\perp - K_{cd} K^{cd} + K^2 - 2 n^c n^d R_{cd}
+	)
+	- n^p n^r {\gamma_a}^q {\gamma_b}^s R_{pqrs}
+$<br>
+$	
+	\perp G_{ab}
+	= 
+	(G^\perp)_{ab}
+	
+	+ K K_{ab} - \frac{1}{2} \gamma_{ab} K^2
+	- K_{ac} {K^c}_b + \frac{1}{2} \gamma_{ab} K_{cd} K^{cd} 
+	
+	+ \gamma_{ab} n^c n^d R_{cd}
+	- n^p n^r {\gamma_a}^q {\gamma_b}^s R_{pqrs}
+$<br>
+So those four $K_{ab}$ products are really two trace-reversals.  Reversed using the $\gamma_{ab}$ metric, but reversed with the spacetime weight of $\frac{2}{n} = \frac{2}{4} = \frac{1}{2}$ instead of the 3-metric's weight $\frac{2}{3}$<br>
+For entertainment, what do all those $K_{ab}$'s look like in terms of ${\gamma_a}^b$'s?<br>
+$	
+	\perp G_{ab}
+	= 
+	(G^\perp)_{ab}
+	
+	+ (
+		{\gamma_a}^p {\gamma_b}^q \gamma^{rs}
+		- \frac{1}{2} \gamma_{ab} \gamma^{pq} \gamma^{rs}
+		- {\gamma_a}^p \gamma^{qr} {\gamma_b}^s
+		+ \frac{1}{2} \gamma_{ab} \gamma^{pr} \gamma^{qs}
+	) K_{pq} K_{rs}
+	
+	+ \gamma_{ab} n^c n^d R_{cd}
+	- n^p n^r {\gamma_a}^q {\gamma_b}^s R_{pqrs}
+$<br>
+$	
+	\perp G_{ab}
+	= 
+	(G^\perp)_{ab}
+	
+	+ (
+		2 {\gamma_a}^p {\gamma_b}^{[q} \gamma^{s]r}
+		+ \gamma_{ab} \gamma^{p[r} \gamma^{q]s}
+	) K_{pq} K_{rs}
+	
+	+ \gamma_{ab} n^c n^d R_{cd}
+	- n^p n^r {\gamma_a}^q {\gamma_b}^s R_{pqrs}
+$<br>
 <br>
 
 <a href='index.html'>Back</a><br>
