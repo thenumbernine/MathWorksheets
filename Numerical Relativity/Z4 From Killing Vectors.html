@@ -523,6 +523,9 @@ $
 $<br>
 <br>
 
+<hr>
+<br>
+
 Project both:<br>
 $
 	{\gamma_a}^u {\gamma_b}^v (
@@ -572,7 +575,220 @@ $
 		+ n_u n_v \rho
 	)
 $<br>
-<br>
+$
+	  {\gamma_a}^u {\gamma_b}^v G_{uv} 
 	
+	+ \nabla^\perp_a (Z^\perp)_b
+	+ \nabla^\perp_b (Z^\perp)_a
+	
+	+ \gamma_{ab} (
+		- \nabla^\perp_c (Z^\perp)^c
+		- a_c (Z^\perp)^c
+		- n^c \nabla_c \Theta
+		+ K \Theta
+		+ \kappa_1 \kappa_2 \Theta 
+	)
+
+	- 2 K_{ab} \Theta 
+
+	= 8 \pi S_{ab} 
+$<br>
+<br>
+
+...next, how about the projection of the trace-reversal?<br>
+Here's 2011 Cao's trace-reversal ...<br>
+$R_{uv} 
+	+ 2 \nabla_{(u} Z_{v)} 
+	- \kappa_1 (
+		2 n_{(u} Z_{v)} 
+		- (1 + \kappa_2) g_{uv} \Theta
+	)
+	= 
+	8 \pi (
+		T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab}
+	)
+$<br>
+...now separate into hypersurface and normal components<br>
+$R_{uv} 
+	
+	+ \nabla^\perp_u (Z^\perp)_v
+	- n_u n^a \nabla_a (Z^\perp)_v
+	- K_{ua} (Z^\perp)^a n_v
+	- n_u a_v \Theta
+	+ n_v \nabla^\perp_u \Theta
+
+	+ \nabla^\perp_v (Z^\perp)_u
+	- n_v n^a \nabla_a (Z^\perp)_u
+	- K_{va} (Z^\perp)^a n_u
+	- n_u a_v \Theta
+	+ n_u \nabla^\perp_v \Theta
+
+	- 2 K_{uv} \Theta 
+	- 2 n_u n_v n^c \nabla_c \Theta
+
+	- \kappa_1 (
+		   n_u ((Z^\perp)_v + n_v \Theta)
+		 + n_v ((Z^\perp)_u + n_u \Theta)
+		
+		- (1 + \kappa_2) g_{uv} \Theta
+	)
+	= 
+	8 \pi (
+		T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab}
+	)
+$<br>
+...now project ...<br>
+$
+	{\gamma_a}^u {\gamma_b}^v (
+		R_{uv} 
+		
+		+ \nabla^\perp_u (Z^\perp)_v
+		- n_u n^c \nabla_c (Z^\perp)_v
+		- K_{uc} (Z^\perp)^c n_v
+		- n_u a_v \Theta
+		+ n_v \nabla^\perp_u \Theta
+
+		+ \nabla^\perp_v (Z^\perp)_u
+		- n_v n^c \nabla_c (Z^\perp)_u
+		- K_{vc} (Z^\perp)^c n_u
+		- n_u a_v \Theta
+		+ n_u \nabla^\perp_v \Theta
+		
+		- 2 K_{uv} \Theta 
+		- 2 n_u n_v n^c \nabla_c \Theta
+
+		- \kappa_1 (
+			   n_u ((Z^\perp)_v + n_v \Theta)
+			 + n_v ((Z^\perp)_u + n_u \Theta)
+			
+			- (1 + \kappa_2) g_{uv} \Theta
+		)
+	)
+	= 
+	8 \pi {\gamma_a}^u {\gamma_b}^v (
+		T_{uv} - \frac{1}{2} g_{uv} T
+	)
+$<br>
+$
+	{\gamma_a}^u {\gamma_b}^v R_{uv} 
+	
+	+ \nabla^\perp_a (Z^\perp)_b
+	+ \nabla^\perp_b (Z^\perp)_a
+	
+	- 2 K_{ab} \Theta
+	
+	+ \kappa_1 (1 + \kappa_2) \gamma_{ab} \Theta
+	
+	= 
+	8 \pi (
+		S_{ab} 
+		- \frac{1}{2} \gamma_{ab} (S - \rho)
+	)
+$<br>
+<br>
+
+next start with the last point of Einstein field equations' ADM formalism extrinsic curvature evolution and replace the rhs with the Z4 rhs (when solving for $\perp G_{ab}$):<br>
+$\partial_t K_{ab} = -\nabla^\perp_a \nabla^\perp_b \alpha + \alpha (
+		R^\perp_{ab} + K K_{ab} - 2 K_{ac} {K^c}_b
+		- \perp R_{ab}
+	)
+	+ \mathcal{L}_\vec\beta K_{ab}
+$<br>
+... and substitute the Z4 rhs of $\perp R_{ab}$:<br>
+$\partial_t K_{ab} = -\nabla^\perp_a \nabla^\perp_b \alpha + \alpha (
+		R^\perp_{ab} + K K_{ab} - 2 K_{ac} {K^c}_b
+		
+		+ \nabla^\perp_a (Z^\perp)_b
+		+ \nabla^\perp_b (Z^\perp)_a
+		
+		- 2 K_{ab} \Theta
+		
+		+ \kappa_1 (1 + \kappa_2) \gamma_{ab} \Theta
+		
+		- 8 \pi (
+			S_{ab} 
+			- \frac{1}{2} \gamma_{ab} (S - \rho)
+		)
+	)
+	+ \mathcal{L}_\vec\beta K_{ab}
+$<br>
+...simplify...<br>
+$\partial_t K_{ab} 
+	= 
+	-\nabla^\perp_a \nabla^\perp_b \alpha 
+	+ \alpha (
+		  R^\perp_{ab} 
+		+ K_{ab} (K - 2 \Theta)
+		- 2 K_{ac} {K^c}_b
+		
+		+ \nabla^\perp_a (Z^\perp)_b
+		+ \nabla^\perp_b (Z^\perp)_a
+		
+		+ \kappa_1 (1 + \kappa_2) \gamma_{ab} \Theta
+		
+		- 8 \pi (
+			S_{ab} 
+			- \frac{1}{2} \gamma_{ab} (S - \rho)
+		)
+	)
+	+ \mathcal{L}_\vec\beta K_{ab}
+$<br>
+<br>
+
+<hr>
+<br>
+
+Ok from here ...<br>
+<br>
+
+- the spatial metric ivp is independent of the field equations / the stress-energy constraint, so it is unchanged<br>
+$\partial_t \gamma_{ab} = -2 \alpha K_{ab}
+	+ \beta^c \partial_c \gamma_{ab}
+	+ \gamma_{cb} \partial_a \beta^c
+	+ \gamma_{ac} \partial_b \beta^c
+$<br>
+<br>
+
+- why are gauge (lapse and shift) ivp's changed?  where is the origin of the Bona-Masso lapse function?  shift is always the last thing anyone messes with.<br>
+TODO.. Show where that $K \rightarrow K - 2 \Theta$ comes from.<br>
+<br>
+
+- Contract field equations with both normals to come up with Z4's form of the hamiltonian constraint.  Is it me or does most literature stick to the non-Z4 Hamiltonian constraints.<br>
+$
+	  \frac{1}{2} R^\perp 
+	+ \frac{1}{2} K^2 
+	- \frac{1}{2} K^{ab} K_{ab}
+	+ \nabla^\perp_a (Z^\perp)^a
+	+ a_a (Z^\perp)^a
+	- n^a \nabla_a \Theta
+	- (K + \kappa_1 (\kappa_2 + 2)) \Theta
+	= 
+	8 \pi \rho
+$<br>
+<br>
+
+- Contract field equations with normal and project to come up with Z4's form of the momenutm constraint:<br>
+$
+	  \nabla^\perp_b K
+	- \nabla^\perp_a {K_b}^a
+
+	+ \kappa_1 (Z^\perp)_b
+	+ K_{ab} (Z^\perp)^a
+	
+	+ n^a \nabla_a (Z^\perp)_b
+	- n_b (Z^\perp)^a a_a
+	+ 2 a_b \Theta
+	
+	- \nabla^\perp_b \Theta
+
+	= -8 \pi j_b 
+$<br>
+<br>
+
+- project both indexes of field equations to get Z4's form of the extrinsic curvature ivp<br>
+- where does the Z, Theta ivp come from?<br>
+<br>
+
+
 	</body>
 </html>

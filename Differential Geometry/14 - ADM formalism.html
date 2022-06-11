@@ -150,6 +150,67 @@ $= \gamma^{im} \cdot \frac{1}{2} ( \partial_k g_{mj} + \partial_j g_{mk} - \part
 $= \gamma^{im} \hat\Gamma_{mjk}$<br>
 <br>
 
+TODO can I redo this without invoking specific indexes?<br>
+${(\hat\Gamma^\perp)^a}_{bc} = \gamma^{ad} (\hat\Gamma^\perp)_{dbc}$<br>
+$= \gamma^{ad} \cdot \frac{1}{2} ( \partial_c \gamma_{db} + \partial_b \gamma_{dc} - \partial_d \gamma_{cb})$<br>
+$= \frac{1}{2} (g^{ad} + n^a n^d) ( 
+	\partial_c (g_{db} + n_d n_b)
+	+ \partial_b (g_{dc} + n_d n_c)
+	- \partial_d (g_{cb} + n_c n_b)
+)$<br>
+$= 
+	\frac{1}{2} g^{ad} ( 
+		  \partial_c g_{db} + \partial_c (n_d n_b)
+		+ \partial_b g_{dc} + \partial_b (n_d n_c)
+		- \partial_d g_{cb} - \partial_d (n_c n_b)
+	)
+	+ \frac{1}{2} n^a n^d ( 
+		  \partial_c g_{db} + \partial_c (n_d n_b)
+		+ \partial_b g_{dc} + \partial_b (n_d n_c)
+		- \partial_d g_{cb} - \partial_d (n_c n_b)
+	)
+$<br>
+$= 
+	\frac{1}{2} g^{ad} ( 
+		  \partial_c g_{db} 
+		+ \partial_b g_{dc} 
+		- \partial_d g_{cb} 
+	)
+	+ \frac{1}{2} g^{ad} ( 
+		  \partial_c (n_d n_b)
+		+ \partial_b (n_d n_c)
+		- \partial_d (n_c n_b)
+	)
+	+ \frac{1}{2} n^a n^d ( 
+		  \partial_c g_{db} 
+		+ \partial_b g_{dc} 
+		- \partial_d g_{cb} 
+	)
+	+ \frac{1}{2} n^a n^d ( 
+		  \partial_c (n_d n_b)
+		+ \partial_b (n_d n_c)
+		- \partial_d (n_c n_b)
+	)
+$<br>
+$= 
+	{\hat\Gamma^a}_{bc}
+	+ \frac{1}{2} ( 
+		  g^{ad} \partial_c (n_d n_b)
+		+ g^{ad} \partial_b (n_d n_c)
+		- g^{ad} \partial_d (n_c n_b)
+	)
+	+ \frac{1}{2} n^a n^d (
+		  \partial_c g_{db} 
+		+ \partial_b g_{dc} 
+		- \partial_d g_{cb} 
+		+ \partial_c (n_d n_b)
+		+ \partial_b (n_d n_c)
+		- \partial_d (n_c n_b)
+	)
+$<br>
+<br>
+
+
 spatial projection of Levi-Civita connection:<br>
 $\perp {\hat\Gamma^i}_{jk} = {\gamma_a}^i {\gamma_j}^b {\gamma_k}^c {\hat\Gamma^a}_{bc}$<br>
 $ = (\delta_a^i + n_a n^i) (\delta_j^b + n_j n^b) (\delta_k^c + n_k n^c) {\hat\Gamma^a}_{bc}$<br>
@@ -238,9 +299,28 @@ And $K_{ij} = K_{(ij)}$<br>
 
 Acceleration vector:<br>
 $a_u = n^v \nabla_v n_u$<br>
-In ADM components:<br>
-$a_u = n^v (\partial_v n_u - {\Gamma^c}_{vu} n_c)$<br>
-...TODO<br>
+In ADM components, contravariant, spatial components:<br>
+$a^i = n^v \nabla_v n^i$<br>
+$a^i = n^v \nabla_v (-\beta^i / \alpha)$<br>
+$a^i = -n^v (
+	 (\nabla_v \beta^i) / \alpha
+	+ \beta^i \nabla_v (1 / \alpha)
+)$<br>
+$a^i = -n^v (
+	 \frac{1}{\alpha} (\partial_v \beta^i + {\Gamma^i}_{vj} \beta^j)
+	- \frac{1}{\alpha^2} \beta^i \partial_v \alpha 
+)$<br>
+$a^i =
+	- \frac{1}{\alpha} (
+		 \frac{1}{\alpha} (\partial_t \beta^i + {\Gamma^i}_{tj} \beta^j)
+		- \frac{1}{\alpha^2} \beta^i \partial_v \alpha 
+	)
+	+ \frac{1}{\alpha} \beta^k (
+		 \frac{1}{\alpha} (\partial_k \beta^i + {\Gamma^i}_{kj} \beta^j)
+		- \frac{1}{\alpha^2} \beta^i \partial_v \alpha
+	)
+$<br>
+...and more...<br>
 <br>
 
 Since time is a distinct coordinate, and since $t^u = \delta^u_t$, we can assert:<br>
@@ -251,8 +331,7 @@ Lie derivative of timelike vector:<br>
 $\mathcal{L}_\vec{t} = \mathcal{L}_{\alpha \vec{n} + \vec\beta}$<br>
 $\mathcal{L}_\vec{t} = \alpha \mathcal{L}_\vec{n} + \mathcal{L}_\vec\beta$<br>
 $\mathcal{L}_\vec{n} = \frac{1}{\alpha} (\mathcal{L}_\vec{t} - \mathcal{L}_\vec\beta)$<br>
-From here, lots of numerical relativity papers will use the definition $\frac{d}{dt} = \mathcal{L}_\vec{t} - \mathcal{L}_\vec\beta$,
-or $\alpha \mathcal{L}_\vec{n} = \frac{d}{dt}$<br>
+From here, lots of numerical relativity papers will use the definition $\frac{d}{dt} = \mathcal{L}_\vec{t} - \mathcal{L}_\vec\beta = \alpha \mathcal{L}_\vec{n}$<br>
 <br>
 
 Time derivative of spatial metric:<br>
@@ -267,25 +346,10 @@ $\partial_t \gamma_{ab} = -2 \alpha K_{ab}
 	+ \gamma_{cb} \partial_a \beta^c
 	+ \gamma_{ac} \partial_b \beta^c
 $<br>
-$\partial_t \gamma_{ab} = -2 \alpha K_{ab}
-	+ \beta^c \partial_c \gamma_{ab}
-	+ \gamma_{cb} (\nabla^\perp_a \beta^c - {(\Gamma^\perp)^c}_{ad} \beta^d)
-	+ \gamma_{ac} (\nabla^\perp_b \beta^c - {(\Gamma^\perp)^c}_{bd} \beta^d)
-$<br>
-$\partial_t \gamma_{ab} = -2 \alpha K_{ab}
-	+ \beta^c \partial_c \gamma_{ab}
-	+ \gamma_{cb} \nabla^\perp_a \beta^c - \gamma_{cb} {(\Gamma^\perp)^c}_{ad} \beta^d
-	+ \gamma_{ac} \nabla^\perp_b \beta^c - \gamma_{ac} {(\Gamma^\perp)^c}_{bd} \beta^d
-$<br>
-$\partial_t \gamma_{ab} = -2 \alpha K_{ab}
-	+ \beta^c \partial_c \gamma_{ab}
-	- (\Gamma^\perp)_{bda} \beta^d
-	- (\Gamma^\perp)_{adb} \beta^d
-	+ \nabla^\perp_a \beta_b 
-	+ \nabla^\perp_b \beta_a 
-$<br>
-...using property of Levi-Civita anholonomic connections: 
-	$2 (\Gamma^\perp)_{(b|a|c)} = \partial_a \gamma_{bc}$<br>
+using $\mathcal{L}_\vec\beta \gamma_{ab} 
+	= \beta^c \partial_c \gamma_{ab} + \gamma_{cb} \partial_a \beta^c + \gamma_{ac} \partial_b \beta^c
+	= \beta^c \nabla^\perp_c \gamma_{ab} + \gamma_{cb} \nabla^\perp_a \beta^c + \gamma_{ac} \nabla^\perp_b \beta^c
+$ and $\nabla^\perp_c \gamma_{ab} = 0$<br>
 $\partial_t \gamma_{ab} = -2 \alpha K_{ab}
 	+ 2 \nabla^\perp_{(a} \beta_{b)}
 $<br>

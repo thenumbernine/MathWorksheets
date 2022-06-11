@@ -992,8 +992,45 @@ $<br>
 <hr>
 <br>
 
-Lie derivative along hypersurface normal of spatial metric:<br>
-TODO WAIT, is the Lie derivative defined using partials or covariant derivatives?  Or are the two interchangeable?  Or only under certain circumstances?<br>
+Lie derivative of any (0 2) tensor $T_{ab}$ for arbitrary commutation and torsion:<br>
+$\mathcal{L}_\vec{v} T_{ab} 
+	+ {T^d}_{ac} v^c T_{db}
+	+ {T^d}_{bc} v^c T_{ad}
+$<br>
+using ${T^a}_{bc} + {c_{bc}}^a = {\Gamma^a}_{bc} - {\Gamma^a}_{cb}$<br>
+$
+	= v^c e_c(T_{ab}) 
+	+ T_{cb} e_a(v^c) 
+	+ T_{ac} e_b(v^c) 
+	+ ({\Gamma^d}_{ac} - {\Gamma^d}_{ca}) v^c T_{db}
+	+ ({\Gamma^d}_{bc} - {\Gamma^d}_{cb}) v^c T_{ad}
+$<br>
+$
+	= v^c (e_c (T_{ab}) - {\Gamma^d}_{ca} T_{cb} - {\Gamma^d}_{cb} T_{ad})
+	+ T_{cb} (e_a(v^c) + {\Gamma^c}_{ad} v^d)
+	+ T_{ac} (e_b(v^c) + {\Gamma^c}_{bd} v^d)
+$<br>
+$
+	= v^c \nabla_c T_{ab} 
+	+ T_{cb} \nabla_a v^c 
+	+ T_{ac} \nabla_b v^c
+$<br>
+<br>
+
+Therefore, for holonomic basis and torsion-free connections:<br>
+$\mathcal{L}_\vec{v} T_{ab} 
+	= v^c \nabla_c T_{ab} 
+	+ T_{cb} \nabla_a v^c 
+	+ T_{ac} \nabla_b v^c
+$<br>
+<br>
+
+Lie derivative along hypersurface normal of spatial hypersurface, in terms of extrinsic curvature:<br>
+$\mathcal{L}_{\vec{n}} \gamma_{ab} 
+	= n^c \partial_c \gamma_{ab} 
+	+ \gamma_{cb} \partial_a n^c 
+	+ \gamma_{ac} \partial_b n^c
+$<br>
 $\mathcal{L}_{\vec{n}} \gamma_{ab} 
 	= n^c \nabla_c \gamma_{ab} 
 	+ \gamma_{cb} \nabla_a n^c 

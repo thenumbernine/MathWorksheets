@@ -123,46 +123,92 @@ When the Einstein Field Equations are satisfied, we will have $\mathcal{E}_{ab} 
 <br>
 
 starting with (from the "normal projections" worksheet):<br>
-$	{R^\perp}_{bd} 
-	+ K K_{bd} 
-	- K_{bc} {K^c}_d
+$	{R^\perp}_{ab} 
+	+ K K_{ab} 
+	- K_{ac} {K^c}_b
 	= 
-	{\gamma_b}^q {\gamma_d}^s R_{qs} 
-	+ n^p n^r {\gamma_b}^q {\gamma_d}^s R_{pqrs}
+	{\gamma_a}^q {\gamma_b}^s R_{qs} 
+	+ n^p n^r {\gamma_a}^q {\gamma_b}^s R_{pqrs}
 $<br>
 Substitute the trace-reversed Einstein field equations, $R_{ab} = 8 \pi (T_{ab} - \frac{1}{2} g_{ab} T)$<br>
 $	
-	 n^p n^r {\gamma_b}^q {\gamma_d}^s R_{pqrs}
+	 n^p n^r {\gamma_a}^q {\gamma_b}^s R_{pqrs}
 	=
-	 {R^\perp}_{bd} 
-	+ K K_{bd} 
-	- K_{bc} {K^c}_d
-	- {\gamma_b}^q {\gamma_d}^s 8 \pi (T_{qs} - \frac{1}{2} g_{qs} T)
+	 {R^\perp}_{ab} 
+	+ K K_{ab} 
+	- K_{ac} {K^c}_b
+	- {\gamma_a}^u {\gamma_b}^v 8 \pi (T_{uv} - \frac{1}{2} g_{uv} T_{cd} g^{cd})
 $ (2010 Baumgarte &amp; Shapiro, 2.103)<br>
 $	
-	 n^p n^r {\gamma_b}^q {\gamma_d}^s R_{pqrs}
+	 n^p n^r {\gamma_a}^q {\gamma_b}^s R_{pqrs}
 	=
-	 {R^\perp}_{bd} 
-	+ K K_{bd} 
-	- K_{bc} {K^c}_d
-	- 8 \pi (S_{bd} - \frac{1}{2} \gamma_{bd} (S - \rho))
+	 {R^\perp}_{ab} 
+	+ K K_{ab} 
+	- K_{ac} {K^c}_b
+	- 8 \pi (S_{ab} - \frac{1}{2} \gamma_{ab} (S - \rho))
 $<br>
 ... and this route is the one that turns into the time-derivative of the extrinsic curvature ...<br>
 ... but how do we come up with the $\mathcal{E}_{ab}$ constraints from only projected, non-time-derivative terms?<br>
 <br>
 
-TODO partial or covariant or either?<br>
+$\mathcal{L}_\vec{n} K_{ab} = 
+		n^u \partial_u K_{ab} 
+		+ K_{ub} \partial_a n^u
+		+ K_{au} \partial_b n^u
+$<br>
 $\mathcal{L}_\vec{n} K_{ab} = 
 		n^u \nabla_u K_{ab} 
 		+ K_{ub} \nabla_a n^u
 		+ K_{au} \nabla_b n^u
+$<br>
+using $K_{ab} = -\nabla_a n_b - n_a a_b$
+	so $\nabla_a n_b = -K_{ab} - n_a a_b$
+<br>
+$\mathcal{L}_\vec{n} K_{ab} = 
+	n^u \nabla_u (
+		-\nabla_a n_b - n_a a_b
+	)
+	+ {K^u}_b (
+		-K_{au} - n_a a_u
+	)
+	+ {K^u}_a (
+		-K_{bu} - n_b a_u
+	)
+$<br>
+$\mathcal{L}_\vec{n} K_{ab} = 
+	- n^u \nabla_u \nabla_a n_b
+	- a_b n^u \nabla_u n_a 
+	- n_a n^u \nabla_u a_b
+	- {K^u}_b K_{au} 
+	- {K^u}_a K_{bu} 
+	- {K^u}_b n_a a_u
+	- {K^u}_a n_b a_u
+$ (2010 Baumgarte &amp; Shapiro, eqn. 2.74)<br>
+using $a_a = n^u \nabla_u n_a$<br>
+$\mathcal{L}_\vec{n} K_{ab} = 
+	- n^u \nabla_u \nabla_a n_b
+	- a_a a_b
+	- n_a n^u \nabla_u a_b
+	- 2 K_{au} {K^u}_b 
+	- {K^u}_b n_a a_u
+	- {K^u}_a n_b a_u
+$<br>
+using $n_d {R^d}_{bua} = \nabla_u \nabla_a n_b - \nabla_a \nabla_u n_b$<br>
+$\mathcal{L}_\vec{n} K_{ab} = 
+	- n_d n^u {R^d}_{bua} 
+	- n^u \nabla_a \nabla_u n_b
+	- a_a a_b
+	- n_a n^u \nabla_u a_b
+	- 2 K_{au} {K^u}_b 
+	- {K^u}_b n_a a_u
+	- {K^u}_a n_b a_u
 $<br>
 TODO after a lot of work<br>
 $\mathcal{L}_\vec{n} K_{ab} = 
 	-\frac{1}{\alpha} \nabla^\perp_a \nabla^\perp_b \alpha 
 	- K_{ac} {K^c}_b 
 	+ n^p n^r {\gamma_a}^q {\gamma_b}^s R_{pqrs}
-$<br>
+$ (2010 Baumgarte &amp; Shapiro, eqn. 2.82)<br>
 using the definition of $n^p n^r {\gamma_a}^q {\gamma_b}^s R_{pqrs}$ above:<br>
 $\mathcal{L}_\vec{n} K_{ab} = 
 	-\frac{1}{\alpha} \nabla^\perp_a \nabla^\perp_b \alpha 
@@ -192,7 +238,7 @@ $\partial_t K_{ab}
 		 {R^\perp}_{ab} 
 		+ K K_{ab} 
 		- 2 K_{ac} {K^c}_b 
-		- (S_{ab} - \frac{1}{2} \gamma_{ab} (S - \rho))
+		- 8 \pi (S_{ab} - \frac{1}{2} \gamma_{ab} (S - \rho))
 	)
 	+ \mathcal{L}_\vec\beta K_{ab}
 $<br>
