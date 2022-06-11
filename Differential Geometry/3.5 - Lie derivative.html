@@ -99,6 +99,27 @@ $<br>
 $= (x^a e_a ({T^I}_J) - e_a(x^{i_k}) \underset{i_k \leftrightarrow a}{{T^I}_J} + e_{j_k}(x^a) \underset{j_k \leftrightarrow a}{{T^I}_J}) {e^I}_J$<br>
 <br>
 
+Lie derivative along a coordinate-aligned vector:<br>
+Let vector $t^u = \delta^u_t$ point along the distinct coordinate 't',<br>
+such that $t^u \nabla_u t = \delta^u_t \delta^t_u = 1$<br>
+The Lie derivative of a (p q) tensor T along t is:<br>
+$\mathcal{L}_\vec{t} {T^{a_1 ... a_p}}_{b_1 ... b_q}
+	= \mathcal{L}_\vec{t} {T^A}_B
+	= t^u e_u( {T^A}_B )
+	- \underset{a_k \leftrightarrow c}{{T^A}_B} e_c ( t^{a_k} )
+	+ \underset{b_k \leftrightarrow c}{{T^A}_B} e_{b_k} ( t^c )
+$<br>
+... using $t^u = \delta^u_t$ and $e_v ( t^u ) = e_v ( \delta^u_t ) = 0$<br>
+$\mathcal{L}_\vec{t} {T^{a_1 ... a_p}}_{b_1 ... b_q}
+	= \delta^u_t e_u ( {T^A}_B )
+	- \underset{a_k \leftrightarrow c}{{T^A}_B} \cdot 0 
+	+ \underset{b_k \leftrightarrow c}{{T^A}_B} \cdot 0 
+$<br>
+$\mathcal{L}_\vec{t} {T^{a_1 ... a_p}}_{b_1 ... b_q}
+	= e_t ( {T^A}_B )
+$<br>
+<br>
+
 TODO verify:<br>
 Either only true for p &gt; 0, or if you want it to be a generalization of the scalar case then you have to define $d(x \lrcorner \phi) = 0$<br>
 Same as $[\mathcal{L}_x, d] = 0$?<br>
@@ -112,8 +133,6 @@ TODO show $d \mathcal{L}_x (w) = \mathcal{L}_x (dw)$<br>
 
 TODO show $\mathcal{L}_{\phi x} w = \phi \mathcal{L}_x w + d\phi \wedge (x \lrcorner w)$<br>
 <br>
-
-
 
 <a href='.'>Back</a><br><br>
 	</body>

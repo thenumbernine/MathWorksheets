@@ -139,11 +139,63 @@ $
 	- K_{bc} {K^c}_d
 	- {\gamma_b}^q {\gamma_d}^s 8 \pi (T_{qs} - \frac{1}{2} g_{qs} T)
 $ (2010 Baumgarte &amp; Shapiro, 2.103)<br>
+$	
+	 n^p n^r {\gamma_b}^q {\gamma_d}^s R_{pqrs}
+	=
+	 {R^\perp}_{bd} 
+	+ K K_{bd} 
+	- K_{bc} {K^c}_d
+	- 8 \pi (S_{bd} - \frac{1}{2} \gamma_{bd} (S - \rho))
+$<br>
 ... and this route is the one that turns into the time-derivative of the extrinsic curvature ...<br>
 ... but how do we come up with the $\mathcal{E}_{ab}$ constraints from only projected, non-time-derivative terms?<br>
 <br>
-TODO looks like I haven't got to $\frac{d}{dt} K_{ij}$ just yet...<br>
-So maybe move this down below and derive that.<br>
+
+TODO partial or covariant or either?<br>
+$\mathcal{L}_\vec{n} K_{ab} = 
+		n^u \nabla_u K_{ab} 
+		+ K_{ub} \nabla_a n^u
+		+ K_{au} \nabla_b n^u
+$<br>
+TODO after a lot of work<br>
+$\mathcal{L}_\vec{n} K_{ab} = 
+	-\frac{1}{\alpha} \nabla^\perp_a \nabla^\perp_b \alpha 
+	- K_{ac} {K^c}_b 
+	+ n^p n^r {\gamma_a}^q {\gamma_b}^s R_{pqrs}
+$<br>
+using the definition of $n^p n^r {\gamma_a}^q {\gamma_b}^s R_{pqrs}$ above:<br>
+$\mathcal{L}_\vec{n} K_{ab} = 
+	-\frac{1}{\alpha} \nabla^\perp_a \nabla^\perp_b \alpha 
+	- K_{ac} {K^c}_b 
+	+ {R^\perp}_{ab} 
+	+ K K_{ab} 
+	- K_{ac} {K^c}_b
+	- 8 \pi (S_{ab} - \frac{1}{2} \gamma_{ab} (S - \rho))
+$<br>
+$\mathcal{L}_\vec{n} K_{ab} = 
+	-\frac{1}{\alpha} \nabla^\perp_a \nabla^\perp_b \alpha 
+	+ {R^\perp}_{ab} 
+	+ K K_{ab} 
+	- 2 K_{ac} {K^c}_b 
+	- 8 \pi (S_{ab} - \frac{1}{2} \gamma_{ab} (S - \rho))
+$<br>
+
+<br>
+
+Extrinsic curvature initial value formulation:<br>
+using $\mathcal{L}_\vec{n} = \frac{1}{\alpha} (\mathcal{L}_\vec{t} - \mathcal{L}_\vec\beta)$<br>
+$\partial_t K_{ab} - \mathcal{L}_\vec\beta K_{ab} = \alpha \mathcal{L}_\vec{n} K_{ab}$<br>
+$\partial_t K_{ab} 
+	=
+	- \nabla^\perp_a \nabla^\perp_b \alpha 
+	+ \alpha (
+		 {R^\perp}_{ab} 
+		+ K K_{ab} 
+		- 2 K_{ac} {K^c}_b 
+		- (S_{ab} - \frac{1}{2} \gamma_{ab} (S - \rho))
+	)
+	+ \mathcal{L}_\vec\beta K_{ab}
+$<br>
 <br>
 
 <hr>
@@ -162,7 +214,7 @@ $=\nabla_c (n^b \nabla_b n^c) - \nabla_c(n^c \nabla_b n^b) - K_{ab} K^{ab} + K^2
 $n^a n^b R_{ab}=K^2 - K_{ab} K^{ab} + \nabla_c (n^b \nabla_b n^c - n^c \nabla_b n^b)$ (2008 Alcubierre, eqn 2.7.3)<br>
 <br>
 
-start with:<br>
+start with from the "normal projections" worksheet:<br>
 $R = R^\perp - K_{ab} K^{ab} + K^2 - 2 n^a n^b R_{ab}$<br>
 ...substitute contracted Ricci tensor...<br>
 $R=R^\perp-K_{ab}K^{ab}+K^2-2(K^2 - K_{ab} K^{ab} + \nabla_c (n^b \nabla_b n^c - n^c \nabla_b n^b))$<br>

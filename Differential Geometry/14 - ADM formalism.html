@@ -9,9 +9,14 @@
 <a href='index.html'>Back</a><br>
 <br>
 
-lapse: $ \alpha $<br>
-shift spatial components: $ \beta^a $<br>
-spatial metric spatial components: $ \gamma_{ab} $<br>
+TODO for this worksheet...<br>
+- Move as much non-component-description stuff to the top.<br>
+- Move as much of the constraints on our manifold to the top (must be commutation-free, torsion-free)<br>
+- Move as much ADM-component-description stuff to the bottom.<br>
+- Move as much non-EFE-related stuff back to "normal projections" in 12.8<br>
+- Don't use dots over variables.<br>
+<br>
+
 <br>
 NOTICE: most LQG papers use the original ADM variable standard: $N$ = lapse, $N^a$ = shift, $g_{ab}$ = spatial metric<br>
 MTW switches up the 4D metric from $g_{uv}$ to ${^{(4)}g}_{uv}$ to alleviate ambiguity.<br>
@@ -20,6 +25,11 @@ My guess on why $q$ is so that, combined with the representation of the conjugat
 the Poisson bracket is now expressed in terms of its traditional variables $p$ and $q$.<br>
 I've stuck with the numerical relativity crowd's representations of $\alpha$ = lapse, $\beta^u$ = shift, $\gamma_{uv}$ = spatial metric.<br>
 Unlike the NR crowd, I did change the spacetime indexes from Latin back to Greek.<br>
+<br>
+
+let $\alpha$ be our lapse, be the normalizing factor of our unit hypersurface normal.<br>
+let $ \beta^a $ be our shift, the spatial components of the normal<br>
+let $ \gamma_{ab} $ serve as both the spatial metric and the hypersurface projection<br>
 <br>
 
 ADM metric:<br>
@@ -48,9 +58,12 @@ ADM metric determinant: $ g = -\alpha^2 \gamma $<br>
 Volume element: $e = \sqrt{-g} = \alpha \sqrt\gamma$<br>
 <br>
 
+hypersurface normal:<br>
+$n_u = -\alpha \nabla_u t = -\alpha \delta_u^t$<br>
+<br>
+
 normal in the ADM metric:<br>
 $n_u = \overset{u(a)\rightarrow}{\left[ \matrix{ -\alpha & 0 } \right]} $<br>
-<br>
 $n^u = \overset{u(a)\downarrow}{\left[ \matrix{ 1/\alpha \\ -\beta^a/\alpha } \right]} $<br>
 <br>
 normal is unit:<br>
@@ -67,9 +80,27 @@ $ \beta_u = g_{uv} \beta^v = \overset{u(b)\rightarrow}{\left[ \matrix{\beta^c\be
 <br>
 
 timelike vector:<br>
-$ t^u 
-	= \delta^u_t
-	= \alpha n^u + \beta^u
+$t^u = \delta^u_t$<br>
+$t^u = \alpha n^u + \beta^u$ (2008 Alcubierre, eqn. 2.2.14)<br>
+<br>
+
+Notice that:<br>
+$t^u \nabla_u t = (\alpha n^u + \beta^u) (-\frac{1}{\alpha} n_u)$<br>
+$t^u \nabla_u t = -n^u n_u - \frac{1}{\alpha}\beta^u n_u$<br>
+using $\beta^u$ is spatial so $n_u \beta^u = 0$<br>
+$t^u \nabla_u t = 1$ (2008 Alcubierre, eqn. 2.2.15)<br>
+<br>
+
+Or simpler:<br>
+$t^u \nabla_u t = \delta^u_t \delta^t_u = 1$<br>
+<br>
+
+Also:<br>
+$\gamma_{uv} t^v = \beta_u$ (2008 Alcubierre, eqn. 2.2.16)<br>
+<br>
+
+... in ADM components:<br>
+$t^u
 	= \alpha \overset{u(a)\downarrow}{\left[ \matrix{ 1/\alpha \\ -\beta^a/\alpha  } \right]} + \overset{u(a)\downarrow}{\left[ \matrix{ 0 \\ \beta^a } \right]}
 	= \overset{u(a)\downarrow}{\left[ \matrix{1 \\ 0} \right]} $<br>
 <br>
@@ -105,8 +136,6 @@ $ = \overset{u(a)\downarrow v(b)\rightarrow}{\left[\matrix{0&0\\0&\gamma^{ab}}\r
 <br>
 
 <hr>
-Now that the 3-metric has been defined in terms of the 4-metric and the time component, it seems like all sources immediately abandon any restriction to that specific choice of coordinates.<br>
-Maybe this is what the "abstract index notation" is supposed to pertain to?<br>
 All that is maintained is a collection of properties of the variables used to construct the metric:<br>
 $ \gamma_{uv} = g_{uv} + n_u n_v $<br>
 $ t^u = \alpha n^u + \beta^u $<br>
@@ -211,56 +240,57 @@ Acceleration vector:<br>
 $a_u = n^v \nabla_v n_u$<br>
 In ADM components:<br>
 $a_u = n^v (\partial_v n_u - {\Gamma^c}_{vu} n_c)$<br>
+...TODO<br>
 <br>
 
-Lie derivative along hypersurface normal of spatial metric:<br>
-$ \mathcal{L}_{\vec{n}} \gamma_{ab} = n^c \nabla_c \gamma_{ab} + \gamma_{cb} \nabla_a n^c + \gamma_{ac} \nabla_b n^c $<br>
-$ = n^c \nabla_c \gamma_{ab} + \gamma_{cb} \nabla_a n^c + \gamma_{ac} \nabla_b n^c $<br>
-$ = n^c \nabla_c (g_{ab} + n_a n_b) + (g_{cb} + n_c n_b) \nabla_a n^c + (g_{ac} + n_a n_c) \nabla_b n^c $<br>
-$ = n^c \nabla_c (n_a n_b) + \nabla_a n_b + n_c n_b \nabla_a n^c + \nabla_b n_a + n_a n_c \nabla_b n^c $<br>
-$ = n_a n^c \nabla_c n_b + n_b n^c \nabla_c n_a + \nabla_a n_b + \nabla_b n_a $<br>
-$ = ({\gamma^c}_a - \delta^c_a) \nabla_c n_b + ({\gamma^c}_b - \delta^c_b) \nabla_c n_a + \nabla_a n_b + \nabla_b n_a $<br>
-$ = {\gamma^c}_a \nabla_c n_b - \nabla_a n_b + {\gamma^c}_b \nabla_c n_a - \nabla_b n_a + \nabla_a n_b + \nabla_b n_a $<br>
-$ = {\gamma^c}_a \nabla_c n_b + {\gamma^c}_b \nabla_c n_a $<br>
-$ = {\gamma^c}_a {\gamma^d}_b \nabla_c n_d + {\gamma^c}_a {\gamma^d}_b \nabla_d n_c $<br>
-$ = {\gamma^c}_a {\gamma^d}_b (\nabla_c n_d + \nabla_d n_c) $<br>
-$ = 2 {\gamma^c}_a {\gamma^d}_b \nabla_{(c} n_{d)} $<br>
-$ \mathcal{L}_{\vec{n}} \gamma_{ab} = -2 K_{ab} $<br>
-<br>
-Because $ \gamma_{ab} $ is symmetric, so is $ K_{ab} $<br>
+Since time is a distinct coordinate, and since $t^u = \delta^u_t$, we can assert:<br>
+$\mathcal{L}_\vec{t} = \partial_t$<br>
 <br>
 
-Lie derivative along shift vector of spatial metric:<br>
-$ \mathcal{L}_\vec\beta g_{ab} = \partial_c g_{ab} \beta^c + g_{cb} \partial_a \beta^c + g_{ac} \partial_b \beta^c $ <br>
-using $ \partial_a \beta_b = \partial_a (\beta^c g_{cb}) = \partial_a \beta^c g_{cb} + \beta^c \partial_a g_{cb} $<br>
-so $ g_{cb} \partial_a \beta^c = \partial_a \beta_b - \beta^c \partial_a g_{cb} $<br>
-$ \mathcal{L}_\vec\beta g_{ab} = \partial_c g_{ab} \beta^c + \partial_a \beta_b - \beta^c \partial_a g_{cb} + \partial_b \beta_a - \beta^c \partial_b g_{ca} $<br>
-$ = \partial_a \beta_b + \partial_b \beta_a - \beta^c (\partial_a g_{cb} + \partial_b g_{ca} - \partial_c g_{ab} ) $<br>
-$ = \partial_a \beta_b + \partial_b \beta_a - 2 \beta^c \Gamma_{cba} $<br>
-$ = \partial_a \beta_b + \partial_b \beta_a - 2 \beta_c {\Gamma^c}_{ba} $<br>
-$ = \partial_a \beta_b - \beta_c {\Gamma^c}_{ba} + \partial_b \beta_a - \beta_c {\Gamma^c}_{ab} $<br>
-$ = \nabla_a \beta_b + \nabla_b \beta_a $<br>
-using $ \nabla^\perp_a v^b = {\gamma_a}^c \nabla_c v^b + n^b v^c K_{ac} $ for spatial $ v^b $<br>
-i.e. $ \nabla^\perp_a v^b = \nabla_a v^b + n_a n^c \nabla_c v^b + n^b v^c K_{ac} $<br>
-so $ \nabla_a v^b = \nabla^\perp_a v^b - n_a n^c \nabla_c v^b - n^b v^c K_{ac} $<br>
-so $ \nabla_a v_b = \nabla^\perp_a v_b - n_a n^c \nabla_c v_b - n_b v^c K_{ac} $<br>
-and $ \mathcal{L}_\vec\beta g_{ab} = \nabla^\perp_a v_b + \nabla^\perp_b v_a - n_a n^c \nabla_c v_b - n_b n^c \nabla_c v_a - n_b v^c K_{ac} - n_a v^c K_{bc} $<br>
+Lie derivative of timelike vector:<br>
+$\mathcal{L}_\vec{t} = \mathcal{L}_{\alpha \vec{n} + \vec\beta}$<br>
+$\mathcal{L}_\vec{t} = \alpha \mathcal{L}_\vec{n} + \mathcal{L}_\vec\beta$<br>
+$\mathcal{L}_\vec{n} = \frac{1}{\alpha} (\mathcal{L}_\vec{t} - \mathcal{L}_\vec\beta)$<br>
+From here, lots of numerical relativity papers will use the definition $\frac{d}{dt} = \mathcal{L}_\vec{t} - \mathcal{L}_\vec\beta$,
+or $\alpha \mathcal{L}_\vec{n} = \frac{d}{dt}$<br>
 <br>
 
-equivalence of Lie derivative along time vector and time partial derivative of spatial metric:<br>
-$ \mathcal{L}_\vec{t} \gamma_{ab} $<br>
-$ = \partial_a \gamma_{ab} t^a + \gamma_{cb} \partial_a t^c + \gamma_{ac} \partial_b t^c $<br>
-(TODO can we assert coordinate definition of $t^a$?)<br>
-using $ t^a = (1,0) $ and $ \partial_b t^a = 0 $<br>
-$ = \partial_t \gamma_{ab} + \gamma_{cb} \cdot 0 + \gamma_{ac} \cdot 0 $<br>
-$ = \dot\gamma_{ab} $<br>
+Time derivative of spatial metric:<br>
+$ \mathcal{L}_{\vec{n}} \gamma_{ab} 
+	= -2 K_{ab}
+	= \frac{1}{\alpha} (\mathcal{L}_\vec{t} - \mathcal{L}_\vec\beta) \gamma_{ab}
+$<br>
+$\mathcal{L}_\vec{t} \gamma_{ab} - \mathcal{L}_\vec\beta \gamma_{ab} = -2 \alpha K_{ab}$<br>
+$\partial_t \gamma_{ab} - \mathcal{L}_\vec\beta \gamma_{ab} = -2 \alpha K_{ab}$<br>
+$\partial_t \gamma_{ab} = -2 \alpha K_{ab}
+	+ \beta^c \partial_c \gamma_{ab}
+	+ \gamma_{cb} \partial_a \beta^c
+	+ \gamma_{ac} \partial_b \beta^c
+$<br>
+$\partial_t \gamma_{ab} = -2 \alpha K_{ab}
+	+ \beta^c \partial_c \gamma_{ab}
+	+ \gamma_{cb} (\nabla^\perp_a \beta^c - {(\Gamma^\perp)^c}_{ad} \beta^d)
+	+ \gamma_{ac} (\nabla^\perp_b \beta^c - {(\Gamma^\perp)^c}_{bd} \beta^d)
+$<br>
+$\partial_t \gamma_{ab} = -2 \alpha K_{ab}
+	+ \beta^c \partial_c \gamma_{ab}
+	+ \gamma_{cb} \nabla^\perp_a \beta^c - \gamma_{cb} {(\Gamma^\perp)^c}_{ad} \beta^d
+	+ \gamma_{ac} \nabla^\perp_b \beta^c - \gamma_{ac} {(\Gamma^\perp)^c}_{bd} \beta^d
+$<br>
+$\partial_t \gamma_{ab} = -2 \alpha K_{ab}
+	+ \beta^c \partial_c \gamma_{ab}
+	- (\Gamma^\perp)_{bda} \beta^d
+	- (\Gamma^\perp)_{adb} \beta^d
+	+ \nabla^\perp_a \beta_b 
+	+ \nabla^\perp_b \beta_a 
+$<br>
+...using property of Levi-Civita anholonomic connections: 
+	$2 (\Gamma^\perp)_{(b|a|c)} = \partial_a \gamma_{bc}$<br>
+$\partial_t \gamma_{ab} = -2 \alpha K_{ab}
+	+ 2 \nabla^\perp_{(a} \beta_{b)}
+$<br>
+The initial-value formulation of the spatial metric is based on our hypersurface properties / decomposition, not on the Einstein Field Equations.<br>
 <br>
-time derivative of spatial metric:<br>
-$ \dot{\gamma}_{ij} = \mathcal{L}_{\vec{t}}\gamma_{ij} $<br>
-$ = \mathcal{L}_{\alpha \vec{n} + \vec{\beta}} \gamma_{ij} $<br>
-$ = \alpha \mathcal{L}_{\vec{n}} \gamma_{ij} + \mathcal{L}_{\vec{\beta}} \gamma_{ij} $<br>
-$ = -2\alpha K_{ij} + \mathcal{L}_{\vec{\beta}} \gamma_{ij} $<br>
-$ \dot{\gamma}_{ij} = -2\alpha K_{ij} + 2 \nabla^\perp_{(i} \beta_{j)} $<br>
 
 <br>
 <a href='index.html'>Back</a><br>

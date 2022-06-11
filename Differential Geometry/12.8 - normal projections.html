@@ -989,6 +989,49 @@ $
 $<br>
 <br>
 
+<hr>
+<br>
+
+Lie derivative along hypersurface normal of spatial metric:<br>
+TODO WAIT, is the Lie derivative defined using partials or covariant derivatives?  Or are the two interchangeable?  Or only under certain circumstances?<br>
+$\mathcal{L}_{\vec{n}} \gamma_{ab} 
+	= n^c \nabla_c \gamma_{ab} 
+	+ \gamma_{cb} \nabla_a n^c 
+	+ \gamma_{ac} \nabla_b n^c
+$<br>
+substitute definition of projection:<br>
+$\mathcal{L}_{\vec{n}} \gamma_{ab} 
+	= n^c \nabla_c (g_{ab} + n_a n_b) 
+	+ (g_{cb} + n_c n_b) \nabla_a n^c 
+	+ (g_{ac} + n_a n_c) \nabla_b n^c
+$<br>
+distribute parenthesis:<br>
+$\mathcal{L}_{\vec{n}} \gamma_{ab} 
+	= n^c \nabla_c g_{ab} 
+	+ n_b n^c \nabla_c n_a 
+	+ n_a n^c \nabla_c n_b 
+	+ g_{cb} \nabla_a n^c 
+	+ n_c n_b \nabla_a n^c
+	+ g_{ac} \nabla_b n^c 
+	+ n_a n_c \nabla_b n^c
+$<br>
+use the metric-cancelling property of our covariant derivative $\nabla_c g_{ab} = 0$, 
+	using acceleration vector definition $a_u = n^a \nabla_a n_u$,
+	using $n_b \nabla_a n^b = 0$:
+<br>
+$ \mathcal{L}_{\vec{n}} \gamma_{ab} 
+	= n_b a_a 
+	+ n_a a_b 
+	+ \nabla_a n_b 
+	+ \nabla_b n_a 
+$<br>
+using $K_{ab} = -\nabla_a n_b - n_a a_b$:<br>
+$ \mathcal{L}_{\vec{n}} \gamma_{ab} = -K_{ab} - K_{ba}$<br>
+using $K_{ab} = K_{(ab)}$:<br>
+$ \mathcal{L}_{\vec{n}} \gamma_{ab} = -2 K_{ab}$ (2008 Alcubierre, eqn. 2.3.7, 2010 Baumgarte &amp; Shapiro, eqn. 2.58)<br>
+<br>
+
+<br>
 <a href='index.html'>Back</a><br>
 	</body>
 </html>
