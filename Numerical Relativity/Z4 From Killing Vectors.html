@@ -174,11 +174,15 @@ $
 <br>
 
 Trace-reversal of 2011 Cao et al:<br>
-$G_{uv} + 2 \nabla_{(u} Z_{v)} - g_{uv} \nabla_a Z^a - \kappa_1 (2 n_{(u} Z_{v)} + \kappa_2 g_{uv} n_a Z^a) 
+$G_{uv} 
+	+ 2 \nabla_{(u} Z_{v)} 
+	- g_{uv} \nabla_a Z^a 
+	- \kappa_1 (2 n_{(u} Z_{v)} + \kappa_2 g_{uv} n_a Z^a) 
+	
 	- \frac{1}{2} g_{uv} (
 		- R
 		- 2 \nabla_a Z^a 
-		- 2 \kappa_1 (1 + 2 \kappa_2) \Theta
+		- 2 \kappa_1 (1 + 2 \kappa_2) n_a Z^a
 	)
 	= 
 	8 \pi T_{uv}
@@ -190,7 +194,7 @@ $R_{uv}
 	+ 2 \nabla_{(u} Z_{v)} 
 	- \kappa_1 (
 		2 n_{(u} Z_{v)} 
-		- (1 + \kappa_2) g_{uv} \Theta
+		- (1 + \kappa_2) g_{uv} n_a Z^a
 	)
 	= 
 	8 \pi (
@@ -593,15 +597,16 @@ $
 
 	= 8 \pi S_{ab} 
 $<br>
+...nah, maybe not so useful.<br>
 <br>
 
-...next, how about the projection of the trace-reversal?<br>
+How about the projection of the trace-reversal?<br>
 Here's 2011 Cao's trace-reversal ...<br>
 $R_{uv} 
 	+ 2 \nabla_{(u} Z_{v)} 
 	- \kappa_1 (
 		2 n_{(u} Z_{v)} 
-		- (1 + \kappa_2) g_{uv} \Theta
+		- (1 + \kappa_2) g_{uv} n_c Z^z
 	)
 	= 
 	8 \pi (
@@ -630,7 +635,7 @@ $R_{uv}
 		   n_u ((Z^\perp)_v + n_v \Theta)
 		 + n_v ((Z^\perp)_u + n_u \Theta)
 		
-		- (1 + \kappa_2) g_{uv} \Theta
+		+ (1 + \kappa_2) g_{uv} \Theta
 	)
 	= 
 	8 \pi (
@@ -661,7 +666,7 @@ $
 			   n_u ((Z^\perp)_v + n_v \Theta)
 			 + n_v ((Z^\perp)_u + n_u \Theta)
 			
-			- (1 + \kappa_2) g_{uv} \Theta
+			+ (1 + \kappa_2) g_{uv} \Theta
 		)
 	)
 	= 
@@ -677,7 +682,7 @@ $
 	
 	- 2 K_{ab} \Theta
 	
-	+ \kappa_1 (1 + \kappa_2) \gamma_{ab} \Theta
+	- \kappa_1 (1 + \kappa_2) \gamma_{ab} \Theta
 	
 	= 
 	8 \pi (
@@ -703,7 +708,7 @@ $\partial_t K_{ab} = -\nabla^\perp_a \nabla^\perp_b \alpha + \alpha (
 		
 		- 2 K_{ab} \Theta
 		
-		+ \kappa_1 (1 + \kappa_2) \gamma_{ab} \Theta
+		- \kappa_1 (1 + \kappa_2) \gamma_{ab} \Theta
 		
 		- 8 \pi (
 			S_{ab} 
@@ -724,7 +729,7 @@ $\partial_t K_{ab}
 		+ \nabla^\perp_a (Z^\perp)_b
 		+ \nabla^\perp_b (Z^\perp)_a
 		
-		+ \kappa_1 (1 + \kappa_2) \gamma_{ab} \Theta
+		- \kappa_1 (1 + \kappa_2) \gamma_{ab} \Theta
 		
 		- 8 \pi (
 			S_{ab} 
@@ -738,7 +743,7 @@ $<br>
 <hr>
 <br>
 
-Ok from here ...<br>
+<b>Ok Summary:</b><br>
 <br>
 
 - the spatial metric ivp is independent of the field equations / the stress-energy constraint, so it is unchanged<br>
@@ -747,10 +752,6 @@ $\partial_t \gamma_{ab} = -2 \alpha K_{ab}
 	+ \gamma_{cb} \partial_a \beta^c
 	+ \gamma_{ac} \partial_b \beta^c
 $<br>
-<br>
-
-- why are gauge (lapse and shift) ivp's changed?  where is the origin of the Bona-Masso lapse function?  shift is always the last thing anyone messes with.<br>
-TODO.. Show where that $K \rightarrow K - 2 \Theta$ comes from.<br>
 <br>
 
 - Contract field equations with both normals to come up with Z4's form of the hamiltonian constraint.  Is it me or does most literature stick to the non-Z4 Hamiltonian constraints.<br>
@@ -785,8 +786,35 @@ $
 $<br>
 <br>
 
-- project both indexes of field equations to get Z4's form of the extrinsic curvature ivp<br>
-- where does the Z, Theta ivp come from?<br>
+- project both indexes of field equations to get Z4's form of the extrinsic curvature ivp:<br>
+$\partial_t K_{ab} 
+	= 
+	-\nabla^\perp_a \nabla^\perp_b \alpha 
+	+ \alpha (
+		  R^\perp_{ab} 
+		+ K_{ab} (K - 2 \Theta)
+		- 2 K_{ac} {K^c}_b
+		
+		+ \nabla^\perp_a (Z^\perp)_b
+		+ \nabla^\perp_b (Z^\perp)_a
+		
+		- \kappa_1 (1 + \kappa_2) \gamma_{ab} \Theta
+		
+		- 8 \pi (
+			S_{ab} 
+			- \frac{1}{2} \gamma_{ab} (S - \rho)
+		)
+	)
+	+ \mathcal{L}_\vec\beta K_{ab}
+$<br>
+Looks like the original Bona et al Z4 comes out for $\kappa_1 = 0$, nice and simple here.<br>
+<br>
+
+- where does the $Z^\perp_a, \Theta$ ivp come from?<br>
+<br>
+
+- why are gauge (lapse and shift) ivp's changed?  where is the origin of the Bona-Masso lapse function?  shift is always the last thing anyone messes with.<br>
+TODO.. Show where that $K \rightarrow K - 2 \Theta$ comes from.<br>
 <br>
 
 
