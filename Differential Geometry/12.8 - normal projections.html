@@ -992,44 +992,11 @@ $<br>
 <hr>
 <br>
 
-Lie derivative of any (0 2) tensor $T_{ab}$ for arbitrary commutation and torsion:<br>
-$\mathcal{L}_\vec{v} T_{ab} 
-	+ {T^d}_{ac} v^c T_{db}
-	+ {T^d}_{bc} v^c T_{ad}
-$<br>
-using ${T^a}_{bc} + {c_{bc}}^a = {\Gamma^a}_{bc} - {\Gamma^a}_{cb}$<br>
-$
-	= v^c e_c(T_{ab}) 
-	+ T_{cb} e_a(v^c) 
-	+ T_{ac} e_b(v^c) 
-	+ ({\Gamma^d}_{ac} - {\Gamma^d}_{ca}) v^c T_{db}
-	+ ({\Gamma^d}_{bc} - {\Gamma^d}_{cb}) v^c T_{ad}
-$<br>
-$
-	= v^c (e_c (T_{ab}) - {\Gamma^d}_{ca} T_{cb} - {\Gamma^d}_{cb} T_{ad})
-	+ T_{cb} (e_a(v^c) + {\Gamma^c}_{ad} v^d)
-	+ T_{ac} (e_b(v^c) + {\Gamma^c}_{bd} v^d)
-$<br>
-$
-	= v^c \nabla_c T_{ab} 
-	+ T_{cb} \nabla_a v^c 
-	+ T_{ac} \nabla_b v^c
-$<br>
-<br>
-
-Therefore, for holonomic basis and torsion-free connections:<br>
-$\mathcal{L}_\vec{v} T_{ab} 
-	= v^c \nabla_c T_{ab} 
-	+ T_{cb} \nabla_a v^c 
-	+ T_{ac} \nabla_b v^c
-$<br>
-<br>
-
 Lie derivative along hypersurface normal of spatial hypersurface, in terms of extrinsic curvature:<br>
 $\mathcal{L}_{\vec{n}} \gamma_{ab} 
-	= n^c \partial_c \gamma_{ab} 
-	+ \gamma_{cb} \partial_a n^c 
-	+ \gamma_{ac} \partial_b n^c
+	= n^c e_c(\gamma_{ab})
+	+ \gamma_{cb} e_a(n^c)
+	+ \gamma_{ac} e_b(n^c)
 $<br>
 $\mathcal{L}_{\vec{n}} \gamma_{ab} 
 	= n^c \nabla_c \gamma_{ab} 
@@ -1066,6 +1033,46 @@ using $K_{ab} = -\nabla_a n_b - n_a a_b$:<br>
 $ \mathcal{L}_{\vec{n}} \gamma_{ab} = -K_{ab} - K_{ba}$<br>
 using $K_{ab} = K_{(ab)}$:<br>
 $ \mathcal{L}_{\vec{n}} \gamma_{ab} = -2 K_{ab}$ (2008 Alcubierre, eqn. 2.3.7, 2010 Baumgarte &amp; Shapiro, eqn. 2.58)<br>
+<br>
+
+Is the projection of the trace-reversal the same as the trace-reversal of the projection?<br>
+$\perp TR(T_{ab})$<br>
+$= {\gamma_a}^u {\gamma_b}^v (T_{uv} - \frac{1}{2} g_{ab} T)$<br>
+$= {\gamma_a}^u {\gamma_b}^v T_{uv} - \frac{1}{2} {\gamma_a}^u {\gamma_b}^v g_{ab} T$<br>
+$= \perp T_{ab} - \frac{1}{2} \gamma_{ab} T$<br>
+$= \perp T_{ab} 
+	- \frac{1}{2} g_{ab} g^{uv} T_{uv} 
+	- \frac{1}{2} n_a n_b g^{uv} T_{uv}
+$<br>
+$= \perp T_{ab} 
+	- \frac{1}{2} g_{ab} g^{uv} T_{uv} 
+	- \frac{1}{2} g_{ab} n^u n^v T_{uv}
+	
+	+ \frac{1}{2} g_{ab} n^u n^v T_{uv}
+	- \frac{1}{2} n_a n_b g^{uv} T_{uv}
+$<br>
+$= {\gamma_a}^u {\gamma_b}^v T_{uv}
+	- \frac{1}{2} g_{ab} (
+		\gamma^{uv} T_{uv}
+	)
+	
+	+ \frac{1}{2} g_{ab} n^u n^v T_{uv}
+	- \frac{1}{2} n_a n_b g^{uv} T_{uv}
+$<br>
+$= {\gamma_a}^u {\gamma_b}^v T_{uv}
+	- \frac{1}{2} g_{ab} g^{cd} (
+		{\gamma_c}^u {\gamma_d}^v T_{uv}
+	)
+	+ \frac{1}{2} g_{ab} n^u n^v T_{uv}
+	- \frac{1}{2} n_a n_b g^{uv} T_{uv}
+$<br>
+$= TR({\gamma_a}^u {\gamma_b}^v T_{uv})
+	+ \frac{1}{2} g_{ab} n^u n^v T_{uv}
+	- \frac{1}{2} n_a n_b g^{uv} T_{uv}
+$<br>
+$= TR(\perp T_{ab})
+	+ \frac{1}{2} (g_{ab} n^u n^v - n_a n_b g^{uv}) T_{uv}
+$<br>
 <br>
 
 <br>

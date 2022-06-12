@@ -120,6 +120,41 @@ $\mathcal{L}_\vec{t} {T^{a_1 ... a_p}}_{b_1 ... b_q}
 $<br>
 <br>
 
+Lie derivative of any (0 2) tensor $T_{ab}$ for arbitrary commutation and torsion:<br>
+$\mathcal{L}_\vec{v} T_{ab} 
+	+ {T^d}_{ac} v^c T_{db}
+	+ {T^d}_{bc} v^c T_{ad}
+$<br>
+using ${T^a}_{bc} + {c_{bc}}^a = {\Gamma^a}_{bc} - {\Gamma^a}_{cb}$<br>
+$
+	= v^c e_c(T_{ab}) 
+	+ T_{cb} e_a(v^c) 
+	+ T_{ac} e_b(v^c) 
+	+ ({\Gamma^d}_{ac} - {\Gamma^d}_{ca}) v^c T_{db}
+	+ ({\Gamma^d}_{bc} - {\Gamma^d}_{cb}) v^c T_{ad}
+$<br>
+$
+	= v^c (e_c (T_{ab}) - {\Gamma^d}_{ca} T_{cb} - {\Gamma^d}_{cb} T_{ad})
+	+ T_{cb} (e_a(v^c) + {\Gamma^c}_{ad} v^d)
+	+ T_{ac} (e_b(v^c) + {\Gamma^c}_{bd} v^d)
+$<br>
+$
+	= v^c \nabla_c T_{ab} 
+	+ T_{cb} \nabla_a v^c 
+	+ T_{ac} \nabla_b v^c
+$<br>
+<br>
+
+Therefore, for holonomic basis and torsion-free connections:<br>
+$\mathcal{L}_\vec{v} T_{ab} 
+	= v^c \nabla_c T_{ab} 
+	+ T_{cb} \nabla_a v^c 
+	+ T_{ac} \nabla_b v^c
+$<br>
+Therefore, for the Lie derivative acting on a (0 2) tensor, on a holonomic basis with torsion-free connection, you can swap the partial derivatives with covariant derivatives.<br>
+<br>
+
+
 TODO verify:<br>
 Either only true for p &gt; 0, or if you want it to be a generalization of the scalar case then you have to define $d(x \lrcorner \phi) = 0$<br>
 Same as $[\mathcal{L}_x, d] = 0$?<br>
@@ -133,6 +168,7 @@ TODO show $d \mathcal{L}_x (w) = \mathcal{L}_x (dw)$<br>
 
 TODO show $\mathcal{L}_{\phi x} w = \phi \mathcal{L}_x w + d\phi \wedge (x \lrcorner w)$<br>
 <br>
+
 
 <a href='.'>Back</a><br><br>
 	</body>
