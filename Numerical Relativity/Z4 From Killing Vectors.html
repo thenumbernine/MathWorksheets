@@ -153,75 +153,34 @@ Cites 2005 Gundlach et al as its source.<br>
 The trace-reversal of 2011 Cao matches this except that the $\kappa_1$ sign is flipped.<br>
 <br>
 
-For the sake of comparison with the Hamiltonian constraint, I should derive things based on $n^u n^v G_{uv}$ ...<br>
-But the difference between 2011 Cao et al and 2012 Alic et al is whether the you're using the original lhs or rhs of the EFE and performing a trace-reversal from that after adding in the Killing vectors.<br>
-With that said, let's compare the TR of 2011 Cao et al with 2012 Alic et al and vice versa.<br>
-<br>
-
-Trace of 2011 Cao et al:<br>
-$g^{uv} (G_{uv} + 2 \nabla_{(u} Z_{v)} - g_{uv} \nabla_a Z^a - \kappa_1 (2 n_{(u} Z_{v)} + \kappa_2 g_{uv} n_a Z^a)) = 8 \pi g^{uv} T_{uv}$<br>
-$
-	g^{uv} (R_{uv} - \frac{1}{2} g_{uv} R)
-	+ 2 g^{uv} \nabla_u Z_v 
-	- g^{uv} g_{uv} \nabla_a Z^a 
-	- \kappa_1 (2 g^{uv} n_u Z_v + \kappa_2 g^{uv} g_{uv} n_a Z^a)
- = 8 \pi T$<br>
-$
-	- R
-	- 2 \nabla_a Z^a 
-	- 2 \kappa_1 (1 + 2 \kappa_2) n_a Z^a
- = 8 \pi T$<br>
-<br>
-
-Trace-reversal of 2011 Cao et al:<br>
-$G_{uv} 
-	+ 2 \nabla_{(u} Z_{v)} 
-	- g_{uv} \nabla_a Z^a 
-	- \kappa_1 (2 n_{(u} Z_{v)} + \kappa_2 g_{uv} n_a Z^a) 
-	
-	- \frac{1}{2} g_{uv} (
-		- R
-		- 2 \nabla_a Z^a 
-		- 2 \kappa_1 (1 + 2 \kappa_2) n_a Z^a
-	)
-	= 
-	8 \pi T_{uv}
-	- \frac{1}{2} g_{uv} (
-		8 \pi T
-	)
-$<br>
-$R_{uv} 
-	+ 2 \nabla_{(u} Z_{v)} 
-	- \kappa_1 (
-		2 n_{(u} Z_{v)} 
-		- (1 + \kappa_2) g_{uv} n_a Z^a
-	)
-	= 
-	8 \pi (
-		T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab}
-	)
-$<br>
-<br>
-
-So between 2011 Cao et al and 2012 Alic et al, the only difference in the equations is the sign next to $\kappa_1$, which is equivalently seen as the sign associated with $n_u$, 
-which fits perfectly with the fact that 2011 Cao uses future-pointing normals while 2012 Alic uses past-pointing normals.<br>
-<br>
-
 Since 2011 Cao et al uses future-pointing normals, like I do in my worksheets, I'll go with that equation.<br>
 $G_{uv} + 2 \nabla_{(u} Z_{v)} - g_{uv} \nabla_a Z^a - \kappa_1 (2 n_{(u} Z_{v)} + \kappa_2 g_{uv} n_a Z^a) = 8 \pi T_{uv}$<br>
 <br>
 
 <hr>
-<b>Change to the Einstein Field Equations / Derivation of Constraints and Evolution Equations:</b><br>
-This whole worksheet either goes in my "Numerical Relativity" folder or in my "Differential Geometry" folder after the ADM stuff.
-In fact, all my "Numerical Relativity" folder goes after the ADM stuff of the "Differential Geometry" folder.
-In fact, I still don't have a good worksheet going from my "Differential Geometry/14 - ADM constraints" to the I.V.P.'s of my "Numerical Relativity" worksheets.
-So I should be doing that first, then inserting the $Z_u$'s into it to produce this worksheet.
-<br>
+<b>Change to the Einstein Field Equations</b><br>
 <br>
 
+Einstein field equations:<br>
+$G_{uv} = 8 \pi T_{uv}$<br>
+<br>
+
+Z4 field equations:<br>
+TODO a comment on Killing vectors or on the $k_1, k_2$ constrants would be nice.<br>
 $
 	  G_{uv} 
+	+ 2 \nabla_{(u} Z_{v)} 
+	- g_{uv} \nabla_a Z^a 
+	- \kappa_1 (
+		  2 n_{(u} Z_{v)} 
+		+ \kappa_2 g_{uv} n_a Z^a
+	) 
+	= 8 \pi T_{uv}
+$<br>
+<br>
+
+...in normal and spatial components:<br>
+$	  G_{uv} 
 	+ 2 \nabla_{(u} Z_{v)} 
 	- g_{uv} \nabla_a Z^a 
 	- \kappa_1 (
@@ -336,7 +295,87 @@ $
 $<br>
 <br>
 
+Trace of Z4:<br>
+$g^{uv} (G_{uv} + 2 \nabla_{(u} Z_{v)} - g_{uv} \nabla_a Z^a - \kappa_1 (2 n_{(u} Z_{v)} + \kappa_2 g_{uv} n_a Z^a)) = 8 \pi g^{uv} T_{uv}$<br>
+$
+	g^{uv} (R_{uv} - \frac{1}{2} g_{uv} R)
+	+ 2 g^{uv} \nabla_u Z_v 
+	- g^{uv} g_{uv} \nabla_a Z^a 
+	- \kappa_1 (2 g^{uv} n_u Z_v + \kappa_2 g^{uv} g_{uv} n_a Z^a)
+ = 8 \pi T$<br>
+$
+	- R
+	- 2 \nabla_a Z^a 
+	- 2 \kappa_1 (1 + 2 \kappa_2) n_a Z^a
+ = 8 \pi T$<br>
+<br>
+
+Trace-reversal of Z4:<br>
+$G_{uv} 
+	+ 2 \nabla_{(u} Z_{v)} 
+	- g_{uv} \nabla_a Z^a 
+	- \kappa_1 (2 n_{(u} Z_{v)} + \kappa_2 g_{uv} n_a Z^a) 
+	
+	- \frac{1}{2} g_{uv} (
+		- R
+		- 2 \nabla_a Z^a 
+		- 2 \kappa_1 (1 + 2 \kappa_2) n_a Z^a
+	)
+	= 
+	8 \pi T_{uv}
+	- \frac{1}{2} g_{uv} (
+		8 \pi T
+	)
+$<br>
+$R_{uv} 
+	+ 2 \nabla_{(u} Z_{v)} 
+	- \kappa_1 (
+		2 n_{(u} Z_{v)} 
+		- (1 + \kappa_2) g_{uv} n_a Z^a
+	)
+	= 
+	8 \pi (
+		T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab}
+	)
+$<br>
+(Note: Between 2011 Cao et al and 2012 Alic et al, the only difference in the equations is the sign next to $\kappa_1$, which is equivalently seen as the sign associated with $n_u$, 
+which fits perfectly with the fact that 2011 Cao uses future-pointing normals while 2012 Alic uses past-pointing normals.)<br>
+<br>
+
+Separate trace-reversal of Z4 field equations into normal and hypersurface components:<br>
+$R_{uv} 
+	
+	+ \nabla^\perp_u (Z^\perp)_v
+	- n_u n^a \nabla_a (Z^\perp)_v
+	- K_{ua} (Z^\perp)^a n_v
+	- n_u a_v \Theta
+	+ n_v \nabla^\perp_u \Theta
+
+	+ \nabla^\perp_v (Z^\perp)_u
+	- n_v n^a \nabla_a (Z^\perp)_u
+	- K_{va} (Z^\perp)^a n_u
+	- n_u a_v \Theta
+	+ n_u \nabla^\perp_v \Theta
+
+	- 2 K_{uv} \Theta 
+	- 2 n_u n_v n^c \nabla_c \Theta
+
+	- \kappa_1 (
+		   n_u ((Z^\perp)_v + n_v \Theta)
+		 + n_v ((Z^\perp)_u + n_u \Theta)
+		
+		+ (1 + \kappa_2) g_{uv} \Theta
+	)
+	= 
+	8 \pi (
+		T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab}
+	)
+$<br>
+<br>
+
+
 <hr>
+<b>Derivation of Constraints and Evolution Equations:</b><br>
 <br>
 
 Contract normals:<br>
@@ -408,6 +447,110 @@ $
 	- (K + \kappa_1 (\kappa_2 + 2)) \Theta
 	= 
 	8 \pi \rho
+$<br>
+Define our non-Z4 Hamiltonian constraint / normal contraction of the Einstein field equations:<br>
+$H = \frac{1}{2} (R^\perp + K^2 - K_{ab} K^{ab}) - 8 \pi \rho$<br>
+So our normal-contracted Z4 field equations become<br>
+$	  H
+	+ \nabla^\perp_a (Z^\perp)^a
+	+ a_a (Z^\perp)^a
+	- n^a \nabla_a \Theta
+	- (K + \kappa_1 (\kappa_2 + 2)) \Theta
+	= 0
+$<br>
+<br>
+
+$a_a (Z^\perp)^a = (Z^\perp)^u n^v \nabla_v n_u = -n_u n^v \nabla_v (Z^\perp)^u ...$<br>
+<br>
+
+Is this where $\partial_t \Theta$ comes from?<br>
+$\mathcal{L}_\vec{n} \Theta = n^u \partial_u \Theta = n^u \nabla_u \Theta$<br>
+$\mathcal{L}_\vec{n} = \frac{1}{\alpha} (\partial_t - \mathcal{L}_\vec\beta)$<br>
+so $n^u \nabla_u \Theta = \frac{1}{\alpha} (\partial_t \Theta - \beta^i \partial_i \Theta)$<br>
+$	  \frac{1}{\alpha} (\partial_t \Theta - \beta^i \partial_i \Theta)
+	
+	+ K \Theta 
+	- a_a (Z^\perp)^a
+	= H
+	+ \nabla^\perp_a (Z^\perp)^a
+	- \kappa_1 (\kappa_2 + 2) \Theta
+$<br>
+$	  \partial_t \Theta 
+	
+	+ \alpha K \Theta 
+	- \alpha a_a (Z^\perp)^a
+	
+	= \alpha (H
+		+ \nabla^\perp_a (Z^\perp)^a
+		- \kappa_1 (\kappa_2 + 2) \Theta
+	)
+	+ \beta^i \partial_i \Theta
+$<br>
+<br>
+
+Did I do a typo somewhere?<br>
+Or is it true that $K \Theta = a_a (Z^\perp)^a$?  No.<br>
+<br>
+
+How about trying the normal-contraction of the trace-reversal of this?<br>
+$	n^u n^v (
+		  R_{uv} 
+		+ \nabla^\perp_u (Z^\perp)_v
+		- n_u n^a \nabla_a (Z^\perp)_v
+		- K_{ua} (Z^\perp)^a n_v
+		- n_u a_v \Theta
+		+ n_v \nabla^\perp_u \Theta
+
+		+ \nabla^\perp_v (Z^\perp)_u
+		- n_v n^a \nabla_a (Z^\perp)_u
+		- K_{va} (Z^\perp)^a n_u
+		- n_u a_v \Theta
+		+ n_u \nabla^\perp_v \Theta
+
+		- 2 K_{uv} \Theta 
+		- 2 n_u n_v n^c \nabla_c \Theta
+
+		- \kappa_1 (
+			   n_u ((Z^\perp)_v + n_v \Theta)
+			 + n_v ((Z^\perp)_u + n_u \Theta)
+			
+			+ (1 + \kappa_2) g_{uv} \Theta
+		)
+	)
+	= 
+	8 \pi n^u n^v (
+		T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab}
+	)
+$<br>
+$	  n^u n^v R_{uv}
+	
+	+ 2 n^u n^a \nabla_a (Z^\perp)_u
+
+	- 2 n^c \nabla_c \Theta
+
+	+ \kappa_1 (\kappa_2 - 1) \Theta
+	= 
+	4 \pi (S + \rho)
+$<br>
+using $n^a n^b \nabla_a v_b = -(v^\perp)^a a_a - n^a \nabla_a v^\top$<br>
+$	  n^u n^v R_{uv}
+	- 2 (Z^\perp)^a a_a 
+	- 4 n^a \nabla_a \Theta
+	+ \kappa_1 (\kappa_2 - 1) \Theta
+	= 
+	4 \pi (S + \rho)
+$<br>
+Just can't seem to get rid of that acceleration vector...<br>
+Using $2 n^a n^b R_{ab} = R^\perp - K_{ab} K^{ab} + K^2 - R$<br>
+Using $R = R^\perp + K_{ab} K^{ab} - K^2$<br>
+So $n^a n^b R_{ab} = -K_{ab} K^{ab} + K^2$<br>
+$	- K_{ab} K^{ab} 
+	+ K^2
+	- 2 (Z^\perp)^a a_a 
+	- 4 n^a \nabla_a \Theta
+	+ \kappa_1 (\kappa_2 - 1) \Theta
+	= 
+	4 \pi (S + \rho)
 $<br>
 <br>
 
@@ -601,19 +744,7 @@ $<br>
 <br>
 
 How about the projection of the trace-reversal?<br>
-Here's 2011 Cao's trace-reversal ...<br>
-$R_{uv} 
-	+ 2 \nabla_{(u} Z_{v)} 
-	- \kappa_1 (
-		2 n_{(u} Z_{v)} 
-		- (1 + \kappa_2) g_{uv} n_c Z^z
-	)
-	= 
-	8 \pi (
-		T_{uv} - \frac{1}{2} g_{uv} T_{ab} g^{ab}
-	)
-$<br>
-...now separate into hypersurface and normal components<br>
+Start with the trace-reversal of the Z4 equation in hypersurface and normal components<br>
 $R_{uv} 
 	
 	+ \nabla^\perp_u (Z^\perp)_v
@@ -760,7 +891,7 @@ $\partial_t \gamma_{ab} = -2 \alpha K_{ab}
 $<br>
 <br>
 
-- Contract field equations with both normals to come up with Z4's form of the hamiltonian constraint.  Is it me or does most literature stick to the non-Z4 Hamiltonian constraints.<br>
+- Contract field equations with both normals to come up with Z4's form of the hamiltonian constraint.  Is it me or does most literature stick to the non-Z4 Hamiltonian constraints.  Maybe because the Z4 Hamiltonian constraint is the Theta ivp?<br>
 $
 	  \frac{1}{2} R^\perp 
 	+ \frac{1}{2} K^2 
@@ -792,7 +923,7 @@ $
 $<br>
 <br>
 
-- project both indexes of field equations to get Z4's form of the extrinsic curvature ivp:<br>
+- project both indexes of (trace-reversed, Ricci-based) field equations to get Z4's form of the extrinsic curvature ivp:<br>
 $\partial_t K_{ab} 
 	= 
 	-\nabla^\perp_a \nabla^\perp_b \alpha 
@@ -814,6 +945,19 @@ $\partial_t K_{ab}
 	+ \mathcal{L}_\vec\beta K_{ab}
 $<br>
 Looks like the original Bona et al Z4 comes out for $\kappa_1 = 0$, nice and simple here.<br>
+This is based on the geometry's:<br>
+$\partial_t K_{ab} 
+	= 
+	-\nabla^\perp_a \nabla^\perp_b \alpha 
+	+ \alpha (
+		  R^\perp_{ab} 
+		+ K K_{ab}
+		- 2 K_{ac} {K^c}_b
+		- \perp R_{ab}		
+	)
+	+ \mathcal{L}_\vec\beta K_{ab}
+$<br>
+... mixed with our trace-reversed field equations' rhs.  And the trace-reversed 2005 Gundlach equations reduce to the 2003 Bona equations if you just set $\kappa_1 = 0$.<br>
 <br>
 
 - where does the $Z^\perp_a, \Theta$ ivp come from?<br>
