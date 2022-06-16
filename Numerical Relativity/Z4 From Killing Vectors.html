@@ -82,6 +82,44 @@ $\nabla_a v^a
 $<br>
 <br>
 
+Lie derivative along normal vs time coordinate:<br>
+$\mathcal{L}_\vec{n} \Theta = n^u \partial_u \Theta = n^u \nabla_u \Theta$<br>
+$\mathcal{L}_\vec{n} = \frac{1}{\alpha} (\partial_t - \mathcal{L}_\vec\beta)$<br>
+<br>
+
+Lie derivative of a scalar:<br>
+$\mathcal{L}_\vec{n} s = n^u \partial_u s = n^u \nabla_u s$<br>
+<br>
+
+Lie derivative of a vector:<br>
+$mathcal{L}_\vec{n} v^a = n^u e_u ( v^a ) - v^u e_u ( n^a ) = [n, v]^u$<br>
+$= n^u e_u ( v^a )
+	+ n^u {\Gamma^a}_{uv} v^v
+	- n^u {\Gamma^a}_{uv} v^v
+	- v^u e_u ( n^a )
+	- v^u {\Gamma^a}_{uv} v^v
+	+ v^u {\Gamma^a}_{uv} v^v
+$<br>
+$= 	n^u \nabla_u v^a
+	- v^u \nabla_u n^a
+	- {\Gamma^a}_{uv} n^u v^v
+	+ {\Gamma^a}_{uv} v^u n^v
+$<br>
+$= 	n^u \nabla_u v^a
+	- v^u \nabla_u n^a
+	+ {\Gamma^a}_{uv} v^u n^v
+	- {\Gamma^a}_{vu} v^u n^v
+$<br>
+$= 	n^u \nabla_u v^a
+	- v^u \nabla_u n^a
+	+ ({T^a}_{uv} + {c_{uv}}^a) v^u n^v
+$<br>
+... assuming we are using a torsion-free holonomic basis:<br>
+$= 	n^u \nabla_u v^a
+	- v^u \nabla_u n^a
+$<br>
+<br>
+
 <hr>
 <b>Z4 Killing Vector decomposition and projections:</b><br>
 <br>
@@ -448,49 +486,42 @@ $
 	= 
 	8 \pi \rho
 $<br>
-Define our non-Z4 Hamiltonian constraint / normal contraction of the Einstein field equations:<br>
+Using the Einstein field equations' Hamiltonian constraint / normal contraction of the Einstein field equations:<br>
 $H = \frac{1}{2} (R^\perp + K^2 - K_{ab} K^{ab}) - 8 \pi \rho$<br>
 So our normal-contracted Z4 field equations become<br>
-$	  H
-	+ \nabla^\perp_a (Z^\perp)^a
-	+ a_a (Z^\perp)^a
-	- n^a \nabla_a \Theta
-	- (K + \kappa_1 (\kappa_2 + 2)) \Theta
-	= 0
-$<br>
-<br>
-
-$a_a (Z^\perp)^a = (Z^\perp)^u n^v \nabla_v n_u = -n_u n^v \nabla_v (Z^\perp)^u ...$<br>
-<br>
-
-Is this where $\partial_t \Theta$ comes from?<br>
-$\mathcal{L}_\vec{n} \Theta = n^u \partial_u \Theta = n^u \nabla_u \Theta$<br>
-$\mathcal{L}_\vec{n} = \frac{1}{\alpha} (\partial_t - \mathcal{L}_\vec\beta)$<br>
-so $n^u \nabla_u \Theta = \frac{1}{\alpha} (\partial_t \Theta - \beta^i \partial_i \Theta)$<br>
-$	  \frac{1}{\alpha} (\partial_t \Theta - \beta^i \partial_i \Theta)
-	
-	+ K \Theta 
-	- a_a (Z^\perp)^a
+$	
+	n^u \nabla_u \Theta
 	= H
 	+ \nabla^\perp_a (Z^\perp)^a
-	- \kappa_1 (\kappa_2 + 2) \Theta
-$<br>
-$	  \partial_t \Theta 
-	
-	+ \alpha K \Theta 
-	- \alpha a_a (Z^\perp)^a
-	
-	= \alpha (H
-		+ \nabla^\perp_a (Z^\perp)^a
-		- \kappa_1 (\kappa_2 + 2) \Theta
-	)
-	+ \beta^i \partial_i \Theta
+	+ a_a (Z^\perp)^a
+	- (K + \kappa_1 (\kappa_2 + 2)) \Theta
 $<br>
 <br>
 
-Did I do a typo somewhere?<br>
-Or is it true that $K \Theta = a_a (Z^\perp)^a$?  No.<br>
+$n^u \nabla_u \Theta$<br>
+$= \mathcal{L}_\vec{n} \Theta$<br>
+$= \frac{1}{\alpha} (\partial_t \Theta - \beta^i \partial_i \Theta)$<br>
 <br>
+
+so we get an ivp:<br>
+$	
+	\frac{1}{\alpha} (\partial_t \Theta - \beta^i \partial_i \Theta)
+	= H
+	+ \nabla^\perp_a (Z^\perp)^a
+	+ a_a (Z^\perp)^a
+	- (K + \kappa_1 (\kappa_2 + 2)) \Theta
+$<br>
+$	
+	\partial_t \Theta
+	= \alpha (
+		H
+		+ \nabla^\perp_a (Z^\perp)^a
+		+ a_a (Z^\perp)^a
+		- (K + \kappa_1 (\kappa_2 + 2)) \Theta
+	) + \beta^i \partial_i \Theta
+$<br>
+<br>
+
 
 How about trying the normal-contraction of the trace-reversal of this?<br>
 $	n^u n^v (
@@ -540,18 +571,16 @@ $	  n^u n^v R_{uv}
 	= 
 	4 \pi (S + \rho)
 $<br>
-Just can't seem to get rid of that acceleration vector...<br>
-Using $2 n^a n^b R_{ab} = R^\perp - K_{ab} K^{ab} + K^2 - R$<br>
-Using $R = R^\perp + K_{ab} K^{ab} - K^2$<br>
-So $n^a n^b R_{ab} = -K_{ab} K^{ab} + K^2$<br>
-$	- K_{ab} K^{ab} 
-	+ K^2
+Using $n^a n^b R_{ab} = - K_{ab} K^{ab} + K^2$<br>
+$	  K^2 
+	- K_{uv} K^{uv}
 	- 2 (Z^\perp)^a a_a 
 	- 4 n^a \nabla_a \Theta
 	+ \kappa_1 (\kappa_2 - 1) \Theta
 	= 
 	4 \pi (S + \rho)
 $<br>
+... would this Theta ivp be useful too?<br>
 <br>
 
 <hr>
@@ -891,17 +920,17 @@ $\partial_t \gamma_{ab} = -2 \alpha K_{ab}
 $<br>
 <br>
 
-- Contract field equations with both normals to come up with Z4's form of the hamiltonian constraint.  Is it me or does most literature stick to the non-Z4 Hamiltonian constraints.  Maybe because the Z4 Hamiltonian constraint is the Theta ivp?<br>
-$
-	  \frac{1}{2} R^\perp 
-	+ \frac{1}{2} K^2 
-	- \frac{1}{2} K^{ab} K_{ab}
-	+ \nabla^\perp_a (Z^\perp)^a
-	+ a_a (Z^\perp)^a
-	- n^a \nabla_a \Theta
-	- (K + \kappa_1 (\kappa_2 + 2)) \Theta
-	= 
-	8 \pi \rho
+- Contract field equations with both normals to come up with Z4's form of the hamiltonian constraint.  Is it me or does most literature stick to the non-Z4 Hamiltonian constraints.  
+Maybe because the Z4 Hamiltonian constraint is the $\Theta$ ivp:<br>
+Yup, so the Z4 field equation double-normal-contracted is the ivp of $\Theta$.<br>
+$	
+	\partial_t \Theta
+	= \alpha (
+		H
+		+ \nabla^\perp_i (Z^\perp)^i
+		+ a_i (Z^\perp)^i
+		- (K + \kappa_1 (\kappa_2 + 2)) \Theta
+	) + \beta^i \partial_i \Theta
 $<br>
 <br>
 
@@ -958,9 +987,6 @@ $\partial_t K_{ab}
 	+ \mathcal{L}_\vec\beta K_{ab}
 $<br>
 ... mixed with our trace-reversed field equations' rhs.  And the trace-reversed 2005 Gundlach equations reduce to the 2003 Bona equations if you just set $\kappa_1 = 0$.<br>
-<br>
-
-- where does the $Z^\perp_a, \Theta$ ivp come from?<br>
 <br>
 
 - why are gauge (lapse and shift) ivp's changed?  where is the origin of the Bona-Masso lapse function?  shift is always the last thing anyone messes with.<br>
