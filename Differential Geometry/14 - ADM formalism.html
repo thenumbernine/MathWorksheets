@@ -9,6 +9,10 @@
 <a href='index.html'>Back</a><br>
 <br>
 
+This page is a continuation of the "normal projection" stuff, but now for the ADM metric, lapse, shift, and time vector.<br>
+From that, it gives the time derivative of spatial metric (based on the normal derivative that was provided back in the "normal projection" worksheet).<br>
+<br>
+
 TODO for this worksheet...<br>
 - Move as much non-component-description stuff to the top.<br>
 - Move as much of the constraints on our manifold to the top (must be commutation-free, torsion-free)<br>
@@ -323,11 +327,54 @@ $<br>
 ...and more...<br>
 <br>
 
-TODO show:<br>
+Acceleration vector in covariant components:<br>
 $a_u = n^v \nabla_v n_u$<br>
+$a_u = n^v (\partial_v n_u - {\Gamma^a}_{vu} n_a)$<br>
+separate into timelike t and spatial ijk indexes:<br>
+$a_t = n^t (
+		\partial_t n_t 
+		- {\Gamma^t}_{tt} n_t
+		- {\Gamma^k}_{tt} n_k
+	)
+	+ n^j (
+		\partial_j n_t 
+		- {\Gamma^t}_{jt} n_t
+		- {\Gamma^k}_{jt} n_k
+	);
+a_i = n^t (
+		\partial_t n_i 
+		- {\Gamma^t}_{ti} n_t
+		- {\Gamma^k}_{ti} n_k
+	)
+	+ n^j (
+		\partial_j n_i 
+		- {\Gamma^t}_{ji} n_t
+		- {\Gamma^k}_{ji} n_k
+	)
+$<br>
+using $n_k = 0$<br>
+$a_t = \frac{1}{\alpha} (
+		- \partial_t \alpha
+		+ {\Gamma^t}_{tt} \alpha
+	)
+	+ \frac{\beta^j}{\alpha} (
+		\partial_j \alpha
+		- {\Gamma^t}_{jt} \alpha
+	);
+a_i = \frac{1}{\alpha} {\Gamma^t}_{ti} \alpha
+	- \frac{\beta^j}{\alpha} {\Gamma^t}_{ji} \alpha
+$<br>
 ...TODO...<br>
-$ = \frac{1}{\alpha} (\nabla_u \alpha + n_u n^v \nabla_v \alpha)$<br>
-$ = \frac{1}{\alpha} (\delta_u^v + n_u n^v) \nabla_v \alpha$<br>
+$a_t = \frac{1}{\alpha} \beta^j \partial_j \alpha;
+	a_i = \frac{1}{\alpha} \partial_i \alpha$<br>
+$a_t = \frac{1}{\alpha} (\partial_t \alpha - \partial_t \alpha + \beta^j \partial_j \alpha);
+	a_i = \frac{1}{\alpha} \partial_i \alpha$<br>
+$a_t = \frac{1}{\alpha} (\partial_t \alpha - \alpha \frac{1}{\alpha} \partial_t \alpha - \alpha (-\frac{\beta^j}{\alpha}) \partial_j \alpha);
+	a_i = \frac{1}{\alpha} \partial_i \alpha$<br>
+$a_t = \frac{1}{\alpha} (\partial_t \alpha + n_t n^v \partial_v \alpha);
+	a_i = \frac{1}{\alpha} (\partial_i \alpha + n_i n^v \partial_v \alpha)$<br>
+$a_u = \frac{1}{\alpha} (\partial_u \alpha + n_u n^v \partial_v \alpha)$<br>
+$ = \frac{1}{\alpha} (\delta_u^v + n_u n^v) \partial_v \alpha$<br>
 $ = \frac{1}{\alpha} {\gamma_u}^v \nabla_v \alpha$<br>
 $ = \frac{1}{\alpha} \nabla^\perp_u \alpha$<br>
 $a_u = \nabla^\perp_u log(\alpha)$ (2010 Baumgarte &amp; Shapiro, exercise 2.13)<br>
