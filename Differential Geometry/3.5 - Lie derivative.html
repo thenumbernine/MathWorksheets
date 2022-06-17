@@ -101,7 +101,7 @@ $= (x^a e_a ({T^I}_J) - e_a(x^{i_k}) \underset{i_k \leftrightarrow a}{{T^I}_J} +
 
 Lie derivative along a coordinate-aligned vector:<br>
 Let vector $t^u = \delta^u_t$ point along the distinct coordinate 't',<br>
-such that $t^u \nabla_u t = \delta^u_t \delta^t_u = 1$<br>
+such that $t^u e_u(t) = \delta^u_t \delta^t_u = 1$<br>
 The Lie derivative of a (p q) tensor T along t is:<br>
 $\mathcal{L}_\vec{t} {T^{a_1 ... a_p}}_{b_1 ... b_q}
 	= \mathcal{L}_\vec{t} {T^A}_B
@@ -121,6 +121,7 @@ $<br>
 <br>
 
 Lie derivative of any (0 2) tensor $T_{ab}$ for arbitrary commutation and torsion:<br>
+TODO this should go after defining nabla, T, etc<br>
 $\mathcal{L}_\vec{v} T_{ab} 
 	+ {T^d}_{ac} v^c T_{db}
 	+ {T^d}_{bc} v^c T_{ad}
@@ -154,6 +155,55 @@ $<br>
 Therefore, for the Lie derivative acting on a (0 2) tensor, on a holonomic basis with torsion-free connection, you can swap the partial derivatives with covariant derivatives.<br>
 <br>
 
+Lie derivative of a vector:<br>
+$\mathcal{L}_\vec{n} v^a = n^u e_u ( v^a ) - v^u e_u ( n^a ) = [n, v]^u$<br>
+$= n^u e_u ( v^a )
+	+ n^u {\Gamma^a}_{uv} v^v
+	- n^u {\Gamma^a}_{uv} v^v
+	- v^u e_u ( n^a )
+	- v^u {\Gamma^a}_{uv} v^v
+	+ v^u {\Gamma^a}_{uv} v^v
+$<br>
+$= 	n^u \nabla_u v^a
+	- v^u \nabla_u n^a
+	- {\Gamma^a}_{uv} n^u v^v
+	+ {\Gamma^a}_{uv} v^u n^v
+$<br>
+$= 	n^u \nabla_u v^a
+	- v^u \nabla_u n^a
+	+ {\Gamma^a}_{uv} v^u n^v
+	- {\Gamma^a}_{vu} v^u n^v
+$<br>
+$= 	n^u \nabla_u v^a
+	- v^u \nabla_u n^a
+	+ ({T^a}_{uv} + {c_{uv}}^a) v^u n^v
+$<br>
+... assuming we are using a torsion-free holonomic basis:<br>
+$= 	n^u \nabla_u v^a
+	- v^u \nabla_u n^a
+$<br>
+<br>
+
+Lie derivative of a form:<br>
+$\mathcal{L}_\vec{n} w_a = n^u e_u (w_a) + w_u e_a(n^u)$<br>
+$	= n^u e_u (w_a) 
+	- n^u {\Gamma^v}_{ua} w_v
+	+ n^u {\Gamma^v}_{ua} w_v
+	+ w_u e_a(n^u)
+	+ w_u {\Gamma^u}_{av} n^v
+	- w_u {\Gamma^u}_{av} n^v
+$<br>
+$	= n^u \nabla_u w_a
+	+ w_u \nabla_a n^u
+	+ ({\Gamma^u}_{va} - {\Gamma^u}_{av}) w_u n^v
+$<br>
+$	= n^u \nabla_u w_a
+	+ w_u \nabla_a n^u
+	+ ({T^u}_{va} + {c_{va}}^u) w_u n^v
+$<br>
+... assuming we are using a torsion-free holonomic basis:<br>
+$	= n^u \nabla_u w_a + w_u \nabla_a n^u$<br>
+<br>
 
 TODO verify:<br>
 Either only true for p &gt; 0, or if you want it to be a generalization of the scalar case then you have to define $d(x \lrcorner \phi) = 0$<br>

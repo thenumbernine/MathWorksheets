@@ -92,32 +92,14 @@ $\mathcal{L}_\vec{n} s = n^u \partial_u s = n^u \nabla_u s$<br>
 <br>
 
 Lie derivative of a vector:<br>
-$mathcal{L}_\vec{n} v^a = n^u e_u ( v^a ) - v^u e_u ( n^a ) = [n, v]^u$<br>
-$= n^u e_u ( v^a )
-	+ n^u {\Gamma^a}_{uv} v^v
-	- n^u {\Gamma^a}_{uv} v^v
-	- v^u e_u ( n^a )
-	- v^u {\Gamma^a}_{uv} v^v
-	+ v^u {\Gamma^a}_{uv} v^v
-$<br>
-$= 	n^u \nabla_u v^a
-	- v^u \nabla_u n^a
-	- {\Gamma^a}_{uv} n^u v^v
-	+ {\Gamma^a}_{uv} v^u n^v
-$<br>
-$= 	n^u \nabla_u v^a
-	- v^u \nabla_u n^a
-	+ {\Gamma^a}_{uv} v^u n^v
-	- {\Gamma^a}_{vu} v^u n^v
-$<br>
-$= 	n^u \nabla_u v^a
-	- v^u \nabla_u n^a
-	+ ({T^a}_{uv} + {c_{uv}}^a) v^u n^v
-$<br>
-... assuming we are using a torsion-free holonomic basis:<br>
-$= 	n^u \nabla_u v^a
-	- v^u \nabla_u n^a
-$<br>
+$\mathcal{L}_\vec{n} v^a = n^u e_u ( v^a ) - v^u e_u ( n^a )$<br>
+$= n^u \nabla_u v^a - v^u \nabla_u n^a$<br>
+<br>
+
+Lie derivative of a scalar along the hypersurface normal:<br>
+$n^u \nabla_u \Theta$<br>
+$= \mathcal{L}_\vec{n} \Theta$<br>
+$= \frac{1}{\alpha} (\partial_t \Theta - \beta^i \partial_i \Theta)$<br>
 <br>
 
 <hr>
@@ -127,6 +109,42 @@ $<br>
 Let $Z_u$ be our Killing vector<br>
 Let $Z^\perp_u = {\gamma_u}^a Z_a$ be the spatial projection of our Killing vector.<br>
 Let $Z^\top = \Theta = -n_u Z^u$<br>
+<br>
+
+Lie derivative of Killing vector along hypersurface normal:<br>
+$\mathcal{L}_\vec{n} Z^a$<br>
+$= n^u \nabla_u Z^a - Z^u \nabla_u n^a$<br>
+$= n^u \nabla_u ((Z^\perp)^a + n^a \Theta) - ((Z^\perp)^u + n^u \Theta) \nabla_u n^a$<br>
+$= 
+	  n^u \nabla_u (Z^\perp)^a 
+	- (Z^\perp)^u \nabla_u n^a 
+	+ \Theta n^u \nabla_u n^a 
+	+ n^a n^u \nabla_u \Theta
+	- \Theta n^u \nabla_u n^a
+$<br>
+...notice the n component of Z cancels from the Lie derivative along n.<br>
+$ 	= n^u \nabla_u (Z^\perp)^a 
+	- (Z^\perp)^u \nabla_u n^a 
+	+ n^a n^u \nabla_u \Theta
+$<br>
+$ = \mathcal{L}_\vec{n} (Z^\perp)^a + n^a \mathcal{L}_\vec{n} \Theta$<br>
+...compare to expanding Z from the beginning:<br>
+$= \mathcal{L}_\vec{n} ((Z^\perp)^a + n^a \Theta)$<br>
+...and that looks like some linearity rule of the Lie derivative.<br>
+$ 	= n^u \nabla_u (Z^\perp)^a 
+	- (Z^\perp)^u (-{K_u}^a - n_u a^a)
+	+ n^a n^u \nabla_u \Theta
+$<br>
+$ 	= n^u \nabla_u (Z^\perp)^a 
+	+ (Z^\perp)^u {K_u}^a
+	+ n^a n^u \nabla_u \Theta
+$<br>
+<br>
+
+same but as one-form:<br>
+$\mathcal{L}_\vec{n} (Z^\perp)_a = n^u \nabla_u (Z^\perp)_a + (Z^\perp)_u \nabla_a n^u$<br>
+$= n^u \nabla_u (Z^\perp)_a + (Z^\perp)_u (-{K_a}^u - n_a a^u)$<br>
+$= n^u \nabla_u (Z^\perp)_a - (Z^\perp)_u {K_a}^u - n_a (Z^\perp)_u a^u$<br>
 <br>
 
 <hr>
@@ -496,14 +514,7 @@ $
 	+ a_a (Z^\perp)^a
 	- (K + \kappa_1 (\kappa_2 + 2)) \Theta
 $<br>
-<br>
-
-$n^u \nabla_u \Theta$<br>
-$= \mathcal{L}_\vec{n} \Theta$<br>
-$= \frac{1}{\alpha} (\partial_t \Theta - \beta^i \partial_i \Theta)$<br>
-<br>
-
-so we get an ivp:<br>
+using $n^u \nabla_u \Theta = \frac{1}{\alpha} (\partial_t \Theta - \beta^i \partial_i \Theta)$<br>
 $	
 	\frac{1}{\alpha} (\partial_t \Theta - \beta^i \partial_i \Theta)
 	= H
@@ -660,7 +671,6 @@ $
 	
 	+ n^a \nabla_a (Z^\perp)_b
 	- n_b (Z^\perp)^a a_a
-	+ a_b \Theta
 	
 	+ a_b \Theta
 	- \nabla^\perp_b \Theta
@@ -675,7 +685,7 @@ $
 	
 	+ n^a \nabla_a (Z^\perp)_b
 	- n_b (Z^\perp)^a a_a
-	+ 2 a_b \Theta
+	+ a_b \Theta
 	
 	- \nabla^\perp_b \Theta
 
@@ -691,11 +701,61 @@ $
 	
 	+ n^a \nabla_a (Z^\perp)_b
 	- n_b (Z^\perp)^a a_a
-	+ 2 a_b \Theta
+	+ a_b \Theta
 	
 	- \nabla^\perp_b \Theta
 
 	= -8 \pi j_b 
+$<br>
+Using $\mathcal{L}_\vec{n} (Z^\perp)_a= n^u \nabla_u (Z^\perp)_a - (Z^\perp)_u {K_a}^u - n_a (Z^\perp)_u a^u$<br>
+$
+	  \mathcal{L}_\vec{n} (Z^\perp)_b
+	+ \nabla^\perp_b K
+	- \nabla^\perp_a {K_b}^a
+
+	+ \kappa_1 (Z^\perp)_b
+	+ 2 K_{ab} (Z^\perp)^a
+	
+	+ a_b \Theta
+	
+	- \nabla^\perp_b \Theta
+
+	= -8 \pi j_b 
+$<br>
+$	  \mathcal{L}_\vec{n} (Z^\perp)_b
+	= 
+	  \nabla^\perp_a {K_b}^a
+	- \nabla^\perp_b K
+	+ \nabla^\perp_b \Theta
+	- a_b \Theta
+	- 2 K_{ab} (Z^\perp)^a
+	- \kappa_1 (Z^\perp)_b
+	
+	- 8 \pi j_b 
+$<br>
+$	  \frac{1}{\alpha} (\partial_t (Z^\perp)_b - \mathcal{L}_\vec\beta (Z^\perp)_b)
+	= 
+	  \nabla^\perp_a {K_b}^a
+	- \nabla^\perp_b K
+	+ \nabla^\perp_b \Theta
+	- a_b \Theta
+	- 2 K_{ab} (Z^\perp)^a
+	- \kappa_1 (Z^\perp)_b
+	
+	- 8 \pi j_b 
+$<br>
+$	  \partial_t (Z^\perp)_b
+	= 
+	  \alpha (
+		  \nabla^\perp_a {K_b}^a
+		- \nabla^\perp_b K
+		+ \nabla^\perp_b \Theta
+		- a_b \Theta
+		- 2 K_{ab} (Z^\perp)^a
+		- \kappa_1 (Z^\perp)_b
+		
+		- 8 \pi j_b 
+	) + \mathcal{L}_\vec\beta (Z^\perp)_b
 $<br>
 <br>
 
@@ -927,29 +987,28 @@ $
 	\partial_t \Theta
 	= \alpha (
 		H
-		+ \nabla^\perp_i (Z^\perp)^i
-		+ a_i (Z^\perp)^i
+		+ \nabla^\perp_k (Z^\perp)^k
+		+ a_k (Z^\perp)^k
 		- (K + \kappa_1 (\kappa_2 + 2)) \Theta
-	) + \beta^i \partial_i \Theta
+	) + \beta^k \partial_k \Theta
 $<br>
 <br>
 
-- Contract field equations with normal and project to come up with Z4's form of the momenutm constraint:<br>
-$
-	  \nabla^\perp_b K
-	- \nabla^\perp_a {K_b}^a
-
-	+ \kappa_1 (Z^\perp)_b
-	+ K_{ab} (Z^\perp)^a
-	
-	+ n^a \nabla_a (Z^\perp)_b
-	- n_b (Z^\perp)^a a_a
-	+ 2 a_b \Theta
-	
-	- \nabla^\perp_b \Theta
-
-	= -8 \pi j_b 
+- Contract field equations with normal and project to come up with Z4's form of the momenutm constraint, substitute Lie derivative of Z spatial vector to get its evolution equation:<br>
+$	  \partial_t (Z^\perp)_k
+	= 
+	  \alpha (
+		  \nabla^\perp_i {K_k}^i
+		- \nabla^\perp_k K
+		+ \nabla^\perp_k \Theta
+		- a_k \Theta
+		- 2 K_{ik} (Z^\perp)^i
+		- \kappa_1 (Z^\perp)_k
+		
+		- 8 \pi j_k 
+	) + \mathcal{L}_\vec\beta (Z^\perp)_k
 $<br>
+
 <br>
 
 - project both indexes of (trace-reversed, Ricci-based) field equations to get Z4's form of the extrinsic curvature ivp:<br>
