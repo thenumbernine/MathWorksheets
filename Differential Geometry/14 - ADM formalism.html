@@ -303,31 +303,9 @@ And $K_{ij} = K_{(ij)}$<br>
 
 Acceleration vector:<br>
 $a_u = n^v \nabla_v n_u$<br>
-In ADM components, contravariant, spatial components:<br>
-$a^i = n^v \nabla_v n^i$<br>
-$a^i = n^v \nabla_v (-\beta^i / \alpha)$<br>
-$a^i = -n^v (
-	 (\nabla_v \beta^i) / \alpha
-	+ \beta^i \nabla_v (1 / \alpha)
-)$<br>
-$a^i = -n^v (
-	 \frac{1}{\alpha} (\partial_v \beta^i + {\Gamma^i}_{vj} \beta^j)
-	- \frac{1}{\alpha^2} \beta^i \partial_v \alpha 
-)$<br>
-$a^i =
-	- \frac{1}{\alpha} (
-		 \frac{1}{\alpha} (\partial_t \beta^i + {\Gamma^i}_{tj} \beta^j)
-		- \frac{1}{\alpha^2} \beta^i \partial_v \alpha 
-	)
-	+ \frac{1}{\alpha} \beta^k (
-		 \frac{1}{\alpha} (\partial_k \beta^i + {\Gamma^i}_{kj} \beta^j)
-		- \frac{1}{\alpha^2} \beta^i \partial_v \alpha
-	)
-$<br>
-...and more...<br>
 <br>
 
-Acceleration vector in covariant components:<br>
+Acceleration vector in ADM covariant components:<br>
 $a_u = n^v \nabla_v n_u$<br>
 $a_u = n^v (\partial_v n_u - {\Gamma^a}_{vu} n_a)$<br>
 separate into timelike t and spatial ijk indexes:<br>
@@ -353,20 +331,39 @@ a_i = n^t (
 	)
 $<br>
 using $n_k = 0$<br>
+$a_t = -\frac{1}{\alpha} \partial_t \alpha
+	+ \frac{\beta^j}{\alpha} \partial_j \alpha
+	+ {\Gamma^t}_{tt} 
+	- \beta^j {\Gamma^t}_{jt}
+;
+a_i = {\Gamma^t}_{ti} 
+	- \beta^j {\Gamma^t}_{ji}
+$<br>
+Using 2008 Alcubierre appendix B's calculations of ADM connections (TODO derive these later) ... <br>
+: ${\Gamma^t}_{tt} = \frac{1}{\alpha} (\partial_t \alpha + \beta^m \partial_m \alpha - \beta^m \beta^n K_{mn})$<br>
+: ${\Gamma^t}_{ti} = \frac{1}{\alpha} (\partial_i \alpha - \beta^m K_{im})$<br>
+: ${\Gamma^t}_{ij} = -\frac{1}{\alpha} K_{ij}$<br>
+... we get:<br>
 $a_t = \frac{1}{\alpha} (
 		- \partial_t \alpha
-		+ {\Gamma^t}_{tt} \alpha
+		+ \partial_t \alpha 
+		+ \beta^m \partial_m \alpha 
+		- \beta^m \beta^n K_{mn}
 	)
 	+ \frac{\beta^j}{\alpha} (
 		\partial_j \alpha
-		- {\Gamma^t}_{jt} \alpha
-	);
-a_i = \frac{1}{\alpha} {\Gamma^t}_{ti} \alpha
-	- \frac{\beta^j}{\alpha} {\Gamma^t}_{ji} \alpha
+		- \partial_j \alpha 
+		+ \beta^m K_{jm}
+	)
+;
+a_i = \frac{1}{\alpha} (\partial_i \alpha - \beta^m K_{im})
+	- \beta^j (
+		-\frac{1}{\alpha} K_{ij}
+	)
 $<br>
-...TODO...<br>
-$a_t = \frac{1}{\alpha} \beta^j \partial_j \alpha;
-	a_i = \frac{1}{\alpha} \partial_i \alpha$<br>
+$	a_t = \frac{1}{\alpha} \beta^j \partial_j \alpha;
+	a_i = \frac{1}{\alpha} \partial_i \alpha 
+$<br>
 $a_t = \frac{1}{\alpha} (\partial_t \alpha - \partial_t \alpha + \beta^j \partial_j \alpha);
 	a_i = \frac{1}{\alpha} \partial_i \alpha$<br>
 $a_t = \frac{1}{\alpha} (\partial_t \alpha - \alpha \frac{1}{\alpha} \partial_t \alpha - \alpha (-\frac{\beta^j}{\alpha}) \partial_j \alpha);
