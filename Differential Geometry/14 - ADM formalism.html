@@ -53,8 +53,14 @@ Define our metric and inverse in terms of lapse $\alpha$, shift $\beta^i$, and s
 For this worksheet I'm putting the hypersurface normal dimension first instead of last, because I'm using the txyz ordering of coordinates.<br>
 <br>
 
-$[g_{uv}] = \overset{u(a)\downarrow v(b)\rightarrow}{\left[ \matrix{-\alpha^2 + \beta_c \beta^c & \beta_b \\ \beta_a & \gamma_{ab}} \right]}$<br>
-$[g^{uv}] = \overset{u(a)\downarrow v(b)\rightarrow}{\left[ \matrix{-1/\alpha^2 & \beta^b / \alpha^2 \\ \beta^a / \alpha^2 & \gamma^{ab} - \beta^a \beta^b / \alpha^2} \right]}$<br>
+$[g_{uv}] = \overset{u(a)\downarrow v(b)\rightarrow}{\left[ \matrix{
+	-\alpha^2 + \beta_c \beta^c & \beta_b \\
+	\beta_a & \gamma_{ab}
+} \right]}$<br>
+$[g^{uv}] = \overset{u(a)\downarrow v(b)\rightarrow}{\left[ \matrix{
+	-1/\alpha^2 & \beta^b / \alpha^2 \\
+	\beta^a / \alpha^2 & \gamma^{ab} - \beta^a \beta^b / \alpha^2
+} \right]}$<br>
 where $ \beta_b = \gamma_{ab} \beta^a = \gamma_{u b} \beta^u = g_{u b} \beta^b $ courtesy of the fact that $ g_{ab} = \gamma_{ab} $ and $ \beta^t = 0 $.<br>
 <br>
 ADM spatial metric determinant: $ \gamma = det[\gamma_{ab}] $<br>
@@ -71,7 +77,7 @@ $n_u = \overset{u(a)\rightarrow}{\left[ \matrix{ -\alpha & 0 } \right]} $<br>
 $n^u = \overset{u(a)\downarrow}{\left[ \matrix{ 1/\alpha \\ -\beta^a/\alpha } \right]} $<br>
 <br>
 normal is unit:<br>
-$n_u n^u 
+$n_u n^u
 =	\overset{u(a)\rightarrow}{\left[ \matrix{-\alpha & 0} \right]}
 	\overset{u(a)\downarrow}{\left[ \matrix{1/\alpha \\ -\beta^a/\alpha} \right]}
 = -1$<br>
@@ -157,56 +163,56 @@ $= \gamma^{im} \hat\Gamma_{mjk}$<br>
 TODO can I redo this without invoking specific indexes?<br>
 ${(\hat\Gamma^\perp)^a}_{bc} = \gamma^{ad} (\hat\Gamma^\perp)_{dbc}$<br>
 $= \gamma^{ad} \cdot \frac{1}{2} ( \partial_c \gamma_{db} + \partial_b \gamma_{dc} - \partial_d \gamma_{cb})$<br>
-$= \frac{1}{2} (g^{ad} + n^a n^d) ( 
+$= \frac{1}{2} (g^{ad} + n^a n^d) (
 	\partial_c (g_{db} + n_d n_b)
 	+ \partial_b (g_{dc} + n_d n_c)
 	- \partial_d (g_{cb} + n_c n_b)
 )$<br>
-$= 
-	\frac{1}{2} g^{ad} ( 
+$=
+	\frac{1}{2} g^{ad} (
 		  \partial_c g_{db} + \partial_c (n_d n_b)
 		+ \partial_b g_{dc} + \partial_b (n_d n_c)
 		- \partial_d g_{cb} - \partial_d (n_c n_b)
 	)
-	+ \frac{1}{2} n^a n^d ( 
+	+ \frac{1}{2} n^a n^d (
 		  \partial_c g_{db} + \partial_c (n_d n_b)
 		+ \partial_b g_{dc} + \partial_b (n_d n_c)
 		- \partial_d g_{cb} - \partial_d (n_c n_b)
 	)
 $<br>
-$= 
-	\frac{1}{2} g^{ad} ( 
-		  \partial_c g_{db} 
-		+ \partial_b g_{dc} 
-		- \partial_d g_{cb} 
+$=
+	\frac{1}{2} g^{ad} (
+		  \partial_c g_{db}
+		+ \partial_b g_{dc}
+		- \partial_d g_{cb}
 	)
-	+ \frac{1}{2} g^{ad} ( 
+	+ \frac{1}{2} g^{ad} (
 		  \partial_c (n_d n_b)
 		+ \partial_b (n_d n_c)
 		- \partial_d (n_c n_b)
 	)
-	+ \frac{1}{2} n^a n^d ( 
-		  \partial_c g_{db} 
-		+ \partial_b g_{dc} 
-		- \partial_d g_{cb} 
+	+ \frac{1}{2} n^a n^d (
+		  \partial_c g_{db}
+		+ \partial_b g_{dc}
+		- \partial_d g_{cb}
 	)
-	+ \frac{1}{2} n^a n^d ( 
+	+ \frac{1}{2} n^a n^d (
 		  \partial_c (n_d n_b)
 		+ \partial_b (n_d n_c)
 		- \partial_d (n_c n_b)
 	)
 $<br>
-$= 
+$=
 	{\hat\Gamma^a}_{bc}
-	+ \frac{1}{2} ( 
+	+ \frac{1}{2} (
 		  g^{ad} \partial_c (n_d n_b)
 		+ g^{ad} \partial_b (n_d n_c)
 		- g^{ad} \partial_d (n_c n_b)
 	)
 	+ \frac{1}{2} n^a n^d (
-		  \partial_c g_{db} 
-		+ \partial_b g_{dc} 
-		- \partial_d g_{cb} 
+		  \partial_c g_{db}
+		+ \partial_b g_{dc}
+		- \partial_d g_{cb}
 		+ \partial_c (n_d n_b)
 		+ \partial_b (n_d n_c)
 		- \partial_d (n_c n_b)
@@ -266,9 +272,9 @@ Want to redefine it for a nonzero torsion curvature tensor?<br>
 <br>
 
 Riemann curvature of projected covariant derivative connection:<br>
-${(R^\perp)^c}_{dab} = 
-	2 e_{[a} ({(\Gamma^\perp)^c}_{b]d}) 
-	+ 2 {(\Gamma^\perp)^c}_{[a|u} {(\Gamma^\perp)^u}_{b]d} 
+${(R^\perp)^c}_{dab} =
+	2 e_{[a} ({(\Gamma^\perp)^c}_{b]d})
+	+ 2 {(\Gamma^\perp)^c}_{[a|u} {(\Gamma^\perp)^u}_{b]d}
 	- {(\Gamma^\perp)^c}_{ud} {(c^\perp)_{ab}}^u
 $<br>
 ${(R^\perp)^c}_{dba} v_c = 2 \nabla^\perp_{[a} \nabla^\perp_{b]} v_d + {(T^\perp)^u}_{ab} \nabla^\perp_u v^c$<br>
@@ -280,9 +286,9 @@ From here on, $\nabla$ will only refer to the Levi-Civita connection.<br>
 
 extrinsic curvature components, in ADM metric:<br>
 $ K_{ab} = -{\gamma_a}^c \nabla_c n_d {\gamma_b}^d $<br>
-$ [K_{ab}] = 
+$ [K_{ab}] =
 	-\overset{a(i)\downarrow c(k)\rightarrow}{\left[ \matrix{ 0 & \beta^k \\ 0 & \delta_i^k } \right]}
-	\left( 
+	\left(
 		\overset{ c(k) \downarrow d(l) \rightarrow}{\left[ \matrix{ e_t (n_t) & 0 \\ e_k (n_t) & 0 } \right]}
 		- \overset{ c(k) \downarrow d(l) \rightarrow}{\left[ \matrix{ {\Gamma^t}_{tt} & {\Gamma^t}_{tl} \\ {\Gamma^t}_{kt} & {\Gamma^t}_{kl} } \right]} n_t
 	\right)
@@ -301,6 +307,445 @@ So $K_{[ij]} = 0$<br>
 And $K_{ij} = K_{(ij)}$<br>
 <br>
 
+
+
+Metric in terms of ADM components (again):<br>
+$g_{tt} = -\alpha^2 + \beta^i \beta^j \gamma_{ij}$<br>
+$g_{ti} = \beta^k \gamma_{ik}$<br>
+$g_{ij} = \gamma_{ij}$<br>
+<br>
+
+Metric inverse in terms of ADM components (again):<br>
+$g^{tt} = -\frac{1}{\alpha^2}$<br>
+$g^{ti} = \frac{1}{\alpha^2} \beta^i$<br>
+$g^{ij} = \gamma^{ij} - \frac{1}{\alpha^2} \beta^i \beta^j$<br>
+<br>
+
+Metric partial in terms of ADM components:<br>
+$g_{tt,u} = -2 \alpha \alpha_{,u} + 2 \beta_l {\beta^l}_{,u} + \beta^l \beta^m \gamma_{lm,u}$<br>
+$g_{ti,u} = {\beta^l}_{,u} \gamma_{li} + \beta^l \gamma_{li,u}$<br>
+$g_{ij,u} = \gamma_{ij,u}$<br>
+<br>
+
+Lower connection in terms of ADM metric components:<br>
+${\Gamma}_{ttt}
+	= \frac{1}{2} g_{tt,t}
+	= -\alpha \alpha_{,t} + \beta_l {\beta^l}_{,t} + \frac{1}{2} \beta^l \beta^m \gamma_{lm,t}
+$<br>
+${\Gamma}_{tti}
+	= {\Gamma}_{tit} = \frac{1}{2} g_{tt,i}
+	= 	-\alpha \alpha_{,i}
+		+ \beta_l {\beta^l}_{,i}
+		+ \frac{1}{2} \beta^l \beta^m \gamma_{lm,i}
+$<br>
+${\Gamma}_{tij}
+	= \frac{1}{2} (g_{ti,j} + g_{tj,i} - g_{ij,t})
+	= \frac{1}{2} (
+		{\beta^l}_{,j} \gamma_{li} + \beta^l \gamma_{li,j}
+		+ {\beta^l}_{,i} \gamma_{lj} + \beta^l \gamma_{lj,i}
+		- \gamma_{ij,t}
+	)
+$<br>
+${\Gamma}_{ktt}
+	= g_{tk,t} - \frac{1}{2} g_{tt,k}
+	= 	{\beta^l}_{,t} \gamma_{lk}
+		+ \beta^l \gamma_{lk,t}
+		+ \alpha \alpha_{,k}
+		- \beta_l {\beta^l}_{,k}
+		- \frac{1}{2} \beta^l \beta^m \gamma_{lm,k}
+$<br>
+${\Gamma}_{kti} = {\Gamma}_{kit}
+	= \frac{1}{2} (g_{tk,i} + g_{ki,t} - g_{ti,k})
+	= \frac{1}{2} (
+		{\beta^l}_{,i} \gamma_{lk} + \beta^l \gamma_{lk,i}
+		+ \gamma_{ki,t}
+		- {\beta^l}_{,k} \gamma_{li} - \beta^l \gamma_{li,k}
+	)
+$<br>
+${\Gamma}_{kij}
+	= \frac{1}{2} (g_{ki,j} + g_{kj,i} - g_{ij,k})
+	= \frac{1}{2} (\gamma_{ki,j} + \gamma_{kj,i} - \gamma_{ij,k})
+$<br>
+<br>
+
+Upper connection in terms of ADM meric components:<br>
+${\Gamma^t}_{tt}
+	= g^{tt} \Gamma_{ttt} + g^{tn} \Gamma_{ntt}
+	= 	-\frac{1}{\alpha^2} \cdot (
+			- \alpha \alpha_{,t}
+			+ \beta_l {\beta^l}_{,t}
+			+ \frac{1}{2} \beta^l \beta^m \gamma_{lm,t}
+		)
+		+ \frac{1}{\alpha^2} \beta^n \cdot (
+			{\beta^l}_{,t} \gamma_{ln}
+			+ \beta^l \gamma_{ln,t}
+			+ \alpha \alpha_{,n}
+			- \beta_l {\beta^l}_{,n}
+			- \frac{1}{2} \beta^l \beta^m \gamma_{lm,n}
+		)
+$<br>
+$	= 	\frac{1}{\alpha^2} (
+			  \alpha \alpha_{,t}
+			+ \frac{1}{2} \beta^l \beta^m \gamma_{lm,t}
+			+ \alpha \beta^l \alpha_{,l}
+			- \beta_l \beta^m {\beta^l}_{,m}
+			- \frac{1}{2} \beta^l \beta^m \beta^n \gamma_{lm,n}
+		)
+$<br>
+${\Gamma^t}_{ti} = {\Gamma^t}_{it}
+	= g^{tt} \Gamma_{tti} + g^{tn} \Gamma_{nti}
+	= -\frac{1}{\alpha^2} \cdot (
+			- \alpha \alpha_{,i}
+			+ \beta_l {\beta^l}_{,i}
+			+ \frac{1}{2} \beta^l \beta^m \gamma_{lm,i}
+		)
+		+ \frac{1}{\alpha^2} \beta^n \cdot \frac{1}{2} (
+			{\beta^l}_{,i} \gamma_{ln}
+			+ \beta^l \gamma_{ln,i}
+			+ \gamma_{ni,t}
+			- {\beta^l}_{,n} \gamma_{li}
+			- \beta^l \gamma_{li,n}
+		)
+$<br>
+$ 	= 	\frac{1}{\alpha^2} (
+			\frac{1}{2} \beta^n \gamma_{ni,t}
+			+ \alpha \alpha_{,i}
+			- \frac{1}{2} \beta_l {\beta^l}_{,i}
+			- \frac{1}{2} \beta^m {\beta^l}_{,m} \gamma_{li}
+			- \frac{1}{2} \beta^l \beta^m \gamma_{li,m}
+		)
+$<br>
+${\Gamma^t}_{ij}
+	= g^{tt} \Gamma_{tij} + g^{tn} \Gamma_{nij}
+	= -\frac{1}{\alpha^2} \cdot \frac{1}{2} (
+			{\beta^l}_{,j} \gamma_{li}
+			+ \beta^l \gamma_{li,j}
+			+ {\beta^l}_{,i} \gamma_{lj}
+			+ \beta^l \gamma_{lj,i}
+			- \gamma_{ij,t}
+		)
+		+ \frac{1}{\alpha^2} \beta^n \cdot \frac{1}{2} (
+			\gamma_{ni,j}
+			+ \gamma_{nj,i}
+			- \gamma_{ij,n}
+		)
+$<br>
+$		= \frac{1}{\alpha^2} (
+			\frac{1}{2} \gamma_{ij,t}
+			- \frac{1}{2} {\beta^l}_{,j} \gamma_{li}
+			- \frac{1}{2} {\beta^l}_{,i} \gamma_{lj}
+			- \frac{1}{2} \beta^l \gamma_{ij,l}
+		)
+$<br>
+${\Gamma^k}_{tt}
+	= g^{kt} \Gamma_{ttt} + g^{kn} \Gamma_{ntt}
+	=  \frac{1}{\alpha^2} \beta^k \cdot (
+			-\alpha \alpha_{,t}
+			+ \beta_l {\beta^l}_{,t}
+			+ \frac{1}{2} \beta^l \beta^m \gamma_{lm,t}
+		)
+		+ (
+			\gamma^{kn}
+			- \frac{1}{\alpha^2} \beta^k \beta^n
+		) \cdot (
+			{\beta^l}_{,t} \gamma_{ln}
+			+ \beta^l \gamma_{ln,t}
+			+ \alpha \alpha_{,n}
+			- \beta_l {\beta^l}_{,n}
+			- \frac{1}{2} \beta^l \beta^m \gamma_{lm,n}
+		)
+$<br>
+$	=  \frac{1}{\alpha^2} (
+			- \beta^k \alpha \alpha_{,t}
+			- \frac{1}{2} \beta^k \beta^l \beta^m \gamma_{lm,t}
+			- \alpha \beta^k \beta^l \alpha_{,l}
+			+ \beta^k \beta^m \beta_l {\beta^l}_{,m}
+			+ \frac{1}{2} \beta^k \beta^l \beta^m \beta^n \gamma_{lm,n}
+		)
+		+ {\beta^k}_{,t}
+		+ \beta^l \gamma^{km} \gamma_{lm,t}
+		+ \alpha \gamma^{km} \alpha_{,m}
+		- \beta_l \gamma^{km} {\beta^l}_{,m}
+		- \frac{1}{2} \beta^l \beta^n \gamma^{km} \gamma_{ln,m}
+$<br>
+${\Gamma^k}_{ti} = {\Gamma^k}_{it}
+	= g^{kt} \Gamma_{tti} + g^{kn} \Gamma_{nti}
+	=  \frac{1}{\alpha^2} \beta^k \cdot (
+			-\alpha \alpha_{,i}
+			+ \beta_l {\beta^l}_{,i}
+			+ \frac{1}{2} \beta^l \beta^m \gamma_{lm,i}
+		)
+		+ (
+			\gamma^{kn}
+			- \frac{1}{\alpha^2} \beta^k \beta^n
+		) \cdot \frac{1}{2} (
+			{\beta^l}_{,i} \gamma_{ln}
+			+ \beta^l \gamma_{ln,i}
+			+ \gamma_{ni,t}
+			- {\beta^l}_{,n} \gamma_{li}
+			- \beta^l \gamma_{li,n}
+		)
+$<br>
+$		=  \frac{1}{\alpha^2} (
+			- \frac{1}{2} \beta^k \beta^l \gamma_{li,t}
+			- \beta^k \alpha \alpha_{,i}
+			+ \beta^k \beta_l {\beta^l}_{,i}
+			- \frac{1}{2} \beta^k \beta^m {\beta^l}_{,i} \gamma_{lm}
+			+ \frac{1}{2} \beta^k \beta^m {\beta^l}_{,m} \gamma_{li}
+			+ \frac{1}{2} \beta^k \beta^m \beta^l \gamma_{li,m}
+		)
+		+ \frac{1}{2} \gamma^{kl} \gamma_{li,t}
+		+ \frac{1}{2} {\beta^k}_{,i}
+		- \frac{1}{2} \gamma^{km} {\beta^l}_{,m} \gamma_{li}
+		+ \frac{1}{2} \gamma^{km} \beta^l \gamma_{lm,i}
+		- \frac{1}{2} \gamma^{km} \beta^l \gamma_{li,m}
+$<br>
+${\Gamma^k}_{ij}
+	= g^{kt} \Gamma_{tij} + g^{kn} \Gamma_{nij}
+	=  \frac{1}{\alpha^2} \beta^k \cdot \frac{1}{2} (
+			{\beta^l}_{,j} \gamma_{li}
+			+ \beta^l \gamma_{li,j}
+			+ {\beta^l}_{,i} \gamma_{lj}
+			+ \beta^l \gamma_{lj,i}
+			- \gamma_{ij,t}
+		)
+		+ (
+			\gamma^{kn}
+			- \frac{1}{\alpha^2} \beta^k \beta^n
+		) \cdot \frac{1}{2} (
+			\gamma_{ni,j}
+			+ \gamma_{nj,i}
+			- \gamma_{ij,n}
+		)
+$<br>
+$	=  \frac{1}{2} \frac{1}{\alpha^2} \beta^k (
+			- \gamma_{ij,t}
+			+ \gamma_{li} {\beta^l}_{,j}
+			+ \gamma_{lj} {\beta^l}_{,i}
+			+ \beta^l \gamma_{ij,l}
+		)
+		+ \frac{1}{2} \gamma^{kl} (
+			\gamma_{li,j}
+			+ \gamma_{lj,i}
+			- \gamma_{ij,l}
+		)
+$<br>
+<br>
+
+Start with $K_{ij} = -\alpha {\Gamma^t}_{ij}$, substitute the definition of ${\Gamma^t}_{ij}$ in terms of $\alpha, \beta^i, \gamma_{ij}$:<br>
+$K_{ij} = -\alpha \cdot \frac{1}{\alpha^2} (
+	\frac{1}{2} \gamma_{ij,t}
+	- \frac{1}{2} {\beta^l}_{,j} \gamma_{li}
+	- \frac{1}{2} {\beta^l}_{,i} \gamma_{lj}
+	- \frac{1}{2} \beta^l \gamma_{ij,l}
+)$<br>
+$K_{ij} = \frac{1}{2 \alpha} (
+	-\gamma_{ij,t}
+	+ {\beta^l}_{,j} \gamma_{li}
+	+ {\beta^l}_{,i} \gamma_{lj}
+	+ \beta^l \gamma_{ij,l}
+)$<br>
+
+solve for $\gamma_{ij,t}$:<br>
+$	\gamma_{ij,t}
+	=
+	-2 \alpha K_{ij}
+	+ {\beta^l}_{,j} \gamma_{li}
+	+ {\beta^l}_{,i} \gamma_{lj}
+	+ \beta^l \gamma_{ij,l}
+$<br>
+Viola.  Coordinate-aligned initial-value formulation of $\gamma_{ij}$.<br>
+<br>
+
+Now with this definition of $K_{ij}$ in terms of $\gamma_{ij,t}$, substitute it back into our ${\Gamma^a}_{bc}$ definition:<br>
+${\Gamma^t}_{tt} = \frac{1}{\alpha^2} (
+	  \alpha \alpha_{,t}
+	+ \alpha \beta^l \alpha_{,l}
+	- \beta_l \beta^m {\beta^l}_{,m}
+	- \frac{1}{2} \beta^l \beta^m \beta^n \gamma_{lm,n}
+	+ \frac{1}{2} \beta^l \beta^m (
+		-2 \alpha K_{lm}
+		+ {\beta^n}_{,m} \gamma_{nl}
+		+ {\beta^n}_{,l} \gamma_{nm}
+		+ \beta^n \gamma_{lm,n}
+	)
+)
+$<br>
+$= \frac{1}{\alpha} (
+	  \alpha_{,t}
+	+ \beta^l \alpha_{,l}
+	- \beta^l \beta^m K_{lm}
+)
+$ (2008 Alcubierre, eqn. B.7)<br>
+${\Gamma^t}_{ti} = \frac{1}{\alpha^2} (
+	\frac{1}{2} \beta^n (
+		-2 \alpha K_{in}
+		+ {\beta^l}_{,n} \gamma_{li}
+		+ {\beta^l}_{,i} \gamma_{ln}
+		+ \beta^l \gamma_{in,l}
+	)
+	+ \alpha \alpha_{,i}
+	- \frac{1}{2} \beta_l {\beta^l}_{,i}
+	- \frac{1}{2} \beta^m {\beta^l}_{,m} \gamma_{li}
+	- \frac{1}{2} \beta^l \beta^m \gamma_{li,m}
+)
+$<br>
+$= \frac{1}{\alpha} (
+	\alpha_{,i}
+	- \beta^l K_{il}
+)
+$ (2008 Alcubierre, eqn. B.8)<br>
+${\Gamma^t}_{ij} = \frac{1}{\alpha^2} (
+	\frac{1}{2} (
+		-2 \alpha K_{ij}
+		+ {\beta^l}_{,j} \gamma_{li}
+		+ {\beta^l}_{,i} \gamma_{lj}
+		+ \beta^l \gamma_{ij,l}
+	)
+	- \frac{1}{2} {\beta^l}_{,j} \gamma_{li}
+	- \frac{1}{2} {\beta^l}_{,i} \gamma_{lj}
+	- \frac{1}{2} \beta^l \gamma_{ij,l}
+)
+$<br>
+$ = -\frac{1}{\alpha} K_{ij}$ (2008 Alcubierre, eqn. B.9)<br>
+${\Gamma^k}_{tt} = \frac{1}{\alpha^2} (
+		- \beta^k \alpha \alpha_{,t}
+		- \frac{1}{2} \beta^k \beta^l \beta^m (
+			-2 \alpha K_{lm}
+			+ {\beta^n}_{,m} \gamma_{nl}
+			+ {\beta^n}_{,l} \gamma_{nm}
+			+ \beta^n \gamma_{lm,n}
+		)
+		- \alpha \beta^k \beta^l \alpha_{,l}
+		+ \beta^k \beta^m \beta_l {\beta^l}_{,m}
+		+ \frac{1}{2} \beta^k \beta^l \beta^m \beta^n \gamma_{lm,n}
+	)
+	+ {\beta^k}_{,t}
+	+ \beta^l \gamma^{km} (
+			-2 \alpha K_{lm}
+			+ {\beta^n}_{,m} \gamma_{nl}
+			+ {\beta^n}_{,l} \gamma_{nm}
+			+ \beta^n \gamma_{lm,n}
+		)
+	+ \alpha \gamma^{km} \alpha_{,m}
+	- \beta_l \gamma^{km} {\beta^l}_{,m}
+	- \frac{1}{2} \beta^l \beta^n \gamma^{km} \gamma_{ln,m}
+$<br>
+$ = \frac{1}{\alpha} \beta^k (
+		- \alpha_{,t}
+		- \beta^l \alpha_{,l}
+		+ \beta^l \beta^m K_{lm}
+	)
+	+ {\beta^k}_{,t}
+	- 2 \alpha \beta^l {K_l}^k
+	+ \alpha \gamma^{km} \alpha_{,m}
+	
+	+ \beta^l {\beta^k}_{,l}
+	+ \beta^l \beta^n \gamma^{km} \gamma_{lm,n}
+	- \frac{1}{2} \beta^l \beta^n \gamma^{km} \gamma_{ln,m}
+$<br>
+$ = \frac{1}{\alpha} \beta^k (
+		- \alpha_{,t}
+		- \beta^l \alpha_{,l}
+		+ \beta^l \beta^m K_{lm}
+	)
+	+ {\beta^k}_{,t}
+	- 2 \alpha \beta^l {K_l}^k
+	+ \alpha \gamma^{km} \alpha_{,m}
+	
+	+ \beta^l ({\beta^k}_{,l} + \beta^m {(\Gamma^\perp)^k}_{lm})
+$<br>
+$ = \frac{1}{\alpha} \beta^k (
+		- \alpha_{,t}
+		- \beta^l \alpha_{,l}
+		+ \beta^l \beta^m K_{lm}
+	)
+	+ {\beta^k}_{,t}
+	- 2 \alpha \beta^l {K_l}^k
+	+ \alpha \gamma^{km} \alpha_{,m}
+	
+	+ \beta^l \nabla^\perp_l \beta^k
+$ (2008 Alcubierre, eqn. B.10)<br>
+${\Gamma^k}_{ti} = \frac{1}{\alpha^2} (
+		- \frac{1}{2} \beta^k \beta^l (
+			-2 \alpha K_{il}
+			+ {\beta^m}_{,l} \gamma_{mi}
+			+ {\beta^m}_{,i} \gamma_{ml}
+			+ \beta^m \gamma_{il,m}
+		)
+		- \beta^k \alpha \alpha_{,i}
+		+ \beta^k \beta_l {\beta^l}_{,i}
+		- \frac{1}{2} \beta^k \beta^m {\beta^l}_{,i} \gamma_{lm}
+		+ \frac{1}{2} \beta^k \beta^m {\beta^l}_{,m} \gamma_{li}
+		+ \frac{1}{2} \beta^k \beta^m \beta^l \gamma_{li,m}
+	)
+	+ \frac{1}{2} \gamma^{kl} (
+			-2 \alpha K_{il}
+			+ {\beta^m}_{,l} \gamma_{mi}
+			+ {\beta^m}_{,i} \gamma_{ml}
+			+ \beta^m \gamma_{il,m}
+		)
+	+ \frac{1}{2} {\beta^k}_{,i}
+	- \frac{1}{2} \gamma^{km} {\beta^l}_{,m} \gamma_{li}
+	+ \frac{1}{2} \gamma^{km} \beta^l \gamma_{lm,i}
+	- \frac{1}{2} \gamma^{km} \beta^l \gamma_{li,m}
+$<br>
+$ = \frac{1}{\alpha} \beta^k (
+		- \alpha_{,i}
+		+ \beta^l K_{il}
+	)
+	- \alpha {K_i}^k
+	+ {\beta^k}_{,i}
+	+ \frac{1}{2} \gamma^{km} \beta^l (
+		\gamma_{lm,i}
+		+ \gamma_{im,l}
+		- \gamma_{il,m}
+	)
+$<br>
+$ = \frac{1}{\alpha} \beta^k (
+		- \alpha_{,i}
+		+ \beta^l K_{il}
+	)
+	- \alpha {K_i}^k
+	+ {\beta^k}_{,i}
+	+ {(\Gamma^\perp)^k}_{li} \beta^l
+$<br>
+$ = \frac{1}{\alpha} \beta^k (
+		- \alpha_{,i}
+		+ \beta^l K_{il}
+	)
+	- \alpha {K_i}^k
+	+ \nabla^\perp_i \beta^k
+$ (2008 Alcubierre, eqn. B.11)<br>
+${\Gamma^k}_{ij} = \frac{1}{2} \frac{1}{\alpha^2} \beta^k (
+		- (
+			-2 \alpha K_{ij}
+			+ {\beta^l}_{,j} \gamma_{li}
+			+ {\beta^l}_{,i} \gamma_{lj}
+			+ \beta^l \gamma_{ij,l}
+		)
+		+ \gamma_{li} {\beta^l}_{,j}
+		+ \gamma_{lj} {\beta^l}_{,i}
+		+ \beta^l \gamma_{ij,l}
+	)
+	+ \frac{1}{2} \gamma^{kl} (
+		\gamma_{li,j}
+		+ \gamma_{lj,i}
+		- \gamma_{ij,l}
+	)
+$<br>
+$ = \frac{1}{\alpha} \beta^k K_{ij}
+	+ \frac{1}{2} \gamma^{kl} (
+		\gamma_{li,j}
+		+ \gamma_{lj,i}
+		- \gamma_{ij,l}
+	)
+$<br>
+$ = \frac{1}{\alpha} \beta^k K_{ij}
+	+ {(\Gamma^\perp)^k}_{ij}
+$ (2008 Alcubierre, eqn. B.12)<br>
+<br>
+
 Acceleration vector:<br>
 $a_u = n^v \nabla_v n_u$<br>
 <br>
@@ -310,22 +755,22 @@ $a_u = n^v \nabla_v n_u$<br>
 $a_u = n^v (\partial_v n_u - {\Gamma^a}_{vu} n_a)$<br>
 separate into timelike t and spatial ijk indexes:<br>
 $a_t = n^t (
-		\partial_t n_t 
+		\partial_t n_t
 		- {\Gamma^t}_{tt} n_t
 		- {\Gamma^k}_{tt} n_k
 	)
 	+ n^j (
-		\partial_j n_t 
+		\partial_j n_t
 		- {\Gamma^t}_{jt} n_t
 		- {\Gamma^k}_{jt} n_k
 	);
 a_i = n^t (
-		\partial_t n_i 
+		\partial_t n_i
 		- {\Gamma^t}_{ti} n_t
 		- {\Gamma^k}_{ti} n_k
 	)
 	+ n^j (
-		\partial_j n_i 
+		\partial_j n_i
 		- {\Gamma^t}_{ji} n_t
 		- {\Gamma^k}_{ji} n_k
 	)
@@ -333,26 +778,26 @@ $<br>
 using $n_k = 0$<br>
 $a_t = -\frac{1}{\alpha} \partial_t \alpha
 	+ \frac{\beta^j}{\alpha} \partial_j \alpha
-	+ {\Gamma^t}_{tt} 
+	+ {\Gamma^t}_{tt}
 	- \beta^j {\Gamma^t}_{jt}
 ;
-a_i = {\Gamma^t}_{ti} 
+a_i = {\Gamma^t}_{ti}
 	- \beta^j {\Gamma^t}_{ji}
 $<br>
-Using 2008 Alcubierre appendix B's calculations of ADM connections (TODO derive these later) ... <br>
+Using our component calculations of the ADM connections ... <br>
 : ${\Gamma^t}_{tt} = \frac{1}{\alpha} (\partial_t \alpha + \beta^m \partial_m \alpha - \beta^m \beta^n K_{mn})$<br>
 : ${\Gamma^t}_{ti} = \frac{1}{\alpha} (\partial_i \alpha - \beta^m K_{im})$<br>
 : ${\Gamma^t}_{ij} = -\frac{1}{\alpha} K_{ij}$<br>
 ... we get:<br>
 $a_t = \frac{1}{\alpha} (
 		- \partial_t \alpha
-		+ \partial_t \alpha 
-		+ \beta^m \partial_m \alpha 
+		+ \partial_t \alpha
+		+ \beta^m \partial_m \alpha
 		- \beta^m \beta^n K_{mn}
 	)
 	+ \frac{\beta^j}{\alpha} (
 		\partial_j \alpha
-		- \partial_j \alpha 
+		- \partial_j \alpha
 		+ \beta^m K_{jm}
 	)
 ;
@@ -362,7 +807,7 @@ a_i = \frac{1}{\alpha} (\partial_i \alpha - \beta^m K_{im})
 	)
 $<br>
 $	a_t = \frac{1}{\alpha} \beta^j \partial_j \alpha;
-	a_i = \frac{1}{\alpha} \partial_i \alpha 
+	a_i = \frac{1}{\alpha} \partial_i \alpha
 $<br>
 $a_t = \frac{1}{\alpha} (\partial_t \alpha - \partial_t \alpha + \beta^j \partial_j \alpha);
 	a_i = \frac{1}{\alpha} \partial_i \alpha$<br>
@@ -390,7 +835,7 @@ From here, lots of numerical relativity papers will use the definition $\frac{d}
 <br>
 
 Time derivative of spatial metric:<br>
-$ \mathcal{L}_{\vec{n}} \gamma_{ab} 
+$ \mathcal{L}_{\vec{n}} \gamma_{ab}
 	= -2 K_{ab}
 	= \frac{1}{\alpha} (\mathcal{L}_\vec{t} - \mathcal{L}_\vec\beta) \gamma_{ab}
 $<br>
@@ -401,7 +846,7 @@ $\partial_t \gamma_{ab} = -2 \alpha K_{ab}
 	+ \gamma_{cb} \partial_a \beta^c
 	+ \gamma_{ac} \partial_b \beta^c
 $<br>
-using $\mathcal{L}_\vec\beta \gamma_{ab} 
+using $\mathcal{L}_\vec\beta \gamma_{ab}
 	= \beta^c \partial_c \gamma_{ab} + \gamma_{cb} \partial_a \beta^c + \gamma_{ac} \partial_b \beta^c
 	= \beta^c \nabla^\perp_c \gamma_{ab} + \gamma_{cb} \nabla^\perp_a \beta^c + \gamma_{ac} \nabla^\perp_b \beta^c
 $ and $\nabla^\perp_c \gamma_{ab} = 0$<br>
