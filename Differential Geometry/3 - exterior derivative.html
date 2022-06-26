@@ -8,45 +8,139 @@
     <body>
 <a href='.'>Back</a><br><br>
 
+Reminder: different representations of a p-form:<br>
+$w$<br>
+$= w_{|a_1 ... a_p|} dx^{|a_1} \wedge ... \wedge dx^{a_p|}$<br>
+$= \frac{1}{p!} w_{a_1 ... a_p} dx^{a_1} \wedge ... \wedge dx^{a_p}$<br>
+$= \frac{1}{p!} w_{[a_1 ... a_p]} dx^{[a_1} \wedge ... \wedge dx^{a_p]}$<br>
+$= w_{[a_1 ... a_p]} dx^{[a_1} \otimes ... \otimes dx^{a_p]}$<br>
+<br>
+
+
 <hr>
-<b>Exterior derivative</b><br>
+<b>Exterior derivative in a coordinate basis</b><br>
 <br>
 
-Exterior derivative: $d = e^a \wedge e_a(...)$<br>
-$d ( {T^{a_1 ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q} )$<br>
-$= e_a ( {T^{a_1 ... a_p}}_{b_1 ... b_q} ) e^a \wedge (e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q})$<br>
-TODO what about subsequent applications to $d e^{a_i}$ and $d e_{b_j}$?<br>
+Rule of exterior derivative: $d(dx^a) = d^2 x^a = 0$<br>
 <br>
 
-For coordinate basis: $d(dx^a) = 0$<br>
+Exterior derivative in a coordinate basis:<br>
+$d = dx^a \wedge \partial_a(...)$<br>
 <br>
 
 Exterior derivative of a scalar:<br>
-$d (\phi) = e_a (\phi) e^a$<br>
+$d (\phi) = \partial_a (\phi) dx^a$<br>
 <br>
 
 Exterior derivative of one-form in a coordinate basis:<br>
 $dw = d(w_b {dx}^b)$<br>
-$	= dw_b \wedge {dx}^b + w_b d^2{x}^b$<br>
-$	= dw_b \wedge {dx}^b$<br>
-$	= \partial_a w_b {dx}^a \wedge {dx}^b$<br>
-$	= (\partial_a w_b - \partial_b w_a) {dx}^{|a} \wedge {dx}^{b|}$<br>
+$= dw_b \wedge {dx}^b + w_b d^2{x}^b$<br>
+using $d^2 x^a = 0$<br>
+$= dw_b \wedge {dx}^b$<br>
+$= \partial_a w_b {dx}^a \wedge {dx}^b$<br>
+$= (\partial_a w_b - \partial_b w_a) {dx}^{|a} \wedge {dx}^{b|}$<br>
 <br>
 
-$d T = (d T)_{i_1 ... i_{p+1}} e^{i_1} \otimes ... \otimes e^{i_{p+1}}$<br>
-$= e_{j_1} (T_{j_2 ... j_{p+1}}) \delta^{j_1 ... j_{p+1}}_{i_1 ... i_{p+1}} e^{i_1} \otimes ... \otimes e^{i_{p+1}}$<br>
-$= (p+1)! \cdot e_{[i_1} ( T_{i_2 ... i_{p+1}]} ) e^{i_1} \otimes ... \otimes e^{i_{p+1}}$<br>
-$= e_{i_1} ( T_{i_2 ... i_{p+1}} ) e^{i_1} \wedge ... \wedge e^{i_{p+1}}$<br>
-$= e^{i_1} \wedge e_{i_1} ( T_{i_2 ... i_{p+1}} ) e^{i_2} \wedge ... \wedge e^{i_{p+1}})$<br>
-$= e^a \wedge e_a (T)$<br>
-TODO again ... $e_a (T) = e_a (T_{i_1 ... i_p} e^1 \otimes ... \otimes e^p)$ ... $ = e_a (T_{i_1 ... i_p}) e^1 \otimes ... \otimes e^p$.<br>
+Exterior derivative of a p-form:<br>
+$d w$<br>
+$= d (w_{|a_1 ... a_p|} dx^{|a_1} \wedge ... \wedge dx^{a_p|})$<br>
+$= \frac{1}{p!} d (w_{a_1 ... a_p} dx^{a_1} \wedge ... \wedge dx^{a_p})$<br>
+$= \frac{1}{p!} (
+	(d w_{a_1 ... a_p}) dx^{a_1} \wedge ... \wedge dx^{a_p}
+	+ (-1)^{k-1} w_{a_1 ... a_p} dx^{a_1} \wedge ... \wedge d^2x^{a_k} \wedge ... \wedge dx^{a_p}
+)$<br>
+using $d^2 x^a = 0$<br>
+$= \frac{1}{p!} (d w_{a_1 ... a_p}) dx^{a_1} \wedge ... \wedge dx^{a_p}$<br>
+using exterior derivative of a scalar:<br>
+$= \frac{1}{p!} \partial_b w_{a_1 ... a_p} dx^b \wedge dx^{a_1} \wedge ... \wedge dx^{a_p}$<br>
+$= \frac{(p+1)!}{p!} \partial_{|b} w_{a_1 ... a_p|} dx^{|b} \wedge dx^{a_1} \wedge ... \wedge dx^{a_p|}$<br>
+$= p \partial_{|b} w_{a_1 ... a_p|} dx^{|b} \wedge dx^{a_1} \wedge ... \wedge dx^{a_p|}$<br>
+... a better looking result would be:<br>
+$= \partial_b w_{|a_1 ... a_p|} dx^b \wedge dx^{|a_1} \wedge ... \wedge dx^{a_p|}$<br>
+<br>
+
+NOTICE this definition is a bit circular, it uses the definition of $d (a \wedge b)$ for p-forms a and b to define $da$.
+Equivalently the definition of $da$ is used to prove $d (a \wedge b)$.
+This circular reference can be ignored because we are assuming there is some linearity involved in applying the exterior derivative to wedges of the 0-form coefficients and the 1-form basis that is wedged together to form the p-form basis.
+From there, we are applying the exterior derivative to each of the one-form basis and using $d^2 x^a = 0$ to eliminate all these terms, so any coefficient in front of the (which happens to be $(-1)^{p-1}$ is irrelevant.
+<br>
+<br>
+
+Exterior derivative of a (p q) tensor:<br>
+$d ( {T^{a_1 ... a_p}}_{b_1 ... b_q} \partial_{a_1} \otimes ... \otimes \partial_{a_p} \otimes dx^{b_1} \otimes ... \otimes dx^{b_q} )$<br>
+$= \partial_a ( {T^{a_1 ... a_p}}_{b_1 ... b_q} ) dx^a \wedge (\partial_{a_1} \otimes ... \otimes \partial_{a_p} \otimes dx^{b_1} \otimes ... \otimes dx^{b_q})$<br>
+<br>
+
+TODO what is the wedge of a vector basis and a one-form basis element?  Leaning towards it being an outer product.  Especially since the wedge of a vector and a vector is symmetric.  The wedge of a form and a form is symmetric.  And the exterior derivative of the vector basis 0-form is defined as the connection, so as to not introduce unnecessary symmetries (a 0-form wedge is symmetric) or antisymmetries (if we define the wedge of a vector and a form to be symmetric, as the vector-and-vector and form-and-form are), all that's left is defining it to be the outer product.<br>
+<br>
+
+Exterior derivative of wedge product of p-form $a$ and q-form $b$:<br>
+$d( a \wedge b ) $<br>
+expand both:<br>
+$ = d ( a_{i_1... i_p} dx^{i_1} \wedge ... \wedge dx^{i_p} \wedge b_{j_1 ... j_q} dx^{j_1} \wedge ... \wedge dx^{j_q})$<br>
+move coefficients to the left<br>
+$ = d ( a_{i_1... i_p} b_{j_1 ... j_q} dx^{i_1} \wedge ... \wedge dx^{i_p} \wedge dx^{j_1} \wedge ... \wedge dx^{j_q})$<br>
+distribute exterior derivative through coefficients and through the form basis (is this using this definition to prove this definition?):<br>
+$ = d ( a_{i_1... i_p} b_{j_1 ... j_q}) \wedge dx^{i_1} \wedge ... \wedge dx^{i_p} \wedge dx^{j_1} \wedge ... \wedge dx^{j_q}
+	+ (-1)^{k-1} a_{i_1... i_p} b_{j_1 ... j_q} dx^{i_1} \wedge ... \wedge ddx^{i_k} \wedge ... \wedge dx^{i_p} \wedge dx^{j_1} \wedge ... \wedge dx^{j_q}
+	+ (-1)^{p+l-1} a_{i_1... i_p} b_{j_1 ... j_q} dx^{i_1} \wedge ... \wedge dx^{i_p} \wedge dx^{j_1} \wedge ... \wedge ddx^{j_l} \wedge ... \wedge dx^{j_q}$<br>
+substitute $d^2 x^a = 0$, substitute definition of exterior derivative for scalars<br>
+$ = \partial_k ( a_{i_1... i_p} b_{j_1 ... j_q}) dx^k \wedge dx^{i_1} \wedge ... \wedge dx^{i_p} \wedge dx^{j_1} \wedge ... \wedge dx^{j_q}$<br>
+distribute partial derivative between the scalar product<br>
+$ = \left(
+		\partial_k(a_{i_1... i_p}) b_{j_1 ... j_q}
+		+ a_{i_1... i_p} \partial_k(b_{j_1 ... j_q})
+	\right)
+	dx^k \wedge dx^{i_1} \wedge ... \wedge dx^{i_p} \wedge dx^{j_1} \wedge ... \wedge dx^{j_q}$<br>
+distribute wedges through the parenthesis<br>
+$ = \partial_k(a_{i_1... i_p}) b_{j_1 ... j_q}
+		 dx^k \wedge dx^{i_1} \wedge ... \wedge dx^{i_p} \wedge dx^{j_1} \wedge ... \wedge dx^{j_q}
+	+ a_{i_1... i_p}
+		\partial_k(b_{j_1 ... j_q})
+	 dx^k \wedge dx^{i_1} \wedge ... \wedge dx^{i_p} \wedge dx^{j_1} \wedge ... \wedge dx^{j_q}$<br>
+for the right sum, exchange the partial's associated one-form basis p times to the right using $dx^a \wedge dx^b = -dx^b \wedge dx^a$, to separate the 'b' term.<br>
+$ = \partial_k(a_{i_1... i_p})
+	 dx^k \wedge dx^{i_1} \wedge ... \wedge dx^{i_p}
+		 \wedge b_{j_1 ... j_q} dx^{j_1} \wedge ... \wedge dx^{j_q}
+	+ (-1)^p a_{i_1... i_p} dx^{i_1} \wedge ... \wedge dx^{i_p} \wedge
+		\partial_k(b_{j_1 ... j_q})
+	 dx^k \wedge dx^{j_1} \wedge ... \wedge dx^{j_q}$<br>
+substitute definitions of $a, b, da, db$<br>
+$= da \wedge b + (-1)^p a \wedge db$<br>
+<br>
+
+
+
+<hr>
+<b>Second exterior derivative in a coordinate basis</b><br>
+<br>
+
+TODO should I put this up higher so I can make use of it in other places?<br>
+<br>
+
+second exterior derivative of a p-form in a coordinate basis:<br>
+$ {d}({dw}) = {dd} ({w}_{a_1 ... a_p} {dx}^{a_1} \wedge ... \wedge {dx}^{a_p})$<br>
+$= {d} \partial_b ({w}_{a_1 ... a_p}) {dx}^b \wedge {dx}^{a_1} \wedge ... \wedge {dx}^{a_p}$<br>
+$= \partial_c \partial_b ({w}_{a_1 ... a_p}) {dx}^c \wedge {dx}^b \wedge {dx}^{a_1} \wedge ... \wedge {dx}^{a_p}$<br>
+Now we have the sum over the symmetric $\partial_c \partial_b$ and the antisymmetric ${dx}^b \wedge {dx}^c$, so our sum is zero.<br>
+${ddw} = 0$<br>
+<br>
+
+<hr>
+<b>Exterior derivative in a non-coordinate basis</b><br>
+<br>
+
+Exterior derivative of a scalar:<br>
+$d (\phi) = \partial_\tilde{a} (\phi) dx^\tilde{a}$<br>
+$= {e_\tilde{a}}^a e_a (\phi) {e^\tilde{a}}_b e^b$<br>
+$= \delta^a_b e_a (\phi) e^b$<br>
+$= e_a (\phi) e^a$<br>
 <br>
 
 Exterior derivative of a non-coordinate basis one-form:<br>
 (Treating the one-form basis as a linear combination of a coordinate basis)<br>
 $d e^u = d ({e^u}_\tilde{b} dx^\tilde{b})$<br>
 $= d ({e^u}_\tilde{b}) \wedge dx^\tilde{b} + {e^u}_\tilde{b} d(dx^\tilde{b})$<br>
-$= \partial_\tilde{a} ({e^u}_\tilde{b}) dx^\tilde{a} \wedge dx^\tilde{b}$<br>
 $= \partial_\tilde{a} ({e^u}_\tilde{b}) dx^\tilde{a} \wedge dx^\tilde{b}$<br>
 $= e_a ({e^u}_\tilde{b}) {e_b}^\tilde{b} e^a \wedge e^b$<br>
 $= e_a ({e^u}_\tilde{b}) {e_b}^\tilde{b} (e^a \otimes e^b - e^b \otimes e^a)$<br>
@@ -58,6 +152,23 @@ $= -{c_{ab}}^u e^a \otimes e^b$<br>
 $= -\frac{1}{2}{c_{ab}}^u e^a \wedge e^b$<br>
 $= -c^u$<br>
 $d e^u + c^u = 0$<br>
+<br>
+
+Exterior derivative of a p-form, starting with the coordinate basis definition, expressed in a non-coordinate basis:<br>
+$d w$<br>
+$= d (w_{|a_1 ... a_p|} dx^{|a_1} \wedge ... \wedge dx^{a_p|})$<br>
+$= \frac{1}{p!} d (w_{a_1 ... a_p} dx^{a_1} \wedge ... \wedge dx^{a_p})$<br>
+$= \frac{1}{p!} (\partial_b w_{a_1 ... a_p} dx^b \wedge dx^{a_1} \wedge ... \wedge dx^{a_p})$<br>
+TODO - continue on to rewrite the basis in terms of $e^a$<br>
+<br>
+
+$d T = (d T)_{i_1 ... i_{p+1}} e^{i_1} \otimes ... \otimes e^{i_{p+1}}$<br>
+$= e_{j_1} (T_{j_2 ... j_{p+1}}) \delta^{j_1 ... j_{p+1}}_{i_1 ... i_{p+1}} e^{i_1} \otimes ... \otimes e^{i_{p+1}}$<br>
+$= (p+1)! \cdot e_{[i_1} ( T_{i_2 ... i_{p+1}]} ) e^{i_1} \otimes ... \otimes e^{i_{p+1}}$<br>
+$= e_{i_1} ( T_{i_2 ... i_{p+1}} ) e^{i_1} \wedge ... \wedge e^{i_{p+1}}$<br>
+$= e^{i_1} \wedge e_{i_1} ( T_{i_2 ... i_{p+1}} ) e^{i_2} \wedge ... \wedge e^{i_{p+1}})$<br>
+$= e^a \wedge e_a (T)$<br>
+TODO again ... $e_a (T) = e_a (T_{i_1 ... i_p} e^1 \otimes ... \otimes e^p)$ ... $ = e_a (T_{i_1 ... i_p}) e^1 \otimes ... \otimes e^p$.<br>
 <br>
 
 Exterior derivative of a p-form:<br>
@@ -105,23 +216,23 @@ $ = d ( a_{i_1... i_p} b_{j_1 ... j_q}) \wedge e^{i_1} \wedge ... \wedge e^{i_p}
 	+ (-1)^{k-1} a_{i_1... i_p} b_{j_1 ... j_q} e^{i_1} \wedge ... \wedge de^{i_k} \wedge ... \wedge e^{i_p} \wedge e^{j_1} \wedge ... \wedge e^{j_q}
 	+ (-1)^{p+l-1} a_{i_1... i_p} b_{j_1 ... j_q} e^{i_1} \wedge ... \wedge e^{i_p} \wedge e^{j_1} \wedge ... \wedge de^{j_l} \wedge ... \wedge e^{j_q}$<br>
 $ = e_k ( a_{i_1... i_p} b_{j_1 ... j_q}) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p} \wedge e^{j_1} \wedge ... \wedge e^{j_q}
-	+ (-1)^{k-1} a_{i_1... i_p} b_{j_1 ... j_q} e^{i_1} \wedge ... \wedge (-\frac{1}{2} {c_{ab}}^{i_k} e^a \wedge e^b) \wedge ... \wedge e^{i_p} \wedge e^{j_1} \wedge ... \wedge e^{j_q} 
+	+ (-1)^{k-1} a_{i_1... i_p} b_{j_1 ... j_q} e^{i_1} \wedge ... \wedge (-\frac{1}{2} {c_{ab}}^{i_k} e^a \wedge e^b) \wedge ... \wedge e^{i_p} \wedge e^{j_1} \wedge ... \wedge e^{j_q}
 	+ (-1)^{p+l-1} a_{i_1... i_p} b_{j_1 ... j_q} e^{i_1} \wedge ... \wedge e^{i_p} \wedge e^{j_1} \wedge ... \wedge (-\frac{1}{2} {c_{ab}}^{j_l} e^a \wedge e^b) \wedge ... \wedge e^{j_q}$<br>
-$ = 
+$ =
 	\left( e_k(a_{i_1... i_p}) b_{j_1 ... j_q}
-	+ a_{i_1... i_p} e_k(b_{j_1 ... j_q}) \right) 
+	+ a_{i_1... i_p} e_k(b_{j_1 ... j_q}) \right)
 e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p} \wedge e^{j_1} \wedge ... \wedge e^{j_q}
 	- \frac{1}{2} {c_{ab}}^{i_k} a_{i_1... i_p} b_{j_1 ... j_q} e^a \wedge e^{i_1} \wedge ... \wedge e^b \wedge ... \wedge e^{i_p} \wedge e^{j_1} \wedge ... \wedge e^{j_q}
 	- \frac{1}{2} {c_{ab}}^{j_l} a_{i_1... i_p} b_{j_1 ... j_q} e^a \wedge e^{i_1} \wedge ... \wedge e^{i_p} \wedge e^{j_1} \wedge ... \wedge e^b \wedge ... \wedge e^{j_q}$<br>
 $ = (
 	e_k(a_{i_1... i_p}) b_{j_1 ... j_q}
 	+ a_{i_1... i_p} e_k(b_{j_1 ... j_q})
-	- \frac{1}{2} {c_{k i_k}}^b a_{i_1 ... i_{k-1} b i_{k+1} ... i_p} b_{j_1 ... j_q} 
-	- \frac{1}{2} {c_{k j_l}}^b a_{i_1... i_p} b_{j_1 ... j_{l-1} b j_{l+1} ... j_q} 
+	- \frac{1}{2} {c_{k i_k}}^b a_{i_1 ... i_{k-1} b i_{k+1} ... i_p} b_{j_1 ... j_q}
+	- \frac{1}{2} {c_{k j_l}}^b a_{i_1... i_p} b_{j_1 ... j_{l-1} b j_{l+1} ... j_q}
 ) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p} \wedge e^{j_1} \wedge ... \wedge e^{j_q}$<br>
 $ = (e_k(a_{i_1... i_p})
 		- \frac{1}{2} {c_{k i_k}}^b a_{i_1 ... i_{k-1} b i_{k+1} ... i_p}
-	) b_{j_1 ... j_q} 
+	) b_{j_1 ... j_q}
 		 e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p} \wedge e^{j_1} \wedge ... \wedge e^{j_q}
 	+ a_{i_1... i_p} (
 		e_k(b_{j_1 ... j_q})
@@ -129,8 +240,8 @@ $ = (e_k(a_{i_1... i_p})
 	) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p} \wedge e^{j_1} \wedge ... \wedge e^{j_q}$<br>
 $ = (e_k(a_{i_1... i_p})
 		- \frac{1}{2} {c_{k i_k}}^b a_{i_1 ... i_{k-1} b i_{k+1} ... i_p}
-	) 
-	 e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p} 
+	)
+	 e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p}
 		 \wedge b_{j_1 ... j_q} e^{j_1} \wedge ... \wedge e^{j_q}
 	+ (-1)^p a_{i_1... i_p} e^{i_1} \wedge ... \wedge e^{i_p} \wedge (
 		e_k(b_{j_1 ... j_q})
@@ -139,6 +250,13 @@ $ = (e_k(a_{i_1... i_p})
 $= da \wedge b + (-1)^p a \wedge db$<br>
 <br>
 
+Exterior derivative of a (p q) tensor:<br>
+$d ( {T^{a_1 ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q} )$<br>
+$= e_a ( {T^{a_1 ... a_p}}_{b_1 ... b_q} ) e^a \wedge (e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q})$<br>
+TODO what about subsequent applications to $d e^{a_i}$ and $d e_{b_j}$?<br>
+<br>
+
+
 Exterior derivative of inner product: <br>
 TODO under what context is this defined?  Two vectors, i.e. vector-valued 0-forms?  Or as two one-forms, therefore using the hodge dual definition of inner product?<br>
 What exactly is an inner product, and should I define inner- as between vectors ... vs interior- as between forms and vectors, ... vs what (inner again?) between two forms?<br>
@@ -146,25 +264,58 @@ $ d(u \cdot v) = du \cdot v + u \cdot dv$<br>
 <br>
 
 <hr>
-<b>Second exterior derivative:</b><br>
+<b>Second exterior derivative in a non-coordinate basis:</b><br>
 <br>
 
-second exterior derivative of a p-form in a coordinate basis:<br>
-$ {d}({dw}) = {dd} ({w}_{a_1 ... a_p} {dx}^{a_1} \wedge ... \wedge {dx}^{a_p})$<br>
-$= {d} \partial_b ({w}_{a_1 ... a_p}) {dx}^b \wedge {dx}^{a_1} \wedge ... \wedge {dx}^{a_p}$<br>
-$= \partial_c \partial_b ({w}_{a_1 ... a_p}) {dx}^c \wedge {dx}^b \wedge {dx}^{a_1} \wedge ... \wedge {dx}^{a_p}$<br>
-Now we have the sum over the symmetric $\partial_c \partial_b$ and the antisymmetric ${dx}^b \wedge {dx}^c$, so our sum is zero.<br>
-${ddw} = 0$<br>
+Second exterior derivative of a 1-form in a non-coordinate basis:<br>
+$d^2 e^a$<br>
+$= d (-\frac{1}{2} {c_{bc}}^a e^b \wedge e^c)$<br>
+$= -\frac{1}{2} \left(
+	d ({c_{bc}}^a) e^b \wedge e^c
+	+ {c_{bc}}^a d (e^b \wedge e^c)
+\right)$<br>
+$= -\frac{1}{2} \left(
+	d ({c_{bc}}^a) e^b \wedge e^c
+	+ {c_{bc}}^a (d e^b \wedge e^c - e^b \wedge de^c)
+\right)$<br>
+$= -\frac{1}{2} \left(
+	\partial_d ({c_{bc}}^a) dx^d \wedge e^b \wedge e^c
+	+ {c_{bc}}^a (
+		(-\frac{1}{2} {c_{de}}^b e^d \wedge e^e) \wedge e^c
+		- e^b \wedge (-\frac{1}{2} {c_{de}}^c e^d \wedge e^e)
+	)
+\right)$<br>
+$= -\frac{1}{2} (
+	e_d ({c_{ec}}^a)
+	- {c_{bc}}^a {c_{de}}^b
+) e^d \wedge e^e \wedge e^c$<br>
+$= -3 (
+	e_{[d} ({c_{ec]}}^a)
+	+ {c_{[de}}^b {c_{c]b}}^a
+) e^d \otimes e^e \otimes e^c$<br>
+...but in our coordinate basis, $d^2 w = 0$ for p-form w...<br>
+...therefore:<br>
+$
+	e_{[d} ({c_{ec]}}^a)
+	+ {c_{[de}}^b {c_{c]b}}^a
+= 0$<br>
+$e_{[d} ({c_{ec]}}^a)
+	= - {c_{[de}}^b {c_{c]b}}^a
+	= {c_{b[c}}^a {c_{de]}}^b
+$<br>
+TODO isn't there another property like Jacobi's identity that proves this as well?<br>
+If it's not ... then does this mean there is a separate definition for exterior derivatives in coordinate and in non-coordinate basis?
+Just like the exterior derivative on vectors must be defined to be associated with a specific connection, does the exterior derivative also need to be associated with a specific (non-coordinate) basis?<br>
 <br>
 
-Second exterior derivative on a non-coordinate basis:<br>
+Second exterior derivative of a p-form in a non-coordinate basis:<br>
 $d^2(w) = d(
 	(
 		e_k (w_{i_1 ... i_p})
 		- \frac{1}{2} {c_{k i_j}}^b w_{i_1 ... i_{j-1} \ b \ i_{j+1} ... i_p}
 	) e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p}
 )$<br>
-$= 
+$=
 	d (
 		e_k (w_{i_1 ... i_p})
 		- \frac{1}{2} {c_{k i_j}}^b w_{i_1 ... i_{j-1} \ b \ i_{j+1} ... i_p}
@@ -174,7 +325,7 @@ $=
 		- \frac{1}{2} {c_{k i_j}}^b w_{i_1 ... i_{j-1} \ b \ i_{j+1} ... i_p}
 	) d(e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p})
 $<br>
-$= 
+$=
 	e_l (
 		e_k (w_{i_1 ... i_p})
 		- \frac{1}{2} {c_{k i_j}}^b w_{i_1 ... i_{j-1} \ b \ i_{j+1} ... i_p}
@@ -184,20 +335,20 @@ $=
 		- \frac{1}{2} {c_{k i_j}}^b w_{i_1 ... i_{j-1} \ b \ i_{j+1} ... i_p}
 	) d(e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p})
 $<br>
-$= 
+$=
 	(
 		e_l (e_k (w_{i_1 ... i_p}))
-		- \frac{1}{2} 
+		- \frac{1}{2}
 			e_l ({c_{k i_j}}^b)
 			w_{i_1 ... i_{j-1} \ b \ i_{j+1} ... i_p}
-		- \frac{1}{2} 
+		- \frac{1}{2}
 			{c_{k i_j}}^b
 			e_l (w_{i_1 ... i_{j-1} \ b \ i_{j+1} ... i_p})
 	) e^l \wedge e^k \wedge e^{i_1} \wedge ... \wedge e^{i_p}
 	+ (
 		e_k (w_{i_1 ... i_p})
 		- \frac{1}{2} {c_{k i_j}}^b w_{i_1 ... i_{j-1} \ b \ i_{j+1} ... i_p}
-	) 
+	)
 	(
 		-\frac{1}{2} {c_{mn}}^k e^m \wedge e^n \wedge e^{i_1} \wedge ... \wedge e^{i_p}
 		- e^k \wedge d (e^{i_1} \wedge ... \wedge e^{i_p})

@@ -66,7 +66,8 @@ $e^A(e_B) = \overset{p}{\underset{i=1}{\Pi}} \delta^{a_i}_{b_i}$<br>
 Wedge product defined for one-form basis (more on wedge product later):<br>
 $e^{a_1} \wedge ... \wedge e^{a_p} = p! e^{[a_1} \otimes ... \otimes e^{a_p]}$<br>
 I'm sure there is an official multi-index way to do this, but here's mine that I just came up with:<br>
-$e_{\wedge A} = p! e^{[A]}$<br>
+$e^{\wedge A} = p! e^{[A]}$<br>
+Maybe a more-official way would be $\underset{i \in I}{\wedge} e^i$, but by this point I might as well just write out the ellipses. I'm looking for notation even more concise.<br>
 <br>
 
 $e^{a_1} \wedge ... \wedge e^{a_p} = p! e^{[a_1} \otimes ... \otimes e^{a_p]}$<br>
@@ -80,7 +81,7 @@ $e^{a_1} \wedge ... \wedge e^{a_p} (e_{b_1} \otimes ... \otimes e_{b_p})
 = p! e^{[a_1} \otimes ... \otimes e^{a_p]} (e_{b_1} \otimes ... \otimes e_{b_p})
 = p! \delta^{[a_1}_{b_1} \cdot ... \cdot \delta^{a_p]}_{b_p}
 = \delta^{a_1 ... a_p}_{b_1 ... b_p}
-= p! \delta^{a_1 ... a_p}_{|b_1 ... b_p|}
+= \delta^{a_1 ... a_p}_{|b_1 ... b_p|}
 $<br>
 In multi-index notation:<br>
 $e^{\wedge A} (e_B) = p! e^{[A]} (e_B) = \delta^A_B$<br>

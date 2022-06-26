@@ -68,8 +68,8 @@ $= x^u (
 	- {\Gamma^c}_{u b_j} {y^{a_1 ... a_p}}_{b_1 ... c ... b_q} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}
 )$<br>
 $= x^u (
-	e_u ({y^{a_1 ... a_p}}_{b_1 ... b_q}) 
-	+ {\Gamma^{a_i}}_{uc} {y^{a_1 ... c ... a_p}}_{b_1 ... b_q} 
+	e_u ({y^{a_1 ... a_p}}_{b_1 ... b_q})
+	+ {\Gamma^{a_i}}_{uc} {y^{a_1 ... c ... a_p}}_{b_1 ... b_q}
 	- {\Gamma^c}_{u b_j} {y^{a_1 ... a_p}}_{b_1 ... c ... b_q}
 ) e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}$<br>
 This demonstrates the "add contravariant, subtract covariant" rule for the covariant derivative in index notation.<br>
@@ -97,10 +97,21 @@ TODO should this be $\otimes$ or $\wedge$?<br>
 Should $\wedge$ be the sum of all antisymmetric basis elements, or the sum of only the antisymmetric forms, and the outer of all vectors?<br>
 If the latter is chosen then ${\omega^a}_b \otimes e_a = {\omega^a}_b \wedge e_a$<br>
 But then, if $\phi \wedge a = a \wedge \phi$ for 0-form scalar $\phi$ and 1-form $a$, would $v \wedge a = a \wedge v$ for vector-of-0-forms v and 1-form a? If so, then wouldn't this imply that $a \otimes b = b \otimes a$?<br>
+It is looking like the wedge product of a 0-form vector and a 1-form becomes an outer product.<br>
+<br>
+
+Also notice that now our exterior derivative needs to be equipped with an associated connection.
+There has been no specification as to what specific connection is needed.
+You don't necessarily have to use the Levi-Civita torsion-free connection with your exterior derivative.
+Should I start denoting which connection my exterior derivative is using?
+<br>
 <br>
 
 Exterior derivative of a vector:<br>
-$dv = d(v^a e_a) = dv^a \otimes e_a + v^a de_a$<br>
+$dv = d(v^a e_a)
+	= dv^a \wedge e_a + v^a de_a$<br>
+using the rule that the wedge of a 1-form and a vector-valued 0-form is the outer product (and no kind of symmetric or antisymmetric product):<br>
+$= dv^a \otimes e_a + v^a de_a$<br>
 $= e_b(v^a) e^b \otimes e_a + v^a {\Gamma^b}_{ca} e^c \otimes e_b$<br>
 $= (e_b(v^a) + v^u {\Gamma^a}_{bu}) e^b \otimes e_a$<br>
 $= e^b \otimes \nabla_b (v^a e_a)$<br>
@@ -138,11 +149,11 @@ $= (2 e_{[a} ({\Gamma^c}_{b]d}) - {\Gamma^c}_{ud} {c_{ab}}^u) e^a \otimes e^b$<b
 Second exterior derivative of connection one-forms:<br>
 $d^2 {\omega^c}_d = d (d {\omega^c}_d )$<br>
 $= d( (e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u) e^a \wedge e^b )$<br>
-$= e_e (e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u) e^e \wedge e^a \wedge e^b 
+$= e_e (e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u) e^e \wedge e^a \wedge e^b
 	+ (e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u) (de^a \wedge e^b - e^a \wedge de^b)$<br>
-$= 	
-	e_e (e_a ({\Gamma^c}_{bd})) e^e \wedge e^a \wedge e^b 
-	- \frac{1}{2} e_e( {\Gamma^c}_{ud} {c_{ab}}^u) e^e \wedge e^a \wedge e^b 
+$=
+	e_e (e_a ({\Gamma^c}_{bd})) e^e \wedge e^a \wedge e^b
+	- \frac{1}{2} e_e( {\Gamma^c}_{ud} {c_{ab}}^u) e^e \wedge e^a \wedge e^b
 	
 	+ (
 		e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u
@@ -152,13 +163,13 @@ $=
 		e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u
 	) e^a \wedge (-\frac{1}{2} {c_{pq}}^b e^p \wedge e^q)
 $<br>
-$= 	
+$=
 	(
 		\frac{1}{2} e_f ({\Gamma^c}_{bd}) {c_{ea}}^f
 		
 		- \frac{1}{2} e_e( {\Gamma^c}_{ud}) {c_{ab}}^u
 		- \frac{1}{2} e_e( {c_{ab}}^u) {\Gamma^c}_{ud}
-	) e^e \wedge e^a \wedge e^b 
+	) e^e \wedge e^a \wedge e^b
 
 	- \frac{1}{2} {c_{pq}}^a (
 		e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u
@@ -168,28 +179,34 @@ $=
 		e_a ({\Gamma^c}_{bd}) - \frac{1}{2} {\Gamma^c}_{ud} {c_{ab}}^u
 	) e^a \wedge e^p \wedge e^q
 $<br>
-$= 	(	
+$= 	(
 	\frac{1}{2} e_u ({\Gamma^c}_{rd}) {c_{pq}}^u
 	- \frac{1}{2} e_p( {\Gamma^c}_{ud}) {c_{qr}}^u
 	- \frac{1}{2} e_p( {c_{qr}}^u) {\Gamma^c}_{ud}
 
-	- \frac{1}{2} e_a ({\Gamma^c}_{rd}){c_{pq}}^a 
-	+ \frac{1}{2} e_p ({\Gamma^c}_{bd}){c_{qr}}^b  
+	- \frac{1}{2} e_a ({\Gamma^c}_{rd}){c_{pq}}^a
+	+ \frac{1}{2} e_p ({\Gamma^c}_{bd}){c_{qr}}^b
 	
 	- \frac{1}{4} {c_{qr}}^b {\Gamma^c}_{ud} {c_{pb}}^u
 	+ \frac{1}{4} {c_{pq}}^a {\Gamma^c}_{ud} {c_{ar}}^u
 ) e^p \wedge e^q \wedge e^r
 $<br>
-$= 	
+$=
 	(
 		- \frac{1}{2} e_p( {c_{qr}}^u)
 		+ \frac{1}{2} {c_{pq}}^v {c_{vr}}^u
 	) {\Gamma^c}_{ud}  e^p \wedge e^q \wedge e^r
 $<br>
+Using $
+	e_{[p} ({c_{qr]}}^u)
+	+ {c_{[qr}}^v {c_{p]v}}^u
+= 0$<br>
+$= 0$<br>
 <br>
 
 Exterior covariant derivative:<br>
 Let $D = d + \omega$<br>
+i.e. $D T = d T + \omega \wedge T$<br>
 ...implicit wedge with p-forms...<br>
 ...implicit composition with vectors...<br>
 ...implicit sum when $\omega$ spans a basis...<br>
