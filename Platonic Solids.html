@@ -82,11 +82,11 @@ It has k edges (1-forms), i.e. $q_1(S^2_k) = k$.<br>
 So for 2D regular convex polytopes we see the number of vertexes and edges match, i.e. $q_0(S^2_k) = q_1(S^2_k) = k$.<br>
 <br>
 
-We can also think of two different 2-forms associated with our polygon: the area inside and the area outside.<br>
+From this we fulfill the Euler characteristic equation: $\chi = V - E + F = 2$, where V = the number of vertexes, E = the number of edges, F = number of faces.
+So $\chi = q_2(S^2_k) - q_1(S^2_k) + q_0(S^2_k) = q_2(S^2_k) - k + k = q_2(S^2_k)$.<br>
 <br>
 
-From this we fulfill the Euler characteristic equation: $V - E + F = 2$, where V = the number of vertexes, E = the number of edges, F = number of faces.
-So $q_2 - q_1 + q_0 = 2$.<br>
+We can also think of two different 2-forms associated with our polygon: the area inside and the area outside, and from that claim $q_2(S^2_k) = 2$, and then argue that $\chi = 2$, but maybe I can't make that assumption.<br>
 <br>
 
 For isometric transform groups in 2D we also have a group size of $|\textbf{T}(S^2_k)| = k = q_0 = q_1$ rotations that preserve the shape.<br>
@@ -122,6 +122,7 @@ $|\textbf{T}(S^3_m)| = $ the number of isometric transforms associated with our 
 $\partial S^3_p = S^2_q = $ the 2D q-sided solid that makes up surface of the 3D p-sided solid. TODO later come up with an equation that relates p and q.<br>
 $q_k(\partial S^3_m) = $ the number of k-forms of a surface-element of the 3D regular convex polytope.  
 $q_1(\partial S^3_m) = $ the number of sides of the polygons that cover our m-sided polyhedron.  For 2D this is also equal to the number of vertexes, and to the size of the isomorphism transform group.<br>
+$\chi = q_0(S^3_m) - q_1(S^3_m) + q_2(S^3_m) = $ the Euler characteristic.<br>
 <br>
 
 <table>
@@ -131,6 +132,7 @@ $q_1(\partial S^3_m) = $ the number of sides of the polygons that cover our m-si
 		<th>$q_0(S^3_m)$</th>
 		<th>$q_1(S^3_m)$</th>
 		<th>$q_2(S^3_m)$</th>
+		<th>$\chi$</th>
 		<th>$\star S^3_m$</th>
 		<th>$|\textbf{T}(S^3_m)|$</th>
 		<th style='width:1em'></th>
@@ -143,6 +145,7 @@ $q_1(\partial S^3_m) = $ the number of sides of the polygons that cover our m-si
 		<td>4</td>
 		<td>6</td>
 		<td>4</td>
+		<td>2</td>
 		<td>$S^3_4$</td>
 		<td>12</td>
 		<td></td>
@@ -155,6 +158,7 @@ $q_1(\partial S^3_m) = $ the number of sides of the polygons that cover our m-si
 		<td>8</td>
 		<td>12</td>
 		<td>6</td>
+		<td>2</td>
 		<td>$S^3_8$</td>
 		<td>24</td>
 		<td></td>
@@ -167,6 +171,7 @@ $q_1(\partial S^3_m) = $ the number of sides of the polygons that cover our m-si
 		<td>6</td>
 		<td>12</td>
 		<td>8</td>
+		<td>2</td>
 		<td>$S^3_6$</td>
 		<td>24</td>
 		<td></td>
@@ -179,6 +184,7 @@ $q_1(\partial S^3_m) = $ the number of sides of the polygons that cover our m-si
 		<td>20</td>
 		<td>30</td>
 		<td>12</td>
+		<td>2</td>
 		<td>$S^3_{20}$</td>
 		<td>60</td>
 		<td></td>
@@ -191,6 +197,7 @@ $q_1(\partial S^3_m) = $ the number of sides of the polygons that cover our m-si
 		<td>12</td>
 		<td>30</td>
 		<td>20</td>
+		<td>2</td>
 		<td>$S^3_{12}$</td>
 		<td>60</td>
 		<td></td>
@@ -227,6 +234,9 @@ $\frac{2}{m} \cdot q_{n-2}(S^n_m) = q_{n-2}(\partial S^n_m) = q_{n-2}(S^{n-1}_r)
 combined with $q_{n-2}(S^{n-1}_r) = r$,<br>
 gives us: $\frac{2}{m} \cdot q_{n-2}(S^n_m) = r$.<br>
 so for our n-dimensional m-sided regular convex polytope $S^n_m$, its $(n-1)$-sided surface elements $\partial S^n_m = S^{n-1}_r$ have $r = \frac{2}{m} \cdot q_{n-2}(S^n_m) = 2 \cdot q_{n-2}(S^n_m) / q_{n-1}(S^n_m)$ sides.<br>
+<br>
+
+Also to calculate the number of edges of a 3D regular convex polytope: if we know a shape (by its number of sides) and its dual (by its number of sides), we know $q_0(S^3_m)$ and $q_2(S^3_m)$, and can calculate from $\chi = 2$ our remaining $q_1(S^3_m) = q_0(S^3_m) + q_2(S^3_m) - \chi = q_2(S^3_m) + q_2(\star S^3_m) - \chi$.<br>
 <br>
 
 For more on some exact tables of vertexes, transforms, and multiplication tables between transforms and either vertexes or transforms, check out my symmath work on 
