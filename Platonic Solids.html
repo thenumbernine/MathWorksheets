@@ -43,26 +43,11 @@ $V \in \mathbb{R}^{n \times m}=$ matrix with column vectors the set of all verti
 $P_i \in \mathbb{R}^{m \times m} =$ permutation transform of vertices corresponding with i'th transformation, such that $T_i V = V P_i$.<br>
 <br>
 
-
-
-Notice that isomorphic transform group size $|\textbf{T}|$ = number of surface elemnts x the group size of the surface element.<br>
-Duals have different numbers of polyhedron sides and numbers of polygon sides, despite having matching group size.<br>
-The tetrahdron have 4 sides and are made of triangles of group size 3, and has a group size of $3 \cdot 4 = 12$.  It is self-dual.<br>
-The cube has 6 sides and is made of squares of group size 4, and it has a group size of $6 \cdot 4 = 24$.<br>
-The octahedron has 8 sides and is made of squares of group size 3, and it has a group size of $8 \cdot 3 = 24$.  The cube and octahedron are duals and have matching group sizes.<br>
-The dodecahedron has 12 sides and is made of pentagons of group size 5, and it has a group size of $12 \cdot 5 = 60$.<br>
-The icosahedron has 20 sides and is made of triangles of group size 3, and it has a group size of $20 \cdot 3 = 60$.  The dodecahderon and icosahedron are duals and have matching group sizes.<br>
-The 5-cell has 5 sides and is made of tetrahedrons of group size 12, and it has a group size of $5 \cdot 12 = 60$.  It is self-dual.<br>
-The 8-cell has 8 sides and is made of cubes of group size 24, and it has a group size of $8 \cdot 24 = 192$.<br>
-The 16-cell has 16 sides and is made of tetrahedron of group size 12, and it has a group size of $16 \cdot 12 = 192$.  The 8-cell and 16-cell are duals and have matching group sizes.<br>
-The 24-cell has 24 sides and is made of octahedron of group size 24, and it has a group size of $24 \cdot 24 = 576$.  It is self-dual.<br>
-The 120-cell has 120 sides and is made of dodecahedron of group size 60, and it has a gruop size of $120 \cdot 60 = 7200$.<br>
-The 600-cell has 600 sides and is made of tetrahedron of group size 12, and it has a group size of $600 \cdot 12 = 7200$.  The 120-cell and 600-cell are duals and have matching group sizes.<br>
-
 <br>
 <hr>
 <br>
 
+<b>And now half starting fresh...</b><br>
 Some more notation:<br>
 <br>
 
@@ -141,6 +126,7 @@ $q_1(\partial S^3_m) = $ the number of sides of the polygons that cover our m-si
 
 <table>
 	<tr>
+		<th>name</th>
 		<th>$S^3_m$</th>
 		<th>$q_0(S^3_m)$</th>
 		<th>$q_1(S^3_m)$</th>
@@ -148,56 +134,67 @@ $q_1(\partial S^3_m) = $ the number of sides of the polygons that cover our m-si
 		<th>$q_2(\star S^3_m)$</th>
 		<th>$|\textbf{T}(S^3_m)|$</th>
 		<th style='width:1em'></th>
-		<th>$q_0(\partial S^3_m) = q_1(\partial S^3_m) = |\textbf{T}(\partial S^3_m)|$</th>
+		<th>$\partial S^3_m$</th>
+		<th>$m = q_0(\partial S^3_m) = q_1(\partial S^3_m) = |\textbf{T}(\partial S^3_m)|$</th>
 	</tr>
 	<tr>
 		<td>tetrahedron</td>
+		<td>$S^3_4$</td>
 		<td>4</td>
 		<td>6</td>
 		<td>4</td>
 		<td>4</td>
 		<td>12</td>
 		<td></td>
+		<td>$S^2_3$</td>
 		<td>3</td>
 	</tr>
 	<tr>
 		<td>cube</td>
+		<td>$S^3_6$</td>
 		<td>8</td>
 		<td>12</td>
 		<td>6</td>
 		<td>8</td>
 		<td>24</td>
 		<td></td>
+		<td>$S^2_4$</td>
 		<td>4</td>
 	</tr>	
 	<tr>
 		<td>octahedron</td>
+		<td>$S^3_8$</td>
 		<td>6</td>
 		<td>12</td>
 		<td>8</td>
 		<td>6</td>
 		<td>24</td>
 		<td></td>
+		<td>$S^2_3$</td>
 		<td>3</td>
 	</tr>
 	<tr>
 		<td>dodecahedron</td>
+		<td>$S^3_{12}$</td>
 		<td>20</td>
 		<td>30</td>
 		<td>12</td>
 		<td>20</td>
 		<td>60</td>
 		<td></td>
+		<td>$S^2_5$</td>
 		<td>5</td>
 	</tr>
 	<tr>
 		<td>icosahedron</td>
+		<td>$S^3_{20}$</td>
 		<td>12</td>
 		<td>30</td>
 		<td>20</td>
 		<td>12</td>
 		<td>60</td>
 		<td></td>
+		<td>$S^2_3$</td>
 		<td>3</td>
 	</tr>
 </table>
@@ -229,7 +226,11 @@ for $\partial S^n_m = S^{n-1}_r$:<br>
 $\frac{2}{m} \cdot q_{n-2}(S^n_m) = q_{n-2}(\partial S^n_m) = q_{n-2}(S^{n-1}_r)$,<br>
 combined with $q_{n-2}(S^{n-1}_r) = r$,<br>
 gives us: $\frac{2}{m} \cdot q_{n-2}(S^n_m) = r$.<br>
-so for our n-dimensional m-sided regular convex polytope $S^n_m$, its $(n-1)$-sided surface elements $\partial S^n_m = S^{n-1}_r$ have $r = \frac{2}{m} \cdot q_{n-2}(S^n_m) = 2 \cdot q_{n-2}(S^n_m) / q_{n-1}(S^n_m)$ sides.<br.
+so for our n-dimensional m-sided regular convex polytope $S^n_m$, its $(n-1)$-sided surface elements $\partial S^n_m = S^{n-1}_r$ have $r = \frac{2}{m} \cdot q_{n-2}(S^n_m) = 2 \cdot q_{n-2}(S^n_m) / q_{n-1}(S^n_m)$ sides.<br>
+<br>
+
+For more on some exact tables of vertexes, transforms, and multiplication tables between transforms and either vertexes or transforms, check out my symmath work on 
+<a href="https://thenumbernine.github.io/symmath/tests/output/Platonic%20Solids.html">Platonic Solids</a>.<br>
 <br>
 
 <hr>
@@ -240,6 +241,7 @@ so for our n-dimensional m-sided regular convex polytope $S^n_m$, its $(n-1)$-si
 
 <table>
 	<tr>
+		<th>name</th>
 		<th>$S^4_m$</th>
 		<th>$q_0(S^4_m)$</th>
 		<th>$q_1(S^4_m)$</th>
@@ -248,6 +250,7 @@ so for our n-dimensional m-sided regular convex polytope $S^n_m$, its $(n-1)$-si
 		<th>$q_3(\star S^4_m)$</th>
 		<th>$|\textbf{T}(S^4_m)|$</th>
 		<th style='width:1em'></th>
+		<th>$\partial S^4_m$</th>
 		<th>$q_0(\partial S^4_m)$</th>
 		<th>$q_1(\partial S^4_m)$</th>
 		<th>$q_2(\partial S^4_m)$</th>
@@ -257,6 +260,7 @@ so for our n-dimensional m-sided regular convex polytope $S^n_m$, its $(n-1)$-si
 	</tr>
 	<tr>
 		<td>5-cell</td>
+		<td>$S^4_5$</td>
 		<td>5</td>
 		<td>10</td>
 		<td>10</td>
@@ -264,6 +268,7 @@ so for our n-dimensional m-sided regular convex polytope $S^n_m$, its $(n-1)$-si
 		<td>5</td>
 		<td>60</td>
 		<td></td>
+		<td>$S^3_4$</td>
 		<td>4</td>
 		<td>6</td>
 		<td>4</td>
@@ -272,7 +277,8 @@ so for our n-dimensional m-sided regular convex polytope $S^n_m$, its $(n-1)$-si
 		<td>3</td>
 	</tr>
 	<tr>
-		<td>8-cell</td>
+		<td>hypercube, i.e. 8-cell</td>
+		<td>$S^4_8$</td>
 		<td>16</td>
 		<td>32</td>
 		<td>24</td>
@@ -280,6 +286,7 @@ so for our n-dimensional m-sided regular convex polytope $S^n_m$, its $(n-1)$-si
 		<td>16</td>
 		<td>192</td>
 		<td></td>
+		<td>$S^3_6$</td>
 		<td>8</td>
 		<td>12</td>
 		<td>6</td>
@@ -288,7 +295,8 @@ so for our n-dimensional m-sided regular convex polytope $S^n_m$, its $(n-1)$-si
 		<td>4</td>
 	</tr>
 	<tr>
-		<td>16-cell</td>
+		<td>4-orthoplex, i.e. 16-cell</td>
+		<td>$S^4_{16}$</td>
 		<td>8</td>
 		<td>24</td>
 		<td>32</td>
@@ -296,6 +304,7 @@ so for our n-dimensional m-sided regular convex polytope $S^n_m$, its $(n-1)$-si
 		<td>8</td>
 		<td>192</td>
 		<td></td>
+		<td>$S^3_4$</td>
 		<td>4</td>
 		<td>6</td>
 		<td>4</td>
@@ -305,6 +314,7 @@ so for our n-dimensional m-sided regular convex polytope $S^n_m$, its $(n-1)$-si
 	</tr>
 	<tr>
 		<td>24-cell</td>
+		<td>$S^4_{24}$</td>
 		<td>24</td>
 		<td>96</td>
 		<td>96</td>
@@ -312,6 +322,7 @@ so for our n-dimensional m-sided regular convex polytope $S^n_m$, its $(n-1)$-si
 		<td>24</td>
 		<td>576</td>
 		<td></td>
+		<td>$S^3_8$</td>
 		<td>6</td>
 		<td>12</td>
 		<td>8</td>
@@ -321,6 +332,7 @@ so for our n-dimensional m-sided regular convex polytope $S^n_m$, its $(n-1)$-si
 	</tr>
 	<tr>
 		<td>120-cell</td>
+		<td>$S^4_{120}$</td>
 		<td>600</td>
 		<td>1200</td>
 		<td>720</td>
@@ -328,6 +340,7 @@ so for our n-dimensional m-sided regular convex polytope $S^n_m$, its $(n-1)$-si
 		<td>600</td>
 		<td>7200</td>
 		<td></td>
+		<td>$S^3_{12}$</td>
 		<td>20</td>
 		<td>30</td>
 		<td>12</td>
@@ -337,6 +350,7 @@ so for our n-dimensional m-sided regular convex polytope $S^n_m$, its $(n-1)$-si
 	</tr>
 	<tr>
 		<td>600-cell</td>
+		<td>$S^4_{600}$</td>
 		<td>120</td>
 		<td>720</td>
 		<td>1200</td>
@@ -344,6 +358,7 @@ so for our n-dimensional m-sided regular convex polytope $S^n_m$, its $(n-1)$-si
 		<td>120</td>
 		<td>7200</td>
 		<td></td>
+		<td>$S^3_4$</td>
 		<td>4</td>
 		<td>6</td>
 		<td>4</td>
@@ -377,41 +392,74 @@ $2 q_1(\partial S^4_m) / q_2(\partial S^4_m) = q_1(\partial^2 S^4_m) = q_1(S^2_r
 <br>
 
 Higher dimensions?
-They only have 3 different regular convex polytopes, the $(n+1)$-simplex, the $(2^n)$-hypercube, and the $(2 n)$-orthoplex.<br>
+They only have 3 different regular convex polytopes, the $(n+1)$-simplex, the $(2n)$-hypercube, and the $(2^n)$-orthoplex.<br>
 <br>
 
 <table>
 	<tr>
 		<th>name</th>
+		<th>$S^n_m$</th>
 		<th>$q_0(S^n_m)$</th>
 		<th>$q_{n-1}(S^n_m)$</th>
 		<th>$q_{n-1}(\star S^n_m)$</th>
 		<th>$|\textbf{T}(S^n_m)|$</th>
+		<th style="width:1em"></th>
+		<th>$\partial S^n_m$</th>
 	</tr>
 	<tr>
 		<td>simplex</td>
+		<td>$S^n_{n+1}$</td>
 		<td>$n+1$</td>
 		<td>$n+1$</td>
 		<td>$n+1$</td>
+		<td>$\frac{1}{2}(n+1)!$</td>
 		<td></td>
+		<td>$S^{n-1}_n$</td>
 	</tr>
 	<tr>
 		<td>hypercube</td>
+		<td>$S^n_{2n}$</td>
 		<td>$2^n$</td>
 		<td>$2 n$</td>
 		<td>$2^n$</td>
+		<td>$2^{n-1} \cdot n!$</td>
 		<td></td>
+		<td>$S^{n-1}_{2(n-1)}$</td>
 	</tr>
 	<tr>
 		<td>orthoplex</td>
+		<td>$S^n_{2^n}$</td>
 		<td>$2 n$</td>
 		<td>$2^n$</td>
 		<td>$2 n$</td>
+		<td>$2^{n-1} \cdot n!$</td>
 		<td></td>
+		<td>$S^{n-1}_n$</td>
 	</tr>
 </table>
 <br>
 
+What is the transformation group size of the (n+1)-simplex?<br>
+And $\partial S^n_{n+1} = S^{n-1}_n$.  So there's our recursive relation.<br>
+$|\textbf{T}(S^n_{n+1})| = (n+1) \cdot |\textbf{T}(\partial S^n_{n+1})| = (n+1) \cdot |\textbf{T}(S^{n-1}_n)|$.<br>
+Base-case: $|\textbf{T}(S^2_3)| = 3 = \frac{3!}{2}$.<br>
+From there we can calculate $|\textbf{T}(S^n_{n+1})| = \underset{m=2}{\overset{n}{\Pi}} (m+1) = \frac{1}{2} (n+1)!$.<br>
+Mind you this would be strictly $(n+1)!$ if I also included reflections, but here I'm only considering rotations.<br> 
+<br>
+
+Now the $(2n)$-hypercube:<br>
+$\partial S^n_{2n} = S^{n-1}_{2(n-1)}$.<br>
+$|\textbf{T}(S^n_{2n})| = 2n \cdot |\textbf{T}(\partial S^n_{2n})| = 2n \cdot |\textbf{T}(S^{n-1}_{2(n-1)})|$.<br>
+Base-case: $|\textbf{T}(S^2_4)| = 4$.<br>
+From there we get $|\textbf{T}(S^n_{2n})| = \underset{m=2}{\overset{n}{\Pi}} 2 m = 2^{n-1} \cdot n!.$<br>
+<br>
+
+Last is the $(2^n)$-orthoplex:<br>
+$\partial S^n_{2^n} = S^{n-1}_n$<br>
+$|\textbf{T}(S^n_{2^n})| = 2^n \cdot |\textbf{T}(\partial S^n_{2^n})| = 2^n \cdot |\textbf{T}(S^{n-1}_n)|$.<br>
+No need to do a recursive definition, the transform group size is just based on the previous dimension's simplex transform group:<br>
+$|\textbf{T}(S^n_{2^n})| = 2^n \cdot \frac{1}{2} \cdot n! = 2^{n-1} \cdot n!$<br>
+Duh.  It's dual to the hypercube, of course it has the same sized isometric transform group.<br>
 <hr>
 <br>
 
