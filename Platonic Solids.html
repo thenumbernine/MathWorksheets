@@ -1,0 +1,313 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<title>Platonic Solids</title>
+		<style>
+table {
+    border : 1px solid black;
+    border-collapse : collapse;
+}
+table td, table th {
+    border : 1px solid black;
+	padding: 4px;
+}
+		</style>
+	</head>
+	<body>
+
+<b>From my symmath platonic solids worksheet:</b><br>
+<br>
+
+Defining our terms:<br>
+<br>
+
+$n =$ dimension of manifold which our shape resides in.<br>
+$\tilde{T}_i \in \mathbb{R}^{n \times n} =$ i'th isomorphic transform in the minimal set.<br>
+$\tilde{\textbf{T}} = \{ 1 \le i \le p, \tilde{T}_i \} =$ minimum set of isomorphic transforms that can be used to recreate all isomorphic transforms.<br>
+$p = |\tilde{\textbf{T}}| =$ the number of minimal isomorphic transforms.<br>
+$T_i \in \mathbb{R}^{n \times n} =$ i'th isomorphic transform in the set of all unique transforms.<br>
+$\textbf{T} = \{ T_i \} = \{ 1 \le k, i_1, ..., i_k \in [1,m], \tilde{T}_{i_1} \cdot ... \cdot \tilde{T}_{i_k} \} =$ set of all unique isomorphic transforms.<br>
+$q = |\textbf{T}| =$ the number of unique isomorphic transforms.<br>
+<br>
+
+Vertexes / 0-forms:<br>
+<br>
+
+$v_1 \in \mathbb{R}^n =$ the position of some arbitrary initial vertex.<br>
+$\textbf{v} = \{v_i \} = \{ T_i \cdot v_1 \} =$ the set of all vertices.<br>
+$m = |\textbf{v}| =$ the number of vertices.<br>
+(Notice that $m \le q$, i.e. the number of vertices is $\le$ the number of unique isomorphic transforms.) <br>
+$V \in \mathbb{R}^{n \times m}=$ matrix with column vectors the set of all vertices, such that $V_{ij} = (v_j)_i$.<br>
+$P_i \in \mathbb{R}^{m \times m} =$ permutation transform of vertices corresponding with i'th transformation, such that $T_i V = V P_i$.<br>
+<br>
+
+
+
+Notice that isomorphic transform group size $|\textbf{T}|$ = number of surface elemnts x the group size of the surface element.<br>
+Duals have different numbers of polyhedron sides and numbers of polygon sides, despite having matching group size.<br>
+The tetrahdron have 4 sides and are made of triangles of group size 3, and has a group size of $3 \cdot 4 = 12$.  It is self-dual.<br>
+The cube has 6 sides and is made of squares of group size 4, and it has a group size of $6 \cdot 4 = 24$.<br>
+The octahedron has 8 sides and is made of squares of group size 3, and it has a group size of $8 \cdot 3 = 24$.  The cube and octahedron are duals and have matching group sizes.<br>
+The dodecahedron has 12 sides and is made of pentagons of group size 5, and it has a group size of $12 \cdot 5 = 60$.<br>
+The icosahedron has 20 sides and is made of triangles of group size 3, and it has a group size of $20 \cdot 3 = 60$.  The dodecahderon and icosahedron are duals and have matching group sizes.<br>
+The 5-cell has 5 sides and is made of tetrahedrons of group size 12, and it has a group size of $5 \cdot 12 = 60$.  It is self-dual.<br>
+The 8-cell has 8 sides and is made of cubes of group size 24, and it has a group size of $8 \cdot 24 = 192$.<br>
+The 16-cell has 16 sides and is made of tetrahedron of group size 12, and it has a group size of $16 \cdot 12 = 192$.  The 8-cell and 16-cell are duals and have matching group sizes.<br>
+The 24-cell has 24 sides and is made of octahedron of group size 24, and it has a group size of $24 \cdot 24 = 576$.  It is self-dual.<br>
+The 120-cell has 120 sides and is made of dodecahedron of group size 60, and it has a gruop size of $120 \cdot 60 = 7200$.<br>
+The 600-cell has 600 sides and is made of tetrahedron of group size 12, and it has a group size of $600 \cdot 12 = 7200$.  The 120-cell and 600-cell are duals and have matching group sizes.<br>
+
+<br>
+<hr>
+<br>
+
+Ok so platonic solids in 2D are any regular polygon.<br>
+<br>
+
+It will have q vertexes (0-forms) and q edges (1-forms) for $q \ge 3$.<br>
+<br>
+
+Let's denote the number of k-forms in our 2D object as $q^2_k$.  For 2D shapes, the number of vertexes and edges match, so $q^2_0 = q^2_1$.<br>
+<br>
+
+We can also think of two different 2-forms associated with our polygon: the area inside and the area outside.<br>
+<br>
+
+From this we fulfill the Euler characteristic equation: $V - E + F = 2$, where V = the number of vertexes, E = the number of edges, F = number of faces.
+So $q^2_2 - q^2_1 + q^2_0 = 2$.<br>
+<br>
+
+Let $\textbf{T}^n_m =$ the transform group for n-dimensional regular polytopes with m sides (i.e. with m (n-1)-forms on its boundary).<br>
+<br>
+
+Now in 2D we also have $|\textbf{T}^2_p| = p = q_0$ rotations that preserve the shape.  
+For vertices placed equidistant from the origin, the k'th transform takes the form of 
+$T^2_{p,k} = \left[\begin{matrix}
+	cos(\frac{2 \pi k}{p}) & -sin(\frac{2 \pi k}{p}) \\
+	sin(\frac{2 \pi k}{p}) &  cos(\frac{2 \pi k}{p})
+\end{matrix}\right]$.<br>
+<br>
+
+Notice our shapes are self-dual, so a k-sided object's dual is another k-sided object, with vertexes replaced with edges and edges replaced with vertexes.<br>
+<br>
+
+<hr>
+<br>
+
+In 3D we only have a few:<br>
+<br>
+
+$q^3_k = $ the number of k-forms in our 3D regular polytope.<br>
+so $q^3_0 = $ the number of vertexes.<br>
+so $q^3_1 = $ the number of edges.<br>
+so $q^3_2 = $ the number of faces.<br>
+$q^2_k = $ the number of k-forms of a surface-element of the 3D regular polytope.  Maybe I'll change this label later to not conflict with the general 2D regular polytope definition, and instead somehow denote its association with the 3D polytopes?<br>
+$q^2_1 = $ the number of sides of the polygons that cover our polyhedron.<br>
+$\star(.) = $ be the same properties but for the shape's dual.<br>
+$|\textbf{T}^3| = $ the number of isometric transforms.<br>
+$\partial = $ the surface of the object.<br>
+<table>
+	<tr>
+		<th>name</th>
+		<th>$q^3_0$</th>
+		<th>$q^3_1$</th>
+		<th>$q^3_2$</th>
+		<th>$\star(q^3_2)$</th>
+		<th>$|\textbf{T}^3|$</th>
+		<th style='width:1em'></th>
+		<th>$\partial : q^2_0 = q^2_1 = |\textbf{T}^2|$</th>
+	</tr>
+	<tr>
+		<td>tetrahedron</td>
+		<td>4</td>
+		<td>6</td>
+		<td>4</td>
+		<td>4</td>
+		<td>12</td>
+		<td></td>
+		<td>3</td>
+	</tr>
+	<tr>
+		<td>cube</td>
+		<td>8</td>
+		<td>12</td>
+		<td>6</td>
+		<td>8</td>
+		<td>24</td>
+		<td></td>
+		<td>4</td>
+	</tr>	
+	<tr>
+		<td>octahedron</td>
+		<td>6</td>
+		<td>12</td>
+		<td>8</td>
+		<td>6</td>
+		<td>24</td>
+		<td></td>
+		<td>3</td>
+	</tr>
+	<tr>
+		<td>dodecahedron</td>
+		<td>20</td>
+		<td>30</td>
+		<td>12</td>
+		<td>20</td>
+		<td>60</td>
+		<td></td>
+		<td>5</td>
+	</tr>
+	<tr>
+		<td>icosahedron</td>
+		<td>12</td>
+		<td>30</td>
+		<td>20</td>
+		<td>12</td>
+		<td>60</td>
+		<td></td>
+		<td>3</td>
+	</tr>
+</table>
+<br>
+
+One easy rule to see is that the number of faces of the dual ($\star(q^3_2)$) is equal to the number of vertexes of the original shape ($q^3_0$), and same vice versa, that $\star(q^3_0) = q^3_2$.<br>
+In general, for higher dimensions, $q^n_k = \star(q^n_{n-k})$.<br>
+<br>
+
+Another rule is that the isometric transform set size of a shape and its dual match.  In fact the groups are identical.  Because both groups must preserve both the vertexes and the sides, and between duals these two properties are exchanged.<br>
+So $\textbf{T}^n = \star(\textbf{T}^n)$.<br>
+<br>
+
+Another rule that will hold true to higher dimensions is that the transform group size $|\textbf{T}^3|$ is equal to the number of sides of our shape, multiplied by each side's transform group size. 
+So $|\textbf{T}^3| = q^3_2 \cdot |\textbf{T}^2|$.<br> 
+<br>
+
+Another rule: $2 \cdot q^3_1 / q^3_2 = q^2_1$.<br>
+This is going to hold true in 4D (and further?) as $2 \cdot q^n_{n-2} / q^n_{n-1} = q^{n-1}_{n-2}$.<br>
+<br>
+
+<hr>
+<br>
+
+4D regular polytopes:<br>
+<br>
+
+<table>
+	<tr>
+		<th>name</th>
+		<th>$q^4_0$</th>
+		<th>$q^4_1$</th>
+		<th>$q^4_2$</th>
+		<th>$q^4_3$</th>
+		<th>$\star(q^4_3)$</th>
+		<th>$|\textbf{T}^4|$</th>
+		<th style='width:1em'></th>
+		<th>$\partial : q^3_0$</th>
+		<th>$\partial : q^3_1$</th>
+		<th>$\partial : q^3_2$</th>
+		<th>$|\textbf{T}^3|$</th>
+		<th style='width:1em'></th>
+		<th>$\partial^2 : q^2_0 = q^2_1 = |\textbf{T}^2|$</th>
+	</tr>
+	<tr>
+		<td>5-cell</td>
+		<td>5</td>
+		<td>10</td>
+		<td>10</td>
+		<td>5</td>
+		<td>5</td>
+		<td>60</td>
+		<td></td>
+		<td>4</td>
+		<td>6</td>
+		<td>4</td>
+		<td>12</td>
+		<td></td>
+		<td>3</td>
+	</tr>
+	<tr>
+		<td>8-cell</td>
+		<td>16</td>
+		<td>32</td>
+		<td>24</td>
+		<td>8</td>
+		<td>16</td>
+		<td>192</td>
+		<td></td>
+		<td>8</td>
+		<td>12</td>
+		<td>6</td>
+		<td>24</td>
+		<td></td>
+		<td>4</td>
+	</tr>
+	<tr>
+		<td>16-cell</td>
+		<td>8</td>
+		<td>24</td>
+		<td>32</td>
+		<td>16</td>
+		<td>8</td>
+		<td>192</td>
+		<td></td>
+		<td>4</td>
+		<td>6</td>
+		<td>4</td>
+		<td>12</td>
+		<td></td>
+		<td>3</td>
+	</tr>
+	<tr>
+		<td>24-cell</td>
+		<td>24</td>
+		<td>96</td>
+		<td>96</td>
+		<td>24</td>
+		<td>24</td>
+		<td>576</td>
+		<td></td>
+		<td>6</td>
+		<td>12</td>
+		<td>8</td>
+		<td>24</td>
+		<td></td>
+		<td>3</td>
+	</tr>
+	<tr>
+		<td>120-cell</td>
+		<td>600</td>
+		<td>1200</td>
+		<td>720</td>
+		<td>120</td>
+		<td>600</td>
+		<td>7200</td>
+		<td></td>
+		<td>20</td>
+		<td>30</td>
+		<td>12</td>
+		<td>60</td>
+		<td></td>
+		<td>5</td>
+	</tr>
+	<tr>
+		<td>600-cell</td>
+		<td>120</td>
+		<td>720</td>
+		<td>1200</td>
+		<td>600</td>
+		<td>120</td>
+		<td>7200</td>
+		<td></td>
+		<td>4</td>
+		<td>6</td>
+		<td>4</td>
+		<td>12</td>
+		<td></td>
+		<td>3</td>
+	</tr>
+</table>
+<br>
+	</body>
+</html>

@@ -58,21 +58,7 @@ $= (D \tilde{e}_a) \otimes e^a + \tilde{e}_a \otimes (D e^a)$<br>
 $= \tilde{e}_a \otimes (d e^a + {\omega^a}_b \wedge e^b)$<br>
 $= \tilde{e}_a \otimes (-\frac{1}{2} {c_{ub}}^a e^u \wedge e^b + {\Gamma^a}_{ub} e^u \wedge e^b)$<br>
 $= \tilde{e}_a \otimes ((-\frac{1}{2} {c_{ub}}^a + {\Gamma^a}_{ub}) e^u \wedge e^b)$<br>
-<br>
-
-exterior derivative of a 1-1 form:<br>
-$d (e_a \wedge e^b)$<br>
-$= d e_a \wedge e^b + e_a \wedge d e^b$<br>
-$= {\omega^v}_a \wedge e_v \wedge e^b + e_a \wedge (-{\omega^b}_v \wedge e^v + \Theta^b)$<br>
-$= e_u \wedge {\omega^u}_a \wedge e^b + \delta^u_a e_u \wedge (-{\omega^b}_v \wedge e^v + \Theta^b)$<br>
-$= e_u \wedge ({\omega^u}_a \wedge e^b - \delta^u_a {\omega^b}_v \wedge e^v + \delta^u_a \Theta^b)$<br>
-$= e_u \wedge (
-	{\omega^c}_v \wedge e^d (
-		\delta^u_c \delta^v_a \delta^b_d
-		- \delta^u_a \delta^v_d \delta^b_c
-	)
-	+ \delta^u_a \Theta^b
-)$<br>
+TODO why did I stop there?  next comes replacing the connection with commutation, and last with the torsion, and viola back to where we started.  Or did I need this equation specifically for something?<br>
 <br>
 
 exterior derivative of a 1-1 basis element:<br>
@@ -80,8 +66,34 @@ TODO which of these should turn into outer products?  If the wedge of a vector a
 $d (e_u \wedge e^u)$<br>
 $= d e_u \wedge e^u + e_u \wedge d e^u$<br>
 $= {\omega^v}_u \wedge e_v \wedge e^u + e_u \wedge (-{\omega^u}_v \wedge e^v + \Theta^u)$<br>
-$= {\omega^u}_v \wedge e_u \wedge e^v - {\omega^u}_v \wedge e_u \wedge e^v + e_u \wedge \Theta^u$<br>
+$= {\omega^u}_v \wedge e_u \wedge e^v - e_u \wedge {\omega^u}_v \wedge e^v + e_u \wedge \Theta^u$<br>
+TODO now if we claim the wedge of a one-form and vector is the outer...<br>
+$= {\omega^u}_v \otimes e_u \otimes e^v - e_u \otimes {\omega^u}_v \wedge e^v + e_u \otimes \Theta^u$<br>
+...but instead maybe we can save this by also defining the order strictly: $d e_u = e_v \wedge {\omega^v}_u$ and not $d e_u = {\omega^v}_u \wedge e_v$<br>
+$d (e_u \wedge e^u)$<br>
+$= d e_u \wedge e^u + e_u \wedge d e^u$<br>
+$= (e_v \otimes {\omega^v}_u) \wedge e^u + e_u \otimes (-{\omega^u}_v \wedge e^v + \Theta^u)$<br>
+Next comes the question of how to distribute wedge and outer ... and it seems like you "just wing it" and say the wedge is always only ever applied across covariant indexes (except in the cases that you're applying it between vectors of course).<br>
+$= e_v \otimes {\omega^v}_u \wedge e^u - e_u \otimes {\omega^u}_v \wedge e^v + e_u \otimes \Theta^u$<br>
+$= e_u \otimes \Theta^u$<br>
+...<br>
 $= e_u \wedge \Theta^u$<br>
+... so the lesson is that the wedge of a one-form and a vector is an outer, and that the order of the outer for the connection form matters.<br>
+<br>
+
+Same for if you swap the order of our wedge?<br>
+How well does this "wedge of vector and one-form equals outer" rule hold up?<br>
+$d (e^u \wedge e_u)$<br>
+$= d e^u \wedge e_u + e^u \wedge d e_u$<br>
+$= (-{\omega^u}_v \wedge e^v + \Theta^u) \wedge e_u + e^u \wedge (e_v \otimes {\omega^v}_u)$<br>
+$= -{\omega^u}_v \wedge e^v \wedge e_u + \Theta^u \wedge e_u + e^u \wedge (e_v \otimes {\omega^v}_u)$<br>
+using "wedge of vector and one form is outer" rule<br>
+$= \Theta^u \otimes e_u - {\omega^u}_v \wedge e^v \otimes e_u + e^u \wedge (e_v \otimes {\omega^v}_u)$<br>
+...but what is the wedge of a one-form and a vector-valued one-form? can we just ignore the vector basis and use $e^a \wedge (e_u \otimes e^b) = -(e_u \otimes e^b) \wedge e^a$?  And if so, why doesn't this rule work for a vector-valued zero form (which, if it did, would make the result symmetric)?<br>
+$= \Theta^u \otimes e_u - {\omega^u}_v \wedge e^v \otimes e_u + e^v \otimes e_u \otimes {\omega^u}_v$<br>
+so it looks like you have to form some kind of convention, if you define $d e_u = e_v \otimes {\omega^v}_u$ then you can only define the rule of $d (e_u \otimes e^u)$ to equal the torsion,
+and if you define $d e_u = {\omega^v}_u \otimes e_v$ then you can only define rule of $d (e^u \otimes e_u)$ to equal the torsion.
+<br>
 <br>
 
 <!--

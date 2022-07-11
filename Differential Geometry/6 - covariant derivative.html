@@ -89,34 +89,41 @@ $\nabla_u v = \nabla_{u^a e_a} (v_b e^b) = u^a \nabla_a (v_b e^b) = u^a (e_a(v_b
 <br>
 
 Exterior derivative of a vector basis:<br>
-Consider vectors to be collections of 0-forms.<br>
-Then an exterior derivative of a vector is a 1-form.<br>
-The function be arbitrary, but we will define it to be the same as the covariant vector derivative:<br>
-$d e_b = {\omega^a}_b \otimes e_a = {\Gamma^a}_{cb} e^c \otimes e_a$<br>
-TODO should this be $\otimes$ or $\wedge$?<br>
-Should $\wedge$ be the sum of all antisymmetric basis elements, or the sum of only the antisymmetric forms, and the outer of all vectors?<br>
-If the latter is chosen then ${\omega^a}_b \otimes e_a = {\omega^a}_b \wedge e_a$<br>
-But then, if $\phi \wedge a = a \wedge \phi$ for 0-form scalar $\phi$ and 1-form $a$, would $v \wedge a = a \wedge v$ for vector-of-0-forms v and 1-form a? If so, then wouldn't this imply that $a \otimes b = b \otimes a$?<br>
-It is looking like the wedge product of a 0-form vector and a 1-form becomes an outer product.<br>
+Consider vectors to be vector-valued 0-forms, i.e. 0-form scalars multiplied by a vector basis.<br>
+Then an exterior derivative of a vector is a vector-valued 1-form.<br>
+The coefficients of the relation of the exterior derivative of a vector basis to the basis is arbitrary, but we will define it to be the same as the covariant vector derivative coefficients:<br>
+$d e_b = e_a \wedge {\omega^a}_b$<br>
+Now we have previously defined the wedge product of a vector and a vector to be antisymmetric, and of a 1-form and a 1-form to be antisymmetric.
+But in the case of the wedge of a vector and a wedge product, we'll define it to be an outer product so that it is not symmetric (as is the case of the wedge of a 0-form (scalar) and a 1-form) nor antisymmetric (as is the cases we just described).
+<br>
+$d e_b = e_a \otimes {\omega^a}_b$<br>
+...and last, we equate the coefficients of our exterior derivative of a vector basis, our vector-valued 1-form, with our connection coefficients:<br>
+$= e_a \otimes {\Gamma^a}_{cb} e^c $<br>
+I put the vector basis on the left side, it'll come up later in my exterior derivative of a 1-1 basis element in the worksheet on torsion.<br>
 <br>
 
 Also notice that now our exterior derivative needs to be equipped with an associated connection.
 There has been no specification as to what specific connection is needed.
 You don't necessarily have to use the Levi-Civita torsion-free connection with your exterior derivative.
 Should I start denoting which connection my exterior derivative is using?
-<br>
+This means that just as you can have separate covariant derivatives with associated connection coefficients, you can also have separate exterior derivatives with their respective connection coefficients.<br>
 <br>
 
 Exterior derivative of a vector:<br>
 $dv = d(v^a e_a)
 	= dv^a \wedge e_a + v^a de_a$<br>
-using the rule that the wedge of a 1-form and a vector-valued 0-form is the outer product (and no kind of symmetric or antisymmetric product):<br>
+using the rule that the wedge of a 1-form and a vector-valued 0-form is the outer product:<br>
 $= dv^a \otimes e_a + v^a de_a$<br>
-$= e_b(v^a) e^b \otimes e_a + v^a {\Gamma^b}_{ca} e^c \otimes e_b$<br>
-$= (e_b(v^a) + v^u {\Gamma^a}_{bu}) e^b \otimes e_a$<br>
-$= e^b \otimes \nabla_b (v^a e_a)$<br>
+$= e_b(v^a) e^b \otimes e_a + v^a {\Gamma^b}_{ca} e_b \otimes e^c$<br>
+$= (e_b(v^a) + v^u {\Gamma^a}_{bu}) e_a \otimes e^b$<br>
+$= \nabla_b (v^a e_a) \otimes e^b$<br>
 $= \nabla v$<br>
 <br>
+
+TODO nah put the basis on the right, and then you can only define $d (e^u \wedge e_u)$ instead of vice versa to be the torsion.<br>
+Or maybe the wedge of a vector valued 0 form is symmetric, and the inter-ordering of vectors and forms doesn't matter, only the ordering of vectors with respect to eachother and ordering of forms with respect to eachother?<br>
+<br>
+
 
 Exterior derivative of a vector and p-form:<br>
 For vector $v$ and p-form $\alpha$,<br>
