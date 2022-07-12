@@ -24,12 +24,12 @@ Defining our terms:<br>
 <br>
 
 $n =$ dimension of manifold which our shape resides in.<br>
-$\tilde{T}_i \in \mathbb{R}^{n \times n} =$ i'th isomorphic transform in the minimal set.<br>
-$\tilde{\textbf{T}} = \{ 1 \le i \le p, \tilde{T}_i \} =$ minimum set of isomorphic transforms that can be used to recreate all isomorphic transforms.<br>
-$p = |\tilde{\textbf{T}}| =$ the number of minimal isomorphic transforms.<br>
-$T_i \in \mathbb{R}^{n \times n} =$ i'th isomorphic transform in the set of all unique transforms.<br>
-$\textbf{T} = \{ T_i \} = \{ 1 \le k, i_1, ..., i_k \in [1,m], \tilde{T}_{i_1} \cdot ... \cdot \tilde{T}_{i_k} \} =$ set of all unique isomorphic transforms.<br>
-$q = |\textbf{T}| =$ the number of unique isomorphic transforms.<br>
+$\tilde{T}_i \in \mathbb{R}^{n \times n} =$ i'th automorphic transform in the minimal set.<br>
+$\tilde{\textbf{T}} = \{ 1 \le i \le p, \tilde{T}_i \} =$ minimum set of automorphic transforms that can be used to recreate all automorphic transforms.<br>
+$p = |\tilde{\textbf{T}}| =$ the number of minimal automorphic transforms.<br>
+$T_i \in \mathbb{R}^{n \times n} =$ i'th automorphic transform in the set of all unique transforms.<br>
+$\textbf{T} = \{ T_i \} = \{ 1 \le k, i_1, ..., i_k \in [1,m], \tilde{T}_{i_1} \cdot ... \cdot \tilde{T}_{i_k} \} =$ set of all unique automorphic transforms.<br>
+$q = |\textbf{T}| =$ the number of unique automorphic transforms.<br>
 <br>
 
 Vertexes / 0-forms:<br>
@@ -38,7 +38,7 @@ Vertexes / 0-forms:<br>
 $v_1 \in \mathbb{R}^n =$ the position of some arbitrary initial vertex.<br>
 $\textbf{v} = \{v_i \} = \{ T_i \cdot v_1 \} =$ the set of all vertices.<br>
 $m = |\textbf{v}| =$ the number of vertices.<br>
-(Notice that $m \le q$, i.e. the number of vertices is $\le$ the number of unique isomorphic transforms.) <br>
+(Notice that $m \le q$, i.e. the number of vertices is $\le$ the number of unique automorphic transforms.) <br>
 $V \in \mathbb{R}^{n \times m}=$ matrix with column vectors the set of all vertices, such that $V_{ij} = (v_j)_i$.<br>
 $P_i \in \mathbb{R}^{m \times m} =$ permutation transform of vertices corresponding with i'th transformation, such that $T_i V = V P_i$.<br>
 <br>
@@ -58,7 +58,7 @@ $\textbf{v}(S) = \left\{ v_j(S) \right\} =$ set of vertexes of the solid S.<br>
 $q_k(S) = $ number of k-forms in solid S.  0-forms are vertexes, so $|\textbf{v}(S)| = q_0(S)$.<br>
 $\partial S = $ the solid that is the surface element of solid S.  For regular convex polytopes there is only one shape, unlike archimedean solids which have multiple shapes in its surface.<br>
 $\star S = $ dual of solid S.<br>
-$\textbf{T}(S) = $ the set of isomorphic transforms -- rotations only -- associated with this shape, such that the vertexes, edges, and faces are all preserved.  Something something about duals means that preserving vertexes means preserving faces right?<br>
+$\textbf{T}(S) = $ the set of automorphic transforms -- rotations only -- associated with this shape, such that the vertexes, edges, and faces are all preserved.  Something something about duals means that preserving vertexes means preserving faces right?<br>
 <br>
 
 <hr>
@@ -82,14 +82,11 @@ It has k edges (1-forms), i.e. $q_1(S^2_k) = k$.<br>
 So for 2D regular convex polytopes we see the number of vertexes and edges match, i.e. $q_0(S^2_k) = q_1(S^2_k) = k$.<br>
 <br>
 
-From this we fulfill the Euler characteristic equation: $\chi = V - E + F = 2$, where V = the number of vertexes, E = the number of edges, F = number of faces.
-So $\chi = q_2(S^2_k) - q_1(S^2_k) + q_0(S^2_k) = q_2(S^2_k) - k + k = q_2(S^2_k)$.<br>
+From this we can use the Euler characteristic equation: $\chi = V - E + F$, where V = the number of vertexes, E = the number of edges, F = number of faces.
+So $\chi = q_1(S^2_k) + q_0(S^2_k) = - k + k = 0$.<br>
 <br>
 
-We can also think of two different 2-forms associated with our polygon: the area inside and the area outside, and from that claim $q_2(S^2_k) = 2$, and then argue that $\chi = 2$, but maybe I can't make that assumption.<br>
-<br>
-
-For isometric transform groups in 2D we also have a group size of $|\textbf{T}(S^2_k)| = k = q_0 = q_1$ rotations that preserve the shape.<br>
+For automorphic transform groups in 2D we also have a group size of $|\textbf{T}(S^2_k)| = k = q_0 = q_1$ rotations that preserve the shape.<br>
 For our earlier choice of vertices, the k'th transform takes the form of 
 $T^2_{p,k} = \left[\begin{matrix}
 	cos(\frac{2 \pi k}{p}) & -sin(\frac{2 \pi k}{p}) \\
@@ -117,11 +114,11 @@ so $q_1(S^3_m) = $ the number of edges.<br>
 so $q_2(S^3_m) = $ the number of faces.<br>
 
 $\star S^3_m = $ the solid's dual solid.<br>
-$|\textbf{T}(S^3_m)| = $ the number of isometric transforms associated with our solid.<br>
+$|\textbf{T}(S^3_m)| = $ the number of automorphic transforms associated with our solid.<br>
 
 $\partial S^3_p = S^2_q = $ the 2D q-sided solid that makes up surface of the 3D p-sided solid. TODO later come up with an equation that relates p and q.<br>
 $q_k(\partial S^3_m) = $ the number of k-forms of a surface-element of the 3D regular convex polytope.  
-$q_1(\partial S^3_m) = $ the number of sides of the polygons that cover our m-sided polyhedron.  For 2D this is also equal to the number of vertexes, and to the size of the isomorphism transform group.<br>
+$q_1(\partial S^3_m) = $ the number of sides of the polygons that cover our m-sided polyhedron.  For 2D this is also equal to the number of vertexes, and to the size of the automorphic transform group.<br>
 $\chi = q_0(S^3_m) - q_1(S^3_m) + q_2(S^3_m) = $ the Euler characteristic.<br>
 <br>
 
@@ -211,11 +208,11 @@ If our notation is that $S^3_m$ represents a m-sided regular convex polytope in 
 In general I will call a m-polytope in n-dimensions $S^n_m$ and therefore it will have m surface polytopes, i.e. $q_{n-1}(S^n_m) = m$.<br>
 <br>
 
-One easy rule to see is that the number of faces of the dual ($q_2 \star(S^3_m)$) is equal to the number of vertexes of the original shape ($q_0(S^3_m)$), and same vice versa, that $q_0(\star S^3_m) = q_2(S^3_m)$.<br>
+One easy rule to see is that the number of faces of the dual ($q_2(\star S^3_m)$) is equal to the number of vertexes of the original shape ($q_0(S^3_m)$), and same vice versa, that $q_0(\star S^3_m) = q_2(S^3_m)$.<br>
 In general, $q_k(S^n_m) = q_{n-k}(\star S^n_m)$.<br>
 <br>
 
-Another rule is that the isometric transform set size of a shape and its dual match.  In fact the groups are identical.  Because both groups must preserve both the vertexes and the sides, and between duals these two properties are exchanged.<br>
+Another rule is that the automorphic transform set size of a shape and its dual match.  In fact the groups are identical.  Because both groups must preserve both the vertexes and the sides, and between duals these two properties are exchanged.<br>
 So $\textbf{T}(S^n_m) = \textbf{T}^n(\star S^n_m)$.<br>
 <br>
 
@@ -249,6 +246,9 @@ For more on some exact tables of vertexes, transforms, and multiplication tables
 4D regular convex polytopes:<br>
 <br>
 
+Euler characteristic: $\chi = q_0 - q_1 + q_2 - q_3$<br>
+<br>
+
 <table>
 	<tr>
 		<th>name</th>
@@ -257,6 +257,7 @@ For more on some exact tables of vertexes, transforms, and multiplication tables
 		<th>$q_1(S^4_m)$</th>
 		<th>$q_2(S^4_m)$</th>
 		<th>$q_3(S^4_m)$</th>
+		<th>$\chi$</th>
 		<th>$\star S^4_m$</th>
 		<th>$|\textbf{T}(S^4_m)|$</th>
 		<th style='width:1em'></th>
@@ -275,6 +276,7 @@ For more on some exact tables of vertexes, transforms, and multiplication tables
 		<td>10</td>
 		<td>10</td>
 		<td>5</td>
+		<td>0</td>
 		<td>$S^4_5$</td>
 		<td>60</td>
 		<td></td>
@@ -293,6 +295,7 @@ For more on some exact tables of vertexes, transforms, and multiplication tables
 		<td>32</td>
 		<td>24</td>
 		<td>8</td>
+		<td>0</td>
 		<td>$S^4_{16}$</td>
 		<td>192</td>
 		<td></td>
@@ -311,6 +314,7 @@ For more on some exact tables of vertexes, transforms, and multiplication tables
 		<td>24</td>
 		<td>32</td>
 		<td>16</td>
+		<td>0</td>
 		<td>$S^4_8$</td>
 		<td>192</td>
 		<td></td>
@@ -329,6 +333,7 @@ For more on some exact tables of vertexes, transforms, and multiplication tables
 		<td>96</td>
 		<td>96</td>
 		<td>24</td>
+		<td>0</td>
 		<td>$S^4_{24}$</td>
 		<td>576</td>
 		<td></td>
@@ -347,6 +352,7 @@ For more on some exact tables of vertexes, transforms, and multiplication tables
 		<td>1200</td>
 		<td>720</td>
 		<td>120</td>
+		<td>0</td>
 		<td>$S^4_{600}$</td>
 		<td>7200</td>
 		<td></td>
@@ -365,6 +371,7 @@ For more on some exact tables of vertexes, transforms, and multiplication tables
 		<td>720</td>
 		<td>1200</td>
 		<td>600</td>
+		<td>0</td>
 		<td>$S^4_{120}$</td>
 		<td>7200</td>
 		<td></td>
@@ -410,6 +417,7 @@ They only have 3 different regular convex polytopes, the $(n+1)$-simplex, the $(
 		<th>name</th>
 		<th>$S^n_m$</th>
 		<th>$q_0(S^n_m)$</th>
+		<th>$q_k(S^n_m)$</th>
 		<th>$q_{n-1}(S^n_m)$</th>
 		<th>$\star S^n_m$</th>
 		<th>$|\textbf{T}(S^n_m)|$</th>
@@ -420,6 +428,7 @@ They only have 3 different regular convex polytopes, the $(n+1)$-simplex, the $(
 		<td>simplex</td>
 		<td>$S^n_{n+1}$</td>
 		<td>$n+1$</td>
+		<th>$\left( \begin{matrix} n+1 \\ k+1 \end{matrix} \right)$</th>
 		<td>$n+1$</td>
 		<td>$S^n_{n+1}$</td>
 		<td>$\frac{1}{2}(n+1)!$</td>
@@ -430,6 +439,7 @@ They only have 3 different regular convex polytopes, the $(n+1)$-simplex, the $(
 		<td>hypercube</td>
 		<td>$S^n_{2n}$</td>
 		<td>$2^n$</td>
+		<td>$2^{n-k} \left( \begin{matrix} n \\ k \end{matrix} \right)$</td>
 		<td>$2 n$</td>
 		<td>$S^n_{2^n}$</td>
 		<td>$2^{n-1} \cdot n!$</td>
@@ -440,6 +450,7 @@ They only have 3 different regular convex polytopes, the $(n+1)$-simplex, the $(
 		<td>orthoplex</td>
 		<td>$S^n_{2^n}$</td>
 		<td>$2 n$</td>
+		<td>$2^{k+1} \left( \begin{matrix} n \\ k+1 \end{matrix} \right)$</td>
 		<td>$2^n$</td>
 		<td>$S^n_{2 n}$</td>
 		<td>$2^{n-1} \cdot n!$</td>
@@ -469,7 +480,15 @@ $\partial S^n_{2^n} = S^{n-1}_n$<br>
 $|\textbf{T}(S^n_{2^n})| = 2^n \cdot |\textbf{T}(\partial S^n_{2^n})| = 2^n \cdot |\textbf{T}(S^{n-1}_n)|$.<br>
 No need to do a recursive definition, the transform group size is just based on the previous dimension's simplex transform group:<br>
 $|\textbf{T}(S^n_{2^n})| = 2^n \cdot \frac{1}{2} \cdot n! = 2^{n-1} \cdot n!$<br>
-Duh.  It's dual to the hypercube, of course it has the same sized isometric transform group.<br>
+Duh.  It's dual to the hypercube, of course it has the same sized automorphic transform group.<br>
+<br>
+
+Ok the number of k-forms I got from <a href="https://en.wikipedia.org/wiki/List_of_regular_polytopes_and_compounds#Convex_4">https://en.wikipedia.org/wiki/List_of_regular_polytopes_and_compounds#Convex_4</a>.  Maybe I'll try to prove them later.<br>
+<br>
+
+It's interesting that the hypercube and orthoplex are duals (they have matching automorphic transform groups), but the simplex and the orthoplex have matching surface elements (of simplexes).<br>
+<br>
+
 <hr>
 <br>
 
@@ -477,8 +496,8 @@ So the big question:
 Is there a number theory reason that there are only 5 Platonic solids, and 6 regular convex polytopes of 4D?<br>
 <br>
 
-If a regular convex polyhedron must have a dual then it and its dual must have transform groups that are equal to their surface polygon number of sides times the number of surface polygons.
-What other arrangements are possible?<br>
+If a regular convex polyhedron must have a dual then it and its dual must have transform groups that are equal to their surface polygon number of sides times the number of surface polygons, then
+what arrangements are possible simply by prime factorization?<br>
 <br>
 
 	</body>
