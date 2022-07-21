@@ -465,7 +465,6 @@ And $\partial S^n_{n+1} = S^{n-1}_n$.  So there's our recursive relation.<br>
 $|\textbf{T}(S^n_{n+1})| = (n+1) \cdot |\textbf{T}(\partial S^n_{n+1})| = (n+1) \cdot |\textbf{T}(S^{n-1}_n)|$.<br>
 Base-case: $|\textbf{T}(S^2_3)| = 3 = \frac{3!}{2}$.<br>
 From there we can calculate $|\textbf{T}(S^n_{n+1})| = \underset{m=2}{\overset{n}{\Pi}} (m+1) = \frac{1}{2} (n+1)!$.<br>
-Mind you this would be strictly $(n+1)!$ if I also included reflections, but here I'm only considering rotations.<br> 
 <br>
 
 Now the $(2n)$-hypercube:<br>
@@ -487,6 +486,9 @@ Ok the number of k-forms I got from <a href="https://en.wikipedia.org/wiki/List_
 <br>
 
 It's interesting that the hypercube and orthoplex are duals (they have matching automorphic transform groups), but the simplex and the orthoplex have matching surface elements (of simplexes).<br>
+<br>
+
+Mind if I also included reflections then my automorphism rotation group size becomes $|\textbf{T}(S^n_{n+1})| = (n+1)!$ and $|\textbf{T}(S^n_{2^n})| =  |\textbf{T}(S^n_{2n})| = 2^n n!$.  This looks a lot cleaner.  But I'm trying to preserve my handedness.<br>
 <br>
 
 <hr>
