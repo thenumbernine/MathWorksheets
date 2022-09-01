@@ -1,0 +1,422 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<title>Sundial Eccentricity as a Function of Latitude</title>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<script type='text/javascript' src='template.js'/></script>
+		<script>
+
+		</script>
+	</head>
+	<body templated>
+<br>	
+
+<h2>Sundial Eccentricity as a Function of Latitude</h2>
+
+First lets look at our example:<br>
+<br>
+
+<img src='sundial-ellipse.png'/><br>
+<br>
+
+Diameter across major axis = 2x major axis = $2 a = 495$ (measured in the picture).<br>
+So major axis would be $a = 247.5$.<br>
+Oppoosite focus to major axis = c + a = 374.1 measured.<br>
+focus to center mark = c = 126 measured.<br>
+so major axis = a = 374.1 - 126 = 248.1 <br>
+seems to agree with half of major diameter.<br>
+average of the two: a = (247.5 + 248.1) / 2 = 247.8<br>
+finding eccentricity based on this: e = c / a = 126 / 247.8 = 0.50847457627119.<br>
+Using this to reverse-engineer the minor axis: $e = \sqrt{1 - \frac{b^2}{a^2}}$ means $b = \sqrt{a^2 (1 - e^2)} = \sqrt{a^2 - c^2}$. So this means $c^2 = a^2 - b^2$.<br>
+So we get $b = 213.37488137079$.<br>
+<br>	
+
+<div style='padding-left:4em'>
+	<h3>Here's me failing to inverse-transform the perspective transform out of the picture</h3>
+	<img src='sundial-ellipse-perspective-undo.png'/><br>
+	<br>
+
+	ok I tried to perspective-transform the pic to get the minor axis up and down from the center to be equal,<br>
+	i.e. make it a directly ontop down pic of the ellipse so no perspective distortion at all.<br>
+	This gave me a ratio of b = 122 minor axis and a = 198 major axis and a focus of c = 100.<br>
+	So $e = c / a = 100 / 198 = 0.50505050505051.$<br>
+	And $e = \sqrt{1 - \frac{b^2}{a^2}} = 0.78761974503507$ is wildly off the last two calculated eccentricities, so maybe my perpsective-undo wasn't so accurate.<br>
+	The take-away lesson is this: trying to use photoshop to inverse-transform can still sneak in unphysical scale effects.<br>
+</div>
+<br>
+
+Alright so two of our three eccentricities were about $e = 0.5072$, so what latitude sundial ellipse does that correspond with?<br>
+<br>
+
+Ok so how to calculate the latitude based on the eccentricity of a sundial ellipse.<br>
+Spherical coordinates: 
+$\vec{P}(\vec{x}) 
+	= \vec{P}(r, \theta, \phi) 
+	= \left[ \begin{matrix} x(r, \theta, \phi) \\ y(r, \theta, \phi) \\ z(r, \theta, \phi) \end{matrix} \right] 
+	= \left[ \begin{matrix} r cos(\phi) sin(\theta) \\ r sin(\phi) sin(\theta) \\ r cos (\theta) \end{matrix} \right]
+$.<br>
+$\theta = $ is linear with respect to the latitude of the Earth.  While the latitude has 0 at the equator, spherical coordiante $\theta$ has 0 at the north pole.<br>
+$\phi = $ the angle around the earth.  This is longitude, no need to adjust.  If you want to account for Earth rotation, just substitue $\phi = \phi_0 + \omega t$ for $\omega =$ angular velocity and $t =$ time.<br>
+<br>
+
+Lets say our sun orbits us at a revolution axis angle of $\alpha$ from the z axis towards the x axis,<br>
+so $n = \left[ \begin{matrix} sin(\alpha) \\ 0 \\ cos(\alpha) \end{matrix} \right]$<br>
+<br>
+	
+Now we want to find the space perpendicular to this, for our orbit of our sun:<br>
+$v = \left[ \begin{matrix} v_x \\ v_y \\ v_z \end{matrix} \right]$<br>
+<br>
+Such that $v \cdot n = v_x sin(\alpha) + v_z cos(\alpha) = 0$.<br>
+Therefore $v_z = -v_x tan(\alpha)$.<br>
+Substitute:<br>
+$v = \left[ \begin{matrix} v_x \\ v_y \\ -v_x tan(\alpha) \end{matrix} \right]$<br>
+Now lets look at the unit vectors:<br>
+$|v| = v_x^2 + v_y^2 + v_x^2 tan(\alpha)^2 = 1$<br>
+$v_x^2 cos(\alpha)^2 + v_y^2 cos(\alpha)^2 + v_x^2 sin(\alpha)^2 = cos(\alpha)^2$<br>
+$v_x^2 + v_y^2 cos(\alpha)^2 = cos(\alpha)^2$<br>
+$v_x^2 / cos(\alpha)^2 + v_y^2 = 1$<br>
+Let $t = v_x / cos(\alpha)$<br>
+$t^2 + v_y^2 = 1$<br>
+Now we can parameterize these two by a rotation: let $t = cos(\beta)$ and $v_y = sin(\beta)$:<br>
+Then $v_x = cos(\alpha) t = cos(\alpha) cos(\beta)$<br>
+And our vector becomes:<br>
+$v = \left[ \begin{matrix} 
+	cos(\alpha) cos(\beta) \\ 
+	sin(\beta) \\ 
+	-sin(\alpha) cos(\beta) \end{matrix} 
+\right]$<br>
+So when our tilt angle $\alpha = 0$ and our revolution angle $\beta = 0$ we see $v = \hat{x}$ points along the x-axis.<br>
+So v points from the sun to the Earth, in an Earth-relative coordinate system.<br>
+<br>
+
+Let's consider the Earth to have a radius R.<br>
+I could consider the sun's distance as well, and trace lines from the Sun center, but instead I will just assume the sun is so far away that light rays can be treated like straight lines.<br>
+Now let's look at a line segment, starting on the sphere surface of $r = R$, sticking up by a distance of $\delta$:<br>
+$\vec{P}_\delta = \vec{P}(R + \delta, \theta, \phi) 
+	= \left[ \begin{matrix} 
+		(R+\delta) cos(\phi) sin(\theta) \\ 
+		(R+\delta) sin(\phi) sin(\theta) \\ 
+		(R+\delta) cos(\theta) 
+	\end{matrix} \right]$<br>
+Now let's draw a line from this along the sun vector, and parameterize this by some parameter $s$:
+$\vec{P}_{ray} = \vec{P}_\delta + v \cdot s$.<br>
+Now if we solve for when this ray's magnitude is $R$, we can find where it intersects the sphere, if at all.<br>
+$|\vec{P}_{ray}| = R$<br> 
+$|\vec{P}_\delta + v \cdot s| = R$<br>
+$(\vec{P}_\delta + v \cdot s) \cdot (\vec{P}_\delta + v \cdot s) = R^2$<br>
+$|\vec{P}_\delta|^2 + 2 (\vec{P}_\delta \cdot v) s + |v|^2 cdot s^2 = R^2$<br>
+using $|v| = 1$ and using $|\vec{P}_\delta| = R + \delta$:<br>
+$(R + \delta)^2 + 2 (\vec{P}_\delta \cdot v) s + s^2 = R^2$<br>
+$2 R \delta + \delta^2 + 2 (\vec{P}_\delta \cdot v) s + s^2 = 0$<br>
+Now if we want we can solve this for $s$:<br>
+$s = \frac{1}{2} (-2 (\vec{P}_\delta \cdot v) \pm \sqrt{(2 (\vec{P}_\delta \cdot v))^2 - 4 (2 R \delta + \delta^2)} )$<br>
+$s = -(\vec{P}_\delta \cdot v) \pm \sqrt{(\vec{P}_\delta \cdot v)^2 - (2 R \delta + \delta^2)}$<br>
+and for entertainment, solve for $\vec{P}_\delta \cdot v$:<br>
+$\vec{P}_\delta \cdot v$<br>
+$= \left[ \begin{matrix} (R+\delta) cos(\phi) sin(\theta) \\ (R+\delta) sin(\phi) sin(\theta) \\ (R+\delta) cos(\theta) \end{matrix} \right] 
+	\cdot \left[ \begin{matrix} cos(\alpha) cos(\beta) \\ sin(\beta) \\ -sin(\alpha) cos(\beta) \end{matrix} \right]$<br>
+$= (R+\delta) (
+	cos(\phi) sin(\theta) cos(\alpha) cos(\beta)
+	+ sin(\phi) sin(\theta) sin(\beta)
+	- cos(\theta) sin(\alpha) cos(\beta)
+)$<br>
+... not that this is going to matter anyways.<br>
+<br>
+
+Ok we now have our description of our intersection from the line segment top, along the sun ray vector, back to the sphere surface.<br>
+How do we trace its path on the ground?<br>
+One way is looking at the local orthonormalized basis at our point.<br>
+Our coordinate basis of our sphere manifold coordinate chart is:<br>
+$\partial_r = \frac{\partial}{\partial r} \vec{P}(r, \theta, \phi) 
+	= \frac{\partial}{\partial r} \left[ \begin{matrix} 
+		r cos(\phi) sin(\theta) \\ 
+		r sin(\phi) sin(\theta) \\ r cos (\theta) 
+	\end{matrix} \right]
+	= \left[ \begin{matrix} 
+		cos(\phi) sin(\theta) \\ 
+		sin(\phi) sin(\theta) \\ 
+		cos (\theta) \end{matrix} 
+	\right]$<br>
+$\partial_\theta 
+	= \frac{\partial}{\partial \theta} \left[ \begin{matrix} 
+		r cos(\phi) sin(\theta) \\ 
+		r sin(\phi) sin(\theta) \\ 
+		r cos (\theta) \end{matrix} 
+	\right]
+	= \left[ \begin{matrix} 
+		r cos(\phi) cos(\theta) \\ 
+		r sin(\phi) cos(\theta) \\ 
+		-r sin(\theta) 
+	\end{matrix} \right]$<br>
+$\partial_\phi
+	= \frac{\partial}{\partial \phi} \left[ \begin{matrix} 
+		r cos(\phi) sin(\theta) \\ 
+		r sin(\phi) sin(\theta) \\ 
+		r cos (\theta) \end{matrix} 
+	\right]
+	= \left[ \begin{matrix} 
+		-r sin(\phi) sin(\theta) \\ 
+		r cos(\phi) sin(\theta) \\ 
+		0
+	\end{matrix} \right]$<br>
+Now lets orthonormalize it.  Well, it's already orthogonal.  Let's just normalize it:<br>
+$|\partial_r| = 1$, so $\hat{e}_r 
+	= \frac{\partial_r}{|\partial_r|}
+	= \left[ \begin{matrix} 
+		cos(\phi) sin(\theta) \\ 
+		sin(\phi) sin(\theta) \\ 
+		cos (\theta) \end{matrix} 
+	\right]$.<br>
+$|\partial_\theta| = r$, so $\hat{e}_\theta 
+	= \frac{\partial_\theta}{|\partial_\theta|} 
+	= \left[ \begin{matrix} 
+		cos(\phi) cos(\theta) \\ 
+		sin(\phi) cos(\theta) \\ 
+		-sin(\theta) 
+	\end{matrix} \right]$<br>
+$|\partial_\phi| 
+	= r sin(\theta)$, so $\hat{e}_\phi 
+	= \frac{\partial_\phi}{|\partial_\phi|} 
+	= \left[ \begin{matrix} 
+		-sin(\phi) \\ 
+		cos(\phi) \\ 
+		0
+	\end{matrix} \right]
+$<br>
+There's our orthogonal basis at point $\vec{x} = [ r, \theta, \phi ]^T$.<br>
+<br>
+
+Ok now lets look at the path of the sundial shadow (which we called $\vec{P}_{ray}$), but relative to the sundial center $\vec{P}$.<br>
+We should get a vector that is perpendicular to the Earth's surace, and therefore perpendicular to our sundial line segment:<br>
+$\vec{P}_{surf} = \vec{P}_{ray} - \vec{P}$<br>
+$\vec{P}_{surf} = \vec{P}_\delta + v \cdot s - \vec{P}$<br>
+$\vec{P}_{surf} = \left[ \begin{matrix} 
+		(R+\delta) cos(\phi) sin(\theta) \\ 
+		(R+\delta) sin(\phi) sin(\theta) \\ 
+		(R+\delta) cos(\theta) 
+	\end{matrix} \right]
+	+ \left[ \begin{matrix} 
+		cos(\alpha) cos(\beta) \\ 
+		sin(\beta) \\ 
+		-sin(\alpha) cos(\beta) 
+	\end{matrix} \right] 
+	\cdot s
+	- \left[ \begin{matrix} 
+		R cos(\phi) sin(\theta) \\ 
+		R sin(\phi) sin(\theta) \\ 
+		R cos(\theta) 
+	\end{matrix} \right]
+$<br>
+$\vec{P}_{surf} = \left[ \begin{matrix} 
+		\delta cos(\phi) sin(\theta) + cos(\alpha) cos(\beta) s \\ 
+		\delta sin(\phi) sin(\theta) + sin(\beta) s \\ 
+		\delta cos(\theta) - sin(\alpha) cos(\beta) s
+	\end{matrix} \right]
+$<br>
+Alright now lets decompose this into our orthonormal frame in our spherical coordinate system.<br>
+Specifically, let's look at the eastward component, which will be given by inner-product with $\hat{e}_\phi$,<br>
+and let's look at the northward component, which will be given by inner-product with $-\hat{e}_\theta$.<br>
+The eastward part:<br>
+$l_x = \vec{P}_{surf} \cdot \hat{e}_\phi$<br>
+$l_x = \left[ \begin{matrix} 
+		\delta cos(\phi) sin(\theta) + cos(\alpha) cos(\beta) s \\ 
+		\delta sin(\phi) sin(\theta) + sin(\beta) s \\ 
+		\delta cos(\theta) - sin(\alpha) cos(\beta) s
+	\end{matrix} \right] \cdot \left[ \begin{matrix} 
+		-sin(\phi) \\ 
+		cos(\phi) \\ 
+		0
+	\end{matrix} \right]
+$<br>
+$l_x = 
+	-(\delta cos(\phi) sin(\theta) + cos(\alpha) cos(\beta) s) sin(\phi)
+	+ (\delta sin(\phi) sin(\theta) + sin(\beta) s) cos(\phi)
+$<br>
+$l_x = s (
+		 sin(\beta) cos(\phi)
+		- cos(\alpha) cos(\beta) sin(\phi)
+	)
+$<br>
+<br>
+
+$l_y = \vec{P}_{surf} \cdot -\hat{e}_{\theta}$<br>
+$l_y = \left[ \begin{matrix} 
+		\delta cos(\phi) sin(\theta) + cos(\alpha) cos(\beta) s \\ 
+		\delta sin(\phi) sin(\theta) + sin(\beta) s \\ 
+		\delta cos(\theta) - sin(\alpha) cos(\beta) s
+	\end{matrix} \right] \cdot \left[ \begin{matrix} 
+		-cos(\phi) cos(\theta) \\ 
+		-sin(\phi) cos(\theta) \\ 
+		sin(\theta) 
+	\end{matrix} \right]
+$<br>
+$l_y = 
+	- (\delta cos(\phi) sin(\theta) + cos(\alpha) cos(\beta) s) cos(\phi) cos(\theta)
+	- (\delta sin(\phi) sin(\theta) + sin(\beta) s) sin(\phi) cos(\theta) 
+	+ (\delta cos(\theta) - sin(\alpha) cos(\beta) s) sin(\theta)
+$<br>
+$l_y = s (
+		- cos(\alpha) cos(\beta) cos(\phi) cos(\theta)
+		- sin(\beta) sin(\phi) cos(\theta)
+		- sin(\alpha) cos(\beta) sin(\theta)
+	)
+$<br>
+<br>
+
+Alright, let's look at this in its 2D vector form:<br>
+$\vec{l} = s \left[ \begin{matrix}
+	 sin(\beta) cos(\phi) - cos(\alpha) cos(\beta) sin(\phi) \\
+	- cos(\alpha) cos(\beta) cos(\phi) cos(\theta) - sin(\beta) sin(\phi) cos(\theta) - sin(\alpha) cos(\beta) sin(\theta)
+\end{matrix} \right]$<br>
+<br>
+
+Ok I picked east and north so that, if we were standing on the Earth's surface, facing Northward, we would see a x and y 2D graph of our path,
+but it turns out on this 2D graph the path's y is flipped, so let's just extract that flip first:<br>
+$\vec{l} = s 
+\left[ \begin{matrix}
+	1 &amp; 0 \\
+	0 &amp; -1
+\end{matrix} \right]
+\left[ \begin{matrix}
+	sin(\beta) cos(\phi) - cos(\alpha) cos(\beta) sin(\phi) \\
+	cos(\alpha) cos(\beta) cos(\phi) cos(\theta) + sin(\beta) sin(\phi) cos(\theta) + sin(\alpha) cos(\beta) sin(\theta)
+\end{matrix} \right]
+$<br>
+<br>
+
+Now, since our earth turns by angle $\phi$, we can separate out the non-$\phi$ components (which turn out to be our sundial shadow ellipses center).<br>
+While we're here, let's separate out the $cos(\phi)$ and the $sin(\phi)$ components:<br>
+$\vec{l} = s 
+\left[ \begin{matrix}
+	1 &amp; 0 \\
+	0 &amp; -1
+\end{matrix} \right]
+\left(
+	\left[ \begin{matrix}
+		sin(\beta) cos(\phi) - cos(\alpha) cos(\beta) sin(\phi) \\
+		cos(\alpha) cos(\beta) cos(\phi) cos(\theta) + sin(\beta) sin(\phi) cos(\theta)
+	\end{matrix} \right]
+	+ 
+	\left[ \begin{matrix}
+		0 \\
+		sin(\alpha) cos(\beta) sin(\theta)
+	\end{matrix} \right]
+\right)
+$<br>
+<br>
+
+There's a $cos(\theta)$ factor now on the bottom row so we can now separate that out:<br>
+$\vec{l} = s 
+\left[ \begin{matrix}
+	1 &amp; 0 \\
+	0 &amp; -1
+\end{matrix} \right]
+\left(
+	\left[ \begin{matrix}
+		1 &amp; 0 \\
+		0 &amp; cos(\theta)
+	\end{matrix} \right]
+	\left[ \begin{matrix}
+		sin(\beta) cos(\phi) - cos(\alpha) cos(\beta) sin(\phi) \\
+		sin(\beta) sin(\phi) + cos(\alpha) cos(\beta) cos(\phi)
+	\end{matrix} \right]
+	+ 
+	\left[ \begin{matrix}
+		0 \\
+		sin(\alpha) cos(\beta) sin(\theta)
+	\end{matrix} \right]
+\right)
+$<br>
+<br>
+
+And now we can analyze the shadow by varying individual parameters,<br>
+like varying the tilt axis $\alpha$ while we fix the time-of-year $\beta$, latitude $\theta$, and the time-of-day $\phi$<br>
+or vary the revolution angle $\beta$ while fixing $\alpha$, $\theta$, $\phi$,<br>
+or vary the latitude $\theta$ while varying $\alpha$, $\beta$, $\phi$,<br>
+but for now let's just reorganize this in terms of the time-of-day $\phi$:<br>
+$\vec{l} = s 
+\left[ \begin{matrix}
+	1 &amp; 0 \\
+	0 &amp; -1
+\end{matrix} \right]
+\left(
+	\left[ \begin{matrix}
+		1 &amp; 0 \\
+		0 &amp; cos(\theta)
+	\end{matrix} \right]
+	\left[ \begin{matrix}
+		cos(\phi) &amp; -sin(\phi) \\
+		sin(\phi) &amp; cos(\phi)
+	\end{matrix} \right]
+	\left[ \begin{matrix}
+		sin(\beta) \\
+		cos(\beta) cos(\alpha)
+	\end{matrix} \right]
+	+ 
+	\left[ \begin{matrix}
+		0 \\
+		sin(\alpha) cos(\beta) sin(\theta)
+	\end{matrix} \right]
+\right)
+$<br>
+<br>
+
+So what does this tell us about the sundial shadow's path?
+It tells us:<br>
+1) We can start tracing it by picking some point $\vec{l}_0 = s \cdot \left[ \begin{matrix} sin(\beta) \\ cos(\beta) cos(\alpha) \end{matrix} \right]$.<br>
+2) From there, we can trace out a circle as $\phi$ varies.<br>
+For that matter I guess the initial point doesn't so much as the magnitude,<br>
+so we can combine steps 1 and 2 into simply tracing out a circle with radius $|\vec{l}_0| = \sqrt{sin(\beta)^2 + cos(\beta)^2 cos(\alpha)^2}$.<br>
+3) Next squash the circle's horizontal axis by an amount of $cos(\theta)$.<br>
+4) Next offset from the sundial center by $s \cdot \left[ \begin{matrix} 0 \\ sin(\alpha) cos(\beta) sin(\theta) \end{matrix} \right].$<br>
+5) Last, flip the horizontal axis.<br>
+<br>
+
+So the sundial shadow is a squashed circle, i.e. an ellipse.<br>
+The major axis of the ellipse is $a = s \cdot |\vec{l}_0|$, and the minor axis is $b = s \cdot |\vec{l}_0| \cdot cos(\theta)$.<br>
+So the eccetricity is $e = \sqrt{1 - (\frac{b}{a})^2} = \sqrt{1 - cos(\theta)^2} = |sin(\theta)|$<br>
+Nice and simple.<br>
+So when the latitude $\theta = 0$ or $\theta = \pi$ at the poles, we get an eccentricity of $sin(\theta) = 0$, corresponding with a circle.  Makes sense.<br>
+And when the latitude is $\theta = \frac{\pi}{2}$, we get an eccentricity of $\sin(\theta) = 1$, corresponding to a circle flattened into a line.<br>
+<br>
+
+Back to our sundial.<br>
+We found an eccentricity of $e = 0.5072$, roughly $e = \frac{1}{2} = sin(\theta)$ corresponds with $cos(\theta) = \frac{\sqrt{3}}{2}$.<br>
+This gives us a spherical declination of $\theta = 30ᵒ = \frac{\pi}{6}$.<br>
+So this sundial was meant to be used 30 degrees from the north pole.<br>
+<br>
+
+Wait, spherical decliation of 30ᵒ means a latitude of 60ᵒ.<br>
+Ok specifically $sin^{-1}(0.5072) = 30.477502469466$ ᵒ declination = latitude of $59.522497530534$ ᵒ.<br>
+That's too high, that would be right next to Siberia.<br>
+<br>
+
+What's interesting is that the eccentricity of the ellipse traced out from varying $\phi$ does not depend on anything other than the latitude.
+Not even the tilt angle, though I bet as the tilt approaches $\frac{\pi}{2}$, we will see our $s$ parameter go singular, since in that situation you have no shadows and the whole path reduces to a single point.<br>
+<br>
+
+So how about this axial tilt?<br>
+The earth's rotation axis now points at Polaris, but every 12,000 years it swings around to point at Vega and then back to Polaris.<br>
+Assuming the velocity of all our neighboring stars are near our own, and assuming that velocity is very slow compared to the distance to the galaxy orbit center times our axial precession cycle<br>
+(such that we're assuming no background stars are changing, nor is the sun changing compared to its orbit center),<br>
+then the axial precession is just going to change that $\alpha$ angle, along with $\beta_0$, for $\beta = \beta_0 + \omega_\beta t$ our dynamic revolution angle.<br>
+<br>
+
+By the way, for Earth's rotation tilted $\alpha$ angle from its revolution plane around the sun, and the sun at some $\beta$ revolution angle from the Earth, what is the latitude directly under the sun?<br>
+This is a problem of taking $-v$, which points back at the sun, and finding the inverse spherical coordiantes:<br>
+$\vec{x}(\vec{P}) = \left[ \begin{matrix}
+		r(x, y, z) \\
+		\theta(x, y, z) \\
+		\phi(x, y, z)
+	\end{matrix} \right]
+	= \left[ \begin{matrix} 
+		\sqrt{x^2 + y^2 + z^2} \\
+		atan2( \sqrt{x^2 + y^2}, z) \\
+		atan2( y, x)
+	\end{matrix} \right]
+$<br>
+
+<br>
+	</body>
+</html>

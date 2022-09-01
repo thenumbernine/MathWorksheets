@@ -1,9 +1,15 @@
 var tryToFindMathJax = {};
 
 tryToFindMathJax.urls = [
-	'file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML',
-	'/MathJax/MathJax.js?config=TeX-MML-AM_CHTML',
-	'https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML'];
+	//old:
+	//'file:///home/chris/Projects/christopheremoore.net/www/MathJax/MathJax.js?config=TeX-MML-AM_CHTML',
+	//new:
+	'file:///home/chris/Projects/christopheremoore.net/www/MathJax/es5/tex-mml-chtml.js'
+	
+	//'file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML',
+	//'/MathJax/MathJax.js?config=TeX-MML-AM_CHTML',
+	//'https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML'
+];
 
 tryToFindMathJax.loadScript = function(args) {
 	console.log("loading "+args.src);
@@ -29,7 +35,10 @@ tryToFindMathJax.init = function () {
 			src : tryToFindMathJax.urls[i],
 			done : function() {
 				console.log("success!");
-				MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+// ok until I figure out how to configure the new MathJax ... I just modiified tex-mml-chtml.js e.OPTIONS={inlineMath: to include ["$","$"]
+// idk where to configure it and I don't have internet now soo ....
+//				MathJax.config.startup.ready({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+//				MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
 			},
 			fail : function() {
 				++i;
