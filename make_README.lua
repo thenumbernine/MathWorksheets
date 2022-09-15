@@ -12,7 +12,7 @@ Some helper worksheets for my projects.
 Here's the CDN URLs:
 ]]}
 
-local fs = os.rlistdir('.', function(f, isdir)
+local fs = file:rdir(function(f, isdir)
 	return f ~= '.git' and (isdir or f:sub(-5) == '.html')
 end):mapi(function(f)
 	assert(f:sub(1,2) == './')

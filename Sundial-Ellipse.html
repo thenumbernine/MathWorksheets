@@ -32,21 +32,7 @@ Using this to reverse-engineer the minor axis: $e = \sqrt{1 - \frac{b^2}{a^2}}$ 
 So we get $b = 213.37488137079$.<br>
 <br>
 
-<div style='padding-left:4em'>
-	<h3>Here's me failing to inverse-transform the perspective transform out of the picture</h3>
-	<img src='sundial-ellipse-perspective-undo.png'/><br>
-	<br>
-
-	ok I tried to perspective-transform the pic to get the minor axis up and down from the center to be equal,<br>
-	i.e. make it a directly ontop down pic of the ellipse so no perspective distortion at all.<br>
-	This gave me a ratio of b = 122 minor axis and a = 198 major axis and a focus of c = 100.<br>
-	So $e = c / a = 100 / 198 = 0.50505050505051.$<br>
-	And $e = \sqrt{1 - \frac{b^2}{a^2}} = 0.78761974503507$ is wildly off the last two calculated eccentricities, so maybe my perpsective-undo wasn't so accurate.<br>
-	The take-away lesson is this: trying to use photoshop to inverse-transform can still sneak in unphysical scale effects.<br>
-</div>
-<br>
-
-Alright so two of our three eccentricities were about $e = 0.5072$, so what latitude sundial ellipse does that correspond with?<br>
+Alright so our eccentricity is about $e = 0.5085$, so what latitude sundial ellipse does that correspond with?<br>
 <br>
 
 Ok so how to calculate the latitude based on the eccentricity of a sundial ellipse.<br>
@@ -388,13 +374,13 @@ And when the latitude is $\theta = \frac{\pi}{2}$, we get an eccentricity of $\s
 <br>
 
 Back to our sundial.<br>
-We found an eccentricity of $e = 0.5072$, roughly $e = \frac{1}{2} = sin(\theta)$ corresponds with $cos(\theta) = \frac{\sqrt{3}}{2}$.<br>
+We found an eccentricity of $e = 0.5085$, roughly $e = \frac{1}{2} = sin(\theta)$ corresponds with $cos(\theta) = \frac{\sqrt{3}}{2}$.<br>
 This gives us a spherical declination of $\theta = 30ᵒ = \frac{\pi}{6}$.<br>
 So this sundial was meant to be used 30 degrees from the north pole.<br>
 <br>
 
 Wait, spherical decliation of 30ᵒ means a latitude of 60ᵒ.<br>
-Ok specifically $sin^{-1}(0.5072) = 30.477502469466$ ᵒ declination = latitude of $59.522497530534$ ᵒ.<br>
+Ok specifically $sin^{-1}(0.5085) = 30.563967053003$ ᵒ declination = latitude of $59.436032946997$ ᵒ.<br>
 That's too high, that would be right next to Siberia.<br>
 <br>
 
