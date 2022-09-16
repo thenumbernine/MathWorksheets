@@ -26,4 +26,4 @@ end):sort():mapi(function(f)
 		..')\n')
 end)
 
-file['README.md'] = s:concat'\n'
+file'README.md':write(s:concat'\n')
