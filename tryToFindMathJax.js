@@ -8,7 +8,7 @@ tryToFindMathJax.urls = [
 	
 	//'file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML',
 	//'/MathJax/MathJax.js?config=TeX-MML-AM_CHTML',
-	//'https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML'
+	'https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML'
 ];
 
 tryToFindMathJax.loadScript = function(args) {
