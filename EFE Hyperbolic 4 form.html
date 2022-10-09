@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<title>EFE Hyperbolic 4-form</title>
+	</head>
+	<body>
+$\Gamma^\mu = {\Gamma^\mu}_{\alpha\beta} g^{\alpha\beta}$<br>
+${\Gamma^\alpha}_{\mu\alpha} = ln(\sqrt{g})_{,\mu} = G_\mu$<br>
+<br>
+
+$R_{\mu\nu} = {R^\rho}_{\mu\rho\nu}$<br>
+$R_{\mu\nu} = {\Gamma^\rho}_{\mu\nu,\rho} - {\Gamma^\rho}_{\mu\rho,\nu} + {\Gamma^\rho}_{\alpha\rho} {\Gamma^\alpha}_{\mu\nu} - {\Gamma^\rho}_{\alpha\nu} {\Gamma^\alpha}_{\mu\rho}$<br>
+$R_{\mu\nu} = {\Gamma^\rho}_{\mu\nu,\rho} - G_{(\mu,\nu)} + G_\alpha {\Gamma^\alpha}_{\mu\nu} - {\Gamma^\alpha}_{\beta\mu} {\Gamma^\beta}_{\alpha\nu}$<br>
+<br>
+
+$G_{\mu\nu} = 8 \pi T_{\mu\nu}$<br>
+... in vacuum ...<br>
+$G_{\mu\nu} = 0$<br>
+$R_{\mu\nu} - \frac{1}{2} g_{\mu\nu} R = 0$<br>
+$
+	{\Gamma^\rho}_{\mu\nu,\rho} - G_{(\mu,\nu)} + G_\alpha {\Gamma^\alpha}_{\mu\nu} - {\Gamma^\alpha}_{\beta\mu} {\Gamma^\beta}_{\alpha\nu}
+	- \frac{1}{2} g_{\mu\nu} g^{\alpha\beta} \left[
+		{\Gamma^\rho}_{\alpha\beta,\rho} 
+		- G_{(\alpha,\beta)} 
+		+ G_\gamma {\Gamma^\gamma}_{\alpha\beta} 
+		- {\Gamma^\gamma}_{\delta\alpha} {\Gamma^\delta}_{\gamma\beta}
+	\right]
+	= 0
+$<br>
+$
+	{\Gamma^\rho}_{\mu\nu,\rho} 
+	- \frac{1}{2} g_{\mu\nu} {\Gamma^\rho}_{\alpha\beta,\rho} g^{\alpha\beta} 
+	- G_{(\mu,\nu)} 
+	+ \frac{1}{2} g_{\mu\nu} G_{(\alpha,\beta)} g^{\alpha\beta} 
+	+ G_\alpha {\Gamma^\alpha}_{\mu\nu} 
+	- {\Gamma^\alpha}_{\beta\mu} {\Gamma^\beta}_{\alpha\nu}
+	- \frac{1}{2} g_{\mu\nu} G_\alpha \Gamma^\alpha
+	+ \frac{1}{2} g_{\mu\nu} \Gamma^{\alpha\beta\gamma} \Gamma_{\beta\alpha\gamma}
+	= 0
+$<br>
+$
+	\delta^\rho_\alpha
+	(
+		\delta^\beta_\mu \delta^\gamma_\nu
+		- \frac{1}{2} g_{\mu\nu} g^{\beta\gamma}
+	) {\Gamma^\alpha}_{\beta\gamma,\rho}
+	
+	+ (
+		- \delta^\alpha_{(\mu} \delta^\rho_{\nu)}
+		+ \frac{1}{2} g_{\mu\nu} g^{\alpha\rho} 
+	) G_{\alpha,\rho}
+	
+	+ G_\alpha {\Gamma^\alpha}_{\mu\nu} 
+	- {\Gamma^\alpha}_{\beta\mu} {\Gamma^\beta}_{\alpha\nu}
+	- \frac{1}{2} g_{\mu\nu} G_\alpha \Gamma^\alpha
+	+ \frac{1}{2} g_{\mu\nu} \Gamma^{\alpha\beta\gamma} \Gamma_{\beta\alpha\gamma}
+	= 0
+$<br>
+$
+	\delta^\rho_\alpha
+	(
+		\delta^\beta_\mu \delta^\gamma_\nu
+		- \frac{1}{2} g_{\mu\nu} g^{\beta\gamma}
+	) {\Gamma^\alpha}_{\beta\gamma,\rho}
+	
+	+ (
+		- \delta^\alpha_{(\mu} \delta^\rho_{\nu)}
+		+ \frac{1}{2} g_{\mu\nu} g^{\alpha\rho} 
+	) {\Gamma^\beta}_{\beta\alpha,\rho}
+	
+	+ G_\alpha {\Gamma^\alpha}_{\mu\nu} 
+	- {\Gamma^\alpha}_{\beta\mu} {\Gamma^\beta}_{\alpha\nu}
+	- \frac{1}{2} g_{\mu\nu} G_\alpha \Gamma^\alpha
+	+ \frac{1}{2} g_{\mu\nu} \Gamma^{\alpha\beta\gamma} \Gamma_{\beta\alpha\gamma}
+	= 0
+$<br>
+$
+	\delta^\rho_\alpha
+	(
+		\delta^\beta_\mu \delta^\gamma_\nu
+		- \frac{1}{2} g_{\mu\nu} g^{\beta\gamma}
+	) {\Gamma^\alpha}_{\beta\gamma,\rho}
+	
+	+ \delta^\beta_\alpha (
+		- \delta^\gamma_{(\mu} \delta^\rho_{\nu)}
+		+ \frac{1}{2} g_{\mu\nu} g^{\gamma\rho} 
+	) {\Gamma^\alpha}_{\beta\gamma,\rho}
+	
+	+ G_\alpha {\Gamma^\alpha}_{\mu\nu} 
+	- {\Gamma^\alpha}_{\beta\mu} {\Gamma^\beta}_{\alpha\nu}
+	- \frac{1}{2} g_{\mu\nu} G_\alpha \Gamma^\alpha
+	+ \frac{1}{2} g_{\mu\nu} \Gamma^{\alpha\beta\gamma} \Gamma_{\beta\alpha\gamma}
+	= 0
+$<br>
+$
+	(
+		\delta^\gamma_\nu (
+			\delta^\rho_\alpha \delta^\beta_\mu
+			- \delta^\beta_\alpha \delta^\rho_\mu
+		)
+		+ \frac{1}{2} g_{\mu\nu} (
+			\delta^\beta_\alpha g^{\gamma\rho} 
+			- \delta^\rho_\alpha g^{\beta\gamma}
+		)
+	) {\Gamma^\alpha}_{\beta\gamma,\rho}
+
+	+ (
+		G_\alpha \delta^\beta_\mu \delta^\gamma_\nu
+		- \delta^\gamma_\mu {\Gamma^\beta}_{\alpha\nu}
+		- \frac{1}{2} g_{\mu\nu} \Gamma^\beta \delta^\gamma_\alpha
+		+ \frac{1}{2} g_{\mu\nu} {\Gamma^{\beta\gamma}}_\alpha
+	) {\Gamma^\alpha}_{\beta\gamma}
+	= 0
+$<br>
+$
+	(
+		\delta^\gamma_\nu (
+			\delta^\rho_\alpha \delta^\beta_\mu
+			- \delta^\beta_\alpha \delta^\rho_\mu
+		)
+		+ \frac{1}{2} g_{\mu\nu} (
+			\delta^\beta_\alpha g^{\gamma\rho} 
+			- \delta^\rho_\alpha g^{\beta\gamma}
+		)
+	) {\Gamma^\alpha}_{\beta\gamma,\rho}
+
+	+ (
+		G_\alpha \delta^\beta_\mu \delta^\gamma_\nu
+		- \delta^\gamma_\mu {\Gamma^\beta}_{\alpha\nu}
+		- \frac{1}{2} g_{\mu\nu} \Gamma^\beta \delta^\gamma_\alpha
+		+ \frac{1}{2} g_{\mu\nu} {\Gamma^{\beta\gamma}}_\alpha
+	) \frac{1}{2} \gamma^{\alpha\delta} (
+		g_{\delta\beta,\gamma}
+		+ g_{\delta\gamma,\beta}
+		- g_{\beta\gamma,\delta}
+	)
+	= 0
+$<br>
+$
+	(
+		\delta^\gamma_\nu (
+			\delta^\rho_\alpha \delta^\beta_\mu
+			- \delta^\beta_\alpha \delta^\rho_\mu
+		)
+		+ \frac{1}{2} g_{\mu\nu} (
+			\delta^\beta_\alpha g^{\gamma\rho} 
+			- \delta^\rho_\alpha g^{\beta\gamma}
+		)
+	) {\Gamma^\alpha}_{\beta\gamma,\rho}
+
+	+  \frac{1}{2}(
+		G_\delta \delta^\epsilon_\mu \delta^\gamma_\nu
+		- \delta^\gamma_\mu {\Gamma^\epsilon}_{\delta\nu}
+		- \frac{1}{2} g_{\mu\nu} \Gamma^\epsilon \delta^\gamma_\delta
+		+ \frac{1}{2} g_{\mu\nu} {\Gamma^{\epsilon\gamma}}_\delta
+	) (
+		\gamma^{\delta \alpha} \delta^\beta_\epsilon \delta^\rho_\gamma
+		+ \gamma^{\delta \alpha} \delta^\beta_\gamma \delta^\rho_\epsilon
+		- \gamma^{\delta\rho} \delta^\alpha_\epsilon \delta^\beta_\gamma
+	) g_{\alpha \beta,\rho}
+	= 0
+$<br>
+	</body>
+</html>

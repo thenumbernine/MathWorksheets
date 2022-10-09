@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<title>Tensor Product Permutations</title>
+	</head>
+	<body>
+
+I did more on this topic: <a href="https://github.com/thenumbernine/all-tensor-muls">Here</a> by employing my tensor algebra system for help.<br>
+<br>
+
+<b>1-degree:</b> $u_a$ <br>
+<b>...to a 0-degree:</b><br>
+<b>...with a 1-degree:</b> $u^a u_a$<br>
+<br>
+
+<b>2-degree, symmetric on 1 and 2:</b> $u_{ab} = u_{ba}$ <br>
+<b>...to a 0-degree:</b><br>
+<b>...with a 1-degree:</b> $u_{ab} v^a w^b$ <br>
+<b>...with a 2-degree symmetric on 1 and 2:</b> $u_{ab} v^{ab}$ <br>
+<b>...with a 2-degree:</b> $u_{ab} v^{ab}$ <br>
+<b>...to a 1-degree:</b><br>
+<b>...with a 1-degree:</b> $u_{ab} v^b$<br>
+<b>...to a 2-degree:</b> $u_{ab}$ <br>
+<br>
+
+<b>2-degree:</b> $u_{ab}$ <br>
+<b>...to a 0-degree:</b><br>
+<b>...with a 1-degree:</b> $u_{ab} v^a w^b$<br>
+<b>...with a 2-degree symmetric on 1 and 2:</b> $u_{ab} v^{ab}$<br>
+<b>...with a 2-degree:</b> $u_{ab} v^{ab}, u_{ab} v^{ba}$<br>
+<b>...to a 1-degree:</b><br>
+<b>...with a 1-degree:</b> $u_{ab} v^b, u_{ab} v^a$ <br>
+<b>...to a 2-degree:</b> $u_{ab}, u_{ba}$<br>
+<br>
+
+<b>3-degree, symmetric on 1 and 2:</b> $u_{abc} = u_{(ab)c}$ <br>
+<b>...to a 0-degree:</b> $
+u_{(ab)c} v^a w^b x^c,
+u_{(ab)c} v^{ab} w^c,
+u_{(ab)c} v^a w^{bc}
+u_{(ab)c} w^{abc}
+$<br>
+
+<b>...to a 1-degree:</b> $
+u_{(ab)c} v^a w^b,
+u_{(ab)c} v^a w^c,
+u_{(ab)c} v^{ab},
+u_{(ab)c} v^{ac}
+$<br>
+
+<b>...to a 2-degree:</b> $
+u_{(ab)c} v^a,
+u_{(ab)c} v^c
+$<br>
+<br>
+
+<b>....to a 3-degree:</b> $
+u_{abc}
+$<br>
+<br>
+
+	</body>
+</html>

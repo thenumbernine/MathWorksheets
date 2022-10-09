@@ -15,8 +15,8 @@ Here's the CDN URLs:
 local fs = file:rdir(function(f, isdir)
 	return f ~= '.git' and (isdir or f:sub(-5) == '.html')
 end):mapi(function(f)
-	assert(f:sub(1,2) == './')
-	return f:sub(3)
+	if f:sub(1,2) == './' then f = f:sub(3) end
+	return f
 end):sort():mapi(function(f)
 	local name = f:sub(1,-6)
 	s:insert('['..name..']('..base..

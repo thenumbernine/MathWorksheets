@@ -84,6 +84,8 @@ Here's the CDN URLs:
 
 [Divergence Theorem in Spherical Coordinates](https://thenumbernine.github.io/math/Divergence%20Theorem%20in%20Spherical%20Coordinates.html)
 
+[EFE Hyperbolic 4 form](https://thenumbernine.github.io/math/EFE%20Hyperbolic%204%20form.html)
+
 [EMHD Hyperbolic Conservation Laws](https://thenumbernine.github.io/math/EMHD%20Hyperbolic%20Conservation%20Laws.html)
 
 [EMHD Linear Stability Analysis](https://thenumbernine.github.io/math/EMHD%20Linear%20Stability%20Analysis.html)
@@ -151,6 +153,8 @@ Here's the CDN URLs:
 [GR EM Metrics/metric of flat space and EM potential](https://thenumbernine.github.io/math/GR%20EM%20Metrics/metric%20of%20flat%20space%20and%20EM%20potential.html)
 
 [Gravitation 22.2](https://thenumbernine.github.io/math/Gravitation%2022.2.html)
+
+[How Much Current To Lift An Object](https://thenumbernine.github.io/math/How%20Much%20Current%20To%20Lift%20An%20Object.html)
 
 [Kaluza-Klein - constant scalar](https://thenumbernine.github.io/math/Kaluza%2dKlein%20%2d%20constant%20scalar.html)
 
@@ -238,6 +242,8 @@ Here's the CDN URLs:
 
 [Solving Connections From Riemann](https://thenumbernine.github.io/math/Solving%20Connections%20From%20Riemann.html)
 
+[Sundial-Ellipse](https://thenumbernine.github.io/math/Sundial%2dEllipse.html)
+
 [Tetrad General Relativity](https://thenumbernine.github.io/math/Tetrad%20General%20Relativity.html)
 
 [Tetration Derivative](https://thenumbernine.github.io/math/Tetration%20Derivative.html)
@@ -264,7 +270,11 @@ Here's the CDN URLs:
 
 [a note on the definition of tensors](https://thenumbernine.github.io/math/a%20note%20on%20the%20definition%20of%20tensors.html)
 
+[balloons](https://thenumbernine.github.io/math/balloons.html)
+
 [conformal Levi-Civita geodesic](https://thenumbernine.github.io/math/conformal%20Levi%2dCivita%20geodesic.html)
+
+[gauge covariant derivative](https://thenumbernine.github.io/math/gauge%20covariant%20derivative.html)
 
 [heat to wave](https://thenumbernine.github.io/math/heat%20to%20wave.html)
 
@@ -281,6 +291,8 @@ Here's the CDN URLs:
 [spheres](https://thenumbernine.github.io/math/spheres.html)
 
 [stress-energy tensor](https://thenumbernine.github.io/math/stress%2denergy%20tensor.html)
+
+[tensor product permutations](https://thenumbernine.github.io/math/tensor%20product%20permutations.html)
 
 [torsion gravity](https://thenumbernine.github.io/math/torsion%20gravity.html)
 
