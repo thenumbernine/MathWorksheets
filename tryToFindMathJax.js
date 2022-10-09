@@ -4,7 +4,7 @@ tryToFindMathJax.urls = [
 	//old:
 	//'file:///home/chris/Projects/christopheremoore.net/www/MathJax/MathJax.js?config=TeX-MML-AM_CHTML',
 	//new:
-	'file:///home/chris/Projects/christopheremoore.net/www/MathJax/es5/tex-mml-chtml.js'
+	'file:///home/chris/Projects/christopheremoore.net/www/MathJax/es5/tex-mml-chtml.js',
 	
 	//'file:///home/chris/Projects/christopheremoore.net/MathJax/MathJax.js?config=TeX-MML-AM_CHTML',
 	//'/MathJax/MathJax.js?config=TeX-MML-AM_CHTML',
