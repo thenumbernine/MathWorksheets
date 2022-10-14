@@ -170,7 +170,7 @@ $\int_{x^b_L}^{x^b} \frac{\partial}{\partial x^a} dx^b
 	= \delta^a_b$<br>
 <br>
 
-Then there's the Dirac-delta vs Kronecher-delta:<br>
+Then there's the Dirac-delta vs Kronecker-delta:<br>
 $y = \int \delta(x,y) dx$,
 so $x^a = \int \delta(x^a, x^b) dx^b = \delta^a_b x^b$,<br>
 so $\delta^a_b = \int \delta(x^a, x^b) dx^b$.<br>
@@ -320,12 +320,12 @@ $\langle a, b \rangle$<br>
 $= a^U b_U$<br>
 <br>
 
-Kronecher delta:<br>
+Kronecker delta:<br>
 $\delta^a_b = 1$ for $a = b$, otherwise 0.<br>
 $\delta^a_b = \overset{a\downarrow b\rightarrow}{\left[\matrix{1&0&\dots&0 \\ 0&1&\dots&0 \\ \dots&\dots&\dots&\dots \\ 0&0&\dots&1 }\right]}$<br>
 <br>
 
-Kronecher delta extension:<br>
+Kronecker delta extension:<br>
 $\delta^{a_1 \dots a_p}_{b_1 \dots b_p} = p! \delta^{a_1}_{[b_1} \cdot ... \cdot \delta^{a_p}_{b_p]}$<br>
 $ = 0 $ if any indexes are duplicated<br>
 $ = +1 $ if $a_1 ... a_p$ is a positive permutation of $b_1 ... b_p$<br>
@@ -335,7 +335,7 @@ In multi-index notation:<br>
 $= \delta^A_B$<br>
 <br>
 
-Product of generalized Kronecher delta:<br>
+Product of generalized Kronecker delta:<br>
 $\delta^{a_1 ... a_p b_1 ... b_q}_{c_1 ... ... c_{p+q}} \delta^{u_1 ... u_q}_{b_1 ... b_q} = q! \delta^{a_1 ... a_p u_1 ... u_q}_{c_1 ... ... c_{p+q}}$<Br>
 But if you only sum increasing indexes:<br>
 $\delta^{a_1 ... a_p |b_1 ... b_q|}_{c_1 ... ... c_{p+q}} \delta^{u_1 ... u_q}_{|b_1 ... b_q|} = \delta^{a_1 ... a_p u_1 ... u_q}_{c_1 ... ... c_{p+q}}$<Br>
