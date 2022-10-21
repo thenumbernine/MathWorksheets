@@ -245,6 +245,71 @@ So if we choose to do our double-wedge with $\star (\star e_j \wedge w)$ then we
 And if we want a form out of that, just do $e_j \wedge \star (\star e_j \wedge w) = a^j e_j$<br> 
 <br>
 
+Maybe I can use this trick to isolate my vector inner product and complete my quaternion multiplication?<br>
+<br>
+
+<hr>
+<br>
+
+How to isolate the unique components of any combination of forms in $\Lambda_3$:<br>
+TODO Ok I'm getting sick of the vector basis, TODO rewrite this whole worksheet as forms.<br>
+<br>
+$w = a + b_i e^i + \frac{1}{2} c_i \epsilon^{ijk} e^j \wedge e^k + \frac{1}{6} d \epsilon^{ijk} e^i \wedge e^j \wedge e^k$<br>
+$w = a + b_i e^i + c_i \star e^i + d \star 1$<br>
+<br>
+
+$\star w$<br> 
+$= \star (a + b_i e^i + c_i \star e^i + d \star 1)$<br>
+$= (a \star 1 + b_i \star e^i + c_i \star \star e^i + d \star \star 1)$<br>
+$= \sigma d + \sigma c_i e^i + b_i \star e^i + a \star 1$<br>
+<br>
+
+Isolate the 0-form:<br>
+$\star 1 \wedge w = \star 1 a + $ ... lots of terms that turn into zero ...<br>
+$\sigma \star (\star 1 \wedge w) = \sigma \star \star 1 a = \sigma^2 a = a$<br>
+<br>
+
+Isolate the 3-form:<br>
+$\star (\star 1 \wedge \star w) = \star (\star 1 \sigma d) = \sigma^2 d = d$<br>
+<br>
+
+Isolate the 1-form:<br>
+$\star e^j \wedge w$<br>
+$= \star e^j \wedge (a + b_i e^i + c_i \star e^i + d \star 1)$<br>
+$= a \star e^j + b_i \star e^j \wedge e^i$<br>
+$= a \star e^j + b_j \star 1$<br>
+so $\sigma \star (\star e^j \wedge w) = a e^j + b_j$<br>
+so $\star 1 \wedge \sigma \star (\star e^j \wedge w) = b_j \star 1$<br>
+so $\sigma \star (\star 1 \wedge \sigma \star (\star e^j \wedge w)) = b_j$<br>
+so $\delta_{ij} e^i \wedge \sigma \star (\star 1 \wedge \sigma \star (\star e^j \wedge w)) = b_j e^j$<br>
+so $\delta_{ij} e^i \wedge \star (\star 1 \wedge \star (\star e^j \wedge w)) = b_i e^i$<br>
+TODO I bet that could look more pretty with interiors of the volume form.<br>
+<br>
+
+Isolate the 2-form:<br>
+$\sigma \delta_{ij} e^i \wedge \star (\star 1 \wedge \star (\star e^j \wedge \star w)) = c_i e^i$<br>
+<br>
+
+
+How about a general case?  For picking out the p forms from a sum-of-0-to-n form?<br>
+<br>
+
+For $w = w^0 + {w^1}_i e^i + \frac{1}{2} {w^2}_{i_1 i_2} e^{i_1} \wedge e^{i_2} + ... + \frac{1}{n!} {w^n}_{i_1 ... i_n} e^{i_1} \wedge ... \wedge e^{i_n}$<br>
+<br>
+
+$w \wedge e^{j_{p+1}} \wedge ... \wedge e^{j_n}$<br>
+... will zero everything of form &gt; p-form ...<br>
+$ = (w^0 + {w^1}_i e^i + \frac{1}{2} {w^2}_{i_1 i_2} e^{i_1} \wedge e^{i_2} + ... + \frac{1}{p!} {w^p}_{i_1 ... i_p} e^{i_1} \wedge ... \wedge e^{i_p}) \wedge e^{j_{p+1}} \wedge ... \wedge e^{j_n}$<br>
+... next dual everything, so that the p-form maps to the (n-p)-form, and it becomes the smallest form instead of the largest ...<br>
+... then wedge with $e^{k_1} \wedge ... \wedge e^{k_{n-p-1}}$, so that everything else goes away, and you are left with ...<br>
+$= \frac{1}{p!} {w^p}_{i_1 ... i_p} \star (e^{i_1} \wedge ... \wedge e^{i_p} \wedge e^{j_{p+1}} \wedge ... \wedge e^{j_n}) \wedge e^{k_1} \wedge ... \wedge e^{k_{n-p-1}}$<br>
+$= \frac{1}{p!} {w^p}_{i_1 ... i_p} \epsilon^{i_1 ... i_p j_{p+1} ... j_n}) \wedge e^{k_1} \wedge ... \wedge e^{k_{n-p-1}}$<br>
+... now wedge with $e^{k_{n-p}} \wedge ... \wedge e^{k_n}$ ... and then dual times signature ... and we have isolated this term.<br>
+<br>
+
+
+<br>
+<br>
 <a href='.'>Back</a><br><br>
 	</body>
 </html>
