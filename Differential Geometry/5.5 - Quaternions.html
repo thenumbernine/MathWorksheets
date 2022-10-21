@@ -1,14 +1,17 @@
 <!doctype html>
 <html>
 	<head>
-        <meta charset='utf-8'>
+		<meta charset='utf-8'>
 		<title>Differential Geometry</title>
 		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
 	</head>
-    <body>
+	<body>
 <a href='.'>Back</a><br><br>
 
-Quaternions as vectors:
+Should I do my quaternions in a form basis? Or a vector basis? For now I'll just do vectors and use a +++ spatial basis with +1 signature.<br>
+<br>
+
+Quaternions with a vector basis:<br>
 $q = q^0 e_0 + q^1 e_1 + q^2 e_2 + q^3 e_3$.<br>
 <br>
 
@@ -107,9 +110,43 @@ $\star (\star 1 \wedge \star (a + b \star 1)) = \sigma b \star \star 1 = \sigma^
 <br>
 
 But what about mapping 1-forms + 2-forms onto just 1-forms?<br>
-$a^i e_i + \frac{1}{2} b^i \epsilon_{ijk} e_j \wedge e_k$<br>
+$w = a^i e_i + \frac{1}{2} b^i \epsilon_{ijk} e_j \wedge e_k$<br>
 <br>
 
+so $e_l \wedge w$<br>
+$= e_l \wedge (a^i e_i + \frac{1}{2} b^i \epsilon_{ijk} e_j \wedge e_k)$<br>
+$= a^i e_l \wedge e_i + \frac{1}{2} b^i \epsilon_{ijk} e_l \wedge e_j \wedge e_k$<br>
+$= a^i \epsilon_{lim} \star e_m + \frac{1}{2} b^i \epsilon_{ijk} \epsilon_{ljk} \star 1$<br>
+$= a^i \epsilon_{lim} \star e_m + b^i \delta_{il} \star 1$<br>
+$= a^i \epsilon_{lim} \star e_m + b^l \star 1$<br>
+so $e_n \wedge e_l \wedge w$<br>
+$= e_n \wedge (
+	a^i \epsilon_{lim} \star e_m + b^l \star 1
+)$<br>
+$= (
+	a^i \epsilon_{lim} e_n \wedge \star e_m + b^l e_n \wedge \star 1
+)$<br>
+... $e_n \wedge \star 1 = 0$ ...
+$= a^i \epsilon_{lim} e_n \wedge \star e_m$<br>
+$= \frac{1}{2} a^i \epsilon_{lim} \epsilon_{mpq} e_n \wedge e_p \wedge e_q$<br>
+$= \frac{1}{2} a^i \delta^{li}_{pq} e_n \wedge e_p \wedge e_q$<br>
+$= \frac{1}{2} a^i (\delta^l_p \delta^i_q - \delta^l_q \delta^i_p) e_n \wedge e_p \wedge e_q$<br>
+$= \frac{1}{2} a^i \delta^l_p \delta^i_q e_n \wedge e_p \wedge e_q
+	- \frac{1}{2} a^i \delta^l_q \delta^i_p e_n \wedge e_p \wedge e_q$<br>
+$= \frac{1}{2} a^i e_n \wedge e_l \wedge e_i
+	- \frac{1}{2} a^i e_n \wedge e_i \wedge e_l$<br>
+$= \frac{1}{2} a^i e_n \wedge e_l \wedge e_i
+	+ \frac{1}{2} a^i e_n \wedge e_l \wedge e_i$<br>
+$= a^i e_n \wedge e_l \wedge e_i$<br>
+so $\star (e_n \wedge e_l \wedge w)$<br>
+$= \star (a^i e_n \wedge e_l \wedge e_i)$<br>
+$= a^i \star (e_n \wedge e_l \wedge e_i)$<br>
+$= a^i \epsilon_{nli}$<br>
+<br>
+
+So if we choose to do our double-wedge with $\star (\star e_j \wedge w)$ then we should get back $a^j$.<br> 
+And if we want a form out of that, just do $e_j \wedge \star (\star e_j \wedge w) = a^j e_j$<br> 
+<br>
 
 <a href='.'>Back</a><br><br>
 	</body>
