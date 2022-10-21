@@ -32,9 +32,59 @@ $\begin{array}{c|cccc}
 \end{array}$<br>
 <br>
 
-This can be summed up as $e_0 \cdot e_\mu = e_\mu$ 
+One way to represent the multiplication table is to be summed up as $e_0 \cdot e_\mu = e_\mu$ 
 and $e_i \cdot e_j = \epsilon_{ijk} e_k - \delta_{ij} e_0$ 
 for Greek indexes ranging (0,1,2,3) and Latin indexes ranging (1,2,3).<br>
+<br>
+
+So how can we represent this concisely?<br>
+In 4D basis: $e_\mu \cdot e_\nu = 2 \delta_{0 ( \mu} e_{\nu)} - \delta_{\mu\nu} e_0 + \epsilon_{0 \mu \nu \rho} e_\rho$<br>
+<br>
+
+Ok of course there's the common-sense way to do this, to truly use the inner product $e_\mu \cdot e_\nu$ as the table above states.
+This of course would mean that the table above is the metric.
+And this of course would mean that the metric isn't symmetric.
+So maybe we can get around its lack of symmetry by claiming that the $e_i$ truly are "imaginary" basii off into separate dimensions, and not just that they are negative-signature.
+If this were true then we would almost be able to argue that our metric's non-real components were skew-symmetric, like a Kahler metric would be -- it is for the non-real x non-real components -- but it is not skew-symmetric among the real x non-real components.
+<br>
+<br>
+
+So yeah we have a metric I guess of:<br>
+<br>
+
+$e_\mu \cdot e_\nu = g_{\mu\nu} = \left[ \begin{matrix}
+	e_0 & e_1 & e_2 & e_3 \\
+	e_1 &-e_0 & e_3 &-e_2 \\
+	e_2 &-e_3 &-e_0 & e_1 \\
+	e_3 & e_2 &-e_1 &-e_0 \\
+\end{matrix} \right]$<br>
+<br>
+
+The metric is, however, skew-symmetric among its non-$e_0$ components.  So it's halfway there.  Either way I'm sure there's something about Hyper-Kahler or Quaternion-ic metrics or something.
+I wanted to poke this bear with the classic notions of reals rather than just immediately jumping into the world of Cayley-Dickson constructs immediately.
+<br>
+<br>
+
+Ok so inverse metric?  Such that $g_{\gamma\beta} g^{\alpha\gamma} = \delta^\alpha_\beta$.  Mind you I'm dealing with anti-commutative objects so better check left and right multiplication of the inverse with the metric, and maybe how conjugates work.<br>
+<br>
+
+$1 = g_{00} g^{00} + g_{01} g^{10} + g_{02} g^{20} + g_{03} g^{30} = e_0 g^{00} + e_1 g^{10} + e_2 g^{20} + e_3 g^{30}$<br>
+$0 = g_{10} g^{00} + g_{11} g^{10} + g_{12} g^{20} + g_{13} g^{30} = e_1 g^{00} - e_0 g^{10} + e_3 g^{20} - e_2 g^{30}$<br>
+
+$g^{\mu\nu} = \frac{1}{4} \left[ \begin{matrix}
+... TODO
+\end{matrix} \right]$<br>
+<br>
+
+
+
+Now with this as our metric, we don't necessarily need any commutation.  So I'm going to set $[e_\mu, e_\nu] = e_\mu(e_\nu(\phi)) - e_\nu(e_\mu(\phi)) = 0$.<br>
+<br>
+
+
+
+<br>
+<hr>
 <br>
 
 
@@ -64,10 +114,6 @@ $= ({q_1}^0 {q_2}^0 - {q_1}^i {q_2}^j \delta_{ij}) e_0
 $<br>
 <br>
 
-So how can we represent this concisely?<br>
-In 4D basis: $e_\mu \cdot e_\nu = 2 \delta_{0 ( \mu} e_{\nu)} - \delta_{\mu\nu} e_0 + \epsilon_{0 \mu \nu \rho} e_\rho$<br>
-<br>
-
 So how do we represent multiplication in a differential geometry framework?<br>
 We could consider quaternion-multiply to be vector-application.<br>
 Then we would be looking at the commutation coefficients, but this is only antisymmetric:<br>
@@ -75,6 +121,10 @@ ${c_{\mu\nu}}^\rho e_\rho = [e_\mu, e_\nu] = \epsilon_{0 \mu \nu \rho} e_\rho$<b
 We could do symmetric products, but only symmetric:<br>
 $(e_\mu, e_\nu) = 2 \delta_{0 (\mu} e_{\nu)} - \delta_{\mu\nu} e_0$<br>
 In both cases the vector-application is going to produce derivatives in addition to the commutations, something I want to avoid.<br>
+<br>
+
+<br>
+<hr>
 <br>
 
 So instead, how about combining the "real" and "imaginary" components using a 0-form and a 1-form in 3-dimensions:<br>
