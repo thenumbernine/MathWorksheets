@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<title>Differential Geometry</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+	</head>
+    <body>
+<a href='.'>Back</a><br><br>
+
+Quaternions as vectors:
+$q = q^0 e_0 + q^1 e_1 + q^2 e_2 + q^3 e_3$.<br>
+<br>
+
+Quaternion multiplication table:<br>
+<br>
+
+$e_\mu \cdot e_\nu =$<br>
+<br>
+$\begin{array}{c|cccc}
+		& e_0 & e_1 & e_2 & e_3 \\
+	\hline
+	e_0 & e_0 & e_1 & e_2 & e_3 \\
+	e_1 & e_1 &-e_0 & e_3 &-e_2 \\
+	e_2 & e_2 &-e_3 &-e_0 & e_1 \\
+	e_3 & e_3 & e_2 &-e_1 &-e_0 \\
+\end{array}$<br>
+<br>
+
+This can be summed up as $e_0 \cdot e_\mu = e_\mu$ and $e_i \cdot e_j = \epsilon_{ijk} e_k$ for Greek indexes ranging (0,1,2,3) and Latin indexes ranging (1,2,3).<br>
+<br>
+
+So $q = q^0 e_0 + q^i e_i$<br>
+<br>
+
+What does quaternion multiplcation look like?<br>
+<br>
+
+$q_1 \cdot q_2$<br>
+$= ({q_1}^0 e_0 + {q_1}^i e_i) \cdot ({q_2}^0 e_0 + {q_2}^j e_j)$<br>
+$= {q_1}^0 e_0 \cdot ({q_2}^0 e_0 + {q_2}^j e_j) + {q_1}^i e_i \cdot ({q_2}^0 e_0 + {q_2}^j e_j)$<br>
+$= {q_1}^0 e_0 \cdot {q_2}^0 e_0 
+	+ {q_1}^0 e_0 \cdot {q_2}^j e_j 
+	+ {q_1}^i e_i \cdot {q_2}^0 e_0 
+	+ {q_1}^i e_i \cdot {q_2}^j e_j
+$<br>
+... apply quaternion basis multiplication rules ... <br>
+$= {q_1}^0 {q_2}^0 e_0 
+	+ {q_1}^0 {q_2}^i e_i
+	+ {q_1}^i {q_2}^0 e_i
+	+ {q_1}^i {q_2}^j \epsilon_{ijk} e_k
+$<br>
+$= {q_1}^0 {q_2}^0 e_0 
+	+ (
+		{q_1}^0 {q_2}^k
+		+ {q_2}^0 {q_1}^k
+		+ {q_1}^i {q_2}^j \epsilon_{ijk}
+	) e_k
+$<br>
+<br>
+
+So how can we represent this concisely?<br>
+In 4D basis: $e_\mu \cdot e_\nu = 2 \delta_{0 ( \mu} e_{\nu)} - \delta_{\mu\nu} e_0 + \epsilon_{0 \mu \nu \rho} e_\rho$<br>
+<br>
+
+So how do we represent multiplication in a differential geometry framework?<br>
+We could consider quaternion-multiply to be vector-application.<br>
+Then we would be looking at the commutation coefficients, but this is only antisymmetric:<br>
+${c_{\mu\nu}}^\rho e_\rho = [e_\mu, e_\nu] = \epsilon_{0 \mu \nu \rho} e_\rho$<br>
+We could do symmetric products, but only symmetric:<br>
+$(e_\mu, e_\nu) = 2 \delta_{0 (\mu} e_{\nu)} - \delta_{\mu\nu} e_0$<br>
+How to combine both ... and use a 3-dimensional 0-form and 1-form ...<br>
+<br>
+
+$q = q^0 + q^1 e_1 + q^2 e_2 + q^3 e_3$<br>
+$q = q^0 + q^i e_i$<br>
+$ \star q = \star q^0 + q^i \star e_i = \star q^0 + \frac{1}{2} q^i \epsilon_{ijk} e^j \wedge e^k$<br>
+<br>
+
+So how would quaternion-multiplication work?:<br>
+<br>
+
+$q_1 \wedge q_2$<br>
+$= ({q_1}^0 + {q_1}^i e_i) \wedge ({q_2}^0 + {q_2}^j e_j)$<br>
+$= (({q_1}^0 + {q_1}^i e_i) \wedge {q_2}^0 + ({q_1}^0 + {q_1}^i e_i) \wedge {q_2}^j e_j)$<br>
+$= {q_1}^0 \wedge {q_2}^0 + {q_1}^i e_i \wedge {q_2}^0 + {q_1}^0 \wedge {q_2}^j e_j + {q_1}^i e_i \wedge {q_2}^j e_j$<br>
+$= {q_1}^0 {q_2}^0 + {q_2}^0 {q_1}^i e_i + {q_1}^0 {q_2}^j e_j + {q_1}^i {q_2}^j e_i \wedge e_j$<br>
+$= {q_1}^0 {q_2}^0 + {q_2}^0 {q_1}^i e_i + {q_1}^0 {q_2}^j e_j + {q_1}^i {q_2}^j \epsilon_{ijk} \star e_k$<br>
+<br>
+
+So here we have all our components of quaternion multiplication, except our vector cross vector term is in the dual space instead of the vector space.<br>
+<br>
+
+So how can we map all my 2-forms back to my 1-forms?<br>
+<br>
+
+Here's how to map 0-forms + 3-forms back to 0-forms:<br>
+$\star 1 \wedge \star 1 = 0$<br>
+$\star 1 \wedge (a + b \star 1) = a \star 1 + b \star 1 \wedge \star 1 = a \star 1$<br>
+$\sigma \star (\star 1 \wedge (a + b \star 1)) = \sigma \star (a \star 1) = \sigma^2 a = a$<br>
+... for metric signature $\sigma$.<br>
+<br>
+
+Same with mapping to the 3-form, just use the dual:<br>
+$\star 1 \wedge \star (a + b \star 1) = \star 1 \wedge (\sigma b + a \star 1) = \sigma b \star 1$<br>
+$\star (\star 1 \wedge \star (a + b \star 1)) = \sigma b \star \star 1 = \sigma^2 b = b$<br>
+<br>
+
+But what about mapping 1-forms + 2-forms onto just 1-forms?<br>
+$a^i e_i + \frac{1}{2} b^i \epsilon_{ijk} e_j \wedge e_k$<br>
+<br>
+
+
+<a href='.'>Back</a><br><br>
+	</body>
+</html>

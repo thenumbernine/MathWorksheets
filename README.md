@@ -62,6 +62,8 @@ Here's the CDN URLs:
 
 [Differential Geometry/5 - Levi-Civita tensor and Hodge dual](https://thenumbernine.github.io/math/Differential%20Geometry/5%20%2d%20Levi%2dCivita%20tensor%20and%20Hodge%20dual.html)
 
+[Differential Geometry/5 - Quaternions](https://thenumbernine.github.io/math/Differential%20Geometry/5%20%2d%20Quaternions.html)
+
 [Differential Geometry/6 - covariant derivative](https://thenumbernine.github.io/math/Differential%20Geometry/6%20%2d%20covariant%20derivative.html)
 
 [Differential Geometry/7 - torsion](https://thenumbernine.github.io/math/Differential%20Geometry/7%20%2d%20torsion.html)
