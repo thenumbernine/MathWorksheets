@@ -73,6 +73,7 @@ $\delta^{i_1 ... i_n}_{j_1 ... j_n} = n! \delta^{i_1}_{[j_1} \cdot ... \cdot \de
 
 contractions of Levi-Civita permutation tensor:<br>
 $\epsilon_{i_1 ... i_n} \epsilon^{j_1 ... j_n} = \sigma \delta^{j_1 ... j_n}_{i_1 ... i_n}$<br>
+Should I define the sub-rank generalized Kronecker delta in terms of the summation indexes at the front or the back of the Levi-Civita tensor? I think it doesn't matter.<br>
 $\epsilon_{i_1 ... i_k \ i_{k+1} ... i_n} \epsilon^{i_1 ... i_k \ j_{k+1} ... j_n} = \sigma \delta^{i_1 ... i_k \ j_{k+1} ... j_n}_{i_1 ... i_k \ i_{k+1} ... i_n} = \sigma k! \delta^{j_{k+1} ... j_n}_{i_{k+1} ... i_n}$<br>
 $\epsilon_{i_1 ... i_n} \epsilon^{i_1 ... i_n} = \sigma n!$<br>
 <br>
@@ -85,21 +86,40 @@ $3! \delta^i_j = 2! \delta^{ij}_{mj} = \delta^{ijk}_{mjk} = \delta^{ijkl}_{mjkl}
 $4! = 3! \delta^i_i = 2! \delta^{ij}_{ij} = \delta^{ijk}_{ijk} = \delta^{ijkl}_{ijkl} = -\epsilon^{ijkl} \epsilon_{ijkl}$<br>
 <br>
 
-Hodge dual definition:<br>
-$\star (e^1 \wedge ... \wedge e^k) = e^{k+1} \wedge ... \wedge e^n$<br>
-such that<br>
-$(e^1 \wedge ... \wedge e^k) \wedge \star (e^1 \wedge ... \wedge e^k) = e^1 \wedge ... \wedge e^n$<br>
+Hodge dual of a k-form:<br>
+$\star (e^1 \wedge ... \wedge e^k) = {\epsilon^{1 ... k}}_{k+1 ... n} e^{k+1} \wedge ... \wedge e^n$<br>
+For arbitrary indexes:<br>
+$\star (e^{i_1} \wedge ... \wedge e^{i_k}) = \frac{1}{(n-k)!} {\epsilon^{i_1 ... i_k}}_{i_{k+1} ... i_n} e^{i_{k+1}} \wedge ... \wedge e^{i_n}$<br>
 <br>
 
-Therefore<br>
-$\star (e^1 \wedge ... \wedge e^k)$<br>
-$= \epsilon_{1 ... k \ k+1 ... n} e^{k+1} \wedge ... \wedge e^n$<br>
-$= \frac{1}{(n-k)!} \epsilon_{1 ... k \ i_{k+1} ... i_n} e^{i_{k+1}} \wedge ... \wedge e^{i_n}$<br>
+The $\frac{1}{(n-k)!}$ is to cancel all the redundant sums of the wedge product, so this can also be written as:<br>
+$\star (e^{i_1} \wedge ... \wedge e^{i_k}) = {\epsilon^{i_1 ... i_k}}_{|i_{k+1} ... i_n|} e^{|i_{k+1}} \wedge ... \wedge e^{i_n|}$<br>
 <br>
 
-Therefore<br>
-$\star (e^{i_1} \wedge ... \wedge e^{i_k})$<br>
-$= \frac{1}{(n-k)!} \epsilon_{i_1 ... i_k i_{k+1} ... i_n} e^{i_{k+1}} \wedge ... \wedge e^{i_n}$<br>
+As an outer product basis:<br>
+$k! \star (e^{[i_1} \otimes ... \otimes e^{i_k]}) = {\epsilon^{i_1 ... i_k}}_{i_{k+1} ... i_n} e^{[i_{k+1}} \otimes ... \otimes e^{i_n]}$<br>
+$\star (e^{[i_1} \otimes ... \otimes e^{i_k]}) = \frac{1}{k!} {\epsilon^{i_1 ... i_k}}_{i_{k+1} ... i_n} e^{[i_{k+1}} \otimes ... \otimes e^{i_n]}$<br>
+If we consider the $\star$ operator to be antisymmetrizing on its basis then we don't need to worry about specifying the left hand side to be antisymmetric up front.
+And if we consider the Levi-Civita permutation tensor  to be antisymmetrizing then we don't have to explicitly antisymmetrize the right hand side basis:<br>
+$\star (e^{i_1} \otimes ... \otimes e^{i_k}) = \frac{1}{k!} {\epsilon^{i_1 ... i_k}}_{i_{k+1} ... i_n} e^{i_{k+1}} \otimes ... \otimes e^{i_n}$<br>
+From there, product with tensor coefficients to get:<br>
+$\star (T_{i_1 ... i_k} e^{i_1} \otimes ... \otimes e^{i_k}) = \frac{1}{k!} T_{i_1 ... i_k} {\epsilon^{i_1 ... i_k}}_{i_{k+1} ... i_n} e^{i_{k+1}} \otimes ... \otimes e^{i_n}$<br>
+$\star T = \frac{1}{k!} T_{i_1 ... i_k} {\epsilon^{i_1 ... i_k}}_{i_{k+1} ... i_n} e^{i_{k+1}} \otimes ... \otimes e^{i_n}$<br>
+<br>
+
+Therefore for 0-form 1:<br>
+$\star 1 = \frac{1}{n!} \epsilon_{i_1 ... i_n} e^{i_1} \wedge ... \wedge e^{i_n} = \epsilon_{1 ... n} e^1 \wedge ... \wedge e^n =  e^1 \wedge ... \wedge e^n$<br>
+Notice that only the dual of the 1-form does not involve the metric.<br>
+<br>
+
+Likewise for n-form:<br>
+$\star (e^1 \wedge ... \wedge e^n) = \frac{1}{0!} \epsilon^{1 ... n}$.<br>
+$= g^{1 i_1} \cdot ... \cdot g^{n i_n} \epsilon_{i_1 ... i_n}$<br>
+$= \frac{\sigma}{\sqrt{g}}$ for metric signature $\sigma$ and determinant $g$.<br>
+<br>
+
+So only for diagonal metrics this is equal to:<br>
+$\star (e^1 \wedge ... \wedge e^n) = \Pi_{j=1}^n g^{jj} \epsilon_{1 ... n} = \Pi_{j=1}^n g^{jj}$<br>
 <br>
 
 Hodge dual of a k-form:<br>
@@ -125,7 +145,6 @@ The antisymmetric part of it is equal to:<br>
 $T_{[I]} e^I = T_{[I]} e^{[I]} = \frac{1}{k!} T_{[I]} e^{\wedge I}$<br>
 $= \frac{1}{k!} T_{[i_1 ... i_k]} e^{i_1} \wedge ... \wedge e^{i_k}$<br>
 so ...<br>
-TODO should be ...<br>
 $(\star T)_{i_{k+1} ... i_n} e^{i_{k+1}} \wedge ... \wedge e^{i_n} = \frac{1}{k!} T_{i_1 ... i_k} {\epsilon^{i_1 ... i_k}}_{i_{k+1} ... i_n} e^{i_{k+1}} \wedge ... \wedge e^{i_n}$<br>
 $(\star T)_{i_{k+1} ... i_n} e^{i_{[k+1}} \otimes ... \otimes e^{i_n]} = \frac{1}{k!} T_{i_1 ... i_k} {\epsilon^{i_1 ... i_k}}_{i_{k+1} ... i_n} e^{i_{[k+1}} \otimes ... \otimes e^{i_n]}$<br>
 so for antisymetric $(\star T)_{i_{k+1} ... i_n}$ we find:<br>
@@ -157,13 +176,39 @@ $\star (T_{abcd} dx^a \otimes dx^b \otimes dx^c \otimes dx^d) = \frac{1}{4!} T_{
 so $\star T = \frac{1}{4!} T_{abcd} \epsilon^{abcd}$<br>
 <br>
 
-double Hodge dual star applied to a p-form:<br>
-$\star \star T = \sigma (-1)^{p (n-p)} T$<br>
-TODO explain using index notation definitions of the Hodge dual.<br>
+Double Hodge dual star applied to a p-form:<br>
+$\star (\star (e^{i_1} \wedge ... \wedge e^{i_k}))$<br>
+$= \star (
+	\frac{1}{(n-k)!} {\epsilon^{i_1 ... i_k}}_{i_{k+1} ... i_n} e^{i_{k+1}} \wedge ... \wedge e^{i_n}
+)$<br>
+$= \frac{1}{(n-k)!} {\epsilon^{i_1 ... i_k}}_{i_{k+1} ... i_n} \star (
+	e^{i_{k+1}} \wedge ... \wedge e^{i_n}
+)$<br>
+$= \frac{1}{(n-k)!} {\epsilon^{i_1 ... i_k}}_{i_{k+1} ... i_n} (
+	\frac{1}{k!} {\epsilon^{i_{k+1} ... i_n}}_{j_1 ... j_k} e^{j_1} \wedge ... e^{j_k}
+)$<br>
+$= \frac{1}{k! (n-k)!} {\epsilon^{i_1 ... i_k}}_{i_{k+1} ... i_n} {\epsilon^{i_{k+1} ... i_n}}_{j_1 ... j_k} e^{j_1} \wedge ... e^{j_k}$<br>
+Next we have to move the $j_1 ... j_k$ indexes to the front.  Moving a single $j_1$ takes $(n-k)$ flips, so moving $k$ of them takes $k (n-k)$ flips:<br>
+Equivalently we could move the $i_1 ... i_k$ to the back, and it would require just as many flips.  Is this an argument for the Generalized Kronecker delta being defined by either the a front-aligned or back-aligned indexes?<br>
+$= (-1)^{k(n-k)} \frac{1}{k! (n-k)!} {\epsilon^{i_1 ... i_k}}_{i_{k+1} ... i_n} {\epsilon_{j_1 ... j_k}}^{i_{k+1} ... i_n} e^{j_1} \wedge ... e^{j_k}$<br>
+All duplicates of the Levi-Civita product over $(n-k)$ indexes = $(n-k)!$.  This brings us to the generalized Kronecker delta definition:<br>
+... using ${\epsilon^{i_1 ... i_k}}_{i_{k+1} ... i_n} {\epsilon_{j_1 ... j_k}}^{i_{k+1} ... i_n} = \sigma \frac{1}{(n-k)!} \delta^{i_1 ... i_k}_{j_1 ... j_k}$<br>
+$= (-1)^{k(n-k)} \frac{1}{k!} \sigma \delta^{i_1 ... i_k}_{j_1 ... j_k} e^{j_1} \wedge ... e^{j_k}$<br>
+Replace with its definition:<br>
+$= (-1)^{k(n-k)} \frac{1}{k!} \cdot k! \sigma \delta^{i_1}_{[j_1} \cdot ... \cdot \delta^{i_k}_{j_k]} e^{j_1} \wedge ... e^{j_k}$<br>
+$= \sigma (-1)^{k(n-k)} \delta^{i_1}_{[j_1} \cdot ... \cdot \delta^{i_k}_{j_k]} e^{j_1} \wedge ... e^{j_k}$<br>
+Now consider that the wedge is already antisymmetric:<br>
+$= \sigma (-1)^{k(n-k)} \delta^{i_1}_{j_1} \cdot ... \cdot \delta^{i_k}_{j_k} e^{j_1} \wedge ... e^{j_k}$<br>
+And finally apply the Kronecker deltas:<br>
+$= \sigma (-1)^{k(n-k)} e^{i_1} \wedge ... e^{i_k}$<br>
+Therefor for any k-form:<br>
+$\star \star T = \sigma (-1)^{k (n-k)} T$<br>
 <br>
 
 Therefore for 0-form 1:<br>
 $\star \star 1 = \sigma$<br>
+And for n-form $\eta$:<br>
+$\star \star \eta = \sigma \eta$<br>
 <br>
 
 Hodge dual inner product of two p-forms:<br>
