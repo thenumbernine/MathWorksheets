@@ -8,6 +8,9 @@
 	<body>
 <a href='.'>Back</a><br><br>
 
+<b>First try, Quaternions as 0-forms + 1-forms in R3</b><br>
+<br>
+
 Should I do my quaternions in a form basis? Or a vector basis? For now I'll just do vectors and use a +++ spatial basis with +1 signature.<br>
 <br>
 
@@ -114,10 +117,39 @@ hmmm...<br>
 TODO am I stuck?<br>
 <br>
 
-
-Now with this as our metric, we don't necessarily need any commutation.  So I'm going to set $[e_\mu, e_\nu] = e_\mu(e_\nu(\phi)) - e_\nu(e_\mu(\phi)) = 0$.<br>
+What if, for 
+$g_{\mu\nu} = e_\mu \cdot e_\nu$, 
+then 
+$g^{\mu\nu} = \frac{1}{4} \overline{e_\mu} \cdot \overline{e_\nu}$<br>
+Then $g_{\alpha\mu} g^{\mu\beta} = e_\alpha \cdot e_\mu \cdot \frac{1}{4} \overline{e_\mu} \cdot \overline{e_\beta}$<br>
+... using $\frac{1}{4} \Sigma_\mu e_\mu \cdot \overline{e_\mu} = \frac{1}{4} ( (e_0)^2 - (e_1)^2 - (e_2)^2 - (e_3)^2 ) = \frac{1}{4} (1+1+1+1) = 1$<br>
+$= e_\alpha \cdot \overline{e_\beta}$<br>
+Now this does give $\delta_{\alpha\beta}$ when $\alpha = \beta$, but it gives other non-real values otherwise.<br>
+How to get rid of them all?  
+If they are non-real then we can add the conjugate of the result and elminiate all the non-reals:<br>
+$\frac{1}{2} (e_\mu + \overline{e_\mu}) = 1 $ for $\mu = 0$, 0 otherwise.<br>
+So that means $\delta_{\alpha\beta} = \frac{1}{2} ( 
+	(e_\alpha \cdot e_\mu) \cdot ( \overline{e_\mu} \cdot \overline{e_\beta} )
+	+ \overline{ (e_\alpha \cdot e_\mu) \cdot ( \overline{e_\mu} \cdot \overline{e_\beta} ) }
+)$<br>
+$ = \frac{1}{2} ( 
+	(e_\alpha \cdot e_\mu) \cdot ( \overline{e_\mu} \cdot \overline{e_\beta} )
+	+ \overline{ ( \overline{e_\mu} \cdot \overline{e_\beta} ) } \cdot \overline{ (e_\alpha \cdot e_\mu) }
+)$<br>
+$ = \frac{1}{2} ( 
+	(e_\alpha \cdot e_\mu) \cdot ( \overline{e_\mu} \cdot \overline{e_\beta} )
+	+ (e_\beta \cdot e_\mu) \cdot (\overline{e_\mu} \cdot \overline{e_\alpha} )
+)$<br>
+So it looks like $\frac{1}{2} (g_{\alpha\mu} g^{\mu\beta} + g_{\beta\mu} g^{\mu\alpha}) = \delta_\alpha^\beta$<br>
+What this means is that $g_{\alpha\mu} g^{\mu\beta}$ is self-adjoint.<br>
 <br>
 
+<hr>
+<br>
+
+Now with this as our metric, we don't necessarily need any commutation.  So I'm going to set $[e_\mu, e_\nu] = e_\mu(e_\nu(\phi)) - e_\nu(e_\mu(\phi)) = 0$.<br>
+TODO consider quaternion multiplication as successive derivative operators.<Br>
+<br>
 
 
 <br>
