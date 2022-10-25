@@ -398,6 +398,9 @@ $= (a \star 1 + b_i \star e^i + c_i \star \star e^i + d \star \star 1)$<br>
 $= \sigma d + \sigma c_i e^i + b_i \star e^i + a \star 1$<br>
 <br>
 
+<hr>
+<br>
+
 Isolate the 0-form:<br>
 $\star 1 \wedge w = \star 1 a + $ ... lots of terms that turn into zero ...<br>
 $\sigma \star (\star 1 \wedge w) = \sigma \star \star 1 a = \sigma^2 a = a$<br>
@@ -440,6 +443,184 @@ $= \frac{1}{p!} {w^p}_{i_1 ... i_p} \star (e^{i_1} \wedge ... \wedge e^{i_p} \we
 $= \frac{1}{p!} {w^p}_{i_1 ... i_p} \epsilon^{i_1 ... i_p j_{p+1} ... j_n}) \wedge e^{k_1} \wedge ... \wedge e^{k_{n-p-1}}$<br>
 ... now wedge with $e^{k_{n-p}} \wedge ... \wedge e^{k_n}$ ... and then dual times signature ... and we have isolated this term.<br>
 <br>
+
+<hr>
+<br>
+
+Ok another problem with 0-form + 1-form is that $a \wedge \star b$ is not an inner product anymore.<br>
+<br>
+
+$(a_0 + a_i e^i) \wedge \star (b_0 + b_j e^j)$<br>
+$= 		a_0 b_0 \wedge \star 1 
+	+ a_i b_0 e^i \wedge \star 1
+	+ a_0 b_j \wedge \star e^j 
+	+ a_i b_j e^i \wedge \star e^j
+$<br>
+$= 		a_0 b_0 \star 1 
+	+ a_0 b_i \star e^i 
+	+ a_i b_j g^{ij} \star 1
+$<br>
+<br>
+
+Notice that unlike the $⋀^1_4$ case of $a \wedge \star b = \star (a \cdot b)$, for the $⋀^0_3 \oplus ⋀^1_3$ case we get extra terms.<br>
+<br>
+
+So what is the general rule for those extra terms?<br>
+<br>
+
+For $a = a^0 + {a^1}_i e^i + \frac{1}{2} {a^2}_{i_1 i_2} e^{i_1} \wedge e^{i_2} + ... + \frac{1}{n!} {a^n}_{i_1 ... i_n} e^{i_1} \wedge ... \wedge e^{i_n}$<br>
+<br>
+
+$a \wedge b$<br>
+$= (
+	a^0 
+	+ {a^1}_i e^i 
+	+ \frac{1}{2} {a^2}_{i_1 i_2} e^{i_1} \wedge e^{i_2} 
+	+ ... 
+	+ \frac{1}{n!} {a^n}_{i_1 ... i_n} e^{i_1} \wedge ... \wedge e^{i_n}
+) \wedge (
+	b^0 
+	+ {b^1}_j e^j 
+	+ \frac{1}{2} {b^2}_{j_1 j_2} e^{j_1} \wedge e^{j_2} 
+	+ ... 
+	+ \frac{1}{n!} {b^n}_{j_1 ... j_n} e^{j_1} \wedge ... \wedge e^{j_n}
+)
+$<br>
+
+The resulting terms that aren't zeroed will be all those whose sum of forms on the a and b side add up to &le; n.<br>
+<br>
+
+$\begin{array}{c|c|c|c|c|c}
+	\wedge
+		&amp; b^0 
+		&amp; {b^1}_{j_1} e^{j_1} 
+		&amp; {b^2}_{j_1 j_2} e^{j_1} \wedge e^{j_2} 
+		&amp; ... 
+		&amp; {b^{n-1}}_{j_1 ... j_{n-1}} e^{j_1} \wedge ... \wedge e^{j_{n-1}}
+		&amp; {b^n}_{j_1 ... j_n} e^{j_1} \wedge ... \wedge e^{j_n}
+	\\
+	\hline
+	
+	a^0 
+		&amp; a^0 b^0 
+		&amp; a^0 {b^1}_{j_1} e^{j_1} 
+		&amp; a^0 {b^2}_{j_1 j_2} e^{j_1} \wedge e^{j_2} 
+		&amp; ... 
+		&amp; a^0 {b^{n-1}}_{j_1 ... j_{n-1}} e^{j_1} \wedge ... \wedge e^{j_{n-1}}
+		&amp; a^0 {b^n}_{j_1 ... j_n} e^{j_1} \wedge ... \wedge e^{j_n}
+	\\
+	\hline
+	
+	{a^1}_{i_1} e^{i_1} 
+		&amp; {a^1}_{i_1} b^0 e^{i_1}  
+		&amp; {a^1}_{i_1} {b^1}_{j_1} e^{i_1} \wedge e^{j_1} 
+		&amp; {a^1}_{i_1} {b^2}_{j_1 j_2} e^{i_1} \wedge e^{j_1} \wedge e^{j_2} 
+		&amp; ... 
+		&amp; {a^1}_{i_1} {b^{n-1}}_{j_1 ... j_{n-1}} e^{i_1} \wedge e^{j_1} \wedge ... \wedge e^{j_{n-1}}
+		&amp; 0
+	\\
+	\hline
+	
+	{a^2}_{i_1 i_2} e^{i_1} \wedge e^{i_2} 
+		&amp; {a^2}_{i_1 i_2} b^0 e^{i_1} \wedge e^{i_2}
+		&amp; {a^2}_{i_1 i_2} {b^1}_{j_1}  e^{i_1} \wedge e^{i_2} \wedge e^{j_1} 
+		&amp; {a^2}_{i_1 i_2} {b^2}_{j_1 j_2} e^{i_1} \wedge e^{i_2} \wedge e^{j_1} \wedge e^{j_2} 
+		&amp; ... 
+		&amp; 0
+		&amp; 0
+	\\
+	\hline
+	
+	... &amp;  
+	\\
+	\hline
+	
+	{a^{n-1}}_{i_1 ... i_{n-1}} e^{i_1} \wedge ... \wedge e^{i_{n-1}} 
+		&amp; {a^{n-1}}_{i_1 ... i_{n-1}} b^0 e^{i_1} \wedge ... \wedge e^{i_{n-1}} 
+		&amp; {a^{n-1}}_{i_1 ... i_{n-1}} {b^1}_{e_{j_1}} e^{i_1} \wedge ... \wedge e^{i_{n-1}} \wedge e^{j_1}
+		&amp; 0
+		&amp; ...
+		&amp; 0
+		&amp; 0
+	\\
+	\hline
+
+	{a^n}_{i_1 ... i_n} e^{i_1} \wedge ... \wedge e^{i_n} 
+		&amp; {a^n}_{i_1 ... i_n} b^0 e^{i_1} \wedge ... \wedge e^{i_n} 
+		&amp; 0
+		&amp; 0
+		&amp; ...
+		&amp; 0
+		&amp; 0
+\end{array}$<br>
+<br>
+or, reindexing :<br>
+$\begin{array}{c|c|c|c|c|c}
+	\wedge
+		&amp; b^0 
+		&amp; {b^1}_{j_1} e^{j_1} 
+		&amp; {b^2}_{j_1 j_2} e^{j_1} \wedge e^{j_2} 
+		&amp; ... 
+		&amp; {b^{n-1}}_{j_1 ... j_{n-1}} e^{j_1} \wedge ... \wedge e^{j_{n-1}}
+		&amp; {b^n}_{j_1 ... j_n} e^{j_1} \wedge ... \wedge e^{j_n}
+	\\
+	\hline
+	
+	a^0 
+		&amp; a^0 b^0 
+		&amp; a^0 {b^1}_{i_1} e^{i_1} 
+		&amp; a^0 {b^2}_{i_1 i_2} e^{i_1} \wedge e^{i_2} 
+		&amp; ... 
+		&amp; a^0 {b^{n-1}}_{i_1 ... i_{n-1}} e^{i_1} \wedge ... \wedge e^{i_{n-1}}
+		&amp; a^0 {b^n}_{i_1 ... i_n} e^{i_1} \wedge ... \wedge e^{i_n}
+	\\
+	\hline
+	
+	{a^1}_{i_1} e^{i_1} 
+		&amp; {a^1}_{i_1} b^0 e^{i_1}  
+		&amp; {a^1}_{i_1} {b^1}_{i_2} e^{i_1} \wedge e^{i_2} 
+		&amp; {a^1}_{i_1} {b^2}_{i_2 i_3} e^{i_1} \wedge e^{i_2} \wedge e^{i_3} 
+		&amp; ... 
+		&amp; {a^1}_{i_1} {b^{n-1}}_{i_2 ... i_n} e^{i_1} \wedge e^{i_2} \wedge ... \wedge e^{i_n}
+		&amp; 0
+	\\
+	\hline
+	
+	{a^2}_{i_1 i_2} e^{i_1} \wedge e^{i_2} 
+		&amp; {a^2}_{i_1 i_2} b^0 e^{i_1} \wedge e^{i_2}
+		&amp; {a^2}_{i_1 i_2} {b^1}_{i_3}  e^{i_1} \wedge e^{i_2} \wedge e^{i_3} 
+		&amp; {a^2}_{i_1 i_2} {b^2}_{i_3 i_4} e^{i_1} \wedge e^{i_2} \wedge e^{i_3} \wedge e^{i_4} 
+		&amp; ... 
+		&amp; 0
+		&amp; 0
+	\\
+	\hline
+	
+	... &amp;  
+	\\
+	\hline
+	
+	{a^{n-1}}_{i_1 ... i_{n-1}} e^{i_1} \wedge ... \wedge e^{i_{n-1}} 
+		&amp; {a^{n-1}}_{i_1 ... i_{n-1}} b^0 e^{i_1} \wedge ... \wedge e^{i_{n-1}} 
+		&amp; {a^{n-1}}_{i_1 ... i_{n-1}} {b^1}_{e_{i_n}} e^{i_1} \wedge ... \wedge e^{i_{n-1}} \wedge e^{i_n}
+		&amp; 0
+		&amp; ...
+		&amp; 0
+		&amp; 0
+	\\
+	\hline
+
+	{a^n}_{i_1 ... i_n} e^{i_1} \wedge ... \wedge e^{i_n} 
+		&amp; {a^n}_{i_1 ... i_n} b^0 e^{i_1} \wedge ... \wedge e^{i_n} 
+		&amp; 0
+		&amp; 0
+		&amp; ...
+		&amp; 0
+		&amp; 0
+\end{array}$<br>
+<br>
+
+
 
 <hr>
 <br>
