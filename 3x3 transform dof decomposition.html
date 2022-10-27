@@ -1,0 +1,722 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<title>3x3 Transform Decomposition Into Intuitive Components</title>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<script type='text/javascript' src='template.js'/></script>
+		<script>
+
+		</script>
+	</head>
+	<body templated>
+<br>
+Alright I was thinking about this in the context of what does a general-relativistic frame mean (in contrast to a special-relativistic one which is only composed of rotations (skew-symmetric, i.e. exp map of antisymmetric generator)
+and Lorentz boosts (basically the same thing except with a hyperbolic rotation (i.e. symmetric generator ) instead of regular rotation).<br>
+<br>
+
+And somewhere I searched and found someone who was just trying to interpolate 3x3 rotations and found that if he LERP'd the individual coefficients of $a_{ij}$ then he got something ugly ... I found it on stackexchange, maybe I can link it ...
+he was probably just doing rotations and just needed SLERP ... in fact most all transforms people deal with are angle-preserving and certainly handedness-preserving ...
+... but back to GR, I was thinking, how would we parameterize this, since in GR all frames are possible right?<br>
+<br>
+
+So whatever your motive, let's examine the task of decomposing general linear 3x3 transforms into their intuitive, LERP-able components.<br>
+<br>
+
+Spoilers, for all practical purposes, this could lead into a rant on 3x3 matrix-logarithms.<br>
+<br>
+
+So here's our arbitrary matrix:<br>
+<br>
+
+$A = \left[ \begin{matrix} 
+	a_{11} &amp; a_{12} &amp; a_{13} \\
+	a_{21} &amp; a_{22} &amp; a_{23} \\
+	a_{31} &amp; a_{32} &amp; a_{33}
+\end{matrix} \right]$<br>
+<br>
+
+It can be thought of as representing a coordinate system whose basis vectors are its column vectors:<br>
+<br>
+
+$A = \left[ \begin{array}{c|c|c} 
+	&amp; &amp; \\
+	\vec{a}_1 &amp; \vec{a}_2 &amp; \vec{a}_3 \\
+	&amp; &amp;
+\end{array} \right]$<br>
+<br>
+
+There's 9 degrees-of-freedom total, because it's a 3x3 matrix, and 3x3=9.<br>
+Here is how I am intuitively breaking things down:<br>
+- 3 rotation parameters.  These can be Euler angles pitch roll yaw, or Euler angles logarithm of quaternions, or just quaternions where the w component is redundant.<br>
+- 3 scale parameters.<br>
+- 3 shear parameters.<br>
+<br>
+
+Here's my breakdown of how to transform identity through our 9 single-DOF transforms into any arbitrary 3x3 matrix:<br>
+1) start with identity.<br>
+2) scale each axis according to what you want it to be in the end, simultaneously un-scale any extra scales that get introduced from our subsequent shears.<br>
+3) shear to account for any inter-frame angles.  Of course orthogonal frames don't have any shear.<br>
+4) rotate 3 times to align each of your 3 frame vectors accordingly<br>
+<br>
+
+<br>
+<hr>
+<br>
+
+<h3>Rotations</h3><br>
+<br>
+
+So for 3 rotation generators there's the traditional (TODO I know these aren't Pauli matrices, so put a better more-appropriate label on them):<br>
+<br>
+
+$\sigma_z = \epsilon_{zij} = \left[ \begin{matrix} 
+	0 &amp; -1 &amp; 0 \\
+	1 &amp; 0 &amp; 0 \\
+	0 &amp; 0 &amp; 0
+\end{matrix} \right]$<br>
+$\sigma_y = \epsilon_{yij} = \left[ \begin{matrix} 
+	0 &amp; 0 &amp; 1 \\
+	0 &amp; 0 &amp; 0 \\
+	-1 &amp; 0 &amp; 0
+\end{matrix} \right]$<br>
+$\sigma_x = \epsilon_{zij} = \left[ \begin{matrix} 
+	0 &amp; 0 &amp; 0 \\
+	0 &amp; 0 &amp; -1 \\
+	0 &amp; 1 &amp; 0
+\end{matrix} \right]$<br>
+<br>
+
+These individually produce...<br>
+<br>
+
+$R_z(\phi) = exp(\phi \sigma_z) = exp \left( 
+	\left[ \begin{matrix} 
+		0 &amp; -\phi &amp; 0 \\
+		\phi &amp; 0 &amp; 0 \\
+		0 &amp; 0 &amp; 0
+	\end{matrix} \right]
+\right)
+= 
+	\left[ \begin{matrix} 
+		cos(\phi) &amp; -sin(\phi) &amp; 0 \\
+		sin(\phi) &amp; cos(\phi) &amp; 0 \\
+		0 &amp; 0 &amp; 1
+	\end{matrix} \right]
+$<br>
+
+$R_y(\theta) = exp(\theta \sigma_y) = exp \left( 
+	\left[ \begin{matrix} 
+		0 &amp; 0 &amp; \theta \\
+		0 &amp; 0 &amp; 0 \\
+		-\theta &amp; 0 &amp; 0
+	\end{matrix} \right]
+\right)
+= 
+	\left[ \begin{matrix} 
+		cos(\theta) &amp; 0 &amp; sin(\theta) \\
+		0 &amp; 1 &amp; 0 \\
+		-sin(\theta) &amp; 0 &amp; cos(\theta)
+	\end{matrix} \right]
+$<br>
+$R_x(\psi) = exp(\psi \sigma_x) = exp \left( 
+	\left[ \begin{matrix} 
+		0 &amp; 0 &amp; 0 \\
+		0 &amp; 0 &amp; -\psi \\
+		0 &amp; \psi &amp; 0
+	\end{matrix} \right]
+\right)
+= 
+	\left[ \begin{matrix} 
+		1 &amp; 0 &amp; 0 \\
+		0 &amp; cos(\psi) &amp; -sin(\psi) \\
+		0 &amp; sin(\psi) &amp; cos(\psi)
+	\end{matrix} \right]
+$<br>
+
+Or of course combine all three and insret Rodriguez rotation formula here.<br>
+<br>
+
+Or of course you can sum the generator transforms and then exp them, mix and match, angle-axis, read up more on this about quaternions and ultimately quaternion SLERPs.<br>
+<br>
+
+<br>
+<hr>
+<br>
+
+<h3>Scales</h3>
+<br>
+
+This is easy:<br>
+<br>
+
+$S_x(s_x) = s_x e_x \otimes e_x + e_y \otimes e_y + e_z \otimes e_z = \left[ \begin{matrix}
+	s_x &amp; 0 &amp; 0 \\
+	0 &amp; 1 &amp; 0 \\
+	0 &amp; 0 &amp; 1
+\end{matrix} \right]$<br>
+$S_y(s_y) = e_x \otimes e_x + s_y e_y \otimes e_y + e_z \otimes e_z = \left[ \begin{matrix}
+	1 &amp; 0 &amp; 0 \\
+	0 &amp; s_y &amp; 0 \\
+	0 &amp; 0 &amp; 1
+\end{matrix} \right]$<br>
+$S_z(s_z) = e_x \otimes e_x + e_y \otimes e_y + s_z e_z \otimes e_z = \left[ \begin{matrix}
+	1 &amp; 0 &amp; 0 \\
+	0 &amp; 1 &amp; 0 \\
+	0 &amp; 0 &amp; s_z
+\end{matrix} \right]$<br>
+<br>
+
+One caveat is that $s_x, s_y, s_z$ can all be positive.  Unless you're dealing with a null matrix, in which they have to be zero.  Or if you're dealing with a transform that changes handedness, then one has to be negative.
+But otherwise, in the common case that they are all positive, why not do the interpolation in log-space?  
+In fact, how about the claim that unless a null or handed-ness transform happens then scales should be positive and interpolations should be done in log-space.
+In fact, even if you have a sign flip scale during interpolation, why not do it in log-space, where the log of your negative scale is of course imaginary.  I suppose the exp of this imaginary would be complex itself (unlike the exp of the imaginary eigenvalues of a rotation matrix, which produce a matrix with real coefficients).<br>
+<br>
+
+Also obvious point, so long as our basis of our outer products $\{ e_x, e_y, e_z \}$ is orthogonal, our scale matrices are commutable, and so any order is valid, and you can combine them as:<br>
+$S(s_x, s_y, s_z) = S_x(s_x) \cdot S_y(s_y) \cdot S_z(s_z) = \left[ \begin{matrix}
+	s_x &amp; 0 &amp; 0 \\
+	0 &amp; s_y &amp; 0 \\
+	0 &amp; 0 &amp; s_z
+\end{matrix} \right]$<br>
+<br>
+
+<br>
+<hr>
+<br>
+
+<h3>Shear</h3>
+<br>
+
+Alright we need three DOF of shear, but shear transforms can take up any of 6 components:<br>
+<br>
+
+I'm going to label $Sh^a_{bc}(s)$ as the shear along axis 'a' which interchanges axii 'b' and 'c' by amount 's'.  Yes, 'a' will always also be one of 'b' or 'c'.<br>
+<br>
+
+horizontal:<br>
+$
+\{ Sh^y_{xy}(s_{xy}), Sh^z_{xz}(s_{xz}), Sh^z_{yz}(s_{yz}) \}
+= \left\{
+\left[ \begin{matrix}
+	1 &amp; s_{xy} &amp; 0 \\
+	0 &amp; 1 &amp; 0 \\
+	0 &amp; 0 &amp; 1
+\end{matrix} \right],
+\left[ \begin{matrix}
+	1 &amp; 0 &amp; s_{xz} \\
+	0 &amp; 1 &amp; 0 \\
+	0 &amp; 0 &amp; 1
+\end{matrix} \right],
+\left[ \begin{matrix}
+	1 &amp; 0 &amp; 0 \\
+	0 &amp; 1 &amp; s_{yz} \\
+	0 &amp; 0 &amp; 1
+\end{matrix} \right]
+\right\}
+$<br>
+vertical:<br>
+$
+\{ Sh^x_{xy}(t_{xy}), Sh^x_{xz}(t_{xz}), Sh^y_{yz}(t_{yz}) \}
+= \left\{
+\left[ \begin{matrix}
+	1 &amp; 0 &amp; 0 \\
+	t_{xy} &amp; 1 &amp; 0 \\
+	0 &amp; 0 &amp; 1
+\end{matrix} \right],
+\left[ \begin{matrix}
+	1 &amp; 0 &amp; 0 \\
+	0 &amp; 1 &amp; 0 \\
+	t_{xz} &amp; 0 &amp; 1
+\end{matrix} \right],
+\left[ \begin{matrix}
+	1 &amp; 0 &amp; 0 \\
+	0 &amp; 1 &amp; 0 \\
+	0 &amp; t_{yz} &amp; 1
+\end{matrix} \right]
+\right\}
+$<br>
+<br>
+
+Since this is a 2D operation, of shifting one axis along another axis, we can just look at it from a 2D perspective, i.e. I might just omit the 3rd column and row in some of these examples, in which case just substitute identity and you'll be fine.<br>
+So let's look at those 2D transformations:<br>
+<br>
+
+$Sh^y_{xy}(s) \cdot \vec{x}
+= \left[ \begin{matrix}
+	1 &amp; s \\
+	0 &amp; 1
+\end{matrix} \right]
+\left[ \begin{matrix}
+	x \\
+	y
+\end{matrix} \right]
+=
+\left[ \begin{matrix}
+	x + s y \\
+	y
+\end{matrix} \right]
+$<br>
+Yup, it was the x-coordinate alone that changed, proportional to the y-coordinate.  So only a horizontal change.<br>
+<br>
+
+$Sh^x_{xy}(t) \cdot \vec{x}
+= \left[ \begin{matrix}
+	1 &amp; 0 \\
+	t &amp; 1
+\end{matrix} \right]
+\left[ \begin{matrix}
+	x \\
+	y
+\end{matrix} \right]
+=
+\left[ \begin{matrix}
+	x \\
+	t x + y
+\end{matrix} \right]
+$<br>
+Yup, it was the y-coordinate alone that changed, proportional to the x-coordinate.  So only a vertical change.<br>
+<br>
+
+
+I'm calling the top set 'horizontal' and the bottom set 'vertical' because when you restrict this to the 2D case, then $Sh^y_{xy}$ is a horizontal transform and.<br>
+<br>
+
+So if this space should be parameterizable by only three variables then how do these relate? How does $Sh^x_{xy}(s_{xy})$ relate to $Sh^y_{yx}(t_{xy})$?<br>
+If you take a look at the transforms on a collection of points or an image within the domain of $[0,1] \otimes [0,1]$ then you will see that a vertical shear is equivalent to a horizontal shear, then a rotation, then a rescale.  So let's try to replicate that:<br>
+<br>
+
+$Sh^x_{xy}(t) = S(\sigma_1, \sigma_2) \cdot R_z(\alpha) \cdot Sh^y_{xy}(s)$<br>
+$
+\left[ \begin{matrix}
+	1 &amp; 0 \\
+	t &amp; 1
+\end{matrix} \right] =
+\left[ \begin{matrix}
+	\sigma_1 &amp; 0 \\
+	0 &amp; \sigma_2
+\end{matrix} \right]
+\left[ \begin{matrix}
+	cos(\alpha) &amp; -sin(\alpha) \\
+	sin(\alpha) &amp; cos(\alpha)
+\end{matrix} \right]
+\left[ \begin{matrix}
+	1 &amp; s \\
+	0 &amp; 1
+\end{matrix} \right]
+$<br>
+<br>
+
+But how much exactly is that rotation amount $\alpha$ that brings our shear'd diagonal back up to the vertical axis?  Well let's look at our shear transform applied to the point $(0,1)$.  
+The horizontal shear transforms it into point $(s, 1)$.  We are going to rotate the point back onto the vertical plane, so to $(0, \sqrt{1 + s^2})$.
+So our rotation amount $\alpha = atan(s)$.  We can just do some dot and cross products and come up with the cos and sin individually: 
+$cos(\alpha) = \frac{1}{\sqrt{1 + s^2}}$, $sin(\alpha) = \sqrt{1 - \left( \frac{1}{\sqrt{1 + s^2}} \right)^2} = \frac{s}{\sqrt{1 + s^2}}$. Note the sign on s.<br>
+So our rotation matrix now looks like:<br>
+$R_z(\alpha) = \left[ \begin{matrix}
+	\frac{1}{\sqrt{1 + s^2}} &amp; \frac{-s}{\sqrt{1 + s^2}} \\
+	\frac{s}{\sqrt{1 + s^2}} &amp; \frac{1}{\sqrt{1 + s^2}}
+\end{matrix} \right]$<br>
+<br>
+What should the scale be?  Well we have to scale the y-axis to normalize it again, since a equivalent vertical transform isn't going to change the length of the y axis which remains at 1.
+An intuitive guess of the x scale would be the inverse, and lo and behold that works out:<br>
+$\sigma_1 = \sqrt{1 + s^2}, \sigma_2 = \frac{1}{\sqrt{1 + s^2}}$<br>
+$S(\sigma_1, \sigma_2) = \left[ \begin{matrix}
+	\sqrt{1 + s^2} &amp; 0 \\
+	0 &amp; \frac{1}{\sqrt{1 + s^2}}
+\end{matrix} \right]$<br>
+<br>
+
+Line them all up:<br>
+$\left[ \begin{matrix}
+	\sqrt{1 + s^2} &amp; 0 \\
+	0 &amp; \frac{1}{\sqrt{1 + s^2}}
+\end{matrix} \right]
+\left[ \begin{matrix}
+	\frac{1}{\sqrt{1 + s^2}} &amp; \frac{-s}{\sqrt{1 + s^2}} \\
+	\frac{s}{\sqrt{1 + s^2}} &amp; \frac{1}{\sqrt{1 + s^2}}
+\end{matrix} \right]
+\left[ \begin{matrix}
+	1 &amp; s \\
+	0 &amp; 1
+\end{matrix} \right]
+$<br>
+$= \left[ \begin{matrix}
+	1 &amp; -s \\
+	\frac{s}{1 + s^2} &amp; \frac{1}{1 + s^2}
+\end{matrix} \right]
+\left[ \begin{matrix}
+	1 &amp; s \\
+	0 &amp; 1
+\end{matrix} \right]
+$<br>
+$= \left[ \begin{matrix}
+	1 &amp; 0 \\
+	\frac{s}{1 + s^2} &amp; 1
+\end{matrix} \right]
+$<br>
+<br>
+
+So now we have this dilemma that this only works for $t = \frac{s}{1 + s^2}$.  Meh.<br>
+If you walk through the equivalent process from relating horizontal to vertical will you get the same relation?  Is it invertible?  Hmm.<br>
+<br>
+
+So now we have 6 shears listed, you have to pick 3, and if you pick the 'horizontal' set then we've shown it is (sort of) equivalent to picking the 'vertical' set as well, so it is just a matter of convention.<br>
+But how to apply those shears?  Order seems to matter. If you pick the 'horizontal' set then applying them in forward order (i.e. matrix-multiply them reverse as they visually appear here) will result in the z axis being unchanged.<br>
+Ex:<br>
+$
+\left[ \begin{matrix}
+	1 &amp; 0 &amp; 0 \\
+	0 &amp; 1 &amp; s_{yz} \\
+	0 &amp; 0 &amp; 1
+\end{matrix} \right]
+\left[ \begin{matrix}
+	1 &amp; 0 &amp; s_{xz} \\
+	0 &amp; 1 &amp; 0 \\
+	0 &amp; 0 &amp; 1
+\end{matrix} \right]
+\left[ \begin{matrix}
+	1 &amp; s_{xy} &amp; 0 \\
+	0 &amp; 1 &amp; 0 \\
+	0 &amp; 0 &amp; 1
+\end{matrix} \right]
+$<br>
+$= \left[ \begin{matrix}
+	1 &amp; 0 &amp; s_{xz} \\
+	0 &amp; 1 &amp; s_{yz} \\
+	0 &amp; 0 &amp; 1
+\end{matrix} \right]
+\left[ \begin{matrix}
+	1 &amp; s_{xy} &amp; 0 \\
+	0 &amp; 1 &amp; 0 \\
+	0 &amp; 0 &amp; 1
+\end{matrix} \right]
+$<br>
+$= \left[ \begin{matrix}
+	1 &amp; s_{xy} &amp; s_{xz} \\
+	0 &amp; 1 &amp; s_{yz} \\
+	0 &amp; 0 &amp; 1
+\end{matrix} \right]
+$<br>
+
+However reversing the order will introduce an extra shear.  Ex:<br>
+$
+\left[ \begin{matrix}
+	1 &amp; s_{xy} &amp; 0 \\
+	0 &amp; 1 &amp; 0 \\
+	0 &amp; 0 &amp; 1
+\end{matrix} \right]
+\left[ \begin{matrix}
+	1 &amp; 0 &amp; s_{xz} \\
+	0 &amp; 1 &amp; 0 \\
+	0 &amp; 0 &amp; 1
+\end{matrix} \right]
+\left[ \begin{matrix}
+	1 &amp; 0 &amp; 0 \\
+	0 &amp; 1 &amp; s_{yz} \\
+	0 &amp; 0 &amp; 1
+\end{matrix} \right]
+$<br>
+$= \left[ \begin{matrix}
+	1 &amp; s_{xy} &amp; s_{xz} \\
+	0 &amp; 1 &amp; 0 \\
+	0 &amp; 0 &amp; 1
+\end{matrix} \right]
+\left[ \begin{matrix}
+	1 &amp; 0 &amp; 0 \\
+	0 &amp; 1 &amp; s_{yz} \\
+	0 &amp; 0 &amp; 1
+\end{matrix} \right]
+$<br>
+$= \left[ \begin{matrix}
+	1 &amp; s_{xy} &amp; s_{xy} s_{yz} + s_{xz} \\
+	0 &amp; 1 &amp; s_{yz} \\
+	0 &amp; 0 &amp; 1
+\end{matrix} \right]
+$<br>
+
+The opposite ordered rule holds for the 'vertical' set of shear transforms, for the sake of preserving the x-axis being unchanged:<br>
+$ \left[ \begin{matrix}
+	1 &amp; 0 &amp; 0 \\
+	t_{xy} &amp; 1 &amp; 0 \\
+	0 &amp; 0 &amp; 1
+\end{matrix} \right]
+\left[ \begin{matrix}
+	1 &amp; 0 &amp; 0 \\
+	0 &amp; 1 &amp; 0 \\
+	t_{xz} &amp; 0 &amp; 1
+\end{matrix} \right]
+\left[ \begin{matrix}
+	1 &amp; 0 &amp; 0 \\
+	0 &amp; 1 &amp; 0 \\
+	0 &amp; t_{yz} &amp; 1
+\end{matrix} \right]
+$<br>
+$= \left[ \begin{matrix}
+	1 &amp; 0 &amp; 0 \\
+	t_{xy} &amp; 1 &amp; 0 \\
+	t_{xz} &amp; 0 &amp; 1
+\end{matrix} \right]
+\left[ \begin{matrix}
+	1 &amp; 0 &amp; 0 \\
+	0 &amp; 1 &amp; 0 \\
+	0 &amp; t_{yz} &amp; 1
+\end{matrix} \right]
+$<br>
+$= \left[ \begin{matrix}
+	1 &amp; 0 &amp; 0 \\
+	t_{xy} &amp; 1 &amp; 0 \\
+	t_{xz} &amp; t_{yz} &amp; 1
+\end{matrix} \right]
+$<br>
+...vs...<br>
+$ \left[ \begin{matrix}
+	1 &amp; 0 &amp; 0 \\
+	0 &amp; 1 &amp; 0 \\
+	0 &amp; t_{yz} &amp; 1
+\end{matrix} \right]
+\left[ \begin{matrix}
+	1 &amp; 0 &amp; 0 \\
+	0 &amp; 1 &amp; 0 \\
+	t_{xz} &amp; 0 &amp; 1
+\end{matrix} \right]
+\left[ \begin{matrix}
+	1 &amp; 0 &amp; 0 \\
+	t_{xy} &amp; 1 &amp; 0 \\
+	0 &amp; 0 &amp; 1
+\end{matrix} \right]
+$<br>
+$= \left[ \begin{matrix}
+	1 &amp; 0 &amp; 0 \\
+	0 &amp; 1 &amp; 0 \\
+	t_{xz} &amp; t_{yz} &amp; 1
+\end{matrix} \right]
+\left[ \begin{matrix}
+	1 &amp; 0 &amp; 0 \\
+	t_{xy} &amp; 1 &amp; 0 \\
+	0 &amp; 0 &amp; 1
+\end{matrix} \right]
+$<br>
+$= \left[ \begin{matrix}
+	1 &amp; 0 &amp; 0 \\
+	t_{xy} &amp; 1 &amp; 0 \\
+	t_{xz} + t_{xy} t_{yz} &amp; t_{yz} &amp; 1
+\end{matrix} \right]
+$<br>
+<br>
+
+<br>
+<hr>
+<br>
+
+But what if instead of dealing with horizontal or vertical, we deal with both simultaneously?<br>
+Enter the world of hyperbolic rotations.<br>
+Coicidentally these can be reproduced by the generators:<br>
+
+$\eta_{xy} = 2 \delta_{x(i} \delta_{j)y} = \left[ \begin{matrix}
+	0 &amp; 1 &amp; 0 \\
+	1 &amp; 0 &amp; 0 \\
+	0 &amp; 0 &amp; 0
+\end{matrix} \right]$<br>
+$\eta_{xz} = 2 \delta_{x(i} \delta_{j)z} = \left[ \begin{matrix}
+	0 &amp; 0 &amp; 1 \\
+	0 &amp; 0 &amp; 0 \\
+	1 &amp; 0 &amp; 0
+\end{matrix} \right]$<br>
+$\eta_{yz} = 2 \delta_{y(i} \delta_{j)z} = \left[ \begin{matrix}
+	0 &amp; 0 &amp; 0 \\
+	0 &amp; 0 &amp; 1 \\
+	0 &amp; 1 &amp; 0
+\end{matrix} \right]$<br>
+<br>
+...and their exponentials:<br>
+$H_{xy}(h_{xy}) = exp(h_{xy} \eta_{xy}) = \left[ \begin{matrix}
+	cosh(h_{xy}) &amp; sinh(h_{xy}) &amp; 0 \\
+	sinh(h_{xy}) &amp; cosh(h_{xy}) &amp; 0 \\
+	0 &amp; 0 &amp; 1
+\end{matrix} \right]$<br>
+$H_{xz}(h_{xz}) = exp(h_{xz} \eta_{xz}) = \left[ \begin{matrix}
+	cosh(h_{xz}) &amp; 0 &amp; sinh(h_{xz}) \\
+	0 &amp; 0 &amp; 1 \\
+	sinh(h_{xz}) &amp; 0 &amp; cosh(h_{xz})
+\end{matrix} \right]$<br>
+$H_{yz}(h_{yz}) = exp(h_{yz} \eta_{yz}) = \left[ \begin{matrix}
+	1 &amp; 0 &amp; 0 \\
+	0 &amp; cosh(h_{yz}) &amp; sinh(h_{yz}) \\
+	0 &amp; sinh(h_{yz}) &amp; cosh(h_{yz})
+\end{matrix} \right]$<br>
+<br>
+
+TODO and then the inverse is the same but with negative skew components.  Same if you just negative the parameter right?<br>
+<br>
+
+Back to doing two shears simultaneously.
+Let's apply a horizontal then a vertical shear:<br>
+$
+\left[ \begin{matrix}
+	1 &amp; h \\
+	0 &amp; 1
+\end{matrix} \right]
+\left[ \begin{matrix}
+	1 &amp; 0 \\
+	h &amp; 1
+\end{matrix} \right]
+=
+\left[ \begin{matrix}
+	1 + h^2 &amp; h \\
+	h &amp; 1
+\end{matrix} \right]
+$<br>
+<br>
+
+But now we have an off-scale diagonal.  We can undo that with a scale transform at each end:<br>
+$
+\left[ \begin{matrix}
+	\frac{1}{\sqrt{1 + h^2}} &amp; 0 \\
+	0 &amp; 1
+\end{matrix} \right]
+\left[ \begin{matrix}
+	1 &amp; h \\
+	0 &amp; 1
+\end{matrix} \right]
+\left[ \begin{matrix}
+	1 &amp; 0 \\
+	h &amp; 1
+\end{matrix} \right]
+\left[ \begin{matrix}
+	\frac{1}{\sqrt{1 + h^2}} &amp; 0 \\
+	0 &amp; 1
+\end{matrix} \right]
+=
+\left[ \begin{matrix}
+	\frac{1}{\sqrt{1 + h^2}} &amp; 0 \\
+	0 &amp; 1
+\end{matrix} \right]
+\left[ \begin{matrix}
+	1 + h^2 &amp; h \\
+	h &amp; 1
+\end{matrix} \right]
+\left[ \begin{matrix}
+	\frac{1}{\sqrt{1 + h^2}} &amp; 0 \\
+	0 &amp; 1
+\end{matrix} \right]
+=
+\left[ \begin{matrix}
+	1 &amp; \frac{h}{\sqrt{1 + h^2}} \\
+	\frac{h}{\sqrt{1 + h^2}} &amp; 1
+\end{matrix} \right]
+$<br>
+<br>
+
+And now we have our symmetric shear with no scale.  But what if we want it to fit the form of our hyprebolic rotation?  Scale the whole thing by the denominator:<br>
+$
+\sqrt{1 + h^2}
+\left[ \begin{matrix}
+	\frac{1}{\sqrt{1 + h^2}} &amp; 0 \\
+	0 &amp; 1
+\end{matrix} \right]
+\left[ \begin{matrix}
+	1 &amp; h \\
+	0 &amp; 1
+\end{matrix} \right]
+\left[ \begin{matrix}
+	1 &amp; 0 \\
+	h &amp; 1
+\end{matrix} \right]
+\left[ \begin{matrix}
+	\frac{1}{\sqrt{1 + h^2}} &amp; 0 \\
+	0 &amp; 1
+\end{matrix} \right]
+=
+\left[ \begin{matrix}
+	\sqrt{1 + h^2} &amp; h \\
+	h &amp; \sqrt{1 + h^2}
+\end{matrix} \right]
+$<br>
+<br>
+
+Now this happens to conveniently match up with our hyperbolic rotation.<br>
+Choose $h = sinh(\alpha)$, and using the property $cosh(\alpha)^2 - sinh(\alpha)^2 = 1$, i.e. $cosh(\alpha) = \sqrt{1 + sinh(\alpha)^2}$, we find this is equal to:<br>
+<br>
+$
+\left[ \begin{matrix}
+	cosh(\alpha) &amp; sinh(\alpha) \\
+	sinh(\alpha) &amp; cosh(\alpha)
+\end{matrix} \right]
+$<br>
+<br>
+So there you have it, how to represent a hyperbolic rotation with two symmetric shears.<br>
+<br>
+
+But what if you wanted to represent only a single shear with a hyperbolic rotation?  
+What if, for exmaple, you were doing Gauss-Jordan decomposition on a matrix into strictly scales and shears, and while the (positive) scales are generators, you want to represent the shears as generators as well?
+For this it looks like we can simply 1) hyperbolic-rotate to adjust the angle gap between the basis vectors to our hearts content, 2) normalize, and 3) rotate to align our basis back to where we started.
+And maybe scale some more to account for the fact that a shear has unequal length sides.  Oh well, deal with that later, let's solve now the problem of strictly how to change the angle between basis vectors using a hyperbolic rotation:
+<br>
+<br>
+
+First we have to ask, what is the angle between the hyperbolic rotation basis vectors?  And for that we also have to ask, what is the magnitude of hyperbolic rotation vectors?<br>
+<br>
+
+So for starters:<br>
+<br>
+
+$
+\left[ \begin{matrix}
+	cosh(\alpha) &amp; sinh(\alpha) \\
+	sinh(\alpha) &amp; cosh(\alpha)
+\end{matrix} \right]
+\left[ \begin{matrix} 1 \\ 0 \end{matrix} \right]
+= 
+\left[ \begin{matrix} cosh(\alpha) \\ sinh(\alpha) \end{matrix} \right]
+$, and 
+$
+\left[ \begin{matrix}
+	cosh(\alpha) &amp; sinh(\alpha) \\
+	sinh(\alpha) &amp; cosh(\alpha)
+\end{matrix} \right]
+\left[ \begin{matrix} 0 \\ 1 \end{matrix} \right]
+= 
+\left[ \begin{matrix} sinh(\alpha) \\ cosh(\alpha) \end{matrix} \right]
+$<br>
+<br>
+
+Kind of obvious just looking at the column vectors.<br>
+Ok so what is the magnitude of this? Using another hyperbolic trigonometry identity ...<br>
+<br>
+
+$|| H(\alpha) \cdot e_x || = || H(\alpha) \cdot e_y || = \sqrt{ cosh(\alpha)^2 + sinh(\alpha)^2 } = \sqrt{ cosh(2 \alpha) }$<br>
+<br>
+
+So that means our hyperbolic-rotated vectors, normalized, will look like:<br>
+
+$
+unit(H(\alpha) \cdot e_x) = \left[ \begin{matrix}
+	\frac{cosh(\alpha)}{\sqrt{cosh(2 \alpha)}} \\
+	\frac{sinh(\alpha)}{\sqrt{cosh(2 \alpha)}}
+\end{matrix} \right],
+unit(H(\alpha) \cdot e_x) = \left[ \begin{matrix}
+	\frac{sinh(\alpha)}{\sqrt{cosh(2 \alpha)}} \\
+	\frac{cosh(\alpha)}{\sqrt{cosh(2 \alpha)}}
+\end{matrix} \right],
+$<br>
+<br>
+
+What's the angle between?  Using the inner product, and a few more hyperbolic trig identity:<br>
+<br>
+
+$cos(\phi) = \langle unit(H(\alpha) \cdot e_x), unit(H(\alpha) \cdot e_y) \rangle = \frac{2 sinh(\alpha) cosh(\alpha)}{cosh(2 \alpha)} = \frac{sinh(2\alpha)}{cosh(2\alpha)} = tanh(2\alpha)$<br>
+$sin(\phi) = \sqrt{1 - cos(\phi)^2} = \sqrt{1 - tanh(2\alpha)^2} = \sqrt{\frac{cosh(2\alpha)^2 - sinh(2\alpha)^2}{cosh(2\alpha)^2}} = \frac{1}{cosh(2\alpha)}$<br>
+<br>
+	
+For sign-ness I should really start with the sin calculation using a unit cross product magnitude and then calculate cos from there.  Then again, nope, sign wouldn't have mattered.<br>
+<br>
+
+So $\phi = atan(\frac{sin(\phi)}{cos(\phi)}) = atan(\frac{1}{sinh(2\alpha)})$<br>
+<br>
+	
+So there is your angle between basis vectors after a hyperbolic rotation. <br>
+<br>
+<br>
+
+	</body>
+</html>
