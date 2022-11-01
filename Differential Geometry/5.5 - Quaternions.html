@@ -258,7 +258,24 @@ $ = ({q^1}_0 {q^2}_0 + {q^1}_i {q^2}_j g^{ij}) \star 1
 	+ {q^1}_0 {q^2}_j \star e^j
 $<br>
 Hmm I was hoping I could isolate the inner product of the vectors, so ... yeah ... that's not looking good ... <br>
-Of coure we can get around this with our isolating-k-forms trick of wedging, dualing, wedging to elimiate everything we don't want.
+<br>
+
+Well what about the wedge of the dual and dual?<br>
+Wedge product of dual of #1 and dual of #2:<br>
+$\star q^1 \wedge \star q^2$<br>
+$= \star ({q^1}_0 + {q^1}_i e^i) \wedge \star ({q^2}_0 + {q^2}_j e^j)$<br>
+$= ({q^1}_0 \star 1 + {q^1}_i \star e^i) \wedge ({q^2}_0 \star 1 + {q^2}_j \star e^j)$<br>
+$=
+	{q^1}_0 \star 1  \wedge {q^2}_0 \star 1
+	+ {q^1}_0 \star 1  \wedge {q^2}_j \star e^j
+	+ {q^1}_i \star e^i \wedge {q^2}_0 \star 1
+	+ {q^1}_i \star e^i \wedge {q^2}_j \star e^j
+$<br>
+$= 0$<br>
+So that won't help.<br>
+<br>
+
+Of coure we can work $a \wedge \star b$ into an inner product with our isolating-k-forms trick of wedging, dualing, wedging to elimiate everything we don't want.
 In this case if we want the $\star 1$ term then we can just dual and wedge by $\star 1$ again to eliminate that extra $\star e^j$ term:
 <br>
 
@@ -271,42 +288,79 @@ $ = \sigma ({q^1}_0 {q^2}_0 + {q^1}_i {q^2}_j g^{ij}) \star 1$<br>
 ... and now the extra term is gone.<br>
 $\star (\star 1 \wedge \star (q^1 \wedge \star q^2))$<br>
 $ = {q^1}_0 {q^2}_0 + {q^1}_i {q^2}_j g^{ij}$<br>
-... and now we've got something close to our inner product.  Thanks to the 0+1/3 space we now have symmetric ${q^1}_0 {q^2}_i + {q^1}_i {q^2}_0$ (unlike in the 1/4 case below), buuut,
+... and now we've got something close to our inner product.  Thanks to the (0+1)/3 space we now have symmetric ${q^1}_0 {q^2}_i + {q^1}_i {q^2}_0$ (unlike in the 1/4 case below), buuut,
 now our metric is decoupled from the time component.<br>
+<br>
+
+Wedge product of two quaternions:<br>
+$q^1 \wedge q^2$<br>
+$= ({q^1}_0 + {q^1}_i e^i) \wedge ({q^2}_0 + {q^2}_j e^j)$<br>
+$= (({q^1}_0 + {q^1}_i e^i) \wedge {q^2}_0 + ({q^1}_0 + {q^1}_i e^i) \wedge {q^2}_j e^j)$<br>
+$= {q^1}_0 \wedge {q^2}_0 + {q^1}_i e^i \wedge {q^2}_0 + {q^1}_0 \wedge {q^2}_j e^j + {q^1}_i e^i \wedge {q^2}_j e^j$<br>
+$= {q^1}_0 {q^2}_0 + {q^2}_0 {q^1}_i e^i + {q^1}_0 {q^2}_j e^j + {q^1}_i {q^2}_j e^i \wedge e^j$<br>
+$= {q^1}_0 {q^2}_0 + ( {q^2}_0 {q^1}_i + {q^1}_0 {q^2}_i ) e^i + {q^1}_i {q^2}_j {\epsilon^{ij}}_k \star e^k$<br>
+<br>
+
+So here we have all our components of quaternion multiplication, except our vector cross vector term is in the dual space instead of the vector space,
+and we are also missing the $-{q^1}_i {q^2}_j \delta^{ij}$ real term.  But some foreshadowing, we're really not interested in that first ${q^1}_0 {q^2}_0$ term.  So getting rid of that...<br>
+<br>
+
+$\star (q^1 \wedge q^2) 
+	= {q^1}_0 {q^2}_0 \star 1 + ( {q^2}_0 {q^1}_i + {q^1}_0 {q^2}_i ) \star e^i + {q^1}_i {q^2}_j {\epsilon^{ij}}_k \sigma e^k$<br>
+$\star (q^1 \wedge q^2) \wedge e^l
+	= {q^1}_0 {q^2}_0 \star 1 \wedge e^l 
+	+ ( {q^2}_0 {q^1}_i + {q^1}_0 {q^2}_i ) \star e^i \wedge e^l
+	+ {q^1}_i {q^2}_j {\epsilon^{ij}}_k \sigma e^k \wedge e^l
+$<br>
+$= ( {q^2}_0 {q^1}^l + {q^1}_0 {q^2}^l ) 
+	+ {q^1}_i {q^2}_j {\epsilon^{ij}}_k \sigma {{\epsilon^k}_m}^l \star e^m
+$<br>
+$= ( {q^2}_0 {q^1}^l + {q^1}_0 {q^2}^l ) 
+	+ {q^1}_i {q^2}_j \delta^{ij}_{mn} \sigma g^{ln} \star e^m
+$<br>
+$\star (q^1 \wedge q^2) \wedge e^l \wedge e^p g_{lp}
+= ( {q^2}_0 {q^1}^l + {q^1}_0 {q^2}^l ) \wedge e^p g_{lp}
+	+ {q^1}_i {q^2}_j \delta^{ij}_{mn} \sigma g^{ln} \star e^m \wedge e^p g_{lp}
+$<br>
+$= ( {q^2}_0 {q^1}_p + {q^1}_0 {q^2}_p ) e^p
+	+ {q^1}_i {q^2}_j \delta^{ij}_{mp} \sigma \star e^m \wedge e^p
+$<br>
+TODO does this cancel?  don't do that ...<br>
+$= ( {q^2}_0 {q^1}_p + {q^1}_0 {q^2}_p ) e^p
+	+ {q^1}_i {q^2}_j \delta^{ij}_{mp} g^{mp}
+$<br>
+TODO did I lose a dual here?<br>
+$= ( {q^2}_0 {q^1}_i + {q^1}_0 {q^2}_i ) e^i
+	+ {q^1}_i {q^2}_j {\epsilon^{ij}}_k e^k
+$<br>
+<br>
+
+Now if we combine this with the wedge of dual:<br>
+$q^1 \wedge q^2 + q^1 \wedge \star q^2$<br>
+$= {q^1}_0 {q^2}_0
+	+ ( {q^2}_0 {q^1}_i + {q^1}_0 {q^2}_i ) e^i 
+	+ {q^1}_i {q^2}_j {\epsilon^{ij}}_k \star e^k
+	+ ({q^1}_0 {q^2}_0 + {q^1}_i {q^2}_j g^{ij}) \star 1
+	+ {q^1}_0 {q^2}_j \star e^j
+$<br>
+We have some extra terms.  We have that last ${q^1}_0 {q^2}_j \star e^j$.  And then if you do look at self-duals, we have ${q^1}_0 {q^2}_0$ appearing twice.  How to fix.  By removing those isolated terms before.<br>
+<br>
+
+$\star (\star 1 \wedge \star (q^1 \wedge \star q^2)) = {q^1}_0 {q^2}_0 + {q^1}_i {q^2}_j g^{ij}$<br>
+$\star (q^1 \wedge q^2) \wedge e^k \wedge e^l g_{kl} = ( {q^2}_0 {q^1}_i + {q^1}_0 {q^2}_i ) e^i + {q^1}_i {q^2}_j {\epsilon^{ij}}_k e^k$<br>
+So<br>
+$\star (\star 1 \wedge \star (q^1 \wedge \star q^2)) + \star (q^1 \wedge q^2) \wedge e^k \wedge e^l g_{kl}
+= {q^1}_0 {q^2}_0 + {q^1}_i {q^2}_j g^{ij} + ( {q^2}_0 {q^1}_i + {q^1}_0 {q^2}_i ) e^i + {q^1}_i {q^2}_j {\epsilon^{ij}}_k e^k$<br>
+And for the case that $g^{ij} = diag(-1,-1,-1)$ we have reproduced quaternion multiplication.<br>
 <br>
 
 <br>
 FIXME use a form basis<br>
 <hr>
 
-Wedge product of dual of #1 and dual of #2:<br>
-$\star q_1 \wedge \star q_2$<br>
-$= \star ({q_1}^0 + {q_1}^i e_i) \wedge \star ({q_2}^0 + {q_2}^j e_j)$<br>
-$= ({q_1}^0 \star 1 + {q_1}^i \star e_i) \wedge ({q_2}^0 \star 1 + {q_2}^j \star e_j)$<br>
-$=
-	{q_1}^0 \star 1  \wedge {q_2}^0 \star 1
-	+ {q_1}^0 \star 1  \wedge {q_2}^j \star e_j
-	+ {q_1}^i \star e_i \wedge {q_2}^0 \star 1
-	+ {q_1}^i \star e_i \wedge {q_2}^j \star e_j
-$<br>
-$= 0$<br>
-<br>
-
 So how would quaternion-multiplication work?:<br>
 <br>
 
-Wedge product of two quaternions:<br>
-$q_1 \wedge q_2$<br>
-$= ({q_1}^0 + {q_1}^i e_i) \wedge ({q_2}^0 + {q_2}^j e_j)$<br>
-$= (({q_1}^0 + {q_1}^i e_i) \wedge {q_2}^0 + ({q_1}^0 + {q_1}^i e_i) \wedge {q_2}^j e_j)$<br>
-$= {q_1}^0 \wedge {q_2}^0 + {q_1}^i e_i \wedge {q_2}^0 + {q_1}^0 \wedge {q_2}^j e_j + {q_1}^i e_i \wedge {q_2}^j e_j$<br>
-$= {q_1}^0 {q_2}^0 + {q_2}^0 {q_1}^i e_i + {q_1}^0 {q_2}^j e_j + {q_1}^i {q_2}^j e_i \wedge e_j$<br>
-$= {q_1}^0 {q_2}^0 + ( {q_2}^0 {q_1}^i + {q_1}^0 {q_2}^i ) e_i + {q_1}^i {q_2}^j \epsilon_{ijk} \star e_k$<br>
-<br>
-
-So here we have all our components of quaternion multiplication, except our vector cross vector term is in the dual space instead of the vector space,
-and we are also missing the $-{q_1}^i {q_2}^j \delta_{ij}$ real term.<br>
-<br>
 
 Mind you if we self-dual'd the result then we could argue that all the components are where they are supposed to be.<br>
 $H(q) := \frac{1}{2} (q + \star q)$<br>
