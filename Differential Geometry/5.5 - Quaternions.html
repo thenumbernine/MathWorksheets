@@ -48,8 +48,8 @@ $\begin{array}{c|cccc}
 \end{array}$<br>
 <br>
 
-One way to represent the multiplication table is to be summed up as $e_0 \cdot e_\mu = e_\mu$ 
-and $e_i \cdot e_j = \epsilon_{ijk} e_k - \delta_{ij} e_0$ 
+One way to represent the multiplication table is to be summed up as $e_0 \cdot e_\mu = e_\mu$
+and $e_i \cdot e_j = \epsilon_{ijk} e_k - \delta_{ij} e_0$
 for Greek indexes ranging (0,1,2,3) and Latin indexes ranging (1,2,3).<br>
 <br>
 
@@ -94,14 +94,14 @@ $g^{\mu\nu} = \frac{1}{4} \left[ \begin{matrix}
 
 $g_{\mu\nu} g^{\nu\alpha} = \delta_\mu^\alpha$<br>
 $\delta_\mu^\alpha = (2 \delta_{0 ( \mu} e_{\nu)} - \delta_{\mu\nu} e_0 + \epsilon_{0 \mu \nu \rho} e_\rho) g^{\nu\alpha}$<br>
-$\delta_\mu^\alpha = 
+$\delta_\mu^\alpha =
 	\delta_{0 \mu} e_{\nu} g^{\nu \alpha}
 	+ e_\mu g^{0 \alpha}
 	- e_0 g^{\mu\alpha}
 	+ \epsilon_{0 \mu \nu \rho} e_\rho g^{\nu \alpha}
 $<br>
 ...split... for $\mu = 0, \alpha = 0$<br>
-$1 = 
+$1 =
 	e_{\nu} g^{\nu 0}
 	+ e_0 g^{00}
 	- e_0 g^{00}
@@ -115,12 +115,12 @@ so $g^{00} = e_0$<br>
 $1 = e_i g^{i 0}$<br>
 so $g^{i 0} = -e_i$<br>
 ... for $\mu = i, \alpha = 0$<br>
-$0 = 
+$0 =
 	e_i g^{0 0}
 	- e_0 g^{i 0}
 	+ \epsilon_{i j k} e_k g^{j 0}
 $<br>
-$0 = 
+$0 =
 	e_i e_0
 	+ e_0 e_i
 	- \epsilon_{i j k} e_k e_j
@@ -130,26 +130,26 @@ hmmm...<br>
 TODO am I stuck?<br>
 <br>
 
-What if, for 
-$g_{\mu\nu} = e_\mu \cdot e_\nu$, 
-then 
+What if, for
+$g_{\mu\nu} = e_\mu \cdot e_\nu$,
+then
 $g^{\mu\nu} = \frac{1}{4} \overline{e_\mu} \cdot \overline{e_\nu}$<br>
 Then $g_{\alpha\mu} g^{\mu\beta} = e_\alpha \cdot e_\mu \cdot \frac{1}{4} \overline{e_\mu} \cdot \overline{e_\beta}$<br>
 ... using $\frac{1}{4} \Sigma_\mu e_\mu \cdot \overline{e_\mu} = \frac{1}{4} ( (e_0)^2 - (e_1)^2 - (e_2)^2 - (e_3)^2 ) = \frac{1}{4} (1+1+1+1) = 1$<br>
 $= e_\alpha \cdot \overline{e_\beta}$<br>
 Now this does give $\delta_{\alpha\beta}$ when $\alpha = \beta$, but it gives other non-real values otherwise.<br>
-How to get rid of them all?  
+How to get rid of them all?
 If they are non-real then we can add the conjugate of the result and elminiate all the non-reals:<br>
 $\frac{1}{2} (e_\mu + \overline{e_\mu}) = 1 $ for $\mu = 0$, 0 otherwise.<br>
-So that means $\delta_{\alpha\beta} = \frac{1}{2} ( 
+So that means $\delta_{\alpha\beta} = \frac{1}{2} (
 	(e_\alpha \cdot e_\mu) \cdot ( \overline{e_\mu} \cdot \overline{e_\beta} )
 	+ \overline{ (e_\alpha \cdot e_\mu) \cdot ( \overline{e_\mu} \cdot \overline{e_\beta} ) }
 )$<br>
-$ = \frac{1}{2} ( 
+$ = \frac{1}{2} (
 	(e_\alpha \cdot e_\mu) \cdot ( \overline{e_\mu} \cdot \overline{e_\beta} )
 	+ \overline{ ( \overline{e_\mu} \cdot \overline{e_\beta} ) } \cdot \overline{ (e_\alpha \cdot e_\mu) }
 )$<br>
-$ = \frac{1}{2} ( 
+$ = \frac{1}{2} (
 	(e_\alpha \cdot e_\mu) \cdot ( \overline{e_\mu} \cdot \overline{e_\beta} )
 	+ (e_\beta \cdot e_\mu) \cdot (\overline{e_\mu} \cdot \overline{e_\alpha} )
 )$<br>
@@ -176,18 +176,18 @@ What does quaternion multiplcation look like?<br>
 $q_1 \cdot q_2$<br>
 $= ({q_1}^0 e_0 + {q_1}^i e_i) \cdot ({q_2}^0 e_0 + {q_2}^j e_j)$<br>
 $= {q_1}^0 e_0 \cdot ({q_2}^0 e_0 + {q_2}^j e_j) + {q_1}^i e_i \cdot ({q_2}^0 e_0 + {q_2}^j e_j)$<br>
-$= {q_1}^0 e_0 \cdot {q_2}^0 e_0 
-	+ {q_1}^0 e_0 \cdot {q_2}^j e_j 
-	+ {q_1}^i e_i \cdot {q_2}^0 e_0 
+$= {q_1}^0 e_0 \cdot {q_2}^0 e_0
+	+ {q_1}^0 e_0 \cdot {q_2}^j e_j
+	+ {q_1}^i e_i \cdot {q_2}^0 e_0
 	+ {q_1}^i e_i \cdot {q_2}^j e_j
 $<br>
 ... apply quaternion basis multiplication rules ... <br>
-$= {q_1}^0 {q_2}^0 e_0 
+$= {q_1}^0 {q_2}^0 e_0
 	+ {q_1}^0 {q_2}^i e_i
 	+ {q_1}^i {q_2}^0 e_i
 	+ {q_1}^i {q_2}^j (\epsilon_{ijk} e_k - \delta_{ij} e_0)
 $<br>
-$= ({q_1}^0 {q_2}^0 - {q_1}^i {q_2}^j \delta_{ij}) e_0 
+$= ({q_1}^0 {q_2}^0 - {q_1}^i {q_2}^j \delta_{ij}) e_0
 	+ (
 		{q_1}^0 {q_2}^k
 		+ {q_2}^0 {q_1}^k
@@ -214,63 +214,82 @@ In both cases the vector-application is going to produce derivatives in addition
 So instead, how about combining the "real" and "imaginary" components using a 0-form and a 1-form in 3-dimensions:<br>
 <br>
 
-$q = q^0 + q^1 e_1 + q^2 e_2 + q^3 e_3$<br>
-$q = q^0 + q^i e_i$<br>
-$ \star q = \star q^0 + q^i \star e_i = q^0 \star 1 + \frac{1}{2} q^i \epsilon_{ijk} e^j \wedge e^k$<br>
+$q = q_0 + q_1 e^1 + q_2 e^2 + q_3 e^3$<br>
+$q = q_0 + q_i e^i$<br>
+$ \star q = \star q_0 + q_i \star e^i = q_0 \star 1 + \frac{1}{2} q_i {\epsilon^i}_{jk} e^j \wedge e^k$<br>
 <br>
 
 Useful:<br>
-In 3-dimensions, $\epsilon_i \wedge \epsilon_j \wedge \epsilon_k = \epsilon_{ijk} \star 1$<br>
+In 3-dimensions, $\epsilon^i \wedge \epsilon^j \wedge \epsilon^k = \epsilon^{ijk} \star 1$<br>
 <br>
 
 Useful:<br>
-$e_i \wedge \star e_j$<br>
-$= e_i \wedge \frac{1}{2} \epsilon_{jkl} e_k \wedge e_l$<br>
-$= \frac{1}{2} \epsilon_{jkl} e_i \wedge e_k \wedge e_l$<br>
-$= \frac{1}{2} \epsilon_{jkl} \epsilon_{ikl} \star 1$<br>
-$= \delta_{ij} \star 1$<br>
+$e^i \wedge \star e^j$<br>
+$= e^i \wedge \frac{1}{2} {\epsilon^j}_{kl} e^k \wedge e^l$<br>
+$= \frac{1}{2} g^{jm} \epsilon_{mkl} e^i \wedge e^k \wedge e^l$<br>
+$= \frac{1}{2} g^{jm} \epsilon_{mkl} \epsilon^{ikl} \star 1$<br>
+$= g^{ij} \star 1$<br>
 <br>
 
-Mind you $e_i$ is a 1-form and $\star e_j$ is a 2-form, so the wedge product is symmetric:<br>
-$e_i \wedge \star e_j = \star e_j \wedge e_i = \delta_{ij} \star 1$<br>
+Mind you $e^i$ is a 1-form and $\star e^j$ is a 2-form, so the wedge product is symmetric:<br>
+$e^i \wedge \star e^j = \star e^j \wedge e^i = g^{ij} \star 1$<br>
 <br>
 
 Wedge product of quaterion #1 and dual of quaternion #2.  This is the definition of the dot product for any form, but mind you this is a combined 0-form and 1-form so it doesn't fit with that dot-product definition:<br>
-$q_1 \wedge \star q_2$<br>
-$= ({q_1}^0 + {q_1}^i e_i) \wedge \star ({q_2}^0 + {q_2}^j e_j)$<br>
-$ = ({q_1}^0 + {q_1}^i e_i) \wedge ({q_2}^0 \star 1 + {q_2}^j \star e_j)$<br>
-$ = {q_1}^0 \wedge {q_2}^0 \star 1 
-	+ {q_1}^0 \wedge {q_2}^j \star e_j
-	+ {q_1}^i e_i \wedge {q_2}^0 \star 1 
-	+ {q_1}^i e_i \wedge {q_2}^j \star e_j
+$q^1 \wedge \star q^2$<br>
+$= ({q^1}_0 + {q^1}_i e^i) \wedge \star ({q^2}_0 + {q^2}_j e^j)$<br>
+$ = ({q^1}_0 + {q^1}_i e^i) \wedge ({q^2}_0 \star 1 + {q^2}_j \star e^j)$<br>
+$ = {q^1}_0 \wedge {q^2}_0 \star 1
+	+ {q^1}_0 \wedge {q^2}_j \star e^j
+	+ {q^1}_i e^i \wedge {q^2}_0 \star 1
+	+ {q^1}_i e^i \wedge {q^2}_j \star e^j
 $<br>
-... using $e_i \wedge \star 1 = 0$...<br>
-$ = {q_1}^0 {q_2}^0 \star 1 
-	+ {q_1}^0 {q_2}^j \star e_j
-	+ {q_1}^i {q_2}^j e_i \wedge \star e_j
+... using $e^i \wedge \star 1 = 0$...<br>
+$ = {q^1}_0 {q^2}_0 \star 1
+	+ {q^1}_0 {q^2}_j \star e^j
+	+ {q^1}_i {q^2}_j e^i \wedge \star e^j
 $<br>
-... using $e_i \wedge \star e_j = \delta_{ij} \star 1$ ...
-$ = {q_1}^0 {q_2}^0 \star 1 
-	+ {q_1}^0 {q_2}^j \star e_j
-	+ {q_1}^i {q_2}^j \delta_{ij} \star 1
+... using $e^i \wedge \star e^j = g^{ij} \star 1$ ...
+$ = {q^1}_0 {q^2}_0 \star 1
+	+ {q^1}_0 {q^2}_j \star e^j
+	+ {q^1}_i {q^2}_j g^{ij} \star 1
 $<br>
-$ = ({q_1}^0 {q_2}^0 + {q_1}^i {q_2}^j \delta_{ij}) \star 1
-	+ {q_1}^0 {q_2}^j \star e_j
+$ = ({q^1}_0 {q^2}_0 + {q^1}_i {q^2}_j g^{ij}) \star 1
+	+ {q^1}_0 {q^2}_j \star e^j
 $<br>
 Hmm I was hoping I could isolate the inner product of the vectors, so ... yeah ... that's not looking good ... <br>
+Of coure we can get around this with our isolating-k-forms trick of wedging, dualing, wedging to elimiate everything we don't want.
+In this case if we want the $\star 1$ term then we can just dual and wedge by $\star 1$ again to eliminate that extra $\star e^j$ term:
 <br>
+
+$\star (q^1 \wedge \star q^2)$<br>
+$ = \sigma({q^1}_0 {q^2}_0 + {q^1}_i {q^2}_j g^{ij})
+	+ \sigma {q^1}_0 {q^2}_j e^j
+$<br>
+$\star 1 \wedge \star (q^1 \wedge \star q^2)$<br>
+$ = \sigma ({q^1}_0 {q^2}_0 + {q^1}_i {q^2}_j g^{ij}) \star 1$<br>
+... and now the extra term is gone.<br>
+$\star (\star 1 \wedge \star (q^1 \wedge \star q^2))$<br>
+$ = {q^1}_0 {q^2}_0 + {q^1}_i {q^2}_j g^{ij}$<br>
+... and now we've got something close to our inner product.  Thanks to the 0+1/3 space we now have symmetric ${q^1}_0 {q^2}_i + {q^1}_i {q^2}_0$ (unlike in the 1/4 case below), buuut,
+now our metric is decoupled from the time component.<br>
+<br>
+
+<br>
+FIXME use a form basis<br>
+<hr>
 
 Wedge product of dual of #1 and dual of #2:<br>
 $\star q_1 \wedge \star q_2$<br>
 $= \star ({q_1}^0 + {q_1}^i e_i) \wedge \star ({q_2}^0 + {q_2}^j e_j)$<br>
 $= ({q_1}^0 \star 1 + {q_1}^i \star e_i) \wedge ({q_2}^0 \star 1 + {q_2}^j \star e_j)$<br>
-$= 	
-	{q_1}^0 \star 1  \wedge {q_2}^0 \star 1 
+$=
+	{q_1}^0 \star 1  \wedge {q_2}^0 \star 1
 	+ {q_1}^0 \star 1  \wedge {q_2}^j \star e_j
-	+ {q_1}^i \star e_i \wedge {q_2}^0 \star 1 
+	+ {q_1}^i \star e_i \wedge {q_2}^0 \star 1
 	+ {q_1}^i \star e_i \wedge {q_2}^j \star e_j
 $<br>
-$= 0$<br>	
+$= 0$<br>
 <br>
 
 So how would quaternion-multiplication work?:<br>
@@ -292,11 +311,11 @@ and we are also missing the $-{q_1}^i {q_2}^j \delta_{ij}$ real term.<br>
 Mind you if we self-dual'd the result then we could argue that all the components are where they are supposed to be.<br>
 $H(q) := \frac{1}{2} (q + \star q)$<br>
 $H(q_1 \wedge q_2)
-	= {q_1}^0 {q_2}^0 (\frac{1}{2} (1 + \star 1)) 
-	+ ( 
-		{q_2}^0 {q_1}^i 
-		+ {q_1}^0 {q_2}^i 
-		+ {q_1}^j {q_2}^j \epsilon_{ijk} 
+	= {q_1}^0 {q_2}^0 (\frac{1}{2} (1 + \star 1))
+	+ (
+		{q_2}^0 {q_1}^i
+		+ {q_1}^0 {q_2}^i
+		+ {q_1}^j {q_2}^j \epsilon_{ijk}
 	) (\frac{1}{2} (e_i + \star e_i))
 $<br>
 we have one unique scalar and vector.<br>
@@ -334,7 +353,7 @@ $ = \sigma \star (\star 1 \wedge (
 	({q_1}^0 {q_2}^0 + {q_1}^i {q_2}^j \delta_{ij})
 	+ {q_1}^0 {q_2}^j e_j
 ))$<br>
-$ = \sigma \star (\star 1 
+$ = \sigma \star (\star 1
 	({q_1}^0 {q_2}^0 + {q_1}^i {q_2}^j \delta_{ij})
 )$<br>
 $ = {q_1}^0 {q_2}^0 + {q_1}^i {q_2}^j \delta_{ij}$<br>
@@ -375,8 +394,8 @@ $= a^i \star (e_n \wedge e_l \wedge e_i)$<br>
 $= a^i \epsilon_{nli}$<br>
 <br>
 
-So if we choose to do our double-wedge with $\star (\star e_j \wedge w)$ then we should get back $a^j$.<br> 
-And if we want a form out of that, just do $e_j \wedge \star (\star e_j \wedge w) = a^j e_j$<br> 
+So if we choose to do our double-wedge with $\star (\star e_j \wedge w)$ then we should get back $a^j$.<br>
+And if we want a form out of that, just do $e_j \wedge \star (\star e_j \wedge w) = a^j e_j$<br>
 <br>
 
 Maybe I can use this trick to isolate my vector inner product and complete my quaternion multiplication?<br>
@@ -385,20 +404,10 @@ Maybe I can use this trick to isolate my vector inner product and complete my qu
 <hr>
 <br>
 
-How to isolate the unique components of any combination of forms in $\Lambda_3$:<br>
-TODO Ok I'm getting sick of the vector basis, TODO rewrite this whole worksheet as forms.<br>
+Sum of all k-forms in 0+3 wedge product space:<br>
 <br>
-$w = a + b_i e^i + \frac{1}{2} c_i \epsilon^{ijk} e^j \wedge e^k + \frac{1}{6} d \epsilon^{ijk} e^i \wedge e^j \wedge e^k$<br>
+
 $w = a + b_i e^i + c_i \star e^i + d \star 1$<br>
-<br>
-
-$\star w$<br> 
-$= \star (a + b_i e^i + c_i \star e^i + d \star 1)$<br>
-$= (a \star 1 + b_i \star e^i + c_i \star \star e^i + d \star \star 1)$<br>
-$= \sigma d + \sigma c_i e^i + b_i \star e^i + a \star 1$<br>
-<br>
-
-<hr>
 <br>
 
 Isolate the 0-form:<br>
@@ -428,20 +437,21 @@ $\sigma \delta_{ij} e^i \wedge \star (\star 1 \wedge \star (\star e^j \wedge \st
 <br>
 
 
-How about a general case?  For picking out the p forms from a sum-of-0-to-n form?<br>
+
+<hr>
 <br>
 
-For $w = w^0 + {w^1}_i e^i + \frac{1}{2} {w^2}_{i_1 i_2} e^{i_1} \wedge e^{i_2} + ... + \frac{1}{n!} {w^n}_{i_1 ... i_n} e^{i_1} \wedge ... \wedge e^{i_n}$<br>
+How to isolate the unique components of any combination of forms in $\Lambda_3$:<br>
+TODO Ok I'm getting sick of the vector basis, TODO rewrite this whole worksheet as forms.<br>
+<br>
+$w = a + b_i e^i + \frac{1}{2} c_i \epsilon^{ijk} e^j \wedge e^k + \frac{1}{6} d \epsilon^{ijk} e^i \wedge e^j \wedge e^k$<br>
+$w = a + b_i e^i + c_i \star e^i + d \star 1$<br>
 <br>
 
-$w \wedge e^{j_{p+1}} \wedge ... \wedge e^{j_n}$<br>
-... will zero everything of form &gt; p-form ...<br>
-$ = (w^0 + {w^1}_i e^i + \frac{1}{2} {w^2}_{i_1 i_2} e^{i_1} \wedge e^{i_2} + ... + \frac{1}{p!} {w^p}_{i_1 ... i_p} e^{i_1} \wedge ... \wedge e^{i_p}) \wedge e^{j_{p+1}} \wedge ... \wedge e^{j_n}$<br>
-... next dual everything, so that the p-form maps to the (n-p)-form, and it becomes the smallest form instead of the largest ...<br>
-... then wedge with $e^{k_1} \wedge ... \wedge e^{k_{n-p-1}}$, so that everything else goes away, and you are left with ...<br>
-$= \frac{1}{p!} {w^p}_{i_1 ... i_p} \star (e^{i_1} \wedge ... \wedge e^{i_p} \wedge e^{j_{p+1}} \wedge ... \wedge e^{j_n}) \wedge e^{k_1} \wedge ... \wedge e^{k_{n-p-1}}$<br>
-$= \frac{1}{p!} {w^p}_{i_1 ... i_p} \epsilon^{i_1 ... i_p j_{p+1} ... j_n}) \wedge e^{k_1} \wedge ... \wedge e^{k_{n-p-1}}$<br>
-... now wedge with $e^{k_{n-p}} \wedge ... \wedge e^{k_n}$ ... and then dual times signature ... and we have isolated this term.<br>
+$\star w$<br>
+$= \star (a + b_i e^i + c_i \star e^i + d \star 1)$<br>
+$= (a \star 1 + b_i \star e^i + c_i \star \star e^i + d \star \star 1)$<br>
+$= \sigma d + \sigma c_i e^i + b_i \star e^i + a \star 1$<br>
 <br>
 
 <hr>
@@ -451,13 +461,13 @@ Ok another problem with 0-form + 1-form is that $a \wedge \star b$ is not an inn
 <br>
 
 $(a_0 + a_i e^i) \wedge \star (b_0 + b_j e^j)$<br>
-$= 		a_0 b_0 \wedge \star 1 
+$= 		a_0 b_0 \wedge \star 1
 	+ a_i b_0 e^i \wedge \star 1
-	+ a_0 b_j \wedge \star e^j 
+	+ a_0 b_j \wedge \star e^j
 	+ a_i b_j e^i \wedge \star e^j
 $<br>
-$= 		a_0 b_0 \star 1 
-	+ a_0 b_i \star e^i 
+$= 		a_0 b_0 \star 1
+	+ a_0 b_i \star e^i
 	+ a_i b_j g^{ij} \star 1
 $<br>
 <br>
@@ -505,9 +515,9 @@ $q^\sharp = q^\mu g_{\mu\nu} e^\nu = q^0 e^0 - q^i e^i$<br>
 Maybe we can do quaternion mul as wedge?<br>
 
 $a \wedge b = (a_0 e^0 + a_i e^i) \wedge (b_0 e^0 + b_j e^j)$<br>
-$= 	  a_0 e^0 \wedge b_0 e^0 
+$= 	  a_0 e^0 \wedge b_0 e^0
 	+ a_0 e^0 \wedge b_j e^j
-	+ a_i e^i \wedge b_0 e^0 
+	+ a_i e^i \wedge b_0 e^0
 	+ a_i e^i \wedge b_j e^j
 $<br>
 $=	(a_0 b_i - a_i b_0 ) e^0 \wedge e^i
@@ -527,7 +537,7 @@ Combining inner and exterior:<br>
 $a \wedge (b + \star b)$<br>
 $=	(a_0 b_i - a_i b_0 ) e^0 \wedge e^i
 	+ \frac{1}{2} a_i b_j {\epsilon^{ij}}_k \star (e^0 \wedge e^k)
-	+ a_0 b_0 e^0 \wedge \star e^0 
+	+ a_0 b_0 e^0 \wedge \star e^0
 	+ a_i b_j e^i \wedge \star e^j
 $<br>
 $=	(a_0 b_i - a_i b_0 ) e^0 \wedge e^i
@@ -543,9 +553,9 @@ $(a + \star a) \wedge (b + \star b)$<br>
 $= a \wedge (b + \star b) + \star a \wedge b$<br>
 $=	(a_0 b_i - a_i b_0 ) e^0 \wedge e^i
 	+ \frac{1}{2} a_i b_j {\epsilon^{ij}}_k \star (e^0 \wedge e^k)
-	+ a_0 b_0 e^0 \wedge \star e^0 
+	+ a_0 b_0 e^0 \wedge \star e^0
 	+ a_i b_j e^i \wedge \star e^j
-	- a_0 b_0 e^0 \wedge \star e^0 
+	- a_0 b_0 e^0 \wedge \star e^0
 	- a_i b_j e^j \wedge \star e^i$<br>
 $=	(a_0 b_i - a_i b_0 ) e^0 \wedge e^i
 	+ \frac{1}{2} a_i b_j {\epsilon^{ij}}_k \star (e^0 \wedge e^k)
@@ -558,7 +568,7 @@ What if we $a^\sharp \wedge (b + \star b)$ ?<br>
 What does $a^\sharp \wedge b$ look like?<br>
 $a^\sharp \wedge b = (a^0 e^0 - a^i e^i) \wedge (b_0 e^0 + b_j e^j)$<br>
 $= 	  a^0 b_i e^0 \wedge e^i
-	- a^i b_0 e^i \wedge e^0 
+	- a^i b_0 e^i \wedge e^0
 	- a^i b_j e^i \wedge e^j
 $<br>
 $=	(a^0 b_i + a^i b_0 ) e^0 \wedge e^i

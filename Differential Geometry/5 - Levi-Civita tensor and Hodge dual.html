@@ -17,15 +17,15 @@ Let's give it a transform from our choice of (not necessarily coordinate) bais:<
 $g_{ab} = {(e')_a}^i {(e')_b}^j (g')_{ij} = {(e')_a}^i {(e')_b}^j \eta_{ij}$<br>
 <br>
 
-Let's define 
+Let's define
 the Levi-Civita permutation tensor to be
 a tensor in the basis of the Minkowski metric:<br>
 $(\epsilon')_{i_1 ... i_n} = 1$ for even permutations of $i_1 ... i_n$, -1 for odd permutations, and 0 otherwise.<br>
 <br>
 
 The contravariant-form representation of this tensor is:<br>
-$(\epsilon')^{i_1 ... i_n} 
-	= \eta^{i_1 j_1} ... \eta^{i_n j_n} (\epsilon')_{j_1 ... j_n} 
+$(\epsilon')^{i_1 ... i_n}
+	= \eta^{i_1 j_1} ... \eta^{i_n j_n} (\epsilon')_{j_1 ... j_n}
 	= det([\eta^{ij}]) (\epsilon')_{i_1 ... i_j}
 	= \sigma^{-1} (\epsilon')_{i_1 ... i_n}
 	= \sigma (\epsilon')_{i_1 ... i_n}
@@ -44,7 +44,7 @@ Now we are saying $g_{ab} = {(e')_a}^i {(e')_b}^j \eta_{ij}$.<br>
 with determinant:<br>
 $g = (e')^2 \sigma$, for $e' = det([{(e')_a}^i])$.<br>
 So combine to find: $\tilde{g}_{\tilde{a}\tilde{b}} = {e^a}_\tilde{a} {e^b}_\tilde{b} {(e')_a}^i {(e')_b}^j \eta_{ij}$.<br>
-and determinant:<br> 
+and determinant:<br>
 $\tilde{g} = e^2 (e')^2 \sigma$<br>
 Solve for $e'$ to find:<br>
 $e' = \frac{\sqrt{\tilde{g}}}{e} = \sqrt{g}$<br>
@@ -85,6 +85,10 @@ $\delta^{ijk}_{mnp} = \delta^{ijkl}_{mnpl} = -\epsilon^{ijkl} \epsilon_{mnpl}$<b
 $2! \delta^{ij}_{mn} = \delta^{ijk}_{mnk} = \delta^{ijkl}_{mnkl} = -\epsilon^{ijkl} \epsilon_{mnkl}$<br>
 $3! \delta^i_j = 2! \delta^{ij}_{mj} = \delta^{ijk}_{mjk} = \delta^{ijkl}_{mjkl} = -\epsilon^{ijkl} \epsilon_{mjkl}$<br>
 $4! = 3! \delta^i_i = 2! \delta^{ij}_{ij} = \delta^{ijk}_{ijk} = \delta^{ijkl}_{ijkl} = -\epsilon^{ijkl} \epsilon_{ijkl}$<br>
+<br>
+
+<hr>
+<b>Hodge Dual</b><br>
 <br>
 
 Hodge dual of a k-form:<br>
@@ -179,6 +183,10 @@ $\star (T_{abcd} dx^a \otimes dx^b \otimes dx^c \otimes dx^d) = \frac{1}{4!} T_{
 so $\star T = \frac{1}{4!} T_{abcd} \epsilon^{abcd}$<br>
 <br>
 
+<hr>
+<b>Double Hodge Dual</b><br>
+<br>
+
 Double Hodge dual star applied to a p-form:<br>
 $\star (\star (e^{i_1} \wedge ... \wedge e^{i_k}))$<br>
 $= \star (
@@ -240,7 +248,10 @@ $= \frac{1}{k!} a_{[i_1 ... i_k]} b^{[i_1 ... i_k]} \sigma \star \star 1$<br>
 $= \frac{1}{k!} a_{[i_1 ... i_k]} b^{[i_1 ... i_k]}$<br>
 <br>
 
-Exterior basis elements<br>
+<hr>
+<b>Exterior Basis Elements</b><br>
+<br>
+
 Here's our volume form, a n-form for n-dimensions:<br>
 $\eta = \star 1$<br>
 By definition of the Hodge star above:<br>
@@ -301,6 +312,32 @@ $\eta_{i_1 i_2} = (\eta_{i_1 i_2})_{i_3 ... i_n} = \epsilon_{i_1 ... i_n} e^{[i_
 $\eta_{i_1 ... i_{n-1}} = (\eta_{i_1 ... i_{n-1}})_{i_n} = \epsilon_{i_1 ... i_n} e^{i_n}$<br>
 $\eta_{i_1 ... i_n} = \eta_{i_1 ... i_n}$<br>
 <br>
+
+<hr>
+<br>
+
+What if if you have a sum-of-p-forms on a n-form wedge space?<br>
+<br>
+
+For $w = w^0 + {w^1}_i e^i + \frac{1}{2} {w^2}_{i_1 i_2} e^{i_1} \wedge e^{i_2} + ... + \frac{1}{n!} {w^n}_{i_1 ... i_n} e^{i_1} \wedge ... \wedge e^{i_n}$<br>
+<br>
+
+... and you want to eliminate all except the p'th form?<br>
+<br>
+
+$w \wedge e^{j_{p+1}} \wedge ... \wedge e^{j_n}$<br>
+... will zero everything of form &gt; p-form ...<br>
+$ = (w^0 + {w^1}_i e^i + \frac{1}{2} {w^2}_{i_1 i_2} e^{i_1} \wedge e^{i_2} + ... + \frac{1}{p!} {w^p}_{i_1 ... i_p} e^{i_1} \wedge ... \wedge e^{i_p}) \wedge e^{j_{p+1}} \wedge ... \wedge e^{j_n}$<br>
+... next dual everything, so that the p-form maps to the (n-p)-form, and it becomes the smallest form instead of the largest ...<br>
+... then wedge with $e^{k_1} \wedge ... \wedge e^{k_{n-p-1}}$, so that everything else goes away, and you are left with ...<br>
+$= \frac{1}{p!} {w^p}_{i_1 ... i_p} \star (e^{i_1} \wedge ... \wedge e^{i_p} \wedge e^{j_{p+1}} \wedge ... \wedge e^{j_n}) \wedge e^{k_1} \wedge ... \wedge e^{k_{n-p-1}}$<br>
+$= \frac{1}{p!} {w^p}_{i_1 ... i_p} \epsilon^{i_1 ... i_p j_{p+1} ... j_n}) \wedge e^{k_1} \wedge ... \wedge e^{k_{n-p-1}}$<br>
+... now wedge with $e^{k_{n-p}} \wedge ... \wedge e^{k_n}$ ... and then dual times signature ... and we have isolated this term.<br>
+<br>
+
+<br>
+
+
 
 <a href='.'>Back</a><br><br>
 	</body>
