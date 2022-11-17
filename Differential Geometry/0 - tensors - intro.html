@@ -35,7 +35,7 @@ but I don't talk about tangent spaces for a while ...<br>
 For now lets only consider charts of equal domain and range dimension:<br>
 A manifold is represented by an atlas, which is a collection of charts.<br>
 Define a chart of the atlas, 
-$\mathbf{u} : U \rightarrow \mathcal{M}, U \subseteq \mathbb{R}^n, \mathcal{M} \subseteq \mathbb{R}^n$<br>
+$\mathbf{u} : X \rightarrow \mathcal{M}, X \subseteq \mathbb{R}^n, \mathcal{M} \subseteq \mathbb{R}^n$<br>
 $\mathbf{u}(\mathbf{x}) 
 	= \mathbf{u}(x^1, ..., x^n) 
 	= \{u^1 (x^1, ..., x^n), ..., u^n(x^1, ..., x^n) \}
@@ -103,7 +103,7 @@ $e_a = e_a \left(
 	\frac{\partial}{\partial x^1}, ..., \frac{\partial}{\partial x^n}
 \right)$ 
 	be a vector basis that spans $V$.<br>
-$e_a : U \times V \rightarrow V$ form a basis of the tangent vector space, where U was our chart domain containing elements $( x^1, ..., x^n)$.<br>
+$e_a : X \times V \rightarrow V$ form a basis of the tangent vector space, where X was our chart domain containing elements $( x^1, ..., x^n)$.<br>
 <br>
 
 Another thing to consider, the function of $e_a$ wrt $x^i$ is arbitrary,
@@ -187,16 +187,16 @@ Or should I instead say that the one-form basis is defined as spanning $V^*$?<br
 Let $e^a \in \{ e^1, ..., e^n \}$, $e^a \in V^*$ be an element of the dual-basis of one-forms.<br>
 Let that dual-basis span the dual-tangent-space: $\{ e^a \} = span(V^*)$<br>
 Let $e^a = e^a(x^1, ..., x^n, dx^1, ..., dx^n)$.<br>
-$e^a : U \times V^* \rightarrow V^*$<br>
+$e^a : X \times V^* \rightarrow V^*$<br>
 $e^a$ is linear with regards to $dx^a$, such that $e^a (\alpha dx^i + \beta dx^j) = \alpha e^a (dx^i) + \beta e^a (dx^j)$.<br>
 such that $e^a(e_b) = \delta^a_b$<br>
 <br>
 
 How do we specify that $e^a$ varies with point on manifold, is a linear combination of the one-form basis, 
 and that it (like the one-form basis) maps vectors to reals? Ex:<br>
-$e^a : U \times V^* \rightarrow V^*$,<br>
+$e^a : X \times V^* \rightarrow V^*$,<br>
 $V^* : V \rightarrow \mathbb{R}$,<br>
-Therefore $e^a : U \times V^* \times V \rightarrow \mathbb{R}$<br>
+Therefore $e^a : X \times V^* \times V \rightarrow \mathbb{R}$<br>
 $e^a(x^1, ..., x^n, dx^1, ..., dx^n, \partial_1, ..., \partial_n) \in \mathbb{R}$<br>
 $e^a(x^1, ..., x^n, dx^1, ..., dx^n) : V \rightarrow \mathbb{R}$<br>
 $e^a(x^1, ..., x^n, dx^1, ..., dx^n)(e_b) \in \mathbb{R}$<br>
@@ -252,7 +252,7 @@ Tensors are objects invariant to change of basis.<br>
 Tensors exist within (p,q) tanganet and dual-tangent spaces:<br>
 $x = {x^{a_1 ... a_p}}_{b_1 ... b_q} e_{a_1} \otimes ... \otimes e_{a_p} \otimes e^{b_1} \otimes ... \otimes e^{b_q}$<br>
 Examples of tensors:<br>
-scalars: $\phi : U \rightarrow \mathbb{R}$ (TODO is the chart coordinates the input, or is the manifold points?  If the chart-domain then I suppose I should introduce a chart-inverse?)<br>
+scalars: $\phi : X \rightarrow \mathbb{R}$ (TODO is the chart coordinates the input, or is the manifold points?  If the chart-domain then I suppose I should introduce a chart-inverse?)<br>
 rank-1 contravariant tensors (vectors): $v = v^a e_a$, $v \in V$<br>
 rank-2 contravariant tensors: $v = v^{ab} e_a \otimes e_b$, $v \in V \otimes V$<br>
 rank-p contravariant tensors: $v = v^{a_1 ... a_p} e_{a_1} \otimes ... \otimes e_{a_p}$, $v \in \underbrace{V \otimes ... \otimes V}_{\times p}$<br>
@@ -339,6 +339,468 @@ Product of generalized Kronecker delta:<br>
 $\delta^{a_1 ... a_p b_1 ... b_q}_{c_1 ... ... c_{p+q}} \delta^{u_1 ... u_q}_{b_1 ... b_q} = q! \delta^{a_1 ... a_p u_1 ... u_q}_{c_1 ... ... c_{p+q}}$<Br>
 But if you only sum increasing indexes:<br>
 $\delta^{a_1 ... a_p |b_1 ... b_q|}_{c_1 ... ... c_{p+q}} \delta^{u_1 ... u_q}_{|b_1 ... b_q|} = \delta^{a_1 ... a_p u_1 ... u_q}_{c_1 ... ... c_{p+q}}$<Br>
+<br>
+
+<hr>
+<b>Change-of-Coordinates</b><br>
+<br>
+
+How do we represent a change-of-basis?<br>
+<br>
+
+$dx^u = \frac{\partial x^u}{\partial y^v} dy^v$<br>
+$\frac{\partial}{\partial y^v} = \frac{\partial x^u}{\partial y^v} \frac{\partial}{\partial x^u}$<br>
+$dy^v = \frac{\partial y^v}{\partial x^u} dx^u$<br>
+$\frac{\partial}{\partial x^u} = \frac{\partial y^v}{\partial x^u} \frac{\partial}{\partial y^v}$<br>
+<br>
+
+Ex. spherical coordinates:<br>
+Let $\mathbf{y} = \{ x, y, z \}$ and $\mathbf{x} = \{ r, \theta, \phi \}$<br>
+$x = r sin \theta cos \phi$<br>
+$y = r sin \theta sin \phi$<br>
+$z = r cos \theta$<br>
+For $r \ge 0, \theta \in [ 0, \pi ], \phi \in [0, 2 \pi )$<br>
+Therefore our derivatives are, in the form of a Jacobian:<br>
+$
+	\frac{\partial y^u}{\partial x^v} 
+	= \left[ \begin{matrix}
+		\frac{\partial x}{\partial r} &
+		\frac{\partial x}{\partial \theta} &
+		\frac{\partial x}{\partial \phi} \\
+
+		\frac{\partial y}{\partial r} &
+		\frac{\partial y}{\partial \theta} &
+		\frac{\partial y}{\partial \phi} \\
+		
+		\frac{\partial z}{\partial r} &
+		\frac{\partial z}{\partial \theta} &
+		\frac{\partial z}{\partial \phi}
+	\end{matrix} \right]
+	= \left[ \begin{matrix}
+		sin \theta cos \phi &
+		r cos \theta cos \phi &
+		-r sin \theta sin \phi \\
+
+		sin \theta sin \phi &
+		r cos \theta sin \phi &
+		r sin \theta cos \phi \\
+		
+		cos \theta &
+		-r sin \theta &
+		0
+	\end{matrix} \right]
+$<br>
+<br>
+
+Likewise in terms of total-derivatives:<br>
+$dx = sin \theta cos \phi dr + r cos \theta cos \phi d\theta - r sin \theta sin \phi d\phi$<br>
+$dy = sin \theta sin \phi dr + r cos \theta sin \phi d\theta + r sin \theta cos \phi d\phi$<br>
+$dz = cos \theta          dr - r sin \theta          d\theta$<br>
+...in matrix form...<br>
+$
+	\left[ \begin{matrix}
+		dx \\
+		dy \\ 
+		dz
+	\end{matrix} \right]
+	=
+	\left[ \begin{matrix}
+		sin \theta cos \phi &
+		r cos \theta cos \phi &
+		-r sin \theta sin \phi \\
+
+		sin \theta sin \phi &
+		r cos \theta sin \phi &
+		r sin \theta cos \phi \\
+		
+		cos \theta &
+		-r sin \theta &
+		0
+	\end{matrix} \right]
+	\left[ \begin{matrix}
+		dr \\
+		d\theta \\ 
+		d\phi
+	\end{matrix} \right]
+$<br>
+...and its inverse...<br>
+$
+	\left[ \begin{matrix}
+		dr \\
+		d\theta \\ 
+		d\phi
+	\end{matrix} \right]
+	=
+	\left[ \begin{matrix}
+		\sin \theta \cos \phi &
+		\sin \theta \sin \phi &
+		\cos \theta \\
+		
+		\frac{1}{r} \cos \theta \cos \phi &
+		\frac{1}{r} \sin \phi \cos \theta &
+		-\frac{1}{r} \sin \theta \\
+		
+		-\frac{\sin \phi}{r \sin \theta} &
+		\frac{\cos \phi}{r \sin \theta} &
+		0
+	\end{matrix} \right]
+	\left[ \begin{matrix}
+		dx \\
+		dy \\ 
+		dz
+	\end{matrix} \right]
+$<br>
+<br>
+
+Now the partial description is in terms of contravariant objects.
+The total derivative description is in terms of covariant objects.
+Which is correct in relation to our change-of-basis of tensors, and how?<br>
+<br>
+
+Now how about the four different ways we can represent a change-of-basis in our index notation.<br>
+<br>
+
+Let's use a convention of contravariant-index-implies-up-down, covariant-index-implies-left-right.
+Notice that a contravariant index in the partial denominator is equivalent to a covariant index.<br>
+<br>
+
+Review of tensors in index notation, as matrix-multiply using this convention:<br>
+<br>
+
+$v = v^a e_a = 
+\left[ \begin{matrix}
+	e_1 ... e_n
+\end{matrix} \right]
+\left[ \begin{matrix}
+	v^1 \\
+	\vdots \\
+	v^n
+\end{matrix} \right]
+$<br>
+<br>
+
+$v = v_a e^a = 
+\left[ \begin{matrix}
+	v_1 ... v_n
+\end{matrix} \right]
+\left[ \begin{matrix}
+	e^1 \\
+	\vdots \\
+	e^n
+\end{matrix} \right]
+$<br>
+<br>
+
+So that in context of our change-of-basis formula:<br>
+<br>
+
+$dx^u = \frac{\partial x^u}{\partial y^v} dy^v$ becomes<br>
+$
+	\left[ \begin{matrix}
+		dx^1 \\
+		... \\
+		dx^n
+	\end{matrix} \right]
+	=
+	\left[ \begin{matrix}
+		\frac{\partial x^1}{\partial y^1} & 
+		... & 
+		\frac{\partial x^1}{\partial y^n} \\
+		
+		\vdots &
+		\ddots &
+		\vdots \\
+
+		\frac{\partial x^n}{\partial y^1} & 
+		... & 
+		\frac{\partial x^n}{\partial y^n}
+	\end{matrix} \right]
+	\left[ \begin{matrix}
+		dy^1 \\
+		... \\
+		dy^n
+	\end{matrix} \right]
+$<br>
+<br>
+
+$\frac{\partial}{\partial y^v} = \frac{\partial x^u}{\partial y^v} \frac{\partial}{\partial x^u}$ becomes<br>
+$
+	\left[ \begin{matrix}
+		\frac{\partial}{\partial y^1} &
+		... &
+		\frac{\partial}{\partial y^n}
+	\end{matrix} \right]
+	=
+	\left[ \begin{matrix}
+		\frac{\partial}{\partial x^1} &
+		... &
+		\frac{\partial}{\partial x^n}
+	\end{matrix} \right]
+	\left[ \begin{matrix}
+		\frac{\partial x^1}{\partial y^1} & 
+		... & 
+		\frac{\partial x^1}{\partial y^n} \\
+		
+		\vdots &
+		\ddots &
+		\vdots \\
+
+		\frac{\partial x^n}{\partial y^1} & 
+		... & 
+		\frac{\partial x^n}{\partial y^n}
+	\end{matrix} \right]
+$<br>
+<br>
+
+$dy^v = \frac{\partial y^v}{\partial x^u} dx^u$ becomes<br>
+$
+	\left[ \begin{matrix}
+		dy^1 \\
+		... \\
+		dy^n
+	\end{matrix} \right]
+	=
+	\left[ \begin{matrix}
+		\frac{\partial y^1}{\partial x^1} & 
+		... & 
+		\frac{\partial y^1}{\partial x^n} \\
+		
+		\vdots &
+		\ddots &
+		\vdots \\
+
+		\frac{\partial y^n}{\partial x^1} & 
+		... & 
+		\frac{\partial y^n}{\partial x^n}
+	\end{matrix} \right]
+	\left[ \begin{matrix}
+		dx^1 \\
+		... \\
+		dx^n
+	\end{matrix} \right]
+$<br>
+<br>
+
+$\frac{\partial}{\partial x^u} = \frac{\partial y^v}{\partial x^u} \frac{\partial}{\partial y^v}$ becomes<br>
+$
+	\left[ \begin{matrix}
+		\frac{\partial}{\partial x^1} &
+		... &
+		\frac{\partial}{\partial x^n}
+	\end{matrix} \right]
+	=
+	\left[ \begin{matrix}
+		\frac{\partial}{\partial y^1} &
+		... &
+		\frac{\partial}{\partial y^n}
+	\end{matrix} \right]
+	\left[ \begin{matrix}
+		\frac{\partial y^1}{\partial x^1} & 
+		... & 
+		\frac{\partial y^1}{\partial x^n} \\
+		
+		\vdots &
+		\ddots &
+		\vdots \\
+
+		\frac{\partial y^n}{\partial x^1} & 
+		... & 
+		\frac{\partial y^n}{\partial x^n}
+	\end{matrix} \right]
+$<br>
+<br>
+
+For our spherical coordinates example:<br>
+<br>
+
+$dx^u = \frac{\partial x^u}{\partial y^v} dy^v$ becomes<br>
+$
+	\left[ \begin{matrix}
+		dr \\
+		d\theta \\
+		d\phi
+	\end{matrix} \right]
+	=
+	\left[ \begin{matrix}
+		\sin \theta \cos \phi &
+		\sin \theta \sin \phi &
+		\cos \theta \\
+		
+		\frac{1}{r} \cos \theta \cos \phi &
+		\frac{1}{r} \sin \phi \cos \theta &
+		-\frac{1}{r} \sin \theta \\
+		
+		-\frac{\sin \phi}{r \sin \theta} &
+		\frac{\cos \phi}{r \sin \theta} &
+		0
+	\end{matrix} \right]
+	\left[ \begin{matrix}
+		dx \\
+		dy \\
+		dz
+	\end{matrix} \right]
+$<br>
+<br>
+
+$\frac{\partial}{\partial y^v} = \frac{\partial x^u}{\partial y^v} \frac{\partial}{\partial x^u}$ becomes<br>
+$
+	\left[ \begin{matrix}
+		\frac{\partial}{\partial x} &
+		\frac{\partial}{\partial y} &
+		\frac{\partial}{\partial z}
+	\end{matrix} \right]
+	=
+	\left[ \begin{matrix}
+		\frac{\partial}{\partial r} &
+		\frac{\partial}{\partial \theta} &
+		\frac{\partial}{\partial \phi}
+	\end{matrix} \right]
+	\left[ \begin{matrix}
+		\sin \theta \cos \phi &
+		\sin \theta \sin \phi &
+		\cos \theta \\
+		
+		\frac{1}{r} \cos \theta \cos \phi &
+		\frac{1}{r} \sin \phi \cos \theta &
+		-\frac{1}{r} \sin \theta \\
+		
+		-\frac{\sin \phi}{r \sin \theta} &
+		\frac{\cos \phi}{r \sin \theta} &
+		0
+	\end{matrix} \right]
+$<br>
+<br>
+
+$dy^v = \frac{\partial y^v}{\partial x^u} dx^u$ becomes<br>
+$
+	\left[ \begin{matrix}
+		dx \\
+		dy \\
+		dz
+	\end{matrix} \right]
+	=
+	\left[ \begin{matrix}
+		sin \theta cos \phi &
+		r cos \theta cos \phi &
+		-r sin \theta sin \phi \\
+
+		sin \theta sin \phi &
+		r cos \theta sin \phi &
+		r sin \theta cos \phi \\
+		
+		cos \theta &
+		-r sin \theta &
+		0
+	\end{matrix} \right]
+	\left[ \begin{matrix}
+		dr \\
+		d\theta \\
+		d\phi
+	\end{matrix} \right]
+$<br>
+<br>
+
+$\frac{\partial}{\partial x^u} = \frac{\partial y^v}{\partial x^u} \frac{\partial}{\partial y^v}$ becomes<br>
+$
+	\left[ \begin{matrix}
+		\frac{\partial}{\partial r} &
+		\frac{\partial}{\partial \theta} &
+		\frac{\partial}{\partial \phi}
+	\end{matrix} \right]
+	=
+	\left[ \begin{matrix}
+		\frac{\partial}{\partial x} &
+		\frac{\partial}{\partial y} &
+		\frac{\partial}{\partial z}
+	\end{matrix} \right]
+	\left[ \begin{matrix}
+		sin \theta cos \phi &
+		r cos \theta cos \phi &
+		-r sin \theta sin \phi \\
+
+		sin \theta sin \phi &
+		r cos \theta sin \phi &
+		r sin \theta cos \phi \\
+		
+		cos \theta &
+		-r sin \theta &
+		0
+	\end{matrix} \right]
+$<br>
+<br>
+
+Then of course instead of using row-vectors, we can use column-vectors and transposed-jacobians:<br>
+<br>
+
+$\frac{\partial}{\partial y^v} = \frac{\partial x^u}{\partial y^v} \frac{\partial}{\partial x^u}$ becomes<br>
+$
+	\left[ \begin{matrix}
+		\frac{\partial}{\partial x} \\
+		\frac{\partial}{\partial y} \\
+		\frac{\partial}{\partial z}
+	\end{matrix} \right]
+	=
+	\left[ \begin{matrix}
+		\sin \theta \cos \phi &
+		\frac{1}{r} \cos \theta \cos \phi &
+		-\frac{\sin \phi}{r \sin \theta} \\
+
+		\sin \theta \sin \phi &
+		\frac{1}{r} \sin \phi \cos \theta &
+		\frac{\cos \phi}{r \sin \theta} \\
+		
+		\cos \theta &
+		-\frac{1}{r} \sin \theta &
+		0
+	\end{matrix} \right]
+	\left[ \begin{matrix}
+		\frac{\partial}{\partial r} \\
+		\frac{\partial}{\partial \theta} \\
+		\frac{\partial}{\partial \phi}
+	\end{matrix} \right]
+$<br>
+<br>
+
+$\frac{\partial}{\partial x^u} = \frac{\partial y^v}{\partial x^u} \frac{\partial}{\partial y^v}$ becomes<br>
+$
+	\left[ \begin{matrix}
+		\frac{\partial}{\partial r} \\
+		\frac{\partial}{\partial \theta} \\
+		\frac{\partial}{\partial \phi}
+	\end{matrix} \right]
+	=
+	\left[ \begin{matrix}
+		sin \theta cos \phi &
+		sin \theta sin \phi &
+		cos \theta \\
+
+		r cos \theta cos \phi &
+		r cos \theta sin \phi &
+		-r sin \theta \\
+
+		-r sin \theta sin \phi &
+		r sin \theta cos \phi &
+		0
+	\end{matrix} \right]
+	\left[ \begin{matrix}
+		\frac{\partial}{\partial x} \\
+		\frac{\partial}{\partial y} \\
+		\frac{\partial}{\partial z}
+	\end{matrix} \right]
+$<br>
+<br>
+
+So in terms of unifying partial-vs-total-derivatives and tensor change-of-basis, of all of these my vote is for 
+$dx^u = \frac{\partial x^u}{\partial y^v} dy^v$
+looks the most natural.<br>
+<br>
+
+A distant second is
+$\frac{\partial}{\partial x^u} = \frac{\partial y^v}{\partial x^u} \frac{\partial}{\partial y^v}$ 
+but this uses row vectors and left-multiply rather than row-vectors and right-multiply.<br>
+<br>
+
+The others seem to be byproducts of linear systems.<br>
 <br>
 
 
