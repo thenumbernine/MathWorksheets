@@ -41,20 +41,22 @@ tryToFindMathJax.loadScript = function(args) {
 	//el.setAttr('async');
 };
 
-tryToFindMathJax.init = function () {
+tryToFindMathJax.init = function(args) {
+	if (args === undefined) args = {};
 	console.log('init...');
-
 	var i = 0;
 	var loadNext = function() {
 		tryToFindMathJax.loadScript({
 			src : tryToFindMathJax.urls[i],
 			done : function() {
 				console.log("success!");
+				if (args.done !== undefined) args.done();
 			},
 			fail : function() {
 				++i;
 				if (i >= tryToFindMathJax.urls.length) {
 					console.log("looks like all our sources have failed!");
+					if (args.fail !== undefined) args.fail();
 				} else {
 					loadNext();
 				}
