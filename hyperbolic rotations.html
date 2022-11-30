@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 	<head>
-        <meta charset='utf-8'>
+		<meta charset='utf-8'>
 		<script type='text/javascript' src='tryToFindMathJax.js'></script>
 		<title>hyperbolic rotations</title>
 	</head>
@@ -13,8 +13,8 @@ definition of exponential function:<br>
 
 exponential of imaginary value:<br>
 $exp(i \theta) = \Sigma_{m=0}^\infty \frac{(i \theta)^m}{m!}$<br>
-$= \Sigma_{m=0}^\infty (-1)^m \frac{\theta^(2 m)}{(2 m)!}
-	+ \Sigma_{m=0}^\infty (-1)^m \frac{(\theta)^(2 m + 1)}{(2 m + 1)!} $<br>
+$= \Sigma_{m=0}^\infty (-1)^m \frac{1}{(2 m)!} \theta^{(2 m)}
+	+ \Sigma_{m=0}^\infty (-1)^m \frac{1}{(2 m + 1)!} \theta^{(2 m + 1)}$<br>
 $= cos(\theta) + i sin(\theta)$<br>
 This is called Moore's law, or DeMoore's law, or something like that.<br>
 <br>
@@ -27,7 +27,257 @@ $cos(\theta) = \frac{1}{2}( exp(i \theta) + exp(-i \theta))$<br>
 $sin(\theta) = \frac{1}{2 i}( exp(i \theta) - exp(-i \theta))$<br>
 <br>
 
+Complex rotations:<br>
+$(x' + i y') = exp(i \theta) (x + i y)$<br>
+<br>
+
 <hr>
+<br>
+
+<b>rotations in 2D using a matrix in place of 'i'</b><br>
+<br>
+
+Let $A = \left[ \begin{matrix}
+	0 & -\theta \\
+	\theta & 0
+\end{matrix} \right]$<br>
+$A^2 = \left[ \begin{matrix}
+	-\theta^2 & 0 \\
+	0 & -\theta^2
+\end{matrix} \right] = -\theta^2 I$<br>
+$A^3 = \left[ \begin{matrix}
+	0 & \theta^3 \\
+	-\theta^3 & 0
+\end{matrix} \right] = -\theta^2 A$<br>
+$A^4 = \left[ \begin{matrix}
+	\theta^4 & 0 \\
+	0 & \theta^4
+\end{matrix} \right] = \theta^4 I = \theta^4 A^0$<br>
+<br>
+
+The exponential map of A is calculated as:<br>
+$exp(A) = \Sigma_{n=0}^\infty \frac{1}{n!} A^n$<br>
+$exp(A) =
+	\left[ \begin{matrix}
+		1 & 0 \\
+		0 & 1
+	\end{matrix} \right]
+	+
+	\left[ \begin{matrix}
+		0 & -\theta \\
+		\theta & 0
+	\end{matrix} \right]
+	+
+	\frac{1}{2}
+	\left[ \begin{matrix}
+		-\theta^2 & 0 \\
+		0 & -\theta^2
+	\end{matrix} \right]
+	+
+	\frac{1}{3!}
+	\left[ \begin{matrix}
+		0 & \theta^3 \\
+		-\theta^3 & 0
+	\end{matrix} \right]
+	+
+	\frac{1}{4!}
+	\left[ \begin{matrix}
+		\theta^4 & 0 \\
+		0 & \theta^4
+	\end{matrix} \right]
+	+
+	\frac{1}{5!}
+	\left[ \begin{matrix}
+		0 & -\theta^5 \\
+		\theta^5 & 0
+	\end{matrix} \right]
+	+
+	...
+$<br>
+$exp(A) =
+	\left[ \begin{matrix}
+		1 & 0 \\
+		0 & 1
+	\end{matrix} \right]
+	+
+	\theta
+	\left[ \begin{matrix}
+		0 & -1 \\
+		1 & 0
+	\end{matrix} \right]
+	+
+	\frac{1}{2} \theta^2
+	\left[ \begin{matrix}
+		-1 & 0 \\
+		0 & -1
+	\end{matrix} \right]
+	+
+	\frac{1}{3!} \theta^3
+	\left[ \begin{matrix}
+		0 & 1 \\
+		-1 & 0
+	\end{matrix} \right]
+	+
+	\frac{1}{4!} \theta^4
+	\left[ \begin{matrix}
+		1 & 0 \\
+		0 & 1
+	\end{matrix} \right]
+	+
+	\frac{1}{5!} \theta^5
+	\left[ \begin{matrix}
+		0 & -1 \\
+		1 & 0
+	\end{matrix} \right]
+	+
+	...
+$<br>
+$exp(A) = \left[ \begin{matrix}
+	\frac{1}{0!} \theta^0 - \frac{1}{2!} \theta^2 + \frac{1}{4!} \theta^4 - ... &
+	-\frac{1}{1!} \theta + \frac{1}{3!} \theta^3 - \frac{1}{5!} \theta^5 +... \\
+
+	\frac{1}{1!} \theta - \frac{1}{3!} \theta^3 + \frac{1}{5!} \theta^5 - ... &
+	\frac{1}{0!} \theta^0 - \frac{1}{2!} \theta^2 + \frac{1}{4!} \theta^4 - ...
+\end{matrix} \right]$<br>
+$exp(A) = \left[ \begin{matrix}
+	cos(\theta) & -sin(\theta) \\
+	sin(\theta) & cos(\theta)
+\end{matrix} \right]$<br>
+<br>
+
+2D rotation:<br>
+$\left[ \begin{matrix} x' \\ y' \end{matrix} \right] = \left[ \begin{matrix}
+	cos \theta & -sin \theta \\
+	sin \theta & cos \theta
+\end{matrix} \right] \left[ \begin{matrix}
+	x \\ y
+\end{matrix} \right]$<br>
+<br>
+
+<hr>
+<br>
+
+<b>rotations in $\textbf{R}^3$</b><br>
+<br>
+
+3D (and higher?) rotations<br>
+rotation around an axis $\vec{n}$ by some angle $\theta$:<br>
+for unit vector $\vec{n} = n^i e_i$<br>
+for initial vector $\vec{x}$ and result vector $\vec{x}'$<br>
+$\vec{x}' = R(\vec{n}, \theta) \vec{x}$<br>
+<br>
+
+Let $\vec{\omega} = \omega_i e^i = \theta n_i e^i$<br>
+<br>
+
+Exponential map:<br>
+in 3D:<br>
+$exp( {\epsilon_{ij}}^k \omega_k ) = \Sigma_{m=0}^\infty ( {\epsilon_{ij}}^k \omega_k)^m$<br>
+Let $A_{ij} = {\epsilon_{ij}}^k \omega_k$<br>
+$A = \left[ \begin{matrix}
+	0 & \omega_z & -\omega_y \\
+	-\omega_z & 0 & \omega_x \\
+	\omega_y & -\omega_x & 0
+\end{matrix} \right] = \star \vec{\omega}$<br>
+Notice that $\star (a \wedge b) = a^\sharp \lrcorner \star b = a \times b$<br>
+Therefore $(\star \vec{\omega}) \cdot \vec{\omega} = \vec{\omega} \times \vec{\omega} = 0$<br>
+$A^2 = \left[ \begin{matrix}
+	-((\omega_y)^2 + (\omega_z)^2) & \omega_x \omega_y & \omega_x \omega_z \\
+	\omega_x \omega_y & -((\omega_x)^2 + (\omega_z)^2) & \omega_y \omega_z \\
+	\omega_x \omega_z & \omega_y \omega_z & -((\omega_x)^2 + (\omega_y)^2)
+\end{matrix} \right]
+= \vec{\omega} \otimes \vec{\omega} - I |\omega|^2$<br>
+$A^3 = \left[ \begin{matrix}
+	0 & -\omega_z |\omega|^2 & \omega_y |\omega|^2 \\
+	\omega_z |\omega|^2 & 0 & -\omega_x |\omega|^2 \\
+	-\omega_y |\omega|^2 & \omega_x |\omega|^2 & 0
+\end{matrix} \right]
+= (\star \omega) \cdot (\vec{\omega} \otimes \vec{\omega} - I |\omega|^2)
+= -(\star \omega) |\omega|^2
+= -|\omega|^2 A$<br>
+$A^4 = \left[ \begin{matrix}
+	( (\omega_y)^2 + (\omega_z)^2) |\omega|^2 &
+	-\omega_x \omega_y |\omega|^2 &
+	-\omega_x \omega_z |\omega|^2 \\
+	
+	-\omega_x \omega_y |\omega|^2 &
+	( (\omega_x)^2 + (\omega_z)^2) |\omega|^2 &
+	-\omega_y \omega_z |\omega|^2 \\
+	
+	-\omega_x \omega_z |\omega|^2 &
+	-\omega_y \omega_z |\omega|^2 &
+	( (\omega_x)^2 + (\omega_y)^2) |\omega|^2
+\end{matrix} \right]
+= -(\vec{\omega} \otimes \vec{\omega} - I |\omega|^2) |\omega|^2
+= -|\omega|^2 A^2
+$<br>
+$A^5 = \left[ \begin{matrix}
+	0 & \omega_z |\omega|^4 & -\omega_y |\omega|^4 \\
+	-\omega_z |\omega|^4 & 0 & \omega_x |\omega|^4 \\
+	\omega_y |\omega|^4 & -\omega_x |\omega|^4 & 0
+\end{matrix} \right]
+= (\star \vec{\omega}) |\omega|^4
+= A |\omega|^4$<br>
+<br>
+
+$exp(A) = \Sigma_{n=0}^\infty \frac{1}{n!} A^n$<br>
+$exp(A) = \frac{1}{0!} A^0 + \frac{1}{1!} A^1 + \frac{1}{2!} A^2 + \frac{1}{3!} A^3 + \frac{1}{4!} A^4 + \frac{1}{5!} A^5 + ...$<br>
+$exp(A) = \frac{1}{0!} I
+	+ \frac{1}{1!} (\star \vec{\omega})
+	+ \frac{1}{2!} (\vec{\omega} \otimes \vec{\omega} - I |\omega|^2)
+	+ \frac{1}{3!} (-(\star \omega) |\omega|^2)
+	+ \frac{1}{4!} (-(\vec{\omega} \otimes \vec{\omega} - I |\omega|^2) |\omega|^2)
+	+ \frac{1}{5!} ((\star \vec{\omega}) |\omega|^4)
+	+ ...
+$<br>
+$exp(A) =
+	  
+	  \frac{1}{0!} I
+	- \frac{1}{2!} |\omega|^2 I
+	+ \frac{1}{4!} |\omega|^4 I
+	
+	+ \frac{1}{1!} \star \vec{\omega}
+	- \frac{1}{3!} \star \vec{\omega} |\omega|^2
+	+ \frac{1}{5!} \star \vec{\omega} |\omega|^4
+	
+	+ \frac{1}{2!} \vec{\omega} \otimes \vec{\omega}
+	- \frac{1}{4!} |\omega|^2 \vec{\omega} \otimes \vec{\omega}
+	
+	+ ...
+$<br>
+$exp(A) =
+
+	I (
+		  \frac{1}{0!} |\omega|^0
+		- \frac{1}{2!} |\omega|^2
+		+ \frac{1}{4!} |\omega|^4
+		- ...
+	)
+
+	+ \vec{\omega} \otimes \vec{\omega} (
+		  \frac{1}{2!}
+		- \frac{1}{4!} |\omega|^2
+		+ ...
+	)
+
+	+ \star \vec{\omega} (
+		  \frac{1}{1!}
+		- \frac{1}{3!} |\omega|^2
+		+ \frac{1}{5!} |\omega|^4
+		- ...
+	)
+$<br>
+$exp(A) =
+	I cos|\omega|
+	+ \vec\omega \otimes \vec\omega (1 - cos|\omega|)
+	+ \star \vec{\omega} sin|\omega|
+$<br>
+$exp(A) =
+	(I - \vec\omega \otimes \vec\omega) cos|\omega|
+	+ \star \vec{\omega} sin|\omega|
+	+ \vec\omega \otimes \vec\omega
+$<br>
+aka Rodrigues rotation formula, with angle $|\omega|$ and axis $\frac{\vec\omega}{|\omega|}$.<br>
 <br>
 
 <b>rotations in $\textbf{R}^n$</b><br>
@@ -41,36 +291,206 @@ exponential map:<br>
 $exp(x) = \Sigma_{m=0}^\infty \frac{x^m}{m!}$<br>
 <br>
 
-2D rotation:<br>
-$\left[ \begin{matrix} x' \\ y' \end{matrix} \right] = \left[ \begin{matrix}
-	cos \theta & -sin \theta \\
-	sin \theta & cos \theta
-\end{matrix} \right] \left[ \begin{matrix}
-	x \\ y
-\end{matrix} \right]$<br>
-<br>
 
-3D (and higher?) rotations<br>
-rotation around an axis $\vec{n}$ by some angle $\theta$:<br>
-for unit vector $\vec{n} = n^i e_i$<br>
-for initial vector $\vec{x}$ and result vector $\vec{x}'$<br>
-$\vec{x}' = R(\vec{n}, \theta) \vec{x}$<br>
-<br>
 
-Let $\vec{\omega} = \omega^i e_i$<br>
 <br>
-
-Exponential map:<br>
-$exp( \epsilon_{ijk} \omega^k ) = \Sigma_{m=0}^\infty (\epsilon_{ijk} \omega^k)^m$<br>
 ... TODO some work...<br>
-$ = \delta_{ij} cos(\theta) + n_i n_j (1 - cos(\theta)) + \epsilon_{ijk} n^k sin(\theta))$<br>
+$ = \delta_{ij} cos(\theta) + n_i n_j (1 - cos(\theta)) + \epsilon_{ijk} n^k sin(\theta)$<br>
 (aka Rodrigues rotation formula)<br>
+<br>
+<br>
+
+In any dimension:<br>
+Let A be an antisymmetric matrix.  Spoilers that this can be represented as the components of $a \wedge b$ in some basis.<br>
+TODO ... <br>
 <br>
 
 <hr>
+<br>
 <b>hyperbolic trigonometry</b><br>
 <br>
 
+$cosh(\alpha) = \frac{1}{2} (exp(\alpha) + exp(-\alpha))$<br>
+$sinh(\alpha) = \frac{1}{2} (exp(\alpha) - exp(-\alpha))$<br>
+<br>
+
+Taylor expansion:<br>
+$cosh(\alpha) = \Sigma_{m=0}^\infty \frac{1}{(2 m)!} \alpha^{(2 m)}$<br>
+$sinh(\alpha) = \Sigma_{m=0}^\infty \frac{1}{(2 m + 1)!} \alpha^{(2 m + 1)}$<br>
+<br>
+
+<hr>
+<br>
+<b>hyperbolic rotations in 2D</b><br>
+<br>
+
+Let $A = \left[ \begin{matrix}
+	0 & \alpha \\
+	\alpha & 0
+\end{matrix} \right]$<br>
+$A^2 = \left[ \begin{matrix}
+	\alpha^2 & 0 \\
+	0 & \alpha^2
+\end{matrix} \right]$<br>
+$A^3 = \left[ \begin{matrix}
+	0 & \alpha^3 \\
+	\alpha^3 & 0
+\end{matrix} \right]$<br>
+$A^4 = \left[ \begin{matrix}
+	\alpha^4 & 0 \\
+	0 & \alpha^4
+\end{matrix} \right]$<br>
+<br>
+
+Let $\hat{A} = \frac{1}{\alpha} A$<br>
+<br>
+
+$exp(A) = I + \alpha \hat{A} + \frac{1}{2} \alpha^2 \hat{A}^2 + ...$<br>
+$exp(A) = I (1 + \frac{1}{2!} \alpha^2 + \frac{1}{4!} \alpha^4 + ...)
+	+ \hat{A} (\alpha + \frac{1}{3!} \alpha^3 + \frac{1}{5!} \alpha^5 + ....)$<br>
+$exp(A) = cosh(\alpha) I + sinh(\alpha) \hat{A}$<br>
+$exp(A) = \left[ \begin{matrix}
+	cosh(\alpha) & sinh(\alpha) \\
+	sinh(\alpha) & cosh(\alpha)
+\end{matrix} \right]$<br>
+<br>
+
+<hr>
+<br>
+<b>hyperbolic rotation in 3D</b><br>
+<br>
+
+Let $A = \left[ \begin{matrix}
+	0 & \alpha_3 & \alpha_2 \\
+	\alpha_3 & 0 & \alpha_1 \\
+	\alpha_2 & \alpha_1 & 0
+\end{matrix} \right]$<br>
+Let $\hat{A} = \frac{1}{|\alpha|} A$<br>
+<br>
+
+$A^2 = \left[ \begin{matrix}
+	|\alpha|^2 - (\alpha_1)^2 & \alpha_1 \alpha_2 & \alpha_1 \alpha_3 \\
+	\alpha_1 \alpha_2 & |\alpha|^2 - (\alpha_2)^2 & \alpha_2 \alpha_3 \\
+	\alpha_1 \alpha_3 & \alpha_2 \alpha_3 & |\alpha|^2 - (\alpha_3)^2
+\end{matrix} \right]$<br>
+Let $v = 2 \alpha_1 \alpha_2 \alpha_3$<br>
+$A^3 = \left[ \begin{matrix}
+	2 \alpha_1 \alpha_2 \alpha_3 & \alpha_3 |\alpha|^2 & \alpha_2 |\alpha|^2 \\
+	\alpha_3 |\alpha|^2 & 2 \alpha_1 \alpha_2 \alpha_3 & \alpha_1 |\alpha|^2 \\
+	\alpha_2 |\alpha|^2 & \alpha_1 |\alpha|^2 & 2 \alpha_1 \alpha_2 \alpha_3
+\end{matrix} \right]
+= |\alpha|^2 \left[ \begin{matrix}
+	\frac{v}{|\alpha|^2} & \alpha_3 & \alpha_2 \\
+	\alpha_3 & \frac{v}{|\alpha|^2} & \alpha_1 \\
+	\alpha_2 & \alpha_1 & \frac{v}{|\alpha|^2}
+\end{matrix} \right]
+= v I + |\alpha|^2 A
+$<br>
+
+$A^4
+= \left[ \begin{matrix}
+	|\alpha|^2 (|\alpha|^2 - (\alpha_1)^2) &
+	\alpha_1 \alpha_2 (|\alpha|^2 + 2 (\alpha_3)^2) &
+	\alpha_1 \alpha_3 (|\alpha|^2 + 2 (\alpha_2)^2) \\
+	
+	\alpha_1 \alpha_2 (|\alpha|^2 + 2 (\alpha_3)^2) &
+	|\alpha|^2 (|\alpha|^2 - (\alpha_2)^2) &
+	\alpha_2 \alpha_3 (|\alpha|^2 + 2 (\alpha_1)^2) \\
+	
+	\alpha_1 \alpha_3 (|\alpha|^2 + 2 (\alpha_2)^2) &
+	\alpha_2 \alpha_3 (|\alpha|^2 + 2 (\alpha_1)^2) &
+	|\alpha|^2 (|\alpha|^2 - (\alpha_3)^2)
+\end{matrix} \right]
+= |\alpha|^2 \left[ \begin{matrix}
+	|\alpha|^2 - (\alpha_1)^2 &
+	\alpha_1 \alpha_2 (1 + \frac{2 (\alpha_3)^2}{|\alpha|^2}) &
+	\alpha_1 \alpha_3 (1 + \frac{2 (\alpha_2)^2}{|\alpha|^2}) \\
+	
+	\alpha_1 \alpha_2 (1 + \frac{2 (\alpha_3)^2}{|\alpha|^2}) &
+	|\alpha|^2 - (\alpha_2)^2 &
+	\alpha_2 \alpha_3 (1 + \frac{2 (\alpha_1)^2}{|\alpha|^2}) \\
+	
+	\alpha_1 \alpha_3 (1 + \frac{2 (\alpha_2)^2}{|\alpha|^2}) &
+	\alpha_2 \alpha_3 (1 + \frac{2 (\alpha_1)^2}{|\alpha|^2}) &
+	|\alpha|^2 - (\alpha_3)^2
+\end{matrix} \right]
+= v A + |\alpha|^2 A^2
+$<br>
+<br>
+
+$A^5 = v A^2 + |\alpha|^2 A^3$<br>
+$A^5 = v |\alpha|^2 I
+	+ |\alpha|^4 A
+	+ v A^2
+$<br>
+<br>
+
+$A^6 = v |\alpha|^2 A
+	+ |\alpha|^4 A^2
+	+ v A^3$<br>
+$A^6 = v |\alpha|^2 A
+	+ |\alpha|^4 A^2
+	+ v (v I + |\alpha|^2 A)$<br>
+$A^6 =
+	  (v)^2 I
+	+ 2 v |\alpha|^2 A
+	+ |\alpha|^4 A^2
+$<br>
+$A^6 = (v I + |\alpha|^2 A)^2
+$<br>
+<br>
+
+$exp(A) = I + A + \frac{1}{2} A^2 + ....$<br>
+$exp(A) =
+	I
+	+ A
+	+ A^2
+	+ \frac{1}{3!} (v I + |\alpha|^2 A)
+	+ \frac{1}{4!} (v A + |\alpha|^2 A^2)
+
+	+ \frac{1}{5!} (
+		v |\alpha|^2 I
+		+ |\alpha|^4 A
+		+ v A^2
+	)
+	+ ...
+$<br>
+$exp(A) =
+	I (
+		  v \frac{1}{3!}
+		+ v |\alpha|^2 \frac{1}{5!}
+		+ (v)^2 \frac{1}{6!}
+	)
+
+	+ A(
+		  1
+		+ |\alpha|^2 \frac{1}{3!}
+		+ v \frac{1}{4!}
+		+ |\alpha|^4 \frac{1}{5!}
+		+ 2 v |\alpha|^2 \frac{1}{6!}
+	)
+
+	+ A^2 (
+		  1
+		+ |\alpha|^2 \frac{1}{4!}
+		+ v \frac{1}{5!}
+		+ |\alpha|^4 \frac{1}{6!}
+	)
+
+	+ ...
+$<br>
+<br>
+
+...bleh this seems to be going nowhere.<br>
+especially not until I find a relation between $|\alpha|^2$ and v.<br>
+And the fact that my powers are on a 3 point cycle isn't helpful for the fact that hyperbolic is 2-point rather than 4-point as non-hyperbolic exponent of imaginary expansion is.<br>
+<br>
+
+I guess I'll just say this is the same as $exp(U A U^{-1}) = U exp(A) U^{-1})$ (does that work in general or only for diagonal A?)<br>
+And then define my new A as the old 2D A with an extra dimension tacked on the end.<br>
+
+<br>
+<br>
 
 	</body>
 </html>
