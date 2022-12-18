@@ -314,6 +314,48 @@ $\eta_{i_1 ... i_n} = \eta_{i_1 ... i_n}$<br>
 <br>
 
 <hr>
+<b>Pseudo-Vectors</b><br>
+<br>
+
+Often angular-velocity, angular-momentum, torque, etc are called "pseudo-vectors".
+This is because, like a vector, they represent components in 3D space, but unlike a tensor they are not preserved with regards to change-of-basis.<br>
+Here's why.<br>
+<br>
+
+Is the change-of-basis of the dual of a tensor equal to the dual of the change-of-basis of the tensor?<br>
+<br>
+
+Change-of-basis of the dual of a tensor:<br>
+$|\star \omega^{IJ}|$<br>
+... change basis first ...<br>
+$= |{e_a}^I {e_b}^J \star \omega^{ab}|$<br>
+... then perform dual ...<br>
+$= |{e_a}^I {e_b}^J {\epsilon^{ab}}_c \omega^c|$<br>
+$= |{e_a}^I {e_b}^J g^{au} g^{bv} \epsilon_{uvc} \omega^c|$<br>
+$= |{e_a}^I {e_b}^J g^{au} g^{bv} \sqrt{|g|} \bar\epsilon_{uvc} \omega^c|$<br>
+$= \sqrt{|g|} \cdot \sqrt{|g|} \cdot \frac{1}{|g|} \cdot \frac{1}{|g|} \cdot \sqrt{|g|} \cdot |\pm 1| \cdot |\vec\omega|$<br>
+$= \frac{1}{\sqrt{|g|}} \cdot |\vec\omega|$<br>
+<br>
+
+Dual of change-of-basis of a tensor:<br>
+$|\star \omega^{IJ}|$<br>
+... perform dual first ...<br>
+$= |{\epsilon^{IJ}}_K \omega^K|$<br>
+... then change basis ...<br>
+$= |{\epsilon^{IJ}}_K {e_c}^K \omega^c|$<br>
+$= |\eta^{IM} \eta^{JN} \epsilon_{MNK} {e_c}^K \omega^c|$<br>
+$= |\eta^{IM} \eta^{JN} \sqrt{|\eta|} \bar\epsilon_{MNK} {e_c}^K \omega^c|$<br>
+$= \frac{1}{|\eta|} \cdot \frac{1}{|\eta|} \cdot \sqrt{|\eta|} \cdot |\pm 1| \cdot \sqrt{|g|} \cdot |\vec\omega|$<br>
+$= \frac{1}{|\eta|^{3/2}} \cdot \sqrt{|g|} \cdot |\vec\omega|$<br>
+... using $|\eta| = 1$...<br>
+$= \sqrt{|g|} \cdot |\vec\omega|$<br>
+<br>
+
+So the lesson here is: if you need to change-of-basis some kind of dual-tensor of a physical property, like a rotation, i.e. angular momentum, torque, etc, 
+then use your original tensors or exterior products, not their dual angle-axis vectors.<br>
+<br>
+
+<hr>
 <br>
 
 What if if you have a sum-of-p-forms on a n-form wedge space?<br>
