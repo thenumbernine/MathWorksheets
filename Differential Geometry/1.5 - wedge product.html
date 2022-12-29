@@ -7,6 +7,7 @@
 	</head>
     <body>
 <a href='.'>Back</a><br><br>
+<br>
 
 <br>
 <hr>
@@ -203,16 +204,34 @@ However this gets countered when we get to the exterior derivative of vectors, w
 Where am I going wrong?<br>
 <br>
 
-TODO explain better:<br>
-For vector $u_i$:<br>
-$(u_1 \wedge ... \wedge u_n)^{i_1 ... i_n} 
+TODO in this worksheet I am using generalized Kronecker delta identities but I don't define them until worksheet #5.<br>
+#5 is split between half being the Levi-Civita permutation tensor and half being the Hodge dual.<br>
+Should I move the generalized Kronecker delta stuff earlier?  Or move this stuff later?<br>
+Honestly there's even a use of generalized Kronecker delta in worksheet #1 on tensors, and on wedge product in there too.<br>
+<br>
+
+For a set of n vectors $u_i$, the i'th equal to $u_i = (u_i)^j \partial_j$:<br>
+$u_1 \wedge ... \wedge u_n$<br>
+$= ((u_1)^{i_1} \partial_{i_1}) \wedge ... \wedge ((u_1)^{i_n} \partial_{i_n})$<br>
+$= (u_1)^{i_1} \cdot ... \cdot (u_1)^{i_n} \partial_{i_1} \wedge ... \wedge \partial_{i_n}$<br>
+$= (u_1)^{i_1} \cdot ... \cdot (u_1)^{i_n} \cdot n! \partial_{[i_1} \otimes ... \otimes \partial_{i_n]}$<br>
+$= (u_1)^{j_1} ... (u_n)^{j_n}
+	\delta^{i_1 ... i_n}_{j_1 ... j_n} 
 	\partial_{i_1} \otimes ... \otimes \partial_{i_n}$<br>
-$= \delta^{i_1 ... i_n}_{j_1 ... j_n} (u_1)^{j_1} ... (u_n)^{j_n}
+... using $\delta^{i_1 ... i_n}_{j_1 ... j_n} = \epsilon^{i_1 ... i_n} \epsilon_{j_1 ... j_n}$ ...<br>
+$= \epsilon^{i_1 ... i_n} \epsilon_{j_1 ... j_n} (u_1)^{j_1} ... (u_n)^{j_n}
 	\partial_{i_1} \otimes ... \otimes \partial_{i_n}$<br>
-$= p! {u_1}^{[i_1} ... {u_n}^{i_n]}
-	\partial_{i_1} \otimes ... \otimes \partial_{i_n}$<br>
-$= \delta^{i_1 ... i_n}_{1 ... p} det((u_a)^b)
-	\partial_{i_1} \otimes ... \otimes \partial_{i_n}$<br>
+... using $\epsilon_{j_1 ... j_n} (u_1)^{j_1} ... (u_n)^{j_n} = det((u_a)^b)$ ...<br>
+$= det((u_a)^b) \epsilon^{i_1 ... i_n} \partial_{i_1} \otimes ... \otimes \partial_{i_n}$<br>
+$= det((u_a)^b) \epsilon_{1 ... n} \epsilon^{i_1 ... i_n} \partial_{i_1} \otimes ... \otimes \partial_{i_n}$<br>
+$= det((u_a)^b) \delta^{i_1 ... i_n}_{1 ... n} \partial_{i_1} \otimes ... \otimes \partial_{i_n}$<br>
+$= det((u_a)^b) n! \delta^{[i_1}_1 \cdot ... \cdot \delta^{i_n]}_n \partial_{i_1} \otimes ... \otimes \partial_{i_n}$<br>
+$= det((u_a)^b) n! \partial_{[1} \otimes ... \otimes \partial_{n]}$<br>
+... using (abusing?) wedge product for vectors: ...<br>
+$= det((u_a)^b) \partial_1 \wedge ... \wedge \partial_n$<br>
+$= det((u_a)^b) \star 1$<br>
+<br>
+TODO put this after the Hodge dual definition?<br>
 <br>
 
 <hr>
