@@ -2,6 +2,8 @@ Some helper worksheets for my projects.
 
 Here's the CDN URLs:
 
+[3x3 transform dof decomposition](https://thenumbernine.github.io/math/3x3%20transform%20dof%20decomposition.html)
+
 [ADM Bona-Masso Eigenvectors](https://thenumbernine.github.io/math/ADM%20Bona%2dMasso%20Eigenvectors.html)
 
 [ADM Bona-Masso Inverse Eigenvectors](https://thenumbernine.github.io/math/ADM%20Bona%2dMasso%20Inverse%20Eigenvectors.html)
@@ -62,7 +64,7 @@ Here's the CDN URLs:
 
 [Differential Geometry/5 - Levi-Civita tensor and Hodge dual](https://thenumbernine.github.io/math/Differential%20Geometry/5%20%2d%20Levi%2dCivita%20tensor%20and%20Hodge%20dual.html)
 
-[Differential Geometry/5 - Quaternions](https://thenumbernine.github.io/math/Differential%20Geometry/5%20%2d%20Quaternions.html)
+[Differential Geometry/5.5 - Quaternions](https://thenumbernine.github.io/math/Differential%20Geometry/5.5%20%2d%20Quaternions.html)
 
 [Differential Geometry/6 - covariant derivative](https://thenumbernine.github.io/math/Differential%20Geometry/6%20%2d%20covariant%20derivative.html)
 
@@ -93,6 +95,8 @@ Here's the CDN URLs:
 [EMHD Linear Stability Analysis](https://thenumbernine.github.io/math/EMHD%20Linear%20Stability%20Analysis.html)
 
 [Einstein Equations, Weak Field, De-Donder Gauge](https://thenumbernine.github.io/math/Einstein%20Equations%2c%20Weak%20Field%2c%20De%2dDonder%20Gauge.html)
+
+[Einstein-Cartan-Sciama-Kibble](https://thenumbernine.github.io/math/Einstein%2dCartan%2dSciama%2dKibble.html)
 
 [Einstein-Maxwell Hyperbolic Conservation Laws](https://thenumbernine.github.io/math/Einstein%2dMaxwell%20Hyperbolic%20Conservation%20Laws.html)
 
@@ -269,6 +273,8 @@ Here's the CDN URLs:
 [Two-Fluid Plasma and GEM/7.2 - normalized units](https://thenumbernine.github.io/math/Two%2dFluid%20Plasma%20and%20GEM/7.2%20%2d%20normalized%20units.html)
 
 [Two-Fluid Plasma and GEM/8 - two-fluid plasma model](https://thenumbernine.github.io/math/Two%2dFluid%20Plasma%20and%20GEM/8%20%2d%20two%2dfluid%20plasma%20model.html)
+
+[Volume of Any Dimension Simplex in Any Dimension](https://thenumbernine.github.io/math/Volume%20of%20Any%20Dimension%20Simplex%20in%20Any%20Dimension.html)
 
 [a note on the definition of tensors](https://thenumbernine.github.io/math/a%20note%20on%20the%20definition%20of%20tensors.html)
 

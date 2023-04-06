@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<title>gauge covariant derivative</title>
+	</head>
+	<body>
+
+TODO make this 'examples' in the differential geometry worksheets.<br>
+<br>
+
+Gauge covariant derivative:<br>
+$D_u = \partial_u - i q A_u$<br>
+<br>
+
+Such that $D_u \phi = \partial_u \phi - i q A_u \phi$.<br>
+<br>
+
+Covariant derivative definition:<br>
+$\nabla_a e_b = {\Gamma^c}_{ab} e_c$<br>
+$\nabla_a (v^u e_u) = e_a (v^u) e_u + v^u {\Gamma^b}_{au} e_b$<br>
+$= (e_a (v^u) + v^v {\Gamma^u}_{av} ) e_u$<br>
+<br>
+
+First let's assume $e_a \approx \partial_a$, so $D_u (T) = e_u (T) - i q A_u \cdot T$.<br>
+<br>
+
+Next, for the gauge covariant derivative, we find:<br>
+${\Gamma^a}_{bc} = -i q \delta^a_c A_b$<br>
+Such that $D_u (v^v e_v) = (e_u (v^v) - i q A_u v^v) e_v = (e_u (v^v) + v^a {\Gamma^v}_{ua} ) e_v = \nabla_u (v^v e_v)$<br>
+<br>
+
+Commutation is not specified yet: ${c_{ab}}^c e_c = [e_a, e_b]$<br>
+<br>
+
+But what is its torsion?<br>
+$T(x,y) = \nabla_x y - \nabla_y x - [x,y]$<br>
+<br>
+
+Torsion components evaluate to be:<br>
+${T^a}_{bc} = 2 {\Gamma^a}_{[bc]} + {c_{cb}}^a$<br>
+${T^a}_{bc} = -2 i q \delta^a_{[c} A_{b]} + {c_{cb}}^a$.<br>
+<br>
+
+Next, Riemann curvature:<br>
+$R(x,y) z = ([\nabla_x, \nabla_y] - \nabla_{[x,y]} ) z$<br>
+<br>
+
+Has components:<br>
+${R^c}_{dab} = 2 e_{[a} ( {\Gamma^c}_{b]d} ) + 2 {\Gamma^c}_{[a| u} {\Gamma^u}_{b] d} - {\Gamma^c}_{ud} {c_{ab}}^u$<br>
+${R^c}_{dab} = 2 e_{[a} ( -i q A_{b]} \delta^c_d ) - 2 q^2 \delta^c_u A_{[a} A_{b]} \delta^u_d - i q A_u \delta^c_d {c_{ab}}^u$<br>
+${R^c}_{dab} = -2 i q e_{[a} ( A_{b]} ) \delta^c_d - i q \delta^c_d {c_{ab}}^u A_u$<br>
+${R^c}_{dab} = -i q \delta^c_d (2 e_{[a} ( A_{b]} ) + {c_{ab}}^u A_u )$<br>
+<br>
+
+Let $F_{ab} = e_a (A_b) - e_b (A_a) + {c_{ab}}^u A_u$.<br>
+(or is the ${c_{ab}}^u$ included?)<br>
+<br>
+
+${R^c}_{dab} = -i q \delta^c_d F_{ab}$<br>
+<br>
+
+But then what about the antisymmetry on the first two indexes?  For this connection, the Riemann curvature tensor is just zero.<br>
+And what of the symmetry between 12 and 34?  That ... nope.<br>
+<br>
+
+Ricci curvature: $R_{ab} = {R^c}_{acb} = -i q \delta^c_a F_{cb} = -i q F_{ab}$<br>
+<br>
+
+And of course this means $R = 0$<br>
+<br>
+
+	</body>
+</html>

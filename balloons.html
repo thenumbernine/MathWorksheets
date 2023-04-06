@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<title>Balloons</title>
+		<script type="text/javascript" src='tryToFindMathJax.js'></script>
+		<script type='text/javascript' src='PeriodicTable.js'></script>
+		<script type='text/javascript' src='template.js'/></script>
+		<script>
+
+function setMaterial(element) {
+	if (element === undefined) return;
+	template.context.atomic_mass_in_g_per_mol = element.atomic_mass;
+	template.context.material_nominal_valency = 1;
+	template.context.material_density_in_g_per_cm3 = element.density;
+	template.context.material_electrical_resistivity_in_ohm_m = element.resistivity;
+	template.refresh();
+}
+
+function selchange() {
+	var select = document.getElementById('materials');
+	var option = select.options[select.selectedIndex];
+	if (option) setMaterial(option.element);
+}
+
+function init() {
+	var defaultMaterial;
+	var defaultIndex = 0;
+	var select = document.getElementById('materials');
+	for (var i = 0; i < PeriodicTable.length; ++i) {
+		var element = PeriodicTable[i];
+		//if (element.resistivity === undefined) continue;
+		
+		var option = document.createElement('option');
+		option.appendChild(document.createTextNode(element.name));
+		option.element = element;
+		if (element.name == 'Copper') {
+			defaultMaterial = element;
+			defaultIndex = select.options.length;
+		}
+		select.appendChild(option);
+	}
+	select.selectedIndex = defaultIndex;
+}
+
+Template.prototype.done = init;
+		</script>
+	</head>
+    <body templated>
+
+$k_B = 1.380649 \cdot 10^{-23} (\frac{J}{K} = \frac{kg \cdot m^2}{K \cdot s^2}) =$ Boltzmann constant, from <a href="https://en.wikipedia.org/wiki/Boltzmann_constant">here</a>.<br>
+$m = $ total mass of gas, in $kg$<br>
+$M = $ molar mass of gas, in $\frac{kg}{mol}$<br>
+$P = $ pressure, in $Pa = \frac{kg}{m \cdot s^2}$<br>
+$T = $ temperature, in $K$<br>
+$R = $ ideal gas constant<br>
+$V = \frac{m}{\rho} = $ volume, in $m^3$<br>
+$\rho = \frac{m}{V} = $ density, in $\frac{kg}{m^3}$<br>
+chemical amount: $n = \frac{m}{M}$, in $mol$<br>
+ideal gas law: $PV = nRT$ from <a href="https://en.wikipedia.org/wiki/Ideal_gas_law">here</a><br>
+$P = \frac{m}{M} RT = \rho \frac{R}{M} T$<br>
+$R_{spec} = \frac{R}{M}$<br>
+$P = \rho R_{spec} T$<br>
+Here is our relation of pressure, density, and temperature.<br>
+<br>
+
+So how do we calculate $R_{spec}$?<br>
+$R_{spec} = \frac{k_B}{mass_{molecular}}$ from <a href="https://en.wikipedia.org/wiki/Gas_constant#Specific_gas_constant">here</a>.  Is "molecular mass" the same as "molar mass"?  
+No according to <a href="https://en.wikipedia.org/wiki/Molecular_mass">here</a>.  But this same page makes it sound like the two are about the same and often interchangeable, and provides no formula of equating them.  No formulas at all.  I guess whoever wrote this wasn't planning on using the concept in any equations.<br>
+<br>
+molar mass: $mass_{molar} = mass_{relative} \cdot 0.99999999965(30) \cdot 10^{-3} \frac{kg}{mol}$ from <a href="https://en.wikipedia.org/wiki/Molar_mass#Molar_masses_of_elements">here</a>.<br>
+Relative atomic mass ... this is related to atomic mass but not equal to it?  And atomic mass is circumstantial but relative atomic mass is constant ... and I can't find how the two relate.  Kind of like "molar mass" vs "molecular mass".  This is why I hate physics.<br>
+Standard atomic weight / relative atomic mass are used interchangeably.<br>
+<br>
+
+<select onchange='selchange()' id='materials'><option name=''></option></select><br>
+$m_a =$ <input name='atomic_mass_in_g_per_mol' value='63.54'/> $\frac{g}{mol} =$ {{atomic_mass_in_kg_per_mol = atomic_mass_in_g_per_mol * 1e-3}} $\frac{kg}{mol} = $  atomic mass.<br>
+$n_v =$ <input name='material_nominal_valency' value='1'/> nominal valency.<br>
+$\rho =$ <input name='material_density_in_g_per_cm3' value='8.95'/> $\frac{g}{cm^3} =$ {{material_density_in_kg_per_m3 = material_density_in_g_per_cm3 * 1e+3}} $\frac{kg}{m^3} = $ matter density.<br>
+$\rho_{res} = $ <input name='material_electrical_resistivity_in_ohm_m' value='1.6e-8'/> $\Omega \cdot m$ = electrical resistivity<br>
+<br>
+
+TODO Graph lines of three axis of pressure, density, and temperature for each element.<br>
+<br>
+	
+Well, $\frac{P}{\rho} = R_{spec} T$.  So it's just going to be a line with slope $R_{spec}$.<br>
+<br>	
+
+<img src='balloons-gasses.png'/><br>
+<img src='balloons-gasses-log.png'/><br>
+<br>
+
+	</body>
+</html>
