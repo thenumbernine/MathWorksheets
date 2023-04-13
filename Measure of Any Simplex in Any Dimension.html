@@ -7,7 +7,7 @@
 	</head>
 	<body>
 
-What's the volume of a point, i.e. a 0-form?<br>
+What's the measure of a point, i.e. a 0-form?<br>
 Maybe later.<br>
 <br>
 
@@ -45,42 +45,16 @@ This is called Barycentric Coordinates.<br>
 <hr>
 <br>
 
-What's the volume of a line, i.e. a 1-form?<br>
-In $\mathbb{R}^1$ the volume of a line is an interval: $|\mathbf{L}^1| = |\mathbf{S}^1_1| = |\mathbf{p}^2 - \mathbf{p}^1|$<br>
-In $\mathbb{R}^n$ the volume of a line is the L-2 norm: $|\mathbf{L}^n| = |\mathbf{S}^n_1| = \left( \Sigma_{i=1}^n ({p^2}_i - {p^1}_i)^2 \right)^{\frac{1}{2}}$<br>
+For a line, i.e. a 1-simplex, what is the measure i.e. length?<br>
+In $\mathbb{R}^1$ the measure of a line is an interval: $|\mathbf{L}^1| = |\mathbf{S}^1_1| = |\mathbf{p}^2 - \mathbf{p}^1|$<br>
+In $\mathbb{R}^n$ the measure of a line is the L-2 norm: $|\mathbf{L}^n| = |\mathbf{S}^n_1| = \left( \Sigma_{i=1}^n ({p^2}_i - {p^1}_i)^2 \right)^{\frac{1}{2}}$<br>
 <br>
 
-What's the volume of a triangle, i.e. a 2-form?<br>
-<br>
-
-In $\mathbb{R}^1$, $|\mathbf{S}^1_2|$ doesn't exist.<br>
-<br>
-
-In $\mathbb{R}^2$ it is equal to half the length of the two sides times the sine of the angle between them.<br>
-Coincidentally this is also half the determinant of the matrix with components from the line segments of the triangle sides:<br>
-$|\mathbf{S}^2_2| = \frac{1}{2} \left| \begin{matrix}
-	p^2_1 - p^1_1 &amp; p^3_1 - p^1_1 \\
-	p^2_2 - p^1_2 &amp; p^3_2 - p^1_2
-\end{matrix} \right|$<br>
-<br>
-
-Maybe I should be dealing with a set of points already offset to the origin?<br>
+Let's offset the points so that one is at the origin.<br>
 Let $q^n_i = p^n_{i+1} - p^n_1$<br>
 <br>
 
-Our line volume becomes:<br>
-$|\mathbf{L}^n| = |\mathbf{S}^n_1| = \left( \Sigma_{i=1}^n ({q^1}_i)^2 \right)^{\frac{1}{2}}$<br>
-<br>
-
-And our triangle volume becomes:<br>
-$|\mathbf{S}^2_2| = \frac{1}{2} \left| \begin{matrix}
-	q^1_1 &amp; q^2_1 \\
-	q^1_2 &amp; q^2_2
-\end{matrix} \right|$<br>
-<br>
-
-Using the Levi-Civita permutation tensor this is equal to:<br>
-$|\mathbf{S}^2_2| = \frac{1}{2} | \epsilon^{ij} q^1_i q^2_j |$<br>
+Then in $\mathbb{R}^n$ the measure of a line is the L-2 norm: $|\mathbf{L}^n| = |\mathbf{S}^n_1| = \left( \Sigma_{i=1}^n ({q^1}_i)^2 \right)^{\frac{1}{2}}$<br>
 <br>
 
 Let's revisit that line definition but for 2D:<br>
@@ -106,11 +80,73 @@ Why the double permutation?  More on that later.<br>
 <br>
 
 It just so happens to generalize to any dimension courtesy of the Hodge dual definition of the interior product:<br>
-$|\mathbf{S}^n_1| = \sqrt{ \star (\star \mathbf{q}^1 \wedge \mathbf{q}^1) }$<br>
-...aka...<br>
-$|\mathbf{S}^n_1| = \sqrt{ \langle \star \mathbf{q}^1, \star \mathbf{q}^1 \rangle }$<br>
-...aka...<br>
+$|\mathbf{S}^n_1| = \sqrt{ \Sigma_i ({q^1}_i)^2 }$<br>
+$|\mathbf{S}^n_1| = \sqrt{ \star (\mathbf{q}^1 \wedge \star \mathbf{q}^1) }$<br>
+$|\mathbf{S}^n_1| = \sqrt{ \star \langle \mathbf{q}^1, \mathbf{q}^1 \rangle }$<br>
+<br>
+
+Let $\mathbf{Q} = \mathbf{q}^1$ for the 1D case.<br>
+Then:<br>
+$|\mathbf{S}^n_1| = \sqrt{ \star \langle \mathbf{Q}, \mathbf{Q} \rangle }$<br>
+<br>
+
+Proposed generalization:<br>
 $|\mathbf{S}^n_1| = \sqrt{ \epsilon^{i_1 ... i_{n-1} j} \epsilon_{i_1 ... i_{n-1} k} {q^1}_j {q^1}_k }$<br>
+<br>
+
+
+<hr>
+<br>
+
+For a triangle i.e. 2-simplex, what's the measure i.e. area?<br>
+<br>
+
+In $\mathbb{R}^1$, $|\mathbf{S}^1_2|$ doesn't exist.<br>
+<br>
+
+In $\mathbb{R}^2$ it is equal to half the length of the two sides times the sine of the angle between them.<br>
+Coincidentally this is also half the determinant of the matrix with components from the line segments of the triangle sides:<br>
+$|\mathbf{S}^2_2| = \frac{1}{2} \left| \begin{matrix}
+	p^2_1 - p^1_1 &amp; p^3_1 - p^1_1 \\
+	p^2_2 - p^1_2 &amp; p^3_2 - p^1_2
+\end{matrix} \right|$<br>
+<br>
+
+Using our offset coordinates, our triangle volume is:<br>
+$|\mathbf{S}^2_2| = \frac{1}{2} \left| \begin{matrix}
+	q^1_1 &amp; q^2_1 \\
+	q^1_2 &amp; q^2_2
+\end{matrix} \right|$<br>
+<br>
+
+$|\mathbf{S}^2_2| = \frac{1}{2} \left( q^1_1 q^2_2 - q^1_2 q^2_1 \right)$<br>
+<br>
+
+Using the Levi-Civita permutation tensor this is equal to:<br>
+$|\mathbf{S}^2_2| = \frac{1}{2} | \epsilon^{ij} q^1_i q^2_j |$<br>
+<br>
+
+<!--
+(q11 dx1 + q12 dx2) wedge (q21 dx1 + q22 dx2)
+= q11 q21 dx1 wedge dx1 + q12 q21 dx2 wedge dx1 + q11 q22 dx1 wedge dx2 + q12 q22 dx2 wedge dx2
+= (q11 q22 - q12 q21) dx1 wedge dx2 
+-->
+
+Using differential forms this is:<br>
+$|\mathbf{S}^2_2| = \frac{1}{2} \star (\mathbf{q}^1 \wedge \mathbf{q}^2)$<br>
+<br>
+
+Let $\mathbf{Q} = \mathbf{q}^1 \wedge \mathbf{q}^2$<br>
+<br>
+
+Then:<br> 
+$|\mathbf{S}^2_2| = \frac{1}{2} \star \mathbf{Q}$<br>
+<br>
+
+But what about $\langle \mathbf{Q}, \mathbf{Q} \rangle$?  Won't that be equal to the square of the area?<br>
+Yes.<br>
+So:<br>
+$|\mathbf{S}^2_2| = \frac{1}{2} \sqrt{\star \langle \mathbf{Q}, \mathbf{Q} \rangle}$<br> 
 <br>
 
 So what's the definition of a 2D triangle in 3D space? I.e. what if the triangle vertexes are 3D points?<br>
@@ -172,13 +208,13 @@ $|\mathbf{S}^3_2| = \frac{1}{2} \sqrt{
 <br>
 
 General Case guess:<br>
-$|\mathbf{S}^n_m| = \frac{1}{m} \sqrt{ \star (\mathbf{Q} \wedge \star \mathbf{Q}) }$, where $\mathbf{Q} = \mathbf{q}^1 \wedge ... \wedge \mathbf{q}^m$ is a m-form.<br>
+$|\mathbf{S}^n_m| = \frac{1}{m!} \sqrt{ \star (\mathbf{Q} \wedge \star \mathbf{Q}) }$, where $\mathbf{Q} = \mathbf{q}^1 \wedge ... \wedge \mathbf{q}^m$ is a m-form.<br>
 ...aka...<br>
-$|\mathbf{S}^n_m| = \frac{1}{m} \sqrt{ \langle \mathbf{Q} , \mathbf{Q} \rangle }$<br>
+$|\mathbf{S}^n_m| = \frac{1}{m!} \sqrt{ \star \langle \mathbf{Q} , \mathbf{Q} \rangle }$<br>
 ... well that looks a lot obvious, since this is the definition of the length of lines in any dimension.<br>
-$|\mathbf{S}^n_m| = \frac{1}{m} |\mathbf{Q}|_2$<br>
+$|\mathbf{S}^n_m| = \frac{1}{m!} |\mathbf{Q}|_2$<br>
 and in component form:<br>
-$|\mathbf{S}^n_m| = \frac{1}{m} \sqrt{
+$|\mathbf{S}^n_m| = \frac{1}{m!} \sqrt{
 }$ ... TODO ... in componet form<br>
 <br>
 	</body>
