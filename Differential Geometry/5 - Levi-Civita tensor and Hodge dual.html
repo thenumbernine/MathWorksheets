@@ -223,7 +223,9 @@ $\star \star \eta = \sigma \eta$<br>
 <br>
 
 Hodge dual inner product of two p-forms:<br>
-$a \cdot b$ ... maybe better denoted $\langle a, b \rangle$?<br>
+$a \cdot b$ ... maybe better denoted $\langle a, b \rangle$ for forms, like some texts do?<br>
+I'm going to carry this out with a volume element attached to it:<br>
+$\star \langle a, b \rangle$<br>
 $= a \wedge \star b$<br>
 $= (\frac{1}{k!} a_{i_1 ... i_k} e^{i_1} \wedge ... \wedge e^{i_k}) \wedge \star (\frac{1}{k!} b_{j_1 ... j_k} e^{j_1} \wedge ... \wedge e^{j_k})$<br>
 $= \frac{1}{(k!)^2} a_{i_1 ... i_k} b_{j_1 ... j_k} e^{i_1} \wedge ... \wedge e^{i_k} \wedge ( \frac{1}{(n-k)!} {\epsilon^{j_1 ... j_k}}_{i_{k+1} ... i_n} e^{i_{k+1}} \wedge ... \wedge e^{i_n})$<br>
@@ -243,39 +245,39 @@ $= \frac{1}{k!} a_{[i_1 ... i_k]} b^{[i_1 ... i_k]} \star 1$<br>
 <br>
 
 Using $\sigma \star \star T = T$:<br>
-$\sigma \star \langle a, b \rangle$<br>
+$\langle a, b \rangle$<br>
 $= \sigma \star (a \wedge \star b)$<br>
 $= \frac{1}{k!} a_{[i_1 ... i_k]} b^{[i_1 ... i_k]} \sigma \star \star 1$<br>
 $= \frac{1}{k!} a_{[i_1 ... i_k]} b^{[i_1 ... i_k]}$<br>
 <br>
 
-So $\star \langle a, b \rangle = \sigma \frac{1}{k!} a_{[i_1 ... i_k]} b^{[i_1 ... i_k]}$<br>
+So $\star \langle a, b \rangle = \frac{1}{k!} a_{[i_1 ... i_k]} b^{[i_1 ... i_k]}$<br>
 <br>
 
 Is $\langle a, b \rangle$ of forms via the Hodge-dual definition commutative?<br>
 $\langle a, b \rangle$<br>
-start with $\langle a, b \rangle = \frac{1}{k!} a_{[i_1 ... i_k]} b^{[i_1 ... i_k]} \star 1$<br>
-$= \frac{1}{k!} a_{[i_1 ... i_k]} b^{[i_1 ... i_k]} \star 1$<br>
+start with $\langle a, b \rangle = \frac{1}{k!} a_{[i_1 ... i_k]} b^{[i_1 ... i_k]}$<br>
+$= \frac{1}{k!} a_{[i_1 ... i_k]} b^{[i_1 ... i_k]}$<br>
 ...by commutativity of multiplication between a, b, and the metric for raising/lowering...<br>
-$= \frac{1}{k!} b_{[i_1 ... i_k]} a^{[i_1 ... i_k]} \star 1$<br>
-...using $\langle a, b \rangle = \frac{1}{k!} a_{[i_1 ... i_k]} b^{[i_1 ... i_k]} \star 1$<br>
+$= \frac{1}{k!} b_{[i_1 ... i_k]} a^{[i_1 ... i_k]}$<br>
+...using $\langle a, b \rangle = \frac{1}{k!} a_{[i_1 ... i_k]} b^{[i_1 ... i_k]}$<br>
 $\langle b, a \rangle$<br>
 So yes, $\langle a, b \rangle$ is commutative.<br>
 <br>
 
 What is $\langle \star a, \star b \rangle$ related to $\langle a, b \rangle$? <br>
 $\langle \star a, \star b \rangle$<br>
-...using $\langle a, b \rangle = a \wedge \star b$...<br>
-$= \star a \wedge \star \star b$<br>
+...using $\langle a, b \rangle = \sigma \star (a \wedge \star b)$...<br>
+$= \sigma \star (\star a \wedge \star \star b)$<br>
 ...using $\star \star T = \sigma (-1)^{k(n-k)} T$...<br>
-$= \star a \wedge \sigma (-1)^{k(n-k)} b$<br>
+$= \sigma \star (\star a \wedge \sigma (-1)^{k(n-k)} b)$<br>
 ...factor out scalar...<br>
-$= \sigma (-1)^{k(n-k)} \star a \wedge b$<br>
+$= \star ((-1)^{k(n-k)} \star a \wedge b)$<br>
 ...using $a \wedge b = (-1)^{pq} b \wedge a$ for p-form a and q-form b...<br>
-$= \sigma (-1)^{k(n-k)} (-1)^{(n-k)k} b \wedge \star a$<br>
+$= \star ((-1)^{k(n-k)} (-1)^{(n-k)k} b \wedge \star a)$<br>
 ... combine exponents...<br>
-$= \sigma b \wedge \star a$<br>
-...using $\langle a, b \rangle = a \wedge \star b$...<br>
+$= \star (b \wedge \star a)$<br>
+...using $\langle a, b \rangle = \sigma \star (a \wedge \star b)$...<br>
 $= \sigma \langle b, a \rangle$<br>
 ...by commutativity of $\langle a, b \rangle$...<br>
 $= \sigma \langle a, b \rangle$<br>
