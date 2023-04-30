@@ -397,7 +397,7 @@ $= \frac{1}{|\eta|^{3/2}} \cdot \sqrt{|g|} \cdot |\vec\omega|$<br>
 $= \sqrt{|g|} \cdot |\vec\omega|$<br>
 <br>
 
-So the lesson here is: if you need to change-of-basis some kind of dual-tensor of a physical property, like a rotation, i.e. angular momentum, torque, etc, 
+So the lesson here is: if you need to change-of-basis some kind of dual-tensor of a physical property, like a rotation, i.e. angular momentum, torque, etc,
 then use your original tensors or exterior products, not their dual angle-axis vectors.<br>
 <br>
 
@@ -423,9 +423,70 @@ $= \frac{1}{p!} {w^p}_{i_1 ... i_p} \epsilon^{i_1 ... i_p j_{p+1} ... j_n}) \wed
 ... now wedge with $e^{k_{n-p}} \wedge ... \wedge e^{k_n}$ ... and then dual times signature ... and we have isolated this term.<br>
 <br>
 
+<hr>
 <br>
 
+Cross product in $\mathbb{R}^3$:<br>
+<br>
 
+Let $dx, dy, dz$ form our one-form basis of $\mathbb{R}^3$<br>
+<br>
+
+Let $a = a_1 dx^1 + a_2 dx^2 + a_3 dx^3$ and $b = b_1 dx^1 + b_2 dx^2 + b_3 dx^3$<br>
+$a \wedge b$<br>
+$= (a_1 dx^1 + a_2 dx^2 + a_3 dx^3) \wedge (b_1 dx^1 + b_2 dx^2 + b_3 dx^3)$<br>
+$= a_1 dx^1 \wedge (b_1 dx^1 + b_2 dx^2 + b_3 dx^3)
+	+ a_2 dx^2 \wedge (b_1 dx^1 + b_2 dx^2 + b_3 dx^3)
+	+ a_3 dx^3 \wedge (b_1 dx^1 + b_2 dx^2 + b_3 dx^3)
+$<br>
+$= a_1 dx^1 \wedge b_1 dx^1
+	+ a_1 dx^1 \wedge b_2 dx^2
+	+ a_1 dx^1 \wedge b_3 dx^3
+	+ a_2 dx^2 \wedge b_1 dx^1
+	+ a_2 dx^2 \wedge b_2 dx^2
+	+ a_2 dx^2 \wedge b_3 dx^3
+	+ a_3 dx^3 \wedge b_1 dx^1
+	+ a_3 dx^3 \wedge b_2 dx^2
+	+ a_3 dx^3 \wedge b_3 dx^3
+$<br>
+using $dx^i \wedge dx^i = 0$ and $dx^i \wedge dx^j = -dx^j \wedge dx^i$<br>
+$= (a_2 b_3 - a_3 b_2) dx^2 \wedge dx^3
+	+ (a_3 b_1 - a_1 b_3) dx^3 \wedge dx^1
+	+ (a_1 b_2 - a_2 b_1) dx^1 \wedge dx^2
+$<br>
+<br>
+
+Ta da, the cross product emerges.  And if we want it in the original basis?<br>
+<br>
+
+$\star (a \wedge b)$<br>
+$= \star (
+	(a_2 b_3 - a_3 b_2) dx^2 \wedge dx^3
+	+ (a_3 b_1 - a_1 b_3) dx^3 \wedge dx^1
+	+ (a_1 b_2 - a_2 b_1) dx^1 \wedge dx^2
+)$<br>
+$=
+	(a_2 b_3 - a_3 b_2) \star (dx^2 \wedge dx^3)
+	+ (a_3 b_1 - a_1 b_3) \star (dx^3 \wedge dx^1)
+	+ (a_1 b_2 - a_2 b_1) \star (dx^1 \wedge dx^2)
+$<br>
+$=
+	(a_2 b_3 - a_3 b_2) dx^1
+	+ (a_3 b_1 - a_1 b_3) dx^2
+	+ (a_1 b_2 - a_2 b_1) dx^3
+$<br>
+<br>
+
+Proof that the famous a cross b dot c equation equals the volume of a parallelepiped in 3D:<br>
+Volume of a parallelepiped in 3D:<br>
+$(a \times b) \cdot c)$<br>
+$= (\star (a \wedge b)) \cdot c$<br>
+$= c \cdot (\star (a \wedge b))$<br>
+$= \star (c \wedge \star (\star (a \wedge b)))$<br>
+$= \star (c \wedge a \wedge b)$<br>
+$= \star (a \wedge b \wedge c)$<br>
+<br>
+<br>
 
 <a href='.'>Back</a><br><br>
 	</body>
