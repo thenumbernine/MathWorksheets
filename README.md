@@ -94,6 +94,8 @@ Here's the CDN URLs:
 
 [EMHD Linear Stability Analysis](https://thenumbernine.github.io/math/EMHD%20Linear%20Stability%20Analysis.html)
 
+[Earth Rotation Geodesic Twisting](https://thenumbernine.github.io/math/Earth%20Rotation%20Geodesic%20Twisting.html)
+
 [Einstein Equations, Weak Field, De-Donder Gauge](https://thenumbernine.github.io/math/Einstein%20Equations%2c%20Weak%20Field%2c%20De%2dDonder%20Gauge.html)
 
 [Einstein-Cartan-Sciama-Kibble](https://thenumbernine.github.io/math/Einstein%2dCartan%2dSciama%2dKibble.html)
@@ -181,6 +183,8 @@ Here's the CDN URLs:
 [MHD - Eigenmode Analysis](https://thenumbernine.github.io/math/MHD%20%2d%20Eigenmode%20Analysis.html)
 
 [MHD](https://thenumbernine.github.io/math/MHD.html)
+
+[Measure of Any Simplex in Any Dimension](https://thenumbernine.github.io/math/Measure%20of%20Any%20Simplex%20in%20Any%20Dimension.html)
 
 [Metric Eigenmodes 2](https://thenumbernine.github.io/math/Metric%20Eigenmodes%202.html)
 
@@ -273,8 +277,6 @@ Here's the CDN URLs:
 [Two-Fluid Plasma and GEM/7.2 - normalized units](https://thenumbernine.github.io/math/Two%2dFluid%20Plasma%20and%20GEM/7.2%20%2d%20normalized%20units.html)
 
 [Two-Fluid Plasma and GEM/8 - two-fluid plasma model](https://thenumbernine.github.io/math/Two%2dFluid%20Plasma%20and%20GEM/8%20%2d%20two%2dfluid%20plasma%20model.html)
-
-[Measure of Any Simplex in Any Dimension](https://thenumbernine.github.io/math/Measure%20of%20Any%20Simplex%20in%20Any%20Dimension.html)
 
 [a note on the definition of tensors](https://thenumbernine.github.io/math/a%20note%20on%20the%20definition%20of%20tensors.html)
 
