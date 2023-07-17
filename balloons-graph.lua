@@ -4,7 +4,7 @@ local gnuplot = require 'gnuplot'
 local json = require 'dkjson'
 
 local elements = assert(json.decode(
-	assert(file'PeriodicTable.js':read())
+	assert(path'PeriodicTable.js':read())
 		:split'\n':sub(2):concat'\n'	-- remove the first line
 ))
 

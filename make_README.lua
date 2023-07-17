@@ -12,8 +12,8 @@ Some helper worksheets for my projects.
 Here's the CDN URLs:
 ]]}
 
-local fs = file:rdir(function(f, isdir)
-	local dir, name = file(f):getdir()
+local fs = path:rdir(function(f, isdir)
+	local dir, name = path(f):getdir()
 	return name ~= '.git' and (isdir or name:sub(-5) == '.html')
 end):mapi(function(f)
 	if f:sub(1,2) == './' then f = f:sub(3) end
@@ -27,4 +27,4 @@ end):sort():mapi(function(f)
 		..')\n')
 end)
 
-file'README.md':write(s:concat'\n')
+path'README.md':write(s:concat'\n')
