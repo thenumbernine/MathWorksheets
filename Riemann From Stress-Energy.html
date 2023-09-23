@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<title>Riemann From Stress-Energy</title>
+	</head>
+	<body>
+
+<h3>Algorithm for finding the Riemann tensor in terms of the stress-energy tensor</h3>
+<br>
+
+Start with any symmetric stress-energy tensor $T_{uv}$<br>
+<br>
+
+The Einstein Field Equations says:<br>
+$G_{uv} = \kappa T_{uv}$<br>
+...where $\kappa = 8 \pi$ usually.<br>
+<br>
+
+The definition of the Einstein tensor:<br>
+$G_{uv} = R_{uv} - \frac{2}{n} R g_{uv}$<br>
+<br>
+
+Combine:<br>
+$\kappa T_{uv} = R_{uv} - \frac{2}{n} R g_{uv}$<br>
+<br>
+
+Trace:<br>
+$g^{uv} (\kappa T_{uv}) = g^{uv} (R_{uv} - \frac{2}{n} R g_{uv})$<br>
+$\kappa T = R - \frac{2}{n} R \cdot n$<br>
+$\kappa T = -R$<br>
+$R = -\kappa T$<br>
+<br>
+
+Substitute:<br>
+$\kappa T_{uv} = R_{uv} - \frac{2}{n} (-\kappa T) g_{uv}$<br>
+$R_{uv} = \kappa T_{uv} - \frac{2 \kappa}{n} T g_{uv}$<br>
+$R_{uv} = \kappa (T_{uv} - \frac{2}{n} T g_{uv})$<br>
+<br>
+
+<hr>
+
+<h3>The Kulkarni-Nomizu product</h3>
+
+The Kulkarni-Nomizu product of two (0, 2) symmetric tensors $A_{ab}$ and $B_{ab}$ is defined as:<br>
+$\require{enclose}$
+$(A \ {\scriptstyle \enclose{circle}{\wedge}} \ B)_{abcd} = A_{ac} B_{bd} + A_{bd} B_{ac} - A_{ad} B_{bc} - A_{bc} B_{ad}$<br>
+<br>
+
+Notice that the Kulkarni-Nomizu product applied to the same tensor is:<br>
+$(A \ {\scriptstyle \enclose{circle}{\wedge}} \ A)_{abcd}$<br>
+$= A_{ac} A_{bd} + A_{bd} A_{ac} - A_{ad} A_{bc} - A_{bc} A_{ad}$<br>
+$= 2 (A_{ac} A_{bd} - A_{ad} A_{bc})$<br>
+<br>
+
+<hr>
+<br>
+
+For $n = 2$ then there is only one possible Riemann tensor value for the Ricci tensor:<br>
+<br>
+
+$R_{abcd} = \frac{1}{2} R (g_{ac} g_{bd} - g_{ad} g_{bc})$<br>
+$R_{abcd} = \frac{1}{4} R (g \ {\scriptstyle \enclose{circle}{\wedge}} \ g)_{abcd}$<br>
+<br>
+
+<hr>
+<br>
+
+For $n \ge 3$:<br>
+<h3>Find the Schouten tensor in terms of the Ricci tensor</h3>
+<br>
+
+The Schouten tensor is defined as:<br>
+$P_{uv} = \frac{1}{n - 2} (R_{uv} - \frac{1}{2 (n - 1)} R g_{uv})$<br>
+<br>
+
+Substitute our definition of stress-energy:<br>
+$P_{uv} = \frac{1}{n - 2} (
+	\kappa (T_{uv} - \frac{2}{n} T g_{uv})
+	+ \frac{1}{2 (n - 1)}
+	g_{uv}
+	\kappa T
+)$<br>
+$P_{uv} = \frac{1}{n - 2} \kappa (
+	T_{uv}
+	- 
+		\frac{n - 2}{2 (n - 1) n} 
+	 T g_{uv}
+)$<br>
+<br>
+
+<h3>Choose a Weyl tensor subject to its constraints</h3>
+<br>
+
+$C_{(ab)cd} = C_{ab(cd)} = 0$<br>
+$C_{a[bcd]} = 0$<br>
+${C^u}_{aub} = 0$<br>
+<br>
+
+A simple choice, and nearest point projected onto the solution space, is $C_{abcd} = 0$<br>
+<br>
+
+<h3>Find the Riemann tensor in terms of the Schouten tensor and the Weyl tensor</h3>
+<br>
+
+Ricci decomposition:<br>
+$R_{abcd} = C_{abcd} + (P \ {\scriptstyle \enclose{circle}{\wedge}} \ g)_{abcd}$<br>
+$R_{abcd} = C_{abcd} + P_{ac} g_{bd} + P_{bd} g_{ac} - P_{ad} g_{bc} - P_{bc} g_{ad}$<br>
+<br>
+
+In terms of the Ricci tensor:<br>
+$R_{abcd} = C_{abcd} + \frac{1}{n - 2} (
+	  (R_{ac} - \frac{1}{2 (n-1)} R g_{ac}) g_{bd} 
+	+ (R_{bd} - \frac{1}{2 (n-1)} R g_{bd}) g_{ac} 
+	- (R_{ad} - \frac{1}{2 (n-1)} R g_{ad}) g_{bc} 
+	- (R_{bc} - \frac{1}{2 (n-1)} R g_{bc}) g_{ad}
+)$<br>
+$R_{abcd} = C_{abcd} + \frac{1}{n - 2} (
+	  R_{ac} g_{bd}
+	+ R_{bd} g_{ac}
+	- R_{ad} g_{bc}
+	- R_{bc} g_{ad}
+	- \frac{1}{2 (n-1)} R g_{ac} g_{bd}
+	- \frac{1}{2 (n-1)} R g_{bd} g_{ac}
+	+ \frac{1}{2 (n-1)} R g_{ad} g_{bc}
+	+ \frac{1}{2 (n-1)} R g_{bc} g_{ad}
+)$<br>
+$R_{abcd} = C_{abcd} + \frac{1}{n - 2} (
+	  R_{ac} g_{bd}
+	+ R_{bd} g_{ac}
+	- R_{ad} g_{bc}
+	- R_{bc} g_{ad}
+	+ \frac{1}{n - 1} R (g_{ad} g_{bc} - g_{ac} g_{bd})
+)$<br>
+$R_{abcd} = C_{abcd} + \frac{1}{n - 2} (
+	(R \ {\scriptstyle \enclose{circle}{\wedge}} \ g)_{abcd}
+	- \frac{1}{2 (n - 1)} R \cdot (g \ {\scriptstyle \enclose{circle}{\wedge}} \ g)_{abcd}
+)$<br>
+
+<br>
+
+In terms of the stress-energy tensor:<br>
+$R_{abcd} = C_{abcd} + \frac{1}{n - 2} (
+	  \kappa (T_{ac} - \frac{2}{n} T g_{ac}) g_{bd}
+	+ \kappa (T_{bd} - \frac{2}{n} T g_{bd}) g_{ac}
+	- \kappa (T_{ad} - \frac{2}{n} T g_{ad}) g_{bc}
+	- \kappa (T_{bc} - \frac{2}{n} T g_{bc}) g_{ad}
+	- \kappa T \frac{1}{n - 1} (g_{ad} g_{bc} - g_{ac} g_{bd})
+)$<br>
+$R_{abcd} = C_{abcd} + \frac{1}{n - 2} \kappa (
+	  T_{ac} g_{bd}
+	+ T_{bd} g_{ac}
+	- T_{ad} g_{bc}
+	- T_{bc} g_{ad}
+	- \frac{2}{n} T g_{ac} g_{bd}
+    - \frac{2}{n} T g_{bd} g_{ac}
+    + \frac{2}{n} T g_{ad} g_{bc}
+    + \frac{2}{n} T g_{bc} g_{ad}
+	- T \frac{1}{n - 1} (g_{ad} g_{bc} - g_{ac} g_{bd})
+)$<br>
+$R_{abcd} = C_{abcd} + \kappa \frac{1}{n - 2} (
+	  T_{ac} g_{bd}
+	+ T_{bd} g_{ac}
+	- T_{ad} g_{bc}
+	- T_{bc} g_{ad}
+    + (\frac{4}{n} - \frac{1}{n - 1}) T (g_{ad} g_{bc} - g_{ac} g_{bd})
+)$<br>
+$R_{abcd} = C_{abcd} + \kappa \frac{1}{n - 2} (
+	  T_{ac} g_{bd}
+	+ T_{bd} g_{ac}
+	- T_{ad} g_{bc}
+	- T_{bc} g_{ad}
+    + \frac{3 n - 4}{n (n - 1)} T (g_{ad} g_{bc} - g_{ac} g_{bd})
+)$<br>
+$R_{abcd} = C_{abcd} + \kappa \frac{1}{n - 2} (
+	(T \ {\scriptstyle \enclose{circle}{\wedge}} \ g)_{abcd}
+    - \frac{3 n - 4}{2 n (n - 1)} T \cdot (g \ {\scriptstyle \enclose{circle}{\wedge}} \ g)_{abcd}
+)$<br>
+
+<br>
+
+	</body>
+</html>
