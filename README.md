@@ -98,8 +98,6 @@ Here's the CDN URLs:
 
 [Einstein Equations, Weak Field, De-Donder Gauge](https://thenumbernine.github.io/math/Einstein%20Equations%2c%20Weak%20Field%2c%20De%2dDonder%20Gauge.html)
 
-[Einstein-Cartan-Sciama-Kibble](https://thenumbernine.github.io/math/Einstein%2dCartan%2dSciama%2dKibble.html)
-
 [Einstein-Maxwell Hyperbolic Conservation Laws](https://thenumbernine.github.io/math/Einstein%2dMaxwell%20Hyperbolic%20Conservation%20Laws.html)
 
 [Electromagnetism/0 - intro](https://thenumbernine.github.io/math/Electromagnetism/0%20%2d%20intro.html)
