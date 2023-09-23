@@ -160,8 +160,6 @@ Here's the CDN URLs:
 
 [Gravitation 22.2](https://thenumbernine.github.io/math/Gravitation%2022.2.html)
 
-[How Much Current To Lift An Object](https://thenumbernine.github.io/math/How%20Much%20Current%20To%20Lift%20An%20Object.html)
-
 [Kaluza-Klein - constant scalar](https://thenumbernine.github.io/math/Kaluza%2dKlein%20%2d%20constant%20scalar.html)
 
 [Kaluza-Klein - varying scalar](https://thenumbernine.github.io/math/Kaluza%2dKlein%20%2d%20varying%20scalar.html)
