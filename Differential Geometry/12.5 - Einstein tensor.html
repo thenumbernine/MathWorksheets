@@ -23,6 +23,11 @@ Einstein tensor 4-degree as double-dual of Riemann curvature tensor:<br>
 $ {G^{ab}}_{cd} = {(\star R \ast)^{ab}}_{cd}$<br>
 $= \frac{1}{2} {\epsilon^{ab}}_{uv} (\star R)^{uv}$<br>
 $= \frac{1}{4} {\epsilon^{ab}}_{uv} {R^{uv}}_{rs} {\epsilon^{rs}}_{cd} $<br>
+$= -\frac{1}{4} \delta^{abrs}_{uvcd} {R^{uv}}_{rs}$<br>
+The dual of a 2-form is a (n-2)-form...<br>
+That means for dimension other than four, the double-dual definition will give us Levi-Civita tensors of greater degree...<br>
+TODO what's the definition of the Einstein tensor in other dimensions?
+Does it always have the $-\frac{1}{2} R$ term? Or is it always defined as the double-dual-contracted?<br>
 <br>
 
 Einstein tensors and the basis k-forms:<br>
@@ -95,6 +100,7 @@ ${G_b}^a = {G^{ua}}_{ub}$<br>
 $= \frac{1}{4} {\epsilon^{ua}}_{cd} {R^{cd}}_{ef} {\epsilon^{ef}}_{ub}$<br>
 $= \frac{1}{4} \epsilon^{uacd} {R_{cd}}^{ef} \epsilon_{efub}$<br>
 $= \frac{1}{4} \epsilon^{acdu} \epsilon_{efbu} {R_{cd}}^{ef}$<br>
+$= -\frac{1}{4} \delta^{acdu}_{efbu} {R_{cd}}^{ef}$<br>
 $= -\frac{1}{4} \delta^{acd}_{efb} {R_{cd}}^{ef}$<br>
 $= -\frac{6!}{4} \delta^a_{[e} \delta^c_f \delta^d_{b]} {R_{cd}}^{ef}$<br>
 $= -\frac{1}{4} (
@@ -116,6 +122,10 @@ $= \frac{1}{4} (
 $=  {R_{cb}}^{ca} - \frac{1}{2} \delta^a_b {R_{cd}}^{cd}$<br>
 $=  {R_b}^a - \frac{1}{2} \delta^a_b R$<br>
 It looks like the symmetry of $G_{ab}$ can be inferred from the two $\epsilon^{acdu} \epsilon_{efbu}$'s , regardless of any symmetry of $R_{abcd}$, since those turn into the $\delta^{acd}_{efb}$, which can be rearranged.<br>
+...try again for arbitrary dimension...<br>
+${G_b}^a = {G^{ua}}_{ub}$<br>
+$= -\frac{1}{4} \delta^{uars}_{ubpq} {R^{pq}}_{rs}$<br>
+TODO redo the substitution I just did but for arbitrary dimensions.<br>
 <br>
 
 Using $d^2 e_b = e_a \wedge {\Omega^a}_b$...<br>
