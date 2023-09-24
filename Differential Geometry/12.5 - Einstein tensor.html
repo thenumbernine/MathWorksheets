@@ -19,18 +19,14 @@ $\star \Omega^{ab} = \frac{1}{2} {R^{ab}}_{cd} {\epsilon^{cd}}_{ef} e^e \otimes 
 $\star \Omega^{ab} = \frac{1}{4} {R^{ab}}_{cd} {\epsilon^{cd}}_{ef} e^e \wedge e^f$<br>
 <br>
 
-Einstein tensor 4-degree as double-dual of Riemann curvature tensor:<br>
+Einstein tensor 4-degree as double-dual of Riemann curvature tensor, in 4 dimensions:<br>
 $ {G^{ab}}_{cd} = {(\star R \ast)^{ab}}_{cd}$<br>
 $= \frac{1}{2} {\epsilon^{ab}}_{uv} (\star R)^{uv}$<br>
 $= \frac{1}{4} {\epsilon^{ab}}_{uv} {R^{uv}}_{rs} {\epsilon^{rs}}_{cd} $<br>
 $= -\frac{1}{4} \delta^{abrs}_{uvcd} {R^{uv}}_{rs}$<br>
-The dual of a 2-form is a (n-2)-form...<br>
-That means for dimension other than four, the double-dual definition will give us Levi-Civita tensors of greater degree...<br>
-TODO what's the definition of the Einstein tensor in other dimensions?
-Does it always have the $-\frac{1}{2} R$ term? Or is it always defined as the double-dual-contracted?<br>
 <br>
 
-Einstein tensors and the basis k-forms:<br>
+Einstein tensors and the basis k-forms, in 4 dimensions:<br>
 <br>
 
 $\Omega^{ab} \wedge \eta_{ab}$<br>
@@ -179,6 +175,35 @@ $= R_u \cdot (\delta^u_a - \frac{1}{2} e^u \otimes e_a)$<br>
 Using Hodge dual:<br>
 $= R_a - \frac{1}{2} \sigma \star (R_u \wedge \star e^u) e_a$<br>
 ... and that last $e_a$ outside the Hodge dual star is what keeps me from factoring any further ... <br>
+<br>
+
+<hr>
+<br>
+
+Now what if we're not in just 4 dimensions?<br>
+<br>
+
+Einstein tensor $2(n-2)$-degree as double-dual of Riemann curvature tensor in n dimensions:<br>
+${G^{a_1 ... a_{n-2}}}_{b_1 ... b_{n-2}} = {(\star R \ast)^{a_1 ... a_{n-2}}}_{b_1 ... b_{n-2}}$<br>
+$ = \frac{1}{4} {\epsilon^{a_1 ... a_{n-2}}}_{c d} {R^{cd}}_{ef} {\epsilon^{ef}}_{b_1 ... b_{n-2}}$<br>
+... by raising/lowering...<br>
+$ = \frac{1}{4} \epsilon^{a_1 ... a_{n-2} c d} {R_{cd}}^{ef} \epsilon_{ef b_1 ... b_{n-2}}$<br>
+... substitute the generalized Kronecher delta definition ...<br>
+$ = \frac{1}{4} \sigma \delta^{a_1 ... a_{n-2} c d}_{e f b_1 ... b_{n-2}} {R_{cd}}^{ef}$<br>
+... cycle the sum indexes of the Levi-Civita to the end.  $2(n-2)$ sign flips.<br>
+$ = \frac{1}{4} \sigma \delta^{a_1 ... a_{n-2} c d}_{b_1 ... b_{n-2} e f} {R_{cd}}^{ef}$<br>
+<br>
+
+Einstein tensor 2-degree as contraction of Einstein tensor $2(n-2)$-degree:<br>
+${G^a}_b = {G^{u_1 ... u_{n-3} a}}_{u_1 ... u_{n-3} b}$<br>
+...substitute definition:<br>
+$= \frac{1}{4} \sigma \delta^{u_1 ... u_{n-3} a c d}_{u_1 ... u_{n-3} b e f} {R_{cd}}^{ef}$<br>
+...substitute definition of kronecher delta constractions:<br>
+$= \frac{1}{4} (n-3)! \sigma \delta^{a c d}_{b e f} {R_{cd}}^{ef}$<br>
+...substitute definition of kronecher delta:<br>
+$= \frac{1}{4} 3! (n-3)! \sigma \delta^a_{[b} \delta^c_e \delta^d_{f]} {R_{cd}}^{ef}$<br>
+...substituting the progress in the n=4 definition:<br>
+$= -\sigma (n-3)! ({R^a}_b - \frac{1}{2} \delta^a_b R)$<br>
 <br>
 
 <a href='index.html'>Back</a><br>
