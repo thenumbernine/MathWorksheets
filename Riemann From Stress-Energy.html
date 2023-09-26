@@ -15,28 +15,36 @@ Start with any symmetric stress-energy tensor $T_{uv}$<br>
 
 The Einstein Field Equations says:<br>
 $G_{uv} = \kappa T_{uv}$<br>
-...where $\kappa = 8 \pi$ usually.<br>
+...where $\kappa = 8 \pi \frac{G}{c^4}$, for G the gravitational constant and c the speed of light.<br>
 <br>
 
 The definition of the Einstein tensor:<br>
-$G_{uv} = R_{uv} - \frac{2}{n} R g_{uv}$<br>
+$G_{uv} = R_{uv} - \frac{1}{2} R g_{uv}$<br>
 <br>
 
 Combine:<br>
-$\kappa T_{uv} = R_{uv} - \frac{2}{n} R g_{uv}$<br>
+$\kappa T_{uv} = R_{uv} - \frac{1}{2} R g_{uv}$<br>
 <br>
 
 Trace:<br>
-$g^{uv} (\kappa T_{uv}) = g^{uv} (R_{uv} - \frac{2}{n} R g_{uv})$<br>
-$\kappa T = R - \frac{2}{n} R \cdot n$<br>
-$\kappa T = -R$<br>
-$R = -\kappa T$<br>
+$g^{uv} (\kappa T_{uv}) = g^{uv} (R_{uv} - \frac{1}{2} R g_{uv})$<br>
+$\kappa T = R - \frac{1}{2} R \cdot n$<br>
+$\kappa T = - \frac{n-2}{2} R$<br>
+$T = -\frac{1}{\kappa} \frac{n-2}{2} R$<br>
+<br>
+
+If $n = 2$ then we get $T = 0$ and cannot solve for R.<br>
+For $n \ge 3$:<br>
+<br>
+
+$R = -\kappa \frac{2}{n-2} T$<br>
 <br>
 
 Substitute:<br>
-$\kappa T_{uv} = R_{uv} - \frac{2}{n} (-\kappa T) g_{uv}$<br>
-$R_{uv} = \kappa T_{uv} - \frac{2 \kappa}{n} T g_{uv}$<br>
-$R_{uv} = \kappa (T_{uv} - \frac{2}{n} T g_{uv})$<br>
+$\kappa T_{uv} = R_{uv} - \frac{1}{2} (-\kappa \frac{2}{n-2} T) g_{uv}$<br>
+$\kappa T_{uv} = R_{uv} + \kappa \frac{1}{n-2} T g_{uv}$<br>
+$R_{uv} = \kappa T_{uv} - \kappa \frac{1}{n - 2} T g_{uv}$<br>
+$R_{uv} = \kappa (T_{uv} - \frac{1}{n - 2} T g_{uv})$<br>
 <br>
 
 <hr>
@@ -142,10 +150,10 @@ $R_{abcd} = C_{abcd} + \frac{1}{n - 2} (
 
 In terms of the stress-energy tensor:<br>
 $R_{abcd} = C_{abcd} + \frac{1}{n - 2} (
-	  \kappa (T_{ac} - \frac{2}{n} T g_{ac}) g_{bd}
-	+ \kappa (T_{bd} - \frac{2}{n} T g_{bd}) g_{ac}
-	- \kappa (T_{ad} - \frac{2}{n} T g_{ad}) g_{bc}
-	- \kappa (T_{bc} - \frac{2}{n} T g_{bc}) g_{ad}
+	  \kappa (T_{ac} - \frac{1}{n-2} T g_{ac}) g_{bd}
+	+ \kappa (T_{bd} - \frac{1}{n-2} T g_{bd}) g_{ac}
+	- \kappa (T_{ad} - \frac{1}{n-2} T g_{ad}) g_{bc}
+	- \kappa (T_{bc} - \frac{1}{n-2} T g_{bc}) g_{ad}
 	- \kappa T \frac{1}{n - 1} (g_{ad} g_{bc} - g_{ac} g_{bd})
 )$<br>
 $R_{abcd} = C_{abcd} + \frac{1}{n - 2} \kappa (
@@ -153,10 +161,10 @@ $R_{abcd} = C_{abcd} + \frac{1}{n - 2} \kappa (
 	+ T_{bd} g_{ac}
 	- T_{ad} g_{bc}
 	- T_{bc} g_{ad}
-	- \frac{2}{n} T g_{ac} g_{bd}
-    - \frac{2}{n} T g_{bd} g_{ac}
-    + \frac{2}{n} T g_{ad} g_{bc}
-    + \frac{2}{n} T g_{bc} g_{ad}
+	- \frac{1}{n-2} T g_{ac} g_{bd}
+    - \frac{1}{n-2} T g_{bd} g_{ac}
+    + \frac{1}{n-2} T g_{ad} g_{bc}
+    + \frac{1}{n-2} T g_{bc} g_{ad}
 	- T \frac{1}{n - 1} (g_{ad} g_{bc} - g_{ac} g_{bd})
 )$<br>
 $R_{abcd} = C_{abcd} + \kappa \frac{1}{n - 2} (
@@ -164,18 +172,18 @@ $R_{abcd} = C_{abcd} + \kappa \frac{1}{n - 2} (
 	+ T_{bd} g_{ac}
 	- T_{ad} g_{bc}
 	- T_{bc} g_{ad}
-    + (\frac{4}{n} - \frac{1}{n - 1}) T (g_{ad} g_{bc} - g_{ac} g_{bd})
+    + (\frac{2}{n - 2} - \frac{1}{n - 1}) T (g_{ad} g_{bc} - g_{ac} g_{bd})
 )$<br>
 $R_{abcd} = C_{abcd} + \kappa \frac{1}{n - 2} (
 	  T_{ac} g_{bd}
 	+ T_{bd} g_{ac}
 	- T_{ad} g_{bc}
 	- T_{bc} g_{ad}
-    + \frac{3 n - 4}{n (n - 1)} T (g_{ad} g_{bc} - g_{ac} g_{bd})
+    + \frac{n}{(n - 1) (n - 2)} T (g_{ad} g_{bc} - g_{ac} g_{bd})
 )$<br>
 $R_{abcd} = C_{abcd} + \kappa \frac{1}{n - 2} (
 	(T \ {\scriptstyle \enclose{circle}{\wedge}} \ g)_{abcd}
-    - \frac{3 n - 4}{2 n (n - 1)} T \cdot (g \ {\scriptstyle \enclose{circle}{\wedge}} \ g)_{abcd}
+    - \frac{n}{2 (n - 1) (n - 2)} T \cdot (g \ {\scriptstyle \enclose{circle}{\wedge}} \ g)_{abcd}
 )$<br>
 
 <br>
