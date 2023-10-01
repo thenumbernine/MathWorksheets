@@ -8,73 +8,75 @@
     <body>
 <a href='.'>Back</a><br><br>
 
-Consider the basis $e_I = {e^a}_I e_a$ for some coordinate basis $e_a = \partial_a$<br>
-such that $e_I \cdot e_J = \eta_{IJ}$<br>
+Consider the basis $e_i = {e^a}_i e_a$ for some coordinate basis $e_a = \partial_a$<br>
+such that $e_i \cdot e_j = \eta_{ij}$.
+Therefore ${e^a}_i$ diagonalizes our metric $g_{ab} = e_a \cdot e_b$.<br>
 <br>
 
-Notice that $(e')_I = {\Lambda^J}_I e_J$ retains all properties for Lorentz transform ${\Lambda^J}_I$,<br>
-so $e_I$ is gauge invariant wrt ${\Lambda^J}_I$<br>
+TODO show that $(e')_i = {\Lambda^j}_i e_j$ retains all properties for Lorentz transform ${\Lambda^j}_i$, (TODO which properties?)<br>
+so $e_i$ is gauge invariant wrt ${\Lambda^j}_i$<br>
 <br>
 
-Let $(\hat{\nabla}_\eta)_I$ be defined as the covariant derivative associated with the metric $\eta_{IJ}$ with connection possessing zero torsion, so it's the unique Levi-Civita connection of a diagonalized, (probably) non-coordinate basis.<br>
+Let $(\hat{\nabla}_\eta)_i$ be defined as the covariant derivative associated with the metric $\eta_{ij}$ with connection possessing zero torsion,
+so it's the unique Levi-Civita connection of a diagonalized, (probably) non-coordinate basis.<br>
 <br>
 
-Let ${(\hat{\Gamma}_\eta)^I}_{JK}$ be the zero-torsion Levi-Civita connection associated with the covariant derivative $(\hat{\nabla}_\eta)_I$.<br>
+Let ${(\hat{\Gamma}_\eta)^i}_{jk}$ be the zero-torsion Levi-Civita connection associated with the covariant derivative $(\hat{\nabla}_\eta)_i$.<br>
 <br>
 
-${(\hat{\Gamma}_\eta)^I}_{JK}$ is defined by $(\hat\nabla_\eta)_I e_J = {(\hat{\Gamma}_\eta)^K}_{IJ} e_K$.<br>
+${(\hat{\Gamma}_\eta)^i}_{jk}$ is defined by $(\hat\nabla_\eta)_i e_j = {(\hat{\Gamma}_\eta)^k}_{ij} e_k$.<br>
 <br>
 
-The Levi-Civita connection with a constant metric (such as our diagonalized $e_I = {e^a}_I e_a)$:<br>
-$(\hat{\Gamma}_\eta)_{IJK} = \frac{1}{2} ( 
-	e_K (\eta_{IJ}) + e_J (\eta_{IK}) - e_I (\eta_{JK})
-	+ (c_\eta)_{IJK} + (c_\eta)_{IKJ} - (c_\eta)_{KJI}
+The Levi-Civita connection with a constant metric (such as our diagonalized $e_i = {e^a}_i e_a)$:<br>
+$(\hat{\Gamma}_\eta)_{ijk} = \frac{1}{2} ( 
+	e_k (\eta_{ij}) + e_j (\eta_{ik}) - e_i (\eta_{jk})
+	+ (c_\eta)_{ijk} + (c_\eta)_{ikj} - (c_\eta)_{kji}
 )$<br>
-$= \frac{1}{2} (  (c_\eta)_{IJK} + (c_\eta)_{IKJ} - (c_\eta)_{KJI} )$<br>
-$c_\eta$ is the commutation associated with our diagonalized $e_I$ operators.<br>
+$= \frac{1}{2} (  (c_\eta)_{ijk} + (c_\eta)_{ikj} - (c_\eta)_{kji} )$<br>
+$c_\eta$ is the commutation associated with our diagonalized $e_i$ operators.<br>
 This connection is called the spin connection.<br>
 <br>
 
 Notice that the Levi-Civita connection of a coordinate basis is going to have structure constants $\hat{c}_{abc} = 0$<br>
 But the structure constants of the basis diagonalizing such a coordinate system are definitely not zero, as shown before:<br>
-${(c_\eta)_{IJ}}^K = 2 {e^u}_{[I|} e_u ( {e^c}_{|J]} ) {e^K}_c$<br>
-${(c_\eta)_{IJ}}^K = -2 {e^u}_{[I} {e^c}_{J]}  e_u ( {e^K}_c )$<br>
-${(c_\eta)_{pq}}^r = -2 e_{[p} ( {e_{q]}}^K ) {e^r}_K$<br>
-${(c_\eta)_{pq}}^r = 2 e_{[p} ( e^{rK} ) e_{q]K}$<br>
-$(c_\eta)_{abc} = 2 e_{[a} ( e^{dK} ) e_{b]K} g_{dc}$<br>
+${(c_\eta)_{ij}}^k = 2 {e^u}_{[i|} e_u ( {e^c}_{|j]} ) {e^k}_c$<br>
+${(c_\eta)_{ij}}^k = -2 {e^u}_{[i} {e^c}_{j]}  e_u ( {e^k}_c )$<br>
+${(c_\eta)_{pq}}^r = -2 e_{[p} ( {e_{q]}}^k ) {e^r}_k$<br>
+${(c_\eta)_{pq}}^r = 2 e_{[p} ( e^{rk} ) e_{q]k}$<br>
+$(c_\eta)_{abc} = 2 e_{[a} ( e^{dk} ) e_{b]k} g_{dc}$<br>
 <br>
 
 Does the Levi-Civita connection of the basis associated with the diagonalized metric equate to the Levi-Civita connection of the coordinate basis?<br>
 $(\hat{\Gamma}_\eta)_{abc} = \frac{1}{2} ( (c_\eta)_{abc} + (c_\eta)_{acb} - (c_\eta)_{cba})$<br>
 $= 
-	e_{[a} ( e^{dK} ) e_{b]K} g_{dc}
-	+ e_{[a} ( e^{dK} ) e_{c]K} g_{db}
-	- e_{[c} ( e^{dK} ) e_{b]K} g_{da}
+	e_{[a} ( e^{dk} ) e_{b]k} g_{dc}
+	+ e_{[a} ( e^{dk} ) e_{c]k} g_{db}
+	- e_{[c} ( e^{dk} ) e_{b]k} g_{da}
 $<br>
 $= \frac{1}{2} (
-	e_a ( e^{dK} ) e_{bK} g_{dc}
-	- e_b ( e^{dK} ) e_{aK} g_{dc}
+	e_a ( e^{dk} ) e_{bk} g_{dc}
+	- e_b ( e^{dk} ) e_{ak} g_{dc}
 	
-	+ e_a ( e^{dK} ) e_{cK} g_{db}
-	- e_c ( e^{dK} ) e_{aK} g_{db}
+	+ e_a ( e^{dk} ) e_{ck} g_{db}
+	- e_c ( e^{dk} ) e_{ak} g_{db}
 	
-	- e_c ( e^{dK} ) e_{bK} g_{da}
-	+ e_b ( e^{dK} ) e_{cK} g_{da}
+	- e_c ( e^{dk} ) e_{bk} g_{da}
+	+ e_b ( e^{dk} ) e_{ck} g_{da}
 )$<br>
 $= \frac{1}{2} (
-	- {e_c}^K e_a ( e_{bK} )
-	- e_{bK} e_a ( {e_c}^K )
+	- {e_c}^k e_a ( e_{bk} )
+	- e_{bk} e_a ( {e_c}^k )
 	
-	+ {e_c}^K e_b ( e_{aK} )
-	+ e_b ( {e_a}^K ) e_{cK} 
+	+ {e_c}^k e_b ( e_{ak} )
+	+ e_b ( {e_a}^k ) e_{ck} 
 	
-	+ {e_b}^K e_c ( e_{aK} )
-	+ {e_a}^K e_c ( e_{bK} )
+	+ {e_b}^k e_c ( e_{ak} )
+	+ {e_a}^k e_c ( e_{bk} )
 )$<br>
 $= \frac{1}{2} (
-	- e_a ( {e_c}^K e_{bK} )
-	+ e_b ( {e_a}^K e_{cK} )
-	+ e_c ( {e_a}^K e_{bK} )
+	- e_a ( {e_c}^k e_{bk} )
+	+ e_b ( {e_a}^k e_{ck} )
+	+ e_c ( {e_a}^k e_{bk} )
 )$<br>
 $ = \frac{1}{2} (e_c (g_{ab}) + e_b(g_{ac}) - e_c(g_{ab}))$<br>
 $ = \hat{\Gamma}_{abc}$<br>
@@ -253,57 +255,57 @@ But that would imply 'no', right? Only 'yes' when the linear transform from coor
 Notice that: $\partial_c (g_{ab}) + \partial_b(g_{ac}) - \partial_c(g_{ab}) =  (c_\eta)_{abc} + (c_\eta)_{acb} - (c_\eta)_{cba}$<br>
 <br>
 
-Notice that, in the diagonalized basis, since the metric is $\eta_{IJ}$ is a constant, we know $(\Gamma_\eta)_{IJK}$ has the property:<br>
-$(\Gamma_\eta)_{(I|J|K)} = \frac{1}{2} e_J (\eta_{IK}) = 0$<br>
+Notice that, in the diagonalized basis, since the metric is $\eta_{ij}$ is a constant, we know $(\Gamma_\eta)_{ijk}$ has the property:<br>
+$(\Gamma_\eta)_{(i|j|k)} = \frac{1}{2} e_j (\eta_{ik}) = 0$<br>
 So we know $(\Gamma_\eta)$ is antisymmetric on the 1st and 3rd indexes.  This means rotation, and also means we can pick a two-form to represent this.
 Notice that connections are already represented as one-forms, and even on the index that isn't antisymmetric: $\omega_{ab} = \Gamma_{acb} e^c$.
-Now we also have the choice of representing connections as a two-form, as $(\omega_\eta)_K = \frac{1}{2} (\Gamma_\eta)_{IKJ} e^I \wedge e^J$.<br>
-I wonder if you could consider a spin-connection to be a combination of two-forms and one-forms in two different basii? $(\omega_\eta) = \frac{1}{2} (\Gamma_\eta)_{IaJ} \cdot e^I \wedge e^J \otimes e^a$, where the $e^I$'s and $e^a$'s don't mess with each other ... maybe not ...<br>
+Now we also have the choice of representing connections as a two-form, as $(\omega_\eta)_k = \frac{1}{2} (\Gamma_\eta)_{ikj} e^i \wedge e^j$.<br>
+I wonder if you could consider a spin-connection to be a combination of two-forms and one-forms in two different basii? $(\omega_\eta) = \frac{1}{2} (\Gamma_\eta)_{iaj} \cdot e^i \wedge e^j \otimes e^a$, where the $e^i$'s and $e^a$'s don't mess with each other ... maybe not ...<br>
 (This is probably why people usually put the basis index last instead of first, so it is ${\Gamma_{jk}}^i e_i$, like the structure constants, instead of ${\Gamma^i}_{jk} e_i$).<br>
 <br>
 
 What happens when you calculate the coordinate-basis Levi-Civita covariant derivative of the non-coordinate basis?<br>
-$\hat\nabla_a e_J = \hat\nabla_a ({e^u}_J e_u)$<br>
-$ = \hat\nabla_a({e^u}_J) e_u + {e^u}_J \hat\nabla_a e_u$<br>
-$ = (e_a({e^c}_J) + {e^u}_J {\hat{\Gamma}^c}_{au}) e_c$<br>
+$\hat\nabla_a e_j = \hat\nabla_a ({e^u}_j e_u)$<br>
+$ = \hat\nabla_a({e^u}_j) e_u + {e^u}_j \hat\nabla_a e_u$<br>
+$ = (e_a({e^c}_j) + {e^u}_j {\hat{\Gamma}^c}_{au}) e_c$<br>
 <br>
 
 And what happens when you convert that back to the normalized coordinates?<br>
-$\hat\nabla_I e_J = \hat\nabla_{e_I} e_J = \hat\nabla_{{e^a}_I e_a} e_J = {e^a}_I \hat\nabla_{e_a} e_J$<br>
-$ = {e^a}_I \hat\nabla_a e_J$<br>
-$ = {e^a}_I (e_a({e^c}_J) + {e^u}_J {\hat{\Gamma}^c}_{au}) e_c$<br>
-$ = (e_I({e^c}_J) + {\hat{\Gamma}^c}_{IJ}) e_c$<br>
-$ = (e_I({e^c}_J) {e_c}^K + {\hat{\Gamma}^K}_{IJ}) e_K$<br>
+$\hat\nabla_i e_j = \hat\nabla_{e_i} e_j = \hat\nabla_{{e^a}_i e_a} e_j = {e^a}_i \hat\nabla_{e_a} e_j$<br>
+$ = {e^a}_i \hat\nabla_a e_j$<br>
+$ = {e^a}_i (e_a({e^c}_j) + {e^u}_j {\hat{\Gamma}^c}_{au}) e_c$<br>
+$ = (e_i({e^c}_j) + {\hat{\Gamma}^c}_{ij}) e_c$<br>
+$ = (e_i({e^c}_j) {e_c}^k + {\hat{\Gamma}^k}_{ij}) e_k$<br>
 <br>
 
-Is $\hat\nabla_I e_J = (\hat\nabla_\eta)_I e_J$?<br>
-$ = (e_I({e^c}_J) {e_c}^K + \frac{1}{2} {e_a}^K g^{au} (e_c(g_{ub}) + e_b(g_{uc}) - e_u(g_{bc})) {e^b}_I {e^c}_J) e_K$<br>
-$ = (e_I({e^c}_J) {e_c}^K 
-	+ \frac{1}{2} e^{uK} {e^b}_I {e^c}_J e_c({e_u}^M e_{bM}) 
-	+ \frac{1}{2} e^{uK} {e^c}_J {e^b}_I e_b({e_u}^M e_{cM}) 
-	- \frac{1}{2} {e^b}_I {e^c}_J e^{uK} e_u({e_b}^M e_{cM})
-) e_K$<br>
+Is $\hat\nabla_i e_j = (\hat\nabla_\eta)_i e_j$?<br>
+$ = (e_i({e^c}_j) {e_c}^k + \frac{1}{2} {e_a}^k g^{au} (e_c(g_{ub}) + e_b(g_{uc}) - e_u(g_{bc})) {e^b}_i {e^c}_j) e_k$<br>
+$ = (e_i({e^c}_j) {e_c}^k 
+	+ \frac{1}{2} e^{uk} {e^b}_i {e^c}_j e_c({e_u}^m e_{bm}) 
+	+ \frac{1}{2} e^{uk} {e^c}_j {e^b}_i e_b({e_u}^m e_{cm}) 
+	- \frac{1}{2} {e^b}_i {e^c}_j e^{uk} e_u({e_b}^m e_{cm})
+) e_k$<br>
 $ = (
-	{e^a}_I e_a({e^c}_J) {e_c}^K 
-	+ \frac{1}{2} e^{uK} {e^c}_J e_c(e_{uI}) 
-	+ \frac{1}{2} e^{uK} {e^b}_I e_b(e_{uJ}) 
+	{e^a}_i e_a({e^c}_j) {e_c}^k 
+	+ \frac{1}{2} e^{uk} {e^c}_j e_c(e_{ui}) 
+	+ \frac{1}{2} e^{uk} {e^b}_i e_b(e_{uj}) 
 	
-	+ \frac{1}{2} {e^c}_J {e^b}_I e_b({e_c}^K)
-	- \frac{1}{2} {e^c}_J e^{uK} e_u(e_{cI})
+	+ \frac{1}{2} {e^c}_j {e^b}_i e_b({e_c}^k)
+	- \frac{1}{2} {e^c}_j e^{uk} e_u(e_{ci})
 	
-	+ \frac{1}{2} {e^b}_I {e^c}_J e_c({e_b}^K)
-	- \frac{1}{2} {e^b}_I e^{uK} e_u(e_{bJ}) 
-) e_K$<br>
+	+ \frac{1}{2} {e^b}_i {e^c}_j e_c({e_b}^k)
+	- \frac{1}{2} {e^b}_i e^{uk} e_u(e_{bj}) 
+) e_k$<br>
 $ = \frac{1}{2} (
-	(e^{uK} {e^a}_J - {e^u}_J e^{aK}) e_a(e_{uI})
-	+ (e^{uK} {e^a}_I - {e^u}_I e^{aK}) e_a(e_{uJ}) 
-	+ ({e^u}_I {e^a}_J - {e^u}_J {e^a}_I) e_a({e_u}^K)
-) e_K$<br>
+	(e^{uk} {e^a}_j - {e^u}_j e^{ak}) e_a(e_{ui})
+	+ (e^{uk} {e^a}_i - {e^u}_i e^{ak}) e_a(e_{uj}) 
+	+ ({e^u}_i {e^a}_j - {e^u}_j {e^a}_i) e_a({e_u}^k)
+) e_k$<br>
 $ = (
-	e^{uK} {e^a}_J e_{[a}(e_{u]I})
-	+ e^{uK} {e^a}_I e_{[a}(e_{u]J}) 
-	+ {e^u}_I {e^a}_J e_{[a}({e_{u]}}^K)
-) e_K$<br>
+	e^{uk} {e^a}_j e_{[a}(e_{u]i})
+	+ e^{uk} {e^a}_i e_{[a}(e_{u]j}) 
+	+ {e^u}_i {e^a}_j e_{[a}({e_{u]}}^k)
+) e_k$<br>
 Probably yes if $\hat{\Gamma}_{abc} = (\hat{\Gamma}_\eta)_{abc}$.<br>
 <br>
 
@@ -311,20 +313,20 @@ Probably yes if $\hat{\Gamma}_{abc} = (\hat{\Gamma}_\eta)_{abc}$.<br>
 <br>
 
 What if we want to consider a spin connection with torsion?<br>
-Let $\nabla_\eta$ be some covariant derivative associated with operators $e_I$.<br>
-Let ${(\Gamma_\eta)^I}_{JK}$ be the connection associated with the $\nabla_\eta$ covariant derivative.<br>
-Such that $(\nabla_\eta) (T) = (e_I(T) + (\Gamma_\eta)_I \cdot (T) ) e^I$.<br>
+Let $\nabla_\eta$ be some covariant derivative associated with operators $e_i$.<br>
+Let ${(\Gamma_\eta)^i}_{jk}$ be the connection associated with the $\nabla_\eta$ covariant derivative.<br>
+Such that $(\nabla_\eta) (T) = (e_i(T) + (\Gamma_\eta)_i \cdot (T) ) e^i$.<br>
 <br>
 
 The connection will be defined as:<br>
-$(\Gamma_\eta)_{IJK} = \frac{1}{2} ( 
-	e_K (\eta_{IJ}) + e_J (\eta_{IK}) - e_I (\eta_{JK})
-	+ (c_\eta)_{IJK} + (c_\eta)_{IKJ} - (c_\eta)_{KJI}
-	+ (T_\eta)_{KIJ} + (T_\eta)_{JIK} - (T_\eta)_{IKJ}
+$(\Gamma_\eta)_{ijk} = \frac{1}{2} ( 
+	e_k (\eta_{ij}) + e_j (\eta_{ik}) - e_i (\eta_{jk})
+	+ (c_\eta)_{ijk} + (c_\eta)_{ikj} - (c_\eta)_{kji}
+	+ (T_\eta)_{kij} + (T_\eta)_{jik} - (T_\eta)_{ikj}
 )$<br>
 $= \frac{1}{2} (
-	(c_\eta)_{IJK} + (c_\eta)_{IKJ} - (c_\eta)_{KJI}
-	+ (T_\eta)_{KIJ} + (T_\eta)_{JIK} - (T_\eta)_{IKJ}
+	(c_\eta)_{ijk} + (c_\eta)_{ikj} - (c_\eta)_{kji}
+	+ (T_\eta)_{kij} + (T_\eta)_{jik} - (T_\eta)_{ikj}
 )$<br>
 $T_\eta$ is the torsion associated with the $\nabla_\eta$ operator.<br>
 <br>
