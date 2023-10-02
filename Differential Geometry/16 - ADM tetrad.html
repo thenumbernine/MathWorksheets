@@ -13,26 +13,74 @@
 Vierbein in terms of ADM:<br>
 <br>
 
-ADM metric:<br>
-$[g_{\mu\nu}] = \overset{\mu(u)\downarrow \nu(v)\rightarrow}{\left[ \matrix{-\alpha^2 + \beta^a \beta_a& \beta_v \\ \beta_u & \gamma_{uv}} \right]}$<br>
-$[g^{\mu\nu}] = \overset{\mu(u)\downarrow \nu(v)\rightarrow}{\left[ \matrix{-1/\alpha^2 & \beta^v / \alpha^2 \\ \beta^u / \alpha^2 & \gamma^{uv} - \beta^u \beta^v / \alpha^2} \right]}$<br>
-where $ \beta_v = \gamma_{uv} \beta^v = \gamma_{\mu v} \beta^v = g_{\mu v} \beta^v $ courtesy of the fact that the 3-metric components of $ g_{uv} = \gamma_{uv} $, and the 4D compoennt of $ \beta^t = 0 $.<br>
+By our previous ADM worksheet we know, in order to invoke extrinsic curvature, we have to be working in a coordinate basis with the Levi-Civita connection.<br>
+So the ADM metric is defined as:<br>
+$\mathbf{g} = g_{uv} \mathbf{dx}^u \otimes \mathbf{dx}^v = g^{uv} \mathbf{\partial}_u \otimes \mathbf{\partial}_v$<br>
 <br>
-Let $n_\alpha = (-\alpha,0,0,0)$ be the normal.<br>
+
+$[g_{uv}] = \overset{u(i)\downarrow v(j)\rightarrow}{\left[ \matrix{
+	-\alpha^2 + \beta_k \beta^k & \beta_j \\
+	\beta_i & \gamma_{ij}
+} \right]}$<br>
+$[g^{uv}] = \overset{u(i)\downarrow v(j)\rightarrow}{\left[ \matrix{
+	-1/\alpha^2 & \beta^j / \alpha^2 \\
+	\beta^i / \alpha^2 & \gamma^{ij} - \beta^i \beta^j / \alpha^2
+} \right]}$<br>
+where $ \beta_j = \gamma_{ij} \beta^i = \gamma_{u j} \beta^j = g_{j b} \beta^j $ courtesy of the fact that $ g_{ij} = \gamma_{ij} $ and $ \beta^t = 0 $.<br>
 <br>
-Let ${(^3e)_a}^i$ be the triad defined as the square-root of the 3-metric: ${(^3e)_a}^i {(^3e)_b}^j \eta_{ij} = \gamma_{ab}$<br>
+
+normal in the ADM metric:<br>
+$n_u = \overset{u(i)\rightarrow}{\left[ \matrix{ -\alpha & 0 } \right]} $<br>
+$n^u = \overset{u(i)\downarrow}{\left[ \matrix{ 1/\alpha \\ -\beta^i/\alpha } \right]} $<br>
 <br>
-Let $[{e_\mu}^I] = \overset{\mu(u)\downarrow I(i)\rightarrow}{\left[\matrix{\alpha & \beta^i \\ 0 & {(^3 e)_u}^i}\right]}$<br>
+
+
+TODO for the ADM worksheet, if a spacetime manifold metric $g_{uv}$ is with respect to a coordinate basis, does that imply that its associated spatial metric $\gamma_{ab}$ is also with respect to a coordinate basis?<br>
+Yes, because $g_{uv}$ and $\gamma_{ab}$ are still both represented using the same basis:<br>
+$\mathbf{g} = g_{uv} \mathbf{dx}^u \otimes \mathbf{dx}^v$<br>
+$\mathbf{\gamma} = \gamma_{uv} \mathbf{dx}^u \otimes \mathbf{dx}^v$<br>
+...with the constraint that $\mathbf{\gamma} \cdot \mathbf{n} = 0$<br>
+Now there's still no guarantee that the time vector is a coordinate basis vector, or that time is one of the coordinates, but at least the spatial metric is with components of a coordinate basis.<br>
 <br>
+
+Let $\mathbf{\hat{e}}_a$ be a locally-Minkowski vector basis of the spatial hypersurface at some point on the manifold.<br>
+Let $\mathbf{\hat{e}}^a$ be the dual one-form basis, 
+	such that $\mathbf{\hat{e}}^a(\mathbf{\hat{e}}_b) = \delta^a_b$.<br>
+It looks like I'm defining locally-Minkowski space-time and not just space.  But I'll pick off the time component soon.<br>
+<br>
+
+I think I'll mark indexes summing the locally-Minkowski basis with an apostrophe as well.<br>
+Hmm, or maybe not.<br>
+Maybe I'll mark the indexes summing the coordinate basis with tildes like I do prior to the ADM worksheets.<br>
+Or maybe not.<br>
+Maybe I'll use letter ranges for each, but then I'll try to make sure not to use capital letters since I use those earlier as index groups, following Ricci convention.<br>
+Hmm ... there are too many conventions.<br>
+<br>
+
+Let $\mathbf{E} = {E_u}^a \mathbf{dx}^u \otimes \mathbf{\hat{e}}_a$ be our transform from our spacetime coordinate tangent space to our spatial non-coordinate locally-Minkowski tangent-space.<br>
+<br>
+
+Because our locally-Minkowski non-coordinate hypersurface basis is Minkowski, we can say:<br>
+$(g')_{ab} = \mathbf{\hat{e}}_a \cdot \mathbf{\hat{e}}_b = \eta_{ab}$<br>
+<br>
+
+Let ${(^3e)_a}^i$ be the triad defined as the square-root of the 3-metric: ${(^3e)_a}^i {(^3e)_b}^j \delta_{ij} = \gamma_{ab}$<br>
+So the triad transform will transform from the spatial metric of our coordinate basis onto our locally-Minkowski non-coordinate basis.<br>
+<br>
+
+If we have a coordinate time component then we can define E as:<br>
+$[{E_\mu}^a] = \overset{\mu(u)\downarrow a(i)\rightarrow}{\left[\matrix{\alpha & \beta^i \\ 0 & {(^3 e)_u}^i}\right]}$<br>
+<br>
+
 For $\beta^i = {(^3e)_a}^i \beta^a $ the shift vector transformed by the triad.<br>
-Then ${e_\alpha}^\hat{t}=-n_\alpha=(\alpha,0,0,0)$ for $\hat{t}$ the Minkowski time coordinate.<br>
-Then $g_{\mu\nu} = {e_\mu}^I \eta_{IJ} {e_\nu}^J$ is computed like so:<br>
-$= \overset{\mu(u)\downarrow I(i)\rightarrow}{\left[\matrix{\alpha & \beta^i \\ 0 & {(^3 e)_u}^i}\right]}
-\overset{I(i) \downarrow J(j) \rightarrow}{\left[\matrix{ -1 & 0 \\ 0 & \delta_{ij} }\right]}
-\overset{J(j)\downarrow \nu(v)\rightarrow}{\left[\matrix{\alpha & 0 \\ \beta^j & {(^3 e)_v}^j}\right]}
+Then ${e_\mu}^\hat{t}=-n_\mu=(\alpha,0,0,0)$ for $\hat{t}$ the Minkowski time coordinate.<br>
+Then $g_{\mu\nu} = {e_\mu}^a \eta_{ab} {e_\nu}^b$ is computed like so:<br>
+$= \overset{\mu(u)\downarrow a(i)\rightarrow}{\left[\matrix{\alpha & \beta^i \\ 0 & {(^3 e)_u}^i}\right]}
+\overset{a(i) \downarrow b(j) \rightarrow}{\left[\matrix{ -1 & 0 \\ 0 & \delta_{ij} }\right]}
+\overset{b(j)\downarrow \nu(v)\rightarrow}{\left[\matrix{\alpha & 0 \\ \beta^j & {(^3 e)_v}^j}\right]}
 $<br>
-$= \overset{\mu(u)\downarrow J(j)\rightarrow}{\left[\matrix{-\alpha & \beta_j \\ 0 & (^3 e)_{uj} }\right]}
-\overset{J(j)\downarrow \nu(v)\rightarrow}{\left[\matrix{\alpha & 0 \\ \beta^j & {(^3 e)_v}^j }\right]}
+$= \overset{\mu(u)\downarrow b(j)\rightarrow}{\left[\matrix{-\alpha & \beta_j \\ 0 & (^3 e)_{uj} }\right]}
+\overset{b(j)\downarrow \nu(v)\rightarrow}{\left[\matrix{\alpha & 0 \\ \beta^j & {(^3 e)_v}^j }\right]}
 $<br>
 $= \overset{\mu(u)\downarrow \nu(v)\rightarrow}{\left[\matrix{
 	-\alpha^2 + \beta_j \beta^j & 
@@ -51,22 +99,22 @@ $<br>
 
 
 <br>
-Let $[{e^\mu}_I] = \overset{\mu(u)\downarrow I(i)\rightarrow}{\left[\matrix{1/\alpha & 0 \\ -\beta^u/\alpha & {(^3e)^u}_i}\right]}$<br>
-So ${e_\mu}^I {e^\nu}_I$
-$= \overset{\mu(u)\downarrow I(i)\rightarrow}{ \left[\matrix{\alpha & \beta^i \\ 0 & {(^3e)_u}^i }\right] }
-\overset{I(i) \downarrow \nu(v)\rightarrow}{ \left[\matrix{1/\alpha & -\beta^v / \alpha \\ 0 & {(^3e)^v}_i }\right] }$<br>
+Let $[{e^\mu}_a] = \overset{\mu(u)\downarrow a(i)\rightarrow}{\left[\matrix{1/\alpha & 0 \\ -\beta^u/\alpha & {(^3e)^u}_i}\right]}$<br>
+So ${e_\mu}^a {e^\nu}_a$
+$= \overset{\mu(u)\downarrow a(i)\rightarrow}{ \left[\matrix{\alpha & \beta^i \\ 0 & {(^3e)_u}^i }\right] }
+\overset{a(i) \downarrow \nu(v)\rightarrow}{ \left[\matrix{1/\alpha & -\beta^v / \alpha \\ 0 & {(^3e)^v}_i }\right] }$<br>
 $= \overset{\mu(u)\downarrow \nu(v)\rightarrow}{ \left[\matrix{1 & -\beta^i + \beta^i \\ 0 & {(^3e)_u}^i {(^3e)^v}_i }\right] }$<br>
 $= \overset{\mu(u)\downarrow \nu(v)\rightarrow}{ \left[\matrix{1 & 0 \\ 0 & \delta_u^v }\right] }$<br>
 <br>
-Therefore the spatial subset of curved coordinates of the 4D tetrad ${e_\mu}^I$ and ${e^\mu}_I$ are equal to the 3D triad ${e_u}^i$ and ${e^u}_i$.<br>
+Therefore the spatial subset of curved coordinates of the 4D tetrad ${e_\mu}^a$ and ${e^\mu}_a$ are equal to the 3D triad ${e_u}^i$ and ${e^u}_i$.<br>
 Therefore tensors can be raised/lowered by 3D spatial indexes as well as 4D spacetime indexes without distinction... except that the shift cannot be neglected ...<br>
 i.e. representing a 3-space coordinate in terms of a 4-space coordinate:<br>
-For $ v^I $ 4D Minkowski space<br>
-$ v^\mu = v^I {e^\mu}_I $<br>
+For $ v^u $ 4D Minkowski space<br>
+$ v^\mu = v^u {e^\mu}_u $<br>
 Calculating the individual $t$ component in tetrad representation introduces influence from the (Minkowski representation of the) shift vector, as well as the spatial triad:<br>
-$ v^t = v^I {e^t}_I = v^\hat{t} {e^t}_\hat{t} + v^i {e^t}_i = \alpha v^\hat{t} + \beta^i {e^t}_i $<br>
-Calculating the spatial $a$ components in tetrad representation only makes use of the spatial triad:<br>
-$ v^a = v^I {e^a}_I = v^\hat{t} {e^a}_\hat{t} + v^i {e^a}_i = 0 \cdot v^\hat{t} + {({^3}e)^a}_i v^i = {({^3}e)^a}_i v^i $<br>
+$ v^t = v^u {e^t}_u = v^\hat{t} {e^t}_\hat{t} + v^i {e^t}_i = \alpha v^\hat{t} + \beta^i {e^t}_i $<br>
+Calculating the spatial $u$ components in tetrad representation only makes use of the spatial triad:<br>
+$ v^u = v^a {e^u}_a = v^\hat{t} {e^u}_\hat{t} + v^i {e^u}_i = 0 \cdot v^\hat{t} + {({^3}e)^u}_i v^i = {({^3}e)^u}_i v^i $<br>
 <br>
 ...so if you have a 4D Minkowski coordinate object and you want to represent the time component terms of 3D curved coordinates, don't forget to add the influence of the (3D Minkowski coordinate representation of the) shift vector!<br>
 ...but if you have a 4D Minkowski coordinate object and you want to represent the spatial components in terms of 3D curved coordinates, you can just use the 3D triad transformation.<br>

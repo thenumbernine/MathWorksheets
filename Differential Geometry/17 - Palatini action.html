@@ -10,85 +10,23 @@
 <a href='index.html'>Back</a><br>
 <br>
 
-I followed the math on the Palatini action wikipedia pages, but the explanation on those isn't so great.<br>
-I need to clarify this or get rid of it.<br>
+Continuing from the ADM worksheet...<br>
+${\Gamma^a}_{bc}$ is the Levi-Civita connection associated with the coordinate basis (whereas in previous worksheets it was ${{\tilde{\Gamma}}^a}_{bc}$).<br>
 <br>
 
-TODO:<br>
-How is $\omega_{aIJ}$ any different from previous $\omega_{ab}$ or $\Gamma_{abc}$?<br>
-Is it related to any connection, or to the Levi-Civita specifically?<br>
-Seems this is still torsion-free, which means it must be a(nti)symmetric and based (purely) on the commutations, especially if the metric is diagonalized.<br>
-(Actually I've seen some supergravity stuff that is not torsion-free.)<br>
+Introduce new covariant derivative $\hat{\nabla}_a$ and associated connection ${\hat{\Gamma}^a}_{bc}$.<br>
+It should cancel the coordinate-basis $g_{\alpha\beta}$ metric, and be torsion-free.<br>
+Define the connection with respect to a non-coordinate locally-Minkowski basis $e_i$.<br>
+That leaves us with the equation from our "metric cancelling and torsion free connections" worksheet:<br>
+${\hat\Gamma^i}_{jk} = {e^i}_\alpha {e_j}^\beta {e_k}^\gamma {\tilde{\Gamma}^\alpha}_{\beta\gamma} + {e^i}_\alpha e_j ({e_k}^\alpha)$<br>
+${\hat\Gamma^\alpha}_{\beta\gamma} = {\tilde{\Gamma}^\alpha}_{\beta\gamma} + \partial_\beta ({e_k}^\alpha) {e^k}_\gamma$<br>
 <br>
 
-Introduce new connection ${{\omega_a}^I}_J$ that acts on Lorentz indexes for the affine covariant derivative:<br>
-$ \nabla_a V^I = \partial_a V^I + {{\omega_a}^I}_J V^J $<br>
-$ \nabla_a V_I = \partial_a V_I - {{\omega_a}^J}_I V_J $<br>
-$ = \partial_a V_I + {\omega_{aI}}^J V_J $<br>
-(TODO: why doesn't this "act on" coordinate indexes?  I'm betting because $\nabla e = 0$, therefore $\nabla (V e) = (\nabla V) e$.)<br>
+On the Riemann worksheet we had:<br>
+${\hat{R}^\tilde{c}}_{\tilde{d}\tilde{a}\tilde{b}} = {\tilde{R}^\tilde{c}}_{\tilde{d}\tilde{a}\tilde{b}}$<br>
+...that one Riemann curvature derived from the covariant derivative with connection metric-cancelling torsion-free is the same as another Riemann curvature derived from metric-cancelling torsion-free connection of another basis.<br>
 <br>
 
-
-Define ${{\omega_a}^I}_J$ such that the affine covariant derivative cancels the tetrad (as well as metric):<br>
-$ \nabla_a {e_b}^I = 0 = \partial_a {e_b}^I - {\Gamma^d}_{ba} {e_d}^I + {{\omega_a}^I}_J {e_b}^J $<br>
-$ 0 = \partial_a {e_b}^I - {\Gamma^I}_{ba} + {{\omega_a}^I}_b $<br>
-$ {{\omega_a}^I}_b = {\Gamma^I}_{ba} - \partial_a {e_b}^I $<br>
-<br>
-
-Require that ${{\omega_a}^I}_J$ cancels the Minkowski metric:<br>
-$0 = \nabla_a \eta_{I J} = \partial_a \eta_{I J} - {{\omega_a}^K}_I \eta_{KJ} - {{\omega_a}^K}_J \eta_{IK} $<br>
-$0 = 0 - \omega_{aJI} - \omega_{aIJ} $<br>
-$\omega_{aIJ} = -\omega_{aJI} $<br>
-(TODO wouldn't any partial derivative always cancel the Minkowski metric?  Well, what about the basis vector?  $\eta = \eta_{IJ} e^I \otimes e^J$)<br>
-<br>
-
-Curvature around coordinates of a tensor with Lorentz components now incorporates the spin connections:<br>
-$ {{\hat R_{ab}}^I}_J V^J = \nabla_a \nabla_b V^I - \nabla_b \nabla_a V^I $<br>
-$ = \nabla_a (\partial_b V^I + {{\omega_b}^I}_J V^J) - \nabla_b (\partial_a V^I + {{\omega_a}^I}_J V^J) $<br>
-$ = \partial_a (\partial_b V^I + {{\omega_b}^I}_J V^J)
-		- {\Gamma^c}_{ba} (\partial_c V^I + {{\omega_c}^I}_J V^J)
-		+ {{\omega_a}^I}_K (\partial_b V^K + {{\omega_b}^K}_J V^J)
-	- \partial_b (\partial_a V^I + {{\omega_a}^I}_J V^J)
-		+ {\Gamma^c}_{ab} (\partial_c V^I + {{\omega_c}^I}_J V^J)
-		- {{\omega_b}^I}_K (\partial_a V^K + {{\omega_a}^K}_J V^J)
-$<br>
-$ = \partial_a \partial_b V^I + \partial_a {{\omega_b}^I}_J V^J + {{\omega_b}^I}_J \partial_a V^J
-		+ {{\omega_a}^I}_K \partial_b V^K + {{\omega_a}^I}_K {{\omega_b}^K}_J V^J
-	- \partial_b \partial_a V^I - \partial_b {{\omega_a}^I}_J V^J - {{\omega_a}^I}_J \partial_b V^J
-		- {{\omega_b}^I}_K \partial_a V^K - {{\omega_b}^I}_K {{\omega_a}^K}_J V^J
-		+ 2 {\Gamma^c}_{[ab]} (\partial_c V^I + {{\omega_c}^I}_J V^J)
-$<br>
-using $ {\Gamma^a}_{[bc]} = 0 $<br>
-$ = 2 (\partial_{[a} {{\omega_{b]}}^I}_J + {\omega_{[a}}^{IK} {\omega_{b]KJ}}) V^J $<br>
-$ {\hat R_{ab}}^{IJ} = 2 (\partial_{[a} {\omega_{b]}}^{IJ} + {\omega_{[a}}^{IK} {\omega_{b]K}}^J ) $<br>
-<br>
-
-show $ {\hat R_{ab}}^{cd} = {R_{ab}}^{cd} $:<br>
-$ {{R_{ab}}^c}_d V^d = 2 \nabla_{[a} \nabla_{b]} V^c $<br>
-$ {{R_{ab}}^c}_d V^d = 2 \nabla_{[a} \nabla_{b]} ({e^c}_I V^I) $<br>
-using $ \nabla_a {e^b}_I = 0 $<br>
-$ {{R_{ab}}^c}_d V^d = 2 \nabla_{[a} ({e^c}_I \nabla_{b]} V^I) $<br>
-$ {{R_{ab}}^c}_d V^d = 2 {e^c}_I \nabla_{[a} \nabla_{b]} V^I $<br>
-$ {{R_{ab}}^c}_d V^d = {e^c}_I {{\hat R_{ab}}^I}_J V^J $<br>
-$ {{R_{ab}}^c}_d V^d = {{\hat R_{ab}}^c}_d V^d $<br>
-$ {R_{ab}}^{cd} = {\hat R_{ab}}^{cd} $<br>
-<br>
-
-Introduce a new covariant derivative that acts on Lorentz indexes alone:<br>
-$D_a {T^I}_J = \partial_a {T^I}_J + {{\omega_a}^I}_K {T^K}_J - {{\omega_a}^K}_J {T^I}_K $ <br>
-<br>
-
-curvature on Lorentz indexes solely in terms of spin connection:<br>
-$ {{\Omega_{ab}}^I}_J V^J = D_a D_b V^I - D_b D_a V^I $<br>
-because $\nabla_a \nabla_b - \nabla_b \nabla_a$ gives us a result in terms of ${\omega_a}^{IJ}$
-and cancels out all instances of ${\Gamma^a}_{bc}$, then we can equivalently define the curvature tensor
-solely on the Lorentz indexes<br>
-$ {\Omega_{ab}}^{IJ} V_J = (D_a D_b - D_b D_a) V^I $<br>
-$ {R_{ab}}^{IJ} V_J = (\nabla_a \nabla_b - \nabla_b \nabla_a) V^I = (D_a D_b - D_b D_a) V^I = {\Omega_{ab}}^{IJ} V_J $ <br>
-<br>
-Therefore<br>
-${\Omega_{ab}}^{IJ} = {\hat{R}_{ab}}^{IJ} = {R_{ab}}^{IJ}$<br>
-<br>
 <hr>
 <br>
 Do we really need another connection on Lorentz coordinates?<br>

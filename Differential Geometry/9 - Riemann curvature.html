@@ -11,8 +11,9 @@
 Thanks to Bonbien Vargas and Nail Ussembayev for helping me with this section.<br>
 <br>
 
-Riemann curvature of a vector:<br>
+Riemann curvature of a metric-cancelling, non-coordinate-basis, (torsion-free?) connection of a vector:<br>
 $R(x,y)z$<br>
+$= (\left[ \nabla_x, \nabla_y \right] - \nabla_{[x,y]}) z$<br>
 $= \nabla_x \nabla_y z - \nabla_y \nabla_x z - \nabla_{[x,y]} z$<br>
 $= 	x^a \nabla_a ( y^b \nabla_b ( z^d e_d ) ) 
 	- y^b \nabla_b ( x^a \nabla_a ( z^d e_d ) ) 
@@ -66,6 +67,228 @@ $<br>
 <br>
 
 Easy to see from this that ${R^a}_{bcd} = {R^a}_{b[cd]}$<br>
+<br>
+
+Riemann curvature of the coordinate-basis Levi-Civita connection of a vector:<br>
+${\tilde{R}^\tilde{c}}_{\tilde{d}\tilde{a}\tilde{b}} = 
+	\partial_\tilde{a} ({\tilde{\Gamma}^\tilde{c}}_{\tilde{b}\tilde{d}}) 
+	- \partial_\tilde{b} ({\tilde{\Gamma}^\tilde{c}}_{\tilde{a}\tilde{d}}) 
+	
+	+ {\tilde{\Gamma}^\tilde{c}}_{\tilde{a}\tilde{u}} {\tilde{\Gamma}^\tilde{u}}_{\tilde{b}\tilde{d}}
+	- {\tilde{\Gamma}^\tilde{c}}_{\tilde{b}\tilde{u}} {\tilde{\Gamma}^\tilde{u}}_{\tilde{a}\tilde{d}}
+$<br>
+<br>
+
+Transformation of the non-coordinate, metric-cancelling, torsion-free connection to the coordinate basis:<br>
+${R^\tilde{c}}_{\tilde{d}\tilde{a}\tilde{b}} = 
+	{e_c}^\tilde{c} {e^d}_\tilde{d} {e^a}_\tilde{a} {e^b}_\tilde{b} (
+		e_a({\Gamma^c}_{bd}) 
+		- e_b({\Gamma^c}_{ad}) 
+	
+		+ {\Gamma^{c}}_{{a}{u}} {\Gamma^{u}}_{{b}{d}} 
+		- {\Gamma^{c}}_{{b}{u}} {\Gamma^{u}}_{{a}{d}} 
+		
+		- {\Gamma^{c}}_{{u}{d}} {c_{{a}{b}}}^{u}
+	)
+$<br>
+
+...using ${\Gamma^a}_{bc} = {e^a}_\tilde{a} {e_b}^\tilde{b} {e_c}^\tilde{c} {\tilde{\Gamma}^\tilde{a}}_{\tilde{b}\tilde{c}} + {e^a}_\tilde{a} e_b({e_c}^\tilde{a})$...<br>
+
+${R^\tilde{c}}_{\tilde{d}\tilde{a}\tilde{b}} = 
+	{e_c}^\tilde{c} {e^b}_\tilde{b} {e^d}_\tilde{d} \partial_\tilde{a} (
+		{e^c}_\tilde{r} {e_b}^\tilde{q} {e_d}^\tilde{s} {\tilde{\Gamma}^\tilde{r}}_{\tilde{q}\tilde{s}} + {e^c}_\tilde{r} e_b({e_d}^\tilde{r})
+	)
+$<br>$
+	- {e_c}^\tilde{c} {e^a}_\tilde{a} {e^d}_\tilde{d} \partial_\tilde{b} (
+		{e^c}_\tilde{r} {e_a}^\tilde{p} {e_d}^\tilde{s} {\tilde{\Gamma}^\tilde{r}}_{\tilde{p}\tilde{s}} + {e^c}_\tilde{r} e_a({e_d}^\tilde{r})
+	)
+$<br>$
+	+ {e_c}^\tilde{c} {e^d}_\tilde{d} {e^a}_\tilde{a} {e^b}_\tilde{b} (
+		{e^c}_\tilde{r} {e_a}^\tilde{p} {e_u}^\tilde{u} {\tilde{\Gamma}^\tilde{r}}_{\tilde{p}\tilde{u}} + {e^c}_\tilde{r} e_a({e_u}^\tilde{r})
+	) (
+		{e^u}_\tilde{v} {e_b}^\tilde{q} {e_d}^\tilde{s} {\tilde{\Gamma}^\tilde{v}}_{\tilde{q}\tilde{s}} + {e^u}_\tilde{v} e_b({e_d}^\tilde{v})
+	)
+$<br>$
+	- {e_c}^\tilde{c} {e^d}_\tilde{d} {e^a}_\tilde{a} {e^b}_\tilde{b} (
+		{e^c}_\tilde{r} {e_b}^\tilde{q} {e_u}^\tilde{u} {\tilde{\Gamma}^\tilde{r}}_{\tilde{q}\tilde{u}} + {e^c}_\tilde{r} e_b({e_u}^\tilde{r})
+	) (
+		{e^u}_\tilde{v} {e_a}^\tilde{p} {e_d}^\tilde{s} {\tilde{\Gamma}^\tilde{v}}_{\tilde{p}\tilde{s}} + {e^u}_\tilde{v} e_a({e_d}^\tilde{v})
+	)
+$<br>$
+	- {e_c}^\tilde{c} {e^d}_\tilde{d} {e^a}_\tilde{a} {e^b}_\tilde{b} (
+		{e^c}_\tilde{r} {e_u}^\tilde{u} {e_d}^\tilde{s} {\tilde{\Gamma}^\tilde{r}}_{\tilde{u}\tilde{s}} + {e^c}_\tilde{r} e_u({e_d}^\tilde{r})
+	) {c_{{a}{b}}}^{u}
+$
+<br>
+
+${R^\tilde{c}}_{\tilde{d}\tilde{a}\tilde{b}} = 
+	{e_c}^\tilde{c} {e^b}_\tilde{b} {e^d}_\tilde{d} \partial_\tilde{a} \left(
+		{e^c}_\tilde{r} {e_b}^\tilde{q} {e_d}^\tilde{s} {\tilde{\Gamma}^\tilde{r}}_{\tilde{q}\tilde{s}} 
+	\right)
+	+ {e_c}^\tilde{c} {e^b}_\tilde{b} {e^d}_\tilde{d} \partial_\tilde{a} \left(
+		{e^c}_\tilde{r} e_b({e_d}^\tilde{r})
+	\right)
+$<br>$
+	- {e_c}^\tilde{c} {e^a}_\tilde{a} {e^d}_\tilde{d} \partial_\tilde{b} \left(
+		{e^c}_\tilde{r} {e_a}^\tilde{p} {e_d}^\tilde{s} {\tilde{\Gamma}^\tilde{r}}_{\tilde{p}\tilde{s}} 
+	\right)
+	- {e_c}^\tilde{c} {e^a}_\tilde{a} {e^d}_\tilde{d} \partial_\tilde{b} \left(
+		{e^c}_\tilde{r} e_a({e_d}^\tilde{r})
+	\right)
+$<br>$
+	+ {e_c}^\tilde{c} {e^d}_\tilde{d} {e^a}_\tilde{a} {e^b}_\tilde{b} {e^c}_\tilde{r} {e_a}^\tilde{p} {e_u}^\tilde{u} {\tilde{\Gamma}^\tilde{r}}_{\tilde{p}\tilde{u}} {e^u}_\tilde{v} {e_b}^\tilde{q} {e_d}^\tilde{s} {\tilde{\Gamma}^\tilde{v}}_{\tilde{q}\tilde{s}} 
+	+ {e_c}^\tilde{c} {e^d}_\tilde{d} {e^a}_\tilde{a} {e^b}_\tilde{b} {e^c}_\tilde{r} e_a({e_u}^\tilde{r}) {e^u}_\tilde{v} {e_b}^\tilde{q} {e_d}^\tilde{s} {\tilde{\Gamma}^\tilde{v}}_{\tilde{q}\tilde{s}} 
+	+ {e_c}^\tilde{c} {e^d}_\tilde{d} {e^a}_\tilde{a} {e^b}_\tilde{b} {e^c}_\tilde{r} {e_a}^\tilde{p} {e_u}^\tilde{u} {\tilde{\Gamma}^\tilde{r}}_{\tilde{p}\tilde{u}} {e^u}_\tilde{v} e_b({e_d}^\tilde{v})
+	+ {e_c}^\tilde{c} {e^d}_\tilde{d} {e^a}_\tilde{a} {e^b}_\tilde{b} {e^c}_\tilde{r} e_a({e_u}^\tilde{r}) {e^u}_\tilde{v} e_b({e_d}^\tilde{v})
+$<br>$
+	- {e_c}^\tilde{c} {e^d}_\tilde{d} {e^a}_\tilde{a} {e^b}_\tilde{b} {e^c}_\tilde{r} {e_b}^\tilde{q} {e_u}^\tilde{u} {\tilde{\Gamma}^\tilde{r}}_{\tilde{q}\tilde{u}} {e^u}_\tilde{v} {e_a}^\tilde{p} {e_d}^\tilde{s} {\tilde{\Gamma}^\tilde{v}}_{\tilde{p}\tilde{s}} 
+	- {e_c}^\tilde{c} {e^d}_\tilde{d} {e^a}_\tilde{a} {e^b}_\tilde{b} {e^c}_\tilde{r} e_b({e_u}^\tilde{r}) {e^u}_\tilde{v} {e_a}^\tilde{p} {e_d}^\tilde{s} {\tilde{\Gamma}^\tilde{v}}_{\tilde{p}\tilde{s}} 
+	- {e_c}^\tilde{c} {e^d}_\tilde{d} {e^a}_\tilde{a} {e^b}_\tilde{b} {e^c}_\tilde{r} {e_b}^\tilde{q} {e_u}^\tilde{u} {\tilde{\Gamma}^\tilde{r}}_{\tilde{q}\tilde{u}} {e^u}_\tilde{v} e_a({e_d}^\tilde{v})
+	- {e_c}^\tilde{c} {e^d}_\tilde{d} {e^a}_\tilde{a} {e^b}_\tilde{b} {e^c}_\tilde{r} e_b({e_u}^\tilde{r}) {e^u}_\tilde{v} e_a({e_d}^\tilde{v})
+$<br>$
+	- {e_c}^\tilde{c} {e^d}_\tilde{d} {e^a}_\tilde{a} {e^b}_\tilde{b} {e^c}_\tilde{r} {e_u}^\tilde{u} {e_d}^\tilde{s} {\tilde{\Gamma}^\tilde{r}}_{\tilde{u}\tilde{s}} {c_{{a}{b}}}^{u}
+	- {e_c}^\tilde{c} {e^d}_\tilde{d} {e^a}_\tilde{a} {e^b}_\tilde{b} {e^c}_\tilde{r} e_u({e_d}^\tilde{r}) {c_{{a}{b}}}^{u}
+$<br>
+
+${R^\tilde{c}}_{\tilde{d}\tilde{a}\tilde{b}} = 
+	{e_c}^\tilde{c} {e^b}_\tilde{b} {e^d}_\tilde{d} (
+		\partial_\tilde{a} {e^c}_\tilde{r} {e_b}^\tilde{q} {e_d}^\tilde{s} {\tilde{\Gamma}^\tilde{r}}_{\tilde{q}\tilde{s}} 
+		+ {e^c}_\tilde{r} \partial_\tilde{a} {e_b}^\tilde{q} {e_d}^\tilde{s} {\tilde{\Gamma}^\tilde{r}}_{\tilde{q}\tilde{s}} 
+		+ {e^c}_\tilde{r} {e_b}^\tilde{q} \partial_\tilde{a} {e_d}^\tilde{s} {\tilde{\Gamma}^\tilde{r}}_{\tilde{q}\tilde{s}} 
+		+ {e^c}_\tilde{r} {e_b}^\tilde{q} {e_d}^\tilde{s} \partial_\tilde{a} {\tilde{\Gamma}^\tilde{r}}_{\tilde{q}\tilde{s}} 
+	)
+	+ {e_c}^\tilde{c} {e^b}_\tilde{b} {e^d}_\tilde{d} \partial_\tilde{a} (
+		{e^c}_\tilde{r} {e_b}^\tilde{q} \partial_\tilde{q}({e_d}^\tilde{r})
+	)
+$<br>$
+	- {e_c}^\tilde{c} {e^a}_\tilde{a} {e^d}_\tilde{d} (
+		\partial_\tilde{b} {e^c}_\tilde{r} {e_a}^\tilde{p} {e_d}^\tilde{s} {\tilde{\Gamma}^\tilde{r}}_{\tilde{p}\tilde{s}} 
+		+ {e^c}_\tilde{r} \partial_\tilde{b} {e_a}^\tilde{p} {e_d}^\tilde{s} {\tilde{\Gamma}^\tilde{r}}_{\tilde{p}\tilde{s}} 
+		+ {e^c}_\tilde{r} {e_a}^\tilde{p} \partial_\tilde{b} {e_d}^\tilde{s} {\tilde{\Gamma}^\tilde{r}}_{\tilde{p}\tilde{s}} 
+		+ {e^c}_\tilde{r} {e_a}^\tilde{p} {e_d}^\tilde{s} \partial_\tilde{b} {\tilde{\Gamma}^\tilde{r}}_{\tilde{p}\tilde{s}} 
+	)
+	- {e_c}^\tilde{c} {e^a}_\tilde{a} {e^d}_\tilde{d} \partial_\tilde{b} \left(
+		{e^c}_\tilde{r} {e_a}^\tilde{p} \partial_\tilde{p}({e_d}^\tilde{r})
+	\right)
+$<br>$
+	+ {\tilde{\Gamma}^\tilde{c}}_{\tilde{a}u} {\tilde{\Gamma}^u}_{\tilde{b}\tilde{d}} 
+	+ \partial_\tilde{a}({e_u}^\tilde{c}) {\tilde{\Gamma}^u}_{\tilde{b}\tilde{d}} 
+	+ {\tilde{\Gamma}^\tilde{c}}_{\tilde{a}\tilde{v}} {e^d}_\tilde{d} \partial_\tilde{b}({e_d}^\tilde{v})
+	+ \partial_\tilde{a}({e_u}^\tilde{c}) {e^u}_\tilde{v} {e^d}_\tilde{d} \partial_\tilde{b}({e_d}^\tilde{v})
+$<br>$
+	- {\tilde{\Gamma}^\tilde{c}}_{\tilde{b}u} {\tilde{\Gamma}^u}_{\tilde{a}\tilde{d}} 
+	- \partial_\tilde{b}({e_u}^\tilde{c}) {\tilde{\Gamma}^u}_{\tilde{a}\tilde{d}} 
+	- {\tilde{\Gamma}^\tilde{c}}_{\tilde{b}\tilde{v}} {e^d}_\tilde{d} \partial_\tilde{a}({e_d}^\tilde{v})
+	- \partial_\tilde{b}({e_u}^\tilde{c}) {e^u}_\tilde{v} {e^d}_\tilde{d} \partial_\tilde{a}({e_d}^\tilde{v})
+$<br>$
+	- {\tilde{\Gamma}^\tilde{c}}_{u\tilde{d}} {c_{\tilde{a}\tilde{b}}}^{u}
+	- {e^d}_\tilde{d} e_u({e_d}^\tilde{c}) {c_{\tilde{a}\tilde{b}}}^{u}
+$<br>
+
+${R^\tilde{c}}_{\tilde{d}\tilde{a}\tilde{b}} = 
+	{e_c}^\tilde{c} {e^b}_\tilde{b} {e^d}_\tilde{d} (
+		\partial_\tilde{a} {e^c}_\tilde{r} {e_b}^\tilde{q} {e_d}^\tilde{s} {\tilde{\Gamma}^\tilde{r}}_{\tilde{q}\tilde{s}} 
+		+ {e^c}_\tilde{r} \partial_\tilde{a} {e_b}^\tilde{q} {e_d}^\tilde{s} {\tilde{\Gamma}^\tilde{r}}_{\tilde{q}\tilde{s}} 
+		+ {e^c}_\tilde{r} {e_b}^\tilde{q} \partial_\tilde{a} {e_d}^\tilde{s} {\tilde{\Gamma}^\tilde{r}}_{\tilde{q}\tilde{s}} 
+		+ {e^c}_\tilde{r} {e_b}^\tilde{q} {e_d}^\tilde{s} \partial_\tilde{a} {\tilde{\Gamma}^\tilde{r}}_{\tilde{q}\tilde{s}} 
+	)
+$<br>$
+	- {e_c}^\tilde{c} {e^a}_\tilde{a} {e^d}_\tilde{d} (
+		\partial_\tilde{b} {e^c}_\tilde{r} {e_a}^\tilde{p} {e_d}^\tilde{s} {\tilde{\Gamma}^\tilde{r}}_{\tilde{p}\tilde{s}} 
+		+ {e^c}_\tilde{r} \partial_\tilde{b} {e_a}^\tilde{p} {e_d}^\tilde{s} {\tilde{\Gamma}^\tilde{r}}_{\tilde{p}\tilde{s}} 
+		+ {e^c}_\tilde{r} {e_a}^\tilde{p} \partial_\tilde{b} {e_d}^\tilde{s} {\tilde{\Gamma}^\tilde{r}}_{\tilde{p}\tilde{s}} 
+		+ {e^c}_\tilde{r} {e_a}^\tilde{p} {e_d}^\tilde{s} \partial_\tilde{b} {\tilde{\Gamma}^\tilde{r}}_{\tilde{p}\tilde{s}} 
+	)
+$<br>$
+	+ {e_c}^\tilde{c} {e^b}_\tilde{b} {e^d}_\tilde{d} (
+		\partial_\tilde{a} {e^c}_\tilde{r} {e_b}^\tilde{q} \partial_\tilde{q}({e_d}^\tilde{r})
+		+ {e^c}_\tilde{r} \partial_\tilde{a} {e_b}^\tilde{q} \partial_\tilde{q}({e_d}^\tilde{r})
+		+ {e^c}_\tilde{r} {e_b}^\tilde{q} \partial_\tilde{a} \partial_\tilde{q}({e_d}^\tilde{r})
+	)
+$<br>$
+	- {e_c}^\tilde{c} {e^a}_\tilde{a} {e^d}_\tilde{d} (
+		\partial_\tilde{b} {e^c}_\tilde{r} {e_a}^\tilde{p} \partial_\tilde{p}({e_d}^\tilde{r})
+		+ {e^c}_\tilde{r} \partial_\tilde{b} {e_a}^\tilde{p} \partial_\tilde{p}({e_d}^\tilde{r})
+		+ {e^c}_\tilde{r} {e_a}^\tilde{p} \partial_\tilde{b} \partial_\tilde{p}({e_d}^\tilde{r})
+	)
+$<br>$
+	+ {\tilde{\Gamma}^\tilde{c}}_{\tilde{a}\tilde{u}} {\tilde{\Gamma}^\tilde{u}}_{\tilde{b}\tilde{d}} 
+	- {\tilde{\Gamma}^\tilde{c}}_{\tilde{b}\tilde{u}} {\tilde{\Gamma}^\tilde{u}}_{\tilde{a}\tilde{d}} 
+$<br>$
+	+ \partial_\tilde{a}({e_u}^\tilde{c}) {\tilde{\Gamma}^u}_{\tilde{b}\tilde{d}} 
+	- \partial_\tilde{b}({e_u}^\tilde{c}) {\tilde{\Gamma}^u}_{\tilde{a}\tilde{d}} 
+$<br>$
+	+ {\tilde{\Gamma}^\tilde{c}}_{\tilde{a}\tilde{v}} {e^d}_\tilde{d} \partial_\tilde{b}({e_d}^\tilde{v})
+	- {\tilde{\Gamma}^\tilde{c}}_{\tilde{b}\tilde{v}} {e^d}_\tilde{d} \partial_\tilde{a}({e_d}^\tilde{v})
+$<br>$
+	+ \partial_\tilde{a}({e_u}^\tilde{c}) {e^u}_\tilde{v} {e^d}_\tilde{d} \partial_\tilde{b}({e_d}^\tilde{v})
+	- \partial_\tilde{b}({e_u}^\tilde{c}) {e^u}_\tilde{v} {e^d}_\tilde{d} \partial_\tilde{a}({e_d}^\tilde{v})
+$<br>$
+	- {\tilde{\Gamma}^\tilde{c}}_{\tilde{u}\tilde{d}} {c_{\tilde{a}\tilde{b}}}^\tilde{u}
+	- {e^d}_\tilde{d} \partial_\tilde{u}({e_d}^\tilde{c}) {c_{\tilde{a}\tilde{b}}}^\tilde{u}
+$<br>
+
+${R^\tilde{c}}_{\tilde{d}\tilde{a}\tilde{b}} = 
+	  {e_c}^\tilde{c} \partial_\tilde{a}({e^c}_\tilde{r}) {\tilde{\Gamma}^\tilde{r}}_{\tilde{b}\tilde{d}} 
+	+ {e^b}_\tilde{b} \partial_\tilde{a}({e_b}^\tilde{q}) {\tilde{\Gamma}^\tilde{c}}_{\tilde{q}\tilde{d}} 
+	+ {e^d}_\tilde{d} \partial_\tilde{a}({e_d}^\tilde{s}) {\tilde{\Gamma}^\tilde{c}}_{\tilde{b}\tilde{s}} 
+	+ \partial_\tilde{a}({\tilde{\Gamma}^\tilde{c}}_{\tilde{b}\tilde{d}})
+$<br>$
+	- {e_c}^\tilde{c} \partial_\tilde{b}({e^c}_\tilde{r}) {\tilde{\Gamma}^\tilde{r}}_{\tilde{a}\tilde{d}} 
+	- {e^a}_\tilde{a} \partial_\tilde{b}({e_a}^\tilde{p}) {\tilde{\Gamma}^\tilde{c}}_{\tilde{p}\tilde{d}} 
+	- {e^d}_\tilde{d} \partial_\tilde{b} {e_d}^\tilde{s} {\tilde{\Gamma}^\tilde{c}}_{\tilde{a}\tilde{s}} 
+	- \partial_\tilde{b}({\tilde{\Gamma}^\tilde{c}}_{\tilde{a}\tilde{d}})
+$<br>$
+	+ {e^d}_\tilde{d} {e_c}^\tilde{c} \partial_\tilde{a}({e^c}_\tilde{r}) \partial_\tilde{b}({e_d}^\tilde{r})
+	+ {e^d}_\tilde{d} {e^b}_\tilde{b} \partial_\tilde{a}({e_b}^\tilde{q}) \partial_\tilde{q}({e_d}^\tilde{c})
+	+ {e^d}_\tilde{d} \partial_\tilde{a} \partial_\tilde{b}({e_d}^\tilde{c})
+$<br>$
+	- {e^d}_\tilde{d} {e_c}^\tilde{c} \partial_\tilde{b}({e^c}_\tilde{r}) \partial_\tilde{a}({e_d}^\tilde{r})
+	- {e^d}_\tilde{d} {e^a}_\tilde{a} \partial_\tilde{b}({e_a}^\tilde{p}) \partial_\tilde{p}({e_d}^\tilde{c})
+	- {e^d}_\tilde{d} \partial_\tilde{b} \partial_\tilde{a}({e_d}^\tilde{c})
+$<br>$
+	+ {\tilde{\Gamma}^\tilde{c}}_{\tilde{a}\tilde{u}} {\tilde{\Gamma}^\tilde{u}}_{\tilde{b}\tilde{d}} 
+	- {\tilde{\Gamma}^\tilde{c}}_{\tilde{b}\tilde{u}} {\tilde{\Gamma}^\tilde{u}}_{\tilde{a}\tilde{d}} 
+$<br>$
+	+ \partial_\tilde{a}({e_u}^\tilde{c}) {\tilde{\Gamma}^u}_{\tilde{b}\tilde{d}} 
+	- \partial_\tilde{b}({e_u}^\tilde{c}) {\tilde{\Gamma}^u}_{\tilde{a}\tilde{d}} 
+$<br>$
+	+ {\tilde{\Gamma}^\tilde{c}}_{\tilde{a}\tilde{v}} {e^d}_\tilde{d} \partial_\tilde{b}({e_d}^\tilde{v})
+	- {\tilde{\Gamma}^\tilde{c}}_{\tilde{b}\tilde{v}} {e^d}_\tilde{d} \partial_\tilde{a}({e_d}^\tilde{v})
+$<br>$
+	+ \partial_\tilde{a}({e_u}^\tilde{c}) {e^u}_\tilde{v} {e^d}_\tilde{d} \partial_\tilde{b}({e_d}^\tilde{v})
+	- \partial_\tilde{b}({e_u}^\tilde{c}) {e^u}_\tilde{v} {e^d}_\tilde{d} \partial_\tilde{a}({e_d}^\tilde{v})
+$<br>$
+	- {\tilde{\Gamma}^\tilde{c}}_{\tilde{u}\tilde{d}} {c_{\tilde{a}\tilde{b}}}^\tilde{u}
+	- {e^d}_\tilde{d} \partial_\tilde{u}({e_d}^\tilde{c}) {c_{\tilde{a}\tilde{b}}}^\tilde{u}
+$<br>
+... using ${c_{\tilde{a}\tilde{b}}}^\tilde{c} = {e^b}_\tilde{b} \partial_\tilde{a} ({e_b}^\tilde{c}) - {e^a}_\tilde{a} \partial_\tilde{b} ({e_a}^\tilde{c})$...<br>
+
+${R^\tilde{c}}_{\tilde{d}\tilde{a}\tilde{b}} = 
+	  \partial_\tilde{a}({\tilde{\Gamma}^\tilde{c}}_{\tilde{b}\tilde{d}})
+	- \partial_\tilde{b}({\tilde{\Gamma}^\tilde{c}}_{\tilde{a}\tilde{d}})
+	+ {\tilde{\Gamma}^\tilde{c}}_{\tilde{a}\tilde{u}} {\tilde{\Gamma}^\tilde{u}}_{\tilde{b}\tilde{d}} 
+	- {\tilde{\Gamma}^\tilde{c}}_{\tilde{b}\tilde{u}} {\tilde{\Gamma}^\tilde{u}}_{\tilde{a}\tilde{d}} 
+$<br>$
+	+ {e^d}_\tilde{d} {e_c}^\tilde{c} \partial_\tilde{a}({e^c}_\tilde{r}) \partial_\tilde{b}({e_d}^\tilde{r})
+	- {e^d}_\tilde{d} {e_c}^\tilde{c} \partial_\tilde{a}({e_d}^\tilde{r}) \partial_\tilde{b}({e^c}_\tilde{r})
+	+ {e^u}_\tilde{v} {e^d}_\tilde{d} \partial_\tilde{a}({e_u}^\tilde{c}) \partial_\tilde{b}({e_d}^\tilde{v})
+	- {e^u}_\tilde{v} {e^d}_\tilde{d} \partial_\tilde{a}({e_d}^\tilde{v}) \partial_\tilde{b}({e_u}^\tilde{c})
+$<br>$
+	+ {e^d}_\tilde{d} {e^b}_\tilde{b} \partial_\tilde{a}({e_b}^\tilde{u}) \partial_\tilde{u}({e_d}^\tilde{c})
+	- {e^d}_\tilde{d} {e^a}_\tilde{a} \partial_\tilde{u}({e_d}^\tilde{c}) \partial_\tilde{b}({e_a}^\tilde{u})
+	- {e^d}_\tilde{d} \partial_\tilde{u}({e_d}^\tilde{c}) {c_{\tilde{a}\tilde{b}}}^\tilde{u}
+$<br>
+
+${R^\tilde{c}}_{\tilde{d}\tilde{a}\tilde{b}} = {\tilde{R}^\tilde{c}}_{\tilde{d}\tilde{a}\tilde{b}}
+	+ {e^d}_\tilde{d} {e_c}^\tilde{c} \partial_\tilde{a}({e^c}_\tilde{r}) \partial_\tilde{b}({e_d}^\tilde{r})
+	- {e^d}_\tilde{d} {e_c}^\tilde{c} \partial_\tilde{a}({e_d}^\tilde{r}) \partial_\tilde{b}({e^c}_\tilde{r})
+	+ {e^u}_\tilde{v} {e^d}_\tilde{d} \partial_\tilde{a}({e_u}^\tilde{c}) \partial_\tilde{b}({e_d}^\tilde{v})
+	- {e^u}_\tilde{v} {e^d}_\tilde{d} \partial_\tilde{a}({e_d}^\tilde{v}) \partial_\tilde{b}({e_u}^\tilde{c})
+$<br>
+
+${R^\tilde{c}}_{\tilde{d}\tilde{a}\tilde{b}} = {\tilde{R}^\tilde{c}}_{\tilde{d}\tilde{a}\tilde{b}}$<br>
+Therefore the curvature of the torsion-free geodesic is the same regardless of basis.<br>
 <br>
 
 Trace of Riemann tensor over 1st and 2nd indexes (proof of their antisymmetry):<br>
@@ -601,7 +824,7 @@ $= x^u y^v
 <br>
 
 
-Asymmetry of covariant derivatives on a vector:<br>
+Asymmetry of covariant derivatives on a vector, with torsion.  TODO reconcile this with the first identity:<br>
 $[\nabla_a, \nabla_b] v^c = 2 \nabla_{[a} \nabla_{b]} v^c$<br>
 $= 2 \nabla_{[a} ( e_{[b} ( v^c ) + {\Gamma^c}_{b]d} v^d )$<br>
 $= 2 ( \nabla_{[a} e_{[b} ( v^c )
