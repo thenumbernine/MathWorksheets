@@ -35,7 +35,6 @@ $(\hat{\Gamma}_\eta)_{ijk} = \frac{1}{2} (
 )$<br>
 $= \frac{1}{2} (  (c_\eta)_{ijk} + (c_\eta)_{ikj} - (c_\eta)_{kji} )$<br>
 $c_\eta$ is the commutation associated with our diagonalized $e_i$ operators.<br>
-This connection is called the spin connection.<br>
 <br>
 
 Notice that the Levi-Civita connection of a coordinate basis is going to have structure constants $\hat{c}_{abc} = 0$<br>
@@ -261,8 +260,6 @@ $(\Gamma_\eta)_{(i|j|k)} = \frac{1}{2} e_j (\eta_{ik}) = 0$<br>
 So we know $(\Gamma_\eta)$ is antisymmetric on the 1st and 3rd indexes.  This means rotation, and also means we can pick a two-form to represent this.
 Notice that connections are already represented as one-forms, and even on the index that isn't antisymmetric: $\omega_{ab} = \Gamma_{acb} e^c$.
 Now we also have the choice of representing connections as a two-form, as $(\omega_\eta)_k = \frac{1}{2} (\Gamma_\eta)_{ikj} e^i \wedge e^j$.<br>
-I wonder if you could consider a spin-connection to be a combination of two-forms and one-forms in two different basii? $(\omega_\eta) = \frac{1}{2} (\Gamma_\eta)_{iaj} \cdot e^i \wedge e^j \otimes e^a$, where the $e^i$'s and $e^a$'s don't mess with each other ... maybe not ...<br>
-(This is probably why people usually put the basis index last instead of first, so it is ${\Gamma_{jk}}^i e_i$, like the structure constants, instead of ${\Gamma^i}_{jk} e_i$).<br>
 <br>
 
 What happens when you calculate the coordinate-basis Levi-Civita covariant derivative of the non-coordinate basis?<br>
@@ -313,7 +310,7 @@ Probably yes if $\hat{\Gamma}_{abc} = (\hat{\Gamma}_\eta)_{abc}$.<br>
 <hr>
 <br>
 
-What if we want to consider a spin connection with torsion?<br>
+What if we want to consider a connection with torsion?<br>
 Let $\nabla_\eta$ be some covariant derivative associated with operators $e_i$.<br>
 Let ${(\Gamma_\eta)^i}_{jk}$ be the connection associated with the $\nabla_\eta$ covariant derivative.<br>
 Such that $(\nabla_\eta) (T) = (e_i(T) + (\Gamma_\eta)_i \cdot (T) ) e^i$.<br>
@@ -341,7 +338,6 @@ TODO symmetry or antisymmetry of a connection of a diagonalized metric with tors
 (Now I go back to the typical convention in these notes, lowercase latin for non-coordinate (in this case locally-Minkowski) basis and tilde lowercase latin for coordinate basis).<br>
 What if the metric is locally-Minkowski?<br>
 This implies more often than not that the basis will be non-coordinate.<br>
-TODO maybe this belongs in the 'spin connection' worksheet?<br>
 What does the Levi-Civita connection look like?<br>
 <br>
 
