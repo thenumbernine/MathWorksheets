@@ -155,7 +155,7 @@ and a coordinate basis has no commutation, so ${\tilde{\Gamma}^\tilde{a}}_{[\til
 so ${\hat\Gamma^a}_{[bc]} = {e^a}_\tilde{a} e_{[b} ({e_{c]}}^\tilde{a}) = \frac{1}{2} {c_{bc}}^a$<br>
 <br>
 
-If we use the bars on the indexes of tensors to denote transformation by the ${e_a}^\tilde{a}$ basis as well,
+If we use un-tilde-d indexes to denote transformation by the ${e_a}^\tilde{a}$ basis from the coordinate (tilde) to non-coordinate (non-tilde) basis,
 then we can represent the transformed coordinate basis Levi-Civita connections as then we can represent this as ${\tilde{\Gamma}^a}_{bc} = {e^a}_\tilde{a} {e_b}^\tilde{b} {e_c}^\tilde{c} {\tilde{\Gamma}^\tilde{a}}_{\tilde{b}\tilde{c}}$,<br>
 and the identity becomes:<br>
 ${\hat\Gamma^a}_{bc} = {\tilde{\Gamma}^a}_{bc} + {e^a}_\tilde{a} e_b({e_c}^\tilde{a})$<br>
@@ -169,6 +169,206 @@ ${e_a}^\tilde{a} {e^b}_\tilde{b} {e^c}_\tilde{c} {\hat\Gamma^a}_{bc} =
 ${e_a}^\tilde{a} {e^b}_\tilde{b} {e^c}_\tilde{c} {\hat\Gamma^a}_{bc} =  
 	{\tilde{\Gamma}^\tilde{a}}_{\tilde{b}\tilde{c}} 
 	+ {e^c}_\tilde{c} \partial_\tilde{b} ({e_c}^\tilde{a}) $<br>
+<br>
+
+<hr>
+<br>
+
+What does the non-coordinate metric-cancelling torsion-free covariant derivative of a object look like when represented with coordinate-basis indexes?<br>
+Let $\tilde\nabla$ be the coordinate-metric-cancelling torsion-free covariant-derivative (for coordinate metric $\tilde{g}_{\tilde{a}\tilde{b}}$).<br>
+Let $\hat\nabla$ be the non-coordinate-metric-cancelling torsion-free covariant-derivative (for non-coordinate metric $g_{ij}$).<br>
+From the worksheet on "covariant derivative":<br>
+$\tilde{\nabla}_\tilde{u} ( {T^\tilde{A}}_{\tilde{B}} \partial_\tilde{A} \otimes dx^\tilde{B} ) = 
+	(
+		\partial_\tilde{u} ({T^\tilde{A}}_\tilde{B}) 
+		+ \underset{a_i \leftrightarrow c}{{T^\tilde{A}}_\tilde{B}} {\tilde{\Gamma}^{a_i}}_{uc} 
+		- \underset{b_j \leftrightarrow c}{{T^A}_\tilde{B}} {\tilde{\Gamma}^c}_{u b_j}
+	) \partial_\tilde{A} \otimes dx^\tilde{B}
+$<br>
+So in a non-coordinate basis for a non-coordinate-metric-cancelling torsion-free covariant-derivative:<br>
+$\hat{\nabla}_u ( {T^A}_{B} e_A \otimes e^B ) = 
+	(
+		e_u ({T^A}_B) 
+		+ \underset{a_i \leftrightarrow c}{{T^A}_B} {\hat{\Gamma}^{a_i}}_{uc} 
+		- \underset{b_j \leftrightarrow c}{{T^A}_B} {\hat{\Gamma}^c}_{u b_j}
+	) e_A \otimes e^B
+$<br>
+... using ${\hat\Gamma^a}_{bc} = {\tilde{\Gamma}^a}_{bc} + {e^a}_\tilde{a} e_b({e_c}^\tilde{a})$ (where tilde indexes are coordinate-basis and non-tilde are non-coordinate-basis)<br>
+$\hat{\nabla}_u ( {T^A}_{B} e_A \otimes e^B ) = 
+	(
+		e_u ({T^A}_B) 
+		+ \underset{a_i \leftrightarrow c}{{T^A}_B} (
+			{\tilde{\Gamma}^{a_i}}_{uc} + {e^{a_i}}_{\tilde{a}_i} e_u({e_c}^{\tilde{a}_i})
+		)
+		- \underset{b_j \leftrightarrow c}{{T^A}_B} (
+			{\tilde{\Gamma}^c}_{u b_j} + {e^c}_\tilde{c} e_u({e_{b_j}}^\tilde{c})
+		)
+	) e_A \otimes e^B
+$<br>
+...transform all indexes outside of derivatives from non-coordinate-basis to coordinate-basis:<br>
+$= 
+	{e_u}^\tilde{u} (
+		\partial_\tilde{u} ({T^A}_B) 
+		\cdot {e_{a_i}}^{\tilde{a}_i}
+		\cdot ...
+		\cdot {e^{b_i}}_{\tilde{b}_i}
+		\cdot ...
+
+		+ \underset{\tilde{a}_i \leftrightarrow \tilde{c}}{{T^\tilde{A}}_\tilde{B}} (
+			{\tilde{\Gamma}^{\tilde{a}_i}}_{\tilde{u} \tilde{c}} + \partial_\tilde{u}({e_c}^{\tilde{a}_i}) {e^{c}}_\tilde{c} 
+		)
+		- \underset{\tilde{b}_j \leftrightarrow \tilde{c}}{{T^\tilde{A}}_\tilde{B}} (
+			{\tilde{\Gamma}^\tilde{c}}_{\tilde{u} \tilde{b}_j} + \partial_\tilde{u}({e_c}^\tilde{c}) {e^c}_{\tilde{b}_j}
+		)
+	) \partial_\tilde{A} \otimes dx^\tilde{B}
+$<br>
+...transform indexes within partial derivative:<br>
+$= 
+	{e_u}^\tilde{u} (
+		\partial_\tilde{u} (
+			{T^\tilde{C}}_\tilde{D}
+			\cdot {e^{a_i}}_{\tilde{c}_i}
+			\cdot ...
+			\cdot {e_{b_i}}^{\tilde{c}_i}
+			\cdot ...
+		) 
+		\cdot {e_{a_i}}^{\tilde{a}_i}
+		\cdot ...
+		\cdot {e^{b_i}}_{\tilde{b}_i}
+		\cdot ...
+	
+		+ \underset{\tilde{a}_i \leftrightarrow \tilde{c}}{{T^\tilde{A}}_\tilde{B}} (
+			{\tilde{\Gamma}^{\tilde{a}_i}}_{\tilde{u} \tilde{c}} + \partial_\tilde{u}({e_c}^{\tilde{a}_i}) {e^{c}}_\tilde{c} 
+		)
+		- \underset{\tilde{b}_j \leftrightarrow \tilde{c}}{{T^\tilde{A}}_\tilde{B}} (
+			{\tilde{\Gamma}^\tilde{c}}_{\tilde{u} \tilde{b}_j} + \partial_\tilde{u}({e_c}^\tilde{c}) {e^c}_{\tilde{b}_j}
+		)
+	) \partial_\tilde{A} \otimes dx^\tilde{B}
+$<br>
+...distribute partial through basis transforms of indexes of T:<br>
+$= 
+	{e_u}^\tilde{u} (
+		(
+			\partial_\tilde{u} ({T^\tilde{C}}_\tilde{D})
+			\cdot {e^{a_i}}_{\tilde{c}_i}
+			\cdot ...
+			\cdot {e_{b_i}}^{\tilde{c}_i}
+			\cdot ...
+		
+			+ 
+			{T^\tilde{C}}_\tilde{D}
+			\cdot ...
+			\cdot \partial_\tilde{u} {e^{a_i}}_{\tilde{c}_i}
+			\cdot ...
+			\cdot {e_{b_i}}^{\tilde{c}_i}
+			\cdot ...
+
+			+
+			{T^\tilde{C}}_\tilde{D}
+			\cdot {e^{a_i}}_{\tilde{c}_i}
+			\cdot ...
+			\cdot \partial_\tilde{u} {e_{b_i}}^{\tilde{c}_i}
+			\cdot ...
+
+		) 
+		\cdot {e_{a_i}}^{\tilde{a}_i}
+		\cdot ...
+		\cdot {e^{b_i}}_{\tilde{b}_i}
+		\cdot ...
+		+ \underset{\tilde{a}_i \leftrightarrow \tilde{c}}{{T^\tilde{A}}_\tilde{B}} (
+			{\tilde{\Gamma}^{\tilde{a}_i}}_{\tilde{u} \tilde{c}} + \partial_\tilde{u}({e_c}^{\tilde{a}_i}) {e^{c}}_\tilde{c} 
+		)
+		- \underset{\tilde{b}_j \leftrightarrow \tilde{c}}{{T^\tilde{A}}_\tilde{B}} (
+			{\tilde{\Gamma}^\tilde{c}}_{\tilde{u} \tilde{b}_j} + \partial_\tilde{u}({e_c}^\tilde{c}) {e^c}_{\tilde{b}_j}
+		)
+	) \partial_\tilde{A} \otimes dx^\tilde{B}
+$<br>
+$= 
+	{e_u}^\tilde{u} (
+		\partial_\tilde{u} ({T^\tilde{A}}_\tilde{B})
+		
+		+ \underset{ \tilde{a}_i \leftrightarrow \tilde{c} }{ {T^\tilde{A}}_\tilde{B} }
+		\cdot \partial_\tilde{u} ({e^{a_i}}_{\tilde{c}}) {e_{a_i}}^{\tilde{a}_i}
+
+		+ \underset{ \tilde{b}_i \leftrightarrow \tilde{c} }{ {T^\tilde{A}}_\tilde{B} }
+		\cdot \partial_\tilde{u} ({e_{b_i}}^{\tilde{c}}) {e^{b_i}}_{\tilde{b}_i}
+
+		+ \underset{\tilde{a}_i \leftrightarrow \tilde{c}}{{T^\tilde{A}}_\tilde{B}} (
+			{\tilde{\Gamma}^{\tilde{a}_i}}_{\tilde{u} \tilde{c}} + \partial_\tilde{u}({e_c}^{\tilde{a}_i}) {e^{c}}_\tilde{c} 
+		)
+		- \underset{\tilde{b}_j \leftrightarrow \tilde{c}}{{T^\tilde{A}}_\tilde{B}} (
+			{\tilde{\Gamma}^\tilde{c}}_{\tilde{u} \tilde{b}_j} + \partial_\tilde{u}({e_c}^\tilde{c}) {e^c}_{\tilde{b}_j}
+		)
+	) \partial_\tilde{A} \otimes dx^\tilde{B}
+$<br>
+...rearrange...<br>
+$= 
+	{e_u}^\tilde{u} (
+		\partial_\tilde{u} ({T^\tilde{A}}_\tilde{B})
+
+		+ \underset{\tilde{a}_i \leftrightarrow \tilde{c}}{{T^\tilde{A}}_\tilde{B}} 
+		\cdot {\tilde{\Gamma}^{\tilde{a}_i}}_{\tilde{u} \tilde{c}} 
+		
+		- \underset{\tilde{b}_j \leftrightarrow \tilde{c}}{{T^\tilde{A}}_\tilde{B}} 
+		\cdot {\tilde{\Gamma}^\tilde{c}}_{\tilde{u} \tilde{b}_j} 
+		
+		+ \underset{ \tilde{a}_i \leftrightarrow \tilde{c} }{ {T^\tilde{A}}_\tilde{B} }
+		\cdot \partial_\tilde{u} ({e^{a_i}}_{\tilde{c}}) {e_{a_i}}^{\tilde{a}_i}
+
+		+ \underset{\tilde{a}_i \leftrightarrow \tilde{c}}{{T^\tilde{A}}_\tilde{B}}
+		\cdot \partial_\tilde{u}({e_c}^{\tilde{a}_i}) {e^{c}}_\tilde{c} 
+		
+		+ \underset{ \tilde{b}_i \leftrightarrow \tilde{c} }{ {T^\tilde{A}}_\tilde{B} }
+		\cdot \partial_\tilde{u} ({e_{b_i}}^{\tilde{c}}) {e^{b_i}}_{\tilde{b}_i}
+		
+		- \underset{\tilde{b}_j \leftrightarrow \tilde{c}}{{T^\tilde{A}}_\tilde{B}} 
+		\cdot \partial_\tilde{u}({e_c}^\tilde{c}) {e^c}_{\tilde{b}_j}
+	) \partial_\tilde{A} \otimes dx^\tilde{B}
+$<br>
+...using e times e-inverse equals identity, therefore $\partial_\tilde{u} ({e^{a_i}}_\tilde{c}) {e_{a_i}}^{\tilde{a}_i}
+	 = -{e^{a_i}}_\tilde{c} \partial_\tilde{u} ({e_{a_i}}^{\tilde{a}_i})
+$<br>
+$= 
+	{e_u}^\tilde{u} (
+		\partial_\tilde{u} ({T^\tilde{A}}_\tilde{B})
+
+		+ \underset{\tilde{a}_i \leftrightarrow \tilde{c}}{{T^\tilde{A}}_\tilde{B}} 
+		\cdot {\tilde{\Gamma}^{\tilde{a}_i}}_{\tilde{u} \tilde{c}} 
+		
+		- \underset{\tilde{b}_j \leftrightarrow \tilde{c}}{{T^\tilde{A}}_\tilde{B}} 
+		\cdot {\tilde{\Gamma}^\tilde{c}}_{\tilde{u} \tilde{b}_j} 
+		
+		- \underset{ \tilde{a}_i \leftrightarrow \tilde{c} }{ {T^\tilde{A}}_\tilde{B} }
+		\cdot \partial_\tilde{u}({e_{a_i}}^{\tilde{a}_i}) {e^{a_i}}_{\tilde{c}}
+
+		+ \underset{\tilde{a}_i \leftrightarrow \tilde{c}}{{T^\tilde{A}}_\tilde{B}}
+		\cdot \partial_\tilde{u}({e_c}^{\tilde{a}_i}) {e^{c}}_\tilde{c} 
+		
+		+ \underset{ \tilde{b}_i \leftrightarrow \tilde{c} }{ {T^\tilde{A}}_\tilde{B} }
+		\cdot \partial_\tilde{u}({e_{b_i}}^{\tilde{c}}) {e^{b_i}}_{\tilde{b}_i}
+		
+		- \underset{\tilde{b}_j \leftrightarrow \tilde{c}}{{T^\tilde{A}}_\tilde{B}} 
+		\cdot \partial_\tilde{u}({e_c}^\tilde{c}) {e^c}_{\tilde{b}_j}
+	) \partial_\tilde{A} \otimes dx^\tilde{B}
+$<br>
+...relabel sum indexes and cancel like terms:<br>
+$= 
+	{e_u}^\tilde{u} (
+		\partial_\tilde{u} ({T^\tilde{A}}_\tilde{B})
+
+		+ \underset{\tilde{a}_i \leftrightarrow \tilde{c}}{{T^\tilde{A}}_\tilde{B}} 
+		\cdot {\tilde{\Gamma}^{\tilde{a}_i}}_{\tilde{u} \tilde{c}} 
+		
+		- \underset{\tilde{b}_j \leftrightarrow \tilde{c}}{{T^\tilde{A}}_\tilde{B}} 
+		\cdot {\tilde{\Gamma}^\tilde{c}}_{\tilde{u} \tilde{b}_j} 
+	) \partial_\tilde{A} \otimes dx^\tilde{B}
+$<br>
+$= {e_u}^\tilde{u} \tilde{\nabla}_\tilde{u} ({T^\tilde{A}}_\tilde{B} \partial_\tilde{A} \otimes dx^\tilde{B})$<br>
+Looks like the metric-cancelling torsion-free covariant-derivative of one basis is just the transform of the metric-cancelling torsion-free covariant-derivative of another.<br>
+Hence the covariant derivative of a tensor is a tensor.<br>
+<br>
+
+<hr>
 <br>
 
 Let the contorsion tensor be the difference between an arbitrary connection and the Levi-Civita connection:<br>
