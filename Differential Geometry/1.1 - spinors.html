@@ -1,0 +1,226 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset='utf-8'>
+		<title>Differential Geometry</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+	</head>
+    <body>
+<a href='.'>Back</a><br><br>
+<br>
+
+I wanted to keep the "Differential Geometry" notes strictly to differential geometry,
+From that I was also keeping it strictly to $GL(n)$ transforms. 
+I was trying to avoid any sort of physics notions like Lorentz invaraice, or the physical applications of Minkowski space.
+But here I am considering where to fit in the topics of spinors before approaching the topic of a metric, of covariant derivatives, or of a connection.
+Maybe I'll leave this here, maybe I'll add it all in one place after connections...<br>
+<br>
+
+<h3>Spinors:</h3><br>
+<br>
+
+O(n) is the "orthogonal group", consisting of transforms between $\mathbb{R}^n \rightarrow \mathbb{R}^n$ whose basis vectors are orthogonal.<br>
+SO(p,q,V) is "special orthogonal" group, the group of all orthogonal transforms with determinant 1, for metric signature (p,q), with elements of set V.  This turns out to be the group of rotation matrices.<br>
+A spinor represents a normalized basis in SO(p,q,\mathbb{C}).<br>
+<br>
+
+For now I'll just consider SO(3,1).<br>
+<br>
+
+Spinor basis in 3,1 is the Pauli matrices:<br>
+I'm going to throw in some one-form basis elements to abuse notation.  If the physicists are allowed to do it ...<br>
+$\sigma = \sigma_\mu dx^\mu = \left\{ \sigma_0 dx^0, \sigma_1 dx^1, \sigma_2 dx^2, \sigma_3 dx^3 \right\}
+= \left\{ 
+	\left[ \begin{matrix}
+		1 &amp; 0 \\
+		0 &amp; 1
+	\end{matrix} \right] dx^0,
+	\left[ \begin{matrix}
+		0 &amp; 1 \\
+		1 &amp; 0
+	\end{matrix} \right] dx^1,
+	\left[ \begin{matrix}
+		0 &amp; -i \\
+		i &amp; 0
+	\end{matrix} \right] dx^2,
+	\left[ \begin{matrix}
+		1 &amp; 0 \\
+		0 &amp; -1
+	\end{matrix} \right] dx^3,
+\right\}
+$<br>
+Let's introduce two more indexes for indexing into the spinors themselves:<br>
+$[\sigma_\mu] = {{\sigma_\mu}^i}_j$<br> 
+<br>
+
+Some properties?<br>
+$\sigma_a = \sigma_a^H$ : They are each Hermitian.<br>
+$\sigma_a \cdot \sigma_a = I$ : They are their own inverse, therefore they are all roots of the 2x2 identity matrix.<br>
+$\sigma_i \cdot \sigma_j = \delta_{ij} \sigma_0 + i \cdot \epsilon_{ijk} \sigma_k$ for $ijk$ in $1,2,3$.<br>
+<br>
+
+I'm resisting using capital letters to denote spinor indexes because Ricci convention uses capitals for grousp of indexes.
+I guess you could conider the two elements of a complex sace a as a group but ...<br>
+Now whereas with our tensors, teh tensor could always be repreented as a contrcation of its componetns with its basis elements (outer product'd together),
+I'm not sure what the convention is for the spinor basis indexes.
+Do we just take it at face value that they are matrices? Meh.
+<br>
+<br>
+
+A vector in M(3,1) space is defined as:<br>
+$x = x^\mu \partial_\mu = x^0 \partial_0 + x^1 \partial_0 + x^2 \partial_2 + x^3 \partial_3$<br>
+<br>
+
+Transforming this to a spinor is done by mapping its basis elements ot the spinor basis elemnts:<br>
+
+$\sigma(x) = \sigma_\mu dx^\mu(x^\nu \partial_\nu)
+	= \sigma_\mu x^\nu \delta^\mu_\nu
+	= x^0 \sigma_0 + x^1 \sigma_1 + x^2 \sigma_2 + x^3 \sigma_3$<br>
+$= 
+	x^0 \left[ \begin{matrix}
+		1 &amp; 0 \\
+		0 &amp; 1
+	\end{matrix} \right]
+	+ x^1 \left[ \begin{matrix}
+		0 &amp; 1 \\
+		1 &amp; 0
+	\end{matrix} \right]
+	+ x^2 \left[ \begin{matrix}
+		0 &amp; -i \\
+		i &amp; 0
+	\end{matrix} \right]
+	+ x^3 \left[ \begin{matrix}
+		1 &amp; 0 \\
+		0 &amp; -1
+	\end{matrix} \right]
+$<br>
+$= \left[ \begin{matrix}
+	x^0 + x^3 &amp; x^1 - i x^2 \\
+	x^1 + i x^2 &amp; x^0 - x^3
+\end{matrix} \right]$<br>
+<br>
+Mind you I could've chose $\sigma$ to have a vector basis and x to have a form basis, and instead defined the conversion of x to a spinor as $x(\sigma)$...<br>
+But then my spinor components would look like ${\sigma^{\mu i}}_j$, and who does that?<br>
+<br>
+
+Now how about converting back from a spinor to a vector?<br>
+$\sigma(x) = \left[ \begin{matrix}
+	x^0 + x^3 &amp; x^1 - i x^2 \\
+	x^1 + i x^2 &amp; x^0 - x^3
+\end{matrix} \right]$<br>
+<br>
+
+$\frac{1}{2} tr(\sigma_\mu \cdot \sigma(x)) = \frac{1}{2} {{\sigma_\mu}^i}_j x^\nu {{\sigma_\nu}^j}_i = \frac{1}{2} \cdot \delta^i_j \cdot \delta_{\mu\nu} x^\nu = x^\mu$<br>
+$\frac{1}{2} tr(\sigma(x) \cdot \sigma_\mu) = x^\mu$<br>
+Done.<br>
+<br>
+
+Alright so there's our vector in spinor form.
+What's going to be incredibly useful in the future is converting orthonormal vectors to spinors.
+Or so I've been told...<br>
+<br>
+
+<hr>
+<br>
+
+Quaternions come up later, here's a quick quaternion to spinor conversion fact:<br>
+If we think of the imaginary number i as a 2x2 matrix: $i = \left[ \begin{matrix} 0 &amp; -1 \\ 1 &amp; 0 \end{matrix} \right]$<br> then it has all the same properties as the imaginary number does.<br>
+From there, if we just ...<Br>
+- exchange components of $x^1$ and $x^3$.. or maybe transform the spinor basis to arrange them.  spinor metric?<br>
+- multiply our spatial spinors by i (for the sake of the z basis spinor and t basis spinor colliding otherwise)<br>
+- then outer our spinor basis with either the 2x2 identity or the 2x2 definition of 'i'<br>
+- then multiply colums or rows or both by $\eta = diag(1, -1, -1, -1)$<br>
+... then we end up with this:<br>
+$\sigma = 
+	x^0 \left[ \begin{matrix}
+		1 &amp; 0 &amp; 0 &amp; 0 \\
+		0 &amp; 1 &amp; 0 &amp; 0 \\
+		0 &amp; 0 &amp; 1 &amp; 0 \\
+		0 &amp; 0 &amp; 0 &amp; 1
+	\end{matrix} \right]
+	+ x^3 \left[ \begin{matrix}
+		0 &amp; 0 &amp; 0 &amp; -1 \\
+		0 &amp; 0 &amp; 1 &amp; 0 \\
+		0 &amp; -1 &amp; 0 &amp; 0 \\
+		1 &amp; 0 &amp; 0 &amp; 0
+	\end{matrix} \right]
+	+ x^2 \left[ \begin{matrix}
+		0 &amp; 0 &amp; 1 &amp; 0 \\
+		0 &amp; 0 &amp; 0 &amp; 1 \\
+		-1 &amp; 0 &amp; 0 &amp; 0 \\
+		0 &amp; -1 &amp; 0 &amp; 0
+	\end{matrix} \right]
+	+ x^1 \left[ \begin{matrix}
+		0 &amp; -1 &amp; 0 &amp; 0 \\
+		1 &amp; 0 &amp; 0 &amp; 0 \\
+		0 &amp; 0 &amp; 0 &amp; 1 \\
+		0 &amp; 0 &amp; -1 &amp; 0
+	\end{matrix} \right]
+$<br>
+...and end up with something reembling the quaternion matrix representation:<br>
+$\left[ \begin{matrix}
+	x_0 &amp; x_1 &amp; x_2 &amp; x_3 \\
+	x_1 &amp;-x_0 &amp; x_3 &amp;-x_2 \\
+	x_2 &amp;-x_3 &amp;-x_0 &amp; x_1 \\
+	x_3 &amp; x_2 &amp;-x_1 &amp;-x_0
+\end{matrix} \right]$<br>
+TODO maybe multiply this by diag(1,-1,-1,-1) to fix it?<br>
+<br>
+
+Spinor Minkowski(Cartesian?) special-relativistic metric:<br>
+$\epsilon_{ij} = \epsilon^{ij} = \left[ \begin{matrix}
+	0 &amp; 1 \\
+	-1 &amp; 0
+\end{matrix} \right]$<br>
+Not sure where I"ll need this.
+Willapplying ti before convering to quaterniosn help?<br>
+<Br>
+
+<hr>
+<br>
+
+Ok now for connections.<br>
+<br>
+
+$\nabla_a v = \nabla_a (v^b \partial_b) = (\partial_a v^b + {\Gamma^b}_{ac} v^c) \partial_b$<br>
+Now lets apply our spinor basis:<br>
+$\sigma(\nabla_a v) = (\partial_a v^b + {\Gamma^b}_{ac} v^c) \sigma_b$<br>
+$= (\partial_a v^b + {\Gamma^b}_{ac} v^c) {{\sigma_b}^i}_j$<br>
+... ok, so what?  Why make a whole other thing about "spin connection" ?  It's just a connection, whose basis has been transformed to another space.<br>
+<!-- Why do particle physicists worship the Manhattan project celebrities? -->
+<br>
+How about the basis?<br>
+$\nabla_a e_b = {\Gamma^c}_{ab} e_c$<br>
+$\sigma(\nabla_a e_b) = {\Gamma^c}_{ab} {{\sigma_c}^i}_j$<br>
+<br>
+
+ok but how does the covariant "act" on "spin indexes", which are the 1 <-> 2 indexes produced from that contraction?<br>
+$\sigma(v) = v^a {{\sigma_a}^i}_j$<br>
+and $\sigma(\nabla_a v) = (\partial_a v^b + {\Gamma^b}_{ac} v^c) {{\sigma_b}^i}_j$<br>
+$ = (\partial_a v^b) {{\sigma_b}^i}_j + {\Gamma^b}_{ac} v^c {{\sigma_b}^i}_j$<br>
+... because $\sigma_u$ is constant<br>
+$ = \partial_a (v^b {{\sigma_b}^i}_j) + {\Gamma^b}_{ac} v^c {{\sigma_b}^i}_j$<br>
+<br>
+
+Now we use our trick of getting components back from the spinor:<br>
+$\sigma_b \cdot \sigma(v) = \partial_a v^b + {\Gamma^b}_{ac} v^c$<br>
+<br>
+
+But what if we want to pretend a covariant derivative is "acting" on the two indexes of the spinor basis?<br>
+$v' = \sigma(v) = v^u \sigma_u = v^u {{\sigma_u}^i}_j$ is a matrix with components ${(v')^i}_j = v^u {{\sigma_u}^i}_j$<br>
+$D_a {(v')^i}_j = \partial_a {(v')^i}_j + {{\omega_a}^i}_k {(v')^k}_j - {{\omega_a}^k}_j {(v')^i}_k$<br>
+...substitute...<br>
+$= \partial_a v^u {{\sigma_u}^i}_j + {{\omega_a}^i}_k {{\sigma_u}^k}_j v^u - {{\omega_a}^k}_j {{\sigma_u}^i}_k v^u$<br>
+$= \partial_a v^u {{\sigma_u}^i}_j + {{\omega_a}^i}_k {{\sigma_u}^k}_j v^u - {{\omega_a}^k}_j {{\sigma_u}^i}_k v^u$<br>
+$= \partial_a v^u {{\sigma_u}^i}_j + {\omega_a}^{ik} \sigma_{ukj} v^u - {\omega_a}^{kj} \sigma_{uik} v^u$<br>
+Now if we assume ${{\omega_a}^i}_j = -{{\omega_a}^j}_i$ (still gotta show that one, but honestly this gets into the covariant definition with regards to basis elements, and what even are the basis elements of the "Hilbert half-space" or whatever Rovelli &amp; Vidotto's book call it...<br>
+or do we need to assume $\omega_{aij} = -\omega_{aji}$?  same?  subject to the spinor metric? TODO...<br>
+$= \partial_a v^u {{\sigma_u}^i}_j + {\omega_a}^{ik} \sigma_{ukj} v^u - {\omega_a}^{jk} \sigma_{uki} v^u$<br>
+then we reconstruct the basis with either a left or right spinor basis mult...<br>
+$(D_a v) \cdot \sigma = (\partial_a v^u {{\sigma_u}^i}_j + {\omega_a}^{ik} \sigma_{ukj} v^u - {\omega_a}^{jk} \sigma_{uki} v^u) \cdot \sigma_v$<br>
+$= \partial_a v^u + {\omega_a}^{ik} \sigma_{ukj} \cdot \sigma v^u - {\omega_a}^{jk} \sigma_{uki} \cdot \sigma v^u$<br>
+...idk...<br>
+<br>
+<a href='.'>Back</a><br><br>
+	</body>
+</html>

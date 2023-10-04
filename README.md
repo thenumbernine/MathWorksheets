@@ -24,6 +24,8 @@ Here's the CDN URLs:
 
 [Differential Geometry/1 - index notation](https://thenumbernine.github.io/math/Differential%20Geometry/1%20%2d%20index%20notation.html)
 
+[Differential Geometry/1.1 - spinors](https://thenumbernine.github.io/math/Differential%20Geometry/1.1%20%2d%20spinors.html)
+
 [Differential Geometry/1.5 - wedge product](https://thenumbernine.github.io/math/Differential%20Geometry/1.5%20%2d%20wedge%20product.html)
 
 [Differential Geometry/10 - Ricci curvature](https://thenumbernine.github.io/math/Differential%20Geometry/10%20%2d%20Ricci%20curvature.html)
@@ -72,7 +74,7 @@ Here's the CDN URLs:
 
 [Differential Geometry/8 - metric-cancelling and torsion-free connection](https://thenumbernine.github.io/math/Differential%20Geometry/8%20%2d%20metric%2dcancelling%20and%20torsion%2dfree%20connection.html)
 
-[Differential Geometry/8.1 - spin connection](https://thenumbernine.github.io/math/Differential%20Geometry/8.1%20%2d%20spin%20connection.html)
+[Differential Geometry/8.1 - constant-metric connection](https://thenumbernine.github.io/math/Differential%20Geometry/8.1%20%2d%20constant%2dmetric%20connection.html)
 
 [Differential Geometry/8.5 - parallel propagators](https://thenumbernine.github.io/math/Differential%20Geometry/8.5%20%2d%20parallel%20propagators.html)
 
