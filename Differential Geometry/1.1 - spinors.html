@@ -19,15 +19,47 @@ Maybe I'll leave this here, maybe I'll add it all in one place after connections
 <h3>Spinors:</h3><br>
 <br>
 
-O(n) is the "orthogonal group", consisting of transforms between $\mathbb{R}^n \rightarrow \mathbb{R}^n$ whose basis vectors are orthogonal.<br>
-SO(p,q,V) is "special orthogonal" group, the group of all orthogonal transforms with determinant 1, for metric signature (p,q), with elements of set V.  This turns out to be the group of rotation matrices.<br>
-A spinor represents a normalized basis in SO(p,q,\mathbb{C}).<br>
+$O(p,q,V)$ is the "orthogonal group", consisting of transforms between $\underbrace{V \otimes ... V}_{\times p} \otimes \underbrace{V^* \otimes ... V^*}_{\times q}$ whose basis vectors are orthogonal.<br>
+$SO(p,q,V)$ is "special orthogonal" group, the group of all orthogonal transforms with determinant 1, for metric signature (p,q), with elements of set V.  This turns out to be the group of rotation matrices.<br>
+A spinor represents a normalized basis in $SO(p,q,\mathbb{R})$ where $p+q=4$, but even though it's a 4D component, it is represented as a 2D complex vector/transforms, hmm...<br>
 <br>
+
+Spinors:<br>
+$\upsilon = \left[ \begin{matrix}
+	\upsilon_1 \\ \upsilon_2
+\end{matrix} \right]$<br>
+exists within the 2D complex space, probably with some constraints to its values.<br>
+<br>
+
+Spinor Minkowski(Cartesian?) special-relativistic metric:<br>
+$\epsilon_{ij} = \epsilon^{ij} = \left[ \begin{matrix}
+	0 &amp; 1 \\
+	-1 &amp; 0
+\end{matrix} \right]$<br>
+This turns out to be negative of the real 2x2 representation of the imaginary number basis matrix.<br>
+<Br>
+
+Define lowering as $\upsilon_a = \upsilon^b \epsilon_{ba}$ and raising as $\upsilon^a = \epsilon^{ab} \upsilon_b$<br> 
+<br>
+
+Notice that:<br> 
+$\epsilon_{ij} = \epsilon^{ij}$
+$\epsilon_{ij} = -\epsilon_{ji}$
+$\epsilon^{ij} = -\epsilon^{ji}$
+$\epsilon_{ik} \epsilon^{kj} = \delta^k_i$<br>
+$\epsilon^{ij} \epsilon_{ik} = \delta^j_k$<br>
+${\epsilon_i}^j = -{\epsilon^j}_i = \delta^j_i$<br>
+<br>
+
+Spinor scalar product:<br>
+$a_i b^i = -a^i b_i$<br>
+<br>
+
 
 For now I'll just consider SO(3,1).<br>
 <br>
 
-Spinor basis in 3,1 is the Pauli matrices:<br>
+Spinor transform basis in 3,1 is the Pauli matrices:<br>
 I'm going to throw in some one-form basis elements to abuse notation.  If the physicists are allowed to do it ...<br>
 $\sigma = \sigma_\mu dx^\mu = \left\{ \sigma_0 dx^0, \sigma_1 dx^1, \sigma_2 dx^2, \sigma_3 dx^3 \right\}
 = \left\{ 
@@ -54,7 +86,7 @@ $[\sigma_\mu] = {{\sigma_\mu}^i}_j$<br>
 <br>
 
 Some properties?<br>
-$\sigma_a = \sigma_a^H$ : They are each Hermitian.<br>
+$\sigma_a = (\sigma_a)^H$ i.e. ${{\sigma_a}^i}_j = \bar{{{\sigma_a}^j}_i}$ : They are each Hermitian.<br>
 $\sigma_a \cdot \sigma_a = I$ : They are their own inverse, therefore they are all roots of the 2x2 identity matrix.<br>
 $\sigma_i \cdot \sigma_j = \delta_{ij} \sigma_0 + i \cdot \epsilon_{ijk} \sigma_k$ for $ijk$ in $1,2,3$.<br>
 <br>
@@ -124,7 +156,75 @@ Or so I've been told...<br>
 <br>
 
 Quaternions come up later, here's a quick quaternion to spinor conversion fact:<br>
-If we think of the imaginary number i as a 2x2 matrix: $i = \left[ \begin{matrix} 0 &amp; -1 \\ 1 &amp; 0 \end{matrix} \right]$<br> then it has all the same properties as the imaginary number does.<br>
+<br>
+
+If we think of the imaginary number i as a 2x2 matrix: $i = \left[ \begin{matrix} 0 &amp; -1 \\ 1 &amp; 0 \end{matrix} \right]$<br>
+then it has all the same properties as the imaginary number does.<br>
+<br>
+
+But we can't just outer product our Pauli matrix basis with the i 2x2 matrix, or the $\sigma_0$ and $\sigma_3$ will overlap.
+So first lets multiply the spatial matrices by i:<br>
+$i \sigma_i = \left\{ 
+	\left[ \begin{matrix}
+		0 &amp; i \\
+		i &amp; 0
+	\end{matrix} \right],
+	\left[ \begin{matrix}
+		0 &amp; 1 \\
+		-1 &amp; 0
+	\end{matrix} \right],
+	\left[ \begin{matrix}
+		i &amp; 0 \\
+		0 &amp; -i
+	\end{matrix} \right]
+\right\}$
+<br>
+
+$i (\sigma_i)^T = \left\{ 
+	\left[ \begin{matrix}
+		0 &amp; i \\
+		i &amp; 0
+	\end{matrix} \right],
+	\left[ \begin{matrix}
+		0 &amp; -1 \\
+		1 &amp; 0
+	\end{matrix} \right],
+	\left[ \begin{matrix}
+		i &amp; 0 \\
+		0 &amp; -i
+	\end{matrix} \right]
+\right\}$
+<br>
+<br>
+
+Now we outer our spinor basis with the 2x2 identity or i matrix:<br>
+$\sigma = 
+	\left[ \begin{matrix}
+		1 &amp; 0 &amp; 0 &amp; 0 \\
+		0 &amp; 1 &amp; 0 &amp; 0 \\
+		0 &amp; 0 &amp; 1 &amp; 0 \\
+		0 &amp; 0 &amp; 0 &amp; 1
+	\end{matrix} \right],
+	\left[ \begin{matrix}
+		0 &amp; 0 &amp; 1 &amp; 0 \\
+		0 &amp; 0 &amp; 0 &amp; 1 \\
+		1 &amp; 0 &amp; 0 &amp; 0 \\
+		0 &amp; 1 &amp; 0 &amp; 0
+	\end{matrix} \right],
+	\left[ \begin{matrix}
+		0 &amp; 0 &amp; 0 &amp; 1 \\
+		0 &amp; 0 &amp; -1 &amp; 0 \\
+		0 &amp; -1 &amp; 0 &amp; 0 \\
+		1 &amp; 0 &amp; 0 &amp; 0
+	\end{matrix} \right],
+	\left[ \begin{matrix}
+		1 &amp; 0 &amp; 0 &amp; 0 \\
+		0 &amp; 1 &amp; 0 &amp; 0 \\
+		0 &amp; 0 &amp; 1 &amp; 0 \\
+		0 &amp; 0 &amp; 0 &amp; 1
+	\end{matrix} \right],
+$<br>
+
 From there, if we just ...<Br>
 - exchange components of $x^1$ and $x^3$.. or maybe transform the spinor basis to arrange them.  spinor metric?<br>
 - multiply our spatial spinors by i (for the sake of the z basis spinor and t basis spinor colliding otherwise)<br>
@@ -167,15 +267,6 @@ $\left[ \begin{matrix}
 TODO maybe multiply this by diag(1,-1,-1,-1) to fix it?<br>
 <br>
 
-Spinor Minkowski(Cartesian?) special-relativistic metric:<br>
-$\epsilon_{ij} = \epsilon^{ij} = \left[ \begin{matrix}
-	0 &amp; 1 \\
-	-1 &amp; 0
-\end{matrix} \right]$<br>
-Not sure where I"ll need this.
-Willapplying ti before convering to quaterniosn help?<br>
-<Br>
-
 <hr>
 <br>
 
@@ -208,7 +299,10 @@ $\sigma_b \cdot \sigma(v) = \partial_a v^b + {\Gamma^b}_{ac} v^c$<br>
 
 But what if we want to pretend a covariant derivative is "acting" on the two indexes of the spinor basis?<br>
 $v' = \sigma(v) = v^u \sigma_u = v^u {{\sigma_u}^i}_j$ is a matrix with components ${(v')^i}_j = v^u {{\sigma_u}^i}_j$<br>
-$D_a {(v')^i}_j = \partial_a {(v')^i}_j + {{\omega_a}^i}_k {(v')^k}_j - {{\omega_a}^k}_j {(v')^i}_k$<br>
+$\sigma(D_a v)$<br>
+$= D_a(\sigma(v))$<br>
+$= D_a {(v')^i}_j$<br>
+$= \partial_a {(v')^i}_j + {{\omega_a}^i}_k {(v')^k}_j - {{\omega_a}^k}_j {(v')^i}_k$<br>
 ...substitute...<br>
 $= \partial_a v^u {{\sigma_u}^i}_j + {{\omega_a}^i}_k {{\sigma_u}^k}_j v^u - {{\omega_a}^k}_j {{\sigma_u}^i}_k v^u$<br>
 $= \partial_a v^u {{\sigma_u}^i}_j + {{\omega_a}^i}_k {{\sigma_u}^k}_j v^u - {{\omega_a}^k}_j {{\sigma_u}^i}_k v^u$<br>
@@ -217,9 +311,19 @@ Now if we assume ${{\omega_a}^i}_j = -{{\omega_a}^j}_i$ (still gotta show that o
 or do we need to assume $\omega_{aij} = -\omega_{aji}$?  same?  subject to the spinor metric? TODO...<br>
 $= \partial_a v^u {{\sigma_u}^i}_j + {\omega_a}^{ik} \sigma_{ukj} v^u - {\omega_a}^{jk} \sigma_{uki} v^u$<br>
 then we reconstruct the basis with either a left or right spinor basis mult...<br>
-$(D_a v) \cdot \sigma = (\partial_a v^u {{\sigma_u}^i}_j + {\omega_a}^{ik} \sigma_{ukj} v^u - {\omega_a}^{jk} \sigma_{uki} v^u) \cdot \sigma_v$<br>
+$(D_a \sigma(v)) \cdot \sigma_u = (\partial_a v^v {{\sigma_v}^i}_j + {\omega_a}^{ik} \sigma_{vkj} v^v - {\omega_a}^{jk} \sigma_{vki} v^v) \cdot \sigma_u$<br>
 $= \partial_a v^u + {\omega_a}^{ik} \sigma_{ukj} \cdot \sigma v^u - {\omega_a}^{jk} \sigma_{uki} \cdot \sigma v^u$<br>
 ...idk...<br>
+but<br>
+$D_a v = (\partial_a v^u + {\Gamma^u}_{ab} v^b) \partial_u$<br>
+$\sigma(D_a v) = (\partial_a v^u + {\Gamma^u}_{ab} v^b) \sigma_u$<br>
+so<br>
+$(\partial_a v^u + {\Gamma^u}_{ab} v^b) \sigma_u = \partial_a v^u {{\sigma_u}^i}_j + {{\omega_a}^i}_k {{\sigma_u}^k}_j v^u - {{\omega_a}^k}_j {{\sigma_u}^i}_k v^u$<br>
+${\Gamma^u}_{ab} v^b \sigma_u = {{\omega_a}^i}_k {{\sigma_b}^k}_j v^b - {{\sigma_b}^i}_k {{\omega_a}^k}_j v^b$<br>
+${\Gamma^u}_{ab} \sigma_u = \omega_a \cdot \sigma_b - \sigma_b \cdot \omega_a$<br>
+so if $\omega_a = (\omega_a)^H$...<br>
+${\Gamma^u}_{ab} I \sigma_u = 2 \omega_a \cdot \sigma_b$<br>
+$\omega_a = \frac{1}{2} {\Gamma^u}_{ab} I \sigma_u \cdot \sigma_b$<br>
 <br>
 <a href='.'>Back</a><br><br>
 	</body>
