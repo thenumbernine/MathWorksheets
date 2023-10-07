@@ -13,10 +13,39 @@ I wanted to keep the "Differential Geometry" notes strictly to differential geom
 From that I was also keeping it strictly to $GL(n)$ transforms. 
 I was trying to avoid any sort of physics notions like Lorentz invaraice, or the physical applications of Minkowski space.
 But here I am considering where to fit in the topics of spinors before approaching the topic of a metric, of covariant derivatives, or of a connection.
-Maybe I'll leave this here, maybe I'll add it all in one place after connections...<br>
+Maybe I'll leave this here, maybe I'll add it all in one place after connections, maybe I'll put it in its own section of "physicsts trying to reproduce mathematicians' previously established work but doing it poorly", I mean, particle-physics...<br>
 <br>
 
-<h3>Spinors:</h3><br>
+<h3>Motivation:</h3>
+<h4>Schrodinger Equation</h4>
+I should put this in a QM folder separate of the "Differential Geometry" folder.<br>
+And this 'motivation' section should be a previous worksheet.<br>
+<br>
+
+Schrodinger equation in Cartesian coordinates:<br>
+$i \hbar \frac{\partial}{\partial t} \psi = \left( - \frac{\hbar}{2 m} \frac{\partial^2}{(\partial x^i)^2} + V \right) \psi$<br>
+... where $x^i$ spans spatial indexes.<br>
+Let's distribute that abuse-of-notation:<br>
+$i \hbar \frac{\partial}{\partial t} \psi = -\frac{\hbar}{2 m} \frac{\partial^2}{(\partial x^i)^2} \psi + V \psi$<br>
+<br>
+
+This looks like an ugly parabolic PDE, and not a beautiful hyperbolic PDE.
+But hold on, it's a hyperbolic PDE in disguise.
+It's also an advection equation / fluid motion in disguise.<br>
+<br>
+
+The momentum-operator in position-space is $\hat{p}_i = -i \hbar \frac{d}{dx}$<br>
+We can substitute only one partial to get:<br>
+$i \hbar \frac{\partial}{\partial t} \psi = -i \frac{\hbar^2}{2 m} \hat{p}_i \frac{\partial}{\partial x^i} \psi + V \psi$<br>
+$\frac{\partial}{\partial t} \psi + \frac{\hbar}{2 m} \hat{p}_i \frac{\partial}{\partial x^i} \psi = - \frac{i}{\hbar} V \psi$<br>
+Welp, now that looks a lot more like an advection equation.<br>
+Alright it's not a real advection equation, because for it to be, the momentum operator would be evaluated, so it would need a derivative-applied squared rather than a derivative-squared applied.<br>
+
+<h4>Pauli Equation</h4>
+$i \hbar \frac{\partial}{\partial t} \psi = \left( \frac{1}{2 m} (\sigma_i (\hat{p}_i - q A_i))^2 + q \phi \right) \psi$<br>
+<br>
+
+<h3>Spinors:</h3>
 <br>
 
 $O(p,q,V)$ is the "orthogonal group", consisting of transforms between $\underbrace{V \otimes ... V}_{\times p} \otimes \underbrace{V^* \otimes ... V^*}_{\times q}$ whose basis vectors are orthogonal.<br>
@@ -24,11 +53,28 @@ $SO(p,q,V)$ is "special orthogonal" group, the group of all orthogonal transform
 A spinor represents a normalized basis in $SO(p,q,\mathbb{R})$ where $p+q=4$, but even though it's a 4D component, it is represented as a 2D complex vector/transforms, hmm...<br>
 <br>
 
+For now I'll just consider SO(3,1).<br>
+<br>
+
 Spinors:<br>
 $\upsilon = \left[ \begin{matrix}
 	\upsilon_1 \\ \upsilon_2
 \end{matrix} \right]$<br>
 exists within the 2D complex space, probably with some constraints to its values.<br>
+<br>
+
+If we think of the imaginary number i as a 2x2 matrix: $i = \left[ \begin{matrix} 0 &amp; -1 \\ 1 &amp; 0 \end{matrix} \right]$<br>
+then it has all the same properties as the imaginary number does.<br>
+Keep this in mind, it'll be used a lot later...<br>
+<br>
+
+I don't like the idea of using capital letters for spinor indexes.
+Ricci convention uses capitals for groups of indexes.
+I guess you could conider a spinor index as a group of two indexes of a complex space but ...<br>
+Now whereas with our tensors, the tensor could always be repreented as a contraction of its components with its basis elements (outer product'd together),
+I'm not sure what the convention is for the spinor basis indexes.
+Do we just take it at face value that they are matrices? Meh.
+<br>
 <br>
 
 Spinor Minkowski(Cartesian?) special-relativistic metric:<br>
@@ -53,10 +99,6 @@ ${\epsilon_i}^j = -{\epsilon^j}_i = \delta^j_i$<br>
 
 Spinor scalar product:<br>
 $a_i b^i = -a^i b_i$<br>
-<br>
-
-
-For now I'll just consider SO(3,1).<br>
 <br>
 
 Spinor transform basis in 3,1 is the Pauli matrices:<br>
@@ -86,17 +128,9 @@ $[\sigma_\mu] = {{\sigma_\mu}^i}_j$<br>
 <br>
 
 Some properties?<br>
-$\sigma_a = (\sigma_a)^H$ i.e. ${{\sigma_a}^i}_j = \bar{{{\sigma_a}^j}_i}$ : They are each Hermitian.<br>
+$\sigma_a = (\sigma_a)^H$ i.e. ${{\sigma_a}^i}_j = {{\bar{\sigma}_a}^j}_i$ : They are each Hermitian.<br>
 $\sigma_a \cdot \sigma_a = I$ : They are their own inverse, therefore they are all roots of the 2x2 identity matrix.<br>
 $\sigma_i \cdot \sigma_j = \delta_{ij} \sigma_0 + i \cdot \epsilon_{ijk} \sigma_k$ for $ijk$ in $1,2,3$.<br>
-<br>
-
-I'm resisting using capital letters to denote spinor indexes because Ricci convention uses capitals for grousp of indexes.
-I guess you could conider the two elements of a complex sace a as a group but ...<br>
-Now whereas with our tensors, teh tensor could always be repreented as a contrcation of its componetns with its basis elements (outer product'd together),
-I'm not sure what the convention is for the spinor basis indexes.
-Do we just take it at face value that they are matrices? Meh.
-<br>
 <br>
 
 A vector in M(3,1) space is defined as:<br>
@@ -142,59 +176,21 @@ $\sigma(x) = \left[ \begin{matrix}
 \end{matrix} \right]$<br>
 <br>
 
-$\frac{1}{2} tr(\sigma_\mu \cdot \sigma(x)) = \frac{1}{2} {{\sigma_\mu}^i}_j x^\nu {{\sigma_\nu}^j}_i = \frac{1}{2} \cdot \delta^i_j \cdot \delta_{\mu\nu} x^\nu = x^\mu$<br>
-$\frac{1}{2} tr(\sigma(x) \cdot \sigma_\mu) = x^\mu$<br>
+$\frac{1}{2} tr(\sigma_\mu \cdot \sigma(x)) = \frac{1}{2} {{\sigma_\mu}^i}_j x^\nu {{\sigma_\nu}^j}_i = \frac{1}{2} \cdot \delta^i_j \cdot \delta_{\mu\nu} x^\nu = \delta_{\mu\nu} x^\nu$<br>
+$\frac{1}{2} tr(\sigma(x) \cdot \sigma_\mu) = \delta_{\mu\nu} x^\nu$ as well, so order of $\sigma_\mu$ multiplication doesn't matter, because either way squared is squared.<br>
 Done.<br>
-<br>
-
-Alright so there's our vector in spinor form.
-What's going to be incredibly useful in the future is converting orthonormal vectors to spinors.
-Or so I've been told...<br>
+Sort of.<br>
+We've managed to abuse our spacetime index valence.  This identity depends on multiplying a raised index by a lowered $\delta_{\mu\nu}$.
+Wouldn't it be nice if that $\delta_{\mu\nu}$ was replaced with an $\eta_{\mu\nu}$ spacetime Minkowski diagonal metric?
+We're about to see how we can fix Pauli's blunder.
 <br>
 
 <hr>
 <br>
 
+<h3> Quaternions</h3>
+
 Quaternions come up later, here's a quick quaternion to spinor conversion fact:<br>
-<br>
-
-If we think of the imaginary number i as a 2x2 matrix: $i = \left[ \begin{matrix} 0 &amp; -1 \\ 1 &amp; 0 \end{matrix} \right]$<br>
-then it has all the same properties as the imaginary number does.<br>
-<br>
-
-But we can't just outer product our Pauli matrix basis with the i 2x2 matrix, or the $\sigma_0$ and $\sigma_3$ will overlap.
-So first lets multiply the spatial matrices by i:<br>
-$i \sigma_i = \left\{ 
-	\left[ \begin{matrix}
-		0 &amp; i \\
-		i &amp; 0
-	\end{matrix} \right],
-	\left[ \begin{matrix}
-		0 &amp; 1 \\
-		-1 &amp; 0
-	\end{matrix} \right],
-	\left[ \begin{matrix}
-		i &amp; 0 \\
-		0 &amp; -i
-	\end{matrix} \right]
-\right\}$
-<br>
-
-$i (\sigma_i)^T = \left\{ 
-	\left[ \begin{matrix}
-		0 &amp; i \\
-		i &amp; 0
-	\end{matrix} \right],
-	\left[ \begin{matrix}
-		0 &amp; -1 \\
-		1 &amp; 0
-	\end{matrix} \right],
-	\left[ \begin{matrix}
-		i &amp; 0 \\
-		0 &amp; -i
-	\end{matrix} \right]
-\right\}$
-<br>
 <br>
 
 Now we outer our spinor basis with the 2x2 identity or i matrix:<br>
@@ -224,31 +220,80 @@ $\sigma =
 		0 &amp; 0 &amp; 0 &amp; 1
 	\end{matrix} \right],
 $<br>
+But we can't just outer product our Pauli matrix basis with the i 2x2 matrix, or the $\sigma_0$ and $\sigma_3$ will overlap.
+So first lets multiply the spatial matrices by i:<br>
+$i \sigma_i = \left\{ 
+	\left[ \begin{matrix}
+		0 &amp; i \\
+		i &amp; 0
+	\end{matrix} \right],
+	\left[ \begin{matrix}
+		0 &amp; 1 \\
+		-1 &amp; 0
+	\end{matrix} \right],
+	\left[ \begin{matrix}
+		i &amp; 0 \\
+		0 &amp; -i
+	\end{matrix} \right]
+\right\}$<br>
+Also, we are multiplying our spatial $\sigma_i$'s by i, but we want $\sigma_0 = I$ regardless.<br>
+So what we're really doing is multipying our $\sigma_\mu$'s by ${diag(1, i, i, i)^\mu}_\nu$.  Which is the sqrt of $\eta_{\mu\nu}$.  What a coincidence.  Hmmmmmmmmmm.<br>
+$\sigma_\mu \cdot {diag(1, i, i, i)^\mu}_\nu = \left\{ 
+	\left[ \begin{matrix}
+		1 &amp; 0 \\
+		0 &amp; 1
+	\end{matrix} \right],
+	\left[ \begin{matrix}
+		0 &amp; i \\
+		i &amp; 0
+	\end{matrix} \right],
+	\left[ \begin{matrix}
+		0 &amp; 1 \\
+		-1 &amp; 0
+	\end{matrix} \right],
+	\left[ \begin{matrix}
+		i &amp; 0 \\
+		0 &amp; -i
+	\end{matrix} \right]
+\right\}$<br>
+Then let's swap the x and z.  Why are we doing this?  We'll call that "foreshadowing".<br>
+$\sigma_\mu \cdot {permute(1,4,3,2)^\mu}_\nu \cdot {diag(1, i, i, i)^\nu}_\alpha = \left\{ 
+	\left[ \begin{matrix}
+		1 &amp; 0 \\
+		0 &amp; 1
+	\end{matrix} \right],
+	\left[ \begin{matrix}
+		i &amp; 0 \\
+		0 &amp; -i
+	\end{matrix} \right],
+	\left[ \begin{matrix}
+		0 &amp; 1 \\
+		-1 &amp; 0
+	\end{matrix} \right],
+	\left[ \begin{matrix}
+		0 &amp; i \\
+		i &amp; 0
+	\end{matrix} \right]
+\right\}$<br>
+<br>
+I'll just call this $(\sigma')_\mu$.<br>
 
-From there, if we just ...<Br>
-- exchange components of $x^1$ and $x^3$.. or maybe transform the spinor basis to arrange them.  spinor metric?<br>
-- multiply our spatial spinors by i (for the sake of the z basis spinor and t basis spinor colliding otherwise)<br>
-- then outer our spinor basis with either the 2x2 identity or the 2x2 definition of 'i'<br>
-- then multiply colums or rows or both by $\eta = diag(1, -1, -1, -1)$<br>
-... then we end up with this:<br>
-$\sigma = 
+Now we have $\sigma'(x) = \left[ \begin{matrix}
+	x^0 + i x^1 &amp; x^2 + i x^3 \\
+	-x^2 + i x^3 &amp; x^0 - i x^1
+\end{matrix} \right]$<br>
+Looks much better.  0 is next to 1 (not 3).  2 is next to 3 (not 1).  Much more modulo-2.<br>
+Also, what do you know, this is the $\mathbb{C}^{2 \times 2}$ representation of the quaternion basis.<br>
+<br>
+
+Now lets complexify <i>this</i> by outering the real with $I_{2x2}$ and the imaginary with $i_{2x2}$ and see what we get...<br>
+<br>
+$\sigma'(x) = 
 	x^0 \left[ \begin{matrix}
 		1 &amp; 0 &amp; 0 &amp; 0 \\
 		0 &amp; 1 &amp; 0 &amp; 0 \\
 		0 &amp; 0 &amp; 1 &amp; 0 \\
 		0 &amp; 0 &amp; 0 &amp; 1
-	\end{matrix} \right]
-	+ x^3 \left[ \begin{matrix}
-		0 &amp; 0 &amp; 0 &amp; -1 \\
-		0 &amp; 0 &amp; 1 &amp; 0 \\
-		0 &amp; -1 &amp; 0 &amp; 0 \\
-		1 &amp; 0 &amp; 0 &amp; 0
-	\end{matrix} \right]
-	+ x^2 \left[ \begin{matrix}
-		0 &amp; 0 &amp; 1 &amp; 0 \\
-		0 &amp; 0 &amp; 0 &amp; 1 \\
-		-1 &amp; 0 &amp; 0 &amp; 0 \\
-		0 &amp; -1 &amp; 0 &amp; 0
 	\end{matrix} \right]
 	+ x^1 \left[ \begin{matrix}
 		0 &amp; -1 &amp; 0 &amp; 0 \\
@@ -256,18 +301,49 @@ $\sigma =
 		0 &amp; 0 &amp; 0 &amp; 1 \\
 		0 &amp; 0 &amp; -1 &amp; 0
 	\end{matrix} \right]
+	+ x^2 \left[ \begin{matrix}
+		0 &amp; 0 &amp; 1 &amp; 0 \\
+		0 &amp; 0 &amp; 0 &amp; 1 \\
+		-1 &amp; 0 &amp; 0 &amp; 0 \\
+		0 &amp; -1 &amp; 0 &amp; 0
+	\end{matrix} \right]
+	+ x^3 \left[ \begin{matrix}
+		0 &amp; 0 &amp; 0 &amp; -1 \\
+		0 &amp; 0 &amp; 1 &amp; 0 \\
+		0 &amp; -1 &amp; 0 &amp; 0 \\
+		1 &amp; 0 &amp; 0 &amp; 0
+	\end{matrix} \right]
 $<br>
 ...and end up with something reembling the quaternion matrix representation:<br>
 $\left[ \begin{matrix}
-	x_0 &amp; x_1 &amp; x_2 &amp; x_3 \\
-	x_1 &amp;-x_0 &amp; x_3 &amp;-x_2 \\
-	x_2 &amp;-x_3 &amp;-x_0 &amp; x_1 \\
-	x_3 &amp; x_2 &amp;-x_1 &amp;-x_0
+	 x_0 &amp;-x_1 &amp; x_2 &amp;-x_3 \\
+	 x_1 &amp; x_0 &amp; x_3 &amp; x_2 \\
+	-x_2 &amp;-x_3 &amp; x_0 &amp; x_1 \\
+	 x_3 &amp;-x_2 &amp;-x_1 &amp; x_0
 \end{matrix} \right]$<br>
-TODO maybe multiply this by diag(1,-1,-1,-1) to fix it?<br>
+There you go, your $\mathbb{R}^{4 \times 4}$ representation of a quaternion.<br>
+<br>
+
+Now for either representations, if we call our elements $\mathbf{1}, \mathbf{i}, \mathbf{j}, \mathbf{k}$ and then make a multiplication table out of them, we will end up with this:<br>
+$\left[\begin{array}{cccc} \mathbf{1} &amp; \mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k}\\ \mathbf{i} &amp; -{\mathbf{1}} &amp; \mathbf{k} &amp; -{\mathbf{j}}\\ \mathbf{j} &amp; -{\mathbf{k}} &amp; -{\mathbf{1}} &amp; \mathbf{i}\\ \mathbf{k} &amp; \mathbf{j} &amp; -{\mathbf{i}} &amp; -{\mathbf{1}}\end{array}\right]$<br>
+There you go, the quaternion multiplication table.<br>
+<br>
+
+So the lesson?  Pauli reinvented quaternions, but with x and z flipped and with the spatial ones multiplied by i.<br>
+And in doing so he ...
+- ended up with the spacetime spinor basis producing $\delta_{\mu\nu}$ instead of a correct $\eta_{\mu\nu}$.<br>
+- needed an extra i in the Pauli equation which could've been merged into the matrix basis.<br>
+- had with an extra i in the exponential map to produce rotations.<br>
 <br>
 
 <hr>
+<br>
+
+<h3> Spin Connection</h3>
+
+Alright so there's our vector in spinor form.
+What's going to be incredibly useful in the future is converting orthonormal vectors to spinors.
+Or so I've been told...<br>
 <br>
 
 Ok now for connections.<br>
