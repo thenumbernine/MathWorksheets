@@ -45,6 +45,9 @@ Alright it's not a real advection equation, because for it to be, the momentum o
 $i \hbar \frac{\partial}{\partial t} \psi = \left( \frac{1}{2 m} (\sigma_i (\hat{p}_i - q A_i))^2 + q \phi \right) \psi$<br>
 <br>
 
+Not sure what I want to do with this...<br>
+<br>
+
 <h3>Spinors:</h3>
 <br>
 
@@ -401,6 +404,63 @@ so if $\omega_a = (\omega_a)^H$...<br>
 ${\Gamma^u}_{ab} I \sigma_u = 2 \omega_a \cdot \sigma_b$<br>
 $\omega_a = \frac{1}{2} {\Gamma^u}_{ab} I \sigma_u \cdot \sigma_b$<br>
 <br>
+
+<hr>
+<br>
+
+<h3>Dirac Gamma Matrices</h3>
+
+$\gamma^0 = 
+	\left[ \begin{matrix}
+		1 &amp; 0 &amp; 0 &amp; 0 \\
+		0 &amp; 1 &amp; 0 &amp; 0 \\
+		0 &amp; 0 &amp; 1 &amp; 0 \\
+		0 &amp; 0 &amp; 0 &amp; 1
+	\end{matrix} \right];
+\gamma^1 = 
+	\left[ \begin{matrix}
+		0 &amp; 0 &amp; 1 &amp; 0 \\
+		0 &amp; 0 &amp; 0 &amp; 1 \\
+		1 &amp; 0 &amp; 0 &amp; 0 \\
+		0 &amp; 1 &amp; 0 &amp; 0
+	\end{matrix} \right];
+\gamma^2 = 
+	\left[ \begin{matrix}
+		0 &amp; 0 &amp;-i &amp; 0 \\
+		0 &amp; 0 &amp; 0 &amp; i \\
+		i &amp; 0 &amp; 0 &amp; 0 \\
+		0 &amp;-i &amp; 0 &amp; 0
+	\end{matrix} \right];
+\gamma^3 = 
+	\left[ \begin{matrix}
+		 0 &amp; 0 &amp; 1 &amp; 0 \\
+		 0 &amp; 0 &amp; 0 &amp;-1 \\
+		-1 &amp; 0 &amp; 0 &amp; 0 \\
+		 0 &amp; 1 &amp; 0 &amp; 0
+	\end{matrix} \right];
+$<br>
+<br>
+
+Looks like the Dirac gamma matrices are just $-i_{2x2} \otimes \sigma_i$.  Kind of fitting since the quaternions are $i \sigma_i$.<br>
+<br>
+
+And now we get ${\gamma^{(\mu|i}}_k {\gamma^{\nu)k}}_j = \eta^{\mu\nu} {\delta^i}_j$<br>
+<br>
+
+Why symmetric?  Why couldn't Dirac just pick a matrix basis that evaluated to $\eta^{\mu\nu}$ without symmetry?  Because he needed the antisymmetric commutation as well.<br>
+<br>
+
+
+Ok so one improvement over the Pauli matrices is now I've got a bit more certianty of the valence of $\gamma^\mu$ -- it's contravariant.  Idk how this makes any difference, covariant vs contravariant, but at least it tips the reader off into the fact that we're going to get a spacetime metric out of this and not just $\delta_{\mu\nu}$ like the Pauli matrix basis gives us.<br>
+<br>
+
+<h3>Dirac Equation</h3>
+
+$(i \hbar \gamma^\mu \partial_\mu - m c) \phi = 0$<br>
+This looks like a relativistic wave equation, but it's weird seeing $\phi$ show up on the source term.<br>
+<br>
+
+
 <a href='.'>Back</a><br><br>
 	</body>
 </html>
