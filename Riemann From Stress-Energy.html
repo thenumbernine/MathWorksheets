@@ -201,7 +201,7 @@ ${R^{ab}}_{cd} = {C^{ab}}_{cd} + \kappa \frac{1}{n - 2} (
 	+ {T^b}_d \delta^a_c
 	- {T^b}_c \delta^a_d
     - \frac{1}{n - 1} T (
-		+ \delta^a_c \delta^b_d
+		  \delta^a_c \delta^b_d
 		- \delta^a_d \delta^b_c
 		+ \delta^b_d \delta^a_c
 		- \delta^b_c \delta^a_d
@@ -220,6 +220,174 @@ ${R^{ab}}_{cd} = {C^{ab}}_{cd} + \kappa \frac{4}{n - 2} (
 	)
 ) {T^u}_v$<br>
 <br>
+
+<h3>Fluid Stress-Energy:</h3>
+
+${T^u}_v = (\rho + P) u^u u_v + P \delta^u_v$<br>
+<br>
+
+${T^u}_u = (\rho + P) u^u u_u + P \delta^u_u$<br>
+${T^u}_u = -(\rho + P) + 4 P$<br>
+${T^u}_u = 3 P - \rho$<br>
+<br>
+
+${R^{ab}}_{cd} = {C^{ab}}_{cd} + \kappa \frac{1}{n - 2} (
+	  \delta^b_d ((\rho + P) u^a u_c + P \delta^a_c)
+	+ \delta^a_c ((\rho + P) u^b u_d + P \delta^b_d)
+	- \delta^b_c ((\rho + P) u^a u_d + P \delta^a_d)
+	- \delta^a_d ((\rho + P) u^b u_c + P \delta^b_c)
+    + \frac{2}{n - 1} (\delta^a_d \delta^b_c - \delta^a_c \delta^b_d)
+		( (\rho + P) u^u u_u + 4 P)
+)$<br>
+${R^{ab}}_{cd} = {C^{ab}}_{cd} + \kappa \frac{1}{n - 2} (
+	  \rho (
+		  u^a u_c \delta^b_d
+		+ u^b u_d \delta^a_c  
+		- u^a u_d \delta^b_c
+		- u^b u_c \delta^a_d
+	)
+	- \frac{2}{n - 1} (\delta^a_d \delta^b_c - \delta^a_c \delta^b_d) \rho
+	+ P (
+		  u^a u_c \delta^b_d
+		+ u^b u_d \delta^a_c 
+		- u^a u_d \delta^b_c
+		- u^b u_c \delta^a_d
+	)
+	+ (\frac{-2 n + 8}{n - 1}) (\delta^a_d \delta^b_c - \delta^a_c \delta^b_d) P
+)$<br>
+<br>
+
+<h3>Electromagnetism Stress-Energy:</h3>
+
+${T^u}_v = \frac{1}{\mu_0} (-{F^u}_a {F^a}_v - \frac{1}{4} \delta^u_v {F^a}_b {F^b}_a)$<br>
+<br>
+
+${T^u}_u = 0$<br>
+<br>
+
+${R^{ab}}_{cd} = {C^{ab}}_{cd} + \kappa \frac{1}{n - 2} (
+	  \delta^b_d \frac{1}{\mu_0} (-{F^a}_u {F^u}_c - \frac{1}{4} \delta^a_c {F^u}_v {F^v}_u)
+	+ \delta^a_c \frac{1}{\mu_0} (-{F^b}_u {F^u}_d - \frac{1}{4} \delta^b_d {F^u}_v {F^v}_u)
+	- \delta^b_c \frac{1}{\mu_0} (-{F^a}_u {F^u}_d - \frac{1}{4} \delta^a_d {F^u}_v {F^v}_u)
+	- \delta^a_d \frac{1}{\mu_0} (-{F^b}_u {F^u}_c - \frac{1}{4} \delta^b_c {F^u}_v {F^v}_u)
+)$<br>
+${R^{ab}}_{cd} = {C^{ab}}_{cd} - \kappa \frac{1}{n - 2} \frac{1}{\mu_0} (
+	  \delta^b_d {F^a}_u {F^u}_c
+	+ \delta^a_c {F^b}_u {F^u}_d
+	- \delta^b_c {F^a}_u {F^u}_d
+	- \delta^a_d {F^b}_u {F^u}_c
+	- \frac{1}{2} {F^u}_v {F^v}_u (
+		  \delta^a_d \delta^b_c
+		- \delta^a_c \delta^b_d
+	)
+)$<br>
+<br>
+
+Substituting:<br>
+${F^u}_v = n^u E_v - n^v E_u + {\epsilon^u}_{vab} n^a B^b$<br>
+... where $E_u n^u = B_u n^u = 0$<br>
+... and $n_u n^u = -1$<br>
+<br>
+
+${F^u}_a {F^a}_v = (n^u E_a - n_a E^u + {\epsilon^u}_{abc} n^b B^c) (n^a E_v - n_v E^a + {\epsilon^a}_{vde} n^d B^e)$<br>
+$= 
+	  n^u E_a n^a E_v
+	- n^u E_a n_v E^a
+	+ n^u E_a {\epsilon^a}_{vde} n^d B^e
+	- n_a E^u n^a E_v
+	+ n_a E^u  n_v E^a
+	- n_a E^u  {\epsilon^a}_{vde} n^d B^e
+	+ {\epsilon^u}_{abc} n^b B^c n^a E_v
+	- {\epsilon^u}_{abc} n^b B^c  n_v E^a
+	+ {\epsilon^u}_{abc} n^b B^c  {\epsilon^a}_{vde} n^d B^e
+$<br>
+$= 
+	  E^u E_v
+	- n^u n_v E_a E^a
+	- n^u \epsilon_{daev} n^d E^a B^e
+	- \epsilon^{bacu} n_b E_a B_c n_v
+	- \epsilon^{ubca} \epsilon_{vdea} n_b B_c n^d B^e
+$<br>
+Let $S_u = n^a \epsilon_{abcu} E^b B^c$<br>
+$= 
+	  E^u E_v
+	- n^u n_v E_a E^a
+	- n^u S_v
+	+ S^u n_v
+	+ \delta^{ubc}_{vde} n_b B_c n^d B^e
+$<br>
+$= 
+	  E^u E_v
+	- n^u n_v E_a E^a
+	- n^u S_v
+	+ S^u n_v
+	+ (
+		  \delta^u_v \delta^b_d \delta^c_e
+		+ \delta^u_d \delta^b_e \delta^c_v
+		+ \delta^u_e \delta^b_v \delta^c_d
+		- \delta^u_e \delta^b_d \delta^c_v
+		- \delta^u_d \delta^b_v \delta^c_e
+		- \delta^u_v \delta^b_e \delta^c_d
+	) n_b B_c n^d B^e
+$<br>
+$= 
+	  E^u E_v
+	- n^u n_v E_a E^a
+	- n^u S_v
+	+ S^u n_v
+	- \delta^u_v B_c B^c
+	+ B^u B_v
+	- n_v n^u B_c B^c
+$<br>
+TODO seems that extra delta shouldn't be there, or there should be a delta with E ... ?<br>
+<br>
+
+${F^u}_v {F^v}_u = (n^u E_v - n_v E^u + {\epsilon^u}_{vab} n^a B^b) (n^v E_u - n_u E^v + {\epsilon^v}_{ucd} n^c B^d)$<br>
+${F^u}_v {F^v}_u = 
+	  n^u E_v n^v E_u
+	- n^u E_v n_u E^v
+	+ n^u E_v {\epsilon^v}_{ucd} n^c B^d
+	- n_v E^u n^v E_u
+	+ n_v E^u n_u E^v
+	- n_v E^u {\epsilon^v}_{ucd} n^c B^d
+	+ {\epsilon^u}_{vab} n^a B^b n^v E_u
+	- {\epsilon^u}_{vab} n^a B^b n_u E^v
+	+ {\epsilon^u}_{vab} n^a B^b {\epsilon^v}_{ucd} n^c B^d
+$<br>
+${F^u}_v {F^v}_u = 
+	  2 E^u E_u
+	+ \epsilon_{uvab} {\epsilon^{vu}}_{cd} n^a B^b n^c B^d
+$<br>
+${F^u}_v {F^v}_u = 
+	  2 E^u E_u
+	- 2 \delta^{ab}_{cd} n^a B^b n_c B_d
+$<br>
+${F^u}_v {F^v}_u = 
+	  2 E^u E_u
+	- 2 (\delta^a_c \delta^b_d - \delta^a_d \delta^b_c) n^a B^b n_c B_d
+$<br>
+${F^u}_v {F^v}_u = 
+	  2 E^u E_u
+	- 2 \delta^a_c \delta^b_d n^a B^b n_c B_d
+	+ 2 \delta^a_d \delta^b_c n^a B^b n_c B_d
+$<br>
+${F^u}_v {F^v}_u = 
+	  2 E^u E_u
+	+ 2 B^u B_u
+$<br>
+<br>
+
+${R^{ab}}_{cd} = {C^{ab}}_{cd} - \kappa \frac{1}{n - 2} \frac{1}{\mu_0} (
+	  \delta^b_d {F^a}_u {F^u}_c
+	+ \delta^a_c {F^b}_u {F^u}_d
+	- \delta^b_c {F^a}_u {F^u}_d
+	- \delta^a_d {F^b}_u {F^u}_c
+	- (E^u E_u + B^u B_u) (
+		  \delta^a_d \delta^b_c
+		- \delta^a_c \delta^b_d
+	)
+)$<br>
+
 
 	</body>
 </html>
