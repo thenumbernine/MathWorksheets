@@ -8,8 +8,6 @@ local base = [[https://thenumbernine.github.io/math/]]
 
 local s = table{[[
 Some helper worksheets for my projects.
-
-Here's the CDN URLs:
 ]]}
 
 local fs = path:rdir(function(f, isdir)

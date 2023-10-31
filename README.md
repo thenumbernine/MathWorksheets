@@ -1,7 +1,5 @@
 Some helper worksheets for my projects.
 
-Here's the CDN URLs:
-
 [3x3 transform dof decomposition](https://thenumbernine.github.io/math/3x3%20transform%20dof%20decomposition.html)
 
 [ADM Bona-Masso Eigenvectors](https://thenumbernine.github.io/math/ADM%20Bona%2dMasso%20Eigenvectors.html)
