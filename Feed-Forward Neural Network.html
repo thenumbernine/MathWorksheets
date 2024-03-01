@@ -121,55 +121,49 @@ $d = d_1 = $ our desired value, which will be $-x$.  So if our input is 1 for Tr
 $e = d - y = (-x) - w x = (-1 - w) x$<br>
 $E = \frac{1}{2} (e_1)^2 = \frac{1}{2} ((-1 - w) x )^2$<br>
 Weight updates:<br>
-$\frac{\partial w}{\partial t} = -\frac{\partial E}{\partial w} = ((-1 - w) w) (x)^2 $<br>
-Fixed points at:<br>
-$\frac{\partial w}{\partial t} = 0$ for...<br>
-$0 = ((-1 - w) w) (x)^2 $<br>
-...which is true for $x = 0$, or for $w = 0$, or for $w = -1$<br>
-So those are our dynamic system 3 fixed points.<br>
+$\frac{\partial w}{\partial t} = -\frac{\partial E}{\partial w} = -(1 + w) x^2 $<br>
+<br>
+
+Fixed points are where $\frac{\partial w}{\partial t} = 0$.  This is true for...<br>
+$0 = (1 + w) x^2 $<br>
+...which is true for $x = 0$, or for $w = -1$<br>
+So those are our dynamic system 2 fixed points.<br>
 We don't have to worry about the $x = 0$, since our inputs are either +1 or -1.<br>
-So we have fixed points at $w = 0$ and $w = -1$<br>
+So we have fixed points at $w = -1$<br>
 Of course $w = -1$ is our desired answer, since we are trying to reproduce the behavior of the equation $y(x) = -x$, i.e. $y(x) = w x$ for $w = -1$.<br>
 Let's assume an Euler integration:<br>
 $w(t + 1) = w(t) + \frac{\partial w(t)}{\partial t}$<br>
 $w(t + 1) = w(t) - \frac{\partial E(t)}{\partial w(t)}$<br>
-$w(t+1) = w(t) + ((-1 - w(t)) w(t)) (x(t))^2$<br>
-Let's look at the dynamics of each point, assuming Euler integration.<br>
-$\frac{\partial w(t+1)}{\partial w(t)} = 1 +  (x(t))^2 ( (-1 - w(t)) + (-1) w(t) )
-	= 1 +  (x(t))^2 ( -1 - 2 w(t) )
-$<br>
+$w(t + 1) = w(t) - (1 + w(t)) (x(t))^2 = -x(t)^2 + (1 - x(t)^2) w(t)$<br>
+<br>
 
 Dynamics classification says:<br>
 $|\frac{\partial w(t+1)}{\partial w(t)}| \gt 1$ is a source, i.e. the system will diverge from this fixed point.<br>
 $|\frac{\partial w(t+1)}{\partial w(t)}| = 1$ is indeterminant.  Or does this mean it will neither converge nor diverge? I forget...<br> 
 $|\frac{\partial w(t+1)}{\partial w(t)}| \lt 1$ is a sink, i.e. the system will converge to this fixed point.<br>
 $|\frac{\partial w(t+1)}{\partial w(t)}| = 0$ is a super-critical sink, i.e. the system is stationary at this point.<br>
-Fixed-point $x = 0$:<br>
-If we provide $x(t) = 0$ as an input then our $\frac{\partial w(t+1)}{\partial w(t)} = 1$, which means we have indeterminant behavior neither converging nor diverging.  Sounds right, since this isn't a valid 'True' or 'False' input.<br>
-Fixed-point $w = 0$:<br>
-Our other fixed point is at $w(t) = 0$, for which $\frac{\partial w(t+1)}{\partial w(t)} = 1 - (x(t))^2$. This will be indeterminant for $x(t) = 0$ and $x(t) = \pm \sqrt{2}$, a sink for $|x(t)| \in (0, \sqrt{2})$, and a source for $|x(t)| \gt \sqrt{2}$.<br>
-If we stick to our prescribed inputs of $x = \pm 1$ then we have a sink, and not just any sink but a super-critical sink since we find $\frac{\partial w(t+1)}{\partial w(t)} = 0$<br>
-So that means, if our weight happens to be initialized at $w = 0$ then it will stay at $w = 0$ forever, provided our inputs are valid.<br>
-Fixed-point $w = -1$:<br>	
-$\frac{\partial w(t+1)}{\partial w(t)} = 1 +  (x(t))^2 ( (-1 - w(t)) + (-1) w(t) ) = 1 + (x(t))^2$<br>
-... which is diverging.  Hmm.  It is indeterminant for $x = 0$, and diverging for any other x value.<br>
-<br>
-For what values is the system converging?<br>
-$|\frac{\partial w(t+1)}{\partial w(t)}| = 1 +  (x(t))^2 ( -1 - 2 w(t) ) \lt 1$<br>
-... for $-1 \lt 1 +  (x(t))^2 ( -1 - 2 w(t) ) \lt 1$<br>
-... for $-2 \lt (x(t))^2 ( -1 - 2 w(t) ) \lt 0$<br>
-... for $-2 \frac{1}{x^2} \lt -1 - 2 w(t) \lt 0$ (assuming $x \ne 0$)<br>
-... for $1 - 2 \frac{1}{x^2} \lt - 2 w(t) \lt 1$<br>
-... for $-1 \lt 2 w(t) \lt 2 \frac{1}{x^2} - 1$<br>
-... for $-\frac{1}{2} \lt w(t) \lt \frac{1}{x^2} - \frac{1}{2}$<br>
-... and for our constraint of $x = \pm 1$, we find:<br>
-$-\frac{1}{2} \lt w(t) \lt \frac{1}{2}$<br>
-So that is an interesting situation.  Our logical-NOT network will only converge while its weights $|w| \lt \frac{1}{2}$.<br>
 <br>
 
-TODO repeat the process with T/F set to {0,1}.<br>
-then using a sigmoid activation with T/F set to $\{0,1\}$ vs $\{\frac{1}{10}, \frac{9}{10}\}$ ... and with bias weight (two weight system now) since the classification needs to now fit to $y(x) = 1 - x$ instead of $y(x) = x$<br>
-then using tanh activation with T/F set to $\{-1,1\}$ vs $\{\frac{-9}{10}, \frac{9}{10}\}$<br>
+$|\frac{\partial w(t+1)}{\partial w(t)}| = |1 - x(t)^2|$<br>
+<br>
+
+In either case our fixed point convergence is independent of our dynamic variable, the weight, and only dependent on the input magnitude.<br>
+If we provide $x(t) = 0$ as an input then our $|\frac{\partial w(t+1)}{\partial w(t)}| = 1$, which means we have indeterminant behavior neither converging nor diverging.<br>
+Now the fixed points are specific to the update, which is specific to our desired training value, which is defined as $\pm x$ for inputs $x \in \{ -1, 1 \}$, so good thing $x = 0$ isn't a valid 'True' or 'False' input.<br>
+If we use $x \in (-\sqrt{2}, 0) \bigcup (0, \sqrt{2})$ then we will converge.<br>  For any other $x \gt 0$ values we will diverge.<br>
+<br>
+
+For what values is the system converging?<br>
+$|\frac{\partial w(t+1)}{\partial w(t)}| = |1 - x(t)^2| \lt 1$<br>
+... for $-1 \lt (x(t))^2 - 1 \lt 1$<br>
+... for $0 \lt x(t)^2 \lt 2$<br>
+This is true for $x \in (-\sqrt{2}, 0) \bigcup (0, \sqrt{2})$<br>
+<br>
+
+TODO repeat the process with non-identity $\sigma$, like tanh.<br>
+Then using tanh activation with T/F set to $\{-1,1\}$ vs $\{\frac{-9}{10}, \frac{9}{10}\}$<br>
+Then repeat the process with T/F set to {0,1}.<br>
+Then using a sigmoid activation with T/F set to $\{0,1\}$ vs $\{\frac{1}{10}, \frac{9}{10}\}$ ... and with bias weight (two weight system now) since the classification needs to now fit to $y(x) = 1 - x$ instead of $y(x) = x$<br>
 <br>
 
 TODO next do classification of OR problem, AND problem with 1-layer.<br>
