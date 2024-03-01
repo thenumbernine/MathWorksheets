@@ -1,0 +1,178 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<title>neural network dynamics</title>
+	</head>
+	<body>
+Network topology:<br>
+$l = $ number of layers.<br>
+$n_k = $ input size of the k'th layer.<br>
+$m_k = $ output size of the k'th layer.<br>
+$\sigma_k = $ k'th layer activation function.<br>
+<br>
+
+Network state, independent of any signal:<br>
+$w_{k, i, j}(t) = $ k'th layer linear relation between i'th output and j'th input, at iteration "t"
+	for $1 \le k \le l$, 
+	$1 \le i \le m_l$,
+	$1 \le j \le n_l$.
+	<br>
+For networks with using bias, $1 \le j \le n_l+1$.<br>
+Yes I am conflating iteration and time.  I don't care about time-dependent input data or state-based recurrent-networks right now.<br>
+$w_{k, i, j}(0) =$ initial weight value at iteration t=0. Weights are initialized randomly.<br>
+<br>
+
+Network feed-forward live variables:<br>
+Inputs are provided from some external environment.<br>
+$x_{k, j}(t) =$ k'th layer j'th input, at iteration "t"
+	for $1 \le k \le l$ and $1 \le j \le n_l$.<br>
+For networks using bias, $1 \le j \le n_l + 1$, with $x_{k, n_l + 1}$ always assigned to 1.
+	<br>
+$\xi_{k, i}(t) = \underset{j=1}{\overset{n_l+1}\Sigma} \left( w_{k, i, j}(t) \cdot x_{k, j}(t) \right) = $ k'th layer i'th output.<br>
+$y_{k, i}(t) = \sigma_k ( \xi_{k, i}(t) ) = \sigma_k ( \Sigma_j w_{k, i, j}(t) \cdot x_{k, j}(t) ) = $ k'th layer output.<br>
+$x_j(t) = x_{1, j}(t) =$ first layer j'th input = network j'th input.<br>
+$x_{k, j}(t) = y_{k-1, i}(t) =$ k'th layer j'th input = (k-1)'th layer j'th output.<br>
+$y_j(t) = y_{l, j}(t) = $ network output.<br>
+<br>
+
+Network training variables:<br>
+$d_j(t) = $ desired output (for trained data) for iteration "t".<br>
+$e_{l,j}(t) = d_j(t) - y_j(t) =$ residual of the output (with gradient towards the desired)<br>
+$E(t) = \frac{1}{2} \Sigma_j (e_{l,j}(t))^2 =$ network energy function to minimize.<br>
+The one-half out front is to cancel the derivative of the square term, so the gradient becomes proportional to the residual vector.<br>
+<br>
+
+There's the desired, and residual functions.<br>
+I might drop the "t" parameters and declare the dependency to be implicit, just like in physics.<br>
+<br>
+
+Back-propagation update:<br>
+Update weights to minimize error:<br>
+$\frac{\partial w_{k,i,j}}{\partial t} = -\frac{\partial E}{\partial w_{k,i,j}}$<br>
+Gradient of the final layer weights:<br>
+$\frac{\partial E}{\partial w_{l,i,j}} 
+	= \frac{\partial E}{\partial e_{l,i}} 
+		\frac{\partial e_{l,i}}{\partial y_{l,a}} 
+		\frac{\partial y_{l,a}}{\partial \xi_{l,b}} 
+		\frac{\partial \xi_{l,b}}{\partial x_{l,j}}
+$<br>
+$\frac{\partial E}{\partial e_{l,i}} 
+	= \frac{\partial}{\partial e_{l,i}} \left( \frac{1}{2} \Sigma_j (e_{l,j})^2 \right)
+	= \Sigma_j \left( e_{l,j} \cdot \frac{\partial e_{l,j}}{\partial e_{l,i}} \right)
+	= \Sigma_j \left( e_{l,j} \cdot \delta_{ij} \right)
+	= e_{l,i}
+$<br>
+$\frac{\partial e_{l,i}}{\partial y_{l,a}}
+	= \frac{\partial}{\partial y_{l,a}} \left( d_i - y_{l,i} \right)
+	= -\delta_{ia}
+$<br>
+Gradient calculations of variables that are valid for each layer:<br>
+$\frac{\partial y_{k,a}}{\partial \xi_{k,b}} 
+	= \frac{\partial}{\partial \xi_{k,b}} \left( \sigma_k ( \xi_{k,a} ) \right)
+	= \sigma_k' ( \xi_{k,a} ) \frac{\partial \xi_{k,a}}{\partial \xi_{k,b}} 
+	= \sigma_k' ( \xi_{k,a} ) \cdot \delta_{ab}
+$<br>
+$\frac{\partial \xi_{k,b}}{\partial x_{k,j}}
+	= \frac{\partial }{\partial x_{k,j}} \left( w_{k, b, c} \cdot x_{k, c} \right)
+	= w_{k, b, c} \cdot \frac{\partial x_{k, c}}{\partial x_{k,j}}
+	= w_{k, b, c} \cdot \delta_{cj}
+	= w_{k, b, j}
+$<br>
+Substitute our computed terms:<br>
+$\frac{\partial E}{\partial w_{l,i,j}} 
+	= e_{l,i}
+		\cdot -\delta_{ia}
+		\cdot \sigma_l' (\xi_{l,b} ) \delta_{ab}
+		\cdot w_{l, b, j}
+	= -(d_i - y_{l,i}) \sigma_l' ( \xi_{l,i} ) w_{l, i, j}
+$<br>
+$\frac{\partial w_{k,i,j}}{\partial t} = (d_i - y_{l,i}) \sigma_l' ( \xi_{l,i} ) w_{l, i, j}$<br>
+Gradient of previous layers weights:<br>
+$\frac{\partial E}{\partial w_{k,i,j}} 
+	= \frac{\partial E}{\partial y_{k,i}} 
+		\frac{\partial y_{k,i}}{\partial \xi_{k,a}} 
+		\frac{\partial \xi_{k,a}}{\partial x_{k,j}}
+$<br>
+<br>
+
+A neural-network weight matrix is just a linear transform.  The output test is typically looking at whether the output is greater than some value.  
+So assuming the activation is near-linear (which it tends to be for some domain),
+we are really looking at a collection of hyperplanes that are forming a convex hull in our output space around whatever we want to classify.<br>
+<br>
+
+Let's look at a single-neuron with-bias trained to the logical-NOT problem.<br>
+Topology: <br>
+$l = 1$, $n = \{ 1 \}$, $m = \{ 1 \}$<br>
+$\sigma_1(x) = x = $ identity for activation function.<br>
+State: <br>
+$w = w_{1, 1, 1} = $ weight that corresponds with our single input.<br>
+No bias will be used.
+Live variables:<br>
+$x = x_1 = x_{1, 1} = $ our network input, which will be +1 for 'True' and -1 for 'False'.
+Notice that if you were to plot our x vs y, we are trying to reproduce the logical-NOT function $y(x) = -x$.<br>
+This means we won't need any extra linear terms.  We don't need a bias term for our weight matrix. 
+If I picked 'False' to be 0 then I would need the bias.<br>
+$\xi_{1, 1} = w x = $ the linear transform of our inputs, aka "net-accumulated sum of the neuron".<br>
+$y = y_1 = y_{1,1} = \sigma_1 ( \xi_{1,1} ) = \xi_{1,1} = w x = $ the network output.<br>
+Training variables:<br>
+$d = d_1 = $ our desired value, which will be $-x$.  So if our input is 1 for True then our desired output will be -1 for False, and vice-versa.<br>
+$e = d - y = (-x) - w x = (-1 - w) x$<br>
+$E = \frac{1}{2} (e_1)^2 = \frac{1}{2} ((-1 - w) x )^2$<br>
+Weight updates:<br>
+$\frac{\partial w}{\partial t} = -\frac{\partial E}{\partial w} = ((-1 - w) w) (x)^2 $<br>
+Fixed points at:<br>
+$\frac{\partial w}{\partial t} = 0$ for...<br>
+$0 = ((-1 - w) w) (x)^2 $<br>
+...which is true for $x = 0$, or for $w = 0$, or for $w = -1$<br>
+So those are our dynamic system 3 fixed points.<br>
+We don't have to worry about the $x = 0$, since our inputs are either +1 or -1.<br>
+So we have fixed points at $w = 0$ and $w = -1$<br>
+Of course $w = -1$ is our desired answer, since we are trying to reproduce the behavior of the equation $y(x) = -x$, i.e. $y(x) = w x$ for $w = -1$.<br>
+Let's assume an Euler integration:<br>
+$w(t + 1) = w(t) + \frac{\partial w(t)}{\partial t}$<br>
+$w(t + 1) = w(t) - \frac{\partial E(t)}{\partial w(t)}$<br>
+$w(t+1) = w(t) + ((-1 - w(t)) w(t)) (x(t))^2$<br>
+Let's look at the dynamics of each point, assuming Euler integration.<br>
+$\frac{\partial w(t+1)}{\partial w(t)} = 1 +  (x(t))^2 ( (-1 - w(t)) + (-1) w(t) )
+	= 1 +  (x(t))^2 ( -1 - 2 w(t) )
+$<br>
+
+Dynamics classification says:<br>
+$|\frac{\partial w(t+1)}{\partial w(t)}| \gt 1$ is a source, i.e. the system will diverge from this fixed point.<br>
+$|\frac{\partial w(t+1)}{\partial w(t)}| = 1$ is indeterminant.  Or does this mean it will neither converge nor diverge? I forget...<br> 
+$|\frac{\partial w(t+1)}{\partial w(t)}| \lt 1$ is a sink, i.e. the system will converge to this fixed point.<br>
+$|\frac{\partial w(t+1)}{\partial w(t)}| = 0$ is a super-critical sink, i.e. the system is stationary at this point.<br>
+Fixed-point $x = 0$:<br>
+If we provide $x(t) = 0$ as an input then our $\frac{\partial w(t+1)}{\partial w(t)} = 1$, which means we have indeterminant behavior neither converging nor diverging.  Sounds right, since this isn't a valid 'True' or 'False' input.<br>
+Fixed-point $w = 0$:<br>
+Our other fixed point is at $w(t) = 0$, for which $\frac{\partial w(t+1)}{\partial w(t)} = 1 - (x(t))^2$. This will be indeterminant for $x(t) = 0$ and $x(t) = \pm \sqrt{2}$, a sink for $|x(t)| \in (0, \sqrt{2})$, and a source for $|x(t)| \gt \sqrt{2}$.<br>
+If we stick to our prescribed inputs of $x = \pm 1$ then we have a sink, and not just any sink but a super-critical sink since we find $\frac{\partial w(t+1)}{\partial w(t)} = 0$<br>
+So that means, if our weight happens to be initialized at $w = 0$ then it will stay at $w = 0$ forever, provided our inputs are valid.<br>
+Fixed-point $w = -1$:<br>	
+$\frac{\partial w(t+1)}{\partial w(t)} = 1 +  (x(t))^2 ( (-1 - w(t)) + (-1) w(t) ) = 1 + (x(t))^2$<br>
+... which is diverging.  Hmm.  It is indeterminant for $x = 0$, and diverging for any other x value.<br>
+<br>
+For what values is the system converging?<br>
+$|\frac{\partial w(t+1)}{\partial w(t)}| = 1 +  (x(t))^2 ( -1 - 2 w(t) ) \lt 1$<br>
+... for $-1 \lt 1 +  (x(t))^2 ( -1 - 2 w(t) ) \lt 1$<br>
+... for $-2 \lt (x(t))^2 ( -1 - 2 w(t) ) \lt 0$<br>
+... for $-2 \frac{1}{x^2} \lt -1 - 2 w(t) \lt 0$ (assuming $x \ne 0$)<br>
+... for $1 - 2 \frac{1}{x^2} \lt - 2 w(t) \lt 1$<br>
+... for $-1 \lt 2 w(t) \lt 2 \frac{1}{x^2} - 1$<br>
+... for $-\frac{1}{2} \lt w(t) \lt \frac{1}{x^2} - \frac{1}{2}$<br>
+... and for our constraint of $x = \pm 1$, we find:<br>
+$-\frac{1}{2} \lt w(t) \lt \frac{1}{2}$<br>
+So that is an interesting situation.  Our logical-NOT network will only converge while its weights $|w| \lt \frac{1}{2}$.<br>
+<br>
+
+TODO repeat the process with T/F set to {0,1}.<br>
+then using a sigmoid activation with T/F set to $\{0,1\}$ vs $\{\frac{1}{10}, \frac{9}{10}\}$ ... and with bias weight (two weight system now) since the classification needs to now fit to $y(x) = 1 - x$ instead of $y(x) = x$<br>
+then using tanh activation with T/F set to $\{-1,1\}$ vs $\{\frac{-9}{10}, \frac{9}{10}\}$<br>
+<br>
+
+TODO next do classification of OR problem, AND problem with 1-layer.<br>
+then do XOR problem, and show it cannot be done with 1-layer and needs 2-layers.<br>
+	</body>
+</html>
