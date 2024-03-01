@@ -113,7 +113,7 @@ Live variables:<br>
 $x = x_1 = x_{1, 1} = $ our network input, which will be +1 for 'True' and -1 for 'False'.
 Notice that if you were to plot our x vs y, we are trying to reproduce the logical-NOT function $y(x) = -x$.<br>
 This means we won't need any extra linear terms.  We don't need a bias term for our weight matrix. 
-If I picked 'False' to be 0 then I would need the bias.<br>
+If I picked 'False' to be 0 then our output function of the input would be $y(x) = 1 - x$, which requires a bias value, and I would need to simulate a bias weight.<br>
 $\xi_{1, 1} = w x = $ the linear transform of our inputs, aka "net-accumulated sum of the neuron".<br>
 $y = y_1 = y_{1,1} = \sigma_1 ( \xi_{1,1} ) = \xi_{1,1} = w x = $ the network output.<br>
 Training variables:<br>
