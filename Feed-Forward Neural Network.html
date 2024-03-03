@@ -6,6 +6,9 @@
 		<title>neural network dynamics</title>
 	</head>
 	<body>
+
+<h2>Network Description:</h2>
+
 Network topology:<br>
 $l = $ number of layers.<br>
 $n_k = $ input size of the k'th layer.<br>
@@ -102,13 +105,16 @@ So assuming the activation is near-linear (which it tends to be for some domain)
 we are really looking at a collection of hyperplanes that are forming a convex hull in our output space around whatever we want to classify.<br>
 <br>
 
+<h2>Example: Logical-NOT</h2>
+
 Let's look at a single-neuron with-bias trained to the logical-NOT problem.<br>
+We are going to classify True = 1 and False = -1, and therefore our desired problem to reproduce is $y(x) = -x$.  Our output classification will be $y \gt 0$ for True, otherwise False.<br>
 Topology: <br>
 $l = 1$, $n = \{ 1 \}$, $m = \{ 1 \}$<br>
 $\sigma_1(x) = x = $ identity for activation function.<br>
 State: <br>
 $w = w_{1, 1, 1} = $ weight that corresponds with our single input.<br>
-No bias will be used.
+No bias is needed and no bias will be used.<br>
 Live variables:<br>
 $x = x_1 = x_{1, 1} = $ our network input, which will be +1 for 'True' and -1 for 'False'.
 Notice that if you were to plot our x vs y, we are trying to reproduce the logical-NOT function $y(x) = -x$.<br>
@@ -119,7 +125,7 @@ $y = y_1 = y_{1,1} = \sigma_1 ( \xi_{1,1} ) = \xi_{1,1} = w x = $ the network ou
 Training variables:<br>
 $d = d_1 = $ our desired value, which will be $-x$.  So if our input is 1 for True then our desired output will be -1 for False, and vice-versa.<br>
 $e = d - y = (-x) - w x = (-1 - w) x$<br>
-$E = \frac{1}{2} (e_1)^2 = \frac{1}{2} ((-1 - w) x )^2$<br>
+$E = \frac{1}{2} e^2 = \frac{1}{2} ((-1 - w) x )^2$<br>
 Weight updates:<br>
 $\frac{\partial w}{\partial t} = -\frac{\partial E}{\partial w} = -(1 + w) x^2 $<br>
 <br>
@@ -132,38 +138,148 @@ We don't have to worry about the $x = 0$, since our inputs are either +1 or -1.<
 So we have fixed points at $w = -1$<br>
 Of course $w = -1$ is our desired answer, since we are trying to reproduce the behavior of the equation $y(x) = -x$, i.e. $y(x) = w x$ for $w = -1$.<br>
 Let's assume an Euler integration:<br>
-$w(t + 1) = w(t) + \frac{\partial w(t)}{\partial t}$<br>
-$w(t + 1) = w(t) - \frac{\partial E(t)}{\partial w(t)}$<br>
-$w(t + 1) = w(t) - (1 + w(t)) (x(t))^2 = -x(t)^2 + (1 - x(t)^2) w(t)$<br>
+$w(t + \Delta t) = w(t) + \Delta t \cdot \frac{\partial w(t)}{\partial t}$<br>
+$w(t + \Delta t) = w(t) - \Delta t \cdot \frac{\partial E(t)}{\partial w(t)}$<br>
+$w(t + \Delta t) = w(t) - \Delta t \cdot (1 + w(t)) x(t)^2 = -\Delta t \cdot x(t)^2 + (1 - \Delta t \cdot x(t)^2) w(t)$<br>
 <br>
 
-Dynamics classification says:<br>
-$|\frac{\partial w(t+1)}{\partial w(t)}| \gt 1$ is a source, i.e. the system will diverge from this fixed point.<br>
-$|\frac{\partial w(t+1)}{\partial w(t)}| = 1$ is indeterminant.  Or does this mean it will neither converge nor diverge? I forget...<br> 
-$|\frac{\partial w(t+1)}{\partial w(t)}| \lt 1$ is a sink, i.e. the system will converge to this fixed point.<br>
-$|\frac{\partial w(t+1)}{\partial w(t)}| = 0$ is a super-critical sink, i.e. the system is stationary at this point.<br>
+Dynamics classification says, for some sequence $x_n$:<br>
+$|\frac{\partial x_{n+1}}{\partial x_n}| \gt 1$ is a source, i.e. the system will diverge from this fixed point.<br>
+$|\frac{\partial x_{n+1}}{\partial x_n}| = 1$ is indeterminant.  Or does this mean it will neither converge nor diverge? I forget...<br> 
+$|\frac{\partial x_{n+1}}{\partial x_n}| \lt 1$ is a sink, i.e. the system will converge to this fixed point.<br>
+$|\frac{\partial x_{n+1}}{\partial x_n}| = 0$ is a super-critical sink, i.e. the system is stationary at this point.<br>
 <br>
 
-$|\frac{\partial w(t+1)}{\partial w(t)}| = |1 - x(t)^2|$<br>
+$|\frac{\partial w(t + \Delta t)}{\partial w(t)}| = |1 - \Delta t \cdot x(t)^2|$<br>
 <br>
 
 In either case our fixed point convergence is independent of our dynamic variable, the weight, and only dependent on the input magnitude.<br>
-If we provide $x(t) = 0$ as an input then our $|\frac{\partial w(t+1)}{\partial w(t)}| = 1$, which means we have indeterminant behavior neither converging nor diverging.<br>
+If we provide $x(t) = 0$ as an input then our $|\frac{\partial w(t + \Delta t)}{\partial w(t)}| = 1$, which means we have indeterminant behavior neither converging nor diverging.<br>
 Now the fixed points are specific to the update, which is specific to our desired training value, which is defined as $\pm x$ for inputs $x \in \{ -1, 1 \}$, so good thing $x = 0$ isn't a valid 'True' or 'False' input.<br>
-If we use $x \in (-\sqrt{2}, 0) \bigcup (0, \sqrt{2})$ then we will converge.<br>  For any other $x \gt 0$ values we will diverge.<br>
 <br>
 
 For what values is the system converging?<br>
-$|\frac{\partial w(t+1)}{\partial w(t)}| = |1 - x(t)^2| \lt 1$<br>
-... for $-1 \lt (x(t))^2 - 1 \lt 1$<br>
-... for $0 \lt x(t)^2 \lt 2$<br>
-This is true for $x \in (-\sqrt{2}, 0) \bigcup (0, \sqrt{2})$<br>
+$|\frac{\partial w(t + \Delta t)}{\partial w(t)}| = |1 - \Delta t \cdot x(t)^2| \lt 1$<br>
+$-1 \lt \Delta t \cdot x(t)^2 - 1 \lt 1$<br>
+$0 \lt \Delta t \cdot x(t)^2 \lt 2$<br>
+... assuming $\Delta t \gt 0$:<br>
+$0 \lt x(t)^2 \lt \frac{2}{\Delta t}$<br>
+This is true for $x \in (-\sqrt{\frac{2}{\Delta t}}, 0) \bigcup (0, \sqrt{\frac{2}{\Delta t}})$<br>
+If we use $x \in (-\sqrt{\frac{2}{\Delta t}}, 0) \bigcup (0, \sqrt{\frac{2}{\Delta t}})$ then we will converge.<br>
+For $x \gt 0$ values we will diverge.<br>
+Since our inputs are $x = \pm 1$, this tells us that we can only use a timestep:<br>
+$1 \lt \frac{2}{\Delta t}$<br>
+$\Delta t \lt 2$<br>
 <br>
 
 TODO repeat the process with non-identity $\sigma$, like tanh.<br>
 Then using tanh activation with T/F set to $\{-1,1\}$ vs $\{\frac{-9}{10}, \frac{9}{10}\}$<br>
 Then repeat the process with T/F set to {0,1}.<br>
 Then using a sigmoid activation with T/F set to $\{0,1\}$ vs $\{\frac{1}{10}, \frac{9}{10}\}$ ... and with bias weight (two weight system now) since the classification needs to now fit to $y(x) = 1 - x$ instead of $y(x) = x$<br>
+<br>
+
+<h2>Example: Logical-AND</h2>
+
+We are going to classify True = 1 and False = -1, $y \gt 0$ for true, $y \le 0$ for false.<br>
+Therefore our desired problem to reproduce is something along the lines of:<br>
+$y(x_1, x_2) = \frac{1}{2} x_1 + \frac{1}{2} x_2 - \frac{1}{2}$, such that $y(-1,-1) = -\frac{3}{2} = F, y(-1,1) = -\frac{1}{2} = F, y(1,-1) = -\frac{1}{2} = F, y(1,1) = \frac{1}{2} = T$ .<br>
+Topology:<br>
+$l = 1, n = \{2\}, m = \{1\}$<br>
+$\sigma(x) = \sigma_1(x) = x =$ identity activation.<br>
+State:<br>
+$w_1 = w_{1,1,1}, w_2 = w_{1,1,2}, w_3 = w_{1,1,3}$ are our weights, (with $w_3$ being the bias input weight).<br>
+Live variables:<br>
+$x_1 = x_{1,1}; x_2 = x_{1,2}$ are our inputs.<br>
+$\xi_1 = w_1 x_1 + w_2 x_2 + w_3$<br>
+$y = \sigma(\xi_1) = w_1 x_1 + w_2 x_2 + w_3$<br>
+Training variables:<br>
+We can do more exact with our description of our desired value as a function of our inputs, by multiplying our inputs, however neural networks themselves are planes are linear transformations and cannot directly reproduce multiplication.<br>
+$d(x_1, x_2) = 2 \left( \frac{1}{2}(x_1 + 1) \cdot \frac{1}{2} (x_2 + 1) \right) - 1 = \frac{1}{2} (x_1 x_2 + x_1 + x_2 - 1)$.<br>
+$e = d - y = \frac{1}{2} (x_1 x_2 + x_1 + x_2 - 1) - \left( w_1 x_1 + w_2 x_2 + w_3 \right)$<br>
+$e = \frac{1}{2} x_1 x_2 + \frac{1}{2} x_1 + \frac{1}{2} x_2 - \frac{1}{2} - w_1 x_1 - w_2 x_2 - w_3$<br>
+$E = \frac{1}{2} e^2 
+	= \frac{1}{2} \left(
+		\frac{1}{2} x_1 x_2 + \frac{1}{2} x_1 + \frac{1}{2} x_2 - \frac{1}{2} - w_1 x_1 - w_2 x_2 - w_3
+	\right)^2$<br>
+$\frac{\partial E}{\partial w_i} = e \cdot \frac{\partial e}{\partial w_i}
+	= e \cdot \frac{\partial e}{\partial w_i}
+	= e \cdot -\frac{\partial y}{\partial w_i}
+	= -e x_i$<br>
+$\frac{\partial w_i(t)}{\partial t} = -\frac{\partial E}{\partial w_i} = e x_i$<br>
+$w_i(t + \Delta t) = w_i(t) + \Delta t (d - y) x_i$<br>
+$w_i(t + \Delta t) = w_i(t) + \Delta t (\frac{1}{2} (x_1 x_2 + x_1 + x_2 - 1) - (w_1 x_1 + w_2 x_2 + w_3)) x_i$<br>
+<br>
+
+Fixed points:<br>
+$\frac{\partial w_i(t)}{\partial t} = 0$ for $x_i e = 0$.
+One solution is $x_i = 0$.
+Another is $e = 0$, i.e. for $w_1 x_1 + w_2 x_2 + w_3 - \frac{1}{2} (x_1 x_2 + x_1 + x_2 - 1) = 0$<br>
+This looks like a plane equation in $\{w_1, w_2, w_3\}$ space.<br>
+For our inputs this can be the possible values:<br>
+$x_1 = -1, x_2 = -1: -w_1 - w_2 + w_3 + 1 = 0$<br>
+$x_1 =  1, x_2 = -1:  w_1 - w_2 + w_3 + 1 = 0$<br>
+$x_1 = -1, x_2 =  1: -w_1 + w_2 + w_3 + 1 = 0$<br>
+$x_1 =  1, x_2 =  1:  w_1 + w_2 + w_3 - 1 = 0$<br>
+So for each possible set of inputs, our neural network state critical point will be a different plane.<br> 
+<br>
+
+Dynamics:<br>
+$|\frac{\partial w_i(t + \Delta t)}{\partial w_i(t)}| = |1 - \Delta t (x_i)^2|$ for $x_3 = 1$<br>
+$|\frac{\partial w_1(t + \Delta t)}{\partial w_1(t)}| = |1 - \Delta t (x_1)^2|$<br>
+$|\frac{\partial w_2(t + \Delta t)}{\partial w_2(t)}| = |1 - \Delta t (x_2)^2|$<br>
+$|\frac{\partial w_3(t + \Delta t)}{\partial w_3(t)}| = |1 - \Delta t|$<br>
+So as long as our inputs are $x_i = \pm 1$, and our timestep $\Delta t = 1$, our fixed point is super-critical.<br>
+<br>
+
+So we are going to be always instantly converging on a solution per-input/desired pair, but that solution will vary over all possible pairs.<br>
+<br>
+
+What if we look at the critical point of the system after iterating across all possible permutations of inputs/desired? I.e. equivalent to a "batch update" of all 4 possible inputs.<br>
+$w_i(t + \Delta t) = w_i(t) + \Delta t \frac{1}{4} ($<br>$
+\ 	  (\frac{1}{2} (x_1 x_2 + x_1 + x_2 - 1) - (w_1 x_1 + w_2 x_2 + w_3)) x_i | (x_1 = -1, x_2 = -1)$<br>$
+	+ (\frac{1}{2} (x_1 x_2 + x_1 + x_2 - 1) - (w_1 x_1 + w_2 x_2 + w_3)) x_i | (x_1 = 1, x_2 = -1)$<br>$
+	+ (\frac{1}{2} (x_1 x_2 + x_1 + x_2 - 1) - (w_1 x_1 + w_2 x_2 + w_3)) x_i | (x_1 = -1, x_2 = 1)$<br>$
+	+ (\frac{1}{2} (x_1 x_2 + x_1 + x_2 - 1) - (w_1 x_1 + w_2 x_2 + w_3)) x_i | (x_1 = 1, x_2 = 1)$<br>$
+)$<br>
+<br>
+Individually:<br>
+<br>
+$\frac{\partial w_1(t)}{\partial t} = \frac{1}{4} \left(
+	- (-1 + w_1 + w_2 - w_3)
+	+ (-1 - w_1 + w_2 - w_3)
+	- (-1 + w_1 - w_2 - w_3)
+	+ ( 1 - w_1 - w_2 - w_3)
+\right) = -w_1(t) + \frac{1}{2}$<br>
+$w_1(t + \Delta t) = w_1(t) \cdot (1 - \Delta t) + \frac{1}{2} \Delta t$<br>
+
+<br>
+$\frac{\partial w_2(t)}{\partial t} = \frac{1}{4} \left(
+	- (-1 + w_1 + w_2 - w_3)
+	- (-1 - w_1 + w_2 - w_3)
+	+ (-1 + w_1 - w_2 - w_3)
+	+ ( 1 - w_1 - w_2 - w_3)
+\right) = -w_2(t) + \frac{1}{2}$<br>
+$w_2(t + \Delta t) = w_2(t) \cdot (1 - \Delta t) + \frac{1}{2} \Delta t$<br>
+<br>
+
+$\frac{\partial w_3(t)}{\partial t} = \frac{1}{4} \left(
+	  (-1 + w_1 + w_2 - w_3)
+	+ (-1 - w_1 + w_2 - w_3)
+	+ (-1 + w_1 - w_2 - w_3)
+	+ ( 1 - w_1 - w_2 - w_3)
+\right) = -w_3(t) - \frac{1}{2}$<br>
+$w_3(t + \Delta t) = w_3(t) \cdot (1 - \Delta t) - \frac{1}{2} \Delta t$<br>
+<br>
+
+Our fixed point of $\frac{\partial w_i(t)}{\partial t} = 0$ shows up for $w_1 = \frac{1}{2}, w_2 = \frac{1}{2}, w_3 = -\frac{1}{2}$.<br>
+With these weights, our neural network reproduces the eqution:<br>
+$y(x_1, x_2) = w_1 x_1 + w_2 x_2 + w_3 = \frac{1}{2} x_1 + \frac{1}{2} x_2 - \frac{1}{2}$<br>
+... just like we were looking for.<br>
+<br>
+
+In each case:<br>
+$|\frac{\partial w(t+\Delta t)}{\partial w(t)}| = |1 - \Delta t|$<br>
+... which will converge for $\Delta t \in (0,2)$, and is super-critical for $\Delta t = 1$.<br>
 <br>
 
 TODO next do classification of OR problem, AND problem with 1-layer.<br>
