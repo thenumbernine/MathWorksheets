@@ -193,8 +193,12 @@ $x_1 = x_{1,1}; x_2 = x_{1,2}$ are our inputs.<br>
 $\xi_1 = w_1 x_1 + w_2 x_2 + w_3$<br>
 $y = \sigma(\xi_1) = w_1 x_1 + w_2 x_2 + w_3$<br>
 Training variables:<br>
-We can do more exact with our description of our desired value as a function of our inputs, by multiplying our inputs, however neural networks themselves are planes are linear transformations and cannot directly reproduce multiplication.<br>
+We can do more exact with our description of our desired value as a function of our inputs, by multiplying our inputs, 
+however neural networks themselves are planes are linear transformations and cannot directly reproduce multiplication.<br>
 $d(x_1, x_2) = 2 \left( \frac{1}{2}(x_1 + 1) \cdot \frac{1}{2} (x_2 + 1) \right) - 1 = \frac{1}{2} (x_1 x_2 + x_1 + x_2 - 1)$.<br>
+This is chosen such that $d(-1,-1) = d(-1,1) = d(1,-1) = -1 =$ False, and $d(1,1) =$ True.<br>
+<br>
+
 $e = d - y = \frac{1}{2} (x_1 x_2 + x_1 + x_2 - 1) - \left( w_1 x_1 + w_2 x_2 + w_3 \right)$<br>
 $e = \frac{1}{2} x_1 x_2 + \frac{1}{2} x_1 + \frac{1}{2} x_2 - \frac{1}{2} - w_1 x_1 - w_2 x_2 - w_3$<br>
 $E = \frac{1}{2} e^2 
