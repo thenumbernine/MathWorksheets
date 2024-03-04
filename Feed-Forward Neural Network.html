@@ -25,16 +25,20 @@ $w_{k, i, j}(t) = $ k'th layer linear relation between i'th output and j'th inpu
 For networks with using bias, $1 \le j \le n_l+1$.<br>
 Yes I am conflating iteration and time.  I don't care about time-dependent input data or state-based recurrent-networks right now.<br>
 $w_{k, i, j}(0) =$ initial weight value at iteration t=0. Weights are initialized randomly.<br>
+$W_k(t) = $ the k'th layer weights in matrix form.<br>
+Maybe sometimes I'll separate off the bias weights as a vector $B_k(t)$ to distinguish it from weights multiplied by inputs.<br>
 <br>
 
 Network feed-forward live variables:<br>
 Inputs are provided from some external environment.<br>
 $x_{k, j}(t) =$ k'th layer j'th input, at iteration "t"
 	for $1 \le k \le l$ and $1 \le j \le n_l$.<br>
-For networks using bias, $1 \le j \le n_l + 1$, with $x_{k, n_l + 1}$ always assigned to 1.
-	<br>
+For networks using bias, $1 \le j \le n_l + 1$, with $x_{k, n_l + 1}$ always assigned to 1.<br>
+$X_k(t) = $ k'th layer inputs in vector form.<br>
 $\xi_{k, i}(t) = \underset{j=1}{\overset{n_l+1}\Sigma} \left( w_{k, i, j}(t) \cdot x_{k, j}(t) \right) = $ k'th layer i'th output.<br>
+$\Xi_k(t) = W_k(t) X_k(t) =$ k'th layer accumulation in vector form.<br>
 $y_{k, i}(t) = \sigma_k ( \xi_{k, i}(t) ) = \sigma_k ( \Sigma_j w_{k, i, j}(t) \cdot x_{k, j}(t) ) = $ k'th layer output.<br>
+$Y_k(t) = \sigma( \Xi_k(t) ) =$ output in vector form.<br>
 $x_j(t) = x_{1, j}(t) =$ first layer j'th input = network j'th input.<br>
 $x_{k, j}(t) = y_{k-1, i}(t) =$ k'th layer j'th input = (k-1)'th layer j'th output.<br>
 $y_j(t) = y_{l, j}(t) = $ network output.<br>
@@ -42,8 +46,10 @@ $y_j(t) = y_{l, j}(t) = $ network output.<br>
 
 Network training variables:<br>
 $d_j(t) = $ desired output (for trained data) for iteration "t".<br>
+$D(t) = $ desired in vector form.<br>
 $e_{l,j}(t) = d_j(t) - y_j(t) =$ residual of the output (with gradient towards the desired)<br>
-$E(t) = \frac{1}{2} \Sigma_j (e_{l,j}(t))^2 =$ network energy function to minimize.<br>
+$E_l(t) =$ error of the last layer, in vector form.<br>
+$U(t) = \frac{1}{2} \Sigma_j (e_{l,j}(t))^2 = \frac{1}{2} || E_l(t) ||$ network energy function to minimize.<br>
 The one-half out front is to cancel the derivative of the square term, so the gradient becomes proportional to the residual vector.<br>
 <br>
 
@@ -53,15 +59,15 @@ I might drop the "t" parameters and declare the dependency to be implicit, just 
 
 Back-propagation update:<br>
 Update weights to minimize error:<br>
-$\frac{\partial w_{k,i,j}}{\partial t} = -\frac{\partial E}{\partial w_{k,i,j}}$<br>
+$\frac{\partial w_{k,i,j}}{\partial t} = -\frac{\partial U}{\partial w_{k,i,j}}$<br>
 Gradient of the final layer weights:<br>
-$\frac{\partial E}{\partial w_{l,i,j}} 
-	= \frac{\partial E}{\partial e_{l,i}} 
+$\frac{\partial U}{\partial w_{l,i,j}} 
+	= \frac{\partial U}{\partial e_{l,i}} 
 		\frac{\partial e_{l,i}}{\partial y_{l,a}} 
 		\frac{\partial y_{l,a}}{\partial \xi_{l,b}} 
 		\frac{\partial \xi_{l,b}}{\partial x_{l,j}}
 $<br>
-$\frac{\partial E}{\partial e_{l,i}} 
+$\frac{\partial U}{\partial e_{l,i}} 
 	= \frac{\partial}{\partial e_{l,i}} \left( \frac{1}{2} \Sigma_j (e_{l,j})^2 \right)
 	= \Sigma_j \left( e_{l,j} \cdot \frac{\partial e_{l,j}}{\partial e_{l,i}} \right)
 	= \Sigma_j \left( e_{l,j} \cdot \delta_{ij} \right)
@@ -84,7 +90,7 @@ $\frac{\partial \xi_{k,b}}{\partial x_{k,j}}
 	= w_{k, b, j}
 $<br>
 Substitute our computed terms:<br>
-$\frac{\partial E}{\partial w_{l,i,j}} 
+$\frac{\partial U}{\partial w_{l,i,j}} 
 	= e_{l,i}
 		\cdot -\delta_{ia}
 		\cdot \sigma_l' (\xi_{l,b} ) \delta_{ab}
@@ -93,8 +99,8 @@ $\frac{\partial E}{\partial w_{l,i,j}}
 $<br>
 $\frac{\partial w_{k,i,j}}{\partial t} = (d_i - y_{l,i}) \sigma_l' ( \xi_{l,i} ) w_{l, i, j}$<br>
 Gradient of previous layers weights:<br>
-$\frac{\partial E}{\partial w_{k,i,j}} 
-	= \frac{\partial E}{\partial y_{k,i}} 
+$\frac{\partial U}{\partial w_{k,i,j}} 
+	= \frac{\partial U}{\partial y_{k,i}} 
 		\frac{\partial y_{k,i}}{\partial \xi_{k,a}} 
 		\frac{\partial \xi_{k,a}}{\partial x_{k,j}}
 $<br>
@@ -108,7 +114,8 @@ we are really looking at a collection of hyperplanes that are forming a convex h
 <h2>Example: Logical-NOT</h2>
 
 Let's look at a single-neuron with-bias trained to the logical-NOT problem.<br>
-We are going to classify True = 1 and False = -1, and therefore our desired problem to reproduce is $y(x) = -x$.  Our output classification will be $y \gt 0$ for True, otherwise False.<br>
+We are going to classify <i>true</i> = 1 and <i>false</i> = -1, and therefore our desired problem to reproduce is $y(x) = -x$.
+Our output classification will be $y \gt 0$ for <i>true</i>, otherwise <i>false</i>.<br>
 Topology: <br>
 $l = 1$, $n = \{ 1 \}$, $m = \{ 1 \}$<br>
 $\sigma_1(x) = x = $ identity for activation function.<br>
@@ -116,18 +123,18 @@ State: <br>
 $w = w_{1, 1, 1} = $ weight that corresponds with our single input.<br>
 No bias is needed and no bias will be used.<br>
 Live variables:<br>
-$x = x_1 = x_{1, 1} = $ our network input, which will be +1 for 'True' and -1 for 'False'.
+$x = x_1 = x_{1, 1} = $ our network input, which will be +1 for <i>true</i> and -1 for <i>false</i>.
 Notice that if you were to plot our x vs y, we are trying to reproduce the logical-NOT function $y(x) = -x$.<br>
 This means we won't need any extra linear terms.  We don't need a bias term for our weight matrix. 
-If I picked 'False' to be 0 then our output function of the input would be $y(x) = 1 - x$, which requires a bias value, and I would need to simulate a bias weight.<br>
+If I picked <i>false</i> to be 0 then our output function of the input would be $y(x) = 1 - x$, which requires a bias value, and I would need to simulate a bias weight.<br>
 $\xi_{1, 1} = w x = $ the linear transform of our inputs, aka "net-accumulated sum of the neuron".<br>
 $y = y_1 = y_{1,1} = \sigma_1 ( \xi_{1,1} ) = \xi_{1,1} = w x = $ the network output.<br>
 Training variables:<br>
-$d = d_1 = $ our desired value, which will be $-x$.  So if our input is 1 for True then our desired output will be -1 for False, and vice-versa.<br>
+$d = d_1 = $ our desired value, which will be $-x$.  So if our input is 1 for <i>true</i> then our desired output will be -1 for <i>false</i>, and vice-versa.<br>
 $e = d - y = (-x) - w x = (-1 - w) x$<br>
-$E = \frac{1}{2} e^2 = \frac{1}{2} ((-1 - w) x )^2$<br>
+$U = \frac{1}{2} e^2 = \frac{1}{2} ((-1 - w) x )^2$<br>
 Weight updates:<br>
-$\frac{\partial w}{\partial t} = -\frac{\partial E}{\partial w} = -(1 + w) x^2 $<br>
+$\frac{\partial w}{\partial t} = -\frac{\partial U}{\partial w} = -(1 + w) x^2 $<br>
 <br>
 
 Fixed points are where $\frac{\partial w}{\partial t} = 0$.  This is true for...<br>
@@ -139,7 +146,7 @@ So we have fixed points at $w = -1$<br>
 Of course $w = -1$ is our desired answer, since we are trying to reproduce the behavior of the equation $y(x) = -x$, i.e. $y(x) = w x$ for $w = -1$.<br>
 Let's assume an Euler integration:<br>
 $w(t + \Delta t) = w(t) + \Delta t \cdot \frac{\partial w(t)}{\partial t}$<br>
-$w(t + \Delta t) = w(t) - \Delta t \cdot \frac{\partial E(t)}{\partial w(t)}$<br>
+$w(t + \Delta t) = w(t) - \Delta t \cdot \frac{\partial U(t)}{\partial w(t)}$<br>
 $w(t + \Delta t) = w(t) - \Delta t \cdot (1 + w(t)) x(t)^2 = -\Delta t \cdot x(t)^2 + (1 - \Delta t \cdot x(t)^2) w(t)$<br>
 <br>
 
@@ -155,7 +162,7 @@ $|\frac{\partial w(t + \Delta t)}{\partial w(t)}| = |1 - \Delta t \cdot x(t)^2|$
 
 In either case our fixed point convergence is independent of our dynamic variable, the weight, and only dependent on the input magnitude.<br>
 If we provide $x(t) = 0$ as an input then our $|\frac{\partial w(t + \Delta t)}{\partial w(t)}| = 1$, which means we have indeterminant behavior neither converging nor diverging.<br>
-Now the fixed points are specific to the update, which is specific to our desired training value, which is defined as $\pm x$ for inputs $x \in \{ -1, 1 \}$, so good thing $x = 0$ isn't a valid 'True' or 'False' input.<br>
+Now the fixed points are specific to the update, which is specific to our desired training value, which is defined as $\pm x$ for inputs $x \in \{ -1, 1 \}$, so good thing $x = 0$ isn't a valid <i>true</i> or <i>false</i> input.<br>
 <br>
 
 For what values is the system converging?<br>
@@ -172,17 +179,49 @@ $1 \lt \frac{2}{\Delta t}$<br>
 $\Delta t \lt 2$<br>
 <br>
 
+Now let's repeat the process with T/F set to {0,1}:<br>
+But let's not introduce a bias yet.<br>
+Notice that when you use true/false of 0,1 intead of -1,1 that your bias parameter, i.e. the hyperplane distance from origin, will now need to be scaled proportional to the number of inputs as well, and not only wrt the output points that the hyperplane must divide.<br>
+Our desired output is going to be $d(x) = 1 - x$ for $x \in \{0,1\}$.<br>
+Our output classification will be $y \ge \frac{1}{2}$ is true, $y \lt \frac{1}{2}$ is false.<br>
+$y = w x$<br>
+$e = d - y = 1 - x - w x$<br>
+$U = \frac{1}{2} e^2$<br>
+$\frac{\partial w}{\partial t} = -\frac{\partial U}{\partial w} = -e \frac{\partial e}{\partial w}$
+$ = -e \cdot -x = e x = (d - y) x = (1 - x - w x) x$<br>
+We now have fixed points at $x = 0$ and $1 - (1 + w) x = 0$, i.e. $x = \frac{1}{1 + w}$ or $w = \frac{1}{x} - 1$<br>
+Let's look at the update to classify those inputs:<br>
+$w(t+\Delta t) = w(t) + \Delta t (1 - x - w x) x$<br>
+$|\frac{\partial w(t+\Delta t)}{\partial w(t)}| = |1 - x \Delta t|$<br>
+This is going to be in $(-1,1)$ for $|x \Delta t| \in (0,2)$<br>
+But notice that one of our inputs is $x=0$.  Notice for this input, our fixed-point classification is now $|\frac{\partial w(t+\Delta t)}{\partial w(t)}|= 1$, and our system can no longer guarantee convergence.<br>
+Let's assume we are going to skip the $x=0$ inputs and just train this network with $x=1$ and $d(x) = 0$.<br>
+Then we still have a fixed point at $w = \frac{1}{x} - 1 = 0$.  The convergence of this is based on $x \Delta t$, so as long as $x=1$ and we keep $\Delta t \in (0,2)$ then we will converge.<br>
+Our network converges to the equation $y = 0 \cdot x = 0$, which is an output of <i>false</i> for an input of <i>true</i>, so we did manage to classify one of our two inputs.  
+However then network will never be able to classify its <i>false</i> inputs correctly.<br>
+<br>
+
+Now what if we add a bias weight to the $\{0,1\}$ classification network?<br>
+TODO.<br>
+<br>
+
 TODO repeat the process with non-identity $\sigma$, like tanh.<br>
 Then using tanh activation with T/F set to $\{-1,1\}$ vs $\{\frac{-9}{10}, \frac{9}{10}\}$<br>
-Then repeat the process with T/F set to {0,1}.<br>
+<br>
+
 Then using a sigmoid activation with T/F set to $\{0,1\}$ vs $\{\frac{1}{10}, \frac{9}{10}\}$ ... and with bias weight (two weight system now) since the classification needs to now fit to $y(x) = 1 - x$ instead of $y(x) = x$<br>
 <br>
 
 <h2>Example: Logical-AND</h2>
 
-We are going to classify True = 1 and False = -1, $y \gt 0$ for true, $y \le 0$ for false.<br>
+We are going to classify <i>true</i> = 1 and <i>false</i> = -1, $y \gt 0$ for true, $y \le 0$ for false.<br>
 Therefore our desired problem to reproduce is something along the lines of:<br>
 $y(x_1, x_2) = \frac{1}{2} x_1 + \frac{1}{2} x_2 - \frac{1}{2}$, such that $y(-1,-1) = -\frac{3}{2} = F, y(-1,1) = -\frac{1}{2} = F, y(1,-1) = -\frac{1}{2} = F, y(1,1) = \frac{1}{2} = T$ .<br>
+<br>
+
+TODO first try without the bias weight and see what happens / show that it can't fully classify all points ever, only 2 of the 3 <i>false</i>'s at once at most.<br>
+<br>
+
 Topology:<br>
 $l = 1, n = \{2\}, m = \{1\}$<br>
 $\sigma(x) = \sigma_1(x) = x =$ identity activation.<br>
@@ -196,20 +235,20 @@ Training variables:<br>
 We can do more exact with our description of our desired value as a function of our inputs, by multiplying our inputs, 
 however neural networks themselves are planes are linear transformations and cannot directly reproduce multiplication.<br>
 $d(x_1, x_2) = 2 \left( \frac{1}{2}(x_1 + 1) \cdot \frac{1}{2} (x_2 + 1) \right) - 1 = \frac{1}{2} (x_1 x_2 + x_1 + x_2 - 1)$.<br>
-This is chosen such that $d(-1,-1) = d(-1,1) = d(1,-1) = -1 =$ False, and $d(1,1) =$ True.<br>
+This is chosen such that $d(-1,-1) = d(-1,1) = d(1,-1) = -1 =$ <i>false</i>, and $d(1,1) =$ <i>true</i>.<br>
 <br>
 
 $e = d - y = \frac{1}{2} (x_1 x_2 + x_1 + x_2 - 1) - \left( w_1 x_1 + w_2 x_2 + w_3 \right)$<br>
 $e = \frac{1}{2} x_1 x_2 + \frac{1}{2} x_1 + \frac{1}{2} x_2 - \frac{1}{2} - w_1 x_1 - w_2 x_2 - w_3$<br>
-$E = \frac{1}{2} e^2 
+$U = \frac{1}{2} e^2 
 	= \frac{1}{2} \left(
 		\frac{1}{2} x_1 x_2 + \frac{1}{2} x_1 + \frac{1}{2} x_2 - \frac{1}{2} - w_1 x_1 - w_2 x_2 - w_3
 	\right)^2$<br>
-$\frac{\partial E}{\partial w_i} = e \cdot \frac{\partial e}{\partial w_i}
+$\frac{\partial U}{\partial w_i} = e \cdot \frac{\partial e}{\partial w_i}
 	= e \cdot \frac{\partial e}{\partial w_i}
 	= e \cdot -\frac{\partial y}{\partial w_i}
 	= -e x_i$<br>
-$\frac{\partial w_i(t)}{\partial t} = -\frac{\partial E}{\partial w_i} = e x_i$<br>
+$\frac{\partial w_i(t)}{\partial t} = -\frac{\partial U}{\partial w_i} = e x_i$<br>
 $w_i(t + \Delta t) = w_i(t) + \Delta t (d - y) x_i$<br>
 $w_i(t + \Delta t) = w_i(t) + \Delta t (\frac{1}{2} (x_1 x_2 + x_1 + x_2 - 1) - (w_1 x_1 + w_2 x_2 + w_3)) x_i$<br>
 <br>
@@ -286,7 +325,43 @@ $|\frac{\partial w(t+\Delta t)}{\partial w(t)}| = |1 - \Delta t|$<br>
 ... which will converge for $\Delta t \in (0,2)$, and is super-critical for $\Delta t = 1$.<br>
 <br>
 
-TODO next do classification of OR problem, AND problem with 1-layer.<br>
-then do XOR problem, and show it cannot be done with 1-layer and needs 2-layers.<br>
+However notice that these weights are a fixed point only when we average all four of our input/desired updates together.
+Once our network is in the optimal state of $(w_1, w_2, w_3) = (\frac{1}{2}, \frac{1}{2}, -\frac{1}{2})$, if we then go on to perform another update with a single input/desired pair, we will find that $\frac{\partial w(t+\Delta t)}{\partial t} \ne 0$ and we are not at a fixed point.
+This mean our network will continue to oscillate forever near the optimal solution but will never settle completely.<br>
+<br>
+
+TODO next do classification of OR problem with 1-layer.<br>
+Spoilers, it is the same solution except with a different $w_3$ bias term (probably $\frac{1}{2}$) such that (1,1), (1,-1), and (-1,1) produce a result &gt; 0 and (-1,-1) produces a result &lt; 0.<br>
+You can repeat the previous problem except with a new desired function
+$d(x_1, x_2) = 1 - 2 \left( \frac{1}{2}(1 - x_1) \cdot \frac{1}{2} (1 - x_2) \right) = \frac{1}{2} (-x_1 x_2 + x_1 + x_2 + 1)$
+such that $d(-1,-1) = -1 =$ <i>false</i> and $d(-1,1) = d(1,-1) = d(1,1) = 1 =$ <i>true</i>
+to verify this.<br>
+<br>
+
+<h3>Logical XOR</h3>
+
+Unlike Logical-AND or Logical-OR, Logical-XOR cannot divide its space of <i>true vs </i>false.  
+Assuming our previous convention of <i>false</i> = -1 and <i>true</i> = 1,
+we now have to classify a problem $d(-1, -1) = d(1,1) = -1$ and $d(1,-1) = d(-1,1) = 1$.
+One simple mathematical solution to this is $d(x_1, x_2) = -x_1 x_2$, so we can use this as our desired/training function, but once again, neural networks cannot reproduce input multiplication, only linear functions of the inputs.<br>
+<br>
+
+Let's try with just 1 layer.<br>
+$l = 1, n = \{2\}, m = \{1\}$<br>
+<br>
+
+Let's also keep using identity activation:<br>
+$\sigma(x) = x$<br>
+...however we're going to find out soon that, if we use a 2-layer network with identity activation, it degenerates into a 1-layer network, and back to our original statement that XOR cannot be reproduced with a 1-layer network, this also means XOR cannot be reproduced with a 2-layer identity-activation network:<br>
+$Y = \sigma_2 ( W_2 \sigma_1 (W_1 X + B_1) + B_2 )$<br>
+... let $\sigma_i = $ identity...<br>
+$Y = ( W_2 (W_1 X + B_1) + B_2 )$<br>
+$Y = W_2 W_1 X + W_2 B_1 + B_2$<br>
+... let $W' = W_2 W_1$ and $B' = W_2 B_1 + B_2$:<br>
+$Y = W' X + B'$<br>
+So here we see a two-layer network with no activation is really just a 1-layer network.<br>
+But TODO keep running with the identity-activation and see if the XOR network does converge or not.<br>
+<br>
+
 	</body>
 </html>
