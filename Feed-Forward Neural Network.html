@@ -13,6 +13,7 @@ Network topology:<br>
 $l = $ number of layers.<br>
 $n_k = $ input size of the k'th layer.<br>
 $m_k = $ output size of the k'th layer.<br>
+More often than not I will be depicting these two as a sequence-of-pairs: $\{(m,n)\}$<br>
 $\sigma_k = $ k'th layer activation function.<br>
 <br>
 
@@ -25,7 +26,7 @@ $w_{k, i, j}(t) = $ k'th layer linear relation between i'th output and j'th inpu
 For networks with using bias, $1 \le j \le n_l+1$.<br>
 Yes I am conflating iteration and time.  I don't care about time-dependent input data or state-based recurrent-networks right now.<br>
 $w_{k, i, j}(0) =$ initial weight value at iteration t=0. Weights are initialized randomly.<br>
-$W_k(t) = $ the k'th layer weights in matrix form.<br>
+$W_k(t) = $ the k'th layer weights in matrix form. $W_k(t) \in \mathbb{R}^{(m_k \times n_k)}$.<br>
 Maybe sometimes I'll separate off the bias weights as a vector $B_k(t)$ to distinguish it from weights multiplied by inputs.<br>
 <br>
 
@@ -117,7 +118,7 @@ Let's look at a single-neuron with-bias trained to the logical-NOT problem.<br>
 We are going to classify <i>true</i> = 1 and <i>false</i> = -1, and therefore our desired problem to reproduce is $y(x) = -x$.
 Our output classification will be $y \gt 0$ for <i>true</i>, otherwise <i>false</i>.<br>
 Topology: <br>
-$l = 1$, $n = \{ 1 \}$, $m = \{ 1 \}$<br>
+$l = 1, \{(m,n)\} = \{(1,1)\}$<br>
 $\sigma_1(x) = x = $ identity for activation function.<br>
 State: <br>
 $w = w_{1, 1, 1} = $ weight that corresponds with our single input.<br>
@@ -179,6 +180,8 @@ $1 \lt \frac{2}{\Delta t}$<br>
 $\Delta t \lt 2$<br>
 <br>
 
+<h4>Logical-NOT using {0,1} and missing a bias weight</h4>
+
 Now let's repeat the process with T/F set to {0,1}:<br>
 But let's not introduce a bias yet.<br>
 Notice that when you use true/false of 0,1 intead of -1,1 that your bias parameter, i.e. the hyperplane distance from origin, will now need to be scaled proportional to the number of inputs as well, and not only wrt the output points that the hyperplane must divide.<br>
@@ -223,7 +226,7 @@ TODO first try without the bias weight and see what happens / show that it can't
 <br>
 
 Topology:<br>
-$l = 1, n = \{2\}, m = \{1\}$<br>
+$l = 1, \{(m,n)\} = \{(1,2)\}$<br>
 $\sigma(x) = \sigma_1(x) = x =$ identity activation.<br>
 State:<br>
 $w_1 = w_{1,1,1}, w_2 = w_{1,1,2}, w_3 = w_{1,1,3}$ are our weights, (with $w_3$ being the bias input weight).<br>
@@ -336,6 +339,7 @@ You can repeat the previous problem except with a new desired function
 $d(x_1, x_2) = 1 - 2 \left( \frac{1}{2}(1 - x_1) \cdot \frac{1}{2} (1 - x_2) \right) = \frac{1}{2} (-x_1 x_2 + x_1 + x_2 + 1)$
 such that $d(-1,-1) = -1 =$ <i>false</i> and $d(-1,1) = d(1,-1) = d(1,1) = 1 =$ <i>true</i>
 to verify this.<br>
+TODO show how AND, OR, NAND, NOR, and any other classification that includes 3 and excludes 1 or vice versa is all just the same problem, with different signs on the weights.<br>
 <br>
 
 <h3>Logical XOR</h3>
@@ -347,7 +351,7 @@ One simple mathematical solution to this is $d(x_1, x_2) = -x_1 x_2$, so we can 
 <br>
 
 Let's try with just 1 layer.<br>
-$l = 1, n = \{2\}, m = \{1\}$<br>
+$l = 1, \{(m,n)\} = \{(1,2)\}$<br>
 <br>
 
 Let's also keep using identity activation:<br>
@@ -361,6 +365,24 @@ $Y = W_2 W_1 X + W_2 B_1 + B_2$<br>
 $Y = W' X + B'$<br>
 So here we see a two-layer network with no activation is really just a 1-layer network.<br>
 But TODO keep running with the identity-activation and see if the XOR network does converge or not.<br>
+<br>
+
+We are going to be reproducing the logic of $A \oplus B = (\lnot A \land B) \lor (A \land \lnot B)$,
+so we're going to be reproducing 3 different AND/OR problems.  Each takes 3 weights, so we are going to need 9 weights total.<br>
+<br>
+
+Topology:<br>
+$l = 2, \{(m,n)\} = \{(2,2), (1,2)\}$<br>
+<br>
+
+$Y_1 = \sigma_1(B_1 + W_1 X_1)$, i.e.:<br>
+$y_{1,1} = \sigma_1(b_{1,1} + w_{1,1,1} x_{1,1} + w_{1,1,2} x_{1,2})$<br>
+$y_{1,2} = \sigma_1(b_{1,2} + w_{1,2,1} x_{1,1} + w_{1,2,2} x_{1,2})$<br>
+<br>
+$X_2 = Y_1$<br>
+<br>
+$Y_2 = \sigma_2(B_2 + W_2 X_2) = \sigma_2(B_2 + W_2 \sigma_1(B_1 + W_1 X_1))$, i.e.:<br>
+$y_{2,1} = \sigma_2(b_{2,1} + w_{2,1,1} x_{2,1} + w_{2,1,2} x_{2,2})$<br>
 <br>
 
 	</body>
