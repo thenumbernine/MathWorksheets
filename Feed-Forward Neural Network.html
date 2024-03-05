@@ -184,7 +184,6 @@ $\Delta t \lt 2$<br>
 
 Now let's repeat the process with T/F set to {0,1}:<br>
 But let's not introduce a bias yet.<br>
-Notice that when you use true/false of 0,1 intead of -1,1 that your bias parameter, i.e. the hyperplane distance from origin, will now need to be scaled proportional to the number of inputs as well, and not only wrt the output points that the hyperplane must divide.<br>
 Our desired output is going to be $d(x) = 1 - x$ for $x \in \{0,1\}$.<br>
 Our output classification will be $y \ge \frac{1}{2}$ is true, $y \lt \frac{1}{2}$ is false.<br>
 $y = w x$<br>
@@ -340,6 +339,8 @@ $d(x_1, x_2) = 1 - 2 \left( \frac{1}{2}(1 - x_1) \cdot \frac{1}{2} (1 - x_2) \ri
 such that $d(-1,-1) = -1 =$ <i>false</i> and $d(-1,1) = d(1,-1) = d(1,1) = 1 =$ <i>true</i>
 to verify this.<br>
 TODO show how AND, OR, NAND, NOR, and any other classification that includes 3 and excludes 1 or vice versa is all just the same problem, with different signs on the weights.<br>
+TODO show how for 3 inputs, any combo of AND's, OR's, and NOT's that produces a single true and 7 falses (or vice versa), is just a single-layer 3x1 weight network, thanks to a single plane dividing all trues vs falses.<br>
+TODO show for n inputs, and only a single ouptut that is T and all $2^n-1$ others F (or inverse), we just need a single-layer nx1 weight network.<br>
 <br>
 
 <h3>Logical XOR</h3>
