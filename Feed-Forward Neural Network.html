@@ -63,48 +63,63 @@ Update weights to minimize error:<br>
 $\frac{\partial w_{k,i,j}}{\partial t} = -\frac{\partial U}{\partial w_{k,i,j}}$<br>
 Gradient of the final layer weights:<br>
 $\frac{\partial U}{\partial w_{l,i,j}} 
-	= \frac{\partial U}{\partial e_{l,i}} 
-		\frac{\partial e_{l,i}}{\partial y_{l,a}} 
-		\frac{\partial y_{l,a}}{\partial \xi_{l,b}} 
-		\frac{\partial \xi_{l,b}}{\partial x_{l,j}}
+	= \frac{\partial U}{\partial e_{l,a}} 
+		\frac{\partial e_{l,a}}{\partial y_{l,b}} 
+		\frac{\partial y_{l,b}}{\partial \xi_{l,c}} 
+		\frac{\partial \xi_{l,c}}{\partial w_{l,i,j}}
 $<br>
-$\frac{\partial U}{\partial e_{l,i}} 
-	= \frac{\partial}{\partial e_{l,i}} \left( \frac{1}{2} \Sigma_j (e_{l,j})^2 \right)
-	= \Sigma_j \left( e_{l,j} \cdot \frac{\partial e_{l,j}}{\partial e_{l,i}} \right)
-	= \Sigma_j \left( e_{l,j} \cdot \delta_{ij} \right)
-	= e_{l,i}
+$\frac{\partial U}{\partial e_{l,a}} 
+	= \frac{\partial}{\partial e_{l,a}} \left( \frac{1}{2} \Sigma_b (e_{l,b})^2 \right)
+	= \Sigma_b \left( e_{l,b} \cdot \frac{\partial e_{l,b}}{\partial e_{l,a}} \right)
+	= \Sigma_b \left( e_{l,b} \cdot \delta_{ab} \right)
+	= e_{l,a}
 $<br>
-$\frac{\partial e_{l,i}}{\partial y_{l,a}}
-	= \frac{\partial}{\partial y_{l,a}} \left( d_i - y_{l,i} \right)
-	= -\delta_{ia}
+$\frac{\partial e_{l,a}}{\partial y_{l,b}}
+	= \frac{\partial}{\partial y_{l,b}} \left( d_a - y_{l,a} \right)
+	= -\delta_{ab}
 $<br>
+$\frac{\partial U}{\partial y_{l,b}} = -e_{l,b}$<br>
 Gradient calculations of variables that are valid for each layer:<br>
 $\frac{\partial y_{k,a}}{\partial \xi_{k,b}} 
 	= \frac{\partial}{\partial \xi_{k,b}} \left( \sigma_k ( \xi_{k,a} ) \right)
 	= \sigma_k' ( \xi_{k,a} ) \frac{\partial \xi_{k,a}}{\partial \xi_{k,b}} 
 	= \sigma_k' ( \xi_{k,a} ) \cdot \delta_{ab}
 $<br>
-$\frac{\partial \xi_{k,b}}{\partial x_{k,j}}
-	= \frac{\partial }{\partial x_{k,j}} \left( w_{k, b, c} \cdot x_{k, c} \right)
-	= w_{k, b, c} \cdot \frac{\partial x_{k, c}}{\partial x_{k,j}}
-	= w_{k, b, c} \cdot \delta_{cj}
-	= w_{k, b, j}
+$\frac{\partial \xi_{k,b}}{\partial w_{k,i,j}}
+	= \frac{\partial}{\partial w_{k,i,j}} \left(w_{k, b, c} \cdot x_{k, c} \right)
+	= \frac{\partial}{\partial w_{k,i,j}} \left(w_{k, b, c}\right) \cdot x_{k, c} 
+	= \delta_{ib} \delta_{jc} x_{k, c} 
+	= \delta_{ib} x_{k, j} 
 $<br>
+$\frac{\partial y_{k,a}}{\partial x_{k,b}}
+	= \frac{\partial y_{k,a}}{\partial \xi_{k,c}}
+		\cdot \frac{\partial \xi_{k,c}}{\partial x_{k,b}}
+	= \sigma'_k(\xi_{k,a}) \delta_{ac}
+		\cdot \frac{\partial}{\partial x_{k,b}} \left( w_{k,c,d} x_{k,d} \right)
+	= \sigma'_k(\xi_{k,a}) \delta_{ac} w_{k,c,d}
+		\cdot \frac{\partial}{\partial x_{k,b}} \left( x_{k,d} \right)
+	= \sigma'_k(\xi_{k,a}) \delta_{ac} w_{k,c,d} \delta_{bd}
+	= \sigma'_k(\xi_{k,a}) w_{k,a,b}
+$<br>
+$\frac{\partial U}{\partial x_{k,a}} = \frac{\partial U}{\partial y_{k,b}} \frac{\partial y_{k,b}}{\partial x_{k,a}} = \frac{\partial U}{\partial y_{k,b}} \sigma'_k(\xi_{k,b}) w_{k,b,a}$<br>
 Substitute our computed terms:<br>
 $\frac{\partial U}{\partial w_{l,i,j}} 
-	= e_{l,i}
-		\cdot -\delta_{ia}
-		\cdot \sigma_l' (\xi_{l,b} ) \delta_{ab}
-		\cdot w_{l, b, j}
-	= -(d_i - y_{l,i}) \sigma_l' ( \xi_{l,i} ) w_{l, i, j}
+	= e_{l,a}
+		\cdot -\delta_{ab}
+		\cdot \sigma_l' (\xi_{l,b} ) \delta_{bc}
+		\cdot \delta_{ci} x_{l, j}
+	= -e_{l,i} \sigma_l' ( \xi_{l,i} ) x_{l, j}
 $<br>
-$\frac{\partial w_{k,i,j}}{\partial t} = (d_i - y_{l,i}) \sigma_l' ( \xi_{l,i} ) w_{l, i, j}$<br>
+$\frac{\partial w_{k,i,j}}{\partial t} = e_{l,i} \sigma_l' ( \xi_{l,i} ) x_{l, j}$<br>
 Gradient of previous layers weights:<br>
 $\frac{\partial U}{\partial w_{k,i,j}} 
-	= \frac{\partial U}{\partial y_{k,i}} 
-		\frac{\partial y_{k,i}}{\partial \xi_{k,a}} 
-		\frac{\partial \xi_{k,a}}{\partial x_{k,j}}
+	= \frac{\partial U}{\partial y_{k,a}} 
+		\frac{\partial y_{k,a}}{\partial \xi_{k,b}} 
+		\frac{\partial \xi_{k,b}}{\partial w_{k,i,j}}
+	= \frac{\partial U}{\partial y_{k,a}} \cdot \sigma'_k(\xi_a) \delta_{ab} \cdot \delta_{bi} x_{k,j}
 $<br>
+
+
 <br>
 
 A neural-network weight matrix is just a linear transform.  The output test is typically looking at whether the output is greater than some value.  
