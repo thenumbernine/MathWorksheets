@@ -140,6 +140,8 @@ Some helper worksheets for my projects.
 
 [Euler Fluid Equations - Entropy Function](https://thenumbernine.github.io/math/Euler%20Fluid%20Equations%20%2d%20Entropy%20Function.html)
 
+[Feed-Forward Neural Network](https://thenumbernine.github.io/math/Feed%2dForward%20Neural%20Network.html)
+
 [Finite Volume Methods](https://thenumbernine.github.io/math/Finite%20Volume%20Methods.html)
 
 [GEM force on a rotating object](https://thenumbernine.github.io/math/GEM%20force%20on%20a%20rotating%20object.html)

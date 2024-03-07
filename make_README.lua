@@ -10,10 +10,12 @@ local s = table{[[
 Some helper worksheets for my projects.
 ]]}
 
-local fs = path:rdir(function(f, isdir)
+table.wrapfor(path:rdir(function(f, isdir)
 	local dir, name = path(f):getdir()
-	return name ~= '.git' and (isdir or name:sub(-5) == '.html')
-end):mapi(function(f)
+	return name.path ~= '.git' and (isdir or name.path:sub(-5) == '.html')
+end))
+:mapi(function(f) 
+	f = f[1].path 
 	if f:sub(1,2) == './' then f = f:sub(3) end
 	return f
 end):sort():mapi(function(f)
