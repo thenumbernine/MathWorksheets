@@ -130,7 +130,14 @@ we are really looking at a collection of hyperplanes that are forming a convex h
 <h2>Example: Logical-NOT</h2>
 
 Let's look at a single-neuron with-bias trained to the logical-NOT problem.<br>
-We are going to classify <i>true</i> = 1 and <i>false</i> = -1, and therefore our desired problem to reproduce is $y(x) = -x$.
+We are going to classify <i>true</i> = 1 and <i>false</i> = -1.<br>
+This means our desired problem to reproduce is $y(x) = -x$:<br>
+<br>
+
+<img src="ffnn_logical_not.svg" width="320"><br>
+<br>
+
+<br>
 Our output classification will be $y \gt 0$ for <i>true</i>, otherwise <i>false</i>.<br>
 Topology: <br>
 $l = 1, \{(m,n)\} = \{(1,1)\}$<br>
@@ -202,7 +209,12 @@ $\Delta t \lt 2$<br>
 
 Now let's repeat the process with T/F set to {0,1}:<br>
 But let's not introduce a bias yet.<br>
-Our desired output is going to be $d(x) = 1 - x$ for $x \in \{0,1\}$.<br>
+Our desired output is going to be $d(x) = 1 - x$ for $x \in \{0,1\}$:<br>
+<br>
+
+<img src="ffnn_logical_not_01.svg" width="320"><br>
+<br>
+
 Our output classification will be $y \ge \frac{1}{2}$ is true, $y \lt \frac{1}{2}$ is false.<br>
 $y = w x$<br>
 $e = d - y = 1 - x - w x$<br>
@@ -245,6 +257,9 @@ In contrast, using tanh activation means $\tanh(0) = 0$, $tanh'(0) = cosh^{-2}(0
 We are going to classify <i>true</i> = 1 and <i>false</i> = -1, $y \gt 0$ for true, $y \le 0$ for false.<br>
 Therefore our desired problem to reproduce is something along the lines of:<br>
 $y(x_1, x_2) = \frac{1}{2} x_1 + \frac{1}{2} x_2 - \frac{1}{2}$, such that $y(-1,-1) = -\frac{3}{2} = F, y(-1,1) = -\frac{1}{2} = F, y(1,-1) = -\frac{1}{2} = F, y(1,1) = \frac{1}{2} = T$ .<br>
+<br>
+
+<img src="ffnn_logical_and.svg" width="320"><br>
 <br>
 
 TODO first try without the bias weight and see what happens / show that it can't fully classify all points ever, only 2 of the 3 <i>false</i>'s at once at most.<br>
@@ -369,6 +384,11 @@ You can repeat the previous problem except with a new desired function
 $d(x_1, x_2) = 1 - 2 \left( \frac{1}{2}(1 - x_1) \cdot \frac{1}{2} (1 - x_2) \right) = \frac{1}{2} (-x_1 x_2 + x_1 + x_2 + 1)$
 such that $d(-1,-1) = -1 =$ <i>false</i> and $d(-1,1) = d(1,-1) = d(1,1) = 1 =$ <i>true</i>
 to verify this.<br>
+<br>
+
+<img src="ffnn_logical_or.svg" width="320"><br>
+<br>
+
 TODO show how AND, OR, NAND, NOR, and any other classification that includes 3 and excludes 1 or vice versa is all just the same problem, with different signs on the weights.<br>
 TODO show how for 3 inputs, any combo of AND's, OR's, and NOT's that produces a single true and 7 falses (or vice versa), is just a single-layer 3x1 weight network, thanks to a single plane dividing all trues vs falses.<br>
 TODO show for n inputs, and only a single ouptut that is T and all $2^n-1$ others F (or inverse), we just need a single-layer nx1 weight network.<br>
