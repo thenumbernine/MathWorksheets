@@ -425,6 +425,11 @@ so we're going to be reproducing 3 different AND/OR problems.  Each takes 3 weig
 
 So we will need a nonlinear activation on the first later at least:<br>
 $\sigma_1(x) = tanh(x)$<br>
+<img src="ffnn_tanh.svg" width="320"><br>
+<br>
+...with derivative...<br>
+$\sigma'_1(x) = (cosh(x))^{-2}$<br>
+<img src="ffnn_tanhderiv.svg" width="320"><br>
 ...but we will keep the 2nd layer identity.<br>
 $\sigma_2(x) = x$<br>
 <br>
@@ -440,8 +445,32 @@ $y_{1,2} = \sigma_1(b_{1,2} + w_{1,2,1} x_{1,1} + w_{1,2,2} x_{1,2})$<br>
 $X_2 = Y_1$, i.e. the second-layer input is the first-layer output.<br>
 $Y = Y_2 = \sigma_2(B_2 + W_2 X_2) = \sigma_2(B_2 + W_2 \sigma_1(B_1 + W_1 X_1))$, is the 2nd layer propagation, i.e.:<br>
 $y_{2,1} = \sigma_2(b_{2,1} + w_{2,1,1} x_{2,1} + w_{2,1,2} x_{2,2})$<br>
+$y_{2,1} = b_{2,1} + w_{2,1,1} x_{2,1} + w_{2,1,2} x_{2,2}$<br>
+$y_{2,1} = b_{2,1} + w_{2,1,1} y_{1,1} + w_{2,1,2} y_{1,2}$<br>
 $y_{2,1} = b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} + w_{1,1,1} x_{1,1} + w_{1,1,2} x_{1,2}) + w_{2,1,2} \sigma_1(b_{1,2} + w_{1,2,1} x_{1,1} + w_{1,2,2} x_{1,2})$<br>
 <br>
 
+Now comes the updates...<br>
+$\frac{\partial b_{2,1}}{\partial t} = -x_{1,1} x_{1,2} - y_{2,1}$<br>
+$\frac{\partial w_{2,1,1}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) y_{1,1}$<br>
+$\frac{\partial w_{2,1,2}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) y_{1,2}$<br>
+$\frac{\partial b_{1,1}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) w_{2,1,1} \sigma'_1(\xi_{1,1})$<br>
+$\frac{\partial w_{1,1,1}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) w_{2,1,1} \sigma'_1(\xi_{1,1}) x_{1,1}$<br>
+$\frac{\partial w_{1,1,2}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) w_{2,1,1} \sigma'_1(\xi_{1,1}) x_{1,2}$<br>
+$\frac{\partial b_{1,2}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) w_{2,1,2} \sigma'_1(\xi_{1,2})$<br>
+$\frac{\partial w_{1,2,1}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) w_{2,1,2} \sigma'_1(\xi_{1,2}) x_{1,1}$<br>
+$\frac{\partial w_{1,2,2}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) w_{2,1,2} \sigma'_1(\xi_{1,2}) x_{1,2}$<br>
+<br>
+
+The equation is at a critical point where This is zero, which is ...<br>
+$\frac{\partial b_{2,1}}{\partial t} = 0$, for $y_{2,1} = -x_{1,1} x_{1,2}$<br>
+$\frac{\partial w_{2,1,1}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) y_{1,1} = 0$, for $y_{2,1} = -x_{1,1} x_{1,2}$ or $y_{1,1} = 0$<br>
+$\frac{\partial w_{2,1,2}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) y_{1,2} = 0$, for $y_{2,1} = -x_{1,1} x_{1,2}$ or $y_{1,2} = 0$<br>
+$\frac{\partial b_{1,1}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) w_{2,1,1} \sigma'_1(\xi_{1,1})$<br>
+$\frac{\partial w_{1,1,1}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) w_{2,1,1} \sigma'_1(\xi_{1,1}) x_{1,1}$<br>
+$\frac{\partial w_{1,1,2}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) w_{2,1,1} \sigma'_1(\xi_{1,1}) x_{1,2}$<br>
+$\frac{\partial b_{1,2}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) w_{2,1,2} \sigma'_1(\xi_{1,2})$<br>
+$\frac{\partial w_{1,2,1}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) w_{2,1,2} \sigma'_1(\xi_{1,2}) x_{1,1}$<br>
+$\frac{\partial w_{1,2,2}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) w_{2,1,2} \sigma'_1(\xi_{1,2}) x_{1,2}$<br>
 	</body>
 </html>
