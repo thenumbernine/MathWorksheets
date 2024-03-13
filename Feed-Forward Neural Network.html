@@ -239,7 +239,7 @@ $y = \sigma(w x + b)$<br>
 <br>
 
 TODO repeat the process with non-identity $\sigma$, like tanh.<br>
-Then using tanh activation with T/F set to $\{-1,1\}$ vs $\{\frac{-9}{10}, \frac{9}{10}\}$.
+Then using tanh activation with T/F training outputs set to $\{-1,1\}$ vs $\{\frac{-9}{10}, \frac{9}{10}\}$.
 Spoilers: $tanh(x) = \frac{9}{10}$ exists, so if we set our desired to $\pm \frac{9}{10}$ then our weights have a specific point they will converge to.
 In contrast, there exists no x such that $tanh(x) = 1$, except for $\underset{x \rightarrow \infty}{\lim} tanh(x) = 1$, so if we set our desired to $\pm 1$ then our weight values will diverge forever while settling on the desired output.<br>
 <br>
@@ -428,10 +428,11 @@ $\sigma_1(x) = tanh(x)$<br>
 <img src="ffnn_tanh.svg" width="320"><br>
 <br>
 ...with derivative...<br>
-$\sigma'_1(x) = (cosh(x))^{-2}$<br>
+$\sigma'_1(x) = (cosh(x))^{-2} = 1 - (tanh(x))^2$<br>
 <img src="ffnn_tanhderiv.svg" width="320"><br>
 ...but we will keep the 2nd layer identity.<br>
 $\sigma_2(x) = x$<br>
+Notice the identity $\sigma'_1(x) = 1 - (tanh(x))^2$ allows us to use the trick that, for $y = tanh(x), \frac{\partial y}{\partial x} = 1 - y^2$<br>
 <br>
 
 Topology:<br>
@@ -463,14 +464,66 @@ $\frac{\partial w_{1,2,2}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) w_{2,1,2} 
 <br>
 
 The equation is at a critical point where This is zero, which is ...<br>
-$\frac{\partial b_{2,1}}{\partial t} = 0$, for $y_{2,1} = -x_{1,1} x_{1,2}$<br>
-$\frac{\partial w_{2,1,1}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) y_{1,1} = 0$, for $y_{2,1} = -x_{1,1} x_{1,2}$ or $y_{1,1} = 0$<br>
-$\frac{\partial w_{2,1,2}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) y_{1,2} = 0$, for $y_{2,1} = -x_{1,1} x_{1,2}$ or $y_{1,2} = 0$<br>
+$\frac{\partial b_{2,1}}{\partial t} = 0$,
+	for $y_{2,1} = -x_{1,1} x_{1,2}$.<br>
+$\frac{\partial w_{2,1,1}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) y_{1,1} = 0$,
+	for $y_{2,1} = -x_{1,1} x_{1,2}$ or $y_{1,1} = 0$.<br>
+$\frac{\partial w_{2,1,2}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) y_{1,2} = 0$,
+	for $y_{2,1} = -x_{1,1} x_{1,2}$ or $y_{1,2} = 0$.<br>
+$\frac{\partial b_{1,1}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) w_{2,1,1} \sigma'_1(\xi_{1,1})$,
+	for $y_{2,1} = -x_{1,1} x_{1,2}$ or $w_{2,1,1} = 0$, or $\sigma'_1(\xi_{1,1}) = 0$.<br>
+$\frac{\partial w_{1,1,1}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) w_{2,1,1} \sigma'_1(\xi_{1,1}) x_{1,1}$,
+	for $y_{2,1} = -x_{1,1} x_{1,2}$ or $w_{2,1,1} = 0$, or $\sigma'_1(\xi_{1,1}) = 0$, or $x_{1,1} = 0$.<br>
+$\frac{\partial w_{1,1,2}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) w_{2,1,1} \sigma'_1(\xi_{1,1}) x_{1,2}$
+	for $y_{2,1} = -x_{1,1} x_{1,2}$ or $w_{2,1,1} = 0$, or $\sigma'_1(\xi_{1,1}) = 0$, or $x_{1,2} = 0$.<br>
+$\frac{\partial b_{1,2}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) w_{2,1,2} \sigma'_1(\xi_{1,2})$,
+	for $y_{2,1} = -x_{1,1} x_{1,2}$ or $w_{2,1,2} = 0$, or $\sigma'_1(\xi_{1,2}) = 0$.<br>
+$\frac{\partial w_{1,2,1}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) w_{2,1,2} \sigma'_1(\xi_{1,2}) x_{1,1}$
+	for $y_{2,1} = -x_{1,1} x_{1,2}$ or $w_{2,1,2} = 0$, or $\sigma'_1(\xi_{1,2}) = 0$, or $x_{1,1} = 0$.<br>
+$\frac{\partial w_{1,2,2}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) w_{2,1,2} \sigma'_1(\xi_{1,2}) x_{1,2}$
+	for $y_{2,1} = -x_{1,1} x_{1,2}$ or $w_{2,1,2} = 0$, or $\sigma'_1(\xi_{1,2}) = 0$, or $x_{1,2} = 0$.<br>
+<br>
+
+From here we can ignore our $x_{1,1} = 0$ and $x_{1,2} = 0$ solutions since we are never feeding those value into the network.<br>
+We can ignore our $\sigma'_1(x) = 0$ answers since 0 is not in the range of $\sigma'_1(x)$.<br>
+This leaves us with $y_{2,1} = -x_{1,1} x_{1,2}$ for all weights,<br>
+or $y_{1,1} = 0$ for $\frac{\partial w_{2,1,1}}{\partial t}$,<br>
+or $y_{1,2} = 0$ for $\frac{\partial w_{2,1,2}}{\partial t}$,<br> 
+or $w_{2,1,1} = 0$ for $\frac{\partial b_{1,1}}{\partial t}$ and $\frac{\partial w_{1,1,1}}{\partial t}$ and $\frac{\partial w_{1,1,2}}{\partial t}$,<br>
+or $w_{2,1,2} = 0$ for $\frac{\partial b_{1,2}}{\partial t}$ and $\frac{\partial w_{1,2,1}}{\partial t}$ and $\frac{\partial w_{1,2,2}}{\partial t}$.<br>
+<br>	
+<br>	
+<br>	
+	
+TODO maybe I'll analyze specific critical points and behaviors for indivudal inputs later.<br>
+<br>
+
+Now let's do like we did with AND and OR, and let's average together all our inputs to see where the global behavior of the training data will converge.
+Like before, we are averaging the updates for $X = \{ (-1,-1), (-1,1), (1,-1), (1,1) \}$.<br>
+Let's evaluate them for curiousity's sake:<br>
+$y_{2,1}(-1,-1) = b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} - w_{1,1,1} - w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} - w_{1,2,1} - w_{1,2,2})$<br>
+$y_{2,1}(-1, 1) = b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} - w_{1,1,1} + w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} - w_{1,2,1} + w_{1,2,2})$<br>
+$y_{2,1}( 1,-1) = b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} + w_{1,1,1} - w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} + w_{1,2,1} - w_{1,2,2})$<br>
+$y_{2,1}( 1, 1) = b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} + w_{1,1,1} + w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} + w_{1,2,1} + w_{1,2,2})$<br>
+<br>
+
+Now lets average those four possible values together for our gradient update and see where our network will converge to:<br>
+<br>
+...TODO<br>
+
+$\frac{\partial b_{2,1}}{\partial t} = -x_{1,1} x_{1,2} - y_{2,1}$<br>
+$\frac{\partial w_{2,1,1}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) y_{1,1}$<br>
+$\frac{\partial w_{2,1,2}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) y_{1,2}$<br>
 $\frac{\partial b_{1,1}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) w_{2,1,1} \sigma'_1(\xi_{1,1})$<br>
 $\frac{\partial w_{1,1,1}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) w_{2,1,1} \sigma'_1(\xi_{1,1}) x_{1,1}$<br>
 $\frac{\partial w_{1,1,2}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) w_{2,1,1} \sigma'_1(\xi_{1,1}) x_{1,2}$<br>
 $\frac{\partial b_{1,2}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) w_{2,1,2} \sigma'_1(\xi_{1,2})$<br>
 $\frac{\partial w_{1,2,1}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) w_{2,1,2} \sigma'_1(\xi_{1,2}) x_{1,1}$<br>
 $\frac{\partial w_{1,2,2}}{\partial t} = (-x_{1,1} x_{1,2} - y_{2,1}) w_{2,1,2} \sigma'_1(\xi_{1,2}) x_{1,2}$<br>
+<br>
+
+
+
+
 	</body>
 </html>
