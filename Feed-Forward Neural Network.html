@@ -60,7 +60,23 @@ There's the desired, and residual functions.<br>
 I might drop the "t" parameters and declare the dependency to be implicit, just like in physics.<br>
 <br>
 
-Back-propagation update:<br>
+<h2>Back-propagation update:</h2>
+
+Supervised neural nets can be thought of as performing a gradient descent on an energy function.
+<br>
+
+Gradient descent towards a minima takes this form:<br>
+<br>
+
+$\frac{\partial x_i}{\partial t} = -\frac{\partial U}{\partial x_i}$<br>
+<br>
+... for some system state $x$ and some potential function $U(x)$.<br>
+In the case of our neural network,
+the energy function is calculated as the distance squared from the output vector of the network to desired vector,
+and the state vector is our weights $w_{k,i,j}$.<br>
+<br>
+
+
 Update weights to minimize error:<br>
 $\frac{\partial w_{k,i,j}}{\partial t} = -\frac{\partial U}{\partial w_{k,i,j}}$<br>
 Gradient of the final layer weights:<br>
@@ -119,14 +135,45 @@ $\frac{\partial U}{\partial w_{k,i,j}}
 		\frac{\partial y_{k,a}}{\partial \xi_{k,b}} 
 		\frac{\partial \xi_{k,b}}{\partial w_{k,i,j}}
 	= \frac{\partial U}{\partial y_{k,a}} \cdot \sigma'_k(\xi_a) \delta_{ab} \cdot \delta_{bi} x_{k,j}
+	= \frac{\partial U}{\partial x_{k+1,a}} \cdot \sigma'_k(\xi_a) \delta_{ab} \cdot \delta_{bi} x_{k,j}
 $<br>
-
-
 <br>
 
 A neural-network weight matrix is just a linear transform.  The output test is typically looking at whether the output is greater than some value.  
 So assuming the activation is near-linear (which it tends to be for some domain),
 we are really looking at a collection of hyperplanes that are forming a convex hull in our output space around whatever we want to classify.<br>
+<br>
+
+From there, we can use the simplest possible numerical integration, Euler integration, to define our state update equation:<br>
+<br>
+
+$w_{k,i,j}(t+\Delta t) = w_{k,i,j}(t) + \Delta t \cdot \frac{\partial w_{k,i,j}}{\partial t} 
+	= w_{k,i,j}(t) - \Delta t \cdot \frac{\partial U}{\partial w_{k,i,j}}
+$<br>
+<br>
+
+Mind you there are many better integrators than this. A good starting place would be Runge-Kutta.  Definitely look into the implicit integration schemes.<br>
+<br>
+
+What are some other optimization techniques that we can apply to neural networks?
+One easy solution is line search.  Line search is just varying the $\Delta t$ for fixed $\frac{\partial w_{k,i,j}}{\partial t}$.<br>
+<br>
+
+<h2>Second Derivatives</h2>
+
+Another is incorporating second derivatives, as the Newton method does.
+In this context of gradient descent, this looks like:<br>
+
+$w(t+\Delta t) = w(t) - (\nabla_w^2 U)^{-1} \cdot \nabla_w U$<br>
+<br>
+
+... where $\nabla_w U$ is the column vector of $\frac{\partial U}{\partial w}$,<br>
+$\nabla_w^2 U$ is the matrix of components $\frac{\partial^2 U}{\partial w^2}$.<br>
+<br>
+
+TODO numeric / progressive Hessian computation<br>
+TODO inverse Hessian computation<br>
+TODO Krylov subspace computation of Hessian ... and Krylov numeric implicit integration ... and do the two tie together?<br>
 <br>
 
 <h2>Example: Logical-NOT</h2>
@@ -596,11 +643,87 @@ $+ ( -1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} - w_{1,1,1} + w_{1,1,2}) + w_{2,
 $- ( -1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} + w_{1,1,1} - w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} + w_{1,2,1} - w_{1,2,2})) w_{2,1,2} \sigma'_1(b_{1,2} + w_{1,2,1} - w_{1,2,2})$<br>
 $+ (  1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} + w_{1,1,1} + w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} + w_{1,2,1} + w_{1,2,2})) w_{2,1,2} \sigma'_1(b_{1,2} + w_{1,2,1} + w_{1,2,2})$<br>
 $)$<br>
-
 <br>
 
+...which becomes...<br>
+<br>
 
+$\frac{\partial b_{2,1}}{\partial t} = -b_{2,1} $
+	$- \frac{1}{4}  w_{2,1,1} ($<br>
+		$+ \sigma_1(b_{1,1} - w_{1,1,1} - w_{1,1,2})$<br>
+		$+ \sigma_1(b_{1,1} - w_{1,1,1} + w_{1,1,2})$<br>
+		$+ \sigma_1(b_{1,1} + w_{1,1,1} - w_{1,1,2})$<br>
+		$+ \sigma_1(b_{1,1} + w_{1,1,1} + w_{1,1,2})$<br>
+	$)$
+	$- \frac{1}{4}  w_{2,1,2} ($<br>
+		$+ \sigma_1(b_{1,2} - w_{1,2,1} - w_{1,2,2})$<br>
+		$+ \sigma_1(b_{1,2} - w_{1,2,1} + w_{1,2,2})$<br>
+		$+ \sigma_1(b_{1,2} + w_{1,2,1} - w_{1,2,2})$<br>
+		$+ \sigma_1(b_{1,2} + w_{1,2,1} + w_{1,2,2})$<br>
+	$)$<br>
+<br>
 
+$\frac{\partial w_{2,1,1}}{\partial t} = -\frac{1}{4}($<br>
+$+ (  1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} - w_{1,1,1} - w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} - w_{1,2,1} - w_{1,2,2})) \sigma_1(b_{1,1} - w_{1,1,1} - w_{1,1,2})$<br>
+$+ ( -1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} - w_{1,1,1} + w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} - w_{1,2,1} + w_{1,2,2})) \sigma_1(b_{1,1} - w_{1,1,1} + w_{1,1,2})$<br>
+$+ ( -1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} + w_{1,1,1} - w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} + w_{1,2,1} - w_{1,2,2})) \sigma_1(b_{1,1} + w_{1,1,1} - w_{1,1,2})$<br>
+$+ (  1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} + w_{1,1,1} + w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} + w_{1,2,1} + w_{1,2,2})) \sigma_1(b_{1,1} + w_{1,1,1} + w_{1,1,2})$<br>
+$)$<br>
+
+$\frac{\partial w_{2,1,2}}{\partial t} = -\frac{1}{4} ($<br>
+$+ (  1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} - w_{1,1,1} - w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} - w_{1,2,1} - w_{1,2,2})) \sigma_1(b_{1,2} - w_{1,2,1} - w_{1,2,2})$<br>
+$+ ( -1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} - w_{1,1,1} + w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} - w_{1,2,1} + w_{1,2,2})) \sigma_1(b_{1,2} - w_{1,2,1} + w_{1,2,2})$<br>
+$+ ( -1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} + w_{1,1,1} - w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} + w_{1,2,1} - w_{1,2,2})) \sigma_1(b_{1,2} + w_{1,2,1} - w_{1,2,2})$<br>
+$+ (  1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} + w_{1,1,1} + w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} + w_{1,2,1} + w_{1,2,2})) \sigma_1(b_{1,2} + w_{1,2,1} + w_{1,2,2})$<br>
+<br>$)$<br>
+
+$\frac{\partial b_{1,1}}{\partial t} = -\frac{1}{4} ($<br>
+$+ (  1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} - w_{1,1,1} - w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} - w_{1,2,1} - w_{1,2,2})) w_{2,1,1} \sigma'_1(b_{1,1} - w_{1,1,1} - w_{1,1,2})$<br>
+$+ ( -1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} - w_{1,1,1} + w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} - w_{1,2,1} + w_{1,2,2})) w_{2,1,1} \sigma'_1(b_{1,1} - w_{1,1,1} + w_{1,1,2})$<br>
+$+ ( -1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} + w_{1,1,1} - w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} + w_{1,2,1} - w_{1,2,2})) w_{2,1,1} \sigma'_1(b_{1,1} + w_{1,1,1} - w_{1,1,2})$<br>
+$+ (  1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} + w_{1,1,1} + w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} + w_{1,2,1} + w_{1,2,2})) w_{2,1,1} \sigma'_1(b_{1,1} + w_{1,1,1} + w_{1,1,2})$<br>
+$)$<br>
+
+$\frac{\partial w_{1,1,1}}{\partial t} = -\frac{1}{4} ($<br>
+$- (  1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} - w_{1,1,1} - w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} - w_{1,2,1} - w_{1,2,2})) w_{2,1,1} \sigma'_1(b_{1,1} - w_{1,1,1} - w_{1,1,2})$<br>
+$- ( -1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} - w_{1,1,1} + w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} - w_{1,2,1} + w_{1,2,2})) w_{2,1,1} \sigma'_1(b_{1,1} - w_{1,1,1} + w_{1,1,2})$<br>
+$+ ( -1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} + w_{1,1,1} - w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} + w_{1,2,1} - w_{1,2,2})) w_{2,1,1} \sigma'_1(b_{1,1} + w_{1,1,1} - w_{1,1,2})$<br>
+$+ (  1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} + w_{1,1,1} + w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} + w_{1,2,1} + w_{1,2,2})) w_{2,1,1} \sigma'_1(b_{1,1} + w_{1,1,1} + w_{1,1,2})$<br>
+$)$<br>
+
+$\frac{\partial w_{1,1,2}}{\partial t} = -\frac{1}{4} ($<br>
+$- (  1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} - w_{1,1,1} - w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} - w_{1,2,1} - w_{1,2,2})) w_{2,1,1} \sigma'_1(b_{1,1} - w_{1,1,1} - w_{1,1,2})$<br>
+$+ ( -1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} - w_{1,1,1} + w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} - w_{1,2,1} + w_{1,2,2})) w_{2,1,1} \sigma'_1(b_{1,1} - w_{1,1,1} + w_{1,1,2})$<br>
+$- ( -1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} + w_{1,1,1} - w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} + w_{1,2,1} - w_{1,2,2})) w_{2,1,1} \sigma'_1(b_{1,1} + w_{1,1,1} - w_{1,1,2})$<br>
+$+ (  1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} + w_{1,1,1} + w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} + w_{1,2,1} + w_{1,2,2})) w_{2,1,1} \sigma'_1(b_{1,1} + w_{1,1,1} + w_{1,1,2})$<br>
+$)$<br>
+
+$\frac{\partial b_{1,2}}{\partial t} = -\frac{1}{4} ($<br>
+$+ (  1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} - w_{1,1,1} - w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} - w_{1,2,1} - w_{1,2,2})) w_{2,1,2} \sigma'_1(b_{1,2} - w_{1,2,1} - w_{1,2,2})$<br>
+$+ ( -1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} - w_{1,1,1} + w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} - w_{1,2,1} + w_{1,2,2})) w_{2,1,2} \sigma'_1(b_{1,2} - w_{1,2,1} + w_{1,2,2})$<br>
+$+ ( -1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} + w_{1,1,1} - w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} + w_{1,2,1} - w_{1,2,2})) w_{2,1,2} \sigma'_1(b_{1,2} + w_{1,2,1} - w_{1,2,2})$<br>
+$+ (  1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} + w_{1,1,1} + w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} + w_{1,2,1} + w_{1,2,2})) w_{2,1,2} \sigma'_1(b_{1,2} + w_{1,2,1} + w_{1,2,2})$<br>
+$)$<br>
+
+$\frac{\partial w_{1,2,1}}{\partial t} = -\frac{1}{4} ($<br>
+$- (  1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} - w_{1,1,1} - w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} - w_{1,2,1} - w_{1,2,2})) w_{2,1,2} \sigma'_1(b_{1,2} - w_{1,2,1} - w_{1,2,2})$<br>
+$- ( -1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} - w_{1,1,1} + w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} - w_{1,2,1} + w_{1,2,2})) w_{2,1,2} \sigma'_1(b_{1,2} - w_{1,2,1} + w_{1,2,2})$<br>
+$+ ( -1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} + w_{1,1,1} - w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} + w_{1,2,1} - w_{1,2,2})) w_{2,1,2} \sigma'_1(b_{1,2} + w_{1,2,1} - w_{1,2,2})$<br>
+$+ (  1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} + w_{1,1,1} + w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} + w_{1,2,1} + w_{1,2,2})) w_{2,1,2} \sigma'_1(b_{1,2} + w_{1,2,1} + w_{1,2,2})$<br>
+$)$<br>
+
+$\frac{\partial w_{1,2,2}}{\partial t} = -\frac{1}{4} ($<br>
+$- (  1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} - w_{1,1,1} - w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} - w_{1,2,1} - w_{1,2,2})) w_{2,1,2} \sigma'_1(b_{1,2} - w_{1,2,1} - w_{1,2,2})$<br>
+$+ ( -1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} - w_{1,1,1} + w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} - w_{1,2,1} + w_{1,2,2})) w_{2,1,2} \sigma'_1(b_{1,2} - w_{1,2,1} + w_{1,2,2})$<br>
+$- ( -1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} + w_{1,1,1} - w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} + w_{1,2,1} - w_{1,2,2})) w_{2,1,2} \sigma'_1(b_{1,2} + w_{1,2,1} - w_{1,2,2})$<br>
+$+ (  1  + b_{2,1} + w_{2,1,1} \sigma_1(b_{1,1} + w_{1,1,1} + w_{1,1,2}) + w_{2,1,2} \sigma_1(b_{1,2} + w_{1,2,1} + w_{1,2,2})) w_{2,1,2} \sigma'_1(b_{1,2} + w_{1,2,1} + w_{1,2,2})$<br>
+$)$<br>
+<br>
+
+TODO exact convergence solutiosn
+in the mean time, linearize
+in fact, just look at linear approx to tanh, f(x) = clamp(x, -1, 1).<br>
+<br>
 
 	</body>
 </html>
