@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<title>flat earth curvature</title>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<script type='text/javascript' src='template.js'/></script>
+		<script>
+
+		</script>
+	</head>
+	<body templated>
+
+
+$R = $<input name='earth_radius_in_m' value='6378000'/>$ \cdot m = $ Earth radius.<br>
+$r = $<input name='view_alt_in_m' value='6378002'/>$ \cdot m = $ viewing altitude.<br>
+$\Delta r = r - R = $ {{view_alt_in_m - earth_radius_in_m}} = viewing altitude above Earth surface.<br>
+<br>
+
+Viewer is at the origin.<br>
+Viewing down z axis.<br>
+Sphere is distance $z$ away (along the $-z$ axis), and $R$ down beneath you (along the $-y$ axis), such that its north pole is directly in front of you at all times.<br>
+How does the profile of its surface change with respect to your distance?<br>
+<br>
+
+$r_0 = [0,0,0]$ = view origin<br>
+$v = [-sin(\phi), v_y, -cos(\phi)]$ = view direction<br>
+$c = [0, -R, -z]$ = sphere origin<br>
+<br>
+
+So sphere's distance from the origin is $r = \sqrt{z^2 + R^2}$<br>
+So the altitude above the surface is $\Delta r = r - R = \sqrt{z^2 + R^2} - R$.<br>
+So the sphere distance as a function of the view altitude is: $z^2 = (\Delta r + R)^2 - R^2$,<br>
+i.e. $z = \sqrt{(\Delta r)^2 + 2 R \Delta r}$.<br>
+<br>
+
+What's the profile of the sphere in the view?<br>
+i.e. what are all rays that intersect the sphere surface perpendicular to its origin?<br>
+<br>
+
+$(r_0 + s v - c) \cdot v = 0$ (right angle)<br>
+$|r_0 + s v - c|^2 = R^2$ (sphere surface)<br>
+<br>
+
+right angle:<br>
+$(r_0 + s v - c) \cdot v = 0$<br>
+$r_0 \cdot v + s v \cdot v - c \cdot v = 0$<br>
+$s |v|^2 = (c - r_0) \cdot v$<br>
+$s (1 + (v_y)^2) = -R v_y + z cos(\phi)$<br>
+<br>
+
+sphere surface:<br>
+$(s v - c) \cdot (s v - c) = R^2$<br>
+$s^2 v \cdot v - 2 s v \cdot c + c \cdot c = R^2$<br> 
+$s^2 (1 + (v_y)^2) - 2 s (-R v_y + z cos(\phi)) + R^2 + z^2 = R^2$<br> 
+...substitute right angle results for s:<br>
+$s^2 (1 + (v_y)^2) - 2 s^2 (1 + (v_y)^2) + z^2 = 0$<br> 
+$s = \pm z / \sqrt{1 + (v_y)^2}$<br>
+...let's just use the positive parameter:<br>
+$s = z / \sqrt{1 + (v_y)^2}$<br>
+...substitute back into ray equation:<br>
+$r_0 + s v$<br>
+$= z / \sqrt{1 + (v_y)^2} [-sin(\phi), v_y, -cos(\phi)]$<br>
+That's the point of intersection of ray with sphere.<br>
+What's its declination?<br>
+$= atan(v_y)$<br>	
+What is $v_y$ as a function of $\phi$ ? <br>	
+$s (1 + (v_y)^2) = -R v_y + z cos(\phi)$<br>
+$(1 + (v_y)^2) z / \sqrt{1 + (v_y)^2} = -R v_y + z cos(\phi)$<br>
+$\sqrt{1 + (v_y)^2} = -(R / z) v_y + cos(\phi)$<br>
+$1 + (v_y)^2 = (R / z)^2 (v_y)^2 - 2 cos(\phi) (R / z) v_y + cos(\phi)^2$<br>
+$((R / z)^2 - 1) (v_y)^2 - 2 cos(\phi) (R / z) v_y - sin(\phi)^2 = 0$<br>
+$v_y = \frac{1}{2 ((R / z)^2 - 1)} \left(
+	2 cos(\phi) (R / z) \pm \sqrt{
+		(2 cos(\phi) (R / z))^2
+		+ 4 ((R / z)^2 - 1) sin(\phi)^2
+	}
+\right)$<br>
+$v_y = \frac{1}{2 ((R / z)^2 - 1)} \left(
+	2 cos(\phi) (R / z) \pm \sqrt{
+		4 cos(\phi)^2 (R / z)^2
+		+ 4 sin(\phi)^2 ((R / z)^2 - 1)
+	}
+\right)$<br>
+$v_y = \frac{1}{(R / z)^2 - 1} \left(
+	cos(\phi) (R / z) \pm \sqrt{
+		cos(\phi)^2 (R / z)^2
+		+ sin(\phi)^2 ((R / z)^2 - 1)
+	}
+\right)$<br>
+$v_y = \frac{1}{(R / z)^2 - 1} \left(
+	cos(\phi) (R / z) \pm \sqrt{
+		(R / z)^2 - sin(\phi)^2
+	}
+\right)$<br>
+$v_y = \frac{R / z}{(R / z)^2 - 1} \left(
+	cos(\phi) \pm \sqrt{
+		1 - sin(\phi)^2 / (R / z)^2
+	}
+\right)$<br>
+$v_y = \frac{1}{R / z - z / R}
+\left(
+	cos(\phi) \pm \sqrt{
+		1 - (sin(\phi) z / R)^2
+	}
+\right)$<br>
+
+	</body>
+</html>
