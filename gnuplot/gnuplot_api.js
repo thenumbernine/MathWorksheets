@@ -5,7 +5,8 @@ const Gnuplot = function(js_filename) {
        	// https://stackoverflow.com/a/36713931/2714073
 		if (js_filename.substr(0,1) != '/') {
 			// why is Javascript so retarded?  Worker doesn't accept relative paths.
-			js_filename = location.href + '/' + js_filename.substr(2);
+			const currentPath = location.href.substring(0, location.href.lastIndexOf('/'));
+			js_filename = currentPath + '/' + js_filename;
 		}
 		this.worker = new Worker(new URL(js_filename, window.location.origin).toString());
 
