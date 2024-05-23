@@ -9,8 +9,6 @@ so I just wrote my own.
 I also tried upgrading this to ES6 class, but that automatically implies 'use strict', which disabled 'with() {}', and as far as I know, eval() has no equivalent of with(), so writing to context no longer works.
 I could get around this with just copying all keys from 'this.context[]' into local variables.
 But from there, what happens to written variables?  Do they all go in 'window' ?
-Also if I switch to ES6 / classes / `use strict`, the implicit conversion of numbers and math operators no longer works and I just get a bunch of string concatenation,
-	and any time I want to use a variable-as-number I have to wrap it in (parseFloat(x)||0)
 Javascript is so fucking retarded.
 */
 
@@ -61,9 +59,16 @@ Template.prototype = {
 		const inputs = document.getElementsByTagName('input');
 		for (let i = 0; i < inputs.length; ++i) {
 			const input = inputs[i];	
-			thiz.context[input.name] = input.value;
+			const refreshInput = (input) => {
+				if (input.getAttribute('type') == 'number') {
+					thiz.context[input.name] = parseFloat(input.value) || 0;
+				} else {
+					thiz.context[input.name] = input.value;
+				}
+			};
+			refreshInput(input);
 			input.onkeyup = e => {
-				thiz.context[input.name] = input.value;
+				refreshInput(input);
 				thiz.refresh(true);	//refresh everything related to it
 			};
 		}

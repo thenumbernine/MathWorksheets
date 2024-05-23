@@ -74,8 +74,8 @@ console.log('redrawing');
 	</head>
 	<body templated>
 
-$R = $<input name='earth_radius_in_m' value='6378000' oninput='scriptChange()'/>$ \cdot m = $ Earth radius.<br>
-$\Delta r = $<input name='view_alt_in_m' value='2' oninput='scriptChange()'/>$ \cdot m = $ viewing altitude above Earth surface.<br>
+$R = $<input type='number' name='earth_radius_in_m' value='6378000' oninput='scriptChange()'/>$ \cdot m = $ Earth radius.<br>
+$\Delta r = $<input type='number' name='view_alt_in_m' value='2' oninput='scriptChange()'/>$ \cdot m = $ viewing altitude above Earth surface.<br>
 $r = R + \Delta r = $ {{ view_alt_in_m + earth_radius_in_m }} = viewing distance from Earth center.<br>
 <br>
 
