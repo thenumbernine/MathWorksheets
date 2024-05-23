@@ -74,10 +74,9 @@ console.log('redrawing');
 	</head>
 	<body templated>
 
-
-$R = $<input type='number' name='earth_radius_in_m' value='6378000' oninput='scriptChange()'/>$ \cdot m = $ Earth radius.<br>
-$\Delta r = $<input type='number' name='view_alt_in_m' value='2' oninput='scriptChange()'/>$ \cdot m = $ viewing altitude above Earth surface.<br>
-$r = R + \Delta r = $ {{ (parseInt(view_alt_in_m)||0) + (parseInt(earth_radius_in_m)||0)}} = viewing distance from Earth center.<br>
+$R = $<input name='earth_radius_in_m' value='6378000' oninput='scriptChange()'/>$ \cdot m = $ Earth radius.<br>
+$\Delta r = $<input name='view_alt_in_m' value='2' oninput='scriptChange()'/>$ \cdot m = $ viewing altitude above Earth surface.<br>
+$r = R + \Delta r = $ {{ view_alt_in_m + earth_radius_in_m }} = viewing distance from Earth center.<br>
 <br>
 
 <img src="" id="gnuimg" type="image/svg+xml" width=1024 height=400 class="float-right"/>
@@ -101,7 +100,7 @@ So sphere's distance from the origin is $r = \sqrt{z^2 + R^2}$<br>
 So the altitude above the surface is $\Delta r = r - R = \sqrt{z^2 + R^2} - R$.<br>
 So the sphere distance as a function of the view altitude is: $z^2 = (\Delta r + R)^2 - R^2$,<br>
 i.e. $z = \sqrt{(\Delta r)^2 + 2 R \Delta r}$.<br>
-$z = $ {{ Math.sqrt( (parseInt(view_alt_in_m)||0) * ( (parseInt(view_alt_in_m)||0) + 2 * (parseInt(earth_radius_in_m)||0) )) }} <br>
+$z = $ {{ Math.sqrt( view_alt_in_m * ( view_alt_in_m + 2 * earth_radius_in_m )) }} <br>
 <br>
 
 What's the profile of the sphere in the view?<br>
