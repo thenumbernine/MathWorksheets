@@ -7,7 +7,7 @@
 		<script type='text/javascript' src='template.js'/></script>
 		<script src='gnuplot/gnuplot_api.js'></script>
 		<script>
-gnuplot = new Gnuplot('./gnuplot/gnuplot.js');
+gnuplot = new Gnuplot('gnuplot/gnuplot.js');
 gnuplot.onOutput = text => { console.log(text); };
 gnuplot.onError = text => { console.log('ERR:', text); };
 function scriptChange() {
