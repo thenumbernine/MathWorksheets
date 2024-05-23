@@ -5,17 +5,86 @@
 		<title>flat earth curvature</title>
 		<script type='text/javascript' src='tryToFindMathJax.js'></script>
 		<script type='text/javascript' src='template.js'/></script>
+		<script src='gnuplot/gnuplot_api.js'></script>
 		<script>
+gnuplot = new Gnuplot('./gnuplot/gnuplot.js');
+gnuplot.onOutput = text => { console.log(text); };
+gnuplot.onError = text => { console.log('ERR:', text); };
+function scriptChange() {
+	if (gnuplot.isRunning) {
+		setTimeout(scriptChange, 1000);
+		return;
+	}
+	
+	const val = `
+set terminal svg enhanced size 1024,400
+set output 'out.svg'
+R = `+document.getElementsByName('earth_radius_in_m')[0].value+`
 
+alt = `+document.getElementsByName('view_alt_in_m')[0].value+`
+
+R_Rz(alt) = R / sqrt(alt * (alt + 2 * R))
+set xlabel "yaw angle (degrees)"
+set ylabel "pitch angle (degrees)"
+plot [-90.:90.] 180./pi * atan( 1./(R_Rz(alt) - 1./R_Rz(alt)) * ( cos(x*pi/180.) - sqrt( 1. - (sin(x*pi/180.) / R_Rz(alt))**2 ) ) ) notitle
+`;
+
+	gnuplot.run(val, e => {
+		gnuplot.getFile('out.svg', e => {
+			if (!e.content) {
+				gnuplot.onError("Output file out.svg not found!");
+				return;
+			}
+			const img = document.getElementById('gnuimg');
+			try {
+				const ab = new Uint8Array(e.content);
+				const blob = new Blob([ab], {"type": "image\/svg+xml"});
+				window.URL = window.URL || window.webkitURL;
+				img.src = window.URL.createObjectURL(blob);
+			} catch (err) { // in case blob / URL missing, fallback to data-uri
+				if (!window.blobalert) {
+					alert('Warning - your browser does not support Blob-URLs, using data-uri with a lot more memory and time required. Err: ' + err);
+					window.blobalert = true;
+				}
+				let rstr = '';
+				for (let i = 0; i < e.content.length; i++) {
+					rstr += String.fromCharCode(e.content[i]);
+				}
+				img.src = 'data:image\/svg+xml;base64,' + btoa(rstr);
+			}
+		});
+	});
+};
+
+window.addEventListener('load', () => {
+	scriptChange();
+	/* HOW COME THIS NEVER GETS TRIGGERED?!?!?!?!?
+	const inputs = document.getElementsByTagName('input');
+	for (let i = 0; i < inputs.length; ++i) {
+console.log("adding input to", inputs[i]);		
+		inputs[i].addEventListener('input', e => {
+console.log('redrawing');
+			scriptChange();
+		});
+	}
+	*/
+	//HOWEVER oninput='scriptChange()' WORKS?!?!?!?!?
+});
 		</script>
 	</head>
 	<body templated>
 
 
-$R = $<input name='earth_radius_in_m' value='6378000'/>$ \cdot m = $ Earth radius.<br>
-$r = $<input name='view_alt_in_m' value='6378002'/>$ \cdot m = $ viewing altitude.<br>
-$\Delta r = r - R = $ {{view_alt_in_m - earth_radius_in_m}} = viewing altitude above Earth surface.<br>
+$R = $<input type='number' name='earth_radius_in_m' value='6378000' oninput='scriptChange()'/>$ \cdot m = $ Earth radius.<br>
+$\Delta r = $<input type='number' name='view_alt_in_m' value='2' oninput='scriptChange()'/>$ \cdot m = $ viewing altitude above Earth surface.<br>
+$r = R + \Delta r = $ {{ (parseInt(view_alt_in_m)||0) + (parseInt(earth_radius_in_m)||0)}} = viewing distance from Earth center.<br>
 <br>
+
+<img src="" id="gnuimg" type="image/svg+xml" width=1024 height=400 class="float-right"/>
+
+<br>
+<br>
+
 
 Viewer is at the origin.<br>
 Viewing down z axis.<br>
@@ -24,7 +93,7 @@ How does the profile of its surface change with respect to your distance?<br>
 <br>
 
 $r_0 = [0,0,0]$ = view origin<br>
-$v = [-sin(\phi), v_y, -cos(\phi)]$ = view direction<br>
+$v = [-sin(\phi), tan(\theta), -cos(\phi)]$ = view direction<br>
 $c = [0, -R, -z]$ = sphere origin<br>
 <br>
 
@@ -32,6 +101,7 @@ So sphere's distance from the origin is $r = \sqrt{z^2 + R^2}$<br>
 So the altitude above the surface is $\Delta r = r - R = \sqrt{z^2 + R^2} - R$.<br>
 So the sphere distance as a function of the view altitude is: $z^2 = (\Delta r + R)^2 - R^2$,<br>
 i.e. $z = \sqrt{(\Delta r)^2 + 2 R \Delta r}$.<br>
+$z = $ {{ Math.sqrt( (parseInt(view_alt_in_m)||0) * ( (parseInt(view_alt_in_m)||0) + 2 * (parseInt(earth_radius_in_m)||0) )) }} <br>
 <br>
 
 What's the profile of the sphere in the view?<br>
@@ -46,59 +116,58 @@ right angle:<br>
 $(r_0 + s v - c) \cdot v = 0$<br>
 $r_0 \cdot v + s v \cdot v - c \cdot v = 0$<br>
 $s |v|^2 = (c - r_0) \cdot v$<br>
-$s (1 + (v_y)^2) = -R v_y + z cos(\phi)$<br>
+$s (1 + (tan(\theta))^2) = -R tan(\theta) + z cos(\phi)$<br>
 <br>
 
 sphere surface:<br>
 $(s v - c) \cdot (s v - c) = R^2$<br>
 $s^2 v \cdot v - 2 s v \cdot c + c \cdot c = R^2$<br> 
-$s^2 (1 + (v_y)^2) - 2 s (-R v_y + z cos(\phi)) + R^2 + z^2 = R^2$<br> 
+$s^2 (1 + (tan(\theta))^2) - 2 s (-R tan(\theta) + z cos(\phi)) + R^2 + z^2 = R^2$<br> 
 ...substitute right angle results for s:<br>
-$s^2 (1 + (v_y)^2) - 2 s^2 (1 + (v_y)^2) + z^2 = 0$<br> 
-$s = \pm z / \sqrt{1 + (v_y)^2}$<br>
+$s^2 (1 + (tan(\theta))^2) - 2 s^2 (1 + (tan(\theta))^2) + z^2 = 0$<br> 
+$s = \pm z / \sqrt{1 + (tan(\theta))^2}$<br>
 ...let's just use the positive parameter:<br>
-$s = z / \sqrt{1 + (v_y)^2}$<br>
+$s = z / \sqrt{1 + (tan(\theta))^2}$<br>
 ...substitute back into ray equation:<br>
 $r_0 + s v$<br>
-$= z / \sqrt{1 + (v_y)^2} [-sin(\phi), v_y, -cos(\phi)]$<br>
+$= z / \sqrt{1 + (tan(\theta))^2} [-sin(\phi), tan(\theta), -cos(\phi)]$<br>
 That's the point of intersection of ray with sphere.<br>
 What's its declination?<br>
-$\theta = atan(v_y)$<br>	
-What is $v_y$ as a function of $\phi$ ? <br>	
-$s (1 + (v_y)^2) = -R v_y + z cos(\phi)$<br>
-$(1 + (v_y)^2) z / \sqrt{1 + (v_y)^2} = -R v_y + z cos(\phi)$<br>
-$\sqrt{1 + (v_y)^2} = -(R / z) v_y + cos(\phi)$<br>
-$1 + (v_y)^2 = (R / z)^2 (v_y)^2 - 2 cos(\phi) (R / z) v_y + cos(\phi)^2$<br>
-$((R / z)^2 - 1) (v_y)^2 - 2 cos(\phi) (R / z) v_y - sin(\phi)^2 = 0$<br>
-$v_y = \frac{1}{2 ((R / z)^2 - 1)} \left(
+What is $\theta$ as a function of $\phi$ ? <br>	
+$s (1 + (tan(\theta))^2) = -R tan(\theta) + z cos(\phi)$<br>
+$(1 + (tan(\theta))^2) z / \sqrt{1 + (tan(\theta))^2} = -R tan(\theta) + z cos(\phi)$<br>
+$\sqrt{1 + (tan(\theta))^2} = -(R / z) tan(\theta) + cos(\phi)$<br>
+$1 + (tan(\theta))^2 = (R / z)^2 (tan(\theta))^2 - 2 cos(\phi) (R / z) tan(\theta) + cos(\phi)^2$<br>
+$((R / z)^2 - 1) (tan(\theta))^2 - 2 cos(\phi) (R / z) tan(\theta) - sin(\phi)^2 = 0$<br>
+$tan(\theta) = \frac{1}{2 ((R / z)^2 - 1)} \left(
 	2 cos(\phi) (R / z) \pm \sqrt{
 		(2 cos(\phi) (R / z))^2
 		+ 4 ((R / z)^2 - 1) sin(\phi)^2
 	}
 \right)$<br>
-$v_y = \frac{1}{2 ((R / z)^2 - 1)} \left(
+$tan(\theta) = \frac{1}{2 ((R / z)^2 - 1)} \left(
 	2 cos(\phi) (R / z) \pm \sqrt{
 		4 cos(\phi)^2 (R / z)^2
 		+ 4 sin(\phi)^2 ((R / z)^2 - 1)
 	}
 \right)$<br>
-$v_y = \frac{1}{(R / z)^2 - 1} \left(
+$tan(\theta) = \frac{1}{(R / z)^2 - 1} \left(
 	cos(\phi) (R / z) \pm \sqrt{
 		cos(\phi)^2 (R / z)^2
 		+ sin(\phi)^2 ((R / z)^2 - 1)
 	}
 \right)$<br>
-$v_y = \frac{1}{(R / z)^2 - 1} \left(
+$tan(\theta) = \frac{1}{(R / z)^2 - 1} \left(
 	cos(\phi) (R / z) \pm \sqrt{
 		(R / z)^2 - sin(\phi)^2
 	}
 \right)$<br>
-$v_y = \frac{R / z}{(R / z)^2 - 1} \left(
+$tan(\theta) = \frac{R / z}{(R / z)^2 - 1} \left(
 	cos(\phi) \pm \sqrt{
 		1 - sin(\phi)^2 / (R / z)^2
 	}
 \right)$<br>
-$v_y = \frac{1}{R / z - z / R}
+$tan(\theta) = \frac{1}{R / z - z / R}
 \left(
 	cos(\phi) \pm \sqrt{
 		1 - (sin(\phi) z / R)^2

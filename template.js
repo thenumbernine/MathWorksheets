@@ -5,34 +5,34 @@
 //  and from what I've read, AngularJS v2 just makes things worse.
 // so I just wrote my own.
 
-function Template() {
-	var thiz = this;
-	
-	thiz.context = {};
-	thiz.spans = [];
-
-	setTimeout(function() {
-		var doms = document.querySelectorAll('[templated]');
-		for (var i = 0; i < doms.length; ++i) {
-			thiz.addDOM(doms[i]);
-		}
-	
-		if (thiz.done !== undefined) {
-			thiz.done();
-		}
-	}, 0);
-}
-
-Template.prototype = {
-	addDOM : function(dom) {
-		var thiz = this;
+class Template {
+	constructor() {
+		const thiz = this;
 		
-		var r = /{{([^}]*)}}/;
-		var html = dom.innerHTML;
-		var templateIndex = 0;
-		var match;
+		this.context = {};
+		this.spans = [];
+
+		setTimeout(() => {
+			const doms = document.querySelectorAll('[templated]');
+			for (let i = 0; i < doms.length; ++i) {
+				thiz.addDOM(doms[i]);
+			}
+		
+			if (thiz.done !== undefined) {
+				thiz.done();
+			}
+		}, 0);
+	}
+
+	addDOM(dom) {
+		const thiz = this;
+		
+		const r = /{{([^}]*)}}/;
+		let html = dom.innerHTML;
+		let templateIndex = 0;
+		let match;
 		while ((match = r.exec(html)) != null) {
-			var templateID = 'template_' + templateIndex;
+			const templateID = 'template_' + templateIndex;
 			html = html.substr(0, match.index) 
 				+ '<span id="' + templateID + '">' + templateID + '</span>'
 				+ html.substr(match.index + match[0].length);
@@ -44,34 +44,49 @@ Template.prototype = {
 		}
 		dom.innerHTML = html;
 
-		for (var i = 0; i < thiz.spans.length; ++i) {
-			var templateSpan = thiz.spans[i];
+		for (let i = 0; i < thiz.spans.length; ++i) {
+			const templateSpan = thiz.spans[i];
 			templateSpan.span = document.getElementById(templateSpan.id);
 		}
 
-		var inputs = document.getElementsByTagName('input');
-		for (var i = 0; i < inputs.length; ++i) {
-			(function(){
-				var input = inputs[i];	
+		const inputs = document.getElementsByTagName('input');
+		for (let i = 0; i < inputs.length; ++i) {
+			const input = inputs[i];	
+			const refreshInput = (input) => {
+				// TODO actually interpret the type, dont just alwyas write .value since it's always a string, because JS doesn't care what the input's type is, because JS is a language made by retards.
 				thiz.context[input.name] = input.value;
-				input.onkeyup = function() {
-					thiz.context[input.name] = input.value;
-					thiz.refresh(true);	//refresh everything related to it
-				};
-			})();
+			};
+			refreshInput(input);
+			input.addEventListener('input', e => {
+				refreshInput(input);
+				thiz.refresh(true);	//refresh everything related to it
+			});
 		}
 
 		//now refresh it all
 		thiz.refresh(true);
-	},
-	refresh : function(dontUpdateInputs) {
-		for (var i = 0; i < this.spans.length; ++i) {
-			var span = this.spans[i];
-			var result;
-			var error;
-			with (this.context) {
+	}
+	
+	refresh(dontUpdateInputs) {
+		const thiz = this;
+		for (let i = 0; i < this.spans.length; ++i) {
+			const span = this.spans[i];
+			let result;
+			let error;
+			//with (this.context) 
+			{
 				try {
-					result = eval(span.expr);
+					// make my own "with" since we're in strict mode since classes since ES6 and all JS is a giant piece of shit
+					let code = '(() => {\n';
+					for (let k in this.context) {
+						code += 'const '+k+' = thiz.context["'+k+'"];\n';
+//code += 'console.log("got '+k+' =", '+k+');\n';
+					}
+					code += 'return '+span.expr + ';\n'
+						+ '})()';
+//console.log('code', code);					
+					result = eval(code);
+//console.log('result', result);					
 				} catch (e) {
 					result = e.message;
 					error = true;
@@ -88,16 +103,16 @@ Template.prototype = {
 		}
 
 		if (!dontUpdateInputs) {
-			var inputs = document.getElementsByTagName('input');
-			for (var i = 0; i < inputs.length; ++i) {
-				var input = inputs[i];
+			const inputs = document.getElementsByTagName('input');
+			for (let i = 0; i < inputs.length; ++i) {
+				const input = inputs[i];
 				input.value = this.context[input.name];
 			}
 		}
 	}
-};
+}
 
-var template;
-window.addEventListener('load', function() {
+let template;
+window.addEventListener('load', () => {
 	template = new Template();
 }, false);
