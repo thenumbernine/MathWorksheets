@@ -18,19 +18,31 @@ $G_{uv} = \kappa T_{uv}$<br>
 ...where $\kappa = 8 \pi \frac{G}{c^4}$, for G the gravitational constant and c the speed of light.<br>
 <br>
 
-The definition of the Einstein tensor:<br>
+...its trace:<br>
+$G = \kappa T$<br>
+$T = \frac{1}{\kappa} G$<br>
+<br>
+
+The definition of the Einstein tensor (based on the double-dual contraction):<br>
 $G_{uv} = R_{uv} - \frac{1}{2} R g_{uv}$<br>
+<br>
+
+...its trace:<br>
+$G = -\frac{n - 2}{2} R$<br>
+$R = -\frac{2}{n - 2} G$<br>
+<br>
+
+Combine:<br>
+$G_{uv} = R_{uv} + \frac{1}{2} \frac{2}{n - 2} G g_{uv}$<br>
+$R_{uv} = G_{uv} - \frac{1}{n - 2} G g_{uv}$<br>
 <br>
 
 Combine:<br>
 $\kappa T_{uv} = R_{uv} - \frac{1}{2} R g_{uv}$<br>
 <br>
 
-Trace:<br>
-$g^{uv} (\kappa T_{uv}) = g^{uv} (R_{uv} - \frac{1}{2} R g_{uv})$<br>
-$\kappa T = R - \frac{1}{2} R \cdot n$<br>
-$\kappa T = - \frac{n-2}{2} R$<br>
-$T = -\frac{1}{\kappa} \frac{n-2}{2} R$<br>
+Combine Traces:<br>
+$\kappa T = -\frac{n-2}{2} R$<br>
 <br>
 
 If $n = 2$ then we get $T = 0$ and cannot solve for R.<br>
@@ -41,9 +53,6 @@ $R = -\kappa \frac{2}{n-2} T$<br>
 <br>
 
 Substitute:<br>
-$\kappa T_{uv} = R_{uv} - \frac{1}{2} (-\kappa \frac{2}{n-2} T) g_{uv}$<br>
-$\kappa T_{uv} = R_{uv} + \kappa \frac{1}{n-2} T g_{uv}$<br>
-$R_{uv} = \kappa T_{uv} - \kappa \frac{1}{n - 2} T g_{uv}$<br>
 $R_{uv} = \kappa (T_{uv} - \frac{1}{n - 2} T g_{uv})$<br>
 <br>
 
@@ -85,16 +94,26 @@ $P_{uv} = \frac{1}{n - 2} (R_{uv} - \frac{1}{2 (n - 1)} R g_{uv})$<br>
 
 Substitute our definition of stress-energy:<br>
 $P_{uv} = \frac{1}{n - 2} (
-	\kappa (T_{uv} - \frac{2}{n} T g_{uv})
-	+ \frac{1}{2 (n - 1)}
-	g_{uv}
-	\kappa T
+	\kappa (T_{uv} - \frac{1}{n - 2} T g_{uv})
+	+ \frac{1}{2 (n - 1)} g_{uv} \kappa \frac{2}{n-2} T
 )$<br>
-$P_{uv} = \frac{1}{n - 2} \kappa (
+$P_{uv} = \kappa \frac{1}{n - 2} (
 	T_{uv}
-	- 
-		\frac{n - 2}{2 (n - 1) n} 
-	 T g_{uv}
+	+ (
+		\frac{1}{2 (n - 1)} \frac{2}{n-2}
+		- \frac{1}{n - 2}
+	) T g_{uv}
+)$<br>
+$P_{uv} = \kappa \frac{1}{n - 2} (
+	T_{uv}
+	+ (
+		\frac{1}{n - 1} \frac{1}{n-2}
+		- \frac{n - 1}{n - 1} \frac{1}{n - 2}
+	) T g_{uv}
+)$<br>
+$P_{uv} = \kappa \frac{1}{n - 2} (
+	T_{uv}
+	- \frac{1}{n - 1} T g_{uv}
 )$<br>
 <br>
 
@@ -119,9 +138,9 @@ $R_{abcd} = C_{abcd} + P_{ac} g_{bd} + P_{bd} g_{ac} - P_{ad} g_{bc} - P_{bc} g_
 
 In terms of the Ricci tensor:<br>
 $R_{abcd} = C_{abcd} + \frac{1}{n - 2} (
-	  (R_{ac} - \frac{1}{2 (n-1)} R g_{ac}) g_{bd} 
-	+ (R_{bd} - \frac{1}{2 (n-1)} R g_{bd}) g_{ac} 
-	- (R_{ad} - \frac{1}{2 (n-1)} R g_{ad}) g_{bc} 
+	  (R_{ac} - \frac{1}{2 (n-1)} R g_{ac}) g_{bd}
+	+ (R_{bd} - \frac{1}{2 (n-1)} R g_{bd}) g_{ac}
+	- (R_{ad} - \frac{1}{2 (n-1)} R g_{ad}) g_{bc}
 	- (R_{bc} - \frac{1}{2 (n-1)} R g_{bc}) g_{ad}
 )$<br>
 $R_{abcd} = C_{abcd} + \frac{1}{n - 2} (
@@ -242,14 +261,14 @@ ${R^{ab}}_{cd} = {C^{ab}}_{cd} + \kappa \frac{1}{n - 2} (
 ${R^{ab}}_{cd} = {C^{ab}}_{cd} + \kappa \frac{1}{n - 2} (
 	  \rho (
 		  u^a u_c \delta^b_d
-		+ u^b u_d \delta^a_c  
+		+ u^b u_d \delta^a_c
 		- u^a u_d \delta^b_c
 		- u^b u_c \delta^a_d
 	)
 	- \frac{2}{n - 1} (\delta^a_d \delta^b_c - \delta^a_c \delta^b_d) \rho
 	+ P (
 		  u^a u_c \delta^b_d
-		+ u^b u_d \delta^a_c 
+		+ u^b u_d \delta^a_c
 		- u^a u_d \delta^b_c
 		- u^b u_c \delta^a_d
 	)
@@ -290,7 +309,7 @@ ${F^u}_v = n^u E_v - n^v E_u + {\epsilon^u}_{vab} n^a B^b$<br>
 <br>
 
 ${F^u}_a {F^a}_v = (n^u E_a - n_a E^u + {\epsilon^u}_{abc} n^b B^c) (n^a E_v - n_v E^a + {\epsilon^a}_{vde} n^d B^e)$<br>
-$= 
+$=
 	  n^u E_a n^a E_v
 	- n^u E_a n_v E^a
 	+ n^u E_a {\epsilon^a}_{vde} n^d B^e
@@ -301,7 +320,7 @@ $=
 	- {\epsilon^u}_{abc} n^b B^c  n_v E^a
 	+ {\epsilon^u}_{abc} n^b B^c  {\epsilon^a}_{vde} n^d B^e
 $<br>
-$= 
+$=
 	  E^u E_v
 	- n^u n_v E_a E^a
 	- n^u \epsilon_{daev} n^d E^a B^e
@@ -309,14 +328,14 @@ $=
 	- \epsilon^{ubca} \epsilon_{vdea} n_b B_c n^d B^e
 $<br>
 Let $S_u = n^a \epsilon_{abcu} E^b B^c$<br>
-$= 
+$=
 	  E^u E_v
 	- n^u n_v E_a E^a
 	- n^u S_v
 	+ S^u n_v
 	+ \delta^{ubc}_{vde} n_b B_c n^d B^e
 $<br>
-$= 
+$=
 	  E^u E_v
 	- n^u n_v E_a E^a
 	- n^u S_v
@@ -330,7 +349,7 @@ $=
 		- \delta^u_v \delta^b_e \delta^c_d
 	) n_b B_c n^d B^e
 $<br>
-$= 
+$=
 	  E^u E_v
 	- n^u n_v E_a E^a
 	- n^u S_v
@@ -343,7 +362,7 @@ TODO seems that extra delta shouldn't be there, or there should be a delta with 
 <br>
 
 ${F^u}_v {F^v}_u = (n^u E_v - n_v E^u + {\epsilon^u}_{vab} n^a B^b) (n^v E_u - n_u E^v + {\epsilon^v}_{ucd} n^c B^d)$<br>
-${F^u}_v {F^v}_u = 
+${F^u}_v {F^v}_u =
 	  n^u E_v n^v E_u
 	- n^u E_v n_u E^v
 	+ n^u E_v {\epsilon^v}_{ucd} n^c B^d
@@ -354,24 +373,24 @@ ${F^u}_v {F^v}_u =
 	- {\epsilon^u}_{vab} n^a B^b n_u E^v
 	+ {\epsilon^u}_{vab} n^a B^b {\epsilon^v}_{ucd} n^c B^d
 $<br>
-${F^u}_v {F^v}_u = 
+${F^u}_v {F^v}_u =
 	  2 E^u E_u
 	+ \epsilon_{uvab} {\epsilon^{vu}}_{cd} n^a B^b n^c B^d
 $<br>
-${F^u}_v {F^v}_u = 
+${F^u}_v {F^v}_u =
 	  2 E^u E_u
 	- 2 \delta^{ab}_{cd} n^a B^b n_c B_d
 $<br>
-${F^u}_v {F^v}_u = 
+${F^u}_v {F^v}_u =
 	  2 E^u E_u
 	- 2 (\delta^a_c \delta^b_d - \delta^a_d \delta^b_c) n^a B^b n_c B_d
 $<br>
-${F^u}_v {F^v}_u = 
+${F^u}_v {F^v}_u =
 	  2 E^u E_u
 	- 2 \delta^a_c \delta^b_d n^a B^b n_c B_d
 	+ 2 \delta^a_d \delta^b_c n^a B^b n_c B_d
 $<br>
-${F^u}_v {F^v}_u = 
+${F^u}_v {F^v}_u =
 	  2 E^u E_u
 	+ 2 B^u B_u
 $<br>
