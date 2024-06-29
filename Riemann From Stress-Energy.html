@@ -278,29 +278,36 @@ ${R^{ab}}_{cd} = {C^{ab}}_{cd} + \kappa \frac{1}{n - 2} (
 
 <h3>Electromagnetism Stress-Energy:</h3>
 
-${T^u}_v = \frac{1}{\mu_0} (-{F^u}_a {F^a}_v - \frac{1}{4} \delta^u_v {F^a}_b {F^b}_a)$<br>
+${T^u}_v = \frac{1}{\mu_0} (-{F^u}_a {F^a}_v + \frac{1}{4} \delta^u_v {F^a}_b {F^b}_a)$<br>
+<br>
+
+Let ${(F^2)^u}_v = {F^u}_a {F^a}_v$<br>
+${T^u}_v = \frac{1}{\mu_0} (-{(F^2)^u}_v + \frac{1}{4} \delta^u_v {(F^2)^a}_a)$<br>
+${T^u}_v = -\frac{1}{\mu_0} {TF(F^2)^u}_v$<br>
+... where $TF(x)$ is the trace-free operator.<br>
 <br>
 
 ${T^u}_u = 0$<br>
 <br>
 
 ${R^{ab}}_{cd} = {C^{ab}}_{cd} + \kappa \frac{1}{n - 2} (
-	  \delta^b_d \frac{1}{\mu_0} (-{F^a}_u {F^u}_c - \frac{1}{4} \delta^a_c {F^u}_v {F^v}_u)
-	+ \delta^a_c \frac{1}{\mu_0} (-{F^b}_u {F^u}_d - \frac{1}{4} \delta^b_d {F^u}_v {F^v}_u)
-	- \delta^b_c \frac{1}{\mu_0} (-{F^a}_u {F^u}_d - \frac{1}{4} \delta^a_d {F^u}_v {F^v}_u)
-	- \delta^a_d \frac{1}{\mu_0} (-{F^b}_u {F^u}_c - \frac{1}{4} \delta^b_c {F^u}_v {F^v}_u)
+	  \delta^b_d \frac{1}{\mu_0} (-{F^a}_u {F^u}_c + \frac{1}{4} \delta^a_c {F^u}_v {F^v}_u)
+	+ \delta^a_c \frac{1}{\mu_0} (-{F^b}_u {F^u}_d + \frac{1}{4} \delta^b_d {F^u}_v {F^v}_u)
+	- \delta^b_c \frac{1}{\mu_0} (-{F^a}_u {F^u}_d + \frac{1}{4} \delta^a_d {F^u}_v {F^v}_u)
+	- \delta^a_d \frac{1}{\mu_0} (-{F^b}_u {F^u}_c + \frac{1}{4} \delta^b_c {F^u}_v {F^v}_u)
 )$<br>
 ${R^{ab}}_{cd} = {C^{ab}}_{cd} - \kappa \frac{1}{n - 2} \frac{1}{\mu_0} (
 	  \delta^b_d {F^a}_u {F^u}_c
 	+ \delta^a_c {F^b}_u {F^u}_d
 	- \delta^b_c {F^a}_u {F^u}_d
 	- \delta^a_d {F^b}_u {F^u}_c
-	- \frac{1}{2} {F^u}_v {F^v}_u (
+	+ \frac{1}{2} {F^u}_v {F^v}_u (
 		  \delta^a_d \delta^b_c
 		- \delta^a_c \delta^b_d
 	)
 )$<br>
 <br>
+TODO sign on 1/4 fixme from here on down:<br>
 
 Substituting:<br>
 ${F^u}_v = n^u E_v - n^v E_u + {\epsilon^u}_{vab} n^a B^b$<br>
