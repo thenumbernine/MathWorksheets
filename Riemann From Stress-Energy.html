@@ -307,7 +307,6 @@ ${R^{ab}}_{cd} = {C^{ab}}_{cd} - \kappa \frac{1}{n - 2} \frac{1}{\mu_0} (
 	)
 )$<br>
 <br>
-TODO sign on 1/4 fixme from here on down:<br>
 
 Substituting:<br>
 ${F^u}_v = n^u E_v - n_v E^u + {\epsilon^u}_{vab} n^a B^b$<br>
@@ -335,18 +334,19 @@ $=
 	- \epsilon^{ubca} \epsilon_{vdea} n_b B_c n^d B^e
 $<br>
 Let $S_u = n^a \epsilon_{abcu} E^b B^c$<br>
+so $S_u n^u = 0$<br>
 $=
 	  E^u E_v
 	- n^u n_v E_a E^a
 	- n^u S_v
-	+ S^u n_v
+	- S^u n_v
 	+ \delta^{ubc}_{vde} n_b B_c n^d B^e
 $<br>
 $=
 	  E^u E_v
 	- n^u n_v E_a E^a
 	- n^u S_v
-	+ S^u n_v
+	- S^u n_v
 	+ (
 		  \delta^u_v \delta^b_d \delta^c_e
 		+ \delta^u_d \delta^b_e \delta^c_v
@@ -359,47 +359,26 @@ $<br>
 $=
 	  E^u E_v
 	- n^u n_v E_a E^a
-	- n^u S_v
-	+ S^u n_v
-	- \delta^u_v B_c B^c
 	+ B^u B_v
-	- n_v n^u B_c B^c
+	- n_v n^u B_a B^a
+	- \delta^u_v B_a B^a
+	- n^u S_v
+	- S^u n_v
 $<br>
-TODO seems that extra delta shouldn't be there, or there should be a delta with E ... ?<br>
 <br>
 
-${F^u}_v {F^v}_u = (n^u E_v - n_v E^u + {\epsilon^u}_{vab} n^a B^b) (n^v E_u - n_u E^v + {\epsilon^v}_{ucd} n^c B^d)$<br>
-${F^u}_v {F^v}_u =
-	  n^u E_v n^v E_u
-	- n^u E_v n_u E^v
-	+ n^u E_v {\epsilon^v}_{ucd} n^c B^d
-	- n_v E^u n^v E_u
-	+ n_v E^u n_u E^v
-	- n_v E^u {\epsilon^v}_{ucd} n^c B^d
-	+ {\epsilon^u}_{vab} n^a B^b n^v E_u
-	- {\epsilon^u}_{vab} n^a B^b n_u E^v
-	+ {\epsilon^u}_{vab} n^a B^b {\epsilon^v}_{ucd} n^c B^d
+${F^u}_a {F^a}_u =
+	  E^u E_u
+	- n^u n_u E_b E^b
+	+ B^u B_u
+	- n_u n^u B_b B^b
+	- \delta^u_u B_b B^b
+	- n^u S_u
+	- S^u n_u
 $<br>
-${F^u}_v {F^v}_u =
+${F^u}_a {F^a}_u =
 	  2 E^u E_u
-	+ \epsilon_{uvab} {\epsilon^{vu}}_{cd} n^a B^b n^c B^d
-$<br>
-${F^u}_v {F^v}_u =
-	  2 E^u E_u
-	- 2 \delta^{ab}_{cd} n^a B^b n_c B_d
-$<br>
-${F^u}_v {F^v}_u =
-	  2 E^u E_u
-	- 2 (\delta^a_c \delta^b_d - \delta^a_d \delta^b_c) n^a B^b n_c B_d
-$<br>
-${F^u}_v {F^v}_u =
-	  2 E^u E_u
-	- 2 \delta^a_c \delta^b_d n^a B^b n_c B_d
-	+ 2 \delta^a_d \delta^b_c n^a B^b n_c B_d
-$<br>
-${F^u}_v {F^v}_u =
-	  2 E^u E_u
-	+ 2 B^u B_u
+	- (n - 2) B^u B_u
 $<br>
 <br>
 
@@ -408,7 +387,7 @@ ${R^{ab}}_{cd} = {C^{ab}}_{cd} - \kappa \frac{1}{n - 2} \frac{1}{\mu_0} (
 	+ \delta^a_c {F^b}_u {F^u}_d
 	- \delta^b_c {F^a}_u {F^u}_d
 	- \delta^a_d {F^b}_u {F^u}_c
-	- (E^u E_u + B^u B_u) (
+	- (E^u E_u - (\frac{n}{2} - 1) B^u B_u) (
 		  \delta^a_d \delta^b_c
 		- \delta^a_c \delta^b_d
 	)
