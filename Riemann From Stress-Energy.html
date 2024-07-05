@@ -23,7 +23,7 @@ $G = \kappa T$<br>
 $T = \frac{1}{\kappa} G$<br>
 <br>
 
-The definition of the Einstein tensor (based on the double-dual contraction):<br>
+The definition of the Einstein tensor:<br>
 $G_{uv} = R_{uv} - \frac{1}{2} R g_{uv}$<br>
 <br>
 
@@ -240,7 +240,91 @@ ${R^{ab}}_{cd} = {C^{ab}}_{cd} + \kappa \frac{4}{n - 2} (
 ) {T^u}_v$<br>
 <br>
 
+<h3>Find the double-dual Riemann tensor in terms of the stress-energy tensor, in $n=4$ dimensions</h3>
+<br>
+
+Kulkarni-Nomizu double-dual in $n=4$ dimensions:<br>
+$\frac{1}{4} {\epsilon_{ab}}^{pq} (A \ {\scriptstyle \enclose{circle}{\wedge}} \ B)_{pqrs} {\epsilon^{rs}}_{cd}$<br>
+$= \frac{1}{4} {\epsilon_{ab}}^{pq} (A_{pr} B_{qs} + A_{qs} B_{pr} - A_{ps} B_{qr} - A_{qr} B_{ps}) {\epsilon^{rs}}_{cd}$<br>
+$= 
+	  \frac{1}{4} {\epsilon_{ab}}^{pq} A_{pr} B_{qs} {\epsilon^{rs}}_{cd} 
+	+ \frac{1}{4} {\epsilon_{ab}}^{pq} A_{qs} B_{pr} {\epsilon^{rs}}_{cd}
+	- \frac{1}{4} {\epsilon_{ab}}^{pq} A_{ps} B_{qr} {\epsilon^{rs}}_{cd}
+	- \frac{1}{4} {\epsilon_{ab}}^{pq} A_{qr} B_{ps} {\epsilon^{rs}}_{cd}
+$<br>
+$= 
+	  \frac{1}{2} {\epsilon_{ab}}^{pq} A_{pr} B_{qs} {\epsilon^{rs}}_{cd} 
+	- \frac{1}{2} {\epsilon_{ab}}^{pq} A_{ps} B_{qr} {\epsilon^{rs}}_{cd}
+$<br>
+$= {\epsilon_{ab}}^{pq} A_{pr} B_{qs} {\epsilon^{rs}}_{cd} $<br>
+$= \epsilon_{abpq} {A^p}_r {B^q}_s {\epsilon^{rs}}_{cd} $<br>
+$= 4 (\star A^{\sharp\flat} B^{\sharp\flat} \star)_{abcd} $<br>
+<br>
+
+TODO Kulkarni-Nomizu of two dual-tensors:<br>
+<br>
+
+TODO duals of different indexes of Kulkarni-Nomizu...<br>
+<br>
+
+Kulkarni-Nomizu double-dual of a symmetric tensor and the metric, in $n=4$ dimensions:<br>
+$(\star (T \ {\scriptstyle \enclose{circle}{\wedge}} \ g) \star)_{abcd}$<br>
+$= \frac{1}{4} {\epsilon_{ab}}^{pq} (T \ {\scriptstyle \enclose{circle}{\wedge}} \ g)_{pqrs} {\epsilon^{rs}}_{cd}$<br>
+...using the Kulkarni-Nomizu double-dual definition above:<br>
+$= \epsilon_{abpq} {T^p}_r \delta^q_s {\epsilon^{rs}}_{cd}$<br>
+$= \epsilon_{abpq} {T^p}_r \delta^q_s \epsilon^{rsef} g_{ce} g_{df}$<br>
+$= \epsilon_{pabq} {T^p}_r \epsilon^{refq} g_{ce} g_{df}$<br>
+$= -\delta^{ref}_{pab} {T^p}_r g_{ce} g_{df}$<br>
+$= -{T^p}_r (
+	  \delta^r_p g_{ca} g_{db}
+	+ \delta^r_a g_{cb} g_{dp}
+	+ \delta^r_b g_{cp} g_{da}
+	- g_{dp} g_{ca} \delta^r_b
+	- g_{da} g_{cb} \delta^r_p
+	- g_{db} g_{cp} \delta^r_a
+)$<br>
+$=    T_{ac} g_{bd}
+	- T_{ad} g_{bc}
+	+ T_{bd} g_{ac}
+	- T_{bc} g_{ad}
+	- T (g_{ac} g_{bd} - g_{ad} g_{bc})
+$<br>
+$=	(T \ {\scriptstyle \enclose{circle}{\wedge}} \ g)_{abcd}
+	- \frac{1}{2} T (g \ {\scriptstyle \enclose{circle}{\wedge}} \ g)_{abcd}
+$<br>
+<br>
+
+Kulkarni-Nomizu double-dual of the metric and itself, in $n=4$ dimensions:<br>
+$(\star (g \ {\scriptstyle \enclose{circle}{\wedge}} \ g) \star)_{abcd}$<br>
+$= \frac{1}{4} {\epsilon_{ab}}^{pq} (g \ {\scriptstyle \enclose{circle}{\wedge}} \ g)_{pqrs} {\epsilon^{rs}}_{cd}$<br>
+$= \epsilon_{abpq} \delta^p_r \delta^q_s {\epsilon^{rs}}_{cd}$<br>
+$= 2 (g_{ac} g_{bd} - g_{ad} g_{bc})$<br>
+$= (g \ {\scriptstyle \enclose{circle}{\wedge}} \ g)_{abcd}$<br>
+...so the Kulkarni-Nomizu of the metric and itself is its own self-double-dual.<br>
+<br>
+
+...<br>
+<br>
+
+$G_{abcd} = \frac{1}{4} {\epsilon_{ab}}^{pq} R_{pqrs} {\epsilon^{rs}}_{cd}$<br>
+$G_{abcd} = \frac{1}{4} {\epsilon_{ab}}^{pq} {\epsilon^{rs}}_{cd} (
+	C_{pqrs} + \kappa \frac{1}{2} (
+	(T \ {\scriptstyle \enclose{circle}{\wedge}} \ g)_{pqrs}
+    - \frac{1}{n - 1} T \cdot (g \ {\scriptstyle \enclose{circle}{\wedge}} \ g)_{pqrs}
+	)
+)$<br>
+$G_{abcd} = \frac{1}{4} {\epsilon_{ab}}^{pq} {\epsilon^{rs}}_{cd} C_{pqrs} 
+	+ \kappa \frac{1}{2} (
+		  (T \ {\scriptstyle \enclose{circle}{\wedge}} \ g)_{abcd}
+
+		- \frac{5}{6} 
+			T \cdot (g \ {\scriptstyle \enclose{circle}{\wedge}} \ g)_{abcd}
+	)
+$<br>
+<br>
+
 <h3>Fluid Stress-Energy:</h3>
+<br>
 
 ${T^u}_v = (\rho + P) u^u u_v + P \delta^u_v$<br>
 <br>
