@@ -10,9 +10,70 @@
 <br>
 
 Some of these are from Appendix A of 2010 Baumgarte &amp; Shapiro "Numerical Relativity".<br>
+Some is going by 2012 Frankel's chapter on Lie derivatives, and taking tips from the Lie Derivative wikipedia page:<br>
 <br>
 
 Lie derivative:<br>
+<br>
+
+Let $\mathcal{M}$ be our manifold.<br>
+Let $p \in \mathcal{M}$ be a point on the manifold,<br>
+Let $T_p(\mathcal{M})$ be the tangent space on $\mathcal{M}$ at point $p$.<br>
+Let $TM = \underset{p \in \mathcal{M}}{\cup} T_p$ be the tangent bundle, i.e. the union of all tangent spaces on the manifold.<br>
+<br>
+
+TODO Definition of Vector Field ... vs Vector Space... vector-space has $\cdot$ scalar operator with reals, while vector field has $\times$ operator with vectors?<br>
+Wikipedia on vector fields (source plz?) "a vector field on $\mathcal{M}$ is an assigment of a tangent vector to each point on $\mathcal{M}$".<br>
+"More precisely, a vector field F is a mapping from M onto the tangent bundle TM so that $p \circ F$ is the identity mapping where p denotes the projection TM to M."<br>
+"In other words, a vector field is a section of the tangent bundle."<br>
+<br>
+
+<h3>Flow:</h3>
+(Wiki article on mathematics Flow cites D.V. Anosov (2001) [1994], "Continuous flow", Encyclopedia of Mathematics, EMS Press)<br>
+TODO now I have to talk about tangent-space (tangent-vector-space at a single point 'p' in manifold $\mathcal{M}$) versus tangent-bundle (collection of all tangent-spaces at all points on $\mathcal{M}$) ... probably all the way back at section 0
+<br>
+Let $v : \mathbb{R} \times \mathcal{M} \rightarrow TM$ is a time-dependent vector-field on $\mathcal{M}$, i.e. for $t \in \mathbb{R}$ and $p \in \mathcal{M}$, we have $v(t, p) \in T_p(\mathcal{M})$.
+	So $v(t, p) \in T_p(\mathcal{M})$ produces the vector (within the tangent-space at point p) that the field is pointing at time t at point p.<br>
+For interval $I \subseteq \mathbb{R}$, $0 \in I$, we define
+the flow of $v$ is the function $f : I \times \mathcal{M} \rightarrow \mathcal{M}$ such that, $\forall p \in \mathcal{M}$, $\forall s, t \in \mathbb{R}$ the following are true:<br>
+<ul>
+<li>$f(0, p) = p$ ... the flow function at time $t = 0$ is the set of points of the manifold itself.</li>
+<li>$\frac{d}{dt} \left( f(t', p) \right) |_{t'=t} = v(t, f(t, p))$ ... the time-derivative of the flow after time '$t$' is equal to the vector-field of the flow at time '$t$', whose points have been mapped by the flow function from their origin to time '$t$'.</li>
+<li> (... this was the non-manifold def , TODO show it is derived from the previous rule? or vice versa?) $f(s, f(t, p)) = f(s + t, p)$</li>
+</ul>
+
+I want to write this in interval form, but the input of the derivative would be the previous increment of the interval...<br>
+$\int_{t=t_0}^{t=t_1} v(t, ... f(t, p)) dt = f(t_1, p)$ ... idk ...<br>
+<br>
+
+So $f(t, p)$ gives back the point that starts at 'p' after time 't' of movement.<br>
+This is the function notation , meanwhile there is also a popular group action notation: $f^t(p)$<br>
+Then the two rules become:<br>
+<ul>
+<li>$f^0(p) = \mathbb{1}(p)$</li>
+<li>$f^s(f^t(p)) = f^{s+t}(p)$</li>
+</ul>
+
+<h3>Lie derivative:</h3>
+
+Let $\phi : \mathcal{M} \rightarrow \mathbb{R}$ be a scalar function of the manifold,<br>
+Let $p \in \mathcal{M}$ be a point on the manifold.<br>
+Let $v : \mathcal{M} \rightarrow TM$ be a vector field on the manifold.  So $v(p) \in T_p(\mathcal{M})$.  Is v time-varying like in the vector-field definition?  I suspect no need to make it time-varying.<br>
+Let $f(t, p)$ be a flow on the manifold based on vector field $v(t, p)$.<br>
+$\mathcal{L}_v(\phi)|_p = \underset{t \rightarrow 0}{lim} \frac{\phi(f(t, p)) - \phi(p)}{t}$<br>
+$\mathcal{L}_v(\phi)|_p = \frac{d}{dt} \left( \phi(f(t, p)) \right) |_{t=0}$<br>
+$\mathcal{L}_v(\phi)|_p = \frac{\partial \phi}{\partial p} ( f(t, p) ) \cdot \frac{d}{dt} \left( f(p) \right) |_{t=0} $<br>
+... using $f(0, p) = f(p)$ and using $\frac{d}{dt} f = v$...<br>
+$\mathcal{L}_v(\phi)|_p = \frac{\partial \phi}{\partial p} ( p ) \cdot v(t, p) |_{t=0} $<br>
+... let $p = u(x^i)$ for some chart $u(x), u : U \subseteq \mathbb{R}^n \rightarrow \mathcal{M}$.<br>
+$\mathcal{L}_v(\phi) = \frac{\partial \phi}{\partial x^i} \cdot v^i$ ... hmm ... where did those indexes come from ... <br>
+<br>
+
+TODO here, show where the Lie derivative rules come from ...<br>
+1) $\mathcal{L}_v (\phi) = v(\phi) = v_i e_i(\phi)$<br>
+2) $\mathcal{L}_v (S \otimes T) = (\mathcal{L}_v S) \otimes T + S \otimes (\mathcal{L}_T)$ for tensor fields S and T.<br>
+3) $\mathcal{L}_v (T(y_1, ..., y_n)) = (\mathcal{L}_v T)(y_1, ..., y_n) + T(\mathcal{L}_v (y_1), ..., y_n) + T(y_1, ..., \mathcal{L}_v (y_n))$, for tensor T and input vectors $y_1 ... y_n$.<br>
+4) $[\mathcal{L}_v, d] = 0$<br>
 <br>
 
 Definition:<br>
@@ -26,13 +87,13 @@ $\partial{dx^a}{\partial \lambda} = X^a(x(\lambda))$<br>
 <br>
 
 Lie derivative of scalar / (0 0) tensor in a coordinate basis:<br>
-$\mathcal{L}_x \phi = x \lrcorner d\phi$<br>
-$= x \lrcorner \partial_a (\phi) dx^a$<br>
-$= \partial_a (\phi) dx^a (x)$<br>
-$= \partial_a (\phi) dx^a (x^b \partial_b)$<br>
-$= x^b \partial_a(\phi) dx^a(\partial_b)$<br>
-$= x^b \partial_a(\phi) \delta^a_b$<br>
-$= x^a \partial_a(\phi)$<br>
+$\mathcal{L}_v \phi = v \lrcorner d\phi$<br>
+$= v \lrcorner \partial_a (\phi) dx^a$<br>
+$= \partial_a (\phi) dx^a (v)$<br>
+$= \partial_a (\phi) dx^a (v^b \partial_b)$<br>
+$= v^b \partial_a(\phi) dx^a(\partial_b)$<br>
+$= v^b \partial_a(\phi) \delta^a_b$<br>
+$= v^a \partial_a(\phi)$<br>
 <br>
 
 Lie derivative of a scalar / (0 0) tensor in a non-coordinate basis?<br>

@@ -58,13 +58,13 @@ table th > div > span {
 <h3>Quaternions</h3>
 
 Quaternion multiplication table:<br>
-$\matrix{
+$\begin{matrix}
 		& e_0 & e_1 & e_2 & e_3 \\
 	e_0 & e_0 & e_1 & e_2 & e_3 \\
 	e_1 & e_1 & -e_0 & e_3 & -e_2 \\
 	e_2 & e_2 & -e_3 & -e_0 & e_1 \\
 	e_3 & e_3 & e_2 & -e_1 & -e_0 \\
-}$<br>
+\end{matrix}$<br>
 <br>
 
 Quaternion multiplication is a triplet of $e_1, e_2, e_3$:<br>
@@ -75,7 +75,7 @@ $e_3 \times e_1 = e_2$<br>
 
 <h3>Octonions</h3>
 Octonion multiplication table:<br>
-$\matrix{
+$\begin{matrix}
 		& e_0 & e_1 & e_2 & e_3 & e_4 & e_5 & e_6 & e_7 \\
 	e_0 & e_0 & e_1 & e_2 & e_3 & e_4 & e_5 & e_6 & e_7 \\
 	e_1 & e_1 & -e_0 & e_3 & -e_2 & e_5 & -e_4 & -e_7 & e_6 \\
@@ -85,11 +85,11 @@ $\matrix{
 	e_5 & e_5 & e_4 & -e_7 & e_6 & -e_1 & -e_0 & -e_3 & e_2 \\
 	e_6 & e_6 & e_7 & e_4 & -e_5 & -e_2 & e_3 & -e_0 & -e_1 \\
 	e_7 & e_7 & -e_6 & e_5 & e_4 & -e_3 & -e_2 & e_1 & -e_0 \\
-}$<br>
+\end{matrix}$<br>
 <br>
 
 Octonion multiplication is represented by seven triplets:<br>
-$\matrix{
+$\begin{matrix}
 	t_1 = & \{e_1, e_2, e_3\} \\
 	t_2 = & \{e_1, e_4, e_5\} \\
 	t_3 = & \{e_1, e_7, e_6\} \\
@@ -97,12 +97,12 @@ $\matrix{
 	t_5 = & \{e_2, e_5, e_7\} \\
 	t_6 = & \{e_3, e_4, e_7\} \\
 	t_7 = & \{e_3, e_6, e_5\} \\
-}$<br>
+\end{matrix}$<br>
 <br>
 
 Each element is found in exactly three unique triplets.<br>
 Mapping them out shows we can see a 1-1 mapping between the elements' and the triplets' elements:<br>
-$\matrix{
+$\begin{matrix}
 	e_1 \in & t_1, t_2, t_3 \\
 	e_2 \in & t_1, t_4, t_5 \\
 	e_3 \in & t_1, t_7, t_6 \\
@@ -110,11 +110,11 @@ $\matrix{
 	e_5 \in & t_2, t_5, t_7 \\
 	e_6 \in & t_3, t_4, t_7 \\
 	e_7 \in & t_3, t_6, t_5 \\
-}$<br>
+\end{matrix}$<br>
 <br>
 
 The elements and their triplet duals:<br>
-$\matrix{
+$\begin{matrix}
 	e_1 & \{e_1, e_2, e_3\} \\
 	e_2 & \{e_1, e_4, e_5\} \\
 	e_3 & \{e_1, e_7, e_6\} \\
@@ -122,14 +122,14 @@ $\matrix{
 	e_5 & \{e_2, e_5, e_7\} \\
 	e_6 & \{e_3, e_4, e_7\} \\
 	e_7 & \{e_3, e_6, e_5\} \\
-}$<br>
+\end{matrix}$<br>
 <br>
 
 Is there another indexing of the triplets such that elements still match the triplets, except with no element existing in its identically indexed triplet?<br>
 Just like how dual spaces work in exterior algebra?<br>
 How about looking at the triangle form of the octonion multiplication table, with $e_4 = l, e_5 = il, e_6 = jl, e_7 = kl$.<br>
 Then visually we see opposites:<br>
-$\matrix{
+$\begin{matrix}
 	e_1 & t_1 = \{e_1, e_4, e_5\} \\
 	e_2 & t_2 = \{e_2, e_4, e_6\} \\
 	e_3 & t_3 = \{e_3, e_4, e_7\} \\
@@ -137,14 +137,14 @@ $\matrix{
 	e_5 & t_5 = \{e_1, e_7, e_6\} \\
 	e_6 & t_6 = \{e_2, e_5, e_7\} \\
 	e_7 & t_7 = \{e_3, e_6, e_5\} \\
-}$<br>
+\end{matrix}$<br>
 From here can we relabel triplets to get a 1-1 matching between triplets shared by elements and elements shared by triplets, like before?<br>
 Nope.<br>
 In fact, you get one or the other.<br>
 You can have the $t_i$'s and $e_i$'s triplets match, or you can have the $t_i$'s and $e_i$'s exclude the respective $t_i$ and $e_i$, but no possible permutation produces both.<br>
 Here's the 28 permutations such that the $t_i$ and $e_i$ triplets match:<br>
 <div class='clickToExpand'>
-	$\matrix{
+	$\begin{matrix}
 		1,2,3,4,5,6,7 \\
 		1,2,3,5,4,7,6 \\
 		1,3,2,6,7,5,4 \\
@@ -173,11 +173,11 @@ Here's the 28 permutations such that the $t_i$ and $e_i$ triplets match:<br>
 		7,5,2,6,1,3,4 \\
 		7,6,1,4,3,2,5 \\
 		7,6,1,5,2,3,4 \\
-	}$<br>
+	\end{matrix}$<br>
 </div>
 Here's the 144 permutations such that either the $e_i$'s don't contain $t_i$ or the $t_i$'s don't contain $e_i$:<br>
 <div class='clickToExpand'>
-	$\matrix{
+	$\begin{matrix}
 		4,2,3,1,6,5,7 \\
 		4,2,3,5,1,6,7 \\
 		4,2,3,5,6,1,7 \\
@@ -322,7 +322,7 @@ Here's the 144 permutations such that either the $e_i$'s don't contain $t_i$ or 
 		7,6,5,3,1,2,4 \\
 		7,6,5,3,4,1,2 \\
 		7,6,5,3,4,2,1 \\
-	}$<br>
+	\end{matrix}$<br>
 </div>
 ...and the list of the rest of the permutations -- that neither match $e_i$'s with $t_i$'s nor exclude either $e_i$'s in $t_i$'s or $t_i$'s in $e_i$'s -- is much much longer...<br> 
 In fact it is 4868 permutations long.<br>
@@ -338,7 +338,7 @@ This is an intuitive process for embedding quaternion triplets in octonion septu
 To form this matrix, start with a vector formed from 1's where triplet elements would go and 0's otherwise.<br>
 For example, for the 1st, 2nd, 3rd we get $[1, 1, 1, 0, 0, 0, 0]$<br>
 Next, rotate the elements of the vector around, to get this:<br>
-$M = \left[\matrix{
+$M = \left[\begin{matrix}
 	1 & 1 & 1 & 0 & 0 & 0 & 0 \\
 	0 & 1 & 1 & 1 & 0 & 0 & 0 \\
 	0 & 0 & 1 & 1 & 1 & 0 & 0 \\
@@ -346,9 +346,9 @@ $M = \left[\matrix{
 	0 & 0 & 0 & 0 & 1 & 1 & 1 \\
 	1 & 0 & 0 & 0 & 0 & 1 & 1 \\
 	1 & 1 & 0 & 0 & 0 & 0 & 1 \\
-}\right]$<br>
+\end{matrix}\right]$<br>
 Multiplying this matrix by its transpose shows the number of elements that each pair of triplets have in common:<br>
-$M \cdot M^T = \left[\matrix{
+$M \cdot M^T = \left[\begin{matrix}
 	3 & 2 & 1 & 0 & 0 & 1 & 2 \\
 	2 & 3 & 2 & 1 & 0 & 0 & 1 \\
 	1 & 2 & 3 & 2 & 1 & 0 & 0 \\
@@ -356,14 +356,14 @@ $M \cdot M^T = \left[\matrix{
 	0 & 0 & 1 & 2 & 3 & 2 & 1 \\
 	1 & 0 & 0 & 1 & 2 & 3 & 2 \\
 	2 & 1 & 0 & 0 & 1 & 2 & 3 \\
-}\right]$<br>
+\end{matrix}\right]$<br>
 <br>
 This shows that the arrangement of placing at the 1st, 2nd, 3rd does not arrange triplets evenly.<br>
 We're looking for even distribution of elements, such that $(M \cdot M^T)_{ij}$ is equal for all $i \ne j$.<br>
 <br>
 Try again with spacings 1st, 2nd, 4th.<br>
 Rotate elements $[1, 1, 0, 1, 0, 0, 0]$<br> 
-$M = \left[\matrix{
+$M = \left[\begin{matrix}
 	1 & 1 & 0 & 1 & 0 & 0 & 0 \\
 	0 & 1 & 1 & 0 & 1 & 0 & 0 \\
 	0 & 0 & 1 & 1 & 0 & 1 & 0 \\
@@ -371,8 +371,8 @@ $M = \left[\matrix{
 	1 & 0 & 0 & 0 & 1 & 1 & 0 \\
 	0 & 1 & 0 & 0 & 0 & 1 & 1 \\
 	1 & 0 & 1 & 0 & 0 & 0 & 1 \\
-}\right]$<br>
-$M \cdot M^T = \left[\matrix{
+\end{matrix}\right]$<br>
+$M \cdot M^T = \left[\begin{matrix}
 	3 & 1 & 1 & 1 & 1 & 1 & 1 \\
 	1 & 3 & 1 & 1 & 1 & 1 & 1 \\
 	1 & 1 & 3 & 1 & 1 & 1 & 1 \\
@@ -380,7 +380,7 @@ $M \cdot M^T = \left[\matrix{
 	1 & 1 & 1 & 1 & 3 & 1 & 1 \\
 	1 & 1 & 1 & 1 & 1 & 3 & 1 \\
 	1 & 1 & 1 & 1 & 1 & 1 & 3 \\
-}\right]$<br>
+\end{matrix}\right]$<br>
 <br>
 This arrangement, however, does distribute elements evenly.<br>
 <br>
@@ -411,7 +411,7 @@ If you represent these triplets as triangles on a mesh then you come up with a M
 For entertainment, here are all septuplets formed from this 1st, 2nd, 4th spacing.<br>
 I.e. all enumerations of 7 elements such that, starting at any element, picking that element, the next, and the 4th-next produces a quaternion multiplication triplet.<br>
 <div class='clickToExpand'>
-	$\matrix{
+	$\begin{matrix}
 		\{ e_1 & e_2 & e_4 & e_3 & e_6 & -e_7 & e_5 \} \\
 		\{ e_1 & e_2 & e_5 & e_3 & e_7 & e_6 & -e_4 \} \\
 		\{ e_1 & e_4 & e_6 & e_5 & e_2 & e_3 & -e_7 \} \\
@@ -454,7 +454,7 @@ I.e. all enumerations of 7 elements such that, starting at any element, picking 
 		\{ e_7 & e_2 & e_4 & e_5 & e_6 & e_1 & -e_3 \} \\
 		\{ e_7 & e_3 & e_1 & e_4 & e_2 & e_5 & -e_6 \} \\
 		\{ e_7 & e_3 & e_6 & e_4 & e_5 & -e_2 & e_1 \} \\
-	}$<br>
+	\end{matrix}$<br>
 </div>
 <br>
 
@@ -463,7 +463,7 @@ so the first is as good a representation as any:<br>
 $\{e_1, e_2, e_4, e_3, e_6, -e_7, e_5\}$<br>
 <br>
 
-$\left[\matrix{
+$\left[\begin{matrix}
 	e_1 & \times e_2 & & = e_3 & & & & \\
 	 & e_2 & \times e_4 & & = e_6 & & & \\
 	 & & e_4 & \times e_3 & & = -e_7 & & \\
@@ -471,7 +471,7 @@ $\left[\matrix{
 	= e_1 & & & & e_6 & \times -e_7 & & \\
 	 & = e_2 & & & & -e_7 & \times e_5 \\
 	\times e_1 & & = e_4 & & & & e_5 \\
-}\right]$<br>
+\end{matrix}\right]$<br>
 
 <h3>Sedenions</h3>
 
@@ -479,7 +479,7 @@ Sedenion multiplication is 15 imaginary dimensions.<br>
 <br>
 
 Sedenion multiplication table.<br>
-$\left[\matrix{
+$\left[\begin{matrix}
 	& e_0 & e_1 & e_2 & e_3 & e_4 & e_5 & e_6 & e_7 & e_8 & e_9 & e_{10} & e_{11} & e_{12} & e_{13} & e_{14} & e_{15} \\
 	e_0 & e_0 & e_1 & e_2 & e_3 & e_4 & e_5 & e_6 & e_7 & e_8 & e_9 & e_{10} & e_{11} & e_{12} & e_{13} & e_{14} & e_{15} \\
 	e_1 & e_1 & -e_0 & e_3 & -e_2 & e_5 & -e_4 & -e_7 & e_6 & e_9 & -e_8 & -e_{11} & e_{10} & -e_{13} & e_{12} & e_{15} & -e_{14} \\
@@ -497,11 +497,11 @@ $\left[\matrix{
 	e_{13} & e_{13} & -e_{12} & e_{15} & -e_{14} & e_9 & e_8 & e_{11} & -e_{10} & -e_5 & -e_4 & e_7 & -e_6 & e_1 & -e_0 & e_3 & -e_2 \\
 	e_{14} & e_{14} & -e_{15} & -e_{12} & e_{13} & e_{10} & -e_{11} & e_8 & e_9 & -e_6 & -e_7 & -e_4 & e_5 & e_2 & -e_3 & -e_0 & e_1 \\
 	e_{15} & e_{15} & e_{14} & -e_{13} & -e_{12} & e_{11} & e_{10} & -e_9 & e_8 & -e_7 & e_6 & -e_5 & -e_4 & e_3 & e_2 & -e_1 & -e_0 \\
-}\right]$<br>
+\end{matrix}\right]$<br>
 <br>
 
 Table of which triplet which elements belong to:<br>
-$\left[\matrix{
+$\left[\begin{matrix}
 	& e_1 & e_2 & e_3 & e_4 & e_5 & e_6 & e_7 & e_8 & e_9 & e_{10} & e_{11} & e_{12} & e_{13} & e_{14} & e_{15}, \\
 	e_1 & & \{e_1,e_2,e_3\} & \{e_1,e_2,e_3\} & \{e_1,e_4,e_5\} & \{e_1,e_4,e_5\} & \{e_1,e_7,e_6\} & \{e_1,e_7,e_6\} & \{e_1,e_8,e_9\} & \{e_1,e_8,e_9\} & \{e_1,e_{11},e_{10}\} & \{e_1,e_{11},e_{10}\} & \{e_1,e_{13},e_{12}\} & \{e_1,e_{13},e_{12}\} & \{e_1,e_{14},e_{15}\} & \{e_1,e_{14},e_{15} \\\
 	e_2 & \{e_1,e_2,e_3\} & & \{e_1,e_2,e_3\} & \{e_2,e_4,e_6\} & \{e_2,e_5,e_7\} & \{e_2,e_4,e_6\} & \{e_2,e_5,e_7\} & \{e_2,e_8,e_{10}\} & \{e_2,e_9,e_{11}\} & \{e_2,e_8,e_{10}\} & \{e_2,e_9,e_{11}\} & \{e_2,e_{14},e_{12}\} & \{e_2,e_{15},e_{13}\} & \{e_2,e_{14},e_{12}\} & \{e_2,e_{15},e_{13} \\\
@@ -518,7 +518,7 @@ $\left[\matrix{
 	e_{13} & \{e_1,e_{13},e_{12}\} & \{e_2,e_{15},e_{13}\} & \{e_3,e_{13},e_{14}\} & \{e_4,e_9,e_{13}\} & \{e_5,e_8,e_{13}\} & \{e_6,e_{11},e_{13}\} & \{e_7,e_{13},e_{10}\} & \{e_5,e_8,e_{13}\} & \{e_4,e_9,e_{13}\} & \{e_7,e_{13},e_{10}\} & \{e_6,e_{11},e_{13}\} & \{e_1,e_{13},e_{12}\} & & \{e_3,e_{13},e_{14}\} & \{e_2,e_{15},e_{13} \\\
 	e_{14} & \{e_1,e_{14},e_{15}\} & \{e_2,e_{14},e_{12}\} & \{e_3,e_{13},e_{14}\} & \{e_4,e_{10},e_{14}\} & \{e_5,e_{14},e_{11}\} & \{e_6,e_8,e_{14}\} & \{e_7,e_9,e_{14}\} & \{e_6,e_8,e_{14}\} & \{e_7,e_9,e_{14}\} & \{e_4,e_{10},e_{14}\} & \{e_5,e_{14},e_{11}\} & \{e_2,e_{14},e_{12}\} & \{e_3,e_{13},e_{14}\} & & \{e_1,e_{14},e_{15} \\\
 	e_{15} & \{e_1,e_{14},e_{15}\} & \{e_2,e_{15},e_{13}\} & \{e_3,e_{15},e_{12}\} & \{e_4,e_{11},e_{15}\} & \{e_5,e_{10},e_{15}\} & \{e_6,e_{15},e_9\} & \{e_7,e_8,e_{15}\} & \{e_7,e_8,e_{15}\} & \{e_6,e_{15},e_9\} & \{e_5,e_{10},e_{15}\} & \{e_4,e_{11},e_{15}\} & \{e_3,e_{15},e_{12}\} & \{e_2,e_{15},e_{13}\} & \{e_1,e_{14},e_{15} \\\
-}\right]$<br>
+\end{matrix}\right]$<br>
 <br>
 
 There are 35 unique triplets:<br>
@@ -560,7 +560,7 @@ $\{e_6, e_{11}, e_{13}\},
 <br>
 
 There are 15 octonion septuplets embedded within the sedenions:<br>
-$\left[\matrix{
+$\left[\begin{matrix}
 	r_1: & \{ e_1 & e_2 & e_4 & e_3 & e_6 & -e_7 & e_5 \} \\
 	r_2: & \{ e_1 & e_2 & e_8 & e_3 & e_{10} & -e_{11} & e_9 \} \\
 	r_3: & \{ e_1 & e_2 & e_{14} & e_3 & e_{12} & e_{13} & -e_{15} & -e_1 & e_2 & e_{14} & -e_3 & e_{12} & -e_{13} & e_{15} \} \\
@@ -576,7 +576,7 @@ $\left[\matrix{
 	r_{13}: & \{ e_3 & e_4 & e_9 & e_7 & e_{13} & -e_{14} & e_{10} & -e_3 & e_4 & e_9 & -e_7 & e_{13} & e_{14} & -e_{10} \} \\
 	r_{14}: & \{ e_3 & e_6 & e_8 & e_5 & e_{14} & -e_{13} & e_{11} \} \\
 	r_{15}: & \{ e_3 & e_6 & e_{12} & e_5 & e_{10} & -e_9 & e_{15} & -e_3 & e_6 & e_{12} & -e_5 & e_{10} & e_9 & -e_{15} \} \\
-}\right]$<br>
+\end{matrix}\right]$<br>
 <br>
 
 As you can see, 8 of these septuplets are equal in sign to the original octonion septuplet,
@@ -585,7 +585,7 @@ I'll denote the traverse-once septuplets as 'positive parity' and the traverse-t
 <br>
 
 septuplet, parity, elements:<br>
-$\left[\matrix{
+$\left[\begin{matrix}
 	r_1: & + & \{e_1, & e_2, & e_4, & e_3, & e_6, & -e_7, & e_5\} \\
 	r_2: & + & \{e_1, & e_2, & e_8, & e_3, & e_{10}, & -e_{11}, & e_9\} \\
 	r_3: & - & \{e_1, & e_2, & e_{14}, & e_3, & e_{12}, & e_{13}, & -e_{15}\} \\
@@ -601,7 +601,7 @@ $\left[\matrix{
 	r_{13}: & - & \{e_3, & e_4, & e_9, & e_7, & e_{13}, & -e_{14}, & e_{10}\} \\
 	r_{14}: & + & \{e_3, & e_6, & e_8, & e_5, & e_{14}, & -e_{13}, & e_{11}\} \\
 	r_{15}: & - & \{e_3, & e_6, & e_{12}, & e_5, & e_{10}, & -e_9, & e_{15}\} \\
-}\right]$<br>
+\end{matrix}\right]$<br>
 <br>
 
 8 of these septuplets preserve their signs correctly as you follow the multiplication around the septuplet, just as the octonion septuplet does.<br> 
@@ -612,7 +612,7 @@ The other 7 involve sign-flips on four of their elements and therefore must cycl
 For example, of the positive parity septuplets, you can pick any element, the 2nd, and the 4rd to form an octonion multiplication table.<br>
 $r_1$ matches the octonions.<br>
 $r_2$ likewise creates the mobius ring:<br>
-$\left[\matrix{
+$\left[\begin{matrix}
 	e_1 & \times e_2 & & = e_3 & & & & \\
 	 & e_2 & \times e_8 & & = e_{10} & & & \\
 	 & & e_8 & \times e_3 & & = -e_{11} & \\
@@ -620,7 +620,7 @@ $\left[\matrix{
 	= e_1 & & & & e_{10} & \times -e_{11} & \\
 	 & = e_2 & & & & -e_{11} & \times e_9 \\
 	\times e_1 & & = e_8 & & & & & e_9 \\
-}\right]$<br>
+\end{matrix}\right]$<br>
 <br>
 
 However, for the remaining negative parity 7 octonion septuplets, 
@@ -631,7 +631,7 @@ the septuplet must be repeated twice.<br>
 Consider septuplet $r_3 = \{e_1,e_2,e_{14},e_3,e_{12},e_{13},e_{15}\}$:<br> 
 Following the multiplication around the septuplet we come up with the sequence:<br>
 $\{ e_1, e_2, e_{14}, e_3, e_{12}, e_{13}, -e_{15}, -e_1, e_2, e_{14}, -e_3, e_{12}, -e_{13}, e_{15} \}$:<br>
-$\left[\matrix{
+$\left[\begin{matrix}
 e_1 & \times e_2 & & = e_3 & & & & & & & & & & \\
 & e_2 & \times e_{14} & & = e_{12} & & & & & & & & & \\
 & & e_{14} & \times e_3 & & = e_{13} & & & & & & & & \\
@@ -646,7 +646,7 @@ e_1 & \times e_2 & & = e_3 & & & & & & & & & & \\
 = e_1 & & & & & & & & & & & e_{12} & \times -e_{13} & \\
 & = e_2 & & & & & & & & & & & -e_{13} & \times e_{15} \\
 \times e_1 & & = e_{14} & & & & & & & & & & & e_{15} \\
-}\right]$<br>
+\end{matrix}\right]$<br>
 <br>
 As you can see from following the septuplet $r_3$ around twice, the elemets $e_1, e_3, e_{13}, e_{15}$ change signs twice while the elements of the triplet $\{e_2, e_{14}, e_{12}\}$ do not.<br>
 <br>
@@ -654,7 +654,7 @@ As you can see from following the septuplet $r_3$ around twice, the elemets $e_1
 In each of the negative parity octonion septuplets there is a unique triplet of elements that doesn't change signs as the septuplet is covered twice.
 This is the second triplet of the negative parity septuplet:<br>
 septuplet, triplet that does not change signs, elements that do change signs<br>
-$\left[\matrix{
+$\left[\begin{matrix}
 	r_3 & \{ e_2, e_{14}, e_{12} \}, & \{ e_1, e_3, e_{13}, e_{15} \} \\
 	r_5 & \{ e_4, e_{10}, e_{14} \}, & \{ e_1, e_5, e_{15}, e_{11} \}  \\
 	r_7 & \{ e_7, e_{12}, e_{11} \}, & \{ e_1, e_6, e_{10}, e_{13} \} \\ 
@@ -662,7 +662,7 @@ $\left[\matrix{
 	r_{11} & \{ e_5, e_{12}, e_7 \}, & \{ e_2, e_7, e_{11}, e_{14} \} \\
 	r_{13} & \{ e_4, e_{9}, e_{13} \}, & \{ e_3, e_7, e_{10}, e_{14} \} \\
 	r_{15} & \{ e_6, e_{12}, e_{10} \}, & \{ e_3, e_5, e_9, e_{15} \} \\
-}\right]$<br>
+\end{matrix}\right]$<br>
 <br>
 For what it's worth:<br>
 Elements $e_1, e_3, e_8, e_{15}$ are not found among these triplets preserved from sign flips.<br>
@@ -673,7 +673,7 @@ Also for what it's worth, choosing different triplet arrangements for the septup
 
 Each element is shared by each octonion septuplet exactly 7 times.<br>
 element, septuplets which the element is present:<br>
-$\left[\matrix{
+$\left[\begin{matrix}
 	e_1: \{& r_1, & r_2, & r_4, & r_3, & r_6, & r_7, & r_5 \} \\
 	e_2: \{& r_1, & r_2, & r_8, & r_3, & r_{10}, & r_{11}, & r_9 \} \\
 	e_3: \{& r_1, & r_2, & r_{14}, & r_3, & r_{12}, & r_{13}, & r_{15} \} \\
@@ -689,14 +689,14 @@ $\left[\matrix{
 	e_{13}: \{& r_3, & r_4, & r_9, & r_7, & r_{13}, & r_{14}, & r_{10} \} \\
 	e_{14}: \{& r_3, & r_6, & r_8, & r_5, & r_{14}, & r_{13}, & r_{11} \} \\
 	e_{15}: \{& r_3, & r_6, & r_{12}, & r_5, & r_{10}, & r_9, & r_{15} \} \\
-}\right]$<br>
+\end{matrix}\right]$<br>
 <br>
 
 As you can see, there is a one-to-one correlation between which elements are contained by a septuplet and which septuplets are contained by an element, similar to the one-to-one relationship between elements and triplets found in the octonion multiplication table.<br>
 <br>
 
 Each pair of elements shares a triplet of septuplets in common:<br>
-$\left[\matrix{
+$\left[\begin{matrix}
 	& e_1 & e_2 & e_3 & e_4 & e_5 & e_6 & e_7 & e_8 & e_9 & e_{10} & e_{11} & e_{12} & e_{13} & e_{14} & e_{15} \\
 	e_1 & & \{ r_1, r_2, r_3 \} & \{ r_1, r_2, r_3 \} & \{ r_1, r_4, r_5 \} & \{ r_1, r_4, r_5 \} & \{ r_1, r_7, r_6 \} & \{ r_1, r_7, r_6 \} & \{ r_2, r_4, r_6 \} & \{ r_2, r_4, r_6 \} & \{ r_2, r_5, r_7 \} & \{ r_2, r_5, r_7 \} & \{ r_3, r_4, r_7 \} & \{ r_3, r_4, r_7 \} & \{ r_3, r_6, r_5 \} & \{ r_3, r_6, r_5 \\
 	e_2 & \{ r_1, r_2, r_3 \} & & \{ r_1, r_2, r_3 \} & \{ r_1, r_8, r_9 \} & \{ r_1, r_{11}, r_{10} \} & \{ r_1, r_8, r_9 \} & \{ r_1, r_{11}, r_{10} \} & \{ r_2, r_8, r_{10} \} & \{ r_2, r_9, r_{11} \} & \{ r_2, r_8, r_{10} \} & \{ r_2, r_9, r_{11} \} & \{ r_3, r_8, r_{11} \} & \{ r_3, r_{10}, r_9 \} & \{ r_3, r_8, r_{11} \} & \{ r_3, r_{10}, r_9 \\
@@ -713,13 +713,13 @@ $\left[\matrix{
 	e_{13} & \{ r_3, r_4, r_7 \} & \{ r_3, r_{10}, r_9 \} & \{ r_3, r_{13}, r_{14} \} & \{ r_4, r_9, r_{13} \} & \{ r_4, r_{10}, r_{14} \} & \{ r_7, r_9, r_{14} \} & \{ r_7, r_{13}, r_{10} \} & \{ r_4, r_{10}, r_{14} \} & \{ r_4, r_9, r_{13} \} & \{ r_7, r_{13}, r_{10} \} & \{ r_7, r_9, r_{14} \} & \{ r_3, r_4, r_7 \} & & \{ r_3, r_{13}, r_{14} \} & \{ r_3, r_{10}, r_9 \\
 	e_{14} & \{ r_3, r_6, r_5 \} & \{ r_3, r_8, r_{11} \} & \{ r_3, r_{13}, r_{14} \} & \{ r_5, r_8, r_{13} \} & \{ r_5, r_{14}, r_{11} \} & \{ r_6, r_8, r_{14} \} & \{ r_6, r_{11}, r_{13} \} & \{ r_6, r_8, r_{14} \} & \{ r_6, r_{11}, r_{13} \} & \{ r_5, r_8, r_{13} \} & \{ r_5, r_{14}, r_{11} \} & \{ r_3, r_8, r_{11} \} & \{ r_3, r_{13}, r_{14} \} & & \{ r_3, r_6, r_5 \\
 	e_{15} & \{ r_3, r_6, r_5 \} & \{ r_3, r_{10}, r_9 \} & \{ r_3, r_{15}, r_{12} \} & \{ r_5, r_{12}, r_9 \} & \{ r_5, r_{10}, r_{15} \} & \{ r_6, r_{15}, r_9 \} & \{ r_6, r_{12}, r_{10} \} & \{ r_6, r_{12}, r_{10} \} & \{ r_6, r_{15}, r_9 \} & \{ r_5, r_{10}, r_{15} \} & \{ r_5, r_{12}, r_9 \} & \{ r_3, r_{15}, r_{12} \} & \{ r_3, r_{10}, r_9 \} & \{ r_3, r_6, r_5 \} &  \\
-}\right]$<br>
+\end{matrix}\right]$<br>
 <br>
 You will notice that this table mostly matches with the element triplets, with some exceptions.<br>
 Some triplet indexes directly match while others are exchanged 1-1:<br>
 triplets of e #s:, triplets of septuplet #s:<br>
 indexes that directly matching:<br>
-$\left[\matrix{
+$\left[\begin{matrix}
 	\{ e_1, e_2, e_3 \} & \{ r_1, r_2, r_3 \} \\
 	\{ e_1, e_4, e_5 \} & \{ r_1, r_4, r_5 \} \\
 	\{ e_1, e_7, e_6 \} & \{ r_1, r_7, r_6 \} \\
@@ -735,9 +735,9 @@ $\left[\matrix{
 	\{ e_6, e_{15}, e_9 \} & \{ r_6, r_{15}, r_9 \} \\
 	\{ e_7, e_{12}, e_{11} \} & \{ r_7, r_{12}, r_{11} \} \\
 	\{ e_7, e_{13}, e_{10} \} & \{ r_7, r_{13}, r_{10} \} \\
-}\right]$<br>
+\end{matrix}\right]$<br>
 indexes that are paired:<br>
-$\left[\matrix{
+$\left[\begin{matrix}
 	\{ e_1, e_8, e_9 \} & \{ r_2, r_4, r_6 \} \\
 	\{ e_2, e_4, e_6 \} & \{ r_1, r_8, r_9 \} \\
 	\{ e_1, e_{11}, e_{10} \} & \{ r_2, r_5, r_7 \} \\
@@ -758,7 +758,7 @@ $\left[\matrix{
 	\{ e_7, e_9, e_{14} \} & \{ r_6, r_{11}, r_{13} \} \\
 	\{ e_6, e_{12}, e_{10} \} & \{ r_7, r_8, r_{15} \} \\
 	\{ e_7, e_8, e_{15} \} & \{ r_6, r_{12}, r_{10} \} \\
-}\right]$<br>
+\end{matrix}\right]$<br>
 <br>
 
 Each pair of septuplets shares a triplet of elements in common:<br>
@@ -774,71 +774,71 @@ the you find the following spacings share 3 neighbors each:<br>
 	</tr>
 	<tr>
 		<td>1st, 2nd, 3rd, 5th, 6th, 9th, 11th</td>
-		<td>$\left[\matrix{ 1& 1 & 1 & 0 & 1 & 1 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 }\right]$</td>
+		<td>$\left[\begin{matrix} 1& 1 & 1 & 0 & 1 & 1 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 \end{matrix}\right]$</td>
 	</tr>
 	<tr>
 		<td>1st, 2nd, 3rd, 8th, 10th, 13th, 14th</td>
-		<td>$\left[\matrix{ 1& 1 & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 1 & 1 & 0 }\right]$</td>
+		<td>$\left[\begin{matrix} 1& 1 & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 1 & 1 & 0 \end{matrix}\right]$</td>
 		<td>rotation equivalent to order #1</td>
 	</tr>
 	<tr>
 		<td>1st, 2nd, 4th, 5th, 6th, 11th, 13th</td>
-		<td>$\left[\matrix{ 1& 1 & 0 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 }\right]$</td>
+		<td>$\left[\begin{matrix} 1& 1 & 0 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 \end{matrix}\right]$</td>
 		<td>shifted equivalent to order #2</td>
 	</tr>
 	<tr>
 		<td>1st, 2nd 4th 5th 8th 10th 15th</td>
-		<td>$\left[\matrix{ 1& 1 & 0 & 1 & 1 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 1 }\right]$</td>
+		<td>$\left[\begin{matrix} 1& 1 & 0 & 1 & 1 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 1 \end{matrix}\right]$</td>
 		<td>shifted equivalent to order #1</td>
 	</tr>
 	<tr>
 		<td>1st, 2nd 5th 7th 12th 13th 14th</td>
-		<td>$\left[\matrix{ 1& 1 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 0 }\right]$</td>
+		<td>$\left[\begin{matrix} 1& 1 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 0 \end{matrix}\right]$</td>
 		<td>shifted equivalent to order #1</td>
 	</tr>
 	<tr>
 		<td>1st, 2nd, 7th, 9th, 12th, 13th, 15th</td>
-		<td>$\left[\matrix{ 1& 1 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 1 & 1 & 0 & 1 }\right]$</td>
+		<td>$\left[\begin{matrix} 1& 1 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 1 & 1 & 0 & 1 \end{matrix}\right]$</td>
 		<td>shifted equivalent to order #2</td>
 	</tr>
 	<tr>
 		<td>1st, 3rd, 4th, 5th, 10th, 12th, 15th</td>
-		<td>$\left[\matrix{ 1& 0 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 1 }\right]$</td>
+		<td>$\left[\begin{matrix} 1& 0 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 1 \end{matrix}\right]$</td>
 		<td>shifted equivalent to order #2</td>
 	</tr>
 	<tr>
 		<td>1st, 3rd, 4th, 7th, 9th, 14th, 15th</td>
-		<td>$\left[\matrix{ 1& 0 & 1 & 1 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 1 }\right]$</td>
+		<td>$\left[\begin{matrix} 1& 0 & 1 & 1 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 1 \end{matrix}\right]$</td>
 		<td>shifted equivalent to order #1</td>
 	</tr>
 	<tr>
 		<td>1st, 3rd, 6th, 7th, 9th, 10th, 11th</td>
-		<td>$\left[\matrix{ 1& 0 & 1 & 0 & 0 & 1 & 1 & 0 & 1 & 1 & 1 & 0 & 0 & 0 & 0 }\right]$</td>
+		<td>$\left[\begin{matrix} 1& 0 & 1 & 0 & 0 & 1 & 1 & 0 & 1 & 1 & 1 & 0 & 0 & 0 & 0 \end{matrix}\right]$</td>
 		<td>shifted equivalent to order #2</td>
 	</tr>
 	<tr>
 		<td>1st, 3rd, 8th, 9th, 10th, 12th, 13th</td>
-		<td>$\left[\matrix{ 1& 0 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & 0 }\right]$</td>
+		<td>$\left[\begin{matrix} 1& 0 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & 0 \end{matrix}\right]$</td>
 		<td>shifted equivalent to order #1</td>
 	</tr>
 	<tr>
 		<td>1st, 4th, 5th, 7th, 8th, 9th, 14th</td>
-		<td>$\left[\matrix{ 1& 0 & 0 & 1 & 1 & 0 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 0 }\right]$</td>
+		<td>$\left[\begin{matrix} 1& 0 & 0 & 1 & 1 & 0 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 0 \end{matrix}\right]$</td>
 		<td>shifted equivalent to order #2</td>
 	</tr>
 	<tr>
 		<td>1st, 4th, 6th, 11th, 12th, 13th, 15th</td>
-		<td>$\left[\matrix{ 1& 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 0 & 1 }\right]$</td>
+		<td>$\left[\begin{matrix} 1& 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 0 & 1 \end{matrix}\right]$</td>
 		<td>shifted equivalent to order #1</td>
 	</tr>
 	<tr>
 		<td>1st, 6th, 7th, 8th, 10th, 11th, 14th</td>
-		<td>$\left[\matrix{ 1& 0 & 0 & 0 & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & 0 & 1 & 0 }\right]$</td>
+		<td>$\left[\begin{matrix} 1& 0 & 0 & 0 & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & 0 & 1 & 0 \end{matrix}\right]$</td>
 		<td>shifted equivalent to order #1</td>
 	</tr>
 	<tr>
 		<td>1st, 6th, 8th, 11th, 12th, 14th, 15th</td>
-		<td>$\left[\matrix{ 1& 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 1 & 1 & 0 & 1 & 1 }\right]$</td>
+		<td>$\left[\begin{matrix} 1& 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 1 & 1 & 0 & 1 & 1 \end{matrix}\right]$</td>
 		<td>shifted equivalent to order #2</td>
 	</tr>
 </table><br>
@@ -848,14 +848,34 @@ There only one unique isomorphism of these spacings:<br>
 1st, 2nd, 3rd, 5th, 6th, 9th, 11th.<br>
 <br>
 
-Using this spacing you can represent the sedenions as a unique list:<br>
-${e_1, e_2, e_5, e_8, e_3, e_7, e_{13}, e_{11}, e_4, e_{10}, e_6, e_{15}, e_{14}, e_{12}, e_9}$.<br>
-<br>
-
+Using this spacing you can represent the sedenions as a unique list.<br>
 No attention is paid to signs, since the signs of the nested octonions occasionally flip.<br> 
+When considering the embedded octonions, let's flip the 6th and 7th elements:<br>
 <br>
 
-Also note that, in the embedded octonions, the 6th and 7th elements are flipped.<br>
+From the first septuplet enumeration of $\begin{matrix} \{	e_1	&	e_2	&	e_4	&	e_3	&	e_6	&	-e_7	&	e_5	\} \end{matrix}$:<br>
+$\begin{matrix} 
+	\{	e_1		&	e_2		&	e_4	&	\cdot	&	e_3		&	e_6	&	\cdot	&	\cdot	&	e_5		&	\cdot	&	e_7		&	\cdot	&	\cdot	&	\cdot	&	\cdot	\}	\\
+	\{	\cdot	&	e_2		&	e_4	&	e_8		&	\cdot	&	e_6 & 	e_{12}	&	\cdot	&	\cdot	&	e_{10}	&	\cdot	&	e_{14}	&	\cdot	&	\cdot	&	\cdot	\}	\\
+	fails \\
+	... \\
+	\{	\cdot	&	e_2		&	e_4	&	e_9		&	\cdot	&	e_6 & 	e_{13}	&	\cdot	&	\cdot	&	e_{11}	&	\cdot	&	e_{15}	&	\cdot	&	\cdot	&	\cdot	\}	\\
+	\{	\cdot	&	\cdot	&	e_4	&	e_9		&	\cdot	&	e_6 & 	e_{13}	&	\cdot	&	\cdot	&	e_{11}	&	\cdot	&	e_{15}	&	\cdot	&	\cdot	&	\cdot	\}	\\
+	fails \\
+	... \\
+\end{matrix}$
+<br>
+
+From the second septuplet enumeration of $\begin{matrix} \{ e_1	&	e_2	&	e_8	&	e_3	&	e_{10}	&	-e_{11}	&	e_9 \} \end{matrix}$:<br>
+$\begin{matrix}	
+	\{	e_1		&	e_2		&	e_8	&	\cdot	&	e_3		&	e_{10}	&	\cdot	&	\cdot	&	e_9		&	\cdot	&	e_{11}	&	\cdot	&	\cdot	&	\cdot	&	\cdot	\}	\\
+	\{	\cdot	&	e_2 	& 	e_8 &	e_8 	& 	\cdot	&	e_7 	& 	e_{13} 	& 	\cdot	&	\cdot	&	e_{10} 	& 	\cdot	&	e_{15} 	&	\cdot	&	\cdot	&	\cdot	\} & fails \\
+	\{	\cdot	&	\cdot	& 	e_5 &	e_8 	& 	
+
+	...\\
+	\{e_1	&	e_2	&	e_5	&	e_8		&	e_3	&	e_7	&	e_{13}	&	e_{11}	&	e_4	&	e_{10}	&	e_6	&	e_{15}	&	e_{14}	&	e_{12}	&	e_9		\}
+\end{matrix}$.<br>
+<br>
 <br>
 
 <h3>overall</h3>

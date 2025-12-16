@@ -1,0 +1,209 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<title>flat earth curvature</title>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<script type='text/javascript' src='template.js'/></script>
+		<script src='gnuplot/gnuplot_api.js'></script>
+		<script>
+gnuplot = new Gnuplot('gnuplot/gnuplot.js');
+gnuplot.onOutput = text => { console.log(text); };
+gnuplot.onError = text => { console.log('ERR:', text); };
+function scriptChange() {
+	if (gnuplot.isRunning) {
+		setTimeout(scriptChange, 1000);
+		return;
+	}
+	
+	const val = `
+set terminal svg enhanced size 1024,400
+set output 'out.svg'
+R = `+document.getElementsByName('earth_radius_in_m')[0].value+`
+
+alt = `+document.getElementsByName('view_alt_in_m')[0].value+`
+
+R_Rz(alt) = R / sqrt(alt * (alt + 2 * R))
+set xlabel "yaw angle (degrees)"
+set ylabel "pitch angle (degrees)"
+plot [-90.:90.] 180./pi * atan( 1./(R_Rz(alt) - 1./R_Rz(alt)) * ( cos(x*pi/180.) - sqrt( 1. - (sin(x*pi/180.) / R_Rz(alt))**2 ) ) ) notitle
+`;
+
+	gnuplot.run(val, e => {
+		gnuplot.getFile('out.svg', e => {
+			if (!e.content) {
+				gnuplot.onError("Output file out.svg not found!");
+				return;
+			}
+			const img = document.getElementById('gnuimg');
+			try {
+				const ab = new Uint8Array(e.content);
+				const blob = new Blob([ab], {"type": "image\/svg+xml"});
+				window.URL = window.URL || window.webkitURL;
+				img.src = window.URL.createObjectURL(blob);
+			} catch (err) { // in case blob / URL missing, fallback to data-uri
+				if (!window.blobalert) {
+					alert('Warning - your browser does not support Blob-URLs, using data-uri with a lot more memory and time required. Err: ' + err);
+					window.blobalert = true;
+				}
+				let rstr = '';
+				for (let i = 0; i < e.content.length; i++) {
+					rstr += String.fromCharCode(e.content[i]);
+				}
+				img.src = 'data:image\/svg+xml;base64,' + btoa(rstr);
+			}
+		});
+	});
+};
+
+window.addEventListener('load', () => {
+	scriptChange();
+	/* HOW COME THIS NEVER GETS TRIGGERED?!?!?!?!?
+	const inputs = document.getElementsByTagName('input');
+	for (let i = 0; i < inputs.length; ++i) {
+console.log("adding input to", inputs[i]);		
+		inputs[i].addEventListener('input', e => {
+console.log('redrawing');
+			scriptChange();
+		});
+	}
+	*/
+	//HOWEVER oninput='scriptChange()' WORKS?!?!?!?!?
+});
+		</script>
+	</head>
+	<body templated>
+
+$R = $<input type='number' name='earth_radius_in_m' value='6378000' oninput='scriptChange()'/>$ \cdot m = $ Earth radius.<br>
+$\Delta r = $<input type='number' name='view_alt_in_m' value='2' oninput='scriptChange()'/>$ \cdot m = $ viewing altitude above Earth surface.<br>
+$r = R + \Delta r = $ {{ view_alt_in_m + earth_radius_in_m }} = viewing distance from Earth center.<br>
+<br>
+
+<img src="" id="gnuimg" type="image/svg+xml" width=1024 height=400 class="float-right"/>
+
+<br>
+<br>
+
+
+Viewer is at the origin.<br>
+Viewing down z axis.<br>
+Sphere is distance $z$ away (along the $-z$ axis), and $R$ down beneath you (along the $-y$ axis), such that its north pole is directly in front of you at all times.<br>
+How does the profile of its surface change with respect to your distance?<br>
+<br>
+
+$r_0 = [0,0,0]$ = view origin<br>
+$v = [-sin(\phi), tan(\theta), -cos(\phi)]$ = view direction<br>
+$c = [0, -R, -z]$ = sphere origin<br>
+<br>
+
+So sphere's distance from the origin is $r = \sqrt{z^2 + R^2}$<br>
+So the altitude above the surface is $\Delta r = r - R = \sqrt{z^2 + R^2} - R$.<br>
+So the sphere distance as a function of the view altitude is: $z^2 = (\Delta r + R)^2 - R^2$,<br>
+i.e. $z = \sqrt{(\Delta r)^2 + 2 R \Delta r}$.<br>
+$z = $ {{ Math.sqrt( view_alt_in_m * ( view_alt_in_m + 2 * earth_radius_in_m )) }} <br>
+<br>
+
+What's the profile of the sphere in the view?<br>
+i.e. what are all rays that intersect the sphere surface perpendicular to its origin?<br>
+<br>
+
+$(r_0 + s v - c) \cdot v = 0$ (right angle)<br>
+$|r_0 + s v - c|^2 = R^2$ (sphere surface)<br>
+<br>
+
+right angle:<br>
+$(r_0 + s v - c) \cdot v = 0$<br>
+$r_0 \cdot v + s v \cdot v - c \cdot v = 0$<br>
+$s |v|^2 = (c - r_0) \cdot v$<br>
+$s (1 + (tan(\theta))^2) = -R tan(\theta) + z cos(\phi)$<br>
+<br>
+
+sphere surface:<br>
+$(s v - c) \cdot (s v - c) = R^2$<br>
+$s^2 v \cdot v - 2 s v \cdot c + c \cdot c = R^2$<br> 
+$s^2 (1 + (tan(\theta))^2) - 2 s (-R tan(\theta) + z cos(\phi)) + R^2 + z^2 = R^2$<br> 
+...substitute right angle results for s:<br>
+$s^2 (1 + (tan(\theta))^2) - 2 s^2 (1 + (tan(\theta))^2) + z^2 = 0$<br> 
+$s = \pm z / \sqrt{1 + (tan(\theta))^2}$<br>
+...let's just use the positive parameter:<br>
+$s = z / \sqrt{1 + (tan(\theta))^2}$<br>
+...substitute back into ray equation:<br>
+$r_0 + s v$<br>
+$= z / \sqrt{1 + (tan(\theta))^2} [-sin(\phi), tan(\theta), -cos(\phi)]$<br>
+That's the point of intersection of ray with sphere.<br>
+What's its declination?<br>
+What is $\theta$ as a function of $\phi$ ? <br>	
+$s (1 + (tan(\theta))^2) = -R tan(\theta) + z cos(\phi)$<br>
+$(1 + (tan(\theta))^2) z / \sqrt{1 + (tan(\theta))^2} = -R tan(\theta) + z cos(\phi)$<br>
+$\sqrt{1 + (tan(\theta))^2} = -(R / z) tan(\theta) + cos(\phi)$<br>
+$1 + (tan(\theta))^2 = (R / z)^2 (tan(\theta))^2 - 2 cos(\phi) (R / z) tan(\theta) + cos(\phi)^2$<br>
+$((R / z)^2 - 1) (tan(\theta))^2 - 2 cos(\phi) (R / z) tan(\theta) - sin(\phi)^2 = 0$<br>
+$tan(\theta) = \frac{1}{2 ((R / z)^2 - 1)} \left(
+	2 cos(\phi) (R / z) \pm \sqrt{
+		(2 cos(\phi) (R / z))^2
+		+ 4 ((R / z)^2 - 1) sin(\phi)^2
+	}
+\right)$<br>
+$tan(\theta) = \frac{1}{2 ((R / z)^2 - 1)} \left(
+	2 cos(\phi) (R / z) \pm \sqrt{
+		4 cos(\phi)^2 (R / z)^2
+		+ 4 sin(\phi)^2 ((R / z)^2 - 1)
+	}
+\right)$<br>
+$tan(\theta) = \frac{1}{(R / z)^2 - 1} \left(
+	cos(\phi) (R / z) \pm \sqrt{
+		cos(\phi)^2 (R / z)^2
+		+ sin(\phi)^2 ((R / z)^2 - 1)
+	}
+\right)$<br>
+$tan(\theta) = \frac{1}{(R / z)^2 - 1} \left(
+	cos(\phi) (R / z) \pm \sqrt{
+		(R / z)^2 - sin(\phi)^2
+	}
+\right)$<br>
+$tan(\theta) = \frac{R / z}{(R / z)^2 - 1} \left(
+	cos(\phi) \pm \sqrt{
+		1 - sin(\phi)^2 / (R / z)^2
+	}
+\right)$<br>
+$tan(\theta) = \frac{1}{R / z - z / R}
+\left(
+	cos(\phi) \pm \sqrt{
+		1 - (sin(\phi) z / R)^2
+	}
+\right)$<br>
+<br>
+
+$\theta = atan\left(
+\frac{1}{R / z - z / R}
+\left(
+	cos(\phi) \pm \sqrt{
+		1 - (sin(\phi) z / R)^2
+	}
+\right)
+\right)$<br>
+<br>
+<br>
+
+For an altitude of 1.5 m we get ...<br>
+<img src="flat earth curvature - earth horizon declination angle at 1.5m.png"/><br>
+...a declination angle of just 0.03 degrees.<br>
+<br>
+
+For an altitude of 10,000 m we get ... <br>
+<img src="flat earth curvature - earth horizon declination angle at 10000m.png"/><br>
+...a declination angle of just 3 degrees.<br>
+<br>
+
+For an altitude of 1/3 Earth radii we get ...<br>
+<img src="flat earth curvature - earth horizon declination angle at one third of earth radius.png"/><br>
+...a declination angle of down to 60 degrees.<br>
+<br>
+
+For an altitude of 3x Earth radii we get ...<br>
+<img src="flat earth curvature - earth horizon declination angle at 3x earth radius.png"/><br>
+... the ability to finally see a distinct circle beneath us.<br>
+<br>
+
+	</body>
+</html>

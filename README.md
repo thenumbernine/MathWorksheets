@@ -284,6 +284,8 @@ Some helper worksheets for my projects.
 
 [conformal Levi-Civita geodesic](https://thenumbernine.github.io/math/conformal%20Levi%2dCivita%20geodesic.html)
 
+[flat earth curvature](https://thenumbernine.github.io/math/flat%20earth%20curvature.html)
+
 [gauge covariant derivative](https://thenumbernine.github.io/math/gauge%20covariant%20derivative.html)
 
 [heat to wave](https://thenumbernine.github.io/math/heat%20to%20wave.html)

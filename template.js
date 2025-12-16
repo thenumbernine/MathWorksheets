@@ -1,19 +1,26 @@
-// I tried AngularJS, and it did the {{ }} thing right (to a small degree)
-//  but it was missing the feature of reading <input value='...'> for initialization
-//  and it was somehow extemporaneously messing up with mathjax (when my own alternative here behaves fine)
-//	and you couldn't do arbitrary javascript expressions within the {{ ... }}
-//  and from what I've read, AngularJS v2 just makes things worse.
-// so I just wrote my own.
+/*
+I tried AngularJS, and it did the {{ }} thing right (to a small degree)
+ but it was missing the feature of reading <input value='...'> for initialization
+ and it was somehow extemporaneously messing up with mathjax (when my own alternative here behaves fine)
+ and you couldn't do arbitrary javascript expressions within the {{ ... }}
+ and from what I've read, AngularJS v2 just makes things worse.
+so I just wrote my own.
 
-function Template() {
-	var thiz = this;
+I also tried upgrading this to ES6 class, but that automatically implies 'use strict', which disabled 'with() {}', and as far as I know, eval() has no equivalent of with(), so writing to context no longer works.
+I could get around this with just copying all keys from 'this.context[]' into local variables.
+But from there, what happens to written variables?  Do they all go in 'window' ?
+Javascript is so fucking retarded.
+*/
+
+const Template = function() {
+	const thiz = this;
 	
 	thiz.context = {};
 	thiz.spans = [];
 
-	setTimeout(function() {
-		var doms = document.querySelectorAll('[templated]');
-		for (var i = 0; i < doms.length; ++i) {
+	setTimeout(() => {
+		const doms = document.querySelectorAll('[templated]');
+		for (let i = 0; i < doms.length; ++i) {
 			thiz.addDOM(doms[i]);
 		}
 	
@@ -25,14 +32,14 @@ function Template() {
 
 Template.prototype = {
 	addDOM : function(dom) {
-		var thiz = this;
+		const thiz = this;
 		
-		var r = /{{([^}]*)}}/;
-		var html = dom.innerHTML;
-		var templateIndex = 0;
-		var match;
+		const r = /{{([^}]*)}}/;
+		let html = dom.innerHTML;
+		let templateIndex = 0;
+		let match;
 		while ((match = r.exec(html)) != null) {
-			var templateID = 'template_' + templateIndex;
+			const templateID = 'template_' + templateIndex;
 			html = html.substr(0, match.index) 
 				+ '<span id="' + templateID + '">' + templateID + '</span>'
 				+ html.substr(match.index + match[0].length);
@@ -44,31 +51,36 @@ Template.prototype = {
 		}
 		dom.innerHTML = html;
 
-		for (var i = 0; i < thiz.spans.length; ++i) {
-			var templateSpan = thiz.spans[i];
+		for (let i = 0; i < thiz.spans.length; ++i) {
+			const templateSpan = thiz.spans[i];
 			templateSpan.span = document.getElementById(templateSpan.id);
 		}
 
-		var inputs = document.getElementsByTagName('input');
-		for (var i = 0; i < inputs.length; ++i) {
-			(function(){
-				var input = inputs[i];	
-				thiz.context[input.name] = input.value;
-				input.onkeyup = function() {
+		const inputs = document.getElementsByTagName('input');
+		for (let i = 0; i < inputs.length; ++i) {
+			const input = inputs[i];	
+			const refreshInput = (input) => {
+				if (input.getAttribute('type') == 'number') {
+					thiz.context[input.name] = parseFloat(input.value) || 0;
+				} else {
 					thiz.context[input.name] = input.value;
-					thiz.refresh(true);	//refresh everything related to it
-				};
-			})();
+				}
+			};
+			refreshInput(input);
+			input.onkeyup = e => {
+				refreshInput(input);
+				thiz.refresh(true);	//refresh everything related to it
+			};
 		}
 
 		//now refresh it all
 		thiz.refresh(true);
 	},
 	refresh : function(dontUpdateInputs) {
-		for (var i = 0; i < this.spans.length; ++i) {
-			var span = this.spans[i];
-			var result;
-			var error;
+		for (let i = 0; i < this.spans.length; ++i) {
+			const span = this.spans[i];
+			let result;
+			let error;
 			with (this.context) {
 				try {
 					result = eval(span.expr);
@@ -88,16 +100,16 @@ Template.prototype = {
 		}
 
 		if (!dontUpdateInputs) {
-			var inputs = document.getElementsByTagName('input');
-			for (var i = 0; i < inputs.length; ++i) {
-				var input = inputs[i];
+			const inputs = document.getElementsByTagName('input');
+			for (let i = 0; i < inputs.length; ++i) {
+				const input = inputs[i];
 				input.value = this.context[input.name];
 			}
 		}
 	}
 };
 
-var template;
-window.addEventListener('load', function() {
+let template;
+window.addEventListener('load', e => { 
 	template = new Template();
 }, false);
