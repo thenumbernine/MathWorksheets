@@ -74,19 +74,26 @@ $e_2 \times e_3 = e_1$<br>
 $e_3 \times e_1 = e_2$<br>
 <br>
 
+$\begin{matrix}
+	e_1 & \times e_2 & 		= e_3 & 			& \\
+	    & 		 e_2 & \times e_3 & = e_1 		& \\
+		&		 	 &		  e_3 & \times e_1 & = e_2 \\
+\end{matrix}$<br>
+<br>
+
 <h3>Octonions</h3>
 Octonion multiplication table:<br>
 $\begin{array}{c|cccccccc}
-		& e_0 & e_1 & e_2 & e_3 & e_4 & e_5 & e_6 & e_7 \\
+			&	 e_0	&	 e_1	&	 e_2	&	 e_3	&	 e_4	&	 e_5	&	 e_6	&	 e_7	\\
 	\hline
-	e_0 & e_0 & e_1 & e_2 & e_3 & e_4 & e_5 & e_6 & e_7 \\
-	e_1 & e_1 & -e_0 & e_3 & -e_2 & e_5 & -e_4 & -e_7 & e_6 \\
-	e_2 & e_2 & -e_3 & -e_0 & e_1 & e_6 & e_7 & -e_4 & -e_5 \\
-	e_3 & e_3 & e_2 & -e_1 & -e_0 & e_7 & -e_6 & e_5 & -e_4 \\
-	e_4 & e_4 & -e_5 & -e_6 & -e_7 & -e_0 & e_1 & e_2 & e_3 \\
-	e_5 & e_5 & e_4 & -e_7 & e_6 & -e_1 & -e_0 & -e_3 & e_2 \\
-	e_6 & e_6 & e_7 & e_4 & -e_5 & -e_2 & e_3 & -e_0 & -e_1 \\
-	e_7 & e_7 & -e_6 & e_5 & e_4 & -e_3 & -e_2 & e_1 & -e_0 \\
+	 e_0	&	 e_0	&	 e_1	&	 e_2	&	 e_3	&	 e_4	&	 e_5	&	 e_6	&	 e_7	\\
+	 e_1	&	 e_1	&	-e_0	&	 e_3	&	-e_2	&	 e_5	&	-e_4	&	-e_7	&	 e_6	\\
+	 e_2	&	 e_2	&	-e_3	&	-e_0	&	 e_1	&	 e_6	&	 e_7	&	-e_4	&	-e_5	\\
+	 e_3	&	 e_3	&	 e_2	&	-e_1	&	-e_0	&	 e_7	&	-e_6	&	 e_5	&	-e_4	\\
+	 e_4	&	 e_4	&	-e_5	&	-e_6	&	-e_7	&	-e_0	&	 e_1	&	 e_2	&	 e_3	\\
+	 e_5	&	 e_5	&	 e_4	&	-e_7	&	 e_6	&	-e_1	&	-e_0	&	-e_3	&	 e_2	\\
+	 e_6	&	 e_6	&	 e_7	&	 e_4	&	-e_5	&	-e_2	&	 e_3	&	-e_0	&	-e_1	\\
+	 e_7	&	 e_7	&	-e_6	&	 e_5	&	 e_4	&	-e_3	&	-e_2	&	 e_1	&	-e_0	\\
 \end{array}$<br>
 <br>
 
@@ -878,9 +885,33 @@ $\begin{matrix}
 	\{	\cdot	&	\cdot	& 	e_5 &	e_8 	& 	
 
 	...\\
-	\{e_1	&	e_2	&	e_5	&	e_8		&	e_3	&	e_7	&	e_{13}	&	e_{11}	&	e_4	&	e_{10}	&	e_6	&	e_{15}	&	e_{14}	&	e_{12}	&	e_9		\}
+	\{e_1	&	e_2	&	e_5	&	e_8		&	e_3	&	e_7	&	e_{13}	&	e_{11}	&	e_4	&	e_{10}	&	e_6	&	e_{15}	&	e_{14}	&	e_{12}	&	e_9		\} finally works
 \end{matrix}$.<br>
 <br>
+<br>
+...such that we can come up with the sub-octonion table:<br>
+$\begin{matrix}
+	 s =	&	 \{e_1	&	 e_2	&	 e_5	&	 e_8	&	 e_3	 &	 e_7	&  e_{13}	&	 e_{11}	&	 e_4	&	 e_{10}	&	 e_6	&	 e_{15}	&	 e_{14}	&	 e_{12}	&	 e_9\}	\\
+	 \hline
+	 r_1 =	& 	 e_1	&	 e_2	&	 e_5	&	 \cdot	&	 e_3	 &	 e_7	&  \cdot	&	 \cdot	&	 e_4	&	 \cdot	&	 e_6	&	 \cdot	&	 \cdot	&	 \cdot	&	 \cdot	\\
+	 r_{10}=&	 \cdot	&	 e_2	&	 e_5	&	 e_8	&	 \cdot	 &	 e_7	&  e_{13}	&	 \cdot	&	 \cdot	&	 e_{10}	&	 \cdot	&	 e_{15}	&	 \cdot	&	 \cdot	&	 \cdot	\\
+	 r_{14}=&	 \cdot	&	 \cdot	&	 e_5	&	 e_8	&	 e_3	 &	 \cdot	&  e_{13}	&	 e_{11}	&	 \cdot	&	 \cdot	&	 e_6	&	 \cdot	&	 e_{14}	&	 \cdot	&	 \cdot	\\
+	 r_{12}=&	 \cdot	&	 \cdot	&	 \cdot	&	 e_8	&	 e_3	 &	 e_7	&  \cdot	&	 e_{11}	&	 e_4	&	 \cdot	&	 \cdot	&	 e_{15}	&	 \cdot	&	 e_{12}	&	 \cdot	\\
+	 r_{13}=&	 \cdot	&	 \cdot	&	 \cdot	&	 \cdot	&	 e_3	 &	 e_7	&  e_{13}	&	 \cdot	&	 e_4	&	 e_{10}	&	 \cdot	&	 \cdot	&	 e_{14}	&	 \cdot	&	 e_9	\\
+	 r_7 =	& 	 e_1	&	 \cdot	&	 \cdot	&	 \cdot	&	 \cdot	 &	 e_7	&  e_{13}	&	 e_{11}	&	 \cdot	&	 e_{10}	&	 e_6	&	 \cdot	&	 \cdot	&	 e_{12}	&	 \cdot	\\
+	 r_9 =	&	 \cdot	&	 e_2	&	 \cdot	&	 \cdot	&	 \cdot	 &	 \cdot	&  e_{13}	&	 e_{11}	&	 e_4	&	 \cdot	&	 e_6	&	 e_{15}	&	 \cdot	&	 \cdot	&	 e_9	\\
+	 r_5 =	&	 e_1	&	 \cdot	&	 e_5	&	 \cdot	&	 \cdot	 &	 \cdot	&  \cdot	&	 e_{11}	&	 e_4	&	 e_{10}	&	 \cdot	&	 e_{15}	&	 e_{14}	&	 \cdot	&	 \cdot	\\
+	 r_8 =	&	 \cdot	&	 e_2	&	 \cdot	&	 e_8	&	 \cdot	 &	 \cdot	&  \cdot	&	 \cdot	&	 e_4	&	 e_{10}	&	 e_6	&	 \cdot	&	 e_{14}	&	 e_{12}	&	 \cdot	\\
+	 r_{15}=&	 \cdot	&	 \cdot	&	 e_5	&	 \cdot	&	 e_3	 &	 \cdot	&  \cdot	&	 \cdot	&	 \cdot	&	 e_{10}	&	 e_6	&	 e_{15}	&	 \cdot	&	 e_{12}	&	 e_9	\\
+	 r_6 =	&	 e_1	&	 \cdot	&	 \cdot	&	 e_8	&	 \cdot	 &	 e_7	&  \cdot	&	 \cdot	&	 \cdot	&	 \cdot	&	 e_6	&	 e_{15}	&	 e_{14}	&	 \cdot	&	 e_9	\\
+	 r_3 =	&	 e_1	&	 e_2	&	 \cdot	&	 \cdot	&	 e_3	 &	 \cdot	&  e_{13}	&	 \cdot	&	 \cdot	&	 \cdot	&	 \cdot	&	 e_{15}	&	 e_{14}	&	 e_{12}	&	 \cdot	\\
+	 r_{11}=&	 \cdot	&	 e_2	&	 e_5	&	 \cdot	&	 \cdot	 &	 e_7	&  \cdot	&	 e_{11}	&	 \cdot	&	 \cdot	&	 \cdot	&	 \cdot	&	 e_{14}	&	 e_{12}	&	 e_9	\\
+	 r_4 = 	&	 e_1	&	 \cdot	&	 e_5	&	 e_8	&	 \cdot	 &	 \cdot	&  e_{13}	&	 \cdot	&	 e_4	&	 \cdot	&	 \cdot	&	 \cdot	&	 \cdot	&	 e_{12}	&	 e_9	\\
+	 r_2 =	& 	 e_1	&	 e_2	&	 \cdot	&	 e_8	&	 e_3	 &	 \cdot	&  \cdot	&	 e_{11}	&	 \cdot	&	 e_{10}	&	 \cdot	&	 \cdot	&	 \cdot	&	 \cdot	&	 e_9	\\
+\end{matrix}$<br>
+<br>
+
+So now we have a mobius-strip of mobius-strips.  What is that going to look like...<br>
 <br>
 
 <h3>overall</h3>
