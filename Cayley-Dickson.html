@@ -161,6 +161,17 @@ $\begin{matrix}
 From here can we relabel quternion-tuples to get a 1-1 matching between quternion-tuples shared by elements and elements shared by quternion-tuples, like before?<br>
 Nope.<br>
 In fact, you get one or the other.<br>
+<br>
+
+I assigned indexes to these seven quaternions by upper-triangular first-come first-serve indexing, i.e. searching $1 \le i \lt j \le 7$, searching i ascending, then j ascending, and assigning indexes to quaternions in the order they are found.
+It just so happens that this indexing order possess some interesting properties.
+Sadly this indexing scheme does not scale.  The same search rule will not assign the same quaternion indexes when searching higher Cayley-Dickson constructs.
+If I were to search lower-triangular indexes in the same manner then I would lose the property that $\star e_i = q_i$.<br>
+But using upper-tringular once again provides a default 1:1 index matching in sedenions of octonions to basis elements, in the same way it provides a 1:1 in octonions of quaternions to basis elements.
+And in sedenions, each basis element will appear in a quaternion 7 times, while quaternions can only hold 3 basis elements, so maybe there is no point to trying to reproduce the quaternion indexing within octonions when applying quaternion indexing within sedenions.
+Maybe upper-triangular indexing is best.
+<br>
+
 You can have the $q_i$'s and $e_i$'s quternion-tuples match, or you can have the $q_i$'s and $e_i$'s exclude the respective $q_i$ and $e_i$, but no possible permutation produces both.<br>
 Here's the 28 permutations such that the $q_i$ and $e_i$ quternion-tuples match:<br>
 <div class='clickToExpand'>
@@ -551,35 +562,129 @@ $\begin{array}{c|cccccccccccccccc}
 <br>
 
 There are 35 unique quternion-tuples:<br>
-$q_1 = (e_1, e_2, e_3), q_2 = (e_1, e_4, e_5), q_3 = (e_1, e_7, e_6), q_4 = (e_2, e_4, e_6), q_5 = (e_2, e_5, e_7), q_6 = (e_3, e_4, e_7), q_7 = (e_3, e_6, e_5),$<br>
-$(e_1, e_8, e_9),
-(e_1, e_{11}, e_{10}),
-(e_1, e_{13}, e_{12}),
-(e_1, e_{14}, e_{15}),
-(e_2, e_8, e_{10}),
-(e_2, e_9, e_{11}),
-(e_2, e_{14}, e_{12}),$<br>
-$(e_2, e_{15}, e_{13}),
-(e_3, e_8, e_{11}),
-(e_3, e_{10}, e_9),
-(e_3, e_{13}, e_{14}),
-(e_3, e_{15}, e_{12}),
-(e_4, e_8, e_{12}),
-(e_4, e_9, e_{13}),$<br>
-$(e_4, e_{10}, e_{14}),
-(e_4, e_{11}, e_{15}),
-(e_5, e_8, e_{13}),
-(e_5, e_{10}, e_{15}),
-(e_5, e_{12}, e_9),
-(e_5, e_{14}, e_{11}),
-(e_6, e_8, e_{14}),$<br>
-$(e_6, e_{11}, e_{13}),
-(e_6, e_{12}, e_{10}),
-(e_6, e_{15}, e_9),
-(e_7, e_8, e_{15}),
-(e_7, e_9, e_{14}),
-(e_7, e_{12}, e_{11}),
-(e_7, e_{13}, e_{10})$<br>
+$q_1 = (e_1, e_2, e_3),$<br>
+$q_2 = (e_1, e_4, e_5),$<br>
+$q_3 = (e_1, e_7, e_6),$<br>
+$q_4 = (e_2, e_4, e_6),$<br>
+$q_5 = (e_2, e_5, e_7),$<br>
+$q_6 = (e_3, e_4, e_7),$<br>
+$q_7 = (e_3, e_6, e_5),$<br>
+$q_a = (e_1, e_8, e_9),$<br>
+$q_b = (e_1, e_{11}, e_{10}),$<br>
+$q_c = (e_1, e_{13}, e_{12}),$<br>
+$q_d = (e_1, e_{14}, e_{15}),$<br>
+$q_e = (e_2, e_8, e_{10}),$<br>
+$q_f = (e_2, e_9, e_{11}),$<br>
+$q_g = (e_2, e_{14}, e_{12}),$<br>
+$q_h = (e_2, e_{15}, e_{13}),$<br>
+$q_i = (e_3, e_8, e_{11}),$<br>
+$q_j = (e_3, e_{10}, e_9),$<br>
+$q_k = (e_3, e_{13}, e_{14}),$<br>
+$q_l = (e_3, e_{15}, e_{12}),$<br>
+$q_m = (e_4, e_8, e_{12}),$<br>
+$q_n = (e_4, e_9, e_{13}),$<br>
+$q_o = (e_4, e_{10}, e_{14}),$<br>
+$q_p = (e_4, e_{11}, e_{15}),$<br>
+$q_q = (e_5, e_8, e_{13}),$<br>
+$q_r = (e_5, e_{10}, e_{15}),$<br>
+$q_s = (e_5, e_{12}, e_9),$<br>
+$q_t = (e_5, e_{14}, e_{11}),$<br>
+$q_u = (e_6, e_8, e_{14}),$<br>
+$q_v = (e_6, e_{11}, e_{13}),$<br>
+$q_w = (e_6, e_{12}, e_{10}),$<br>
+$q_x = (e_6, e_{15}, e_9),$<br>
+$q_y = (e_7, e_8, e_{15}),$<br>
+$q_z = (e_7, e_9, e_{14}),$<br>
+$q_A = (e_7, e_{12}, e_{11}),$<br>
+$q_B = (e_7, e_{13}, e_{10})$<br>
+<br>
+
+... such that ...<br>
+$e_1 \in q_1, q_2, q_3, q_a, q_b, q_c, q_d$<br>
+$e_2 \in q_
+<br>
+
+... I'm looking for an indexing of q's so that e_i is in q_a q_b q_c and q_i contains e_a e_b e_c for matching i,a,b,c ....
+... but that's not going to happen because e_i will be in seven q's, so what of the other 4?<br>
+... another way to maintain indexes between different sized Cayley-Dickson constructs is to recursively search for lower C.D.'s in-order, i.e. don't serach for quaternions in sedenions, instead search for octonions in sedenions and then search for quaternions in octonions.
+This will produce a different ordering.<br>
+But if we do use an upper-triangular first-come ordering to quaternions within sedenions then the octonions containing basis elements wont match the octonions containing quaternion indexes ... unless the first 7 quaternions does match with the 7 quaternions of the Cayley-Dickson-3 octonion construction.
+<br>
+
+Indexing quaternions by upper-triangular cycling all pairs of basis elements:<br>
+$q_1 = (e_1, e_2, e_3)$<br>
+$q_2 = (e_1, e_4, e_5)$<br>
+$q_3 = (e_1, e_6, e_7)$<br>
+$q_4 = (e_1, e_8, e_9)$<br>
+$q_5 = (e_1, e_{10}, e_{11})$<br>
+$q_6 = (e_1, e_{12}, e_{13})$<br>
+$q_7 = (e_1, e_{14}, e_{15})$<br>
+$q_8 = (e_2, e_4, e_6)$<br>
+$q_9 = (e_2, e_5, e_7)$<br>
+$q_{10} = (e_2, e_8, e_{10})$<br>
+$q_{11} = (e_2, e_9, e_{11})$<br>
+$q_{12} = (e_2, e_{12}, e_{14})$<br>
+$q_{13} = (e_2, e_{13}, e_{15})$<br>
+$q_{14} = (e_3, e_4, e_7)$<br>
+$q_{15} = (e_3, e_5, e_6)$<br>
+$q_{16} = (e_3, e_8, e_{11})$<br>
+$q_{17} = (e_3, e_9, e_{10})$<br>
+$q_{18} = (e_3, e_{12}, e_{15})$<br>
+$q_{19} = (e_3, e_{13}, e_{14})$<br>
+$q_{20} = (e_4, e_8, e_{12})$<br>
+$q_{21} = (e_4, e_9, e_{13})$<br>
+$q_{22} = (e_4, e_{10}, e_{14})$<br>
+$q_{23} = (e_4, e_{11}, e_{15})$<br>
+$q_{24} = (e_5, e_8, e_{13})$<br>
+$q_{25} = (e_5, e_9, e_{12})$<br>
+$q_{26} = (e_5, e_{10}, e_{15})$<br>
+$q_{27} = (e_5, e_{11}, e_{14})$<br>
+$q_{28} = (e_6, e_8, e_{14})$<br>
+$q_{29} = (e_6, e_9, e_{15})$<br>
+$q_{30} = (e_6, e_{10}, e_{12})$<br>
+$q_{31} = (e_6, e_{11}, e_{13})$<br>
+$q_{32} = (e_7, e_8, e_{15})$<br>
+$q_{33} = (e_7, e_9, e_{14})$<br>
+$q_{34} = (e_7, e_{10}, e_{13})$<br>
+$q_{35} = (e_7, e_{11}, e_{12})$<br>
+<br>
+
+Indexing quaternions by upper-triangular searching for octonions, then octonions searching quaternions:<br>
+$q_1 = (e_1, e_2, e_3)$<br>
+$q_2 = (e_1, e_4, e_5)$<br>
+$q_3 = (e_1, e_6, e_7)$<br>
+$q_4 = (e_2, e_4, e_6)$<br>
+$q_5 = (e_2, e_5, e_7)$<br>
+$q_6 = (e_3, e_4, e_7)$<br>
+$q_7 = (e_3, e_5, e_6)$<br>
+$q_8 = (e_1, e_8, e_9)$<br>
+$q_9 = (e_1, e_{10}, e_{11})$<br>
+$q_{10} = (e_2, e_8, e_{10})$<br>
+$q_{11} = (e_2, e_9, e_{11})$<br>
+$q_{12} = (e_3, e_8, e_{11})$<br>
+$q_{13} = (e_3, e_9, e_{10})$<br>
+$q_{14} = (e_1, e_{12}, e_{13})$<br>
+$q_{15} = (e_1, e_{14}, e_{15})$<br>
+$q_{16} = (e_2, e_{12}, e_{14})$<br>
+$q_{17} = (e_2, e_{13}, e_{15})$<br>
+$q_{18} = (e_3, e_{12}, e_{15})$<br>
+$q_{19} = (e_3, e_{13}, e_{14})$<br>
+$q_{20} = (e_4, e_8, e_{12})$<br>
+$q_{21} = (e_4, e_9, e_{13})$<br>
+$q_{22} = (e_5, e_8, e_{13})$<br>
+$q_{23} = (e_5, e_9, e_{12})$<br>
+$q_{24} = (e_4, e_{10}, e_{14})$<br>
+$q_{25} = (e_4, e_{11}, e_{15})$<br>
+$q_{26} = (e_5, e_{10}, e_{15})$<br>
+$q_{27} = (e_5, e_{11}, e_{14})$<br>
+$q_{28} = (e_6, e_8, e_{14})$<br>
+$q_{29} = (e_6, e_9, e_{15})$<br>
+$q_{30} = (e_7, e_8, e_{15})$<br>
+$q_{31} = (e_7, e_9, e_{14})$<br>
+$q_{32} = (e_6, e_{10}, e_{12})$<br>
+$q_{33} = (e_6, e_{11}, e_{13})$<br>
+$q_{34} = (e_7, e_{10}, e_{13})$<br>
+$q_{35} = (e_7, e_{11}, e_{12})$<br>
 <br>
 
 There are 15 tuples representing octonion multiplication tables found within the sedenions:<br>
