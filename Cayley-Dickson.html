@@ -12,7 +12,7 @@ function make() { return $.createElement.apply($, arguments); }
 function init() {
 	var divs = $.getElementsByClassName('clickToExpand');
 	for (var i = 0; i < divs.length; ++i) {
-		(function(i){	
+		(function(i){
 			var div = divs[i];
 			var wrapper = make('div');
 			var anchor = make('a');
@@ -31,7 +31,7 @@ function init() {
 		})(i);
 	}
 }
-		</script>	
+		</script>
 		<style>
 table {
 	border-spacing:0px;
@@ -45,7 +45,7 @@ table th {
 	white-space:nowrap; */
 }
 table th > div {
-/*	transform:translate(100px, 60px) rotate(315deg); 
+/*	transform:translate(100px, 60px) rotate(315deg);
 	width:30px; */
 }
 table th > div > span {
@@ -104,7 +104,7 @@ $\begin{array}{c|cccccccc}
 Within Octonion multiplication table you can find seven quaternion multiplication tables.<br>
 <br>
 
-Let $q_i$ be the i'th quaternion multiplication table $q_i = (q_{ij}), 1 \le j \le 3$ such that the elements of $q_i$ behave as a quaternion multiplication tuple, 
+Let $q_i$ be the i'th quaternion multiplication table $q_i = (q_{ij}), 1 \le j \le 3$ such that the elements of $q_i$ behave as a quaternion multiplication tuple,
 i.e. $q_{ia} \cdot q_{ib} = \epsilon_{abc} q_{ic} + \delta_{ab} e_0$.<br>
 <br>
 
@@ -355,7 +355,7 @@ Here's the 144 permutations such that either the $e_i$'s don't contain $q_i$ or 
 		7,6,5,3,4,2,1 \\
 	\end{matrix}$<br>
 </div>
-...and the list of the rest of the permutations -- that neither match $e_i$'s with $q_i$'s nor exclude either $e_i$'s in $q_i$'s or $q_i$'s in $e_i$'s -- is much much longer...<br> 
+...and the list of the rest of the permutations -- that neither match $e_i$'s with $q_i$'s nor exclude either $e_i$'s in $q_i$'s or $q_i$'s in $e_i$'s -- is much much longer...<br>
 In fact it is 4868 permutations long.<br>
 One thing to note: for any permutation, no $e_i$ contains $q_i$ is true if and only if no $q_i$ contains $e_i$.<br>
 <br>
@@ -394,7 +394,7 @@ This shows that the arrangement of placing at the 1st, 2nd, 3rd does not arrange
 We're looking for even distribution of elements, such that $(M \cdot M^T)_{ij}$ is equal for all $i \ne j$.<br>
 <br>
 Try again with spacings 1st, 2nd, 4th.<br>
-Rotate elements $[1, 1, 0, 1, 0, 0, 0]$<br> 
+Rotate elements $[1, 1, 0, 1, 0, 0, 0]$<br>
 $M = \left[\begin{matrix}
 	1 & 1 & 0 & 1 & 0 & 0 & 0 \\
 	0 & 1 & 1 & 0 & 1 & 0 & 0 \\
@@ -430,7 +430,7 @@ Each of these are isomorphisms of 1st, 2nd, 4th spacing.<br>
 So there is only one unique arrangements of quternion-tuples such that they share an equal number of elements.<br>
 <br>
 
-Using this you can start with the first available quternion-tuple and successively add quternion-tuples that fulfill the constraint, 
+Using this you can start with the first available quternion-tuple and successively add quternion-tuples that fulfill the constraint,
 and eventually represent the octonion multiplication table as a tuple and quternion-tuple multiplication occurring between any element, the next, and the 4th next.<br>
 For octonion-tuple elements $(e_1, e_2, e_4, e_3, e_6, -e_7, e_5)$,
 looking at the 1st, 2nd, and 4th, gives us we see quaternion-tuples:<br>
@@ -496,7 +496,7 @@ I.e. all enumerations of 7 elements such that, starting at any element, picking 
 </div>
 <br>
 
-All represent the same octonion multiplication table, 
+All represent the same octonion multiplication table,
 so the first is as good a representation as any:<br>
 $(e_1, e_2, e_4, e_3, e_6, -e_7, e_5)$<br>
 <br>
@@ -569,39 +569,39 @@ $q_4 = (e_2, e_4, e_6),$<br>
 $q_5 = (e_2, e_5, e_7),$<br>
 $q_6 = (e_3, e_4, e_7),$<br>
 $q_7 = (e_3, e_6, e_5),$<br>
-$q_a = (e_1, e_8, e_9),$<br>
-$q_b = (e_1, e_{11}, e_{10}),$<br>
-$q_c = (e_1, e_{13}, e_{12}),$<br>
-$q_d = (e_1, e_{14}, e_{15}),$<br>
-$q_e = (e_2, e_8, e_{10}),$<br>
-$q_f = (e_2, e_9, e_{11}),$<br>
-$q_g = (e_2, e_{14}, e_{12}),$<br>
-$q_h = (e_2, e_{15}, e_{13}),$<br>
-$q_i = (e_3, e_8, e_{11}),$<br>
-$q_j = (e_3, e_{10}, e_9),$<br>
-$q_k = (e_3, e_{13}, e_{14}),$<br>
-$q_l = (e_3, e_{15}, e_{12}),$<br>
-$q_m = (e_4, e_8, e_{12}),$<br>
-$q_n = (e_4, e_9, e_{13}),$<br>
-$q_o = (e_4, e_{10}, e_{14}),$<br>
-$q_p = (e_4, e_{11}, e_{15}),$<br>
-$q_q = (e_5, e_8, e_{13}),$<br>
-$q_r = (e_5, e_{10}, e_{15}),$<br>
-$q_s = (e_5, e_{12}, e_9),$<br>
-$q_t = (e_5, e_{14}, e_{11}),$<br>
-$q_u = (e_6, e_8, e_{14}),$<br>
-$q_v = (e_6, e_{11}, e_{13}),$<br>
-$q_w = (e_6, e_{12}, e_{10}),$<br>
-$q_x = (e_6, e_{15}, e_9),$<br>
-$q_y = (e_7, e_8, e_{15}),$<br>
-$q_z = (e_7, e_9, e_{14}),$<br>
-$q_A = (e_7, e_{12}, e_{11}),$<br>
-$q_B = (e_7, e_{13}, e_{10})$<br>
+$q_8 = (e_1, e_8, e_9),$<br>
+$q_9 = (e_1, e_{11}, e_{10}),$<br>
+$q_a = (e_1, e_{13}, e_{12}),$<br>
+$q_b = (e_1, e_{14}, e_{15}),$<br>
+$q_c = (e_2, e_8, e_{10}),$<br>
+$q_d = (e_2, e_9, e_{11}),$<br>
+$q_e = (e_2, e_{14}, e_{12}),$<br>
+$q_f = (e_2, e_{15}, e_{13}),$<br>
+$q_g = (e_3, e_8, e_{11}),$<br>
+$q_h = (e_3, e_{10}, e_9),$<br>
+$q_i = (e_3, e_{13}, e_{14}),$<br>
+$q_j = (e_3, e_{15}, e_{12}),$<br>
+$q_k = (e_4, e_8, e_{12}),$<br>
+$q_l = (e_4, e_9, e_{13}),$<br>
+$q_m = (e_4, e_{10}, e_{14}),$<br>
+$q_n = (e_4, e_{11}, e_{15}),$<br>
+$q_o = (e_5, e_8, e_{13}),$<br>
+$q_p = (e_5, e_{10}, e_{15}),$<br>
+$q_q = (e_5, e_{12}, e_9),$<br>
+$q_r = (e_5, e_{14}, e_{11}),$<br>
+$q_s = (e_6, e_8, e_{14}),$<br>
+$q_t = (e_6, e_{11}, e_{13}),$<br>
+$q_u = (e_6, e_{12}, e_{10}),$<br>
+$q_v = (e_6, e_{15}, e_9),$<br>
+$q_w = (e_7, e_8, e_{15}),$<br>
+$q_x = (e_7, e_9, e_{14}),$<br>
+$q_y = (e_7, e_{12}, e_{11}),$<br>
+$q_z = (e_7, e_{13}, e_{10})$<br>
 <br>
 
 ... such that ...<br>
-$e_1 \in q_1, q_2, q_3, q_a, q_b, q_c, q_d$<br>
-$e_2 \in q_
+$e_1 \in q_1, q_2, q_3, q_8, q_9, q_a, q_b$<br>
+$e_2 \in ...$<br>
 <br>
 
 ... I'm looking for an indexing of q's so that e_i is in q_a q_b q_c and q_i contains e_a e_b e_c for matching i,a,b,c ....
@@ -730,7 +730,7 @@ $\begin{matrix}
 \end{matrix}$<br>
 <br>
 
-8 of these octonion-tuples preserve their signs correctly as you follow the multiplication around the octonion-tuple, just as the octonion-tuple does.<br> 
+8 of these octonion-tuples preserve their signs correctly as you follow the multiplication around the octonion-tuple, just as the octonion-tuple does.<br>
 These are denoted as a positive parity.<br>
 The other 7 involve sign-flips on four of their elements and therefore must cycle through the list of quternion-tuples exactly twice.<br>
 <br>
@@ -749,12 +749,12 @@ $\begin{matrix}
 \end{matrix}$<br>
 <br>
 
-However, for the remaining negative parity 7 octonion-tuples, 
+However, for the remaining negative parity 7 octonion-tuples,
 to follow the multiplication quternion-tuples around the elements of the octonion-tuple,
 the octonion-tuple must be repeated twice.<br>
 <br>
 
-Consider octonion-tuple $o_3 = (e_1,e_2,e_{14},e_3,e_{12},e_{13},e_{15})$:<br> 
+Consider octonion-tuple $o_3 = (e_1,e_2,e_{14},e_3,e_{12},e_{13},e_{15})$:<br>
 Following the multiplication around the octonion-tuple we come up with the sequence:<br>
 $( e_1, e_2, e_{14}, e_3, e_{12}, e_{13}, -e_{15}, -e_1, e_2, e_{14}, -e_3, e_{12}, -e_{13}, e_{15} )$:<br>
 $\begin{matrix}
@@ -783,7 +783,7 @@ octonion-tuple, quternion-tuple that does not change signs, elements that do cha
 $\begin{matrix}
 	o_3 & ( e_2, e_{14}, e_{12} ), & ( e_1, e_3, e_{13}, e_{15} ) \\
 	o_5 & ( e_4, e_{10}, e_{14} ), & ( e_1, e_5, e_{15}, e_{11} )  \\
-	o_7 & ( e_7, e_{12}, e_{11} ), & ( e_1, e_6, e_{10}, e_{13} ) \\ 
+	o_7 & ( e_7, e_{12}, e_{11} ), & ( e_1, e_6, e_{10}, e_{13} ) \\
 	o_9 & ( e_4, e_9, e_{13} ), & ( e_2, e_6, e_{15}, e_{11} ) \\
 	o_{11} & ( e_5, e_{12}, e_7 ), & ( e_2, e_7, e_{11}, e_{14} ) \\
 	o_{13} & ( e_4, e_{9}, e_{13} ), & ( e_3, e_7, e_{10}, e_{14} ) \\
@@ -1027,13 +1027,13 @@ There only one unique isomorphism of these spacings:<br>
 <br>
 
 Using this spacing you can represent the sedenions as a unique list.<br>
-No attention is paid to signs, since the signs of the nested octonions occasionally flip.<br> 
+No attention is paid to signs, since the signs of the nested octonions occasionally flip.<br>
 When considering the embedded octonions, let's flip the 6th and 7th elements:<br>
 <br>
 
 From the first octonion-tuple enumeration of
 $\begin{matrix} (	e_1	&	e_2	&	e_4	&	e_3	&	e_6	&	-e_7	&	e_5	) \end{matrix}$:<br>
-$\begin{matrix} 
+$\begin{matrix}
 	(	e_1		&	e_2		&	e_4	&	\cdot	&	e_3		&	e_6	&	\cdot	&	\cdot	&	e_5		&	\cdot	&	e_7		&	\cdot	&	\cdot	&	\cdot	&	\cdot	)	\\
 	(	\cdot	&	e_2		&	e_4	&	e_8		&	\cdot	&	e_6 & 	e_{12}	&	\cdot	&	\cdot	&	e_{10}	&	\cdot	&	e_{14}	&	\cdot	&	\cdot	&	\cdot	)	\\
 	fails \\
@@ -1047,10 +1047,10 @@ $\begin{matrix}
 
 From the second octonion-tuple enumeration of
 $\begin{matrix} ( e_1	&	e_2	&	e_8	&	e_3	&	e_{10}	&	-e_{11}	&	e_9 ) \end{matrix}$:<br>
-$\begin{matrix}	
+$\begin{matrix}
 	(	e_1		&	e_2		&	e_8	&	\cdot	&	e_3		&	e_{10}	&	\cdot	&	\cdot	&	e_9		&	\cdot	&	e_{11}	&	\cdot	&	\cdot	&	\cdot	&	\cdot	)	\\
 	(	\cdot	&	e_2 	& 	e_8 &	e_8 	& 	\cdot	&	e_7 	& 	e_{13} 	& 	\cdot	&	\cdot	&	e_{10} 	& 	\cdot	&	e_{15} 	&	\cdot	&	\cdot	&	\cdot	) & fails \\
-	(	\cdot	&	\cdot	& 	e_5 &	e_8 	& 	
+	(	\cdot	&	\cdot	& 	e_5 &	e_8 	&
 
 	...\\
 	(e_1	&	e_2	&	e_5	&	e_8		&	e_3	&	e_7	&	e_{13}	&	e_{11}	&	e_4	&	e_{10}	&	e_6	&	e_{15}	&	e_{14}	&	e_{12}	&	e_9		) works
