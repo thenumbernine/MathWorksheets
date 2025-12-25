@@ -57,7 +57,7 @@ $\partial_t \int_\Omega \Pi_C^i dV = -\int_\Omega \nabla_j (\rho v^i v^j) dV$, i
 <br>
 
 Consider at any point:<br>
-(TODO this should either be a different symbol, (as $\rho$ relates to $m$), or I should insert a volume integral around it above).<br>
+(TODO this should either be a different symbol, (as $\rho$ relates to $m$), or annotation of like $\Pi$ vs $\tilde\Pi$).<br>
 $\partial_t \Pi_C^i = -\nabla_j (\rho v^i v^j)$, in $[\frac{kg}{m^2 \cdot s^2}]$<br>
 <br>
 
@@ -65,11 +65,11 @@ Hydro pressure from internal energy (ideal gas law):<br>
 $P = (\gamma - 1) \rho e_{int} = (\gamma - 1) E_{int}$, in $[\frac{kg}{m \cdot s^2}]$<br>
 $\gamma = $ heat capacity ratio (unitless).<br>
 $P$ = hydro pressure, in $[\frac{kg}{m \cdot s^2}]$<br>
-$e_{int}$ = specific internal energy per unit density per volume, in $[\frac{m^2}{s^2}]$<br>
+$e_{int}$ = specific internal energy per density, per volume, in $[\frac{m^2}{s^2}]$<br>
 $E_{int}$ = internal energy per volume, in $[\frac{kg}{m \cdot s^2}]$<br>
 <br>
 
-internal energy:<br>
+internal energy, per volume:<br>
 $E_{int} = \rho e_{int} = \frac{P}{\gamma - 1}$, in $[\frac{kg}{m \cdot s^2}]$<br>
 <br>
 
@@ -83,6 +83,7 @@ Total change in momemtum:<br>
 $\partial_t \Pi^i = \partial_t \Pi_C^i + \partial_t \Pi_P^i$, in $[\frac{kg}{m^2 \cdot s^2}]$<br>
 $\partial_t \Pi^i = -\nabla_j (\rho v^i v^j) - \nabla_i P$, in $[\frac{kg}{m^2 \cdot s^2}]$<br>
 $\partial_t \Pi^i + \nabla_j (\rho v^i v^j + g^{ij} P) = 0$, in $[\frac{kg}{m^2 \cdot s^2}]$<br>
+... where $g^{ij}$ is the inverse metric tensor associated with our manifold tangent-space basis.<br>
 <br>
 
 $\partial_t \Pi^i + \nabla_j (\rho v^i v^j + g^{ij} P) = 0$, in $[\frac{kg}{m^2 \cdot s^2}]$<br>
@@ -93,73 +94,75 @@ $\partial_t (\rho v^i) + \nabla_j (\rho v^i v^j + g^{ij} P) = 0$, in $[\frac{kg}
 
 <h3>Energy</h3>
 
-specific kinetic energy:<br>
-$e_{kin} = \frac{1}{2} v^2$<br>
+specific kinetic energy, per density, per volume:<br>
+$e_{kin} = \frac{1}{2} v^2$, in $[\frac{m^2}{s^2}]$<br>
+... where $v^2 = v^i v^j g_{ij}$.<br>
 <br>
 
-kinetic energy:<br>
-$E_{kin} = \rho e_{kin} = \frac{1}{2} \rho v^2$<br>
+kinetic energy, per volume:<br>
+$E_{kin} = \rho e_{kin} = \frac{1}{2} \rho v^2$, in $[\frac{kg}{m \cdot s^2}]$<br>
 <br>
 
 Total hydro energy:<br>
-$E_{hydro} = \int_\Omega (E_{int} + E_{kin}) dV$<br>
-$E_{hydro} = \int_\Omega (\frac{1}{2}\rho v^2 + \frac{P}{\gamma - 1}) dV$<br>
+$\int_\Omega E_{hydro} dV = \int_\Omega (E_{int} + E_{kin}) dV$, in $[\frac{kg \cdot m^2}{s^2}]$<br>
+$\int_\Omega E_{hydro} dV = \int_\Omega (\frac{1}{2}\rho v^2 + \frac{P}{\gamma - 1}) dV$, in $[\frac{kg \cdot m^2}{s^2}]$<br>
 <br>
 
 change in total energy due to conservation of hydro energy:<br>
-$\partial_t E^C_{total} = \int_\Omega \partial_t E_{hydro} dV$<br>
+$\partial_t \int_\Omega E^C_{total} dV = \int_\Omega \partial_t E_{hydro} dV$, in $[\frac{kg \cdot m^2}{s^3}]$<br>
 <br>
 
 consider velocity moving through boundaries:<br>
-$\partial_t E^C_{total} = \int_{\partial\Omega} E_{hydro} v^i dS_i$<br>
+$\partial_t \int_\Omega E^C_{total} dV = \int_{\partial\Omega} E_{hydro} v^i dS_i$, in $[\frac{kg \cdot m^2}{s^3}]$<br>
 <br>
 
 apply Green's theorem:<br>
-$\partial_t E^C_{total} = -\int_\Omega \nabla_j (E_{hydro} v^j) dV$<br>
+$\partial_t \int_\Omega E^C_{total} dV = -\int_\Omega \nabla_j (E_{hydro} v^j) dV$, in $[\frac{kg \cdot m^2}{s^3}]$<br>
 <br>
 
 for any point:<br>
-$\partial_t E^C_{total} = -\nabla_j (E_{hydro} v^j)$<br>
+$\partial_t E^C_{total} = -\nabla_j (E_{hydro} v^j)$, in $[\frac{kg}{m \cdot s^3}]$<br>
 <br>
 
 Change in energy due to hydro pressure force:<br>
-$\partial_t E^P_{total} = \int_{\partial\Omega} P v^j dS_j$<br>
-$\partial_t E^P_{total} = -\int_\Omega \nabla_j (P v^j) dV$ via Green's theorem<br>
-$\partial_t E^P_{total} = -\nabla_j (P v^j)$ At any point<br>
+$\partial_t \int_\Omega E^P_{total} dV = \int_{\partial\Omega} P v^j dS_j$, in $[\frac{kg \cdot m^2}{s^3}]$<br>
+$\partial_t \int_\Omega E^P_{total} dV = -\int_\Omega \nabla_j (P v^j) dV$ via Green's theorem, in $[\frac{kg \cdot m^2}{s^3}]$<br>
+$\partial_t E^P_{total} = -\nabla_j (P v^j)$ at any point, in $[\frac{kg}{m \cdot s^3}]$<br>
 <br>
 
 Total change in total energy:<br>
-$\partial_t E_{total} = \partial_t E^C_{total} + \partial_t E^P_{total}$<br>
-$\partial_t E_{total} = -\nabla_j (E_{hydro} v_j) - \nabla_j (P v_j)$<br>
-$\partial_t E_{total} + \nabla_j ((E_{hydro} + P) v_j) = 0$<br>
-$\partial_t E_{total} + \nabla_j (H_{hydro} v_j) = 0$<br>
-for $H_{hydro} = E_{hydro} + P$<br>
+$\partial_t E_{total} = \partial_t E^C_{total} + \partial_t E^P_{total}$, in $[\frac{kg}{m \cdot s^3}]$<br>
+$\partial_t E_{total} = -\nabla_j (E_{hydro} v^j) - \nabla_j (P v^j)$, in $[\frac{kg}{m \cdot s^3}]$<br>
+$\partial_t E_{total} + \nabla_j ((E_{hydro} + P) v^j) = 0$, in $[\frac{kg}{m \cdot s^3}]$<br>
+$\partial_t E_{total} + \nabla_j (H_{hydro} v^j) = 0$, in $[\frac{kg}{m \cdot s^3}]$<br>
+for $H_{hydro} = E_{hydro} + P$, in $[\frac{kg}{m \cdot s^2}]$<br>
 <br>
 
 <h3>Conservative form of Euler:</h3>
 
-$\partial_t \rho + \nabla_j (\rho v_j) = 0$<br>
-$\partial_t (\rho v_i) + \nabla_j (\rho v_i v_j + \delta_{ij} P) = 0$<br>
-$\partial_t E_{hydro} + \nabla_j (H_{hydro} v_j) = 0$<br>
+$\partial_t \rho + \nabla_j (\rho v^j) = 0$, in $[\frac{kg}{m^3 \cdot s}]$<br>
+$\partial_t (\rho v^i) + \nabla_j (\rho v^i v^j + g^{ij} P) = 0$, in $[\frac{kg}{m^2 \cdot s^2}]$<br>
+$\partial_t E_{hydro} + \nabla_j (H_{hydro} v^j) = 0$, in $[\frac{kg}{m \cdot s^3}]$<br>
 <br>
 
+the hyperbolic conservation law equation:<br>
 $\partial_t U_i + \nabla_j F_{ij} = 0$<br>
 <br>
 
-conservatives:<br>
-$U_i = \downarrow i \left[\matrix{\rho \\ \rho v_i \\ E_{hydro}}\right]$<br>
+Euler fluid PDE conserved variables:<br>
+$U_i = \downarrow i \left[\matrix{\rho \\ \rho v^i \\ E_{hydro}}\right]$<br>
 <br>
 
-Flux vector:<br>
+Euler fluid PDE flux vector:<br>
 $F_{ij} = \downarrow i \left[\matrix{
-	\rho v_j \\
-	\rho v_i v_j + \delta_{ij} P \\
-	H_{hydro} v_j
+	\rho v^j \\
+	\rho v^i v^j + g^{ij} P \\
+	H_{hydro} v^j
 }\right]$<br>
 <br>
 
-primitives:<br>
-$W_k = \left[\matrix{\rho \\ v_k \\ P}\right]$<br>
+Euler fluid PDE primitive variables:<br>
+$W_k = \left[\matrix{\rho \\ v^k \\ P}\right]$<br>
 <br>
 
 $\frac{\partial E_{hydro}}{\partial \rho}$
@@ -319,7 +322,7 @@ $\partial_t (\rho v_i) + \nabla_j (\rho v_i v_j + \delta_{ij} P_{total} - \frac{
 Change in energy due to magnetic field:<br>
 $\partial_t E_{total}^M = -\int_{\partial\Omega} B_k (v_k B_j - v_j B_k) dS_j$ <b>TODO</b> where does this come from? I'm guessing $\partial_t B_i$<br>
 $\partial_t E_{total}^M = \int_\Omega \nabla_j (B_k (v_k B_j - v_j B_k)) dV$ via Green's theorem<br>
-$\partial_t E_{total}^M = \nabla_j (B_k (v_k B_j - v_j B_k))$ At any point<br>
+$\partial_t E_{total}^M = \nabla_j (B_k (v_k B_j - v_j B_k))$ at any point<br>
 <br>
 
 Total change in total energy:<br>
