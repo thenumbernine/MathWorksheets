@@ -4,6 +4,8 @@
 		<meta charset='utf-8'/>
 		<title>MHD Worksheet</title>
 		<script type="text/javascript" src='tryToFindMathJax.js'></script>
+		<link rel='stylesheet' href='darkmode.css'></link>
+		<script type='text/javascript' src='darkmode.js'></script>
 	</head>
     <body>
 
@@ -11,55 +13,55 @@
 
 <h3>Mass</h3>
 
-Total mass in volume:<sup>1</sup><br>
+Total mass in volume:<br>
 $m = \int_\Omega \rho dV$<br>
-$m$ = mass<br>
-$\rho$ = density<br>
-$\Omega$ = domain<br>
+$m$ = mass, in $kg$<br>
+$\rho$ = density, in $\frac{kg}{m^3}$<br>
+$\Omega$ = spatial domain, within $\textbf{R}^3$<br>
 <br>
 
-Rate-of-change of mass:<sup>1</sup><br>
+Rate-of-change of mass:<br>
 $\partial_t m = \int_\Omega \partial_t \rho dV$<br>
 <br>
 
-Rate-of-change only considering boundary:<sup>1</sup><br>
-$\partial_t m = \int_{\partial\Omega} \rho v_j dS_j$<br>
-$v_i$ = velocity<br>
+Rate-of-change only considering boundary:<br>
+$\partial_t m = \int_{\partial\Omega} \rho v^j dS_j$, in $\frac{kg}{m^2 s}$<br>
+$v^i$ = velocity, in $\frac{m}{s}$<br>
 <br>
 
-Apply Green's theorem to rate-of-change of boundary:<sup>1</sup><br>
-$\partial_t m = -\int_\Omega \partial_j (\rho v_j) dV$<br>
+Apply Green's theorem to rate-of-change of boundary:<br>
+$\partial_t m = -\int_\Omega \nabla_j (\rho v_j) dV$ in $\frac{kg}{m s^2}$<br>
 <br>
 
-Consider rate-of-change at any point:<sup>1</sup><br>
+Consider rate-of-change at any point:<br>
 Conservation of mass:<br>
-$ \partial_t \rho + \partial_j (\rho v_j) = 0 $<br>
+$\partial_t \rho + \nabla_j (\rho v^j) = 0$ in $\frac{kg}{m s^2}$<br>
 <br>
 
 <h3>Momentum</h3>
 
-Conservation of momentum:<sup>1</sup><br>
-$\Pi^C_i = \int_\Omega \rho v_i dV$<br>
-$\partial_t \Pi^C_i$ = change in momentum due to conservation<br>
+Conservation of momentum:<br>
+$(\Pi^C)^i = \int_\Omega \rho v^i dV$ in $\frac{kg}{m s^2}$<br>
+$\partial_t (\Pi^C)^i$ = change in momentum due to conservation<br>
 <br>
 
-Rate-of-change of momentum<sup>1</sup><br>
-$\partial_t \Pi^C_i = \int_\Omega \partial_t (\rho v_i) dV$<br>
+Rate-of-change of momentum<br>
+$\partial_t (\Pi^C)^i = \int_\Omega \partial_t (\rho v^i) dV$<br>
 <br>
 
-Rate-of-chagne of only considering boundary (neglecting forces like gravity, pressure, viscosity, etc)<sup>1</sup><br>
-$\partial_t \Pi^C_i = \int_{\partial\Omega} (\rho v_i) v_j dS_j$<br>
+Rate-of-chagne of only considering boundary (neglecting forces like gravity, pressure, viscosity, etc)<br>
+$\partial_t (\Pi^C)^i = \int_{\partial\Omega} (\rho v^i) v^j dS_j$<br>
 <br>
 
-Apply Green's theorem:<sup>1</sup><br>
-$\partial_t \Pi^C_i = -\int_\Omega \partial_j (\rho v_i v_j) dV$<br>
+Apply Green's theorem:<br>
+$\partial_t (\Pi^C)^i = -\int_\Omega \nabla_j (\rho v^i v^j) dV$<br>
 <br>
 
-Consider at any point:<sup>1</sup><br>
-$\partial_t \Pi^C_i = -\partial_j (\rho v_i v_j)$<br>
+Consider at any point:<br>
+$\partial_t (\Pi^C)^i = -\nabla_j (\rho v^i v^j)$<br>
 <br>
 
-Hydro pressure from internal energy:<sup>5</sup><br>
+Hydro pressure from internal energy:<br>
 $P = (\gamma - 1) \rho e_{int} = (\gamma - 1) E_{int}$<br>
 $\gamma = $ heat capacity ratio<br>
 $P$ = hydro pressure<br>
@@ -71,13 +73,13 @@ internal energy:<br>
 $E_{int} = \rho e_{int} = {P\over{(\gamma - 1)}}$<br>
 <br>
 
-Force due to pressure:<sup>1</sup><br>
-$\partial_t \Pi^P_i = \int_{\partial\Omega} P dS_i$<br>
-$\partial_t \Pi^P_i = -\int_\Omega \partial_i P dV$ via Green's theorem<sup>1</sup><br>
-$\partial_t \Pi^P_i = -\partial_i P$ at any point<br>
+Force due to pressure:<br>
+$\partial_t (\Pi^P_i = \int_{\partial\Omega} P dS_i$<br>
+$\partial_t (\Pi^P_i = -\int_\Omega \partial_i P dV$ via Green's theorem<br>
+$\partial_t (\Pi^P_i = -\partial_i P$ at any point<br>
 <br>
 
-Total change in momemtum:<sup>1</sup><br>
+Total change in momemtum:<br>
 $\partial_t \Pi_i = \partial_t \Pi^C_i + \partial_t \Pi^P_i$<br>
 $\partial_t \Pi_i = -\partial_j (\rho v_i v_j) - \partial_i P$<br>
 $\partial_t \Pi_i + \partial_j (\rho v_i v_j + \delta_{ij} P= 0$<br>
@@ -245,7 +247,7 @@ $\sigma$ = electrical conductivity<br>
 $E_i = J_i / \sigma - {\epsilon_i}^{jk} v_j B_k$<br>
 <br>
 
-Maxwell-Faraday equation:<sup>2</sup><br>
+Maxwell-Faraday equation:<br>
 $ \partial_t B = -\nabla \times E$<br>
 $ \partial_t B_i = -{\epsilon_i}^{jk} \partial_j E_k$<br>
 <br>
@@ -297,7 +299,7 @@ Change in momentum due to magnetic field:<br>
 $\Pi^M_i = -{1\over2} \frac{1}{\mu_0} \partial_j B^2 + \frac{1}{\mu_0} \partial_j (B_i B_j)$<br>
 <br>
 
-Total change in momemtum:<sup>1</sup><br>
+Total change in momemtum:<br>
 $\partial_t \Pi_i = \partial_t \Pi^C_i + \partial_t \Pi^P_i + \partial_t \Pi^M_i$<br>
 $\partial_t \Pi_i = -\partial_j (\rho v_i v_j) - \partial_i P - \frac{1}{\mu_0} {1\over2} \partial_i B^2 + \frac{1}{\mu_0} \partial_j (B_i B_j)$<br>
 $\partial_t \Pi_i + \partial_j (\rho v_i v_j + \delta_{ij} P + \frac{1}{\mu_0} {1\over2} \delta_{ij} B^2 - \frac{1}{\mu_0} B_i B_j) = 0$<br>
@@ -467,7 +469,7 @@ $= \downarrow i \overset{\rightarrow k}{ \left[\matrix{
 for $h_{total} = (E_{total} + P_{total}) / \rho$<br>
 <br>
 
-<h3>Similarity Transforms:<sup>6</sup></h3>
+<h3>Similarity Transforms:</h3>
 
 $\partial_t U_i(x,t) + \partial_{x_j} F_{ij}(U(x,t)) = 0$<br>
 <br>
@@ -511,7 +513,7 @@ $F_{ij} = \left[\matrix{\rho v_j \\ \rho v_i v_j + \delta_{ij} P_{total} - \frac
 <br>
 $\tilde{F}_{ij} = F_{ij} - \xi_j \tilde{U}_i = \left[\matrix{\rho (v_j - \xi_j) \\ \rho v_i (v_j - \xi_j) + \delta_{ij} P_{total} - \frac{1}{\mu_0} B_i B_j \\ B_i (v_j - \xi_j) - B_j v_i \\ E_{total} (v_j - \xi_j) + P_{total} v_j - \frac{1}{\mu_0} B_k v_k B_j }\right]$<br>
 
-<h3>Newton Method<sup>8</sup></h3>
+<h3>Newton Method</h3>
 
 Nonlinear function:<br>
 $G_i(\tilde{U}) = n \tilde{U}_i + \partial_{\xi_j} \tilde{F}_{ij}$<br>
