@@ -63,7 +63,7 @@ $\partial_t \Pi_C^i = -\nabla_j (\rho v^i v^j)$, in $[\frac{kg}{m^2 \cdot s^2}]$
 
 Hydro pressure from internal energy (ideal gas law):<br>
 $P = (\gamma - 1) \rho e_{int} = (\gamma - 1) E_{int}$, in $[\frac{kg}{m \cdot s^2}]$<br>
-$\gamma = $ heat capacity ratio (unitless).<br>
+$\gamma = $ heat capacity ratio, in $[1]$<br>
 $P$ = hydro pressure, in $[\frac{kg}{m \cdot s^2}]$<br>
 $e_{int}$ = specific internal energy per density, per volume, in $[\frac{m^2}{s^2}]$<br>
 $E_{int}$ = internal energy per volume, in $[\frac{kg}{m \cdot s^2}]$<br>
@@ -146,121 +146,130 @@ $\partial_t E_{hydro} + \nabla_j (H_{hydro} v^j) = 0$, in $[\frac{kg}{m \cdot s^
 <br>
 
 the hyperbolic conservation law equation:<br>
-$\partial_t U_i + \nabla_j F_{ij} = 0$<br>
+$\partial_t U^I + \nabla_j F^{Ij} = 0$<br>
 <br>
 
 Euler fluid PDE conserved variables:<br>
-$U_i = \downarrow i \left[\matrix{\rho \\ \rho v^i \\ E_{hydro}}\right]$<br>
+$U^I = \downarrow I \left[\begin{matrix}
+	\rho \\ \rho v^i \\ E_{hydro}
+\end{matrix}\right]$<br>
 <br>
 
 Euler fluid PDE flux vector:<br>
-$F_{ij} = \downarrow i \left[\matrix{
+$F^{Ij} = \downarrow I \left[\begin{matrix}
 	\rho v^j \\
 	\rho v^i v^j + g^{ij} P \\
 	H_{hydro} v^j
-}\right]$<br>
+\end{matrix}\right]$<br>
 <br>
 
 Euler fluid PDE primitive variables:<br>
-$W_k = \left[\matrix{\rho \\ v^k \\ P}\right]$<br>
+$W^K = \downarrow K \left[\begin{matrix}
+	\rho \\ v^k \\ P
+\end{matrix}\right]$<br>
 <br>
 
 $\frac{\partial E_{hydro}}{\partial \rho}$
 $= \frac{\partial}{\partial \rho} ( \frac{1}{2} \rho v^2 + \frac{P}{\gamma-1})$
-$= \frac{1}{2} v^2$<br>
+$= \frac{1}{2} v^2$, in $[\frac{m^2}{s^2}]$<br>
 
-$\frac{\partial E_{hydro}}{\partial v_k}$
-$= \frac{\partial}{\partial v_k} ( \frac{1}{2} \rho v^2 + \frac{P}{\gamma-1})$
-$= \rho v_k$<br>
+$\frac{\partial E_{hydro}}{\partial v^k}$
+$= \frac{\partial}{\partial v^k} ( \frac{1}{2} \rho v^2 + \frac{P}{\gamma-1})$
+$= \rho v_k$, in $[\frac{kg}{m^2 \cdot s}]$<br>
 
 $\frac{\partial E_{hydro}}{\partial P}$
 $= \frac{\partial}{\partial P} ( \frac{1}{2} \rho v^2 + \frac{P}{\gamma-1})$
-$= \frac{1}{\gamma-1}$<br>
+$= \frac{1}{\gamma-1}$, in $[1]$<br>
 <br>
 
 Derivative of conservatives wrt primitives:<br>
-$\frac{\partial U_i}{\partial W_j} = \downarrow i \overset{\rightarrow j}{ \left[\matrix{
+$\frac{\partial U^I}{\partial W^J} = \downarrow I \overset{\rightarrow J}{ \left[\begin{matrix}
 	1 & 0 & 0 \\
-	v_i & \rho \delta_{ij} & 0 \\
+	v^i & \rho \delta^i_j & 0 \\
 	\frac{1}{2} v^2 & \rho v_j & \frac{1}{\gamma-1} 
-}\right] }$<br>
+\end{matrix}\right] }$<br>
 <br>
 
 Derivative of primitives wrt conservatives:<br>
-$\frac{\partial W_j}{\partial U_i} = \downarrow j \overset{\rightarrow i}{ \left[\matrix{
+$\frac{\partial W^J}{\partial U^I} = \downarrow J \overset{\rightarrow I}{ \left[\begin{matrix}
 	1 & 0 & 0 \\
-	-\frac{v_j}{\rho} & \delta_{ij} \frac{1}{\rho} & 0 \\
+	-\frac{1}{\rho} v^j & \frac{1}{\rho} \delta_i^j & 0 \\
 	\frac{1}{2} (\gamma-1) v^2 & -(\gamma-1) v_i & \gamma-1
-}\right] }$<br>
+\end{matrix}\right] }$<br>
 <br>
 
 Derivative of flux with respect to primitive variables:<br>
-$\frac{\partial F_{ij}}{\partial W_k} = \downarrow i \overset{\rightarrow k}{ \left[\matrix{
-	v_j & \rho \delta_{jk} & 0 \\
-	v_i v_j & \rho (\delta_{ik} v_j + v_i \delta_{jk}) & \delta_{ij} \\
-	\frac{1}{2} v^2 v_j & \rho v_j v_k + H_{hydro} \delta_{jk} & \frac{\gamma}{\gamma-1} v_j
-}\right] }$<br>
+$\frac{\partial F^{Ij}}{\partial W^K} = \downarrow I \overset{\rightarrow K}{ \left[\begin{matrix}
+	v^j & \rho \delta^j_k & 0 \\
+	v^i v^j & \rho (\delta^i_k v^j + v^i \delta^j_k) & g^{ij} \\
+	\frac{1}{2} v^2 v^j & \rho v^j v_k + H_{hydro} \delta^j_k & \frac{\gamma}{\gamma-1} v^j
+\end{matrix}\right] }$<br>
 <br>
 
 Derivative of flux with respect to conservative variables:<br>
-$\frac{\partial F_{ij}}{\partial U_k} = \frac{\partial F_{ij}}{\partial W_l} \frac{\partial W_l}{\partial U_k}
-= \downarrow i \overset{\rightarrow l}{ \left[\matrix{
-	v_j & \rho \delta_{jl} & 0 \\
-	v_i v_j & \rho (\delta_{il} v_j + v_i \delta_{jl}) & \delta_{ij} \\
-	\frac{1}{2} v^2 v_j & \rho v_j v_l + (E_{hydro} + P) \delta_{jl} & \frac{\gamma}{\gamma-1} v_j
-}\right] } \cdot \downarrow l \overset{\rightarrow k}{ \left[\matrix{
+$\frac{\partial F^{Ij}}{\partial U^K} = \frac{\partial F^{Ij}}{\partial W^L} \frac{\partial W^L}{\partial U^K}
+= \downarrow I \overset{\rightarrow L}{ \left[\begin{matrix}
+	v^j & \rho \delta^j_l & 0 \\
+	v^i v^j & \rho (\delta^i_l v^j + v^i \delta^j_l) & g^{ij} \\
+	\frac{1}{2} v^2 v^j & \rho v^j v_l + (E_{hydro} + P) \delta^j_l & \frac{\gamma}{\gamma-1} v^j
+\end{matrix}\right] } \cdot \downarrow L \overset{\rightarrow K}{ \left[\begin{matrix}
 	1 & 0 & 0 \\
-	-\frac{v_l}{\rho} & \delta_{kl} \frac{1}{\rho} & 0 \\
+	-\frac{1}{\rho} v^l & \frac{1}{\rho} \delta^l_k & 0 \\
 	\frac{1}{2} (\gamma-1) v^2 & -(\gamma-1) v_k & \gamma-1
-}\right] }$<br>
-$= \downarrow i \overset{\rightarrow k}{ \left[\matrix{
-	0 & \delta_{jk} & 0 \\
-	-v_i v_j + \frac{1}{2} \delta_{ij} (\gamma-1) v^2 &
-		\delta_{ik} v_j + \delta_{jk} v_i - \delta_{ij} (\gamma-1) v_k &
-		\delta_{ij} (\gamma - 1) \\
-	\frac{1}{2} v_j v^2 (\gamma - 1) - v_j h_{hydro} &
-		-(\gamma-1) v_j v_k + \delta_{jk} h_{hydro} &
-		\gamma v_j
-}\right] }$<br>
+\end{matrix}\right] }$<br>
+$= \downarrow I \overset{\rightarrow K}{ \left[\begin{matrix}
+	0 & \delta^j_k & 0 \\
+	-v^i v^j + \frac{1}{2} g^{ij} (\gamma-1) v^2 &
+		\delta^i_k v^j + \delta^j_k v^i - g^{ij} (\gamma-1) v_k &
+		g^{ij} (\gamma - 1) \\
+	\frac{1}{2} v^j v^2 (\gamma - 1) - v^j h_{hydro} &
+		-(\gamma-1) v^j v_k + \delta^j_k h_{hydro} &
+		\gamma v^j
+\end{matrix}\right] }$<br>
 <br>
-for $h_{hydro} = \frac{1}{\rho} H_{hydro}$<br>
+for $h_{hydro} = \frac{1}{\rho} H_{hydro}$, in $[\frac{m^2}{s^2}]$<br>
 <br>
 
 <h2>Magnetohydrodynamics</h2>
 
+$\mu_0 = $ permeability of free space, in $[\frac{kg \cdot m}{C^2}]$<br>
+$\epsilon_0 = $ permittivity of free space, in $[\frac{C^2 \cdot s^2}{kg \cdot m^3}]$<br>
+$E = $ electrical field, in $[\frac{kg \cdot m}{C \cdot s^2}]$<br>
+$B = $ magnetic field, in $[\frac{kg}{C \cdot s}]$<br>
+$J = $ electrical current, per volume, in $[\frac{C}{m^2 \cdot s}]$<br>
+<br>
+
 Ampere's law:<br>
-$\nabla \times B = \mu_0 (J + \epsilon_0 \partial_t E)$<br>
-$B = $ magnetic field<br>
-$J = $ electrical current density<br>
-$E = $ electrical field<br>
-$\mu_0 = $ permeability of free space<br>
-$\epsilon_0 = $ permittivity of free space<br>
-${\epsilon_i}^{jk} \nabla_j B_k = \mu_0 (J_i + \epsilon_0 \partial_t E_i)$<br>
-Assume $\partial_t E_i = 0$<br>
-$J_i = \frac{1}{\mu_0} {\epsilon_i}^{jk} \nabla_j B_k$<br>
+$\vec{\nabla} \times \vec{B} = \mu_0 (\vec{J} + \epsilon_0 \partial_t \vec{E})$, in $[\frac{kg}{C \cdot m \cdot s}]$<br>
+${\epsilon^{ij}}_k \nabla_j B^k = \mu_0 (J^i + \epsilon_0 \partial_t E^i)$, in $[\frac{kg}{C \cdot m \cdot s}]$<br>
+Assume that our electric field is a steady-state, i.e. $\partial_t E^i = 0$<br>
+$J^i = \frac{1}{\mu_0} {\epsilon^{ij}}_k \nabla_j B^k$, in $[\frac{C}{m^2 \cdot s}]$<br>
+<br>
+
+$q = $ electric charge, in $[C]$<br>
+$\sigma$ = electrical conductivity, in $[\frac{C^2 \cdot s^2}{kg \cdot m^3 \cdot s}]$<br>
 <br>
 
 Lorentz force law:<br>
-$F = q (E + v \times B)$<br>
-$q = $ electric charge<br>
-$F_i = q (E_i + {\epsilon_i}^{jk} v_j B_k)$<br>
-$E_i = F_i / q - {\epsilon_i}^{jk} v_j B_k $<br>
-Let $J_i / \sigma = F_i / q$<br>
-$\sigma$ = electrical conductivity<br>
-$E_i = J_i / \sigma - {\epsilon_i}^{jk} v_j B_k$<br>
+$\vec{F} = q (\vec{E} + \vec{v} \times \vec{B})$, in $[\frac{kg \cdot m}{s^2}]$<br>
+$F^i = q (E^i + {\epsilon^i}_{jk} v^j B^k)$, in $[\frac{kg \cdot m}{s^2}]$<br>
+$E^i = \frac{1}{q} F^i - {\epsilon^i}_{jk} v^j B^k$, in $[\frac{kg \cdot m}{C \cdot s^2}]$<br>
+Let $J^i / \sigma = F^i / q$, in $[\frac{kg \cdot m}{C \cdot s^2}]$<br>
+$E^i = J^i / \sigma - {\epsilon^i}_{jk} v^j B^k$, in $[\frac{kg \cdot m}{C \cdot s^2}]$<br>
 <br>
 
 Maxwell-Faraday equation:<br>
-$ \partial_t B = -\nabla \times E$<br>
-$ \partial_t B_i = -{\epsilon_i}^{jk} \nabla_j E_k$<br>
+$\partial_t \vec{B} = -\vec{\nabla} \times \vec{E}$<br>
+$\partial_t B^i = -{\epsilon^{ij}}_k \nabla_j E^k$<br>
 <br>
 
+(TODO flip valence of everything below here, to make it match my other EMHD flux eigensystem worksheets ... and double check or just use those).<br>
 <h3>Magnetic Field</h3>
 
 substitute Ampere's law into Lorentz force law:<br>
-$E_i = \frac{1}{\sigma\mu_0} {\epsilon_i}^{jk} \nabla_j B_k - {\epsilon_i}^{jk} v_j B_k$<br>
+$E^i = \frac{1}{\sigma\mu_0} {\epsilon^{ij}}_k \nabla_j B^k - {\epsilon^i}_{jk} v^j B^k$<br>
 $\eta = \frac{1}{\sigma\mu_0} = $ magnetic diffusivity<br>
-$E_i = \eta {\epsilon_i}^{jk} \nabla_j B_k - {\epsilon_i}^{jk} v_j B_k$<br>
+$E^i = \eta {\epsilon^{ij}}_k \nabla_j B^k - {\epsilon^i}_{jk} v^j B^k$<br>
 <br>
 
 substitute this into Maxwell-Faraday equation:<br>
@@ -294,9 +303,9 @@ insert additional $\nabla_k B_k = 0$ terms, split $B_j \nabla_i B_j$ into two ha
 $\Pi^M_i = \frac{1}{\mu_0} ((\nabla_j B_i) B_j + B_i (\nabla_j B_j) - B_i - \frac{1}{2} (\nabla_i B_j) B_j  - \frac{1}{2} B_j (\nabla_i B_j))$<br>
 un-distribute gradient:<br> 
 $\Pi^M_i = \frac{1}{\mu_0} (\nabla_j (B_i B_j) - \frac{1}{2} \nabla_i (B^2))$<br>
-$\Pi^M_i = \nabla_j (\frac{1}{\mu_0} (B_i B_j - \frac{1}{2} \delta_{ij} B_i B_j))$<br>
+$\Pi^M_i = \nabla_j (\frac{1}{\mu_0} (B_i B_j - \frac{1}{2} g^{ij} B_i B_j))$<br>
 $\Pi^M_i = \nabla_j \sigma_{ij}$<br>
-$\sigma_{ij} = \frac{1}{\mu_0} (B_i B_j - \frac{1}{2} \delta_{ij} B_i B_j) =$ Maxwell stress tensor for $E_i = 0$<br>
+$\sigma_{ij} = \frac{1}{\mu_0} (B_i B_j - \frac{1}{2} g^{ij} B_i B_j) =$ Maxwell stress tensor for $E_i = 0$<br>
 <br>
 Change in momentum due to magnetic field:<br>
 $\Pi^M_i = -\frac{1}{2} \frac{1}{\mu_0} \nabla_j B^2 + \frac{1}{\mu_0} \nabla_j (B_i B_j)$<br>
@@ -305,17 +314,17 @@ $\Pi^M_i = -\frac{1}{2} \frac{1}{\mu_0} \nabla_j B^2 + \frac{1}{\mu_0} \nabla_j 
 Total change in momemtum:<br>
 $\partial_t \Pi_i = \partial_t \Pi^C_i + \partial_t \Pi^P_i + \partial_t \Pi^M_i$<br>
 $\partial_t \Pi_i = -\nabla_j (\rho v_i v_j) - \nabla_i P - \frac{1}{\mu_0} \frac{1}{2} \nabla_i B^2 + \frac{1}{\mu_0} \nabla_j (B_i B_j)$<br>
-$\partial_t \Pi_i + \nabla_j (\rho v_i v_j + \delta_{ij} P + \frac{1}{\mu_0} \frac{1}{2} \delta_{ij} B^2 - \frac{1}{\mu_0} B_i B_j) = 0$<br>
+$\partial_t \Pi_i + \nabla_j (\rho v_i v_j + g^{ij} P + \frac{1}{\mu_0} \frac{1}{2} g^{ij} B^2 - \frac{1}{\mu_0} B_i B_j) = 0$<br>
 <br>
 
 Let $P_{mag} = \frac{1}{\mu_0} \frac{1}{2} B^2$<br>
-$\partial_t \Pi_i + \nabla_j (\rho v_i v_j + \delta_{ij} (P + P_{mag}) - \frac{1}{\mu_0} B_i B_j) = 0$<br>
+$\partial_t \Pi_i + \nabla_j (\rho v_i v_j + g^{ij} (P + P_{mag}) - \frac{1}{\mu_0} B_i B_j) = 0$<br>
 <br>
 Let $P_{total} = P + P_{mag}$<br>
-$\partial_t \Pi_i + \nabla_j (\rho v_i v_j + \delta_{ij} P_{total} - \frac{1}{\mu_0} B_i B_j) = 0$<br>
+$\partial_t \Pi_i + \nabla_j (\rho v_i v_j + g^{ij} P_{total} - \frac{1}{\mu_0} B_i B_j) = 0$<br>
 <br>
 For $\Pi_i = $ total momentum $ = \rho v_i$ we find<br>
-$\partial_t (\rho v_i) + \nabla_j (\rho v_i v_j + \delta_{ij} P_{total} - \frac{1}{\mu_0} B_i B_j) = 0$<br>
+$\partial_t (\rho v_i) + \nabla_j (\rho v_i v_j + g^{ij} P_{total} - \frac{1}{\mu_0} B_i B_j) = 0$<br>
 
 <h3>Energy</h3>
 
@@ -345,7 +354,7 @@ $\partial_t E_{total} + \nabla_j (H_{total} v_j - \frac{1}{\mu_0} B_k v_k B_j) =
 <h2>Conservative Form of MHD:</h2>
 
 $\partial_t \rho + \nabla_j (\rho v_j) = 0$<br>
-$\partial_t (\rho v_i) + \nabla_j (\rho v_i v_j + \delta_{ij} P_{total} - \frac{1}{\mu_0} B_i B_j) = 0$<br>
+$\partial_t (\rho v_i) + \nabla_j (\rho v_i v_j + g^{ij} P_{total} - \frac{1}{\mu_0} B_i B_j) = 0$<br>
 $\partial_t B_i + \nabla_j (B_i v_j - B_j v_i) = 0$<br>
 $\partial_t E_{total} + \nabla_j (H_{total} v_j - \frac{1}{\mu_0} B_k v_k B_j) = 0$<br>
 <br>
@@ -354,11 +363,15 @@ $\partial_t U_i + \partial_{x_j} F_{ij} = 0$<br>
 <br>
 
 Primitive variables:<br>
-$W_i \left[\matrix{\rho \\ v_i \\ B_i \\ P}\right]$<br>
+$W_i \left[\begin{matrix}
+	\rho \\ v_i \\ B_i \\ P
+\end{matrix}\right]$<br>
 <br>
 
 Conservative variables:<br>
-$U_i = \left[\matrix{\rho \\ \rho v_i \\ B_i \\ E_{total}}\right]$<br>
+$U_i = \left[\begin{matrix}
+	\rho \\ \rho v_i \\ B_i \\ E_{total}
+\end{matrix}\right]$<br>
 <br>
 
 $\frac{\partial E_{total}}{\partial \rho}$<br>
@@ -376,97 +389,97 @@ $= \frac{1}{\gamma-1} $<br>
 <br>
 
 Derivative of conservative with respect to primitive:<br>
-$\frac{\partial U_i}{\partial W_j} = \downarrow i \overset{\rightarrow j}{ \left[\matrix{
+$\frac{\partial U_i}{\partial W_j} = \downarrow I \overset{\rightarrow J}{ \left[\begin{matrix}
 	1 & 0 & 0 & 0 \\ 
-	v_i & \rho \delta_{ij} & 0 & 0 \\
-	0 & 0 & \delta_{ij} & 0 \\
+	v_i & \rho g^{ij} & 0 & 0 \\
+	0 & 0 & g^{ij} & 0 \\
 	\frac{1}{2}v^2 & \rho v_j & \frac{1}{\mu_0} B_j & \frac{1}{\gamma-1}
-}\right] }$<br>
+\end{matrix}\right] }$<br>
 <br>
 
 Derivative of primitive with respect to conservative:<br>
-$\frac{\partial W_j}{\partial U_i} = \downarrow j \overset{\rightarrow i}{ \left[\matrix{
+$\frac{\partial W_j}{\partial U_i} = \downarrow J \overset{\rightarrow L}{ \left[\begin{matrix}
 	1 & 0 & 0 & 0 \\ 
-	-\frac{1}{\rho} v_j & \frac{1}{\rho} \delta_{ij} & 0 & 0 \\
-	0 & 0 & \delta_{ij} & 0 \\
+	-\frac{1}{\rho} v_j & \frac{1}{\rho} g^{ij} & 0 & 0 \\
+	0 & 0 & g^{ij} & 0 \\
 	\frac{1}{2} (\gamma-1) v^2 & -(\gamma-1) v_i & -(\gamma-1) \frac{1}{\mu_0} B_i & \gamma-1
-}\right] }$<br>
+\end{matrix}\right] }$<br>
 <br>
 
 Flux vector:<br>
-$F_{ij} = \left[\matrix{
+$F_{ij} = \left[\begin{matrix}
 	\rho v_j \\
-	\rho v_i v_j + \delta_{ij} P_{total} - \frac{1}{\mu_0} B_i B_j \\
+	\rho v_i v_j + g^{ij} P_{total} - \frac{1}{\mu_0} B_i B_j \\
 	B_i v_j - B_j v_i \\
 	H_{total} v_j - \frac{1}{\mu_0} B_k v_k B_j
-}\right]$<br>
+\end{matrix}\right]$<br>
 <br>
 
 Derivative of flux vector with respect to primitive variables:<br>
-$\frac{\partial F_{ij}}{\partial W_k} = \downarrow i \overset{\rightarrow k}{ \left[\matrix{
+$\frac{\partial F_{ij}}{\partial W_k} = \downarrow I \overset{\rightarrow K}{ \left[\begin{matrix}
 	v_j & 
-		\rho \delta_{jk} &
+		\rho g^{jk} &
 		0 &
 		0 \\
 	v_i v_j &
-		\rho (\delta_{ik} v_j + v_i \delta_{jk}) &
-		\frac{1}{\mu_0} (\delta_{ij} B_k - \delta_{ik} B_j - \delta_{jk} B_i) &
-		\delta_{ij} \\
+		\rho (g^{ik} v_j + v_i g^{jk}) &
+		\frac{1}{\mu_0} (g^{ij} B_k - g^{ik} B_j - g^{jk} B_i) &
+		g^{ij} \\
 	0 &
-		B_i \delta_{jk} - B_j \delta_{ik} &
-		\delta_{ik} v_j - \delta_{jk} v_i &
+		B_i g^{jk} - B_j g^{ik} &
+		g^{ik} v_j - g^{jk} v_i &
 		0 \\
 	\frac{1}{2} v^2 v_j &
-		\rho v_j v_k + H_{total} \delta_{jk} - \frac{1}{\mu_0} B_j B_k &
-		\frac{1}{\mu_0} (2 B_k v_j - v_k B_j - \delta_{jk} v_l B_l) &
+		\rho v_j v_k + H_{total} g^{jk} - \frac{1}{\mu_0} B_j B_k &
+		\frac{1}{\mu_0} (2 B_k v_j - v_k B_j - g^{jk} v_l B_l) &
 		\frac{\gamma}{\gamma-1} v_j
-}\right] }$<br>
+\end{matrix}\right] }$<br>
 <br>
 
 Derivative of flux vector with respect to conservative variables:<br>
 $\frac{\partial F_{ij}}{\partial U_k}
 = \frac{\partial F_{ij}}{\partial W_l} \frac{\partial W_l}{\partial U_k}$<br>
-$= \downarrow i \overset{\rightarrow l}{ \left[\matrix{
+$= \downarrow I \overset{\rightarrow L}{ \left[\begin{matrix}
 	v_j & 
-		\rho \delta_{jl} &
+		\rho g^{jl} &
 		0 &
 		0 \\
 	v_i v_j &
-		\rho (\delta_{il} v_j + v_i \delta_{jl}) &
-		\frac{1}{\mu_0} (\delta_{ij} B_l - \delta_{il} B_j - \delta_{jl} B_i) &
-		\delta_{ij} \\
+		\rho (g^{il} v_j + v_i g^{jl}) &
+		\frac{1}{\mu_0} (g^{ij} B_l - g^{il} B_j - g^{jl} B_i) &
+		g^{ij} \\
 	0 &
-		B_i \delta_{jl} - B_j \delta_{il} &
-		\delta_{il} v_j - \delta_{jl} v_i &
+		B_i g^{jl} - B_j g^{il} &
+		g^{il} v_j - g^{jl} v_i &
 		0 \\
 	\frac{1}{2} v^2 v_j &
-		\rho v_j v_l + (E_{hydro} + \frac{1}{\mu_0} B^2 + P) \delta_{jl} - \frac{1}{\mu_0} B_j B_l &
-		\frac{1}{\mu_0} (2 B_l v_j - v_l B_j - \delta_{jl} v_m B_m) &
+		\rho v_j v_l + (E_{hydro} + \frac{1}{\mu_0} B^2 + P) g^{jl} - \frac{1}{\mu_0} B_j B_l &
+		\frac{1}{\mu_0} (2 B_l v_j - v_l B_j - g^{jl} v_m B_m) &
 		\frac{\gamma}{\gamma-1} v_j
-}\right] } \cdot \downarrow l \overset{\rightarrow k}{ \left[\matrix{
+\end{matrix}\right] } \cdot \downarrow L \overset{\rightarrow K}{ \left[\begin{matrix}
 	1 & 0 & 0 & 0 \\ 
-	-\frac{1}{\rho} v_l & \frac{1}{\rho} \delta_{kl} & 0 & 0 \\
-	0 & 0 & \delta_{kl} & 0 \\
+	-\frac{1}{\rho} v_l & \frac{1}{\rho} g^{kl} & 0 & 0 \\
+	0 & 0 & g^{kl} & 0 \\
 	\frac{1}{2} (\gamma-1) v^2 & -(\gamma-1) v_k & -(\gamma-1) \frac{1}{\mu_0} B_k & \gamma-1
-}\right] }$<br>
-$= \downarrow i \overset{\rightarrow k}{ \left[\matrix{
+\end{matrix}\right] }$<br>
+$= \downarrow I \overset{\rightarrow K}{ \left[\begin{matrix}
 	0 &
-		\delta_{jk} &
+		g^{jk} &
 		0 &
 		0 \\
-	-v_i v_j + \frac{1}{2} \delta_{ij} (\gamma-1) v^2 &
-		\delta_{ik} v_j + \delta_{jk} v_i - \delta_{ij} (\gamma-1) v_k &
-		\frac{1}{\mu_0}(-\delta_{ij} (\gamma-2) B_k - \delta_{ik} B_j - \delta_{jk} B_i) &
-		\delta_{ij} (\gamma-1) \\
+	-v_i v_j + \frac{1}{2} g^{ij} (\gamma-1) v^2 &
+		g^{ik} v_j + g^{jk} v_i - g^{ij} (\gamma-1) v_k &
+		\frac{1}{\mu_0}(-g^{ij} (\gamma-2) B_k - g^{ik} B_j - g^{jk} B_i) &
+		g^{ij} (\gamma-1) \\
 	-\frac{1}{\rho} (B_i v_j - B_j v_i) &
-		\frac{1}{\rho} (B_i \delta_{jk} - B_j \delta_{ik}) &
-		\delta_{ik} v_j - \delta_{jk} v_i &
+		\frac{1}{\rho} (B_i g^{jk} - B_j g^{ik}) &
+		g^{ik} v_j - g^{jk} v_i &
 		0 \\
 	v_j (\frac{1}{2} (\gamma-1) v^2 - h_{total}) + \frac{1}{\mu_0\rho} B_j B_m v_m &
-		-(\gamma-1) v_j v_k + (\delta_{jk} h_{total} - \frac{1}{\mu_0\rho} B_j B_k) &
-		\frac{1}{\mu_0} (-(\gamma - 2) v_j B_k - v_k B_j - \delta_{jk} v_m B_m) &
+		-(\gamma-1) v_j v_k + (g^{jk} h_{total} - \frac{1}{\mu_0\rho} B_j B_k) &
+		\frac{1}{\mu_0} (-(\gamma - 2) v_j B_k - v_k B_j - g^{jk} v_m B_m) &
 		\gamma v_j
-}\right] }$<br>
+\end{matrix}\right] }$<br>
 <br>
 
 for $h_{total} = (E_{total} + P_{total}) / \rho$<br>
@@ -510,11 +523,23 @@ $n \tilde{U}_i + {1\over\Delta \xi}(\tilde{F}_{ij}(x_R) - \tilde{F}_{ij}(x_L)) =
 
 <h3>Similarity Transform of MHD Equations:</h3>
 
-$U_i = \tilde{U}_i = \left[\matrix{\rho \\ \rho v_i \\ B_i \\ E_{total} }\right]$<br>
+$U_i = \tilde{U}_i = \left[\begin{matrix}
+	\rho \\ \rho v_i \\ B_i \\ E_{total} 
+\end{matrix}\right]$<br>
 <br>
-$F_{ij} = \left[\matrix{\rho v_j \\ \rho v_i v_j + \delta_{ij} P_{total} - \frac{1}{\mu_0} B_i B_j \\ B_i v_j - B_j v_i \\ (E_{total} + P_{total}) v_j - \frac{1}{\mu_0} B_k v_k B_j}\right]$<br>
+$F_{ij} = \left[\begin{matrix}
+	\rho v_j \\ 
+	\rho v_i v_j + g^{ij} P_{total} - \frac{1}{\mu_0} B_i B_j \\ 
+	B_i v_j - B_j v_i \\ 
+	(E_{total} + P_{total}) v_j - \frac{1}{\mu_0} B_k v_k B_j
+\end{matrix}\right]$<br>
 <br>
-$\tilde{F}_{ij} = F_{ij} - \xi_j \tilde{U}_i = \left[\matrix{\rho (v_j - \xi_j) \\ \rho v_i (v_j - \xi_j) + \delta_{ij} P_{total} - \frac{1}{\mu_0} B_i B_j \\ B_i (v_j - \xi_j) - B_j v_i \\ E_{total} (v_j - \xi_j) + P_{total} v_j - \frac{1}{\mu_0} B_k v_k B_j }\right]$<br>
+$\tilde{F}_{ij} = F_{ij} - \xi_j \tilde{U}_i = \left[\begin{matrix}
+	\rho (v_j - \xi_j) \\ 
+	\rho v_i (v_j - \xi_j) + g^{ij} P_{total} - \frac{1}{\mu_0} B_i B_j \\ 
+	B_i (v_j - \xi_j) - B_j v_i \\ 
+	E_{total} (v_j - \xi_j) + P_{total} v_j - \frac{1}{\mu_0} B_k v_k B_j 
+\end{matrix}\right]$<br>
 
 <h3>Newton Method</h3>
 
@@ -540,21 +565,21 @@ ${{\partial G_i(u)}\over{\partial \tilde{U}_j}} v_j \approx ( G_i (u + \epsilon 
 Evaluation of function to minimize<br> 
 ${{\partial G_i}\over{\partial \tilde{U}_j}} = \partial_{\tilde{U}_j} G_i$<br>
 $= \partial_{\tilde{U}_j} (n \tilde{U}_i + \partial_{\xi_k} \tilde{F}_{ik})$<br>
-$= n \delta_{ij} + \partial_{\tilde{U}_j} \partial_{\xi_k} \tilde{F}_{ik}$<br>
+$= n g^{ij} + \partial_{\tilde{U}_j} \partial_{\xi_k} \tilde{F}_{ik}$<br>
 <br>
 
 <h3>Curved Space Partial of Conserved Quantities wrt Primitives</h3><br>
-$U^I = \left[\matrix{
+$U^I = \left[\begin{matrix}
 	\rho \\
 	m^i \\
 	B^i \\
 	E_{total}
-}\right] = \left[\matrix{
+\end{matrix}\right] = \left[\begin{matrix}
 	\rho \\
 	\rho v^i \\
 	B^i \\
 	\tilde\gamma^{-1} P + \frac{1}{2} \rho v^2 + \frac{1}{2} \frac{1}{\mu_0} B^2
-}\right]$<br>
+\end{matrix}\right]$<br>
 <br>
 
 $E_{total} = E_{int} + E_{kin} + E_{mag}$<br>
@@ -574,21 +599,21 @@ $<br>
 <br>
 
 $F^{Ij}$<br>
-$= \left[\matrix{
+$= \left[\begin{matrix}
 	\rho v^j \\
 	\rho v^i v^j + g^{ij} P_{total} - \frac{1}{\mu_0} B^i B^j \\
 	B^i v^j - B^j v^i \\
 	H_{total} v^j - \frac{1}{\mu_0} B^k v_k B^j
-}\right]$<br>
+\end{matrix}\right]$<br>
 
-$= \left[\matrix{
+$= \left[\begin{matrix}
 	m^j \\
 	\frac{1}{\rho} m^i m^j + g^{ij} (\tilde\gamma (E_{total} - \frac{1}{2} \frac{1}{\rho} m^2 - \frac{1}{2} \frac{1}{\mu_0} B^2) + \frac{1}{2} \frac{1}{\mu_0} B^2) - \frac{1}{\mu_0} B^i B^j \\
 	\frac{1}{\rho} (B^i m^j - B^j m^i) \\
 	\frac{1}{\rho} (E_{total} + \tilde\gamma (E_{total} - \frac{1}{2} \frac{1}{\rho} m^2 - \frac{1}{2} \frac{1}{\mu_0} B^2) + \frac{1}{2} \frac{1}{\mu_0} B^2) m^j - \frac{1}{\mu_0} \frac{1}{\rho} B^k m_k B^j
-}\right]$<br>
+\end{matrix}\right]$<br>
 
-$= \left[\matrix{
+$= \left[\begin{matrix}
 	m^j 
 	\\
 	
@@ -607,14 +632,14 @@ $= \left[\matrix{
 	+ \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} \frac{1}{\rho} m^j B^2
 	- \frac{1}{\mu_0} \frac{1}{\rho} B^k m^l g_{kl} B^j
 	+ \frac{1}{\rho} \gamma m^j E_{total} 
-}\right]$<br>
+\end{matrix}\right]$<br>
 
 <br>
 
 Flux partial derivative:<br>
 <br>
 ${F^{Ij}}_{,j}$<br>
-$= \left[\matrix{
+$= \left[\begin{matrix}
 	m^j 
 	\\
 	
@@ -633,9 +658,9 @@ $= \left[\matrix{
 	+ \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} \frac{1}{\rho} m^j B^2
 	- \frac{1}{\mu_0} \frac{1}{\rho} B^k m^l g_{kl} B^j
 	+ \frac{1}{\rho} \gamma m^j E_{total} 
-}\right]_{,j}$<br>
+\end{matrix}\right]_{,j}$<br>
 
-$= \left[\matrix{
+$= \left[\begin{matrix}
 	{m^j}_{,j}
 	\\
 	
@@ -688,9 +713,9 @@ $= \left[\matrix{
 	- \gamma \frac{1}{\rho^2} \rho_{,j} m^j E_{total} 
 	+ \gamma \frac{1}{\rho} {m^j}_{,j} E_{total} 
 	+ \gamma \frac{1}{\rho} m^j E_{total,j} 
-}\right]$<br>
+\end{matrix}\right]$<br>
 
-$= \left[\matrix{
+$= \left[\begin{matrix}
 	0 &
 	\delta^j_k &
 	0 & 
@@ -756,12 +781,12 @@ $= \left[\matrix{
 	) &
 
 	\gamma \frac{1}{\rho} m^j
-}\right] \left[\matrix{
+\end{matrix}\right] \left[\begin{matrix}
 	\rho \\
 	m^k \\
 	B^k \\
 	E_{total}
-}\right]_{,j} + g_{kl,j}\left[\matrix{
+\end{matrix}\right]_{,j} + g_{kl,j}\left[\begin{matrix}
 	0 \\
 	
 	- \frac{1}{2} \tilde\gamma \frac{1}{\rho} m^k m^l g^{ij}
@@ -776,14 +801,14 @@ $= \left[\matrix{
 	- \frac{1}{2} \tilde\gamma \frac{1}{\rho^2} m^j m^k m^l
 	+ \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} \frac{1}{\rho} m^j B^k B^l
 	- \frac{1}{\mu_0} \frac{1}{\rho} B^k m^l B^j
-}\right]$<br>
+\end{matrix}\right]$<br>
 <br>
 
 Flux covariant derivative:<br>
 <br>
 
 ${F^{Ij}}_{;j}$<br>
-$= \left[\matrix{
+$= \left[\begin{matrix}
 	0 &
 	\delta^j_k &
 	0 & 
@@ -849,12 +874,12 @@ $= \left[\matrix{
 	) &
 
 	\gamma \frac{1}{\rho} m^j
-}\right] \left[\matrix{
+\end{matrix}\right] \left[\begin{matrix}
 	\rho_{,j} \\
 	{m^k}_{,j} + {\Gamma^k}_{lj} m^l \\
 	{B^k}_{,j} + {\Gamma^k}_{lj} B^l \\
 	E_{total,j}
-}\right]$<br>
+\end{matrix}\right]$<br>
 <br>
 
 difference:<br>
@@ -862,7 +887,7 @@ difference:<br>
 
 ${F^{Ij}}_{;j}$<br>
 $= {F^{Ij}}_{,j}
-+ \left[\matrix{
++ \left[\begin{matrix}
 	0 &
 	\delta^j_k &
 	0 & 
@@ -928,13 +953,13 @@ $= {F^{Ij}}_{,j}
 	) &
 
 	\gamma \frac{1}{\rho} m^j
-}\right] \left[\matrix{
+\end{matrix}\right] \left[\begin{matrix}
 	0 \\
 	{\Gamma^k}_{lj} m^l \\
 	{\Gamma^k}_{lj} B^l \\
 	0
-}\right]
-- g_{kl,j}\left[\matrix{
+\end{matrix}\right]
+- g_{kl,j}\left[\begin{matrix}
 	0 \\
 	
 	- \frac{1}{2} \tilde\gamma \frac{1}{\rho} m^k m^l g^{ij}
@@ -949,10 +974,10 @@ $= {F^{Ij}}_{,j}
 	- \frac{1}{2} \tilde\gamma \frac{1}{\rho^2} m^j m^k m^l
 	+ \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} \frac{1}{\rho} m^j B^k B^l
 	- \frac{1}{\mu_0} \frac{1}{\rho} B^k m^l B^j
-}\right]
+\end{matrix}\right]
 $<br>
 $= {F^{Ij}}_{,j}
-+ \left[\matrix{
++ \left[\begin{matrix}
 	\delta^j_k {\Gamma^k}_{lj} m^l \\
 
 	\frac{1}{\rho} (
@@ -999,12 +1024,12 @@ $= {F^{Ij}}_{,j}
 	+ \frac{1}{2} \tilde\gamma \frac{1}{\rho^2} m^j m^k m^l (\Gamma_{klj} + \Gamma_{lkj})
 	- \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} \frac{1}{\rho} m^j B^k B^l (\Gamma_{klj} + \Gamma_{lkj})
 	+ \frac{1}{\mu_0} \frac{1}{\rho} B^k m^l B^j (\Gamma_{klj} + \Gamma_{lkj})
-}\right]
+\end{matrix}\right]
 $<br>
 
 $= {F^{Ij}}_{,j}
 + {\Gamma^k}_{jk} F^{Ij}
-+ \left[\matrix{
++ \left[\begin{matrix}
 	0 \\
 
 	\frac{1}{\rho} (
@@ -1044,11 +1069,11 @@ $= {F^{Ij}}_{,j}
 	+ \frac{1}{2} \tilde\gamma \frac{1}{\rho^2} m^j m^k m^l \Gamma_{lkj}
 	- \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} \frac{1}{\rho} m^j B^k B^l \Gamma_{lkj}
 	+ \frac{1}{\mu_0} \frac{1}{\rho} B^k m^l B^j \Gamma_{lkj}
-}\right]$<br>
+\end{matrix}\right]$<br>
 
 $= \frac{1}{\sqrt{g}} ( \sqrt{g} F^{Ij} )_{,j}
 
-+ \left[\matrix{
++ \left[\begin{matrix}
 	0 \\
 
 	{\Gamma^i}_{jk} (
@@ -1061,7 +1086,7 @@ $= \frac{1}{\sqrt{g}} ( \sqrt{g} F^{Ij} )_{,j}
 	0 \\
 	
 	0	
-}\right]$<br>
+\end{matrix}\right]$<br>
 <br>
 
 [1]: <a href='http://www.av8n.com/physics/euler-flow.htm'>http://www.av8n.com/physics/euler-flow.htm</a>:<br>
