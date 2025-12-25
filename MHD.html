@@ -14,96 +14,96 @@
 <h3>Mass</h3>
 
 Total mass in volume:<br>
-$m = \int_\Omega \rho dV$<br>
-$m$ = mass, in $kg$<br>
-$\rho$ = density, in $\frac{kg}{m^3}$<br>
+$m = \int_\Omega \rho dV$ = mass, in $[kg]$<br>
+$\rho$ = density, in $[\frac{kg}{m^3}]$<br>
 $\Omega$ = spatial domain, within $\textbf{R}^3$<br>
 <br>
 
 Rate-of-change of mass:<br>
-$\partial_t m = \int_\Omega \partial_t \rho dV$<br>
+$\partial_t m = \int_\Omega \partial_t \rho dV$, in $[\frac{kg}{s}]$<br>
 <br>
 
 Rate-of-change only considering boundary:<br>
-$\partial_t m = \int_{\partial\Omega} \rho v^j dS_j$, in $\frac{kg}{m^2 s}$<br>
-$v^i$ = velocity, in $\frac{m}{s}$<br>
+$\partial_t m = \int_{\partial\Omega} \rho v^j dS_j$, in $[\frac{kg}{s}]$<br>
+$v^i$ = velocity, in $[\frac{m}{s}]$<br>
 <br>
 
 Apply Green's theorem to rate-of-change of boundary:<br>
-$\partial_t m = -\int_\Omega \nabla_j (\rho v_j) dV$ in $\frac{kg}{m s^2}$<br>
+$\partial_t m = -\int_\Omega \nabla_j (\rho v^j) dV$ in $[\frac{kg}{s}]$<br>
 <br>
 
 Consider rate-of-change at any point:<br>
 Conservation of mass:<br>
-$\partial_t \rho + \nabla_j (\rho v^j) = 0$ in $\frac{kg}{m s^2}$<br>
+$\partial_t \rho + \nabla_j (\rho v^j) = 0$ in $[\frac{kg}{m^3 \cdot s}]$<br>
 <br>
 
 <h3>Momentum</h3>
 
 Conservation of momentum:<br>
-$(\Pi^C)^i = \int_\Omega \rho v^i dV$ in $\frac{kg}{m s^2}$<br>
-$\partial_t (\Pi^C)^i$ = change in momentum due to conservation<br>
+$\int_\Omega \Pi_C^i dV = \int_\Omega \rho v^i dV$ in $[\frac{kg \cdot m}{s}]$<br>
+$\partial_t \int_\Omega \Pi_C^i dV$ = change in momentum due to conservation, in $[\frac{kg \cdot m}{s^2}]$<br>
 <br>
 
 Rate-of-change of momentum<br>
-$\partial_t (\Pi^C)^i = \int_\Omega \partial_t (\rho v^i) dV$<br>
+$\partial_t \int_\Omega \Pi_C^i dV = \int_\Omega \partial_t (\rho v^i) dV$, in $[\frac{kg \cdot m}{s^2}]$<br>
 <br>
 
-Rate-of-chagne of only considering boundary (neglecting forces like gravity, pressure, viscosity, etc)<br>
-$\partial_t (\Pi^C)^i = \int_{\partial\Omega} (\rho v^i) v^j dS_j$<br>
+Rate-of-change of only considering boundary (neglecting forces like gravity, pressure, viscosity, etc)<br>
+$\partial_t \int_\Omega \Pi_C^i dV = \int_{\partial\Omega} \rho v^i v^j dS_j$, in $[\frac{kg \cdot m}{s^2}]$<br>
 <br>
 
 Apply Green's theorem:<br>
-$\partial_t (\Pi^C)^i = -\int_\Omega \nabla_j (\rho v^i v^j) dV$<br>
+$\partial_t \int_\Omega \Pi_C^i dV = -\int_\Omega \nabla_j (\rho v^i v^j) dV$, in $[\frac{kg \cdot m}{s^2}]$<br>
 <br>
 
 Consider at any point:<br>
-$\partial_t (\Pi^C)^i = -\nabla_j (\rho v^i v^j)$<br>
+(TODO this should either be a different symbol, (as $\rho$ relates to $m$), or I should insert a volume integral around it above).<br>
+$\partial_t \Pi_C^i = -\nabla_j (\rho v^i v^j)$, in $[\frac{kg}{m^2 \cdot s^2}]$<br>
 <br>
 
-Hydro pressure from internal energy:<br>
-$P = (\gamma - 1) \rho e_{int} = (\gamma - 1) E_{int}$<br>
-$\gamma = $ heat capacity ratio<br>
-$P$ = hydro pressure<br>
-$e_{int}$ = specific internal energy<br>
-$E_{int}$ = internal energy<br>
+Hydro pressure from internal energy (ideal gas law):<br>
+$P = (\gamma - 1) \rho e_{int} = (\gamma - 1) E_{int}$, in $[\frac{kg}{m \cdot s^2}]$<br>
+$\gamma = $ heat capacity ratio (unitless).<br>
+$P$ = hydro pressure, in $[\frac{kg}{m \cdot s^2}]$<br>
+$e_{int}$ = specific internal energy per unit density per volume, in $[\frac{m^2}{s^2}]$<br>
+$E_{int}$ = internal energy per volume, in $[\frac{kg}{m \cdot s^2}]$<br>
 <br>
 
 internal energy:<br>
-$E_{int} = \rho e_{int} = {P\over{(\gamma - 1)}}$<br>
+$E_{int} = \rho e_{int} = \frac{P}{\gamma - 1}$, in $[\frac{kg}{m \cdot s^2}]$<br>
 <br>
 
 Force due to pressure:<br>
-$\partial_t (\Pi^P_i = \int_{\partial\Omega} P dS_i$<br>
-$\partial_t (\Pi^P_i = -\int_\Omega \partial_i P dV$ via Green's theorem<br>
-$\partial_t (\Pi^P_i = -\partial_i P$ at any point<br>
+$\partial_t \int_\Omega \Pi_P^i dV = \int_{\partial\Omega} P dS_i$, in $[\frac{kg \cdot m}{s^2}]$<br>
+$\partial_t \int_\Omega \Pi_P^i dV = -\int_\Omega \nabla_i P dV$ via Green's theorem, in $[\frac{kg \cdot m}{s^2}]$<br>
+$\partial_t \Pi_P^i = -\nabla_i P$ at any point, in $[\frac{kg}{m^2 \cdot s^2}]$<br>
 <br>
 
 Total change in momemtum:<br>
-$\partial_t \Pi_i = \partial_t \Pi^C_i + \partial_t \Pi^P_i$<br>
-$\partial_t \Pi_i = -\partial_j (\rho v_i v_j) - \partial_i P$<br>
-$\partial_t \Pi_i + \partial_j (\rho v_i v_j + \delta_{ij} P= 0$<br>
+$\partial_t \Pi^i = \partial_t \Pi_C^i + \partial_t \Pi_P^i$, in $[\frac{kg}{m^2 \cdot s^2}]$<br>
+$\partial_t \Pi^i = -\nabla_j (\rho v^i v^j) - \nabla_i P$, in $[\frac{kg}{m^2 \cdot s^2}]$<br>
+$\partial_t \Pi^i + \nabla_j (\rho v^i v^j + g^{ij} P) = 0$, in $[\frac{kg}{m^2 \cdot s^2}]$<br>
 <br>
 
-$\partial_t \Pi_i + \partial_j (\rho v_i v_j + \delta_{ij} P) = 0$<br>
+$\partial_t \Pi^i + \nabla_j (\rho v^i v^j + g^{ij} P) = 0$, in $[\frac{kg}{m^2 \cdot s^2}]$<br>
 <br>
-For $\Pi_i = $ hydro momentum $ = \rho v_i$ we find<br>
-$\partial_t (\rho v_i) + \partial_j (\rho v_i v_j + \delta_{ij} P) = 0$<br>
+For $\Pi^i = $ hydro momentum $ = \rho v^i$ we find<br>
+$\partial_t (\rho v^i) + \nabla_j (\rho v^i v^j + g^{ij} P) = 0$, in $[\frac{kg}{m^2 \cdot s^2}]$<br>
 <br>
 
 <h3>Energy</h3>
 
 specific kinetic energy:<br>
-$e_{kin} = {1\over2} v^2$<br>
+$e_{kin} = \frac{1}{2} v^2$<br>
 <br>
 
 kinetic energy:<br>
-$E_{kin} = \rho e_{kin} = {1\over2} \rho v^2$<br>
+$E_{kin} = \rho e_{kin} = \frac{1}{2} \rho v^2$<br>
 <br>
 
 Total hydro energy:<br>
 $E_{hydro} = \int_\Omega (E_{int} + E_{kin}) dV$<br>
-$E_{hydro} = \int_\Omega ({1\over2}\rho v^2 + {P\over{\gamma - 1}}) dV$<br>
+$E_{hydro} = \int_\Omega (\frac{1}{2}\rho v^2 + \frac{P}{\gamma - 1}) dV$<br>
 <br>
 
 change in total energy due to conservation of hydro energy:<br>
@@ -111,39 +111,39 @@ $\partial_t E^C_{total} = \int_\Omega \partial_t E_{hydro} dV$<br>
 <br>
 
 consider velocity moving through boundaries:<br>
-$\partial_t E^C_{total} = \int_{\partial\Omega} E_{hydro} v_i dS_i$<br>
+$\partial_t E^C_{total} = \int_{\partial\Omega} E_{hydro} v^i dS_i$<br>
 <br>
 
 apply Green's theorem:<br>
-$\partial_t E^C_{total} = -\int_\Omega \partial_j (E_{hydro} v_j) dV$<br>
+$\partial_t E^C_{total} = -\int_\Omega \nabla_j (E_{hydro} v^j) dV$<br>
 <br>
 
 for any point:<br>
-$\partial_t E^C_{total} = -\partial_j (E_{hydro} v_j)$<br>
+$\partial_t E^C_{total} = -\nabla_j (E_{hydro} v^j)$<br>
 <br>
 
 Change in energy due to hydro pressure force:<br>
-$\partial_t E^P_{total} = \int_{\partial\Omega} P v_j dS_j$<br>
-$\partial_t E^P_{total} = -\int_\Omega \partial_j (P v_j) dV$ via Green's theorem<br>
-$\partial_t E^P_{total} = -\partial_j (P v_j)$ At any point<br>
+$\partial_t E^P_{total} = \int_{\partial\Omega} P v^j dS_j$<br>
+$\partial_t E^P_{total} = -\int_\Omega \nabla_j (P v^j) dV$ via Green's theorem<br>
+$\partial_t E^P_{total} = -\nabla_j (P v^j)$ At any point<br>
 <br>
 
 Total change in total energy:<br>
 $\partial_t E_{total} = \partial_t E^C_{total} + \partial_t E^P_{total}$<br>
-$\partial_t E_{total} = -\partial_j (E_{hydro} v_j) - \partial_j (P v_j)$<br>
-$\partial_t E_{total} + \partial_j ((E_{hydro} + P) v_j) = 0$<br>
-$\partial_t E_{total} + \partial_j (H_{hydro} v_j) = 0$<br>
+$\partial_t E_{total} = -\nabla_j (E_{hydro} v_j) - \nabla_j (P v_j)$<br>
+$\partial_t E_{total} + \nabla_j ((E_{hydro} + P) v_j) = 0$<br>
+$\partial_t E_{total} + \nabla_j (H_{hydro} v_j) = 0$<br>
 for $H_{hydro} = E_{hydro} + P$<br>
 <br>
 
 <h3>Conservative form of Euler:</h3>
 
-$\partial_t \rho + \partial_j (\rho v_j) = 0$<br>
-$\partial_t (\rho v_i) + \partial_j (\rho v_i v_j + \delta_{ij} P) = 0$<br>
-$\partial_t E_{hydro} + \partial_j (H_{hydro} v_j) = 0$<br>
+$\partial_t \rho + \nabla_j (\rho v_j) = 0$<br>
+$\partial_t (\rho v_i) + \nabla_j (\rho v_i v_j + \delta_{ij} P) = 0$<br>
+$\partial_t E_{hydro} + \nabla_j (H_{hydro} v_j) = 0$<br>
 <br>
 
-$\partial_t U_i + \partial_j F_{ij} = 0$<br>
+$\partial_t U_i + \nabla_j F_{ij} = 0$<br>
 <br>
 
 conservatives:<br>
@@ -232,9 +232,9 @@ $J = $ electrical current density<br>
 $E = $ electrical field<br>
 $\mu_0 = $ permeability of free space<br>
 $\epsilon_0 = $ permittivity of free space<br>
-${\epsilon_i}^{jk} \partial_j B_k = \mu_0 (J_i + \epsilon_0 \partial_t E_i)$<br>
+${\epsilon_i}^{jk} \nabla_j B_k = \mu_0 (J_i + \epsilon_0 \partial_t E_i)$<br>
 Assume $\partial_t E_i = 0$<br>
-$J_i = \frac{1}{\mu_0} {\epsilon_i}^{jk} \partial_j B_k$<br>
+$J_i = \frac{1}{\mu_0} {\epsilon_i}^{jk} \nabla_j B_k$<br>
 <br>
 
 Lorentz force law:<br>
@@ -249,29 +249,29 @@ $E_i = J_i / \sigma - {\epsilon_i}^{jk} v_j B_k$<br>
 
 Maxwell-Faraday equation:<br>
 $ \partial_t B = -\nabla \times E$<br>
-$ \partial_t B_i = -{\epsilon_i}^{jk} \partial_j E_k$<br>
+$ \partial_t B_i = -{\epsilon_i}^{jk} \nabla_j E_k$<br>
 <br>
 
 <h3>Magnetic Field</h3>
 
 substitute Ampere's law into Lorentz force law:<br>
-$E_i = {1\over\sigma\mu_0} {\epsilon_i}^{jk} \partial_j B_k - {\epsilon_i}^{jk} v_j B_k$<br>
-$\eta = {1\over\sigma\mu_0} = $ magnetic diffusivity<br>
-$E_i = \eta {\epsilon_i}^{jk} \partial_j B_k - {\epsilon_i}^{jk} v_j B_k$<br>
+$E_i = \frac{1}{\sigma\mu_0} {\epsilon_i}^{jk} \nabla_j B_k - {\epsilon_i}^{jk} v_j B_k$<br>
+$\eta = \frac{1}{\sigma\mu_0} = $ magnetic diffusivity<br>
+$E_i = \eta {\epsilon_i}^{jk} \nabla_j B_k - {\epsilon_i}^{jk} v_j B_k$<br>
 <br>
 
 substitute this into Maxwell-Faraday equation:<br>
-$ \partial_t B_i = -{\epsilon_i}^{jk} \partial_j (\eta {\epsilon_k}^{lm} \partial_l B_m - {\epsilon_k}^{lm} v_l B_m)$<br>
-$ \partial_t B_i = {\epsilon_i}^{jk} {\epsilon_k}^{lm} \partial_j (v_l B_m) - {\epsilon_i}^{jk} {\epsilon_k}^{lm} \partial_j (\eta \partial_l B_m)$<br>
+$ \partial_t B_i = -{\epsilon_i}^{jk} \nabla_j (\eta {\epsilon_k}^{lm} \partial_l B_m - {\epsilon_k}^{lm} v_l B_m)$<br>
+$ \partial_t B_i = {\epsilon_i}^{jk} {\epsilon_k}^{lm} \nabla_j (v_l B_m) - {\epsilon_i}^{jk} {\epsilon_k}^{lm} \nabla_j (\eta \partial_l B_m)$<br>
 Levi-Civita identity: ${\epsilon_i}^{jk} {\epsilon_k}^{lm} = \delta^{ij}_{kl} = \delta^i_k \delta^j_l - \delta^i_l \delta^j_k$<br>
-$ \partial_t B_i = (\delta^i_l \delta^j_m - \delta^i_m \delta^j_l) \partial_j (v_l B_m) - (\delta^i_l \delta^j_m - \delta^i_m \delta^j_l) \partial_j (\eta \partial_l B_m)$<br>
+$ \partial_t B_i = (\delta^i_l \delta^j_m - \delta^i_m \delta^j_l) \nabla_j (v_l B_m) - (\delta^i_l \delta^j_m - \delta^i_m \delta^j_l) \nabla_j (\eta \partial_l B_m)$<br>
 assume $\eta$ is constant<br>
-$ \partial_t B_i = \partial_j (v_i B_j - v_j B_i) - \eta (\partial_i \partial_j B_j - \partial_j \partial_j B_i)$<br>
-No magnetic monopoles: $\partial_i B_i = 0$<br>
-$ \partial_t B_i = \partial_j (v_i B_j - v_j B_i) + \eta \partial_j \partial_j B_i$<br>
+$ \partial_t B_i = \nabla_j (v_i B_j - v_j B_i) - \eta (\nabla_i \nabla_j B_j - \nabla_j \nabla_j B_i)$<br>
+No magnetic monopoles: $\nabla_i B_i = 0$<br>
+$ \partial_t B_i = \nabla_j (v_i B_j - v_j B_i) + \eta \nabla_j \nabla_j B_i$<br>
 assume $\eta = 0$<br>
-$ \partial_t B_i = \partial_j (v_i B_j - v_j B_i)$<br>
-$ \partial_t B_i + \partial_j (B_i v_j - B_j v_i) = 0$<br>
+$ \partial_t B_i = \nabla_j (v_i B_j - v_j B_i)$<br>
+$ \partial_t B_i + \nabla_j (B_i v_j - B_j v_i) = 0$<br>
 
 <h3>Momentum</h3>
 
@@ -282,69 +282,69 @@ $\Pi^M_i = F_i =$ Magnetic force on fluid<br>
 $\Pi^M_i = {\epsilon_i}^{jk} q v_j B_k$<br>
 let $J_i = q v_i$<br>
 $\Pi^M_i = {\epsilon_i}^{jk} J_j B_k$<br>
-substitute Ampere's law approximation: $J_i = \frac{1}{\mu_0} {\epsilon_i}^{jk} \partial_j B_k$<br>
+substitute Ampere's law approximation: $J_i = \frac{1}{\mu_0} {\epsilon_i}^{jk} \nabla_j B_k$<br>
 $\Pi^M_i = {\epsilon_i}^{jk} (\frac{1}{\mu_0} {\epsilon_j}^{lm} \partial_l B_m) B_k$<br>
 $\Pi^M_i = -\frac{1}{\mu_0} {\epsilon_i}^{kj} {\epsilon^{lm}}_j B_k \partial_l B_m$<br>
 $\Pi^M_i = \frac{1}{\mu_0} (\delta^i_m \delta^k_l - \delta^i_l \delta^k_m) B_k \partial_l B_m$<br>
-$\Pi^M_i = \frac{1}{\mu_0} (B_j \partial_j B_i - B_j \partial_i B_j)$<br>
-insert additional $\partial_k B_k = 0$ terms, split $B_j \partial_i B_j$ into two halves<br>
-$\Pi^M_i = \frac{1}{\mu_0} ((\partial_j B_i) B_j + B_i (\partial_j B_j) - B_i - {1\over2} (\partial_i B_j) B_j  - {1\over2} B_j (\partial_i B_j))$<br>
+$\Pi^M_i = \frac{1}{\mu_0} (B_j \nabla_j B_i - B_j \nabla_i B_j)$<br>
+insert additional $\nabla_k B_k = 0$ terms, split $B_j \nabla_i B_j$ into two halves<br>
+$\Pi^M_i = \frac{1}{\mu_0} ((\nabla_j B_i) B_j + B_i (\nabla_j B_j) - B_i - \frac{1}{2} (\nabla_i B_j) B_j  - \frac{1}{2} B_j (\nabla_i B_j))$<br>
 un-distribute gradient:<br> 
-$\Pi^M_i = \frac{1}{\mu_0} (\partial_j (B_i B_j) - {1\over2} \partial_i (B^2))$<br>
-$\Pi^M_i = \partial_j (\frac{1}{\mu_0} (B_i B_j - {1\over2} \delta_{ij} B_i B_j))$<br>
-$\Pi^M_i = \partial_j \sigma_{ij}$<br>
-$\sigma_{ij} = \frac{1}{\mu_0} (B_i B_j - {1\over2} \delta_{ij} B_i B_j) =$ Maxwell stress tensor for $E_i = 0$<br>
+$\Pi^M_i = \frac{1}{\mu_0} (\nabla_j (B_i B_j) - \frac{1}{2} \nabla_i (B^2))$<br>
+$\Pi^M_i = \nabla_j (\frac{1}{\mu_0} (B_i B_j - \frac{1}{2} \delta_{ij} B_i B_j))$<br>
+$\Pi^M_i = \nabla_j \sigma_{ij}$<br>
+$\sigma_{ij} = \frac{1}{\mu_0} (B_i B_j - \frac{1}{2} \delta_{ij} B_i B_j) =$ Maxwell stress tensor for $E_i = 0$<br>
 <br>
 Change in momentum due to magnetic field:<br>
-$\Pi^M_i = -{1\over2} \frac{1}{\mu_0} \partial_j B^2 + \frac{1}{\mu_0} \partial_j (B_i B_j)$<br>
+$\Pi^M_i = -\frac{1}{2} \frac{1}{\mu_0} \nabla_j B^2 + \frac{1}{\mu_0} \nabla_j (B_i B_j)$<br>
 <br>
 
 Total change in momemtum:<br>
 $\partial_t \Pi_i = \partial_t \Pi^C_i + \partial_t \Pi^P_i + \partial_t \Pi^M_i$<br>
-$\partial_t \Pi_i = -\partial_j (\rho v_i v_j) - \partial_i P - \frac{1}{\mu_0} {1\over2} \partial_i B^2 + \frac{1}{\mu_0} \partial_j (B_i B_j)$<br>
-$\partial_t \Pi_i + \partial_j (\rho v_i v_j + \delta_{ij} P + \frac{1}{\mu_0} {1\over2} \delta_{ij} B^2 - \frac{1}{\mu_0} B_i B_j) = 0$<br>
+$\partial_t \Pi_i = -\nabla_j (\rho v_i v_j) - \nabla_i P - \frac{1}{\mu_0} \frac{1}{2} \nabla_i B^2 + \frac{1}{\mu_0} \nabla_j (B_i B_j)$<br>
+$\partial_t \Pi_i + \nabla_j (\rho v_i v_j + \delta_{ij} P + \frac{1}{\mu_0} \frac{1}{2} \delta_{ij} B^2 - \frac{1}{\mu_0} B_i B_j) = 0$<br>
 <br>
 
-Let $P_{mag} = \frac{1}{\mu_0} {1\over2} B^2$<br>
-$\partial_t \Pi_i + \partial_j (\rho v_i v_j + \delta_{ij} (P + P_{mag}) - \frac{1}{\mu_0} B_i B_j) = 0$<br>
+Let $P_{mag} = \frac{1}{\mu_0} \frac{1}{2} B^2$<br>
+$\partial_t \Pi_i + \nabla_j (\rho v_i v_j + \delta_{ij} (P + P_{mag}) - \frac{1}{\mu_0} B_i B_j) = 0$<br>
 <br>
 Let $P_{total} = P + P_{mag}$<br>
-$\partial_t \Pi_i + \partial_j (\rho v_i v_j + \delta_{ij} P_{total} - \frac{1}{\mu_0} B_i B_j) = 0$<br>
+$\partial_t \Pi_i + \nabla_j (\rho v_i v_j + \delta_{ij} P_{total} - \frac{1}{\mu_0} B_i B_j) = 0$<br>
 <br>
 For $\Pi_i = $ total momentum $ = \rho v_i$ we find<br>
-$\partial_t (\rho v_i) + \partial_j (\rho v_i v_j + \delta_{ij} P_{total} - \frac{1}{\mu_0} B_i B_j) = 0$<br>
+$\partial_t (\rho v_i) + \nabla_j (\rho v_i v_j + \delta_{ij} P_{total} - \frac{1}{\mu_0} B_i B_j) = 0$<br>
 
 <h3>Energy</h3>
 
 Change in energy due to magnetic field:<br>
 $\partial_t E_{total}^M = -\int_{\partial\Omega} B_k (v_k B_j - v_j B_k) dS_j$ <b>TODO</b> where does this come from? I'm guessing $\partial_t B_i$<br>
-$\partial_t E_{total}^M = \int_\Omega \partial_j (B_k (v_k B_j - v_j B_k)) dV$ via Green's theorem<br>
-$\partial_t E_{total}^M = \partial_j (B_k (v_k B_j - v_j B_k))$ At any point<br>
+$\partial_t E_{total}^M = \int_\Omega \nabla_j (B_k (v_k B_j - v_j B_k)) dV$ via Green's theorem<br>
+$\partial_t E_{total}^M = \nabla_j (B_k (v_k B_j - v_j B_k))$ At any point<br>
 <br>
 
 Total change in total energy:<br>
 $\partial_t E_{total} = \partial_t E_{total}^C + \partial_t E_{total}^P + \partial_t E_{total}^M$<br>
-$\partial_t E_{total} = -\partial_j (E_{hydro} v_j) - \partial_j (P v_j) - \partial_j \frac{1}{\mu_0} (v_j B^2 - B_k v_k B_j)$<br>
-$\partial_t E_{total} + \partial_j ((E_{hydro} + P) v_j + \frac{1}{\mu_0} (v_j B^2 - B_k v_k B_j) = 0$<br>
-$\partial_t E_{total} + \partial_j ((E_{hydro} + P) v_j + \frac{1}{\mu_0} B_k (v_j B_k - v_k B_j)) = 0$<br>
-$\partial_t E_{total} + \partial_j ((E_{hydro} + P) v_j + \frac{1}{\mu_0} B^2 v_j - \frac{1}{\mu_0} B_k v_k B_j) = 0$<br>
-$\partial_t E_{total} + \partial_j ((E_{hydro} + {1\over2} \frac{1}{\mu_0} B^2 + P + {1\over2} \frac{1}{\mu_0} B^2) v_j - \frac{1}{\mu_0} B_k v_k B_j) = 0$<br>
+$\partial_t E_{total} = -\nabla_j (E_{hydro} v_j) - \nabla_j (P v_j) - \nabla_j \frac{1}{\mu_0} (v_j B^2 - B_k v_k B_j)$<br>
+$\partial_t E_{total} + \nabla_j ((E_{hydro} + P) v_j + \frac{1}{\mu_0} (v_j B^2 - B_k v_k B_j) = 0$<br>
+$\partial_t E_{total} + \nabla_j ((E_{hydro} + P) v_j + \frac{1}{\mu_0} B_k (v_j B_k - v_k B_j)) = 0$<br>
+$\partial_t E_{total} + \nabla_j ((E_{hydro} + P) v_j + \frac{1}{\mu_0} B^2 v_j - \frac{1}{\mu_0} B_k v_k B_j) = 0$<br>
+$\partial_t E_{total} + \nabla_j ((E_{hydro} + \frac{1}{2} \frac{1}{\mu_0} B^2 + P + \frac{1}{2} \frac{1}{\mu_0} B^2) v_j - \frac{1}{\mu_0} B_k v_k B_j) = 0$<br>
 <br>
 
-Let $E_{mag} = {1\over2} \frac{1}{\mu_0} B^2$<br>
-$\partial_t E_{total} + \partial_j ((E_{hydro} + E_{mag} + P + P_{mag}) v_j - \frac{1}{\mu_0} B_k v_k B_j) = 0$<br>
+Let $E_{mag} = \frac{1}{2} \frac{1}{\mu_0} B^2$<br>
+$\partial_t E_{total} + \nabla_j ((E_{hydro} + E_{mag} + P + P_{mag}) v_j - \frac{1}{\mu_0} B_k v_k B_j) = 0$<br>
 <br>
 
 Let $E_{total} = E_{hydro} + E_{mag}$<br>
 Let $H_{total} = E_{total} + P_{total}$<br>
-$\partial_t E_{total} + \partial_j (H_{total} v_j - \frac{1}{\mu_0} B_k v_k B_j) = 0$<br>
+$\partial_t E_{total} + \nabla_j (H_{total} v_j - \frac{1}{\mu_0} B_k v_k B_j) = 0$<br>
 
 <h2>Conservative Form of MHD:</h2>
 
-$\partial_t \rho + \partial_j (\rho v_j) = 0$<br>
-$\partial_t (\rho v_i) + \partial_j (\rho v_i v_j + \delta_{ij} P_{total} - \frac{1}{\mu_0} B_i B_j) = 0$<br>
-$\partial_t B_i + \partial_j (B_i v_j - B_j v_i) = 0$<br>
-$\partial_t E_{total} + \partial_j (H_{total} v_j - \frac{1}{\mu_0} B_k v_k B_j) = 0$<br>
+$\partial_t \rho + \nabla_j (\rho v_j) = 0$<br>
+$\partial_t (\rho v_i) + \nabla_j (\rho v_i v_j + \delta_{ij} P_{total} - \frac{1}{\mu_0} B_i B_j) = 0$<br>
+$\partial_t B_i + \nabla_j (B_i v_j - B_j v_i) = 0$<br>
+$\partial_t E_{total} + \nabla_j (H_{total} v_j - \frac{1}{\mu_0} B_k v_k B_j) = 0$<br>
 <br>
 
 $\partial_t U_i + \partial_{x_j} F_{ij} = 0$<br>
@@ -529,7 +529,7 @@ $||{{\partial G_i(\tilde{U}^k)}\over{\partial \tilde{U}^k_j}}||^{-1}_{ij} (G_j(\
 $\tilde{U}_i^{k+1} = \tilde{U}_i^k + ||{{\partial G_i(\tilde{U}^k)}\over{\partial \tilde{U}^k_j}}||^{-1}_{ij} (G_j(\tilde{U}^{k+1}) - G_j(\tilde{U}^k))$<br>
 Assume that we arrive at our destination, i.e. $G_i(\tilde{U}^{k+1}) = 0$:<br>
 $\tilde{U}_i^{k+1} = \tilde{U}_i^k - ||{{\partial G_i(\tilde{U}^k)}\over{\partial \tilde{U}^k_j}}||^{-1}_{ij} G_j(\tilde{U}^k)$<br>
-This formula is equivalent to Newton's method of an n-dimensions scalar function with value equal to ${1\over2}||G||^2$<br>
+This formula is equivalent to Newton's method of an n-dimensions scalar function with value equal to $\frac{1}{2}||G||^2$<br>
 <br>
 Jacobian Approximation:<br>
 ${{\partial G_i(u)}\over{\partial \tilde{U}_j}} v_j \approx ( G_i (u + \epsilon v) - G_i(u) ) / \epsilon$<br>
