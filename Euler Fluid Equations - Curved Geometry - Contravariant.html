@@ -20,7 +20,7 @@ variables:<br>
 $n^i =$ flux surface normal, units of [1].<br>
 $\rho =$ density, in units of $\frac{kg}{m^3}$<br>
 $v^i =$ velocity, in units of $\frac{m}{s}$<br>
-$m^i = \rho v^i = $ momentum, in units of $\frac{kg}{m^2 \cdot s}$<br>
+$p^i = \rho v^i = $ momentum density, in units of $\frac{kg}{m^2 \cdot s}$<br>
 $\gamma =$ heat capacity ratio, in units of $[1]$<br>
 $\tilde\gamma = \gamma - 1$<br>
 $P = \tilde\gamma \rho e_{int} = \tilde\gamma E_{int} = \tilde\gamma (E_{total} - E_{kin}) = $ pressure, in units of $\frac{kg}{m \cdot s^2}$<br>
@@ -46,10 +46,10 @@ $\int ( \partial_t U^I + \nabla_n F^I ) dV = 0$<br>
 Conservative and primitive variables:<br>
 <br>
 
-$W^I = \left[\begin{matrix} \rho \\ v^i \\ P \end{matrix}\right]$ 
+$W^I = \left[\begin{matrix} \rho \\ v^i \\ P \end{matrix}\right]$
 in units of $\left[\begin{matrix} \frac{kg}{m^3} \\ \frac{m}{s} \\ \frac{kg}{m \cdot s^2} \end{matrix}\right]$<br>
 
-$U^I = \left[\begin{matrix} \rho \\ \rho v^i \\ E_{total} \end{matrix}\right]$ 
+$U^I = \left[\begin{matrix} \rho \\ \rho v^i \\ E_{total} \end{matrix}\right]$
 in units of $\left[\begin{matrix} \frac{kg}{m^3} \\ \frac{kg}{m^2 \cdot s} \\ \frac{kg}{m \cdot s^2} \end{matrix}\right]$<br>
 <br>
 
@@ -74,10 +74,10 @@ Flux:<br>
 $F^I (n)$
 $ = \left[\begin{matrix} \rho v^l n_l \\ \rho v^i v^l n_l + n^i P \\ v^l n_l H_{total} \end{matrix}\right]$
 
-$ = \left[\begin{matrix} 
-	m^j n_j \\ 
-	\frac{1}{\rho} m^i m^j n_j + n^i \tilde\gamma (E_{total} - \frac{1}{2} \frac{1}{\rho} m^2) \\ 
-	\frac{1}{\rho} m^j n_j (\gamma E_{total} - \tilde\gamma \frac{1}{2} \frac{1}{\rho} m^2)
+$ = \left[\begin{matrix}
+	p^j n_j \\
+	\frac{1}{\rho} p^i p^j n_j + n^i \tilde\gamma (E_{total} - \frac{1}{2} \frac{1}{\rho} p^2) \\
+	\frac{1}{\rho} p^j n_j (\gamma E_{total} - \tilde\gamma \frac{1}{2} \frac{1}{\rho} p^2)
 \end{matrix}\right]$
 in units of $\left[\begin{matrix} \frac{kg}{m^2 \cdot s} \\ \frac{kg}{m \cdot s^2} \\ \frac{kg}{s^3} \end{matrix}\right]$<br>
 <br>
@@ -89,17 +89,17 @@ $\frac{\partial F^I}{\partial W^J} = \downarrow I \overset{\rightarrow J}{
 \left[\begin{matrix}
 	v^l n_l 				& \rho n_j									& 0 \\
 	v^i v^l n_l 			& \rho v^l n_l \delta^i_j + \rho v^i n_j	& n^i \\
-	\frac{1}{2} v^2 v^l n_l & n_j H_{total} + v^l n_l \rho v_j			& v^l n_l \frac{\gamma}{\tilde\gamma} 
+	\frac{1}{2} v^2 v^l n_l & n_j H_{total} + v^l n_l \rho v_j			& v^l n_l \frac{\gamma}{\tilde\gamma}
 \end{matrix}\right]
 }$<br>
 <br>
 
 $\frac{\partial F^I}{\partial U^J} = \frac{\partial F^I}{\partial W^K} \cdot \frac{\partial W^K}{\partial U^J}$:<br>
-$ = 
+$ =
 \left[\begin{matrix}
 	v^l n_l 				& \rho n_k									& 0 \\
 	v^i v^l n_l 			& \rho v^l n_l \delta^i_k + \rho v^i n_k	& n^i \\
-	\frac{1}{2} v^2 v^l n_l & n_k H_{total} + v^l n_l \rho v_k			& v^l n_l \frac{\gamma}{\tilde\gamma} 
+	\frac{1}{2} v^2 v^l n_l & n_k H_{total} + v^l n_l \rho v_k			& v^l n_l \frac{\gamma}{\tilde\gamma}
 \end{matrix}\right]
 \left[\begin{matrix}
 	1 & 0 & 0 \\
@@ -107,9 +107,9 @@ $ =
 	\frac{1}{2} \tilde\gamma v^2 & -\tilde\gamma v_j & \tilde\gamma
 \end{matrix}\right]
 $<br>
-$ = 
+$ =
 \left[\begin{matrix}
-	0 & n_j & 0 \\	
+	0 & n_j & 0 \\
 
 	- v^i v^k n_k + \frac{1}{2} \tilde\gamma v^2 n^i &
 	v^l n_l \delta^i_j + (2 - \gamma) n^i v_j &
@@ -118,7 +118,7 @@ $ =
 	-v^k n_k (h_{total} - \frac{1}{2} v^2 \tilde\gamma) &
 
 	n_j h_{total} - v^l n_l \tilde\gamma v_j &
-	
+
 	v^l n_l \gamma
 \end{matrix}\right]
 $<br>
@@ -134,144 +134,144 @@ Flux partial derivative:<br>
 <br>
 
 ${F^{Ij}}_{,j}$<br>
-$= \left[\begin{matrix} 
-	m^j \\ 
-	\frac{1}{\rho} m^i m^j + g^{ij} \tilde\gamma (E_{total} - \frac{1}{\rho} \frac{1}{2} m^2) \\ 
-	\frac{1}{\rho} m^j (\gamma E_{total} - \tilde\gamma \frac{1}{\rho} \frac{1}{2} m^2)
+$= \left[\begin{matrix}
+	p^j \\
+	\frac{1}{\rho} p^i p^j + g^{ij} \tilde\gamma (E_{total} - \frac{1}{\rho} \frac{1}{2} p^2) \\
+	\frac{1}{\rho} p^j (\gamma E_{total} - \tilde\gamma \frac{1}{\rho} \frac{1}{2} p^2)
 \end{matrix}\right]_{,j}$<br>
-$= \left[\begin{matrix} 
-	(m^j)_{,j} \\ 
-	(\frac{1}{\rho} m^i m^j + g^{ij} \tilde\gamma (E_{total} - \frac{1}{\rho} \frac{1}{2} m^2))_{,j} \\ 
-	(\frac{1}{\rho} m^j (\gamma E_{total} - \tilde\gamma \frac{1}{\rho} \frac{1}{2} m^2))_{,j}
+$= \left[\begin{matrix}
+	(p^j)_{,j} \\
+	(\frac{1}{\rho} p^i p^j + g^{ij} \tilde\gamma (E_{total} - \frac{1}{\rho} \frac{1}{2} p^2))_{,j} \\
+	(\frac{1}{\rho} p^j (\gamma E_{total} - \tilde\gamma \frac{1}{\rho} \frac{1}{2} p^2))_{,j}
 \end{matrix}\right]$<br>
-$ = \left[\begin{matrix} 
-	{m^j}_{,j} \\ 
-	
-	-\frac{1}{\rho^2} \rho_{,j} m^i m^j
-	+ \frac{1}{\rho} {m^i}_{,j} m^j
-	+ \frac{1}{\rho} m^i {m^j}_{,j}
+$ = \left[\begin{matrix}
+	{p^j}_{,j} \\
+
+	-\frac{1}{\rho^2} \rho_{,j} p^i p^j
+	+ \frac{1}{\rho} {p^i}_{,j} p^j
+	+ \frac{1}{\rho} p^i {p^j}_{,j}
 	+ {g^{ij}}_{,j} P
 	+ g^{ij} \tilde\gamma (
 		E_{total,j}
-		+ \frac{1}{2} \frac{1}{\rho^2} \rho_{,j} m^2
-		- \frac{1}{\rho} {m^k}_{,j} m_k 
-		- \frac{1}{2} \frac{1}{\rho} m^k m^l g_{kl,j}
-	)	
+		+ \frac{1}{2} \frac{1}{\rho^2} \rho_{,j} p^2
+		- \frac{1}{\rho} {p^k}_{,j} p_k
+		- \frac{1}{2} \frac{1}{\rho} p^k p^l g_{kl,j}
+	)
 	\\
 
-	(-\frac{1}{\rho^2} \rho_{,j} m^j + \frac{1}{\rho} {m^j}_{,j}) H_{total}
-	+ \frac{1}{\rho} m^j (
-		\gamma E_{total,j} 
-		+ \tilde\gamma \frac{1}{2} \frac{1}{\rho^2} \rho_{,j} m^2
-		- \tilde\gamma \frac{1}{\rho} {m^k}_{,j} m_k 
-		- \tilde\gamma \frac{1}{2} \frac{1}{\rho} m^k m^l g_{kl,j}
+	(-\frac{1}{\rho^2} \rho_{,j} p^j + \frac{1}{\rho} {p^j}_{,j}) H_{total}
+	+ \frac{1}{\rho} p^j (
+		\gamma E_{total,j}
+		+ \tilde\gamma \frac{1}{2} \frac{1}{\rho^2} \rho_{,j} p^2
+		- \tilde\gamma \frac{1}{\rho} {p^k}_{,j} p_k
+		- \tilde\gamma \frac{1}{2} \frac{1}{\rho} p^k p^l g_{kl,j}
 	)
 \end{matrix}\right]$<br>
-$ = \left[\begin{matrix} 
-	0 & \delta^j_k & 0 \\ 
-	
-	- \frac{1}{\rho^2} m^i m^j
-	+ g^{ij} \tilde\gamma \frac{1}{2} \frac{1}{\rho^2} m^2
+$ = \left[\begin{matrix}
+	0 & \delta^j_k & 0 \\
+
+	- \frac{1}{\rho^2} p^i p^j
+	+ g^{ij} \tilde\gamma \frac{1}{2} \frac{1}{\rho^2} p^2
 	&
 	\frac{1}{\rho} (
-		m^j \delta^i_k
-		+ m^i \delta^j_k
-		- \tilde\gamma m_k g^{ij} 
+		p^j \delta^i_k
+		+ p^i \delta^j_k
+		- \tilde\gamma p_k g^{ij}
 	)
 	&
 	g^{ij} \tilde\gamma
 	\\
 	\frac{1}{\rho^2} (
-		- H_{total} m^j
-		+ \frac{1}{2} \tilde\gamma \frac{1}{\rho} m^j m^2
+		- H_{total} p^j
+		+ \frac{1}{2} \tilde\gamma \frac{1}{\rho} p^j p^2
 	)
 	&
 	\frac{1}{\rho} (
 		H_{total} \delta^j_k
-		- \tilde\gamma \frac{1}{\rho} m^j m_k 
+		- \tilde\gamma \frac{1}{\rho} p^j p_k
 	)
 	&
-	\frac{1}{\rho} \gamma m^j
+	\frac{1}{\rho} \gamma p^j
 
 \end{matrix}\right] \left[\begin{matrix}
 	\rho \\
-	m^k \\
+	p^k \\
 	E_{total}
 \end{matrix}\right]_{,j} + \left[\begin{matrix}
-	0 
+	0
 	\\
 	{g^{ij}}_{,j} P
-	- \frac{1}{2} \tilde\gamma \frac{1}{\rho} m^k m^l g_{kl,j} g^{ij} 
+	- \frac{1}{2} \tilde\gamma \frac{1}{\rho} p^k p^l g_{kl,j} g^{ij}
 	\\
-	- \frac{1}{2} \tilde\gamma \frac{1}{\rho^2} m^j m^k m^l g_{kl,j}
+	- \frac{1}{2} \tilde\gamma \frac{1}{\rho^2} p^j p^k p^l g_{kl,j}
 \end{matrix}\right]$<br>
 <br>
 
 Flux covariant derivative:<br>
 
 ${F^{Ij}}_{;j}$<br>
-$ = \left[\begin{matrix} 
-	{m^j}_{;j} \\ 
-	
-	-\frac{1}{\rho^2} \rho_{,j} m^i m^j
-	+ \frac{1}{\rho} {m^i}_{;j} m^j
-	+ \frac{1}{\rho} m^i {m^j}_{;j}
+$ = \left[\begin{matrix}
+	{p^j}_{;j} \\
+
+	-\frac{1}{\rho^2} \rho_{,j} p^i p^j
+	+ \frac{1}{\rho} {p^i}_{;j} p^j
+	+ \frac{1}{\rho} p^i {p^j}_{;j}
 	+ {g^{ij}}_{;j} P
 	+ g^{ij} \tilde\gamma (
 		E_{total,j}
-		+ \frac{1}{2} \frac{1}{\rho^2} \rho_{,j} m^2
-		- \frac{1}{\rho} {m^k}_{;j} m_k 
-		- \frac{1}{2} \frac{1}{\rho} m^k m^l g_{kl;j}
-	)	
+		+ \frac{1}{2} \frac{1}{\rho^2} \rho_{,j} p^2
+		- \frac{1}{\rho} {p^k}_{;j} p_k
+		- \frac{1}{2} \frac{1}{\rho} p^k p^l g_{kl;j}
+	)
 	\\
 
-	(-\frac{1}{\rho^2} \rho_{,j} m^j + \frac{1}{\rho} {m^j}_{;j}) H_{total}
-	+ \frac{1}{\rho} m^j (
-		\gamma E_{total,j} 
-		+ \tilde\gamma \frac{1}{2} \frac{1}{\rho^2} \rho_{,j} m^2
-		- \tilde\gamma \frac{1}{\rho} {m^k}_{;j} m_k 
-		- \tilde\gamma \frac{1}{2} \frac{1}{\rho} m^k m^l g_{kl;j}
+	(-\frac{1}{\rho^2} \rho_{,j} p^j + \frac{1}{\rho} {p^j}_{;j}) H_{total}
+	+ \frac{1}{\rho} p^j (
+		\gamma E_{total,j}
+		+ \tilde\gamma \frac{1}{2} \frac{1}{\rho^2} \rho_{,j} p^2
+		- \tilde\gamma \frac{1}{\rho} {p^k}_{;j} p_k
+		- \tilde\gamma \frac{1}{2} \frac{1}{\rho} p^k p^l g_{kl;j}
 	)
 \end{matrix}\right]$<br>
-$ = \left[\begin{matrix} 
-	{m^j}_{;j} \\ 
-	
-	-\frac{1}{\rho^2} \rho_{,j} m^i m^j
-	+ \frac{1}{\rho} {m^i}_{;j} m^j
-	+ \frac{1}{\rho} m^i {m^j}_{;j}
+$ = \left[\begin{matrix}
+	{p^j}_{;j} \\
+
+	-\frac{1}{\rho^2} \rho_{,j} p^i p^j
+	+ \frac{1}{\rho} {p^i}_{;j} p^j
+	+ \frac{1}{\rho} p^i {p^j}_{;j}
 	+ g^{ij} \tilde\gamma (
 		E_{total,j}
-		+ \frac{1}{2} \frac{1}{\rho^2} \rho_{,j} m^2
-		- \frac{1}{\rho} {m^k}_{;j} m_k 
-	)	
+		+ \frac{1}{2} \frac{1}{\rho^2} \rho_{,j} p^2
+		- \frac{1}{\rho} {p^k}_{;j} p_k
+	)
 	\\
 
-	(-\frac{1}{\rho^2} \rho_{,j} m^j + \frac{1}{\rho} {m^j}_{;j}) H_{total}
-	+ \frac{1}{\rho} m^j (
-		\gamma E_{total,j} 
-		+ \tilde\gamma \frac{1}{2} \frac{1}{\rho^2} \rho_{,j} m^2
-		- \tilde\gamma \frac{1}{\rho} {m^k}_{;j} m_k 
+	(-\frac{1}{\rho^2} \rho_{,j} p^j + \frac{1}{\rho} {p^j}_{;j}) H_{total}
+	+ \frac{1}{\rho} p^j (
+		\gamma E_{total,j}
+		+ \tilde\gamma \frac{1}{2} \frac{1}{\rho^2} \rho_{,j} p^2
+		- \tilde\gamma \frac{1}{\rho} {p^k}_{;j} p_k
 	)
 \end{matrix}\right]$<br>
 
-$= \left[\begin{matrix} 
-	{m^j}_{,j} + {\Gamma^j}_{jk} m^k \\ 
-	
-	-\frac{1}{\rho^2} \rho_{,j} m^i m^j
-	+ \frac{1}{\rho} ({m^i}_{,j} + {\Gamma^i}_{jk} m^k) m^j
-	+ \frac{1}{\rho} m^i ({m^j}_{,j} + {\Gamma^j}_{jk} m^k)
+$= \left[\begin{matrix}
+	{p^j}_{,j} + {\Gamma^j}_{jk} p^k \\
+
+	-\frac{1}{\rho^2} \rho_{,j} p^i p^j
+	+ \frac{1}{\rho} ({p^i}_{,j} + {\Gamma^i}_{jk} p^k) p^j
+	+ \frac{1}{\rho} p^i ({p^j}_{,j} + {\Gamma^j}_{jk} p^k)
 	+ g^{ij} \tilde\gamma (
 		E_{total,j}
-		+ \frac{1}{2} \frac{1}{\rho^2} \rho_{,j} m^2
-		- \frac{1}{\rho} m_k {m^k}_{,j}
-	)	
+		+ \frac{1}{2} \frac{1}{\rho^2} \rho_{,j} p^2
+		- \frac{1}{\rho} p_k {p^k}_{,j}
+	)
 	\\
 
-	(-\frac{1}{\rho^2} \rho_{,j} m^j + \frac{1}{\rho} ({m^j}_{,j} + {\Gamma^j}_{jk} m^k)) H_{total}
-	+ \frac{1}{\rho} m^j (
-		\gamma E_{total,j} 
-		+ \tilde\gamma \frac{1}{2} \frac{1}{\rho^2} \rho_{,j} m^2
-		- \tilde\gamma \frac{1}{\rho} m_k {m^k}_{,j}
+	(-\frac{1}{\rho^2} \rho_{,j} p^j + \frac{1}{\rho} ({p^j}_{,j} + {\Gamma^j}_{jk} p^k)) H_{total}
+	+ \frac{1}{\rho} p^j (
+		\gamma E_{total,j}
+		+ \tilde\gamma \frac{1}{2} \frac{1}{\rho^2} \rho_{,j} p^2
+		- \tilde\gamma \frac{1}{\rho} p_k {p^k}_{,j}
 	)
 
 \end{matrix}\right]$<br>
@@ -280,39 +280,39 @@ $= \left[\begin{matrix}
 Moving connections outside, and isolating the volume gradient times the conserved quantities:<br>
 <br>
 
-$= \left[\begin{matrix} 
-	{m^j}_{,j} \\ 
-	
-	- \frac{1}{\rho^2} m^i m^j \rho_{,j}
-	+ \frac{1}{\rho} m^j {m^i}_{,j}
-	+ \frac{1}{\rho} m^i {m^j}_{,j} 
-	
+$= \left[\begin{matrix}
+	{p^j}_{,j} \\
+
+	- \frac{1}{\rho^2} p^i p^j \rho_{,j}
+	+ \frac{1}{\rho} p^j {p^i}_{,j}
+	+ \frac{1}{\rho} p^i {p^j}_{,j}
+
 	+ g^{ij} \tilde\gamma (
 		E_{total,j}
-		+ \frac{1}{2} \frac{1}{\rho^2} \rho_{,j} m^2
-		- \frac{1}{\rho} m_k {m^k}_{,j}
-	)	
+		+ \frac{1}{2} \frac{1}{\rho^2} \rho_{,j} p^2
+		- \frac{1}{\rho} p_k {p^k}_{,j}
+	)
 	\\
 
-	- \frac{1}{\rho^2} m^j H_{total} \rho_{,j}
-	+ \frac{1}{\rho} m^j \tilde\gamma \frac{1}{2} \frac{1}{\rho^2} \rho_{,j} m^2
-	
-	+ \frac{1}{\rho} H_{total} {m^j}_{,j} 
-	- \frac{1}{\rho} m^j \tilde\gamma \frac{1}{\rho} m_k {m^k}_{,j}
-	
-	+ \frac{1}{\rho} m^j \gamma E_{total,j} 
+	- \frac{1}{\rho^2} p^j H_{total} \rho_{,j}
+	+ \frac{1}{\rho} p^j \tilde\gamma \frac{1}{2} \frac{1}{\rho^2} \rho_{,j} p^2
+
+	+ \frac{1}{\rho} H_{total} {p^j}_{,j}
+	- \frac{1}{\rho} p^j \tilde\gamma \frac{1}{\rho} p_k {p^k}_{,j}
+
+	+ \frac{1}{\rho} p^j \gamma E_{total,j}
 
 \end{matrix}\right]
 + \left[\begin{matrix}
-	{\Gamma^j}_{jk} m^k \\
-	\frac{1}{\rho} m^i {\Gamma^j}_{jk} m^k
+	{\Gamma^j}_{jk} p^k \\
+	\frac{1}{\rho} p^i {\Gamma^j}_{jk} p^k
 	+ {\Gamma^j}_{jk} g^{ik} P
 	\\
-	\frac{1}{\rho} {\Gamma^j}_{jk} m^k H_{total}
+	\frac{1}{\rho} {\Gamma^j}_{jk} p^k H_{total}
 \end{matrix}\right]
 + \left[\begin{matrix}
 	0 \\
-	\frac{1}{\rho} {\Gamma^i}_{jk} m^k m^j
+	\frac{1}{\rho} {\Gamma^i}_{jk} p^k p^j
 	- {\Gamma^j}_{jk} g^{ik} P
 	\\
 	0
@@ -322,98 +322,98 @@ $= \left[\begin{matrix}
 Introducing metric partials, to write the flux covariant derivative in terms of the flux partial derivative:<br>
 <br>
 
-$= \left[\begin{matrix} 
-	{m^j}_{,j} \\ 
-	
-	- \frac{1}{\rho^2} m^i m^j \rho_{,j}
-	+ \frac{1}{\rho} m^j {m^i}_{,j}
-	+ \frac{1}{\rho} m^i {m^j}_{,j} 
+$= \left[\begin{matrix}
+	{p^j}_{,j} \\
+
+	- \frac{1}{\rho^2} p^i p^j \rho_{,j}
+	+ \frac{1}{\rho} p^j {p^i}_{,j}
+	+ \frac{1}{\rho} p^i {p^j}_{,j}
 
 	+ {g^{ij}}_{,j} P
 	+ g^{ij} \tilde\gamma (
 		E_{total,j}
-		+ \frac{1}{2} \frac{1}{\rho^2} \rho_{,j} m^2
-		- \frac{1}{\rho} m_k {m^k}_{,j}
-		- \frac{1}{2} \frac{1}{\rho} m^k m^l g_{kl,j}
-	)	
+		+ \frac{1}{2} \frac{1}{\rho^2} \rho_{,j} p^2
+		- \frac{1}{\rho} p_k {p^k}_{,j}
+		- \frac{1}{2} \frac{1}{\rho} p^k p^l g_{kl,j}
+	)
 	\\
 
-	- \frac{1}{\rho^2} m^j H_{total} \rho_{,j}
-	+ \frac{1}{\rho} m^j \tilde\gamma \frac{1}{2} \frac{1}{\rho^2} \rho_{,j} m^2
-	
-	+ \frac{1}{\rho} H_{total} {m^j}_{,j} 
-	- \frac{1}{\rho} m^j \tilde\gamma \frac{1}{\rho} m_k {m^k}_{,j}
-	
-	+ \frac{1}{\rho} m^j \gamma E_{total,j} 
+	- \frac{1}{\rho^2} p^j H_{total} \rho_{,j}
+	+ \frac{1}{\rho} p^j \tilde\gamma \frac{1}{2} \frac{1}{\rho^2} \rho_{,j} p^2
 
-	- \frac{1}{\rho} m^j \tilde\gamma \frac{1}{2} \frac{1}{\rho} m^k m^l g_{kl,j}
+	+ \frac{1}{\rho} H_{total} {p^j}_{,j}
+	- \frac{1}{\rho} p^j \tilde\gamma \frac{1}{\rho} p_k {p^k}_{,j}
+
+	+ \frac{1}{\rho} p^j \gamma E_{total,j}
+
+	- \frac{1}{\rho} p^j \tilde\gamma \frac{1}{2} \frac{1}{\rho} p^k p^l g_{kl,j}
 
 \end{matrix}\right]
 + \left[\begin{matrix}
-	{\Gamma^j}_{jk} m^k \\
-	\frac{1}{\rho} m^i {\Gamma^j}_{jk} m^k
+	{\Gamma^j}_{jk} p^k \\
+	\frac{1}{\rho} p^i {\Gamma^j}_{jk} p^k
 	+ {\Gamma^j}_{jk} g^{ik} P
 	\\
-	\frac{1}{\rho} {\Gamma^j}_{jk} m^k H_{total}
+	\frac{1}{\rho} {\Gamma^j}_{jk} p^k H_{total}
 \end{matrix}\right]
 + \left[\begin{matrix}
 	0 \\
-	\frac{1}{\rho} {\Gamma^i}_{jk} m^k m^j
+	\frac{1}{\rho} {\Gamma^i}_{jk} p^k p^j
 	- {\Gamma^j}_{jk} g^{ik} P
 	- {g^{ij}}_{,j} P
-	+ \tilde\gamma \frac{1}{2} \frac{1}{\rho} m^k m^l g_{kl,j} g^{ij}
+	+ \tilde\gamma \frac{1}{2} \frac{1}{\rho} p^k p^l g_{kl,j} g^{ij}
 	\\
-	\frac{1}{\rho} m^j \tilde\gamma \frac{1}{2} \frac{1}{\rho} m^k m^l g_{kl,j}
+	\frac{1}{\rho} p^j \tilde\gamma \frac{1}{2} \frac{1}{\rho} p^k p^l g_{kl,j}
 \end{matrix}\right]$<br>
 <br>
 
-$= \frac{\sqrt{g}}{\sqrt{g}} {F^{Ij}}_{,j} 
+$= \frac{\sqrt{g}}{\sqrt{g}} {F^{Ij}}_{,j}
 	+ (
-		\frac{\sqrt{g}_{,j}}{\sqrt{g}} 
+		\frac{\sqrt{g}_{,j}}{\sqrt{g}}
 		+ {c_{kj}}^k
-	) F^{Ij} 
+	) F^{Ij}
 	+ \left[\begin{matrix}
 		0 \\
-		\frac{1}{\rho} {\Gamma^i}_{jk} m^k m^j
+		\frac{1}{\rho} {\Gamma^i}_{jk} p^k p^j
 		- {\Gamma^j}_{jk} g^{ik} P
 		+ ({\Gamma^i}_{jk} g^{jk} + {\Gamma^j}_{jk} g^{ki}) P
-		- \frac{1}{\rho} \tilde{\gamma} m^k m^l \Gamma_{kjl} g^{ij}
+		- \frac{1}{\rho} \tilde{\gamma} p^k p^l \Gamma_{kjl} g^{ij}
 		\\
-		\frac{1}{\rho^2} \tilde{\gamma} m^j m^k m^l \Gamma_{kjl}
+		\frac{1}{\rho^2} \tilde{\gamma} p^j p^k p^l \Gamma_{kjl}
 	\end{matrix}\right]$<br>
 
-$= \frac{\sqrt{g}}{\sqrt{g}} {F^{Ij}}_{,j} 
-	+ \frac{\sqrt{g}_{,j}}{\sqrt{g}}  F^{Ij} 
+$= \frac{\sqrt{g}}{\sqrt{g}} {F^{Ij}}_{,j}
+	+ \frac{\sqrt{g}_{,j}}{\sqrt{g}}  F^{Ij}
 	+ ({\Gamma^k}_{kj} - {\Gamma^k}_{jk})
 	\cdot \left[\begin{matrix}
-		m^j \\
-		\frac{1}{\rho} m^i m^j + g^{ij} P \\
+		p^j \\
+		\frac{1}{\rho} p^i p^j + g^{ij} P \\
 		v^j H_{total}
 	\end{matrix}\right]
 	+ \left[\begin{matrix}
 		0 \\
 		{\Gamma^i}_{jk} (
-			\frac{1}{\rho} m^k m^j
+			\frac{1}{\rho} p^k p^j
 			+ g^{jk} P
 		)
-		- \frac{1}{\rho} \tilde{\gamma} m^k m^l \Gamma_{kjl} g^{ij}
+		- \frac{1}{\rho} \tilde{\gamma} p^k p^l \Gamma_{kjl} g^{ij}
 		\\
-		\frac{1}{\rho^2} \tilde{\gamma} m^j m^k m^l \Gamma_{jkl}
+		\frac{1}{\rho^2} \tilde{\gamma} p^j p^k p^l \Gamma_{jkl}
 	\end{matrix}\right]$<br>
 
 $= \frac{1}{\sqrt{g}} \left(
-		\sqrt{g} F^{Ij} 
-	\right)_{,j} 
+		\sqrt{g} F^{Ij}
+	\right)_{,j}
 	+ \left[\begin{matrix}
-		{c_{kj}}^k m^j \\
-		
-		{c_{kj}}^k (\frac{1}{\rho} m^i m^j + g^{ij} P)
-		+ {\Gamma^i}_{jk} (\frac{1}{\rho} m^k m^j + g^{jk} P)
-		- \frac{1}{\rho} \tilde{\gamma} m^k m^l \Gamma_{kjl} g^{ij}
+		{c_{kj}}^k p^j \\
+
+		{c_{kj}}^k (\frac{1}{\rho} p^i p^j + g^{ij} P)
+		+ {\Gamma^i}_{jk} (\frac{1}{\rho} p^k p^j + g^{jk} P)
+		- \frac{1}{\rho} \tilde{\gamma} p^k p^l \Gamma_{kjl} g^{ij}
 		\\
-		
+
 		{c_{kj}}^k v^j H_{total}
-		+ \frac{1}{\rho^2} \tilde{\gamma} m^j m^k m^l \Gamma_{jkl}
+		+ \frac{1}{\rho^2} \tilde{\gamma} p^j p^k p^l \Gamma_{jkl}
 	\end{matrix}\right]$<br>
 
 <br>
@@ -423,18 +423,18 @@ Euler fluid equations, curved geometry:<br>
 
 ${U^I}_{,t} + {F^{Ij}}_{;j} = 0$<br>
 
-${U^I}_{,t} + \frac{1}{\sqrt{g}} \left( 
+${U^I}_{,t} + \frac{1}{\sqrt{g}} \left(
 	\sqrt{g} F^{Ij}
 \right)_{,j}
 
 = \left[\begin{matrix}
 	0 \\
-	- {\Gamma^i}_{jk} (\frac{1}{\rho} m^k m^j + g^{jk} P)
-	+ \frac{1}{\rho} \tilde{\gamma} m^k m^l \Gamma_{kjl} g^{ij}
+	- {\Gamma^i}_{jk} (\frac{1}{\rho} p^k p^j + g^{jk} P)
+	+ \frac{1}{\rho} \tilde{\gamma} p^k p^l \Gamma_{kjl} g^{ij}
 	\\
-	- \frac{1}{\rho^2} \tilde{\gamma} m^j m^k m^l \Gamma_{jkl}
+	- \frac{1}{\rho^2} \tilde{\gamma} p^j p^k p^l \Gamma_{jkl}
 \end{matrix}\right]
-	- {c_{kj}}^k F^{Ij} 
+	- {c_{kj}}^k F^{Ij}
 $<br>
 <br>
 
@@ -449,7 +449,7 @@ But I can get around that by using acoustic tensor to find the eigen-decompositi
 TODO...?<br>
 <br>
 
-Eigen decomposition of flux jacobian: 
+Eigen decomposition of flux jacobian:
 $\frac{\partial F^I}{\partial U^J} = R_F \Lambda_F L_F$<br>
 $\frac{\partial F}{\partial U} = \frac{\partial F}{\partial W} \frac{\partial W}{\partial U}$<br>
 $\frac{\partial W}{\partial U} \frac{\partial F}{\partial W} \frac{\partial W}{\partial U} \frac{\partial U}{\partial W} = \frac{\partial W}{\partial U} ( R_F \Lambda_F L_F ) \frac{\partial U}{\partial W}$<br>
@@ -519,11 +519,11 @@ $-\lambda \cdot \left(
 		0 & -\lambda & \frac{1}{\rho} n^z \\
 		n_y \gamma P & n_z \gamma P & -\lambda
 	\end{matrix}\right|
-	
+
 	- \frac{1}{\rho} n^x \cdot \left|\begin{matrix}
 		0 & -\lambda & 0 \\
 		0 & 0 & -\lambda \\
-		n_x \gamma P & n_y \gamma P & n_z \gamma P 
+		n_x \gamma P & n_y \gamma P & n_z \gamma P
 	\end{matrix}\right|
 \right) = 0$<br>
 <br>
@@ -540,7 +540,7 @@ $-\lambda \cdot \left(
 		\end{matrix}\right|
 	\right)
 
-	- \frac{1}{\rho} n^x \cdot 
+	- \frac{1}{\rho} n^x \cdot
 	n_x \gamma P \cdot
 	\left|\begin{matrix}
 		-\lambda & 0 \\
@@ -581,9 +581,9 @@ So I will instead say $n^k n_k = n^2$.<br>
 
 $-\lambda^3 \cdot \left(\lambda^2 - \frac{\gamma P}{\rho} n^2 \right) = 0$<br>
 
-$-\lambda^3 
-	(\lambda + |n| \sqrt{\frac{\gamma P}{\rho}}) 
-	(\lambda - |n| \sqrt{\frac{\gamma P}{\rho}}) 
+$-\lambda^3
+	(\lambda + |n| \sqrt{\frac{\gamma P}{\rho}})
+	(\lambda - |n| \sqrt{\frac{\gamma P}{\rho}})
 	= 0$<br>
 <br>
 
@@ -601,7 +601,7 @@ $\lambda = \{
 
 <br>
 
-Acoustic tensor right eigenvectors:<br> 
+Acoustic tensor right eigenvectors:<br>
 <br>
 
 For $\lambda = 0$:<br>
@@ -788,7 +788,7 @@ $\left[\begin{matrix}
 <br>
 
 $\left[\begin{matrix}
-	-|n| \sqrt{\frac{\gamma P}{\rho^3}} & 0 & 0 & 0 & 
+	-|n| \sqrt{\frac{\gamma P}{\rho^3}} & 0 & 0 & 0 &
 		\frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^x n_x
 		+ \frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^y n_y
 		+ \frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^z n_z
@@ -889,7 +889,7 @@ $\left[\begin{matrix}
 <br>
 
 $\left[\begin{matrix}
-	|n| \sqrt{\frac{\gamma P}{\rho^3}} & 0 & 0 & 0 & 
+	|n| \sqrt{\frac{\gamma P}{\rho^3}} & 0 & 0 & 0 &
 		-\frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^x n_x
 		-\frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^y n_y
 		-\frac{1}{|n|} \sqrt{\frac{1}{\gamma P \rho}} n^z n_z
@@ -972,7 +972,7 @@ $\left[\begin{matrix}
 	-\frac{n^x}{|n|}	& 0 & n_2^x & n_3^x & \frac{n^x}{|n|} \\
 	-\frac{n^y}{|n|}	& 0 & n_2^y & n_3^y & \frac{n^y}{|n|} \\
 	-\frac{n^z}{|n|}	& 0 & n_2^z & n_3^z & \frac{n^z}{|n|} \\
-	\rho c_s 			& 0 & 0 	& 0 	& \rho c_s 
+	\rho c_s 			& 0 & 0 	& 0 	& \rho c_s
 \end{matrix}\right]$<br>
 <br>
 
@@ -984,7 +984,7 @@ $\left[\begin{matrix}
 	1 &  0 					& 0					 & 0					& -\frac{1}{(c_s)^2} \\
 	0 &  (n_2)_x 			& (n_2)_y			 & (n_2)_z				& 0 \\
 	0 &  (n_3)_x 			& (n_3)_y			 & (n_3)_z				& 0 \\
-	0 &  \frac{n_x}{2 |n|}  & \frac{n_y}{2 |n|}  & \frac{n_z}{2 |n|} 	& \frac{1}{2 \rho c_s} 
+	0 &  \frac{n_x}{2 |n|}  & \frac{n_y}{2 |n|}  & \frac{n_z}{2 |n|} 	& \frac{1}{2 \rho c_s}
 \end{matrix}\right]$<br>
 <br>
 
@@ -1008,7 +1008,7 @@ $V_A^L = \left[\begin{matrix}
 	1 &  0 								& 0							 	& 0								& -\frac{1}{(c_s)^2} \\
 	0 &  \rho (n_2)_x 					& \rho (n_2)_y					& \rho (n_2)_z					& 0 \\
 	0 &  \rho (n_3)_x 					& \rho (n_3)_y					& \rho (n_3)_z					& 0 \\
-	0 &  \frac{\rho n_x}{2 c_s |n|}		& \frac{\rho n_y}{2 c_s |n|}	& \frac{\rho n_z}{2 c_s |n|} 	& \frac{1}{2 (c_s)^2} 
+	0 &  \frac{\rho n_x}{2 c_s |n|}		& \frac{\rho n_y}{2 c_s |n|}	& \frac{\rho n_z}{2 c_s |n|} 	& \frac{1}{2 (c_s)^2}
 \end{matrix}\right]$<br>
 <br>
 
@@ -1038,7 +1038,7 @@ ${(V^L_A)^I}_J = \downarrow I \overset{\rightarrow J}{ \left[\begin{matrix}
 	1 &  0 								& 0							 	& 0								& -\frac{1}{(c_s)^2} \\
 	0 &  \rho (n_2)_x 					& \rho (n_2)_y					& \rho (n_2)_z					& 0 \\
 	0 &  \rho (n_3)_x 					& \rho (n_3)_y					& \rho (n_3)_z					& 0 \\
-	0 &  \frac{\rho n_x}{2 c_s |n|}		& \frac{\rho n_y}{2 c_s |n|}	& \frac{\rho n_z}{2 c_s |n|} 	& \frac{1}{2 (c_s)^2} 
+	0 &  \frac{\rho n_x}{2 c_s |n|}		& \frac{\rho n_y}{2 c_s |n|}	& \frac{\rho n_z}{2 c_s |n|} 	& \frac{1}{2 (c_s)^2}
 \end{matrix}\right]}$<br>
 <br>
 
@@ -1099,7 +1099,7 @@ $= \downarrow I \overset{\rightarrow K}{ \left[\begin{matrix}
 	1 &  0 								& 0							 	& 0								& -\frac{1}{(c_s)^2} \\
 	0 &  \rho (n_2)_x 					& \rho (n_2)_y					& \rho (n_2)_z					& 0 \\
 	0 &  \rho (n_3)_x 					& \rho (n_3)_y					& \rho (n_3)_z					& 0 \\
-	0 &  \frac{\rho n_x}{2 c_s |n|}		& \frac{\rho n_y}{2 c_s |n|}	& \frac{\rho n_z}{2 c_s |n|} 	& \frac{1}{2 (c_s)^2} 
+	0 &  \frac{\rho n_x}{2 c_s |n|}		& \frac{\rho n_y}{2 c_s |n|}	& \frac{\rho n_z}{2 c_s |n|} 	& \frac{1}{2 (c_s)^2}
 \end{matrix}\right]}
 \cdot \downarrow K \overset{\rightarrow J}{ \left[\begin{matrix}
 	1 & 0 & 0 & 0 & 0 \\
@@ -1126,7 +1126,7 @@ $= \downarrow I \overset{\rightarrow J}{ \left[\begin{matrix}
 	(n_2)_y &
 	(n_2)_z &
 	0 \\
-	
+
 	-v^l (n_3)_l &
 	(n_3)_x &
 	(n_3)_y &
@@ -1138,7 +1138,7 @@ $= \downarrow I \overset{\rightarrow J}{ \left[\begin{matrix}
 	\frac{1}{2 c_s} (-\tilde\gamma \frac{1}{c_s} v_y + \frac{n_y}{|n|}) &
 	\frac{1}{2 c_s} (-\tilde\gamma \frac{1}{c_s} v_z + \frac{n_z}{|n|}) &
 	\frac{\tilde\gamma}{2 (c_s)^2} \\
-	
+
 \end{matrix}\right]}$<br>
 
 <br>
