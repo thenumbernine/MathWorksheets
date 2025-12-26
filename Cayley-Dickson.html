@@ -7,30 +7,26 @@
 		<link rel='stylesheet' href='darkmode.css'></link>
 		<script type='text/javascript' src='darkmode.js'></script>
 		<script type='text/javascript'>
-var $ = document;
-function make() { return $.createElement.apply($, arguments); }
-function init() {
-	var divs = $.getElementsByClassName('clickToExpand');
-	for (var i = 0; i < divs.length; ++i) {
-		(function(i){
-			var div = divs[i];
-			var wrapper = make('div');
-			var anchor = make('a');
-			wrapper.appendChild(anchor);
-			wrapper.style.margin = '10px';
-			anchor.style.textDecoration = 'underline';
-			anchor.style.cursor = 'pointer';
-			anchor.onclick = function() {
-				div.style.display = div.style.display == 'none' ? 'block' : 'none';
-				anchor.innerText = 'click to ' + (div.style.display == 'none' ? 'expand' : 'collapse');
-			};
-			div.parentNode.insertBefore(wrapper, div);
-			div.style.marginLeft = '10px';
-			div.style.border = '1px solid #ccc';
-			anchor.onclick();
-		})(i);
+window.addEventListener('load', () => {
+	let divs = document.getElementsByClassName('clickToExpand');
+	for (let i = 0; i < divs.length; ++i) {
+		let div = divs[i];
+		let wrapper = document.createElement('div');
+		let anchor = document.createElement('a');
+		wrapper.appendChild(anchor);
+		wrapper.style.margin = '10px';
+		anchor.style.textDecoration = 'underline';
+		anchor.style.cursor = 'pointer';
+		anchor.onclick = () => {
+			div.style.display = div.style.display == 'none' ? 'block' : 'none';
+			anchor.innerText = 'click to ' + (div.style.display == 'none' ? 'expand' : 'collapse');
+		};
+		div.parentNode.insertBefore(wrapper, div);
+		div.style.marginLeft = '10px';
+		div.style.border = '1px solid #ccc';
+		anchor.onclick();
 	}
-}
+}, false);
 		</script>
 		<style>
 table {
@@ -53,7 +49,7 @@ table th > div > span {
 }
 		</style>
 	</head>
-	<body onload='init()'>
+	<body>
 
 <h3>Quaternions</h3>
 

@@ -1,34 +1,36 @@
 <!doctype html>
 <html>
 	<head>
-	<meta charset='utf-8'>
-	<title>GEM force on an object</title>
-	<script type='text/javascript' src='tryToFindMathJax.js'></script>
-	<script type='text/javascript' src='PeriodicTable.js'></script>
-	<script type='text/javascript' src='template.js'/></script>
-<script>
+		<meta charset='utf-8'>
+		<title>GEM force on an object</title>
+		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<link rel='stylesheet' href='darkmode.css'></link>
+		<script type='text/javascript' src='darkmode.js'></script>
+		<script type='text/javascript' src='PeriodicTable.js'></script>
+		<script type='text/javascript' src='template.js'/></script>
+		<script>
 
-function setMaterial(element) {
+let setMaterial = (element) => {
 	if (element === undefined) return;
 	template.context.object_density_in_g_per_cm3 = element.density;
 	template.refresh();
-}
+};
 
-function selchange() {
-	var select = document.getElementById('materials');
-	var option = select.options[select.selectedIndex];
+let selchange = () => {
+	let select = document.getElementById('materials');
+	let option = select.options[select.selectedIndex];
 	if (option) setMaterial(option.element);
-}
+};
 
-function init() {
-	var defaultMaterial;
-	var defaultIndex = 0;
-	var select = document.getElementById('materials');
-	for (var i = 0; i < PeriodicTable.length; ++i) {
-		var element = PeriodicTable[i];
+let init = () => {
+	let defaultMaterial;
+	let defaultIndex = 0;
+	let select = document.getElementById('materials');
+	for (let i = 0; i < PeriodicTable.length; ++i) {
+		let element = PeriodicTable[i];
 		if (element.resistivity === undefined) continue;
 		
-		var option = document.createElement('option');
+		let option = document.createElement('option');
 		option.appendChild(document.createTextNode(element.name));
 		option.element = element;
 		if (element.name == 'Platinum') {
@@ -39,14 +41,13 @@ function init() {
 	}
 	select.selectedIndex = defaultIndex;
 	setMaterial(defaultMaterial);
-}
-
+};
 Template.prototype.done = init;
 
-</script>
+		</script>
 	</head>
 
-	<body templated onload='tryToFindMathJax();'>
+	<body templated>
 
 $\partial_t = \frac{1}{c} \partial_0, dt = c dx^0$<br>
 <br>
