@@ -7,19 +7,15 @@
 		<script type='text/javascript' src='darkmode.js'></script>
 		<title>Platonic Solids</title>
 		<style>
-table {
-    border : 1px solid black;
-    border-collapse : collapse;
-}
 table td, table th {
-    border : 1px solid black;
 	padding: 4px;
 }
 		</style>
 	</head>
 	<body>
 
-<b>From my symmath platonic solids worksheet:</b><br>
+This math worksheet goes with my <a href="https://thenumbernine.github.io/lua/symmath/tests/output/Platonic%20Solids.html">Platonic Solid SymMath notebook</a>.
+<br>
 <br>
 
 Defining our terms:<br>
@@ -491,6 +487,82 @@ It's interesting that the hypercube and orthoplex are duals (they have matching 
 <br>
 
 Mind if I also included reflections then my automorphism rotation group size becomes $|\textbf{T}(S^n_{n+1})| = (n+1)!$ and $|\textbf{T}(S^n_{2^n})| =  |\textbf{T}(S^n_{2n})| = 2^n n!$.  This looks a lot cleaner.  But I'm trying to preserve my handedness.<br>
+<br>
+
+<b>Vertexes:</b><br>
+Since these three polytopes consistently exist in all dimensions past 4, let's formulaically describe their vertexes.  Maybe I'll analytically describe their transforms later.<br>
+<br>
+
+Let $V^n_{i,j} = $ the j'th component of the i'th vertex of a regular convex polytope.<br>
+<br>
+
+<b>Vertexes of a n-simplex</b><br>
+n-simplexes have n+1 vertexes, so $V_{i,j}$ exists for $1 \le i \le n+1, 1 \le j \le n$.<br>
+<br>
+Let's find our rescaling factor for our n-simplex recursive case:<br>
+<br>
+Assume our (n-1)-simplex has unit-length vertexes, i.e.:<br>
+$(V^{n-1}_{i,1})^2 + ... + (V^{n-1}_{i,n-1})^2 = 1$ for $1 \le i \le n$<br>
+Assume they all form equal angles, therefore their inner products are all equal:<br>
+$(V^{n-1}_{i,1}) (V^{n-1}_{k,1}) + ... + (V^{n-1}_{i,n-1}) (V^{n-1}_{k,n-1}) = c_{n-1}$ for $i \ne k$, for some constant $c_{n-1}$ to be determined.<br>
+<br>
+
+Now to find the vertexes of the n-simplex, first we will take the vertexes of the (n-1)-simplex, rescale them by a factor $a$, and translating them into the new dimension by $b$:<br>
+Let $V^n_{i,j} = a V^{n-1}_{i,j}$ for $1 \le 1 \le n, 1 \le j \lt n$.<br>
+Let $V^n_{i,n} = b$ for $1 \le i \le n$<br>
+Our unit norm vertexes will be:<br>
+$(V^n_{i,1})^2 + ... + (V^n_{i,n})^2 = 1$ for $1 \le i \le n$<br>
+...substitute our definition to find...<br>
+$(a V^{n-1}_1)^2 + ... + (a V^{n-1}_{n-1})^2 + b^2 = 1$<br>
+$a^2 ((V^{n-1}_1)^2 + ... + (V^{n-1}_{n-1})^2) + b^2 = 1$<br>
+...substitute our (n-1)-simplex unit length definition to find...<br>
+$a^2 + b^2 = 1$<br>
+$b = \pm \sqrt{1 - a^2}$<br>
+So for vertexes $1 \le i \le n$, we will take from $V^{n-1}$, scale by $a$, and offset into our new dimension by $\pm \sqrt{1 - a^2}$.<br>
+<br>
+
+Our last additional new vertex that is orthogonal in the new dimension must be unit length, so:<br>
+$V^n_{n+1,j} = \delta_{j,n}$, where $\delta_{j,k}$ is the Kronecher delta, i.e. the vertex component will be 1 for $j=n$ and 0 otherwise.<br>
+<br>
+
+How to find the rescaling factor? Let's ensure that all our angles are equal, and therefore all our inner products are equal:<br>
+$(V^n_{i,1}) (V^n_{k,1}) + ... + (V^n_{i,n}) (V^n_{k,n}) = c_n$ for $i \ne k$, for some constant $c_n$ to be determined.<br>
+<br>
+
+Let's look at angles between vertexes $1 \le i \le n$ and $n+1$:<br>
+$(V^n_{i,1}) (V^n_{n,1}) + ... + (V^n_{i,n-1}) (V^n_{n,n-1}) + (V^n_{i,n}) (V^n_{n,n}) = c_n$ for $1 \le i \le n$.<br>
+...substitute $V^n_i, 1 \le i \le n$ and final vertex $V^n_{n+1}$ definitions:<br>
+$(a V^{n-1}_{i,1}) \cdot 0 + ... + (a V^n_{i,n-1}) \cdot 0 + b \cdot 1 = c_n$ for $1 \le i \le n$.<br>
+$b = c_n$ for $1 \le i \le n$.<br>
+$\pm \sqrt{1 - a^2} = c_n$ for $1 \le i \le n$.<br>
+So now we know that our inner product of our normalized vertexes is equal to the amount that we have shifted our previous dimension's vertexes into the new dimension.<br>
+<br>
+
+Now consider the case for both $i,k \le n$:<br>
+$(a V^{n-1}_{i,1}) (a V^{n-1}_{k,1}) + ... + (a V^{n-1}_{i,n-1}) (a V^{n-1}_{k,n-1}) + b^2 = c_n$<br>
+$a^2 \left( (V^{n-1}_{i,1}) (V^{n-1}_{k,1}) + ... + (V^{n-1}_{i,n-1}) (V^{n-1}_{k,n-1}) \right) + b^2 = c_n$<br>
+...substitute induction case, and substitute $b^2$:<br>
+$a^2 c_{n-1} + b^2 = c_n$<br>
+...substitute our definition for $c_n$:<br>
+$a^2 c_{n-1} + 1 - a^2 = \pm \sqrt{1 - a^2}$<br>
+<br>
+
+<br>
+So, in summary:<br>
+$V^n_{i,j} = \frac{n-1}{n} \cdot V^{n-1}_{i,j}$ for $1 \le i \lt n$.<br>
+$V^n_{n,j} = \delta_{n,j}$<br>
+<br>
+
+TODO the relation is $a = \frac{\sqrt{n^2 - 1}}{n}$, $b = c_n = -\frac{1}{n}$.<br>
+I think I need an inductive proof assertion that $c_n = -\frac{1}{n}$ to prove this.<br>
+<br>
+
+<b>Vertexes of a n-hypercube</b><br>
+$V^n_{i,j} = (-1)^(j'th-digit-of-i)$<br>
+<br>
+
+<b>Vertexes of a n-orthoplex</b><br>
+$V^n_{i,j} = (-1)^k \cdot \delta_{i,j}$<br> for k is something something TODO, hard to describe these without using base-2 arithmetic operations...<br>
 <br>
 
 <hr>
