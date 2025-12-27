@@ -489,6 +489,20 @@ It's interesting that the hypercube and orthoplex are duals (they have matching 
 Mind if I also included reflections then my automorphism rotation group size becomes $|\textbf{T}(S^n_{n+1})| = (n+1)!$ and $|\textbf{T}(S^n_{2^n})| =  |\textbf{T}(S^n_{2n})| = 2^n n!$.  This looks a lot cleaner.  But I'm trying to preserve my handedness.<br>
 <br>
 
+<hr>
+<br>
+
+So the big question:
+Is there a number theory reason that there are only 5 Platonic solids, and 6 regular convex polytopes of 4D?<br>
+<br>
+
+If a regular convex polyhedron must have a dual then it and its dual must have transform groups that are equal to their surface polygon number of sides times the number of surface polygons, then
+what arrangements are possible simply by prime factorization?<br>
+<br>
+
+<hr>
+<br>
+
 <b>Vertexes:</b><br>
 Since these three polytopes consistently exist in all dimensions past 4, let's formulaically describe their vertexes.  Maybe I'll analytically describe their transforms later.<br>
 <br>
@@ -497,28 +511,57 @@ Let $V^n_{i,j} = $ the j'th component of the i'th vertex of a regular convex pol
 <br>
 
 <b>Vertexes of a n-simplex</b><br>
-n-simplexes have n+1 vertexes, so $V_{i,j}$ exists for $1 \le i \le n+1, 1 \le j \le n$.<br>
+n-simplexes have n+1 vertexes, so $V^n_{i,j}$ exists for $1 \le i \le n+1, 1 \le j \le n$.<br>
+We will assume the norm of each vertex is 1, i.e. $\langle V^n_i, V^n_k \rangle = 1$ for $i=k$, $c_n$ otherwise.<br>
 <br>
+
+Assume that, relative to the vertexes of the (n-1)-simplex, the vertexes of the n-simplex are scaled by some factor $a_n$ and shifted by some factor $b_n$<br>
+<br>
+
+Base case:<br>
+$n=1, V^1_1 = [1], V^1_2 = [-1]$<br>
+Next base case (in case the last one is too simple):<br>
+$
+	n=2, 
+	V^2_1 = \left[\begin{matrix}
+		\frac{\sqrt{3}}{2} \\ -\frac{1}{2}
+	\end{matrix}\right], 
+	V^2_2 = \left[\begin{matrix}
+		-\frac{\sqrt{3}}{2} \\ -\frac{1}{2}
+	\end{matrix}\right],
+	V^2_3 = \left[\begin{matrix}
+		0 \\ 1
+	\end{matrix}\right]
+$<br>
+So we can assert that $a_2 = \frac{\sqrt{3}}{2}, b_n = -\frac{1}{2}, c_n = -\frac{1}{2}$<br>
+<br>
+
+I'm going to assert that $b_n = -\frac{1}{n}$ and then prove this by induction.
+Also, thanks to normalization, we can deduce $(a_n)^2 + (b_n)^2 = 1$, so $a_n = \frac{\sqrt{n^2 - 1}}{n}$, which I'll show later.<br>
+Same with the fact that $b_n = c_n$, i.e. the amount that we have to translate the previous vertices into the new dimension is equal to the inner product of all vertices of that dimension's n-simplex.<br>
+<br>
+
+Inductive case:<br>
 Let's find our rescaling factor for our n-simplex recursive case:<br>
 <br>
 Assume our (n-1)-simplex has unit-length vertexes, i.e.:<br>
 $(V^{n-1}_{i,1})^2 + ... + (V^{n-1}_{i,n-1})^2 = 1$ for $1 \le i \le n$<br>
-Assume they all form equal angles, therefore their inner products are all equal:<br>
-$(V^{n-1}_{i,1}) (V^{n-1}_{k,1}) + ... + (V^{n-1}_{i,n-1}) (V^{n-1}_{k,n-1}) = c_{n-1}$ for $i \ne k$, for some constant $c_{n-1}$ to be determined.<br>
+Assume they all form equal angles, therefore their inner products are all equal, and equal to the induction assertion:<br>
+$(V^{n-1}_{i,1}) (V^{n-1}_{k,1}) + ... + (V^{n-1}_{i,n-1}) (V^{n-1}_{k,n-1}) = c_{n-1} = -\frac{1}{n-1}$ for $i \ne k$.<br>
 <br>
 
-Now to find the vertexes of the n-simplex, first we will take the vertexes of the (n-1)-simplex, rescale them by a factor $a$, and translating them into the new dimension by $b$:<br>
-Let $V^n_{i,j} = a V^{n-1}_{i,j}$ for $1 \le 1 \le n, 1 \le j \lt n$.<br>
-Let $V^n_{i,n} = b$ for $1 \le i \le n$<br>
+Now to find the vertexes of the n-simplex, first we will take the vertexes of the (n-1)-simplex, rescale them by factor $a_n$, and translating them into the new dimension by $b_n$:<br>
+Let $V^n_{i,j} = a_n V^{n-1}_{i,j}$ for $1 \le 1 \le n, 1 \le j \lt n$.<br>
+Let $V^n_{i,n} = b_n$ for $1 \le i \le n$<br>
 Our unit norm vertexes will be:<br>
 $(V^n_{i,1})^2 + ... + (V^n_{i,n})^2 = 1$ for $1 \le i \le n$<br>
 ...substitute our definition to find...<br>
-$(a V^{n-1}_1)^2 + ... + (a V^{n-1}_{n-1})^2 + b^2 = 1$<br>
-$a^2 ((V^{n-1}_1)^2 + ... + (V^{n-1}_{n-1})^2) + b^2 = 1$<br>
+$(a_n V^{n-1}_1)^2 + ... + (a_n V^{n-1}_{n-1})^2 + (b_n)^2 = 1$<br>
+$(a_n)^2 ((V^{n-1}_1)^2 + ... + (V^{n-1}_{n-1})^2) + (b_n)^2 = 1$<br>
 ...substitute our (n-1)-simplex unit length definition to find...<br>
-$a^2 + b^2 = 1$<br>
-$b = \pm \sqrt{1 - a^2}$<br>
-So for vertexes $1 \le i \le n$, we will take from $V^{n-1}$, scale by $a$, and offset into our new dimension by $\pm \sqrt{1 - a^2}$.<br>
+$(a_n)^2 + (b_n)^2 = 1$<br>
+$b_n = \pm \sqrt{1 - (a_n)^2}$<br>
+So for vertexes $1 \le i \le n$, we will take from $V^{n-1}$, scale by $a_n$, and offset into our new dimension by $b_n = \pm \sqrt{1 - (a_n)^2}$.<br>
 <br>
 
 Our last additional new vertex that is orthogonal in the new dimension must be unit length, so:<br>
@@ -532,49 +575,148 @@ $(V^n_{i,1}) (V^n_{k,1}) + ... + (V^n_{i,n}) (V^n_{k,n}) = c_n$ for $i \ne k$, f
 Let's look at angles between vertexes $1 \le i \le n$ and $n+1$:<br>
 $(V^n_{i,1}) (V^n_{n,1}) + ... + (V^n_{i,n-1}) (V^n_{n,n-1}) + (V^n_{i,n}) (V^n_{n,n}) = c_n$ for $1 \le i \le n$.<br>
 ...substitute $V^n_i, 1 \le i \le n$ and final vertex $V^n_{n+1}$ definitions:<br>
-$(a V^{n-1}_{i,1}) \cdot 0 + ... + (a V^n_{i,n-1}) \cdot 0 + b \cdot 1 = c_n$ for $1 \le i \le n$.<br>
-$b = c_n$ for $1 \le i \le n$.<br>
-$\pm \sqrt{1 - a^2} = c_n$ for $1 \le i \le n$.<br>
+$(a_n V^{n-1}_{i,1}) \cdot 0 + ... + (a_n V^n_{i,n-1}) \cdot 0 + b_n \cdot 1 = c_n$ for $1 \le i \le n$.<br>
+$b_n = c_n$ for $1 \le i \le n$.<br>
 So now we know that our inner product of our normalized vertexes is equal to the amount that we have shifted our previous dimension's vertexes into the new dimension.<br>
 <br>
 
 Now consider the case for both $i,k \le n$:<br>
-$(a V^{n-1}_{i,1}) (a V^{n-1}_{k,1}) + ... + (a V^{n-1}_{i,n-1}) (a V^{n-1}_{k,n-1}) + b^2 = c_n$<br>
-$a^2 \left( (V^{n-1}_{i,1}) (V^{n-1}_{k,1}) + ... + (V^{n-1}_{i,n-1}) (V^{n-1}_{k,n-1}) \right) + b^2 = c_n$<br>
-...substitute induction case, and substitute $b^2$:<br>
-$a^2 c_{n-1} + b^2 = c_n$<br>
+$(a_n V^{n-1}_{i,1}) (a_n V^{n-1}_{k,1}) + ... + (a_n V^{n-1}_{i,n-1}) (a_n V^{n-1}_{k,n-1}) + (b_n)^2 = c_n$<br>
+$(a_n)^2 \left( (V^{n-1}_{i,1}) (V^{n-1}_{k,1}) + ... + (V^{n-1}_{i,n-1}) (V^{n-1}_{k,n-1}) \right) + (b_n)^2 = c_n$<br>
+...substitute induction case, and substitute $(b_n)^2$:<br>
+$(a_n)^2 c_{n-1} + (b_n)^2 = c_n$<br>
 ...substitute our definition for $c_n$:<br>
-$a^2 c_{n-1} + 1 - a^2 = \pm \sqrt{1 - a^2}$<br>
+$(a_n)^2 c_{n-1} + 1 - (a_n)^2 = \pm \sqrt{1 - (a_n)^2}$<br>
 <br>
+
+Now let's prove that, for the base case of $\langle V^{n-1}_i, V^{n-1}_k \rangle = -\frac{1}{n-1}$,
+that the induction case is $\langle V^n_i, V^n_k \rangle = -\frac{1}{n}$:<br>
+Assume $\langle V^{n-1}_i, V^{n-1}_k \rangle = -\frac{1}{n-1}$:<br>
+$\langle V^n_i, V^n_k \rangle = (V^n_{i,1}) (V^n_{k,1}) + ... + (V^n_{i,n-1}) (V^n_{k,n-1}) + (V^n_{i,n}) (V^n_{k,n}) = -\frac{1}{n}$<br>
+$= (a_n V^{n-1}_{i,1}) (a_n V^{n-1}_{k,1}) + ... + (a_n V^{n-1}_{i,n-1}) (a_n V^{n-1}_{k,n-1}) + (b_n) (b_n) = -\frac{1}{n}$<br>
+$= (a_n)^2 \left( (V^{n-1}_{i,1}) (V^{n-1}_{k,1}) + ... + (V^{n-1}_{i,n-1}) (V^{n-1}_{k,n-1}) \right) + (b_n) (b_n) = -\frac{1}{n}$<br>
+$= (a_n)^2 ( -\frac{1}{n-1} ) + (b_n) (b_n) = -\frac{1}{n}$<br>
+$= \frac{n^2 - 1}{n^2} ( -\frac{1}{n-1} ) + \frac{1}{n^2} = -\frac{1}{n}$<br>
+$= -\frac{n + 1}{n^2} + \frac{1}{n^2} = -\frac{1}{n}$<br>
+$= -\frac{1}{n} = -\frac{1}{n}$<br>
+true.<br>
 
 <br>
 So, in summary:<br>
-$V^n_{i,j} = \frac{n-1}{n} \cdot V^{n-1}_{i,j}$ for $1 \le i \lt n$.<br>
+$V^n_{i,j} = \frac{\sqrt{n^2-1}}{n} \cdot V^{n-1}_{i,j}$ for $1 \le i \le n, 1 \le j \le n-1$; $V^n_{i,n} = -\frac{1}{n}$ for $1 \le i \le n$.<br>
 $V^n_{n,j} = \delta_{n,j}$<br>
 <br>
 
-TODO the relation is $a = \frac{\sqrt{n^2 - 1}}{n}$, $b = c_n = -\frac{1}{n}$.<br>
-I think I need an inductive proof assertion that $c_n = -\frac{1}{n}$ to prove this.<br>
+From here we can calculate all vertex elements of any n-simplex:<br>
+$V^1_{1,1} = 1$<br>
+$V^1_{2,1} = -1$<br>
+$V^n_{n,n+1} = 1$<br>
+$V^n_{1,1} = \Pi_{j=1}^n \frac{\sqrt{j^2 - 1}}{j}$<br>
+$V^n_{2,1} = \Pi_{j=1}^n \frac{\sqrt{j^2 - 1}}{j}$<br>
+<br>
+
+Vertices as column vectors, Varying dimension:<br>
+$\left[\begin{matrix}
+	1 & -1
+\end{matrix}\right], 
+\left[\begin{matrix}
+	\frac{\sqrt{3}}{2} & -\frac{\sqrt{3}}{2} & 0 \\
+	-\frac{1}{2} & -\frac{1}{2} & 1
+\end{matrix}\right], 
+\left[\begin{matrix}
+	\frac{\sqrt{3}}{2} \cdot \frac{\sqrt{8}}{3} & -\frac{\sqrt{3}}{2} \cdot \frac{\sqrt{8}}{3} & 0 & 0 \\
+	-\frac{1}{2} \cdot \frac{\sqrt{8}}{3} & -\frac{1}{2} \cdot \frac{\sqrt{8}}{3} & \frac{\sqrt{8}}{3} & 0 \\
+	-\frac{1}{3} & -\frac{1}{3} & -\frac{1}{3} & 1
+\end{matrix}\right],
+...,
+\left[\begin{matrix}
+	\Pi_{j=2}^n \frac{\sqrt{j^2-1}}{j}
+	& -\Pi_{j=2}^n \frac{\sqrt{j^2-1}}{j}
+	& 0 
+	& 0
+	& ... 
+	& 0
+	& 0
+	& 0 \\
+
+	-\frac{1}{2} \cdot \Pi_{j=3}^n \frac{\sqrt{j^2-1}}{j}
+	& -\frac{1}{2} \cdot \Pi_{j=3}^n \frac{\sqrt{j^2-1}}{j}
+	& \Pi_{j=3}^n \frac{\sqrt{j^2-1}}{j} 
+	& 0
+	& ...
+	& 0
+	& 0
+	& 0 \\
+	
+	-\frac{1}{3} \cdot \Pi_{j=4}^n \frac{\sqrt{j^2-1}}{j}
+	& -\frac{1}{3} \cdot \Pi_{j=4}^n \frac{\sqrt{j^2-1}}{j}
+	& -\frac{1}{3} \cdot \Pi_{j=4}^n \frac{\sqrt{j^2-1}}{j}
+	& \Pi_{j=4}^n \frac{\sqrt{j^2-1}}{j}
+	& ...
+	& 0
+	& 0
+	& 0 \\
+
+	... 
+	& ...
+	& ...
+	& ...
+	& ...
+	& ...
+	& ...
+	& ... \\
+
+	-\frac{1}{n-2} \cdot \frac{\sqrt{(n-1)^2-1}}{n-1} \cdot \frac{\sqrt{n^2-1}}{n}
+	& -\frac{1}{n-2} \cdot \frac{\sqrt{(n-1)^2-1}}{n-1} \cdot \frac{\sqrt{n^2-1}}{n}
+	& -\frac{1}{n-2} \cdot \frac{\sqrt{(n-1)^2-1}}{n-1} \cdot \frac{\sqrt{n^2-1}}{n}
+	& -\frac{1}{n-2} \cdot \frac{\sqrt{(n-1)^2-1}}{n-1} \cdot \frac{\sqrt{n^2-1}}{n}
+	& ...
+	& \frac{\sqrt{(n-1)^2-1}}{n-1} \cdot \frac{\sqrt{n^2-1}}{n}
+	& 0
+	& 0 \\
+
+	-\frac{1}{n-1} \cdot \frac{\sqrt{n^2-1}}{n}
+	& -\frac{1}{n-1} \cdot \frac{\sqrt{n^2-1}}{n}
+	& -\frac{1}{n-1} \cdot \frac{\sqrt{n^2-1}}{n}
+	& -\frac{1}{n-1} \cdot \frac{\sqrt{n^2-1}}{n}
+	& ...
+	& -\frac{1}{n-1} \cdot \frac{\sqrt{n^2-1}}{n}
+	& \frac{\sqrt{n^2-1}}{n}
+	& 0 \\
+
+	-\frac{1}{n} 
+	& -\frac{1}{n} 
+	& -\frac{1}{n} 
+	& -\frac{1}{n} 
+	& ... 
+	& -\frac{1}{n}
+	& -\frac{1}{n}
+	& 1
+\end{matrix}\right],
+$<br>
+<br>
+
+inner product of normalized vertices is $-\frac{1}{n}$<br>
 <br>
 
 <b>Vertexes of a n-hypercube</b><br>
-$V^n_{i,j} = (-1)^(j'th-digit-of-i)$<br>
+normalized vertices:<br>
+$V^n_{i,j} = \frac{1}{\sqrt{n}} (-1)^{(j'th-digit-of-i)}$ for $1 \le i \le 2^n$<br>
+norm of vertices is $\Sigma_{j=1}^n (\frac{1}{\sqrt{n}})^2 = \Sigma_{j=1}^n \frac{1}{n} = 1$<br>
+inner product between neighboring vertices:
+	$\Sigma_{j=1}^{n-1} (\frac{1}{\sqrt{n}})^2 + (-\frac{1}{\sqrt{n}}) (\frac{1}{\sqrt{n}})
+	= \frac{n-1}{n} - \frac{1}{n}
+	= \frac{n-2}{n}$<br>
+<br>
 <br>
 
 <b>Vertexes of a n-orthoplex</b><br>
-$V^n_{i,j} = (-1)^k \cdot \delta_{i,j}$<br> for k is something something TODO, hard to describe these without using base-2 arithmetic operations...<br>
+$V^n_{i,j} = (-1)^{\lfloor (i-1) / n \rfloor} \cdot \delta_{((i-1) \backslash n)+1,j}$ for $1 \le i \le 2n$<br>
+norm of vertices is 1.<br>
+inner product between neighboring vertices is 0.<br>
 <br>
 
-<hr>
-<br>
 
-So the big question:
-Is there a number theory reason that there are only 5 Platonic solids, and 6 regular convex polytopes of 4D?<br>
-<br>
-
-If a regular convex polyhedron must have a dual then it and its dual must have transform groups that are equal to their surface polygon number of sides times the number of surface polygons, then
-what arrangements are possible simply by prime factorization?<br>
-<br>
 
 	</body>
 </html>
