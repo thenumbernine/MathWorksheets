@@ -162,6 +162,10 @@ Some helper worksheets for my projects.
 
 [Gravitation 22.2](https://thenumbernine.github.io/math/Gravitation%2022.2.html)
 
+[Integrating a Vector Field in Curvilinear Coordinates - Example](https://thenumbernine.github.io/math/Integrating%20a%20Vector%20Field%20in%20Curvilinear%20Coordinates%20%2d%20Example.html)
+
+[Integrating a Vector Field in Curvilinear Coordinates](https://thenumbernine.github.io/math/Integrating%20a%20Vector%20Field%20in%20Curvilinear%20Coordinates.html)
+
 [Kaluza-Klein - constant scalar](https://thenumbernine.github.io/math/Kaluza%2dKlein%20%2d%20constant%20scalar.html)
 
 [Kaluza-Klein - varying scalar](https://thenumbernine.github.io/math/Kaluza%2dKlein%20%2d%20varying%20scalar.html)
@@ -287,6 +291,8 @@ Some helper worksheets for my projects.
 [flat earth curvature](https://thenumbernine.github.io/math/flat%20earth%20curvature.html)
 
 [gauge covariant derivative](https://thenumbernine.github.io/math/gauge%20covariant%20derivative.html)
+
+[gnuplot/index](https://thenumbernine.github.io/math/gnuplot/index.html)
 
 [heat to wave](https://thenumbernine.github.io/math/heat%20to%20wave.html)
 
