@@ -489,8 +489,8 @@ It's interesting that the hypercube and orthoplex are duals (they have matching 
 Mind if I also included reflections then my automorphism rotation group size becomes $|\textbf{T}(S^n_{n+1})| = (n+1)!$ and $|\textbf{T}(S^n_{2^n})| =  |\textbf{T}(S^n_{2n})| = 2^n n!$.  This looks a lot cleaner.  But I'm trying to preserve my handedness.<br>
 <br>
 
-Let's look at a graph of surface elements across dimension n:<br>
-
+Let's look at a graph of surface elements across dimension n.<br>
+Duals will be marked with $\underleftrightarrow{ \ \ \ \star \ \ \ }$.  If no dual is present you can assume it is self-dual.<br>
 <table style="text-align:center">
 	<tr>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -570,9 +570,24 @@ Let's look at a graph of surface elements across dimension n:<br>
 		<td>$\partial \searrow$</td>
 		<td>$\partial \downarrow$</td>
 		<td>$\swarrow \partial$</td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td>$\partial \downarrow$</td>
+		<td style="text-align:left; vertical-align:top">
+			<!-- try to draw a SVG curve here -->
+			<svg
+				version="1.1"
+				baseProfile="full"
+				xmlns="http://www.w3.org/2000/svg"
+				width="500"
+				height="30"
+				style="border:0px; padding:0px; stroke-width: 0px; position:absolute"
+			>
+				<defs>
+					<marker id="EndArrowPrecise" stroke-width='1px' stroke="white" markerWidth="10" markerHeight="10" refX="5" refY="10" orient="180">
+						<path d="M 0,10 L 10,10 L 5,0 Z"/>
+					</marker>
+				</defs>
+				<path d="M 20,20 C 20,0, 200,20 200,0" stroke="white" fill="none" stroke-width="1px" marker-start="url(#EndArrowPrecise)"/>
+			</svg>
+		</td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td>$\partial \downarrow$</td>
 	</tr>
@@ -588,29 +603,36 @@ Let's look at a graph of surface elements across dimension n:<br>
 		<td>$S^3_6$<br>
 	</tr>
 	<tr>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>$\partial \searrow$</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>$\partial \searrow$</td>
 		<td>$\partial \downarrow$</td>
+		<td>$\swarrow \partial$</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>$\swarrow \partial$</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	</tr>
+	<tr>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>$S^2_5$</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>$S^2_3$</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>$S^2_4$</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>$S^2_{k \ge 6}$ ...</td>
+	</tr>
+	<tr>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td>$\partial \searrow$</td>
 		<td>$\partial \downarrow$</td>
 		<td>$\swarrow \partial$</td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td>$\partial \downarrow$</td>
-	</tr>
-	<tr>
-		<td>$S^2_5$</td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td>$S^2_3$</td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td>$S^2_4$</td>
-	</tr>
-	<tr>
-		<td colspan=9>$\partial \downarrow$</td>
+		<td>$\swarrow \partial$</td>
 	</tr>
 	<tr>
 		<td colspan=9>$S^1$</td>
