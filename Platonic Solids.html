@@ -10,6 +10,10 @@
 table td, table th {
 	padding: 4px;
 }
+.difftable, .difftable td, .difftable th {
+	text-align: center;
+	border: 0px;
+}
 		</style>
 	</head>
 	<body>
@@ -217,6 +221,7 @@ So $\textbf{T}(S^n_m) = \textbf{T}^n(\star S^n_m)$.<br>
 Another rule that will hold true to higher dimensions is that the transform group size $|\textbf{T}(S^3_m)|$ is equal to the number of sides of our shape, multiplied by each side's transform group size.
 So $|\textbf{T}(S^3_m)| = q_2(S^3_m) \cdot |\textbf{T}(\partial S^3_m)| = m \cdot |\textbf{T}(\partial S^3_m)|$.<br>
 In general: $|\textbf{T}(S^n_m)| = q_{n-1}(S^n_m) \cdot |\textbf{T}(\partial S^n_m)| = m \cdot |\textbf{T}(\partial S^n_m)|$.<br>
+expanded: $|\textbf{T}(S^n_m)| = \underset{k=0}{\overset{n-2}{\Pi}} q_{n-1-k}(\partial^k S^n_m)$<br> 
 <br>
 
 Another rule relates the number of edges and the number of faces to the number of sides of the surface elements: $2 \cdot q_1(S^3_m) / q_2(S^3_m) = q_1(\partial S^n_m)$.<br>
@@ -491,7 +496,7 @@ Mind if I also included reflections then my automorphism rotation group size bec
 
 Let's look at a graph of surface elements across dimension n.<br>
 Duals will be marked with $\underleftrightarrow{ \ \ \ \star \ \ \ }$.  If no dual is present you can assume it is self-dual.<br>
-<table style="text-align:center">
+<table class='difftable'>
 	<tr>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -681,12 +686,13 @@ $b(S^2_3) = -\frac{1}{2}$<br>
 <br>
 
 $S^2_4 =$ square<br>
-$\mathbf{c} = \{1, 0, -1\}$<br>
+$\mathbf{c}(S^2_4) = \{1, 0, -1\}$<br>
 $a = \frac{1}{\sqrt{2}}$<br>
 $b = -\frac{1}{\sqrt{2}}$<br>
+<br>
 
 $S^2_5 =$ pentagon<br>
-$\mathbf{c} = \{1, \frac{\sqrt{5} - 1}{4}, -\frac{1+\sqrt{5}}{4} \}$<br>
+$\mathbf{c}(S^2_5) = \{1, \frac{\sqrt{5} - 1}{4}, -\frac{1+\sqrt{5}}{4} \}$<br>
 $a = \frac{\sqrt{10 - 2 \sqrt{5}}}{8}$<br>
 $b = -\frac{1 + \sqrt{5}}{4}$<br>
 <br>
@@ -696,7 +702,7 @@ Dimension $n=3$:<br>
 
 $S^3_4 =$ tetrahedron<br>
 $q = \{4, 6, 4\}$ = number of vertexes, edges, and faces.<br>
-$\mathbf{c} = \{1, -\frac{1}{3}\}$ = cos angles between vertexes.<br>
+$\mathbf{c}(S^3_4) = \{1, -\frac{1}{3}\}$ = cos angles between vertexes.<br>
 $\partial S^3_4 = S^2_3$ = surface polytope<br>
 $a = \frac{\sqrt{8}}{3}$ = surface element scale<br>
 $b = -\frac{1}{3}$ = surface element translation<br>
@@ -704,7 +710,7 @@ $b = -\frac{1}{3}$ = surface element translation<br>
 
 $S^3_6 =$ cube<br>
 $q = \{8, 12, 6\}$<br>
-$\mathbf{c} = \{1, \frac{1}{3}, -\frac{1}{3}, -1\}$ = cos angles vertexes<br>
+$\mathbf{c}(S^3_6) = \{1, \frac{1}{3}, -\frac{1}{3}, -1\}$ = cos angles vertexes<br>
 $\partial S^3_6 = S^2_4 =$ surface polytope<br>
 $a = \sqrt{\frac{2}{3}} =$ surface element scale<br>
 $b = -\frac{1}{\sqrt{3}} =$ surface element translate<br>
@@ -712,8 +718,8 @@ $b = -\frac{1}{\sqrt{3}} =$ surface element translate<br>
 
 $S^3_8 =$ octahedron
 $q = \{6, 12, 8\}$<br>
-$\mathbf{c} = \{1,0,-1\}$ = cos angles<br>
-$\partial S^3_8 = S^2_3$ which has cos angles $= \{1, -\frac{1}{2}\}$<br>
+$\mathbf{c}(S^3_8) = \{1,0,-1\}$ = cos angles<br>
+$\partial S^3_8 = S^2_3$ which has cos angles $\mathbf{c}(S^2_3) = \{1, -\frac{1}{2}\}$<br>
 $a=$<br>
 $b=$<br>
 <br>
@@ -721,16 +727,16 @@ $b=$<br>
 Nontrivial 3D:<br>
 $S^3_{12} =$ dodecahedron<br>
 $q = \{ 20, 30, 12 \}$<br>
-$\mathbf{c} = \{1, \frac{\sqrt{5}}{3}, \frac{1}{3}, -\frac{1}{3}, -\frac{\sqrt{5}}{3}, -1 \}$ = cos angles<br>
-$\partial S^3_{12} = S^2_5 =$ surface<br>
+$\mathbf{c}(S^3_{12}) = \{1, \frac{\sqrt{5}}{3}, \frac{1}{3}, -\frac{1}{3}, -\frac{\sqrt{5}}{3}, -1 \}$ = cos angles<br>
+$\partial S^3_{12} = S^2_5 =$ surface which has cos angles $\mathbf{c}(S^2_5) = \{1, \frac{\sqrt{5} - 1}{4}, -\frac{1+\sqrt{5}}{4} \}$<br>
 $a=$<br>
 $b=$<br>
 <br>
 
 $S^3_{20} =$ icosahedron<br>
 $q = \{12, 30, 20\}$<br>
-$\mathbf{c} = \{1, \frac{1}{\sqrt{5}}, -\frac{1}{\sqrt{5}}, -1\} =$ cos angles<br>
-$\partial S^3_{20} = S^2_3 =$ surface, with cos angles $= \{1, -\frac{1}{2} \}$<br>
+$\mathbf{c}(S^3_{20}) = \{1, \frac{1}{\sqrt{5}}, -\frac{1}{\sqrt{5}}, -1\} =$ cos angles<br>
+$\partial S^3_{20} = S^2_3 =$ surface, which cos angles $\mathbf{c}(S^2_3) = \{1, -\frac{1}{2} \}$<br>
 $a=$<br>
 $b=$<br>
 <br>
@@ -759,9 +765,20 @@ $c = \{1, 0, -1\}$<br>
 <br>
 
 (nontrivial:)<br>
-$S^4_{24}, q = \{24, 96, 96, 24\}$<br>
-$S^4_{120}, q = \{600, 1200, 720, 120\}$<br>
-$S^4_{600}, q = \{120, 720, 1200, 600\}$<br>
+$S^4_{24}$<br>
+$q(S^4_{24}) = \{24, 96, 96, 24\}$<br>
+$\mathbf{c}(S^4_{24}) = \{ 1, \frac{1}{2}, 0, -\frac{1}{2}, -1 \}$<br>
+<br>
+
+$S^4_{120}$<br>
+$q(S^4_{120}) = \{600, 1200, 720, 120\}$<br>
+$\mathbf{c}(S^4_{120}) = \{ 1, \frac{1 + \sqrt{5}}{4}, \frac{1}{2}, \frac{-1 + \sqrt{5}}{4}, 0, \frac{1 - \sqrt{5}}{4}, -\frac{1}{2}, \frac{-1 - \sqrt{5}}{4}, -1 \}$<br>
+<br>
+
+$S^4_{600}$<br>
+$q(S^4_{600}) = \{120, 720, 1200, 600\}$<br>
+$\mathbf{c}(S^4_{600}) = \{  1, \frac{1 + \sqrt{5}}{4}, \frac{1}{2}, \frac{-1 + \sqrt{5}}{4}, 0, \frac{1 - \sqrt{5}}{4}, -\frac{1}{2}, \frac{-1 - \sqrt{5}}{4}, -1 \}$<br>
+<br>
 <br>
 
 Dim $n \gt 4$<br>
@@ -769,23 +786,23 @@ Dim $n \gt 4$<br>
 
 $S^n_{n+1}$<br>
 $\partial S=S^{n-1}_n$<br>
-$c=\{1, -\frac{1}{n} \}$<br>
-$a= \frac{\sqrt{n^2-1}}{n}$<br>
-$b=-\frac{1}{n}$<br>
+$\mathbf{c}(S^n_{n+1}) = \{1, -\frac{1}{n} \}$<br>
+$a = \frac{\sqrt{n^2-1}}{n}$<br>
+$b = -\frac{1}{n}$<br>
 <br>
 
 $S^n_{2n}$<br>
 $\partial S=S^{n-1}_{2(n-1)}$<br>
-$c={ 2k/n-1 }, 0 \le k \le n$<br>
-$a=\sqrt{\frac{n-1}{n}}$<br>
-$b=-\frac{1}{\sqrt{n}}$<br>
+$\mathbf{c}(S^n_{2n}) = { 2k/n-1 }, 0 \le k \le n$<br>
+$a = \sqrt{\frac{n-1}{n}}$<br>
+$b = -\frac{1}{\sqrt{n}}$<br>
 <br>
 
 $S^n_{2^n}$<br>
 $\partial S=S^{n-1}_n$<br>
-$c= \{1, 0, -1\}$<br>
-$a=$<br>
-$b=$<br>
+$\mathbf{c}(S^n_{2^n}) = \{1, 0, -1\}$<br>
+$a =$<br>
+$b =$<br>
 <br>
 
 I'll go class by class through the trivial cases of regular convex polytopes: the simplex, the cube, and the orthoplex.<br>
