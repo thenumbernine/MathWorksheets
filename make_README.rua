@@ -1,0 +1,43 @@
+#!/usr/bin/env rua
+local url = require 'socket.url'
+
+local gitfileset = io.readproc'git ls-files'
+	:trim()
+	:split'\n'
+	:mapi(string.trim)
+	:mapi(|name,i| (i,name)):setmetatable(nil)
+
+local baseurl = [[https://thenumbernine.github.io/math/]]
+
+local s = table{[[
+Some helper worksheets for my projects.
+]]}
+
+table.wrapfor(path:rdir(|f, isdir|do
+	local dir, name = path(f):getdir()
+	if name.path == '.git' then return false end
+	local _, ext = name:getext()
+	--[[ html only
+	return isdir or ext == 'html'
+	--]]
+	-- [[ html, wxm*, etc
+	return true
+	--]]
+end))
+:mapi(|f| f[1].path)
+:sort()
+:mapi(|f|do
+	local name, ext = path(f):getext()
+	if not gitfileset[f] then
+		io.stderr:write('not in git: ', f, '\n')
+	else
+		s:insert(
+			'['..name..']('..baseurl
+			..url.escape(f)
+				:gsub('%%2f','/')
+				:gsub('%%2e','.')
+			..')\n')
+	end
+end)
+
+path'README.md':write(s:concat'\n')

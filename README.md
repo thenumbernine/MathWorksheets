@@ -12,6 +12,30 @@ Some helper worksheets for my projects.
 
 [BSSNOK 1D](https://thenumbernine.github.io/math/BSSNOK%201D.html)
 
+[CFD/Error in most CFD literature](https://thenumbernine.github.io/math/CFD/Error%20in%20most%20CFD%20literature.html)
+
+[CFD/Euler Fluid Equations - Curved Geometry - Contravariant](https://thenumbernine.github.io/math/CFD/Euler%20Fluid%20Equations%20%2d%20Curved%20Geometry%20%2d%20Contravariant.html)
+
+[CFD/Euler Fluid Equations - Curved Geometry - Covariant](https://thenumbernine.github.io/math/CFD/Euler%20Fluid%20Equations%20%2d%20Curved%20Geometry%20%2d%20Covariant.html)
+
+[CFD/Euler Fluid Equations - Eigenmode Analysis 2](https://thenumbernine.github.io/math/CFD/Euler%20Fluid%20Equations%20%2d%20Eigenmode%20Analysis%202.html)
+
+[CFD/Euler Fluid Equations - Eigenmode Analysis](https://thenumbernine.github.io/math/CFD/Euler%20Fluid%20Equations%20%2d%20Eigenmode%20Analysis.html)
+
+[CFD/Euler Fluid Equations - Entropy Function](https://thenumbernine.github.io/math/CFD/Euler%20Fluid%20Equations%20%2d%20Entropy%20Function.html)
+
+[CFD/Navier-Stokes As Exterior Derivative](https://thenumbernine.github.io/math/CFD/Navier%2dStokes%20As%20Exterior%20Derivative.html)
+
+[CFD/Navier-Stokes Curl Advection](https://thenumbernine.github.io/math/CFD/Navier%2dStokes%20Curl%20Advection.html)
+
+[CFD/Navier-Stokes-Wilcox](https://thenumbernine.github.io/math/CFD/Navier%2dStokes%2dWilcox.html)
+
+[CFD/Navier-Stokes](https://thenumbernine.github.io/math/CFD/Navier%2dStokes.html)
+
+[CFD/SRHD](https://thenumbernine.github.io/math/CFD/SRHD.html)
+
+[CFD/Shallow Water](https://thenumbernine.github.io/math/CFD/Shallow%20Water.html)
+
 [Cayley-Dickson](https://thenumbernine.github.io/math/Cayley%2dDickson.html)
 
 [Curvature From Lower Dimensions](https://thenumbernine.github.io/math/Curvature%20From%20Lower%20Dimensions.html)
@@ -128,18 +152,6 @@ Some helper worksheets for my projects.
 
 [Equations of Structure - Schwarzschild](https://thenumbernine.github.io/math/Equations%20of%20Structure%20%2d%20Schwarzschild.html)
 
-[Error in most CFD literature](https://thenumbernine.github.io/math/Error%20in%20most%20CFD%20literature.html)
-
-[Euler Fluid Equations - Curved Geometry - Contravariant](https://thenumbernine.github.io/math/Euler%20Fluid%20Equations%20%2d%20Curved%20Geometry%20%2d%20Contravariant.html)
-
-[Euler Fluid Equations - Curved Geometry - Covariant](https://thenumbernine.github.io/math/Euler%20Fluid%20Equations%20%2d%20Curved%20Geometry%20%2d%20Covariant.html)
-
-[Euler Fluid Equations - Eigenmode Analysis 2](https://thenumbernine.github.io/math/Euler%20Fluid%20Equations%20%2d%20Eigenmode%20Analysis%202.html)
-
-[Euler Fluid Equations - Eigenmode Analysis](https://thenumbernine.github.io/math/Euler%20Fluid%20Equations%20%2d%20Eigenmode%20Analysis.html)
-
-[Euler Fluid Equations - Entropy Function](https://thenumbernine.github.io/math/Euler%20Fluid%20Equations%20%2d%20Entropy%20Function.html)
-
 [Feed-Forward Neural Network](https://thenumbernine.github.io/math/Feed%2dForward%20Neural%20Network.html)
 
 [Finite Volume Methods](https://thenumbernine.github.io/math/Finite%20Volume%20Methods.html)
@@ -182,9 +194,19 @@ Some helper worksheets for my projects.
 
 [Lichtenberg](https://thenumbernine.github.io/math/Lichtenberg.html)
 
-[MHD - Eigenmode Analysis](https://thenumbernine.github.io/math/MHD%20%2d%20Eigenmode%20Analysis.html)
+[MHD/0 - Euler Fluid Equations](https://thenumbernine.github.io/math/MHD/0%20%2d%20Euler%20Fluid%20Equations.html)
 
-[MHD](https://thenumbernine.github.io/math/MHD.html)
+[MHD/1 - Ideal Microscopic Magnetohydrodynamics](https://thenumbernine.github.io/math/MHD/1%20%2d%20Ideal%20Microscopic%20Magnetohydrodynamics.html)
+
+[MHD/2 - Macroscopic Magnetohydrodynamics](https://thenumbernine.github.io/math/MHD/2%20%2d%20Macroscopic%20Magnetohydrodynamics.html)
+
+[MHD/2 - Similarity Transform](https://thenumbernine.github.io/math/MHD/2%20%2d%20Similarity%20Transform.html)
+
+[MHD/MHD - Eigenmode Analysis](https://thenumbernine.github.io/math/MHD/MHD%20%2d%20Eigenmode%20Analysis.html)
+
+[MHD/MHD A-wave](https://thenumbernine.github.io/math/MHD/MHD%20A%2dwave.html)
+
+[MHD/sources](https://thenumbernine.github.io/math/MHD/sources.html)
 
 [Measure of Any Simplex in Any Dimension](https://thenumbernine.github.io/math/Measure%20of%20Any%20Simplex%20in%20Any%20Dimension.html)
 
@@ -193,14 +215,6 @@ Some helper worksheets for my projects.
 [Metric Eigenmodes](https://thenumbernine.github.io/math/Metric%20Eigenmodes.html)
 
 [Metric for extruded dimension](https://thenumbernine.github.io/math/Metric%20for%20extruded%20dimension.html)
-
-[Navier-Stokes As Exterior Derivative](https://thenumbernine.github.io/math/Navier%2dStokes%20As%20Exterior%20Derivative.html)
-
-[Navier-Stokes Curl Advection](https://thenumbernine.github.io/math/Navier%2dStokes%20Curl%20Advection.html)
-
-[Navier-Stokes-Wilcox](https://thenumbernine.github.io/math/Navier%2dStokes%2dWilcox.html)
-
-[Navier-Stokes](https://thenumbernine.github.io/math/Navier%2dStokes.html)
 
 [Numerical Relativity/1 intro](https://thenumbernine.github.io/math/Numerical%20Relativity/1%20intro.html)
 
@@ -248,11 +262,7 @@ Some helper worksheets for my projects.
 
 [Riemann From Stress-Energy](https://thenumbernine.github.io/math/Riemann%20From%20Stress%2dEnergy.html)
 
-[SRHD](https://thenumbernine.github.io/math/SRHD.html)
-
 [Schwarzschild with mass varying with time](https://thenumbernine.github.io/math/Schwarzschild%20with%20mass%20varying%20with%20time.html)
-
-[Shallow Water](https://thenumbernine.github.io/math/Shallow%20Water.html)
 
 [Solving Connections From Riemann](https://thenumbernine.github.io/math/Solving%20Connections%20From%20Riemann.html)
 
