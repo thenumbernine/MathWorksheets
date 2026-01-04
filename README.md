@@ -1,5 +1,7 @@
 Some helper worksheets for my projects.
 
+[1D ADM with source moved to flux](https://thenumbernine.github.io/math/1D%20ADM%20with%20source%20moved%20to%20flux.wxmx)
+
 [3x3 transform dof decomposition](https://thenumbernine.github.io/math/3x3%20transform%20dof%20decomposition.html)
 
 [ADM Bona-Masso Eigenvectors](https://thenumbernine.github.io/math/ADM%20Bona%2dMasso%20Eigenvectors.html)
@@ -8,15 +10,39 @@ Some helper worksheets for my projects.
 
 [ADM connections](https://thenumbernine.github.io/math/ADM%20connections.html)
 
+[Alcubierre warp bubble](https://thenumbernine.github.io/math/Alcubierre%20warp%20bubble.wxmx)
+
 [Antigravity](https://thenumbernine.github.io/math/Antigravity.html)
+
+[Antigravity_1](https://thenumbernine.github.io/math/Antigravity_1.png)
+
+[Antigravity_2](https://thenumbernine.github.io/math/Antigravity_2.png)
 
 [BSSNOK 1D](https://thenumbernine.github.io/math/BSSNOK%201D.html)
 
 [CFD/Error in most CFD literature](https://thenumbernine.github.io/math/CFD/Error%20in%20most%20CFD%20literature.html)
 
+[CFD/Euler Fluid Equations - 1D - Discrete Deriviative Hermitian](https://thenumbernine.github.io/math/CFD/Euler%20Fluid%20Equations%20%2d%201D%20%2d%20Discrete%20Deriviative%20Hermitian.wxm)
+
+[CFD/Euler Fluid Equations - 1D - Self Similar](https://thenumbernine.github.io/math/CFD/Euler%20Fluid%20Equations%20%2d%201D%20%2d%20Self%20Similar.wxmx)
+
+[CFD/Euler Fluid Equations - 1D](https://thenumbernine.github.io/math/CFD/Euler%20Fluid%20Equations%20%2d%201D.wxm)
+
+[CFD/Euler Fluid Equations - 3D - Left Eigenvectors from Right in any Normal](https://thenumbernine.github.io/math/CFD/Euler%20Fluid%20Equations%20%2d%203D%20%2d%20Left%20Eigenvectors%20from%20Right%20in%20any%20Normal.wxmx)
+
+[CFD/Euler Fluid Equations - 3D - Linear Stability Analysis](https://thenumbernine.github.io/math/CFD/Euler%20Fluid%20Equations%20%2d%203D%20%2d%20Linear%20Stability%20Analysis.wxmx)
+
+[CFD/Euler Fluid Equations - 3D - Quasilinear](https://thenumbernine.github.io/math/CFD/Euler%20Fluid%20Equations%20%2d%203D%20%2d%20Quasilinear.wxmx)
+
+[CFD/Euler Fluid Equations - 3D Curved Space Eigenvectors via Acoustic Tensor](https://thenumbernine.github.io/math/CFD/Euler%20Fluid%20Equations%20%2d%203D%20Curved%20Space%20Eigenvectors%20via%20Acoustic%20Tensor.wxmx)
+
+[CFD/Euler Fluid Equations - 3D](https://thenumbernine.github.io/math/CFD/Euler%20Fluid%20Equations%20%2d%203D.wxmx)
+
 [CFD/Euler Fluid Equations - Curved Geometry - Contravariant](https://thenumbernine.github.io/math/CFD/Euler%20Fluid%20Equations%20%2d%20Curved%20Geometry%20%2d%20Contravariant.html)
 
 [CFD/Euler Fluid Equations - Curved Geometry - Covariant](https://thenumbernine.github.io/math/CFD/Euler%20Fluid%20Equations%20%2d%20Curved%20Geometry%20%2d%20Covariant.html)
+
+[CFD/Euler Fluid Equations - Curved Space](https://thenumbernine.github.io/math/CFD/Euler%20Fluid%20Equations%20%2d%20Curved%20Space.wxmx)
 
 [CFD/Euler Fluid Equations - Eigenmode Analysis 2](https://thenumbernine.github.io/math/CFD/Euler%20Fluid%20Equations%20%2d%20Eigenmode%20Analysis%202.html)
 
@@ -24,19 +50,31 @@ Some helper worksheets for my projects.
 
 [CFD/Euler Fluid Equations - Entropy Function](https://thenumbernine.github.io/math/CFD/Euler%20Fluid%20Equations%20%2d%20Entropy%20Function.html)
 
+[CFD/HLLC](https://thenumbernine.github.io/math/CFD/HLLC.wxm)
+
+[CFD/Hydrodynamics Entropy Flux](https://thenumbernine.github.io/math/CFD/Hydrodynamics%20Entropy%20Flux.wxmx)
+
 [CFD/Navier-Stokes As Exterior Derivative](https://thenumbernine.github.io/math/CFD/Navier%2dStokes%20As%20Exterior%20Derivative.html)
 
 [CFD/Navier-Stokes Curl Advection](https://thenumbernine.github.io/math/CFD/Navier%2dStokes%20Curl%20Advection.html)
 
+[CFD/Navier-Stokes Wilcox](https://thenumbernine.github.io/math/CFD/Navier%2dStokes%20Wilcox.wxmx)
+
 [CFD/Navier-Stokes-Wilcox](https://thenumbernine.github.io/math/CFD/Navier%2dStokes%2dWilcox.html)
 
 [CFD/Navier-Stokes](https://thenumbernine.github.io/math/CFD/Navier%2dStokes.html)
+
+[CFD/SRHD Equations](https://thenumbernine.github.io/math/CFD/SRHD%20Equations.wxmx)
+
+[CFD/SRHD v2](https://thenumbernine.github.io/math/CFD/SRHD%20v2.wxmx)
 
 [CFD/SRHD](https://thenumbernine.github.io/math/CFD/SRHD.html)
 
 [CFD/Shallow Water](https://thenumbernine.github.io/math/CFD/Shallow%20Water.html)
 
 [Cayley-Dickson](https://thenumbernine.github.io/math/Cayley%2dDickson.html)
+
+[Classifying 2x2 Eigenvectors](https://thenumbernine.github.io/math/Classifying%202x2%20Eigenvectors.wxmx)
 
 [Curvature From Lower Dimensions](https://thenumbernine.github.io/math/Curvature%20From%20Lower%20Dimensions.html)
 
@@ -116,13 +154,19 @@ Some helper worksheets for my projects.
 
 [EMHD Hyperbolic Conservation Laws](https://thenumbernine.github.io/math/EMHD%20Hyperbolic%20Conservation%20Laws.html)
 
+[EMHD Hyperbolic Conservation Laws](https://thenumbernine.github.io/math/EMHD%20Hyperbolic%20Conservation%20Laws.wxmx)
+
 [EMHD Linear Stability Analysis](https://thenumbernine.github.io/math/EMHD%20Linear%20Stability%20Analysis.html)
 
 [Earth Rotation Geodesic Twisting](https://thenumbernine.github.io/math/Earth%20Rotation%20Geodesic%20Twisting.html)
 
+[Earth Rotation Geodesic Twisting](https://thenumbernine.github.io/math/Earth%20Rotation%20Geodesic%20Twisting.png)
+
 [Einstein Equations, Weak Field, De-Donder Gauge](https://thenumbernine.github.io/math/Einstein%20Equations%2c%20Weak%20Field%2c%20De%2dDonder%20Gauge.html)
 
 [Einstein-Maxwell Hyperbolic Conservation Laws](https://thenumbernine.github.io/math/Einstein%2dMaxwell%20Hyperbolic%20Conservation%20Laws.html)
+
+[Einstein-Maxwell Hyperbolic Conservation Laws](https://thenumbernine.github.io/math/Einstein%2dMaxwell%20Hyperbolic%20Conservation%20Laws.wxmx)
 
 [Electromagnetism/0 - intro](https://thenumbernine.github.io/math/Electromagnetism/0%20%2d%20intro.html)
 
@@ -144,7 +188,11 @@ Some helper worksheets for my projects.
 
 [Electromagnetism/Maxwell equations in hyperbolic form](https://thenumbernine.github.io/math/Electromagnetism/Maxwell%20equations%20in%20hyperbolic%20form.html)
 
+[Electromagnetism/Maxwell equations in hyperbolic form](https://thenumbernine.github.io/math/Electromagnetism/Maxwell%20equations%20in%20hyperbolic%20form.wxmx)
+
 [Electromagnetism/Maxwell in inhomogeneous medium](https://thenumbernine.github.io/math/Electromagnetism/Maxwell%20in%20inhomogeneous%20medium.html)
+
+[Electromagnetism/Maxwell in inhomogeneous medium](https://thenumbernine.github.io/math/Electromagnetism/Maxwell%20in%20inhomogeneous%20medium.wxmx)
 
 [Electromagnetism/Maxwell octonions](https://thenumbernine.github.io/math/Electromagnetism/Maxwell%20octonions.html)
 
@@ -156,7 +204,11 @@ Some helper worksheets for my projects.
 
 [Finite Volume Methods](https://thenumbernine.github.io/math/Finite%20Volume%20Methods.html)
 
+[Following Toy 1 plus 1 Spacetime](https://thenumbernine.github.io/math/Following%20Toy%201%20plus%201%20Spacetime.wxm)
+
 [GEM force on a rotating object](https://thenumbernine.github.io/math/GEM%20force%20on%20a%20rotating%20object.html)
+
+[GR EM Metrics/Complex Metric - Spatial Components](https://thenumbernine.github.io/math/GR%20EM%20Metrics/Complex%20Metric%20%2d%20Spatial%20Components.wxmx)
 
 [GR EM Metrics/complex metric of EM potential](https://thenumbernine.github.io/math/GR%20EM%20Metrics/complex%20metric%20of%20EM%20potential.html)
 
@@ -186,6 +238,12 @@ Some helper worksheets for my projects.
 
 [Kerr Cartesian](https://thenumbernine.github.io/math/Kerr%20Cartesian.html)
 
+[Kerr geodesic - plots](https://thenumbernine.github.io/math/Kerr%20geodesic%20%2d%20plots.lua)
+
+[Kerr geodesic - radial normal magnitude - varying a](https://thenumbernine.github.io/math/Kerr%20geodesic%20%2d%20radial%20normal%20magnitude%20%2d%20varying%20a.png)
+
+[Kerr geodesic - radial normal magnitude](https://thenumbernine.github.io/math/Kerr%20geodesic%20%2d%20radial%20normal%20magnitude.png)
+
 [Kerr geodesic](https://thenumbernine.github.io/math/Kerr%20geodesic.html)
 
 [LQG](https://thenumbernine.github.io/math/LQG.html)
@@ -205,6 +263,12 @@ Some helper worksheets for my projects.
 [MHD/MHD - Eigenmode Analysis](https://thenumbernine.github.io/math/MHD/MHD%20%2d%20Eigenmode%20Analysis.html)
 
 [MHD/MHD A-wave](https://thenumbernine.github.io/math/MHD/MHD%20A%2dwave.html)
+
+[MHD/MHD Eigenvector Inverse again](https://thenumbernine.github.io/math/MHD/MHD%20Eigenvector%20Inverse%20again.wxm)
+
+[MHD/MHD Equations - Athena and Ravi](https://thenumbernine.github.io/math/MHD/MHD%20Equations%20%2d%20Athena%20and%20Ravi.wxmx)
+
+[MHD/MHD Equations - Jameson - Symmetrized](https://thenumbernine.github.io/math/MHD/MHD%20Equations%20%2d%20Jameson%20%2d%20Symmetrized.wxm)
 
 [MHD/sources](https://thenumbernine.github.io/math/MHD/sources.html)
 
@@ -254,13 +318,19 @@ Some helper worksheets for my projects.
 
 [PDE Systems, Parallel Propagators, Finite Volume](https://thenumbernine.github.io/math/PDE%20Systems%2c%20Parallel%20Propagators%2c%20Finite%20Volume.html)
 
+[PeriodicTable](https://thenumbernine.github.io/math/PeriodicTable.js)
+
 [Platonic Solids](https://thenumbernine.github.io/math/Platonic%20Solids.html)
 
 [Quantum Computing](https://thenumbernine.github.io/math/Quantum%20Computing.html)
 
 [Quaternions](https://thenumbernine.github.io/math/Quaternions.html)
 
+[README](https://thenumbernine.github.io/math/README.md)
+
 [Riemann From Stress-Energy](https://thenumbernine.github.io/math/Riemann%20From%20Stress%2dEnergy.html)
+
+[Schwarzschild spherical to cartesian](https://thenumbernine.github.io/math/Schwarzschild%20spherical%20to%20cartesian.wxmx)
 
 [Schwarzschild with mass varying with time](https://thenumbernine.github.io/math/Schwarzschild%20with%20mass%20varying%20with%20time.html)
 
@@ -271,6 +341,8 @@ Some helper worksheets for my projects.
 [Tetrad General Relativity](https://thenumbernine.github.io/math/Tetrad%20General%20Relativity.html)
 
 [Tetration Derivative](https://thenumbernine.github.io/math/Tetration%20Derivative.html)
+
+[Thoughts on EM metrics](https://thenumbernine.github.io/math/Thoughts%20on%20EM%20metrics.wxmx)
 
 [Two-Fluid Plasma and GEM/0 - following Tajmar and De Matos paper](https://thenumbernine.github.io/math/Two%2dFluid%20Plasma%20and%20GEM/0%20%2d%20following%20Tajmar%20and%20De%20Matos%20paper.html)
 
@@ -292,15 +364,55 @@ Some helper worksheets for my projects.
 
 [Two-Fluid Plasma and GEM/8 - two-fluid plasma model](https://thenumbernine.github.io/math/Two%2dFluid%20Plasma%20and%20GEM/8%20%2d%20two%2dfluid%20plasma%20model.html)
 
+[Z4 1D v2 with no shift](https://thenumbernine.github.io/math/Z4%201D%20v2%20with%20no%20shift.wxmx)
+
+[Z4 1D with no shift](https://thenumbernine.github.io/math/Z4%201D%20with%20no%20shift.wxmx)
+
+[a note on the definition of tensors 1](https://thenumbernine.github.io/math/a%20note%20on%20the%20definition%20of%20tensors%201.jpg)
+
 [a note on the definition of tensors](https://thenumbernine.github.io/math/a%20note%20on%20the%20definition%20of%20tensors.html)
+
+[balloons-gasses-log](https://thenumbernine.github.io/math/balloons%2dgasses%2dlog.png)
+
+[balloons-gasses](https://thenumbernine.github.io/math/balloons%2dgasses.png)
+
+[balloons-graph](https://thenumbernine.github.io/math/balloons%2dgraph.lua)
 
 [balloons](https://thenumbernine.github.io/math/balloons.html)
 
 [conformal Levi-Civita geodesic](https://thenumbernine.github.io/math/conformal%20Levi%2dCivita%20geodesic.html)
 
+[darkmode](https://thenumbernine.github.io/math/darkmode.css)
+
+[darkmode](https://thenumbernine.github.io/math/darkmode.js)
+
+[ffnn_logical_and](https://thenumbernine.github.io/math/ffnn_logical_and.svg)
+
+[ffnn_logical_not](https://thenumbernine.github.io/math/ffnn_logical_not.svg)
+
+[ffnn_logical_not_01](https://thenumbernine.github.io/math/ffnn_logical_not_01.svg)
+
+[ffnn_logical_or](https://thenumbernine.github.io/math/ffnn_logical_or.svg)
+
+[ffnn_tanh](https://thenumbernine.github.io/math/ffnn_tanh.svg)
+
+[ffnn_tanhderiv](https://thenumbernine.github.io/math/ffnn_tanhderiv.svg)
+
+[flat earth curvature - earth horizon declination angle at 1.5m](https://thenumbernine.github.io/math/flat%20earth%20curvature%20%2d%20earth%20horizon%20declination%20angle%20at%201.5m.png)
+
+[flat earth curvature - earth horizon declination angle at 10000m](https://thenumbernine.github.io/math/flat%20earth%20curvature%20%2d%20earth%20horizon%20declination%20angle%20at%2010000m.png)
+
+[flat earth curvature - earth horizon declination angle at 3x earth radius](https://thenumbernine.github.io/math/flat%20earth%20curvature%20%2d%20earth%20horizon%20declination%20angle%20at%203x%20earth%20radius.png)
+
+[flat earth curvature - earth horizon declination angle at one third of earth radius](https://thenumbernine.github.io/math/flat%20earth%20curvature%20%2d%20earth%20horizon%20declination%20angle%20at%20one%20third%20of%20earth%20radius.png)
+
 [flat earth curvature](https://thenumbernine.github.io/math/flat%20earth%20curvature.html)
 
 [gauge covariant derivative](https://thenumbernine.github.io/math/gauge%20covariant%20derivative.html)
+
+[gnuplot/gnuplot](https://thenumbernine.github.io/math/gnuplot/gnuplot.js)
+
+[gnuplot/gnuplot_api](https://thenumbernine.github.io/math/gnuplot/gnuplot_api.js)
 
 [gnuplot/index](https://thenumbernine.github.io/math/gnuplot/index.html)
 
@@ -312,6 +424,8 @@ Some helper worksheets for my projects.
 
 [magnetic field from a boosted charge](https://thenumbernine.github.io/math/magnetic%20field%20from%20a%20boosted%20charge.html)
 
+[make_README](https://thenumbernine.github.io/math/make_README.rua)
+
 [projection in any metric](https://thenumbernine.github.io/math/projection%20in%20any%20metric.html)
 
 [removing beta from adm metric](https://thenumbernine.github.io/math/removing%20beta%20from%20adm%20metric.html)
@@ -320,15 +434,27 @@ Some helper worksheets for my projects.
 
 [stress-energy tensor](https://thenumbernine.github.io/math/stress%2denergy%20tensor.html)
 
+[sundial-ellipse-perspective-undo](https://thenumbernine.github.io/math/sundial%2dellipse%2dperspective%2dundo.png)
+
+[sundial-ellipse](https://thenumbernine.github.io/math/sundial%2dellipse.png)
+
+[template](https://thenumbernine.github.io/math/template.js)
+
 [tensor product permutations](https://thenumbernine.github.io/math/tensor%20product%20permutations.html)
 
 [torsion gravity](https://thenumbernine.github.io/math/torsion%20gravity.html)
 
+[tryToFindMathJax](https://thenumbernine.github.io/math/tryToFindMathJax.js)
+
 [twisted spacetime](https://thenumbernine.github.io/math/twisted%20spacetime.html)
+
+[wave equation hyperbolic form flux jacobian eigensystems](https://thenumbernine.github.io/math/wave%20equation%20hyperbolic%20form%20flux%20jacobian%20eigensystems.wxmx)
 
 [wave equation hyperbolic form](https://thenumbernine.github.io/math/wave%20equation%20hyperbolic%20form.html)
 
 [wave equation in curved spacetime - finite difference](https://thenumbernine.github.io/math/wave%20equation%20in%20curved%20spacetime%20%2d%20finite%20difference.html)
+
+[wave equation with metric of space and time - based on bssnok-scalar](https://thenumbernine.github.io/math/wave%20equation%20with%20metric%20of%20space%20and%20time%20%2d%20based%20on%20bssnok%2dscalar.wxmx)
 
 [wave_metric_1](https://thenumbernine.github.io/math/wave_metric_1.html)
 
