@@ -26,18 +26,21 @@ table.wrapfor(path:rdir(|f, isdir|do
 end))
 :mapi(|f| f[1].path)
 :sort()
-:mapi(|f|do
-	local name, ext = path(f):getext()
+:filter(|f|do
 	if not gitfileset[f] then
 		io.stderr:write('not in git: ', f, '\n')
 	else
-		s:insert(
-			'['..name..']('..baseurl
-			..url.escape(f)
-				:gsub('%%2f','/')
-				:gsub('%%2e','.')
-			..')\n')
+		return true
 	end
+end)
+:mapi(|f|do
+	local name, ext = path(f):getext()
+	s:insert(
+		'['..name..']('..baseurl
+		..url.escape(f)
+			:gsub('%%2f','/')
+			:gsub('%%2e','.')
+		..')\n')
 end)
 
 path'README.md':write(s:concat'\n')
