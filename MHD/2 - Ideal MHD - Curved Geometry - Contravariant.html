@@ -1,0 +1,792 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<title>MHD Worksheet</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+		<link rel='stylesheet' href='../darkmode.css'></link>
+		<script type='text/javascript' src='../darkmode.js'></script>
+	</head>
+    <body>
+
+<h2>Conservative Form of MHD:</h2>
+
+Geometry variables:<br>
+$n^i =$ flux surface normal, units of [1].<br>
+$g_{ij} = $ metric tensor, in units of $[1]$.<br>
+<br>
+
+Hydrodynamics Variables:<br>
+$\rho =$ density, in units of $\frac{kg}{m^3}$<br>
+$v^i =$ velocity, in units of $\frac{m}{s}$<br>
+$v^2 = g_{ij} v^i v^j$, in units of $\frac{m^2}{s^2}$<br>
+$p^i = \rho v^i = $ momentum density, in units of $\frac{kg}{m^2 \cdot s}$<br>
+$\gamma =$ heat capacity ratio, in units of $[1]$<br>
+$\tilde\gamma = \gamma - 1$<br>
+$P = \tilde\gamma \rho e_{int} = \tilde\gamma E_{int} = \tilde\gamma (E_{hydro} - E_{kin}) = $ pressure, in units of $\frac{kg}{m \cdot s^2}$<br>
+$e_{kin} = \frac{1}{2} v^2 = $ specific kinetic energy, in units of $\frac{m^2}{s^2}$<br>
+$E_{kin} = \rho e_{kin} = \frac{1}{2} \rho v^2$ densitized kinetic energy, in units of $\frac{kg}{m \cdot s^2}$<br>
+$e_{int} = \frac{P}{\tilde\gamma \rho} =$ specific internal energy, in units of $\frac{m^2}{s^2}$<br>
+$E_{int} = \rho e_{int} = \frac{P}{\tilde\gamma} = $ densitized internal energy, in units of $\frac{kg}{m \cdot s^2}$<br>
+$e_{hydro} = e_{kin} + e_{int} =$ specific hydro energy, in units of $\frac{kg}{m \cdot s^2}$<br>
+$E_{hydro} = E_{kin} + E_{int} = \frac{1}{2} \rho v^2 + \frac{1}{\tilde\gamma} P =$ hydro energy, in units of $\frac{kg}{m \cdot s^2}$<br>
+$H_{hydro} = E_{hydro} + P = \frac{1}{2} \rho v^2 + \frac{\gamma}{\tilde\gamma} P$
+$ = E_{hydro} + \tilde\gamma E_{hydro} + \tilde\gamma E_{kin} = \gamma E_{hydro} + \tilde\gamma E_{kin}$
+= total hydro enthalpy, in units of $\frac{kg}{m \cdot s^2}$<br>
+<br>
+
+MHD variables:<br>
+$\mu_0 = $ permeability of free space, in $\frac{kg \cdot m}{C^2}$<br>
+$B^i =$ magnetic field, in units of $\frac{kg}{C \cdot s}$<br>
+$B^2 = g_{ij} B^i B^j$, in units of $\frac{kg^2}{C^2 \cdot s^2}$<br>
+$P_{mag} = \frac{1}{2 \mu_0} B^2 =$ is pressure due to magnetic field, is uncannily similar to energy due to magnetic field... in units of $\frac{kg}{m \cdot s^2}$<br>
+$P_{total} = P + P_{mag} =$ total MHD pressure from fluid and magnetic field, in units of $\frac{kg}{m \cdot s^2}$<br>
+$E_{mag} = \frac{1}{2 \mu_0} B^2$ = magnetic field energy, in units of $\frac{kg}{m \cdot s^2}$<br>
+$E_{total} = E_{hydro} + E_{mag} = \frac{1}{2} \rho v^2 + \frac{1}{\tilde\gamma} P + \frac{1}{2 \mu_0} B^2 = $, total MHD energy, in units of $\frac{kg}{m \cdot s^2}$<br>
+$H_{total} = E_{total} + P_{total} = \frac{1}{2} \rho v^2 + \frac{\gamma}{\tilde\gamma} P + \frac{1}{\mu_0} B^2 = $ total MHD enthalpy in units of $\frac{kg}{m \cdot s^2}$<br>
+<br>
+
+Let capital indexes $IJK...$ span all primitive/conserved quantity variables $\{ \rho, v^i, B^i, E_{total} \}$<br>
+<br>
+
+$\partial_t \rho + \nabla_j (\rho v^j) = 0$<br>
+$\partial_t (\rho v^i) + \nabla_j (\rho v^i v^j + g^{ij} P_{total} - \frac{1}{\mu_0} B^i B^j) = 0$<br>
+$\partial_t B_i + \nabla_j (B^i v^j - B^j v^i) = 0$<br>
+$\partial_t E_{total} + \nabla_j (H_{total} v^j - \frac{1}{\mu_0} B^k v^k B^j) = 0$<br>
+<br>
+
+Conservation Law Form:<br>
+$\int_\Omega (\partial_t U^I + \nabla_n F^I) dV = 0$<br>
+<br>
+
+Primitive variables:<br>
+$W^I = \left[\begin{matrix}
+	\rho \\ v^i \\ B^i \\ P
+\end{matrix}\right]$
+in units of $\left[\begin{matrix}
+	\frac{kg}{m^3} \\
+	\frac{m}{s} \\
+	\frac{kg}{C \cdot s} \\
+	\frac{kg}{m \cdot s^2}
+\end{matrix}\right]$<br>
+<br>
+
+Conservative variables:<br>
+$U^I = \left[\begin{matrix}
+	\rho \\ \rho v^i \\ B^i \\ E_{total}
+\end{matrix}\right]$
+in units of $\left[\begin{matrix}
+	\frac{kg}{m^3} \\
+	\frac{kg}{m^2 \cdot s} \\
+	\frac{kg}{C \cdot s} \\
+	\frac{kg}{m \cdot s^2}
+\end{matrix}\right]$<br>
+<br>
+
+$\partial_\rho E_{total}$<br>
+$= \partial_\rho E_{kin} + \partial_\rho E_{int} + \partial_\rho E_{mag}$<br>
+$= \partial_\rho (\frac{1}{2} \rho v^2) 
+	+ \partial_\rho (\frac{1}{\tilde\gamma} P)
+	+ \partial_\rho (\frac{1}{2 \mu_0} B^2)$<br>
+$= \frac{1}{2} v^2$<br>
+<br>
+
+$\partial_{v^k} E_{total}$<br>
+$= \partial_{v^k} E_{kin} + \partial_{v^k} E_{int} + \partial_{v^k} E_{mag}$<br>
+$= \partial_{v^k} (\frac{1}{2} \rho g_{ij} v^i v^j)
+	+ \partial_{v^k} (\frac{1}{\tilde\gamma} P) 
+	+ \partial_{v^k} (\frac{1}{2 \mu_0} B^2)$<br>
+$= 
+	  \frac{1}{2} \partial_{v^k} \rho g_{ij} v^i v^j
+	+ \frac{1}{2} \rho \partial_{v^k} g_{ij} v^i v^j
+	+ \frac{1}{2} \rho g_{ij} \partial_{v^k} v^i v^j
+	+ \frac{1}{2} \rho g_{ij} v^i \partial_{v^k} v^j
+$<br>
+$= 
+	  \frac{1}{2} \rho g_{ij} \delta^i_k v^j
+	+ \frac{1}{2} \rho g_{ij} v^i \delta^j_k
+$<br>
+$= 
+	  \frac{1}{2} \rho v_k
+	+ \frac{1}{2} \rho v_k
+$<br>
+$= \rho v_k$<br>
+<br>
+
+$\partial_{B^k} E_{total}$<br>
+$= \partial_{B^k} E_{kin} + \partial_{B^k} E_{int} + \partial_{B^k} E_{mag}$<br>
+$= \partial_{B^k} (\frac{1}{2} \rho v^2) 
+	+ \partial_{B^k} (\frac{1}{\tilde\gamma} P) 
+	+ \partial_{B^k} (\frac{1}{2 \mu_0} B^2)$<br>
+$= \frac{1}{\mu_0} B_k$<br>
+<br>
+
+$\partial_P E_{total}$<br>
+$= \partial_P E_{kin} + \partial_P E_{int} + \partial_P E_{mag}$<br>
+$= \partial_P (\frac{1}{2} \rho v^2) 
+	+ \partial_P (\frac{1}{\tilde\gamma} P) 
+	+ \partial_P (\frac{1}{2 \mu_0} B^2)$<br>
+$= \frac{1}{\tilde\gamma} $<br>
+<br>
+
+Partial of conservative with respect to primitive:<br>
+$\frac{\partial U^I}{\partial W^J} = \downarrow I \overset{\rightarrow J}{ \left[\begin{matrix}
+	1 &amp; 0 &amp; 0 &amp; 0 \\ 
+	v^i &amp; \rho \delta^i_j &amp; 0 &amp; 0 \\
+	0 &amp; 0 &amp; \delta^i_j &amp; 0 \\
+	\frac{1}{2} v^2 &amp; \rho v_j &amp; \frac{1}{\mu_0} B_j &amp; \frac{1}{\tilde{\gamma}}
+\end{matrix}\right] }$<br>
+<br>
+
+Partial of primitive with respect to conservative:<br>
+$\frac{\partial W^I}{\partial U^J} = \downarrow I \overset{\rightarrow J}{ \left[\begin{matrix}
+	1 &amp; 0 &amp; 0 &amp; 0 \\ 
+	-\frac{1}{\rho} v^i &amp; \frac{1}{\rho} \delta^i_j &amp; 0 &amp; 0 \\
+	0 &amp; 0 &amp; \delta^i_j &amp; 0 \\
+	\frac{1}{2} \tilde{\gamma} v^2 &amp; -\tilde{\gamma} v_j &amp; -\tilde{\gamma} \frac{1}{\mu_0} B_j &amp; \tilde{\gamma}
+\end{matrix}\right] }$<br>
+<br>
+
+Flux:<br>
+$F^I(n) = \left[\begin{matrix}
+	\rho v^l n_l \\
+	\rho v^i v^l n_l + n^i P_{total} - \frac{1}{\mu_0} B^i B^l n_l \\
+	B^i v^l n_l - v^i B^l n_l \\
+	H_{total} v^l n_l - \frac{1}{\mu_0} B^k v_k B^l n_l
+\end{matrix}\right]$
+$= \left[\begin{matrix}
+	\rho v^l n_l \\
+	\rho v^i v^l n_l + n^i (P + \frac{1}{2 \mu_0} B^2) - \frac{1}{\mu_0} B^i B^l n_l \\
+	B^i v^l n_l - v^i B^l n_l \\
+	(\frac{1}{2} \rho v^2 + \frac{\gamma}{\tilde\gamma} P) v^l n_l + \frac{1}{\mu_0} B^2 v^l n_l - \frac{1}{\mu_0} B^k v_k B^l n_l
+\end{matrix}\right]$
+$= \left[\begin{matrix}
+	p^l n_l \\
+	\frac{1}{\rho} (p^i p^l n_l
+		- \tilde{\gamma} p^2 n^i
+	)
+	+ \frac{1}{\mu_0} (
+		\frac{1}{2} B^2 (2 - \gamma) n^i
+		- B^i B^l n_l 
+	) 
+	+ \tilde{\gamma} E_{total} n^i
+	\\
+	B^i v^l n_l - v^i B^l n_l
+	\\
+	- \frac{1}{2} \tilde\gamma \frac{1}{\rho^2} p^2 p^l n_l
+	+ \frac{1}{\mu_0 \rho} (
+		(1 - \frac{1}{2} \gamma) B^2 p^l
+		- B^k p_k B^l
+	) n_l
+	+ \gamma \frac{1}{\rho} E_{total} p^l n_l
+\end{matrix}\right]$
+in units of
+$\left[\begin{matrix}
+	\frac{kg}{m^2 \cdot s} \\
+	\frac{kg}{m \cdot s^2} \\
+	\frac{kg}{C \cdot s^2} \\
+	\frac{kg}{s^3}
+\end{matrix}\right]$<br>
+<br>
+
+Flux derivative with respect to primitive variables:<br>
+$\frac{\partial F^I}{\partial W^J} = \downarrow I \overset{\rightarrow K}{ \left[\begin{matrix}
+	v^l n_l &amp; 
+		\rho n_j &amp;
+		0 &amp;
+		0 \\
+	v^i v^l n_l &amp;
+		\rho (v^l n_l \delta^i_j + v_i n_j) &amp;
+		\frac{1}{\mu_0} (B_j n^i + B^i n_j - \delta^i_j B^l n_l) &amp;
+		n^i \\
+	0 &amp;
+		B^i n_j - \delta^i_j B^l n_l &amp;
+		\delta^i_j v^l n_l - v^i n_j &amp;
+		0 \\
+	\frac{1}{2} v^2 v^l n_l &amp;
+		n_j H_{total} + n_l (\rho v_j v^l - \frac{1}{\mu_0} B_j B^l ) &amp;
+		\frac{1}{\mu_0} (2 B_j v^l n_l - v_j B^l n_l - B^k v_k n_j) &amp;
+		\frac{\gamma}{\tilde{\gamma}} v^l n_l
+\end{matrix}\right] }$<br>
+<br>
+
+<hr>
+TODO here on down, I need to rewrite flux in terms of a normal vector.
+Follow <a href="https://thenumbernine.github.io/math/CFD/Euler%20Fluid%20Equations%20%2d%20Curved%20Geometry%20%2d%20Contravariant.html">CFD/Euler Fluid Equations - Curved Geometry - Contravariant.html</a>.<br>
+<hr>
+<br>
+
+Derivative of flux vector with respect to conservative variables:<br>
+$\frac{\partial F^I}{\partial U^J}
+= \frac{\partial F^I}{\partial W^K} \frac{\partial W^K}{\partial U^J}$<br>
+$= \downarrow I \overset{\rightarrow L}{ \left[\begin{matrix}
+	v_j &amp; 
+		\rho g^{jl} &amp;
+		0 &amp;
+		0 \\
+	v_i v_j &amp;
+		\rho (g^{il} v_j + v_i g^{jl}) &amp;
+		\frac{1}{\mu_0} (g^{ij} B_l - g^{il} B_j - g^{jl} B_i) &amp;
+		g^{ij} \\
+	0 &amp;
+		B_i g^{jl} - B_j g^{il} &amp;
+		g^{il} v_j - g^{jl} v_i &amp;
+		0 \\
+	\frac{1}{2} v^2 v_j &amp;
+		\rho v_j v_l + (E_{hydro} + \frac{1}{\mu_0} B^2 + P) g^{jl} - \frac{1}{\mu_0} B_j B_l &amp;
+		\frac{1}{\mu_0} (2 B_l v_j - v_l B_j - g^{jl} v_m B_m) &amp;
+		\frac{\gamma}{\tilde{\gamma}} v_j
+\end{matrix}\right] } \cdot \downarrow L \overset{\rightarrow K}{ \left[\begin{matrix}
+	1 &amp; 0 &amp; 0 &amp; 0 \\ 
+	-\frac{1}{\rho} v_l &amp; \frac{1}{\rho} g^{kl} &amp; 0 &amp; 0 \\
+	0 &amp; 0 &amp; g^{kl} &amp; 0 \\
+	\frac{1}{2} \tilde{\gamma} v^2 &amp; -\tilde{\gamma} v_k &amp; -\tilde{\gamma} \frac{1}{\mu_0} B_k &amp; \tilde{\gamma}
+\end{matrix}\right] }$<br>
+$= \downarrow I \overset{\rightarrow K}{ \left[\begin{matrix}
+	0 &amp;
+		g^{jk} &amp;
+		0 &amp;
+		0 \\
+	-v_i v_j + \frac{1}{2} g^{ij} \tilde{\gamma} v^2 &amp;
+		g^{ik} v_j + g^{jk} v_i - g^{ij} \tilde{\gamma} v_k &amp;
+		\frac{1}{\mu_0}(-g^{ij} (\gamma-2) B_k - g^{ik} B_j - g^{jk} B_i) &amp;
+		g^{ij} \tilde{\gamma} \\
+	-\frac{1}{\rho} (B_i v_j - B_j v_i) &amp;
+		\frac{1}{\rho} (B_i g^{jk} - B_j g^{ik}) &amp;
+		g^{ik} v_j - g^{jk} v_i &amp;
+		0 \\
+	v_j (\frac{1}{2} \tilde{\gamma} v^2 - h_{total}) + \frac{1}{\mu_0\rho} B_j B_m v_m &amp;
+		-\tilde{\gamma} v_j v_k + (g^{jk} h_{total} - \frac{1}{\mu_0\rho} B_j B_k) &amp;
+		\frac{1}{\mu_0} (-(\gamma - 2) v_j B_k - v_k B_j - g^{jk} v_m B_m) &amp;
+		\gamma v_j
+\end{matrix}\right] }$<br>
+<br>
+
+for $h_{total} = (E_{total} + P_{total}) / \rho$<br>
+<br>
+
+<h3>Curved Space Partial of Conserved Quantities wrt Primitives</h3><br>
+$U^I = \left[\begin{matrix}
+	\rho \\
+	m^i \\
+	B^i \\
+	E_{total}
+\end{matrix}\right] = \left[\begin{matrix}
+	\rho \\
+	\rho v^i \\
+	B^i \\
+	\tilde\gamma^{-1} P + \frac{1}{2} \rho v^2 + \frac{1}{2} \frac{1}{\mu_0} B^2
+\end{matrix}\right]$<br>
+<br>
+
+$E_{total} = E_{int} + E_{kin} + E_{mag}$<br>
+$= \tilde\gamma^{-1} P + \frac{1}{2} \rho v^2 + \frac{1}{2} \frac{1}{\mu_0} B^2$<br>
+$P = \tilde\gamma (E_{total} - \frac{1}{2} \rho v^2 - \frac{1}{2} \frac{1}{\mu_0} B^2)$<br>
+$P_{total} = P + P_{mag} = \tilde\gamma (E_{total} - \frac{1}{2} \rho v^2 - \frac{1}{2} \frac{1}{\mu_0} B^2) + \frac{1}{2} \frac{1}{\mu_0} B^2$<br>
+$= \tilde\gamma E_{total} 
+	- \frac{1}{2} \tilde\gamma \rho v^2 
+	+ \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} B^2 
+$<br>
+$H_{total} = E_{total} + P_{total}$<br>
+$= \gamma E_{total} 
+	- \frac{1}{2} \tilde\gamma \rho v^2 
+	+ \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} B^2 
+$<br>
+
+<br>
+
+$F^{Ij}$<br>
+$= \left[\begin{matrix}
+	\rho v^j \\
+	\rho v^i v^j + g^{ij} P_{total} - \frac{1}{\mu_0} B^i B^j \\
+	B^i v^j - B^j v^i \\
+	H_{total} v^j - \frac{1}{\mu_0} B^k v_k B^j
+\end{matrix}\right]$<br>
+
+$= \left[\begin{matrix}
+	m^j \\
+	\frac{1}{\rho} m^i m^j + g^{ij} (\tilde\gamma (E_{total} - \frac{1}{2} \frac{1}{\rho} m^2 - \frac{1}{2} \frac{1}{\mu_0} B^2) + \frac{1}{2} \frac{1}{\mu_0} B^2) - \frac{1}{\mu_0} B^i B^j \\
+	\frac{1}{\rho} (B^i m^j - B^j m^i) \\
+	\frac{1}{\rho} (E_{total} + \tilde\gamma (E_{total} - \frac{1}{2} \frac{1}{\rho} m^2 - \frac{1}{2} \frac{1}{\mu_0} B^2) + \frac{1}{2} \frac{1}{\mu_0} B^2) m^j - \frac{1}{\mu_0} \frac{1}{\rho} B^k m_k B^j
+\end{matrix}\right]$<br>
+
+$= \left[\begin{matrix}
+	m^j 
+	\\
+	
+	+ \frac{1}{\rho} m^i m^j 
+	- \frac{1}{2} \tilde\gamma \frac{1}{\rho} m^2 g^{ij}
+	+ \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} B^2 g^{ij}
+	- \frac{1}{\mu_0} B^i B^j 
+	+ \tilde\gamma g^{ij} E_{total} 
+	\\
+	
+	+ \frac{1}{\rho} B^i m^j 
+	- \frac{1}{\rho} B^j m^i
+	\\
+	
+	- \frac{1}{2} \tilde\gamma \frac{1}{\rho^2} m^j m^2 
+	+ \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} \frac{1}{\rho} m^j B^2
+	- \frac{1}{\mu_0} \frac{1}{\rho} B^k m^l g_{kl} B^j
+	+ \frac{1}{\rho} \gamma m^j E_{total} 
+\end{matrix}\right]$<br>
+
+<br>
+
+Flux partial derivative:<br>
+<br>
+${F^{Ij}}_{,j}$<br>
+$= \left[\begin{matrix}
+	m^j 
+	\\
+	
+	+ \frac{1}{\rho} m^i m^j 
+	- \frac{1}{2} \tilde\gamma \frac{1}{\rho} m^2 g^{ij}
+	+ \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} B^2 g^{ij}
+	- \frac{1}{\mu_0} B^i B^j 
+	+ \tilde\gamma g^{ij} E_{total} 
+	\\
+	
+	+ \frac{1}{\rho} B^i m^j 
+	- \frac{1}{\rho} B^j m^i
+	\\
+	
+	- \frac{1}{2} \tilde\gamma \frac{1}{\rho^2} m^j m^2 
+	+ \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} \frac{1}{\rho} m^j B^2
+	- \frac{1}{\mu_0} \frac{1}{\rho} B^k m^l g_{kl} B^j
+	+ \frac{1}{\rho} \gamma m^j E_{total} 
+\end{matrix}\right]_{,j}$<br>
+
+$= \left[\begin{matrix}
+	{m^j}_{,j}
+	\\
+	
+	- \frac{1}{\rho^2} \rho_{,j} m^i m^j 
+	+ \frac{1}{\rho} {m^i}_{,j} m^j 
+	+ \frac{1}{\rho} m^i {m^j}_{,j}
+	
+	+ \frac{1}{2} \tilde\gamma \frac{1}{\rho^2} \rho_{,j} m^2 g^{ij}
+	- \tilde\gamma \frac{1}{\rho} {m^k}_{,j} m_k g^{ij}
+	- \frac{1}{2} \tilde\gamma \frac{1}{\rho} m^k m^l g_{kl,j} g^{ij}
+	- \frac{1}{2} \tilde\gamma \frac{1}{\rho} m^2 {g^{ij}}_{,j}
+	
+	+ (2 - \gamma) \frac{1}{\mu_0} {B^k}_{,j} B_k g^{ij}
+	+ \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} B^k B^l g_{kl,j} g^{ij}
+	+ \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} B^2 {g^{ij}}_{,j}
+	
+	- \frac{1}{\mu_0} {B^i}_{,j} B^j 
+	- \frac{1}{\mu_0} B^i {B^j}_{,j}
+	
+	+ \tilde\gamma {g^{ij}}_{,j} E_{total} 
+	+ \tilde\gamma g^{ij} E_{total,j}
+	\\
+	
+	- \frac{1}{\rho^2} \rho_{,j} B^i m^j 
+	+ \frac{1}{\rho} {B^i}_{,j} m^j 
+	+ \frac{1}{\rho} B^i {m^j}_{,j}
+	
+	+ \frac{1}{\rho^2} \rho_{,j} B^j m^i
+	- \frac{1}{\rho} {B^j}_{,j} m^i
+	- \frac{1}{\rho} B^j {m^i}_{,j}
+	\\
+	
+	+ \tilde\gamma \frac{1}{\rho^3} \rho_{,j} m^j m^2 
+	- \frac{1}{2} \tilde\gamma \frac{1}{\rho^2} {m^j}_{,j} m^2 
+	- \tilde\gamma \frac{1}{\rho^2} m^j {m^k}_{,j} m_k
+	- \frac{1}{2} \tilde\gamma \frac{1}{\rho^2} m^j m^k m^l g_{kl,j}
+
+	- \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} \frac{1}{\rho^2} \rho_{,j} m^j B^2
+	+ \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} \frac{1}{\rho} {m^j}_{,j} B^2
+	+ (2 - \gamma) \frac{1}{\mu_0} \frac{1}{\rho} m^j {B^k}_{,j} B_k
+	+ \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} \frac{1}{\rho} m^j B^k B^l g_{kl,j}
+
+	+ \frac{1}{\mu_0} \frac{1}{\rho^2} \rho_{,j} B^k m^l g_{kl} B^j
+	- \frac{1}{\mu_0} \frac{1}{\rho} {B^k}_{,j} m^l g_{kl} B^j
+	- \frac{1}{\mu_0} \frac{1}{\rho} B^k {m^l}_{,j} g_{kl} B^j
+	- \frac{1}{\mu_0} \frac{1}{\rho} B^k m^l g_{kl,j} B^j
+	- \frac{1}{\mu_0} \frac{1}{\rho} B^k m^l g_{kl} {B^j}_{,j}
+	
+	
+	- \gamma \frac{1}{\rho^2} \rho_{,j} m^j E_{total} 
+	+ \gamma \frac{1}{\rho} {m^j}_{,j} E_{total} 
+	+ \gamma \frac{1}{\rho} m^j E_{total,j} 
+\end{matrix}\right]$<br>
+
+$= \left[\begin{matrix}
+	0 &amp;
+	\delta^j_k &amp;
+	0 &amp; 
+	0 \\
+
+	\frac{1}{\rho^2} (
+		- m^i m^j 
+		+ \frac{1}{2} \tilde\gamma m^2 g^{ij}
+	) &amp;
+
+	\frac{1}{\rho} (
+		m^j \delta^i_k
+		+ m^i \delta^j_k
+		- \tilde\gamma m_k g^{ij}
+	) &amp;
+
+	\frac{1}{\mu_0} (
+		(2 - \gamma) B_k g^{ij}
+		- B^j \delta^i_k
+		- B^i \delta^j_k
+	) &amp;
+
+	\tilde\gamma g^{ij}
+	\\
+
+	\frac{1}{\rho^2} (
+		- B^i m^j 
+		+ B^j m^i
+	) &amp;
+
+	\frac{1}{\rho} (
+		B^i \delta^j_k
+		- B^j \delta^i_k
+	) &amp;
+
+	\frac{1}{\rho} (
+		m^j \delta^i_k
+		- m^i \delta^j_k
+	) &amp;
+
+	0
+	\\
+
+	\frac{1}{\rho^2} (
+		\tilde\gamma \frac{1}{\rho} m^j m^2 
+		- \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} m^j B^2
+		+ \frac{1}{\mu_0} B^k m_k B^j
+		- \gamma m^j E_{total} 
+	) &amp;
+
+	\frac{1}{\rho} (
+		- \frac{1}{2} \tilde\gamma \frac{1}{\rho} m^2 \delta^j_k
+		- \tilde\gamma \frac{1}{\rho} m^j m_k
+		+ \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} B^2 \delta^j_k
+		- \frac{1}{\mu_0} B_k B^j
+		+ \gamma E_{total} \delta^j_k
+	) &amp;
+
+	\frac{1}{\mu_0} \frac{1}{\rho} (
+		(2 - \gamma) m^j B_k
+		- m_k B^j
+		- B^l m_l \delta^j_k
+	) &amp;
+
+	\gamma \frac{1}{\rho} m^j
+\end{matrix}\right] \left[\begin{matrix}
+	\rho \\
+	m^k \\
+	B^k \\
+	E_{total}
+\end{matrix}\right]_{,j} + g_{kl,j}\left[\begin{matrix}
+	0 \\
+	
+	- \frac{1}{2} \tilde\gamma \frac{1}{\rho} m^k m^l g^{ij}
+	+ \frac{1}{2} \tilde\gamma \frac{1}{\rho} m^2 g^{ik} g^{lj}
+	+ \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} B^k B^l g^{ij}
+	- \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} B^2 g^{ik} g^{lj}
+	- \tilde\gamma E_{total} g^{ik} g^{lj}
+	\\
+
+	0 \\
+
+	- \frac{1}{2} \tilde\gamma \frac{1}{\rho^2} m^j m^k m^l
+	+ \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} \frac{1}{\rho} m^j B^k B^l
+	- \frac{1}{\mu_0} \frac{1}{\rho} B^k m^l B^j
+\end{matrix}\right]$<br>
+<br>
+
+Flux covariant derivative:<br>
+<br>
+
+${F^{Ij}}_{;j}$<br>
+$= \left[\begin{matrix}
+	0 &amp;
+	\delta^j_k &amp;
+	0 &amp; 
+	0 \\
+
+	\frac{1}{\rho^2} (
+		- m^i m^j 
+		+ \frac{1}{2} \tilde\gamma m^2 g^{ij}
+	) &amp;
+
+	\frac{1}{\rho} (
+		m^j \delta^i_k
+		+ m^i \delta^j_k
+		- \tilde\gamma m_k g^{ij}
+	) &amp;
+
+	\frac{1}{\mu_0} (
+		(2 - \gamma) B_k g^{ij}
+		- B^j \delta^i_k
+		- B^i \delta^j_k
+	) &amp;
+
+	\tilde\gamma g^{ij}
+	\\
+
+	\frac{1}{\rho^2} (
+		- B^i m^j 
+		+ B^j m^i
+	) &amp;
+
+	\frac{1}{\rho} (
+		B^i \delta^j_k
+		- B^j \delta^i_k
+	) &amp;
+
+	\frac{1}{\rho} (
+		m^j \delta^i_k
+		- m^i \delta^j_k
+	) &amp;
+
+	0
+	\\
+
+	\frac{1}{\rho^2} (
+		\tilde\gamma \frac{1}{\rho} m^j m^2 
+		- \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} m^j B^2
+		+ \frac{1}{\mu_0} B^k m_k B^j
+		- \gamma m^j E_{total} 
+	) &amp;
+
+	\frac{1}{\rho} (
+		- \frac{1}{2} \tilde\gamma \frac{1}{\rho} m^2 \delta^j_k
+		- \tilde\gamma \frac{1}{\rho} m^j m_k
+		+ \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} B^2 \delta^j_k
+		- \frac{1}{\mu_0} B_k B^j
+		+ \gamma E_{total} \delta^j_k
+	) &amp;
+
+	\frac{1}{\mu_0} \frac{1}{\rho} (
+		(2 - \gamma) m^j B_k
+		- m_k B^j
+		- B^m m_m \delta^j_k
+	) &amp;
+
+	\gamma \frac{1}{\rho} m^j
+\end{matrix}\right] \left[\begin{matrix}
+	\rho_{,j} \\
+	{m^k}_{,j} + {\Gamma^k}_{lj} m^l \\
+	{B^k}_{,j} + {\Gamma^k}_{lj} B^l \\
+	E_{total,j}
+\end{matrix}\right]$<br>
+<br>
+
+difference:<br>
+<br>
+
+${F^{Ij}}_{;j}$<br>
+$= {F^{Ij}}_{,j}
++ \left[\begin{matrix}
+	0 &amp;
+	\delta^j_k &amp;
+	0 &amp; 
+	0 \\
+
+	\frac{1}{\rho^2} (
+		- m^i m^j 
+		+ \frac{1}{2} \tilde\gamma m^2 g^{ij}
+	) &amp;
+
+	\frac{1}{\rho} (
+		m^j \delta^i_k
+		+ m^i \delta^j_k
+		- \tilde\gamma m_k g^{ij}
+	) &amp;
+
+	\frac{1}{\mu_0} (
+		(2 - \gamma) B_k g^{ij}
+		- B^j \delta^i_k
+		- B^i \delta^j_k
+	) &amp;
+
+	\tilde\gamma g^{ij}
+	\\
+
+	\frac{1}{\rho^2} (
+		- B^i m^j 
+		+ B^j m^i
+	) &amp;
+
+	\frac{1}{\rho} (
+		B^i \delta^j_k
+		- B^j \delta^i_k
+	) &amp;
+
+	\frac{1}{\rho} (
+		m^j \delta^i_k
+		- m^i \delta^j_k
+	) &amp;
+
+	0
+	\\
+
+	\frac{1}{\rho^2} (
+		\tilde\gamma \frac{1}{\rho} m^j m^2 
+		- \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} m^j B^2
+		+ \frac{1}{\mu_0} B^k m_k B^j
+		- \gamma m^j E_{total} 
+	) &amp;
+
+	\frac{1}{\rho} (
+		- \frac{1}{2} \tilde\gamma \frac{1}{\rho} m^2 \delta^j_k
+		- \tilde\gamma \frac{1}{\rho} m^j m_k
+		+ \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} B^2 \delta^j_k
+		- \frac{1}{\mu_0} B_k B^j
+		+ \gamma E_{total} \delta^j_k
+	) &amp;
+
+	\frac{1}{\mu_0} \frac{1}{\rho} (
+		(2 - \gamma) m^j B_k
+		- m_k B^j
+		- B^m m_m \delta^j_k
+	) &amp;
+
+	\gamma \frac{1}{\rho} m^j
+\end{matrix}\right] \left[\begin{matrix}
+	0 \\
+	{\Gamma^k}_{lj} m^l \\
+	{\Gamma^k}_{lj} B^l \\
+	0
+\end{matrix}\right]
+- g_{kl,j}\left[\begin{matrix}
+	0 \\
+	
+	- \frac{1}{2} \tilde\gamma \frac{1}{\rho} m^k m^l g^{ij}
+	+ \frac{1}{2} \tilde\gamma \frac{1}{\rho} m^2 g^{ik} g^{lj}
+	+ \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} B^k B^l g^{ij}
+	- \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} B^2 g^{ik} g^{lj}
+	- \tilde\gamma E_{total} g^{ik} g^{lj}
+	\\
+
+	0 \\
+
+	- \frac{1}{2} \tilde\gamma \frac{1}{\rho^2} m^j m^k m^l
+	+ \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} \frac{1}{\rho} m^j B^k B^l
+	- \frac{1}{\mu_0} \frac{1}{\rho} B^k m^l B^j
+\end{matrix}\right]
+$<br>
+$= {F^{Ij}}_{,j}
++ \left[\begin{matrix}
+	\delta^j_k {\Gamma^k}_{lj} m^l \\
+
+	\frac{1}{\rho} (
+		m^j \delta^i_k
+		+ m^i \delta^j_k
+		- \tilde\gamma m_k g^{ij}
+	) {\Gamma^k}_{lj} m^l
+	+ \frac{1}{\mu_0} (
+		(2 - \gamma) B_k g^{ij}
+		- B^j \delta^i_k
+		- B^i \delta^j_k
+	) {\Gamma^k}_{lj} B^l
+	
+	+ \frac{1}{2} \tilde\gamma \frac{1}{\rho} m^k m^l g^{ij} (\Gamma_{klj} + \Gamma_{lkj})
+	- \frac{1}{2} \tilde\gamma \frac{1}{\rho} m^2 g^{ik} g^{lj} (\Gamma_{klj} + \Gamma_{lkj})
+	- \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} B^k B^l g^{ij} (\Gamma_{klj} + \Gamma_{lkj})
+	+ \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} B^2 g^{ik} g^{lj} (\Gamma_{klj} + \Gamma_{lkj})
+	+ \tilde\gamma E_{total} g^{ik} g^{lj} (\Gamma_{klj} + \Gamma_{lkj})
+	\\
+
+	\frac{1}{\rho} (
+		B^i \delta^j_k
+		- B^j \delta^i_k
+	) {\Gamma^k}_{lj} m^l
+	+ \frac{1}{\rho} (
+		m^j \delta^i_k
+		- m^i \delta^j_k
+	) {\Gamma^k}_{lj} B^l
+	\\
+
+	\frac{1}{\rho} (
+		- \frac{1}{2} \tilde\gamma \frac{1}{\rho} m^2 \delta^j_k
+		- \tilde\gamma \frac{1}{\rho} m^j m_k
+		+ \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} B^2 \delta^j_k
+		- \frac{1}{\mu_0} B_k B^j
+		+ \gamma E_{total} \delta^j_k
+	) {\Gamma^k}_{lj} m^l
+	+ \frac{1}{\mu_0} \frac{1}{\rho} (
+		(2 - \gamma) m^j B_k
+		- m_k B^j
+		- B^m m_m \delta^j_k
+	) {\Gamma^k}_{lj} B^l
+
+	+ \frac{1}{2} \tilde\gamma \frac{1}{\rho^2} m^j m^k m^l (\Gamma_{klj} + \Gamma_{lkj})
+	- \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} \frac{1}{\rho} m^j B^k B^l (\Gamma_{klj} + \Gamma_{lkj})
+	+ \frac{1}{\mu_0} \frac{1}{\rho} B^k m^l B^j (\Gamma_{klj} + \Gamma_{lkj})
+\end{matrix}\right]
+$<br>
+
+$= {F^{Ij}}_{,j}
++ {\Gamma^k}_{jk} F^{Ij}
++ \left[\begin{matrix}
+	0 \\
+
+	\frac{1}{\rho} (
+		{\Gamma^i}_{jk} m^j m^k
+		- \tilde\gamma {\Gamma_{jk}}^i m^j m^k
+	)
+	+ \frac{1}{\mu_0} (
+		(2 - \gamma) {\Gamma_{jk}}^i B^j B^k
+		- {\Gamma^i}_{jk} B^j B^k
+	)
+	
+	+ \frac{1}{2} \tilde\gamma \frac{1}{\rho} {\Gamma_{jk}}^i m^j m^k
+	- \frac{1}{2} \tilde\gamma \frac{1}{\rho} m^2 g^{jk} {\Gamma^i}_{jk}
+	- \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} {\Gamma_{jk}}^i B^j B^k
+	+ \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} B^2 g^{jk} {\Gamma^i}_{jk}
+	+ \tilde\gamma E_{total} {\Gamma^i}_{jk} g^{jk}
+	
+	+ \frac{1}{2} \tilde\gamma \frac{1}{\rho} m^j m^k {\Gamma_{jk}}^i
+	- \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} B^j B^k {\Gamma_{jk}}^i
+	\\
+
+	0 \\
+	
+	\frac{1}{\rho} (
+		- \tilde\gamma \frac{1}{\rho} m^j m_k {\Gamma^k}_{lj} m^l
+		- \frac{1}{\mu_0} B_k B^j {\Gamma^k}_{lj} m^l
+	)
+	+ \frac{1}{\mu_0} \frac{1}{\rho} (
+		(2 - \gamma) m^j B_k {\Gamma^k}_{lj} B^l
+		- m_k B^j {\Gamma^k}_{lj} B^l
+	)
+
+	+ \frac{1}{2} \tilde\gamma \frac{1}{\rho^2} m^j m^k m^l \Gamma_{klj}
+	- \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} \frac{1}{\rho} m^j B^k B^l \Gamma_{klj}
+	+ \frac{1}{\mu_0} \frac{1}{\rho} B^k m^l B^j \Gamma_{klj}
+	
+	+ \frac{1}{2} \tilde\gamma \frac{1}{\rho^2} m^j m^k m^l \Gamma_{lkj}
+	- \frac{1}{2} (2 - \gamma) \frac{1}{\mu_0} \frac{1}{\rho} m^j B^k B^l \Gamma_{lkj}
+	+ \frac{1}{\mu_0} \frac{1}{\rho} B^k m^l B^j \Gamma_{lkj}
+\end{matrix}\right]$<br>
+
+$= \frac{1}{\sqrt{g}} ( \sqrt{g} F^{Ij} )_{,j}
+
++ \left[\begin{matrix}
+	0 \\
+
+	{\Gamma^i}_{jk} (
+		\frac{1}{\rho} m^j m^k
+		+ P_{total} g^{jk}
+		- \frac{1}{\mu_0} B^j B^k
+	)	
+	\\
+
+	0 \\
+	
+	0	
+\end{matrix}\right]$<br>
+<br>
+
+
+
+	</body>
+</html>
