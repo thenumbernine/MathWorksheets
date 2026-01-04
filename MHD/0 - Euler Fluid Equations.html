@@ -1,0 +1,234 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<title>MHD Worksheet</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+		<link rel='stylesheet' href='../darkmode.css'></link>
+		<script type='text/javascript' src='../darkmode.js'></script>
+	</head>
+    <body>
+
+<h2>Hydrodynamics</h2>
+
+<h3>Mass</h3>
+
+Total mass in volume:<br>
+$m = \int_\Omega \rho dV$ = mass, in $[kg]$<br>
+$\rho$ = density, in $[\frac{kg}{m^3}]$<br>
+$\Omega$ = spatial domain, within $\textbf{R}^3$<br>
+<br>
+
+Rate-of-change of mass:<br>
+$\partial_t m = \int_\Omega \partial_t \rho dV$, in $[\frac{kg}{s}]$<br>
+<br>
+
+Rate-of-change only considering boundary:<br>
+$\partial_t m = \int_{\partial\Omega} \rho v^j dS_j$, in $[\frac{kg}{s}]$<br>
+$v^i$ = velocity, in $[\frac{m}{s}]$<br>
+<br>
+
+Apply Green's theorem to rate-of-change of boundary:<br>
+$\partial_t m = -\int_\Omega \nabla_j (\rho v^j) dV$ in $[\frac{kg}{s}]$<br>
+<br>
+
+Consider rate-of-change at any point:<br>
+Conservation of mass:<br>
+$\partial_t \rho + \nabla_j (\rho v^j) = 0$ in $[\frac{kg}{m^3 \cdot s}]$<br>
+<br>
+
+<h3>Momentum</h3>
+
+Conservation of momentum:<br>
+$\int_\Omega \Pi_C^i dV = \int_\Omega \rho v^i dV$ in $[\frac{kg \cdot m}{s}]$<br>
+$\partial_t \int_\Omega \Pi_C^i dV$ = change in momentum due to conservation, in $[\frac{kg \cdot m}{s^2}]$<br>
+<br>
+
+Rate-of-change of momentum<br>
+$\partial_t \int_\Omega \Pi_C^i dV = \int_\Omega \partial_t (\rho v^i) dV$, in $[\frac{kg \cdot m}{s^2}]$<br>
+<br>
+
+Rate-of-change of only considering boundary (neglecting forces like gravity, pressure, viscosity, etc)<br>
+$\partial_t \int_\Omega \Pi_C^i dV = \int_{\partial\Omega} \rho v^i v^j dS_j$, in $[\frac{kg \cdot m}{s^2}]$<br>
+<br>
+
+Apply Green's theorem:<br>
+$\partial_t \int_\Omega \Pi_C^i dV = -\int_\Omega \nabla_j (\rho v^i v^j) dV$, in $[\frac{kg \cdot m}{s^2}]$<br>
+<br>
+
+Consider at any point:<br>
+(TODO this should either be a different symbol, (as $\rho$ relates to $m$), or annotation of like $\Pi$ vs $\tilde\Pi$).<br>
+$\partial_t \Pi_C^i = -\nabla_j (\rho v^i v^j)$, in $[\frac{kg}{m^2 \cdot s^2}]$<br>
+<br>
+
+Hydro pressure from internal energy (ideal gas law):<br>
+$P = (\gamma - 1) \rho e_{int} = (\gamma - 1) E_{int}$, in $[\frac{kg}{m \cdot s^2}]$<br>
+$\gamma = $ heat capacity ratio, in $[1]$<br>
+$P$ = hydro pressure, in $[\frac{kg}{m \cdot s^2}]$<br>
+$e_{int}$ = specific internal energy per density, per volume, in $[\frac{m^2}{s^2}]$<br>
+$E_{int}$ = internal energy per volume, in $[\frac{kg}{m \cdot s^2}]$<br>
+<br>
+
+internal energy, per volume:<br>
+$E_{int} = \rho e_{int} = \frac{P}{\gamma - 1}$, in $[\frac{kg}{m \cdot s^2}]$<br>
+<br>
+
+Force due to pressure:<br>
+$\partial_t \int_\Omega \Pi_P^i dV = \int_{\partial\Omega} P dS_i$, in $[\frac{kg \cdot m}{s^2}]$<br>
+$\partial_t \int_\Omega \Pi_P^i dV = -\int_\Omega \nabla_i P dV$ via Green's theorem, in $[\frac{kg \cdot m}{s^2}]$<br>
+$\partial_t \Pi_P^i = -\nabla_i P$ at any point, in $[\frac{kg}{m^2 \cdot s^2}]$<br>
+<br>
+
+Total change in momemtum:<br>
+$\partial_t \Pi^i = \partial_t \Pi_C^i + \partial_t \Pi_P^i$, in $[\frac{kg}{m^2 \cdot s^2}]$<br>
+$\partial_t \Pi^i = -\nabla_j (\rho v^i v^j) - \nabla_i P$, in $[\frac{kg}{m^2 \cdot s^2}]$<br>
+$\partial_t \Pi^i + \nabla_j (\rho v^i v^j + g^{ij} P) = 0$, in $[\frac{kg}{m^2 \cdot s^2}]$<br>
+... where $g^{ij}$ is the inverse metric tensor associated with our manifold tangent-space basis.<br>
+<br>
+
+$\partial_t \Pi^i + \nabla_j (\rho v^i v^j + g^{ij} P) = 0$, in $[\frac{kg}{m^2 \cdot s^2}]$<br>
+<br>
+For $\Pi^i = $ hydro momentum $ = \rho v^i$ we find<br>
+$\partial_t (\rho v^i) + \nabla_j (\rho v^i v^j + g^{ij} P) = 0$, in $[\frac{kg}{m^2 \cdot s^2}]$<br>
+<br>
+
+<h3>Energy</h3>
+
+specific kinetic energy, per density, per volume:<br>
+$e_{kin} = \frac{1}{2} v^2$, in $[\frac{m^2}{s^2}]$<br>
+... where $v^2 = v^i v^j g_{ij}$.<br>
+<br>
+
+kinetic energy, per volume:<br>
+$E_{kin} = \rho e_{kin} = \frac{1}{2} \rho v^2$, in $[\frac{kg}{m \cdot s^2}]$<br>
+<br>
+
+Total hydro energy:<br>
+$\int_\Omega E_{hydro} dV = \int_\Omega (E_{int} + E_{kin}) dV$, in $[\frac{kg \cdot m^2}{s^2}]$<br>
+$\int_\Omega E_{hydro} dV = \int_\Omega (\frac{1}{2}\rho v^2 + \frac{P}{\gamma - 1}) dV$, in $[\frac{kg \cdot m^2}{s^2}]$<br>
+<br>
+
+change in total energy due to conservation of hydro energy:<br>
+$\partial_t \int_\Omega E^C_{total} dV = \int_\Omega \partial_t E_{hydro} dV$, in $[\frac{kg \cdot m^2}{s^3}]$<br>
+<br>
+
+consider velocity moving through boundaries:<br>
+$\partial_t \int_\Omega E^C_{total} dV = \int_{\partial\Omega} E_{hydro} v^i dS_i$, in $[\frac{kg \cdot m^2}{s^3}]$<br>
+<br>
+
+apply Green's theorem:<br>
+$\partial_t \int_\Omega E^C_{total} dV = -\int_\Omega \nabla_j (E_{hydro} v^j) dV$, in $[\frac{kg \cdot m^2}{s^3}]$<br>
+<br>
+
+for any point:<br>
+$\partial_t E^C_{total} = -\nabla_j (E_{hydro} v^j)$, in $[\frac{kg}{m \cdot s^3}]$<br>
+<br>
+
+Change in energy due to hydro pressure force:<br>
+$\partial_t \int_\Omega E^P_{total} dV = \int_{\partial\Omega} P v^j dS_j$, in $[\frac{kg \cdot m^2}{s^3}]$<br>
+$\partial_t \int_\Omega E^P_{total} dV = -\int_\Omega \nabla_j (P v^j) dV$ via Green's theorem, in $[\frac{kg \cdot m^2}{s^3}]$<br>
+$\partial_t E^P_{total} = -\nabla_j (P v^j)$ at any point, in $[\frac{kg}{m \cdot s^3}]$<br>
+<br>
+
+Total change in total energy:<br>
+$\partial_t E_{total} = \partial_t E^C_{total} + \partial_t E^P_{total}$, in $[\frac{kg}{m \cdot s^3}]$<br>
+$\partial_t E_{total} = -\nabla_j (E_{hydro} v^j) - \nabla_j (P v^j)$, in $[\frac{kg}{m \cdot s^3}]$<br>
+$\partial_t E_{total} + \nabla_j ((E_{hydro} + P) v^j) = 0$, in $[\frac{kg}{m \cdot s^3}]$<br>
+$\partial_t E_{total} + \nabla_j (H_{hydro} v^j) = 0$, in $[\frac{kg}{m \cdot s^3}]$<br>
+for $H_{hydro} = E_{hydro} + P$, in $[\frac{kg}{m \cdot s^2}]$<br>
+<br>
+
+<h3>Conservative form of Euler:</h3>
+
+$\partial_t \rho + \nabla_j (\rho v^j) = 0$, in $[\frac{kg}{m^3 \cdot s}]$<br>
+$\partial_t (\rho v^i) + \nabla_j (\rho v^i v^j + g^{ij} P) = 0$, in $[\frac{kg}{m^2 \cdot s^2}]$<br>
+$\partial_t E_{hydro} + \nabla_j (H_{hydro} v^j) = 0$, in $[\frac{kg}{m \cdot s^3}]$<br>
+<br>
+
+the hyperbolic conservation law equation:<br>
+$\partial_t U^I + \nabla_j F^{Ij} = 0$<br>
+<br>
+
+Euler fluid PDE conserved variables:<br>
+$U^I = \downarrow I \left[\begin{matrix}
+	\rho \\ \rho v^i \\ E_{hydro}
+\end{matrix}\right]$<br>
+<br>
+
+Euler fluid PDE flux vector:<br>
+$F^{Ij} = \downarrow I \left[\begin{matrix}
+	\rho v^j \\
+	\rho v^i v^j + g^{ij} P \\
+	H_{hydro} v^j
+\end{matrix}\right]$<br>
+<br>
+
+Euler fluid PDE primitive variables:<br>
+$W^K = \downarrow K \left[\begin{matrix}
+	\rho \\ v^k \\ P
+\end{matrix}\right]$<br>
+<br>
+
+$\frac{\partial E_{hydro}}{\partial \rho}$
+$= \frac{\partial}{\partial \rho} ( \frac{1}{2} \rho v^2 + \frac{P}{\gamma-1})$
+$= \frac{1}{2} v^2$, in $[\frac{m^2}{s^2}]$<br>
+
+$\frac{\partial E_{hydro}}{\partial v^k}$
+$= \frac{\partial}{\partial v^k} ( \frac{1}{2} \rho v^2 + \frac{P}{\gamma-1})$
+$= \rho v_k$, in $[\frac{kg}{m^2 \cdot s}]$<br>
+
+$\frac{\partial E_{hydro}}{\partial P}$
+$= \frac{\partial}{\partial P} ( \frac{1}{2} \rho v^2 + \frac{P}{\gamma-1})$
+$= \frac{1}{\gamma-1}$, in $[1]$<br>
+<br>
+
+Derivative of conservatives wrt primitives:<br>
+$\frac{\partial U^I}{\partial W^J} = \downarrow I \overset{\rightarrow J}{ \left[\begin{matrix}
+	1 & 0 & 0 \\
+	v^i & \rho \delta^i_j & 0 \\
+	\frac{1}{2} v^2 & \rho v_j & \frac{1}{\gamma-1} 
+\end{matrix}\right] }$<br>
+<br>
+
+Derivative of primitives wrt conservatives:<br>
+$\frac{\partial W^J}{\partial U^I} = \downarrow J \overset{\rightarrow I}{ \left[\begin{matrix}
+	1 & 0 & 0 \\
+	-\frac{1}{\rho} v^j & \frac{1}{\rho} \delta_i^j & 0 \\
+	\frac{1}{2} (\gamma-1) v^2 & -(\gamma-1) v_i & \gamma-1
+\end{matrix}\right] }$<br>
+<br>
+
+Derivative of flux with respect to primitive variables:<br>
+$\frac{\partial F^{Ij}}{\partial W^K} = \downarrow I \overset{\rightarrow K}{ \left[\begin{matrix}
+	v^j & \rho \delta^j_k & 0 \\
+	v^i v^j & \rho (\delta^i_k v^j + v^i \delta^j_k) & g^{ij} \\
+	\frac{1}{2} v^2 v^j & \rho v^j v_k + H_{hydro} \delta^j_k & \frac{\gamma}{\gamma-1} v^j
+\end{matrix}\right] }$<br>
+<br>
+
+Derivative of flux with respect to conservative variables:<br>
+$\frac{\partial F^{Ij}}{\partial U^K} = \frac{\partial F^{Ij}}{\partial W^L} \frac{\partial W^L}{\partial U^K}
+= \downarrow I \overset{\rightarrow L}{ \left[\begin{matrix}
+	v^j & \rho \delta^j_l & 0 \\
+	v^i v^j & \rho (\delta^i_l v^j + v^i \delta^j_l) & g^{ij} \\
+	\frac{1}{2} v^2 v^j & \rho v^j v_l + (E_{hydro} + P) \delta^j_l & \frac{\gamma}{\gamma-1} v^j
+\end{matrix}\right] } \cdot \downarrow L \overset{\rightarrow K}{ \left[\begin{matrix}
+	1 & 0 & 0 \\
+	-\frac{1}{\rho} v^l & \frac{1}{\rho} \delta^l_k & 0 \\
+	\frac{1}{2} (\gamma-1) v^2 & -(\gamma-1) v_k & \gamma-1
+\end{matrix}\right] }$<br>
+$= \downarrow I \overset{\rightarrow K}{ \left[\begin{matrix}
+	0 & \delta^j_k & 0 \\
+	-v^i v^j + \frac{1}{2} g^{ij} (\gamma-1) v^2 &
+		\delta^i_k v^j + \delta^j_k v^i - g^{ij} (\gamma-1) v_k &
+		g^{ij} (\gamma - 1) \\
+	\frac{1}{2} v^j v^2 (\gamma - 1) - v^j h_{hydro} &
+		-(\gamma-1) v^j v_k + \delta^j_k h_{hydro} &
+		\gamma v^j
+\end{matrix}\right] }$<br>
+<br>
+for $h_{hydro} = \frac{1}{\rho} H_{hydro}$, in $[\frac{m^2}{s^2}]$<br>
+<br>
+
+	</body>
+</html>
