@@ -256,7 +256,9 @@ Some helper worksheets for my projects.
 
 [MHD/1 - Ideal Microscopic Magnetohydrodynamics](https://thenumbernine.github.io/math/MHD/1%20%2d%20Ideal%20Microscopic%20Magnetohydrodynamics.html)
 
-[MHD/2 - Macroscopic Magnetohydrodynamics](https://thenumbernine.github.io/math/MHD/2%20%2d%20Macroscopic%20Magnetohydrodynamics.html)
+[MHD/1.5 - Macroscopic Magnetohydrodynamics](https://thenumbernine.github.io/math/MHD/1.5%20%2d%20Macroscopic%20Magnetohydrodynamics.html)
+
+[MHD/2 - Ideal MHD - Curved Geometry - Contravariant](https://thenumbernine.github.io/math/MHD/2%20%2d%20Ideal%20MHD%20%2d%20Curved%20Geometry%20%2d%20Contravariant.html)
 
 [MHD/2 - Similarity Transform](https://thenumbernine.github.io/math/MHD/2%20%2d%20Similarity%20Transform.html)
 
