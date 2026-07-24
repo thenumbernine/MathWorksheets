@@ -19,7 +19,7 @@ $\sigma_k = $ k'th layer activation function.<br>
 
 Network state, independent of any signal:<br>
 $w_{k, i, j}(t) = $ k'th layer linear relation between i'th output and j'th input, at iteration "t"
-	for $1 \le k \le l$, 
+	for $1 \le k \le l$,
 	$1 \le i \le m_l$,
 	$1 \le j \le n_l$.
 	<br>
@@ -80,13 +80,13 @@ and the state vector is our weights $w_{k,i,j}$.<br>
 Update weights to minimize error:<br>
 $\frac{\partial w_{k,i,j}}{\partial t} = -\frac{\partial U}{\partial w_{k,i,j}}$<br>
 Gradient of the final layer weights:<br>
-$\frac{\partial U}{\partial w_{l,i,j}} 
-	= \frac{\partial U}{\partial e_{l,a}} 
-		\frac{\partial e_{l,a}}{\partial y_{l,b}} 
-		\frac{\partial y_{l,b}}{\partial \xi_{l,c}} 
+$\frac{\partial U}{\partial w_{l,i,j}}
+	= \frac{\partial U}{\partial e_{l,a}}
+		\frac{\partial e_{l,a}}{\partial y_{l,b}}
+		\frac{\partial y_{l,b}}{\partial \xi_{l,c}}
 		\frac{\partial \xi_{l,c}}{\partial w_{l,i,j}}
 $<br>
-$\frac{\partial U}{\partial e_{l,a}} 
+$\frac{\partial U}{\partial e_{l,a}}
 	= \frac{\partial}{\partial e_{l,a}} \left( \frac{1}{2} \Sigma_b (e_{l,b})^2 \right)
 	= \Sigma_b \left( e_{l,b} \cdot \frac{\partial e_{l,b}}{\partial e_{l,a}} \right)
 	= \Sigma_b \left( e_{l,b} \cdot \delta_{ab} \right)
@@ -98,16 +98,16 @@ $\frac{\partial e_{l,a}}{\partial y_{l,b}}
 $<br>
 $\frac{\partial U}{\partial y_{l,b}} = -e_{l,b}$<br>
 Gradient calculations of variables that are valid for each layer:<br>
-$\frac{\partial y_{k,a}}{\partial \xi_{k,b}} 
+$\frac{\partial y_{k,a}}{\partial \xi_{k,b}}
 	= \frac{\partial}{\partial \xi_{k,b}} \left( \sigma_k ( \xi_{k,a} ) \right)
-	= \sigma_k' ( \xi_{k,a} ) \frac{\partial \xi_{k,a}}{\partial \xi_{k,b}} 
+	= \sigma_k' ( \xi_{k,a} ) \frac{\partial \xi_{k,a}}{\partial \xi_{k,b}}
 	= \sigma_k' ( \xi_{k,a} ) \cdot \delta_{ab}
 $<br>
 $\frac{\partial \xi_{k,b}}{\partial w_{k,i,j}}
 	= \frac{\partial}{\partial w_{k,i,j}} \left(w_{k, b, c} \cdot x_{k, c} \right)
-	= \frac{\partial}{\partial w_{k,i,j}} \left(w_{k, b, c}\right) \cdot x_{k, c} 
-	= \delta_{ib} \delta_{jc} x_{k, c} 
-	= \delta_{ib} x_{k, j} 
+	= \frac{\partial}{\partial w_{k,i,j}} \left(w_{k, b, c}\right) \cdot x_{k, c}
+	= \delta_{ib} \delta_{jc} x_{k, c}
+	= \delta_{ib} x_{k, j}
 $<br>
 $\frac{\partial y_{k,a}}{\partial x_{k,b}}
 	= \frac{\partial y_{k,a}}{\partial \xi_{k,c}}
@@ -121,7 +121,7 @@ $\frac{\partial y_{k,a}}{\partial x_{k,b}}
 $<br>
 $\frac{\partial U}{\partial x_{k,a}} = \frac{\partial U}{\partial y_{k,b}} \frac{\partial y_{k,b}}{\partial x_{k,a}} = \frac{\partial U}{\partial y_{k,b}} \sigma'_k(\xi_{k,b}) w_{k,b,a}$<br>
 Substitute our computed terms:<br>
-$\frac{\partial U}{\partial w_{l,i,j}} 
+$\frac{\partial U}{\partial w_{l,i,j}}
 	= e_{l,a}
 		\cdot -\delta_{ab}
 		\cdot \sigma_l' (\xi_{l,b} ) \delta_{bc}
@@ -130,16 +130,16 @@ $\frac{\partial U}{\partial w_{l,i,j}}
 $<br>
 $\frac{\partial w_{k,i,j}}{\partial t} = e_{l,i} \sigma_l' ( \xi_{l,i} ) x_{l, j}$<br>
 Gradient of previous layers weights:<br>
-$\frac{\partial U}{\partial w_{k,i,j}} 
-	= \frac{\partial U}{\partial y_{k,a}} 
-		\frac{\partial y_{k,a}}{\partial \xi_{k,b}} 
+$\frac{\partial U}{\partial w_{k,i,j}}
+	= \frac{\partial U}{\partial y_{k,a}}
+		\frac{\partial y_{k,a}}{\partial \xi_{k,b}}
 		\frac{\partial \xi_{k,b}}{\partial w_{k,i,j}}
 	= \frac{\partial U}{\partial y_{k,a}} \cdot \sigma'_k(\xi_a) \delta_{ab} \cdot \delta_{bi} x_{k,j}
 	= \frac{\partial U}{\partial x_{k+1,a}} \cdot \sigma'_k(\xi_a) \delta_{ab} \cdot \delta_{bi} x_{k,j}
 $<br>
 <br>
 
-A neural-network weight matrix is just a linear transform.  The output test is typically looking at whether the output is greater than some value.  
+A neural-network weight matrix is just a linear transform.  The output test is typically looking at whether the output is greater than some value.
 So assuming the activation is near-linear (which it tends to be for some domain),
 we are really looking at a collection of hyperplanes that are forming a convex hull in our output space around whatever we want to classify.<br>
 <br>
@@ -147,7 +147,7 @@ we are really looking at a collection of hyperplanes that are forming a convex h
 From there, we can use the simplest possible numerical integration, Euler integration, to define our state update equation:<br>
 <br>
 
-$w_{k,i,j}(t+\Delta t) = w_{k,i,j}(t) + \Delta t \cdot \frac{\partial w_{k,i,j}}{\partial t} 
+$w_{k,i,j}(t+\Delta t) = w_{k,i,j}(t) + \Delta t \cdot \frac{\partial w_{k,i,j}}{\partial t}
 	= w_{k,i,j}(t) - \Delta t \cdot \frac{\partial U}{\partial w_{k,i,j}}
 $<br>
 <br>
@@ -200,7 +200,7 @@ No bias is needed and no bias will be used.<br>
 Live variables:<br>
 $x = x_1 = x_{1, 1} = $ our network input, which will be +1 for <i>true</i> and -1 for <i>false</i>.
 Notice that if you were to plot our x vs y, we are trying to reproduce the logical-NOT function $y(x) = -x$.<br>
-This means we won't need any extra linear terms.  We don't need a bias term for our weight matrix. 
+This means we won't need any extra linear terms.  We don't need a bias term for our weight matrix.
 If I picked <i>false</i> to be 0 then our output function of the input would be $y(x) = 1 - x$, which requires a bias value, and I would need to simulate a bias weight.<br>
 $\xi_{1, 1} = w x = $ the linear transform of our inputs, aka "net-accumulated sum of the neuron".<br>
 $y = y_1 = y_{1,1} = \sigma_1 ( \xi_{1,1} ) = \xi_{1,1} = w x = $ the network output.<br>
@@ -227,7 +227,7 @@ $w(t + \Delta t) = w(t) - \Delta t \cdot (1 + w(t)) x(t)^2 = -\Delta t \cdot x(t
 
 Dynamics classification says, for some sequence $x_n$:<br>
 $|\frac{\partial x_{n+1}}{\partial x_n}| \gt 1$ is a source, i.e. the system will diverge from this fixed point.<br>
-$|\frac{\partial x_{n+1}}{\partial x_n}| = 1$ is indeterminant.  Or does this mean it will neither converge nor diverge? I forget...<br> 
+$|\frac{\partial x_{n+1}}{\partial x_n}| = 1$ is indeterminant.  Or does this mean it will neither converge nor diverge? I forget...<br>
 $|\frac{\partial x_{n+1}}{\partial x_n}| \lt 1$ is a sink, i.e. the system will converge to this fixed point.<br>
 $|\frac{\partial x_{n+1}}{\partial x_n}| = 0$ is a super-critical sink, i.e. the system is stationary at this point.<br>
 <br>
@@ -281,7 +281,7 @@ This is going to be in $(-1,1)$ for $|x \Delta t| \in (0,2)$<br>
 But notice that one of our inputs is $x=0$.  Notice for this input, our fixed-point classification is now $|\frac{\partial w(t+\Delta t)}{\partial w(t)}|= 1$, and our system can no longer guarantee convergence.<br>
 Let's assume we are going to skip the $x=0$ inputs and just train this network with $x=1$ and $d(x) = 0$.<br>
 Then we still have a fixed point at $w = \frac{1}{x} - 1 = 0$.  The convergence of this is based on $x \Delta t$, so as long as $x=1$ and we keep $\Delta t \in (0,2)$ then we will converge.<br>
-Our network converges to the equation $y = 0 \cdot x = 0$, which is an output of <i>false</i> for an input of <i>true</i>, so we did manage to classify one of our two inputs.  
+Our network converges to the equation $y = 0 \cdot x = 0$, which is an output of <i>false</i> for an input of <i>true</i>, so we did manage to classify one of our two inputs.
 However then network will never be able to classify its <i>false</i> inputs correctly.<br>
 <br>
 
@@ -302,7 +302,7 @@ In contrast, there exists no x such that $tanh(x) = 1$, except for $\underset{x 
 Then using a sigmoid activation with T/F set to $\{0,1\}$ vs $\{\frac{1}{10}, \frac{9}{10}\}$ ... and with bias weight (two weight system now) since the classification needs to now fit to $y(x) = 1 - x$ instead of $y(x) = x$<br>
 <br>
 
-Using sigmoid activation means $\sigma(0) = \frac{1}{2}$ and $\sigma'(0) = \frac{1}{4}$, 
+Using sigmoid activation means $\sigma(0) = \frac{1}{2}$ and $\sigma'(0) = \frac{1}{4}$,
 which means we cannot analyze the system using linear approximation ... unless we are analyzing $4 \sigma(x - \frac{1}{2}) \approx x$.<br>
 In contrast, using tanh activation means $\tanh(0) = 0$, $tanh'(0) = cosh^{-2}(0) = 1$, and $tanh(x) \approx x$.<br>
 <br>
@@ -335,7 +335,7 @@ $y = b + W X$ for $W \in \mathbb{R}^{1 \times 2}$, $X \in \mathbb{R}^2$<br>
 <br>
 
 Training variables:<br>
-We can do more exact with our description of our desired value as a function of our inputs, by multiplying our inputs, 
+We can do more exact with our description of our desired value as a function of our inputs, by multiplying our inputs,
 however neural networks themselves are planes are linear transformations and cannot directly reproduce multiplication.<br>
 $d(x_1, x_2) = 2 \left( \frac{1}{2}(x_1 + 1) \cdot \frac{1}{2} (x_2 + 1) \right) - 1 = \frac{1}{2} (x_1 x_2 + x_1 + x_2 - 1)$.<br>
 This is chosen such that $d(-1,-1) = d(-1,1) = d(1,-1) = -1 =$ <i>false</i>, and $d(1,1) =$ <i>true</i>.<br>
@@ -343,7 +343,7 @@ This is chosen such that $d(-1,-1) = d(-1,1) = d(1,-1) = -1 =$ <i>false</i>, and
 
 $e = d - y = \frac{1}{2} (x_1 x_2 + x_1 + x_2 - 1) - \left( w_1 x_1 + w_2 x_2 + w_3 \right)$<br>
 $e = \frac{1}{2} x_1 x_2 + \frac{1}{2} x_1 + \frac{1}{2} x_2 - \frac{1}{2} - w_1 x_1 - w_2 x_2 - w_3$<br>
-$U = \frac{1}{2} e^2 
+$U = \frac{1}{2} e^2
 	= \frac{1}{2} \left(
 		\frac{1}{2} x_1 x_2 + \frac{1}{2} x_1 + \frac{1}{2} x_2 - \frac{1}{2} - w_1 x_1 - w_2 x_2 - w_3
 	\right)^2$<br>
@@ -366,7 +366,7 @@ $x_1 = -1, x_2 = -1: -w_1 - w_2 + w_3 + 1 = 0$<br>
 $x_1 =  1, x_2 = -1:  w_1 - w_2 + w_3 + 1 = 0$<br>
 $x_1 = -1, x_2 =  1: -w_1 + w_2 + w_3 + 1 = 0$<br>
 $x_1 =  1, x_2 =  1:  w_1 + w_2 + w_3 - 1 = 0$<br>
-So for each possible set of inputs, our neural network state critical point will be a different plane.<br> 
+So for each possible set of inputs, our neural network state critical point will be a different plane.<br>
 <br>
 
 Dynamics:<br>
@@ -451,7 +451,7 @@ TODO show for n inputs, and only a single ouptut that is T and all $2^n-1$ other
 
 <h3>Logical XOR</h3>
 
-Unlike Logical-AND or Logical-OR, Logical-XOR cannot divide its space of <i>true vs </i>false.  
+Unlike Logical-AND or Logical-OR, Logical-XOR cannot divide its space of <i>true vs </i>false.
 Assuming our previous convention of <i>false</i> = -1 and <i>true</i> = 1,
 we now have to classify a problem $d(-1, -1) = d(1,1) = -1$ and $d(1,-1) = d(-1,1) = 1$.
 One simple mathematical solution to this is $d(x_1, x_2) = -x_1 x_2$, so we can use this as our desired/training function, but once again, neural networks cannot reproduce input multiplication, only linear functions of the inputs.<br>
@@ -561,11 +561,11 @@ From here we can ignore our $x_{1,1} = 0$ and $x_{1,2} = 0$ solutions since we a
 We can ignore our $\sigma'_1(x) = 0$ answers since 0 is not in the range of $\sigma'_1(x)$.<br>
 This leaves us with $y_{2,1} = -x_{1,1} x_{1,2}$ for all weights,<br>
 or $y_{1,1} = 0$ for $\frac{\partial w_{2,1,1}}{\partial t}$,<br>
-or $y_{1,2} = 0$ for $\frac{\partial w_{2,1,2}}{\partial t}$,<br> 
+or $y_{1,2} = 0$ for $\frac{\partial w_{2,1,2}}{\partial t}$,<br>
 or $w_{2,1,1} = 0$ for $\frac{\partial b_{1,1}}{\partial t}$ and $\frac{\partial w_{1,1,1}}{\partial t}$ and $\frac{\partial w_{1,1,2}}{\partial t}$,<br>
 or $w_{2,1,2} = 0$ for $\frac{\partial b_{1,2}}{\partial t}$ and $\frac{\partial w_{1,2,1}}{\partial t}$ and $\frac{\partial w_{1,2,2}}{\partial t}$.<br>
-<br>	
-	
+<br>
+
 TODO maybe I'll analyze specific critical points and behaviors for indivudal inputs later.<br>
 <br>
 

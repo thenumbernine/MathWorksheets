@@ -2,7 +2,9 @@
 <html>
 	<head>
         <meta charset='utf-8'>
-		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<script type='text/javascript' src='./tryToFindMathJax.js'></script>
+		<link rel='stylesheet' href='./darkmode.css'></link>
+		<script type='text/javascript' src='./darkmode.js'></script>
 		<title>Riemann From Stress-Energy</title>
 	</head>
 	<body>
@@ -13,9 +15,13 @@
 Start with any symmetric stress-energy tensor $T_{uv}$<br>
 <br>
 
-The Einstein Field Equations says:<br>
+$c = 299792458 \frac{m}{s} =$ the speed of light<br>
+$G = 6.67384e-11 \frac{m^3}{kg \cdot s^2} =$ the gravitational constant<br>
+$\kappa = 8 \pi \frac{G}{c^4}$<br>
+<br>
+
+The Einstein Field Equations / Einstein tensor wrt Stress-Energy tensor:<br>
 $G_{uv} = \kappa T_{uv}$<br>
-...where $\kappa = 8 \pi \frac{G}{c^4}$, for G the gravitational constant and c the speed of light.<br>
 <br>
 
 ...its trace:<br>
@@ -23,18 +29,22 @@ $G = \kappa T$<br>
 $T = \frac{1}{\kappa} G$<br>
 <br>
 
-The definition of the Einstein tensor:<br>
+Einstein tensor wrt Ricci tensor:<br>
 $G_{uv} = R_{uv} - \frac{1}{2} R g_{uv}$<br>
 <br>
 
 ...its trace:<br>
 $G = -\frac{n - 2}{2} R$<br>
 $R = -\frac{2}{n - 2} G$<br>
+...for $n = 4$:<br>
+$R = -G$<br>
 <br>
 
 Combine:<br>
 $G_{uv} = R_{uv} + \frac{1}{2} \frac{2}{n - 2} G g_{uv}$<br>
 $R_{uv} = G_{uv} - \frac{1}{n - 2} G g_{uv}$<br>
+...for $n = 4$:<br>
+$R_{uv} = G_{uv} - \frac{1}{2} G g_{uv}$<br>
 <br>
 
 Combine:<br>
@@ -50,10 +60,14 @@ For $n \ge 3$:<br>
 <br>
 
 $R = -\kappa \frac{2}{n-2} T$<br>
+...for $n = 4$:<br>
+$R = -\kappa T$<br>
 <br>
 
 Substitute:<br>
 $R_{uv} = \kappa (T_{uv} - \frac{1}{n - 2} T g_{uv})$<br>
+...for $n = 4$:<br>
+$R_{uv} = \kappa (T_{uv} - \frac{1}{2} T g_{uv})$<br>
 <br>
 
 <hr>
@@ -90,6 +104,8 @@ For $n \ge 3$:<br>
 
 The Schouten tensor is defined as:<br>
 $P_{uv} = \frac{1}{n - 2} (R_{uv} - \frac{1}{2 (n - 1)} R g_{uv})$<br>
+... for $n = 4$:<br>
+$P_{uv} = \frac{1}{2} (R_{uv} - \frac{1}{6} R g_{uv})$<br>
 <br>
 
 Substitute our definition of stress-energy:<br>
@@ -114,6 +130,11 @@ $P_{uv} = \kappa \frac{1}{n - 2} (
 $P_{uv} = \kappa \frac{1}{n - 2} (
 	T_{uv}
 	- \frac{1}{n - 1} T g_{uv}
+)$<br>
+... for $n = 4$:<br>
+$P_{uv} = \kappa \frac{1}{2} (
+	T_{uv}
+	- \frac{1}{3} T g_{uv}
 )$<br>
 <br>
 
@@ -164,6 +185,16 @@ $R_{abcd} = C_{abcd} + \frac{1}{n - 2} (
 	(R \ {\scriptstyle \enclose{circle}{\wedge}} \ g)_{abcd}
 	- \frac{1}{2 (n - 1)} R \cdot (g \ {\scriptstyle \enclose{circle}{\wedge}} \ g)_{abcd}
 )$<br>
+... for $n = 4$:<br>
+$R_{abcd} = C_{abcd} + \frac{1}{2} (
+	(R \ {\scriptstyle \enclose{circle}{\wedge}} \ g)_{abcd}
+	- \frac{1}{6} R \cdot (g \ {\scriptstyle \enclose{circle}{\wedge}} \ g)_{abcd}
+)$<br>
+<!--
+(The Weyl tensor $C_{abcd}$ has a $\frac{1}{6} R \cdot (g \ {\scriptstyle \enclose{circle}{\wedge}} \ g)_{abcd}$ term, I bet you could absorb the new like term into Weyl tensor...)
+(but where would that end?  would I just end up with R_abcd = R_abcd all over again...)
+-->
+<br>
 
 <br>
 
@@ -204,6 +235,11 @@ $R_{abcd} = C_{abcd} + \kappa \frac{1}{n - 2} (
 	(T \ {\scriptstyle \enclose{circle}{\wedge}} \ g)_{abcd}
     - \frac{1}{n - 1} T \cdot (g \ {\scriptstyle \enclose{circle}{\wedge}} \ g)_{abcd}
 )$<br>
+... for $n = 4$:<br>
+$R_{abcd} = C_{abcd} + \kappa \frac{1}{2} (
+	(T \ {\scriptstyle \enclose{circle}{\wedge}} \ g)_{abcd}
+    - \frac{1}{3} T \cdot (g \ {\scriptstyle \enclose{circle}{\wedge}} \ g)_{abcd}
+)$<br>
 <br>
 
 Using $R^{\sharp\sharp\flat\flat}$ to remove the appearance of the metric:<br>
@@ -235,6 +271,13 @@ ${R^{ab}}_{cd} = {C^{ab}}_{cd} + \kappa \frac{4}{n - 2} (
 ${R^{ab}}_{cd} = {C^{ab}}_{cd} + \kappa \frac{4}{n - 2} (
 	{\delta^{[a|}}_u \delta^v_{[c} \delta^{|b]}_{d]}
     - \frac{1}{n - 1} \delta_u^v (
+		\delta^{[a}_{[c} \delta^{b]}_{d]}
+	)
+) {T^u}_v$<br>
+... for $n = 4$:<br>
+${R^{ab}}_{cd} = {C^{ab}}_{cd} + \kappa 2 (
+	{\delta^{[a|}}_u \delta^v_{[c} \delta^{|b]}_{d]}
+    - \frac{1}{3} \delta_u^v (
 		\delta^{[a}_{[c} \delta^{b]}_{d]}
 	)
 ) {T^u}_v$<br>
@@ -323,7 +366,7 @@ $G_{abcd} = \frac{1}{4} {\epsilon_{ab}}^{pq} {\epsilon^{rs}}_{cd} C_{pqrs}
 $<br>
 <br>
 
-<h3>Fluid Stress-Energy:</h3>
+<h3>Matter Stress-Energy:</h3>
 <br>
 
 ${T^u}_v = (\rho + P) u^u u_v + P \delta^u_v$<br>
@@ -349,14 +392,41 @@ ${R^{ab}}_{cd} = {C^{ab}}_{cd} + \kappa \frac{1}{n - 2} (
 		- u^a u_d \delta^b_c
 		- u^b u_c \delta^a_d
 	)
-	- \frac{2}{n - 1} (\delta^a_d \delta^b_c - \delta^a_c \delta^b_d) \rho
+	- \frac{2}{n - 1} \rho (
+		\delta^a_d \delta^b_c - \delta^a_c \delta^b_d
+	)
 	+ P (
 		  u^a u_c \delta^b_d
 		+ u^b u_d \delta^a_c
 		- u^a u_d \delta^b_c
 		- u^b u_c \delta^a_d
 	)
-	+ (\frac{-2 n + 8}{n - 1}) (\delta^a_d \delta^b_c - \delta^a_c \delta^b_d) P
+	+ (\frac{-2 n + 8}{n - 1}) (
+		\delta^a_d \delta^b_c - \delta^a_c \delta^b_d
+	) P
+)$<br>
+${R^{ab}}_{cd} = {C^{ab}}_{cd} + \kappa \frac{1}{n - 2} (
+	(\rho + P) (
+		  u^a u_c \delta^b_d
+		+ u^b u_d \delta^a_c
+		- u^a u_d \delta^b_c
+		- u^b u_c \delta^a_d
+	)
+	+ (-\frac{2}{n - 1} \rho + (\frac{-2 n + 8}{n - 1}) P) (
+		\delta^a_d \delta^b_c - \delta^a_c \delta^b_d
+	)
+)$<br>
+...for $n = 4$<br>
+${R^{ab}}_{cd} = {C^{ab}}_{cd} + \kappa \frac{1}{2} (
+	(\rho + P) (
+		  u^a u_c \delta^b_d
+		+ u^b u_d \delta^a_c
+		- u^a u_d \delta^b_c
+		- u^b u_c \delta^a_d
+	)
+	- \frac{2}{3} \rho (
+		\delta^a_d \delta^b_c - \delta^a_c \delta^b_d
+	)
 )$<br>
 <br>
 
@@ -398,7 +468,10 @@ ${F^u}_v = n^u E_v - n_v E^u + {\epsilon^u}_{vab} n^a B^b$<br>
 ... and $n_u n^u = -1$<br>
 <br>
 
-${F^u}_a {F^a}_v = (n^u E_a - n_a E^u + {\epsilon^u}_{abc} n^b B^c) (n^a E_v - n_v E^a + {\epsilon^a}_{vde} n^d B^e)$<br>
+${F^u}_a {F^a}_v =
+	(n^u E_a - n_a E^u + {\epsilon^u}_{abc} n^b B^c)
+	(n^a E_v - n_v E^a + {\epsilon^a}_{vde} n^d B^e)
+$<br>
 $=
 	  n^u E_a n^a E_v
 	- n^u E_a n_v E^a
@@ -409,6 +482,28 @@ $=
 	+ {\epsilon^u}_{abc} n^b B^c n^a E_v
 	- {\epsilon^u}_{abc} n^b B^c  n_v E^a
 	+ {\epsilon^u}_{abc} n^b B^c  {\epsilon^a}_{vde} n^d B^e
+$<br>
+$=
+	0
+	- n^u n_v E^a E_a
+	+ n^u {\epsilon^a}_{vde} E_a n^d B^e
+	+ E^u E_v
+	+ 0
+	- E^u {\epsilon^a}_{vde} n_a n^d B^e
+	+ 0
+	- {\epsilon^u}_{abc} E^a n^b B^c n_v
+	+ {\epsilon^u}_{abc} n^b B^c {\epsilon^a}_{vde} n^d B^e
+$<br>
+$=
+	0
+	- n^u n_v E^a E_a
+	- n^u \epsilon_{daev}n^d E^a B^e
+	+ E^u E_v
+	+ 0
+	- E^u \epsilon_{avde} n^a n^d B^e
+	+ 0
+	- \epsilon^{bacu} n_b E_a B_c n_v
+	- \epsilon^{ubca} n_b B_c \epsilon_{vdea} n^d B^e
 $<br>
 $=
 	  E^u E_v
@@ -443,6 +538,18 @@ $<br>
 $=
 	  E^u E_v
 	- n^u n_v E_a E^a
+	- n^u S_v
+	- S^u n_v
+	+ \delta^u_v \delta^b_d \delta^c_e n_b B_c n^d B^e
+	+ \delta^u_d \delta^b_e \delta^c_v n_b B_c n^d B^e
+	+ \delta^u_e \delta^b_v \delta^c_d n_b B_c n^d B^e
+	- \delta^u_e \delta^b_d \delta^c_v n_b B_c n^d B^e
+	- \delta^u_d \delta^b_v \delta^c_e n_b B_c n^d B^e
+	- \delta^u_v \delta^b_e \delta^c_d n_b B_c n^d B^e
+$<br>
+$=
+	  E^u E_v
+	- n^u n_v E_a E^a
 	+ B^u B_v
 	- n_v n^u B_a B^a
 	- \delta^u_v B_a B^a
@@ -466,17 +573,201 @@ ${F^u}_a {F^a}_u =
 $<br>
 <br>
 
+Substituting:<br>
 ${R^{ab}}_{cd} = {C^{ab}}_{cd} - \kappa \frac{1}{n - 2} \frac{1}{\mu_0} (
-	  \delta^b_d {F^a}_u {F^u}_c
-	+ \delta^a_c {F^b}_u {F^u}_d
-	- \delta^b_c {F^a}_u {F^u}_d
-	- \delta^a_d {F^b}_u {F^u}_c
+	  \delta^b_d (
+		  E^a E_c
+		- n^a n_c E_u E^u
+		+ B^a B_c
+		- n_c n^a B_u B^u
+		- \delta^a_c B_u B^u
+		- n^a S_c
+		- S^a n_c
+	)
+	+ \delta^a_c (
+		  E^b E_d
+		- n^b n_d E_u E^u
+		+ B^b B_d
+		- n_d n^b B_u B^u
+		- \delta^b_d B_u B^u
+		- n^b S_d
+		- S^b n_d
+	)
+	- \delta^b_c (
+		  E^a E_d
+		- n^a n_d E_u E^u
+		+ B^a B_d
+		- n_d n^a B_u B^u
+		- \delta^a_d B_u B^u
+		- n^a S_d
+		- S^a n_d
+	)
+	- \delta^a_d (
+		  E^b E_c
+		- n^b n_c E_u E^u
+		+ B^b B_c
+		- n_c n^b B_u B^u
+		- \delta^b_c B_u B^u
+		- n^b S_c
+		- S^b n_c
+	)
 	- (E^u E_u - (\frac{n}{2} - 1) B^u B_u) (
 		  \delta^a_d \delta^b_c
 		- \delta^a_c \delta^b_d
 	)
 )$<br>
+${R^{ab}}_{cd} = {C^{ab}}_{cd} - \kappa \frac{1}{n - 2} \frac{1}{\mu_0} (
+	\delta^b_d (
+		  E^a E_c
+		- n^a n_c E_u E^u
+		+ B^a B_c
+		- n_c n^a B_u B^u
+		- n^a S_c
+		- S^a n_c
+	)
+	+ \delta^a_c (
+		  E^b E_d
+		- n^b n_d E_u E^u
+		+ B^b B_d
+		- n_d n^b B_u B^u
+		- n^b S_d
+		- S^b n_d
+	)
+	- \delta^b_c (
+		  E^a E_d
+		- n^a n_d E_u E^u
+		+ B^a B_d
+		- n_d n^a B_u B^u
+		- n^a S_d
+		- S^a n_d
+	)
+	- \delta^a_d (
+		  E^b E_c
+		- n^b n_c E_u E^u
+		+ B^b B_c
+		- n_c n^b B_u B^u
+		- n^b S_c
+		- S^b n_c
+	)
+	- E^u E_u (
+		  \delta^a_d \delta^b_c
+		- \delta^a_c \delta^b_d
+	)
+	+ (\frac{n}{2} + 1) B^u B_u (
+		  \delta^a_d \delta^b_c
+		- \delta^a_c \delta^b_d
+	)
+)$<br>
+...for $n=4$:<br>
+${R^{ab}}_{cd} = {C^{ab}}_{cd} - \kappa \frac{1}{2} \frac{1}{\mu_0} (
+	\delta^b_d (
+		  E^a E_c
+		- n^a n_c E_u E^u
+		+ B^a B_c
+		- n_c n^a B_u B^u
+		- n^a S_c
+		- S^a n_c
+	)
+	+ \delta^a_c (
+		  E^b E_d
+		- n^b n_d E_u E^u
+		+ B^b B_d
+		- n_d n^b B_u B^u
+		- n^b S_d
+		- S^b n_d
+	)
+	- \delta^b_c (
+		  E^a E_d
+		- n^a n_d E_u E^u
+		+ B^a B_d
+		- n_d n^a B_u B^u
+		- n^a S_d
+		- S^a n_d
+	)
+	- \delta^a_d (
+		  E^b E_c
+		- n^b n_c E_u E^u
+		+ B^b B_c
+		- n_c n^b B_u B^u
+		- n^b S_c
+		- S^b n_c
+	)
+	- E^u E_u (
+		  \delta^a_d \delta^b_c
+		- \delta^a_c \delta^b_d
+	)
+	+ 3 B^u B_u (
+		  \delta^a_d \delta^b_c
+		- \delta^a_c \delta^b_d
+	)
+)$<br>
+(maybe a sign error somewhere? why -1 E^2's and 3 B^2's?)
+<br>
 
+<hr>
+<br>
+
+How to go from Riemann curvature to geodesic?<br>
+Technically the curvature itself is the geodesic deviation.
+We could directly calculate the tidal forces that the stress-energy exhibits:<br>
+<br>
+
+$t^u$ = tangent vector, is the four-velocity of the object traveling along the geodesic.  (Is this the same as the hyperspace-normal of the Faraday tensor's electromagnetic field?)<br>
+$t^u t_u = -1$<br>
+$x^u$ = vector from our evaluated stress-energy to our observer's location (right?).<br>
+<br>
+
+Geodesic deviation / tidal acceleration:<br>
+$\ddot{x}^u = {R^u}_{vab} t^v t^a x^b$<br>
+$\ddot{x}^a = {R^{ab}}_{cd} t_b t^c x^d$<br>
+<br>
+
+<h3>Tidal Acceleration of Matter Stress-Energy:</h3>
+
+$\ddot{x}^a = {R^{ab}}_{cd} t_b t^c x^d$<br>
+$\ddot{x}^a = t_b t^c x^d (
+	{C^{ab}}_{cd} + \kappa \frac{1}{2} (
+		(\rho + P) (
+			  u^a u_c \delta^b_d
+			+ u^b u_d \delta^a_c
+			- u^a u_d \delta^b_c
+			- u^b u_c \delta^a_d
+		)
+		- \frac{2}{3} \rho (
+			\delta^a_d \delta^b_c - \delta^a_c \delta^b_d
+		)
+	)
+)$<br>
+$\ddot{x}^a =
+	t_b t^c x^d {C^{ab}}_{cd}
+	+ \kappa \frac{1}{2} (
+		(\rho + P) (
+			  u^a u_c \delta^b_d t_b t^c x^d
+			+ u^b u_d \delta^a_c t_b t^c x^d
+			- u^a u_d \delta^b_c t_b t^c x^d
+			- u^b u_c \delta^a_d t_b t^c x^d
+		)
+		- \frac{2}{3} \rho (
+			\delta^a_d \delta^b_c t_b t^c x^d
+			- \delta^a_c \delta^b_d t_b t^c x^d
+		)
+	)
+$<br>
+$\ddot{x}^a =
+	t_b t^c x^d {C^{ab}}_{cd}
+	+ \kappa \frac{1}{2} (
+		(\rho + P) (
+			  u^a t_b x^b u_c t^c
+			+ t^a u^b t_b u_c x^c
+			+ u^a u^b x_b
+			- x^a (u^b t_b)^2
+		)
+		+ \frac{2}{3} \rho (
+			  x^a
+			+ t^a t_b x^b
+		)
+	)
+$<br>
 
 	</body>
 </html>

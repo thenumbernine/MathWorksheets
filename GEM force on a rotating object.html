@@ -27,7 +27,7 @@ function init() {
 	for (var i = 0; i < PeriodicTable.length; ++i) {
 		var element = PeriodicTable[i];
 		if (element.resistivity === undefined) continue;
-		
+
 		var option = document.createElement('option');
 		option.appendChild(document.createTextNode(element.name));
 		option.element = element;
@@ -67,7 +67,7 @@ $V = \pi r^2 h = $ {{ object_volume_in_m3 = Math.PI * object_radius_in_m * objec
 $m = \rho V = $ {{ object_mass_in_kg = object_volume_in_m3 * object_density_in_kg_per_m3 }} $ \cdot kg = $ object mass.<br>
 $\omega = $<input name='object_angular_velocity_in_rad_per_s' value='1'/>$ \cdot \frac{rad}{s} = $ angular velocity of cylindrical object.<br>
 $I = \frac{1}{2} m r^2 = $ {{ object_inertia_in_kg_m2 = object_mass_in_kg * object_radius_in_m }} $ \cdot kg \cdot m^2 = $ object inertia.<br>
-$v_{\hat{\phi}} (r) = \omega \cdot r = $ linear velocity at a specific point, as a function of radius, has units $[\frac{m}{s}]$.<br> 
+$v_{\hat{\phi}} (r) = \omega \cdot r = $ linear velocity at a specific point, as a function of radius, has units $[\frac{m}{s}]$.<br>
 Velocity in Cartesian components, at cylindrical coordinates:<br>
 $v_x(r, \phi, z) = -\omega r sin(\phi)$<br>
 $v_y(r, \phi, z) = \omega r cos(\phi)$<br>
@@ -142,12 +142,12 @@ $(E^g)_i$, the gravitoelectric force on the object by the object, which should c
 <br>
 
 Integrating the gravitomagnetic force across the object:<br>
-Would I need to average the acceleration by dividing by the volume?  I'm thinking otherwise the units might not work out ... ? But does it physically make sense?  
+Would I need to average the acceleration by dividing by the volume?  I'm thinking otherwise the units might not work out ... ? But does it physically make sense?
 I guess that's what happen when you just add pointwise acceleration and don't consider the impulse equation, to include both force and torque generated from the force at each point of a rigid body.
 <br>
 $(F^E)_i = \int_V (E^g)_i(\vec{x}) dx$<br>
-$(F^E)_i = 
-	\int_{z=-\frac{h}{2}}^{z=\frac{h}{2}} 
+$(F^E)_i =
+	\int_{z=-\frac{h}{2}}^{z=\frac{h}{2}}
 		\int_{\phi=0}^{\phi=2\pi}
 			\int_{r=0}^{r=r}
 				(E^g)_i(r,\phi,z)
@@ -177,35 +177,35 @@ $(B^g)^i = \epsilon^{ijk} (A^g)_{k,j}$ has units $[\frac{1}{s}]$<br>
 $\vec{(B^g)} = \vec{\nabla} \times \vec{(A^g)}$.<br>
 $\vec{(B^g)}(\vec{x}) = \vec{\nabla} \times -\frac{G}{c^2} \rho \int_V \frac{1}{|\vec{x}' - \vec{x}|} \vec{v}(\vec{x}') d\vec{x}'$<br>
 $\vec{(B^g)}(\vec{x}) = -\frac{G}{c^2} \rho \int_V \vec{\nabla} \times \left( \frac{1}{|\vec{x}' - \vec{x}|} \vec{v}(\vec{x}') \right) d\vec{x}'$<br>
-$\vec{(B^g)}(\vec{x}) = -\frac{G}{c^2} \rho \int_V 
-	\left( \vec{\nabla} \frac{1}{|\vec{x}' - \vec{x}|} \right) \times \vec{v}(\vec{x}') 
+$\vec{(B^g)}(\vec{x}) = -\frac{G}{c^2} \rho \int_V
+	\left( \vec{\nabla} \frac{1}{|\vec{x}' - \vec{x}|} \right) \times \vec{v}(\vec{x}')
 	+ \frac{1}{|\vec{x}' - \vec{x}|} \cdot \vec{\nabla} \times \vec{v}(\vec{x}')
 d\vec{x}'$<br>
-$\vec{(B^g)}(\vec{x}) = -\frac{G}{c^2} \rho \int_V 
-	\left( \frac{\vec{x}' - \vec{x}}{|\vec{x} - \vec{x}'|^3} \right) \times \vec{v}(\vec{x}') 
+$\vec{(B^g)}(\vec{x}) = -\frac{G}{c^2} \rho \int_V
+	\left( \frac{\vec{x}' - \vec{x}}{|\vec{x} - \vec{x}'|^3} \right) \times \vec{v}(\vec{x}')
 d\vec{x}'$<br>
-$\vec{(B^g)}(\vec{x}) = -\frac{G}{c^2} \rho \int_V 
+$\vec{(B^g)}(\vec{x}) = -\frac{G}{c^2} \rho \int_V
 	\omega \frac{1}{|\vec{x}' - \vec{x}|^3}
-	\left[ \begin{matrix} x' - x \\ y' - y \\ z' - z \end{matrix} \right] \times 
+	\left[ \begin{matrix} x' - x \\ y' - y \\ z' - z \end{matrix} \right] \times
 	\left[ \begin{matrix} -y' \\ x' \\ 0 \end{matrix} \right]
 d\vec{x}'$<br>
-$\vec{(B^g)}(\vec{x}) = \frac{G}{c^2} \rho \omega \int_V 
+$\vec{(B^g)}(\vec{x}) = \frac{G}{c^2} \rho \omega \int_V
 	\frac{1}{|\vec{x}' - \vec{x}|^3}
 	\left[ \begin{matrix} x' (z' - z) \\ y' (z' - z) \\ -x' (x' - x) - y' (y' - y) \end{matrix} \right]
 d\vec{x}'$<br>
 <br>
 
-$\vec{(B^g)}_x (\vec{x}) = -\frac{G}{c^2} \rho \omega \int_V 
+$\vec{(B^g)}_x (\vec{x}) = -\frac{G}{c^2} \rho \omega \int_V
 	\frac{x' (z' - z)}{ \left( (x' - x)^2 + (y' - y)^2 + (z' - z)^2 \right)^\frac{3}{2} }
 d\vec{x}'$<br>
 <br>
 
-$\vec{(B^g)}_y (\vec{x}) = -\frac{G}{c^2} \rho \omega \int_V 
+$\vec{(B^g)}_y (\vec{x}) = -\frac{G}{c^2} \rho \omega \int_V
 	\frac{y' (z' - z)}{ \left( (x' - x)^2 + (y' - y)^2 + (z' - z)^2 \right)^\frac{3}{2} }
 d\vec{x}'$<br>
 <br>
 
-$\vec{(B^g)}_z (\vec{x}) = -\frac{G}{c^2} \rho \omega \int_V 
+$\vec{(B^g)}_z (\vec{x}) = -\frac{G}{c^2} \rho \omega \int_V
 	\frac{-x' (x' - x) - y' (y' - y)}{ \left( (x' - x)^2 + (y' - y)^2 + (z' - z)^2 \right)^\frac{3}{2} }
 d\vec{x}'$<br>
 <br>
@@ -213,20 +213,20 @@ d\vec{x}'$<br>
 in cylindrical coordinates:<br>
 <br>
 
-$\vec{(B^g)}_x (\vec{x}) = -\frac{G}{c^2} \rho \omega 
+$\vec{(B^g)}_x (\vec{x}) = -\frac{G}{c^2} \rho \omega
 \int_{z'} \int_{\phi'} \int_{r'}
 	(r')^2 \frac{cos(\phi') (z' - z)}{ \left( r'^2 - 2 r r' cos(\phi - \phi') + r^2 + (z' - z)^2 \right)^\frac{3}{2} }
 dr' d\phi' dz'
 $<br>
 <br>
-$\vec{(B^g)}_y (\vec{x}) = -\frac{G}{c^2} \rho \omega 
+$\vec{(B^g)}_y (\vec{x}) = -\frac{G}{c^2} \rho \omega
 \int_{z'} \int_{\phi'} \int_{r'}
 	(r')^2 \frac{sin(\phi') (z' - z)}{ \left( r'^2 - 2 r r' cos(\phi - \phi') + r^2 + (z' - z)^2 \right)^\frac{3}{2} }
 dr' d\phi' dz'
 $<br>
 <br>
 
-$\vec{(B^g)}_z (\vec{x}) = -\frac{G}{c^2} \rho \omega 
+$\vec{(B^g)}_z (\vec{x}) = -\frac{G}{c^2} \rho \omega
 \int_{z'} \int_{\phi'} \int_{r'}
 	(r')^2 \frac{-cos(\phi') (r' cos(\phi') - r cos(\phi)) - sin(\phi') (r' sin(\phi') - r sin(\phi))}{ \left( r'^2 - 2 r r' cos(\phi - \phi') + r^2 + (z' - z)^2 \right)^\frac{3}{2} }
 dr' d\phi' dz'
@@ -236,33 +236,33 @@ $<br>
 ...again...<br>
 $\vec{(B^g)}(\vec{x}) = -\frac{G}{c^2} \rho \int_V \vec{\nabla} \times \left( \frac{1}{|\vec{x}' - \vec{x}|} \vec{v}(\vec{x}') \right) d\vec{x}'$<br>
 $\vec{(B^g)}(\vec{x}) = -\frac{G}{c^2} \rho \int_V \vec{\nabla} \times \left( \frac{1}{|\vec{x}' - \vec{x}|} \omega \vec{e}_z \times \vec{x}' \right) d\vec{x}'$<br>
-$\vec{(B^g)}(\vec{x}) = -\frac{G}{c^2} \omega \rho \int_V 
+$\vec{(B^g)}(\vec{x}) = -\frac{G}{c^2} \omega \rho \int_V
 	\left( \frac{\vec{x}' - \vec{x}}{|\vec{x} - \vec{x}'|^3} \right) \times (\vec{e}_z \times \vec{x}')
 d\vec{x}'$<br>
 using $a \times (b \times c) = (a \cdot c) b - (a \cdot b) c$<br>
 $\vec{(B^g)}(\vec{x}) = -\frac{G}{c^2} \omega \rho \int_V
-	\frac{1}{|\vec{x} - \vec{x}'|^3} \cdot 
+	\frac{1}{|\vec{x} - \vec{x}'|^3} \cdot
 	\left(
-		 ((\vec{x}' - \vec{x}) \cdot \vec{x}') \vec{e}_z 
+		 ((\vec{x}' - \vec{x}) \cdot \vec{x}') \vec{e}_z
 		 - ((\vec{x}' - \vec{x}) \cdot \vec{e}_z) \vec{x}'
 	\right)
 d\vec{x}'$<br>
-$\vec{(B^g)}(\vec{x}) = -\frac{G}{c^2} \omega \rho \int_V 
-	\frac{1}{|\vec{x} - \vec{x}'|^3} \cdot 
+$\vec{(B^g)}(\vec{x}) = -\frac{G}{c^2} \omega \rho \int_V
+	\frac{1}{|\vec{x} - \vec{x}'|^3} \cdot
 	\left(
-		 (\vec{x}' \cdot \vec{x}' - \vec{x} \cdot \vec{x}') \vec{e}_z 
+		 (\vec{x}' \cdot \vec{x}' - \vec{x} \cdot \vec{x}') \vec{e}_z
 		 - (\vec{x}' \cdot \vec{e}_z - \vec{x} \cdot \vec{e}_z) \vec{x}'
 	\right)
 d\vec{x}'$<br>
-$\vec{(B^g)}(\vec{x}) = -\frac{G}{c^2} \omega \rho \int_V 
-	\frac{1}{|\vec{x} - \vec{x}'|^3} \cdot 
+$\vec{(B^g)}(\vec{x}) = -\frac{G}{c^2} \omega \rho \int_V
+	\frac{1}{|\vec{x} - \vec{x}'|^3} \cdot
 	\left(
-		 ( (x')^2 + (y')^2 + (z')^2 - x x' - y y' - z z') \vec{e}_z 
+		 ( (x')^2 + (y')^2 + (z')^2 - x x' - y y' - z z') \vec{e}_z
 		 - (z' - z) \vec{x}'
 	\right)
 d\vec{x}'$<br>
-$\vec{(B^g)}(\vec{x}) = -\frac{G}{c^2} \omega \rho \int_V 
-	\frac{1}{|\vec{x} - \vec{x}'|^3} \cdot 
+$\vec{(B^g)}(\vec{x}) = -\frac{G}{c^2} \omega \rho \int_V
+	\frac{1}{|\vec{x} - \vec{x}'|^3} \cdot
 	\left[ \begin{matrix}
 			- (z' - z) x' \\
 			- (z' - z) y' \\
@@ -275,19 +275,19 @@ d\vec{x}'$<br>
 $a \times (b \times c) + b \times (c \times a) + c \times (a \times b) = 0$<br>
 $a \times (b \times c) = - b \times (c \times a) - c \times (a \times b)$<br>
 <br>
-$\vec{(B^g)}(\vec{x}) = -\frac{G}{c^2} \omega \rho \int_V 
-	\frac{1}{|\vec{x} - \vec{x}'|^3} 
+$\vec{(B^g)}(\vec{x}) = -\frac{G}{c^2} \omega \rho \int_V
+	\frac{1}{|\vec{x} - \vec{x}'|^3}
 	( \vec{x}' - \vec{x} ) \times (\vec{e}_z \times \vec{x}')
 d\vec{x}'$<br>
-$\vec{(B^g)}(\vec{x}) = -\frac{G}{c^2} \omega \rho \int_V 
-	\frac{1}{|\vec{x} - \vec{x}'|^3} 
+$\vec{(B^g)}(\vec{x}) = -\frac{G}{c^2} \omega \rho \int_V
+	\frac{1}{|\vec{x} - \vec{x}'|^3}
 	\left(
 		-\vec{e}_z \times (\vec{x}' \times (\vec{x}' - \vec{x}))
 		- \vec{x}' \times ((\vec{x}' - \vec{x}) \times \vec{e}_z)
 	\right)
 d\vec{x}'$<br>
-$\vec{(B^g)}(\vec{x}) = -\frac{G}{c^2} \omega \rho \int_V 
-	\frac{1}{|\vec{x} - \vec{x}'|^3} 
+$\vec{(B^g)}(\vec{x}) = -\frac{G}{c^2} \omega \rho \int_V
+	\frac{1}{|\vec{x} - \vec{x}'|^3}
 	\left(
 		\vec{e}_z \times (\vec{x}' \times \vec{x})
 		- \vec{x}' \times ((\vec{x}' - \vec{x}) \times \vec{e}_z)
@@ -296,8 +296,8 @@ d\vec{x}'$<br>
 <br>
 
 
-$\vec{(B^g)}(\vec{x}) = -\frac{G}{c^2} \omega \rho \int_V 
-	\frac{1}{|\vec{x} - \vec{x}'|^3} \cdot 
+$\vec{(B^g)}(\vec{x}) = -\frac{G}{c^2} \omega \rho \int_V
+	\frac{1}{|\vec{x} - \vec{x}'|^3} \cdot
 	\left[ \begin{matrix}
 			- (z' - z) x' \\
 			- (z' - z) y' \\
@@ -307,12 +307,12 @@ d\vec{x}'$<br>
 <br>
 
 $\vec{F}^B = \int_V 4 \vec{v}(\vec{x}) \times \vec{B}^g(\vec{x}) d\vec{x}$<br>
-$ = -4 \frac{G}{c^2} \omega \rho 
-\int_V 
+$ = -4 \frac{G}{c^2} \omega \rho
+\int_V
 	\vec{v}(\vec{x}) \times
 	\left(
-	\int_V 
-		\frac{1}{|\vec{x} - \vec{x}'|^3} \cdot 
+	\int_V
+		\frac{1}{|\vec{x} - \vec{x}'|^3} \cdot
 		\left[ \begin{matrix}
 				- (z' - z) x' \\
 				- (z' - z) y' \\
@@ -322,12 +322,12 @@ $ = -4 \frac{G}{c^2} \omega \rho
 	\right)
 d\vec{x}$<br>
 
-$ = -4 \frac{G}{c^2} \omega \rho 
-\int_V 
+$ = -4 \frac{G}{c^2} \omega \rho
+\int_V
 	\omega (\vec{e}_z \times \vec{x}) \times
 	\left(
-	\int_V 
-		\frac{1}{|\vec{x} - \vec{x}'|^3} \cdot 
+	\int_V
+		\frac{1}{|\vec{x} - \vec{x}'|^3} \cdot
 		\left[ \begin{matrix}
 				- (z' - z) x' \\
 				- (z' - z) y' \\
@@ -337,14 +337,14 @@ $ = -4 \frac{G}{c^2} \omega \rho
 	\right)
 d\vec{x}$<br>
 
-$ = -4 \frac{G}{c^2} \omega^2 \rho 
-\int_V 
+$ = -4 \frac{G}{c^2} \omega^2 \rho
+\int_V
 	\left(
-	\int_V 
-		\frac{1}{|\vec{x} - \vec{x}'|^3} \cdot 
+	\int_V
+		\frac{1}{|\vec{x} - \vec{x}'|^3} \cdot
 		\left[ \begin{matrix}
 			-y \\
-			x \\ 
+			x \\
 			0
 		\end{matrix} \right]
 		\times
@@ -357,13 +357,13 @@ $ = -4 \frac{G}{c^2} \omega^2 \rho
 	\right)
 d\vec{x}$<br>
 
-$ = -4 \frac{G}{c^2} \omega^2 \rho 
-\int_V 
+$ = -4 \frac{G}{c^2} \omega^2 \rho
+\int_V
 	\left(
-	\int_V 
-		\frac{1}{|\vec{x} - \vec{x}'|^3} \cdot 
+	\int_V
+		\frac{1}{|\vec{x} - \vec{x}'|^3} \cdot
 		\left[ \begin{matrix}
-				x (x' (x' - x) + y' (y' - y)) \\ 
+				x (x' (x' - x) + y' (y' - y)) \\
 				y (x' (x' - x) + y' (y' - y)) \\
 				y y' (z' - z) + x x' (z' - z)
 		\end{matrix} \right]
@@ -379,15 +379,15 @@ and<br>
 $\vec{F}^B = \int_V 4 \vec{v}(\vec{x}) \times \vec{B}^g(\vec{x}) d\vec{x}$<br>
 $\vec{F}^B = \int_V 4 \omega (\vec{e}_z \times \vec{x}) \times \vec{B}^g(\vec{x}) d\vec{x}$<br>
 and using a consequence of the Divergence theorem: $\int_V \nabla \times F dV = \int_S n \times F dS$<br>
-$\vec{F}^B = \int_V 4 \omega (\vec{e}_z \times \vec{x}) \times 
+$\vec{F}^B = \int_V 4 \omega (\vec{e}_z \times \vec{x}) \times
 	\left(
 		-\frac{G}{c^2} \rho \omega \int_V \vec{\nabla} \times \left( \frac{1}{|\vec{x}' - \vec{x}|} \vec{e}_z \times \vec{x}' \right) d\vec{x}'
 	\right)
 d\vec{x}$<br>
-$\vec{F}^B = -4 \frac{G}{c^2} \rho \omega^2 \int_V \int_V 
-	(\vec{e}_z \times \vec{x}) \times 
+$\vec{F}^B = -4 \frac{G}{c^2} \rho \omega^2 \int_V \int_V
+	(\vec{e}_z \times \vec{x}) \times
 	\left(
-		\vec{\nabla} \times \left( \frac{1}{|\vec{x}' - \vec{x}|} \vec{e}_z \times \vec{x}' \right) 
+		\vec{\nabla} \times \left( \frac{1}{|\vec{x}' - \vec{x}|} \vec{e}_z \times \vec{x}' \right)
 	\right)
 d\vec{x}'
 d\vec{x}$<br>
