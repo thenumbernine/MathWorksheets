@@ -3,21 +3,23 @@
 	<head>
         <meta charset='utf-8'>
 		<script type='text/javascript' src='tryToFindMathJax.js'></script>
+		<link rel='stylesheet' href='darkmode.css'></link>
+		<script type='text/javascript' src='darkmode.js'></script>
 		<title>Platonic Solids</title>
 		<style>
-table {
-    border : 1px solid black;
-    border-collapse : collapse;
-}
 table td, table th {
-    border : 1px solid black;
 	padding: 4px;
+}
+.difftable, .difftable td, .difftable th {
+	text-align: center;
+	border: 0px;
 }
 		</style>
 	</head>
 	<body>
 
-<b>From my symmath platonic solids worksheet:</b><br>
+This math worksheet goes with my <a href="https://thenumbernine.github.io/lua/symmath/tests/output/Platonic%20Solids.html">Platonic Solid SymMath notebook</a>.
+<br>
 <br>
 
 Defining our terms:<br>
@@ -26,7 +28,7 @@ Defining our terms:<br>
 $n =$ dimension of manifold which our shape resides in.<br>
 $\tilde{T}_i \in \mathbb{R}^{n \times n} =$ i'th automorphic transform in the minimal set.<br>
 $\tilde{\textbf{T}} = \{ 1 \le i \le p, \tilde{T}_i \} =$ minimum set of automorphic transforms that can be used to recreate all automorphic transforms.<br>
-$p = |\tilde{\textbf{T}}| =$ the number of minimal automorphic transforms.<br>
+$p = |\tilde{\textbf{T}}| =$ the number of minimal automorphic transforms, which we can assert for n-dimensional shape will be $(n-1)$ dimensions to cover the surface of the shape.<br>
 $T_i \in \mathbb{R}^{n \times n} =$ i'th automorphic transform in the set of all unique transforms.<br>
 $\textbf{T} = \{ T_i \} = \{ 1 \le k, i_1, ..., i_k \in [1,m], \tilde{T}_{i_1} \cdot ... \cdot \tilde{T}_{i_k} \} =$ set of all unique automorphic transforms.<br>
 $q = |\textbf{T}| =$ the number of unique automorphic transforms.<br>
@@ -87,7 +89,7 @@ So $\chi = q_1(S^2_k) + q_0(S^2_k) = - k + k = 0$.<br>
 <br>
 
 For automorphic transform groups in 2D we also have a group size of $|\textbf{T}(S^2_k)| = k = q_0 = q_1$ rotations that preserve the shape.<br>
-For our earlier choice of vertices, the k'th transform takes the form of 
+For our earlier choice of vertices, the k'th transform takes the form of
 $T^2_{p,k} = \left[\begin{matrix}
 	cos(\frac{2 \pi k}{p}) & -sin(\frac{2 \pi k}{p}) \\
 	sin(\frac{2 \pi k}{p}) &  cos(\frac{2 \pi k}{p})
@@ -117,7 +119,7 @@ $\star S^3_m = $ the solid's dual solid.<br>
 $|\textbf{T}(S^3_m)| = $ the number of automorphic transforms associated with our solid.<br>
 
 $\partial S^3_p = S^2_q = $ the 2D q-sided solid that makes up surface of the 3D p-sided solid. TODO later come up with an equation that relates p and q.<br>
-$q_k(\partial S^3_m) = $ the number of k-forms of a surface-element of the 3D regular convex polytope.  
+$q_k(\partial S^3_m) = $ the number of k-forms of a surface-element of the 3D regular convex polytope.
 $q_1(\partial S^3_m) = $ the number of sides of the polygons that cover our m-sided polyhedron.  For 2D this is also equal to the number of vertexes, and to the size of the automorphic transform group.<br>
 $\chi = q_0(S^3_m) - q_1(S^3_m) + q_2(S^3_m) = $ the Euler characteristic.<br>
 <br>
@@ -161,7 +163,7 @@ $\chi = q_0(S^3_m) - q_1(S^3_m) + q_2(S^3_m) = $ the Euler characteristic.<br>
 		<td></td>
 		<td>$S^2_4$</td>
 		<td>4</td>
-	</tr>	
+	</tr>
 	<tr>
 		<td>octahedron</td>
 		<td>$S^3_8$</td>
@@ -216,9 +218,10 @@ Another rule is that the automorphic transform set size of a shape and its dual 
 So $\textbf{T}(S^n_m) = \textbf{T}^n(\star S^n_m)$.<br>
 <br>
 
-Another rule that will hold true to higher dimensions is that the transform group size $|\textbf{T}(S^3_m)|$ is equal to the number of sides of our shape, multiplied by each side's transform group size. 
-So $|\textbf{T}(S^3_m)| = q_2(S^3_m) \cdot |\textbf{T}(\partial S^3_m)| = m \cdot |\textbf{T}(\partial S^3_m)|$.<br> 
+Another rule that will hold true to higher dimensions is that the transform group size $|\textbf{T}(S^3_m)|$ is equal to the number of sides of our shape, multiplied by each side's transform group size.
+So $|\textbf{T}(S^3_m)| = q_2(S^3_m) \cdot |\textbf{T}(\partial S^3_m)| = m \cdot |\textbf{T}(\partial S^3_m)|$.<br>
 In general: $|\textbf{T}(S^n_m)| = q_{n-1}(S^n_m) \cdot |\textbf{T}(\partial S^n_m)| = m \cdot |\textbf{T}(\partial S^n_m)|$.<br>
+expanded: $|\textbf{T}(S^n_m)| = \underset{k=0}{\overset{n-2}{\Pi}} q_{n-1-k}(\partial^k S^n_m)$<br> 
 <br>
 
 Another rule relates the number of edges and the number of faces to the number of sides of the surface elements: $2 \cdot q_1(S^3_m) / q_2(S^3_m) = q_1(\partial S^n_m)$.<br>
@@ -236,7 +239,7 @@ so for our n-dimensional m-sided regular convex polytope $S^n_m$, its $(n-1)$-si
 Also to calculate the number of edges of a 3D regular convex polytope: if we know a shape (by its number of sides) and its dual (by its number of sides), we know $q_0(S^3_m)$ and $q_2(S^3_m)$, and can calculate from $\chi = 2$ our remaining $q_1(S^3_m) = q_0(S^3_m) + q_2(S^3_m) - \chi = q_2(S^3_m) + q_2(\star S^3_m) - \chi$.<br>
 <br>
 
-For more on some exact tables of vertexes, transforms, and multiplication tables between transforms and either vertexes or transforms, check out my symmath work on 
+For more on some exact tables of vertexes, transforms, and multiplication tables between transforms and either vertexes or transforms, check out my symmath work on
 <a href="https://thenumbernine.github.io/lua/symmath/tests/output/Platonic%20Solids.html">Platonic Solids</a>.<br>
 <br>
 
@@ -385,7 +388,7 @@ Euler characteristic: $\chi = q_0 - q_1 + q_2 - q_3$<br>
 	</tr>
 </table>
 <br>
-	
+
 We see our rules still hold true:<br>
 $q_k(S^n_m) = q_{n-k}(\star S^n_m)$<br>
 $\textbf{T}(S^n_m) = \textbf{T}(\star S^n_m)$<br>
@@ -401,7 +404,7 @@ $s = \frac{2}{r} \cdot q_{n-3}(S^{n-1}_r)$<br>
 ... idk if i like the look of that, try again...<br>
 $2 q_2(S^4_m) / q_3(S^4_m) = q_2(\partial S^4_m)$<br>
 $2 q_1(S^3_m) / q_2(S^3_m) = q_1(\partial S^3_m)$<br>
-so 
+so
 $2 q_1(\partial S^4_m) / q_2(\partial S^4_m) = q_1(\partial^2 S^4_m) = q_1(S^2_r) = r$<br>
 <br>
 
@@ -491,6 +494,158 @@ It's interesting that the hypercube and orthoplex are duals (they have matching 
 Mind if I also included reflections then my automorphism rotation group size becomes $|\textbf{T}(S^n_{n+1})| = (n+1)!$ and $|\textbf{T}(S^n_{2^n})| =  |\textbf{T}(S^n_{2n})| = 2^n n!$.  This looks a lot cleaner.  But I'm trying to preserve my handedness.<br>
 <br>
 
+Let's look at a graph of surface elements across dimension n.<br>
+Duals will be marked with $\underleftrightarrow{ \ \ \ \star \ \ \ }$.  If no dual is present you can assume it is self-dual.<br>
+<table class='difftable'>
+	<tr>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>$S^n_{n+1}$</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>$S^n_{2^n}$</td>
+		<td>$\underleftrightarrow{ \ \ \ \star \ \ \ }$</td>
+		<td>$S^n_{2n}$</td>
+	</tr>
+	<tr>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>$\partial \downarrow$</td>
+		<td>$\swarrow \partial$</td>
+		<td></td>
+		<td></td>
+		<td>$\partial \downarrow$</td>
+	</tr>
+	<tr>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>$S^{n-1}_n$</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>$S^{n-1}_{2^{n-1}}$</td>
+		<td>$\underleftrightarrow{ \ \ \ \star \ \ \ }$</td>
+		<td>$S^{n-1}_{2(n-1)}$</td>
+	</tr>
+	<tr>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>$\partial \downarrow$</td>
+		<td>$\swarrow \partial$</td>
+		<td></td>
+		<td></td>
+		<td>$\partial \downarrow$</td>
+	</tr>
+	<tr>
+		<td colspan=9>...</td>
+	</tr>
+	<tr>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>$\partial \downarrow$</td>
+		<td>$\swarrow \partial$</td>
+		<td></td>
+		<td></td>
+		<td>$\partial \downarrow$</td>
+	</tr>
+	<tr>
+		<td>$S^4_{120}$<br>
+		<td>$\underleftrightarrow{ \ \ \ \star \ \ \ }$</td>
+		<td>$S^4_{600}$<br>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>$S^4_5$<br>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>$S^4_{16}$<br>
+		<td>$\underleftrightarrow{ \ \ \ \star \ \ \ }$</td>
+		<td>$S^4_8$<br>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>$S^4_{24}$<br>
+	</tr>
+	<tr>
+		<td>$\partial \downarrow$</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>$\partial \searrow$</td>
+		<td>$\partial \downarrow$</td>
+		<td>$\swarrow \partial$</td>
+		<td style="text-align:left; vertical-align:top">
+			<!-- try to draw a SVG curve here -->
+			<svg
+				version="1.1"
+				baseProfile="full"
+				xmlns="http://www.w3.org/2000/svg"
+				width="500"
+				height="30"
+				style="border:0px; padding:0px; stroke-width: 0px; position:absolute"
+			>
+				<defs>
+					<marker id="EndArrowPrecise" stroke-width='1px' stroke="white" markerWidth="10" markerHeight="10" refX="5" refY="10" orient="180">
+						<path d="M 0,10 L 10,10 L 5,0 Z"/>
+					</marker>
+				</defs>
+				<path d="M 20,20 C 20,0, 200,20 200,0" stroke="white" fill="none" stroke-width="1px" marker-start="url(#EndArrowPrecise)"/>
+			</svg>
+		</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>$\partial \downarrow$</td>
+	</tr>
+	<tr>
+		<td>$S^3_{12}$<br>
+		<td>$\underleftrightarrow{ \ \ \ \star \ \ \ }$</td>
+		<td>$S^3_{20}$<br>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>$S^3_4$<br>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>$S^3_8$<br>
+		<td>$\underleftrightarrow{ \ \ \ \star \ \ \ }$</td>
+		<td>$S^3_6$<br>
+	</tr>
+	<tr>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>$\partial \searrow$</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>$\partial \searrow$</td>
+		<td>$\partial \downarrow$</td>
+		<td>$\swarrow \partial$</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>$\swarrow \partial$</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	</tr>
+	<tr>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>$S^2_5$</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>$S^2_3$</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>$S^2_4$</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>$S^2_{k \ge 6}$ ...</td>
+	</tr>
+	<tr>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>$\partial \searrow$</td>
+		<td>$\partial \downarrow$</td>
+		<td>$\swarrow \partial$</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>$\swarrow \partial$</td>
+	</tr>
+	<tr>
+		<td colspan=9>$S^1$</td>
+	</tr>
+</table>
+<br>
+<br>
+
 <hr>
 <br>
 
@@ -500,6 +655,417 @@ Is there a number theory reason that there are only 5 Platonic solids, and 6 reg
 
 If a regular convex polyhedron must have a dual then it and its dual must have transform groups that are equal to their surface polygon number of sides times the number of surface polygons, then
 what arrangements are possible simply by prime factorization?<br>
+<br>
+
+<hr>
+<br>
+
+<b>Vertex Central Angles:</b><br>
+<br>
+
+Dimension $n=1$:<br>
+$S^1 =$ line segment.
+Vertices $v = \{[1], [-1]\}$<br>
+<br>
+
+Dimension $n=2$:<br>
+$S^2_k, k \ge 3$ = a k-sided regular convex polytope.<br>
+Number of vertices and edges: $q(S^2_k) = \{ k, k \}$<br>
+The cosine of angle between adjacent vertexes is $cos(2 \pi / k)$.<br>
+A set of all cosines of angles between any two normalized vertices is $\mathbf{c}(S^2_k) = \{ cos (2 \pi j / k) \}$ for $0 \le j \le m$.<br>
+The vertex central angle of the polytope will be the 2nd largest of the set.  The largest will always be 1, corresponding with the inner product of any normalized vertex with itself.<br>
+Surface element $\partial S^2_k = S^1$ = line segment.<br>
+Our 1D surface polytopes are scaled by $a(S^2_k) = sin(\pi / k)$, translated by $b(S^2_k) = -cos(\pi / k)$, and rotated by $2 \pi j / k$ to fit in our 2D polytope.<br>
+<br>
+
+Specific cases that are used as 3D regular convex polytope surface elements:<br>
+$S^2_3 =$ triangle.<br>
+$\mathbf{c}(S^2_3 ) = \{1, -\frac{1}{2}\}$<br>
+$a(S^2_3) = \frac{\sqrt{3}}{2}$<br>
+$b(S^2_3) = -\frac{1}{2}$<br>
+<br>
+
+$S^2_4 =$ square<br>
+$\mathbf{c}(S^2_4) = \{1, 0, -1\}$<br>
+$a = \frac{1}{\sqrt{2}}$<br>
+$b = -\frac{1}{\sqrt{2}}$<br>
+<br>
+
+$S^2_5 =$ pentagon<br>
+$\mathbf{c}(S^2_5) = \{1, \frac{\sqrt{5} - 1}{4}, -\frac{1+\sqrt{5}}{4} \}$<br>
+$a = \frac{\sqrt{10 - 2 \sqrt{5}}}{8}$<br>
+$b = -\frac{1 + \sqrt{5}}{4}$<br>
+<br>
+
+
+Dimension $n=3$:<br>
+
+$S^3_4 =$ tetrahedron<br>
+$q = \{4, 6, 4\}$ = number of vertexes, edges, and faces.<br>
+$\mathbf{c}(S^3_4) = \{1, -\frac{1}{3}\}$ = cos angles between vertexes.<br>
+$\partial S^3_4 = S^2_3$ = surface polytope<br>
+$a = \frac{\sqrt{8}}{3}$ = surface element scale<br>
+$b = -\frac{1}{3}$ = surface element translation<br>
+<br>
+
+$S^3_6 =$ cube<br>
+$q = \{8, 12, 6\}$<br>
+$\mathbf{c}(S^3_6) = \{1, \frac{1}{3}, -\frac{1}{3}, -1\}$ = cos angles vertexes<br>
+$\partial S^3_6 = S^2_4 =$ surface polytope<br>
+$a = \sqrt{\frac{2}{3}} =$ surface element scale<br>
+$b = -\frac{1}{\sqrt{3}} =$ surface element translate<br>
+<br>
+
+$S^3_8 =$ octahedron
+$q = \{6, 12, 8\}$<br>
+$\mathbf{c}(S^3_8) = \{1,0,-1\}$ = cos angles<br>
+$\partial S^3_8 = S^2_3$ which has cos angles $\mathbf{c}(S^2_3) = \{1, -\frac{1}{2}\}$<br>
+$a=$<br>
+$b=$<br>
+<br>
+
+Nontrivial 3D:<br>
+$S^3_{12} =$ dodecahedron<br>
+$q = \{ 20, 30, 12 \}$<br>
+$\mathbf{c}(S^3_{12}) = \{1, \frac{\sqrt{5}}{3}, \frac{1}{3}, -\frac{1}{3}, -\frac{\sqrt{5}}{3}, -1 \}$ = cos angles<br>
+$\partial S^3_{12} = S^2_5 =$ surface which has cos angles $\mathbf{c}(S^2_5) = \{1, \frac{\sqrt{5} - 1}{4}, -\frac{1+\sqrt{5}}{4} \}$<br>
+$a=$<br>
+$b=$<br>
+<br>
+
+$S^3_{20} =$ icosahedron<br>
+$q = \{12, 30, 20\}$<br>
+$\mathbf{c}(S^3_{20}) = \{1, \frac{1}{\sqrt{5}}, -\frac{1}{\sqrt{5}}, -1\} =$ cos angles<br>
+$\partial S^3_{20} = S^2_3 =$ surface, which cos angles $\mathbf{c}(S^2_3) = \{1, -\frac{1}{2} \}$<br>
+$a=$<br>
+$b=$<br>
+<br>
+
+
+Dim $n=4$<br>
+<br>
+
+$S^4_5$
+$q = \{5, 10, 10, 5\}$<br>
+$c = \{1, -\frac{1}{4} \}$<br>
+$a = \frac{\sqrt{8}}{3}$<br>
+$b = -\frac{1}{3}$<br>
+<br>
+
+$S^4_8$<br>
+$q = \{16, 32, 24, 8\}$<br>
+$c = \{1, \frac{1}{2}, 0, -\frac{1}{2}, -1\}$<br>
+$a = \frac{\sqrt{3}}{2}$<br>
+$b = -\frac{1}{2}$<br>
+<br>
+
+$S^4_{16}$<br>
+$q = \{8, 24, 32, 16\}$<br>
+$c = \{1, 0, -1\}$<br>
+<br>
+
+(nontrivial:)<br>
+$S^4_{24}$<br>
+$q(S^4_{24}) = \{24, 96, 96, 24\}$<br>
+$\mathbf{c}(S^4_{24}) = \{ 1, \frac{1}{2}, 0, -\frac{1}{2}, -1 \}$<br>
+<br>
+
+$S^4_{120}$<br>
+$q(S^4_{120}) = \{600, 1200, 720, 120\}$<br>
+$\mathbf{c}(S^4_{120}) = \{
+	1,
+	\frac{1+3\sqrt{5}}{8},
+	\frac{5+\sqrt{5}}{8},
+	\frac{1+\sqrt{5}}{4},
+	\frac{3}{4},
+	\frac{-1+3\sqrt{5}}{8},
+	\frac{3+\sqrt{5}}{8},
+	\frac{\sqrt{5}}{4},
+	\frac{1}{2},
+	\frac{1+\sqrt{5}}{8},
+	\frac{5-\sqrt{5}}{8},
+	\frac{-1+\sqrt{5}}{4},
+	\frac{1}{4},
+	\frac{-1+\sqrt{5}}{8},
+	\frac{3-\sqrt{5}}{8},
+	0,
+	\frac{-3+\sqrt{5}}{8},
+	\frac{1-\sqrt{5}}{8},
+	-\frac{1}{4},
+	\frac{1-\sqrt{5}}{4},
+	\frac{-5+\sqrt{5}}{8},
+	-\frac{1+\sqrt{5}}{8},
+	-\frac{1}{2},
+	-\frac{\sqrt{5}}{4},
+	-\frac{3+\sqrt{5}}{8},
+	\frac{1-3\sqrt{5}}{8},
+	-\frac{3}{4},
+	-\frac{1+\sqrt{5}}{4},
+	-\frac{5+\sqrt{5}}{8},
+	-\frac{1+3\sqrt{5}}{8},
+	-1
+\}$<br>
+<br>
+
+$S^4_{600}$<br>
+$q(S^4_{600}) = \{120, 720, 1200, 600\}$<br>
+$\mathbf{c}(S^4_{600}) = \{  1, \frac{1 + \sqrt{5}}{4}, \frac{1}{2}, \frac{-1 + \sqrt{5}}{4}, 0, \frac{1 - \sqrt{5}}{4}, -\frac{1}{2}, \frac{-1 - \sqrt{5}}{4}, -1 \}$<br>
+<br>
+<br>
+
+Dim $n \gt 4$<br>
+<br>
+
+$S^n_{n+1}$<br>
+$\partial S=S^{n-1}_n$<br>
+$\mathbf{c}(S^n_{n+1}) = \{1, -\frac{1}{n} \}$<br>
+$a = \frac{\sqrt{n^2-1}}{n}$<br>
+$b = -\frac{1}{n}$<br>
+<br>
+
+$S^n_{2n}$<br>
+$\partial S=S^{n-1}_{2(n-1)}$<br>
+$\mathbf{c}(S^n_{2n}) = { 2k/n-1 }, 0 \le k \le n$<br>
+$a = \sqrt{\frac{n-1}{n}}$<br>
+$b = -\frac{1}{\sqrt{n}}$<br>
+<br>
+
+$S^n_{2^n}$<br>
+$\partial S=S^{n-1}_n$<br>
+$\mathbf{c}(S^n_{2^n}) = \{1, 0, -1\}$<br>
+$a =$<br>
+$b =$<br>
+<br>
+
+I'll go class by class through the trivial cases of regular convex polytopes: the simplex, the cube, and the orthoplex.<br>
+Since these three polytopes consistently exist in all dimensions past 4, let's formulaically describe their vertexes.<br>
+Let $V^n_{i,j} = $ the j'th component of the i'th vertex of a regular convex polytope of its type in dimension n.<br>
+<br>
+
+<b>Vertexes of a n-simplex:</b><br>
+n-simplexes have n+1 vertexes, so $V^n_{i,j}$ exists for $1 \le i \le n+1, 1 \le j \le n$.<br>
+We will assume the norm of each vertex is 1, i.e. $\langle V^n_i, V^n_k \rangle = 1$ for $i=k$, $c_n$ otherwise.<br>
+<br>
+
+Assume that, relative to the vertexes of the (n-1)-simplex, the vertexes of the n-simplex are scaled by some factor $a_n$ and shifted by some factor $b_n$<br>
+<br>
+
+Base case:<br>
+$n=1, V^1_1 = [1], V^1_2 = [-1]$<br>
+Next base case (in case the last one is too simple):<br>
+$
+	n=2,
+	V^2_1 = \left[\begin{matrix}
+		\frac{\sqrt{3}}{2} \\ -\frac{1}{2}
+	\end{matrix}\right],
+	V^2_2 = \left[\begin{matrix}
+		-\frac{\sqrt{3}}{2} \\ -\frac{1}{2}
+	\end{matrix}\right],
+	V^2_3 = \left[\begin{matrix}
+		0 \\ 1
+	\end{matrix}\right]
+$<br>
+So we can assert that $a_2 = \frac{\sqrt{3}}{2}, b_n = -\frac{1}{2}, c_n = -\frac{1}{2}$<br>
+<br>
+
+I'm going to assert that $b_n = -\frac{1}{n}$ and then prove this by induction.
+Also, thanks to normalization, we can deduce $(a_n)^2 + (b_n)^2 = 1$, so $a_n = \frac{\sqrt{n^2 - 1}}{n}$, which I'll show later.<br>
+Same with the fact that $b_n = c_n$, i.e. the amount that we have to translate the previous vertices into the new dimension is equal to the inner product of all vertices of that dimension's n-simplex.<br>
+<br>
+
+Inductive case:<br>
+Let's find our rescaling factor for our n-simplex recursive case:<br>
+<br>
+Assume our (n-1)-simplex has unit-length vertexes, i.e.:<br>
+$(V^{n-1}_{i,1})^2 + ... + (V^{n-1}_{i,n-1})^2 = 1$ for $1 \le i \le n$<br>
+Assume they all form equal angles, therefore their inner products are all equal, and equal to the induction assertion:<br>
+$(V^{n-1}_{i,1}) (V^{n-1}_{k,1}) + ... + (V^{n-1}_{i,n-1}) (V^{n-1}_{k,n-1}) = c_{n-1} = -\frac{1}{n-1}$ for $i \ne k$.<br>
+<br>
+
+Now to find the vertexes of the n-simplex, first we will take the vertexes of the (n-1)-simplex, rescale them by factor $a_n$, and translating them into the new dimension by $b_n$:<br>
+Let $V^n_{i,j} = a_n V^{n-1}_{i,j}$ for $1 \le 1 \le n, 1 \le j \lt n$.<br>
+Let $V^n_{i,n} = b_n$ for $1 \le i \le n$<br>
+Our unit norm vertexes will be:<br>
+$(V^n_{i,1})^2 + ... + (V^n_{i,n})^2 = 1$ for $1 \le i \le n$<br>
+...substitute our definition to find...<br>
+$(a_n V^{n-1}_1)^2 + ... + (a_n V^{n-1}_{n-1})^2 + (b_n)^2 = 1$<br>
+$(a_n)^2 ((V^{n-1}_1)^2 + ... + (V^{n-1}_{n-1})^2) + (b_n)^2 = 1$<br>
+...substitute our (n-1)-simplex unit length definition to find...<br>
+$(a_n)^2 + (b_n)^2 = 1$<br>
+$b_n = \pm \sqrt{1 - (a_n)^2}$<br>
+So for vertexes $1 \le i \le n$, we will take from $V^{n-1}$, scale by $a_n$, and offset into our new dimension by $b_n = \pm \sqrt{1 - (a_n)^2}$.<br>
+<br>
+
+Our last additional new vertex that is orthogonal in the new dimension must be unit length, so:<br>
+$V^n_{n+1,j} = \delta_{j,n}$, where $\delta_{j,k}$ is the Kronecher delta, i.e. the vertex component will be 1 for $j=n$ and 0 otherwise.<br>
+<br>
+
+How to find the rescaling factor? Let's ensure that all our angles are equal, and therefore all our inner products are equal:<br>
+$(V^n_{i,1}) (V^n_{k,1}) + ... + (V^n_{i,n}) (V^n_{k,n}) = c_n$ for $i \ne k$, for some constant $c_n$ to be determined.<br>
+<br>
+
+Let's look at angles between vertexes $1 \le i \le n$ and $n+1$:<br>
+$(V^n_{i,1}) (V^n_{n,1}) + ... + (V^n_{i,n-1}) (V^n_{n,n-1}) + (V^n_{i,n}) (V^n_{n,n}) = c_n$ for $1 \le i \le n$.<br>
+...substitute $V^n_i, 1 \le i \le n$ and final vertex $V^n_{n+1}$ definitions:<br>
+$(a_n V^{n-1}_{i,1}) \cdot 0 + ... + (a_n V^n_{i,n-1}) \cdot 0 + b_n \cdot 1 = c_n$ for $1 \le i \le n$.<br>
+$b_n = c_n$ for $1 \le i \le n$.<br>
+So now we know that our inner product of our normalized vertexes is equal to the amount that we have shifted our previous dimension's vertexes into the new dimension.<br>
+<br>
+
+Now consider the case for both $i,k \le n$:<br>
+$(a_n V^{n-1}_{i,1}) (a_n V^{n-1}_{k,1}) + ... + (a_n V^{n-1}_{i,n-1}) (a_n V^{n-1}_{k,n-1}) + (b_n)^2 = c_n$<br>
+$(a_n)^2 \left( (V^{n-1}_{i,1}) (V^{n-1}_{k,1}) + ... + (V^{n-1}_{i,n-1}) (V^{n-1}_{k,n-1}) \right) + (b_n)^2 = c_n$<br>
+...substitute induction case, and substitute $(b_n)^2$:<br>
+$(a_n)^2 c_{n-1} + (b_n)^2 = c_n$<br>
+...substitute our definition for $c_n$:<br>
+$(a_n)^2 c_{n-1} + 1 - (a_n)^2 = \pm \sqrt{1 - (a_n)^2}$<br>
+<br>
+
+Now let's prove that, for the base case of $\langle V^{n-1}_i, V^{n-1}_k \rangle = -\frac{1}{n-1}$,
+that the induction case is $\langle V^n_i, V^n_k \rangle = -\frac{1}{n}$:<br>
+Assume $\langle V^{n-1}_i, V^{n-1}_k \rangle = -\frac{1}{n-1}$:<br>
+$\langle V^n_i, V^n_k \rangle = (V^n_{i,1}) (V^n_{k,1}) + ... + (V^n_{i,n-1}) (V^n_{k,n-1}) + (V^n_{i,n}) (V^n_{k,n}) = -\frac{1}{n}$<br>
+$= (a_n V^{n-1}_{i,1}) (a_n V^{n-1}_{k,1}) + ... + (a_n V^{n-1}_{i,n-1}) (a_n V^{n-1}_{k,n-1}) + (b_n) (b_n) = -\frac{1}{n}$<br>
+$= (a_n)^2 \left( (V^{n-1}_{i,1}) (V^{n-1}_{k,1}) + ... + (V^{n-1}_{i,n-1}) (V^{n-1}_{k,n-1}) \right) + (b_n) (b_n) = -\frac{1}{n}$<br>
+$= (a_n)^2 ( -\frac{1}{n-1} ) + (b_n) (b_n) = -\frac{1}{n}$<br>
+$= \frac{n^2 - 1}{n^2} ( -\frac{1}{n-1} ) + \frac{1}{n^2} = -\frac{1}{n}$<br>
+$= -\frac{n + 1}{n^2} + \frac{1}{n^2} = -\frac{1}{n}$<br>
+$= -\frac{1}{n} = -\frac{1}{n}$<br>
+true.<br>
+
+<br>
+So, in summary:<br>
+$V^n_{i,j} = \frac{\sqrt{n^2-1}}{n} \cdot V^{n-1}_{i,j}$ for $1 \le i \le n, 1 \le j \le n-1$; $V^n_{i,n} = -\frac{1}{n}$ for $1 \le i \le n$.<br>
+$V^n_{n,j} = \delta_{n,j}$<br>
+<br>
+
+From here we can calculate all vertex elements of any n-simplex:<br>
+$V^1_{1,1} = 1$<br>
+$V^1_{2,1} = -1$<br>
+$V^n_{n,n+1} = 1$<br>
+$V^n_{1,1} = \Pi_{j=1}^n \frac{\sqrt{j^2 - 1}}{j}$<br>
+$V^n_{2,1} = \Pi_{j=1}^n \frac{\sqrt{j^2 - 1}}{j}$<br>
+<br>
+
+Vertices as column vectors, Varying dimension:<br>
+$\left[\begin{matrix}
+	1 & -1
+\end{matrix}\right],
+\left[\begin{matrix}
+	\frac{\sqrt{3}}{2} & -\frac{\sqrt{3}}{2} & 0 \\
+	-\frac{1}{2} & -\frac{1}{2} & 1
+\end{matrix}\right],
+\left[\begin{matrix}
+	\frac{\sqrt{3}}{2} \cdot \frac{\sqrt{8}}{3} & -\frac{\sqrt{3}}{2} \cdot \frac{\sqrt{8}}{3} & 0 & 0 \\
+	-\frac{1}{2} \cdot \frac{\sqrt{8}}{3} & -\frac{1}{2} \cdot \frac{\sqrt{8}}{3} & \frac{\sqrt{8}}{3} & 0 \\
+	-\frac{1}{3} & -\frac{1}{3} & -\frac{1}{3} & 1
+\end{matrix}\right],
+...,
+\left[\begin{matrix}
+	\Pi_{j=2}^n \frac{\sqrt{j^2-1}}{j}
+	& -\Pi_{j=2}^n \frac{\sqrt{j^2-1}}{j}
+	& 0
+	& 0
+	& ...
+	& 0
+	& 0
+	& 0 \\
+
+	-\frac{1}{2} \cdot \Pi_{j=3}^n \frac{\sqrt{j^2-1}}{j}
+	& -\frac{1}{2} \cdot \Pi_{j=3}^n \frac{\sqrt{j^2-1}}{j}
+	& \Pi_{j=3}^n \frac{\sqrt{j^2-1}}{j}
+	& 0
+	& ...
+	& 0
+	& 0
+	& 0 \\
+
+	-\frac{1}{3} \cdot \Pi_{j=4}^n \frac{\sqrt{j^2-1}}{j}
+	& -\frac{1}{3} \cdot \Pi_{j=4}^n \frac{\sqrt{j^2-1}}{j}
+	& -\frac{1}{3} \cdot \Pi_{j=4}^n \frac{\sqrt{j^2-1}}{j}
+	& \Pi_{j=4}^n \frac{\sqrt{j^2-1}}{j}
+	& ...
+	& 0
+	& 0
+	& 0 \\
+
+	...
+	& ...
+	& ...
+	& ...
+	& ...
+	& ...
+	& ...
+	& ... \\
+
+	-\frac{1}{n-2} \cdot \frac{\sqrt{(n-1)^2-1}}{n-1} \cdot \frac{\sqrt{n^2-1}}{n}
+	& -\frac{1}{n-2} \cdot \frac{\sqrt{(n-1)^2-1}}{n-1} \cdot \frac{\sqrt{n^2-1}}{n}
+	& -\frac{1}{n-2} \cdot \frac{\sqrt{(n-1)^2-1}}{n-1} \cdot \frac{\sqrt{n^2-1}}{n}
+	& -\frac{1}{n-2} \cdot \frac{\sqrt{(n-1)^2-1}}{n-1} \cdot \frac{\sqrt{n^2-1}}{n}
+	& ...
+	& \frac{\sqrt{(n-1)^2-1}}{n-1} \cdot \frac{\sqrt{n^2-1}}{n}
+	& 0
+	& 0 \\
+
+	-\frac{1}{n-1} \cdot \frac{\sqrt{n^2-1}}{n}
+	& -\frac{1}{n-1} \cdot \frac{\sqrt{n^2-1}}{n}
+	& -\frac{1}{n-1} \cdot \frac{\sqrt{n^2-1}}{n}
+	& -\frac{1}{n-1} \cdot \frac{\sqrt{n^2-1}}{n}
+	& ...
+	& -\frac{1}{n-1} \cdot \frac{\sqrt{n^2-1}}{n}
+	& \frac{\sqrt{n^2-1}}{n}
+	& 0 \\
+
+	-\frac{1}{n}
+	& -\frac{1}{n}
+	& -\frac{1}{n}
+	& -\frac{1}{n}
+	& ...
+	& -\frac{1}{n}
+	& -\frac{1}{n}
+	& 1
+\end{matrix}\right],
+$<br>
+<br>
+
+inner product of normalized vertices is $-\frac{1}{n}$<br>
+<br>
+
+<b>Vertexes of a n-hypercube:</b><br>
+normalized vertices:<br>
+$V^n_{i,j} = \frac{1}{\sqrt{n}} (-1)^{(j'th-digit-of-(i-minus-1))}$ for $1 \le i \le 2^n$<br>
+norm of vertices is $\Sigma_{j=1}^n (\frac{1}{\sqrt{n}})^2 = \Sigma_{j=1}^n \frac{1}{n} = 1$<br>
+inner product between neighboring vertices:
+	$\Sigma_{j=1}^{n-1} (\frac{1}{\sqrt{n}})^2 + (-\frac{1}{\sqrt{n}}) (\frac{1}{\sqrt{n}})
+	= \frac{n-1}{n} - \frac{1}{n}
+	= \frac{n-2}{n}$<br>
+<br>
+<br>
+
+<b>Vertexes of a n-orthoplex:</b><br>
+$V^n_{i,j} = (-1)^{\lfloor (i-1) / n \rfloor} \cdot \delta_{((i-1) \backslash n)+1,j}$ for $1 \le i \le 2n$<br>
+norm of vertices is 1.<br>
+inner product between neighboring vertices is 0.<br>
+<br>
+
+
+<hr>
+<br>
+
+Maybe later I'll prove this covers all regular convex polytopes...<br>
+Which is just a matter of showing surface nets and deficit angles and enumerating how many matching surface elements can fit in the deficit angles, then throwing duals in the mix ...
+<br>
+
+In 3D:<br>
+Start with triangle surface elements, which have 60-degree internal angle and form a plane with 6 of them.<br>
+Remove one to get 5, deficit angle of 60, surface dual of pentagon, continue tiling our triangles to get an icosahedron (20-sided), tile the surface dual to get the icoashedron dual of the dodecahedron (12-sided).<br>
+Remove one more to get 4, deficit angle of 120, surface dual of square, continue tiling our triangles to get an octahedron (8-sided), tile the surface dual to get the octahedron dual of the cube (6-sided).<br>
+Remove one more to get 3, deficit angle of 180, surface is triangle and therefore self-dual, continue tiling our triangles to get a tetrahedron (4-sided).<br>
+<br>
+
+In 4D:<br>
+Start with tetrahedron surface elements.  Honestly this is mind-bending enough for me.<br>
+Our surface net is a tetrahedron lattice of $\mathbb{R}^3$.  Now start removing them and examining deficit angles.<br>
 <br>
 
 	</body>

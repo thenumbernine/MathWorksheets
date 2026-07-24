@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<title>MHD Worksheet</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+		<link rel='stylesheet' href='../darkmode.css'></link>
+		<script type='text/javascript' src='../darkmode.js'></script>
+	</head>
+    <body>
+
+<h2>Ideal Microscopic Magnetohydrodynamics</h2>
+
+$\mu_0 = $ permeability of free space, in $[\frac{kg \cdot m}{C^2}]$<br>
+$\epsilon_0 = $ permittivity of free space, in $[\frac{C^2 \cdot s^2}{kg \cdot m^3}]$<br>
+$E = $ electrical field, in $[\frac{kg \cdot m}{C \cdot s^2}]$<br>
+$B = $ magnetic field, in $[\frac{kg}{C \cdot s}]$<br>
+$J = $ electrical current, per volume, in $[\frac{C}{m^2 \cdot s}]$<br>
+<br>
+
+Microscopic Maxwell Equations (Tells how a charge generates a field around it):<br>
+$\vec{\nabla} \cdot \vec{E} = \frac{\rho}{\epsilon_0}$<br>
+$\vec{\nabla} \cdot \vec{B} = 0$<br>
+$\vec{\nabla} \times \vec{E} = -\partial_t \vec{B}$<br>
+$\vec{\nabla} \times \vec{B} = \mu_0 ( \vec{J} + \epsilon_0 \partial_t \vec{E})$<br>
+<br>
+
+Ampere's law of the Microscopic Maxwell Equations:<br>
+$\vec{\nabla} \times \vec{B} = \mu_0 (\vec{J} + \epsilon_0 \partial_t \vec{E})$, in $[\frac{kg}{C \cdot m \cdot s}]$<br>
+${\epsilon^{ij}}_k \nabla_j B^k = \mu_0 (J^i + \epsilon_0 \partial_t E^i)$, in $[\frac{kg}{C \cdot m \cdot s}]$<br>
+${\epsilon^{ij}}_k \nabla_j B^k = \mu_0 J^i + \mu_0 \epsilon_0 \partial_t E^i$, in $[\frac{kg}{C \cdot m \cdot s}]$<br>
+...replace $\mu_0 \epsilon_0 = \frac{1}{c^2}$<br>
+${\epsilon^{ij}}_k \nabla_j B^k = \mu_0 J^i + \frac{1}{c^2} \partial_t E^i$, in $[\frac{kg}{C \cdot m \cdot s}]$<br>
+Assume that our electric field is a steady-state, i.e. $\partial_t E^i = 0$<br>
+$J^i = \frac{1}{\mu_0} {\epsilon^{ij}}_k \nabla_j B^k$, in $[\frac{C}{m^2 \cdot s}]$<br>
+<br>
+
+$q = $ electric charge, in $[C]$<br>
+$\sigma$ = electrical conductivity, in $[\frac{C^2 \cdot s^2}{kg \cdot m^3 \cdot s}]$<br>
+<br>
+
+Lorentz force law (Tells how a field influences a charge):<br>
+$\vec{F} = q (\vec{E} + \vec{v} \times \vec{B})$, in $[\frac{kg \cdot m}{s^2}]$<br>
+$F^i = q (E^i + {\epsilon^i}_{jk} v^j B^k)$, in $[\frac{kg \cdot m}{s^2}]$<br>
+$E^i = \frac{1}{q} F^i - {\epsilon^i}_{jk} v^j B^k$, in $[\frac{kg \cdot m}{C \cdot s^2}]$<br>
+Let $J^i / \sigma = F^i / q$, in $[\frac{kg \cdot m}{C \cdot s^2}]$ (TODO explain why)<br>
+$E^i = J^i / \sigma - {\epsilon^i}_{jk} v^j B^k$, in $[\frac{kg \cdot m}{C \cdot s^2}]$<br>
+<br>
+
+Maxwell-Faraday equation of the Microscopic Maxwell Equations:<br>
+$\partial_t \vec{B} = -\vec{\nabla} \times \vec{E}$<br>
+$\partial_t B^i = -{\epsilon^{ij}}_k \nabla_j E^k$<br>
+<br>
+
+(TODO flip valence of everything below here, to make it match my other EMHD flux eigensystem worksheets ... and double check or just use those).<br>
+<h3>Magnetic Field</h3>
+
+substitute Ampere's law into Lorentz force law:<br>
+$E^i = \frac{1}{\sigma\mu_0} {\epsilon^{ij}}_k \nabla_j B^k - {\epsilon^i}_{jk} v^j B^k$<br>
+$\eta = \frac{1}{\sigma\mu_0} = $ magnetic diffusivity<br>
+$E^i = \eta {\epsilon^{ij}}_k \nabla_j B^k - {\epsilon^i}_{jk} v^j B^k$<br>
+<br>
+
+substitute this into Maxwell-Faraday equation:<br>
+$ \partial_t B_i = -{\epsilon_i}^{jk} \nabla_j (\eta {\epsilon_k}^{lm} \partial_l B_m - {\epsilon_k}^{lm} v_l B_m)$<br>
+$ \partial_t B_i = {\epsilon_i}^{jk} {\epsilon_k}^{lm} \nabla_j (v_l B_m) - {\epsilon_i}^{jk} {\epsilon_k}^{lm} \nabla_j (\eta \partial_l B_m)$<br>
+Levi-Civita identity: ${\epsilon_i}^{jk} {\epsilon_k}^{lm} = \delta^{ij}_{kl} = \delta^i_k \delta^j_l - \delta^i_l \delta^j_k$<br>
+$ \partial_t B_i = (\delta^i_l \delta^j_m - \delta^i_m \delta^j_l) \nabla_j (v_l B_m) - (\delta^i_l \delta^j_m - \delta^i_m \delta^j_l) \nabla_j (\eta \partial_l B_m)$<br>
+assume $\eta$ is constant<br>
+$ \partial_t B_i = \nabla_j (v_i B_j - v_j B_i) - \eta (\nabla_i \nabla_j B_j - \nabla_j \nabla_j B_i)$<br>
+No magnetic monopoles: $\nabla_i B_i = 0$<br>
+$ \partial_t B_i = \nabla_j (v_i B_j - v_j B_i) + \eta \nabla_j \nabla_j B_i$<br>
+assume $\eta = 0$ (Why, after all this work of assuming it is constant?  Why not eliminate it sooner?)<br>
+$ \partial_t B_i = \nabla_j (v_i B_j - v_j B_i)$<br>
+$ \partial_t B_i + \nabla_j (B_i v_j - B_j v_i) = 0$<br>
+
+<h3>Momentum</h3>
+
+Lorentz force law:<br>
+$F_i = q (E_i + {\epsilon_i}^{jk} v_j B_k)$<br>
+assume $E_i = 0$ (why?  assuming $\partial_t E = 0$ makes sense for steady-state, but why assume the whole of the field isn't present?)<br>
+$\Pi^M_i = F_i =$ Magnetic force on fluid<br>
+$\Pi^M_i = {\epsilon_i}^{jk} q v_j B_k$<br>
+let $J_i = q v_i$<br>
+$\Pi^M_i = {\epsilon_i}^{jk} J_j B_k$<br>
+substitute Ampere's law approximation: $J_i = \frac{1}{\mu_0} {\epsilon_i}^{jk} \nabla_j B_k$<br>
+$\Pi^M_i = {\epsilon_i}^{jk} (\frac{1}{\mu_0} {\epsilon_j}^{lm} \partial_l B_m) B_k$<br>
+$\Pi^M_i = -\frac{1}{\mu_0} {\epsilon_i}^{kj} {\epsilon^{lm}}_j B_k \partial_l B_m$<br>
+$\Pi^M_i = \frac{1}{\mu_0} (\delta^i_m \delta^k_l - \delta^i_l \delta^k_m) B_k \partial_l B_m$<br>
+$\Pi^M_i = \frac{1}{\mu_0} (B_j \nabla_j B_i - B_j \nabla_i B_j)$<br>
+insert additional $\nabla_k B_k = 0$ terms, split $B_j \nabla_i B_j$ into two halves<br>
+$\Pi^M_i = \frac{1}{\mu_0} ((\nabla_j B_i) B_j + B_i (\nabla_j B_j) - B_i - \frac{1}{2} (\nabla_i B_j) B_j  - \frac{1}{2} B_j (\nabla_i B_j))$<br>
+un-distribute gradient:<br> 
+$\Pi^M_i = \frac{1}{\mu_0} (\nabla_j (B_i B_j) - \frac{1}{2} \nabla_i (B^2))$<br>
+$\Pi^M_i = \nabla_j (\frac{1}{\mu_0} (B_i B_j - \frac{1}{2} g^{ij} B_i B_j))$<br>
+$\Pi^M_i = \nabla_j \sigma_{ij}$<br>
+$\sigma_{ij} = \frac{1}{\mu_0} (B_i B_j - \frac{1}{2} g^{ij} B_i B_j) =$ Maxwell stress tensor for $E_i = 0$<br>
+<br>
+Change in momentum due to magnetic field:<br>
+$\Pi^M_i = -\frac{1}{2} \frac{1}{\mu_0} \nabla_j B^2 + \frac{1}{\mu_0} \nabla_j (B_i B_j)$<br>
+<br>
+
+Total change in momemtum:<br>
+$\partial_t \Pi_i = \partial_t \Pi^C_i + \partial_t \Pi^P_i + \partial_t \Pi^M_i$<br>
+$\partial_t \Pi_i = -\nabla_j (\rho v_i v_j) - \nabla_i P - \frac{1}{\mu_0} \frac{1}{2} \nabla_i B^2 + \frac{1}{\mu_0} \nabla_j (B_i B_j)$<br>
+$\partial_t \Pi_i + \nabla_j (\rho v_i v_j + g^{ij} P + \frac{1}{\mu_0} \frac{1}{2} g^{ij} B^2 - \frac{1}{\mu_0} B_i B_j) = 0$<br>
+<br>
+
+TODO maybe don't split off pressure so soon, instead maybe start with "equation of state" based on magnetic fluids: $E_{total} = \frac{1}{\gamma-1} P + \frac{1}{2} \rho v^2 + \frac{1}{2} B^2$ and go from there? Since EOS closes the equations.<br>
+Let $P_{mag} = \frac{1}{\mu_0} \frac{1}{2} B^2$<br>
+$\partial_t \Pi_i + \nabla_j (\rho v_i v_j + g^{ij} (P + P_{mag}) - \frac{1}{\mu_0} B_i B_j) = 0$<br>
+<br>
+Let $P_{total} = P + P_{mag}$<br>
+$\partial_t \Pi_i + \nabla_j (\rho v_i v_j + g^{ij} P_{total} - \frac{1}{\mu_0} B_i B_j) = 0$<br>
+<br>
+For $\Pi_i = $ total momentum $ = \rho v_i$ we find<br>
+$\partial_t (\rho v_i) + \nabla_j (\rho v_i v_j + g^{ij} P_{total} - \frac{1}{\mu_0} B_i B_j) = 0$<br>
+
+<h3>Energy</h3>
+
+Change in energy due to magnetic field (could use some better explaining):<br>
+$\int_\Omega \partial_t E_{total}^M dV = -\int_{\partial\Omega} B_k (v_k B_j - v_j B_k) dS_j$ <b>TODO</b> where does this come from? I'm guessing $\partial_t B_i$<br>
+$\int_\Omega \partial_t E_{total}^M dV = \int_\Omega \nabla_j (B_k (v_k B_j - v_j B_k)) dV$ via Green's theorem<br>
+$\partial_t E_{total}^M = \nabla_j (B_k (v_k B_j - v_j B_k))$ at any point<br>
+<br>
+
+Total change in total energy:<br>
+$\partial_t E_{total} = \partial_t E_{total}^C + \partial_t E_{total}^P + \partial_t E_{total}^M$<br>
+$\partial_t E_{total} = -\nabla_j (E_{hydro} v_j) - \nabla_j (P v_j) - \nabla_j \frac{1}{\mu_0} (v_j B^2 - B_k v_k B_j)$<br>
+$\partial_t E_{total} + \nabla_j ((E_{hydro} + P) v_j + \frac{1}{\mu_0} (v_j B^2 - B_k v_k B_j) = 0$<br>
+$\partial_t E_{total} + \nabla_j ((E_{hydro} + P) v_j + \frac{1}{\mu_0} B_k (v_j B_k - v_k B_j)) = 0$<br>
+$\partial_t E_{total} + \nabla_j ((E_{hydro} + P) v_j + \frac{1}{\mu_0} B^2 v_j - \frac{1}{\mu_0} B_k v_k B_j) = 0$<br>
+$\partial_t E_{total} + \nabla_j ((E_{hydro} + \frac{1}{2} \frac{1}{\mu_0} B^2 + P + \frac{1}{2} \frac{1}{\mu_0} B^2) v_j - \frac{1}{\mu_0} B_k v_k B_j) = 0$<br>
+<br>
+
+Let $E_{mag} = \frac{1}{2} \frac{1}{\mu_0} B^2$<br>
+$\partial_t E_{total} + \nabla_j ((E_{hydro} + E_{mag} + P + P_{mag}) v_j - \frac{1}{\mu_0} B_k v_k B_j) = 0$<br>
+<br>
+
+Let $E_{total} = E_{hydro} + E_{mag}$<br>
+Let $H_{total} = E_{total} + P_{total}$<br>
+$\partial_t E_{total} + \nabla_j (H_{total} v_j - \frac{1}{\mu_0} B_k v_k B_j) = 0$<br>
+<br>
+
+	</body>
+</html>

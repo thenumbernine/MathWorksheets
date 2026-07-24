@@ -2,14 +2,17 @@
 <html>
 	<head>
         <meta charset="utf-8">
-		<script type='text/javascript' src='../tryToFindMathJax.js'></script>
 		<title>Maxwell equations with octonions</title>
+		<script type='text/javascript' src='../tryToFindMathJax.js'></script>
+		<link rel='stylesheet' href='../darkmode.css'></link>
+		<script type='text/javascript' src='../darkmode.js'></script>
 	</head>
 	<body>
 
-Octonions from the Cayley-Dickson page:<br>
-$\matrix{
-		& e_0 & e_1 & e_2 & e_3 & e_4 & e_5 & e_6 & e_7 \\
+Octonions from the Cayley-Dickson page.  Table of $e_k = e_i \cdot e_j$.<br>
+$\begin{array}{c|cccccccc}
+	e_i \backslash e_j & e_0 & e_1 & e_2 & e_3 & e_4 & e_5 & e_6 & e_7 \\
+	\hline
 	e_0 & e_0 & e_1 & e_2 & e_3 & e_4 & e_5 & e_6 & e_7 \\
 	e_1 & e_1 & -e_0 & e_3 & -e_2 & e_5 & -e_4 & -e_7 & e_6 \\
 	e_2 & e_2 & -e_3 & -e_0 & e_1 & e_6 & e_7 & -e_4 & -e_5 \\
@@ -17,18 +20,94 @@ $\matrix{
 	e_4 & e_4 & -e_5 & -e_6 & -e_7 & -e_0 & e_1 & e_2 & e_3 \\
 	e_5 & e_5 & e_4 & -e_7 & e_6 & -e_1 & -e_0 & -e_3 & e_2 \\
 	e_6 & e_6 & e_7 & e_4 & -e_5 & -e_2 & e_3 & -e_0 & -e_1 \\
-	e_7 & e_7 & -e_6 & e_5 & e_4 & -e_3 & -e_2 & e_1 & -e_0 \\
-}$<br>
+	e_7 & e_7 & -e_6 & e_5 & e_4 & -e_3 & -e_2 & e_1 & -e_0
+\end{array}$<br>
 <br>
 
-in shorthand?:<br>
-$\matrix{
-					& e_0 a				& e_{123} \vec{A} 												& e_4 a 				& e_{567} \vec{A} 	\\
-	e_0 b 			& e_0 a b			& e_{123} \vec{A} b 											& e_4 a					& e_{567} \vec{A} b \\
-	e_{123} \vec{B} & e_{123} a \vec{B}	& -e_0 \vec{A} \cdot \vec{B} + e_{123} \vec{A} \times \vec{B}	& e_{567} a \vec{B} 	& -e_4 \vec{A} \cdot \vec{B} - e_{567} \vec{A} \times \vec{B} \\
-	e_4 b 			& e_4 a b			& -e_{567} \vec{A} b 											& -e_0 a b				& e_{123} \vec{A} b \\
-	e_{567} \vec{B} & e_{567} a \vec{B}	& e_4 \vec{A} \cdot \vec{B} - e_{567} \vec{A} \times \vec{B} 	& -e_{123} a \vec{B} 	& -e_0 \vec{A} \cdot \vec{B} - e_{123} \vec{A} \times \vec{B}
-}$<br>
+now to write this table in terms of vector operations:<br>
+<br>
+
+$(e_{123} \vec{A}) (e_{123} \vec{B})$<br>
+$= (e_1 A_x + e_2 A_y + e_3 A_z)(e_1 B_x + e_2 B_y + e_3 B_z)$<br>
+$= e_1 A_x (e_1 B_x + e_2 B_y + e_3 B_z)
+ + e_2 A_y (e_1 B_x + e_2 B_y + e_3 B_z)
+ + e_3 A_z (e_1 B_x + e_2 B_y + e_3 B_z)$<br>
+$= e_1 e_1 A_x B_x + e_1 e_2 A_x B_y + e_1 e_3 A_x B_z
+ + e_2 e_1 A_y B_x + e_2 e_2 A_y B_y + e_2 e_3 A_y B_z
+ + e_3 e_1 A_z B_x + e_3 e_2 A_z B_y + e_3 e_3 A_z B_z$<br>
+$=-e_0 A_x B_x + e_3 A_x B_y - e_2 A_x B_z
+ - e_3 A_y B_x - e_0 A_y B_y + e_1 A_y B_z
+ + e_2 A_z B_x - e_1 A_z B_y - e_0 A_z B_z$<br>
+$=-e_0 (A_x B_x + A_y B_y + A_z B_z)
+ + e_1 (A_y B_z - A_z B_y)
+ + e_2 (A_z B_x - A_x B_z)
+ + e_3 (A_x B_y - A_y B_x)$<br>
+$= -e_0 \vec{A} \cdot \vec{B} + e_{123} \vec{A} \times \vec{B}$<br>
+<br>
+
+$(e_{123} \vec{A}) (e_{567} \vec{B})$<br>
+$= (e_1 A_x + e_2 A_y + e_3 A_z)(e_5 B_x + e_6 B_y + e_7 B_z)$<br>
+$= e_1 A_x (e_5 B_x + e_6 B_y + e_7 B_z)
+ + e_2 A_y (e_5 B_x + e_6 B_y + e_7 B_z)
+ + e_3 A_z (e_5 B_x + e_6 B_y + e_7 B_z)$<br>
+$= e_1 e_5 A_x B_x + e_1 e_6 A_x B_y + e_1 e_7 A_x B_z
+ + e_2 e_5 A_y B_x + e_2 e_6 A_y B_y + e_2 e_7 A_y B_z
+ + e_3 e_5 A_z B_x + e_3 e_6 A_z B_y + e_3 e_7 A_z B_z$<br>
+$=-e_4 A_x B_x - e_7 A_x B_y + e_6 A_x B_z
+ + e_7 A_y B_x - e_4 A_y B_y - e_5 A_y B_z
+ - e_6 A_z B_x + e_5 A_z B_y - e_4 A_z B_z$<br>
+$=-e_4 (A_x B_x + A_y B_y + A_z B_z)
+	- e_5 (A_y B_z - A_z B_y)
+	- e_6 (A_z B_x - A_x B_z)
+	- e_7 (A_x B_y - A_y B_x)$<br>
+$=-e_4 \vec{A} \cdot \vec{B} - e_{567} \vec{A} \times \vec{B}$<br>
+<br>
+
+$(e_{567} \vec{A}) (e_{123} \vec{B})$<br>
+$= (e_5 A_x + e_6 A_y + e_7 A_z)(e_1 B_x + e_2 B_y + e_3 B_z)$<br>
+$= e_5 A_x (e_1 B_x + e_2 B_y + e_3 B_z)
+ + e_6 A_y (e_1 B_x + e_2 B_y + e_3 B_z)
+ + e_7 A_z (e_1 B_x + e_2 B_y + e_3 B_z)$<br>
+$= e_5 e_1 A_x B_x + e_5 e_2 A_x B_y + e_5 e_3 A_x B_z
+ + e_6 e_1 A_y B_x + e_6 e_2 A_y B_y + e_6 e_3 A_y B_z
+ + e_7 e_1 A_z B_x + e_7 e_2 A_z B_y + e_7 e_3 A_z B_z$<br>
+$= e_4 A_x B_x - e_7 A_x B_y + e_6 A_x B_z
+ + e_7 A_y B_x + e_4 A_y B_y - e_5 A_y B_z
+ - e_6 A_z B_x + e_5 A_z B_y + e_4 A_z B_z$<br>
+$= e_4 (A_x B_x + A_y B_y + A_z B_z)
+	- e_5 (A_y B_z - A_z B_y)
+	- e_6 (A_z B_x - A_x B_z)
+	- e_7 (A_x B_y - A_y B_x)$<br>
+$= e_4 \vec{A} \cdot \vec{B} - e_{567} \vec{A} \times \vec{B}$<br>
+<br>
+
+$(e_{567} \vec{A}) (e_{567} \vec{B})$<br>
+$= (e_5 A_x + e_6 A_y + e_7 A_z)(e_5 B_x + e_6 B_y + e_7 B_z)$<br>
+$= e_5 A_x (e_5 B_x + e_6 B_y + e_7 B_z)
+ + e_6 A_y (e_5 B_x + e_6 B_y + e_7 B_z)
+ + e_7 A_z (e_5 B_x + e_6 B_y + e_7 B_z)$<br>
+$= e_5 e_5 A_x B_x + e_5 e_6 A_x B_y + e_5 e_7 A_x B_z
+ + e_6 e_5 A_y B_x + e_6 e_6 A_y B_y + e_6 e_7 A_y B_z
+ + e_7 e_5 A_z B_x + e_7 e_6 A_z B_y + e_7 e_7 A_z B_z$<br>
+$=-e_0 A_x B_x - e_3 A_x B_y + e_2 A_x B_z
+ + e_3 A_y B_x - e_0 A_y B_y - e_1 A_y B_z
+ - e_2 A_z B_x + e_1 A_z B_y - e_0 A_z B_z$<br>
+$=-e_0 (A_x B_x + A_y B_y + A_z B_z)
+	- e_1 (A_y B_z - A_z B_y)
+	- e_2 (A_z B_x - A_x B_z)
+	- e_3 (A_x B_y - A_y B_x)$<br>
+$= -e_0 \vec{A} \cdot \vec{B} - e_{123} \vec{A} \times \vec{B}$<br>
+<br>
+
+In shorthand:<br>
+$\begin{array}{c|cccc}
+					& e_0 b				& e_{123} \vec{B} 												& e_4 b 				& e_{567} \vec{B} 												\\
+	\hline
+	e_0 a 			& e_0 a b			& e_{123} a \vec{B} 											& e_4 a b				& e_{567} a \vec{B}												\\
+	e_{123} \vec{A} & e_{123} \vec{A} b	& -e_0 \vec{A} \cdot \vec{B} + e_{123} \vec{A} \times \vec{B}	& e_{567} \vec{A} b 	& -e_4 \vec{A} \cdot \vec{B} - e_{567} \vec{A} \times \vec{B}	\\
+	e_4 a 			& e_4 a b			& -e_{567} a \vec{B} 											& -e_0 a b				& e_{123} a \vec{B} 											\\
+	e_{567} \vec{A} & e_{567} \vec{A} b	& e_4 \vec{A} \cdot \vec{B} - e_{567} \vec{A} \times \vec{B} 	& -e_{123} \vec{A} b 	& -e_0 \vec{A} \cdot \vec{B} - e_{123} \vec{A} \times \vec{B}
+\end{array}$<br>
 <br>
 
 This is just an idea of incorporating vector notation.  Not a good one though.  What would be a better one?<br>
@@ -37,42 +116,43 @@ This is just an idea of incorporating vector notation.  Not a good one though.  
 <hr>
 <br>
 
-$J = e_1 J_x + e_2 J_y + e_3 J_z$<br>
+$J = e_1 J_x + e_2 J_y + e_3 J_z = e_{123} \vec{J}$<br>
 <br>
 
-$E = e_1 E_x + e_2 E_y + e_3 E_z$<br>
+$E = e_1 E_x + e_2 E_y + e_3 E_z = e_{123} \vec{E}$<br>
 <br>
 
-$B = e_1 B_x + e_2 B_y + e_3 B_z$<br>
+$B = e_1 B_x + e_2 B_y + e_3 B_z = e_{123} \vec{B}$<br>
 <br>
 
 $F = E - e_4 B$<br>
 $F = e_1 E_x + e_2 E_y + e_3 E_z + e_5 B_x + e_6 B_y + e_7 B_z$<br>
-<Br>
+$F = e_{123} \vec{E} + e_{567} \vec{B}$<br>
+<br>
 
-$D = e_1 \partial_x + e_2 \partial_y + e_3 \partial_z - e_4 \partial_t$<br>
+$D = e_1 \partial_x + e_2 \partial_y + e_3 \partial_z - e_4 \partial_t = e_{123} \vec{\nabla} - e_4 \partial_t$<br>
 <br>
 
 $K = e_4 (J + e_4 \rho)$<br>
 $K = -e_0 \rho - e_5 J_x - e_6 J_y - e_7 J_z$<br>
+$K = -e_0 \rho - e_{567} \vec{J}$<br>
 <br>
 
 $D F = K$<br>
 <br>
 
-gives...<br>
+...gives...<br>
 $(e_1 \partial_x + e_2 \partial_y + e_3 \partial_z - e_4 \partial_t) (e_1 E_x + e_2 E_y + e_3 E_z + e_5 B_x + e_6 B_y + e_7 B_z) = -e_0 \rho - e_5 J_x - e_6 J_y - e_7 J_z$<br>
 $(e_{123} \vec{\nabla} - e_4 \partial_t) ( e_{123} \vec{E} + e_{567} \vec{B}) = -e_0 \rho - e_{567} \vec{J}$<br>
-$e_{123} \vec{\nabla} e_{123} \vec{E} 
-	- e_4 \partial_t e_{123} \vec{E} 
-	+ e_{123} \vec{\nabla} e_{567} \vec{B} 
-	- e_4 \partial_t e_{567} \vec{B} 
+$e_{123} \vec{\nabla} e_{123} \vec{E}
+	- e_4 \partial_t e_{123} \vec{E}
+	+ e_{123} \vec{\nabla} e_{567} \vec{B}
+	- e_4 \partial_t e_{567} \vec{B}
 	= -e_0 \rho - e_{567} \vec{J}$<br>
-$
--e_0 (\vec{\nabla} \cdot \vec{E}) + e_{123} (\vec{\nabla} \times \vec{E})
-	+ e_{567} \partial_t \vec{E} 
+$-e_0 (\vec{\nabla} \cdot \vec{E}) + e_{123} (\vec{\nabla} \times \vec{E})
+	+ e_{567} \partial_t \vec{E}
 	- e_4 \vec{\nabla} \cdot \vec{B} - e_{567} (\vec{\nabla} \times \vec{B})
-	+ e_{123} \partial_t \vec{B} 
+	- e_{123} \partial_t \vec{B}
 	= -e_0 \rho - e_{567} \vec{J}$<br>
 <br>
 
@@ -80,9 +160,96 @@ unraveled:<br>
 $\begin{matrix}
 	e_0:	& \vec{\nabla} \cdot \vec{E} = \rho \\
 	e_4:	& \vec{\nabla} \cdot \vec{B} = 0 \\
-	e_{123}:& \partial_t \vec{B} + \vec{\nabla} \times \vec{E}  = 0 \\
+	e_{123}:& -\partial_t \vec{B} + \vec{\nabla} \times \vec{E}  = 0 \\
 	e_{567}:& -\partial_t \vec{E} + \vec{\nabla} \times \vec{B} = \vec{J}
 \end{matrix}$<br>
+<br>
+
+alternative signs:<br>
+$(e_{123} \vec{\nabla} + e_4 \partial_t) ( e_{123} \vec{E} + e_{567} \vec{B}) = -e_0 \rho - e_{567} \vec{J}$<br>
+$
+	e_{123} \vec{\nabla} e_{123} \vec{E}
+	+ e_4 \partial_t e_{123} \vec{E}
+	+ e_{123} \vec{\nabla} e_{567} \vec{B}
+	+ e_4 \partial_t e_{567} \vec{B}
+	= -e_0 \rho - e_{567} \vec{J}
+$<br>
+$
+	-e_0 \vec{\nabla} \cdot \vec{E}
+	+ e_{123} \vec{\nabla} \times \vec{E}
+	- e_{567} \partial_t \vec{E}
+	- e_4 \vec{\nabla} \cdot \vec{B}
+	- e_{567} \vec{\nabla} \times \vec{B}
+	+ e_{123} \partial_t \vec{B}
+	= -e_0 \rho - e_{567} \vec{J}
+$<br>
+$
+	\vec{\nabla} \cdot \vec{E} = \rho;
+	\vec{\nabla} \cdot \vec{B} = 0;
+	\partial_t \vec{B} + \vec{\nabla} \times \vec{E} = 0;
+	- \partial_t \vec{E} - \vec{\nabla} \times \vec{B} = - \vec{J}
+$<br>
+<br>
+
+$(e_{123} \vec{\nabla} + e_4 \partial_t) ( e_{123} \vec{E} - e_{567} \vec{B}) = -e_0 \rho - e_{567} \vec{J}$<br>
+$
+	e_{123} \vec{\nabla} e_{123} \vec{E}
+	+ e_4 \partial_t e_{123} \vec{E}
+	- e_{123} \vec{\nabla} e_{567} \vec{B}
+	- e_4 \partial_t e_{567} \vec{B}
+	= -e_0 \rho - e_{567} \vec{J}$<br>
+$
+	-e_0 \vec{\nabla} \cdot \vec{E}
+	+ e_{123} \vec{\nabla} \times \vec{E}
+	- e_{567} \partial_t \vec{E}
+	+ e_4 \vec{\nabla} \cdot \vec{B}
+	+ e_{567} \vec{\nabla} \times \vec{B}
+	- e_{123} \partial_t \vec{B}
+	= -e_0 \rho - e_{567} \vec{J}$<br>
+$
+	\vec{\nabla} \cdot \vec{E} = \rho;
+	\vec{\nabla} \cdot \vec{B} = 0;
+	-\partial_t \vec{B} + \vec{\nabla} \times \vec{E} = 0;
+	-\partial_t \vec{E} + \vec{\nabla} \times \vec{B} = -\vec{J}$<br>
+<br>
+
+$(e_{123} \vec{\nabla} - e_4 \partial_t) ( e_{123} \vec{E} + e_{567} \vec{B}) = -e_0 \rho - e_{567} \vec{J}$<br>
+$
+	e_{123} \vec{\nabla} e_{123} \vec{E}
+	- e_4 \partial_t e_{123} \vec{E}
+	+ e_{123} \vec{\nabla} e_{567} \vec{B}
+	- e_4 \partial_t e_{567} \vec{B}
+	= -e_0 \rho - e_{567} \vec{J}$<br>
+$
+	-e_0 \vec{\nabla} \cdot \vec{E}
+	+ e_{123} \vec{\nabla} \times \vec{E}
+	+ \partial_t e_{567} \vec{E}
+	- e_4 \vec{\nabla} \cdot \vec{B}
+	- e_{567} \vec{\nabla} \times \vec{B}
+	- e_{123} \partial_t \vec{B}
+	= -e_0 \rho - e_{567} \vec{J}$<br>
+$
+	\vec{\nabla} \cdot \vec{E} = \rho;
+	\vec{\nabla} \cdot \vec{B} = 0;
+	- \partial_t \vec{B} + \vec{\nabla} \times \vec{E} = 0;
+	- \partial_t \vec{E} + \vec{\nabla} \times \vec{B} = \vec{J}$<br>
+<br>
+
+$(e_{123} \vec{\nabla} - e_4 \partial_t) ( e_{123} \vec{E} - e_{567} \vec{B}) = -e_0 \rho - e_{567} \vec{J}$<br>
+<br>
+
+Desired:<br>
+$\vec{\nabla} \cdot \vec{E} = \rho$<br>
+$\vec{\nabla} \cdot \vec{B} = 0$<br>
+$\partial_t B + \vec{\nabla} \times \vec{E} = 0$<br>
+$-\partial_t E + \vec{\nabla} \times \vec{B} = \vec{J}$<br>
+<br>
+
+So there's one sign off.  How to fix it.  Turns out you can't do $D F = K$ using the $e_i$ basis.  You can, however, do it using anti-associativity of certain octonion basis elements:<br>
+<br>
+
+$D E - (D e_4) B = K$<br>
+gives us our desired results.<br>
 <br>
 
 	</body>

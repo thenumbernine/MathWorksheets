@@ -1,0 +1,87 @@
+
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<title>MHD A-wave</title>
+		<script type='text/javascript' src='../tryToFindMathJax.js'></script>
+		<link rel='stylesheet' href='../darkmode.css'></link>
+		<script type='text/javascript' src='../darkmode.js'></script>
+	</head>
+	<body>
+
+from 2023 Warnecke et al - Numerical evidence for a small-scale dynamo approaching solar magnetic Prandtl numbers<br>
+<br>
+
+paper says:<br>
+$\frac{Du}{Dt} = -c_s^2 \nabla ln \rho + J \times B / \rho + \nabla \cdot (2 \rho \nu S) / \rho + f$<br>
+$\frac{\partial A}{\partial t} = u \times B + \eta \nabla^2 A$<br>
+$\frac{D \rho}{D t} = - \nabla \cdot (\rho u)$<br>
+<br>
+
+after simplifying becomes...<br>
+$\rho \partial_t u_i + \rho u^j \partial_j u_i = 
+	-c_s^2 \partial_i \rho 
+	+ \epsilon_{ijk} J_j B_k
+	+ \partial_j (2 \rho \nu S_{ij})
+	+ \rho f_i$<br>
+$\partial_t A_i = \epsilon_{ijk} u_j B_k + \eta \partial^j \partial_j A_i$<br>
+$\partial_t \rho + \rho \partial_j u_j + 2 u_j \partial_j \rho = 0$<br>
+<br>
+... this is different from the source 2000 Brandenburg,  and different from all other MHD / compressible fluid dynamics literature<br>.
+It has an extra term.  Maybe if the $D_t$ was replaced with a $\partial_t$ it'd match.
+<br>
+
+... while the source says ...<br>
+2000 Brandenburg "The inverse cascade and nonlinear alpha-effect in simulations of isotropic helical hydromagnetic turbulence":<br>
+<br>
+
+$\partial_t ln \rho + u^j \partial_j ln \rho = -\partial_j u_j$<br>
+$\frac{1}{\rho} \partial_t \rho + \frac{1}{\rho} u^j \partial_j \rho = -\partial_j u_j$<br>
+$\partial_t \rho + u^j \partial_j \rho = -\rho \partial_j u_j$<br>
+$\partial_t \rho + u^j \partial_j \rho + \rho \partial_j u_j = 0$<br>
+$\partial_t \rho + \partial_j (\rho u_j) = 0$<br>
+...which is correct compressible Euler equations.<br>
+so I'll use this for the 3rd IVP equation going forward.<br>
+<br>
+
+2023 also says $B = \nabla \times A$ and $J = \nabla \times B / \mu_0$<br>
+<br>
+$\rho \partial_t u_i + \rho u^j \partial_j u_i = 
+	-c_s^2 \partial_i \rho 
+	+ \epsilon_{ijk} J_j B_k
+	+ \partial_j (2 \rho \nu S_{ij})
+	+ \rho f_i$<br>
+$\partial_t A_i = \epsilon_{ijk} u_j B_k + \eta \partial^j \partial_j A_i$<br>
+$\partial_t \rho + \rho \partial_j u_j + 2 u_j \partial_j \rho = 0$<br>
+<br>
+
+$\rho \partial_t u_i 
+	+ \rho u^j \partial_j u_i 
+	+ c_s^2 \partial_i \rho 
+	- \frac{1}{\mu_0} \epsilon_{ijk} B_k \epsilon_{jmn} \partial_m B_n
+	- \partial_j (2 \rho \nu S_{ij})
+	= 
+	\rho f_i$<br>
+$\partial_t A_i - \epsilon_{ijk} u_j B_k - \eta \partial^j \partial_j A_i = 0$<br>
+$\partial_t \rho + \rho \partial_j u_j + u_j \partial_j \rho = 0$<br>
+<br>
+
+$  \partial_t (\rho u_i)
+	+ \partial_j (\rho u_i u_j)
+
+	+ c_s^2 \partial_i \rho 
+	+ \frac{1}{\mu_0} B_j \partial_i B_j
+	- \frac{1}{\mu_0} B_j \partial_j B_i
+	- \partial_j (2 \rho \nu S_{ij})
+	
+	= 
+	\rho f_i$<br>
+$\partial_t A_i - \epsilon_{ijk} u_j B_k - \eta \partial^j \partial_j A_i = 0$<br>
+$\partial_t \rho + \partial_j (u_j \rho) = 0$<br>
+<br>
+
+
+
+	</body>
+</html>

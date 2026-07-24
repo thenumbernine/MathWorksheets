@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<title>MHD Worksheet</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+		<link rel='stylesheet' href='../darkmode.css'></link>
+		<script type='text/javascript' src='../darkmode.js'></script>
+	</head>
+    <body>
+
+<h3>Macroscopic Magnetohydrodynamics</h3>
+
+$\epsilon_0 =$ permittivity of free space<br>
+${(\chi_e)_i}^j =$ electric susceptability tensor<br>
+${(\epsilon_r)_i}^j = \delta_i^j + {(\chi_e)_i}^j =$ relative permittivity of material<br>
+${\epsilon_i}^j = \epsilon_0 {(\epsilon_r)_i}^j =$ permittivity of material<br>
+$E_i = $ electric field<br>
+$P_i = \epsilon_0 {(\chi_e)_i}^j E_j$ = polarization field (is it always linear though?)<br>
+$D_i = \epsilon_0 E_i + P_i = \epsilon_0 {(\epsilon_r)_i}^j E_j = {\epsilon_i}^j E_j = $ displacement field<br>
+<br>
+
+$\mu_0 =$ permeability of free space<br>
+${(\chi_m)_i}^j =$ magnetic susceptability<br>
+${(\mu_r)_i}^j = \delta_i^j + {(\chi_m)_i}^j = $ relative permeability of material<br>
+${\mu_i}^j = \mu_0 {(\mu_r)_i}^j =$ permeability of material<br>
+$H_i =$ magnetizing field<br>
+$M_i = \mu_0 ({\chi_m)_i}^j H_j =$ magnetization field<br>
+$B_i = \mu_0 H_i + M_i = \mu_0 ({\mu_r)_i}^j H_j = {\mu_i}^j H_j =$ magnetic field<br>
+<br>
+
+$\rho = \rho_{bound} + \rho_{free}$<br>
+$\vec{J} = \vec{J}_{bound} + \vec{J}_{free}$<br>
+<br>
+
+Therefore<br>
+$\vec{\nabla} \cdot \vec{E} = \frac{\rho}{\epsilon_0}$ = Microscopic Maxwell Charge:<br>
+$\epsilon_0 \vec{\nabla} \cdot \vec{E} = \rho = \rho_{free} + \rho_{bound}$ = Microscopic Maxwell Charge:<br>
+Now start with the polarization field divegence:<br>
+$\vec{\nabla} \cdot \vec{P} = \vec{\nabla} \cdot (\epsilon \cdot \vec{E})$<br>
+$\vec{\nabla} \cdot \vec{P} = (\vec{\nabla} \cdot \epsilon) \vec{E} + \epsilon (\vec{\nabla} \cdot \vec{E})$<br>
+...assume $\vec{\nabla} \cdot \epsilon = 0$ and substitute the electric field divergence:<br>
+$\vec{\nabla} \cdot \vec{P} = \frac{\epsilon}{\epsilon_0} \rho$<br>
+...idk what to do next, but the result needs to be...<br>
+$-\vec{\nabla} \cdot \vec{P} = \rho_{bound}$<br>
+TODO So where is this definition from?  How is it derived?<br>
+<br>
+
+$\vec{J}_{bound} = \vec{\nabla} \times \vec{M} + \partial_t \vec{P}$ (same, verify plz)<br>
+<br>
+
+Macroscopic Maxwell Equations (Tells how a charge generates a field around it):<br>
+$\vec{\nabla} \cdot \vec{D} = \rho_{free}$<br>
+$\vec{\nabla} \cdot \vec{B} = 0$<br>
+<br>
+
+$\partial_t \vec{B} + \vec{\nabla} \times \vec{E} = 0$<br>
+$\partial_t \vec{D} - \vec{\nabla} \times \vec{H} = -\vec{J}_{free}$<br>
+<br>
+
+aka<br>
+$\partial_t \vec{B} + \vec{\nabla} \times (\epsilon^{-1} \cdot \vec{D}) = 0$<br>
+$\partial_t \vec{D} - \vec{\nabla} \times (\mu^{-1} \cdot \vec{B}) = -\vec{J}_{free}$<br>
+<br>
+
+So now if I want to argue that $\partial_t \vec{E} = $ due to electric field steady state, can I still argue that $\partial_t \vec{P} = 0$ such that $\partial_t \vec{D} = 0$?<br>
+Only if so do we lose the 2nd time-derivative equation and are left with the 1st time-derivative equation... which is the same found in microscopic ideal MHD, except we would be now using a non-vacuum permittivity.<br>
+<br>
+
+	</body>
+</html>

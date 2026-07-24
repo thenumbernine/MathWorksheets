@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<title>MHD Worksheet</title>
+		<script type="text/javascript" src='../tryToFindMathJax.js'></script>
+		<link rel='stylesheet' href='../darkmode.css'></link>
+		<script type='text/javascript' src='../darkmode.js'></script>
+	</head>
+    <body>
+
+<h3>Similarity Transforms:</h3>
+
+$\partial_t U_i(x,t) + \partial_{x_j} F_{ij}(U(x,t)) = 0$<br>
+<br>
+substitute $\tilde{F}_{ij}$ and $\tilde{U}_i$ into conservative equations<br>
+$\partial_t \tilde{U}_i + \partial_{x_j} (\tilde{F}_{ij} + \xi_j \tilde{U}_i) = 0$<br>
+<br>
+time derivative of state (in self-similar form)<br>
+$\partial_t \tilde{U}_i = {\partial\tilde{U}_i\over\partial\xi_j} {\partial\xi_j\over\partial t} = -{x_j\over t^2} \partial_{\xi_j} \tilde{U}_i$<br>
+substitute $\xi_j = {x_j\over t}$<br>
+$\partial_t \tilde{U}_i = -{1\over t} \xi_j \partial_{\xi_j} \tilde{U}_i$<br>
+<br>
+spatial derivative of flux (in self-similar form)<br>
+$\partial_{x_j} F_{ij} = \partial_{x_j} (\tilde{F}_{ij} + \xi_j \tilde{U}_i)$<br>
+$= {{\partial \xi_j}\over{\partial x_j}} \partial_{\xi_j} (\tilde{F}_{ij} + \xi_j \tilde{U}_i)$<br>
+$= {1\over t} (\partial_{\xi_j} \tilde{F}_{ij} + (\partial_{\xi_j} \xi_j) \tilde{U}_i + \xi_j \partial_{\xi_j} \tilde{U}_i)$<br>
+$= {1\over t} (\partial_{\xi_j} \tilde{F}_{ij} + n \tilde{U}_i) + {1\over t} \xi_j \partial_{\xi_j} \tilde{U}_i$ for $n$ dimensions<br>
+
+substitute to find:<br>
+$ -{1\over t} \xi_j \partial_{\xi_j} \tilde{U}_i
+	+ {1\over t} (\partial_{\xi_j} \tilde{F}_{ij} + n \tilde{U}_i) + {1\over t} \xi_j \partial_{\xi_j} \tilde{U}_i = 0$<br>
+<br>
+
+simplifies to<br>
+$n \tilde{U}_i + \partial_{\xi_j} \tilde{F}_{ij} = 0$<br>
+<br>
+
+finite volume form:<br>
+$\int_\Omega (n \tilde{U}_i + \partial_{\xi_j} \tilde{F}_{ij}) dx = 0$<br>
+$\int_\Omega dx n \tilde{U}_i + \int_\Omega \partial_{\xi_j} \tilde{F}_{ij} dx = 0$<br>
+$|\Omega| n \tilde{U}_i + \int_{\partial\Omega} \tilde{F}_{ij} n_j d\sigma = 0$<br>
+discretize:<br>
+$\Delta \xi n \tilde{U}_i + \tilde{F}_{ij}(x_R) - \tilde{F}_{ij}(x_L) = 0$<br>
+$n \tilde{U}_i + {1\over\Delta \xi}(\tilde{F}_{ij}(x_R) - \tilde{F}_{ij}(x_L)) = 0$<br>
+...for $\Delta \xi = \Pi_{k=1}^n \Delta \xi_k$<br>
+
+<h3>Similarity Transform of MHD Equations:</h3>
+
+$U_i = \tilde{U}_i = \left[\begin{matrix}
+	\rho \\ \rho v_i \\ B_i \\ E_{total} 
+\end{matrix}\right]$<br>
+<br>
+$F_{ij} = \left[\begin{matrix}
+	\rho v_j \\ 
+	\rho v_i v_j + g^{ij} P_{total} - \frac{1}{\mu_0} B_i B_j \\ 
+	B_i v_j - B_j v_i \\ 
+	(E_{total} + P_{total}) v_j - \frac{1}{\mu_0} B_k v_k B_j
+\end{matrix}\right]$<br>
+<br>
+$\tilde{F}_{ij} = F_{ij} - \xi_j \tilde{U}_i = \left[\begin{matrix}
+	\rho (v_j - \xi_j) \\ 
+	\rho v_i (v_j - \xi_j) + g^{ij} P_{total} - \frac{1}{\mu_0} B_i B_j \\ 
+	B_i (v_j - \xi_j) - B_j v_i \\ 
+	E_{total} (v_j - \xi_j) + P_{total} v_j - \frac{1}{\mu_0} B_k v_k B_j 
+\end{matrix}\right]$<br>
+
+<h3>Newton Method</h3>
+
+Nonlinear function:<br>
+$G_i(\tilde{U}) = n \tilde{U}_i + \partial_{\xi_j} \tilde{F}_{ij}$<br>
+solve for $G_i = 0$ by minimizing $\tilde{U}_j$<br>
+<br>
+Taylor expansion of function to minimize:<br>
+$G_i(\tilde{U}^{k+1}) = G_i(\tilde{U}^k) + {{\partial G_i(\tilde{U}^k)}\over{\partial \tilde{U}^k_j}} (\tilde{U}_j^{k+1} - \tilde{U}_j^k) + \mathscr(O)((\tilde{U})^2)$<br>
+$\tilde{U}_i^k$ the $k$th iteration of our state vector $\tilde{U}_i$<br>
+$G_i(\tilde{U}^{k+1}) = G_i(\tilde{U}^k) + {{\partial G_i(\tilde{U}^k)}\over{\partial \tilde{U}^k_j}} (\tilde{U}_j^{k+1} - \tilde{U}_j^k) + \mathscr(O)((\tilde{U})^2)$<br>
+<br>
+Rearranged, and ignoring the higher-order terms:<br>
+$||{{\partial G_i(\tilde{U}^k)}\over{\partial \tilde{U}^k_j}}||^{-1}_{ij} (G_j(\tilde{U}^{k+1}) - G_j(\tilde{U}^k)) = \tilde{U}_i^{k+1} - \tilde{U}_i^k$<br>
+$\tilde{U}_i^{k+1} = \tilde{U}_i^k + ||{{\partial G_i(\tilde{U}^k)}\over{\partial \tilde{U}^k_j}}||^{-1}_{ij} (G_j(\tilde{U}^{k+1}) - G_j(\tilde{U}^k))$<br>
+Assume that we arrive at our destination, i.e. $G_i(\tilde{U}^{k+1}) = 0$:<br>
+$\tilde{U}_i^{k+1} = \tilde{U}_i^k - ||{{\partial G_i(\tilde{U}^k)}\over{\partial \tilde{U}^k_j}}||^{-1}_{ij} G_j(\tilde{U}^k)$<br>
+This formula is equivalent to Newton's method of an n-dimensions scalar function with value equal to $\frac{1}{2}||G||^2$<br>
+<br>
+Jacobian Approximation:<br>
+${{\partial G_i(u)}\over{\partial \tilde{U}_j}} v_j \approx ( G_i (u + \epsilon v) - G_i(u) ) / \epsilon$<br>
+<br>
+Evaluation of function to minimize<br> 
+${{\partial G_i}\over{\partial \tilde{U}_j}} = \partial_{\tilde{U}_j} G_i$<br>
+$= \partial_{\tilde{U}_j} (n \tilde{U}_i + \partial_{\xi_k} \tilde{F}_{ik})$<br>
+$= n g^{ij} + \partial_{\tilde{U}_j} \partial_{\xi_k} \tilde{F}_{ik}$<br>
+<br>
+
+
+
+	</body>
+</html>
