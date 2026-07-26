@@ -224,6 +224,46 @@ Some helper worksheets for my projects.
 
 [GR EM Metrics/metric of flat space and EM potential](https://thenumbernine.github.io/math/GR%20EM%20Metrics/metric%20of%20flat%20space%20and%20EM%20potential.html)
 
+[Global Transport Network/1](https://thenumbernine.github.io/math/Global%20Transport%20Network/1.mp4)
+
+[Global Transport Network/5](https://thenumbernine.github.io/math/Global%20Transport%20Network/5.png)
+
+[Global Transport Network/acc](https://thenumbernine.github.io/math/Global%20Transport%20Network/acc.png)
+
+[Global Transport Network/apollonion_circle_grid_slider_transforms](https://thenumbernine.github.io/math/Global%20Transport%20Network/apollonion_circle_grid_slider_transforms.mov)
+
+[Global Transport Network/azimuthal equidistant with 3 iters](https://thenumbernine.github.io/math/Global%20Transport%20Network/azimuthal%20equidistant%20with%203%20iters.png)
+
+[Global Transport Network/equirectangular tetrahedron base](https://thenumbernine.github.io/math/Global%20Transport%20Network/equirectangular%20tetrahedron%20base.png)
+
+[Global Transport Network/equirectangular with 3 iters - base in south](https://thenumbernine.github.io/math/Global%20Transport%20Network/equirectangular%20with%203%20iters%20%2d%20base%20in%20south.png)
+
+[Global Transport Network/equirectangular with 3 iters](https://thenumbernine.github.io/math/Global%20Transport%20Network/equirectangular%20with%203%20iters.png)
+
+[Global Transport Network/index](https://thenumbernine.github.io/math/Global%20Transport%20Network/index.html)
+
+[Global Transport Network/mollweide with 3 iters](https://thenumbernine.github.io/math/Global%20Transport%20Network/mollweide%20with%203%20iters.png)
+
+[Global Transport Network/pos](https://thenumbernine.github.io/math/Global%20Transport%20Network/pos.png)
+
+[Global Transport Network/single fractal branch with earth in flat-earth view](https://thenumbernine.github.io/math/Global%20Transport%20Network/single%20fractal%20branch%20with%20earth%20in%20flat%2dearth%20view.png)
+
+[Global Transport Network/single fractal branch with earth](https://thenumbernine.github.io/math/Global%20Transport%20Network/single%20fractal%20branch%20with%20earth.png)
+
+[Global Transport Network/single fractal branch](https://thenumbernine.github.io/math/Global%20Transport%20Network/single%20fractal%20branch.png)
+
+[Global Transport Network/sphere with 3 iters](https://thenumbernine.github.io/math/Global%20Transport%20Network/sphere%20with%203%20iters.png)
+
+[Global Transport Network/time vs accel in hours log-log](https://thenumbernine.github.io/math/Global%20Transport%20Network/time%20vs%20accel%20in%20hours%20log%2dlog.png)
+
+[Global Transport Network/time vs accel in hours](https://thenumbernine.github.io/math/Global%20Transport%20Network/time%20vs%20accel%20in%20hours.png)
+
+[Global Transport Network/time vs accel in min](https://thenumbernine.github.io/math/Global%20Transport%20Network/time%20vs%20accel%20in%20min.png)
+
+[Global Transport Network/time vs accel](https://thenumbernine.github.io/math/Global%20Transport%20Network/time%20vs%20accel.png)
+
+[Global Transport Network/vel](https://thenumbernine.github.io/math/Global%20Transport%20Network/vel.png)
+
 [Gravitation 22.2](https://thenumbernine.github.io/math/Gravitation%2022.2.html)
 
 [Integrating a Vector Field in Curvilinear Coordinates - Example](https://thenumbernine.github.io/math/Integrating%20a%20Vector%20Field%20in%20Curvilinear%20Coordinates%20%2d%20Example.html)
