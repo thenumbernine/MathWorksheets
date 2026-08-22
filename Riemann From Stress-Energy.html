@@ -148,7 +148,32 @@ $C_{a[bcd]} = 0$<br>
 ${C^u}_{aub} = 0$<br>
 <br>
 
-A simple choice, and nearest point projected onto the solution space, is $C_{abcd} = 0$<br>
+Trace Bianchi identity to find:<br>
+$\nabla_a {C^a}_{bcd} = \nabla_c P_{db} - \nabla_d P_{cb}$<br>
+<br>
+
+... in terms of the stress-energy tensor:<br>
+$\nabla_a {C^a}_{bcd} = \nabla_c (
+	\kappa \frac{1}{2} (
+		T_{db}
+		- \frac{1}{3} T g_{db}
+	)
+)
+- \nabla_d (
+	\kappa \frac{1}{2} (
+		T_{cb}
+		- \frac{1}{3} T g_{cb}
+	)
+)$<br>
+$\nabla_a {C^a}_{bcd} = \frac{1}{2} \kappa \left(
+	\nabla_c T_{db}
+	- \nabla_d T_{cb}
+	- \frac{1}{3} g_{db} \nabla_c T
+	+ \frac{1}{3} g_{cb} \nabla_d T
+\right)$<br>
+<br>
+
+Next use a Green's function to integrate the divergence...<br>
 <br>
 
 <h3>Find the Riemann tensor in terms of the Schouten tensor and the Weyl tensor</h3>
